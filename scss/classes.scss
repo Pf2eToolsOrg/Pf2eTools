@@ -326,7 +326,6 @@
 		font-family: 'Andada', serif;
 		font-variant: small-caps;
 		font-weight: 500;
-		color: $rgb-name-red;
 	}
 
 	&btn-toggle {
@@ -348,18 +347,10 @@
 		margin-top: 4px;
 		margin-bottom: 0;
 	}
-
-	&mc-prof-intro--requirements {
-		margin-top: 1.7em;
-	}
 }
 
 .night-mode {
 	.cls-side__ {
-		&name {
-			color: $rgb-name-red--night;
-		}
-
 		&btn-toggle {
 			color: $rgb-font--night;
 		}
@@ -509,6 +500,7 @@
 // region comparison view
 .cls-comp__wrp-features {
 	width: 400px;
+	max-width: calc(100vw - #{2 * $spacer});
 }
 // endregion
 
@@ -596,12 +588,11 @@
 		}
 
 		&item {
+			@include overflow-dots();
+
 			cursor: pointer;
 			user-select: none;
 			max-height: 20px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 			color: $rgb-name-red;
 
 			&:hover {

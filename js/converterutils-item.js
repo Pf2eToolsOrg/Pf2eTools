@@ -80,13 +80,6 @@ class ChargeTag {
 	}
 }
 
-class QuantityTag {
-	static tryRun (it, opts) {
-		const m = / \((.*?)\)/.exec(it.name);
-		if (m) it.quantity = Number(m[1]);
-	}
-}
-
 class RechargeTypeTag {
 	static _checkAndTag (obj, opts) {
 		if (!obj.entries) return;
@@ -153,7 +146,7 @@ class SpellTag {
 		const walker = MiscUtil.getWalker();
 		const walkerHandlers = {
 			obj: [
-				(ident, obj) => {
+				(obj) => {
 					if (obj.type !== "table") return obj;
 
 					// Require the table to have the string "spell" somewhere in its caption/column labels
@@ -170,7 +163,7 @@ class SpellTag {
 			]
 		};
 		const cpy = MiscUtil.copy(obj);
-		walker.walk("tagConditions", cpy, walkerHandlers);
+		walker.walk(cpy, walkerHandlers);
 		// endregion
 
 		obj.attachedSpells = [...outSet];
@@ -200,44 +193,42 @@ class BonusTag {
 		}
 
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*(?:attack|hit) and damage rolls)/ig, (...m) => {
+			if (m[0].toLowerCase().includes("spell")) return m[0];
+
 			obj.bonusWeapon = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusWeapon}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*(?:attack rolls|hit))/ig, (...m) => {
+			if (obj.bonusWeapon) return m[0];
+			if (m[0].toLowerCase().includes("spell")) return m[0];
+
 			obj.bonusWeaponAttack = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusWeaponAttack}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on)(?: your)? [^.]*(?:AC|Armor Class|armor class))/g, (...m) => {
 			obj.bonusAc = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusAc}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*saving throws)/g, (...m) => {
 			obj.bonusSavingThrow = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusSavingThrow}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*spell attack rolls)/g, (...m) => {
 			obj.bonusSpellAttack = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusSpellAttack}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(BonusTag._RE_BASIC_WEAPONS, (...m) => {
 			obj.bonusWeapon = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusWeapon}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(BonusTag._RE_BASIC_ARMORS, (...m) => {
 			obj.bonusAc = `+${m[1]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `{=bonusAc}${m[2]}` : m[0];
 		});
 
@@ -247,11 +238,9 @@ class BonusTag {
 			const ptItem = m[2].trim().toLowerCase();
 			if (ConverterUtilsItem.BASIC_WEAPONS.includes(ptItem)) {
 				obj.bonusWeapon = `+${m[3]}`;
-				delete obj.bonus;
 				return opts.isVariant ? `${m[1]}${m[2]}{=bonusWeapon}${m[2]}` : m[0];
 			} else if (ConverterUtilsItem.BASIC_ARMORS.includes(ptItem)) {
 				obj.bonusAc = `+${m[3]}`;
-				delete obj.bonus;
 				return opts.isVariant ? `${m[1]}${m[2]}{=bonusAc}${m[2]}` : m[0];
 			}
 			return m[0];
@@ -259,20 +248,24 @@ class BonusTag {
 
 		// Damage roll with no attack roll
 		strEntries = strEntries.replace(/\+\s*(\d)([^.]+(?:bonus )?(?:to|on) [^.]*damage rolls)/ig, (...m) => {
-			if (obj.bonusWeapon == null) {
-				obj.bonusWeaponDamage = `+${m[1]}`;
-				delete obj.bonus;
-				return opts.isVariant ? `{=bonusWeaponDamage}${m[2]}` : m[0];
-			}
-			return m[0];
+			if (obj.bonusWeapon) return m[0];
+
+			obj.bonusWeaponDamage = `+${m[1]}`;
+			return opts.isVariant ? `{=bonusWeaponDamage}${m[2]}` : m[0];
 		});
 
 		strEntries = strEntries.replace(/(grants )\+\s*(\d)((?: to| on)?(?: your)? [^.]*(?:AC|Armor Class|armor class))/g, (...m) => {
 			obj.bonusAc = `+${m[2]}`;
-			delete obj.bonus;
 			return opts.isVariant ? `${m[1]}{=bonusAc}${m[3]}` : m[0];
 		});
 		// endregion
+
+		// If the bonus weapon attack and damage are identical, combine them
+		if (obj.bonusWeaponAttack && obj.bonusWeaponDamage && obj.bonusWeaponAttack === obj.bonusWeaponDamage) {
+			obj.bonusWeapon = obj.bonusWeaponAttack;
+			delete obj.bonusWeaponAttack;
+			delete obj.bonusWeaponDamage;
+		}
 
 		obj.entries = JSON.parse(strEntries);
 	}
@@ -287,9 +280,9 @@ BonusTag._RE_BASIC_ARMORS = new RegExp(`\\+\\s*(\\d)(\\s+(?:${ConverterUtilsItem
 
 class BasicTextClean {
 	static tryRun (it, opts) {
-		const walker = MiscUtil.getWalker(new Set(["type"]));
-		walker.walk("textCleaner", it, {
-			array: (ident, arr) => {
+		const walker = MiscUtil.getWalker({keyBlacklist: new Set(["type"])});
+		walker.walk(it, {
+			array: (arr) => {
 				return arr.filter(it => {
 					if (typeof it !== "string") return true;
 
@@ -307,10 +300,18 @@ class ItemMiscTag {
 	static tryRun (it, opts) {
 		if (!(it.entries || (it.inherits && it.inherits.entries))) return;
 
+		const isInherits = !it.entries && it.inherits.entries;
+		const tgt = it.entries ? it : it.inherits;
+
 		const strEntries = JSON.stringify(it.entries || it.inherits.entries);
 
-		strEntries.replace(/"Sentience"/, (...m) => it.sentient = true);
-		strEntries.replace(/"Curse"/, (...m) => it.curse = true);
+		strEntries.replace(/"Sentience"/, (...m) => tgt.sentient = true);
+		strEntries.replace(/"Curse"/, (...m) => tgt.curse = true);
+
+		strEntries.replace(/you[^.]* (gain|have)? proficiency/gi, (...m) => tgt.grantsProficiency = true);
+		strEntries.replace(/you gain[^.]* following proficiencies/gi, (...m) => tgt.grantsProficiency = true);
+		strEntries.replace(/you are[^.]* considered proficient/gi, (...m) => tgt.grantsProficiency = true);
+		strEntries.replace(/[Yy]ou can speak( and understand)? [A-Z]/g, (...m) => tgt.grantsProficiency = true);
 	}
 }
 
@@ -318,7 +319,6 @@ if (typeof module !== "undefined") {
 	module.exports = {
 		ConverterUtilsItem,
 		ChargeTag,
-		QuantityTag,
 		RechargeTypeTag,
 		SpellTag,
 		BonusTag,

@@ -10,7 +10,7 @@ module.exports = {
 		"sourceType": "module"
 	},
 	"rules": {
-		"accessor-pairs": "error",
+		"accessor-pairs": "off",
 		"arrow-spacing": ["error", {"before": true, "after": true}],
 		"block-spacing": ["error", "always"],
 		"brace-style": ["error", "1tbs", {"allowSingleLine": true}],

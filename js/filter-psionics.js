@@ -13,9 +13,7 @@ class PageFilterPsionics extends PageFilter {
 	constructor () {
 		super();
 
-		this._sourceFilter = SourceFilter.getInstance({
-			deselFn: () => false
-		});
+		this._sourceFilter = new SourceFilter({deselFn: () => false});
 		this._typeFilter = new Filter({header: "Type", items: [Parser.PSI_ABV_TYPE_TALENT, Parser.PSI_ABV_TYPE_DISCIPLINE], displayFn: Parser.psiTypeToFull, itemSortFn: PageFilterPsionics._sortFilterTypes});
 		this._orderFilter = new Filter({
 			header: "Order",

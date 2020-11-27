@@ -5,6 +5,9 @@ module.exports = {
 		"es6": true,
 		"node": true
 	},
+	"parserOptions": {
+		"ecmaVersion": 9
+	},
 	"rules": {
 		"accessor-pairs": "error",
 		"arrow-spacing": ["error", {"before": true, "after": true}],
@@ -132,7 +135,18 @@ module.exports = {
 		"no-with": "error",
 		"object-property-newline": ["error", {"allowMultiplePropertiesPerLine": true}],
 		"one-var": ["error", {"initialized": "never"}],
-		"operator-linebreak": ["error", "after", {"overrides": {"?": "before", ":": "before"}}],
+		"operator-linebreak": ["error", "after", {
+			"overrides": {
+				"?": "before",
+				":": "before",
+				"+": "before",
+				"-": "before",
+				"*": "before",
+				"/": "before",
+				"||": "before",
+				"&&": "before"
+			}
+		}],
 		"padded-blocks": ["error", {"blocks": "never", "switches": "never", "classes": "never"}],
 		"prefer-promise-reject-errors": "error",
 		"rest-spread-spacing": ["error", "never"],

@@ -115,6 +115,7 @@ PropOrder._MONSTER = [
 	"srd",
 	"otherSources",
 
+	"_isCopy",
 	new PropOrder._ObjectKey("_copy", {
 		order: [
 			"name",
@@ -163,6 +164,8 @@ PropOrder._MONSTER = [
 	"legendaryHeader",
 	"legendaryActions",
 	"legendary",
+	"mythicHeader",
+	"mythic",
 	"legendaryGroup",
 	"variant",
 
@@ -171,21 +174,22 @@ PropOrder._MONSTER = [
 	"familiar",
 	"dragonCastingColor",
 
+	"hasToken",
 	"tokenUrl",
 	"soundClip",
 
 	"altArt",
 
-	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflictLegendary", {fnSort: SortUtil.ascSortLowerSafe}),
-	new PropOrder._ArrayKey("conditionInflictSpell", {fnSort: SortUtil.ascSortLowerSafe})
+	new PropOrder._ArrayKey("traitTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("senseTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("actionTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("languageTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("damageTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("spellcastingTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("miscTags", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflict", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflictLegendary", {fnSort: SortUtil.ascSortLower}),
+	new PropOrder._ArrayKey("conditionInflictSpell", {fnSort: SortUtil.ascSortLower})
 ];
 PropOrder._MONSTER__COPY_MOD = [
 	"*",
@@ -198,12 +202,8 @@ PropOrder._GENERIC_FLUFF = [
 
 	"_copy",
 
-	"_prependCopy",
-
 	"entries",
-	"images",
-
-	"_appendCopy"
+	"images"
 ];
 PropOrder._SPELL = [
 	"name",
@@ -237,14 +237,15 @@ PropOrder._SPELL = [
 
 	"spellAttack",
 	"savingThrow",
-	"opposedCheck",
+	"abilityCheck",
 
 	"miscTags",
 	"areaTags",
 
 	"classes",
 	"races",
-	"backgrounds"
+	"backgrounds",
+	"eldritchInvocations"
 ];
 PropOrder._ACTION = [
 	"name",
@@ -265,8 +266,9 @@ PropOrder._ADVENTURE = [
 	"id",
 	"source",
 
-	"image",
+	"coverUrl",
 	"published",
+	"publishedOrder",
 	"storyline",
 	"level",
 
@@ -278,7 +280,7 @@ PropOrder._BOOK = [
 	"id",
 	"source",
 
-	"image",
+	"coverUrl",
 	"published",
 	"author",
 
@@ -310,7 +312,8 @@ PropOrder._BACKGROUND = [
 
 	"skillProficiencies",
 	"languageProficiencies",
-	"toolProficiencies"
+	"toolProficiencies",
+	"startingEquipment"
 ];
 PropOrder._BACKGROUND__COPY_MOD = [
 	"*",
@@ -345,7 +348,8 @@ PropOrder._LEGENDARY_GROUP = [
 	"name",
 	"source",
 	"lairActions",
-	"regionalEffects"
+	"regionalEffects",
+	"mythicEncounter"
 ];
 PropOrder._CLASS = [
 	"name",
@@ -355,6 +359,7 @@ PropOrder._CLASS = [
 	"srd",
 	"isReprinted",
 
+	"requirements",
 	"hd",
 	"proficiency",
 
@@ -389,8 +394,42 @@ PropOrder._CLASS__SUBCLASS = [
 	"spellcastingAbility",
 	"casterProgression",
 
+	"additionalSpells",
+
 	"subclassTableGroups",
 	"subclassFeatures"
+];
+PropOrder._CLASS_FEATURE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"className",
+	"classSource",
+	"level",
+
+	"header",
+	"type",
+	"entries"
+];
+PropOrder._SUBCLASS_FEATURE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"className",
+	"classSource",
+	"subclassShortName",
+	"subclassSource",
+	"level",
+
+	"header",
+	"type",
+	"entries"
 ];
 PropOrder._LANGUAGE = [
 	"name",
@@ -420,6 +459,15 @@ PropOrder._CONDITION = [
 	"entries"
 ];
 PropOrder._DISEASE = [
+	"name",
+
+	"source",
+	"page",
+	"srd",
+
+	"entries"
+];
+PropOrder._STATUS = [
 	"name",
 
 	"source",
@@ -531,6 +579,7 @@ PropOrder._VEHICLE = [
 	"weight",
 
 	"type",
+	"terrain",
 
 	"capCreature",
 	"capCrew",
@@ -560,9 +609,13 @@ PropOrder._VEHICLE = [
 	"other",
 
 	"trait",
+	"actionThresholds",
 	"action",
 	"actionStation",
-	"reaction"
+	"reaction",
+
+	"hasToken",
+	"tokenUrl"
 ];
 PropOrder._RACE_FLUFF = [
 	"name",
@@ -571,22 +624,16 @@ PropOrder._RACE_FLUFF = [
 	"uncommon",
 	"monstrous",
 
-	"_excludeBaseEntries",
-	"_excludeBaseImages",
-
 	"_copy",
 
-	"_prependCopy",
-
 	"entries",
-	"images",
-
-	"_appendCopy"
+	"images"
 ];
 PropOrder._ITEM = [
 	"name",
 	"namePrefix",
 	"nameSuffix",
+	"nameRemove",
 
 	"source",
 	"page",
@@ -616,6 +663,7 @@ PropOrder._ITEM = [
 	"reqAttune",
 
 	"wondrous",
+	"ammunition",
 	"tattoo",
 	"curse",
 	"sentient",
@@ -623,8 +671,10 @@ PropOrder._ITEM = [
 	"weight",
 	"weightMult",
 	"weightNote",
+	"weightExpression",
 	"value",
 	"valueMult",
+	"valueExpression",
 	"quantity",
 
 	"weaponCategory",
@@ -657,6 +707,7 @@ PropOrder._ITEM = [
 	"speed",
 
 	"ability",
+	"grantsProficiency",
 
 	"bonusWeapon",
 	"bonusWeaponAttack",
@@ -670,9 +721,17 @@ PropOrder._ITEM = [
 
 	"axe",
 	"armor",
+	"bow",
+	"club",
+	"crossbow",
+	"dagger",
 	"firearm",
 	"focus",
+	"hammer",
+	"mace",
+	"net",
 	"poison",
+	"spear",
 	"staff",
 	"stealth",
 	"sword",
@@ -682,7 +741,11 @@ PropOrder._ITEM = [
 	"additionalEntries",
 	"items",
 
+	"ammoType",
+	"poisonTypes",
+
 	"packContents",
+	"containerCapacity",
 
 	"attachedSpells",
 	"lootTables"
@@ -701,6 +764,8 @@ PropOrder._VARIANT = [
 	"requires",
 	"excludes",
 
+	"ammo",
+
 	"entries",
 
 	new PropOrder._ObjectKey("inherits", {
@@ -710,12 +775,15 @@ PropOrder._VARIANT = [
 PropOrder._OBJECT = [
 	"name",
 
+	"isNpc",
+
 	"source",
 	"page",
 	"srd",
 
 	"size",
-	"type",
+	"objectType",
+	"creatureType",
 
 	"ac",
 	"hp",
@@ -733,9 +801,13 @@ PropOrder._OBJECT = [
 	"immune",
 	"resist",
 	"vulnerable",
+	"conditionImmune",
 
 	"entries",
-	"actionEntries"
+	"actionEntries",
+
+	"hasToken",
+	"tokenUrl"
 ];
 PropOrder._OPTIONALFEATURE = [
 	"name",
@@ -784,6 +856,8 @@ PropOrder._VARIANTRULE = [
 	"page",
 	"srd",
 
+	"additionalSources",
+
 	"ruleType",
 
 	"type",
@@ -823,6 +897,8 @@ PropOrder._RACE = [
 	"skillProficiencies",
 
 	"soundClip",
+
+	"additionalSpells",
 
 	"entries",
 
@@ -904,9 +980,12 @@ PropOrder._PROP_TO_LIST = {
 	"trait": PropOrder._TRAIT,
 	"legendaryGroup": PropOrder._LEGENDARY_GROUP,
 	"class": PropOrder._CLASS,
+	"classFeature": PropOrder._CLASS_FEATURE,
+	"subclassFeature": PropOrder._SUBCLASS_FEATURE,
 	"language": PropOrder._LANGUAGE,
 	"condition": PropOrder._CONDITION,
 	"disease": PropOrder._DISEASE,
+	"status": PropOrder._STATUS,
 	"cult": PropOrder._CULT,
 	"boon": PropOrder._BOON,
 	"deity": PropOrder._DEITY,

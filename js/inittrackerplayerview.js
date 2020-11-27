@@ -32,8 +32,8 @@ window.addEventListener("load", () => {
 
 	const $body = $(`body`);
 	$body.on("keypress", (e) => {
-		if (((e.key === "f") && noModifierKeys(e))) {
-			if (MiscUtil.isInInput(e)) return;
+		if (((e.key === "f") && EventUtil.noModifierKeys(e))) {
+			if (EventUtil.isInInput(e)) return;
 			e.preventDefault();
 
 			if (view.isActive) $body.toggleClass("is-fullscreen");

@@ -17,9 +17,10 @@ class Hist {
 			} else {
 				const listItem = Hist.getActiveListItem(link);
 
-				if (listItem === undefined) {
-					if (typeof handleUnknownHash === "function" && window.location.hash.length) {
-						handleUnknownHash(link, sub);
+				if (listItem == null) {
+					if (typeof pHandleUnknownHash === "function" && window.location.hash.length && Hist._lastUnknownLink !== link) {
+						Hist._lastUnknownLink = link;
+						pHandleUnknownHash(link, sub);
 						return;
 					} else {
 						Hist._freshLoad();
@@ -138,6 +139,7 @@ class Hist {
 	}
 }
 Hist.lastLoadedLink = null;
+Hist._lastUnknownLink = null;
 Hist.lastLoadedId = null;
 Hist.initialLoad = true;
 Hist.isHistorySuppressed = false;

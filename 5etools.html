@@ -9,6 +9,7 @@
 	<meta name="description" content="A suite of browser-based tools for 5th Edition  Dungeons &amp; Dragons players and Dungeon Masters.">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
 	<title>PF2eTools</title>
 
@@ -19,6 +20,8 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+	<link rel="apple-touch-icon" href="icon-320.png">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
@@ -54,7 +57,7 @@
 
 		.home__btn-page {
 			border-width: 2px;
-			width: 113px;
+			width: 134px;
 			height: 110px;
 			text-align: center;
 			flex-shrink: 0;
@@ -63,6 +66,12 @@
 			flex-direction: column;
 			align-items: center;
 			border-radius: 0;
+		}
+
+		@media only screen and (max-width: 1200px) {
+			.home__btn-page {
+				width: 113px;
+			}
 		}
 
 		.home__btn-page,
@@ -95,6 +104,7 @@
 			align-items: center;
 			margin-bottom: 0;
 			font-size: 17px;
+			color: #333;
 		}
 
 		.home__h-player {
@@ -121,6 +131,7 @@
 		.night-mode .home__btn-player:active,
 		.night-mode .home__btn-player:focus {
 			border-color: dodgerblue;
+			color: dodgerblue;
 		}
 
 		.home__btn-rule,
@@ -132,6 +143,7 @@
 		.night-mode .home__btn-rule:active,
 		.night-mode .home__btn-rule:focus {
 			border-color: #33a5a5;
+			color: #33a5a5;
 		}
 
 		.home__btn-dm,
@@ -143,6 +155,7 @@
 		.night-mode .home__btn-dm:active,
 		.night-mode .home__btn-dm:focus {
 			border-color: darkviolet;
+			color: darkviolet;
 		}
 
 		.home__stripe {
@@ -242,6 +255,14 @@
 				margin-bottom: 15px;
 			}
 		}
+
+		[id="div-gpt-ad-5etools35927"]::after,
+		[id="div-gpt-ad-5etools35930"]::after {
+			content: '';
+			margin: 20px auto 0;
+			width: 100%;
+			display: block;
+		}
 	</style>
 </head>
 <body>
@@ -265,15 +286,12 @@
 <!--	</p></div>-->
 </div>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1-->
-	<div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div>
-</div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <div class="home__stripe">
 	<div class="home__split relative">
 		<div class="home__stripe-header text-right home__h-player">
-			<div class="w-100 text-center">Players</div>
+			<div class="w-100 text-left mobile__text-center">Players</div>
 		</div>
 		<div
 			class="flex flex-wrap relative home__split-spaced home__split-spaced--gutter home__split-spaced--no-header home__wrp-buttons">
@@ -287,7 +305,7 @@
 				<h4 class="text-center home__lbl-page">Classes</h4>
 			</a>
 			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="feats.html">
-				<div class="fal fa-chess-queen home__icn-page"></div>
+				<div class="fal fa-award home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Feats</h4>
 			</a>
 			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="optionalfeatures.html"
@@ -347,33 +365,33 @@
 	<div class="home__split">
 		<div class="flex flex-wrap relative home__split-spaced home__split-spaced--gutter home__wrp-buttons">
 			<div class="home__stripe-header home__h-rule">
-				<div class="w-100 text-center">Rules</div>
+				<div class="w-100 text-left mobile__text-center">Rules</div>
 			</div>
-			
+
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="adventures.html"
 			   title="All the official adventures published by Wizards of the Coast.">
 				<div class="fal fa-dungeon home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Adventures</h4>
 			</a>
-			
+
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="books.html"
 			   title="All the official sources published by Wizards of the Coast.">
 				<div class="fal fa-books home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Books</h4>
 			</a>
-			
+
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="quickreference.html"
 			   title="A searchable selection of commonly used rules and tables.">
 				<div class="fal fa-info-square home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Quick<br>Reference</h4>
 			</a>
-			
+
 			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="conditionsdiseases.html"
 			   title="A searchable, filterable list of the conditions found in the Player's Handbook, and the sample diseases found in the Dungeon Master's Guide.">
 				<div class="fal fa-skull-crossbones home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Conditions</h4>
 			</a>
-			
+
 			<a class="home__btn-page btn btn-default home__btn-rule" href="traits.html"
 			   title="A searchable, filterable list of the conditions found in the Core Rulebook.">
 				<div class="fal fa-tags home__icn-page"></div>
@@ -385,7 +403,7 @@
 
 		<div class="flex flex-wrap relative home__wrp-buttons">
 			<div class="home__stripe-header home__h-dm">
-				<div class="w-100 text-center">Dungeon Masters</div>
+				<div class="w-100 text-left mobile__text-center">Dungeon Masters</div>
 			</div>
 			<a class="home__btn-page btn btn-default mr-3 home__btn-dm" href="bestiary.html"
 			   title="A searchable, filterable list of the more than 1,000 stat blocks in D&amp;D 5e. An encounter builder is included, and creature Challenge Rating can be scaled according to the &quot;Creating Quick Monster Stats&quot; table in the Dungeon Master's Guide.">
@@ -431,14 +449,14 @@
 	<!--		</div>-->
 	<!--	</div>-->
 
+	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
 
-	<div class="row">
-		<div class="col-sm-12">
-			<p><a href="https://www.patreon.com/bePatron?u=22018559"><img src="img/patreon.png" alt="Become a Patron"
-																		  style="width: 217px;"></a></p>
+	<div class="w-100">
+		<p><a href="https://www.patreon.com/bePatron?u=22018559" rel="noopener noreferrer"><img src="img/patreon.png" alt="Become a Patron"
+																		  style="width: 217px; height: 51px"></a></p>
 
-			<h3>Use Discord?</h3>
-			<p>Join our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">server</a> for
+		<h3>Use Discord?</h3>
+		<p>Join our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">server</a> for
 				announcements, updates, and feature voting.</p>
 
 			<!--	<h3>Use Roll20?</h3>
@@ -457,23 +475,23 @@
 				wiki, and check the <a href="roll20.html">Help page</a> for some basic pointers on how to use the
 				script.</b></p> -->
 
-			<h3>FAQ</h3>
-			<p><b>Is there a wiki?</b> <a href="https://wiki.5e.tools/index.php/Main_Page">Here.</a> Contributions are
+		<h3>FAQ</h3>
+		<p><b>Is there a wiki?</b> <a href="https://wiki.5e.tools/index.php/Main_Page" rel="noopener noreferrer">Here.</a> Contributions are
 				welcome.
-			<p><b>Is it free?</b> Yes! Additionally, you can download the source at <a href="https://get.5e.tools">get.5e.tools</a>.
+		<p><b>Is it free?</b> Yes! Additionally, you can download the source at <a href="https://get.5e.tools">get.5e.tools</a>.
 				See the <code>README</code> or the <a
-					href="https://wiki.5e.tools/index.php/5eTools_Install_Guide">wiki</a> for help.</p>
-			<p><b>Can I contribute?</b> A copy of the source is available on <a
-				href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io">GitHub</a>. Note that this is a
+					href="https://wiki.5e.tools/index.php/5eTools_Install_Guide" rel="noopener noreferrer">wiki</a> for help.</p>
+		<p><b>Can I contribute?</b> A copy of the source is available on <a
+				href="https://github.com/TheGiddyLimit/TheGiddyLimit.github.io" rel="noopener noreferrer">GitHub</a>. Note that this is a
 				secondary mirror, and so is not guaranteed to be up-to-date.</p>
-			<p><b>Browser and device support?</b> The latest desktop versions of Chrome and Firefox.</p>
-			<p><b>Anything else I should know?</b> Hold <kbd>SHIFT</kbd> when hovering to lock a window in place.
+		<p><b>Browser and device support?</b> The latest desktop versions of Chrome and Firefox.</p>
+		<p><b>Where's my stuff?</b> There's no account system. Everything is stored in cookies. If you wipe those, or close your incognito window, it's gone forever. You can download your data for safekeeping via the Settings menu.</p>
+		<p><b>Anything else I should know?</b> Hold <kbd>SHIFT</kbd> when hovering to lock a window in place.
 				Everything has tooltips. You will forever be a DM.</p>
 
-			<h3 title=":^)">Disclaimer</h3>
-			<p title=":^)">5etools is intended as an easily-accessible digital reference for products you already own.
+		<h3 title=":^)">Disclaimer</h3>
+		<p title=":^)">5etools is intended as an easily-accessible digital reference for products you already own.
 				Please ensure you only access content in accordance with your local laws.</p>
-		</div>
 	</div>
 </main>
 <footer class="container">
@@ -483,21 +501,23 @@
 		| <span style="text-decoration: red line-through">&nbsp;&copy;&nbsp;</span><span id="current_year">2019</span>
 		5etools
 		| <a href="privacy-policy.html">Privacy Policy</a>
-		| <a onclick="(window.__cmp || window.__cmp2)(&quot;displayConsentUi&quot;)" href="javascript:void(0);">Change
+		| <a id="ot-sdk-btn" class="ot-sdk-show-settings" style="padding: 0; border: none">Change
 		Ad Consent</a>
 		<br>
 		<i>5etools&reg; is a Registered Trademark of The Norr Group Ltd. All rights reserved.</i>
 	</p>
 </footer>
-<div class="cancer__home-footer-pad"></div>
+<div class="cancer__footer-pad"></div>
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>

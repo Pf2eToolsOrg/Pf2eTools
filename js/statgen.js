@@ -154,7 +154,10 @@ class StatGen {
 
 		this.raceData = Renderer.race.mergeSubraces(data.race);
 		if (brew.race) this.raceData = this.raceData.concat(brew.race);
-		this.raceData = this.raceData.filter(it => !ExcludeUtil.isExcluded(it.name, "race", it.source));
+		this.raceData = this.raceData.filter(it => {
+			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](it);
+			return !ExcludeUtil.isExcluded(hash, "race", it.source);
+		});
 
 		$("#rollbutton").click(() => this.rollStats());
 
@@ -179,7 +182,8 @@ class StatGen {
 			while (tries > 0) {
 				tries--;
 
-				const $toBump = RollerUtil.rollOnArray($iptAttrs);
+				const $iptAttrsCanIncrease = $iptAttrs.filter(it => Number(it.val()) < this.statMax);
+				const $toBump = RollerUtil.rollOnArray($iptAttrsCanIncrease);
 				const oldVal = Number($toBump.val());
 				$toBump.val(oldVal + 1);
 				this.changeBase();

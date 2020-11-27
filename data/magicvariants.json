@@ -1,6 +1,369 @@
 {
 	"variant": [
 		{
+			"name": "+1 Ammunition",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF"
+				}
+			],
+			"ammo": true,
+			"inherits": {
+				"namePrefix": "+1 ",
+				"source": "DMG",
+				"page": 150,
+				"srd": true,
+				"tier": "minor",
+				"rarity": "uncommon",
+				"bonusWeapon": "+1",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+				],
+				"lootTables": [
+					"Magic Item Table B"
+				]
+			}
+		},
+		{
+			"name": "+1 Armor",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+1 ",
+				"source": "DMG",
+				"page": 152,
+				"srd": true,
+				"tier": "major",
+				"rarity": "rare",
+				"bonusAc": "+1",
+				"entries": [
+					"You have a {=bonusAc} bonus to AC while wearing this armor."
+				]
+			}
+		},
+		{
+			"name": "+1 Shield (*)",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
+			"entries": [
+				"{@note * This generic variant has the same name and source as the item {@item +1 shield}}.",
+				"While holding this shield, you have a +1 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
+			"inherits": {
+				"namePrefix": "+1 ",
+				"source": "DMG",
+				"page": 200,
+				"srd": true,
+				"tier": "major",
+				"rarity": "uncommon",
+				"bonusAc": "+1",
+				"entries": [
+					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+				]
+			}
+		},
+		{
+			"name": "+1 Weapon",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"net": true
+			},
+			"inherits": {
+				"namePrefix": "+1 ",
+				"source": "DMG",
+				"page": 213,
+				"srd": true,
+				"tier": "major",
+				"rarity": "uncommon",
+				"bonusWeapon": "+1",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
+				],
+				"lootTables": [
+					"Magic Item Table F"
+				]
+			}
+		},
+		{
+			"name": "+1 Weapon (no damage)",
+			"type": "GV",
+			"requires": [
+				{
+					"net": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+1 ",
+				"source": "DMG",
+				"page": 213,
+				"tier": "major",
+				"rarity": "uncommon",
+				"bonusWeaponAttack": "+1",
+				"entries": [
+					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
+				]
+			}
+		},
+		{
+			"name": "+2 Ammunition",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF"
+				}
+			],
+			"ammo": true,
+			"inherits": {
+				"namePrefix": "+2 ",
+				"source": "DMG",
+				"page": 150,
+				"srd": true,
+				"tier": "minor",
+				"rarity": "rare",
+				"bonusWeapon": "+2",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+				],
+				"lootTables": [
+					"Magic Item Table C"
+				]
+			}
+		},
+		{
+			"name": "+2 Armor",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+2 ",
+				"source": "DMG",
+				"page": 152,
+				"srd": true,
+				"tier": "major",
+				"rarity": "very rare",
+				"bonusAc": "+2",
+				"entries": [
+					"You have a {=bonusAc} bonus to AC while wearing this armor."
+				]
+			}
+		},
+		{
+			"name": "+2 Shield (*)",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
+			"entries": [
+				"{@note * This generic variant has the same name and source as the item {@item +2 shield}}.",
+				"While holding this shield, you have a +2 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
+			"inherits": {
+				"namePrefix": "+2 ",
+				"source": "DMG",
+				"page": 200,
+				"srd": true,
+				"tier": "major",
+				"rarity": "rare",
+				"bonusAc": "+2",
+				"entries": [
+					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+				]
+			}
+		},
+		{
+			"name": "+2 Weapon",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"net": true
+			},
+			"inherits": {
+				"namePrefix": "+2 ",
+				"source": "DMG",
+				"page": 213,
+				"srd": true,
+				"tier": "major",
+				"rarity": "rare",
+				"bonusWeapon": "+2",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
+				],
+				"lootTables": [
+					"Magic Item Table G"
+				]
+			}
+		},
+		{
+			"name": "+2 Weapon (no damage)",
+			"type": "GV",
+			"requires": [
+				{
+					"net": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+2 ",
+				"source": "DMG",
+				"page": 213,
+				"tier": "major",
+				"rarity": "rare",
+				"bonusWeaponAttack": "+2",
+				"entries": [
+					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
+				]
+			}
+		},
+		{
+			"name": "+3 Ammunition",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "A"
+				},
+				{
+					"type": "AF"
+				}
+			],
+			"ammo": true,
+			"inherits": {
+				"namePrefix": "+3 ",
+				"source": "DMG",
+				"page": 150,
+				"srd": true,
+				"tier": "minor",
+				"rarity": "very rare",
+				"bonusWeapon": "+3",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
+				],
+				"lootTables": [
+					"Magic Item Table D"
+				]
+			}
+		},
+		{
+			"name": "+3 Armor",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+3 ",
+				"source": "DMG",
+				"page": 152,
+				"srd": true,
+				"tier": "major",
+				"rarity": "legendary",
+				"bonusAc": "+3",
+				"entries": [
+					"You have a {=bonusAc} bonus to AC while wearing this armor."
+				]
+			}
+		},
+		{
+			"name": "+3 Shield (*)",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "S"
+				}
+			],
+			"entries": [
+				"{@note * This generic variant has the same name and source as the item {@item +3 shield}}.",
+				"While holding this shield, you have a +3 bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+			],
+			"inherits": {
+				"namePrefix": "+3 ",
+				"source": "DMG",
+				"page": 200,
+				"srd": true,
+				"tier": "major",
+				"rarity": "very rare",
+				"bonusAc": "+3",
+				"entries": [
+					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
+				]
+			}
+		},
+		{
+			"name": "+3 Weapon",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"net": true
+			},
+			"inherits": {
+				"namePrefix": "+3 ",
+				"source": "DMG",
+				"page": 213,
+				"srd": true,
+				"tier": "major",
+				"rarity": "very rare",
+				"bonusWeapon": "+3",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
+				],
+				"lootTables": [
+					"Magic Item Table H"
+				]
+			}
+		},
+		{
+			"name": "+3 Weapon (no damage)",
+			"type": "GV",
+			"requires": [
+				{
+					"net": true
+				}
+			],
+			"inherits": {
+				"namePrefix": "+3 ",
+				"source": "DMG",
+				"page": 213,
+				"tier": "major",
+				"rarity": "very rare",
+				"bonusWeaponAttack": "+3",
+				"entries": [
+					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
+				]
+			}
+		},
+		{
 			"name": "Acheron Blade",
 			"type": "GV",
 			"requires": [
@@ -45,6 +408,10 @@
 					"type": "AF"
 				}
 			],
+			"excludes": {
+				"name": "Energy Cell"
+			},
+			"ammo": true,
 			"entries": [
 				"Ammunition made of or coated with adamantine is unusually effective when used to break objects. Whenever a piece of adamantine ammunition hits an object, the hit is a critical hit.",
 				"The adamantine version of ten pieces of ammunition costs 500 gp more than the normal version, whether the ammunition is made of the metal or coated with it."
@@ -95,7 +462,7 @@
 				}
 			],
 			"excludes": {
-				"name": "Net"
+				"net": true
 			},
 			"entries": [
 				"Melee weapons made of or coated with adamantine are unusually effective when used to break objects. Whenever an adamantine weapon hits an object, the hit is a critical hit.",
@@ -107,89 +474,9 @@
 				"page": 78,
 				"tier": "major",
 				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 50000",
 				"entries": [
 					"Whenever you hit an object with this weapon, the hit is a critical hit."
-				]
-			}
-		},
-		{
-			"name": "Ammunition +1",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "A"
-				},
-				{
-					"type": "AF"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +1",
-				"source": "DMG",
-				"page": 150,
-				"srd": true,
-				"tier": "minor",
-				"rarity": "uncommon",
-				"bonusWeapon": "+1",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-				],
-				"lootTables": [
-					"Magic Item Table B"
-				]
-			}
-		},
-		{
-			"name": "Ammunition +2",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "A"
-				},
-				{
-					"type": "AF"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +2",
-				"source": "DMG",
-				"page": 150,
-				"srd": true,
-				"tier": "minor",
-				"rarity": "rare",
-				"bonusWeapon": "+2",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-				],
-				"lootTables": [
-					"Magic Item Table C"
-				]
-			}
-		},
-		{
-			"name": "Ammunition +3",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "A"
-				},
-				{
-					"type": "AF"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +3",
-				"source": "DMG",
-				"page": 150,
-				"srd": true,
-				"tier": "minor",
-				"rarity": "very rare",
-				"bonusWeapon": "+3",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this piece of magic ammunition. Once it hits a target, the ammunition is no longer magical."
-				],
-				"lootTables": [
-					"Magic Item Table D"
 				]
 			}
 		},
@@ -219,69 +506,6 @@
 				"entries": [
 					"An armblade is a magic weapon that attaches to your arm, becoming inseparable from you as long as you're attuned to it. To attune to this item, you must hold it against your forearm for the entire attunement period.",
 					"As a bonus action, you can retract the armblade into your forearm or extend it from there. While it is extended, you can use the weapon as if you were holding it, and you can't use that hand for other purposes."
-				]
-			}
-		},
-		{
-			"name": "Armor +1",
-			"type": "GV",
-			"requires": [
-				{
-					"armor": true
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +1",
-				"source": "DMG",
-				"page": 152,
-				"srd": true,
-				"tier": "major",
-				"rarity": "rare",
-				"bonusAc": "+1",
-				"entries": [
-					"You have a {=bonusAc} bonus to AC while wearing this armor."
-				]
-			}
-		},
-		{
-			"name": "Armor +2",
-			"type": "GV",
-			"requires": [
-				{
-					"armor": true
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +2",
-				"source": "DMG",
-				"page": 152,
-				"srd": true,
-				"tier": "major",
-				"rarity": "very rare",
-				"bonusAc": "+2",
-				"entries": [
-					"You have a {=bonusAc} bonus to AC while wearing this armor."
-				]
-			}
-		},
-		{
-			"name": "Armor +3",
-			"type": "GV",
-			"requires": [
-				{
-					"armor": true
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +3",
-				"source": "DMG",
-				"page": 152,
-				"srd": true,
-				"tier": "major",
-				"rarity": "legendary",
-				"bonusAc": "+3",
-				"entries": [
-					"You have a {=bonusAc} bonus to AC while wearing this armor."
 				]
 			}
 		},
@@ -508,6 +732,7 @@
 			"excludes": {
 				"page": 268
 			},
+			"ammo": true,
 			"entries": [
 				"An {@italic arrow of slaying} is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both {@italic arrows of dragon slaying} and {@italic arrows of blue dragon slaying}. If a creature belonging to the type, race, or group associated with an {@italic arrow of slaying} takes damage from the arrow, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
 				"Once an {@italic arrow of slaying} deals its extra damage to a creature, it becomes a nonmagical arrow.",
@@ -523,6 +748,31 @@
 				"entries": [
 					"{=baseName/at} {=baseName/l} of slaying is a magic weapon meant to slay a particular kind of creature. Some are more focused than others; for example, there are both {@i {=baseName/l}s of dragon slaying} and {@i {=baseName/l}s of blue dragon slaying}. If a creature belonging to the type, race, or group associated with {=baseName/a} {=baseName/l} of slaying takes damage from the {=baseName/l}, the creature must make a DC 17 Constitution saving throw, taking an extra {@dice 6d10} piercing damage on a failed save, or half as much extra damage on a successful one.",
 					"Once {=baseName/a} {=baseName/l} of slaying deals its extra damage to a creature, it becomes a nonmagical {=baseName/l}."
+				]
+			}
+		},
+		{
+			"name": "Barding",
+			"type": "GV",
+			"requires": [
+				{
+					"armor": true
+				}
+			],
+			"inherits": {
+				"nameSuffix": " Barding",
+				"nameRemove": " Armor",
+				"source": "PHB",
+				"page": 157,
+				"srd": true,
+				"type": "TAH",
+				"rarity": "none",
+				"weightMult": 2,
+				"weightExpression": "[[baseItem.weight]] * 2",
+				"valueMult": 4,
+				"valueExpression": "[[baseItem.value]] * 4",
+				"entries": [
+					"Barding is armor designed to protect an animal's head, neck, chest, and body. Any type of armor shown on the Armor table in this chapter can be purchased as barding. The cost is four times the equivalent armor made for humanoids, and it weighs twice as much."
 				]
 			}
 		},
@@ -709,7 +959,7 @@
 			}
 		},
 		{
-			"name": "Drow Armor +1",
+			"name": "Drow +1 Armor",
 			"type": "GV",
 			"requires": [
 				{
@@ -717,19 +967,18 @@
 				}
 			],
 			"inherits": {
-				"namePrefix": "Drow ",
-				"nameSuffix": " +1",
-				"source": "DMG",
+				"namePrefix": "Drow +1 ",
+				"source": "MM",
 				"page": 126,
 				"rarity": "unknown (magic)",
 				"bonusAc": "+1",
 				"entries": [
-					"You have a {=bonusAc} bonus to AC while wearing this armor. This armor loses its enchantment bonus permanently if it exposed to sunlight for 1 hour or longer."
+					"You have a {=bonusAc} bonus to AC while wearing this armor. This armor loses its enchantment bonus permanently if it is exposed to sunlight for 1 hour or longer."
 				]
 			}
 		},
 		{
-			"name": "Drow Weapon +1",
+			"name": "Drow +1 Weapon",
 			"type": "GV",
 			"requires": [
 				{
@@ -737,17 +986,16 @@
 				}
 			],
 			"excludes": {
-				"name": "Net"
+				"net": true
 			},
 			"inherits": {
-				"namePrefix": "Drow ",
-				"nameSuffix": " +1",
+				"namePrefix": "Drow +1 ",
 				"source": "MM",
 				"page": 126,
 				"rarity": "unknown (magic)",
 				"bonusWeapon": "+1",
 				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this weapon. This weapon loses its enchantment bonus permanently if it exposed to sunlight for 1 hour or longer."
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this weapon. This weapon loses its enchantment bonus permanently if it is exposed to sunlight for 1 hour or longer."
 				]
 			}
 		},
@@ -1355,6 +1603,34 @@
 			}
 		},
 		{
+			"name": "Mithral +1 Armor",
+			"type": "GV",
+			"requires": [
+				{
+					"type": "HA"
+				},
+				{
+					"type": "MA"
+				}
+			],
+			"excludes": {
+				"name": "Hide Armor"
+			},
+			"inherits": {
+				"namePrefix": "Mithral +1 ",
+				"source": "AI",
+				"page": 156,
+				"rarity": "rare",
+				"strength": null,
+				"bonusAc": "+1",
+				"stealth": false,
+				"entries": [
+					"You have a {=bonusAc} bonus to AC while wearing this armor.",
+					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
+				]
+			}
+		},
+		{
 			"name": "Mithral Armor",
 			"type": "GV",
 			"requires": [
@@ -1382,35 +1658,6 @@
 				],
 				"lootTables": [
 					"Magic Item Table B"
-				]
-			}
-		},
-		{
-			"name": "Mithral Armor +1",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "HA"
-				},
-				{
-					"type": "MA"
-				}
-			],
-			"excludes": {
-				"name": "Hide Armor"
-			},
-			"inherits": {
-				"namePrefix": "Mithral ",
-				"nameSuffix": " +1",
-				"source": "AI",
-				"page": 156,
-				"rarity": "rare",
-				"strength": null,
-				"bonusAc": "+1",
-				"stealth": false,
-				"entries": [
-					"You have a {=bonusAc} bonus to AC while wearing this armor.",
-					"Mithral is a light, flexible metal. A mithral chain shirt or breastplate can be worn under normal clothes. If the armor normally imposes disadvantage on Dexterity ({@skill Stealth}) checks or has a Strength requirement, the mithral version of the armor doesn't."
 				]
 			}
 		},
@@ -1474,7 +1721,6 @@
 				"rarity": "very rare",
 				"reqAttune": true,
 				"bonusWeapon": "+2",
-				"bonusAc": "+2",
 				"charges": "{@dice 1d8 + 1}",
 				"entries": [
 					"You gain a +2 bonus to attack and damage rolls made with this magic weapon.",
@@ -1888,69 +2134,6 @@
 			}
 		},
 		{
-			"name": "Shield, +1",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "S"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +1",
-				"source": "DMG",
-				"page": 200,
-				"srd": true,
-				"tier": "major",
-				"rarity": "uncommon",
-				"bonusAc": "+1",
-				"entries": [
-					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
-			}
-		},
-		{
-			"name": "Shield, +2",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "S"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +2",
-				"source": "DMG",
-				"page": 200,
-				"srd": true,
-				"tier": "major",
-				"rarity": "rare",
-				"bonusAc": "+2",
-				"entries": [
-					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
-			}
-		},
-		{
-			"name": "Shield, +3",
-			"type": "GV",
-			"requires": [
-				{
-					"type": "S"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +3",
-				"source": "DMG",
-				"page": 200,
-				"srd": true,
-				"tier": "major",
-				"rarity": "very rare",
-				"bonusAc": "+3",
-				"entries": [
-					"While holding this shield, you have a {=bonusAc} bonus to AC. This bonus is in addition to the shield's normal bonus to AC."
-				]
-			}
-		},
-		{
 			"name": "Silvered Ammunition",
 			"type": "GV",
 			"requires": [
@@ -1961,6 +2144,10 @@
 					"type": "AF"
 				}
 			],
+			"excludes": {
+				"name": "Energy Cell"
+			},
+			"ammo": true,
 			"entries": [
 				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver ammunition, so cautious adventurers invest extra coin to plate their ammunition in silver. You can silver ten pieces of ammunition for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the ammunition without making it less effective."
 			],
@@ -1981,7 +2168,7 @@
 				}
 			],
 			"excludes": {
-				"name": "Net"
+				"net": true
 			},
 			"entries": [
 				"Some monsters that have immunity or resistance to nonmagical weapons are susceptible to silver weapons, so cautious adventurers invest extra coin to plate their weapons with silver. You can silver a single weapon for 100 gp. This cost represents not only the price of the silver, but the time and expertise needed to add silver to the weapon without making it less effective."
@@ -1991,7 +2178,8 @@
 				"source": "PHB",
 				"page": 148,
 				"tier": "major",
-				"rarity": "unknown"
+				"rarity": "unknown",
+				"valueExpression": "[[baseItem.value]] + 10000"
 			}
 		},
 		{
@@ -2127,6 +2315,34 @@
 			}
 		},
 		{
+			"name": "Vicious +1 Weapon",
+			"type": "GV",
+			"requires": [
+				{
+					"weapon": true
+				}
+			],
+			"excludes": {
+				"net": true
+			},
+			"entries": [
+				"When you roll a 20 with this magic weapon, the target takes an extra 7 damage of the weapon's type.",
+				"{@i Note: According to the SRD, it is an extra {@dice 2d6} damage.}"
+			],
+			"inherits": {
+				"namePrefix": "Vicious +1 ",
+				"source": "AI",
+				"page": 149,
+				"rarity": "rare",
+				"bonusWeapon": "+1",
+				"entries": [
+					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this weapon.",
+					"When you roll a 20 with this magic weapon, the target takes an extra 7 {=dmgType} damage.",
+					"{@i Note: According to the SRD, it is an extra {@dice 2d6} {=dmgType} damage.}"
+				]
+			}
+		},
+		{
 			"name": "Vicious Weapon",
 			"type": "GV",
 			"requires": [
@@ -2135,7 +2351,7 @@
 				}
 			],
 			"excludes": {
-				"name": "Net"
+				"net": true
 			},
 			"entries": [
 				"When you roll a 20 with this magic weapon, the target takes an extra 7 damage of the weapon's type.",
@@ -2154,35 +2370,6 @@
 				],
 				"lootTables": [
 					"Magic Item Table G"
-				]
-			}
-		},
-		{
-			"name": "Vicious Weapon +1",
-			"type": "GV",
-			"requires": [
-				{
-					"weapon": true
-				}
-			],
-			"excludes": {
-				"name": "Net"
-			},
-			"entries": [
-				"When you roll a 20 with this magic weapon, the target takes an extra 7 damage of the weapon's type.",
-				"{@i Note: According to the SRD, it is an extra {@dice 2d6} damage.}"
-			],
-			"inherits": {
-				"namePrefix": "Vicious ",
-				"nameSuffix": " +1",
-				"source": "AI",
-				"page": 149,
-				"rarity": "rare",
-				"bonusWeapon": "+1",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this weapon.",
-					"When you roll a 20 with this magic weapon, the target takes an extra 7 {=dmgType} damage.",
-					"{@i Note: According to the SRD, it is an extra {@dice 2d6} {=dmgType} damage.}"
 				]
 			}
 		},
@@ -2204,7 +2391,6 @@
 				"rarity": "legendary",
 				"reqAttune": true,
 				"bonusWeapon": "+3",
-				"bonusAc": "+3",
 				"entries": [
 					"You gain a +3 bonus to attack and damage rolls made with this magic weapon. In addition, the weapon ignores resistance to slashing damage.",
 					"When you attack a creature that has at least one head with this weapon and roll a 20 on the attack roll, you cut off one of the creature's heads. The creature dies if it can't survive without the lost head. A creature is immune to this effect if it is immune to slashing damage, doesn't have or need a head, has legendary actions, or the DM decides that the creature is too big for its head to be cut off with this weapon. Such a creature instead takes an extra {@dice 6d8} slashing damage from the hit."
@@ -2225,6 +2411,7 @@
 					"type": "AF"
 				}
 			],
+			"ammo": true,
 			"inherits": {
 				"namePrefix": "Walloping ",
 				"source": "XGE",
@@ -2237,147 +2424,6 @@
 			}
 		},
 		{
-			"name": "Weapon (no damage) +1",
-			"type": "GV",
-			"requires": [
-				{
-					"name": "Net"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +1",
-				"source": "DMG",
-				"page": 213,
-				"tier": "major",
-				"rarity": "uncommon",
-				"bonusWeaponAttack": "+1",
-				"entries": [
-					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
-				]
-			}
-		},
-		{
-			"name": "Weapon (no damage) +2",
-			"type": "GV",
-			"requires": [
-				{
-					"name": "Net"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +2",
-				"source": "DMG",
-				"page": 213,
-				"tier": "major",
-				"rarity": "rare",
-				"bonusWeaponAttack": "+2",
-				"entries": [
-					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
-				]
-			}
-		},
-		{
-			"name": "Weapon (no damage) +3",
-			"type": "GV",
-			"requires": [
-				{
-					"name": "Net"
-				}
-			],
-			"inherits": {
-				"nameSuffix": " +3",
-				"source": "DMG",
-				"page": 213,
-				"tier": "major",
-				"rarity": "very rare",
-				"bonusWeaponAttack": "+3",
-				"entries": [
-					"You have a {=bonusWeaponAttack} bonus to attack rolls made with this weapon."
-				]
-			}
-		},
-		{
-			"name": "Weapon +1",
-			"type": "GV",
-			"requires": [
-				{
-					"weapon": true
-				}
-			],
-			"excludes": {
-				"name": "Net"
-			},
-			"inherits": {
-				"nameSuffix": " +1",
-				"source": "DMG",
-				"page": 213,
-				"srd": true,
-				"tier": "major",
-				"rarity": "uncommon",
-				"bonusWeapon": "+1",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
-				],
-				"lootTables": [
-					"Magic Item Table F"
-				]
-			}
-		},
-		{
-			"name": "Weapon +2",
-			"type": "GV",
-			"requires": [
-				{
-					"weapon": true
-				}
-			],
-			"excludes": {
-				"name": "Net"
-			},
-			"inherits": {
-				"nameSuffix": " +2",
-				"source": "DMG",
-				"page": 213,
-				"srd": true,
-				"tier": "major",
-				"rarity": "rare",
-				"bonusWeapon": "+2",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
-				],
-				"lootTables": [
-					"Magic Item Table G"
-				]
-			}
-		},
-		{
-			"name": "Weapon +3",
-			"type": "GV",
-			"requires": [
-				{
-					"weapon": true
-				}
-			],
-			"excludes": {
-				"name": "Net"
-			},
-			"inherits": {
-				"nameSuffix": " +3",
-				"source": "DMG",
-				"page": 213,
-				"srd": true,
-				"tier": "major",
-				"rarity": "very rare",
-				"bonusWeapon": "+3",
-				"entries": [
-					"You have a {=bonusWeapon} bonus to attack and damage rolls made with this magic weapon."
-				],
-				"lootTables": [
-					"Magic Item Table H"
-				]
-			}
-		},
-		{
 			"name": "Weapon of Certain Death",
 			"type": "GV",
 			"requires": [
@@ -2385,6 +2431,9 @@
 					"weapon": true
 				}
 			],
+			"excludes": {
+				"net": true
+			},
 			"inherits": {
 				"nameSuffix": " of Certain Death",
 				"source": "EGW",

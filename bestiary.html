@@ -9,6 +9,7 @@
 	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
 	<title>Bestiary - PF2eTools</title>
 
@@ -18,17 +19,10 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" href="favicon.png">
+	<link rel="apple-touch-icon" href="icon-320.png">
 	<link rel="stylesheet" href="css/fonts.css">
 	<link rel="stylesheet" href="css/pf2-style.css">
-	
-	<!-- Favicons -->
-	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
-	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
-	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
-	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
-	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
@@ -72,7 +66,7 @@
 		}
 
 		.ecgen__group_lhs--advanced .ecgen__players_head_simple {
-			display: none;
+			display: none !important;
 		}
 
 		.ecgen__group_lhs--advanced .ecgen__players_head_advanced {
@@ -144,17 +138,13 @@
 		</div>
 	</header>
 	<nav class="container page__nav" id="navigation">
-		<ul class="nav page__nav-inner" id="navbar">
-		</ul>
+		<ul class="nav page__nav-inner" id="navbar"></ul>
 	</nav>
 
-	<div class="view-col-group--cancer">
-		<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-		<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
-
+	<div class="view-col-group--cancer h-100 mh-0">
 		<div class="container view-col-wrapper view-col-wrapper--cancer">
 			<div class="view-col" id="listcontainer">
-				<div class="lst__form-top" id="filter-search-input-group">
+				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
 						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
 						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
@@ -163,7 +153,7 @@
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 
-				<div id="filtertools" class="sortlabel lst__form-bottom">
+				<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
 					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
 					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
 					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="level">Level<span class="caret_wrp"></span></button>
@@ -221,9 +211,9 @@
 					<ul class="list submonsters">
 						<!-- populate with JS -->
 					</ul>
-					<div class="row ecgen__hidden">
-						<span class="col-7 text-right">Total:</span>
-						<span class="col-5 no-wrap" id="totalcr" style="padding-left: 1px"></span>
+					<div class="row ecgen__hidden ve-small">
+						<span class="col-6 text-right pr-2">Total:</span>
+						<span class="col-6 no-wrap pl-0" id="totalcr"></span>
 					</div>
 				</div>
 
@@ -249,17 +239,17 @@
 						</button>
 					</div>
 					<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
-					<button class="btn btn-xs btn-file btn-info" id="manage-brew">Manage Homebrew</button>
+					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 				</div>
 
-				<div class="ecgen__visible">
-					<h3>Group Info</h3>
-					<div class="row">
+				<div class="ecgen__visible--flex-col ecgen__wrp pb-1 px-2">
+					<h3 class="mt-1 m-2">Group Info</h3>
+					<div class="flex">
 						<!-- LHS -->
-						<div class="col-8 ecgen__group_lhs">
-							<div class="row ecgen__players_head_simple">
-								<div class="col-2">Players:</div>
-								<div class="col-2">Level:</div>
+						<div class="w-70 ecgen__group_lhs">
+							<div class="flex ecgen__players_head_simple">
+								<div class="w-20">Players:</div>
+								<div class="w-20">Level:</div>
 							</div>
 
 							<div class="ecgen__players_head_advanced">
@@ -279,43 +269,42 @@
 								</div>
 							</div>
 
-							<div class="row">
-								<div class="col-12">
-									<label class="inline-flex" style="font-weight: initial;">
-										<span style="margin-right: 5px;">Advanced Mode</span>
-										<input type="checkbox" class="ecgen__players_advanced">
-									</label>
-								</div>
-							</div>
+							<label class="flex-v-center">
+								<div class="mr-2">Advanced Mode</div>
+								<input type="checkbox" class="ecgen__players_advanced">
+							</label>
 
 							<div class="row ecgen__advanced_help">
-								<div class="col-12">
+								<div class="w-100">
 									<i>Additional columns will be imported into the DM Screen.</i>
 								</div>
 							</div>
 						</div>
 
 						<!-- RHS -->
-						<div class="col-4 text-right">
+						<div class="w-30 text-right">
 							<div class="ecgen__easy">Easy: ? XP</div>
 							<div class="ecgen__medium">Medium: ? XP</div>
 							<div class="ecgen__hard">Hard: ? XP</div>
 							<div class="ecgen__deadly">Deadly: ? XP</div>
-							<div class="ecgen__absurd help" title="Calculated as Deadly XP + the difference in XP between Hard and Deadly">Absurd: ? XP</div>
+							<div class="ecgen__absurd">Absurd: ? XP</div>
+							<br>
+							<div class="ecgen__ttk">TTK: ?</div>
 							<br>
 							<div class="ecgen__daily_budget">Daily Budget: ? XP</div>
 						</div>
 					</div>
 
-					<hr class="ecgen__req_creatures">
-					<div class="row ecgen__req_creatures">
+					<hr class="ecgen__req_creatures hr-1">
+
+					<div class="flex ecgen__req_creatures">
 						<!-- LHS -->
-						<div class="col-6">
+						<div class="w-50">
 							<h3 class="ecgen__rating">Difficulty: ?</h3>
 						</div>
 
 						<!-- RHS -->
-						<div class="col-6 text-right">
+						<div class="w-50 text-right">
 							<h4 class="ecgen__raw_total">Total XP: ?</h4>
 							<div><i class="ecgen__raw_per_player">(? per player)</i></div>
 							<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
@@ -323,22 +312,19 @@
 						</div>
 					</div>
 
-					<hr>
-					<div class="row mb-3">
-						<div class="col-12 flex" style="justify-content: center">
-							<button class="btn btn-primary btn-xs mr-4 ecgen__sv_url">Save to URL</button>
-							<button class="btn btn-primary btn-xs mr-2 ecgen__sv_file">Save to File</button>
-							<button class="btn btn-primary btn-xs mr-4 ecgen__ld_file">Load from File</button>
-							<button class="btn btn-primary btn-xs mr-4 ecgen__sv_text">Copy as Text</button>
-							<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
+					<hr class="hr-1">
+					<div class="flex-v-center mb-2">
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_url">Save to URL</button>
+						<div class="btn-group flex-v-center mr-2">
+							<button class="btn btn-primary btn-xs ecgen__sv_file">Save to File</button>
+							<button class="btn btn-primary btn-xs ecgen__ld_file">Load from File</button>
 						</div>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_text">Copy as Text</button>
+						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
 					</div>
 
-					<hr>
-					<div class="row">
-						<div class="col-12">
-							<button class="btn btn-default btn-xs ecgen__visible" style="margin: 0 auto;" id="btn-encounterstatblock">Back to Statblocks</button>
-						</div>
+					<div class="flex">
+						<button class="btn btn-default btn-xs ecgen__visible" id="btn-encounterstatblock">Back to Statblocks</button>
 					</div>
 				</div>
 			</div>
@@ -349,7 +335,9 @@
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/utils-list.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
@@ -358,6 +346,7 @@
 <script type="text/javascript" src="js/multisource.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/render-markdown.js"></script>
 <script type="text/javascript" src="js/render-bestiary.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>

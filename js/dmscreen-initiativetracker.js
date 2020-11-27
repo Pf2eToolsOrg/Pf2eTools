@@ -70,10 +70,10 @@ class InitiativeTracker {
 		};
 
 		// initialise "upload" context menu
-		const contextId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
-			switch (Number($selectedMenu.data("ctx-id"))) {
-				case 0: {
+		const menu = ContextUtil.getMenu([
+			new ContextUtil.Action(
+				"From Current Bestiary Encounter",
+				async () => {
 					const savedState = await EncounterUtil.pGetInitialState();
 					if (savedState) await pConvertAndLoadBestiaryList(savedState.data);
 					else {
@@ -82,9 +82,11 @@ class InitiativeTracker {
 							type: "warning"
 						});
 					}
-					break;
 				}
-				case 1: {
+			),
+			new ContextUtil.Action(
+				"From Saved Bestiary Encounter",
+				async () => {
 					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
 					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
 					const selected = await InputUiUtil.pGetUserEnum({
@@ -93,18 +95,23 @@ class InitiativeTracker {
 						title: "Select Saved Encounter"
 					});
 					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
-					break;
 				}
-				case 2: {
+			),
+			new ContextUtil.Action(
+				"From Bestiary Encounter File",
+				async () => {
 					const json = await DataUtil.pUserUpload();
 					if (json) await pConvertAndLoadBestiaryList(json);
-					break;
 				}
-				case 3:
+			),
+			null,
+			new ContextUtil.Action(
+				"Import Settings",
+				() => {
 					makeImportSettingsModal();
-					break;
-			}
-		}, ["From Current Bestiary Encounter", "From Saved Bestiary Encounter", "From Bestiary Encounter File", null, "Import Settings"]);
+				}
+			)
+		])
 
 		const $wrpTop = $(`<div class="dm-init-wrp-header-outer"/>`).appendTo($wrpTracker);
 		const $wrpHeader = $(`
@@ -215,8 +222,8 @@ class InitiativeTracker {
 			.click(() => {
 				const {$modalInner} = UiUtil.getShowModal({
 					title: "Configure Player View",
-					isLarge: true,
-					fullHeight: true,
+					isUncappedHeight: true,
+					isHeight100: true,
 					cbClose: () => {
 						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
 						if (srvPeer) srvPeer.offTemp("connection")
@@ -471,7 +478,7 @@ class InitiativeTracker {
 		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-xs dm-init-lockable"><span class="glyphicon glyphicon-upload"/></button>`).appendTo($wrpLoadReset)
 			.click((evt) => {
 				if (cfg.isLocked) return;
-				ContextUtil.handleOpenContextMenu(evt, $btnLoad, contextId);
+				ContextUtil.pOpenMenu(evt, menu);
 			});
 		$(`<button title="Reset" class="btn btn-danger btn-xs dm-init-lockable"><span class="glyphicon glyphicon-trash"/></button>`).appendTo($wrpLoadReset)
 			.click(() => {
@@ -839,12 +846,13 @@ class InitiativeTracker {
 				const curMon = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
 				let monNum = null;
 				if (curMon.length) {
-					if (curMon.length === 1) {
+					const $dispsNumber = curMon.map((i, e) => $(e).find(`span[data-number]`).data("number"));
+					if (curMon.length === 1 && !$dispsNumber.length) {
 						const r = $(curMon.get(0));
 						r.find(`.init-wrp-creature-link`).append(`<span data-number="1" class="dm_init__number">(1)</span>`);
 						monNum = 2;
 					} else {
-						monNum = curMon.map((i, e) => $(e).find(`span[data-number]`).data("number")).get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
+						monNum = $dispsNumber.get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
 					}
 				}
 
@@ -887,7 +895,7 @@ class InitiativeTracker {
 						await pMakeRow({
 							nameOrMeta,
 							init: evt.shiftKey ? "" : $iptScore.val(),
-							isActive: $wrpRow.hasClass("dm-init-row-active"),
+							isActive: !evt.shiftKey && $wrpRow.hasClass("dm-init-row-active"),
 							source,
 							isRollHp: cfg.isRollHp,
 							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
@@ -919,7 +927,7 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const {$modalInner, doClose} = UiUtil.getShowModal({noMinHeight: true});
+					const {$modalInner, doClose} = UiUtil.getShowModal({isMinHeight0: true});
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 
@@ -1268,21 +1276,22 @@ class InitiativeTracker {
 			if (!firstLoad && !noReset) doReset();
 			firstLoad = false;
 
-			await Promise.all((state.r || []).map(r => {
-				return pMakeRow({
-					nameOrMeta: r.n,
-					customName: r.m,
-					hp: r.h,
-					hpMax: r.g,
-					init: r.i,
-					isActive: r.a,
-					source: r.s,
-					conditions: r.c,
-					statsCols: r.k,
-					isVisible: r.v,
-					isRollInit: r.i == null
+			for (const row of (state.r || [])) {
+				await pMakeRow({
+					nameOrMeta: row.n,
+					customName: row.m,
+					hp: row.h,
+					hpMax: row.g,
+					init: row.i,
+					isActive: row.a,
+					source: row.s,
+					conditions: row.c,
+					statsCols: row.k,
+					isVisible: row.v,
+					isRollInit: row.i == null
 				});
-			}));
+			}
+
 			doSort(cfg.sort);
 			checkSetFirstActive();
 			handleStatColsChange();

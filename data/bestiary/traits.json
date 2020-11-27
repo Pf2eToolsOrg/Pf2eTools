@@ -80,6 +80,74 @@
 			}
 		},
 		{
+			"name": "Deep Gnome",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Gnome (Deep)|DMG|Deep Gnome}",
+			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"gnome"
+						]
+					},
+					"speed": 20
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 120
+						}
+					},
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"Gnomish",
+							"Terran",
+							"Undercommon"
+						]
+					},
+					"spellcasting": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Innate Spellcasting",
+								"headerEntries": [
+									"<$title_name$>'s innate spellcasting ability is Intelligence (spell save DC <$spell_dc__int$>). <$title_name$> can innately cast the following spells, requiring no material components:"
+								],
+								"will": [
+									"{@spell nondetection} (self only)"
+								],
+								"daily": {
+									"1e": [
+										"{@spell blindness/deafness}",
+										"{@spell blur}",
+										"{@spell disguise self}"
+									]
+								},
+								"ability": "int"
+							}
+						]
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Gnome Cunning",
+								"entries": [
+									"<$title_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
 			"name": "Dracolich",
 			"source": "MM",
 			"page": 83,
@@ -195,7 +263,7 @@
 							{
 								"name": "Fey Ancestry",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$short_name$> to sleep."
 								]
 							},
 							{
@@ -738,7 +806,7 @@
 					"type": {
 						"type": "humanoid",
 						"tags": [
-							"goblin"
+							"goblinoid"
 						]
 					}
 				},
@@ -859,6 +927,54 @@
 								"name": "Savage Attacks",
 								"entries": [
 									"When they score a critical hit, <$title_name$> can roll one of the weapon's damage dice and add it to the extra damage of the critical hit."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "High Elf",
+			"source": "PHB",
+			"page": 23,
+			"ref": "{@race Elf (High)||High Elf}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"elf"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						},
+						{
+							"mode": "addSkills",
+							"skills": {
+								"perception": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": "Elvish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
 								]
 							}
 						]
@@ -2418,13 +2534,13 @@
 							{
 								"name": "Fey Ancestry",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+									"<$title_name$> has advantage on saving throws against being {@condition charmed}, and magic can't put <$short_name$> to sleep."
 								]
 							},
 							{
 								"name": "Mask of the Wild",
 								"entries": [
-									"<$title_name$> can attempt to hide even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+									"<$title_name$> can attempt to {@action hide} even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
 								]
 							}
 						]

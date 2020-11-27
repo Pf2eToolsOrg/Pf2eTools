@@ -218,6 +218,7 @@
 	},
 
 	_casterLevelAndClassCantrips: {
+		artificer: [2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4],
 		bard: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
 		cleric: [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
 		druid: [2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
@@ -289,57 +290,52 @@
 	 * @param toCr target CR, as a number.
 	 * @return {Promise<creature>} the scaled creature.
 	 */
-	scale (mon, toCr) {
-		return this._pInitSpellCache().then(() => {
-			if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
+	async scale (mon, toCr) {
+		await this._pInitSpellCache();
 
-			this._initRng(mon, toCr);
-			mon = JSON.parse(JSON.stringify(mon));
+		if (toCr == null || toCr === "Unknown") throw new Error("Attempting to scale unknown CR!");
 
-			const crIn = mon.cr.cr || mon.cr;
-			const crInNumber = Parser.crToNumber(crIn);
-			if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
-			if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
-			if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
+		this._initRng(mon, toCr);
+		mon = JSON.parse(JSON.stringify(mon));
 
-			const pbIn = Parser.crToPb(crIn);
-			const pbOut = Parser.crToPb(String(toCr));
+		const crIn = mon.cr.cr || mon.cr;
+		const crInNumber = Parser.crToNumber(crIn);
+		if (crInNumber === toCr) throw new Error("Attempting to scale creature to own CR!");
+		if (crInNumber > 30) throw new Error("Attempting to scale a creature beyond 30 CR!");
+		if (crInNumber < 0) throw new Error("Attempting to scale a creature below 0 CR!");
 
-			if (pbIn !== pbOut) this._applyPb(mon, pbIn, pbOut);
+		const pbIn = Parser.crToPb(crIn);
+		const pbOut = Parser.crToPb(String(toCr));
 
-			this._adjustHp(mon, crInNumber, toCr);
-			this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
-			this._adjustDpr(mon, crInNumber, toCr);
-			this._adjustSpellcasting(mon, crInNumber, toCr);
+		if (pbIn !== pbOut) this._applyPb(mon, pbIn, pbOut);
 
-			// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
-			this._armorClass.adjustAc(mon, crInNumber, toCr);
+		this._adjustHp(mon, crInNumber, toCr);
+		this._adjustAtkBonusAndSaveDc(mon, crInNumber, toCr, pbIn, pbOut);
+		this._adjustDpr(mon, crInNumber, toCr);
+		this._adjustSpellcasting(mon, crInNumber, toCr);
 
-			// TODO update not-yet-scaled abilities
+		// adjust AC after DPR/etc, as DPR takes priority for adjusting DEX
+		this._armorClass.adjustAc(mon, crInNumber, toCr);
 
-			this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
+		// TODO update not-yet-scaled abilities
 
-			// cleanup
-			[`strOld`, `dexOld`, `conOld`, `intOld`, `wisOld`, `chaOld`].forEach(a => delete mon[a]);
+		this._handleUpdateAbilityScoresSkillsSaves(mon, pbOut);
 
-			const crOutStr = Parser.numberToCr(toCr);
-			if (mon.cr.cr) mon.cr.cr = crOutStr;
-			else mon.cr = crOutStr;
+		// cleanup
+		[`strOld`, `dexOld`, `conOld`, `intOld`, `wisOld`, `chaOld`].forEach(a => delete mon[a]);
 
-			mon._displayName = `${mon.name} (CR ${crOutStr})`;
-			mon._isScaledCr = toCr;
-			mon._originalCr = mon._originalCr || crIn;
+		const crOutStr = Parser.numberToCr(toCr);
+		if (mon.cr.cr) mon.cr.cr = crOutStr;
+		else mon.cr = crOutStr;
 
-			return mon;
-		});
+		mon._displayName = `${mon.name} (CR ${crOutStr})`;
+		mon._isScaledCr = toCr;
+		mon._originalCr = mon._originalCr || crIn;
+
+		return mon;
 	},
 
 	_applyPb (mon, pbIn, pbOut) {
-		const getNewSkillSaveMod = (oldMod, expert) => {
-			const mod = Number(oldMod) - (expert ? 2 * pbIn : pbIn) + (expert ? 2 * pbOut : pbOut);
-			return `${mod >= 0 ? "+" : ""}${mod}`;
-		};
-
 		if (mon.save) {
 			Object.keys(mon.save).forEach(k => {
 				const bonus = mon.save[k];
@@ -350,25 +346,11 @@
 				const actualPb = bonus - fromAbility;
 				const expert = actualPb === pbIn * 2;
 
-				mon.save[k] = getNewSkillSaveMod(bonus, expert);
+				mon.save[k] = this._applyPb_getNewSkillSaveMod(pbIn, pbOut, bonus, expert);
 			})
 		}
 
-		if (mon.skill) {
-			Object.keys(mon.skill).forEach(k => {
-				const bonus = mon.skill[k];
-
-				const fromAbility = Parser.getAbilityModNumber(mon[Parser.skillToAbilityAbv(k)]);
-				if (fromAbility === Number(bonus)) return; // handle the case where no-PB skills are listed
-
-				const actualPb = bonus - fromAbility;
-				const expert = actualPb === pbIn * 2;
-
-				mon.skill[k] = getNewSkillSaveMod(bonus, expert);
-
-				if (k === "perception" && mon.passive != null) mon.passive = 10 + Number(mon.skill[k]);
-			});
-		}
+		this._applyPb_skills(mon, pbIn, pbOut, mon.skill);
 
 		const pbDelta = pbOut - pbIn;
 		const handleHit = (str) => {
@@ -413,7 +395,40 @@
 		handleGenericEntries("action");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
+		handleGenericEntries("mythic");
 		handleGenericEntries("variant");
+	},
+
+	_applyPb_getNewSkillSaveMod (pbIn, pbOut, oldMod, expert) {
+		const mod = Number(oldMod) - (expert ? 2 * pbIn : pbIn) + (expert ? 2 * pbOut : pbOut);
+		return UiUtil.intToBonus(mod);
+	},
+
+	_applyPb_skills (mon, pbIn, pbOut, monSkill) {
+		if (!monSkill) return;
+
+		Object.keys(monSkill).forEach(skill => {
+			if (skill === "other") {
+				monSkill[skill].forEach(block => {
+					if (block.oneOf) {
+						this._applyPb_skills(mon, pbIn, pbOut, block.oneOf);
+					} else throw new Error(`Unhandled "other" skill keys: ${Object.keys(block)}`);
+				});
+				return;
+			}
+
+			const bonus = monSkill[skill];
+
+			const fromAbility = Parser.getAbilityModNumber(mon[Parser.skillToAbilityAbv(skill)]);
+			if (fromAbility === Number(bonus)) return; // handle the case where no-PB skills are listed
+
+			const actualPb = bonus - fromAbility;
+			const expert = actualPb === pbIn * 2;
+
+			monSkill[skill] = this._applyPb_getNewSkillSaveMod(pbIn, pbOut, bonus, expert);
+
+			if (skill === "perception" && mon.passive != null) mon.passive = 10 + Number(monSkill[skill]);
+		});
 	},
 
 	_armorClass: {
@@ -562,12 +577,12 @@
 							acItem._enchTotal -= enchToGive;
 							f.ench += enchToGive;
 							acItem.ac += enchToGive;
-							f._ = `{@item ${f.name} +${f.ench}|dmg|+${f.ench} ${f.name}}`;
+							f._ = `{@item +${f.ench} ${f.name}}`;
 							if (acItem._enchTotal <= 0) handledEnchBonus = true;
 						} else if (out._gearBonus) {
 							const enchToGive = Math.min(3, acItem._enchTotal);
 							acItem._enchTotal -= enchToGive;
-							f._ = `{@item ${f.name} +${enchToGive}|dmg|+${enchToGive} ${f.name}}`;
+							f._ = `{@item +${enchToGive} ${f.name}}`;
 							if (acItem._enchTotal <= 0) handledEnchBonus = true;
 						}
 					});
@@ -580,7 +595,7 @@
 				const enchToGive = Math.min(3, acItem._enchTotal);
 				acItem._enchTotal -= enchToGive;
 				acItem.ac += enchToGive + 1;
-				(acItem.from = acItem.from || []).unshift(`{@item leather armor +${enchToGive}|dmg|+${enchToGive} leather armor}`);
+				(acItem.from = acItem.from || []).unshift(`{@item +${enchToGive} leather armor}`);
 
 				if (acItem._enchTotal > 0) acItem.ac += acItem._enchTotal; // as a fallback, add any remaining enchantment AC to the total
 			}
@@ -612,17 +627,7 @@
 				acItem.from = acItem.from.map(f => {
 					if (f._) f = f._; // if a previous loop modified it
 
-					// normalise to "true name" format
-					// e.g. {@item +1 chain mail} -> {@item chain mail +1||+1 chain mail}
-					const pre = /@item (\+\d+)([^+\d}]+)/gi.exec(f);
-					if (pre) {
-						const [_, bonus, name, rest] = pre.map(it => it.trim());
-						const restSpl = (rest || "").split("|");
-						const restPart = restSpl.length > 1 ? restSpl.last() : null;
-						f = `{@item ${name} ${bonus}||${restPart || `${bonus} ${name}`}}`;
-					}
-
-					const m = /@item ([^+\d]+)(\+\d+)\|([^|}]+)/gi.exec(f); // e.g. {@item chain mail +1|dmg|+1 chain mail}
+					const m = /@item (\+\d+) ([^+\d]+)\|([^|}]+)/gi.exec(f); // e.g. {@item +1 chain mail +1}
 					if (m) {
 						const [_, name, bonus, source] = m;
 
@@ -751,7 +756,8 @@
 							return mon._shieldRequired = checkShields("trait")
 								|| checkShields("action")
 								|| checkShields("reaction")
-								|| checkShields("legendary");
+								|| checkShields("legendary")
+								|| checkShields("mythic");
 						})();
 						mon._shieldDropped = false;
 
@@ -1383,6 +1389,7 @@
 		handleGenericEntries("action");
 		handleGenericEntries("reaction");
 		handleGenericEntries("legendary");
+		handleGenericEntries("mythic");
 		handleGenericEntries("variant");
 
 		const checkSetTempMod = (abil) => {
@@ -1666,6 +1673,7 @@
 			if (!handleDpr("action")) continue;
 			if (!handleDpr("reaction")) continue;
 			if (!handleDpr("legendary")) continue;
+			if (!handleDpr("mythic")) continue;
 			if (!handleDpr("variant")) continue;
 			dprAdjustmentComplete = true;
 		}
@@ -1719,22 +1727,35 @@
 
 				if (mon.save && mon.save[abil] != null) {
 					const out = Number(mon.save[abil]) + diff;
-					mon.save[abil] = getModString(out);
+					mon.save[abil] = UiUtil.intToBonus(out);
 				}
 
-				if (mon.skill) {
-					Object.keys(mon.skill).forEach(skill => {
-						const skillAbil = Parser.skillToAbilityAbv(skill);
-						if (skillAbil !== abil) return;
-						const out = Number(mon.skill[skill]) + diff;
-						mon.skill[skill] = getModString(out);
-					});
-				}
+				this._handleUpdateAbilityScoresSkillsSaves_handleSkills(mon.skill, abil, diff);
 
 				if (abil === "wis" && mon.passive != null) {
 					mon.passive = mon.passive + diff;
 				}
 			}
+		});
+	},
+
+	_handleUpdateAbilityScoresSkillsSaves_handleSkills (monSkill, abil, diff) {
+		if (!monSkill) return;
+
+		Object.keys(monSkill).forEach(skill => {
+			if (skill === "other") {
+				monSkill[skill].forEach(block => {
+					if (block.oneOf) {
+						this._handleUpdateAbilityScoresSkillsSaves_handleSkills(block.oneOf.oneOf, abil, diff);
+					} else throw new Error(`Unhandled "other" skill keys: ${Object.keys(block)}`);
+				});
+				return;
+			}
+
+			const skillAbil = Parser.skillToAbilityAbv(skill);
+			if (skillAbil !== abil) return;
+			const out = Number(monSkill[skill]) + diff;
+			monSkill[skill] = UiUtil.intToBonus(out);
 		});
 	},
 
@@ -1750,13 +1771,14 @@
 
 	__initSpellCache (data) {
 		data.spell.forEach(s => {
-			s.classes.fromClassList.forEach(c => {
-				let it = (this._spells[c.source] = this._spells[c.source] || {});
-				const lowName = c.name.toLowerCase();
-				it = (it[lowName] = it[lowName] || {});
-				it = (it[s.level] = it[s.level] || {});
-				it[s.name] = 1;
-			})
+			Renderer.spell.getCombinedClasses(s, "fromClassList")
+				.forEach(c => {
+					let it = (this._spells[c.source] = this._spells[c.source] || {});
+					const lowName = c.name.toLowerCase();
+					it = (it[lowName] = it[lowName] || {});
+					it = (it[s.level] = it[s.level] || {});
+					it[s.name] = 1;
+				});
 		});
 	},
 
@@ -1805,10 +1827,10 @@
 						} else return m[0];
 					});
 
-					const mClasses = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spell(?:s)?/i.exec(outStr);
+					const mClasses = /(artificer|bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard) spell(?:s)?/i.exec(outStr);
 					if (mClasses) spellsFromClass = mClasses[1];
 					else {
-						const mClasses2 = /(bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)(?:'s)? spell list/i.exec(outStr);
+						const mClasses2 = /(artificer|bard|cleric|druid|paladin|ranger|sorcerer|warlock|wizard)(?:'s)? spell list/i.exec(outStr);
 						if (mClasses2) spellsFromClass = mClasses2[1]
 					}
 

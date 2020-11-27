@@ -76,13 +76,11 @@ class MakeCards extends BaseComponent {
 		const $wrpContainer = $(`#wrp_main`).empty();
 
 		// region Search bar/add button
-		const contextIdSearch = ContextUtil.getNextGenericMenuId();
-		const _CONTEXT_OPTIONS = this._render_getContextMenuOptions();
-		ContextUtil.doInitActionContextMenu(contextIdSearch, _CONTEXT_OPTIONS);
+		const menuSearch = ContextUtil.getMenu(this._render_getContextMenuOptions());
 
 		const $iptSearch = $(`<input type="search" class="form-control mr-2" placeholder="Search cards...">`);
 		const $btnAdd = $(`<button class="btn btn-primary mr-2"><span class="glyphicon glyphicon-plus"/> Add</button>`)
-			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnAdd, contextIdSearch));
+			.click(evt => ContextUtil.pOpenMenu(evt, menuSearch));
 		const $btnReset = $(`<button class="btn btn-danger mr-2"><span class="glyphicon glyphicon-trash"/> Reset</button>`)
 			.click(() => {
 				if (!confirm("Are you sure?")) return;
@@ -119,8 +117,7 @@ class MakeCards extends BaseComponent {
 			return out;
 		};
 
-		const contextIdMass = ContextUtil.getNextGenericMenuId();
-		const _CONTEXT_OPTIONS_MASS = [
+		const menuMass = ContextUtil.getMenu([
 			new ContextUtil.Action(
 				"Set Color",
 				async () => {
@@ -149,10 +146,10 @@ class MakeCards extends BaseComponent {
 					this._doSaveStateDebounced();
 				}
 			)
-		];
-		ContextUtil.doInitActionContextMenu(contextIdMass, _CONTEXT_OPTIONS_MASS);
+		]);
+
 		const $btnMass = $(`<button class="btn btn-xs btn-default" title="Carry out actions on selected cards">Mass...</button>`)
-			.click(evt => ContextUtil.handleOpenContextMenu(evt, $btnMass, contextIdMass));
+			.click(evt => ContextUtil.pOpenMenu(evt, menuMass));
 		$$`<div class="w-100 no-shrink flex-v-center mb-2">${$btnMass}</div>`.appendTo($wrpContainer);
 		// endregion
 
@@ -436,7 +433,7 @@ class MakeCards extends BaseComponent {
 			mon.conditionImmune ? this._ct_property("Condition Immunities", this._ct_htmlToText(Parser.monCondImmToFull(mon.conditionImmune))) : null,
 			this._ct_property("Senses", this._ct_htmlToText(Renderer.monster.getSensesPart(mon))),
 			this._ct_property("Languages", this._ct_htmlToText(Renderer.monster.getRenderedLanguages(mon.languages))),
-			this._ct_property("Challenge", this._ct_htmlToText(Parser.monCrToFull(mon.cr))),
+			this._ct_property("Challenge", this._ct_htmlToText(Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic}))),
 			this._ct_rule(),
 			...(allTraits ? this._ct_renderEntries(allTraits, 2) : []),
 			mon.action ? this._ct_section("Actions") : null,
@@ -444,8 +441,11 @@ class MakeCards extends BaseComponent {
 			mon.reaction ? this._ct_section("Reactions") : null,
 			...(mon.reaction ? this._ct_renderEntries(mon.reaction, 2) : []),
 			mon.legendary ? this._ct_section("Legendary Actions") : null,
-			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon))) : null,
-			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : [])
+			mon.legendary ? this._ct_text(this._ct_htmlToText(Renderer.monster.getLegendaryActionIntro(mon, renderer))) : null,
+			...(mon.legendary ? this._ct_renderEntries(mon.legendary, 2) : []),
+			mon.mythic ? this._ct_section("Mythic Actions") : null,
+			mon.mythic ? this._ct_text(this._ct_htmlToText(Renderer.monster.getMythicActionIntro(mon, renderer))) : null,
+			...(mon.mythic ? this._ct_renderEntries(mon.mythic, 2) : [])
 		].filter(Boolean)
 	}
 
@@ -478,7 +478,7 @@ class MakeCards extends BaseComponent {
 		MakeCards.utils.enhanceItemAlt(item);
 
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-		const ptValueWeight = [Parser.itemValueToFull(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst();
+		const ptValueWeight = [Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst();
 		const ptDamageProperties = this._ct_htmlToText([damage, damageType, propertiesTxt].filter(Boolean).join(" "));
 
 		const itemEntries = [];
@@ -503,10 +503,37 @@ class MakeCards extends BaseComponent {
 	// endregion
 
 	static _getIconPath (iconName) {
-		if (class_icon_names.includes(iconName)) {
-			return `https://raw.githubusercontent.com/crobi/rpg-cards/master/generator/img/classes/${iconName.split("-")[1]}.png`
+		const classIconNames = [
+			"class-barbarian",
+			"class-bard",
+			"class-cleric",
+			"class-druid",
+			"class-fighter",
+			"class-monk",
+			"class-paladin",
+			"class-ranger",
+			"class-rogue",
+			"class-sorcerer",
+			"class-warlock",
+			"class-wizard",
+			"class-barbarian",
+			"class-bard",
+			"class-cleric",
+			"class-druid",
+			"class-fighter",
+			"class-monk",
+			"class-paladin",
+			"class-ranger",
+			"class-rogue",
+			"class-sorcerer",
+			"class-warlock",
+			"class-wizard"
+		];
+
+		if (classIconNames.includes(iconName)) {
+			return `https://raw.githubusercontent.com/crobi/rpg-cards/gh-pages/generator/icons/${iconName}.png`
 		}
-		return `https://raw.githubusercontent.com/crobi/rpg-cards/master/generator/img/${iconName}.png`
+		return `https://raw.githubusercontent.com/crobi/rpg-cards/gh-pages/generator/icons/${iconName}.svg`
 	}
 
 	static _pGetUserIcon (initialVal) {
@@ -535,7 +562,7 @@ class MakeCards extends BaseComponent {
 				.click(() => doClose(true));
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Enter Icon",
-				noMinHeight: true,
+				isMinHeight0: true,
 				cbClose: (isDataEntered) => {
 					if (!isDataEntered) return resolve(null);
 					const raw = $iptStr.val();

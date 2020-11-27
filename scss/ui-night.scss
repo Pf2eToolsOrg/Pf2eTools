@@ -14,8 +14,24 @@ Shared UI components
 
 /* region Modals */
 .night-mode .ui-modal__ {
+	&header {
+		border-color: $rgb-border-grey--trans-night;
+	}
+
+	&footer {
+		border-color: $rgb-border-grey--trans-night;
+	}
+
+	&overlay-blind {
+		background-color: $rgb-bg--night;
+	}
+
 	&row-sep {
 		border-color: $rgb-border-grey--night;
+	}
+
+	&inner--mode-fullscreen {
+		box-shadow: none;
 	}
 }
 /* endregion */
@@ -103,11 +119,67 @@ Shared UI components
 }
 /* endregion */
 
+/* region Context menu */
+.night-mode .ui-ctx {
+	&__wrp {
+		background: $rgb-bg--night;
+		border: 1px solid $rgb-border-grey--trans-night;
+		border-top-color: $rgb-border-grey--night;
+	}
+
+	&__divider {
+		background: $rgb-border-grey--night;
+	}
+
+	&__row {
+		&:hover {
+			background: $rgb-bg--alt-night;
+			color: white;
+		}
+
+		&.disabled,
+		&.disabled:hover {
+			background: $rgb-bg--night;
+			color: $rgb-font--night;
+		}
+	}
+}
+/* endregion */
+
 /* region Picker */
 .night-mode .ui-pick {
 	&__ {
 		&disp-text {
 			border-color: $rgb-border-grey--night;
+		}
+	}
+}
+/* endregion */
+
+/* region Decorated inputs */
+.night-mode .ui-ideco__ {
+	&btn-ticker {
+		background: $rgb-border-grey--night;
+		color: white;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:active:focus {
+			box-shadow: none;
+			outline: none;
+		}
+
+		&:hover {
+			background: darken($rgb-border-grey--night, $pct-darken-hover);
+			color: white;
+		}
+
+		&:active,
+		&:focus,
+		&:active:focus {
+			background: darken($rgb-border-grey--night, $pct-darken-active);
+			color: white;
 		}
 	}
 }

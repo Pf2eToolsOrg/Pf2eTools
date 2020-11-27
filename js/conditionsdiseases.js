@@ -2,42 +2,23 @@
 
 class ConditionsDiseasesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({
-			header: "Type",
-			items: ["condition", "disease"],
-			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => it === "disease"
-		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		const pageFilter = new PageFilterConditionsDiseases();
 
 		super({
 			dataSource: "data/conditionsdiseases.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "conditions",
 
 			sublistClass: "subconditions",
 
-			dataProps: ["condition", "disease"]
+			dataProps: ["condition", "disease", "status"]
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (it, cdI, isExcluded) {
-		it._fMisc = it.srd ? ["SRD"] : [];
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -46,7 +27,7 @@ class ConditionsDiseasesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 text-center pl-0">${StrUtil.uppercaseFirst(it.__prop)}</span>
+			<span class="col-3 text-center pl-0">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
 			<span class="bold col-7">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
@@ -74,15 +55,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(li => {
-			const it = this._dataList[li.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it.__prop,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -91,7 +64,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-2 pl-0 text-center">${it.__prop.uppercaseFirst()}</span>
+				<span class="col-2 pl-0 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
 				<span class="bold col-10 pr-0">${it.name}</span>
 			</a>
 		</li>`)
@@ -122,8 +95,7 @@ class ConditionsDiseasesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: it,
-				fnFluffBuilder: (fluffJson) => it.fluff || fluffJson.conditionFluff.find(cd => it.name === cd.name && it.source === cd.source),
-				fluffUrl: `data/fluff-conditionsdiseases.json`
+				pFnGetFluff: Renderer.condition.pGetFluff
 			});
 		}
 

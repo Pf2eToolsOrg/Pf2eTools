@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.2.1",
+	"version": "1.2.5",
 	"type": "object",
 	"properties": {
 		"variant": {
@@ -52,6 +52,9 @@
 								},
 								"scfType": {
 									"type": "string"
+								},
+								"net": {
+									"type": "boolean"
 								}
 							},
 							"additionalProperties": false
@@ -60,6 +63,10 @@
 					"inherits": {
 						"type": "object",
 						"properties": {
+							"type": {
+								"description": "Generally this should be omitted, as the type of the base item will be used.",
+								"type": "string"
+							},
 							"bonusAc": {
 								"type": "string"
 							},
@@ -103,6 +110,9 @@
 								"type": "string"
 							},
 							"nameSuffix": {
+								"type": "string"
+							},
+							"nameRemove": {
 								"type": "string"
 							},
 							"reqAttune": {
@@ -169,6 +179,20 @@
 							},
 							"otherSources": {
 								"$ref": "util.json#/definitions/otherSources"
+							},
+							"valueMult": {
+								"type": "number"
+							},
+							"valueExpression": {
+								"description": "Expression used to calculate each specific variant's value.",
+								"type": "string"
+							},
+							"weightMult": {
+								"type": "number"
+							},
+							"weightExpression": {
+								"description": "Expression used to calculate each specific variant's weight.",
+								"type": "string"
 							}
 						},
 						"required": [
@@ -199,6 +223,9 @@
 							},
 							"property": {
 								"type": "string"
+							},
+							"net": {
+								"type": "boolean"
 							}
 						},
 						"additionalProperties": false
@@ -214,6 +241,9 @@
 						"items": {
 							"type": "string"
 						}
+					},
+					"ammo": {
+						"type": "boolean"
 					}
 				},
 				"required": [

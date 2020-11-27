@@ -174,10 +174,16 @@ class SpellParser extends BaseParser {
 		if (stats.entries) {
 			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it));
 			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
 		}
 		if (stats.entriesHigherLevel) {
 			stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
 			EntryConvert.tryRun(stats, "entriesHigherLevel");
+			stats.entriesHigherLevel = SkillTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = ActionTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = SenseTag.tryRun(stats.entriesHigherLevel);
 		}
 		this._addTags(stats, options);
 		doCleanup();
@@ -190,7 +196,7 @@ class SpellParser extends BaseParser {
 		DamageResVulnImmuneTagger.tryRun(stats, "damageVulnerable", options);
 		ConditionInflictTagger.tryRun(stats, options);
 		SavingThrowTagger.tryRun(stats, options);
-		OpposedCheckTagger.tryRun(stats, options);
+		AbilityCheckTagger.tryRun(stats, options);
 		SpellAttackTagger.tryRun(stats, options);
 		// TODO areaTags
 		MiscTagsTagger.tryRun(stats, options);
@@ -298,8 +304,10 @@ class SpellParser extends BaseParser {
 			case "minute":
 			case "action":
 			case "round":
-			case "bonus action":
 			case "reaction": return unit;
+
+			case "bonus action": return "bonus";
+
 			default:
 				options.cbWarning(`Unit part "${unit}" requires manual conversion`);
 				return unit;

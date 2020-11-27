@@ -17,6 +17,8 @@ async function main () {
 	if (!testsPassed) handleFail();
 	testsPassed = testsPassed && await require("./test-misc");
 	if (!testsPassed) handleFail();
+	testsPassed = testsPassed && await require("./test-foundry.js");
+	if (!testsPassed) handleFail();
 	process.exit(0);
 }
 

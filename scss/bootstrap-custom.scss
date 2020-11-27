@@ -1,5 +1,24 @@
 @import 'vars';
 
+// region Fix Chrome
+input[type='checkbox']:checked {
+	// stylelint-disable-next-line
+	-webkit-filter: grayscale(100%);
+}
+
+input[type='radio']:checked {
+	// stylelint-disable-next-line
+	-webkit-filter: grayscale(100%);
+}
+// endregion
+
+// region Fix Glyphicon alignments
+.glyphicon-send {
+	top: 2px;
+	right: 1px;
+}
+// endregion
+
 .roller {
 	color: $rgb-link-blue;
 	cursor: pointer;
@@ -24,7 +43,7 @@
 }
 
 .ve-muted {
-	color: #777 !important;
+	color: $rgb-font--muted !important;
 }
 
 .ve-small {
@@ -33,6 +52,10 @@
 
 .clickable {
 	cursor: pointer !important;
+
+	&--link {
+		color: $rgb-link-blue !important;
+	}
 }
 
 .not-clickable {
@@ -43,7 +66,7 @@
 	cursor: copy !important;
 }
 
-.unselectable {
+.no-select {
 	user-select: none !important;
 }
 
@@ -90,8 +113,16 @@ i > i {
 	overflow-y: auto;
 }
 
+.overflow-y-scroll {
+	overflow-y: scroll;
+}
+
 .overflow-y-hidden {
 	overflow-y: hidden;
+}
+
+.overflow-x-scroll {
+	overflow-x: scroll;
 }
 
 .overflow-x-hidden {
@@ -99,9 +130,7 @@ i > i {
 }
 
 .overflow-ellipsis {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+	@include overflow-dots();
 }
 
 .resize-vertical {
@@ -238,6 +267,10 @@ i > i {
 
 .min-h-100 {
 	min-height: 100% !important;
+}
+
+.max-w-80 {
+	min-width: 80% !important;
 }
 
 .grid {
@@ -619,7 +652,7 @@ body::-webkit-scrollbar {
 
 .nav > li {
 	> a {
-		padding: 5px 15px 6px;
+		padding: 5px 14px 6px;
 
 		@media (min-width: 992px) {
 			border-top-left-radius: 0;
@@ -640,6 +673,8 @@ body::-webkit-scrollbar {
 	border-top: 0;
 
 	@media (min-width: 992px) {
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
 		border-bottom: 1px solid #999;
 	}
 }
@@ -1695,6 +1730,13 @@ body::-webkit-scrollbar {
 	padding-left: ($spacer * 3) !important;
 }
 
+// region
+.py-1px {
+	padding-top: 1px !important;
+	padding-bottom: 1px !important;
+}
+// endregion
+
 .dropdown-menu > li > a.dropdown-ext-link {
 	display: flex;
 	justify-content: space-between;
@@ -1795,6 +1837,94 @@ body::-webkit-scrollbar {
 	}
 }
 
+.border-dotted {
+	border-style: dotted !important;
+}
+
+// region Override defaults to better implement filter UI
+.input-group {
+	> input.form-control,
+	> label,
+	> button,
+	> a.btn {
+		border-radius: 0;
+		border-right: 0;
+
+		&:first-child {
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+		}
+
+		&:last-child {
+			border-top-right-radius: 3px;
+			border-bottom-right-radius: 3px;
+			border-right: 1px solid $rgb-border-grey;
+		}
+	}
+
+	// The first horizontal row in multiple vertically-stacked input-group rows
+	&--top {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			&:first-child {
+				border-bottom-left-radius: 0;
+			}
+
+			&:last-child {
+				border-bottom-right-radius: 0;
+			}
+		}
+	}
+
+	&--middle {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			border-top: 0;
+
+			&:first-child {
+				border-radius: 0;
+			}
+
+			&:last-child {
+				border-radius: 0;
+			}
+		}
+	}
+
+	&--bottom {
+		input.form-control,
+		label,
+		button,
+		a.btn {
+			border-top: 0;
+
+			&:first-child {
+				border-top-left-radius: 0;
+			}
+
+			&:last-child {
+				border-top-right-radius: 0;
+			}
+		}
+	}
+}
+
+.night-mode .input-group {
+	> input.form-control,
+	> label,
+	> button,
+	> a.btn {
+		&:last-child {
+			border-right-color: $rgb-border-grey--night;
+		}
+	}
+}
+// endregion
+
 // redefine this here to ensure it overrides all the important display types above
 .hidden,
 // the namespaced Foundry alias
@@ -1814,9 +1944,30 @@ body::-webkit-scrollbar {
 			display: none !important;
 		}
 
+		&text-center {
+			text-align: center !important;
+		}
+
 		&flex-col {
 			display: flex !important;
 			flex-direction: column !important;
+		}
+
+		&flex-col-reverse {
+			display: flex !important;
+			flex-direction: column-reverse !important;
+		}
+
+		&flex-ai-start {
+			align-items: flex-start !important;
+		}
+
+		&w-100 {
+			width: 100% !important;
+		}
+
+		&max-w-100 {
+			max-width: 100% !important;
 		}
 
 		&m-1 {

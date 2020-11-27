@@ -19,9 +19,9 @@ class PageFilterClasses extends PageFilter {
 		});
 
 		// region source
-		this._sourceWalker = MiscUtil.getWalker(new Set(["type", "data"])).walk;
+		this._sourceWalker = MiscUtil.getWalker({keyBlacklist: new Set(["type", "data"])}).walk;
 		this._sourcePrimitiveHandlers = {
-			string: (ident, obj, lastKey) => {
+			string: (obj, lastKey) => {
 				if (lastKey === "source") this._sourceFilter.addItem(obj);
 				return obj;
 			}
@@ -47,10 +47,9 @@ class PageFilterClasses extends PageFilter {
 		});
 	}
 
-	_addEntrySourcesToFilter (entry) { this._sourceWalker("sourceWalker", entry, this._sourcePrimitiveHandlers); }
+	_addEntrySourcesToFilter (entry) { this._sourceWalker(entry, this._sourcePrimitiveHandlers); }
 
 	/**
-	 *
 	 * @param cls
 	 * @param isExcluded
 	 * @param opts Options object.

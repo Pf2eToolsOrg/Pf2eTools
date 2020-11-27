@@ -5,10 +5,13 @@
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "15",
 			"hp": "50",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A ballista is a massive crossbow that fires heavy bolts. Before it can be fired, it must be loaded and aimed. It takes one action to load the weapon, one action to aim it, and one action to fire it."
 			],
@@ -24,22 +27,26 @@
 								"{@hit +6} to hit, range 120/480 ft., one target."
 							],
 							"hitEntries": [
-								"16 ({@dice 3d10}) piercing damage."
+								"16 ({@damage 3d10}) piercing damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Cannon",
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "19",
 			"hp": "75",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A cannon uses gunpowder to propel heavy balls of cast iron through the air at destructive speeds. In a campaign without gunpowder, a cannon might be an arcane device built by clever gnomes or wizardly engineers.",
 				"A cannon is usually supported in a wooden frame with wheels. Before it can be fired, the cannon must be loaded and aimed. It takes one action to load the weapon, one action to aim it, and one action to fire it."
@@ -56,19 +63,21 @@
 								"{@hit +6} to hit, range 600/2,400 ft., one target."
 							],
 							"hitEntries": [
-								"44 ({@dice 8d10}) bludgeoning damage."
+								"44 ({@damage 8d10}) bludgeoning damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Captain A-Hole",
+			"isNpc": true,
 			"source": "RMBRE",
 			"page": 21,
 			"size": "L",
-			"type": "U",
+			"objectType": "U",
 			"ac": "17",
 			"hp": "50",
 			"speed": 0,
@@ -80,7 +89,10 @@
 			"senses": [
 				"blindsight 30 ft. (blind beyond this radius)"
 			],
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"actionEntries": [
 				{
 					"type": "actions",
@@ -93,32 +105,36 @@
 								"{@hit +5} to hit, range 30 ft., one target."
 							],
 							"hitEntries": [
-								"3 ({@dice 1d6}) bludgeoning damage."
+								"3 ({@damage 1d6}) bludgeoning damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Cauldron, Suspended",
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "19",
 			"hp": "20",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A cauldron is an iron pot suspended so that it can be tipped easily, spilling its contents. Once emptied, a cauldron must be refilled-and its contents must usually be reheated-before it can be used again. It takes three actions to fill a cauldron and one action to tip it.",
-				"Cauldrons can be filled with other liquids, such as acid or green slime, with different effects."
+				"Cauldrons can be filled with other liquids, such as acid or {@hazard green slime}, with different effects."
 			],
 			"actionEntries": [
 				{
 					"type": "entries",
 					"name": "Boiling Oil",
 					"entries": [
-						"The cauldron pours boiling oil onto a 10-foot-square area directly below it. Any creature in the area must make a DC 15 Dexterity saving throw, taking 10 ({@dice 3d6}) fire damage on a failed save, or half as much damage on a successful one."
+						"The cauldron pours boiling oil onto a 10-foot-square area directly below it. Any creature in the area must make a DC 15 Dexterity saving throw, taking 10 ({@damage 3d6}) fire damage on a failed save, or half as much damage on a successful one."
 					]
 				}
 			]
@@ -129,10 +145,14 @@
 			"page": 246,
 			"srd": true,
 			"size": "V",
-			"type": "GEN",
+			"objectType": "GEN",
 			"ac": "Varies (see below)",
 			"hp": "Varies (see below)",
-			"immune": "Varies (see below)",
+			"immune": [
+				{
+					"special": "Varies (see below)"
+				}
+			],
 			"entries": [
 				"When characters need to saw through ropes, shatter a window, or smash a vampire's coffin, the only hard and fast rule is this: given enough time and the right tools, characters can destroy any destructible object. Use common sense when determining a character's success at damaging an object. Can a fighter cut through a section of a stone wall with a sword? No, the sword is likely to break before the wall does.",
 				"For the purpose of these rules, an object is a discrete, inanimate item like a window, door, sword, book, table, chair, or stone, not a building or a vehicle that is composed of many other objects.",
@@ -255,19 +275,28 @@
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Gulthias Tree",
 			"source": "TftYP",
 			"page": 31,
 			"size": "G",
-			"type": "U",
+			"objectType": "U",
 			"ac": "10",
 			"hp": "35",
-			"immune": "necrotic, poison, psychic",
-			"resist": "piercing",
-			"vulnerable": "fire",
+			"immune": [
+				"necrotic",
+				"poison",
+				"psychic"
+			],
+			"resist": [
+				"piercing"
+			],
+			"vulnerable": [
+				"fire"
+			],
 			"entries": [
 				{
 					"type": "entries",
@@ -299,6 +328,47 @@
 						}
 					]
 				}
+			],
+			"hasToken": true
+		},
+		{
+			"name": "Ice Troll Heart",
+			"source": "IDRotF",
+			"size": "T",
+			"objectType": "U",
+			"ac": "13",
+			"hp": "4",
+			"immune": [
+				"acid",
+				"bludgeoning",
+				"cold",
+				"force",
+				"lightning",
+				"necrotic",
+				"piercing",
+				"poison",
+				"psychic",
+				"radiant",
+				"slashing",
+				"thunder"
+			],
+			"entries": [
+				{
+					"type": "entries",
+					"name": "Heart Effects",
+					"entries": [
+						"An ice troll's heart remains cold even after the troll's destruction. As long as the troll can't regenerate, its heart can be safely removed from its remains, handled, and kept. An ice troll's heart, once removed, becomes a harmless Tiny object. For the next 24 hours, the heart has the following magical properties:",
+						{
+							"type": "list",
+							"items": [
+								"A creature that eats the heart gains the ability to regenerate for the next 24 hours, regaining 5 hit points at the start of each of its turns. If the creature takes acid or fire damage, this trait doesn't function at the start of its next turn. The creature dies only if it starts its turn with 0 hit points and doesn't regenerate.",
+								"If buried in the ground under a foot or more of earth, the heart melts away and summons a blizzard like that created by the {@spell control weather} spell. It takes 10 minutes for the heart to melt and the blizzard to form. The blizzard lasts for 8 hours.",
+								"A hag or similar creature can perform a ritual that turns the heart into a magical talisman that acts like a patch of brown mold (see \"{@hazard Brown Mold}\" in the {@book Dungeon Master's Guide|DMG}). This effect lasts until the heart is destroyed.",
+								"A creature proficient with alchemist's supplies can squeeze enough residual fluid out of the heart to mix with other alchemical ingredients, creating one {@item Potion of Cold Resistance||potion of resistance (cold)}. It takes 1 hour to create this potion. "
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -306,10 +376,13 @@
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "15",
 			"hp": "100",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A mangonel is a type of catapult that hurls heavy projectiles in a high arc. This payload can hit targets behind cover. Before the mangonel can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
 				"A mangonel typically hurls a heavy stone, although it can hurl other kinds of projectiles, with different effects."
@@ -326,22 +399,26 @@
 								"{@hit +5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target."
 							],
 							"hitEntries": [
-								"27 ({@dice 5d10}) bludgeoning damage."
+								"27 ({@damage 5d10}) bludgeoning damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Ram",
 			"source": "DMG",
 			"page": 255,
 			"size": "L",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "15",
 			"hp": "100",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A ram consists of a movable gallery equipped with a heavy log suspended from two roof beams by chains.",
 				"The log is shod in iron and used to batter through doors and barricades.",
@@ -359,35 +436,43 @@
 								"{@hit +8} to hit, reach 5 ft., one object."
 							],
 							"hitEntries": [
-								"16 ({@dice 3d10}) bludgeoning damage."
+								"16 ({@damage 3d10}) bludgeoning damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Siege Tower",
 			"source": "DMG",
 			"page": 256,
 			"size": "G",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "15",
 			"hp": "200",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A siege tower is a mobile wooden structure with a beam frame and slats in its walls. Large wooden wheels or rollers allow the tower to be pushed or pulled by soldiers or beasts of burden. Medium or smaller creatures can use the siege tower to reach the top of walls up to 40 feet high. A creature in the tower has total cover from attacks outside the tower."
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Trebuchet",
 			"source": "DMG",
 			"page": 256,
 			"size": "H",
-			"type": "SW",
+			"objectType": "SW",
 			"ac": "15",
 			"hp": "150",
-			"immune": "poison, psychic",
+			"immune": [
+				"poison",
+				"psychic"
+			],
 			"entries": [
 				"A trebuchet is a powerful catapult that throws its payload in a high arc, so it can hit targets behind cover.",
 				"Before the trebuchet can be fired, it must be loaded and aimed. It takes two actions to load the weapon, two actions to aim it, and one action to fire it.",
@@ -405,12 +490,13 @@
 								"{@hit +5} to hit, range 300/1,200 ft. (can't hit targets within 60 feet of it), one target."
 							],
 							"hitEntries": [
-								"44 ({@dice 8d10}) bludgeoning damage."
+								"44 ({@damage 8d10}) bludgeoning damage."
 							]
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		}
 	]
 }

@@ -6,32 +6,11 @@ function filterTypeSort (a, b) {
 
 class TrapsHazardsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({
-			header: "Type",
-			items: [
-				"MECH",
-				"MAG",
-				"SMPL",
-				"CMPX",
-				"HAZ",
-				"WTH",
-				"ENV",
-				"WLD",
-				"GEN"
-			],
-			displayFn: Parser.trapHazTypeToFull,
-			itemSortFn: filterTypeSort
-		});
-
+		const pageFilter = new PageFilterTrapsHazards();
 		super({
 			dataSource: "data/trapshazards.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "trapshazards",
 
@@ -39,19 +18,10 @@ class TrapsHazardsPage extends ListPage {
 
 			dataProps: ["trap", "hazard"]
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._typeFilter = typeFilter;
 	}
 
 	getListItem (it, thI, isExcluded) {
-		it.trapHazType = it.trapHazType || "HAZ";
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._typeFilter.addItem(it.trapHazType);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -89,14 +59,7 @@ class TrapsHazardsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it.trapHazType
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

@@ -23,7 +23,11 @@ class RendererMarkdown {
 				else this.__super[k] = MiscUtil.copy(renderer[k]);
 			}
 		}
+
+		this._isSkipStylingItemLinks = false;
 	}
+
+	set isSkipStylingItemLinks (val) { this._isSkipStylingItemLinks = val; }
 
 	static get () {
 		RendererMarkdown.checkInit();
@@ -103,6 +107,7 @@ class RendererMarkdown {
 
 		// Special formatting for spellcasting lists (data attrib added by main renderer spellcasting -> entries)
 		if (entry.data && entry.data.isSpellList) {
+			textStack[0] += `${RendererMarkdown._getNextPrefix(options)}\n`;
 			for (let i = 0; i < len; ++i) {
 				textStack[0] += `${RendererMarkdown._getNextPrefix(options)}${indentSpaces}`;
 				const cacheDepth = this._adjustDepth(meta, 1);
@@ -416,6 +421,9 @@ class RendererMarkdown {
 		const mon = entry.dataCreature;
 
 		const monTypes = Parser.monTypeToFullObj(mon.type);
+		this.isSkipStylingItemLinks = true;
+		const acPart = Parser.acToFull(mon.ac, this);
+		this.isSkipStylingItemLinks = false;
 		const savePart = mon.save ? `\n>- **Saving Throws** ${Object.keys(mon.save).sort(SortUtil.ascSortAtts).map(it => RendererMarkdown.monster.getSave(it, mon.save[it])).join(", ")}` : "";
 		const skillPart = mon.skill ? `\n>- **Skills** ${RendererMarkdown.monster.getSkillsString(mon)}` : "";
 		const damVulnPart = mon.vulnerable ? `\n>- **Damage Vulnerabilities** ${Parser.monImmResToFull(mon.vulnerable)}` : "";
@@ -429,6 +437,7 @@ class RendererMarkdown {
 		const actionsPart = mon.action ? `\n>### Actions\n${RendererMarkdown.monster._getRenderedSection(mon.action, 1, meta)}` : "";
 		const reactionsPart = mon.reaction ? `\n>### Reactions\n${RendererMarkdown.monster._getRenderedSection(mon.reaction, 1, meta)}` : "";
 		const legendaryActionsPart = mon.legendary ? `\n>### Legendary Actions\n>${Renderer.monster.getLegendaryActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.legendary, 1, meta)}` : "";
+		const mythicActionsPart = mon.mythic ? `\n>### Mythic Actions\n>${Renderer.monster.getMythicActionIntro(mon, RendererMarkdown.get())}\n>\n${RendererMarkdown.monster._getRenderedLegendarySection(mon.mythic, 1, meta)}` : "";
 
 		const footerPart = mon.footer ? `\n${RendererMarkdown.monster._getRenderedSection(mon.footer, 0, meta)}` : "";
 
@@ -436,7 +445,7 @@ class RendererMarkdown {
 >## ${mon._displayName || mon.name}
 >*${mon.level ? `${Parser.getOrdinalForm(mon.level)}-level ` : ""}${Parser.sizeAbvToFull(mon.size)} ${monTypes.asText}${mon.alignment ? `, ${Parser.alignmentListToFull(mon.alignment)}` : ""}*
 >___
->- **Armor Class** ${Parser.acToFull(mon.ac, this)}
+>- **Armor Class** ${acPart}
 >- **Hit Points** ${Renderer.monster.getRenderedHp(mon.hp, true)}
 >- **Speed** ${Parser.getSpeedString(mon)}
 >___
@@ -446,10 +455,10 @@ class RendererMarkdown {
 >___${savePart}${skillPart}${damVulnPart}${damResPart}${damImmPart}${condImmPart}
 >- **Senses** ${mon.senses ? `${Renderer.monster.getRenderedSenses(mon.senses, true)}, ` : ""}passive Perception ${mon.passive || "\u2014"}
 >- **Languages** ${Renderer.monster.getRenderedLanguages(mon.languages)}
->- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr) : "\u2014"}
+>- **Challenge** ${mon.cr ? Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic}) : "\u2014"}
 >___`;
 
-		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${footerPart}`;
+		let breakablePart = `${traitsPart}${actionsPart}${reactionsPart}${legendaryActionsPart}${mythicActionsPart}${footerPart}`;
 
 		if (RendererMarkdown._isAddColumnBreaks) {
 			let charAllowanceFirstCol = 2200 - unbreakablePart.length;
@@ -614,8 +623,8 @@ class RendererMarkdown {
 		for (let i = 0; i < len; ++i) {
 			const s = tagSplit[i];
 			if (!s) continue;
-			if (s[0] === "@") {
-				const [tag, text] = Renderer.splitFirstSpace(s);
+			if (s.startsWith("{@")) {
+				const [tag, text] = Renderer.splitFirstSpace(s.slice(1, -1));
 				this._renderString_renderTag(textStack, meta, options, tag, text);
 			} else textStack[0] += s;
 		}
@@ -695,8 +704,13 @@ class RendererMarkdown {
 
 			default: {
 				switch (tag) {
+					case "@item": {
+						if (this._isSkipStylingItemLinks) textStack[0] += `${Renderer.stripTags(`{${tag} ${text}}`)}`;
+						else textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`;
+						break;
+					}
+
 					case "@spell":
-					case "@item":
 					case "@psionic":
 						textStack[0] += `*${Renderer.stripTags(`{${tag} ${text}}`)}*`; break;
 					case "@creature":
@@ -772,7 +786,7 @@ if (typeof window !== "undefined") window.addEventListener("load", () => Rendere
 RendererMarkdown.utils = class {
 	static getPageText (it) {
 		const sourceSub = Renderer.utils.getSourceSubText(it);
-		const baseText = it.page > 0 ? `**Source:** *${Parser.sourceJsonToAbv(it.source)}${sourceSub}*, page ${it.page}` : "";
+		const baseText = Renderer.utils.isDisplayPage(it.page) ? `**Source:** *${Parser.sourceJsonToAbv(it.source)}${sourceSub}*, page ${it.page}` : "";
 		const addSourceText = this._getPageText_getAltSourceText(it, "additionalSources", "Additional information from");
 		const otherSourceText = this._getPageText_getAltSourceText(it, "otherSources", "Also found in");
 		const externalSourceText = this._getPageText_getAltSourceText(it, "externalSources", "External sources:");
@@ -785,7 +799,7 @@ RendererMarkdown.utils = class {
 
 		return `${introText} ${it[prop].map(as => {
 			if (as.entry) return Renderer.get().render(as.entry);
-			else return `*${Parser.sourceJsonToAbv(as.source)}*${as.page > 0 ? `, page ${as.page}` : ""}`;
+			else return `*${Parser.sourceJsonToAbv(as.source)}*${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
 		}).join("; ")}`
 	}
 };
@@ -879,17 +893,12 @@ RendererMarkdown.monster = class {
 			.map(async (mon, i) => {
 				const monEntry = ({type: "dataCreature", dataCreature: mon});
 
-				const fluff = await Renderer.utils.pGetFluff({
-					isImages: false,
-					noInfoDisplay: "",
-					noImagesDisplay: "",
-					entity: mon,
-					fnFluffBuilder: Renderer.monster.getFluff.bind(null, mon),
-					fluffBaseUrl: `data/bestiary/`
-				});
+				const fluff = await Renderer.monster.pGetFluff(mon);
+
+				const fluffEntries = (fluff || {}).entries || [];
 
 				RendererMarkdown.get().setFirstSection(true);
-				const fluffText = fluff.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");
+				const fluffText = fluffEntries.map(ent => RendererMarkdown.get().render(ent)).join("\n\n");
 
 				const out = [monEntry];
 
@@ -1437,7 +1446,7 @@ class MarkdownConverter {
 
 	static _convertInlineStyling (buf) {
 		const handlers = {
-			object: (ident, obj) => {
+			object: (obj) => {
 				for (const meta of Renderer.ENTRIES_WITH_CHILDREN) {
 					if (obj.type !== meta.type) continue;
 					if (!obj[meta.key]) continue;
@@ -1470,23 +1479,23 @@ class MarkdownConverter {
 				return obj;
 			}
 		};
-		const nxtBuf = MiscUtil.getWalker().walk("convertInlineStyling", buf, handlers);
+		const nxtBuf = MiscUtil.getWalker().walk(buf, handlers);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBuf);
 	}
 
 	static _cleanEmptyLines (buf) {
 		const handlersDoTrim = {
-			array: (ident, arr) => arr.map(it => typeof it === "string" ? it.trim() : it)
+			array: (arr) => arr.map(it => typeof it === "string" ? it.trim() : it)
 		};
-		const nxtBufTrim = MiscUtil.getWalker().walk("cleanEmptyLines", buf, handlersDoTrim);
+		const nxtBufTrim = MiscUtil.getWalker().walk(buf, handlersDoTrim);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBufTrim);
 
 		const handlersRmEmpty = {
-			array: (ident, arr) => arr.filter(it => it && (typeof it !== "string" || it.trim()))
+			array: (arr) => arr.filter(it => it && (typeof it !== "string" || it.trim()))
 		};
-		const nxtBufRmEmpty = MiscUtil.getWalker().walk("cleanEmptyLines", buf, handlersRmEmpty);
+		const nxtBufRmEmpty = MiscUtil.getWalker().walk(buf, handlersRmEmpty);
 		while (buf.length) buf.pop();
 		buf.push(...nxtBufRmEmpty);
 	}
@@ -1731,6 +1740,14 @@ class MarkdownConverter {
 				tbl.colStyles = ["col-6 text-center", "col-6 text-center"]
 			}
 		})();
+
+		// Convert "--" cells to long-dashes
+		tbl.rows = tbl.rows.map(r => {
+			return r.map(cell => {
+				if (cell === "--") return "\u2014";
+				return cell;
+			});
+		})
 	}
 
 	static _doCleanTable (tbl) {

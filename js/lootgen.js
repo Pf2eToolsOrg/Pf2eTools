@@ -67,6 +67,7 @@ class LootGen {
 			$selTables.append(`<option value="${i}">${t.name}</option>`);
 		});
 		$selTables.on("change", () => {
+			if ($(`#container-dmg-loot-table`).hasClass("hidden")) return;
 			const v = $selTables.val();
 			if (v) $("#table-sel").removeClass("form-control--error");
 			this.pDisplayTable(v, !$(`#container-loot-table`).hasClass("hidden") && $(".id-showLootTable").prop("checked"));
@@ -84,7 +85,7 @@ class LootGen {
 		else {
 			const $table = $(`
 				<hr/>
-				<table id="stats">
+				<table id="stats" class="w-100 stripe-odd-table">
 					<caption>${itemsTable.name}</caption>
 					<tbody>
 					<tr>
@@ -478,13 +479,13 @@ class LootGen {
 		const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => handleReroll());
 		const $wrpItem = $(`<span/>`).append(renderer.render(getRandomItem()));
 
-		return $$`<em>(<span>${$wrpItem} ${$roll}</span>)</em>`;
+		return $$`<em>(<span>${$roll} ${$wrpItem}</span>)</em>`;
 	}
 
 	getSpell$ele (level) {
 		if (this.hasLoadedSpells()) {
 			const $roll = $(`<span class="roller" onmousedown="event.preventDefault()">[reroll]</span>`).click(() => this.loadRollSpell($roll.parent(), level));
-			return $$`<em>(<span>${renderer.render(this.getRandomSpell(level))} ${$roll}</span> or ${LootGen._getOrViewSpellsPart(level)})</em>`;
+			return $$`<em>(<span>${$roll} ${renderer.render(this.getRandomSpell(level))}</span> or ${LootGen._getOrViewSpellsPart(level)})</em>`;
 		}
 		const $spnRoll = $(`<span class="roller">roll</span>`).click(() => this.loadRollSpell($spnRoll.parent(), level));
 		return $$`<em>(${$spnRoll} or ${LootGen._getOrViewSpellsPart(level)})</em>`;
@@ -496,8 +497,8 @@ class LootGen {
 				.click(() => this.loadRollSpell($roll.parent(), level));
 			$ele
 				.removeClass("roller").attr("onclick", "")
-				.html(`${renderer.render(this.getRandomSpell(level))} `)
-				.append($roll);
+				.html(` ${renderer.render(this.getRandomSpell(level))}`)
+				.prepend($roll);
 		};
 
 		if (!this.hasLoadedSpells()) {
@@ -629,7 +630,7 @@ const randomLootTables = {
 			let keys = Object.keys(itemList[nameTier]).sort((a, b) => randomLootTables._rarityOrder.findIndex(val => val === a) - randomLootTables._rarityOrder.findIndex((val) => val === b));
 			for (let nameRarity of keys) {
 				if (nameRarity !== undefined && nameRarity !== "None" && nameTier && nameTier !== "undefined") {
-					$selector.append(`<option value="${nameTier}-${nameRarity}">${nameTier} ${nameRarity}</option>`);
+					$selector.append(`<option value="${nameTier}-${nameRarity}">Tier: ${nameTier.toTitleCase()}, Rarity: ${nameRarity.toTitleCase()}</option>`);
 				}
 			}
 		}
@@ -726,11 +727,11 @@ const randomLootTables = {
 				itemsNeeded,
 				async function (rarityValues, path) {
 					let tier = path[0];
-					let $tier = $(`<ul data-tier="${tier}"><li>${tier} items</li></ul>`);
+					let $tier = $(`<ul data-tier="${tier}"><li>${tier.toTitleCase()} items</li></ul>`);
 
 					await Promise.all(Object.keys(rarityValues).map(async rarity => {
 						let count = rarityValues[rarity];
-						let $rarity = $(`<ul data-rarity="${rarity}"><li>${rarity} items(${count})</li></ul>`);
+						let $rarity = $(`<ul data-rarity="${rarity}"><li>${rarity.toTitleCase()} items (${count})</li></ul>`);
 						let $items = $(`<ul data-tier="${tier}"></ul>`);
 						itemCount[tier] = (itemCount[tier] || 0) + count;
 						const $toAppend = await Promise.all([...new Array(count)].map(async () => randomLootTables.p$GetRandomItemHtml(tier, rarity)));
@@ -836,25 +837,42 @@ const randomLootTables = {
 	},
 
 	displayTable (itemsArray, tier, rarity) {
+		const $tblType = $("div#classtable");
+
 		if (itemsArray === "") {
-			$("div#classtable").hide();
-		} else {
-			let html = $(`
+			$tblType.hide();
+			return;
+		}
+
+		let dispItemType = "Magic";
+		let dispRarity = "";
+		switch (rarity) {
+			case "none": dispRarity = ""; dispItemType = "Mundane"; break;
+			case "varies": dispRarity = `of Varying rarity`; break;
+			case "unknown (magic)": dispRarity = `of Unknown rarity`; break;
+			case "unknown": dispRarity = `of Unknown rarity`; dispItemType = "Mundane"; break;
+			case "artifact": dispRarity = `that are Artifacts`; break;
+			default: dispRarity = `that are ${rarity.toTitleCase()}`
+		}
+		const tierLower = tier.toLowerCase();
+
+		const $html = $(`
 			<hr/>
-			<table id="stats">
-				<caption>Table for ${tier} Magic items that are ${rarity}</caption>
+			<table id="stats" class="w-100 stripe-odd-table">
+				<caption>Table for ${tierLower === "other" ? `${dispItemType} items with no defined tier` : `${tierLower}-tier ${dispItemType} items`} ${dispRarity}</caption>
 				<tbody>
 				<tr>
 					<th class="col-2 text-center"><span class="roller" onclick="randomLootTables.getRandomItem('${tier}', '${rarity}');">d${itemsArray.length}</span></th>
-					<th class="col-10">${tier} ${rarity} Magic Items</th>
+					<th class="col-10">Item</th>
 				</tr>
 				</tbody>
 			</table>`);
-			itemsArray.forEach((item, index) => {
-				html.find("tbody").append(`<tr><td class="text-center">${index + 1}</td><td>${Renderer.get().render(`{@item ${item.name}|${item.source}}`)}`);
-			});
-			$("div#classtable").html(html);
-		}
+
+		itemsArray.forEach((item, index) => {
+			$html.find("tbody").append(`<tr><td class="text-center">${index + 1}</td><td>${Renderer.get().render(`{@item ${item.name}|${item.source}}`)}`);
+		});
+
+		$tblType.html($html);
 	}
 };
 

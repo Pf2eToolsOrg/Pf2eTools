@@ -40,6 +40,8 @@
 								"Races: {@race Human} assumes PHB by default, {@race Aarakocra|eepc} can have sources added with a pipe, {@race Aarakocra|eepc|and optional link text added with another pipe}.",
 								"Invocations and Other Optional Features: {@optfeature Agonizing Blast} assumes PHB by default, {@optfeature Aspect of the Moon|xge} can have sources added with a pipe, {@optfeature Aspect of the Moon|xge|and optional link text added with another pipe}.",
 								"Classes: {@class fighter} assumes PHB by default, {@class artificer|uaartificer} can have sources added with a pipe, {@class fighter|phb|optional link text added with another pipe}, {@class fighter|phb|subclasses added|Eldritch Knight} with another pipe, {@class fighter|phb|and class feature added|Eldritch Knight|phb|2-0} with another pipe (first number is level index (0-19), second number is feature index (0-n)).",
+								"Class Features: {@classFeature Rage|Barbarian||1}, {@classFeature Infuse Item|Artificer|ERLW|2}, {@classFeature Survival Instincts|Barbarian||2|UAClassFeatureVariants}, {@classFeature Rage|Barbarian||1||optional display text}. Class source is assumed to be PHB. Class feature source is assumed to be the same as class source.",
+								"Subclass Features: {@subclassFeature Path of the Berserker|Barbarian||Berserker||3}, {@subclassFeature Alchemist|Artificer|ERLW|Alchemist|ERLW|3}, {@subclassFeature Path of the Battlerager|Barbarian||Battlerager|SCAG|3}, {@subclassFeature Blessed Strikes|Cleric||Life||8|UAClassFeatureVariants}, {@subclassFeature Path of the Berserker|Barbarian||Berserker||3||optional display text}. Class source is assumed to be PHB. Subclass source is assumed to be PHB. Subclass feature source is assumed to be the same as subclass source.",
 								"Conditions: {@condition stunned} assumes PHB by default, {@condition stunned|PHB} can have sources added with a pipe (not that it's ever useful), {@condition stunned|PHB|and optional link text added with another pipe}.",
 								"Diseases: {@disease cackle fever} assumes DMG by default, {@disease cackle fever} can have sources added with a pipe, {@disease cackle fever|DMG|and optional link text added with another pipe}.",
 								"Other Rewards: {@reward Blessing of Health} assumes DMG by default, {@reward Blessing of Health} can have sources added with a pipe, {@reward Blessing of Health|DMG|and optional link text added with another pipe}.",
@@ -86,6 +88,14 @@
 										"The pages that support this functionality are those with the 'magnet' button; the link this button exports will give clues as to what one could do with the filter tag."
 									]
 								}
+							]
+						},
+						{
+							"type": "inset",
+							"name": "Area Tags and IDs",
+							"entries": [
+								"Adventure and book content supports \"area\" tags, which have the form `@area [area name]|[entry id]` or `@area [area name]|[entry id]|[modifiers]` where [modifiers] is a combination of \"x\" for e[x]act text, and \"u\" for [u]ppercase. The \"exact\" modifier removes the leading \"area \" which is prepended to the area name, and the \"uppercase\" modifier causes the prepended text to \"Area \".",
+								"A variety of entries blocks can have \"id\" fields (and may therefore be linked to with \"area\" tags), notable \"entries\"-type, \"section\"-type, and \"inset\"-type. These IDs are conventionally 3-digit hexadecimal numbers (allowing for a total of 4096 IDs per adventure/book), but any string which is unique within the document will suffice."
 							]
 						},
 						{
@@ -712,7 +722,10 @@
 						"environment": [
 							"forest"
 						],
-						"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/503/unicorn.mp3",
+						"soundClip": {
+							"type": "internal",
+							"path": "bestiary/unicorn.mp3"
+						},
 						"traitTags": [
 							"Charge",
 							"Magic Resistance",

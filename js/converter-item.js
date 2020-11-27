@@ -9,7 +9,11 @@ if (typeof module !== "undefined") {
 }
 
 class ItemParser extends BaseParser {
-	static init (itemData) { ItemParser._ALL_ITEMS = itemData; }
+	static init (itemData, classData) {
+		ItemParser._ALL_ITEMS = itemData;
+		ItemParser._ALL_CLASSES = classData.class;
+	}
+
 	static getItem (itemName) {
 		itemName = itemName.trim().toLowerCase();
 		itemName = ItemParser._MAPPED_ITEM_NAMES[itemName] || itemName;
@@ -65,96 +69,12 @@ class ItemParser extends BaseParser {
 				continue;
 			}
 
-			// TODO convert entries; lists; etc
-			item.entries = [];
-			const stack = [
-				item.entries
-			];
-			const popList = () => { while (stack.last().type === "list") stack.pop(); }
-			const popNestedEntries = () => { while (stack.length > 1) stack.pop(); }
-
-			const addEntry = (entry, canCombine) => {
-				canCombine = canCombine && typeof entry === "string";
-
-				const target = stack.last();
-				if (target instanceof Array) {
-					if (canCombine && typeof target.last() === "string") {
-						target.last(`${target.last().trimRight()} ${entry.trimLeft()}`)
-					} else {
-						target.push(entry);
-					}
-				} else if (target.type === "list") {
-					if (canCombine && typeof target.items.last() === "string") {
-						target.items.last(`${target.items.last().trimRight()} ${entry.trimLeft()}`)
-					} else {
-						target.items.push(entry);
-					}
-				} else if (target.type === "entries") {
-					if (canCombine && typeof target.entries.last() === "string") {
-						target.entries.last(`${target.entries.last().trimRight()} ${entry.trimLeft()}`)
-					} else {
-						target.entries.push(entry);
-					}
-				}
-
-				if (typeof entry !== "string") stack.push(entry);
-			};
-
-			const getCurrentEntryArray = () => {
-				if (stack.last().type === "list") return stack.last().items;
-				if (stack.last().type === "entries") return stack.last().entries;
-				return stack.last();
-			};
-
-			while (i < toConvert.length) {
-				if (BaseParser._isJsonLine(curLine)) {
-					popNestedEntries(); // this implicitly pops nested lists
-
-					addEntry(BaseParser._getJsonFromLine(curLine));
-				} else if (ConvertUtil.isListItemLine(curLine)) {
-					if (stack.last().type !== "list") {
-						const list = {
-							type: "list",
-							items: []
-						};
-						addEntry(list);
-					}
-
-					curLine = curLine.replace(/^\s*•\s*/, "");
-					addEntry(curLine.trim());
-				} else if (ConvertUtil.isNameLine(curLine)) {
-					popNestedEntries(); // this implicitly pops nested lists
-
-					const {name, entry} = ConvertUtil.splitNameLine(curLine);
-
-					const parentEntry = {
-						type: "entries",
-						name,
-						entries: [entry]
-					};
-
-					addEntry(parentEntry);
-				} else if (ConvertUtil.isTitleLine(curLine)) {
-					popNestedEntries(); // this implicitly pops nested lists
-
-					const entry = {
-						type: "entries",
-						name: curLine.trim(),
-						entries: []
-					};
-
-					addEntry(entry);
-				} else if (BaseParser._isContinuationLine(getCurrentEntryArray(), curLine)) {
-					addEntry(curLine.trim(), true);
-				} else {
-					popList();
-
-					addEntry(curLine.trim());
-				}
-
-				i++;
-				curLine = toConvert[i];
-			}
+			const ptrI = {_: i};
+			item.entries = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert
+			);
+			i = ptrI._;
 		}
 
 		if (!item.entries.length) delete item.entries;
@@ -176,6 +96,9 @@ class ItemParser extends BaseParser {
 		if (stats.entries) {
 			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it))
 			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
 		}
 		this._doItemPostProcess_addTags(stats, options);
 		BasicTextClean.tryRun(stats);
@@ -186,7 +109,6 @@ class ItemParser extends BaseParser {
 		SpellTag.tryRun(stats);
 		ChargeTag.tryRun(stats);
 		RechargeTypeTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge type requires manual conversion`)});
-		QuantityTag.tryRun(stats);
 		BonusTag.tryRun(stats);
 		ItemMiscTag.tryRun(stats);
 
@@ -219,6 +141,12 @@ class ItemParser extends BaseParser {
 					stats.__prop = "itemGroup";
 					return true;
 				}
+				case "unknown rarity": {
+					// Make a best-guess as to whether or not the item is magical
+					if (stats.wondrous || stats.staff || stats.type === "P" || stats.type === "RG" || stats.type === "RD" || stats.type === "WD" || stats.type === "SC" || stats.type === "MR") stats.rarity = "unknown (magic)";
+					else stats.rarity = "unknown";
+					return true;
+				}
 			}
 			return false;
 		};
@@ -226,28 +154,29 @@ class ItemParser extends BaseParser {
 		let baseItem = null;
 		let genericType = null;
 
-		parts.forEach(part => {
+		for (let i = 0; i < parts.length; ++i) {
+			let part = parts[i];
 			const partLower = part.toLowerCase();
 
-			// region wondrous/item type/staff
+			// region wondrous/item type/staff/etc.
 			switch (partLower) {
-				case "wondrous item": stats.wondrous = true; return;
-				case "wondrous item (tattoo)": {
-					stats.wondrous = true;
-					stats.tattoo = true;
-					return;
-				}
-				case "potion": stats.type = "P"; return;
-				case "ring": stats.type = "RG"; return;
-				case "rod": stats.type = "RD"; return;
-				case "staff": stats.staff = true; return;
+				case "wondrous item": stats.wondrous = true; continue;
+				case "wondrous item (tattoo)": stats.wondrous = true; stats.tattoo = true; continue;
+				case "potion": stats.type = "P"; continue;
+				case "ring": stats.type = "RG"; continue;
+				case "rod": stats.type = "RD"; continue;
+				case "wand": stats.type = "WD"; continue;
+				case "ammunition": stats.type = "A"; continue;
+				case "staff": stats.staff = true; continue;
+				case "master rune": stats.type = "MR"; continue;
+				case "scroll": stats.type = "SC"; continue;
 			}
 			// endregion
 
 			// region rarity/attunement
 			// Check if the part is an exact match for a rarity string
 			const isHandledRarity = handlePartRarity(partLower);
-			if (isHandledRarity) return true;
+			if (isHandledRarity) continue;
 
 			if (partLower.includes("(requires attunement")) {
 				const [rarityRaw, ...rest] = part.split("(");
@@ -264,20 +193,37 @@ class ItemParser extends BaseParser {
 					stats.reqAttune = attunement.toLowerCase();
 				}
 
-				return;
+				// if specific attunement is required, absorb any further parts which are class names
+				if (/(^| )by a /i.test(stats.reqAttune)) {
+					for (let ii = i; ii < parts.length; ++ii) {
+						const nxtPart = parts[ii]
+							.trim()
+							.replace(/^(?:or|and) /, "")
+							.trim()
+							.replace(/\)$/, "")
+							.trim();
+						const isClassName = ItemParser._ALL_CLASSES.some(cls => cls.name.toLowerCase() === nxtPart);
+						if (isClassName) {
+							stats.reqAttune += `, ${parts[ii].replace(/\)$/, "")}`;
+							i = ii;
+						}
+					}
+				}
+
+				continue;
 			}
 			// endregion
 
-			// region weapon
+			// region weapon/armor
 			if (partLower === "weapon" || partLower === "weapon (any)") {
 				genericType = "weapon";
-				return;
+				continue;
 			} else if (partLower === "weapon (any sword)") {
 				genericType = "sword";
-				return;
+				continue;
 			} else if (partLower === "armor" || partLower === "armor (any)") {
 				genericType = "armor";
-				return;
+				continue;
 			}
 
 			const mBaseWeapon = /^weapon \(([^)]+)\)$/i.exec(part);
@@ -285,17 +231,18 @@ class ItemParser extends BaseParser {
 			if (mBaseWeapon) {
 				baseItem = ItemParser.getItem(mBaseWeapon[1]);
 				if (!baseItem) throw new Error(`Could not find base item "${mBaseWeapon[1]}"`);
-				return;
+				continue;
 			} else if (mBaseArmor) {
 				baseItem = ItemParser.getItem(mBaseArmor[1]);
+				if (!baseItem) baseItem = ItemParser.getItem(`${mBaseArmor[1]} armor`); // "armor (plate)" -> "plate armor"
 				if (!baseItem) throw new Error(`Could not find base item "${mBaseArmor[1]}"`);
-				return
+				continue
 			}
 			// endregion
 
 			// Warn about any unprocessed input
 			options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Tagline part "${part}" requires manual conversion`);
-		});
+		}
 
 		this._setCleanTaglineInfo_handleBaseItem(stats, baseItem, options);
 		// Stash the genericType for later processing/removal
@@ -378,6 +325,7 @@ class ItemParser extends BaseParser {
 	}
 }
 ItemParser._ALL_ITEMS = null;
+ItemParser._ALL_CLASSES = null;
 ItemParser._MAPPED_ITEM_NAMES = {
 	"studded leather": "studded leather armor",
 	"leather": "leather armor"

@@ -29,6 +29,7 @@ const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
+const PANEL_TYP_ADVENTURE_DYNAMIC_MAP = 21;
 const PANEL_TYP_GENERIC_EMBED = 90;
 const PANEL_TYP_BLANK = 99;
 
@@ -191,6 +192,7 @@ class Board {
 			this.doCheckFillSpaces();
 		}
 		this.initGlobalHandlers();
+		await this._pLoadTempData();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
@@ -199,10 +201,42 @@ class Board {
 		window.onhashchange = () => this.doLoadUrlState();
 	}
 
+	async _pLoadTempData () {
+		const temp = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
+		if (!temp) return;
+
+		const entities = await Promise.all(temp.list.items.map(it => Renderer.hover.pCacheAndGetHash(temp.page, it.h)));
+		const len = entities.length;
+		if (!len) return;
+
+		let panels = this.getPanels(0, 0, this.width, this.height);
+		const availablePanels = panels.filter(it => it.getEmpty()).length;
+
+		// Prefer to increase the number of panels on the vertical axis
+		if (availablePanels < len) {
+			const diff = len - availablePanels;
+			const heightIncrease = Math.ceil(diff / this.width);
+			this.setDimensions(this.width, this.height + heightIncrease);
+			panels = this.getPanels(0, 0, this.width, this.height);
+		}
+
+		let ixEntity = 0;
+		for (const p of panels) {
+			if (!p.getEmpty()) continue;
+
+			p.doPopulate_Stats(temp.page, entities[ixEntity].source, temp.list.items[ixEntity].h);
+			++ixEntity;
+
+			if (ixEntity >= entities.length) break;
+		}
+
+		await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
+	}
+
 	async pLoadIndex () {
 		await SearchUiUtil.pDoGlobalInit();
 
-		// rules
+		// region rules
 		await (async () => {
 			const data = await DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json");
 			this.availRules.ALL = elasticlunr(function () {
@@ -222,7 +256,9 @@ class Board {
 				this.availRules.ALL.addDoc(d);
 			});
 		})();
+		// endregion
 
+		// region adventures/books
 		const adventureOrBookIdToSource = {};
 
 		async function pDoBuildAdventureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
@@ -280,6 +316,7 @@ class Board {
 
 		// books
 		await pDoBuildAdventureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
+		// endregion
 
 		// search
 		this.availContent = await SearchUiUtil.pGetContentIndices();
@@ -835,6 +872,10 @@ class Panel {
 					p.doPopulate_Image(saved.c.u, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP:
+					p.doPopulate_AdventureDynamicMap(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
 				case PANEL_TYP_BLANK:
 					p.doPopulate_Blank(saved.r);
 					handleTabRenamed(p);
@@ -1201,10 +1242,11 @@ class Panel {
 
 	doPopulate_TwitchChat (url, title = "Twitch Chat") {
 		const meta = {u: url};
+		const channelId = url.split("/").map(it => it.trim()).filter(Boolean).slice(-2)[0];
 		this.set$ContentTab(
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?parent=${location.hostname}" frameborder="0" scrolling="no" id="${channelId}"/></div>`),
 			title,
 			true
 		);
@@ -1221,7 +1263,7 @@ class Panel {
 		);
 	}
 
-	doPopulate_Image (url, ixOpt, title = "Image") {
+	doPopulate_Image (url, title = "Image") {
 		const meta = {u: url};
 		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
 		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
@@ -1233,8 +1275,7 @@ class Panel {
 			meta,
 			$wrpPanel,
 			title,
-			true,
-			ixOpt // FIXME never used?
+			true
 		);
 		$img.panzoom({
 			$reset: $iptReset,
@@ -1243,6 +1284,16 @@ class Panel {
 			maxScale: 8,
 			duration: 100
 		});
+	}
+
+	doPopulate_AdventureDynamicMap (state, title = "Map Viewer") {
+		this.set$ContentTab(
+			PANEL_TYP_ADVENTURE_DYNAMIC_MAP,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(DmMapper.$getMapper(this.board, state)),
+			title || "Time Tracker",
+			true
+		);
 	}
 
 	doPopulate_Blank (title = "") {
@@ -1709,7 +1760,7 @@ class Panel {
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title" title="${title}">${title}</span></span>`)
+		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title overflow-ellipsis" title="${title}">${title}</span></span>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -1963,6 +2014,13 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						s: $content.find(`.dm-time__root`).data("getState")()
+					};
+				}
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP: {
+					return {
+						t: type,
+						r: toSaveTitle,
+						s: $content.find(`.dm-map__root`).data("getState")()
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -2424,7 +2482,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddYT.click();
 				})
 				.appendTo($wrpYT);
-			const $btnAddYT = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpYT);
+			const $btnAddYT = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
 				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
@@ -2447,8 +2505,8 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddTwitch.click();
 				})
 				.appendTo($wrpTwitch);
-			const $btnAddTwitch = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpTwitch);
-			const $btnAddTwitchChat = $(`<button class="btn btn-primary">Embed Chat</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<button class="btn btn-primary btn-sm">Embed Chat</button>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
 				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
 			};
@@ -2472,7 +2530,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				let url = $iptUrlTwitch.val().trim();
 				const m = getTwitchM(url);
 				if (url && m) {
-					url = `http://www.twitch.tv/embed/${m[2]}/chat`;
+					url = `https://www.twitch.tv/embed/${m[2]}/chat`;
 					this.menu.pnl.doPopulate_TwitchChat(url);
 					this.menu.doClose();
 					$iptUrlTwitch.val("");
@@ -2490,7 +2548,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $iptUrlGeneric.click();
 				})
 				.appendTo($wrpGeneric);
-			const $btnAddGeneric = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpGeneric);
+			const $btnAddGeneric = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpGeneric);
 			$btnAddGeneric.on("click", () => {
 				let url = $iptUrlGeneric.val().trim();
 				if (url) {
@@ -2519,6 +2577,7 @@ class AddMenuImageTab extends AddMenuTab {
 		if (!this.$tab) {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
+			// region Imgur
 			const $wrpImgur = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener noreferrer">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
@@ -2565,19 +2624,20 @@ class AddMenuImageTab extends AddMenuTab {
 				const ix = this.menu.pnl.doPopulate_Loading("Uploading"); // will be null if not in tabbed mode
 				this.menu.doClose();
 			}).appendTo($tab);
-			const $btnAdd = $(`<button class="btn btn-primary">Upload</button>`).appendTo($wrpImgur);
+			const $btnAdd = $(`<button class="btn btn-primary btn-sm">Upload</button>`).appendTo($wrpImgur);
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+			// endregion
 
+			// region URL
 			const $wrpUtl = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $btnAddUrl.click();
 				})
 				.appendTo($wrpUtl);
-			const $btnAddUrl = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUtl);
+			const $btnAddUrl = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUtl);
 			$btnAddUrl.on("click", () => {
 				let url = $iptUrl.val().trim();
 				if (url) {
@@ -2590,6 +2650,19 @@ class AddMenuImageTab extends AddMenuTab {
 					});
 				}
 			});
+			// endregion
+
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+
+			// region Adventure dynamic viewer
+			const $btnSelectAdventure = $(`<button class="btn btn-primary btn-sm">Add</button>`)
+				.click(() => DmMapper.pHandleMenuButtonClick(this.menu));
+
+			$$`<div class="ui-modal__row">
+				<div>Adventure Map Dynamic Viewer</div>
+				${$btnSelectAdventure}
+			</div>`.appendTo($tab)
+			// endregion
 
 			this.$tab = $tab;
 		}
@@ -2607,7 +2680,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs overflow-y-auto pr-1" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="ui-modal__row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
-			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
+			const $btnRoller = $(`<button class="btn btn-primary btn-sm">Pin</button>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				Renderer.dice.bindDmScreenPanel(this.menu.pnl);
 				this.menu.doClose();
@@ -2615,13 +2688,13 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
-			const $btnTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTracker);
+			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
 
-			const $btnPlayertracker = $(`<button class="btn btn-primary">Add</button>`)
+			const $btnPlayertracker = $(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.click(() => {
 					this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
 					this.menu.doClose();
@@ -2635,7 +2708,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
-			const $btnText = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpText);
+			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
@@ -2643,21 +2716,21 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
-			const $btnUnitConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUnitConverter);
+			const $btnUnitConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUnitConverter);
 			$btnUnitConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpMoneyConverter = $(`<div class="ui-modal__row"><span>Coin Converter</span></div>`).appendTo($tab);
-			const $btnMoneyConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpMoneyConverter);
+			const $btnMoneyConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpMoneyConverter);
 			$btnMoneyConverter.on("click", () => {
 				this.menu.pnl.doPopulate_MoneyConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpCounter = $(`<div class="ui-modal__row"><span>Counter</span></div>`).appendTo($tab);
-			const $btnCounter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpCounter);
+			const $btnCounter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpCounter);
 			$btnCounter.on("click", () => {
 				this.menu.pnl.doPopulate_Counter();
 				this.menu.doClose();
@@ -2666,7 +2739,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTimeTracker = $(`<div class="ui-modal__row"><span>In-Game Clock/Calendar</span></div>`).appendTo($tab);
-			const $btnTimeTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTimeTracker);
+			const $btnTimeTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTimeTracker);
 			$btnTimeTracker.on("click", () => {
 				this.menu.pnl.doPopulate_TimeTracker();
 				this.menu.doClose();
@@ -2675,7 +2748,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpBlank = $(`<div class="ui-modal__row"><span class="help" title="For those who don't like plus signs.">Blank Space</span></div>`).appendTo($tab);
-			$(`<button class="btn btn-primary">Add</button>`)
+			$(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.on("click", () => {
 					this.menu.pnl.doPopulate_Blank();
 					this.menu.doClose();
@@ -2831,7 +2904,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				const handleClick = (r) => {
 					switch (this.subType) {
 						case "content": {
-							const page = UrlUtil.categoryToPage(r.doc.c);
+							const page = UrlUtil.categoryToHoverPage(r.doc.c);
 							const source = r.doc.s;
 							const hash = r.doc.u;
 
@@ -2949,6 +3022,7 @@ class AdventureOrBookLoader {
 	constructor (type) {
 		this._type = type;
 		this._cache = {};
+		this._pLoadings = {};
 	}
 
 	_getJsonPath (bookOrAdventure) {
@@ -2973,12 +3047,15 @@ class AdventureOrBookLoader {
 	}
 
 	async pFill (bookOrAdventure) {
-		if (this._cache[bookOrAdventure]) return this._cache[bookOrAdventure];
-
-		this._cache[bookOrAdventure] = {};
-		const fromBrew = this._getBrewData(bookOrAdventure);
-		const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
-		data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+		if (!this._pLoadings[bookOrAdventure]) {
+			this._pLoadings[bookOrAdventure] = (async () => {
+				this._cache[bookOrAdventure] = {};
+				const fromBrew = this._getBrewData(bookOrAdventure);
+				const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
+				data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+			})();
+		}
+		await this._pLoadings[bookOrAdventure];
 	}
 
 	getFromCache (adventure, chapter) {
@@ -2994,7 +3071,7 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the caret in the text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
 			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
@@ -3059,10 +3136,11 @@ class NoteBox {
 							const str = braceStack.join("");
 							const tag = str.split(" ")[0].replace(/^@/, "");
 							const text = str.split(" ").slice(1).join(" ");
-							if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
-								const r = Renderer.get().render(`{${str}`);
+							if (Renderer.hover.TAG_TO_PAGE[tag]) {
+								const r = Renderer.get().render(`{${str}}`);
 								evt.type = "mouseover";
 								evt.shiftKey = true;
+								evt.ctrlKey = false;
 								$(r).trigger(evt);
 							} else if (tag === "link") {
 								const [txt, link] = Renderer.splitTagByPipe(text);
@@ -3157,7 +3235,7 @@ class UnitConverter {
 					/* eslint-disable */
 					const total = eval(val);
 					/* eslint-enable */
-					$iptRight.val(total * mL);
+					$iptRight.val(Number((total * mL).toFixed(5)));
 				} catch (e) {
 					$iptLeft.addClass(`ipt-invalid`);
 					$iptRight.val("")
@@ -3206,8 +3284,8 @@ class AdventureOrBookView {
 	}
 
 	$getEle () {
-		this._$titlePrev = $(`<div class="dm-book__controls-title text-right"/>`);
-		this._$titleNext = $(`<div class="dm-book__controls-title"/>`);
+		this._$titlePrev = $(`<div class="dm-book__controls-title overflow-ellipsis text-right"/>`);
+		this._$titleNext = $(`<div class="dm-book__controls-title overflow-ellipsis"/>`);
 
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
 			.click(() => this._handleButtonClick(-1));

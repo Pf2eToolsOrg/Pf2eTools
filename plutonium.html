@@ -9,8 +9,9 @@
 	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<title>Plutonium Features - PF2eTools</title>
+	<title>Plutonium Features - 5etools</title>
 
 	<link rel="manifest" href="manifest.webmanifest">
 
@@ -18,15 +19,8 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	
-	<!-- Favicons -->
-	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
-	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
-	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
-	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
-	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="icon" href="favicon.png">
+	<link rel="apple-touch-icon" href="icon-320.png">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
@@ -47,6 +41,8 @@
 	</style>
 </head>
 <body>
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 
@@ -54,35 +50,39 @@
 		<p class="page__subtitle">An overview of the 5etools integration for Foundry VTT</p>
 	</div>
 </header>
+
 <nav class="container page__nav" id="navigation">
-	<ul class="nav page__nav-inner" id="navbar">
-	</ul>
+	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container">
 	<div class="row">
 		<div class="col-12">
-			<p><a href="https://www.patreon.com/foundryvtt/">Foundry</a> is an up-and-coming VTT created by a passionate and communicative development team (of one), which 5etools highly recommends as a modern alternative to Roll20. Our Foundry module, Plutonium, is currently available for beta testing to <a href="https://www.patreon.com/bePatron?u=22018559">Patrons</a>, and will be made publicly accessible some time after Foundry (itself in Beta) is released. An overview of the features available can be found below. To those familiar with our now-deprecated Roll20 script, betteR20, we aim to expand on the feature set provided therein, while improving the user experience.</p>
+			<p>An overview of the features available in Plutonium can be found below. To those familiar with our now-deprecated Roll20 script &quot;betteR20,&quot; we aim to expand on the feature set it provided, while improving user experience.</p>
+			<p><b>Please note that the GIFs on this page are updated much less frequently than the module itself.</b> For a (more) complete list of Plutonium's features, see <a href="https://wiki.5e.tools/index.php/Feature:_FoundryTool" rel="noopener noreferrer">the wiki</a>.</p>
 
 			<hr>
 
 			<h3>Importing</h3>
 			<p>The module can import the following data to either the journal or directly to character/NPC sheets:</p>
 			<ul>
+				<li>Adventures</li>
 				<li>Backgrounds</li>
+				<li>Books</li>
 				<li>Classes and Subclasses</li>
+				<li>Conditions &amp; Diseases</li>
 				<li>Creatures (to the journal only)</li>
 				<li>Feats</li>
 				<li>Items</li>
-				<li>Optional & Variant Rules (to the journal only)</li>
+				<li>Optional &amp; Variant Rules (to the journal only)</li>
 				<li>Psionics</li>
 				<li>Races</li>
 				<li>Spells</li>
 				<li>Tables (to the journal only)</li>
 			</ul>
+			<p>By default it imports data from 5etools, but also provides options to import from the <a href="https://github.com/TheGiddyLimit/homebrew" rel="noopener noreferrer">homebrew repository</a>, URLs, and file uploads.</p>
 			<h4>Importing Creatures to the Journal</h4>
 			<a href="img/plutonium/creatures.gif" target="_blank"><img class="big-help-gif" src="img/plutonium/creatures.gif"></a>
 			<h4>Importing Spells to a Character Sheet</h4>
@@ -96,6 +96,13 @@
 			<p>With Rivet installed, and provided you have 5etools and Foundry open in the same browser, you can send content and rolls from 5etools straight to your Foundry game with the click of a button.</p>
 			<h4>Send to Foundry</h4>
 			<a href="img/plutonium/rivet.gif" target="_blank"><img class="big-help-gif" src="img/plutonium/rivet.gif"></a>
+
+			<hr>
+
+			<h3>Art Browser</h3>
+			<p>The <a href="https://dmsguild201.github.io/Roll20_resources/">Art Browser</a> is integrated into the module, allowing tiles, tokens, and scenes to be drag-dropped from the vast collection available. Note that art can be drag-dropped from the Art Browser site itself with the same functionality.</p>
+			<h4>Scene Creation</h4>
+			<a href="img/plutonium/artbrowser.gif" target="_blank"><img class="big-help-gif" src="img/plutonium/artbrowser.gif"></a>
 
 			<hr>
 
@@ -133,12 +140,14 @@
 
 <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>

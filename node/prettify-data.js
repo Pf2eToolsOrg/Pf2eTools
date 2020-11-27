@@ -39,6 +39,7 @@ function getFnListSort (prop) {
 		case "language":
 		case "condition":
 		case "disease":
+		case "status":
 		case "cult":
 		case "boon":
 		case "feat":
@@ -68,6 +69,19 @@ function getFnListSort (prop) {
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.pantheon, b.pantheon);
 		case "class":
 			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
+		case "classFeature": return (a, b) => SortUtil.ascSortLower(a.classSource, b.classSource)
+			|| SortUtil.ascSortLower(a.className, b.className)
+			|| SortUtil.ascSort(a.level, b.level)
+			|| SortUtil.ascSortLower(a.name, b.name)
+			|| SortUtil.ascSortLower(a.source, b.source);
+		case "subclassFeature": return (a, b) => SortUtil.ascSortLower(a.classSource, b.classSource)
+			|| SortUtil.ascSortLower(a.className, b.className)
+			|| SortUtil.ascSortLower(a.subclassSource, b.subclassSource)
+			|| SortUtil.ascSortLower(a.subclassShortName, b.subclassShortName)
+			|| SortUtil.ascSort(a.level, b.level)
+			|| SortUtil.ascSort(a.header || 0, b.header || 0)
+			|| SortUtil.ascSortLower(a.name, b.name)
+			|| SortUtil.ascSortLower(a.source, b.source);
 		case "adventure":
 		case "book":
 			return (a, b) => SortUtil.ascSortDate(new Date(b.published), new Date(a.published) || SortUtil.ascSortLower(a.name, b.name));

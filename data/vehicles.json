@@ -10,6 +10,9 @@
 				"80 ft.",
 				"20 ft."
 			],
+			"terrain": [
+				"air"
+			],
 			"capCrew": 20,
 			"capPassenger": 10,
 			"capCargo": 1,
@@ -98,6 +101,9 @@
 				"80 ft.",
 				"20 ft."
 			],
+			"terrain": [
+				"air"
+			],
 			"capCrew": 20,
 			"capPassenger": 10,
 			"capCargo": 1,
@@ -184,6 +190,12 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 1,
+				"2": 10,
+				"3": 20
+			},
 			"action": [
 				"On its turn the battle balloon can take 3 actions if it has twenty or more crew, 2 actions if it has ten or more crew, or 1 action if it has fewer than ten crew, choosing from the options below. It cannot take any actions if it has no remaining crew.",
 				{
@@ -221,6 +233,9 @@
 			"vehicleType": "INFWAR",
 			"size": "G",
 			"weight": 12000,
+			"terrain": [
+				"land"
+			],
 			"capCreature": 8,
 			"capCargo": 2000,
 			"speed": 100,
@@ -296,7 +311,8 @@
 						"{@atk rw} {@hit 5} to hit, range 120 ft., one target. {@h}9 ({@damage 2d8}) piercing damage."
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Devil's Ride",
@@ -305,6 +321,9 @@
 			"vehicleType": "INFWAR",
 			"size": "L",
 			"weight": 500,
+			"terrain": [
+				"land"
+			],
 			"capCreature": 1,
 			"capCargo": 100,
 			"speed": 120,
@@ -371,7 +390,8 @@
 						"If the Devil's Ride is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Galley",
@@ -382,6 +402,9 @@
 			"dimensions": [
 				"130 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 80,
 			"capPassenger": 40,
@@ -485,6 +508,12 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 3,
+				"2": 20,
+				"3": 40
+			},
 			"action": [
 				"On its turn, the galley can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than forty crew and only 1 action if it has fewer than twenty. It can't take these actions if it has fewer than three crew.",
 				{
@@ -519,6 +548,9 @@
 			"dimensions": [
 				"130 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 80,
 			"capPassenger": 40,
@@ -641,6 +673,9 @@
 				"60 ft.",
 				"20 ft."
 			],
+			"terrain": [
+				"sea"
+			],
 			"capCrew": 3,
 			"capPassenger": 4,
 			"capCargo": 0.5,
@@ -725,6 +760,11 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 1,
+				"2": 2
+			},
 			"action": [
 				"On its turn, the keelboat can take 2 actions, choosing from the options below. It can take only 1 action if it has only one crew. It can't take these actions if it has no crew.",
 				{
@@ -754,6 +794,9 @@
 			"dimensions": [
 				"60 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 3,
 			"capPassenger": 4,
@@ -857,6 +900,9 @@
 				"70 ft.",
 				"20 ft."
 			],
+			"terrain": [
+				"sea"
+			],
 			"capCrew": 40,
 			"capPassenger": 100,
 			"capCargo": 10,
@@ -930,6 +976,10 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 1
+			},
 			"action": [
 				"On its turn, the longship can take the move action below. It can't take this action if it has no crew.",
 				{
@@ -954,6 +1004,9 @@
 			"dimensions": [
 				"70 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 40,
 			"capPassenger": 100,
@@ -1047,6 +1100,11 @@
 				"15 ft.",
 				"15 ft."
 			],
+			"terrain": [
+				"land",
+				"sea",
+				"air"
+			],
 			"capCrew": 1,
 			"capPassenger": 5,
 			"capCargo": "crew and passengers' normal gear",
@@ -1138,6 +1196,10 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 1
+			},
 			"action": [
 				"On its turn the mechanical beholder can take 1 action. It cannot take any actions if it has no crew.",
 				{
@@ -1167,6 +1229,9 @@
 			"dimensions": [
 				"10 ft.",
 				"5 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 2,
 			"capPassenger": 2,
@@ -1217,6 +1282,10 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 1
+			},
 			"action": [
 				"On its turn, the rowboat can take the move action below. It can't take this action if it has no crew.",
 				{
@@ -1230,7 +1299,8 @@
 						}
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Rowboat",
@@ -1241,6 +1311,9 @@
 			"dimensions": [
 				"10 ft.",
 				"5 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 2,
 			"capPassenger": 2,
@@ -1309,6 +1382,9 @@
 			"dimensions": [
 				"100 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 30,
 			"capPassenger": 20,
@@ -1387,6 +1463,12 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 3,
+				"2": 10,
+				"3": 20
+			},
 			"action": [
 				"On its turn, the ship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
 				{
@@ -1421,6 +1503,9 @@
 			"dimensions": [
 				"80 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 30,
 			"capPassenger": 20,
@@ -1515,6 +1600,9 @@
 			"vehicleType": "INFWAR",
 			"size": "H",
 			"weight": 9000,
+			"terrain": [
+				"land"
+			],
 			"capCreature": 8,
 			"capCargo": 4000,
 			"speed": 100,
@@ -1584,15 +1672,19 @@
 						"{@atk rw} {@hit 6} to hit, range 120 ft., one target. {@h}10 ({@damage 2d8 + 1}) piercing damage."
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Stahlmaster",
-			"source": "EGW",
-			"page": 0,
+			"source": "DD",
+			"page": 235,
 			"vehicleType": "CREATURE",
 			"size": "L",
 			"type": "vehicle",
+			"terrain": [
+				"land"
+			],
 			"ac": [
 				{
 					"ac": 16,
@@ -1656,7 +1748,8 @@
 						"{@atk rw} {@hit 2} to hit, range 30/120 ft., one target. {@h}6 ({@damage 1d12}) piercing damage."
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Tormentor",
@@ -1665,6 +1758,9 @@
 			"vehicleType": "INFWAR",
 			"size": "H",
 			"weight": 3000,
+			"terrain": [
+				"land"
+			],
 			"capCreature": 4,
 			"capCargo": 500,
 			"speed": 100,
@@ -1740,10 +1836,11 @@
 					"type": "entries",
 					"name": "Juke",
 					"entries": [
-						"If the Tormentor is able to move, the driver can use its reaction to grant the Devil's Ride advantage on a Dexterity saving throw."
+						"If the Tormentor is able to move, the driver can use its reaction to grant the Tormentor advantage on a Dexterity saving throw."
 					]
 				}
-			]
+			],
+			"hasToken": true
 		},
 		{
 			"name": "Warship",
@@ -1754,6 +1851,9 @@
 			"dimensions": [
 				"100 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 40,
 			"capPassenger": 60,
@@ -1857,6 +1957,12 @@
 					]
 				}
 			],
+			"actionThresholds": {
+				"0": 0,
+				"1": 3,
+				"2": 10,
+				"3": 20
+			},
 			"action": [
 				"On its turn, the warship can take 3 actions, choosing from the options below. It can take only 2 actions if it has fewer than twenty crew and only 1 action if it has fewer than ten. It can't take these actions if it has fewer than three crew.",
 				{
@@ -1891,6 +1997,9 @@
 			"dimensions": [
 				"100 ft.",
 				"20 ft."
+			],
+			"terrain": [
+				"sea"
 			],
 			"capCrew": 40,
 			"capPassenger": 60,

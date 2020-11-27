@@ -86,7 +86,7 @@
 									"type": "entries",
 									"name": "Option: Greater Aberrant Powers",
 									"entries": [
-										"At the DM's option, a character who has the Aberrant Dragonmark feat has a chance of manifesting greater power. Upon reaching 10th level, such a character has a 10 percent chance of gaining an epic boon from among the options in {@book chapter 7|DMG|-1} of the {@book Dungeon Master's Guide|DMG}. If the character fails to gain a boon, they have a 10 percent chance the next time they gain a level.",
+										"At the DM's option, a character who has the Aberrant Dragonmark feat has a chance of manifesting greater power. Upon reaching 10th level, such a character has a 10 percent chance of gaining an {@filter epic boon|rewards|type=boon} from among the options in chapter 7 of the {@book Dungeon Master's Guide|DMG}. If the character fails to gain a boon, they have a 10 percent chance the next time they gain a level.",
 										"If the character gains a boon, the DM chooses it or determines it randomly. The character also permanently loses one of their Hit Dice, and their hit point maximum is reduced by an amount equal to a roll of that die plus their Constitution modifier (minimum reduction of 1). This reduction can't be reversed by any means."
 									]
 								}
@@ -214,6 +214,22 @@
 			]
 		},
 		{
+			"name": "Artificer Initiate",
+			"source": "UA2020Feats",
+			"page": 1,
+			"entries": [
+				"You've learned some of an artificer's inventiveness, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn one cantrip of your choice from the {@filter artificer spell list|spells|level=0;1|class=artificer}, and you learn one 1st-level spell of your choice from {@filter that list|spells|level=0;1|class=artificer}. Intelligence is your spellcasting ability for these spells. Whenever you gain a level, you can replace one of these spells with another spell of the same level from the artificer spell list.",
+						"You can cast this feat's 1st-level spell without a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have.",
+						"You gain proficiency with one type of {@filter artisan's tools|items|type=artisan's tools} of your choice, and you can use that type of tool as a spellcasting focus for any spell you cast that uses Intelligence as its spellcasting ability"
+					]
+				}
+			]
+		},
+		{
 			"name": "Athlete",
 			"source": "PHB",
 			"page": 165,
@@ -269,7 +285,7 @@
 				{
 					"type": "list",
 					"items": [
-						"As a bonus action, you can cause small barbs to protrude all over your body or cause them to retract. At the start of each of your turns while the barbs are out, you deal {@dice 1d6} piercing damage to any creature grappling you or any creature {@condition grappled} by you.",
+						"As a bonus action, you can cause small barbs to protrude all over your body or cause them to retract. At the start of each of your turns while the barbs are out, you deal {@damage 1d6} piercing damage to any creature grappling you or any creature {@condition grappled} by you.",
 						"You gain proficiency in the {@skill Intimidation} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it."
 					]
 				}
@@ -280,7 +296,7 @@
 			"source": "UAFeats",
 			"page": 2,
 			"entries": [
-				"You master the shortsword, longsword, scimitar, rapier, and greatsword. You gain the following benefits when using any of them:",
+				"You master the {@item shortsword|phb}, {@item longsword|phb}, {@item scimitar|phb}, {@item rapier|phb}, and {@item greatsword|phb}. You gain the following benefits when using any of them:",
 				{
 					"type": "list",
 					"items": [
@@ -371,8 +387,35 @@
 			"source": "PHB",
 			"page": 165,
 			"entries": [
-				"When you use your action to Dash, you can use a bonus action to make one melee weapon attack or to shove a creature.",
+				"When you use your action to {@action Dash}, you can use a bonus action to make one melee weapon attack or to shove a creature.",
 				"If you move at least 10 feet in a straight line immediately before taking this bonus action, you either gain a +5 bonus to the attack's damage roll (if you chose to make a melee attack and hit) or push the target up to 10 feet away from you (if you chose to shove and you succeed)."
+			]
+		},
+		{
+			"name": "Chef",
+			"source": "UA2020Feats",
+			"page": 1,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"con",
+							"wis"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Time and effort spent mastering the culinary arts has paid off. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with {@item cook's utensils|phb} if you don't already have it.",
+						"As part of a short rest, you can cook special food, provided you have ingredients and {@item cook's utensils|phb} on hand. You can prepare enough of this food for a number of creatures equal to 4 + your proficiency bonus. At the end of the short rest, any creature who eats the food and spends one or more Hit Dice to regain hit points regains an extra {@dice 1d8} hit points.",
+						"With one hour of work or when you finish a long rest, you can cook a number of treats equal to your proficiency bonus. These special treats last 8 hours after being made. A creature can use a bonus action to eat one of those treats to gain temporary hit points equal to your proficiency bonus."
+					]
+				}
 			]
 		},
 		{
@@ -411,7 +454,33 @@
 					"items": [
 						"You ignore the loading quality of crossbows with which you are proficient.",
 						"Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls.",
-						"When you use the Attack action and attack with a one-handed weapon, you can use a bonus action to attack with a {@item hand crossbow|phb} you are holding."
+						"When you use the {@action Attack} action and attack with a one-handed weapon, you can use a bonus action to attack with a {@item hand crossbow|phb} you are holding."
+					]
+				}
+			]
+		},
+		{
+			"name": "Crusher",
+			"source": "UA2020Feats",
+			"page": 1,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You are practiced in the art of crushing your enemies, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn, when you hit a creature with an attack that deals bludgeoning damage, you can move it 5 feet to an unoccupied space, provided the target is no more than one size larger than you.",
+						"When you score a critical hit that deals bludgeoning damage to a creature, attack rolls against that creature are made with advantage until the end of your next turn."
 					]
 				}
 			]
@@ -1192,7 +1261,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Whenever you take the Dodge action in combat, you can spend one Hit Die to heal yourself. Roll the die, add your Constitution modifier, and regain a number of hit points equal to the total (minimum of 1)."
+						"Whenever you take the {@action Dodge} action in combat, you can spend one Hit Die to heal yourself. Roll the die, add your Constitution modifier, and regain a number of hit points equal to the total (minimum of 1)."
 					]
 				}
 			]
@@ -1220,9 +1289,23 @@
 				{
 					"type": "list",
 					"items": [
-						"Whenever you take the Dodge action in combat, you can spend one Hit Die to heal yourself. Roll the die, add your Constitution modifier, and regain a number of hit points equal to the total (minimum of 1)."
+						"Whenever you take the {@action Dodge} action in combat, you can spend one Hit Die to heal yourself. Roll the die, add your Constitution modifier, and regain a number of hit points equal to the total (minimum of 1)."
 					]
 				}
+			]
+		},
+		{
+			"name": "Eldritch Adept",
+			"source": "UA2020Feats",
+			"page": 1,
+			"prerequisite": [
+				{
+					"spellcasting2020": true
+				}
+			],
+			"entries": [
+				"Studying occult lore, you have unlocked eldritch power within yourself: you learn one {@filter Eldritch Invocation|optionalfeatures|Feature Type=EI} option of your choice from the warlock class. If the invocation has a prerequisite, you can choose that invocation only if you're a warlock and only if you meet the prerequisite.",
+				"Whenever you gain a level, you can replace the invocation with another one from the warlock class."
 			]
 		},
 		{
@@ -1425,14 +1508,14 @@
 			"source": "UAFeats",
 			"page": 2,
 			"entries": [
-				"You master the handaxe, battleaxe, greataxe, warhammer, and maul. You gain the following benefits when using any of them:",
+				"You master the {@item handaxe|phb}, {@item battleaxe|phb}, {@item greataxe|phb}, {@item warhammer|phb}, and {@item maul|phb}. You gain the following benefits when using any of them:",
 				{
 					"type": "list",
 					"items": [
 						"You gain a +1 bonus to attack rolls you make with the weapon.",
 						"Whenever you have advantage on a melee attack roll you make with the weapon and hit, you can knock the target {@condition prone} if the lower of the two {@dice d20} rolls would also hit the target.",
 						"Whenever you have disadvantage on a melee attack roll you make with the weapon, the target takes bludgeoning damage equal to your Strength modifier (minimum of 0) if the attack misses but the higher of the two {@dice d20} rolls would have hit.",
-						"If you use the Help action to aid an ally's melee attack while you're wielding the weapon, you knock the target's shield aside momentarily. In addition to the ally gaining advantage on the attack roll, the ally gains a +2 bonus to the roll if the target is using a shield."
+						"If you use the {@action Help} action to aid an ally's melee attack while you're wielding the weapon, you knock the target's shield aside momentarily. In addition to the ally gaining advantage on the attack roll, the ally gains a +2 bonus to the roll if the target is using a shield."
 					]
 				}
 			]
@@ -1503,16 +1586,60 @@
 			]
 		},
 		{
+			"name": "Fey Touched",
+			"source": "UA2020Feats",
+			"page": 2,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"Your exposure to the Feywild or one of its denizens has left a magical mark on you. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell misty step} spell and one {@filter 1st-level spell|spells|level=1|school=E;D} of your choice. The 1st-level spell must be from the divination or enchantment school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat."
+					]
+				}
+			]
+		},
+		{
+			"name": "Fighting Initiate",
+			"source": "UA2020Feats",
+			"page": 2,
+			"prerequisite": [
+				{
+					"proficiency": [
+						{
+							"weapon": "martial"
+						}
+					]
+				}
+			],
+			"entries": [
+				"Your martial training has helped you develop a particular style of fighting. As a result, you learn one {@filter Fighting Style|optionalfeatures|Feature Type=FS:F} option of your choice from the fighter class. If you already have a style, the one you choose must be different.",
+				"Whenever you gain a level, you can replace this feat's fighting style with another one from the fighter class that you don't have."
+			]
+		},
+		{
 			"name": "Flail Mastery",
 			"source": "UAFeats",
 			"page": 3,
 			"entries": [
-				"The flail is a tricky weapon to use, but you have spent countless hours mastering it. You gain the following benefits:",
+				"The {@item flail|phb} is a tricky weapon to use, but you have spent countless hours mastering it. You gain the following benefits:",
 				{
 					"type": "list",
 					"items": [
 						"You gain a +1 bonus to attack rolls you make with a flail.",
-						"As a bonus action on your turn, you can prepare yourself to extend your flail to sweep over targets' shields. Until the end of this turn, your attack rolls with a flail gain a +2 bonus against any target using a shield.",
+						"As a bonus action on your turn, you can prepare yourself to extend your flail to sweep over targets' {@item shield|phb|shields}. Until the end of this turn, your attack rolls with a flail gain a +2 bonus against any target using a {@item shield|phb}.",
 						"When you hit with an opportunity attack using a flail, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Strength modifier) or be knocked {@condition prone}."
 					]
 				}
@@ -1548,7 +1675,7 @@
 					"type": "list",
 					"items": [
 						"When you roll fire damage for a spell you cast, you can reroll any roll of 1 on the fire damage dice, but you must use the new roll, even if it is another 1.",
-						"Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes {@dice 1d4} fire damage."
+						"Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes {@damage 1d4} fire damage."
 					]
 				}
 			]
@@ -1583,7 +1710,7 @@
 					"type": "list",
 					"items": [
 						"When you roll fire damage for a spell you cast, you can reroll any roll of 1 on the fire damage dice, but you must use the new roll, even if it is another 1.",
-						"Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes {@dice 1d4} fire damage."
+						"Whenever you cast a spell that deals fire damage, you can cause flames to wreathe you until the end of your next turn. The flames don't harm you or your possessions, and they shed bright light out to 30 feet and dim light for an additional 30 feet. While the flames are present, any creature within 5 feet of you that hits you with a melee attack takes {@damage 1d4} fire damage."
 					]
 				}
 			]
@@ -1687,6 +1814,27 @@
 			]
 		},
 		{
+			"name": "Gunner",
+			"source": "UA2020Feats",
+			"page": 2,
+			"ability": [
+				{
+					"dex": 1
+				}
+			],
+			"entries": [
+				"You have a quick hand and keen eye when employing firearms, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with firearms (see \"{@variantrule Firearms|DMG}\" in the Dungeon Master's Guide).",
+						"You ignore the loading property of firearms.",
+						"Being within 5 feet of a hostile creature doesn't impose disadvantage on your ranged attack rolls."
+					]
+				}
+			]
+		},
+		{
 			"name": "Healer",
 			"source": "PHB",
 			"page": 167,
@@ -1772,7 +1920,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill History} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"When you take the Help action to aid another creature's ability check, you can make a DC 15 Intelligence ({@skill History}) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying."
+						"When you take the {@action Help} action to aid another creature's ability check, you can make a DC 15 Intelligence ({@skill History}) check. On a success, that creature's check gains a bonus equal to your proficiency bonus, as you share pertinent advice and historical examples. To receive this bonus, the creature must be able to understand what you're saying."
 					]
 				}
 			]
@@ -1905,7 +2053,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Investigation} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"You can take the Search action as a bonus action."
+						"You can take the {@action Search} action as a bonus action."
 					]
 				}
 			]
@@ -2043,7 +2191,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency with the {@item disguise kit|phb}. If you are already proficient with it, you add double your proficiency bonus to checks you make with it.",
-						"If you spend 1 hour observing a creature, you can then spend 8 hours crafting a disguise you can quickly don to mimic that creature. Making the disguise requires a disguise kit. You must make checks as normal to disguise yourself, but you can assume the disguise as an action."
+						"If you spend 1 hour observing a creature, you can then spend 8 hours crafting a disguise you can quickly don to mimic that creature. Making the disguise requires a {@item disguise kit|PHB}. You must make checks as normal to disguise yourself, but you can assume the disguise as an action."
 					]
 				}
 			]
@@ -2107,7 +2255,59 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Intimidation} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"When you take the Attack action on your turn, you can replace one attack with an attempt to demoralize one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Intimidation}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, the target is {@condition frightened} until the end of your next turn. If your check fails, the target can't be {@condition frightened} by you in this way for 1 hour."
+						"When you take the {@action Attack} action on your turn, you can replace one attack with an attempt to demoralize one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Intimidation}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, the target is {@condition frightened} until the end of your next turn. If your check fails, the target can't be {@condition frightened} by you in this way for 1 hour."
+					]
+				}
+			]
+		},
+		{
+			"name": "Metabolic Control",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have refined psionic control over your body's functions.",
+				{
+					"type": "list",
+					"items": [
+						"If your Psionic Talent die is available, you can take an action to channel your psionic power to nourish yourself for the next 24 hours, as if you consumed sufficient food and water for a day. When you take this action, your Psionic Talent die decreases by one die size.",
+						"If your Psionic Talent die is available, you can meditate for 1 minute, at the end of which you gain the benefits of finishing a short rest, and your Psionic Talent die decreases by one die size. You can't meditate in this way again until you finish a long rest."
+					]
+				}
+			]
+		},
+		{
+			"name": "Metamagic Adept",
+			"source": "UA2020Feats",
+			"page": 2,
+			"prerequisite": [
+				{
+					"spellcasting2020": true
+				}
+			],
+			"entries": [
+				"You've learned how to exert your will on your spells to alter how they function. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn two {@filter Metamagic|optionalfeatures|Feature Type=MM} options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you gain a level, you can replace one of your Metamagic options with another one from the sorcerer class.",
+						"You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest."
 					]
 				}
 			]
@@ -2122,7 +2322,7 @@
 					"type": "list",
 					"items": [
 						"Your speed increases by 10 feet.",
-						"When you use the Dash action, difficult terrain doesn't cost you extra movement on that turn.",
+						"When you use the {@action Dash} action, difficult terrain doesn't cost you extra movement on that turn.",
 						"When you make a melee attack against a creature, you don't provoke opportunity attacks from that creature for the rest of the turn, whether you hit or not."
 					]
 				}
@@ -2352,6 +2552,48 @@
 			]
 		},
 		{
+			"name": "Piercer",
+			"source": "UA2020Feats",
+			"page": 2,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have achieved a penetrating precision in combat, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn, when you hit a creature with an attack that deals piercing damage, you can reroll one of the attack's damage dice, and you must use the new roll.",
+						"When you score a critical hit that deals piercing damage to a creature, you can roll one additional damage die when determining the extra piercing damage the target takes."
+					]
+				}
+			]
+		},
+		{
+			"name": "Poisoner",
+			"source": "UA2020Feats",
+			"page": 2,
+			"entries": [
+				"You can prepare and deliver deadly poisons, gaining the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"When you make a damage roll, you ignore resistance to poison damage.",
+						"You can coat a weapon in poison as a bonus action, instead of an action.",
+						"You gain proficiency with the {@item poisoner's kit|phb} if you don't already have it. With one hour of work using a {@item poisoner's kit|PHB} and expending 50 gp worth of materials, you can create a number of doses of potent poison equal to your proficiency bonus. Once applied, the poison retains potency for 1 minute, or until you hit with the weapon. When a weapon coated in this poison deals damage to a creature, that creature must succeed on a DC 14 Constitution saving throw or take {@damage 2d8} poison damage and become {@condition poisoned} until the end of your next turn."
+					]
+				}
+			]
+		},
+		{
 			"name": "Polearm Master",
 			"source": "PHB",
 			"page": 168,
@@ -2360,8 +2602,38 @@
 				{
 					"type": "list",
 					"items": [
-						"When you take the Attack action and attack with only a {@item glaive|phb}, {@item halberd|phb}, {@item quarterstaff|phb}, or {@item spear|phb}, you can use a bonus action to make a melee attack with the opposite end of the weapon; this attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a {@dice d4}, and the attack deals bludgeoning damage.",
+						"When you take the {@action Attack} action and attack with only a {@item glaive|phb}, {@item halberd|phb}, {@item quarterstaff|phb}, or {@item spear|phb}, you can use a bonus action to make a melee attack with the opposite end of the weapon; this attack uses the same ability modifier as the primary attack. The weapon's damage die for this attack is a {@dice d4}, and the attack deals bludgeoning damage.",
 						"While you are wielding a {@item glaive|phb}, {@item halberd|phb}, {@item pike|phb}, {@item quarterstaff|phb}, or {@item spear|phb}, other creatures provoke an opportunity attack from you when they enter your reach."
+					]
+				}
+			]
+		},
+		{
+			"name": "Practiced Expert",
+			"source": "UA2020Feats",
+			"page": 3,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You have honed your proficiency with particular skills or tools, gaining the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with one {@table skills|phb|skill} or {@filter tool|items|type=tool;artisan's tools} of your choice.",
+						"Choose one of your skill or tool proficiencies. Your proficiency bonus is doubled for any ability check you make that uses the chosen proficiency."
 					]
 				}
 			]
@@ -2474,7 +2746,7 @@
 				"You have mastered the art of on-the-fly invention, improvement, and jury-rigging. You can use your talents to create immediate, short-term magical effects similar to spells, given time and an adequate supply of aether.",
 				"When you choose this feat, you master two magical effects, each of which recreates the effect of a 1st-level spell that has the ritual tag. These spells can come from any class list, but Intelligence is your spellcasting ability for them.",
 				"If you come across a schematic geared toward quicksmithing or study with another quicksmith, you might be able to add another spell to the effects you have mastered. The spell's level can be no higher than half your level (rounded up), and it must have the ritual tag. The process of mastering the spell takes 2 hours per level of the spell, and costs 50 gp per level. The cost represents aether you use as you experiment with the spell effect to master it.",
-				"In addition, you have proficiency with artisan's tools (quicksmith's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours unless you spend 1 hour repairing it to keep it functioning. You can use your action to dismantle the device, at which point you can reclaim the materials used to create it. You can have up to three such devices active at a time.",
+				"In addition, you have proficiency with {@item artisan's tools|PHB} (quicksmith's tools). Using those tools, you can spend 1 hour and 10 gp worth of materials to construct a Tiny clockwork device (AC 5, 1 hp). The device ceases to function after 24 hours unless you spend 1 hour repairing it to keep it functioning. You can use your action to dismantle the device, at which point you can reclaim the materials used to create it. You can have up to three such devices active at a time.",
 				"When you create a device, choose one of the following options:",
 				{
 					"type": "entries",
@@ -2515,7 +2787,7 @@
 							"cha"
 						],
 						"amount": 1,
-						"textreference": true
+						"entry": "Increase the chosen ability score by 1, to a maximum of 20."
 					}
 				}
 			],
@@ -2680,7 +2952,7 @@
 					"type": "list",
 					"items": [
 						"When you hit a creature with an opportunity attack, the creature's speed becomes 0 for the rest of the turn.",
-						"Creatures provoke opportunity attacks from you even if they take the Disengage action before leaving your reach.",
+						"Creatures provoke opportunity attacks from you even if they take the {@action Disengage} action before leaving your reach.",
 						"When a creature within 5 feet of you makes an attack against a target other than you (and that target doesn't have this feat), you can use your reaction to make a melee weapon attack against the attacking creature."
 					]
 				}
@@ -2700,9 +2972,35 @@
 				}
 			],
 			"entries": [
-				"You are skilled in the creation of servos\u2014tiny constructs that function as personal assistants. You can cast the find familiar spell as a ritual, creating a servo to serve as your familiar instead of an animal. A servo's statistics appear in the \"Artifact Creatures\" section of this document. In every other way, a servo familiar functions as described in the find familiar spell.",
+				"You are skilled in the creation of servos\u2014tiny constructs that function as personal assistants. You can cast the {@spell find familiar} spell as a ritual, creating a servo to serve as your familiar instead of an animal. A servo's statistics appear in the \"Artifact Creatures\" section of this document. In every other way, a servo familiar functions as described in the {@spell find familiar} spell.",
 				"You can communicate telepathically with your servo familiar and perceive through its senses as long as you are on the same plane of existence. You can speak through your servo in your own voice.",
-				"Additionally, when you take the Attack action, you can forgo one of your own attacks to allow your servo familiar to make one attack of its own."
+				"Additionally, when you take the {@action Attack} action, you can forgo one of your own attacks to allow your servo familiar to make one attack of its own."
+			]
+		},
+		{
+			"name": "Shadow Touched",
+			"source": "UA2020Feats",
+			"page": 3,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn how to bend shadows from your experience with the Shadowfell. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell darkness} spell and one {@filter 1st-level spell|spells|level=1|school=I;N} of your choice. The 1st-level spell must be from the illusion or necromancy school of magic. You can cast each of these spells without expending a spell slot. Once you cast either of these spells in this way, you can't cast that spell in this way again until you finish a long rest. You can also cast these spells using spell slots you have of the appropriate level. The spells' spellcasting ability is the ability increased by this feat."
+					]
+				}
 			]
 		},
 		{
@@ -2730,9 +3028,37 @@
 				{
 					"type": "list",
 					"items": [
-						"If you take the Attack action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your shield.",
+						"If you take the {@action Attack} action on your turn, you can use a bonus action to try to shove a creature within 5 feet of you with your shield.",
 						"If you aren't {@condition incapacitated}, you can add your shield's AC bonus to any Dexterity saving throw you make against a spell or other harmful effect that targets only you.",
 						"If you are subjected to an effect that allows you to make a Dexterity saving throw to take only half damage, you can use your reaction to take no damage if you succeed on the saving throw, interposing your shield between yourself and the source of the effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Shield Training",
+			"source": "UA2020Feats",
+			"page": 3,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You've trained in the effective use of shields. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You gain proficiency with {@item shield|phb|shields}.",
+						"In combat, you can don or doff a shield as the free object interaction on your turn.",
+						"If you have the Spellcasting or Pact Magic feature, you can use a shield as a spellcasting focus."
 					]
 				}
 			]
@@ -2752,7 +3078,7 @@
 					"type": "list",
 					"items": [
 						"You gain proficiency in the {@skill Deception} skill. If you are already proficient in the skill, you add double your proficiency bonus to checks you make with it.",
-						"When you take the Attack action on your turn, you can replace one attack with an attempt to deceive one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Deception}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, your movement doesn't provoke opportunity attacks from the target and your attack rolls against it have advantage; both benefits last until the end of your next turn or until you use this ability on a different target. If your check fails, the target can't be deceived by you in this way for 1 hour."
+						"When you take the {@action Attack} action on your turn, you can replace one attack with an attempt to deceive one humanoid you can see within 30 feet of you that can see and hear you. Make a Charisma ({@skill Deception}) check contested by the target's Wisdom ({@skill Insight}) check. If your check succeeds, your movement doesn't provoke opportunity attacks from the target and your attack rolls against it have advantage; both benefits last until the end of your next turn or until you use this ability on a different target. If your check fails, the target can't be deceived by you in this way for 1 hour."
 					]
 				}
 			]
@@ -2791,17 +3117,43 @@
 			]
 		},
 		{
+			"name": "Slasher",
+			"source": "UA2020Feats",
+			"page": 3,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You've learned where to cut to have the greatest results, granting you the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"Once per turn when you hit a creature with an attack that deals slashing damage, you can reduce the speed of the target by 10 feet until the start of your next turn.",
+						"When you score a critical hit that deals slashing damage to a creature, you grievously wound it. Until the start of your next turn, the target has disadvantage on all attack rolls."
+					]
+				}
+			]
+		},
+		{
 			"name": "Spear Mastery",
 			"source": "UAFeats",
 			"page": 3,
 			"entries": [
-				"Though the spear is a simple weapon to learn, it rewards you for the time you have taken to master it. You gain the following benefits:",
+				"Though the {@item spear|phb} is a simple weapon to learn, it rewards you for the time you have taken to master it. You gain the following benefits:",
 				{
 					"type": "list",
 					"items": [
 						"You gain a +1 bonus to attack rolls you make with a spear.",
 						"When you use a spear, its damage die changes from a {@dice d6} to a {@dice d8}, and from a {@dice d8} to a {@dice d10} when wielded with two hands. (This benefit has no effect if another feature has already improved the weapon's die.)",
-						"You can set your spear to receive a charge. As a bonus action, choose a creature you can see that is at least 20 feet away from you. If that creature moves within your spear's reach on its next turn, you can make a melee attack against it with your spear as a reaction. If the attack hits, the target takes an extra {@dice 1d8} piercing damage, or an extra {@dice 1d10} piercing damage if you wield the spear with two hands. You can't use this ability if the creature used the Disengage action before moving.",
+						"You can set your spear to receive a charge. As a bonus action, choose a creature you can see that is at least 20 feet away from you. If that creature moves within your spear's reach on its next turn, you can make a melee attack against it with your spear as a reaction. If the attack hits, the target takes an extra {@damage 1d8} piercing damage, or an extra {@damage 1d10} piercing damage if you wield the spear with two hands. You can't use this ability if the creature used the {@action Disengage} action before moving.",
 						"As a bonus action on your turn, you can increase your reach with a spear by 5 feet for the rest of your turn."
 					]
 				}
@@ -2904,7 +3256,7 @@
 					"items": [
 						"Increase your walking speed by 5 feet.",
 						"You gain proficiency in the {@skill Acrobatics} or {@skill Athletics} skill (your choice).",
-						"You have advantage on any Strength (Athletics) or Dexterity (Acrobatics) check you make to escape from being {@condition grappled}."
+						"You have advantage on any Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check you make to escape from being {@condition grappled}."
 					]
 				}
 			]
@@ -2979,6 +3331,21 @@
 			]
 		},
 		{
+			"name": "Tandem Tactician",
+			"source": "UA2020Feats",
+			"page": 3,
+			"entries": [
+				"Your presence in a scrap tends to elevate your comrades. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You can use the {@action Help} action as a bonus action.",
+						"When you use the {@action Help} action to aid an ally in attacking a creature, increase the range of the {@action Help} action by 10 feet. Additionally, you can help two allies targeting the same creature within range when you use the {@action Help} action this way."
+					]
+				}
+			]
+		},
+		{
 			"name": "Tavern Brawler",
 			"source": "PHB",
 			"page": 170,
@@ -2999,8 +3366,40 @@
 					"type": "list",
 					"items": [
 						"You are proficient with improvised weapons.",
-						"Your unarmed strike uses a {@dice d4} for damage.",
+						"Your unarmed strike uses a {@damage d4} for damage.",
 						"When you hit a creature with an unarmed strike or an improvised weapon on your turn, you can use a bonus action to attempt to grapple the target."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telekinetic",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You learn to move things with your mind. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand {@condition invisible}. If you already know this spell, its range increases by 30 feet when you cast it. Its spellcasting ability is the ability increased by this feat.",
+						"As a bonus action, you can try to telekinetically shove one creature you can see within 30 feet of you. When you do so, roll your Psionic Talent die, and the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + the ability modifier of the score increased by this feat) or be moved toward you or away from you a number of feet equal to 5 times the number you rolled. A creature can willingly fail this save."
 					]
 				}
 			]
@@ -3020,7 +3419,39 @@
 					"type": "list",
 					"items": [
 						"You learn the {@spell mage hand} cantrip. You can cast it without verbal or somatic components, and you can make the spectral hand invisible.",
-						"As a bonus action, you can try to shove one creature you can see within 5 feet of the spectral hand created by your mage hand spell. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Intelligence modifier) or be pushed 5 feet away from you."
+						"As a bonus action, you can try to shove one creature you can see within 5 feet of the spectral hand created by your {@spell mage hand} spell. When you do so, the target must succeed on a Strength saving throw (DC 8 + your proficiency bonus + your Intelligence modifier) or be pushed 5 feet away from you."
+					]
+				}
+			]
+		},
+		{
+			"name": "Telepathic",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 8,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					}
+				}
+			],
+			"entries": [
+				"You awaken the ability to mentally connect with others. You gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You can speak telepathically to any creature you can see within 30 feet of you. Your telepathic utterances are in a language you know, and the creature understands you only if it knows that language. Your communication doesn't give the creature the ability to respond to you telepathically.",
+						"If your Psionic Talent die is available, you can cast the {@spell detect thoughts} spell, requiring no components. When you start casting the spell, your Psionic Talent die decreases by one die size. Your spellcasting ability for the spell is the ability increased by this feat."
 					]
 				}
 			]
@@ -3074,6 +3505,39 @@
 			]
 		},
 		{
+			"name": "Tower of Iron Will",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 9,
+			"prerequisite": [
+				{
+					"psionics": true
+				}
+			],
+			"entries": [
+				"Your mind's defenses are formidable. After you or another creature you can see within 30 feet of you fails a saving throw, you can use your reaction to roll your Psionic Talent die and add the number rolled to the saving throw, potentially causing it to succeed."
+			]
+		},
+		{
+			"name": "Tracker",
+			"source": "UA2020Feats",
+			"page": 3,
+			"ability": [
+				{
+					"wis": 1
+				}
+			],
+			"entries": [
+				"You have spent time hunting creatures and honed your skills, gaining the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You learn the {@spell hunter's mark} spell. You can cast it once without expending a spell slot, and you must finish a long rest before you can cast it in this way again. You can also cast the spell using any spell slots you have. Wisdom is your spellcasting ability for this spell.",
+						"You have advantage on Wisdom ({@skill Survival}) checks to track creatures"
+					]
+				}
+			]
+		},
+		{
 			"name": "Vampiric Exultation",
 			"source": "PSX",
 			"page": 14,
@@ -3117,7 +3581,7 @@
 			"page": 2,
 			"entries": [
 				"{@note This feat is presented as an illustrative example of a poorly-designed feat, and is not intended to be used in play. The {@feat Fell Handed|UAFeats} feat is presented as a well-designed implementation of the same ideas, and should be used instead.}",
-				"When you hit a creature with a warhammer, the  creature must succeed on a Strength saving  throw (DC 8 + your proficiency bonus + your  Strength modifier) or be knocked prone.",
+				"When you hit a creature with a {@item warhammer|phb}, the  creature must succeed on a Strength saving  throw (DC 8 + your proficiency bonus + your  Strength modifier) or be knocked {@condition prone}.",
 				"In addition, you can use your warhammer to  knock away a foe's shield. If you hit a creature  that's using a shield, you can have the attack deal  no damage and force the creature to drop its  shield."
 			]
 		},
@@ -3141,7 +3605,71 @@
 				{
 					"type": "list",
 					"items": [
-						"You gain proficiency with four simple or martial weapons of your choice. Each one must be a simple or a martial weapon."
+						"You gain proficiency with four weapons of your choice. Each one must be a simple or a martial weapon."
+					]
+				}
+			]
+		},
+		{
+			"name": "Wild Talent",
+			"source": "UA2020PsionicOptionsRevisited",
+			"page": 9,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 1
+					},
+					"hidden": true
+				}
+			],
+			"entries": [
+				"You awaken to your psionic potential, which enhances your mind or body. Increase one ability score of your choice by 1, to a maximum of 20, to represent this enhancement.",
+				"You also harbor a wellspring of psionic power within yourself, an energy that ebbs and flows as you channel it in various ways. This power is represented by your Psionic Talent die, the starting size of which is a {@dice d6}.",
+				{
+					"type": "entries",
+					"name": "Psionic Talent Options",
+					"entries": [
+						"You can use your Psionic Talent die in the following ways:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Psi-Boosted Ability.",
+									"entry": "When you make an ability check with the ability increased by this feat, you can roll your Psionic Talent die and add the number rolled to the check. You can choose to do so before or after rolling the {@dice d20}, but before you know whether the check succeeded or failed."
+								},
+								{
+									"type": "item",
+									"name": "Psi-Guided Strike.",
+									"entry": "Once on each of your turns when you hit with an attack roll that uses the ability increased by this feat, you can roll your Psionic Talent die after you make the damage roll and then replace one of the damage dice with the number rolled on the Psionic Talent die."
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Changing the Die's Size",
+					"entries": [
+						"If you roll the highest number on your Psionic Talent die, it decreases by one die size after the roll. This represents you burning through your psionic energy. For example, if the die is a {@dice d6} and you roll a 6, it becomes a {@dice d4}. If it's a {@dice d4} and you roll a 4, it becomes unusable until you finish a long rest.",
+						"Conversely, if you roll a 1 on your Psionic Talent die, it increases by one die size after the roll, up to its starting size. This represents you conserving psionic energy for later use. For example, if you roll a 1 on a {@dice d4}, the die then becomes a {@dice d6}.",
+						"Whenever you finish a long rest, your Psionic Talent die resets to its starting size. When you reach certain levels, the starting size of your Psionic Talent die increases: at 5th level ({@dice d8}), 11th level ({@dice d10}), and 17th level ({@dice d12}). If you have a Psionic Talent die from another source, such as a class feature, you don't get more than one die; use only the one with the largest starting size."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Psi Replenishment",
+					"entries": [
+						"As a bonus action, you can calm your mind for a moment and restore your Psionic Talent die to its starting size. You then can't use Psi Replenishment again until you finish a long rest."
 					]
 				}
 			]

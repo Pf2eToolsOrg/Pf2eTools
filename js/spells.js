@@ -20,9 +20,9 @@ class SpellsPage {
 	}
 
 	getListItem (spell, spI) {
-		const spHash = UrlUtil.autoEncodeHash(spell);
-		if (!spell.uniqueId && _addedHashes.has(spHash)) return null;
-		_addedHashes.add(spHash);
+		const hash = UrlUtil.autoEncodeHash(spell);
+		if (!spell.uniqueId && _addedHashes.has(hash)) return null;
+		_addedHashes.add(hash);
 		const isExcluded = ExcludeUtil.isExcluded(spell.name, "spell", spell.source);
 
 		this._pageFilter.mutateAndAddToFilters(spell, isExcluded);
@@ -30,12 +30,11 @@ class SpellsPage {
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
-		const hash = UrlUtil.autoEncodeHash(spell);
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 		const school = Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschool);
 
-		eleLi.innerHTML = `<a href="#${spHash}" class="lst--border">
+		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
 			<span class="col-2-4 text-center">${time}</span>
@@ -53,7 +52,6 @@ class SpellsPage {
 				level: spell.level,
 				time,
 				school: Parser.spSchoolAbvToFull(spell.school),
-				classes: Parser.spClassesToFull(spell.classes, true, SUBCLASS_LOOKUP),
 				normalisedTime: spell._normalisedTime,
 			},
 			{
@@ -120,8 +118,7 @@ class SpellsPage {
 				isImageTab,
 				$content,
 				entity: spell,
-				fluffBaseUrl: `data/spells/`,
-				fnFluffBuilder: (fluffJson) => spell.fluff || fluffJson.spellFluff.find(it => it.name === spell.name && it.source === spell.source)
+				pFnGetFluff: Renderer.spell.pGetFluff
 			});
 		}
 
@@ -161,7 +158,7 @@ class SpellsPage {
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`)
 		});
 
@@ -200,7 +197,13 @@ async function pPostLoad () {
 			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}" ${Parser.spSchoolAbvToStyle(sp.school)}>${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
 			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
 			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp.components, sp.level)},
-			classes: {name: "Classes", transform: (it) => Parser.spMainClassesToFull(it)},
+			_classes: {
+				name: "Classes",
+				transform: (sp) => {
+					const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
+					return Parser.spMainClassesToFull(fromClassList);
+				}
+			},
 			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
 			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
 		},
@@ -320,7 +323,7 @@ async function pPageInit (loadedSources) {
 	BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler
 	await BrewUtil.pAddLocalBrewData(); // load local homebrew, so we can add any local spell classes
 	BrewUtil.bind({pHandleBrew: null}); // unbind temporary handler
-	spellsPage._pageFilter.populateHomebrewClassLookup(homebrew);
+	Renderer.spell.populateHomebrewClassLookup(homebrew);
 }
 
 let spellList = [];
@@ -349,7 +352,8 @@ function addSpells (data) {
 		primaryLists: [list]
 	});
 	ListUtil.bindPinButton();
-	Renderer.hover.bindPopoutButton(spellList);
+	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+	Renderer.hover.bindPopoutButton($btnPop, spellList);
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
 	ListUtil.bindDownloadButton();
 	ListUtil.bindUploadButton(pPreloadSublistSources);
@@ -368,12 +372,12 @@ async function pPreloadSublistSources (json) {
 	}
 }
 
-function handleUnknownHash (link, sub) {
+async function pHandleUnknownHash (link, sub) {
 	const src = Object.keys(spellsPage._multiSource.loadedSources)
 		.find(src => src.toLowerCase() === decodeURIComponent(link.split(HASH_LIST_SEP)[1]).toLowerCase());
 	if (src) {
-		spellsPage._multiSource.pLoadSource(src, "yes")
-			.then(() => Hist.hashChange());
+		await spellsPage._multiSource.pLoadSource(src, "yes");
+		Hist.hashChange();
 	}
 }
 

@@ -55,13 +55,11 @@ class ListPage {
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		this._filterBox = this._pageFilter
-			? await this._pageFilter.pInitFilterBox({
-				$iptSearch: $(`#lst__search`),
-				$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
-				$btnReset: $(`#reset`)
-			})
-			: await pInitFilterBox({filters: this._filters});
+		this._filterBox = await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
+			$btnReset: $(`#reset`)
+		});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
@@ -82,7 +80,7 @@ class ListPage {
 			filterBox: this._filterBox,
 			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
 			list: this._list,
-			pHandleBrew: async homebrew => this._addData(homebrew)
+			pHandleBrew: this._pHandleBrew.bind(this)
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -130,6 +128,7 @@ class ListPage {
 		if (!this._dataProps.some(prop => data[prop] && data[prop].length)) return;
 
 		this._dataProps.forEach(prop => {
+			if (!data[prop]) return;
 			data[prop].forEach(it => it.__prop = prop);
 			this._dataList.push(...data[prop]);
 		});
@@ -137,7 +136,7 @@ class ListPage {
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
-			const isExcluded = ExcludeUtil.isExcluded(it.name, it.__prop, it.source);
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.autoEncodeHash(it), it.__prop, it.source);
 			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
 
@@ -150,7 +149,8 @@ class ListPage {
 			primaryLists: [this._list]
 		});
 		ListUtil.bindPinButton();
-		Renderer.hover.bindPopoutButton(this._dataList);
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
 		UrlUtil.bindLinkExportButton(this._filterBox);
 		ListUtil.bindDownloadButton();
 		ListUtil.bindUploadButton();

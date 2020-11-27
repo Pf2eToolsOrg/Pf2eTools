@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.7.1",
+	"version": "1.8.0",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -172,6 +172,13 @@
 				"poison": {
 					"type": "boolean"
 				},
+				"poisonTypes": {
+					"type": "array",
+					"items": {
+						"type": "string",
+						"enum": ["ingested", "injury", "inhaled", "contact"]
+					}
+				},
 				"crew": {
 					"type": "integer"
 				},
@@ -276,20 +283,7 @@
 				"lootTables": {
 					"type": "array",
 					"items": {
-						"oneOf": [
-							{
-								"type": "string"
-							},
-							{
-								"type": "object",
-								"name": {
-									"type": "string"
-								},
-								"source": {
-									"type": "string"
-								}
-							}
-						]
+						"type": "string"
 					}
 				},
 				"alCertificateId": {
@@ -355,6 +349,40 @@
 							}
 						]
 					}
+				},
+				"containerCapacity": {
+					"type": "object",
+					"properties": {
+						"weight": {
+							"type": "array",
+							"items": {
+								"type": "integer"
+							}
+						},
+						"item": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"patternProperties": {
+									".*": {
+										"type": "integer"
+									}
+								},
+								"additionalProperties": false
+							}
+						},
+						"weightless": {
+							"description": "If the container renders its contents weightless.",
+							"type": "boolean"
+						}
+					},
+					"additionalProperties": false
+				},
+				"ammoType": {
+					"type": "string"
+				},
+				"grantsProficiency": {
+					"type": "boolean"
 				}
 			},
 			"additionalProperties": false
