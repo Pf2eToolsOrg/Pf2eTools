@@ -105,6 +105,14 @@
     font-weight: 400;
     margin: 0;
 }
+.pf2-stat-text p {
+	margin: 0;
+	text-indent: 1em;
+}
+.pf2-stat-text p:first-of-type {
+	margin: 0;
+	text-indent: 0;
+}
 .pf2-stat-text-indent {
     font-family: "good-pro", sans-serif;
     text-align: justify;
@@ -124,6 +132,16 @@
 	margin: 0;
 	padding-left: 1em;
 	text-indent: -1em;
+}
+
+.pf-2-stat-text-indent-second-line span ~ span {
+	display: block;
+	text-indent: 1em;
+}
+
+.pf-2-stat-text-indent-second-line p ~ p {
+	display: block;
+	text-indent: 1em;
 }
 
 .pf-2-stat-indent-second-line {
@@ -216,7 +234,7 @@
 .pf2-h2 {
 	clear: left;
 	color: #002664;
-	margin: 0;
+	margin: 0 0 0.3em;
 	padding: 0.8em 0 0 0;
 	font-family: 'Taroca', sans-serif;
 	font-size: 1.6em;
@@ -224,7 +242,41 @@
 	text-transform: uppercase;
 	line-height: 1em;
 }
+.pf2-h2-step-num {
+	border: 3px solid #d9c484;
+	height: 1.4em;
+	width: 1.4em;
+	border-radius: 50%;
+	background: #002664;
+	color: #d9c484;
+	text-align: center;
+	font-family: 'Taroca', sans-serif;
+	font-size: 2.8em;
+	padding: 0;
+	margin: -0.15em 0.3em 0 0;
+	text-transform: uppercase;
+	float: left;
+	clear: left;
+	line-height: 1.4em;
+}
 
+.pf2-h2-step {
+	color: #002664;
+	font-family: 'Taroca', sans-serif;
+	font-size: 1.6em;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 1em;
+	padding: 0.05em;
+	background: #d1d3d4;
+	display: flex;
+	margin: 0.8em 0 0.1em 2em;
+}
+
+.pf2-h2-step + .pf2-h2 {
+	padding: 0;
+	clear: none;
+}
 .pf2-h3 {
 	clear: left;
 	color: #5E0000;
@@ -249,7 +301,6 @@
 	font-weight: 400;
 	line-height: 1.25em;
 	vertical-align: bottom;
-	display: flex;
 }
 
 .pf2-h4::first-letter {
@@ -284,6 +335,16 @@
 	font-size: 1em;
 	font-weight: 400;
 	text-align: justify;
+	line-height: 1.35em;
+}
+.pf2-pagecontent .rd__list li {
+	color: black;
+	margin: 0;
+	padding: 0.3em 0 0.3em;
+	font-family: 'SabonLTStd', sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	text-align: left;
 	line-height: 1.35em;
 }
 
@@ -433,11 +494,14 @@
 }
 .pf2-key-abilities-text {
 	font-family: 'good-pro', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 0.9em;
 	text-align: left;
 	line-height: 1.2em;
 	margin: 0;
+}
+.pf2-key-abilities-text ~ .pf2-key-abilities-text {
+	font-weight: 400;
 }
 .pf2-tips-box {
 	float: left;
@@ -466,6 +530,8 @@
 }
 .pf2-inset {
 	background: #eae4d8;
+	display: flex;
+	clear: left;
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
@@ -534,7 +600,7 @@
 	text-indent: 0;
 	text-align: justify;
 	line-height: 1.2em;
-	margin: 0 0;
+	margin: 0 1em;
 }
 .pf2-red-box-note ~ .pf2-red-box-note{
 	text-indent: 0.9em;
@@ -625,7 +691,7 @@
 	text-indent: 1em;
 	text-align: justify;
 	line-height: 120%;
-	margin: 0 0;
+	margin: 0 1em;
 }
 
 .swirl-left-brown {

@@ -307,6 +307,8 @@ function Renderer() {
 					this._renderPf2Sidebar(entry, textStack, meta, options);
 					break;
 				case "pf2-inset":
+					this._renderPf2Inset(entry, textStack, meta, options);
+					break;
 				case "pf2-tips-box":
 					this._renderPf2TipsBox(entry, textStack, meta, options);
 					break;
@@ -318,6 +320,9 @@ function Renderer() {
 					break;
 				case "pf2-brown-box":
 					this._renderPf2BrownBox(entry, textStack, meta, options);
+					break;
+				case "pf2-key-ability":
+					this._renderPf2KeyAbility(entry, textStack, meta, options);
 					break;
 				// recursive
 				case "entries":
@@ -871,7 +876,13 @@ function Renderer() {
 
 		for (let key in entry.entries) {
 			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
-			this._recursiveRender(entry.entries[key], textStack, meta);
+			if (typeof(entry.entries[key]) === "string") {
+				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
+			} else if (Array.isArray(entry.entries[key])) {
+				entry.entries[key].forEach((e) => {
+					this._recursiveRender(e, textStack, meta, {prefix: "<span>", suffix: "</span>"});
+				});
+			}
 			textStack[0] += `</div>`
 		}
 
@@ -971,6 +982,11 @@ function Renderer() {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
 
+		if (entry.step != null) {
+			textStack[0] += `<p class="pf2-h2-step-num">${entry.step}</p>`
+			textStack[0] += `<p class="pf2-h2-step">STEP ${entry.step}</p>`
+		}
+
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
@@ -984,6 +1000,7 @@ function Renderer() {
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
+		textStack[0] += `<div style="clear: left"></div>`
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -1106,6 +1123,26 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
+	this._renderPf2Inset = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div class="pf2-inset" ${dataString}>`;
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.entries[i], textStack, meta);
+				meta.depth = cacheDepth;
+			}
+		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
 	this._renderPf2TipsBox = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
 		textStack[0] += `<div class="pf2-tips-box" ${dataString}>`;
@@ -1133,7 +1170,7 @@ function Renderer() {
 
 	this._renderPf2BrownBox = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
-		textStack[0] += `<div ${dataString} style="display: flex; float: left">`;
+		textStack[0] += `<div ${dataString} style="display: flex; clear: left">`;
 		textStack[0] += `<div class="pf2-brown-box">`;
 		textStack[0] += `<div class="swirl-left-brown"></div>`
 		textStack[0] += `<div class="swirl-connection-brown"></div>`
@@ -1162,7 +1199,7 @@ function Renderer() {
 
 	this._renderPf2RedBox = function (entry, textStack, meta, options) {
 		const dataString = this._renderEntriesSubtypes_getDataString(entry);
-		textStack[0] += `<div class="pf2-red-box" ${dataString}>`;
+		textStack[0] += `<div class="pf2-red-box" ${dataString} style="clear: left">`;
 		textStack[0] += `<div class="swirl-left-red"></div>`
 		textStack[0] += `<div class="swirl-connection-red"></div>`
 		textStack[0] += `<div class="swirl-right-red"></div>`
@@ -1183,6 +1220,46 @@ function Renderer() {
 				meta.depth = cacheDepth;
 			}
 		}
+		textStack[0] += `</div>`;
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2KeyAbility = function (entry, textStack, meta, options) {
+		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		textStack[0] += `<div style="display: flex; float: left; clear: left" ${dataString}>`;
+		textStack[0] += `<div class="pf2-key-abilities">`;
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		if (entry.ability != null) {
+			textStack[0] += `<div class="pf2-key-abilities-ab">`;
+			textStack[0] += `<p class="pf2-key-abilities-title">KEY ABILITY</p>`;
+			const len = entry.ability.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.ability[i], textStack, meta, {prefix: "<p class='pf2-key-abilities-text'>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+			textStack[0] += `</div>`;
+		}
+
+		if (entry.hp != null) {
+			textStack[0] += `<div class="pf2-key-abilities-hp">`;
+			textStack[0] += `<p class="pf2-key-abilities-title">HIT POINTS</p>`;
+			const len = entry.hp.length;
+			for (let i = 0; i < len; ++i) {
+				const cacheDepth = meta.depth;
+				meta.depth = 2;
+				this._recursiveRender(entry.hp[i], textStack, meta, {prefix: "<p class='pf2-key-abilities-text'>", suffix: "</p>"});
+				meta.depth = cacheDepth;
+			}
+			textStack[0] += `</div>`;
+		}
+
+		textStack[0] += `</div>`;
 		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -2320,10 +2397,10 @@ function Renderer() {
 						break;
 					case "@action":
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
-						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_PHB;
+						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ACTIONS,
-							source: source || SRC_PHB
+							source: source || SRC_CRB
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
@@ -3035,9 +3112,9 @@ Renderer.utils = {
 			const hash = UrlUtil.URL_TO_HASH_BUILDER[opts.page](it);
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
-		const type = opts.type != null ? opts.type : it.type
+		const type = opts.type != null ? opts.type : it.type || ""
 		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
-		const activity = opts.activity ? ` ${it.activity != null ? Renderer.get().render(it.activity.entry) : ``}` : ``
+		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes('@as') ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			${opts.controlRhs || ""}
@@ -6080,8 +6157,14 @@ Renderer.action = {
 	getCompactRenderedString(it) {
 		const cpy = MiscUtil.copy(it);
 		delete cpy.name;
-		return `${Renderer.utils.getExcludedTr(it, "action")}${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_ACTIONS})}
-		<tr><td colspan="6">${Renderer.get().setFirstSection(true).render(cpy)}</td></tr>`;
+		return `${Renderer.utils.getExcludedDiv(it, "action")}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(it.traits || [])}
+		<div class="pf2-stat-text">
+		${Renderer.get().setFirstSection(true).render({entries: it.entries})}
+		</div>
+		${Renderer.utils.getPageP(it)}`;
 	}
 };
 
