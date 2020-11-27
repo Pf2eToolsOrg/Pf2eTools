@@ -149,6 +149,7 @@ class NavBar {
 		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
 		addDivider(ulUtils);
 		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
+		addLi(ulUtils, "licenses.html", "Licenses");
 
 		addLi(navBar, "donate.html", "Donate", {isRoot: true});
 
