@@ -49,10 +49,8 @@ class BestiaryPage {
 			{
 				hash,
 				source,
-				type,
-				cr,
-				group: mon.group || "",
-				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
+				level: mon.level,
+				type: mon.creature_type
 			},
 			{
 				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
@@ -146,28 +144,11 @@ class BestiaryPage {
 			{
 				uniqueId: data.uniqueId || "",
 				customHashId: getMonCustomHashId(mon),
-				$elesCount: [$eleCount1, $eleCount2],
-				approxHp: this._getApproxHp(mon),
-				approxAc: this._getApproxAc(mon)
+				$elesCount: [$eleCount1, $eleCount2]
 			}
 		);
 
 		return listItem;
-	}
-
-	//TODO: ???
-	_getApproxHp (mon) {
-		if (mon.hp && mon.hp.average && !isNaN(mon.hp.average)) return Number(mon.hp.average);
-		return null;
-	}
-
-	_getApproxAc (mon) {
-		// Use the first AC listed, as this is usually the "primary"
-		if (mon.ac && mon.ac[0] != null) {
-			if (mon.ac[0].ac) return mon.ac[0].ac;
-			if (typeof mon.ac[0] === "number") return mon.ac[0];
-		}
-		return null;
 	}
 
 	doLoadHash (id) {
@@ -657,10 +638,22 @@ function addMonsters (data) {
 	}
 
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, monsters, popoutHandlerGenerator, "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	Renderer.hover.bindPopoutButton($btnPop, monsters, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton(pPreloadSublistSources);
+	ListUtil.bindOtherButtons({
+		download: true,
+		upload: {
+			pFnPreLoad: pPreloadSublistSources,
+		},
+		sendToBrew: {
+			mode: "creatureBuilder",
+			fnGetMeta: () => ({
+				page: UrlUtil.getCurrentPage(),
+				source: Hist.getHashSource(),
+				hash: Hist.getHashParts()[0],
+			}),
+		},
+	});
 
 	Renderer.utils.bindPronounceButtons();
 }

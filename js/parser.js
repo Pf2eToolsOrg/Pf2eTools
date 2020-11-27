@@ -2814,7 +2814,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"item": SRC_DMG,
 	"class": SRC_PHB,
 	"creature": SRC_MM,
-	"condition": SRC_PHB,
+	"condition": SRC_CRB,
 	"disease": SRC_DMG,
 	"background": SRC_PHB,
 	"race": SRC_PHB,
@@ -2834,7 +2834,8 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"classFeature": SRC_PHB,
 	"subclassFeature": SRC_PHB,
 	"table": SRC_DMG,
-	"language": SRC_PHB
+	"language": SRC_PHB,
+	"trait": SRC_CRB
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

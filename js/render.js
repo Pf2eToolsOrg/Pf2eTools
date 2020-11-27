@@ -71,7 +71,10 @@ function Renderer() {
 		return this;
 	};
 
-	this.setBaseMediaUrl = function (mediaDir, url) { this.baseMediaUrls[mediaDir] = url; return this; }
+	this.setBaseMediaUrl = function (mediaDir, url) {
+		this.baseMediaUrls[mediaDir] = url;
+		return this;
+	}
 
 	/**
 	 * Other sections should be prefixed with a vertical divider
@@ -462,8 +465,12 @@ function Renderer() {
 				case "dataTrapHazard":
 					this._renderDataTrapHazard(entry, textStack, meta, options);
 					break;
-				case "dataObject": this._renderDataObject(entry, textStack, meta, options); break;
-				case "dataItem": this._renderDataItem(entry, textStack, meta, options); break;
+				case "dataObject":
+					this._renderDataObject(entry, textStack, meta, options);
+					break;
+				case "dataItem":
+					this._renderDataItem(entry, textStack, meta, options);
+					break;
 
 				// images
 				case "image":
@@ -603,8 +610,12 @@ function Renderer() {
 		return out.join(" ");
 	};
 
-	this._renderImage_getUrl = function (entry) { return Renderer.utils.getMediaUrl(entry, "href", "img"); };
-	this._renderImage_getUrlThumbnail = function (entry) { return Renderer.utils.getMediaUrl(entry, "hrefThumbnail", "img"); };
+	this._renderImage_getUrl = function (entry) {
+		return Renderer.utils.getMediaUrl(entry, "href", "img");
+	};
+	this._renderImage_getUrlThumbnail = function (entry) {
+		return Renderer.utils.getMediaUrl(entry, "hrefThumbnail", "img");
+	};
 
 	this._renderList_getListCssClasses = function (entry, textStack, meta, options) {
 		const out = [`rd__list`];
@@ -793,7 +804,10 @@ function Renderer() {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
 
-		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({type: "inline", entries: [entry.name]})}${isAddPeriod ? "." : ""}</span>${pagePart}</span> ` : "";
+		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({
+			type: "inline",
+			entries: [entry.name]
+		})}${isAddPeriod ? "." : ""}</span>${pagePart}</span> ` : "";
 
 		if (meta.depth === -1) {
 			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
@@ -956,7 +970,7 @@ function Renderer() {
 
 		for (let key in entry.entries) {
 			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
-			if (typeof(entry.entries[key]) === "string") {
+			if (typeof (entry.entries[key]) === "string") {
 				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
 			} else if (Array.isArray(entry.entries[key])) {
 				entry.entries[key].forEach((e) => {
@@ -1022,7 +1036,7 @@ function Renderer() {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1042,7 +1056,7 @@ function Renderer() {
 				textStack[0] += `<p class="pf2-h1-flavor rd__h">${this.render(entry.entries[i])}</p>`;
 			}
 		}
-		textStack[0] +=  this._renderPf2ChapterSwirl()
+		textStack[0] += this._renderPf2ChapterSwirl()
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -1075,7 +1089,7 @@ function Renderer() {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1099,7 +1113,7 @@ function Renderer() {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1122,7 +1136,7 @@ function Renderer() {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1145,7 +1159,7 @@ function Renderer() {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1169,7 +1183,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-sidebar-text">`, suffix:`</p>`});
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: `<p class="pf2-sidebar-text">`,
+					suffix: `</p>`
+				});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1194,7 +1211,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: '<p class="pf2-sample-box-text">', suffix: "</p>"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: '<p class="pf2-sample-box-text">',
+					suffix: "</p>"
+				});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1239,7 +1259,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: '<p class="pf2-tips-box-text">', suffix: "</p>"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: '<p class="pf2-tips-box-text">',
+					suffix: "</p>"
+				});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1296,7 +1319,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p class='pf2-red-box-note'>", suffix: "</p>"});
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: "<p class='pf2-red-box-note'>",
+					suffix: "</p>"
+				});
 				meta.depth = cacheDepth;
 			}
 		}
@@ -1320,7 +1346,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.ability[i], textStack, meta, {prefix: "<p class='pf2-key-abilities-text'>", suffix: "</p>"});
+				this._recursiveRender(entry.ability[i], textStack, meta, {
+					prefix: "<p class='pf2-key-abilities-text'>",
+					suffix: "</p>"
+				});
 				meta.depth = cacheDepth;
 			}
 			textStack[0] += `</div>`;
@@ -1333,7 +1362,10 @@ function Renderer() {
 			for (let i = 0; i < len; ++i) {
 				const cacheDepth = meta.depth;
 				meta.depth = 2;
-				this._recursiveRender(entry.hp[i], textStack, meta, {prefix: "<p class='pf2-key-abilities-text'>", suffix: "</p>"});
+				this._recursiveRender(entry.hp[i], textStack, meta, {
+					prefix: "<p class='pf2-key-abilities-text'>",
+					suffix: "</p>"
+				});
 				meta.depth = cacheDepth;
 			}
 			textStack[0] += `</div>`;
@@ -1519,7 +1551,11 @@ function Renderer() {
 					});
 				}
 			}
-			if (entry.ritual && !hidden.has("ritual")) tempList.items.push({type: "itemSpell", name: `Rituals:`, entry: entry.ritual.join(", ")});
+			if (entry.ritual && !hidden.has("ritual")) tempList.items.push({
+				type: "itemSpell",
+				name: `Rituals:`,
+				entry: entry.ritual.join(", ")
+			});
 			if (tempList.items.length) toRender[0].entries.push(tempList);
 		}
 
@@ -1536,7 +1572,11 @@ function Renderer() {
 						levelCantrip = `${Parser.spLevelToFull(spells.lower)}-${levelCantrip}`;
 						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(lvl)}-level slot${slots > 1 ? "s" : ""})` : ``;
 					}
-					tempList.items.push({type: "itemSpell", name: `${levelCantrip}${slotsAtWill}:`, entry: spells.spells.join(", ") || "\u2014"})
+					tempList.items.push({
+						type: "itemSpell",
+						name: `${levelCantrip}${slotsAtWill}:`,
+						entry: spells.spells.join(", ") || "\u2014"
+					})
 				}
 			}
 			toRender[0].entries.push(tempList);
@@ -1818,7 +1858,10 @@ function Renderer() {
 
 		if (entry.entries) {
 			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"})
+			for (let i = 0; i < len; ++i) this._recursiveRender(entry.entries[i], textStack, meta, {
+				prefix: "<p>",
+				suffix: "</p>"
+			})
 		} else if (entry.movedTo) {
 			textStack[0] += `<i>This content has been moved to ${entry.movedTo}.</i>`;
 		} else {
@@ -2257,7 +2300,10 @@ function Renderer() {
 					textStack[0] += renderText;
 				} else {
 					const area = BookUtil.curRender.headerMap[areaId] || {entry: {name: ""}}; // default to prevent rendering crash on bad tag
-					const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, {isLargeBookContent: true, depth: area.depth});
+					const hoverMeta = Renderer.hover.getMakePredefinedHover(area.entry, {
+						isLargeBookContent: true,
+						depth: area.depth
+					});
 					textStack[0] += `<a href="#${BookUtil.curRender.curBookId},${area.chapter},${UrlUtil.encodeForHash(area.entry.name)},0" ${hoverMeta.html}>${renderText}</a>`;
 				}
 
@@ -2319,10 +2365,59 @@ function Renderer() {
 				break;
 			}
 
+			case "@condition": {
+				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_CONDITIONS_DISEASES,
+						hash:`${name}${source ? `${HASH_LIST_SEP}${source}` : `${HASH_LIST_SEP}${SRC_CRB}`}`,
+						hover: {
+							page: UrlUtil.PG_CONDITIONS_DISEASES,
+							source: source || SRC_CRB
+						}
+					},
+					text: (displayText || name),
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
+
+			case "@trait": {
+				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_TRAITS,
+						hash: `${name.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')}${source ? `${HASH_LIST_SEP}${source}` : ""}`,
+						hover: {
+							page: UrlUtil.PG_TRAITS,
+							source: source || SRC_CRB
+						}
+					},
+					text: (displayText || name),
+				};
+
+				if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
+
 			case "@classFeature": {
 				const unpacked = DataUtil.class.unpackUidClassFeature(text);
 
-				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: unpacked.className, source: unpacked.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: unpacked.level - 1, ixFeature: 0}})}`;
+				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({
+					name: unpacked.className,
+					source: unpacked.classSource
+				})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+					feature: {
+						ixLevel: unpacked.level - 1,
+						ixFeature: 0
+					}
+				})}`;
 
 				const fauxEntry = {
 					type: "link",
@@ -2349,7 +2444,15 @@ function Renderer() {
 			case "@subclassFeature": {
 				const unpacked = DataUtil.class.unpackUidSubclassFeature(text);
 
-				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: unpacked.className, source: unpacked.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: unpacked.level - 1, ixFeature: 0}})}`;
+				const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({
+					name: unpacked.className,
+					source: unpacked.classSource
+				})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+					feature: {
+						ixLevel: unpacked.level - 1,
+						ixFeature: 0
+					}
+				})}`;
 
 				const fauxEntry = {
 					type: "link",
@@ -2463,15 +2566,6 @@ function Renderer() {
 							];
 							fauxEntry.text = displayText || `${name} (CR ${others[0]})`;
 						}
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@condition":
-						fauxEntry.href.path = "conditionsdiseases.html";
-						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS_DISEASES,
-							source: source || SRC_CRB
-						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
@@ -2610,19 +2704,6 @@ function Renderer() {
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_CHAR_CREATION_OPTIONS,
 							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@trait":
-						fauxEntry.href = {
-							type: "internal",
-							hash: `${text.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')}${source ? `${HASH_LIST_SEP}${source}` : ""}`
-						}
-						fauxEntry.href.path = "traits.html";
-						if (!source) fauxEntry.href.hash += HASH_LIST_SEP + SRC_CRB;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_TRAITS,
-							source: source || SRC_CRB
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
@@ -3332,9 +3413,11 @@ Renderer.utils = {
 		else return $ele[0].outerHTML;
 	},
 
-	isDisplayPage (page) { return page != null && ((!isNaN(page) && page > 0) || isNaN(page)); },
+	isDisplayPage(page) {
+		return page != null && ((!isNaN(page) && page > 0) || isNaN(page));
+	},
 
-	getExcludedTr (it, dataProp, page) {
+	getExcludedTr(it, dataProp, page) {
 		if (!ExcludeUtil.isInitialised) return "";
 		const hash = page ? UrlUtil.URL_TO_HASH_BUILDER[page](it) : UrlUtil.autoEncodeHash(it);
 		const isExcluded = ExcludeUtil.isExcluded(hash, dataProp, it.source);
@@ -3347,12 +3430,12 @@ Renderer.utils = {
 		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></div>` : "";
 	},
 
-	getSourceAndPageTrHtml (it) {
+	getSourceAndPageTrHtml(it) {
 		const html = Renderer.utils.getSourceAndPageHtml(it);
 		return html ? `<b>Source:</b> ${html}` : "";
 	},
 
-	_getAltSourceHtmlOrText (it, prop, introText, isText) {
+	_getAltSourceHtmlOrText(it, prop, introText, isText) {
 		if (!it[prop] || !it[prop].length) return "";
 
 		return `${introText} ${it[prop].map(as => {
@@ -3365,10 +3448,14 @@ Renderer.utils = {
 		return `<p class="pf-2-stat-source"><strong>${it.source}</strong> page ${it.page}</p>`;
 	},
 
-	getSourceAndPageHtml (it) { return this._getSourceAndPageHtmlOrText(it); },
-	getSourceAndPageText (it) { return this._getSourceAndPageHtmlOrText(it, true); },
+	getSourceAndPageHtml(it) {
+		return this._getSourceAndPageHtmlOrText(it);
+	},
+	getSourceAndPageText(it) {
+		return this._getSourceAndPageHtmlOrText(it, true);
+	},
 
-	_getSourceAndPageHtmlOrText (it, isText) {
+	_getSourceAndPageHtmlOrText(it, isText) {
 		const sourceSub = Renderer.utils.getSourceSubText(it);
 		const baseText = `${isText ? `` : `<i title="${Parser.sourceJsonToFull(it.source)}${sourceSub}">`}${Parser.sourceJsonToAbv(it.source)}${sourceSub}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(it.page) ? `, page ${it.page}` : ""}`;
 		const addSourceText = Renderer.utils._getAltSourceHtmlOrText(it, "additionalSources", "Additional information from", isText);
@@ -3379,12 +3466,12 @@ Renderer.utils = {
 		return `${[baseText, addSourceText, otherSourceText, srdText, externalSourceText].filter(it => it).join(". ")}${baseText && (addSourceText || otherSourceText || srdText || externalSourceText) ? "." : ""}`;
 	},
 
-	async _pHandleNameClick (ele) {
+	async _pHandleNameClick(ele) {
 		await MiscUtil.pCopyTextToClipboard($(ele).text());
 		JqueryUtil.showCopiedEffect($(ele));
 	},
 
-	getPageTr (it) {
+	getPageTr(it) {
 		return `<tr><td colspan=6>${Renderer.utils.getSourceAndPageTrHtml(it)}</td></tr>`;
 	},
 
@@ -3504,7 +3591,7 @@ Renderer.utils = {
 		return fluff;
 	},
 
-	async pGetFluff ({entity, pFnPostProcess, fluffUrl, fluffBaseUrl, fluffProp} = {}) {
+	async pGetFluff({entity, pFnPostProcess, fluffUrl, fluffBaseUrl, fluffProp} = {}) {
 		let predefinedFluff = Renderer.utils.getPredefinedFluff(entity, fluffProp);
 		if (predefinedFluff) {
 			if (pFnPostProcess) predefinedFluff = await pFnPostProcess(predefinedFluff);
@@ -3535,7 +3622,7 @@ Renderer.utils = {
 	 * @param {entity} Entity to build tab for (e.g. a monster; an item)
 	 * @param {pFnGetFluff} Function which gets the entity's fluff.
 	 */
-	async pBuildFluffTab ({isImageTab, $content, entity, $headerControls, pFnGetFluff} = {}) {
+	async pBuildFluffTab({isImageTab, $content, entity, $headerControls, pFnGetFluff} = {}) {
 		const renderer = Renderer.get();
 
 		$content.append(Renderer.utils.getBorderTr());
@@ -3729,14 +3816,17 @@ Renderer.utils = {
 										case "weapon": {
 											return isListMode ? `Prof ${Parser.weaponFullToAbv(prof)} weapon` : `Proficiency with a ${prof} weapon`;
 										}
-										default: throw new Error(`Unhandled proficiency type: "${profType}"`);
+										default:
+											throw new Error(`Unhandled proficiency type: "${profType}"`);
 									}
 								})
 							});
 							return isListMode ? parts.join("/") : parts.joinConjunct(", ", " or ");
 						}
-						case "spellcasting": return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
-						default: throw new Error(`Unhandled key: ${k}`);
+						case "spellcasting":
+							return isListMode ? "Spellcasting" : "The ability to cast at least one spell";
+						default:
+							throw new Error(`Unhandled key: ${k}`);
 					}
 				})
 				.filter(Boolean)
@@ -3747,7 +3837,7 @@ Renderer.utils = {
 		return isListMode ? listOfChoices.join("/") : `Prerequisites: ${listOfChoices.joinConjunct("; ", " or ")}`;
 	},
 
-	getMediaUrl (entry, prop, mediaDir) {
+	getMediaUrl(entry, prop, mediaDir) {
 		if (!entry[prop]) return "";
 
 		let href = "";
@@ -3941,7 +4031,7 @@ Renderer.spell = {
 		return renderStack.join("");
 	},
 
-	pGetFluff (sp) {
+	pGetFluff(sp) {
 		return Renderer.utils.pGetFluff({
 			entity: sp,
 			fluffBaseUrl: `data/spells/`,
@@ -3986,7 +4076,7 @@ Renderer.trait = {
 		return renderStack.join("");
 	},
 
-	pGetFluff (it) {
+	pGetFluff(it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fluffUrl: `data/fluff-conditionsdiseases.json`,
@@ -4014,7 +4104,7 @@ Renderer.background = {
 		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
 	},
 
-	getLanguageSummary (languageProfsArray, short, collectIn) {
+	getLanguageSummary(languageProfsArray, short, collectIn) {
 		return Renderer.background._summariseProfs(languageProfsArray, short, collectIn);
 	},
 
@@ -4052,7 +4142,7 @@ Renderer.background = {
 		}).join(" <i>or</i> ");
 	},
 
-	pGetFluff (bg) {
+	pGetFluff(bg) {
 		return Renderer.utils.pGetFluff({
 			entity: bg,
 			fluffUrl: "data/fluff-backgrounds.json",
@@ -4224,7 +4314,7 @@ Renderer.race = {
 		return out;
 	},
 
-	_getSubraceName (raceName, subraceName) {
+	_getSubraceName(raceName, subraceName) {
 		if (!subraceName) return raceName;
 
 		const mBrackets = /^(.*?)(\(.*?\))$/i.exec(raceName || "");
@@ -4234,12 +4324,12 @@ Renderer.race = {
 		return `${mBrackets[1]}(${[bracketPart, subraceName].join("; ")})`;
 	},
 
-	_mergeSubraces (race) {
+	_mergeSubraces(race) {
 		if (!race.subraces) return [race];
 		return MiscUtil.copy(race.subraces).map(s => Renderer.race._getMergedSubrace(race, s));
 	},
 
-	_getMergedSubrace (race, s) {
+	_getMergedSubrace(race, s) {
 		const cpy = MiscUtil.copy(race);
 		cpy._baseName = cpy.name;
 		cpy._baseSource = cpy.source;
@@ -4359,7 +4449,7 @@ Renderer.race = {
 		return nxtData;
 	},
 
-	async pPostProcessFluff (race, raceFluff) {
+	async pPostProcessFluff(race, raceFluff) {
 		if (!(raceFluff.uncommon || raceFluff.monstrous)) return raceFluff;
 
 		raceFluff = MiscUtil.copy(raceFluff);
@@ -4379,7 +4469,7 @@ Renderer.race = {
 		return raceFluff;
 	},
 
-	pGetFluff (race) {
+	pGetFluff(race) {
 		return Renderer.utils.pGetFluff({
 			entity: race,
 			fluffProp: "raceFluff",
@@ -4435,7 +4525,10 @@ Renderer.deity = {
 		const renderer = Renderer.get();
 		return `
 			${Renderer.utils.getExcludedTr(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameTr(deity, {suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "", page: UrlUtil.PG_DEITIES})}
+			${Renderer.utils.getNameTr(deity, {
+			suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "",
+			page: UrlUtil.PG_DEITIES
+		})}
 			<tr><td colspan="6">
 				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
 			</td>
@@ -4445,7 +4538,7 @@ Renderer.deity = {
 };
 
 Renderer.object = {
-	getCompactRenderedString (obj, opts) {
+	getCompactRenderedString(obj, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get();
@@ -4574,7 +4667,7 @@ Renderer.traphazard = {
 		return "";
 	},
 
-	getCompactRenderedString (it, opts) {
+	getCompactRenderedString(it, opts) {
 		opts = opts || {};
 
 		const renderer = Renderer.get();
@@ -5009,7 +5102,7 @@ Renderer.monster = {
 	 * @param [opts.isCompact]
 	 * @param [opts.isEmbeddedEntity]
 	 */
-	getCompactRenderedString (mon, renderer, opts) {
+	getCompactRenderedString(mon, renderer, opts) {
 		opts = opts || {};
 		if (opts.isCompact === undefined) opts.isCompact = true;
 
@@ -5023,7 +5116,12 @@ Renderer.monster = {
 
 		renderStack.push(`
 			${Renderer.utils.getExcludedTr(mon, "monster", UrlUtil.PG_BESTIARY)}
-			${Renderer.utils.getNameTr(mon, {page: UrlUtil.PG_BESTIARY, extensionData: mon._isScaledCr, extraThClasses, isEmbeddedEntity: opts.isEmbeddedEntity})}
+			${Renderer.utils.getNameTr(mon, {
+			page: UrlUtil.PG_BESTIARY,
+			extensionData: mon._isScaledCr,
+			extraThClasses,
+			isEmbeddedEntity: opts.isEmbeddedEntity
+		})}
 			<tr><td colspan="6"><i>${Renderer.monster.getTypeAlignmentPart(mon)}</i></td></tr>
 			<tr><td colspan="6"><div class="border"></div></td></tr>
 			<tr><td colspan="6">
@@ -5155,8 +5253,8 @@ Renderer.monster = {
 		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a, b));
 	},
 
-	getSkillsString (renderer, mon) {
-		function makeSkillRoller (name, mod) {
+	getSkillsString(renderer, mon) {
+		function makeSkillRoller(name, mod) {
 			return Renderer.get().render(`{@d20 ${mod}|${mod}|${name}}`);
 		}
 
@@ -5178,11 +5276,11 @@ Renderer.monster = {
 		} else return skills;
 	},
 
-	getTokenUrl (mon) {
+	getTokenUrl(mon) {
 		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
 	},
 
-	postProcessFluff (mon, fluff) {
+	postProcessFluff(mon, fluff) {
 		const cpy = MiscUtil.copy(fluff);
 
 		// TODO is this good enough? Should additionally check for lair blocks which are not the last, and tag them with
@@ -5211,7 +5309,7 @@ Renderer.monster = {
 		return cpy;
 	},
 
-	getRenderedSenses (senses, isPlainText) {
+	getRenderedSenses(senses, isPlainText) {
 		if (typeof senses === "string") senses = [senses]; // handle legacy format
 		if (isPlainText) return senses.join(", ");
 		const senseStr = senses
@@ -5222,12 +5320,12 @@ Renderer.monster = {
 		return Renderer.get().render(senseStr);
 	},
 
-	getRenderedLanguages (languages) {
+	getRenderedLanguages(languages) {
 		if (typeof languages === "string") languages = [languages]; // handle legacy format
 		return languages ? languages.map(it => Renderer.get().render(it)).join(", ") : "\u2014";
 	},
 
-	initParsed (mon) {
+	initParsed(mon) {
 		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
 		mon._pCr = mon._pCr || (mon.cr == null ? "\u2014" : (mon.cr.cr || mon.cr));
 		if (!mon._fCr) {
@@ -5239,14 +5337,14 @@ Renderer.monster = {
 		}
 	},
 
-	updateParsed (mon) {
+	updateParsed(mon) {
 		delete mon._pTypes;
 		delete mon._pCr;
 		delete mon._fCr;
 		Renderer.monster.initParsed(mon);
 	},
 
-	pGetFluff (mon) {
+	pGetFluff(mon) {
 		return Renderer.utils.pGetFluff({
 			entity: mon,
 			pFnPostProcess: Renderer.monster.postProcessFluff.bind(null, mon),
@@ -5382,7 +5480,7 @@ Renderer.item = {
 		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
 	},
 
-	getAttunementAndAttunementCatText (item, prop = "reqAttune") {
+	getAttunementAndAttunementCatText(item, prop = "reqAttune") {
 		let attunement = null;
 		let attunementCat = "No";
 		if (item[prop] != null && item[prop] !== false) {
@@ -5511,7 +5609,10 @@ Renderer.item = {
 		}
 
 		if (item._fullAdditionalEntries || item.additionalEntries) {
-			const additionEntriesList = MiscUtil.copy({type: "entries", entries: item._fullAdditionalEntries || item.additionalEntries});
+			const additionEntriesList = MiscUtil.copy({
+				type: "entries",
+				entries: item._fullAdditionalEntries || item.additionalEntries
+			});
 			const procAdditionEntriesList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk(additionEntriesList, handlers);
 			renderer.recursiveRender(procAdditionEntriesList, renderStack, {depth: 1});
 		}
@@ -5523,7 +5624,7 @@ Renderer.item = {
 		return renderStack.join("").trim();
 	},
 
-	getCompactRenderedString (item, opts) {
+	getCompactRenderedString(item, opts) {
 		opts = opts || {};
 
 		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
@@ -5568,13 +5669,16 @@ Renderer.item = {
 		if (Renderer.item._additionalEntriesMap[e.appliesTo]) return;
 		Renderer.item._additionalEntriesMap[e.appliesTo] = MiscUtil.copy(e.entries);
 	},
-	async _pAddBrewPropertiesAndTypes () {
+	async _pAddBrewPropertiesAndTypes() {
 		const brew = await BrewUtil.pAddBrewData();
 		(brew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
 		(brew.itemType || []).forEach(t => Renderer.item._addType(t));
 	},
-	_addBasePropertiesAndTypes (baseItemData) {
-		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}));
+	_addBasePropertiesAndTypes(baseItemData) {
+		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({
+			abbreviation: abv,
+			name
+		}));
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
 		baseItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
 		baseItemData.itemType.forEach(t => {
@@ -5689,7 +5793,7 @@ Renderer.item = {
 	 * @param [opts]
 	 * @param [opts.linkedLootTables]
 	 */
-	_createSpecificVariants (baseItems, genericVariants, opts) {
+	_createSpecificVariants(baseItems, genericVariants, opts) {
 		opts = opts || {};
 
 		const genericAndSpecificVariants = [];
@@ -5709,11 +5813,11 @@ Renderer.item = {
 		return genericAndSpecificVariants;
 	},
 
-	_createSpecificVariants_hasRequiredProperty (baseItem, genericVariant) {
+	_createSpecificVariants_hasRequiredProperty(baseItem, genericVariant) {
 		return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
 	},
 
-	_createSpecificVariants_hasExcludedProperty (baseItem, genericVariant) {
+	_createSpecificVariants_hasExcludedProperty(baseItem, genericVariant) {
 		const curExcludes = genericVariant.excludes || {};
 		return !!Object.keys(curExcludes).find(key => {
 			if (curExcludes[key] instanceof Array) {
@@ -5729,7 +5833,7 @@ Renderer.item = {
 	 * @param [opts]
 	 * @param [opts.linkedLootTables]
 	 */
-	_createSpecificVariants_createSpecificVariant (baseItem, genericVariant, opts) {
+	_createSpecificVariants_createSpecificVariant(baseItem, genericVariant, opts) {
 		const inherits = genericVariant.inherits;
 		const specificVariant = MiscUtil.copy(baseItem);
 		// Recent enhancements/entry cache
@@ -5755,8 +5859,12 @@ Renderer.item = {
 		specificVariant._category = "Specific Variant";
 		Object.keys(inherits).forEach((inheritedProperty) => {
 			switch (inheritedProperty) {
-				case "namePrefix": specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`; break;
-				case "nameSuffix": specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`; break;
+				case "namePrefix":
+					specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`;
+					break;
+				case "nameSuffix":
+					specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`;
+					break;
 				case "entries": {
 					Renderer.item._initFullEntries(specificVariant);
 
@@ -5776,8 +5884,12 @@ Renderer.item = {
 					const result = Renderer.dice.parseRandomise2(exp);
 					if (result != null) {
 						switch (inheritedProperty) {
-							case "weightExpression": specificVariant.weight = result; break;
-							case "valueExpression": specificVariant.value = result; break;
+							case "weightExpression":
+								specificVariant.weight = result;
+								break;
+							case "valueExpression":
+								specificVariant.value = result;
+								break;
 						}
 					}
 
@@ -5787,7 +5899,8 @@ Renderer.item = {
 					specificVariant.bardingType = baseItem.type;
 					break;
 				}
-				default: specificVariant[inheritedProperty] = inherits[inheritedProperty];
+				default:
+					specificVariant[inheritedProperty] = inherits[inheritedProperty];
 			}
 		});
 
@@ -5809,7 +5922,7 @@ Renderer.item = {
 		return specificVariant;
 	},
 
-	_createSpecificVariants_evaluateExpression (baseItem, specificVariant, inherits, inheritedProperty) {
+	_createSpecificVariants_evaluateExpression(baseItem, specificVariant, inherits, inheritedProperty) {
 		return inherits[inheritedProperty].replace(/\[\[([^\]]+)]]/g, (...m) => {
 			const propPath = m[1].split(".");
 			return propPath[0] === "item"
@@ -5833,7 +5946,7 @@ Renderer.item = {
 	 * @param [opts.baseItems]
 	 * @param [opts.isSpecificVariantsOnly]
 	 */
-	async pGetGenericAndSpecificVariants (genericVariants, opts) {
+	async pGetGenericAndSpecificVariants(genericVariants, opts) {
 		opts = opts || {};
 
 		let baseItems;
@@ -5875,7 +5988,7 @@ Renderer.item = {
 		"namePrefix", // Name prefix/suffix are meaningless
 		"nameSuffix",
 	]),
-	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
+	_genericVariants_addInheritedPropertiesToSelf(genericVariant) {
 		if (genericVariant._isInherited) return;
 		genericVariant._isInherited = true;
 
@@ -5897,13 +6010,13 @@ Renderer.item = {
 		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
 	},
 
-	getItemTypeName (t) {
+	getItemTypeName(t) {
 		const fullType = Renderer.item.typeMap[t];
 		if (!fullType) throw new Error(`Item type ${t} not found. You probably meant to load the property/type reference first; see \`Renderer.item.populatePropertyAndTypeReference()\`.`);
 		return fullType.name || t;
 	},
 
-	enhanceItem (item) {
+	enhanceItem(item) {
 		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
@@ -6080,7 +6193,7 @@ Renderer.item = {
 		// endregion
 	},
 
-	unenhanceItem (item) {
+	unenhanceItem(item) {
 		if (!item._isEnhanced) return;
 		delete item._isEnhanced;
 		delete item._fullEntries;
@@ -6146,7 +6259,10 @@ Renderer.item = {
 						resolve();
 					} else {
 						try {
-							Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({abbreviation: abv, name}));
+							Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({
+								abbreviation: abv,
+								name
+							}));
 							data.itemProperty.forEach(p => Renderer.item._addProperty(p));
 							data.itemType.forEach(t => Renderer.item._addType(t));
 							data.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
@@ -6183,7 +6299,7 @@ Renderer.item = {
 		return specificVariants;
 	},
 
-	pGetFluff (item) {
+	pGetFluff(item) {
 		return Renderer.utils.pGetFluff({
 			entity: item,
 			fluffProp: "itemFluff",
@@ -6357,14 +6473,23 @@ Renderer.vehicle = {
 
 		veh.vehicleType = veh.vehicleType || "SHIP";
 		switch (veh.vehicleType) {
-			case "SHIP": return Renderer.vehicle._getRenderedString_ship(veh, opts);
-			case "INFWAR": return Renderer.vehicle._getRenderedString_infwar(veh, opts);
-			case "CREATURE": return Renderer.monster.getCompactRenderedString(veh, null, {...opts, isHideLanguages: true, isHideSenses: true, isCompact: false});
-			default: throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
+			case "SHIP":
+				return Renderer.vehicle._getRenderedString_ship(veh, opts);
+			case "INFWAR":
+				return Renderer.vehicle._getRenderedString_infwar(veh, opts);
+			case "CREATURE":
+				return Renderer.monster.getCompactRenderedString(veh, null, {
+					...opts,
+					isHideLanguages: true,
+					isHideSenses: true,
+					isCompact: false
+				});
+			default:
+				throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
 		}
 	},
 
-	_getRenderedString_upgrade (it, opts) {
+	_getRenderedString_upgrade(it, opts) {
 		const summaryParts = [
 			Parser.vehicleTypeToFull(it.upgradeType),
 			it.prerequisite ? Renderer.utils.getPrerequisiteText(it.prerequisite) : "",
@@ -6378,7 +6503,7 @@ Renderer.vehicle = {
 			<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>`;
 	},
 
-	_getRenderedString_ship (veh, opts) {
+	_getRenderedString_ship(veh, opts) {
 		const renderer = Renderer.get();
 
 		function getSectionTitle(title) {
@@ -6526,7 +6651,9 @@ Renderer.vehicle = {
 		`;
 	},
 
-	getShipCreatureCapacity (veh) { return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`; },
+	getShipCreatureCapacity(veh) {
+		return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`;
+	},
 
 	_getRenderedString_infwar(veh, opts) {
 		const renderer = Renderer.get();
@@ -6580,9 +6707,11 @@ Renderer.vehicle = {
 		`;
 	},
 
-	getInfwarCreatureCapacity (veh) { return `${veh.capCreature} Medium creatures`; },
+	getInfwarCreatureCapacity(veh) {
+		return `${veh.capCreature} Medium creatures`;
+	},
 
-	pGetFluff (veh) {
+	pGetFluff(veh) {
 		return Renderer.utils.pGetFluff({
 			entity: veh,
 			fluffProp: "vehicleFluff",
@@ -6590,7 +6719,7 @@ Renderer.vehicle = {
 		});
 	},
 
-	getTokenUrl (veh) {
+	getTokenUrl(veh) {
 		return veh.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${Parser.nameToTokenName(veh.name)}.png`);
 	},
 };
@@ -6637,7 +6766,7 @@ Renderer.language = {
 		${Renderer.utils.getPageTr(it)}`;
 	},
 
-	pGetFluff (it) {
+	pGetFluff(it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fluffProp: "languageFluff",
@@ -6647,7 +6776,7 @@ Renderer.language = {
 };
 
 Renderer.adventureBook = {
-	getEntryIdLookup (bookData, doThrowError = true) {
+	getEntryIdLookup(bookData, doThrowError = true) {
 		const out = {};
 		const titlesRel = {};
 
@@ -6713,7 +6842,7 @@ Renderer.adventureBook = {
 };
 
 Renderer.charoption = {
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		return `
 		${Renderer.utils.getExcludedTr(it, "charoption", UrlUtil.PG_CHAR_CREATION_OPTIONS)}
 		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
@@ -6723,7 +6852,7 @@ Renderer.charoption = {
 		`;
 	},
 
-	pGetFluff (it) {
+	pGetFluff(it) {
 		return Renderer.utils.pGetFluff({
 			entity: it,
 			fluffUrl: "data/fluff-charcreationoptions.json",
@@ -6733,7 +6862,7 @@ Renderer.charoption = {
 };
 
 Renderer.generic = {
-	getCompactRenderedString (it) {
+	getCompactRenderedString(it) {
 		return `
 		${Renderer.utils.getNameTr(it)}
 		<tr class="text"><td colspan="6">
@@ -6873,7 +7002,7 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	async pHandleLinkMouseOver (evt, ele, page, source, hash, preloadId) {
+	async pHandleLinkMouseOver(evt, ele, page, source, hash, preloadId) {
 		Renderer.hover._doInit();
 
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
@@ -7021,7 +7150,7 @@ Renderer.hover = {
 	 * @param [opts.isBookContent]
 	 * @param [opts.isLargeBookContent]
 	 */
-	handlePredefinedMouseOver (evt, ele, entryId, opts) {
+	handlePredefinedMouseOver(evt, ele, entryId, opts) {
 		opts = opts || {};
 
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
@@ -7083,7 +7212,7 @@ Renderer.hover = {
 		}
 	},
 
-	getWindowPositionExact (x, y, evt = null) {
+	getWindowPositionExact(x, y, evt = null) {
 		return {
 			window: ((evt || {}).view || {}).window || window,
 			mode: "exact",
@@ -7092,7 +7221,7 @@ Renderer.hover = {
 		}
 	},
 
-	getWindowPositionExactVisibleBottom (x, y, evt = null) {
+	getWindowPositionExactVisibleBottom(x, y, evt = null) {
 		return {
 			...Renderer.hover.getWindowPositionExact(x, y, evt),
 			mode: "exactVisibleBottom",
@@ -7105,13 +7234,13 @@ Renderer.hover = {
 	_DEFAULT_WIDTH_PX: 600,
 	_BODY_SCROLLER_WIDTH_PX: 15,
 
-	_getZIndex () {
+	_getZIndex() {
 		const zIndices = Object.values(Renderer.hover._WINDOW_METAS).map(it => it.zIndex);
 		if (!zIndices.length) return Renderer.hover.MIN_Z_INDEX;
 		return Math.max(...zIndices);
 	},
 
-	_getNextZIndex (hoverId) {
+	_getNextZIndex(hoverId) {
 		const cur = Renderer.hover._getZIndex();
 		// If we're already the highest index, continue to use this index
 		if (hoverId != null && Renderer.hover._WINDOW_METAS[hoverId].zIndex === cur) return cur;
@@ -7156,7 +7285,7 @@ Renderer.hover = {
 	 * @param [sourceData] Source data which can be used to load the contents into the DM screen.
 	 * @param [sourceData.type]
 	 */
-	getShowWindow ($content, position, opts, sourceData) {
+	getShowWindow($content, position, opts, sourceData) {
 		opts = opts || {};
 
 		Renderer.hover._doInit();
@@ -7334,14 +7463,34 @@ Renderer.hover = {
 			})
 			.on(mouseMoveId, (evt) => {
 				switch (drag.type) {
-					case 1: handleNorthDrag(evt); handleEastDrag(evt); break;
-					case 2: handleEastDrag(evt); break;
-					case 3: handleSouthDrag(evt); handleEastDrag(evt); break;
-					case 4: handleSouthDrag(evt); break;
-					case 5: handleSouthDrag(evt); handleWestDrag(evt); break;
-					case 6: handleWestDrag(evt); break;
-					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
-					case 8: handleNorthDrag(evt); break;
+					case 1:
+						handleNorthDrag(evt);
+						handleEastDrag(evt);
+						break;
+					case 2:
+						handleEastDrag(evt);
+						break;
+					case 3:
+						handleSouthDrag(evt);
+						handleEastDrag(evt);
+						break;
+					case 4:
+						handleSouthDrag(evt);
+						break;
+					case 5:
+						handleSouthDrag(evt);
+						handleWestDrag(evt);
+						break;
+					case 6:
+						handleWestDrag(evt);
+						break;
+					case 7:
+						handleNorthDrag(evt);
+						handleWestDrag(evt);
+						break;
+					case 8:
+						handleNorthDrag(evt);
+						break;
 					case 9: {
 						const diffX = drag.startX - EventUtil.getClientX(evt);
 						const diffY = drag.startY - EventUtil.getClientY(evt);
@@ -7396,7 +7545,10 @@ Renderer.hover = {
 				.on("click", async evt => {
 					evt.stopPropagation();
 
-					const dimensions = opts.fnGetPopoutSize ? opts.fnGetPopoutSize() : {width: 600, height: $content.height()};
+					const dimensions = opts.fnGetPopoutSize ? opts.fnGetPopoutSize() : {
+						width: 600,
+						height: $content.height()
+					};
 					const win = open(
 						"",
 						opts.title || "",
@@ -7595,7 +7747,7 @@ Renderer.hover = {
 	 * @param [opts.isLargeBookContent]
 	 * @param [opts.depth]
 	 */
-	getMakePredefinedHover (entry, opts) {
+	getMakePredefinedHover(entry, opts) {
 		opts = opts || {};
 
 		const id = Renderer.hover._getNextId();
@@ -7637,7 +7789,7 @@ Renderer.hover = {
 	},
 
 	// region entry fetching
-	addEmbeddedToCache (page, source, hash, entity) {
+	addEmbeddedToCache(page, source, hash, entity) {
 		Renderer.hover._addToCache(page, source, hash, entity);
 	},
 
@@ -7679,7 +7831,7 @@ Renderer.hover = {
 	 * @param [opts] Options object.
 	 * @param [opts.isCopy] If a copy, rather than the original entity, should be returned.
 	 */
-	async pCacheAndGetHash (page, hash, opts) {
+	async pCacheAndGetHash(page, hash, opts) {
 		const source = decodeURIComponent(hash.split(HASH_LIST_SEP).last());
 		return Renderer.hover.pCacheAndGet(page, source, hash, opts);
 	},
@@ -7703,10 +7855,14 @@ Renderer.hover = {
 
 		switch (page) {
 			case "generic":
-			case "hover": return null;
-			case UrlUtil.PG_CLASSES: return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
-			case UrlUtil.PG_SPELLS: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
-			case UrlUtil.PG_BESTIARY: return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
+			case "hover":
+				return null;
+			case UrlUtil.PG_CLASSES:
+				return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
+			case UrlUtil.PG_SPELLS:
+				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
+			case UrlUtil.PG_BESTIARY:
+				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "monster", data => DataUtil.monster.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
 				const loadKey = UrlUtil.PG_ITEMS;
 
@@ -7741,11 +7897,16 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			case UrlUtil.PG_BACKGROUNDS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "backgrounds.json", "background");
-			case UrlUtil.PG_FEATS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats.json", "feat");
-			case UrlUtil.PG_OPT_FEATURES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
-			case UrlUtil.PG_PSIONICS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "psionics.json", "psionic");
-			case UrlUtil.PG_REWARDS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rewards.json", "reward");
+			case UrlUtil.PG_BACKGROUNDS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "backgrounds.json", "background");
+			case UrlUtil.PG_FEATS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats.json", "feat");
+			case UrlUtil.PG_OPT_FEATURES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
+			case UrlUtil.PG_PSIONICS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "psionics.json", "psionic");
+			case UrlUtil.PG_REWARDS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rewards.json", "reward");
 			case UrlUtil.PG_RACES: {
 				const loadKey = UrlUtil.PG_RACES;
 
@@ -7779,18 +7940,30 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			case UrlUtil.PG_DEITIES: return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
-			case UrlUtil.PG_OBJECTS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
-			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "trapshazards.json", ["trap", "hazard"]);
-			case UrlUtil.PG_VARIANTRULES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
-			case UrlUtil.PG_CULTS_BOONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_TABLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_VEHICLES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", ["vehicle", "vehicleUpgrade"]);
-			case UrlUtil.PG_ACTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
-			case UrlUtil.PG_LANGUAGES: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
-
+			case UrlUtil.PG_DEITIES:
+				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
+			case UrlUtil.PG_OBJECTS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "trapshazards.json", ["trap", "hazard"]);
+			case UrlUtil.PG_VARIANTRULES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
+			case UrlUtil.PG_CULTS_BOONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_TABLES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_VEHICLES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", ["vehicle", "vehicleUpgrade"]);
+			case UrlUtil.PG_ACTIONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
+			case UrlUtil.PG_LANGUAGES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
+			case UrlUtil.PG_TRAITS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts,"traits.json", "trait");
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
 				const loadKey = UrlUtil.PG_QUICKREF;
@@ -7876,32 +8049,47 @@ Renderer.hover = {
 			// enregion
 
 			// region per-page fluff
-			case `fluff__${UrlUtil.PG_BESTIARY}`: return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "monsterFluff");
-			case `fluff__${UrlUtil.PG_SPELLS}`: return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
-			case `fluff__${UrlUtil.PG_BACKGROUNDS}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
-			case `fluff__${UrlUtil.PG_ITEMS}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
-			case `fluff__${UrlUtil.PG_CONDITIONS_DISEASES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditionsdiseases.json", ["conditionFluff", "diseaseFluff"]);
-			case `fluff__${UrlUtil.PG_RACES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
-			case `fluff__${UrlUtil.PG_LANGUAGES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
-			case `fluff__${UrlUtil.PG_VEHICLES}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
-			case `fluff__${UrlUtil.PG_CHAR_CREATION_OPTIONS}`: return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-charcreationoptions.json", "charoptionFluff");
+			case `fluff__${UrlUtil.PG_BESTIARY}`:
+				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "monsterFluff");
+			case `fluff__${UrlUtil.PG_SPELLS}`:
+				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
+			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
+			case `fluff__${UrlUtil.PG_ITEMS}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
+			case `fluff__${UrlUtil.PG_CONDITIONS_DISEASES}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditionsdiseases.json", ["conditionFluff", "diseaseFluff"]);
+			case `fluff__${UrlUtil.PG_RACES}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
+			case `fluff__${UrlUtil.PG_LANGUAGES}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
+			case `fluff__${UrlUtil.PG_VEHICLES}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
+			case `fluff__${UrlUtil.PG_CHAR_CREATION_OPTIONS}`:
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-charcreationoptions.json", "charoptionFluff");
 			// endregion
 
 			// region props
-			case "classfeature": return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
-			case "subclassfeature": return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
+			case "classfeature":
+				return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
+			case "subclassfeature":
+				return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
 
-			case "raw_classfeature": return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
-			case "raw_subclassfeature": return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
+			case "raw_classfeature":
+				return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
+			case "raw_subclassfeature":
+				return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
 
-			case "legendarygroup": return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "bestiary/legendarygroups.json", "legendaryGroup");
+			case "legendarygroup":
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "bestiary/legendarygroups.json", "legendaryGroup");
 			// endregion
 
-			default: throw new Error(`No load function defined for page ${page}`);
+			default:
+				throw new Error(`No load function defined for page ${page}`);
 		}
 	},
 
-	async _pCacheAndGet_pDoLoadWithLock (page, source, hash, loadKey, pFnLoad) {
+	async _pCacheAndGet_pDoLoadWithLock(page, source, hash, loadKey, pFnLoad) {
 		if (Renderer.hover._psCacheLoading[loadKey]) await Renderer.hover._psCacheLoading[loadKey];
 
 		if (!Renderer.hover._flagsCacheLoaded[loadKey] || !Renderer.hover._isCached(page, source, hash)) {
@@ -7921,7 +8109,7 @@ Renderer.hover = {
 	 * @param [opts.fnMutateItem] optional function to run per item; takes listProp and an item as parameters
 	 * @param [opts.fnGetHash]
 	 */
-	_pCacheAndGet_populate (page, data, listProp, opts) {
+	_pCacheAndGet_populate(page, data, listProp, opts) {
 		opts = opts || {};
 
 		data[listProp].forEach(it => {
@@ -7931,7 +8119,7 @@ Renderer.hover = {
 		});
 	},
 
-	async _pCacheAndGet_pLoadMultiSource (page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
+	async _pCacheAndGet_pLoadMultiSource(page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
 		const loadKey = `${page}${source}`;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -7960,27 +8148,33 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pLoadMultiSourceFluff (page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
+	async _pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
 		const nxtOpts = MiscUtil.copy(opts);
 		nxtOpts.isFluff = true;
 		nxtOpts.fnGetHash = it => UrlUtil.encodeForHash([it.name, it.source]);
 		return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, nxtOpts, baseUrl, listProp);
 	},
 
-	async _pCacheAndGet_pLoadSingleBrew (page, opts, listProps, fnMutateItem) {
+	async _pCacheAndGet_pLoadSingleBrew(page, opts, listProps, fnMutateItem) {
 		const brewData = await BrewUtil.pAddBrewData();
 		listProps = listProps instanceof Array ? listProps : [listProps];
 		listProps.forEach(lp => {
-			if (brewData[lp]) Renderer.hover._pCacheAndGet_populate(page, brewData, lp, {fnMutateItem, fnGetHash: opts.fnGetHash});
+			if (brewData[lp]) Renderer.hover._pCacheAndGet_populate(page, brewData, lp, {
+				fnMutateItem,
+				fnGetHash: opts.fnGetHash
+			});
 		});
 	},
 
-	_pCacheAndGet_handleSingleData (page, opts, data, listProps, fnMutateItem) {
-		if (listProps instanceof Array) listProps.forEach(prop => data[prop] && Renderer.hover._pCacheAndGet_populate(page, data, prop, {fnMutateItem, fnGetHash: opts.fnGetHash}));
+	_pCacheAndGet_handleSingleData(page, opts, data, listProps, fnMutateItem) {
+		if (listProps instanceof Array) listProps.forEach(prop => data[prop] && Renderer.hover._pCacheAndGet_populate(page, data, prop, {
+			fnMutateItem,
+			fnGetHash: opts.fnGetHash
+		}));
 		else Renderer.hover._pCacheAndGet_populate(page, data, listProps, {fnMutateItem, fnGetHash: opts.fnGetHash});
 	},
 
-	async _pCacheAndGet_pLoadSimple (page, source, hash, opts, jsonFile, listProps, fnMutateItem) {
+	async _pCacheAndGet_pLoadSimple(page, source, hash, opts, jsonFile, listProps, fnMutateItem) {
 		const loadKey = jsonFile;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -7998,14 +8192,14 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pLoadSimpleFluff (page, source, hash, opts, jsonFile, listProps, fnMutateItem) {
+	async _pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, jsonFile, listProps, fnMutateItem) {
 		const nxtOpts = MiscUtil.copy(opts);
 		nxtOpts.isFluff = true;
 		nxtOpts.fnGetHash = it => UrlUtil.encodeForHash([it.name, it.source]);
 		return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, nxtOpts, jsonFile, listProps, fnMutateItem);
 	},
 
-	async _pCacheAndGet_pLoadCustom (page, source, hash, opts, jsonFile, listProps, itemModifier, loader) {
+	async _pCacheAndGet_pLoadCustom(page, source, hash, opts, jsonFile, listProps, itemModifier, loader) {
 		const loadKey = jsonFile;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -8023,7 +8217,7 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pLoadClasses (page, source, hash, opts) {
+	async _pCacheAndGet_pLoadClasses(page, source, hash, opts) {
 		const loadKey = UrlUtil.PG_CLASSES;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -8036,7 +8230,11 @@ Renderer.hover = {
 					// add class
 					const clsHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls);
 					cls = await DataUtil.class.pGetDereferencedClassData(cls);
-					const clsEntries = {name: cls.name, type: "section", entries: MiscUtil.copy((cls.classFeatures || []).flat())};
+					const clsEntries = {
+						name: cls.name,
+						type: "section",
+						entries: MiscUtil.copy((cls.classFeatures || []).flat())
+					};
 					Renderer.hover._addToCache(UrlUtil.PG_CLASSES, cls.source || SRC_PHB, clsHash, clsEntries);
 
 					// add subclasses
@@ -8091,7 +8289,7 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pLoadClassFeatures (page, source, hash, opts) {
+	async _pCacheAndGet_pLoadClassFeatures(page, source, hash, opts) {
 		const loadKey = page;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -8109,7 +8307,7 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pLoadSubclassFeatures (page, source, hash, opts) {
+	async _pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts) {
 		const loadKey = page;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -8127,7 +8325,7 @@ Renderer.hover = {
 		return Renderer.hover._getFromCache(page, source, hash, opts);
 	},
 
-	async _pCacheAndGet_pDoDereferenceNestedAndCache (entities, page, fnGetHash) {
+	async _pCacheAndGet_pDoDereferenceNestedAndCache(entities, page, fnGetHash) {
 		if (!entities) return;
 
 		const entriesWithRefs = {};
@@ -8265,14 +8463,17 @@ Renderer.hover = {
 
 		// Add the failed-to-resolve entities to the cache nonetheless
 		const entriesWithRefsVals = Object.values(entriesWithRefs);
-		if (entriesWithRefsVals.length) JqueryUtil.doToast({type: "danger", content: `Failed to load references for ${entriesWithRefsVals.length} entr${entriesWithRefsVals.length === 1 ? "y" : "ies"}!`});
+		if (entriesWithRefsVals.length) JqueryUtil.doToast({
+			type: "danger",
+			content: `Failed to load references for ${entriesWithRefsVals.length} entr${entriesWithRefsVals.length === 1 ? "y" : "ies"}!`
+		});
 
 		entriesWithRefsVals.forEach(ent => {
 			Renderer.hover._addToCache(page, ent.source, fnGetHash(ent), ent);
 		});
 	},
 
-	async _pCacheAndGet_pLoadOfficialClassAndSubclassFeatures () {
+	async _pCacheAndGet_pLoadOfficialClassAndSubclassFeatures() {
 		const lockKey = "classFeature__subclassFeature";
 		if (Renderer.hover._flags[lockKey]) return;
 		if (!Renderer.hover._locks[lockKey]) Renderer.hover._locks[lockKey] = new VeLock();
@@ -8292,7 +8493,7 @@ Renderer.hover = {
 	},
 	// endregion
 
-	getGenericCompactRenderedString (entry, depth = 0) {
+	getGenericCompactRenderedString(entry, depth = 0) {
 		return `
 			<tr class="text homebrew-hover"><td colspan="6">
 			${Renderer.get().setFirstSection(true).render(entry, depth)}
@@ -8303,29 +8504,56 @@ Renderer.hover = {
 	_pageToRenderFn(page) {
 		switch (page) {
 			case "generic":
-			case "hover": return Renderer.hover.getGenericCompactRenderedString;
+			case "hover":
+				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_QUICKREF:
-			case UrlUtil.PG_CLASSES: return Renderer.hover.getGenericCompactRenderedString;
-			case UrlUtil.PG_SPELLS: return Renderer.spell.getCompactRenderedString;
-			case UrlUtil.PG_ITEMS: return Renderer.item.getCompactRenderedString;
-			case UrlUtil.PG_BESTIARY: return (it) => Renderer.monster.getCompactRenderedString(it, null, {showScaler: true, isScaled: it._originalCr != null});
-			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.condition.getCompactRenderedString;
-			case UrlUtil.PG_BACKGROUNDS: return Renderer.background.getCompactRenderedString;
-			case UrlUtil.PG_FEATS: return Renderer.feat.getCompactRenderedString;
-			case UrlUtil.PG_OPT_FEATURES: return Renderer.optionalfeature.getCompactRenderedString;
-			case UrlUtil.PG_PSIONICS: return Renderer.psionic.getCompactRenderedString;
-			case UrlUtil.PG_REWARDS: return Renderer.reward.getCompactRenderedString;
-			case UrlUtil.PG_RACES: return Renderer.race.getCompactRenderedString;
-			case UrlUtil.PG_DEITIES: return Renderer.deity.getCompactRenderedString;
-			case UrlUtil.PG_OBJECTS: return Renderer.object.getCompactRenderedString;
-			case UrlUtil.PG_TRAPS_HAZARDS: return Renderer.traphazard.getCompactRenderedString;
-			case UrlUtil.PG_VARIANTRULES: return Renderer.variantrule.getCompactRenderedString;
-			case UrlUtil.PG_CULTS_BOONS: return Renderer.cultboon.getCompactRenderedString;
-			case UrlUtil.PG_TABLES: return Renderer.table.getCompactRenderedString;
-			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.getCompactRenderedString;
-			case UrlUtil.PG_ACTIONS: return Renderer.action.getCompactRenderedString;
-			case UrlUtil.PG_LANGUAGES: return Renderer.language.getCompactRenderedString;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.charoption.getCompactRenderedString;
+			case UrlUtil.PG_CLASSES:
+				return Renderer.hover.getGenericCompactRenderedString;
+			case UrlUtil.PG_SPELLS:
+				return Renderer.spell.getCompactRenderedString;
+			case UrlUtil.PG_ITEMS:
+				return Renderer.item.getCompactRenderedString;
+			case UrlUtil.PG_BESTIARY:
+				return (it) => Renderer.monster.getCompactRenderedString(it, null, {
+					showScaler: true,
+					isScaled: it._originalCr != null
+				});
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				return Renderer.condition.getCompactRenderedString;
+			case UrlUtil.PG_BACKGROUNDS:
+				return Renderer.background.getCompactRenderedString;
+			case UrlUtil.PG_FEATS:
+				return Renderer.feat.getCompactRenderedString;
+			case UrlUtil.PG_OPT_FEATURES:
+				return Renderer.optionalfeature.getCompactRenderedString;
+			case UrlUtil.PG_PSIONICS:
+				return Renderer.psionic.getCompactRenderedString;
+			case UrlUtil.PG_REWARDS:
+				return Renderer.reward.getCompactRenderedString;
+			case UrlUtil.PG_RACES:
+				return Renderer.race.getCompactRenderedString;
+			case UrlUtil.PG_DEITIES:
+				return Renderer.deity.getCompactRenderedString;
+			case UrlUtil.PG_OBJECTS:
+				return Renderer.object.getCompactRenderedString;
+			case UrlUtil.PG_TRAPS_HAZARDS:
+				return Renderer.traphazard.getCompactRenderedString;
+			case UrlUtil.PG_VARIANTRULES:
+				return Renderer.variantrule.getCompactRenderedString;
+			case UrlUtil.PG_CULTS_BOONS:
+				return Renderer.cultboon.getCompactRenderedString;
+			case UrlUtil.PG_TABLES:
+				return Renderer.table.getCompactRenderedString;
+			case UrlUtil.PG_VEHICLES:
+				return Renderer.vehicle.getCompactRenderedString;
+			case UrlUtil.PG_ACTIONS:
+				return Renderer.action.getCompactRenderedString;
+			case UrlUtil.PG_LANGUAGES:
+				return Renderer.language.getCompactRenderedString;
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
+				return Renderer.charoption.getCompactRenderedString;
+			case UrlUtil.PG_TRAITS:
+				return Renderer.trait.getRenderedString;
 			// region props
 			case "classfeature":
 			case "classFeature":
@@ -8334,22 +8562,33 @@ Renderer.hover = {
 			case "subclassFeature":
 				return Renderer.hover.getGenericCompactRenderedString;
 			// endregion
-			default: return null;
+			default:
+				return null;
 		}
 	},
 
-	_pageToFluffFn (page) {
+	_pageToFluffFn(page) {
 		switch (page) {
-			case UrlUtil.PG_BESTIARY: return Renderer.monster.pGetFluff;
-			case UrlUtil.PG_ITEMS: return Renderer.item.pGetFluff;
-			case UrlUtil.PG_CONDITIONS_DISEASES: return Renderer.condition.pGetFluff;
-			case UrlUtil.PG_SPELLS: return Renderer.spell.pGetFluff;
-			case UrlUtil.PG_RACES: return Renderer.race.pGetFluff;
-			case UrlUtil.PG_BACKGROUNDS: return Renderer.background.pGetFluff;
-			case UrlUtil.PG_LANGUAGES: return Renderer.language.pGetFluff;
-			case UrlUtil.PG_VEHICLES: return Renderer.vehicle.pGetFluff;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS: return Renderer.charoption.pGetFluff;
-			default: return null;
+			case UrlUtil.PG_BESTIARY:
+				return Renderer.monster.pGetFluff;
+			case UrlUtil.PG_ITEMS:
+				return Renderer.item.pGetFluff;
+			case UrlUtil.PG_CONDITIONS_DISEASES:
+				return Renderer.condition.pGetFluff;
+			case UrlUtil.PG_SPELLS:
+				return Renderer.spell.pGetFluff;
+			case UrlUtil.PG_RACES:
+				return Renderer.race.pGetFluff;
+			case UrlUtil.PG_BACKGROUNDS:
+				return Renderer.background.pGetFluff;
+			case UrlUtil.PG_LANGUAGES:
+				return Renderer.language.pGetFluff;
+			case UrlUtil.PG_VEHICLES:
+				return Renderer.vehicle.pGetFluff;
+			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
+				return Renderer.charoption.pGetFluff;
+			default:
+				return null;
 		}
 	},
 
@@ -8359,7 +8598,7 @@ Renderer.hover = {
 		return win.innerWidth <= 768;
 	},
 
-	bindPopoutButton ($btnPop, toList, handlerGenerator, title) {
+	bindPopoutButton($btnPop, toList, handlerGenerator, title) {
 		$btnPop
 			.off("click")
 			.title(title || "Popout Window (SHIFT for Source Data)");
@@ -8396,7 +8635,7 @@ Renderer.hover = {
 		return $$`<table class="stats">${renderFn(toRender)}</table>`;
 	},
 
-	$getHoverContent_fluff (page, toRender) {
+	$getHoverContent_fluff(page, toRender) {
 		if (!toRender) {
 			return $$`<table class="stats"><tr class="text"><td colspan="6" class="p-2 text-center">${Renderer.utils.HTML_NO_INFO}</td></tr></table>`;
 		}
@@ -8416,7 +8655,7 @@ Renderer.hover = {
 		return $$`<table class="stats">${Renderer.generic.getCompactRenderedString(toRender)}</table>`;
 	},
 
-	$getHoverContent_statsCode (toRender) {
+	$getHoverContent_statsCode(toRender) {
 		const cleanCopy = DataUtil.cleanJson(MiscUtil.copy(toRender));
 		return Renderer.hover.$getHoverContent_miscCode(
 			`${cleanCopy.name} \u2014 Source Data`,
@@ -8440,7 +8679,7 @@ Renderer.hover = {
 	 * @param [opts.isLargeBookContent]
 	 * @param [opts.depth]
 	 */
-	$getHoverContent_generic (toRender, opts) {
+	$getHoverContent_generic(toRender, opts) {
 		opts = opts || {};
 
 		return $$`<table class="stats ${opts.isBookContent || opts.isLargeBookContent ? "stats--book" : ""} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</table>`;
@@ -8600,7 +8839,8 @@ Renderer._stripTagLayer = function (str) {
 						throw new Error(`Unhandled tag: ${tag}`);
 					}
 
-					case "@hitYourSpellAttack": return "your spell attack modifier";
+					case "@hitYourSpellAttack":
+						return "your spell attack modifier";
 
 					case "@comic":
 					case "@comicH1":
@@ -8791,7 +9031,9 @@ Renderer.getRollableRow = function (row, opts) {
 				},
 			};
 		}
-	} catch (e) { if (opts.cbErr) opts.cbErr(row[0], e); }
+	} catch (e) {
+		if (opts.cbErr) opts.cbErr(row[0], e);
+	}
 	return row;
 };
 Renderer.getRollableRow._handleInfiniteOpts = function (row, opts) {

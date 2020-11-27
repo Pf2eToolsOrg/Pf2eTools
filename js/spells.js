@@ -439,8 +439,20 @@ function addSpells (data) {
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 	Renderer.hover.bindPopoutButton($btnPop, spellList);
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
-	ListUtil.bindDownloadButton();
-	ListUtil.bindUploadButton(pPreloadSublistSources);
+	ListUtil.bindOtherButtons({
+		download: true,
+		upload: {
+			pFnPreLoad: pPreloadSublistSources,
+		},
+		sendToBrew: {
+			mode: "spellBuilder",
+			fnGetMeta: () => ({
+				page: UrlUtil.getCurrentPage(),
+				source: Hist.getHashSource(),
+				hash: Hist.getHashParts()[0],
+			}),
+		},
+	});
 }
 
 async function pPreloadSublistSources (json) {
