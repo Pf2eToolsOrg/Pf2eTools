@@ -1553,6 +1553,7 @@ class Filter extends FilterBase {
 				this._pillGroupsMeta[group].toggleDividerFromNestVisibility();
 			});
 		}
+	}
 
 	_doRenderPills_doRenderWrpGroup_$getHrDivider () { return $(`<hr class="fltr__dropdown-divider--sub hr-2 mx-3">`); }
 	_doRenderPills_doRenderWrpGroup_$getWrpPillsSub () { return $(`<div class="fltr__wrp-pills--sub"></div>`); }

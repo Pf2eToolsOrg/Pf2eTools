@@ -3347,16 +3347,18 @@ Renderer.utils = {
 		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been blacklisted.</i></b></div>` : "";
 	},
 
-	async _pHandleNameClick(ele) {
-		await MiscUtil.pCopyTextToClipboard($(ele).text());
-		JqueryUtil.showCopiedEffect($(ele));
-	},
-
-	getPageTr: (it) => {
-		return `<tr><td colspan=6>${Renderer.utils._getPageTrText(it)}</td></tr>`;
 	getSourceAndPageTrHtml (it) {
 		const html = Renderer.utils.getSourceAndPageHtml(it);
 		return html ? `<b>Source:</b> ${html}` : "";
+	},
+
+	_getAltSourceHtmlOrText (it, prop, introText, isText) {
+		if (!it[prop] || !it[prop].length) return "";
+
+		return `${introText} ${it[prop].map(as => {
+			if (as.entry) return Renderer.get().render(isText ? Renderer.stripTags(as.entry) : as.entry);
+			return `${isText ? "" : `<i title="${Parser.sourceJsonToFull(as.source)}">`}${Parser.sourceJsonToAbv(as.source)}${isText ? "" : `</i>`}${Renderer.utils.isDisplayPage(as.page) ? `, page ${as.page}` : ""}`;
+		}).join("; ")}`;
 	},
 
 	getPageP: (it) => {
