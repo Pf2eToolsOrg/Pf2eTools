@@ -49,8 +49,10 @@ class BestiaryPage {
 			{
 				hash,
 				source,
-				level: mon.level,
-				type: mon.creature_type
+				type,
+				cr,
+				group: mon.group || "",
+				alias: (mon.alias || []).map(it => `"${it}"`).join(",")
 			},
 			{
 				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
@@ -218,6 +220,55 @@ class BestiaryPage {
 		bestiaryPage.handleFilterChange();
 		encounterBuilder.initState();
 		window.dispatchEvent(new Event("toolsLoaded"));
+	}
+
+	// TODO refactor this and spell markdown section
+	static popoutHandlerGenerator (toList) {
+		return (evt) => {
+			const mon = toList[Hist.lastLoadedId];
+			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
+
+			if (evt.shiftKey) {
+				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
+						isPermanent: true,
+						isBookContent: true,
+					},
+				);
+			} else if (evt.ctrlKey || evt.metaKey) {
+				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
+				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
+				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
+
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						title: name,
+						isPermanent: true,
+						isBookContent: true,
+					},
+				);
+			} else {
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+
+				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
+				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
+				Renderer.hover.getShowWindow(
+					$content,
+					Renderer.hover.getWindowPositionFromEvent(evt),
+					{
+						pageUrl,
+						title: toRender._displayName || toRender.name,
+						isPermanent: true,
+					},
+				);
+			}
+		};
 	}
 }
 

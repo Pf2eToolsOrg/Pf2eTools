@@ -11,6 +11,7 @@ const ARGS = {};
  * Args:
  * file="./data/my-file.json"
  * filePrefix="./data/dir/"
+ * inplace
  */
 class ArgParser {
 	static parse () {
@@ -31,13 +32,12 @@ class ArgParser {
 			});
 	}
 }
-ArgParser.parse();
 
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
 
 	// specific files
-	"demo.json"
+	"demo.json",
 ];
 
 const LAST_KEY_WHITELIST = new Set([
@@ -47,24 +47,30 @@ const LAST_KEY_WHITELIST = new Set([
 	"entriesHigherLevel",
 	"rows",
 	"row",
-	"fluff"
+	"fluff",
 ]);
 
 class TagJsons {
 	static async pInit () {
+		ut.patchLoadJson();
 		SpellTag.init();
 		await ItemTag.pInit();
 	}
 
-	static run () {
-		let files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
-		if (ARGS.file) {
-			files = files.filter(f => f === ARGS.file);
-			if (!files.length) throw new Error(`File "${ARGS.file}" not found!`);
-		}
-		if (ARGS.filePrefix) {
-			files = files.filter(f => f.startsWith(ARGS.filePrefix));
-			if (!files.length) throw new Error(`No file with prefix "${ARGS.filePrefix}" found!`);
+	static teardown () {
+		ut.unpatchLoadJson();
+	}
+
+	static run (args = ARGS) {
+		let files;
+		if (args.file) {
+			files = [args.file];
+		} else {
+			files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
+			if (args.filePrefix) {
+				files = files.filter(f => f.startsWith(args.filePrefix));
+				if (!files.length) throw new Error(`No file with prefix "${args.filePrefix}" found!`);
+			}
 		}
 
 		files.forEach(file => {
@@ -87,17 +93,20 @@ class TagJsons {
 								obj = SenseTag.tryRun(obj);
 								obj = SpellTag.tryRun(obj);
 								obj = ItemTag.tryRun(obj);
+								obj = TableTag.tryRun(obj);
 								obj = DiceConvert.getTaggedEntry(obj);
 
 								return obj;
-							}
-						}
+							},
+						},
 					);
 				});
 
-			const outPath = file.replace("./data/", "./trash/");
-			const dirPart = outPath.split("/").slice(0, -1).join("/");
-			fs.mkdirSync(dirPart, {recursive: true});
+			const outPath = args.inplace ? file : file.replace("./data/", "./trash/");
+			if (!args.inplace) {
+				const dirPart = outPath.split("/").slice(0, -1).join("/");
+				fs.mkdirSync(dirPart, {recursive: true});
+			}
 			fs.writeFileSync(outPath, CleanUtil.getCleanJson(json));
 		});
 	}
@@ -116,8 +125,9 @@ class SpellTag {
 			});
 		});
 
-		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (spell)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).join("|")}) (and {@spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
 	}
 
 	static tryRun (it) {
@@ -133,18 +143,18 @@ class SpellTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
 	static _fnTag (strMod) {
 		return strMod
-			.replace(SpellTag._SPELL_NAME_REGEX, (...m) => {
+			.replace(SpellTag._SPELL_NAME_REGEX_SPELL, (...m) => {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
@@ -152,11 +162,19 @@ class SpellTag {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
 				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
+			.replace(/(spells(?:|[^.!?:{]*): )([^.!?]+)/gi, (...m) => {
+				const spellPart = m[2].replace(SpellTag._SPELL_NAME_REGEX, (...n) => {
+					const spellMeta = SpellTag._SPELL_NAMES[n[1].toLowerCase()];
+					return `{@spell ${n[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}}`;
+				});
+				return `${m[1]}${spellPart}`;
+			})
 		;
 	}
 }
 SpellTag._SPELL_NAMES = {};
 SpellTag._SPELL_NAME_REGEX = null;
+SpellTag._SPELL_NAME_REGEX_SPELL = null;
 SpellTag._SPELL_NAME_REGEX_AND = null;
 
 class ItemTag {
@@ -169,7 +187,7 @@ class ItemTag {
 			ItemTag._ITEM_NAMES_TOOLS[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
 		});
 
-		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name).join("|")})(\\W|$)`, "gi");
+		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name.escapeRegexp()).join("|")})(\\W|$)`, "gi");
 	}
 
 	static tryRun (it) {
@@ -185,12 +203,12 @@ class ItemTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -206,11 +224,45 @@ class ItemTag {
 ItemTag._ITEM_NAMES_TOOLS = {};
 ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
 
-async function main () {
-	ut.patchLoadJson();
-	await TagJsons.pInit();
-	TagJsons.run();
-	ut.unpatchLoadJson();
+class TableTag {
+	static tryRun (it) {
+		return TagJsons.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@table"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (strMod) {
+		return strMod
+			.replace(/Wild Magic Surge table/g, `{@table Wild Magic Surge|PHB} table`)
+		;
+	}
 }
 
-main().then(() => console.log("Run complete.")).catch(e => { throw e; });
+async function main () {
+	ArgParser.parse();
+	await TagJsons.pInit();
+	TagJsons.run();
+	TagJsons.teardown();
+}
+
+if (require.main === module) {
+	main().then(() => console.log("Run complete.")).catch(e => { throw e; });
+} else {
+	module.exports = TagJsons;
+}

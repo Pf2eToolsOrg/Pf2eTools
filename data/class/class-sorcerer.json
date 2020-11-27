@@ -495,8 +495,11 @@
 				"Font of Magic Options|Sorcerer||2|UAClassFeatureVariants",
 				"Metamagic|Sorcerer||3",
 				"Metamagic Options|Sorcerer||3|UAClassFeatureVariants",
+				"Metamagic Options|Sorcerer||3|TCE",
 				"Ability Score Improvement|Sorcerer||4",
 				"Proficiency Versatility|Sorcerer||4|UAClassFeatureVariants",
+				"Sorcerous Versatility|Sorcerer||4|TCE",
+				"Magical Guidance|Sorcerer||5|TCE",
 				{
 					"classFeature": "Sorcerous Origin feature|Sorcerer||6",
 					"gainSubclassFeature": true
@@ -562,32 +565,6 @@
 					]
 				},
 				{
-					"name": "Favored Soul v2 (UA)",
-					"shortName": "Favored Soul v2 (UA)",
-					"source": "UASorcerer",
-					"page": 1,
-					"isReprinted": true,
-					"subclassFeatures": [
-						"Favored Soul v2|Sorcerer||Favored Soul v2 (UA)|UASorcerer|1",
-						"Blessed Countenance|Sorcerer||Favored Soul v2 (UA)|UASorcerer|6",
-						"Divine Purity|Sorcerer||Favored Soul v2 (UA)|UASorcerer|14",
-						"Unearthly Recovery|Sorcerer||Favored Soul v2 (UA)|UASorcerer|18"
-					]
-				},
-				{
-					"name": "Favored Soul v3 (UA)",
-					"shortName": "Favored Soul v3 (UA)",
-					"source": "UARevisedSubclasses",
-					"page": 5,
-					"isReprinted": true,
-					"subclassFeatures": [
-						"Favored Soul v3|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|1",
-						"Empowered Healing|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|6",
-						"Angelic Form|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|14",
-						"Unearthly Recovery|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|18"
-					]
-				},
-				{
 					"name": "Storm Sorcery (UA)",
 					"shortName": "Storm (UA)",
 					"source": "UAWaterborneAdventures",
@@ -627,20 +604,6 @@
 					]
 				},
 				{
-					"name": "Storm Sorcery",
-					"shortName": "Storm",
-					"source": "SCAG",
-					"page": 137,
-					"isReprinted": true,
-					"subclassFeatures": [
-						"Storm Sorcery|Sorcerer||Storm|SCAG|1",
-						"Heart of the Storm|Sorcerer||Storm|SCAG|6",
-						"Storm Guide|Sorcerer||Storm|SCAG|6",
-						"Storm's Fury|Sorcerer||Storm|SCAG|14",
-						"Wind Soul|Sorcerer||Storm|SCAG|18"
-					]
-				},
-				{
 					"name": "Shadow (UA)",
 					"shortName": "Shadow (UA)",
 					"source": "UALightDarkUnderdark",
@@ -651,6 +614,19 @@
 						"Hound of Ill Omen|Sorcerer||Shadow (UA)|UALightDarkUnderdark|6",
 						"Shadow Walk|Sorcerer||Shadow (UA)|UALightDarkUnderdark|14",
 						"Shadow Form|Sorcerer||Shadow (UA)|UALightDarkUnderdark|18"
+					]
+				},
+				{
+					"name": "Favored Soul v2 (UA)",
+					"shortName": "Favored Soul v2 (UA)",
+					"source": "UASorcerer",
+					"page": 1,
+					"isReprinted": true,
+					"subclassFeatures": [
+						"Favored Soul v2|Sorcerer||Favored Soul v2 (UA)|UASorcerer|1",
+						"Blessed Countenance|Sorcerer||Favored Soul v2 (UA)|UASorcerer|6",
+						"Divine Purity|Sorcerer||Favored Soul v2 (UA)|UASorcerer|14",
+						"Unearthly Recovery|Sorcerer||Favored Soul v2 (UA)|UASorcerer|18"
 					]
 				},
 				{
@@ -699,6 +675,19 @@
 						"Fire in the Veins|Sorcerer||Pyromancer (PSK)|PSK|6",
 						"Pyromancer's Fury|Sorcerer||Pyromancer (PSK)|PSK|14",
 						"Fiery Soul|Sorcerer||Pyromancer (PSK)|PSK|18"
+					]
+				},
+				{
+					"name": "Favored Soul v3 (UA)",
+					"shortName": "Favored Soul v3 (UA)",
+					"source": "UARevisedSubclasses",
+					"page": 5,
+					"isReprinted": true,
+					"subclassFeatures": [
+						"Favored Soul v3|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|1",
+						"Empowered Healing|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|6",
+						"Angelic Form|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|14",
+						"Unearthly Recovery|Sorcerer||Favored Soul v3 (UA)|UARevisedSubclasses|18"
 					]
 				},
 				{
@@ -776,6 +765,12 @@
 					"shortName": "Storm",
 					"source": "XGE",
 					"page": 51,
+					"otherSources": [
+						{
+							"source": "SCAG",
+							"page": 137
+						}
+					],
 					"subclassFeatures": [
 						"Storm Sorcery|Sorcerer||Storm|XGE|1",
 						"Heart of the Storm|Sorcerer||Storm|XGE|6",
@@ -841,6 +836,7 @@
 					"shortName": "Clockwork Soul (UA)",
 					"source": "UA2020SubclassesPt2",
 					"page": 4,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"prepared": {
@@ -879,11 +875,90 @@
 					"shortName": "Psionic Soul (UA)",
 					"source": "UA2020PsionicOptionsRevisited",
 					"page": 5,
+					"isReprinted": true,
 					"subclassFeatures": [
 						"Psionic Soul|Sorcerer||Psionic Soul (UA)|UA2020PsionicOptionsRevisited|1",
 						"Psychic Strike|Sorcerer||Psionic Soul (UA)|UA2020PsionicOptionsRevisited|6",
 						"Mind Over Body|Sorcerer||Psionic Soul (UA)|UA2020PsionicOptionsRevisited|14",
 						"Psychic Aura|Sorcerer||Psionic Soul (UA)|UA2020PsionicOptionsRevisited|18"
+					]
+				},
+				{
+					"name": "Aberrant Mind",
+					"shortName": "Aberrant Mind",
+					"source": "TCE",
+					"page": 66,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"1": [
+									"arms of Hadar",
+									"dissonant whispers",
+									"mind sliver|tce"
+								],
+								"3": [
+									"calm emotions",
+									"detect thoughts"
+								],
+								"5": [
+									"hunger of Hadar",
+									"sending"
+								],
+								"7": [
+									"Evard's black tentacles",
+									"summon aberration|TCE"
+								],
+								"9": [
+									"Rary's telepathic bond",
+									"telekinesis"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Aberrant Mind|Sorcerer||Aberrant Mind|TCE|1",
+						"Psionic Sorcery|Sorcerer||Aberrant Mind|TCE|6",
+						"Psychic Defenses|Sorcerer||Aberrant Mind|TCE|6",
+						"Revelation in Flesh|Sorcerer||Aberrant Mind|TCE|14",
+						"Warping Implosion|Sorcerer||Aberrant Mind|TCE|18"
+					]
+				},
+				{
+					"name": "Clockwork Soul",
+					"shortName": "Clockwork Soul",
+					"source": "TCE",
+					"page": 68,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"1": [
+									"alarm",
+									"protection from evil and good"
+								],
+								"3": [
+									"aid",
+									"lesser restoration"
+								],
+								"5": [
+									"dispel magic",
+									"protection from energy"
+								],
+								"7": [
+									"freedom of movement",
+									"summon construct|TCE"
+								],
+								"9": [
+									"greater restoration",
+									"wall of force"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Clockwork Soul|Sorcerer||Clockwork Soul|TCE|1",
+						"Bastion of Law|Sorcerer||Clockwork Soul|TCE|6",
+						"Trance of Order|Sorcerer||Clockwork Soul|TCE|14",
+						"Clockwork Cavalcade|Sorcerer||Clockwork Soul|TCE|18"
 					]
 				}
 			],
@@ -1267,7 +1342,7 @@
 			"classSource": "PHB",
 			"level": 1,
 			"entries": [
-				"Choose a sorcerous origin, which describes the source of your innate magical power, from the list of available origins",
+				"Choose a sorcerous origin, which describes the source of your innate magical power, from the list of available origins.",
 				"Your choice grants you features when you choose it at 1st level and again at 6th, 14th, and 18th level."
 			]
 		},
@@ -1278,6 +1353,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 1,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 1st-level sorcerer feature (enhances Spellcasting)}",
 				"Whenever you finish a long rest, you can replace one spell you learned from this Spellcasting feature with another spell from the sorcerer spell list. The new spell must be the same level as the spell you replace."
@@ -1438,6 +1514,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 2nd-level sorcerer feature (enhances Font of Magic)}",
 				"When you gain the Font of Magic feature, you get access to the following ways to spend your sorcery points.",
@@ -1508,11 +1585,38 @@
 		},
 		{
 			"name": "Metamagic Options",
+			"source": "TCE",
+			"page": 65,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"level": 3,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 3rd-level sorcerer {@variantrule optional class features|tce|optional feature}}",
+				"When you choose Metamagic options, you have access to the following additional options.",
+				{
+					"type": "options",
+					"entries": [
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Seeking Spell|TCE"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Transmuted Spell|TCE"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Metamagic Options",
 			"source": "UAClassFeatureVariants",
 			"page": 10,
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 3,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 3rd-level sorcerer feature (enhances Metamagic)}",
 				"When you choose Metamagic options, you have access to the following additional options.",
@@ -1555,10 +1659,44 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
 				"This change represents one of your skills atrophying as you focus on a different skill."
+			]
+		},
+		{
+			"name": "Sorcerous Versatility",
+			"source": "TCE",
+			"page": 65,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level sorcerer {@variantrule optional class features|tce|optional feature}}",
+				"Whenever you reach a level in this class that grants the Ability Score Improvement feature, you can do one of the following, representing the magic within you flowing in new ways:",
+				{
+					"type": "list",
+					"items": [
+						"Replace one of the options you chose for the Metamagic feature with a different {@filter Metamagic option|optionalfeatures|Feature Type=MM} available to you.",
+						"Replace one cantrip you learned from this class's Spellcasting feature with another cantrip from the {@filter sorcerer spell list|spells|level=0|class=Sorcerer}."
+					]
+				}
+			]
+		},
+		{
+			"name": "Magical Guidance",
+			"source": "TCE",
+			"page": 65,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"level": 5,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 5th-level sorcerer feature}",
+				"You can tap into your inner wellspring of magic to try to conjure success from failure. When you make an ability check that fails, you can spend 1 sorcery point to reroll the {@dice d20}, and you must use the new roll, potentially turning the failure into a success."
 			]
 		},
 		{
@@ -1593,6 +1731,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1631,6 +1770,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1669,6 +1809,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1719,6 +1860,7 @@
 			"className": "Sorcerer",
 			"classSource": "PHB",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1744,6 +1886,7 @@
 			"className": "Sorcerer",
 			"classSource": "UAClassFeatureVariants",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"When you make an ability check on your turn, you can spend 2 sorcery points to gain advantage on the check."
 			]
@@ -1755,6 +1898,7 @@
 			"className": "Sorcerer",
 			"classSource": "UAClassFeatureVariants",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"As an action, you can touch one nonmagical weapon and spend 2 sorcery points to imbue it with magic for 1 minute. For the duration, the weapon is considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks."
 			]
@@ -1766,6 +1910,7 @@
 			"className": "Sorcerer",
 			"classSource": "UAClassFeatureVariants",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"As an action, you can spend any number of sorcery points to roll a {@dice d4} for each point expended. You gain a number of temporary hit points equal to the total rolled."
 			]
@@ -1959,7 +2104,7 @@
 			"header": 1,
 			"entries": [
 				"Starting at 1st level, you can manipulate the forces of chance and chaos to gain advantage on one attack roll, ability check, or saving throw. Once you do so, you must finish a long rest before you can use this feature again.",
-				"Any time before you regain the use of this feature, the DM can have you roll on the Wild Magic Surge table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature."
+				"Any time before you regain the use of this feature, the DM can have you roll on the {@table Wild Magic Surge|PHB} table immediately after you cast a sorcerer spell of 1st level or higher. You then regain the use of this feature."
 			]
 		},
 		{
@@ -2219,7 +2364,7 @@
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"At 14th level, you gain a modicum of control over the surges of your wild magic. Whenever you roll on the Wild Magic Surge table, you can roll twice and use either number."
+				"At 14th level, you gain a modicum of control over the surges of your wild magic. Whenever you roll on the {@table Wild Magic Surge|PHB} table, you can roll twice and use either number."
 			]
 		},
 		{
@@ -2310,112 +2455,382 @@
 			]
 		},
 		{
-			"name": "Storm Sorcery",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Aberrant Mind",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 1,
 			"entries": [
-				"Your innate magic comes from the power of elemental air. Perhaps you were born during a howling gale so powerful that folk still tell stories of it. Your lineage might include the influence of potent air creatures such as vaati or djinni. Whatever the case, the magic of the storm permeates your soul.",
-				"Storm sorcerers are invaluable members of a ship's crew. Their magic allows them to exert control over wind and weather in their immediate area. Their abilities also prove useful in repelling attacks by sahuagin, pirates, and other waterborne threats.",
+				"An alien influence has wrapped its tendrils around your mind, giving you psionic power. You can now touch other minds with that power and alter the world around you by using it to control the magical energy of the multiverse. Will this power shine from you as a hopeful beacon to others? Or will you be a source of terror to those who feel the stab of your mind and witness the strange manifestations of your might?",
+				"As an Aberrant Mind sorcerer, you decide how you acquired your powers. Were you born with them? Or did an event later in life leave you shining with psionic awareness? Consult the Aberrant Origins table for a possible origin of your power.",
 				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Tempestuous Magic|Sorcerer||Storm|SCAG|1"
+					"type": "table",
+					"caption": "Aberrant Origins",
+					"colLabels": [
+						"d6",
+						"Origin"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"You were exposed to the Far Realm's warping influence. You are convinced that a tentacle is now growing on you, but no one else can see it."
+						],
+						[
+							"2",
+							"A psychic wind from the Astral Plane carried psionic energy to you. When you use your powers, faint motes of light sparkle around you."
+						],
+						[
+							"3",
+							"You once suffered the dominating powers of an aboleth, leaving a psychic splinter in your mind."
+						],
+						[
+							"4",
+							"You were implanted with a mind flayer tadpole, but the ceremorphosis never completed. And now its psionic power is yours. When you use it, your flesh shines with a strange mucus."
+						],
+						[
+							"5",
+							"As a child, you had an imaginary friend that looked like a flumph or a strange platypus-like creature. One day, it gifted you with psionic powers, which have ended up being not so imaginary."
+						],
+						[
+							"6",
+							"Your nightmares whisper the truth to you: your psionic powers are not your own. You draw them from your parasitic twin!"
+						]
+					]
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Wind Speaker|Sorcerer||Storm|SCAG|1"
+					"subclassFeature": "Psionic Spells|Sorcerer||Aberrant Mind|TCE|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Telepathic Speech|Sorcerer||Aberrant Mind|TCE|1"
 				}
 			]
 		},
 		{
-			"name": "Tempestuous Magic",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Psionic Spells",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"Starting at 1st level, you can use a bonus action on your turn to cause whirling gusts of elemental air to briefly surround you, immediately before or after you cast a spell of 1st level or higher. Doing so allows you to fly up to 10 feet without provoking opportunity attacks."
+				"{@i 1st-level Aberrant Mind feature}",
+				"You learn additional spells when you reach certain levels in this class, as shown on the Psionic Spells table. Each of these spells counts as a sorcerer spell for you, but it doesn't count against the number of sorcerer spells you know.",
+				"Whenever you gain a sorcerer level, you can replace one spell you gained from this feature with another spell of the same level. The new spell must be a divination or an enchantment spell from the sorcerer, warlock, or wizard spell list.",
+				{
+					"type": "table",
+					"caption": "Psionic Spells",
+					"colLabels": [
+						"Sorcerer Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1st",
+							"{@spell arms of Hadar}, {@spell dissonant whispers}"
+						],
+						[
+							"3rd",
+							"{@spell calm emotions}, {@spell detect thoughts}"
+						],
+						[
+							"5th",
+							"{@spell hunger of Hadar}, {@spell sending}"
+						],
+						[
+							"7th",
+							"{@spell Evard's black tentacles}, {@spell summon aberration|TCE}"
+						],
+						[
+							"9th",
+							"{@spell Rary's telepathic bond}, {@spell telekinesis}"
+						]
+					]
+				}
 			]
 		},
 		{
-			"name": "Wind Speaker",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Telepathic Speech",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"The arcane magic you command is infused with elemental air. You can speak, read, and write Primordial. (Knowing this language allows you to understand and be understood by those who speak its dialects: Aquan, Auran, Ignan, and Terran.)"
+				"{@i 1st-level Aberrant Mind feature}",
+				"You can form a telepathic connection between your mind and the mind of another. As a bonus action, choose one creature you can see within 30 feet of you. You and the chosen creature can speak telepathically with each other while the two of you are within a number of miles of each other equal to your Charisma modifier (minimum of 1 mile). To understand each other, you each must speak mentally in a language the other knows.",
+				"The telepathic connection lasts for a number of minutes equal to your sorcerer level. It ends early if you are {@condition incapacitated} or die or if you use this ability to form a connection with a different creature."
 			]
 		},
 		{
-			"name": "Heart of the Storm",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Psionic Sorcery",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"At 6th level, you gain resistance to lightning and thunder damage. In addition, whenever you cast a spell of 1st level or higher that deals lightning or thunder damage, stormy magic erupts from you. This eruption causes creatures of your choice that you can see within 10 feet of you to take lightning or thunder damage (choose each time this ability activates) equal to half your sorcerer level."
+				"{@i 6th-level Aberrant Mind feature}",
+				"When you cast any spell of 1st level or higher from your Psionic Spells feature, you can cast it by expending a spell slot as normal or by spending a number of sorcery points equal to the spell's level.",
+				"If you cast the spell using sorcery points, it requires no verbal or somatic components, and it requires no material components, unless they are consumed by the spell."
 			]
 		},
 		{
-			"name": "Storm Guide",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Psychic Defenses",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"At 6th level, you gain the ability to subtly control the weather around you.",
-				"If it is raining, you can use an action to cause the rain to stop falling in a 20-foot radius centered on you. You can end this effect as a bonus action.",
-				"If it is windy, you can use a bonus action each round to choose the direction that the wind blows in a 100-foot radius around you. The wind blows in that direction until the end of your next turn. You have no ability to alter the speed of the wind."
+				"{@i 6th-level Aberrant Mind feature}",
+				"You gain resistance to psychic damage, and you have advantage on saving throws against being {@condition charmed} or {@condition frightened}."
 			]
 		},
 		{
-			"name": "Storm's Fury",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Revelation in Flesh",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, when you are hit by a melee attack, you can use your reaction to deal lightning damage to the attacker. The damage equals your sorcerer level. The attacker must also make a Strength saving throw against your sorcerer spell save DC. On a failed save, the attacker is pushed in a straight line up to 20 feet away from you."
+				"{@i 14th-level Aberrant Mind feature}",
+				"You can unleash the aberrant truth hidden within yourself. As a bonus action, you can spend 1 or more sorcery points to magically transform your body for 10 minutes. For each sorcery point you spend, you can gain one of the following benefits of your choice, the effects of which last until the transformation ends:",
+				{
+					"type": "list",
+					"items": [
+						"You can see any {@condition invisible} creature within 60 feet of you, provided it isn't behind total cover. Your eyes also turn black or become writhing sensory tendrils.",
+						"You gain a flying speed equal to your walking speed, and you can hover. As you fly, your skin glistens with mucus or shines with an otherworldly light.",
+						"You gain a swimming speed equal to twice your walking speed, and you can breathe underwater. Moreover, gills grow from your neck or fan out from behind your ears, your fingers become webbed, or you grow writhing cilia that extend through your clothing.",
+						"Your body, along with any equipment you are wearing or carrying, becomes slimy and pliable. You can move through any space as narrow as 1 inch without squeezing, and you can spend 5 feet of movement to escape from nonmagical restraints or being {@condition grappled}."
+					]
+				}
 			]
 		},
 		{
-			"name": "Wind Soul",
-			"source": "SCAG",
-			"page": 137,
+			"name": "Warping Implosion",
+			"source": "TCE",
+			"page": 66,
 			"className": "Sorcerer",
 			"classSource": "PHB",
-			"subclassShortName": "Storm",
-			"subclassSource": "SCAG",
+			"subclassShortName": "Aberrant Mind",
+			"subclassSource": "TCE",
 			"level": 18,
 			"header": 2,
 			"entries": [
-				"At 18th level, you gain a flying speed of 60 feet and immunity to lightning and thunder damage.",
-				"As an action, you can reduce your flying speed to 30 feet for one hour and choose a number of creatures within 30 feet of you equal to 3 + your Charisma modifier. The chosen creatures gain a flying speed of 30 feet for 1 hour."
+				"{@i 18th-level Aberrant Mind feature}",
+				"You can unleash your aberrant power as a space-warping anomaly. As an action, you can teleport to an unoccupied space you can see within 120 feet of you. Immediately after you disappear, each creature within 30 feet of the space you left must make a Strength saving throw. On a failed save, a creature takes {@damage 3d10} force damage and is pulled straight toward the space you left, ending in an unoccupied space as close to your former space as possible. On a successful save, the creature takes half as much damage and isn't pulled.",
+				"Once you use this feature, you can't do so again until you finish a long rest, unless you spend 5 sorcery points to use it again."
+			]
+		},
+		{
+			"name": "Clockwork Soul",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 1,
+			"entries": [
+				"The cosmic force of order has suffused you with magic. That power arises from Mechanus or a realm like it-a plane of existence shaped entirely by clockwork efficiency. You, or someone from your lineage, might have become entangled in the machinations of the modrons, the orderly beings who inhabit Mechanus. Perhaps your ancestor even took part in the Great Modron March. Whatever its origin within you, the power of order can seem strange to others, but for you, it is part of a vast and glorious system.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Clockwork Magic|Sorcerer||Clockwork Soul|TCE|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Restore Balance|Sorcerer||Clockwork Soul|TCE|1"
+				}
+			]
+		},
+		{
+			"name": "Clockwork Magic",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"{@i 1st-level Clockwork Soul feature}",
+				"You learn additional spells when you reach certain levels in this class, as shown on the Clockwork Spells table. Each of these spells counts as a sorcerer spell for you, but it doesn't count against the number of sorcerer spells you know.",
+				"Whenever you gain a sorcerer level, you can replace one spell you gained from this feature with another spell of the same level. The new spell must be an abjuration or a transmutation spell from the sorcerer, warlock, or wizard spell list.",
+				{
+					"type": "table",
+					"caption": "Clockwork Spells",
+					"colLabels": [
+						"Sorcerer Level",
+						"Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1st",
+							"{@spell alarm}, {@spell protection from evil and good}"
+						],
+						[
+							"3rd",
+							"{@spell aid}, {@spell lesser restoration}"
+						],
+						[
+							"5th",
+							"{@spell dispel magic}, {@spell protection from energy}"
+						],
+						[
+							"7th",
+							"{@spell freedom of movement}, {@spell summon construct|TCE}"
+						],
+						[
+							"9th",
+							"{@spell greater restoration}, {@spell wall of force}"
+						]
+					]
+				},
+				"In addition, consult the Manifestations of Order table and choose or randomly determine a way your connection to order manifests while you are casting any of your sorcerer spells.",
+				{
+					"type": "table",
+					"caption": "Manifestations of Order",
+					"colLabels": [
+						"d6",
+						"Manifestation"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Spectral cogwheels hover behind you."
+						],
+						[
+							"2",
+							"The hands of a clock spin in your eyes."
+						],
+						[
+							"3",
+							"Your skin glows with a brassy sheen."
+						],
+						[
+							"4",
+							"Floating equations and geometric objects overlay your body."
+						],
+						[
+							"5",
+							"Your spellcasting focus temporarily takes the form of a Tiny clockwork mechanism."
+						],
+						[
+							"6",
+							"The ticking of gears or ringing of a clock can be heard by you and those affected by your magic."
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Restore Balance",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"{@i 1st-level Clockwork Soul feature}",
+				"Your connection to the plane of absolute order allows you to equalize chaotic moments. When a creature you can see within 60 feet of you is about to roll a {@dice d20} with advantage or disadvantage, you can use your reaction to prevent the roll from being affected by advantage and disadvantage.",
+				"You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Bastion of Law",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Clockwork Soul feature}",
+				"You can tap into the grand equation of existence to imbue a creature with a shimmering shield of order. As an action, you can expend 1 to 5 sorcery points to create a magical ward around yourself or another creature you can see within 30 feet of you. The ward lasts until you finish a long rest or until you use this feature again.",
+				"The ward is represented by a number of {@dice d8}s equal to the number of sorcery points spent to create it. When the warded creature takes damage, it can expend a number of those dice, roll them, and reduce the damage taken by the total rolled on those dice."
+			]
+		},
+		{
+			"name": "Trance of Order",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Clockwork Soul feature}",
+				"You gain the ability to align your consciousness to the endless calculations of Mechanus. As a bonus action, you can enter this state for 1 minute. For the duration, attack rolls against you can't benefit from advantage, and whenever you make an attack roll, an ability check, or a saving throw, you can treat a roll of 9 or lower on the {@dice d20} as a 10.",
+				"Once you use this bonus action, you can't use it again until you finish a long rest, unless you spend 5 sorcery points to use it again."
+			]
+		},
+		{
+			"name": "Clockwork Cavalcade",
+			"source": "TCE",
+			"page": 68,
+			"className": "Sorcerer",
+			"classSource": "PHB",
+			"subclassShortName": "Clockwork Soul",
+			"subclassSource": "TCE",
+			"level": 18,
+			"header": 2,
+			"entries": [
+				"{@i 18th-level Clockwork Soul feature}",
+				"You summon spirits of order to expunge disorder around you. As an action, you summon the spirits in a 30-foot cube originating from you. The spirits look like modrons or other constructs of your choice. The spirits are intangible and invulnerable, and they create the following effects within the cube before vanishing:",
+				{
+					"type": "list",
+					"items": [
+						"The spirits restore up to 100 hit points, divided as you choose among any number of creatures of your choice in the cube.",
+						"Any damaged objects entirely in the cube are repaired instantly.",
+						"Every spell of 6th level or lower ends on creatures and objects of your choice in the cube."
+					]
+				},
+				"Once you use this action, you can't use it again until you finish a long rest, unless you spend 7 sorcery points to use it again."
 			]
 		},
 		{
@@ -2686,8 +3101,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3778,8 +4193,8 @@
 						"Spell"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3911,8 +4326,8 @@
 						"Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[

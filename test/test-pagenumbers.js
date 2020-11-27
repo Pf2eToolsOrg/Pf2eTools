@@ -17,7 +17,7 @@ const BLACKLIST_FILE_PREFIXES = [
 	"spells-stream.json",
 	"makecards.json",
 	"foundry.json",
-	"characters.json"
+	"characters.json",
 ];
 
 const BLACKLIST_KEYS = new Set([
@@ -32,7 +32,7 @@ const BLACKLIST_KEYS = new Set([
 	"adventure",
 	"book",
 	"itemTypeAdditionalEntries",
-	"legendaryGroup"
+	"legendaryGroup",
 ]);
 
 // Sources which only exist in digital form
@@ -40,13 +40,11 @@ const BLACKLIST_SOURCES = new Set([
 	"DC",
 	"SLW",
 	"SDW",
-	"Twitter",
-	"Stream"
 ]);
 
 const SUB_KEYS = {
 	class: ["subclasses"],
-	race: ["subraces"]
+	race: ["subraces"],
 };
 
 function run (isModificationMode) {
@@ -91,7 +89,7 @@ function run (isModificationMode) {
 						}
 						noPage
 							.forEach(it => {
-								const ident = `${k} ${(it.source || (it.inherits && it.inherits.source))} ${it.name}`;
+								const ident = `${k.padEnd(20, " ")} ${(it.source || (it.inherits && it.inherits.source)).padEnd(32, " ")} ${it.name}`;
 								if (isModificationMode) {
 									console.log(`  ${ident}`);
 									const page = rl.questionInt("  - Page = ");

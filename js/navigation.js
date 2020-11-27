@@ -9,7 +9,7 @@ class NavBar {
 			function () {
 				NavBar.initElements();
 				NavBar.highlightCurrentPage();
-			}
+			},
 		);
 		window.addEventListener("load", NavBar.initHandlers);
 	}
@@ -56,6 +56,7 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Dungeons & Dragons vs. Rick and Morty: Basic Rules", {aHash: "RMR", date: null});
 		addLi(ulBooks, "book.html", "Explorer's Guide to Wildemount", {aHash: "EGW", date: "2020"});
 		addLi(ulBooks, "book.html", "Mythic Odysseys of Theros", {aHash: "MOT", date: null});
+		addLi(ulBooks, "book.html", "Tasha's Cauldron of Everything", {aHash: "TCE", date: null});
 		addDivider(ulBooks);
 		addLi(ulBooks, "book.html", "Adventurers League", {aHash: "AL", date: "2016"});
 		addLi(ulBooks, "book.html", "Sage Advice Compendium", {aHash: "SAC", date: "2019"});
@@ -65,6 +66,7 @@ class NavBar {
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "races.html", "Races");
+		addLi(ulPlayers, "charcreationoptions.html", "Other Character Creation Options");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "statgen.html", "Stat Generator");
 		addDivider(ulPlayers);
@@ -113,6 +115,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Wildemount: Dangerous Designs", {isSide: true, aHash: "DD", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Frozen Sick", {isSide: true, aHash: "FS", date: null});
 		addLi(ulAdventures, "adventure.html", "Wildemount: Unwelcome Spirits", {isSide: true, aHash: "US", date: null});
+		addLi(ulAdventures, "adventure.html", "Theros: No Silent Secret", {isSide: true, aHash: "MOT-NSS", date: null});
 		addLi(ulAdventures, "adventure.html", "Icewind Dale: Rime of the Frostmaiden", {isSide: true, aHash: "IDRotF", date: null});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
@@ -169,8 +172,8 @@ class NavBar {
 					evt.preventDefault();
 					styleSwitcher.toggleDayNight();
 				},
-				className: "nightModeToggle"
-			}
+				className: "nightModeToggle",
+			},
 		);
 		addButton(
 			ulSettings,
@@ -181,8 +184,8 @@ class NavBar {
 					styleSwitcher.toggleWide();
 				},
 				className: "wideModeToggle",
-				title: "This feature is unsupported. Expect bugs."
-			}
+				title: "This feature is unsupported. Expect bugs.",
+			},
 		);
 		addDivider(ulSettings);
 		addButton(
@@ -196,8 +199,8 @@ class NavBar {
 					const dump = {sync, async};
 					DataUtil.userDownload("5etools", dump);
 				},
-				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file."
-			}
+				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file.",
+			},
 		);
 		addButton(
 			ulSettings,
@@ -211,8 +214,8 @@ class NavBar {
 					await StorageUtil.pSetFromDump(dump.async);
 					location.reload();
 				},
-				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file."
-			}
+				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file.",
+			},
 		);
 		addDivider(ulSettings);
 		addButton(
@@ -227,8 +230,8 @@ class NavBar {
 						// Ignore errors
 					}
 				},
-				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site."
-			}
+				title: "Add the site to your home screen. When used in conjunction with the Preload Offline Data option, this can create a functional offline copy of the site.",
+			},
 		);
 		addButton(
 			ulSettings,
@@ -324,8 +327,8 @@ class NavBar {
 
 					sendMessage({"type": "cache-start"});
 				},
-				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved."
-			}
+				title: "Preload the site data for offline use. Warning: slow. If it appears to freeze, cancel it and try again; progress will be saved.",
+			},
 		);
 
 		/**
@@ -603,7 +606,7 @@ NavBar.DROP_TIME = 250;
 NavBar.MIN_MOVE_PX = 3;
 NavBar.ALT_CHILD_PAGES = {
 	"book.html": "books.html",
-	"adventure.html": "adventures.html"
+	"adventure.html": "adventures.html",
 };
 NavBar._timerId = 1;
 NavBar._timersOpen = {};

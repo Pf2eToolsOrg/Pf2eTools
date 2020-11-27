@@ -1,5 +1,11 @@
 "use strict";
 
+if (typeof module !== "undefined") {
+	const cv = require("./converterutils.js");
+	Object.assign(global, cv);
+	global.PropOrder = require("./utils-proporder.js");
+}
+
 class FeatParser extends BaseParser {
 	/**
 	 * Parses feats from raw text pastes
@@ -49,7 +55,7 @@ class FeatParser extends BaseParser {
 			const ptrI = {_: i};
 			feat.entries = EntryConvert.coalesceLines(
 				ptrI,
-				toConvert
+				toConvert,
 			);
 			i = ptrI._;
 		}
@@ -57,9 +63,14 @@ class FeatParser extends BaseParser {
 		if (!feat.entries.length) delete feat.entries;
 		else this._setAbility(feat, options);
 
-		this._doFeatPostProcess(feat, options);
-		const statsOut = PropOrder.getOrdered(feat, feat.__prop || "feat");
+		const statsOut = this._getFinalState(feat, options);
+
 		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	static _getFinalState (feat, options) {
+		this._doFeatPostProcess(feat, options);
+		return PropOrder.getOrdered(feat, feat.__prop || "feat");
 	}
 
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -73,7 +84,6 @@ class FeatParser extends BaseParser {
 			feat.entries = ActionTag.tryRun(feat.entries);
 			feat.entries = SenseTag.tryRun(feat.entries);
 		}
-		BasicTextClean.tryRun(feat);
 	}
 
 	// SHARED PARSING FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -118,7 +128,7 @@ class FeatParser extends BaseParser {
 	static _setAbility (feat, options) {
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isNoModification: true
+			isNoModification: true,
 		});
 		walker.walk(
 			feat.entries,
@@ -139,9 +149,9 @@ class FeatParser extends BaseParser {
 								{
 									choose: {
 										from: abils,
-										amount: 1
-									}
-								}
+										amount: 1,
+									},
+								},
 							]
 						}
 
@@ -151,15 +161,21 @@ class FeatParser extends BaseParser {
 							{
 								choose: {
 									from: [...Parser.ABIL_ABVS],
-									amount: 1
-								}
-							}
+									amount: 1,
+								},
+							},
 						]
 
 						obj.items.shift();
 					}
-				}
-			}
+				},
+			},
 		)
 	}
+}
+
+if (typeof module !== "undefined") {
+	module.exports = {
+		FeatParser,
+	};
 }

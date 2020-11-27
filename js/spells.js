@@ -66,6 +66,8 @@ class SpellsPage {
 		return listItem;
 	}
 
+	_getListItem_getLevelMetaPart (spell) { return `${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`; }
+
 	handleFilterChange () {
 		const f = this._pageFilter.filterBox.getValues();
 		list.filter(li => {
@@ -173,6 +175,44 @@ class SpellsPage {
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
+
+	// TODO refactor this and bestiary markdown section
+	static popoutHandlerGenerator (toList) {
+		return (evt) => {
+			if (Hist.lastLoadedId !== null) {
+				const toRender = toList[Hist.lastLoadedId];
+
+				if (evt.shiftKey) {
+					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: `${toRender.name} \u2014 Source Data`,
+							isPermanent: true,
+							isBookContent: true,
+						},
+					);
+				} else if (evt.ctrlKey || evt.metaKey) {
+					const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
+					const mdText = RendererMarkdown.get().render({entries: [{type: "dataSpell", dataSpell: toRender}]});
+					const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
+
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: name,
+							isPermanent: true,
+							isBookContent: true,
+						},
+					);
+				} else {
+					Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
+				}
+			}
+		}
+	}
 }
 SpellsPage._BOOK_VIEW_MODE_K = "bookViewMode";
 
@@ -261,9 +301,10 @@ async function pPageInit (loadedSources) {
 				stack.push(`</tbody></table></div>`);
 			};
 
-			const lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
+			let lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
+			if (lastOrder != null) lastOrder = `${lastOrder}`;
 
-			const $selSortMode = $(`<select class="form-control">
+			const $selSortMode = $(`<select class="form-control input-sm">
 				<option value="0">Spell Level</option>
 				<option value="1">Alphabetical</option>
 			</select>`)
@@ -279,6 +320,50 @@ async function pPageInit (loadedSources) {
 			if (lastOrder != null) $selSortMode.val(lastOrder);
 
 			$$`<div class="flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
+
+			// region Markdown
+			// TODO refactor this and bestiary markdown section
+			const getAsMarkdown = () => {
+				const toRender = toShow.length ? toShow : [spellList[Hist.lastLoadedId]];
+				const parts = [...toRender]
+					.sort((a, b) => lastOrder === "0" ? SortUtil.ascSort(a.level, b.level) : SortUtil.ascSortLower(a.name, b.name))
+					.map(sp => RendererMarkdown.get().render({type: "dataSpell", dataSpell: sp}).trim());
+
+				const out = [];
+				let charLimit = RendererMarkdown._PAGE_CHARS;
+				for (let i = 0; i < parts.length; ++i) {
+					const part = parts[i];
+					out.push(part);
+
+					if (i < parts.length - 1) {
+						if ((charLimit -= part.length) < 0) {
+							if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
+							charLimit = RendererMarkdown._PAGE_CHARS;
+						}
+					}
+				}
+
+				return out.join("\n\n");
+			};
+
+			const $btnDownloadMarkdown = $(`<button class="btn btn-default btn-sm">Download as Markdown</button>`)
+				.click(() => DataUtil.userDownloadText("spells.md", getAsMarkdown()));
+
+			const $btnCopyMarkdown = $(`<button class="btn btn-default btn-sm px-2" title="Copy Markdown to Clipboard"><span class="glyphicon glyphicon-copy"/></button>`)
+				.click(async () => {
+					await MiscUtil.pCopyTextToClipboard(await getAsMarkdown());
+					JqueryUtil.showCopiedEffect($btnCopyMarkdown);
+				});
+
+			const $btnDownloadMarkdownSettings = $(`<button class="btn btn-default btn-sm px-2" title="Markdown Settings"><span class="glyphicon glyphicon-cog"/></button>`)
+				.click(async () => RendererMarkdown.pShowSettingsModal());
+
+			$$`<div class="flex-v-center btn-group ml-3">
+				${$btnDownloadMarkdown}
+				${$btnCopyMarkdown}
+				${$btnDownloadMarkdownSettings}
+			</div>`.appendTo($wrpControls);
+			// endregion
 
 			const renderByLevel = () => {
 				const stack = [];

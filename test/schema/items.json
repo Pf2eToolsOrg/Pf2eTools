@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.8.0",
+	"version": "1.8.2",
 	"type": "object",
 	"definitions": {
 		"itemData": {
@@ -103,10 +103,24 @@
 						}
 					]
 				},
+				"reqAttuneAlt": {
+					"description": "Used for filtering.",
+					"oneOf": [
+						{
+							"type": "string"
+						},
+						{
+							"type": "boolean"
+						}
+					]
+				},
 				"curse": {
 					"type": "boolean"
 				},
 				"resist": {
+					"type": "string"
+				},
+				"color": {
 					"type": "string"
 				},
 				"scfType": {
@@ -275,7 +289,7 @@
 							"type": "array",
 							"items": {
 								"type": "string",
-								"enum": ["Bard", "Cleric", "Druid", "Paladin", "Sorcerer", "Warlock", "Wizard"]
+								"enum": ["Bard", "Cleric", "Druid", "Paladin", "Ranger", "Sorcerer", "Warlock", "Wizard"]
 							}
 						}
 					]

@@ -421,6 +421,7 @@
 				"Cantrip Versatility|Druid||1|UAClassFeatureVariants",
 				"Wild Shape|Druid||2",
 				"Wild Companion|Druid||2|UAClassFeatureVariants",
+				"Wild Companion|Druid||2|TCE",
 				{
 					"classFeature": "Druid Circle|Druid||2",
 					"gainSubclassFeature": true
@@ -428,6 +429,7 @@
 				"Wild Shape Improvement|Druid||4",
 				"Ability Score Improvement|Druid||4",
 				"Proficiency Versatility|Druid||4|UAClassFeatureVariants",
+				"Cantrip Versatility|Druid||4|TCE",
 				{
 					"classFeature": "Druid Circle feature|Druid||6",
 					"gainSubclassFeature": true
@@ -678,6 +680,18 @@
 					]
 				},
 				{
+					"name": "Circle of Twilight (UA)",
+					"shortName": "Twilight (UA)",
+					"source": "UADruid",
+					"page": 2,
+					"subclassFeatures": [
+						"Circle of Twilight|Druid||Twilight (UA)|UADruid|2",
+						"Speech Beyond the Grave|Druid||Twilight (UA)|UADruid|6",
+						"Watcher at the Threshold|Druid||Twilight (UA)|UADruid|10",
+						"Paths of the Dead|Druid||Twilight (UA)|UADruid|14"
+					]
+				},
+				{
 					"name": "Circle of the Shepherd v2 (UA)",
 					"shortName": "Shepherd v2 (UA)",
 					"source": "UARevisedClassOptions",
@@ -688,18 +702,6 @@
 						"Mighty Summoner|Druid||Shepherd v2 (UA)|UARevisedClassOptions|6",
 						"Guardian Spirit|Druid||Shepherd v2 (UA)|UARevisedClassOptions|10",
 						"Faithful Summons|Druid||Shepherd v2 (UA)|UARevisedClassOptions|14"
-					]
-				},
-				{
-					"name": "Circle of Twilight (UA)",
-					"shortName": "Twilight (UA)",
-					"source": "UADruid",
-					"page": 2,
-					"subclassFeatures": [
-						"Circle of Twilight|Druid||Twilight (UA)|UADruid|2",
-						"Speech Beyond the Grave|Druid||Twilight (UA)|UADruid|6",
-						"Watcher at the Threshold|Druid||Twilight (UA)|UADruid|10",
-						"Paths of the Dead|Druid||Twilight (UA)|UADruid|14"
 					]
 				},
 				{
@@ -762,44 +764,11 @@
 					]
 				},
 				{
-					"name": "Circle of Spores",
-					"shortName": "Spores",
-					"source": "GGR",
-					"page": 26,
-					"additionalSpells": [
-						{
-							"prepared": {
-								"3": [
-									"blindness/deafness",
-									"gentle repose"
-								],
-								"5": [
-									"animate dead",
-									"gaseous form"
-								],
-								"7": [
-									"blight",
-									"confusion"
-								],
-								"9": [
-									"cloudkill",
-									"contagion"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"Circle of Spores|Druid||Spores|GGR|2",
-						"Fungal Infestation|Druid||Spores|GGR|6",
-						"Spreading Spores|Druid||Spores|GGR|10",
-						"Fungal Body|Druid||Spores|GGR|14"
-					]
-				},
-				{
 					"name": "Circle of Wildfire (UA)",
 					"shortName": "Wildfire (UA)",
 					"source": "UAClericDruidWizard",
 					"page": 2,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"prepared": {
@@ -834,11 +803,102 @@
 					"shortName": "Stars (UA)",
 					"source": "UA2020SubclassesPt3",
 					"page": 3,
+					"isReprinted": true,
 					"subclassFeatures": [
 						"Circle of the Stars|Druid||Stars (UA)|UA2020SubclassesPt3|2",
 						"Cosmic Omen|Druid||Stars (UA)|UA2020SubclassesPt3|6",
 						"Full of Stars|Druid||Stars (UA)|UA2020SubclassesPt3|10",
 						"Star Flare|Druid||Stars (UA)|UA2020SubclassesPt3|14"
+					]
+				},
+				{
+					"name": "Circle of Spores",
+					"shortName": "Spores",
+					"source": "TCE",
+					"page": 36,
+					"otherSources": [
+						{
+							"source": "GGR",
+							"page": 26
+						}
+					],
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"blindness/deafness",
+									"gentle repose"
+								],
+								"5": [
+									"animate dead",
+									"gaseous form"
+								],
+								"7": [
+									"blight",
+									"confusion"
+								],
+								"9": [
+									"cloudkill",
+									"contagion"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Circle of Spores|Druid||Spores|TCE|2",
+						"Fungal Infestation|Druid||Spores|TCE|6",
+						"Spreading Spores|Druid||Spores|TCE|10",
+						"Fungal Body|Druid||Spores|TCE|14"
+					]
+				},
+				{
+					"name": "Circle of Stars",
+					"shortName": "Stars",
+					"source": "TCE",
+					"page": 38,
+					"subclassFeatures": [
+						"Circle of Stars|Druid||Stars|TCE|2",
+						"Cosmic Omen|Druid||Stars|TCE|6",
+						"Twinkling Constellations|Druid||Stars|TCE|10",
+						"Full of Stars|Druid||Stars|TCE|14"
+					]
+				},
+				{
+					"name": "Circle of Wildfire",
+					"shortName": "Wildfire",
+					"source": "TCE",
+					"page": 39,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"2": [
+									"burning hands",
+									"cure wounds"
+								],
+								"3": [
+									"flaming sphere",
+									"scorching ray"
+								],
+								"5": [
+									"plant growth",
+									"revivify"
+								],
+								"7": [
+									"aura of life",
+									"fire shield"
+								],
+								"9": [
+									"flame strike",
+									"mass cure wounds"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Circle of Wildfire|Druid||Wildfire|TCE|2",
+						"Enhanced Bond|Druid||Wildfire|TCE|6",
+						"Cauterizing Flames|Druid||Wildfire|TCE|10",
+						"Blazing Revival|Druid||Wildfire|TCE|14"
 					]
 				}
 			],
@@ -2231,6 +2291,7 @@
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 1,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 1st-level druid feature (enhances Spellcasting)}",
 				"Whenever you gain a level in this class, you can replace one cantrip you learned from this Spellcasting feature with another cantrip from the druid spell list."
@@ -2326,11 +2387,26 @@
 		},
 		{
 			"name": "Wild Companion",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 2,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 2nd-level druid {@variantrule optional class features|tce|optional feature}}",
+				"You gain the ability to summon a spirit that assumes an animal form: as an action, you can expend a use of your Wild Shape feature to cast the {@spell find familiar} spell, without material components.",
+				"When you cast the spell in this way, the familiar is a fey instead of a beast, and the familiar disappears after a number of hours equal to half your druid level."
+			]
+		},
+		{
+			"name": "Wild Companion",
 			"source": "UAClassFeatureVariants",
 			"page": 4,
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 2,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 2nd-level druid feature (enhances Wild Shape)}",
 				"You gain the ability to summon a spirit that assumes an animal form: as an action, you can expend a use of your Wild Shape feature to cast the {@spell find familiar} spell, without material components.",
@@ -2412,12 +2488,26 @@
 			]
 		},
 		{
+			"name": "Cantrip Versatility",
+			"source": "TCE",
+			"page": 35,
+			"className": "Druid",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level druid {@variantrule optional class features|tce|optional feature}}",
+				"Whenever you reach a level in this class that grants the Ability Score Improvement feature, you can replace one cantrip you learned from this class's Spellcasting feature with another cantrip from the {@filter druid spell list|spells|level=0|class=Druid}."
+			]
+		},
+		{
 			"name": "Proficiency Versatility",
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2468,6 +2558,7 @@
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2518,6 +2609,7 @@
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2556,6 +2648,7 @@
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2606,6 +2699,7 @@
 			"className": "Druid",
 			"classSource": "PHB",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2627,160 +2721,6 @@
 		}
 	],
 	"subclassFeature": [
-		{
-			"name": "Circle of Spores",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 2,
-			"entries": [
-				"Druids of the Circle of Spores find beauty in decay. They see within mold and other fungi the ability to transform lifeless material into abundant, albeit somewhat strange, life.",
-				"These druids believe that life and death are parts of a grand cycle, with one leading to the other and then back again. Death isn't the end of life, but instead a change of state that sees life shift into a new form.",
-				"Druids of this circle have a complex relationship with the undead. Unlike most other druids, they see nothing inherently wrong with undeath, which they consider to be a companion to life and death. But these druids believe that the natural cycle is healthiest when each segment of it is vibrant and changing. Undead that seek to replace all life with undeath, or that try to avoid passing to a final rest, violate the cycle and must be thwarted.",
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Circle Spells|Druid||Spores|GGR|2"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Halo of Spores|Druid||Spores|GGR|2"
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Symbiotic Entity|Druid||Spores|GGR|2"
-				}
-			]
-		},
-		{
-			"name": "Circle Spells",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 2,
-			"header": 1,
-			"entries": [
-				"Your symbiotic link to fungus and your ability to tap into the cycle of life and death grants you access to certain spells. At 2nd level, you learn the {@spell chill touch} cantrip. At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table.",
-				"Once you gain access to one of these spells, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
-				{
-					"type": "table",
-					"caption": "Circle of Spores Spells",
-					"colLabels": [
-						"Druid Level",
-						"Circle Spells"
-					],
-					"colStyles": [
-						"col-3 text-center",
-						"col-9"
-					],
-					"rows": [
-						[
-							"3rd",
-							"{@spell blindness/deafness}, {@spell gentle repose}"
-						],
-						[
-							"5th",
-							"{@spell animate dead}, {@spell gaseous form}"
-						],
-						[
-							"7th",
-							"{@spell blight}, {@spell confusion}"
-						],
-						[
-							"9th",
-							"{@spell cloudkill}, {@spell contagion}"
-						]
-					]
-				}
-			]
-		},
-		{
-			"name": "Halo of Spores",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 2,
-			"header": 1,
-			"entries": [
-				"Starting at 2nd level, you are surrounded by invisible, necrotic spores that are harmless until you unleash them on a creature nearby. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your reaction to deal {@damage 1d4} necrotic damage to that creature unless it succeeds on a Constitution saving throw against your spell save DC. The necrotic damage increases to {@dice 1d6} at 6th level, {@dice 1d8} at 10th level, and {@dice 1d10} at 14th level."
-			]
-		},
-		{
-			"name": "Symbiotic Entity",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 2,
-			"header": 1,
-			"entries": [
-				"At 2nd level, you gain the ability to channel magic into your spores. As an action, you can expend a use of your Wild Shape feature to awaken those spores, rather than transforming into a beast form, and you gain 4 temporary hit points for each level you have in this class. While this feature is active, you gain the following benefits:",
-				{
-					"type": "list",
-					"items": [
-						"When you deal your Halo of Spores damage, roll the damage die a second time and add it to the total.",
-						"Your melee weapon attacks deal an extra {@damage 1d6} poison damage to any target they hit."
-					]
-				},
-				"These benefits last for 10 minutes, until you lose all these temporary hit points, or until you use your Wild Shape again."
-			]
-		},
-		{
-			"name": "Fungal Infestation",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 6,
-			"header": 2,
-			"entries": [
-				"At 6th level, your spores gain the ability to infest a corpse and animate it. If a beast or a humanoid that is Small or Medium dies within 10 feet of you, you can use your reaction to animate it, causing it to stand up immediately with 1 hit point. The creature uses the {@creature zombie} stat block in the {@book Monster Manual|MM}. It remains animate for 1 hour, after which time it collapses and dies.",
-				"In combat, the zombie's turn comes immediately after yours. It obeys your mental commands, and the only action it can take is the {@action Attack} action, making one melee attack.",
-				"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
-			]
-		},
-		{
-			"name": "Spreading Spores",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 10,
-			"header": 2,
-			"entries": [
-				"At 10th level, you gain the ability to seed an area with deadly spores. As a bonus action while your Symbiotic Entity feature is active, you can hurl spores up to 30 feet away, where they swirl in a 10-foot cube for 1 minute. The spores disappear early if you use this feature again, if you dismiss them as a bonus action, or if your Symbiotic Entity feature is no longer active.",
-				"Whenever a creature moves into the cube or starts its turn there, that creature takes your Halo of Spores damage, unless the creature succeeds on a Constitution saving throw against your spell save DC. A creature can take this damage no more than once per turn.",
-				"While the cube of spores persists, you can't use your Halo of Spores reaction."
-			]
-		},
-		{
-			"name": "Fungal Body",
-			"source": "GGR",
-			"page": 26,
-			"className": "Druid",
-			"classSource": "PHB",
-			"subclassShortName": "Spores",
-			"subclassSource": "GGR",
-			"level": 14,
-			"header": 2,
-			"entries": [
-				"At 14th level, the fungal spores in your body alter you: you can't be {@condition blinded}, {@condition deafened}, {@condition frightened}, or {@condition poisoned}, and any critical hit against you counts as a normal hit instead, unless you're {@condition incapacitated}."
-			]
-		},
 		{
 			"name": "Circle of the Land",
 			"source": "PHB",
@@ -2844,8 +2784,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2874,8 +2814,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2904,8 +2844,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2934,8 +2874,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2964,8 +2904,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -2994,8 +2934,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3024,8 +2964,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3054,8 +2994,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -3090,7 +3030,7 @@
 			"level": 2,
 			"header": 1,
 			"entries": [
-				"Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can't use this feature again until you finish a long rest",
+				"Starting at 2nd level, you can regain some of your magical energy by sitting in meditation and communing with nature. During a short rest, you choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your druid level (rounded up), and none of the slots can be 6th level or higher. You can't use this feature again until you finish a long rest.",
 				"For example, when you are a 4th-level druid, you can recover up to two levels worth of spell slots. You can recover either a 2nd-level slot or two 1st-level slots."
 			]
 		},
@@ -3289,6 +3229,526 @@
 			"header": 2,
 			"entries": [
 				"By 14th level, you have learned to use magic to alter your physical form in more subtle ways. You can cast the {@spell alter self} spell at will."
+			]
+		},
+		{
+			"name": "Circle of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Druids of the Circle of Spores find beauty in decay. They see within mold and other fungi the ability to transform lifeless material into abundant, albeit somewhat strange, life.",
+				"These druids believe that life and death are parts of a grand cycle, with one leading to the other and then back again. Death isn't the end of life, but instead a change of state that sees life shift into a new form.",
+				"Druids of this circle have a complex relationship with the undead. Unlike most other druids, they see nothing inherently wrong with undeath, which they consider to be a companion to life and death. But these druids believe that the natural cycle is healthiest when each segment of it is vibrant and changing. Undead that seek to replace all life with undeath, or that try to avoid passing to a final rest, violate the cycle and must be thwarted.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Halo of Spores|Druid||Spores|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Symbiotic Entity|Druid||Spores|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Your symbiotic link to fungus and your ability to tap into the cycle of life and death grants you access to certain spells. At 2nd level, you learn the {@spell chill touch} cantrip. At 3rd, 5th, 7th, and 9th level you gain access to the spells listed for that level in the Circle of Spores Spells table.",
+				"Once you gain access to one of these spells, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+				{
+					"type": "table",
+					"caption": "Circle of Spores Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell blindness/deafness}, {@spell gentle repose}"
+						],
+						[
+							"5th",
+							"{@spell animate dead}, {@spell gaseous form}"
+						],
+						[
+							"7th",
+							"{@spell blight}, {@spell confusion}"
+						],
+						[
+							"9th",
+							"{@spell cloudkill}, {@spell contagion}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Halo of Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"Starting at 2nd level, you are surrounded by invisible, necrotic spores that are harmless until you unleash them on a creature nearby. When a creature you can see moves into a space within 10 feet of you or starts its turn there, you can use your reaction to deal {@damage 1d4} necrotic damage to that creature unless it succeeds on a Constitution saving throw against your spell save DC. The necrotic damage increases to {@dice 1d6} at 6th level, {@dice 1d8} at 10th level, and {@dice 1d10} at 14th level."
+			]
+		},
+		{
+			"name": "Symbiotic Entity",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"At 2nd level, you gain the ability to channel magic into your spores. As an action, you can expend a use of your Wild Shape feature to awaken those spores, rather than transforming into a beast form, and you gain 4 temporary hit points for each level you have in this class. While this feature is active, you gain the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"When you deal your Halo of Spores damage, roll the damage die a second time and add it to the total.",
+						"Your melee weapon attacks deal an extra {@damage 1d6} necrotic damage to any target they hit."
+					]
+				},
+				"These benefits last for 10 minutes, until you lose all these temporary hit points, or until you use your Wild Shape again."
+			]
+		},
+		{
+			"name": "Fungal Infestation",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"At 6th level, your spores gain the ability to infest a corpse and animate it. If a beast or a humanoid that is Small or Medium dies within 10 feet of you, you can use your reaction to animate it, causing it to stand up immediately with 1 hit point. The creature uses the {@creature zombie} stat block in the {@book Monster Manual|MM}. It remains animate for 1 hour, after which time it collapses and dies.",
+				"In combat, the zombie's turn comes immediately after yours. It obeys your mental commands, and the only action it can take is the {@action Attack} action, making one melee attack.",
+				"You can use this feature a number of times equal to your Wisdom modifier (minimum of once), and you regain all expended uses of it when you finish a long rest."
+			]
+		},
+		{
+			"name": "Spreading Spores",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"At 10th level, you gain the ability to seed an area with deadly spores. As a bonus action while your Symbiotic Entity feature is active, you can hurl spores up to 30 feet away, where they swirl in a 10-foot cube for 1 minute. The spores disappear early if you use this feature again, if you dismiss them as a bonus action, or if your Symbiotic Entity feature is no longer active.",
+				"Whenever a creature moves into the cube or starts its turn there, that creature takes your Halo of Spores damage, unless the creature succeeds on a Constitution saving throw against your spell save DC. A creature can take this damage no more than once per turn.",
+				"While the cube of spores persists, you can't use your Halo of Spores reaction."
+			]
+		},
+		{
+			"name": "Fungal Body",
+			"source": "TCE",
+			"page": 36,
+			"otherSources": [
+				{
+					"source": "GGR",
+					"page": 26
+				}
+			],
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Spores",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"At 14th level, the fungal spores in your body alter you: you can't be {@condition blinded}, {@condition deafened}, {@condition frightened}, or {@condition poisoned}, and any critical hit against you counts as a normal hit instead, unless you're {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Circle of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"The Circle of Stars allows druids to draw on the power of starlight. These druids have tracked heavenly patterns since time immemorial, discovering secrets hidden amid the constellations. By revealing and understanding these secrets, the Circle of the Stars seeks to harness the powers of the cosmos.",
+				"Many druids of this circle keep records of the constellations and the stars' effects on the world. Some groups document these observations at megalithic sites, which serve as enigmatic libraries of lore. These repositories might take the form of stone circles, pyramids, petroglyphs, and underground temples-any construction durable enough to protect the circle's sacred knowledge even against a great cataclysm.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Star Map|Druid||Stars|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Starry Form|Druid||Stars|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Star Map",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"You've created a star chart as part of your heavenly studies. It is a Tiny object and can serve as a spellcasting focus for your druid spells. You determine its form by rolling on the Star Map table or by choosing one.",
+				{
+					"type": "table",
+					"caption": "Star Map",
+					"colLabels": [
+						"d6",
+						"Map Form"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"A scroll covered with depictions of constellations"
+						],
+						[
+							"2",
+							"A stone tablet with fine holes drilled through it"
+						],
+						[
+							"3",
+							"A speckled owlbear hide, tooled with raised marks"
+						],
+						[
+							"4",
+							"A collection of maps bound in an ebony cover"
+						],
+						[
+							"5",
+							"A crystal that projects starry patterns when placed before a light"
+						],
+						[
+							"6",
+							"Glass disks that depict constellations"
+						]
+					]
+				},
+				"While holding this map, you have these benefits:",
+				{
+					"type": "list",
+					"items": [
+						"You know the {@spell guidance} cantrip.",
+						"You have the {@spell guiding bolt} spell prepared. It counts as a druid spell for you, and it doesn't count against the number of spells you can have prepared.",
+						"You can cast {@spell guiding bolt} without expending a spell slot. You can do so a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+					]
+				},
+				"If you lose the map, you can perform a 1-hour ceremony to magically create a replacement. This ceremony can be performed during a short or long rest, and it destroys the previous map."
+			]
+		},
+		{
+			"name": "Starry Form",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of the Stars feature}",
+				"As a bonus action, you can expend a use of your Wild Shape feature to take on a starry form, rather than transforming into a beast.",
+				"While in your starry form, you retain your game statistics, but your body becomes luminous; your joints glimmer like stars, and glowing lines connect them as on a star chart. This form sheds bright light in a 10-foot radius and dim light for an additional 10 feet. The form lasts for 10 minutes. It ends early if you dismiss it (no action required), are {@condition incapacitated}, die, or use this feature again.",
+				"Whenever you assume your starry form, choose which of the following constellations glimmers on your body; your choice gives you certain benefits while in the form:",
+				{
+					"type": "entries",
+					"name": "Archer",
+					"entries": [
+						"A constellation of an archer appears on you. When you activate this form, and as a bonus action on your subsequent turns while it lasts, you can make a ranged spell attack, hurling a luminous arrow that targets one creature within 60 feet of you. On a hit, the attack deals radiant damage equal to {@dice 1d8} + your Wisdom modifier."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Chalice",
+					"entries": [
+						"A constellation of a life-giving goblet appears on you. Whenever you cast a spell using a spell slot that restores hit points to a creature, you or another creature within 30 feet of you can regain hit points equal to {@dice 1d8} + your Wisdom modifier."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Dragon",
+					"entries": [
+						"A constellation of a wise dragon appears on you. When you make an Intelligence or a Wisdom check or a Constitution saving throw to maintain concentration on a spell, you can treat a roll of 9 or lower on the {@dice d20} as a 10."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cosmic Omen",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of the Stars feature}",
+				"Whenever you finish a long rest, you can consult your Star Map for omens. When you do so, roll a die. Until you finish your next long rest, you gain access to a special reaction based on whether you rolled an even or an odd number on the die:",
+				{
+					"type": "list",
+					"style": "list-hang-notitle",
+					"items": [
+						{
+							"type": "item",
+							"name": "Weal (even).",
+							"entry": "Whenever a creature you can see within 30 feet of you is about to make an attack roll, a saving throw, or an ability check, you can use your reaction to roll a {@dice d6} and add the number rolled to the total."
+						},
+						{
+							"type": "item",
+							"name": "Woe (odd).",
+							"entry": "Whenever a creature you can see within 30 feet of you is about to make an attack roll, a saving throw, or an ability check, you can use your reaction to roll a {@dice d6} and subtract the number rolled from the total."
+						}
+					]
+				},
+				"You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Twinkling Constellations",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of the Stars feature}",
+				"The constellations of your Starry Form improve. The {@dice 1d8} of the Archer and the Chalice becomes {@dice 2d8}, and while the Dragon is active, you have a flying speed of 20 feet and can hover.",
+				"Moreover, at the start of each of your turns while in your Starry Form, you can change which constellation glimmers on your body."
+			]
+		},
+		{
+			"name": "Full of Stars",
+			"source": "TCE",
+			"page": 38,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Stars",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of the Stars feature}",
+				"While in your Starry Form, you become partially incorporeal, giving you resistance to bludgeoning, piercing, and slashing damage."
+			]
+		},
+		{
+			"name": "Circle of Wildfire",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"entries": [
+				"Druids within the Circle of Wildfire understand that destruction is sometimes the precursor of creation, such as when a forest fire promotes later growth. These druids bond with a primal spirit that harbors both destructive and creative power, allowing the druids to create controlled flames that burn away one thing but give life to another.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Circle Spells|Druid||Wildfire|TCE|2"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Summon Wildfire Spirit|Druid||Wildfire|TCE|2"
+				}
+			]
+		},
+		{
+			"name": "Circle Spells",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"You have formed a bond with a wildfire spirit, a primal being of creation and destruction. Your link with this spirit grants you access to some spells when you reach certain levels in this class, as shown on the Circle of Wildfire Spells table.",
+				"Once you gain access to one of these spells, you always have it prepared, and it doesn't count against the number of spells you can prepare each day. If you gain access to a spell that doesn't appear on the druid spell list, the spell is nonetheless a druid spell for you.",
+				{
+					"type": "table",
+					"caption": "Circle of Wildfire Spells",
+					"colLabels": [
+						"Druid Level",
+						"Circle Spells"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"2nd",
+							"{@spell burning hands}, {@spell cure wounds}"
+						],
+						[
+							"3rd",
+							"{@spell flaming sphere}, {@spell scorching ray}"
+						],
+						[
+							"5th",
+							"{@spell plant growth}, {@spell revivify}"
+						],
+						[
+							"7th",
+							"{@spell aura of life}, {@spell fire shield}"
+						],
+						[
+							"9th",
+							"{@spell flame strike}, {@spell mass cure wounds}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Summon Wildfire Spirit",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 2,
+			"header": 1,
+			"entries": [
+				"{@i 2nd-level Circle of Wildfire feature}",
+				"You can summon the primal spirit bound to your soul. As an action, you can expend one use of your Wild Shape feature to summon your wildfire spirit, rather than assuming a beast form.",
+				"The spirit appears in an unoccupied space of your choice that you can see within 30 feet of you. Each creature within 10 feet of the spirit (other than you) when it appears must succeed on a Dexterity saving throw against your spell save DC or take {@damage 2d6} fire damage.",
+				"The spirit is friendly to you and your companions and obeys your commands. See this creature's game statistics in the {@creature Wildfire Spirit|TCE} stat block, which uses your proficiency bonus (PB) in several places. You determine the spirit's appearance. Some spirits take the form of a humanoid figure made of gnarled branches covered in flame, while others look like beasts wreathed in fire.",
+				"In combat, the spirit shares your initiative count, but it takes its turn immediately after yours. The only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the spirit can take any action of its choice, not just {@action Dodge}.",
+				"The spirit manifests for 1 hour, until it is reduced to 0 hit points, until you use this feature to summon the spirit again, or until you die."
+			]
+		},
+		{
+			"name": "Enhanced Bond",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Circle of Wildfire feature}",
+				"The bond with your wildfire spirit enhances your destructive and restorative spells. Whenever you cast a spell that deals fire damage or restores hit points while your wildfire spirit is summoned, roll a {@dice d8}, and you gain a bonus equal to the number rolled to one damage or healing roll of the spell.",
+				"In addition, when you cast a spell with a range other than self, the spell can originate from you or your wildfire spirit."
+			]
+		},
+		{
+			"name": "Cauterizing Flames",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 10,
+			"header": 2,
+			"entries": [
+				"{@i 10th-level Circle of Wildfire feature}",
+				"You gain the ability to turn death into magical flames that can heal or incinerate. When a Small or larger creature dies within 30 feet of you or your wildfire spirit, a harmless spectral flame springs forth in the dead creature's space and flickers there for 1 minute. When a creature you can see enters that space, you can use your reaction to extinguish the spectral flame there and either heal the creature or deal fire damage to it. The healing or damage equals {@dice 2d10} + your Wisdom modifier.",
+				"You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Blazing Revival",
+			"source": "TCE",
+			"page": 39,
+			"className": "Druid",
+			"classSource": "PHB",
+			"subclassShortName": "Wildfire",
+			"subclassSource": "TCE",
+			"level": 14,
+			"header": 2,
+			"entries": [
+				"{@i 14th-level Circle of Wildfire feature}",
+				"The bond with your wildfire spirit can save you from death. If the spirit is within 120 feet of you when you are reduced to 0 hit points and thereby fall {@condition unconscious}, you can cause the spirit to drop to 0 hit points. You then regain half your hit points and immediately rise to your feet.",
+				"Once you use this feature, you can't use it again until you finish a long rest."
 			]
 		},
 		{
@@ -3512,8 +3972,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[
@@ -4073,8 +4533,8 @@
 						"Circle Spells"
 					],
 					"colStyles": [
-						"col-3 text-center",
-						"col-9"
+						"col-2 text-center",
+						"col-10"
 					],
 					"rows": [
 						[

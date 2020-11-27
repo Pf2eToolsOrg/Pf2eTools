@@ -13,7 +13,7 @@ class VehiclesPage extends ListPage {
 
 			sublistClass: "subvehicles",
 
-			dataProps: ["vehicle"]
+			dataProps: ["vehicle", "vehicleUpgrade"],
 		});
 	}
 
@@ -27,8 +27,8 @@ class VehiclesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${UrlUtil.autoEncodeHash(it)}" class="lst--border">
-			<span class="bold col-6 pl-0">${it.name}</span>
-			<span class="col-4 text-center">${Parser.vehicleTypeToFull(it.vehicleType)}</span>
+			<span class="col-6 pl-0 text-center">${Parser.vehicleTypeToFull(it.vehicleType || it.upgradeType)}</span>
+			<span class="bold col-4">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -39,12 +39,13 @@ class VehiclesPage extends ListPage {
 			{
 				hash,
 				source,
-				vehicleType: it.vehicleType
+				vehicleType: it.vehicleType,
+				upgradeType: it.upgradeType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -63,8 +64,8 @@ class VehiclesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border">
-			<span class="bold col-8 pl-0">${it.name}</span>
-			<span class="col-4 pr-0 text-center">${Parser.vehicleTypeToFull(it.vehicleType)}</span>
+			<span class="col-8 pl-0 text-center">${Parser.vehicleTypeToFull(it.vehicleType || it.upgradeType)}</span>
+			<span class="bold col-4 pr-0">${it.name}</span>
 		</a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
@@ -74,8 +75,9 @@ class VehiclesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				vehicleType: it.vehicleType
-			}
+				vehicleType: it.vehicleType,
+				upgradeType: it.upgradeType,
+			},
 		);
 		return listItem;
 	}
@@ -87,13 +89,17 @@ class VehiclesPage extends ListPage {
 		const $floatToken = $(`#float-token`).empty();
 
 		function buildStatsTab () {
-			const hasToken = veh.tokenUrl || veh.hasToken;
-			if (hasToken) {
-				const imgLink = Renderer.vehicle.getTokenUrl(veh);
-				$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${veh.name}"></a>`);
-			}
+			if (veh.vehicleType) {
+				const hasToken = veh.tokenUrl || veh.hasToken;
+				if (hasToken) {
+					const imgLink = Renderer.vehicle.getTokenUrl(veh);
+					$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${veh.name}"></a>`);
+				}
 
-			$content.append(RenderVehicles.$getRenderedVehicle(veh));
+				$content.append(RenderVehicles.$getRenderedVehicle(veh));
+			} else {
+				$content.append(RenderVehicles.$getRenderedVehicle(veh));
+			}
 		}
 
 		function buildFluffTab (isImageTab) {
@@ -101,24 +107,24 @@ class VehiclesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: veh,
-				pFnGetFluff: Renderer.vehicle.pGetFluff
+				pFnGetFluff: Renderer.vehicle.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => $floatToken.show(),
-			buildStatsTab
+			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => $floatToken.hide(),
-			buildFluffTab
+			buildFluffTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => $floatToken.hide(),
-			() => buildFluffTab(true)
+			() => buildFluffTab(true),
 		);
 
 		Renderer.utils.bindTabButtons(statTab, infoTab, picTab);

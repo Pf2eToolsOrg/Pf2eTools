@@ -12,7 +12,7 @@ const BookUtil = {
 			`.rd__h--1 > .entry-title-inner:textEquals("${scrollTo}")`,
 			`.rd__h--2 > .entry-title-inner:textEquals("${scrollTo}")`,
 			`.rd__h--2-inset > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.rd__h--3 > .entry-title-inner:textEquals("${scrollTo}.")`
+			`.rd__h--3 > .entry-title-inner:textEquals("${scrollTo}.")`,
 		];
 	},
 
@@ -115,7 +115,7 @@ const BookUtil = {
 		allHeaders.prev(`li`).find(`a`).css({
 			display: "flex",
 			"justify-content": "space-between",
-			padding: "0"
+			padding: "0",
 		});
 
 		allHeaders.filter((i, ele) => $(ele).children().length).each((i, ele) => {
@@ -171,7 +171,7 @@ const BookUtil = {
 		fromIndex: {},
 		lastRefHeader: null,
 		controls: {},
-		headerMap: {}
+		headerMap: {},
 	},
 	_lastClickedLink: null,
 	_isNarrow: null,
@@ -713,7 +713,7 @@ const BookUtil = {
 						if (!/^\d+$/.exec(term.trim())) {
 							return JqueryUtil.doToast({
 								content: `Please enter a valid page number.`,
-								type: "danger"
+								type: "danger",
 							});
 						}
 					}
@@ -731,7 +731,7 @@ const BookUtil = {
 							const $link = $(
 								`<a href="#${BookUtil.search.getResultHash(bookId, f)}">
 									<i>${Parser.bookOrdinalToAbv(indexData.contents[f.ch].ordinal)} ${indexData.contents[f.ch].name}${f.header ? ` \u2013 ${isLitTitle ? `<span class="highlight">` : ""}${f.header}${isLitTitle ? `</span>` : ""}` : ""}</i>
-								</a>`
+								</a>`,
 							);
 							$ptLink.append($link);
 							$row.append($ptLink);
@@ -848,7 +848,7 @@ const BookUtil = {
 						headerIndex: BookUtil._headerCounts[lastName],
 						term,
 						headerMatches: true,
-						page: obj.page
+						page: obj.page,
 					});
 				}
 			} else {
@@ -895,7 +895,7 @@ const BookUtil = {
 							previews: slices.map(s => s.preview),
 							term: term,
 							matches: slices.map(s => s.match),
-							headerMatches: lastName.toLowerCase().includes(cleanTerm)
+							headerMatches: lastName.toLowerCase().includes(cleanTerm),
 						});
 					} else {
 						const last = toCheck.lastIndexOf(cleanTerm);
@@ -905,8 +905,6 @@ const BookUtil = {
 						lastItem.matches[1] = slice.match;
 					}
 				}
-			} else if (!(obj.type === "image" || obj.type === "gallery" || obj.type === "link" || obj.type === "abilityGeneric" || obj.type === "cell" || obj.type === "flowchart")) {
-				throw new Error("Unhandled entity type");
 			}
 
 			function getSubstring (rendered, first, last) {
@@ -946,7 +944,7 @@ const BookUtil = {
 
 				return {
 					preview: `${preDots ? "..." : ""}${pre}<span class="highlight">${originalTerm}</span>${post}${postDots ? "..." : ""}`,
-					match: `${pre}${term}${post}`
+					match: `${pre}${term}${post}`,
 				};
 			}
 		},
@@ -969,12 +967,12 @@ const BookUtil = {
 							if (obj.page >= targetPage) closestAbove = Math.min(closestAbove, obj.page);
 						}
 						return obj;
-					}
-				}
+					},
+				},
 			)
 
 			return [closestBelow, closestAbove];
-		}
+		},
 	},
 
 	getContentsItem (ix, book, options) {
@@ -992,7 +990,7 @@ const BookUtil = {
 			</div>
 			${BookUtil.makeContentsBlock(options)}
 		</li>`;
-	}
+	},
 };
 
 if (typeof window !== "undefined") {

@@ -72,11 +72,16 @@ class ItemParser extends BaseParser {
 			const ptrI = {_: i};
 			item.entries = EntryConvert.coalesceLines(
 				ptrI,
-				toConvert
+				toConvert,
 			);
 			i = ptrI._;
 		}
 
+		const statsOut = this._getFinalState(item, options);
+		options.cbOutput(statsOut, options.isAppend);
+	}
+
+	static _getFinalState (item, options) {
 		if (!item.entries.length) delete item.entries;
 		else this._setWeight(item, options);
 
@@ -85,8 +90,7 @@ class ItemParser extends BaseParser {
 		this._doItemPostProcess(item, options);
 		this._setCleanTaglineInfo_handleGenericType(item, options);
 		this._doVariantPostProcess(item, options);
-		const statsOut = PropOrder.getOrdered(item, item.__prop || "item");
-		options.cbOutput(statsOut, options.isAppend);
+		return PropOrder.getOrdered(item, item.__prop || "item");
 	}
 
 	// SHARED UTILITY FUNCTIONS ////////////////////////////////////////////////////////////////////////////////////////
@@ -111,9 +115,9 @@ class ItemParser extends BaseParser {
 		RechargeTypeTag.tryRun(stats, {cbMan: () => options.cbWarning(`${manName}Recharge type requires manual conversion`)});
 		BonusTag.tryRun(stats);
 		ItemMiscTag.tryRun(stats);
+		ItemSpellcastingFocusTag.tryRun(stats);
 
 		// TODO
-		//  - tag spellcasting focus type
 		//  - tag damage type?
 		//  - tag ability score adjustments
 	}
@@ -252,13 +256,20 @@ class ItemParser extends BaseParser {
 	static _setCleanTaglineInfo_handleBaseItem (stats, baseItem, options) {
 		if (!baseItem) return;
 
+		const blacklistedProps = new Set([
+			"source",
+			"srd",
+			"page",
+		]);
+
 		// Apply base item stats only if there's no existing data
 		Object.entries(baseItem)
-			.filter(([k]) => stats[k] === undefined && !k.startsWith("_"))
+			.filter(([k]) => stats[k] === undefined && !k.startsWith("_") && !blacklistedProps.has(k))
 			.forEach(([k, v]) => stats[k] = v);
 
 		// Clean unwanted base properties
 		delete stats.armor;
+		delete stats.value;
 
 		stats.baseItem = `${baseItem.name.toLowerCase()}${baseItem.source === SRC_DMG ? "" : `|${baseItem.source}`}`;
 	}
@@ -328,11 +339,11 @@ ItemParser._ALL_ITEMS = null;
 ItemParser._ALL_CLASSES = null;
 ItemParser._MAPPED_ITEM_NAMES = {
 	"studded leather": "studded leather armor",
-	"leather": "leather armor"
+	"leather": "leather armor",
 };
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		ItemParser
+		ItemParser,
 	};
 }

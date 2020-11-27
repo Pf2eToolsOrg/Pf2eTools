@@ -10,22 +10,6 @@
 			]
 		},
 		{
-			"name": "Acidic Bile Sprayer",
-			"source": "BGDIA",
-			"page": 221,
-			"featureType": "IWM:W",
-			"entries": [
-				"This hose weapon is attached to demonic organs that produce an acidic bile that dissolves flesh on contact.",
-				{
-					"type": "entries",
-					"name": "Acidic Bile Sprayer (Requires 1 Crew and Grants Half Cover, {@recharge 5|m})",
-					"entries": [
-						"Acidic bile sprays from a nozzle in a 30-foot cone. Each creature in the cone must make a DC 12 Dexterity saving throw, taking 40 ({@damage 9d8}) acid damage on a failed save, or half as much damage on a successful one. A creature reduced to 0 hit points by this damage is dissolved, leaving behind any objects it was carrying or wearing."
-					]
-				}
-			]
-		},
-		{
 			"name": "Agonizing Blast",
 			"source": "PHB",
 			"page": 110,
@@ -62,20 +46,24 @@
 		},
 		{
 			"name": "Ambush",
-			"source": "UAClassFeatureVariants",
-			"page": 5,
-			"featureType": "MV",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
 			"entries": [
-				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll."
+				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll, provided you aren't {@condition incapacitated}."
 			]
 		},
 		{
-			"name": "Arcane Artillery",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:W",
+			"name": "Ambush",
+			"source": "UAClassFeatureVariants",
+			"page": 5,
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
-				"Using methods similar to those used to produce magic weapons, a skilled spellcaster imbues a ship's weapon with destructive energy. This weapon gains a +2 bonus to its attack and damage rolls, and its attacks count as magical."
+				"When you make a Dexterity ({@skill Stealth}) check or an initiative roll, you can expend one superiority die and add the die to the roll."
 			]
 		},
 		{
@@ -90,6 +78,37 @@
 			],
 			"entries": [
 				"You can create a pact weapon that is a sidearm or long arm, and you can transform a magical sidearm or long arm into your pact weapon."
+			]
+		},
+		{
+			"name": "Arcane Propulsion Armor",
+			"source": "TCE",
+			"page": 20,
+			"featureType": "AI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 14,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"The wearer of this armor gains these benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The wearer's walking speed increases by 5 feet.",
+						"The armor includes gauntlets, each of which is a magic melee weapon that can be wielded only when the hand is holding nothing. The wearer is proficient with the gauntlets, and each one deals 1d8 force damage on a hit and has the thrown property, with a normal range of 20 feet and a long range of 60 feet. When thrown, the gauntlet detaches and flies at the attack's target, then immediately returns to the wearer and reattaches.",
+						"The armor can't be removed against the wearer's will.",
+						"If the wearer is missing any limbs, the armor replaces those limbs\u2014hands, arms, feet, legs, or similar appendages. The replacements function identically to the body parts they replace."
+					]
+				}
 			]
 		},
 		{
@@ -113,6 +132,30 @@
 			],
 			"entries": [
 				"You gain a +2 bonus to attack rolls you make with ranged weapons."
+			]
+		},
+		{
+			"name": "Armor of Magical Strength",
+			"source": "TCE",
+			"page": 20,
+			"featureType": "AI",
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"This armor has 6 charges. The wearer can expend the armor's charges in the following ways:",
+				{
+					"type": "list",
+					"items": [
+						"When the wearer makes a Strength check or a Strength saving throw, it can expend 1 charge to add a bonus to the roll equal to its Intelligence modifier.",
+						"If the creature would be knocked {@condition prone}, it can use its reaction to expend 1 charge to avoid being knocked prone."
+					]
+				},
+				"The armor regains {@dice 1d6} expended charges daily at dawn."
 			]
 		},
 		{
@@ -233,9 +276,23 @@
 		},
 		{
 			"name": "Bait and Switch",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"entries": [
+				"When you're within 5 feet of a creature on your turn, you can expend one superiority die and switch places with that creature, provided you spend at least 5 feet of movement and the creature is willing and isn't {@condition incapacitated}. This movement doesn't provoke opportunity attacks.",
+				"Roll the superiority die. Until the start of your next turn, you or the other creature (your choice) gains a bonus to AC equal to the number rolled."
+			]
+		},
+		{
+			"name": "Bait and Switch",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"When you're within 5 feet of an ally on your turn, you can expend one superiority die and switch places with that ally, provided you spend at least 5 feet of movement. This movement doesn't provoke opportunity attacks.",
 				"Roll the superiority die. Until the start of your next turn, the ally gains a bonus to AC equal to the number rolled."
@@ -322,19 +379,47 @@
 		},
 		{
 			"name": "Blessed Warrior",
-			"source": "UAClassFeatureVariants",
-			"page": 6,
+			"source": "TCE",
+			"page": 52,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:P"
 			],
 			"entries": [
-				"You learn two cantrips of your choice from the cleric spell list. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list."
+				"You learn two cantrips of your choice from the {@filter cleric spell list|spells|level=0|class=Cleric}. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list."
+			]
+		},
+		{
+			"name": "Blessed Warrior",
+			"source": "UAClassFeatureVariants",
+			"page": 6,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:P"
+			],
+			"entries": [
+				"You learn two cantrips of your choice from the {@filter cleric spell list|spells|level=0|class=Cleric}. They count as paladin spells for you, and Charisma is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the cleric spell list."
+			]
+		},
+		{
+			"name": "Blind Fighting",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P",
+				"FS:R"
+			],
+			"entries": [
+				"You have {@sense blindsight} with a range of 10 feet. Within that range, you can effectively see anything that isn't behind total cover, even if you're {@condition blinded} or in darkness. Moreover, you can see an {@condition invisible} creature within that range, unless the creature successfully hides from you."
 			]
 		},
 		{
 			"name": "Blind Fighting",
 			"source": "UAClassFeatureVariants",
 			"page": 12,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:F",
 				"FS:P",
@@ -346,8 +431,30 @@
 		},
 		{
 			"name": "Bond of the Talisman",
+			"source": "TCE",
+			"page": 70,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 12,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"While someone else is wearing your talisman, you can use your action to teleport to the unoccupied space closest to them, provided the two of you are on the same plane of existence. The wearer of your talisman can do the same thing, using their action to teleport to you. The teleportation can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest."
+			]
+		},
+		{
+			"name": "Bond of the Talisman",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -362,15 +469,6 @@
 			],
 			"entries": [
 				"While someone else is wearing your talisman, you can use your action to teleport to the unoccupied space closest to them, provided the two of you are on the same plane of existence. The wearer of your talisman can do the same thing, using their action to teleport to you."
-			]
-		},
-		{
-			"name": "Bones of Endless Toil",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:O",
-			"entries": [
-				"The bones of ancient, mysterious creatures festoon the ship. Potent runes crawl across these remains, emitting a sickly green radiance. When a humanoid dies aboard the ship, that creature must make a DC 12 Wisdom saving throw. On a successful save, it dies as normal. If it fails, it immediately rises as a {@creature zombie} obedient to the ship's captain. The zombie gains a working knowledge of the ship, allowing it to serve as a member of the crew. A number of creatures equal to the ship's creature capacity can be animated in this manner at any given time."
 			]
 		},
 		{
@@ -391,8 +489,14 @@
 		},
 		{
 			"name": "Boots of the Winding Path",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -435,9 +539,22 @@
 		},
 		{
 			"name": "Brace",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"entries": [
+				"When a creature you can see moves into the reach you have with the melee weapon you're wielding, you can use your reaction to expend one superiority die and make one attack against the creature, using that weapon. If the attack hits, add the superiority die to the weapon's damage roll."
+			]
+		},
+		{
+			"name": "Brace",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"When an enemy you can see moves within 5 feet of you, you can use your reaction to expend one superiority die and make one weapon attack against that creature. If the attack hits, add the superiority die to the attack's damage roll."
 			]
@@ -541,15 +658,6 @@
 			]
 		},
 		{
-			"name": "Canian Armor",
-			"source": "BGDIA",
-			"page": 221,
-			"featureType": "IWM:A",
-			"entries": [
-				"The infernal iron used to make the vehicle was mined on Cania, the coldest layer of the Nine Hells. An infernal war machine with Canian armor has an Armor Class of 22 + its Dexterity modifier. While the vehicle is not moving, attack rolls made against it have advantage. The infernal war machine also has immunity to cold damage in addition to its other damage immunities, and it's immune to the effects of extreme cold."
-			]
-		},
-		{
 			"name": "Careful Spell",
 			"source": "PHB",
 			"page": 102,
@@ -563,6 +671,7 @@
 			"name": "Chain Master's Fury",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -627,16 +736,6 @@
 			],
 			"entries": [
 				"You can place a corpse's hand or similar appendage on your Book of Shadows and ask one question aloud. After 1 minute, the answer appears written in blood in your book. The answer is provided by the dead creature's spirit to the best of its knowledge and is translated into a language of your choice. You must use this ability within 1 minute of a creature's death, and a given creature can only be asked one question in this manner."
-			]
-		},
-		{
-			"name": "Churning Hull",
-			"source": "GoS",
-			"page": 196,
-			"featureType": "SHP:H",
-			"entries": [
-				"A tempest rages within these rune-etched, iron chains. Raiders and pirates who operate under the blessings of a storm god sometimes make use of this upgrade.",
-				"By draping the chains over a ship's hull, the storm's fury thrashes into the water around it. The water within 210 feet of the ship is difficult terrain for everything other than this ship."
 			]
 		},
 		{
@@ -737,15 +836,6 @@
 			]
 		},
 		{
-			"name": "Clockwork Oars",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"Using a combination of magic and clockwork, the oars on this ship require only one crew member to use them, pushing the button or lever that activates them."
-			]
-		},
-		{
 			"name": "Close Quarters Shooter",
 			"source": "UALightDarkUnderdark",
 			"page": 1,
@@ -759,6 +849,16 @@
 			]
 		},
 		{
+			"name": "Cloud Rune",
+			"source": "TCE",
+			"page": 44,
+			"featureType": "RN",
+			"entries": [
+				"This rune emulates the deceptive magic used by some cloud giants. While wearing or carrying an object inscribed with this rune, you have advantage on Dexterity ({@skill Sleight of Hand}) checks and Charisma ({@skill Deception}) checks.",
+				"In addition, when you or a creature you can see within 30 feet of you is hit by an attack roll, you can use your reaction to invoke the rune and choose a different creature within 30 feet of you, other than the attacker. The chosen creature becomes the target of the attack, using the same roll. This magic can transfer the attack's effects regardless of the attack's range. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
 			"name": "Commander's Strike",
 			"source": "PHB",
 			"page": 74,
@@ -768,12 +868,15 @@
 			]
 		},
 		{
-			"name": "Concussive Rounds",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:W",
+			"name": "Commanding Presence",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
 			"entries": [
-				"Enhanced by abjuration magic, this weapon's attacks burst with raucous noise capable of momentarily distracting and disorienting enemy crews. If this weapon hits a vehicle's hull, that vehicle's speed decreases by {@dice 2d10} feet until the start of the attacker's next turn."
+				"When you make a Charisma ({@skill Intimidation}), a Charisma ({@skill Performance}), or a Charisma ({@skill Persuasion}) check, you can expend one superiority die and add the superiority die to the ability check."
 			]
 		},
 		{
@@ -799,15 +902,6 @@
 			"entries": [
 				"You can create a greatsword forged from silver, with black runes etched into its blade, using your Pact of the Blade feature. If you reduce a target cursed by your Hexblade's Curse to 0 hit points with this sword, you can immediately change the target of the curse to a different creature. This change doesn't extend the curse's duration.",
 				"When you hit a creature with this weapon, you can expend a spell slot to deal an additional {@damage 2d8} slashing damage to the target per spell level, and you can reduce the creature's speed to 0 feet until the end of your next turn."
-			]
-		},
-		{
-			"name": "Death Vessel",
-			"source": "GoS",
-			"page": 196,
-			"featureType": "SHP:H",
-			"entries": [
-				"Crafted with materials harvested from the Shadowfell, this upgrade grants a ship an aura of dread. As an action, the ship can create a pulse of horrific energy. Every creature that is an enemy of the ship who is on board or within 210 feet of it must make DC 14 Wisdom saving throw. On a failed save, a creature is {@condition frightened} of the ship for 1 minute. On a successful save, the creature is immune to this ability for 24 hours. Once this ability is used, it can't be used again until {@dice 1d4} hours have passed."
 			]
 		},
 		{
@@ -845,15 +939,6 @@
 			],
 			"entries": [
 				"While you are wearing armor, you gain a +1 bonus to AC."
-			]
-		},
-		{
-			"name": "Defiant Sails",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"These sails glitter with a fine coat of mithral treated with abjuration magic. While the sails are unfurled, ranged weapon attacks made against the ship and anyone aboard it are made with disadvantage, as a result of the sails' protective magic. This drawback doesn't apply if the attacker is aboard the ship."
 			]
 		},
 		{
@@ -914,69 +999,6 @@
 			]
 		},
 		{
-			"name": "Dragon Sails",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"Dragon scales woven into these sails make them more resistant to damage. The sails gain a +3 bonus to AC, and they have resistance to a damage type based on the type of scales used to craft them, as shown on the Dragon Sails table.",
-				{
-					"type": "table",
-					"caption": "Dragon Sails",
-					"colStyles": [
-						"col-6 text-center",
-						"col-6 text-center"
-					],
-					"colLabels": [
-						"Dragon Type",
-						"Damage Type"
-					],
-					"rows": [
-						[
-							"Black",
-							"Acid"
-						],
-						[
-							"Blue",
-							"Lightning"
-						],
-						[
-							"Brass",
-							"Fire"
-						],
-						[
-							"Bronze",
-							"Lightning"
-						],
-						[
-							"Copper",
-							"Acid"
-						],
-						[
-							"Gold",
-							"Fire"
-						],
-						[
-							"Green",
-							"Acid"
-						],
-						[
-							"Red",
-							"Fire"
-						],
-						[
-							"Silver",
-							"Cold"
-						],
-						[
-							"White",
-							"Cold"
-						]
-					]
-				}
-			]
-		},
-		{
 			"name": "Dreadful Word",
 			"source": "PHB",
 			"page": 110,
@@ -998,8 +1020,21 @@
 		},
 		{
 			"name": "Druidic Warrior",
+			"source": "TCE",
+			"page": 57,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:R"
+			],
+			"entries": [
+				"You learn two cantrips of your choice from the {@filter druid spell list|spells|level=0|class=druid}. They count as ranger spells for you, and Wisdom is your spellcasting ability for them. Whenever you gain a level in this class, you can replace one of these cantrips with another cantrip from the druid spell list."
+			]
+		},
+		{
+			"name": "Druidic Warrior",
 			"source": "UAClassFeatureVariants",
 			"page": 7,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:R"
 			],
@@ -1048,6 +1083,7 @@
 			"name": "Eldritch Armor",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -1060,8 +1096,19 @@
 		},
 		{
 			"name": "Eldritch Mind",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"entries": [
+				"You have advantage on Constitution saving throws that you make to maintain your concentration on a spell."
+			]
+		},
+		{
+			"name": "Eldritch Mind",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -1165,6 +1212,7 @@
 			"name": "Elemental Spell",
 			"source": "UAClassFeatureVariants",
 			"page": 10,
+			"isClassFeatureVariant": true,
 			"featureType": "MM",
 			"entries": [
 				"When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, thunder."
@@ -1193,8 +1241,14 @@
 		},
 		{
 			"name": "Enhanced Arcane Focus",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -1210,8 +1264,14 @@
 		},
 		{
 			"name": "Enhanced Defense",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -1261,8 +1321,14 @@
 		},
 		{
 			"name": "Enhanced Weapon",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -1325,24 +1391,6 @@
 			]
 		},
 		{
-			"name": "Ever-Full Sails",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"These billowing sails are woven from cloud-stuff drawn from the Elemental Plane of Air. Wind whips and whistles around them, allowing a ship to move with a speed of 60 feet regardless of direction relative to the wind."
-			]
-		},
-		{
-			"name": "Explosive Rounds",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:W",
-			"entries": [
-				"Drawing on powerful evocation magic, this weapon's attacks are imbued with unstable energy that explodes in a fiery blast. When this weapon hits, it deals an extra {@damage 2d6} fire damage."
-			]
-		},
-		{
 			"name": "Extended Spell",
 			"source": "PHB",
 			"page": 102,
@@ -1373,8 +1421,32 @@
 		},
 		{
 			"name": "Far Scribe",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your proficiency bonus.",
+				"You can cast the {@spell sending} spell, targeting a creature whose name is on the page, without using a spell slot and without using material components. To do so, you must write the message on the page. The target hears the message in their mind, and if the target replies, their message appears on the page, rather than in your mind. The writing disappears after 1 minute.",
+				"As an action, you can magically erase a name on the page by touching it."
+			]
+		},
+		{
+			"name": "Far Scribe",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -1414,6 +1486,16 @@
 			]
 		},
 		{
+			"name": "Fire Rune",
+			"source": "TCE",
+			"page": 44,
+			"featureType": "RN",
+			"entries": [
+				"This rune's magic channels the masterful craftsmanship of great smiths. While wearing or carrying an object inscribed with this rune, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool.",
+				"In addition, when you hit a creature with an attack using a weapon, you can invoke the rune to summon fiery shackles: the target takes an extra {@damage 2d6} fire damage, and it must succeed on a Strength saving throw or be {@condition restrained} for 1 minute. While {@condition restrained} by the shackles, the target takes {@damage 2d6} fire damage at the start of each of its turns. The target can repeat the saving throw at the end of each of its turns, banishing the shackles on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
 			"name": "Fist of Four Thunders",
 			"source": "PHB",
 			"page": 81,
@@ -1442,22 +1524,6 @@
 			],
 			"entries": [
 				"You can spend 4 ki points to cast {@spell fireball}."
-			]
-		},
-		{
-			"name": "Flamethrower",
-			"source": "BGDIA",
-			"page": 221,
-			"featureType": "IWM:W",
-			"entries": [
-				"Although useless against demons, this weapon is great against flammable creatures and objects.",
-				{
-					"type": "entries",
-					"name": "Flamethrower (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"Fire shoots out of the weapon's nozzle in a 60-foot line that is 5 feet wide. Each creature in the line must make a DC 15 Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being carried or worn."
-					]
-				}
 			]
 		},
 		{
@@ -1498,12 +1564,13 @@
 			]
 		},
 		{
-			"name": "Frost-Locked Hull",
-			"source": "GoS",
-			"page": 196,
-			"featureType": "SHP:H",
+			"name": "Frost Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": "RN",
 			"entries": [
-				"This upgrade replaces a ship's hull with supernatural ice drawn from the elemental planes. The hull and the other components of the ship are immune to cold damage but vulnerable to fire damage. The ship can also move at its normal speed over ice of any thickness, floating on the ice at the same depth as it would in water."
+				"This rune's magic evokes the might of those who survive in the wintry wilderness, such as frost giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Animal Handling}) checks and Charisma ({@skill Intimidation}) checks.",
+				"In addition, you can invoke the rune as a bonus action to increase your sturdiness. For 10 minutes, you gain a +2 bonus to all ability checks and saving throws that use Strength or Constitution. Once you invoke this rune, you can't do so again until you finish a short or long rest."
 			]
 		},
 		{
@@ -1656,8 +1723,32 @@
 		},
 		{
 			"name": "Gift of the Protectors",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 9,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Tome"
+				}
+			],
+			"entries": [
+				"A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your proficiency bonus.",
+				"When any creature whose name is on the page is reduced to 0 hit points but not killed outright, the creature magically drops to 1 hit point instead. Once this magic is triggered, no creature can benefit from it until you finish a long rest.",
+				"As an action, you can magically erase a name on the page by touching it."
+			]
+		},
+		{
+			"name": "Gift of the Protectors",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -1674,15 +1765,6 @@
 				"A new page appears in your Book of Shadows. With your permission, a creature can use its action to write its name on that page, which can contain a number of names equal to your Charisma modifier (minimum of 1).",
 				"When any creature whose name is on the page is reduced to 0 hit points but not killed outright, the creature magically drops to 1 hit point instead. Once this magic is triggered, no creature can benefit from it until you finish a long rest.",
 				"As an action, you can magically erase a name on the page by touching the name on it."
-			]
-		},
-		{
-			"name": "Gilded Death Armor",
-			"source": "BGDIA",
-			"page": 222,
-			"featureType": "IWM:A",
-			"entries": [
-				"Gold stolen or bartered from the archdevil Mammon plates the vehicle's exterior. This gold can't be removed without destroying the vehicle and turns to dust when the infernal war machine drops to 0 hit points. Gilded death armor grants the infernal war machine resistance to bludgeoning, piercing, and slashing damage."
 			]
 		},
 		{
@@ -1714,6 +1796,18 @@
 			],
 			"entries": [
 				"You can spend 3 ki points to cast {@spell shatter}."
+			]
+		},
+		{
+			"name": "Grappling Strike",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"entries": [
+				"Immediately after you hit a creature with a melee attack on your turn, you can expend one superiority die and then try to grapple the target as a bonus action (see the Player's Handbook for rules on grappling). Add the superiority die to your Strength ({@skill Athletics}) check."
 			]
 		},
 		{
@@ -1799,15 +1893,6 @@
 			]
 		},
 		{
-			"name": "Grasping Rounds",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:W",
-			"entries": [
-				"This weapon creates spectral chains that trail after its shots, restraining enemy vessels in their grasp. When this weapon hits a ship, that vehicle must succeed on a DC 14 Strength saving throw or it can't move away from the attacker. As an action, the attacking ship can end this effect, and the target can end it by taking an action and succeeding on a DC 14 Strength check."
-			]
-		},
-		{
 			"name": "Great Weapon Fighting",
 			"source": "PHB",
 			"page": 72,
@@ -1841,15 +1926,6 @@
 			]
 		},
 		{
-			"name": "Guardian Figurehead",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:F",
-			"entries": [
-				"This figurehead depicts an armored knight. As an action, the ship can activate this item, causing it to animate as an {@creature iron golem}. The golem acts on the ship's turn when the captain uses one of the ship's actions. The golem remains animated for 1 minute. At the end of that time, it teleports back to its position as a figurehead. Once a ship uses this action, it can't use it again for 24 hours."
-			]
-		},
-		{
 			"name": "Haug (Hill Rune)",
 			"source": "UAFighterRangerRogue",
 			"page": 1,
@@ -1880,6 +1956,28 @@
 		},
 		{
 			"name": "Helm of Awareness",
+			"source": "TCE",
+			"page": 21,
+			"featureType": "AI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 10,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A helmet (requires attunement)"
+					]
+				}
+			],
+			"entries": [
+				"While wearing this helmet, a creature has advantage on initiative rolls. In addition, the wearer can't be surprised, provided it isn't {@condition incapacitated}."
+			]
+		},
+		{
+			"name": "Helm of Awareness",
 			"source": "UA2020SubclassesPt3",
 			"page": 3,
 			"featureType": "AI",
@@ -1901,29 +1999,52 @@
 			]
 		},
 		{
-			"name": "Homunculus Servant",
-			"source": "ERLW",
-			"page": 62,
-			"featureType": "AI",
+			"name": "Hill Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": "RN",
 			"prerequisite": [
 				{
 					"level": {
-						"level": 6,
+						"level": 7,
 						"class": {
-							"name": "Artificer"
+							"name": "Fighter"
+						},
+						"subclass": {
+							"name": "Rune Knight"
 						}
-					},
+					}
+				}
+			],
+			"entries": [
+				"This rune's magic bestows a resilience reminiscent of a hill giant. While wearing or carrying an object that bears this rune, you have advantage on saving throws against being {@condition poisoned}, and you have resistance against poison damage.",
+				"In addition, you can invoke the rune as a bonus action, gaining resistance to bludgeoning, piercing, and slashing damage for 1 minute. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Homunculus Servant",
+			"source": "TCE",
+			"page": 21,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
+			"featureType": "AI",
+			"prerequisite": [
+				{
 					"item": [
-						"A gem worth at least 100 gp or a dragonshard"
+						"A gem or crystal worth at least 100 gp"
 					]
 				}
 			],
 			"entries": [
 				"You learn intricate methods for magically creating a special {@creature Homunculus Servant|ERLW|homunculus} that serves you. The item you infuse serves as the creature's heart, around which the creature's body instantly forms.",
 				"You determine the homunculus's appearance. Some artificers prefer mechanical-looking birds, whereas some like winged vials or miniature, animate cauldrons.",
-				"The homunculus is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the Homunculus Servant stat block.",
-				"In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take the action in its stat block or the {@action Dash}, {@action Disengage}, {@action Help}, {@action Hide}, or {@action Search} action.",
-				"The homunculus regains {@dice 2d6} hit points if the {@spell mending} spell is cast on it. If it dies, it vanishes, leaving its heart in its space."
+				"The homunculus is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the Homunculus Servant stat block, which uses your proficiency bonus (PB) in several places.",
+				"In combat, the homunculus shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the homunculus can take any action of its choice, not just {@action Dodge}.",
+				"The homunculus regains {@dice 2d6} hit points if the {@spell mending} spell is cast on it. If it dies, it vanishes, leaving its heart in its space. If you or the homunculus dies, it vanishes, leaving its heart in its space."
 			]
 		},
 		{
@@ -1991,25 +2112,23 @@
 			]
 		},
 		{
-			"name": "Infernal Screamer",
-			"source": "BGDIA",
-			"page": 221,
-			"featureType": "IWM:W",
+			"name": "Interception",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:P"
+			],
 			"entries": [
-				"A writhing humanoid torso made of melting wax juts out from this station, with a barbed hand crank between its shoulder blades. The figure telepathically shrieks in agony when the crank is turned.",
-				{
-					"type": "entries",
-					"name": "Infernal Screamer (Requires 1 Crew and Grants Half Cover)",
-					"entries": [
-						"The screamer's operator targets one creature it can see within 120 feet of the screamer. The target must make a DC 15 Wisdom saving throw, taking 26 ({@damage 4d12}) psychic damage on a failed save, or half as much damage on a successful one."
-					]
-				}
+				"When a creature you can see hits a target, other than you, within 5 feet of you with an attack, you can use your reaction to reduce the damage the target takes by {@dice 1d10} + your proficiency bonus (to a minimum of 0 damage). You must be wielding a {@item shield|phb} or a simple or martial weapon to use this reaction."
 			]
 		},
 		{
 			"name": "Interception",
 			"source": "UAClassFeatureVariants",
 			"page": 12,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:F",
 				"FS:P",
@@ -2021,8 +2140,34 @@
 		},
 		{
 			"name": "Investment of the Chain Master",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"pact": "Chain"
+				}
+			],
+			"entries": [
+				"When you cast {@spell find familiar}, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits:",
+				{
+					"type": "list",
+					"items": [
+						"The familiar gains either a flying speed or a swimming speed (your choice) of 40 feet.",
+						"As a bonus action, you can command the familiar to take the {@action Attack} action.",
+						"The familiar's weapon attacks are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks.",
+						"If the familiar forces a creature to make a saving throw, it uses your spell save DC.",
+						"When the familiar takes damage, you can use your reaction to grant it resistance against that damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Investment of the Chain Master",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -2031,10 +2176,15 @@
 			],
 			"entries": [
 				"When you cast find familiar, you infuse the summoned familiar with a measure of your eldritch power, granting the creature the following benefits:",
-				"The familiar gains either a flying speed or a swimming speed (your choice) of 40 feet.",
-				"The familiar no longer needs to breathe.",
-				"The familiar's weapon attacks are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks.",
-				"If the familiar forces a creature to make a saving throw, it uses your spell save DC."
+				{
+					"type": "list",
+					"items": [
+						"The familiar gains either a flying speed or a swimming speed (your choice) of 40 feet.",
+						"The familiar no longer needs to breathe.",
+						"The familiar's weapon attacks are considered magical for the purpose of overcoming immunity and resistance to nonmagical attacks.",
+						"If the familiar forces a creature to make a saving throw, it uses your spell save DC."
+					]
+				}
 			]
 		},
 		{
@@ -2131,15 +2281,6 @@
 			],
 			"entries": [
 				"When you hit a creature with your pact weapon, the creature takes extra necrotic damage equal to your Charisma modifier (minimum of 1)."
-			]
-		},
-		{
-			"name": "Living Vessel",
-			"source": "GoS",
-			"page": 196,
-			"featureType": "SHP:H",
-			"entries": [
-				"This vessel's hull was crafted in the Feywild under the direction of master eladrin shipwrights. It is a living plant, drawing sustenance from water and sunlight. Vines covered in thick leaves hang over its side, and the wood runs with fresh sap when damaged. The ship gains a +2 bonus to all Constitution checks or saving throws. As long as the ship has at least 1 hit point, it regains 10 hit points every minute."
 			]
 		},
 		{
@@ -2297,6 +2438,22 @@
 		},
 		{
 			"name": "Mind Sharpener",
+			"source": "TCE",
+			"page": 22,
+			"featureType": "AI",
+			"prerequisite": [
+				{
+					"item": [
+						"A suit of armor or robes"
+					]
+				}
+			],
+			"entries": [
+				"The infused item can send a jolt to the wearer to refocus their mind. The item has 4 charges. When the wearer fails a Constitution saving throw to maintain concentration on a spell, the wearer can use its reaction to expend 1 of the item's charges to succeed instead. The item regains {@dice 1d4} expended charges daily at dawn."
+			]
+		},
+		{
+			"name": "Mind Sharpener",
 			"source": "UA2020SubclassesPt3",
 			"page": 3,
 			"featureType": "AI",
@@ -2409,15 +2566,6 @@
 			]
 		},
 		{
-			"name": "Necrotic Smoke Screen",
-			"source": "BGDIA",
-			"page": 222,
-			"featureType": "IWM:G",
-			"entries": [
-				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to expel a 30-foot cube of opaque smoke directly in front of it or behind it. The cloud is stationary and lasts for 1 minute. The area within it is heavily obscured. Any creature that enters the cloud for the first time on a turn or starts its turn there takes 21 ({@damage 6d6}) necrotic damage. A strong wind disperses the cloud. This device needs 24 hours to recharge before it can be used again."
-			]
-		},
-		{
 			"name": "Nullification",
 			"source": "UAClericDruidWizard",
 			"page": 5,
@@ -2505,8 +2653,20 @@
 		},
 		{
 			"name": "Pact of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "PB",
+			"entries": [
+				"Your patron gives you an amulet, a talisman that can aid the wearer when the need is great. When the wearer fails an ability check, they can add a {@dice d4} to the roll, potentially turning the roll into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest.",
+				"If you lose the talisman, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous amulet. The talisman turns to ash when you die."
+			]
+		},
+		{
+			"name": "Pact of the Talisman",
 			"source": "UAClassFeatureVariants",
 			"page": 11,
+			"isClassFeatureVariant": true,
 			"featureType": "PB",
 			"entries": [
 				"Your patron gives you a special amulet, a talisman that can aid you, or anyone else who wears it, when the need is great. When the wearer makes an ability check with a skill in which they lack proficiency, they can add a {@dice d4} to the roll.",
@@ -2615,8 +2775,30 @@
 		},
 		{
 			"name": "Protection of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Warlock"
+						}
+					},
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman fails a saving throw, they can add a {@dice d4} to the roll, potentially turning the save into a success. This benefit can be used a number of times equal to your proficiency bonus, and all expended uses are restored when you finish a long rest."
+			]
+		},
+		{
+			"name": "Protection of the Talisman",
 			"source": "UAClassFeatureVariants",
 			"page": 12,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -2652,6 +2834,18 @@
 			]
 		},
 		{
+			"name": "Quick Toss",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"entries": [
+				"As a bonus action, you can expend one superiority die and make a ranged attack with a weapon that has the thrown property. You can draw the weapon as part of making this attack. If you hit, add the superiority die to the weapon's damage roll."
+			]
+		},
+		{
 			"name": "Quickened Spell",
 			"source": "PHB",
 			"page": 102,
@@ -2663,8 +2857,14 @@
 		},
 		{
 			"name": "Radiant Weapon",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -2735,8 +2935,24 @@
 		},
 		{
 			"name": "Rebuke of the Talisman",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"pact": "Talisman"
+				}
+			],
+			"entries": [
+				"When the wearer of your talisman is hit by an attacker you can see within 30 feet of you, you can use your reaction to deal psychic damage to the attacker equal to your proficiency bonus and push it up to 10 feet away from the talisman's wearer."
+			]
+		},
+		{
+			"name": "Rebuke of the Talisman",
 			"source": "UAClassFeatureVariants",
 			"page": 12,
+			"isClassFeatureVariant": true,
 			"featureType": "EI",
 			"prerequisite": [
 				{
@@ -2745,24 +2961,6 @@
 			],
 			"entries": [
 				"When the wearer of your talisman is hit by an attacker you can see within 30 feet of you, you can use your reaction to deal psychic damage to the attacker equal to your Charisma modifier (minimum of 1 damage) and push it up to 10 feet away from the talisman's wearer."
-			]
-		},
-		{
-			"name": "Red Dragon Figurehead",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:F",
-			"entries": [
-				"This figurehead depicts a red dragon rearing to strike, its mouth open. As an action, the ship can activate this item to create a 60-foot cone of flame that originates from the figurehead. Each creature and object in the cone must make a DC 12 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one. Once a ship uses this action, it can't use it again for 1 minute."
-			]
-		},
-		{
-			"name": "Reinforced Hull",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:H",
-			"entries": [
-				"A master shipwright can use superior materials and clever design to make a ship's hull more resilient. Such reinforcement doubles the hull's hit point maximum."
 			]
 		},
 		{
@@ -2832,8 +3030,14 @@
 		},
 		{
 			"name": "Repeating Shot",
-			"source": "ERLW",
-			"page": 62,
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 62
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -2883,13 +3087,18 @@
 		},
 		{
 			"name": "Replicate Magic Item",
-			"source": "ERLW",
-			"page": 63,
+			"source": "TCE",
+			"page": 22,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
 			"featureType": "AI",
 			"entries": [
-				"Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a magic item that you can make with it, picking from the Replicable Items tables below. A table's title tells you the level you must be in the class to choose an item from the table.",
+				"Using this infusion, you replicate a particular magic item. You can learn this infusion multiple times; each time you do so, choose a magic item that you can make with it, picking from the Replicable Items tables below. A table's title tells you the level you must be in the class to choose an item from the table. Alternatively, you can choose the magic item from among the common magic items in the game, not including potions or scrolls.",
 				"In the tables, an item's entry tells you whether the item requires attunement. See the item's description in the {@book Dungeon Master's Guide|DMG} for more information about it, including the type of object required for its making.",
-				"If you have {@book Xanathar's Guide to Everything|XGE}, you can choose from among the common magic items in that book when you pick a magic item you can replicate with this infusion.",
 				{
 					"type": "table",
 					"caption": "Replicable Items (2nd-Level Artificer)",
@@ -2907,10 +3116,6 @@
 							"No"
 						],
 						[
-							"{@item Armblade|ERLW} (detailed in {@book chapter 5|ERLW|13})",
-							"Yes"
-						],
-						[
 							"{@item Bag of holding}",
 							"No"
 						],
@@ -2921,10 +3126,6 @@
 						[
 							"{@item Goggles of night}",
 							"No"
-						],
-						[
-							"{@item Prosthetic limb|ERLW} (detailed in {@book chapter 5|ERLW|13})",
-							"Yes"
 						],
 						[
 							"{@item Rope of climbing}",
@@ -2987,10 +3188,6 @@
 						[
 							"{@item Ring of water walking}",
 							"No"
-						],
-						[
-							"{@item Wand sheath|ERLW} (detailed in {@book chapter 5|ERLW|13})",
-							"Yes"
 						]
 					]
 				},
@@ -3056,6 +3253,10 @@
 						],
 						[
 							"{@item Medallion of thoughts}",
+							"Yes"
+						],
+						[
+							"{@item Necklace of adaptation}",
 							"Yes"
 						],
 						[
@@ -3414,8 +3615,14 @@
 		},
 		{
 			"name": "Repulsion Shield",
-			"source": "ERLW",
-			"page": 63,
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -3459,8 +3666,14 @@
 		},
 		{
 			"name": "Resistant Armor",
-			"source": "ERLW",
-			"page": 63,
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -3505,15 +3718,22 @@
 			"name": "Restraining Strike",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"Immediately after you hit a creature with a melee weapon attack on your turn, you can expend one superiority die and use a bonus action to grapple the target (see chapter 9 in the Player's Handbook for rules on grappling). Add the superiority die to your Strength ({@skill Athletics}) check. The target is also {@condition restrained} while {@condition grappled} in this way."
 			]
 		},
 		{
 			"name": "Returning Weapon",
-			"source": "ERLW",
-			"page": 63,
+			"source": "TCE",
+			"page": 23,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 63
+				}
+			],
 			"featureType": "AI",
 			"prerequisite": [
 				{
@@ -3605,15 +3825,6 @@
 			]
 		},
 		{
-			"name": "Screaming Sails",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"Woven from the energy of captured wraiths and bound with the spirit of a banshee, these sails groan mournfully when they catch the wind. As an action, while within 5 feet of the sails, the ship's captain can cause the sails to unleash a howl. Every creature hostile to the ship who is on board or within 300 feet of it must succeed on a DC 14 Wisdom saving throw, or the creature takes {@damage 4d6} psychic damage and is then {@condition frightened} for 1 minute. Once this ability has been used, it can't be used again until {@dice 2d6} hours have passed."
-			]
-		},
-		{
 			"name": "Sculptor of Flesh",
 			"source": "PHB",
 			"page": 111,
@@ -3631,15 +3842,6 @@
 			],
 			"entries": [
 				"You can cast {@spell polymorph} once using a warlock spell slot. You can't do so again until you finish a long rest."
-			]
-		},
-		{
-			"name": "Scything Oars",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:M",
-			"entries": [
-				"Sharpened, magically reinforced oars make a vessel dangerous to approach. When the ship takes an action that moves it with these oars, any creature or object in the water within 10 feet of it at any point of the move must make a DC 10 Dexterity saving throw, taking {@damage 2d6} slashing damage on a failed save or half as much damage on a successful one."
 			]
 		},
 		{
@@ -3702,8 +3904,20 @@
 		},
 		{
 			"name": "Seeking Spell",
+			"source": "TCE",
+			"page": 66,
+			"isClassFeatureVariant": true,
+			"featureType": "MM",
+			"entries": [
+				"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the {@dice d20}, and you must use the new roll.",
+				"You can use Seeking Spell even if you have already used a different Metamagic option during the casting of the spell."
+			]
+		},
+		{
+			"name": "Seeking Spell",
 			"source": "UAClassFeatureVariants",
 			"page": 10,
+			"isClassFeatureVariant": true,
 			"featureType": "MM",
 			"entries": [
 				"When you cast a spell that requires you to make a spell attack roll or that forces a target to make a Dexterity saving throw, you can spend 1 sorcery point to ignore the effects of half- and three-quarters cover against targets of the spell."
@@ -3833,7 +4047,8 @@
 			"name": "Silver Tongue",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"When you make a Charisma ({@skill Deception}) check or a Charisma ({@skill Persuasion}) check, you can expend one superiority die, and add the superiority die to the ability check."
 			]
@@ -3858,32 +4073,35 @@
 			]
 		},
 		{
-			"name": "Smuggler's Banner",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:O",
-			"entries": [
-				"This flag is meant to be flown from a ship's mast. Its powerful magic causes it to appear as a flag or banner displaying the symbol of a group, captain, or realm friendly to the viewer. Multiple viewers might see different flags or crests.",
-				"The banner's true power is its ability to aid a ship in making rapid escapes. As an action, the ship and all friendly creatures aboard it teleport up to 3 miles to a known destination of the captain's choice. Hostile creatures aboard the ship don't move with the ship and fall into the water it once occupied. Once this item is used to teleport, it can't teleport in this way again for {@dice 2d6} days."
-			]
-		},
-		{
 			"name": "Snipe",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"As a bonus action, you can expend one superiority die and make a ranged weapon attack. You can draw a thrown weapon as part of making this attack. If you hit, add the superiority die to the attack's damage roll."
 			]
 		},
 		{
-			"name": "Soul Spike Armor",
-			"source": "BGDIA",
-			"page": 222,
-			"featureType": "IWM:W",
+			"name": "Spell-Refueling Ring",
+			"source": "TCE",
+			"page": 23,
+			"featureType": "AI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 6,
+						"class": {
+							"name": "Artificer"
+						}
+					},
+					"item": [
+						"A ring (requires attunement)"
+					]
+				}
+			],
 			"entries": [
-				"The vehicle is covered with spikes inscribed with blasphemous symbols. Luminous, ghostly figures impaled on these spikes wail and reach out in agony.",
-				"If a creature that isn't a devil dies within 30 feet of the infernal war machine, its soul (if it has one) is torn from its body and joins the wailing throng impaled on the spikes. As long as its soul remains trapped, a creature can't be raised from the dead by any means. A trapped soul is freed if the vehicle is destroyed, if the spike anchoring it is the target of a {@spell remove curse} spell or similar magic, or if the spike is destroyed. Each spike is a Small object with AC 19, 15 hit points, and resistance to all damage except radiant damage."
+				"While wearing this ring, the creature can recover one expended spell slot as an action. The recovered slot can be of 3rd level or lower. Once used, the ring can't be used again until the next dawn."
 			]
 		},
 		{
@@ -3919,37 +4137,46 @@
 			]
 		},
 		{
-			"name": "Storm Giant Figurehead",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:F",
+			"name": "Stone Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": "RN",
 			"entries": [
-				"This figurehead depicts a storm giant clutching a thunderbolt. As an action, the ship can activate this item to create a 60-foot cone that originates from the figurehead. Each creature in the cone must make DC 12 Constitution saving throw, taking 14 ({@damage 4d6}) thunder damage on a failed save, or half as much damage on a successful one. A creature that fails its saving throw is also pushed 10 feet away from the figurehead. Once a ship uses this action, it can't use it again for 1 minute."
+				"This rune's magic channels the judiciousness associated with stone giants. While wearing or carrying an object inscribed with this rune, you have advantage on Wisdom ({@skill Insight}) checks, and you have {@sense darkvision} out to a range of 120 feet.",
+				"In addition, when a creature you can see ends its turn within 30 feet of you, you can use your reaction to invoke the rune and force the creature to make a Wisdom saving throw. Unless the save succeeds, the creature is {@condition charmed} by you for 1 minute. While {@condition charmed} in this way, the creature has a speed of 0 and is {@condition incapacitated}, descending into a dreamy stupor. The creature repeats the saving throw at the end of each of its turns, ending the effect on a success. Once you invoke this rune, you can't do so again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Storm Rune",
+			"source": "TCE",
+			"page": 45,
+			"featureType": "RN",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 7,
+						"class": {
+							"name": "Fighter"
+						},
+						"subclass": {
+							"name": "Rune Knight"
+						}
+					}
+				}
+			],
+			"entries": [
+				"Using this rune, you can glimpse the future like a storm giant seer. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence ({@skill Arcana}) checks, and you can't be surprised as long as you aren't {@condition incapacitated}.",
+				"In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're {@condition incapacitated}. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke this rune, you can't do so again until you finish a short or long rest."
 			]
 		},
 		{
 			"name": "Studious Eye",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
-			"featureType": "MV",
+			"isClassFeatureVariant": true,
+			"featureType": "MV:B",
 			"entries": [
 				"When you make a Wisdom ({@skill Insight}) check or an Intelligence ({@skill Investigation}) check, you can expend one superiority die, and add the superiority die to the ability check."
-			]
-		},
-		{
-			"name": "Styx Sprayer",
-			"source": "BGDIA",
-			"page": 221,
-			"featureType": "IWM:W",
-			"entries": [
-				"This flexible hose is connected to a tank that holds 30 gallons of water from the {@area River Styx|1a3|x}. Each use of the weapon depletes 10 gallons of the water. Refilling the tank requires access to the Styx.",
-				{
-					"type": "entries",
-					"name": "Styx Sprayer (Requires 1 Crew and Grants Half Cover; 3 Uses)",
-					"entries": [
-						"{@atk rs}: +5 to hit, range 30 ft., one creature. {@h}The creature is struck by water from the River Styx and targeted by a {@spell feeblemind} spell (save DC 20). An already feebleminded creature is immune to this effect, as is a creature adapted to the River Styx. If the target fails its saving throw and the spell's effect on it is not ended within 30 days, the effect becomes permanent, whereupon the creature loses all its memories and becomes a near-mindless shell of its former self. At that point, nothing short of divine intervention can undo the effect."
-					]
-				}
 			]
 		},
 		{
@@ -3984,8 +4211,22 @@
 		},
 		{
 			"name": "Superior Technique",
+			"source": "TCE",
+			"page": 41,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F"
+			],
+			"entries": [
+				"You learn one {@filter maneuver|optionalfeatures|feature type=MV:B} of your choice from among those available to the {@class fighter|phb|Battle Master|Battle Master|phb|2-0} archetype. If a maneuver you use requires your target to make a saving throw to resist the maneuver's effects, the saving throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).",
+				"You gain one superiority die, which is a {@dice d6} (this die is added to any superiority dice you have from another source). This die is used to fuel your maneuvers. A superiority die is expended when you use it. You regain your expended superiority dice when you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Superior Technique",
 			"source": "UAClassFeatureVariants",
 			"page": 5,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:F"
 			],
@@ -4031,30 +4272,24 @@
 			]
 		},
 		{
+			"name": "Tactical Assessment",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"MV:B"
+			],
+			"entries": [
+				"When you make an Intelligence ({@skill Investigation}), an Intelligence ({@skill History}), or a Wisdom ({@skill Insight}) check, you can expend one superiority die and add the superiority die to the ability check."
+			]
+		},
+		{
 			"name": "Tanglefoot",
 			"source": "UAArtificer",
 			"page": 6,
 			"featureType": "AF",
 			"entries": [
 				"As an action, you can reach into your Alchemist's Satchel and pull out a bag filled with writhing, sticky black tar and hurl it at a point on the ground within 30 feet of you (the bag and its contents disappear if you don't hurl the bag by the end of the current turn). The bag bursts on impact and covers the ground in a 5-foot radius with sticky goo. That area becomes difficult terrain for 1 minute, and any creature that starts its turn on the ground in that area has its speed halved for that turn. After using this formula, you can't do so again for 1 minute."
-			]
-		},
-		{
-			"name": "Taskmaster's Drums",
-			"source": "GoS",
-			"page": 198,
-			"featureType": "SHP:O",
-			"entries": [
-				"This 4-foot-tall bronze drum comes with a pair of iron mallets. A creature can activate the drums as an action, causing the hammers to float above the drum and strike it to produce a thundering rhythm. For the next minute, the ship gains one additional action, as long as it has at least one action. Once this item is used, it can't be activated again for {@dice 2d10} hours."
-			]
-		},
-		{
-			"name": "Teleporter",
-			"source": "BGDIA",
-			"page": 222,
-			"featureType": "IWM:G",
-			"entries": [
-				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to teleport to an unoccupied space that the driver can see up to 300 feet away from the vehicle's current position. All creatures and objects in contact with the vehicle are teleported along with it. This device needs 24 hours to recharge before it can be used again."
 			]
 		},
 		{
@@ -4090,8 +4325,23 @@
 		},
 		{
 			"name": "Thrown Weapon Fighting",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F",
+				"FS:R"
+			],
+			"entries": [
+				"You can draw a weapon that has the thrown property as part of the attack you make with the weapon.",
+				"In addition, when you hit with a ranged attack using a thrown weapon, you gain a +2 bonus to the damage roll."
+			]
+		},
+		{
+			"name": "Thrown Weapon Fighting",
 			"source": "UAClassFeatureVariants",
 			"page": 13,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:F",
 				"FS:P",
@@ -4168,6 +4418,16 @@
 			"entries": [
 				"As a reaction when you take damage, you can entomb yourself in ice, which melts away at the end of your next turn. You gain 10 temporary hit points per warlock level, which take as much of the triggering damage as possible. Immediately after you take the damage, you gain vulnerability to fire damage, your speed is reduced to 0, and you are {@condition incapacitated}. These effects, including any remaining temporary hit points, all end when the ice melts.",
 				"Once you use this invocation, you can't use it again until you finish a short or long rest."
+			]
+		},
+		{
+			"name": "Transmuted Spell",
+			"source": "TCE",
+			"page": 66,
+			"isClassFeatureVariant": true,
+			"featureType": "MM",
+			"entries": [
+				"When you cast a spell that deals a type of damage from the following list, you can spend 1 sorcery point to change that damage type to one of the other listed types: acid, cold, fire, lightning, poison, thunder."
 			]
 		},
 		{
@@ -4308,8 +4568,22 @@
 		},
 		{
 			"name": "Unarmed Fighting",
+			"source": "TCE",
+			"page": 42,
+			"isClassFeatureVariant": true,
+			"featureType": [
+				"FS:F"
+			],
+			"entries": [
+				"Your unarmed strikes can deal bludgeoning damage equal to {@damage 1d6} + your Strength modifier on a hit. If you aren't wielding any weapons or a {@item shield|phb} when you make the attack roll, the {@damage d6} becomes a {@damage d8}.",
+				"At the start of each of your turns, you can deal {@damage 1d4} bludgeoning damage to one creature {@condition grappled} by you."
+			]
+		},
+		{
+			"name": "Unarmed Fighting",
 			"source": "UAClassFeatureVariants",
 			"page": 13,
+			"isClassFeatureVariant": true,
 			"featureType": [
 				"FS:F",
 				"FS:P",
@@ -4330,9 +4604,30 @@
 			]
 		},
 		{
+			"name": "Undying Servitude",
+			"source": "TCE",
+			"page": 71,
+			"isClassFeatureVariant": true,
+			"featureType": "EI",
+			"prerequisite": [
+				{
+					"level": {
+						"level": 5,
+						"class": {
+							"name": "Warlock"
+						}
+					}
+				}
+			],
+			"entries": [
+				"You can cast {@spell animate dead} without using a spell slot. Once you do so, you can't cast it in this way again until you finish a long rest."
+			]
+		},
+		{
 			"name": "Unerring Spell",
 			"source": "UAClassFeatureVariants",
 			"page": 10,
+			"isClassFeatureVariant": true,
 			"featureType": "MM",
 			"entries": [
 				"If you make an attack roll for a spell and miss, you can spend 2 sorcery points to reroll the attack roll. You must use the result of the second roll.",
@@ -4347,15 +4642,6 @@
 			"entries": [
 				"Using this rune, you can glimpse the future like a storm giant. While wearing or carrying an object inscribed with this rune, you have advantage on Intelligence ({@skill Arcana}) checks, and you can't be surprised as long as you are not {@condition incapacitated}.",
 				"In addition, you can invoke the rune as a bonus action to enter a prophetic state for 1 minute or until you're {@condition incapacitated}. Until the state ends, when you or another creature you can see within 60 feet of you makes an attack roll, a saving throw, or an ability check, you can use your reaction to cause the roll to have advantage or disadvantage. Once you invoke the rune, you can't do so again until you finish a short or long rest."
-			]
-		},
-		{
-			"name": "Vigilant Watch",
-			"source": "GoS",
-			"page": 197,
-			"featureType": "SHP:H",
-			"entries": [
-				"A row of crystal orbs, each filled with viscous liquid and a beholder's eyeball, is mounted along this ship's hull. {@condition Invisible} creatures are visible while on the ship or within 120 feet of it."
 			]
 		},
 		{

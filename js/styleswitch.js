@@ -3,7 +3,15 @@
 class StyleSwitcher {
 	constructor () {
 		this.currentStylesheet = StyleSwitcher._STYLE_DAY;
-		this._setActiveDayNight(StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_DAY_NIGHT) || StyleSwitcher._getDefaultStyleDayNight());
+
+		// If the user has never manually specified a style, always load the default from their OS
+		const isManualMode = StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_IS_MANUAL_MODE);
+		if (isManualMode) {
+			this._setActiveDayNight(StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_DAY_NIGHT) || StyleSwitcher._getDefaultStyleDayNight());
+		} else {
+			this._setActiveDayNight(StyleSwitcher._getDefaultStyleDayNight());
+		}
+
 		this._setActiveWide(StyleSwitcher.storage.getItem(StyleSwitcher._STORAGE_WIDE) === "true");
 	}
 
@@ -35,6 +43,7 @@ class StyleSwitcher {
 	toggleDayNight () {
 		const newStyle = this.currentStylesheet === StyleSwitcher._STYLE_DAY ? StyleSwitcher.STYLE_NIGHT : StyleSwitcher._STYLE_DAY;
 		this._setActiveDayNight(newStyle);
+		StyleSwitcher.storage.setItem(StyleSwitcher._STORAGE_IS_MANUAL_MODE, true);
 	}
 	// endregion
 
@@ -97,6 +106,7 @@ class StyleSwitcher {
 	// endregion
 }
 StyleSwitcher._STORAGE_DAY_NIGHT = "StyleSwitcher_style";
+StyleSwitcher._STORAGE_IS_MANUAL_MODE = "StyleSwitcher_style-is-manual-mode";
 StyleSwitcher._STORAGE_WIDE = "StyleSwitcher_style-wide";
 StyleSwitcher._STYLE_DAY = "day";
 StyleSwitcher.STYLE_NIGHT = "night";
@@ -111,7 +121,7 @@ try {
 			return StyleSwitcher._STYLE_DAY;
 		},
 
-		setItem (k, v) {}
+		setItem (k, v) {},
 	}
 }
 

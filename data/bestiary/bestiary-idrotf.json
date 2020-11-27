@@ -1934,6 +1934,7 @@
 		{
 			"name": "Chwinga",
 			"source": "IDRotF",
+			"page": 282,
 			"_copy": {
 				"name": "Chwinga",
 				"source": "ToA"
@@ -2428,6 +2429,7 @@
 			"isNpc": true,
 			"isNamedCreature": true,
 			"source": "IDRotF",
+			"page": 183,
 			"_copy": {
 				"name": "Mind Flayer",
 				"source": "MM",
@@ -3074,31 +3076,11 @@
 				{
 					"name": "Vampire Weaknesses",
 					"entries": [
-						"The vampire has the following flaws:"
-					]
-				},
-				{
-					"name": "Enraged by Celestial",
-					"entries": [
-						"If it hears words of Celestial spoken, the vampire must try to attack the source of those spoken words on its next turn. If these words come from multiple sources and from opposite directions, the vampire is {@condition restrained}. Otherwise, it moves to attack what it perceives to be the closest source."
-					]
-				},
-				{
-					"name": "Repulsed by Perfume",
-					"entries": [
-						"The vampire has disadvantage on melee attack rolls made against any creature wearing perfume or carrying an open container of it."
-					]
-				},
-				{
-					"name": "Stake to the Heart",
-					"entries": [
-						"If a piercing weapon made of wood is driven into the vampire's heart while the vampire is {@condition incapacitated} in its resting place, the vampire is {@condition paralyzed} until the stake is removed."
-					]
-				},
-				{
-					"name": "Sunlight Hypersensitivity",
-					"entries": [
-						"The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+						"The vampire has the following flaws:",
+						"{@i Enraged by Celestial.} If it hears words of Celestial spoken, the vampire must try to attack the source of those spoken words on its next turn. If these words come from multiple sources and from opposite directions, the vampire is {@condition restrained}. Otherwise, it moves to attack what it perceives to be the closest source.",
+						"{@i Repulsed by Perfume.} The vampire has disadvantage on melee attack rolls made against any creature wearing perfume or carrying an open container of it.",
+						"{@i Stake to the Heart.} If a piercing weapon made of wood is driven into the vampire's heart while the vampire is {@condition incapacitated} in its resting place, the vampire is {@condition paralyzed} until the stake is removed.",
+						"{@i Sunlight Hypersensitivity.} The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
 					]
 				}
 			],
@@ -3348,9 +3330,15 @@
 				{
 					"name": "Innate Spellcasting (Psionics)",
 					"headerEntries": [
-						"The squidling's innate spellcasting ability is Intelligence (spell save {@dc 7}). It can innately cast levitate at will, requiring no components."
+						"The squidling's innate spellcasting ability is Intelligence (spell save {@dc 7}). It can innately cast {@spell levitate} at will, requiring no components."
 					],
-					"ability": "int"
+					"ability": "int",
+					"will": [
+						"{@spell levitate}"
+					],
+					"hidden": [
+						"will"
+					]
 				}
 			],
 			"trait": [
@@ -5375,31 +5363,11 @@
 				{
 					"name": "Vampire Weaknesses",
 					"entries": [
-						"The vampire has the following flaws:"
-					]
-				},
-				{
-					"name": "Forbiddance",
-					"entries": [
-						"The vampire can't enter a residence without an invitation from one of the occupants."
-					]
-				},
-				{
-					"name": "Harmed by Running Water",
-					"entries": [
-						"The vampire takes 20 acid damage when it starts its turn in running water."
-					]
-				},
-				{
-					"name": "Stake to the Heart",
-					"entries": [
-						"The vampire is destroyed if a piercing weapon made of wood is driven into its heart while it is {@condition incapacitated} in its resting place."
-					]
-				},
-				{
-					"name": "Sunlight Hypersensitivity",
-					"entries": [
-						"The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
+						"The vampire has the following flaws:",
+						"{@i Forbiddance.} The vampire can't enter a residence without an invitation from one of the occupants.",
+						"{@i Harmed by Running Water.} The vampire takes 20 acid damage when it starts its turn in running water.",
+						"{@i Stake to the Heart.} The vampire is destroyed if a piercing weapon made of wood is driven into its heart while it is {@condition incapacitated} in its resting place.",
+						"{@i Sunlight Hypersensitivity.} The vampire takes 20 radiant damage when it starts its turn in sunlight. While in sunlight, it has disadvantage on attack rolls and ability checks."
 					]
 				}
 			],
@@ -5859,9 +5827,6 @@
 				"N",
 				"O",
 				"Y"
-			],
-			"miscTags": [
-				"RNG"
 			],
 			"conditionInflict": [
 				"frightened"
@@ -6528,7 +6493,7 @@
 				{
 					"name": "Parry",
 					"entries": [
-						"The great warrior adds 3 to its AC against one melee attack that would hit it. To do so, the chieftain must see the attacker and be wielding a melee weapon."
+						"The great warrior adds 3 to its AC against one melee attack that would hit it. To do so, the great warrior must see the attacker and be wielding a melee weapon."
 					]
 				}
 			],
@@ -6738,6 +6703,7 @@
 		{
 			"name": "Reindeer",
 			"source": "IDRotF",
+			"page": 107,
 			"_copy": {
 				"name": "Elk",
 				"source": "MM",
@@ -6867,7 +6833,13 @@
 				{
 					"name": "Innate Spellcasting",
 					"headerEntries": [
-						"Sephek can innately cast misty step up to three times per day, requiring no components. His innate spellcasting ability is Charisma."
+						"Sephek can innately cast {@spell misty step} up to three times per day, requiring no components. His innate spellcasting ability is Charisma."
+					],
+					"will": [
+						"{@spell misty step}"
+					],
+					"hidden": [
+						"will"
 					],
 					"ability": "cha"
 				}

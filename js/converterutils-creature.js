@@ -95,7 +95,7 @@ class AcConvert {
 						case "natural barkskin": froms.push(`natural {@spell barkskin}`); break;
 						case "mage armor": froms.push("{@spell mage armor}"); break;
 
-						// armour (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
+						// armor (mostly handled by the item lookup; these are mis-named exceptions (usually for homebrew))
 						case "chainmail":
 						case "chain armor":
 							froms.push("{@item chain mail|phb}");
@@ -140,7 +140,7 @@ class AcConvert {
 								nxtAc = {
 									ac: Number(numMatch[1]),
 									condition: `with ${spell}`,
-									braces: true
+									braces: true,
 								};
 							} else if (/^in .*? form$/i.test(fromLow)) {
 								// If there's an existing condition, flag a warning
@@ -219,6 +219,7 @@ class TagAttack {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -236,7 +237,7 @@ TagAttack.MAP = {
 	"melee or ranged weapon attack:": "{@atk mw,rw}",
 	"ranged spell attack:": "{@atk rs}",
 	"melee or ranged spell attack:": "{@atk ms,rs}",
-	"melee or ranged attack:": "{@atk m,r}"
+	"melee or ranged attack:": "{@atk m,r}",
 };
 
 class TagHit {
@@ -255,6 +256,7 @@ class TagHit {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -276,6 +278,7 @@ class TagDc {
 
 		handleProp("action");
 		handleProp("reaction");
+		handleProp("bonus");
 		handleProp("trait");
 		handleProp("legendary");
 		handleProp("mythic");
@@ -291,7 +294,7 @@ class AlignmentConvert {
 
 		orParts.forEach(part => {
 			Object.values(AlignmentConvert.ALIGNMENTS).forEach(it => {
-				if (it.regex.test(part)) out.push(it.output);
+				if (it.regex.test(part)) out.push({alignment: it.output});
 				else {
 					const mChange = it.regexChance.exec(part);
 					if (mChange) {
@@ -301,7 +304,7 @@ class AlignmentConvert {
 			})
 		});
 
-		if (out.length === 1) m.alignment = out[0];
+		if (out.length === 1) m.alignment = out[0].alignment;
 		else if (out.length) m.alignment = out;
 		else if (cbMan) cbMan(m.alignment);
 	}
@@ -336,13 +339,13 @@ AlignmentConvert.ALIGNMENTS = {
 	"any lawful( alignment)?": ["L", "G", "NY", "E"],
 	"any good( alignment)?": ["L", "NX", "C", "G"],
 
-	"any neutral( alignment)?": ["NX", "NY", "N"]
+	"any neutral( alignment)?": ["NX", "NY", "N"],
 };
 Object.entries(AlignmentConvert.ALIGNMENTS).forEach(([k, v]) => {
 	AlignmentConvert.ALIGNMENTS[k] = {
 		output: v,
 		regex: RegExp(`^${k}$`),
-		regexChance: RegExp(`^${k}\\s*\\((\\d+)\\s*%\\)$`)
+		regexChance: RegExp(`^${k}\\s*\\((\\d+)\\s*%\\)$`),
 	}
 });
 
@@ -398,6 +401,7 @@ class TraitActionTag {
 		doTag("trait", "traitTags");
 		doTag("action", "actionTags");
 		doTag("reaction", "actionTags");
+		doTag("bonus", "actionTags");
 
 		doTagDeep("action", "actionTags");
 
@@ -461,6 +465,7 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"sunlight sensitivity": "Sunlight Sensitivity",
 		"sunlight hypersensitivity": "Sunlight Sensitivity",
 		"light sensitivity": "Light Sensitivity",
+		"vampire weaknesses": "Light Sensitivity",
 
 		"amphibious": "Amphibious",
 
@@ -470,7 +475,8 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"magic weapons": "Magic Weapons",
 
 		"magic resistance": "Magic Resistance",
-		"spell immunity": "Magic Resistance",
+
+		"spell immunity": "Spell Immunity",
 
 		"ambush": "Ambusher",
 		"ambusher": "Ambusher",
@@ -484,7 +490,7 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"devil's sight": "Devil's Sight",
 		"devil sight": "Devil's Sight",
 
-		"immutable form": "Immutable Form"
+		"immutable form": "Immutable Form",
 	},
 	action: {
 		"multiattack": "Multiattack",
@@ -492,22 +498,25 @@ TraitActionTag.tags = { // true = map directly; string = map to this string
 		"teleport": "Teleport",
 		"swallow": "Swallow",
 		"tentacle": "Tentacles",
-		"tentacles": "Tentacles"
+		"tentacles": "Tentacles",
 	},
 	reaction: {
-		"parry": "Parry"
+		"parry": "Parry",
+	},
+	bonus: {
+		// unused
 	},
 	legendary: {
 		// unused
 	},
 	mythic: {
 		// unused
-	}
+	},
 };
 TraitActionTag.tagsDeep = {
 	action: {
-		"Swallow": strEntries => /swallowed/i.test(strEntries)
-	}
+		"Swallow": strEntries => /swallowed/i.test(strEntries),
+	},
 };
 
 class LanguageTag {
@@ -638,7 +647,7 @@ LanguageTag.LANGUAGE_MAP = {
 	"all languages": "XX",
 	"any language": "X",
 	"knew in life": "LF",
-	"spoke in life": "LF"
+	"spoke in life": "LF",
 };
 
 class SenseFilterTag {
@@ -670,7 +679,7 @@ SenseFilterTag.TAGS = {
 	"blindsight": "B",
 	"darkvision": "D",
 	"tremorsense": "T",
-	"truesight": "U"
+	"truesight": "U",
 };
 
 class SpellcastingTypeTag {
@@ -714,7 +723,7 @@ SpellcastingTypeTag.CLASSES = {
 	"CR": /(^|[^a-zA-Z])ranger([^a-zA-Z]|$)/gi,
 	"CS": /(^|[^a-zA-Z])sorcerer([^a-zA-Z]|$)/gi,
 	"CL": /(^|[^a-zA-Z])warlock([^a-zA-Z]|$)/gi,
-	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi
+	"CW": /(^|[^a-zA-Z])wizard([^a-zA-Z]|$)/gi,
 };
 
 class DamageTypeTag {
@@ -744,6 +753,7 @@ class DamageTypeTag {
 		const typeSet = new Set();
 		DamageTypeTag._handleProp(m, "action", typeSet);
 		DamageTypeTag._handleProp(m, "reaction", typeSet);
+		DamageTypeTag._handleProp(m, "bonus", typeSet);
 		DamageTypeTag._handleProp(m, "trait", typeSet);
 		DamageTypeTag._handleProp(m, "legendary", typeSet);
 		DamageTypeTag._handleProp(m, "mythic", typeSet);
@@ -760,12 +770,13 @@ class MiscTag {
 		if (m[prop]) {
 			m[prop].forEach(it => {
 				let hasRangedAttack = false;
-				if (it.entries) {
-					const str = JSON.stringify(it.entries, null, "\t");
 
+				const strEntries = it.entries ? JSON.stringify(it.entries, null, "\t") : null;
+
+				if (strEntries) {
 					// Weapon attacks
 					// - any melee/ranged attack
-					str.replace(/{@atk ([^}]+)}/g, (...mx) => {
+					strEntries.replace(/{@atk ([^}]+)}/g, (...mx) => {
 						const spl = mx[1].split(",");
 						if (spl.includes("rw")) {
 							tagSet.add("RW");
@@ -775,20 +786,29 @@ class MiscTag {
 					});
 
 					// - reach
-					str.replace(/reach (\d+) ft\./g, (...m) => {
+					strEntries.replace(/reach (\d+) ft\./g, (...m) => {
 						if (Number(m[1]) > 5) tagSet.add("RCH");
 					});
 
 					// AoE effects
-					str.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => tagSet.add("AOE"));
-					str.replace(/each creature within \d+ feet/gi, () => tagSet.add("AOE"));
+					strEntries.replace(/\d+-foot[- ](line|cube|cone|radius|sphere|hemisphere|cylinder)/g, () => tagSet.add("AOE"));
+					strEntries.replace(/each creature within \d+ feet/gi, () => tagSet.add("AOE"));
 				}
 
 				if (it.name) {
 					// thrown weapon (PHB only)
 					if (hasRangedAttack) MiscTag._THROWN_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => tagSet.add("THW")));
+
 					// other ranged weapon (PHB only)
-					MiscTag._RANGED_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => tagSet.add("RNG")));
+					MiscTag._RANGED_WEAPON_MATCHERS.forEach(r => it.name.replace(r, () => {
+						const mAtk = /{@atk ([^}]+)}/.exec(strEntries || "");
+						if (mAtk) {
+							const spl = mAtk[1].split(",");
+							// Avoid adding the "ranged attack" tag for spell attacks
+							if (spl.includes("rs")) return;
+						}
+						tagSet.add("RNG");
+					}));
 				}
 			})
 		}
@@ -799,6 +819,7 @@ class MiscTag {
 		MiscTag._handleProp(m, "action", typeSet);
 		MiscTag._handleProp(m, "trait", typeSet);
 		MiscTag._handleProp(m, "reaction", typeSet);
+		MiscTag._handleProp(m, "bonus", typeSet);
 		MiscTag._handleProp(m, "legendary", typeSet);
 		MiscTag._handleProp(m, "mythic", typeSet);
 		if (typeSet.size) m.miscTags = [...typeSet];
@@ -813,7 +834,7 @@ MiscTag._THROWN_WEAPONS = [
 	"spear",
 	"trident",
 	"dart",
-	"net"
+	"net",
 ];
 MiscTag._THROWN_WEAPON_MATCHERS = MiscTag._THROWN_WEAPONS.map(it => new RegExp(`(^|[^\\w])(${it})([^\\w]|$)`, "gi"));
 MiscTag._RANGED_WEAPONS = [
@@ -823,7 +844,7 @@ MiscTag._RANGED_WEAPONS = [
 	"blowgun",
 	"hand crossbow",
 	"heavy crossbow",
-	"longbow"
+	"longbow",
 ];
 MiscTag._RANGED_WEAPON_MATCHERS = MiscTag._RANGED_WEAPONS.map(it => new RegExp(`(^|[^\\w])(${it})([^\\w]|$)`, "gi"));
 
@@ -1065,7 +1086,7 @@ class SpeedConvert {
 					if (condition) {
 						out[mode] = {
 							number: Number(feet),
-							condition: condition.trim()
+							condition: condition.trim(),
 						};
 					} else out[mode] = Number(feet);
 					prevSpeed = mode;
@@ -1096,6 +1117,7 @@ class DetectNamedCreature {
 		const totals = {yes: 0, no: 0};
 		this._doCheckProp(mon, totals, "action");
 		this._doCheckProp(mon, totals, "reaction");
+		this._doCheckProp(mon, totals, "bonus");
 		this._doCheckProp(mon, totals, "legendary");
 		this._doCheckProp(mon, totals, "mythic");
 
@@ -1172,6 +1194,6 @@ if (typeof module !== "undefined") {
 		RechargeConvert,
 		DetectNamedCreature,
 		TagImmResVulnConditional,
-		SpeedConvert
+		SpeedConvert,
 	};
 }

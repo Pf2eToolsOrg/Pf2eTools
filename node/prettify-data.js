@@ -20,7 +20,7 @@ const FILE_BLACKLIST = new Set([
 	"roll20-tables.json",
 	"foundry.json",
 	"roll20.json",
-	"makebrew-creature.json"
+	"makebrew-creature.json",
 ]);
 
 const KEY_BLACKLIST = new Set(["data", "itemTypeAdditionalEntries", "itemType", "itemProperty"]);
@@ -44,6 +44,7 @@ function getFnListSort (prop) {
 		case "boon":
 		case "feat":
 		case "vehicle":
+		case "vehicleUpgrade":
 		case "backgroundFluff":
 		case "conditionFluff":
 		case "spellFluff":
@@ -64,6 +65,9 @@ function getFnListSort (prop) {
 		case "table":
 		case "trap":
 		case "hazard":
+		case "charoption":
+		case "charoptionFluff":
+		case "recipe":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "deity":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.pantheon, b.pantheon);

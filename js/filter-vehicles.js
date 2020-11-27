@@ -10,10 +10,25 @@ class PageFilterVehicles extends PageFilter {
 			items: [
 				"SHIP",
 				"INFWAR",
-				"CREATURE"
+				"CREATURE",
 			],
 			displayFn: Parser.vehicleTypeToFull,
-			isSortByDisplayItems: true
+			isSortByDisplayItems: true,
+		});
+		this._upgradeTypeFilter = new Filter({
+			header: "Upgrade Type",
+			items: [
+				"SHP:H",
+				"SHP:M",
+				"SHP:W",
+				"SHP:F",
+				"SHP:O",
+				"IWM:W",
+				"IWM:A",
+				"IWM:G",
+			],
+			displayFn: Parser.vehicleTypeToFull,
+			isSortByDisplayItems: true,
 		});
 		this._terrainFilter = new Filter({header: "Terrain", items: ["land", "sea", "air"], displayFn: StrUtil.uppercaseFirst});
 		this._speedFilter = new RangeFilter({header: "Speed"});
@@ -21,7 +36,7 @@ class PageFilterVehicles extends PageFilter {
 		this._hpFilter = new RangeFilter({header: "Hit Points"});
 		this._hpFilter = new RangeFilter({header: "Hit Points"});
 		this._creatureCapacityFilter = new RangeFilter({header: "Creature Capacity"});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (it) {
@@ -63,6 +78,7 @@ class PageFilterVehicles extends PageFilter {
 
 		this._sourceFilter.addItem(it.source);
 		this._vehicleTypeFilter.addItem(it.vehicleType);
+		this._upgradeTypeFilter.addItem(it.upgradeType)
 		this._speedFilter.addItem(it._fSpeed);
 		this._terrainFilter.addItem(it.terrain);
 		this._acFilter.addItem(it._fAc);
@@ -74,12 +90,13 @@ class PageFilterVehicles extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._vehicleTypeFilter,
+			this._upgradeTypeFilter,
 			this._terrainFilter,
 			this._speedFilter,
 			this._acFilter,
 			this._hpFilter,
 			this._creatureCapacityFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -88,12 +105,13 @@ class PageFilterVehicles extends PageFilter {
 			values,
 			it.source,
 			it.vehicleType,
+			it.upgradeType,
 			it.terrain,
 			it._fSpeed,
 			it._fAc,
 			it._fHp,
 			it._fCreatureCapacity,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

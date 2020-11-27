@@ -267,6 +267,7 @@
 				"Pact Boon|Warlock||3",
 				"Ability Score Improvement|Warlock||4",
 				"Proficiency Versatility|Warlock||4|UAClassFeatureVariants",
+				"Eldritch Versatility|Warlock||4|TCE",
 				{
 					"classFeature": "Otherworldly Patron feature|Warlock||6",
 					"gainSubclassFeature": true
@@ -373,6 +374,44 @@
 					]
 				},
 				{
+					"name": "The Great Old One",
+					"shortName": "Great Old One",
+					"source": "PHB",
+					"page": 109,
+					"additionalSpells": [
+						{
+							"expanded": {
+								"1": [
+									"dissonant whispers",
+									"Tasha's hideous laughter"
+								],
+								"2": [
+									"detect thoughts",
+									"phantasmal force"
+								],
+								"3": [
+									"clairvoyance",
+									"sending"
+								],
+								"4": [
+									"dominate beast",
+									"Evard's black tentacles"
+								],
+								"5": [
+									"dominate person",
+									"telekinesis"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"The Great Old One|Warlock||Great Old One||1",
+						"Entropic Ward|Warlock||Great Old One||6",
+						"Thought Shield|Warlock||Great Old One||10",
+						"Create Thrall|Warlock||Great Old One||14"
+					]
+				},
+				{
 					"name": "Ghost in the Machine (UA)",
 					"shortName": "Ghost in the Machine (UA)",
 					"source": "UAModernMagic",
@@ -411,41 +450,37 @@
 					]
 				},
 				{
-					"name": "The Great Old One",
-					"shortName": "Great Old One",
-					"source": "PHB",
-					"page": 109,
+					"name": "The Undying Light (UA)",
+					"shortName": "Undying Light (UA)",
+					"source": "UALightDarkUnderdark",
+					"page": 3,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"expanded": {
 								"1": [
-									"dissonant whispers",
-									"Tasha's hideous laughter"
+									"burning hands"
 								],
 								"2": [
-									"detect thoughts",
-									"phantasmal force"
+									"flaming sphere"
 								],
 								"3": [
-									"clairvoyance",
-									"sending"
+									"daylight"
 								],
 								"4": [
-									"dominate beast",
-									"Evard's black tentacles"
+									"fire shield"
 								],
 								"5": [
-									"dominate person",
-									"telekinesis"
+									"flame strike"
 								]
 							}
 						}
 					],
 					"subclassFeatures": [
-						"The Great Old One|Warlock||Great Old One||1",
-						"Entropic Ward|Warlock||Great Old One||6",
-						"Thought Shield|Warlock||Great Old One||10",
-						"Create Thrall|Warlock||Great Old One||14"
+						"The Undying Light|Warlock||Undying Light (UA)|UALightDarkUnderdark|1",
+						"Searing Vengeance|Warlock||Undying Light (UA)|UALightDarkUnderdark|6",
+						"Radiant Resilience|Warlock||Undying Light (UA)|UALightDarkUnderdark|10",
+						"Healing Light|Warlock||Undying Light (UA)|UALightDarkUnderdark|14"
 					]
 				},
 				{
@@ -492,79 +527,6 @@
 					]
 				},
 				{
-					"name": "The Undying Light (UA)",
-					"shortName": "Undying Light (UA)",
-					"source": "UALightDarkUnderdark",
-					"page": 3,
-					"isReprinted": true,
-					"additionalSpells": [
-						{
-							"expanded": {
-								"1": [
-									"burning hands"
-								],
-								"2": [
-									"flaming sphere"
-								],
-								"3": [
-									"daylight"
-								],
-								"4": [
-									"fire shield"
-								],
-								"5": [
-									"flame strike"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"The Undying Light|Warlock||Undying Light (UA)|UALightDarkUnderdark|1",
-						"Searing Vengeance|Warlock||Undying Light (UA)|UALightDarkUnderdark|6",
-						"Radiant Resilience|Warlock||Undying Light (UA)|UALightDarkUnderdark|10",
-						"Healing Light|Warlock||Undying Light (UA)|UALightDarkUnderdark|14"
-					]
-				},
-				{
-					"name": "The Celestial (UA)",
-					"shortName": "Celestial (UA)",
-					"source": "UARevisedClassOptions",
-					"page": 4,
-					"isReprinted": true,
-					"additionalSpells": [
-						{
-							"expanded": {
-								"1": [
-									"burning hands",
-									"cure wounds"
-								],
-								"2": [
-									"flaming sphere",
-									"lesser restoration"
-								],
-								"3": [
-									"daylight",
-									"revivify"
-								],
-								"4": [
-									"guardian of faith",
-									"wall of fire"
-								],
-								"5": [
-									"flame strike",
-									"greater restoration"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"The Celestial|Warlock||Celestial (UA)|UARevisedClassOptions|1",
-						"Radiant Soul|Warlock||Celestial (UA)|UARevisedClassOptions|6",
-						"Celestial Resilience|Warlock||Celestial (UA)|UARevisedClassOptions|10",
-						"Healing Light|Warlock||Celestial (UA)|UARevisedClassOptions|14"
-					]
-				},
-				{
 					"name": "The Seeker (UA)",
 					"shortName": "Seeker (UA)",
 					"source": "UATheFaithful",
@@ -600,6 +562,45 @@
 						"Astral Refuge|Warlock||Seeker (UA)|UATheFaithful|6",
 						"Far Wanderer|Warlock||Seeker (UA)|UATheFaithful|10",
 						"Astral Sequestration|Warlock||Seeker (UA)|UATheFaithful|14"
+					]
+				},
+				{
+					"name": "The Hexblade (UA)",
+					"shortName": "Hexblade (UA)",
+					"source": "UAWarlockAndWizard",
+					"page": 1,
+					"isReprinted": true,
+					"additionalSpells": [
+						{
+							"expanded": {
+								"1": [
+									"shield",
+									"wrathful smite"
+								],
+								"2": [
+									"branding smite",
+									"magic weapon"
+								],
+								"3": [
+									"blink",
+									"elemental weapon"
+								],
+								"4": [
+									"phantasmal killer",
+									"staggering smite"
+								],
+								"5": [
+									"cone of cold",
+									"destructive wave"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"The Hexblade|Warlock||Hexblade (UA)|UAWarlockAndWizard|1",
+						"Shadow Hound|Warlock||Hexblade (UA)|UAWarlockAndWizard|6",
+						"Armor of Hexes|Warlock||Hexblade (UA)|UAWarlockAndWizard|10",
+						"Master of Hexes|Warlock||Hexblade (UA)|UAWarlockAndWizard|14"
 					]
 				},
 				{
@@ -641,42 +642,42 @@
 					]
 				},
 				{
-					"name": "The Hexblade (UA)",
-					"shortName": "Hexblade (UA)",
-					"source": "UAWarlockAndWizard",
-					"page": 1,
+					"name": "The Celestial (UA)",
+					"shortName": "Celestial (UA)",
+					"source": "UARevisedClassOptions",
+					"page": 4,
 					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"expanded": {
 								"1": [
-									"shield",
-									"wrathful smite"
+									"burning hands",
+									"cure wounds"
 								],
 								"2": [
-									"branding smite",
-									"magic weapon"
+									"flaming sphere",
+									"lesser restoration"
 								],
 								"3": [
-									"blink",
-									"elemental weapon"
+									"daylight",
+									"revivify"
 								],
 								"4": [
-									"phantasmal killer",
-									"staggering smite"
+									"guardian of faith",
+									"wall of fire"
 								],
 								"5": [
-									"cone of cold",
-									"destructive wave"
+									"flame strike",
+									"greater restoration"
 								]
 							}
 						}
 					],
 					"subclassFeatures": [
-						"The Hexblade|Warlock||Hexblade (UA)|UAWarlockAndWizard|1",
-						"Shadow Hound|Warlock||Hexblade (UA)|UAWarlockAndWizard|6",
-						"Armor of Hexes|Warlock||Hexblade (UA)|UAWarlockAndWizard|10",
-						"Master of Hexes|Warlock||Hexblade (UA)|UAWarlockAndWizard|14"
+						"The Celestial|Warlock||Celestial (UA)|UARevisedClassOptions|1",
+						"Radiant Soul|Warlock||Celestial (UA)|UARevisedClassOptions|6",
+						"Celestial Resilience|Warlock||Celestial (UA)|UARevisedClassOptions|10",
+						"Healing Light|Warlock||Celestial (UA)|UARevisedClassOptions|14"
 					]
 				},
 				{
@@ -762,86 +763,11 @@
 					]
 				},
 				{
-					"name": "The Kraken (Livestream)",
-					"shortName": "Kraken (Stream)",
-					"source": "Stream",
-					"additionalSpells": [
-						{
-							"expanded": {
-								"1": [
-									"thunderwave",
-									"create or destroy water"
-								],
-								"2": [
-									"augury",
-									"gust of wind"
-								],
-								"3": [
-									"call lightning",
-									"water breathing"
-								],
-								"4": [
-									"Evard's black tentacles",
-									"control water"
-								],
-								"5": [
-									"commune with nature",
-									"cone of cold"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"The Kraken (Livestream)|Warlock||Kraken (Stream)|Stream|1",
-						"Inky Escape|Warlock||Kraken (Stream)|Stream|6",
-						"Scion of the Depths|Warlock||Kraken (Stream)|Stream|10",
-						"Unleash the Kraken|Warlock||Kraken (Stream)|Stream|14",
-						"Transport|Warlock||Kraken (Stream)|Stream|14",
-						"Fury|Warlock||Kraken (Stream)|Stream|14"
-					]
-				},
-				{
-					"name": "Lolth (Twitter)",
-					"shortName": "Lolth (Twitter)",
-					"source": "Twitter",
-					"additionalSpells": [
-						{
-							"expanded": {
-								"1": [
-									"faerie fire",
-									"jump"
-								],
-								"2": [
-									"darkness",
-									"web"
-								],
-								"3": [
-									"fear",
-									"vampiric touch"
-								],
-								"4": [
-									"dimension door",
-									"giant insect"
-								],
-								"5": [
-									"cloudkill",
-									"hold monster"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"Lolth (Twitter)|Warlock||Lolth (Twitter)|Twitter|1",
-						"Poisoned Beauty|Warlock||Lolth (Twitter)|Twitter|6",
-						"Spider Queen's Chosen|Warlock||Lolth (Twitter)|Twitter|10",
-						"Kiss of the Spider Queen|Warlock||Lolth (Twitter)|Twitter|14"
-					]
-				},
-				{
 					"name": "The Lurker in the Deep (UA)",
 					"shortName": "Lurker in the Deep (UA)",
 					"source": "UASorcererAndWarlock",
 					"page": 2,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"expanded": {
@@ -921,6 +847,7 @@
 					"shortName": "Genie (UA)",
 					"source": "UA2020SubclassesRevisited",
 					"page": 2,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"expanded": {
@@ -1074,6 +1001,167 @@
 						"Grave Touched|Warlock||Undead (UA)|UA2020SubclassesPt4|6",
 						"Mortal Husk|Warlock||Undead (UA)|UA2020SubclassesPt4|10",
 						"Spirit Projection|Warlock||Undead (UA)|UA2020SubclassesPt4|14"
+					]
+				},
+				{
+					"name": "The Fathomless",
+					"shortName": "Fathomless",
+					"source": "TCE",
+					"page": 72,
+					"additionalSpells": [
+						{
+							"expanded": {
+								"1": [
+									"create or destroy water",
+									"thunderwave"
+								],
+								"2": [
+									"gust of wind",
+									"silence"
+								],
+								"3": [
+									"lightning bolt",
+									"sleet storm"
+								],
+								"4": [
+									"control water",
+									"summon elemental|tce"
+								],
+								"5": [
+									"Bigby's hand",
+									"cone of cold"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"The Fathomless|Warlock||Fathomless|TCE|1",
+						"Oceanic Soul|Warlock||Fathomless|TCE|6",
+						"Guardian Coil|Warlock||Fathomless|TCE|6",
+						"Grasping Tentacles|Warlock||Fathomless|TCE|10",
+						"Fathomless Plunge|Warlock||Fathomless|TCE|14"
+					]
+				},
+				{
+					"name": "The Genie",
+					"shortName": "Genie",
+					"source": "TCE",
+					"page": 73,
+					"additionalSpells": [
+						{
+							"expanded": {
+								"1": [
+									"detect evil and good",
+									"sanctuary"
+								],
+								"2": [
+									"phantasmal force",
+									"spike growth"
+								],
+								"3": [
+									"create food and water",
+									"meld into stone"
+								],
+								"4": [
+									"phantasmal killer",
+									"stone shape"
+								],
+								"5": [
+									"creation",
+									"wall of stone"
+								],
+								"9": [
+									"wish"
+								]
+							}
+						},
+						{
+							"expanded": {
+								"1": [
+									"detect evil and good",
+									"thunderwave"
+								],
+								"2": [
+									"phantasmal force",
+									"gust of wind"
+								],
+								"3": [
+									"create food and water",
+									"wind wall"
+								],
+								"4": [
+									"phantasmal killer",
+									"greater invisibility"
+								],
+								"5": [
+									"creation",
+									"seeming"
+								],
+								"9": [
+									"wish"
+								]
+							}
+						},
+						{
+							"expanded": {
+								"1": [
+									"detect evil and good",
+									"burning hands"
+								],
+								"2": [
+									"phantasmal force",
+									"scorching ray"
+								],
+								"3": [
+									"create food and water",
+									"fireball"
+								],
+								"4": [
+									"phantasmal killer",
+									"fire shield"
+								],
+								"5": [
+									"creation",
+									"flame strike"
+								],
+								"9": [
+									"wish"
+								]
+							}
+						},
+						{
+							"expanded": {
+								"1": [
+									"detect evil and good",
+									"fog cloud"
+								],
+								"2": [
+									"phantasmal force",
+									"blur"
+								],
+								"3": [
+									"create food and water",
+									"sleet storm"
+								],
+								"4": [
+									"phantasmal killer",
+									"control water"
+								],
+								"5": [
+									"creation",
+									"cone of cold"
+								],
+								"9": [
+									"wish"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"The Genie|Warlock||Genie|TCE|1",
+						"Elemental Gift|Warlock||Genie|TCE|6",
+						"Sanctuary Vessel|Warlock||Genie|TCE|10",
+						"Limited Wish|Warlock||Genie|TCE|14"
 					]
 				}
 			],
@@ -1426,6 +1514,7 @@
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 1,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 1st-level warlock feature (enhances Pact Magic)}",
 				"Whenever you finish a long rest, you can replace one spell you learned from this Pact Magic feature with another spell from the warlock spell list. The new spell must be the same level as the spell you replace."
@@ -1484,6 +1573,10 @@
 						{
 							"type": "refOptionalfeature",
 							"optionalfeature": "Pact of the Talisman|UAClassFeatureVariants"
+						},
+						{
+							"type": "refOptionalfeature",
+							"optionalfeature": "Pact of the Talisman|TCE"
 						}
 					]
 				}
@@ -1503,12 +1596,34 @@
 			]
 		},
 		{
+			"name": "Eldritch Versatility",
+			"source": "TCE",
+			"page": 70,
+			"className": "Warlock",
+			"classSource": "PHB",
+			"level": 4,
+			"isClassFeatureVariant": true,
+			"entries": [
+				"{@i 4th-level warlock {@variantrule optional class features|tce|optional feature}}",
+				"Whenever you reach a level in this class that grants the Ability Score Improvement feature, you can do one of the following, representing a change of focus in your occult studies:",
+				{
+					"type": "list",
+					"items": [
+						"Replace one cantrip you learned from this class's Pact Magic feature with another cantrip from the {@filter warlock spell list|spells|level=0|class=Warlock}.",
+						"Replace the option you chose for the Pact Boon feature with one of that feature's other options.",
+						"If you're 12th level or higher, replace one spell from your Mystic Arcanum feature with another warlock spell of the same level. If this change makes you ineligible for any of your Eldritch Invocations, you must also replace them now, choosing invocations for which you qualify."
+					]
+				}
+			]
+		},
+		{
 			"name": "Proficiency Versatility",
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1547,6 +1662,7 @@
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1599,6 +1715,7 @@
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1663,6 +1780,7 @@
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1702,6 +1820,7 @@
 			"className": "Warlock",
 			"classSource": "PHB",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1746,8 +1865,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1865,8 +1984,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -1986,8 +2105,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -2103,8 +2222,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -2198,52 +2317,55 @@
 			]
 		},
 		{
-			"name": "The Kraken (Livestream)",
-			"source": "Stream",
-			"page": 105,
+			"name": "The Fathomless",
+			"source": "TCE",
+			"page": 72,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
 			"level": 1,
 			"entries": [
-				"You made a pact with a Kraken somewhere in the world's ocean.",
+				"You have plunged into a pact with the deeps. An entity of the ocean, the Elemental Plane of Water, or another otherworldly sea now allows you to draw on its thalassic power. Is it merely using you to learn about terrestrial realms, or does it want you to open cosmic floodgates and drown the world?",
+				"Perhaps you were born into a generational cult that venerates the Fathomless and its spawn. Or you might have been shipwrecked and on the brink of drowning when your patron's grasp offered you a chance at life. Whatever the reason for your pact, the sea and its unknown depths call to you.",
+				"Entities of the deep that might empower a warlock include krakens, ancient water elementals, godlike hallucinations dreamed into being by kuo-toa, merfolk demigods, and sea hag covens.",
 				{
 					"type": "entries",
 					"name": "Expanded Spell List",
 					"entries": [
-						"The Kraken lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
+						"{@i 1st-level Fathomless feature}",
+						"The Fathomless lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
 						{
 							"type": "table",
-							"caption": "Kraken Patron Expanded Spells",
+							"caption": "Fathomless Expanded Spells",
 							"colLabels": [
 								"Spell Level",
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
 									"1st",
-									"{@spell thunderwave}, {@spell create or destroy water}"
+									"{@spell create or destroy water}, {@spell thunderwave}"
 								],
 								[
 									"2nd",
-									"{@spell augury}, {@spell gust of wind}"
+									"{@spell gust of wind}, {@spell silence}"
 								],
 								[
 									"3rd",
-									"{@spell call lightning}, {@spell water breathing}"
+									"{@spell lightning bolt}, {@spell sleet storm}"
 								],
 								[
 									"4th",
-									"{@spell evard's black tentacles}, {@spell control water}"
+									"{@spell control water}, {@spell summon elemental|tce} (water only)"
 								],
 								[
 									"5th",
-									"{@spell commune with nature}, {@spell cone of cold}"
+									"{@spell Bigby's hand} (appears as a tentacle), {@spell cone of cold}"
 								]
 							]
 						}
@@ -2251,239 +2373,356 @@
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Grasp of the Kraken|Warlock||Kraken (Stream)|Stream|1"
+					"subclassFeature": "Tentacle of the Deeps|Warlock||Fathomless|TCE|1"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Gift of the Sea|Warlock||Fathomless|TCE|1"
 				}
 			]
 		},
 		{
-			"name": "Grasp of the Kraken",
-			"source": "Stream",
-			"page": 105,
+			"name": "Gift of the Sea",
+			"source": "TCE",
+			"page": 72,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
 			"level": 1,
 			"header": 1,
 			"entries": [
-				"Starting at 1st level, you gain the ability to call forth spectral tentacles that grab at your foes. As an action, pick a point that you can see within 60 ft. of you. A horde of grasping tendrils appears at that point. Creatures of your choice within 10 ft. of that point must make a Strength saving throw against your Warlock spell save DC. Creatures that fail their saving throws are {@condition grappled} for 1 minute or until you use this ability again. The spectral tentacle's Strength ({@skill Athletics}) bonus is 2 + your proficiency bonus and its reach is 10 feet."
+				"{@i 1st-level Fathomless feature}",
+				"You gain a swimming speed of 40 feet, and you can breathe underwater."
 			]
 		},
 		{
-			"name": "Inky Escape",
-			"source": "Stream",
-			"page": 105,
+			"name": "Tentacle of the Deeps",
+			"source": "TCE",
+			"page": 72,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"{@i 1st-level Fathomless feature}",
+				"You can magically summon a spectral tentacle that strikes at your foes. As a bonus action, you create a 10-foot-long tentacle at a point you can see within 60 feet of you. The tentacle lasts for 1 minute or until you use this feature to create another tentacle.",
+				"When you create the tentacle, you can make a melee spell attack against one creature within 10 feet of it. On a hit, the target takes {@damage 1d8} cold damage, and its speed is reduced by 10 feet until the start of your next turn. When you reach 10th level in this class, the damage increases to {@dice 2d8}.",
+				"As a bonus action on your turn, you can move the tentacle up to 30 feet and repeat the attack.",
+				"You can summon the tentacle a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+			]
+		},
+		{
+			"name": "Guardian Coil",
+			"source": "TCE",
+			"page": 72,
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"At 6th level, you gain the ability to call upon your patron to escape from your foes. As a reaction when you take damage, you can cast {@spell darkness} centered on a point within 5 ft. of you. The spell lasts until the end of your next turn, and it has no effect on your vision.",
-				"Once you use this ability, you cannot use it until you complete a short or long rest."
+				"{@i 6th-level Fathomless feature}",
+				"Your Tentacle of the Deeps can defend you and others, interposing itself between them and harm. When you or a creature you can see takes damage while within 10 feet of the tentacle, you can use your reaction to choose one of those creatures and reduce the damage to that creature by {@dice 1d8}. When you reach 10th level in this class, the damage reduced by the tentacle increases to {@dice 2d8}."
 			]
 		},
 		{
-			"name": "Scion of the Depths",
-			"source": "Stream",
-			"page": 105,
+			"name": "Oceanic Soul",
+			"source": "TCE",
+			"page": 72,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
+			"level": 6,
+			"header": 2,
+			"entries": [
+				"{@i 6th-level Fathomless feature}",
+				"You are now even more at home in the depths. You gain resistance to cold damage. In addition, when you are fully submerged, any creature that is also fully submerged can understand your speech, and you can understand theirs."
+			]
+		},
+		{
+			"name": "Grasping Tentacles",
+			"source": "TCE",
+			"page": 72,
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
 			"level": 10,
 			"header": 2,
 			"entries": [
-				"Starting at 10th level, your patron accepts you into his inner court of servitors. You gain the ability to breathe water, and a swim speed equal to your normal speed.",
-				"You gain immunity to lightning damage. When your immunity reduces damage from an effect to 0, as a reaction you can cause creatures of your choice that you can see within 30 ft. of you to take lightning damage equal to your Charisma modifier + your proficiency bonus."
+				"{@i 10th-level Fathomless feature}",
+				"You learn the spell {@spell Evard's black tentacles}. It counts as a warlock spell for you, but it doesn't count against the number of spells you know. You can also cast it once without a spell slot, and you regain the ability to do so when you finish a long rest.",
+				"Whenever you cast this spell, your patron's magic bolsters you, granting you a number of temporary hit points equal to your warlock level. Moreover, damage can't break your concentration on this spell."
 			]
 		},
 		{
-			"name": "Unleash the Kraken",
-			"source": "Stream",
-			"page": 105,
+			"name": "Fathomless Plunge",
+			"source": "TCE",
+			"page": 72,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
+			"subclassShortName": "Fathomless",
+			"subclassSource": "TCE",
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"At 14th level, you gain the ability to call upon your patron for aid. As an action, you open a portal at a point you can see within 30 ft. of you and choose one of the following effects."
+				"{@i 14th-level Fathomless feature}",
+				"You can magically open temporary conduits to watery destinations. As an action, you can teleport yourself and up to five other willing creatures that you can see within 30 feet of you. Amid a whirl of tentacles, you all vanish and then reappear up to 1 mile away in a body of water you've seen (pond size or larger) or within 30 feet of it, each of you appearing in an unoccupied space within 30 feet of the others.",
+				"Once you use this feature, you can't use it again until you finish a short or long rest."
 			]
 		},
 		{
-			"name": "Fury",
-			"source": "Stream",
-			"page": 105,
+			"name": "The Genie",
+			"source": "TCE",
+			"page": 73,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
-			"level": 14,
-			"header": 3,
-			"entries": [
-				"The tentacles slam into your foes. Pick up to 5 creatures that you can see within 30 ft. of the portal. Those creatures must make Dexterity saving throws against your Warlock spell save DC. Creatures that fail their saving throws take {@damage 10d6} bludgeoning damage and are {@condition restrained} for 1 minute. Creatures that succeed take half the bludgeoning damage and are not {@condition restrained}. On its turn, a {@condition restrained} creature can use its action to attempt a DC 15 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to end its {@condition restrained} condition."
-			]
-		},
-		{
-			"name": "Transport",
-			"source": "Stream",
-			"page": 105,
-			"className": "Warlock",
-			"classSource": "PHB",
-			"subclassShortName": "Kraken (Stream)",
-			"subclassSource": "Stream",
-			"level": 14,
-			"header": 3,
-			"entries": [
-				"You and up to 5 creatures of your choosing that you can see are grasped by tentacles that emerge from the portal. A second portal opens at a point of your choice within 100 miles that you have visited in the past 24 hours, depositing you and your chosen allies there."
-			]
-		},
-		{
-			"name": "Lolth (Twitter)",
-			"source": "Twitter",
-			"page": 105,
-			"className": "Warlock",
-			"classSource": "PHB",
-			"subclassShortName": "Lolth (Twitter)",
-			"subclassSource": "Twitter",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
 			"level": 1,
 			"entries": [
-				"Your patron is Lolth, queen of the dark fey. She rules over the drow that dwell within the Feywild, and commands the loyalty of all hags. Evil fey pay her respect, though not all obey her edicts. She is a sworn enemy of Torog, due to the constant threat he and his minions pose to her Underdark domains.",
-				{
-					"type": "entries",
-					"name": "Expanded Spell List",
-					"entries": [
-						"Lolth lets you choose from an expanded list of spells when you learn a warlock spell. The following spells are added to the warlock spell list for you.",
-						{
-							"type": "table",
-							"caption": "Lolth Expanded Spells",
-							"colLabels": [
-								"Spell Level",
-								"Spells"
-							],
-							"colStyles": [
-								"col-3 text-center",
-								"col-9"
-							],
-							"rows": [
-								[
-									"1st",
-									"{@spell faerie fire}, {@spell jump}"
-								],
-								[
-									"2nd",
-									"{@spell darkness}, {@spell web}"
-								],
-								[
-									"3rd",
-									"{@spell fear}, {@spell vampiric touch}"
-								],
-								[
-									"4th",
-									"{@spell dimension door}, {@spell giant insect}"
-								],
-								[
-									"5th",
-									"{@spell cloudkill}, {@spell hold monster}"
-								]
-							]
-						}
-					]
-				},
-				{
-					"type": "refSubclassFeature",
-					"subclassFeature": "Dark Queen's Servitor|Warlock||Lolth (Twitter)|Twitter|1"
-				}
-			]
-		},
-		{
-			"name": "Dark Queen's Servitor",
-			"source": "Twitter",
-			"page": 105,
-			"className": "Warlock",
-			"classSource": "PHB",
-			"subclassShortName": "Lolth (Twitter)",
-			"subclassSource": "Twitter",
-			"level": 1,
-			"header": 1,
-			"entries": [
-				"Starting at 1st level, you gain the ability to transform into Lolth's most beloved servitor, a giant spider. As a bonus action you turn into a spider. You gain a +2 bonus to AC. You gain 3 temporary hit points per level. You gain a climb speed equal to your normal speed. You can climb difficult surfaces, such as along a ceiling, without needing to make a check. You gain a bite attack. You are proficient with this attack and it inflicts poison damage based on your level. You can use your choice of Strength or Dexterity to modify your bite attack's attack and damage rolls. While in this form, you lack hands and cannot do anything that normally requires them. However, you can cast spells but can only cast the ones listed on your expanded spell list for Lolth.",
-				"Once you use this ability, you cannot use it again until you complete a short or long rest.",
+				"You have made a pact with one of the rarest kinds of genie, a noble genie. Such entities rule vast fiefs on the Elemental Planes and have great influence over lesser genies and elemental creatures. Noble genies are varied in their motivations, but most are arrogant and wield power that rivals that of lesser deities. They delight in turning the table on mortals, who often bind genies into servitude, and readily enter into pacts that expand their reach.",
+				"You choose your patron's kind or determine it randomly, using the Genie Kind table.",
 				{
 					"type": "table",
-					"caption": "Spider Form Bite Damage",
+					"caption": "Genie Kind",
 					"colLabels": [
-						"Level",
-						"Damage"
+						"d4",
+						"Kind",
+						"Element"
 					],
 					"colStyles": [
-						"col-6 text-center",
-						"col-6 text-center"
+						"col-2 text-center",
+						"col-5",
+						"col-5"
 					],
 					"rows": [
 						[
-							"1st\u20144th",
-							"{@dice 1d10} poison"
+							1,
+							"{@creature Dao}",
+							"Earth"
 						],
 						[
-							"5th\u201410th",
-							"{@dice 2d10} poison"
+							2,
+							"{@creature Djinni}",
+							"Air"
 						],
 						[
-							"11th\u201416th",
-							"{@dice 3d10} poison"
+							3,
+							"{@creature Efreeti}",
+							"Fire"
 						],
 						[
-							"17th+",
-							"{@dice 4d10} poison"
+							4,
+							"{@creature Marid}",
+							"Water"
 						]
+					]
+				},
+				{
+					"name": "Expanded Spell List",
+					"type": "entries",
+					"entries": [
+						"{@i 1st-level Genie feature}",
+						"The Genie lets you choose from an expanded list of spells when you learn a warlock spell. The Genie Expanded Spells table shows the genie spells that are added to the warlock spell list for you, along with the spells associated in the table with your patron's kind: dao, djinni, efreeti, or marid.",
+						{
+							"type": "table",
+							"caption": "Genie Expanded Spells",
+							"colLabels": [
+								"Spell Level",
+								"Genie Spells",
+								"Dao Spells",
+								"Djinni Spells",
+								"Efreeti Spells",
+								"Marid Spells"
+							],
+							"colStyles": [
+								"col-1 text-center",
+								"col-2-2",
+								"col-2-2",
+								"col-2-2",
+								"col-2-2",
+								"col-2-2"
+							],
+							"rows": [
+								[
+									"1st",
+									"{@spell detect evil and good}",
+									"{@spell sanctuary}",
+									"{@spell thunderwave}",
+									"{@spell burning hands}",
+									"{@spell fog cloud}"
+								],
+								[
+									"2nd",
+									"{@spell phantasmal force}",
+									"{@spell spike growth}",
+									"{@spell gust of wind}",
+									"{@spell scorching ray}",
+									"{@spell blur}"
+								],
+								[
+									"3rd",
+									"{@spell create food and water}",
+									"{@spell meld into stone}",
+									"{@spell wind wall}",
+									"{@spell fireball}",
+									"{@spell sleet storm}"
+								],
+								[
+									"4th",
+									"{@spell phantasmal killer}",
+									"{@spell stone shape}",
+									"{@spell greater invisibility}",
+									"{@spell fire shield}",
+									"{@spell control water}"
+								],
+								[
+									"5th",
+									"{@spell creation}",
+									"{@spell wall of stone}",
+									"{@spell seeming}",
+									"{@spell flame strike}",
+									"{@spell cone of cold}"
+								],
+								[
+									"9th",
+									"{@spell wish}",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014"
+								]
+							]
+						}
+					]
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Genie's Vessel|Warlock||Genie|TCE|1"
+				}
+			]
+		},
+		{
+			"name": "Genie's Vessel",
+			"source": "TCE",
+			"page": 73,
+			"className": "Warlock",
+			"classSource": "PHB",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
+			"level": 1,
+			"header": 1,
+			"entries": [
+				"{@i 1st-level Genie feature}",
+				"Your patron gifts you a magical vessel that grants you a measure of the genie's power. The vessel is a Tiny object, and you can use it as a spellcasting focus for your warlock spells. You decide what the object is, or you can determine what it is randomly by rolling on the Genie's Vessel table.",
+				{
+					"type": "table",
+					"caption": "Genie's Vessel",
+					"colLabels": [
+						"d6",
+						"Vessel"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"1",
+							"Oil lamp"
+						],
+						[
+							"2",
+							"Urn"
+						],
+						[
+							"3",
+							"Ring with a compartment"
+						],
+						[
+							"4",
+							"Stoppered bottle"
+						],
+						[
+							"5",
+							"Hollow statuette"
+						],
+						[
+							"6",
+							"Ornate lantern"
+						]
+					]
+				},
+				"While you are touching the vessel, you can use it in the following ways:",
+				{
+					"type": "options",
+					"style": "list-hang-notitle",
+					"entries": [
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Bottled Respite|Warlock|TCE|Genie|TCE|1"
+						},
+						{
+							"type": "refSubclassFeature",
+							"subclassFeature": "Genie's Wrath|Warlock|TCE|Genie|TCE|1"
+						}
 					]
 				}
 			]
 		},
 		{
-			"name": "Poisoned Beauty",
-			"source": "Twitter",
-			"page": 105,
+			"name": "Elemental Gift",
+			"source": "TCE",
+			"page": 73,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Lolth (Twitter)",
-			"subclassSource": "Twitter",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
 			"level": 6,
 			"header": 2,
 			"entries": [
-				"At 6th level, you gain the ability to use a shard of Lolth's alien beauty, causing other creatures to become enraptured by your appearance. As a bonus action, pick a creature you can see. That creature must succeed on a Charisma saving throw or become {@condition charmed} by you. While {@condition charmed}, it also gains vulnerability to poison damage. This benefit lasts for one minute or until you or your allies damages the creature. Once you use this ability, you cannot use it again until you complete a short or long rest."
+				"{@i 6th-level Genie feature}",
+				"You begin to take on characteristics of your patron's kind. You now have resistance to a damage type determined by your patron's kind: bludgeoning (dao), thunder (djinni), fire (efreeti), or cold (marid).",
+				"In addition, as a bonus action, you can give yourself a flying speed of 30 feet that lasts for 10 minutes, during which you can hover. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
 			]
 		},
 		{
-			"name": "Spider Queen's Chosen",
-			"source": "Twitter",
-			"page": 105,
+			"name": "Sanctuary Vessel",
+			"source": "TCE",
+			"page": 73,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Lolth (Twitter)",
-			"subclassSource": "Twitter",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
 			"level": 10,
 			"header": 2,
 			"entries": [
-				"At 10th level, Lolth extends her protection to you while you are in her favored form. You gain resistance to bludgeoning, piercing, and slashing damage from non-magical sources while in your spider form."
+				"{@i 10th-level Genie feature}",
+				"When you enter your Genie's Vessel via the Bottled Respite feature, you can now choose up to five willing creatures that you can see within 30 feet of you, and the chosen creatures are drawn into the vessel with you.",
+				"As a bonus action, you can eject any number of creatures from the vessel, and everyone is ejected if you leave or die or if the vessel is destroyed.",
+				"In addition, anyone (including you) who remains within the vessel for at least 10 minutes gains the benefit of finishing a short rest, and anyone can add your proficiency bonus to the number of hit points they regain if they spend any Hit Dice as part of a short rest there."
 			]
 		},
 		{
-			"name": "Kiss of the Spider Queen",
-			"source": "Twitter",
-			"page": 105,
+			"name": "Limited Wish",
+			"source": "TCE",
+			"page": 73,
 			"className": "Warlock",
 			"classSource": "PHB",
-			"subclassShortName": "Lolth (Twitter)",
-			"subclassSource": "Twitter",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
 			"level": 14,
 			"header": 2,
 			"entries": [
-				"Starting at 14th level, you can channel Lolth's malevolence into a deadly kiss. As an action, you touch a creature within your reach. The target takes {@damage 12d10} poison or psychic damage (your choice), or half as much on a successful Constitution save. A creature {@condition charmed} by you has disadvantage on its saving throw. After you use this ability, you cannot cast it again until you complete a long rest."
+				"{@i 14th-level Genie feature}",
+				"You entreat your patron to grant you a small wish. As an action, you can speak your desire to your Genie's Vessel, requesting the effect of one spell that is 6th level or lower and has a casting time of 1 action. The spell can be from any class's spell list, and you don't need to meet the requirements in that spell, including costly components; the spell simply takes effect as part of this action.",
+				"Once you use this feature, you can't use it again until you finish {@dice 1d4} long rests."
 			]
 		},
 		{
@@ -2511,8 +2750,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -2713,8 +2952,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3148,8 +3387,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3265,8 +3504,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3401,8 +3640,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3541,8 +3780,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3734,8 +3973,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3852,8 +4091,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -3980,7 +4219,7 @@
 			"subclassSource": "UAWarlockAndWizard",
 			"level": 1,
 			"entries": [
-				"You patron is the Raven Queen, a mysterious being who rules the Shadowfell from a palace of ice deep within that dread realm. The Raven Queen watches over the world, anticipating each creature's death and ensuring that it meets its end at the proscribed time and place. As the ruler of the Shadowfell, she dwells in a decayed, dark reflection of the world. Her ability to reach into the world is limited. Thus, she turns to mortal warlocks to serve her will. Warlocks sworn to the Raven Queen receive visions and whispers from her in their dreams, sending them on quests and warning them of impending dangers.",
+				"Your patron is the Raven Queen, a mysterious being who rules the Shadowfell from a palace of ice deep within that dread realm. The Raven Queen watches over the world, anticipating each creature's death and ensuring that it meets its end at the proscribed time and place. As the ruler of the Shadowfell, she dwells in a decayed, dark reflection of the world. Her ability to reach into the world is limited. Thus, she turns to mortal warlocks to serve her will. Warlocks sworn to the Raven Queen receive visions and whispers from her in their dreams, sending them on quests and warning them of impending dangers.",
 				"The Raven Queen's followers are expected to serve her will in the world. She concerns herself with ensuring that those fated to die pass from the world as expected, and bids her agents to defeat those who seek to cheat death through undeath or other imitations of immortality. She hates intelligent undead and expects her followers to strike them down, whereas mindless undead such as skeletons and zombies are little more than stumbling automatons in her eyes.",
 				{
 					"type": "entries",
@@ -3995,8 +4234,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -4114,8 +4353,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -4250,8 +4489,8 @@
 								"Spells"
 							],
 							"colStyles": [
-								"col-3 text-center",
-								"col-9"
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -4368,6 +4607,34 @@
 			"header": 2,
 			"entries": [
 				"Starting at 14th level, you can spread your Hexblade's Curse from a slain creature to another creature. When the creature cursed by your Hexblade's Curse dies, you can apply the curse to a different creature you can see within 30 feet of you, provided you aren't {@condition incapacitated}. When you apply the curse in this way, you don't regain hit points from the death of the previously cursed creature."
+			]
+		},
+		{
+			"name": "Bottled Respite",
+			"source": "TCE",
+			"page": 73,
+			"className": "Warlock",
+			"classSource": "TCE",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
+			"level": 1,
+			"entries": [
+				"As an action, you can magically vanish and enter your vessel, which remains in the space you left. The interior of the vessel is an extradimensional space in the shape of a 20-foot-radius cylinder, 20 feet high, and resembles your vessel. The interior is appointed with cushions and low tables and is a comfortable temperature. While inside, you can hear the area around your vessel as if you were in its space. You can remain inside the vessel up to a number of hours equal to twice your proficiency bonus. You exit the vessel early if you use a bonus action to leave, if you die, or if the vessel is destroyed. When you exit the vessel, you appear in the unoccupied space closest to it. Any objects left in the vessel remain there until carried out, and if the vessel is destroyed, every object stored there harmlessly appears in the unoccupied spaces closest to the vessel's former space. Once you enter the vessel, you can't enter again until you finish a long rest."
+			]
+		},
+		{
+			"name": "Genie's Wrath",
+			"source": "TCE",
+			"page": 73,
+			"className": "Warlock",
+			"classSource": "TCE",
+			"subclassShortName": "Genie",
+			"subclassSource": "TCE",
+			"level": 1,
+			"entries": [
+				"Once during each of your turns when you hit with an attack roll, you can deal extra damage to the target equal to your proficiency bonus. The type of this damage is determined by your patron: bludgeoning (dao), thunder (djinni), fire (efreeti), or cold (marid).",
+				"The vessel's AC equals your spell save DC. Its hit points equal your warlock level plus your proficiency bonus, and it is immune to poison and psychic damage.",
+				"If the vessel is destroyed or you lose it, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and the previous vessel is destroyed if it still exists. The vessel vanishes in a flare of elemental power when you die."
 			]
 		}
 	]

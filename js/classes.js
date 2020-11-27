@@ -13,7 +13,8 @@ class ClassesPage extends BaseComponent {
 
 	static getBtnTitleSubclass (sc) {
 		const titlePartReprint = sc.isReprinted ? " (this subclass has been reprinted in a more recent source)" : "";
-		return `${sc.name}; Source: ${Parser.sourceJsonToFull(sc.source)}${sc.page ? `, page ${sc.page}` : ""}${titlePartReprint}`;
+		const sourcePart = Renderer.utils.getSourceAndPageText(sc);
+		return `${sc.name}; Source: ${sourcePart}${titlePartReprint}`;
 	}
 
 	static getBaseShortName (sc) {
@@ -42,16 +43,24 @@ class ClassesPage extends BaseComponent {
 		this._fnTableHandleFilterChange = null;
 		this._$wrpOutline = null;
 		this._fnOutlineHandleFilterChange = null;
-		this._$trsContent = [];
 		this._$trNoContent = null;
 
 		// region alternate views
 		this._subclassComparisonView = null;
 		this._classBookView = null;
 		// endregion
+
+		// region Active class data filtering
+		this._activeClassDataFiltered = null;
+		// endregion
 	}
 
-	get activeClass () { return this._dataList[this._classId._]; }
+	get activeClass () {
+		if (this._activeClassDataFiltered) return this._activeClassDataFiltered;
+		return this.activeClassRaw;
+	}
+	get activeClassRaw () { return this._dataList[this._classId._]; }
+
 	get filterBox () { return this._pageFilter.filterBox; }
 
 	async pOnLoad () {
@@ -66,7 +75,7 @@ class ClassesPage extends BaseComponent {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		this._addData(data);
@@ -75,7 +84,7 @@ class ClassesPage extends BaseComponent {
 			filterBox: this.filterBox,
 			sourceFilter: this._pageFilter.sourceFilter,
 			list: this._list,
-			pHandleBrew: this._pHandleBrew.bind(this)
+			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -130,11 +139,11 @@ class ClassesPage extends BaseComponent {
 		if (isAddedAnyClass || isAddedAnySubclass) {
 			this._list.update();
 			this.filterBox.render();
-			this._handleFilterChange();
+			this._handleFilterChange(false);
 
 			ListUtil.setOptions({
 				itemList: this._dataList,
-				primaryLists: [this._list]
+				primaryLists: [this._list],
 			});
 		}
 
@@ -188,7 +197,7 @@ class ClassesPage extends BaseComponent {
 			if (!cls) {
 				JqueryUtil.doToast({
 					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_PHB}`,
-					type: "danger"
+					type: "danger",
 				});
 				return;
 			}
@@ -380,7 +389,7 @@ class ClassesPage extends BaseComponent {
 
 		const hashParts = [
 			primaryHash,
-			stateHash
+			stateHash,
 		].filter(Boolean);
 		return Hist.util.getCleanHash(hashParts.join(HASH_PART_SEP));
 	}
@@ -424,28 +433,76 @@ class ClassesPage extends BaseComponent {
 			cls.name,
 			{
 				hash,
-				source
+				source,
 			},
 			{
 				$lnk,
 				entity: cls,
 				uniqueId: cls.uniqueId ? cls.uniqueId : clsI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 	}
 
-	_handleFilterChange () {
+	_doGenerateFilteredActiveClassData () {
 		const f = this.filterBox.getValues();
 
-		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
+		const cpyCls = MiscUtil.copy(this.activeClassRaw);
 
-		this._$trsContent.forEach($tr => {
-			$tr.find(`[data-source]`).each((i, e) => {
-				const source = e.dataset.source;
-				$(e).toggleClass("hidden", !this.filterBox.toDisplay(f, source, []));
-			})
+		const walker = MiscUtil.getWalker({
+			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
+			isAllowDeleteObjects: true,
+			isDepthFirst: true,
 		});
+
+		cpyCls.classFeatures = cpyCls.classFeatures.map(lvlFeatures => {
+			return walker.walk(
+				lvlFeatures,
+				{
+					object: (obj) => {
+						if (!obj.source) return obj;
+						const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+						return this.filterBox.toDisplay(f, obj.source, [], fText) ? obj : null;
+					},
+					array: (arr) => {
+						return arr.filter(Boolean);
+					},
+				},
+			);
+		});
+
+		(cpyCls.subclasses || []).forEach(sc => {
+			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
+				return walker.walk(
+					lvlFeatures,
+					{
+						object: (obj) => {
+							if (!obj.source) return obj;
+							const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+							return this.filterBox.toDisplay(f, obj.source, [], fText) ? obj : null;
+						},
+						array: (arr) => {
+							return arr.filter(Boolean);
+						},
+					},
+				);
+			});
+		});
+
+		this._activeClassDataFiltered = cpyCls;
+	}
+
+	_handleFilterChange (isFilterValueChange) {
+		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
+		//   re-render.
+		if (isFilterValueChange) {
+			this._doGenerateFilteredActiveClassData();
+			this._pDoSyncrinizedRender();
+			return;
+		}
+
+		const f = this.filterBox.getValues();
+		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity, [], null));
 
 		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
@@ -456,10 +513,10 @@ class ClassesPage extends BaseComponent {
 			"_state",
 			"__state",
 			this.activeClass.subclasses
-				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fMisc))
+				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fMisc, null))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
-				.mergeMap(stateKey => ({[stateKey]: false}))
+				.mergeMap(stateKey => ({[stateKey]: false})),
 		);
 	}
 
@@ -468,23 +525,29 @@ class ClassesPage extends BaseComponent {
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
 		this._addHookAll("classId", async () => {
-			await this._pLock("render");
-			try {
-				await this._pDoRender();
-			} finally {
-				this._unlock("render");
-			}
+			this._doGenerateFilteredActiveClassData();
+			await this._pDoSyncrinizedRender();
 		});
 
+		this._doGenerateFilteredActiveClassData();
 		await this._pDoRender();
+	}
+
+	async _pDoSyncrinizedRender () {
+		await this._pLock("render");
+		try {
+			await this._pDoRender();
+		} finally {
+			this._unlock("render");
+		}
 	}
 
 	async _pDoRender () {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
-		$(this.filterBox)
+		this.filterBox
 			.off(FilterBox.EVNT_VALCHANGE)
-			.on(FilterBox.EVNT_VALCHANGE, this._handleFilterChange.bind(this));
+			.on(FilterBox.EVNT_VALCHANGE, () => this._handleFilterChange(true));
 
 		// region bind list updates
 		const hkSetHref = () => {
@@ -577,7 +640,7 @@ class ClassesPage extends BaseComponent {
 		});
 		// endregion
 
-		this._handleFilterChange();
+		this._handleFilterChange(false);
 	}
 
 	_isAnySubclassActive () { return !!this._getActiveSubclasses().length; }
@@ -673,7 +736,7 @@ class ClassesPage extends BaseComponent {
 						$wrpLink: $$`<div class="inline-block">${$lnk}${$dispComma}</div>`,
 						$dispComma,
 						source: it.source,
-						isHidden: false
+						isHidden: false,
 					};
 				});
 
@@ -708,7 +771,7 @@ class ClassesPage extends BaseComponent {
 					<td>${metasFeatureLinks.length ? metasFeatureLinks.map(it => it.$wrpLink) : `\u2014`}</td>
 					${$ptTableGroups}
 				</tr>`,
-				metasFeatureLinks
+				metasFeatureLinks,
 			}
 		});
 
@@ -716,7 +779,7 @@ class ClassesPage extends BaseComponent {
 			metasTblRows.forEach(metaTblRow => {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
-						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, []);
+						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, [], null);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
 					}
@@ -771,7 +834,7 @@ class ClassesPage extends BaseComponent {
 
 			const allEntries = [
 				abilityPart ? `{@b Ability Score Minimum:} ${abilityPart}` : null,
-				...requirements.entries || []
+				...requirements.entries || [],
 			].filter(Boolean);
 
 			return $$`<div>${Renderer.get().setFirstSection(true).render({type: "section", entries: allEntries})}</div>`
@@ -822,7 +885,7 @@ class ClassesPage extends BaseComponent {
 			const rendered = [
 				equip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "",
 				equip.default && equip.default.length ? `<ul class="pl-4"><li>${equip.default.map(it => Renderer.get().render(it)).join("</li><li>")}</ul>` : "",
-				equip.goldAlternative != null ? `<p>Alternatively, you may start with ${Renderer.get().render(equip.goldAlternative)} gp to buy your own equipment.</p>` : ""
+				equip.goldAlternative != null ? `<p>Alternatively, you may start with ${Renderer.get().render(equip.goldAlternative)} gp to buy your own equipment.</p>` : "",
 			].filter(Boolean).join("");
 			const $dispRendered = $(`<div/>`);
 
@@ -936,9 +999,25 @@ class ClassesPage extends BaseComponent {
 
 		// region features/fluff
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {text: "Features", activeClass: "cls__btn-cf--active", isInverted: true}).title("Toggle Class Features");
+
+		const $btnToggleFeatureVariants = $(`<button class="btn btn-xs btn-default" title="Toggle Class Feature Options/Variants">Variants</button>`)
+			.click(() => {
+				const f = this.filterBox.getValues();
+				const isClassFeatureVariantsDisplayed = f[this._pageFilter.optionsFilter.header].isClassFeatureVariant;
+				this._pageFilter.optionsFilter.setValue("isClassFeatureVariant", !isClassFeatureVariantsDisplayed);
+				this._pageFilter.filterBox.fireChangeEvent();
+			});
+		const hkUpdateBtnFeatureVariants = () => {
+			const f = this.filterBox.getValues();
+			const isClassFeatureVariantsDisplayed = f[this._pageFilter.optionsFilter.header].isClassFeatureVariant;
+			$btnToggleFeatureVariants.toggleClass("active", isClassFeatureVariantsDisplayed);
+		};
+		this.filterBox.on(FilterBox.EVNT_VALCHANGE, () => hkUpdateBtnFeatureVariants());
+		hkUpdateBtnFeatureVariants();
+
 		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Class Info");
 
-		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
+		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFeatureVariants}${$btnToggleFluff}</div>`.appendTo($wrp);
 		// endregion
 
 		// region subclasses
@@ -958,7 +1037,7 @@ class ClassesPage extends BaseComponent {
 			-1,
 			$dispCount,
 			null,
-			{isAlwaysVisible: true}
+			{isAlwaysVisible: true},
 		));
 
 		this._listSubclass.on("updated", () => {
@@ -1014,7 +1093,7 @@ class ClassesPage extends BaseComponent {
 		const filterSets = [
 			{name: "View Official", subHashes: [], isClearSources: false},
 			{name: "View Most Recent", subHashes: [], isClearSources: true},
-			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true}
+			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true},
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
@@ -1032,7 +1111,7 @@ class ClassesPage extends BaseComponent {
 			this.filterBox.setFromSubHashes([
 				...boxSubhashes,
 				...cpySubHashes,
-				`flopsource:extend`
+				`flopsource:extend`,
 			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
@@ -1050,7 +1129,7 @@ class ClassesPage extends BaseComponent {
 				this._proxyAssign("state", "_state", "__state", cls.subclasses.mergeMap(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})));
 			});
 
-		$(this.filterBox).on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
+		this.filterBox.on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
 		this._handleSubclassFilterChange();
 		// Remove the temporary "hidden" class used to prevent popping
 		this._listSubclass.items.forEach(it => it.ele.removeClass("hidden"));
@@ -1092,7 +1171,8 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
-				li.data.entity._fMisc
+				li.data.entity._fMisc,
+				null,
 			);
 		});
 	}
@@ -1137,13 +1217,13 @@ class ClassesPage extends BaseComponent {
 				source: sc.source,
 				shortName: sc.shortName,
 				stateKey,
-				mod
+				mod,
 			},
 			{
 				isExcluded,
 				entity: sc,
-				uniqueId: sc.uniqueId ? sc.uniqueId : ix
-			}
+				uniqueId: sc.uniqueId ? sc.uniqueId : ix,
+			},
 		);
 	}
 
@@ -1190,16 +1270,16 @@ class ClassesPage extends BaseComponent {
 			$wrpBody.empty();
 			const filterValues = this.filterBox.getValues();
 
-			const makeItem = (depthData, scCssClass) => {
+			const makeItem = (depthData, additionalCssClasses) => {
 				// Skip inline entries
 				if (depthData.depth >= 2) return;
 				// Skip filtered sources
-				if (depthData.source && !this.filterBox.toDisplay(filterValues, depthData.source, [])) return;
+				if (depthData.source && !this.filterBox.toDisplay(filterValues, depthData.source, [], null)) return;
 
 				// If there was not a class specified, then this is not a subclass item, so we can color it with grellow as required
-				scCssClass = (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "") || scCssClass;
+				additionalCssClasses = additionalCssClasses || (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "");
 				const displayDepth = Math.min(depthData.depth + 1, 2);
-				$(`<div class="cls-nav__item cls-nav__item--depth-${displayDepth} ${scCssClass}">${depthData.name}</div>`)
+				$(`<div class="cls-nav__item cls-nav__item--depth-${displayDepth} ${additionalCssClasses}">${depthData.name}</div>`)
 					.click(() => {
 						const $it = $(`[data-title-index="${depthData.ixHeader}"]`);
 						if ($it.get()[0]) $it.get()[0].scrollIntoView();
@@ -1222,7 +1302,13 @@ class ClassesPage extends BaseComponent {
 					const depthData = MiscUtil.get(this._outlineData.classFeatures, ixLvl, ixFeature);
 
 					if (!this._state.isHideFeatures && depthData) {
-						depthData.filter(it => it.name).forEach(it => makeItem(it));
+						depthData.filter(it => it.name).forEach(it => {
+							// Workaround to match the renderer's output/CSS rule logic
+							if (it.isClassFeatureVariant) {
+								if (SourceUtil.isNonstandardSource(it.source)) makeItem(it, `cls-nav__item--spicy`);
+								else makeItem(it, `cls-nav__item--variant-feature`);
+							} else makeItem(it);
+						});
 					}
 
 					const activeScStateKeys = this._getActiveSubclasses(true);
@@ -1242,11 +1328,20 @@ class ClassesPage extends BaseComponent {
 								if (!scLvlFeatures) return;
 
 								const mod = ClassesPage.getSubclassCssMod(this.activeClass, sc);
-								const modClass = `cls-nav__item--sc-${mod}`;
+								const modClassBase = `cls-nav__item--sc-${mod}`;
 
 								scLvlFeatures.forEach((scFeature, ixScFeature) => {
 									const depthData = MiscUtil.get(this._outlineData, stateKey, ixScLvl, ixScFeature);
-									depthData.filter(it => it.name).map(it => makeItem(it, modClass));
+									depthData.filter(it => it.name).map(it => {
+										// Workaround to match the renderer's output/CSS rule logic
+										let modClass = modClassBase;
+										if (it.isClassFeatureVariant) {
+											if (SourceUtil.isNonstandardSource(it.source)) modClass += ` cls-nav__item--spicy`;
+											else modClass += ` cls-nav__item--variant-feature`;
+										}
+
+										makeItem(it, modClass)
+									});
 								});
 							});
 						}
@@ -1309,10 +1404,11 @@ class ClassesPage extends BaseComponent {
 									{
 										object: (obj) => {
 											if (!obj.source) return obj;
-											if (this._pageFilter.filterBox.toDisplay(filterValues, obj.source, [])) return obj;
+											const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+											if (this._pageFilter.filterBox.toDisplay(filterValues, obj.source, [], fText)) return obj;
 											return undefined; // If it shouldn't be displayed, delete it
-										}
-									}
+										},
+									},
 								)
 
 								Renderer.get().recursiveRender(cpy, renderStack);
@@ -1339,7 +1435,7 @@ class ClassesPage extends BaseComponent {
 				if (!numShown) $wrpContent.find(".cls-comp__hr-level").addClass("hidden");
 
 				return numShown;
-			}
+			},
 		});
 
 		const hkToggleScOverlay = async () => {
@@ -1386,9 +1482,16 @@ class ClassesPage extends BaseComponent {
 
 	_render_renderClassContent () {
 		const $content = $(`#pagecontent`).empty();
-		const cls = this._dataList[this._classId._];
+		const cls = this.activeClass;
 		this._outlineData = {};
-		this._$trsContent = [];
+
+		// Add extra classses to our features as we render them
+		Renderer.get().setFnGetStyleClasses(UrlUtil.PG_CLASSES, (entry) => {
+			if (!entry.source) return null;
+			if (!entry.isClassFeatureVariant) return null;
+			if (!SourceUtil.isNonstandardSource(entry.source) && entry.isClassFeatureVariant) return ["cls__variant-feature"];
+			return null;
+		});
 
 		$content.append(Renderer.utils.getBorderTr());
 
@@ -1408,7 +1511,6 @@ class ClassesPage extends BaseComponent {
 			});
 
 			const $trFluff = $(`<tr class="cls-main__cls-fluff"><td colspan="6"/></tr>`).fastSetHtml(stack).appendTo($content);
-			this._$trsContent.push($trFluff);
 			this._trackOutlineFluffData(depthArr);
 		}
 
@@ -1417,9 +1519,8 @@ class ClassesPage extends BaseComponent {
 			lvlFeatures.forEach((feature, ixFeature) => {
 				const depthArr = [];
 				const $trClassFeature = $(`<tr data-scroll-id="${ixLvl}-${ixFeature}" data-feature-type="class" class="${feature.gainSubclassFeature ? "cls-main__gain-sc-feature" : ""} cls-main__linked-titles"><td colspan="6"/></tr>`)
-					.fastSetHtml(Renderer.get().setDepthTracker(depthArr).render(feature))
+					.fastSetHtml(Renderer.get().setDepthTracker(depthArr, "isClassFeatureVariant").render(feature))
 					.appendTo($content);
-				this._$trsContent.push($trClassFeature);
 				this._trackOutlineCfData(ixLvl, ixFeature, depthArr);
 
 				if (feature.gainSubclassFeature) {
@@ -1439,16 +1540,15 @@ class ClassesPage extends BaseComponent {
 							const ptDate = ixScLvl === 0 && SourceUtil.isNonstandardSource(sc.source) && Parser.sourceJsonToDate(sc.source)
 								? Renderer.get().render(`{@note This subclass was published on ${MiscUtil.dateToStr(new Date(Parser.sourceJsonToDate(sc.source)))}.}`)
 								: "";
-							const toRender = ptDate && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
-							if (ptDate && toRender.entries) {
-								toRender.entries.unshift(ptDate);
-							}
+							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
+							const toRender = (ptDate || ptSources) && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
+							if (ptDate && toRender.entries) toRender.entries.unshift(ptDate);
+							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
 
 							const $trSubclassFeature = $(`<tr class="cls-main__sc-feature ${cssMod}" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}"><td colspan="6"/></tr>`)
-								.fastSetHtml(Renderer.get().setDepthTracker(depthArr).render(toRender))
+								.fastSetHtml(Renderer.get().setDepthTracker(depthArr, "isClassFeatureVariant").render(toRender))
 								.appendTo($content);
 
-							this._$trsContent.push($trSubclassFeature);
 							this._trackOutlineScData(stateKey, ixScLvl, ixScFeature, depthArr);
 						});
 					});
@@ -1457,6 +1557,13 @@ class ClassesPage extends BaseComponent {
 				}
 			});
 		});
+
+		if (cls.otherSources) {
+			const text = Renderer.utils.getSourceAndPageHtml(cls);
+			const $trClassFeature = $(`<tr data-feature-type="class"><td colspan="6"/></tr>`)
+				.fastSetHtml(`<hr class="hr-1"><b>Class source:</b> ${text}`)
+				.appendTo($content);
+		}
 
 		this._$trNoContent = ClassesPage._render_$getTrNoContent().appendTo($content);
 
@@ -1496,7 +1603,7 @@ ClassesPage._DEFAULT_STATE = {
 	isShowScSources: false,
 	isViewActiveScComp: false,
 	isViewActiveBook: false,
-	isHideOutline: false
+	isHideOutline: false,
 	// N.b. ensure none of these start with the string "sub" as this prefix is used for subclass state keys e.g.
 	// `"sub Berserker": false`
 };
@@ -1611,7 +1718,7 @@ ClassesPage.ClassBookView = class {
 
 				const $btnToggleSc = $(`<span class="cls-bkmv__btn-tab ${sc.isReprinted ? "cls__btn-sc--reprinted" : ""}" title="${ClassesPage.getBtnTitleSubclass(sc)}">${name}</span>`)
 					.on("click", () => this._parent.set(stateKey, !this._parent.get(stateKey)));
-				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source, sc._fMisc);
+				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source, sc._fMisc, null);
 				if (!isVisible) $btnToggleSc.addClass("hidden");
 
 				const hkShowHide = () => {
@@ -1646,15 +1753,6 @@ ClassesPage.ClassBookView = class {
 		(this._hooks["isShowFluff"] = this._hooks["isShowFluff"] || []).push(hkFluff);
 		this._parent.addHook("isShowFluff", hkFluff);
 		hkFluff();
-
-		const f = this._classPage.filterBox.getValues();
-		this._$wrpBook.find(`tr`).each((i, e) => {
-			const $tr = $(e);
-			$tr.find(`[data-source]`).each((i, e) => {
-				const source = e.dataset.source;
-				$(e).toggleClass("hidden", !this._classPage.filterBox.toDisplay(f, source, []));
-			})
-		})
 
 		this._$body.append(this._$wrpBook);
 	}

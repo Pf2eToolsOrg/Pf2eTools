@@ -92,6 +92,49 @@
 			]
 		},
 		{
+			"name": "Astral Brig",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "G",
+			"dimensions": [
+				"90 ft.",
+				"30 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 5,
+			"capPassenger": 60,
+			"pace": 12,
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Astral Skiff",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "H",
+			"dimensions": [
+				"30 ft.",
+				"10 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 3,
+			"capPassenger": 12,
+			"pace": 15
+		},
+		{
 			"name": "Battle Balloon",
 			"source": "AI",
 			"page": 218,
@@ -1221,6 +1264,38 @@
 			]
 		},
 		{
+			"name": "Planar Raider",
+			"source": "MTF",
+			"page": 90,
+			"vehicleType": "SHIP",
+			"size": "H",
+			"dimensions": [
+				"120 ft.",
+				"40 ft."
+			],
+			"terrain": [
+				"air"
+			],
+			"capCrew": 10,
+			"capPassenger": 100,
+			"pace": 12,
+			"weapon": [
+				{
+					"name": "Ballistas",
+					"count": 2,
+					"entries": [
+						"{@atk rw} {@hit 6} to hit, range 120/480 ft., one target. {@h}16 ({@damage 3d10}) piercing damage."
+					]
+				},
+				{
+					"name": "Catapult",
+					"entries": [
+						"{@atk rw} {@hit 5} to hit, range 200/800 ft. (can't hit targets within 60 feet of it), one target. {@h}27 ({@damage 5d10}) bludgeoning damage."
+					]
+				}
+			]
+		},
+		{
 			"name": "Rowboat",
 			"source": "GoS",
 			"page": 190,
@@ -1795,7 +1870,7 @@
 				{
 					"name": "Crushing Wheels",
 					"entries": [
-						"The Tormentor can move through the space of any Medium or smaller creature.When it does, the creature must succeed on a DC 13 Dexterity saving throw or take 11 ({@damage 2d10}) bludgeoning damage and be knocked {@condition prone}.If the creature was already {@condition prone}, it takes an extra 11 ({@damage 2d10}) bludgeoning damage.This trait can't be used against a particular creature more than once each turn."
+						"The Tormentor can move through the space of any Medium or smaller creature. When it does, the creature must succeed on a DC 13 Dexterity saving throw or take 11 ({@damage 2d10}) bludgeoning damage and be knocked {@condition prone}.If the creature was already {@condition prone}, it takes an extra 11 ({@damage 2d10}) bludgeoning damage.This trait can't be used against a particular creature more than once each turn."
 					]
 				},
 				{
@@ -2110,6 +2185,372 @@
 						"On its turn, the warship can move using its helm. It can also fire its ballistas and mangonels. If it has half its crew or fewer, it moves at half speed and can fire only half of its weapons."
 					]
 				}
+			]
+		}
+	],
+	"vehicleUpgrade": [
+		{
+			"name": "Acidic Bile Sprayer",
+			"source": "BGDIA",
+			"page": 221,
+			"upgradeType": "IWM:W",
+			"entries": [
+				"This hose weapon is attached to demonic organs that produce an acidic bile that dissolves flesh on contact.",
+				{
+					"type": "entries",
+					"name": "Acidic Bile Sprayer (Requires 1 Crew and Grants Half Cover, {@recharge 5|m})",
+					"entries": [
+						"Acidic bile sprays from a nozzle in a 30-foot cone. Each creature in the cone must make a DC 12 Dexterity saving throw, taking 40 ({@damage 9d8}) acid damage on a failed save, or half as much damage on a successful one. A creature reduced to 0 hit points by this damage is dissolved, leaving behind any objects it was carrying or wearing."
+					]
+				}
+			]
+		},
+		{
+			"name": "Arcane Artillery",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:W",
+			"entries": [
+				"Using methods similar to those used to produce magic weapons, a skilled spellcaster imbues a ship's weapon with destructive energy. This weapon gains a +2 bonus to its attack and damage rolls, and its attacks count as magical."
+			]
+		},
+		{
+			"name": "Bones of Endless Toil",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:O",
+			"entries": [
+				"The bones of ancient, mysterious creatures festoon the ship. Potent runes crawl across these remains, emitting a sickly green radiance. When a humanoid dies aboard the ship, that creature must make a DC 12 Wisdom saving throw. On a successful save, it dies as normal. If it fails, it immediately rises as a {@creature zombie} obedient to the ship's captain. The zombie gains a working knowledge of the ship, allowing it to serve as a member of the crew. A number of creatures equal to the ship's creature capacity can be animated in this manner at any given time."
+			]
+		},
+		{
+			"name": "Canian Armor",
+			"source": "BGDIA",
+			"page": 221,
+			"upgradeType": "IWM:A",
+			"entries": [
+				"The infernal iron used to make the vehicle was mined on Cania, the coldest layer of the Nine Hells. An infernal war machine with Canian armor has an Armor Class of 22 + its Dexterity modifier. While the vehicle is not moving, attack rolls made against it have advantage. The infernal war machine also has immunity to cold damage in addition to its other damage immunities, and it's immune to the effects of extreme cold."
+			]
+		},
+		{
+			"name": "Churning Hull",
+			"source": "GoS",
+			"page": 196,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"A tempest rages within these rune-etched, iron chains. Raiders and pirates who operate under the blessings of a storm god sometimes make use of this upgrade.",
+				"By draping the chains over a ship's hull, the storm's fury thrashes into the water around it. The water within 210 feet of the ship is difficult terrain for everything other than this ship."
+			]
+		},
+		{
+			"name": "Clockwork Oars",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"Using a combination of magic and clockwork, the oars on this ship require only one crew member to use them, pushing the button or lever that activates them."
+			]
+		},
+		{
+			"name": "Concussive Rounds",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:W",
+			"entries": [
+				"Enhanced by abjuration magic, this weapon's attacks burst with raucous noise capable of momentarily distracting and disorienting enemy crews. If this weapon hits a vehicle's hull, that vehicle's speed decreases by {@dice 2d10} feet until the start of the attacker's next turn."
+			]
+		},
+		{
+			"name": "Death Vessel",
+			"source": "GoS",
+			"page": 196,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"Crafted with materials harvested from the Shadowfell, this upgrade grants a ship an aura of dread. As an action, the ship can create a pulse of horrific energy. Every creature that is an enemy of the ship who is on board or within 210 feet of it must make DC 14 Wisdom saving throw. On a failed save, a creature is {@condition frightened} of the ship for 1 minute. On a successful save, the creature is immune to this ability for 24 hours. Once this ability is used, it can't be used again until {@dice 1d4} hours have passed."
+			]
+		},
+		{
+			"name": "Defiant Sails",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"These sails glitter with a fine coat of mithral treated with abjuration magic. While the sails are unfurled, ranged weapon attacks made against the ship and anyone aboard it are made with disadvantage, as a result of the sails' protective magic. This drawback doesn't apply if the attacker is aboard the ship."
+			]
+		},
+		{
+			"name": "Dragon Sails",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"Dragon scales woven into these sails make them more resistant to damage. The sails gain a +3 bonus to AC, and they have resistance to a damage type based on the type of scales used to craft them, as shown on the Dragon Sails table.",
+				{
+					"type": "table",
+					"caption": "Dragon Sails",
+					"colStyles": [
+						"col-6 text-center",
+						"col-6 text-center"
+					],
+					"colLabels": [
+						"Dragon Type",
+						"Damage Type"
+					],
+					"rows": [
+						[
+							"Black",
+							"Acid"
+						],
+						[
+							"Blue",
+							"Lightning"
+						],
+						[
+							"Brass",
+							"Fire"
+						],
+						[
+							"Bronze",
+							"Lightning"
+						],
+						[
+							"Copper",
+							"Acid"
+						],
+						[
+							"Gold",
+							"Fire"
+						],
+						[
+							"Green",
+							"Acid"
+						],
+						[
+							"Red",
+							"Fire"
+						],
+						[
+							"Silver",
+							"Cold"
+						],
+						[
+							"White",
+							"Cold"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Ever-Full Sails",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"These billowing sails are woven from cloud-stuff drawn from the Elemental Plane of Air. Wind whips and whistles around them, allowing a ship to move with a speed of 60 feet regardless of direction relative to the wind."
+			]
+		},
+		{
+			"name": "Explosive Rounds",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:W",
+			"entries": [
+				"Drawing on powerful evocation magic, this weapon's attacks are imbued with unstable energy that explodes in a fiery blast. When this weapon hits, it deals an extra {@damage 2d6} fire damage."
+			]
+		},
+		{
+			"name": "Flamethrower",
+			"source": "BGDIA",
+			"page": 221,
+			"upgradeType": "IWM:W",
+			"entries": [
+				"Although useless against demons, this weapon is great against flammable creatures and objects.",
+				{
+					"type": "entries",
+					"name": "Flamethrower (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"Fire shoots out of the weapon's nozzle in a 60-foot line that is 5 feet wide. Each creature in the line must make a DC 15 Dexterity saving throw, taking 18 ({@damage 4d8}) fire damage on a failed save, or half as much damage on a successful one. The fire ignites any flammable objects in the area that aren't being carried or worn."
+					]
+				}
+			]
+		},
+		{
+			"name": "Frost-Locked Hull",
+			"source": "GoS",
+			"page": 196,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"This upgrade replaces a ship's hull with supernatural ice drawn from the elemental planes. The hull and the other components of the ship are immune to cold damage but vulnerable to fire damage. The ship can also move at its normal speed over ice of any thickness, floating on the ice at the same depth as it would in water."
+			]
+		},
+		{
+			"name": "Gilded Death Armor",
+			"source": "BGDIA",
+			"page": 222,
+			"upgradeType": "IWM:A",
+			"entries": [
+				"Gold stolen or bartered from the archdevil Mammon plates the vehicle's exterior. This gold can't be removed without destroying the vehicle and turns to dust when the infernal war machine drops to 0 hit points. Gilded death armor grants the infernal war machine resistance to bludgeoning, piercing, and slashing damage."
+			]
+		},
+		{
+			"name": "Grasping Rounds",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:W",
+			"entries": [
+				"This weapon creates spectral chains that trail after its shots, restraining enemy vessels in their grasp. When this weapon hits a ship, that vehicle must succeed on a DC 14 Strength saving throw or it can't move away from the attacker. As an action, the attacking ship can end this effect, and the target can end it by taking an action and succeeding on a DC 14 Strength check."
+			]
+		},
+		{
+			"name": "Guardian Figurehead",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:F",
+			"entries": [
+				"This figurehead depicts an armored knight. As an action, the ship can activate this item, causing it to animate as an {@creature iron golem}. The golem acts on the ship's turn when the captain uses one of the ship's actions. The golem remains animated for 1 minute. At the end of that time, it teleports back to its position as a figurehead. Once a ship uses this action, it can't use it again for 24 hours."
+			]
+		},
+		{
+			"name": "Infernal Screamer",
+			"source": "BGDIA",
+			"page": 221,
+			"upgradeType": "IWM:W",
+			"entries": [
+				"A writhing humanoid torso made of melting wax juts out from this station, with a barbed hand crank between its shoulder blades. The figure telepathically shrieks in agony when the crank is turned.",
+				{
+					"type": "entries",
+					"name": "Infernal Screamer (Requires 1 Crew and Grants Half Cover)",
+					"entries": [
+						"The screamer's operator targets one creature it can see within 120 feet of the screamer. The target must make a DC 15 Wisdom saving throw, taking 26 ({@damage 4d12}) psychic damage on a failed save, or half as much damage on a successful one."
+					]
+				}
+			]
+		},
+		{
+			"name": "Living Vessel",
+			"source": "GoS",
+			"page": 196,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"This vessel's hull was crafted in the Feywild under the direction of master eladrin shipwrights. It is a living plant, drawing sustenance from water and sunlight. Vines covered in thick leaves hang over its side, and the wood runs with fresh sap when damaged. The ship gains a +2 bonus to all Constitution checks or saving throws. As long as the ship has at least 1 hit point, it regains 10 hit points every minute."
+			]
+		},
+		{
+			"name": "Necrotic Smoke Screen",
+			"source": "BGDIA",
+			"page": 222,
+			"upgradeType": "IWM:G",
+			"entries": [
+				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to expel a 30-foot cube of opaque smoke directly in front of it or behind it. The cloud is stationary and lasts for 1 minute. The area within it is heavily obscured. Any creature that enters the cloud for the first time on a turn or starts its turn there takes 21 ({@damage 6d6}) necrotic damage. A strong wind disperses the cloud. This device needs 24 hours to recharge before it can be used again."
+			]
+		},
+		{
+			"name": "Red Dragon Figurehead",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:F",
+			"entries": [
+				"This figurehead depicts a red dragon rearing to strike, its mouth open. As an action, the ship can activate this item to create a 60-foot cone of flame that originates from the figurehead. Each creature and object in the cone must make a DC 12 Dexterity saving throw, taking 21 ({@damage 6d6}) fire damage on a failed save, or half as much damage on a successful one. Once a ship uses this action, it can't use it again for 1 minute."
+			]
+		},
+		{
+			"name": "Reinforced Hull",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"A master shipwright can use superior materials and clever design to make a ship's hull more resilient. Such reinforcement doubles the hull's hit point maximum."
+			]
+		},
+		{
+			"name": "Screaming Sails",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"Woven from the energy of captured wraiths and bound with the spirit of a banshee, these sails groan mournfully when they catch the wind. As an action, while within 5 feet of the sails, the ship's captain can cause the sails to unleash a howl. Every creature hostile to the ship who is on board or within 300 feet of it must succeed on a DC 14 Wisdom saving throw, or the creature takes {@damage 4d6} psychic damage and is then {@condition frightened} for 1 minute. Once this ability has been used, it can't be used again until {@dice 2d6} hours have passed."
+			]
+		},
+		{
+			"name": "Scything Oars",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:M",
+			"entries": [
+				"Sharpened, magically reinforced oars make a vessel dangerous to approach. When the ship takes an action that moves it with these oars, any creature or object in the water within 10 feet of it at any point of the move must make a DC 10 Dexterity saving throw, taking {@damage 2d6} slashing damage on a failed save or half as much damage on a successful one."
+			]
+		},
+		{
+			"name": "Smuggler's Banner",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:O",
+			"entries": [
+				"This flag is meant to be flown from a ship's mast. Its powerful magic causes it to appear as a flag or banner displaying the symbol of a group, captain, or realm friendly to the viewer. Multiple viewers might see different flags or crests.",
+				"The banner's true power is its ability to aid a ship in making rapid escapes. As an action, the ship and all friendly creatures aboard it teleport up to 3 miles to a known destination of the captain's choice. Hostile creatures aboard the ship don't move with the ship and fall into the water it once occupied. Once this item is used to teleport, it can't teleport in this way again for {@dice 2d6} days."
+			]
+		},
+		{
+			"name": "Soul Spike Armor",
+			"source": "BGDIA",
+			"page": 222,
+			"upgradeType": "IWM:W",
+			"entries": [
+				"The vehicle is covered with spikes inscribed with blasphemous symbols. Luminous, ghostly figures impaled on these spikes wail and reach out in agony.",
+				"If a creature that isn't a devil dies within 30 feet of the infernal war machine, its soul (if it has one) is torn from its body and joins the wailing throng impaled on the spikes. As long as its soul remains trapped, a creature can't be raised from the dead by any means. A trapped soul is freed if the vehicle is destroyed, if the spike anchoring it is the target of a {@spell remove curse} spell or similar magic, or if the spike is destroyed. Each spike is a Small object with AC 19, 15 hit points, and resistance to all damage except radiant damage."
+			]
+		},
+		{
+			"name": "Storm Giant Figurehead",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:F",
+			"entries": [
+				"This figurehead depicts a storm giant clutching a thunderbolt. As an action, the ship can activate this item to create a 60-foot cone that originates from the figurehead. Each creature in the cone must make DC 12 Constitution saving throw, taking 14 ({@damage 4d6}) thunder damage on a failed save, or half as much damage on a successful one. A creature that fails its saving throw is also pushed 10 feet away from the figurehead. Once a ship uses this action, it can't use it again for 1 minute."
+			]
+		},
+		{
+			"name": "Styx Sprayer",
+			"source": "BGDIA",
+			"page": 221,
+			"upgradeType": "IWM:W",
+			"entries": [
+				"This flexible hose is connected to a tank that holds 30 gallons of water from the {@area River Styx|1a3|x}. Each use of the weapon depletes 10 gallons of the water. Refilling the tank requires access to the Styx.",
+				{
+					"type": "entries",
+					"name": "Styx Sprayer (Requires 1 Crew and Grants Half Cover; 3 Uses)",
+					"entries": [
+						"{@atk rs}: +5 to hit, range 30 ft., one creature. {@h}The creature is struck by water from the River Styx and targeted by a {@spell feeblemind} spell (save DC 20). An already feebleminded creature is immune to this effect, as is a creature adapted to the River Styx. If the target fails its saving throw and the spell's effect on it is not ended within 30 days, the effect becomes permanent, whereupon the creature loses all its memories and becomes a near-mindless shell of its former self. At that point, nothing short of divine intervention can undo the effect."
+					]
+				}
+			]
+		},
+		{
+			"name": "Taskmaster's Drums",
+			"source": "GoS",
+			"page": 198,
+			"upgradeType": "SHP:O",
+			"entries": [
+				"This 4-foot-tall bronze drum comes with a pair of iron mallets. A creature can activate the drums as an action, causing the hammers to float above the drum and strike it to produce a thundering rhythm. For the next minute, the ship gains one additional action, as long as it has at least one action. Once this item is used, it can't be activated again for {@dice 2d10} hours."
+			]
+		},
+		{
+			"name": "Teleporter",
+			"source": "BGDIA",
+			"page": 222,
+			"upgradeType": "IWM:G",
+			"entries": [
+				"The vehicle's driver can activate this magical device as a bonus action, causing the vehicle to teleport to an unoccupied space that the driver can see up to 300 feet away from the vehicle's current position. All creatures and objects in contact with the vehicle are teleported along with it. This device needs 24 hours to recharge before it can be used again."
+			]
+		},
+		{
+			"name": "Vigilant Watch",
+			"source": "GoS",
+			"page": 197,
+			"upgradeType": "SHP:H",
+			"entries": [
+				"A row of crystal orbs, each filled with viscous liquid and a beholder's eyeball, is mounted along this ship's hull. {@condition Invisible} creatures are visible while on the ship or within 120 feet of it."
 			]
 		}
 	]

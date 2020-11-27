@@ -108,12 +108,20 @@ class BaseParser {
 		opts = opts || {};
 
 		// If there is no previous entry to add to, do not continue
-		if (typeof entryArray.last() !== "string") return false;
+		const lastEntry = entryArray.last();
+		if (typeof lastEntry !== "string") return false;
+
+		// If the current string ends in a comma
+		if (/,\s*$/.test(lastEntry)) return true;
+		// If the current string ends in a dash
+		if (/[-\u2014]\s*$/.test(lastEntry)) return true;
 
 		const cleanLine = curLine.trim();
 
 		// A lowercase word
 		if (/^[a-z]/.test(cleanLine) && !opts.noLowercase) return true;
+		// An ordinal (e.g. "3rd"), but not a spell level (e.g. "1st level")
+		if (/^\d[a-z][a-z]/.test(cleanLine) && !/^\d[a-z][a-z] level/gi.test(cleanLine)) return true;
 		// A number (e.g. damage; "5 (1d6 + 2)")
 		if (/^\d+\s+/.test(cleanLine) && !opts.noNumber) return true;
 		// Opening brackets (e.g. damage; "(1d6 + 2)")
@@ -203,8 +211,8 @@ class TagCondition {
 					if (nameStack.includes("Sneak Attack (1/Turn)")) return str;
 					const ptrStack = {_: ""};
 					return TagCondition._walkerStringHandler(ptrStack, 0, 0, str, inflictedSet)
-				}
-			]
+				},
+			],
 		};
 		entry = MiscUtil.copy(entry);
 		return walker.walk(entry, walkerHandlers);
@@ -221,8 +229,8 @@ class TagCondition {
 				fnTag: sMod => {
 					TagCondition._CONDITION_MATCHERS.forEach(r => sMod = sMod.replace(r, (...mt) => `{@condition ${mt[1]}}`));
 					return sMod;
-				}
-			}
+				},
+			},
 		);
 
 		// Only the outermost loop needs return the final string
@@ -245,6 +253,7 @@ class TagCondition {
 
 		this._handleProp(m, "action", inflictedSet);
 		this._handleProp(m, "reaction", inflictedSet);
+		this._handleProp(m, "bonus", inflictedSet);
 		this._handleProp(m, "trait", inflictedSet);
 		this._handleProp(m, "legendary", inflictedSet);
 		this._handleProp(m, "mythic", inflictedSet);
@@ -326,12 +335,12 @@ class TagCondition {
 						0,
 						str,
 						{
-							fnTag: strMod => strMod.replace(TagCondition._CONDITION_MATCHER_WORD, (...m) => `${m[1]}{@condition ${m[2]}}${m[3]}`)
-						}
+							fnTag: strMod => strMod.replace(TagCondition._CONDITION_MATCHER_WORD, (...m) => `${m[1]}{@condition ${m[2]}}${m[3]}`),
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 	// endregion
@@ -353,7 +362,7 @@ TagCondition._CONDITIONS = [
 	"prone",
 	"restrained",
 	"stunned",
-	"unconscious"
+	"unconscious",
 ];
 TagCondition._CONDITION_MATCHERS = TagCondition._CONDITIONS.map(it => new RegExp(`(${it})`, "g"));
 TagCondition._CONDITION_MATCHER_WORD = new RegExp(`(^|[ "(\\u2013\\u2014])(${TagCondition._CONDITIONS.join("|")})([ "',.:;)\\u2013\\u2014]|$)`, "g");
@@ -396,7 +405,7 @@ TagCondition._CONDITION_INFLICTED_MATCHERS = [
 	`on a failure, the [^.!?]+? can [^.!?]+?{@condition ([^}]+)}`, // ERLW :: Zakya Rakshasa :: Martial Prowess
 	`the {@condition ([^}]+)} creature can repeat the saving throw`, // GGR :: Archon of the Triumvirate :: Pacifying Presence
 	`if the (?:${TagCondition.__TGT}|creature) is already {@condition [^}]+}, it becomes {@condition ([^}]+)}`,
-	`(?:creature|${TagCondition.__TGT}) (?:also becomes|is) {@condition ([^}]+)}` // MTF :: Eidolon :: Divine Dread
+	`(?:creature|${TagCondition.__TGT}) (?:also becomes|is) {@condition ([^}]+)}`, // MTF :: Eidolon :: Divine Dread
 ].map(it => new RegExp(`${it}((?:, {@condition [^}]+})*)(,? (?:and|or) {@condition [^}]+})?`, "gi"));
 
 class TagUtil {
@@ -455,7 +464,7 @@ class DiceConvert {
 					m[1] === "damage" || m[3] === "damage" ? "damage" : null,
 					m[1] === "d20" || m[3] === "d20" ? "d20" : null,
 					m[1] === "scaledice" || m[3] === "scaledice" ? "scaledice" : null,
-					m[1] === "dice" || m[3] === "dice" ? "dice" : null
+					m[1] === "dice" || m[3] === "dice" ? "dice" : null,
 				].filter(Boolean)[0];
 				return `{@${nxtType} ${m[2]}${m[4]}${m[5]}}`;
 			});
@@ -470,7 +479,7 @@ class DiceConvert {
 		str = str.replace(/\d+ \({@dice (?:[-+0-9d ]*)}\)(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		// tag @damage (spell/etc style)
-		str = str.replace(/{@dice (?:[-+0-9d ]*)}(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
+		str = str.replace(/{@dice (?:[-+0-9d ]*)}(?:\s+[-+]\s+[-+a-zA-Z0-9 ]*?)?(?:\s+[-+]\s+the spell's level)?(?: [a-z]+(?:(?:, |, or | or )[a-z]+)*)? damage/ig, (...m) => m[0].replace(/{@dice /gi, "{@damage "));
 
 		return str;
 	}
@@ -498,7 +507,7 @@ class ArtifactPropertiesTag {
 					case "major detrimental": return `{@table Artifact Properties; Major Detrimental Properties|dmg|${m[0]}}`;
 					case "minor detrimental": return `{@table Artifact Properties; Minor Detrimental Properties|dmg|${m[0]}}`;
 				}
-			})
+			}),
 		})
 	}
 }
@@ -518,12 +527,12 @@ class SkillTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -547,32 +556,37 @@ class ActionTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
 	static _fnTag (strMod) {
-		const mAction = /(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object)([ "',.:;)\u2013\u2014]|$)/g.exec(strMod);
-		if (!mAction) return strMod;
+		// Avoid tagging text within titles
+		if (strMod.toTitleCase() === strMod) return strMod;
 
-		const ixMatchEnd = mAction.index + mAction[0].length;
+		const reAction = /(^|[ "(\u2013\u2014])(Attack|Dash|Disengage|Dodge|Help|Hide|Ready|Search|Use an Object|shove a creature)([ "',.:;)\u2013\u2014]|$)/g
+		let mAction;
 
-		const reSplitTokens = /[ \u2013\u2014]/g;
-		const reCleanTokenStart = /^["'\u2013\u2014]/g;
+		while ((mAction = reAction.exec(strMod))) {
+			const ixMatchEnd = mAction.index + mAction[0].length;
 
-		const prevWord = (strMod.slice(0, mAction.index).split(reSplitTokens).last() || "").replace(reCleanTokenStart, "");
-		const nxtWord = (strMod.slice(ixMatchEnd, strMod.length).split(reSplitTokens)[0] || "").replace(reCleanTokenStart, "");
-		if ((prevWord && /^[A-Z]/.test(prevWord)) || (nxtWord && /^[A-Z]/.test(nxtWord))) return strMod; // Avoid tagging words in titles
+			const ptTag = mAction[2] === "shove a creature" ? "shove" : mAction[2];
+			const ptTrailing = mAction[2] === "shove a creature" ? ` a creature${mAction[3]}` : mAction[3];
+			const replaceAs = `${mAction[1]}{@action ${ptTag}}${ptTrailing}`;
 
-		const replaceAs = `${mAction[1]}{@action ${mAction[2]}}${mAction[3]}`;
-		return `${strMod.slice(0, mAction.index)}${replaceAs}${strMod.slice(ixMatchEnd, strMod.length)}`
-			.replace(/{@action Attack} (and|or) damage roll/g, "Attack $1 damage roll")
-		;
+			strMod = `${strMod.slice(0, mAction.index)}${replaceAs}${strMod.slice(ixMatchEnd, strMod.length)}`
+				.replace(/{@action Attack} (and|or) damage roll/g, "Attack $1 damage roll")
+			;
+
+			mAction.index += replaceAs.length - 1;
+		}
+
+		return strMod;
 	}
 }
 
@@ -591,12 +605,12 @@ class SenseTag {
 						0,
 						str,
 						{
-							fnTag: this._fnTag
-						}
+							fnTag: this._fnTag,
+						},
 					);
 					return ptrStack._;
-				}
-			}
+				},
+			},
 		);
 	}
 
@@ -648,17 +662,28 @@ class EntryConvert {
 					checkFinalizeList();
 
 					return out;
-				}
-			}
+				},
+			},
 		)
 	}
 
-	static coalesceLines (ptrI, toConvert) {
+	/**
+	 *
+	 * @param ptrI
+	 * @param toConvert
+	 * @param [opts]
+	 * @param [opts.fnStop] Function which should return true for the current line if it is to stop coalescing.
+	 */
+	static coalesceLines (ptrI, toConvert, opts) {
+		opts = opts || {};
+
+		if (toConvert[ptrI._] == null) return [];
+
 		let curLine = toConvert[ptrI._].trim();
 
 		const entries = [];
 		const stack = [
-			entries
+			entries,
 		];
 
 		const popList = () => { while (stack.last().type === "list") stack.pop(); }
@@ -698,6 +723,8 @@ class EntryConvert {
 		};
 
 		while (ptrI._ < toConvert.length) {
+			if (opts.fnStop && opts.fnStop(curLine)) break;
+
 			if (BaseParser._isJsonLine(curLine)) {
 				popNestedEntries(); // this implicitly pops nested lists
 
@@ -706,7 +733,7 @@ class EntryConvert {
 				if (stack.last().type !== "list") {
 					const list = {
 						type: "list",
-						items: []
+						items: [],
 					};
 					addEntry(list);
 				}
@@ -721,7 +748,7 @@ class EntryConvert {
 				const parentEntry = {
 					type: "entries",
 					name,
-					entries: [entry]
+					entries: [entry],
 				};
 
 				addEntry(parentEntry);
@@ -731,7 +758,7 @@ class EntryConvert {
 				const entry = {
 					type: "entries",
 					name: curLine.trim(),
-					entries: []
+					entries: [],
 				};
 
 				addEntry(entry);
@@ -761,7 +788,7 @@ class ConvertUtil {
 	 */
 	static isNameLine (line) {
 		const spl = line.split(/[.!?]/);
-		if (spl.length === 1) return false;
+		if (spl.map(it => it.trim()).filter(Boolean).length === 1) return false;
 
 		// ignore everything inside parentheses
 		const namePart = ConvertUtil.getWithoutParens(spl[0]);
@@ -791,11 +818,14 @@ class ConvertUtil {
 
 	static isListItemLine (line) { return line.trim().startsWith("•") }
 
-	static splitNameLine (line) {
-		const rawName = line.split(/([.!?:])/g)[0];
+	static splitNameLine (line, isKeepPunctuation) {
+		const spl = line.split(/([.!?:])/g);
+		const rawName = spl[0];
 		const entry = line.substring(rawName.length + 1, line.length).trim();
-		const name = this.getCleanTraitActionName(rawName)
-		return {name, entry};
+		const name = this.getCleanTraitActionName(rawName);
+		const out = {name, entry};
+		if (isKeepPunctuation) out.name += spl[1].trim();
+		return out;
 	}
 
 	static getCleanTraitActionName (name) {
@@ -866,6 +896,6 @@ if (typeof module !== "undefined") {
 		SkillTag,
 		ActionTag,
 		TaggerUtils,
-		TagUtil
+		TagUtil,
 	};
 }

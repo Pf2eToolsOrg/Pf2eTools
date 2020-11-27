@@ -24,7 +24,8 @@ const MSG = {
 	SpellDataCheck: "",
 	EscapeCharacterCheck: "",
 	DuplicateEntityCheck: "",
-	ClassDataCheck: ""
+	ClassDataCheck: "",
+	RaceDataCheck: "",
 };
 
 const TAG_TO_PAGE = {
@@ -50,7 +51,10 @@ const TAG_TO_PAGE = {
 	"action": UrlUtil.PG_ACTIONS,
 	"language": UrlUtil.PG_LANGUAGES,
 	"classFeature": UrlUtil.PG_CLASSES,
-	"subclassFeature": UrlUtil.PG_CLASSES
+	"subclassFeature": UrlUtil.PG_CLASSES,
+	"charoption": UrlUtil.PG_CHAR_CREATION_OPTIONS,
+	"vehicle": UrlUtil.PG_VEHICLES,
+	"vehupgrade": UrlUtil.PG_VEHICLES,
 };
 
 const VALID_SKILLS = new Set([
@@ -71,7 +75,7 @@ const VALID_SKILLS = new Set([
 	"Religion",
 	"Sleight of Hand",
 	"Stealth",
-	"Survival"
+	"Survival",
 ]);
 
 const ALL_URLS = new Set();
@@ -94,12 +98,45 @@ function fileRecurse (file, fileHandler, doParse, filenameMatcher) {
 	} else if (fs.lstatSync(file).isDirectory() && !isIgnoredDir(file)) fs.readdirSync(file).forEach(nxt => fileRecurse(`${file}/${nxt}`, fileHandler, doParse, filenameMatcher))
 }
 
+class TestTagsUtil {
+	static _testAdditionalSpells_testSpellExists (file, msgProp, spell) {
+		const url = getEncoded(spell, "spell");
+
+		if (!ALL_URLS.has(url)) {
+			MSG[msgProp] += `Missing link: ${url} in file ${file} (evaluates to "${url}") in "additionalSpells"\nSimilar URLs were:\n${getSimilar(url)}\n`;
+		}
+	}
+
+	static testAdditionalSpells (file, msgProp, obj) {
+		if (!obj.additionalSpells) return;
+		obj.additionalSpells
+			.forEach(additionalSpellOption => {
+				Object.values(additionalSpellOption)
+					.forEach(levelToSpells => {
+						Object.values(levelToSpells).forEach(spellListOrMeta => {
+							if (spellListOrMeta instanceof Array) {
+								return spellListOrMeta.forEach(sp => this._testAdditionalSpells_testSpellExists(file, msgProp, sp));
+							} else if (typeof spellListOrMeta === "string") return; // Skip any single strings, e.g. ability
+
+							Object.entries(spellListOrMeta)
+								.forEach(([prop, val]) => {
+									switch (prop) {
+										case "rest": Object.values(val).forEach(spellList => spellList.forEach(sp => this._testAdditionalSpells_testSpellExists(file, msgProp, sp))); break;
+										default: throw new Error(`Unhandled additionalSpells prop "${prop}"`);
+									}
+								});
+						});
+					});
+			})
+	}
+}
+
 const PRIMITIVE_HANDLERS = {
 	undefined: [],
 	boolean: [],
 	number: [],
 	string: [],
-	object: []
+	object: [],
 };
 
 // Runs multiple handlers on each file, to avoid re-reading each file for each handler
@@ -315,10 +352,26 @@ class ActionData {
 		const file = `data/actions.json`;
 		const actions = require(`../${file}`);
 		actions.action.forEach(it => {
-			if (!it.fromVariant) return;
+			if (it.fromVariant) {
+				const url = getEncoded(it.fromVariant, "variantrule");
+				if (!ALL_URLS.has(url)) MSG.ActionDataCheck += `Missing link: ${it.fromVariant} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			}
 
-			const url = getEncoded(it.fromVariant, "variantrule");
-			if (!ALL_URLS.has(url)) MSG.ActionDataCheck += `Missing link: ${it.fromVariant} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
+			if (it.seeAlsoAction) {
+				const deduped = it.seeAlsoAction.map(it => {
+					it = it.toLowerCase();
+					if (!it.includes("|")) it += `|phb`;
+					return it;
+				}).unique();
+				if (deduped.length !== it.seeAlsoAction.length) {
+					MSG.ActionDataCheck += `Duplicate "seeAlsoAction" in ${file} for ${it.source}, ${it.name}\n`;
+				}
+
+				it.seeAlsoAction.forEach(s => {
+					const url = getEncoded(s, "action");
+					if (!ALL_URLS.has(url)) MSG.ActionDataCheck += `Missing link: ${s} in file ${file} (evaluates to "${url}") in "seeAlsoAction"\nSimilar URLs were:\n${getSimilar(url)}\n`;
+				})
+			}
 		});
 	}
 }
@@ -505,10 +558,10 @@ class TableDiceTest {
 		cleanHeader.split(";").forEach(rollable => {
 			if (rollable.includes("#$prompt_")) hasPrompt = true;
 
-			const rollTree = Renderer.dice.lang.getTree3(rollable);
-			if (rollTree) {
-				const min = rollTree.min();
-				const max = rollTree.max();
+			const wrpRollTree = Renderer.dice.lang.getTree3(rollable);
+			if (wrpRollTree) {
+				const min = wrpRollTree.tree.min();
+				const max = wrpRollTree.tree.max();
 				for (let i = min; i < max + 1; ++i) possibleRolls.add(i);
 			} else {
 				if (!hasPrompt) errors.push(`"${obj.colLabels[0]}" was not a valid rollable header?!`);
@@ -579,7 +632,7 @@ class AreaCheck {
 	}
 }
 AreaCheck.errorSet = new Set();
-AreaCheck.fileMatcher = /^(adventure-).*\.json/;
+AreaCheck.fileMatcher = /\/(adventure-).*\.json/;
 
 class LootDataCheck {
 	static run () {
@@ -652,7 +705,7 @@ class SpellDataCheck {
 		});
 	}
 }
-SpellDataCheck._IGNORED_CLASSES = [{name: "Psion", source: "Stream"}];
+SpellDataCheck._IGNORED_CLASSES = []; // This can be pre-loaded with any exotic UA (see history)
 SpellDataCheck._FILE_CLASS_INDEX = `data/class/index.json`;
 SpellDataCheck._FILE_SPELL_INDEX = `data/spells/index.json`;
 SpellDataCheck._CLASS_LIST = [];
@@ -661,7 +714,7 @@ class ClassDataCheck {
 	static _doCheckClass (file, data, cls) {
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isNoModification: true
+			isNoModification: true,
 		});
 
 		// region Check `classFeatures` -> `classFeature` links
@@ -690,7 +743,7 @@ class ClassDataCheck {
 					if (!featureLookup[hash]) MSG.ClassDataCheck += `Missing class feature: ${uid} in file ${file} not found in the files "classFeature" array\n`;
 				});
 				return arr;
-			}
+			},
 		};
 		(data.classFeature || []).forEach(cf => {
 			walker.walk(cf.entries, handlersNestedRefsClass);
@@ -719,7 +772,7 @@ class ClassDataCheck {
 						if (!subclassFeatureLookup[hash]) MSG.ClassDataCheck += `Missing subclass feature in "refSubclassFeature": ${it.subclassFeature} in file ${file} not found in the files "subclassFeature" array\n`;
 					});
 					return arr;
-				}
+				},
 			};
 			(data.subclassFeature || []).forEach(scf => {
 				walker.walk(scf.entries, handlersNestedRefsSubclass);
@@ -737,7 +790,7 @@ class ClassDataCheck {
 					if (!ALL_URLS.has(url)) MSG.ClassDataCheck += `Missing optional feature: ${it.optionalfeature} in file ${file} (evaluates to "${url}")\nSimilar URLs were:\n${getSimilar(url)}\n`;
 				});
 				return arr;
-			}
+			},
 		};
 		(data.classFeature || []).forEach(cf => {
 			walker.walk(cf.entries, handlersNestedRefsOptionalFeatures);
@@ -757,23 +810,7 @@ class ClassDataCheck {
 			if (!subclassFeatureLookup[hash]) MSG.ClassDataCheck += `Missing subclass feature: ${uid} in file ${file} not found in the files "subclassFeature" array\n`;
 		});
 
-		if (sc.additionalSpells) {
-			sc.additionalSpells
-				.forEach(additionalSpellOption => {
-					Object.values(additionalSpellOption)
-						.forEach(levelToSpells => {
-							Object.values(levelToSpells).forEach(spells => {
-								spells.forEach(spell => {
-									const url = getEncoded(spell, "spell");
-
-									if (!ALL_URLS.has(url)) {
-										MSG.ClassDataCheck += `Missing link: ${url} in file ${file} (evaluates to "${url}") in "additionalSpells"\nSimilar URLs were:\n${getSimilar(url)}\n`;
-									}
-								});
-							});
-						});
-				})
-		}
+		TestTagsUtil.testAdditionalSpells(file, "ClassDataCheck", sc);
 	}
 
 	static run () {
@@ -783,6 +820,21 @@ class ClassDataCheck {
 			.forEach(({filename, data}) => {
 				data.class.forEach(cls => ClassDataCheck._doCheckClass(filename, data, cls));
 			});
+	}
+}
+
+class RaceDataCheck {
+	static _handleRaceOrSubraceRaw (file, rsr, r) {
+		TestTagsUtil.testAdditionalSpells(file, "RaceDataCheck", rsr);
+	}
+
+	static run () {
+		const file = `data/races.json`;
+		const races = require(`../${file}`);
+		races.race.forEach(r => {
+			this._handleRaceOrSubraceRaw(file, r);
+			(r.subraces || []).forEach(sr => this._handleRaceOrSubraceRaw(file, sr, r))
+		});
 	}
 }
 
@@ -921,6 +973,7 @@ async function main () {
 	LootDataCheck.run();
 	SpellDataCheck.run();
 	ClassDataCheck.run();
+	RaceDataCheck.run();
 
 	let outMessage = "";
 	Object.entries(MSG).forEach(([k, v]) => {

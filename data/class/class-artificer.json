@@ -26,7 +26,7 @@
 				"tools": [
 					"{@item Thieves' tools|PHB}",
 					"{@item tinker's tools|PHB}",
-					"one type of artisan's tools of your choice"
+					"one type of {@item artisan's tools|PHB} of your choice"
 				],
 				"skills": [
 					{
@@ -392,7 +392,7 @@
 				"tools": [
 					"{@item thieves' tools|PHB}",
 					"{@item tinker's tools|PHB}",
-					"one type of artisan's tools of your choice"
+					"one type of {@item artisan's tools|PHB} of your choice"
 				],
 				"skills": [
 					{
@@ -902,8 +902,14 @@
 		},
 		{
 			"name": "Artificer",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"hd": {
 				"number": 1,
 				"faces": 8
@@ -1265,166 +1271,53 @@
 				}
 			],
 			"classFeatures": [
-				"Optional Rule: Firearm Proficiency|Artificer|ERLW|1",
-				"Magical Tinkering|Artificer|ERLW|1",
-				"Spellcasting|Artificer|ERLW|1",
-				"Infuse Item|Artificer|ERLW|2",
+				"Optional Rule: Firearm Proficiency|Artificer|TCE|1",
+				"Magical Tinkering|Artificer|TCE|1",
+				"Spellcasting|Artificer|TCE|1",
+				"Infuse Item|Artificer|TCE|2",
 				{
-					"classFeature": "Artificer Specialist|Artificer|ERLW|3",
+					"classFeature": "Artificer Specialist|Artificer|TCE|3",
 					"gainSubclassFeature": true
 				},
-				"The Right Tool for the Job|Artificer|ERLW|3",
-				"Ability Score Improvement|Artificer|ERLW|4",
-				"Proficiency Versatility|Artificer|ERLW|4|UAClassFeatureVariants",
+				"The Right Tool for the Job|Artificer|TCE|3",
+				"Ability Score Improvement|Artificer|TCE|4",
+				"Proficiency Versatility|Artificer|TCE|4|UAClassFeatureVariants",
 				{
-					"classFeature": "Artificer Specialist Feature|Artificer|ERLW|5",
+					"classFeature": "Artificer Specialist Feature|Artificer|TCE|5",
 					"gainSubclassFeature": true
 				},
-				"Tool Expertise|Artificer|ERLW|6",
-				"Flash of Genius|Artificer|ERLW|7",
-				"Ability Score Improvement|Artificer|ERLW|8",
-				"Proficiency Versatility|Artificer|ERLW|8|UAClassFeatureVariants",
+				"Tool Expertise|Artificer|TCE|6",
+				"Flash of Genius|Artificer|TCE|7",
+				"Ability Score Improvement|Artificer|TCE|8",
+				"Proficiency Versatility|Artificer|TCE|8|UAClassFeatureVariants",
 				{
-					"classFeature": "Artificer Specialist Feature|Artificer|ERLW|9",
+					"classFeature": "Artificer Specialist Feature|Artificer|TCE|9",
 					"gainSubclassFeature": true
 				},
-				"Magic Item Adept|Artificer|ERLW|10",
-				"Spell-Storing Item|Artificer|ERLW|11",
-				"Ability Score Improvement|Artificer|ERLW|12",
-				"Proficiency Versatility|Artificer|ERLW|12|UAClassFeatureVariants",
-				"Magic Item Savant|Artificer|ERLW|14",
+				"Magic Item Adept|Artificer|TCE|10",
+				"Spell-Storing Item|Artificer|TCE|11",
+				"Ability Score Improvement|Artificer|TCE|12",
+				"Proficiency Versatility|Artificer|TCE|12|UAClassFeatureVariants",
+				"Magic Item Savant|Artificer|TCE|14",
 				{
-					"classFeature": "Artificer Specialist Feature|Artificer|ERLW|15",
+					"classFeature": "Artificer Specialist Feature|Artificer|TCE|15",
 					"gainSubclassFeature": true
 				},
-				"Ability Score Improvement|Artificer|ERLW|16",
-				"Proficiency Versatility|Artificer|ERLW|16|UAClassFeatureVariants",
-				"Magic Item Master|Artificer|ERLW|18",
-				"Ability Score Improvement|Artificer|ERLW|19",
-				"Proficiency Versatility|Artificer|ERLW|19|UAClassFeatureVariants",
-				"Soul of Artifice|Artificer|ERLW|20"
+				"Ability Score Improvement|Artificer|TCE|16",
+				"Proficiency Versatility|Artificer|TCE|16|UAClassFeatureVariants",
+				"Magic Item Master|Artificer|TCE|18",
+				"Ability Score Improvement|Artificer|TCE|19",
+				"Proficiency Versatility|Artificer|TCE|19|UAClassFeatureVariants",
+				"Soul of Artifice|Artificer|TCE|20"
 			],
 			"subclassTitle": "Artificer Specialist",
 			"subclasses": [
-				{
-					"name": "Alchemist",
-					"shortName": "Alchemist",
-					"source": "ERLW",
-					"page": 58,
-					"additionalSpells": [
-						{
-							"prepared": {
-								"3": [
-									"healing word",
-									"ray of sickness"
-								],
-								"5": [
-									"flaming sphere",
-									"melf's acid arrow"
-								],
-								"9": [
-									"gaseous form",
-									"mass healing word"
-								],
-								"13": [
-									"blight",
-									"death ward"
-								],
-								"17": [
-									"cloudkill",
-									"raise dead"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"Alchemist|Artificer|ERLW|Alchemist|ERLW|3",
-						"Alchemical Savant|Artificer|ERLW|Alchemist|ERLW|5",
-						"Restorative Reagents|Artificer|ERLW|Alchemist|ERLW|9",
-						"Chemical Mastery|Artificer|ERLW|Alchemist|ERLW|15"
-					]
-				},
-				{
-					"name": "Artillerist",
-					"shortName": "Artillerist",
-					"source": "ERLW",
-					"page": 59,
-					"additionalSpells": [
-						{
-							"prepared": {
-								"3": [
-									"shield",
-									"thunderwave"
-								],
-								"5": [
-									"scorching ray",
-									"shatter"
-								],
-								"9": [
-									"fireball",
-									"wind wall"
-								],
-								"13": [
-									"ice storm",
-									"wall of fire"
-								],
-								"17": [
-									"cone of cold",
-									"wall of force"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"Artillerist|Artificer|ERLW|Artillerist|ERLW|3",
-						"Arcane Firearm|Artificer|ERLW|Artillerist|ERLW|5",
-						"Explosive Cannon|Artificer|ERLW|Artillerist|ERLW|9",
-						"Fortified Position|Artificer|ERLW|Artillerist|ERLW|15"
-					]
-				},
-				{
-					"name": "Battle Smith",
-					"shortName": "Battle Smith",
-					"source": "ERLW",
-					"page": 60,
-					"additionalSpells": [
-						{
-							"prepared": {
-								"3": [
-									"heroism",
-									"shield"
-								],
-								"5": [
-									"branding smite",
-									"warding bond"
-								],
-								"9": [
-									"aura of vitality",
-									"conjure barrage"
-								],
-								"13": [
-									"aura of purity",
-									"fire shield"
-								],
-								"17": [
-									"banishing smite",
-									"mass cure wounds"
-								]
-							}
-						}
-					],
-					"subclassFeatures": [
-						"Battle Smith|Artificer|ERLW|Battle Smith|ERLW|3",
-						"Extra Attack|Artificer|ERLW|Battle Smith|ERLW|5",
-						"Arcane Jolt|Artificer|ERLW|Battle Smith|ERLW|9",
-						"Improved Defender|Artificer|ERLW|Battle Smith|ERLW|15"
-					]
-				},
 				{
 					"name": "Armorer (UA)",
 					"shortName": "Armorer (UA)",
 					"source": "UA2020SubclassesPt3",
 					"page": 1,
+					"isReprinted": true,
 					"additionalSpells": [
 						{
 							"prepared": {
@@ -1452,14 +1345,248 @@
 						}
 					],
 					"subclassFeatures": [
-						"Armorer|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|3",
-						"Extra Attack|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|5",
-						"Armor Modifications|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|9",
-						"Perfected Armor|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|15"
+						"Armorer|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|3",
+						"Extra Attack|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|5",
+						"Armor Modifications|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|9",
+						"Perfected Armor|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|15"
+					]
+				},
+				{
+					"name": "Alchemist",
+					"shortName": "Alchemist",
+					"source": "TCE",
+					"page": 14,
+					"otherSources": [
+						{
+							"source": "ERLW",
+							"page": 58
+						}
+					],
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"healing word",
+									"ray of sickness"
+								],
+								"5": [
+									"flaming sphere",
+									"melf's acid arrow"
+								],
+								"9": [
+									"gaseous form",
+									"mass healing word"
+								],
+								"13": [
+									"blight",
+									"death ward"
+								],
+								"17": [
+									"cloudkill",
+									"raise dead"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Alchemist|Artificer|TCE|Alchemist|TCE|3",
+						"Alchemical Savant|Artificer|TCE|Alchemist|TCE|5",
+						"Restorative Reagents|Artificer|TCE|Alchemist|TCE|9",
+						"Chemical Mastery|Artificer|TCE|Alchemist|TCE|15"
+					]
+				},
+				{
+					"name": "Armorer",
+					"shortName": "Armorer",
+					"source": "TCE",
+					"page": 15,
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"magic missile",
+									"thunderwave"
+								],
+								"5": [
+									"mirror image",
+									"shatter"
+								],
+								"9": [
+									"hypnotic pattern",
+									"lightning bolt"
+								],
+								"13": [
+									"fire shield",
+									"greater invisibility"
+								],
+								"17": [
+									"passwall",
+									"wall of force"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Armorer|Artificer|TCE|Armorer|TCE|3",
+						"Extra Attack|Artificer|TCE|Armorer|TCE|5",
+						"Armor Modifications|Artificer|TCE|Armorer|TCE|9",
+						"Perfected Armor|Artificer|TCE|Armorer|TCE|15"
+					]
+				},
+				{
+					"name": "Artillerist",
+					"shortName": "Artillerist",
+					"source": "TCE",
+					"page": 17,
+					"otherSources": [
+						{
+							"source": "ERLW",
+							"page": 59
+						}
+					],
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"shield",
+									"thunderwave"
+								],
+								"5": [
+									"scorching ray",
+									"shatter"
+								],
+								"9": [
+									"fireball",
+									"wind wall"
+								],
+								"13": [
+									"ice storm",
+									"wall of fire"
+								],
+								"17": [
+									"cone of cold",
+									"wall of force"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Artillerist|Artificer|TCE|Artillerist|TCE|3",
+						"Arcane Firearm|Artificer|TCE|Artillerist|TCE|5",
+						"Explosive Cannon|Artificer|TCE|Artillerist|TCE|9",
+						"Fortified Position|Artificer|TCE|Artillerist|TCE|15"
+					]
+				},
+				{
+					"name": "Battle Smith",
+					"shortName": "Battle Smith",
+					"source": "TCE",
+					"page": 18,
+					"otherSources": [
+						{
+							"source": "ERLW",
+							"page": 60
+						}
+					],
+					"additionalSpells": [
+						{
+							"prepared": {
+								"3": [
+									"heroism",
+									"shield"
+								],
+								"5": [
+									"branding smite",
+									"warding bond"
+								],
+								"9": [
+									"aura of vitality",
+									"conjure barrage"
+								],
+								"13": [
+									"aura of purity",
+									"fire shield"
+								],
+								"17": [
+									"banishing smite",
+									"mass cure wounds"
+								]
+							}
+						}
+					],
+					"subclassFeatures": [
+						"Battle Smith|Artificer|TCE|Battle Smith|TCE|3",
+						"Extra Attack|Artificer|TCE|Battle Smith|TCE|5",
+						"Arcane Jolt|Artificer|TCE|Battle Smith|TCE|9",
+						"Improved Defender|Artificer|TCE|Battle Smith|TCE|15"
 					]
 				}
 			],
 			"fluff": [
+				{
+					"name": "Artificer",
+					"type": "section",
+					"entries": [
+						"Masters of invention, artificers use ingenuity and magic to unlock extraordinary capabilities in objects. They see magic as a complex system waiting to be decoded and then harnessed in their spells and inventions. You can find everything you need to play one of these inventors in the next few sections. Artificers use a variety of tools to channel their arcane power. To cast a spell, an artificer might use alchemist's supplies to create a potent elixir, calligrapher's supplies to inscribe a sigil of power, or tinker's tools to craft a temporary charm. The magic of artificers is tied to their tools and their talents, and few other characters can produce the right tool for a job as well as an artificer.",
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Artificers in Many Worlds",
+									"entries": [
+										"Throughout the D&D multiverse, artificers create inventions and magic items of peace and war. Many lives have been brightened or saved because of the work of kind artificers, but countless lives have also been lost because of the mass destruction unleashed by certain artificers' creations.",
+										"In the Forgotten Realms, the island of Lantan is home to many artificers, and in the world of Dragonlance, tinker gnomes are often members of this class. The strange technologies in the Barrier Peaks of the world of Greyhawk have inspired some folk to walk the path of the artificer, and in Mystara, various nations employ artificers to keep airships and other wondrous devices operational.",
+										"Artificers in the City of Sigil share discoveries from throughout the multiverse, and from there, the gnome artificer Vi runs a cosmos-spanning business that hires adventurers to fix problems that others deem unfixable. In Vi's home world, Eberron, magic is harnessed as a form of science and deployed throughout society, largely as a result of the wondrous ingenuity of artificers."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Creating an Artificer",
+									"entries": [
+										"To create an artificer, consult the subsections which give you hit points, proficiencies, and starting equipment. Then look at the Artificer table to see which features you get at each level. The descriptions of those features appear below."
+									]
+								},
+								{
+									"type": "quote",
+									"entries": [
+										"Artificers invent cutting-edge problems, then try to solve them-loudly and often with collateral damage."
+									],
+									"by": "Tasha"
+								},
+								{
+									"type": "entries",
+									"name": "Multiclassing and the Artificer",
+									"entries": [
+										"If your group uses the optional rule on multiclassing in the {@book Player's Handbook|PHB}, here's what you need to know if you choose artificer as one of your classes.",
+										{
+											"type": "entries",
+											"name": "Ability Score Minimum",
+											"entries": [
+												"As a multiclass character, you must have at least an Intelligence score of 13 to take a level in this class, or to take a level in another class if you are already an artificer."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Proficiencies Gained",
+											"entries": [
+												"If artificer isn't your initial class, here are the proficiencies you gain when you take your first level as an artificer: light armor, medium armor, shields, {@item thieves' tools|PHB}, {@item tinker's tools|PHB}."
+											]
+										},
+										{
+											"type": "entries",
+											"name": "Spell Slots",
+											"entries": [
+												"Add half your levels (rounded up) in the artificer class to the appropriate levels from other classes to determine your available spell slots."
+											]
+										}
+									]
+								}
+							]
+						}
+					],
+					"source": "TCE"
+				},
 				{
 					"name": "Artificer",
 					"type": "section",
@@ -1532,7 +1659,7 @@
 						}
 					],
 					"source": "ERLW",
-					"page": 0
+					"page": 54
 				}
 			]
 		}
@@ -1540,13 +1667,19 @@
 	"classFeature": [
 		{
 			"name": "Magical Tinkering",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 1,
 			"entries": [
-				"At 1st level, you learn how to invest a spark of magic into mundane objects. To use this ability, you must have {@item tinker's tools|PHB} or other artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:",
+				"At 1st level, you learn how to invest a spark of magic into mundane objects. To use this ability, you must have {@item thieves' tools|PHB} or {@item artisan's tools|PHB} in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:",
 				{
 					"type": "list",
 					"items": [
@@ -1562,10 +1695,16 @@
 		},
 		{
 			"name": "Optional Rule: Firearm Proficiency",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 1,
 			"entries": [
 				"The secrets of creating and operating gunpowder weapons have been discovered in various corners of the D&D multiverse. If your Dungeon Master uses the rules on firearms in {@book chapter 9|DMG|9|Firearms} of the {@book Dungeon Master's Guide|DMG} and your artificer has been exposed to the operation of such weapons, your artificer is proficient with them."
@@ -1573,10 +1712,16 @@
 		},
 		{
 			"name": "Spellcasting",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 1,
 			"entries": [
 				"You have studied the workings of magic and how to channel it through objects. As a result, you have gained the ability to cast spells. To observers, you don't appear to be casting spells in a conventional way; you look as if you're producing wonders using mundane items or outlandish inventions.",
@@ -1584,7 +1729,7 @@
 					"type": "entries",
 					"name": "Tools Required",
 					"entries": [
-						"You produce your artificer spell effects through your tools. You must have a spellcasting focus\u2014specifically {@item thieves' tools|phb} or some kind of {@item artisan's tools|phb|artisan's tool}\u2014in hand when you cast any spell with this Spellcasting feature. You must be proficient with the tool to use it in this way. See {@book chapter 5|PHB|4}, \"Equipment,\" in the {@book Player's Handbook|PHB} for descriptions of these tools.",
+						"You produce your artificer spell effects through your tools. You must have a spellcasting focus\u2014specifically {@item thieves' tools|phb} or some kind of {@item artisan's tools|phb|artisan's tool}\u2014in hand when you cast any spell with this Spellcasting feature (meaning the spell has an 'M' component when you cast it). You must be proficient with the tool to use it in this way. See {@book chapter 5|PHB|4}, \"Equipment,\" in the {@book Player's Handbook|PHB} for descriptions of these tools.",
 						"After you gain the Infuse Item feature at 2nd level, you can also use any item bearing one of your infusions as a spellcasting focus.",
 						{
 							"type": "inset",
@@ -1647,16 +1792,22 @@
 		},
 		{
 			"name": "Infuse Item",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 2,
 			"entries": [
 				"At 2nd level, you gain the ability to imbue mundane items with certain magical infusions. The magic items you create with this feature are effectively prototypes of permanent items.",
 				{
 					"type": "refClassFeature",
-					"classFeature": "Infusions Known|Artificer|ERLW|2"
+					"classFeature": "Infusions Known|Artificer|TCE|2"
 				},
 				{
 					"type": "inset",
@@ -1674,17 +1825,24 @@
 					"entries": [
 						"Whenever you finish a long rest, you can touch a nonmagical object and imbue it with one of your artificer infusions, turning it into a magic item. An infusion works on only certain kinds of objects, as specified in the infusion's description. If the item requires attunement, you can attune yourself to it the instant you infuse the item. If you decide to attune to the item later, you must do so using the normal process for attunement (see \"Attunement\" in chapter 7 of the {@book Dungeon Master's Guide|DMG}).",
 						"Your infusion remains in an item indefinitely, but when you die, the infusion vanishes after a number of days have passed equal to your Intelligence modifier (minimum of 1 day). The infusion also vanishes if you give up your knowledge of the infusion for another one.",
-						"You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion immediately ends, and then the new infusion applies."
+						"You can infuse more than one nonmagical object at the end of a long rest; the maximum number of objects appears in the Infused Items column of the Artificer table. You must touch each of the objects, and each of your infusions can be in only one object at a time. Moreover, no object can bear more than one of your infusions at a time. If you try to exceed your maximum number of infusions, the oldest infusion immediately ends, and then the new infusion applies.",
+						"If an infusion ends on an item that contains other things, like a bag of holding, its contents harmlessly appear in and around its space."
 					]
 				}
 			]
 		},
 		{
 			"name": "Infusions Known",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 2,
 			"header": 1,
 			"entries": [
@@ -1694,32 +1852,50 @@
 		},
 		{
 			"name": "Artificer Specialist",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 3,
 			"entries": [
-				"At 3rd level, you choose the type of specialist you are: Alchemist, Artillerist, or Battle Smith, each of which is detailed at the end of the class's description. Your choice grants you features at 5th level and again at 9th and 15th level."
+				"At 3rd level, you choose the type of specialist you are, each of which is detailed at the end of the class's description. Your choice grants you features at 5th level and again at 9th and 15th level."
 			]
 		},
 		{
 			"name": "The Right Tool for the Job",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 3,
 			"entries": [
-				"At 3rd level, you learn how to produce exactly the tool you need: with {@item tinker's tools|PHB} in hand, you can magically create one set of artisan's tools in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again."
+				"At 3rd level, you learn how to produce exactly the tool you need: with {@item thieves' tools|PHB} or {@item artisan's tools|PHB} in hand, you can magically create one set of {@item artisan's tools|PHB} in an unoccupied space within 5 feet of you. This creation requires 1 hour of uninterrupted work, which can coincide with a short or long rest. Though the product of magic, the tools are nonmagical, and they vanish when you use this feature again."
 			]
 		},
 		{
 			"name": "Ability Score Improvement",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 4,
 			"entries": [
 				"When you reach 4th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -1731,8 +1907,9 @@
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1741,10 +1918,16 @@
 		},
 		{
 			"name": "Artificer Specialist Feature",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 5,
 			"entries": [
 				"At 5th level, you gain a feature granted by your Artificer Specialist choice."
@@ -1752,10 +1935,16 @@
 		},
 		{
 			"name": "Tool Expertise",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 6,
 			"entries": [
 				"Starting at 6th level, your proficiency bonus is doubled for any ability check you make that uses your proficiency with a tool."
@@ -1763,10 +1952,16 @@
 		},
 		{
 			"name": "Flash of Genius",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 7,
 			"entries": [
 				"Starting at 7th level, you gain the ability to come up with solutions under pressure. When you or another creature you can see within 30 feet of you makes an ability check or a saving throw, you can use your reaction to add your Intelligence modifier to the roll.",
@@ -1775,10 +1970,16 @@
 		},
 		{
 			"name": "Ability Score Improvement",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 8,
 			"entries": [
 				"When you reach 8th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -1790,8 +1991,9 @@
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1800,10 +2002,16 @@
 		},
 		{
 			"name": "Artificer Specialist Feature",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 9,
 			"entries": [
 				"At 9th level, you gain a feature granted by your Artificer Specialist choice."
@@ -1811,10 +2019,16 @@
 		},
 		{
 			"name": "Magic Item Adept",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 10,
 			"entries": [
 				"When you reach 10th level, you achieve a profound understanding of how to use and make magic items:",
@@ -1829,10 +2043,16 @@
 		},
 		{
 			"name": "Spell-Storing Item",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 11,
 			"entries": [
 				"At 11th level, you learn how to store a spell in an object. Whenever you finish a long rest, you can touch one {@filter simple or martial weapon|items|source=phb|category=basic|type=martial weapon;simple weapon} or one item that you can use as a spellcasting focus, and you store a spell in it, choosing a 1st- or 2nd-level spell from the {@filter artificer spell list|spells|class=Artificer|cast time=action|level=1;2} that requires 1 action to cast (you needn't have it prepared).",
@@ -1841,10 +2061,16 @@
 		},
 		{
 			"name": "Ability Score Improvement",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 12,
 			"entries": [
 				"When you reach 12th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -1856,8 +2082,9 @@
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1866,10 +2093,16 @@
 		},
 		{
 			"name": "Magic Item Savant",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 14,
 			"entries": [
 				"At 14th level, your skill with magic items deepens more:",
@@ -1884,10 +2117,16 @@
 		},
 		{
 			"name": "Artificer Specialist Feature",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 15,
 			"entries": [
 				"At 15th level, you gain a feature granted by your Artificer Specialist choice."
@@ -1895,10 +2134,16 @@
 		},
 		{
 			"name": "Ability Score Improvement",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 16,
 			"entries": [
 				"When you reach 16th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -1910,8 +2155,9 @@
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1920,10 +2166,16 @@
 		},
 		{
 			"name": "Magic Item Master",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 18,
 			"entries": [
 				"Starting at 18th level, you can attune to up to six magic items at once."
@@ -1931,10 +2183,16 @@
 		},
 		{
 			"name": "Ability Score Improvement",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 19,
 			"entries": [
 				"When you reach 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.",
@@ -1946,8 +2204,9 @@
 			"source": "UAClassFeatureVariants",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -1956,10 +2215,16 @@
 		},
 		{
 			"name": "Soul of Artifice",
-			"source": "ERLW",
-			"page": 54,
+			"source": "TCE",
+			"page": 9,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 54
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"level": 20,
 			"entries": [
 				"At 20th level, you develop a mystical connection to your magic items, which you can draw on for protection:",
@@ -2146,6 +2411,7 @@
 			"className": "Artificer",
 			"classSource": "UAArtificer",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2217,6 +2483,7 @@
 			"className": "Artificer",
 			"classSource": "UAArtificer",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2263,6 +2530,7 @@
 			"className": "Artificer",
 			"classSource": "UAArtificer",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2320,6 +2588,7 @@
 			"className": "Artificer",
 			"classSource": "UAArtificer",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2355,6 +2624,7 @@
 			"className": "Artificer",
 			"classSource": "UAArtificer",
 			"level": 18,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 18th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2380,7 +2650,7 @@
 			"classSource": "UAArtificerRevisited",
 			"level": 1,
 			"entries": [
-				"At 1st level, you learn how to invest a spark of magic in objects that would otherwise be mundane. To use this ability, you must have {@item thieves' tools|PHB}, {@item tinker's tools|PHB}, or other artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:",
+				"At 1st level, you learn how to invest a spark of magic in objects that would otherwise be mundane. To use this ability, you must have {@item thieves' tools|PHB}, {@item tinker's tools|PHB}, or other {@item artisan's tools|PHB} in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:",
 				{
 					"type": "list",
 					"items": [
@@ -2555,6 +2825,7 @@
 			"className": "Artificer (Revisited)",
 			"classSource": "UAArtificerRevisited",
 			"level": 4,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 4th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2602,6 +2873,7 @@
 			"className": "Artificer (Revisited)",
 			"classSource": "UAArtificerRevisited",
 			"level": 8,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 8th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2638,6 +2910,7 @@
 			"className": "Artificer (Revisited)",
 			"classSource": "UAArtificerRevisited",
 			"level": 12,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 12th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2674,6 +2947,7 @@
 			"className": "Artificer (Revisited)",
 			"classSource": "UAArtificerRevisited",
 			"level": 16,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 16th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2711,6 +2985,7 @@
 			"className": "Artificer (Revisited)",
 			"classSource": "UAArtificerRevisited",
 			"level": 19,
+			"isClassFeatureVariant": true,
 			"entries": [
 				"{@i 19th-level feature (enhances Ability Score Improvement)}",
 				"When you gain the Ability Score Improvement feature from your class, you can also replace one of your skill proficiencies with a skill proficiency offered by your class at 1st level (the proficiency you replace needn't be from the class).",
@@ -2732,37 +3007,49 @@
 	"subclassFeature": [
 		{
 			"name": "Alchemist",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"entries": [
 				"An Alchemist is an expert at combining reagents to produce mystical effects. Alchemists use their creations to give life and to leech it away. Alchemy is the oldest of artificer traditions, and its versatility has long been valued during times of war and peace.",
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Tool Proficiency|Artificer|ERLW|Alchemist|ERLW|3"
+					"subclassFeature": "Tool Proficiency|Artificer|TCE|Alchemist|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Alchemist Spells|Artificer|ERLW|Alchemist|ERLW|3"
+					"subclassFeature": "Alchemist Spells|Artificer|TCE|Alchemist|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Experimental Elixir|Artificer|ERLW|Alchemist|ERLW|3"
+					"subclassFeature": "Experimental Elixir|Artificer|TCE|Alchemist|TCE|3"
 				}
 			]
 		},
 		{
 			"name": "Alchemist Spells",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
@@ -2805,12 +3092,18 @@
 		},
 		{
 			"name": "Experimental Elixir",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
@@ -2860,26 +3153,38 @@
 		},
 		{
 			"name": "Tool Proficiency",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you adopt this specialization at 3rd level, you gain proficiency with {@item alchemist's supplies|PHB}. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice."
+				"When you adopt this specialization at 3rd level, you gain proficiency with {@item alchemist's supplies|PHB}. If you already have this proficiency, you gain proficiency with one other type of {@item artisan's tools|PHB} of your choice."
 			]
 		},
 		{
 			"name": "Alchemical Savant",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 5,
 			"header": 2,
 			"entries": [
@@ -2888,12 +3193,18 @@
 		},
 		{
 			"name": "Restorative Reagents",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 9,
 			"header": 2,
 			"entries": [
@@ -2909,12 +3220,18 @@
 		},
 		{
 			"name": "Chemical Mastery",
-			"source": "ERLW",
-			"page": 58,
+			"source": "TCE",
+			"page": 14,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 58
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Alchemist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 15,
 			"header": 2,
 			"entries": [
@@ -2929,39 +3246,302 @@
 			]
 		},
 		{
-			"name": "Artillerist",
-			"source": "ERLW",
-			"page": 59,
+			"name": "Armorer",
+			"source": "TCE",
+			"page": 15,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 3,
+			"entries": [
+				"An artificer who specializes as an Armorer modifies armor to function almost like a second skin. The armor is enhanced to hone the artificer's magic, unleash potent attacks, and generate a formidable defense. The artificer bonds with this armor, becoming one with it even as they experiment with it and refine its magical capabilities.",
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Tools of the Trade|Artificer|TCE|Armorer|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armorer Spells|Artificer|TCE|Armorer|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Arcane Armor|Artificer|TCE|Armorer|TCE|3"
+				},
+				{
+					"type": "refSubclassFeature",
+					"subclassFeature": "Armor Model|Artificer|TCE|Armorer|TCE|3"
+				}
+			]
+		},
+		{
+			"name": "Arcane Armor",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Armorer feature}",
+				"Your metallurgical pursuits have led to you making armor a conduit for your magic. As an action, you can turn a suit of armor you are wearing into Arcane Armor, provided you have {@item smith's tools|PHB} in hand.",
+				"You gain the following benefits while wearing this armor:",
+				{
+					"type": "list",
+					"items": [
+						"If the armor normally has a Strength requirement, the arcane armor lacks this requirement for you.",
+						"You can use the arcane armor as a spellcasting focus for your artificer spells.",
+						"The armor attaches to you and can't be removed against your will. It also expands to cover your entire body, although you can retract or deploy the helmet as a bonus action. The armor replaces any missing limbs, functioning identically to a limb it replaces.",
+						"You can doff or don the armor as an action. The armor continues to be Arcane Armor until you don another suit of armor or you die."
+					]
+				}
+			]
+		},
+		{
+			"name": "Armor Model",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Armorer feature}",
+				"You can customize your Arcane Armor. When you do so, choose one of the following armor models: Guardian or Infiltrator. The model you choose gives you special benefits while you wear it.",
+				"Each model includes a special weapon. When you attack with that weapon, you can add your Intelligence modifier, instead of Strength or Dexterity, to the attack and damage rolls.",
+				"You can change the armor's model whenever you finish a short or long rest, provided you have {@item smith's tools|PHB} in hand.",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"name": "Guardian",
+							"entries": [
+								"You design your armor to be in the front line of conflict. It has the following features:",
+								{
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										{
+											"type": "item",
+											"name": "Thunder Gauntlets.",
+											"entry": "Each of the armor's gauntlets counts as a simple melee weapon while you aren't holding anything in it, and it deals {@damage 1d8} thunder damage on a hit. A creature hit by the gauntlet has disadvantage on attack rolls against targets other than you until the start of your next turn, as the armor magically emits a distracting pulse when the creature attacks someone else."
+										},
+										{
+											"type": "item",
+											"name": "Defensive Field.",
+											"entry": "As a bonus action, you can gain temporary hit points equal to your level in this class, replacing any temporary hit points you already have. You lose these temporary hit points if you doff the armor. You can use this bonus action a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest."
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "entries",
+							"name": "Infiltrator",
+							"entries": [
+								"You customize your armor for subtle undertakings. It has the following features:",
+								{
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										{
+											"type": "item",
+											"name": "Lightning Launcher.",
+											"entry": "A gemlike node appears on one of your armored fists or on the chest (your choice). It counts as a simple ranged weapon, with a normal range of 90 feet and a long range of 300 feet, and it deals {@damage 1d6} lightning damage on a hit. Once on each of your turns when you hit a creature with it, you can deal an extra {@damage 1d6} lightning damage to that target."
+										},
+										{
+											"type": "item",
+											"name": "Powered Steps.",
+											"entry": "Your walking speed increases by 5 feet."
+										},
+										{
+											"type": "item",
+											"name": "Dampening Field.",
+											"entry": "You have advantage on Dexterity ({@skill Stealth}) checks. If the armor normally imposes disadvantage on such checks, the advantage and disadvantage cancel each other, as normal."
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Armorer Spells",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Armorer feature}",
+				"You always have certain spells prepared after you reach particular levels in this class, as shown in the Armorer Spells table. These spells count as artificer spells for you, but they don't count against the number of artificer spells you prepare.",
+				{
+					"type": "table",
+					"caption": "Armorer Spells",
+					"colLabels": [
+						"Artificer Level",
+						"Spell"
+					],
+					"colStyles": [
+						"col-2 text-center",
+						"col-10"
+					],
+					"rows": [
+						[
+							"3rd",
+							"{@spell magic missile}, {@spell thunderwave}"
+						],
+						[
+							"5th",
+							"{@spell mirror image}, {@spell shatter}"
+						],
+						[
+							"9th",
+							"{@spell hypnotic pattern}, {@spell lightning bolt}"
+						],
+						[
+							"13th",
+							"{@spell fire shield}, {@spell greater invisibility}"
+						],
+						[
+							"17th",
+							"{@spell passwall}, {@spell wall of force}"
+						]
+					]
+				}
+			]
+		},
+		{
+			"name": "Tools of the Trade",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 3,
+			"header": 1,
+			"entries": [
+				"{@i 3rd-level Armorer feature}",
+				"You gain proficiency with heavy armor. You also gain proficiency with {@item smith's tools|PHB}. If you already have this tool proficiency, you gain proficiency with one other type of {@item artisan's tools|PHB} of your choice."
+			]
+		},
+		{
+			"name": "Extra Attack",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 5,
+			"header": 2,
+			"entries": [
+				"{@i 5th-level Armorer feature}",
+				"You can attack twice, rather than once, whenever you take the {@action Attack} action on your turn."
+			]
+		},
+		{
+			"name": "Armor Modifications",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 9,
+			"header": 2,
+			"entries": [
+				"{@i 9th-level Armorer feature}",
+				"You learn how to use your artificer infusions to specially modify your Arcane Armor. That armor now counts as separate items for the purposes of your Infuse Items feature: armor (the chest piece), boots, helmet, and the armor's special weapon. Each of those items can bear one of your infusions, and the infusions transfer over if you change your armor's model with the Armor Model feature. In addition, the maximum number of items you can infuse at once increases by 2, but those extra items must be part of your Arcane Armor."
+			]
+		},
+		{
+			"name": "Perfected Armor",
+			"source": "TCE",
+			"page": 15,
+			"className": "Artificer",
+			"classSource": "TCE",
+			"subclassShortName": "Armorer",
+			"subclassSource": "TCE",
+			"level": 15,
+			"header": 2,
+			"entries": [
+				"{@i 15th-level Armorer feature}",
+				"Your Arcane Armor gains additional benefits based on its model, as shown below.",
+				{
+					"type": "entries",
+					"name": "Guardian",
+					"entries": [
+						"When a Huge or smaller creature you can see ends its turn within 30 feet of you, you can use your reaction to magically force the creature to make a Strength saving throw against your spell save DC, pulling the creature up to 30 feet toward you to an unoccupied space. If you pull the target to a space within 5 feet of you, you can make a melee weapon attack against it as part of this reaction.",
+						"You can use this reaction a number of times equal to your proficiency bonus, and you regain all expended uses of it when you finish a long rest."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Infiltrator",
+					"entries": [
+						"Any creature that takes lightning damage from your Lightning Launcher glimmers with magical light until the start of your next turn. The glimmering creature sheds dim light in a 5-foot radius, and it has disadvantage on attack rolls against you, as the light jolts it if it attacks you. In addition, the next attack roll against it has advantage, and if that attack hits, the target takes an extra {@damage 1d6} lightning damage."
+					]
+				}
+			]
+		},
+		{
+			"name": "Artillerist",
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
+			"className": "Artificer",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"entries": [
 				"An Artillerist specializes in using magic to hurl energy, projectiles, and explosions on a battlefield. This destructive power was valued by all the armies of the Last War. Now that the war is over, some members of this specialization have sought to build a more peaceful world by using their powers to fight the resurgence of strife in Khorvaire.",
 				"The gnome artificer Vi, an unlikely yet key member of House Cannith's warforged project, has been especially vocal about making things right: \"It's about time we fixed things instead of blowing them all to hell.\"",
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Tool Proficiency|Artificer|ERLW|Artillerist|ERLW|3"
+					"subclassFeature": "Tool Proficiency|Artificer|TCE|Artillerist|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Artillerist Spells|Artificer|ERLW|Artillerist|ERLW|3"
+					"subclassFeature": "Artillerist Spells|Artificer|TCE|Artillerist|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Eldritch Cannon|Artificer|ERLW|Artillerist|ERLW|3"
+					"subclassFeature": "Eldritch Cannon|Artificer|TCE|Artillerist|TCE|3"
 				}
 			]
 		},
 		{
 			"name": "Artillerist Spells",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
@@ -3004,18 +3584,24 @@
 		},
 		{
 			"name": "Eldritch Cannon",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
 				"At 3rd level, you learn how to create a magical cannon. Using {@item woodcarver's tools|PHB} or {@item smith's tools|PHB}, you can take an action to magically create a Small or Tiny eldritch cannon in an unoccupied space on a horizontal surface within 5 feet of you. A Small eldritch cannon occupies its space, and a Tiny one can be held in one hand.",
 				"Once you create a cannon, you can't do so again until you finish a long rest or until you expend a spell slot of 1st level or higher. You can have only one cannon at a time and can't create one while your cannon is present.",
-				"The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage, psychic damage, and all conditions. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the {@spell mending} spell is cast on it, it regains {@dice 2d6} hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action.",
+				"The cannon is a magical object. Regardless of size, the cannon has an AC of 18 and a number of hit points equal to five times your artificer level. It is immune to poison damage and psychic damage, and all conditions. If it is forced to make an ability check or a saving throw, treat all its ability scores as 10 (+0). If the {@spell mending} spell is cast on it, it regains {@dice 2d6} hit points. It disappears if it is reduced to 0 hit points or after 1 hour. You can dismiss it early as an action.",
 				"When you create the cannon, you determine its appearance and whether it has legs. You also decide which type it is, choosing from the options on the Eldritch Cannons table. On each of your turns, you can take a bonus action to cause the cannon to activate if you are within 60 feet of it. As part of the same bonus action, you can direct the cannon to walk or climb up to 15 feet to an unoccupied space, provided it has legs.",
 				{
 					"type": "table",
@@ -3047,26 +3633,38 @@
 		},
 		{
 			"name": "Tool Proficiency",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you adopt this specialization at 3rd level, you gain proficiency with {@item woodcarver's tools|PHB}. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice."
+				"When you adopt this specialization at 3rd level, you gain proficiency with {@item woodcarver's tools|PHB}. If you already have this proficiency, you gain proficiency with one other type of {@item artisan's tools|PHB} of your choice."
 			]
 		},
 		{
 			"name": "Arcane Firearm",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 5,
 			"header": 2,
 			"entries": [
@@ -3076,12 +3674,18 @@
 		},
 		{
 			"name": "Explosive Cannon",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 9,
 			"header": 2,
 			"entries": [
@@ -3097,12 +3701,18 @@
 		},
 		{
 			"name": "Fortified Position",
-			"source": "ERLW",
-			"page": 59,
+			"source": "TCE",
+			"page": 17,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 59
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Artillerist",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 15,
 			"header": 2,
 			"entries": [
@@ -3118,42 +3728,54 @@
 		},
 		{
 			"name": "Battle Smith",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"entries": [
 				"Armies require protection, and someone has to put things back together if defenses fail. A combination of protector and medic, a Battle Smith is an expert at defending others and repairing both material and personnel. To aid in their work, Battle Smiths are usually accompanied by a steel defender, a protective companion of their own creation. Many soldiers tell stories of nearly dying before being saved by a Battle Smith and a steel defender.",
 				"Battle Smiths played a key role in House Cannith's work on battle constructs and the original warforged, and after the Last War, these artificers led efforts to aid those who were injured in the war's horrific battles.",
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Tool Proficiency|Artificer|ERLW|Battle Smith|ERLW|3"
+					"subclassFeature": "Tool Proficiency|Artificer|TCE|Battle Smith|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Battle Smith Spells|Artificer|ERLW|Battle Smith|ERLW|3"
+					"subclassFeature": "Battle Smith Spells|Artificer|TCE|Battle Smith|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Battle Ready|Artificer|ERLW|Battle Smith|ERLW|3"
+					"subclassFeature": "Battle Ready|Artificer|TCE|Battle Smith|TCE|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Steel Defender|Artificer|ERLW|Battle Smith|ERLW|3"
+					"subclassFeature": "Steel Defender|Artificer|TCE|Battle Smith|TCE|3"
 				}
 			]
 		},
 		{
 			"name": "Battle Ready",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
@@ -3169,12 +3791,18 @@
 		},
 		{
 			"name": "Battle Smith Spells",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
@@ -3217,43 +3845,61 @@
 		},
 		{
 			"name": "Steel Defender",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"By 3rd level, your tinkering has borne you a faithful companion, a {@creature steel defender|erlw}. It is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the steel defender stat block. You determine the creature's appearance and whether it has two legs or four; your choice has no effect on its game statistics.",
-				"In combat, the steel defender shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take one of the actions in its stat block or the {@action Dash}, {@action Disengage}, {@action Help}, {@action Hide}, or {@action Search} action.",
+				"By 3rd level, your tinkering has borne you a faithful companion, a {@creature steel defender|erlw}. It is friendly to you and your companions, and it obeys your commands. See this creature's game statistics in the steel defender stat block, which uses your proficiency bonus (PB) in several places. You determine the creature's appearance and whether it has two legs or four; your choice has no effect on its game statistics.",
+				"In combat, the defender shares your initiative count, but it takes its turn immediately after yours. It can move and use its reaction on its own, but the only action it takes on its turn is the {@action Dodge} action, unless you take a bonus action on your turn to command it to take another action. That action can be one in its stat block or some other action. If you are {@condition incapacitated}, the defender can take any action of its choice, not just {@action Dodge}.",
 				"If the {@spell mending} spell is cast on it, it regains {@dice 2d6} hit points. If it has died within the last hour, you can use your {@item smith's tools|PHB} as an action to revive it, provided you are within 5 feet of it and you expend a spell slot of 1st level or higher. The steel defender returns to life after 1 minute with all its hit points restored.",
-				"At the end of a long rest, you can create a new steel defender if you have your {@item smith's tools|PHB} with you. If you already have a steel defender from this feature, the first one immediately perishes."
+				"At the end of a long rest, you can create a new steel defender if you have your {@item smith's tools|PHB} with you. If you already have a steel defender from this feature, the first one immediately perishes. The defender also perishes if you die."
 			]
 		},
 		{
 			"name": "Tool Proficiency",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 3,
 			"header": 1,
 			"entries": [
-				"When you adopt this specialization at 3rd level, you gain proficiency with {@item smith's tools|PHB}. If you already have this proficiency, you gain proficiency with one other type of artisan's tools of your choice."
+				"When you adopt this specialization at 3rd level, you gain proficiency with {@item smith's tools|PHB}. If you already have this proficiency, you gain proficiency with one other type of {@item artisan's tools|PHB} of your choice."
 			]
 		},
 		{
 			"name": "Extra Attack",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 5,
 			"header": 2,
 			"entries": [
@@ -3262,12 +3908,18 @@
 		},
 		{
 			"name": "Arcane Jolt",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 9,
 			"header": 2,
 			"entries": [
@@ -3284,12 +3936,18 @@
 		},
 		{
 			"name": "Improved Defender",
-			"source": "ERLW",
-			"page": 60,
+			"source": "TCE",
+			"page": 18,
+			"otherSources": [
+				{
+					"source": "ERLW",
+					"page": 60
+				}
+			],
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Battle Smith",
-			"subclassSource": "ERLW",
+			"subclassSource": "TCE",
 			"level": 15,
 			"header": 2,
 			"entries": [
@@ -3309,7 +3967,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 3,
@@ -3317,19 +3975,19 @@
 				"An artificer who specializes as an Armorer modifies armor to function almost like a second skin. The armor is enhanced to hone the artificer's magic, unleash potent attacks, and generate a formidable defense. The artificer bonds with this armor, becoming one with it even as they experiment with it and refine its magical capabilities.",
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Tools of the Trade|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|3"
+					"subclassFeature": "Tools of the Trade|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Armorer Spells|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|3"
+					"subclassFeature": "Armorer Spells|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Power Armor|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|3"
+					"subclassFeature": "Power Armor|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|3"
 				},
 				{
 					"type": "refSubclassFeature",
-					"subclassFeature": "Armor Model|Artificer|ERLW|Armorer (UA)|UA2020SubclassesPt3|3"
+					"subclassFeature": "Armor Model|Artificer|TCE|Armorer (UA)|UA2020SubclassesPt3|3"
 				}
 			]
 		},
@@ -3338,7 +3996,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 3,
@@ -3406,7 +4064,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 3,
@@ -3455,7 +4113,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 3,
@@ -3480,14 +4138,14 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 3,
 			"header": 1,
 			"entries": [
 				"{@i 3rd-level Armorer feature}",
-				"You gain proficiency with heavy armor. You also gain proficiency with {@item smith's tools|PHB}. If you already have this tool proficiency, you gain proficiency with one other type of artisan's tools of your choice."
+				"You gain proficiency with heavy armor. You also gain proficiency with {@item smith's tools|PHB}. If you already have this tool proficiency, you gain proficiency with one other type of {@item artisan's tools|PHB} of your choice."
 			]
 		},
 		{
@@ -3495,7 +4153,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 5,
@@ -3510,7 +4168,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 9,
@@ -3525,7 +4183,7 @@
 			"source": "UA2020SubclassesPt3",
 			"page": 1,
 			"className": "Artificer",
-			"classSource": "ERLW",
+			"classSource": "TCE",
 			"subclassShortName": "Armorer (UA)",
 			"subclassSource": "UA2020SubclassesPt3",
 			"level": 15,
