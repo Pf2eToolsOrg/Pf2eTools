@@ -3271,7 +3271,6 @@ Renderer.utils = {
 		else return $ele[0].outerHTML;
 	},
 
-	getExcludedTr(it, dataProp) {
 	isDisplayPage (page) { return page != null && ((!isNaN(page) && page > 0) || isNaN(page)); },
 
 	getExcludedTr (it, dataProp, page) {

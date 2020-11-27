@@ -32,7 +32,7 @@ Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText (num) {
+	function getAsText(num) {
 		const abs = Math.abs(num);
 		switch (abs) {
 			case 0: return "zero";
@@ -159,8 +159,8 @@ Parser.getAbilityModifier = function (abilityScore) {
 Parser.getSpeedString = (it) => {
 	if (it.speed == null) return "\u2014";
 
-	function procSpeed (propName) {
-		function addSpeed (s) {
+	function procSpeed(propName) {
+		function addSpeed(s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
@@ -168,11 +168,11 @@ Parser.getSpeedString = (it) => {
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
-	function getVal (speedProp) {
+	function getVal(speedProp) {
 		return speedProp.number != null ? speedProp.number : speedProp;
 	}
 
-	function getCond (speedProp) {
+	function getCond(speedProp) {
 		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
@@ -701,7 +701,7 @@ Parser.senseToExplanation = function (senseType) {
 };
 
 Parser.skillProficienciesToFull = function (skillProficiencies) {
-	function renderSingle (skProf) {
+	function renderSingle(skProf) {
 		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
 
 		const ixChoose = keys.indexOf("choose");
@@ -738,6 +738,7 @@ Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
 };
 
 Parser.spSchoolAbvToFull = function (schoolOrSubschool) {
+	if (schoolOrSubschool == null) return `N/A`
 	const out = Parser._parse_aToB(Parser.SP_SCHOOL_ABV_TO_FULL, schoolOrSubschool);
 	if (Parser.SP_SCHOOL_ABV_TO_FULL[schoolOrSubschool]) return out;
 	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.spellSchools && BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool]) return BrewUtil.homebrewMeta.spellSchools[schoolOrSubschool].full;
@@ -824,8 +825,9 @@ Parser.spTimeListToFull = function (times, isStripTags) {
 };
 
 Parser.getTimeToFull = function (time) {
-	return `${time.number} ${time.unit === "bonus" ? "bonus action" : time.unit}${time.number > 1 ? "s" : ""}`;
+	return `${time.number} ${time.unit === "free" ? "free action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
+
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
@@ -839,7 +841,7 @@ RNG_CYLINDER = "cylinder"; // homebrew only
 RNG_SELF = "self";
 RNG_SIGHT = "sight";
 RNG_UNLIMITED = "unlimited";
-RNG_UNLIMITED_SAME_PLANE = "plane";
+RNG_UNLIMITED_SAME_PLANE = "planetary";
 RNG_TOUCH = "touch";
 Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SPECIAL]: "Special",
@@ -854,7 +856,7 @@ Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SELF]: "Self",
 	[RNG_SIGHT]: "Sight",
 	[RNG_UNLIMITED]: "Unlimited",
-	[RNG_UNLIMITED_SAME_PLANE]: "Unlimited on the same plane",
+	[RNG_UNLIMITED_SAME_PLANE]: "Planetary",
 	[RNG_TOUCH]: "Touch"
 };
 
@@ -901,8 +903,10 @@ Parser.spRangeTypeToIcon = function (range) {
 
 Parser.spRangeToShortHtml = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"></span>`;
-		case RNG_POINT: return Parser.spRangeToShortHtml._renderPoint(range);
+		case RNG_SPECIAL:
+			return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="Special"/>`;
+		case RNG_POINT:
+			return Parser.spRangeToShortHtml._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -921,7 +925,8 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 		case RNG_UNLIMITED:
 		case RNG_UNLIMITED_SAME_PLANE:
 		case RNG_SPECIAL:
-		case RNG_TOUCH: return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"></span>`;
+		case RNG_TOUCH:
+			return `<span class="fas ${Parser.spRangeTypeToIcon(dist.type)} help--subtle" title="${Parser.spRangeTypeToFull(dist.type)}"/>`;
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
@@ -930,16 +935,18 @@ Parser.spRangeToShortHtml._renderPoint = function (range) {
 };
 Parser.spRangeToShortHtml._renderArea = function (range) {
 	const size = range.distance;
-	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"></span> ${size.amount}<span class="ve-small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
+	return `<span class="fas ${Parser.spRangeTypeToIcon(RNG_SELF)} help--subtle" title="Self"/> ${size.amount}<span class="ve-small">-${Parser.getSingletonUnit(size.type, true)}</span> ${Parser.spRangeToShortHtml._getAreaStyleString(range)}`;
 };
 Parser.spRangeToShortHtml._getAreaStyleString = function (range) {
-	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"></span>`
+	return `<span class="fas ${Parser.spRangeTypeToIcon(range.type)} help--subtle" title="${Parser.spRangeTypeToFull(range.type)}"/>`
 };
 
 Parser.spRangeToFull = function (range) {
 	switch (range.type) {
-		case RNG_SPECIAL: return Parser.spRangeTypeToFull(range.type);
-		case RNG_POINT: return Parser.spRangeToFull._renderPoint(range);
+		case RNG_SPECIAL:
+			return Parser.spRangeTypeToFull(range.type);
+		case RNG_POINT:
+			return Parser.spRangeToFull._renderPoint(range);
 		case RNG_LINE:
 		case RNG_CUBE:
 		case RNG_CONE:
@@ -958,7 +965,8 @@ Parser.spRangeToFull._renderPoint = function (range) {
 		case RNG_UNLIMITED:
 		case RNG_UNLIMITED_SAME_PLANE:
 		case RNG_SPECIAL:
-		case RNG_TOUCH: return Parser.spRangeTypeToFull(dist.type);
+		case RNG_TOUCH:
+			return Parser.spRangeTypeToFull(dist.type);
 		case UNT_FEET:
 		case UNT_MILES:
 		default:
@@ -971,10 +979,14 @@ Parser.spRangeToFull._renderArea = function (range) {
 };
 Parser.spRangeToFull._getAreaStyleString = function (range) {
 	switch (range.type) {
-		case RNG_SPHERE: return " radius";
-		case RNG_HEMISPHERE: return `-radius ${range.type}`;
-		case RNG_CYLINDER: return "-radius";
-		default: return ` ${range.type}`;
+		case RNG_SPHERE:
+			return " radius";
+		case RNG_HEMISPHERE:
+			return `-radius ${range.type}`;
+		case RNG_CYLINDER:
+			return "-radius";
+		default:
+			return ` ${range.type}`;
 	}
 };
 
@@ -1079,35 +1091,30 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"year"
 ];
 
-Parser.spClassesToFull = function (sp, isTextOnly, subclassLookup = {}) {
-	const fromSubclassList = Renderer.spell.getCombinedClasses(sp, "fromSubclass");
-	const fromSubclasses = Parser.spSubclassesToFull(fromSubclassList, isTextOnly, subclassLookup);
-	const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
-	return `${Parser.spMainClassesToFull(fromClassList, isTextOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
+Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
+	const fromSubclasses = Parser.spSubclassesToFull(classes, textOnly, subclassLookup);
+	return `${Parser.spMainClassesToFull(classes, textOnly)}${fromSubclasses ? `, ${fromSubclasses}` : ""}`
 };
 
-Parser.spMainClassesToFull = function (fromClassList, textOnly = false) {
-	return fromClassList
-		.map(c => ({hash: UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c), c}))
-		.filter(it => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(it.hash, "class", it.c.source))
-		.sort((a, b) => SortUtil.ascSort(a.c.name, b.c.name))
-		.map(it => textOnly ? it.c.name : `<a title="Source: ${Parser.sourceJsonToFull(it.c.source)}" href="${UrlUtil.PG_CLASSES}#${it.hash}">${it.c.name}</a>`)
-		.join(", ") || "";
+Parser.spMainClassesToFull = function (classes, textOnly = false, prop = "fromClassList") {
+	if (!classes) return "";
+	return (classes[prop] || [])
+		.filter(c => !ExcludeUtil.isInitialised || !ExcludeUtil.isExcluded(c.name, "class", c.source))
+		.sort((a, b) => SortUtil.ascSort(a.name, b.name))
+		.map(c => textOnly ? c.name : `<a title="Source: ${Parser.sourceJsonToFull(c.source)}" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}">${c.name}</a>`)
+		.join(", ");
 };
 
-Parser.spSubclassesToFull = function (fromSubclassList, textOnly, subclassLookup = {}) {
-	return fromSubclassList
-		.filter(mt => {
+Parser.spSubclassesToFull = function (classes, textOnly, subclassLookup = {}) {
+	if (!classes || !classes.fromSubclass) return "";
+	return classes.fromSubclass
+		.filter(c => {
 			if (!ExcludeUtil.isInitialised) return true;
-			const excludeClass = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](mt.class), "class", mt.class.source);
+			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
 			if (excludeClass) return false;
-			const fromLookup = MiscUtil.get(subclassLookup, mt.class.source, mt.class.name, mt.subclass.source, mt.subclass.name);
+			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
 			if (!fromLookup) return true;
-			const excludeSubclass = ExcludeUtil.isExcluded(
-				UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: fromLookup.name || mt.subclass.name, source: mt.subclass.source}),
-				"subclass",
-				mt.subclass.source
-			);
+			const excludeSubclass = ExcludeUtil.isExcluded(fromLookup.name || c.subclass.name, "subclass", c.subclass.source);
 			return !excludeSubclass;
 		})
 		.sort((a, b) => {
@@ -1115,7 +1122,7 @@ Parser.spSubclassesToFull = function (fromSubclassList, textOnly, subclassLookup
 			return byName || SortUtil.ascSort(a.subclass.name, b.subclass.name);
 		})
 		.map(c => Parser._spSubclassItem(c, textOnly, subclassLookup))
-		.join(", ") || "";
+		.join(", ");
 };
 
 Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
@@ -1125,7 +1132,12 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({subclass: {shortName: sc.name, source: sc.source}})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+		subclass: {
+			shortName: sc.name,
+			source: sc.source
+		}
+	})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
 	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
@@ -1157,7 +1169,6 @@ Parser.spAreaTypeToFull = function (type) {
 
 Parser.SP_MISC_TAG_TO_FULL = {
 	HL: "Healing",
-	THP: "Grants Temporary Hit Points",
 	SGT: "Requires Sight",
 	PRM: "Permanent Effects",
 	SCL: "Scaling Effects",
@@ -1178,6 +1189,23 @@ Parser.spCasterProgressionToFull = function (type) {
 };
 
 // mon-prefix functions are for parsing monster data, and shared with the roll20 script
+Parser.monAlignToFull = function (align) {
+	switch (align) {
+		case null: return "";
+		case "ANY": return "Any";
+		case "LG": return "Lawful Good";
+		case "NG": return "Neutral Good";
+		case "CG": return "Chaotic Good";
+		case "LN": return "Lawful Neutral";
+		case "N": return "Neutral";
+		case "CN": return "Chaotic Neutral";
+		case "LE": return "Lawful Evil";
+		case "NE": return "Neutral Evil";
+		case "CE": return "Chaotic Evil";
+		default: return "Unknown";
+	}
+};
+
 Parser.monTypeToFullObj = function (type) {
 	const out = {type: "", tags: [], asText: ""};
 
@@ -1221,25 +1249,25 @@ Parser.monTypeFromPlural = function (type) {
 	return Parser._parse_bToA(Parser.MON_TYPE_TO_PLURAL, type);
 };
 
-Parser.monCrToFull = function (cr, {xp = null, isMythic = false} = {}) {
+Parser.monCrToFull = function (cr, xp) {
 	if (cr == null) return "";
-
-	if (typeof cr === "string") {
-		xp = xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr);
-		return `${cr} (${xp} XP${isMythic ? `, or ${Parser.crToXp(cr, {isDouble: true})} XP as a mythic encounter` : ""})`;
-	} else {
-		const stack = [Parser.monCrToFull(cr.cr, {xp: cr.xp, isMythic})];
+	if (typeof cr === "string") return `${cr} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
+	else {
+		const stack = [Parser.monCrToFull(cr.cr, cr.xp)];
 		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
 		if (cr.coven) stack.push(`${Parser.monCrToFull(cr.coven)} when part of a coven`);
-		return stack.joinConjunct(", ", " or ");
+		return stack.join(" or ");
 	}
 };
 
 Parser.monImmResToFull = function (toParse) {
 	const outerLen = toParse.length;
 	let maxDepth = 0;
+	if (outerLen === 1 && (toParse[0].immune || toParse[0].resist)) {
+		return toParse.map(it => toString(it, -1)).join(maxDepth ? "; " : ", ");
+	}
 
-	function toString (it, depth = 0) {
+	function toString(it, depth = 0) {
 		maxDepth = Math.max(maxDepth, depth);
 		if (typeof it === "string") {
 			return it;
@@ -1257,7 +1285,7 @@ Parser.monImmResToFull = function (toParse) {
 		}
 	}
 
-	function serialJoin (arr) {
+	function serialJoin(arr) {
 		if (arr.length <= 1) return arr.join("");
 
 		let out = "";
@@ -1275,9 +1303,10 @@ Parser.monImmResToFull = function (toParse) {
 };
 
 Parser.monCondImmToFull = function (condImm, isPlainText) {
-	function render (condition) {
+	function render(condition) {
 		return isPlainText ? condition : Renderer.get().render(`{@condition ${condition}}`);
 	}
+
 	return condImm.map(it => {
 		if (it.special) return it.special;
 		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.map(render).join(", ")}${it.note ? ` ${it.note}` : ""}`;
@@ -1301,7 +1330,6 @@ Parser.MON_SPELLCASTING_TAG_TO_FULL = {
 	"I": "Innate",
 	"F": "Form Only",
 	"S": "Shared",
-	"CA": "Class, Artificer",
 	"CB": "Class, Bard",
 	"CC": "Class, Cleric",
 	"CD": "Class, Druid",
@@ -1317,8 +1345,8 @@ Parser.monSpellcastingTagToFull = function (tag) {
 
 Parser.MON_MISC_TAG_TO_FULL = {
 	"AOE": "Has Areas of Effect",
-	"MW": "Has Weapon Attacks, Melee",
-	"RW": "Has Weapon Attacks, Ranged",
+	"MW": "Has Melee Weapon Attacks",
+	"RW": "Has Ranged Weapon Attacks",
 	"RNG": "Has Ranged Weapons",
 	"RCH": "Has Reach Attacks",
 	"THW": "Has Thrown Weapons"
@@ -1572,6 +1600,7 @@ Parser.CAT_ID_ACTION = 42;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
+Parser.CAT_ID_TRAIT = 46;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1620,6 +1649,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAIT] = "Trait";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1671,6 +1701,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 
 Parser.pageCategoryToProp = function (catId) {
@@ -1679,10 +1710,10 @@ Parser.pageCategoryToProp = function (catId) {
 
 Parser.ABIL_ABVS = ["str", "dex", "con", "int", "wis", "cha"];
 
-Parser.spClassesToCurrentAndLegacy = function (fromClassList) {
+Parser.spClassesToCurrentAndLegacy = function (classes) {
 	const current = [];
 	const legacy = [];
-	fromClassList.forEach(cls => {
+	classes.fromClassList.forEach(cls => {
 		if ((cls.name === "Artificer" && cls.source === "UAArtificer") || (cls.name === "Artificer (Revisited)" && cls.source === "UAArtificerRevisited")) legacy.push(cls);
 		else current.push(cls);
 	});
@@ -1692,26 +1723,28 @@ Parser.spClassesToCurrentAndLegacy = function (fromClassList) {
 /**
  * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
  *
- * @param sp a spell
+ * @param classes a spell.classes JSON item
  * @param subclassLookup Data loaded from `generated/gendata-subclass-lookup.json`. Of the form: `{PHB: {Barbarian: {PHB: {Berserker: "Path of the Berserker"}}}}`
  * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
  * all the legacy/superceded subclasses
  */
-Parser.spSubclassesToCurrentAndLegacyFull = function (sp, subclassLookup) {
-	const fromSubclass = Renderer.spell.getCombinedClasses(sp, "fromSubclass");
-	if (!fromSubclass.length) return ["", ""];
-
+Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	const out = [[], []];
+	if (!classes.fromSubclass) return out;
 	const curNames = new Set();
 	const toCheck = [];
-	fromSubclass
+	classes.fromSubclass
 		.filter(c => {
 			const excludeClass = ExcludeUtil.isExcluded(c.class.name, "class", c.class.source);
-			if (excludeClass) return false;
-
+			if (excludeClass) {
+				return false;
+			}
 			const fromLookup = MiscUtil.get(subclassLookup, c.class.source, c.class.name, c.subclass.source, c.subclass.name);
 			const excludeSubclass = ExcludeUtil.isExcluded((fromLookup || {}).name || c.subclass.name, "subclass", c.subclass.source);
-			return !excludeSubclass;
+			if (excludeSubclass) {
+				return false;
+			}
+			return true;
 		})
 		.sort((a, b) => {
 			const byName = SortUtil.ascSort(a.subclass.name, b.subclass.name);
@@ -1752,7 +1785,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (sp, subclassLookup) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent (shortName) {
+	function mapClassShortNameToMostRecent(shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -1848,27 +1881,32 @@ SKL_ABV_CON = "C";
 SKL_ABV_PSI = "P";
 Parser.SKL_ABVS = [
 	SKL_ABV_ABJ,
-	SKL_ABV_CON,
-	SKL_ABV_DIV,
-	SKL_ABV_ENC,
 	SKL_ABV_EVO,
+	SKL_ABV_ENC,
 	SKL_ABV_ILL,
+	SKL_ABV_DIV,
 	SKL_ABV_NEC,
-	SKL_ABV_PSI,
-	SKL_ABV_TRA
+	SKL_ABV_TRA,
+	SKL_ABV_CON,
+	SKL_ABV_PSI
 ];
 
-Parser.SP_TM_ACTION = "action";
-Parser.SP_TM_B_ACTION = "bonus";
-Parser.SP_TM_REACTION = "reaction";
+Parser.SP_TM_PF_A = "single";
+Parser.SP_TM_PF_AA = "double";
+Parser.SP_TM_PF_AAA = "triple";
+Parser.SP_TM_PF_R = "reaction";
+Parser.SP_TM_PF_F = "free";
 Parser.SP_TM_ROUND = "round";
 Parser.SP_TM_MINS = "minute";
 Parser.SP_TM_HRS = "hour";
-Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_ACTION, Parser.SP_TM_B_ACTION, Parser.SP_TM_REACTION, Parser.SP_TM_ROUND];
+Parser.SP_TIME_ACTIONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F]
+Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F, Parser.SP_TM_ROUND];
 Parser.SP_TIME_TO_FULL = {
-	[Parser.SP_TM_ACTION]: "Action",
-	[Parser.SP_TM_B_ACTION]: "Bonus Action",
-	[Parser.SP_TM_REACTION]: "Reaction",
+	[Parser.SP_TM_PF_A]: "Single Action",
+	[Parser.SP_TM_PF_AA]: "Double Action",
+	[Parser.SP_TM_PF_AAA]: "Triple Action",
+	[Parser.SP_TM_PF_R]: "Reaction",
+	[Parser.SP_TM_PF_F]: "Free Action",
 	[Parser.SP_TM_ROUND]: "Rounds",
 	[Parser.SP_TM_MINS]: "Minutes",
 	[Parser.SP_TM_HRS]: "Hours"
@@ -1878,9 +1916,11 @@ Parser.spTimeUnitToFull = function (timeUnit) {
 };
 
 Parser.SP_TIME_TO_ABV = {
-	[Parser.SP_TM_ACTION]: "A",
-	[Parser.SP_TM_B_ACTION]: "BA",
-	[Parser.SP_TM_REACTION]: "R",
+	[Parser.SP_TM_PF_A]: "A",
+	[Parser.SP_TM_PF_AA]: "AA",
+	[Parser.SP_TM_PF_AAA]: "AAA",
+	[Parser.SP_TM_PF_R]: "R",
+	[Parser.SP_TM_PF_F]: "F",
 	[Parser.SP_TM_ROUND]: "rnd",
 	[Parser.SP_TM_MINS]: "min",
 	[Parser.SP_TM_HRS]: "hr"
@@ -1905,6 +1945,19 @@ SKL_NEC = "Necromancy";
 SKL_TRA = "Transmutation";
 SKL_CON = "Conjuration";
 SKL_PSI = "Psionic";
+
+Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON, SKL_PSI];
+
+Parser.SP_SCHOOL_FULL_TO_ABV = {};
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ABJ] = SKL_ABV_ABJ;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_EVO] = SKL_ABV_EVO;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ENC] = SKL_ABV_ENC;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ILL] = SKL_ABV_ILL;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_DIV] = SKL_ABV_DIV;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_NEC] = SKL_ABV_NEC;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_TRA] = SKL_ABV_TRA;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_CON] = SKL_ABV_CON;
+Parser.SP_SCHOOL_FULL_TO_ABV[SKL_PSI] = SKL_ABV_PSI;
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {};
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
@@ -2034,11 +2087,6 @@ Parser.ARMOR_ABV_TO_FULL = {
 	"h.": "heavy"
 };
 
-Parser.WEAPON_ABV_TO_FULL = {
-	"s.": "simple",
-	"m.": "martial"
-};
-
 Parser.CONDITION_TO_COLOR = {
 	"Blinded": "#525252",
 	"Charmed": "#f01789",
@@ -2145,6 +2193,10 @@ SRC_EGW_US = "US";
 SRC_MOT = "MOT";
 SRC_IDRotF = "IDRotF";
 SRC_SCREEN = "Screen";
+SRC_CRB = "CRB";
+SRC_APG = "APG";
+SRC_BST = "BST";
+SRC_LOCG = "LOCG"
 
 SRC_AL_PREFIX = "AL";
 
@@ -2368,18 +2420,17 @@ Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = `${UA_PREFIX}Cleric, Druid, and Wizard`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = `${UA_PREFIX}Fighter, Ranger, and Rogue`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAPCRM] = `${UA_PREFIX}Prestige Classes and Rune Magic`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAR] = `${UA_PREFIX}Ranger`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC4] = `${UA_PREFIX}2020 Subclasses, Part 4`;
 Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic Tattoos`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020POR] = `${UA_PREFIX}2020 Psionic Options Revisited`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SCR] = `${UA_PREFIX}2020 Subclasses Revisited`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020F] = `${UA_PREFIX}2020 Feats`;
 Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
 Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
+Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
+Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
@@ -2439,12 +2490,6 @@ Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
 Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
 Parser.SOURCE_JSON_TO_ABV[SRC_SADS] = "SADS";
 Parser.SOURCE_JSON_TO_ABV[SRC_EGW] = "EGW";
-Parser.SOURCE_JSON_TO_ABV[SRC_EGW_ToR] = "ToR";
-Parser.SOURCE_JSON_TO_ABV[SRC_EGW_DD] = "DD";
-Parser.SOURCE_JSON_TO_ABV[SRC_EGW_FS] = "FS";
-Parser.SOURCE_JSON_TO_ABV[SRC_EGW_US] = "US";
-Parser.SOURCE_JSON_TO_ABV[SRC_MOT] = "MOT";
-Parser.SOURCE_JSON_TO_ABV[SRC_IDRotF] = "IDRotF";
 Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
 Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
@@ -2509,18 +2554,17 @@ Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
 Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAPCRM] = "UAPCRM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAR] = "UAR";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA2S1";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA2S2";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC4] = "UA2S4";
 Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020POR] = "UA2POR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SCR] = "UA2SCR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020F] = "UA2F";
 Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
 Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
+Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
+Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CoS] = "2016-03-15";
@@ -2578,12 +2622,6 @@ Parser.SOURCE_JSON_TO_DATE[SRC_AWM] = "2019-11-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_IMR] = "2019-11-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_SADS] = "2019-12-12";
 Parser.SOURCE_JSON_TO_DATE[SRC_EGW] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_EGW_ToR] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_EGW_DD] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_EGW_FS] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_EGW_US] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_MOT] = "2020-06-02";
-Parser.SOURCE_JSON_TO_DATE[SRC_IDRotF] = "2020-09-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
 Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
@@ -2648,22 +2686,20 @@ Parser.SOURCE_JSON_TO_DATE[SRC_UACDW] = "2019-10-03";
 Parser.SOURCE_JSON_TO_DATE[SRC_UAFRR] = "2019-10-17";
 Parser.SOURCE_JSON_TO_DATE[SRC_UACFV] = "2019-11-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UAFRW] = "2019-11-25";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAPCRM] = "2015-10-05";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAR] = "2015-09-09";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC4] = "2020-08-05";
 Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020POR] = "2020-04-14";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SCR] = "2020-05-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020F] = "2020-07-13";
+Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
+Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
+
 
 Parser.SOURCES_ADVENTURES = new Set([
 	SRC_LMoP,
 	SRC_HotDQ,
 	SRC_RoT,
-	SRC_RoTOS,
 	SRC_PotA,
 	SRC_OotA,
 	SRC_CoS,
@@ -2694,11 +2730,6 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_EFR,
 	SRC_RMBRE,
 	SRC_IMR,
-	SRC_EGW_ToR,
-	SRC_EGW_DD,
-	SRC_EGW_FS,
-	SRC_EGW_US,
-	SRC_IDRotF,
 
 	SRC_AWM
 ]);
@@ -2807,7 +2838,6 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
-
 	tag = tag.trim();
 	if (tag.startsWith("@")) tag = tag.slice(1);
 
@@ -2815,13 +2845,772 @@ Parser.getTagSource = function (tag, source) {
 	return Parser.TAG_TO_DEFAULT_SOURCE[tag];
 };
 
+TR_AC = "Arcane";
+TR_DV = "Divine";
+TR_OC = "Occult";
+TR_PR = "Primal";
+Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
+
+T_CHAOTIC = "Chaotic";
+T_EVIL = "Evil";
+T_GOOD = "Good";
+T_LAWFUL = "Lawful";
+T_AASIMAR = "Aasimar";
+T_CATFOLK = "Catfolk";
+T_CHANGELING = "Changeling";
+T_DHAMPIR = "Dhampir";
+T_DUSKWALKER = "Duskwalker";
+T_DWARF = "Dwarf";
+T_ELF = "Elf";
+T_GNOME = "Gnome";
+T_GOBLIN = "Goblin";
+T_HALFELF = "Half-Elf";
+T_HALFLING = "Halfling";
+T_HALFORC = "Half-Orc";
+T_HOBGOBLIN = "Hobgoblin";
+T_HUMAN = "Human";
+T_KOBOLD = "Kobold";
+T_LESHY = "Leshy";
+T_LIZARDFOLK = "Lizardfolk";
+T_ORC = "Orc";
+T_RATFOLK = "Ratfolk";
+T_SHOONY = "Shoony";
+T_TENGU = "Tengu";
+T_TIEFLING = "Tiefling";
+T_BULWARK = "Bulwark";
+T_COMFORT = "Comfort";
+T_FLEXIBLE = "Flexible";
+T_NOISY = "Noisy";
+T_ALCHEMIST = "Alchemist";
+T_BARBARIAN = "Barbarian";
+T_BARD = "Bard";
+T_CHAMPION = "Champion";
+T_CLERIC = "Cleric";
+T_DRUID = "Druid";
+T_FIGHTER = "Fighter";
+T_INVESTIGATOR = "Investigator";
+T_MONK = "Monk";
+T_ORACLE = "Oracle";
+T_RANGER = "Ranger";
+T_ROGUE = "Rogue";
+T_SORCERER = "Sorcerer";
+T_SWASHBUCKLER = "Swashbuckler";
+T_WITCH = "Witch";
+T_WIZARD = "Wizard";
+T_ABERRATION = "Aberration";
+T_ANIMAL = "Animal";
+T_ASTRAL = "Astral";
+T_BEAST = "Beast";
+T_CELESTIAL = "Celestial";
+T_CONSTRUCT = "Construct";
+T_DRAGON = "Dragon";
+T_DREAM = "Dream";
+T_ELEMENTAL = "Elemental";
+T_ETHEREAL = "Ethereal";
+T_FEY = "Fey";
+T_FIEND = "Fiend";
+T_FUNGUS = "Fungus";
+T_GIANT = "Giant";
+T_HUMANOID = "Humanoid";
+T_MONITOR = "Monitor";
+T_NEGATIVE = "Negative";
+T_OOZE = "Ooze";
+T_PETITIONER = "Petitioner";
+T_PLANT = "Plant";
+T_POSITIVE = "Positive";
+T_SPIRIT = "Spirit";
+T_TIME = "Time";
+T_UNDEAD = "Undead";
+T_AIR = "Air";
+T_EARTH = "Earth";
+T_FIRE = "Fire";
+T_WATER = "Water";
+T_ACID = "Acid";
+T_COLD = "Cold";
+T_ELECTRICITY = "Electricity";
+T_FIRE = "Fire";
+T_FORCE = "Force";
+T_NEGATIVE = "Negative";
+T_POSITIVE = "Positive";
+T_SONIC = "Sonic";
+T_ALCHEMICAL = "Alchemical";
+T_APEX = "Apex";
+T_ARTIFACT = "Artifact";
+T_BOMB = "Bomb";
+T_CONSUMABLE = "Consumable";
+T_CONTRACT = "Contract";
+T_CURSED = "Cursed";
+T_DRUG = "Drug";
+T_ELIXIR = "Elixir";
+T_INTELLIGENT = "Intelligent";
+T_INVESTED = "Invested";
+T_MUTAGEN = "Mutagen";
+T_OIL = "Oil";
+T_POTION = "Potion";
+T_SAGGORAK = "Saggorak";
+T_SCROLL = "Scroll";
+T_SNARE = "Snare";
+T_STAFF = "Staff";
+T_STRUCTURE = "Structure";
+T_TALISMAN = "Talisman";
+T_TATTOO = "Tattoo";
+T_WAND = "Wand";
+T_AASIMAR = "Aasimar";
+T_ACID = "Acid";
+T_AEON = "Aeon";
+T_AIR = "Air";
+T_ALCHEMICAL = "Alchemical";
+T_AMPHIBIOUS = "Amphibious";
+T_ANADI = "Anadi";
+T_ANGEL = "Angel";
+T_AQUATIC = "Aquatic";
+T_ARCHON = "Archon";
+T_AZATA = "Azata";
+T_BOGGARD = "Boggard";
+T_CALIGNI = "Caligni";
+T_CATFOLK = "Catfolk";
+T_CHANGELING = "Changeling";
+T_CHARAUKA = "Charau-ka";
+T_COLD = "Cold";
+T_COUATL = "Couatl";
+T_DAEMON = "Daemon";
+T_DEMON = "Demon";
+T_DERO = "Dero";
+T_DEVIL = "Devil";
+T_DHAMPIR = "Dhampir";
+T_DINOSAUR = "Dinosaur";
+T_DROW = "Drow";
+T_DUERGAR = "Duergar";
+T_DUSKWALKER = "Duskwalker";
+T_EARTH = "Earth";
+T_ELECTRICITY = "Electricity";
+T_FETCHLING = "Fetchling";
+T_FIRE = "Fire";
+T_GENIE = "Genie";
+T_GHOST = "Ghost";
+T_GHOUL = "Ghoul";
+T_GNOLL = "Gnoll";
+T_GOLEM = "Golem";
+T_GREMLIN = "Gremlin";
+T_GRIPPLI = "Grippli";
+T_HAG = "Hag";
+T_IFRIT = "Ifrit";
+T_INCORPOREAL = "Incorporeal";
+T_INEVITABLE = "Inevitable";
+T_KOBOLD = "Kobold";
+T_LESHY = "Leshy";
+T_LIZARDFOLK = "Lizardfolk";
+T_MERFOLK = "Merfolk";
+T_MINDLESS = "Mindless";
+T_MORLOCK = "Morlock";
+T_MUMMY = "Mummy";
+T_MUTANT = "Mutant";
+T_NYMPH = "Nymph";
+T_ONI = "Oni";
+T_ORC = "Orc";
+T_OREAD = "Oread";
+T_PROTEAN = "Protean";
+T_PSYCHOPOMP = "Psychopomp";
+T_QLIPPOTH = "Qlippoth";
+T_RAKSHASA = "Rakshasa";
+T_RATFOLK = "Ratfolk";
+T_SEA = "Sea";
+T_DEVIL = "Devil";
+T_SERPENTFOLK = "Serpentfolk";
+T_SKELETON = "Skeleton";
+T_SKULK = "Skulk";
+T_SONIC = "Sonic";
+T_SOULBOUND = "Soulbound";
+T_SPRIGGAN = "Spriggan";
+T_SPRITE = "Sprite";
+T_SULI = "Suli";
+T_SWARM = "Swarm";
+T_SYLPH = "Sylph";
+T_TANE = "Tane";
+T_TENGU = "Tengu";
+T_TIEFLING = "Tiefling";
+T_TITAN = "Titan";
+T_TROLL = "Troll";
+T_UNDINE = "Undine";
+T_URDEFHAN = "Urdefhan";
+T_VAMPIRE = "Vampire";
+T_VELSTRAC = "Velstrac";
+T_WATER = "Water";
+T_WERECREATURE = "Werecreature";
+T_WIGHT = "Wight";
+T_WRAITH = "Wraith";
+T_XULGATH = "Xulgath";
+T_ZOMBIE = "Zombie";
+T_AIR = "Air";
+T_EARTH = "Earth";
+T_ERRATIC = "Erratic";
+T_FINITE = "Finite";
+T_FIRE = "Fire";
+T_FLOWING = "Flowing";
+T_HIGH = "High";
+T_GRAVITY = "Gravity";
+T_IMMEASURABLE = "Immeasurable";
+T_LOW = "Low";
+T_GRAVITY = "Gravity";
+T_METAMORPHIC = "Metamorphic";
+T_MICROGRAVITY = "Microgravity";
+T_NEGATIVE = "Negative";
+T_POSITIVE = "Positive";
+T_SENTIENT = "Sentient";
+T_SHADOW = "Shadow";
+T_STATIC = "Static";
+T_STRANGE = "Strange";
+T_GRAVITY = "Gravity";
+T_SUBJECTIVE = "Subjective";
+T_GRAVITY = "Gravity";
+T_TIMELESS = "Timeless";
+T_UNBOUNDED = "Unbounded";
+T_WATER = "Water";
+T_CONTACT = "Contact";
+T_INGESTED = "Ingested";
+T_INHALED = "Inhaled";
+T_INJURY = "Injury";
+T_POISON = "Poison";
+T_COMMON = "Common";
+T_RARE = "Rare";
+T_UNCOMMON = "Uncommon";
+T_UNIQUE = "Unique";
+T_ABJURATION = "Abjuration";
+T_CONJURATION = "Conjuration";
+T_DIVINATION = "Divination";
+T_ENCHANTMENT = "Enchantment";
+T_EVOCATION = "Evocation";
+T_ILLUSION = "Illusion";
+T_NECROMANCY = "Necromancy";
+T_TRANSMUTATION = "Transmutation";
+T_AUDITORY = "Auditory";
+T_OLFACTORY = "Olfactory";
+T_VISUAL = "Visual";
+T_CITY = "City";
+T_METROPOLIS = "Metropolis";
+T_TOWN = "Town";
+T_VILLAGE = "Village";
+T_ARCANE = "Arcane";
+T_DIVINE = "Divine";
+T_OCCULT = "Occult";
+T_PRIMAL = "Primal";
+T_AGILE = "Agile";
+T_ATTACHED = "Attached";
+T_BACKSTABBER = "Backstabber";
+T_BACKSWING = "Backswing";
+T_BRUTAL = "Brutal";
+T_CONCEALABLE = "Concealable";
+T_DEADLY = "Deadly";
+T_DISARM = "Disarm";
+T_DWARF = "Dwarf";
+T_ELF = "Elf";
+T_FATAL = "Fatal";
+T_FINESSE = "Finesse";
+T_FORCEFUL = "Forceful";
+T_FREEHAND = "Free-Hand";
+T_GNOME = "Gnome";
+T_GOBLIN = "Goblin";
+T_GRAPPLE = "Grapple";
+T_HALFLING = "Halfling";
+T_JOUSTING = "Jousting";
+T_MODULAR = "Modular";
+T_MONK = "Monk";
+T_NONLETHAL = "Nonlethal";
+T_PARRY = "Parry";
+T_PROPULSIVE = "Propulsive";
+T_RANGE = "Range";
+T_RANGED = "Ranged";
+T_TRIP = "Trip";
+T_REACH = "Reach";
+T_SHOVE = "Shove";
+T_SWEEP = "Sweep";
+T_TETHERED = "Tethered";
+T_THROWN = "Thrown";
+T_TRIP = "Trip";
+T_TWIN = "Twin";
+T_TWOHAND = "Two-Hand";
+T_UNARMED = "Unarmed";
+T_VERSATILE = "Versatile";
+T_VOLLE = "Volle";
+T_ADDITIVE = "Additive";
+T_ARCHETYPE = "Archetype";
+T_ATTACK = "Attack";
+T_AURA = "Aura";
+T_CANTRIP = "Cantrip";
+T_CHARM = "Charm";
+T_COMPANION = "Companion";
+T_COMPLEX = "Complex";
+T_COMPOSITION = "Composition";
+T_CONCENTRATE = "Concentrate";
+T_CONSECRATION = "Consecration";
+T_CURSE = "Curse";
+T_CURSEBOUND = "Cursebound";
+T_DARKNESS = "Darkness";
+T_DEATH = "Death";
+T_DEDICATION = "Dedication";
+T_DETECTION = "Detection";
+T_DISEASE = "Disease";
+T_DOWNTIME = "Downtime";
+T_EMOTION = "Emotion";
+T_ENVIRONMENTAL = "Environmental";
+T_EXPLORATION = "Exploration";
+T_EXTRADIMENSIONAL = "Extradimensional";
+T_FEAR = "Fear";
+T_FINISHER = "Finisher";
+T_FLOURISH = "Flourish";
+T_FOCUSED = "Focused";
+T_FORTUNE = "Fortune";
+T_GENERAL = "General";
+T_HAUNT = "Haunt";
+T_HEALING = "Healing";
+T_HEX = "Hex";
+T_INCAPACITATION = "Incapacitation";
+T_INFUSED = "Infused";
+T_INSTINCT = "Instinct";
+T_LEGACY = "Legacy";
+T_LIGHT = "Light";
+T_LINEAGE = "Lineage";
+T_LINGUISTIC = "Linguistic";
+T_LITANY = "Litany";
+T_MAGICAL = "Magical";
+T_MANIPULATE = "Manipulate";
+T_MECHANICAL = "Mechanical";
+T_MENTAL = "Mental";
+T_METAMAGIC = "Metamagic";
+T_MINION = "Minion";
+T_MISFORTUNE = "Misfortune";
+T_MORPH = "Morph";
+T_MOVE = "Move";
+T_MULTICLASS = "Multiclass";
+T_OATH = "Oath";
+T_OPEN = "Open";
+T_POLYMORPH = "Polymorph";
+T_POSSESSION = "Possession";
+T_PRECIOUS = "Precious";
+T_PREDICTION = "Prediction";
+T_PRESS = "Press";
+T_RAGE = "Rage";
+T_RECKLESS = "Reckless";
+T_RELOAD = "Reload";
+T_REVELATION = "Revelation";
+T_SCRYING = "Scrying";
+T_SECRET = "Secret";
+T_SKILL = "Skill";
+T_SLEEP = "Sleep";
+T_SOCIAL = "Social";
+T_SPLASH = "Splash";
+T_STAMINA = "Stamina";
+T_STANCE = "Stance";
+T_SUMMONED = "Summoned";
+T_TELEPATHY = "Telepathy";
+T_TELEPORTATION = "Teleportation";
+T_TRAP = "Trap";
+T_VIGILANTE = "Vigilante";
+T_VIRULENT = "Virulent";
+T_VOCA = "Voca";
+T_LG = "LG";
+T_NG = "NG";
+T_CG = "CG";
+T_LN = "LN";
+T_N = "N";
+T_CN = "CN";
+T_LE = "LE";
+T_NE = "NE";
+T_CE = "CE";
+T_ANY = "ANY";
+T_TINY = "Tiny";
+T_SMALL = "Small";
+T_MEDIUM = "Medium";
+T_LARGE = "Large";
+T_HUGE = "Huge";
+T_GARGANTUAN = "Gargantuan";
+
+Parser.TRAITS_GENERAL = [T_ADDITIVE, T_ARCHETYPE, T_ATTACK, T_AURA, T_CANTRIP, T_CHARM, T_COMPANION, T_COMPLEX, T_COMPOSITION, T_CONCENTRATE, T_CONSECRATION, T_CURSE, T_CURSEBOUND, T_DARKNESS, T_DEATH, T_DEDICATION, T_DETECTION, T_DISEASE, T_DOWNTIME, T_EMOTION, T_ENVIRONMENTAL, T_EXPLORATION, T_EXTRADIMENSIONAL, T_FEAR, T_FINISHER, T_FLOURISH, T_FOCUSED, T_FORTUNE, T_GENERAL, T_HAUNT, T_HEALING, T_HEX, T_INCAPACITATION, T_INFUSED, T_INSTINCT, T_LEGACY, T_LIGHT, T_LINEAGE, T_LINGUISTIC, T_LITANY, T_MAGICAL, T_MANIPULATE, T_MECHANICAL, T_MENTAL, T_METAMAGIC, T_MINION, T_MISFORTUNE, T_MORPH, T_MOVE, T_MULTICLASS, T_OATH, T_OPEN, T_POLYMORPH, T_POSSESSION, T_PRECIOUS, T_PREDICTION, T_PRESS, T_RAGE, T_RECKLESS, T_RELOAD, T_REVELATION, T_SCRYING, T_SECRET, T_SKILL, T_SLEEP, T_SOCIAL, T_SPLASH, T_STAMINA, T_STANCE, T_SUMMONED, T_TELEPATHY, T_TELEPORTATION, T_TRAP, T_VIGILANTE, T_VIRULENT, T_VOCA]
+Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_DWARF, T_ELF, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GNOME, T_GOBLIN, T_GRAPPLE, T_HALFLING, T_JOUSTING, T_MODULAR, T_MONK, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
+Parser.TRAITS_TRADITION = [T_ARCANE, T_DIVINE, T_OCCULT, T_PRIMAL]
+Parser.TRAITS_SETTLEMENT = [T_CITY, T_METROPOLIS, T_TOWN, T_VILLAGE]
+Parser.TRAITS_SENSE = [T_AUDITORY, T_OLFACTORY, T_VISUAL]
+Parser.TRAITS_SCHOOL = [T_ABJURATION, T_CONJURATION, T_DIVINATION, T_ENCHANTMENT, T_EVOCATION, T_ILLUSION, T_NECROMANCY, T_TRANSMUTATION]
+Parser.TRAITS_RARITY = [T_COMMON, T_UNCOMMON, T_RARE, T_UNIQUE]
+Parser.TRAITS_POISON = [T_CONTACT, T_INGESTED, T_INHALED, T_INJURY, T_POISON]
+Parser.TRAITS_PLANAR = [T_AIR, T_EARTH, T_ERRATIC, T_FINITE, T_FIRE, T_FLOWING, T_HIGH, T_GRAVITY, T_IMMEASURABLE, T_LOW, T_GRAVITY, T_METAMORPHIC, T_MICROGRAVITY, T_NEGATIVE, T_POSITIVE, T_SENTIENT, T_SHADOW, T_STATIC, T_STRANGE, T_GRAVITY, T_SUBJECTIVE, T_GRAVITY, T_TIMELESS, T_UNBOUNDED, T_WATER]
+Parser.TRAITS_ELEMENTAL = [T_AIR, T_EARTH, T_FIRE, T_WATER]
+Parser.TRAITS_MONSTER = [T_AASIMAR, T_ACID, T_AEON, T_AIR, T_ALCHEMICAL, T_AMPHIBIOUS, T_ANADI, T_ANGEL, T_AQUATIC, T_ARCHON, T_AZATA, T_BOGGARD, T_CALIGNI, T_CATFOLK, T_CHANGELING, T_CHARAUKA, T_COLD, T_COUATL, T_DAEMON, T_DEMON, T_DERO, T_DEVIL, T_DHAMPIR, T_DINOSAUR, T_DROW, T_DUERGAR, T_DUSKWALKER, T_EARTH, T_ELECTRICITY, T_FETCHLING, T_FIRE, T_GENIE, T_GHOST, T_GHOUL, T_GNOLL, T_GOLEM, T_GREMLIN, T_GRIPPLI, T_HAG, T_IFRIT, T_INCORPOREAL, T_INEVITABLE, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_MERFOLK, T_MINDLESS, T_MORLOCK, T_MUMMY, T_MUTANT, T_NYMPH, T_ONI, T_ORC, T_OREAD, T_PROTEAN, T_PSYCHOPOMP, T_QLIPPOTH, T_RAKSHASA, T_RATFOLK, T_SEA, T_DEVIL, T_SERPENTFOLK, T_SKELETON, T_SKULK, T_SONIC, T_SOULBOUND, T_SPRIGGAN, T_SPRITE, T_SULI, T_SWARM, T_SYLPH, T_TANE, T_TENGU, T_TIEFLING, T_TITAN, T_TROLL, T_UNDINE, T_URDEFHAN, T_VAMPIRE, T_VELSTRAC, T_WATER, T_WERECREATURE, T_WIGHT, T_WRAITH, T_XULGATH, T_ZOMBIE]
+Parser.TRAITS_EQUIPMENT = [T_ALCHEMICAL, T_APEX, T_ARTIFACT, T_BOMB, T_CONSUMABLE, T_CONTRACT, T_CURSED, T_DRUG, T_ELIXIR, T_INTELLIGENT, T_INVESTED, T_MUTAGEN, T_OIL, T_POTION, T_SAGGORAK, T_SCROLL, T_SNARE, T_STAFF, T_STRUCTURE, T_TALISMAN, T_TATTOO, T_WAND]
+Parser.TRAITS_ENERGY = [T_ACID, T_COLD, T_ELECTRICITY, T_FIRE, T_FORCE, T_NEGATIVE, T_POSITIVE, T_SONIC]
+Parser.TRAITS_CREATURE = [T_ABERRATION, T_ANIMAL, T_ASTRAL, T_BEAST, T_CELESTIAL, T_CONSTRUCT, T_DRAGON, T_DREAM, T_ELEMENTAL, T_ETHEREAL, T_FEY, T_FIEND, T_FUNGUS, T_GIANT, T_HUMANOID, T_MONITOR, T_NEGATIVE, T_OOZE, T_PETITIONER, T_PLANT, T_POSITIVE, T_SPIRIT, T_TIME, T_UNDEAD]
+Parser.TRAITS_CLASS = [T_ALCHEMIST, T_BARBARIAN, T_BARD, T_CHAMPION, T_CLERIC, T_DRUID, T_FIGHTER, T_INVESTIGATOR, T_MONK, T_ORACLE, T_RANGER, T_ROGUE, T_SORCERER, T_SWASHBUCKLER, T_WITCH, T_WIZARD]
+Parser.TRAITS_ARMOR = [T_BULWARK, T_COMFORT, T_FLEXIBLE, T_NOISY]
+Parser.TRAITS_ANCESTRY = [T_AASIMAR, T_CATFOLK, T_CHANGELING, T_DHAMPIR, T_DUSKWALKER, T_DWARF, T_ELF, T_GNOME, T_GOBLIN, T_HALFELF, T_HALFLING, T_HALFORC, T_HOBGOBLIN, T_HUMAN, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_ORC, T_RATFOLK, T_SHOONY, T_TENGU, T_TIEFLING]
+Parser.TRAITS_ALIGN = [T_CHAOTIC, T_EVIL, T_GOOD, T_LAWFUL];
+Parser.TRAITS_ALIGN_ABV = [T_LG, T_NG, T_CG, T_LN, T_N, T_CN, T_LE, T_NE, T_CE, T_ANY];
+Parser.TRAITS_SIZE = [T_TINY, T_SMALL, T_MEDIUM, T_LARGE, T_HUGE, T_GARGANTUAN];
+
+Parser.TRAITS_TO_TRAITS_SRC = {};
+Parser.TRAITS_TO_TRAITS_SRC[T_CHAOTIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EVIL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GOOD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LAWFUL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AASIMAR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CHANGELING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DHAMPIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DUSKWALKER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DWARF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GNOME] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GOBLIN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HALFELF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HALFLING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HALFORC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HOBGOBLIN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HUMAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_KOBOLD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LESHY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LIZARDFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ORC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SHOONY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TENGU] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TIEFLING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BULWARK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COMFORT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FLEXIBLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NOISY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ALCHEMIST] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BARBARIAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BARD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CHAMPION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CLERIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DRUID] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIGHTER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INVESTIGATOR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MONK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ORACLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RANGER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ROGUE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SORCERER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SWASHBUCKLER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WITCH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WIZARD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ABERRATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ANIMAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ASTRAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BEAST] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CELESTIAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONSTRUCT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DRAGON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DREAM] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELEMENTAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ETHEREAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FEY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIEND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FUNGUS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GIANT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HUMANOID] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MONITOR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NEGATIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OOZE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PETITIONER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PLANT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POSITIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SPIRIT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TIME] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNDEAD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EARTH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIRE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WATER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ACID] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COLD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELECTRICITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIRE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FORCE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NEGATIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POSITIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SONIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ALCHEMICAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_APEX] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ARTIFACT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BOMB] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONSUMABLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONTRACT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CURSED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DRUG] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELIXIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INTELLIGENT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INVESTED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MUTAGEN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OIL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POTION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SAGGORAK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SCROLL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SNARE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STAFF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STRUCTURE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TALISMAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TATTOO] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WAND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AASIMAR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ACID] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AEON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ALCHEMICAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AMPHIBIOUS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ANADI] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ANGEL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AQUATIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ARCHON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AZATA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BOGGARD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CALIGNI] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CHANGELING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CHARAUKA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COLD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COUATL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DAEMON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEMON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DERO] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEVIL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DHAMPIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DINOSAUR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DROW] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DUERGAR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DUSKWALKER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EARTH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELECTRICITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FETCHLING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIRE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GENIE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GHOST] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GHOUL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GNOLL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GOLEM] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GREMLIN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRIPPLI] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HAG] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_IFRIT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INCORPOREAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INEVITABLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_KOBOLD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LESHY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LIZARDFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MERFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MINDLESS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MORLOCK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MUMMY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MUTANT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NYMPH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ONI] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ORC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OREAD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PROTEAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PSYCHOPOMP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_QLIPPOTH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RAKSHASA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SEA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEVIL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SERPENTFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SKELETON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SKULK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SONIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SOULBOUND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SPRIGGAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SPRITE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SULI] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SWARM] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SYLPH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TANE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TENGU] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TIEFLING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TITAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TROLL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNDINE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_URDEFHAN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VAMPIRE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VELSTRAC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WATER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WERECREATURE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WIGHT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WRAITH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_XULGATH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ZOMBIE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AIR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EARTH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ERRATIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FINITE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FIRE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FLOWING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HIGH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRAVITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_IMMEASURABLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LOW] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRAVITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_METAMORPHIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MICROGRAVITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NEGATIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POSITIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SENTIENT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SHADOW] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STATIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STRANGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRAVITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SUBJECTIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRAVITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TIMELESS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNBOUNDED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_WATER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONTACT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INGESTED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INHALED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INJURY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POISON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COMMON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RARE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNCOMMON] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNIQUE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ABJURATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONJURATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DIVINATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ENCHANTMENT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EVOCATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ILLUSION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NECROMANCY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TRANSMUTATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AUDITORY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OLFACTORY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VISUAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CITY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_METROPOLIS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TOWN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VILLAGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ARCANE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DIVINE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OCCULT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PRIMAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AGILE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ATTACHED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BACKSTABBER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BACKSWING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_BRUTAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONCEALABLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEADLY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DISARM] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DWARF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ELF] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FATAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FINESSE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FORCEFUL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FREEHAND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GNOME] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GOBLIN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GRAPPLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HALFLING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_JOUSTING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MODULAR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MONK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_NONLETHAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PARRY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PROPULSIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RANGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RANGED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TRIP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_REACH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SHOVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SWEEP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TETHERED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_THROWN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TRIP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TWIN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TWOHAND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_UNARMED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VERSATILE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VOLLE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ADDITIVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ARCHETYPE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ATTACK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AURA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CANTRIP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CHARM] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COMPANION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COMPLEX] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_COMPOSITION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONCENTRATE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CONSECRATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CURSE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_CURSEBOUND] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DARKNESS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEATH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DEDICATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DETECTION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DISEASE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DOWNTIME] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EMOTION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_ENVIRONMENTAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EXPLORATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_EXTRADIMENSIONAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FEAR] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FINISHER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FLOURISH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FOCUSED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_FORTUNE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_GENERAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HAUNT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HEALING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_HEX] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INCAPACITATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INFUSED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_INSTINCT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LEGACY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LIGHT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LINEAGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LINGUISTIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_LITANY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MAGICAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MANIPULATE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MECHANICAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MENTAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_METAMAGIC] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MINION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MISFORTUNE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MORPH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MOVE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_MULTICLASS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OATH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_OPEN] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POLYMORPH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_POSSESSION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PRECIOUS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PREDICTION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_PRESS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RAGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RECKLESS] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RELOAD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_REVELATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SCRYING] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SECRET] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SKILL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SLEEP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SOCIAL] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SPLASH] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STAMINA] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_STANCE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_SUMMONED] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TELEPATHY] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TELEPORTATION] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_TRAP] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VIGILANTE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VIRULENT] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_VOCA] = SRC_CRB;
+
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "ammunition",
 	"AF": "ammunition",
 	"AT": "artisan's tools",
 	"EM": "eldritch machine",
 	"EXP": "explosive",
-	"FD": "food and drink",
 	"G": "adventuring gear",
 	"GS": "gaming set",
 	"HA": "heavy armor",
@@ -2830,7 +3619,6 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"M": "melee weapon",
 	"MA": "medium armor",
 	"MNT": "mount",
-	"MR": "master rune",
 	"GV": "generic variant",
 	"P": "potion",
 	"R": "ranged weapon",

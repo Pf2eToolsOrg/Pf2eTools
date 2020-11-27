@@ -32,7 +32,7 @@ class SpellsPage {
 
 		const source = Parser.sourceJsonToAbv(spell.source);
 		const time = PageFilterSpells.getTblTimeStr(spell.cast);
-		const school = Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschool);
+		const school = Parser.spSchoolAbvToFull(spell.school);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
@@ -323,7 +323,6 @@ async function pPageInit (loadedSources) {
 	BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler
 	await BrewUtil.pAddLocalBrewData(); // load local homebrew, so we can add any local spell classes
 	BrewUtil.bind({pHandleBrew: null}); // unbind temporary handler
-	Renderer.spell.populateHomebrewClassLookup(homebrew);
 }
 
 let spellList = [];

@@ -286,7 +286,7 @@ class PageFilterSpells extends PageFilter {
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
 
 		// used for filtering
-		spell._fSources = ListUtil.getCompleteFilterSources(spell);
+		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];
