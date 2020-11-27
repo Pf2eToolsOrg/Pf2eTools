@@ -2,15 +2,11 @@
 
 class TraitsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-
+		const pageFilter = new PageFilterTraits();
 		super({
 			dataSource: "data/traits.json",
 
-			filters: [
-				sourceFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "traits",
 
@@ -18,15 +14,10 @@ class TraitsPage extends ListPage {
 
 			dataProps: ["trait"]
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (it, vhI, isExcluded) {
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -61,13 +52,7 @@ class TraitsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
