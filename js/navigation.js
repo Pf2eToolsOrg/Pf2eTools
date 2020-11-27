@@ -69,7 +69,7 @@ class NavBar {
 		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
 		addLi(ulPlayers, "names.html", "Names");
 
-		const ulDms = addDropdown(navBar, "Dungeon Master");
+		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
