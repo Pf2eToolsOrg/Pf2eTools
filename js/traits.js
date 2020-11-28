@@ -74,9 +74,8 @@ class TraitsPage extends ListPage {
 	}
 
 	doLoadHash (id) {
-		Renderer.get().setFirstSection(true);
-		const trt = this._dataList[id];
 		const $content = $(`#pagecontent`).empty();
+		const trt = this._dataList[id];
 
 		function buildStatsTab () {
 			$content.append(RenderTraits.$getRenderedTrait(trt));

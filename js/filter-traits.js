@@ -3,10 +3,10 @@
 class PageFilterTraits extends PageFilter {
 	constructor () {
 		super();
-		this._sourceFilter = new SourceFilter();
 	}
 
-	mutateForFilters (it) {}
+	mutateForFilters (it) {
+	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
@@ -16,7 +16,7 @@ class PageFilterTraits extends PageFilter {
 
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
-			this._sourceFilter
+			this._sourceFilter,
 		];
 	}
 
