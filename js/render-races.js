@@ -8,9 +8,9 @@ class RenderRaces {
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getExcludedTr(race, "race")}
 		${Renderer.utils.getNameTr(race, {controlRhs: race.soundClip ? RenderRaces._getPronunciationButton(race) : "", page: UrlUtil.PG_RACES})}
-		${!race._isBaseRace ? `<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
-		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size)}</td></tr>
-		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>` : ""}
+		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
+		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size || SZ_VARIES)}</td></tr>
+		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>
 		<tr><td class="divider" colspan="6"><div></div></td></tr>
 		${race._isBaseRace ? `<tr class="text"><td colspan="6">${renderer.render({type: "entries", entries: race._baseRaceEntries}, 1)}</td></tr>` : `<tr class="text"><td colspan="6">${renderer.render({type: "entries", entries: race.entries}, 1)}</td></tr>`}
 
@@ -28,14 +28,14 @@ class RenderRaces {
 		return `<button class="btn btn-xs btn-default btn-name-pronounce ml-2">
 			<span class="glyphicon glyphicon-volume-up name-pronounce-icon"></span>
 			<audio class="name-pronounce">
-			   <source src="${race.soundClip}" type="audio/mpeg">
-			   <source src="${Renderer.get().baseUrl}audio/races/${/^(.*?)(\(.*?\))?$/.exec(race._baseName || race.name)[1].trim().toLowerCase()}.mp3" type="audio/mpeg">
+			   <source src="${Renderer.utils.getMediaUrl(race, "soundClip", "audio")}" type="audio/mpeg">
 			</audio>
 		</button>`;
 	}
 
 	static _$getHeightAndWeightPart (race) {
 		if (!race.heightAndWeight) return null;
+		if (race._isBaseRace) return null;
 
 		const getRenderedHeight = (height) => {
 			const heightFeet = Math.floor(height / 12);
@@ -65,10 +65,10 @@ class RenderRaces {
 								<div class="small">lb.</div>
 							</div>
 							<button class="btn btn-default btn-xs my-1 race__btn-roll-height-weight">Roll</button>
-						</div>`
-					]
-				]
-			}
+						</div>`,
+					],
+				],
+			},
 		];
 
 		const $render = $$`${Renderer.get().render({entries})}`;
@@ -127,7 +127,7 @@ class RenderRaces {
 			const mResultHeight = await Renderer.dice.pRoll2(race.heightAndWeight.heightMod, {
 				isUser: false,
 				label: "Height Modifier",
-				name: race.name
+				name: race.name,
 			});
 			if (mResultHeight == null) return;
 			resultHeight = mResultHeight;
@@ -138,7 +138,7 @@ class RenderRaces {
 			const mResultWeightMod = isNaN(weightModRaw) ? await Renderer.dice.pRoll2(weightModRaw, {
 				isUser: false,
 				label: "Weight Modifier",
-				name: race.name
+				name: race.name,
 			}) : Number(weightModRaw);
 			if (mResultWeightMod == null) return;
 			resultWeightMod = mResultWeightMod;

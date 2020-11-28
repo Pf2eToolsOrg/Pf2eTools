@@ -60,7 +60,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 165
 				}
 			],
 			"size": "M",
@@ -84,7 +84,10 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/7/aarakocra.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aarakocra.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -97,7 +100,7 @@
 					"name": "Alignment",
 					"type": "entries",
 					"entries": [
-						"Most aarakocra are good and rarely choose sides when it comes to law and chaos. Tribal leaders and warriors might be lawful, while explorers and adventurers might tend toward chaotic"
+						"Most aarakocra are good and rarely choose sides when it comes to law and chaos. Tribal leaders and warriors might be lawful, while explorers and adventurers might tend toward chaotic."
 					]
 				},
 				{
@@ -117,7 +120,7 @@
 				{
 					"name": "Talons",
 					"entries": [
-						"You are proficient with your unarmed strikes, which deal {@dice 1d4} slashing damage on a hit."
+						"Your talons are natural weapons, which you can use to make unarmed strikes. If you hit with them, you deal slashing damage equal to {@damage 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
 					],
 					"type": "entries"
 				},
@@ -134,6 +137,12 @@
 			"name": "Aasimar",
 			"source": "DMG",
 			"page": 286,
+			"otherSources": [
+				{
+					"source": "EGW",
+					"page": 166
+				}
+			],
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -144,7 +153,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Spellcasting"
 			],
 			"languageProficiencies": [
@@ -153,7 +161,38 @@
 					"celestial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3",
+			"resist": [
+				"necrotic",
+				"radiant"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aasimar.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"light"
+						],
+						"3": {
+							"rest": {
+								"1": [
+									"lesser restoration"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"daylight"
+								]
+							}
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -225,7 +264,6 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Spellcasting"
 			],
 			"languageProficiencies": [
@@ -234,7 +272,24 @@
 					"celestial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/8/aasimar.mp3",
+			"resist": [
+				"necrotic",
+				"radiant"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/aasimar.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"light"
+						]
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -296,6 +351,7 @@
 			"subraces": [
 				{
 					"name": "Fallen",
+					"page": 105,
 					"ability": [
 						{
 							"str": 1
@@ -315,6 +371,7 @@
 				},
 				{
 					"name": "Protector",
+					"page": 105,
 					"ability": [
 						{
 							"wis": 1
@@ -334,6 +391,7 @@
 				},
 				{
 					"name": "Scourge",
+					"page": 105,
 					"ability": [
 						{
 							"con": 1
@@ -376,7 +434,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
@@ -389,6 +446,9 @@
 				{
 					"intimidation": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -513,6 +573,7 @@
 			"subraces": [
 				{
 					"name": "Hawk-Headed",
+					"page": 16,
 					"ability": [
 						{
 							"wis": 2
@@ -538,6 +599,7 @@
 				},
 				{
 					"name": "Ibis-Headed",
+					"page": 16,
 					"ability": [
 						{
 							"int": 1
@@ -737,7 +799,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 174
 				}
 			],
 			"size": "M",
@@ -1010,6 +1072,52 @@
 		},
 		{
 			"name": "Centaur",
+			"source": "MOT",
+			"page": 18,
+			"_copy": {
+				"name": "Centaur",
+				"source": "GGR",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Centaurs are inclined toward neutrality. Lagonna centaurs tend to be more lawful, while Pheres centaurs are more often chaotic."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Size",
+							"items": {
+								"name": "Size",
+								"type": "entries",
+								"entries": [
+									"Centaurs stand between 6 and 7 feet tall, with their equine bodies reaching about 4 feet at the withers. Pheres centaurs tend to be slightly larger than Lagonna centaurs. Your size is Medium."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Languages",
+							"items": {
+								"name": "Languages",
+								"type": "entries",
+								"entries": [
+									"You can speak, read, and write Common and Sylvan."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Centaur",
 			"source": "UACentaursMinotaurs",
 			"page": 1,
 			"size": "M",
@@ -1123,8 +1231,7 @@
 							"dex",
 							"con",
 							"int",
-							"wis",
-							"cha"
+							"wis"
 						],
 						"count": 1
 					}
@@ -1137,8 +1244,7 @@
 				"weightMod": "2d4"
 			},
 			"traitTags": [
-				"Skill Proficiency",
-				"Tool Proficiency"
+				"Skill Proficiency"
 			],
 			"languageProficiencies": [
 				{
@@ -1365,6 +1471,103 @@
 			]
 		},
 		{
+			"name": "Custom Lineage",
+			"source": "TCE",
+			"page": 8,
+			"size": "V",
+			"speed": 30,
+			"ability": [
+				{
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis",
+							"cha"
+						],
+						"amount": 2
+					}
+				}
+			],
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Feat"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"anyStandard": 1
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						]
+					}
+				}
+			],
+			"entries": [
+				"Instead of choosing one of the game's races for your character at 1st level, you can use the following traits to represent your character's lineage, giving you full control over how your character's origin shaped them:",
+				{
+					"type": "entries",
+					"name": "Creature Type",
+					"entries": [
+						"You are a humanoid. You determine your appearance and whether you resemble any of your kin."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"You are Small or Medium (your choice)."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Feat",
+					"entries": [
+						"You gain one {@5etools feat|feats.html} of your choice for which you qualify."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Variable Trait",
+					"entries": [
+						"You gain one of the following options of your choice: (a) darkvision with a range of 60 feet or (b) proficiency in one skill of your choice."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and one other language that you and your DM agree is appropriate for your character."
+					]
+				}
+			]
+		},
+		{
 			"name": "Dragonborn",
 			"source": "PHB",
 			"page": 32,
@@ -1384,7 +1587,6 @@
 				"weightMod": "2d6"
 			},
 			"traitTags": [
-				"Damage Resistance",
 				"Uncommon Race"
 			],
 			"languageProficiencies": [
@@ -1393,7 +1595,23 @@
 					"draconic": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/135/dragonborn.mp3",
+			"resist": [
+				{
+					"choose": {
+						"from": [
+							"acid",
+							"cold",
+							"fire",
+							"lightning",
+							"poison"
+						]
+					}
+				}
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/dragonborn.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -1518,7 +1736,7 @@
 				{
 					"name": "Draconblood",
 					"source": "EGW",
-					"page": 0,
+					"page": 168,
 					"ability": [
 						{
 							"int": 2,
@@ -1527,6 +1745,7 @@
 					],
 					"darkvision": 60,
 					"traitTags": [],
+					"resist": null,
 					"entries": [
 						{
 							"type": "entries",
@@ -1544,16 +1763,93 @@
 							"data": {
 								"overwrite": "Damage Resistance"
 							}
+						},
+						{
+							"name": "Draconic Ancestry",
+							"entries": [
+								"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon is determined by the dragon type, as shown in the table.",
+								{
+									"type": "table",
+									"caption": "Draconic Ancestry",
+									"colLabels": [
+										"Dragon",
+										"Damage Type",
+										"Breath Weapon"
+									],
+									"colStyles": [
+										"col-3 text-center",
+										"col-3 text-center",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Black",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Blue",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Brass",
+											"Fire",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Bronze",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Copper",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Gold",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Green",
+											"Poison",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"Red",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Silver",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"White",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										]
+									]
+								}
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Draconic Ancestry"
+							}
 						}
 					],
 					"overwrite": {
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				},
 				{
 					"name": "Ravenite",
 					"source": "EGW",
-					"page": 0,
+					"page": 168,
 					"ability": [
 						{
 							"str": 2,
@@ -1562,6 +1858,7 @@
 					],
 					"darkvision": 60,
 					"traitTags": [],
+					"resist": null,
 					"entries": [
 						{
 							"type": "entries",
@@ -1579,10 +1876,87 @@
 							"data": {
 								"overwrite": "Damage Resistance"
 							}
+						},
+						{
+							"name": "Draconic Ancestry",
+							"entries": [
+								"You have draconic ancestry. Choose one type of dragon from the Draconic Ancestry table. Your breath weapon is determined by the dragon type, as shown in the table.",
+								{
+									"type": "table",
+									"caption": "Draconic Ancestry",
+									"colLabels": [
+										"Dragon",
+										"Damage Type",
+										"Breath Weapon"
+									],
+									"colStyles": [
+										"col-3 text-center",
+										"col-3 text-center",
+										"col-6"
+									],
+									"rows": [
+										[
+											"Black",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Blue",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Brass",
+											"Fire",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Bronze",
+											"Lightning",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Copper",
+											"Acid",
+											"5 by 30 ft. line (Dex. save)"
+										],
+										[
+											"Gold",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Green",
+											"Poison",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"Red",
+											"Fire",
+											"15 ft. cone (Dex. save)"
+										],
+										[
+											"Silver",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										],
+										[
+											"White",
+											"Cold",
+											"15 ft. cone (Con. save)"
+										]
+									]
+								}
+							],
+							"type": "entries",
+							"data": {
+								"overwrite": "Draconic Ancestry"
+							}
 						}
 					],
 					"overwrite": {
-						"ability": true
+						"ability": true,
+						"traitTags": true
 					}
 				}
 			]
@@ -1591,6 +1965,7 @@
 			"name": "Dwarf",
 			"source": "PHB",
 			"page": 18,
+			"srd": true,
 			"size": "M",
 			"speed": 25,
 			"ability": [
@@ -1600,7 +1975,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Weapon Proficiency",
 				"Tool Proficiency",
 				"Skill Proficiency"
@@ -1611,7 +1985,13 @@
 					"dwarvish": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/146/dwarf.mp3",
+			"resist": [
+				"poison"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/dwarf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -1702,7 +2082,6 @@
 					],
 					"darkvision": 120,
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting"
 					],
 					"languageProficiencies": [
@@ -1710,6 +2089,27 @@
 							"common": true,
 							"dwarvish": true,
 							"undercommon": true
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"3": {
+									"rest": {
+										"1": [
+											"enlarge/reduce"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"ability": "int"
 						}
 					],
 					"entries": [
@@ -1764,6 +2164,7 @@
 				},
 				{
 					"name": "Hill",
+					"page": 20,
 					"srd": true,
 					"ability": [
 						{
@@ -1804,6 +2205,38 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"alarm",
+									"mage armor"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"alarm",
+									"armor of agathys"
+								],
+								"s2": [
+									"arcane lock",
+									"knock"
+								],
+								"s3": [
+									"glyph of warding",
+									"magic circle"
+								],
+								"s4": [
+									"leomund's secret chest",
+									"mordenkainen's faithful hound"
+								],
+								"s5": [
+									"antilife shell"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -1865,6 +2298,7 @@
 				},
 				{
 					"name": "Mountain",
+					"page": 20,
 					"ability": [
 						{
 							"str": 2
@@ -1905,7 +2339,6 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
 				"Skill Proficiency",
 				"Tool Proficiency"
 			],
@@ -1914,6 +2347,9 @@
 					"common": true,
 					"dwarvish": true
 				}
+			],
+			"resist": [
+				"poison"
 			],
 			"entries": [
 				{
@@ -1985,6 +2421,7 @@
 			"name": "Elf",
 			"source": "PHB",
 			"page": 21,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -2008,7 +2445,10 @@
 					"perception": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/152/elf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/elf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -2072,6 +2512,7 @@
 				{
 					"name": "Avariel",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"speed": {
 						"walk": 30,
 						"fly": 30
@@ -2103,6 +2544,7 @@
 					"alias": [
 						"Dark"
 					],
+					"page": 24,
 					"ability": [
 						{
 							"cha": 1
@@ -2118,6 +2560,30 @@
 					"traitTags": [
 						"Spellcasting",
 						"Weapon Proficiency"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"faerie fire"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -2254,6 +2720,18 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends",
+									"chill touch",
+									"minor illusion",
+									"fire bolt"
+								]
+							}
+						}
+					],
 					"entries": [
 						{
 							"name": "Fey Step",
@@ -2305,6 +2783,7 @@
 				{
 					"name": "Grugach",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"ability": [
 						{
 							"str": 1
@@ -2335,7 +2814,7 @@
 						{
 							"name": "Grugach Weapon Training",
 							"entries": [
-								"You have proficiency with the spear, shortbow, longbow, and net."
+								"You have proficiency with the {@item spear|phb}, {@item shortbow|phb}, {@item longbow|phb}, and {@item net|phb}."
 							],
 							"type": "entries"
 						},
@@ -2353,6 +2832,7 @@
 				},
 				{
 					"name": "High",
+					"page": 23,
 					"srd": true,
 					"speed": 30,
 					"ability": [
@@ -2490,6 +2970,44 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"expanded": {
+								"s1": [
+									"disguise self",
+									"silent image"
+								],
+								"s2": [
+									"darkness",
+									"pass without trace"
+								],
+								"s3": [
+									"clairvoyance",
+									"major image"
+								],
+								"s4": [
+									"greater invisibility",
+									"hallucinatory terrain"
+								],
+								"s5": [
+									"mislead"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -2551,7 +3069,7 @@
 				{
 					"name": "Pallid",
 					"source": "EGW",
-					"page": 0,
+					"page": 21,
 					"ability": [
 						{
 							"wis": 1
@@ -2565,6 +3083,30 @@
 					},
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"light"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"sleep"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -2590,7 +3132,7 @@
 					"otherSources": [
 						{
 							"source": "EGW",
-							"page": 0
+							"page": 163
 						}
 					],
 					"speed": {
@@ -2646,6 +3188,7 @@
 				{
 					"name": "Sea",
 					"source": "UAElfSubraces",
+					"page": 1,
 					"speed": {
 						"walk": 30,
 						"swim": 30
@@ -2705,8 +3248,8 @@
 						"baseWeight": 90,
 						"weightMod": "1d4"
 					},
-					"traitTags": [
-						"Damage Resistance"
+					"resist": [
+						"necrotic"
 					],
 					"entries": [
 						{
@@ -2729,20 +3272,46 @@
 				{
 					"name": "Shadar-kai",
 					"source": "UAElfSubraces",
+					"page": 2,
 					"ability": [
 						{
 							"cha": 1
 						}
 					],
 					"traitTags": [
-						"Spellcasting",
-						"Damage Resistance"
+						"Spellcasting"
 					],
 					"languageProficiencies": [
 						{
 							"common": true,
 							"elvish": true,
 							"anyStandard": 1
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"chill touch"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"spare the dying"
+								]
+							},
+							"ability": "cha"
+						},
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								]
+							},
+							"ability": "cha"
 						}
 					],
 					"entries": [
@@ -2777,6 +3346,7 @@
 				},
 				{
 					"name": "Wood",
+					"page": 24,
 					"speed": 35,
 					"ability": [
 						{
@@ -2990,6 +3560,7 @@
 			"subraces": [
 				{
 					"name": "Bishatar and Tirahar",
+					"page": 21,
 					"speed": 35,
 					"entries": [
 						{
@@ -3010,6 +3581,7 @@
 				},
 				{
 					"name": "Vadahar",
+					"page": 21,
 					"traitTags": [
 						"Spellcasting"
 					],
@@ -3112,6 +3684,7 @@
 			"subraces": [
 				{
 					"name": "Joraga Nation",
+					"page": 19,
 					"speed": 35,
 					"ability": [
 						{
@@ -3147,6 +3720,7 @@
 				},
 				{
 					"name": "Mul Daya Nation",
+					"page": 19,
 					"ability": [
 						{
 							"str": 1
@@ -3156,6 +3730,30 @@
 					"traitTags": [
 						"Spellcasting",
 						"Weapon Proficiency"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"chill touch"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"hex"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -3193,6 +3791,7 @@
 				},
 				{
 					"name": "Tajuru Nation",
+					"page": 18,
 					"ability": [
 						{
 							"cha": 1
@@ -3251,7 +3850,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 169
 				}
 			],
 			"size": "M",
@@ -3279,7 +3878,20 @@
 					"giant": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/161/firbolg.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/firbolg.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"detect magic",
+							"disguise self"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -3346,13 +3958,13 @@
 			"additionalSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 170
 				}
 			],
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 170
 				}
 			],
 			"size": "M",
@@ -3374,7 +3986,10 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/576/genasi.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/genasi.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -3408,6 +4023,7 @@
 			"subraces": [
 				{
 					"name": "Air",
+					"page": 9,
 					"ability": [
 						{
 							"dex": 1
@@ -3415,6 +4031,16 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"levitate"
+								]
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3435,6 +4061,7 @@
 				},
 				{
 					"name": "Earth",
+					"page": 9,
 					"ability": [
 						{
 							"str": 1
@@ -3442,6 +4069,16 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"pass without trace"
+								]
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3462,6 +4099,7 @@
 				},
 				{
 					"name": "Fire",
+					"page": 9,
 					"ability": [
 						{
 							"int": 1
@@ -3469,8 +4107,27 @@
 					],
 					"darkvision": 60,
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting"
+					],
+					"resist": [
+						"fire"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"produce flame"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								}
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3498,6 +4155,7 @@
 				},
 				{
 					"name": "Water",
+					"page": 10,
 					"speed": {
 						"walk": 30,
 						"swim": 30
@@ -3508,9 +4166,28 @@
 						}
 					],
 					"traitTags": [
-						"Damage Resistance",
 						"Amphibious",
 						"Spellcasting"
+					],
+					"resist": [
+						"acid"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"shape water|xge"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"create or destroy water"
+										]
+									}
+								}
+							},
+							"ability": "con"
+						}
 					],
 					"entries": [
 						{
@@ -3588,6 +4265,7 @@
 			"subraces": [
 				{
 					"name": "Githyanki",
+					"page": 96,
 					"ability": [
 						{
 							"str": 2
@@ -3634,6 +4312,30 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"jump"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"misty step"
+										]
+									}
+								}
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Alignment",
@@ -3669,6 +4371,7 @@
 				},
 				{
 					"name": "Githzerai",
+					"page": 96,
 					"ability": [
 						{
 							"wis": 2
@@ -3682,6 +4385,30 @@
 					},
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"shield"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -3754,6 +4481,7 @@
 			"subraces": [
 				{
 					"name": "Githyanki",
+					"page": 2,
 					"ability": [
 						{
 							"str": 2
@@ -3793,6 +4521,30 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"jump"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"misty step"
+										]
+									}
+								}
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"name": "Alignment",
@@ -3827,6 +4579,7 @@
 				},
 				{
 					"name": "Githzerai",
+					"page": 3,
 					"ability": [
 						{
 							"wis": 2
@@ -3835,6 +4588,30 @@
 					"traitTags": [
 						"Natural Armor",
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"shield"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -3908,6 +4685,7 @@
 			"name": "Gnome",
 			"source": "PHB",
 			"page": 35,
+			"srd": true,
 			"size": "S",
 			"speed": 25,
 			"ability": [
@@ -3930,7 +4708,10 @@
 					"gnomish": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/231/gnome.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/gnome.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -4144,6 +4925,7 @@
 				},
 				{
 					"name": "Forest",
+					"page": 37,
 					"ability": [
 						{
 							"dex": 1
@@ -4151,6 +4933,16 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -4187,6 +4979,45 @@
 					"traitTags": [
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"comprehend languages",
+									"message"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"magic mouth"
+										]
+									}
+								}
+							},
+							"expanded": {
+								"s1": [
+									"comprehend languages",
+									"illusory script"
+								],
+								"s2": [
+									"animal messenger",
+									"silence"
+								],
+								"s3": [
+									"sending",
+									"tongues"
+								],
+								"s4": [
+									"arcane eye",
+									"confusion"
+								],
+								"s5": [
+									"dream"
+								]
+							},
+							"ability": "int"
+						}
 					],
 					"entries": [
 						{
@@ -4248,6 +5079,7 @@
 				},
 				{
 					"name": "Rock",
+					"page": 37,
 					"srd": true,
 					"ability": [
 						{
@@ -4320,6 +5152,19 @@
 					"gnomish": true,
 					"primordial": true,
 					"undercommon": true
+				}
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"nondetection",
+							"blindness/deafness",
+							"blur",
+							"disguise self"
+						]
+					},
+					"ability": "int"
 				}
 			],
 			"entries": [
@@ -4510,7 +5355,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 174
 				}
 			],
 			"size": "S",
@@ -4709,14 +5554,17 @@
 			],
 			"darkvision": 60,
 			"traitTags": [
-				"Natural Armor",
-				"Damage Resistance"
+				"Natural Armor"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"goblin": true
 				}
+			],
+			"resist": [
+				"fire",
+				"psychic"
 			],
 			"entries": [
 				{
@@ -4765,6 +5613,7 @@
 			"subraces": [
 				{
 					"name": "Grotag Tribe",
+					"page": 17,
 					"traitTags": [
 						"Skill Proficiency"
 					],
@@ -4785,6 +5634,7 @@
 				},
 				{
 					"name": "Lavastep Tribe",
+					"page": 17,
 					"entries": [
 						{
 							"name": "Lavastep Grit",
@@ -4797,6 +5647,7 @@
 				},
 				{
 					"name": "Tuktuk Tribe",
+					"page": 17,
 					"traitTags": [
 						"Tool Proficiency"
 					],
@@ -4823,7 +5674,10 @@
 				},
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 175
+				},
+				{
+					"source": "IDRotF"
 				}
 			],
 			"size": "M",
@@ -4855,7 +5709,13 @@
 					"athletics": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/238/goliath.mp3",
+			"resist": [
+				"cold"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/goliath.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -4902,7 +5762,7 @@
 				{
 					"name": "Mountain Born",
 					"entries": [
-						"You're acclimated to high altitude, including elevations above 20,000 feet. You're also naturally adapted to cold climates, as described in chapter 5 of the Dungeon Master's Guide."
+						"You have resistance to cold damage. You're also acclimated to high altitude, including elevations above 20,000 feet."
 					],
 					"type": "entries"
 				},
@@ -4984,8 +5844,7 @@
 			],
 			"traitTags": [
 				"Skill Proficiency",
-				"Amphibious",
-				"Damage Immunity"
+				"Amphibious"
 			],
 			"languageProficiencies": [
 				{
@@ -4996,6 +5855,12 @@
 				{
 					"perception": true
 				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -5075,6 +5940,7 @@
 			"name": "Half-Elf",
 			"source": "PHB",
 			"page": 38,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"ability": [
@@ -5137,7 +6003,132 @@
 					}
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/259/half-elf.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-elf.mp3"
+			},
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Half-elves share the chaotic bent of their elven heritage. They value both personal freedom and creative expression, demonstrating neither love of leaders nor desire for followers. They chafe at rules, resent others' demands, and sometimes prove unreliable, or at least unpredictable."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"Thanks to your elf blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Fey Ancestry",
+					"entries": [
+						"You have advantage on saving throws against being {@condition charmed}, and magic can't put you to sleep."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Skill Versatility",
+					"entries": [
+						"You gain proficiency in two skills of your choice."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common, Elvish, and one extra language of your choice."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Half-Elf (Variant)",
+			"source": "PHB",
+			"page": 38,
+			"size": "M",
+			"speed": 30,
+			"ability": [
+				{
+					"cha": 2,
+					"choose": {
+						"from": [
+							"str",
+							"dex",
+							"con",
+							"int",
+							"wis"
+						],
+						"count": 2
+					}
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 57,
+				"heightMod": "2d8",
+				"baseWeight": 110,
+				"weightMod": "2d4"
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Uncommon Race"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"elvish": true,
+					"anyStandard": 1
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"acrobatics",
+							"sleight of hand",
+							"stealth",
+							"arcana",
+							"history",
+							"investigation",
+							"nature",
+							"religion",
+							"animal handling",
+							"insight",
+							"medicine",
+							"perception",
+							"survival",
+							"deception",
+							"intimidation",
+							"performance",
+							"persuasion"
+						],
+						"count": 2
+					}
+				}
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-elf.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -5191,16 +6182,10 @@
 			],
 			"subraces": [
 				{
-					"srd": true
-				},
-				{
 					"name": "Aquatic Elf Descent",
 					"source": "SCAG",
 					"page": 116,
-					"speed": {
-						"walk": 30,
-						"swim": 30
-					},
+					"speed": 30,
 					"traitTags": [
 						"Skill Proficiency"
 					],
@@ -5302,6 +6287,30 @@
 							}
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"faerie fire"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"type": "inset",
@@ -5367,6 +6376,45 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"detect magic",
+									"detect poison and disease"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"see invisibility"
+										]
+									}
+								}
+							},
+							"expanded": {
+								"s1": [
+									"detect evil and good",
+									"detect poison and disease"
+								],
+								"s2": [
+									"detect thoughts",
+									"find traps"
+								],
+								"s3": [
+									"clairvoyance",
+									"nondetection"
+								],
+								"s4": [
+									"arcane eye",
+									"divination"
+								],
+								"s5": [
+									"legend lore"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -5382,7 +6430,7 @@
 							"type": "entries",
 							"name": "Magical Detection",
 							"entries": [
-								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells with this trait. Starting at 3rd level, you can also cast the {@spell see invisibility} spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. Intelligence is your spellcasting ability for these spells, and you don't require material components for them."
+								"You can cast the {@spell detect magic} and {@spell detect poison and disease} spells with this trait. Starting at 3rd level, you can also cast the {@spell see invisibility} spell with it. Once you cast any of these spells with this trait, you can't cast that spell with it again until you finish a long rest. Wisdom is your spellcasting ability for these spells, and you don't require material components for them."
 							]
 						},
 						{
@@ -5448,9 +6496,42 @@
 						}
 					],
 					"traitTags": [
-						"Damage Resistance",
 						"Spellcasting",
 						"Dragonmark"
+					],
+					"resist": [
+						"lightning"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"gust|xge"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"feather fall",
+									"fog cloud"
+								],
+								"s2": [
+									"gust of wind",
+									"levitate"
+								],
+								"s3": [
+									"sleet storm",
+									"wind wall"
+								],
+								"s4": [
+									"conjure minor elementals",
+									"control water"
+								],
+								"s5": [
+									"conjure elemental"
+								]
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -5724,7 +6805,10 @@
 					"intimidation": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-orc.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -5819,7 +6903,48 @@
 					"goblin": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/262/half-orc.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/half-orc.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"hunter's mark"
+						],
+						"3": {
+							"rest": {
+								"1": [
+									"locate object"
+								]
+							}
+						}
+					},
+					"expanded": {
+						"s1": [
+							"faerie fire",
+							"longstrider"
+						],
+						"s2": [
+							"locate animals or plants",
+							"locate object"
+						],
+						"s3": [
+							"clairvoyance",
+							"speak with plants"
+						],
+						"s4": [
+							"divination",
+							"locate creature"
+						],
+						"s5": [
+							"commune with nature"
+						]
+					},
+					"ability": "wis"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -5917,6 +7042,7 @@
 			"name": "Halfling",
 			"source": "PHB",
 			"page": 26,
+			"srd": true,
 			"size": "S",
 			"speed": 25,
 			"ability": [
@@ -5935,7 +7061,10 @@
 					"halfling": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/260/halfling.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/halfling.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -6009,6 +7138,7 @@
 				},
 				{
 					"name": "Lightfoot",
+					"page": 28,
 					"srd": true,
 					"ability": [
 						{
@@ -6028,7 +7158,7 @@
 				{
 					"name": "Lotusden",
 					"source": "EGW",
-					"page": 0,
+					"page": 164,
 					"ability": [
 						{
 							"wis": 1
@@ -6036,6 +7166,30 @@
 					],
 					"traitTags": [
 						"Spellcasting"
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"druidcraft"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"entangle"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"spike growth"
+										]
+									}
+								}
+							},
+							"ability": "wis"
+						}
 					],
 					"entries": [
 						{
@@ -6073,12 +7227,50 @@
 						"Dragonmark",
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"cure wounds"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"lesser restoration"
+										]
+									}
+								}
+							},
+							"expanded": {
+								"s1": [
+									"cure wounds",
+									"healing word"
+								],
+								"s2": [
+									"lesser restoration",
+									"prayer of healing"
+								],
+								"s3": [
+									"aura of vitality",
+									"mass healing word"
+								],
+								"s4": [
+									"aura of purity",
+									"aura of life"
+								],
+								"s5": [
+									"greater restoration"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
 							"name": "Medical Intuition",
 							"entries": [
-								"When you make a Wisdom ({@skill Medicine}) check or an ability check using an herbalism kit, you can roll a {@dice d4} and add the number rolled to the ability check."
+								"When you make a Wisdom ({@skill Medicine}) check or an ability check using an {@item herbalism kit|phb}, you can roll a {@dice d4} and add the number rolled to the ability check."
 							]
 						},
 						{
@@ -6150,6 +7342,39 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"prestidigitation",
+									"purify food and drink",
+									"unseen servant"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"goodberry",
+									"sleep"
+								],
+								"s2": [
+									"aid",
+									"calm emotions"
+								],
+								"s3": [
+									"create food and water",
+									"leomund's tiny hut"
+								],
+								"s4": [
+									"aura of purity",
+									"mordenkainen's private sanctum"
+								],
+								"s5": [
+									"hallow"
+								]
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6210,13 +7435,14 @@
 				},
 				{
 					"name": "Stout",
+					"page": 28,
 					"ability": [
 						{
 							"con": 1
 						}
 					],
-					"traitTags": [
-						"Damage Resistance"
+					"resist": [
+						"poison"
 					],
 					"entries": [
 						{
@@ -6316,7 +7542,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 175
 				}
 			],
 			"size": "M",
@@ -6401,6 +7627,7 @@
 			"name": "Human",
 			"source": "PHB",
 			"page": 29,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
 			"heightAndWeight": {
@@ -6415,7 +7642,10 @@
 					"anyStandard": 1
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/279/human.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/human.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -6572,6 +7802,44 @@
 							"goblin": true
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"hunter's mark"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"locate object"
+										]
+									}
+								}
+							},
+							"expanded": {
+								"s1": [
+									"faerie fire",
+									"longstrider"
+								],
+								"s2": [
+									"locate animals or plants",
+									"locate object"
+								],
+								"s3": [
+									"clairvoyance",
+									"speak with plants"
+								],
+								"s4": [
+									"divination",
+									"locate creature"
+								],
+								"s5": [
+									"commune with nature"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6680,6 +7948,32 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"expanded": {
+								"s1": [
+									"animal friendship",
+									"speak with animals"
+								],
+								"s2": [
+									"beast sense",
+									"calm emotions"
+								],
+								"s3": [
+									"beacon of hope",
+									"conjure animals"
+								],
+								"s4": [
+									"aura of life",
+									"dominate beast"
+								],
+								"s5": [
+									"awaken"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6779,6 +8073,38 @@
 							"tool": true
 						}
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"mending",
+									"magic weapon"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"identify",
+									"tenser's floating disk"
+								],
+								"s2": [
+									"continual flame",
+									"magic weapon"
+								],
+								"s3": [
+									"conjure barrage",
+									"elemental weapon"
+								],
+								"s4": [
+									"fabricate",
+									"stone shape"
+								],
+								"s5": [
+									"creation"
+								]
+							},
+							"ability": "int"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6874,6 +8200,37 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"misty step"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"expeditious retreat",
+									"jump"
+								],
+								"s2": [
+									"misty step",
+									"pass without trace"
+								],
+								"s3": [
+									"blink",
+									"phantom steed"
+								],
+								"s4": [
+									"dimension door",
+									"freedom of movement"
+								],
+								"s5": [
+									"teleportation circle"
+								]
+							},
+							"ability": "dex"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -6959,6 +8316,37 @@
 						"Spellcasting",
 						"Dragonmark"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"shield"
+								]
+							},
+							"expanded": {
+								"s1": [
+									"compelled duel",
+									"shield of faith"
+								],
+								"s2": [
+									"warding bond",
+									"zone of truth"
+								],
+								"s3": [
+									"counterspell",
+									"protection from energy"
+								],
+								"s4": [
+									"death ward",
+									"guardian of faith"
+								],
+								"s5": [
+									"bigby's hand"
+								]
+							},
+							"ability": "wis"
+						}
+					],
 					"entries": [
 						{
 							"type": "entries",
@@ -7026,6 +8414,7 @@
 				},
 				{
 					"name": "Variant",
+					"page": 31,
 					"srd": true,
 					"ability": [
 						{
@@ -7043,7 +8432,8 @@
 						}
 					],
 					"traitTags": [
-						"Skill Proficiency"
+						"Skill Proficiency",
+						"Feat"
 					],
 					"skillProficiencies": [
 						{
@@ -7082,7 +8472,7 @@
 						{
 							"name": "Feat",
 							"entries": [
-								"You gain one feat of your choice."
+								"You gain one {@5etools feat|feats.html} of your choice."
 							],
 							"type": "entries"
 						}
@@ -7112,7 +8502,8 @@
 				}
 			],
 			"traitTags": [
-				"Skill Proficiency"
+				"Skill Proficiency",
+				"Feat"
 			],
 			"languageProficiencies": [
 				{
@@ -7243,6 +8634,7 @@
 			"subraces": [
 				{
 					"name": "Gavony",
+					"page": 8,
 					"ability": [
 						{
 							"str": 1,
@@ -7265,6 +8657,7 @@
 				},
 				{
 					"name": "Kessig",
+					"page": 8,
 					"speed": 40,
 					"ability": [
 						{
@@ -7313,6 +8706,7 @@
 				},
 				{
 					"name": "Nephalia",
+					"page": 8,
 					"ability": [
 						{
 							"int": 1,
@@ -7365,6 +8759,7 @@
 				},
 				{
 					"name": "Stensia",
+					"page": 8,
 					"ability": [
 						{
 							"str": 1,
@@ -7512,15 +8907,15 @@
 				"baseWeight": 110,
 				"weightMod": "1d6"
 			},
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true,
 					"anyStandard": 1
 				}
+			],
+			"resist": [
+				"psychic"
 			],
 			"entries": [
 				{
@@ -7605,15 +9000,15 @@
 					}
 				}
 			],
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true,
 					"anyStandard": 1
 				}
+			],
+			"resist": [
+				"psychic"
 			],
 			"entries": [
 				{
@@ -7734,7 +9129,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 177
 				}
 			],
 			"size": "M",
@@ -7773,7 +9168,10 @@
 					}
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/294/kenku-2.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/kenku-2.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -7900,8 +9298,8 @@
 			"speed": 30,
 			"ability": [
 				{
-					"str": -4,
-					"dex": 2
+					"dex": 2,
+					"str": -4
 				}
 			],
 			"darkvision": 60,
@@ -7953,8 +9351,7 @@
 			"speed": 30,
 			"ability": [
 				{
-					"dex": 2,
-					"str": -2
+					"dex": 2
 				}
 			],
 			"heightAndWeight": {
@@ -8179,6 +9576,106 @@
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Undercommon."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Leonin",
+			"source": "MOT",
+			"page": 20,
+			"size": "M",
+			"speed": 35,
+			"ability": [
+				{
+					"str": 1,
+					"con": 2
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 66,
+				"heightMod": "2d10",
+				"baseWeight": 180,
+				"weightMod": "2d6"
+			},
+			"darkvision": 60,
+			"traitTags": [
+				"Skill Proficiency",
+				"Unarmed Strike"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"other": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"athletics",
+							"intimidation",
+							"perception",
+							"survival"
+						]
+					}
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Leonin mature and age at about the same rate as humans."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Leonin tend toward good alignments. Leonin who are focused on the pride lean toward lawful good."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Leonin are typically over 6 feet tall, with some standing over 7 feet. Your size is Medium."
+					]
+				},
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Claws",
+					"entries": [
+						"Your claws are natural weapons, which you can use to make unarmed strikes. If you hit with them, you can deal slashing damage equal to {@dice 1d4} + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Hunter's Instincts",
+					"entries": [
+						"You have proficiency in one of the following skills of your choice: {@skill Athletics}, {@skill Intimidation}, {@skill Perception}, or {@skill Survival}."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Daunting Roar",
+					"entries": [
+						"As a bonus action, you can let out an especially menacing roar. Creatures of your choice within 10 feet of you that can hear you must succeed on a Wisdom saving throw or become {@condition frightened} of you until the end of your next turn. The DC of the save equals 8 + your proficiency bonus + your Constitution modifier. Once you use this trait, you can't use it again until you finish a short or long rest."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Leonin."
 					],
 					"type": "entries"
 				}
@@ -8469,7 +9966,6 @@
 			},
 			"traitTags": [
 				"Natural Armor",
-				"Tool Proficiency",
 				"Powerful Build"
 			],
 			"languageProficiencies": [
@@ -8760,6 +10256,7 @@
 			"subraces": [
 				{
 					"name": "Blue",
+					"page": 12,
 					"ability": [
 						{
 							"int": 2
@@ -8793,6 +10290,7 @@
 				},
 				{
 					"name": "Green",
+					"page": 12,
 					"ability": [
 						{
 							"wis": 2
@@ -8891,6 +10389,7 @@
 			"subraces": [
 				{
 					"name": "Cosi Creed",
+					"page": 13,
 					"ability": [
 						{
 							"int": 1,
@@ -8926,6 +10425,7 @@
 				},
 				{
 					"name": "Emeria Creed",
+					"page": 13,
 					"ability": [
 						{
 							"wis": 2
@@ -8960,6 +10460,7 @@
 				},
 				{
 					"name": "Ula Creed",
+					"page": 13,
 					"ability": [
 						{
 							"int": 2
@@ -9096,6 +10597,41 @@
 					"type": "entries"
 				}
 			]
+		},
+		{
+			"name": "Minotaur",
+			"source": "MOT",
+			"page": 22,
+			"_copy": {
+				"name": "Minotaur",
+				"source": "GGR",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Age",
+							"items": {
+								"name": "Age",
+								"type": "entries",
+								"entries": [
+									"Minotaurs mature and age at about the same rate as humans."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Minotaurs who leave the walls of Skophos have the opportunity to be free of its culture and pursue chaotic alignments, while those who remain within the polis and its tyrannical regime tend toward lawful alignments."
+								]
+							}
+						}
+					]
+				}
+			}
 		},
 		{
 			"name": "Minotaur",
@@ -9298,8 +10834,7 @@
 							"int",
 							"wis"
 						],
-						"count": 1,
-						"amount": 1
+						"count": 1
 					}
 				}
 			],
@@ -9399,14 +10934,19 @@
 			],
 			"traitTags": [
 				"Unarmed Strike",
-				"Tool Proficiency",
-				"Damage Immunity"
+				"Tool Proficiency"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -9512,6 +11052,79 @@
 						"You can speak, read, and write Common and Orc."
 					],
 					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Orc",
+			"source": "EGW",
+			"page": 178,
+			"_copy": {
+				"name": "Orc",
+				"source": "ERLW",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Age",
+							"items": {
+								"name": "Age",
+								"type": "entries",
+								"entries": [
+									"Orcs reach adulthood at age 16, and live up to 80 years."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Orcs fear the curse of ruin that is said to plague their race, and tend strongly toward either chaos (accepting their fate), or toward law (rejecting it)."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Size",
+							"items": {
+								"name": "Size",
+								"type": "entries",
+								"entries": [
+									"Orcs stand easily 8 feet tall and corded with powerful muscles, weighing up to 280 pounds. Your size is Medium."
+								]
+							}
+						},
+						{
+							"mode": "replaceArr",
+							"replace": "Primal Intuition",
+							"items": {
+								"type": "entries",
+								"name": "Primal Intuition",
+								"entries": [
+									"You have proficiency in two of the following skills of your choice: {@skill Animal Handling}, {@skill Insight}, {@skill Intimidation}, {@skill Medicine}, {@skill Perception}, and {@skill Survival}."
+								]
+							}
+						}
+					]
+				}
+			},
+			"heightAndWeight": null,
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"animal handling",
+							"insight",
+							"intimidation",
+							"medicine",
+							"perception",
+							"survival"
+						],
+						"count": 2
+					}
 				}
 			]
 		},
@@ -9623,19 +11236,12 @@
 			"name": "Orc",
 			"source": "VGM",
 			"page": 120,
-			"otherSources": [
-				{
-					"source": "EGW",
-					"page": 0
-				}
-			],
 			"size": "M",
 			"speed": 30,
 			"ability": [
 				{
 					"str": 2,
-					"con": 1,
-					"int": -2
+					"con": 1
 				}
 			],
 			"heightAndWeight": {
@@ -9658,7 +11264,18 @@
 			],
 			"skillProficiencies": [
 				{
-					"intimidation": true
+					"choose": {
+						"from": [
+							"animal handling",
+							"insight",
+							"intimidation",
+							"medicine",
+							"nature",
+							"perception",
+							"survival"
+						],
+						"count": 2
+					}
 				}
 			],
 			"entries": [
@@ -9698,9 +11315,9 @@
 					"type": "entries"
 				},
 				{
-					"name": "Menacing",
+					"name": "Primal Intuition",
 					"entries": [
-						"You are trained in the {@skill Intimidation} skill."
+						"You have proficiency in two of the following skills of your choice: {@skill Animal Handling}, {@skill Insight}, {@skill Intimidation}, {@skill Medicine}, {@skill Nature}, {@skill Perception}, and {@skill Survival}."
 					],
 					"type": "entries"
 				},
@@ -9817,8 +11434,8 @@
 					"con": 1
 				}
 			],
-			"traitTags": [
-				"Damage Resistance"
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -9887,6 +11504,109 @@
 							]
 						},
 						"When your goal is complete, you finally find rest. You die and cannot be restored to life."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Satyr",
+			"source": "MOT",
+			"page": 24,
+			"size": "M",
+			"speed": 35,
+			"ability": [
+				{
+					"cha": 2,
+					"dex": 1
+				}
+			],
+			"heightAndWeight": {
+				"baseHeight": 56,
+				"heightMod": "2d8",
+				"baseWeight": 100,
+				"weightMod": "2d4"
+			},
+			"traitTags": [
+				"Skill Proficiency",
+				"Unarmed Strike",
+				"Tool Proficiency",
+				"Magic Resistance"
+			],
+			"languageProficiencies": [
+				{
+					"common": true,
+					"sylvan": true
+				}
+			],
+			"skillProficiencies": [
+				{
+					"performance": true,
+					"persuasion": true,
+					"tool": true
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Satyrs mature and age at about the same rate as humans."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Satyrs delight in living a life free of the mantle of law. They gravitate toward being good, but some have devious streaks and enjoy causing dismay."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Satyrs range from just under 5 feet to about 6 feet in height, with generally slender builds. Your size is Medium."
+					]
+				},
+				{
+					"name": "Fey",
+					"entries": [
+						"Your creature type is fey, rather than humanoid."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Ram",
+					"entries": [
+						"You can use your head and horns to make unarmed strikes. If you hit with them, you deal bludgeoning damage equal to {@dice 1d4} + your Strength modifier."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Magic Resistance",
+					"entries": [
+						"You have advantage on saving throws against spells and other magical effects."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Mirthful Leaps",
+					"entries": [
+						"Whenever you make a long or high jump, you can roll a {@dice d8} and add the number rolled to the number of feet you cover, even when making a standing jump. This extra distance costs movement as normal."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Reveler",
+					"entries": [
+						"You have proficiency in the {@skill Performance} and {@skill Persuasion} skills, and you have proficiency with one musical instrument of your choice."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Sylvan."
 					],
 					"type": "entries"
 				}
@@ -9971,6 +11691,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
+					"page": 34,
 					"ability": [
 						{
 							"con": 2,
@@ -10005,6 +11726,7 @@
 				},
 				{
 					"name": "Longtooth",
+					"page": 34,
 					"ability": [
 						{
 							"str": 2,
@@ -10039,6 +11761,7 @@
 				},
 				{
 					"name": "Swiftstride",
+					"page": 34,
 					"ability": [
 						{
 							"dex": 2,
@@ -10072,6 +11795,7 @@
 				},
 				{
 					"name": "Wildhunt",
+					"page": 34,
 					"ability": [
 						{
 							"wis": 2,
@@ -10158,6 +11882,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
+					"page": 2,
 					"ability": [
 						{
 							"con": 1
@@ -10178,6 +11903,7 @@
 				},
 				{
 					"name": "Cliffwalk",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10195,6 +11921,7 @@
 				},
 				{
 					"name": "Longstride",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10212,6 +11939,7 @@
 				},
 				{
 					"name": "Longtooth",
+					"page": 2,
 					"ability": [
 						{
 							"str": 1
@@ -10229,6 +11957,7 @@
 				},
 				{
 					"name": "Razorclaw",
+					"page": 2,
 					"ability": [
 						{
 							"dex": 2
@@ -10249,6 +11978,7 @@
 				},
 				{
 					"name": "Wildhunt",
+					"page": 3,
 					"ability": [
 						{
 							"wis": 1
@@ -10346,7 +12076,7 @@
 			"subraces": [
 				{
 					"name": "Beasthide",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"con": 2
@@ -10380,7 +12110,7 @@
 				},
 				{
 					"name": "Longtooth",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"str": 2
@@ -10414,7 +12144,7 @@
 				},
 				{
 					"name": "Swiftstride",
-					"page": 66,
+					"page": 6,
 					"speed": 35,
 					"ability": [
 						{
@@ -10456,7 +12186,7 @@
 				},
 				{
 					"name": "Wildhunt",
-					"page": 66,
+					"page": 6,
 					"ability": [
 						{
 							"wis": 2
@@ -10773,6 +12503,15 @@
 					"other": true
 				}
 			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"friends"
+						]
+					}
+				}
+			],
 			"entries": [
 				{
 					"name": "Alignment",
@@ -10827,8 +12566,14 @@
 			"darkvision": 60,
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race",
-				"Damage Immunity"
+				"NPC Race"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
 			],
 			"entries": [
 				{
@@ -10868,7 +12613,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 179
 				}
 			],
 			"size": "M",
@@ -10905,7 +12650,10 @@
 					"stealth": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/482/tabaxi.mp3",
+			"soundClip": {
+				"type": "internal",
+				"path": "races/tabaxi.mp3"
+			},
 			"entries": [
 				{
 					"name": "Age",
@@ -10969,8 +12717,15 @@
 			"name": "Tiefling",
 			"source": "PHB",
 			"page": 42,
+			"srd": true,
 			"size": "M",
 			"speed": 30,
+			"ability": [
+				{
+					"cha": 2,
+					"int": 1
+				}
+			],
 			"heightAndWeight": {
 				"baseHeight": 57,
 				"heightMod": "2d8",
@@ -10979,8 +12734,8 @@
 			},
 			"darkvision": 60,
 			"traitTags": [
-				"Damage Resistance",
-				"Uncommon Race"
+				"Uncommon Race",
+				"Spellcasting"
 			],
 			"languageProficiencies": [
 				{
@@ -10988,7 +12743,37 @@
 					"infernal": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/488/tiefling.mp3",
+			"resist": [
+				"fire"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/tiefling.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"thaumaturgy"
+						],
+						"3": {
+							"rest": {
+								"1": [
+									"hellish rebuke"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"darkness"
+								]
+							}
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -11026,6 +12811,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Infernal Legacy",
+					"entries": [
+						"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+					],
+					"type": "entries"
+				},
+				{
 					"name": "Languages",
 					"entries": [
 						"You can speak, read, and write Common and Infernal."
@@ -11035,25 +12827,7 @@
 			],
 			"subraces": [
 				{
-					"srd": true,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"srd": true
 				},
 				{
 					"name": "Abyssal",
@@ -11066,12 +12840,52 @@
 						}
 					],
 					"traitTags": [
+						"Uncommon Race",
 						"Spellcasting"
 					],
 					"languageProficiencies": [
 						{
 							"common": true,
 							"abyssal": true
+						}
+					],
+					"resist": null,
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"dancing lights",
+									"true strike",
+									"light",
+									"message",
+									"spare the dying",
+									"prestidigitation"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands",
+											"charm person",
+											"magic missile",
+											"cure wounds",
+											"tasha's hideous laughter",
+											"thunderwave"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"alter self",
+											"darkness",
+											"invisibility",
+											"levitate",
+											"mirror image",
+											"spider climb"
+										]
+									}
+								}
+							}
 						}
 					],
 					"entries": [
@@ -11138,7 +12952,7 @@
 							],
 							"type": "entries",
 							"data": {
-								"overwrite": "Hellish Resistance"
+								"overwrite": "Infernal Legacy"
 							}
 						},
 						{
@@ -11146,6 +12960,9 @@
 							"entries": [
 								"Your hit point maximum increases by half your level (minimum 1)."
 							],
+							"data": {
+								"overwrite": "Hellish Resistance"
+							},
 							"type": "entries"
 						},
 						{
@@ -11160,67 +12977,48 @@
 						}
 					],
 					"overwrite": {
-						"languageProficiencies": true
+						"languageProficiencies": true,
+						"ability": true,
+						"traitTags": true
 					}
 				},
 				{
 					"name": "Asmodeus",
 					"source": "MTF",
-					"page": 21,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"page": 21
 				},
 				{
 					"name": "Asmodeus",
 					"source": "UAFiendishOptions",
-					"page": 1,
-					"ability": [
-						{
-							"cha": 2,
-							"int": 1
-						}
-					],
-					"traitTags": [
-						"Spellcasting"
-					],
-					"entries": [
-						{
-							"name": "Infernal Legacy",
-							"entries": [
-								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-							],
-							"type": "entries"
-						}
-					]
+					"page": 1
 				},
 				{
 					"name": "Baalzebul",
 					"source": "MTF",
 					"page": 21,
-					"ability": [
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"ray of sickness"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"crown of madness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11228,7 +13026,10 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell ray of sickness} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell crown of madness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11236,14 +13037,29 @@
 					"name": "Baalzebul",
 					"source": "UAFiendishOptions",
 					"page": 1,
-					"ability": [
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"ray of sickness"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"crown of madness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11251,7 +13067,10 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell ray of sickness} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell crown of madness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11265,8 +13084,29 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"detect thoughts"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11274,9 +13114,15 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell detect thoughts} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Dispater",
@@ -11288,8 +13134,29 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11297,9 +13164,15 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Fierna",
@@ -11311,8 +13184,29 @@
 							"wis": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"suggestion"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11320,9 +13214,15 @@
 							"entries": [
 								"You know the {@spell friends} cantrip. When you reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell suggestion} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Fierna",
@@ -11334,8 +13234,29 @@
 							"wis": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"friends"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"suggestion"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11343,9 +13264,15 @@
 							"entries": [
 								"You know the {@spell friends} cantrip. When you reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell suggestion} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Glasya",
@@ -11357,8 +13284,29 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11366,9 +13314,15 @@
 							"entries": [
 								"You know the {@spell minor illusion} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Glasya",
@@ -11380,8 +13334,29 @@
 							"dex": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"minor illusion"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"disguise self"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"invisibility"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11389,9 +13364,15 @@
 							"entries": [
 								"You know the {@spell minor illusion} cantrip. When you reach 3rd level, you can cast the {@spell disguise self} spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell invisibility} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Levistus",
@@ -11403,8 +13384,29 @@
 							"con": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"ray of frost"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"armor of agathys"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11412,9 +13414,15 @@
 							"entries": [
 								"You know the {@spell ray of frost} cantrip. When you reach 3rd level, you can cast the {@spell armor of Agathys} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell darkness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Levistus",
@@ -11429,28 +13437,73 @@
 					"traitTags": [
 						"Spellcasting"
 					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"ray of frost"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"armor of agathys"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
+					],
 					"entries": [
 						{
 							"name": "Legacy of Stygia",
 							"entries": [
 								"You know the {@spell ray of frost} cantrip. When you reach 3rd level, you can cast the {@spell armor of Agathys} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell darkness} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Mammon",
 					"source": "MTF",
 					"page": 22,
-					"ability": [
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"tenser's floating disk"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"arcane lock"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11458,7 +13511,10 @@
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell Tenser's floating disk} spell once with this trait and regain the ability to do so when you finish a short or long rest. When you reach 5th level, you can cast the {@spell arcane lock} spell once with this trait, requiring no material component, and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11466,14 +13522,29 @@
 					"name": "Mammon",
 					"source": "UAFiendishOptions",
 					"page": 2,
-					"ability": [
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"tenser's floating disk"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"arcane lock"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11481,7 +13552,10 @@
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell Tenser's floating disk} spell once with this trait and regain the ability to do so when you finish a short or long rest. When you reach 5th level, you can cast the {@spell arcane lock} spell once with this trait, requiring no material component, and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
@@ -11489,14 +13563,29 @@
 					"name": "Mephistopheles",
 					"source": "MTF",
 					"page": 23,
-					"ability": [
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"flame blade"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11504,21 +13593,40 @@
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell burning hands} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell flame blade} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
 				{
 					"name": "Mephistopheles",
 					"source": "UAFiendishOptions",
-					"ability": [
+					"page": 2,
+					"additionalSpells": [
 						{
-							"cha": 2,
-							"int": 1
+							"innate": {
+								"1": [
+									"mage hand"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"magic missile"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"web"
+										]
+									}
+								}
+							},
+							"ability": "cha"
 						}
-					],
-					"traitTags": [
-						"Spellcasting"
 					],
 					"entries": [
 						{
@@ -11526,12 +13634,15 @@
 							"entries": [
 								"You know the {@spell mage hand} cantrip. When you reach 3rd level, you can cast the {@spell magic missile} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell web} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
 					]
 				},
 				{
-					"name": "Variant",
+					"name": "Variant; Devil's Tongue",
 					"source": "SCAG",
 					"page": 118,
 					"ability": [
@@ -11547,52 +13658,219 @@
 							}
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"vicious mockery"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"charm person"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"enthrall"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
 							"name": "Appearance",
 							"entries": [
-								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone"
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
 							],
 							"type": "entries"
 						},
 						{
-							"type": "inset",
-							"name": "Variant Feature (Choose 1)",
+							"type": "entries",
+							"name": "Devil's Tongue",
 							"entries": [
-								{
-									"name": "Infernal Legacy (PHB)",
-									"entries": [
-										"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell hellish rebuke} spell as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Devil's Tongue",
-									"entries": [
-										"You know the {@spell vicious mockery} cantrip. When your reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the {@spell enthrall} spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Hellfire",
-									"entries": [
-										"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
-									],
-									"type": "entries"
-								},
-								{
-									"name": "Winged",
-									"entries": [
-										"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
-									],
-									"type": "entries"
-								}
-							]
+								"You know the {@spell vicious mockery} cantrip. When your reach 3rd level, you can cast the {@spell charm person} spell as a 2nd-level spell once with this trait. When you reach 5th level, you can cast the {@spell enthrall} spell once with this trait. You must finish a long rest to cast these spells once again with this trait. Charisma is your spellcasting ability for them. This trait replaces the Infernal Legacy trait."
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Hellfire",
+					"source": "SCAG",
+					"page": 118,
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"burning hands"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
+					],
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						},
+						{
+							"type": "entries",
+							"name": "Hellfire",
+							"entries": [
+								"You know the {@spell thaumaturgy} cantrip. Once you reach 3rd level, you can cast the {@spell burning hands} spell once per day as a 2nd-level spell; you must finish a long rest in order to cast the spell again using this trait. Once you reach 5th level, you can also cast the {@spell darkness} spell; you must finish a long rest in order to cast the spell again using this trait. Charisma is your spellcasting ability for these spells."
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Infernal Legacy",
+					"source": "SCAG",
+					"page": 118,
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"hellish rebuke"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"darkness"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
+					],
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						}
+					],
+					"overwrite": {
+						"ability": true
+					}
+				},
+				{
+					"name": "Variant; Winged",
+					"source": "SCAG",
+					"page": 118,
+					"speed": {
+						"walk": 30,
+						"fly": 30
+					},
+					"ability": [
+						{
+							"int": 1,
+							"choose": {
+								"from": [
+									"dex",
+									"cha"
+								],
+								"count": 1,
+								"amount": 2
+							}
+						}
+					],
+					"traitTags": [
+						"Uncommon Race"
+					],
+					"additionalSpells": null,
+					"entries": [
+						{
+							"name": "Appearance",
+							"entries": [
+								"Your tiefling might not look like other tieflings. Rather than having the physical characteristics described in the Player's Handbook, choose {@dice 1d4+1} of the following features: small horns; fangs or sharp teeth; a forked tongue; catlike eyes; six fingers on each hand; goatlike legs; cloven hoofs; a forked tail; leathery or scaly skin; red or dark blue skin; cast no shadow or reflection; exude a smell of brimstone."
+							],
+							"type": "entries"
+						},
+						{
+							"type": "entries",
+							"name": "Winged",
+							"entries": [
+								"You have bat-like wings sprouting from your shoulder blades. You have a flying speed of 30 feet while you aren't wearing heavy armor."
+							],
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
+						}
+					],
+					"overwrite": {
+						"ability": true,
+						"traitTags": true
+					}
 				},
 				{
 					"name": "Zariel",
@@ -11604,8 +13882,29 @@
 							"str": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"searing smite"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"branding smite"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11613,21 +13912,49 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell searing smite} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell branding smite} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				},
 				{
 					"name": "Zariel",
 					"source": "UAFiendishOptions",
+					"page": 2,
 					"ability": [
 						{
 							"cha": 2,
 							"str": 1
 						}
 					],
-					"traitTags": [
-						"Spellcasting"
+					"additionalSpells": [
+						{
+							"innate": {
+								"1": [
+									"thaumaturgy"
+								],
+								"3": {
+									"rest": {
+										"1": [
+											"searing smite"
+										]
+									}
+								},
+								"5": {
+									"rest": {
+										"1": [
+											"branding smite"
+										]
+									}
+								}
+							},
+							"ability": "cha"
+						}
 					],
 					"entries": [
 						{
@@ -11635,9 +13962,15 @@
 							"entries": [
 								"You know the {@spell thaumaturgy} cantrip. When you reach 3rd level, you can cast the {@spell searing smite} spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. When you reach 5th level, you can cast the {@spell branding smite} spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for these spells."
 							],
-							"type": "entries"
+							"type": "entries",
+							"data": {
+								"overwrite": "Infernal Legacy"
+							}
 						}
-					]
+					],
+					"overwrite": {
+						"ability": true
+					}
 				}
 			]
 		},
@@ -11648,7 +13981,7 @@
 			"otherSources": [
 				{
 					"source": "EGW",
-					"page": 0
+					"page": 181
 				}
 			],
 			"size": "M",
@@ -11749,6 +14082,30 @@
 		},
 		{
 			"name": "Triton",
+			"source": "MOT",
+			"page": 26,
+			"_copy": {
+				"name": "Triton",
+				"source": "VGM",
+				"_mod": {
+					"entries": [
+						{
+							"mode": "replaceArr",
+							"replace": "Alignment",
+							"items": {
+								"name": "Alignment",
+								"type": "entries",
+								"entries": [
+									"Tritons tend toward neutrality. Their culture encourages them to be mindful of life's currents, knowing when to harness fate's tides and when to flow along with them."
+								]
+							}
+						}
+					]
+				}
+			}
+		},
+		{
+			"name": "Triton",
 			"source": "VGM",
 			"page": 115,
 			"size": "M",
@@ -11769,10 +14126,10 @@
 				"baseWeight": 90,
 				"weightMod": "2d4"
 			},
+			"darkvision": 60,
 			"traitTags": [
 				"Amphibious",
-				"Spellcasting",
-				"Damage Resistance"
+				"Spellcasting"
 			],
 			"languageProficiencies": [
 				{
@@ -11780,7 +14137,37 @@
 					"primordial": true
 				}
 			],
-			"soundClip": "https://media-waterdeep.cursecdn.com/file-attachments/0/496/triton.mp3",
+			"resist": [
+				"cold"
+			],
+			"soundClip": {
+				"type": "internal",
+				"path": "races/triton.mp3"
+			},
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"fog cloud"
+						],
+						"3": {
+							"rest": {
+								"1": [
+									"gust of wind"
+								]
+							}
+						},
+						"5": {
+							"rest": {
+								"1": [
+									"wall of water|xge"
+								]
+							}
+						}
+					},
+					"ability": "cha"
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -11825,6 +14212,13 @@
 					"type": "entries"
 				},
 				{
+					"name": "Darkvision",
+					"type": "entries",
+					"entries": [
+						"You can see in dim light within 60 feet of you as if it were bright light and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+					]
+				},
+				{
 					"name": "Emissary of the Sea",
 					"entries": [
 						"Aquatic beasts have an extraordinary affinity with your people. You can communicate simple ideas with beasts that can breathe water. They can understand the meaning of your words, though you have no special ability to understand them in return."
@@ -11834,7 +14228,7 @@
 				{
 					"name": "Guardians of the Depths",
 					"entries": [
-						"Adapted to even the most extreme ocean depths, you have resistance to cold damage, and you ignore any of the drawbacks caused by a deep, underwater environment."
+						"Adapted to even the most extreme ocean depths, you have resistance to cold damage."
 					],
 					"type": "entries"
 				},
@@ -11929,14 +14323,14 @@
 				}
 			],
 			"darkvision": 60,
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -12010,14 +14404,14 @@
 				}
 			],
 			"darkvision": 60,
-			"traitTags": [
-				"Damage Resistance"
-			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"other": true
 				}
+			],
+			"resist": [
+				"necrotic"
 			],
 			"entries": [
 				{
@@ -12096,6 +14490,21 @@
 					"anyStandard": 1
 				}
 			],
+			"skillProficiencies": [
+				{
+					"choose": {
+						"from": [
+							"arcana",
+							"history",
+							"investigation",
+							"medicine",
+							"performance",
+							"sleight of hand"
+						]
+					},
+					"tool": true
+				}
+			],
 			"entries": [
 				{
 					"name": "Age",
@@ -12163,6 +14572,69 @@
 			],
 			"languageProficiencies": [
 				{
+					"common": true,
+					"other": true
+				}
+			],
+			"entries": [
+				{
+					"name": "Age",
+					"type": "entries",
+					"entries": [
+						"Vedalken mature at the same rate humans do, and most are expected to settle down into an adult life by around age 40. They can live 350 to almost 500 years."
+					]
+				},
+				{
+					"name": "Alignment",
+					"type": "entries",
+					"entries": [
+						"Vedalken are most often lawful and rarely evil."
+					]
+				},
+				{
+					"type": "entries",
+					"name": "Size",
+					"entries": [
+						"Vedalken are taller than humans but more slender. They average 6 to 6½ feet tall, but usually weigh less than 200 pounds. Your size is Medium."
+					]
+				},
+				{
+					"name": "Languages",
+					"entries": [
+						"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Vedalken Cunning",
+					"entries": [
+						"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Aether Lore",
+					"entries": [
+						"Whenever you make an Intelligence ({@skill History}) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
+					],
+					"type": "entries"
+				}
+			]
+		},
+		{
+			"name": "Vedalken",
+			"source": "UARacesOfRavnica",
+			"page": 4,
+			"size": "M",
+			"speed": 30,
+			"ability": [
+				{
+					"int": 2,
+					"wis": 1
+				}
+			],
+			"languageProficiencies": [
+				{
 					"common": true
 				}
 			],
@@ -12194,66 +14666,21 @@
 						"You can speak, read, and write Common."
 					],
 					"type": "entries"
-				}
-			],
-			"subraces": [
-				{
-					"languageProficiencies": [
-						{
-							"common": true,
-							"other": true
-						}
-					],
-					"entries": [
-						{
-							"name": "Vedalken Cunning",
-							"entries": [
-								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Aether Lore",
-							"entries": [
-								"Whenever you make an Intelligence ({@skill History}) check related to magic items or aether-powered technological devices, you can add twice your proficiency bonus, instead of any proficiency bonus you normally apply."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Languages",
-							"entries": [
-								"You can speak, read, and write Common and Vedalken. The Vedalken language is renowned for its technical treatises and its catalogs of knowledge about the natural world and the aether that pervades it."
-							],
-							"type": "entries",
-							"data": {
-								"overwrite": "Languages"
-							}
-						}
-					],
-					"overwrite": {
-						"languageProficiencies": true
-					}
 				},
 				{
-					"source": "UARacesOfRavnica",
-					"page": 4,
+					"name": "Vedalken Dispassion",
 					"entries": [
-						{
-							"name": "Vedalken Dispassion",
-							"entries": [
-								"You have advantage on all Intelligence, Wisdom, and Charisma saving throws."
-							],
-							"type": "entries"
-						},
-						{
-							"name": "Tireless Precision",
-							"entries": [
-								"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one {@book tool|phb|5|tools} of your choice.",
-								"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
-							],
-							"type": "entries"
-						}
-					]
+						"You have advantage on all Intelligence, Wisdom, and Charisma saving throws."
+					],
+					"type": "entries"
+				},
+				{
+					"name": "Tireless Precision",
+					"entries": [
+						"You are proficient in one of the following skills of your choice: {@skill Arcana}, {@skill History}, {@skill Investigation}, {@skill Medicine}, {@skill Performance}, or {@skill Sleight of Hand}. You are also proficient with one {@book tool|phb|5|tools} of your choice.",
+						"Whenever you make an ability check with the chosen skill or tool, roll a {@dice d4}, and add the number rolled to the check's total."
+					],
+					"type": "entries"
 				}
 			]
 		},
@@ -12463,7 +14890,6 @@
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
@@ -12501,6 +14927,12 @@
 						"count": 2
 					}
 				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
 			],
 			"entries": [
 				{
@@ -12556,8 +14988,8 @@
 							"type": "list",
 							"items": [
 								"You gain a +1 bonus to Armor Class.",
-								"You can don only armor with which you have proficiency. To don armor, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.",
-								"While you live, your armor can't be removed from your body against your will."
+								"You can don only armor with which you have proficiency. To don armor other than a shield, you must incorporate it into your body over the course of 1 hour, during which you remain in contact with the armor. To doff armor, you must spend 1 hour removing it. You can rest while donning or doffing armor in this way.",
+								"While you live, the armor incorporated into your body can't be removed against your will."
 							]
 						}
 					]
@@ -12599,6 +15031,9 @@
 					"common": true,
 					"anyStandard": 1
 				}
+			],
+			"conditionImmune": [
+				"disease"
 			],
 			"entries": [
 				{
@@ -12646,13 +15081,18 @@
 			"traitTags": [
 				"Natural Armor",
 				"Improved Resting",
-				"Damage Resistance",
 				"Skill Proficiency"
 			],
 			"languageProficiencies": [
 				{
 					"common": true
 				}
+			],
+			"resist": [
+				"poison"
+			],
+			"conditionImmune": [
+				"disease"
 			],
 			"entries": [
 				{
@@ -12902,13 +15342,37 @@
 			"traitTags": [
 				"Spellcasting",
 				"Monstrous Race",
-				"Damage Immunity"
+				"Magic Resistance"
 			],
 			"languageProficiencies": [
 				{
 					"common": true,
 					"abyssal": true,
 					"draconic": true
+				}
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"poisoned"
+			],
+			"additionalSpells": [
+				{
+					"innate": {
+						"1": [
+							"poison spray",
+							"animal friendship"
+						],
+						"3": {
+							"rest": {
+								"1": [
+									"suggestion"
+								]
+							}
+						}
+					},
+					"ability": "cha"
 				}
 			],
 			"entries": [
@@ -12988,8 +15452,14 @@
 			"darkvision": 60,
 			"traitTags": [
 				"Improved Resting",
-				"NPC Race",
-				"Damage Immunity"
+				"NPC Race"
+			],
+			"immune": [
+				"poison"
+			],
+			"conditionImmune": [
+				"exhaustion",
+				"poisoned"
 			],
 			"entries": [
 				{

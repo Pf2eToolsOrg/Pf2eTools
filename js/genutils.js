@@ -9,7 +9,7 @@ class GenUtil {
 	static getFromTable (table, roll, maxZero = 100) {
 		const it = {};
 		Object.assign(it, table.find(it => {
-			return it.min === roll || (it.max && roll >= it.min && roll <= (it.max === 0 ? maxZero : it.max));
+			return it.min === roll || (it.max != null && roll >= it.min && roll <= (it.max === 0 ? maxZero : it.max));
 		}));
 		Object.keys(it).forEach(k => {
 			if (typeof it[k] === "function") {

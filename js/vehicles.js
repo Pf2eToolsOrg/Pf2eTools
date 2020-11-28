@@ -2,32 +2,23 @@
 
 class VehiclesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-
+		const pageFilter = new PageFilterVehicles();
 		super({
 			dataSource: "data/vehicles.json",
 			dataSourceFluff: "data/fluff-vehicles.json",
 
-			filters: [
-				sourceFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "vehicles",
 
 			sublistClass: "subvehicles",
 
-			dataProps: ["vehicle"]
+			dataProps: ["vehicle", "vehicleUpgrade"],
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (it, vhI, isExcluded) {
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -36,7 +27,8 @@ class VehiclesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${UrlUtil.autoEncodeHash(it)}" class="lst--border">
-			<span class="bold col-10 pl-0">${it.name}</span>
+			<span class="col-6 pl-0 text-center">${Parser.vehicleTypeToFull(it.vehicleType || it.upgradeType)}</span>
+			<span class="bold col-4">${it.name}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -46,12 +38,14 @@ class VehiclesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				source
+				source,
+				vehicleType: it.vehicleType,
+				upgradeType: it.upgradeType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -62,20 +56,17 @@ class VehiclesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border"><span class="name col-12 px-0">${it.name}</span></a></li>`)
+		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border">
+			<span class="col-8 pl-0 text-center">${Parser.vehicleTypeToFull(it.vehicleType || it.upgradeType)}</span>
+			<span class="bold col-4 pr-0">${it.name}</span>
+		</a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(
@@ -83,8 +74,10 @@ class VehiclesPage extends ListPage {
 			$ele,
 			it.name,
 			{
-				hash
-			}
+				hash,
+				vehicleType: it.vehicleType,
+				upgradeType: it.upgradeType,
+			},
 		);
 		return listItem;
 	}
@@ -96,14 +89,17 @@ class VehiclesPage extends ListPage {
 		const $floatToken = $(`#float-token`).empty();
 
 		function buildStatsTab () {
-			if (veh.tokenUrl || !veh.uniqueId) {
-				const imgLink = veh.tokenUrl || UrlUtil.link(`img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${veh.name.replace(/"/g, "")}.png`);
-				$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer">
-					<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${veh.name}">
-				</a>`);
-			} else TokenUtil.imgError();
+			if (veh.vehicleType) {
+				const hasToken = veh.tokenUrl || veh.hasToken;
+				if (hasToken) {
+					const imgLink = Renderer.vehicle.getTokenUrl(veh);
+					$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${veh.name}"></a>`);
+				}
 
-			$content.append(RenderVehicles.$getRenderedVehicle(veh));
+				$content.append(RenderVehicles.$getRenderedVehicle(veh));
+			} else {
+				$content.append(RenderVehicles.$getRenderedVehicle(veh));
+			}
 		}
 
 		function buildFluffTab (isImageTab) {
@@ -111,25 +107,24 @@ class VehiclesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: veh,
-				fnFluffBuilder: (fluffJson) => veh.fluff || fluffJson.vehicleFluff.find(it => it.name === veh.name && it.source === veh.source),
-				fluffUrl: `data/fluff-vehicles.json`
+				pFnGetFluff: Renderer.vehicle.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => $floatToken.show(),
-			buildStatsTab
+			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => $floatToken.hide(),
-			buildFluffTab
+			buildFluffTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => $floatToken.hide(),
-			() => buildFluffTab(true)
+			() => buildFluffTab(true),
 		);
 
 		Renderer.utils.bindTabButtons(statTab, infoTab, picTab);

@@ -2,40 +2,22 @@
 
 class CultsBoonsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({
-			header: "Type",
-			items: ["Boon, Demonic", "Cult"]
-		});
-
+		const pageFilter = new PageFilterCultsBoons();
 		super({
 			dataSource: "data/cultsboons.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "cultsboons",
 
 			sublistClass: "subcultsboons",
 
-			dataProps: ["cult", "boon"]
+			dataProps: ["cult", "boon"],
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._typeFilter = typeFilter;
 	}
 
 	getListItem (it, bcI, isExcluded) {
-		it._fType = it.__prop === "cult" ? "Cult" : it.type ? `Boon, ${it.type}` : "Boon";
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._typeFilter.addItem(it._fType);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		it._lType = it.__prop === "cult" ? "Cult" : "Boon";
 		it._lSubType = it.type || "\u2014";
@@ -61,12 +43,12 @@ class CultsBoonsPage extends ListPage {
 				hash,
 				source,
 				type: it._lType,
-				subType: it._lSubType
+				subType: it._lSubType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : bcI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -77,14 +59,7 @@ class CultsBoonsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(item => {
-			const cb = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				cb.source,
-				cb._fType
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -107,8 +82,8 @@ class CultsBoonsPage extends ListPage {
 			{
 				hash,
 				type: it._lType,
-				subType: it._lSubType
-			}
+				subType: it._lSubType,
+			},
 		);
 		return listItem;
 	}

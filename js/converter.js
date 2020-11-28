@@ -141,7 +141,7 @@ class BaseConverter extends BaseComponent {
 				},
 				cbCancel: () => {
 					if (modalMeta) modalMeta.doClose();
-				}
+				},
 			});
 		};
 
@@ -184,9 +184,9 @@ class BaseConverter extends BaseComponent {
 				if (!curSource) return;
 				rebuildStageSource({mode: "edit", source: MiscUtil.copy(curSource)});
 				modalMeta = UiUtil.getShowModal({
-					fullHeight: true,
-					isLarge: true,
-					cbClose: () => $wrpSourceOverlay.detach()
+					isHeight100: true,
+					isUncappedHeight: true,
+					cbClose: () => $wrpSourceOverlay.detach(),
 				});
 				$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 			});
@@ -195,9 +195,9 @@ class BaseConverter extends BaseComponent {
 		const $btnSourceAdd = $(`<button class="btn btn-default btn-sm">Add New Source</button>`).click(() => {
 			rebuildStageSource({mode: "add"});
 			modalMeta = UiUtil.getShowModal({
-				fullHeight: true,
-				isLarge: true,
-				cbClose: () => $wrpSourceOverlay.detach()
+				isHeight100: true,
+				isUncappedHeight: true,
+				cbClose: () => $wrpSourceOverlay.detach(),
 			});
 			$wrpSourceOverlay.appendTo(modalMeta.$modalInner);
 		});
@@ -219,8 +219,8 @@ class CreatureConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "monster"
-			}
+				prop: "monster",
+			},
 		);
 	}
 
@@ -242,7 +242,7 @@ class CreatureConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -365,8 +365,8 @@ class SpellConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "spell"
-			}
+				prop: "spell",
+			},
 		);
 	}
 
@@ -382,7 +382,7 @@ class SpellConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -420,8 +420,8 @@ class ItemConverter extends BaseConverter {
 				hasPageNumbers: true,
 				titleCaseFields: ["name"],
 				hasSource: true,
-				prop: "item"
-			}
+				prop: "item",
+			},
 		);
 	}
 
@@ -437,7 +437,7 @@ class ItemConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -470,15 +470,19 @@ Once the Wreath of the Prism reaches an exalted state, it gains the following be
 • The save DC of the wreath’s spell increases to 17.`;
 // endregion
 
-class TableConverter extends BaseConverter {
+class FeatConverter extends BaseConverter {
 	constructor (ui) {
 		super(
 			ui,
 			{
-				converterId: "Table",
-				modes: ["html", "md"],
-				prop: "table"
-			}
+				converterId: "Feat",
+				canSaveLocal: true,
+				modes: ["txt"],
+				hasPageNumbers: true,
+				titleCaseFields: ["name"],
+				hasSource: true,
+				prop: "feat",
+			},
 		);
 	}
 
@@ -494,7 +498,57 @@ class TableConverter extends BaseConverter {
 			titleCaseFields: this._titleCaseFields,
 			isTitleCase: this._state.isTitleCase,
 			source: this._state.source,
-			page: this._state.page
+			page: this._state.page,
+		};
+
+		switch (this._state.mode) {
+			case "txt": return FeatParser.doParseText(input, opts);
+			default: throw new Error(`Unimplemented!`);
+		}
+	}
+
+	_getSample (format) {
+		switch (format) {
+			case "txt": return FeatConverter.SAMPLE_TEXT;
+			default: throw new Error(`Unknown format "${format}"`);
+		}
+	}
+}
+// region sample
+FeatConverter.SAMPLE_TEXT = `Metamagic Adept
+Prerequisite: Spellcasting or Pact Magic feature
+You’ve learned how to exert your will on your spells to alter how they function. You gain the following benefits:
+• Increase your Intelligence, Wisdom, or Charisma score by 1, to a maximum of 20.
+• You learn two Metamagic options of your choice from the sorcerer class. You can use only one Metamagic option on a spell when you cast it, unless the option says otherwise. Whenever you gain a level, you can replace one of your Metamagic options with another one from the sorcerer class.
+• You gain 2 sorcery points to spend on Metamagic (these points are added to any sorcery points you have from another source but can be used only on Metamagic). You regain all spent sorcery points when you finish a long rest.
+`;
+// endregion
+
+class TableConverter extends BaseConverter {
+	constructor (ui) {
+		super(
+			ui,
+			{
+				converterId: "Table",
+				modes: ["html", "md"],
+				prop: "table",
+			},
+		);
+	}
+
+	_renderSidebar (parent, $wrpSidebar) {
+		$wrpSidebar.empty();
+	}
+
+	handleParse (input, cbOutput, cbWarning, isAppend) {
+		const opts = {
+			cbWarning,
+			cbOutput,
+			isAppend,
+			titleCaseFields: this._titleCaseFields,
+			isTitleCase: this._state.isTitleCase,
+			source: this._state.source,
+			page: this._state.page,
 		};
 
 		switch (this._state.mode) {
@@ -580,7 +634,7 @@ class ConverterUi extends BaseComponent {
 	getBaseSaveableState () {
 		return {
 			...super.getBaseSaveableState(),
-			...Object.values(this._converters).mergeMap(it => ({[it.converterId]: it.getBaseSaveableState()}))
+			...Object.values(this._converters).mergeMap(it => ({[it.converterId]: it.getBaseSaveableState()})),
 		}
 	}
 
@@ -605,7 +659,7 @@ class ConverterUi extends BaseComponent {
 		this._editorIn = ace.edit("converter_input");
 		this._editorIn.setOptions({
 			wrap: true,
-			showPrintMargin: false
+			showPrintMargin: false,
 		});
 		try {
 			const prevInput = await StorageUtil.pGetForPage(ConverterUi.STORAGE_INPUT);
@@ -617,7 +671,7 @@ class ConverterUi extends BaseComponent {
 		this._editorOut.setOptions({
 			wrap: true,
 			showPrintMargin: false,
-			readOnly: true
+			readOnly: true,
 		});
 
 		$(`#editable`).click(() => {
@@ -635,7 +689,7 @@ class ConverterUi extends BaseComponent {
 					if (invalidSources.length) {
 						JqueryUtil.doToast({
 							content: `One or more entries have missing or unknown sources: ${invalidSources.join(", ")}`,
-							type: "danger"
+							type: "danger",
 						});
 						return;
 					}
@@ -658,7 +712,7 @@ class ConverterUi extends BaseComponent {
 					if (dupes.length) {
 						JqueryUtil.doToast({
 							type: "warning",
-							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`
+							content: `Ignored ${dupes.length} duplicate entr${dupes.length === 1 ? "y" : "ies"}`,
 						})
 					}
 
@@ -669,7 +723,7 @@ class ConverterUi extends BaseComponent {
 							return {
 								isOverwrite: true,
 								ix,
-								entry: it
+								entry: it,
 							}
 						} else return {entry: it, isOverwrite: false};
 					}).filter(Boolean);
@@ -688,21 +742,21 @@ class ConverterUi extends BaseComponent {
 
 					JqueryUtil.doToast({
 						type: "success",
-						content: `Saved!`
+						content: `Saved!`,
 					});
 
 					Omnisearch.pAddToIndex("monster", overwriteMeta.filter(meta => !meta.isOverwrite).map(meta => meta.entry));
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON!`,
-						type: "danger"
+						type: "danger",
 					});
 					setTimeout(() => { throw e });
 				}
 			} else {
 				JqueryUtil.doToast({
 					content: "Nothing to save!",
-					type: "danger"
+					type: "danger",
 				});
 			}
 		});
@@ -722,7 +776,7 @@ class ConverterUi extends BaseComponent {
 				} catch (e) {
 					JqueryUtil.doToast({
 						content: `Current output was not valid JSON. Downloading as <span class="code">.txt</span> instead.`,
-						type: "warning"
+						type: "warning",
 					});
 					DataUtil.userDownloadText(`converter-output.txt`, output);
 					setTimeout(() => { throw e; });
@@ -730,7 +784,7 @@ class ConverterUi extends BaseComponent {
 			} else {
 				JqueryUtil.doToast({
 					content: "Nothing to download!",
-					type: "danger"
+					type: "danger",
 				});
 			}
 		});
@@ -771,7 +825,7 @@ class ConverterUi extends BaseComponent {
 							chunk,
 							this.doCleanAndOutput.bind(this),
 							this.showWarning.bind(this),
-							isAppend || i !== 0 // always clear the output for the first non-append chunk, then append
+							isAppend || i !== 0, // always clear the output for the first non-append chunk, then append
 						);
 					});
 			});
@@ -794,12 +848,13 @@ class ConverterUi extends BaseComponent {
 			{
 				values: [
 					"Creature",
+					"Feat",
 					"Item",
 					"Spell",
-					"Table"
+					"Table",
 				],
-				html: `<select class="form-control input-sm"/>`
-			}
+				html: `<select class="form-control input-sm"/>`,
+			},
 		);
 
 		$$`<div class="sidemenu__row split-v-center"><div class="sidemenu__row__label">Mode</div>${$selConverter}</div>`
@@ -841,10 +896,10 @@ class ConverterUi extends BaseComponent {
 	set _outReadOnly (val) { this._editorOut.setOptions({readOnly: val}); }
 
 	get _outText () { return this._editorOut.getValue(); }
-	set _outText (text) { return this._editorOut.setValue(text, -1); }
+	set _outText (text) { this._editorOut.setValue(text, -1); }
 
 	get inText () { return CleanUtil.getCleanString((this._editorIn.getValue() || "").trim(), false); }
-	set inText (text) { return this._editorIn.setValue(text, -1); }
+	set inText (text) { this._editorIn.setValue(text, -1); }
 
 	_getDefaultState () { return MiscUtil.copy(ConverterUi._DEFAULT_STATE); }
 }
@@ -854,19 +909,20 @@ ConverterUi._DEFAULT_STATE = {
 	hasAppended: false,
 	converter: "Creature",
 	sourceJson: "",
-	inputSeparator: "==="
+	inputSeparator: "===",
 };
 
 async function doPageInit () {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
-	const [spells, items, legendaryGroups] = await Promise.all([
+	const [spells, items, legendaryGroups, classes] = await Promise.all([
 		DataUtil.spell.pLoadAll(),
 		Renderer.item.pBuildList(),
 		DataUtil.legendaryGroup.pLoadAll(),
-		BrewUtil.pAddBrewData() // init homebrew
+		DataUtil.class.loadJSON(),
+		BrewUtil.pAddBrewData(), // init homebrew
 	]);
 	SpellcastingTraitConvert.init(spells);
-	ItemParser.init(items);
+	ItemParser.init(items, classes);
 	AcConvert.init(items);
 	TagCondition.init(legendaryGroups, spells);
 
@@ -874,14 +930,16 @@ async function doPageInit () {
 
 	const statblockConverter = new CreatureConverter(ui)
 	const itemConverter = new ItemConverter(ui);
+	const featConverter = new FeatConverter(ui);
 	const spellConverter = new SpellConverter(ui);
 	const tableConverter = new TableConverter(ui);
 
 	ui.converters = {
 		[statblockConverter.converterId]: statblockConverter,
 		[itemConverter.converterId]: itemConverter,
+		[featConverter.converterId]: featConverter,
 		[spellConverter.converterId]: spellConverter,
-		[tableConverter.converterId]: tableConverter
+		[tableConverter.converterId]: tableConverter,
 	};
 
 	return ui.pInit();

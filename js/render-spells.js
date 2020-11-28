@@ -155,10 +155,10 @@ class RenderSpells {
 				sc.shortName = sc.shortName || sc.name;
 
 				(subclassLookup[clSrc] =
-					subclassLookup[clSrc] || {})[sc.class] =
-					subclassLookup[clSrc][sc.class] || {};
+					subclassLookup[clSrc] || {})[sc.className] =
+					subclassLookup[clSrc][sc.className] || {};
 
-				const target = subclassLookup[clSrc][sc.class];
+				const target = subclassLookup[clSrc][sc.className];
 				(target[sc.source] =
 					target[sc.source] || {})[sc.shortName] =
 					target[sc.source][sc.shortName] || {name: sc.name}

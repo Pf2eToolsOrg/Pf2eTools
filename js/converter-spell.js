@@ -33,7 +33,6 @@ class SpellParser extends BaseParser {
 				"RANGE",
 				"COMPONENTS",
 				"DURATION",
-				"AT HIGHER LEVELS"
 			];
 
 			if (curLine) {
@@ -116,38 +115,27 @@ class SpellParser extends BaseParser {
 				continue;
 			}
 
-			let isHigherLevelPart = false;
-			spell.entries = [];
-			spell.entriesHigherLevel = [];
+			const ptrI = {_: i};
+			spell.entries = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+				{
+					fnStop: (curLine) => /^At Higher Levels/gi.test(curLine),
+				},
+			);
+			i = ptrI._;
 
-			const addTo = (prop) => {
-				const target = spell[prop];
-				if (BaseParser._isContinuationLine(target, curLine)) {
-					target.last(`${target.last().trim()} ${curLine.trim()}`);
-				} else {
-					target.push(curLine.trim());
-				}
-			};
-
-			while (i < toConvert.length) {
-				if (!curLine.indexOf_handleColon("At Higher Levels")) {
-					isHigherLevelPart = true;
-					curLine = curLine.replace(/At Higher Levels\s*\.\s*?/i, "");
-				}
-
-				if (isHigherLevelPart) addTo("entriesHigherLevel");
-				else addTo("entries");
-
-				i++;
-				curLine = toConvert[i];
-			}
+			spell.entriesHigherLevel = EntryConvert.coalesceLines(
+				ptrI,
+				toConvert,
+			);
+			i = ptrI._;
 		}
 
-		if (!spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
-		else spell.entriesHigherLevel = [{type: "entries", name: "At Higher Levels", entries: spell.entriesHigherLevel}];
+		if (!spell.entriesHigherLevel || !spell.entriesHigherLevel.length) delete spell.entriesHigherLevel;
 
-		this._doSpellPostProcess(spell, options);
-		const statsOut = PropOrder.getOrdered(spell, "spell");
+		const statsOut = this._getFinalState(spell, options);
+
 		options.cbOutput(statsOut, options.isAppend);
 	}
 
@@ -174,10 +162,16 @@ class SpellParser extends BaseParser {
 		if (stats.entries) {
 			stats.entries = stats.entries.map(it => DiceConvert.getTaggedEntry(it));
 			EntryConvert.tryRun(stats, "entries");
+			stats.entries = SkillTag.tryRun(stats.entries);
+			stats.entries = ActionTag.tryRun(stats.entries);
+			stats.entries = SenseTag.tryRun(stats.entries);
 		}
 		if (stats.entriesHigherLevel) {
 			stats.entriesHigherLevel = stats.entriesHigherLevel.map(it => DiceConvert.getTaggedEntry(it))
 			EntryConvert.tryRun(stats, "entriesHigherLevel");
+			stats.entriesHigherLevel = SkillTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = ActionTag.tryRun(stats.entriesHigherLevel);
+			stats.entriesHigherLevel = SenseTag.tryRun(stats.entriesHigherLevel);
 		}
 		this._addTags(stats, options);
 		doCleanup();
@@ -190,7 +184,7 @@ class SpellParser extends BaseParser {
 		DamageResVulnImmuneTagger.tryRun(stats, "damageVulnerable", options);
 		ConditionInflictTagger.tryRun(stats, options);
 		SavingThrowTagger.tryRun(stats, options);
-		OpposedCheckTagger.tryRun(stats, options);
+		AbilityCheckTagger.tryRun(stats, options);
 		SpellAttackTagger.tryRun(stats, options);
 		// TODO areaTags
 		MiscTagsTagger.tryRun(stats, options);
@@ -298,8 +292,10 @@ class SpellParser extends BaseParser {
 			case "minute":
 			case "action":
 			case "round":
-			case "bonus action":
 			case "reaction": return unit;
+
+			case "bonus action": return "bonus";
+
 			default:
 				options.cbWarning(`Unit part "${unit}" requires manual conversion`);
 				return unit;
@@ -328,7 +324,7 @@ class SpellParser extends BaseParser {
 				const out = {
 					number: amount,
 					unit: this._getCleanTimeUnit(unit, false, options),
-					condition: conditionParts.join(", ")
+					condition: conditionParts.join(", "),
 				};
 				if (!out.condition) delete out.condition;
 				return out;
@@ -363,13 +359,13 @@ class SpellParser extends BaseParser {
 
 								stats.components.m = {
 									text: materialText,
-									cost: valueNum * valueMult
+									cost: valueNum * valueMult,
 								};
 								if (isConsumed) stats.components.m.consume = true;
 							} else if (isConsumed) {
 								stats.components.m = {
 									text: materialText,
-									consume: true
+									consume: true,
 								};
 							} else {
 								stats.components.m = materialText;
@@ -418,6 +414,11 @@ class SpellParser extends BaseParser {
 
 		options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Duration part "${dur}" requires manual conversion`);
 	}
+
+	static _getFinalState (spell, options) {
+		this._doSpellPostProcess(spell, options);
+		return PropOrder.getOrdered(spell, "spell");
+	}
 }
 SpellParser._RES_SCHOOL = [];
 Object.entries({
@@ -428,16 +429,16 @@ Object.entries({
 	"enchantment": "E",
 	"evocation": "V",
 	"illusion": "I",
-	"divination": "D"
+	"divination": "D",
 }).forEach(([k, v]) => {
 	SpellParser._RES_SCHOOL.push({
 		output: v,
-		regex: RegExp(k, "i")
+		regex: RegExp(k, "i"),
 	});
 });
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		SpellParser
+		SpellParser,
 	};
 }

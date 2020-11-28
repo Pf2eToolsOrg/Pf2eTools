@@ -6,7 +6,7 @@
 			"id": "000",
 			"entries": [
 				"Welcome to {@i Tales from the Yawning Portal}. Within this book you will find seven of the deadliest dungeons from the history of D&D, updated for the current edition of the game. Some are classics that have hosted an untold number of adventurers, while others are newer creations boldly staking their place in the pantheon of notable D&D adventures.",
-				"Just as these dungeons have made an impression on D&D players, so too have tales of their dangers spread across the D&D multiverse. When the night grows long in Waterdeep, City of Splendors, and the fireplace in the taproom of the Yawning Portal dims to a deep crimson, adventurers from across the Sword Coast-and even some visiting from other D&D worlds-spin tales and rumors of lost treasures.",
+				"Just as these dungeons have made an impression on D&D players, so too have tales of their dangers spread across the D&D multiverse. When the night grows long in Waterdeep, City of Splendors, and the fireplace in the taproom of the Yawning Portal dims to a deep crimson, adventurers from across the Sword Coast\u2014and even some visiting from other D&D worlds\u2014spin tales and rumors of lost treasures.",
 				{
 					"type": "list",
 					"items": [
@@ -47,7 +47,7 @@
 							"id": "004",
 							"entries": [
 								"{@i The Forge of Fury,} written by Richard Baker, was published in 2000 shortly after The Sunless Citadel. Characters who succeeded in that mission and advanced to 3rd level were now ready to take on the challenges of a ruined dwarven fortress.",
-								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level-seasoned adventurers ready to strive for greater glory and renown."
+								"Like its predecessor, {@i The Forge of Fury} is tailored to provide increasingly tougher threats as the characters make their way through the fortress. Those who survive the experience can expect to advance to 5th level\u2014seasoned adventurers ready to strive for greater glory and renown."
 							]
 						},
 						{
@@ -105,7 +105,7 @@
 					"entries": [
 						"To run each of these adventures, you need the fifth edition {@i Player's Handbook, Dungeon Master's Guide}, and {@i Monster Manual}. Before you sit down with your players, read the text of the adventure all the way through and familiarize yourself with the maps as well, perhaps making notes about complex areas or places where the characters are certain to go, so you're well prepared before the action starts.",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "00b",
 							"entries": [
 								"Text that appears in a box like this is meant to be read aloud or paraphrased for the players when their characters first arrive at a location or under a specific circumstance, as described in the text."
@@ -120,7 +120,7 @@
 					"name": "Creating a Campaign",
 					"id": "00c",
 					"entries": [
-						"While these adventures were never meant to be combined into a full campaign-over 30 years separates the newest from the oldest-they have been selected to provide play across a broad range of levels. With a little work, you can run a complete campaign using only this book.",
+						"While these adventures were never meant to be combined into a full campaign\u2014over 30 years separates the newest from the oldest\u2014they have been selected to provide play across a broad range of levels. With a little work, you can run a complete campaign using only this book.",
 						"Starting with The Sunless Citadel, guide your players through the adventures in the order that they are presented in this book. Each one provides enough XP that, upon completing the adventure, the characters should be high enough level to advance to the next one.",
 						"The Yawning Portal, or some other tavern of your own invention or drawn from another D&D setting, provides the perfect framing device for the campaign. The characters hear rumors of each dungeon, with just enough information available to lead them to the next adventure. Perhaps a friendly NPC drawn from the upcoming adventure visits the tavern in search of help, or some element of a character's background pushes the group down the proper road. In any case, these dungeons are designed to be easily portable to any campaign setting."
 					]
@@ -177,8 +177,8 @@
 								"Item"
 							],
 							"colStyles": [
-								"col-1 text-center",
-								""
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -289,8 +289,8 @@
 								"Objective"
 							],
 							"colStyles": [
-								"col-1 text-center",
-								""
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -335,8 +335,8 @@
 								"Secret"
 							],
 							"colStyles": [
-								"col-1 text-center",
-								""
+								"col-2 text-center",
+								"col-10"
 							],
 							"rows": [
 								[
@@ -430,7 +430,7 @@
 							"name": "Other Denizens",
 							"id": "019",
 							"entries": [
-								"The Yawning Portal is host to a variety of regular visitors, most of whom offer services to adventurers. Chapter 4 of the {@i Dungeon Master's Guide} provides plenty of resources for generating nonplayer characters. The following table provides some possibilities for why an individual is visiting the Yawning Portal.",
+								"The Yawning Portal is host to a variety of regular visitors, most of whom offer services to adventurers. {@book Chapter 4|dmg|4} of the {@i Dungeon Master's Guide} provides plenty of resources for generating nonplayer characters. The following table provides some possibilities for why an individual is visiting the Yawning Portal.",
 								{
 									"type": "table",
 									"caption": "Denizens",
@@ -439,8 +439,8 @@
 										"Denizen"
 									],
 									"colStyles": [
-										"col-1 text-center",
-										""
+										"col-2 text-center",
+										"col-10"
 									],
 									"rows": [
 										[
@@ -449,7 +449,7 @@
 										],
 										[
 											"2",
-											"Bored, retired adventurer, claims to have explored dungeon of note and can describe first few areas (20 percent chance of an accurate description)"
+											"Bored, retired adventurer, claims to have explored dungeon of note and can describe first few areas ({@chance 20|20 percent} chance of an accurate description)"
 										],
 										[
 											"3",
@@ -457,7 +457,7 @@
 										],
 										[
 											"4",
-											"Con artist, selling fake treasure maps (but a 10 percent chance that a map is genuine)"
+											"Con artist, selling fake treasure maps (but a {@chance 10|10 percent} chance that a map is genuine)"
 										],
 										[
 											"5",
@@ -481,7 +481,7 @@
 										],
 										[
 											"10",
-											"Elminster, incognito; 10 percent chance he is on an errand of cosmic importance; otherwise, he's pressing Durnan for gossip"
+											"Elminster, incognito; {@chance 10|10 percent} chance he is on an errand of cosmic importance; otherwise, he's pressing Durnan for gossip"
 										]
 									]
 								}
@@ -531,7 +531,7 @@
 							"name": "Placing the Adventure",
 							"id": "01e",
 							"entries": [
-								"In the original Tomb of Horrors, Gary Gygax suggested six possible, far-flung locations for the adventure in the Greyhawk setting-proof in itself that the tomb is liable to turn up just about anywhere. Those possibilities are as follows:",
+								"In the original Tomb of Horrors, Gary Gygax suggested six possible, far-flung locations for the adventure in the Greyhawk setting\u2014proof in itself that the tomb is liable to turn up just about anywhere. Those possibilities are as follows:",
 								{
 									"type": "list",
 									"items": [
@@ -571,11 +571,12 @@
 							]
 						},
 						{
-							"type": "entries",
+							"type": "inset",
 							"name": "About the Original",
 							"id": "022",
 							"entries": [
-								"{@i Tomb of Horrors was born in Gary Gygax's home campaign and introduced to the world at the first Origins game convention in 1975. Since its original publication in 1978, Tomb of Horrors has risen to legendary status among D&D players and is generally regarded as one of the greatest adventures of all time.}",
+								"{@i Tomb of Horrors} was born in Gary Gygax's home campaign and introduced to the world at the first Origins game convention in 1975. Since its original publication in 1978, {@i Tomb of Horrors} has risen to legendary status among D&D players and is generally regarded as one of the greatest adventures of all time.",
+								"In the words of its creator, \"This is a thinking person's adventure.\" It was designed not for player characters of a certain level\u2014though high-level adventurers are certainly necessary\u2014but for players who enjoy a mental challenge and DMs who want to put their own spin on this truly unique dungeon.",
 								{
 									"type": "image",
 									"href": {
@@ -585,8 +586,7 @@
 									"title": "Original Cover",
 									"width": 618,
 									"height": 800
-								},
-								"{@i In the words of its creator, \"This is a thinking person's adventure.\" It was designed not for player characters of a certain level-though high-level adventurers are certainly necessary-but for players who enjoy a mental challenge and DMs who want to put their own spin on this truly unique dungeon.}"
+								}
 							]
 						}
 					]
@@ -599,14 +599,14 @@
 						"The characters have arrived at the site of the demilich's last haunt. Before them is a low, flat topped hill, about 200 yards wide, 300 yards long, and 60 feet high. Only ugly weeds, thorns, and briars grow upon the steep sides and bald top of the mound. There are black rocks upon the top of the hill, and if these are viewed from a height of about 200 feet or so above the mound, it will be seen that the whole is shaped like a human skull, with piles of rock appearing as eyeholes, a nose hole, and the jagged teeth of a grinning death's head.",
 						"A thorough inspection and search of the entire area reveals only that the north side of the hill has a crumbling cliff of sand and gravel about 20 feet high in the middle of the whole. (This cliff face is represented by the northern edge of the map) A low stone ledge overhangs this eroded area, and shrubs and bushes obscure it from observation at a distance.",
 						"It takes 10 minutes for characters to search each 10-foot-wide space along the cliff face. This examination must be done from a distance, using a long spear or a 10-foot pole to poke into the sand and gravel, looking for an opening. Any prodding into the cliff face must be sufficiently high off the ground in order to collapse enough material to expose a portion of a tunnel entrance. Once an entrance is exposed, it takes about 1 hour for characters to thoroughly clear the passage that lies beyond, but a crawl space can be opened in 10 minutes.",
-						"Probing of the gravel and sand face can begin wherever the characters choose-east side, west side, middle, several locations at once or merely a single one at a time. Leave this strictly to the players to decide. The best manner to handle it is to ask where they will search, once they have determined that they will investigate the area and they have stated how it will be done and with what. Remember that probing low to the ground, or probing with short implements (daggers, swords, and the like) will not reveal anything.",
+						"Probing of the gravel and sand face can begin wherever the characters choose\u2014east side, west side, middle, several locations at once or merely a single one at a time. Leave this strictly to the players to decide. The best manner to handle it is to ask where they will search, once they have determined that they will investigate the area and they have stated how it will be done and with what. Remember that probing low to the ground, or probing with short implements (daggers, swords, and the like) will not reveal anything.",
 						"As soon as any entrance is cleared and entered, go to the appropriate location on the map either {@area 1|026}, {@area 2|029}, or {@area 3|02c}.",
 						{
 							"type": "entries",
 							"name": "Demonic Attention",
 							"id": "024",
 							"entries": [
-								"Characters who become astral or ethereal in the tomb might attract a demon. Roll a d20 whenever this occurs. On a roll of 1 to 16, no demon appears. Otherwise the following demons could appear: 17, a {@creature vrock}; 18, a {@creature hezrou}; 19, a {@creature glabrezu}; or 20, a {@creature nalfeshnee}."
+								"Characters who become astral or ethereal in the tomb might attract a demon. Roll a {@dice d20} whenever this occurs. On a roll of 1 to 16, no demon appears. Otherwise the following demons could appear: 17, a {@creature vrock}; 18, a {@creature hezrou}; 19, a {@creature glabrezu}; or 20, a {@creature nalfeshnee}."
 							]
 						}
 					]
@@ -650,7 +650,7 @@
 					"entries": [
 						"If the characters clear the passage on the west side of the cliff face, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "027",
 							"entries": [
 								"The corridor before you is made of plain stone, roughly worked, and it is dark and full of cobwebs. The ceiling overhead is obscured by hanging strands of webbing."
@@ -666,14 +666,14 @@
 							"width": 600,
 							"height": 600
 						},
-						"Casual observation will not reveal that the ceiling, 20 feet overhead, is composed of badly fitting stones. The cobwebs must be burned away for someone to be able to inspect the tunnel ceiling. Anyone who does so and succeeds on a DC 10 Intelligence (Investigation) check realizes that the ceiling is unstable and in danger of collapse.",
+						"Casual observation will not reveal that the ceiling, 20 feet overhead, is composed of badly fitting stones. The cobwebs must be burned away for someone to be able to inspect the tunnel ceiling. Anyone who does so and succeeds on a DC 10 Intelligence ({@skill Investigation}) check realizes that the ceiling is unstable and in danger of collapse.",
 						"Daylight is sufficient to reveal a pair of oaken doors at the end of the passageway. The doors open outward by means of great iron ring pulls. When either door is opened, it is revealed to be a false door, and the trap is triggered.",
 						{
 							"type": "entries",
 							"name": "Ceiling Trap",
 							"id": "028",
 							"entries": [
-								"If the ceiling is prodded with any force, or if the doors are opened, the ceiling of the tunnel collapses. Creatures under the collapse must make a DC 15 Dexterity saving throw, taking 27 (5d10) bludgeoning damage on a failed save, or half as much damage on a successful one. The trap mechanism is beyond the doors and inside the ceiling, so it can't be disabled from outside."
+								"If the ceiling is prodded with any force, or if the doors are opened, the ceiling of the tunnel collapses. Creatures under the collapse must make a DC 15 Dexterity saving throw, taking 27 ({@damage 5d10}) bludgeoning damage on a failed save, or half as much damage on a successful one. The trap mechanism is beyond the doors and inside the ceiling, so it can't be disabled from outside."
 							]
 						}
 					]
@@ -685,7 +685,7 @@
 					"entries": [
 						"If the characters clear the passage on the east side of the cliff face, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "02a",
 							"entries": [
 								"The corridor before you is made of plain stone, roughly worked and mortared, with a 10-foot-high ceiling."
@@ -702,17 +702,16 @@
 							"height": 900
 						},
 						"Daylight will enable adventurers to dimly see what appear to be two separate doors at the end of the corridor.",
-						"The paving stones on the floor 50 feet south of the entrance are unmortared and shift slightly when characters tread upon the surface. A character who inspects the floor in this section and succeeds on a DC 15 Wisdom (Perception) check notices the change in the floor. A character can use thieves' tools to keep the stones from shifting by taking 1 minute and succeeding on a DC 20 Dexterity check. On a failed check, the shims are put in place but they fail when someone moves across the stone, and the trap is triggered.",
+						"The paving stones on the floor 50 feet south of the entrance are unmortared and shift slightly when characters tread upon the surface. A character who inspects the floor in this section and succeeds on a DC 15 Wisdom ({@skill Perception}) check notices the change in the floor. A character can use {@item thieves' tools|phb} to keep the stones from shifting by taking 1 minute and succeeding on a DC 20 Dexterity check. On a failed check, the shims are put in place but they fail when someone moves across the stone, and the trap is triggered.",
 						{
 							"type": "entries",
 							"name": "Sliding Block Trap",
 							"id": "02b",
 							"entries": [
-								"If the paving stones shift when someone moves across them, a 10-foot-thick block of stone emerges from the midpoint of the eastern wall and begins to slide into the corridor. Have the players roll initiative. On each initiative count, the block slides 6 inches to the west, until at initiative count 1, it completely blocks the corridor. The block's movement can be stopped by using an iron bar or a similarly sturdy normal object, but only if the object is placed on the floor where it can be wedged into the space between the block and the floor. If the block moves far enough to prevent the characters from escaping, they have to devise a means to bypass it. It can't be moved or forced backward."
+								"If the paving stones shift when someone moves across them, a 10-foot-thick block of stone emerges from the midpoint of the eastern wall and begins to slide into the corridor. Have the players roll initiative. On each initiative count, the block slides 6 inches to the west, until at initiative count 1, it completely blocks the corridor. The block's movement can be stopped by using an iron bar or a similarly sturdy normal object, but only if the object is placed on the floor where it can be wedged into the space between the block and the floor. If the block moves far enough to prevent the characters from escaping, they have to devise a means to bypass it. It can't be moved or forced backward.",
+								"The doors at the end of the passage are false ones."
 							]
-						},
-						"The doors at the end of the passage are false ones.",
-						"(Remember to put snap to grid back on after the encounter is complete)"
+						}
 					]
 				},
 				{
@@ -722,11 +721,11 @@
 					"entries": [
 						"Even a bit of light entering through a crawl space or provided by a torch will reveal that an unusual tunnel lies ahead. If the characters clear the passage near the center of the cliff face, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "02d",
 							"entries": [
 								"Bright, brilliant colors are to be seen everywhere, the stones and pigments undimmed by the passage of decades. The floor of the corridor is a colorful mosaic of stone, with a distinct, winding path of red tiles about two feet wide snaking its way south down the corridor. No stonework can be seen on the walls or the ceiling twenty feet above, for some sort of cement or plaster has been smoothed over all of these surfaces and then illustrated.",
-								"The scenes show fields with kine grazing, a copse with several wolves in the background, workers of various races and strange human-animal mixtures-pig-human, ape-human, and dog-human-going about various tasks. Certain of the frescoes show rooms of some building-a library filled with many books and scrolls, the door of a torture chamber, and a wizard's work room. There are chairs, windows, boxes, bales, doors, chests, birds, bats, spiders, and all manner of things shown on the walls."
+								"The scenes show fields with kine grazing, a copse with several wolves in the background, workers of various races and strange human-animal mixtures-pig-human, ape-human, and dog-human-going about various tasks. Certain of the frescoes show rooms of some building\u2014a library filled with many books and scrolls, the door of a torture chamber, and a wizard's work room. There are chairs, windows, boxes, bales, doors, chests, birds, bats, spiders, and all manner of things shown on the walls."
 							]
 						},
 						{
@@ -755,34 +754,34 @@
 							"name": "Message from Acererak",
 							"id": "02e",
 							"entries": [
-								"If the path of red tiles on the floor is carefully observed and studied all the way from the entrance to where the path forks toward areas 5 and 6, the individual with such perseverance will be rewarded by suddenly understanding that a message is contained in barely noticeable runes in the mosaic floor."
-							]
-						},
-						"{@b The message reads:}",
-						{
-							"type": "quote",
-							"entries": [
-								"Acererak congratulates you on your powers of observation, so make of this whatever you wish, for you will be mine in the end no matter what!",
-								"Go back to the tormentor or through the arch, and the second great hall you'll discover.",
-								"Shun green if you can, but night's good color is for those of great valor.",
-								"If shades of red stand for blood, the wise will not need sacrifice aught but a loop of magical metal-you're well along your march.",
-								"Two pits along the way will be found to lead to a fortuitous fall, so check the wall.",
-								"These keys and those are most important of all, and beware of trembling hands and what will maul.",
-								"If you find the false you find the true, and into the columned hall you'll come,and there the throne that's key and keyed.",
-								"The iron men of visage grim do more than meets the viewer's eye.",
-								"You've left and left and found my tomb, and now your souls will die."
-							]
-						},
-						{
-							"type": "entries",
-							"name": "Covered Pits",
-							"id": "02f",
-							"entries": [
-								"Pit traps throughout the tomb, except where otherwise noted, are constructed as covered pits. Each one is 10 feet deep and concealed by a counterweighted trapdoor that looks like the floor and opens as soon as any person steps on it.",
-								"A character who succeeds on a DC 15 Wisdom (Perception) check discerns the edges of a pit's lid. In addition, someone who prods a pit lid can force the lid to open with a successful DC 10 Strength check. The lid can be wedged shut with a piton or a similar object. A character must succeed on a DC 15 Strength check to place the shim properly. On a failed check, the shim fails if someone treads on the lid.",
-								"Each pit is spiked at the bottom, so someone who falls in takes falling damage plus 11 (2d10) piercing damage from the spikes. The spikes are also poisoned, so someone injured by them must make a DC 15 Constitution saving throw, taking 22 (4d10) poison damage on a failed save, or half as much damage on a successful one."
+								"If the path of red tiles on the floor is carefully observed and studied all the way from the entrance to where the path forks toward areas 5 and 6, the individual with such perseverance will be rewarded by suddenly understanding that a message is contained in barely noticeable runes in the mosaic floor.",
+								"The message reads:",
+								{
+									"type": "quote",
+									"entries": [
+										"Acererak congratulates you on your powers of observation, so make of this whatever you wish, for you will be mine in the end no matter what!",
+										"Go back to the tormentor or through the arch, and the second great hall you'll discover.",
+										"Shun green if you can, but night's good color is for those of great valor.",
+										"If shades of red stand for blood, the wise will not need sacrifice aught but a loop of magical metal-you're well along your march.",
+										"Two pits along the way will be found to lead to a fortuitous fall, so check the wall.",
+										"These keys and those are most important of all, and beware of trembling hands and what will maul.",
+										"If you find the false you find the true, and into the columned hall you'll come,and there the throne that's key and keyed.",
+										"The iron men of visage grim do more than meets the viewer's eye.",
+										"You've left and left and found my tomb, and now your souls will die."
+									]
+								}
 							]
 						}
+					]
+				},
+				{
+					"type": "inset",
+					"name": "Covered Pits",
+					"id": "02f",
+					"entries": [
+						"Pit traps throughout the tomb, except where otherwise noted, are constructed as covered pits. Each one is 10 feet deep and concealed by a counterweighted trapdoor that looks like the floor and opens as soon as any person steps on it.",
+						"A character who succeeds on a DC 15 Wisdom ({@skill Perception}) check discerns the edges of a pit's lid. In addition, someone who prods a pit lid can force the lid to open with a successful DC 10 Strength check. The lid can be wedged shut with a piton or a similar object. A character must succeed on a DC 15 Strength check to place the shim properly. On a failed check, the shim fails if someone treads on the lid.",
+						"Each pit is spiked at the bottom, so someone who falls in takes falling damage plus 11 ({@damage 2d10}) piercing damage from the spikes. The spikes are also {@condition poisoned}, so someone injured by them must make a DC 15 Constitution saving throw, taking 22 ({@damage 4d10}) poison damage on a failed save, or half as much damage on a successful one."
 					]
 				},
 				{
@@ -791,7 +790,7 @@
 					"id": "030",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "031",
 							"entries": [
 								"The most outstanding feature in this location is actually outstanding! Two jackal-headed human figures are painted so as to appear to be holding a real bronze chest that protrudes from the wall."
@@ -802,19 +801,19 @@
 							"name": "Poison Needle Trap",
 							"id": "032",
 							"entries": [
-								"If the chest is examined closely, the viewer will note that it is hinged on the bottom so as to allow the lid to swing down if a catch on the top is pressed. The catch has an easily seen poison needle trap-the needle sticks 3 inches out of the wall-and the needle can be avoided easily by pressing the catch with the pommel of a dagger. Disabling the trap by taking the needle out of the mechanism requires the use of thieves' tools and a successful DC 10 Dexterity check."
+								"If the chest is examined closely, the viewer will note that it is hinged on the bottom so as to allow the lid to swing down if a catch on the top is pressed. The catch has an easily seen poison needle trap\u2014the needle sticks 3 inches out of the wall\u2014and the needle can be avoided easily by pressing the catch with the pommel of a dagger. Disabling the trap by taking the needle out of the mechanism requires the use of {@item thieves' tools|phb} and a successful DC 10 Dexterity check.",
+								"The needle deals 1 piercing damage and 11 ({@damage 2d10}) poison damage if it hits someone. Someone who takes this poison damage must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for 1 hour."
 							]
 						},
-						"The needle deals 1 piercing damage and 11 (2d10) poison damage if it hits someone. Someone who takes this poison damage must succeed on a DC 15 Constitution saving throw or become poisoned for 1 hour.",
 						{
 							"type": "entries",
 							"name": "Deep Covered Pit",
 							"id": "033",
 							"entries": [
-								"If the chest is opened, it appears to be empty, but a character who actually feels inside the chest will find a rod that protrudes vertically from the bottom. This lever moves easily, and if it is pulled with any force it will open a trapdoor in this square that covers a 30-foot-deep covered pit (see the sidebar). Someone who falls in takes damage from a 30-foot fall as well as from the spikes and the poison."
+								"If the chest is opened, it appears to be empty, but a character who actually feels inside the chest will find a rod that protrudes vertically from the bottom. This lever moves easily, and if it is pulled with any force it will open a trapdoor in this square that covers a 30-foot-deep covered pit (see the sidebar). Someone who falls in takes damage from a 30-foot fall as well as from the spikes and the poison.",
+								"The trapdoor over this pit is 3 feet thick and can't be detected by sounding, and it is technically not a trap, so a {@spell find traps} spell doesn't reveal it. A {@spell true seeing} spell reveals a tiny rectangular gap where the door meets the floor. Once the trapdoor falls away, the pit remains open thereafter."
 							]
-						},
-						"The trapdoor over this pit is 3 feet thick and can't be detected by sounding, and it is technically not a trap, so a find traps spell doesn't reveal it. A true seeing spell reveals a tiny rectangular gap where the door meets the floor. Once the trapdoor falls away, the pit remains open thereafter."
+						}
 					]
 				},
 				{
@@ -824,7 +823,7 @@
 					"entries": [
 						"One section of the path shown on the floor leads directly into a stone archway. If any character stands within 2 feet of the entranceway upon the path, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "035",
 							"entries": [
 								"The stone archway before you is filled with a veil of thick vapors. The stones on either side of the base and the keystone protrude slightly from the stones around them. As you move to within touching distance, the left-hand base stone begins to glow yellow, the right-hand base stone orange, and the keystone seven feet above blue."
@@ -841,7 +840,7 @@
 					"entries": [
 						"The path of red tiles leads south from the fork. If any character comes within 2 feet of the southern wall, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "037",
 							"entries": [
 								"On the wall before you is a relief sculpture of a devil face formed of mosaic tiles. The face has a huge O of a mouth, inside of which the space is dead black."
@@ -852,7 +851,7 @@
 							"name": "Aura",
 							"id": "038",
 							"entries": [
-								"The devil face radiates an aura of transmutation magic if {@spell detect magic} is used on it, and a casting of {@spell detect evil and good} or a paladin's use of Divine Sense reveals it as a desecrated place."
+								"The devil face radiates an aura of transmutation magic if {@spell detect magic} is used on it, and a casting of {@spell detect evil and good} or a paladin's use of {@classFeature Divine Sense|Paladin||1} reveals it as a desecrated place."
 							]
 						},
 						{
@@ -860,7 +859,7 @@
 							"name": "Mouth Trap",
 							"id": "039",
 							"entries": [
-								"The mouth opening is similar to a sphere of annihilation, but it is about 3 feet in diameter-plenty of room for those who wish to leap in and be completely and forever destroyed. A character who examines the mouth and succeeds on a DC 20 Intelligence (Arcana) check identifies the trap for what it is."
+								"The mouth opening is similar to a sphere of annihilation, but it is about 3 feet in diameter\u2014plenty of room for those who wish to leap in and be completely and forever destroyed. A character who examines the mouth and succeeds on a DC 20 Intelligence ({@skill Arcana}) check identifies the trap for what it is."
 							]
 						}
 					]
@@ -871,7 +870,7 @@
 					"id": "03a",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "03b",
 							"entries": [
 								"This miserable cubicle appears to have absolutely no means of egress. Three iron levers, each about one foot long, protrude from the south wall of the chamber."
@@ -901,7 +900,7 @@
 							"name": "Crawl Space",
 							"id": "03d",
 							"entries": [
-								"The ceiling route is a crawl space some 3 feet square. At the place it turns east there is a plug in the ceiling, which can be detected only with magic or if a character has sense enough to check for secret doors. A character who succeeds on a DC 20 Wisdom (Perception) check can find the door. Also, anyone who raps or sounds on the ceiling in the door's area hears it is hollow, indicating a space beyond. Eventually the small tunnel leads to a magical one-way door, which opens in the pit side as shown, and players are back to square one."
+								"The ceiling route is a crawl space some 3 feet square. At the place it turns east there is a plug in the ceiling, which can be detected only with magic or if a character has sense enough to check for secret doors. A character who succeeds on a DC 20 Wisdom ({@skill Perception}) check can find the door. Also, anyone who raps or sounds on the ceiling in the door's area hears it is hollow, indicating a space beyond. Eventually the small tunnel leads to a magical one-way door, which opens in the pit side as shown, and players are back to square one."
 							]
 						}
 					]
@@ -913,7 +912,7 @@
 					"entries": [
 						"When any door leading to the lair is opened, it frees the room's occupant from temporal stasis.",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "03f",
 							"entries": [
 								"What appeared to be a statue an instant ago comes to life before your eyes. The creature flaps its wings and stares at you."
@@ -955,26 +954,32 @@
 					"entries": [
 						"If someone opens the door on the east wall of {@area 8|03e}, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "043",
 							"entries": [
 								"The small room beyond the door is empty and appears to have no other exits."
 							]
 						},
-						"The south wall contains the first in a series of secret doors. Each of these portals requires a successful DC 20 Wisdom (Perception) check to find and must be opened by hand using a particular method, as follows:",
-						"{@b A.} Pull down and inward (hinged on bottom)",
-						"{@b B.} Pivot on central hinge",
-						"{@b C.} Pull inward and up at bottom (hinged on top)",
-						"{@b D.} Slide up",
-						"{@b E.} Pull double panels inward (hinged on sides)",
-						"{@b F.} Slide left",
-						"{@b G.} Door has seven studs in a row-press all at once and door opens, but press 1 and 7 and the door falls inward. A character pressing the studs or near enough to do so must succeed on a DC 15 Dexterity saving throw or take 10 (3d6) bludgeoning damage from the falling door.",
+						"The south wall contains the first in a series of secret doors. Each of these portals requires a successful DC 20 Wisdom ({@skill Perception}) check to find and must be opened by hand using a particular method, as follows:",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								"A. Pull down and inward (hinged on bottom)",
+								"B. Pivot on central hinge",
+								"C. Pull inward and up at bottom (hinged on top)",
+								"D. Slide up",
+								"E. Pull double panels inward (hinged on sides)",
+								"F. Slide left",
+								"G. Door has seven studs in a row\u2014press all at once and door opens, but press 1 and 7 and the door falls inward. A character pressing the studs or near enough to do so must succeed on a DC 15 Dexterity saving throw or take 10 ({@damage 3d6}) bludgeoning damage from the falling door."
+							]
+						},
 						{
 							"type": "entries",
 							"name": "Bolts from Above",
 							"id": "044",
 							"entries": [
-								"Each round that characters are in any of the rooms inside the complex of secret doors, a number of bolts will be fired into the area from hidden devices in the walls and ceilings, and there is a 50 percent chance that one character, randomly determined, in each such area must succeed on a DC 20 Dexterity saving throw or take 5 (1d10) piercing damage. There is no way to prevent the bolts from being triggered."
+								"Each round that characters are in any of the rooms inside the complex of secret doors, a number of bolts will be fired into the area from hidden devices in the walls and ceilings, and there is a 50 percent chance that one character, randomly determined, in each such area must succeed on a DC 20 Dexterity saving throw or take 5 ({@damage 1d10}) piercing damage. There is no way to prevent the bolts from being triggered."
 							]
 						}
 					]
@@ -992,12 +997,12 @@
 								"East Wall"
 							],
 							"colStyles": [
-								"",
-								""
+								"col-6",
+								"col-6"
 							],
 							"rows": [
 								[
-									"Gold, held high overhead 1",
+									"Gold, held high overhead¹",
 									"Pale blue, held at shoulder"
 								],
 								[
@@ -1006,7 +1011,7 @@
 								],
 								[
 									"(False door)",
-									"(Secret one-way door 2)"
+									"(Secret one-way door²)"
 								],
 								[
 									"Purple, at feet",
@@ -1022,7 +1027,7 @@
 								],
 								[
 									"Gray, held at shoulder",
-									"Black, at feet 3"
+									"Black, at feet³"
 								],
 								[
 									"(None)",
@@ -1034,7 +1039,7 @@
 								],
 								[
 									"White, held high overhead",
-									"Red, held waist high 4"
+									"Red, held waist high⁴"
 								],
 								[
 									"Turquoise, held at shoulder",
@@ -1048,13 +1053,15 @@
 									"Pale green, at feet",
 									"Indigo, held high overhead"
 								]
+							],
+							"footnotes": [
+								"¹An illusion covering a crawlway to {@area 11|048}",
+								"²This door can be opened by a knock spell or destroyed with {@spell disintegrate}",
+								"³An illusion covering a crawlway to {@area 14|051}",
+								"⁴An illusion covering a crawlway to {@area 13|04d}"
 							]
 						},
-						"1 An illusion covering a crawlway to {@area 11|048}",
-						"2 This door can be opened by a knock spell or destroyed with disintegrate",
-						"3 An illusion covering a crawlway to {@area 14|051}",
-						"4 An illusion covering a crawlway to {@area 13|04d}",
-						"The false doors and secret doors can be found with successful DC 20 Wisdom (Perception) checks. If anyone makes physical contact with an illusion in this area, its nature becomes apparent. Also, a character who examines an illusory image without touching it can make a DC 20 Intelligence (Investigation) check. On a successful check, the illusion becomes faint to the character, who can then easily see the crawlway beyond the illusion.",
+						"The false doors and secret doors can be found with successful DC 20 Wisdom ({@skill Perception}) checks. If anyone makes physical contact with an illusion in this area, its nature becomes apparent. Also, a character who examines an illusory image without touching it can make a DC 20 Intelligence ({@skill Investigation}) check. On a successful check, the illusion becomes faint to the character, who can then easily see the crawlway beyond the illusion.",
 						{
 							"type": "entries",
 							"name": "Magic Archway",
@@ -1064,7 +1071,7 @@
 							]
 						},
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "047",
 							"entries": [
 								"As you come close, three stones in the archway in front of you begin to glow. The left-hand base stone shines with an olive hue; the one on the right glows citron, and the keystone seven feet overhead gives off russet light."
@@ -1079,7 +1086,7 @@
 					"id": "048",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "049",
 							"entries": [
 								"This small room holds what appears to be a statue of a gargoyle, eight feet tall, with four arms. One of the arms is broken off and lies on the floor in front of the statue."
@@ -1111,19 +1118,11 @@
 							"name": "Ten Gems for One",
 							"id": "04a",
 							"entries": [
-								"A close look at the open and outstretched hands of the statue will determine that a large gem (a 100 gp blue quartz fits perfectly) will fit in a carved depression in each of the three remaining hands, while the broken one has no such concavity. If three large gems of any sort are placed within the hands, the stony digits will close and crush them to powder, dump the remains on the floor, and return to their normal positions."
+								"A close look at the open and outstretched hands of the statue will determine that a large gem (a 100 gp blue quartz fits perfectly) will fit in a carved depression in each of the three remaining hands, while the broken one has no such concavity. If three large gems of any sort are placed within the hands, the stony digits will close and crush them to powder, dump the remains on the floor, and return to their normal positions.",
+								"If this process is repeated until ten gems (or more) are crushed, a {@spell magic mouth} spell is triggered and speaks the following words: \"Your sacrifice was not in vain. Look to the fourth to find your gain.\"",
+								"As these words are uttered, an invisible {@item gem of seeing} will come into being in the palm of the broken-off arm. The gem must be found, and the character so doing will need to wipe it free of a magical substance before it can be seen or used. Note that if the arm is carelessly moved, the gem will fall out and roll away. {@spell See invisibility} or any other sort of searching except by careful feeling will be useless. Describe the gem, once it is wiped clean and visible, as an oval diamond, with two flat and polished sides, very clear, and about 1 inch in diameter by a quarter-inch thick. It will operate only twelve times, then shatter."
 							]
-						},
-						"If this process is repeated until ten gems (or more) are crushed, a magic mouth spell is triggered and speaks the following words:",
-						{
-							"type": "inset",
-							"name": "Voice",
-							"id": "04b",
-							"entries": [
-								"Your sacrifice was not in vain. Look to the fourth to find your gain."
-							]
-						},
-						"As these words are uttered, an invisible {@item gem of seeing} will come into being in the palm of the broken-off arm. The gem must be found, and the character so doing will need to wipe it free of a magical substance before it can be seen or used. Note that if the arm is carelessly moved, the gem will fall out and roll away. {@spell See invisibility} or any other sort of searching except by careful feeling will be useless. Describe the gem, once it is wiped clean and visible, as an oval diamond, with two flat and polished sides, very clear, and about 1 inch in diameter by a quarter-inch thick. It will operate only twelve times, then shatter."
+						}
 					]
 				},
 				{
@@ -1131,7 +1130,7 @@
 					"name": "12. Trapped False Doors",
 					"id": "04c",
 					"entries": [
-						"In four locations in the tomb, there are false doors which screen a spear trap. When one of these doors is opened, a spear will shoot out, and the door opener or someone standing nearby is subject to be struck. Determine at random, if need be, which character is the target. The trap has a range of 60 feet, has a +11 bonus to hit, and deals 9 (2d8) piercing damage. If the door is closed and reopened, another spear will fire. The mechanism can be jammed by a character who uses thieves' tools and succeeds on a DC 20 Dexterity check."
+						"In four locations in the tomb, there are false doors which screen a spear trap. When one of these doors is opened, a spear will shoot out, and the door opener or someone standing nearby is subject to be struck. Determine at random, if need be, which character is the target. The trap has a range of 60 feet, has a {@hit 11} bonus to hit, and deals 9 ({@damage 2d8}) piercing damage. If the door is closed and reopened, another spear will fire. The mechanism can be jammed by a character who uses {@item thieves' tools|phb} and succeeds on a DC 20 Dexterity check."
 					]
 				},
 				{
@@ -1139,7 +1138,7 @@
 					"name": "13. Chamber of Three Chests",
 					"id": "04d",
 					"entries": [
-						"When the party enters the illusory crawlway hidden by the red sphere, they will come to an apparent dead end, but a successful DC 10 Wisdom (Perception) check reveals the presence of a secret door.",
+						"When the party enters the illusory crawlway hidden by the red sphere, they will come to an apparent dead end, but a successful DC 10 Wisdom ({@skill Perception}) check reveals the presence of a secret door.",
 						"The character who opens the door will fall to the floor 10 feet below due to a tilting stone at the mouth of the crawlway, taking falling damage (a mere annoyance, but it erodes the strength of the party).",
 						"Three large chests are affixed firmly to the floor; the western one is gold (plate covering iron), the center one is silver (plate over iron), and the eastern one is of oak bound with thick bronze bands. Each is about 4 feet long, 2 feet wide, and 3 feet high.",
 						{
@@ -1155,7 +1154,7 @@
 							"name": "Silver",
 							"id": "04f",
 							"entries": [
-								"Inside the silver chest is a clear crystal box (worth 1,000 gp) that holds a {@item ring of protection}. Someone who succeeds on a DC 15 Wisdom (Perception) check while examining the box and the chest notices the box is set into the chest bottom. When this box is lifted from the supposed bottom of the chest, eight darts will fire upward, and the one or two characters leaning over the chest so as to be in the line of fire will take 1d4 attacks each if they are exposed to the path of these missiles. The darts have a range of 60 feet, a +11 bonus to hit, and deal 3 (1d6) damage on a hit. The trap mechanism is under the crystal box and can't be disabled without first removing the box."
+								"Inside the silver chest is a clear crystal box (worth 1,000 gp) that holds a {@item ring of protection}. Someone who succeeds on a DC 15 Wisdom ({@skill Perception}) check while examining the box and the chest notices the box is set into the chest bottom. When this box is lifted from the supposed bottom of the chest, eight darts will fire upward, and the one or two characters leaning over the chest so as to be in the line of fire will take {@dice 1d4} attacks each if they are exposed to the path of these missiles. The darts have a range of 60 feet, a {@hit +11} bonus to hit, and deal 3 ({@damage 1d6}) damage on a hit. The trap mechanism is under the crystal box and can't be disabled without first removing the box."
 							]
 						},
 						{
@@ -1173,9 +1172,9 @@
 					"name": "14. Chapel of Evil",
 					"id": "051",
 					"entries": [
-						"After passing through the illusory black sphere the party will have crawled along the small tunnel until reaching the end, only to find it is solid stone. It requires a successful DC 20 Wisdom (Perception) check to find the secret door at the end of the passage-no form of magic will detect it, save for a {@item gem of seeing}. If the characters open the door and enter the room, read:",
+						"After passing through the illusory black sphere the party will have crawled along the small tunnel until reaching the end, only to find it is solid stone. It requires a successful DC 20 Wisdom ({@skill Perception}) check to find the secret door at the end of the passage\u2014no form of magic will detect it, save for a {@item gem of seeing}. If the characters open the door and enter the room, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "052",
 							"entries": [
 								"You see what is obviously some form of temple area. There are scenes of normal life painted on the walls, but the people have rotting flesh, skeletal hands, worms eating them, and so forth. Yet there are also depicted various religious symbols of good alignment. There is a mosaic path leading between four rows of wooden pews that face the worship area. In front of the pews, a wooden railing divides the room. South of it is an altar in front of a tiered dais, on which sits a wooden chair."
@@ -1183,7 +1182,7 @@
 						},
 						"If the characters move farther into the room so they can see the features in the south end, continue:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "053",
 							"entries": [
 								"The chair is nicely carved and padded but seems unremarkable. On either side of the dais are large, free-standing large brass candelabras each holding five white candles. In each corner on the southern wall is a large white pottery urn stoppered with a brass and wood plug. Sprawled on the floor near the west wall is human skeleton in black chain mail that is badly rusted and damaged. The skeleton's outstretched arm points to a stone archway set in the wall. The opening is filled with opaque, bright orange vapors."
@@ -1204,7 +1203,7 @@
 							"name": "Aura",
 							"id": "054",
 							"entries": [
-								"A casting of {@spell detect evil and good} or a paladin's use of Divine Sense identifies the chapel as a consecrated place. (What a puzzle! Could the demilich actually have been of good alignment?)"
+								"A casting of {@spell detect evil and good} or a paladin's use of {@classFeature Divine Sense|Paladin||1} identifies the chapel as a consecrated place. (What a puzzle! Could the demilich actually have been of good alignment?)"
 							]
 						},
 						{
@@ -1212,7 +1211,7 @@
 							"name": "Pews",
 							"id": "055",
 							"entries": [
-								"Simple examination indicates that all of the benches have hinged seats. If a character examines either of the pews in the front row before opening the lid, a successful DC 15 Wisdom (Perception) check reveals that the hinges on this pew are larger than the ones on the pews in the other rows."
+								"Simple examination indicates that all of the benches have hinged seats. If a character examines either of the pews in the front row before opening the lid, a successful DC 15 Wisdom ({@skill Perception}) check reveals that the hinges on this pew are larger than the ones on the pews in the other rows."
 							]
 						},
 						{
@@ -1220,10 +1219,10 @@
 							"name": "Gas Trap",
 							"id": "056",
 							"entries": [
-								"The hinges on the front pews are larger and stronger because they include rods that are connected to valves inside the pew. If the seat on either of the front pews is lifted up, a cloud of poison gas fills the whole room in 2 rounds. A character caught in the gas must succeed on a DC 15 Constitution saving throw or become poisoned for 48 hours."
+								"The hinges on the front pews are larger and stronger because they include rods that are connected to valves inside the pew. If the seat on either of the front pews is lifted up, a cloud of poison gas fills the whole room in 2 rounds. A character caught in the gas must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for 48 hours.",
+								"If the hinges are noticed and then disassembled, requiring 1 minute and a successful DC 15 Dexterity check using {@item thieves' tools|phb} for each hinge, the trap can't trigger. A failed check results in no progress at the task, but if the check fails by 5 or more, the trap goes off explosively, blowing the lid open."
 							]
 						},
-						"If the hinges are noticed and then disassembled, requiring 1 minute and a successful DC 15 Dexterity check using thieves' tools for each hinge, the trap can't trigger. A failed check results in no progress at the task, but if the check fails by 5 or more, the trap goes off explosively, blowing the lid open.",
 						{
 							"type": "entries",
 							"name": "Treasure",
@@ -1237,7 +1236,7 @@
 							"name": "Altar",
 							"id": "058",
 							"entries": [
-								"The centerpiece of the chapel is a block of strange material that glows with an inner light of opalescent blue. (If the altar is specifically targeted by a {@i detect evil and good spell}, it registers very faintly as a desecrated object.) If the altar is touched by living matter, a {@spell lightning bolt} spell (save DC 15) will streak down the center aisle. After this bolt comes forth, the altar turns a fiery blue-red, and if it thereafter is touched by any object it will explode as a {@spell fireball} spell (save DC 15)."
+								"The centerpiece of the chapel is a block of strange material that glows with an inner light of opalescent blue. (If the altar is specifically targeted by a {@spell detect evil and good} spell, it registers very faintly as a desecrated object.) If the altar is touched by living matter, a {@spell lightning bolt} spell (save DC 15) will streak down the center aisle. After this bolt comes forth, the altar turns a fiery blue-red, and if it thereafter is touched by any object it will explode as a {@spell fireball} spell (save DC 15)."
 							]
 						},
 						{
@@ -1245,7 +1244,7 @@
 							"name": "Archway",
 							"id": "059",
 							"entries": [
-								"Just as in other locations around the tomb, the mists that obscure the archway can't be penetrated with any sort of vision or magic. (If a character moves close to the archway and asks about it, explain that none of the stones of the arch glow.) The skeleton, of course, misleads the party, for any character passing through the portal will enter a 10-foot-by-10-foot room where their sex and alignment are reversed by a powerful magic. Exiting the room and re-entering the archway will restore original alignment, but also deals 3 (1d6) psychic damage. Going back a third time will reverse sex again, but the individual will be teleported in the manner of the archway in {@area 10|045}. Only a wish spell will restore both alignment and sex. If alignment is restored by entering the orange portal, a {@spell remove curse} or {@spell greater restoration} spell will then restore original sex."
+								"Just as in other locations around the tomb, the mists that obscure the archway can't be penetrated with any sort of vision or magic. (If a character moves close to the archway and asks about it, explain that none of the stones of the arch glow.) The skeleton, of course, misleads the party, for any character passing through the portal will enter a 10-foot-by-10-foot room where their sex and alignment are reversed by a powerful magic. Exiting the room and re-entering the archway will restore original alignment, but also deals 3 ({@damage 1d6}) psychic damage. Going back a third time will reverse sex again, but the individual will be teleported in the manner of the archway in {@area 10|045}. Only a {@spell wish} spell will restore both alignment and sex. If alignment is restored by entering the orange portal, a {@spell remove curse} or {@spell greater restoration} spell will then restore original sex."
 							]
 						},
 						{
@@ -1253,7 +1252,7 @@
 							"name": "Wall Slot",
 							"id": "05a",
 							"entries": [
-								"A character who inspects the eastern wall directly opposite the archway and succeeds on a DC 10 Wisdom (Perception) check finds a small slot with the letter O faintly traced above it. This is the location of a moving stone block described below. The block can't be magically detected, nor will it open by physical or magical means other than the method given in {@area 15|05b}."
+								"A character who inspects the eastern wall directly opposite the archway and succeeds on a DC 10 Wisdom ({@skill Perception}) check finds a small slot with the letter O faintly traced above it. This is the location of a moving stone block described below. The block can't be magically detected, nor will it open by physical or magical means other than the method given in {@area 15|05b}."
 							]
 						}
 					]
@@ -1289,7 +1288,7 @@
 					"id": "05e",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "05f",
 							"entries": [
 								"The thick wooden door ahead of you is heavily bound with iron bands, and there are several locks keeping it shut."
@@ -1334,7 +1333,7 @@
 						"No amount of forcing or spells will open the door. The only way to continue northward is to use a {@spell disintegrate} spell on the door or physically destroy it (it has 100 hit points).",
 						"If the characters destroy the door, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "062",
 							"entries": [
 								"As the door falls away, you can hear sounds of confusion and distress coming from the north. A faint glow, like that of a small flame, shines in the distance. The walls of the passage ahead of you are of smooth white alabaster, and the floor is highly polished, smoke-gray marble."
@@ -1342,7 +1341,7 @@
 						},
 						"The destruction of the door triggered a minor illusion spell that produced the noises of distress, which are designed to lure the characters onward.",
 						"The tunnel floor is a counterweighted beam. Its overbalancing point is the third square north of the door. When one or more characters move there, the floor beyond the door will begin to tilt downward, with the north end slowly sinking. If this occurs, quickly state how the floor is beginning to slant, and have the characters roll initiative. On initiative count 10, all characters north of the door fall prone and slide 10 feet to the north.",
-						"A character can attempt to scramble back up the ramp to the south by making a successful DC 10 Strength (Athletics) check, or two successful checks if using the Dash action. Those who succeed still slide 10 feet north on initiative count 10 in each round, but they can also climb upward according to the normal rules for doing so. A character whose check fails by 5 or more slides an extra 5 feet to the north. Those who slide to the fourth square north of the door take 3 (1d6) fire damage, then 11 (2d10) fire damage in the fifth square. Characters who slide farther than that are plunged into a pit of molten lava which will absolutely snuff them out."
+						"A character can attempt to scramble back up the ramp to the south by making a successful DC 10 Strength ({@skill Athletics}) check, or two successful checks if using the Dash action. Those who succeed still slide 10 feet north on initiative count 10 in each round, but they can also climb upward according to the normal rules for doing so. A character whose check fails by 5 or more slides an extra 5 feet to the north. Those who slide to the fourth square north of the door take 3 ({@damage 1d6}) fire damage, then 11 ({@damage 2d10}) fire damage in the fifth square. Characters who slide farther than that are plunged into a pit of molten lava which will absolutely snuff them out."
 					]
 				},
 				{
@@ -1350,7 +1349,7 @@
 					"name": "17. Magical Secret Door",
 					"id": "063",
 					"entries": [
-						"This entrance to the remainder of the tomb is on the wall adjoining the stairway that leads down. It can be found by mundane means, requiring a successful DC 20 Wisdom (Perception) check, but nothing will enable it to be opened until either the area is viewed through a {@item gem of seeing}, a {@spell true seeing} spell is cast, or a {@spell detect magic} spell is used to determine the door's magic aura (abjuration).",
+						"This entrance to the remainder of the tomb is on the wall adjoining the stairway that leads down. It can be found by mundane means, requiring a successful DC 20 Wisdom ({@skill Perception}) check, but nothing will enable it to be opened until either the area is viewed through a {@item gem of seeing}, a {@spell true seeing} spell is cast, or a {@spell detect magic} spell is used to determine the door's magic aura (abjuration).",
 						"After the magic of the door is identified, a {@spell dispel magic} or {@spell remove curse} spell is needed to remove the guard that prevents the door from being opened. Once this is accomplished, the secret door can be opened easily from either side."
 					]
 				},
@@ -1361,7 +1360,7 @@
 					"entries": [
 						"If the characters travel south from the secret door, they reach a landing at the top of a stairway.",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "065",
 							"entries": [
 								"Stairs descend to the west. The corridor that extends past the bottom of the steps is slightly cloudy."
@@ -1379,7 +1378,7 @@
 						},
 						"The corridor is filled with fear gas. Unless characters announce they are holding their breath before entering its 40-foot length, they will breathe in the gas. A creature exposed to the gas must succeed on a DC 15 Constitution saving throw or become frightened for 1 minute.",
 						"A creature frightened in this way must take the Dash action on each of its turns to retrace its steps, moving away from this area of the tomb by the safest route possible. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a successful save. Once the effect ends, the creature is immune to the gas for 1 hour.",
-						"Beyond the first 10 feet, the gas becomes thicker, and it irritates the eyes. The area is lightly obscured, so it requires a successful DC 10 Wisdom (Perception) check to notice the south door that leads into {@area 18A|066}. Once that door is opened, the gas dissipates."
+						"Beyond the first 10 feet, the gas becomes thicker, and it irritates the eyes. The area is lightly obscured, so it requires a successful DC 10 Wisdom ({@skill Perception}) check to notice the south door that leads into {@area 18A|066}. Once that door is opened, the gas dissipates."
 					]
 				},
 				{
@@ -1388,7 +1387,7 @@
 					"id": "066",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "067",
 							"entries": [
 								"Beyond the door, a stairway leads down. The way is blocked by thick webbing that fills the area from steps to ceiling."
@@ -1397,22 +1396,14 @@
 						"The steps down to the chamber at the end are filled with {@spell web||webs} (as the spell) which can only be removed by magical fire (a {@spell burning hands} spell, a {@item flame tongue} sword, or the like). Any character trying to break through them will become hopelessly entangled and can't get loose unless the webs are burned away or the character is freed by a wish spell.",
 						"If the characters clear away the webs and descend to the foot of the stairway, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "068",
 							"entries": [
 								"Lying on the floor at the bottom of the stairs is an iron mace inlaid with silver. South of this location is a modest-sized room. What you can see of it is filled with rotting and decayed furnishings."
 							]
 						},
 						"The mace will begin to glow with a bright golden light when it is picked up by any character. (Whenever this weapon is swung at the occupant of this chamber, it will hit.)",
-						"Characters who enter the room will see a solid gold couch along the back wall. A skeletal figure that resembles a lich, wearing a crown on its head, slowly rises from the couch (and throws up its hands in apparent fear if the mace is being carried). A booming voice seeming to emanate from the whole of the chamber will demand:",
-						{
-							"type": "inset",
-							"name": "Booming Voice",
-							"id": "069",
-							"entries": [
-								"\"Who dares to disturb the rest of Acererak? It is your death which you have found!\""
-							]
-						},
+						"Characters who enter the room will see a solid gold couch along the back wall. A skeletal figure that resembles a lich, wearing a crown on its head, slowly rises from the couch (and throws up its hands in apparent fear if the mace is being carried). A booming voice seeming to emanate from the whole of the chamber will demand: \"Who dares to disturb the rest of Acererak? It is your death which you have found!\"",
 						{
 							"type": "entries",
 							"name": "Creature",
@@ -1430,13 +1421,13 @@
 								"At the moment when the false lich disappears, the room will start to shake and stones will begin to come down from the ceiling. Obviously the place is beginning to collapse, but take your time detailing the increasing rumblings, tremors, grinding noises, falling hunks of ceiling, and so forth to the players."
 							]
 						},
-						"Now begin counting slowly to 10, and it is odds on that there will be a stampede up the stairs to get away! A programmed illusion spell affecting the entire false crypt will produce the full effects of a cave-in, complete with tactile components. Actual dust will billow up the stairs, while bits of stone begin to fall in the east-west tunnel and then in the north-south tunnel and the stairs reached from the pit. If the party runs out, ask them if they thought it was too hard a dungeon.",
+						"Now begin counting slowly to 10, and it is odds on that there will be a stampede up the stairs to get away! A {@spell programmed illusion} spell affecting the entire false crypt will produce the full effects of a cave-in, complete with tactile components. Actual dust will billow up the stairs, while bits of stone begin to fall in the east-west tunnel and then in the north-south tunnel and the stairs reached from the pit. If the party runs out, ask them if they thought it was too hard a dungeon.",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"id": "06c",
 							"entries": [
-								"The jade coffer is worth 5,000 gp and contains six potions of healing. The crown is set with gems and worth 25,000 gp. (The gold that makes up the couch is worth 50,000 gp, but it can't be moved or damaged.) The small sack holds 278 pp, twenty-nine gems worth 10 gp each, seven spell scrolls (all of 1st and 2nd-level wizard spells), and a map showing a location several hundred miles away that supposedly has a rich treasure (it is a fake, naturally)."
+								"The jade coffer is worth 5,000 gp and contains six potions of healing. The crown is set with gems and worth 25,000 gp. (The gold that makes up the couch is worth 50,000 gp, but it can't be moved or damaged.) The small sack holds 278 pp, twenty-nine gems worth 10 gp each, seven {@item spell scroll|dmg|spell scrolls} (all of {@filter 1st and 2nd-level wizard spells|spells|class=wizard|level=1;2}), and a map showing a location several hundred miles away that supposedly has a rich treasure (it is a fake, naturally)."
 							]
 						},
 						{
@@ -1444,7 +1435,7 @@
 							"name": "False Ending",
 							"id": "06d",
 							"entries": [
-								"If this outcome doesn't make the players suspicious enough to take another run through to check things out, put the adventure away for use when you have a different group (or the same ones) inquiring about one of the references in the \"Legend of the Tomb.\" Note that something so simple as a commune spell will reveal that the demilich has not been destroyed."
+								"If this outcome doesn't make the players suspicious enough to take another run through to check things out, put the adventure away for use when you have a different group (or the same ones) inquiring about one of the references in the \"Legend of the Tomb.\" Note that something so simple as a {@spell commune} spell will reveal that the demilich has not been destroyed."
 							]
 						}
 					]
@@ -1464,7 +1455,7 @@
 								"In the south part of the room are three vats of about 7 feet in diameter and 4 feet in depth that contain murky liquids. The vats are affixed to the floor and too heavy to move. The western one holds only dirty water."
 							]
 						},
-						"The middle vat contains a slow-acting acid which will deal 3 (1d6) acid damage on the round after a creature's flesh comes into substantial contact with it (by immersing an arm, being splashed on, and so forth)-minor contact (dipping a finger) will cause only a mild itch. At the bottom of this vat is one-half of a golden key.",
+						"The middle vat contains a slow-acting acid which will deal 3 ({@damage 1d6}) acid damage on the round after a creature's flesh comes into substantial contact with it (by immersing an arm, being splashed on, and so forth)-minor contact (dipping a finger) will cause only a mild itch. At the bottom of this vat is one-half of a golden key.",
 						"The eastern vat contains a grayish substance that is actually an {@creature ochre jelly} that sits atop the other half of the golden key.",
 						{
 							"type": "entries",
@@ -1483,7 +1474,7 @@
 					"entries": [
 						"If the characters proceed through the laboratory, they come upon a descending staircase that ends at a corridor heading east. Assuming they can see what lies ahead of them, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "072",
 							"entries": [
 								"A ten-foot-deep, empty pit completely fills the passageway and extends so far as to make jumping across it impossible for most creatures."
@@ -1504,10 +1495,10 @@
 							"name": "Spike Trap",
 							"id": "073",
 							"entries": [
-								"The characters might deduce that the pit can be crossed by climbing down and walking across the bottom, then climbing up the other side. Simple! Wrong-any footstep upon the last 5 feet (east portion) of the pit presses a pressure plate, causing a volley of spikes to discharge upward. If the plate is triggered, each person in the pit or leaning over its edge is likely to be struck by the spikes, which have a +11 bonus to hit and deal 11 (2d10) piercing damage. New spikes will come up out of the floor every time if the plate is pressed more than once."
+								"The characters might deduce that the pit can be crossed by climbing down and walking across the bottom, then climbing up the other side. Simple! Wrong\u2014any footstep upon the last 5 feet (east portion) of the pit presses a pressure plate, causing a volley of spikes to discharge upward. If the plate is triggered, each person in the pit or leaning over its edge is likely to be struck by the spikes, which have a {@hit 11} bonus to hit and deal 11 ({@damage 2d10}) piercing damage. New spikes will come up out of the floor every time if the plate is pressed more than once."
 							]
 						},
-						"A character who succeeds on a DC 20 Wisdom (Perception) check discovers the pressure plate. It can then be wedged shut by a character who is adjacent to the plate and succeeds on a DC 20 Dexterity check while using thieves' tools. On a failed check, it's apparent that the block didn't work-unless the check fails by 5 or more, in which case the job seems solid but fails when someone walks on the plate."
+						"A character who succeeds on a DC 20 Wisdom ({@skill Perception}) check discovers the pressure plate. It can then be wedged shut by a character who is adjacent to the plate and succeeds on a DC 20 Dexterity check while using {@item thieves' tools|phb}. On a failed check, it's apparent that the block didn't work\u2014unless the check fails by 5 or more, in which case the job seems solid but fails when someone walks on the plate."
 					]
 				},
 				{
@@ -1515,9 +1506,9 @@
 					"name": "21. The Agitated Chamber",
 					"id": "074",
 					"entries": [
-						"The secret door to this place can be found with a successful DC 15 Wisdom (Perception) check.",
+						"The secret door to this place can be found with a successful DC 15 Wisdom ({@skill Perception}) check.",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "075",
 							"entries": [
 								"The room appears to be filled with funerary offerings and furniture. There are four rotting sofas, a couple of throne-like chairs, and a jumble of stands, small tables, and vases and urns that are dented, chipped, and broken. Only the rather plain tapestries hanging on the east and west walls appear to have been spared a rough looting. Amid the general havoc are scattered several trunks and a larger number of coffers."
@@ -1536,10 +1527,10 @@
 							"name": "Tapestries",
 							"id": "077",
 							"entries": [
-								"The wall hangings, which depict weed-grown rocks and green and golden tan scenes of undersea life, are special, antimagic-treated creations made of green slime and brown mold (see \"Dungeon Hazards\" in chapter 5 of the {@i Dungeon Master's Guide})."
+								"The wall hangings, which depict weed-grown rocks and green and golden tan scenes of undersea life, are special, antimagic-treated creations made of {@trap green slime} and {@trap brown mold} (see \"{@book Dungeon Hazards|dmg|5|dungeon hazards|0}\" in chapter 5 of the {@i Dungeon Master's Guide})."
 							]
 						},
-						"If either tapestry is torn down, it instantly turns into green slime and covers a 20-foot-long, 10-foot-wide area of floor when it falls. Note that the tapestries can be handled normally without risk, just not yanked so as to tear them (and they are well affixed at the top); if any character is holding one when the room becomes agitated, however, it is 75 percent probable that the jerking motion will tear the thing.",
+						"If either tapestry is torn down, it instantly turns into green slime and covers a 20-foot-long, 10-foot-wide area of floor when it falls. Note that the tapestries can be handled normally without risk, just not yanked so as to tear them (and they are well affixed at the top); if any character is holding one when the room becomes agitated, however, it is {@chance 75 percent} probable that the jerking motion will tear the thing.",
 						"If these hangings are subjected to burning, they instantly turn to brown mold that covers the same area.",
 						"The secret door behind the tapestry on the west wall requires the tapestry to be removed, but thereafter can be found as easily as the entry door.",
 						{
@@ -1547,7 +1538,7 @@
 							"name": "Treasure",
 							"id": "078",
 							"entries": [
-								"The trunks are empty, but the smaller coffers hold various items. Roll a d6 each time one is opened. On a roll of 1-3, the coffer contains 1d3 {@creature poisonous snake||poisonous snakes}. On a roll of 4-5, 8d10 pp are found. On a roll of 6, the coffer holds 2d4 gems (worth 10 gp each)."
+								"The trunks are empty, but the smaller coffers hold various items. Roll a {@dice d6} each time one is opened. On a roll of 1-3, the coffer contains {@dice 1d3} {@creature poisonous snake||poisonous snakes}. On a roll of 4-5, {@dice 8d10} pp are found. On a roll of 6, the coffer holds {@dice 2d4} gems (worth 10 gp each)."
 							]
 						}
 					]
@@ -1558,76 +1549,76 @@
 					"id": "079",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "07a",
 							"entries": [
 								"A thick silver mist, shot through with delicate streamers of gold, partially blocks your view of the area that lies ahead."
 							]
 						},
-						"The mists make the entire area heavily obscured. A {@spell detect evil and good} spell cast in the area, or a paladin's use of Divine Sense, indicates that this is a consecrated place.",
+						"The mists make the entire area heavily obscured. A {@spell detect evil and good} spell cast in the area, or a paladin's use of {@classFeature Divine Sense|Paladin||1}, indicates that this is a consecrated place.",
 						"Any creature that steps into the mist must make a DC 15 Intelligence saving throw. On a failed save, the creature's Intelligence and Charisma scores become 1. The creature can't cast spells, activate magic items, understand language, or communicate in any intelligible way. The creature can, however, identify its friends, follow them, and even protect them. This effect lasts until the character can breathe the clean air above ground under the warm sun.",
 						{
 							"type": "entries",
 							"name": "Creature",
 							"id": "07b",
 							"entries": [
-								"At the center of the cavern is a small grotto in which dwells the fey being {@creature Siren|TftYP}. As a private joke, Acererak placed her in this cavern under an enchantment. She must be asked to come out of the chamber in order to break the spell, and she can give no clues as to the nature of her durance. If the characters come close enough, they can see that two sacks, a large one and a small one, are lying on the floor next to her."
+								"At the center of the cavern is a small grotto in which dwells the fey being {@creature Siren|TftYP}. As a private joke, Acererak placed her in this cavern under an enchantment. She must be asked to come out of the chamber in order to break the spell, and she can give no clues as to the nature of her durance. If the characters come close enough, they can see that two sacks, a large one and a small one, are lying on the floor next to her.",
+								"Siren will converse in a friendly fashion, asking how characters are and if they find the going hard in the tomb. Because of the enchantment, she will answer any direct questions with an evasive reply: \"I cannot say,\" \"That is unknown to me,\" \"Possibly,\" and so forth unless she is freed. She knows nothing of the tomb in any event.",
+								"If the characters ask her to come with them and are kind, she will do so and stay with them through the rest of the adventure."
 							]
 						},
-						"Siren will converse in a friendly fashion, asking how characters are and if they find the going hard in the tomb. Because of the enchantment, she will answer any direct questions with an evasive reply: \"I cannot say,\" \"That is unknown to me,\" \"Possibly,\" and so forth unless she is freed. She knows nothing of the tomb in any event.",
-						"If the characters ask her to come with them and are kind, she will do so and stay with them through the rest of the adventure.",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"id": "07c",
 							"entries": [
-								"Both of Siren's sacks contain treasure, but it isn't possible to acquire more than one of them-and in fact both of the sacks will disappear if she is asked to accompany the party. If a character touches one of the sacks before she is asked to come along, she and the other sack immediately disappear."
+								"Both of Siren's sacks contain treasure, but it isn't possible to acquire more than one of them\u2014and in fact both of the sacks will disappear if she is asked to accompany the party. If a character touches one of the sacks before she is asked to come along, she and the other sack immediately disappear.",
+								"The large sack contains 50 pieces each of copper, silver, electrum, gold and platinum. It appears to be a normal sack, but it has a magical aura if it is checked, for it is a {@item bag of holding}.",
+								"To determine the contents of the small sack, roll a {@dice d10}:",
+								{
+									"type": "table",
+									"colLabels": [
+										"{@dice d10}",
+										"Contents"
+									],
+									"colStyles": [
+										"col-2 text-center",
+										"col-10"
+									],
+									"rows": [
+										[
+											"1\u20132",
+											"Filled with wool"
+										],
+										[
+											"3\u20134",
+											"Five pieces of jewelry"
+										],
+										[
+											"5\u20136",
+											"{@dice 1d6} {@item potion of greater healing|dmg|potions of greater healing}"
+										],
+										[
+											"7",
+											"{@dice 1d6} {@item spell scroll|dmg|spell scrolls}, each of a {@filter wizard spell of 5th level or lower|spells|class=wizard|level=0;1;2;3;4;5} (DM's choice)"
+										],
+										[
+											"8",
+											"{@dice 4d12} gems (worth 100 gp each)"
+										],
+										[
+											"9",
+											"{@item Bracers of defense}"
+										],
+										[
+											"10",
+											"{@item Ring of feather falling}"
+										]
+									]
+								},
+								"It isn't possible to gain both the large and the small sacks by any means. If a character or characters state they will grab them simultaneously, roll dice to see which sack is touched a fraction of a second sooner. The other disappears\u2014along with Siren\u2014forever."
 							]
-						},
-						"The large sack contains 50 pieces each of copper, silver, electrum, gold and platinum. It appears to be a normal sack, but it has a magical aura if it is checked, for it is a {@item bag of holding}.",
-						"To determine the contents of the small sack, roll a d10:",
-						{
-							"type": "table",
-							"colLabels": [
-								"d10",
-								"Contents"
-							],
-							"colStyles": [
-								"col-1 text-center",
-								""
-							],
-							"rows": [
-								[
-									"1-2",
-									"Filled with wool"
-								],
-								[
-									"3-4",
-									"Five pieces of jewelry"
-								],
-								[
-									"5-6",
-									"1d6 potions of greater healing"
-								],
-								[
-									"7",
-									"1d6 spell scrolls, each of a wizard spell of 5th level or lower (DM's choice)"
-								],
-								[
-									"8",
-									"4d12 gems (worth 100 gp each)"
-								],
-								[
-									"9",
-									"Bracers of defense"
-								],
-								[
-									"10",
-									"Ring of feather falling"
-								]
-							]
-						},
-						"It isn't possible to gain both the large and the small sacks by any means. If a character or characters state they will grab them simultaneously, roll dice to see which sack is touched a fraction of a second sooner. The other disappears-along with Siren-forever."
+						}
 					]
 				},
 				{
@@ -1645,13 +1636,13 @@
 							"width": 1900,
 							"height": 2300
 						},
-						"When the party opens the door that promises to offer access to the north, it is probable that they will believe it to be nothing more than a false door, but the seemingly blank wall of solid stone behind the false door hides a secret door, which can be found with a successful DC 15 Wisdom (Perception) check.",
+						"When the party opens the door that promises to offer access to the north, it is probable that they will believe it to be nothing more than a false door, but the seemingly blank wall of solid stone behind the false door hides a secret door, which can be found with a successful DC 15 Wisdom ({@skill Perception}) check.",
 						{
 							"type": "entries",
 							"name": "Secret Trapdoor",
 							"id": "07e",
 							"entries": [
-								"On the other side of the secret door is a secret trapdoor in the floor of the corridor, requiring a successful DC 20 Wisdom (Perception) check to find."
+								"On the other side of the secret door is a secret trapdoor in the floor of the corridor, requiring a successful DC 20 Wisdom ({@skill Perception}) check to find."
 							]
 						},
 						"The trapdoor opens onto a steep flight of narrow stairs that spiral down to a 5-foot-wide tunnel which emerges at {@area 24|081}."
@@ -1662,13 +1653,13 @@
 					"name": "23A. Knockout Corridor",
 					"id": "07f",
 					"entries": [
-						"If the characters don't find the tunnel or choose not to follow it, they move through a door that leads east and then come upon a set of double doors in the north wall. When the doors to the north are opened, sleep gas billows forth from the other side. Each creature in the eastwest passage must succeed on a DC 15 Constitution saving throw or fall unconscious for 2d4 × 10 minutes.",
+						"If the characters don't find the tunnel or choose not to follow it, they move through a door that leads east and then come upon a set of double doors in the north wall. When the doors to the north are opened, sleep gas billows forth from the other side. Each creature in the eastwest passage must succeed on a DC 15 Constitution saving throw or fall {@condition unconscious} for {@dice 2d4 × 10} minutes.",
 						{
 							"type": "entries",
 							"name": "Rolling Stone",
 							"id": "080",
 							"entries": [
-								"Every 10 minutes after the gas is released, roll a d4. On a roll of 4, a stone juggernaut (rather like a steam roller) comes out of the 20-foot square room to the north and rolls 1d6 × 10 feet south, then west. Everything it rolls over is squashed to a pulp. There is no appeal."
+								"Every 10 minutes after the gas is released, roll a d4. On a roll of 4, a stone juggernaut (rather like a steam roller) comes out of the 20-foot square room to the north and rolls {@dice 1d6 × 10} feet south, then west. Everything it rolls over is squashed to a pulp. There is no appeal."
 							]
 						}
 					]
@@ -1698,7 +1689,7 @@
 					"id": "082",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "083",
 							"entries": [
 								"You look upon an enormous chamber colored in pastels. A forest of massive, many-hued columns support the ceiling."
@@ -1717,10 +1708,10 @@
 							"name": "Upwardly Mobile",
 							"id": "085",
 							"entries": [
-								"Any character who touches a pillar with or without intent will uncontrollably float upward (as if affected by a levitate spell), then bounce gently around on the ceiling, 30 feet above, just as a helium balloon. To stop this effect, a dispel magic or remove curse spell must be placed upon each such individual."
+								"Any character who touches a pillar with or without intent will uncontrollably float upward (as if affected by a levitate spell), then bounce gently around on the ceiling, 30 feet above, just as a helium balloon. To stop this effect, a dispel magic or remove curse spell must be placed upon each such individual.",
+								"There seems to be a gentle breeze in the room, for any character floating among the many-hued columns will begin drifting toward the northwest or northeast corner of the room. From the entry an observant character with a suitable light source will be able to observe part of the dais on the south wall and the door at {@area 27|093}."
 							]
 						},
-						"There seems to be a gentle breeze in the room, for any character floating among the many-hued columns will begin drifting toward the northwest or northeast corner of the room. From the entry an observant character with a suitable light source will be able to observe part of the dais on the south wall and the door at {@area 27|093}.",
 						{
 							"type": "entries",
 							"name": "Northwest Devil Face",
@@ -1742,7 +1733,7 @@
 							"name": "Charred Remains",
 							"id": "088",
 							"entries": [
-								"Strewn near the southeast corner is a heap of charred bones and skulls, plus the crisped and blackened remains of clothing and gear, arms and armor-a thoroughly awful and frightening sight. A character who comes close enough to examine the remains will find a huge, glowing orange gem at the center of the destruction."
+								"Strewn near the southeast corner is a heap of charred bones and skulls, plus the crisped and blackened remains of clothing and gear, arms and armor\u2014a thoroughly awful and frightening sight. A character who comes close enough to examine the remains will find a huge, glowing orange gem at the center of the destruction."
 							]
 						},
 						{
@@ -1750,11 +1741,11 @@
 							"name": "Cursed Gem",
 							"id": "089",
 							"entries": [
-								"The gem can be easily claimed. Casting a detect evil and good spell reveals it to be a desecrated object. On a casting of detect magic, the gem gives off a strong aura of conjuration-so strong that the detecting character will get the vague feeling that the wish spell is involved in the gem's magic."
+								"The gem can be easily claimed. Casting a {@spell detect evil and good} spell reveals it to be a desecrated object. On a casting of detect magic, the gem gives off a strong aura of conjuration\u2014so strong that the detecting character will get the vague feeling that the {@spell wish} spell is involved in the gem's magic.",
+								"The gem is actually a cursed magic item. If any character touches it and attempts to cast a {@spell wish} spell using it, a reversed or distorted version of the wish's fulfillment will bring harm to that character and all named in the wish.",
+								"Then, immediately after the evil {@spell wish} spell has transpired, the gem begins to pulse with reddish lights, growing progressively stronger, brighter and hotter. Roll initiative. On initiative count 1, the stone explodes, absolutely killing any character within a 15-foot radius in a wave of searing radiation and flames. The gem remains as a noisome mass of stinking purplish mold which bubbles and chuckles. In one week the mass will again re-form as a glowing orange gem."
 							]
 						},
-						"The gem is actually a cursed magic item. If any character touches it and attempts to cast a wish spell using it, a reversed or distorted version of the wish's fulfillment will bring harm to that character and all named in the wish.",
-						"Then, immediately after the evil wish spell has transpired, the gem begins to pulse with reddish lights, growing progressively stronger, brighter and hotter. Roll initiative. On initiative count 1, the stone explodes, absolutely killing any character within a 15-foot radius in a wave of searing radiation and flames. The gem remains as a noisome mass of stinking purplish mold which bubbles and chuckles. In one week the mass will again re-form as a glowing orange gem.",
 						{
 							"type": "image",
 							"href": {
@@ -1774,7 +1765,7 @@
 							]
 						},
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "08b",
 							"entries": [
 								"Contrasting with the pastel colors of the floor and pillars of the hall is the stark blackness of the huge dais on the south wall, atop which sits an obsidian throne inlaid with silver and ivory skulls. Upon the throne rest a crown made of gold and a scepter made of electrum, with a gold knob on one end and a silver cap on the other."
@@ -1793,16 +1784,16 @@
 							"name": "Crown and Scepter",
 							"id": "08d",
 							"entries": [
-								"The crown negates the pillars' levitation effect for anyone who dons it and enables the wearer to see within the hall as if in normal daylight\u2014but outside this place the wearer is blind. As soon as a creature puts on the crown, the wearer knows that the crown can be removed only by touching the scepter to it, but doesn't find out the exact procedure."
+								"The crown negates the pillars' levitation effect for anyone who dons it and enables the wearer to see within the hall as if in normal daylight\u2014but outside this place the wearer is {@condition blinded|phb|blind}. As soon as a creature puts on the crown, the wearer knows that the crown can be removed only by touching the scepter to it, but doesn't find out the exact procedure.",
+								"If the golden knob is touched to the crown, the wearer can remove the headgear. If the silver end of the scepter is touched to the crown, the wearer is instantly snuffed out, turning to a fetid powder that can't be brought back to life no matter what ({@spell wish} spells notwithstanding)."
 							]
 						},
-						"If the golden knob is touched to the crown, the wearer can remove the headgear. If the silver end of the scepter is touched to the crown, the wearer is instantly snuffed out, turning to a fetid powder that can't be brought back to life no matter what (wish spells notwithstanding).",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"id": "08e",
 							"entries": [
-								"Each of these items is obviously valuable (25,000 gp for the crown, 12,500 gp for the scepter), but both are cursed. If they are removed from the tomb, the possessor of either item will be visited by a vrock sent to reclaim the item and return it to the throne room-or by two such demons if a single character has both items."
+								"Each of these items is obviously valuable (25,000 gp for the crown, 12,500 gp for the scepter), but both are cursed. If they are removed from the tomb, the possessor of either item will be visited by a {@creature vrock} sent to reclaim the item and return it to the throne room\u2014or by two such demons if a single character has both items."
 							]
 						},
 						{
@@ -1810,7 +1801,7 @@
 							"name": "Throne Passage",
 							"id": "08f",
 							"entries": [
-								"A character who examines the throne and succeeds on a DC 15 Wisdom (Perception) check discovers a small replica of the crown inlaid in silver on the lower front panel of the seat. If the silver end of the scepter is applied to this inlay, the throne sinks down and reveals a 5-foot-wide passageway that leads south."
+								"A character who examines the throne and succeeds on a DC 15 Wisdom ({@skill Perception}) check discovers a small replica of the crown inlaid in silver on the lower front panel of the seat. If the silver end of the scepter is applied to this inlay, the throne sinks down and reveals a 5-foot-wide passageway that leads south."
 							]
 						}
 					]
@@ -1827,7 +1818,7 @@
 							"name": "Treasure",
 							"id": "091",
 							"entries": [
-								"A huge amethyst, worth 5,000 gp, is barely visible between the wrappings that cover the mummy's head. A character who examines the mummy and succeeds on a DC 20 Wisdom (Perception) check can discover it in one of the eye sockets."
+								"A huge amethyst, worth 5,000 gp, is barely visible between the wrappings that cover the mummy's head. A character who examines the mummy and succeeds on a DC 20 Wisdom ({@skill Perception}) check can discover it in one of the eye sockets."
 							]
 						},
 						{
@@ -1848,7 +1839,7 @@
 						"The door in the center of the north wall of the throne room appears to lead to another small room. Like the two near the corners, this one gives off a faint glow when viewed from 10 feet away, though this light is of a lilac color.",
 						"When this door is touched, the light changes to a bright and coruscating purple with tinges of sickly green. If a character opens the door, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "094",
 							"entries": [
 								"You see a bare chamber, with a small door on the north wall, and pairs of swords crossed behind shields hung upon the walls. There are three such sets on each of the walls to either hand, and two sets on the north wall, one flanking each side of the door."
@@ -1859,11 +1850,11 @@
 							"name": "Creatures",
 							"id": "095",
 							"entries": [
-								"If the threshold of the chamber is crossed by any creature, one set of swords will fly off the wall and attack the individual so doing. The two {@creature flying sword||flying swords} will both attack, and the shield (statistics as the swords, but no attacks) will interpose itself to take hits meant for the swords. This trio will attack until they are destroyed or the one who violated their area is dead. Surviving weapons and shields return to their former positions after the offender is hacked to pieces."
+								"If the threshold of the chamber is crossed by any creature, one set of swords will fly off the wall and attack the individual so doing. The two {@creature flying sword||flying swords} will both attack, and the shield (statistics as the swords, but no attacks) will interpose itself to take hits meant for the swords. This trio will attack until they are destroyed or the one who violated their area is dead. Surviving weapons and shields return to their former positions after the offender is hacked to pieces.",
+								"Worse still, if the threshold is crossed a second time, another pair of blades and a shield will attack, and each set gains a cumulative +1 bonus to attack and damage rolls, as well as 1 hit point more than the previous set.",
+								"Only the following spells will affect these items: {@spell telekinesis} sends all three items of a set back to their original position; {@spell heat metal} will cause one item to fall to pieces; {@spell disintegrate} will destroy all items of a set; {@spell magic weapon} will cause a sword to become a plain iron weapon."
 							]
-						},
-						"Worse still, if the threshold is crossed a second time, another pair of blades and a shield will attack, and each set gains a cumulative +1 bonus to attack and damage rolls, as well as 1 hit point more than the previous set.",
-						"Only the following spells will affect these items: {@spell telekinesis} sends all three items of a set back to their original position; {@spell heat metal} will cause one item to fall to pieces; {@spell disintegrate} will destroy all items of a set; {@spell magic weapon} will cause a sword to become a plain iron weapon."
+						}
 					]
 				},
 				{
@@ -1873,7 +1864,7 @@
 					"entries": [
 						"Any creature unfortunate enough to be teleported here from {@area 25|082} is doomed, for its fate is clearly stated in glowing letters magically written on the north wall of the place. If someone arrives here, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "097",
 							"entries": [
 								"\"You who dared to violate my tomb now pay the price. Stay here and die slowly of starvation, or open and enter the door to the south, where certain but quick death awaits.",
@@ -1893,7 +1884,7 @@
 							"name": "Treasure",
 							"id": "099",
 							"entries": [
-								"There are numerous skeletons here, rotting equipment, and 30d10 each of sp, ep, gp, and pp hurled about. Searching through the remains will yield 2d10 gems (worth 10 gp each), a {@item potion of diminution}, and a {@item flail +1||+1 flail}."
+								"There are numerous skeletons here, rotting equipment, and {@dice 30d10} each of sp, ep, gp, and pp hurled about. Searching through the remains will yield {@dice 2d10} gems (worth 10 gp each), a {@item potion of diminution}, and a {@item +1 flail}."
 							]
 						},
 						{
@@ -1923,7 +1914,7 @@
 						},
 						"The narrow passage behind the throne leads to a 10-foot-wide landing and a series of steps which become wider to the south as they ascend. When a character reaches the landing and is able to see the steps, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "09c",
 							"entries": [
 								"The walls of the area ahead are untarnished and gleaming copper panels set between rare woods inlaid with ivory. The ceiling is silver, formed so as to reflect and amplify light brought into the place. The chamber widens to the south, where a set of gently sloping steps leads upward. The six steps, from nearest to farthest, are made of onyx, pink marble, lapis, black marble, yellow serpentine, and malachite."
@@ -1943,7 +1934,7 @@
 							"name": "Keyhole",
 							"id": "09e",
 							"entries": [
-								"Where these valves meet, at about waist height, is a cup-like depression, a hemispherical concavity with a central hole. The hole appears to fit the Second Key, but if it is inserted, the character so doing will take 5 (1d10) lightning damage. Anyone so foolish as to insert the First Key (from {@area 19|06e}) will take double that amount of damage."
+								"Where these valves meet, at about waist height, is a cup-like depression, a hemispherical concavity with a central hole. The hole appears to fit the Second Key, but if it is inserted, the character so doing will take 5 ({@damage 1d10}) lightning damage. Anyone so foolish as to insert the First Key (from {@area 19|06e}) will take double that amount of damage."
 							]
 						},
 						{
@@ -1959,18 +1950,24 @@
 							"name": "Blood Trap",
 							"id": "0a0",
 							"entries": [
-								"If the door is attacked by force it will not budge, but if it is scratched or nicked it will turn red in that spot, and if it is cut by a sharp weapon it will begin to gush forth blood-the blood of all those who have died within the tomb! The red flow will cascade down the steps and fill the area to the top of the southernmost step in 6 rounds, and each round thereafter it will rise higher and encompass one more step. If unchecked, the flow of blood will fill the foyer to the ceiling in 20 rounds."
+								"If the door is attacked by force it will not budge, but if it is scratched or nicked it will turn red in that spot, and if it is cut by a sharp weapon it will begin to gush forth blood\u2014the blood of all those who have died within the tomb! The red flow will cascade down the steps and fill the area to the top of the southernmost step in 6 rounds, and each round thereafter it will rise higher and encompass one more step. If unchecked, the flow of blood will fill the foyer to the ceiling in 20 rounds.",
+								"Fire of any sort, magical or otherwise, turns the blood to a poison gas, which is fatal, and all characters in the foyer area are dead, with no saving throw, while any in the 5-foot-wide passage to the throne room are slain unless they succeed on a DC 17 Constitution saving throw.",
+								"Casting one or more {@spell cure wounds}s spells on the door in any combination that expends four spell slots (such as four 1st-level castings, two 2nd-level, or one 4th-level) will stanch the flow of blood, as will a {@spell heal} spell. If other magic is used against the blood, only the following spells will have any effect:",
+								{
+									"type": "list",
+									"style": "list-hang-notitle",
+									"items": [
+										"{@spell Cone of cold} freezes the blood and halts the flow for 3 rounds.",
+										"{@spell Create or destroy water} turns the blood to water.",
+										"{@spell Disintegrate} destroys all the blood.",
+										"{@spell Levitate} coagulates the blood and causes it to rise up as a Huge red {@creature ochre jelly}.",
+										"{@spell Polymorph} changes the blood into seven {@creature wight||wights}, which attack immediately.",
+										"{@spell Purify food and drink} turns all the blood to poison gas. A character caught in the gas must succeed on a DC 15 Constitution saving throw or become {@condition poisoned} for 48 hours.",
+										"{@spell Raise dead} or {@spell resurrection} destroys all the blood and causes a shade to appear on the top stair. The shade blesses the characters so that they benefit as if they had just finished a long rest."
+									]
+								}
 							]
-						},
-						"Fire of any sort, magical or otherwise, turns the blood to a poison gas, which is fatal, and all characters in the foyer area are dead, with no saving throw, while any in the 5-foot-wide passage to the throne room are slain unless they succeed on a DC 17 Constitution saving throw.",
-						"Casting one or more {@spell cure wounds||cure wound} s spells on the door in any combination that expends four spell slots (such as four 1st-level castings, two 2nd-level, or one 4th-level) will stanch the flow of blood, as will a {@spell heal} spell. If other magic is used against the blood, only the following spells will have any effect:",
-						"{@spell Cone of cold} freezes the blood and halts the flow for 3 rounds.",
-						"{@spell Create or destroy water} turns the blood to water.",
-						"{@spell Disintegrate} destroys all the blood.",
-						"{@spell Levitate} coagulates the blood and causes it to rise up as a Huge red {@creature ochre jelly}.",
-						"{@spell Polymorph} changes the blood into seven {@creature wight||wights}, which attack immediately.",
-						"{@spell Purify food and drink} turns all the blood to poison gas. A character caught in the gas must succeed on a DC 15 Constitution saving throw or become poisoned for 48 hours.",
-						"{@spell Raise dead} or {@spell resurrection} destroys all the blood and causes a shade to appear on the top stair. The shade blesses the characters so that they benefit as if they had just finished a long rest."
+						}
 					]
 				},
 				{
@@ -1979,7 +1976,7 @@
 					"id": "0a1",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "0a2",
 							"entries": [
 								"This imposing chamber has a silvered ceiling, just as the foyer has, so it is brightly illuminated by reflected light. The walls are of ivory with gold inlaid. The floor is polished agate. In each corner stands a statue of black iron, easily nine feet tall. That to the northeast stands with a saw-toothed two-handed sword raised to strike; that to the northwest a huge, spike-ended mace; to the southeast the sculpture holds a wickedly spiked morning star, and the one in the southwest has a voulge.",
@@ -1992,10 +1989,10 @@
 							"name": "Statues",
 							"id": "0a3",
 							"entries": [
-								"Each statue has a magical aura, but they are merely hunks of metal; they do nothing. Each registers to the casting of {@spell detect evil and good} as a desecrated object, and the visage of each of these iron statues is most fearsome and terrifying."
+								"Each statue has a magical aura, but they are merely hunks of metal; they do nothing. Each registers to the casting of {@spell detect evil and good} as a desecrated object, and the visage of each of these iron statues is most fearsome and terrifying.",
+								"Moving a statue can be done, but it requires a combined Strength of 48. Moving the statue in the northwest corner reveals a ring pull in the western wall which will raise a small plug of stone and enable the party to enter a small chute which takes them into the corridor that goes west."
 							]
 						},
-						"Moving a statue can be done, but it requires a combined Strength of 48. Moving the statue in the northwest corner reveals a ring pull in the western wall which will raise a small plug of stone and enable the party to enter a small chute which takes them into the corridor that goes west.",
 						{
 							"type": "entries",
 							"name": "Bronze Urn",
@@ -2009,7 +2006,7 @@
 							"name": "Sarcophagus",
 							"id": "0a5",
 							"entries": [
-								"Examining the lid of the sarcophagus reveals that glyphs spelling \"ACERERAK\" are inset on it in platinum. (The metal, worth 100 pp in total, can be pried out.) The end of the thing nearest the wall is stove in and shattered. Inside can be seen bits of a wooden inner shell, a few bones, destroyed jewelry (the stones pried out), torn bits of robes and windings, dust, and a broken staff of the magi (evident from the runes upon it). A shattered skull will roll out if the contents are moved around. (Why, the demilich has long been destroyed, but his magical traps somehow survived!)"
+								"Examining the lid of the sarcophagus reveals that glyphs spelling \"ACERERAK\" are inset on it in platinum. (The metal, worth 100 pp in total, can be pried out.) The end of the thing nearest the wall is stove in and shattered. Inside can be seen bits of a wooden inner shell, a few bones, destroyed jewelry (the stones pried out), torn bits of robes and windings, dust, and a broken {@item staff of the magi} (evident from the runes upon it). A shattered skull will roll out if the contents are moved around. (Why, the demilich has long been destroyed, but his magical traps somehow survived!)"
 							]
 						},
 						{
@@ -2017,7 +2014,7 @@
 							"name": "Iron Chests",
 							"id": "0a6",
 							"entries": [
-								"Each of these massive boxes is embedded into the stone. Neither can possibly be moved, and both show marks of prying, battering, and similar treatment. Each chest is triple-locked, and each lock contains a poison needle trap (see \"Sample Traps\" in chapter 5 of the {@i Dungeon Master's Guide}). If the trap is triggered by a failed check, it deals 1 piercing damage and delivers a dose of purple worm poison (see \"Sample Poisons\" in chapter 8 of the {@i Dungeon Master's Guid} e)."
+								"Each of these massive boxes is embedded into the stone. Neither can possibly be moved, and both show marks of prying, battering, and similar treatment. Each chest is triple-locked, and each lock contains a {@trap poison needle} trap (see \"{@book Sample Traps|dmg|5|Sample Traps|0}\" in chapter 5 of the {@i Dungeon Master's Guide}). If the trap is triggered by a failed check, it deals 1 piercing damage and delivers a dose of {@item purple worm poison} (see \"{@book Sample Poisons|dmg|8|Sample Poisons|0}\" in chapter 8 of the {@i Dungeon Master's Guide})."
 							]
 						},
 						{
@@ -2025,10 +2022,10 @@
 							"name": "Treasure",
 							"id": "0a7",
 							"entries": [
-								"Both chests have treasure, the true nature of which doesn't become apparent until the spoils are moved at least 13 miles away from the tomb."
+								"Both chests have treasure, the true nature of which doesn't become apparent until the spoils are moved at least 13 miles away from the tomb.",
+								"The eastern chest holds 10,000 gems, which will initially appear to be of not less than 50 gp value each. Each is actually a 1 gp piece of quartz. The other chest contains 10,000 copper pieces magicked to appear as platinum when they are first discovered."
 							]
-						},
-						"The eastern chest holds 10,000 gems, which will initially appear to be of not less than 50 gp value each. Each is actually a 1 gp piece of quartz. The other chest contains 10,000 copper pieces magicked to appear as platinum when they are first discovered."
+						}
 					]
 				},
 				{
@@ -2062,8 +2059,8 @@
 					"name": "32. Secret Door",
 					"id": "0aa",
 					"entries": [
-						"The portal to the south can't be detected by any magical means, but a successful DC 15 Wisdom (Perception) check enables a character to notice that the wall at this location has a small opening that is metal-lined-obviously a keyhole!",
-						"Following this discovery, any attempt to force the door open by physical or magical means will be useless. But if the {@i First Key} (from {@area 19|06e}) is inserted in the hole and then removed, the door will sink into the floor, revealing itself to be a stone-sheathed adamantine slab of tremendous thickness. There can be no real doubt that the end of the adventure-one way or another-is near."
+						"The portal to the south can't be detected by any magical means, but a successful DC 15 Wisdom ({@skill Perception}) check enables a character to notice that the wall at this location has a small opening that is metal-lined-obviously a keyhole!",
+						"Following this discovery, any attempt to force the door open by physical or magical means will be useless. But if the {@i First Key} (from {@area 19|06e}) is inserted in the hole and then removed, the door will sink into the floor, revealing itself to be a stone-sheathed adamantine slab of tremendous thickness. There can be no real doubt that the end of the adventure\u2014one way or another\u2014is near."
 					]
 				},
 				{
@@ -2072,17 +2069,17 @@
 					"id": "0ab",
 					"entries": [
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "0ac",
 							"entries": [
 								"Beyond the door is a smallish, rectangular chamber with a ceiling that extends twenty-five feet overhead. There is a small depression a few inches deep and about two feet square in the center of the floor."
 							]
 						},
-						"A successful DC 15 Wisdom (Perception) check enables a character to discover a small hole in the middle of this depression-another keyhole!",
-						"If the {@i First Key} is inserted herein, the key explodes, and the individual doing so takes 17 (5d6) bludgeoning damage.",
+						"A successful DC 15 Wisdom ({@skill Perception}) check enables a character to discover a small hole in the middle of this depression\u2014another keyhole!",
+						"If the {@i First Key} is inserted herein, the key explodes, and the individual doing so takes 17 ({@damage 5d6}) bludgeoning damage.",
 						"The {@i Second Key} (from {@area 28|09b}) will fit within the hole, and nothing untoward will occur. In fact, nothing whatsoever will happen until it is turned three times to the right in succession. If this is done, read:",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "0ad",
 							"entries": [
 								"As you finish turning the key, the floor begins to tremble, and then abruptly it starts to rise toward the ceiling."
@@ -2097,7 +2094,7 @@
 							]
 						},
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "0af",
 							"entries": [
 								"The rising of the floor in the southern part of the room reveals a mithral vault. There is a door in the center of the device, with a ring set into it."
@@ -2105,7 +2102,7 @@
 						},
 						"A hard pull will open the door.",
 						{
-							"type": "inset",
+							"type": "insetReadaloud",
 							"id": "0b0",
 							"entries": [
 								"A low, dust-covered bench is near the back wall of the vault. On and around it are an abundance of items. Resting on one end of it is a human skull."
@@ -2116,50 +2113,50 @@
 							"name": "Creature",
 							"id": "0b1",
 							"entries": [
-								"The skull belongs to Acererak, the demilich who lies in wait for the characters. When they joined the halves of the {@i First Key}, that act called his soul back to the Material Plane, and their use of the {@i Second Key} to enter the vault alerted him that he must be prepared to do battle in order to survive yet more centuries."
+								"The skull belongs to Acererak, the demilich who lies in wait for the characters. When they joined the halves of the {@i First Key}, that act called his soul back to the Material Plane, and their use of the {@i Second Key} to enter the vault alerted him that he must be prepared to do battle in order to survive yet more centuries.",
+								"All that now remains of Acererak the lich are the dust of his bones. This bit is enough! If any of the treasure in the crypt is touched, the dust swirls into the air and forms a man-like shape. If this shape is ignored, it will dissipate in 3 rounds, for it can only advance and threaten, not harm. Any physical attack will give it 1 point of energy, however, and a damaging spell cast on it gives it a number of points of energy equal to the level of the spell slot expended (1 point for a cantrip). Each point of energy is equivalent to a hit point, and if 50 hit points are thus gained, the dust will form into a {@creature ghost} controlled by Acererak, and this thing will attack immediately. (The dust will seem to waver and fall back if it is struck by blow or spell, as if suffering actual damage, so formation of the ghost isn't too improbable.)",
+								"If any character is so foolish as to touch the skull of the demilich, a terrible thing occurs. Acererak rises into the air upon the touch, and it slowly scans the party prior to attacking. The {@creature demilich} has the Trap the Soul action and access to its lair actions, but not lair traits. It can tell which members of the party are the most powerful, and it uses Trap the Soul on them first.",
+								"There are two jewels set into the skull's eye sockets (50,000 gp rubies) and six pointed (marquis cut) diamonds set as teeth in the jaw (each diamond is worth 5,000 gp). If all these gems are filled with souls and the skull is still intact and still being opposed, it will pronounce a curse upon the remaining characters which will teleport them randomly in a 300-mile radius, each subjected to a {@spell bestow curse} spell (save DC 17) that lasts until dispelled. If the curse is removed, the character must make a DC 17 Wisdom saving throw. On a failed save, the character must permanently decrease one ability score by 2, or two ability scores by 1 each. This secondary effect is instantaneous and can't be dispelled."
 							]
 						},
-						{
-							"type": "image",
-							"href": {
-								"type": "internal",
-								"path": "adventure/TftYP/ToHTreasure-Hoard.jpg"
-							},
-							"title": "Treasure Hoard",
-							"width": 1000,
-							"height": 647
-						},
-						"All that now remains of Acererak the lich are the dust of his bones. This bit is enough! If any of the treasure in the crypt is touched, the dust swirls into the air and forms a man-like shape. If this shape is ignored, it will dissipate in 3 rounds, for it can only advance and threaten, not harm. Any physical attack will give it 1 point of energy, however, and a damaging spell cast on it gives it a number of points of energy equal to the level of the spell slot expended (1 point for a cantrip). Each point of energy is equivalent to a hit point, and if 50 hit points are thus gained, the dust will form into a ghost controlled by Acererak, and this thing will attack immediately. (The dust will seem to waver and fall back if it is struck by blow or spell, as if suffering actual damage, so formation of the ghost isn't too improbable.)",
-						"If any character is so foolish as to touch the skull of the demilich, a terrible thing occurs. Acererak rises into the air upon the touch, and it slowly scans the party prior to attacking. The demilich has the Trap the Soul action and access to its lair actions, but not lair traits. It can tell which members of the party are the most powerful, and it uses Trap the Soul on them first.",
-						"There are two jewels set into the skull's eye sockets (50,000 gp rubies) and six pointed (marquis cut) diamonds set as teeth in the jaw (each diamond is worth 5,000 gp). If all these gems are filled with souls and the skull is still intact and still being opposed, it will pronounce a curse upon the remaining characters which will teleport them randomly in a 300-mile radius, each subjected to a {@spell bestow curse} spell (save DC 17) that lasts until dispelled. If the curse is removed, the character must make a DC 17 Wisdom saving throw. On a failed save, the character must permanently decrease one ability score by 2, or two ability scores by 1 each. This secondary effect is instantaneous and can't be dispelled.",
 						{
 							"type": "entries",
 							"name": "Treasure",
 							"id": "0b2",
 							"entries": [
-								"Characters who survive the demilich's wrath can claim any loot they can carry. Inside the vault are these items:"
+								"Characters who survive the demilich's wrath can claim any loot they can carry. Inside the vault are these items:",
+								{
+									"type": "list",
+									"items": [
+										"All items possessed by characters who were teleported nude",
+										"Ninety-seven small gems worth 10 gp each",
+										"Three huge gems\u2014a 10,000 gp peridot, a 50,000 gp emerald, and a 100,000 gp black opal",
+										"Four magic weapons\u2014a defender, a sword of vengeance, a berserker axe, and a spear of backbiting"
+									]
+								},
+								"In addition, the hoard contains several magic items of your choosing (except that none can be of legendary rarity), including:",
+								{
+									"type": "list",
+									"items": [
+										"Twelve {@filter potions|items|type=potion|rarity=!legendary}",
+										"Six {@item spell scroll|dmg|spell scrolls}, each of a {@filter wizard spell of 5th level or lower|spells|class=wizard|level=0;1;2;3;4;5}",
+										"One {@filter magic ring|items|miscellaneous=magic|type=ring|rarity=!legendary}, one {@filter magic rod|items|miscellaneous=magic|type=rod|rarity=!legendary}, one {@filter magic staff|items|miscellaneous=magic|type=staff|rarity=!legendary}, and three {@filter wondrous items|items|miscellaneous=magic|type=wondrous item|rarity=!legendary}"
+									]
+								},
+								"This ends the expedition to the Tomb of Horrors. We hope you and your players have found it exciting, challenging, and rewarding."
 							]
-						},
-						{
-							"type": "list",
-							"items": [
-								"All items possessed by characters who were teleported nude",
-								"Ninety-seven small gems worth 10 gp each",
-								"Three huge gems-a 10,000 gp peridot, a 50,000 gp emerald, and a 100,000 gp black opal",
-								"Four magic weapons-a defender, a sword of vengeance, a berserker axe, and a spear of backbiting"
-							]
-						},
-						"In addition, the hoard contains several magic items of your choosing (except that none can be of legendary rarity), including:",
-						{
-							"type": "list",
-							"items": [
-								"Twelve potions",
-								"Six spell scrolls, each of a wizard spell of 5th level or lower",
-								"One magic ring, one magic rod, one magic staff, and three wondrous items"
-							]
-						},
-						"This ends the expedition to the Tomb of Horrors. We hope you and your players have found it exciting, challenging, and rewarding"
+						}
 					]
+				},
+				{
+					"type": "image",
+					"href": {
+						"type": "internal",
+						"path": "adventure/TftYP/ToHTreasure-Hoard.jpg"
+					},
+					"title": "Treasure Hoard",
+					"width": 1000,
+					"height": 647
 				}
 			]
 		},

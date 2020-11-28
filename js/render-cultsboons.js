@@ -10,7 +10,7 @@ class RenderCultsBoons {
 
 		const renderStack = [];
 		Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
-		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
+		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
 
 		return $$`
 			${Renderer.utils.getBorderTr()}

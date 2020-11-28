@@ -12,7 +12,7 @@ class VariantRulesPage extends ListPage {
 
 			sublistClass: "subvariantrules",
 
-			dataProps: ["variantrule"]
+			dataProps: ["variantrule"],
 		});
 	}
 
@@ -31,7 +31,8 @@ class VariantRulesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(rule);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-10 pl-0">${rule.name}</span>
+			<span class="bold col-7 pl-0">${rule.name}</span>
+			<span class="col-3 text-center">${rule.ruleType ? Parser.ruleTypeToFull(rule.ruleType) : "\u2014"}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${source}</span>
 		</a>`;
 
@@ -42,12 +43,13 @@ class VariantRulesPage extends ListPage {
 			{
 				hash,
 				search: searchStack.join(","),
-				source
+				source,
+				ruleType: rule.ruleType || "",
 			},
 			{
 				uniqueId: rule.uniqueId ? rule.uniqueId : rlI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -65,7 +67,10 @@ class VariantRulesPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border"><span class="bold col-12 px-0">${it.name}</span></a></li>`)
+		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border">
+				<span class="bold col-10 pl-0">${it.name}</span>
+				<span class="col-3 text-center pr-0">${it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"}</span>
+			</a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
 		const listItem = new ListItem(
@@ -73,8 +78,9 @@ class VariantRulesPage extends ListPage {
 			$ele,
 			it.name,
 			{
-				hash
-			}
+				hash,
+				ruleType: it.ruleType || "",
+			},
 		);
 		return listItem;
 	}

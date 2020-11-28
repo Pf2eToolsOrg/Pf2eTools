@@ -1,5 +1,5 @@
-const ut = require("../js/utils.js");
-const er = require("../js/render.js");
+require("../js/utils.js");
+require("../js/render.js");
 
 UtilBookReference = {
 	getSections (refId) {
@@ -10,13 +10,13 @@ UtilBookReference = {
 					"Equipment",
 					"Playing the Game",
 					"Combat",
-					"Adventuring"
+					"Adventuring",
 				];
 			case "bookref-dmscreen":
 				return [
 					"Running the Game",
 					"Combat",
-					"Factions"
+					"Factions",
 				];
 			default:
 				throw new Error(`No sections defined for book id ${refId}`);
@@ -32,20 +32,20 @@ UtilBookReference = {
 
 		const outJson = {
 			reference: {},
-			data: {}
+			data: {},
 		};
 
 		refTypes.forEach(it => outJson.reference[it.id] = {
 			name: it.name,
 			id: it.id,
-			contents: []
+			contents: [],
 		});
 
 		let bookData = [];
 		function reset () {
 			bookData = [];
 			index.book.forEach(b => {
-				const data = {source: b.id, file: JSON.parse(JSON.stringify(books[b.id.toLowerCase()]))};
+				const data = {source: b.id, file: MiscUtil.copy(books[b.id.toLowerCase()])};
 				bookData.push(data);
 			});
 		}
@@ -77,14 +77,13 @@ UtilBookReference = {
 					if (!out[sect]) {
 						out[sect] = {
 							sectName: UtilBookReference.getSections(refType.id)[sect - 1],
-							sections: []
+							sections: [],
 						};
 					}
 
-					const toAdd = JSON.parse(JSON.stringify(ent));
+					const toAdd = MiscUtil.copy(ent);
 					toAdd.type = "section";
 					const discard = !!toAdd.data.allowRefDupe;
-					delete toAdd.data;
 					recursiveSetSource(toAdd, source);
 					out[sect].sections.push(toAdd);
 					return discard;
@@ -106,19 +105,31 @@ UtilBookReference = {
 				const header = outJson.reference[refType.id];
 				header.contents.push({
 					name: out[i].sectName,
-					headers: sects.map(s => s.name)
+					headers: sects.map(s => s.name),
 				});
 				const toAdd = {
 					type: "entries",
-					entries: sects
+					entries: sects,
 				};
 				if (!outJson.data[refType.id]) outJson.data[refType.id] = [];
 				outJson.data[refType.id].push(toAdd);
 			});
 		});
 
+		const walker = MiscUtil.getWalker();
+
+		walker.walk(
+			outJson.data,
+			{
+				object: (obj) => {
+					delete obj.id; // Remove IDs to avoid duplicates
+					return obj;
+				},
+			},
+		);
+
 		return outJson;
-	}
+	},
 };
 
 module.exports.UtilBookReference = UtilBookReference;

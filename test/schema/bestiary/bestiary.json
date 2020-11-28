@@ -1,82 +1,10 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.14.2",
+	"version": "1.16.1",
 	"title": "Bestiary Schema",
 	"$id": "bestiary.json",
 	"type": "object",
 	"definitions": {
-		"damResist": {
-			"oneOf": [
-				{
-					"$ref": "entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"resist": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damResist"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["resist"]
-				}
-			]
-		},
-		"damVuln": {
-			"oneOf": [
-				{
-					"$ref": "entry.json#/definitions/dataDmgType"
-				},
-				{
-					"type": "object",
-					"properties": {
-						"special": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["special"]
-				},
-				{
-					"type": "object",
-					"properties": {
-						"preNote": {
-							"type": "string"
-						},
-						"vulnerable": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/damVuln"
-							}
-						},
-						"note": {
-							"type": "string"
-						}
-					},
-					"additionalProperties": false,
-					"required": ["vulnerable"]
-				}
-			]
-		},
 		"align": {
 			"oneOf": [
 				{
@@ -220,23 +148,7 @@
 							"type": "object",
 							"properties": {
 								"type": {
-									"type": "string",
-									"enum": [
-										"aberration",
-										"beast",
-										"celestial",
-										"construct",
-										"dragon",
-										"elemental",
-										"fey",
-										"fiend",
-										"giant",
-										"humanoid",
-										"monstrosity",
-										"ooze",
-										"plant",
-										"undead"
-									]
+									"$ref": "util.json#/definitions/creatureType"
 								},
 								"swarmSize": {
 									"type": "string",
@@ -287,23 +199,7 @@
 							"additionalProperties": false
 						},
 						{
-							"type": "string",
-							"enum": [
-								"aberration",
-								"beast",
-								"celestial",
-								"construct",
-								"dragon",
-								"elemental",
-								"fey",
-								"fiend",
-								"giant",
-								"humanoid",
-								"monstrosity",
-								"ooze",
-								"plant",
-								"undead"
-							]
+							"$ref": "util.json#/definitions/creatureType"
 						}
 					]
 				},
@@ -546,7 +442,14 @@
 					]
 				},
 				"passive": {
-					"type": "integer"
+					"oneOf": [
+						{
+							"type": "integer"
+						},
+						{
+							"type": "string"
+						}
+					]
 				},
 				"languages": {
 					"oneOf": [
@@ -560,6 +463,9 @@
 							"type": "null"
 						}
 					]
+				},
+				"pbNote": {
+					"type": "string"
 				},
 				"cr": {
 					"oneOf": [
@@ -585,35 +491,16 @@
 					]
 				},
 				"vulnerable": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damVuln"
-					}
+					"$ref": "util.json#/definitions/damageVulnerabilityArray"
 				},
 				"resist": {
-					"type": "array",
-					"items": {
-						"$ref": "#/definitions/damResist"
-					}
-				},
-				"conditionImmune": {
-					"type": "array",
-					"items": {
-						"$ref": "entry.json#/definitions/dataCondImmune"
-					}
+					"$ref": "util.json#/definitions/damageResistArray"
 				},
 				"immune": {
-					"oneOf": [
-						{
-							"type": "array",
-							"items": {
-								"$ref": "entry.json#/definitions/dataDamImmune"
-							}
-						},
-						{
-							"type": "null"
-						}
-					]
+					"$ref": "util.json#/definitions/damageImmunityArray"
+				},
+				"conditionImmune": {
+					"$ref": "util.json#/definitions/conditionImmunityArray"
 				},
 				"spellcasting": {
 					"oneOf": [
@@ -697,6 +584,28 @@
 						}
 					]
 				},
+				"bonus": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						},
+						"required": [
+							"name",
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
 				"reaction": {
 					"type": "array",
 					"items": {
@@ -740,6 +649,33 @@
 					}
 				},
 				"legendary": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"entries": {
+								"type": "array",
+								"items": {
+									"$ref": "entry.json"
+								}
+							}
+						},
+						"required": [
+							"entries"
+						],
+						"additionalProperties": false
+					}
+				},
+				"mythicHeader": {
+					"type": "array",
+					"items": {
+						"$ref": "entry.json"
+					}
+				},
+				"mythic": {
 					"type": "array",
 					"items": {
 						"type": "object",
@@ -816,6 +752,9 @@
 				"additionalSources": {
 					"$ref": "util.json#/definitions/additionalSources"
 				},
+				"hasToken": {
+					"type": "boolean"
+				},
 				"tokenUrl": {
 					"type": "string"
 				},
@@ -841,21 +780,7 @@
 					"description": "This is intended to be used for Homebrew only - site data should include a fluff file per source",
 					"oneOf": [
 						{
-							"type": "object",
-							"properties": {
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "entry.json"
-									}
-								},
-								"images": {
-									"type": "array",
-									"items": {
-										"$ref": "entry.json#/definitions/entryImage"
-									}
-								}
-							}
+							"$ref": "util.json#/definitions/fluffObject"
 						},
 						{
 							"description": "Reference \"monsterFluff\" array items",
@@ -914,7 +839,7 @@
 					}
 				},
 				"soundClip": {
-					"type": "string"
+					"$ref": "entry.json#/definitions/mediaHref"
 				},
 				"dragonCastingColor": {
 					"type": "string",
@@ -958,6 +883,7 @@
 							"Shapechanger",
 							"Siege Monster",
 							"Sneak Attack",
+							"Spell Immunity",
 							"Spider Climb",
 							"Sunlight Sensitivity",
 							"Turn Immunity",
@@ -1003,7 +929,7 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"enum": ["P", "I", "F", "S", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"]
+						"enum": ["P", "I", "F", "S", "CA", "CB", "CC", "CD", "CP", "CR", "CS", "CL", "CW"]
 					}
 				},
 				"damageTags": {
@@ -1038,6 +964,10 @@
 				},
 				"srd": {
 					"$ref": "util.json#/definitions/srd"
+				},
+				"_isCopy": {
+					"description": "An internal flag indicating this creature is a copy of another, and is a temporary/placeholder entry which will be factored out using the \"_copy\" format at a later date.",
+					"type": "boolean"
 				}
 			},
 			"additionalProperties": false

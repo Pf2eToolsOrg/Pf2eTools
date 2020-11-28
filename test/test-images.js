@@ -1,9 +1,10 @@
 const fs = require("fs");
 require("../js/utils");
 
-const expected = [];
+const expected = new Set();
 const expectedDirs = {};
-const existing = [];
+const existing = new Set();
+const expectedFromHashToken = {};
 
 // Loop through each bestiary-related img directory and push the list of files in each.
 if (fs.existsSync("./img")) {
@@ -16,17 +17,21 @@ if (fs.existsSync("./img")) {
 			const result = JSON.parse(fs.readFileSync(`./data/bestiary/${file}`));
 			result.monster.forEach(m => {
 				const source = Parser.sourceJsonToAbv(m.source);
+				const implicitTokenPath = `${source}/${Parser.nameToTokenName(m.name)}.png`;
+
+				if (m.hasToken) expectedFromHashToken[implicitTokenPath] = true;
+
 				if (fs.existsSync(`./img/${source}`)) {
-					expected.push(`${source}/${Parser.nameToTokenName(m.name)}.png`);
+					expected.add(implicitTokenPath);
 
 					// add tokens specified as part of variants
 					if (m.variant) {
-						m.variant.filter(it => it.token).forEach(entry => expected.push(`${Parser.sourceJsonToAbv(entry.token.source)}/${Parser.nameToTokenName(entry.token.name)}.png`));
+						m.variant.filter(it => it.token).forEach(entry => expected.add(`${Parser.sourceJsonToAbv(entry.token.source)}/${Parser.nameToTokenName(entry.token.name)}.png`));
 					}
 
 					// add tokens specified as alt art
 					if (m.altArt) {
-						m.altArt.forEach(alt => expected.push(`${Parser.sourceJsonToAbv(alt.source)}/${Parser.nameToTokenName(alt.name)}.png`))
+						m.altArt.forEach(alt => expected.add(`${Parser.sourceJsonToAbv(alt.source)}/${Parser.nameToTokenName(alt.name)}.png`))
 					}
 				} else expectedDirs[source] = true;
 			});
@@ -34,14 +39,14 @@ if (fs.existsSync("./img")) {
 
 	const IGNORED_PREFIXES = [
 		".",
-		"_"
+		"_",
 	];
 
 	const IGNORED_EXTENSIONS = [
 		".git",
 		".gitignore",
 		".png",
-		".txt"
+		".txt",
 	];
 
 	const IGNORED_DIRS = new Set([
@@ -63,7 +68,7 @@ if (fs.existsSync("./img")) {
 		"languages",
 		"plutonium",
 		"covers",
-		"spells"
+		"spells",
 	]);
 
 	fs.readdirSync("./img")
@@ -71,23 +76,30 @@ if (fs.existsSync("./img")) {
 		.forEach(dir => {
 			if (!IGNORED_DIRS.has(dir)) {
 				fs.readdirSync(`./img/${dir}`).forEach(file => {
-					existing.push(`${dir.replace("(", "").replace(")", "")}/${file}`);
+					existing.add(`${dir.replace("(", "").replace(")", "")}/${file}`);
 				})
 			}
 		});
 
-	results = [];
-	expected.forEach(function (i) {
-		if (existing.indexOf(i) === -1) results.push(`[MISSING] ${i}`);
+	const results = [];
+	expected.forEach((img) => {
+		if (!existing.has(img)) results.push(`[ MISSING] ${img}`);
 	});
-	existing.forEach(function (i) {
-		if (expected.indexOf(i) === -1) results.push(`[  EXTRA] ${i}`);
+	existing.forEach((img) => {
+		delete expectedFromHashToken[img];
+		if (!expected.has(img)) {
+			// fs.unlinkSync(`./img/${img}`);
+			results.push(`[   EXTRA] ${img}`);
+		}
 	});
+
 	Object.keys(expectedDirs).forEach(k => results.push(`Directory ${k} doesn't exist!`));
-	results.sort(function (a, b) {
-		return a.toLowerCase().localeCompare(b.toLowerCase());
-	}).forEach(function (i) {
-		console.warn(i);
-	});
-	if (!expected.length) console.log("Tokens are as expected.");
+	results
+		.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+		.forEach((img) => console.warn(img));
+
+	if (Object.keys(expectedFromHashToken).length) console.warn(`Declared in Bestiary data but not found:`);
+	Object.keys(expectedFromHashToken).forEach(img => console.warn(`[MISMATCH] ${img}`));
+
+	if (!expected.size && !Object.keys(expectedFromHashToken).length) console.log("Tokens are as expected.");
 }

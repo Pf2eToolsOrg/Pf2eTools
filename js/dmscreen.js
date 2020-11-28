@@ -29,6 +29,7 @@ const PANEL_TYP_BOOKS = 14;
 const PANEL_TYP_INITIATIVE_TRACKER_PLAYER = 15;
 const PANEL_TYP_COUNTER = 16;
 const PANEL_TYP_IMAGE = 20;
+const PANEL_TYP_ADVENTURE_DYNAMIC_MAP = 21;
 const PANEL_TYP_GENERIC_EMBED = 90;
 const PANEL_TYP_BLANK = 99;
 
@@ -142,7 +143,7 @@ class Board {
 			width: `calc(100% - ${this._getWidthAdjustment()}px)`,
 			height: `calc(100% - ${this._getHeightAdjustment()}px)`,
 			gridAutoColumns: `${(1 / this.width) * 100}%`,
-			gridAutoRows: `${(1 / this.height) * 100}%`
+			gridAutoRows: `${(1 / this.height) * 100}%`,
 		});
 	}
 
@@ -161,7 +162,7 @@ class Board {
 		const h = this.$creen.outerHeight() + this._getHeightAdjustment();
 		return {
 			pxWidth: w / this.width,
-			pxHeight: h / this.height
+			pxHeight: h / this.height,
 		};
 	}
 
@@ -170,7 +171,7 @@ class Board {
 			gridColumnStart: "1",
 			gridColumnEnd: String(this.width + 1),
 			gridRowStart: "1",
-			gridRowEnd: String(this.height + 1)
+			gridRowEnd: String(this.height + 1),
 		}).appendTo(this.$creen);
 	}
 
@@ -184,25 +185,58 @@ class Board {
 
 		await Promise.all([TIME_TRACKER_MOON_SPRITE_LOADER, this.pLoadIndex()]);
 		if (this.hasSavedStateUrl()) {
-			this.doLoadUrlState();
+			await this.pDoLoadUrlState();
 		} else if (await this.pHasSavedState()) {
 			await this.pDoLoadState();
 		} else {
 			this.doCheckFillSpaces();
 		}
 		this.initGlobalHandlers();
+		await this._pLoadTempData();
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
 	initGlobalHandlers () {
-		window.onhashchange = () => this.doLoadUrlState();
+		window.onhashchange = () => this.pDoLoadUrlState();
+	}
+
+	async _pLoadTempData () {
+		const temp = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
+		if (!temp) return;
+
+		const entities = await Promise.all(temp.list.items.map(it => Renderer.hover.pCacheAndGetHash(temp.page, it.h)));
+		const len = entities.length;
+		if (!len) return;
+
+		let panels = this.getPanels(0, 0, this.width, this.height);
+		const availablePanels = panels.filter(it => it.getEmpty()).length;
+
+		// Prefer to increase the number of panels on the vertical axis
+		if (availablePanels < len) {
+			const diff = len - availablePanels;
+			const heightIncrease = Math.ceil(diff / this.width);
+			this.setDimensions(this.width, this.height + heightIncrease);
+			panels = this.getPanels(0, 0, this.width, this.height);
+		}
+
+		let ixEntity = 0;
+		for (const p of panels) {
+			if (!p.getEmpty()) continue;
+
+			p.doPopulate_Stats(temp.page, entities[ixEntity].source, temp.list.items[ixEntity].h);
+			++ixEntity;
+
+			if (ixEntity >= entities.length) break;
+		}
+
+		await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST);
 	}
 
 	async pLoadIndex () {
 		await SearchUiUtil.pDoGlobalInit();
 
-		// rules
+		// region rules
 		await (async () => {
 			const data = await DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json");
 			this.availRules.ALL = elasticlunr(function () {
@@ -222,7 +256,9 @@ class Board {
 				this.availRules.ALL.addDoc(d);
 			});
 		})();
+		// endregion
 
+		// region adventures/books
 		const adventureOrBookIdToSource = {};
 
 		async function pDoBuildAdventureOrAdventureIndex (dataPath, dataProp, indexStorage, indexIdField) {
@@ -261,7 +297,7 @@ class Board {
 						n: adventureOrBook.name,
 						c: chap.name,
 						p: i,
-						id: bookOrAdventureId++
+						id: bookOrAdventureId++,
 					};
 					if (chap.ordinal) chapDoc.o = Parser.bookOrdinalToAbv(chap.ordinal, true);
 					if (isBrew) chapDoc.w = true;
@@ -280,6 +316,7 @@ class Board {
 
 		// books
 		await pDoBuildAdventureOrAdventureIndex(`data/books.json`, "book", this.availBooks, "b");
+		// endregion
 
 		// search
 		this.availContent = await SearchUiUtil.pGetContentIndices();
@@ -386,11 +423,11 @@ class Board {
 		return window.location.hash.length;
 	}
 
-	doLoadUrlState () {
+	async pDoLoadUrlState () {
 		if (window.location.hash.length) {
 			const toLoad = JSON.parse(decodeURIComponent(window.location.hash.slice(1)));
 			this.doReset();
-			this.doLoadStateFrom(toLoad);
+			await this.pDoLoadStateFrom(toLoad);
 		}
 		window.location.hash = "";
 	}
@@ -407,7 +444,7 @@ class Board {
 			fs: this.isFullscreen,
 			lk: this.isLocked,
 			ps: Object.values(this.panels).map(p => p.getSaveableState()),
-			ex: this.exiledPanels.map(p => p.getSaveableState())
+			ex: this.exiledPanels.map(p => p.getSaveableState()),
 		};
 	}
 
@@ -415,39 +452,41 @@ class Board {
 		this._pDoSaveStateDebounced();
 	}
 
-	doLoadStateFrom (toLoad) {
+	async pDoLoadStateFrom (toLoad) {
 		if (this.$cbConfirmTabClose) this.$cbConfirmTabClose.prop("checked", !!toLoad.ctc);
 		if (this.$btnFullscreen && (toLoad.fs !== !!this.isFullscreen)) this.$btnFullscreen.click();
 		if (this.$btnLockPanels && (toLoad.lk !== !!this.isLocked)) this.$btnLockPanels.click();
 
 		// re-exile
-		toLoad.ex.filter(Boolean).reverse().forEach(saved => {
-			const p = Panel.fromSavedState(this, saved);
+		const toReExile = toLoad.ex.filter(Boolean).reverse()
+		for (const saved of toReExile) {
+			const p = await Panel.fromSavedState(this, saved);
 			if (p) {
 				this.panels[p.id] = p;
 				p.exile();
 			}
-		});
+		}
 		this.setDimensions(toLoad.w, toLoad.h); // FIXME is this necessary?
 
 		// reload
 		// fill content first; empties can fill any remaining space
-		toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY).forEach(saved => {
-			const p = Panel.fromSavedState(this, saved);
+		const toReload = toLoad.ps.filter(Boolean).filter(saved => saved.t !== PANEL_TYP_EMPTY);
+		for (const saved of toReload) {
+			const p = await Panel.fromSavedState(this, saved);
 			if (p) this.panels[p.id] = p;
-		});
+		}
 		this.setDimensions(toLoad.w, toLoad.h);
 	}
 
 	async pDoLoadState () {
 		try {
 			const toLoad = await StorageUtil.pGet(VeCt.STORAGE_DMSCREEN);
-			this.doLoadStateFrom(toLoad);
+			await this.pDoLoadStateFrom(toLoad);
 		} catch (e) {
 			// on error, purge saved data and reset
 			JqueryUtil.doToast({
 				content: "Error when loading DM screen! Purged saved data. (See the log for more information.)",
-				type: "danger"
+				type: "danger",
 			});
 			await StorageUtil.pRemove(VeCt.STORAGE_DMSCREEN);
 			setTimeout(() => { throw e; });
@@ -572,7 +611,7 @@ class SideMenu {
 		$btnLoadFile.on("click", async () => {
 			const json = await DataUtil.pUserUpload();
 			this.board.doReset();
-			this.board.doLoadStateFrom(json);
+			await this.board.pDoLoadStateFrom(json);
 		});
 		const $wrpSaveLoadUrl = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveLink = $(`<button class="btn btn-primary">Save to URL</button>`).appendTo($wrpSaveLoadUrl);
@@ -729,14 +768,14 @@ class Panel {
 		this.$pnlTabs = null;
 	}
 
-	static fromSavedState (board, saved) {
+	static async fromSavedState (board, saved) {
 		const existing = board.getPanels(saved.x, saved.y, saved.w, saved.h);
 		if (saved.t === PANEL_TYP_EMPTY && existing.length) return null; // cull empties
 		else if (existing.length) existing.forEach(p => p.destroy()); // prefer more recent panels
 		const p = new Panel(board, saved.x, saved.y, saved.w, saved.h);
 		p.render();
 
-		function loadState (saved, skipSetTab, ixTab) {
+		async function pLoadState (saved, skipSetTab, ixTab) {
 			function handleTabRenamed (p) {
 				if (saved.r != null) p.tabDatas[ixTab].tabRenamed = true;
 			}
@@ -748,7 +787,7 @@ class Panel {
 					const page = saved.c.p;
 					const source = saved.c.s;
 					const hash = saved.c.u;
-					p.doPopulate_Stats(page, source, hash, skipSetTab, saved.r);
+					await p.doPopulate_Stats(page, source, hash, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -757,7 +796,7 @@ class Panel {
 					const source = saved.c.s;
 					const hash = saved.c.u;
 					const cr = saved.c.cr;
-					p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
+					await p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -765,21 +804,21 @@ class Panel {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
 					const header = saved.c.h;
-					p.doPopulate_Rules(book, chapter, header, skipSetTab, saved.r);
+					await p.doPopulate_Rules(book, chapter, header, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_ADVENTURES: {
 					const adventure = saved.c.a;
 					const chapter = saved.c.c;
-					p.doPopulate_Adventures(adventure, chapter, skipSetTab, saved.r);
+					await p.doPopulate_Adventures(adventure, chapter, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
 				case PANEL_TYP_BOOKS: {
 					const book = saved.c.b;
 					const chapter = saved.c.c;
-					p.doPopulate_Books(book, chapter, skipSetTab, saved.r);
+					await p.doPopulate_Books(book, chapter, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -835,6 +874,10 @@ class Panel {
 					p.doPopulate_Image(saved.c.u, saved.r);
 					handleTabRenamed(p);
 					return p;
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP:
+					p.doPopulate_AdventureDynamicMap(saved.s, saved.r);
+					handleTabRenamed(p);
+					return p;
 				case PANEL_TYP_BLANK:
 					p.doPopulate_Blank(saved.r);
 					handleTabRenamed(p);
@@ -847,11 +890,15 @@ class Panel {
 		if (saved.a) {
 			p.isTabs = true;
 			p.doRenderTabs();
-			saved.a.forEach((tab, ix) => loadState(tab, true, ix));
+			for (let ix = 0; ix < saved.a.length; ++ix) {
+				const tab = saved.a[ix];
+				await pLoadState(tab, true, ix);
+			}
 			p.setActiveTab(saved.b);
 		} else {
-			loadState(saved);
+			await pLoadState(saved);
 		}
+
 		return p;
 	}
 
@@ -869,7 +916,7 @@ class Panel {
 			zIndex: zIndex,
 			pointerEvents: "none",
 			transform: "rotate(-4deg)",
-			background: "none"
+			background: "none",
 		});
 	}
 
@@ -883,7 +930,7 @@ class Panel {
 			zIndex: "",
 			pointerEvents: "",
 			transform: "",
-			background: ""
+			background: "",
 		});
 	}
 
@@ -893,7 +940,7 @@ class Panel {
 			board.setVisiblyHoveringPanel(true);
 			$content.css({
 				top: EventUtil.getClientY(e) - offsetY,
-				left: EventUtil.getClientX(e) - offsetX
+				left: EventUtil.getClientX(e) - offsetX,
 			});
 		});
 	}
@@ -911,7 +958,7 @@ class Panel {
 			PANEL_TYP_EMPTY,
 			null,
 			Panel._get$eleLoading(message),
-			TITLE_LOADING
+			TITLE_LOADING,
 		);
 	}
 
@@ -919,12 +966,12 @@ class Panel {
 		const meta = {p: page, s: source, u: hash};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_STATS,
-			meta
+			meta,
 		);
-		Renderer.hover.pCacheAndGet(
+		return Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash
+			hash,
 		).then(it => {
 			const fn = Renderer.hover._pageToRenderFn(page);
 
@@ -941,7 +988,7 @@ class Panel {
 				$contentInner,
 				title || it.name,
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -963,7 +1010,7 @@ class Panel {
 
 					const nxtMeta = {
 						...meta,
-						cr: targetCr
+						cr: targetCr,
 					};
 					if (originalCr) delete nxtMeta.cr;
 
@@ -973,7 +1020,7 @@ class Panel {
 						nxtMeta,
 						$contentInner,
 						toRender._displayName || toRender.name,
-						true
+						true,
 					);
 				};
 
@@ -992,7 +1039,7 @@ class Panel {
 				meta,
 				$contentInner,
 				mon.name,
-				true
+				true,
 			);
 		});
 	}
@@ -1001,12 +1048,12 @@ class Panel {
 		const meta = {p: page, s: source, u: hash, cr: targetCr};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_CREATURE_SCALED_CR,
-			meta
+			meta,
 		);
-		Renderer.hover.pCacheAndGet(
+		return Renderer.hover.pCacheAndGet(
 			page,
 			source,
-			hash
+			hash,
 		).then(it => {
 			ScaleCreature.scale(it, targetCr).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
@@ -1022,7 +1069,7 @@ class Panel {
 					$contentInner,
 					title || initialRender._displayName || initialRender.name,
 					true,
-					!!title
+					!!title,
 				);
 			});
 		});
@@ -1032,9 +1079,9 @@ class Panel {
 		const meta = {b: book, c: chapter, h: header};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_RULES,
-			meta
+			meta,
 		);
-		RuleLoader.pFill(book).then(() => {
+		return RuleLoader.pFill(book).then(() => {
 			const rule = RuleLoader.getFromCache(book, chapter, header);
 			const it = Renderer.rule.getCompactRenderedString(rule);
 			this.set$Tab(
@@ -1044,7 +1091,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"><table class="stats">${it}</table></div>`),
 				title || rule.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1053,9 +1100,9 @@ class Panel {
 		const meta = {a: adventure, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_ADVENTURES,
-			meta
+			meta,
 		);
-		adventureLoader.pFill(adventure).then(() => {
+		return adventureLoader.pFill(adventure).then(() => {
 			const data = adventureLoader.getFromCache(adventure, chapter);
 			const view = new AdventureOrBookView("a", this, adventureLoader, ix, meta);
 			this.set$Tab(
@@ -1065,7 +1112,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1074,9 +1121,9 @@ class Panel {
 		const meta = {b: book, c: chapter};
 		const ix = this.set$TabLoading(
 			PANEL_TYP_BOOKS,
-			meta
+			meta,
 		);
-		bookLoader.pFill(book).then(() => {
+		return bookLoader.pFill(book).then(() => {
 			const data = bookLoader.getFromCache(book, chapter);
 			const view = new AdventureOrBookView("b", this, bookLoader, ix, meta);
 			this.set$Tab(
@@ -1086,7 +1133,7 @@ class Panel {
 				$(`<div class="panel-content-wrapper-inner"></div>`).append(view.$getEle()),
 				title || data.name || "",
 				true,
-				!!title
+				!!title,
 			);
 		});
 	}
@@ -1103,7 +1150,7 @@ class Panel {
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Renderer.dice.get$Roller().addClass("rollbox-panel")),
 			title || "Dice Roller",
 			true,
-			!!title
+			!!title,
 		);
 	}
 
@@ -1113,7 +1160,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTracker.make$Tracker(this.board, state)),
 			title || "Initiative Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1123,7 +1170,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(InitiativeTrackerPlayer.make$tracker(this.board, state)),
 			title || "Initiative Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1133,7 +1180,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(Counter.$getCounter(this.board, state)),
 			title || "Counter",
-			true
+			true,
 		);
 	}
 
@@ -1143,7 +1190,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(UnitConverter.make$Converter(this.board, state)),
 			title || "Unit Converter",
-			true
+			true,
 		);
 	}
 
@@ -1153,7 +1200,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(MoneyConverter.make$Converter(this.board, state)),
 			title || "Money Converter",
-			true
+			true,
 		);
 	}
 
@@ -1163,7 +1210,7 @@ class Panel {
 			state,
 			$(`<div class="panel-content-wrapper-inner"/>`).append(TimeTracker.$getTracker(this.board, state)),
 			title || "Time Tracker",
-			true
+			true,
 		);
 	}
 
@@ -1173,7 +1220,7 @@ class Panel {
 			null,
 			$(`<div class="panel-content-wrapper-inner overflow-y-hidden"/>`).append(NoteBox.make$Notebox(this.board, content)),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1182,9 +1229,9 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_TUBE,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen /></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?autoplay=1&enablejsapi=1&modestbranding=1&iv_load_policy=3" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1195,18 +1242,19 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no" allowfullscreen/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
 	doPopulate_TwitchChat (url, title = "Twitch Chat") {
 		const meta = {u: url};
+		const channelId = url.split("/").map(it => it.trim()).filter(Boolean).slice(-2)[0];
 		this.set$ContentTab(
 			PANEL_TYP_TWITCH_CHAT,
 			meta,
-			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}" frameborder="0"  scrolling="no"/></div>`),
+			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}?parent=${location.hostname}" frameborder="0" scrolling="no" id="${channelId}"/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
@@ -1217,11 +1265,11 @@ class Panel {
 			meta,
 			$(`<div class="panel-content-wrapper-inner"><iframe src="${url}"/></div>`),
 			title,
-			true
+			true,
 		);
 	}
 
-	doPopulate_Image (url, ixOpt, title = "Image") {
+	doPopulate_Image (url, title = "Image") {
 		const meta = {u: url};
 		const $wrpPanel = $(`<div class="panel-content-wrapper-inner"/>`);
 		const $wrpImage = $(`<div class="panel-content-wrapper-img"/>`).appendTo($wrpPanel);
@@ -1234,15 +1282,24 @@ class Panel {
 			$wrpPanel,
 			title,
 			true,
-			ixOpt // FIXME never used?
 		);
 		$img.panzoom({
 			$reset: $iptReset,
 			$zoomRange: $iptRange,
 			minScale: 0.1,
 			maxScale: 8,
-			duration: 100
+			duration: 100,
 		});
+	}
+
+	doPopulate_AdventureDynamicMap (state, title = "Map Viewer") {
+		this.set$ContentTab(
+			PANEL_TYP_ADVENTURE_DYNAMIC_MAP,
+			state,
+			$(`<div class="panel-content-wrapper-inner"/>`).append(DmMapper.$getMapper(this.board, state)),
+			title || "Time Tracker",
+			true,
+		);
 	}
 
 	doPopulate_Blank (title = "") {
@@ -1252,7 +1309,7 @@ class Panel {
 			meta,
 			$(`<div class="dm-blank__panel"/>`),
 			title,
-			true
+			true,
 		);
 	}
 	// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1426,7 +1483,7 @@ class Panel {
 			tabIndex: this.tabIndex,
 			tabDatas: this.tabDatas,
 			tabCanRename: this.tabCanRename,
-			tabRenamed: this.tabRenamed
+			tabRenamed: this.tabRenamed,
 		}
 	}
 
@@ -1530,7 +1587,7 @@ class Panel {
 				gridColumnEnd: String(this.x + 1 + this.width),
 
 				gridRowStart: String(this.y + 1),
-				gridRowEnd: String(this.y + 1 + this.height)
+				gridRowEnd: String(this.y + 1 + this.height),
 			});
 		};
 
@@ -1615,7 +1672,7 @@ class Panel {
 			top: offset.top,
 			left: offset.left,
 			width: this.$pnl.outerWidth(),
-			height: this.$pnl.outerHeight()
+			height: this.$pnl.outerHeight(),
 		};
 	}
 
@@ -1625,7 +1682,7 @@ class Panel {
 			top: offset.top,
 			left: offset.left,
 			width: this.$btnAddInner.outerWidth(),
-			height: this.$btnAddInner.outerHeight()
+			height: this.$btnAddInner.outerHeight(),
 		};
 	}
 
@@ -1703,13 +1760,13 @@ class Panel {
 			type,
 			contentMeta,
 			Panel._get$eleLoading(),
-			TITLE_LOADING
+			TITLE_LOADING,
 		);
 	}
 
 	_get$BtnSelTab (ix, title, tabCanRename) {
 		title = title || "[Untitled]";
-		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title" title="${title}">${title}</span></span>`)
+		const $btnSelTab = $(`<span class="btn btn-default content-tab flex ${tabCanRename ? "content-tab-can-rename" : ""}"><span class="content-tab-title overflow-ellipsis" title="${title}">${title}</span></span>`)
 			.on("mousedown", (evt) => {
 				if (evt.which === 1) {
 					this.setActiveTab(ix);
@@ -1717,14 +1774,15 @@ class Panel {
 					this.doCloseTab(ix);
 				}
 			})
-			.on("contextmenu", (evt) => {
+			.on("contextmenu", async (evt) => {
+				evt.stopPropagation();
+				evt.preventDefault();
 				if ($btnSelTab.hasClass("content-tab-can-rename")) {
-					const nuTitle = prompt("Rename tab to:");
+					const existingTitle = this.getTabTitle(ix) || "";
+					const nuTitle = await InputUiUtil.pGetUserString({default: existingTitle, title: "Rename Tab"});
 					if (nuTitle && nuTitle.trim()) {
 						this.setTabTitle(ix, nuTitle);
 					}
-					evt.stopPropagation();
-					evt.preventDefault();
 				}
 			});
 		const $btnCloseTab = $(`<span class="glyphicon glyphicon-remove content-tab-remove"/>`)
@@ -1735,6 +1793,10 @@ class Panel {
 				}
 			}).appendTo($btnSelTab);
 		return $btnSelTab;
+	}
+
+	getTabTitle (ix) {
+		return (this.tabDatas[ix] || {}).title;
 	}
 
 	setTabTitle (ix, nuTitle) {
@@ -1769,7 +1831,7 @@ class Panel {
 				$content: $content,
 				title: title,
 				tabCanRename: !!tabCanRename,
-				tabRenamed: !!tabRenamed
+				tabRenamed: !!tabRenamed,
 			};
 			if ($btnOld) this.tabDatas[ix].$tabButton = $btnOld;
 
@@ -1852,7 +1914,7 @@ class Panel {
 			y: this.y,
 			w: this.width,
 			h: this.height,
-			t: this.type
+			t: this.type,
 		};
 
 		function getSaveableContent (type, contentMeta, $content, tabRenamed, tabTitle) {
@@ -1864,7 +1926,7 @@ class Panel {
 				case PANEL_TYP_ROLLBOX:
 					return {
 						t: type,
-						r: toSaveTitle
+						r: toSaveTitle,
 					};
 				case PANEL_TYP_STATS:
 					return {
@@ -1873,8 +1935,8 @@ class Panel {
 						c: {
 							p: contentMeta.p,
 							s: contentMeta.s,
-							u: contentMeta.u
-						}
+							u: contentMeta.u,
+						},
 					};
 				case PANEL_TYP_CREATURE_SCALED_CR:
 					return {
@@ -1884,8 +1946,8 @@ class Panel {
 							p: contentMeta.p,
 							s: contentMeta.s,
 							u: contentMeta.u,
-							cr: contentMeta.cr
-						}
+							cr: contentMeta.cr,
+						},
 					};
 				case PANEL_TYP_RULES:
 					return {
@@ -1894,8 +1956,8 @@ class Panel {
 						c: {
 							b: contentMeta.b,
 							c: contentMeta.c,
-							h: contentMeta.h
-						}
+							h: contentMeta.h,
+						},
 					};
 				case PANEL_TYP_ADVENTURES:
 					return {
@@ -1903,8 +1965,8 @@ class Panel {
 						r: toSaveTitle,
 						c: {
 							a: contentMeta.a,
-							c: contentMeta.c
-						}
+							c: contentMeta.c,
+						},
 					};
 				case PANEL_TYP_BOOKS:
 					return {
@@ -1912,57 +1974,64 @@ class Panel {
 						r: toSaveTitle,
 						c: {
 							b: contentMeta.b,
-							c: contentMeta.c
-						}
+							c: contentMeta.c,
+						},
 					};
 				case PANEL_TYP_TEXTBOX:
 					return {
 						t: type,
 						r: toSaveTitle,
 						s: {
-							x: $content ? $content.find(`textarea`).val() : ""
-						}
+							x: $content ? $content.find(`textarea`).val() : "",
+						},
 					};
 				case PANEL_TYP_INITIATIVE_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-init`).data("getState")()
+						s: $content.find(`.dm-init`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: {}
+						s: {},
 					};
 				}
 				case PANEL_TYP_COUNTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-cnt__root`).data("getState")()
+						s: $content.find(`.dm-cnt__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-unitconv`).data("getState")()
+						s: $content.find(`.dm-unitconv`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_MONEY_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm_money`).data("getState")()
+						s: $content.find(`.dm_money`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TIME_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-time__root`).data("getState")()
+						s: $content.find(`.dm-time__root`).data("getState")(),
+					};
+				}
+				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP: {
+					return {
+						t: type,
+						r: toSaveTitle,
+						s: $content.find(`.dm-map__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -1974,8 +2043,8 @@ class Panel {
 						t: type,
 						r: toSaveTitle,
 						c: {
-							u: contentMeta.u
-						}
+							u: contentMeta.u,
+						},
 					};
 				case PANEL_TYP_BLANK:
 					return {r: toSaveTitle};
@@ -2113,7 +2182,7 @@ class JoystickMenu {
 
 			this.panel.$pnl.css({
 				zIndex: 52,
-				boxShadow: "0 0 12px 0 #000000a0"
+				boxShadow: "0 0 12px 0 #000000a0",
 			});
 
 			$(document).off(`mousemove${EVT_NAMESPACE} touchmove${EVT_NAMESPACE}`).off(`mouseup${EVT_NAMESPACE} touchend${EVT_NAMESPACE}`);
@@ -2145,26 +2214,26 @@ class JoystickMenu {
 						if (numPanelsCovered > this.panel.y) numPanelsCovered = this.panel.y;
 						this.panel.$pnl.css({
 							gridRowStart: String(this.panel.y + (1 - numPanelsCovered)),
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height)
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height),
 						});
 						break;
 					case RIGHT:
 						if (numPanelsCovered > (this.panel.board.width - this.panel.width) - this.panel.x) numPanelsCovered = (this.panel.board.width - this.panel.width) - this.panel.x;
 						this.panel.$pnl.css({
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered)
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width + numPanelsCovered),
 						});
 						break;
 					case DOWN:
 						if (numPanelsCovered > (this.panel.board.height - this.panel.height) - this.panel.y) numPanelsCovered = (this.panel.board.height - this.panel.height) - this.panel.y;
 						this.panel.$pnl.css({
-							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered)
+							gridRowEnd: String(this.panel.y + 1 + this.panel.height + numPanelsCovered),
 						});
 						break;
 					case LEFT:
 						if (numPanelsCovered > this.panel.x) numPanelsCovered = this.panel.x;
 						this.panel.$pnl.css({
 							gridColumnStart: String(this.panel.x + (1 - numPanelsCovered)),
-							gridColumnEnd: String(this.panel.x + 1 + this.panel.width)
+							gridColumnEnd: String(this.panel.x + 1 + this.panel.width),
 						});
 						break;
 				}
@@ -2182,7 +2251,7 @@ class JoystickMenu {
 					gridColumnStart: initGCS,
 					gridColumnEnd: initGCE,
 					gridRowStart: initGRS,
-					gridRowEnd: initGRE
+					gridRowEnd: initGRE,
 				});
 
 				const canShrink = axis === AX_X ? this.panel.width - 1 : this.panel.height - 1;
@@ -2380,7 +2449,7 @@ class AddMenu {
 					this.pnl.isTabs = false;
 					this.pnl.doRenderTabs();
 				}
-			}
+			},
 		});
 		this._doClose = doClose;
 		$modalInner.append(this._$menuInner);
@@ -2424,7 +2493,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddYT.click();
 				})
 				.appendTo($wrpYT);
-			const $btnAddYT = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpYT);
+			const $btnAddYT = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpYT);
 			$btnAddYT.on("click", () => {
 				let url = $iptUrlYT.val().trim();
 				const m = /https?:\/\/(www\.)?youtube\.com\/watch\?v=(.*?)(&.*$|$)/.exec(url);
@@ -2436,7 +2505,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.youtube.com/watch?v=XXXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2447,8 +2516,8 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $btnAddTwitch.click();
 				})
 				.appendTo($wrpTwitch);
-			const $btnAddTwitch = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpTwitch);
-			const $btnAddTwitchChat = $(`<button class="btn btn-primary">Embed Chat</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitch = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpTwitch);
+			const $btnAddTwitchChat = $(`<button class="btn btn-primary btn-sm">Embed Chat</button>`).appendTo($wrpTwitch);
 			const getTwitchM = (url) => {
 				return /https?:\/\/(www\.)?twitch\.tv\/(.*?)(\?.*$|$)/.exec(url);
 			};
@@ -2463,7 +2532,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2472,14 +2541,14 @@ class AddMenuVideoTab extends AddMenuTab {
 				let url = $iptUrlTwitch.val().trim();
 				const m = getTwitchM(url);
 				if (url && m) {
-					url = `http://www.twitch.tv/embed/${m[2]}/chat`;
+					url = `https://www.twitch.tv/embed/${m[2]}/chat`;
 					this.menu.pnl.doPopulate_TwitchChat(url);
 					this.menu.doClose();
 					$iptUrlTwitch.val("");
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL of the form: "https://www.twitch.tv/XXXXXX"`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2490,7 +2559,7 @@ class AddMenuVideoTab extends AddMenuTab {
 					if (e.which === 13) $iptUrlGeneric.click();
 				})
 				.appendTo($wrpGeneric);
-			const $btnAddGeneric = $(`<button class="btn btn-primary">Embed</button>`).appendTo($wrpGeneric);
+			const $btnAddGeneric = $(`<button class="btn btn-primary btn-sm">Embed</button>`).appendTo($wrpGeneric);
 			$btnAddGeneric.on("click", () => {
 				let url = $iptUrlGeneric.val().trim();
 				if (url) {
@@ -2499,7 +2568,7 @@ class AddMenuVideoTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL!`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
@@ -2519,6 +2588,7 @@ class AddMenuImageTab extends AddMenuTab {
 		if (!this.$tab) {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs" id="${this.tabId}"/>`);
 
+			// region Imgur
 			const $wrpImgur = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			$(`<span>Imgur (Anonymous Upload) <i class="text-muted">(accepts <a href="https://help.imgur.com/hc/articles/115000083326" target="_blank" rel="noopener noreferrer">imgur-friendly formats</a>)</i></span>`).appendTo($wrpImgur);
 			const $iptFile = $(`<input type="file" class="hidden">`).on("change", (evt) => {
@@ -2531,11 +2601,11 @@ class AddMenuImageTab extends AddMenuTab {
 						type: "POST",
 						data: {
 							image: base64,
-							type: "base64"
+							type: "base64",
 						},
 						headers: {
 							Accept: "application/json",
-							Authorization: `Client-ID ${IMGUR_CLIENT_ID}`
+							Authorization: `Client-ID ${IMGUR_CLIENT_ID}`,
 						},
 						success: (data) => {
 							this.menu.pnl.doPopulate_Image(data.data.link, ix);
@@ -2544,17 +2614,17 @@ class AddMenuImageTab extends AddMenuTab {
 							try {
 								JqueryUtil.doToast({
 									content: `Failed to upload: ${JSON.parse(error.responseText).data.error}`,
-									type: "danger"
+									type: "danger",
 								});
 							} catch (e) {
 								JqueryUtil.doToast({
 									content: "Failed to upload: Unknown error",
-									type: "danger"
+									type: "danger",
 								});
 								setTimeout(() => { throw e });
 							}
 							this.menu.pnl.doPopulate_Empty(ix);
-						}
+						},
 					});
 				};
 				reader.onerror = () => {
@@ -2565,19 +2635,20 @@ class AddMenuImageTab extends AddMenuTab {
 				const ix = this.menu.pnl.doPopulate_Loading("Uploading"); // will be null if not in tabbed mode
 				this.menu.doClose();
 			}).appendTo($tab);
-			const $btnAdd = $(`<button class="btn btn-primary">Upload</button>`).appendTo($wrpImgur);
+			const $btnAdd = $(`<button class="btn btn-primary btn-sm">Upload</button>`).appendTo($wrpImgur);
 			$btnAdd.on("click", () => {
 				$iptFile.click();
 			});
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+			// endregion
 
+			// region URL
 			const $wrpUtl = $(`<div class="ui-modal__row"/>`).appendTo($tab);
 			const $iptUrl = $(`<input class="form-control" placeholder="Paste image URL">`)
 				.on("keydown", (e) => {
 					if (e.which === 13) $btnAddUrl.click();
 				})
 				.appendTo($wrpUtl);
-			const $btnAddUrl = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUtl);
+			const $btnAddUrl = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUtl);
 			$btnAddUrl.on("click", () => {
 				let url = $iptUrl.val().trim();
 				if (url) {
@@ -2586,10 +2657,23 @@ class AddMenuImageTab extends AddMenuTab {
 				} else {
 					JqueryUtil.doToast({
 						content: `Please enter a URL!`,
-						type: "danger"
+						type: "danger",
 					});
 				}
 			});
+			// endregion
+
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
+
+			// region Adventure dynamic viewer
+			const $btnSelectAdventure = $(`<button class="btn btn-primary btn-sm">Add</button>`)
+				.click(() => DmMapper.pHandleMenuButtonClick(this.menu));
+
+			$$`<div class="ui-modal__row">
+				<div>Adventure Map Dynamic Viewer</div>
+				${$btnSelectAdventure}
+			</div>`.appendTo($tab)
+			// endregion
 
 			this.$tab = $tab;
 		}
@@ -2607,7 +2691,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			const $tab = $(`<div class="ui-search__wrp-output underline-tabs overflow-y-auto pr-1" id="${this.tabId}"/>`);
 
 			const $wrpRoller = $(`<div class="ui-modal__row"><span>Dice Roller <i class="text-muted">(pins the existing dice roller to a panel)</i></span></div>`).appendTo($tab);
-			const $btnRoller = $(`<button class="btn btn-primary">Pin</button>`).appendTo($wrpRoller);
+			const $btnRoller = $(`<button class="btn btn-primary btn-sm">Pin</button>`).appendTo($wrpRoller);
 			$btnRoller.on("click", () => {
 				Renderer.dice.bindDmScreenPanel(this.menu.pnl);
 				this.menu.doClose();
@@ -2615,13 +2699,13 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
-			const $btnTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTracker);
+			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
 				this.menu.doClose();
 			});
 
-			const $btnPlayertracker = $(`<button class="btn btn-primary">Add</button>`)
+			const $btnPlayertracker = $(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.click(() => {
 					this.menu.pnl.doPopulate_InitiativeTrackerPlayer();
 					this.menu.doClose();
@@ -2635,7 +2719,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
-			const $btnText = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpText);
+			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
 			$btnText.on("click", () => {
 				this.menu.pnl.doPopulate_TextBox();
 				this.menu.doClose();
@@ -2643,21 +2727,21 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpUnitConverter = $(`<div class="ui-modal__row"><span>Imperial-Metric Unit Converter</span></div>`).appendTo($tab);
-			const $btnUnitConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpUnitConverter);
+			const $btnUnitConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpUnitConverter);
 			$btnUnitConverter.on("click", () => {
 				this.menu.pnl.doPopulate_UnitConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpMoneyConverter = $(`<div class="ui-modal__row"><span>Coin Converter</span></div>`).appendTo($tab);
-			const $btnMoneyConverter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpMoneyConverter);
+			const $btnMoneyConverter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpMoneyConverter);
 			$btnMoneyConverter.on("click", () => {
 				this.menu.pnl.doPopulate_MoneyConverter();
 				this.menu.doClose();
 			});
 
 			const $wrpCounter = $(`<div class="ui-modal__row"><span>Counter</span></div>`).appendTo($tab);
-			const $btnCounter = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpCounter);
+			const $btnCounter = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpCounter);
 			$btnCounter.on("click", () => {
 				this.menu.pnl.doPopulate_Counter();
 				this.menu.doClose();
@@ -2666,7 +2750,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpTimeTracker = $(`<div class="ui-modal__row"><span>In-Game Clock/Calendar</span></div>`).appendTo($tab);
-			const $btnTimeTracker = $(`<button class="btn btn-primary">Add</button>`).appendTo($wrpTimeTracker);
+			const $btnTimeTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTimeTracker);
 			$btnTimeTracker.on("click", () => {
 				this.menu.pnl.doPopulate_TimeTracker();
 				this.menu.doClose();
@@ -2675,7 +2759,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpBlank = $(`<div class="ui-modal__row"><span class="help" title="For those who don't like plus signs.">Blank Space</span></div>`).appendTo($tab);
-			$(`<button class="btn btn-primary">Add</button>`)
+			$(`<button class="btn btn-primary btn-sm">Add</button>`)
 				.on("click", () => {
 					this.menu.pnl.doPopulate_Blank();
 					this.menu.doClose();
@@ -2719,27 +2803,27 @@ class AddMenuSearchTab extends AddMenuTab {
 			case "content": return {
 				fields: {
 					n: {boost: 5, expand: true},
-					s: {expand: true}
+					s: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			case "rule": return {
 				fields: {
 					h: {boost: 5, expand: true},
-					s: {expand: true}
+					s: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			case "adventure":
 			case "book": return {
 				fields: {
 					c: {boost: 5, expand: true},
-					n: {expand: true}
+					n: {expand: true},
 				},
 				bool: "AND",
-				expand: true
+				expand: true,
 			};
 			default: throw new Error(`Unhandled search tab subtype: "${this.subType}"`);
 		}
@@ -2796,7 +2880,7 @@ class AddMenuSearchTab extends AddMenuTab {
 	render () {
 		const flags = {
 			doClickFirst: false,
-			isWait: false
+			isWait: false,
 		};
 
 		this.showMsgIpt = () => {
@@ -2831,7 +2915,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				const handleClick = (r) => {
 					switch (this.subType) {
 						case "content": {
-							const page = UrlUtil.categoryToPage(r.doc.c);
+							const page = UrlUtil.categoryToHoverPage(r.doc.c);
 							const source = r.doc.s;
 							const hash = r.doc.u;
 
@@ -2903,7 +2987,7 @@ class AddMenuSearchTab extends AddMenuTab {
 				flags,
 				fnSearch: this.doSearch,
 				fnShowWait: showMsgDots,
-				$ptrRows: this._$ptrRows
+				$ptrRows: this._$ptrRows,
 			});
 
 			this.$tab = $tab;
@@ -2949,6 +3033,7 @@ class AdventureOrBookLoader {
 	constructor (type) {
 		this._type = type;
 		this._cache = {};
+		this._pLoadings = {};
 	}
 
 	_getJsonPath (bookOrAdventure) {
@@ -2973,12 +3058,15 @@ class AdventureOrBookLoader {
 	}
 
 	async pFill (bookOrAdventure) {
-		if (this._cache[bookOrAdventure]) return this._cache[bookOrAdventure];
-
-		this._cache[bookOrAdventure] = {};
-		const fromBrew = this._getBrewData(bookOrAdventure);
-		const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
-		data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+		if (!this._pLoadings[bookOrAdventure]) {
+			this._pLoadings[bookOrAdventure] = (async () => {
+				this._cache[bookOrAdventure] = {};
+				const fromBrew = this._getBrewData(bookOrAdventure);
+				const data = fromBrew || await DataUtil.loadJSON(this._getJsonPath(bookOrAdventure));
+				data.data.forEach((chap, i) => this._cache[bookOrAdventure][i] = chap);
+			})();
+		}
+		await this._pLoadings[bookOrAdventure];
 	}
 
 	getFromCache (adventure, chapter) {
@@ -2994,7 +3082,7 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the cursor over some text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the caret in the text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
 			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
@@ -3052,17 +3140,18 @@ class NoteBox {
 							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
 								await Renderer.dice.pRoll2(str.replace(`[[`, "").replace(`]]`, ""), {
 									isUser: false,
-									name: "DM Screen"
+									name: "DM Screen",
 								});
 							}
 						} else if (bracesAtPos === 1 && braces === 0) {
 							const str = braceStack.join("");
 							const tag = str.split(" ")[0].replace(/^@/, "");
 							const text = str.split(" ").slice(1).join(" ");
-							if (Renderer.HOVER_TAG_TO_PAGE[tag]) {
-								const r = Renderer.get().render(`{${str}`);
+							if (Renderer.hover.TAG_TO_PAGE[tag]) {
+								const r = Renderer.get().render(`{${str}}`);
 								evt.type = "mouseover";
 								evt.shiftKey = true;
+								evt.ctrlKey = false;
 								$(r).trigger(evt);
 							} else if (tag === "link") {
 								const [txt, link] = Renderer.splitTagByPipe(text);
@@ -3084,7 +3173,7 @@ class UnitConverter {
 			new UnitConverterUnit("Feet", "0.305", "Metres", "3.28"),
 			new UnitConverterUnit("Miles", "1.61", "Kilometres", "0.620"),
 			new UnitConverterUnit("Pounds", "0.454", "Kilograms", "2.20"),
-			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264")
+			new UnitConverterUnit("Gallons", "3.79", "Litres", "0.264"),
 		];
 
 		let ixConv = state.c || 0;
@@ -3157,7 +3246,7 @@ class UnitConverter {
 					/* eslint-disable */
 					const total = eval(val);
 					/* eslint-enable */
-					$iptRight.val(total * mL);
+					$iptRight.val(Number((total * mL).toFixed(5)));
 				} catch (e) {
 					$iptLeft.addClass(`ipt-invalid`);
 					$iptRight.val("")
@@ -3174,7 +3263,7 @@ class UnitConverter {
 			return {
 				c: ixConv,
 				d: dirConv,
-				i: $iptLeft.val()
+				i: $iptLeft.val(),
 			};
 		});
 
@@ -3206,8 +3295,8 @@ class AdventureOrBookView {
 	}
 
 	$getEle () {
-		this._$titlePrev = $(`<div class="dm-book__controls-title text-right"/>`);
-		this._$titleNext = $(`<div class="dm-book__controls-title"/>`);
+		this._$titlePrev = $(`<div class="dm-book__controls-title overflow-ellipsis text-right"/>`);
+		this._$titleNext = $(`<div class="dm-book__controls-title overflow-ellipsis"/>`);
 
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
 			.click(() => this._handleButtonClick(-1));

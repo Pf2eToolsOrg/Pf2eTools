@@ -11,33 +11,30 @@ Shared UI components
 		height: 110px;
 	}
 
-	&ipt-decorated {
-		&--left {
-			padding-left: 22px !important;
+	&ipt-color {
+		width: $w-ipt-number-2-digit;
+		padding: 0;
+
+		&::-webkit-color-swatch-wrapper {
+			padding: 3px;
 		}
 
-		&--right {
-			padding-right: 22px !important;
+		&::-webkit-color-swatch {
+			border: 1px solid $rgb-border-grey;
 		}
 	}
+}
+/* endregion */
 
-	&ipt-decoration {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		opacity: 0.5;
-
-		> .glyphicon {
-			top: 0;
-		}
-
-		&--left {
-			left: 5px;
-		}
-
-		&--right {
-			right: 5px;
-		}
+/* region List */
+.ui-list__ {
+	// TODO refactor all "list" class to use this:
+	//  - add "relative" class to each as required
+	//  - add "overflow-x-hidden" and "overflow-y-auto" classes
+	//  - convert from ul to div
+	&wrp {
+		transform: translateZ(0);
+		font-size: 11.2px;
 	}
 }
 /* endregion */
@@ -66,6 +63,10 @@ Shared UI components
 
 /* region Modals */
 .ui-modal__ {
+	&body-active {
+		overflow-y: hidden !important;
+	}
+
 	&row {
 		margin-bottom: 5px;
 		display: flex;
@@ -118,9 +119,27 @@ Shared UI components
 		background: $rgb-border-grey;
 	}
 
+	&header {
+		&--border {
+			border-bottom: 1px solid $rgb-border-grey--trans;
+		}
+
+		&--fullscreen {
+			@include shadow-2();
+		}
+	}
+
+	&footer {
+		border-top: 1px solid $rgb-border-grey--trans;
+
+		&--fullscreen {
+			@include shadow-2();
+		}
+	}
+
 	&overlay {
 		position: fixed;
-		z-index: 1000;
+		z-index: $z-modal-wrapper;
 		top: 0;
 		left: 0;
 		width: 100vw;
@@ -129,6 +148,10 @@ Shared UI components
 		justify-content: center;
 		align-items: center;
 		background-color: $rgb-modal-overlay-grey;
+	}
+
+	&overlay-blind {
+		background-color: white;
 	}
 
 	&inner {
@@ -142,6 +165,7 @@ Shared UI components
 		float: none;
 		min-width: 600px;
 		max-height: 400px;
+		min-height: 400px;
 
 		@media (max-width: 767px) {
 			min-width: 0;
@@ -159,11 +183,33 @@ Shared UI components
 			max-width: 1170px;
 		}
 
-		&--large {
-			width: 100%;
-			margin: 60px auto;
+		&--no-min-height {
+			min-height: 0;
+			height: initial;
+		}
+
+		&--uncap-height {
 			max-height: calc(100% - 120px);
 			height: initial;
+		}
+
+		&--uncap-width {
+			max-width: calc(100% - 180px);
+			width: initial;
+		}
+
+		&--max-width-640p {
+			max-width: 640px;
+		}
+
+		&--mode-fullscreen {
+			max-height: 0;
+			height: 100vh;
+			flex-shrink: 0;
+			min-height: 100vh;
+			border-radius: 0;
+			box-shadow: none;
+			border: 0;
 		}
 	}
 
@@ -189,7 +235,7 @@ Shared UI components
 	&wrp-controls {
 		width: 100%;
 		display: flex;
-		z-index: 10002;
+		z-index: $z-search;
 
 		&--in-tabs {
 			margin-top: -1px;
@@ -203,7 +249,7 @@ Shared UI components
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
-		font-size: 0.8em;
+		font-size: 11.2px;
 	}
 
 	&row {
@@ -294,15 +340,34 @@ Shared UI components
 
 /* region Tabs */
 .ui-tab__ {
+	&btn-tab-head {
+		display: inline-block;
+		padding: 2px 4px 0;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		cursor: pointer;
+		user-select: none;
+		border-bottom: 0;
+
+		&--active {
+			background-color: #e6e6e6;
+			border-color: #adadad;
+		}
+	}
+
 	&wrp-tab-body {
 		width: 100%;
 		height: 100%;
 		overflow-y: auto;
 		overflow-x: hidden;
-	}
 
-	&wrp-tab-body--border {
-		padding: 3px 0;
+		&--border {
+			padding: 3px 0;
+		}
+
+		&--background {
+			background: $rgb-bg;
+		}
 	}
 
 	&wrp-tab-heads--border {
@@ -321,13 +386,13 @@ Shared UI components
 		}
 
 		&[data-state='1'] {
-			background: $rgb-off-black;
-			border-color: lighten($rgb-off-black, 30%);
+			background: $rgb-cb-grey;
+			border-color: lighten($rgb-cb-grey, 15%);
 		}
 
 		&[data-state='2'] {
-			background: $rgb-off-black;
-			border-color: lighten($rgb-off-black, 30%);
+			background: $rgb-cb-grey;
+			border-color: lighten($rgb-cb-grey, 15%);
 			display: flex;
 			line-height: 14px;
 			-moz-osx-font-smoothing: grayscale;
@@ -346,8 +411,8 @@ Shared UI components
 		}
 
 		&[data-state='3'] {
-			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-off-black 10px, $rgb-off-black 20px);
-			border-color: lighten($rgb-off-black, 30%);
+			background: repeating-linear-gradient(135deg, white, white 10px, $rgb-cb-grey 10px, $rgb-cb-grey 20px);
+			border-color: lighten($rgb-cb-grey, 15%);
 		}
 	}
 }
@@ -414,6 +479,12 @@ Shared UI components
 		display: flex;
 		flex-shrink: 0;
 		padding: 5px 3px;
+		width: 14px;
+		font-size: 14px;
+	}
+
+	&dummy-patch {
+		width: 14px;
 	}
 
 	&patch-col {
@@ -461,7 +532,36 @@ Shared UI components
 
 /* region Context menu */
 .ui-ctx {
-	z-index: $z-context-menu;
+	&__wrp {
+		@include shadow-1--dark();
+
+		z-index: $z-context-menu;
+		font-size: 14px;
+		background: $rgb-bg;
+		border: 1px solid $rgb-border-grey--trans;
+		border-top-color: $rgb-border-grey;
+	}
+
+	&__divider {
+		height: 1px;
+		width: 100%;
+		background: $rgb-border-grey;
+	}
+
+	&__row {
+		cursor: pointer;
+		min-width: 160px;
+
+		&:hover {
+			background: $rgb-bg--alt;
+		}
+
+		&.disabled,
+		&.disabled:hover {
+			cursor: default;
+			background: $rgb-bg;
+		}
+	}
 }
 /* endregion */
 
@@ -538,6 +638,173 @@ Shared UI components
 		/* Specific adjustments for certain icons */
 		&.fa-dice {
 			left: -2px;
+		}
+	}
+}
+/* endregion */
+
+/* region "Copied" tooltip */
+.clp__ {
+	&wrp-temp {
+		position: fixed;
+		top: -10000px;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+	}
+
+	&disp-copied {
+		@include shadow-2();
+
+		position: fixed;
+		white-space: nowrap;
+		width: auto;
+		transform: translateX(-50%);
+		pointer-events: none;
+		user-select: none;
+		height: 24px;
+		line-height: 24px;
+		font-size: 12px;
+		z-index: $z-temp-effect;
+		display: block;
+	}
+}
+/* endregion */
+
+/* region Decorated inputs */
+.ui-ideco__ {
+	&ipt {
+		&--left {
+			padding-left: 22px !important;
+		}
+
+		&--right {
+			padding-right: 22px !important;
+		}
+	}
+
+	&wrp {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		opacity: 0.5;
+		justify-content: center;
+
+		> .glyphicon {
+			top: 0;
+		}
+
+		&--left {
+			left: 5px;
+		}
+
+		&--right {
+			right: 5px;
+		}
+	}
+
+	&btn-ticker {
+		transition: opacity $time-2-frames;
+		opacity: 0;
+
+		padding: 0;
+		width: 14px;
+		height: 10px;
+		border: 0;
+		font-size: 14px;
+		line-height: 10px;
+		border-radius: 0;
+
+		background: #0003;
+		color: $rgb-off-black;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:active:focus {
+			box-shadow: none;
+			outline: none;
+		}
+
+		&:hover {
+			background: #0005;
+			color: $rgb-off-black;
+		}
+
+		&:active,
+		&:focus,
+		&:active:focus {
+			background: #0007;
+			color: $rgb-off-black;
+		}
+	}
+
+	&ipt:hover + .ui-ideco__wrp .ui-ideco__btn-ticker,
+	&wrp:hover .ui-ideco__btn-ticker {
+		transition: opacity $time-2-frames;
+		opacity: 1;
+	}
+}
+/* endregion */
+
+/* region Select2 */
+.ui-sel2__ {
+	&ipt-search {
+		top: 0;
+		right: 0;
+		left: 0;
+		opacity: 0;
+		background: transparent;
+	}
+
+	&wrp {
+		&:focus,
+		&:focus-within {
+			> .ui-sel2__ipt-search {
+				opacity: 1;
+			}
+
+			> .ui-sel2__ipt-display {
+				text-align: right;
+				color: $rgb-font--muted;
+				font-weight: bold;
+			}
+
+			> .ui-sel2__wrp-options {
+				display: flex;
+			}
+		}
+	}
+
+	&wrp-options {
+		top: 22px;
+		right: 0;
+		left: 0;
+		display: none;
+		flex-direction: column;
+		background: $rgb-bg;
+		border: 1px solid $rgb-border-grey;
+		border-top: 0;
+		max-height: 160px;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-within {
+			display: flex;
+		}
+	}
+
+	&disp-option {
+		&.active,
+		&:focus,
+		&:hover {
+			background: $rgb-bg--alt;
+		}
+
+		&:focus.active,
+		&:hover.active {
+			background: darken($rgb-bg--alt, $pct-darken-active);
 		}
 	}
 }

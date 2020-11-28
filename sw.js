@@ -8,7 +8,7 @@
 
 importScripts("./js/sw-files.js");
 
-const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.102.1"/* 5ETOOLS_VERSION__CLOSE */;
+const cacheName = /* 5ETOOLS_VERSION__OPEN */"1.116.7"/* 5ETOOLS_VERSION__CLOSE */;
 const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
@@ -69,15 +69,15 @@ self.addEventListener("fetch", e => {
 	const url = e.request.url;
 	const path = getPath(url);
 
+	return; // TODO re-enable caching
+
 	if (!cacheableFilenames.has(path)) return;
 	const responseMeta = {};
 
 	e.respondWith((async () => {
 		const toReturn = await getOrCache(url, responseMeta);
 		if (responseMeta.fromCache) {
-			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to
-			//    update the cache? Currently is of no relevance, as the user can simply refresh to have the service
-			//    worker realise it is outdated and flush everything.
+			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to update the cache? Currently is of no relevance, as the user can simply refresh to have the service worker realise it is outdated and flush everything.
 		}
 		return toReturn;
 	})());
