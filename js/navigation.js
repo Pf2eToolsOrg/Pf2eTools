@@ -32,7 +32,7 @@ class NavBar {
 		};
 		document.getElementById("navigation").prepend(btnShowHide);
 
-		addLi(navBar, "5etools.html", "Home", {isRoot: true});
+		addLi(navBar, "PF2eTools.html", "Home", {isRoot: true});
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
@@ -73,7 +73,7 @@ class NavBar {
 		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
 		addLi(ulPlayers, "names.html", "Names");
 
-		const ulDms = addDropdown(navBar, "Dungeon Master");
+		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "dmscreen.html", "DM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
@@ -160,6 +160,7 @@ class NavBar {
 		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
 		addDivider(ulUtils);
 		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
+		addLi(ulUtils, "licenses.html", "Licenses");
 
 		addLi(navBar, "donate.html", "Donate", {isRoot: true});
 
@@ -452,7 +453,7 @@ class NavBar {
 		let currentPage = window.location.pathname;
 		currentPage = currentPage.substr(currentPage.lastIndexOf("/") + 1);
 
-		if (!currentPage) currentPage = "5etools.html";
+		if (!currentPage) currentPage = "PF2eTools.html";
 		return currentPage.trim();
 	}
 
