@@ -366,6 +366,648 @@
 					"{@trait Trip}, {@trait Unarmed}"
 				]
 			]
+		},
+		{
+			"name": "Monk Unarmed Attacks",
+			"source": "CRB",
+			"page": 159,
+			"colLabels": [
+				"Attack",
+				"Damage",
+				"Group",
+				"Traits"
+			],
+			"colStyles": [
+				"col-3",
+				"col-2",
+				"col-2",
+				"col-5"
+			],
+			"intro": [
+				"Some monk stances allow you to make special unarmed attacks while in those stances. These attacks are summarized here."
+			],
+			"rows": [
+				[
+					"Crane Wing",
+					"{@damage 1d6} B",
+					"Brawling",
+					"{@trait Agile}, {@trait finesse}, {@trait nonlethal}, {@trait unarmed}"
+				],
+				[
+					"Dragon tail",
+					"{@damage 1d10} B",
+					"Brawling",
+					"{@trait Backswing}, {@trait nonlethal}, {@trait unarmed}"
+				],
+				[
+					"Falling stone",
+					"{@damage 1d8} B",
+					"Brawling",
+					"{@trait Forceful}, {@trait nonlethal}, {@trait unarmed}"
+				],
+				[
+					"Iron Sweep",
+					"{@damage 1d8} B",
+					"Brawling",
+					"{@trait Nonlethal}, {@trait parry}, {@trait sweep}, {@trait unarmed}"
+				],
+				[
+					"Lashing branch",
+					"{@damage 1d8} S",
+					"Brawling",
+					"{@trait Agile}, {@trait finesse}, {@trait nonlethal}, {@trait unarmed}"
+				],
+				[
+					"Tiger claw",
+					"{@damage 1d8} S",
+					"Brawling",
+					"{@trait Agile}, {@trait Finesse}, {@trait nonlethal}, {@trait unarmed}"
+				],
+				[
+					"Wind crash*",
+					"{@damage 1d6} S",
+					"Brawling",
+					"{@trait Agile}, {@trait nonlethal}, {@trait propulsive}, {@trait unarmed}"
+				],
+				[
+					"Wolf jaw",
+					"{@damage 1d8} P",
+					"Brawling",
+					"{@trait Agile}, {@trait backstabber}, {@trait finesse}, {@trait nonlethal}, {@trait unarmed}"
+				]
+			],
+			"footnotes": [
+				"* {@spell Wild winds stance} is a ki spell, so you can find out more about wind crash on page 402."
+			]
+		},
+		{
+			"name": "Skills, Key Abilities, and Actions",
+			"source": "CRB",
+			"page": 235,
+			"colLabels": [
+				"Skill",
+				"Key Ability",
+				"Untrained Actions",
+				"Trained Actions"
+			],
+			"colStyles": [
+				"col-3",
+				"col-3",
+				"col-3",
+				"col-3"
+			],
+			"rows": [
+				[
+					"Acrobatics",
+					"Dexterity",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Balance} {@as 1}",
+							"{@action Tumble Through} {@as 1}"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Maneuver in Flight} {@as 1}",
+							"{@action Squeeze}\u1D31"
+						]
+					}
+				],
+				[
+					"Arcana",
+					"Intelligence",
+					"{@action Recall Knowledge}\u1D33 {@as 1}",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Borrow an Arcane Spell}\u1D31",
+							"{@action Decipher Writing}\u1D31\u1D33",
+							"{@action Identify Magic}\u1D31\u1D33",
+							"{@action Learn a Spell}\u1D31\u1D33"
+						]
+					}
+				],
+				[
+					"Athletics",
+					"Strength",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Climb} {@as 1}",
+							"{@action Force Open} {@as 1}",
+							"{@action Grapple} {@as 1}",
+							"{@action High Jump} {@as 2}",
+							"{@action Long Jump} {@as 2}",
+							"{@action Shove} {@as 1}",
+							"{@action Swim} {@as 1}",
+							"{@action Trip} {@as 1}"
+						]
+					},
+					"{@action Disarm} {@as 1}"
+				],
+				[
+					"Crafting",
+					"Intelligence",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Recall Knowledge}\u1D33 {@as 1}",
+							"{@action Repair}\u1D31"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Craft}\u1D30",
+							"{@action Earn Income}\u1D30\u1D33",
+							"{@action Identify Alchemy}\u1D31"
+						]
+					}
+				],
+				[
+					"Deception",
+					"Charisma",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Create a Diversion} {@as 1}",
+							"{@action Impersonate}\u1D31",
+							"{@action Lie}"
+						]
+					},
+					"{@action Feint} {@as 1}"
+				],
+				[
+					"Diplomacy",
+					"Charisma",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Gather Information}\u1D31",
+							"{@action Make an Impression}\u1D31",
+							"{@action Request} {@as 1}"
+						]
+					},
+					""
+				],
+				[
+					"Intimidation",
+					"Charisma",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Coerce}\u1D31",
+							"{@action Demoralize} {@as 1}"
+						]
+					},
+					""
+				],
+				[
+					"Lore",
+					"Intelligence",
+					"{@action Recall Knowledge}\u1D33 {@as 1}",
+					"{@action Earn Income}\u1D30\u1D33"
+				],
+				[
+					"Medicine",
+					"Wisdom",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Administer First Aid} {@as 2}",
+							"{@action Recall Knowledge}\u1D33 {@as 1}"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Treat Disease}\u1D30",
+							"{@action Treat Poison} {@as 1}",
+							"{@action Treat Wounds}\u1D31"
+						]
+					}
+				],
+				[
+					"Nature",
+					"Wisdom",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Command an Animal} {@as 1}",
+							"{@action Recall Knowledge}\u1D33 {@as 1}"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Identify Magic}\u1D31\u1D33",
+							"{@action Learn a Spell}\u1D31\u1D33"
+						]
+					}
+				],
+				[
+					"Occultism",
+					"Intelligence",
+					"{@action Recall Knowledge}\u1D33 {@as 1}",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Decipher Writing}\u1D31\u1D33",
+							"{@action Identify Magic}\u1D31\u1D33",
+							"{@action Learn a Spell}\u1D31\u1D33"
+						]
+					}
+				],
+				[
+					"Performance",
+					"Charisma",
+					"{@action Perform} {@as 1}",
+					"{@action Earn Income}\u1D30\u1D33"
+				],
+				[
+					"Religion",
+					"Wisdom",
+					"{@action Recall Knowledge}\u1D33 {@as 1}",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Decipher Writing}\u1D31\u1D33",
+							"{@action Identify Magic}\u1D31\u1D33",
+							"{@action Learn a Spell}\u1D31\u1D33"
+						]
+					}
+				],
+				[
+					"Society",
+					"Intelligence",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Recall Knowledge}\u1D33 {@as 1}",
+							"{@action Subsist}\u1D30\u1D33"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Create Forgery}\u1D30",
+							"{@action Decipher Writing}\u1D31\u1D33"
+						]
+					}
+				],
+				[
+					"Stealth",
+					"Dexterity",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Conceal an Object} {@as 1}",
+							"{@action Hide} {@as 1}",
+							"{@action Sneak} {@as 1}"
+						]
+					},
+					""
+				],
+				[
+					"Survival",
+					"Wisdom",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Sense Direction}\u1D31",
+							"{@action Subsist}\u1D30\u1D33"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Cover Tracks}\u1D31",
+							"{@action Track}\u1D31"
+						]
+					}
+				],
+				[
+					"Thievery",
+					"Dexterity",
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Palm an Object} {@as 1}",
+							"{@action Steal} {@as 1}"
+						]
+					},
+					{
+						"type": "list",
+						"style": "list-hang-notitle",
+						"items": [
+							"{@action Disable a Device} {@as 3}",
+							"{@action Pick a Lock} {@as 3}"
+						]
+					}
+				]
+			],
+			"footnotes": [
+				"\u1D30 This skill action can be used only during downtime.",
+				"\u1D31 This skill action is used during exploration.",
+				"\u1D33 This is a general skill action, with a description appearing on pages 234–240 instead of under the entries for the various skills it’s used for. Decipher Writing appears on page 234, Earn Income on page 236, Identify Magic and Learn a Spell on page 238, and Subsist on page 240."
+			]
+		},
+		{
+			"name": "Income Earned",
+			"source": "CRB",
+			"page": 236,
+			"colLabels": [
+				"Task Level",
+				"Failure",
+				"Trained",
+				"Expert",
+				"Master",
+				"Legendary"
+			],
+			"colStyles": [
+				"col-2 text-center",
+				"col-2 text-center",
+				"col-2 text-center",
+				"col-2 text-center",
+				"col-2 text-center",
+				"col-2 text-center"
+			],
+			"rows": [
+				[
+					"0",
+					"1 cp",
+					"5 cp",
+					"5 cp",
+					"5 cp",
+					"5 cp"
+				],
+				[
+					"1",
+					"2 cp",
+					"2 sp",
+					"2 sp",
+					"2 sp",
+					"2 sp"
+				],
+				[
+					"2",
+					"4 cp",
+					"3 sp",
+					"3 sp",
+					"3 sp",
+					"3 sp"
+				],
+				[
+					"3",
+					"8 cp",
+					"5 sp",
+					"5 sp",
+					"5 sp",
+					"5 sp"
+				],
+				[
+					"4",
+					"1 sp",
+					"7 sp",
+					"8 sp",
+					"8 sp",
+					"8 sp"
+				],
+				[
+					"5",
+					"2 sp",
+					"9 sp",
+					"1 gp",
+					"1 gp",
+					"1 gp"
+				],
+				[
+					"6",
+					"3 sp",
+					"1 gp, 5 sp",
+					"2 gp",
+					"2 gp",
+					"2 gp"
+				],
+				[
+					"7",
+					"4 sp",
+					"2 gp",
+					"2 gp, 5 sp",
+					"2 gp, 5 sp",
+					"2 gp, 5 sp"
+				],
+				[
+					"8",
+					"5 sp",
+					"2 gp, 5 sp",
+					"3 gp",
+					"3 gp",
+					"3 gp"
+				],
+				[
+					"9",
+					"6 sp",
+					"3 gp",
+					"4 gp",
+					"4 gp",
+					"4 gp"
+				],
+				[
+					"10",
+					"7 sp",
+					"4 gp",
+					"5 gp",
+					"6 gp",
+					"6 gp"
+				],
+				[
+					"11",
+					"8 sp",
+					"5 gp",
+					"6 gp",
+					"8 gp",
+					"8 gp"
+				],
+				[
+					"12",
+					"9 sp",
+					"6 gp",
+					"8 gp",
+					"10 gp",
+					"10 gp"
+				],
+				[
+					"13",
+					"1 gp",
+					"7 gp",
+					"10 gp",
+					"15 gp",
+					"15 gp"
+				],
+				[
+					"14",
+					"1 gp, 5 sp",
+					"8 gp",
+					"15 gp",
+					"20 gp",
+					"20 gp"
+				],
+				[
+					"15",
+					"2 gp",
+					"10 gp",
+					"20 gp",
+					"28 gp",
+					"28 gp"
+				],
+				[
+					"16",
+					"2 gp, 5 sp",
+					"13 gp",
+					"25 gp",
+					"36 gp",
+					"40 gp"
+				],
+				[
+					"17",
+					"3 gp",
+					"15 gp",
+					"30 gp",
+					"45 gp",
+					"55 gp"
+				],
+				[
+					"18",
+					"4 gp",
+					"20 gp",
+					"45 gp",
+					"70 gp",
+					"90 gp"
+				],
+				[
+					"19",
+					"6 gp",
+					"30 gp",
+					"60 gp",
+					"100 gp",
+					"130 gp"
+				],
+				[
+					"19",
+					"6 gp",
+					"30 gp",
+					"60 gp",
+					"100 gp",
+					"130 gp"
+				],
+				[
+					"20",
+					"8 gp",
+					"40 gp",
+					"75 gp",
+					"150 gp",
+					"200 gp"
+				],
+				[
+					"20 (critical success)",
+					"—",
+					"50 gp",
+					"90 gp",
+					"175 gp",
+					"300 gp"
+				]
+			]
+		},
+		{
+			"name": "Learning a Spell",
+			"source": "CRB",
+			"page": 238,
+			"colLabels": [
+				"Spell Level",
+				"Price",
+				"Typical DC"
+			],
+			"colStyles": [
+				"col-4 text-center",
+				"col-4 text-center",
+				"col-4 text-center"
+			],
+			"rows": [
+				[
+					"1st or cantrip",
+					"2 gp",
+					"15"
+				],
+				[
+					"2nd",
+					"6 gp",
+					"18"
+				],
+				[
+					"3rd",
+					"16 gp",
+					"20"
+				],
+				[
+					"4th",
+					"36 gp",
+					"23"
+				],
+				[
+					"5th",
+					"70 gp",
+					"26"
+				],
+				[
+					"6th",
+					"140 gp",
+					"28"
+				],
+				[
+					"7th",
+					"300 gp",
+					"31"
+				],
+				[
+					"8th",
+					"650 gp",
+					"34"
+				],
+				[
+					"9th",
+					"1,500 gp",
+					"36"
+				],
+				[
+					"10th",
+					"7,000 gp",
+					"41"
+				]
+			]
 		}
 	]
 }
