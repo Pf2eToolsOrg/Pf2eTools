@@ -274,7 +274,7 @@ async function pPageInit (loadedSources) {
 	});
 
 	// filtering function
-	$(spellsPage._pageFilter.filterBox).on(
+	spellsPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
 		spellsPage.handleFilterChange.bind(spellsPage)
 	);

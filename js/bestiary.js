@@ -299,7 +299,7 @@ async function pPageInit (loadedSources) {
 	});
 
 	// filtering function
-	$(bestiaryPage._pageFilter.filterBox).on(
+	bestiaryPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
 		bestiaryPage.handleFilterChange.bind(bestiaryPage)
 	);
