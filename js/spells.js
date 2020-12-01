@@ -38,7 +38,7 @@ class SpellsPage {
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
 			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
 			<span class="col-2-4 text-center">${time}</span>
-			<span class="col-2-7 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+			<span class="col-2-7 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
 		</a>`;
 
@@ -87,7 +87,7 @@ class SpellsPage {
 				<span class="bold col-3-2 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="col-1-8 text-center">${time}</span>
-				<span class="capitalise col-1-6 school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
