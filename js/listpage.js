@@ -50,28 +50,26 @@ class ListPage {
 
 		this._list = ListUtil.initList({
 			$wrpList: $(`ul.list.${this._listClass}`),
-			...this._listOptions
+			...this._listOptions,
 		});
 		ListUtil.setOptions({primaryLists: [this._list]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 
-		this._filterBox = this._pageFilter
-			? await this._pageFilter.pInitFilterBox({
-				$iptSearch: $(`#lst__search`),
-				$wrpFormTop: $(`#filter-search-input-group`).title("Hotkey: f"),
-				$btnReset: $(`#reset`)
-			})
-			: await pInitFilterBox({filters: this._filters});
+		this._filterBox = await this._pageFilter.pInitFilterBox({
+			$iptSearch: $(`#lst__search`),
+			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
+			$btnReset: $(`#reset`),
+		});
 
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		this._list.on("updated", () => $outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`));
 
-		$(this._filterBox).on(FilterBox.EVNT_VALCHANGE, this.handleFilterChange.bind(this));
+		this._filterBox.on(FilterBox.EVNT_VALCHANGE, this.handleFilterChange.bind(this));
 
 		this._listSub = ListUtil.initSublist({
 			listClass: this._sublistClass,
 			getSublistRow: this.getSublistItem.bind(this),
-			...this._sublistOptions
+			...this._sublistOptions,
 		});
 		ListUtil.initGenericPinnable();
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._listSub);
@@ -82,7 +80,7 @@ class ListPage {
 			filterBox: this._filterBox,
 			sourceFilter: this._pageFilter ? this._pageFilter.sourceFilter : this._filterSource,
 			list: this._list,
-			pHandleBrew: async homebrew => this._addData(homebrew)
+			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -102,7 +100,7 @@ class ListPage {
 				noneVisibleMsg: this._bookViewOptions.noneVisibleMsg,
 				pageTitle: this._bookViewOptions.pageTitle || "Book View",
 				popTblGetNumShown: this._bookViewOptions.popTblGetNumShown,
-				hasPrintColumns: true
+				hasPrintColumns: true,
 			});
 		}
 
@@ -130,6 +128,7 @@ class ListPage {
 		if (!this._dataProps.some(prop => data[prop] && data[prop].length)) return;
 
 		this._dataProps.forEach(prop => {
+			if (!data[prop]) return;
 			data[prop].forEach(it => it.__prop = prop);
 			this._dataList.push(...data[prop]);
 		});
@@ -137,7 +136,7 @@ class ListPage {
 		const len = this._dataList.length;
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
-			const isExcluded = ExcludeUtil.isExcluded(it.name, it.__prop, it.source);
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.autoEncodeHash(it), it.__prop, it.source);
 			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
 
@@ -147,13 +146,16 @@ class ListPage {
 
 		ListUtil.setOptions({
 			itemList: this._dataList,
-			primaryLists: [this._list]
+			primaryLists: [this._list],
 		});
 		ListUtil.bindPinButton();
-		Renderer.hover.bindPopoutButton(this._dataList);
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
 		UrlUtil.bindLinkExportButton(this._filterBox);
-		ListUtil.bindDownloadButton();
-		ListUtil.bindUploadButton();
+		ListUtil.bindOtherButtons({
+			download: true,
+			upload: true,
+		});
 
 		if (this._tableViewOptions) {
 			ListUtil.bindShowTableButton(
@@ -162,7 +164,7 @@ class ListPage {
 				this._dataList,
 				this._tableViewOptions.colTransforms,
 				this._tableViewOptions.filter,
-				this._tableViewOptions.sorter
+				this._tableViewOptions.sorter,
 			);
 		}
 	}

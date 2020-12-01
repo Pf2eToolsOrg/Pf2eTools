@@ -2,34 +2,22 @@
 
 class ObjectsPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"]});
-
+		const pageFilter = new PageFilterObjects();
 		super({
 			dataSource: "data/objects.json",
 
-			filters: [
-				sourceFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "objects",
 
 			sublistClass: "subobjects",
 
-			dataProps: ["object"]
+			dataProps: ["object"],
 		});
-
-		this._sourceFilter = sourceFilter;
 	}
 
 	getListItem (obj, obI, isExcluded) {
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(obj.source);
-		}
-		obj._fMisc = obj.srd ? ["SRD"] : [];
+		this._pageFilter.mutateAndAddToFilters(obj, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -51,12 +39,12 @@ class ObjectsPage extends ListPage {
 			{
 				hash,
 				source,
-				size
+				size,
 			},
 			{
 				uniqueId: obj.uniqueId ? obj.uniqueId : obI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -67,14 +55,7 @@ class ObjectsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter((item) => {
-			const it = this._dataList[item.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -96,8 +77,8 @@ class ObjectsPage extends ListPage {
 			obj.name,
 			{
 				hash,
-				size
-			}
+				size,
+			},
 		);
 		return listItem;
 	}
@@ -113,14 +94,12 @@ class ObjectsPage extends ListPage {
 		$(`#pagecontent`).empty().append(RenderObjects.$getRenderedObject(obj));
 
 		const $floatToken = $(`#float-token`).empty();
-		if (obj.tokenUrl || !obj.uniqueId) {
-			const imgLink = obj.tokenUrl || UrlUtil.link(`img/objects/${obj.name.replace(/"/g, "")}.png`);
-			$floatToken.append(`
-			<a href="${imgLink}" target="_blank" rel="noopener noreferrer">
-				<img src="${imgLink}" id="token_image" class="token" onerror="TokenUtil.imgError(this)" alt="${obj.name}">
-			</a>`
-			);
-		} else TokenUtil.imgError();
+
+		const hasToken = obj.tokenUrl || obj.hasToken;
+		if (hasToken) {
+			const imgLink = obj.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/objects/${obj.name.replace(/"/g, "")}.png`);
+			$floatToken.append(`<a href="${imgLink}" target="_blank" rel="noopener noreferrer"><img src="${imgLink}" id="token_image" class="token" alt="${obj.name}"></a>`);
+		}
 
 		ListUtil.updateSelected();
 	}

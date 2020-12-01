@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.0",
+	"version": "1.4.2",
 	"definitions": {
 		"itemLookup": {
 			"type": "array",
@@ -128,6 +128,30 @@
 					"sword": {
 						"type": "boolean"
 					},
+					"mace": {
+						"type": "boolean"
+					},
+					"spear": {
+						"type": "boolean"
+					},
+					"hammer": {
+						"type": "boolean"
+					},
+					"bow": {
+						"type": "boolean"
+					},
+					"crossbow": {
+						"type": "boolean"
+					},
+					"club": {
+						"type": "boolean"
+					},
+					"dagger": {
+						"type": "boolean"
+					},
+					"net": {
+						"type": "boolean"
+					},
 					"firearm": {
 						"type": "boolean"
 					},
@@ -166,6 +190,45 @@
 					},
 					"otherSources": {
 						"$ref": "util.json#/definitions/otherSources"
+					},
+					"ammoType": {
+						"type": "string"
+					},
+					"packContents": {
+						"type": "array",
+						"items": {
+							"oneOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "object",
+									"properties": {
+										"special": {
+											"type": "string"
+										},
+										"quantity": {
+											"type": "integer"
+										}
+									},
+									"additionalProperties": false,
+									"required": ["special"]
+								},
+								{
+									"type": "object",
+									"properties": {
+										"item": {
+											"type": "string"
+										},
+										"quantity": {
+											"type": "integer"
+										}
+									},
+									"additionalProperties": false,
+									"required": ["item", "quantity"]
+								}
+							]
+						}
 					}
 				},
 				"required": [

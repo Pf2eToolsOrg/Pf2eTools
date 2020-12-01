@@ -2,42 +2,22 @@
 
 class LanguagesPage extends ListPage {
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const typeFilter = new Filter({header: "Type", items: ["standard", "exotic", "secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
-		const scriptFilter = new Filter({header: "Script", displayFn: StrUtil.uppercaseFirst});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts", "SRD"]});
-
+		const pageFilter = new PageFilterLanguages();
 		super({
 			dataSource: "data/languages.json",
 
-			filters: [
-				sourceFilter,
-				typeFilter,
-				scriptFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "languages",
 
 			sublistClass: "sublanguages",
 
-			dataProps: ["language"]
+			dataProps: ["language"],
 		});
-
-		this._sourceFilter = sourceFilter;
-		this._scriptFilter = scriptFilter;
 	}
 
 	getListItem (it, anI, isExcluded) {
-		it._fMisc = it.fonts ? ["Has Fonts"] : [];
-		if (it.srd) it._fMisc.push("SRD");
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._scriptFilter.addItem(it.script);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -61,12 +41,12 @@ class LanguagesPage extends ListPage {
 				source,
 				dialects: it.dialects || [],
 				type: it.type || "",
-				script: it.script || ""
+				script: it.script || "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -77,16 +57,7 @@ class LanguagesPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(li => {
-			const it = this._dataList[li.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it.type,
-				it.script,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 
@@ -109,8 +80,8 @@ class LanguagesPage extends ListPage {
 			{
 				hash,
 				type: it.type || "",
-				script: it.script || ""
-			}
+				script: it.script || "",
+			},
 		);
 		return listItem;
 	}
@@ -128,20 +99,19 @@ class LanguagesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: it,
-				fnFluffBuilder: (fluffJson) => it.fluff || fluffJson.languageFluff.find(l => it.name === l.name && it.source === l.source),
-				fluffUrl: `data/fluff-languages.json`
+				pFnGetFluff: Renderer.language.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
 		const fontTab = Renderer.utils.tabButton(
 			"Fonts",
@@ -223,7 +193,7 @@ class LanguagesPage extends ListPage {
 						${it.fonts.map(f => `<li><a href="${f}" target="_blank">${f.split("/").last()}</a></li>`).join("")}
 					</ul>
 				</div>`.appendTo($td);
-			}
+			},
 		);
 
 		Renderer.utils.bindTabButtons(statTab, picTab, fontTab);

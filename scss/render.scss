@@ -28,6 +28,12 @@ $rgb-inset-border: #656565;
 
 .rd {
 	&__ {
+		&b {
+			p {
+				margin-bottom: 5px;
+			}
+		}
+
 		&b--0,
 		&b--1,
 		&b--2,
@@ -62,6 +68,14 @@ $rgb-inset-border: #656565;
 			+ .rd__list {
 				margin-top: -5px;
 			}
+
+			> .rd__list {
+				margin-bottom: 0;
+			}
+		}
+
+		&li {
+			margin-bottom: 5px;
 		}
 
 		&compact-stats {
@@ -74,7 +88,12 @@ $rgb-inset-border: #656565;
 
 		&title-link {
 			opacity: 0.3;
-			font-size: 1.6rem;
+			font-size: 14px;
+			font-weight: normal;
+
+			&--inset {
+				font-size: 12px;
+			}
 		}
 
 		&wrp-image {
@@ -95,7 +114,6 @@ $rgb-inset-border: #656565;
 
 		&wrp-gallery {
 			display: flex;
-			margin: 0 -5px;
 			flex-wrap: wrap;
 			justify-content: center;
 			align-items: flex-end;
@@ -142,6 +160,20 @@ $rgb-inset-border: #656565;
 			display: inline;
 		}
 
+		&image-btn-viewer {
+			font-style: initial;
+		}
+
+		// Thicker scrollbars for viewer
+		&scroller-viewer {
+			scrollbar-width: auto;
+
+			&::-webkit-scrollbar {
+				width: 15px;
+				height: 15px;
+			}
+		}
+
 		&prerequisite {
 			font-style: italic;
 			display: block;
@@ -157,8 +189,8 @@ $rgb-inset-border: #656565;
 			padding: 0;
 			list-style: none;
 
-			> li {
-				margin-bottom: 0;
+			> .rd__li {
+				margin-bottom: 3px;
 
 				> * {
 					margin: 0 0 3px;
@@ -174,8 +206,8 @@ $rgb-inset-border: #656565;
 		&list-hang {
 			list-style: none;
 
-			// fixme?
-			> li > * {
+			// Firefox workaround; list bullets are pseudo-elements "::marker"
+			> li > *:not(::marker) {
 				text-indent: -1.1em;
 				margin-left: 1.1em;
 			}
@@ -228,10 +260,12 @@ $rgb-inset-border: #656565;
 		// inset headers
 		// statsBlockInset and statsBlockInsetReadaloud
 		&h--2-inset {
-			display: block;
 			font-variant: small-caps;
 			font-weight: bolder;
 			font-size: 1.1em;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
 		&h--2-flow-block {
@@ -289,6 +323,10 @@ $rgb-inset-border: #656565;
 				border-left: 2px solid $rgb-inset-border;
 				border-right: 2px solid $rgb-inset-border;
 				background-color: #eef0f3;
+			}
+
+			&-inner {
+				margin-top: 10px;
 			}
 		}
 
@@ -385,9 +423,11 @@ $rgb-inset-border: #656565;
 			}
 		}
 
-		&img-small {
-			max-width: 25vw;
-			max-height: 25vh;
+		&img {
+			&-small {
+				max-width: 25vw;
+				max-height: 25vh;
+			}
 		}
 
 		&s-v-flow {
@@ -422,6 +462,10 @@ $rgb-inset-border: #656565;
 		&pre-wrap {
 			white-space: pre-wrap;
 		}
+
+		&highlight {
+			background-color: $rgb-bg-highlight;
+		}
 	}
 
 	&-item__ {
@@ -443,3 +487,41 @@ $rgb-inset-border: #656565;
 td > .rd__b:last-child {
 	margin-bottom: 0;
 }
+
+// region Source colors
+.subclass-feature {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-subclass;
+		border-bottom-color: $rgb-subclass;
+	}
+}
+
+.spicy-sauce {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-subclass-ua;
+		border-bottom-color: $rgb-subclass-ua;
+	}
+}
+
+.spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-class-ua;
+		border-bottom-color: $rgb-class-ua;
+	}
+}
+
+.refreshing-brew {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-class-brew;
+		border-bottom-color: $rgb-class-brew;
+	}
+}
+// endregion

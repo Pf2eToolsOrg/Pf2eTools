@@ -3,7 +3,10 @@ module.exports = {
 	"env": {
 		"browser": false,
 		"es6": true,
-		"node": true
+		"node": true,
+	},
+	"parserOptions": {
+		"ecmaVersion": 9,
 	},
 	"rules": {
 		"accessor-pairs": "error",
@@ -11,11 +14,11 @@ module.exports = {
 		"block-spacing": ["error", "always"],
 		"brace-style": ["error", "1tbs", {"allowSingleLine": true}],
 		"comma-dangle": ["error", {
-			"arrays": "never",
-			"objects": "never",
-			"imports": "never",
-			"exports": "never",
-			"functions": "never"
+			"arrays": "always-multiline",
+			"objects": "always-multiline",
+			"imports": "always-multiline",
+			"exports": "always-multiline",
+			"functions": "always-multiline",
 		}],
 		"comma-spacing": ["error", {"before": false, "after": true}],
 		"comma-style": ["error", "last"],
@@ -30,8 +33,8 @@ module.exports = {
 			"error",
 			"tab",
 			{
-				"SwitchCase": 1
-			}
+				"SwitchCase": 1,
+			},
 		],
 		"key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
 		"keyword-spacing": ["error", {"before": true, "after": true}],
@@ -75,9 +78,9 @@ module.exports = {
 			"groups": [
 				["==", "!=", "===", "!==", ">", ">=", "<", "<="],
 				["&&", "||"],
-				["in", "instanceof"]
+				["in", "instanceof"],
 			],
-			"allowSamePrecedence": true
+			"allowSamePrecedence": true,
 		}],
 		"no-mixed-spaces-and-tabs": "error",
 		"no-multi-spaces": "error",
@@ -118,7 +121,7 @@ module.exports = {
 		"no-unused-expressions": ["error", {
 			"allowShortCircuit": true,
 			"allowTernary": true,
-			"allowTaggedTemplates": true
+			"allowTaggedTemplates": true,
 		}],
 		"no-unused-vars": "off",
 		"no-use-before-define": ["error", {"functions": false, "classes": false, "variables": false}],
@@ -132,7 +135,18 @@ module.exports = {
 		"no-with": "error",
 		"object-property-newline": ["error", {"allowMultiplePropertiesPerLine": true}],
 		"one-var": ["error", {"initialized": "never"}],
-		"operator-linebreak": ["error", "after", {"overrides": {"?": "before", ":": "before"}}],
+		"operator-linebreak": ["error", "after", {
+			"overrides": {
+				"?": "before",
+				":": "before",
+				"+": "before",
+				"-": "before",
+				"*": "before",
+				"/": "before",
+				"||": "before",
+				"&&": "before",
+			},
+		}],
 		"padded-blocks": ["error", {"blocks": "never", "switches": "never", "classes": "never"}],
 		"prefer-promise-reject-errors": "error",
 		"rest-spread-spacing": ["error", "never"],
@@ -147,8 +161,8 @@ module.exports = {
 			"block": {
 				"balanced": true,
 				"markers": ["*package", "!", ",", ":", "::", "flow-include"],
-				"exceptions": ["*"]
-			}
+				"exceptions": ["*"],
+			},
 		}],
 		"symbol-description": "error",
 		"template-curly-spacing": ["error", "never"],
@@ -159,6 +173,6 @@ module.exports = {
 		"wrap-iife": ["error", "any", {"functionPrototypeMethods": true}],
 		"yield-star-spacing": ["error", "both"],
 		"yoda": ["error", "never"],
-		"require-atomic-updates": "off"
-	}
+		"require-atomic-updates": "off",
+	},
 };

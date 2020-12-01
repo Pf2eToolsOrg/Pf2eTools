@@ -35,7 +35,7 @@ class BooksList {
 			$iptSearch,
 			fnSort,
 			sortByInitial: this._sortByInitial,
-			sortDirInitial: this._sortDirInitial
+			sortDirInitial: this._sortDirInitial,
 		});
 		SortUtil.initBtnSortHandlers($(`#filtertools`), this._list);
 
@@ -44,7 +44,7 @@ class BooksList {
 			$iptSearch,
 			fnSort,
 			sortByInitial: this._sortByInitial,
-			sortDirInitial: this._sortDirInitial
+			sortDirInitial: this._sortDirInitial,
 		});
 
 		$("#reset").click(() => {
@@ -84,7 +84,7 @@ class BooksList {
 
 			eleLi.innerHTML = `<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="book-name lst--border">
 				<span class="w-100">${this._rowBuilderFn(it)}</span>
-				<span class="showhide" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
+				<span class="showhide px-2 py-1px bold" onclick="BookUtil.indexListToggle(event, this)" data-hidden="true">[+]</span>
 			</a>
 			${BookUtil.makeContentsBlock({book: it, addPrefix: this._rootPage, defaultHidden: true})}`;
 
@@ -93,17 +93,14 @@ class BooksList {
 				eleLi,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId}
+				{uniqueId: it.uniqueId},
 			);
 
 			this._list.addItem(listItem);
 
-			// TODO make the border use the 5etools source color, where available
-			// TODO add all the adventure pics
-			// TODO make the link text look cooler; bolded text that isn't blue? I.e. same as list text
 			// region alt
-			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="flex-col flex-v-center m-3 bks__wrp-bookshelf-item py-3 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
-				<img src="img/${it.image || "covers/blank.png"}" class="mb-2">
+			const eleLiAlt = $(`<a href="${this._rootPage}#${UrlUtil.encodeForHash(it.id)}" class="flex-col flex-v-center m-3 bks__wrp-bookshelf-item py-3 px-2 ${Parser.sourceJsonToColor(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>
+				<img src="${it.coverUrl || `${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/covers/blank.png`}" class="mb-2 bks__bookshelf-image">
 				<div class="bks__bookshelf-item-name flex-vh-center text-center">${it.name}</div>
 			</a>`)[0];
 			const listItemAlt = new ListItem(
@@ -111,7 +108,7 @@ class BooksList {
 				eleLiAlt,
 				it.name,
 				{source: it.id},
-				{uniqueId: it.uniqueId}
+				{uniqueId: it.uniqueId},
 			);
 			this._listAlt.addItem(listItemAlt);
 			// endregion

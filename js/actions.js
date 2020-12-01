@@ -35,33 +35,11 @@ class ActionsPage extends ListPage {
 	}
 
 	constructor () {
-		const sourceFilter = SourceFilter.getInstance();
-		const timeFilter = new Filter({
-			header: "Type",
-			items: [
-				Parser.SP_TM_PF_A,
-				Parser.SP_TM_PF_AA,
-				Parser.SP_TM_PF_AAA,
-				Parser.SP_TM_PF_F,
-				Parser.SP_TM_PF_R,
-				Parser.SP_TM_MINS,
-				Parser.SP_TM_HRS,
-				"Varies"
-			],
-			displayFn: Parser.spTimeUnitToFull,
-			itemSortFn: null
-		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
-
+		const pageFilter = new PageFilterActions();
 		super({
 			dataSource: "data/actions.json",
 
-			filters: [
-				sourceFilter,
-				timeFilter,
-				miscFilter
-			],
-			filterSource: sourceFilter,
+			pageFilter,
 
 			listClass: "actions",
 
@@ -74,21 +52,10 @@ class ActionsPage extends ListPage {
 			dataProps: ["action"]
 		});
 
-		this._sourceFilter = sourceFilter;
-		this._timeFilter = timeFilter;
-		this._miscFilter = miscFilter;
 	}
 
 	getListItem (it, anI, isExcluded) {
-		it._fTime = it.activity ? it.activity.unit : null;
-		it._fMisc = it.srd ? ["SRD"] : [];
-		if (it.fromVariant) it._fMisc.push("Optional/Variant Action");
-
-		if (!isExcluded) {
-			// populate filters
-			this._sourceFilter.addItem(it.source);
-			this._timeFilter.addItem(it._fTime);
-		}
+		this._pageFilter.mutateAndAddToFilters(it, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
@@ -127,15 +94,7 @@ class ActionsPage extends ListPage {
 
 	handleFilterChange () {
 		const f = this._filterBox.getValues();
-		this._list.filter(li => {
-			const it = this._dataList[li.ix];
-			return this._filterBox.toDisplay(
-				f,
-				it.source,
-				it._fTime,
-				it._fMisc
-			);
-		});
+		this._list.filter(item => this._pageFilter.toDisplay(f, this._dataList[item.ix]));
 		FilterBox.selectFirstVisible(this._dataList);
 	}
 

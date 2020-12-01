@@ -1,6 +1,6 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.3.2",
+	"version": "1.3.3",
 	"type": "object",
 	"properties": {
 		"feat": {
@@ -54,7 +54,6 @@
 									"type": "integer"
 								},
 								"choose": {
-
 									"type": "object",
 									"properties": {
 										"from": {
@@ -87,10 +86,18 @@
 													}
 												}
 											}
+										},
+										"entry": {
+											"$ref": "entry.json"
 										}
-									}
+									},
+									"additionalProperties": false
+								},
+								"hidden": {
+									"type": "boolean"
 								}
-							}
+							},
+							"additionalProperties": false
 						}
 					},
 					"srd": {

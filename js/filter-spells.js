@@ -166,8 +166,6 @@ class PageFilterSpells extends PageFilter {
 	constructor () {
 		super();
 
-		this._brewSpellClasses = {};
-
 		const levelFilter = new Filter({
 			header: "Level",
 			items: [
@@ -282,90 +280,13 @@ class PageFilterSpells extends PageFilter {
 		this._miscFilter = miscFilter;
 	}
 
-	populateHomebrewClassLookup (homebrew) {
-		// load homebrew class spell list addons
-		// Three formats are available. A string (shorthand for "spell" format with source "PHB"), "spell" format (object
-		//   with a `name` and a `source`), and "class" format (object with a `class` and a `source`).
-
-		const handleSpellListItem = (it, className, classSource, subclassShortName, subclassSource, subSubclassName) => {
-			const doAdd = (target) => {
-				if (subclassShortName) {
-					const toAdd = {
-						class: {name: className, source: classSource},
-						subclass: {name: subclassShortName, source: subclassSource}
-					};
-					if (subSubclassName) toAdd.subclass.subSubclass = subSubclassName;
-
-					target.fromSubclass = target.fromSubclass || [];
-					target.fromSubclass.push(toAdd);
-				} else {
-					const toAdd = {name: className, source: classSource};
-
-					target.fromClassList = target.fromClassList || [];
-					target.fromClassList.push(toAdd);
-				}
-			};
-
-			if (it.class) {
-				if (!it.class) return;
-
-				this._brewSpellClasses.class = this._brewSpellClasses.class || {};
-
-				const cls = it.class.toLowerCase();
-				const source = it.source || SRC_PHB;
-
-				this._brewSpellClasses.class[source] = this._brewSpellClasses.class[source] || {};
-				this._brewSpellClasses.class[source][cls] = this._brewSpellClasses.class[source][cls] || {};
-
-				doAdd(this._brewSpellClasses.class[source][cls]);
-			} else {
-				this._brewSpellClasses.spell = this._brewSpellClasses.spell || {};
-
-				const name = (typeof it === "string" ? it : it.name).toLowerCase();
-				const source = typeof it === "string" ? "PHB" : it.source;
-				this._brewSpellClasses.spell[source] = this._brewSpellClasses.spell[source] || {};
-				this._brewSpellClasses.spell[source][name] = this._brewSpellClasses.spell[source][name] || {fromClassList: [], fromSubclass: []};
-
-				doAdd(this._brewSpellClasses.spell[source][name]);
-			}
-		};
-
-		if (homebrew.class) {
-			homebrew.class.forEach(c => {
-				c.source = c.source || SRC_PHB;
-
-				if (c.classSpells) c.classSpells.forEach(it => handleSpellListItem(it, c.name, c.source));
-				if (c.subclasses) {
-					c.subclasses.forEach(sc => {
-						sc.shortName = sc.shortName || sc.name;
-						sc.source = sc.source || c.source;
-
-						if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source));
-						if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, c.name, c.source, sc.shortName, sc.source, ssC)));
-					});
-				}
-			})
-		}
-
-		if (homebrew.subclass) {
-			homebrew.subclass.forEach(sc => {
-				sc.classSource = sc.classSource || SRC_PHB;
-				sc.shortName = sc.shortName || sc.name;
-				sc.source = sc.source || sc.classSource;
-
-				if (sc.subclassSpells) sc.subclassSpells.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source));
-				if (sc.subSubclassSpells) Object.entries(sc.subSubclassSpells).forEach(([ssC, arr]) => arr.forEach(it => handleSpellListItem(it, sc.class, sc.classSource, sc.shortName, sc.source, ssC)));
-			});
-		}
-	}
-
 	mutateForFilters (spell) {
 		// used for sorting
 		spell._normalisedTime = PageFilterSpells.getNormalisedTime(spell.cast);
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
 
 		// used for filtering
-		spell._fSources = ListUtil.getCompleteFilterSources(spell);
+		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];

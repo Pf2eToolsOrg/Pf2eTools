@@ -10,7 +10,7 @@ class ManageBrew {
 	static async pRender () {
 		// standard brew manager
 		const $brew = $(`#brewmanager`).empty();
-		await BrewUtil._pRenderBrewScreen($brew, false, async () => ManageBrew.pRender());
+		await BrewUtil._pRenderBrewScreen($brew);
 
 		// brew meta manager
 		if (BrewUtil.homebrewMeta) {
@@ -69,6 +69,7 @@ class ManageBrew {
 						case "skill": populateGenericSection("Skills"); break;
 						case "senses": populateGenericSection("Senses"); break;
 						case "optionalFeatureTypes": populateGenericSection("Optional Feature Types", (brew, metaType, k) => brew[metaType][k] || k); break;
+						case "charOption": populateGenericSection("Character Creation Option Types", (brew, metaType, k) => brew[metaType][k] || k); break;
 						case "psionicTypes": populateGenericSection("Psionic Types", (brew, metaType, k) => brew[metaType][k].full || k); break;
 					}
 					handleSecChange(i);

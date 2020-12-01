@@ -121,6 +121,15 @@
 		}
 	}
 	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant;
+			border-bottom-color: $rgb-class-variant;
+		}
+	}
 }
 
 .night-mode .cls__ {
@@ -231,6 +240,15 @@
 		}
 	}
 	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant--night;
+			border-bottom-color: $rgb-class-variant--night;
+		}
+	}
 }
 // endregion
 
@@ -326,7 +344,6 @@
 		font-family: 'Andada', serif;
 		font-variant: small-caps;
 		font-weight: 500;
-		color: $rgb-name-red;
 	}
 
 	&btn-toggle {
@@ -348,18 +365,10 @@
 		margin-top: 4px;
 		margin-bottom: 0;
 	}
-
-	&mc-prof-intro--requirements {
-		margin-top: 1.7em;
-	}
 }
 
 .night-mode {
 	.cls-side__ {
-		&name {
-			color: $rgb-name-red--night;
-		}
-
 		&btn-toggle {
 			color: $rgb-font--night;
 		}
@@ -509,6 +518,7 @@
 // region comparison view
 .cls-comp__wrp-features {
 	width: 400px;
+	max-width: calc(100vw - #{2 * $spacer});
 }
 // endregion
 
@@ -531,6 +541,35 @@
 		border-top-right-radius: 4px;
 		border-top-left-radius: 4px;
 	}
+
+	// region TODO are these used?
+	&btn-tab.active {
+		background: $rgb-active-blue;
+		color: white;
+	}
+
+	&btn-tab.active {
+		border-color: darken($rgb-active-blue, $pct-darken-border);
+	}
+
+	&btn-tab.active.spicy-sauce {
+		background: $rgb-subclass-ua;
+		color: white;
+	}
+
+	&btn-tab.active.spicy-sauce {
+		border-color: darken($rgb-subclass-ua, $pct-darken-border);
+	}
+
+	&btn-tab.active.refreshing-brew {
+		background: $rgb-class-brew;
+		color: white;
+	}
+
+	&btn-tab.active.refreshing-brew {
+		border-color: darken($rgb-class-brew, $pct-darken-border);
+	}
+	// endregion
 }
 
 .night-mode .cls-bkmv__ {
@@ -596,12 +635,11 @@
 		}
 
 		&item {
+			@include overflow-dots();
+
 			cursor: pointer;
 			user-select: none;
 			max-height: 20px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
 			color: $rgb-name-red;
 
 			&:hover {
@@ -610,10 +648,6 @@
 
 			&:active {
 				color: #e0e0e0;
-			}
-
-			&--spicy {
-				color: $rgb-class-ua;
 			}
 
 			&--sc-fresh {
@@ -635,6 +669,20 @@
 			&--sc-brew {
 				color: $rgb-class-brew;
 			}
+
+			// region
+			// This takes precedence over others. Ideally, there should be a colour for "subclass variant feature," but
+			//   since those are so rare (e.g. Ranger's "Primal Companion"), this shall suffice. Additionally, this
+			//   matches the CSS rules of the renderer the closest. If we adjust this, we would have to then adjust
+			//   those.
+			&--spicy {
+				color: $rgb-class-ua;
+			}
+
+			&--variant-feature {
+				color: $rgb-class-variant;
+			}
+			// endregion
 
 			// Section name
 			&--depth-0 {
@@ -674,10 +722,6 @@
 			color: white;
 		}
 
-		&--spicy {
-			color: $rgb-class-ua--night;
-		}
-
 		&--sc-fresh {
 			color: $rgb-subclass--night;
 		}
@@ -697,6 +741,16 @@
 		&--sc-brew {
 			color: $rgb-class-brew--night;
 		}
+
+		// region (See day mode comments above)
+		&--spicy {
+			color: $rgb-class-ua--night;
+		}
+
+		&--variant-feature {
+			color: $rgb-class-variant--night;
+		}
+		// endregion
 	}
 }
 // endregion

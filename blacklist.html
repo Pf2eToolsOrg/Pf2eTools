@@ -9,17 +9,17 @@
 	<meta name="description" content="">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<title>Content Blacklist - PF2eTools</title>
-
-	<link rel="manifest" href="manifest.webmanifest">
+	<title>Content Blacklist - 5etools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	
+
 	<!-- Favicons -->
+
 	<link rel="icon" type="image/svg+xml" href="favicon.svg">
 	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
 	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
@@ -28,6 +28,26 @@
 	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+	<!-- Chrome Web App Icons -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="application-name" content="5eTools">
+	<meta name="theme-color" content="#006bc4">
+
+	<!-- Windows Start Menu tiles -->
+	<meta name="msapplication-config" content="browserconfig.xml"/>
+	<meta name="msapplication-TileColor" content="#006bc4">
+
+	<!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<meta name="apple-mobile-web-app-title" content="5eTools">
+
+	<!-- macOS Safari Pinned Tab and Touch Bar -->
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#006bc4">
 
 	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
 
@@ -63,20 +83,19 @@
 </head>
 
 <body>
+<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-
 		<h1 class="page__title">Content Blacklist</h1>
-		<p class="page__subtitle">Exclude content and export configurations</p>
+		<p class="page__subtitle">Exclude content and export configurations.</p>
 	</div>
 </header>
 <nav class="container page__nav" id="navigation">
-	<ul class="nav page__nav-inner" id="navbar">
-	</ul>
+	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<div class="cancer__wrp-leaderboard"><!--5ETOOLS_AD_LEADERBOARD--></div>
-<div class="cancer__wrp-sidebar-rhs"><!--5ETOOLS_AD_RIGHT_1--><div class="cancer__sidebar-rhs-inner"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
 
 <main class="container" id="main_content">
 	<div class="row intro">
@@ -98,7 +117,9 @@
 	<div class="row">
 		<div class="form-group col-12">
 			<button class="btn btn-default mr-2" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
-			<button class="btn btn-default help" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
+			<button class="btn btn-default help mr-2" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
+			<button class="btn btn-default mr-2" onclick="Blacklist.addAllSources()">Exclude All Sources</button>
+			<button class="btn btn-default help" onclick="Blacklist.removeAllSources()" title="Removes entries added by the &quot;Exclude All Sources&quot; button.">Include All Sources</button>
 		</div>
 	</div>
 
@@ -148,7 +169,7 @@
 	<div class="text-muted subtitle"><i>Rows marked with a star (*) in a field match everything in that field</i></div>
 	<div class="row" id="listcontainer">
 
-		<div class="lst__form-top" id="filter-search-input-group">
+		<div class="lst__form-top" id="filter-search-group">
 			<div class="w-100 relative">
 				<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
 				<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
@@ -157,11 +178,11 @@
 			<button class="btn btn-default" id="reset">Reset Search</button>
 		</div>
 
-		<div id="filtertools" class="sortlabel lst__form-bottom">
-			<button class="col-5 sort btn btn-default btn-xs" data-sort="source">Source</button>
+		<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
+			<button class="col-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source</button>
 			<button class="col-3 sort btn btn-default btn-xs" data-sort="category">Category</button>
 			<button class="col-3 sort btn btn-default btn-xs" data-sort="name">Name</button>
-			<button class="sort btn btn-default btn-xs" disabled>&nbsp;</button>
+			<button class="col-1 sort btn btn-default btn-xs" disabled>&nbsp;</button>
 		</div>
 
 		<ul class="list-display-only blacklist"></ul>
@@ -172,13 +193,16 @@
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/jquery-ui-slider-pip.js"></script>
+<script type="text/javascript" src="js/parser.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <script type="text/javascript" src="js/utils-ui.js"></script>
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/blacklist.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>

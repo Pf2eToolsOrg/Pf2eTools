@@ -57,21 +57,89 @@
 								"type": "entries",
 								"name": "Amphibious",
 								"entries": [
-									"<$title_name$> can breathe air and water."
+									"<$title_short_name$> can breathe air and water."
 								]
 							},
 							{
 								"name": "Swamp Camouflage",
 								"type": "entries",
 								"entries": [
-									"<$title_name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide in swampy terrain."
+									"<$title_short_name$> has advantage on Dexterity ({@skill Stealth}) checks made to hide in swampy terrain."
 								]
 							},
 							{
 								"name": "Standing Leap",
 								"type": "entries",
 								"entries": [
-									"<$title_name$>'s long jump is up to 20 feet and their high jump is up to 10 feet, with or without a running start."
+									"<$title_short_name$>'s long jump is up to 20 feet and their high jump is up to 10 feet, with or without a running start."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "Deep Gnome",
+			"source": "DMG",
+			"page": 282,
+			"ref": "{@race Gnome (Deep)|DMG|Deep Gnome}",
+			"apply": {
+				"_root": {
+					"size": "S",
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"gnome"
+						]
+					},
+					"speed": 20
+				},
+				"_mod": {
+					"_": {
+						"mode": "addSenses",
+						"senses": {
+							"type": "darkvision",
+							"range": 120
+						}
+					},
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": [
+							"Gnomish",
+							"Terran",
+							"Undercommon"
+						]
+					},
+					"spellcasting": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Innate Spellcasting",
+								"headerEntries": [
+									"<$title_short_name$>'s innate spellcasting ability is Intelligence (spell save DC <$spell_dc__int$>). <$title_short_name$> can innately cast the following spells, requiring no material components:"
+								],
+								"will": [
+									"{@spell nondetection} (self only)"
+								],
+								"daily": {
+									"1e": [
+										"{@spell blindness/deafness}",
+										"{@spell blur}",
+										"{@spell disguise self}"
+									]
+								},
+								"ability": "int"
+							}
+						]
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Gnome Cunning",
+								"entries": [
+									"<$title_short_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
 								]
 							}
 						]
@@ -174,7 +242,7 @@
 							{
 								"name": "Innate Spellcasting",
 								"headerEntries": [
-									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
+									"<$title_short_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_short_name$> can innately cast the following spells, requiring no material components:"
 								],
 								"will": [
 									"{@spell dancing lights}"
@@ -195,7 +263,7 @@
 							{
 								"name": "Fey Ancestry",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+									"<$title_short_name$> has advantage on saving throws against being charmed, and magic can't put <$short_name$> to sleep."
 								]
 							},
 							{
@@ -232,6 +300,10 @@
 							"range": 120
 						}
 					},
+					"resist": {
+						"mode": "appendIfNotExistsArr",
+						"items": "poison"
+					},
 					"languages": [
 						{
 							"mode": "appendIfNotExistsArr",
@@ -247,7 +319,7 @@
 							{
 								"name": "Dwarven Resilience",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
+									"<$title_short_name$> has advantage on saving throws against poison, and has resistance against poison damage."
 								]
 							},
 							{
@@ -259,7 +331,7 @@
 							{
 								"name": "Invisibility (Recharges after a Short or Long Rest)",
 								"entries": [
-									"<$title_name$> magically turns {@condition invisible} until they attack, cast a spell, or use their Enlarge, or until their concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment <$short_name$> wears or carries is invisible with them."
+									"<$title_short_name$> magically turns {@condition invisible} until they attack, cast a spell, or use their Enlarge, or until their concentration is broken, up to 1 hour (as if concentrating on a spell). Any equipment <$short_name$> wears or carries is invisible with them."
 								]
 							}
 						]
@@ -738,7 +810,7 @@
 					"type": {
 						"type": "humanoid",
 						"tags": [
-							"goblin"
+							"goblinoid"
 						]
 					}
 				},
@@ -762,7 +834,7 @@
 							{
 								"name": "Nimble Escape",
 								"entries": [
-									"<$title_name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
+									"<$title_short_name$> can take the {@action Disengage} or {@action Hide} action as a bonus action on each of its turns."
 								]
 							}
 						]
@@ -804,7 +876,7 @@
 							{
 								"name": "Fey Ancestry",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+									"<$title_short_name$> has advantage on saving throws against being charmed, and magic can't put <$title_short_name$> to sleep."
 								]
 							}
 						]
@@ -852,13 +924,61 @@
 							{
 								"name": "Relentless Endurance",
 								"entries": [
-									"When reduced to 0 hit points, <$title_name$> drops to 1 hit point instead (but can't do this again until they finish a long rest)."
+									"When reduced to 0 hit points, <$title_short_name$> drops to 1 hit point instead (but can't do this again until they finish a long rest)."
 								]
 							},
 							{
 								"name": "Savage Attacks",
 								"entries": [
-									"When they score a critical hit, <$title_name$> can roll one of the weapon's damage dice and add it to the extra damage of the critical hit."
+									"When they score a critical hit, <$title_short_name$> can roll one of the weapon's damage dice and add it to the extra damage of the critical hit."
+								]
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"name": "High Elf",
+			"source": "PHB",
+			"page": 23,
+			"ref": "{@race Elf (High)||High Elf}",
+			"apply": {
+				"_root": {
+					"type": {
+						"type": "humanoid",
+						"tags": [
+							"elf"
+						]
+					}
+				},
+				"_mod": {
+					"_": [
+						{
+							"mode": "addSenses",
+							"senses": {
+								"type": "darkvision",
+								"range": 60
+							}
+						},
+						{
+							"mode": "addSkills",
+							"skills": {
+								"perception": 1
+							}
+						}
+					],
+					"languages": {
+						"mode": "appendIfNotExistsArr",
+						"items": "Elvish"
+					},
+					"trait": {
+						"mode": "appendArr",
+						"items": [
+							{
+								"name": "Fey Ancestry",
+								"entries": [
+									"<$title_short_name$> has advantage on saving throws against being charmed, and magic can't put <$title_short_name$> to sleep."
 								]
 							}
 						]
@@ -1361,13 +1481,13 @@
 							{
 								"name": "Sunlight Sensitivity",
 								"entries": [
-									"While in sunlight, <$title_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
+									"While in sunlight, <$title_short_name$> has disadvantage on attack rolls, as well as on Wisdom ({@skill Perception}) checks that rely on sight."
 								]
 							},
 							{
 								"name": "Pack Tactics",
 								"entries": [
-									"<$title_name$> has advantage on an attack roll against a creature if at least one of their allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
+									"<$title_short_name$> has advantage on an attack roll against a creature if at least one of their allies is within 5 feet of the creature and the ally isn't {@condition incapacitated}."
 								]
 							}
 						]
@@ -1865,7 +1985,7 @@
 								"type": "entries",
 								"name": "Hold Breath",
 								"entries": [
-									"<$title_name$> can hold their breath for up to 15 minutes at a time."
+									"<$title_short_name$> can hold their breath for up to 15 minutes at a time."
 								]
 							}
 						]
@@ -1902,7 +2022,7 @@
 							{
 								"name": "Amphibious",
 								"entries": [
-									"<$title_name$> can breathe air and water."
+									"<$title_short_name$> can breathe air and water."
 								]
 							}
 						]
@@ -1933,6 +2053,10 @@
 							"range": 60
 						}
 					},
+					"resist": {
+						"mode": "appendIfNotExistsArr",
+						"items": "poison"
+					},
 					"languages": {
 						"mode": "appendIfNotExistsArr",
 						"items": "Dwarvish"
@@ -1943,7 +2067,7 @@
 							{
 								"name": "Dwarven Resilience",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against poison, and has resistance against poison damage."
+									"<$title_short_name$> has advantage on saving throws against poison, and has resistance against poison damage."
 								]
 							}
 						]
@@ -1985,7 +2109,7 @@
 							{
 								"name": "Aggressive",
 								"entries": [
-									"As a bonus action, <$title_name$> can move up to your speed toward a hostile creature that they can see."
+									"As a bonus action, <$title_short_name$> can move up to your speed toward a hostile creature that they can see."
 								]
 							}
 						]
@@ -2123,7 +2247,7 @@
 							{
 								"name": "Gnome Cunning",
 								"entries": [
-									"<$title_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
+									"<$title_short_name$> has advantage on all Intelligence, Wisdom, and Charisma saving throws against magic."
 								]
 							}
 						]
@@ -2260,13 +2384,13 @@
 							{
 								"name": "Halfling Nimbleness",
 								"entries": [
-									"<$title_name$> can move through a space of a Medium or larger creature."
+									"<$title_short_name$> can move through a space of a Medium or larger creature."
 								]
 							},
 							{
 								"name": "Brave",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being {@condition frightened}."
+									"<$title_short_name$> has advantage on saving throws against being {@condition frightened}."
 								]
 							}
 						]
@@ -2304,7 +2428,7 @@
 							{
 								"name": "Feline Agility",
 								"entries": [
-									"When <$title_name$> moves on its turn in combat, they can double their speed until the end of the turn. Once they uses this ability, <$title_name$> can't use it again until they moves 0 feet on one of their turns."
+									"When <$title_short_name$> moves on its turn in combat, they can double their speed until the end of the turn. Once they uses this ability, <$title_short_name$> can't use it again until they moves 0 feet on one of their turns."
 								]
 							}
 						]
@@ -2359,7 +2483,7 @@
 							{
 								"name": "Innate Spellcasting",
 								"headerEntries": [
-									"<$title_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_name$> can innately cast the following spells, requiring no material components:"
+									"<$title_short_name$>'s innate spellcasting ability is Charisma (spell save DC <$spell_dc__cha$>). <$title_short_name$> can innately cast the following spells, requiring no material components:"
 								],
 								"will": [
 									"{@spell thaumaturgy}"
@@ -2418,13 +2542,13 @@
 							{
 								"name": "Fey Ancestry",
 								"entries": [
-									"<$title_name$> has advantage on saving throws against being charmed, and magic can't put <$title_name$> to sleep."
+									"<$title_short_name$> has advantage on saving throws against being {@condition charmed}, and magic can't put <$short_name$> to sleep."
 								]
 							},
 							{
 								"name": "Mask of the Wild",
 								"entries": [
-									"<$title_name$> can attempt to hide even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
+									"<$title_short_name$> can attempt to {@action hide} even when they are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena."
 								]
 							}
 						]

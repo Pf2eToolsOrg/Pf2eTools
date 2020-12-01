@@ -25,7 +25,7 @@ class InitiativeTracker {
 			playerInitHideNewMonster: _propDefaultTrue(state.piV),
 			playerInitShowOrdinals: _propDefaultFalse(state.piO),
 			playerInitShortTokens: _propDefaultTrue(state.piS),
-			statsCols: state.c || []
+			statsCols: state.c || [],
 		};
 
 		const $wrpTracker = $(`<div class="dm-init dm__panel-bg dm__data-anchor"/>`);
@@ -70,41 +70,48 @@ class InitiativeTracker {
 		};
 
 		// initialise "upload" context menu
-		const contextId = ContextUtil.getNextGenericMenuId();
-		ContextUtil.doInitContextMenu(contextId, async (evt, ele, $invokedOn, $selectedMenu) => {
-			switch (Number($selectedMenu.data("ctx-id"))) {
-				case 0: {
+		const menu = ContextUtil.getMenu([
+			new ContextUtil.Action(
+				"From Current Bestiary Encounter",
+				async () => {
 					const savedState = await EncounterUtil.pGetInitialState();
 					if (savedState) await pConvertAndLoadBestiaryList(savedState.data);
 					else {
 						JqueryUtil.doToast({
 							content: `No saved encounter! Please first go to the Bestiary and create one.`,
-							type: "warning"
+							type: "warning",
 						});
 					}
-					break;
-				}
-				case 1: {
+				},
+			),
+			new ContextUtil.Action(
+				"From Saved Bestiary Encounter",
+				async () => {
 					const allSaves = Object.values((await EncounterUtil.pGetSavedState()).savedEncounters || {});
 					if (!allSaves.length) return JqueryUtil.doToast({type: "warning", content: "No saved encounters were found! Go to the Bestiary and create some first."});
 					const selected = await InputUiUtil.pGetUserEnum({
 						values: allSaves.map(it => it.name),
 						placeholder: "Select a save",
-						title: "Select Saved Encounter"
+						title: "Select Saved Encounter",
 					});
 					if (selected != null) await pConvertAndLoadBestiaryList(allSaves[selected].data);
-					break;
-				}
-				case 2: {
+				},
+			),
+			new ContextUtil.Action(
+				"From Bestiary Encounter File",
+				async () => {
 					const json = await DataUtil.pUserUpload();
 					if (json) await pConvertAndLoadBestiaryList(json);
-					break;
-				}
-				case 3:
+				},
+			),
+			null,
+			new ContextUtil.Action(
+				"Import Settings",
+				() => {
 					makeImportSettingsModal();
-					break;
-			}
-		}, ["From Current Bestiary Encounter", "From Saved Bestiary Encounter", "From Bestiary Encounter File", null, "Import Settings"]);
+				},
+			),
+		])
 
 		const $wrpTop = $(`<div class="dm-init-wrp-header-outer"/>`).appendTo($wrpTracker);
 		const $wrpHeader = $(`
@@ -215,12 +222,12 @@ class InitiativeTracker {
 			.click(() => {
 				const {$modalInner} = UiUtil.getShowModal({
 					title: "Configure Player View",
-					isLarge: true,
-					fullHeight: true,
+					isUncappedHeight: true,
+					isHeight100: true,
 					cbClose: () => {
 						if (p2pMeta.rows.length) p2pMeta.rows.forEach(row => row.$row.detach());
 						if (srvPeer) srvPeer.offTemp("connection")
-					}
+					},
 				});
 
 				const $wrpHelp = UiUtil.$getAddModalRow($modalInner, "div");
@@ -318,7 +325,7 @@ class InitiativeTracker {
 					cbClose: () => {
 						handleStatColsChange();
 						doUpdateExternalStates();
-					}
+					},
 				});
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Roll initiative", cfg, "isRollInit");
@@ -361,7 +368,7 @@ class InitiativeTracker {
 								// input data
 								p: "", // populate with...
 								po: null, // populate with... (previous value)
-								a: "" // abbreviation
+								a: "", // abbreviation
 							};
 							cfg.statsCols.push(thisCfg);
 						}
@@ -471,7 +478,7 @@ class InitiativeTracker {
 		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-xs dm-init-lockable"><span class="glyphicon glyphicon-upload"/></button>`).appendTo($wrpLoadReset)
 			.click((evt) => {
 				if (cfg.isLocked) return;
-				ContextUtil.handleOpenContextMenu(evt, $btnLoad, contextId);
+				ContextUtil.pOpenMenu(evt, menu);
 			});
 		$(`<button title="Reset" class="btn btn-danger btn-xs dm-init-lockable"><span class="glyphicon glyphicon-trash"/></button>`).appendTo($wrpLoadReset)
 			.click(() => {
@@ -490,7 +497,7 @@ class InitiativeTracker {
 			if (cfg.isLocked) return;
 			const flags = {
 				doClickFirst: false,
-				isWait: false
+				isWait: false,
 			};
 
 			const {$modalInner, doClose} = UiUtil.getShowModal();
@@ -544,10 +551,10 @@ class InitiativeTracker {
 				const results = index.search(srch, {
 					fields: {
 						n: {boost: 5, expand: true},
-						s: {expand: true}
+						s: {expand: true},
 					},
 					bool: "AND",
-					expand: true
+					expand: true,
 				});
 				const resultCount = results.length ? results.length : index.documentStore.length;
 				const toProcess = results.length ? results : Object.values(index.documentStore.docs).slice(0, 75).map(it => ({doc: it}));
@@ -564,14 +571,14 @@ class InitiativeTracker {
 						await pMakeRow({
 							nameOrMeta: name,
 							source,
-							isRollHp: $cbRoll.prop("checked")
+							isRollHp: $cbRoll.prop("checked"),
 						});
 						if (count > 1) {
 							for (let i = 1; i < count; ++i) {
 								await pMakeRow({
 									nameOrMeta: name,
 									source,
-									isRollHp: $cbRoll.prop("checked")
+									isRollHp: $cbRoll.prop("checked"),
 								});
 							}
 						}
@@ -618,7 +625,7 @@ class InitiativeTracker {
 				flags,
 				fnSearch: doSearch,
 				fnShowWait: showMsgDots,
-				$ptrRows
+				$ptrRows,
 			});
 
 			$iptSearch.focus();
@@ -631,7 +638,7 @@ class InitiativeTracker {
 				const isCb = $ipt.attr("type") === "checkbox";
 				return {
 					v: isCb ? $ipt.prop("checked") : $ipt.val(),
-					id: $(e).attr("data-id")
+					id: $(e).attr("data-id"),
 				};
 			}).get();
 		}
@@ -645,7 +652,7 @@ class InitiativeTracker {
 				const n = $iptDisplayName.length ? {
 					n: $row.find(`input.name`).val(),
 					d: $iptDisplayName.val(),
-					s: $row.find(`input.scaledCr`).val() || ""
+					s: $row.find(`input.scaledCr`).val() || "",
 				} : $row.find(`input.name`).val();
 				const out = {
 					n,
@@ -656,7 +663,7 @@ class InitiativeTracker {
 					a: 0 + $row.hasClass(`dm-init-row-active`),
 					s: $row.find(`input.source`).val(),
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
-					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)
+					v: $row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`),
 				};
 				if (customName) out.m = customName;
 				return out;
@@ -676,7 +683,7 @@ class InitiativeTracker {
 				piO: cfg.playerInitShowOrdinals,
 				piS: cfg.playerInitShortTokens,
 				c: cfg.statsCols.filter(it => !it.isDeleted),
-				n: $iptRound.val()
+				n: $iptRound.val(),
 			};
 		}
 
@@ -707,7 +714,7 @@ class InitiativeTracker {
 					i: $row.find(`input.score`).val(),
 					a: 0 + $row.hasClass(`dm-init-row-active`),
 					c: $conds.length ? $conds.map((i, e) => $(e).data("getState")()).get() : [],
-					k: statsVals
+					k: statsVals,
 				};
 
 				if ($row.hasClass("dm-init-row-rename")) out.m = $row.find(`.dm-init-row-link-name`).text();
@@ -728,7 +735,7 @@ class InitiativeTracker {
 			return {
 				r: rows,
 				c: visibleStatsCols,
-				n: $iptRound.val()
+				n: $iptRound.val(),
 			};
 		}
 
@@ -801,7 +808,7 @@ class InitiativeTracker {
 				isRollInit,
 				isRollHp,
 				statsCols,
-				isVisible
+				isVisible,
 			} = Object.assign({
 				nameOrMeta: "",
 				customName: "",
@@ -811,7 +818,7 @@ class InitiativeTracker {
 				conditions: [],
 				isRollInit: cfg.isRollInit,
 				isRollHp: false,
-				isVisible: !cfg.playerInitHideNewMonster
+				isVisible: !cfg.playerInitHideNewMonster,
 			}, opts || {});
 
 			const isMon = !!source;
@@ -839,12 +846,13 @@ class InitiativeTracker {
 				const curMon = $rows.find(".init-wrp-creature").filter((i, e) => $(e).parent().find(`input.name`).val() === name && $(e).parent().find(`input.source`).val() === source);
 				let monNum = null;
 				if (curMon.length) {
-					if (curMon.length === 1) {
+					const $dispsNumber = curMon.map((i, e) => $(e).find(`span[data-number]`).data("number"));
+					if (curMon.length === 1 && !$dispsNumber.length) {
 						const r = $(curMon.get(0));
 						r.find(`.init-wrp-creature-link`).append(`<span data-number="1" class="dm_init__number">(1)</span>`);
 						monNum = 2;
 					} else {
-						monNum = curMon.map((i, e) => $(e).find(`span[data-number]`).data("number")).get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
+						monNum = $dispsNumber.get().reduce((a, b) => Math.max(Number(a), Number(b)), 0) + 1;
 					}
 				}
 
@@ -887,11 +895,11 @@ class InitiativeTracker {
 						await pMakeRow({
 							nameOrMeta,
 							init: evt.shiftKey ? "" : $iptScore.val(),
-							isActive: $wrpRow.hasClass("dm-init-row-active"),
+							isActive: !evt.shiftKey && $wrpRow.hasClass("dm-init-row-active"),
 							source,
 							isRollHp: cfg.isRollHp,
 							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
-							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary")
+							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary"),
 						});
 						doSort(cfg.sort);
 					}).appendTo($wrpBtnsRhs);
@@ -909,7 +917,7 @@ class InitiativeTracker {
 					name,
 					color,
 					turns,
-					onStateChange: () => doUpdateExternalStates()
+					onStateChange: () => doUpdateExternalStates(),
 				});
 				$cond.appendTo($conds);
 			}
@@ -919,7 +927,7 @@ class InitiativeTracker {
 			$(`<button class="btn btn-warning btn-xs dm-init-row-btn dm-init-row-btn-flag" title="Add Condition" tabindex="-1"><span class="glyphicon glyphicon-flag"/></button>`)
 				.appendTo($wrpConds)
 				.on("click", () => {
-					const {$modalInner, doClose} = UiUtil.getShowModal({noMinHeight: true});
+					const {$modalInner, doClose} = UiUtil.getShowModal({isMinHeight0: true});
 
 					const $wrpRows = $(`<div class="dm-init-modal-wrp-rows"/>`).appendTo($modalInner);
 
@@ -973,7 +981,7 @@ class InitiativeTracker {
 			const $wrpRhs = $(`<div class="dm-init-row-rhs"/>`).appendTo($wrpRow);
 			const hpVals = {
 				curHp: hp,
-				maxHp: hpMax
+				maxHp: hpMax,
 			};
 
 			const doUpdateHpColors = () => {
@@ -1027,7 +1035,7 @@ class InitiativeTracker {
 						const roll = await Renderer.dice.pRoll2(m.hp.formula, {
 							isUser: false,
 							name: getRollName(m),
-							label: "HP"
+							label: "HP",
 						}, {isResultUsed: true});
 						hpVals.curHp = hpVals.maxHp = roll;
 						$iptHp.val(roll);
@@ -1110,7 +1118,7 @@ class InitiativeTracker {
 						const isCb = $ipt.attr("type") === "checkbox";
 						existing[id] = {
 							v: isCb ? $ipt.prop("checked") : $ipt.val(),
-							id
+							id,
 						};
 					});
 				}
@@ -1268,21 +1276,22 @@ class InitiativeTracker {
 			if (!firstLoad && !noReset) doReset();
 			firstLoad = false;
 
-			await Promise.all((state.r || []).map(r => {
-				return pMakeRow({
-					nameOrMeta: r.n,
-					customName: r.m,
-					hp: r.h,
-					hpMax: r.g,
-					init: r.i,
-					isActive: r.a,
-					source: r.s,
-					conditions: r.c,
-					statsCols: r.k,
-					isVisible: r.v,
-					isRollInit: r.i == null
+			for (const row of (state.r || [])) {
+				await pMakeRow({
+					nameOrMeta: row.n,
+					customName: row.m,
+					hp: row.h,
+					hpMax: row.g,
+					init: row.i,
+					isActive: row.a,
+					source: row.s,
+					conditions: row.c,
+					statsCols: row.k,
+					isVisible: row.v,
+					isRollInit: row.i == null,
 				});
-			}));
+			}
+
 			doSort(cfg.sort);
 			checkSetFirstActive();
 			handleStatColsChange();
@@ -1298,7 +1307,7 @@ class InitiativeTracker {
 			return Renderer.dice.pRoll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
 				isUser: false,
 				name: getRollName(monster),
-				label: "Initiative"
+				label: "Initiative",
 			}, {isResultUsed: true});
 		}
 
@@ -1309,7 +1318,7 @@ class InitiativeTracker {
 				return `${await Renderer.dice.pRoll2(monster.hp.formula, {
 					isUser: false,
 					name: getRollName(monster),
-					label: "HP"
+					label: "HP",
 				}, {isResultUsed: true})}`;
 			}
 			return "";
@@ -1321,7 +1330,7 @@ class InitiativeTracker {
 				d: "DESC",
 				m: false,
 				g: true,
-				r: []
+				r: [],
 			};
 
 			if (cfg.importIsAddPlayers) {
@@ -1355,7 +1364,7 @@ class InitiativeTracker {
 								// input data
 								p: populateEntry ? populateEntry[0] : "", // populate with...
 								po: null, // populate with... (previous value)
-								a: colName // abbreviation
+								a: colName, // abbreviation
 							};
 							colIndex[i] = newCol;
 							cfg.statsCols.push(newCol);
@@ -1367,7 +1376,7 @@ class InitiativeTracker {
 								i: "", // score
 								a: 0, // is active?
 								c: [], // conditions
-								v: true
+								v: true,
 							};
 
 							if (playerDetails.x && playerDetails.x.length) { // extra stats
@@ -1395,7 +1404,7 @@ class InitiativeTracker {
 									i: "",
 									a: 0,
 									c: [],
-									v: true
+									v: true,
 								});
 							});
 						});
@@ -1426,13 +1435,13 @@ class InitiativeTracker {
 									ScaleCreature.scale(mon, scaling).then(scaled => {
 										resolve({
 											count,
-											monster: scaled
+											monster: scaled,
 										});
 									});
 								} else {
 									resolve({
 										count,
-										monster: mon
+										monster: mon,
 									});
 								}
 							});
@@ -1448,14 +1457,14 @@ class InitiativeTracker {
 							n: {
 								name: it.monster.name,
 								displayName: it.monster._displayName,
-								scaledTo: it.monster._isScaledCr
+								scaledTo: it.monster._isScaledCr,
 							},
 							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.monster)}` : null,
 							a: 0,
 							s: it.monster.source,
 							c: [],
 							h: hp,
-							g: hp
+							g: hp,
 						});
 					}));
 				}));
@@ -1507,24 +1516,24 @@ InitiativeTracker.STAT_COLUMNS = {
 	hr0: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	hpFormula: {
 		name: "HP Formula",
-		get: mon => (mon.hp || {}).formula
+		get: mon => (mon.hp || {}).formula,
 	},
 	armorClass: {
 		name: "Armor Class",
 		abv: "AC",
-		get: mon => mon.ac[0] ? (mon.ac[0].ac || mon.ac[0]) : null
+		get: mon => mon.ac[0] ? (mon.ac[0].ac || mon.ac[0]) : null,
 	},
 	passivePerception: {
 		name: "Passive Perception",
 		abv: "PP",
-		get: mon => mon.passive
+		get: mon => mon.passive,
 	},
 	speed: {
 		name: "Speed",
 		abv: "SPD",
 		get: mon => Math.max(0, ...Object.values(mon.speed || {})
 			.map(it => it.number ? it.number : it)
-			.filter(it => typeof it === "number"))
+			.filter(it => typeof it === "number")),
 	},
 	spellDc: {
 		name: "Spell DC",
@@ -1537,12 +1546,12 @@ InitiativeTracker.STAT_COLUMNS = {
 					it.replace(/DC (\d+)/g, (...m) => found.push(Number(m[1])));
 					return Math.max(...found);
 				}).filter(Boolean)
-			}))
+			})),
 	},
 	legendaryActions: {
 		name: "Legendary Actions",
 		abv: "LA",
-		get: mon => mon.legendaryActions || mon.legendary ? 3 : null
+		get: mon => mon.legendaryActions || mon.legendary ? 3 : null,
 	},
 	hr1: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
@@ -1551,7 +1560,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Save`] = {
 				name: `${Parser.attAbvToFull(it)} Save`,
 				abv: it.toUpperCase(),
-				get: mon => mon.save && mon.save[it] ? mon.save[it] : Parser.getAbilityModifier(mon[it])
+				get: mon => mon.save && mon.save[it] ? mon.save[it] : Parser.getAbilityModifier(mon[it]),
 			};
 		});
 		return out;
@@ -1563,7 +1572,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Bonus`] = {
 				name: `${Parser.attAbvToFull(it)} Bonus`,
 				abv: it.toUpperCase(),
-				get: mon => Parser.getAbilityModifier(mon[it])
+				get: mon => Parser.getAbilityModifier(mon[it]),
 			};
 		});
 		return out;
@@ -1575,7 +1584,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Score`] = {
 				name: `${Parser.attAbvToFull(it)} Score`,
 				abv: it.toUpperCase(),
-				get: mon => mon[it]
+				get: mon => mon[it],
 			};
 		});
 		return out;
@@ -1587,7 +1596,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[s.toCamelCase()] = {
 				name: s.toTitleCase(),
 				abv: Parser.skillToShort(s).toUpperCase(),
-				get: mon => mon.skill && mon.skill[s] ? mon.skill[s] : Parser.getAbilityModifier(mon[Parser.skillToAbilityAbv(s)])
+				get: mon => mon.skill && mon.skill[s] ? mon.skill[s] : Parser.getAbilityModifier(mon[Parser.skillToAbilityAbv(s)]),
 			};
 		});
 		return out;
@@ -1597,17 +1606,17 @@ InitiativeTracker.STAT_COLUMNS = {
 		name: "Checkbox; clears at start of turn",
 		isCb: true,
 		autoMode: -1,
-		get: () => false
+		get: () => false,
 	},
 	cbNeutral: {
 		name: "Checkbox",
 		isCb: true,
-		get: () => false
+		get: () => false,
 	},
 	cbAutoHigh: {
 		name: "Checkbox; ticks at start of turn",
 		isCb: true,
 		autoMode: 1,
-		get: () => true
-	}
+		get: () => true,
+	},
 };

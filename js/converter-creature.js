@@ -3,6 +3,8 @@
 if (typeof module !== "undefined") {
 	const cv = require("./converterutils.js");
 	Object.assign(global, cv);
+	const cvCreature = require("./converterutils-creature.js");
+	Object.assign(global, cvCreature);
 	global.PropOrder = require("./utils-proporder.js");
 }
 
@@ -23,7 +25,7 @@ class CreatureParser extends BaseParser {
 		options = this._getValidOptions(options);
 
 		function startNextPhase (cur) {
-			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("REACTION"))
+			return (!cur.toUpperCase().indexOf("ACTION") || !cur.toUpperCase().indexOf("LEGENDARY ACTION") || !cur.toUpperCase().indexOf("MYTHIC ACTION") || !cur.toUpperCase().indexOf("REACTION") || !cur.toUpperCase().indexOf("BONUS ACTION"))
 		}
 
 		/**
@@ -39,12 +41,14 @@ class CreatureParser extends BaseParser {
 				"CONDITION IMMUNITIES",
 				"SENSES",
 				"LANGUAGES",
-				"CHALLENGE"
+				"CHALLENGE",
 			];
 			const NO_ABSORB_TITLES = [
 				"ACTION",
 				"LEGENDARY ACTION",
-				"REACTION"
+				"MYTHIC ACTION",
+				"REACTION",
+				"BONUS ACTION",
 			];
 
 			if (curLine) {
@@ -226,15 +230,20 @@ class CreatureParser extends BaseParser {
 			stats.trait = [];
 			stats.action = [];
 			stats.reaction = [];
+			stats.bonus = [];
 			stats.legendary = [];
+			stats.mythic = [];
 
 			let curTrait = {};
 
 			let isTraits = true;
 			let isActions = false;
 			let isReactions = false;
+			let isBonusActions = false;
 			let isLegendaryActions = false;
 			let isLegendaryDescription = false;
+			let isMythicActions = false;
+			let isMythicDescription = false;
 
 			// keep going through traits til we hit actions
 			while (i < toConvert.length) {
@@ -246,8 +255,11 @@ class CreatureParser extends BaseParser {
 						if (mActionNote) stats.actionNote = mActionNote[1];
 					}
 					isReactions = !curLine.toUpperCase().indexOf_handleColon("REACTION");
+					isBonusActions = !curLine.toUpperCase().indexOf_handleColon("BONUS ACTION");
 					isLegendaryActions = !curLine.toUpperCase().indexOf_handleColon("LEGENDARY ACTION");
 					isLegendaryDescription = isLegendaryActions;
+					isMythicActions = !curLine.toUpperCase().indexOf_handleColon("MYTHIC ACTION");
+					isMythicDescription = isMythicActions;
 					i++;
 					curLine = toConvert[i];
 				}
@@ -261,16 +273,29 @@ class CreatureParser extends BaseParser {
 					curTrait.entries.push(entry);
 				};
 
-				if (isLegendaryDescription) {
-					// usually the first paragraph is a description of how many legendary actions the creature can make
-					// but in the case that it's missing the substring "legendary" and "action" it's probably an action
+				if (isLegendaryDescription || isMythicDescription) {
 					const compressed = curLine.replace(/\s*/g, "").toLowerCase();
-					if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+
+					if (isLegendaryDescription) {
+						// usually the first paragraph is a description of how many legendary actions the creature can make
+						// but in the case that it's missing the substring "legendary" and "action" it's probably an action
+						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+					} else if (isMythicDescription) {
+						// as above--mythic action headers include the text "legendary action"
+						if (!compressed.includes("legendary") && !compressed.includes("action")) isLegendaryDescription = false;
+					}
 				}
 
 				if (isLegendaryDescription) {
 					curTrait.entries.push(curLine.trim());
 					isLegendaryDescription = false;
+				} else if (isMythicDescription) {
+					if (/mythic\s+trait/i.test(curLine)) {
+						stats.mythicHeader = [curLine.trim()];
+					} else {
+						curTrait.entries.push(curLine.trim());
+					}
+					isMythicDescription = false;
 				} else {
 					parseFirstLine(curLine);
 				}
@@ -308,15 +333,20 @@ class CreatureParser extends BaseParser {
 					}
 					if (isActions && this._hasEntryContent(curTrait)) stats.action.push(curTrait);
 					if (isReactions && this._hasEntryContent(curTrait)) stats.reaction.push(curTrait);
+					if (isBonusActions && this._hasEntryContent(curTrait)) stats.bonus.push(curTrait);
 					if (isLegendaryActions && this._hasEntryContent(curTrait)) stats.legendary.push(curTrait);
+					if (isMythicActions && this._hasEntryContent(curTrait)) stats.mythic.push(curTrait);
 				}
+
 				curTrait = {};
 			}
 
 			// Remove keys if they are empty
 			if (stats.trait.length === 0) delete stats.trait;
+			if (stats.bonus.length === 0) delete stats.bonus;
 			if (stats.reaction.length === 0) delete stats.reaction;
 			if (stats.legendary.length === 0) delete stats.legendary;
+			if (stats.mythic.length === 0) delete stats.mythic;
 		}
 
 		(function doCleanLegendaryActionHeader () {
@@ -374,7 +404,7 @@ class CreatureParser extends BaseParser {
 		const getNewStatblock = () => {
 			return {
 				source: options.source,
-				page: options.page
+				page: options.page,
 			}
 		};
 
@@ -401,8 +431,8 @@ class CreatureParser extends BaseParser {
 		const getCleanTraitText = (line) => {
 			const [name, text] = line.replace(/^\*\*\*?/, "").split(/.\s*\*\*\*?/).map(it => it.trim());
 			return [
-				name,
-				text.replace(/\*Hit(\*:|:\*) /g, "Hit: ") // clean hit tags for later replacement
+				ConvertUtil.getCleanTraitActionName(name),
+				text.replace(/\*Hit(\*:|:\*) /g, "Hit: "), // clean hit tags for later replacement
 			]
 		};
 
@@ -417,8 +447,12 @@ class CreatureParser extends BaseParser {
 				doAddAction();
 			} else if (step === 11) { // reactions
 				doAddReaction();
-			} else if (step === 12) { // legendary actions
+			} else if (step === 12) { // bonus actions
+				doAddBonusAction();
+			} else if (step === 13) { // legendary actions
 				doAddLegendary();
+			} else if (step === 14) { // mythic actions
+				doAddMythic();
 			}
 		};
 
@@ -443,35 +477,21 @@ class CreatureParser extends BaseParser {
 			trait = null;
 		};
 
-		const doAddAction = () => {
+		const _doAddGenericAction = (prop) => {
 			if (this._hasEntryContent(trait)) {
-				stats.action = stats.action || [];
+				stats[prop] = stats[prop] || [];
 
 				DiceConvert.convertTraitActionDice(trait);
-				stats.action.push(trait);
+				stats[prop].push(trait);
 			}
 			trait = null;
 		};
 
-		const doAddReaction = () => {
-			if (this._hasEntryContent(trait)) {
-				stats.reaction = stats.reaction || [];
-
-				DiceConvert.convertTraitActionDice(trait);
-				stats.reaction.push(trait);
-			}
-			trait = null;
-		};
-
-		const doAddLegendary = () => {
-			if (this._hasEntryContent(trait)) {
-				stats.legendary = stats.legendary || [];
-
-				DiceConvert.convertTraitActionDice(trait);
-				stats.legendary.push(trait);
-			}
-			trait = null;
-		};
+		const doAddAction = () => _doAddGenericAction("action");
+		const doAddReaction = () => _doAddGenericAction("reaction");
+		const doAddBonusAction = () => _doAddGenericAction("bonus");
+		const doAddLegendary = () => _doAddGenericAction("legendary");
+		const doAddMythic = () => _doAddGenericAction("mythic");
 
 		const getCleanedRaw = (str) => {
 			return str.trim()
@@ -627,9 +647,17 @@ class CreatureParser extends BaseParser {
 				doAddFromParsed();
 				step = 11;
 				continue;
-			} else if (cleanedLine.toLowerCase() === "legendary actions") {
+			} else if (cleanedLine.toLowerCase() === "bonus actions") {
 				doAddFromParsed();
 				step = 12;
+				continue;
+			} else if (cleanedLine.toLowerCase() === "legendary actions") {
+				doAddFromParsed();
+				step = 13;
+				continue;
+			} else if (cleanedLine.toLowerCase() === "mythic actions") {
+				doAddFromParsed();
+				step = 14;
 				continue;
 			}
 
@@ -672,8 +700,21 @@ class CreatureParser extends BaseParser {
 				}
 			}
 
-			// legendary actions
+			// bonus actions
 			if (step === 12) {
+				if (isInlineHeader(curLine)) {
+					doAddBonusAction();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// legendary actions
+			if (step === 13) {
 				if (isInlineLegendaryActionItem(curLine)) {
 					doAddLegendary();
 					trait = {name: "", entries: []};
@@ -691,6 +732,29 @@ class CreatureParser extends BaseParser {
 						// ignore generic LA intro; the renderer will insert it
 						if (!curLine.toLowerCase().includes("can take 3 legendary actions")) {
 							trait = {name: "", entries: [stripLeadingSymbols(curLine)]};
+						}
+					} else trait.entries.push(stripLeadingSymbols(curLine));
+				}
+			}
+
+			// mythic actions
+			if (step === 14) {
+				if (isInlineLegendaryActionItem(curLine)) {
+					doAddMythic();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanLegendaryActionText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else if (isInlineHeader(curLine)) {
+					doAddMythic();
+					trait = {name: "", entries: []};
+					const [name, text] = getCleanTraitText(curLine);
+					trait.name = name;
+					trait.entries.push(stripLeadingSymbols(text));
+				} else {
+					if (!trait) { // mythic action intro text
+						if (curLine.toLowerCase().includes("mythic trait is active")) {
+							stats.mythicHeader = [stripLeadingSymbols(curLine)];
 						}
 					} else trait.entries.push(stripLeadingSymbols(curLine));
 				}
@@ -773,7 +837,7 @@ class CreatureParser extends BaseParser {
 		AcConvert.tryPostProcessAc(
 			stats,
 			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}AC "${ac}" requires manual conversion`),
-			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Failed to parse AC "${ac}"`)
+			(ac) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Failed to parse AC "${ac}"`),
 		);
 		TagAttack.tryTagAttacks(stats, (atk) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Manual attack tagging required for "${atk}"`));
 		TagHit.tryTagHits(stats);
@@ -783,10 +847,11 @@ class CreatureParser extends BaseParser {
 		TagCondition.tryTagConditionsRegionalsLairs(stats, (legendaryGroup) => options.cbWarning(`${stats.name ? `(${stats.name}) ` : ""}Legendary group "${legendaryGroup.name} :: ${legendaryGroup.source}" could not be found during condition tagging`));
 		TraitActionTag.tryRun(stats);
 		LanguageTag.tryRun(stats);
-		SenseTag.tryRun(stats);
+		SenseFilterTag.tryRun(stats);
 		SpellcastingTypeTag.tryRun(stats);
 		DamageTypeTag.tryRun(stats);
 		MiscTag.tryRun(stats);
+		DetectNamedCreature.tryRun(stats);
 		doCleanup();
 	}
 
@@ -807,7 +872,7 @@ class CreatureParser extends BaseParser {
 
 				return { // retain any leading junk, as we'll parse it out in a later step
 					type: `${mSwarm[1]}${swarmTypeSingular}`,
-					swarmSize: mSwarm[2][0].toUpperCase()
+					swarmSize: mSwarm[2][0].toUpperCase(),
 				}
 			}
 
@@ -879,9 +944,12 @@ class CreatureParser extends BaseParser {
 		} else {
 			// regular creatures
 			stats.size = line[0].toUpperCase();
-			stats.type = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[0].split(" ").splice(1).join(" ");
 
-			stats.alignment = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX)[1].toLowerCase();
+			const spl = line.split(StrUtil.COMMAS_NOT_IN_PARENTHESES_REGEX);
+
+			stats.type = spl[0].split(" ").splice(1).join(" ");
+
+			stats.alignment = (spl[1] || "").toLowerCase();
 			AlignmentConvert.tryConvertAlignment(stats, (ali) => options.cbWarning(`Alignment "${ali}" requires manual conversion`));
 		}
 
@@ -910,10 +978,11 @@ class CreatureParser extends BaseParser {
 		// split HP into average and formula
 		const m = /^(\d+)\s*\((.*?)\)$/.exec(rawHp.trim());
 		if (!m) stats.hp = {special: rawHp}; // for e.g. Avatar of Death
+		else if (!Renderer.dice.lang.getTree3(m[2])) stats.hp = {special: rawHp}; // for e.g. "x (see notes)"
 		else {
 			stats.hp = {
 				average: Number(m[1]),
-				formula: m[2]
+				formula: m[2],
 			};
 			DiceConvert.cleanHpDice(stats);
 		}
@@ -1021,11 +1090,11 @@ class CreatureParser extends BaseParser {
 }
 CreatureParser.SKILL_SPACE_MAP = {
 	"sleightofhand": "sleight of hand",
-	"animalhandling": "animal handling"
+	"animalhandling": "animal handling",
 };
 
 if (typeof module !== "undefined") {
 	module.exports = {
-		CreatureParser
+		CreatureParser,
 	};
 }

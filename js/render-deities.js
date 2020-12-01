@@ -24,10 +24,10 @@ class RenderDeities {
 				{
 					entries: [
 						...deity.customExtensionOf ? [`{@note This deity is a custom extension of {@deity ${deity.customExtensionOf}} with additional information from <i title="${Parser.sourceJsonToFull(deity.source).escapeQuotes()}">${Parser.sourceJsonToAbv(deity.source)}</i>.}`] : [],
-						...deity.entries
-					]
+						...deity.entries,
+					],
 				},
-				renderStack
+				renderStack,
 			);
 		}
 
@@ -37,7 +37,7 @@ class RenderDeities {
 			${reprintIndex ? `
 				<tr><td colspan="6">
 				<i class="text-muted">
-				${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${deity.page > 0 ? `, page ${deity.page}` : ""}).
+				${reprintIndex === 1 ? `This deity is a reprint.` : ""} The version below was printed in an older publication (${Parser.sourceJsonToFull(deity.source)}${Renderer.utils.isDisplayPage(deity.page) ? `, page ${deity.page}` : ""}).
 				</i>
 				</td></tr>
 			` : ""}

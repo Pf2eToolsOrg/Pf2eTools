@@ -14,7 +14,7 @@
 				"A creature that steps on the bear trap triggers it."
 			],
 			"countermeasures": [
-				"A successful DC 10 Wisdom (Perception) check reveals the trap. A successful DC 10 Dexterity check using {@item thieves' tools|phb} disables it."
+				"A successful DC 10 Wisdom ({@skill Perception}) check reveals the trap. A successful DC 10 Dexterity check using {@item thieves' tools|phb} disables it."
 			],
 			"entries": [
 				"A bear trap resembles a set of iron jaws that springs shut when stepped on, clamping down on a creature's leg. The trap is spiked in the ground, leaving the victim immobilized."
@@ -47,7 +47,7 @@
 				"A creature that walks through the trip wire triggers the trap."
 			],
 			"countermeasures": [
-				"A successful DC 15 Wisdom (Perception) check reveals the trip wire. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire, and a check with a total of 5 or lower triggers the trap."
+				"A successful DC 15 Wisdom ({@skill Perception}) check reveals the trip wire. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire, and a check with a total of 5 or lower triggers the trap."
 			],
 			"entries": [
 				"The crossbow trap is a favorite of kobolds and other creatures that rely on traps to defend their lairs. It consists of a trip wire strung across a hallway and connected to a pair of hidden heavy crossbows. The crossbows are aimed to fire down the hallway at anyone who disturbs the trip wire."
@@ -80,7 +80,7 @@
 				"A creature that steps on the pressure plate triggers the trap."
 			],
 			"countermeasures": [
-				"A successful DC 20 Wisdom (Perception) check reveals the pressure plate. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables it, and a check with a total of 5 or lower triggers the trap."
+				"A successful DC 20 Wisdom ({@skill Perception}) check reveals the pressure plate. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables it, and a check with a total of 5 or lower triggers the trap."
 			],
 			"entries": [
 				"Some folk who build dungeons, such as mad wizards in search of new victims, have no intention of allowing their visitors to make an easy escape. A falling portcullis trap can be especially devious if it causes a portcullis to drop some distance away from the pressure plate that activates the trap. Although the trap is deep in the dungeon, the portcullis closes off the dungeon entrance, which is hundreds of feet away, meaning that adventurers don't know they are trapped until they decide to head for the exit."
@@ -100,7 +100,7 @@
 				"The temple of Pyremius, a god of fire, is threatened by thieves who seek to steal the fire opals displayed there by the priests in tribute to their god. A mosaic on the floor of the entryway to the inner sanctum delivers a fiery rebuke to intruders."
 			],
 			"countermeasures": [
-				"A successful DC 15 Wisdom (Perception) check reveals the presence of ash and faint burn marks in the area affected by this trap. A successful DC 15 Intelligence (Religion) check enables a creature to destroy the trap by defacing a key rune on the perimeter of the mosaic that is within reach; failing this check causes the trap to activate. A successful {@i dispel magic} (DC 15) cast on the runes destroys the trap."
+				"A successful DC 15 Wisdom ({@skill Perception}) check reveals the presence of ash and faint burn marks in the area affected by this trap. A successful DC 15 Intelligence ({@skill Religion}) check enables a creature to destroy the trap by defacing a key rune on the perimeter of the mosaic that is within reach; failing this check causes the trap to activate. A successful {@spell dispel magic} (DC 15) cast on the runes destroys the trap."
 			],
 			"entries": [
 				"Anyone who steps on the mosaic causes fire to erupt from it. Those who openly wear holy symbols of Pyremius don't trigger this trap."
@@ -115,7 +115,7 @@
 				"This trap is activated when an intruder steps on a hidden pressure plate, releasing a magical gout of flame from a nearby statue. The statue can be of anything, including a dragon or a wizard casting a spell.",
 				"The DC is 15 to spot the pressure plate, as well as faint scorch marks on the floor and walls. A spell or other effect that can sense the presence of magic, such as detect magic, reveals an aura of evocation magic around the statue.",
 				"The trap activates when more than 20 pounds of weight is placed on the pressure plate, causing the statue to release a 30-foot cone of fire. Each creature in the fire must make a DC 13 Dexterity saving throw, taking 22 ({@dice 4d10}) fire damage on a failed save, or half as much damage on a successful one.",
-				"Wedging an iron spike or other object under the pressure plate prevents the trap from activating. A successful dispel magic (DC 13) cast on the statue destroys the trap."
+				"Wedging an iron spike or other object under the pressure plate prevents the trap from activating. A successful {@spell dispel magic} (DC 13) cast on the statue destroys the trap."
 			]
 		},
 		{
@@ -126,13 +126,13 @@
 			"tier": 1,
 			"threat": 2,
 			"effect": [
-				"A net covering a 10-foot-by-10-foot area centered on the trip wire falls to the floor as a bell rings. Any creature fully within this area must succeed on a DC 15 Dexterity saving throw or be restrained. A creature can use its action to make a DC 10 Strength check to try to free itself or another creature in the net. Dealing 5 slashing damage to the net (AC 10, 20hp) also frees a creature without harming the creature."
+				"A net covering a 10-foot-by-10-foot area centered on the trip wire falls to the floor as a bell rings. Any creature fully within this area must succeed on a DC 15 Dexterity saving throw or be {@condition restrained}. A creature can use its action to make a DC 10 Strength check to try to free itself or another creature in the net. Dealing 5 slashing damage to the net (AC 10, 20hp) also frees a creature without harming the creature."
 			],
 			"trigger": [
 				"A trip wire strung across a hallway is rigged to a large net. If the trip wire is broken, the net falls on intruders. An iron bell is also rigged to the trip wire. It rings when the trap activates, alerting nearby guards."
 			],
 			"countermeasures": [
-				"A successful DC 15 Wisdom (Perception) check reveals the trip wire and the net. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire without causing the net to drop or the bell to ring; failing the check causes the trap to activate."
+				"A successful DC 15 Wisdom ({@skill Perception}) check reveals the trip wire and the net. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the trip wire without causing the net to drop or the bell to ring; failing the check causes the trap to activate."
 			],
 			"entries": [
 				"Goblins, with their propensity to enslave their enemies, prefer traps that leave intruders intact so the victims can be put to work in the mines or elsewhere."
@@ -163,12 +163,12 @@
 						{
 							"type": "item",
 							"name": "Crushing Pillars (Initiative 10).",
-							"entry": "Each creature in the 50-foot-long area beyond the first 80 feet of the hallway must make a DC 15 Dexterity saving throw. On a failed save, a creature takes 11 ({@dice 2d10}) bludgeoning damage and is knocked prone. On a successful save, the creature takes half as much damage and isn't knocked prone."
+							"entry": "Each creature in the 50-foot-long area beyond the first 80 feet of the hallway must make a DC 15 Dexterity saving throw. On a failed save, a creature takes 11 ({@dice 2d10}) bludgeoning damage and is knocked {@condition prone}. On a successful save, the creature takes half as much damage and isn't knocked {@condition prone}."
 						},
 						{
 							"type": "item",
 							"name": "Rune of Fear (Initiative 10).",
-							"entry": "Each creature in the 30-foot-long area beyond the Crushing Pillars must make a DC 15 Wisdom saving throw. On a failed saving throw, the creature becomes frightened by the rune, and it must immediately use its reaction to move its speed in the direction of the pillars. The frightened creature can't move closer to the far end of the hallway until it uses its action to make a DC 15 Wisdom saving throw, which ends the frightened condition on itself on a success."
+							"entry": "Each creature in the 30-foot-long area beyond the Crushing Pillars must make a DC 15 Wisdom saving throw. On a failed saving throw, the creature becomes {@condition frightened} by the rune, and it must immediately use its reaction to move its speed in the direction of the pillars. The {@condition frightened} creature can't move closer to the far end of the hallway until it uses its action to make a DC 15 Wisdom saving throw, which ends the {@condition frightened} condition on itself on a success."
 						}
 					]
 				}
@@ -225,7 +225,7 @@
 						{
 							"type": "itemSub",
 							"name": "Intelligence (Investigation), DC 15.",
-							"entry": "As an action, a creature that can see the blades can attempt an Intelligence (Investigation) check. A successful check means that the character has learned how to anticipate the blades' movement, imposing disadvantage on the blades' attacks against the creature while it isn't incapacitated."
+							"entry": "As an action, a creature that can see the blades can attempt an Intelligence ({@skill Investigation}) check. A successful check means that the character has learned how to anticipate the blades' movement, imposing disadvantage on the blades' attacks against the creature while it isn't {@condition incapacitated}."
 						},
 						{
 							"type": "itemSub",
@@ -245,7 +245,7 @@
 						{
 							"type": "item",
 							"name": "Rune of Fear.",
-							"entry": "The rune can be disabled with three successful DC 15 Intelligence (Arcana) checks. Each check requires an action. A creature must be at the end of the hallway to attempt the check, and only one creature can work on this task at once. Once a creature attempts a check for this purpose, no other character can do so until the end of that creature's next turn. Alternatively, the rune can be disabled with three successful castings of {@spell dispel magic} (DC 13) targeting the rune."
+							"entry": "The rune can be disabled with three successful DC 15 Intelligence ({@skill Arcana}) checks. Each check requires an action. A creature must be at the end of the hallway to attempt the check, and only one creature can work on this task at once. Once a creature attempts a check for this purpose, no other character can do so until the end of that creature's next turn. Alternatively, the rune can be disabled with three successful castings of {@spell dispel magic} (DC 13) targeting the rune."
 						}
 					]
 				}
@@ -268,7 +268,7 @@
 				"Anyone who steps on the canvas might fall into the pit."
 			],
 			"countermeasures": [
-				"A successful DC 10 Wisdom (Perception) check reveals the presence of the canvas and the 1-foot-wide ledge around the edges of the pit where it is safe to travel."
+				"A successful DC 10 Wisdom ({@skill Perception}) check reveals the presence of the canvas and the 1-foot-wide ledge around the edges of the pit where it is safe to travel."
 			],
 			"entries": [
 				"The simplest of pit traps consists of a 10-foot-deep hole in the floor, concealed by tattered canvas that's covered with leaves and dirt to look like solid ground. This type of trap is useful for blocking off the entrance to a monster lair, and usually has narrow ledges along its sides to allow for movement around it."
@@ -292,9 +292,9 @@
 					"type": "entries",
 					"name": "Hidden Pit",
 					"entries": [
-						"A successful DC 15 Wisdom (Perception) check discerns an absence of foot traffic over the section of floor that forms the pit's cover. A successful DC 15 Intelligence (Investigation) check is necessary to confirm that the trapped section of floor is actually the cover of a pit.",
+						"A successful DC 15 Wisdom ({@skill Perception}) check discerns an absence of foot traffic over the section of floor that forms the pit's cover. A successful DC 15 Intelligence ({@skill Investigation}) check is necessary to confirm that the trapped section of floor is actually the cover of a pit.",
 						"When a creature steps on the cover, it swings open like a trapdoor, causing the intruder to spill into the pit below. The pit is usually 10 or 20 feet deep but can be deeper.",
-						"Once the pit trap is detected, an iron spike or similar object can be wedged between the pit's cover and the surrounding floor in such a way as to prevent the cover from opening, thereby making it safe to cross. The cover can also be magically held shut using the arcane lock spell or similar magic."
+						"Once the pit trap is detected, an iron spike or similar object can be wedged between the pit's cover and the surrounding floor in such a way as to prevent the cover from opening, thereby making it safe to cross. The cover can also be magically held shut using the {@spell arcane lock} spell or similar magic."
 					]
 				},
 				{
@@ -322,7 +322,7 @@
 			"trapHazType": "MECH",
 			"entries": [
 				"When a creature steps on a hidden pressure plate, poison-tipped darts shoot from spring-loaded or pressurized tubes cleverly embedded in the surrounding walls. An area might include multiple pressure plates, each one rigged to its own set of darts.",
-				"The tiny holes in the walls are obscured by dust and cobwebs, or cleverly hidden amid bas-reliefs, murals, or frescoes that adorn the walls. The DC to spot them is 15. With a successful DC 15 Intelligence (Investigation) check, a character can deduce the presence of the pressure plate from variations in the mortar and stone used to create it, compared to the surrounding floor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating. Stuffing the holes with cloth or wax prevents the darts contained within from launching.",
+				"The tiny holes in the walls are obscured by dust and cobwebs, or cleverly hidden amid bas-reliefs, murals, or frescoes that adorn the walls. The DC to spot them is 15. With a successful DC 15 Intelligence ({@skill Investigation}) check, a character can deduce the presence of the pressure plate from variations in the mortar and stone used to create it, compared to the surrounding floor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating. Stuffing the holes with cloth or wax prevents the darts contained within from launching.",
 				"The trap activates when more than 20 pounds of weight is placed on the pressure plate, releasing four darts. Each dart makes a ranged attack with a +8 bonus against a random target within 10 feet of the pressure plate (vision is irrelevant to this attack roll). (If there are no targets in the area, the darts don't hit anything.) A target that is hit takes 2 ({@dice 1d4}) piercing damage and must succeed on a DC 15 Constitution saving throw, taking 11 ({@dice 2d10}) poison damage on a failed save, or half as much damage on a successful one."
 			]
 		},
@@ -334,7 +334,7 @@
 			"entries": [
 				"A poisoned needle is hidden within a treasure chest's lock, or in something else that a creature might open. Opening the chest without the proper key causes the needle to spring out, delivering a dose of poison.",
 				"When the trap is triggered, the needle extends 3 inches straight out from the lock. A creature within range takes 1 piercing damage and 11 ({@dice 2d10}) poison damage, and must succeed on a DC 15 Constitution saving throw or be {@condition poisoned} for 1 hour.",
-				"A successful DC 20 Intelligence (Investigation) check allows a character to deduce the trap's presence from alterations made to the lock to accommodate the needle.",
+				"A successful DC 20 Intelligence ({@skill Investigation}) check allows a character to deduce the trap's presence from alterations made to the lock to accommodate the needle.",
 				"A successful DC 15 Dexterity check using {@item thieves' tools|phb} disarms the trap, removing the needle from the lock. Unsuccessfully attempting to pick the lock triggers the trap."
 			]
 		},
@@ -346,13 +346,13 @@
 			"tier": 1,
 			"threat": 3,
 			"effect": [
-				"The triggering creature must make a DC 20 Constitution saving throw. On a failed save, the creature takes 14 ({@dice 4d6}) poison damage and is poisoned for 10 minutes. While poisoned in this way, the creature is paralyzed. On a successful save, the creature takes half as much damage and isn't poisoned."
+				"The triggering creature must make a DC 20 Constitution saving throw. On a failed save, the creature takes 14 ({@dice 4d6}) poison damage and is {@condition poisoned} for 10 minutes. While {@condition poisoned} in this way, the creature is {@condition paralyzed}. On a successful save, the creature takes half as much damage and isn't {@condition poisoned}."
 			],
 			"trigger": [
 				"Anyone attempting to pick or open the lock triggers the trap."
 			],
 			"countermeasures": [
-				"A successful DC 20 Wisdom (Perception) check reveals the needle, but only if a character inspects the lock. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables the needle, and a check with a total of 10 or lower triggers the trap."
+				"A successful DC 20 Wisdom ({@skill Perception}) check reveals the needle, but only if a character inspects the lock. A successful DC 20 Dexterity check using {@item thieves' tools|phb} disables the needle, and a check with a total of 10 or lower triggers the trap."
 			],
 			"entries": [
 				"A tiny, poisoned needle hidden in a lock is a good way to discourage thieves from plundering a hoard. Such a trap is usually put in a chest or in the door to a treasure chamber."
@@ -408,7 +408,7 @@
 										],
 										[
 											"2",
-											"Explosive gas fills the area. If anyone holds an open flame, it causes an explosion. All creatures in the area must make a DC 20 Dexterity saving throw, taking 22 (4d10) fire damage on a failed save, or half as much damage on a successful one. The flame is then extinguished."
+											"Explosive gas fills the area. If anyone holds an open flame, it causes an explosion. All creatures in the area must make a DC 20 Dexterity saving throw, taking 22 ({@dice 4d10}) fire damage on a failed save, or half as much damage on a successful one. The flame is then extinguished."
 										],
 										[
 											"3",
@@ -416,7 +416,7 @@
 										],
 										[
 											"4",
-											"Buffeting winds force each creature in the room to succeed on a DC 20 Strength saving throw or be knocked prone."
+											"Buffeting winds force each creature in the room to succeed on a DC 20 Strength saving throw or be knocked {@condition prone}."
 										],
 										[
 											"5",
@@ -456,7 +456,7 @@
 						{
 							"type": "item",
 							"name": "Open the Doors.",
-							"entry": "Opening the doors is the quickest way to circumvent the trap, but they are warded with magic. To open the doors, a character must first succeed on a DC 20 Wisdom (Perception) check to find the locking mechanism. A successful DC 20 Intelligence (Arcana) check is then required to disable the sphere of force that surrounds the lock (dispel magic is ineffective against it). Success on a DC 20 Dexterity check using thieves' tools picks the lock. Finally, a successful DC 20 Strength (Athletics) check is needed to push the door open. Each check requires an action."
+							"entry": "Opening the doors is the quickest way to circumvent the trap, but they are warded with magic. To open the doors, a character must first succeed on a DC 20 Wisdom ({@skill Perception}) check to find the locking mechanism. A successful DC 20 Intelligence ({@skill Arcana}) check is then required to disable the sphere of force that surrounds the lock ({@spell dispel magic} is ineffective against it). Success on a DC 20 Dexterity check using thieves' tools picks the lock. Finally, a successful DC 20 Strength ({@skill Athletics}) check is needed to push the door open. Each check requires an action."
 						},
 						{
 							"type": "item",
@@ -477,8 +477,8 @@
 			"trapHazType": "MECH",
 			"entries": [
 				"When 20 or more pounds of pressure are placed on this trap's pressure plate, a hidden trapdoor in the ceiling opens, releasing a 10-foot-diameter rolling sphere of solid stone.",
-				"With a successful DC 15 Wisdom (Perception) check, a character can spot the trapdoor and pressure plate.",
-				"A search of the floor accompanied by a successful DC 15 Intelligence (Investigation) check reveals variations in the mortar and stone that betray the pressure plate's presence. The same check made while inspecting the ceiling notes variations in the stonework that reveal the trapdoor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating.",
+				"With a successful DC 15 Wisdom ({@skill Perception}) check, a character can spot the trapdoor and pressure plate.",
+				"A search of the floor accompanied by a successful DC 15 Intelligence ({@skill Investigation}) check reveals variations in the mortar and stone that betray the pressure plate's presence. The same check made while inspecting the ceiling notes variations in the stonework that reveal the trapdoor. Wedging an iron spike or other object under the pressure plate prevents the trap from activating.",
 				"Activation of the sphere requires all creatures present to roll initiative. The sphere rolls initiative with a {@hit +8} bonus. On its turn, it moves 60 feet in a straight line.",
 				"The sphere can move through creatures' spaces, and creatures can move through its space, treating it as difficult terrain. Whenever the sphere enters a creature's space or a creature enters its space while it's rolling, that creature must succeed on a DC 15 Dexterity saving throw or take 55 ({@dice 10d10}) bludgeoning damage and be knocked {@condition prone}.",
 				"The sphere stops when it hits a wall or similar barrier. It can't go around corners, but smart dungeon builders incorporate gentle, curving turns into nearby passages that allow the sphere to keep moving.",
@@ -499,7 +499,7 @@
 				"When the lever is pulled, the trap activates."
 			],
 			"countermeasures": [
-				"The lever isn't hidden. A successful DC 15 Wisdom (Perception) check involving the surfaces in the trap's area of effect reveals scrape marks and bloodstains on the walls and floor. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the lever."
+				"The lever isn't hidden. A successful DC 15 Wisdom ({@skill Perception}) check involving the surfaces in the trap's area of effect reveals scrape marks and bloodstains on the walls and floor. A successful DC 15 Dexterity check using {@item thieves' tools|phb} disables the lever."
 			],
 			"entries": [
 				"This trap uses moving blades that sweep down through a chamber, threatening anyone nearby. Typically, a scything blade trap is activated by manipulating a lever or some other simple device. Kobolds especially like this kind of trap, since it can take down bigger creatures."
@@ -519,7 +519,7 @@
 				"Stepping on the pressure plate triggers this trap."
 			],
 			"countermeasures": [
-				"A successful DC 20 Wisdom (Perception) check reveals the pressure plate. A successful DC 20 Intelligence (Arcana) check made within 5 feet of the pressure plate disables the trap, and a check with a total of 10 or lower triggers it. A successful {@spell dispel magic} (DC 19) cast on the pressure plate destroys the trap."
+				"A successful DC 20 Wisdom ({@skill Perception}) check reveals the pressure plate. A successful DC 20 Intelligence ({@skill Arcana}) check made within 5 feet of the pressure plate disables the trap, and a check with a total of 10 or lower triggers it. A successful {@spell dispel magic} (DC 19) cast on the pressure plate destroys the trap."
 			],
 			"entries": [
 				"When a sleep of ages trap activates, a pressure plate unleashes a spell that threatens to send intruders into a deep slumber. The dungeon's guardians can then more easily dispose of the sleepers."
@@ -529,11 +529,11 @@
 			"name": "Sphere of Annihilation",
 			"source": "DMG",
 			"page": 123,
-			"trapHazType": "MECH",
+			"trapHazType": "MAG",
 			"entries": [
 				"Magical, impenetrable darkness fills the gaping mouth of a stone face carved into a wall. The mouth is 2 feet in diameter and roughly circular. No sound issues from it, no light can illuminate the inside of it, and any matter that enters it is instantly obliterated.",
-				"A successful DC 20 Intelligence (Arcana) check reveals that the mouth contains a sphere of annihilation that can't be controlled or moved. It is otherwise identical to a normal {@item sphere of annihilation}, as described in chapter 7, \"Treasure.\" Some versions of the trap include an enchantment placed on the stone face, such that specified creatures feel an overwhelming urge to approach it and crawl inside its mouth. This effect is otherwise like the sympathy aspect of the antipathy/sympathy spell.",
-				"A successful dispel magic (DC 18) removes this enchantment."
+				"A successful DC 20 Intelligence ({@skill Arcana}) check reveals that the mouth contains a sphere of annihilation that can't be controlled or moved. It is otherwise identical to a normal {@item sphere of annihilation}, as described in chapter 7, \"Treasure.\" Some versions of the trap include an enchantment placed on the stone face, such that specified creatures feel an overwhelming urge to approach it and crawl inside its mouth. This effect is otherwise like the sympathy aspect of the {@spell antipathy/sympathy} spell.",
+				"A successful {@spell dispel magic} (DC 18) removes this enchantment."
 			]
 		},
 		{
@@ -557,7 +557,7 @@
 						{
 							"type": "item",
 							"name": "Sphere of Crushing Doom (Initiative 10).",
-							"entry": "The trap's active element is a sphere of steel that almost fills the 10-foot width of the hallway and rolls to the bottom of the slope on its turn. Each creature in the sphere's path must make a DC 20 Strength saving throw. On a failed save, a creature takes 22 (4d10) bludgeoning damage and is knocked prone. On a successful save, a creature takes half as much damage and isn't knocked prone. Objects that block the sphere, such as a conjured wall, take maximum damage from the impact."
+							"entry": "The trap's active element is a sphere of steel that almost fills the 10-foot width of the hallway and rolls to the bottom of the slope on its turn. Each creature in the sphere's path must make a DC 20 Strength saving throw. On a failed save, a creature takes 22 ({@dice 4d10}) bludgeoning damage and is knocked {@condition prone}. On a successful save, a creature takes half as much damage and isn't knocked {@condition prone}. Objects that block the sphere, such as a conjured wall, take maximum damage from the impact."
 						}
 					]
 				}
@@ -591,8 +591,8 @@
 							"type": "item",
 							"name": "Disrupt the Portals.",
 							"entries": [
-								"Either portal can be neutralized with three successful DC 20 Intelligence (Arcana) checks, but the process of analyzing a portal to disrupt it takes time. Faint runes in the ceiling and floor at both ends of the hallway are involved in the functioning of the portals. A creature must first use an action to examine a set of runes, then use a subsequent action to attempt to vandalize the runes. Each successful check reduces the sphere's damage by 11 ({@dice 2d10}), as the disrupted sphere loses speed moving through the failing portal.",
-								"Alternatively, a set of runes can be disabled with three successful castings of dispel magic (DC 19) targeting any of the runes in the set.",
+								"Either portal can be neutralized with three successful DC 20 Intelligence ({@skill Arcana}) checks, but the process of analyzing a portal to disrupt it takes time. Faint runes in the ceiling and floor at both ends of the hallway are involved in the functioning of the portals. A creature must first use an action to examine a set of runes, then use a subsequent action to attempt to vandalize the runes. Each successful check reduces the sphere's damage by 11 ({@dice 2d10}), as the disrupted sphere loses speed moving through the failing portal.",
+								"Alternatively, a set of runes can be disabled with three successful castings of {@spell dispel magic} (DC 19) targeting any of the runes in the set.",
 								"If the southern portal is destroyed, the sphere slams into the south wall and comes to a halt. It blocks the door to the tomb, but the characters can escape."
 							]
 						}
@@ -605,6 +605,52 @@
 		}
 	],
 	"hazard": [
+		{
+			"name": "Avalanche",
+			"source": "IDRotF",
+			"page": 10,
+			"trapHazType": "WLD",
+			"entries": [
+				"The following rules can be used for rockslides as well as avalanches.",
+				"An avalanche is a mass of snow and debris falling rapidly down a mountainside. A typical avalanche is 300 feet wide, 150 feet long, and 30 feet thick. Creatures in the path of an avalanche can avoid it or escape it if they're close to its edge, but outrunning one is almost impossible.",
+				"When an avalanche occurs, all nearby creatures must roll initiative. Twice each round, on initiative counts 10 and 0, the avalanche travels 300 feet until it can travel no more. When an avalanche moves, any creature in its space moves along with it and falls {@condition prone}, and the creature must make a DC 15 Strength saving throw, taking {@dice 1d10} bludgeoning damage on a failed save, or half as much damage on a successful one.",
+				"When an avalanche stops, the snow settles and buries creatures in it. A creature buried in this way is {@condition blinded} and {@condition restrained} and has total cover. The creature gains one level of {@condition exhaustion} for every 5 minutes it spends buried in the snow. It can try to dig itself free as an action, breaking the surface and ending the blinded and restrained conditions on itself with a successful DC 15 Strength ({@skill Athletics}) check. A creature that fails this check three times can't attempt to dig itself out again.",
+				"A creature that is not restrained or {@condition incapacitated} can spend 1 minute freeing another creature buried in the snow. Once free, that creature is no longer blinded or restrained by the avalanche."
+			]
+		},
+		{
+			"name": "Avalanche",
+			"source": "TCE",
+			"page": 169,
+			"trapHazType": "WLD",
+			"entries": [
+				"A typical avalanche (or rockslide) is 300 feet wide, 150 feet long, and 30 feet thick. Creatures in the path of an avalanche can avoid it or escape it if they're close to its edge, but outrunning one is almost impossible.",
+				"When an avalanche occurs, all nearby creatures must roll initiative. Twice each round, on initiative counts 10 and 0, the avalanche travels 300 feet until it can travel no more. When an avalanche moves, any creature in its space moves along with it and falls {@condition prone}, and the creature must make a DC 15 Strength saving throw, taking {@dice 1d10} bludgeoning damage on a failed save, or half as much damage on a successful one.",
+				"When an avalanche stops, the snow and other debris settle and bury creatures. A creature buried in this way is {@condition blinded} and {@condition restrained}, and it has total cover. The creature gains 1 level of {@condition exhaustion} for every 5 minutes it spends buried. It can try to dig itself free as an action, breaking the surface and ending the {@condition blinded} and {@condition restrained} conditions on itself with a successful DC 15 Strength ({@skill Athletics}) check. A creature that fails this check three times can't attempt to dig itself out again.",
+				"A creature that is not {@condition restrained} or {@condition incapacitated} can spend 1 minute freeing a buried creature. Once free, that creature is no longer {@condition blinded} or {@condition restrained} by the avalanche."
+			]
+		},
+		{
+			"name": "Blizzard",
+			"source": "IDRotF",
+			"page": 10,
+			"trapHazType": "WTH",
+			"entries": [
+				"The blizzards that ravage Icewind Dale and harry travelers on the mountain pass are reflections of Auril's self-imposed isolation. A blizzard in Icewind Dale typically lasts {@dice 2d4} hours, and whenever the characters are caught in one, the following rules apply until it ends.",
+				"A blizzard's howling wind limits hearing to a range of 100 feet and imposes disadvantage on ranged weapon attack rolls. It also imposes disadvantage on Wisdom ({@skill Perception}) checks that rely on hearing. The wind extinguishes open flames, disperses fog, erases tracks in the snow, and makes flying by nonmagical means nearly impossible. A creature falls at the end of its turn if it is flying by nonmagical means and can't hover.",
+				"Visibility in a blizzard is reduced to 30 feet. Creatures without goggles or other eye protection have disadvantage on Wisdom ({@skill Perception}) checks that rely on sight due to blowing snow.",
+				"Any creature that is concentrating on a spell in a blizzard must succeed on a DC 10 Constitution saving throw at the end of its turn or lose its concentration on the spell unless the creature is sheltered against the elements (for example, in an igloo).",
+				{
+					"type": "entries",
+					"name": "Veering Off Course",
+					"id": "01f",
+					"entries": [
+						"It's easy to veer off course while traveling through a blizzard, and it's also easy for party members to become separated from one another, which is why the wisest course of action is to stay put and wait for the blizzard to pass.",
+						"If the characters travel during a blizzard, have the players designate one party member as the navigator. At the end of each hour of travel through the blizzard, the DM makes a DC 15 Wisdom ({@skill Survival}) check on behalf of the navigator. On a successful check, the party stays on course. On a failed check, the party wanders off course, putting its members no closer to their destination than they were at the start of that hour. If the check fails by 5 or more and the party members aren't tied together, one randomly determined party member becomes lost in the blizzard and separated from the others. If the group tries to reunite with its missing member, have the party members (including the missing one) make a DC 15 Wisdom ({@skill Survival}) group check at the end of each hour. If this group check succeeds, the missing party member is found, but no progress is made toward reaching the group's intended destination that hour. The group check can be repeated after each hour spent searching for the missing party member."
+					]
+				}
+			]
+		},
 		{
 			"name": "Brown Mold",
 			"source": "DMG",
@@ -757,6 +803,24 @@
 			]
 		},
 		{
+			"name": "Falling into Water",
+			"source": "TCE",
+			"page": 170,
+			"trapHazType": "WLD",
+			"entries": [
+				"A creature that falls into water or another liquid can use its reaction to make a DC 15 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check to hit the surface head or feet first. On a successful check, any damage resulting from the fall is halved."
+			]
+		},
+		{
+			"name": "Falling onto a Creature",
+			"source": "TCE",
+			"page": 170,
+			"trapHazType": "WLD",
+			"entries": [
+				"If a creature falls into the space of a second creature and neither of them is Tiny, the second creature must succeed on a DC 15 Dexterity saving throw or be impacted by the falling creature, and any damage resulting from the fall is divided evenly between them. The impacted creature is also knocked {@condition prone}, unless it is two or more sizes larger than the falling creature."
+			]
+		},
+		{
 			"name": "Frigid Water",
 			"source": "DMG",
 			"page": 110,
@@ -771,7 +835,7 @@
 			"page": 105,
 			"entries": [
 				"This acidic slime devours flesh, organic material, and metal on contact. Bright green, wet, and sticky, it clings to walls, floors, and ceilings in patches.",
-				"A patch of green slime covers a 5-foot square, has blindsight out to a range of 30 feet, and drops from walls and ceilings when it detects movement below it. Beyond that, it has no ability to move. A creature aware of the slime's presence can avoid being struck by it with a successful DC 10 Dexterity saving throw. Otherwise, the slime can't be avoided as it drops.",
+				"A patch of green slime covers a 5-foot square, has {@sense blindsight} out to a range of 30 feet, and drops from walls and ceilings when it detects movement below it. Beyond that, it has no ability to move. A creature aware of the slime's presence can avoid being struck by it with a successful DC 10 Dexterity saving throw. Otherwise, the slime can't be avoided as it drops.",
 				"A creature that comes into contact with green slime takes 5 ({@dice 1d10}) acid damage. The creature takes the damage again at the start of each of its turns until the slime is scraped off or destroyed. Against wood or metal, green slime deals 11 ({@dice 2d10}) acid damage each round, and any nonmagical wood or metal weapon or tool used to scrape off the slime is effectively destroyed.",
 				"Sunlight, any effect that cures disease, and any effect that deals cold, fire, or radiant damage destroys a patch of green slime."
 			]
@@ -913,7 +977,7 @@
 			"source": "VGM",
 			"page": 196,
 			"entries": [
-				"The fungus known as russet mold is reddish-brown in color and found only in places that are dark, warm, and wet. Russet mold that spreads out across a metal object can be mistaken for natural rust, and a successful DC 15 Intelligence (Nature) or Wisdom (Survival) check is required to identify it accurately by sight in such a case.",
+				"The fungus known as russet mold is reddish-brown in color and found only in places that are dark, warm, and wet. Russet mold that spreads out across a metal object can be mistaken for natural rust, and a successful DC 15 Intelligence ({@skill Nature}) or Wisdom ({@skill Survival}) check is required to identify it accurately by sight in such a case.",
 				"Any creature that comes within 5 feet of russet mold must make a DC 13 Constitution saving throw as the mold emits a puff of spores. On a failed save, the creature becomes {@condition poisoned}. While {@condition poisoned} in this way, the creature takes 7 ({@dice 2d6}) poison damage at the start of each of its turns, sprouting mold as it takes damage. The creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. Any magic that neutralizes poison or cures disease kills the infestation. A creature reduced to 0 hit points by the mold's poison damage dies. If the dead creature is a beast, a giant, or a humanoid, one or more newborn {@creature Vegepygmy|vgm|vegepygmies} emerge from its body 24 hours later: one newborn from a Small corpse, two from a Medium corpse, four from a Large corpse, eight from a Huge corpse, or sixteen from a Gargantuan corpse.",
 				"Russet mold can be hard to kill, since weapons and most types of damage do it no harm. Effects that deal acid, necrotic, or radiant damage kill 1 square foot of russet mold per 1 damage dealt. A pound of salt, a gallon of alcohol, or a magical effect that cures disease kills russet mold in a square area that is 10 feet on a side. Sunlight kills any russet mold in the light's area."
 			]
@@ -924,7 +988,7 @@
 			"page": 110,
 			"trapHazType": "WLD",
 			"entries": [
-				"Slippery ice is difficult terrain. When a creature moves onto slippery ice for the first time on a turn, it must succeed on a DC 10 Dexterity (Acrobatics) check or fall {@condition prone}."
+				"Slippery ice is difficult terrain. When a creature moves onto slippery ice for the first time on a turn, it must succeed on a DC 10 Dexterity ({@skill Acrobatics}) check or fall {@condition prone}."
 			]
 		},
 		{
@@ -951,7 +1015,7 @@
 			"source": "DMG",
 			"page": 105,
 			"entries": [
-				"Giant spiders weave thick, sticky webs across passages and at the bottom of pits to snare prey. These web-filled areas are difficult terrain. Moreover, a creature entering a webbed area for the first time on a turn or starting its turn there must succeed on a DC 12 Dexterity saving throw or become {@condition restrained} by the webs. A {@condition restrained} creature can use its action to try to escape, doing so with a successful DC 12 Strength (Athletics) or Dexterity (Acrobatics) check.",
+				"Giant spiders weave thick, sticky webs across passages and at the bottom of pits to snare prey. These web-filled areas are difficult terrain. Moreover, a creature entering a webbed area for the first time on a turn or starting its turn there must succeed on a DC 12 Dexterity saving throw or become {@condition restrained} by the webs. A {@condition restrained} creature can use its action to try to escape, doing so with a successful DC 12 Strength ({@skill Athletics}) or Dexterity ({@skill Acrobatics}) check.",
 				"Each 10-foot cube of giant webs has AC 10, 15 hit points, vulnerability to fire, and immunity to bludgeoning, piercing, and psychic damage."
 			]
 		},

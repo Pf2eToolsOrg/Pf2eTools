@@ -4,7 +4,7 @@
 
 	"title": "Entry",
 	"description": "A recursively renderable object.",
-	"version": "1.2.18",
+	"version": "1.3.0",
 
 	"definitions" : {
 		"_arrayOfString": {
@@ -14,6 +14,31 @@
 				"type": "string"
 			}
 		},
+		"mediaHref": {
+			"oneOf": [
+				{
+					"properties": {
+						"type": {"const": "internal"},
+						"path": {
+							"type": "string"
+						}
+					},
+					"required": ["path"],
+					"additionalProperties": false
+				},
+				{
+					"properties": {
+						"type": {"const": "external"},
+						"url": {
+							"type": "string"
+						}
+					},
+					"required": ["url"],
+					"additionalProperties": false
+				}
+			]
+		},
+
 		"entry": {
 			"properties": {
 				"name": {
@@ -26,6 +51,7 @@
 					"type": "string"
 				},
 				"data": {
+					"description": "A generic object for storing special data for external use-cases. Keys prefixed with \"rd-\" should be added as \"data-\" HTML attributes when rendering to HTML.",
 					"type": "object"
 				},
 				"page": {
@@ -62,7 +88,6 @@
 							}
 						},
 						"data": {
-							"description": "A generic object for storing special data for external use-cases.",
 							"type": "object"
 						},
 						"page": {
@@ -217,9 +242,12 @@
 				{
 					"properties": {
 						"type": {"const": "options"},
-						"name": {
-							"type": "string"
+						"count": {
+							"description": "Used to specify how many of the listed options can be chosen as e.g. permanent character features. Leave blank for transient choices.",
+							"type": "integer"
 						},
+						"name": {"type": "string"},
+						"style": {"type": "string"},
 						"entries": {
 							"type": "array",
 							"items": {
@@ -495,7 +523,7 @@
 							"type": "array",
 							"items": {
 								"type": "string",
-								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								"enum": ["str", "dex", "con", "int", "wis", "cha", "spellcasting"]
 							}
 						}
 					},
@@ -517,7 +545,7 @@
 							"type": "array",
 							"items": {
 								"type": "string",
-								"enum": ["str", "dex", "con", "int", "wis", "cha"]
+								"enum": ["str", "dex", "con", "int", "wis", "cha", "spellcasting"]
 							}
 						}
 					},
@@ -624,6 +652,13 @@
 												},
 												"source": {
 													"type": "string"
+												},
+												"hash": {
+													"description": "Optional; overrides the href hash for hover handlers.",
+													"type": "string"
+												},
+												"hashPreEncoded": {
+													"type": "boolean"
 												}
 											},
 											"additionalProperties": false,
@@ -664,20 +699,6 @@
 						"prerequisite": {
 							"type": "string"
 						}
-					},
-					"required": ["name"]
-				}
-			]
-		},
-		"entryPatron": {
-			"allOf" : [
-				{"$ref" : "#/definitions/entry"},
-				{
-					"properties": {
-						"name": {
-							"type": "string"
-						},
-						"type": {"const": "patron"}
 					},
 					"required": ["name"]
 				}
@@ -772,6 +793,27 @@
 						}
 					},
 					"required": ["name", "entries"]
+				}
+			]
+		},
+		"entryVariantInner": {
+			"allOf" : [
+				{"$ref" : "#/definitions/entry"},
+				{
+					"properties": {
+						"type": {"const": "variantInner"},
+						"name": {
+							"type": "string"
+						},
+						"entries": {
+							"type": "array",
+							"items": {
+								"$ref": "#"
+							}
+						}
+					},
+					"required": ["name", "entries"],
+					"additionalProperties": false
 				}
 			]
 		},
@@ -877,28 +919,11 @@
 					"properties": {
 						"type": {"const": "image"},
 						"href": {
-							"oneOf": [
-								{
-									"properties": {
-										"type": {"const": "internal"},
-										"path": {
-											"type": "string"
-										}
-									},
-									"required": ["path"],
-									"additionalProperties": false
-								},
-								{
-									"properties": {
-										"type": {"const": "external"},
-										"url": {
-											"type": "string"
-										}
-									},
-									"required": ["url"],
-									"additionalProperties": false
-								}
-							]
+							"$ref": "#/definitions/mediaHref"
+						},
+						"hrefThumbnail": {
+							"title": "A thumbnail image used in rare cases, e.g. when loading a wall of maps to choose from in the DM Screen.",
+							"$ref": "#/definitions/mediaHref"
 						},
 						"title": {
 							"type": "string"
@@ -912,6 +937,30 @@
 							"enum": [
 								"map"
 							]
+						},
+						"mapRegions": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"area": {
+										"type": "string"
+									},
+									"points": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "integer"
+											},
+											"maxLength": 2,
+											"minLength": 2
+										},
+										"uniqueItems": true
+									}
+								},
+								"additionalProperties": false
+							}
 						},
 						"width": {
 							"type": "integer"
@@ -1062,13 +1111,95 @@
 		"entryDataSpell": {
 			"properties": {
 				"type": {"const": "dataSpell"},
-				"dateSpell": {
-					"$ref" : "spells.json#/definitions/spell"
+				"dataSpell": {
+					"$ref" : "spell.json#/definitions/spell"
 				}
 			},
 			"required": [
 				"type",
 				"dataSpell"
+			]
+		},
+		"entryDataTrapHazard": {
+			"properties": {
+				"type": {"const": "dataTrapHazard"},
+				"dataTrapHazard": {
+					"oneOf": [
+						{
+							"$ref" : "trapshazards.json#/definitions/trap"
+						},
+						{
+							"$ref" : "trapshazards.json#/definitions/hazard"
+						}
+					]
+				}
+			},
+			"required": [
+				"type",
+				"dataTrapHazard"
+			]
+		},
+		"entryDataObject": {
+			"properties": {
+				"type": {"const": "dataObject"},
+				"dataObject": {
+					"$ref" : "objects.json#/definitions/object"
+				}
+			},
+			"required": [
+				"type",
+				"dataObject"
+			]
+		},
+		"entryDataItem": {
+			"properties": {
+				"type": {"const": "dataItem"},
+				"dataItem": {
+					"$ref" : "items.json#/definitions/item"
+				}
+			},
+			"required": [
+				"type",
+				"dataItem"
+			]
+		},
+		"entryRefClassFeature": {
+			"description": "For use in classes page content only.",
+			"properties": {
+				"type": {"const": "refClassFeature"},
+				"classFeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"classFeature"
+			]
+		},
+		"entryRefSubclassFeature": {
+			"description":"For use in classes page content only.",
+			"properties": {
+				"type": {"const": "refSubclassFeature"},
+				"subclassFeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"subclassFeature"
+			]
+		},
+		"entryRefOptionalfeature": {
+			"description":"For use in classes page content only.",
+			"properties": {
+				"type": {"const": "refOptionalfeature"},
+				"optionalfeature": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"type",
+				"optionalfeature"
 			]
 		},
 		"entryHr": {
@@ -1099,6 +1230,9 @@
 							"$ref": "#/definitions/_arrayOfString"
 						},
 						"will": {
+							"$ref": "#/definitions/_arrayOfString"
+						},
+						"ritual": {
 							"$ref": "#/definitions/_arrayOfString"
 						},
 						"rest": {
@@ -1170,6 +1304,7 @@
 									"rest",
 									"daily",
 									"weekly",
+									"ritual",
 									"spells"
 								]
 							}
@@ -1279,7 +1414,7 @@
 		"dataDamImmune": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/dataDmgType"
+					"$ref": "util.json#/definitions/dataDamageType"
 				},
 				{
 					"type": "object",
@@ -1315,7 +1450,7 @@
 		"dataCondImmune": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/dataConditions"
+					"$ref": "util.json#/definitions/dataCondition"
 				},
 				{
 					"type": "object",
@@ -1336,7 +1471,7 @@
 						"conditionImmune": {
 							"type": "array",
 							"items": {
-								"$ref": "#/definitions/dataConditions"
+								"$ref": "util.json#/definitions/dataCondition"
 							}
 						},
 						"note": {
@@ -1346,46 +1481,6 @@
 					"additionalProperties": false,
 					"required": ["conditionImmune"]
 				}
-			]
-		},
-		"dataConditions": {
-			"type": "string",
-			"enum": [
-				"blinded",
-				"charmed",
-				"deafened",
-				"exhaustion",
-				"frightened",
-				"grappled",
-				"incapacitated",
-				"invisible",
-				"paralyzed",
-				"petrified",
-				"poisoned",
-				"prone",
-				"restrained",
-				"stunned",
-				"unconscious",
-
-				"disease"
-			]
-		},
-		"dataDmgType": {
-			"type": "string",
-			"enum": [
-				"acid",
-				"bludgeoning",
-				"cold",
-				"fire",
-				"force",
-				"lightning",
-				"necrotic",
-				"piercing",
-				"poison",
-				"psychic",
-				"radiant",
-				"slashing",
-				"thunder"
 			]
 		}
 	},
@@ -1411,10 +1506,10 @@
 		{"$ref": "#/definitions/abilityGeneric"},
 		{"$ref": "#/definitions/entryLink"},
 		{"$ref": "#/definitions/entryOptFeature"},
-		{"$ref": "#/definitions/entryPatron"},
 		{"$ref": "#/definitions/entryInset"},
 		{"$ref": "#/definitions/entryInsetReadaloud"},
 		{"$ref": "#/definitions/entryVariant"},
+		{"$ref": "#/definitions/entryVariantInner"},
 		{"$ref": "#/definitions/entryVariantSub"},
 		{"$ref": "#/definitions/entryItem"},
 		{"$ref": "#/definitions/entryItemSub"},
@@ -1425,6 +1520,12 @@
 		{"$ref": "#/definitions/entryAttack"},
 		{"$ref": "#/definitions/entryDataCreature"},
 		{"$ref": "#/definitions/entryDataSpell"},
+		{"$ref": "#/definitions/entryDataTrapHazard"},
+		{"$ref": "#/definitions/entryDataObject"},
+		{"$ref": "#/definitions/entryDataItem"},
+		{"$ref": "#/definitions/entryRefClassFeature"},
+		{"$ref": "#/definitions/entryRefSubclassFeature"},
+		{"$ref": "#/definitions/entryRefOptionalfeature"},
 		{"$ref": "#/definitions/entryHr"},
 		{"$ref": "#/definitions/entrySpellcasting"},
 		{"$ref": "#/definitions/entryFlowchart"},

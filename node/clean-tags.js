@@ -8,7 +8,7 @@ const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
 
 	// specific files
-	"demo.json"
+	"demo.json",
 ];
 
 const TAGS_TO_CHECK = new Set([
@@ -29,7 +29,7 @@ const TAGS_TO_CHECK = new Set([
 	"trap",
 	"hazard",
 	"variantrule",
-	"vehicle"
+	"vehicle",
 ]);
 
 const files = ut.listFiles({dir: `./data`, blacklistFilePrefixes: BLACKLIST_FILE_PREFIXES});
@@ -38,7 +38,7 @@ files.forEach(f => {
 		const [all, tag, ref, src, txt] = m;
 		if (!TAGS_TO_CHECK.has(tag.toLowerCase())) return all;
 		if (ref.toLowerCase() === txt.toLowerCase()) {
-			if (!src || ut.TAG_TO_DEFAULT_SOURCE[tag.toLowerCase()] === src.toLowerCase()) {
+			if (!src || Parser.getTagSource(tag.toLowerCase()) === src.toLowerCase()) {
 				return `{@${tag} ${txt}${src ? `|${src}` : ""}}`;
 			}
 		}
@@ -48,7 +48,7 @@ files.forEach(f => {
 	const compressedSources = compressedTags.replace(/{@([a-zA-Z]+) ([^|}]+)\|([^|}]+)\|([^|}]+)}/g, (...m) => {
 		const [all, tag, ref, src, txt] = m;
 		if (!TAGS_TO_CHECK.has(tag.toLowerCase())) return all;
-		if (ut.TAG_TO_DEFAULT_SOURCE[tag.toLowerCase()] === src.toLowerCase()) {
+		if (Parser.getTagSource(tag) === src.toLowerCase()) {
 			return `{@${tag} ${ref}||${txt}}`;
 		}
 		return all;
@@ -57,7 +57,7 @@ files.forEach(f => {
 	const skippedDefaultSources = compressedSources.replace(/{@([a-zA-Z]+) ([^|}]+)\|([^|}]+)}/g, (...m) => {
 		const [all, tag, ref, src] = m;
 		if (!TAGS_TO_CHECK.has(tag.toLowerCase())) return all;
-		if (ut.TAG_TO_DEFAULT_SOURCE[tag.toLowerCase()] === src.toLowerCase()) {
+		if (Parser.getTagSource(tag) === src.toLowerCase()) {
 			return `{@${tag} ${ref}}`;
 		}
 		return all;

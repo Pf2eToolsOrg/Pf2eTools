@@ -1,8 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"version": "1.4.1",
+	"version": "2.1.1",
 
-	"title": "ClassArray",
 	"type": "object",
 
 	"definitions": {
@@ -52,41 +51,69 @@
 
 		"classFeature": {
 			"properties": {
-				"name": {
-					"type": "string"
-				},
+				"name": {"type": "string"},
+				"source": {"type": "string"},
+				"srd": {"type": "boolean"},
+				"className":  {"type": "string"},
+				"classSource": {"type": "string"},
+				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
+				"page": {"type": "integer"},
+				"type": {"type": "string", "enum": ["inset"]},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "entry.json"
 					}
 				},
-				"gainSubclassFeature": {
-					"type": "boolean"
+				"isClassFeatureVariant": {"type": "boolean"},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
 				}
 			},
 			"required": [
 				"name",
+				"source",
+				"className",
+				"classSource",
+				"level",
 				"entries"
 			],
 			"additionalProperties": false
 		},
 		"subclassFeature": {
+			"type": "object",
 			"properties": {
-				"name": {
-					"type": "string"
-				},
+				"name": {"type": "string"},
+				"source": {"type": "string"},
+				"srd": {"type": "boolean"},
+				"className":  {"type": "string"},
+				"classSource": {"type": "string"},
+				"subclassShortName":  {"type": "string"},
+				"subclassSource": {"type": "string"},
+				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
+				"page": {"type": "integer"},
+				"type": {"type": "string", "enum": ["inset"]},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "entry.json"
 					}
 				},
-				"source": {
-					"type": "string"
+				"isClassFeatureVariant": {"type": "boolean"},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
 				}
 			},
 			"required": [
+				"name",
+				"source",
+				"className",
+				"classSource",
+				"subclassShortName",
+				"subclassSource",
+				"level",
 				"entries"
 			],
 			"additionalProperties": false
@@ -142,43 +169,6 @@
 			}
 		},
 
-		"multiclassing": {
-			"type": "object",
-			"properties": {
-				"requirements": {
-					"str": {"type": "int"},
-					"dex": {"type": "int"},
-					"con": {"type": "int"},
-					"int": {"type": "int"},
-					"wis": {"type": "int"},
-					"cha": {"type": "int"}
-				},
-				"proficienciesGained": {
-					"armor": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"weapons": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"tools": {
-						"type": "array",
-						"items": {
-							"type": "string"
-						}
-					},
-					"skills": {
-						"$ref": "util.json#/definitions/skillProficiencies"
-					}
-				}
-			}
-		},
-
 		"subclass": {
 			"type": "object",
 			"properties": {
@@ -206,10 +196,24 @@
 				"subclassFeatures": {
 					"type": "array",
 					"items": {
-						"type": "array",
-						"items": {"$ref": "#/definitions/subclassFeature"}
-					},
-					"maxItems": 20
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"subclassFeature": {
+										"type": "string"
+									},
+									"gainSubclassFeature": {
+										"type": "boolean"
+									}
+								},
+								"required": ["subclassFeature"]
+							}
+						]
+					}
 				},
 				"subclassTableGroups": {
 					"type": "array",
@@ -218,6 +222,10 @@
 				"source": {
 					"type": "string"
 				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
+				"additionalSpells": { "$ref": "util.json#/definitions/additionalSpellsArray" },
 				"subclassSpells": {
 					"description": "Homebrew use only",
 					"type": "array",
@@ -228,12 +236,12 @@
 					"type": "array",
 					"items": {"$ref": "#/definitions/spellRef"}
 				},
-				"class": {
-					"description": "Homebrew use only",
+				"className": {
+					"description": "The name of the class this subclass belongs to. Homebrew use only",
 					"type": "string"
 				},
 				"classSource": {
-					"description": "Homebrew use only",
+					"description": "The source of the class this subclass belongs to (defaults to PHB). Homebrew use only",
 					"type": "string"
 				}
 			},
@@ -246,6 +254,55 @@
 			"additionalProperties": false
 		},
 
+		"requirements": {
+			"str": {
+				"type": "integer"
+			},
+			"dex": {
+				"type": "integer"
+			},
+			"con": {
+				"type": "integer"
+			},
+			"int": {
+				"type": "integer"
+			},
+			"wis": {
+				"type": "integer"
+			},
+			"cha": {
+				"type": "integer"
+			},
+			"or": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"str": {
+							"type": "integer"
+						},
+						"dex": {
+							"type": "integer"
+						},
+						"con": {
+							"type": "integer"
+						},
+						"int": {
+							"type": "integer"
+						},
+						"wis": {
+							"type": "integer"
+						},
+						"cha": {
+							"type": "integer"
+						}
+					},
+					"additionalProperties": false
+				}
+			}
+
+		},
+
 		"class": {
 			"description" : "A character class",
 
@@ -256,10 +313,16 @@
 				"source": {
 					"type": "string"
 				},
+				"otherSources": {
+					"$ref": "util.json#/definitions/otherSources"
+				},
 				"srd": {
 					"type": "boolean"
 				},
 				"isReprinted": {
+					"type": "boolean"
+				},
+				"isSidekick": {
 					"type": "boolean"
 				},
 				"hd": {
@@ -304,6 +367,9 @@
 								"type": "string"
 							}
 						},
+						"defaultData": {
+							"$ref": "util.json#/definitions/startingEquipment"
+						},
 						"goldAlternative": {
 							"type": "string"
 						}
@@ -314,58 +380,17 @@
 					],
 					"additionalProperties": false
 				},
+				"requirements": {"$ref": "#/definitions/requirements"},
 				"multiclassing": {
 					"type": "object",
 					"properties": {
-						"requirements": {
-							"str": {
-								"type": "integer"
-							},
-							"dex": {
-								"type": "integer"
-							},
-							"con": {
-								"type": "integer"
-							},
-							"int": {
-								"type": "integer"
-							},
-							"wis": {
-								"type": "integer"
-							},
-							"cha": {
-								"type": "integer"
-							},
-							"or": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"str": {
-											"type": "integer"
-										},
-										"dex": {
-											"type": "integer"
-										},
-										"con": {
-											"type": "integer"
-										},
-										"int": {
-											"type": "integer"
-										},
-										"wis": {
-											"type": "integer"
-										},
-										"cha": {
-											"type": "integer"
-										}
-									},
-									"additionalProperties": false
-								}
-							}
-						},
+						"requirements": {"$ref": "#/definitions/requirements"},
 						"proficienciesGained": {
 							"$ref": "#/definitions/proficiencies"
+						},
+						"entries": {
+							"type": "array",
+							"items": {"$ref": "entry.json"}
 						}
 					},
 					"additionalProperties": false
@@ -379,13 +404,24 @@
 				"classFeatures": {
 					"type": "array",
 					"items": {
-						"type": "array",
-						"items": {
-							"items": {"$ref": "#/definitions/classFeature"}
-						}
-					},
-					"minItems": 20,
-					"maxItems": 20
+						"oneOf": [
+							{
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"classFeature": {
+										"type": "string"
+									},
+									"gainSubclassFeature": {
+										"type": "boolean"
+									}
+								},
+								"required": ["classFeature"]
+							}
+						]
+					}
 				},
 				"subclassTitle": {
 					"type": "string"
@@ -419,7 +455,7 @@
 								"type": "string"
 							}
 						},
-						"required": ["entries", "page", "source"],
+						"required": ["entries", "source"],
 						"additionalProperties": false
 					}
 				},
@@ -465,6 +501,18 @@
 		"class": {
 			"type": "array",
 			"items": {"$ref": "#/definitions/class"}
+		},
+
+		"classFeature": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/classFeature"}
+		},
+
+		"subclassFeature": {
+			"type": "array",
+			"items": {"$ref": "#/definitions/subclassFeature"}
 		}
-	}
+	},
+	"required": ["class", "classFeature"],
+	"additionalProperties": false
 }
