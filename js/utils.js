@@ -9338,7 +9338,7 @@ function BookModeView(opts) {
 	this.pOpen = async () => {
 		if (this.active) return;
 		this.active = true;
-		document.title = `${pageTitle} - 5etools`;
+		document.title = `${pageTitle} - PF2eTools`;
 
 		this._$body = $(`body`);
 		this._$wrpBook = $(`<div class="bkmv"/>`);
