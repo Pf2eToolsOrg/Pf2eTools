@@ -274,7 +274,7 @@ class ClassesPage extends BaseComponent {
 			if (target._ !== ixToLoad) {
 				Hist.lastLoadedId = ixToLoad;
 				const cls = this._dataList[ixToLoad];
-				document.title = `${cls ? cls.name : "Classes"} - 5etools`;
+				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
 				target._ = ixToLoad;
 			}
 		} else {
@@ -1444,7 +1444,7 @@ class ClassesPage extends BaseComponent {
 			if (this._state.isViewActiveScComp) await this._subclassComparisonView.pOpen();
 			else {
 				this._subclassComparisonView.teardown();
-				document.title = `${cls ? cls.name : "Classes"} - 5etools`;
+				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
 			}
 
 			this._unlock("sc-comparison ");
@@ -1461,7 +1461,7 @@ class ClassesPage extends BaseComponent {
 			if (this._state.isViewActiveBook) this._classBookView.open();
 			else {
 				this._classBookView.teardown();
-				document.title = `${cls ? cls.name : "Classes"} - 5etools`;
+				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
 			}
 		};
 		this._addHookBase("isViewActiveBook", hkToggleBookOverlay);

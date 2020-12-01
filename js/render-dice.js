@@ -342,7 +342,7 @@ Renderer.dice = {
 			if ($roll.length) return $roll.data("name");
 			const $dispPanelTitle = $ele.closest(`.dm-screen-panel`).children(`.panel-control-title`);
 			if ($dispPanelTitle.length) return $dispPanelTitle.text().trim();
-			let name = document.title.replace("- 5etools", "").trim();
+			let name = document.title.replace("- PF2eTools", "").trim();
 			return name === "DM Screen" ? "Dungeon Master" : name;
 		}
 

@@ -678,6 +678,7 @@ ___
 
 			case "@link":
 			case "@5etools":
+			case "@PF2eTools":
 				this.__super._renderString_renderTag(textStack, meta, options, tag, text); break;
 
 			// OTHER HOVERABLES ////////////////////////////////////////////////////////////////////////////////

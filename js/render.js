@@ -2212,6 +2212,7 @@ function Renderer() {
 
 				break;
 			}
+			case "@PF2eTools":
 			case "@5etools": {
 				const [displayText, page, hash] = Renderer.splitTagByPipe(text);
 				const fauxEntry = {
@@ -8855,6 +8856,7 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@5etools":
+					case "@PF2eTools":
 					case "@adventure":
 					case "@book":
 					case "@filter":

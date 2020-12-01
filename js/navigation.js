@@ -198,7 +198,7 @@ class NavBar {
 					const sync = StorageUtil.syncGetDump();
 					const async = await StorageUtil.pGetDump();
 					const dump = {sync, async};
-					DataUtil.userDownload("5etools", dump);
+					DataUtil.userDownload("PF2eTools", dump);
 				},
 				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file.",
 			},

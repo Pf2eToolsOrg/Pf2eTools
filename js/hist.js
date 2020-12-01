@@ -33,7 +33,7 @@ class Hist {
 				else {
 					Hist.lastLoadedId = listItem.ix;
 					loadHash(listItem.ix);
-					document.title = `${listItem.name ? `${listItem.name} - ` : ""}5etools`;
+					document.title = `${listItem.name ? `${listItem.name} - ` : ""}PF2eTools`;
 				}
 			}
 		}

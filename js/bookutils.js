@@ -253,7 +253,7 @@ const BookUtil = {
 			BookUtil.renderArea.html("");
 
 			const chapterTitle = (fromIndex.contents[chapter] || {}).name;
-			document.title = `${chapterTitle ? `${chapterTitle} - ` : ""}${fromIndex.name} - 5etools`;
+			document.title = `${chapterTitle ? `${chapterTitle} - ` : ""}${fromIndex.name} - PF2eTools`;
 
 			const goToPage = (mod, isGetHref) => {
 				const getHashPart = () => {
@@ -542,7 +542,7 @@ const BookUtil = {
 		}
 
 		async function pHandleFound (fromIndex, homebrewData) {
-			document.title = `${fromIndex.name} - 5etools`;
+			document.title = `${fromIndex.name} - PF2eTools`;
 			$(`.book-head-header`).html(cleanName(fromIndex.name));
 			$(`.book-head-message`).html("Browse content. Press F to find, and G to go to page.");
 			await BookUtil.pLoadBook(fromIndex, bookId, hashParts, homebrewData);
