@@ -36,9 +36,9 @@ class SpellsPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3-9 pl-0">${spell.name}</span>
-			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}</span>
+			<span class="col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 			<span class="col-2-4 text-center">${time}</span>
-			<span class="col-2-7 sp__school-${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+			<span class="col-2-7 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(spell.source)} pr-0" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</span>
 		</a>`;
 
@@ -437,7 +437,7 @@ function addSpells (data) {
 	});
 	ListUtil.bindPinButton();
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, spellList);
+	Renderer.hover.bindPopoutButton($btnPop, spellList, SpellsPage.popoutHandlerGenerator.bind(SpellsPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
 	ListUtil.bindOtherButtons({
 		download: true,

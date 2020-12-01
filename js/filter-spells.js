@@ -166,63 +166,64 @@ class PageFilterSpells extends PageFilter {
 	constructor () {
 		super();
 
-		const levelFilter = new Filter({
+		this._sourceFilter = new SourceFilter();
+		this._levelFilter = new Filter({
 			header: "Level",
 			items: [
 				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 			],
 			displayFn: PageFilterSpells.getFltrSpellLevelStr
 		});
-		const traditionFilter = new Filter({
+		this._traditionFilter = new Filter({
 			header: "Tradition",
 			items: [...Parser.TRADITIONS],
 			itemSortFn: null
 		});
-		const focusFilter = new Filter({
+		this._focusFilter = new Filter({
 			header: "Spell Type",
 			items: ["Focus Spell", "Spell"],
 			itemSortFn: null
 		});
-		const classFilter = new Filter({header: "Classes"});
-		const domainFilter = new Filter({header: "Domains"})
-		const multiFocusFilter = new MultiFilter({
+		this._classFilter = new Filter({header: "Classes"});
+		this._domainFilter = new Filter({header: "Domains"})
+		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [focusFilter, classFilter, domainFilter]
+			filters: [this._focusFilter, this._classFilter, this._domainFilter]
 		});
-		const componentsFilter = new Filter({
+		this._componentsFilter = new Filter({
 			header: "Components",
 			items: ["Focus", "Material", "Somatic", "Verbal", "Cost"],
 			itemSortFn: null
 		});
-		const savingThrowFilter = new Filter({
+		this._savingThrowFilter = new Filter({
 			header: "Saving Throw",
 			items: ["Basic", "Fortitude", "Reflex", "Will"]
 		});
-		const generaltrtFilter = new Filter({
+		this._generalTrtFilter = new Filter({
 			header: "General"});
-		const alignmentTrtFilter = new Filter({header: "Alignment"});
-		const elementalTrtFilter = new Filter({header: "Elemental"});
-		const energyTrtFilter = new Filter({header: "Energy"});
-		const rarityTrtFilter = new Filter({
+		this._alignmentTrtFilter = new Filter({header: "Alignment"});
+		this._elementalTrtFilter = new Filter({header: "Elemental"});
+		this._energyTrtFilter = new Filter({header: "Energy"});
+		this._rarityTrtFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.TRAITS_RARITY],
 			itemSortFn: null
 		});
-		const senseTrtFilter = new Filter({header: "Senses"});
-		const traitsFilter = new MultiFilter({
+		this._sensesTrtFilter = new Filter({header: "Senses"});
+		this._traitFilter = new MultiFilter({
 			header: "Traits",
-			filters: [rarityTrtFilter, alignmentTrtFilter, elementalTrtFilter, energyTrtFilter, senseTrtFilter, generaltrtFilter]
+			filters: [this._rarityTrtFilter, this._alignmentTrtFilter, this._elementalTrtFilter, this._energyTrtFilter, this._sensesTrtFilter, this._generalTrtFilter]
 		});
-		const schoolFilter = new Filter({
+		this._schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
 			displayFn: Parser.spSchoolAbvToFull,
 			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
 		});
-		const areaFilter = new Filter({
+		this._areaFilter = new Filter({
 			header: "Area Types"
 		});
-		const timeFilter = new Filter({
+		this._timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
 				Parser.SP_TM_PF_A,
@@ -238,46 +239,23 @@ class PageFilterSpells extends PageFilter {
 			displayFn: Parser.spTimeUnitToFull,
 			itemSortFn: null
 		});
-		const durationFilter = new RangeFilter({
+		this._durationFilter = new RangeFilter({
 			header: "Duration",
 			isLabelled: true,
 			labelSortFn: null,
 			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"]
 		});
 
-		const rangeFilter = new RangeFilter({
+		this._rangeFilter = new RangeFilter({
 			header: "Range",
 			isLabelled: true,
 			labelSortFn: null,
 			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"]
 		});
-		const miscFilter = new Filter({
+		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"]
 		})
-
-
-		this._levelFilter = levelFilter;
-		this._traditionFilter = traditionFilter;
-		this._multiFocusFilter = multiFocusFilter;
-		this._focusFilter = focusFilter;
-		this._classFilter = classFilter;
-		this._domainFilter = domainFilter;
-		this._componentsFilter = componentsFilter;
-		this._savingThrowFilter = savingThrowFilter;
-		this._traitFilter = traitsFilter;
-		this._generalTrtFilter = generaltrtFilter;
-		this._alignmentTrtFilter = alignmentTrtFilter;
-		this._elementalTrtFilter = elementalTrtFilter;
-		this._energyTrtFilter = energyTrtFilter;
-		this._rarityTrtFilter = rarityTrtFilter;
-		this._sensesTrtFilter = senseTrtFilter;
-		this._schoolFilter = schoolFilter;
-		this._timeFilter = timeFilter;
-		this._durationFilter = durationFilter;
-		this._areaFilter = areaFilter;
-		this._rangeFilter = rangeFilter;
-		this._miscFilter = miscFilter;
 	}
 
 	mutateForFilters (spell) {
@@ -286,7 +264,6 @@ class PageFilterSpells extends PageFilter {
 		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
 
 		// used for filtering
-		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];
@@ -320,7 +297,7 @@ class PageFilterSpells extends PageFilter {
 
 		if (spell.level > 10) this._levelFilter.addItem(spell.level);
 		this._schoolFilter.addItem(spell.school);
-		this._sourceFilter.addItem(spell._fSources);
+		this._sourceFilter.addItem(spell.source);
 		this._traditionFilter.addItem(spell._fTraditions);
 		this._focusFilter.addItem(spell._fFocus);
 		this._classFilter.addItem(spell._fClasses)
@@ -358,7 +335,7 @@ class PageFilterSpells extends PageFilter {
 	toDisplay (values, s) {
 		return this._filterBox.toDisplay(
 			values,
-			s._fSources,
+			s.source,
 			s.level,
 			s._fTraditions,
 			s.school,
@@ -385,24 +362,84 @@ class PageFilterSpells extends PageFilter {
 		)
 	}
 }
-// toss these into the "Tags" section to save screen space
-PageFilterSpells._META_ADD_V = "Verbal";
-PageFilterSpells._META_ADD_S = "Somatic";
-PageFilterSpells._META_ADD_M = "Material";
-PageFilterSpells._META_ADD_R = "Royalty";
-PageFilterSpells._META_ADD_M_COST = "Material with Cost";
-PageFilterSpells._META_ADD_M_CONSUMED = "Material is Consumed";
-
-PageFilterSpells.F_RNG_POINT = "Point";
-PageFilterSpells.F_RNG_SELF_AREA = "Self (Area)";
-PageFilterSpells.F_RNG_SELF = "Self";
-PageFilterSpells.F_RNG_TOUCH = "Touch";
-PageFilterSpells.F_RNG_SPECIAL = "Special";
-
-PageFilterSpells._META_FILTER_BASE_ITEMS = [PageFilterSpells._META_ADD_V, PageFilterSpells._META_ADD_S, PageFilterSpells._META_ADD_M, PageFilterSpells._META_ADD_R, PageFilterSpells._META_ADD_M_COST, PageFilterSpells._META_ADD_M_CONSUMED, ...Object.values(Parser.SP_MISC_TAG_TO_FULL)];
 
 PageFilterSpells.INCHES_PER_FOOT = 12;
 PageFilterSpells.FEET_PER_MILE = 5280;
+
+class ModalFilterSpells extends ModalFilter {
+	/**
+	 * @param opts
+	 * @param opts.namespace
+	 * @param [opts.isRadio]
+	 * @param [opts.allData]
+	 */
+	constructor (opts) {
+		opts = opts || {};
+		super({
+			...opts,
+			modalTitle: "Spells",
+			pageFilter: new PageFilterSpells(),
+			fnSort: PageFilterSpells.sortSpells,
+		});
+	}
+
+	_$getColumnHeaders () {
+		const btnMeta = [
+			{sort: "name", text: "Name", width: "3-9"},
+			{sort: "level", text: "Level", width: "1-5"},
+			{sort: "time", text: "Cast Time", width: "2-4"},
+			{sort: "school", text: "School", width: "2-7"},
+			{sort: "source", text: "Source", width: "1-5"},
+		];
+		return ModalFilter._$getFilterColumnHeaders(btnMeta);
+	}
+
+	async _pInit () {
+	}
+
+	async _pLoadAllData () {
+		const brew = await BrewUtil.pAddBrewData();
+		const fromData = await DataUtil.spell.pLoadAll();
+		const fromBrew = brew.spell || [];
+		return [...fromData, ...fromBrew];
+	}
+
+	_getListItem (pageFilter, spell, spI) {
+		const eleLabel = document.createElement("label");
+		eleLabel.className = "row lst--border no-select lst__wrp-cells";
+
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS](spell);
+		const source = Parser.sourceJsonToAbv(spell.source);
+		const levelText = `${Parser.spLevelToFull(spell.level)}`;
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
+		const school = Parser.spSchoolAbvToFull(spell.school);
+
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
+		<div class="bold col-3-9">${spell.name}</div>
+		<div class="col-1-5 text-center">${levelText}</div>
+		<div class="col-2-4 text-center">${time}</div>
+		<div class="col-2-7 sp__school-${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</div>
+		<div class="col-1-5 pr-0 text-center ${Parser.sourceJsonToColor(spell.source)}" title="${Parser.sourceJsonToFull(spell.source)}" ${BrewUtil.sourceJsonToStyle(spell.source)}>${source}</div>`;
+
+		return new ListItem(
+			spI,
+			eleLabel,
+			spell.name,
+			{
+				hash,
+				source,
+				sourceJson: spell.source,
+				level: spell.level,
+				time,
+				school: Parser.spSchoolAbvToFull(spell.school),
+				normalisedTime: spell._normalisedTime,
+			},
+			{
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
+		);
+	}
+}
 
 if (typeof module !== "undefined") {
 	module.exports = PageFilterSpells;
