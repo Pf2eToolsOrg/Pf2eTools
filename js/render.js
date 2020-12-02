@@ -5738,9 +5738,9 @@ Renderer.item = {
 		}
 
 		// allows URLs to be overridden (used by roll20 script)
-		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items.json`;
-		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items-base.json`;
-		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/magicvariants.json`;
+		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items/items-crb.json`;
+		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items/items-base.json`;
+		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/items/magicvariants.json`;
 
 		const itemList = await pLoadItems();
 		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
