@@ -429,6 +429,11 @@
 			"source": "CRB",
 			"page": 302,
 			"srd": true,
+			"activity": {
+				"number": 1,
+				"unit": "Varies",
+				"entry": "Varies"
+			},
 			"entries": [
 				"You cast a spell you have prepared or in your repertoire. Casting a Spell is a special activity that takes a variable number of actions depending on the spell, as listed in each spell’s stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
 				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell’s stat block—for example, “{@as R} verbal.”",
@@ -1900,6 +1905,11 @@
 				"Exploration",
 				"Manipulate"
 			],
+			"activity": {
+				"number": 10,
+				"unit": "minutes",
+				"entry": "10 minutes"
+			},
 			"skills": [
 				{
 					"proficiency": "untrained",
@@ -2053,7 +2063,7 @@
 			],
 			"entries": [
 				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a {@item disguise kit|CRB} (found on page 290), but a simpler, quicker disguise might do the job if you’re not trying to imitate a specific individual, at the GM’s discretion.",
-				"In most cases, creatures have a chance to detect your deception only if they use the {@action Seek|CRB} action to attempt {@skill Perception} checks against your Deception DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret {@skill Deception} check for you against that creature’s {@skill Perception} DC instead. If you’re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you’re imitating, or the GM might roll a secret {@skill Deception} check even if you aren’t directly interacting with others.",
+				"In most cases, creatures have a chance to detect your deception only if they use the {@action Seek|CRB} action to attempt {@skill Perception} checks against your {@skill Deception} DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret {@skill Deception} check for you against that creature’s {@skill Perception} DC instead. If you’re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you’re imitating, or the GM might roll a secret {@skill Deception} check even if you aren’t directly interacting with others.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -2076,6 +2086,11 @@
 				"Mental",
 				"Secret"
 			],
+			"activity": {
+				"number": 1,
+				"unit": "round",
+				"entry": "at least 1 Round"
+			},
 			"skills": [
 				{
 					"proficiency": "untrained",
@@ -2261,7 +2276,7 @@
 				}
 			],
 			"entries": [
-				"You can make a request of a creature that’s friendly or helpful to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.",
+				"You can make a request of a creature that’s {@condition friendly|CRB} or {@condition helpful|CRB} to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -2302,10 +2317,10 @@
 				{
 					"type": "success_degree",
 					"entries": {
-						"Critical Success": "The target gives you the information you seek or agrees to follow your directives so long as they aren’t likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes unfriendly (if they weren’t already unfriendly or hostile). However, the target is too scared of you to retaliate—at least in the short term.",
-						"Success": "As critical success, but once the target becomes unfriendly, they might decide to act against you—for example, by reporting you to the authorities or assisting your enemies.",
-						"Failure": "The target doesn’t do what you say, and if they were not already unfriendly or hostile, they become unfriendly",
-						"Critical Failure": "The target refuses to comply, becomes hostile if they weren’t already, and can’t be Coerced by you for at least 1 week."
+						"Critical Success": "The target gives you the information you seek or agrees to follow your directives so long as they aren’t likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes {@condition unfriendly|CRB} (if they weren’t already {@condition unfriendly|CRB} or {@condition hostile|CRB}). However, the target is too scared of you to retaliate—at least in the short term.",
+						"Success": "As critical success, but once the target becomes {@condition unfriendly|CRB}, they might decide to act against you—for example, by reporting you to the authorities or assisting your enemies.",
+						"Failure": "The target doesn’t do what you say, and if they were not already {@condition unfriendly|CRB} or {@condition hostile|CRB}, they become {@condition unfriendly|CRB}",
+						"Critical Failure": "The target refuses to comply, becomes {@condition hostile|CRB} if they weren’t already, and can’t be Coerced by you for at least 1 week."
 					}
 				}
 			]
@@ -2321,6 +2336,11 @@
 				"Emotion",
 				"Mental"
 			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"skills": [
 				{
 					"proficiency": "untrained",
@@ -2386,6 +2406,11 @@
 				"Downtime",
 				"Manipulate"
 			],
+			"activity": {
+				"number": 8,
+				"unit": "hour",
+				"entry": "at least 8 hours"
+			},
 			"skills": [
 				{
 					"proficiency": "trained",
@@ -2447,6 +2472,11 @@
 				"Healing",
 				"Manipulate"
 			],
+			"activity": {
+				"number": 10,
+				"unit": "minute",
+				"entry": "10 minutes"
+			},
 			"skills": [
 				{
 					"proficiency": "trained",
@@ -3017,19 +3047,6 @@
 			],
 			"entries": [
 				"Choose an ally attempting a recurring skill check while exploring, such as climbing, or performing a different exploration tactic that requires a skill check (like Avoiding Notice). The ally must be at least an expert in that skill and must be willing to provide assistance. While Following the Expert, you match their tactic or attempt similar skill checks. Thanks to your ally’s assistance, you can add your level as a proficiency bonus to the associated skill check, even if you’re untrained. Additionally, you gain a circumstance bonus to your skill check based on your ally’s proficiency (+2 for expert, +3 for master, and +4 for legendary)."
-			]
-		},
-		{
-			"name": "Hustle",
-			"source": "CRB",
-			"page": 480,
-			"srd": true,
-			"traits": [
-				"Exploration",
-				"Move"
-			],
-			"entries": [
-				"You strain yourself to move at double your travel speed. You can Hustle only for a number of minutes equal to your Constitution modifier × 10 (minimum 10 minutes). If you are in a group that is Hustling, use the lowest Constitution modifier among everyone to determine how fast the group can Hustle together."
 			]
 		}
 	]
