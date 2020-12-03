@@ -181,7 +181,7 @@
 				"entry": "{@as f}"
 			},
 			"entries": [
-				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most manipulate actions, Release does not trigger reactions that can be triggered by actions with the manipulate trait (such as {@action Attack|CRB of Opportunity}).",
+				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most {@trait manipulate|CRB} actions, Release does not trigger reactions that can be triggered by actions with the {@trait manipulate|CRB} trait (such as {@action Attack of Opportunity|CRB}).",
 				"If you want to prepare to Release something outside of your turn, use the {@action Ready|CRB} activity."
 			]
 		},
@@ -202,7 +202,7 @@
 			"entries": [
 				"You scan an area for signs of creatures or objects. If you’re looking for creatures, choose an area you’re scanning. If precision is necessary, the GM can have you select a 30-foot cone or a 15-foot burst within line of sight. You might take a penalty if you choose an area that’s far away.",
 				"If you’re using Seek to search for objects (including secret doors and hazards), you search up to a 10-foot square adjacent to you. The GM might determine you need to Seek as an activity, taking more actions or even minutes or hours if you’re searching a particularly cluttered area.",
-				"The GM attempts a single secret {@skill Perception} check for you and compares the result to the Stealth DCs of any undetected or hidden creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone Concealing the Object). A creature you detect might remain hidden, rather than becoming observed, if you’re using an imprecise sense or if an effect (such as invisibility) prevents the subject from being observed.",
+				"The GM attempts a single secret {@skill Perception} check for you and compares the result to the {@skill Stealth} DCs of any undetected or hidden creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone Concealing the Object). A creature you detect might remain hidden, rather than becoming observed, if you’re using an imprecise sense or if an effect (such as invisibility) prevents the subject from being observed.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -328,7 +328,7 @@
 			},
 			"requirements": "You are benefiting from cover, are near a feature that allows you to take cover, or are {@condition prone|CRB}.",
 			"entries": [
-				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to {@skill Stealth} checks to {@action Hide|CRB}, {@action Sneak|CRB}, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an attack action, become {@condition unconscious|CRB}, or end this effect as a free action."
+				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to {@skill Stealth} checks to {@action Hide|CRB}, {@action Sneak|CRB}, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an {@trait attack|CRB} action, become {@condition unconscious|CRB}, or end this effect as a free action."
 			]
 		},
 		{
@@ -349,7 +349,7 @@
 					"type": "entries",
 					"name": "Long Activation Times",
 					"entries": [
-						"Some items take minutes or hours to activate. The Activate an Item activity for these items includes a mix of the listed activation components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while activating such an item, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these activations have the exploration trait, and you can’t activate them in an encounter. If combat breaks out while you’re activating one, your activation is disrupted (see the Disrupting Activations sidebar)."
+						"Some items take minutes or hours to activate. The Activate an Item activity for these items includes a mix of the listed activation components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while activating such an item, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these activations have the {@trait exploration|CRB} trait, and you can’t activate them in an encounter. If combat breaks out while you’re activating one, your activation is disrupted (see the Disrupting Activations sidebar)."
 					]
 				},
 				{
@@ -360,10 +360,10 @@
 						{
 							"type": "list",
 							"items": [
-								"Command ({@trait auditory}, {@trait concentrate})",
-								"Envision ({@trait concentrate})",
-								"Interact ({@trait manipulate})",
-								"{@action Cast|CRB a Spell}"
+								"Command ({@trait auditory|CRB}, {@trait concentrate|CRB})",
+								"Envision ({@trait concentrate|CRB})",
+								"Interact ({@trait manipulate|CRB})",
+								"{@action Cast a Spell|CRB}"
 							]
 						}
 					]
@@ -641,7 +641,7 @@
 			],
 			"requirements": "You have a focus pool, and you have spent at least 1 Focus Point since you last regained any Focus Points.",
 			"entries": [
-				"You spend 10 minutes performing deeds to restore your magical connection. This restores 1 Focus Point to your focus pool. The deeds you need to perform are specified in the class or ability that gives you your focus spells. These deeds can usually overlap with other tasks that relate to the source of your focus spells. For instance, a cleric with focus spells from a good deity can usually Refocus while tending the wounds of their allies, and a wizard of the illusionist school might be able to Refocus while attempting to {@action Identify|CRB Magic} of the illusion school."
+				"You spend 10 minutes performing deeds to restore your magical connection. This restores 1 Focus Point to your focus pool. The deeds you need to perform are specified in the class or ability that gives you your focus spells. These deeds can usually overlap with other tasks that relate to the source of your focus spells. For instance, a cleric with focus spells from a good deity can usually Refocus while tending the wounds of their allies, and a wizard of the illusionist school might be able to Refocus while attempting to {@action Identify Magic|CRB} of the illusion school."
 			]
 		},
 		{
@@ -667,7 +667,7 @@
 				"Exploration"
 			],
 			"entries": [
-				"You seek out information about your surroundings while traveling at half speed. You use {@action Recall|CRB Knowledge|CRB} as a secret check to discover clues among the various things you can see and engage with as you journey along. You can use any skill that has a {@action Recall|CRB Knowledge} action while Investigating, but the GM determines whether the skill is relevant to the clues you could find."
+				"You seek out information about your surroundings while traveling at half speed. You use {@action Recall Knowledge|CRB} as a secret check to discover clues among the various things you can see and engage with as you journey along. You can use any skill that has a {@action Recall Knowledge|CRB} action while Investigating, but the GM determines whether the skill is relevant to the clues you could find."
 			]
 		},
 		{
@@ -681,7 +681,7 @@
 			],
 			"entries": [
 				"You repeatedly cast the same spell while moving at half speed. Typically, this spell is a cantrip that you want to have in effect in the event a combat breaks out, and it must be one you can cast in 2 actions or fewer. In order to prevent fatigue due to repeated casting, you’ll likely use this activity only when something out of the ordinary occurs.",
-				"You can instead use this activity to continue {@action Sustain|CRB a Spell|CRB|Sustaining a Spell} or {@action Sustain|CRB an Activation|CRB|Activation} with a sustained duration. Most such spells or item effects can be sustained for 10 minutes, though some specify they can be sustained for a different duration."
+				"You can instead use this activity to continue {@action Sustain a Spell|CRB|Sustaining a Spell} or {@action Sustain an Activation|CRB|Activation} with a sustained duration. Most such spells or item effects can be sustained for 10 minutes, though some specify they can be sustained for a different duration."
 			]
 		},
 		{
@@ -775,7 +775,7 @@
 				"Downtime"
 			],
 			"entries": [
-				"You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the {@skill Diplomacy} skill to {@action Gather|CRB Information}, doing some research, or socializing.",
+				"You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the {@skill Diplomacy} skill to {@action Gather Information|CRB}, doing some research, or socializing.",
 				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task’s level, and your proficiency rank (as listed on {@table Table 4–2: Income Earned|CRB}).",
 				"You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task’s completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.",
 				{
@@ -1064,7 +1064,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Acrobatics"
 				}
 			],
@@ -1134,7 +1134,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Acrobatics"
 				}
 			],
@@ -1164,7 +1164,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Acrobatics"
 				}
 			],
@@ -1224,7 +1224,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Acrobatics"
 				}
 			],
@@ -1273,12 +1273,12 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Arcana"
 				}
 			],
 			"entries": [
-				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learning|CRB the Spell}.",
+				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learning the Spell|CRB}.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -1303,7 +1303,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1559,7 +1559,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1627,7 +1627,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1658,7 +1658,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1677,7 +1677,7 @@
 					"type": "inset",
 					"name": "Leap",
 					"entries": [
-						"The {@action Leap|CRB} basic action is used for {@action High|CRB Jump} and {@action Long|CRB Jump}. {@action Leap|CRB} lets you take a careful, short jump. You can {@action Leap|CRB} up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap|CRB} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more). If you make a vertical {@action Leap|CRB}, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
+						"The {@action Leap|CRB} basic action is used for {@action High Jump|CRB} and {@action Long Jump|CRB}. {@action Leap|CRB} lets you take a careful, short jump. You can {@action Leap|CRB} up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap|CRB} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more). If you make a vertical {@action Leap|CRB}, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
 					]
 				}
 			]
@@ -1694,7 +1694,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1726,7 +1726,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1765,7 +1765,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1834,7 +1834,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Athletics"
 				}
 			],
@@ -1874,7 +1874,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Athletics"
 				}
 			],
@@ -1902,13 +1902,13 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Crafting"
 				}
 			],
 			"requirements": "You have a {@item repair kit|CRB} (page 291).",
 			"entries": [
-				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the repair  kit with Skills 4 243 Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix both hands. The GM sets the DC, but it’s usually about the same DC to Repair a given item as it is to Craft it in the first place. You can’t Repair a destroyed item.",
+				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the {@item repair kit|CRB}with both hands. The GM sets the DC, but it’s usually about the same DC to Repair a given item as it is to {@skill Craft} it in the first place. You can’t Repair a destroyed item.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -1930,7 +1930,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Crafting"
 				}
 			],
@@ -1948,7 +1948,7 @@
 					]
 				},
 				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
-				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item’s Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4–2: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime Core Rulebook 244 days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item’s Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4–2: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -1986,7 +1986,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Crafting"
 				}
 			],
@@ -2018,7 +2018,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Deception"
 				}
 			],
@@ -2035,7 +2035,7 @@
 			]
 		},
 		{
-			"name": "Impresonate",
+			"name": "Impersonate",
 			"source": "CRB",
 			"page": 245,
 			"srd": true,
@@ -2047,7 +2047,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Deception"
 				}
 			],
@@ -2078,7 +2078,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Deception"
 				}
 			],
@@ -2109,7 +2109,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Deception"
 				}
 			],
@@ -2137,7 +2137,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Diplomacy"
 				}
 			],
@@ -2203,7 +2203,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Diplomacy"
 				}
 			],
@@ -2256,7 +2256,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Diplomacy"
 				}
 			],
@@ -2293,7 +2293,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Intimidation"
 				}
 			],
@@ -2323,7 +2323,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Intimidation"
 				}
 			],
@@ -2332,7 +2332,7 @@
 				{
 					"type": "success_degree",
 					"entries": {
-						"Critical Success": "s The target becomes {@condition frightened|CRB} 2.",
+						"Critical Success": "The target becomes {@condition frightened|CRB} 2.",
 						"Success": "The target becomes {@condition frightened|CRB} 1."
 					}
 				}
@@ -2353,7 +2353,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Medicine"
 				}
 			],
@@ -2365,14 +2365,14 @@
 					"style": "list-hang",
 					"items": [
 						"{@b Stabilize} Attempt a {@skill Medicine} check on a creature that has 0 Hit Points and the {@condition dying|CRB} condition. The DC is equal to 5 + that creature’s recovery roll DC (typically 15 + its dying value).",
-						"{@b Stop Bleeding} Attempt a {@skill Medicine} check on a creature that is taking {@condition persistent|CRB damage|CRB|persistent bleed damage} (page 452), giving them a chance to make another flat check to remove the {@condition persistent|CRB damage}. The DC is usually the DC of the effect that caused the bleed."
+						"{@b Stop Bleeding} Attempt a {@skill Medicine} check on a creature that is taking {@condition persistent damage|CRB|persistent bleed damage} (page 452), giving them a chance to make another flat check to remove the {@condition persistent damage|CRB}. The DC is usually the DC of the effect that caused the bleed."
 					]
 				},
 				{
 					"type": "success_degree",
 					"entries": {
 						"Success": "If you’re trying to stabilize, the creature loses the {@condition dying|CRB} condition (but remains {@condition unconscious|CRB}). If you’re trying to stop bleeding, the creature attempts a flat check to end the bleeding.",
-						"Critical Failure": "If you were trying to stabilize, the creature’s {@condition dying|CRB} value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its {@condition persistent|CRB damage|CRB|persistent bleed damage}."
+						"Critical Failure": "If you were trying to stabilize, the creature’s {@condition dying|CRB} value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its {@condition persistent damage|CRB|persistent bleed damage}."
 					}
 				}
 			]
@@ -2388,7 +2388,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Medicine"
 				}
 			],
@@ -2420,13 +2420,13 @@
 			},
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Medicine"
 				}
 			],
 			"requirements": "You have {@item healer's tools|CRB} (page 290).",
 			"entries": [
-				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison’s DC. After you attempt to Core Rulebook 248 Treat a Poison for a creature, you can’t try again until after the next time that creature attempts a save against the poison.",
+				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison’s DC. After you attempt to Treat a Poison for a creature, you can’t try again until after the next time that creature attempts a save against the poison.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -2449,7 +2449,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Medicine"
 				}
 			],
@@ -2485,7 +2485,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Nature"
 				}
 			],
@@ -2518,7 +2518,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Performance"
 				}
 			],
@@ -2583,7 +2583,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Society"
 				}
 			],
@@ -2617,7 +2617,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Stealth"
 				}
 			],
@@ -2648,7 +2648,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Stealth"
 				}
 			],
@@ -2682,7 +2682,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Stealth"
 				}
 			],
@@ -2694,11 +2694,11 @@
 					"entries": {
 						"Success": [ 
 							"You’re {@condition undetected|CRB} by the creature during your movement and remain {@condition undetected|CRB} by the creature at the end of it.",
-							"If you successfully become {@condition hidden|CRB} to a creature but then cease to have cover or greater cover against it or be concealed from it, you become {@condition observed|CRB} again. You cease being {@condition hidden|CRB} if you do anything except {@action Hide|CRB}, Sneak, or {@action Step|CRB}. Skills 4 251 Introduction Ancestries & Backgrounds Classes Skills Feats Equipment Spells The Age of Lost OMENS Playing the Game Game mastering Crafting & Treasure Appendix If you attempt to Strike a creature, the creature remains {@condition flatfooted|CRB} against that attack, and you then become observed. If you do anything else, you become observed just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth} check.",
-							"If a creature uses Seek to make you observed by it, you must successfully Hide to become hidden from it again."
+							"If you successfully become {@condition hidden|CRB} to a creature but then cease to have cover or greater cover against it or be concealed from it, you become {@condition observed|CRB} again. You cease being {@condition hidden|CRB} if you do anything except {@action Hide|CRB}, Sneak, or {@action Step|CRB}. If you attempt to Strike a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become observed. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth} check.",
+							"If a creature uses {@action Seek|CRB} to make you {@condition observed|CRB} by it, you must successfully {@action Hide|CRB} to become {@condition hidden|CRB} from it again."
 						],
 						"Failure": "A telltale sound or other sign gives your position away, though you still remain unseen. You’re {@condition hidden|CRB} from the creature throughout your movement and remain so.",
-						"Critical Failure": "You’re spotted! You’re observed by the creature throughout your movement and remain so. If you’re invisible and were hidden from the creature, instead of being observed you’re hidden throughout your movement and remain so."
+						"Critical Failure": "You’re spotted! You’re observed by the creature throughout your movement and remain so. If you’re {@condition invisible|CRB} and were {@condition hidden|CRB} from the creature, instead of being {@condition observed|CRB} you’re {@condition hidden|CRB} throughout your movement and remain so."
 					}
 				}
 			]
@@ -2714,7 +2714,7 @@
 			],
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Survival"
 				}
 			],
@@ -2778,13 +2778,13 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Survival"
 				}
 			],
 			"entries": [
 				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don’t need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
-				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn’t have the exploration trait."
+				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn’t have the {@trait exploration|CRB} trait."
 			]
 		},
 		{
@@ -2799,12 +2799,12 @@
 			],
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Survival"
 				}
 			],
 			"entries": [
-				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the exploration trait, but you might Core Rulebook 252 need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
+				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the {@trait exploration|CRB} trait, but you might need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
 					"type": "success_degree",
@@ -2868,7 +2868,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Thievery"
 				}
 			],
@@ -2898,7 +2898,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "untrained", 
+					"proficiency": "untrained",
 					"skill": "Thievery"
 				}
 			],
@@ -2930,7 +2930,7 @@
 			},
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Thievery"
 				}
 			],
@@ -2963,19 +2963,19 @@
 			},
 			"skills": [
 				{
-					"proficiency": "trained", 
+					"proficiency": "trained",
 					"skill": "Thievery"
 				}
 			],
 			"requirements": "You have {@item thieves' tools|CRB} (page 291).",
 			"entries": [
-				"Opening a lock without a key is very similar to Disabling a Device, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.",
+				"Opening a lock without a key is very similar to {@action Disable a Device|CRB|Disabling a Device}, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.",
 				{
 					"type": "success_degree",
 					"entries": {
 						"Critical Success": "You unlock the lock, or you achieve two successes toward opening a complex lock. You leave no trace of your tampering.",
 						"Success": "You open the lock, or you achieve one success toward opening a complex lock.",
-						"Critical Failure": "You break your tools. Fixing them requires using Crafting to Repair them or else swapping in replacement picks (costing 3 sp, or 3 gp for infiltrator thieves’ tools)."
+						"Critical Failure": "You break your tools. Fixing them requires using {@skill Crafting} to {@action Repair|CRB} them or else swapping in replacement picks (costing 3 sp, or 3 gp for {@item infiltrator thieves’ tools|CRB})."
 					}
 				}
 			]
@@ -2989,7 +2989,7 @@
 				"Exploration"
 			],
 			"entries": [
-				"You attempt a {@skill Stealth} check to avoid notice while traveling at half speed. If you have the {@feat Swift Sneak|CRB} feat, you can move at full Speed rather than half, but you still can’t use another exploration activity while you do so. If you have the {@feat Legendary Sneak|CRB} feat, you can move at full Speed and use a second exploration activity. If you’re {@action Avoid|CRB Notice|CRB|Avoiding Notice} at the start of an encounter, you usually roll a {@skill Stealth} check instead of a {@skill Perception} check both to determine your initiative and to see if the enemies notice you (based on their {@skill Perception} DCs, as normal for {@action Sneak|CRB}, regardless of their initiative check results)."
+				"You attempt a {@skill Stealth} check to avoid notice while traveling at half speed. If you have the {@feat Swift Sneak|CRB} feat, you can move at full Speed rather than half, but you still can’t use another exploration activity while you do so. If you have the {@feat Legendary Sneak|CRB} feat, you can move at full Speed and use a second exploration activity. If you’re {@action Avoid Notice|CRB|Avoiding Notice} at the start of an encounter, you usually roll a {@skill Stealth} check instead of a {@skill Perception} check both to determine your initiative and to see if the enemies notice you (based on their {@skill Perception} DCs, as normal for {@action Sneak|CRB}, regardless of their initiative check results)."
 			]
 		},
 		{
