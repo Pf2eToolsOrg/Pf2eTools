@@ -1283,7 +1283,7 @@
 				}
 			],
 			"entries": [
-				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learning the Spell|CRB}.",
+				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learn a Spell|CRB|Learning the Spell}.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -1314,7 +1314,7 @@
 			],
 			"requirements": "You have both hands free.",
 			"entries": [
-				"You move up, down, or across an incline. Unless it’s particularly easy, you must attempt an {@skill Athletics} check. The GM determines the DC based on the nature of the incline and environmental circumstances. You’re {@condition flat|CRB-footed} unless you have a climb Speed.",
+				"You move up, down, or across an incline. Unless it’s particularly easy, you must attempt an {@skill Athletics} check. The GM determines the DC based on the nature of the incline and environmental circumstances. You’re {@condition flat-footed|CRB} unless you have a climb Speed.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -1891,7 +1891,7 @@
 					"entries": {
 						"Critical Success": "You knock the item out of the opponent’s grasp. It falls to the ground in the opponent’s space.",
 						"Success": "You weaken your opponent’s grasp on the item. Until the start of that creature’s turn, attempts to Disarm the opponent of that item gain a +2 circumstance bonus, and the target takes a –2 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item.",
-						"Critical Failure": "You lose your balance and become {@condition flat|CRB-footed} until the start of your next turn."
+						"Critical Failure": "You lose your balance and become {@condition flat-footed|CRB} until the start of your next turn."
 					}
 				}
 			]
@@ -2000,6 +2000,11 @@
 					"skill": "Crafting"
 				}
 			],
+			"activity": {
+				"number": 10,
+				"unit": "minutes",
+				"entry": "10 minutes"
+			},
 			"requirements": "You have a {@item alchemist's tools|CRB} (page 287).",
 			"entries": [
 				"You can identify the nature of an alchemical item with 10 minutes of testing using {@item alchemist's tools|CRB}. If your attempt is interrupted in any way, you must start over.",
@@ -2038,7 +2043,7 @@
 				{
 					"type": "success_degree",
 					"entries": {
-						"Success": "You become hidden to each creature whose {@skill Perception} DC is less than or equal to your result. (The {@condition hidden|CRB} condition allows you to {@action Sneak|CRB} away, as described on page 252.) This lasts until the end of your turn or until you do anything except {@action Step|CRB} or use the {@action Hide|CRB} or the {@action Sneak|CRB} action of the {@skill Stealth} skill (pages 251 and 252). If you {@action Strike|CRB} a creature, the creature remains {@condition flat|CRB-footed} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise.",
+						"Success": "You become hidden to each creature whose {@skill Perception} DC is less than or equal to your result. (The {@condition hidden|CRB} condition allows you to {@action Sneak|CRB} away, as described on page 252.) This lasts until the end of your turn or until you do anything except {@action Step|CRB} or use the {@action Hide|CRB} or the {@action Sneak|CRB} action of the {@skill Stealth} skill (pages 251 and 252). If you {@action Strike|CRB} a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise.",
 						"Failure": "You don’t divert the attention of any creatures whose {@skill Perception} DC exceeds your result, and those creatures are aware you were trying to trick them."
 					}
 				}
@@ -2689,7 +2694,7 @@
 					"entries": {
 						"Success": [
 							"If the creature could see you, you’re now hidden from it instead of observed. If you were hidden from or undetected by the creature, you retain that condition.",
-							"If you successfully become hidden to a creature but then cease to have cover or greater cover against it or be concealed from it, you become observed again. You cease being hidden if you do anything except {@action Hide|CRB}, {@action Sneak|CRB}, or {@action Step|CRB}. If you attempt to {@action Strike|CRB} a creature, the creature remains {@condition flat|CRB-footed} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth} check.",
+							"If you successfully become hidden to a creature but then cease to have cover or greater cover against it or be concealed from it, you become observed again. You cease being hidden if you do anything except {@action Hide|CRB}, {@action Sneak|CRB}, or {@action Step|CRB}. If you attempt to {@action Strike|CRB} a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise. The GM might allow you to perform a particularly unobtrusive action without being noticed, possibly requiring another {@skill Stealth} check.",
 							"If a creature uses Seek to make you observed by it, you must successfully Hide to become hidden from it again."
 						]
 					}
