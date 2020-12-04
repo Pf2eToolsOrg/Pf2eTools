@@ -1,6 +1,6 @@
 ## 5e.tools
 
-Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](https://0x0a09942d.github.io/5etools.html).
+Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](https://0x0a09942d.github.io/PF2eTools.html).
 
 [Join the 5etools Discord here!](https://discord.gg/nGvRCDs)
 

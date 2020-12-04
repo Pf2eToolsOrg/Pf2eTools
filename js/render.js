@@ -363,6 +363,9 @@ function Renderer() {
 				case "list":
 					this._renderList(entry, textStack, meta, options);
 					break;
+				case "table-legacy":
+					this._renderTableLegacy(entry, textStack, meta, options);
+					break;
 				case "table":
 					this._renderTable(entry, textStack, meta, options);
 					break;
@@ -631,7 +634,7 @@ function Renderer() {
 		for (let i = 0; i < len; ++i) this._recursiveRender(entry.tables[i], textStack, meta);
 	};
 
-	this._renderTable = function (entry, textStack, meta, options) {
+	this._renderTableLegacy = function (entry, textStack, meta, options) {
 		// TODO add handling for rowLabel property
 		if (entry.intro) {
 			const len = entry.intro.length;
@@ -756,6 +759,116 @@ function Renderer() {
 				this._recursiveRender(entry.outro[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
 			}
 		}
+	};
+
+	this._renderTable = function (entry, textStack, meta, options) {
+		//TODO: implement rollable tables
+		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${entry.colSizes.map(x => String(x) + "fr").join(" ")}">`
+
+		if (entry.name) {
+			if (entry.id) {
+				textStack[0] += `<div class="pf2-table-caption">TABLE ${entry.id}: ${entry.name}</div>`
+			} else {
+				textStack[0] += `<div class="pf2-table-name">${entry.name}</div>`
+			}
+		}
+		if (entry.intro) {
+			const len = entry.intro.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.intro[i], textStack, meta, {prefix: `<div class="pf2-table-intro">`, suffix: "</div>"});
+			}
+		}
+
+		const numCol = Math.max(...entry.rows.map(x => x.length))
+		const lenRows = entry.rows.length;
+		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [];
+		const labelColIdx = entry.labelColIdx ? entry.labelColIdx : [];
+		let rows_since_label = 0;
+		let increase_rows_since_label = false
+		let idxSpan = 0;
+		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
+			const row = entry.rows[idxRow]
+			const lenCol = row.length
+			let row_styles = `${entry.rowStyles ? entry.rowStyles[idxRow] || "" : ""}`
+
+			if (lenCol === numCol) {
+				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
+					let styles = row_styles
+					if (labelRowIdx.includes(idxRow)) {
+						styles += ' pf2-table-label'
+						rows_since_label = 0
+						increase_rows_since_label = false
+					} else if (labelColIdx.includes(idxCol)) {
+						styles += ' pf2-table-label'
+					} else {
+						styles += ' pf2-table-entry'
+						rows_since_label % 2 ? styles += " odd" : styles += ""
+						increase_rows_since_label = true
+					}
+					styles += ` ${entry.colStyles ? entry.colStyles[idxCol] || "" : ""}`
+					textStack[0] += `<div class="${styles}">`
+					this._recursiveRender(row[idxCol], textStack, meta);
+					textStack[0] += `</div>`
+				}
+				if (increase_rows_since_label) rows_since_label += 1
+			} else {
+				let last_end = 1;
+				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
+					let styles = row_styles
+					if (labelRowIdx.includes(idxRow)) {
+						styles += ' pf2-table-label'
+						rows_since_label = 0
+						increase_rows_since_label = false
+					} else {
+						styles += ' pf2-table-entry'
+						rows_since_label % 2 ? styles += " odd" : styles += ""
+						increase_rows_since_label = true
+					}
+					let span = entry.spans[idxSpan][idxCol]
+					if (last_end !== span[0]) {
+						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`
+					}
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`
+					last_end = span[1]
+				}
+				if (increase_rows_since_label) rows_since_label += 1
+				if (last_end !== numCol + 1) {
+					let styles = row_styles
+					if (labelRowIdx.includes(idxRow)) {
+						styles += ' pf2-table-label'
+						rows_since_label = 0
+						increase_rows_since_label = false
+					} else if (labelColIdx.includes(idxCol)) {
+						styles += ' pf2-table-label'
+					} else {
+						styles += ' pf2-table-entry'
+						rows_since_label % 2 ? styles += " odd" : styles += ""
+						increase_rows_since_label = true
+					}
+					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`
+				}
+				idxSpan += 1;
+			}
+		}
+
+		if (entry.footnotes != null) {
+			const len = entry.footnotes.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.footnotes[i], textStack, meta, {prefix: `<div class="pf2-table-footnote">`, suffix: "</div>"});
+			}
+		}
+		if (entry.outro) {
+			const len = entry.outro.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.outro[i], textStack, meta, {prefix: `<div class="pf2-table-outro">`, suffix: "</div>"});
+			}
+		}
+
+		textStack[0] += `</div>`
+	};
+
+	this._renderTable_getStyles = function (entry, rowIdx, colIdx) {
+
 	};
 
 	this._renderTable_getCellDataStr = function (ent) {
@@ -5738,9 +5851,9 @@ Renderer.item = {
 		}
 
 		// allows URLs to be overridden (used by roll20 script)
-		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items.json`;
-		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items-base.json`;
-		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/magicvariants.json`;
+		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items/items-crb.json`;
+		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items/items-base.json`;
+		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/items/magicvariants.json`;
 
 		const itemList = await pLoadItems();
 		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
