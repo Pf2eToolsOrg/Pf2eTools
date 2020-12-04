@@ -348,50 +348,87 @@
 	line-height: 1.35em;
 }
 
+
 .pf2-table {
-	border: 0;
-	border-collapse: collapse;
-	margin: 1em 0 0.3em;
-	width: 400px;
-	table-layout: fixed;
-}
-.pf2-table caption {
+	display: grid;
+	grid-gap: 0;
 	padding: 0;
-	font-family: 'good-pro-condensed', sans-serif;
+	margin: 1em 0 0.3em;
 	font-size: 1.2em;
+}
+.pf2-table-name {
+	padding: 0;
+	font-family: 'good-pro', sans-serif;
+	font-size: 1em;
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 1;
+	grid-column-start: 1;
+	grid-column-end: -1;
 }
-.pf2-table tr {
-	background: #ede3c8;
+.pf2-table-caption {
+	padding: 0;
+	font-family: 'good-pro-condensed', sans-serif;
+	font-size: 1.4em;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 1;
+	grid-column-start: 1;
+	grid-column-end: -1;
 	text-align: center;
-	font-family: 'good-pro', sans-serif;
-	font-size: 0.9em;
 }
-.pf2-table tr:nth-child(2n+0) {
-	background: #f5efe0;
-}
-.pf2-table thead tr {
-	padding: 0.3em;
+.pf2-table-label {
+	padding: 0 0.3em;
 	background: #5E0000;
 	color: #FFFFFF;
 	font-family: 'good-pro', sans-serif;
 	font-size: 0.9em;
 	font-weight: 700;
-	line-height: 1.2;
+	line-height: 1.2em;
 }
-.pf2-table tfoot tr {
+.pf2-table-entry {
+	padding: 0 0.3em;
+	color: black;
+	background: #ede3c8;
+	font-family: 'good-pro', sans-serif;
+	font-size: 0.9em;
+}
+.pf2-table-footnote {
+	text-align: center;
+	font-family: 'good-pro', sans-serif;
+	font-size: 0.9em;
 	background: #e6d8b0;
-	display: block;
-	width: 400px;
-	clear: both;
+	grid-column-start: 1;
+	grid-column-end: -1;
 }
-.pf2-table-border-left {
+.pf2-table-intro {
+	color: black;
+	font-family: 'good-pro', sans-serif;
+	font-size: 0.9em;
+	grid-column-start: 1;
+	grid-column-end: -1;
+}
+.pf2-table-outro {
+	color: black;
+	font-family: 'good-pro', sans-serif;
+	font-size: 0.9em;
+	grid-column-start: 1;
+	grid-column-end: -1;
+}
+.pf2-table-entry.odd {
+	background: #f5efe0;
+}
+.pf2-table-entry.border-left {
 	border-left: 1px solid #5E0000;
 }
-.pf2-table-border-right {
+.pf2-table-entry.border-right {
 	border-right: 1px solid #5E0000;
+}
+.pf2-table-entry.border-top {
+	border-top: 1px solid #5E0000;
+}
+.pf2-table-entry.border-bottom {
+	border-bottom: 1px solid #5E0000;
 }
 
 .pf2-sidebar-left {

@@ -4,7 +4,8 @@ class TablesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterTables();
 		super({
-			dataSource: DataUtil.table.pLoadAll,
+			//dataSource: DataUtil.table.pLoadAll,
+			dataSource: "data/tables.json",
 
 			pageFilter,
 
