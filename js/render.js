@@ -763,7 +763,9 @@ function Renderer() {
 
 	this._renderTable = function (entry, textStack, meta, options) {
 		//TODO: implement rollable tables
-		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${entry.colSizes.map(x => String(x) + "fr").join(" ")}">`
+		const numCol = Math.max(...entry.rows.map(x => x.length))
+		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => String(x) + "fr").join(" ") : "1fr ".repeat(numCol)
+		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${gridTemplate}">`
 
 		if (entry.name) {
 			if (entry.id) {
@@ -775,55 +777,37 @@ function Renderer() {
 		if (entry.intro) {
 			const len = entry.intro.length;
 			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.intro[i], textStack, meta, {prefix: `<div class="pf2-table-intro">`, suffix: "</div>"});
+				this._recursiveRender(entry.intro[i], textStack, meta, {
+					prefix: `<div class="pf2-table-intro">`,
+					suffix: "</div>"
+				});
 			}
 		}
 
-		const numCol = Math.max(...entry.rows.map(x => x.length))
 		const lenRows = entry.rows.length;
-		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [];
-		const labelColIdx = entry.labelColIdx ? entry.labelColIdx : [];
-		let rows_since_label = 0;
-		let increase_rows_since_label = false
+		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [0];
+		let rowParity = 0;
 		let idxSpan = 0;
 		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
 			const row = entry.rows[idxRow]
 			const lenCol = row.length
-			let row_styles = `${entry.rowStyles ? entry.rowStyles[idxRow] || "" : ""}`
 
 			if (lenCol === numCol) {
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = row_styles
-					if (labelRowIdx.includes(idxRow)) {
-						styles += ' pf2-table-label'
-						rows_since_label = 0
-						increase_rows_since_label = false
-					} else if (labelColIdx.includes(idxCol)) {
-						styles += ' pf2-table-label'
-					} else {
-						styles += ' pf2-table-entry'
-						rows_since_label % 2 ? styles += " odd" : styles += ""
-						increase_rows_since_label = true
-					}
-					styles += ` ${entry.colStyles ? entry.colStyles[idxCol] || "" : ""}`
+					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity)
 					textStack[0] += `<div class="${styles}">`
 					this._recursiveRender(row[idxCol], textStack, meta);
 					textStack[0] += `</div>`
 				}
-				if (increase_rows_since_label) rows_since_label += 1
+				if (labelRowIdx.includes(idxRow)) {
+					rowParity = 0
+				} else {
+					rowParity = (rowParity + 1) % 2
+				}
 			} else {
 				let last_end = 1;
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = row_styles
-					if (labelRowIdx.includes(idxRow)) {
-						styles += ' pf2-table-label'
-						rows_since_label = 0
-						increase_rows_since_label = false
-					} else {
-						styles += ' pf2-table-entry'
-						rows_since_label % 2 ? styles += " odd" : styles += ""
-						increase_rows_since_label = true
-					}
+					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity)
 					let span = entry.spans[idxSpan][idxCol]
 					if (last_end !== span[0]) {
 						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`
@@ -831,20 +815,13 @@ function Renderer() {
 					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`
 					last_end = span[1]
 				}
-				if (increase_rows_since_label) rows_since_label += 1
+				if (labelRowIdx.includes(idxRow)) {
+					rowParity = 0
+				} else {
+					rowParity = (rowParity + 1) % 2
+				}
 				if (last_end !== numCol + 1) {
-					let styles = row_styles
-					if (labelRowIdx.includes(idxRow)) {
-						styles += ' pf2-table-label'
-						rows_since_label = 0
-						increase_rows_since_label = false
-					} else if (labelColIdx.includes(idxCol)) {
-						styles += ' pf2-table-label'
-					} else {
-						styles += ' pf2-table-entry'
-						rows_since_label % 2 ? styles += " odd" : styles += ""
-						increase_rows_since_label = true
-					}
+					let styles = this._renderTable_getStyles(entry, idxRow, numCol, true, rowParity)
 					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`
 				}
 				idxSpan += 1;
@@ -854,21 +831,70 @@ function Renderer() {
 		if (entry.footnotes != null) {
 			const len = entry.footnotes.length;
 			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.footnotes[i], textStack, meta, {prefix: `<div class="pf2-table-footnote">`, suffix: "</div>"});
+				this._recursiveRender(entry.footnotes[i], textStack, meta, {
+					prefix: `<div class="pf2-table-footnote">`,
+					suffix: "</div>"
+				});
 			}
 		}
 		if (entry.outro) {
 			const len = entry.outro.length;
 			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.outro[i], textStack, meta, {prefix: `<div class="pf2-table-outro">`, suffix: "</div>"});
+				this._recursiveRender(entry.outro[i], textStack, meta, {
+					prefix: `<div class="pf2-table-outro">`,
+					suffix: "</div>"
+				});
 			}
 		}
 
 		textStack[0] += `</div>`
 	};
 
-	this._renderTable_getStyles = function (entry, rowIdx, colIdx) {
+	this._renderTable_getStyles = function (entry, rowIdx, colIdx, noColStyle, rowParity) {
+		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [0];
+		const labelColIdx = entry.labelColIdx ? entry.labelColIdx : [];
+		let row_styles = ""
+		let col_styles = ""
+		let cell_styles = ""
+		let type_styles = ""
+		if (entry.rowStyles && typeof(entry.rowStyles[0])==='string') {
+			row_styles = `${entry.rowStyles ? entry.rowStyles[rowIdx] || "" : ""}`;
+		} else if (entry.rowStyles) {
+			for (let rs of entry.rowStyles) {
+				if (rs.row === rowIdx) {
+					row_styles = rs.style;
+					break;
+				}
+			}
+		}
+		if (!noColStyle && entry.colStyles && typeof(entry.colStyles[0])==='string') {
+			col_styles = `${entry.colStyles ? entry.colStyles[colIdx] || "" : ""}`;
+		} else if (!noColStyle && entry.colStyles) {
+			for (let cs of entry.colStyles) {
+				if (cs.col === rowIdx) {
+					col_styles = cs.style;
+					break;
+				}
+			}
+		}
+		if (entry.cellStyles) {
+			for (let cs of entry.cellStyles) {
+				if (cs.row === rowIdx && cs.col === colIdx) {
+					cell_styles = cs.style;
+					break;
+				}
+			}
+		}
 
+		if (labelRowIdx.includes(rowIdx)) {
+			type_styles = "pf2-table-label"
+		} else if (!noColStyle && labelColIdx.includes(colIdx)) {
+			type_styles = "pf2-table-label"
+		} else {
+			type_styles = `pf2-table-entry ${rowParity ? "odd" : ""}`
+		}
+
+		return `${row_styles} ${col_styles} ${cell_styles} ${type_styles}`
 	};
 
 	this._renderTable_getCellDataStr = function (ent) {
@@ -1111,7 +1137,7 @@ function Renderer() {
 			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
 		}
 		if (dict["note"] != null) {
-			textStack[0] += dict["note"] + ' '
+			textStack[0] += this.render(dict["note"]) + ' '
 		}
 		if (dict["DC"] != null) {
 			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `
@@ -2487,7 +2513,7 @@ function Renderer() {
 					href: {
 						type: "internal",
 						path: UrlUtil.PG_CONDITIONS_DISEASES,
-						hash:`${name}${source ? `${HASH_LIST_SEP}${source}` : `${HASH_LIST_SEP}${SRC_CRB}`}`,
+						hash: `${name}${source ? `${HASH_LIST_SEP}${source}` : `${HASH_LIST_SEP}${SRC_CRB}`}`,
 						hover: {
 							page: UrlUtil.PG_CONDITIONS_DISEASES,
 							source: source || SRC_CRB
@@ -3559,7 +3585,7 @@ Renderer.utils = {
 	},
 
 	getPageP: (it) => {
-		return `<p class="pf-2-stat-source"><strong>${it.source}</strong> page ${it.page}</p>`;
+		return `<p class="pf2-stat-source"><strong>${it.source}</strong> page ${it.page}</p>`;
 	},
 
 	getSourceAndPageHtml(it) {
@@ -8077,7 +8103,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
 			case UrlUtil.PG_TRAITS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts,"traits.json", "trait");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "traits.json", "trait");
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
 				const loadKey = UrlUtil.PG_QUICKREF;
