@@ -68,7 +68,7 @@ class NavBar {
 		addLi(ulAdventures, "adventure.html", "Test", {isSide: true, aHash: "Test", date: "1234"});
 		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
-		addLi(ulDms, "trapshazards.html", "Traps & Hazards");
+		addLi(ulDms, "hazards.html", "Traps & Hazards");
 		addDivider(ulDms);
 		addLi(ulDms, "crcalculator.html", "CR Calculator");
 		addLi(ulDms, "encountergen.html", "Encounter Generator");
@@ -77,13 +77,14 @@ class NavBar {
 		const ulReferences = addDropdown(navBar, "References");
 		addLi(ulReferences, "actions.html", "Actions");
 		addLi(ulReferences, "bestiary.html", "Bestiary");
-		addLi(ulReferences, "conditionsdiseases.html", "Conditions & Diseases");
-		addLi(ulReferences, "deities.html", "Deities");
+		addLi(ulReferences, "conditions.html", "Conditions");
 		addLi(ulReferences, "items.html", "Items");
+		addLi(ulReferences, "spells.html", "Spells");
+		addDivider(ulReferences);
+		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "languages.html", "Languages");
 		addLi(ulReferences, "rewards.html", "Supernatural Gifts & Rewards");
 		addLi(ulReferences, "psionics.html", "Psionics");
-		addLi(ulReferences, "spells.html", "Spells");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
 		addLi(ulReferences, "traits.html", "Traits");
 
@@ -97,12 +98,6 @@ class NavBar {
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addDivider(ulUtils);
 		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
-		addLi(ulUtils, "makecards.html", "RPG Cards JSON Builder");
-		addLi(ulUtils, "converter.html", "Text Converter");
-		addDivider(ulUtils);
-		addLi(ulUtils, "plutonium.html", "Plutonium (Foundry Module) Features");
-		addDivider(ulUtils);
-		addLi(ulUtils, "roll20.html", "Roll20 Script Help");
 		addDivider(ulUtils);
 		addLi(ulUtils, "changelog.html", "Changelog");
 		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});

@@ -516,7 +516,7 @@ class IndexableFileConditions extends IndexableFile {
 			category: Parser.CAT_ID_CONDITION,
 			file: "conditionsdiseases.json",
 			listProp: "condition",
-			baseUrl: "conditionsdiseases.html",
+			baseUrl: "conditions.html",
 			isHover: true,
 		});
 	}
@@ -528,7 +528,7 @@ class IndexableFileDiseases extends IndexableFile {
 			category: Parser.CAT_ID_DISEASE,
 			file: "conditionsdiseases.json",
 			listProp: "disease",
-			baseUrl: "conditionsdiseases.html",
+			baseUrl: "conditions.html",
 			isHover: true,
 		});
 	}
@@ -759,7 +759,7 @@ class IndexableFileRaces extends IndexableFile {
 			category: Parser.CAT_ID_RACE,
 			file: "races.json",
 			listProp: "race",
-			baseUrl: "races.html",
+			baseUrl: "ancestries.html",
 			isOnlyDeep: true,
 			isHover: true,
 		});
@@ -776,7 +776,7 @@ class IndexableFileRaces extends IndexableFile {
 			out.push({
 				n: r.name,
 				s: indexer.getMetaId("s", r.source),
-				u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r),
+				u: UrlUtil.URL_TO_HASH_BUILDER["ancestries.html"](r),
 			});
 		}
 
@@ -784,7 +784,7 @@ class IndexableFileRaces extends IndexableFile {
 		out.push(...subs.map(r => ({
 			n: r.name,
 			s: indexer.getMetaId("s", r.source),
-			u: UrlUtil.URL_TO_HASH_BUILDER["races.html"](r),
+			u: UrlUtil.URL_TO_HASH_BUILDER["ancestries.html"](r),
 		})));
 
 		return out;
@@ -955,7 +955,7 @@ class IndexableFileTraps extends IndexableFile {
 			category: Parser.CAT_ID_TRAP,
 			file: "trapshazards.json",
 			listProp: "trap",
-			baseUrl: "trapshazards.html",
+			baseUrl: "hazards.html",
 			isHover: true,
 		});
 	}
@@ -967,7 +967,7 @@ class IndexableFileHazards extends IndexableFile {
 			category: Parser.CAT_ID_HAZARD,
 			file: "trapshazards.json",
 			listProp: "hazard",
-			baseUrl: "trapshazards.html",
+			baseUrl: "hazards.html",
 			isHover: true,
 		});
 	}

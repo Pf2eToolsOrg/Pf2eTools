@@ -1054,7 +1054,7 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 		const arr_effects = entry.entries;
 		arr_effects.forEach(x => {
-			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${x['range_str']} </strong>`;
+			textStack[0] += `<div class="pf2-stat-text-indent-second-line"><strong>${x['range_str']} </strong>`;
 			this._recursiveRender(x['entry'], textStack, meta);
 			textStack[0] += `</div>`;
 		});
@@ -1108,7 +1108,7 @@ function Renderer() {
 		this._handleTrackDepth(entry, 1);
 
 		for (let key in entry.entries) {
-			textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${key} </strong>`
+			textStack[0] += `<div class="pf2-stat-text-indent-second-line"><strong>${key} </strong>`
 			if (typeof (entry.entries[key]) === "string") {
 				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
 			} else if (Array.isArray(entry.entries[key])) {
@@ -1132,7 +1132,7 @@ function Renderer() {
 		dict["traits"].forEach((t) => {
 			traits.push(`{@trait ${t}}`)
 		})
-		textStack[0] += `<div class="pf-2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); `
+		textStack[0] += `<div class="pf2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); `
 		if (dict["level"] != null) {
 			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
 		}
@@ -2512,10 +2512,10 @@ function Renderer() {
 					type: "link",
 					href: {
 						type: "internal",
-						path: UrlUtil.PG_CONDITIONS_DISEASES,
+						path: UrlUtil.PG_CONDITIONS,
 						hash: `${name}${source ? `${HASH_LIST_SEP}${source}` : `${HASH_LIST_SEP}${SRC_CRB}`}`,
 						hover: {
-							page: UrlUtil.PG_CONDITIONS_DISEASES,
+							page: UrlUtil.PG_CONDITIONS,
 							source: source || SRC_CRB
 						}
 					},
@@ -2710,9 +2710,9 @@ function Renderer() {
 						break;
 					case "@disease":
 					case "@status":
-						fauxEntry.href.path = "conditionsdiseases.html";
+						fauxEntry.href.path = "conditions.html";
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS_DISEASES,
+							page: UrlUtil.PG_CONDITIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -2725,8 +2725,8 @@ function Renderer() {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@race":
-						fauxEntry.href.path = "races.html";
+					case "@ancestry":
+						fauxEntry.href.path = "ancestries.html";
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_RACES,
 							source,
@@ -2757,14 +2757,6 @@ function Renderer() {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@psionic":
-						fauxEntry.href.path = "psionics.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_PSIONICS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@object":
 						fauxEntry.href.path = "objects.html";
 						fauxEntry.href.hover = {
@@ -2784,7 +2776,7 @@ function Renderer() {
 						break;
 					case "@trap":
 					case "@hazard":
-						fauxEntry.href.path = "trapshazards.html";
+						fauxEntry.href.path = "hazards.html";
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_TRAPS_HAZARDS,
 							source,
@@ -4188,7 +4180,7 @@ Renderer.condition = {
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type)}`)
 		renderStack.push(`
-			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS_DISEASES})}
+			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS})}
 			${Renderer.utils.getDividerDiv()}
 		`);
 		renderStack.push(`<div class="pf2-stat-text">`)
@@ -7017,8 +7009,8 @@ Renderer.hover = {
 		"spell": UrlUtil.PG_SPELLS,
 		"item": UrlUtil.PG_ITEMS,
 		"creature": UrlUtil.PG_BESTIARY,
-		"condition": UrlUtil.PG_CONDITIONS_DISEASES,
-		"disease": UrlUtil.PG_CONDITIONS_DISEASES,
+		"condition": UrlUtil.PG_CONDITIONS,
+		"disease": UrlUtil.PG_CONDITIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"race": UrlUtil.PG_RACES,
 		"optfeature": UrlUtil.PG_OPT_FEATURES,
@@ -8090,7 +8082,7 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
 			case UrlUtil.PG_CULTS_BOONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_CONDITIONS_DISEASES:
+			case UrlUtil.PG_CONDITIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
@@ -8197,7 +8189,7 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
-			case `fluff__${UrlUtil.PG_CONDITIONS_DISEASES}`:
+			case `fluff__${UrlUtil.PG_CONDITIONS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditionsdiseases.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_RACES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
@@ -8658,7 +8650,7 @@ Renderer.hover = {
 					showScaler: true,
 					isScaled: it._originalCr != null
 				});
-			case UrlUtil.PG_CONDITIONS_DISEASES:
+			case UrlUtil.PG_CONDITIONS:
 				return Renderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getCompactRenderedString;
@@ -8713,7 +8705,7 @@ Renderer.hover = {
 				return Renderer.monster.pGetFluff;
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.pGetFluff;
-			case UrlUtil.PG_CONDITIONS_DISEASES:
+			case UrlUtil.PG_CONDITIONS:
 				return Renderer.condition.pGetFluff;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.pGetFluff;
