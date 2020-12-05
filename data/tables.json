@@ -2,21 +2,25 @@
 	"table": [
 		{
 			"name": "Ability Modifiers",
+			"id": "1-1",
 			"source": "CRB",
 			"page": 20,
-			"colLabels": [
-				"Ability Score",
-				"Modifier",
-				"Ability Score",
-				"Modifier"
+			"labelRowIdx": [
+				0
 			],
 			"colStyles": [
-				"col-3 text-center",
-				"col-3 text-center",
-				"col-3 text-center",
-				"col-3 text-center"
+				"text-center",
+				"text-center",
+				"text-center border-left",
+				"text-center"
 			],
 			"rows": [
+				[
+					"Ability Score",
+					"Modifier",
+					"Ability Score",
+					"Modifier"
+				],
 				[
 					"1",
 					"-5",
@@ -63,35 +67,55 @@
 		},
 		{
 			"name": "The Nine Alignments",
+			"id": "1-2",
 			"source": "CRB",
 			"page": 29,
-			"colLabels": [
-				"Good",
-				"Neutral",
-				"Evil"
-			],
-			"rowLabels": [
-				"Lawful",
-				"Neutral",
-				"Chaotic"
+			"labelColIdx": [
+				0
 			],
 			"colStyles": [
-				"col-4 text-center",
-				"col-4 text-center",
-				"col-4 text-center"
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rowStyles": ["text-center"],
+			"spans": [
+				[
+					[
+						2,
+						3
+					],
+					[
+						3,
+						4
+					],
+					[
+						4,
+						5
+					]
+				]
 			],
 			"rows": [
 				[
+					"Good",
+					"Neutral",
+					"Evil"
+				],
+				[
+					"Lawful",
 					"Lawful Good (LG)",
 					"Lawful Neutral (LN)",
 					"Lawful Evil (LE)"
 				],
 				[
+					"Neutral",
 					"Neutral Good (NG)",
 					"True Neutral (N)",
 					"Neutral Evil (NE)"
 				],
 				[
+					"Chaotic",
 					"Chaotic Good (CG)",
 					"Chaotic Neutral (CN)",
 					"Chaotic Evil (CE)"
@@ -100,17 +124,18 @@
 		},
 		{
 			"name": "Common Languages",
+			"id": "2-1",
 			"source": "CRB",
 			"page": 65,
-			"colLabels": [
-				"Language",
-				"Speakers"
-			],
-			"colStyles": [
-				"col-3",
-				"col-9"
+			"colSizes": [
+				1,
+				3
 			],
 			"rows": [
+				[
+					"Language",
+					"Speakers"
+				],
 				[
 					"Common",
 					"Humans, dwarves, elves, halflings, and other common ancestries"
@@ -159,17 +184,18 @@
 		},
 		{
 			"name": "Uncommon Languages",
+			"id": "2-2",
 			"source": "CRB",
 			"page": 65,
-			"colLabels": [
-				"Language",
-				"Speakers"
-			],
-			"colStyles": [
-				"col-3",
-				"col-9"
+			"colSizes": [
+				1,
+				3
 			],
 			"rows": [
+				[
+					"Language",
+					"Speakers"
+				],
 				[
 					"Abyssal",
 					"Demons"
@@ -214,17 +240,18 @@
 		},
 		{
 			"name": "Secret Language",
+			"id": "2-3",
 			"source": "CRB",
 			"page": 65,
-			"colLabels": [
-				"Language",
-				"Speakers"
-			],
-			"colStyles": [
-				"col-3",
-				"col-9"
+			"colSizes": [
+				1,
+				3
 			],
 			"rows": [
+				[
+					"Language",
+					"Speakers"
+				],
 				[
 					"Druidic",
 					"Druids"
@@ -233,21 +260,22 @@
 		},
 		{
 			"name": "Animal Instincts",
+			"id": "3-3",
 			"source": "CRB",
 			"page": 86,
-			"colLabels": [
-				"Animal",
-				"Attack",
-				"Damage",
-				"Traits"
-			],
-			"colStyles": [
-				"col-3",
-				"col-2",
-				"col-2",
-				"col-5"
+			"colSizes": [
+				3,
+				2,
+				2,
+				5
 			],
 			"rows": [
+				[
+					"Animal",
+					"Attack",
+					"Damage",
+					"Traits"
+				],
 				[
 					"Ape",
 					"Fist",
@@ -371,22 +399,22 @@
 			"name": "Monk Unarmed Attacks",
 			"source": "CRB",
 			"page": 159,
-			"colLabels": [
-				"Attack",
-				"Damage",
-				"Group",
-				"Traits"
-			],
-			"colStyles": [
-				"col-3",
-				"col-2",
-				"col-2",
-				"col-5"
-			],
 			"intro": [
 				"Some monk stances allow you to make special unarmed attacks while in those stances. These attacks are summarized here."
 			],
+			"colSizes": [
+				3,
+				2,
+				2,
+				5
+			],
 			"rows": [
+				[
+					"Attack",
+					"Damage",
+					"Group",
+					"Traits"
+				],
 				[
 					"Crane Wing",
 					"{@damage 1d6} B",
@@ -442,21 +470,16 @@
 		},
 		{
 			"name": "Skills, Key Abilities, and Actions",
+			"id": "4-1",
 			"source": "CRB",
 			"page": 235,
-			"colLabels": [
-				"Skill",
-				"Key Ability",
-				"Untrained Actions",
-				"Trained Actions"
-			],
-			"colStyles": [
-				"col-3",
-				"col-3",
-				"col-3",
-				"col-3"
-			],
 			"rows": [
+				[
+					"Skill",
+					"Key Ability",
+					"Untrained Actions",
+					"Trained Actions"
+				],
 				[
 					"Acrobatics",
 					"Dexterity",
@@ -737,25 +760,26 @@
 		},
 		{
 			"name": "Income Earned",
+			"id": "4-2",
 			"source": "CRB",
 			"page": 236,
-			"colLabels": [
-				"Task Level",
-				"Failure",
-				"Trained",
-				"Expert",
-				"Master",
-				"Legendary"
-			],
 			"colStyles": [
-				"col-2 text-center",
-				"col-2 text-center",
-				"col-2 text-center",
-				"col-2 text-center",
-				"col-2 text-center",
-				"col-2 text-center"
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
 			],
 			"rows": [
+				[
+					"Task Level",
+					"Failure",
+					"Trained",
+					"Expert",
+					"Master",
+					"Legendary"
+				],
 				[
 					"0",
 					"1 cp",
@@ -944,19 +968,20 @@
 		},
 		{
 			"name": "Learning a Spell",
+			"id": "4-3",
 			"source": "CRB",
 			"page": 238,
-			"colLabels": [
-				"Spell Level",
-				"Price",
-				"Typical DC"
-			],
 			"colStyles": [
-				"col-4 text-center",
-				"col-4 text-center",
-				"col-4 text-center"
+				"text-center",
+				"text-center",
+				"text-center"
 			],
 			"rows": [
+				[
+					"Spell Level",
+					"Price",
+					"Typical DC"
+				],
 				[
 					"1st or cantrip",
 					"2 gp",
