@@ -152,14 +152,14 @@ class StatGen {
 
 		const brew = await BrewUtil.pAddBrewData();
 
-		this.raceData = Renderer.race.mergeSubraces(data.race);
+		this.raceData = Renderer.ancestry.mergeSubraces(data.race);
 		if (brew.race) {
 			const cpyBrew = MiscUtil.copy(brew);
-			cpyBrew.race = Renderer.race.mergeSubraces(cpyBrew.race, {isAddBaseRaces: true});
+			cpyBrew.race = Renderer.ancestry.mergeSubraces(cpyBrew.race, {isAddBaseRaces: true});
 			this.raceData = this.raceData.concat(cpyBrew.race);
 		}
 		this.raceData = this.raceData.filter(it => {
-			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](it);
+			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](it);
 			return !ExcludeUtil.isExcluded(hash, "race", it.source);
 		});
 
@@ -204,7 +204,7 @@ class StatGen {
 
 		const races = this.raceData.map(x => ({name: x.name, source: x.source})).sort((a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source));
 		const options = races.map(it => `<option value="${it.name}_${it.source}">${it.name} ${it.source !== SRC_PHB ? `[${Parser.sourceJsonToAbv(it.source)}]` : ""}</option>`).join("");
-		$("#race")
+		$("#ancestry")
 			.append(`<option value="">None</option>`)
 			.append(`<option value="_CUSTOM">Custom</option>`)
 			.append(options)

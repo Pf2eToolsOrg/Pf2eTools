@@ -1301,10 +1301,10 @@ class SearchWidget {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
 		const dataSource = async () => {
 			const raceJson = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-			const raceData = Renderer.race.mergeSubraces(raceJson.race);
+			const raceData = Renderer.ancestry.mergeSubraces(raceJson.race);
 			return {race: raceData};
 		};
-		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_RACE, UrlUtil.PG_RACES, "races");
+		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_RACE, UrlUtil.PG_ANCESTRIES, "races");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Race",
@@ -1322,7 +1322,7 @@ class SearchWidget {
 
 	static async pGetUserOptionalFeatureSearch () {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
-		await SearchWidget.pLoadCustomIndex("entity_OptionalFeatures", `${Renderer.get().baseUrl}data/optionalfeatures.json`, "optionalfeature", Parser.CAT_ID_OPTIONAL_FEATURE_OTHER, UrlUtil.PG_OPT_FEATURES, "optional features");
+		await SearchWidget.pLoadCustomIndex("entity_OptionalFeatures", `${Renderer.get().baseUrl}data/optionalfeatures.json`, "optionalfeature", Parser.CAT_ID_OPTIONAL_FEATURE_OTHER, UrlUtil.PG_COMPANIONS_FAMILIARS, "optional features");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Optional Feature",

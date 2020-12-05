@@ -546,213 +546,6 @@ class IndexableFileFeats extends IndexableFile {
 	}
 }
 
-// region Optional features
-class IndexableFileOptFeatures_EldritchInvocations extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ELDRITCH_INVOCATION,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "EI"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_Metamagic extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_METAMAGIC,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MM"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_ManeuverBattlemaster extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_MANEUVER_BATTLEMASTER,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:B"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_ManeuverCavalier extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_MANEUVER_CAVALIER,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV:C2-UA"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_ArcaneShot extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ARCANE_SHOT,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => {
-				return Omnidexer.arrIncludesOrEquals(it.featureType, "AS:V1-UA") || Omnidexer.arrIncludesOrEquals(it.featureType, "AS:V2-UA") || Omnidexer.arrIncludesOrEquals(it.featureType, "AS")
-			},
-		});
-	}
-}
-
-class IndexableFileOptFeatures_Other extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_OPTIONAL_FEATURE_OTHER,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => {
-				const asArray = it.featureType instanceof Array ? it.featureType : [it.featureType];
-				// Any optional features that don't have a known type (i.e. are custom homebrew types) get lumped into here
-				return Omnidexer.arrIncludesOrEquals(asArray, "OTH") || asArray.some(it => !Parser.OPT_FEATURE_TYPE_TO_FULL[it]);
-			},
-		});
-	}
-}
-
-class IndexableFileOptFeatures_FightingStyle extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_FIGHTING_STYLE,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "FS:F") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:B") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:R") || Omnidexer.arrIncludesOrEquals(it.featureType, "FS:P"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_PactBoon extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_PACT_BOON,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "PB"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_ElementalDiscipline extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ELEMENTAL_DISCIPLINE,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "ED"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_ArtificerInfusion extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ARTIFICER_INFUSION,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "AI"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_OnomancyResonant extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ONOMANCY_RESONANT,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "OR"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_RuneKnightRune extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_RUNE_KNIGHT_RUNE,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "RN"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_AlchemicalFormula extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ALCHEMICAL_FORMULA,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "AF"),
-		});
-	}
-}
-
-class IndexableFileOptFeatures_Maneuver extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_MANEUVER,
-			file: "optionalfeatures.json",
-			listProp: "optionalfeature",
-			baseUrl: "optionalfeatures.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.featureType, "MV"),
-		});
-	}
-}
-// endregion
-
-class IndexableFilePsionics extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_PSIONIC,
-			file: "psionics.json",
-			listProp: "psionic",
-			baseUrl: "psionics.html",
-			isHover: true,
-		});
-	}
-
-	pGetDeepIndex (indexer, primary, it) {
-		if (!it.modes) return [];
-		return it.modes.map(m => ({d: 1, n: `${primary.parentName}; ${m.name}`}));
-	}
-}
-
 class IndexableFileRaces extends IndexableFile {
 	constructor () {
 		super({
@@ -768,7 +561,7 @@ class IndexableFileRaces extends IndexableFile {
 	pGetDeepIndex (indexer, primary, it) {
 		const out = [];
 
-		// If there are subraces, add the base race
+		// If there are subraces, add the base ancestry
 		if (it.subraces) {
 			const r = MiscUtil.copy(it);
 			const isAnyNoName = it.subraces.some(it => !it.name);
@@ -780,7 +573,7 @@ class IndexableFileRaces extends IndexableFile {
 			});
 		}
 
-		const subs = Renderer.race._mergeSubraces(it);
+		const subs = Renderer.ancestry._mergeSubraces(it);
 		out.push(...subs.map(r => ({
 			n: r.name,
 			s: indexer.getMetaId("s", r.source),
@@ -1107,22 +900,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileDiseases(),
 	new IndexableFileFeats(),
 
-	new IndexableFileOptFeatures_EldritchInvocations(),
-	new IndexableFileOptFeatures_Metamagic(),
-	new IndexableFileOptFeatures_ManeuverBattlemaster(),
-	new IndexableFileOptFeatures_ManeuverCavalier(),
-	new IndexableFileOptFeatures_ArcaneShot(),
-	new IndexableFileOptFeatures_Other(),
-	new IndexableFileOptFeatures_FightingStyle(),
-	new IndexableFileOptFeatures_PactBoon(),
-	new IndexableFileOptFeatures_ElementalDiscipline(),
-	new IndexableFileOptFeatures_ArtificerInfusion(),
-	new IndexableFileOptFeatures_OnomancyResonant(),
-	new IndexableFileOptFeatures_RuneKnightRune(),
-	new IndexableFileOptFeatures_AlchemicalFormula(),
-	new IndexableFileOptFeatures_Maneuver(),
 	new IndexableFileItemsBase(),
-
 	new IndexableFileItems(),
 	new IndexableFileItemGroups(),
 	new IndexableFileMagicVariants(),

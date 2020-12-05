@@ -6,18 +6,18 @@ class RacesPage extends ListPage {
 		super({
 			dataSource: async () => {
 				const rawRaceData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-				const raceData = Renderer.race.mergeSubraces(rawRaceData.race, {isAddBaseRaces: true});
+				const raceData = Renderer.ancestry.mergeSubraces(rawRaceData.race, {isAddBaseRaces: true});
 				return {race: raceData};
 			},
 			dataSourceFluff: "data/fluff-races.json",
 
 			pageFilter,
 
-			listClass: "races",
+			listClass: "ancestries",
 
-			sublistClass: "subraces",
+			sublistClass: "subancestries",
 
-			dataProps: ["race"],
+			dataProps: ["ancestry"],
 
 			hasAudio: true,
 		});
@@ -27,22 +27,22 @@ class RacesPage extends ListPage {
 		if (data.race && data.race.length) super._addData(data);
 		if (!data.subrace || !data.subrace.length) return;
 
-		// Attach each subrace to a parent race, and recurse
-		const nxtData = Renderer.race.adoptSubraces(this._dataList, data.subrace);
+		// Attach each subrace to a parent ancestry, and recurse
+		const nxtData = Renderer.ancestry.adoptSubraces(this._dataList, data.subrace);
 
-		if (nxtData.length) this._addData({race: Renderer.race.mergeSubraces(nxtData)})
+		if (nxtData.length) this._addData({race: Renderer.ancestry.mergeSubraces(nxtData)})
 	}
 
 	async _pHandleBrew (homebrew) {
 		if (homebrew.race) {
 			homebrew = MiscUtil.copy(homebrew);
-			homebrew.race = Renderer.race.mergeSubraces(homebrew.race, {isAddBaseRaces: true});
+			homebrew.race = Renderer.ancestry.mergeSubraces(homebrew.race, {isAddBaseRaces: true});
 		}
 		return super._pHandleBrew(homebrew);
 	}
 
 	/**
-	 * For a given homebrew race, fetch entries that have been expanded from its "subraces" array.
+	 * For a given homebrew ancestry, fetch entries that have been expanded from its "subraces" array.
 	 * @param uniqueId
 	 */
 	getMergedSubraces (uniqueId) {
@@ -140,7 +140,7 @@ class RacesPage extends ListPage {
 				isImageTab,
 				$content,
 				entity: race,
-				pFnGetFluff: Renderer.race.pGetFluff,
+				pFnGetFluff: Renderer.ancestry.pGetFluff,
 			});
 		}
 

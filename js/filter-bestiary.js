@@ -2,7 +2,7 @@
 
 class PageFilterBestiary extends PageFilter {
 	// region static
-	static sortMonsters(a, b, o) {
+	static sortCreatures(a, b, o) {
 		if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
 		switch (o.sortBy) {
 			case "name":
@@ -33,7 +33,7 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
-			displayFn: Parser.monAlignToFull,
+			displayFn: Parser.creatureAlignToFull,
 			itemSortFn: SortUtil.ascSort
 		});
 		this._rarityFilter = new Filter({
@@ -357,7 +357,7 @@ class ModalFilterBestiary extends ModalFilter {
 		super({
 			modalTitle: "Creatures",
 			pageFilter: new PageFilterBestiary(),
-			fnSort: PageFilterBestiary.sortMonsters,
+			fnSort: PageFilterBestiary.sortCreatures,
 			namespace: namespace
 		})
 	}
@@ -374,13 +374,13 @@ class ModalFilterBestiary extends ModalFilter {
 
 	async _pLoadAllData() {
 		const brew = await BrewUtil.pAddBrewData();
-		const fromData = await DataUtil.monster.pLoadAll();
+		const fromData = await DataUtil.creature.pLoadAll();
 		const fromBrew = brew.monster || [];
 		return [...fromData, ...fromBrew];
 	}
 
 	_getListItem(pageFilter, mon, itI) {
-		Renderer.monster.initParsed(mon);
+		Renderer.creature.initParsed(mon);
 		pageFilter.mutateAndAddToFilters(mon);
 
 		const eleLi = document.createElement("li");

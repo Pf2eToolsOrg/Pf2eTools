@@ -332,7 +332,7 @@ class InitiativeTracker {
 				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact player HP", cfg, "playerInitShowExactPlayerHp");
-				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact monster HP", cfg, "playerInitShowExactMonsterHp");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact creature HP", cfg, "playerInitShowExactMonsterHp");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
@@ -1112,7 +1112,7 @@ class InitiativeTracker {
 						const id = $e.attr("data-id");
 						const $ipt = $e.find(`input`);
 
-						// avoid race conditions -- the input is still to be populated
+						// avoid ancestry conditions -- the input is still to be populated
 						if ($ipt.attr("populate-running") === "true") return;
 
 						const isCb = $ipt.attr("type") === "checkbox";

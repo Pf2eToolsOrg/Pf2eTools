@@ -79,14 +79,14 @@ class SpellsPage {
 
 	getSublistItem (spell, pinId) {
 		const hash = UrlUtil.autoEncodeHash(spell);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
+		const school = Parser.spSchoolAbvToShort(spell.school);
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 
 		const $ele = $(`<li class="row">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border">
-				<span class="bold col-3-2 pl-0">${spell.name}</span>
+				<span class="bold col-6 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
-				<span class="col-1-8 text-center">${time}</span>
+				<span class="col-2-9 text-center">${time}</span>
 				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -371,7 +371,7 @@ async function pPageInit (loadedSources) {
 					const atLvl = toShow.filter(sp => sp.level === i);
 					if (atLvl.length) {
 						stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
-						stack.push(`<div class="bkmv__spacer-name flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
+						stack.push(`<div class="pf2-h5 flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
 						atLvl.forEach(sp => renderSpell(stack, sp));
 						stack.push(`</div>`);
 					}

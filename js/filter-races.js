@@ -301,14 +301,14 @@ class ModalFilterRaces extends ModalFilter {
 
 	async _pLoadAllData () {
 		const rawRaceData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-		return Renderer.race.mergeSubraces(rawRaceData.race);
+		return Renderer.ancestry.mergeSubraces(rawRaceData.race);
 	}
 
 	_getListItem (pageFilter, race, rI) {
 		const eleLabel = document.createElement("label");
 		eleLabel.className = "row lst--border no-select lst__wrp-cells";
 
-		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES](race);
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](race);
 		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
 		const size = Parser.sizeAbvToFull(race.size || SZ_VARIES);
 		const source = Parser.sourceJsonToAbv(race.source);

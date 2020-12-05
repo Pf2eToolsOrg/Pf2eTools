@@ -11,49 +11,49 @@ class BestiaryPage {
 	constructor () {
 		this._pageFilter = new PageFilterBestiary();
 		this._multiSource = new MultiSource({
-			fnHandleData: addMonsters,
+			fnHandleData: addCreatures,
 			prop: "creature"
 		});
 	}
 
-	getListItem (mon, mI) {
-		const hash = UrlUtil.autoEncodeHash(mon);
-		if (!mon.uniqueId && _addedHashes.has(hash)) return null;
+	getListItem (cr, mI) {
+		const hash = UrlUtil.autoEncodeHash(cr);
+		if (!cr.uniqueId && _addedHashes.has(hash)) return null;
 		_addedHashes.add(hash);
 
-		const isExcluded = ExcludeUtil.isExcluded(hash, "monster", mon.source);
+		const isExcluded = ExcludeUtil.isExcluded(hash, "monster", cr.source);
 
-		this._pageFilter.mutateAndAddToFilters(mon, isExcluded);
+		this._pageFilter.mutateAndAddToFilters(cr, isExcluded);
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 		eleLi.addEventListener("click", (evt) => handleBestiaryLiClick(evt, listItem));
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
-		const source = Parser.sourceJsonToAbv(mon.source);
-		const type = mon.creature_type;
-		const level = mon.level;
+		const source = Parser.sourceJsonToAbv(cr.source);
+		const type = cr.creature_type;
+		const level = cr.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
 			${EncounterBuilder.getButtons(mI)}
-			<span class="ecgen__name bold col-4-2 pl-0">${mon.name}</span>
+			<span class="ecgen__name bold col-4-2 pl-0">${cr.name}</span>
 			<span class="type col-4-1">${type}</span>
 			<span class="col-1-7 text-center">${level}</span>
-			<span title="${Parser.sourceJsonToFull(mon.source)}${Renderer.utils.getSourceSubText(mon)}" class="col-2 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</span>
+			<span title="${Parser.sourceJsonToFull(cr.source)}${Renderer.utils.getSourceSubText(cr)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
 			mI,
 			eleLi,
-			mon.name,
+			cr.name,
 			{
 				hash,
 				source,
-				level: mon.level,
-				type: mon.creature_type
+				level: cr.level,
+				type: cr.creature_type
 			},
 			{
-				uniqueId: mon.uniqueId ? mon.uniqueId : mI,
+				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
 				isExcluded
 			}
 		);
@@ -66,10 +66,10 @@ class BestiaryPage {
 
 		const f = this._pageFilter.filterBox.getValues();
 		list.filter(li => {
-			const m = monsters[li.ix];
+			const m = creatures[li.ix];
 			return this._pageFilter.toDisplay(f, m);
 		});
-		MultiSource.onFilterChangeMulti(monsters);
+		MultiSource.onFilterChangeMulti(creatures);
 		encounterBuilder.resetCache();
 	}
 
@@ -119,7 +119,7 @@ class BestiaryPage {
 			</a>
 
 			<div class="lst__wrp-cells ecgen__visible--flex lst--border">
-				${EncounterBuilder.$getSublistButtons(pinId, getMonCustomHashId(mon))}
+				${EncounterBuilder.$getSublistButtons(pinId, getCreatureCustomHashId(mon))}
 				<span class="ecgen__name--sub col-3-5">${name}</span>
 				${$hovStatblock}
 				${$hovToken}
@@ -143,7 +143,7 @@ class BestiaryPage {
 			},
 			{
 				uniqueId: data.uniqueId || "",
-				customHashId: getMonCustomHashId(mon),
+				customHashId: getCreatureCustomHashId(mon),
 				$elesCount: [$eleCount1, $eleCount2]
 			}
 		);
@@ -152,7 +152,7 @@ class BestiaryPage {
 	}
 
 	doLoadHash (id) {
-		const mon = monsters[id];
+		const mon = creatures[id];
 
 		renderStatblock(mon);
 
@@ -170,7 +170,7 @@ class BestiaryPage {
 		if (scaledHash) {
 			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_MON_SCALED][0]);
 			const scaleToStr = Parser.numberToCr(scaleTo);
-			const mon = monsters[Hist.lastLoadedId];
+			const mon = creatures[Hist.lastLoadedId];
 			if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
 				ScaleCreature.scale(mon, scaleTo).then(scaled => renderStatblock(scaled, true));
 			}
@@ -193,11 +193,11 @@ class BestiaryPage {
 		encounterBuilder.initUi();
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
-			DataUtil.monster.pPreloadMeta()
+			DataUtil.creature.pPreloadMeta()
 		]);
-		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addMonsters, pPostLoad);
+		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addCreatures, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
-		ExcludeUtil.checkShowAllExcluded(monsters, $(`#pagecontent`));
+		ExcludeUtil.checkShowAllExcluded(creatures, $(`#pagecontent`));
 		bestiaryPage.handleFilterChange();
 		encounterBuilder.initState();
 		window.dispatchEvent(new Event("toolsLoaded"));
@@ -254,8 +254,8 @@ class BestiaryPage {
 }
 
 function handleBrew (homebrew) {
-	DataUtil.monster.populateMetaReference(homebrew);
-	addMonsters(homebrew.monster);
+	DataUtil.creature.populateMetaReference(homebrew);
+	addCreatures(homebrew.monster);
 	return Promise.resolve();
 }
 
@@ -286,8 +286,8 @@ async function pPageInit (loadedSources) {
 
 	list = ListUtil.initList(
 		{
-			listClass: "monsters",
-			fnSort: PageFilterBestiary.sortMonsters
+			listClass: "creatures",
+			fnSort: PageFilterBestiary.sortCreatures
 		}
 	);
 	ListUtil.setOptions({primaryLists: [list]});
@@ -305,8 +305,8 @@ async function pPageInit (loadedSources) {
 	);
 
 	subList = ListUtil.initSublist({
-		listClass: "submonsters",
-		fnSort: PageFilterBestiary.sortMonsters,
+		listClass: "subcreatures",
+		fnSort: PageFilterBestiary.sortCreatures,
 		onUpdate: onSublistChange,
 		customHashHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
 		customHashUnpacker: getUnpackedCustomHashId
@@ -353,14 +353,14 @@ async function pPageInit (loadedSources) {
 
 			const renderCreature = (mon) => {
 				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
-				stack.push(Renderer.monster.getCompactRenderedString(mon, renderer));
+				stack.push(Renderer.creature.getCompactRenderedString(mon, renderer));
 				stack.push(`</tbody></table></div>`);
 			};
 
 			stack.push(`<div class="w-100 h-100">`);
 			toShow.forEach(mon => renderCreature(mon));
 			if (!toShow.length && Hist.lastLoadedId != null) {
-				renderCreature(monsters[Hist.lastLoadedId]);
+				renderCreature(creatures[Hist.lastLoadedId]);
 			}
 			stack.push(`</div>`);
 
@@ -369,7 +369,7 @@ async function pPageInit (loadedSources) {
 
 			// region Markdown
 			const pGetAsMarkdown = async () => {
-				const toRender = toShow.length ? toShow : [monsters[Hist.lastLoadedId]];
+				const toRender = toShow.length ? toShow : [creatures[Hist.lastLoadedId]];
 				return RendererMarkdown.monster.pGetMarkdownDoc(toRender);
 			};
 
@@ -425,7 +425,7 @@ async function pPageInit (loadedSources) {
 class EncounterBuilderUtils {
 	static getSublistedEncounter () {
 		return ListUtil.sublist.items.map(it => {
-			const mon = monsters[it.ix];
+			const mon = creatures[it.ix];
 			if (mon.cr) {
 				const crScaled = it.data.customHashId ? Number(getUnpackedCustomHashId(it.data.customHashId).scaled) : null;
 				return {
@@ -455,8 +455,8 @@ class EncounterBuilderUtils {
 		// no cutoff for CR 0-2
 		if (getCr(data[0]) <= 2) return 0;
 
-		// "When making this calculation, don't count any monsters whose challenge rating is significantly below the average
-		// challenge rating of the other monsters in the group unless you think the weak monsters significantly contribute
+		// "When making this calculation, don't count any creatures whose challenge rating is significantly below the average
+		// challenge rating of the other creatures in the group unless you think the weak creatures significantly contribute
 		// to the difficulty of the encounter." -- DMG, p. 82
 
 		// Spread the CRs into a single array
@@ -484,8 +484,8 @@ class EncounterBuilderUtils {
 			}
 		}
 
-		// "unless you think the weak monsters significantly contribute to the difficulty of the encounter"
-		// For player levels <5, always include every monster. We assume that levels 5> will have strong
+		// "unless you think the weak creatures significantly contribute to the difficulty of the encounter"
+		// For player levels <5, always include every creature. We assume that levels 5> will have strong
 		//   AoE/multiattack, allowing trash to be quickly cleared.
 		if (!partyMeta.isPartyLevelFivePlus()) return crValues[0];
 
@@ -534,25 +534,25 @@ function onSublistChange () {
 	else encounterBuilder.doSaveState();
 }
 
-let monsters = [];
+let creatures = [];
 let mI = 0;
 const lastRendered = {mon: null, isScaled: false};
 function getScaledData () {
 	const last = lastRendered.mon;
-	return {scaled: last._isScaledCr, customHashId: getMonCustomHashId(last)};
+	return {scaled: last._isScaledCr, customHashId: getCreatureCustomHashId(last)};
 }
 
 function getCustomHashId (name, source, scaledCr) {
 	return `${name}_${source}_${scaledCr}`.toLowerCase();
 }
 
-function getMonCustomHashId (mon) {
+function getCreatureCustomHashId (mon) {
 	if (mon._isScaledCr != null) return getCustomHashId(mon.name, mon.source, mon._isScaledCr);
 	return null;
 }
 
 function handleBestiaryLiClick (evt, listItem) {
-	if (encounterBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, monsters, listItem.ix);
+	if (encounterBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, creatures, listItem.ix);
 	else list.doSelect(listItem, evt);
 }
 
@@ -565,14 +565,14 @@ function handleBestiaryLinkClick (evt) {
 }
 
 const _addedHashes = new Set();
-function addMonsters (data) {
+function addCreatures (data) {
 	if (!data || !data.length) return;
 
-	monsters.push(...data);
+	creatures.push(...data);
 
 	// build the table
-	for (; mI < monsters.length; mI++) {
-		const mon = monsters[mI];
+	for (; mI < creatures.length; mI++) {
+		const mon = creatures[mI];
 		const listItem = bestiaryPage.getListItem(mon, mI);
 		if (!listItem) continue;
 		list.addItem(listItem);
@@ -584,7 +584,7 @@ function addMonsters (data) {
 	bestiaryPage.handleFilterChange();
 
 	ListUtil.setOptions({
-		itemList: monsters,
+		itemList: creatures,
 		getSublistRow: bestiaryPage.pGetSublistItem.bind(bestiaryPage),
 		primaryLists: [list]
 	});
@@ -638,7 +638,7 @@ function addMonsters (data) {
 	}
 
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, monsters, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	Renderer.hover.bindPopoutButton($btnPop, creatures, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
 	ListUtil.bindOtherButtons({
 		download: true,
@@ -697,9 +697,9 @@ function renderStatblock (mon, isScaled) {
 			.off("click").click((evt) => {
 				evt.stopPropagation();
 				const win = (evt.view || {}).window;
-				const mon = monsters[Hist.lastLoadedId];
+				const mon = creatures[Hist.lastLoadedId];
 				const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
-				Renderer.monster.getCrScaleTarget(win, $btnScaleCr, lastCr, (targetCr) => {
+				Renderer.creature.getCrScaleTarget(win, $btnScaleCr, lastCr, (targetCr) => {
 					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
 					else Hist.setSubhash(VeCt.HASH_MON_SCALED, targetCr);
 				});
@@ -811,8 +811,8 @@ function renderStatblock (mon, isScaled) {
 
 	function buildFluffTab (isImageTab) {
 		const pGetFluffEntries = async () => {
-			const mon = monsters[Hist.lastLoadedId];
-			const fluff = await Renderer.monster.pGetFluff(mon);
+			const mon = creatures[Hist.lastLoadedId];
+			const fluff = await Renderer.creature.pGetFluff(mon);
 			return fluff.entries || [];
 		};
 
@@ -849,7 +849,7 @@ function renderStatblock (mon, isScaled) {
 			isImageTab,
 			$content,
 			entity: mon,
-			pFnGetFluff: Renderer.monster.pGetFluff,
+			pFnGetFluff: Renderer.creature.pGetFluff,
 			$headerControls
 		});
 	}

@@ -6,8 +6,8 @@ class RenderRaces {
 
 		return $$`
 		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getExcludedTr(race, "race")}
-		${Renderer.utils.getNameTr(race, {controlRhs: race.soundClip ? RenderRaces._getPronunciationButton(race) : "", page: UrlUtil.PG_RACES})}
+		${Renderer.utils.getExcludedTr(race, "ancestry")}
+		${Renderer.utils.getNameTr(race, {controlRhs: race.soundClip ? RenderRaces._getPronunciationButton(race) : "", page: UrlUtil.PG_ANCESTRIES})}
 		<tr><td colspan="6"><b>Ability Scores:</b> ${(race.ability ? Renderer.getAbilityData(race.ability) : {asText: "None"}).asText}</td></tr>
 		<tr><td colspan="6"><b>Size:</b> ${Parser.sizeAbvToFull(race.size || SZ_VARIES)}</td></tr>
 		<tr><td colspan="6"><b>Speed:</b> ${Parser.getSpeedString(race)}</td></tr>
@@ -73,7 +73,7 @@ class RenderRaces {
 
 		const $render = $$`${Renderer.get().render({entries})}`;
 
-		// {@dice ${race.heightAndWeight.heightMod}||Height Modifier}
+		// {@dice ${ancestry.heightAndWeight.heightMod}||Height Modifier}
 		// ${ptWeightMod}
 
 		const $dispResult = $render.find(`.race__disp-result-height-weight`);

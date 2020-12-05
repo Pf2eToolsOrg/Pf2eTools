@@ -64,7 +64,7 @@ class Blacklist {
 
 		// LOAD DATA ===============================================================================
 		// bestiary
-		mergeData({monster: await DataUtil.monster.pLoadAll()});
+		mergeData({monster: await DataUtil.creature.pLoadAll()});
 
 		// spells
 		mergeData({spell: await DataUtil.spell.pLoadAll()});
@@ -111,7 +111,7 @@ class Blacklist {
 		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
 		const contentData = await Promise.all(promises);
 		contentData.forEach(d => {
-			if (d.race) d.race = Renderer.race.mergeSubraces(d.race);
+			if (d.race) d.race = Renderer.ancestry.mergeSubraces(d.race);
 			if (d.variant) d.variant.forEach(it => it.source = it.source || it.inherits.source);
 			mergeData(d);
 		});

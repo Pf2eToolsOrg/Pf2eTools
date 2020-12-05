@@ -24,13 +24,13 @@ class PageFilterFeats extends PageFilter {
 		this._timeFilter = new Filter({
 			header: "Activity",
 			items: [
-				Parser.SP_TM_PF_A,
-				Parser.SP_TM_PF_AA,
-				Parser.SP_TM_PF_AAA,
-				Parser.SP_TM_PF_F,
-				Parser.SP_TM_PF_R
+				Parser.TM_A,
+				Parser.TM_AA,
+				Parser.TM_AAA,
+				Parser.TM_F,
+				Parser.TM_R
 			],
-			displayFn: Parser.spTimeUnitToFull,
+			displayFn: Parser.timeUnitToFull,
 			itemSortFn: null
 		});
 	}

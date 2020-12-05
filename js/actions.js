@@ -10,7 +10,7 @@ class ActionsPage extends ListPage {
 	}
 
 	static getTblTimeStr (time) {
-		return time.unit === `Varies` ? `Varies` : Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
+		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
 			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
@@ -21,14 +21,14 @@ class ActionsPage extends ListPage {
 			return 0
 		}
 		switch (time.unit) {
-			case Parser.SP_TM_PF_F: offset = 1; break;
-			case Parser.SP_TM_PF_R: offset = 2; break;
-			case Parser.SP_TM_PF_A: multiplier = 10; break;
-			case Parser.SP_TM_PF_AA: multiplier = 20; break;
-			case Parser.SP_TM_PF_AAA: multiplier = 30; break;
-			case Parser.SP_TM_ROUND: multiplier = 60; break;
-			case Parser.SP_TM_MINS: multiplier = 600; break;
-			case Parser.SP_TM_HRS: multiplier = 36000; break;
+			case Parser.TM_F: offset = 1; break;
+			case Parser.TM_R: offset = 2; break;
+			case Parser.TM_A: multiplier = 10; break;
+			case Parser.TM_AA: multiplier = 20; break;
+			case Parser.TM_AAA: multiplier = 30; break;
+			case Parser.TM_ROUND: multiplier = 60; break;
+			case Parser.TM_MINS: multiplier = 600; break;
+			case Parser.TM_HRS: multiplier = 36000; break;
 			case "Varies": multiplier = 100; break;
 		}
 		return (multiplier * time.number) + offset;

@@ -1002,11 +1002,11 @@ class Panel {
 			const $this = $(this);
 			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr ? (mon.cr.cr || mon.cr) : null;
 
-			Renderer.monster.getCrScaleTarget(win, $this, lastCr, (targetCr) => {
+			Renderer.creature.getCrScaleTarget(win, $this, lastCr, (targetCr) => {
 				const originalCr = Parser.crToNumber(mon.cr) === targetCr;
 
 				const doRender = (toRender) => {
-					$contentStats.empty().append(Renderer.monster.getCompactRenderedString(toRender, null, {showScaler: true, isScaled: !originalCr}));
+					$contentStats.empty().append(Renderer.creature.getCompactRenderedString(toRender, null, {showScaler: true, isScaled: !originalCr}));
 
 					const nxtMeta = {
 						...meta,
@@ -1032,7 +1032,7 @@ class Panel {
 			}, true);
 		});
 		$contentStats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
-			$contentStats.empty().append(Renderer.monster.getCompactRenderedString(mon, null, {showScaler: true, isScaled: false}));
+			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(mon, null, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
 				PANEL_TYP_STATS,
@@ -1058,7 +1058,7 @@ class Panel {
 			ScaleCreature.scale(it, targetCr).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
-				$contentStats.append(Renderer.monster.getCompactRenderedString(initialRender, null, {showScaler: true, isScaled: true}));
+				$contentStats.append(Renderer.creature.getCompactRenderedString(initialRender, null, {showScaler: true, isScaled: true}));
 
 				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
 

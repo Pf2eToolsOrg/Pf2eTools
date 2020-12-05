@@ -7,8 +7,8 @@ class MultiSource {
 
 	/**
 	 * @param opts Options object.
-	 * @param opts.fnHandleData Data handling function, e.g. "addMonsters"
-	 * @param opts.prop Data property, e.g. "monster"
+	 * @param opts.fnHandleData Data handling function, e.g. "addCreatures"
+	 * @param opts.prop Data property, e.g. "creature"
 	 */
 	constructor (opts) {
 		opts = opts || {};

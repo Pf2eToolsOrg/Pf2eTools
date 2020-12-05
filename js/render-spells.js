@@ -34,7 +34,7 @@ class RenderSpells {
 		let castStack = []
 		renderer.recursiveRender(sp.cast.entry, castStack, {depth:1}, {prefix: `<span>`, suffix: `</span>`})
 		cast = castStack.join('')
-		if (!Parser.SP_TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
+		if (!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
 			components = `(` + components + `)`
 		}
 

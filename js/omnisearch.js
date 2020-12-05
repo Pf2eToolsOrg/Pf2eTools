@@ -123,7 +123,7 @@ class Omnisearch {
 
 			// Alias categories
 			if (!category) {
-				if (t === "in:creature" || t === "in:creatures" || t === "in:monster" || t === "in:monsters") category = "bestiary";
+				if (t === "in:creature" || t === "in:creatures" || t === "in:creature" || t === "in:monsters") category = "bestiary";
 			}
 
 			const mSource = /^source:(.*)$/.exec(t);

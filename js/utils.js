@@ -341,11 +341,7 @@ SourceUtil = {
 	},
 
 	isNonstandardSource(source) {
-		return source != null && !BrewUtil.hasSourceJson(source) && SourceUtil._isNonstandardSourceWiz(source);
-	},
-
-	_isNonstandardSourceWiz(source) {
-		return source.startsWith(SRC_UA_PREFIX) || source.startsWith(SRC_PS_PREFIX) || source.startsWith(SRC_AL_PREFIX) || Parser.SOURCES_NON_STANDARD_WOTC.has(source);
+		return source != null && !BrewUtil.hasSourceJson(source);
 	},
 
 	getFilterGroup(source) {
@@ -1607,8 +1603,8 @@ UrlUtil.PG_ITEMS = "items.html";
 UrlUtil.PG_CLASSES = "classes.html";
 UrlUtil.PG_CONDITIONS = "conditions.html";
 UrlUtil.PG_FEATS = "feats.html";
-UrlUtil.PG_OPT_FEATURES = "optionalfeatures.html";
-UrlUtil.PG_RACES = "ancestries.html";
+UrlUtil.PG_COMPANIONS_FAMILIARS = "companionsfamiliars.html";
+UrlUtil.PG_ANCESTRIES = "ancestries.html";
 UrlUtil.PG_REWARDS = "rewards.html";
 UrlUtil.PG_VARIANTRULES = "variantrules.html";
 UrlUtil.PG_ADVENTURE = "adventure.html";
@@ -1618,7 +1614,7 @@ UrlUtil.PG_BOOKS = "books.html";
 UrlUtil.PG_DEITIES = "deities.html";
 UrlUtil.PG_CULTS_BOONS = "cultsboons.html";
 UrlUtil.PG_OBJECTS = "objects.html";
-UrlUtil.PG_TRAPS_HAZARDS = "hazards.html";
+UrlUtil.PG_HAZARDS = "hazards.html";
 UrlUtil.PG_QUICKREF = "quickreference.html";
 UrlUtil.PG_MANAGE_BREW = "managebrew.html";
 UrlUtil.PG_MAKE_BREW = "makebrew.html";
@@ -1632,7 +1628,7 @@ UrlUtil.PG_TRAITS = "traits.html"
 UrlUtil.PG_STATGEN = "statgen.html";
 UrlUtil.PG_LIFEGEN = "lifegen.html";
 UrlUtil.PG_NAMES = "names.html";
-UrlUtil.PG_DM_SCREEN = "dmscreen.html";
+UrlUtil.PG_DM_SCREEN = "gmscreen.html";
 UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_LOOTGEN = "encountergen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
@@ -1646,8 +1642,8 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OPT_FEATURES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_RACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_COMPANIONS_FAMILIARS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_REWARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
@@ -1655,7 +1651,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.pantheon, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CULTS_BOONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_OBJECTS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1684,8 +1680,8 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_ITEMS] = "Items";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CLASSES] = "Classes";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CONDITIONS] = "Conditions & Diseases";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_FEATS] = "Feats";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_OPT_FEATURES] = "Other Options and Features";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_RACES] = "Races";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_COMPANIONS_FAMILIARS] = "Other Options and Features";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ANCESTRIES] = "Races";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_REWARDS] = "Supernatural Gifts & Rewards";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_VARIANTRULES] = "Optional, Variant, and Expanded Rules";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ADVENTURES] = "Adventures";
@@ -1693,10 +1689,9 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_BOOKS] = "Books";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEITIES] = "Deities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CULTS_BOONS] = "Cults & Supernatural Boons";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_OBJECTS] = "Objects";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_TRAPS_HAZARDS] = "Traps & Hazards";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_HAZARDS] = "Traps & Hazards";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_QUICKREF] = "Quick Reference";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_MAKE_BREW] = "Homebrew Builder";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_VEHICLES] = "Vehicles";
@@ -1722,21 +1717,21 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = UrlUtil.PG_CLASSES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_METAMAGIC] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_CAVALIER] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCANE_SHOT] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FIGHTING_STYLE] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_RACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELDRITCH_INVOCATION] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_METAMAGIC] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER_CAVALIER] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCANE_SHOT] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FIGHTING_STYLE] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RACE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OTHER_REWARD] = UrlUtil.PG_REWARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = UrlUtil.PG_VARIANTRULES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DEITY] = UrlUtil.PG_DEITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_OBJECT] = UrlUtil.PG_OBJECTS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_TRAPS_HAZARDS;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_TRAPS_HAZARDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAP] = UrlUtil.PG_HAZARDS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HAZARD] = UrlUtil.PG_HAZARDS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CULT] = UrlUtil.PG_CULTS_BOONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOON] = UrlUtil.PG_CULTS_BOONS;
@@ -1744,15 +1739,15 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_DISEASE] = UrlUtil.PG_CONDITIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VEHICLE] = UrlUtil.PG_VEHICLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PACT_BOON] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARTIFICER_INFUSION] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_SHIP_UPGRADE] = UrlUtil.PG_VEHICLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = UrlUtil.PG_VEHICLES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ONOMANCY_RESONANT] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ALCHEMICAL_FORMULA] = UrlUtil.PG_OPT_FEATURES;
-UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_OPT_FEATURES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ONOMANCY_RESONANT] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ALCHEMICAL_FORMULA] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_MANEUVER] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
@@ -2023,7 +2018,7 @@ DataUtil = {
 	_pDoMetaMerge_handleCopyProp (prop, arr, entry, options) {
 		if (entry._copy) {
 			switch (prop) {
-				case "monster": return DataUtil.monster.pMergeCopy(arr, entry, options);
+				case "monster": return DataUtil.creature.pMergeCopy(arr, entry, options);
 				case "monsterFluff": return DataUtil.monsterFluff.pMergeCopy(arr, entry, options);
 				case "spell": return DataUtil.spell.pMergeCopy(arr, entry, options);
 				case "spellFluff": return DataUtil.spellFluff.pMergeCopy(arr, entry, options);
@@ -2042,7 +2037,7 @@ DataUtil = {
 		if (data._meta) {
 			if (data._meta.dependencies) {
 				await Promise.all(Object.entries(data._meta.dependencies).map(async ([prop, sources]) => {
-					if (!data[prop]) return; // if e.g. monster dependencies are declared, but there are no monsters to merge with, bail out
+					if (!data[prop]) return; // if e.g. creature dependencies are declared, but there are no monsters to merge with, bail out
 
 					const toLoads = await Promise.all(sources.map(async source => DataUtil.pGetLoadableByMeta(prop, source)));
 					const dependencyData = await Promise.all(toLoads.map(toLoad => DataUtil.loadJSON(toLoad)));
@@ -2166,7 +2161,7 @@ DataUtil = {
 	async pGetLoadableByMeta (key, value) {
 		// TODO(future) allow value to be e.g. a string (assumed to be an official data's source); an object e.g. `{type: external, url: <>}`,...
 		// TODO(future) have this return the data, not a URL
-		// TODO(future) handle homebrew dependencies/refactor "monster" and "spell" + have this be the general form.
+		// TODO(future) handle homebrew dependencies/refactor "creature" and "spell" + have this be the general form.
 		switch (key) {
 			case "monster": {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
@@ -2201,7 +2196,7 @@ DataUtil = {
 			// case "item":
 			// case "itemFluff":
 			case "background": return `${Renderer.get().baseUrl}data/backgrounds.json`;
-			// case "race":
+			// case "ancestry":
 			case "raceFluff": return `${Renderer.get().baseUrl}data/fluff-races.json`;
 			// case "deity":
 			default: throw new Error(`Could not get loadable URL for \`${JSON.stringify({key, value})}\``);
@@ -2699,7 +2694,7 @@ DataUtil = {
 										return copyTo.name;
 									case "short_name":
 									case "title_short_name": {
-										return Renderer.monster.getShortName(copyTo, parts[0] === "title_short_name");
+										return Renderer.creature.getShortName(copyTo, parts[0] === "title_short_name");
 									}
 									case "spell_dc": {
 										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
@@ -2743,7 +2738,7 @@ DataUtil = {
 		},
 	},
 
-	monster: {
+	creature: {
 		_MERGE_REQUIRES_PRESERVE: {
 			legendaryGroup: true,
 			environment: true,
@@ -2758,15 +2753,15 @@ DataUtil = {
 		},
 		_mergeCache: {},
 		async pMergeCopy(monList, mon, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.monster, UrlUtil.PG_BESTIARY, monList, mon, options);
+			return DataUtil.generic._pMergeCopy(DataUtil.creature, UrlUtil.PG_BESTIARY, monList, mon, options);
 		},
 
 		async pPreloadMeta() {
-			if (DataUtil.monster._isMetaLoaded) return;
+			if (DataUtil.creature._isMetaLoaded) return;
 
 			const legendaryGroups = await DataUtil.legendaryGroup.pLoadAll();
-			DataUtil.monster.populateMetaReference({legendaryGroup: legendaryGroups});
-			DataUtil.monster._isMetaLoaded = true;
+			DataUtil.creature.populateMetaReference({legendaryGroup: legendaryGroups});
+			DataUtil.creature._isMetaLoaded = true;
 		},
 
 		async pLoadAll() {
@@ -2775,9 +2770,9 @@ DataUtil = {
 				DataUtil.legendaryGroup.pLoadAll(),
 			]);
 
-			if (!DataUtil.monster._isMetaLoaded) {
-				DataUtil.monster.populateMetaReference({legendaryGroup: legendaryGroups});
-				DataUtil.monster._isMetaLoaded = true;
+			if (!DataUtil.creature._isMetaLoaded) {
+				DataUtil.creature.populateMetaReference({legendaryGroup: legendaryGroups});
+				DataUtil.creature._isMetaLoaded = true;
 			}
 
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
@@ -2791,13 +2786,13 @@ DataUtil = {
 		metaGroupMap: {},
 		getMetaGroup(mon) {
 			if (!mon.legendaryGroup || !mon.legendaryGroup.source || !mon.legendaryGroup.name) return null;
-			return (DataUtil.monster.metaGroupMap[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
+			return (DataUtil.creature.metaGroupMap[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
 		},
 		populateMetaReference(data) {
 			(data.legendaryGroup || []).forEach(it => {
-				(DataUtil.monster.metaGroupMap[it.source] =
-					DataUtil.monster.metaGroupMap[it.source] || {})[it.name] =
-					DataUtil.monster.metaGroupMap[it.source][it.name] || it;
+				(DataUtil.creature.metaGroupMap[it.source] =
+					DataUtil.creature.metaGroupMap[it.source] || {})[it.name] =
+					DataUtil.creature.metaGroupMap[it.source][it.name] || it;
 			});
 		},
 	},
@@ -2882,7 +2877,7 @@ DataUtil = {
 		},
 		_mergeCache: {},
 		async pMergeCopy(raceList, race, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_RACES, raceList, race, options);
+			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_ANCESTRIES, raceList, race, options);
 		},
 	},
 
@@ -2890,7 +2885,7 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {},
 		_mergeCache: {},
 		async pMergeCopy (raceFlfList, raceFlf, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.raceFluff, UrlUtil.PG_RACES, raceFlfList, raceFlf, options);
+			return DataUtil.generic._pMergeCopy(DataUtil.raceFluff, UrlUtil.PG_ANCESTRIES, raceFlfList, raceFlf, options);
 		},
 	},
 
@@ -4214,10 +4209,10 @@ BrewUtil = {
 			case UrlUtil.PG_BESTIARY: return _PG_BESTIARY;
 			case UrlUtil.PG_BACKGROUNDS: return ["background"];
 			case UrlUtil.PG_FEATS: return ["feat"];
-			case UrlUtil.PG_OPT_FEATURES: return ["optionalfeature"];
-			case UrlUtil.PG_RACES: return ["race", "raceFluff", "subrace"];
+			case UrlUtil.PG_COMPANIONS_FAMILIARS: return ["optionalfeature"];
+			case UrlUtil.PG_ANCESTRIES: return ["race", "raceFluff", "subrace"];
 			case UrlUtil.PG_OBJECTS: return ["object"];
-			case UrlUtil.PG_TRAPS_HAZARDS: return ["trap", "hazard"];
+			case UrlUtil.PG_HAZARDS: return ["trap", "hazard"];
 			case UrlUtil.PG_DEITIES: return ["deity"];
 			case UrlUtil.PG_ITEMS: return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
 			case UrlUtil.PG_REWARDS: return ["reward"];
@@ -4591,14 +4586,13 @@ BrewUtil = {
 			case UrlUtil.PG_BESTIARY:
 			case UrlUtil.PG_BACKGROUNDS:
 			case UrlUtil.PG_FEATS:
-			case UrlUtil.PG_OPT_FEATURES:
-			case UrlUtil.PG_RACES:
+			case UrlUtil.PG_COMPANIONS_FAMILIARS:
+			case UrlUtil.PG_ANCESTRIES:
 			case UrlUtil.PG_OBJECTS:
-			case UrlUtil.PG_TRAPS_HAZARDS:
+			case UrlUtil.PG_HAZARDS:
 			case UrlUtil.PG_DEITIES:
 			case UrlUtil.PG_ITEMS:
 			case UrlUtil.PG_REWARDS:
-			case UrlUtil.PG_PSIONICS:
 			case UrlUtil.PG_VARIANTRULES:
 			case UrlUtil.PG_CONDITIONS:
 			case UrlUtil.PG_ADVENTURE:
@@ -4612,9 +4606,6 @@ BrewUtil = {
 			case UrlUtil.PG_LANGUAGES:
 			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
-				break;
-			case UrlUtil.PG_MAKE_BREW:
-				if (BrewUtil._pHandleBrew) await BrewUtil._pHandleBrew(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO_RENDER:
@@ -4794,7 +4785,7 @@ BrewUtil = {
 		if (BrewUtil.homebrew) {
 			const INDEX_DEFINITIONS = [Omnidexer.TO_INDEX__FROM_INDEX_JSON, Omnidexer.TO_INDEX];
 
-			// Run these in serial, to prevent any ID race condition antics
+			// Run these in serial, to prevent any ID ancestry condition antics
 			for (const IX_DEF of INDEX_DEFINITIONS) {
 				for (const arbiter of IX_DEF) {
 					if (!(BrewUtil.homebrew[arbiter.brewProp || arbiter.listProp] || []).length) continue;

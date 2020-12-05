@@ -1,6 +1,6 @@
 "use strict";
 
-function optFeatSort (itemA, itemB, options) {
+function compFamSort (itemA, itemB, options) {
 	if (options.sortBy === "level") {
 		const aValue = Number(itemA.values.level) || 0;
 		const bValue = Number(itemB.values.level) || 0;
@@ -9,26 +9,26 @@ function optFeatSort (itemA, itemB, options) {
 	return SortUtil.listSort(itemA, itemB, options);
 }
 
-class OptionalFeaturesPage extends ListPage {
+class CompanionsFamiliarsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterOptionalFeatures();
 
 		super({
-			dataSource: "data/optionalfeatures.json",
+			dataSource: "data/companionfamiliars.json",
 
 			pageFilter,
 
-			listClass: "optfeatures",
+			listClass: "companionsfamiliars",
 			listOptions: {
-				fnSort: optFeatSort,
+				fnSort: compFamSort,
 			},
 
-			sublistClass: "suboptfeatures",
+			sublistClass: "subcompanionsfamiliars",
 			sublistOptions: {
-				fnSort: optFeatSort,
+				fnSort: compFamSort,
 			},
 
-			dataProps: ["optionalfeature"],
+			dataProps: ["companion", "familiar"],
 		});
 	}
 
@@ -136,7 +136,7 @@ class OptionalFeaturesPage extends ListPage {
 				.appendTo($wrpOptFeatType);
 		}
 
-		$(`#pagecontent`).empty().append(RenderOptionalFeatures.$getRenderedOptionalFeature(it));
+		$(`#pagecontent`).empty().append(RenderCompanionsFamiliars.$getRenderedCompanionFamiliar(it));
 
 		ListUtil.updateSelected();
 	}
@@ -147,5 +147,5 @@ class OptionalFeaturesPage extends ListPage {
 	}
 }
 
-const optionalFeaturesPage = new OptionalFeaturesPage();
-window.addEventListener("load", () => optionalFeaturesPage.pOnLoad());
+const companionsFamiliarsPage = new CompanionsFamiliarsPage();
+window.addEventListener("load", () => companionsFamiliarsPage.pOnLoad());

@@ -193,7 +193,7 @@ class SearchPage {
 											const hasToken = (ent.tokenUrl && ent.uniqueId) || ent.hasToken;
 											if (hasToken) {
 												isImagePopulated = true;
-												const tokenUrl = Renderer.monster.getTokenUrl(ent);
+												const tokenUrl = Renderer.creature.getTokenUrl(ent);
 												$dispImage.html(`<img src="${tokenUrl}" class="w-100 h-100">`);
 											}
 										}

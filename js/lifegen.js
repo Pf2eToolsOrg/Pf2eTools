@@ -39,7 +39,7 @@ function rollSuppStatus () {
 /**
  * @param [opts] Options object.
  * @param [opts.isParent] If this person is a parent.
- * @param [opts.race] Race for this person (parent only).
+ * @param [opts.ancestry] Race for this person (parent only).
  * @param [opts.gender] Gender for this person (parent only).
  * @param [opts.isSibling] If this person is a sibling.
  * @param opts.gender The gender of this person.
@@ -218,7 +218,7 @@ const BIRTHPLACES = [
 	{min: 81, max: 82, result: () => `Brothel, tavern, or inn ${choose("brothel", "tavern", "inn")}`, display: "Brothel, tavern, or inn"},
 	{min: 83, max: 84, result: () => `Castle, keep, tower, or palace ${choose("castle", "keep", "tower", "palace")}`, display: "Castle, keep, tower, or palace"},
 	{min: 85, result: () => `Sewer or rubbish heap ${choose("sewer", "rubbish heap")}`, display: "Sewer or rubbish heap"},
-	{min: 86, max: 88, result: "Among people of a different race"},
+	{min: 86, max: 88, result: "Among people of a different ancestry"},
 	{min: 89, max: 91, result: () => `On board a boat or a ship ${choose("boat", "ship")}`, display: "On board a boat or a ship"},
 	{min: 92, max: 93, result: () => `In a prison or in the headquarters of a secret organization ${choose("prison", "headquarters of a secret organization")}`, display: "In a prison or in the headquarters of a secret organization"},
 	{min: 94, max: 95, result: "In a sage's laboratory"},
@@ -255,7 +255,7 @@ const FAMILY = [
 	{min: 6, max: 7, result: () => `Guardian. ${absentBothParents()}`, display: "Guardian"},
 	{min: 8, max: 15, result: () => `Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan ${choose("paternal uncle", "maternal aunt", "paternal uncle and maternal aunt", "extended family such as a tribe or clan")}. ${absentBothParents()}`, display: "Paternal or maternal aunt, uncle, or both; or extended family such as a tribe or clan"},
 	{min: 16, max: 25, result: () => `Paternal or maternal grandparent(s) ${choose("paternal grandfather", "maternal grandmother", "paternal grandfather and maternal grandmother")}. ${absentBothParents()}`, display: "Paternal or maternal grandparent(s)"},
-	{min: 26, max: 35, result: () => `Adoptive family (same or different race) ${choose("same race", "different race")}. ${absentBothParents()}`, display: "Adoptive family (same or different race)"},
+	{min: 26, max: 35, result: () => `Adoptive family (same or different race) ${choose("same ancestry", "different ancestry")}. ${absentBothParents()}`, display: "Adoptive family (same or different ancestry)"},
 	{min: 36, max: 55, result: () => singleParentOrStep("father"), display: "Single father or stepfather"},
 	{min: 56, max: 75, result: () => singleParentOrStep("mother"), display: "Single mother or stepmother"},
 	{min: 76, max: 100, result: "Mother and father"},
@@ -353,7 +353,7 @@ const LIFE_EVENTS_ADVENTURES = [
 	{min: 11, max: 20, result: "You suffered a grievous injury. Although the wound healed, it still pains you from time to time."},
 	{min: 21, max: 30, result: "You were wounded, but in time you fully recovered."},
 	{min: 31, max: 40, result: "You contracted a disease while exploring a filthy warren. You recovered from the disease, but you have a persistent cough, pockmarks on your skin, or prematurely gray hair."},
-	{min: 41, max: 50, result: "You were poisoned by a trap or a monster. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage."},
+	{min: 41, max: 50, result: "You were poisoned by a trap or a creature. You recovered, but the next time you must make a saving throw against poison, you make the saving throw with disadvantage."},
 	{min: 51, max: 60, result: "You lost something of sentimental value to you during your adventure. Remove one trinket from your possessions."},
 	{min: 61, max: 70, result: "You were terribly frightened by something you encountered and ran away, abandoning your companions to their fate."},
 	{min: 71, max: 80, result: "You learned a great deal during your adventure. The next time you make an ability check or a saving throw, you have advantage on the roll."},
@@ -453,7 +453,7 @@ const LIFE_EVENTS_WEIRD_STUFF = [
 	{min: 2, result: "You were petrified and remained a stone statue for a time until someone freed you."},
 	{min: 3, result: () => `You were enslaved by a hag, a satyr, or some other being and lived in that creature's thrall for {@dice 1d6} ${fmtChoice(RNG(6))} years.`, display: "You were enslaved by a hag, a satyr, or some other being and lived in that creature’s thrall for {@dice 1d6} years."},
 	{min: 4, result: () => `A dragon held you as a prisoner for {@dice 1d4} ${fmtChoice(RNG(4))} months until adventurers killed it.`, display: "A dragon held you as a prisoner for {@dice 1d4} months until adventurers killed it."},
-	{min: 5, result: "You were taken captive by a race of evil humanoids such as drow, kuo-toa, or quaggoths. You lived as a slave in the Underdark until you escaped."},
+	{min: 5, result: "You were taken captive by a ancestry of evil humanoids such as drow, kuo-toa, or quaggoths. You lived as a slave in the Underdark until you escaped."},
 	{min: 6, result: "You served a powerful adventurer as a hireling. You have only recently left that service. Use the supplemental tables and work with your DM to determine the basic details about your former employer.", nextRoll: () => _lifeEvtPerson("Employer", getPersonDetails({isAdventurer: true}))},
 	{min: 7, result: () => `You went insane for {@dice 1d6} ${fmtChoice(RNG(6))} years and recently regained your sanity. A tic or some other bit of odd behavior might linger.`, display: "You went insane for {@dice 1d6} years and recently regained your sanity. A tic or some other bit of odd behavior might linger."},
 	{min: 8, result: "A lover of yours was secretly a silver dragon."},
@@ -482,7 +482,7 @@ const SUPP_DEATH = [
 	{min: 6, max: 7, result: "Natural causes, such as disease or old age"},
 	{min: 8, result: "Apparent suicide"},
 	{min: 9, result: () => `Torn apart by an animal or a natural disaster ${choose("animal", "natural disaster")}`, display: "Torn apart by an animal or a natural disaster"},
-	{min: 10, result: () => "Consumed by a monster"},
+	{min: 10, result: () => "Consumed by a creature"},
 	{min: 11, result: () => `Executed for a crime or tortured to death ${choose("executed for a crime", "tortured to death")}`, display: "Executed for a crime or tortured to death"},
 	{min: 12, result: "Bizarre event, such as being hit by a meteorite, struck down by an angry god, or killed by a hatching slaad egg"},
 ];
