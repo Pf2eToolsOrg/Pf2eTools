@@ -55,9 +55,7 @@ class NavBar {
 		addLi(ulPlayers, "optionalfeatures.html", "Other Options & Features");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "statgen.html", "Stat Generator");
-		addDivider(ulPlayers);
-		addLi(ulPlayers, "lifegen.html", "This Is Your Life");
-		addLi(ulPlayers, "names.html", "Names");
+		addLi(ulPlayers, "lifegen.html", "Deep Backgrounds");
 
 		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "dmscreen.html", "DM Screen");
@@ -66,13 +64,8 @@ class NavBar {
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventure.html", "Test", {isSide: true, aHash: "Test", date: "1234"});
-		addLi(ulDms, "cultsboons.html", "Cults & Supernatural Boons");
 		addLi(ulDms, "objects.html", "Objects");
-		addLi(ulDms, "hazards.html", "Traps & Hazards");
-		addDivider(ulDms);
-		addLi(ulDms, "crcalculator.html", "CR Calculator");
-		addLi(ulDms, "encountergen.html", "Encounter Generator");
-		addLi(ulDms, "lootgen.html", "Loot Generator");
+		addLi(ulDms, "hazards.html", "Hazards");
 
 		const ulReferences = addDropdown(navBar, "References");
 		addLi(ulReferences, "actions.html", "Actions");
@@ -82,10 +75,11 @@ class NavBar {
 		addLi(ulReferences, "spells.html", "Spells");
 		addDivider(ulReferences);
 		addLi(ulReferences, "deities.html", "Deities");
+		addLi(ulReferences, "diseases.html", "Diseases");
 		addLi(ulReferences, "languages.html", "Languages");
 		addLi(ulReferences, "rewards.html", "Supernatural Gifts & Rewards");
-		addLi(ulReferences, "psionics.html", "Psionics");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
+		addDivider(ulReferences);
 		addLi(ulReferences, "traits.html", "Traits");
 
 		const ulUtils = addDropdown(navBar, "Utilities");

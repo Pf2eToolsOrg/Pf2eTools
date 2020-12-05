@@ -56,7 +56,7 @@
 			"trigger": "Your turn begins.",
 			"entries": [
 				"You wait for the right moment to act. The rest of your turn doesn’t happen yet. Instead, you’re removed from the initiative order. You can return to the initiative order as a free action triggered by the end of any other creature’s turn. This permanently changes your initiative to the new position. You can’t use reactions until you return to the initiative order. If you Delay an entire round without returning to the initiative order, the actions from the Delayed turn are lost, your initiative doesn’t change, and your next turn occurs at your original position in the initiative order.",
-				"When you Delay, any persistent damage or other negative effects that normally occur at the start or end of your turn occur immediately when you use the Delay action. Any beneficial effects that would end at any point during your turn also end. The GM might determine that other effects end when you Delay as well. Essentially, you can’t Delay to avoid negative consequences that would happen on your turn or to extend beneficial effects that would end on your turn."
+				"When you Delay, any {@condition persistent damage|CRB} or other negative effects that normally occur at the start or end of your turn occur immediately when you use the Delay action. Any beneficial effects that would end at any point during your turn also end. The GM might determine that other effects end when you Delay as well. Essentially, you can’t Delay to avoid negative consequences that would happen on your turn or to extend beneficial effects that would end on your turn."
 			]
 		},
 		{
@@ -562,7 +562,7 @@
 			],
 			"requirements": "A creature is {@condition undetected|CRB} by one or more of your allies but isn’t {@condition undetected|CRB} by you.",
 			"entries": [
-				"You indicate a creature that you can see to one or more allies, gesturing in a direction and describing the distance verbally. That creature is {@condition hidden|CRB} to your allies, rather than {@condition undetected|CRB}. This works only for allies who can see you and are in a position where they could potentially detect the target. If your allies can’t hear or understand you, they must succeed at a {@skill Perception} check against the creature’s Stealth DC or they misunderstand and believe the target is in a different location."
+				"You indicate a creature that you can see to one or more allies, gesturing in a direction and describing the distance verbally. That creature is {@condition hidden|CRB} to your allies, rather than {@condition undetected|CRB}. This works only for allies who can see you and are in a position where they could potentially detect the target. If your allies can’t hear or understand you, they must succeed at a {@skill Perception} check against the creature’s {@skill Stealth} DC or they misunderstand and believe the target is in a different location."
 			]
 		},
 		{
@@ -738,7 +738,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Decipher Tasks",
 					"entries": [
 						{
@@ -793,7 +793,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Earn Income Tasks",
 					"entries": [
 						"These examples use Alcohol Lore to work in a bar or Legal Lore to perform legal work.",
@@ -924,6 +924,11 @@
 			"source": "CRB",
 			"page": 239,
 			"srd": true,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
 			"traits": [
 				"Concentrate",
 				"Secret"
@@ -941,7 +946,6 @@
 				"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM’s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
 				{
 					"type": "list",
-					"style": "list-hang",
 					"items": [
 						"{@b Arcana:} Arcane theories, magical traditions, creatures of arcane significance, and arcane planes.",
 						"{@b Crafting:} Alchemical reactions and creatures, item value, engineering, unusual materials, and constructs.",
@@ -955,7 +959,7 @@
 				},
 				"The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Recall Knowledge Tasks",
 					"entries": [
 						"These examples use {@skill Society} or {@skill Religion}.",
@@ -1015,7 +1019,7 @@
 				},
 				"The following skills can be used to Recall Knowledge, getting information about the listed topics. In some cases, you can get the GM’s permission to use a different but related skill, usually against a higher DC than normal. Some topics might appear on multiple lists, but the skills could give different information. For example, {@skill Arcana} might tell you about the magical defenses of a golem, whereas {@skill Crafting} could tell you about its sturdy resistance to physical attacks.",
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Subsist Tasks",
 					"entries": [
 						"These examples use {@skill Society} or {@skill Religion}.",
@@ -1086,7 +1090,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Balance Tasks",
 					"entries": [
 						{
@@ -1185,7 +1189,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Maneuver in Flight Tasks",
 					"entries": [
 						{
@@ -1244,7 +1248,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Squeeze Tasks",
 					"entries": [
 						{
@@ -1418,7 +1422,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Force Open Tasks",
 					"entries": [
 						{
@@ -1518,7 +1522,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Leap",
 					"entries": [
 						"The {@action Leap|CRB} basic action is used for {@action High Jump|CRB} and {@action Long Jump|CRB}. {@action Leap|CRB} lets you take a careful, short jump. You can {@action Leap|CRB} up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap|CRB} ends (meaning you can typically clear a 5-foot gap if your Speed is between 15 feet and 30 feet, or a 10-foot gap if your Speed is 30 feet or more). If you make a vertical {@action Leap|CRB}, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface."
@@ -1586,7 +1590,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Forced Movement",
 					"entries": [
 						"The Shove action can force a creature to move. When an effect forces you to move, or if you start falling, the distance you move is defined by the effect that moved you, not by your Speed. Because you’re not acting to move, this doesn’t trigger reactions triggered by movement."
@@ -1625,7 +1629,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Swim Tasks",
 					"entries": [
 						{
@@ -1685,7 +1689,7 @@
 			"requirements": "You have at least one hand free. Your target can’t be more than one size larger than you.",
 			"entries": [
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Falling",
 					"entries": [
 						"When you fall more than 5 feet, you take falling damage when you land, which is bludgeoning damage equal to half the distance you fell. If you take any damage from a fall, you’re knocked {@condition prone|CRB} when you land.",
@@ -1788,7 +1792,6 @@
 				"To Craft an item, you must meet the following requirements:",
 				{
 					"type": "list",
-					"style": "list-hang",
 					"items": [
 						"The item is your level or lower. An item that doesn’t list a level is level 0. If the item is 9th level or higher, you must be a master in Crafting, and if it’s 16th or higher, you must be legendary.",
 						"You have the formula for the item; see Getting Formulas below for more information.",
@@ -1808,14 +1811,14 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Consumables and Ammunition",
 					"entries": [
 						"You can Craft items with the consumable trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also Craft non-magical ammunition in batches, using the quantity listed in Table 6–8: Ranged Weapons (typically 10)."
 					]
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Getting Formulas",
 					"entries": [
 						"You can gain access to the formulas for all common items in Chapter 6: Equipment by purchasing a basic crafter’s book (page 287). See the rules on page 293 for information on how to acquire other formulas."
@@ -1978,9 +1981,9 @@
 				{
 					"type": "success_degree",
 					"entries": {
-						"Critical Success": "You throw your enemy’s defenses against you entirely off. The target is flat-footed against melee attacks that you attempt against it until the end of your next turn.",
-						"Success": "Your foe is fooled, but only momentarily. The target is flat-footed against the next melee attack that you attempt against it before the end of your current turn.",
-						"Critical Failure": "Your feint backfires. You are flat-footed against melee attacks the target attempts against you until the end of your next turn."
+						"Critical Success": "You throw your enemy’s defenses against you entirely off. The target is {@condition flat-footed|CRB} against melee attacks that you attempt against it until the end of your next turn.",
+						"Success": "Your foe is fooled, but only momentarily. The target is {@condition flat-footed|CRB} against the next melee attack that you attempt against it before the end of your current turn.",
+						"Critical Failure": "Your feint backfires. You are {@condition flat-footed|CRB} against melee attacks the target attempts against you until the end of your next turn."
 					}
 				}
 			]
@@ -2010,7 +2013,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Gather Information Tasks",
 					"entries": [
 						{
@@ -2077,7 +2080,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Changing Attitudes",
 					"entries": [
 						"Your influence on NPCs is measured with a set of attitudes that reflect how they view your character. These are only a brief summary of a creature’s disposition. The GM will supply additional nuance based on the history and beliefs of the characters you’re interacting with, and their attitudes can change in accordance with the story. The attitudes are detailed in the Conditions Appendix and are summarized here.",
@@ -2408,7 +2411,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sample Perform Tasks",
 					"entries": [
 						{
@@ -2496,8 +2499,8 @@
 				}
 			],
 			"entries": [
-				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your {@skill Stealth} check and compares it to this passive observer’s {@skill Perception} DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a {@skill Perception} check against your Stealth DC (finding the object on success).",
-				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their {@skill Perception} check results to your Stealth DC to determine whether they find the object.",
+				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your {@skill Stealth} check and compares it to this passive observer’s {@skill Perception} DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a {@skill Perception} check against your {@skill Stealth} DC (finding the object on success).",
+				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their {@skill Perception} check results to your {@skill Stealth} DC to determine whether they find the object.",
 				{
 					"type": "success_degree",
 					"entries": {
@@ -2602,7 +2605,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sense Direction Tasks",
 					"entries": [
 						{
@@ -2689,7 +2692,7 @@
 					}
 				},
 				{
-					"type": "inset",
+					"type": "pf2-sample-box",
 					"name": "Sense Track Tasks",
 					"entries": [
 						{
@@ -2863,7 +2866,7 @@
 				"Exploration"
 			],
 			"entries": [
-				"You attempt a {@skill Stealth} check to avoid notice while traveling at half speed. If you have the {@feat Swift Sneak|CRB} feat, you can move at full Speed rather than half, but you still can’t use another exploration activity while you do so. If you have the {@feat Legendary Sneak|CRB} feat, you can move at full Speed and use a second exploration activity. If you’re {@action Avoid Notice|CRB|Avoiding Notice} at the start of an encounter, you usually roll a {@skill Stealth} check instead of a {@skill Perception} check both to determine your initiative and to see if the enemies notice you (based on their {@skill Perception} DCs, as normal for {@action Sneak|CRB}, regardless of their initiative check results)."
+				"You attempt a {@skill Stealth} check to avoid notice while traveling at half speed. If you have the {@feat Swift Sneak|CRB} feat, you can move at full Speed rather than half, but you still can’t use another exploration activity while you do so. If you have the {@feat Legendary Sneak|CRB} feat, you can move at full Speed and use a second exploration activity. If you’re Avoiding Notice at the start of an encounter, you usually roll a {@skill Stealth} check instead of a {@skill Perception} check both to determine your initiative and to see if the enemies notice you (based on their {@skill Perception} DCs, as normal for {@action Sneak|CRB}, regardless of their initiative check results)."
 			]
 		},
 		{
@@ -2875,7 +2878,7 @@
 				"Exploration"
 			],
 			"entries": [
-				"You move at half your travel speed with your shield raised. If combat breaks out, you gain the benefits of Raising a Shield before your first turn begins."
+				"You move at half your travel speed with your shield raised. If combat breaks out, you gain the benefits of {@action Raise a Shield|CRB|Raising a Shield} before your first turn begins."
 			]
 		},
 		{
@@ -2890,7 +2893,7 @@
 				"Visual"
 			],
 			"entries": [
-				"Choose an ally attempting a recurring skill check while exploring, such as climbing, or performing a different exploration tactic that requires a skill check (like Avoiding Notice). The ally must be at least an expert in that skill and must be willing to provide assistance. While Following the Expert, you match their tactic or attempt similar skill checks. Thanks to your ally’s assistance, you can add your level as a proficiency bonus to the associated skill check, even if you’re untrained. Additionally, you gain a circumstance bonus to your skill check based on your ally’s proficiency (+2 for expert, +3 for master, and +4 for legendary)."
+				"Choose an ally attempting a recurring skill check while exploring, such as climbing, or performing a different exploration tactic that requires a skill check (like {@action Avoid Notice|CRB|Avoiding Notice}). The ally must be at least an expert in that skill and must be willing to provide assistance. While Following the Expert, you match their tactic or attempt similar skill checks. Thanks to your ally’s assistance, you can add your level as a proficiency bonus to the associated skill check, even if you’re untrained. Additionally, you gain a circumstance bonus to your skill check based on your ally’s proficiency (+2 for expert, +3 for master, and +4 for legendary)."
 			]
 		}
 	]
