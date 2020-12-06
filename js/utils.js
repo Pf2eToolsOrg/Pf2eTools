@@ -2936,7 +2936,7 @@ DataUtil = {
 			opts = opts || {};
 			if (opts.isLower) uid = uid.toLowerCase();
 			let [name, className, classSource, level, source, displayText] = uid.split("|").map(it => it.trim());
-			classSource = classSource || (opts.isLower ? SRC_PHB.toLowerCase() : SRC_PHB);
+			classSource = classSource || (opts.isLower ? SRC_CRB.toLowerCase() : SRC_CRB);
 			source = source || classSource;
 			level = Number(level)
 			return {
@@ -3093,13 +3093,7 @@ DataUtil = {
 		doPostLoad: function (data) {
 			const PRINT_ORDER = [
 				SRC_CRB,
-				SRC_APG,
-				SRC_PHB,
-				SRC_DMG,
-				SRC_SCAG,
-				SRC_VGM,
-				SRC_MTF,
-				SRC_ERLW,
+				SRC_APG
 			];
 
 			const inSource = {};

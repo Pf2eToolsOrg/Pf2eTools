@@ -418,7 +418,7 @@ class IndexableFileItemsBase extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ITEM,
-			file: "items-base.json",
+			file: "items/items-base.json",
 			listProp: "baseitem",
 			baseUrl: "items.html",
 			isHover: true,
@@ -430,7 +430,7 @@ class IndexableFileItems extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ITEM,
-			file: "items.json",
+			file: "items/items-crb.json",
 			listProp: "item",
 			baseUrl: "items.html",
 			isHover: true,
@@ -442,7 +442,7 @@ class IndexableFileItemGroups extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ITEM,
-			file: "items.json",
+			file: "items/items-crb.json",
 			listProp: "itemGroup",
 			baseUrl: "items.html",
 			isHover: true,
@@ -454,7 +454,7 @@ class IndexableFileMagicVariants extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ITEM,
-			file: "magicvariants.json",
+			file: "items/magicvariants.json",
 			source: "inherits.source",
 			page: "inherits.page",
 			listProp: "variant",
@@ -465,9 +465,9 @@ class IndexableFileMagicVariants extends IndexableFile {
 			additionalIndexes: {
 				item: async (indexer, rawVariants) => {
 					const specVars = await (async () => {
-						if (typeof module !== "undefined") return Renderer.item.getAllIndexableItems(rawVariants, require(`../data/items-base.json`));
+						if (typeof module !== "undefined") return Renderer.item.getAllIndexableItems(rawVariants, require(`../data/items/items-base.json`));
 						else {
-							const baseItemJson = await DataUtil.loadJSON(`data/items-base.json`);
+							const baseItemJson = await DataUtil.loadJSON(`data/items/items-base.json`);
 							const rawBaseItems = {...baseItemJson, baseitem: [...baseItemJson.baseitem]};
 							const brew = await BrewUtil.pAddBrewData();
 							if (brew.baseitem) rawBaseItems.baseitem.push(...brew.baseitem);
@@ -882,35 +882,23 @@ class IndexableFileLanguages extends IndexableFile {
 	}
 }
 
-class IndexableFileCharCreationOptions extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_CHAR_CREATION_OPTIONS,
-			file: "charcreationoptions.json",
-			listProp: "charoption",
-			baseUrl: "charcreationoptions.html",
-			isHover: true,
-		});
-	}
-}
-
 Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
 	new IndexableFileFeats(),
 
-	new IndexableFileItemsBase(),
-	new IndexableFileItems(),
-	new IndexableFileItemGroups(),
-	new IndexableFileMagicVariants(),
-
-	new IndexableFileRaces(),
-	new IndexableFileRewards(),
-	new IndexableFileVariantRules(),
-	new IndexableFileAdventures(),
-	new IndexableFileBooks(),
-	new IndexableFileQuickReference(),
+	// new IndexableFileItemsBase(),
+	// new IndexableFileItems(),
+	// new IndexableFileItemGroups(),
+	// new IndexableFileMagicVariants(),
+	//
+	// new IndexableFileRaces(),
+	// new IndexableFileRewards(),
+	// new IndexableFileVariantRules(),
+	// new IndexableFileAdventures(),
+	// new IndexableFileBooks(),
+	// new IndexableFileQuickReference(),
 	new IndexableFileDeities(),
 	new IndexableFileObjects(),
 	new IndexableFileTraps(),
@@ -926,7 +914,6 @@ Omnidexer.TO_INDEX = [
 
 	new IndexableFileActions(),
 	new IndexableFileLanguages(),
-	new IndexableFileCharCreationOptions(),
 ];
 
 class IndexableSpecial {
