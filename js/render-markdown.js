@@ -654,6 +654,11 @@ ___
 				break;
 			case "@atk": textStack[0] += `*${Renderer.attackTagToFull(text)}*`; break;
 			case "@h": textStack[0] += `*Hit:* `; break;
+			case "@sup":
+				textStack[0] += `<sup>`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</sup>`;
+				break;
 
 			// DCs /////////////////////////////////////////////////////////////////////////////////////////////
 			case "@dc": textStack[0] += `DC ${text}`; break;

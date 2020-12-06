@@ -2086,6 +2086,11 @@ function Renderer() {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</u>`;
 				break;
+				case "@sup":
+				textStack[0] += `<sup>`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</sup>`;
+				break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
@@ -8924,6 +8929,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@strike":
 					case "@u":
 					case "@underline":
+					case "@sup":
 						return text;
 
 					case "@h":
