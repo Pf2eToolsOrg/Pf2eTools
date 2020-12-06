@@ -35,7 +35,6 @@ class PageFilterActions extends PageFilter {
 		if (!isExcluded) {
 			this._sourceFilter.addItem(it.source);
 			this._traitFilter.addItem(it.traits)
-			this._timeFilter.addItem(it._fTime);
 		}
 	}
 

@@ -29,7 +29,6 @@ function Renderer() {
 	this._isAddHandlers = true;
 	this._headerIndex = 1;
 	this._tagExportDict = null;
-	this._roll20Ids = null;
 	this._trackTitles = {enabled: false, titles: {}};
 	this._enumerateTitlesRel = {enabled: false, titles: {}};
 	this._hooks = {};
@@ -143,16 +142,6 @@ function Renderer() {
 	 */
 	this.resetExportTags = function () {
 		this._tagExportDict = null;
-		return this;
-	};
-
-	this.setRoll20Ids = function (roll20Ids) {
-		this._roll20Ids = roll20Ids;
-		return this;
-	};
-
-	this.resetRoll20Ids = function () {
-		this._roll20Ids = null;
 		return this;
 	};
 
@@ -363,11 +352,11 @@ function Renderer() {
 				case "list":
 					this._renderList(entry, textStack, meta, options);
 					break;
-				case "table-legacy":
-					this._renderTableLegacy(entry, textStack, meta, options);
-					break;
 				case "table":
 					this._renderTable(entry, textStack, meta, options);
+					break;
+				case "table-legacy":
+					this._renderTableLegacy(entry, textStack, meta, options);
 					break;
 				case "tableGroup":
 					this._renderTableGroup(entry, textStack, meta, options);
@@ -938,7 +927,7 @@ function Renderer() {
 		const pagePart = !isInlineTitle ? this._getPagePart(entry) : "";
 		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
 		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		if (entry.name != null) this._handleTrackTitles(entry.name);
 
 		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
@@ -976,7 +965,7 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
-	this._renderEntriesSubtypes_getDataString = function (entry) {
+	this._getDataString = function (entry) {
 		let dataString = "";
 		if (entry.source) dataString += `data-source="${entry.source}"`;
 		if (entry.data) {
@@ -1065,7 +1054,6 @@ function Renderer() {
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
-
 
 	this._renderAction = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1165,7 +1153,7 @@ function Renderer() {
 	};
 
 	this._renderPf2H1 = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1213,7 +1201,7 @@ function Renderer() {
 	};
 
 	this._renderPf2H2 = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1242,7 +1230,7 @@ function Renderer() {
 	};
 
 	this._renderPf2H3 = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1265,7 +1253,7 @@ function Renderer() {
 	};
 
 	this._renderPf2H4 = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1288,7 +1276,7 @@ function Renderer() {
 	};
 
 	this._renderPf2H5 = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1311,7 +1299,7 @@ function Renderer() {
 	};
 
 	this._renderPf2Sidebar = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-sidebar" ${dataString}>`;
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, meta.depth);
@@ -1338,7 +1326,7 @@ function Renderer() {
 	};
 
 	this._renderPf2SampleBox = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-sample-box" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1366,7 +1354,7 @@ function Renderer() {
 	};
 
 	this._renderPf2Inset = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-inset" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1386,7 +1374,7 @@ function Renderer() {
 	};
 
 	this._renderPf2TipsBox = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-tips-box" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1414,7 +1402,7 @@ function Renderer() {
 	};
 
 	this._renderPf2BrownBox = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div ${dataString} style="display: flex; clear: left">`;
 		textStack[0] += `<div class="pf2-brown-box">`;
 		textStack[0] += `<div class="swirl-left-brown"></div>`
@@ -1443,7 +1431,7 @@ function Renderer() {
 	};
 
 	this._renderPf2RedBox = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-red-box" ${dataString} style="clear: left">`;
 		textStack[0] += `<div class="swirl-left-red"></div>`
 		textStack[0] += `<div class="swirl-connection-red"></div>`
@@ -1474,7 +1462,7 @@ function Renderer() {
 	};
 
 	this._renderPf2KeyAbility = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<div style="display: flex; float: left; clear: left" ${dataString}>`;
 		textStack[0] += `<div class="pf2-key-abilities">`;
 
@@ -1520,7 +1508,7 @@ function Renderer() {
 	};
 
 	this._renderInset = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1546,7 +1534,7 @@ function Renderer() {
 	};
 
 	this._renderInsetReadaloud = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="rd__b-inset rd__b-inset--readaloud" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1570,7 +1558,7 @@ function Renderer() {
 	};
 
 	this._renderVariant = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 
 		this._handleTrackTitles(entry.name);
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1592,7 +1580,7 @@ function Renderer() {
 	};
 
 	this._renderVariantInner = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 
 		this._handleTrackTitles(entry.name);
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1810,7 +1798,7 @@ function Renderer() {
 	};
 
 	this._renderActions = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 
 		this._handleTrackTitles(entry.name);
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -1950,7 +1938,7 @@ function Renderer() {
 	};
 
 	this._renderFlowBlock = function (entry, textStack, meta, options) {
-		const dataString = this._renderEntriesSubtypes_getDataString(entry);
+		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="rd__b-flow" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
@@ -2862,15 +2850,6 @@ function Renderer() {
 
 	this._renderLink = function (entry, textStack, meta, options) {
 		let href = this._renderLink_getHref(entry);
-
-		// overwrite href if there's an available Roll20 handout/character
-		if (entry.href.hover && this._roll20Ids) {
-			const procHash = UrlUtil.encodeForHash(entry.href.hash);
-			const id = this._roll20Ids[procHash];
-			if (id) {
-				href = `http://journal.roll20.net/${id.type}/${id.roll20Id}`;
-			}
-		}
 
 		const metasHooks = this._getHooks("link", "ele").map(hook => hook(entry)).filter(Boolean);
 		const isDisableEvents = metasHooks.some(it => it.isDisableEvents);
@@ -6786,11 +6765,29 @@ Renderer.action = {
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
+		${Renderer.action.getSubhead(it)}
 		<div class="pf2-stat-text">
 		${Renderer.get().setFirstSection(true).render({entries: it.entries})}
 		</div>
 		${Renderer.utils.getPageP(it)}`;
 	},
+	getSubhead(it) {
+		const renderStack = [];
+		if (it.prerequisites != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${it.prerequisites}</p>`);
+		}
+		if (it.frequency != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${it.frequency}</p>`);
+		}
+		if (it.trigger != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${it.trigger}</p>`);
+		}
+		if (it.requirements != null) {
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${it.requirements}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	}
 };
 
 Renderer.language = {
