@@ -905,7 +905,6 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileItemGroups(),
 	new IndexableFileMagicVariants(),
 
-	new IndexableFilePsionics(),
 	new IndexableFileRaces(),
 	new IndexableFileRewards(),
 	new IndexableFileVariantRules(),

@@ -3971,20 +3971,21 @@ Renderer.utils = {
 Renderer.feat = {
 	getSubHead(feat) {
 		const renderStack = [];
+		const renderer = Renderer.get()
 		if (feat.prerequisites != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${feat.prerequisites}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(feat.prerequisites)}</p>`);
 		}
 		if (feat.frequency != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${feat.frequency}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(feat.frequency)}</p>`);
 		}
 		if (feat.trigger != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${feat.trigger}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(feat.trigger)}</p>`);
 		}
 		if (feat.cost != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cost </strong>${feat.cost}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cost </strong>${renderer.render(feat.cost)}</p>`);
 		}
 		if (feat.requirements != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${feat.requirements}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(feat.requirements)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
@@ -6765,25 +6766,26 @@ Renderer.action = {
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
-		${Renderer.action.getSubhead(it)}
+		${Renderer.action.getSubHead(it)}
 		<div class="pf2-stat-text">
 		${Renderer.get().setFirstSection(true).render({entries: it.entries})}
 		</div>
 		${Renderer.utils.getPageP(it)}`;
 	},
-	getSubhead(it) {
+	getSubHead(it) {
 		const renderStack = [];
+		const renderer = Renderer.get()
 		if (it.prerequisites != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${it.prerequisites}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
 		}
 		if (it.frequency != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${it.frequency}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(it.frequency)}</p>`);
 		}
 		if (it.trigger != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${it.trigger}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(it.trigger)}</p>`);
 		}
 		if (it.requirements != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${it.requirements}</p>`);
+			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(it.requirements)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
