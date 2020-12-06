@@ -184,7 +184,7 @@ class IndexableDirectoryBestiary extends IndexableDirectory {
 			dir: "bestiary",
 			primary: "name",
 			source: "source",
-			listProp: "monster",
+			listProp: "creature",
 			baseUrl: "bestiary.html",
 			isHover: true,
 		});
@@ -514,7 +514,7 @@ class IndexableFileConditions extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_CONDITION,
-			file: "conditionsdiseases.json",
+			file: "conditions.json",
 			listProp: "condition",
 			baseUrl: "conditions.html",
 			isHover: true,
@@ -526,7 +526,7 @@ class IndexableFileDiseases extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_DISEASE,
-			file: "conditionsdiseases.json",
+			file: "conditions.json",
 			listProp: "disease",
 			baseUrl: "conditions.html",
 			isHover: true,
@@ -888,17 +888,17 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileDiseases(),
 	new IndexableFileFeats(),
 
-	// new IndexableFileItemsBase(),
-	// new IndexableFileItems(),
-	// new IndexableFileItemGroups(),
-	// new IndexableFileMagicVariants(),
-	//
-	// new IndexableFileRaces(),
-	// new IndexableFileRewards(),
-	// new IndexableFileVariantRules(),
-	// new IndexableFileAdventures(),
-	// new IndexableFileBooks(),
-	// new IndexableFileQuickReference(),
+	new IndexableFileItemsBase(),
+	new IndexableFileItems(),
+	new IndexableFileItemGroups(),
+	new IndexableFileMagicVariants(),
+
+	new IndexableFileRaces(),
+	new IndexableFileRewards(),
+	new IndexableFileVariantRules(),
+	new IndexableFileAdventures(),
+	new IndexableFileBooks(),
+	new IndexableFileQuickReference(),
 	new IndexableFileDeities(),
 	new IndexableFileObjects(),
 	new IndexableFileTraps(),

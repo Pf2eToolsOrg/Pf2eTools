@@ -5,7 +5,7 @@ class ConditionsDiseasesPage extends ListPage {
 		const pageFilter = new PageFilterConditionsDiseases();
 
 		super({
-			dataSource: "data/conditionsdiseases.json",
+			dataSource: "data/conditions.json",
 
 			pageFilter,
 
@@ -13,7 +13,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 			sublistClass: "subconditions",
 
-			dataProps: ["condition", "disease", "status"],
+			dataProps: ["condition"],
 		});
 	}
 
@@ -27,9 +27,8 @@ class ConditionsDiseasesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 text-center pl-0">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
-			<span class="bold col-7">${it.name}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="bold col-8-5">${it.name}</span>
+			<span class="col-3-5 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -64,8 +63,7 @@ class ConditionsDiseasesPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-2 pl-0 text-center">${PageFilterConditionsDiseases.getDisplayProp(it.__prop)}</span>
-				<span class="bold col-10 pr-0">${it.name}</span>
+				<span class="bold col-12 pr-0">${it.name}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));

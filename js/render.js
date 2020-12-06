@@ -5989,7 +5989,7 @@ Renderer.item = {
 		specificVariant._isEnhanced = false;
 		delete specificVariant._fullEntries;
 
-		if (baseItem.source !== SRC_PHB && baseItem.source !== SRC_DMG) {
+		if (baseItem.source !== SRC_CRB && baseItem.source !== SRC_APG) {
 			Renderer.item._initFullEntries(specificVariant);
 			specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
 		}
@@ -8006,7 +8006,7 @@ Renderer.hover = {
 			case UrlUtil.PG_CULTS_BOONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_CONDITIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditionsdiseases.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_VEHICLES:
@@ -8113,7 +8113,7 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_ITEMS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
 			case `fluff__${UrlUtil.PG_CONDITIONS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditionsdiseases.json", ["conditionFluff", "diseaseFluff"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`:

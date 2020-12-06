@@ -11,12 +11,6 @@ class PageFilterConditionsDiseases extends PageFilter {
 		super();
 
 		this._sourceFilter = new SourceFilter();
-		this._typeFilter = new Filter({
-			header: "Type",
-			items: ["condition", "disease", "status"],
-			displayFn: PageFilterConditionsDiseases.getDisplayProp,
-			deselFn: (it) => it === "disease" || it === "status",
-		});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
@@ -33,7 +27,6 @@ class PageFilterConditionsDiseases extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._typeFilter,
 			this._miscFilter,
 		];
 	}
@@ -42,7 +35,6 @@ class PageFilterConditionsDiseases extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			it.source,
-			it.__prop,
 			it._fMisc,
 		)
 	}
