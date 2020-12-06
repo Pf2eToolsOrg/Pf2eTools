@@ -7955,7 +7955,7 @@ Renderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "backgrounds.json", "background");
 			case UrlUtil.PG_FEATS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats.json", "feat");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
 			case UrlUtil.PG_PSIONICS:
@@ -8115,7 +8115,7 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_CONDITIONS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-races.json", "raceFluff");
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
 			case `fluff__${UrlUtil.PG_VEHICLES}`:

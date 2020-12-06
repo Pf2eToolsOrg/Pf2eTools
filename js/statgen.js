@@ -1,6 +1,6 @@
 "use strict";
 
-const RACE_JSON_URL = "data/races.json";
+const RACE_JSON_URL = "data/ancestries.json";
 
 class StatGen {
 	static isValidState (state) {

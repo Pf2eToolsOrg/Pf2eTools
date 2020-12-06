@@ -9,7 +9,7 @@ class RacesPage extends ListPage {
 				const raceData = Renderer.ancestry.mergeSubraces(rawRaceData.race, {isAddBaseRaces: true});
 				return {race: raceData};
 			},
-			dataSourceFluff: "data/fluff-races.json",
+			dataSourceFluff: "data/fluff-ancestries.json",
 
 			pageFilter,
 

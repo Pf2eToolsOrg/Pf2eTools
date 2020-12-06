@@ -538,7 +538,7 @@ class IndexableFileFeats extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_FEAT,
-			file: "feats.json",
+			file: "feats/feats-crb.json",
 			listProp: "feat",
 			baseUrl: "feats.html",
 			isHover: true,
@@ -546,12 +546,12 @@ class IndexableFileFeats extends IndexableFile {
 	}
 }
 
-class IndexableFileRaces extends IndexableFile {
+class IndexableFileAncestries extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_RACE,
-			file: "races.json",
-			listProp: "race",
+			file: "ancestries.json",
+			listProp: "ancestry",
 			baseUrl: "ancestries.html",
 			isOnlyDeep: true,
 			isHover: true,
@@ -794,7 +794,7 @@ class IndexableFileTables extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_TABLE,
-			file: "generated/gendata-tables.json",
+			file: "tables.json",
 			listProp: "table",
 			baseUrl: "tables.html",
 			isHover: true,
@@ -882,10 +882,22 @@ class IndexableFileLanguages extends IndexableFile {
 	}
 }
 
+class IndexableFileTraits extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_TRAIT,
+			file: "traits.json",
+			listProp: "trait",
+			baseUrl: "traits.html",
+			isHover: true,
+		});
+	}
+}
+
 Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
-	new IndexableFileDiseases(),
+	//new IndexableFileDiseases(),
 	new IndexableFileFeats(),
 
 	new IndexableFileItemsBase(),
@@ -893,27 +905,28 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileItemGroups(),
 	new IndexableFileMagicVariants(),
 
-	new IndexableFileRaces(),
-	new IndexableFileRewards(),
-	new IndexableFileVariantRules(),
-	new IndexableFileAdventures(),
+	// new IndexableFileAncestries(),
+	// new IndexableFileRewards(),
+	// new IndexableFileVariantRules(),
+	// new IndexableFileAdventures(),
 	new IndexableFileBooks(),
-	new IndexableFileQuickReference(),
-	new IndexableFileDeities(),
-	new IndexableFileObjects(),
-	new IndexableFileTraps(),
-	new IndexableFileHazards(),
-	new IndexableFileCults(),
-	new IndexableFileBoons(),
+	// new IndexableFileQuickReference(),
+	// new IndexableFileDeities(),
+	// new IndexableFileObjects(),
+	// new IndexableFileTraps(),
+	// new IndexableFileHazards(),
+	// new IndexableFileCults(),
+	// new IndexableFileBoons(),
 	new IndexableFileTables(),
-	new IndexableFileTableGroups(),
+	// new IndexableFileTableGroups(),
 
-	new IndexableFileVehicles(),
-	new IndexableFileVehicles_ShipUpgrade(),
-	new IndexableFileVehicles_InfernalWarMachineUpgrade(),
+	// new IndexableFileVehicles(),
+	// new IndexableFileVehicles_ShipUpgrade(),
+	// new IndexableFileVehicles_InfernalWarMachineUpgrade(),
 
 	new IndexableFileActions(),
-	new IndexableFileLanguages(),
+	// new IndexableFileLanguages(),
+	new IndexableFileTraits()
 ];
 
 class IndexableSpecial {

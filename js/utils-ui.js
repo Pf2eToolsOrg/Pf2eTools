@@ -1263,7 +1263,7 @@ class SearchWidget {
 
 	static async pGetUserFeatSearch () {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
-		await SearchWidget.pLoadCustomIndex("entity_Feats", `${Renderer.get().baseUrl}data/feats.json`, "feat", Parser.CAT_ID_FEAT, UrlUtil.PG_FEATS, "feats");
+		await SearchWidget.pLoadCustomIndex("entity_Feats", `${Renderer.get().baseUrl}data/feats/feats-crb.json`, "feat", Parser.CAT_ID_FEAT, UrlUtil.PG_FEATS, "feats");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Feat",
