@@ -3395,10 +3395,12 @@ Renderer.utils = {
 		for (trait of traits) {
 			let traitname = trait.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, '')
 			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname]
+			let hash = `${traitname}${HASH_LIST_SEP}${source}`
+			let url = `${UrlUtil.PG_TRAITS}#${hash}`
 			let href = {
 				type: "internal",
 				path: "traits.html",
-				hash: `${traitname}${HASH_LIST_SEP}${source}`,
+				hash: hash,
 				hover: {
 					page: UrlUtil.PG_TRAITS,
 					source: source
@@ -3407,26 +3409,26 @@ Renderer.utils = {
 			let procHash = UrlUtil.encodeForHash(href.hash).replace(/'/g, "\\'");
 			const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${href.hover.page}', '${href.hover.source}', '${procHash}', ${href.hover.preloadId ? `'${href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
 
-			let disgust = ``;
+			let styles = "pf2-trait";
 			if (traits.indexOf(trait) === 0) {
-				disgust = ` pf2-trait-left`
+				styles += " pf2-trait-left"
 			}
 			if (traits.indexOf(trait) === traits.length - 1) {
-				disgust += ` pf2-trait-right`
+				styles += " pf2-trait-right"
 			}
 			if (trait === "Uncommon") {
-				traits_html += `<div class="pf2-trait pf2-trait-uncommon${disgust}" ${hoverMeta}>${trait}</div>`;
+				styles += " pf2-trait-uncommon"
 			} else if (trait === "Rare") {
-				traits_html += `<div class="pf2-trait pf2-trait-rare${disgust}" ${hoverMeta}>${trait}</div>`;
+				styles += " pf2-trait-rare"
 			} else if (trait === "Unique") {
-				traits_html += `<div class="pf2-trait pf2-trait-unique${disgust}" ${hoverMeta}>${trait}</div>`;
+				styles += " pf2-trait-unique"
 			} else if (Parser.TRAITS_SIZE.includes(trait)) {
-				traits_html += `<div class="pf2-trait pf2-trait-size${disgust}" ${hoverMeta}>${trait}</div>`;
+				styles += " pf2-trait-size"
 			} else if (Parser.TRAITS_ALIGN_ABV.includes(trait)) {
-				traits_html += `<div class="pf2-trait pf2-trait-alignment${disgust}" ${hoverMeta}>${trait}</div>`;
-			} else {
-				traits_html += `<div class="pf2-trait${disgust}" ${hoverMeta}>${trait}</div>`;
+				styles += " pf2-trait-alignment"
 			}
+			traits_html += `<a href="${url}" class="${styles}" ${hoverMeta}>${trait}</a>`;
+
 		}
 		return traits_html
 	},
