@@ -341,7 +341,8 @@ SourceUtil = {
 	},
 
 	isNonstandardSource(source) {
-		return source != null && !BrewUtil.hasSourceJson(source);
+		// FIXME Once nonstandard sources are added
+		return source != null && BrewUtil.hasSourceJson(source);
 	},
 
 	getFilterGroup(source) {
