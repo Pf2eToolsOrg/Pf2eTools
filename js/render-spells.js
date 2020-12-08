@@ -6,6 +6,7 @@ class RenderSpells {
 		renderer.setFirstSection(true);
 
 		renderStack.push(`
+		${Renderer.utils.getExcludedDiv(sp, 'spell', UrlUtil.PG_SPELLS)}
 		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}`);

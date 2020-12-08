@@ -4004,7 +4004,7 @@ Renderer.feat = {
 		const renderStack = [];
 
 		renderStack.push(`
-			${Renderer.utils.getExcludedDiv(feat, "feat")}
+			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
 			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type: 'FEAT', activity: true})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(feat.traits)}
@@ -4033,6 +4033,7 @@ Renderer.spell = {
 
 		renderStack.push(`
 		<div class="stats">
+		${Renderer.utils.getExcludedDiv(spell, "spell", UrlUtil.PG_SPELLS)}
 		${Renderer.utils.getNameDiv(spell, {page: UrlUtil.PG_SPELLS})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(spell.traits)}`);
@@ -4165,7 +4166,7 @@ Renderer.condition = {
 		const renderStack = [];
 		renderer.setFirstSection(true);
 
-		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type, UrlUtil.PG_CONDITIONS)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS})}
 			${Renderer.utils.getDividerDiv()}
@@ -4183,7 +4184,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type, UrlUtil.PG_TRAITS)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
@@ -5178,7 +5179,9 @@ Renderer.creature = {
 
 		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat(cr.traits.concat(cr.creature_type).sort())
 
-		renderStack.push(`${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
+		renderStack.push(`
+			${Renderer.utils.getExcludedDiv(cr, 'creature', UrlUtil.PG_BESTIARY)}
+			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(traits)}
 			${Renderer.creature.getPerception(cr)}

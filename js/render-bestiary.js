@@ -13,7 +13,8 @@ class RenderBestiary {
 
 		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat(cr.traits.concat(cr.creature_type).sort())
 
-		renderStack.push(`${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
+		renderStack.push(`${Renderer.utils.getExcludedDiv(cr, 'creature', UrlUtil.PG_BESTIARY)}
+			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(traits)}
 			${Renderer.creature.getPerception(cr)}

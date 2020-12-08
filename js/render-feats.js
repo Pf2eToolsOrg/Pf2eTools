@@ -5,7 +5,7 @@ class RenderFeats {
 		Renderer.get().setFirstSection(true).recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
 
 		return $$`
-			${Renderer.utils.getExcludedDiv(feat, "feat")}
+			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
 			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type:'FEAT', activity: true})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(feat.traits)}

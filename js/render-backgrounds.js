@@ -7,7 +7,7 @@ class RenderBackgrounds {
 		return $$`
 		${Renderer.utils.getNameDiv(bg, {page: UrlUtil.PG_BACKGROUNDS, type:'BACKGROUND'})}
 		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getExcludedDiv(bg, "background")}
+		${Renderer.utils.getExcludedDiv(bg, "background", UrlUtil.PG_BACKGROUNDS)}
 		<div class="pf2-stat-text">${renderStack.join("")}</div>
 		${Renderer.utils.getPageP(bg)}
 		`
