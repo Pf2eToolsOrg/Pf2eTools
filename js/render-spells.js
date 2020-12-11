@@ -12,9 +12,9 @@ class RenderSpells {
 		${Renderer.utils.getTraitsDiv(sp.traits)}`);
 
 		if (sp.traditions != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>`);
 		} else if (sp.domain != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Domain </strong>${sp.domain.toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Domain </strong>${sp.domain.toLowerCase()}</p>`);
 		}
 		let components = ``;
 		let components_list = [];
@@ -49,7 +49,7 @@ class RenderSpells {
 		if (sp.requirements != null) {
 			cst_tr_req += `; <strong>Requirements </strong>${sp.requirements}`;
 		}
-		renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
+		renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
 
 		let rg_ar_tg = ``;
 		if (sp.range.type != null) {
@@ -70,7 +70,7 @@ class RenderSpells {
 			}
 		}
 		if (rg_ar_tg !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${rg_ar_tg}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${rg_ar_tg}</p>`);
 		}
 
 		let st_dr = ``
@@ -89,7 +89,7 @@ class RenderSpells {
 			}
 		}
 		if (st_dr !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${st_dr}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${st_dr}</p>`);
 		}
 
 		renderStack.push(Renderer.utils.getDividerDiv());
@@ -102,19 +102,19 @@ class RenderSpells {
 		if (sp.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (sp.heightened.plus_x != null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
+				renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
 				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
 			if (sp.heightened.x != null) {
 				for (let x of sp.heightened.x) {
-					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
+					renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
 					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
 					renderStack.push(`</p>`)
 				}
 			}
 			if (sp.heightened.no_x != null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
+				renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened </strong>`)
 				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}

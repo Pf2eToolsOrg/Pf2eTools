@@ -399,6 +399,10 @@ function Renderer() {
 				case "ability":
 					this._renderAction(entry, textStack, meta, options);
 					break;
+				case "activation":
+				case "activate":
+					this._renderActivation(entry, textStack, meta, options);
+					break;
 				// block
 				case "abilityDc":
 					this._renderAbilityDc(entry, textStack, meta, options);
@@ -849,7 +853,7 @@ function Renderer() {
 		let col_styles = ""
 		let cell_styles = ""
 		let type_styles = ""
-		if (entry.rowStyles && typeof(entry.rowStyles[0])==='string') {
+		if (entry.rowStyles && typeof (entry.rowStyles[0]) === 'string') {
 			row_styles = `${entry.rowStyles ? entry.rowStyles[rowIdx] || "" : ""}`;
 		} else if (entry.rowStyles) {
 			for (let rs of entry.rowStyles) {
@@ -859,7 +863,7 @@ function Renderer() {
 				}
 			}
 		}
-		if (!noColStyle && entry.colStyles && typeof(entry.colStyles[0])==='string') {
+		if (!noColStyle && entry.colStyles && typeof (entry.colStyles[0]) === 'string') {
 			col_styles = `${entry.colStyles ? entry.colStyles[colIdx] || "" : ""}`;
 		} else if (!noColStyle && entry.colStyles) {
 			for (let cs of entry.colStyles) {
@@ -1059,7 +1063,7 @@ function Renderer() {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
 
-		textStack[0] += `<div class="pf-2-stat-indent-second-line"><span><strong>${entry.name} </strong>`
+		textStack[0] += `<div class="pf2-stat-indent-second-line"><span><strong>${entry.name} </strong>`
 		if (entry.activity != null) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
 		if (entry.traits != null && entry.traits.length) {
 			let trts = []
@@ -1086,6 +1090,35 @@ function Renderer() {
 		}
 		if (add_effect) textStack[0] += `<strong>Effect </strong>`
 		entry.entries.forEach((e) => {
+			this._recursiveRender(e, textStack, meta)
+		})
+
+		textStack[0] += `</span></div>`
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	}
+
+	this._renderActivation = function (entry, textStack, meta, options) {
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, 1);
+
+		textStack[0] += `<div class="pf2-stat-text-indent-second-line"><span><strong>${entry.name ? entry.name : "Activate"} </strong>`
+		if (entry.activity != null) this._recursiveRender(entry.activity.entry + ' ', textStack, meta);
+		if (entry.components != null && entry.components.length) textStack[0] += `${entry.components.join(', ')}; `
+		if (entry.frequency != null) {
+			textStack[0] += `<strong>Frequency </strong>`
+			this._recursiveRender(entry.frequency + ' ', textStack, meta)
+		}
+		if (entry.requirements != null) {
+			textStack[0] += `<strong>Requirements </strong>`
+			this._recursiveRender(entry.requirements + ' ', textStack, meta)
+		}
+		if (entry.trigger != null) {
+			textStack[0] += `<strong>Trigger </strong>`
+			this._recursiveRender(entry.trigger + ' ', textStack, meta)
+		}
+		textStack[0] += `<strong>Effect </strong>`
+		entry.effect.forEach((e) => {
 			this._recursiveRender(e, textStack, meta)
 		})
 
@@ -1123,7 +1156,13 @@ function Renderer() {
 		dict["traits"].forEach((t) => {
 			traits.push(`{@trait ${t}}`)
 		})
-		textStack[0] += `<div class="pf2-stat-text-indent-second-line"><strong>${dict["name"]} </strong>(${renderer.render(traits.join(', '))}); `
+		textStack[0] += `<div class="pf2-stat-text-indent-second-line">`
+		if (dict["name"] != null) {
+			textStack[0] += `<strong>${dict["name"]} </strong> `
+		}
+		if (traits.length) {
+			textStack[0] += `(${renderer.render(traits.join(', '))}); `
+		}
 		if (dict["level"] != null) {
 			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
 		}
@@ -3518,14 +3557,14 @@ Renderer.utils = {
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
-		const level = opts.level != null ? opts.level : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
+		const level = opts.level != null ? ` ${opts.level}` : isNaN(Number(it.level)) ? '' : ` ${Number(it.level)}`
 		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes('@as') ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat-name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			${opts.controlRhs || ""}
 			<p class="pf2-stat-level">${type}${type === "CANTRIP" ? ' 1' : level}</p>
 		</div>`;
-
+		// TODO: change this ugly shit
 		if (opts.asJquery) return $ele;
 		else return $ele[0].outerHTML;
 	},
@@ -3975,19 +4014,19 @@ Renderer.feat = {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		if (feat.prerequisites != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(feat.prerequisites)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(feat.prerequisites)}</p>`);
 		}
 		if (feat.frequency != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(feat.frequency)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(feat.frequency)}</p>`);
 		}
 		if (feat.trigger != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(feat.trigger)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(feat.trigger)}</p>`);
 		}
 		if (feat.cost != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cost </strong>${renderer.render(feat.cost)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Cost </strong>${renderer.render(feat.cost)}</p>`);
 		}
 		if (feat.requirements != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(feat.requirements)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(feat.requirements)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
@@ -4039,9 +4078,9 @@ Renderer.spell = {
 		${Renderer.utils.getTraitsDiv(spell.traits)}`);
 
 		if (spell.traditions !== null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Traditions </strong>${spell.traditions.join(", ").toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Traditions </strong>${spell.traditions.join(", ").toLowerCase()}</p>`);
 		} else if (spell.domain !== null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Domain </strong>${spell.domain.toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Domain </strong>${spell.domain.toLowerCase()}</p>`);
 		}
 		let components = ``;
 		let components_list = [];
@@ -4076,7 +4115,7 @@ Renderer.spell = {
 		if (spell.requirements !== null) {
 			cst_tr_req += `; <strong>Requirements </strong>${spell.requirements}`;
 		}
-		renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
+		renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
 
 		let rg_ar_tg = ``;
 		if (spell.range.type !== null) {
@@ -4097,7 +4136,7 @@ Renderer.spell = {
 			}
 		}
 		if (rg_ar_tg !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${rg_ar_tg}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${rg_ar_tg}</p>`);
 		}
 
 		let st_dr = ``
@@ -4116,7 +4155,7 @@ Renderer.spell = {
 			}
 		}
 		if (st_dr !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${st_dr}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${st_dr}</p>`);
 		}
 
 		renderStack.push(Renderer.utils.getDividerDiv());
@@ -4129,19 +4168,19 @@ Renderer.spell = {
 		if (spell.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (spell.heightened.plus_x !== null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${spell.heightened.plus_x.level}) </strong>`)
+				renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened (+${spell.heightened.plus_x.level}) </strong>`)
 				renderer.recursiveRender(spell.heightened.plus_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
 			if (spell.heightened.x !== null) {
 				for (let x of spell.heightened.x) {
-					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
+					renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
 					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
 					renderStack.push(`</p>`)
 				}
 			}
 			if (spell.heightened.no_x !== null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
+				renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Heightened </strong>`)
 				renderer.recursiveRender(spell.heightened.no_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
@@ -4891,7 +4930,7 @@ Renderer.creature = {
 		const perception = cr.perception;
 		const senses = cr.senses;
 		let renderStack = [];
-		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 		renderStack.push(`<span><strong>Perception </strong></span>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${perception.default}||Perception}`))
 		renderStack.push(`<span>`)
@@ -4916,7 +4955,7 @@ Renderer.creature = {
 		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.language_abilities.length !== 0)) {
 			let renderStack = [];
 
-			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>Languages </strong></span>`)
 			renderStack.push(`<span>`)
 			renderStack.push(cr.languages.languages.join(', '))
@@ -4936,7 +4975,7 @@ Renderer.creature = {
 		if (cr.skills != null && (Object.keys(cr.skills).length !== 0)) {
 			let renderStack = [];
 
-			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>Skills </strong></span>`)
 			let skills = []
 			for (let key in cr.skills) {
@@ -4956,7 +4995,7 @@ Renderer.creature = {
 
 	getAbilityMods(cr) {
 		let renderStack = [];
-		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 		renderStack.push(`<span><strong>Str </strong></span>`)
 		renderStack.push(Renderer.get().render(`{@d20 ${cr.ability_modifiers.Str}||Strength}`))
 		renderStack.push(`<span>, <strong>Dex </strong></span>`)
@@ -4976,7 +5015,7 @@ Renderer.creature = {
 	getItems(cr) {
 		if (cr.items != null) {
 			let renderStack = [];
-			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>Items </strong></span>`)
 			renderStack.push(Renderer.get().render(cr.items.join(", ")))
 			renderStack.push(`</div>`)
@@ -4986,7 +5025,7 @@ Renderer.creature = {
 
 	getDefenses(cr) {
 		let renderStack = [];
-		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 		const ac = cr.armor_class
 		renderStack.push(`<span><strong>AC </strong>${ac.default}`)
 		renderStack.push(Renderer.utils.getNotes(ac, ['default', 'abilities'], false))
@@ -5005,7 +5044,7 @@ Renderer.creature = {
 		renderStack.push(`</span>`)
 		renderStack.push(`</div>`)
 
-		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 		const hp = cr.hit_points
 		for (i = 0; i < hp.length; i++) {
 			renderStack.push(`<span><strong>HP </strong>${hp[i].note != null ? `${hp[i].note} ` : ``}${hp[i].HP}`)
@@ -5050,7 +5089,7 @@ Renderer.creature = {
 
 	getSpeed(cr) {
 		let renderStack = [];
-		renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+		renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 		renderStack.push(`<span><strong>Speed </strong>`)
 		let speeds = []
 		if (cr.speed.walk != null) speeds.push(`${cr.speed.walk} feet`)
@@ -5072,7 +5111,7 @@ Renderer.creature = {
 	getAttacks(cr) {
 		let renderStack = [];
 		for (let attack of cr.attacks) {
-			renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+			renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 			renderStack.push(`<span><strong>${attack.range} </strong>`)
 			renderStack.push(Renderer.get().render(`{@as 1} `))
 			renderStack.push(`${attack.name} `)
@@ -5100,7 +5139,7 @@ Renderer.creature = {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			for (let sc of cr.spellcasting) {
-				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+				renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 				renderStack.push(`<span><strong>${sc.name} Spells</strong> DC ${sc.DC}</span>`)
 				if (sc.attack != null) {
 					renderStack.push(renderer.render(`<span>, attack </span>{@d20 ${sc.attack}||Spell attack}`))
@@ -5152,7 +5191,7 @@ Renderer.creature = {
 			const renderer = Renderer.get()
 			let renderStack = [];
 			cr.rituals.forEach((feature) => {
-				renderStack.push(`<div class="pf-2-stat-indent-second-line">`)
+				renderStack.push(`<div class="pf2-stat-indent-second-line">`)
 				renderStack.push(`<span><strong>${feature.tradition} Rituals</strong> DC ${feature.DC}</span>; `)
 				let rituals = []
 				feature.rituals.forEach((ritual) => {
@@ -5188,17 +5227,23 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr)}`)
-		cr.abilities_interactive.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
+		cr.abilities_interactive.forEach((ab) => {
+			renderer.recursiveRender(ab, renderStack, {depth: 1})
+		})
 		renderStack.push(`${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}`)
-		cr.abilities_automatic.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
+		cr.abilities_automatic.forEach((ab) => {
+			renderer.recursiveRender(ab, renderStack, {depth: 1})
+		})
 		renderStack.push(`${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
 			${Renderer.creature.getRituals(cr)}`)
-		cr.abilities_active.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
+		cr.abilities_active.forEach((ab) => {
+			renderer.recursiveRender(ab, renderStack, {depth: 1})
+		})
 		renderStack.push(Renderer.utils.getPageP(cr));
 
 		return (renderStack.join(''))
@@ -5626,14 +5671,6 @@ Renderer.item = {
 		return [damage, damageType, propertiesTxt];
 	},
 
-	getTypeRarityAndAttunementText(item) {
-		const typeRarity = [
-			item._typeHtml === "Other" ? "" : item._typeHtml,
-			[item.tier ? `${item.tier} tier` : "", (item.rarity && Renderer.item.doRenderRarity(item.rarity) ? item.rarity : "")].map(it => (it || "").trim()).filter(it => it).join(", "),
-		].filter(Boolean).join(", ");
-		return item.reqAttune ? `${typeRarity} ${item._attunement}` : typeRarity
-	},
-
 	getAttunementAndAttunementCatText(item, prop = "reqAttune") {
 		let attunement = null;
 		let attunementCat = "No";
@@ -5778,21 +5815,105 @@ Renderer.item = {
 		return renderStack.join("").trim();
 	},
 
+	_getPriceText(price) {
+		return `<strong>Price </strong>${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
+	},
+
+	getSubHead(item) {
+		const renderStack = [];
+		const renderer = Renderer.get()
+		if (item.price) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${this._getPriceText(item.price)}</p>`);
+		}
+		if (item.ammunition) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Ammunition </strong>${item.ammunition}</p>`);
+			// TODO: links to items?
+		}
+		if (item.usage != null || item.bulk != null) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line">`);
+			if (item.usage != null) renderStack.push(`<strong>Usage </strong>${item.usage}`)
+			if (item.usage != null && item.bulk != null) renderStack.push("; ")
+			if (item.bulk != null) renderStack.push(`<strong>Bulk </strong> ${item.bulk}`)
+			renderStack.push(`</p>`);
+		}
+		if (item.ac != null || item.dexCap != null) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line">`);
+			if (item.ac != null) renderStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}; `)
+			if (item.ac != null && item.dexCap != null) renderStack.push("; ")
+			if (item.dexCap != null) renderStack.push(`<strong>Dex Cap </strong>${Parser.numToBonus(item.dexCap)}`)
+			renderStack.push(`</p>`);
+		}
+		if (item.str != null || item.checkPen != null || item.speedPen != null) {
+			let tempStack = []
+			if (item.str != null) tempStack.push(`<strong>Strength </strong>${item.str}`)
+			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty </strong>${Parser.numToBonus(item.checkPen)}`)
+			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty </strong>${Parser.numToBonus(item.speedPen)}`)
+			renderStack.push(`<p class="pf2-stat-indent-second-line">${tempStack.join("; ")}</p>`)
+		}
+		if (item.group != null) renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Group </strong>${renderer.render(item.group)}</p>`)
+		if (item.activate) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Activate </strong>${renderer.render(item.activate.activity.entry)} `);
+			if (item.activate.components != null) {
+				renderStack.push(`${renderer.render(item.activate.components)}`);
+			}
+			if (item.activate.frequency != null) {
+				renderStack.push(`; <strong>Frequency </strong>${renderer.render(item.activate.frequency)}`);
+			}
+			if (item.activate.trigger != null) {
+				renderStack.push(`; <strong>Trigger </strong>${renderer.render(item.activate.trigger)}`);
+			}
+			if (item.activate.requirements != null) {
+				renderStack.push(`; <strong>Requirements </strong>${renderer.render(item.activate.requirements)}`);
+			}
+			renderStack.push(`</p>`);
+		}
+		if (item.onset) {
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Onset </strong>${item.price.amount} ${item.price.coin} ${item.price.note ? item.price.note : ""}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	},
+
+	getVariantsHtml(item) {
+		if (!item.generic || !item.variants || !item.variants.length) return "";
+		const renderStack = [];
+		const renderer = Renderer.get()
+		item.variants.forEach((v) => {
+			renderStack.push(Renderer.utils.getDividerDiv())
+			renderStack.push(`<div class="pf2-stat-text"><strong>Type </strong>${v.type}; `)
+			if (v.level != null) renderStack.push(`<strong>Level </strong>${v.level}; `)
+			if (v.traits != null && v.traits.length) {
+				let trts = []
+				v.traits.forEach((t) => {
+					trts.push(renderer.render(`{@trait ${t.uppercaseFirst()}|${Parser.TRAITS_TO_TRAITS_SRC[t.uppercaseFirst()]}|${t}}`))
+				});
+				renderStack[0] += `(${trts.join(', ')}); `
+			}
+			if (v.price != null) renderStack.push(`${this._getPriceText(v.price)}; `)
+			if (v.bulk != null) renderStack.push(`<strong>Bulk </strong>${v.bulk}; `)
+			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack)
+			if (v.craft_requirements != null) renderStack.push(`<strong>Craft Requirements </strong>${v.craft_requirements}; `)
+			if (v.shield_stats != null) renderStack.push(`The shield has Hardness ${v.shield_stats.hardness}, HP ${v.shield_stats.HP}, and BT ${v.shield_stats.BT}.`)
+			renderStack.push(`</div>`)
+		});
+		return renderStack.join('')
+	},
+
+	getCraftRequirements(item) {
+		if (item.craft_requirements != null) {
+			return `${Renderer.utils.getDividerDiv()}<p class="pf2-stat-indent-second-line"><strong>Craft Requirements </strong>${Renderer.get().render(item.craft_requirements)}</p>`
+		} else return ""
+	},
+
 	getCompactRenderedString(item, opts) {
 		opts = opts || {};
 
-		const [damage, damageType, propertiesTxt] = Renderer.item.getDamageAndPropertiesText(item);
-		const hasEntries = (item._fullAdditionalEntries && item._fullAdditionalEntries.length) || (item._fullEntries && item._fullEntries.length) || (item.entries && item.entries.length);
-
 		return `
-		${Renderer.utils.getExcludedTr(item, "item", UrlUtil.PG_ITEMS)}
-		${Renderer.utils.getNameTr(item, {page: UrlUtil.PG_ITEMS, isEmbeddedEntity: opts.isEmbeddedEntity})}
-		<tr><td class="rd-item__type-rarity-attunement" colspan="6">${Renderer.item.getTypeRarityAndAttunementText(item).uppercaseFirst()}</td></tr>
-		<tr>
-			<td colspan="2">${[Parser.itemValueToFullMultiCurrency(item), Parser.itemWeightToFull(item)].filter(Boolean).join(", ").uppercaseFirst()}</td>
-			<td class="text-right" colspan="4">${damage} ${damageType} ${propertiesTxt}</td>
-		</tr>
-		${hasEntries ? `${Renderer.utils.getDividerTr()}<tr class="text"><td colspan="6" class="text">${Renderer.item.getRenderedEntries(item, true)}</td></tr>` : ""}`;
+		${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
+		${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getDividerDiv()}
+		`;
 	},
 
 	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
@@ -5834,7 +5955,6 @@ Renderer.item = {
 			name
 		}));
 		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-		baseItemData.itemProperty.forEach(p => Renderer.item._addProperty(p));
 		baseItemData.itemType.forEach(t => {
 			// air/water vehicles share a type
 			if (t.abbreviation === "SHP") {
@@ -5878,12 +5998,11 @@ Renderer.item = {
 		await Renderer.item._pLockBuildList();
 
 		opts = opts || {};
-		opts.isAddGroups = !!opts.isAddGroups;
 		opts.urls = opts.urls || {};
 
 		const kBlacklist = opts.isBlacklistVariants ? "withBlacklist" : "withoutBlacklist";
 		if (Renderer.item._builtLists[kBlacklist]) {
-			const cached = opts.isAddGroups ? Renderer.item._builtLists[kBlacklist] : Renderer.item._builtLists[kBlacklist].filter(it => !it._isItemGroup);
+			const cached = Renderer.item._builtLists[kBlacklist];
 
 			Renderer.item._unlockBuildList();
 			if (opts.fnCallback) return opts.fnCallback(cached);
@@ -5893,27 +6012,53 @@ Renderer.item = {
 		// allows URLs to be overridden (used by roll20 script)
 		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items/items-crb.json`;
 		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items/items-base.json`;
-		const magicVariantUrl = opts.urls.magicvariants || `${Renderer.get().baseUrl}data/items/magicvariants.json`;
 
-		const itemList = await pLoadItems();
+		const itemList = await Renderer.item._pGetAndProcItems(await DataUtil.loadJSON(itemUrl));
 		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
-		const [genericVariants, linkedLootTables] = Renderer.item._getAndProcGenericVariants(await DataUtil.loadJSON(magicVariantUrl), true);
-		Renderer.item._builtLists["genericVariants"] = genericVariants; // Cache generic variants to use with homebrew later
-		const specificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants, {linkedLootTables});
-		const allItems = [...itemList, ...baseItems, ...genericVariants, ...specificVariants];
+		const allItems = [...itemList, ...baseItems];
 		Renderer.item._enhanceItems(allItems);
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
 		Renderer.item._unlockBuildList();
 		if (opts.fnCallback) return opts.fnCallback(allItems);
 		return allItems;
+	},
 
-		async function pLoadItems() {
-			const itemData = await DataUtil.loadJSON(itemUrl);
-			const items = itemData.item;
-			itemData.itemGroup.forEach(it => it._isItemGroup = true);
-			return [...items, ...itemData.itemGroup];
+	async _pGetAndProcItems(itemData) {
+		let items = []
+		itemData.item.forEach((it) => {
+			if (!it.generic) items.push(it)
+			else items.push(...Renderer.item._createVariants(it))
+		});
+		return items
+	},
+
+	_getVariantName(variant, genericName) {
+		let name = ""
+		if (!genericName.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(genericName.toLowerCase())) {
+			name = `${variant.type} ${genericName}`.toTitleCase()
+		} else {
+			name = variant.type.toTitleCase()
 		}
+		return name
+
+	},
+
+	_createVariants(genericItem) {
+		let items = [genericItem]
+		genericItem.variants.forEach((v) => {
+			let varItem = MiscUtil.copy(genericItem)
+			varItem.name = this._getVariantName(v, genericItem.name)
+			varItem.level = v.level
+			varItem.price = v.price
+			varItem.bulk = v.bulk
+			varItem.shield_stats = v.shield_stats
+			varItem.craft_requirements = v.craft_requirements
+			varItem.entries.push(...v.entries)
+			delete varItem.variants
+			items.push(varItem)
+		});
+		return items
 	},
 
 	async _pGetAndProcBaseItems(baseItemData) {
@@ -6171,6 +6316,7 @@ Renderer.item = {
 	},
 
 	enhanceItem(item) {
+		return;
 		if (item._isEnhanced) return;
 		item._isEnhanced = true;
 		if (item.noDisplay) return;
@@ -6781,16 +6927,16 @@ Renderer.action = {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		if (it.prerequisites != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
 		}
 		if (it.frequency != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(it.frequency)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Frequency </strong>${renderer.render(it.frequency)}</p>`);
 		}
 		if (it.trigger != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(it.trigger)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Trigger </strong>${renderer.render(it.trigger)}</p>`);
 		}
 		if (it.requirements != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(it.requirements)}</p>`);
+			renderStack.push(`<p class="pf2-stat-indent-second-line"><strong>Requirements </strong>${renderer.render(it.requirements)}</p>`);
 		}
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");

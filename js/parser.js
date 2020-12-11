@@ -270,6 +270,10 @@ Parser._addCommas = function (intNum) {
 	return `${intNum}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
 
+Parser.numToBonus = function (intNum) {
+	return `${intNum >= 0 ? "+" : ""}${intNum}`
+};
+
 Parser.crToXp = function (cr, {isDouble = false} = {}) {
 	if (cr != null && cr.xp) return Parser._addCommas(`${isDouble ? cr.xp * 2 : cr.xp}`);
 

@@ -33,14 +33,14 @@ class ItemsPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(item.source);
-		const type = item._typeListText.join(", ").toTitleCase();
+		const type = item.category;
 
 		if (item._fIsMundane) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-3-5 pl-0 bold">${item.name}</span>
 				<span class="col-4-5">${type}</span>
-				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
+				<span class="col-1-5 text-center">${item.price}</span>
+				<span class="col-1-5 text-center">${item.bulk}</span>
 				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
@@ -52,8 +52,8 @@ class ItemsPage {
 					hash,
 					source,
 					type,
-					cost: item.value || 0,
-					weight: Parser.weightValueToNumber(item.weight),
+					cost: item.price,
+					weight: item.bulk,
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
