@@ -1,6 +1,7 @@
 class RenderItems {
 	static $getRenderedItem (item) {
-		const renderer = Renderer.get()
+		const renderStack = ['']
+		Renderer.get().recursiveRender(item.entries, renderStack, {depth:1}, {pf2StatFix:true})
 
 		return $$`
 			${Renderer.utils.getExcludedDiv(item, "item")}
@@ -8,9 +9,7 @@ class RenderItems {
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(item.traits)}
 			${Renderer.item.getSubHead(item)}
-			<div class="pf2-stat-text">
-			${renderer.setFirstSection(true).render({entries: item.entries})}
-			</div>
+			${renderStack.join('')}
 			${Renderer.item.getVariantsHtml(item)}
 			${Renderer.item.getCraftRequirements(item)}
 			${Renderer.utils.getPageP(item)}

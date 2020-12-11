@@ -1,5 +1,5 @@
 
-.pf2-pagecontent {
+.pf2-book-content {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
@@ -8,24 +8,19 @@
 	border-bottom: 2px solid #5E0000;
 }
 
-.pf2-stat-name {
+.pf2-stat__name {
     margin: 0;
     padding: 0;
     font-family: 'good-pro-condensed', sans-serif;
-    font-size: 1.8em;
+    font-size: 1.35em;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1;
+	text-align: left;
 }
-.pf2-stat-level {
-    margin: 0;
+.pf2-stat__name--level {
     margin-left:auto !important;
-    padding: 0;
-    font-family: 'good-pro-condensed', sans-serif;
-    font-size: 1.8em;
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 1;
+	padding-left: 1em;
 }
 
 .pf2-trait {
@@ -35,17 +30,14 @@
     min-width: 5em;
     color: #FFFFFF;
     font-family: 'good-pro-condensed', sans-serif;
-    font-size: 1em;
+    font-size: 0.75em;
     letter-spacing: 0.01em;
     font-weight: 700;
     line-height: 1;
     text-transform: uppercase;
     background: #5e0000;
-    padding-left: 1.1em !important;
-    padding-right: 1.1em;
-    padding-top: 0.4em;
-    padding-bottom: 0.25em;
-    border: 0.12em solid #D9C484;
+	padding: 0.4em 1.1em 0.25em;
+	border: 0.12em solid #D9C484;
     border-bottom-width: 0.07em;
     border-top-width: 0.07em;
     text-align: center;
@@ -57,93 +49,64 @@
 .night-mode .pf2-trait {
 	color: #dedada
 }
-.pf2-trait-unique {
+.pf2-trait--unique {
     background: #54166E;
 }
-.pf2-trait-rare {
+.pf2-trait--rare {
     background: #002664;
 }
-.pf2-trait-uncommon {
+.pf2-trait--uncommon {
     background: #98513D;
 }
-.pf2-trait-alignment {
+.pf2-trait--alignment {
     background: #576293;
     min-width: 2em;
 }
-.pf2-trait-size {
+.pf2-trait--size {
     background: #3B7B59;
 }
-.pf2-trait-left {
+.pf2-trait--left {
     border-left-width: 0.33em;
 }
-.pf2-trait-right {
+.pf2-trait--right {
     border-right-width: 0.33em;
 }
 
-.pf2-stat-line {
+.pf2-stat__line {
     background: black none repeat scroll 0 0;
     height: 1px;
     margin: 0.05em 0 0.2em 0;
 }
-.night-mode .pf2-stat-line {
+.night-mode .pf2-stat__line {
 	background: #aaaaaa
 }
 
-.pf2-stat-text {
-    font-family: "good-pro", sans-serif;
-    text-align: justify;
-    line-height: 1.33em;
-    font-size: 1.33em;
-    font-weight: 400;
-    margin: 0;
-}
-.pf2-stat-text p {
-	margin: 0;
-	text-indent: 1em;
-}
-.pf2-stat-text p:first-of-type {
-	margin: 0;
-	text-indent: 0;
-}
-.pf2-stat-text-indent {
-    font-family: "good-pro", sans-serif;
-    text-align: justify;
-	line-height: 1em;
-	font-size: 1em;
-    font-weight: 400;
-    margin: 0;
-    text-indent: 1em;
-}
-.pf2-stat-text-indent-second-line {
+.pf2-stat {
 	font-family: "good-pro", sans-serif;
 	text-align: justify;
 	line-height: 1.33em;
-	font-size: 1em;
 	font-weight: 400;
+}
+.pf2-stat__text {
+	margin: 0;
+	text-indent: 0;
+}
+.pf2-stat__text ~ .pf2-stat__text {
+	text-indent: 1em;
+}
+.pf2-stat__section {
 	margin: 0;
 	padding-left: 1em;
 	text-indent: -1em;
 }
-.pf2-stat-text-indent-second-line span ~ span {
-	text-indent: 1em;
+.pf2-stat__section--wide {
+	margin: 0;
 }
-.pf2-stat-text-indent-second-line p ~ p {
-	text-indent: 1em;
-}
-.pf2-stat-indent-second-line {
-    font-family: "good-pro", sans-serif;
-    text-align: justify;
-	line-height: 1.33em;
-	font-size: 1.33em;
-    font-weight: 400;
-    margin: 0;
-    padding-left: 1em;
-    text-indent: -1em;
-}
-.pf2-stat-source {
+
+.pf2-stat__source {
 	font-family: "good-pro", sans-serif;
 	line-height: 1.33em;
-	font-size: 1em;
+	font-size: 0.75em;
 	font-weight: 400;
 	margin: 0;
 	padding-top: 0.3em;
@@ -152,7 +115,7 @@
 	clear: both;
 }
 
-.pf-stat-name, .pf2-action-icon{
+.pf2-stat__name .pf2-action-icon{
 	font-size: 1.5em;
 }
 .pf2-action-icon {
@@ -160,6 +123,14 @@
 	font-size: 1.78em;
 	line-height: 0;
 }
+.pf2-action-icon::after {
+	content: attr(data-symbol);
+}
+.pf2-action-icon-copy-text {
+	opacity: 0;
+	position: absolute;
+}
+/*
 .pf2-1action-icon {
     width: 1em;
     height: 1em;
@@ -185,14 +156,14 @@
     height: 1em;
     margin: 0 0 -0.1em -0.1em;
 }
-
+*/
 .pf2-h1 {
 	clear: both;
 	color: #5E0000;
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Taroca', sans-serif;
-	font-size: 2.3em;
+	font-size: 1.725em;
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
@@ -205,7 +176,7 @@
 	padding: 0;
 	font-family: 'SabonLTStd', sans-serif;
 	font-style: italic;
-	font-size: 1.2em;
+	font-size: 0.9em;
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.34em;
@@ -216,7 +187,7 @@
 	margin: 0 0 0.3em;
 	padding: 0.8em 0 0 0;
 	font-family: 'Taroca', sans-serif;
-	font-size: 1.6em;
+	font-size: 1.2em;
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 1em;
@@ -230,7 +201,7 @@
 	color: #d9c484;
 	text-align: center;
 	font-family: 'Taroca', sans-serif;
-	font-size: 2.8em;
+	font-size: 2.1em;
 	padding: 0;
 	margin: -0.15em 0.3em 0 0;
 	text-transform: uppercase;
@@ -241,7 +212,7 @@
 .pf2-h2-step {
 	color: #002664;
 	font-family: 'Taroca', sans-serif;
-	font-size: 1.6em;
+	font-size: 1.2em;
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 1em;
@@ -260,7 +231,7 @@
 	margin: 0;
 	padding: 0.6em 0 0;
 	font-family: 'Gin', sans-serif;
-	font-size: 1.2em;
+	font-size: 0.9em;
 	font-weight: 400;
 	line-height: 1.2em;
 	display: flex;
@@ -273,13 +244,13 @@
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Gin', sans-serif;
-	font-size: 0.9em;
+	font-size: 0.675em;
 	font-weight: 400;
 	line-height: 1.25em;
 	vertical-align: bottom;
 }
 .pf2-h4::first-letter {
-	font-size: 1.4em;
+	font-size: 1.05em;
 	line-height: 1.25em;
 	font-weight: 400;
 }
@@ -293,7 +264,7 @@
 	margin: 0.3em 0 0.3em;
 	padding: 0.3em 0.4em 0.25em;
 	font-family: 'Gin', sans-serif;
-	font-size: 1.35em;
+	font-size: 1.02em;
 	font-weight: 400;
 	line-height: 0.8em;
 	text-transform: uppercase;
@@ -305,17 +276,17 @@
 	margin: 0;
 	padding: 0.3em 0 0.3em;
 	font-family: 'SabonLTStd', sans-serif;
-	font-size: 1em;
+	font-size: 0.75em;
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.35em;
 }
-.pf2-pagecontent .rd__list li {
+.pf2-book-content .rd__list li {
 	color: black;
 	margin: 0;
 	padding: 0.3em 0 0.3em;
 	font-family: 'SabonLTStd', sans-serif;
-	font-size: 1em;
+	font-size: 0.75em;
 	font-weight: 400;
 	text-align: left;
 	line-height: 1.35em;
@@ -326,9 +297,9 @@
 	grid-gap: 0;
 	padding: 0;
 	margin: 1em 0 0.3em;
-	font-size: 1.2em;
+	font-size: 0.9em;
 }
-.pf2-table-name {
+.pf2-table__name {
 	padding: 0;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
@@ -338,7 +309,7 @@
 	grid-column-start: 1;
 	grid-column-end: -1;
 }
-.pf2-table-caption {
+.pf2-table__caption {
 	padding: 0;
 	font-family: 'good-pro-condensed', sans-serif;
 	font-size: 1.4em;
@@ -349,7 +320,7 @@
 	grid-column-end: -1;
 	text-align: center;
 }
-.pf2-table-label {
+.pf2-table__label {
 	padding: 0 0.3em;
 	background: #5E0000;
 	color: #FFFFFF;
@@ -358,61 +329,62 @@
 	font-weight: 700;
 	line-height: 1.2em;
 }
-.pf2-table-entry {
+.pf2-table__entry {
 	padding: 0 0.3em;
 	color: black;
 	background: #ede3c8;
 	font-family: 'good-pro', sans-serif;
 	font-size: 0.9em;
 }
-.pf2-table-footnote {
+.pf2-table__footnote {
 	font-family: 'good-pro', sans-serif;
 	font-size: 0.9em;
 	background: #e6d8b0;
 	grid-column-start: 1;
 	grid-column-end: -1;
 }
-.pf2-table-intro {
+.pf2-table__intro {
 	color: black;
 	font-family: 'good-pro', sans-serif;
 	font-size: 0.9em;
 	grid-column-start: 1;
 	grid-column-end: -1;
 }
-.pf2-table-outro {
+.pf2-table__outro {
 	color: black;
 	font-family: 'good-pro', sans-serif;
 	font-size: 0.9em;
 	grid-column-start: 1;
 	grid-column-end: -1;
 }
-.pf2-table-entry.odd {
+.pf2-table__entry.odd {
 	background: #f5efe0;
 }
-.pf2-table-entry.border-left {
+.pf2-table__entry.border-left {
 	border-left: 1px solid #5E0000;
 }
-.pf2-table-entry.border-right {
+.pf2-table__entry.border-right {
 	border-right: 1px solid #5E0000;
 }
-.pf2-table-entry.border-top {
+.pf2-table__entry.border-top {
 	border-top: 1px solid #5E0000;
 }
-.pf2-table-entry.border-bottom {
+.pf2-table__entry.border-bottom {
 	border-bottom: 1px solid #5E0000;
 }
-.pf2-table-entry .rd__list {
+.pf2-table__entry .rd__list {
 	margin-bottom: 0;
 	margin-top: 0;
 }
 
-.pf2-sidebar-left {
+.pf2-sidebar--left {
 	float: left;
 	clear: left;
 	border-right: solid 2px #5E0000;
 	width: 50%;
 	max-width: 170px;
 	margin: 0.9em 1em 0.9em -1em;
+	font-size: 0.75em;
 }
 .pf2-sidebar {
 	float: right;
@@ -421,18 +393,19 @@
 	width: 50%;
 	max-width: 170px;
 	margin: 0.9em -1em 0.9em 1em;
+	font-size: 0.75em;
 }
 @media only screen and (max-width: 220px) {
 	.pf2-sidebar {
 		width: calc(100%);
 		max-width: none;
 	}
-	.pf2-sidebar-left {
+	.pf2-sidebar--left {
 		width: calc(100%);
 		max-width: none;
 	}
 }
-.pf2-sidebar-title {
+.pf2-sidebar__title {
 	font-size: 1.1em;
 	font-weight: 700;
 	margin: 0;
@@ -440,7 +413,7 @@
 	color: #5E0000;
 	padding: 0 1em 0;
 }
-.pf2-sidebar-text {
+.pf2-sidebar__text {
 	margin: 0;
 	font-family: 'good-pro', sans-serif;
 	color: #5E0000;
@@ -487,32 +460,32 @@
 	display: flex;
 	margin: 0.3em 0 0.3em;
 }
-.pf2-key-abilities-ab {
+.pf2-key-abilities__ab {
 	box-shadow: 8px 0 0 -6px #B29E74;
 	width: calc(50% - 3px);
 	padding: 0 1em 1em;
 }
-.pf2-key-abilities-hp {
+.pf2-key-abilities__hp {
 	padding: 0 1em 1em;
 	width: calc(50% - 1px);
 }
-.pf2-key-abilities-title {
+.pf2-key-abilities__title {
 	font-family: 'Gin', sans-serif;
 	font-weight: 400;
-	font-size: 1.2em;
+	font-size: 0.9em;
 	text-align: left;
 	padding-bottom: 0.3em;
 	margin: 0;
 }
-.pf2-key-abilities-text {
+.pf2-key-abilities__text {
 	font-family: 'good-pro', sans-serif;
 	font-weight: 700;
-	font-size: 0.9em;
+	font-size: 0.675em;
 	text-align: left;
 	line-height: 1.2em;
 	margin: 0;
 }
-.pf2-key-abilities-text ~ .pf2-key-abilities-text {
+.pf2-key-abilities__text ~ .pf2-key-abilities__text {
 	font-weight: 400;
 }
 .pf2-tips-box {
@@ -521,20 +494,20 @@
 	width: 300px;
 	margin: 0.3em 1em 0.3em 0;
 }
-.pf2-tips-box-title {
+.pf2-tips-box__title {
 	background: #002664;
 	color: #D9C484;
 	font-weight: 700;
-	font-size: 1.1em;
+	font-size: 0.825em;
 	text-transform: uppercase;
 	text-align: left;
 	line-height: 1.2em;
 	padding: 0.2em 0.3em 0;
 	margin: 0;
 }
-.pf2-tips-box-text {
+.pf2-tips-box__text {
 	background: #D1D3D4;
-	font-size: 0.9em;
+	font-size: 0.675em;
 	line-height: 1.2em;
 	text-align: justify;
 	margin: 0;
@@ -547,22 +520,21 @@
 	padding: 0 1em 0.3em;
 	font-family: 'good-pro', sans-serif;
 }
-.pf2-sample-box-title {
+.pf2-sample-box__title {
 	font-weight: 700;
-	font-size: 1em;
 	line-height: 1.2em;
 	text-align: center;
 	padding: 0.3em 1em 0.3em;
 	margin: 0;
 }
-.pf2-sample-box-text-indent-second {
+.pf2-sample-box__section {
 	font-weight: 400;
 	line-height: 1.2em;
 	padding: 0 1em 0 1.3em;
 	text-indent: -1em;
 	margin: 0;
 }
-.pf2-sample-box-text {
+.pf2-sample-box__text {
 	font-weight: 400;
 	line-height: 1.2em;
 	padding: 0 0.3em 0.3em;
@@ -575,7 +547,7 @@
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
-	font-size: 1em;
+	font-size: 0.75em;
 	font-weight: 700;
 	line-height: 1.2em;
 	text-align: center;
