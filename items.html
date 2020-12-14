@@ -202,10 +202,11 @@
 					</div>
 
 					<div id="filtertools-mundane" class="ele-mundane input-group input-group--bottom flex no-shrink">
-						<button class="col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-						<button class="col-4-5 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="cost" data-sortby="asc">Cost <span class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+						<button class="col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">Category <span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level <span class="caret_wrp"></span></button>
+						<button class="col-1-8 sort btn btn-default btn-xs" data-sort="price" data-sortby="asc">Price <span class="caret_wrp"></span></button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
 						<button class="sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
 					</div>
 
@@ -217,11 +218,11 @@
 					<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
 
 					<div id="filtertools-magic" class="ele-magic input-group input-group--bottom flex no-shrink">
-						<button class="fullborder col-3-5 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="type" data-sortby="asc">Type <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="weight" data-sortby="asc">Weight <span class="caret_wrp"></span></button>
-						<button class="col-0-6 sort btn btn-default btn-xs" data-sort="attunement" title="Can Be Attuned">A. <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-4 sort btn btn-default btn-xs" data-sort="rarity" data-sortby="asc">Rarity <span class="caret_wrp"></span></button>
+						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
+						<button class="fullborder col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">Category <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-8 sort btn btn-default btn-xs" data-sort="price">Price <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
 						<button class="fullborder sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
 					</div>
 
@@ -233,18 +234,18 @@
 			<div id="contentwrapper" class="view-col itm__wrp-stats">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="weight">Weight <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="cost">Cost <span class="caret_wrp"></span></button>
+						<button class="col-5-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="price">Price <span class="caret_wrp"></span></button>
+						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="bulk">Bulk <span class="caret_wrp"></span></button>
 						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subitems">
 						<!-- populate with JS -->
 					</ul>
 					<div class="row ve-small">
-						<span class="col-6 text-right pr-2">Total:</span>
-						<span class="col-2 text-center no-wrap" id="totalweight"></span>
-						<span class="col-2 text-center no-wrap clickable" id="totalvalue"></span>
+						<span class="col-5-4 text-right pr-2">Total:</span>
+						<span class="col-2-3 text-center no-wrap" id="totalweight"></span>
+						<span class="col-2-3 text-center no-wrap clickable" id="totalvalue"></span>
 						<span class="col-2 text-center no-wrap pr-0" id="totalitems"></span>
 					</div>
 				</div>

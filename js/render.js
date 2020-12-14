@@ -4091,7 +4091,6 @@ Renderer.spell = {
 		const level = spell.type === "CANTRIP" ? 1 : spell.level
 
 		renderStack.push(`
-		<div class="stats">
 		${Renderer.utils.getExcludedDiv(spell, "spell", UrlUtil.PG_SPELLS)}
 		${Renderer.utils.getNameDiv(spell, {page: UrlUtil.PG_SPELLS, level: level})}
 		${Renderer.utils.getDividerDiv()}
@@ -4203,7 +4202,6 @@ Renderer.spell = {
 			}
 		}
 		renderStack.push(Renderer.utils.getPageP(spell));
-		renderStack.push(`</div>`)
 		return renderStack.join("");
 	},
 
@@ -5828,15 +5826,11 @@ Renderer.item = {
 		return renderStack.join("").trim();
 	},
 
-	_getPriceText(price) {
-		return `<strong>Price </strong>${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
-	},
-
 	getSubHead(item) {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		if (item.price) {
-			renderStack.push(`<p class="pf2-stat__section">${this._getPriceText(item.price)}</p>`);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
 		}
 		if (item.ammunition) {
 			renderStack.push(`<p class="pf2-stat__section"><strong>Ammunition </strong>${item.ammunition}</p>`);
@@ -5902,7 +5896,7 @@ Renderer.item = {
 				});
 				renderStack[0] += `(${trts.join(', ')}); `
 			}
-			if (v.price != null) renderStack.push(`${this._getPriceText(v.price)}; `)
+			if (v.price != null) renderStack.push(`<strong>Price </strong>${Parser.priceToFull(v.price)}; `)
 			if (v.bulk != null) renderStack.push(`<strong>Bulk </strong>${v.bulk}; `)
 			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack)
 			if (v.craft_requirements != null) renderStack.push(`<strong>Craft Requirements </strong>${v.craft_requirements}; `)
@@ -6068,6 +6062,7 @@ Renderer.item = {
 			varItem.shield_stats = v.shield_stats
 			varItem.craft_requirements = v.craft_requirements
 			varItem.entries.push(...v.entries)
+			varItem.generic = 'V'
 			delete varItem.variants
 			items.push(varItem)
 		});

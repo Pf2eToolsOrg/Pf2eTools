@@ -588,6 +588,39 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
+Parser.priceToValue = function (price) {
+	if (price == null) return 0;
+	let mult = 0;
+	let offset = 0;
+	let amount = price.amount || 0;
+	switch (price.coin) {
+		case "cp":
+			mult = 1;
+			break;
+		case "sp":
+			mult = 10;
+			break;
+		case "gp":
+			mult = 100;
+			break;
+		case "pp":
+			mult = 1000;
+			break;
+
+	}
+	if (price.note != null) offset = 0.1;
+	return mult * amount + offset
+};
+
+Parser.priceToFull = function (price) {
+	if (price == null) return '\u2014';
+	if (typeof price === 'object') {
+		if (price.amount == null || price.coin == null) return '\u2014';
+		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
+	}
+	return '\u2014'
+};
+
 Parser.itemValueToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "value", "valueMult", isShortForm);
 };
@@ -2776,7 +2809,7 @@ Parser.SKILL_JSON_TO_FULL = {
 		{
 			"type": "list",
 			"items": [
-			"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes."
+				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes."
 			]
 		},
 		{
