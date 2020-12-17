@@ -126,7 +126,7 @@ class ActionsPage extends ListPage {
 
 	doLoadHash (id) {
 		const it = this._dataList[id];
-		$("#pagecontent").empty().append(RenderActions.$getRenderedAction(it));
+		renderStatblock(it);
 		ListUtil.updateSelected();
 	}
 
@@ -134,6 +134,33 @@ class ActionsPage extends ListPage {
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 	}
+}
+
+function renderStatblock(action) {
+	const $content = $("#pagecontent").empty()
+
+	function buildStatsTab() {
+		$content.append(RenderActions.$getRenderedAction(action));
+	}
+	function buildInfoTab() {
+		$content.append(Renderer.action.getFluff(action))
+	}
+	const statTab = Renderer.utils.tabButton(
+		"Statblock",
+		() => {
+			$(`#float-token`).show();
+		},
+		buildStatsTab
+	);
+	const infoTab = Renderer.utils.tabButton(
+		"Quick Rules",
+		() => {
+			$(`#float-token`).hide();
+		},
+		buildInfoTab
+	);
+	if (action.info) Renderer.utils.bindTabButtons(statTab, infoTab);
+	else Renderer.utils.bindTabButtons(statTab);
 }
 
 const actionsPage = new ActionsPage();
