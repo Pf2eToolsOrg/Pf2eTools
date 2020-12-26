@@ -343,8 +343,8 @@ function Renderer() {
 				case "pf2-key-ability":
 					this._renderPf2KeyAbility(entry, textStack, meta, options);
 					break;
-				case "box-title":
-					this._renderBoxTitle(entry, textStack, meta, options);
+				case "pf2-title":
+					this._renderPf2Title(entry, textStack, meta, options);
 					break;
 				// recursive
 				case "entries":
@@ -763,10 +763,10 @@ function Renderer() {
 		const numCol = Math.max(...entry.rows.map(x => x.length))
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => String(x) + "fr").join(" ") : "1fr ".repeat(numCol)
 		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${gridTemplate}">`
-		if (entry.style.includes('pf2-box__table--red')) {
+		if (entry.style && entry.style.includes('pf2-box__table--red')) {
 			if (entry.colStyles == null) entry.colStyles = Array(numCol).fill('');
-			entry.colStyles[0] += 'no-border-left';
-			entry.colStyles[numCol - 1] += 'no-border-right';
+			entry.colStyles[0] += ' no-border-left';
+			entry.colStyles[numCol - 1] += ' no-border-right';
 		}
 
 		if (entry.name) {
@@ -1287,7 +1287,9 @@ function Renderer() {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h3 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-h3 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>`;
+			if (entry.level) textStack[0] += `<span class="pf2-h3-lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
+			textStack[0] += `</p>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -1348,10 +1350,10 @@ function Renderer() {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
-	this._renderBoxTitle = function (entry, textStack, meta, options) {
+	this._renderPf2Title = function (entry, textStack, meta, options) {
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="box-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
 
 	};
@@ -1530,8 +1532,7 @@ function Renderer() {
 
 	this._renderPf2KeyAbility = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
-		textStack[0] += `<div style="display: flex; float: left; clear: left" ${dataString}>`;
-		textStack[0] += `<div class="pf2-key-abilities">`;
+		textStack[0] += `<div class="pf2-key-abilities" ${dataString}>`;
 
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
@@ -1568,7 +1569,6 @@ function Renderer() {
 			textStack[0] += `</div>`;
 		}
 
-		textStack[0] += `</div>`;
 		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -2481,7 +2481,7 @@ function Renderer() {
 					type: "pf2-h3",
 					name: name.toTitleCase(),
 					entries: expander(name),
-				});
+				}, {isBookContent: true});
 				textStack[0] += `<span class="help--hover" ${hoverMeta.html}>${displayText || name}</span>`;
 
 				break;
@@ -3692,7 +3692,6 @@ Renderer.utils = {
 			funcPopulate: funcPopulate,
 		};
 	},
-
 	_tabs: {},
 	_curTab: null,
 	_prevTab: null,
@@ -6977,7 +6976,7 @@ Renderer.action = {
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
 	},
-	getFluff(it) {
+	getQuickRules(it) {
 		let renderStack = ['']
 		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name:it.name, entries: it.info}, renderStack, {depth:1})
 		return `
@@ -8076,7 +8075,6 @@ Renderer.hover = {
 
 	/**
 	 * @param page
-	 * @param source
 	 * @param hash
 	 * @param [opts] Options object.
 	 * @param [opts.isCopy] If a copy, rather than the original entity, should be returned.
@@ -8153,8 +8151,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
-			case UrlUtil.PG_PSIONICS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "psionics.json", "psionic");
 			case UrlUtil.PG_REWARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rewards.json", "reward");
 			case UrlUtil.PG_ANCESTRIES: {
@@ -8353,6 +8349,7 @@ Renderer.hover = {
 	},
 
 	/**
+	 * @param page
 	 * @param data the data
 	 * @param listProp list property in the data
 	 * @param [opts]
@@ -8930,7 +8927,7 @@ Renderer.hover = {
 	$getHoverContent_generic(toRender, opts) {
 		opts = opts || {};
 
-		return $$`<div class="stats ${opts.isBookContent || opts.isLargeBookContent ? "stats--book" : "pf2-stat"} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</div>`;
+		return $$`<div class="stats ${opts.isBookContent || opts.isLargeBookContent ? "pf2-book" : "pf2-stat"} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</div>`;
 	},
 
 	doPopoutCurPage(evt, allEntries, index) {

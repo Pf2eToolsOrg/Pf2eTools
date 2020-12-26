@@ -549,7 +549,7 @@ class IndexableFileFeats extends IndexableFile {
 class IndexableFileAncestries extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_RACE,
+			category: Parser.CAT_ID_ANCESTRY,
 			file: "ancestries.json",
 			listProp: "ancestry",
 			baseUrl: "ancestries.html",

@@ -462,7 +462,7 @@ class Omnisearch {
 
 	static addScrollTopFloat () {
 		// "To top" button
-		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-arrow-up"/></button>`)
+		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-chevron-up"/></button>`)
 			.click(() => MiscUtil.scrollPageTop());
 
 		const $wrpTop = $$`<div class="bk__to-top">

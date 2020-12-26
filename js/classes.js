@@ -1,32 +1,21 @@
 "use strict";
 
 class ClassesPage extends BaseComponent {
-	static _ascSortSubclasses (scA, scB) {
-		return SortUtil.ascSortLower(scA.name, scB.name);
+
+	static _ascSortSubclasses(hA, hB) {
+		return SortUtil.ascSortLower(hA.type + hA.name, hB.type + hB.name)
 	}
 
-	static _fnSortSubclassFilterItems (a, b) {
+	static _fnSortSubclassFilterItems(a, b) {
 		if (a.values.isAlwaysVisible) return 1;
 		else if (b.values.isAlwaysVisible) return -1;
-		else return SortUtil.listSort(a, b, {sortBy: "shortName"});
+		else return SortUtil._listSort_compareBy(a, b, 'type');
 	}
 
-	static getBtnTitleSubclass (sc) {
-		const titlePartReprint = sc.isReprinted ? " (this subclass has been reprinted in a more recent source)" : "";
-		const sourcePart = Renderer.utils.getSourceAndPageText(sc);
-		return `${sc.name}; Source: ${sourcePart}${titlePartReprint}`;
-	}
-
-	static getBaseShortName (sc) {
-		const re = new RegExp(`\\((UA|${sc.source})\\)$`);
-		return sc.shortName.trim().replace(re, "").trim();
-	}
-
-	constructor () {
+	constructor() {
 		super();
-		// Don't include classId in the main state/proxy, as we want special handling for it as the main hash part
 		this.__classId = {_: 0};
-		this._classId = this._getProxy("classId", this.__classId);
+		this._classId = this._getProxy('classId', this.__classId);
 
 		this._list = null;
 		this._ixData = 0;
@@ -35,50 +24,85 @@ class ClassesPage extends BaseComponent {
 		this._outlineData = {};
 		this._pageFilter = new PageFilterClasses();
 
-		// region subclass list/filter
 		this._listSubclass = null;
 		this._ixDataSubclass = 0;
-		// endregion
 
-		this._fnTableHandleFilterChange = null;
-		this._$wrpOutline = null;
-		this._fnOutlineHandleFilterChange = null;
-		this._$trNoContent = null;
+		this._$divNoContent = null;
 
-		// region alternate views
-		this._subclassComparisonView = null;
-		this._classBookView = null;
-		// endregion
-
-		// region Active class data filtering
 		this._activeClassDataFiltered = null;
-		// endregion
+		this._activeFeatDataFiltered = null;
+
+		this._loadFirstFeat = false;
+		this._listFeat = null;
+		this._ixFeatData = 0;
+		this._featDataList = [];
+		this._featFilter = new PageFilterFeats({
+			typeFilterHidden: true,
+			ancFilterHidden: true,
+			archFilterHidden: true,
+			classFilterHidden: true,
+			skillFilterHidden: true,
+			typeDeselFn: (it => it === 'Class')
+		});
+		this.__featId = {_: 0};
+		this._featId = this._getProxy('featId', this.__featId);
 	}
 
-	get activeClass () {
+	get activeClass() {
 		if (this._activeClassDataFiltered) return this._activeClassDataFiltered;
 		return this.activeClassRaw;
 	}
-	get activeClassRaw () { return this._dataList[this._classId._]; }
 
-	get filterBox () { return this._pageFilter.filterBox; }
+	get activeClassRaw() {
+		return this._dataList[this._classId._];
+	}
 
-	async pOnLoad () {
+	get activeFeat() {
+		if (this._activeFeatDataFiltered) return this._activeFeatDataFiltered;
+		return this.activeFeatRaw;
+	}
+
+	get activeFeatRaw() {
+		return this._featDataList[this._featId._];
+	}
+
+	get filterBox() {
+		return this._pageFilter.filterBox;
+	}
+
+	get featFilterBox() {
+		return this._featFilter.filterBox;
+	}
+
+	async pOnLoad() {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
+		const feats = await DataUtil.loadJSON('data/feats/feats-crb.json')
 
 		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
-		ListUtil.setOptions({primaryLists: [this._list]});
+		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {
+			input: '#feat-lst__search',
+			glass: '#feat-lst__search-glass',
+			reset: '#feat-reset'
+		});
+		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
+		SortUtil.initBtnSortHandlers($("#feat-filtertools"), this._listFeat);
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
 		});
+		await this._featFilter.pInitFilterBox({
+			$iptSearch: $(`#feat-lst__search`),
+			$wrpFormTop: $(`#feat-filter-search-group`),
+			$btnReset: $(`#feat-reset`),
+		});
 
 		this._addData(data);
+		this._addFeatsData(feats);
 
 		BrewUtil.bind({
 			filterBox: this.filterBox,
@@ -93,21 +117,29 @@ class ClassesPage extends BaseComponent {
 
 		BrewUtil.makeBrewButton("manage-brew");
 		await ListUtil.pLoadState();
-		RollerUtil.addListRollButton(true);
+		RollerUtil.addListRollButton(true, null, 0);
+		RollerUtil.addListRollButton(true, {
+			roll: 'feat-feelinglucky',
+			reset: 'feat-reset',
+			search: 'feat-filter-search-group'
+		}, 1);
 
 		window.onhashchange = this._handleHashChange.bind(this);
 
 		this._list.init();
+		this._listFeat.init();
 
 		$(`.initial-message`).text(`Select a class from the list to view it here`);
 
-		// Silently prepare our initial state
 		this._setClassFromHash(Hist.initialLoad);
+		this._setFeatClassFilters()
+		this._setFeatFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
 		await this._pInitAndRunRender();
 
-		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
+		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#classstats`));
+		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
 		this._initLinkGrabbers();
 		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
@@ -119,55 +151,66 @@ class ClassesPage extends BaseComponent {
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	async _pHandleBrew (homebrew) {
-		const {class: rawClassData, subclass: rawSubclassData} = homebrew;
-		const cpy = MiscUtil.copy({class: rawClassData, subclass: rawSubclassData});
-		if (cpy.class) for (let i = 0; i < cpy.class.length; ++i) cpy.class[i] = await DataUtil.class.pGetDereferencedClassData(cpy.class[i]);
-		if (cpy.subclass) for (let i = 0; i < cpy.subclass.length; ++i) cpy.subclass[i] = await DataUtil.class.pGetDereferencedSubclassData(cpy.subclass[i]);
+	async _pHandleBrew(homebrew) {
+		const {class: rawClassData} = homebrew;
+		const cpy = MiscUtil.copy({class: rawClassData});
 
 		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(cpy);
 
 		if (isAddedAnySubclass && !Hist.initialLoad) await this._pDoRender();
 	}
 
-	_addData (data) {
+	_addData(data) {
 		let isAddedAnyClass = false;
 		let isAddedAnySubclass = false;
-		if (data.class && data.class.length) (isAddedAnyClass = true) && this._addData_addClassData(data.class);
-		if (data.subclass && data.subclass.length) (isAddedAnySubclass = true) && this._addData_addSubclassData(data.subclass);
+
+		if (data.class && data.class.length) (isAddedAnyClass = true) && this._addData_addClassData(data.class)
+		if (data.subclass && data.subclass.length) (isAddedAnySubclass = true) && this._addData_addSubclassData(data.subclass)
 
 		if (isAddedAnyClass || isAddedAnySubclass) {
 			this._list.update();
 			this.filterBox.render();
 			this._handleFilterChange(false);
-
-			ListUtil.setOptions({
-				itemList: this._dataList,
-				primaryLists: [this._list],
-			});
 		}
 
-		return {isAddedAnyClass, isAddedAnySubclass};
+		return {isAddedAnyClass, isAddedAnySubclass}
 	}
 
-	_addData_addClassData (classes) {
+	_addFeatsData(feats) {
+		feats.feat.forEach(f => {
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
+			this._featFilter.mutateAndAddToFilters(f, isExcluded)
+		});
+		this._featDataList.push(...feats.feat)
+
+		const len = this._featDataList.length;
+		for (; this._ixFeatData < len; this._ixFeatData++) {
+			const it = this._featDataList[this._ixFeatData];
+			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](it), "feat", it.source);
+			this._listFeat.addItem(this.getFeatListItem(it, this._ixFeatData, isExcluded));
+		}
+
+		this._listFeat.update();
+		this.featFilterBox.render();
+		this._handleFeatFilterChange();
+
+	}
+
+	_addData_addClassData(classes) {
 		classes.forEach(cls => {
-			this._pageFilter.mutateForFilters(cls);
+			this._pageFilter.mutateForFilters(cls)
 
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls), "class", cls.source);
 
-			// Build a map of subclass source => subclass name => is excluded
 			const subclassExclusions = {};
 			(cls.subclasses || []).forEach(sc => {
 				if (isExcluded) return;
-
 				(subclassExclusions[sc.source] = subclassExclusions[sc.source] || {})[sc.name] = subclassExclusions[sc.source][sc.name] || ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source);
 			});
 
 			this._pageFilter.addToFilters(cls, isExcluded, {subclassExclusions});
 		});
 
-		// Force data on any classes with unusual sources to behave as though they have normal sources
 		classes.filter(cls => SourceUtil.isNonstandardSource(cls.source) || BrewUtil.hasSourceJson(cls.source))
 			.forEach(cls => {
 				if (cls.fluff) cls.fluff.filter(f => f.source === cls.source).forEach(f => f._isStandardSource = true);
@@ -186,7 +229,7 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_addData_addSubclassData (subclasses) {
+	_addData_addSubclassData(subclasses) {
 		let isBlankSourceFilter;
 		if (!Hist.initialLoad) {
 			isBlankSourceFilter = !this._pageFilter.sourceFilter.getValues()._isActive;
@@ -196,7 +239,7 @@ class ClassesPage extends BaseComponent {
 			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_PHB).toLowerCase());
 			if (!cls) {
 				JqueryUtil.doToast({
-					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_PHB}`,
+					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_CRB}`,
 					type: "danger",
 				});
 				return;
@@ -219,17 +262,17 @@ class ClassesPage extends BaseComponent {
 		if (isBlankSourceFilter) this._pageFilter.sourceFilter.doSetPillsClear();
 	}
 
-	_initHashAndStateSync () {
+	_initHashAndStateSync() {
 		// Wipe all hooks, as we redo them for each class render
 		this._resetHooks("state");
 		this._resetHooksAll("state");
 		this._resetHooks("classId");
-		// Don't reset hooksAll for classId, as we use this to render the class
+		// Don't reset hooksAll for classId
 
 		this._addHookAll("state", () => this._setHashFromState());
 	}
 
-	_setHashFromState (isSuppressHistory) {
+	_setHashFromState(isSuppressHistory) {
 		// During the initial load, force-suppress all changes
 		if (isSuppressHistory === undefined) isSuppressHistory = Hist.initialLoad;
 
@@ -242,16 +285,31 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_handleHashChange () {
+	_setFeatClassFilters() {
+		let names = this._getActiveSubclasses().map(it => it.name);
+		names.push(...this._getActiveSubclasses().map(it => it.traits).filter(Boolean).flat())
+		names.push(this.activeClass.name);
+		Object.keys(this._featFilter._classFilter.getValues().Classes).forEach(key => {
+			if (!key.startsWith('_')) this._featFilter._classFilter.setValue(key, 2)
+		});
+		names.forEach(name => {
+			this._featFilter._classFilter.setValue(name, 1)
+		});
+		this._handleFeatFilterChange();
+	}
+
+	_handleHashChange() {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
 		this._setClassFromHash();
+		this._setFeatClassFilters();
+		this._setFeatFromHash();
 		this._setStateFromHash();
 	}
 
-	_setClassFromHash (isInitialLoad) {
-		const [link] = Hist.getHashParts();
+	_setClassFromHash(isInitialLoad) {
+		const [[link], _] = Hist.getDoubleHashParts();
 
 		let ixToLoad;
 
@@ -276,27 +334,63 @@ class ClassesPage extends BaseComponent {
 				const cls = this._dataList[ixToLoad];
 				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
 				target._ = ixToLoad;
+				this._loadFirstFeat = true;
 			}
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
-			$(`#pagecontent`).empty().append(ClassesPage._render_$getTrNoContent());
+			$(`#classstats`).empty().append(ClassesPage._render_$getNoContent());
 			JqueryUtil.doToast({content: "Could not find the class to load!", type: "error"})
 		}
 	}
 
-	_setStateFromHash (isInitialLoad) {
-		let [_, ...subs] = Hist.getHashParts();
+	_setFeatFromHash(isInitialLoad) {
+		const [_, [link]] = Hist.getDoubleHashParts();
+
+		let ixToLoad;
+
+		if (link === HASH_BLANK) ixToLoad = -1;
+		else if (this._loadFirstFeat && this._listFeat.visibleItems.length) {
+			ixToLoad = this._listFeat.visibleItems[0].ix;
+			this._loadFirstFeat = false;
+		} else {
+			const listItem = Hist.getActiveListItem(link);
+
+			if (listItem == null) ixToLoad = -1;
+			else {
+				const toLoad = listItem.ix;
+				if (toLoad == null) ixToLoad = -1;
+				else ixToLoad = listItem.ix;
+			}
+		}
+
+		if (!~ixToLoad && this._listFeat.visibleItems.length) ixToLoad = this._listFeat.visibleItems[0].ix;
+
+		if (~ixToLoad) {
+			const target = isInitialLoad ? this.__featId : this._featId;
+			if (target._ !== ixToLoad) {
+				Hist.lastLoadedId = ixToLoad;
+				target._ = ixToLoad;
+			}
+		} else {
+			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
+			$(`#featstats`).empty().append(ClassesPage._render_$getNoContent());
+			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "error"})
+		}
+	}
+
+	_setStateFromHash(isInitialLoad) {
+		let [[clsH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
+		if (clsH === '' && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
+		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
 
 		const target = isInitialLoad ? this.__state : this._state;
 
-		// On changing class (class links have no state parts), clean "feature" state
 		if (!subs.length) this.__state.feature = null;
 
 		if (this._getHashState() === subs.join(HASH_PART_SEP)) return;
 
 		const cls = this.activeClass;
-
 		const validScLookup = {};
 		cls.subclasses.forEach(sc => validScLookup[UrlUtil.getStateKeySubclass(sc)] = sc);
 
@@ -357,18 +451,28 @@ class ClassesPage extends BaseComponent {
 	/**
 	 * @param [opts] Options object.
 	 * @param [opts.class] Class to convert to hash.
+	 * @param [opts.feat] Feat to convert to hash.
 	 * @param [opts.state] State to convert to hash.
 	 */
-	_getHashState (opts) {
+	_getHashState(opts) {
 		opts = opts || {};
 
 		let fromState = opts.state || MiscUtil.copy(this.__state);
 		let cls = opts.class || this.activeClass;
+		let feat = opts.feat || this.activeFeat;
 
 		// region class
 		let primaryHash = cls ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](cls) : null;
 		if (!primaryHash) {
 			const firstItem = this._list.items[0];
+			primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
+		}
+		// endregion
+
+		// region feats
+		let featHash = cls ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
+		if (!featHash) {
+			const firstItem = this._listFeat.items[0];
 			primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
 		}
 		// endregion
@@ -387,24 +491,31 @@ class ClassesPage extends BaseComponent {
 		const stateHash = stateParts.length ? UrlUtil.packSubHash("state", stateParts) : "";
 		// endregion
 
-		const hashParts = [
+		const hashPartsAnc = [
 			primaryHash,
-			stateHash,
+			stateHash
 		].filter(Boolean);
-		return Hist.util.getCleanHash(hashParts.join(HASH_PART_SEP));
+		const hashPartsFeat = [
+			featHash
+		].filter(Boolean);
+		const hashParts = [
+			Hist.util.getCleanHash(hashPartsAnc.join(HASH_PART_SEP)),
+			Hist.util.getCleanHash(hashPartsFeat.join(HASH_PART_SEP))
+		].filter(Boolean)
+		return hashParts.join('#')
 	}
 
-	_initLinkGrabbers () {
+	_initLinkGrabbers() {
 		const $body = $(document.body);
-		$body.on(`mousedown`, `.cls-main__linked-titles > td > * > .rd__h .entry-title-inner`, (evt) => evt.preventDefault());
-		$body.on(`click`, `.cls-main__linked-titles > td > * > .rd__h .entry-title-inner`, async (evt) => {
+		$body.on(`mousedown`, `.cls-main__linked-titles > div > .rd__h .entry-title-inner`, (evt) => evt.preventDefault());
+		$body.on(`click`, `.cls-main__linked-titles > div > .rd__h .entry-title-inner`, async (evt) => {
 			const $target = $(evt.target);
 
 			if (evt.shiftKey) {
 				await MiscUtil.pCopyTextToClipboard($target.text().replace(/\.$/, ""));
 				JqueryUtil.showCopiedEffect($target);
 			} else {
-				const featureId = $target.closest(`tr`).attr("data-scroll-id");
+				const featureId = $target.closest(`.cls-main__linked-titles`).attr("data-scroll-id");
 
 				const curState = MiscUtil.copy(this.__state);
 				curState.feature = featureId;
@@ -416,7 +527,7 @@ class ClassesPage extends BaseComponent {
 		});
 	}
 
-	getListItem (cls, clsI, isExcluded) {
+	getListItem(cls, clsI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(cls);
 		const source = Parser.sourceJsonToAbv(cls.source);
 
@@ -444,60 +555,56 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	_doGenerateFilteredActiveClassData () {
+	getFeatListItem(feat, featI, isExcluded) {
+		const hash = UrlUtil.autoEncodeHash(feat);
+		const source = Parser.sourceJsonToAbv(feat.source);
+
+		const $lnk = $(`<a href="##${hash}" class="lst--border">
+			<span class="bold col-5 pl-0">${feat.name}</span>
+			<span class="col-1-5 text-center">${Parser.getOrdinalForm(feat.level)}</span>
+			<span class="col-4 text-center">${feat._slPrereq}</span>
+			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+		</a>`);
+
+		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
+
+		return new ListItem(
+			featI,
+			$ele,
+			feat.name,
+			{
+				hash,
+				source,
+				level: feat.level,
+				prerequisites: feat._slPrereq
+			},
+			{
+				$lnk,
+				entity: feat,
+				uniqueId: feat.uniqueId ? feat.uniqueId : featI,
+				isExcluded,
+			},
+		);
+	}
+
+	_doGenerateFilteredActiveClassData() {
 		const f = this.filterBox.getValues();
-
-		const cpyCls = MiscUtil.copy(this.activeClassRaw);
-
+		const cpyAnc = MiscUtil.copy(this.activeClassRaw);
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
 			isAllowDeleteObjects: true,
 			isDepthFirst: true,
 		});
 
-		cpyCls.classFeatures = cpyCls.classFeatures.map(lvlFeatures => {
-			return walker.walk(
-				lvlFeatures,
-				{
-					object: (obj) => {
-						if (!obj.source) return obj;
-						const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-						return this.filterBox.toDisplay(f, obj.source, [], fText) ? obj : null;
-					},
-					array: (arr) => {
-						return arr.filter(Boolean);
-					},
-				},
-			);
-		});
-
-		(cpyCls.subclasses || []).forEach(sc => {
-			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
-				return walker.walk(
-					lvlFeatures,
-					{
-						object: (obj) => {
-							if (!obj.source) return obj;
-							const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-							return this.filterBox.toDisplay(f, obj.source, [], fText) ? obj : null;
-						},
-						array: (arr) => {
-							return arr.filter(Boolean);
-						},
-					},
-				);
-			});
-		});
-
-		this._activeClassDataFiltered = cpyCls;
+		this._activeClassDataFiltered = cpyAnc
 	}
 
-	_handleFilterChange (isFilterValueChange) {
+	_handleFilterChange(isFilterValueChange) {
 		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
 		//   re-render.
 		if (isFilterValueChange) {
 			this._doGenerateFilteredActiveClassData();
-			this._pDoSyncrinizedRender();
+			this._pDoSynchronizedRender();
 			return;
 		}
 
@@ -520,34 +627,48 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	async _pInitAndRunRender () {
+	_handleFeatFilterChange() {
+		const f = this.featFilterBox.getValues();
+		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
+		FilterBox.selectFirstVisible(this._featDataList);
+	}
+
+	async _pInitAndRunRender() {
 		this._$wrpOutline = $(`#sticky-nav`);
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
 		this._addHookAll("classId", async () => {
 			this._doGenerateFilteredActiveClassData();
-			await this._pDoSyncrinizedRender();
+			await this._pDoSynchronizedRender();
+		});
+
+		this._addHookAll("featId", async () => {
+			await this._pDoSynchronizedRender();
 		});
 
 		this._doGenerateFilteredActiveClassData();
 		await this._pDoRender();
-	}
+	};
 
-	async _pDoSyncrinizedRender () {
+	async _pDoSynchronizedRender() {
 		await this._pLock("render");
 		try {
 			await this._pDoRender();
 		} finally {
 			this._unlock("render");
 		}
-	}
+	};
 
-	async _pDoRender () {
+	async _pDoRender() {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
 			.off(FilterBox.EVNT_VALCHANGE)
 			.on(FilterBox.EVNT_VALCHANGE, () => this._handleFilterChange(true));
+
+		this.featFilterBox
+			.off(FilterBox.EVNT_VALCHANGE)
+			.on(FilterBox.EVNT_VALCHANGE, () => this._handleFeatFilterChange());
 
 		// region bind list updates
 		const hkSetHref = () => {
@@ -556,23 +677,32 @@ class ClassesPage extends BaseComponent {
 				this._list.items
 					.filter(it => it.data.$lnk)
 					.forEach(it => {
-						const href = `#${this._getHashState({class: it.data.entity})}`;
+						let state = MiscUtil.copy(this.__state);
+						state.feature = null;
+						const href = `#${this._getHashState({class: it.data.entity, feat: '', state})}`;
+						it.data.$lnk.attr("href", href)
+					});
+				this._listFeat.items
+					.filter(it => it.data.$lnk)
+					.forEach(it => {
+						let state = MiscUtil.copy(this.__state);
+						state.feature = null;
+						const href = `#${this._getHashState({feat: it.data.entity, state})}`;
 						it.data.$lnk.attr("href", href)
 					});
 			}, 5);
 		};
 		this._addHook("classId", "_", hkSetHref);
+		this._addHook("featId", "_", hkSetHref);
 		this._addHookAll("state", hkSetHref);
 		hkSetHref();
 		// endregion
 
 		// region rendering
-		this._render_renderClassTable();
-		this._render_renderSidebar();
+		this._render_renderClass();
+		this._render_renderClassAdvancementTable()
 		await this._render_pRenderSubclassTabs();
-		this._render_renderClassContent();
-		this._render_renderOutline();
-		this._render_renderAltViews();
+		this._render_renderFeat();
 		// endregion
 
 		// region state handling
@@ -589,36 +719,49 @@ class ClassesPage extends BaseComponent {
 					this._state.feature = null;
 					this._lastScrollFeature = null;
 				} else {
-					setTimeout(() => $scrollTo[0].scrollIntoView(), 100);
+					setTimeout(() => {
+						let x = window.scrollX
+						let y = window.scrollY
+						$scrollTo[0].scrollIntoView()
+						window.scrollTo(x, y)
+					}, 100);
 				}
 			}
 		};
 		this._addHookBase("feature", hkScrollToFeature);
 		hkScrollToFeature();
 
-		const hkDisplayFluff = () => $(`.cls-main__cls-fluff`).toggleClass("hidden", !this._state.isShowFluff);
+		const hkDisplayFluff = () => {
+			const $dispClassTitle = $(`#class-name`);
+			if (this._state.isHideFeatures) $dispClassTitle.toggleClass('hidden', !this._state.isShowFluff)
+			if (this._state.isHideFeatures && !this._isAnySubclassActive()) this._$divNoContent.toggleClass("hidden", this._state.isShowFluff);
+			$(`.pf2-fluff`).toggleClass("hidden-fluff", !this._state.isShowFluff);
+		}
 		this._addHookBase("isShowFluff", hkDisplayFluff);
 		MiscUtil.pDefer(hkDisplayFluff);
 
 		const hkDisplayFeatures = () => {
 			const $dispClassFeatures = $(`[data-feature-type="class"]`);
 			const $dispFeaturesSubclassHeader = $(`[data-feature-type="gain-subclass"]`);
+			const $dispClassTitle = $(`#class-name`);
 
 			if (this._state.isHideFeatures) {
 				if (this._isAnySubclassActive()) {
 					this._$wrpOutline.toggleClass("hidden", false);
-					this._$trNoContent.toggleClass("hidden", true);
+					this._$divNoContent.toggleClass("hidden", true);
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
 				} else {
+					$dispClassTitle.toggleClass('hidden', !this._state.isShowFluff)
 					this._$wrpOutline.toggleClass("hidden", true);
-					this._$trNoContent.toggleClass("hidden", false);
+					this._$divNoContent.toggleClass("hidden", false);
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", true);
 				}
 			} else {
+				$dispClassTitle.toggleClass('hidden', false)
 				this._$wrpOutline.toggleClass("hidden", false);
-				this._$trNoContent.toggleClass("hidden", true);
+				this._$divNoContent.toggleClass("hidden", true);
 				$dispClassFeatures.toggleClass("hidden", false);
 				$dispFeaturesSubclassHeader.toggleClass("hidden", false);
 			}
@@ -641,136 +784,196 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		this._handleFilterChange(false);
+		this._handleFeatFilterChange();
+	};
+
+	_isAnySubclassActive() {
+		return !!this._getActiveSubclasses().length;
 	}
 
-	_isAnySubclassActive () { return !!this._getActiveSubclasses().length; }
-
-	_getActiveSubclasses (asStateKeys) {
-		const cls = this.activeClass;
-		return cls.subclasses
+	_getActiveSubclasses(asStateKeys) {
+		return this.activeClass.subclasses
 			.filter(sc => this._state[UrlUtil.getStateKeySubclass(sc)])
 			.map(sc => asStateKeys ? UrlUtil.getStateKeySubclass(sc) : sc);
 	}
 
-	_render_renderClassTable () {
-		const $wrpTblClass = $(`#classtable`).empty();
+	_render_renderClass() {
+		const $classStats = $(`#classesstats`).empty();
+		const cls = this.activeClass;
+
+		const renderer = Renderer.get().resetHeaderIndex();
+
+		const statSidebar = Parser.initialProficienciesToFull(cls.initialProficiencies)
+		const className = {
+			type: 'pf2-h1',
+			name: cls.name
+		};
+		const flavor = {
+			type: 'pf2-h1-flavor',
+			entries: cls.flavor
+		};
+		const keyAbility = {
+			type: "pf2-key-ability",
+			ability: [
+				cls.keyAbility,
+				`At 1st level, your class gives you an ability boost to ${cls.keyAbility}.`
+			],
+			hp: [
+				`${cls.HP} plus your Constitution Modifier`,
+				"You increase your maximum number of HP by this number at 1st level and every level thereafter."
+			]
+		};
+		const fluffStack = [''];
+		renderer.recursiveRender(cls.fluff, fluffStack, {depth: 1}, {prefix: '<p class="pf2-p">', suffix: '</p>'})
+
+		$$`<div id="class-name">${renderer.render(className)}</div>
+		<div class="pf2-fluff">${renderer.render(flavor)}</div>
+		<div data-feature-type="class"><div class="pf2-sidebar--class">${renderer.render(statSidebar)}</div></div>
+		<div data-feature-type="class">${renderer.render(keyAbility)}</div>
+		<div class="pf2-fluff">${fluffStack.join('')}</div>
+		<div data-feature-type="class" id="advancements"></div>
+		`.appendTo($classStats);
+
+		cls.classFeatures.forEach((lvlFeatures, ixLvl) => {
+			lvlFeatures.forEach((feature, ixFeature) => {
+				const $divClassFeature = $(`<div data-scroll-id="${ixLvl}-${ixFeature}" data-feature-type="class" class="${feature.gainSubclassFeature ? "cls-main__gain-sc-feature" : ""} cls-main__linked-titles"></div>`)
+					.fastSetHtml(Renderer.get().render({
+						type: "pf2-h3",
+						name: feature.name,
+						entries: feature.entries,
+						level: ixLvl + 1
+					}))
+					.appendTo($classStats)
+
+				let ixScLvl = 0;
+				if (feature.gainSubclassFeature) {
+					$divClassFeature.attr("data-feature-type", "gain-subclass");
+					cls.subclasses.filter(it => it.type === feature.subclasses).forEach(sc => {
+						const scLvlFeatures = sc.subclassFeatures[ixScLvl];
+						if (!scLvlFeatures) return;
+
+						scLvlFeatures.forEach((scFeature) => {
+							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
+							const toRender = ptSources && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
+							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
+
+							const $divSubclassFeature = $(`<div class="cls-main__sc-feature" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}"></div>`)
+								.fastSetHtml(Renderer.get().render(toRender.entries))
+								.appendTo($classStats);
+						});
+					});
+
+					ixScLvl++;
+				}
+			});
+		});
+
+		this._$divNoContent = ClassesPage._render_$getNoContent().appendTo($classStats);
+
+		$classStats.show()
+	};
+
+	_render_renderClassAdvancementTable() {
+		const $wrpTblClass = $(`#advancements`).empty();
 		const cls = this.activeClass;
 
 		Renderer.get().resetHeaderIndex();
-
-		const $tblGroupHeaders = [];
-		const $tblHeaders = [];
-
-		const renderTableGroupHeader = (tableGroup, stateKey) => {
-			// Render titles (top section)
-			let $thGroupHeader;
-			if (tableGroup.title) {
-				$thGroupHeader = $(`<th class="cls-tbl__col-group" colspan="${tableGroup.colLabels.length}">${tableGroup.title}</th>`);
-			} else {
-				// if there's no title, add a spacer
-				$thGroupHeader = $(`<th colspan="${tableGroup.colLabels.length}"/>`);
-			}
-			$tblGroupHeaders.push($thGroupHeader);
-
-			// Render column headers (bottom section)
-			const $tblHeadersGroup = [];
-			tableGroup.colLabels.forEach(lbl => {
-				const $tblHeader = $(`<th class="cls-tbl__col-generic-center"><div class="cls__squash_header"/></th>`)
-					.fastSetHtml(Renderer.get().render(lbl));
-				$tblHeadersGroup.push($tblHeader);
-				$tblHeaders.push($tblHeader);
-			});
-
-			// If there is a state key, this is a subclass table group, and may therefore need to be hidden
-			if (!stateKey) return;
-			const hkShowHide = () => {
-				$thGroupHeader.toggleClass("hidden", !this._state[stateKey]);
-				$tblHeadersGroup.forEach($tblHeader => $tblHeader.toggleClass("hidden", !this._state[stateKey]))
-			};
-			this._addHookBase(stateKey, hkShowHide);
-			MiscUtil.pDefer(hkShowHide);
-		};
-
-		if (cls.classTableGroups) {
-			cls.classTableGroups.forEach(tableGroup => renderTableGroupHeader(tableGroup));
+		for (let i = 0; i < 20; i++) {
+			if (!cls.classFeatures[i]) cls.classFeatures[i] = []
 		}
-
-		cls.subclasses.forEach(sc => {
-			if (!sc.subclassTableGroups) return;
-			const stateKey = UrlUtil.getStateKeySubclass(sc);
-			sc.subclassTableGroups.forEach(tableGroup => renderTableGroupHeader(tableGroup, stateKey));
-		});
-
 		const metasTblRows = cls.classFeatures.map((lvlFeatures, ixLvl) => {
-			const pb = Math.ceil((ixLvl + 1) / 4) + 1;
-
 			const lvlFeaturesFilt = lvlFeatures
 				.filter(it => it.name && it.type !== "inset"); // don't add inset entry names to class table
+			Object.keys(cls.advancement).forEach(key => {
+				if (cls.advancement[key].includes(ixLvl + 1)) lvlFeaturesFilt.push(key)
+			});
 			const metasFeatureLinks = lvlFeaturesFilt
 				.map((it, ixFeature) => {
 					const featureId = `${ixLvl}-${ixFeature}`;
 
-					const $lnk = $(`<a>${it.name}</a>`)
-						.click(() => {
-							this._lastScrollFeature = null;
-							this._state.feature = null;
-							this._state.feature = featureId;
-						});
+					let $lnk = null;
+					let name = null;
+					let source = null;
 
-					const hkSetHref = () => {
-						// defer this for performance
-						setTimeout(() => {
-							// these will modify this._state.feature when clicked
-							const curState = MiscUtil.copy(this.__state);
-							curState.feature = featureId;
-							const href = `#${this._getHashState({state: curState})}`;
-							$lnk.attr("href", href);
-						}, 5);
-					};
-					this._addHookAll("state", hkSetHref);
-					hkSetHref();
+					if (it instanceof Object) {
+						$lnk = $(`<a>${it.name.toLowerCase()}</a>`)
+							.click(() => {
+								this._lastScrollFeature = null;
+								this._state.feature = null;
+								this._state.feature = featureId;
+							});
+						name = it.name;
+						source = it.source;
+
+						const hkSetHref = () => {
+							// defer this for performance
+							setTimeout(() => {
+								// these will modify this._state.feature when clicked
+								const curState = MiscUtil.copy(this.__state);
+								curState.feature = featureId;
+								const href = `#${this._getHashState({state: curState})}`;
+								$lnk.attr("href", href);
+							}, 5);
+						};
+						this._addHookAll("state", hkSetHref);
+						hkSetHref();
+
+					} else {
+						switch (it) {
+							case "classFeats": {
+								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`);
+								name = 'class feat';
+								source = this.activeClass.source;
+								break;
+							}
+							case "skillFeats": {
+								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1">skill feat</a>`)
+								name = 'skill feat';
+								source = this.activeClass.source;
+								break;
+							}
+							case "generalFeats": {
+								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`)
+								name = 'general feat';
+								source = this.activeClass.source;
+								break;
+							}
+							case "ancestryFeats": {
+								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`)
+								name = 'ancestry feat';
+								source = this.activeClass.source;
+								break;
+							}
+							case "skillIncrease": {
+								$lnk = $(`<span>skill increase</span>`)
+								name = 'skill increase';
+								source = this.activeClass.source;
+								break;
+							}
+							case "abilityBoosts": {
+								$lnk = $(`<span>ability boosts</span>`)
+								name = 'ability boosts';
+								source = this.activeClass.source;
+								break;
+							}
+							default:
+								throw new Error(`Key ${it} not implemented.`)
+						}
+					}
 
 					// Make a dummy for the last item
-					const $dispComma = ixFeature === lvlFeaturesFilt.length - 1 ? $(`<span/>`) : $(`<span class="mr-1">,</span>`);
+					const $dispComma = $(`<span class="mr-1">,</span>`);
 					return {
-						$wrpLink: $$`<div class="inline-block">${$lnk}${$dispComma}</div>`,
+						name,
+						$wrpLink: $$`<span class="inline-block">${$lnk}${$dispComma}</span>`,
 						$dispComma,
-						source: it.source,
+						source,
 						isHidden: false,
 					};
 				});
-
-			const $ptTableGroups = [];
-
-			const renderTableGroupRow = (tableGroup, stateKey) => {
-				const row = tableGroup.rows[ixLvl] || [];
-				const $cells = row.map(cell => $(`<td class="cls-tbl__col-generic-center"/>`).fastSetHtml(cell === 0 ? "\u2014" : Renderer.get().render(cell)));
-				$ptTableGroups.push(...$cells);
-
-				// If there is a state key, this is a subclass table group, and may therefore need to be hidden
-				if (!stateKey) return;
-				const hkShowHide = () => $cells.forEach($cell => $cell.toggleClass("hidden", !this._state[stateKey]));
-				this._addHookBase(stateKey, hkShowHide);
-				MiscUtil.pDefer(hkShowHide); // saves ~10ms
-			};
-
-			if (cls.classTableGroups) {
-				cls.classTableGroups.forEach(tableGroup => renderTableGroupRow(tableGroup));
-			}
-
-			cls.subclasses.forEach(sc => {
-				if (!sc.subclassTableGroups) return;
-				const stateKey = UrlUtil.getStateKeySubclass(sc);
-				sc.subclassTableGroups.forEach(tableGroup => renderTableGroupRow(tableGroup, stateKey));
-			});
-
 			return {
-				$row: $$`<tr class="cls-tbl__stripe-odd">
-					<td class="cls-tbl__col-level">${Parser.getOrdinalForm(ixLvl + 1)}</td>
-					<td class="cls-tbl__col-prof-bonus">+${pb}</td>
-					<td>${metasFeatureLinks.length ? metasFeatureLinks.map(it => it.$wrpLink) : `\u2014`}</td>
-					${$ptTableGroups}
-				</tr>`,
+				$row: $$`<div class="pf2-table__entry ${ixLvl % 2 ? 'odd' : ''}">${ixLvl + 1}</div>
+					<div class="pf2-table__entry ${ixLvl % 2 ? 'odd' : ''}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
 				metasFeatureLinks,
 			}
 		});
@@ -791,242 +994,49 @@ class ClassesPage extends BaseComponent {
 			});
 		};
 
-		$$`<table class="cls-tbl shadow-big w-100 mb-2">
-			<tbody>
-			<tr><th class="border" colspan="15"></th></tr>
-			<tr><th class="cls-tbl__disp-name" colspan="15">${cls.name}</th></tr>
-			<tr>
-				<th colspan="3"/> <!-- spacer to match the 3 default cols (level, prof, features) -->
-				${$tblGroupHeaders}
-			</tr>
-			<tr>
-				<th class="cls-tbl__col-level">Level</th>
-				<th class="cls-tbl__col-prof-bonus">Proficiency Bonus</th>
-				<th>Features</th>
-				${$tblHeaders}
-			</tr>
+		$$`<div class="pf2-table pf2-table--advancements">
+			<div class="pf2-table__label">Your</div>
+			<div class="pf2-table__label"></div>
+			<div class="pf2-table__label">Level</div>
+			<div class="pf2-table__label">Class Features</div>
 			${metasTblRows.map(it => it.$row)}
-			<tr><th class="border" colspan="15"></th></tr>
-			</tbody>
-		</table>`.appendTo($wrpTblClass);
+		</div>`.appendTo($wrpTblClass);
 		$wrpTblClass.show();
 	}
 
-	_render_renderSidebar () {
-		const $wrpSidebar = $(`#statsprof`).empty();
-		const cls = this.activeClass;
-
-		const $btnToggleSidebar = $(`<div class="cls-side__btn-toggle">[\u2012]</div>`)
-			.click(() => this._state.isHideSidebar = !this._state.isHideSidebar);
-		const hkSidebarHidden = () => {
-			$btnToggleSidebar.text(this._state.isHideSidebar ? `[+]` : `[\u2012]`);
-			$(`.cls-side__show-hide`).toggle(!this._state.isHideSidebar);
-		};
-		this._addHookBase("isHideSidebar", hkSidebarHidden);
-		// (call the hook later)
-
-		// region Requirements
-		const $getRenderedRequirements = (requirements, intro = null) => {
-			const renderPart = (obj, joiner = ", ") => Object.keys(obj).filter(k => Parser.ABIL_ABVS.includes(k)).sort(SortUtil.ascSortAtts).map(k => `${Parser.attAbvToFull(k)} ${obj[k]}`).join(joiner);
-			const orPart = requirements.or ? requirements.or.map(obj => renderPart(obj, " or ")).join("; ") : "";
-			const basePart = renderPart(requirements);
-			const abilityPart = [orPart, basePart].filter(Boolean).join("; ");
-
-			const allEntries = [
-				abilityPart ? `{@b Ability Score Minimum:} ${abilityPart}` : null,
-				...requirements.entries || [],
-			].filter(Boolean);
-
-			return $$`<div>${Renderer.get().setFirstSection(true).render({type: "section", entries: allEntries})}</div>`
-		};
-
-		let $ptRequirements = null;
-		if (cls.requirements) {
-			const $ptPrereq = $getRenderedRequirements(cls.requirements);
-
-			$ptRequirements = $$`<tr class="cls-side__show-hide">
-				<td class="cls-side__section" colspan="6">
-					<h5 class="cls-side__section-head">Prerequisites</h5>
-					${$ptPrereq}
-				</td>
-			</tr>`;
-		}
-		// endregion
-
-		// region HP/hit dice
-		let $ptHp = null;
-		if (cls.hd) {
-			const hdEntry = {toRoll: `${cls.hd.number}d${cls.hd.faces}`, rollable: true};
-
-			$ptHp = `<tr class="cls-side__show-hide">
-				<td colspan="6" class="cls-side__section">
-					<h5 class="cls-side__section-head">Hit Points</h5>
-					<div><strong>Hit Dice:</strong> ${Renderer.getEntryDice(hdEntry, "Hit die")}</div>
-					<div><strong>Hit Points at 1st Level:</strong> ${cls.hd.number * cls.hd.faces} + your Constitution modifier</div>
-					<div><strong>Hit Points at Higher Levels:</strong> ${Renderer.getEntryDice(hdEntry, "Hit die")} (or ${((cls.hd.number * cls.hd.faces) / 2 + 1)}) + your Constitution modifier per ${cls.name} level after 1st</div>
-				</td>
-			</tr>`
-		}
-		// endregion
-
-		// region Starting proficiencies
-		const renderArmorProfs = armorProfs => armorProfs.map(a => a.full ? a.full : a === "light" || a === "medium" || a === "heavy" ? `${a} armor` : a).join(", ");
-		const renderWeaponsProfs = weaponProfs => weaponProfs.map(w => w === "simple" || w === "martial" ? `${w} weapons` : w).join(", ");
-		const renderToolProfs = toolProfs => toolProfs.map(it => Renderer.get().render(it)).join(", ")
-		const renderSkillsProfs = skills => `${Parser.skillProficienciesToFull(skills).uppercaseFirst()}.`;
-
-		const profs = cls.startingProficiencies || {};
-		// endregion
-
-		// region Starting equipment
-		let $ptEquipment = null;
-		if (cls.startingEquipment) {
-			const equip = cls.startingEquipment;
-			const rendered = [
-				equip.additionalFromBackground ? "<p>You start with the following items, plus anything provided by your background.</p>" : "",
-				equip.default && equip.default.length ? `<ul class="pl-4"><li>${equip.default.map(it => Renderer.get().render(it)).join("</li><li>")}</ul>` : "",
-				equip.goldAlternative != null ? `<p>Alternatively, you may start with ${Renderer.get().render(equip.goldAlternative)} gp to buy your own equipment.</p>` : "",
-			].filter(Boolean).join("");
-			const $dispRendered = $(`<div/>`);
-
-			$ptEquipment = $$`<tr class="cls-side__show-hide">
-				<td class="cls-side__section" colspan="6">
-					<h5 class="cls-side__section-head">Starting Equipment</h5>
-					<div>${$dispRendered}</div>
-				</td>
-			</tr>`;
-			$dispRendered.fastSetHtml(rendered);
-		}
-		// endregion
-
-		// region multiclassing
-		let $ptMulticlassing = null;
-		if (cls.multiclassing) {
-			const mc = cls.multiclassing;
-
-			const htmlMCcPrereqPreText = mc.requirements || mc.requirementsSpecial ? `<div>To qualify for a new class, you must meet the ${mc.requirementsSpecial ? "" : "ability score "}prerequisites for both your current class and your new one.</div>` : "";
-			let $ptMcPrereq = null;
-			if (mc.requirements) {
-				$ptMcPrereq = $getRenderedRequirements(mc.requirements, htmlMCcPrereqPreText);
-			}
-
-			let $ptMcPrereqSpecial = null;
-			if (mc.requirementsSpecial) {
-				$ptMcPrereqSpecial = $$`<div>
-					${mc.requirements ? "" : htmlMCcPrereqPreText}
-					<b>${mc.requirements ? "Other " : ""}Prerequisites:</b> ${Renderer.get().render(mc.requirementsSpecial || "")}
-				</div>`
-			}
-
-			let $ptMcProfsIntro = null;
-			let $ptMcProfsArmor = null;
-			let $ptMcProfsWeapons = null;
-			let $ptMcProfsTools = null;
-			let $ptMcProfsSkills = null;
-			if (mc.proficienciesGained) {
-				$ptMcProfsIntro = $(`<div ${mc.requirements || mc.requirementsSpecial ? `class="cls-side__mc-prof-intro--requirements"` : ""}>When you gain a level in a class other than your first, you gain only some of that class's starting proficiencies.</div>`);
-
-				if (mc.proficienciesGained.armor) $ptMcProfsArmor = $(`<div><b>Armor:</b> ${renderArmorProfs(mc.proficienciesGained.armor)}</div>`);
-
-				if (mc.proficienciesGained.weapons) $ptMcProfsWeapons = $(`<div><b>Weapons:</b> ${renderWeaponsProfs(mc.proficienciesGained.weapons)}</div>`);
-
-				if (mc.proficienciesGained.tools) $ptMcProfsTools = $(`<div><b>Tools:</b> ${renderToolProfs(mc.proficienciesGained.tools)}</div>`);
-
-				if (mc.proficienciesGained.skills) $ptMcProfsSkills = $(`<div><b>Skills:</b> ${renderSkillsProfs(mc.proficienciesGained.skills)}</div>`);
-			}
-
-			let $ptMcEntries = null;
-			if (mc.entries) {
-				$ptMcEntries = $(`<div></div>`).fastSetHtml(Renderer.get().setFirstSection(true).render({type: "section", entries: mc.entries}));
-			}
-
-			$ptMulticlassing = $$`<tr class="cls-side__show-hide">
-				<td class="cls-side__section" colspan="6">
-					<h5 class="cls-side__section-head">Multiclassing</h5>
-					${$ptMcPrereq}
-					${$ptMcPrereqSpecial}
-					${$ptMcEntries}
-					${$ptMcProfsIntro}
-					${$ptMcProfsArmor}
-					${$ptMcProfsWeapons}
-					${$ptMcProfsTools}
-					${$ptMcProfsSkills}
-				</td>
-			</tr>`;
-		}
-		// endregion
-
-		$$`<table class="stats shadow-big">
-			<tr><th class="border" colspan="6"></th></tr>
-			<tr><th colspan="6"><div class="split-v-center pr-1"><div class="cls-side__name">${cls.name}</div>${$btnToggleSidebar}</div></th></tr>
-			${cls.authors ? `<tr><th colspan="6">By ${cls.authors.join(", ")}</th></tr>` : ""}
-
-			${$ptRequirements}
-
-			${$ptHp}
-
-			<tr class="cls-side__show-hide">
-				<td colspan="6" class="cls-side__section">
-					<h5 class="cls-side__section-head">Proficiencies</h5>
-					<div><b>Armor:</b> <span>${profs.armor ? renderArmorProfs(profs.armor) : "none"}</span></div>
-					<div><b>Weapons:</b> <span>${profs.weapons ? renderWeaponsProfs(profs.weapons) : "none"}</span></div>
-					<div><b>Tools:</b> <span>${profs.tools ? renderToolProfs(profs.tools) : "none"}</span></div>
-					<div><b>Saving Throws:</b> <span>${cls.proficiency ? cls.proficiency.map(p => Parser.attAbvToFull(p)).join(", ") : "none"}</span></div>
-					<div><b>Skills:</b> <span>${profs.skills ? renderSkillsProfs(profs.skills) : "none"}</span></div>
-				</td>
-			</tr>
-
-			${$ptEquipment}
-
-			${$ptMulticlassing}
-
-			<tr><th class="border" colspan="6"></th></tr>
-		</table>`.appendTo($wrpSidebar);
-		$wrpSidebar.show();
-
-		MiscUtil.pDefer(hkSidebarHidden);
-	}
-
-	async _render_pRenderSubclassTabs () {
+	async _render_pRenderSubclassTabs() {
 		const $wrp = $(`#subclasstabs`).empty();
 
 		this._render_renderSubclassPrimaryControls($wrp);
 		await this._render_pInitSubclassControls($wrp);
 	}
 
-	_render_renderSubclassPrimaryControls ($wrp) {
+	_render_renderSubclassPrimaryControls($wrp) {
 		const cls = this.activeClass;
 
 		// region features/fluff
-		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {text: "Features", activeClass: "cls__btn-cf--active", isInverted: true}).title("Toggle Class Features");
-
-		const $btnToggleFeatureVariants = $(`<button class="btn btn-xs btn-default" title="Toggle Class Feature Options/Variants">Variants</button>`)
-			.click(() => {
-				const f = this.filterBox.getValues();
-				const isClassFeatureVariantsDisplayed = f[this._pageFilter.optionsFilter.header].isClassFeatureVariant;
-				this._pageFilter.optionsFilter.setValue("isClassFeatureVariant", !isClassFeatureVariantsDisplayed);
-				this._pageFilter.filterBox.fireChangeEvent();
-			});
-		const hkUpdateBtnFeatureVariants = () => {
-			const f = this.filterBox.getValues();
-			const isClassFeatureVariantsDisplayed = f[this._pageFilter.optionsFilter.header].isClassFeatureVariant;
-			$btnToggleFeatureVariants.toggleClass("active", isClassFeatureVariantsDisplayed);
-		};
-		this.filterBox.on(FilterBox.EVNT_VALCHANGE, () => hkUpdateBtnFeatureVariants());
-		hkUpdateBtnFeatureVariants();
+		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
+			text: "Features",
+			isInverted: true
+		}).title("Toggle Class Features");
 
 		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Class Info");
 
-		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFeatureVariants}${$btnToggleFluff}</div>`.appendTo($wrp);
+		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
 		// endregion
 
 		// region subclasses
-		const $wrpScTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100"/>`).appendTo($wrp);
-		this._listSubclass = new List({$wrpList: $wrpScTabs, isUseJquery: true, fnSort: ClassesPage._fnSortSubclassFilterItems});
+		const $wrpHTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100"/>`).appendTo($wrp);
+		this._listSubclass = new List({
+			$wrpList: $wrpHTabs,
+			isUseJquery: true,
+			fnSort: ClassesPage._fnSortSubclassFilterItems
+		});
+		const subclasses = this.activeClass.subclasses;
 
 		this._ixDataSubclass = 0;
-		for (; this._ixDataSubclass < cls.subclasses.length; ++this._ixDataSubclass) {
-			const sc = cls.subclasses[this._ixDataSubclass];
+		for (; this._ixDataSubclass < subclasses.length; ++this._ixDataSubclass) {
+			const sc = subclasses[this._ixDataSubclass];
 			const listItem = this._render_getSubclassTab(cls, sc, this._ixDataSubclass);
 			if (!listItem) continue;
 			this._listSubclass.addItem(listItem);
@@ -1054,21 +1064,20 @@ class ClassesPage extends BaseComponent {
 		// endregion
 	}
 
-	_doSelectAllSubclasses () {
-		const cls = this.activeClass;
-		const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
+	_doSelectAllSubclasses() {
+		const allStateKeys = this.activeClass.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 
 		this._pageFilter.sourceFilter.doSetPillsClear();
 		this.filterBox.fireChangeEvent();
 		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
-	async _render_pInitSubclassControls ($wrp) {
+	async _render_pInitSubclassControls($wrp) {
 		const cls = this.activeClass;
 
 		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; CTRL to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
 			.click(evt => {
-				const allStateKeys = cls.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
+				const allStateKeys = this._getActiveSubclasses().map(sc => UrlUtil.getStateKeySubclass(sc));
 				if (evt.shiftKey) {
 					this._doSelectAllSubclasses();
 				} else if (evt.ctrlKey || evt.metaKey) {
@@ -1090,10 +1099,10 @@ class ClassesPage extends BaseComponent {
 				}
 			});
 
+		// TODO: Option for Homebrew/Official filter?
 		const filterSets = [
 			{name: "View Official", subHashes: [], isClearSources: false},
-			{name: "View Most Recent", subHashes: [], isClearSources: true},
-			{name: "View All", subHashes: ["flstmiscellaneous:reprinted=0"], isClearSources: true},
+			{name: "View All", subHashes: [], isClearSources: true},
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
@@ -1138,17 +1147,21 @@ class ClassesPage extends BaseComponent {
 
 		const $btnShuffle = $(`<button title="Feeling Lucky?" class="btn btn-xs btn-default flex-1"><span class="glyphicon glyphicon-random"/></button>`)
 			.click(() => {
-				if (!this._listSubclass.visibleItems.length) return JqueryUtil.doToast({content: "No subclasses to choose from!", type: "warning"});
+				if (!this._listSubclass.visibleItems.length) return JqueryUtil.doToast({
+					content: "No subclasses to choose from!",
+					type: "warning"
+				});
 
 				const doDeselAll = () => this._listSubclass.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
 
-				const activeKeys = Object.keys(this._state).filter(it => it.startsWith("sub"));
-				const visibleActiveKeys = this._listSubclass.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
+				const visibleSubclasses = this._listSubclass.visibleItems.filter(it => it.values.stateKey)
+				const activeKeys = Object.keys(this._state).filter(it => this._state[it] && it.startsWith("sub"));
+				const visibleActiveKeys = visibleSubclasses.map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
 
-				// Avoid re-selecting the same option if there's only one selected
-				if (visibleActiveKeys.length === 1) {
+				// Avoid re-selecting the same option if there's only one selected, unless there is only one subclass total
+				if (visibleActiveKeys.length === 1 && visibleSubclasses.length !== 1) {
 					doDeselAll();
-					const options = this._listSubclass.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it.values.stateKey !== visibleActiveKeys[0]);
+					const options = this._listSubclass.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it !== visibleActiveKeys[0]);
 					this._state[RollerUtil.rollOnArray(options)] = true;
 				} else {
 					doDeselAll();
@@ -1163,7 +1176,7 @@ class ClassesPage extends BaseComponent {
 		</div>`.appendTo($wrp);
 	}
 
-	_handleSubclassFilterChange () {
+	_handleSubclassFilterChange() {
 		const f = this.filterBox.getValues();
 		const cls = this.activeClass;
 		this._listSubclass.filter(li => {
@@ -1171,13 +1184,12 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
-				li.data.entity._fMisc,
-				null,
+				cls._fMisc
 			);
 		});
 	}
 
-	_render_getSubclassTab (cls, sc, ix) {
+	_render_getSubclassTab(cls, sc, ix) {
 		const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source);
 
 		const stateKey = UrlUtil.getStateKeySubclass(sc);
@@ -1186,10 +1198,10 @@ class ClassesPage extends BaseComponent {
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispName = $(`<div title="${ClassesPage.getBtnTitleSubclass(sc)}"/>`);
+		const $dispName = $(`<div title="${sc.name.toTitleCase()}; Source: ${sc.source}"/>`);
 		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(sc.source)}">(${Parser.sourceJsonToAbv(sc.source)})</div>`);
 		const hkSourcesVisible = () => {
-			$dispName.text(this._state.isShowScSources ? ClassesPage.getBaseShortName(sc) : sc.shortName);
+			$dispName.text(sc.name);
 			$dispSource.toggleClass("hidden", !this._state.isShowScSources);
 		};
 		this._addHookBase("isShowScSources", hkSourcesVisible);
@@ -1215,7 +1227,6 @@ class ClassesPage extends BaseComponent {
 			sc.name,
 			{
 				source: sc.source,
-				shortName: sc.shortName,
 				stateKey,
 				mod,
 			},
@@ -1227,249 +1238,7 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	_trackOutlineFluffData (depthData) { this._outlineData.fluff = depthData; }
-
-	_trackOutlineCfData (ixLvl, ixFeature, depthData) {
-		((this._outlineData.classFeatures = (this._outlineData.classFeatures || []))[ixLvl] =
-			(this._outlineData.classFeatures[ixLvl] || []))[ixFeature] =
-			depthData;
-	}
-
-	_trackOutlineScData (stateKey, ixScLvl, ixScFeature, depthData) {
-		((this._outlineData[stateKey] = (this._outlineData[stateKey] || []))[ixScLvl] =
-			(this._outlineData[stateKey][ixScLvl] || []))[ixScFeature] =
-			depthData;
-	}
-
-	_render_renderOutline () {
-		this._$wrpOutline.empty();
-
-		const $dispShowHide = $(`<div class="cls-nav__disp-toggle"/>`);
-		const $wrpHeadInner = $$`<div class="cls-nav__head-inner split">
-			<div>Outline</div>
-			${$dispShowHide}
-		</div>`
-			.click(() => this._state.isHideOutline = !this._state.isHideOutline);
-
-		const $wrpHead = $$`<div class="cls-nav__head">
-			${$wrpHeadInner}
-			<hr class="cls-nav__hr">
-		</div>`.appendTo(this._$wrpOutline);
-		const $wrpBody = $(`<div class="nav-body"/>`).appendTo(this._$wrpOutline);
-
-		const hkShowHide = () => {
-			$wrpHead.toggleClass("cls-nav__head--active", !this._state.isHideOutline);
-			$wrpBody.toggleClass("hidden", !!this._state.isHideOutline);
-			$dispShowHide.toggleClass("cls-nav__disp-toggle--active", !this._state.isHideOutline);
-		};
-		this._addHookBase("isHideOutline", hkShowHide);
-		MiscUtil.pDefer(hkShowHide);
-
-		const _hkRender = async () => {
-			await this._pLock("render-outline");
-			$wrpBody.empty();
-			const filterValues = this.filterBox.getValues();
-
-			const makeItem = (depthData, additionalCssClasses) => {
-				// Skip inline entries
-				if (depthData.depth >= 2) return;
-				// Skip filtered sources
-				if (depthData.source && !this.filterBox.toDisplay(filterValues, depthData.source, [], null)) return;
-
-				// If there was not a class specified, then this is not a subclass item, so we can color it with grellow as required
-				additionalCssClasses = additionalCssClasses || (depthData.source && SourceUtil.isNonstandardSource(depthData.source) ? `cls-nav__item--spicy` : "");
-				const displayDepth = Math.min(depthData.depth + 1, 2);
-				$(`<div class="cls-nav__item cls-nav__item--depth-${displayDepth} ${additionalCssClasses}">${depthData.name}</div>`)
-					.click(() => {
-						const $it = $(`[data-title-index="${depthData.ixHeader}"]`);
-						if ($it.get()[0]) $it.get()[0].scrollIntoView();
-					})
-					.appendTo($wrpBody);
-			};
-
-			if (this._state.isShowFluff && this._outlineData.fluff) {
-				this._outlineData.fluff.filter(it => it.name).forEach(it => makeItem(it));
-			}
-
-			if (this._state.isHideFeatures && !this._isAnySubclassActive()) {
-				this._unlock("render-outline");
-				return;
-			}
-
-			let ixScLvl = 0;
-			this.activeClass.classFeatures.forEach((lvlFeatures, ixLvl) => {
-				lvlFeatures.forEach((feature, ixFeature) => {
-					const depthData = MiscUtil.get(this._outlineData.classFeatures, ixLvl, ixFeature);
-
-					if (!this._state.isHideFeatures && depthData) {
-						depthData.filter(it => it.name).forEach(it => {
-							// Workaround to match the renderer's output/CSS rule logic
-							if (it.isClassFeatureVariant) {
-								if (SourceUtil.isNonstandardSource(it.source)) makeItem(it, `cls-nav__item--spicy`);
-								else makeItem(it, `cls-nav__item--variant-feature`);
-							} else makeItem(it);
-						});
-					}
-
-					const activeScStateKeys = this._getActiveSubclasses(true);
-					if (feature.gainSubclassFeature) {
-						if (activeScStateKeys.length) {
-							// If we didn't render the intro for gaining a subclass feature, do so now
-							if (this._state.isHideFeatures && depthData) {
-								depthData.filter(it => it.name).forEach(it => makeItem(it));
-							}
-
-							this.activeClass.subclasses.forEach(sc => {
-								const stateKey = UrlUtil.getStateKeySubclass(sc);
-
-								if (!activeScStateKeys.includes(stateKey)) return;
-
-								const scLvlFeatures = sc.subclassFeatures[ixScLvl];
-								if (!scLvlFeatures) return;
-
-								const mod = ClassesPage.getSubclassCssMod(this.activeClass, sc);
-								const modClassBase = `cls-nav__item--sc-${mod}`;
-
-								scLvlFeatures.forEach((scFeature, ixScFeature) => {
-									const depthData = MiscUtil.get(this._outlineData, stateKey, ixScLvl, ixScFeature);
-									depthData.filter(it => it.name).map(it => {
-										// Workaround to match the renderer's output/CSS rule logic
-										let modClass = modClassBase;
-										if (it.isClassFeatureVariant) {
-											if (SourceUtil.isNonstandardSource(it.source)) modClass += ` cls-nav__item--spicy`;
-											else modClass += ` cls-nav__item--variant-feature`;
-										}
-
-										makeItem(it, modClass)
-									});
-								});
-							});
-						}
-
-						ixScLvl++;
-					}
-				});
-			});
-
-			this._unlock("render-outline");
-		};
-		const hkRender = MiscUtil.debounce(_hkRender, 50);
-		this._addHookBase("isShowFluff", hkRender);
-		this._addHookBase("isHideFeatures", hkRender);
-		this.activeClass.subclasses.forEach(sc => {
-			const stateKey = UrlUtil.getStateKeySubclass(sc);
-			this._addHookBase(stateKey, hkRender);
-		});
-		this._fnOutlineHandleFilterChange = hkRender;
-		MiscUtil.pDefer(hkRender);
-	}
-
-	_render_renderAltViews () { // "Hitler was right"
-		const cls = this.activeClass;
-
-		// region subclass comparison
-		this._subclassComparisonView = new BookModeView({
-			stateKey: "isViewActiveScComp",
-			state: this._state,
-			$openBtn: $(`#btn-comparemode`),
-			noneVisibleMsg: "Please select some subclasses first",
-			pageTitle: "Subclass Comparison",
-			isFlex: true,
-			popTblGetNumShown: $wrpContent => {
-				$wrpContent.removeClass("bkmv__wrp").addClass("h-100").addClass("flex-col");
-				$wrpContent.parent().addClass("stats").addClass("stats--book");
-
-				const renderStack = [];
-				const numScLvls = cls.subclasses[0].subclassFeatures.length;
-
-				const filterValues = this._pageFilter.filterBox.getValues();
-				const walker = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST, isAllowDeleteObjects: true});
-
-				for (let ixLevel = 0; ixLevel < numScLvls; ++ixLevel) {
-					const isLastRow = ixLevel === numScLvls - 1;
-
-					renderStack.push(`<div class="flex ${isLastRow ? "mb-4" : ""}">`);
-					cls.subclasses
-						.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
-						.forEach((sc, ixSubclass) => {
-							const mod = ClassesPage.getSubclassCssMod(cls, sc);
-							renderStack.push(`<div class="mx-2 no-shrink cls-comp__wrp-features cls-main__sc-feature ${mod ? `cls-main__sc-feature--${mod}` : ""}" data-cls-comp-sc-ix="${ixSubclass}">`);
-							sc.subclassFeatures[ixLevel].forEach(f => {
-								const cpy = MiscUtil.copy(f);
-
-								// Note that this won't affect the root feature, only those nested inside it. The root
-								//   feature is filtered out elsewhere.
-								walker.walk(
-									cpy,
-									{
-										object: (obj) => {
-											if (!obj.source) return obj;
-											const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
-											if (this._pageFilter.filterBox.toDisplay(filterValues, obj.source, [], fText)) return obj;
-											return undefined; // If it shouldn't be displayed, delete it
-										},
-									},
-								)
-
-								Renderer.get().recursiveRender(cpy, renderStack);
-							});
-							renderStack.push(`</div>`);
-						});
-					renderStack.push(`</div>`);
-
-					if (!isLastRow) renderStack.push(`<hr class="hr-2 mt-3 cls-comp__hr-level"/>`);
-				}
-				$wrpContent.append(renderStack.join(""));
-
-				let numShown = 0;
-				cls.subclasses
-					.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
-					.forEach((sc, i) => {
-						const key = UrlUtil.getStateKeySubclass(sc);
-
-						if (!this._state[key]) {
-							$wrpContent.find(`[data-cls-comp-sc-ix="${i}"]`).hide();
-						} else numShown++;
-					});
-
-				if (!numShown) $wrpContent.find(".cls-comp__hr-level").addClass("hidden");
-
-				return numShown;
-			},
-		});
-
-		const hkToggleScOverlay = async () => {
-			await this._pLock("sc-comparison ");
-
-			if (this._state.isViewActiveScComp) await this._subclassComparisonView.pOpen();
-			else {
-				this._subclassComparisonView.teardown();
-				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
-			}
-
-			this._unlock("sc-comparison ");
-		};
-		this._addHookBase("isViewActiveScComp", hkToggleScOverlay);
-		hkToggleScOverlay();
-		// endregion
-
-		// region book view
-		if (this._classBookView) this._classBookView.cleanup();
-		this._classBookView = new ClassesPage.ClassBookView(this);
-
-		const hkToggleBookOverlay = () => {
-			if (this._state.isViewActiveBook) this._classBookView.open();
-			else {
-				this._classBookView.teardown();
-				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
-			}
-		};
-		this._addHookBase("isViewActiveBook", hkToggleBookOverlay);
-		hkToggleBookOverlay();
-		// endregion
-	}
-
-	static getSubclassCssMod (cls, sc) {
+	static getSubclassCssMod(cls, sc) {
 		if (sc.source !== cls.source) {
 			return BrewUtil.hasSourceJson(sc.source)
 				? "brew"
@@ -1480,292 +1249,28 @@ class ClassesPage extends BaseComponent {
 		return "fresh";
 	}
 
-	_render_renderClassContent () {
-		const $content = $(`#pagecontent`).empty();
-		const cls = this.activeClass;
-		this._outlineData = {};
-
-		// Add extra classses to our features as we render them
-		Renderer.get().setFnGetStyleClasses(UrlUtil.PG_CLASSES, (entry) => {
-			if (!entry.source) return null;
-			if (!entry.isClassFeatureVariant) return null;
-			if (!SourceUtil.isNonstandardSource(entry.source) && entry.isClassFeatureVariant) return ["cls__variant-feature"];
-			return null;
-		});
-
-		$content.append(Renderer.utils.getBorderTr());
-
-		if (cls.fluff) {
-			const depthArr = [];
-			let stack = "";
-			Renderer.get().setFirstSection(true);
-
-			cls.fluff.forEach((f, i) => {
-				const cpy = MiscUtil.copy(f);
-
-				if (typeof cpy !== "string") {
-					if (f.source && f.source !== cls.source && cpy.entries) cpy.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${Renderer.utils.isDisplayPage(f.page) ? `, page ${f.page}` : ""}.}`);
-				}
-
-				stack += Renderer.get().setDepthTracker(depthArr).render(cpy);
-			});
-
-			const $trFluff = $(`<tr class="cls-main__cls-fluff"><td colspan="6"/></tr>`).fastSetHtml(stack).appendTo($content);
-			this._trackOutlineFluffData(depthArr);
-		}
-
-		let ixScLvl = 0;
-		cls.classFeatures.forEach((lvlFeatures, ixLvl) => {
-			lvlFeatures.forEach((feature, ixFeature) => {
-				const depthArr = [];
-				const $trClassFeature = $(`<tr data-scroll-id="${ixLvl}-${ixFeature}" data-feature-type="class" class="${feature.gainSubclassFeature ? "cls-main__gain-sc-feature" : ""} cls-main__linked-titles"><td colspan="6"/></tr>`)
-					.fastSetHtml(Renderer.get().setDepthTracker(depthArr, "isClassFeatureVariant").render(feature))
-					.appendTo($content);
-				this._trackOutlineCfData(ixLvl, ixFeature, depthArr);
-
-				if (feature.gainSubclassFeature) {
-					$trClassFeature.attr("data-feature-type", "gain-subclass");
-					cls.subclasses.forEach(sc => {
-						const stateKey = UrlUtil.getStateKeySubclass(sc);
-
-						// Add any extra coloring the subclass might require
-						const cssMod = `cls-main__sc-feature--${ClassesPage.getSubclassCssMod(cls, sc)}`;
-
-						const scLvlFeatures = sc.subclassFeatures[ixScLvl];
-						if (!scLvlFeatures) return;
-
-						scLvlFeatures.forEach((scFeature, ixScFeature) => {
-							const depthArr = [];
-
-							const ptDate = ixScLvl === 0 && SourceUtil.isNonstandardSource(sc.source) && Parser.sourceJsonToDate(sc.source)
-								? Renderer.get().render(`{@note This subclass was published on ${MiscUtil.dateToStr(new Date(Parser.sourceJsonToDate(sc.source)))}.}`)
-								: "";
-							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
-							const toRender = (ptDate || ptSources) && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
-							if (ptDate && toRender.entries) toRender.entries.unshift(ptDate);
-							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
-
-							const $trSubclassFeature = $(`<tr class="cls-main__sc-feature ${cssMod}" data-subclass-id="${UrlUtil.getStateKeySubclass(sc)}"><td colspan="6"/></tr>`)
-								.fastSetHtml(Renderer.get().setDepthTracker(depthArr, "isClassFeatureVariant").render(toRender))
-								.appendTo($content);
-
-							this._trackOutlineScData(stateKey, ixScLvl, ixScFeature, depthArr);
-						});
-					});
-
-					ixScLvl++;
-				}
-			});
-		});
-
-		if (cls.otherSources) {
-			const text = Renderer.utils.getSourceAndPageHtml(cls);
-			const $trClassFeature = $(`<tr data-feature-type="class"><td colspan="6"/></tr>`)
-				.fastSetHtml(`<hr class="hr-1"><b>Class source:</b> ${text}`)
-				.appendTo($content);
-		}
-
-		this._$trNoContent = ClassesPage._render_$getTrNoContent().appendTo($content);
-
-		$content.append(Renderer.utils.getBorderTr());
+	_render_renderFeat() {
+		const $featStats = $(`#featstats`).empty();
+		const feat = this.activeFeat;
+		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
+		$featStats.show();
 	}
 
-	async pDeleteSubclassBrew (uniqueId, sc) {
-		sc.classSource = sc.classSource || SRC_PHB;
-		const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === sc.classSource.toLowerCase());
-
-		if (!cls) {
-			setTimeout(() => { throw new Error(`Could not find class "${sc.className}" with source "${sc.classSource}" to delete subclass "${sc.name}" from!`); })
-			return;
-		}
-
-		const ixSc = cls.subclasses.findIndex(it => it.uniqueId === uniqueId);
-		if (~ixSc) {
-			cls.subclasses.splice(ixSc, 1);
-			if (this._listSubclass) this._listSubclass.removeItemByData("uniqueId", uniqueId);
-			const stateKey = UrlUtil.getStateKeySubclass(sc);
-			this._state[stateKey] = false;
-		}
+	static _render_$getNoContent() {
+		return $(`<div class="pf2-h1-flavor text-center">Toggle a button to view class information</div>`)
 	}
 
-	static _render_$getTrNoContent () {
-		return $(`<tr class="cls-main__msg-no-content"><td colspan="6">Toggle a button to view class and subclass information</td></tr>`);
+	_getDefaultState() {
+		return MiscUtil.copy(ClassesPage._DEFAULT_STATE);
 	}
-
-	_getDefaultState () { return MiscUtil.copy(ClassesPage._DEFAULT_STATE); }
 }
-ClassesPage._SC_FILTER_NAMESPACE = "sctabs";
+
 ClassesPage._DEFAULT_STATE = {
 	feature: null,
-	isHideSidebar: false,
 	isHideFeatures: false,
 	isShowFluff: false,
 	isShowScSources: false,
-	isViewActiveScComp: false,
-	isViewActiveBook: false,
-	isHideOutline: false,
-	// N.b. ensure none of these start with the string "sub" as this prefix is used for subclass state keys e.g.
-	// `"sub Berserker": false`
 };
 
-ClassesPage.ClassBookView = class {
-	constructor (classPage) {
-		this._classPage = classPage;
-		this._parent = classPage.getPod();
-		this._bookViewActive = false;
-
-		this._hooks = {};
-
-		this._$body = null;
-		this._$wrpBook = null;
-
-		$(`#btn-readmode`).off("click").on("click", () => this._parent.set("isViewActiveBook", true));
-	}
-
-	cleanup () {
-		Object.entries(this._hooks).forEach(([prop, arr]) => {
-			arr.forEach(hk => this._parent.removeHook(prop, hk));
-		});
-	}
-
-	open () {
-		if (this._bookViewActive) return;
-		this._bookViewActive = true;
-
-		const cls = this._classPage.activeClass;
-
-		this._$body = $(document.body);
-		this._$wrpBook = $(`<div class="bkmv"/>`);
-
-		this._$body.css("overflow", "hidden");
-		this._$body.addClass("bkmv-active");
-
-		// Top bar
-		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"/>`)
-			.click(() => this._parent.set("isViewActiveBook", false));
-		$$`<div class="bkmv__spacer-name flex-h-right no-shrink">${$btnClose}</div>`.appendTo(this._$wrpBook);
-
-		const $pnlMenu = $(`<div class="cls-bkmv__wrp-tabs flex-h-center"/>`).appendTo(this._$wrpBook);
-
-		// Main panel
-		const $tblBook = $(`<table class="stats stats--book stats--book-large"/>`);
-		$$`<div class="flex-col overflow-y-auto container">${$tblBook}</div>`.appendTo(this._$wrpBook);
-
-		const renderStack = [];
-		Renderer.get().setFirstSection(true);
-		renderStack.push(`<tr><td colspan="6" class="py-3 px-5">`);
-		Renderer.get().recursiveRender({type: "section", name: cls.name}, renderStack);
-		renderStack.push(`</td></tr>`);
-
-		renderStack.push(`<tr class="text" data-cls-book-fluff="true"><td colspan="6" class="py-3 px-5">`);
-		Renderer.get().setFirstSection(true);
-		(cls.fluff || []).forEach((f, i) => {
-			f = MiscUtil.copy(f);
-
-			// Remove the name from the first section if it is a copy of the class name
-			if (i === 0 && f.name && f.name.toLowerCase() === cls.name.toLowerCase()) {
-				delete f.name;
-			}
-
-			if (f.source && f.source !== cls.source && f.entries) {
-				f.entries.unshift(`{@note The following information is from ${Parser.sourceJsonToFull(f.source)}${Renderer.utils.isDisplayPage(f.page) ? `, page ${f.page}` : ""}.}`);
-			}
-
-			Renderer.get().recursiveRender(f, renderStack);
-		});
-		renderStack.push(`</td></tr>`);
-
-		renderStack.push(`<tr class="text" data-cls-book-cf="true"><td colspan="6" class="py-3 px-5">`);
-		cls.classFeatures.forEach(lvl => {
-			lvl.forEach(cf => Renderer.get().recursiveRender(cf, renderStack));
-		});
-		renderStack.push(`</td></tr>`);
-
-		cls.subclasses
-			.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
-			.forEach((sc, ixSubclass) => {
-				const mod = ClassesPage.getSubclassCssMod(cls, sc);
-				renderStack.push(`<tr data-cls-book-sc-ix="${ixSubclass}" class="cls-main__sc-feature ${mod ? `cls-main__sc-feature--${mod}` : ""}"><td colspan="6" class="py-3 px-5">`);
-				sc.subclassFeatures.forEach(lvl => {
-					lvl.forEach(f => Renderer.get().recursiveRender(f, renderStack));
-				});
-				renderStack.push(`</td></tr>`);
-			});
-		renderStack.push(Renderer.utils.getBorderTr());
-		$tblBook.append(renderStack.join(""));
-
-		// Menu panel
-		const $btnToggleCf = $(`<span class="cls-bkmv__btn-tab">Features</span>`).on("click", () => {
-			this._parent.set("isHideFeatures", !this._parent.get("isHideFeatures"));
-		});
-		const $btnToggleInfo = $(`<span class="cls-bkmv__btn-tab">Info</span>`).on("click", () => {
-			this._parent.set("isShowFluff", !this._parent.get("isShowFluff"));
-		});
-
-		if (this._parent.get("isHideFeatures")) this._parent.set("isHideFeatures", false);
-		if (!this._parent.get("isShowFluff")) this._parent.set("isShowFluff", true);
-
-		$pnlMenu.append($btnToggleCf);
-		$pnlMenu.append($btnToggleInfo);
-
-		const filterValues = this._classPage.filterBox.getValues();
-		cls.subclasses
-			.filter(sc => !ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source))
-			.forEach((sc, i) => {
-				const name = sc.isReprinted ? `${ClassesPage.getBaseShortName(sc)} (${Parser.sourceJsonToAbv(sc.source)})` : sc.shortName;
-				const mod = ClassesPage.getSubclassCssMod(cls, sc);
-				const stateKey = UrlUtil.getStateKeySubclass(sc);
-
-				const $btnToggleSc = $(`<span class="cls-bkmv__btn-tab ${sc.isReprinted ? "cls__btn-sc--reprinted" : ""}" title="${ClassesPage.getBtnTitleSubclass(sc)}">${name}</span>`)
-					.on("click", () => this._parent.set(stateKey, !this._parent.get(stateKey)));
-				const isVisible = this._classPage.filterBox.toDisplay(filterValues, sc.source, sc._fMisc, null);
-				if (!isVisible) $btnToggleSc.addClass("hidden");
-
-				const hkShowHide = () => {
-					const $dispFeatures = this._$wrpBook.find(`[data-cls-book-sc-ix="${i}"]`);
-					const isActive = !!this._parent.get(stateKey);
-					$btnToggleSc.toggleClass(`cls__btn-sc--active-${mod}`, isActive);
-					$dispFeatures.toggleClass("hidden", !isActive);
-				};
-				(this._hooks[stateKey] = this._hooks[stateKey] || []).push(hkShowHide);
-				this._parent.addHook(stateKey, hkShowHide);
-				hkShowHide();
-
-				$pnlMenu.append($btnToggleSc);
-			});
-
-		const hkFeatures = () => {
-			const $dispFeatures = this._$wrpBook.find(`[data-cls-book-cf="true"]`);
-			const isActive = !this._parent.get("isHideFeatures");
-			$btnToggleCf.toggleClass("cls__btn-cf--active", isActive);
-			$dispFeatures.toggleClass("hidden", !isActive);
-		};
-		(this._hooks["isHideFeatures"] = this._hooks["isHideFeatures"] || []).push(hkFeatures);
-		this._parent.addHook("isHideFeatures", hkFeatures);
-		hkFeatures();
-
-		const hkFluff = () => {
-			const $dispFluff = this._$wrpBook.find(`[data-cls-book-fluff="true"]`);
-			const isHidden = !this._parent.get("isShowFluff");
-			$btnToggleInfo.toggleClass("active", !isHidden);
-			$dispFluff.toggleClass("hidden", !!isHidden);
-		};
-		(this._hooks["isShowFluff"] = this._hooks["isShowFluff"] || []).push(hkFluff);
-		this._parent.addHook("isShowFluff", hkFluff);
-		hkFluff();
-
-		this._$body.append(this._$wrpBook);
-	}
-
-	teardown () {
-		if (this._bookViewActive) {
-			this._$body.css("overflow", "");
-			this._$body.removeClass("bkmv-active");
-			this._$wrpBook.remove();
-			this._bookViewActive = false;
-		}
-	}
-};
-
-const classesPage = new ClassesPage();
+const classesPage = new ClassesPage()
 window.addEventListener("load", () => classesPage.pOnLoad());

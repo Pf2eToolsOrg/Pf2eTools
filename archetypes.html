@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<title>Ancestries - PF2eTools</title>
+	<title>Archetypes - PF2eTools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
@@ -67,17 +67,17 @@
 
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
-		<h1 class="page__title">Ancestries</h1>
-		<p class="page__subtitle">Search by name on the left, click ancestry name to display on the right.</p>
+		<h1 class="page__title">Archetypes</h1>
+		<p class="page__subtitle">Search by name on the left, click archetype name to display on the right.</p>
 	</div>
 </header>
 <nav class="container page__nav" id="navigation">
 	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<main class="container ancestries">
+<main class="container archetypes">
 	<div class="row">
-		<div class="col-sm-4" id="listcontainer">
+		<div class="col-sm-6" id="listcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
@@ -104,16 +104,13 @@
 				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
 		</div>
-		<div class="col-sm-8">
-			<div class="wrp-stats-table pf2-big-stat">
-				<div class="stats pf2-book" id="ancestrystats"></div>
+		<div class="col-sm-6">
+			<div class="wrp-stats-table pf2-small-stat">
+				<div class="stats pf2-book" id="archetypestats"></div>
 			</div>
 		</div>
 	</div>
 	<hr class="mt-0">
-	<div class="row">
-		<div id="heritagetabs" class="w-100 flex mb-2 cls-tabs__wrp" style="padding: 0 15px"></div>
-	</div>
 	<div class="row flex mobile__flex-col mt-2">
 		<div class="col-sm-6" id="sublistcontainer">
 			<div class="night__shadow-big">
@@ -168,9 +165,9 @@
 <script type="text/javascript" src="js/render-feats.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
-<script type="text/javascript" src="js/filter-ancestries.js"></script>
+<script type="text/javascript" src="js/filter-archetypes.js"></script>
 <script type="text/javascript" src="js/filter-feats.js"></script>
-<script type="text/javascript" src="js/ancestries.js"></script>
+<script type="text/javascript" src="js/archetypes.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

@@ -199,8 +199,7 @@ class PageFilterSpells extends PageFilter {
 			header: "Saving Throw",
 			items: ["Basic", "Fortitude", "Reflex", "Will"]
 		});
-		this._generalTrtFilter = new Filter({
-			header: "General"});
+		this._generalTrtFilter = new Filter({header: "General"});
 		this._alignmentTrtFilter = new Filter({header: "Alignment"});
 		this._elementalTrtFilter = new Filter({header: "Elemental"});
 		this._energyTrtFilter = new Filter({header: "Energy"});

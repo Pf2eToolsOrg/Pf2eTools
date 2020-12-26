@@ -2,7 +2,7 @@
 
 class PageFilterRaces extends PageFilter {
 	// region static
-	static getLanguageProficiencyTags (lProfs) {
+	static getLanguageProficiencyTags(lProfs) {
 		if (!lProfs) return [];
 
 		const outSet = new Set();
@@ -14,8 +14,8 @@ class PageFilterRaces extends PageFilter {
 		return [...outSet];
 	}
 
-	static getAbilityObjs (abils) {
-		function makeAbilObj (asi, amount) {
+	static getAbilityObjs(abils) {
+		function makeAbilObj(asi, amount) {
 			return {
 				asi: asi,
 				amount: amount,
@@ -49,26 +49,33 @@ class PageFilterRaces extends PageFilter {
 		return Array.from(out.values());
 	}
 
-	static mapAbilityObjToFull (abilObj) { return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`; }
+	static mapAbilityObjToFull(abilObj) {
+		return `${Parser.attAbvToFull(abilObj.asi)} ${abilObj.amount < 0 ? "" : "+"}${abilObj.amount}`;
+	}
 
-	static getSpeedRating (speed) { return speed > 30 ? "Walk (Fast)" : speed < 30 ? "Walk (Slow)" : "Walk"; }
+	static getSpeedRating(speed) {
+		return speed > 30 ? "Walk (Fast)" : speed < 30 ? "Walk (Slow)" : "Walk";
+	}
 
-	static filterAscSortSize (a, b) {
+	static filterAscSortSize(a, b) {
 		a = a.item;
 		b = b.item;
 
 		return SortUtil.ascSort(toNum(a), toNum(b));
 
-		function toNum (size) {
+		function toNum(size) {
 			switch (size) {
-				case "M": return 0;
-				case "S": return -1;
-				case "V": return 1;
+				case "M":
+					return 0;
+				case "S":
+					return -1;
+				case "V":
+					return 1;
 			}
 		}
 	}
 
-	static filterAscSortAsi (a, b) {
+	static filterAscSortAsi(a, b) {
 		a = a.item;
 		b = b.item;
 
@@ -87,12 +94,17 @@ class PageFilterRaces extends PageFilter {
 			return (PageFilterRaces.ASI_SORT_POS[aAbil] - PageFilterRaces.ASI_SORT_POS[bAbil]) || (Number(bScore) - Number(aScore));
 		}
 	}
+
 	// endregion
 
-	constructor () {
+	constructor() {
 		super();
 
-		const sizeFilter = new Filter({header: "Size", displayFn: Parser.sizeAbvToFull, itemSortFn: PageFilterRaces.filterAscSortSize});
+		const sizeFilter = new Filter({
+			header: "Size",
+			displayFn: Parser.sizeAbvToFull,
+			itemSortFn: PageFilterRaces.filterAscSortSize
+		});
 		const asiFilter = new Filter({
 			header: "Ability Bonus (Including Subrace)",
 			items: [
@@ -119,7 +131,10 @@ class PageFilterRaces extends PageFilter {
 			itemSortFn: PageFilterRaces.filterAscSortAsi,
 		});
 		const baseRaceFilter = new Filter({header: "Base Race"});
-		const speedFilter = new Filter({header: "Speed", items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]});
+		const speedFilter = new Filter({
+			header: "Speed",
+			items: ["Climb", "Fly", "Swim", "Walk (Fast)", "Walk", "Walk (Slow)"]
+		});
 		const traitFilter = new Filter({
 			header: "Traits",
 			items: [
@@ -171,7 +186,11 @@ class PageFilterRaces extends PageFilter {
 			],
 			umbrellaItems: ["Choose"],
 		});
-		const miscFilter = new Filter({header: "Miscellaneous", items: ["Base Race", "Key Race", "Modified Copy", "SRD"], isSrdFilter: true});
+		const miscFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Base Race", "Key Race", "Modified Copy", "SRD"],
+			isSrdFilter: true
+		});
 
 		this._sizeFilter = sizeFilter;
 		this._asiFilter = asiFilter;
@@ -182,7 +201,7 @@ class PageFilterRaces extends PageFilter {
 		this._miscFilter = miscFilter;
 	}
 
-	mutateForFilters (race) {
+	mutateForFilters(race) {
 		if (race.ability) {
 			const abils = PageFilterRaces.getAbilityObjs(race.ability);
 			race._fAbility = abils.map(a => PageFilterRaces.mapAbilityObjToFull(a));
@@ -211,7 +230,7 @@ class PageFilterRaces extends PageFilter {
 		race._slAbility = ability.asTextShort;
 	}
 
-	addToFilters (race, isExcluded) {
+	addToFilters(race, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(race._fSources);
@@ -221,7 +240,7 @@ class PageFilterRaces extends PageFilter {
 		this._traitFilter.addItem(race._fTraits);
 	}
 
-	async _pPopulateBoxOptions (opts) {
+	async _pPopulateBoxOptions(opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._asiFilter,
@@ -234,7 +253,7 @@ class PageFilterRaces extends PageFilter {
 		];
 	}
 
-	toDisplay (values, r) {
+	toDisplay(values, r) {
 		return this._filterBox.toDisplay(
 			values,
 			r._fSources,
@@ -248,7 +267,7 @@ class PageFilterRaces extends PageFilter {
 		)
 	}
 
-	static getListAliases (race) {
+	static getListAliases(race) {
 		return (race.alias || [])
 			.map(it => {
 				const invertedName = PageFilterRaces.getInvertedName(it);
@@ -258,12 +277,13 @@ class PageFilterRaces extends PageFilter {
 			.join(",")
 	}
 
-	static getInvertedName (name) {
+	static getInvertedName(name) {
 		// convert e.g. "Elf (High)" to "High Elf" for use as a searchable field
 		const bracketMatch = /^(.*?) \((.*?)\)$/.exec(name);
 		return bracketMatch ? `${bracketMatch[2]} ${bracketMatch[1]}` : null;
 	}
 }
+
 PageFilterRaces.ASI_SORT_POS = {
 	Strength: 0,
 	Dexterity: 1,
@@ -273,68 +293,103 @@ PageFilterRaces.ASI_SORT_POS = {
 	Charisma: 5,
 };
 
-class ModalFilterRaces extends ModalFilter {
-	/**
-	 * @param opts
-	 * @param opts.namespace
-	 * @param [opts.isRadio]
-	 * @param [opts.allData]
-	 */
-	constructor (opts) {
-		opts = opts || {};
-		super({
-			...opts,
-			modalTitle: `Race${opts.isRadio ? "" : "s"}`,
-			pageFilter: new PageFilterRaces(),
+class PageFilterAncestries extends PageFilter {
+	constructor() {
+		super();
+		this._boostFilter = new Filter({
+			header: "Ability Boosts",
+			items: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma', 'Free'],
+			itemSortFn: null
 		});
+		this._flawFilter = new Filter({
+			header: "Ability Flaw",
+			items: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'],
+			itemSortFn: null
+		});
+		this._hpFilter = new RangeFilter({
+			header: "Hit Points",
+			isLabelled: true,
+			labels: [6, 8, 10, 12]
+		});
+		this._sizeFilter = new Filter({header: "Size"});
+		this._speedFilter = new RangeFilter({
+			header: "Speed",
+			isLabelled: true,
+			labels: [20, 25, 30]
+		});
+		this._languageFilter = new Filter({header: "Languages"});
+		this._traitsFilter = new Filter({header: "Traits"});
+		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
+		this._optionsFilter = new OptionsFilter({
+			header: "Other Options",
+			defaultState: {
+				isShowVeHeritages: false
+			},
+			displayFn: k => {
+				switch (k) {
+					case "isShowVeHeritages": return "Display Versatile Heritages";
+					default: throw new Error(`Unhandled key "${k}"`);
+				}
+			},
+			displayFnMini: k => {
+				switch (k) {
+					case "isShowVeHeritages": return "V.Her.";
+					default: throw new Error(`Unhandled key "${k}"`);
+				}
+			}
+		})
 	}
 
-	_$getColumnHeaders () {
-		const btnMeta = [
-			{sort: "name", text: "Name", width: "4"},
-			{sort: "ability", text: "Ability", width: "4"},
-			{sort: "size", text: "Size", width: "2"},
-			{sort: "source", text: "Source", width: "1"},
+	get optionsFilter () { return this._optionsFilter; }
+
+	mutateForFilters(ancestry, opts) {
+		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20)
+		ancestry._fMisc = []
+		if (ancestry.feature) {
+			if (ancestry.feature.name === 'Low-Light Vision') ancestry._fMisc.push('Has Low-Light Vision')
+			if (ancestry.feature.name === 'Darkvision') ancestry._fMisc.push('Has Darkvision')
+		}
+	}
+
+	addToFilters(ancestry, isExcluded, opts) {
+		if (isExcluded) return;
+		this._sourceFilter.addItem(ancestry.source);
+		this._hpFilter.addItem(ancestry.HP);
+		this._sizeFilter.addItem(ancestry.size);
+		this._speedFilter.addItem(ancestry.speed);
+		this._languageFilter.addItem(ancestry._flanguages);
+		this._traitsFilter.addItem(ancestry.traits);
+		this._miscFilter.addItem(ancestry._fMisc);
+	}
+
+	async _pPopulateBoxOptions(opts) {
+		opts.filters = [
+			this._sourceFilter,
+			this._boostFilter,
+			this._flawFilter,
+			this._hpFilter,
+			this._sizeFilter,
+			this._speedFilter,
+			this._languageFilter,
+			this._traitsFilter,
+			this._miscFilter,
+			this._optionsFilter
 		];
-		return ModalFilter._$getFilterColumnHeaders(btnMeta);
+		opts.isCompact = true;
 	}
 
-	async _pLoadAllData () {
-		const rawRaceData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-		return Renderer.ancestry.mergeSubraces(rawRaceData.race);
-	}
-
-	_getListItem (pageFilter, race, rI) {
-		const eleLabel = document.createElement("label");
-		eleLabel.className = "row lst--border no-select lst__wrp-cells";
-
-		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](race);
-		const ability = race.ability ? Renderer.getAbilityData(race.ability) : {asTextShort: "None"};
-		const size = Parser.sizeAbvToFull(race.size || SZ_VARIES);
-		const source = Parser.sourceJsonToAbv(race.source);
-
-		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
-		<div class="bold col-4">${race.name}</div>
-		<div class="col-4">${ability.asTextShort}</div>
-		<div class="col-2 text-center">${size}</div>
-		<div class="col-1 pr-0 text-center ${Parser.sourceJsonToColor(race.source)}" title="${Parser.sourceJsonToFull(race.source)}" ${BrewUtil.sourceJsonToStyle(race.source)}>${source}</div>`;
-
-		return new ListItem(
-			rI,
-			eleLabel,
-			race.name,
-			{
-				hash,
-				source,
-				sourceJson: race.source,
-				ability: ability.asTextShort,
-				size,
-				cleanName: PageFilterRaces.getInvertedName(race.name) || "",
-				alias: PageFilterRaces.getListAliases(race),
-			},
-			{
-				cbSel: eleLabel.firstElementChild.firstElementChild,
-			},
-		);
+	toDisplay(values, a) {
+		return this._filterBox.toDisplay(
+			values,
+			a.source,
+			a.boosts || [],
+			a.flaw || [],
+			a.HP,
+			a.size,
+			a.speed,
+			a._flanguages,
+			a.traits,
+			a._fMisc
+		)
 	}
 }

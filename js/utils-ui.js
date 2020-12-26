@@ -1304,7 +1304,7 @@ class SearchWidget {
 			const raceData = Renderer.ancestry.mergeSubraces(raceJson.race);
 			return {race: raceData};
 		};
-		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_RACE, UrlUtil.PG_ANCESTRIES, "races");
+		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_ANCESTRY, UrlUtil.PG_ANCESTRIES, "races");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Race",

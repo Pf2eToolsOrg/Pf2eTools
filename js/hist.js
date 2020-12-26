@@ -74,6 +74,10 @@ class Hist {
 		return Hist.util.getHashParts(window.location.hash);
 	}
 
+	static getDoubleHashParts () {
+		return Hist.util.getDoubleHashParts(window.location.hash);
+	}
+
 	static getActiveListItem (link, getIndex) {
 		const primaryLists = ListUtil.getPrimaryLists();
 		if (primaryLists && primaryLists.length) {
@@ -152,6 +156,12 @@ Hist.util = class {
 	static getHashParts (location) {
 		if (location[0] === "#") location = location.slice(1);
 		return location.toLowerCase().replace(/%27/g, "'").split(HASH_PART_SEP);
+	}
+
+	static getDoubleHashParts (location) {
+		if (location[0] === "#") location = location.slice(1);
+		let parts = location.split('#').length === 2 ? location.split('#') : location.split('#').concat([''])
+		return parts.map(p => Hist.util.getHashParts(p))
 	}
 
 	static getSubHash (location, key) {

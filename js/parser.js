@@ -820,6 +820,60 @@ Parser.skillProficienciesToFull = function (skillProficiencies) {
 	return skillProficiencies.map(renderSingle).join(" <i>or</i> ");
 };
 
+Parser.proficiencyAbvToFull = function (abv) {
+	switch (abv) {
+		case "t": return "trained";
+		case "T": return "Trained";
+		case "e": return "expert";
+		case "E": return "Expert";
+		case "m": return "master";
+		case "M": return "Master";
+		case "l": return "legendary";
+		case "L": return "Legendary";
+		case "u": return "untrained";
+		case "U": return "Untrained";
+		default: throw new Error(`Unknown proficiency rank ${abv}.`)
+	}
+}
+
+Parser.initialProficienciesToFull = function (initProf) {
+	let out = {
+		type: "pf2-sidebar",
+		name: "INITIAL PROFICIENCIES",
+		entries: [
+			"At 1st level, you gain the listed proficiency ranks in  the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way.",
+		]
+	};
+	out.entries.push({type: "pf2-title", name: "PERCEPTION"});
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`);
+	out.entries.push({type: "pf2-title", name: "SAVING THROWS"});
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.fort)} in Fortitude`);
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
+	out.entries.push({type: "pf2-title", name: "SKILLS"});
+	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`Trained in ${it}`));
+	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`Expert in ${it}`));
+	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`Master in ${it}`));
+	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`Legendary in ${it}`));
+	if (initProf.skills.add) out.entries.push(`Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier`)
+	out.entries.push({type: "pf2-title", name: "ATTACKS"});
+	if (initProf.attacks.t) initProf.attacks.t.forEach(it => out.entries.push(`Trained in ${it}`));
+	if (initProf.attacks.e) initProf.attacks.e.forEach(it => out.entries.push(`Expert in ${it}`));
+	if (initProf.attacks.m) initProf.attacks.m.forEach(it => out.entries.push(`Master in ${it}`));
+	if (initProf.attacks.l) initProf.attacks.l.forEach(it => out.entries.push(`Legendary in ${it}`));
+	out.entries.push({type: "pf2-title", name: "DEFENSES"});
+	if (initProf.defenses.t) initProf.defenses.t.forEach(it => out.entries.push(`Trained in ${it}`));
+	if (initProf.defenses.e) initProf.defenses.e.forEach(it => out.entries.push(`Expert in ${it}`));
+	if (initProf.defenses.m) initProf.defenses.m.forEach(it => out.entries.push(`Master in ${it}`));
+	if (initProf.defenses.l) initProf.defenses.l.forEach(it => out.entries.push(`Legendary in ${it}`));
+	if (initProf.classDc) {
+		out.entries.push({type: "pf2-title", name: "CLASS DC"});
+		out.entries.push(initProf.classDc.entry);
+	}
+
+	return out
+}
+
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
 Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
 	if (!subschools || !subschools.length) return Parser.spSchoolAbvToFull(school);
@@ -1400,7 +1454,7 @@ Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
 Parser.CAT_ID_ELDRITCH_INVOCATION = 8;
 Parser.CAT_ID_PSIONIC = 9;
-Parser.CAT_ID_RACE = 10;
+Parser.CAT_ID_ANCESTRY = 10;
 Parser.CAT_ID_OTHER_REWARD = 11;
 Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
@@ -1438,6 +1492,7 @@ Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
 Parser.CAT_ID_TRAIT = 46;
+Parser.CAT_ID_ARCHETYPE = 47;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1449,7 +1504,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] = "Eldritch Invocation";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] = "Psionic";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] = "Race";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
@@ -1501,7 +1557,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PSIONIC] = "psionic";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RACE] = "race";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OTHER_REWARD] = "reward";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
@@ -2370,7 +2427,7 @@ T_HUGE = "Huge";
 T_GARGANTUAN = "Gargantuan";
 
 Parser.TRAITS_GENERAL = [T_ADDITIVE, T_ARCHETYPE, T_ATTACK, T_AURA, T_CANTRIP, T_CHARM, T_COMPANION, T_COMPLEX, T_COMPOSITION, T_CONCENTRATE, T_CONSECRATION, T_CURSE, T_CURSEBOUND, T_DARKNESS, T_DEATH, T_DEDICATION, T_DETECTION, T_DISEASE, T_DOWNTIME, T_EMOTION, T_ENVIRONMENTAL, T_EXPLORATION, T_EXTRADIMENSIONAL, T_FEAR, T_FINISHER, T_FLOURISH, T_FOCUSED, T_FORTUNE, T_GENERAL, T_HAUNT, T_HEALING, T_HEX, T_INCAPACITATION, T_INFUSED, T_INSTINCT, T_LEGACY, T_LIGHT, T_LINEAGE, T_LINGUISTIC, T_LITANY, T_MAGICAL, T_MANIPULATE, T_MECHANICAL, T_MENTAL, T_METAMAGIC, T_MINION, T_MISFORTUNE, T_MORPH, T_MOVE, T_MULTICLASS, T_OATH, T_OPEN, T_POLYMORPH, T_POSSESSION, T_PRECIOUS, T_PREDICTION, T_PRESS, T_RAGE, T_RECKLESS, T_RELOAD, T_REVELATION, T_SCRYING, T_SECRET, T_SKILL, T_SLEEP, T_SOCIAL, T_SPLASH, T_STAMINA, T_STANCE, T_SUMMONED, T_TELEPATHY, T_TELEPORTATION, T_TRAP, T_VIGILANTE, T_VIRULENT, T_VOCA]
-Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_DWARF, T_ELF, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GNOME, T_GOBLIN, T_GRAPPLE, T_HALFLING, T_JOUSTING, T_MODULAR, T_MONK, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGE_INCREMENT,T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
+Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GRAPPLE, T_JOUSTING, T_MODULAR, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGE_INCREMENT,T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
 Parser.TRAITS_TRADITION = [T_ARCANE, T_DIVINE, T_OCCULT, T_PRIMAL]
 Parser.TRAITS_SETTLEMENT = [T_CITY, T_METROPOLIS, T_TOWN, T_VILLAGE]
 Parser.TRAITS_SENSE = [T_AUDITORY, T_OLFACTORY, T_VISUAL]
@@ -2379,13 +2436,14 @@ Parser.TRAITS_RARITY = [T_COMMON, T_UNCOMMON, T_RARE, T_UNIQUE]
 Parser.TRAITS_POISON = [T_CONTACT, T_INGESTED, T_INHALED, T_INJURY, T_POISON]
 Parser.TRAITS_PLANAR = [T_AIR, T_EARTH, T_ERRATIC, T_FINITE, T_FIRE, T_FLOWING, T_HIGH, T_GRAVITY, T_IMMEASURABLE, T_LOW, T_GRAVITY, T_METAMORPHIC, T_MICROGRAVITY, T_NEGATIVE, T_POSITIVE, T_SENTIENT, T_SHADOW, T_STATIC, T_STRANGE, T_GRAVITY, T_SUBJECTIVE, T_GRAVITY, T_TIMELESS, T_UNBOUNDED, T_WATER]
 Parser.TRAITS_ELEMENTAL = [T_AIR, T_EARTH, T_FIRE, T_WATER]
-Parser.TRAITS_MONSTER = [T_AASIMAR, T_ACID, T_AEON, T_AIR, T_ALCHEMICAL, T_AMPHIBIOUS, T_ANADI, T_ANGEL, T_AQUATIC, T_ARCHON, T_AZATA, T_BOGGARD, T_CALIGNI, T_CATFOLK, T_CHANGELING, T_CHARAUKA, T_COLD, T_COUATL, T_DAEMON, T_DEMON, T_DERO, T_DEVIL, T_DHAMPIR, T_DINOSAUR, T_DROW, T_DUERGAR, T_DUSKWALKER, T_EARTH, T_ELECTRICITY, T_FETCHLING, T_FIRE, T_GENIE, T_GHOST, T_GHOUL, T_GNOLL, T_GOLEM, T_GREMLIN, T_GRIPPLI, T_HAG, T_IFRIT, T_INCORPOREAL, T_INEVITABLE, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_MERFOLK, T_MINDLESS, T_MORLOCK, T_MUMMY, T_MUTANT, T_NYMPH, T_ONI, T_ORC, T_OREAD, T_PROTEAN, T_PSYCHOPOMP, T_QLIPPOTH, T_RAKSHASA, T_RATFOLK, T_SEA, T_DEVIL, T_SERPENTFOLK, T_SKELETON, T_SKULK, T_SONIC, T_SOULBOUND, T_SPRIGGAN, T_SPRITE, T_SULI, T_SWARM, T_SYLPH, T_TANE, T_TENGU, T_TIEFLING, T_TITAN, T_TROLL, T_UNDINE, T_URDEFHAN, T_VAMPIRE, T_VELSTRAC, T_WATER, T_WERECREATURE, T_WIGHT, T_WRAITH, T_XULGATH, T_ZOMBIE]
+Parser.TRAITS_CREATURE = [T_AASIMAR, T_ACID, T_AEON, T_AIR, T_ALCHEMICAL, T_AMPHIBIOUS, T_ANADI, T_ANGEL, T_AQUATIC, T_ARCHON, T_AZATA, T_BOGGARD, T_CALIGNI, T_CATFOLK, T_CHANGELING, T_CHARAUKA, T_COLD, T_COUATL, T_DAEMON, T_DEMON, T_DERO, T_DEVIL, T_DHAMPIR, T_DINOSAUR, T_DROW, T_DUERGAR, T_DUSKWALKER, T_EARTH, T_ELECTRICITY, T_FETCHLING, T_FIRE, T_GENIE, T_GHOST, T_GHOUL, T_GNOLL, T_GOLEM, T_GREMLIN, T_GRIPPLI, T_HAG, T_IFRIT, T_INCORPOREAL, T_INEVITABLE, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_MERFOLK, T_MINDLESS, T_MORLOCK, T_MUMMY, T_MUTANT, T_NYMPH, T_ONI, T_ORC, T_OREAD, T_PROTEAN, T_PSYCHOPOMP, T_QLIPPOTH, T_RAKSHASA, T_RATFOLK, T_SEA, T_DEVIL, T_SERPENTFOLK, T_SKELETON, T_SKULK, T_SONIC, T_SOULBOUND, T_SPRIGGAN, T_SPRITE, T_SULI, T_SWARM, T_SYLPH, T_TANE, T_TENGU, T_TIEFLING, T_TITAN, T_TROLL, T_UNDINE, T_URDEFHAN, T_VAMPIRE, T_VELSTRAC, T_WATER, T_WERECREATURE, T_WIGHT, T_WRAITH, T_XULGATH, T_ZOMBIE]
 Parser.TRAITS_EQUIPMENT = [T_ALCHEMICAL, T_APEX, T_ARTIFACT, T_BOMB, T_CONSUMABLE, T_CONTRACT, T_CURSED, T_DRUG, T_ELIXIR, T_INTELLIGENT, T_INVESTED, T_MUTAGEN, T_OIL, T_POTION, T_SAGGORAK, T_SCROLL, T_SNARE, T_STAFF, T_STRUCTURE, T_TALISMAN, T_TATTOO, T_WAND]
 Parser.TRAITS_ENERGY = [T_ACID, T_COLD, T_ELECTRICITY, T_FIRE, T_FORCE, T_NEGATIVE, T_POSITIVE, T_SONIC]
-Parser.TRAITS_CREATURE = [T_ABERRATION, T_ANIMAL, T_ASTRAL, T_BEAST, T_CELESTIAL, T_CONSTRUCT, T_DRAGON, T_DREAM, T_ELEMENTAL, T_ETHEREAL, T_FEY, T_FIEND, T_FUNGUS, T_GIANT, T_HUMANOID, T_MONITOR, T_NEGATIVE, T_OOZE, T_PETITIONER, T_PLANT, T_POSITIVE, T_SPIRIT, T_TIME, T_UNDEAD]
+Parser.TRAITS_CREATURE_TYPE = [T_ABERRATION, T_ANIMAL, T_ASTRAL, T_BEAST, T_CELESTIAL, T_CONSTRUCT, T_DRAGON, T_DREAM, T_ELEMENTAL, T_ETHEREAL, T_FEY, T_FIEND, T_FUNGUS, T_GIANT, T_HUMANOID, T_MONITOR, T_NEGATIVE, T_OOZE, T_PETITIONER, T_PLANT, T_POSITIVE, T_SPIRIT, T_TIME, T_UNDEAD]
 Parser.TRAITS_CLASS = [T_ALCHEMIST, T_BARBARIAN, T_BARD, T_CHAMPION, T_CLERIC, T_DRUID, T_FIGHTER, T_INVESTIGATOR, T_MONK, T_ORACLE, T_RANGER, T_ROGUE, T_SORCERER, T_SWASHBUCKLER, T_WITCH, T_WIZARD]
 Parser.TRAITS_ARMOR = [T_BULWARK, T_COMFORT, T_FLEXIBLE, T_NOISY]
 Parser.TRAITS_ANCESTRY = [T_AASIMAR, T_CATFOLK, T_CHANGELING, T_DHAMPIR, T_DUSKWALKER, T_DWARF, T_ELF, T_GNOME, T_GOBLIN, T_HALFELF, T_HALFLING, T_HALFORC, T_HOBGOBLIN, T_HUMAN, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_ORC, T_RATFOLK, T_SHOONY, T_TENGU, T_TIEFLING]
+Parser.TRAITS_HERITAGE = [T_TIEFLING]
 Parser.TRAITS_ALIGN = [T_CHAOTIC, T_EVIL, T_GOOD, T_LAWFUL];
 Parser.TRAITS_ALIGN_ABV = [T_LG, T_NG, T_CG, T_LN, T_N, T_CN, T_LE, T_NE, T_CE, T_ANY];
 Parser.TRAITS_SIZE = [T_TINY, T_SMALL, T_MEDIUM, T_LARGE, T_HUGE, T_GARGANTUAN];
@@ -2750,6 +2808,16 @@ Parser.TRAITS_TO_TRAITS_SRC[T_VIGILANTE] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VIRULENT] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VOCA] = SRC_CRB;
 
+Parser.rarityToNumber = function (r) {
+	switch (r) {
+		case T_COMMON: return 0;
+		case T_UNCOMMON: return 1;
+		case T_RARE: return 2;
+		case T_UNIQUE: return 3;
+		default: return 69;
+	}
+}
+
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "ammunition",
 	"AF": "ammunition",
@@ -2941,6 +3009,24 @@ Parser.SKILL_JSON_TO_FULL = {
 						"{@b {@action Learn a Spell}} from the occult tradition."
 					]
 				}
+			]
+		}
+	],
+	"Perception": [
+		"Perception measures your ability to be aware of your environment. Every creature has Perception, which works with and is limited by a creature’s senses (described on page 464). Whenever you need to attempt a check based on your awareness, you’ll attempt a Perception check. Your Perception uses your Wisdom modifier, so you’ll use the following formula when attempting a Perception check.",
+		{
+			"type": "pf2-inset",
+			"entries": [
+				"Perception check result = d20 roll + Wisdom modifier + proficiency bonus + other bonuses + penalties"
+			]
+		},
+		"Nearly all creatures are at least trained in Perception, so you will almost always add a proficiency bonus to your Perception modifier. You might add a circumstance bonus for advantageous situations or environments, and typically get status bonuses from spells or other magical effects. Items can also grant you a bonus to Perception, typically in a certain situation. For instance, a fine spyglass grants a +1 item bonus to Perception when attempting to see something a long distance away. Circumstance penalties to Perception occur when an environment or situation (such as fog) hampers your senses, while status penalties typically come from conditions, spells, and magic effects that foil the senses. You’ll rarely encounter item penalties or untyped penalties for Perception.",
+		"Many abilities are compared to your Perception DC to determine whether they succeed. Your Perception DC is 10 + your total Perception modifier.",
+		{
+			"type": "pf2-h4",
+			"name": "Perception for Initiative",
+			"entries": [
+				"Often, you’ll roll a Perception check to determine your order in initiative. When you do this, instead of comparing the result against a DC, everyone in the encounter will compare their results. The creature with the highest result acts first, the creature with the second-highest result goes second, and so on. Sometimes you may be called on to roll a skill check for initiative instead, but you’ll compare results just as if you had rolled Perception. The full rules for initiative are found in the rules for encounter mode on page 468."
 			]
 		}
 	],

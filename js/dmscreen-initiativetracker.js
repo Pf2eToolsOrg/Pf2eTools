@@ -428,7 +428,7 @@ class InitiativeTracker {
 							});
 						};
 
-						const $btnUp = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-arrow-up"/></button>`).click(() => {
+						const $btnUp = $(`<button class="btn btn-xs btn-default"><span class="glyphicon glyphicon-chevron-up"/></button>`).click(() => {
 							if ($row.prev().length) {
 								$row.prev().before($row);
 								saveOrders();

@@ -4,18 +4,19 @@ const ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
 	_firstInit: true,
-	initList (listOpts) {
-		const $iptSearch = $("#lst__search");
+	initList (listOpts, searchIds) {
+		searchIds = searchIds || {input: '#lst__search', glass: '#lst__search-glass', reset:'#reset'}
+		const $iptSearch = $(searchIds.input);
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
 
-		$("#reset").click(function () {
+		$(searchIds.reset).click(function () {
 			$iptSearch.val("");
 			list.reset();
 		});
 
 		// region Magnifying glass/clear button
-		const $btnSearchClear = $(`#lst__search-glass`)
+		const $btnSearchClear = $(searchIds.glass)
 			.click(() => $iptSearch.val("").change().keydown().keyup());
 		const _handleSearchChange = () => {
 			setTimeout(() => {

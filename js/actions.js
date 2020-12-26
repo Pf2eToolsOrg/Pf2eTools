@@ -143,20 +143,16 @@ function renderStatblock(action) {
 		$content.append(RenderActions.$getRenderedAction(action));
 	}
 	function buildInfoTab() {
-		$content.append(Renderer.action.getFluff(action))
+		$content.append(Renderer.action.getQuickRules(action))
 	}
 	const statTab = Renderer.utils.tabButton(
 		"Statblock",
-		() => {
-			$(`#float-token`).show();
-		},
+		() => {},
 		buildStatsTab
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Quick Rules",
-		() => {
-			$(`#float-token`).hide();
-		},
+		() => {},
 		buildInfoTab
 	);
 	if (action.info) Renderer.utils.bindTabButtons(statTab, infoTab);

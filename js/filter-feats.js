@@ -4,22 +4,32 @@ class PageFilterFeats extends PageFilter {
 	// region static
 	// endregion
 
-	constructor () {
+	constructor (opts) {
 		super();
+		opts = opts || {};
 		this._levelFilter = new RangeFilter({
 			header: 'Level',
 			min: 1,
 			max: 20,
 			isLabelled: true
 		});
-		this._typeFilter = new Filter({header: 'Type'})
-		this._ancestryFilter = new Filter({header: 'Ancestries'})
-		this._archetypeFilter = new Filter({header: 'Archetypes'})
-		this._classFilter = new Filter({header: 'Classes'})
-		this._skillFilter = new Filter({header: 'Skills'})
+		this._typeFilter = new Filter({header: 'Type', isHiddenFilter: !!opts.typeFilterHidden, selFn:opts.typeDeselFn})
+		this._traitsFilter = new TraitsFilter({
+			header: 'Traits',
+			discardCategories: {
+				class: true,
+				ancestry: true,
+				creature: true,
+				creaturetype: true
+			}
+		});
+		this._ancestryFilter = new Filter({header: 'Ancestries', isHiddenFilter: !!opts.ancFilterHidden})
+		this._archetypeFilter = new Filter({header: 'Archetypes', isHiddenFilter: !!opts.archFilterHidden})
+		this._classFilter = new Filter({header: 'Classes', isHiddenFilter: !!opts.classFilterHidden})
+		this._skillFilter = new Filter({header: 'Skills', isHiddenFilter: !!opts.skillFilterHidden})
 		this._miscFilter  = new Filter({
 			header: 'Miscellaneous',
-			items: ["Has Trigger", "Has Frequency", "Has Prerequisite", "Has Requirements", "Has Cost", "Has Special"]
+			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special"]
 		});
 		this._timeFilter = new Filter({
 			header: "Activity",
@@ -73,8 +83,11 @@ class PageFilterFeats extends PageFilter {
 		if (isExcluded) return;
 
 		this._typeFilter.addItem(feat._fType);
+		this._traitsFilter.addItem(feat.traits);
 		if (typeof(feat.fancestry) !== "boolean") this._ancestryFilter.addItem(feat.fancestry);
 		if (typeof(feat.farchetype) !== "boolean") this._archetypeFilter.addItem(feat.farchetype);
+		//FIXME: remove next line, and fix below once archetype data is correct
+		if (feat.farchetype) this._archetypeFilter.addItem('Archetype')
 		if (typeof(feat.fclass) !== "boolean") this._classFilter.addItem(feat.fclass);
 		if (typeof(feat.fskill) !== "boolean") this._skillFilter.addItem(feat.fskill);
 		this._sourceFilter.addItem(feat.source);
@@ -90,6 +103,7 @@ class PageFilterFeats extends PageFilter {
 			this._classFilter,
 			this._skillFilter,
 			this._timeFilter,
+			this._traitsFilter,
 			this._miscFilter
 		];
 	}
@@ -101,10 +115,12 @@ class PageFilterFeats extends PageFilter {
 			ft._fType,
 			ft.level,
 			ft.fancestry,
-			ft.farchetype,
+			// FIXME Change line below
+			ft.farchetype === true ? 'Archetype' : ft.farchetype,
 			ft.fclass,
 			ft.fskill,
 			ft._fTime,
+			ft.traits,
 			ft._fMisc
 		)
 	}
