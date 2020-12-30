@@ -76,8 +76,8 @@
 </nav>
 
 <main class="container classes">
-	<div class="row">
-		<div class="col-sm-4" id="listcontainer">
+	<div class="row" style="height: 50vh">
+		<div class="col-sm-5" id="listcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
@@ -104,9 +104,36 @@
 				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
 		</div>
-		<div class="col-sm-8">
-			<div class="wrp-stats-table pf2-big-stat">
-				<div class="stats pf2-book" id="classesstats"></div>
+		<div class="col-sm-7">
+			<div id="sublistcontainer">
+				<div class="night__shadow-big">
+					<div class="lst__form-top" id="feat-filter-search-group">
+						<div class="w-100 relative">
+							<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
+								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+							<div id="feat-lst__search-glass"
+								 class="lst__wrp-search-glass no-events flex-vh-center"><span
+								class="glyphicon glyphicon-search"></span></div>
+							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+						</div>
+						<button class="btn btn-default px-2" id="feat-reset"><span
+							class="glyphicon glyphicon-refresh"></span></button>
+					</div>
+					<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
+							class="caret_wrp"></span></button>
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
+							class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">S. <span
+							class="caret_wrp"></span></button>
+					</div>
+				</div>
+				<ul class="list list--stats feats cls__list" style="max-height: 120px"></ul>
+			</div>
+			<div class="wrp-stats-table" style="margin: 10px 0">
+				<div class="stats pf2-stat" id="featstats"></div>
 			</div>
 		</div>
 	</div>
@@ -115,36 +142,9 @@
 		<div id="subclasstabs" class="w-100 flex mb-2 cls-tabs__wrp" style="padding: 0 15px"></div>
 	</div>
 	<div class="row flex mobile__flex-col mt-2">
-		<div class="col-sm-6" id="sublistcontainer">
-			<div class="night__shadow-big">
-				<div class="lst__form-top" id="feat-filter-search-group">
-					<div class="w-100 relative">
-						<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
-							   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="feat-lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
-							class="glyphicon glyphicon-search"></span></div>
-						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
-					</div>
-					<button class="btn btn-default px-2" id="feat-reset"><span
-						class="glyphicon glyphicon-refresh"></span></button>
-				</div>
-				<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
-						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
-						class="caret_wrp"></span></button>
-					<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
-						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">S. <span
-						class="caret_wrp"></span></button>
-				</div>
-
-				<ul class="list list--stats feats cls__list"></ul>
-			</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="wrp-stats-table">
-				<div class="stats pf2-stat" id="featstats"></div>
+		<div class="col-sm-12">
+			<div class="pf2-infinite-stat wrp-stats-table">
+				<div class="stats pf2-book" id="classesstats"></div>
 			</div>
 		</div>
 	</div>
