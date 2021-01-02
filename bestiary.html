@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -60,10 +58,6 @@
 		img.token {
 			font-size: 1.6em;
 			right: 0.4em;
-		}
-
-		#wrp-profbonusdice {
-			display: inline-block;
 		}
 
 		.ecgen_active .row--bestiary_sublist {
@@ -172,18 +166,24 @@
 			<div class="view-col" id="listcontainer">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
-						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
 						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 
 				<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
-					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
-					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
-					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="level">Level<span class="caret_wrp"></span></button>
-					<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source<span class="caret_wrp"></span></button>
+					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span
+						class="caret_wrp"></span></button>
+					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span
+						class="caret_wrp"></span></button>
+					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="level">Level<span
+						class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source<span
+						class="caret_wrp"></span></button>
 				</div>
 
 				<ul class="list list--stats creatures">
@@ -196,28 +196,42 @@
 					<div class="row">
 						<div class="flex-h-right">
 							<div class="btn-group mr-3">
-								<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;" title="Randomly generate a Medium encounter">Random Medium</button>
+								<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;"
+										title="Randomly generate a Medium encounter">Random Medium
+								</button>
 								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random Easy</a></li>
-									<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a href="#">Random Medium</a></li>
-									<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random Hard</a></li>
-									<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a href="#">Random Deadly</a></li>
+									<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random
+										Easy</a></li>
+									<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a
+										href="#">Random Medium</a></li>
+									<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random
+										Hard</a></li>
+									<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a
+										href="#">Random Deadly</a></li>
 								</ul>
 							</div>
 
 							<div class="btn-group">
-								<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;" title="Adjust the current encounter difficulty to Medium">Adjust to Medium</button>
+								<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;"
+										title="Adjust the current encounter difficulty to Medium">Adjust to Medium
+								</button>
 								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy"><a href="#">Adjust to Easy</a></li>
-									<li class="ecgen_adj_medium" title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to Medium</a></li>
-									<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard"><a href="#">Adjust to Hard</a></li>
-									<li class="ecgen_adj_deadly" title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to Deadly</a></li>
+									<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy">
+										<a href="#">Adjust to Easy</a></li>
+									<li class="ecgen_adj_medium"
+										title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to
+										Medium</a></li>
+									<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard">
+										<a href="#">Adjust to Hard</a></li>
+									<li class="ecgen_adj_deadly"
+										title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to
+										Deadly</a></li>
 								</ul>
 							</div>
 						</div>
@@ -228,11 +242,15 @@
 
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type <span class="caret_wrp"></span></button>
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type <span
+							class="caret_wrp"></span></button>
 						<button class="col-3-8 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
-						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="cr">CR <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="cr">CR <span
+							class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span
+							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subcreatures">
 						<!-- populate with JS -->
@@ -259,11 +277,6 @@
 
 				<div class="text-center wrp-footer-buttons ecgen__hidden">
 					<button class="btn btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
-					<div id="wrp-profbonusdice" class=>
-						<button class="btn btn-default btn-xs" id="profbonusdice"
-								title="WARNING: Very experimental &mdash; use with caution">Use Proficiency Dice
-						</button>
-					</div>
 					<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
 					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 				</div>
@@ -280,8 +293,11 @@
 
 							<div class="ecgen__players_head_advanced">
 								<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
-								<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">Level</div>
-								<button class="btn btn-primary btn-xs ecgen__advanced_add_col" onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
+								<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">
+									Level
+								</div>
+								<button class="btn btn-primary btn-xs ecgen__advanced_add_col"
+										onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
 									<span class="glyphicon glyphicon-list-alt"></span>
 								</button>
 							</div>
@@ -333,7 +349,8 @@
 						<div class="w-50 text-right">
 							<h4 class="ecgen__raw_total">Total XP: ?</h4>
 							<div><i class="ecgen__raw_per_player">(? per player)</i></div>
-							<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4 class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
+							<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4
+								class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
 							<div><i class="ecgen__adjusted_per_player">(? per player)</i></div>
 						</div>
 					</div>
@@ -350,7 +367,9 @@
 					</div>
 
 					<div class="flex">
-						<button class="btn btn-default btn-xs ecgen__visible" id="btn-encounterstatblock">Back to Statblocks</button>
+						<button class="btn btn-default btn-xs ecgen__visible" id="btn-encounterstatblock">Back to
+							Statblocks
+						</button>
 					</div>
 				</div>
 			</div>

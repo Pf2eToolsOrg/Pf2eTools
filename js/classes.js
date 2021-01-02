@@ -1,21 +1,20 @@
 "use strict";
 
 class ClassesPage extends BaseComponent {
-
-	static _ascSortSubclasses(hA, hB) {
+	static _ascSortSubclasses (hA, hB) {
 		return SortUtil.ascSortLower(hA.type + hA.name, hB.type + hB.name)
 	}
 
-	static _fnSortSubclassFilterItems(a, b) {
+	static _fnSortSubclassFilterItems (a, b) {
 		if (a.values.isAlwaysVisible) return 1;
 		else if (b.values.isAlwaysVisible) return -1;
-		else return SortUtil._listSort_compareBy(a, b, 'type');
+		else return SortUtil._listSort_compareBy(a, b, "type");
 	}
 
-	constructor() {
+	constructor () {
 		super();
 		this.__classId = {_: 0};
-		this._classId = this._getProxy('classId', this.__classId);
+		this._classId = this._getProxy("classId", this.__classId);
 
 		this._list = null;
 		this._ixData = 0;
@@ -42,49 +41,49 @@ class ClassesPage extends BaseComponent {
 			archFilterHidden: true,
 			classFilterHidden: true,
 			skillFilterHidden: true,
-			typeDeselFn: (it => it === 'Class')
+			typeDeselFn: it => it === "Class",
 		});
 		this.__featId = {_: 0};
-		this._featId = this._getProxy('featId', this.__featId);
+		this._featId = this._getProxy("featId", this.__featId);
 	}
 
-	get activeClass() {
+	get activeClass () {
 		if (this._activeClassDataFiltered) return this._activeClassDataFiltered;
 		return this.activeClassRaw;
 	}
 
-	get activeClassRaw() {
+	get activeClassRaw () {
 		return this._dataList[this._classId._];
 	}
 
-	get activeFeat() {
+	get activeFeat () {
 		if (this._activeFeatDataFiltered) return this._activeFeatDataFiltered;
 		return this.activeFeatRaw;
 	}
 
-	get activeFeatRaw() {
+	get activeFeatRaw () {
 		return this._featDataList[this._featId._];
 	}
 
-	get filterBox() {
+	get filterBox () {
 		return this._pageFilter.filterBox;
 	}
 
-	get featFilterBox() {
+	get featFilterBox () {
 		return this._featFilter.filterBox;
 	}
 
-	async pOnLoad() {
+	async pOnLoad () {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
-		const feats = await DataUtil.loadJSON('data/feats/feats-crb.json')
+		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json")
 
 		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
 		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {
-			input: '#feat-lst__search',
-			glass: '#feat-lst__search-glass',
-			reset: '#feat-reset'
+			input: "#feat-lst__search",
+			glass: "#feat-lst__search-glass",
+			reset: "#feat-reset",
 		});
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
@@ -119,9 +118,9 @@ class ClassesPage extends BaseComponent {
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton(true, null, 0);
 		RollerUtil.addListRollButton(true, {
-			roll: 'feat-feelinglucky',
-			reset: 'feat-reset',
-			search: 'feat-filter-search-group'
+			roll: "feat-feelinglucky",
+			reset: "feat-reset",
+			search: "feat-filter-search-group",
 		}, 1);
 
 		window.onhashchange = this._handleHashChange.bind(this);
@@ -151,7 +150,7 @@ class ClassesPage extends BaseComponent {
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	async _pHandleBrew(homebrew) {
+	async _pHandleBrew (homebrew) {
 		const {class: rawClassData} = homebrew;
 		const cpy = MiscUtil.copy({class: rawClassData});
 
@@ -160,7 +159,7 @@ class ClassesPage extends BaseComponent {
 		if (isAddedAnySubclass && !Hist.initialLoad) await this._pDoRender();
 	}
 
-	_addData(data) {
+	_addData (data) {
 		let isAddedAnyClass = false;
 		let isAddedAnySubclass = false;
 
@@ -176,7 +175,7 @@ class ClassesPage extends BaseComponent {
 		return {isAddedAnyClass, isAddedAnySubclass}
 	}
 
-	_addFeatsData(feats) {
+	_addFeatsData (feats) {
 		feats.feat.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
 			this._featFilter.mutateAndAddToFilters(f, isExcluded)
@@ -193,10 +192,9 @@ class ClassesPage extends BaseComponent {
 		this._listFeat.update();
 		this.featFilterBox.render();
 		this._handleFeatFilterChange();
-
 	}
 
-	_addData_addClassData(classes) {
+	_addData_addClassData (classes) {
 		classes.forEach(cls => {
 			this._pageFilter.mutateForFilters(cls)
 
@@ -229,7 +227,7 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_addData_addSubclassData(subclasses) {
+	_addData_addSubclassData (subclasses) {
 		let isBlankSourceFilter;
 		if (!Hist.initialLoad) {
 			isBlankSourceFilter = !this._pageFilter.sourceFilter.getValues()._isActive;
@@ -262,7 +260,7 @@ class ClassesPage extends BaseComponent {
 		if (isBlankSourceFilter) this._pageFilter.sourceFilter.doSetPillsClear();
 	}
 
-	_initHashAndStateSync() {
+	_initHashAndStateSync () {
 		// Wipe all hooks, as we redo them for each class render
 		this._resetHooks("state");
 		this._resetHooksAll("state");
@@ -272,7 +270,7 @@ class ClassesPage extends BaseComponent {
 		this._addHookAll("state", () => this._setHashFromState());
 	}
 
-	_setHashFromState(isSuppressHistory) {
+	_setHashFromState (isSuppressHistory) {
 		// During the initial load, force-suppress all changes
 		if (isSuppressHistory === undefined) isSuppressHistory = Hist.initialLoad;
 
@@ -285,12 +283,12 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_setFeatClassFilters() {
+	_setFeatClassFilters () {
 		let names = this._getActiveSubclasses().map(it => it.name);
 		names.push(...this._getActiveSubclasses().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeClass.name);
 		Object.keys(this._featFilter._classFilter.getValues().Classes).forEach(key => {
-			if (!key.startsWith('_')) this._featFilter._classFilter.setValue(key, 2)
+			if (!key.startsWith("_")) this._featFilter._classFilter.setValue(key, 2)
 		});
 		names.forEach(name => {
 			this._featFilter._classFilter.setValue(name, 1)
@@ -298,7 +296,7 @@ class ClassesPage extends BaseComponent {
 		this._handleFeatFilterChange();
 	}
 
-	_handleHashChange() {
+	_handleHashChange () {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
@@ -308,7 +306,7 @@ class ClassesPage extends BaseComponent {
 		this._setStateFromHash();
 	}
 
-	_setClassFromHash(isInitialLoad) {
+	_setClassFromHash (isInitialLoad) {
 		const [[link], _] = Hist.getDoubleHashParts();
 
 		let ixToLoad;
@@ -343,7 +341,7 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_setFeatFromHash(isInitialLoad) {
+	_setFeatFromHash (isInitialLoad) {
 		const [_, [link]] = Hist.getDoubleHashParts();
 
 		let ixToLoad;
@@ -378,9 +376,9 @@ class ClassesPage extends BaseComponent {
 		}
 	}
 
-	_setStateFromHash(isInitialLoad) {
+	_setStateFromHash (isInitialLoad) {
 		let [[clsH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
-		if (clsH === '' && !subs.length) return;
+		if (clsH === "" && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
 		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
 
@@ -454,7 +452,7 @@ class ClassesPage extends BaseComponent {
 	 * @param [opts.feat] Feat to convert to hash.
 	 * @param [opts.state] State to convert to hash.
 	 */
-	_getHashState(opts) {
+	_getHashState (opts) {
 		opts = opts || {};
 
 		let fromState = opts.state || MiscUtil.copy(this.__state);
@@ -493,19 +491,19 @@ class ClassesPage extends BaseComponent {
 
 		const hashPartsAnc = [
 			primaryHash,
-			stateHash
+			stateHash,
 		].filter(Boolean);
 		const hashPartsFeat = [
-			featHash
+			featHash,
 		].filter(Boolean);
 		const hashParts = [
 			Hist.util.getCleanHash(hashPartsAnc.join(HASH_PART_SEP)),
-			Hist.util.getCleanHash(hashPartsFeat.join(HASH_PART_SEP))
+			Hist.util.getCleanHash(hashPartsFeat.join(HASH_PART_SEP)),
 		].filter(Boolean)
-		return hashParts.join('#')
+		return hashParts.join("#")
 	}
 
-	_initLinkGrabbers() {
+	_initLinkGrabbers () {
 		const $body = $(document.body);
 		$body.on(`mousedown`, `.cls-main__linked-titles > div > .rd__h .entry-title-inner`, (evt) => evt.preventDefault());
 		$body.on(`click`, `.cls-main__linked-titles > div > .rd__h .entry-title-inner`, async (evt) => {
@@ -527,7 +525,7 @@ class ClassesPage extends BaseComponent {
 		});
 	}
 
-	getListItem(cls, clsI, isExcluded) {
+	getListItem (cls, clsI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(cls);
 		const source = Parser.sourceJsonToAbv(cls.source);
 
@@ -555,15 +553,15 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	getFeatListItem(feat, featI, isExcluded) {
+	getFeatListItem (feat, featI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
 		const $lnk = $(`<a href="##${hash}" class="lst--border">
-			<span class="bold col-5 pl-0">${feat.name}</span>
-			<span class="col-1-5 text-center">${Parser.getOrdinalForm(feat.level)}</span>
+			<span class="bold col-4-3 pl-0">${feat.name}</span>
+			<span class="col-1-7 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4 text-center">${feat._slPrereq}</span>
-			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
+			<span class="col-2 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -576,7 +574,7 @@ class ClassesPage extends BaseComponent {
 				hash,
 				source,
 				level: feat.level,
-				prerequisites: feat._slPrereq
+				prerequisites: feat._slPrereq,
 			},
 			{
 				$lnk,
@@ -587,7 +585,7 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	_doGenerateFilteredActiveClassData() {
+	_doGenerateFilteredActiveClassData () {
 		const f = this.filterBox.getValues();
 		const cpyAnc = MiscUtil.copy(this.activeClassRaw);
 		const walker = MiscUtil.getWalker({
@@ -599,7 +597,7 @@ class ClassesPage extends BaseComponent {
 		this._activeClassDataFiltered = cpyAnc
 	}
 
-	_handleFilterChange(isFilterValueChange) {
+	_handleFilterChange (isFilterValueChange) {
 		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
 		//   re-render.
 		if (isFilterValueChange) {
@@ -627,13 +625,13 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	_handleFeatFilterChange() {
+	_handleFeatFilterChange () {
 		const f = this.featFilterBox.getValues();
 		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
 		FilterBox.selectFirstVisible(this._featDataList);
 	}
 
-	async _pInitAndRunRender() {
+	async _pInitAndRunRender () {
 		this._$wrpOutline = $(`#sticky-nav`);
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
@@ -648,18 +646,18 @@ class ClassesPage extends BaseComponent {
 
 		this._doGenerateFilteredActiveClassData();
 		await this._pDoRender();
-	};
+	}
 
-	async _pDoSynchronizedRender() {
+	async _pDoSynchronizedRender () {
 		await this._pLock("render");
 		try {
 			await this._pDoRender();
 		} finally {
 			this._unlock("render");
 		}
-	};
+	}
 
-	async _pDoRender() {
+	async _pDoRender () {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
@@ -679,7 +677,7 @@ class ClassesPage extends BaseComponent {
 					.forEach(it => {
 						let state = MiscUtil.copy(this.__state);
 						state.feature = null;
-						const href = `#${this._getHashState({class: it.data.entity, feat: '', state})}`;
+						const href = `#${this._getHashState({class: it.data.entity, feat: "", state})}`;
 						it.data.$lnk.attr("href", href)
 					});
 				this._listFeat.items
@@ -720,10 +718,9 @@ class ClassesPage extends BaseComponent {
 					this._lastScrollFeature = null;
 				} else {
 					setTimeout(() => {
-						let x = window.scrollX
-						let y = window.scrollY
 						$scrollTo[0].scrollIntoView()
-						window.scrollTo(x, y)
+						$scrollTo.toggleClass("scroll-to-highlight", true)
+						setTimeout(() => { $scrollTo.toggleClass("scroll-to-highlight", false) }, 2000)
 					}, 100);
 				}
 			}
@@ -733,7 +730,7 @@ class ClassesPage extends BaseComponent {
 
 		const hkDisplayFluff = () => {
 			const $dispClassTitle = $(`#class-name`);
-			if (this._state.isHideFeatures) $dispClassTitle.toggleClass('hidden', !this._state.isShowFluff)
+			if (this._state.isHideFeatures) $dispClassTitle.toggleClass("hidden", !this._state.isShowFluff)
 			if (this._state.isHideFeatures && !this._isAnySubclassActive()) this._$divNoContent.toggleClass("hidden", this._state.isShowFluff);
 			$(`.pf2-fluff`).toggleClass("hidden-fluff", !this._state.isShowFluff);
 		}
@@ -752,14 +749,14 @@ class ClassesPage extends BaseComponent {
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
 				} else {
-					$dispClassTitle.toggleClass('hidden', !this._state.isShowFluff)
+					$dispClassTitle.toggleClass("hidden", !this._state.isShowFluff)
 					this._$wrpOutline.toggleClass("hidden", true);
 					this._$divNoContent.toggleClass("hidden", false);
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", true);
 				}
 			} else {
-				$dispClassTitle.toggleClass('hidden', false)
+				$dispClassTitle.toggleClass("hidden", false)
 				this._$wrpOutline.toggleClass("hidden", false);
 				this._$divNoContent.toggleClass("hidden", true);
 				$dispClassFeatures.toggleClass("hidden", false);
@@ -785,19 +782,19 @@ class ClassesPage extends BaseComponent {
 
 		this._handleFilterChange(false);
 		this._handleFeatFilterChange();
-	};
+	}
 
-	_isAnySubclassActive() {
+	_isAnySubclassActive () {
 		return !!this._getActiveSubclasses().length;
 	}
 
-	_getActiveSubclasses(asStateKeys) {
+	_getActiveSubclasses (asStateKeys) {
 		return this.activeClass.subclasses
 			.filter(sc => this._state[UrlUtil.getStateKeySubclass(sc)])
 			.map(sc => asStateKeys ? UrlUtil.getStateKeySubclass(sc) : sc);
 	}
 
-	_render_renderClass() {
+	_render_renderClass () {
 		const $classStats = $(`#classesstats`).empty();
 		const cls = this.activeClass;
 
@@ -805,32 +802,32 @@ class ClassesPage extends BaseComponent {
 
 		const statSidebar = Parser.initialProficienciesToFull(cls.initialProficiencies)
 		const className = {
-			type: 'pf2-h1',
-			name: cls.name
+			type: "pf2-h1",
+			name: cls.name,
 		};
 		const flavor = {
-			type: 'pf2-h1-flavor',
-			entries: cls.flavor
+			type: "pf2-h1-flavor",
+			entries: cls.flavor,
 		};
 		const keyAbility = {
 			type: "pf2-key-ability",
 			ability: [
 				cls.keyAbility,
-				`At 1st level, your class gives you an ability boost to ${cls.keyAbility}.`
+				`At 1st level, your class gives you an ability boost to ${cls.keyAbility}.`,
 			],
 			hp: [
 				`${cls.HP} plus your Constitution Modifier`,
-				"You increase your maximum number of HP by this number at 1st level and every level thereafter."
-			]
+				"You increase your maximum number of HP by this number at 1st level and every level thereafter.",
+			],
 		};
-		const fluffStack = [''];
-		renderer.recursiveRender(cls.fluff, fluffStack, {depth: 1}, {prefix: '<p class="pf2-p">', suffix: '</p>'})
+		const fluffStack = [""];
+		renderer.recursiveRender(cls.fluff, fluffStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 
 		$$`<div id="class-name">${renderer.render(className)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>
 		<div data-feature-type="class"><div class="pf2-sidebar--class">${renderer.render(statSidebar)}</div></div>
 		<div data-feature-type="class">${renderer.render(keyAbility)}</div>
-		<div class="pf2-fluff">${fluffStack.join('')}</div>
+		<div class="pf2-fluff">${fluffStack.join("")}</div>
 		<div data-feature-type="class" id="advancements"></div>
 		`.appendTo($classStats);
 
@@ -841,7 +838,7 @@ class ClassesPage extends BaseComponent {
 						type: "pf2-h3",
 						name: feature.name,
 						entries: feature.entries,
-						level: ixLvl + 1
+						level: ixLvl + 1,
 					}))
 					.appendTo($classStats)
 
@@ -871,9 +868,9 @@ class ClassesPage extends BaseComponent {
 		this._$divNoContent = ClassesPage._render_$getNoContent().appendTo($classStats);
 
 		$classStats.show()
-	};
+	}
 
-	_render_renderClassAdvancementTable() {
+	_render_renderClassAdvancementTable () {
 		const $wrpTblClass = $(`#advancements`).empty();
 		const cls = this.activeClass;
 
@@ -917,42 +914,41 @@ class ClassesPage extends BaseComponent {
 						};
 						this._addHookAll("state", hkSetHref);
 						hkSetHref();
-
 					} else {
 						switch (it) {
 							case "classFeats": {
 								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`);
-								name = 'class feat';
+								name = "class feat";
 								source = this.activeClass.source;
 								break;
 							}
 							case "skillFeats": {
 								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1">skill feat</a>`)
-								name = 'skill feat';
+								name = "skill feat";
 								source = this.activeClass.source;
 								break;
 							}
 							case "generalFeats": {
 								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`)
-								name = 'general feat';
+								name = "general feat";
 								source = this.activeClass.source;
 								break;
 							}
 							case "ancestryFeats": {
 								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`)
-								name = 'ancestry feat';
+								name = "ancestry feat";
 								source = this.activeClass.source;
 								break;
 							}
 							case "skillIncrease": {
 								$lnk = $(`<span>skill increase</span>`)
-								name = 'skill increase';
+								name = "skill increase";
 								source = this.activeClass.source;
 								break;
 							}
 							case "abilityBoosts": {
 								$lnk = $(`<span>ability boosts</span>`)
-								name = 'ability boosts';
+								name = "ability boosts";
 								source = this.activeClass.source;
 								break;
 							}
@@ -972,8 +968,8 @@ class ClassesPage extends BaseComponent {
 					};
 				});
 			return {
-				$row: $$`<div class="pf2-table__entry ${ixLvl % 2 ? 'odd' : ''}">${ixLvl + 1}</div>
-					<div class="pf2-table__entry ${ixLvl % 2 ? 'odd' : ''}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
+				$row: $$`<div class="pf2-table__entry ${ixLvl % 2 ? "odd" : ""}">${ixLvl + 1}</div>
+					<div class="pf2-table__entry ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
 				metasFeatureLinks,
 			}
 		});
@@ -1004,20 +1000,20 @@ class ClassesPage extends BaseComponent {
 		$wrpTblClass.show();
 	}
 
-	async _render_pRenderSubclassTabs() {
+	async _render_pRenderSubclassTabs () {
 		const $wrp = $(`#subclasstabs`).empty();
 
 		this._render_renderSubclassPrimaryControls($wrp);
 		await this._render_pInitSubclassControls($wrp);
 	}
 
-	_render_renderSubclassPrimaryControls($wrp) {
+	_render_renderSubclassPrimaryControls ($wrp) {
 		const cls = this.activeClass;
 
 		// region features/fluff
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
 			text: "Features",
-			isInverted: true
+			isInverted: true,
 		}).title("Toggle Class Features");
 
 		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Class Info");
@@ -1030,7 +1026,7 @@ class ClassesPage extends BaseComponent {
 		this._listSubclass = new List({
 			$wrpList: $wrpHTabs,
 			isUseJquery: true,
-			fnSort: ClassesPage._fnSortSubclassFilterItems
+			fnSort: ClassesPage._fnSortSubclassFilterItems,
 		});
 		const subclasses = this.activeClass.subclasses;
 
@@ -1064,7 +1060,7 @@ class ClassesPage extends BaseComponent {
 		// endregion
 	}
 
-	_doSelectAllSubclasses() {
+	_doSelectAllSubclasses () {
 		const allStateKeys = this.activeClass.subclasses.map(sc => UrlUtil.getStateKeySubclass(sc));
 
 		this._pageFilter.sourceFilter.doSetPillsClear();
@@ -1072,7 +1068,7 @@ class ClassesPage extends BaseComponent {
 		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
-	async _render_pInitSubclassControls($wrp) {
+	async _render_pInitSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
 		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; CTRL to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
@@ -1147,10 +1143,12 @@ class ClassesPage extends BaseComponent {
 
 		const $btnShuffle = $(`<button title="Feeling Lucky?" class="btn btn-xs btn-default flex-1"><span class="glyphicon glyphicon-random"/></button>`)
 			.click(() => {
-				if (!this._listSubclass.visibleItems.length) return JqueryUtil.doToast({
-					content: "No subclasses to choose from!",
-					type: "warning"
-				});
+				if (!this._listSubclass.visibleItems.length) {
+					return JqueryUtil.doToast({
+						content: "No subclasses to choose from!",
+						type: "warning",
+					});
+				}
 
 				const doDeselAll = () => this._listSubclass.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
 
@@ -1176,7 +1174,7 @@ class ClassesPage extends BaseComponent {
 		</div>`.appendTo($wrp);
 	}
 
-	_handleSubclassFilterChange() {
+	_handleSubclassFilterChange () {
 		const f = this.filterBox.getValues();
 		const cls = this.activeClass;
 		this._listSubclass.filter(li => {
@@ -1184,12 +1182,12 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
-				cls._fMisc
+				cls._fMisc,
 			);
 		});
 	}
 
-	_render_getSubclassTab(cls, sc, ix) {
+	_render_getSubclassTab (cls, sc, ix) {
 		const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](sc), "subclass", sc.source);
 
 		const stateKey = UrlUtil.getStateKeySubclass(sc);
@@ -1238,7 +1236,7 @@ class ClassesPage extends BaseComponent {
 		);
 	}
 
-	static getSubclassCssMod(cls, sc) {
+	static getSubclassCssMod (cls, sc) {
 		if (sc.source !== cls.source) {
 			return BrewUtil.hasSourceJson(sc.source)
 				? "brew"
@@ -1249,18 +1247,18 @@ class ClassesPage extends BaseComponent {
 		return "fresh";
 	}
 
-	_render_renderFeat() {
+	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
 		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
 		$featStats.show();
 	}
 
-	static _render_$getNoContent() {
+	static _render_$getNoContent () {
 		return $(`<div class="pf2-h1-flavor text-center">Toggle a button to view class information</div>`)
 	}
 
-	_getDefaultState() {
+	_getDefaultState () {
 		return MiscUtil.copy(ClassesPage._DEFAULT_STATE);
 	}
 }

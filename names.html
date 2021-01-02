@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -58,10 +56,17 @@
 </head>
 
 <body>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
 <div class="viewport-wrapper">
-	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	</div>
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
@@ -77,8 +82,10 @@
 		<div class="view-col" id="listcontainer">
 			<div class="input-group btn-group search-box flex">
 				<div class="w-100 relative">
-					<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-					<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+					<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+						   class="search form-control lst__search lst__search--no-border-h">
+					<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+						class="glyphicon glyphicon-search"></span></div>
 				</div>
 				<button class="btn btn-default reset" id="reset" type="button">Reset</button>
 			</div>

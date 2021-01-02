@@ -33,7 +33,7 @@ class ItemsPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(item.source);
-		const level = item.level != null ? item.level : '\u2014'
+		const level = item.level != null ? item.level : "\u2014"
 
 		if (item._fIsEquipment) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -41,7 +41,7 @@ class ItemsPage {
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
-				<span class="col-1-2 text-center">${item.bulk ? item.bulk : '\u2014'}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
 				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
@@ -71,7 +71,7 @@ class ItemsPage {
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
-				<span class="col-1-2 text-center">${item.bulk ? item.bulk : '\u2014'}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
 				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
@@ -115,7 +115,7 @@ class ItemsPage {
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-5-4 pl-0">${item.name}</span>
 				<span class="text-center col-2-3">${Parser.priceToFull(item.price)}</span>
-				<span class="text-center col-2">${item.bulk ? item.bulk : '\u2014'}</span>
+				<span class="text-center col-2">${item.bulk ? item.bulk : "\u2014"}</span>
 				${$dispCount}
 			</a>
 		</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -168,15 +168,9 @@ class ItemsPage {
 			() => {},
 			buildFluffTab,
 		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true),
-		);
 
-		// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
-		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab, picTab);
+		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}

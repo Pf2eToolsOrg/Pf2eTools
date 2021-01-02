@@ -12,7 +12,7 @@ class TraitsPage extends ListPage {
 
 			sublistClass: "subtraits",
 
-			dataProps: ["trait"]
+			dataProps: ["trait"],
 		});
 	}
 
@@ -36,12 +36,12 @@ class TraitsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				source
+				source,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -67,8 +67,8 @@ class TraitsPage extends ListPage {
 			$ele,
 			it.name,
 			{
-				hash
-			}
+				hash,
+			},
 		);
 		return listItem;
 	}
@@ -83,7 +83,7 @@ class TraitsPage extends ListPage {
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
-			buildStatsTab
+			buildStatsTab,
 		);
 
 		Renderer.utils.bindTabButtons(statTab);

@@ -12,7 +12,7 @@ class BestiaryPage {
 		this._pageFilter = new PageFilterBestiary();
 		this._multiSource = new MultiSource({
 			fnHandleData: addCreatures,
-			prop: "creature"
+			prop: "creature",
 		});
 	}
 
@@ -50,12 +50,12 @@ class BestiaryPage {
 				hash,
 				source,
 				level: cr.level,
-				type: cr.creature_type
+				type: cr.creature_type,
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		return listItem;
@@ -139,13 +139,13 @@ class BestiaryPage {
 				source: Parser.sourceJsonToAbv(mon.source),
 				type,
 				cr,
-				count
+				count,
 			},
 			{
 				uniqueId: data.uniqueId || "",
 				customHashId: getCreatureCustomHashId(mon),
-				$elesCount: [$eleCount1, $eleCount2]
-			}
+				$elesCount: [$eleCount1, $eleCount2],
+			},
 		);
 
 		return listItem;
@@ -186,14 +186,14 @@ class BestiaryPage {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		encounterBuilder = new EncounterBuilder();
 		encounterBuilder.initUi();
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
-			DataUtil.creature.pPreloadMeta()
+			DataUtil.creature.pPreloadMeta(),
 		]);
 		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addCreatures, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
@@ -287,8 +287,8 @@ async function pPageInit (loadedSources) {
 	list = ListUtil.initList(
 		{
 			listClass: "creatures",
-			fnSort: PageFilterBestiary.sortCreatures
-		}
+			fnSort: PageFilterBestiary.sortCreatures,
+		},
 	);
 	ListUtil.setOptions({primaryLists: [list]});
 	SortUtil.initBtnSortHandlers($(`#filtertools`), list);
@@ -301,7 +301,7 @@ async function pPageInit (loadedSources) {
 	// filtering function
 	bestiaryPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
-		bestiaryPage.handleFilterChange.bind(bestiaryPage)
+		bestiaryPage.handleFilterChange.bind(bestiaryPage),
 	);
 
 	subList = ListUtil.initSublist({
@@ -309,7 +309,7 @@ async function pPageInit (loadedSources) {
 		fnSort: PageFilterBestiary.sortCreatures,
 		onUpdate: onSublistChange,
 		customHashHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
-		customHashUnpacker: getUnpackedCustomHashId
+		customHashUnpacker: getUnpackedCustomHashId,
 	});
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 
@@ -352,9 +352,9 @@ async function pPageInit (loadedSources) {
 			const stack = [];
 
 			const renderCreature = (mon) => {
-				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
+				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
 				stack.push(Renderer.creature.getCompactRenderedString(mon, renderer));
-				stack.push(`</tbody></table></div>`);
+				stack.push(`</div></div>`);
 			};
 
 			stack.push(`<div class="w-100 h-100">`);
@@ -394,30 +394,7 @@ async function pPageInit (loadedSources) {
 
 			return numShown;
 		},
-		hasPrintColumns: true
-	});
-	// endregion
-
-	// region proficiency bonus/dice toggle
-	const profBonusDiceBtn = $("button#profbonusdice");
-	profBonusDiceBtn.click(function () {
-		if (window.PROF_DICE_MODE === PROF_MODE_DICE) {
-			window.PROF_DICE_MODE = PROF_MODE_BONUS;
-			this.innerHTML = "Use Proficiency Dice";
-			$("#pagecontent").find(`span.render-roller, span.dc-roller`).each(function () {
-				const $this = $(this);
-				$this.attr("mode", "");
-				$this.html($this.attr("data-roll-prof-bonus"));
-			});
-		} else {
-			window.PROF_DICE_MODE = PROF_MODE_DICE;
-			this.innerHTML = "Use Proficiency Bonus";
-			$("#pagecontent").find(`span.render-roller, span.dc-roller`).each(function () {
-				const $this = $(this);
-				$this.attr("mode", "dice");
-				$this.html($this.attr("data-roll-prof-dice"));
-			});
-		}
+		hasPrintColumns: true,
 	});
 	// endregion
 }
@@ -438,7 +415,7 @@ class EncounterBuilderUtils {
 					// used for encounter adjuster
 					crScaled: crScaled,
 					customHashId: it.data.customHashId,
-					hash: UrlUtil.autoEncodeHash(mon)
+					hash: UrlUtil.autoEncodeHash(mon),
 				}
 			}
 		}).filter(it => it && it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
@@ -472,7 +449,7 @@ class EncounterBuilderUtils {
 		if (crValues.length === 1) {
 			crMetas.push({
 				mean: crValues[0],
-				deviation: 0
+				deviation: 0,
 			});
 		} else {
 			// Get an average CR for every possible encounter without one of the creatures in the encounter
@@ -586,7 +563,7 @@ function addCreatures (data) {
 	ListUtil.setOptions({
 		itemList: creatures,
 		getSublistRow: bestiaryPage.pGetSublistItem.bind(bestiaryPage),
-		primaryLists: [list]
+		primaryLists: [list],
 	});
 
 	function popoutHandlerGenerator (toList) {
@@ -602,8 +579,8 @@ function addCreatures (data) {
 					{
 						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
 						isPermanent: true,
-						isBookContent: true
-					}
+						isBookContent: true,
+					},
 				);
 			} else if (evt.ctrlKey || evt.metaKey) {
 				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
@@ -616,8 +593,8 @@ function addCreatures (data) {
 					{
 						title: name,
 						isPermanent: true,
-						isBookContent: true
-					}
+						isBookContent: true,
+					},
 				);
 			} else {
 				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
@@ -630,8 +607,8 @@ function addCreatures (data) {
 					{
 						pageUrl,
 						title: toRender._displayName || toRender.name,
-						isPermanent: true
-					}
+						isPermanent: true,
+					},
 				);
 			}
 		};
@@ -825,7 +802,7 @@ function renderStatblock (mon, isScaled) {
 						const fluffEntries = await pGetFluffEntries();
 						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluffEntries, null, "\t"));
 						JqueryUtil.showCopiedEffect($btnOptions);
-					}
+					},
 				),
 				new ContextUtil.Action(
 					"Copy as Markdown",
@@ -834,8 +811,8 @@ function renderStatblock (mon, isScaled) {
 						const rendererMd = RendererMarkdown.get().setFirstSection(true);
 						MiscUtil.pCopyTextToClipboard(fluffEntries.map(f => rendererMd.render(f)).join("\n"));
 						JqueryUtil.showCopiedEffect($btnOptions);
-					}
-				)
+					},
+				),
 			]
 			const menu = ContextUtil.getMenu(actions);
 
@@ -850,7 +827,7 @@ function renderStatblock (mon, isScaled) {
 			$content,
 			entity: mon,
 			pFnGetFluff: Renderer.creature.pGetFluff,
-			$headerControls
+			$headerControls,
 		});
 	}
 
@@ -861,7 +838,7 @@ function renderStatblock (mon, isScaled) {
 			$wrpBtnProf.append($btnProf);
 			$(`#float-token`).show();
 		},
-		buildStatsTab
+		buildStatsTab,
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Info",
@@ -869,7 +846,7 @@ function renderStatblock (mon, isScaled) {
 			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
-		buildFluffTab
+		buildFluffTab,
 	);
 	const picTab = Renderer.utils.tabButton(
 		"Images",
@@ -877,9 +854,9 @@ function renderStatblock (mon, isScaled) {
 			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
 			$(`#float-token`).hide();
 		},
-		() => buildFluffTab(true)
+		() => buildFluffTab(true),
 	);
-	Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
+	Renderer.utils.bindTabButtons(statTab);
 }
 
 async function pHandleUnknownHash (link, sub) {
@@ -897,7 +874,7 @@ function dcRollerClick (event, ele, exp) {
 	const it = {
 		type: "dice",
 		rollable: true,
-		toRoll: exp
+		toRoll: exp,
 	};
 	Renderer.dice.pRollerClick(event, ele, JSON.stringify(it));
 }

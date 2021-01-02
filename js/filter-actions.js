@@ -15,10 +15,10 @@ class PageFilterActions extends PageFilter {
 				Parser.TM_R,
 				Parser.TM_MINS,
 				Parser.TM_HRS,
-				"Varies"
+				"Varies",
 			],
 			displayFn: Parser.timeUnitToFull,
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._traitFilter = new Filter({header: "Traits"})
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
@@ -52,7 +52,7 @@ class PageFilterActions extends PageFilter {
 			it.source,
 			it._fTime,
 			it.traits,
-			it._fMisc
+			it._fMisc,
 		)
 	}
 }

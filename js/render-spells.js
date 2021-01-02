@@ -1,5 +1,5 @@
 class RenderSpells {
-	static $getRenderedSpell(sp, subclassLookup) {
+	static $getRenderedSpell (sp, subclassLookup) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
@@ -7,7 +7,7 @@ class RenderSpells {
 		const level = sp.type === "CANTRIP" ? 1 : sp.level
 
 		renderStack.push(`
-		${Renderer.utils.getExcludedDiv(sp, 'spell', UrlUtil.PG_SPELLS)}
+		${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
 		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, level: level})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}`);
@@ -35,9 +35,9 @@ class RenderSpells {
 		let cast = ``
 		let castStack = []
 		renderer.recursiveRender(sp.cast.entry, castStack)
-		cast = castStack.join('')
+		cast = castStack.join("")
 		if (!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
-			components = `(` + components + `)`
+			components = `(${components})`
 		}
 
 		let cst_tr_req = ``;
@@ -122,7 +122,7 @@ class RenderSpells {
 		return $(renderStack.join(""));
 	}
 
-	static async pGetSubclassLookup() {
+	static async pGetSubclassLookup () {
 		const subclassLookup = {};
 		Object.assign(subclassLookup, await DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`));
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -130,7 +130,7 @@ class RenderSpells {
 		return subclassLookup
 	}
 
-	static mergeHomebrewSubclassLookup(subclassLookup, homebrew) {
+	static mergeHomebrewSubclassLookup (subclassLookup, homebrew) {
 		if (homebrew.class) {
 			homebrew.class.filter(it => it.subclasses).forEach(c => {
 				(subclassLookup[c.source] =

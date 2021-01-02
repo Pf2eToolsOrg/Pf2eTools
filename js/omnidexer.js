@@ -897,7 +897,7 @@ class IndexableFileTraits extends IndexableFile {
 Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
-	//new IndexableFileDiseases(),
+	// new IndexableFileDiseases(),
 	new IndexableFileFeats(),
 
 	new IndexableFileItemsBase(),
@@ -926,7 +926,7 @@ Omnidexer.TO_INDEX = [
 
 	new IndexableFileActions(),
 	// new IndexableFileLanguages(),
-	new IndexableFileTraits()
+	new IndexableFileTraits(),
 ];
 
 class IndexableSpecial {

@@ -1,17 +1,14 @@
 "use strict";
 
 class ArchetypesPage extends BaseComponent {
-
-	constructor() {
+	constructor () {
 		super();
 		this.__archetypeId = {_: 0};
-		this._archetypeId = this._getProxy('archetypeId', this.__archetypeId);
+		this._archetypeId = this._getProxy("archetypeId", this.__archetypeId);
 
 		this._list = null;
 		this._ixData = 0;
 		this._dataList = [];
-		this._lastScrollFeature = null;
-		this._outlineData = {};
 		this._pageFilter = new PageFilterArchetypes();
 
 		this._$divNoContent = null;
@@ -29,51 +26,51 @@ class ArchetypesPage extends BaseComponent {
 			archFilterHidden: true,
 			classFilterHidden: true,
 			skillFilterHidden: true,
-			typeDeselFn: (it => it === 'Archetype')
+			typeDeselFn: it => it === "Archetype",
 		});
 		this.__featId = {_: 0};
-		this._featId = this._getProxy('featId', this.__featId);
+		this._featId = this._getProxy("featId", this.__featId);
 	}
 
-	get activeArchetype() {
+	get activeArchetype () {
 		if (this._activeArchetypeDataFiltered) return this._activeArchetypeDataFiltered;
 		return this.activeArchetypeRaw;
 	}
 
-	get activeArchetypeRaw() {
+	get activeArchetypeRaw () {
 		return this._dataList[this._archetypeId._];
 	}
 
-	get activeFeat() {
+	get activeFeat () {
 		if (this._activeFeatDataFiltered) return this._activeFeatDataFiltered;
 		return this.activeFeatRaw;
 	}
 
-	get activeFeatRaw() {
+	get activeFeatRaw () {
 		return this._featDataList[this._featId._];
 	}
 
-	get filterBox() {
+	get filterBox () {
 		return this._pageFilter.filterBox;
 	}
 
-	get featFilterBox() {
+	get featFilterBox () {
 		return this._featFilter.filterBox;
 	}
 
-	async pOnLoad() {
+	async pOnLoad () {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.archetype.loadJSON();
-		const feats = await DataUtil.loadJSON('data/feats/feats-crb.json');
+		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json");
 		this._featLookUp = {};
 		feats.feat.forEach(feat => {
 			const hash = UrlUtil.autoEncodeHash(feat);
 			this._featLookUp[hash] = feat;
 		});
 
-		this._list = ListUtil.initList({listClass: "ancestries", isUseJquery: true});
-		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {input: '#feat-lst__search', glass:'#feat-lst__search-glass', reset:'#feat-reset'});
+		this._list = ListUtil.initList({listClass: "archetypes", isUseJquery: true});
+		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 		SortUtil.initBtnSortHandlers($("#feat-filtertools"), this._listFeat);
@@ -106,14 +103,14 @@ class ArchetypesPage extends BaseComponent {
 		BrewUtil.makeBrewButton("manage-brew");
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton(true, null, 0);
-		RollerUtil.addListRollButton(true, {roll:'feat-feelinglucky', reset:'feat-reset', search:'feat-filter-search-group'}, 1);
+		RollerUtil.addListRollButton(true, {roll: "feat-feelinglucky", reset: "feat-reset", search: "feat-filter-search-group"}, 1);
 
 		window.onhashchange = this._handleHashChange.bind(this);
 
 		this._list.init();
 		this._listFeat.init();
 
-		$(`.initial-message`).text(`Select an ancestry from the list to view it here`);
+		$(`.initial-message`).text(`Select an archetype from the list to view it here`);
 
 		this._setArchetypeFromHash(Hist.initialLoad);
 		this._setFeatArchetypeFilters()
@@ -134,7 +131,7 @@ class ArchetypesPage extends BaseComponent {
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	async _pHandleBrew(homebrew) {
+	async _pHandleBrew (homebrew) {
 		const {archetype: rawArchetypeData} = homebrew;
 		const cpy = MiscUtil.copy({archetype: rawArchetypeData});
 
@@ -143,7 +140,7 @@ class ArchetypesPage extends BaseComponent {
 		if (isAddedAnyArchetype && !Hist.initialLoad) await this._pDoRender();
 	}
 
-	_addData(data) {
+	_addData (data) {
 		let isAddedAnyArchetype = false;
 
 		if (data.archetype && data.archetype.length) (isAddedAnyArchetype = true) && this._addData_addArchetypeData(data.archetype)
@@ -157,7 +154,7 @@ class ArchetypesPage extends BaseComponent {
 		return isAddedAnyArchetype
 	}
 
-	_addFeatsData(feats) {
+	_addFeatsData (feats) {
 		const arcFeats = feats.feat.filter(f => !!f.farchetype)
 		arcFeats.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
@@ -175,28 +172,29 @@ class ArchetypesPage extends BaseComponent {
 		this._listFeat.update();
 		this.featFilterBox.render();
 		this._handleFeatFilterChange();
-
 	}
 
-	_addData_addArchetypeData(archetypes) {
+	_addData_addArchetypeData (archetypes) {
 		const extraFeats = [];
 		for (const arc of archetypes) {
 			this._pageFilter.mutateForFilters(arc)
 			this._featFilter._archetypeFilter.addItem(arc.name);
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ARCHETYPES](arc), "archetype", arc.source);
 			this._pageFilter.addToFilters(arc, isExcluded);
-			if (arc.extraFeats) for (const ft of arc.extraFeats) {
-				const [lvl, name, source] = ft.split('|');
-				const hash = UrlUtil.encodeForHash([name, source]);
-				const mutateExtraFeat = (feat) => {
-					feat.level = Number(lvl);
-					feat.farchetype = arc.name;
-					feat._fType = ['Archetype'];
-					feat.entries.push(`<br>{@note This version of {@feat ${feat.name}|${source}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`);
-					this._featFilter.mutateForFilters(feat);
-					return feat
+			if (arc.extraFeats) {
+				for (const ft of arc.extraFeats) {
+					const [lvl, name, source] = ft.split("|");
+					const hash = UrlUtil.encodeForHash([name, source]);
+					const mutateExtraFeat = (feat) => {
+						feat.level = Number(lvl);
+						feat.farchetype = arc.name;
+						feat._fType = ["Archetype"];
+						feat.entries.push(`<br>{@note This version of {@feat ${feat.name}|${source}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`);
+						this._featFilter.mutateForFilters(feat);
+						return feat
+					}
+					extraFeats.push(mutateExtraFeat(MiscUtil.copy(MiscUtil.get(this._featLookUp, hash))));
 				}
-				extraFeats.push(mutateExtraFeat(MiscUtil.copy(MiscUtil.get(this._featLookUp, hash))));
 			}
 		}
 		this._featDataList.push(...extraFeats);
@@ -211,7 +209,7 @@ class ArchetypesPage extends BaseComponent {
 		}
 	}
 
-	_initHashAndStateSync() {
+	_initHashAndStateSync () {
 		// Wipe all hooks, as we redo them for each class render
 		this._resetHooks("state");
 		this._resetHooksAll("state");
@@ -221,7 +219,7 @@ class ArchetypesPage extends BaseComponent {
 		this._addHookAll("state", () => this._setHashFromState());
 	}
 
-	_setHashFromState(isSuppressHistory) {
+	_setHashFromState (isSuppressHistory) {
 		// During the initial load, force-suppress all changes
 		if (isSuppressHistory === undefined) isSuppressHistory = Hist.initialLoad;
 
@@ -234,18 +232,18 @@ class ArchetypesPage extends BaseComponent {
 		}
 	}
 
-	_setFeatArchetypeFilters() {
+	_setFeatArchetypeFilters () {
 		// FIXME:
-		let names = ['Archetype'];
+		let names = ["Archetype"];
 		names.push(this.activeArchetype.name);
 		Object.keys(this._featFilter._archetypeFilter.getValues().Archetypes).forEach(key => {
-			if (!key.startsWith('_')) this._featFilter._archetypeFilter.setValue(key, 2)
+			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 2)
 		});
-		names.forEach(name => {this._featFilter._archetypeFilter.setValue(name, 1)});
+		names.forEach(name => { this._featFilter._archetypeFilter.setValue(name, 1) });
 		this._handleFeatFilterChange();
 	}
 
-	_handleHashChange() {
+	_handleHashChange () {
 		// Parity with the implementation in hist.js
 		if (Hist.isHistorySuppressed) return Hist.setSuppressHistory(false);
 
@@ -255,7 +253,7 @@ class ArchetypesPage extends BaseComponent {
 		this._setStateFromHash();
 	}
 
-	_setArchetypeFromHash(isInitialLoad) {
+	_setArchetypeFromHash (isInitialLoad) {
 		const [[link], _] = Hist.getDoubleHashParts();
 
 		let ixToLoad;
@@ -290,7 +288,7 @@ class ArchetypesPage extends BaseComponent {
 		}
 	}
 
-	_setFeatFromHash(isInitialLoad) {
+	_setFeatFromHash (isInitialLoad) {
 		const [_, [link]] = Hist.getDoubleHashParts();
 
 		let ixToLoad;
@@ -299,8 +297,7 @@ class ArchetypesPage extends BaseComponent {
 		else if (this._loadFirstFeat && this._listFeat.visibleItems.length) {
 			ixToLoad = this._listFeat.visibleItems[0].ix;
 			this._loadFirstFeat = false;
-		}
-		else {
+		} else {
 			const listItem = Hist.getActiveListItem(link);
 
 			if (listItem == null) ixToLoad = -1;
@@ -326,9 +323,9 @@ class ArchetypesPage extends BaseComponent {
 		}
 	}
 
-	_setStateFromHash(isInitialLoad) {
+	_setStateFromHash (isInitialLoad) {
 		let [[arcH, ...subs], [ftH, ...ftSubs]] = Hist.getDoubleHashParts();
-		if (arcH === '' && !subs.length) return;
+		if (arcH === "" && !subs.length) return;
 		subs = this.filterBox.setFromSubHashes(subs);
 		ftSubs = this.featFilterBox.setFromSubHashes(ftSubs);
 
@@ -392,7 +389,7 @@ class ArchetypesPage extends BaseComponent {
 	 * @param [opts.feat] Feat to convert to hash.
 	 * @param [opts.state] State to convert to hash.
 	 */
-	_getHashState(opts) {
+	_getHashState (opts) {
 		opts = opts || {};
 
 		let fromState = opts.state || MiscUtil.copy(this.__state);
@@ -425,19 +422,19 @@ class ArchetypesPage extends BaseComponent {
 
 		const hashPartsArc = [
 			primaryHash,
-			stateHash
+			stateHash,
 		].filter(Boolean);
 		const hashPartsFeat = [
-			featHash
+			featHash,
 		].filter(Boolean);
 		const hashParts = [
 			Hist.util.getCleanHash(hashPartsArc.join(HASH_PART_SEP)),
-			Hist.util.getCleanHash(hashPartsFeat.join(HASH_PART_SEP))
+			Hist.util.getCleanHash(hashPartsFeat.join(HASH_PART_SEP)),
 		].filter(Boolean)
-		return hashParts.join('#')
+		return hashParts.join("#")
 	}
 
-	getListItem(anc, ancI, isExcluded) {
+	getListItem (anc, ancI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(anc);
 		const source = Parser.sourceJsonToAbv(anc.source);
 
@@ -465,7 +462,7 @@ class ArchetypesPage extends BaseComponent {
 		);
 	}
 
-	getFeatListItem(feat, featI, isExcluded) {
+	getFeatListItem (feat, featI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
@@ -486,7 +483,7 @@ class ArchetypesPage extends BaseComponent {
 				hash,
 				source,
 				level: feat.level,
-				prerequisites: feat._slPrereq
+				prerequisites: feat._slPrereq,
 			},
 			{
 				$lnk,
@@ -497,7 +494,7 @@ class ArchetypesPage extends BaseComponent {
 		);
 	}
 
-	_doGenerateFilteredActiveArchetypeData() {
+	_doGenerateFilteredActiveArchetypeData () {
 		const f = this.filterBox.getValues();
 		const cpyAnc = MiscUtil.copy(this.activeArchetypeRaw);
 		const walker = MiscUtil.getWalker({
@@ -509,7 +506,7 @@ class ArchetypesPage extends BaseComponent {
 		this._activeArchetypeDataFiltered = cpyAnc
 	}
 
-	_handleFilterChange(isFilterValueChange) {
+	_handleFilterChange (isFilterValueChange) {
 		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
 		//   re-render.
 		if (isFilterValueChange) {
@@ -525,12 +522,12 @@ class ArchetypesPage extends BaseComponent {
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
 	}
 
-	_handleFeatFilterChange() {
+	_handleFeatFilterChange () {
 		const f = this.featFilterBox.getValues();
 		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
 	}
 
-	async _pInitAndRunRender() {
+	async _pInitAndRunRender () {
 		this._$wrpOutline = $(`#sticky-nav`);
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
@@ -545,18 +542,18 @@ class ArchetypesPage extends BaseComponent {
 
 		this._doGenerateFilteredActiveArchetypeData();
 		await this._pDoRender();
-	};
+	}
 
-	async _pDoSynchronizedRender() {
+	async _pDoSynchronizedRender () {
 		await this._pLock("render");
 		try {
 			await this._pDoRender();
 		} finally {
 			this._unlock("render");
 		}
-	};
+	}
 
-	async _pDoRender() {
+	async _pDoRender () {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
@@ -574,7 +571,7 @@ class ArchetypesPage extends BaseComponent {
 				this._list.items
 					.filter(it => it.data.$lnk)
 					.forEach(it => {
-						const href = `#${this._getHashState({archetype: it.data.entity, feat: ''})}`;
+						const href = `#${this._getHashState({archetype: it.data.entity, feat: ""})}`;
 						it.data.$lnk.attr("href", href)
 					});
 				this._listFeat.items
@@ -598,39 +595,37 @@ class ArchetypesPage extends BaseComponent {
 
 		this._handleFilterChange(false);
 		this._handleFeatFilterChange();
-	};
+	}
 
-	_render_renderArchetype() {
+	_render_renderArchetype () {
 		const $archetypeStats = $(`#archetypestats`).empty();
 		const arc = this.activeArchetype;
 
 		const renderer = Renderer.get().resetHeaderIndex();
 		const archetypeEntry = {
-			type: 'pf2-h2',
+			type: "pf2-h2",
 			name: arc.name,
-			entries: arc.entries
+			entries: arc.entries,
 		}
 
 		$$`${renderer.render(archetypeEntry)}
-		`.appendTo($archetypeStats);
-
-		this._$divNoContent = ArchetypesPage._render_$getNoContent().appendTo($archetypeStats);
+		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats);
 
 		$archetypeStats.show()
-	};
+	}
 
-	_render_renderFeat() {
+	_render_renderFeat () {
 		const $featStats = $(`#featstats`).empty();
 		const feat = this.activeFeat;
 		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
 		$featStats.show();
 	}
 
-	static _render_$getNoContent() {
-		return $(`<div class="pf2-h1-flavor text-center hidden">Toggle a button to view archetype information</div>`)
+	static _render_$getNoContent () {
+		return $(`<div class="pf2-h1-flavor text-center">Select an archetype from the list to view it here</div>`)
 	}
 
-	_getDefaultState() {
+	_getDefaultState () {
 		return MiscUtil.copy(ArchetypesPage._DEFAULT_STATE);
 	}
 }
@@ -640,7 +635,7 @@ ArchetypesPage._DEFAULT_STATE = {
 	isShowFluff: true,
 	isShowVeHeritages: false,
 	isShowHSources: false,
-	isShowFeats: true
+	isShowFeats: true,
 };
 
 const archetypesPage = new ArchetypesPage()

@@ -1,8 +1,8 @@
 "use strict";
 
-class ConditionsDiseasesPage extends ListPage {
+class ConditionsPage extends ListPage {
 	constructor () {
-		const pageFilter = new PageFilterConditionsDiseases();
+		const pageFilter = new PageFilterConditions();
 
 		super({
 			dataSource: "data/conditions.json",
@@ -88,27 +88,13 @@ class ConditionsDiseasesPage extends ListPage {
 			$content.append(RenderConditionDiseases.$getRenderedConditionDisease(it));
 		}
 
-		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content,
-				entity: it,
-				pFnGetFluff: Renderer.condition.pGetFluff,
-			});
-		}
-
 		const statTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
 			buildStatsTab,
 		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true),
-		);
 
-		Renderer.utils.bindTabButtons(statTab, picTab);
+		Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -119,5 +105,5 @@ class ConditionsDiseasesPage extends ListPage {
 	}
 }
 
-const conditionsDiseasesPage = new ConditionsDiseasesPage();
+const conditionsDiseasesPage = new ConditionsPage();
 window.addEventListener("load", () => conditionsDiseasesPage.pOnLoad());

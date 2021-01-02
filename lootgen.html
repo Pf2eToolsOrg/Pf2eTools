@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -69,7 +67,10 @@
 </head>
 
 <body id="lootgen">
-<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+</div>
 
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
@@ -82,7 +83,11 @@
 	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
 <main class="container">
 	<div class="row">
@@ -104,8 +109,10 @@
 							<option value="17">17+</option>
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
-							<label for="hoard" class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-								Hoard? <input type="checkbox" id="hoard" value="0" class="clickable" style="vertical-align: bottom;">
+							<label for="hoard" class="clickable"
+								   style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+								Hoard? <input type="checkbox" id="hoard" value="0" class="clickable"
+											  style="vertical-align: bottom;">
 							</label>
 						</span>
 					</div>
@@ -114,7 +121,8 @@
 					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 					<p>
 						<small>Based on the tables and rules in the
-							<a href="book.html#DMG,7,treasure%20tables,0"><em>Dungeon Master's Guide</em>, pages 133-149.</a>
+							<a href="book.html#DMG,7,treasure%20tables,0"><em>Dungeon Master's Guide</em>, pages
+								133-149.</a>
 						</small>
 					</p>
 				</div>
@@ -134,7 +142,8 @@
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
 							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-								Show Table <input checked type="checkbox" class="id-showLootTable clickable" style="vertical-align: bottom;">
+								Show Table <input checked type="checkbox" class="id-showLootTable clickable"
+												  style="vertical-align: bottom;">
 							</label>
 						</span>
 					</div>
@@ -153,7 +162,8 @@
 						</select>
 						<span class="input-group-addon" style="padding: 0;">
 							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-								Show Table <input checked type="checkbox" class="id-showLootTable clickable" style="vertical-align: bottom;">
+								Show Table <input checked type="checkbox" class="id-showLootTable clickable"
+												  style="vertical-align: bottom;">
 							</label>
 						</span>
 					</div>
@@ -163,7 +173,8 @@
 					</div>
 					<p>
 						<small>Based on the rules in the
-							<a href="book.html#XGE,2,choosing%20items%20piecemeal"><em>Xanathar's Guide to Everything</em>, pages 135-136</a>.
+							<a href="book.html#XGE,2,choosing%20items%20piecemeal"><em>Xanathar's Guide to
+								Everything</em>, pages 135-136</a>.
 						</small>
 					</p>
 				</div>
@@ -171,19 +182,25 @@
 
 			<div id="container-random-magic-item" class="hidden">
 				<p>
-					Generates a set of magical items for a party, based on the tables and rules in <a href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages 135-136</a>.
+					Generates a set of magical items for a party, based on the tables and rules in <a
+					href="book.html#XGE,2,awarding%20magic%20items"><em>Xanathar's Guide to Everything</em>, pages
+					135-136</a>.
 				</p>
 				<p><i>
-					If the "Exact Level" option is selected, the output will include a proportional number of items for any partially-completed tier.
+					If the "Exact Level" option is selected, the output will include a proportional number of items for
+					any partially-completed tier.
 				</i></p>
 
 				<div class="mb-2">
 					<div class="mb-3">
 						<div class="input-group">
-							<span class="input-group-addon" style="width: 10%" id="selectCharLevel">Character Level</span>
+							<span class="input-group-addon" style="width: 10%"
+								  id="selectCharLevel">Character Level</span>
 							<span class="input-group-addon loot__wrp-exact-level">
-								<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-									Exact Level? <input type="checkbox" checked id="closest-tier" class="clickable" style="vertical-align: bottom;">
+								<label class="clickable"
+									   style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
+									Exact Level? <input type="checkbox" checked id="closest-tier" class="clickable"
+														style="vertical-align: bottom;">
 								</label>
 							</span>
 						</div>
@@ -192,7 +209,8 @@
 					<div class="slider w-100" style="margin-bottom: 34px;"></div>
 
 					<div id="random-magic-item-select-tier" class="input-group w-100">
-						<select class="form-control clickable" id="charLevel" style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
+						<select class="form-control clickable" id="charLevel"
+								style="border-top-right-radius: 3px; border-bottom-right-radius: 3px;">
 							<option value="4" selected>1-4</option>
 							<option value="10">5-10</option>
 							<option value="16">11-16</option>
@@ -200,14 +218,18 @@
 						</select>
 						<span class="input-group-addon" style="padding: 0; display: none;" id="wrp-char-cumulative">
 							<label class="clickable" style="margin-bottom: 0; padding: 6px 12px; user-select: none;">
-								Cumulative with Previous Tiers? <input type="checkbox" checked id="char-cumulative" class="clickable" style="vertical-align: bottom;">
+								Cumulative with Previous Tiers? <input type="checkbox" checked id="char-cumulative"
+																	   class="clickable"
+																	   style="vertical-align: bottom;">
 							</label>
 						</span>
 					</div>
 				</div>
 
 				<div class="split-v-center">
-					<button class="col-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a Party</button>
+					<button class="col-9 btn btn-default" id="get-group-of-items-for-character">Generate Items for a
+						Party
+					</button>
 					<button class="col-2-9 btn btn-default pull-right id-clear">Clear</button>
 				</div>
 			</div>

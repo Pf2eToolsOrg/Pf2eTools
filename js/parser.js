@@ -32,7 +32,7 @@ Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText(num) {
+	function getAsText (num) {
 		const abs = Math.abs(num);
 		switch (abs) {
 			case 0:
@@ -219,8 +219,8 @@ Parser.getAbilityModifier = function (abilityScore) {
 Parser.getSpeedString = (it) => {
 	if (it.speed == null) return "\u2014";
 
-	function procSpeed(propName) {
-		function addSpeed(s) {
+	function procSpeed (propName) {
+		function addSpeed (s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
@@ -228,11 +228,11 @@ Parser.getSpeedString = (it) => {
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
-	function getVal(speedProp) {
+	function getVal (speedProp) {
 		return speedProp.number != null ? speedProp.number : speedProp;
 	}
 
-	function getCond(speedProp) {
+	function getCond (speedProp) {
 		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
@@ -259,7 +259,7 @@ Parser.SPEED_TO_PROGRESSIVE = {
 	"burrow": "burrowing",
 	"climb": "climbing",
 	"fly": "flying",
-	"swim": "swimming"
+	"swim": "swimming",
 };
 
 Parser.speedToProgressive = function (prop) {
@@ -356,7 +356,7 @@ Parser.SKILL_TO_ATB_ABV = {
 	"society": "int",
 	"stealth": "dex",
 	"survival": "wis",
-	"thievery": "dex"
+	"thievery": "dex",
 };
 
 Parser.skillToAbilityAbv = function (skill) {
@@ -380,7 +380,7 @@ Parser.SKILL_TO_SHORT = {
 	"society": "soc",
 	"stealth": "ste",
 	"survival": "sur",
-	"thievery": "thi"
+	"thievery": "thi",
 };
 
 Parser.skillToShort = function (skill) {
@@ -398,7 +398,7 @@ Parser.LANGUAGES_COMMON = [
 	"Jotun",
 	"Orcish",
 	"Sylvan",
-	"Undercommon"
+	"Undercommon",
 ];
 
 Parser.LANGUAGES_UNCOMMON = [
@@ -415,13 +415,13 @@ Parser.LANGUAGES_UNCOMMON = [
 ];
 
 Parser.LANGUAGES_SECRET = [
-	"Druidic"
+	"Druidic",
 ];
 
 Parser.LANGUAGES_ALL = [
 	...Parser.LANGUAGES_COMMON,
 	...Parser.LANGUAGES_UNCOMMON,
-	...Parser.LANGUAGES_SECRET
+	...Parser.LANGUAGES_SECRET,
 ].sort();
 
 Parser.dragonColorToFull = function (c) {
@@ -438,7 +438,7 @@ Parser.DRAGON_COLOR_TO_FULL = {
 	Z: "bronze",
 	C: "copper",
 	O: "gold",
-	S: "silver"
+	S: "silver",
 };
 
 Parser.acToFull = function (ac, renderer) {
@@ -606,19 +606,18 @@ Parser.priceToValue = function (price) {
 		case "pp":
 			mult = 1000;
 			break;
-
 	}
 	if (price.note != null) offset = 0.1;
 	return mult * amount + offset
 };
 
 Parser.priceToFull = function (price) {
-	if (price == null) return '\u2014';
-	if (typeof price === 'object') {
-		if (price.amount == null || price.coin == null) return '\u2014';
+	if (price == null) return "\u2014";
+	if (typeof price === "object") {
+		if (price.amount == null || price.coin == null) return "\u2014";
 		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
 	}
-	return '\u2014'
+	return "\u2014"
 };
 
 Parser.itemValueToFull = function (item, isShortForm) {
@@ -632,7 +631,7 @@ Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
 Parser.itemVehicleCostsToFull = function (item, isShortForm) {
 	return {
 		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
-		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm)
+		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm),
 	};
 };
 
@@ -652,11 +651,11 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 	if (it[prop]) {
 		const simplified = CurrencyUtil.doSimplifyCoins(
 			{
-				cp: it[prop]
+				cp: it[prop],
 			},
 			{
-				currencyConversionId: it.currencyConversion
-			}
+				currencyConversionId: it.currencyConversion,
+			},
 		);
 
 		const conversionTable = Parser.getCurrencyConversionTable(it.currencyConversion);
@@ -673,36 +672,36 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 Parser.DEFAULT_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
+		mult: 0.1,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
-	}
+		isFallback: true,
+	},
 ];
 Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
+		mult: 0.1,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
+		isFallback: true,
 	},
 	{
 		coin: "pp",
-		mult: 0.001
-	}
+		mult: 0.001,
+	},
 ];
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
 	const fromBrew = currencyConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "currencyConversions", currencyConversionId) : null;
@@ -730,7 +729,7 @@ Parser.COIN_ABV_TO_FULL = {
 	"sp": "silver pieces",
 	"ep": "electrum pieces",
 	"gp": "gold pieces",
-	"pp": "platinum pieces"
+	"pp": "platinum pieces",
 };
 Parser.COIN_CONVERSIONS = [1, 10, 100, 1000];
 
@@ -790,7 +789,7 @@ Parser.senseToExplanation = function (senseType) {
 };
 
 Parser.skillProficienciesToFull = function (skillProficiencies) {
-	function renderSingle(skProf) {
+	function renderSingle (skProf) {
 		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
 
 		const ixChoose = keys.indexOf("choose");
@@ -842,7 +841,7 @@ Parser.initialProficienciesToFull = function (initProf) {
 		name: "INITIAL PROFICIENCIES",
 		entries: [
 			"At 1st level, you gain the listed proficiency ranks in  the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way.",
-		]
+		],
 	};
 	out.entries.push({type: "pf2-title", name: "PERCEPTION"});
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`);
@@ -957,7 +956,7 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 	if (metaArr.length || (subschools && subschools.length)) {
 		const metaAndSubschoolPart = [
 			(subschools || []).map(sub => Parser.spSchoolAbvToFull(sub)).join(", "),
-			metaArr.join(", ")
+			metaArr.join(", "),
 		].filter(Boolean).join("; ").toLowerCase();
 		return `${levelSchoolStr} (${metaAndSubschoolPart})`;
 	}
@@ -971,7 +970,6 @@ Parser.spTimeListToFull = function (times, isStripTags) {
 Parser.getTimeToFull = function (time) {
 	return `${time.number} ${time.unit === "free" ? "free action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
-
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
@@ -1001,7 +999,7 @@ Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SIGHT]: "Sight",
 	[RNG_UNLIMITED]: "Unlimited",
 	[RNG_UNLIMITED_SAME_PLANE]: "Planetary",
-	[RNG_TOUCH]: "Touch"
+	[RNG_TOUCH]: "Touch",
 };
 
 Parser.spRangeTypeToFull = function (range) {
@@ -1017,7 +1015,7 @@ Parser.SP_DIST_TYPE_TO_FULL = {
 	[RNG_TOUCH]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_TOUCH],
 	[RNG_SIGHT]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_SIGHT],
 	[RNG_UNLIMITED]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED],
-	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE]
+	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE],
 };
 
 Parser.spDistanceTypeToFull = function (range) {
@@ -1038,7 +1036,7 @@ Parser.SP_RANGE_TO_ICON = {
 	[RNG_SIGHT]: "fa-eye",
 	[RNG_UNLIMITED_SAME_PLANE]: "fa-globe-americas",
 	[RNG_UNLIMITED]: "fa-infinity",
-	[RNG_TOUCH]: "fa-hand-paper"
+	[RNG_TOUCH]: "fa-hand-paper",
 };
 
 Parser.spRangeTypeToIcon = function (range) {
@@ -1160,7 +1158,7 @@ Parser.RANGE_TYPES = [
 	{type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true},
 	{type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true},
 
-	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false}
+	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false},
 ];
 
 Parser.DIST_TYPES = [
@@ -1172,7 +1170,7 @@ Parser.DIST_TYPES = [
 
 	{type: RNG_SIGHT, hasAmount: false},
 	{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
-	{type: RNG_UNLIMITED, hasAmount: false}
+	{type: RNG_UNLIMITED, hasAmount: false},
 ];
 
 Parser.spComponentsToFull = function (comp, level) {
@@ -1188,7 +1186,7 @@ Parser.spComponentsToFull = function (comp, level) {
 Parser.SP_END_TYPE_TO_FULL = {
 	"dispel": "dispelled",
 	"trigger": "triggered",
-	"discharge": "discharged"
+	"discharge": "discharged",
 };
 Parser.spEndTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_END_TYPE_TO_FULL, type);
@@ -1222,7 +1220,7 @@ Parser.DURATION_TYPES = [
 	{type: "instant", full: "Instantaneous"},
 	{type: "timed", hasAmount: true},
 	{type: "permanent", hasEnds: true},
-	{type: "special"}
+	{type: "special"},
 ];
 
 Parser.DURATION_AMOUNT_TYPES = [
@@ -1232,7 +1230,7 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"hour",
 	"day",
 	"week",
-	"year"
+	"year",
 ];
 
 Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
@@ -1276,13 +1274,14 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
-		subclass: {
-			shortName: sc.name,
-			source: sc.source
-		}
-	})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
-	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
+	if (fromLookup) {
+		return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+			subclass: {
+				shortName: sc.name,
+				source: sc.source,
+			},
+		})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	} else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
 Parser.SPELL_ATTACK_TYPE_TO_FULL = {};
@@ -1305,7 +1304,7 @@ Parser.SPELL_AREA_TYPE_TO_FULL = {
 	Q: "Square",
 	L: "Line",
 	H: "Hemisphere",
-	W: "Wall"
+	W: "Wall",
 };
 Parser.spAreaTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SPELL_AREA_TYPE_TO_FULL, type);
@@ -1316,7 +1315,7 @@ Parser.SP_MISC_TAG_TO_FULL = {
 	SGT: "Requires Sight",
 	PRM: "Permanent Effects",
 	SCL: "Scaling Effects",
-	SMN: "Summons Creature"
+	SMN: "Summons Creature",
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
@@ -1326,7 +1325,7 @@ Parser.SP_CASTER_PROGRESSION_TO_FULL = {
 	full: "Full",
 	"1/2": "Half",
 	"1/3": "One-Third",
-	"pact": "Pact Magic"
+	"pact": "Pact Magic",
 };
 Parser.spCasterProgressionToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_CASTER_PROGRESSION_TO_FULL, type);
@@ -1362,7 +1361,6 @@ Parser.creatureAlignToFull = function (align) {
 };
 
 Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
-
 
 Parser.alignmentAbvToFull = function (alignment) {
 	if (!alignment) return null; // used in sidekicks
@@ -1439,7 +1437,7 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	lbs = lbs - (2000 * tons);
 	return [
 		tons ? `${tons}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
-		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
+		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null,
 	].filter(Boolean).join(", ");
 };
 
@@ -1654,7 +1652,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 				c.class.source,
 				c.class.name,
 				c.subclass.source,
-				c.subclass.name
+				c.subclass.name,
 			);
 
 			if (fromLookup && fromLookup.isReprinted) {
@@ -1679,7 +1677,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent(shortName) {
+	function mapClassShortNameToMostRecent (shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -1709,7 +1707,7 @@ Parser.TRAP_HAZARD_TYPE_TO_FULL = {
 	WTH: "Weather",
 	ENV: "Environmental Hazard",
 	WLD: "Wilderness Hazard",
-	GEN: "Generic"
+	GEN: "Generic",
 };
 
 Parser.tierToFullLevel = function (tier) {
@@ -1788,7 +1786,7 @@ Parser.SKL_ABVS = [
 	SKL_ABV_NEC,
 	SKL_ABV_TRA,
 	SKL_ABV_CON,
-	SKL_ABV_PSI
+	SKL_ABV_PSI,
 ];
 
 Parser.TM_A = "single";
@@ -1809,7 +1807,7 @@ Parser.TIME_TO_FULL = {
 	[Parser.TM_F]: "Free Action",
 	[Parser.TM_ROUND]: "Rounds",
 	[Parser.TM_MINS]: "Minutes",
-	[Parser.TM_HRS]: "Hours"
+	[Parser.TM_HRS]: "Hours",
 };
 Parser.timeUnitToFull = function (timeUnit) {
 	return Parser._parse_aToB(Parser.TIME_TO_FULL, timeUnit);
@@ -1823,7 +1821,7 @@ Parser.TIME_TO_ABV = {
 	[Parser.TM_F]: "F",
 	[Parser.TM_ROUND]: "rnd",
 	[Parser.TM_MINS]: "min",
-	[Parser.TM_HRS]: "hr"
+	[Parser.TM_HRS]: "hr",
 };
 Parser.timeUnitToAbv = function (timeUnit) {
 	return Parser._parse_aToB(Parser.TIME_TO_ABV, timeUnit);
@@ -1883,8 +1881,18 @@ Parser.ATB_ABV_TO_FULL = {
 	"con": "Constitution",
 	"int": "Intelligence",
 	"wis": "Wisdom",
-	"cha": "Charisma"
+	"cha": "Charisma",
 };
+
+Parser.ATB_TO_NUM = {
+	"Strength": 1,
+	"Dexterity": 2,
+	"Constitution": 3,
+	"Intelligence": 4,
+	"Wisdom": 5,
+	"Charisma": 6,
+	"Free": 7,
+}
 
 SZ_FINE = "F";
 SZ_DIMINUTIVE = "D";
@@ -1909,11 +1917,10 @@ Parser.SIZE_ABV_TO_FULL[SZ_GARGANTUAN] = "Gargantuan";
 Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
-
 Parser.ARMOR_ABV_TO_FULL = {
 	"l.": "light",
 	"m.": "medium",
-	"h.": "heavy"
+	"h.": "heavy",
 };
 
 Parser.CONDITION_TO_COLOR = {
@@ -1933,7 +1940,7 @@ Parser.CONDITION_TO_COLOR = {
 	"Stunned": "#a23bcb",
 	"Unconscious": "#3a40ad",
 
-	"Concentration": "#009f7a"
+	"Concentration": "#009f7a",
 };
 
 Parser.RULE_TYPE_TO_FULL = {
@@ -1941,7 +1948,7 @@ Parser.RULE_TYPE_TO_FULL = {
 	"V": "Variant",
 	"VO": "Variant Optional",
 	"VV": "Variant Variant",
-	"U": "Unknown"
+	"U": "Unknown",
 };
 
 Parser.ruleTypeToFull = function (ruleType) {
@@ -1951,13 +1958,12 @@ Parser.ruleTypeToFull = function (ruleType) {
 Parser.VEHICLE_TYPE_TO_FULL = {
 	"SHIP": "Ship",
 	"INFWAR": "Infernal War Machine",
-	"CREATURE": "Creature"
+	"CREATURE": "Creature",
 };
 
 Parser.vehicleTypeToFull = function (vehicleType) {
 	return Parser._parse_aToB(Parser.VEHICLE_TYPE_TO_FULL, vehicleType);
 };
-
 
 SRC_CRB = "CRB";
 SRC_APG = "APG";
@@ -1975,20 +1981,17 @@ Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
 
-
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
 
-
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
-
 
 Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -1998,7 +2001,7 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_CRB,
 	SRC_APG,
 	SRC_BST,
-	SRC_LOCG
+	SRC_LOCG,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -2034,7 +2037,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,
 	"language": SRC_CRB,
-	"trait": SRC_CRB
+	"trait": SRC_CRB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
@@ -2427,7 +2430,7 @@ T_HUGE = "Huge";
 T_GARGANTUAN = "Gargantuan";
 
 Parser.TRAITS_GENERAL = [T_ADDITIVE, T_ARCHETYPE, T_ATTACK, T_AURA, T_CANTRIP, T_CHARM, T_COMPANION, T_COMPLEX, T_COMPOSITION, T_CONCENTRATE, T_CONSECRATION, T_CURSE, T_CURSEBOUND, T_DARKNESS, T_DEATH, T_DEDICATION, T_DETECTION, T_DISEASE, T_DOWNTIME, T_EMOTION, T_ENVIRONMENTAL, T_EXPLORATION, T_EXTRADIMENSIONAL, T_FEAR, T_FINISHER, T_FLOURISH, T_FOCUSED, T_FORTUNE, T_GENERAL, T_HAUNT, T_HEALING, T_HEX, T_INCAPACITATION, T_INFUSED, T_INSTINCT, T_LEGACY, T_LIGHT, T_LINEAGE, T_LINGUISTIC, T_LITANY, T_MAGICAL, T_MANIPULATE, T_MECHANICAL, T_MENTAL, T_METAMAGIC, T_MINION, T_MISFORTUNE, T_MORPH, T_MOVE, T_MULTICLASS, T_OATH, T_OPEN, T_POLYMORPH, T_POSSESSION, T_PRECIOUS, T_PREDICTION, T_PRESS, T_RAGE, T_RECKLESS, T_RELOAD, T_REVELATION, T_SCRYING, T_SECRET, T_SKILL, T_SLEEP, T_SOCIAL, T_SPLASH, T_STAMINA, T_STANCE, T_SUMMONED, T_TELEPATHY, T_TELEPORTATION, T_TRAP, T_VIGILANTE, T_VIRULENT, T_VOCA]
-Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GRAPPLE, T_JOUSTING, T_MODULAR, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGE_INCREMENT,T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
+Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GRAPPLE, T_JOUSTING, T_MODULAR, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGE_INCREMENT, T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
 Parser.TRAITS_TRADITION = [T_ARCANE, T_DIVINE, T_OCCULT, T_PRIMAL]
 Parser.TRAITS_SETTLEMENT = [T_CITY, T_METROPOLIS, T_TOWN, T_VILLAGE]
 Parser.TRAITS_SENSE = [T_AUDITORY, T_OLFACTORY, T_VISUAL]
@@ -2808,6 +2811,10 @@ Parser.TRAITS_TO_TRAITS_SRC[T_VIGILANTE] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VIRULENT] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VOCA] = SRC_CRB;
 
+Parser.getTraitName = function (trait) {
+	return trait.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, "").uppercaseFirst()
+}
+
 Parser.rarityToNumber = function (r) {
 	switch (r) {
 		case T_COMMON: return 0;
@@ -2848,7 +2855,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"VEH": "vehicle (land)",
 	"SHP": "vehicle (water)",
 	"AIR": "vehicle (air)",
-	"WD": "wand"
+	"WD": "wand",
 };
 
 Parser.DMGTYPE_JSON_TO_FULL = {
@@ -2864,7 +2871,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"Y": "psychic",
 	"R": "radiant",
 	"S": "slashing",
-	"T": "thunder"
+	"T": "thunder",
 };
 
 Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
@@ -2872,15 +2879,15 @@ Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": [
-		"Acrobatics measures your ability to perform tasks requiring coordination and grace. When you use the {@action Escape} basic action, you can use your Acrobatics modifier instead of your unarmed attack modifier."
+		"Acrobatics measures your ability to perform tasks requiring coordination and grace. When you use the {@action Escape} basic action, you can use your Acrobatics modifier instead of your unarmed attack modifier.",
 	],
 	"Arcana": [
 		"Arcana measures how much you know about arcane magic and creatures. Even if you’re untrained, you can {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes."
-			]
+				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -2888,25 +2895,26 @@ Parser.SKILL_JSON_TO_FULL = {
 			"entries": [
 				"You must be trained in Arcana to use it for the following general skill actions.",
 				{
-					"type": "list", "items": [
+					"type": "list",
+					"items": [
 						"{@b {@action Decipher Writing}} about arcane theory.",
 						"{@b {@action Identify Magic}}, particularly arcane magic.",
-						"{@b {@action Learn a Spell}} from the arcane tradition."
-					]
-				}
-			]
-		}
+						"{@b {@action Learn a Spell}} from the arcane tradition.",
+					],
+				},
+			],
+		},
 	],
 	"Athletics": [
-		"Athletics allows you to perform deeds of physical prowess. When you use the {@action Escape} basic action, you can use your Athletics modifier instead of your unarmed attack modifier."
+		"Athletics allows you to perform deeds of physical prowess. When you use the {@action Escape} basic action, you can use your Athletics modifier instead of your unarmed attack modifier.",
 	],
 	"Crafting": [
 		"You can use this skill to create, understand, and repair items. Even if you’re untrained, you can {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about alchemical reactions, the value of items, engineering, unusual materials,\n and alchemical or mechanical creatures. The GM determines which creatures this applies to, but it usually includes constructs."
-			]
+				"{@b {@action Recall Knowledge}} about alchemical reactions, the value of items, engineering, unusual materials,\n and alchemical or mechanical creatures. The GM determines which creatures this applies to, but it usually includes constructs.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -2916,20 +2924,20 @@ Parser.SKILL_JSON_TO_FULL = {
 				{
 					"type": "list",
 					"items": [
-						"{@b {@action Earn Income}} by crafting goods for the market."
-					]
-				}
-			]
-		}
+						"{@b {@action Earn Income}} by crafting goods for the market.",
+					],
+				},
+			],
+		},
 	],
 	"Deception": [
-		"You can trick and mislead others using disguises, lies, and other forms of subterfuge."
+		"You can trick and mislead others using disguises, lies, and other forms of subterfuge.",
 	],
 	"Diplomacy": [
-		"You influence others through negotiation and flattery."
+		"You influence others through negotiation and flattery.",
 	],
 	"Intimidation": [
-		"You bend others to your will using threats."
+		"You bend others to your will using threats.",
 	],
 	"Lore": [
 		"You have specialized information on a narrow topic. Lore features many subcategories. You might have Military Lore, Sailing Lore, Vampire Lore, or any similar subcategory of the skill. Each subcategory counts as its own skill, so applying a skill increase to Planar Lore wouldn't increase your proficiency with Sailing Lore, for example.",
@@ -2939,8 +2947,8 @@ Parser.SKILL_JSON_TO_FULL = {
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about the subject of your Lore skill’s subcategory."
-			]
+				"{@b {@action Recall Knowledge}} about the subject of your Lore skill’s subcategory.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -2950,28 +2958,28 @@ Parser.SKILL_JSON_TO_FULL = {
 				{
 					"type": "list",
 					"items": [
-						"{@b {@action Earn Income}} by using your knowledge to practice a trade."
-					]
-				}
-			]
-		}
+						"{@b {@action Earn Income}} by using your knowledge to practice a trade.",
+					],
+				},
+			],
+		},
 	],
 	"Medicine": [
 		"You can patch up wounds and help people recover from diseases and poisons. Even if you’re untrained in Medicine,  you can use it to {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about diseases, injuries, poisons,  and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed."
-			]
-		}
+				"{@b {@action Recall Knowledge}} about diseases, injuries, poisons,  and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed.",
+			],
+		},
 	],
 	"Nature": [
 		"You know a great deal about the natural world, and you command and train animals and magical beasts. Even if you’re untrained in Nature, you can use it to {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about fauna, flora, geography, weather, the environment, creatures of natural origin (like animals, beasts, fey, and plants), the First World, the Material Plane, and the Elemental Planes."
-			]
+				"{@b {@action Recall Knowledge}} about fauna, flora, geography, weather, the environment, creatures of natural origin (like animals, beasts, fey, and plants), the First World, the Material Plane, and the Elemental Planes.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -2982,19 +2990,19 @@ Parser.SKILL_JSON_TO_FULL = {
 					"type": "list",
 					"items": [
 						"{@b {@action Identify Magic}}, particularly primal magic.",
-						"{@b {@action Learn a Spell}} from the primal tradition."
-					]
-				}
-			]
-		}
+						"{@b {@action Learn a Spell}} from the primal tradition.",
+					],
+				},
+			],
+		},
 	],
 	"Occultism": [
 		"You know a great deal about the natural world, and you command and train animals and magical beasts. Even if you’re untrained in Nature, you can use it to {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about ancient mysteries; obscure philosophies; creatures of occult significance (like aberrations, spirits, and oozes); and the Positive Energy, Negative Energy, Shadow, Astral, and Ethereal Planes."
-			]
+				"{@b {@action Recall Knowledge}} about ancient mysteries; obscure philosophies; creatures of occult significance (like aberrations, spirits, and oozes); and the Positive Energy, Negative Energy, Shadow, Astral, and Ethereal Planes.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -3006,19 +3014,19 @@ Parser.SKILL_JSON_TO_FULL = {
 					"items": [
 						"{@b {@action Decipher Writing}} on occult topics, including complex metaphysical systems, syncretic principles, weird philosophies, and incoherent ramblings.",
 						"{@b {@action Identify Magic}}, particularly occult magic.",
-						"{@b {@action Learn a Spell}} from the occult tradition."
-					]
-				}
-			]
-		}
+						"{@b {@action Learn a Spell}} from the occult tradition.",
+					],
+				},
+			],
+		},
 	],
 	"Perception": [
 		"Perception measures your ability to be aware of your environment. Every creature has Perception, which works with and is limited by a creature’s senses (described on page 464). Whenever you need to attempt a check based on your awareness, you’ll attempt a Perception check. Your Perception uses your Wisdom modifier, so you’ll use the following formula when attempting a Perception check.",
 		{
 			"type": "pf2-inset",
 			"entries": [
-				"Perception check result = d20 roll + Wisdom modifier + proficiency bonus + other bonuses + penalties"
-			]
+				"Perception check result = d20 roll + Wisdom modifier + proficiency bonus + other bonuses + penalties",
+			],
 		},
 		"Nearly all creatures are at least trained in Perception, so you will almost always add a proficiency bonus to your Perception modifier. You might add a circumstance bonus for advantageous situations or environments, and typically get status bonuses from spells or other magical effects. Items can also grant you a bonus to Perception, typically in a certain situation. For instance, a fine spyglass grants a +1 item bonus to Perception when attempting to see something a long distance away. Circumstance penalties to Perception occur when an environment or situation (such as fog) hampers your senses, while status penalties typically come from conditions, spells, and magic effects that foil the senses. You’ll rarely encounter item penalties or untyped penalties for Perception.",
 		"Many abilities are compared to your Perception DC to determine whether they succeed. Your Perception DC is 10 + your total Perception modifier.",
@@ -3026,9 +3034,9 @@ Parser.SKILL_JSON_TO_FULL = {
 			"type": "pf2-h4",
 			"name": "Perception for Initiative",
 			"entries": [
-				"Often, you’ll roll a Perception check to determine your order in initiative. When you do this, instead of comparing the result against a DC, everyone in the encounter will compare their results. The creature with the highest result acts first, the creature with the second-highest result goes second, and so on. Sometimes you may be called on to roll a skill check for initiative instead, but you’ll compare results just as if you had rolled Perception. The full rules for initiative are found in the rules for encounter mode on page 468."
-			]
-		}
+				"Often, you’ll roll a Perception check to determine your order in initiative. When you do this, instead of comparing the result against a DC, everyone in the encounter will compare their results. The creature with the highest result acts first, the creature with the second-highest result goes second, and so on. Sometimes you may be called on to roll a skill check for initiative instead, but you’ll compare results just as if you had rolled Perception. The full rules for initiative are found in the rules for encounter mode on page 468.",
+			],
+		},
 	],
 	"Performance": [
 		"You are skilled at a form of performance, using your talents to impress a crowd or make a living.",
@@ -3036,8 +3044,8 @@ Parser.SKILL_JSON_TO_FULL = {
 			"type": "pf2-h3",
 			"name": "Basic Competence",
 			"entries": [
-				"Some performances require you to be more than just charismatic, and if you don’t meet the demands of the art form or the audience, the GM might apply a penalty based on the relevant ability score. For example, if	you’re dancing and have a negative Dexterity modifier, you might take a penalty to your attempt at dancing. Likewise, if you are orating and have a negative Intelligence modifier, you might have to hope your raw Charisma can overcome the penalties from your intellectual shortcomings—or ask someone to help write your speeches!"
-			]
+				"Some performances require you to be more than just charismatic, and if you don’t meet the demands of the art form or the audience, the GM might apply a penalty based on the relevant ability score. For example, if	you’re dancing and have a negative Dexterity modifier, you might take a penalty to your attempt at dancing. Likewise, if you are orating and have a negative Intelligence modifier, you might have to hope your raw Charisma can overcome the penalties from your intellectual shortcomings—or ask someone to help write your speeches!",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -3051,10 +3059,10 @@ Parser.SKILL_JSON_TO_FULL = {
 						["Act or perform comedy", "Auditory, linguistic, and visual"],
 						["Dance", "Move and visual"],
 						["Play an instrument", "Auditory and manipulate"],
-						["Orate or sing", "Auditory and linguistic"]
-					]
-				}
-			]
+						["Orate or sing", "Auditory and linguistic"],
+					],
+				},
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -3064,19 +3072,19 @@ Parser.SKILL_JSON_TO_FULL = {
 				{
 					"type": "list",
 					"items": [
-						"{@b {@action Earn Income}} by staging a performance."
-					]
-				}
-			]
-		}
+						"{@b {@action Earn Income}} by staging a performance.",
+					],
+				},
+			],
+		},
 	],
 	"Religion": [
 		"The secrets of deities, dogma, faith, and the realms of divine creatures both sublime and sinister are open to you. You also understand how magic works, though your training imparts a religious slant to that knowledge. Even if you’re untrained in Religion, you can use it to {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about divine agents, the finer points of theology, obscure myths regarding a faith, and creatures of religious significance (like celestials, fiends, and undead), the Outer Sphere, and the Positive and Negative Energy Planes."
-			]
+				"{@b {@action Recall Knowledge}} about divine agents, the finer points of theology, obscure myths regarding a faith, and creatures of religious significance (like celestials, fiends, and undead), the Outer Sphere, and the Positive and Negative Energy Planes.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -3088,11 +3096,11 @@ Parser.SKILL_JSON_TO_FULL = {
 					"items": [
 						"{@b {@action Decipher Writing}} of a religious nature, including allegories, homilies, and proverbs.",
 						"{@b {@action Identify Magic}}, particularly divine magic.",
-						"{@b {@action Learn a Spell}} from the divine tradition."
-					]
-				}
-			]
-		}
+						"{@b {@action Learn a Spell}} from the divine tradition.",
+					],
+				},
+			],
+		},
 	],
 	"Society": [
 		"You understand the people and systems that make civilization run, and you know the historical events that make societies what they are today. Further, you can use that knowledge to navigate the complex physical, societal,  and economic workings of settlements. Even if you’re untrained in Society, you can use it for the following general skill actions.",
@@ -3100,8 +3108,8 @@ Parser.SKILL_JSON_TO_FULL = {
 			"type": "list",
 			"items": [
 				"{@b {@action Recall Knowledge}} about local history, important personalities, legal institutions, societal structure,  and humanoid cultures. The GM might allow Society to apply to other creatures that are major elements of society in your region, such as the draconic nobility in a kingdom of humans ruled by dragons.",
-				"{@b {@action Subsist}} in a settlement by finding shelter, scrounging, or begging for food."
-			]
+				"{@b {@action Subsist}} in a settlement by finding shelter, scrounging, or begging for food.",
+			],
 		},
 		{
 			"type": "pf2-h3",
@@ -3111,42 +3119,42 @@ Parser.SKILL_JSON_TO_FULL = {
 				{
 					"type": "list",
 					"items": [
-						"{@b {@action Decipher Writing}} that’s a coded message, text written in an incomplete or archaic form, or in some cases, text in a language you don’t know."
-					]
-				}
-			]
-		}
+						"{@b {@action Decipher Writing}} that’s a coded message, text written in an incomplete or archaic form, or in some cases, text in a language you don’t know.",
+					],
+				},
+			],
+		},
 	],
 	"Stealth": [
-		"You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an item."
+		"You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an item.",
 	],
 	"Survival": [
 		"You are adept at living in the wilderness, foraging for food and building shelter, and with training you discover the secrets of tracking and hiding your trail. Even if you’re untrained, you can still use Survival to {@action Subsist}",
 		{
 			"type": "list",
 			"items": [
-				"{@action Subsist} in the wild by foraging for food and building shelter."
-			]
-		}
+				"{@action Subsist} in the wild by foraging for food and building shelter.",
+			],
+		},
 	],
 	"Thievery": [
-		"You are trained in a particular set of skills favored by thieves and miscreants."
-	]
+		"You are trained in a particular set of skills favored by thieves and miscreants.",
+	],
 };
 
 Parser.SENSE_JSON_TO_FULL = {
 	"blindsight": [
-		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense."
+		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense.",
 	],
 	"darkvision": [
-		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray."
+		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray.",
 	],
 	"tremorsense": [
-		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
+		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense.",
 	],
 	"truesight": [
-		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane."
-	]
+		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane.",
+	],
 };
 
 Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];

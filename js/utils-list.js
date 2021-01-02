@@ -5,7 +5,7 @@ const ListUtil = {
 
 	_firstInit: true,
 	initList (listOpts, searchIds) {
-		searchIds = searchIds || {input: '#lst__search', glass: '#lst__search-glass', reset:'#reset'}
+		searchIds = searchIds || {input: "#lst__search", glass: "#lst__search-glass", reset: "#reset"}
 		const $iptSearch = $(searchIds.input);
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});

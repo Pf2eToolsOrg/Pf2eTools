@@ -1,21 +1,13 @@
 "use strict";
 
-class PageFilterConditionsDiseases extends PageFilter {
+class PageFilterConditions extends PageFilter {
 	// region static
 	static getDisplayProp (prop) {
 		return prop === "status" ? "Other" : prop.uppercaseFirst();
 	}
 	// endregion
 
-	constructor () {
-		super();
-
-		this._sourceFilter = new SourceFilter();
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
-	}
-
 	mutateForFilters (it) {
-		it._fMisc = it.srd ? ["SRD"] : [];
 	}
 
 	addToFilters (it, isExcluded) {
@@ -27,7 +19,6 @@ class PageFilterConditionsDiseases extends PageFilter {
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._miscFilter,
 		];
 	}
 
@@ -35,7 +26,6 @@ class PageFilterConditionsDiseases extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			it.source,
-			it._fMisc,
 		)
 	}
 }

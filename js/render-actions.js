@@ -1,14 +1,14 @@
 class RenderActions {
 	static $getRenderedAction (it) {
-		const renderStack = ['']
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack,{depth: 1},{pf2StatFix: true})
+		const renderStack = [""]
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
 		return $$`
 		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
 		${Renderer.action.getSubHead(it)}
-		${renderStack.join('')}
+		${renderStack.join("")}
 		${Renderer.utils.getPageP(it)}`
 	}
 }

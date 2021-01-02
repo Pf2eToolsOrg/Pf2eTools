@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -58,15 +56,23 @@
 </head>
 
 <body>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
 <div class="viewport-wrapper">
-	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	</div>
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
 			<h1 class="page__title">Traps &amp; Hazards</h1>
-			<p class="page__subtitle">Search by name on the left, click a trap or hazard name to display on the right.</p>
+			<p class="page__subtitle">Search by name on the left, click a trap or hazard name to display on the
+				right.</p>
 		</div>
 	</header>
 
@@ -74,20 +80,26 @@
 		<ul class="nav page__nav-inner" id="navbar"></ul>
 	</nav>
 
-	<div class="view-col-group--cancer h-100 mh-0"><div class="container view-col-wrapper view-col-wrapper--cancer">
+	<div class="view-col-group--cancer h-100 mh-0">
+		<div class="container view-col-wrapper view-col-wrapper--cancer">
 			<div class="view-col" id="listcontainer">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
-						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
 						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-3 sort btn btn-default btn-xs" data-sort="trapType">Type <span class="caret_wrp"></span></button>
-					<button class="col-7 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
+					<button class="col-3 sort btn btn-default btn-xs" data-sort="trapType">Type <span
+						class="caret_wrp"></span></button>
+					<button class="col-7 sort btn btn-default btn-xs" data-sort="name">Name <span
+						class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+						class="caret_wrp"></span></button>
 				</div>
 
 				<ul id="trapsHazardsList" class="list list--stats trapshazards">
@@ -98,8 +110,10 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
-						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="type">Type <span
+							class="caret_wrp"></span></button>
+						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subtrapshazards">
 						<!-- populate with JS -->
@@ -108,16 +122,26 @@
 
 				<div class="wrp-stat-tab">
 					<div id="tabs-right">
-						<span class="ui-tab__btn-tab-head btn btn-default" id="btn-pin"><span class="glyphicon glyphicon-pushpin"></span></span>
-						<span class="ui-tab__btn-tab-head btn btn-default" id="btn-popout"><span class="glyphicon glyphicon-new-window"></span></span>
+						<span class="ui-tab__btn-tab-head btn btn-default" id="btn-pin"><span
+							class="glyphicon glyphicon-pushpin"></span></span>
+						<span class="ui-tab__btn-tab-head btn btn-default" id="btn-popout"><span
+							class="glyphicon glyphicon-new-window"></span></span>
 					</div>
 				</div>
 
 				<div class="wrp-stats-table">
 					<table id="pagecontent" class="stats">
-						<tr><th class="border" colspan="6"></th></tr>
-						<tr><td colspan="6" class="initial-message">Select a trap or hazard from the list to view it here</td></tr>
-						<tr><th class="border" colspan="6"></th></tr>
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
+						<tr>
+							<td colspan="6" class="initial-message">Select a trap or hazard from the list to view it
+								here
+							</td>
+						</tr>
+						<tr>
+							<th class="border" colspan="6"></th>
+						</tr>
 					</table>
 				</div>
 

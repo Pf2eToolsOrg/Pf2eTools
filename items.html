@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -83,6 +81,7 @@
 
 		h3.ele-mundane span.side-label {
 		}
+
 		h3.ele-magic span.side-label {
 		}
 
@@ -171,10 +170,17 @@
 </head>
 
 <body>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
 <div class="viewport-wrapper">
-	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	</div>
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
@@ -194,20 +200,28 @@
 				<div class="flex-col min-h-0 w-100 itm__wrp-list itm__wrp-list--empty itm__wrp-list--mundane">
 					<div class="lst__form-top" id="filter-search-group">
 						<div class="w-100 relative">
-							<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-							<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+							<input type="search" id="lst__search" autocomplete="off" autocapitalize="off"
+								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+							<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+								class="glyphicon glyphicon-search"></span></div>
 							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 						</div>
 						<button class="btn btn-default" id="reset">Reset</button>
 					</div>
 
 					<div id="filtertools-mundane" class="ele-mundane input-group input-group--bottom flex no-shrink">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-						<button class="col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">Category <span class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level <span class="caret_wrp"></span></button>
-						<button class="col-1-8 sort btn btn-default btn-xs" data-sort="price" data-sortby="asc">Price <span class="caret_wrp"></span></button>
-						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
-						<button class="sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">
+							Category <span class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level
+							<span class="caret_wrp"></span></button>
+						<button class="col-1-8 sort btn btn-default btn-xs" data-sort="price" data-sortby="asc">Price
+							<span class="caret_wrp"></span></button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk
+							<span class="caret_wrp"></span></button>
+						<button class="sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source
+							<span class="caret_wrp"></span></button>
 					</div>
 
 					<ul class="list list--stats mundane ele-mundane"></ul>
@@ -218,12 +232,18 @@
 					<div class="no-shrink itm__list-divider ele-mundane-and-magic"></div>
 
 					<div id="filtertools-magic" class="ele-magic input-group input-group--bottom flex no-shrink">
-						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">Name <span class="caret_wrp"></span></button>
-						<button class="fullborder col-2-2 sort btn btn-default btn-xs" data-sort="category" data-sortby="asc">Category <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="level" data-sortby="asc">Level <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-8 sort btn btn-default btn-xs" data-sort="price">Price <span class="caret_wrp"></span></button>
-						<button class="fullborder col-1-2 sort btn btn-default btn-xs" data-sort="bulk" data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
-						<button class="fullborder sort btn btn-default btn-xs ve-grow" data-sort="source" data-sortby="asc">Source <span class="caret_wrp"></span></button>
+						<button class="fullborder col-4 sort btn btn-default btn-xs" data-sort="name" data-sortby="asc">
+							Name <span class="caret_wrp"></span></button>
+						<button class="fullborder col-2-2 sort btn btn-default btn-xs" data-sort="category"
+								data-sortby="asc">Category <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-5 sort btn btn-default btn-xs" data-sort="level"
+								data-sortby="asc">Level <span class="caret_wrp"></span></button>
+						<button class="fullborder col-1-8 sort btn btn-default btn-xs" data-sort="price">Price <span
+							class="caret_wrp"></span></button>
+						<button class="fullborder col-1-2 sort btn btn-default btn-xs" data-sort="bulk"
+								data-sortby="asc">Bulk <span class="caret_wrp"></span></button>
+						<button class="fullborder sort btn btn-default btn-xs ve-grow" data-sort="source"
+								data-sortby="asc">Source <span class="caret_wrp"></span></button>
 					</div>
 
 					<ul class="list list--stats magic ele-magic"></ul>
@@ -234,10 +254,14 @@
 			<div id="contentwrapper" class="view-col itm__wrp-stats">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-5-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="price">Price <span class="caret_wrp"></span></button>
-						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="bulk">Bulk <span class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
+						<button class="col-5-4 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="price">Price <span
+							class="caret_wrp"></span></button>
+						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="bulk">Bulk <span
+							class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span
+							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subitems">
 						<!-- populate with JS -->
@@ -261,7 +285,9 @@
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
-					<button class="btn btn-default btn-xs" id="btn-show-table" title="View and Download Items in Tabular Format">Table View</button>
+					<button class="btn btn-default btn-xs" id="btn-show-table"
+							title="View and Download Items in Tabular Format">Table View
+					</button>
 					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 				</div>
 			</div>

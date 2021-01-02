@@ -1,7 +1,7 @@
 "use strict";
 
 class ActionsPage extends ListPage {
-	static sortActions(a,b,o) {
+	static sortActions (a, b, o) {
 		switch (o.sortBy) {
 			case "name": return SortUtil.compareListNames(a, b);
 			case "source": return SortUtil.ascSort(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
@@ -44,14 +44,13 @@ class ActionsPage extends ListPage {
 			listClass: "actions",
 
 			listOptions: {
-				fnSort: ActionsPage.sortActions
+				fnSort: ActionsPage.sortActions,
 			},
 
 			sublistClass: "subactions",
 
-			dataProps: ["action"]
+			dataProps: ["action"],
 		});
-
 	}
 
 	getListItem (it, anI, isExcluded) {
@@ -62,7 +61,7 @@ class ActionsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity): "\u2014";
+		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity) : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
@@ -78,12 +77,12 @@ class ActionsPage extends ListPage {
 				hash,
 				source,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity)
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity),
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -101,7 +100,7 @@ class ActionsPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity): "\u2014";
+		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity) : "\u2014";
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
@@ -118,8 +117,8 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity)
-			}
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity),
+			},
 		);
 		return listItem;
 	}
@@ -136,24 +135,24 @@ class ActionsPage extends ListPage {
 	}
 }
 
-function renderStatblock(action) {
+function renderStatblock (action) {
 	const $content = $("#pagecontent").empty()
 
-	function buildStatsTab() {
+	function buildStatsTab () {
 		$content.append(RenderActions.$getRenderedAction(action));
 	}
-	function buildInfoTab() {
+	function buildInfoTab () {
 		$content.append(Renderer.action.getQuickRules(action))
 	}
 	const statTab = Renderer.utils.tabButton(
 		"Statblock",
 		() => {},
-		buildStatsTab
+		buildStatsTab,
 	);
 	const infoTab = Renderer.utils.tabButton(
 		"Quick Rules",
 		() => {},
-		buildInfoTab
+		buildInfoTab,
 	);
 	if (action.info) Renderer.utils.bindTabButtons(statTab, infoTab);
 	else Renderer.utils.bindTabButtons(statTab);

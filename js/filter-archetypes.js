@@ -1,31 +1,31 @@
 "use strict";
 class PageFilterArchetypes extends PageFilter {
-	constructor() {
+	constructor () {
 		super();
 		this._miscFilter = new Filter({header: "Miscellaneous"})
 	}
 
-	mutateForFilters(archetype, opts) {
+	mutateForFilters (archetype, opts) {
 	}
 
-	addToFilters(archetype, isExcluded, opts) {
+	addToFilters (archetype, isExcluded, opts) {
 		if (isExcluded) return;
 		this._sourceFilter.addItem(archetype.source);
 		this._miscFilter.addItem(archetype.miscTags)
 	}
 
-	async _pPopulateBoxOptions(opts) {
+	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
-	toDisplay(values, a) {
+	toDisplay (values, a) {
 		return this._filterBox.toDisplay(
 			values,
 			a.source,
-			a.miscTags
+			a.miscTags,
 		)
 	}
 }

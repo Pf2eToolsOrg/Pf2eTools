@@ -12,7 +12,7 @@ class FeatsPage extends ListPage {
 
 			sublistClass: "subfeats",
 
-			dataProps: ["feat"]
+			dataProps: ["feat"],
 		});
 	}
 
@@ -42,12 +42,12 @@ class FeatsPage extends ListPage {
 				source,
 				level: feat.level,
 				type: feat._slType,
-				prerequisites: feat._slPrereq
+				prerequisites: feat._slPrereq,
 			},
 			{
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -86,8 +86,8 @@ class FeatsPage extends ListPage {
 				source,
 				level: feat.level,
 				type: feat._slType,
-				prerequisites: feat._slPrereq
-			}
+				prerequisites: feat._slPrereq,
+			},
 		);
 		return listItem;
 	}

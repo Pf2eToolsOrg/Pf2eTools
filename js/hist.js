@@ -160,7 +160,7 @@ Hist.util = class {
 
 	static getDoubleHashParts (location) {
 		if (location[0] === "#") location = location.slice(1);
-		let parts = location.split('#').length === 2 ? location.split('#') : location.split('#').concat([''])
+		let parts = location.split("#").length === 2 ? location.split("#") : location.split("#").concat([""])
 		return parts.map(p => Hist.util.getHashParts(p))
 	}
 

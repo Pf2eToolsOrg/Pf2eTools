@@ -2,7 +2,7 @@
 
 class PageFilterBestiary extends PageFilter {
 	// region static
-	static sortCreatures(a, b, o) {
+	static sortCreatures (a, b, o) {
 		if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
 		switch (o.sortBy) {
 			case "name":
@@ -18,73 +18,73 @@ class PageFilterBestiary extends PageFilter {
 
 	// endregion
 
-	constructor() {
+	constructor () {
 		super();
 
 		this._levelFilter = new RangeFilter({
 			header: "Level",
 			isLabelled: true,
 			labelSortFn: SortUtil.ascSort,
-			labels: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+			labels: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
 		});
 
 		this._typeFilter = new Filter({
-			header: "Creature Type"
+			header: "Creature Type",
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
 			displayFn: Parser.creatureAlignToFull,
-			itemSortFn: SortUtil.ascSort
+			itemSortFn: SortUtil.ascSort,
 		});
 		this._rarityFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.TRAITS_RARITY],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._sizeFilter = new Filter({
 			header: "Size",
 			items: [...Parser.TRAITS_SIZE],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._otherTraitsFilter = new Filter({
-			header: "Other Traits"
+			header: "Other Traits",
 		});
 		this._traitFilter = new MultiFilter({
 			header: "Traits",
-			filters: [this._typeFilter, this._alignmentFilter, this._rarityFilter, this._sizeFilter, this._otherTraitsFilter]
+			filters: [this._typeFilter, this._alignmentFilter, this._rarityFilter, this._sizeFilter, this._otherTraitsFilter],
 		});
 
 		this._perceptionFilter = new RangeFilter({
-			header: "Perception"
+			header: "Perception",
 		});
 		this._preciseSenseFilter = new Filter({
 			header: "Precise Senses",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._impreciseSenseFilter = new Filter({
 			header: "Imprecise Senses",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._vagueSenseFilter = new Filter({
 			header: "Vague Senses",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._otherSenseFilter = new Filter({
 			header: "Other Senses",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._sensesFilter = new MultiFilter({
 			header: "Perception and Senses",
-			filters: [this._perceptionFilter, this._preciseSenseFilter, this._impreciseSenseFilter, this._vagueSenseFilter, this._otherSenseFilter]
+			filters: [this._perceptionFilter, this._preciseSenseFilter, this._impreciseSenseFilter, this._vagueSenseFilter, this._otherSenseFilter],
 		});
 
 		this._languageFilter = new Filter({
-			header: "Languages"
+			header: "Languages",
 		});
 
 		this._skillsFilter = new Filter({
 			header: "Skills",
-			itemSortFn: SortUtil.monSkillSort
+			itemSortFn: SortUtil.monSkillSort,
 		});
 
 		this._strengthFilter = new RangeFilter({header: "Strength", min: -5, max: 12});
@@ -95,39 +95,39 @@ class PageFilterBestiary extends PageFilter {
 		this._charismaFilter = new RangeFilter({header: "Charisma", min: -5, max: 12});
 		this._abilityFilter = new MultiFilter({
 			header: "Ability Modifiers",
-			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter]
+			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter],
 		});
 
 		this._ACFilter = new RangeFilter({
-			header: "Armor Class"
+			header: "Armor Class",
 		});
 		this._HPFilter = new RangeFilter({
-			header: "Hit Points"
+			header: "Hit Points",
 		});
 		this._fortitudeFilter = new RangeFilter({
-			header: "Fortitude"
+			header: "Fortitude",
 		});
 		this._reflexFilter = new RangeFilter({
-			header: "Reflex"
+			header: "Reflex",
 		});
 		this._willFilter = new RangeFilter({
-			header: "Will"
+			header: "Will",
 		});
 		this._immunityFilter = new Filter({
 			header: "Immunities",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._weaknessFilter = new Filter({
 			header: "Weaknesses",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._resistanceFilter = new Filter({
 			header: "Resistances",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		});
 		this._defenseFilter = new MultiFilter({
 			header: "Defenses",
-			filters: [this._ACFilter, this._HPFilter, this._fortitudeFilter, this._reflexFilter, this._willFilter, this._immunityFilter, this._weaknessFilter, this._resistanceFilter]
+			filters: [this._ACFilter, this._HPFilter, this._fortitudeFilter, this._reflexFilter, this._willFilter, this._immunityFilter, this._weaknessFilter, this._resistanceFilter],
 		});
 
 		this._speedFilter = new RangeFilter({
@@ -136,55 +136,55 @@ class PageFilterBestiary extends PageFilter {
 		});
 		this._speedTypeFilter = new Filter({
 			header: "Speed Types",
-			displayFn: (x) => x.uppercaseFirst()
+			displayFn: (x) => x.uppercaseFirst(),
 		})
 		this._speedMultiFilter = new MultiFilter({
 			header: "Speeds",
-			filters: [this._speedFilter, this._speedTypeFilter]
+			filters: [this._speedFilter, this._speedTypeFilter],
 		});
 
 		this._spelltpyeFilter = new Filter({
 			header: "Spellcasting Type",
-			itemSortFn: SortUtil.ascSort
+			itemSortFn: SortUtil.ascSort,
 		});
 		this._spellDCFilter = new RangeFilter({
-			header: "Spell DC"
+			header: "Spell DC",
 		});
 		this._highestSpellFilter = new RangeFilter({
 			header: "Highest Spell Level",
 			min: 0,
 			max: 10,
-			isLabelled: true
+			isLabelled: true,
 		});
 		this._ritualTraditionFilter = new Filter({
 			header: "Ritual Traditions",
-			itemSortFn: SortUtil.ascSort
+			itemSortFn: SortUtil.ascSort,
 		});
 		this._spellcastingFilter = new MultiFilter({
 			header: "Spellcasting",
-			filters: [this._spelltpyeFilter, this._spellDCFilter, this._highestSpellFilter, this._ritualTraditionFilter]
+			filters: [this._spelltpyeFilter, this._spellDCFilter, this._highestSpellFilter, this._ritualTraditionFilter],
 		});
 	}
 
-	mutateForFilters(mon) {
+	mutateForFilters (mon) {
 		mon._fsenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (mon.senses) {
 			mon.senses.precise.forEach((s) => {
-				mon._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ''))
+				mon._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 			mon.senses.imprecise.forEach((s) => {
-				mon._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, ''))
+				mon._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 			mon.senses.vague.forEach((s) => {
-				mon._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ''))
+				mon._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 			mon.senses.other.forEach((s) => {
-				mon._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ''))
+				mon._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 		}
 		mon._flanguages = mon.languages == null ? [] : mon.languages.languages || [];
 		mon._flanguages.forEach((l, i) => {
-			mon._flanguages[i] = l.replace(/\s(?:\().+/, '')
+			mon._flanguages[i] = l.replace(/\s(?:\().+/, "")
 		})
 		mon._fskills = [];
 		Object.keys(mon.skills).forEach((k) => {
@@ -199,30 +199,30 @@ class PageFilterBestiary extends PageFilter {
 		mon._fimmunities = []
 		if (mon.immunities) {
 			mon.immunities.damage.forEach((i) => {
-				mon._fimmunities.push(i.replace(/\s(?:\().+/, ''))
+				mon._fimmunities.push(i.replace(/\s(?:\().+/, ""))
 			})
 			mon.immunities.condition.forEach((i) => {
-				mon._fimmunities.push(i.replace(/\s(?:\().+/, ''))
+				mon._fimmunities.push(i.replace(/\s(?:\().+/, ""))
 			})
 		}
 		mon._fweaknesses = []
 		if (mon.weaknesses) {
 			mon.weaknesses.forEach((w) => {
-				let ws = w.name.replace(/\s(?:\().+/, '');
-				mon._fweaknesses.push(ws === 'all' ? 'all damage' : ws)
+				let ws = w.name.replace(/\s(?:\().+/, "");
+				mon._fweaknesses.push(ws === "all" ? "all damage" : ws)
 			});
 		}
 		mon._fresistances = []
 		if (mon.resistances) {
 			mon.resistances.forEach((r) => {
-				let rs = r.name.replace(/\s(?:\().+/, '')
-				mon._fresistances.push(rs === 'all' ? 'all damage' : rs)
+				let rs = r.name.replace(/\s(?:\().+/, "")
+				mon._fresistances.push(rs === "all" ? "all damage" : rs)
 			});
 		}
 		mon._fspeedtypes = []
 		mon._fspeed = 0
 		Object.keys(mon.speed).forEach((k) => {
-			if (k !== 'abilities' && mon.speed[k] > mon._fspeed) {
+			if (k !== "abilities" && mon.speed[k] > mon._fspeed) {
 				mon._fspeed = mon.speed[k];
 				mon._fspeedtypes.push(k)
 			}
@@ -233,22 +233,24 @@ class PageFilterBestiary extends PageFilter {
 		mon._fspellDC = 0
 		if (mon.spellcasting) {
 			mon.spellcasting.forEach((f) => {
-				if (f.type !== 'Focus') {
+				if (f.type !== "Focus") {
 					mon._fspellTypes.push(`${f.type} ${f.tradition}`)
 				} else mon._fspellTypes.push(f.type)
 				Object.keys(f.entry).forEach((k) => {
 					if (k.isNumeric() && Number(k) > mon._fhighestSpell) mon._fhighestSpell = Number(k)
 				});
-				if (Number(f.DC)>mon._fspellDC) mon._fspellDC = Number(f.DC)
+				if (Number(f.DC) > mon._fspellDC) mon._fspellDC = Number(f.DC)
 			});
 		}
 		mon._fritualTraditions = []
-		if (mon.rituals != null) mon.rituals.forEach((r)=>{
-			mon._fritualTraditions.push(r.tradition)
-		});
+		if (mon.rituals != null) {
+			mon.rituals.forEach((r) => {
+				mon._fritualTraditions.push(r.tradition)
+			});
+		}
 	}
 
-	addToFilters(mon, isExcluded) {
+	addToFilters (mon, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(mon.source);
@@ -284,7 +286,7 @@ class PageFilterBestiary extends PageFilter {
 		this._ritualTraditionFilter.addItem(mon._fritualTraditions)
 	}
 
-	async _pPopulateBoxOptions(opts) {
+	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._levelFilter,
@@ -295,11 +297,11 @@ class PageFilterBestiary extends PageFilter {
 			this._abilityFilter,
 			this._defenseFilter,
 			this._speedMultiFilter,
-			this._spellcastingFilter
+			this._spellcastingFilter,
 		];
 	}
 
-	toDisplay(values, m) {
+	toDisplay (values, m) {
 		return this._filterBox.toDisplay(
 			values,
 			m.source,
@@ -309,14 +311,14 @@ class PageFilterBestiary extends PageFilter {
 				m.alignment,
 				m.rarity,
 				m.size,
-				m.traits
+				m.traits,
 			],
 			[
 				m.perception.default,
 				m._fsenses.precise,
 				m._fsenses.imprecise,
 				m._fsenses.vague,
-				m._fsenses.other
+				m._fsenses.other,
 			],
 			m._flanguages,
 			m._fskills,
@@ -326,7 +328,7 @@ class PageFilterBestiary extends PageFilter {
 				m.ability_modifiers.Con,
 				m.ability_modifiers.Int,
 				m.ability_modifiers.Wis,
-				m.ability_modifiers.Cha
+				m.ability_modifiers.Cha,
 			],
 			[
 				m.armor_class.default,
@@ -336,50 +338,50 @@ class PageFilterBestiary extends PageFilter {
 				m.saving_throws.Will.default,
 				m._fimmunities,
 				m._fweaknesses,
-				m._fresistances
+				m._fresistances,
 			],
 			[
 				m._fspeed,
-				m._fspeedtypes
+				m._fspeedtypes,
 			],
 			[
 				m._fspellTypes,
 				m._fspellDC,
 				m._fhighestSpell,
-				m._fritualTraditions
-			]
+				m._fritualTraditions,
+			],
 		);
 	}
 }
 
 class ModalFilterBestiary extends ModalFilter {
-	constructor(namespace) {
+	constructor (namespace) {
 		super({
 			modalTitle: "Creatures",
 			pageFilter: new PageFilterBestiary(),
 			fnSort: PageFilterBestiary.sortCreatures,
-			namespace: namespace
+			namespace: namespace,
 		})
 	}
 
-	_$getColumnHeaders() {
+	_$getColumnHeaders () {
 		const btnMeta = [
 			{sort: "name", text: "Name", width: "4"},
 			{sort: "type", text: "Type", width: "4"},
 			{sort: "level", text: "Level", width: "2"},
-			{sort: "source", text: "Source", width: "1"}
+			{sort: "source", text: "Source", width: "1"},
 		];
 		return ModalFilter._$getFilterColumnHeaders(btnMeta);
 	}
 
-	async _pLoadAllData() {
+	async _pLoadAllData () {
 		const brew = await BrewUtil.pAddBrewData();
 		const fromData = await DataUtil.creature.pLoadAll();
 		const fromBrew = brew.monster || [];
 		return [...fromData, ...fromBrew];
 	}
 
-	_getListItem(pageFilter, mon, itI) {
+	_getListItem (pageFilter, mon, itI) {
 		Renderer.creature.initParsed(mon);
 		pageFilter.mutateAndAddToFilters(mon);
 
@@ -408,11 +410,11 @@ class ModalFilterBestiary extends ModalFilter {
 				source,
 				sourceJson: mon.source,
 				type,
-				level
+				level,
 			},
 			{
-				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild
-			}
+				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
+			},
 		);
 	}
 }
