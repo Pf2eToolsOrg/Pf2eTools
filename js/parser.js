@@ -835,6 +835,29 @@ Parser.proficiencyAbvToFull = function (abv) {
 	}
 }
 
+Parser.proficiencyToNumber = function (prof) {
+	switch (prof[0].toLowerCase()) {
+		case "u": return 0;
+		case "t": return 1;
+		case "e": return 2;
+		case "m": return 3;
+		case "l": return 4;
+		default: return 69;
+	}
+}
+
+Parser.savingThrowAbvToFull = function (abv) {
+	switch (abv) {
+		case "Fort":
+		case "fort": return "Fortitude";
+		case "Ref":
+		case "ref": return "Reflex";
+		case "Will":
+		case "will": return "Will";
+		default: throw new Error(`Unknown saving throw abv ${abv}.`)
+	}
+}
+
 Parser.initialProficienciesToFull = function (initProf) {
 	let out = {
 		type: "pf2-sidebar",
@@ -850,11 +873,11 @@ Parser.initialProficienciesToFull = function (initProf) {
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
 	out.entries.push({type: "pf2-title", name: "SKILLS"});
-	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`Trained in ${it}`));
-	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`Expert in ${it}`));
-	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`Master in ${it}`));
-	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`Legendary in ${it}`));
-	if (initProf.skills.add) out.entries.push(`Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier`)
+	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`{@indent Trained in ${it}}`));
+	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`{@indent Expert in ${it}}`));
+	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`{@indent Master in ${it}}`));
+	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`{@indent Legendary in ${it}}`));
+	if (initProf.skills.add) out.entries.push(`{@indent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
 	out.entries.push({type: "pf2-title", name: "ATTACKS"});
 	if (initProf.attacks.t) initProf.attacks.t.forEach(it => out.entries.push(`Trained in ${it}`));
 	if (initProf.attacks.e) initProf.attacks.e.forEach(it => out.entries.push(`Expert in ${it}`));

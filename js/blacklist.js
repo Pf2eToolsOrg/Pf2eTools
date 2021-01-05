@@ -44,10 +44,9 @@ class Blacklist {
 			"magicvariants.json",
 			"optionalfeatures.json",
 			"objects.json",
-			"psionics.json",
 			"ancestries.json",
 			"rewards.json",
-			"trapshazards.json",
+			"hazards.json",
 			"variantrules.json",
 		];
 

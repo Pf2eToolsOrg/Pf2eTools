@@ -1755,7 +1755,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_BOOKS] = "Books";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEITIES] = "Deities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CULTS_BOONS] = "Cults & Supernatural Boons";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_OBJECTS] = "Objects";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_HAZARDS] = "Traps & Hazards";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_HAZARDS] = "Hazards";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_QUICKREF] = "Quick Reference";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
@@ -2000,6 +2000,10 @@ SortUtil = {
 
 	ascSortRarity (a, b) {
 		return SortUtil.ascSort(Parser.rarityToNumber(a), Parser.rarityToNumber(b));
+	},
+
+	ascSortProfRanks (a, b) {
+		return	SortUtil.ascSort(Parser.proficiencyToNumber(a.item), Parser.proficiencyToNumber(b.item))
 	},
 
 	abilitySort (a, b) {

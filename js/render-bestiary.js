@@ -21,17 +21,17 @@ class RenderBestiary {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr)}`)
-		cr.abilities_interactive.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}) })
+		cr.abilities_interactive.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}, {isAbility: true}) })
 		renderStack.push(`${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}`)
-		cr.abilities_automatic.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}) })
+		cr.abilities_automatic.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}, {isAbility: true}) })
 		renderStack.push(`${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
 			${Renderer.creature.getRituals(cr)}`)
-		cr.abilities_active.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}) })
+		cr.abilities_active.forEach((ab) => { renderer.recursiveRender(ab, renderStack, {depth: 1}, {isAbility: true}) })
 		renderStack.push(Renderer.utils.getPageP(cr));
 
 		return (renderStack.join(""))

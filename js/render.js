@@ -401,7 +401,10 @@ function Renderer () {
 					this._renderLeveledEffect(entry, textStack, meta, options);
 					break;
 				case "ability":
-					this._renderAction(entry, textStack, meta, options);
+					this._renderAbility(entry, textStack, meta, options);
+					break;
+				case "attack":
+					this._renderAttack(entry, textStack, meta, options);
 					break;
 				case "activation":
 				case "activate":
@@ -439,9 +442,6 @@ function Renderer () {
 					break;
 				case "actions":
 					this._renderActions(entry, textStack, meta, options);
-					break;
-				case "attack":
-					this._renderAttack(entry, textStack, meta, options);
 					break;
 
 				// list items
@@ -1067,7 +1067,29 @@ function Renderer () {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
-	this._renderAction = function (entry, textStack, meta, options) {
+	this._renderAttack = function (entry, textStack, meta, options) {
+		textStack[0] += `<p class="pf2-stat__section attack">`
+		textStack[0] += `<span><strong>${entry.range} </strong>`
+		textStack[0] += this.render(`{@as 1} `)
+		textStack[0] += `${entry.name} `
+		textStack[0] += `</span>`
+		textStack[0] += this.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()} `)
+		textStack[0] += `<span>`
+		if (entry.traits != null) {
+			let traits = []
+			entry.traits.forEach((t) => {
+				let traitname = Parser.getTraitName(t)
+				traits.push(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`)
+			});
+			textStack[0] += this.render(` (${traits.join(", ")})`)
+		}
+		textStack[0] += `, <strong>Damage </strong>`
+		textStack[0] += this.render(entry.damage)
+
+		textStack[0] += `</span></p>`
+	};
+
+	this._renderAbility = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
 
@@ -1099,8 +1121,9 @@ function Renderer () {
 		}
 		if (add_effect) textStack[0] += `<strong>Effect </strong>`
 		entry.entries.forEach((e) => {
-			this._recursiveRender(e, textStack, meta)
+			this._recursiveRender(e, textStack, meta, {isAbility: true})
 		})
+		if (entry.no_map) textStack[0] += "; no multiple attack penalty"
 
 		textStack[0] += `</span></p>`
 
@@ -1164,9 +1187,9 @@ function Renderer () {
 		let traits = []
 		dict["traits"].forEach((t) => {
 			let traitname = Parser.getTraitName(t)
-			traits.push(`{@trait ${t | Parser.TRAITS_TO_TRAITS_SRC(traitname)}}`)
+			traits.push(`{@trait ${t}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}}`)
 		})
-		textStack[0] += `<p class="pf2-stat__section">`
+		if (!options.isAbility) textStack[0] += `<p class="pf2-stat__section">`
 		if (dict["name"] != null) {
 			textStack[0] += `<strong>${dict["name"]} </strong> `
 		}
@@ -1196,7 +1219,7 @@ function Renderer () {
 			}
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".")
-		textStack[0] += `</p>`
+		if (!options.isAbility) textStack[0] += `</p>`
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -1899,17 +1922,6 @@ function Renderer () {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
-	this._renderAttack = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<i>${Parser.attackTypeToFull(entry.attackType)}:</i> `;
-		const len = entry.attackEntries.length;
-		for (let i = 0; i < len; ++i) this._recursiveRender(entry.attackEntries[i], textStack, meta);
-		textStack[0] += ` <i>Hit:</i> `;
-		const len2 = entry.hitEntries.length;
-		for (let i = 0; i < len2; ++i) this._recursiveRender(entry.hitEntries[i], textStack, meta);
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
 	this._renderItem = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		textStack[0] += `<p><span class="bold list-item-title">${this.render(entry.name)}</span> `;
@@ -1961,7 +1973,7 @@ function Renderer () {
 	this._renderDataTrapHazard = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack, entry.dataTrapHazard.name);
-		textStack[0] += Renderer.traphazard.getCompactRenderedString(entry.dataTrapHazard, {isEmbeddedEntity: true});
+		textStack[0] += Renderer.hazard.getCompactRenderedString(entry.dataTrapHazard, {isEmbeddedEntity: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -3036,7 +3048,6 @@ function Renderer () {
 	 * Helper function to render an entity using this renderer
 	 * @param entry
 	 * @param depth
-	 * @param options
 	 * @returns {string}
 	 */
 	this.render = function (entry, depth = 0) {
@@ -4808,104 +4819,107 @@ Renderer.object = {
 	},
 };
 
-Renderer.traphazard = {
-	getSubtitle (it) {
-		const type = it.trapHazType || "HAZ";
-		switch (type) {
-			case "GEN":
-				return null;
-			case "SMPL":
-			case "CMPX":
-				return `${Parser.trapHazTypeToFull(type)} (${Parser.tierToFullLevel(it.tier)}, ${Parser.threatToFull(it.threat)} threat)`;
-			default:
-				return Parser.trapHazTypeToFull(type);
-		}
-	},
-
-	getSimplePart (renderer, it) {
-		if (it.trapHazType === "SMPL") {
-			return renderer.render({
-				entries: [
-					{
-						type: "entries",
-						name: "Trigger",
-						entries: it.trigger,
-					},
-					{
-						type: "entries",
-						name: "Effect",
-						entries: it.effect,
-					},
-					{
-						type: "entries",
-						name: "Countermeasures",
-						entries: it.countermeasures,
-					},
-				],
-			}, 1);
-		}
-		return "";
-	},
-
-	getComplexPart (renderer, it) {
-		if (it.trapHazType === "CMPX") {
-			return renderer.render({
-				entries: [
-					{
-						type: "entries",
-						name: "Trigger",
-						entries: it.trigger,
-					},
-					{
-						type: "entries",
-						name: "Initiative",
-						entries: [`The trap acts on ${Parser.trapInitToFull(it.initiative)}${it.initiativeNote ? ` (${it.initiativeNote})` : ""}.`],
-					},
-					it.eActive ? {
-						type: "entries",
-						name: "Active Elements",
-						entries: it.eActive,
-					} : null,
-					it.eDynamic ? {
-						type: "entries",
-						name: "Dynamic Elements",
-						entries: it.eDynamic,
-					} : null,
-					it.eConstant ? {
-						type: "entries",
-						name: "Constant Elements",
-						entries: it.eConstant,
-					} : null,
-					{
-						type: "entries",
-						name: "Countermeasures",
-						entries: it.countermeasures,
-					},
-				].filter(it => it),
-			}, 1);
-		}
-		return "";
-	},
-
-	getCompactRenderedString (it, opts) {
-		opts = opts || {};
-
+Renderer.hazard = {
+	getCompactRenderedString (hazard) {
+		const renderStack = [""];
 		const renderer = Renderer.get();
-		const subtitle = Renderer.traphazard.getSubtitle(it);
-		return `
-			${Renderer.utils.getExcludedTr(it, it.__prop, UrlUtil.PG_HAZARDS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_HAZARDS, isEmbeddedEntity: opts.isEmbeddedEntity})}
-			${subtitle ? `<tr class="text"><td colspan="6"><i>${subtitle}</i></td></tr>` : ""}
-			<tr class="text"><td colspan="6">
-			${renderer.render({entries: it.entries}, 2)}
-			${Renderer.traphazard.getSimplePart(renderer, it)}${Renderer.traphazard.getComplexPart(renderer, it)}
-			</td></tr>
-		`;
-	},
+		renderStack.push(`
+		${Renderer.utils.getExcludedDiv(hazard, "hazard", UrlUtil.PG_HAZARDS)}
+		${Renderer.utils.getNameDiv(hazard, {page: UrlUtil.PG_HAZARDS, type: "HAZARD"})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(hazard.traits || [])}`);
+		if (hazard.stealth) {
+			let stealthText = hazard.stealth.dc != null ? `DC ${hazard.stealth.dc}` : `{@d20 ${hazard.stealth.bonus >= 0 ? "+" : ""}${hazard.stealth.bonus}||Stealth}`;
+			if (hazard.stealth.min_prof) stealthText += ` (${hazard.stealth.min_prof})`;
+			if (hazard.stealth.notes) stealthText += ` ${hazard.stealth.notes}`;
+			renderStack.push(`<p class="pf2-stat__section"><strong>Stealth </strong>${renderer.render(stealthText)}</p>`);
+		}
+		if (hazard.description) {
+			const descriptionStack = [`<p class="pf2-stat__section--wide"><strong>Description </strong>`];
+			renderer.recursiveRender(hazard.description, descriptionStack, {depth: 1});
+			descriptionStack.push(`</p>`);
+			renderStack.push(descriptionStack.join(""));
+		}
+		renderStack.push(Renderer.utils.getDividerDiv());
+		if (hazard.disable) {
+			const disableStack = [`<p class="pf2-stat__section"><strong>Disable </strong>`];
+			renderer.recursiveRender(hazard.disable.entries, disableStack, {depth: 1});
+			disableStack.push(`</p>`);
+			renderStack.push(disableStack.join(""));
+		}
+		if (hazard.defenses) {
+			const def = hazard.defenses
+			const defensesStack = [`<p class="pf2-stat__section">`];
+			const sectionAcSt = []
+			const sectionTwo = []
+			if (def.ac) {
+				sectionAcSt.push(Object.keys(def.ac)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}AC </strong>${def.ac[k]}`).join(", "));
+			}
+			if (def.saving_throws) {
+				sectionAcSt.push(Object.keys(def.saving_throws).filter(k => def.saving_throws[k] != null)
+					.map(k => `<strong>${k.uppercaseFirst()} </strong>{@d20 ${def.saving_throws[k]}||${Parser.savingThrowAbvToFull(k)}}`).join(", "));
+			}
+			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
+			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat__section">`);
+			if (def.hardness != null && def.hp != null) {
+				// FIXME: self-evident
+				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness </strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
+			} else if (def.hp != null) {
+				sectionTwo.push(Object.keys(def.hp)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));
+			} else throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
+			if (def.immunities) sectionTwo.push(`<strong>Immunities </strong>${def.immunities.join(", ")}`);
+			if (def.weaknesses) sectionTwo.push(`<strong>Weaknesses </strong>${def.weaknesses.join(", ")}`);
+			if (def.resistances) sectionTwo.push(`<strong>Resistances </strong>${def.resistances.join(", ")}`);
+			defensesStack.push(renderer.render(sectionTwo.join("; ")))
+			defensesStack.push(`</p>`);
+			renderStack.push(defensesStack.join(""));
+		}
+		if (hazard.actions) {
+			hazard.actions.forEach(a => {
+				if (a.type === "ability") renderer.recursiveRender(a, renderStack, {depth: 1}, {isAbility: true});
+				else {
+					renderStack.push(`<p class="pf2-stat__section">`);
+					renderStack.push(`<span><strong>${a.range} </strong>`);
+					renderStack.push(Renderer.get().render(`{@as 1} `));
+					renderStack.push(`${a.name} `);
+					renderStack.push(`</span>`);
+					renderStack.push(Renderer.get().render(`{@hit ${a.attack}||${a.name.uppercaseFirst()} `));
+					renderStack.push(`<span>`);
+					if (a.traits != null) {
+						let traits = [];
+						a.traits.forEach((t) => {
+							let traitname = Parser.getTraitName(t)
+							traits.push(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`)
+						});
+						renderStack.push(Renderer.get().render(` (${traits.join(", ")})`));
+					}
+					renderStack.push(`, <strong>Damage </strong>`);
+					renderStack.push(renderer.render(a.damage));
 
-	_trapTypes: new Set(["MECH", "MAG", "SMPL", "CMPX"]),
-	isTrap (trapHazType) {
-		return Renderer.traphazard._trapTypes.has(trapHazType);
+					renderStack.push(`</span>`);
+					renderStack.push(`</p>`);
+				}
+			});
+		}
+		if (hazard.routine) {
+			renderStack.push(Renderer.utils.getDividerDiv());
+			hazard.routine.forEach((entry, idx) => {
+				if (idx !== 0) {
+					if (typeof entry === "object") renderer.recursiveRender(entry, renderStack, {depth: 1});
+					else renderer.recursiveRender(entry, renderStack, {depth: 1}, {prefix: `<p class="pf2-stat__text--wide">`, suffix: "</p>"});
+				} else renderStack.push(`<p class="pf2-stat__text--wide"><strong>Routine </strong>${renderer.render(entry)}</p>`);
+			});
+		}
+		if (hazard.reset) {
+			renderStack.push(Renderer.utils.getDividerDiv());
+			renderStack.push(`<p class="pf2-stat__section--wide"><strong>Reset </strong>`);
+			renderer.recursiveRender(hazard.reset, renderStack, {depth: 1});
+			renderStack.push(`</p>`);
+		}
+		renderStack.push(Renderer.utils.getPageP(hazard))
+		return renderStack.join("")
 	},
 };
 
@@ -8216,7 +8230,7 @@ Renderer.hover = {
 			case UrlUtil.PG_OBJECTS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
 			case UrlUtil.PG_HAZARDS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "trapshazards.json", ["trap", "hazard"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
 			case UrlUtil.PG_CULTS_BOONS:
@@ -8812,7 +8826,7 @@ Renderer.hover = {
 			case UrlUtil.PG_OBJECTS:
 				return Renderer.object.getCompactRenderedString;
 			case UrlUtil.PG_HAZARDS:
-				return Renderer.traphazard.getCompactRenderedString;
+				return Renderer.hazard.getCompactRenderedString;
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.variantrule.getCompactRenderedString;
 			case UrlUtil.PG_CULTS_BOONS:
