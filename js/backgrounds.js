@@ -13,7 +13,7 @@ class BackgroundPage extends ListPage {
 
 			sublistClass: "subbackgrounds",
 
-			dataProps: ["background"]
+			dataProps: ["background"],
 		});
 	}
 
@@ -26,7 +26,7 @@ class BackgroundPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
-		const boosts = bg.boosts.join(', ');
+		const boosts = bg.boosts.sort(SortUtil.abilitySort).join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${bg.name}</span>
@@ -41,12 +41,12 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source,
-				boosts
+				boosts,
 			},
 			{
 				uniqueId: bg.uniqueId || bgI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -63,7 +63,7 @@ class BackgroundPage extends ListPage {
 
 	getSublistItem (bg, pinId) {
 		const hash = UrlUtil.autoEncodeHash(bg);
-		const boosts = bg.boosts.join(', ');
+		const boosts = bg.boosts.join(", ");
 		const name = bg.name
 
 		const $ele = $$`<li class="row">
@@ -81,8 +81,8 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(bg.source),
-				boosts
-			}
+				boosts,
+			},
 		);
 		return listItem;
 	}
@@ -101,22 +101,22 @@ class BackgroundPage extends ListPage {
 				isImageTab,
 				$content: $pgContent,
 				pFnGetFluff: Renderer.background.pGetFluff,
-				entity: bg
+				entity: bg,
 			});
 		};
 
 		const traitTab = Renderer.utils.tabButton(
 			"Traits",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 
 		const picTab = Renderer.utils.tabButton(
 			"Images",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab.bind(null, true),
 		);
-		Renderer.utils.bindTabButtons(traitTab, picTab);
+		Renderer.utils.bindTabButtons(traitTab);
 
 		ListUtil.updateSelected();
 	}

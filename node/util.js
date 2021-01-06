@@ -99,7 +99,7 @@ const FILE_PREFIX_BLACKLIST = [
  */
 function listFiles (opts) {
 	opts = opts || {};
-	opts.dir = opts.dir || "./data";
+	opts.dir = opts.dir || "../data";
 	opts.blacklistFilePrefixes = opts.blacklistFilePrefixes || FILE_PREFIX_BLACKLIST;
 	opts.whitelistFileExts = opts.whitelistFileExts || FILE_EXTENSION_WHITELIST;
 	opts.whitelistDirs = opts.whitelistDirs || null;

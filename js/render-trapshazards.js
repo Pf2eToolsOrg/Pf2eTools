@@ -11,7 +11,7 @@ class RenderTrapsHazards {
 		return $$`
 		${Renderer.utils.getBorderTr()}
 		${Renderer.utils.getExcludedTr(it, it.__prop)}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_TRAPS_HAZARDS})}
+		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_HAZARDS})}
 		${subtitle ? `<tr class="text"><td colspan="6"><i>${Renderer.traphazard.getSubtitle(it)}</i></td>` : ""}
 		<tr class="text"><td colspan="6">${renderStack.join("")}${simplePart || ""}${complexPart || ""}</td></tr>
 		${Renderer.utils.getPageTr(it)}

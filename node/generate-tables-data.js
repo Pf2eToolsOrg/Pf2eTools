@@ -5,12 +5,12 @@ const UtilGenTables = require("./util-generate-tables-data.js");
 
 class GenTables {
 	_doLoadAdventureData () {
-		return ut.readJson(`./data/adventures.json`).adventure
+		return ut.readJson(`../data/adventures.json`).adventure
 			.map(idx => {
 				if (GenTables.ADVENTURE_WHITELIST[idx.id]) {
 					return {
 						adventure: idx,
-						adventureData: JSON.parse(fs.readFileSync(`./data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8")),
+						adventureData: JSON.parse(fs.readFileSync(`../data/adventure/adventure-${idx.id.toLowerCase()}.json`, "utf-8")),
 					}
 				}
 			})
@@ -18,12 +18,12 @@ class GenTables {
 	}
 
 	_doLoadBookData () {
-		return ut.readJson(`./data/books.json`).book
+		return ut.readJson(`../data/books.json`).book
 			.map(idx => {
 				if (!GenTables.BOOK_BLACKLIST[idx.id]) {
 					return {
 						book: idx,
-						bookData: JSON.parse(fs.readFileSync(`./data/book/book-${idx.id.toLowerCase()}.json`, "utf-8")),
+						bookData: JSON.parse(fs.readFileSync(`../data/book/book-${idx.id.toLowerCase()}.json`, "utf-8")),
 					};
 				}
 			})
@@ -37,7 +37,7 @@ class GenTables {
 		await this._pAddClassData(output);
 
 		const toSave = JSON.stringify({table: output.tables, tableGroup: output.tableGroups});
-		fs.writeFileSync(`./data/generated/gendata-tables.json`, toSave, "utf-8");
+		fs.writeFileSync(`../data/generated/gendata-tables.json`, toSave, "utf-8");
 		console.log("Regenerated table data.");
 	}
 
@@ -92,7 +92,6 @@ class GenTables {
 }
 GenTables.BOOK_BLACKLIST = {};
 GenTables.ADVENTURE_WHITELIST = {
-	[SRC_SKT]: true,
 };
 
 const generator = new GenTables();

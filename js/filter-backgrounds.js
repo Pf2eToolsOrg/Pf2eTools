@@ -8,8 +8,8 @@ class PageFilterBackgrounds extends PageFilter {
 		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: StrUtil.toTitleCase});
 		this._boostFilter = new Filter({
 			header: "Ability Boosts",
-			items: ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma', 'Free'],
-			itemSortFn: null
+			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma", "Free"],
+			itemSortFn: null,
 		});
 	}
 
@@ -40,7 +40,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.source,
 			bg.boosts,
 			bg.skills,
-			bg.skill_lore
+			bg.skill_lore,
 		)
 	}
 }

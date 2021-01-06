@@ -15,7 +15,7 @@ class SpellsPage {
 		this._pageFilter = new PageFilterSpells();
 		this._multiSource = new MultiSource({
 			fnHandleData: addSpells,
-			prop: "spell"
+			prop: "spell",
 		});
 	}
 
@@ -56,8 +56,8 @@ class SpellsPage {
 			},
 			{
 				uniqueId: spell.uniqueId ? spell.uniqueId : spI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => list.doSelect(listItem, evt));
@@ -65,8 +65,6 @@ class SpellsPage {
 
 		return listItem;
 	}
-
-	_getListItem_getLevelMetaPart (spell) { return `${spell.meta && spell.meta.ritual ? " (rit.)" : ""}${spell.meta && spell.meta.technomagic ? " (tec.)" : ""}`; }
 
 	handleFilterChange () {
 		const f = this._pageFilter.filterBox.getValues();
@@ -79,14 +77,14 @@ class SpellsPage {
 
 	getSublistItem (spell, pinId) {
 		const hash = UrlUtil.autoEncodeHash(spell);
-		const school = Parser.spSchoolAndSubschoolsAbvsShort(spell.school, spell.subschools);
-		const time = PageFilterSpells.getTblTimeStr(spell.time[0]);
+		const school = Parser.spSchoolAbvToShort(spell.school);
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 
 		const $ele = $(`<li class="row">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border">
-				<span class="bold col-3-2 pl-0">${spell.name}</span>
+				<span class="bold col-6 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
-				<span class="col-1-8 text-center">${time}</span>
+				<span class="col-2-9 text-center">${time}</span>
 				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -101,7 +99,7 @@ class SpellsPage {
 				level: spell.level,
 				time,
 				normalisedTime: spell._normalisedTime,
-			}
+			},
 		);
 		return listItem;
 	}
@@ -120,29 +118,24 @@ class SpellsPage {
 				isImageTab,
 				$content,
 				entity: spell,
-				pFnGetFluff: Renderer.spell.pGetFluff
+				pFnGetFluff: Renderer.spell.pGetFluff,
 			});
 		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Spell",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Info",
 			() => {},
-			buildFluffTab
-		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true)
+			buildFluffTab,
 		);
 
 		// only display the "Info" tab if there's some fluff text--currently (2020-03-20), no official spell has fluff text
-		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab, picTab);
+		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -161,12 +154,12 @@ class SpellsPage {
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
-			$btnReset: $(`#reset`)
+			$btnReset: $(`#reset`),
 		});
 
 		const [subclassLookup] = await Promise.all([
 			RenderSpells.pGetSubclassLookup(),
-			ExcludeUtil.pInitialise()
+			ExcludeUtil.pInitialise(),
 		]);
 		Object.assign(SUBCLASS_LOOKUP, subclassLookup);
 		await spellsPage._multiSource.pMultisourceLoad(JSON_DIR, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
@@ -242,13 +235,13 @@ async function pPostLoad () {
 				transform: (sp) => {
 					const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
 					return Parser.spMainClassesToFull(fromClassList);
-				}
+				},
 			},
 			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
-			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2}
+			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2},
 		},
 		{generator: ListUtil.basicFilterGenerator},
-		(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source)
+		(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
 	);
 }
 
@@ -263,7 +256,7 @@ async function pPageInit (loadedSources) {
 
 	list = ListUtil.initList({
 		listClass: "spells",
-		fnSort: PageFilterSpells.sortSpells
+		fnSort: PageFilterSpells.sortSpells,
 	});
 	ListUtil.setOptions({primaryLists: [list]});
 	SortUtil.initBtnSortHandlers($(`#filtertools`), list);
@@ -276,12 +269,12 @@ async function pPageInit (loadedSources) {
 	// filtering function
 	spellsPage._pageFilter.filterBox.on(
 		FilterBox.EVNT_VALCHANGE,
-		spellsPage.handleFilterChange.bind(spellsPage)
+		spellsPage.handleFilterChange.bind(spellsPage),
 	);
 
 	subList = ListUtil.initSublist({
 		listClass: "subspells",
-		fnSort: PageFilterSpells.sortSpells
+		fnSort: PageFilterSpells.sortSpells,
 	});
 	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
 	ListUtil.initGenericPinnable();
@@ -371,7 +364,7 @@ async function pPageInit (loadedSources) {
 					const atLvl = toShow.filter(sp => sp.level === i);
 					if (atLvl.length) {
 						stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
-						stack.push(`<div class="bkmv__spacer-name flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
+						stack.push(`<div class="pf2-h5 flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
 						atLvl.forEach(sp => renderSpell(stack, sp));
 						stack.push(`</div>`);
 					}
@@ -401,7 +394,7 @@ async function pPageInit (loadedSources) {
 
 			return toShow.length;
 		},
-		hasPrintColumns: true
+		hasPrintColumns: true,
 	});
 
 	const homebrew = await BrewUtil.pAddBrewData();
@@ -433,7 +426,7 @@ function addSpells (data) {
 	ListUtil.setOptions({
 		itemList: spellList,
 		getSublistRow: spellsPage.getSublistItem.bind(spellsPage),
-		primaryLists: [list]
+		primaryLists: [list],
 	});
 	ListUtil.bindPinButton();
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);

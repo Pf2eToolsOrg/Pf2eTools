@@ -1,10 +1,5 @@
 "use strict";
 
-if (typeof module !== "undefined") {
-	const cv = require("./converterutils.js");
-	Object.assign(global, cv);
-}
-
 class AcConvert {
 	static tryPostProcessAc (mon, cbMan, cbErr) {
 		let nuAc = [];

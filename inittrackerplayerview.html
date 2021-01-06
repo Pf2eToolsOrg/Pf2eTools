@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -64,9 +62,16 @@
 </head>
 
 <body>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
-<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+</div>
 
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
@@ -74,7 +79,9 @@
 		<p class="page__subtitle">Press F to toggle fullscreen. Good luck.</p>
 	</div>
 </header>
-<nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
+<nav class="container page__nav" id="navigation">
+	<ul class="nav page__nav-inner" id="navbar"></ul>
+</nav>
 
 <main class="container view-col-wrapper">
 	<div class="initp__content">
@@ -82,13 +89,16 @@
 		<div class="initp__initial row">
 			<div class="col-12">
 				<p>
-					The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a DM's DM Screen initiative tracker. As a player, the usage is as follows:
+					The Player View is part of a peer-to-peer (i.e., serverless) system to allow players to connect to a
+					DM's DM Screen initiative tracker. As a player, the usage is as follows:
 				<ol>
 					<li>Enter a name into the "Player Name" field.</li>
 					<li>Paste a "server token," provided by a DM, into the "Server Token" field.</li>
 					<li>Click "Connect."</li>
 				</ol>
-				<p>After a short delay, you should be connected to the DM and this page will change to display the encounter in the DM's tracker. <i>Please note that this system is highly experimental. Your experience may vary.</i></p>
+				<p>After a short delay, you should be connected to the DM and this page will change to display the
+					encounter in the DM's tracker. <i>Please note that this system is highly experimental. Your
+						experience may vary.</i></p>
 			</div>
 		</div>
 
@@ -102,7 +112,9 @@
 		<div class="initp__initial row w-100 flex mb-4">
 			<div class="col-5 bold"><input class="form-control code" id="initp__ipt_player_name"></div>
 			<div class="col-5 bold"><input class="form-control code" id="initp__ipt_server_token"></div>
-			<div class="col-2 flex-vh-center"><button class="btn btn-xs btn-primary" id="initp__btn_connect">Connect</button></div>
+			<div class="col-2 flex-vh-center">
+				<button class="btn btn-xs btn-primary" id="initp__btn_connect">Connect</button>
+			</div>
 		</div>
 
 		<div class="initp__wrp_active" id="initp__wrp_active">

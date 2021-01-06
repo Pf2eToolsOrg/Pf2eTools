@@ -1,16 +1,16 @@
 class RenderFeats {
 	static $getRenderedFeat (feat) {
-		const prerequisite = Renderer.utils.getPrerequisiteText(feat.prerequisite);
 		const renderStack = [];
-		Renderer.get().setFirstSection(true).recursiveRender({entries: feat.entries}, renderStack, {depth: 2});
+		Renderer.get().setFirstSection(true).recursiveRender(feat.entries, renderStack, {depth: 2}, {pf2StatFix: true});
 
 		return $$`
-			${Renderer.utils.getExcludedDiv(feat, "feat")}
-			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type:'FEAT', activity: true})}
+			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
+			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type: "FEAT", activity: true})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
-			<div class="pf2-stat-text">${renderStack.join("")}${Renderer.feat.getSpecial(feat)}</div>
+			${renderStack.join("")}
+			${Renderer.feat.getSpecial(feat)}
 			${Renderer.utils.getPageP(feat)}
 		`;
 	}

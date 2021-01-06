@@ -33,15 +33,16 @@ class ItemsPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(item.source);
-		const type = item._typeListText.join(", ").toTitleCase();
+		const level = item.level != null ? item.level : "\u2014"
 
-		if (item._fIsMundane) {
+		if (item._fIsEquipment) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-				<span class="col-3-5 pl-0 bold">${item.name}</span>
-				<span class="col-4-5">${type}</span>
-				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+				<span class="col-4 pl-0 bold">${item.name}</span>
+				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-1-5 text-center">${level}</span>
+				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
+				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
 			const listItem = new ListItem(
@@ -51,9 +52,10 @@ class ItemsPage {
 				{
 					hash,
 					source,
-					type,
-					cost: item.value || 0,
-					weight: Parser.weightValueToNumber(item.weight),
+					level: item._fLvl,
+					bulk: item._fBulk,
+					price: item._sPrice,
+					category: item.category,
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
@@ -65,12 +67,12 @@ class ItemsPage {
 			return {mundane: listItem};
 		} else {
 			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				<span class="col-3-5 pl-0 bold">${item.name}</span>
-				<span class="col-4">${type}</span>
-				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="attunement col-0-6 text-center">${item._attunementCategory !== "No" ? "×" : ""}</span>
-				<span class="rarity col-1-4">${(item.rarity || "").toTitleCase()}</span>
-				<span class="source col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+				<span class="col-4 pl-0 bold">${item.name}</span>
+				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-1-5 text-center">${level}</span>
+				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
+				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
 			const listItem = new ListItem(
@@ -80,10 +82,10 @@ class ItemsPage {
 				{
 					source,
 					hash,
-					type,
-					rarity: item.rarity,
-					attunement: item._attunementCategory !== "No",
-					weight: Parser.weightValueToNumber(item.weight),
+					level: item._fLvl,
+					price: item._sPrice,
+					bulk: item._fBulk,
+					category: item.category,
 				},
 				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);
@@ -108,12 +110,12 @@ class ItemsPage {
 		const hash = UrlUtil.autoEncodeHash(item);
 		const count = addCount || 1;
 
-		const $dispCount = $(`<span class="text-center col-2 pr-0">${count}</span>`);
+		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-6 pl-0">${item.name}</span>
-				<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="bold col-5-4 pl-0">${item.name}</span>
+				<span class="text-center col-2-3">${Parser.priceToFull(item.price)}</span>
+				<span class="text-center col-2">${item.bulk ? item.bulk : "\u2014"}</span>
 				${$dispCount}
 			</a>
 		</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -125,8 +127,10 @@ class ItemsPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(item.source),
-				weight: Parser.weightValueToNumber(item.weight),
-				cost: item.value || 0,
+				level: item._fLvl,
+				price: item._sPrice,
+				bulk: item._fBulk,
+				category: item.category,
 				count,
 			},
 			{
@@ -164,15 +168,9 @@ class ItemsPage {
 			() => {},
 			buildFluffTab,
 		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true),
-		);
 
-		// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
-		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab, picTab);
+		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -292,14 +290,14 @@ class ItemsPage {
 		const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 		$(`.side-label--mundane`).click(() => {
 			const filterValues = itemsPage._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Mundane");
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Mundane: curValue === 1 ? 0 : 1}});
+			const curValue = MiscUtil.get(filterValues, "Type", "Equipment");
+			itemsPage._pageFilter.filterBox.setFromValues({Type: {Equipment: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		$(`.side-label--magic`).click(() => {
 			const filterValues = itemsPage._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Magic");
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Magic: curValue === 1 ? 0 : 1}});
+			const curValue = MiscUtil.get(filterValues, "Type", "Treasure");
+			itemsPage._pageFilter.filterBox.setFromValues({Type: {Treasure: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -417,8 +415,8 @@ class ItemsPage {
 		}
 
 		// populate table labels
-		$(`h3.ele-mundane span.side-label`).text("Mundane");
-		$(`h3.ele-magic span.side-label`).text("Magic");
+		$(`h3.ele-mundane span.side-label`).text("Equipment");
+		$(`h3.ele-magic span.side-label`).text("Treasure");
 
 		this._mundaneList.update();
 		this._magicList.update();

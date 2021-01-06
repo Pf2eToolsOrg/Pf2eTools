@@ -51,14 +51,14 @@ class NavBar {
 		addLi(ulPlayers, "ancestries.html", "Ancestries");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "feats.html", "Feats");
+		addLi(ulPlayers, "companionsfamiliars.html", "Companions & Familiars");
 		addLi(ulPlayers, "charcreationoptions.html", "Other Character Creation Options");
-		addLi(ulPlayers, "optionalfeatures.html", "Other Options & Features");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "statgen.html", "Stat Generator");
 		addLi(ulPlayers, "lifegen.html", "Deep Backgrounds");
 
 		const ulDms = addDropdown(navBar, "Game Master");
-		addLi(ulDms, "dmscreen.html", "DM Screen");
+		addLi(ulDms, "gmscreen.html", "GM Screen");
 		addDivider(ulDms);
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
@@ -86,13 +86,11 @@ class NavBar {
 		addLi(ulUtils, "search.html", "Search");
 		addDivider(ulUtils);
 		addLi(ulUtils, "blacklist.html", "Content Blacklist");
-		addLi(ulUtils, "makebrew.html", "Homebrew Builder");
 		addLi(ulUtils, "managebrew.html", "Homebrew Manager");
 		addDivider(ulUtils);
 		addLi(ulUtils, "inittrackerplayerview.html", "Initiative Tracker Player View");
 		addDivider(ulUtils);
 		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
-		addLi(ulUtils, "converter.html", "Text Converter");
 		addDivider(ulUtils);
 		addLi(ulUtils, "changelog.html", "Changelog");
 		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
@@ -138,7 +136,7 @@ class NavBar {
 					const dump = {sync, async};
 					DataUtil.userDownload("PF2eTools", dump);
 				},
-				title: "Save any locally-stored data (loaded homebrew, active blacklists, DM Screen configuration,...) to a file.",
+				title: "Save any locally-stored data (loaded homebrew, active blacklists, GM Screen configuration,...) to a file.",
 			},
 		);
 		addButton(
@@ -153,7 +151,7 @@ class NavBar {
 					await StorageUtil.pSetFromDump(dump.async);
 					location.reload();
 				},
-				title: "Load previously-saved data (loaded homebrew, active blacklists, DM Screen configuration,...) from a file.",
+				title: "Load previously-saved data (loaded homebrew, active blacklists, GM Screen configuration,...) from a file.",
 			},
 		);
 		addDivider(ulSettings);

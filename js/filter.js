@@ -1078,6 +1078,7 @@ class Filter extends FilterBase {
 		this._umbrellaExcludes = Filter._getAsFilterItems(opts.umbrellaExcludes);
 		this._isSortByDisplayItems = !!opts.isSortByDisplayItems;
 		this._isSrdFilter = !!opts.isSrdFilter;
+		this._isHiddenFilter = !!opts.isHiddenFilter;
 
 		Filter._validateItemNests(this._items, this._nests);
 
@@ -1408,6 +1409,7 @@ class Filter extends FilterBase {
 	 * @param opts.isMulti The name of the MultiFilter this filter belongs to, if any.
 	 */
 	$render (opts) {
+		if (this._isHiddenFilter) return;
 		this._filterBox = opts.filterBox;
 		this.__$wrpMini = opts.$wrpMini;
 
@@ -1485,6 +1487,7 @@ class Filter extends FilterBase {
 	}
 
 	reset (isResetAll) {
+		if (this._isHiddenFilter) return;
 		if (isResetAll) {
 			this.resetBase();
 			this._resetNestsHidden();
@@ -1496,6 +1499,7 @@ class Filter extends FilterBase {
 	resetShallow () { return this.reset(); }
 
 	_doRenderPills () {
+		if (this._isHiddenFilter) return;
 		if (this._itemSortFn) this._items.sort(this._isSortByDisplayItems && this._displayFn ? (a, b) => this._itemSortFn(this._displayFn(a.item), this._displayFn(b.item)) : this._itemSortFn);
 		this._items.forEach(it => {
 			if (!it.$rendered) {
@@ -1559,6 +1563,7 @@ class Filter extends FilterBase {
 	_doRenderPills_doRenderWrpGroup_$getWrpPillsSub () { return $(`<div class="fltr__wrp-pills--sub"></div>`); }
 
 	_doRenderMiniPills () {
+		if (this._isHiddenFilter) return;
 		// create a list view so we can freely sort
 		const view = this._items.slice(0);
 		if (this._itemSortFnMini || this._itemSortFn) {
@@ -1572,6 +1577,7 @@ class Filter extends FilterBase {
 	}
 
 	_doToggleDisplay () {
+		if (this._isHiddenFilter) return;
 		// if there are no items, hide everything
 		this.__$wrpFilter.toggleClass("fltr__no-items", !this._items.length);
 	}
@@ -2641,7 +2647,7 @@ class RangeFilter extends FilterBase {
 	}
 }
 RangeFilter._DEFAULT_META = {
-	isUseDropdowns: false
+	isUseDropdowns: false,
 };
 
 class OptionsFilter extends FilterBase {
@@ -3135,6 +3141,159 @@ MultiFilter._DETAULT_STATE = {
 	mode: "and",
 };
 
+class TraitsFilter extends MultiFilter {
+	constructor (opts) {
+		opts = opts || {discardCategories: {}};
+		if (opts.discardCategories === undefined) opts.discardCategories = {};
+		opts.filters = [];
+		let idx = 0;
+		let filterIdx = {};
+
+		// region filters
+		if (!opts.discardCategories.rarity) {
+			opts.filters.push(new Filter({header: "Rarity", itemSortFn: Parser.rarityToNumber}));
+			filterIdx.rarity = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.alignment) {
+			opts.filters.push(new Filter({header: "Alignment"}));
+			filterIdx.alignment = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.class) {
+			opts.filters.push(new Filter({header: "Class"}));
+			filterIdx.class = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.ancestry) {
+			opts.filters.push(new Filter({header: "Ancestry & Heritage"}));
+			filterIdx.ancestry = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.tradition) {
+			opts.filters.push(new Filter({header: "Traditions"}));
+			filterIdx.tradition = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.school) {
+			opts.filters.push(new Filter({header: "Magic Schools"}));
+			filterIdx.school = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.weapon) {
+			opts.filters.push(new Filter({header: "Weapon & Armor"}));
+			filterIdx.weapon = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.poison) {
+			opts.filters.push(new Filter({header: "Poison"}));
+			filterIdx.poison = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.equipment) {
+			opts.filters.push(new Filter({header: "Equipment"}));
+			filterIdx.equipment = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.creaturetype) {
+			opts.filters.push(new Filter({header: "Creature Types"}));
+			filterIdx.creaturetype = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.creature) {
+			opts.filters.push(new Filter({header: "Creature"}));
+			filterIdx.creature = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.energy) {
+			opts.filters.push(new Filter({header: "Energy"}));
+			filterIdx.energy = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.planar) {
+			opts.filters.push(new Filter({header: "Planar"}));
+			filterIdx.planar = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.elemental) {
+			opts.filters.push(new Filter({header: "Elemental"}));
+			filterIdx.elemental = idx;
+			idx += 1;
+		}
+		if (!opts.discardCategories.general) {
+			opts.filters.push(new Filter({header: "General"}));
+			filterIdx.general = idx;
+		}
+		// endregion
+
+		super(opts);
+		this._discardCategories = opts.discardCategories;
+		this._filterIdx = filterIdx;
+	}
+
+	_getFilterFromCategory (category) {
+		if (this._filterIdx[category] == null) return;
+		return this._filters[this._filterIdx[category]]
+	}
+
+	_getTraitCategories (trait) {
+		let out = new Set()
+		if (Parser.TRAITS_RARITY.includes(trait)) out.add("rarity");
+		if (Parser.TRAITS_ALIGN.includes(trait)) out.add("alignment");
+		if (Parser.TRAITS_ALIGN_ABV.includes(trait)) out.add("alignment");
+		if (Parser.TRAITS_CLASS.includes(trait)) out.add("class");
+		if (Parser.TRAITS_ANCESTRY.includes(trait)) out.add("ancestry");
+		if (Parser.TRAITS_HERITAGE.includes(trait)) out.add("ancestry");
+		if (Parser.TRAITS_TRADITION.includes(trait)) out.add("tradition");
+		if (Parser.TRAITS_SCHOOL.includes(trait)) out.add("school");
+		if (Parser.TRAITS_WEAPON.includes(trait)) out.add("weapon");
+		if (Parser.TRAITS_ARMOR.includes(trait)) out.add("weapon");
+		if (Parser.TRAITS_POISON.includes(trait)) out.add("poison");
+		if (Parser.TRAITS_EQUIPMENT.includes(trait)) out.add("equipment");
+		if (Parser.TRAITS_CREATURE_TYPE.includes(trait)) out.add("creaturetype");
+		if (Parser.TRAITS_CREATURE.includes(trait)) out.add("creature");
+		if (Parser.TRAITS_ENERGY.includes(trait)) out.add("energy");
+		if (Parser.TRAITS_ELEMENTAL.includes(trait)) out.add("elemental");
+		if (Parser.TRAITS_PLANAR.includes(trait)) out.add("planar");
+		if (out.size === 0) out.add("general")
+		return Array.from(out).filter(it => !this._discardCategories[it])
+	}
+
+	addItem (item) {
+		if (item == null) return;
+		if (item instanceof Array) {
+			const len = item.length;
+			for (let i = 0; i < len; ++i) this.addItem(item[i]);
+		} else {
+			this._getTraitCategories(item).forEach(cat => {
+				this._getFilterFromCategory(cat).addItem(item)
+			});
+		}
+	}
+
+	toDisplay (boxState, entryValArr) {
+		const results = [];
+		for (let i = this._filters.length - 1; i >= 0; --i) {
+			const f = this._filters[i];
+			if (f instanceof RangeFilter) {
+				results.push(f.toDisplay(boxState, entryValArr))
+			} else {
+				const totals = boxState[f.header]._totals;
+
+				if (totals.yes === 0 && totals.no === 0) results.push(null);
+				else results.push(f.toDisplay(boxState, entryValArr));
+			}
+		}
+
+		const resultsActive = results.filter(r => r !== null);
+		if (this._state.mode === "or") {
+			if (!resultsActive.length) return true;
+			return resultsActive.find(r => r);
+		} else {
+			return resultsActive.filter(r => r).length === resultsActive.length;
+		}
+	}
+}
 // validate subhash prefixes
 (() => {
 	const boxPrefixes = Object.values(FilterBox._SUB_HASH_PREFIXES).filter(it => it.length !== FilterUtil.SUB_HASH_PREFIX_LENGTH);

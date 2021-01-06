@@ -4,18 +4,19 @@ const ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
 	_firstInit: true,
-	initList (listOpts) {
-		const $iptSearch = $("#lst__search");
+	initList (listOpts, searchIds) {
+		searchIds = searchIds || {input: "#lst__search", glass: "#lst__search-glass", reset: "#reset"}
+		const $iptSearch = $(searchIds.input);
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
 
-		$("#reset").click(function () {
+		$(searchIds.reset).click(function () {
 			$iptSearch.val("");
 			list.reset();
 		});
 
 		// region Magnifying glass/clear button
-		const $btnSearchClear = $(`#lst__search-glass`)
+		const $btnSearchClear = $(searchIds.glass)
 			.click(() => $iptSearch.val("").change().keydown().keyup());
 		const _handleSearchChange = () => {
 			setTimeout(() => {
@@ -321,20 +322,6 @@ const ListUtil = {
 						.on("change", (evt) => pHandleIptChange(evt, additive))
 						.appendTo($(`body`));
 					$iptAdd.click();
-				},
-			);
-			contextOptions.push(action);
-		}
-
-		if (opts.sendToBrew) {
-			if (contextOptions.length) contextOptions.push(null); // Add a spacer after the previous group
-
-			const action = new ContextUtil.Action(
-				"Edit in Homebrew Builder",
-				() => {
-					const meta = opts.sendToBrew.fnGetMeta();
-					const toLoadData = [meta.page, meta.source, meta.hash];
-					window.location = `${UrlUtil.PG_MAKE_BREW}#${opts.sendToBrew.mode.toUrlified()}${HASH_PART_SEP}${UrlUtil.packSubHash("statemeta", toLoadData)}`;
 				},
 			);
 			contextOptions.push(action);

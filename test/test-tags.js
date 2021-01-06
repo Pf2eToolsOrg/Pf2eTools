@@ -33,19 +33,19 @@ const TAG_TO_PAGE = {
 	"item": UrlUtil.PG_ITEMS,
 	"class": UrlUtil.PG_CLASSES,
 	"creature": UrlUtil.PG_BESTIARY,
-	"condition": UrlUtil.PG_CONDITIONS_DISEASES,
-	"disease": UrlUtil.PG_CONDITIONS_DISEASES,
+	"condition": UrlUtil.PG_CONDITIONS,
+	"disease": UrlUtil.PG_CONDITIONS,
 	"background": UrlUtil.PG_BACKGROUNDS,
-	"race": UrlUtil.PG_RACES,
-	"optfeature": UrlUtil.PG_OPT_FEATURES,
+	"race": UrlUtil.PG_ANCESTRIES,
+	"optfeature": UrlUtil.PG_COMPANIONS_FAMILIARS,
 	"reward": UrlUtil.PG_REWARDS,
 	"feat": UrlUtil.PG_FEATS,
 	"psionic": UrlUtil.PG_PSIONICS,
 	"object": UrlUtil.PG_OBJECTS,
 	"cult": UrlUtil.PG_CULTS_BOONS,
 	"boon": UrlUtil.PG_CULTS_BOONS,
-	"trap": UrlUtil.PG_TRAPS_HAZARDS,
-	"hazard": UrlUtil.PG_TRAPS_HAZARDS,
+	"trap": UrlUtil.PG_HAZARDS,
+	"hazard": UrlUtil.PG_HAZARDS,
 	"deity": UrlUtil.PG_DEITIES,
 	"variantrule": UrlUtil.PG_VARIANTRULES,
 	"action": UrlUtil.PG_ACTIONS,
@@ -234,7 +234,7 @@ class LinkCheck {
 		}
 	}
 }
-LinkCheck.RE = /{@(spell|item|class|creature|condition|disease|background|race|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action|classFeature|subclassFeature) ([^}]*?)}/g;
+LinkCheck.RE = /{@(spell|item|class|creature|condition|disease|background|ancestry|optfeature|feat|reward|psionic|object|cult|boon|trap|hazard|deity|variantrule|action|classFeature|subclassFeature) ([^}]*?)}/g;
 LinkCheck.SKILL_RE = /{@skill (.*?)(\|.*?)?}/g;
 
 class ClassLinkCheck {

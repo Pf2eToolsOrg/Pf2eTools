@@ -343,7 +343,7 @@ class PageFilterClassesRaw extends PageFilterClasses {
 					}
 					case "refOptionalfeature": {
 						const unpacked = DataUtil.generic.unpackUid(ent.optionalfeature, "optfeature");
-						const page = UrlUtil.PG_OPT_FEATURES;
+						const page = UrlUtil.PG_COMPANIONS_FAMILIARS;
 						const {source} = unpacked;
 						const hash = UrlUtil.URL_TO_HASH_BUILDER[page](unpacked);
 

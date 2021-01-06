@@ -13,7 +13,7 @@
 				"dependencies": {
 					"type": "object",
 					"properties": {
-						"monster": {
+						"creature": {
 							"type": "array",
 							"items": {"type": "string"}
 						}
@@ -22,7 +22,7 @@
 				"otherSources": {
 					"type": "object",
 					"properties": {
-						"monster": {
+						"creature": {
 							"description": "Keys are other sources to be loaded; values are `otherSources` sources from that source to search for.",
 							"type": "object"
 						}
@@ -518,7 +518,7 @@
 						},
 						"required": ["entry", "entrySummary"]
 					},
-					"race": {
+					"ancestry": {
 						"type": "array",
 						"items": {
 							"type": "object",

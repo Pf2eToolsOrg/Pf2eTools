@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -135,7 +133,7 @@
 		}
 
 		.pbuy__adv--visible,
-		table th.pbuy__adv--visible{
+		table th.pbuy__adv--visible {
 			display: none;
 		}
 
@@ -228,9 +226,16 @@
 </head>
 
 <body>
-<div class="cancer__wrp-sidebar-rhs cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
-<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+</div>
 
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
@@ -286,7 +291,8 @@
 							<input class="form-control" id="remaining" type="number" min="10" value="27" readonly>
 						</label>
 						<button id="reset" class="btn btn-default" style="margin: auto 2px 7px 2px;">Reset</button>
-						<button id="randomise" class="btn btn-default" style="margin: auto auto 7px 2px;">Random</button>
+						<button id="randomise" class="btn btn-default" style="margin: auto auto 7px 2px;">Random
+						</button>
 					</div>
 
 					<table class="pbuy__table">
@@ -295,7 +301,9 @@
 							<td class="text-center bold">Base</td>
 							<td class="text-center">Racial</td>
 							<td class="choose choose_head"></td>
-							<td title="Input any additional/custom bonuses here" class="text-center help text-muted">User</td>
+							<td title="Input any additional/custom bonuses here" class="text-center help text-muted">
+								User
+							</td>
 
 							<td style="width: 18px;"></td>
 
@@ -306,7 +314,9 @@
 							<td class="text-right"><b>STR</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -319,7 +329,9 @@
 							<td class="text-right"><b>DEX</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -332,7 +344,9 @@
 							<td class="text-right"><b>CON</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -345,7 +359,9 @@
 							<td class="text-right"><b>INT</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -358,7 +374,9 @@
 							<td class="text-right"><b>WIS</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -371,7 +389,9 @@
 							<td class="text-right"><b>CHA</b></td>
 							<td><input type="number" value="8" class="base" data-select="number"></td>
 							<td><input class="racial" readonly data-select="number"></td>
-							<td class="choose"><div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div></td>
+							<td class="choose">
+								<div class="flex-vh-center"><input type="checkbox" class="choose pbuy__cb_choose"></div>
+							</td>
 							<td class="pbuy__choose_dummy"></td>
 							<td><input type="number" class="pbuy__user_add" value="0" data-select="number"></td>
 
@@ -386,12 +406,30 @@
 					<select id="race" class="form-control"></select>
 
 					<table id="custom" style="display: none;">
-						<tr><td>Custom race <b>STR</b> bonus:</td><td><input name="str" class="custom" type="number" value="0" step="1"></td></tr>
-						<tr><td>Custom race <b>DEX</b> bonus:</td><td><input name="dex" class="custom" type="number" value="0" step="1"></td></tr>
-						<tr><td>Custom race <b>CON</b> bonus:</td><td><input name="con" class="custom" type="number" value="0" step="1"></td></tr>
-						<tr><td>Custom race <b>INT</b> bonus:</td><td><input name="int" class="custom" type="number" value="0" step="1"></td></tr>
-						<tr><td>Custom race <b>WIS</b> bonus:</td><td><input name="wis" class="custom" type="number" value="0" step="1"></td></tr>
-						<tr><td>Custom race <b>CHA</b> bonus:</td><td><input name="cha" class="custom" type="number" value="0" step="1"></td></tr>
+						<tr>
+							<td>Custom ancestry <b>STR</b> bonus:</td>
+							<td><input name="str" class="custom" type="number" value="0" step="1"></td>
+						</tr>
+						<tr>
+							<td>Custom ancestry <b>DEX</b> bonus:</td>
+							<td><input name="dex" class="custom" type="number" value="0" step="1"></td>
+						</tr>
+						<tr>
+							<td>Custom ancestry <b>CON</b> bonus:</td>
+							<td><input name="con" class="custom" type="number" value="0" step="1"></td>
+						</tr>
+						<tr>
+							<td>Custom ancestry <b>INT</b> bonus:</td>
+							<td><input name="int" class="custom" type="number" value="0" step="1"></td>
+						</tr>
+						<tr>
+							<td>Custom ancestry <b>WIS</b> bonus:</td>
+							<td><input name="wis" class="custom" type="number" value="0" step="1"></td>
+						</tr>
+						<tr>
+							<td>Custom ancestry <b>CHA</b> bonus:</td>
+							<td><input name="cha" class="custom" type="number" value="0" step="1"></td>
+						</tr>
 					</table>
 				</div>
 
@@ -400,7 +438,9 @@
 				<div class="pbuy__split_item">
 					<div class="flex-col">
 						<h4>Ability Score Point Cost</h4>
-						<label class="flex-v-center"><div class="mr-2">Custom Rules</div><input id="advanced" type="checkbox"></label>
+						<label class="flex-v-center">
+							<div class="mr-2">Custom Rules</div>
+							<input id="advanced" type="checkbox"></label>
 						<table id="costs" class="pbuy__tbl_cost"></table>
 					</div>
 				</div>
@@ -409,8 +449,10 @@
 			<hr>
 
 			<div class="pbuy__save_wrp">
-				<button id="pbuy__save_file" class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File</button>
-				<button id="pbuy__load_file" class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File</button>
+				<button id="pbuy__save_file" class="btn btn-xs btn-primary" style="margin-right: 7px;">Save to File
+				</button>
+				<button id="pbuy__load_file" class="btn btn-xs btn-primary" style="margin-right: 14px;">Load from File
+				</button>
 				<button id="pbuy__save_url" class="btn btn-xs btn-primary">Save to URL</button>
 			</div>
 		</div>

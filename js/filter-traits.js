@@ -1,10 +1,6 @@
 "use strict";
 
 class PageFilterTraits extends PageFilter {
-	constructor () {
-		super();
-	}
-
 	mutateForFilters (it) {
 	}
 

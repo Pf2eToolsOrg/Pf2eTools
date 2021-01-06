@@ -64,25 +64,24 @@ class PageFilterSpells extends PageFilter {
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 10) {
 				return "5 feet"
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 25) {
-				return  "10 feet"
+				return "10 feet"
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 50) {
-				return  "25 feet"
+				return "25 feet"
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 100) {
-				return  "50 feet"
+				return "50 feet"
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 500) {
-				return  "100 feet"
+				return "100 feet"
 			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE) {
-				return  "500 feet"
+				return "500 feet"
 			} else if (norm_range < 900000000) {
-				return  "1 mile"
+				return "1 mile"
 			} else if (norm_range < 900000001) {
 				return "Planetary"
 			} else if (norm_range < 900000002) {
-				return  "Unlimited"
+				return "Unlimited"
 			} else {
 				return "Varies"
 			}
-
 		} else {
 			return null
 		}
@@ -92,14 +91,14 @@ class PageFilterSpells extends PageFilter {
 		let multiplier = 1;
 		let offset = 0;
 		switch (time.unit) {
-			case Parser.SP_TM_PF_F: offset = 1; break;
-			case Parser.SP_TM_PF_R: offset = 2; break;
-			case Parser.SP_TM_PF_A: multiplier = 10; break;
-			case Parser.SP_TM_PF_AA: multiplier = 20; break;
-			case Parser.SP_TM_PF_AAA: multiplier = 30; break;
-			case Parser.SP_TM_ROUND: multiplier = 60; break;
-			case Parser.SP_TM_MINS: multiplier = 600; break;
-			case Parser.SP_TM_HRS: multiplier = 36000; break;
+			case Parser.TM_F: offset = 1; break;
+			case Parser.TM_R: offset = 2; break;
+			case Parser.TM_A: multiplier = 10; break;
+			case Parser.TM_AA: multiplier = 20; break;
+			case Parser.TM_AAA: multiplier = 30; break;
+			case Parser.TM_ROUND: multiplier = 60; break;
+			case Parser.TM_MINS: multiplier = 600; break;
+			case Parser.TM_HRS: multiplier = 36000; break;
 		}
 		return (multiplier * time.number) + offset;
 	}
@@ -157,8 +156,8 @@ class PageFilterSpells extends PageFilter {
 	}
 
 	static getTblTimeStr (time) {
-		return time.unit === `Varies` ? `Varies` : Parser.SP_TIME_ACTIONS.includes(time.unit) ? `${Parser.SP_TIME_TO_FULL[time.unit].uppercaseFirst()}`
-		: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
+			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
 
 	// endregion
@@ -170,91 +169,90 @@ class PageFilterSpells extends PageFilter {
 		this._levelFilter = new Filter({
 			header: "Level",
 			items: [
-				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
 			],
-			displayFn: PageFilterSpells.getFltrSpellLevelStr
+			displayFn: PageFilterSpells.getFltrSpellLevelStr,
 		});
 		this._traditionFilter = new Filter({
 			header: "Tradition",
 			items: [...Parser.TRADITIONS],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._focusFilter = new Filter({
 			header: "Spell Type",
 			items: ["Focus Spell", "Spell"],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._classFilter = new Filter({header: "Classes"});
 		this._domainFilter = new Filter({header: "Domains"})
 		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [this._focusFilter, this._classFilter, this._domainFilter]
+			filters: [this._focusFilter, this._classFilter, this._domainFilter],
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
 			items: ["Focus", "Material", "Somatic", "Verbal", "Cost"],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._savingThrowFilter = new Filter({
 			header: "Saving Throw",
-			items: ["Basic", "Fortitude", "Reflex", "Will"]
+			items: ["Basic", "Fortitude", "Reflex", "Will"],
 		});
-		this._generalTrtFilter = new Filter({
-			header: "General"});
+		this._generalTrtFilter = new Filter({header: "General"});
 		this._alignmentTrtFilter = new Filter({header: "Alignment"});
 		this._elementalTrtFilter = new Filter({header: "Elemental"});
 		this._energyTrtFilter = new Filter({header: "Energy"});
 		this._rarityTrtFilter = new Filter({
 			header: "Rarity",
 			items: [...Parser.TRAITS_RARITY],
-			itemSortFn: null
+			itemSortFn: null,
 		});
 		this._sensesTrtFilter = new Filter({header: "Senses"});
 		this._traitFilter = new MultiFilter({
 			header: "Traits",
-			filters: [this._rarityTrtFilter, this._alignmentTrtFilter, this._elementalTrtFilter, this._energyTrtFilter, this._sensesTrtFilter, this._generalTrtFilter]
+			filters: [this._rarityTrtFilter, this._alignmentTrtFilter, this._elementalTrtFilter, this._energyTrtFilter, this._sensesTrtFilter, this._generalTrtFilter],
 		});
 		this._schoolFilter = new Filter({
 			header: "School",
 			items: [...Parser.SKL_ABVS],
 			displayFn: Parser.spSchoolAbvToFull,
-			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item))
+			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item)),
 		});
 		this._areaFilter = new Filter({
-			header: "Area Types"
+			header: "Area Types",
 		});
 		this._timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
-				Parser.SP_TM_PF_A,
-				Parser.SP_TM_PF_AA,
-				Parser.SP_TM_PF_AAA,
-				Parser.SP_TM_PF_F,
-				Parser.SP_TM_PF_R,
-				Parser.SP_TM_ROUND,
-				Parser.SP_TM_MINS,
-				Parser.SP_TM_HRS,
-				"Varies"
+				Parser.TM_A,
+				Parser.TM_AA,
+				Parser.TM_AAA,
+				Parser.TM_F,
+				Parser.TM_R,
+				Parser.TM_ROUND,
+				Parser.TM_MINS,
+				Parser.TM_HRS,
+				"Varies",
 			],
-			displayFn: Parser.spTimeUnitToFull,
-			itemSortFn: null
+			displayFn: Parser.timeUnitToFull,
+			itemSortFn: null,
 		});
 		this._durationFilter = new RangeFilter({
 			header: "Duration",
 			isLabelled: true,
 			labelSortFn: null,
-			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"]
+			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"],
 		});
 
 		this._rangeFilter = new RangeFilter({
 			header: "Range",
 			isLabelled: true,
 			labelSortFn: null,
-			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"]
+			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"]
+			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"],
 		})
 	}
 
@@ -278,7 +276,7 @@ class PageFilterSpells extends PageFilter {
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = PageFilterSpells.getFilterRange(spell)
 		spell._fSavingThrow = spell.saving_throw == null ? [] : spell.saving_throw_basic ? [spell.saving_throw, "Basic"] : [spell.saving_throw];
-		spell._fComponents = spell.cost==null ? [] : ["Cost"];
+		spell._fComponents = spell.cost == null ? [] : ["Cost"];
 		if (spell.components.F) spell._fComponents.push("Focus");
 		if (spell.components.M) spell._fComponents.push("Material");
 		if (spell.components.S) spell._fComponents.push("Somatic");
@@ -289,7 +287,6 @@ class PageFilterSpells extends PageFilter {
 		if (spell.heightened.heightened) spell._fMisc.push("Can be Heightened");
 		if (spell.sustain) spell._fMisc.push("Sustained");
 		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
-
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -301,7 +298,7 @@ class PageFilterSpells extends PageFilter {
 		this._traditionFilter.addItem(spell._fTraditions);
 		this._focusFilter.addItem(spell._fFocus);
 		this._classFilter.addItem(spell._fClasses)
-		if (typeof(spell.domain)==="string") this._domainFilter.addItem(spell.domain);
+		if (typeof (spell.domain) === "string") this._domainFilter.addItem(spell.domain);
 		this._generalTrtFilter.addItem(spell._fgeneralTrts);
 		this._alignmentTrtFilter.addItem(spell._falignmentTrts);
 		this._elementalTrtFilter.addItem(spell._felementalTrts);
@@ -328,7 +325,7 @@ class PageFilterSpells extends PageFilter {
 			this._durationFilter,
 			this._areaFilter,
 			this._rangeFilter,
-			this._miscFilter
+			this._miscFilter,
 		];
 	}
 
@@ -344,7 +341,7 @@ class PageFilterSpells extends PageFilter {
 			[
 				s._fFocus,
 				s._fClasses,
-				s.domain
+				s.domain,
 			],
 			[
 				s._frarityTrts,
@@ -352,13 +349,13 @@ class PageFilterSpells extends PageFilter {
 				s._felementalTrts,
 				s._fenergyTrts,
 				s._fsenseTrts,
-				s._fgeneralTrts
+				s._fgeneralTrts,
 			],
 			s._fTimeType,
 			s._fDurationType,
 			s._areaTypes,
 			s._fRange,
-			s._fMisc
+			s._fMisc,
 		)
 	}
 }

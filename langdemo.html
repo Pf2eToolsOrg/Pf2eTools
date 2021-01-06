@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -70,7 +68,10 @@
 
 <body>
 <div class="viewport-wrapper">
-	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	</div>
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
@@ -79,7 +80,9 @@
 		</div>
 	</header>
 
-	<nav class="container page__nav" id="navigation"><ul class="nav page__nav-inner" id="navbar"></ul></nav>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav page__nav-inner" id="navbar"></ul>
+	</nav>
 
 	<div class="view-col-wrapper flex-col px-4">
 		<div class="flex-v-center mb-3">
@@ -87,13 +90,17 @@
 			<button class="btn btn-xs btn-default mr-2" id="btn__validate">Validate</button>
 			<button class="btn btn-xs btn-default mr-2" id="btn__resolve_dynamics">Resolve Dynamics</button>
 			<button class="btn btn-xs btn-default mr-2" id="btn__validate_dynamics">Validate Dynamics</button>
-			<select class="form-control input-xs rlng__sel-sample" id="sel__sample"><option disabled value="-1">Select sample</option></select>
+			<select class="form-control input-xs rlng__sel-sample" id="sel__sample">
+				<option disabled value="-1">Select sample</option>
+			</select>
 		</div>
 
 		<div class="flex w-100 h-100">
 			<div class="flex-col w-33">
 				<div class="mb-2 small-caps">Input</div>
-				<div class="flex-col h-100 w-100 flex-1"><textarea id="ipt" class="w-100 h-100 form-control mb-2 code resize-none"></textarea></div>
+				<div class="flex-col h-100 w-100 flex-1"><textarea id="ipt"
+																   class="w-100 h-100 form-control mb-2 code resize-none"></textarea>
+				</div>
 
 				<div class="mb-2 small-caps">Context</div>
 				<div class="flex-col h-100 w-100 flex-1" id="wrp_context"></div>
@@ -101,10 +108,14 @@
 
 			<div class="flex-col w-33 px-2">
 				<div class="mb-2 small-caps">Lexed</div>
-				<div class="flex-col h-100 w-100 flex-1"><pre class="w-100 h-100 m-0 mb-2" id="out_lexed"></pre></div>
+				<div class="flex-col h-100 w-100 flex-1">
+					<pre class="w-100 h-100 m-0 mb-2" id="out_lexed"></pre>
+				</div>
 
 				<div class="mb-2 small-caps">Parsed</div>
-				<div class="flex-col h-100 w-100 flex-1"><pre class="w-100 h-100 m-0" id="out_parsed"></pre></div>
+				<div class="flex-col h-100 w-100 flex-1">
+					<pre class="w-100 h-100 m-0" id="out_parsed"></pre>
+				</div>
 			</div>
 
 			<div class="flex-col w-33 h-100 px-2">
@@ -126,8 +137,6 @@
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-dice.js"></script>
-<script type="text/javascript" src="js/render-markdown.js"></script>
-<script type="text/javascript" src="js/render-card.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="module" src="js/langdemo.js"></script>
 <script type="module" src="js/rolang.js"></script>

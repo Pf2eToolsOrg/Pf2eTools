@@ -13,14 +13,7 @@ const FILE_BLACKLIST = new Set([
 	"encounters.json",
 	"names.json",
 	"life.json",
-	"makecards.json",
 	"renderdemo.json",
-	"roll20-items.json",
-	"roll20-spells.json",
-	"roll20-tables.json",
-	"foundry.json",
-	"roll20.json",
-	"makebrew-creature.json",
 ]);
 
 const KEY_BLACKLIST = new Set(["data", "itemTypeAdditionalEntries", "itemType", "itemProperty"]);
