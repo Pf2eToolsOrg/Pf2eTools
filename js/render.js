@@ -2837,14 +2837,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@reward":
-						fauxEntry.href.path = "rewards.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_REWARDS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@feat":
 						fauxEntry.href.path = "feats.html";
 						fauxEntry.href.hover = {
@@ -2853,24 +2845,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@object":
-						fauxEntry.href.path = "objects.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_OBJECTS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@boon":
-					case "@cult":
-						fauxEntry.href.path = "cultsboons.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CULTS_BOONS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@trap":
 					case "@hazard":
 						fauxEntry.href.path = "hazards.html";
 						fauxEntry.href.hover = {
@@ -2895,22 +2869,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@vehicle":
-						fauxEntry.href.path = UrlUtil.PG_VEHICLES;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_VEHICLES,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@vehupgrade":
-						fauxEntry.href.path = UrlUtil.PG_VEHICLES;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_VEHICLES,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@action":
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
 						fauxEntry.href.hover = {
@@ -2923,14 +2881,6 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_LANGUAGES,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@charoption":
-						fauxEntry.href.path = UrlUtil.PG_CHAR_CREATION_OPTIONS;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CHAR_CREATION_OPTIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -4411,23 +4361,6 @@ Renderer.optionalfeature = {
 	},
 };
 
-Renderer.reward = {
-	getRenderedString: (reward) => {
-		const renderer = Renderer.get();
-		const renderStack = [];
-		renderer.recursiveRender({entries: reward.entries}, renderStack, {depth: 1});
-		return `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
-	},
-
-	getCompactRenderedString (reward) {
-		return `
-			${Renderer.utils.getExcludedTr(reward, "reward", UrlUtil.PG_REWARDS)}
-			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
-			${Renderer.reward.getRenderedString(reward)}
-		`;
-	},
-};
-
 Renderer.ancestry = {
 	getCompactRenderedString (race) {
 		const renderer = Renderer.get();
@@ -4768,57 +4701,6 @@ Renderer.deity = {
 	},
 };
 
-Renderer.object = {
-	getCompactRenderedString (obj, opts) {
-		opts = opts || {};
-
-		const renderer = Renderer.get();
-		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable + !!obj.conditionImmune) || 1);
-		return `
-			${Renderer.utils.getExcludedTr(obj, "object", UrlUtil.PG_OBJECTS)}
-			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS, isEmbeddedEntity: opts.isEmbeddedEntity})}
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th colspan="2" class="text-center">Type</th>
-						<th colspan="2" class="text-center">AC</th>
-						<th colspan="2" class="text-center">HP</th>
-						<th colspan="2" class="text-center">Speed</th>
-						<th colspan="4" class="text-center">Damage Imm.</th>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-center">${Parser.sizeAbvToFull(obj.size)} ${obj.creatureType ? Parser.monTypeToFullObj(obj.creatureType).asText : "object"}</td>
-						<td colspan="2" class="text-center">${obj.ac != null ? obj.ac : "\u2014"}</td>
-						<td colspan="2" class="text-center">${obj.hp}</td>
-						<td colspan="2" class="text-center">${Parser.getSpeedString(obj)}</td>
-						<td colspan="4" class="text-center">${Parser.monImmResToFull(obj.immune)}</td>
-					</tr>
-					${Parser.ABIL_ABVS.some(ab => obj[ab] != null) ? `
-					<tr>${Parser.ABIL_ABVS.map(it => `<td colspan="2" class="text-center">${it.toUpperCase()}</td>`).join("")}</tr>
-					<tr>${Parser.ABIL_ABVS.map(it => `<td colspan="2" class="text-center">${Renderer.utils.getAbilityRoller(obj, it)}</td>`).join("")}</tr>
-					` : ""}
-					${obj.resist || obj.vulnerable || obj.conditionImmune ? `
-					<tr>
-						${obj.resist ? `<th colspan="${row2Width}" class="text-center">Damage Res.</th>` : ""}
-						${obj.vulnerable ? `<th colspan="${row2Width}" class="text-center">Damage Vuln.</th>` : ""}
-						${obj.conditionImmune ? `<th colspan="${row2Width}" class="text-center">Condition Imm.</th>` : ""}
-					</tr>
-					<tr>
-						${obj.resist ? `<td colspan="${row2Width}" class="text-center">${Parser.monImmResToFull(obj.resist)}</td>` : ""}
-						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-center">${Parser.monImmResToFull(obj.vulnerable)}</td>` : ""}
-						${obj.conditionImmune ? `<td colspan="${row2Width}" class="text-center">${Parser.monCondImmToFull(obj.conditionImmune)}</td>` : ""}
-					</tr>
-					` : ""}
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-			${obj.entries ? renderer.render({entries: obj.entries}, 2) : ""}
-			${obj.actionEntries ? renderer.render({entries: obj.actionEntries}, 2) : ""}
-			</td></tr>
-		`;
-	},
-};
-
 Renderer.hazard = {
 	getCompactRenderedString (hazard) {
 		const renderStack = [""];
@@ -4920,83 +4802,6 @@ Renderer.hazard = {
 		}
 		renderStack.push(Renderer.utils.getPageP(hazard))
 		return renderStack.join("")
-	},
-};
-
-Renderer.cultboon = {
-	doRenderCultParts (it, renderer, renderStack) {
-		if (it.goal || it.cultists || it.signaturespells) {
-			const fauxList = {
-				type: "list",
-				style: "list-hang-notitle",
-				items: [],
-			};
-			if (it.goal) {
-				fauxList.items.push({
-					type: "item",
-					name: "Goals:",
-					entry: it.goal.entry,
-				});
-			}
-
-			if (it.cultists) {
-				fauxList.items.push({
-					type: "item",
-					name: "Typical Cultists:",
-					entry: it.cultists.entry,
-				});
-			}
-			if (it.signaturespells) {
-				fauxList.items.push({
-					type: "item",
-					name: "Signature Spells:",
-					entry: it.signaturespells.entry,
-				});
-			}
-			renderer.recursiveRender(fauxList, renderStack, {depth: 2});
-		}
-	},
-
-	doRenderBoonParts (it, renderer, renderStack) {
-		const benefits = {type: "list", style: "list-hang-notitle", items: []};
-		if (it.ability) {
-			benefits.items.push({
-				type: "item",
-				name: "Ability Score Adjustment:",
-				entry: it.ability ? it.ability.entry : "None",
-			});
-		}
-		if (it.signaturespells) {
-			benefits.items.push({
-				type: "item",
-				name: "Signature Spells:",
-				entry: it.signaturespells ? it.signaturespells.entry : "None",
-			});
-		}
-		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
-	},
-
-	getCompactRenderedString (it) {
-		const renderer = Renderer.get();
-
-		const renderStack = [];
-		if (it.__prop === "cult") {
-			Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-			return `
-			${Renderer.utils.getExcludedTr(it, "cult", UrlUtil.PG_CULTS_BOONS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>`;
-		} else if (it.__prop === "boon") {
-			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			it._displayName = it._displayName || it.name;
-			return `
-			${Renderer.utils.getExcludedTr(it, "boon", UrlUtil.PG_CULTS_BOONS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
-		}
 	},
 };
 
@@ -6721,269 +6526,6 @@ Renderer.table = {
 	},
 };
 
-Renderer.vehicle = {
-	getCompactRenderedString (veh) {
-		return Renderer.vehicle.getRenderedString(veh, {isCompact: true});
-	},
-
-	getRenderedString (veh, opts) {
-		opts = opts || {};
-
-		if (veh.upgradeType) return Renderer.vehicle._getRenderedString_upgrade(veh, opts);
-
-		veh.vehicleType = veh.vehicleType || "SHIP";
-		switch (veh.vehicleType) {
-			case "SHIP":
-				return Renderer.vehicle._getRenderedString_ship(veh, opts);
-			case "INFWAR":
-				return Renderer.vehicle._getRenderedString_infwar(veh, opts);
-			case "CREATURE":
-				return Renderer.creature.getCompactRenderedString(veh, null, {
-					...opts,
-					isHideLanguages: true,
-					isHideSenses: true,
-					isCompact: false,
-				});
-			default:
-				throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
-		}
-	},
-
-	_getRenderedString_upgrade (it, opts) {
-		const summaryParts = [
-			Parser.vehicleTypeToFull(it.upgradeType),
-			it.prerequisite ? Renderer.utils.getPrerequisiteText(it.prerequisite) : "",
-		].filter(Boolean);
-
-		return $$`${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getExcludedTr(it, "vehicleUpgrade", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_VEHICLES})}
-			<tr><td colspan="6"><i>${summaryParts.join(", ")}</i></td></tr>
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
-			<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>`;
-	},
-
-	_getRenderedString_ship (veh, opts) {
-		const renderer = Renderer.get();
-
-		function getSectionTitle (title) {
-			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
-		}
-
-		function getActionPart () {
-			return renderer.render({entries: veh.action});
-		}
-
-		function getSectionHpPart (sect, each) {
-			if (!sect.ac && !sect.hp) return "";
-			return `
-				<div><b>Armor Class</b> ${sect.ac}</div>
-				<div><b>Hit Points</b> ${sect.hp}${each ? ` each` : ""}${sect.dt ? ` (damage threshold ${sect.dt})` : ""}${sect.hpNote ? `; ${sect.hpNote}` : ""}</div>
-			`;
-		}
-
-		function getControlSection (control) {
-			if (!control) return "";
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(control)}
-				<div>${renderer.render({entries: control.entries})}</div>
-				</td></tr>
-			`;
-		}
-
-		function getMovementSection (move) {
-			if (!move) return "";
-
-			function getLocomotionSection (loc) {
-				const asList = {
-					type: "list",
-					style: "list-hang-notitle",
-					items: [
-						{
-							type: "item",
-							name: `Locomotion (${loc.mode})`,
-							entries: loc.entries,
-						},
-					],
-				};
-				return `<div>${renderer.render(asList)}</div>`;
-			}
-
-			function getSpeedSection (spd) {
-				const asList = {
-					type: "list",
-					style: "list-hang-notitle",
-					items: [
-						{
-							type: "item",
-							name: `Speed (${spd.mode})`,
-							entries: spd.entries,
-						},
-					],
-				};
-				return `<div>${renderer.render(asList)}</div>`;
-			}
-
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(move)}
-				${(move.locomotion || []).map(getLocomotionSection)}
-				${(move.speed || []).map(getSpeedSection)}
-				</td></tr>
-			`;
-		}
-
-		function getWeaponSection (weap) {
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(weap, !!weap.count)}
-				${renderer.render({entries: weap.entries})}
-				</td></tr>
-			`;
-		}
-
-		function getOtherSection (oth) {
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(oth)}
-				${renderer.render({entries: oth.entries})}
-				</td></tr>
-			`;
-		}
-
-		// Render UA ship actions at the top, to match later printed layout
-		const otherSectionActions = (veh.other || []).filter(it => it.name === "Actions");
-		const otherSectionOters = (veh.other || []).filter(it => it.name !== "Actions");
-
-		const hasToken = veh.tokenUrl || veh.hasToken;
-		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
-
-		return `
-			${Renderer.utils.getExcludedTr(veh, "vehicle", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
-			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>
-				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
-				<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
-				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>
-			</td></tr>
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-2 text-center">STR</th>
-						<th class="col-2 text-center">DEX</th>
-						<th class="col-2 text-center">CON</th>
-						<th class="col-2 text-center">INT</th>
-						<th class="col-2 text-center">WIS</th>
-						<th class="col-2 text-center">CHA</th>
-					</tr>
-					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
-					</tr>
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
-				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
-			</td></tr>
-			${veh.action ? getSectionTitle("Actions") : ""}
-			${veh.action ? `<tr><td colspan="6">${getActionPart()}</td></tr>` : ""}
-			${otherSectionActions.map(getOtherSection).join("")}
-			${veh.hull ? `${getSectionTitle("Hull")}
-			<tr><td colspan="6">
-			${getSectionHpPart(veh.hull)}
-			</td></tr>` : ""}
-			${(veh.control || []).map(getControlSection).join("")}
-			${(veh.movement || []).map(getMovementSection).join("")}
-			${(veh.weapon || []).map(getWeaponSection).join("")}
-			${otherSectionOters.map(getOtherSection).join("")}
-		`;
-	},
-
-	getShipCreatureCapacity (veh) {
-		return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`;
-	},
-
-	_getRenderedString_infwar (veh, opts) {
-		const renderer = Renderer.get();
-		const dexMod = Parser.getAbilityModNumber(veh.dex);
-
-		const hasToken = veh.tokenUrl || veh.hasToken;
-		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
-
-		return `
-			${Renderer.utils.getExcludedTr(veh, "vehicle", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
-			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${Renderer.vehicle.getInfwarCreatureCapacity(veh)}</div>
-				<div><b>Cargo Capacity</b> ${Parser.weightToFull(veh.capCargo)}</div>
-				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
-				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
-				<div><b>Speed</b> ${veh.speed} ft.</div>
-				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Travel Pace</b> ${Math.floor(veh.speed / 10)} miles per hour (${Math.floor(veh.speed * 24 / 10)} miles per day)]</div>
-			</td></tr>
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-2 text-center">STR</th>
-						<th class="col-2 text-center">DEX</th>
-						<th class="col-2 text-center">CON</th>
-						<th class="col-2 text-center">INT</th>
-						<th class="col-2 text-center">WIS</th>
-						<th class="col-2 text-center">CHA</th>
-					</tr>
-					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
-					</tr>
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
-				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
-			</td></tr>
-			${veh.trait ? `<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr class="text compact"><td colspan="6">
-			${Renderer.creature.getOrderedTraits(veh, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
-			</td></tr>` : ""}
-			${Renderer.creature.getCompactRenderedStringSection(veh, renderer, "Action Stations", "actionStation", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(veh, renderer, "Reactions", "reaction", 2)}
-		`;
-	},
-
-	getInfwarCreatureCapacity (veh) {
-		return `${veh.capCreature} Medium creatures`;
-	},
-
-	pGetFluff (veh) {
-		return Renderer.utils.pGetFluff({
-			entity: veh,
-			fluffProp: "vehicleFluff",
-			fluffUrl: `data/fluff-vehicles.json`,
-		});
-	},
-
-	getTokenUrl (veh) {
-		return veh.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${Parser.nameToTokenName(veh.name)}.png`);
-	},
-};
-
 Renderer.action = {
 	getCompactRenderedString (it) {
 		let renderStack = [""]
@@ -7132,26 +6674,6 @@ Renderer.adventureBook = {
 	},
 };
 
-Renderer.charoption = {
-	getCompactRenderedString (it) {
-		return `
-		${Renderer.utils.getExcludedTr(it, "charoption", UrlUtil.PG_CHAR_CREATION_OPTIONS)}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
-		<tr class="text"><td colspan="6">
-		${Renderer.get().setFirstSection(true).render({type: "entries", entries: it.entries})}
-		</td></tr>
-		`;
-	},
-
-	pGetFluff (it) {
-		return Renderer.utils.pGetFluff({
-			entity: it,
-			fluffUrl: "data/fluff-charcreationoptions.json",
-			fluffProp: "charoptionFluff",
-		});
-	},
-};
-
 Renderer.generic = {
 	getCompactRenderedString (it) {
 		return `
@@ -7171,18 +6693,11 @@ Renderer.hover = {
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"race": UrlUtil.PG_ANCESTRIES,
 		"optfeature": UrlUtil.PG_COMPANIONS_FAMILIARS,
-		"reward": UrlUtil.PG_REWARDS,
 		"feat": UrlUtil.PG_FEATS,
-		"object": UrlUtil.PG_OBJECTS,
-		"cult": UrlUtil.PG_CULTS_BOONS,
-		"boon": UrlUtil.PG_CULTS_BOONS,
 		"trap": UrlUtil.PG_HAZARDS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
-		"charoption": UrlUtil.PG_CHAR_CREATION_OPTIONS,
-		"vehicle": UrlUtil.PG_VEHICLES,
-		"vehupgrade": UrlUtil.PG_VEHICLES,
 	},
 
 	LinkMeta: function () {
@@ -8190,8 +7705,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
-			case UrlUtil.PG_REWARDS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rewards.json", "reward");
 			case UrlUtil.PG_ANCESTRIES: {
 				const loadKey = UrlUtil.PG_ANCESTRIES;
 
@@ -8227,26 +7740,18 @@ Renderer.hover = {
 			}
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
-			case UrlUtil.PG_OBJECTS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
-			case UrlUtil.PG_CULTS_BOONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", ["vehicle", "vehicleUpgrade"]);
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
 			case UrlUtil.PG_TRAITS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "traits.json", "trait");
 			// region adventure/books/references
@@ -8348,10 +7853,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
-			case `fluff__${UrlUtil.PG_VEHICLES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
-			case `fluff__${UrlUtil.PG_CHAR_CREATION_OPTIONS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-charcreationoptions.json", "charoptionFluff");
 				// endregion
 
 			// region props
@@ -8817,30 +8318,20 @@ Renderer.hover = {
 				return Renderer.feat.getCompactRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.optionalfeature.getCompactRenderedString;
-			case UrlUtil.PG_REWARDS:
-				return Renderer.reward.getCompactRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
 				return Renderer.deity.getCompactRenderedString;
-			case UrlUtil.PG_OBJECTS:
-				return Renderer.object.getCompactRenderedString;
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hazard.getCompactRenderedString;
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.variantrule.getCompactRenderedString;
-			case UrlUtil.PG_CULTS_BOONS:
-				return Renderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES:
 				return Renderer.table.getCompactRenderedString;
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.vehicle.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.action.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.charoption.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
 			// region props
@@ -8872,10 +8363,6 @@ Renderer.hover = {
 				return Renderer.background.pGetFluff;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.pGetFluff;
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.vehicle.pGetFluff;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.charoption.pGetFluff;
 			default:
 				return null;
 		}

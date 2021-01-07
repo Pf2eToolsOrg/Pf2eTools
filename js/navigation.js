@@ -36,7 +36,7 @@ class NavBar {
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
-		addLi(ulRules, "variantrules.html", "Optional, Variant, and Expanded Rules");
+		addLi(ulRules, "variantrules.html", "Variant Rules");
 		addLi(ulRules, "tables.html", "Tables");
 		addDivider(ulRules);
 		const ulBooks = addDropdown(ulRules, "Books", true);
@@ -45,17 +45,13 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
-		addLi(ulPlayers, "classes.html", "Classes");
-		addLi(ulPlayers, "archetypes.html", "Archetypes");
 		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "ancestries.html", "Ancestries");
+		addLi(ulPlayers, "classes.html", "Classes");
+		addLi(ulPlayers, "archetypes.html", "Archetypes");
 		addDivider(ulPlayers);
 		addLi(ulPlayers, "feats.html", "Feats");
 		addLi(ulPlayers, "companionsfamiliars.html", "Companions & Familiars");
-		addLi(ulPlayers, "charcreationoptions.html", "Other Character Creation Options");
-		addDivider(ulPlayers);
-		addLi(ulPlayers, "statgen.html", "Stat Generator");
-		addLi(ulPlayers, "lifegen.html", "Deep Backgrounds");
 
 		const ulDms = addDropdown(navBar, "Game Master");
 		addLi(ulDms, "gmscreen.html", "GM Screen");
@@ -64,7 +60,6 @@ class NavBar {
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
 		addLi(ulAdventures, "adventure.html", "Test", {isSide: true, aHash: "Test", date: "1234"});
-		addLi(ulDms, "objects.html", "Objects");
 		addLi(ulDms, "hazards.html", "Hazards");
 
 		const ulReferences = addDropdown(navBar, "References");
@@ -74,11 +69,9 @@ class NavBar {
 		addLi(ulReferences, "items.html", "Items");
 		addLi(ulReferences, "spells.html", "Spells");
 		addDivider(ulReferences);
+		addLi(ulReferences, "afflictions.html", "Afflictions");
 		addLi(ulReferences, "deities.html", "Deities");
-		addLi(ulReferences, "diseases.html", "Diseases");
 		addLi(ulReferences, "languages.html", "Languages");
-		addLi(ulReferences, "rewards.html", "Supernatural Gifts & Rewards");
-		addLi(ulReferences, "vehicles.html", "Vehicles");
 		addDivider(ulReferences);
 		addLi(ulReferences, "traits.html", "Traits");
 
