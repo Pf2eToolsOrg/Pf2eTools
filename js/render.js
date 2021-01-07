@@ -4699,6 +4699,66 @@ Renderer.deity = {
 			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.render({entries: deity.entries}, 1)}</td></tr>` : ""}
 		`;
 	},
+
+	getEdictsAnathemaAlign (deity) {
+		let out = []
+		if (deity.edicts) out.push(`<p class="pf2-book__option"><strong>Edicts </strong>${deity.edicts.join(", ")}</p>`)
+		if (deity.anathema) out.push(`<p class="pf2-book__option"><strong>Anathema </strong>${deity.anathema.join(", ")}</p>`)
+		if (deity.followerAlignment) out.push(`<p class="pf2-book__option"><strong>Follower Alignments </strong>${deity.followerAlignment.join(", ")}</p>`)
+		return out.join("")
+	},
+
+	getClericSpells (spells) {
+		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ");
+	},
+
+	getDevoteeBenefits (deity) {
+		if (deity.devoteeBenefits == null) return "";
+		const renderer = Renderer.get()
+		const b = deity.devoteeBenefits;
+		return `${renderer.render({type: "pf2-h4", name: "Devotee Benefits"})}
+				<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
+				<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
+				<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
+				<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
+				<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`;
+	},
+
+	getRenderedLore (deity) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (deity.lore) {
+			deity.lore.forEach(l => {
+				if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
+				renderer.recursiveRender(l, textStack, {depth: 1});
+			});
+		}
+		return textStack.join("");
+	},
+
+	getIntercession (deity) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (deity.intercession) {
+			const entry = {type: "pf2-h2",
+				name: "Divine Intercession",
+				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
+			};
+			renderer.recursiveRender(entry, textStack, {depth: 1});
+			if (deity.intercession.boon) {
+				Object.keys(deity.intercession.boon)
+					.map(key => `<p class="pf2-book__option"><strong>${key} </strong>${renderer.render(deity.intercession.boon[key])}</p>`)
+					.forEach(it => textStack.push(it))
+			}
+			if (deity.intercession.curse) {
+				Object.keys(deity.intercession.curse)
+					.map(key => `<p class="pf2-book__option"><strong>${key} </strong>${renderer.render(deity.intercession.curse[key])}</p>`)
+					.forEach(it => textStack.push(it))
+			}
+			textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
+		}
+		return textStack.join("");
+	},
 };
 
 Renderer.hazard = {
