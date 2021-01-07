@@ -3,36 +3,37 @@
 		{
 			"name": "Barbarian",
 			"source": "CRB",
-			"page": 71,
-			"HP": 8,
-			"keyAbility": "Intelligence",
+			"page": 83,
+			"HP": 12,
+			"keyAbility": "Strength",
 			"initialProficiencies": {
-				"perception": "T",
+				"perception": "E",
 				"fort": "E",
-				"ref": "E",
-				"will": "T",
+				"ref": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"Athletics"
 					],
 					"add": 3
 				},
 				"attacks": {
 					"t": [
 						"simple weapons",
-						"alchemical bombs",
+						"martial weapons",
 						"unarmed attacks"
 					]
 				},
 				"defenses": {
 					"t": [
 						"light armor",
+						"medium armor",
 						"unarmored defense"
 					]
 				},
 				"classDc": {
 					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+					"entry": "Trained in barbarian class DC"
 				}
 			},
 			"advancement": {
@@ -93,35 +94,20 @@
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
-				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
-					"gainSubclassFeature": true
-				},
-				"Book|Alchemist|CRB|2"
+				
 			],
 			"subclasses": [
-				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
-					"source": "CRB",
-					"page": 73,
-					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
-					]
-				}
+				
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"Rage consumes you in battle. You delight in wreaking havoc and using powerful weapons to carve through your enemies, relying on astonishing durability without needing complicated techniques or rigid training. Your rages draw upon a vicious instinct, which you might associate with an animal, a spirit, or some part of yourself. To many barbarians, brute force is a hammer and every problem looks like a nail, whereas others try to hold back the storm of emotions inside them and release their rage only when it matters most."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"You summon your rage and rush to the front lines to smash your way through. Offense is your best defense—you’ll need to drop foes before they can exploit your relatively low defenses."
 					]
 				},
 				{
@@ -129,7 +115,7 @@
 					"page": 71,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"You use intimidation to get what you need, especially when gentler persuasion can’t get the job done."
 					]
 				},
 				{
@@ -137,7 +123,7 @@
 					"page": 71,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You look out for danger, ready to rush headfirst into battle in an instant. You climb the challenging rock wall and drop a rope for others to follow, and you wade into the risky currents to reach the hidden switch beneath the water’s surface. If something needs breaking, you’re up to the task!"
 					]
 				},
 				{
@@ -145,7 +131,7 @@
 					"page": 71,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You might head to a tavern to carouse, build up the fearsome legend of your mighty deeds, or recruit followers to become a warlord in your own right."
 					]
 				},
 				{
@@ -156,9 +142,9 @@
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Have a deep-seated well of anger, hatred, or frustration.",
+								"Prefer a straightforward approach to one requiring patience and tedium.",
+								"Engage in a regimen of intense physical fitness—and punch anyone who says this conflicts with your distaste for patience and tedium."
 							]
 						}
 					]
@@ -171,9 +157,9 @@
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"Rely on your courage and your strength, and trust that you can hold your own in a fight.",
+								"See you as uncivilized or a boorish lout unfit for high society.",
+								"Believe that you are loyal to your friends and allies and will never relent until the fight is done."
 							]
 						}
 					]
@@ -182,75 +168,9 @@
 		}
 	],
 	"classFeature": [
-		{
-			"name": "Alchemy",
-			"source": "CRB",
-			"page": 72,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"level": 1,
-			"entries": [
-				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the Craft activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don’t understand your strange science.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
-			]
-		},
-		{
-			"name": "Formula Book",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"level": 1,
-			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
-			]
-		},
-		{
-			"name": "Research Field",
-			"source": "CRB",
-			"subclasses": "Research Field",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"level": 1,
-			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute,  correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
-			]
-		},
-		{
-			"name": "Book",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"level": 2,
-			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
-			]
-		}
+		
 	],
 	"subclassFeature": [
-		{
-			"name": "Bomber",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"subclassShortName": "Bomber",
-			"subclassSource": "CRB",
-			"level": 1,
-			"entries": [
-				{
-					"type": "pf2-h4",
-					"name": "Bomber",
-					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.",
-						"When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area."
-					]
-				}
-			]
-		}
+		
 	]
 }
