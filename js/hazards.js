@@ -4,19 +4,19 @@ function filterTypeSort (a, b) {
 	return SortUtil.ascSortLower(Parser.trapHazTypeToFull(a.item), Parser.trapHazTypeToFull(b.item));
 }
 
-class TrapsHazardsPage extends ListPage {
+class HazardsPage extends ListPage {
 	constructor () {
-		const pageFilter = new PageFilterTrapsHazards();
+		const pageFilter = new PageFilterHazards();
 		super({
-			dataSource: "data/trapshazards.json",
+			dataSource: "data/hazards/hazards-crb.json",
 
 			pageFilter,
 
-			listClass: "trapshazards",
+			listClass: "hazards",
 
-			sublistClass: "subtrapshazards",
+			sublistClass: "subhazards",
 
-			dataProps: ["trap", "hazard"],
+			dataProps: ["hazard"],
 		});
 	}
 
@@ -28,11 +28,12 @@ class TrapsHazardsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+		const type = it.traits.includes("Complex") ? "Complex" : "Simple";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="col-3 pl-0 text-center">${trapType}</span>
-			<span class="bold col-7">${it.name}</span>
+			<span class="bold pl-0 col-4-2">${it.name}</span>
+			<span class="col-4-1 text-center">${type}</span>
+			<span class="col-1-7 text-center">${it.level}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -42,8 +43,9 @@ class TrapsHazardsPage extends ListPage {
 			it.name,
 			{
 				hash,
+				type,
+				level: it.level,
 				source,
-				trapType,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : thI,
@@ -65,12 +67,13 @@ class TrapsHazardsPage extends ListPage {
 
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
-		const trapType = Parser.trapHazTypeToFull(it.trapHazType);
+		const type = it.traits.includes("Complex") ? "Complex" : "Simple";
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="col-4 pr-0">${trapType}</span>
-				<span class="bold col-8 pl-0">${it.name}</span>
+				<span class="bold col-5-2 pl-0">${it.name}</span>
+				<span class="col-4-6 text-center">${type}</span>
+				<span class="col-2-2 pr-0 text-center">${it.level}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -81,7 +84,8 @@ class TrapsHazardsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				trapType,
+				level: it.level,
+				type,
 			},
 		);
 		return listItem;
@@ -91,7 +95,7 @@ class TrapsHazardsPage extends ListPage {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
 
-		$(`#pagecontent`).empty().append(RenderTrapsHazards.$getRenderedTrapHazard(it));
+		$(`#pagecontent`).empty().append(RenderHazards.$getRenderedTrapHazard(it));
 
 		ListUtil.updateSelected();
 	}
@@ -102,5 +106,5 @@ class TrapsHazardsPage extends ListPage {
 	}
 }
 
-const trapsHazardsPage = new TrapsHazardsPage();
+const trapsHazardsPage = new HazardsPage();
 window.addEventListener("load", () => trapsHazardsPage.pOnLoad());

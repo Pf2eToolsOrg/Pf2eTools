@@ -203,6 +203,14 @@
 			margin: 0;
 			text-indent: 0;
 
+			&--wide {
+				margin: 0;
+
+				+ .pf2-stat__text--wide {
+					text-indent: 1em;
+				}
+			}
+
 			~ .pf2-stat__text {
 				text-indent: 1em;
 			}
@@ -573,6 +581,15 @@
 	margin: 0.4em -1em 0.4em 1em;
 	font-size: 0.75em;
 
+	.pf2-title {
+		font-size: 1.1em;
+		font-weight: 700;
+		margin: 0;
+		font-family: 'good-pro', sans-serif;
+		color: #5E0000;
+		padding: 0.6em 0.82em 0;
+	}
+
 	&__ {
 		&title {
 			font-size: 1.1em;
@@ -615,15 +632,6 @@
 				font-weight: 400;
 			}
 		}
-	}
-
-	.pf2-title {
-		font-size: 1.1em;
-		font-weight: 700;
-		margin: 0;
-		font-family: 'good-pro', sans-serif;
-		color: #5E0000;
-		padding: 0.6em 0.82em 0;
 	}
 
 	@media only screen and (max-width: 220px) {

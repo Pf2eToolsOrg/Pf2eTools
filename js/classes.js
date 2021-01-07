@@ -607,7 +607,7 @@ class ClassesPage extends BaseComponent {
 		}
 
 		const f = this.filterBox.getValues();
-		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity, [], null));
+		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
 
 		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
@@ -618,7 +618,7 @@ class ClassesPage extends BaseComponent {
 			"_state",
 			"__state",
 			this.activeClass.subclasses
-				.filter(sc => !this.filterBox.toDisplay(f, sc.source, sc._fMisc, null))
+				.filter(sc => !this.filterBox.toDisplay(f, sc.source, Array(5), sc._fMisc, null))
 				.map(sc => UrlUtil.getStateKeySubclass(sc))
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false})),
@@ -1182,6 +1182,7 @@ class ClassesPage extends BaseComponent {
 			return this.filterBox.toDisplay(
 				f,
 				li.data.entity.source,
+				Array(5),
 				cls._fMisc,
 			);
 		});

@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<title>Traps &amp; Hazards - PF2eTools</title>
+	<title>Hazards - PF2eTools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
@@ -70,8 +70,8 @@
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
-			<h1 class="page__title">Traps &amp; Hazards</h1>
-			<p class="page__subtitle">Search by name on the left, click a trap or hazard name to display on the
+			<h1 class="page__title">Hazards</h1>
+			<p class="page__subtitle">Search by name on the left, click a hazard name to display it on the
 				right.</p>
 		</div>
 	</header>
@@ -94,15 +94,13 @@
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-3 sort btn btn-default btn-xs" data-sort="trapType">Type <span
-						class="caret_wrp"></span></button>
-					<button class="col-7 sort btn btn-default btn-xs" data-sort="name">Name <span
-						class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
-						class="caret_wrp"></span></button>
+					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
+					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="level">Level <span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
 				</div>
 
-				<ul id="trapsHazardsList" class="list list--stats trapshazards">
+				<ul id="hazardsList" class="list list--stats hazards">
 					<!-- populated by javascript -->
 				</ul>
 			</div>
@@ -110,12 +108,11 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="type">Type <span
-							class="caret_wrp"></span></button>
-						<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span
-							class="caret_wrp"></span></button>
+						<button class="col-5-2 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-4-6 sort btn btn-default btn-xs" data-sort="type">Type <span class="caret_wrp"></span></button>
+						<button class="col-2-2 sort btn btn-default btn-xs" data-sort="level">Level <span class="caret_wrp"></span></button>
 					</div>
-					<ul class="list subtrapshazards">
+					<ul class="list subhazards">
 						<!-- populate with JS -->
 					</ul>
 				</div>
@@ -130,19 +127,9 @@
 				</div>
 
 				<div class="wrp-stats-table">
-					<table id="pagecontent" class="stats">
-						<tr>
-							<th class="border" colspan="6"></th>
-						</tr>
-						<tr>
-							<td colspan="6" class="initial-message">Select a trap or hazard from the list to view it
-								here
-							</td>
-						</tr>
-						<tr>
-							<th class="border" colspan="6"></th>
-						</tr>
-					</table>
+					<div id="pagecontent" class="stats pf2-stat">
+						<div class="initial-message">Select a hazard from the list to view it here</div>
+					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
@@ -167,11 +154,11 @@
 <script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-dice.js"></script>
-<script type="text/javascript" src="js/render-trapshazards.js"></script>
+<script type="text/javascript" src="js/render-hazards.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
-<script type="text/javascript" src="js/filter-trapshazards.js"></script>
-<script type="text/javascript" src="js/trapshazards.js"></script>
+<script type="text/javascript" src="js/filter-hazards.js"></script>
+<script type="text/javascript" src="js/hazards.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>
