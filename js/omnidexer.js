@@ -526,7 +526,7 @@ class IndexableFileDiseases extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_AFFLICTION,
-			file: "conditions.json",
+			file: "afflictions.json",
 			listProp: "disease",
 			baseUrl: "conditions.html",
 			isHover: true,

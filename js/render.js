@@ -1185,41 +1185,49 @@ function Renderer () {
 
 		const dict = entry.entries;
 		let traits = []
-		dict["traits"].forEach((t) => {
-			let traitname = Parser.getTraitName(t)
-			traits.push(`{@trait ${t}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}}`)
-		})
+		if (dict["traits"]) {
+			dict["traits"].forEach((t) => {
+				let traitname = Parser.getTraitName(t);
+				traits.push(`{@trait ${t}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}}`);
+			});
+		}
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat__section">`
 		if (dict["name"] != null) {
-			textStack[0] += `<strong>${dict["name"]} </strong> `
+			textStack[0] += `<strong>${dict["name"]} </strong> `;
 		}
 		if (traits.length) {
-			textStack[0] += `(${renderer.render(traits.join(", "))}); `
+			textStack[0] += `(${renderer.render(traits.join(", "))}); `;
 		}
 		if (dict["level"] != null) {
-			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
+			textStack[0] += `<strong>Level </strong>${dict["level"]}. `;
 		}
 		if (dict["note"] != null) {
-			textStack[0] += `${this.render(dict["note"])} `
+			textStack[0] += `${this.render(dict["note"])} `;
 		}
 		if (dict["DC"] != null) {
-			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `
+			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `;
 		}
 		if (dict["onset"] != null) {
-			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`
+			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`;
 		}
 		if (dict["max duration"] != null) {
-			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
+			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`;
 		}
-		for (let stage of dict["stages"]) {
-			textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`
-			this._recursiveRender(stage["entry"], textStack, meta);
-			if (stage["duration"] != null) {
-				textStack[0] += ` (${stage["duration"]});`
+		if (dict["stages"]) {
+			for (let stage of dict["stages"]) {
+				textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`;
+				this._recursiveRender(stage["entry"], textStack, meta);
+				if (stage["duration"] != null) {
+					textStack[0] += ` (${stage["duration"]});`;
+				}
 			}
 		}
-		textStack[0] = textStack[0].replace(/;$/, ".")
-		if (!options.isAbility) textStack[0] += `</p>`
+		if (dict["effect"]) {
+			textStack[0] += ` <strong>Effect </strong>`;
+			dict["effect"].forEach(it => this._recursiveRender(it, textStack, meta));
+		}
+		textStack[0] = textStack[0].replace(/;$/, ".");
+		if (!options.isAbility) textStack[0] += `</p>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -2589,7 +2597,7 @@ function Renderer () {
 				};
 
 				fauxEntry.href.path = UrlUtil.PG_DEITIES;
-				if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}forgotten realms`;
+				if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}golarion`;
 				if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_CRB}`;
 				fauxEntry.href.hover = {
 					page: UrlUtil.PG_DEITIES,
@@ -2804,10 +2812,11 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
-					case "@status":
-						fauxEntry.href.path = "conditions.html";
+					case "@curse":
+					case "@itemcurse":
+						fauxEntry.href.path = "afflictions.html";
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS,
+							page: UrlUtil.PG_AFFLICTIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -3464,13 +3473,13 @@ Renderer.utils = {
 	},
 
 	getTraitsDiv: (traits) => {
+		traits = traits || [];
 		let traits_html = ``;
-		let trait;
-		for (trait of traits) {
+		for (let trait of traits) {
 			let traitname = Parser.getTraitName(trait);
-			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname]
-			let hash = `${traitname}${HASH_LIST_SEP}${source}`
-			let url = `${UrlUtil.PG_TRAITS}#${hash}`
+			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname];
+			let hash = `${traitname}${HASH_LIST_SEP}${source}`;
+			let url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			let href = {
 				type: "internal",
 				path: "traits.html",
@@ -3591,7 +3600,7 @@ Renderer.utils = {
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
-		const level = opts.level != null ? ` ${opts.level}` : isNaN(Number(it.level)) ? "" : ` ${Number(it.level)}`
+		const level = opts.level != null ? `${opts.level}` : (!isNaN(Number(it.level)) || typeof it.level === "string") ? ` ${it.level}` : ""
 		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes("@as") ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat__name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
@@ -3635,7 +3644,7 @@ Renderer.utils = {
 	},
 
 	getPageP: (it) => {
-		return `<p class="pf2-stat__source"><strong>${it.source}</strong> page ${it.page}</p>`;
+		return `<p class="pf2-stat__source"><strong>${Parser.sourceJsonToFull(it.source)}</strong>, page ${it.page}.</p>`;
 	},
 
 	getSourceAndPageHtml (it) {
@@ -4242,6 +4251,26 @@ Renderer.condition = {
 	},
 };
 
+Renderer.affliction = {
+	getCompactRenderedString (affliction) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		const rLvl = isNaN(Number(affliction.level)) ? `, ${affliction.level}` : affliction.level;
+
+		renderStack.push(`${Renderer.utils.getExcludedDiv(affliction, affliction.__prop || affliction._type, UrlUtil.PG_AFFLICTIONS)}`)
+		renderStack.push(`
+			${Renderer.utils.getNameDiv(affliction, {page: UrlUtil.PG_AFFLICTIONS, level: rLvl})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(affliction.traits || [])}
+		`);
+		renderer.recursiveRender(affliction.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderStack.push(Renderer.utils.getPageP(affliction))
+
+		return renderStack.join("");
+	},
+};
+
 Renderer.trait = {
 	getRenderedString (trait) {
 		const renderer = Renderer.get();
@@ -4644,60 +4673,21 @@ Renderer.ancestry = {
 };
 
 Renderer.deity = {
-	_basePartTranslators: {
-		"Alignment": {
-			prop: "alignment",
-			displayFn: (it) => it.map(a => Parser.alignmentAbvToFull(a)).join(" "),
-		},
-		"Pantheon": {
-			prop: "pantheon",
-		},
-		"Category": {
-			prop: "category",
-			displayFn: it => typeof it === "string" ? it : it.join(", "),
-		},
-		"Domains": {
-			prop: "domains",
-			displayFn: (it) => it.join(", "),
-		},
-		"Province": {
-			prop: "province",
-		},
-		"Alternate Names": {
-			prop: "altNames",
-			displayFn: (it) => it.join(", "),
-		},
-		"Symbol": {
-			prop: "symbol",
-		},
-	},
-	getOrderedParts (deity, prefix, suffix) {
-		const parts = {};
-		Object.entries(Renderer.deity._basePartTranslators).forEach(([k, v]) => {
-			const val = deity[v.prop];
-			if (val != null) {
-				const outVal = v.displayFn ? v.displayFn(val) : val;
-				parts[k] = outVal;
-			}
-		});
-		if (deity.customProperties) Object.entries(deity.customProperties).forEach(([k, v]) => parts[k] = v);
-		const allKeys = Object.keys(parts).sort(SortUtil.ascSortLower);
-		return allKeys.map(k => `${prefix}<b>${k}: </b>${Renderer.get().render(parts[k])}${suffix}`).join("");
-	},
-
 	getCompactRenderedString (deity) {
-		const renderer = Renderer.get();
-		return `
-			${Renderer.utils.getExcludedTr(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameTr(deity, {
-		suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "",
-		page: UrlUtil.PG_DEITIES,
-	})}
-			<tr><td colspan="6">
-				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
-			</td>
-			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.render({entries: deity.entries}, 1)}</td></tr>` : ""}
-		`;
+		const renderer = Renderer.get().setFirstSection(true);
+		const entry = {
+			type: "pf2-h3",
+			name: `${deity.name}${deity.alignment && deity.alignment.length === 1 ? ` (${deity.alignment[0]})` : ""}`,
+			entries: [
+				...deity.info,
+			],
+		};
+		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
+			${renderer.render(entry)}
+			${Renderer.deity.getEdictsAnathemaAlign(deity)}
+			${Renderer.deity.getDevoteeBenefits(deity)}
+			${deity.reprinted ? `<p class="pf2-p"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></p>` : ""}
+			${Renderer.utils.getPageP(deity)}`;
 	},
 
 	getEdictsAnathemaAlign (deity) {
@@ -5842,13 +5832,18 @@ Renderer.item = {
 
 	getCompactRenderedString (item, opts) {
 		opts = opts || {};
+		const renderStack = [""]
+		Renderer.get().recursiveRender(item.entries, renderStack, {depth: 1}, {pf2StatFix: true})
 
-		return `
-		${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
-		${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getDividerDiv()}
-		`;
+		return `${Renderer.utils.getExcludedDiv(item, "item")}
+			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(item.traits)}
+			${Renderer.item.getSubHead(item)}
+			${renderStack.join("")}
+			${Renderer.item.getVariantsHtml(item)}
+			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.utils.getPageP(item)}`;
 	},
 
 	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
@@ -6749,7 +6744,9 @@ Renderer.hover = {
 		"item": UrlUtil.PG_ITEMS,
 		"creature": UrlUtil.PG_BESTIARY,
 		"condition": UrlUtil.PG_CONDITIONS,
-		"disease": UrlUtil.PG_CONDITIONS,
+		"disease": UrlUtil.PG_AFFLICTIONS,
+		"curse": UrlUtil.PG_AFFLICTIONS,
+		"itemcurse": UrlUtil.PG_AFFLICTIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"race": UrlUtil.PG_ANCESTRIES,
 		"optfeature": UrlUtil.PG_COMPANIONS_FAMILIARS,
@@ -7805,7 +7802,9 @@ Renderer.hover = {
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
 			case UrlUtil.PG_CONDITIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_AFFLICTIONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse", "itemcurse"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:
@@ -7906,8 +7905,6 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
-			case `fluff__${UrlUtil.PG_CONDITIONS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
@@ -8372,6 +8369,8 @@ Renderer.hover = {
 				});
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.condition.getCompactRenderedString;
+			case UrlUtil.PG_AFFLICTIONS:
+				return Renderer.affliction.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getCompactRenderedString;
 			case UrlUtil.PG_FEATS:
@@ -8413,8 +8412,6 @@ Renderer.hover = {
 				return Renderer.creature.pGetFluff;
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.pGetFluff;
-			case UrlUtil.PG_CONDITIONS:
-				return Renderer.condition.pGetFluff;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.pGetFluff;
 			case UrlUtil.PG_ANCESTRIES:
@@ -8717,24 +8714,17 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@action":
 					case "@background":
-					case "@boon":
-					case "@charoption":
 					case "@class":
 					case "@condition":
 					case "@creature":
-					case "@cult":
 					case "@disease":
 					case "@feat":
 					case "@hazard":
 					case "@item":
 					case "@language":
 					case "@object":
-					case "@optfeature":
-					case "@psionic":
 					case "@ancestry":
 					case "@reward":
-					case "@vehicle":
-					case "@vehupgrade":
 					case "@spell":
 					case "@status":
 					case "@table":

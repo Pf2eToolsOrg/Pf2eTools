@@ -1729,7 +1729,6 @@ SKL_ABV_DIV = "D";
 SKL_ABV_NEC = "N";
 SKL_ABV_TRA = "T";
 SKL_ABV_CON = "C";
-SKL_ABV_PSI = "P";
 Parser.SKL_ABVS = [
 	SKL_ABV_ABJ,
 	SKL_ABV_EVO,
@@ -1739,7 +1738,6 @@ Parser.SKL_ABVS = [
 	SKL_ABV_NEC,
 	SKL_ABV_TRA,
 	SKL_ABV_CON,
-	SKL_ABV_PSI,
 ];
 
 Parser.TM_A = "single";
@@ -1921,7 +1919,9 @@ Parser.vehicleTypeToFull = function (vehicleType) {
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
+SRC_GMG = "GMG";
 SRC_LOCG = "LOCG"
+SRC_LOGM = "LOGM"
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -1932,19 +1932,25 @@ Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
+Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2019-01-29";
 
 Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -1954,7 +1960,9 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_CRB,
 	SRC_APG,
 	SRC_BST,
+	SRC_GMG,
 	SRC_LOCG,
+	SRC_LOGM,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -1971,20 +1979,17 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"class": SRC_CRB,
 	"creature": SRC_BST,
 	"condition": SRC_CRB,
-	"disease": SRC_CRB,
+	"disease": SRC_GMG,
+	"curse": SRC_GMG,
+	"itemcurse": SRC_GMG,
 	"background": SRC_CRB,
-	"race": SRC_CRB,
-	"optfeature": SRC_CRB,
-	"reward": SRC_CRB,
+	"ancestry": SRC_CRB,
+	"archetype": SRC_CRB,
 	"feat": SRC_CRB,
-	"object": SRC_CRB,
-	"cult": SRC_CRB,
-	"boon": SRC_CRB,
 	"trap": SRC_CRB,
 	"hazard": SRC_CRB,
 	"deity": SRC_CRB,
 	"variantrule": SRC_CRB,
-	"vehicle": SRC_CRB,
 	"action": SRC_CRB,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,

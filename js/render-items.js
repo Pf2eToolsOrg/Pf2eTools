@@ -5,7 +5,7 @@ class RenderItems {
 
 		return $$`
 			${Renderer.utils.getExcludedDiv(item, "item")}
-			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS, level: item.level})}
+			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(item.traits)}
 			${Renderer.item.getSubHead(item)}

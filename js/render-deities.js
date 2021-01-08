@@ -7,13 +7,13 @@ class RenderDeities {
 			entries: [
 				...deity.info,
 			],
-		}
+		};
 		return $$`
 			${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
 			${renderer.render(entry)}
 			${Renderer.deity.getEdictsAnathemaAlign(deity)}
 			${Renderer.deity.getDevoteeBenefits(deity)}
 			${deity.reprinted ? `<p class="pf2-p"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></p>` : ""}
-			${Renderer.utils.getPageP(deity)}`
+			${Renderer.utils.getPageP(deity)}`;
 	}
 }
