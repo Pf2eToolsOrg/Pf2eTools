@@ -126,7 +126,36 @@
 				"Legendary Spellcaster|Bard|CRB|19"
 			],
 			"subclasses": [
-				
+				{
+					"name": "Enigma",
+					"type": "Muse",
+					"shortName": "Enigma",
+					"source": "CRB",
+					"page": 97,
+					"subclassFeatures": [
+						"Enigma|Bard|CRB|Enigma|CRB|1"
+					]
+				},
+				{
+					"name": "Maestro",
+					"type": "Muse",
+					"shortName": "Maestro",
+					"source": "CRB",
+					"page": 97,
+					"subclassFeatures": [
+						"Maestro|Bard|CRB|Maestro|CRB|1"
+					]
+				},
+				{
+					"name": "Polymath",
+					"type": "Muse",
+					"shortName": "Polymath",
+					"source": "CRB",
+					"page": 97,
+					"subclassFeatures": [
+						"Polymath|Bard|CRB|Polymath|CRB|1"
+					]
+				}
 			],
 			"flavor": [
 				"You are a master of artistry, a scholar of hidden secrets, and a captivating persuader. Using powerful performances, you influence minds and elevate souls to new levels of heroics. You might use your powers to become a charismatic leader, or perhaps you might instead be a counselor, manipulator, scholar, scoundrel, or virtuoso. While your versatility leads some to consider you a beguiling ne’erdo-well and a jack-of-all-trades, it’s dangerous to dismiss you as a master of none."
@@ -644,6 +673,7 @@
 		{
 			"name": "Muses",
 			"source": "CRB",
+			"subclasses": "Muse",
 			"page": 97,
 			"className": "Bard",
 			"classSource": "CRB",
@@ -864,6 +894,62 @@
 		}
 	],
 	"subclassFeature": [
-		
+		{
+			"name": "Polymath",
+			"source": "CRB",
+			"page": 97,
+			"className": "Bard",
+			"classSource": "CRB",
+			"subclassShortName": "Polymath",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Polymath",
+					"entries": [
+						"Your muse is a jack of all trades, flitting between skills and pursuits. If it’s is a creature, it might be an eclectic creature like a fey; if a deity, it might be Desna or Calistria. As a bard with a polymath muse, you are interested in a wide array of topics but rarely dedicated to any one, and you rarely make up your mind—you want to try everything. You gain the Versatile Performance feat and add unseen servant to your spell repertoire."
+					]
+				}
+			]
+		},
+		{
+			"name": "Enigma",
+			"source": "CRB",
+			"page": 97,
+			"className": "Bard",
+			"classSource": "CRB",
+			"subclassShortName": "Enigma",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Enigma",
+					"entries": [
+						"Your muse is a mystery, driving you to uncover the hidden secrets of the multiverse. If your muse is a creature, it might be a dragon or otherworldly being; if a deity, it might be Irori or Nethys. You gain the Bardic Lore feat and add true strike to your spell repertoire."
+					]
+				}
+			]
+		},
+		{
+			"name": "Maestro",
+			"source": "CRB",
+			"page": 97,
+			"className": "Bard",
+			"classSource": "CRB",
+			"subclassShortName": "Maestro",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Maestro",
+					"entries": [
+						"Your muse is a virtuoso, inspiring you to greater heights. If it’s a creature, it might be a performance-loving creature such as a choral angel or lillend azata; if a deity, it might be Shelyn. As a bard with a maestro muse, you are an inspiration to your allies and confident of your musical and oratorical abilities. You gain the Lingering Composition feat and add soothe to your spell repertoire."
+					]
+				}
+			]
+		}
 	]
 }
