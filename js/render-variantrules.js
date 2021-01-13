@@ -1,19 +1,13 @@
 class RenderVariantRules {
 	static $getRenderedVariantRule (rule) {
-		const cpy = MiscUtil.copy(rule);
-		delete cpy.name;
-
 		Renderer.get().setFirstSection(true);
 		const textStack = [];
 		Renderer.get().resetHeaderIndex();
-		Renderer.get().recursiveRender(cpy, textStack);
+		Renderer.get().recursiveRender(rule.entries, textStack);
 
 		return $$`
-		${Renderer.utils.getBorderTr()}
-		${Renderer.utils.getExcludedTr(rule, "variantrule")}
-		${Renderer.utils.getNameTr(rule, {page: UrlUtil.PG_VARIANTRULES})}
-		<tr class="text"><td colspan="6">${textStack.join("")}</td></tr>
-		${Renderer.utils.getPageTr(rule)}
-		${Renderer.utils.getBorderTr()}`;
+		${Renderer.utils.getExcludedDiv(rule, "variantrule")}
+		${textStack.join("")}
+		${Renderer.utils.getPageP(rule)}`;
 	}
 }

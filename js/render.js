@@ -762,7 +762,7 @@ function Renderer () {
 		// TODO: implement rollable tables
 		const numCol = Math.max(...entry.rows.map(x => x.length))
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol)
-		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${gridTemplate}">`
+		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
 			if (entry.colStyles == null) entry.colStyles = Array(numCol).fill("");
 			entry.colStyles[0] += " no-border-left";
@@ -4242,7 +4242,7 @@ Renderer.condition = {
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type, UrlUtil.PG_CONDITIONS)}`)
 		renderStack.push(`
-			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS})}
+			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS, type: "condition"})}
 			${Renderer.utils.getDividerDiv()}
 		`);
 		renderer.recursiveRender(cond.entries, renderStack, {depth: 1}, {pf2StatFix: true});
@@ -4276,7 +4276,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type, UrlUtil.PG_TRAITS)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, "trait", UrlUtil.PG_TRAITS)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
@@ -4284,14 +4284,6 @@ Renderer.trait = {
 		renderer.recursiveRender(trait.entries, renderStack, {depth: 1}, {pf2StatFix: true});
 
 		return renderStack.join("");
-	},
-
-	pGetFluff (it) {
-		return Renderer.utils.pGetFluff({
-			entity: it,
-			fluffUrl: `data/fluff-conditionsdiseases.json`,
-			fluffProp: it.__prop === "condition" ? "conditionFluff" : "diseaseFluff",
-		});
 	},
 };
 
@@ -4304,18 +4296,6 @@ Renderer.background = {
 		${Renderer.get().render({type: "entries", entries: bg.entries})}
 		</td></tr>
 		`;
-	},
-
-	getSkillSummary (skillProfsArr, short, collectIn) {
-		return Renderer.background._summariseProfs(skillProfsArr, short, collectIn, `skill`);
-	},
-
-	getToolSummary (toolProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
-	},
-
-	getLanguageSummary (languageProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(languageProfsArray, short, collectIn);
 	},
 
 	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
@@ -6628,30 +6608,20 @@ Renderer.language = {
 	},
 
 	getRenderedString (it) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
 		const allEntries = [];
-
-		const hasMeta = it.typicalSpeakers || it.script;
-
 		if (it.entries) allEntries.push(...it.entries);
-		if (it.dialects) {
-			allEntries.push(`This language is a family which includes the following dialects: ${it.dialects.sort(SortUtil.ascSortLower).join(", ")}. Creatures that speak different dialects of the same language can communicate with one another.`);
-		}
-
-		if (!allEntries.length && !hasMeta) allEntries.push("{@i No information available.}");
+		if (!allEntries.length && !it.typicalSpeakers) allEntries.push("{@i No information available.}");
+		renderer.recursiveRender(allEntries, textStack, {depth: 2}, {pf2StatFix: true})
 
 		return `
-		${Renderer.utils.getExcludedTr(it, "language", UrlUtil.PG_LANGUAGES)}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_LANGUAGES})}
-		${it.type ? `<tr class="text"><td colspan="6" class="pt-0"><i>${it.type.toTitleCase()} language</i></td></tr>` : ""}
-		${hasMeta ? `<tr class="text"><td colspan="6">
-		${it.typicalSpeakers ? `<div><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b>` : ""}
-		${it.script ? `<div><b>Script</b> ${Renderer.get().render(it.script)}</div>` : ""}
-		<div></div>
-		</td></tr>` : ""}
-		${allEntries.length ? `<tr class="text"><td colspan="6">
-		${Renderer.get().setFirstSection(true).render({entries: allEntries})}
-		</td></tr>` : ""}
-		${Renderer.utils.getPageTr(it)}`;
+		${Renderer.utils.getExcludedDiv(it, "language", UrlUtil.PG_LANGUAGES)}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_LANGUAGES, type: `${it.type ? `${it.type} ` : ""}language`})}
+		${Renderer.utils.getDividerDiv()}
+		${it.typicalSpeakers ? `<p class="pf2-stat__section"><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b></p>` : ""}
+		${allEntries.length ? `${Renderer.get().setFirstSection(true).render(allEntries)}` : ""}
+		${Renderer.utils.getPageP(it)}`;
 	},
 
 	pGetFluff (it) {
