@@ -5,8 +5,8 @@ class PageFilterLanguages extends PageFilter {
 		super();
 
 		this._sourceFilter = new SourceFilter();
-		this._typeFilter = new Filter({header: "Type", items: ["standard", "exotic", "secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts"], isSrdFilter: true});
+		this._typeFilter = new Filter({header: "Type", items: ["Common", "Uncommon", "Secret"], itemSortFn: null, displayFn: StrUtil.uppercaseFirst});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Has Fonts"]});
 	}
 
 	mutateForFilters (it) {
