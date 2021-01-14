@@ -229,6 +229,7 @@
 			margin: 0;
 			padding-left: 1em;
 			text-indent: -1em;
+			display: block;
 
 			&--wide {
 				margin: 0;
@@ -733,6 +734,22 @@
 			}
 		}
 	}
+
+	@media only screen and (max-width:520px) {
+		flex-direction: column;
+
+		&__ {
+			&ab {
+				box-shadow: 0 8px 0 -6px #b29e74;
+				width: 100%;
+			}
+
+			&hp {
+				width: 100%;
+				padding: 0.3em 1em 1em;
+			}
+		}
+	}
 }
 
 .pf2-tips-box {
@@ -941,42 +958,6 @@
 	display: inline-block;
 	padding-left: 1em;
 	text-indent: -1em;
-}
-
-.sourceCRB {
-	color: #5e0000 !important;
-	border-color: #5e0000 !important;
-	-webkit-text-decoration-color: #5e0000 !important;
-	text-decoration-color: #5e0000 !important;
-}
-
-.night-mode .sourceCRB {
-	color: #d9c484 !important;
-}
-
-.sourceAPG {
-	color: green !important;
-	border-color: green !important;
-	-webkit-text-decoration-color: green !important;
-	text-decoration-color: green !important;
-}
-
-.night-mode .sourceAPG {
-	color: green !important;
-}
-
-.sourceBST {
-	color: darkblue !important;
-	border-color: darkblue !important;
-	-webkit-text-decoration-color: darkblue !important;
-	text-decoration-color: darkblue !important;
-}
-
-.sourceGMG {
-	color: limegreen !important;
-	border-color: limegreen !important;
-	-webkit-text-decoration-color: limegreen !important;
-	text-decoration-color: limegreen !important;
 }
 
 .hidden-fluff {

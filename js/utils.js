@@ -1684,6 +1684,7 @@ UrlUtil.PG_DEMO_RENDER = "renderdemo.html";
 UrlUtil.PG_TABLES = "tables.html";
 UrlUtil.PG_CHARACTERS = "characters.html";
 UrlUtil.PG_ACTIONS = "actions.html";
+UrlUtil.PG_ABILITIES = "abilities.html";
 UrlUtil.PG_LANGUAGES = "languages.html";
 UrlUtil.PG_TRAITS = "traits.html"
 UrlUtil.PG_GM_SCREEN = "gmscreen.html";
@@ -1710,6 +1711,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash(
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
@@ -1723,7 +1725,6 @@ UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER["legendarygroup"] = UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"];
 // endregion
 
 UrlUtil.PG_TO_NAME = {};
@@ -1748,6 +1749,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_MANAGE_BREW] = "Homebrew Manager";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEMO_RENDER] = "Renderer Demo";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_TABLES] = "Tables";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ACTIONS] = "Actions";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_ABILITIES] = "Creature Abilities";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LANGUAGES] = "Languages";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_GM_SCREEN] = "GM Screen";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
@@ -1776,6 +1778,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_QUICKREF] = UrlUtil.PG_QUICKREF;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TABLE_GROUP] = UrlUtil.PG_TABLES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ACTION] = UrlUtil.PG_ACTIONS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ABILITY] = UrlUtil.PG_ABILITIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
@@ -2809,14 +2812,6 @@ DataUtil = {
 			return DataUtil.generic._pMergeCopy(DataUtil.creature, UrlUtil.PG_BESTIARY, monList, mon, options);
 		},
 
-		async pPreloadMeta () {
-			if (DataUtil.creature._isMetaLoaded) return;
-
-			const legendaryGroups = await DataUtil.legendaryGroup.pLoadAll();
-			DataUtil.creature.populateMetaReference({legendaryGroup: legendaryGroups});
-			DataUtil.creature._isMetaLoaded = true;
-		},
-
 		async pLoadAll () {
 			const [index, legendaryGroups] = await Promise.all([
 				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`),
@@ -3261,12 +3256,6 @@ DataUtil = {
 				});
 			});
 			return combined;
-		},
-	},
-
-	legendaryGroup: {
-		async pLoadAll () {
-			return (await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/legendarygroups.json`)).legendaryGroup;
 		},
 	},
 
@@ -4746,6 +4735,7 @@ BrewUtil = {
 			case UrlUtil.PG_BOOKS:
 			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_ACTIONS:
+			case UrlUtil.PG_ABILITIES:
 			case UrlUtil.PG_LANGUAGES:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;

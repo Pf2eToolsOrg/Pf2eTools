@@ -1122,10 +1122,10 @@ function Renderer () {
 		if (add_effect) textStack[0] += `<strong>Effect </strong>`
 		entry.entries.forEach((e) => {
 			this._recursiveRender(e, textStack, meta, {isAbility: true})
-		})
+		});
 		if (entry.no_map) textStack[0] += "; no multiple attack penalty"
-
-		textStack[0] += `</span></p>`
+		textStack[0] = textStack[0].replace(/;$/, ".");
+		textStack[0] += `</span></p>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
@@ -1164,7 +1164,7 @@ function Renderer () {
 		this._handleTrackDepth(entry, 1);
 
 		for (let key in entry.entries) {
-			textStack[0] += `<p class="pf2-stat__section"><strong>${key} </strong>`
+			textStack[0] += `<span class="pf2-stat__section"><strong>${key} </strong>`
 			if (typeof (entry.entries[key]) === "string") {
 				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
 			} else if (Array.isArray(entry.entries[key])) {
@@ -1172,7 +1172,7 @@ function Renderer () {
 					this._recursiveRender(e, textStack, meta, {prefix: "<span>", suffix: "</span>"});
 				});
 			}
-			textStack[0] += `</p>`
+			textStack[0] += `</span>`
 		}
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -2882,6 +2882,14 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ACTIONS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@ability":
+						fauxEntry.href.path = UrlUtil.PG_ABILITIES;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_ABILITIES,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -5157,6 +5165,51 @@ Renderer.creature = {
 		return (renderStack.join(""))
 	},
 
+	getRenderedAbility (ability, options) {
+		options = options || {};
+
+		const renderer = Renderer.get();
+		const entryStack = [];
+		renderer.recursiveRender(ability.entries, entryStack);
+
+		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
+
+		let trts = []
+		if (ability.traits != null && ability.traits.length) {
+			ability.traits.forEach((t) => {
+				let traitname = Parser.getTraitName(t)
+				trts.push(Renderer.get().render(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`))
+			});
+		}
+
+		let renderedGenericAbility;
+		if (ability.generic) {
+			const hash = UrlUtil.encodeForHash([ability.name, "BST"]);
+			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "BST", hash);
+			renderedGenericAbility = this.getRenderedAbility(genericAbility, {generic: true});
+		}
+		return $$`<p class="pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name} </strong>
+					${ability.activity ? renderer.render(ability.activity.entry) : ""}
+					${ability.generic || options.generic ? this.getAbilityTextButton(buttonClass, options.generic) : ""}
+					${trts.length ? `(${trts.join(", ")}); ` : ""}
+					${ability.frequency ? `<strong>Frequency </strong>${renderer.render(ability.frequency)}` : ""}
+					${ability.requirements ? `<strong>Requirements </strong>${renderer.render(ability.requirements)}` : ""}
+					${ability.trigger ? `<strong>Trigger </strong>${renderer.render(ability.trigger)}` : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect </strong>" : ""}
+					${entryStack.join("")}
+					</span></p>
+					${renderedGenericAbility || ""}`;
+	},
+
+	getAbilityTextButton (buttonClass, generic) {
+		return $(`<button title="Toggle short/long text" class="btn btn-xs btn-default">
+					<span class="glyphicon ${generic ? "glyphicon-eye-close" : "glyphicon-eye-open"}"></span></button>`)
+			.on("click").click((evt) => {
+				evt.stopPropagation();
+				$(`.${buttonClass}`).toggleClass("hidden");
+			});
+	},
+
 	// legacy
 
 	getCrScaleTarget (win, $btnScaleCr, initialCr, cbRender, isCompact) {
@@ -6602,6 +6655,47 @@ Renderer.action = {
 	},
 };
 
+Renderer.ability = {
+	getCompactRenderedString (it) {
+		let renderStack = [""]
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		return `
+		${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ABILITIES, activity: true, type: ""})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(it.traits || [])}
+		${Renderer.ability.getSubHead(it)}
+		${renderStack.join("")}
+		${Renderer.utils.getPageP(it)}`;
+	},
+	getSubHead (it) {
+		const renderStack = [];
+		const renderer = Renderer.get()
+		if (it.prerequisites != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
+		}
+		if (it.frequency != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Frequency </strong>${renderer.render(it.frequency)}</p>`);
+		}
+		if (it.trigger != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Trigger </strong>${renderer.render(it.trigger)}</p>`);
+		}
+		if (it.requirements != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Requirements </strong>${renderer.render(it.requirements)}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	},
+	getQuickRules (it) {
+		let renderStack = [""]
+		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name: it.name, entries: it.info}, renderStack, {depth: 1})
+		return `
+		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
+		${renderStack.join("")}
+		${Renderer.utils.getPageP(it)}`
+	},
+};
+
 Renderer.language = {
 	getCompactRenderedString (it) {
 		return Renderer.language.getRenderedString(it);
@@ -7779,6 +7873,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
+			case UrlUtil.PG_ABILITIES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "abilities.json", "ability");
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
 			case UrlUtil.PG_TRAITS:
@@ -7892,10 +7988,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
 			case "raw_subclassfeature":
 				return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
-
-			case "legendarygroup":
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "bestiary/legendarygroups.json", "legendaryGroup");
-				// endregion
 
 			default:
 				throw new Error(`No load function defined for page ${page}`);
@@ -8359,6 +8451,8 @@ Renderer.hover = {
 				return Renderer.table.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.action.getCompactRenderedString;
+			case UrlUtil.PG_ABILITIES:
+				return Renderer.ability.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
@@ -8683,6 +8777,7 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@action":
+					case "@ability":
 					case "@background":
 					case "@class":
 					case "@condition":

@@ -1486,6 +1486,7 @@ Parser.CAT_ID_CLASS_FEATURE = 30;
 Parser.CAT_ID_SUBCLASS = 40;
 Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 Parser.CAT_ID_ACTION = 42;
+Parser.CAT_ID_ABILITY = 48;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
@@ -1514,6 +1515,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
@@ -1544,6 +1546,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "classFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
@@ -1991,6 +1994,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"deity": SRC_CRB,
 	"variantrule": SRC_CRB,
 	"action": SRC_CRB,
+	"ability": SRC_BST,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,

@@ -889,7 +889,6 @@ SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_BOOK,
 	Parser.CAT_ID_QUICKREF,
 	Parser.CAT_ID_PAGE,
-	Parser.CAT_ID_LEGENDARY_GROUP,
 ]);
 
 // based on DM screen's AddMenuSearchTab
