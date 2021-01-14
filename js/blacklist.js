@@ -38,14 +38,10 @@ class Blacklist {
 
 		const FILES = [
 			"backgrounds.json",
-			"cultsboons.json",
 			"deities.json",
 			"feats/feats-crb.json",
 			"magicvariants.json",
-			"optionalfeatures.json",
-			"objects.json",
 			"ancestries.json",
-			"rewards.json",
 			"hazards.json",
 			"variantrules.json",
 		];
@@ -63,7 +59,7 @@ class Blacklist {
 
 		// LOAD DATA ===============================================================================
 		// bestiary
-		mergeData({monster: await DataUtil.creature.pLoadAll()});
+		mergeData({creature: await DataUtil.creature.pLoadAll()});
 
 		// spells
 		mergeData({spell: await DataUtil.spell.pLoadAll()});

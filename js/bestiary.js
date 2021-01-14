@@ -193,8 +193,9 @@ class BestiaryPage {
 		encounterBuilder.initUi();
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
-			DataUtil.creature.pPreloadMeta(),
 		]);
+		const creatureAbilities = await DataUtil.loadJSON("data/abilities.json");
+		Renderer.hover._pCacheAndGet_populate(UrlUtil.PG_ABILITIES, creatureAbilities, "ability");
 		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addCreatures, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(creatures, $(`#pagecontent`));

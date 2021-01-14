@@ -762,7 +762,7 @@ function Renderer () {
 		// TODO: implement rollable tables
 		const numCol = Math.max(...entry.rows.map(x => x.length))
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol)
-		textStack[0] += `<div class="${entry.style || "pf2-table"}" style="grid-template-columns: ${gridTemplate}">`
+		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
 			if (entry.colStyles == null) entry.colStyles = Array(numCol).fill("");
 			entry.colStyles[0] += " no-border-left";
@@ -1122,10 +1122,10 @@ function Renderer () {
 		if (add_effect) textStack[0] += `<strong>Effect </strong>`
 		entry.entries.forEach((e) => {
 			this._recursiveRender(e, textStack, meta, {isAbility: true})
-		})
+		});
 		if (entry.no_map) textStack[0] += "; no multiple attack penalty"
-
-		textStack[0] += `</span></p>`
+		textStack[0] = textStack[0].replace(/;$/, ".");
+		textStack[0] += `</span></p>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
@@ -1164,7 +1164,7 @@ function Renderer () {
 		this._handleTrackDepth(entry, 1);
 
 		for (let key in entry.entries) {
-			textStack[0] += `<p class="pf2-stat__section"><strong>${key} </strong>`
+			textStack[0] += `<span class="pf2-stat__section"><strong>${key} </strong>`
 			if (typeof (entry.entries[key]) === "string") {
 				this._recursiveRender(entry.entries[key], textStack, meta, {prefix: "<span>", suffix: "</span>"});
 			} else if (Array.isArray(entry.entries[key])) {
@@ -1172,7 +1172,7 @@ function Renderer () {
 					this._recursiveRender(e, textStack, meta, {prefix: "<span>", suffix: "</span>"});
 				});
 			}
-			textStack[0] += `</p>`
+			textStack[0] += `</span>`
 		}
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
@@ -1185,41 +1185,49 @@ function Renderer () {
 
 		const dict = entry.entries;
 		let traits = []
-		dict["traits"].forEach((t) => {
-			let traitname = Parser.getTraitName(t)
-			traits.push(`{@trait ${t}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}}`)
-		})
+		if (dict["traits"]) {
+			dict["traits"].forEach((t) => {
+				let traitname = Parser.getTraitName(t);
+				traits.push(`{@trait ${t}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}}`);
+			});
+		}
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat__section">`
 		if (dict["name"] != null) {
-			textStack[0] += `<strong>${dict["name"]} </strong> `
+			textStack[0] += `<strong>${dict["name"]} </strong> `;
 		}
 		if (traits.length) {
-			textStack[0] += `(${renderer.render(traits.join(", "))}); `
+			textStack[0] += `(${renderer.render(traits.join(", "))}); `;
 		}
 		if (dict["level"] != null) {
-			textStack[0] += `<strong>Level </strong>${dict["level"]}. `
+			textStack[0] += `<strong>Level </strong>${dict["level"]}. `;
 		}
 		if (dict["note"] != null) {
-			textStack[0] += `${this.render(dict["note"])} `
+			textStack[0] += `${this.render(dict["note"])} `;
 		}
 		if (dict["DC"] != null) {
-			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `
+			textStack[0] += `<strong>Saving Throw </strong>DC ${dict["DC"]} ${dict["saving throw"]}. `;
 		}
 		if (dict["onset"] != null) {
-			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`
+			textStack[0] += ` <strong>Onset</strong> ${dict["onset"]}`;
 		}
 		if (dict["max duration"] != null) {
-			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`
+			textStack[0] += ` <strong>Maximum Duration</strong> ${dict["max duration"]}`;
 		}
-		for (let stage of dict["stages"]) {
-			textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`
-			this._recursiveRender(stage["entry"], textStack, meta);
-			if (stage["duration"] != null) {
-				textStack[0] += ` (${stage["duration"]});`
+		if (dict["stages"]) {
+			for (let stage of dict["stages"]) {
+				textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`;
+				this._recursiveRender(stage["entry"], textStack, meta);
+				if (stage["duration"] != null) {
+					textStack[0] += ` (${stage["duration"]});`;
+				}
 			}
 		}
-		textStack[0] = textStack[0].replace(/;$/, ".")
-		if (!options.isAbility) textStack[0] += `</p>`
+		if (dict["effect"]) {
+			textStack[0] += ` <strong>Effect </strong>`;
+			dict["effect"].forEach(it => this._recursiveRender(it, textStack, meta));
+		}
+		textStack[0] = textStack[0].replace(/;$/, ".");
+		if (!options.isAbility) textStack[0] += `</p>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
@@ -2589,7 +2597,7 @@ function Renderer () {
 				};
 
 				fauxEntry.href.path = UrlUtil.PG_DEITIES;
-				if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}forgotten realms`;
+				if (!pantheon) fauxEntry.href.hash += `${HASH_LIST_SEP}golarion`;
 				if (!source) fauxEntry.href.hash += `${HASH_LIST_SEP}${SRC_CRB}`;
 				fauxEntry.href.hover = {
 					page: UrlUtil.PG_DEITIES,
@@ -2804,10 +2812,11 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@disease":
-					case "@status":
-						fauxEntry.href.path = "conditions.html";
+					case "@curse":
+					case "@itemcurse":
+						fauxEntry.href.path = "afflictions.html";
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS,
+							page: UrlUtil.PG_AFFLICTIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -2837,14 +2846,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@reward":
-						fauxEntry.href.path = "rewards.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_REWARDS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@feat":
 						fauxEntry.href.path = "feats.html";
 						fauxEntry.href.hover = {
@@ -2853,24 +2854,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@object":
-						fauxEntry.href.path = "objects.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_OBJECTS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@boon":
-					case "@cult":
-						fauxEntry.href.path = "cultsboons.html";
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CULTS_BOONS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@trap":
 					case "@hazard":
 						fauxEntry.href.path = "hazards.html";
 						fauxEntry.href.hover = {
@@ -2895,22 +2878,6 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@vehicle":
-						fauxEntry.href.path = UrlUtil.PG_VEHICLES;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_VEHICLES,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@vehupgrade":
-						fauxEntry.href.path = UrlUtil.PG_VEHICLES;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_VEHICLES,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
 					case "@action":
 						fauxEntry.href.path = UrlUtil.PG_ACTIONS;
 						fauxEntry.href.hover = {
@@ -2919,18 +2886,18 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@language":
-						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
+					case "@ability":
+						fauxEntry.href.path = UrlUtil.PG_ABILITIES;
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_LANGUAGES,
+							page: UrlUtil.PG_ABILITIES,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
-					case "@charoption":
-						fauxEntry.href.path = UrlUtil.PG_CHAR_CREATION_OPTIONS;
+					case "@language":
+						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
 						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CHAR_CREATION_OPTIONS,
+							page: UrlUtil.PG_LANGUAGES,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -3514,13 +3481,13 @@ Renderer.utils = {
 	},
 
 	getTraitsDiv: (traits) => {
+		traits = traits || [];
 		let traits_html = ``;
-		let trait;
-		for (trait of traits) {
+		for (let trait of traits) {
 			let traitname = Parser.getTraitName(trait);
-			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname]
-			let hash = `${traitname}${HASH_LIST_SEP}${source}`
-			let url = `${UrlUtil.PG_TRAITS}#${hash}`
+			let source = Parser.TRAITS_TO_TRAITS_SRC[traitname];
+			let hash = `${traitname}${HASH_LIST_SEP}${source}`;
+			let url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			let href = {
 				type: "internal",
 				path: "traits.html",
@@ -3641,7 +3608,7 @@ Renderer.utils = {
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
-		const level = opts.level != null ? ` ${opts.level}` : isNaN(Number(it.level)) ? "" : ` ${Number(it.level)}`
+		const level = opts.level != null ? `${opts.level}` : (!isNaN(Number(it.level)) || typeof it.level === "string") ? ` ${it.level}` : ""
 		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes("@as") ? Renderer.get().render(it.activity.entry) : ``}` : ``
 		const $ele = $$`<div style="display: flex" class="${opts.extraThClasses ? opts.extraThClasses.join(" ") : ""}" ${dataPart}>
 			<p class="pf2-stat__name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
@@ -3685,7 +3652,7 @@ Renderer.utils = {
 	},
 
 	getPageP: (it) => {
-		return `<p class="pf2-stat__source"><strong>${it.source}</strong> page ${it.page}</p>`;
+		return `<p class="pf2-stat__source"><strong>${Parser.sourceJsonToFull(it.source)}</strong>, page ${it.page}.</p>`;
 	},
 
 	getSourceAndPageHtml (it) {
@@ -4283,10 +4250,30 @@ Renderer.condition = {
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(cond, cond.__prop || cond._type, UrlUtil.PG_CONDITIONS)}`)
 		renderStack.push(`
-			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS})}
+			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS, type: "condition"})}
 			${Renderer.utils.getDividerDiv()}
 		`);
 		renderer.recursiveRender(cond.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+
+		return renderStack.join("");
+	},
+};
+
+Renderer.affliction = {
+	getCompactRenderedString (affliction) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		const rLvl = isNaN(Number(affliction.level)) ? `, ${affliction.level}` : affliction.level;
+
+		renderStack.push(`${Renderer.utils.getExcludedDiv(affliction, affliction.__prop || affliction._type, UrlUtil.PG_AFFLICTIONS)}`)
+		renderStack.push(`
+			${Renderer.utils.getNameDiv(affliction, {page: UrlUtil.PG_AFFLICTIONS, level: rLvl})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(affliction.traits || [])}
+		`);
+		renderer.recursiveRender(affliction.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderStack.push(Renderer.utils.getPageP(affliction))
 
 		return renderStack.join("");
 	},
@@ -4297,7 +4284,7 @@ Renderer.trait = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, trait.__prop || trait._type, UrlUtil.PG_TRAITS)}`)
+		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, "trait", UrlUtil.PG_TRAITS)}`)
 		renderStack.push(`
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
@@ -4305,14 +4292,6 @@ Renderer.trait = {
 		renderer.recursiveRender(trait.entries, renderStack, {depth: 1}, {pf2StatFix: true});
 
 		return renderStack.join("");
-	},
-
-	pGetFluff (it) {
-		return Renderer.utils.pGetFluff({
-			entity: it,
-			fluffUrl: `data/fluff-conditionsdiseases.json`,
-			fluffProp: it.__prop === "condition" ? "conditionFluff" : "diseaseFluff",
-		});
 	},
 };
 
@@ -4325,18 +4304,6 @@ Renderer.background = {
 		${Renderer.get().render({type: "entries", entries: bg.entries})}
 		</td></tr>
 		`;
-	},
-
-	getSkillSummary (skillProfsArr, short, collectIn) {
-		return Renderer.background._summariseProfs(skillProfsArr, short, collectIn, `skill`);
-	},
-
-	getToolSummary (toolProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(toolProfsArray, short, collectIn);
-	},
-
-	getLanguageSummary (languageProfsArray, short, collectIn) {
-		return Renderer.background._summariseProfs(languageProfsArray, short, collectIn);
 	},
 
 	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
@@ -4408,23 +4375,6 @@ Renderer.optionalfeature = {
 		renderStack.push(Renderer.optionalfeature.getPreviouslyPrintedText(it));
 
 		return renderStack.join("");
-	},
-};
-
-Renderer.reward = {
-	getRenderedString: (reward) => {
-		const renderer = Renderer.get();
-		const renderStack = [];
-		renderer.recursiveRender({entries: reward.entries}, renderStack, {depth: 1});
-		return `<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
-	},
-
-	getCompactRenderedString (reward) {
-		return `
-			${Renderer.utils.getExcludedTr(reward, "reward", UrlUtil.PG_REWARDS)}
-			${Renderer.utils.getNameTr(reward, {page: UrlUtil.PG_REWARDS})}
-			${Renderer.reward.getRenderedString(reward)}
-		`;
 	},
 };
 
@@ -4711,111 +4661,81 @@ Renderer.ancestry = {
 };
 
 Renderer.deity = {
-	_basePartTranslators: {
-		"Alignment": {
-			prop: "alignment",
-			displayFn: (it) => it.map(a => Parser.alignmentAbvToFull(a)).join(" "),
-		},
-		"Pantheon": {
-			prop: "pantheon",
-		},
-		"Category": {
-			prop: "category",
-			displayFn: it => typeof it === "string" ? it : it.join(", "),
-		},
-		"Domains": {
-			prop: "domains",
-			displayFn: (it) => it.join(", "),
-		},
-		"Province": {
-			prop: "province",
-		},
-		"Alternate Names": {
-			prop: "altNames",
-			displayFn: (it) => it.join(", "),
-		},
-		"Symbol": {
-			prop: "symbol",
-		},
-	},
-	getOrderedParts (deity, prefix, suffix) {
-		const parts = {};
-		Object.entries(Renderer.deity._basePartTranslators).forEach(([k, v]) => {
-			const val = deity[v.prop];
-			if (val != null) {
-				const outVal = v.displayFn ? v.displayFn(val) : val;
-				parts[k] = outVal;
-			}
-		});
-		if (deity.customProperties) Object.entries(deity.customProperties).forEach(([k, v]) => parts[k] = v);
-		const allKeys = Object.keys(parts).sort(SortUtil.ascSortLower);
-		return allKeys.map(k => `${prefix}<b>${k}: </b>${Renderer.get().render(parts[k])}${suffix}`).join("");
-	},
-
 	getCompactRenderedString (deity) {
-		const renderer = Renderer.get();
-		return `
-			${Renderer.utils.getExcludedTr(deity, "deity", UrlUtil.PG_DEITIES)}
-			${Renderer.utils.getNameTr(deity, {
-		suffix: deity.title ? `, ${deity.title.toTitleCase()}` : "",
-		page: UrlUtil.PG_DEITIES,
-	})}
-			<tr><td colspan="6">
-				<div class="rd__compact-stat">${Renderer.deity.getOrderedParts(deity, `<p>`, `</p>`)}</div>
-			</td>
-			${deity.entries ? `<tr><td colspan="6"><div class="border"></div></td></tr><tr><td colspan="6">${renderer.render({entries: deity.entries}, 1)}</td></tr>` : ""}
-		`;
+		const renderer = Renderer.get().setFirstSection(true);
+		const entry = {
+			type: "pf2-h3",
+			name: `${deity.name}${deity.alignment && deity.alignment.length === 1 ? ` (${deity.alignment[0]})` : ""}`,
+			entries: [
+				...deity.info,
+			],
+		};
+		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
+			${renderer.render(entry)}
+			${Renderer.deity.getEdictsAnathemaAlign(deity)}
+			${Renderer.deity.getDevoteeBenefits(deity)}
+			${deity.reprinted ? `<p class="pf2-p"><i class="text-muted">Note: this deity has been reprinted in a newer publication.</i></p>` : ""}
+			${Renderer.utils.getPageP(deity)}`;
 	},
-};
 
-Renderer.object = {
-	getCompactRenderedString (obj, opts) {
-		opts = opts || {};
+	getEdictsAnathemaAlign (deity) {
+		let out = []
+		if (deity.edicts) out.push(`<p class="pf2-book__option"><strong>Edicts </strong>${deity.edicts.join(", ")}</p>`)
+		if (deity.anathema) out.push(`<p class="pf2-book__option"><strong>Anathema </strong>${deity.anathema.join(", ")}</p>`)
+		if (deity.followerAlignment) out.push(`<p class="pf2-book__option"><strong>Follower Alignments </strong>${deity.followerAlignment.join(", ")}</p>`)
+		return out.join("")
+	},
 
-		const renderer = Renderer.get();
-		const row2Width = 12 / ((!!obj.resist + !!obj.vulnerable + !!obj.conditionImmune) || 1);
-		return `
-			${Renderer.utils.getExcludedTr(obj, "object", UrlUtil.PG_OBJECTS)}
-			${Renderer.utils.getNameTr(obj, {page: UrlUtil.PG_OBJECTS, isEmbeddedEntity: opts.isEmbeddedEntity})}
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th colspan="2" class="text-center">Type</th>
-						<th colspan="2" class="text-center">AC</th>
-						<th colspan="2" class="text-center">HP</th>
-						<th colspan="2" class="text-center">Speed</th>
-						<th colspan="4" class="text-center">Damage Imm.</th>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-center">${Parser.sizeAbvToFull(obj.size)} ${obj.creatureType ? Parser.monTypeToFullObj(obj.creatureType).asText : "object"}</td>
-						<td colspan="2" class="text-center">${obj.ac != null ? obj.ac : "\u2014"}</td>
-						<td colspan="2" class="text-center">${obj.hp}</td>
-						<td colspan="2" class="text-center">${Parser.getSpeedString(obj)}</td>
-						<td colspan="4" class="text-center">${Parser.monImmResToFull(obj.immune)}</td>
-					</tr>
-					${Parser.ABIL_ABVS.some(ab => obj[ab] != null) ? `
-					<tr>${Parser.ABIL_ABVS.map(it => `<td colspan="2" class="text-center">${it.toUpperCase()}</td>`).join("")}</tr>
-					<tr>${Parser.ABIL_ABVS.map(it => `<td colspan="2" class="text-center">${Renderer.utils.getAbilityRoller(obj, it)}</td>`).join("")}</tr>
-					` : ""}
-					${obj.resist || obj.vulnerable || obj.conditionImmune ? `
-					<tr>
-						${obj.resist ? `<th colspan="${row2Width}" class="text-center">Damage Res.</th>` : ""}
-						${obj.vulnerable ? `<th colspan="${row2Width}" class="text-center">Damage Vuln.</th>` : ""}
-						${obj.conditionImmune ? `<th colspan="${row2Width}" class="text-center">Condition Imm.</th>` : ""}
-					</tr>
-					<tr>
-						${obj.resist ? `<td colspan="${row2Width}" class="text-center">${Parser.monImmResToFull(obj.resist)}</td>` : ""}
-						${obj.vulnerable ? `<td colspan="${row2Width}" class="text-center">${Parser.monImmResToFull(obj.vulnerable)}</td>` : ""}
-						${obj.conditionImmune ? `<td colspan="${row2Width}" class="text-center">${Parser.monCondImmToFull(obj.conditionImmune)}</td>` : ""}
-					</tr>
-					` : ""}
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-			${obj.entries ? renderer.render({entries: obj.entries}, 2) : ""}
-			${obj.actionEntries ? renderer.render({entries: obj.actionEntries}, 2) : ""}
-			</td></tr>
-		`;
+	getClericSpells (spells) {
+		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ");
+	},
+
+	getDevoteeBenefits (deity) {
+		if (deity.devoteeBenefits == null) return "";
+		const renderer = Renderer.get()
+		const b = deity.devoteeBenefits;
+		return `${renderer.render({type: "pf2-h4", name: "Devotee Benefits"})}
+				<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
+				<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
+				<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
+				<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
+				<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`;
+	},
+
+	getRenderedLore (deity) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (deity.lore) {
+			deity.lore.forEach(l => {
+				if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
+				renderer.recursiveRender(l, textStack, {depth: 1});
+			});
+		}
+		return textStack.join("");
+	},
+
+	getIntercession (deity) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (deity.intercession) {
+			const entry = {type: "pf2-h2",
+				name: "Divine Intercession",
+				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
+			};
+			renderer.recursiveRender(entry, textStack, {depth: 1});
+			if (deity.intercession.boon) {
+				Object.keys(deity.intercession.boon)
+					.map(key => `<p class="pf2-book__option"><strong>${key} </strong>${renderer.render(deity.intercession.boon[key])}</p>`)
+					.forEach(it => textStack.push(it))
+			}
+			if (deity.intercession.curse) {
+				Object.keys(deity.intercession.curse)
+					.map(key => `<p class="pf2-book__option"><strong>${key} </strong>${renderer.render(deity.intercession.curse[key])}</p>`)
+					.forEach(it => textStack.push(it))
+			}
+			textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
+		}
+		return textStack.join("");
 	},
 };
 
@@ -4920,83 +4840,6 @@ Renderer.hazard = {
 		}
 		renderStack.push(Renderer.utils.getPageP(hazard))
 		return renderStack.join("")
-	},
-};
-
-Renderer.cultboon = {
-	doRenderCultParts (it, renderer, renderStack) {
-		if (it.goal || it.cultists || it.signaturespells) {
-			const fauxList = {
-				type: "list",
-				style: "list-hang-notitle",
-				items: [],
-			};
-			if (it.goal) {
-				fauxList.items.push({
-					type: "item",
-					name: "Goals:",
-					entry: it.goal.entry,
-				});
-			}
-
-			if (it.cultists) {
-				fauxList.items.push({
-					type: "item",
-					name: "Typical Cultists:",
-					entry: it.cultists.entry,
-				});
-			}
-			if (it.signaturespells) {
-				fauxList.items.push({
-					type: "item",
-					name: "Signature Spells:",
-					entry: it.signaturespells.entry,
-				});
-			}
-			renderer.recursiveRender(fauxList, renderStack, {depth: 2});
-		}
-	},
-
-	doRenderBoonParts (it, renderer, renderStack) {
-		const benefits = {type: "list", style: "list-hang-notitle", items: []};
-		if (it.ability) {
-			benefits.items.push({
-				type: "item",
-				name: "Ability Score Adjustment:",
-				entry: it.ability ? it.ability.entry : "None",
-			});
-		}
-		if (it.signaturespells) {
-			benefits.items.push({
-				type: "item",
-				name: "Signature Spells:",
-				entry: it.signaturespells ? it.signaturespells.entry : "None",
-			});
-		}
-		if (benefits.items.length) renderer.recursiveRender(benefits, renderStack, {depth: 1});
-	},
-
-	getCompactRenderedString (it) {
-		const renderer = Renderer.get();
-
-		const renderStack = [];
-		if (it.__prop === "cult") {
-			Renderer.cultboon.doRenderCultParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 2});
-			return `
-			${Renderer.utils.getExcludedTr(it, "cult", UrlUtil.PG_CULTS_BOONS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr id="text"><td class="divider" colspan="6"><div></div></td></tr>
-			<tr class="text"><td colspan="6" class="text">${renderStack.join("")}</td></tr>`;
-		} else if (it.__prop === "boon") {
-			Renderer.cultboon.doRenderBoonParts(it, renderer, renderStack);
-			renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-			it._displayName = it._displayName || it.name;
-			return `
-			${Renderer.utils.getExcludedTr(it, "boon", UrlUtil.PG_CULTS_BOONS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CULTS_BOONS})}
-			<tr class="text"><td colspan="6">${renderStack.join("")}</td></tr>`;
-		}
 	},
 };
 
@@ -5320,6 +5163,51 @@ Renderer.creature = {
 		renderStack.push(Renderer.utils.getPageP(cr));
 
 		return (renderStack.join(""))
+	},
+
+	getRenderedAbility (ability, options) {
+		options = options || {};
+
+		const renderer = Renderer.get();
+		const entryStack = [];
+		renderer.recursiveRender(ability.entries, entryStack);
+
+		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
+
+		let trts = []
+		if (ability.traits != null && ability.traits.length) {
+			ability.traits.forEach((t) => {
+				let traitname = Parser.getTraitName(t)
+				trts.push(Renderer.get().render(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`))
+			});
+		}
+
+		let renderedGenericAbility;
+		if (ability.generic) {
+			const hash = UrlUtil.encodeForHash([ability.name, "BST"]);
+			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "BST", hash);
+			renderedGenericAbility = this.getRenderedAbility(genericAbility, {generic: true});
+		}
+		return $$`<p class="pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name} </strong>
+					${ability.activity ? renderer.render(ability.activity.entry) : ""}
+					${ability.generic || options.generic ? this.getAbilityTextButton(buttonClass, options.generic) : ""}
+					${trts.length ? `(${trts.join(", ")}); ` : ""}
+					${ability.frequency ? `<strong>Frequency </strong>${renderer.render(ability.frequency)}` : ""}
+					${ability.requirements ? `<strong>Requirements </strong>${renderer.render(ability.requirements)}` : ""}
+					${ability.trigger ? `<strong>Trigger </strong>${renderer.render(ability.trigger)}` : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect </strong>" : ""}
+					${entryStack.join("")}
+					</span></p>
+					${renderedGenericAbility || ""}`;
+	},
+
+	getAbilityTextButton (buttonClass, generic) {
+		return $(`<button title="Toggle short/long text" class="btn btn-xs btn-default">
+					<span class="glyphicon ${generic ? "glyphicon-eye-close" : "glyphicon-eye-open"}"></span></button>`)
+			.on("click").click((evt) => {
+				evt.stopPropagation();
+				$(`.${buttonClass}`).toggleClass("hidden");
+			});
 	},
 
 	// legacy
@@ -5977,13 +5865,18 @@ Renderer.item = {
 
 	getCompactRenderedString (item, opts) {
 		opts = opts || {};
+		const renderStack = [""]
+		Renderer.get().recursiveRender(item.entries, renderStack, {depth: 1}, {pf2StatFix: true})
 
-		return `
-		${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
-		${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getDividerDiv()}
-		`;
+		return `${Renderer.utils.getExcludedDiv(item, "item")}
+			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.utils.getTraitsDiv(item.traits)}
+			${Renderer.item.getSubHead(item)}
+			${renderStack.join("")}
+			${Renderer.item.getVariantsHtml(item)}
+			${Renderer.item.getCraftRequirements(item)}
+			${Renderer.utils.getPageP(item)}`;
 	},
 
 	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
@@ -6721,269 +6614,6 @@ Renderer.table = {
 	},
 };
 
-Renderer.vehicle = {
-	getCompactRenderedString (veh) {
-		return Renderer.vehicle.getRenderedString(veh, {isCompact: true});
-	},
-
-	getRenderedString (veh, opts) {
-		opts = opts || {};
-
-		if (veh.upgradeType) return Renderer.vehicle._getRenderedString_upgrade(veh, opts);
-
-		veh.vehicleType = veh.vehicleType || "SHIP";
-		switch (veh.vehicleType) {
-			case "SHIP":
-				return Renderer.vehicle._getRenderedString_ship(veh, opts);
-			case "INFWAR":
-				return Renderer.vehicle._getRenderedString_infwar(veh, opts);
-			case "CREATURE":
-				return Renderer.creature.getCompactRenderedString(veh, null, {
-					...opts,
-					isHideLanguages: true,
-					isHideSenses: true,
-					isCompact: false,
-				});
-			default:
-				throw new Error(`Unhandled vehicle type "${veh.vehicleType}"`);
-		}
-	},
-
-	_getRenderedString_upgrade (it, opts) {
-		const summaryParts = [
-			Parser.vehicleTypeToFull(it.upgradeType),
-			it.prerequisite ? Renderer.utils.getPrerequisiteText(it.prerequisite) : "",
-		].filter(Boolean);
-
-		return $$`${Renderer.utils.getBorderTr()}
-			${Renderer.utils.getExcludedTr(it, "vehicleUpgrade", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_VEHICLES})}
-			<tr><td colspan="6"><i>${summaryParts.join(", ")}</i></td></tr>
-			<tr><td class="divider" colspan="6"><div></div></td></tr>
-			<tr><td colspan="6">${Renderer.get().render({entries: it.entries}, 1)}</td></tr>`;
-	},
-
-	_getRenderedString_ship (veh, opts) {
-		const renderer = Renderer.get();
-
-		function getSectionTitle (title) {
-			return `<tr class="mon__stat-header-underline"><td colspan="6"><span>${title}</span></td></tr>`
-		}
-
-		function getActionPart () {
-			return renderer.render({entries: veh.action});
-		}
-
-		function getSectionHpPart (sect, each) {
-			if (!sect.ac && !sect.hp) return "";
-			return `
-				<div><b>Armor Class</b> ${sect.ac}</div>
-				<div><b>Hit Points</b> ${sect.hp}${each ? ` each` : ""}${sect.dt ? ` (damage threshold ${sect.dt})` : ""}${sect.hpNote ? `; ${sect.hpNote}` : ""}</div>
-			`;
-		}
-
-		function getControlSection (control) {
-			if (!control) return "";
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Control: ${control.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(control)}
-				<div>${renderer.render({entries: control.entries})}</div>
-				</td></tr>
-			`;
-		}
-
-		function getMovementSection (move) {
-			if (!move) return "";
-
-			function getLocomotionSection (loc) {
-				const asList = {
-					type: "list",
-					style: "list-hang-notitle",
-					items: [
-						{
-							type: "item",
-							name: `Locomotion (${loc.mode})`,
-							entries: loc.entries,
-						},
-					],
-				};
-				return `<div>${renderer.render(asList)}</div>`;
-			}
-
-			function getSpeedSection (spd) {
-				const asList = {
-					type: "list",
-					style: "list-hang-notitle",
-					items: [
-						{
-							type: "item",
-							name: `Speed (${spd.mode})`,
-							entries: spd.entries,
-						},
-					],
-				};
-				return `<div>${renderer.render(asList)}</div>`;
-			}
-
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${move.isControl ? `Control and ` : ""}Movement: ${move.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(move)}
-				${(move.locomotion || []).map(getLocomotionSection)}
-				${(move.speed || []).map(getSpeedSection)}
-				</td></tr>
-			`;
-		}
-
-		function getWeaponSection (weap) {
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>Weapons: ${weap.name}${weap.count ? ` (${weap.count})` : ""}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(weap, !!weap.count)}
-				${renderer.render({entries: weap.entries})}
-				</td></tr>
-			`;
-		}
-
-		function getOtherSection (oth) {
-			return `
-				<tr class="mon__stat-header-underline"><td colspan="6"><span>${oth.name}</span></td></tr>
-				<tr><td colspan="6">
-				${getSectionHpPart(oth)}
-				${renderer.render({entries: oth.entries})}
-				</td></tr>
-			`;
-		}
-
-		// Render UA ship actions at the top, to match later printed layout
-		const otherSectionActions = (veh.other || []).filter(it => it.name === "Actions");
-		const otherSectionOters = (veh.other || []).filter(it => it.name !== "Actions");
-
-		const hasToken = veh.tokenUrl || veh.hasToken;
-		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
-
-		return `
-			${Renderer.utils.getExcludedTr(veh, "vehicle", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle${veh.dimensions ? ` (${veh.dimensions.join(" by ")})` : ""}</i><br></td></tr>
-			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${Renderer.vehicle.getShipCreatureCapacity(veh)}</div>
-				${veh.capCargo ? `<div><b>Cargo Capacity</b> ${typeof veh.capCargo === "string" ? veh.capCargo : `${veh.capCargo} ton${veh.capCargo === 1 ? "" : "s"}`}</div>` : ""}
-				<div><b>Travel Pace</b> ${veh.pace} miles per hour (${veh.pace * 24} miles per day)</div>
-				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Speed</b> ${veh.pace * 10} ft.]</div>
-			</td></tr>
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-2 text-center">STR</th>
-						<th class="col-2 text-center">DEX</th>
-						<th class="col-2 text-center">CON</th>
-						<th class="col-2 text-center">INT</th>
-						<th class="col-2 text-center">WIS</th>
-						<th class="col-2 text-center">CHA</th>
-					</tr>
-					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
-					</tr>
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
-				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
-			</td></tr>
-			${veh.action ? getSectionTitle("Actions") : ""}
-			${veh.action ? `<tr><td colspan="6">${getActionPart()}</td></tr>` : ""}
-			${otherSectionActions.map(getOtherSection).join("")}
-			${veh.hull ? `${getSectionTitle("Hull")}
-			<tr><td colspan="6">
-			${getSectionHpPart(veh.hull)}
-			</td></tr>` : ""}
-			${(veh.control || []).map(getControlSection).join("")}
-			${(veh.movement || []).map(getMovementSection).join("")}
-			${(veh.weapon || []).map(getWeaponSection).join("")}
-			${otherSectionOters.map(getOtherSection).join("")}
-		`;
-	},
-
-	getShipCreatureCapacity (veh) {
-		return `${veh.capCrew} crew${veh.capPassenger ? `, ${veh.capPassenger} passenger${veh.capPassenger === 1 ? "" : "s"}` : ""}`;
-	},
-
-	_getRenderedString_infwar (veh, opts) {
-		const renderer = Renderer.get();
-		const dexMod = Parser.getAbilityModNumber(veh.dex);
-
-		const hasToken = veh.tokenUrl || veh.hasToken;
-		const extraThClasses = !opts.isCompact && hasToken ? ["veh__name--token"] : null;
-
-		return `
-			${Renderer.utils.getExcludedTr(veh, "vehicle", UrlUtil.PG_VEHICLES)}
-			${Renderer.utils.getNameTr(veh, {extraThClasses, page: UrlUtil.PG_VEHICLES})}
-			<tr class="text"><td colspan="6"><i>${Parser.sizeAbvToFull(veh.size)} vehicle (${veh.weight.toLocaleString()} lb.)</i><br></td></tr>
-			<tr class="text"><td colspan="6">
-				<div><b>Creature Capacity</b> ${Renderer.vehicle.getInfwarCreatureCapacity(veh)}</div>
-				<div><b>Cargo Capacity</b> ${Parser.weightToFull(veh.capCargo)}</div>
-				<div><b>Armor Class</b> ${dexMod === 0 ? `19` : `${19 + dexMod} (19 while motionless)`}</div>
-				<div><b>Hit Points</b> ${veh.hp.hp} (damage threshold ${veh.hp.dt}, mishap threshold ${veh.hp.mt})</div>
-				<div><b>Speed</b> ${veh.speed} ft.</div>
-				<div class="ve-muted ve-small help--subtle ml-2" title="Based on &quot;Special Travel Pace,&quot; DMG p242">[<b>Travel Pace</b> ${Math.floor(veh.speed / 10)} miles per hour (${Math.floor(veh.speed * 24 / 10)} miles per day)]</div>
-			</td></tr>
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-2 text-center">STR</th>
-						<th class="col-2 text-center">DEX</th>
-						<th class="col-2 text-center">CON</th>
-						<th class="col-2 text-center">INT</th>
-						<th class="col-2 text-center">WIS</th>
-						<th class="col-2 text-center">CHA</th>
-					</tr>
-					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(veh, "cha")}</td>
-					</tr>
-				</table>
-			</td></tr>
-			<tr class="text"><td colspan="6">
-				${veh.immune ? `<div><b>Damage Immunities</b> ${Parser.monImmResToFull(veh.immune)}</div>` : ""}
-				${veh.conditionImmune ? `<div><b>Condition Immunities</b> ${Parser.monCondImmToFull(veh.conditionImmune)}</div>` : ""}
-			</td></tr>
-			${veh.trait ? `<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr class="text compact"><td colspan="6">
-			${Renderer.creature.getOrderedTraits(veh, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
-			</td></tr>` : ""}
-			${Renderer.creature.getCompactRenderedStringSection(veh, renderer, "Action Stations", "actionStation", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(veh, renderer, "Reactions", "reaction", 2)}
-		`;
-	},
-
-	getInfwarCreatureCapacity (veh) {
-		return `${veh.capCreature} Medium creatures`;
-	},
-
-	pGetFluff (veh) {
-		return Renderer.utils.pGetFluff({
-			entity: veh,
-			fluffProp: "vehicleFluff",
-			fluffUrl: `data/fluff-vehicles.json`,
-		});
-	},
-
-	getTokenUrl (veh) {
-		return veh.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/vehicles/tokens/${Parser.sourceJsonToAbv(veh.source)}/${Parser.nameToTokenName(veh.name)}.png`);
-	},
-};
-
 Renderer.action = {
 	getCompactRenderedString (it) {
 		let renderStack = [""]
@@ -7025,36 +6655,67 @@ Renderer.action = {
 	},
 };
 
+Renderer.ability = {
+	getCompactRenderedString (it) {
+		let renderStack = [""]
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		return `
+		${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ABILITIES, activity: true, type: ""})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(it.traits || [])}
+		${Renderer.ability.getSubHead(it)}
+		${renderStack.join("")}
+		${Renderer.utils.getPageP(it)}`;
+	},
+	getSubHead (it) {
+		const renderStack = [];
+		const renderer = Renderer.get()
+		if (it.prerequisites != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
+		}
+		if (it.frequency != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Frequency </strong>${renderer.render(it.frequency)}</p>`);
+		}
+		if (it.trigger != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Trigger </strong>${renderer.render(it.trigger)}</p>`);
+		}
+		if (it.requirements != null) {
+			renderStack.push(`<p class="pf2-stat__section"><strong>Requirements </strong>${renderer.render(it.requirements)}</p>`);
+		}
+		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		return renderStack.join("");
+	},
+	getQuickRules (it) {
+		let renderStack = [""]
+		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name: it.name, entries: it.info}, renderStack, {depth: 1})
+		return `
+		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
+		${renderStack.join("")}
+		${Renderer.utils.getPageP(it)}`
+	},
+};
+
 Renderer.language = {
 	getCompactRenderedString (it) {
 		return Renderer.language.getRenderedString(it);
 	},
 
 	getRenderedString (it) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true);
 		const allEntries = [];
-
-		const hasMeta = it.typicalSpeakers || it.script;
-
 		if (it.entries) allEntries.push(...it.entries);
-		if (it.dialects) {
-			allEntries.push(`This language is a family which includes the following dialects: ${it.dialects.sort(SortUtil.ascSortLower).join(", ")}. Creatures that speak different dialects of the same language can communicate with one another.`);
-		}
-
-		if (!allEntries.length && !hasMeta) allEntries.push("{@i No information available.}");
+		if (!allEntries.length && !it.typicalSpeakers) allEntries.push("{@i No information available.}");
+		renderer.recursiveRender(allEntries, textStack, {depth: 2}, {pf2StatFix: true})
 
 		return `
-		${Renderer.utils.getExcludedTr(it, "language", UrlUtil.PG_LANGUAGES)}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_LANGUAGES})}
-		${it.type ? `<tr class="text"><td colspan="6" class="pt-0"><i>${it.type.toTitleCase()} language</i></td></tr>` : ""}
-		${hasMeta ? `<tr class="text"><td colspan="6">
-		${it.typicalSpeakers ? `<div><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b>` : ""}
-		${it.script ? `<div><b>Script</b> ${Renderer.get().render(it.script)}</div>` : ""}
-		<div></div>
-		</td></tr>` : ""}
-		${allEntries.length ? `<tr class="text"><td colspan="6">
-		${Renderer.get().setFirstSection(true).render({entries: allEntries})}
-		</td></tr>` : ""}
-		${Renderer.utils.getPageTr(it)}`;
+		${Renderer.utils.getExcludedDiv(it, "language", UrlUtil.PG_LANGUAGES)}
+		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_LANGUAGES, type: `${it.type ? `${it.type} ` : ""}language`})}
+		${Renderer.utils.getDividerDiv()}
+		${it.typicalSpeakers ? `<p class="pf2-stat__section"><b>Typical Speakers</b> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</b></p>` : ""}
+		${allEntries.length ? `${Renderer.get().setFirstSection(true).render(allEntries)}` : ""}
+		${Renderer.utils.getPageP(it)}`;
 	},
 
 	pGetFluff (it) {
@@ -7132,26 +6793,6 @@ Renderer.adventureBook = {
 	},
 };
 
-Renderer.charoption = {
-	getCompactRenderedString (it) {
-		return `
-		${Renderer.utils.getExcludedTr(it, "charoption", UrlUtil.PG_CHAR_CREATION_OPTIONS)}
-		${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_CHAR_CREATION_OPTIONS})}
-		<tr class="text"><td colspan="6">
-		${Renderer.get().setFirstSection(true).render({type: "entries", entries: it.entries})}
-		</td></tr>
-		`;
-	},
-
-	pGetFluff (it) {
-		return Renderer.utils.pGetFluff({
-			entity: it,
-			fluffUrl: "data/fluff-charcreationoptions.json",
-			fluffProp: "charoptionFluff",
-		});
-	},
-};
-
 Renderer.generic = {
 	getCompactRenderedString (it) {
 		return `
@@ -7167,22 +6808,17 @@ Renderer.hover = {
 		"item": UrlUtil.PG_ITEMS,
 		"creature": UrlUtil.PG_BESTIARY,
 		"condition": UrlUtil.PG_CONDITIONS,
-		"disease": UrlUtil.PG_CONDITIONS,
+		"disease": UrlUtil.PG_AFFLICTIONS,
+		"curse": UrlUtil.PG_AFFLICTIONS,
+		"itemcurse": UrlUtil.PG_AFFLICTIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
 		"race": UrlUtil.PG_ANCESTRIES,
 		"optfeature": UrlUtil.PG_COMPANIONS_FAMILIARS,
-		"reward": UrlUtil.PG_REWARDS,
 		"feat": UrlUtil.PG_FEATS,
-		"object": UrlUtil.PG_OBJECTS,
-		"cult": UrlUtil.PG_CULTS_BOONS,
-		"boon": UrlUtil.PG_CULTS_BOONS,
 		"trap": UrlUtil.PG_HAZARDS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
-		"charoption": UrlUtil.PG_CHAR_CREATION_OPTIONS,
-		"vehicle": UrlUtil.PG_VEHICLES,
-		"vehupgrade": UrlUtil.PG_VEHICLES,
 	},
 
 	LinkMeta: function () {
@@ -8190,8 +7826,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
-			case UrlUtil.PG_REWARDS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rewards.json", "reward");
 			case UrlUtil.PG_ANCESTRIES: {
 				const loadKey = UrlUtil.PG_ANCESTRIES;
 
@@ -8227,26 +7861,22 @@ Renderer.hover = {
 			}
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
-			case UrlUtil.PG_OBJECTS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "objects.json", "object");
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "hazards.json", ["hazard"]);
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "variantrules.json", "variantrule");
-			case UrlUtil.PG_CULTS_BOONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "cultsboons.json", ["cult", "boon"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_CONDITIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition", "disease", "status"], (listProp, item) => item.__prop = listProp);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "conditions.json", ["condition"], (listProp, item) => item.__prop = listProp);
+			case UrlUtil.PG_AFFLICTIONS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "afflictions.json", ["disease", "curse", "itemcurse"], (listProp, item) => item.__prop = listProp);
 			case UrlUtil.PG_TABLES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "generated/gendata-tables.json", ["table", "tableGroup"], (listProp, item) => item.__prop = listProp);
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "vehicles.json", ["vehicle", "vehicleUpgrade"]);
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "actions.json", "action");
+			case UrlUtil.PG_ABILITIES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "abilities.json", "ability");
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "charcreationoptions.json", "charoption");
 			case UrlUtil.PG_TRAITS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "traits.json", "trait");
 			// region adventure/books/references
@@ -8341,17 +7971,11 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-items.json", "itemFluff");
-			case `fluff__${UrlUtil.PG_CONDITIONS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
 			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
 			case `fluff__${UrlUtil.PG_LANGUAGES}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
-			case `fluff__${UrlUtil.PG_VEHICLES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-vehicles.json", "vehicleFluff");
-			case `fluff__${UrlUtil.PG_CHAR_CREATION_OPTIONS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-charcreationoptions.json", "charoptionFluff");
 				// endregion
 
 			// region props
@@ -8364,10 +7988,6 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
 			case "raw_subclassfeature":
 				return Renderer.hover._pCacheAndGet_pLoadSubclassFeatures(page, source, hash, opts);
-
-			case "legendarygroup":
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "bestiary/legendarygroups.json", "legendaryGroup");
-				// endregion
 
 			default:
 				throw new Error(`No load function defined for page ${page}`);
@@ -8811,36 +8431,30 @@ Renderer.hover = {
 				});
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.condition.getCompactRenderedString;
+			case UrlUtil.PG_AFFLICTIONS:
+				return Renderer.affliction.getCompactRenderedString;
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.background.getCompactRenderedString;
 			case UrlUtil.PG_FEATS:
 				return Renderer.feat.getCompactRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.optionalfeature.getCompactRenderedString;
-			case UrlUtil.PG_REWARDS:
-				return Renderer.reward.getCompactRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
 				return Renderer.deity.getCompactRenderedString;
-			case UrlUtil.PG_OBJECTS:
-				return Renderer.object.getCompactRenderedString;
 			case UrlUtil.PG_HAZARDS:
 				return Renderer.hazard.getCompactRenderedString;
 			case UrlUtil.PG_VARIANTRULES:
 				return Renderer.variantrule.getCompactRenderedString;
-			case UrlUtil.PG_CULTS_BOONS:
-				return Renderer.cultboon.getCompactRenderedString;
 			case UrlUtil.PG_TABLES:
 				return Renderer.table.getCompactRenderedString;
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.vehicle.getCompactRenderedString;
 			case UrlUtil.PG_ACTIONS:
 				return Renderer.action.getCompactRenderedString;
+			case UrlUtil.PG_ABILITIES:
+				return Renderer.ability.getCompactRenderedString;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.getCompactRenderedString;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.charoption.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
 			// region props
@@ -8862,8 +8476,6 @@ Renderer.hover = {
 				return Renderer.creature.pGetFluff;
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.pGetFluff;
-			case UrlUtil.PG_CONDITIONS:
-				return Renderer.condition.pGetFluff;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.pGetFluff;
 			case UrlUtil.PG_ANCESTRIES:
@@ -8872,10 +8484,6 @@ Renderer.hover = {
 				return Renderer.background.pGetFluff;
 			case UrlUtil.PG_LANGUAGES:
 				return Renderer.language.pGetFluff;
-			case UrlUtil.PG_VEHICLES:
-				return Renderer.vehicle.pGetFluff;
-			case UrlUtil.PG_CHAR_CREATION_OPTIONS:
-				return Renderer.charoption.pGetFluff;
 			default:
 				return null;
 		}
@@ -9169,25 +8777,19 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@action":
+					case "@ability":
 					case "@background":
-					case "@boon":
-					case "@charoption":
 					case "@class":
 					case "@condition":
 					case "@creature":
-					case "@cult":
 					case "@disease":
 					case "@feat":
 					case "@hazard":
 					case "@item":
 					case "@language":
 					case "@object":
-					case "@optfeature":
-					case "@psionic":
 					case "@ancestry":
 					case "@reward":
-					case "@vehicle":
-					case "@vehupgrade":
 					case "@spell":
 					case "@status":
 					case "@table":

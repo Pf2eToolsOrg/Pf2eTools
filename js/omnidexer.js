@@ -525,8 +525,8 @@ class IndexableFileConditions extends IndexableFile {
 class IndexableFileDiseases extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_DISEASE,
-			file: "conditions.json",
+			category: Parser.CAT_ID_AFFLICTION,
+			file: "afflictions.json",
 			listProp: "disease",
 			baseUrl: "conditions.html",
 			isHover: true,
@@ -581,18 +581,6 @@ class IndexableFileAncestries extends IndexableFile {
 		})));
 
 		return out;
-	}
-}
-
-class IndexableFileRewards extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_OTHER_REWARD,
-			file: "rewards.json",
-			listProp: "reward",
-			baseUrl: "rewards.html",
-			isHover: true,
-		});
 	}
 }
 
@@ -730,61 +718,13 @@ class IndexableFileDeities extends IndexableFile {
 	}
 }
 
-class IndexableFileObjects extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_OBJECT,
-			file: "objects.json",
-			listProp: "object",
-			baseUrl: "objects.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileTraps extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_TRAP,
-			file: "trapshazards.json",
-			listProp: "trap",
-			baseUrl: "hazards.html",
-			isHover: true,
-		});
-	}
-}
-
 class IndexableFileHazards extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_HAZARD,
-			file: "trapshazards.json",
+			file: "hazards.json",
 			listProp: "hazard",
 			baseUrl: "hazards.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileCults extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_CULT,
-			file: "cultsboons.json",
-			listProp: "cult",
-			baseUrl: "cultsboons.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileBoons extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_BOON,
-			file: "cultsboons.json",
-			listProp: "boon",
-			baseUrl: "cultsboons.html",
 			isHover: true,
 		});
 	}
@@ -810,44 +750,6 @@ class IndexableFileTableGroups extends IndexableFile {
 			listProp: "tableGroup",
 			baseUrl: "tables.html",
 			isHover: true,
-		});
-	}
-}
-
-class IndexableFileVehicles extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_VEHICLE,
-			file: "vehicles.json",
-			listProp: "vehicle",
-			baseUrl: "vehicles.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileVehicles_ShipUpgrade extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_SHIP_UPGRADE,
-			file: "vehicles.json",
-			listProp: "vehicleUpgrade",
-			baseUrl: "vehicles.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:H") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:M") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:W") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "SHP:F"),
-		});
-	}
-}
-
-class IndexableFileVehicles_InfernalWarMachineUpgrade extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE,
-			file: "vehicles.json",
-			listProp: "vehicleUpgrade",
-			baseUrl: "vehicles.html",
-			isHover: true,
-			include: (it) => Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:W") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:A") || Omnidexer.arrIncludesOrEquals(it.upgradeType, "IWM:G"),
 		});
 	}
 }

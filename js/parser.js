@@ -1473,42 +1473,20 @@ Parser.CAT_ID_ITEM = 4;
 Parser.CAT_ID_CLASS = 5;
 Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
-Parser.CAT_ID_ELDRITCH_INVOCATION = 8;
-Parser.CAT_ID_PSIONIC = 9;
 Parser.CAT_ID_ANCESTRY = 10;
-Parser.CAT_ID_OTHER_REWARD = 11;
 Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
-Parser.CAT_ID_OBJECT = 15;
-Parser.CAT_ID_TRAP = 16;
 Parser.CAT_ID_HAZARD = 17;
 Parser.CAT_ID_QUICKREF = 18;
-Parser.CAT_ID_CULT = 19;
-Parser.CAT_ID_BOON = 20;
-Parser.CAT_ID_DISEASE = 21;
-Parser.CAT_ID_METAMAGIC = 22;
-Parser.CAT_ID_MANEUVER_BATTLEMASTER = 23;
+Parser.CAT_ID_AFFLICTION = 21;
 Parser.CAT_ID_TABLE = 24;
 Parser.CAT_ID_TABLE_GROUP = 25;
-Parser.CAT_ID_MANEUVER_CAVALIER = 26;
-Parser.CAT_ID_ARCANE_SHOT = 27;
-Parser.CAT_ID_OPTIONAL_FEATURE_OTHER = 28;
-Parser.CAT_ID_FIGHTING_STYLE = 29;
 Parser.CAT_ID_CLASS_FEATURE = 30;
-Parser.CAT_ID_VEHICLE = 31;
-Parser.CAT_ID_PACT_BOON = 32;
-Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
-Parser.CAT_ID_ARTIFICER_INFUSION = 34;
-Parser.CAT_ID_SHIP_UPGRADE = 35;
-Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
-Parser.CAT_ID_ONOMANCY_RESONANT = 37;
-Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
-Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
-Parser.CAT_ID_MANEUVER = 39;
 Parser.CAT_ID_SUBCLASS = 40;
 Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 Parser.CAT_ID_ACTION = 42;
+Parser.CAT_ID_ABILITY = 48;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
@@ -1523,43 +1501,21 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] = "Eldritch Invocation";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] = "Psionic";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OBJECT] = "Object";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAP] = "Trap";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CULT] = "Cult";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOON] = "Boon";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_METAMAGIC] = "Metamagic";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "Maneuver; Battlemaster";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_AFFLICTION] = "Affliction";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE] = "Table";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE_GROUP] = "Table";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_CAVALIER] = "Maneuver; Cavalier";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCANE_SHOT] = "Arcane Shot";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "Optional Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FIGHTING_STYLE] = "Fighting Style";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER] = "Maneuver";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
@@ -1577,43 +1533,20 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PSIONIC] = "psionic";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OTHER_REWARD] = "reward";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OBJECT] = "object";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAP] = "trap";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CULT] = "cult";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOON] = "boon";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "condition";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_AFFLICTION] = "affliction";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE_GROUP] = "tableGroup";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELDRITCH_INVOCATION] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_CAVALIER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCANE_SHOT] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FIGHTING_STYLE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_METAMAGIC] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "classFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
@@ -1799,7 +1732,6 @@ SKL_ABV_DIV = "D";
 SKL_ABV_NEC = "N";
 SKL_ABV_TRA = "T";
 SKL_ABV_CON = "C";
-SKL_ABV_PSI = "P";
 Parser.SKL_ABVS = [
 	SKL_ABV_ABJ,
 	SKL_ABV_EVO,
@@ -1809,7 +1741,6 @@ Parser.SKL_ABVS = [
 	SKL_ABV_NEC,
 	SKL_ABV_TRA,
 	SKL_ABV_CON,
-	SKL_ABV_PSI,
 ];
 
 Parser.TM_A = "single";
@@ -1991,7 +1922,9 @@ Parser.vehicleTypeToFull = function (vehicleType) {
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
+SRC_GMG = "GMG";
 SRC_LOCG = "LOCG"
+SRC_LOGM = "LOGM"
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -2002,19 +1935,25 @@ Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
+Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2019-01-29";
 
 Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -2024,7 +1963,9 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_CRB,
 	SRC_APG,
 	SRC_BST,
+	SRC_GMG,
 	SRC_LOCG,
+	SRC_LOGM,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
@@ -2041,21 +1982,19 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"class": SRC_CRB,
 	"creature": SRC_BST,
 	"condition": SRC_CRB,
-	"disease": SRC_CRB,
+	"disease": SRC_GMG,
+	"curse": SRC_GMG,
+	"itemcurse": SRC_GMG,
 	"background": SRC_CRB,
-	"race": SRC_CRB,
-	"optfeature": SRC_CRB,
-	"reward": SRC_CRB,
+	"ancestry": SRC_CRB,
+	"archetype": SRC_CRB,
 	"feat": SRC_CRB,
-	"object": SRC_CRB,
-	"cult": SRC_CRB,
-	"boon": SRC_CRB,
 	"trap": SRC_CRB,
 	"hazard": SRC_CRB,
 	"deity": SRC_CRB,
 	"variantrule": SRC_CRB,
-	"vehicle": SRC_CRB,
 	"action": SRC_CRB,
+	"ability": SRC_BST,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,

@@ -25,13 +25,13 @@ class DeitiesPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(g.source);
 		const hash = UrlUtil.autoEncodeHash(g);
 		const alignment = g.alignment ? g.alignment.join("") : "\u2014";
-		const domains = g.domains.join(", ");
+		const domains = g._fDomains.join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3 pl-0">${g.name}</span>
 			<span class="col-2 text-center">${g.pantheon}</span>
 			<span class="col-2 text-center">${alignment}</span>
-			<span class="col-3 ${g.domains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
+			<span class="col-3 ${g._fDomains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
 		</a>`;
 
@@ -69,14 +69,12 @@ class DeitiesPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(g);
 
 		const alignment = g.alignment ? g.alignment.join("") : "\u2014";
-		const domains = g.domains.join(", ");
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-4 pl-0">${g.name}</span>
-				<span class="col-2">${g.pantheon}</span>
-				<span class="col-2">${alignment}</span>
-				<span class="col-4 ${g.domains[0] === VeCt.STR_NONE ? `list-entry-none` : ""} pr-0">${domains}</span>
+				<span class="bold col-5-2 pl-0">${g.name}</span>
+				<span class="col-3-4 text-center">${g.pantheon}</span>
+				<span class="col-3-4 text-center pr-0">${alignment}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -89,7 +87,6 @@ class DeitiesPage extends ListPage {
 				hash,
 				pantheon: g.pantheon,
 				alignment,
-				domains,
 			},
 		);
 		return listItem;
@@ -97,9 +94,7 @@ class DeitiesPage extends ListPage {
 
 	doLoadHash (id) {
 		const deity = this._dataList[id];
-
-		$(`#pagecontent`).empty().append(RenderDeities.$getRenderedDeity(deity));
-
+		renderStatblock(deity);
 		ListUtil.updateSelected();
 	}
 
@@ -107,6 +102,39 @@ class DeitiesPage extends ListPage {
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 	}
+}
+
+function renderStatblock (deity) {
+	const $content = $("#pagecontent").empty()
+
+	function buildStatsTab () {
+		$content.append(RenderDeities.$getRenderedDeity(deity));
+	}
+	function buildLoreTab () {
+		$content.append(Renderer.deity.getRenderedLore(deity))
+	}
+	function buildIntercessionTab () {
+		$content.append(Renderer.deity.getIntercession(deity))
+	}
+	const statTab = Renderer.utils.tabButton(
+		"Statblock",
+		() => {},
+		buildStatsTab,
+	);
+	const intercessionTab = Renderer.utils.tabButton(
+		"Intercession",
+		() => {},
+		buildIntercessionTab,
+	);
+	const loreTab = Renderer.utils.tabButton(
+		"Lore",
+		() => {},
+		buildLoreTab,
+	);
+	const tabs = [statTab]
+	if (deity.intercession) tabs.push(intercessionTab);
+	if (deity.lore) tabs.push(loreTab);
+	Renderer.utils.bindTabButtons(...tabs);
 }
 
 const deitiesPage = new DeitiesPage();

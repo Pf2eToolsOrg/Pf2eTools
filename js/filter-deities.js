@@ -18,38 +18,8 @@ class PageFilterDeities extends PageFilter {
 		this._pantheonFilter = new Filter({
 			header: "Pantheon",
 			items: [
-				"Celtic",
-				"Dawn War",
-				"Dragonlance",
-				"Drow",
-				"Dwarven",
-				"Eberron",
-				"Egyptian",
-				"Elven",
-				"Faerûnian",
-				"Forgotten Realms",
-				"Gnomish",
-				"Greek",
-				"Greyhawk",
-				"Halfling",
-				"Nonhuman",
-				"Norse",
-				"Orc",
-				"Theros",
+				"Golarion",
 			],
-		});
-		this._categoryFilter = new Filter({
-			header: "Category",
-			items: [
-				VeCt.STR_NONE,
-				"Other Faiths of Eberron",
-				"The Dark Six",
-				"The Gods of Evil",
-				"The Gods of Good",
-				"The Gods of Neutrality",
-				"The Sovereign Host",
-			],
-			itemSortFn: null,
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
@@ -57,9 +27,14 @@ class PageFilterDeities extends PageFilter {
 			displayFn: Parser.alignmentAbvToFull,
 			itemSortFn: null,
 		});
-		this._domainFilter = new Filter({
-			header: "Domain",
-			items: ["Arcana", "Death", "Forge", "Grave", "Knowledge", "Life", "Light", "Nature", VeCt.STR_NONE, "Order", "Tempest", "Trickery", "War"],
+		this._fontFilter = new Filter({header: "Divine Font", displayFn: StrUtil.toTitleCase});
+		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
+		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
+		this._domainFilter = new Filter({header: "Domain", displayFn: StrUtil.toTitleCase});
+		this._spellFilter = new Filter({header: "Cleric Spells", displayFn: StrUtil.toTitleCase});
+		this._benefitsFilter = new MultiFilter({
+			header: "Devotee Benefits",
+			filters: [this._fontFilter, this._skillFilter, this._weaponFilter, this._domainFilter, this._spellFilter],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -72,22 +47,33 @@ class PageFilterDeities extends PageFilter {
 
 	mutateForFilters (g) {
 		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
-		if (!g.category) g.category = VeCt.STR_NONE;
-		if (!g.domains) g.domains = [VeCt.STR_NONE];
-		g.domains.sort(SortUtil.ascSort);
+		if (g.devoteeBenefits) {
+			g._fFont = g.devoteeBenefits.font;
+			g._fSkill = g.devoteeBenefits.skill;
+			g._fWeapon = g.devoteeBenefits.weapon.split("|")[0];
+			g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
+			g._fSpells = Object.keys(g.devoteeBenefits.spells).map(k => g.devoteeBenefits.spells[k]).flat().map(s => s.split("|")[0]) || [];
+		} else {
+			g._fDomains = [VeCt.STR_NONE];
+		}
+		g._fDomains.sort(SortUtil.ascSort);
 
 		g._fMisc = g.reprinted ? [PageFilterDeities._STR_REPRINTED] : [];
 		if (g.srd) g._fMisc.push("SRD");
-		if (g.entries || g.symbolImg) g._fMisc.push("Has Info");
+		if (g.lore || g.symbolImg) g._fMisc.push("Has Lore");
+		if (g.intercession) g._fMisc.push("Has Divine Intercession")
 	}
 
 	addToFilters (g, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(g.source);
-		this._domainFilter.addItem(g.domains);
+		if (g._fFont) this._fontFilter.addItem(g._fFont);
+		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
+		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
+		this._domainFilter.addItem(g._fDomains);
+		this._spellFilter.addItem(g._fSpells);
 		this._pantheonFilter.addItem(g.pantheon);
-		this._categoryFilter.addItem(g.category);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -95,8 +81,7 @@ class PageFilterDeities extends PageFilter {
 			this._sourceFilter,
 			this._alignmentFilter,
 			this._pantheonFilter,
-			this._categoryFilter,
-			this._domainFilter,
+			this._benefitsFilter,
 			this._miscFilter,
 		];
 	}
@@ -107,8 +92,13 @@ class PageFilterDeities extends PageFilter {
 			g.source,
 			g._fAlign,
 			g.pantheon,
-			g.category,
-			g.domains,
+			[
+				g._fFont,
+				g._fSkill,
+				g._fWeapon,
+				g._fDomains,
+				g._fSpells,
+			],
 			g._fMisc,
 		)
 	}
