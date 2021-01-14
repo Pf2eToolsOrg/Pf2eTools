@@ -4116,7 +4116,7 @@ Renderer.spell = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const level = spell.type === "CANTRIP" ? 1 : spell.level
+		const level = spell.type === "CANTRIP" ? " 1" : ` ${spell.level}`;
 
 		renderStack.push(`
 		${Renderer.utils.getExcludedDiv(spell, "spell", UrlUtil.PG_SPELLS)}
@@ -6572,6 +6572,33 @@ Renderer.item = {
 			fluffProp: "itemFluff",
 			fluffUrl: `data/fluff-items.json`,
 		});
+	},
+};
+
+Renderer.runeItem = {
+	getTag (baseItem, runes) {
+		return [baseItem].map(it => [it.name, it.source]).concat(runes.map(it => [it.name, it.source])).flat().join("|")
+	},
+
+	getHashesFromTag (tag) {
+		const split = tag.split("|");
+		if (split.length % 2) {
+			split.pop();
+		}
+		const out = [];
+		while (split.length) { out.push(split.splice(0, 2)) }
+		return out.map(it => UrlUtil.encodeForHash(it));
+	},
+
+	getRuneItem (baseItem, runes) {
+		let runeItem = MiscUtil.copy(baseItem);
+		runeItem.name = [...runes.map(r => RuneBuilder.getRuneShortName(r)), runeItem.name].join(" ");
+		runeItem.type = "item";
+		runeItem.category = "Rune Item";
+		runeItem.level = Math.max(...runes.map(r => r.level));
+		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();
+		runeItem.runeItem = true;
+		return runeItem;
 	},
 };
 

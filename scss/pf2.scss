@@ -974,3 +974,45 @@
 		}
 	}
 }
+
+.rigen__ {
+	&visible {
+		display: none;
+	}
+
+	&btn_list {
+		padding: 0 1px;
+		line-height: 12px;
+		font-size: 9px;
+		border-radius: 3px;
+	}
+}
+
+.rigen_active {
+	.rigen {
+		&__visible {
+			display: block;
+		}
+
+		&__visible--flex {
+			display: flex;
+		}
+
+		&__visible--flex-col {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__hidden {
+			display: none !important;
+		}
+
+		&__name {
+			width: 26.66666666%;
+		}
+
+		&__name--sub {
+			width: 29.16666667%;
+		}
+	}
+}

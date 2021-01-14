@@ -16,12 +16,15 @@ class ItemsPage {
 
 		this._itemList = [];
 		this._itI = 0;
+		this._itemId = 0;
+		this._runeItems = [];
 
 		this._subList = null;
 	}
 
 	getListItem (item, itI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(item);
+		let listItem;
 
 		if (ExcludeUtil.isExcluded(hash, "item", item.source)) return null;
 		if (item.noDisplay) return null;
@@ -31,12 +34,14 @@ class ItemsPage {
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
+		eleLi.addEventListener("click", (evt) => handleItemsLiClick(evt, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => handleItemsLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(item.source);
 		const level = item.level != null ? item.level : "\u2014"
 
 		if (item._fIsEquipment) {
-			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
+			eleLi.innerHTML = `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
 				<span class="col-4 pl-0 bold">${item.name}</span>
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
@@ -45,7 +50,7 @@ class ItemsPage {
 				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
-			const listItem = new ListItem(
+			listItem = new ListItem(
 				itI,
 				eleLi,
 				item.name,
@@ -66,7 +71,8 @@ class ItemsPage {
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
 			return {mundane: listItem};
 		} else {
-			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
+			eleLi.innerHTML += `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
+				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
 				<span class="col-4 pl-0 bold">${item.name}</span>
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
@@ -75,7 +81,7 @@ class ItemsPage {
 				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
-			const listItem = new ListItem(
+			listItem = new ListItem(
 				itI,
 				eleLi,
 				item.name,
@@ -144,6 +150,11 @@ class ItemsPage {
 		Renderer.get().setFirstSection(true);
 		const $content = $(`#pagecontent`).empty();
 		const item = this._itemList[id];
+		this._itemId = id;
+
+		if (!runeBuilder.isActive() && ((item.type === "Equipment" && RuneBuilder.CATEGORIES_WITH_RUNES.includes(item.category)) || item.runeItem)) {
+			$(`#btn-runebuild`).toggleClass("hidden", false);
+		} else $(`#btn-runebuild`).toggleClass("hidden", true);
 
 		function buildStatsTab () {
 			$content.append(RenderItems.$getRenderedItem(item));
@@ -178,6 +189,8 @@ class ItemsPage {
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
+
+		runeBuilder.handleSubhash(sub);
 	}
 
 	onSublistChange () {
@@ -270,6 +283,10 @@ class ItemsPage {
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
 		});
+
+		runeBuilder = new RuneBuilder();
+		runeBuilder.initUi();
+		runeBuilder.initState();
 
 		return this._pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 	}
@@ -394,6 +411,8 @@ class ItemsPage {
 
 				window.dispatchEvent(new Event("toolsLoaded"));
 			});
+
+		await runeBuilder.addItemsFromSave();
 	}
 
 	async _pHandleBrew (homebrew) {
@@ -441,5 +460,25 @@ class ItemsPage {
 	}
 }
 
+let runeBuilder;
+
+function handleItemsLiClick (evt, listItem) {
+	if (runeBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, itemsPage._itemList, listItem.ix);
+}
+
+function handleItemsLiContext (evt, listItem) {
+	if (!runeBuilder.isActive()) ListUtil.openContextMenu(evt, itemsPage._itemList, listItem);
+	else RuneListUtil.openContextMenu(evt, listItem);
+}
+
+function handleItemsLinkClick (evt) {
+	if (runeBuilder.isActive()) evt.preventDefault();
+}
+
 const itemsPage = new ItemsPage();
 window.addEventListener("load", () => itemsPage.pOnLoad());
+window.addEventListener("beforeunload", () => {
+	if (runeBuilder.isActive() && runeBuilder._cachedFilterState) {
+		StorageUtil.pSetForPage(itemsPage._pageFilter._filterBox._getNamespacedStorageKey(), runeBuilder._cachedFilterState);
+	}
+});

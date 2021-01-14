@@ -38,6 +38,7 @@ VeCt = {
 	STORAGE_DMSCREEN_TEMP_SUBLIST: "DMSCREEN_TEMP_SUBLIST",
 	STORAGE_ROLLER_MACRO: "ROLLER_MACRO_STORAGE",
 	STORAGE_ENCOUNTER: "ENCOUNTER_STORAGE",
+	STORAGE_RUNEITEM: "RUNEITEM_STORAGE",
 	STORAGE_POINTBUY: "POINTBUY_STORAGE",
 
 	DUR_INLINE_NOTIFY: 500,
@@ -5710,6 +5711,58 @@ EncounterUtil = {
 };
 EncounterUtil.SUB_HASH_PREFIX = "encounter";
 EncounterUtil.SAVED_ENCOUNTER_SAVE_LOCATION = "ENCOUNTER_SAVED_STORAGE";
+
+// RUNEITEMS ===========================================================================================================
+RuneItemUtil = {
+
+	_hasSavedStateUrl () {
+		return window.location.hash.length && Hist.getSubHash(RuneItemUtil.SUB_HASH_PREFIX) != null;
+	},
+
+	_getSavedStateUrl () {
+		let out = null;
+		try {
+			out = JSON.parse(decodeURIComponent(Hist.getSubHash(RuneItemUtil.SUB_HASH_PREFIX)));
+		} catch (e) {
+			setTimeout(() => {
+				throw e;
+			});
+		}
+		Hist.setSubhash(RuneItemUtil.SUB_HASH_PREFIX, null);
+		return out;
+	},
+
+	async _pHasSavedStateLocal () {
+		return !!StorageUtil.pGet(VeCt.STORAGE_RUNEITEM);
+	},
+
+	async _pGetSavedStateLocal () {
+		try {
+			return await StorageUtil.pGet(VeCt.STORAGE_RUNEITEM);
+		} catch (e) {
+			JqueryUtil.doToast({
+				content: "Error when loading runeitems! Purged runeitems data. (See the log for more information.)",
+				type: "danger",
+			});
+			await StorageUtil.pRemove(VeCt.STORAGE_RUNEITEM);
+			setTimeout(() => {
+				throw e;
+			});
+		}
+	},
+
+	async pDoSaveState (toSave) {
+		StorageUtil.pSet(VeCt.STORAGE_RUNEITEM, toSave);
+	},
+
+	async pGetSavedState () {
+		const saved = await StorageUtil.pGet(RuneItemUtil.SAVED_RUNEITEM_SAVE_LOCATION);
+		return saved || {};
+	},
+
+};
+RuneItemUtil.SUB_HASH_PREFIX = "runeitem";
+RuneItemUtil.SAVED_RUNEITEM_SAVE_LOCATION = "RUNEITEM_SAVED_STORAGE";
 
 // EXTENSIONS ==========================================================================================================
 ExtensionUtil = {

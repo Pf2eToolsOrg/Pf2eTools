@@ -3758,6 +3758,11 @@ ul.list.books > li > a > span.name:hover {
  * Print styles
  ***************************************/
 
+/* Hopefully fixes annoying clipping on iPhones */
+.mh-100 {
+	min-height: 100px;
+}
+
 @media print {
 	@page {
 		margin: 10mm 15mm;
