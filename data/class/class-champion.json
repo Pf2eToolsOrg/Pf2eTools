@@ -3,36 +3,43 @@
 		{
 			"name": "Champion",
 			"source": "CRB",
-			"page": 71,
-			"HP": 8,
-			"keyAbility": "Intelligence",
+			"page": 105,
+			"HP": 10,
+			"keyAbility": "Strength or Dexterity",
 			"initialProficiencies": {
 				"perception": "T",
 				"fort": "E",
-				"ref": "E",
-				"will": "T",
+				"ref": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"Religion",
+						"one skill determined by your choice of deity"
 					],
-					"add": 3
+					"add": 2
 				},
 				"attacks": {
 					"t": [
 						"simple weapons",
-						"alchemical bombs",
+						"martial weapons",
 						"unarmed attacks"
 					]
 				},
 				"defenses": {
 					"t": [
-						"light armor",
+						"all armor",
 						"unarmored defense"
 					]
 				},
 				"classDc": {
 					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+					"entry": "Trained in champion class DC"
+				},
+				"spells": {
+					"T": [
+						"divine spell attacks",
+						"divine spell DCs"
+					]
 				}
 			},
 			"advancement": {
@@ -93,87 +100,72 @@
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
-				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
-					"gainSubclassFeature": true
-				},
-				"Book|Alchemist|CRB|2"
+				""
 			],
 			"subclasses": [
-				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
-					"source": "CRB",
-					"page": 73,
-					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
-					]
-				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"You are an emissary of a deity, a devoted servant who has taken up a weighty mantle, and you adhere to a code that holds you apart from those around you. While champions exist for every alignment, as a champion of good, you provide certainty and hope to the innocent. You have powerful defenses that you share freely with your allies and innocent bystanders, as well as holy power you use to end the threat of evil. Your devotion even attracts the attention of holy spirits who aid you on your journey."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
+					"page": 105,
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"You confront enemies in hand-to-hand combat while carefully positioning yourself to protect your allies."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 105,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"You are a voice of hope, striving to reach a peaceful solution that strengthens bonds and yields good results for all."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 105,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You overcome barriers both physical and spiritual, providing inspiration to your allies through your actions and—when your fellow adventurers ask for it—providing moral and ethical guidance."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 105,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You spend much of your time in solemn prayer and contemplation, rigorous training, charity work, and fulfilling the tenets of your code, but that doesn’t mean there isn’t time to take up a craft or hobby"
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 105,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Believe there is always hope that good will triumph over evil, no matter how grim the odds.",
+								"Know the ends don’t justify the means, since evil acts increase the power of evil.",
+								"Have a strong sense of right and wrong, and grow frustrated when greed or shortsightedness breeds evil."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 105,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"See you as a symbol of hope, especially in a time of great need.",
+								"Worry you secretly despise them for not living up to your impossible standard, or that you are unwilling to compromise when necessary.",
+								"Know that you’ve sworn divine oaths of service they can trust you to keep."
 							]
 						}
 					]
