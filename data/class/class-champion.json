@@ -107,7 +107,28 @@
 					"classFeature": "Deity and Cause|Champion|CRB|1",
 					"gainSubclassFeature": true
 				},
-				"Deific Weapon|Champion|CRB|1"
+				"Deific Weapon|Champion|CRB|1",
+				{
+					"classFeature": "Champion's Reaction|Champion|CRB|1",
+					"gainSubclassFeature": true
+				},
+				"Devotion Spells|Champion|CRB|1",
+				"Champion Feats|Champion|CRB|1",
+				"Shield Block|Champion|CRB|1",
+				"Skill Feats|Champion|CRB|2",
+				"Divine Ally|Champion|CRB|3",
+				"General Feats|Champion|CRB|3",
+				"Skill Increases|Champion|CRB|3",
+				"Ability Boosts|Champion|CRB|5",
+				"Ancestry Feats|Champion|CRB|5",
+				"Weapon Expertise|Champion|CRB|5",
+				"Armor Expertise|Champion|CRB|7",
+				"Weapon Specialization|Champion|CRB|7",
+				"Champion Expertise|Champion|CRB|9",
+				{
+					"classFeature": "Divine Smite|Champion|CRB|9",
+					"gainSubclassFeature": true
+				}
 			],
 			"subclasses": [
 				{
@@ -117,7 +138,8 @@
 					"source": "CRB",
 					"page": 106,
 					"subclassFeatures": [
-						"Paladin (Lawful Good)|Champion|CRB|Paladin|CRB|1"
+						"Paladin (Lawful Good)|Champion|CRB|Paladin|CRB|1",
+						"Retributive Strike|Champion|CRB|Paladin|CRB|1"
 					]
 				},
 				{
@@ -127,7 +149,8 @@
 					"source": "CRB",
 					"page": 106,
 					"subclassFeatures": [
-						"Redeemer (Neutral Good)|Champion|CRB|Redeemer|CRB|1"
+						"Redeemer (Neutral Good)|Champion|CRB|Redeemer|CRB|1",
+						"Glimpse of Redemption|Champion|CRB|Redeemer|CRB|1"
 					]
 				},
 				{
@@ -137,7 +160,8 @@
 					"source": "CRB",
 					"page": 106,
 					"subclassFeatures": [
-						"Liberator (Chaotic Good)|Champion|CRB|Liberator|CRB|1"
+						"Liberator (Chaotic Good)|Champion|CRB|Liberator|CRB|1",
+						"Liberating Step|Champion|CRB|Liberator|CRB|1"
 					]
 				}
 			],
@@ -276,12 +300,214 @@
 		{
 			"name": "Deific Weapon",
 			"source": "CRB",
-			"page": 106,
+			"page": 107,
 			"className": "Champion",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
 				"You zealously bear your deity’s favored weapon. If it’s uncommon, you gain access to it. If it’s a simple weapon, increase the damage die by one step (d4 to d6, d6 to d8, d8 to d10, d10 to d12)."
+			]
+		},
+		{
+			"name": "Champion's Reaction",
+			"source": "CRB",
+			"subclasses": "Champion's Reaction",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Your cause gives you a special reaction: Retributive Strike for paladin, Glimpse of Redemption for redeemer, or Liberating Step for liberator."
+			]
+		},
+		{
+			"name": "Devotion Spells",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Your deity’s power grants you special divine spells called devotion spells, which are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you regain 1 Focus Point by spending 10 minutes using the Refocus activity to pray to your deity or do service toward their causes.",
+				"Focus spells are automatically heightened to half your level rounded up. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules are on page 300. You gain a devotion spell depending on your cause, and you are trained in divine spell attack rolls and spell DCs. Your spellcasting ability is Charisma."
+			]
+		},
+		{
+			"name": "Champion Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"At 1st level and every even-numbered level thereafter, you gain a champion class feat. Champion class feats are presented beginning on page 109."
+			]
+		},
+		{
+			"name": "Shield Block",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You gain the {@feat Shield Block|CRB} general feat, a reaction that lets you reduce damage with your shield."
+			]
+		},
+		{
+			"name": "Skill Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 2,
+			"entries": [
+				"At 2nd level and every 2 levels thereafter, you gain a skill feat. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+			]
+		},
+		{
+			"name": "Divine Ally",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"Your devotion attracts a spirit of your deity’s alignment.",
+				"Once you choose an ally, your choice can’t be changed.",
+				"The following are divine allies:",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Blade Ally:",
+									"entries": [
+										"A spirit of battle dwells within your weapon. Select one weapon when you make your daily preparations. In your hands, the weapon gains the effect of a property rune. For a champion following the tenets of good, choose disrupting, ghost touch, returning, or shifting. You also gain the weapon’s critical specialization effect."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Shield Ally:",
+									"entries": [
+										"A spirit of protection dwells within your shield. In your hands, the shield’s Hardness increases by 2 and its HP and BT increase by half."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Steed Ally:",
+									"entries": [
+										"You gain a young animal companion as a mount (page 214). Ordinarily, your animal companion is one that has the mount special ability, such as a horse. You can select a different animal companion (GM’s discretion), but this ability doesn’t grant it the mount special ability."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "General Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 4 levels thereafter, you gain a general feat. General feats are listed in Chapter 5."
+			]
+		},
+		{
+			"name": "Skill Increases",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 2 levels thereafter, you gain a skill increase. You can use this increase either to increase your proficiency rank to trained in one skill you’re untrained in, or to increase your proficiency rank in one skill in which you’re already trained to expert.",
+				"At 7th level, you can use skill increases to increase your proficiency rank to master in a skill in which you’re already an expert, and at 15th level, you can use them to increase your proficiency rank to legendary in a skill in which you’re already a master."
+			]
+		},
+		{
+			"name": "Ability Boosts",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"At 5th level and every 5 levels thereafter, you boost four different ability scores. You can use these ability boosts to increase your ability scores above 18. Boosting an ability score increases it by 1 if it’s already 18 or above, or by 2 if it starts out below 18."
+			]
+		},
+		{
+			"name": "Ancestry Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"In addition to the ancestry feat you started with, you gain an ancestry feat at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry’s entry in Chapter 2."
+			]
+		},
+		{
+			"name": "Weapon Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"You’ve dedicated yourself to learning the intricacies of your weapons. Your proficiency ranks for simple weapons and martial weapons increase to expert."
+			]
+		},
+		{
+			"name": "Armor Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 7,
+			"entries": [
+				"You have spent so much time in armor that you know how to make the most of its protection. Your proficiency ranks for light, medium, and heavy armor, as well as for unarmored defense, increase to expert. You gain the armor specialization effects of medium and heavy armor."
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 7,
+			"entries": [
+				"You’ve learned how to inflict greater injuries with the weapons you know best. You deal 2 additional damage with weapons and unarmed attacks in which you are an expert. This damage increases to 3 if you’re a master, and to 4 if you’re legendary."
+			]
+		},
+		{
+			"name": "Champion Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 9,
+			"entries": [
+				"Prayers strengthen your divine power. Your proficiency ranks for your champion class DC and divine spell attack rolls and DCs increase to expert."
+			]
+		},
+		{
+			"name": "Divine Smite",
+			"source": "CRB",
+			"subclasses": "Divine Smite",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 9,
+			"entries": [
+				"Your champion’s reaction improves."
 			]
 		}
 	],
@@ -310,6 +536,88 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "Retributive Strike",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Paladin",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You protect your ally and strike your foe. The ally gains resistance to all damage against the triggering damage equal to 2 + your level. If the foe is within reach, make a melee Strike against it."
+					],
+					"type": "ability",
+					"name": "Retributive Strike",
+					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+				}
+			]
+		},
+		{
+			"name": "Glimpse of Redemption",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Redeemer",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"Your foe hesitates under the weight of sin as visions of redemption play in their mind’s eye. The foe must choose one of the following options:",
+						{
+							"type": "list",
+							"items": [
+								"The ally is unharmed by the triggering damage.",
+								"The ally gains resistance to all damage against the triggering damage equal to 2 + your level. After the damaging effect is applied, the enemy becomes enfeebled 2 until the end of its next turn."
+							]
+						}
+					],
+					"type": "ability",
+					"name": "Glimpse of Redemption",
+					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+				}
+			]
+		},
+		{
+			"name": "Liberating Step",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Liberator",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You free an ally from restraint. If the trigger was an ally taking damage, the ally gains resistance to all damage against the triggering damage equal to 2 + your level. The ally can attempt to break free of effects grabbing, restraining, immobilizing, or paralyzing them. They either attempt a new save against one such effect that allows a save, or attempt to Escape from one effect as a free action. If they can move, the ally can Step as a free action, even if they didn’t need to escape."
+					],
+					"type": "ability",
+					"name": "Liberating Step",
+					"trigger": "An enemy damages, Grabs, or {@action Grapple|CRB|Grapples} your ally, and both are within 15 feet of you."
 				}
 			]
 		},
@@ -365,6 +673,19 @@
 						}
 					]
 				}
+			]
+		},
+		{
+			"name": "Divine Smite (Paladin)",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Paladin",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				"{@b Paladin:} You surround evil targets in a punishing halo. If you hit with your Retributive Strike, the target takes persistent good damage equal to your Charisma modifier."
 			]
 		}
 	]

@@ -310,7 +310,25 @@
 					"page": 72,
 					"name": "Quick Alchemy",
 					"entries": [
-						"If you need a specific alchemical item on the fly, you can use your infused reagents to quickly create it with the Quick Alchemy action."
+						"If you need a specific alchemical item on the fly, you can use your infused reagents to quickly create it with the Quick Alchemy action.",
+						{
+							"type": "ability",
+							"name": "Quick Alchemy",
+							"traits": [
+								"Alchemist",
+								"Manipulate"
+							],
+							"cost": "1 batch of infused reagents",
+							"requirements": "You have {@item alchemist’s tools|CRB}, the formula for the alchemical item you’re creating, and a free hand.",
+							"activity": {
+								"number": 1,
+								"unit": "single",
+								"entry": "{@as 1}"
+							},
+							"entries": [
+								"You swiftly mix up a short-lived alchemical item to use at a moment’s notice. You create a single alchemical item of your advanced alchemy level or lower that’s in your formula book without having to spend the normal monetary cost in alchemical reagents or needing to attempt a Crafting check. This item has the infused trait, but it remains potent only until the start of your next turn."
+							]
+						}
 					]
 				}
 			]
