@@ -978,7 +978,7 @@ class ClassesPage extends BaseComponent {
 			metasTblRows.forEach(metaTblRow => {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
-						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, [], null);
+						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, Array(5), null);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
 					}

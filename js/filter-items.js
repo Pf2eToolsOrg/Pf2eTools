@@ -106,6 +106,9 @@ class PageFilterItems extends PageFilter {
 			header: "Miscellaneous",
 			items: ["Consumable"],
 		});
+		this._appliesToFilter = new Filter({header: "Rune applies to..."})
+
+		this._categoriesRuneItems = [];
 	}
 
 	mutateForFilters (item) {
@@ -140,6 +143,10 @@ class PageFilterItems extends PageFilter {
 		item._fIsEquipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
+		item._fAppliesTo = item.applies_to ? `${item.applies_to} Rune` : null
+
+		// RuneItem Builder
+		if (item.applies_to) this._categoriesRuneItems.push(item.applies_to);
 	}
 
 	addToFilters (item, isExcluded) {
@@ -159,6 +166,7 @@ class PageFilterItems extends PageFilter {
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
 		if (item.craft_requirements != null) this._miscFilter.addItem("Has Craft Requirements");
 		this._miscFilter.addItem(item._fMisc);
+		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo)
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -172,6 +180,7 @@ class PageFilterItems extends PageFilter {
 			this._miscFilter,
 			this._bulkFilter,
 			this._shieldStatsFilter,
+			this._appliesToFilter,
 		];
 	}
 
@@ -196,6 +205,7 @@ class PageFilterItems extends PageFilter {
 				it.shield_stats ? it.shield_stats.BT : 0,
 				it.shield_stats ? it.shield_stats.hardness : 0,
 			],
+			it._fAppliesTo,
 		);
 	}
 }

@@ -1,12 +1,6 @@
 "use strict";
 
 class RuneBuilder extends ProxyBase {
-	static getRuneShortName (rune) {
-		if (rune.shortName) return rune.shortName;
-		if (rune.name.startsWith("+")) return rune.name.split(" ")[0];
-		return rune.name;
-	}
-
 	constructor () {
 		super();
 
@@ -15,13 +9,13 @@ class RuneBuilder extends ProxyBase {
 		this._cachedTitle = null;
 		this._cachedFilterState = null;
 
+		this._active = null;
 		this.__state = {
 			savedRuneItems: {},
 			activeKey: null,
 		};
 		this._state = this._getProxy("state", this.__state);
 		this._$btnSave = null;
-		this._$btnReload = null;
 		this._$btnLoad = null;
 		this.pSetSavedRuneItemsThrottled = MiscUtil.throttle(this._pSetSavedRuneItems.bind(this), 50);
 
@@ -39,26 +33,24 @@ class RuneBuilder extends ProxyBase {
 	}
 
 	initUi () {
-		$(`#btn-runebuild`).off("click").click(() => {
-			Hist.setSubhash(RuneBuilder.HASH_KEY, true);
-			$(`#btn-runebuild`).toggleClass("hidden", true);
-			$(`#btn-runebuild--save`).toggleClass("hidden", false);
-			$(`#btn-runebuild--cancel`).toggleClass("hidden", false);
-		});
-		$(`#btn-runebuild--save`).off("click").click(() => {
-			$(`#btn-runebuild`).toggleClass("hidden", false);
-			$(`#btn-runebuild--save`).toggleClass("hidden", true);
-			$(`#btn-runebuild--cancel`).toggleClass("hidden", true);
-			this.saveRuneItemAndState();
+		$(`#btn-runebuild`).click(() => Hist.setSubhash(RuneBuilder.HASH_KEY, true));
+		$(`#btn-runebuild--save`).click(() => {
+			this.pSaveRuneItemAndState();
 			Hist.setSubhash(RuneBuilder.HASH_KEY, null);
 			Hist.setMainHash(UrlUtil.autoEncodeHash(this.runeItem));
-		}).toggleClass("hidden", !this.isActive());
-		$(`#btn-runebuild--cancel`).off("click").click(() => {
-			Hist.setSubhash(RuneBuilder.HASH_KEY, null);
+		});
+		$(`#btn-runebuild--cancel`).click(() => Hist.setSubhash(RuneBuilder.HASH_KEY, null));
+	}
+
+	updateUi (itemId) {
+		itemId = itemId == null ? itemsPage._itemId : itemId;
+		const item = itemsPage._itemList[itemId];
+		if (!this.isActive() && ((item.type === "Equipment" && ["Rune Item"].concat(itemsPage._pageFilter._categoriesRuneItems).includes(item.category)) || item.runeItem)) {
 			$(`#btn-runebuild`).toggleClass("hidden", false);
-			$(`#btn-runebuild--save`).toggleClass("hidden", true);
-			$(`#btn-runebuild--cancel`).toggleClass("hidden", true);
-		}).toggleClass("hidden", !this.isActive());
+		} else $(`#btn-runebuild`).toggleClass("hidden", true);
+
+		$(`#btn-runebuild--save`).toggleClass("hidden", !this.isActive());
+		$(`#btn-runebuild--cancel`).toggleClass("hidden", !this.isActive());
 	}
 
 	async initState () {
@@ -71,7 +63,6 @@ class RuneBuilder extends ProxyBase {
 
 	reset () {
 		RuneListUtil.removeAll();
-		RuneListUtil.list.update();
 		this._state.activeKey = null;
 		this.pSetSavedRuneItemsThrottled();
 	}
@@ -80,35 +71,21 @@ class RuneBuilder extends ProxyBase {
 		if (!savedState || !savedState.data) return;
 		const hashes = Renderer.runeItem.getHashesFromTag(savedState.data.t);
 		this.baseItem = itemsPage._itemList[itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hashes[0])];
-		RuneListUtil.removeAll();
+		this.reset();
 		for (const hash of hashes.splice(1)) {
 			await RuneListUtil.pAddByHash(hash);
 		}
 		RuneListUtil.list.items.forEach(it => RuneListUtil._updateAddSubtractButton(it.ix));
-		this.onRuneListUpdate();
+		this.renderItem(this.runeItem);
+		this.setSubhashFromState();
 	}
 
-	async addItemsFromSave () {
-		const savedState = await RuneItemUtil.pGetSavedState();
-		if (savedState && savedState.savedRuneItems) {
-			Object.keys(savedState.savedRuneItems).forEach(k => {
-				const tag = savedState.savedRuneItems[k].data.t;
-				const hashes = Renderer.runeItem.getHashesFromTag(tag);
-				const items = hashes.map(hash => itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash))
-					.map(idx => itemsPage._itemList[idx]);
-				const data = {item: [this._getRuneItem(items[0], items.splice(1))]};
-				itemsPage._addItems(data);
-				itemsPage._runeItems.push(itemsPage._itI - 1);
-			});
-		}
-	}
-
-	async saveRuneItemAndState () {
+	async pSaveRuneItemAndState () {
 		const hash = UrlUtil.autoEncodeHash(this.runeItem);
 		const isDuplicate = itemsPage._runeItems.map(idx => UrlUtil.autoEncodeHash(itemsPage._itemList[idx]) === hash).some(Boolean);
 
 		if (!this.runes.length) {
-			JqueryUtil.doToast({type: "warning", content: "There is nothing to save."});
+			JqueryUtil.doToast({type: "warning", content: "Add runes to this item before saving."});
 		} else if (isDuplicate) {
 			JqueryUtil.doToast({type: "warning", content: "There are no changes to save."});
 		} else {
@@ -116,32 +93,19 @@ class RuneBuilder extends ProxyBase {
 			itemsPage._addItems(data);
 			const id = itemsPage._itI - 1;
 			itemsPage._runeItems.push(id);
-			ListUtil.pDoSublistAdd(id, true);
+			await ListUtil.pDoSublistAdd(id, true);
 
-			if (this._state.activeKey) {
-				const runeItem = this._state.savedRuneItems[this._state.activeKey];
-				runeItem.data = this.getSaveableState();
-
-				this._state.savedRuneItems = {
-					...this._state.savedRuneItems,
-					[this._state.activeKey]: runeItem,
-				};
-				this.pSetSavedRuneItemsThrottled();
-			} else {
-				const name = this.runeItem.name;
-				if (name != null) {
-					const key = CryptUtil.uid();
-					this._state.savedRuneItems = {
-						...this._state.savedRuneItems,
-						[key]: {
-							name,
-							data: this.getSaveableState(),
-						},
-					};
-					this._state.activeKey = key;
-					this.pSetSavedRuneItemsThrottled();
-				}
-			}
+			const name = this.runeItem.name;
+			const key = UrlUtil.autoEncodeHash(this.runeItem);
+			this._state.savedRuneItems = {
+				...this._state.savedRuneItems,
+				[key]: {
+					name,
+					data: this.getSaveableState(),
+				},
+			};
+			this._state.activeKey = key;
+			this.pSetSavedRuneItemsThrottled();
 
 			JqueryUtil.doToast({type: "success", content: "Saved!"});
 		}
@@ -156,40 +120,24 @@ class RuneBuilder extends ProxyBase {
 	}
 
 	isActive () {
-		return Hist.getSubHash(RuneBuilder.HASH_KEY) === "true";
+		return this._active;
 	}
 
-	async activate () {
-		this._cachedFilterState = this._cachedFilterState || itemsPage._pageFilter._filterBox._getSaveableState();
-		itemsPage._pageFilter._filterBox.reset();
-		itemsPage._pageFilter._filterBox._setStateFromLoaded(RuneBuilder.RUNEBUILDER_DEFAULT_FILTER_STATE);
-		itemsPage.handleFilterChange();
-
-		this.baseItem = MiscUtil.copy(itemsPage._itemList[itemsPage._itemId]);
-
-		this.reset();
-
-		const savedState = await RuneItemUtil.pGetSavedState();
-		const hash = UrlUtil.autoEncodeHash(this.baseItem);
-		if (savedState && savedState.savedRuneItems) {
-			for (const key of Object.keys(savedState.savedRuneItems)) {
-				if (savedState.savedRuneItems[key].data.h === hash) {
-					await this.pDoLoadState(savedState.savedRuneItems[key]);
-					break;
-				}
-			}
+	_getInitialFilterState (baseItem) {
+		baseItem = baseItem || this.baseItem;
+		let state = MiscUtil.copy(RuneBuilder.RUNEBUILDER_DEFAULT_FILTER_STATE);
+		state.filters["Rune applies to..."] = {
+			"meta": {
+				"combineBlue": "or",
+				"combineRed": "or",
+				"isHidden": false,
+				"isMobileHeaderHidden": true,
+			},
+			"state": {
+			},
 		}
-
-		this.show();
-	}
-
-	deactivate () {
-		if (this._cachedFilterState) {
-			itemsPage._pageFilter._filterBox._setStateFromLoaded(this._cachedFilterState);
-			itemsPage.handleFilterChange();
-			this._cachedFilterState = null;
-		}
-		this.hide();
+		state.filters["Rune applies to..."]["state"][`${baseItem.category} Rune`] = 1;
+		return state
 	}
 
 	show () {
@@ -201,7 +149,8 @@ class RuneBuilder extends ProxyBase {
 		$(`#sublistsort`).toggleClass("hidden", true);
 		$(`#sublistlist`).toggleClass("hidden", true);
 		$(`#sublistsummary`).toggleClass("hidden", true);
-		$(`#stat-tabs`).toggleClass("hidden", true);
+		// $(`#stat-tabs`).toggleClass("hidden", true);
+		$(`.col-name`).toggleClass("col-4", false).toggleClass("col-3", true);
 		this.renderItem(this.runeItem);
 	}
 
@@ -216,7 +165,34 @@ class RuneBuilder extends ProxyBase {
 		$(`#sublistsort`).toggleClass("hidden", false);
 		$(`#sublistlist`).toggleClass("hidden", false);
 		$(`#sublistsummary`).toggleClass("hidden", false);
-		$(`#stat-tabs`).toggleClass("hidden", false);
+		// $(`#stat-tabs`).toggleClass("hidden", false);
+		$(`.col-name`).toggleClass("col-3", false).toggleClass("col-4", true);
+	}
+
+	async activate () {
+		this._active = true;
+
+		this.baseItem = MiscUtil.copy(itemsPage._itemList[itemsPage._itemId]);
+
+		this._cachedFilterState = this._cachedFilterState || itemsPage._pageFilter._filterBox._getSaveableState();
+		itemsPage._pageFilter._filterBox.reset();
+		itemsPage._pageFilter._filterBox._setStateFromLoaded(this._getInitialFilterState());
+		itemsPage.handleFilterChange();
+
+		this.reset();
+		RuneListUtil.list.update();
+		this.show();
+	}
+
+	deactivate () {
+		if (this._cachedFilterState) {
+			itemsPage._pageFilter._filterBox._setStateFromLoaded(this._cachedFilterState);
+			StorageUtil.pSetForPage(itemsPage._pageFilter._filterBox._getNamespacedStorageKey(), this._cachedFilterState);
+			itemsPage.handleFilterChange();
+			this._cachedFilterState = null;
+		}
+		this.hide();
+		this._active = false;
 	}
 
 	handleClick (evt, ix, add, customHashId) {
@@ -258,15 +234,66 @@ class RuneBuilder extends ProxyBase {
 
 	onRuneListUpdate () {
 		this.renderItem(this.runeItem);
+		this.setSubhashFromState();
+		this._setActiveKey();
 	}
 
 	renderItem (item) {
 		$(`#pagecontent`).empty().append(RenderItems.$getRenderedItem(item));
 	}
 
-	handleSubhash () {
-		if (Hist.getSubHash(RuneBuilder.HASH_KEY) === "true") this.activate();
-		else this.deactivate();
+	async pHandleSubhash (isInitialLoad) {
+		const subhash = Hist.getSubHash(RuneBuilder.HASH_KEY);
+		let subhashParts = subhash ? subhash.split(HASH_SUB_LIST_SEP) : [""];
+		subhashParts.shift();
+		let itemId;
+		if (!subhash) {
+			this.deactivate();
+			if (isInitialLoad) itemId = itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === Hist.getHashParts()[0]);
+		} else {
+			if (!this.isActive()) await this.activate();
+
+			if (subhash === this.getSubhash()) {
+				// if we just added or removed a rune, do nothing
+			} else if (isInitialLoad) {
+				// load from url
+				const ixItem = itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === Hist.getHashParts()[0]);
+				itemsPage.doLoadHash(ixItem);
+				await this.activate();
+				if (subhashParts && subhashParts.length) {
+					for (const h of subhashParts) {
+						await RuneListUtil.pAddByHash(h);
+					}
+				}
+			} else {
+				// if the base item is a runeItem, find its saved state and load it
+				const savedState = await RuneItemUtil.pGetSavedState();
+				const hash = UrlUtil.autoEncodeHash(this.baseItem);
+				if (savedState && savedState.savedRuneItems) {
+					for (const key of Object.keys(savedState.savedRuneItems)) {
+						if (savedState.savedRuneItems[key].data.h === hash) {
+							await this.pDoLoadState(savedState.savedRuneItems[key]);
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		if (this.isActive()) this.show();
+		this.updateUi(itemId);
+	}
+
+	getSubhash () {
+		return `${RuneBuilder.HASH_KEY}${HASH_SUB_KV_SEP}${this.isActive() ? `true${["", ...this.runes.map(r => UrlUtil.autoEncodeHash(r))].join(HASH_SUB_LIST_SEP)}` : "false"}`;
+	}
+
+	setSubhashFromState () {
+		Hist.setSubhash(RuneBuilder.HASH_KEY, this.isActive() ? `true${["", ...this.runes.map(r => UrlUtil.autoEncodeHash(r))].join(HASH_SUB_LIST_SEP)}` : null);
+	}
+
+	_setActiveKey () {
+		this._state.activeKey = UrlUtil.autoEncodeHash(this.runeItem);
 	}
 
 	static getButtons (itemId) {
@@ -291,11 +318,8 @@ class RuneBuilder extends ProxyBase {
 			this.pSetSavedRuneItemsThrottled();
 		};
 
-		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Item"/>`)
-			.click(() => this.saveRuneItemAndState());
-		const hookButtonText = () => this._$btnSave.html(this._state.activeKey ? `<span class="glyphicon glyphicon-floppy-disk"/>` : "Save Item");
-		this._addHook("state", "activeKey", hookButtonText);
-		hookButtonText();
+		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Item">Save Item</button>`)
+			.click(() => this.pSaveRuneItemAndState());
 
 		const pDoReload = async () => {
 			const inStorage = await RuneItemUtil.pGetSavedState();
@@ -328,7 +352,7 @@ class RuneBuilder extends ProxyBase {
 					Object.entries(runeItems)
 						.sort((a, b) => SortUtil.ascSortLower(a[1].name || "", b[1].name || ""))
 						.forEach(([k, v]) => {
-							const $iptName = $(`<div class="row w-100 mr-2 lst--border"><span class="bold text-left">${v.name}</span></div>`);
+							const $divName = $(`<div class="row w-100 mr-2 lst--border"><span class="bold text-left">${v.name}</span></div>`);
 
 							const $btnLoad = $(`<button class="btn btn-primary btn-xs mr-2">Load</button>`)
 								.click(async () => {
@@ -351,11 +375,12 @@ class RuneBuilder extends ProxyBase {
 								});
 
 							const $row = $$`<div class="flex-v-center w-100 mb-2">
-								${$iptName}
+								${$divName}
 								${$btnLoad}
 								${$btnDelete}
 							</div>`.appendTo($wrpRows);
 						});
+					$$`<div class="w-100 mt-3 flex-vh-center italic ve-muted">Rune Items are deleted from the item list when the items page is reloaded.</div>`.appendTo($wrpRows);
 				} else $$`<div class="w-100 flex-vh-center italic">No saved items</div>`.appendTo($wrpRows)
 			});
 
@@ -367,7 +392,7 @@ class RuneBuilder extends ProxyBase {
 		hookActiveKey();
 
 		$$`<div class="flex-col" style="align-items: flex-end;">
-			<div class="flex-h-right">${this._$btnSave}${this._$btnReload}${this._$btnLoad}</div>
+			<div class="flex-h-right">${this._$btnSave}${this._$btnLoad}</div>
 		</div>`.appendTo($wrpControls);
 	}
 
@@ -375,9 +400,23 @@ class RuneBuilder extends ProxyBase {
 		if (!this.stateInit) return;
 		return StorageUtil.pSet(RuneItemUtil.SAVED_RUNEITEM_SAVE_LOCATION, this.__state);
 	}
+
+	async addFromSaveToItemsPage () {
+		const savedState = await RuneItemUtil.pGetSavedState();
+		if (savedState && savedState.savedRuneItems) {
+			Object.keys(savedState.savedRuneItems).forEach(k => {
+				const tag = savedState.savedRuneItems[k].data.t;
+				const hashes = Renderer.runeItem.getHashesFromTag(tag);
+				const items = hashes.map(hash => itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash))
+					.map(idx => itemsPage._itemList[idx]);
+				const data = {item: [Renderer.runeItem.getRuneItem(items[0], items.splice(1))]};
+				itemsPage._addItems(data);
+				itemsPage._runeItems.push(itemsPage._itI - 1);
+			});
+		}
+	}
 }
 RuneBuilder.HASH_KEY = "runebuilder";
-RuneBuilder.CATEGORIES_WITH_RUNES = ["Weapon", "Armor", "Rune Item"]; // TODO: What about homebrew? Change this once we can filter for this.
 RuneBuilder.RUNEBUILDER_DEFAULT_FILTER_STATE = {
 	"box": {
 		"meta": {
@@ -490,7 +529,15 @@ const RuneListUtil = {
 
 	_updateAddSubtractButton (itemId) {
 		const listHasNotId = this.list.items.findIndex(it => it.ix === itemId) === -1;
-		$(`#rigen__add-btn-${itemId}`).toggleClass("hidden", !listHasNotId);
-		$(`#rigen__subtract-btn-${itemId}`).toggleClass("hidden", listHasNotId);
+		// TODO: This is a hack. Fix it some time?
+		$(`#rigen__add-subtract-btn-${itemId}`).remove();
+		$(`<style id="rigen__add-subtract-btn-${itemId}" type='text/css'>
+				#rigen__add-btn-${itemId} {
+					display: ${listHasNotId ? "inline-block !important" : "none !important"}
+				}
+				#rigen__subtract-btn-${itemId} {
+					display: ${listHasNotId ? "none !important" : "inline-block !important"}
+				}
+			</style>`).appendTo("head");
 	},
 };

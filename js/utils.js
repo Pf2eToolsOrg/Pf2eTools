@@ -26,6 +26,7 @@ VeCt = {
 	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for details.",
 
 	HASH_MON_SCALED: "scaled",
+	HASH_ITEM_RUNES: "runeitem",
 
 	FILTER_BOX_SUB_HASH_SEARCH_PREFIX: "fbsr",
 
@@ -1697,7 +1698,7 @@ UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_SPELLS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BACKGROUNDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS] = (it) => UrlUtil.encodeForHash([it.generic === "G" ? `${it.name}(generic)` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_AFFLICTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1726,6 +1727,7 @@ UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["runeItem"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // endregion
 
 UrlUtil.PG_TO_NAME = {};
@@ -1972,6 +1974,16 @@ SortUtil = {
 
 	abilitySort (a, b) {
 		return SortUtil.ascSort(Parser._parse_aToB(Parser.ATB_TO_NUM, a, 999), Parser._parse_aToB(Parser.ATB_TO_NUM, b, 999));
+	},
+
+	sortTraits (a, b) {
+		if (Parser.TRAITS_RARITY.includes(a)) return -1;
+		else if (Parser.TRAITS_RARITY.includes(b)) return 1;
+		else if (Parser.TRAITS_ALIGN_ABV.includes(a)) return -1;
+		else if (Parser.TRAITS_ALIGN_ABV.includes(b)) return 1;
+		else if (Parser.TRAITS_SIZE.includes(a)) return -1;
+		else if (Parser.TRAITS_SIZE.includes(b)) return 1;
+		else return SortUtil.ascSortLower(a, b);
 	},
 
 	initBtnSortHandlers ($wrpBtnsSort, list) {
@@ -2894,6 +2906,20 @@ DataUtil = {
 		_mergeCache: {},
 		async pMergeCopy (itemList, item, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options);
+		},
+	},
+
+	runeItem: {
+		unpackUid (uid) {
+			const splits = uid.split("|").map(it => it.trim());
+			const source = splits[1];
+			let displayText;
+			let name;
+			if (splits.length % 2) displayText = splits.pop();
+			splits.push(splits.shift());
+			name = displayText || splits.filter((x, i) => i % 2 === 1).map(it => Renderer.runeItem.getRuneShortName(it)).join(" ");
+			const hashes = Renderer.runeItem.getHashesFromTag(uid);
+			return {hashes, displayText, name, source}
 		},
 	},
 

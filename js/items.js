@@ -38,7 +38,7 @@ class ItemsPage {
 		eleLi.addEventListener("contextmenu", (evt) => handleItemsLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(item.source);
-		const level = item.level != null ? item.level : "\u2014"
+		const level = item.level != null ? `${typeof item.level === "string" && item.level.endsWith("+") ? `\u00A0\u00A0${item.level}` : item.level}` : "\u2014"
 
 		if (item._fIsEquipment) {
 			eleLi.innerHTML = `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
@@ -73,7 +73,7 @@ class ItemsPage {
 		} else {
 			eleLi.innerHTML += `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
 				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
-				<span class="col-4 pl-0 bold">${item.name}</span>
+				<span class="col-4 pl-0 bold col-name">${item.name}</span>
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
@@ -152,10 +152,6 @@ class ItemsPage {
 		const item = this._itemList[id];
 		this._itemId = id;
 
-		if (!runeBuilder.isActive() && ((item.type === "Equipment" && RuneBuilder.CATEGORIES_WITH_RUNES.includes(item.category)) || item.runeItem)) {
-			$(`#btn-runebuild`).toggleClass("hidden", false);
-		} else $(`#btn-runebuild`).toggleClass("hidden", true);
-
 		function buildStatsTab () {
 			$content.append(RenderItems.$getRenderedItem(item));
 		}
@@ -190,7 +186,7 @@ class ItemsPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 
-		runeBuilder.handleSubhash(sub);
+		await runeBuilder.pHandleSubhash();
 	}
 
 	onSublistChange () {
@@ -286,7 +282,7 @@ class ItemsPage {
 
 		runeBuilder = new RuneBuilder();
 		runeBuilder.initUi();
-		runeBuilder.initState();
+		await runeBuilder.initState();
 
 		return this._pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 	}
@@ -412,7 +408,8 @@ class ItemsPage {
 				window.dispatchEvent(new Event("toolsLoaded"));
 			});
 
-		await runeBuilder.addItemsFromSave();
+		await runeBuilder.addFromSaveToItemsPage();
+		await runeBuilder.pHandleSubhash(true);
 	}
 
 	async _pHandleBrew (homebrew) {

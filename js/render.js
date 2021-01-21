@@ -2719,6 +2719,33 @@ function Renderer () {
 				break;
 			}
 
+			case "@runeItem": {
+				const {hashes, displayText, name, source} = DataUtil.runeItem.unpackUid(text);
+				let [baseItemHash, ...runeHashes] = hashes;
+
+				const preloadId = `${VeCt.HASH_ITEM_RUNES}${HASH_SUB_KV_SEP}${baseItemHash}${HASH_SUB_LIST_SEP}${runeHashes.join(HASH_SUB_LIST_SEP)}`;
+				const itemsPageHash = `${baseItemHash}${HASH_PART_SEP}runebuilder${HASH_SUB_KV_SEP}true${HASH_SUB_LIST_SEP}${runeHashes.join(HASH_SUB_LIST_SEP)}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_ITEMS,
+						hash: itemsPageHash,
+						hashPreEncoded: true,
+						hover: {
+							page: UrlUtil.PG_ITEMS,
+							source,
+							hash: UrlUtil.URL_TO_HASH_BUILDER["runeItem"]({name, source}),
+							hashPreEncoded: true,
+							preloadId,
+						},
+					},
+					text: displayText || name,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
 			default: {
 				const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
 				const hash = `${name}${HASH_LIST_SEP}${source}`;
@@ -5868,7 +5895,7 @@ Renderer.item = {
 		const renderStack = [""]
 		Renderer.get().recursiveRender(item.entries, renderStack, {depth: 1}, {pf2StatFix: true})
 
-		return `${Renderer.utils.getExcludedDiv(item, "item")}
+		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(item.traits)}
@@ -6576,12 +6603,19 @@ Renderer.item = {
 };
 
 Renderer.runeItem = {
+	getRuneShortName (rune) {
+		if (rune.shortName) return rune.shortName;
+		let name = typeof rune === "string" ? rune : rune.name;
+		if (name.startsWith("+")) return name.split(" ")[0];
+		return name.toTitleCase();
+	},
+
 	getTag (baseItem, runes) {
 		return [baseItem].map(it => [it.name, it.source]).concat(runes.map(it => [it.name, it.source])).flat().join("|")
 	},
 
 	getHashesFromTag (tag) {
-		const split = tag.split("|");
+		const split = tag.split("|").map(it => it.trim()).map(it => it === "" ? SRC_CRB : it);
 		if (split.length % 2) {
 			split.pop();
 		}
@@ -6592,10 +6626,13 @@ Renderer.runeItem = {
 
 	getRuneItem (baseItem, runes) {
 		let runeItem = MiscUtil.copy(baseItem);
-		runeItem.name = [...runes.map(r => RuneBuilder.getRuneShortName(r)), runeItem.name].join(" ");
+		runeItem.name = [...runes.map(r => Renderer.runeItem.getRuneShortName(r)), runeItem.name].join(" ");
 		runeItem.type = "item";
 		runeItem.category = "Rune Item";
 		runeItem.level = Math.max(...runes.map(r => r.level));
+		runeItem.traits = [...new Set([baseItem.traits, ...runes.map(it => it.traits)].flat())].sort(SortUtil.sortTraits);
+		const value = [baseItem, ...runes].map(it => Parser.priceToValue(it.price)).reduce((a, b) => a + b, 0);
+		runeItem.price = {coin: "gp", amount: Math.floor(value / 100)};
 		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();
 		runeItem.runeItem = true;
 		return runeItem;
@@ -6968,6 +7005,14 @@ Renderer.hover = {
 				case VeCt.HASH_MON_SCALED: {
 					const baseMon = await Renderer.hover.pCacheAndGet(page, source, hash);
 					toRender = await ScaleCreature.scale(baseMon, Number(data));
+					break;
+				}
+				case VeCt.HASH_ITEM_RUNES: {
+					toRender = Renderer.hover._getFromCache(page, source, hash);
+					if (toRender) break;
+					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, h.split(HASH_LIST_SEP)[1], h)));
+					toRender = Renderer.runeItem.getRuneItem(baseItem, runes);
+					Renderer.hover._addToCache(page, source, hash, toRender);
 					break;
 				}
 			}
@@ -8840,6 +8885,11 @@ Renderer._stripTagLayer = function (str) {
 					case "@subclassFeature": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 8 ? parts[7] : parts[0];
+					}
+
+					case "@runeItem": {
+						const parts = Renderer.splitTagByPipe(text);
+						return parts.length % 2 ? parts[parts.length - 1] : parts.push(parts.shift()).map(it => it[0]).map(it => Renderer.runeItem.getRuneShortName(it)).join(" ");
 					}
 
 					case "@homebrew": {
