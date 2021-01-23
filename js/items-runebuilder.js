@@ -143,13 +143,15 @@ class RuneBuilder extends ProxyBase {
 	show () {
 		this._cachedTitle = this._cachedTitle || document.title;
 		document.title = "Rune Builder - PF2eTools";
-		$(`#sublistcontainer`).toggleClass("sublist--visible", true).toggleClass("mb-5", true);
+		$(`#sublistcontainer`).toggleClass("sublist--visible", true);
 		RuneListUtil._updateNoRunesVisible();
 		$(`body`).addClass("rigen_active");
 		$(`#sublistsort`).toggleClass("hidden", true);
 		$(`#sublistlist`).toggleClass("hidden", true);
 		$(`#sublistsummary`).toggleClass("hidden", true);
-		// $(`#stat-tabs`).toggleClass("hidden", true);
+		$(`#btn-sublist-add`).toggleClass("hidden", true);
+		$(`#btn-sublist-subtract`).toggleClass("hidden", true);
+		$(`#btn-sublist-other`).toggleClass("hidden", true);
 		$(`.col-name`).toggleClass("col-4", false).toggleClass("col-3", true);
 		this.renderItem(this.runeItem);
 	}
@@ -161,11 +163,12 @@ class RuneBuilder extends ProxyBase {
 		}
 		$(`body`).removeClass("rigen_active");
 		ListUtil._updateSublistVisibility();
-		$(`#sublistcontainer`).toggleClass("mb-5", false);
 		$(`#sublistsort`).toggleClass("hidden", false);
 		$(`#sublistlist`).toggleClass("hidden", false);
 		$(`#sublistsummary`).toggleClass("hidden", false);
-		// $(`#stat-tabs`).toggleClass("hidden", false);
+		$(`#btn-sublist-add`).toggleClass("hidden", false);
+		$(`#btn-sublist-subtract`).toggleClass("hidden", false);
+		$(`#btn-sublist-other`).toggleClass("hidden", false);
 		$(`.col-name`).toggleClass("col-3", false).toggleClass("col-4", true);
 	}
 
@@ -318,7 +321,7 @@ class RuneBuilder extends ProxyBase {
 			this.pSetSavedRuneItemsThrottled();
 		};
 
-		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Item">Save Item</button>`)
+		this._$btnSave = $(`<button class="btn btn-default btn-xs mr-2" title="Save Item"><span class="glyphicon glyphicon-floppy-disk"/></button>`)
 			.click(() => this.pSaveRuneItemAndState());
 
 		const pDoReload = async () => {
@@ -340,7 +343,7 @@ class RuneBuilder extends ProxyBase {
 		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Item"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => pDoReload());
 
-		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Load Item</button>`)
+		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Saved Items</button>`)
 			.click(async () => {
 				const inStorage = await RuneItemUtil.pGetSavedState();
 				const {$modalInner} = UiUtil.getShowModal({title: "Saved Items"});

@@ -447,8 +447,42 @@ class ItemsPage {
 		});
 		ListUtil.bindAddButton();
 		ListUtil.bindSubtractButton();
+
+		// region popout button
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-		Renderer.hover.bindPopoutButton($btnPop, this._itemList);
+		$btnPop.off("click").title("Popout Window (SHIFT for Source Data)");
+		$btnPop.on(
+			"click",
+			(evt) => {
+				if (Hist.lastLoadedId !== null || runeBuilder.isActive()) {
+					let toRender;
+					if (runeBuilder.isActive()) {
+						toRender = runeBuilder.runeItem;
+					} else {
+						toRender = this._itemList[Hist.lastLoadedId];
+					}
+
+					if (evt.shiftKey) {
+						const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+						Renderer.hover.getShowWindow(
+							$content,
+							Renderer.hover.getWindowPositionFromEvent(evt),
+							{
+								title: `${toRender.name} \u2014 Source Data`,
+								isPermanent: true,
+								isBookContent: true,
+							},
+						);
+					} else if (runeBuilder.isActive()) {
+						Renderer.hover.doPopoutCurPage(evt, [toRender], 0);
+					} else {
+						Renderer.hover.doPopoutCurPage(evt, this._itemList, Hist.lastLoadedId);
+					}
+				}
+			},
+		);
+		// endregion
+
 		UrlUtil.bindLinkExportButton(itemsPage._pageFilter.filterBox);
 		ListUtil.bindOtherButtons({
 			download: true,
