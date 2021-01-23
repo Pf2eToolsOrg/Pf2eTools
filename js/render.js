@@ -1092,40 +1092,15 @@ function Renderer () {
 	this._renderAbility = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
+		const renderer = Renderer.get().setFirstSection(true);
 
-		textStack[0] += `<p class="pf2-stat__section"><span><strong>${entry.name} </strong>`
-		if (entry.activity != null) this._recursiveRender(`${entry.activity.entry} `, textStack, meta);
-		if (entry.traits != null && entry.traits.length) {
-			let trts = []
-			entry.traits.forEach((t) => {
-				let traitname = Parser.getTraitName(t)
-				trts.push(Renderer.get().render(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`))
-			});
-			textStack[0] += `(${trts.join(", ")}); `
-		}
-		let add_effect = false
-		if (entry.frequency != null) {
-			add_effect = true
-			textStack[0] += `<strong>Frequency </strong>`
-			this._recursiveRender(`${entry.frequency} `, textStack, meta)
-		}
-		if (entry.requirements != null) {
-			add_effect = true
-			textStack[0] += `<strong>Requirements </strong>`
-			this._recursiveRender(`${entry.requirements} `, textStack, meta)
-		}
-		if (entry.trigger != null) {
-			add_effect = true
-			textStack[0] += `<strong>Trigger </strong>`
-			this._recursiveRender(`${entry.trigger} `, textStack, meta)
-		}
-		if (add_effect) textStack[0] += `<strong>Effect </strong>`
-		entry.entries.forEach((e) => {
-			this._recursiveRender(e, textStack, meta, {isAbility: true})
-		});
-		if (entry.no_map) textStack[0] += "; no multiple attack penalty"
-		textStack[0] = textStack[0].replace(/;$/, ".");
-		textStack[0] += `</span></p>`;
+		textStack[0] += `<div class="pf2-stat pf2-book--stat">`;
+		textStack[0] += Renderer.utils.getNameDiv(entry, {activity: true, type: ""});
+		textStack[0] += Renderer.utils.getDividerDiv();
+		textStack[0] += Renderer.utils.getTraitsDiv(entry.traits || []);
+		textStack[0] += Renderer.action.getSubHead(entry);
+		entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
+		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
