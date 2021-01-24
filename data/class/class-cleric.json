@@ -3,36 +3,39 @@
 		{
 			"name": "Cleric",
 			"source": "CRB",
-			"page": 71,
+			"page": 117,
 			"HP": 8,
-			"keyAbility": "Intelligence",
+			"keyAbility": "Wisdom",
 			"initialProficiencies": {
 				"perception": "T",
-				"fort": "E",
-				"ref": "E",
-				"will": "T",
+				"fort": "T",
+				"ref": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"Religion",
+						"one skill determined by your choice of deity"
 					],
-					"add": 3
+					"add": 2
 				},
 				"attacks": {
 					"t": [
 						"simple weapons",
-						"alchemical bombs",
+						"favored weapon of your deity. If you're deity's favored weapon is uncommon, you also gain access to that weapon.",
 						"unarmed attacks"
 					]
 				},
 				"defenses": {
 					"t": [
-						"light armor",
+						"all armor, though your doctrine might alter this",
 						"unarmored defense"
 					]
 				},
-				"classDc": {
-					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+				"spells": {
+					"T": [
+						"divine spell attacks",
+						"divine spell DCs"
+					]
 				}
 			},
 			"advancement": {
@@ -114,66 +117,66 @@
 				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"Deities work their will upon the world in infinite ways, and you serve as one of their most stalwart mortal servants. Blessed with divine magic, you live the ideals of your faith, adorn yourself with the symbols of your church, and train diligently to wield your deity’s favored weapon. Your spells might protect and heal your allies, or they might punish foes and enemies of your faith, as your deity wills. Yours is a life of devotion, spreading the teachings of your faith through both word and deed."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"If you’re a warpriest, you balance between casting spells and attacking with weapons— typically the favored weapon of your deity. If you’re a cloistered cleric, you primarily cast spells. Most of your spells can boost, protect, or heal your allies. Depending on your deity, you get extra spells to heal your allies or harm your enemies."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 117,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"You might make diplomatic overtures or deliver impressive speeches. Because you’re wise, you also pick up on falsehoods others tell."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 117,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You detect nearby magic and interpret any religious writing you come across. You might also concentrate on a protective spell for your allies in case of attack. After a battle or hazard, you might heal anyone who was hurt."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 117,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You might perform services at a temple, travel to spread the word of your deity, research scripture, celebrate holy days, or even found a new temple."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 117,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Visit the temples and holy places sacred to your faith, and have an immediate affinity with other worshippers of your deity.",
+								"Know the teachings of your religion’s holy texts and how they apply to a dilemma.",
+								"Cooperate with your allies, provided they don’t ask you to go against divine will."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 117,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"Find your devotion impressive, even if they don’t understand it.",
+								"Expect you to heal their wounds.",
+								"Rely on you to interact with other religious figures."
 							]
 						}
 					]
