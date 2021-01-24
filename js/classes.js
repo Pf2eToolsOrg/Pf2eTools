@@ -831,7 +831,11 @@ class ClassesPage extends BaseComponent {
 		<div data-feature-type="class" id="advancements"></div>
 		`.appendTo($classStats);
 
+		let ixScLvl = 0;
+		let incrementScLvl = false;
 		cls.classFeatures.forEach((lvlFeatures, ixLvl) => {
+			if (incrementScLvl) ixScLvl++;
+			incrementScLvl = false;
 			lvlFeatures.forEach((feature, ixFeature) => {
 				const $divClassFeature = $(`<div data-scroll-id="${ixLvl}-${ixFeature}" data-feature-type="class" class="${feature.gainSubclassFeature ? "cls-main__gain-sc-feature" : ""} cls-main__linked-titles"></div>`)
 					.fastSetHtml(Renderer.get().render({
@@ -842,14 +846,13 @@ class ClassesPage extends BaseComponent {
 					}))
 					.appendTo($classStats)
 
-				let ixScLvl = 0;
 				if (feature.gainSubclassFeature) {
 					$divClassFeature.attr("data-feature-type", "gain-subclass");
-					cls.subclasses.filter(it => it.type === feature.subclasses).forEach(sc => {
+					cls.subclasses.forEach(sc => {
 						const scLvlFeatures = sc.subclassFeatures[ixScLvl];
 						if (!scLvlFeatures) return;
 
-						scLvlFeatures.forEach((scFeature) => {
+						scLvlFeatures.filter(it => it.name === feature.name).forEach((scFeature) => {
 							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
 							const toRender = ptSources && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
 							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
@@ -859,8 +862,7 @@ class ClassesPage extends BaseComponent {
 								.appendTo($classStats);
 						});
 					});
-
-					ixScLvl++;
+					incrementScLvl = true;
 				}
 			});
 		});

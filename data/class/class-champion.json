@@ -1,0 +1,692 @@
+{
+	"class": [
+		{
+			"name": "Champion",
+			"source": "CRB",
+			"page": 105,
+			"HP": 10,
+			"keyAbility": "Strength or Dexterity",
+			"initialProficiencies": {
+				"perception": "T",
+				"fort": "E",
+				"ref": "T",
+				"will": "E",
+				"skills": {
+					"t": [
+						"Religion",
+						"one skill determined by your choice of deity"
+					],
+					"add": 2
+				},
+				"attacks": {
+					"t": [
+						"simple weapons",
+						"martial weapons",
+						"unarmed attacks"
+					]
+				},
+				"defenses": {
+					"t": [
+						"all armor",
+						"unarmored defense"
+					]
+				},
+				"classDc": {
+					"prof": "T",
+					"entry": "Trained in champion class DC"
+				},
+				"spells": {
+					"T": [
+						"divine spell attacks",
+						"divine spell DCs"
+					]
+				}
+			},
+			"advancement": {
+				"classFeats": [
+					1,
+					2,
+					4,
+					6,
+					8,
+					10,
+					12,
+					14,
+					16,
+					18,
+					20
+				],
+				"skillFeats": [
+					2,
+					4,
+					6,
+					8,
+					10,
+					12,
+					14,
+					16,
+					18,
+					20
+				],
+				"generalFeats": [
+					3,
+					7,
+					11,
+					15,
+					19
+				],
+				"ancestryFeats": [
+					5,
+					9,
+					13,
+					17
+				],
+				"skillIncrease": [
+					3,
+					5,
+					7,
+					9,
+					11,
+					13,
+					15,
+					17,
+					19
+				],
+				"abilityBoosts": [
+					5,
+					10,
+					15,
+					20
+				]
+			},
+			"classFeatures": [
+				"Ancestry and Background|Champion|CRB|1",
+				"Initial Proficiencies|Champion|CRB|1",
+				"Champion's Code|Champion|CRB|1",
+				{
+					"classFeature": "Deity and Cause|Champion|CRB|1",
+					"gainSubclassFeature": true
+				},
+				"Deific Weapon|Champion|CRB|1",
+				{
+					"classFeature": "Champion's Reaction|Champion|CRB|1",
+					"gainSubclassFeature": true
+				},
+				"Devotion Spells|Champion|CRB|1",
+				"Champion Feats|Champion|CRB|1",
+				"Shield Block|Champion|CRB|1",
+				"Skill Feats|Champion|CRB|2",
+				"Divine Ally|Champion|CRB|3",
+				"General Feats|Champion|CRB|3",
+				"Skill Increases|Champion|CRB|3",
+				"Ability Boosts|Champion|CRB|5",
+				"Ancestry Feats|Champion|CRB|5",
+				"Weapon Expertise|Champion|CRB|5",
+				"Armor Expertise|Champion|CRB|7",
+				"Weapon Specialization|Champion|CRB|7",
+				"Champion Expertise|Champion|CRB|9",
+				{
+					"classFeature": "Divine Smite|Champion|CRB|9",
+					"gainSubclassFeature": true
+				}
+			],
+			"subclasses": [
+				{
+					"name": "Paladin",
+					"type": "Deity and Cause",
+					"shortName": "Paladin",
+					"source": "CRB",
+					"page": 106,
+					"subclassFeatures": [
+						"Deity and Cause|Champion|CRB|Paladin|CRB|1",
+						"Champion's Reaction|Champion|CRB|Paladin|CRB|1"
+					]
+				},
+				{
+					"name": "Redeemer",
+					"type": "Deity and Cause",
+					"shortName": "Redeemer",
+					"source": "CRB",
+					"page": 106,
+					"subclassFeatures": [
+						"Deity and Cause|Champion|CRB|Redeemer|CRB|1",
+						"Champion's Reaction|Champion|CRB|Redeemer|CRB|1"
+					]
+				},
+				{
+					"name": "Liberator",
+					"type": "Deity and Cause",
+					"shortName": "Liberator",
+					"source": "CRB",
+					"page": 106,
+					"subclassFeatures": [
+						"Deity and Cause|Champion|CRB|Liberator|CRB|1",
+						"Champion's Reaction|Champion|CRB|Liberator|CRB|1"
+					]
+				}
+			],
+			"flavor": [
+				"You are an emissary of a deity, a devoted servant who has taken up a weighty mantle, and you adhere to a code that holds you apart from those around you. While champions exist for every alignment, as a champion of good, you provide certainty and hope to the innocent. You have powerful defenses that you share freely with your allies and innocent bystanders, as well as holy power you use to end the threat of evil. Your devotion even attracts the attention of holy spirits who aid you on your journey."
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "During Combat Encounters...",
+					"entries": [
+						"You confront enemies in hand-to-hand combat while carefully positioning yourself to protect your allies."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "During social encounters...",
+					"entries": [
+						"You are a voice of hope, striving to reach a peaceful solution that strengthens bonds and yields good results for all."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "While exploring...",
+					"entries": [
+						"You overcome barriers both physical and spiritual, providing inspiration to your allies through your actions and—when your fellow adventurers ask for it—providing moral and ethical guidance."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "In downtime...",
+					"entries": [
+						"You spend much of your time in solemn prayer and contemplation, rigorous training, charity work, and fulfilling the tenets of your code, but that doesn’t mean there isn’t time to take up a craft or hobby"
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "You Might...",
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"Believe there is always hope that good will triumph over evil, no matter how grim the odds.",
+								"Know the ends don’t justify the means, since evil acts increase the power of evil.",
+								"Have a strong sense of right and wrong, and grow frustrated when greed or shortsightedness breeds evil."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"page": 105,
+					"name": "Others Probably...",
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"See you as a symbol of hope, especially in a time of great need.",
+								"Worry you secretly despise them for not living up to your impossible standard, or that you are unwilling to compromise when necessary.",
+								"Know that you’ve sworn divine oaths of service they can trust you to keep."
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"classFeature": [
+		{
+			"name": "Ancestry and Background",
+			"source": "CRB",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"In addition to the abilities provided by your class at 1st level, you have the benefits of your selected ancestry and background, as described in Chapter 2."
+			]
+		},
+		{
+			"name": "Initial Proficiencies",
+			"source": "CRB",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"At 1st level, you gain a number of proficiencies that represent your basic training. These proficiencies are noted at the start of this class."
+			]
+		},
+		{
+			"name": "Champion's Code",
+			"source": "CRB",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You follow a code of conduct, beginning with tenets shared by all champions of an alignment (such as good), and continuing with tenets of your cause. Deities often add additional strictures (for instance, Torag’s champions can’t show mercy to enemies of their people, making it almost impossible for them to follow the redeemer cause). Only rules for good champions appear in this book. Tenets are listed in order of importance, starting with the most important. If a situation places two tenets in conflict, you aren’t in a no-win situation; instead, follow the more important tenet. For instance, as a paladin, if an evil king asked you if you’re hiding refugees so he could execute them, you could lie to him, since the tenet against lying is less important than preventing harm to innocents. Trying to subvert your code by creating a situation that forces a higher tenet to override a lower tenet (for example, promising not to respect authorities and then, to keep your word, disrespecting authorities) is a violation of the champion code.",
+				"If you stray from your alignment or violate your code of conduct, you lose your focus pool and divine ally until you demonstrate your repentance by conducting an atone ritual (page 409), but you keep any other champion abilities that don’t require those class features. If your alignment shifts but is still one allowed by your deity, your GM might let you retrain your cause while still following the same deity.",
+				{
+					"type": "pf2-h4",
+					"page": 106,
+					"name": "The Tenets of Good",
+					"entries": [
+						"All champions of good alignment follow these tenets.",
+						{
+							"type": "list",
+							"items": [
+								"You must never perform acts anathema to your deity or willingly commit an evil act, such as murder, torture, or the casting of an evil spell.",
+								"You must never knowingly harm an innocent, or allow immediate harm to one through inaction when you know you could reasonably prevent it. This tenet doesn’t force you to take action against possible harm to innocents at an indefinite time in the future, or to sacrifice your life to protect them."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deity and Cause",
+			"source": "CRB",
+			"subclasses": "Deity and Cause",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Champions are divine servants of a deity. Choose a deity to follow (pages 437–440); your alignment must be one allowed for followers of your deity. Actions fundamentally opposed to your deity’s ideals or alignment are anathema to your faith. A few examples of acts that would be considered anathema appear in each deity’s entry. You and your GM determine whether other acts are anathema.",
+				"You have one of the following causes. Your cause must match your alignment exactly. Your cause determines your champion’s reaction, grants you a devotion spell (page 107), and defines part of your champion’s code."
+			]
+		},
+		{
+			"name": "Deific Weapon",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You zealously bear your deity’s favored weapon. If it’s uncommon, you gain access to it. If it’s a simple weapon, increase the damage die by one step (d4 to d6, d6 to d8, d8 to d10, d10 to d12)."
+			]
+		},
+		{
+			"name": "Champion's Reaction",
+			"source": "CRB",
+			"subclasses": "Champion's Reaction",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Your cause gives you a special reaction: Retributive Strike for paladin, Glimpse of Redemption for redeemer, or Liberating Step for liberator."
+			]
+		},
+		{
+			"name": "Devotion Spells",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Your deity’s power grants you special divine spells called devotion spells, which are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you regain 1 Focus Point by spending 10 minutes using the Refocus activity to pray to your deity or do service toward their causes.",
+				"Focus spells are automatically heightened to half your level rounded up. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules are on page 300. You gain a devotion spell depending on your cause, and you are trained in divine spell attack rolls and spell DCs. Your spellcasting ability is Charisma."
+			]
+		},
+		{
+			"name": "Champion Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"At 1st level and every even-numbered level thereafter, you gain a champion class feat. Champion class feats are presented beginning on page 109."
+			]
+		},
+		{
+			"name": "Shield Block",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You gain the {@feat Shield Block|CRB} general feat, a reaction that lets you reduce damage with your shield."
+			]
+		},
+		{
+			"name": "Skill Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 2,
+			"entries": [
+				"At 2nd level and every 2 levels thereafter, you gain a skill feat. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+			]
+		},
+		{
+			"name": "Divine Ally",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"Your devotion attracts a spirit of your deity’s alignment.",
+				"Once you choose an ally, your choice can’t be changed.",
+				"The following are divine allies:",
+				{
+					"type": "entries",
+					"entries": [
+						{
+							"type": "entries",
+							"entries": [
+								{
+									"type": "entries",
+									"name": "Blade Ally:",
+									"entries": [
+										"A spirit of battle dwells within your weapon. Select one weapon when you make your daily preparations. In your hands, the weapon gains the effect of a property rune. For a champion following the tenets of good, choose disrupting, ghost touch, returning, or shifting. You also gain the weapon’s critical specialization effect."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Shield Ally:",
+									"entries": [
+										"A spirit of protection dwells within your shield. In your hands, the shield’s Hardness increases by 2 and its HP and BT increase by half."
+									]
+								},
+								{
+									"type": "entries",
+									"name": "Steed Ally:",
+									"entries": [
+										"You gain a young animal companion as a mount (page 214). Ordinarily, your animal companion is one that has the mount special ability, such as a horse. You can select a different animal companion (GM’s discretion), but this ability doesn’t grant it the mount special ability."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "General Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 4 levels thereafter, you gain a general feat. General feats are listed in Chapter 5."
+			]
+		},
+		{
+			"name": "Skill Increases",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 2 levels thereafter, you gain a skill increase. You can use this increase either to increase your proficiency rank to trained in one skill you’re untrained in, or to increase your proficiency rank in one skill in which you’re already trained to expert.",
+				"At 7th level, you can use skill increases to increase your proficiency rank to master in a skill in which you’re already an expert, and at 15th level, you can use them to increase your proficiency rank to legendary in a skill in which you’re already a master."
+			]
+		},
+		{
+			"name": "Ability Boosts",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"At 5th level and every 5 levels thereafter, you boost four different ability scores. You can use these ability boosts to increase your ability scores above 18. Boosting an ability score increases it by 1 if it’s already 18 or above, or by 2 if it starts out below 18."
+			]
+		},
+		{
+			"name": "Ancestry Feats",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"In addition to the ancestry feat you started with, you gain an ancestry feat at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry’s entry in Chapter 2."
+			]
+		},
+		{
+			"name": "Weapon Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"You’ve dedicated yourself to learning the intricacies of your weapons. Your proficiency ranks for simple weapons and martial weapons increase to expert."
+			]
+		},
+		{
+			"name": "Armor Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 7,
+			"entries": [
+				"You have spent so much time in armor that you know how to make the most of its protection. Your proficiency ranks for light, medium, and heavy armor, as well as for unarmored defense, increase to expert. You gain the armor specialization effects of medium and heavy armor."
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 7,
+			"entries": [
+				"You’ve learned how to inflict greater injuries with the weapons you know best. You deal 2 additional damage with weapons and unarmed attacks in which you are an expert. This damage increases to 3 if you’re a master, and to 4 if you’re legendary."
+			]
+		},
+		{
+			"name": "Champion Expertise",
+			"source": "CRB",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 9,
+			"entries": [
+				"Prayers strengthen your divine power. Your proficiency ranks for your champion class DC and divine spell attack rolls and DCs increase to expert."
+			]
+		},
+		{
+			"name": "Divine Smite",
+			"source": "CRB",
+			"subclasses": "Divine Smite",
+			"page": 108,
+			"className": "Champion",
+			"classSource": "CRB",
+			"level": 9,
+			"entries": [
+				"Your champion’s reaction improves."
+			]
+		}
+	],
+	"subclassFeature": [
+		{
+			"name": "Deity and Cause",
+			"source": "CRB",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Paladin",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 106,
+					"name": "Paladin (Lawful Good)",
+					"entries": [
+						"You’re honorable, forthright, and committed to pushing back the forces of cruelty. You gain the Retributive Strike champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets:",
+						{
+							"type": "list",
+							"items": [
+								"You must act with honor, never taking advantage of others, lying, or cheating.",
+								"You must respect the lawful authority of legitimate leadership wherever you go, and follow its laws."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deity and Cause",
+			"source": "CRB",
+			"page": 106,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Redeemer",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 106,
+					"name": "Redeemer (Neutral Good)",
+					"entries": [
+						"You’re full of kindness and forgiveness. You gain the Glimpse of Redemption champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these:",
+						{
+							"type": "list",
+							"items": [
+								"You must first try to redeem those who commit evil acts, rather than killing them or meting out punishment. If they then continue on a wicked path, you might need to take more extreme measures.",
+								"You must show compassion for others, regardless of their authority or station."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Deity and Cause",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Liberator",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 107,
+					"name": "Liberator (Chaotic Good)",
+					"entries": [
+						"You’re committed to defending the freedom of others. You gain the Liberating Step champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets:",
+						{
+							"type": "list",
+							"items": [
+								"You must respect the choices others make over their own lives, and you can’t force someone to act in a particular way or threaten them if they don’t.",
+								"You must demand and fight for others’ freedom to make their own decisions. You may never engage in or countenance slavery or tyranny"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Champion's Reaction",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Paladin",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You protect your ally and strike your foe. The ally gains resistance to all damage against the triggering damage equal to 2 + your level. If the foe is within reach, make a melee Strike against it."
+					],
+					"type": "ability",
+					"name": "Retributive Strike",
+					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+				}
+			]
+		},
+		{
+			"name": "Champion's Reaction",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Redeemer",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"Your foe hesitates under the weight of sin as visions of redemption play in their mind’s eye. The foe must choose one of the following options:",
+						{
+							"type": "list",
+							"items": [
+								"The ally is unharmed by the triggering damage.",
+								"The ally gains resistance to all damage against the triggering damage equal to 2 + your level. After the damaging effect is applied, the enemy becomes enfeebled 2 until the end of its next turn."
+							]
+						}
+					],
+					"type": "ability",
+					"name": "Glimpse of Redemption",
+					"trigger": "An enemy damages your ally, and both are within 15 feet of you."
+				}
+			]
+		},
+		{
+			"name": "Champion's Reaction",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Liberator",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You free an ally from restraint. If the trigger was an ally taking damage, the ally gains resistance to all damage against the triggering damage equal to 2 + your level. The ally can attempt to break free of effects grabbing, restraining, immobilizing, or paralyzing them. They either attempt a new save against one such effect that allows a save, or attempt to Escape from one effect as a free action. If they can move, the ally can Step as a free action, even if they didn’t need to escape."
+					],
+					"type": "ability",
+					"name": "Liberating Step",
+					"trigger": "An enemy damages, Grabs, or {@action Grapple|CRB|Grapples} your ally, and both are within 15 feet of you."
+				}
+			]
+		},
+		{
+			"name": "Divine Smite",
+			"source": "CRB",
+			"page": 107,
+			"className": "Champion",
+			"classSource": "CRB",
+			"subclassShortName": "Paladin",
+			"subclassSource": "CRB",
+			"level": 9,
+			"entries": [
+				"{@b Paladin:} You surround evil targets in a punishing halo. If you hit with your Retributive Strike, the target takes persistent good damage equal to your Charisma modifier."
+			]
+		}
+	]
+}
