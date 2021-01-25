@@ -130,7 +130,7 @@ class Hist {
 	}
 
 	static setMainHash (hash) {
-		const subHashPart = Hist.util.getHashParts(window.location.hash, key, val).slice(1).join(HASH_PART_SEP);
+		const subHashPart = Hist.util.getHashParts(window.location.hash).slice(1).join(HASH_PART_SEP);
 		Hist.cleanSetHash([hash, subHashPart].filter(Boolean).join(HASH_PART_SEP));
 	}
 

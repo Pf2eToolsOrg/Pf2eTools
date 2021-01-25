@@ -4,7 +4,7 @@ class RenderSpells {
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const level = sp.type === "CANTRIP" ? 1 : sp.level
+		const level = sp.type === "CANTRIP" ? " 1" : ` ${sp.level}`;
 
 		renderStack.push(`
 		${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}

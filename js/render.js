@@ -1092,40 +1092,15 @@ function Renderer () {
 	this._renderAbility = function (entry, textStack, meta, options) {
 		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
 		this._handleTrackDepth(entry, 1);
+		const renderer = Renderer.get().setFirstSection(true);
 
-		textStack[0] += `<p class="pf2-stat__section"><span><strong>${entry.name} </strong>`
-		if (entry.activity != null) this._recursiveRender(`${entry.activity.entry} `, textStack, meta);
-		if (entry.traits != null && entry.traits.length) {
-			let trts = []
-			entry.traits.forEach((t) => {
-				let traitname = Parser.getTraitName(t)
-				trts.push(Renderer.get().render(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`))
-			});
-			textStack[0] += `(${trts.join(", ")}); `
-		}
-		let add_effect = false
-		if (entry.frequency != null) {
-			add_effect = true
-			textStack[0] += `<strong>Frequency </strong>`
-			this._recursiveRender(`${entry.frequency} `, textStack, meta)
-		}
-		if (entry.requirements != null) {
-			add_effect = true
-			textStack[0] += `<strong>Requirements </strong>`
-			this._recursiveRender(`${entry.requirements} `, textStack, meta)
-		}
-		if (entry.trigger != null) {
-			add_effect = true
-			textStack[0] += `<strong>Trigger </strong>`
-			this._recursiveRender(`${entry.trigger} `, textStack, meta)
-		}
-		if (add_effect) textStack[0] += `<strong>Effect </strong>`
-		entry.entries.forEach((e) => {
-			this._recursiveRender(e, textStack, meta, {isAbility: true})
-		});
-		if (entry.no_map) textStack[0] += "; no multiple attack penalty"
-		textStack[0] = textStack[0].replace(/;$/, ".");
-		textStack[0] += `</span></p>`;
+		textStack[0] += `<div class="pf2-stat pf2-book--stat">`;
+		textStack[0] += Renderer.utils.getNameDiv(entry, {activity: true, type: ""});
+		textStack[0] += Renderer.utils.getDividerDiv();
+		textStack[0] += Renderer.utils.getTraitsDiv(entry.traits || []);
+		textStack[0] += Renderer.action.getSubHead(entry);
+		entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
+		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
@@ -2719,6 +2694,33 @@ function Renderer () {
 				break;
 			}
 
+			case "@runeItem": {
+				const {hashes, displayText, name, source} = DataUtil.runeItem.unpackUid(text);
+				let [baseItemHash, ...runeHashes] = hashes;
+
+				const preloadId = `${VeCt.HASH_ITEM_RUNES}${HASH_SUB_KV_SEP}${baseItemHash}${HASH_SUB_LIST_SEP}${runeHashes.join(HASH_SUB_LIST_SEP)}`;
+				const itemsPageHash = `${baseItemHash}${HASH_PART_SEP}runebuilder${HASH_SUB_KV_SEP}true${HASH_SUB_LIST_SEP}${runeHashes.join(HASH_SUB_LIST_SEP)}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_ITEMS,
+						hash: itemsPageHash,
+						hashPreEncoded: true,
+						hover: {
+							page: UrlUtil.PG_ITEMS,
+							source,
+							hash: UrlUtil.URL_TO_HASH_BUILDER["runeItem"]({name, source}),
+							hashPreEncoded: true,
+							preloadId,
+						},
+					},
+					text: displayText || name,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
 			default: {
 				const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
 				const hash = `${name}${HASH_LIST_SEP}${source}`;
@@ -4116,7 +4118,7 @@ Renderer.spell = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const level = spell.type === "CANTRIP" ? 1 : spell.level
+		const level = spell.type === "CANTRIP" ? " 1" : ` ${spell.level}`;
 
 		renderStack.push(`
 		${Renderer.utils.getExcludedDiv(spell, "spell", UrlUtil.PG_SPELLS)}
@@ -5868,7 +5870,7 @@ Renderer.item = {
 		const renderStack = [""]
 		Renderer.get().recursiveRender(item.entries, renderStack, {depth: 1}, {pf2StatFix: true})
 
-		return `${Renderer.utils.getExcludedDiv(item, "item")}
+		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(item.traits)}
@@ -6575,6 +6577,43 @@ Renderer.item = {
 	},
 };
 
+Renderer.runeItem = {
+	getRuneShortName (rune) {
+		if (rune.shortName) return rune.shortName;
+		let name = typeof rune === "string" ? rune : rune.name;
+		if (name.startsWith("+")) return name.split(" ")[0];
+		return name.toTitleCase();
+	},
+
+	getTag (baseItem, runes) {
+		return [baseItem].map(it => [it.name, it.source]).concat(runes.map(it => [it.name, it.source])).flat().join("|")
+	},
+
+	getHashesFromTag (tag) {
+		const split = tag.split("|").map(it => it.trim()).map(it => it === "" ? SRC_CRB : it);
+		if (split.length % 2) {
+			split.pop();
+		}
+		const out = [];
+		while (split.length) { out.push(split.splice(0, 2)) }
+		return out.map(it => UrlUtil.encodeForHash(it));
+	},
+
+	getRuneItem (baseItem, runes) {
+		let runeItem = MiscUtil.copy(baseItem);
+		runeItem.name = [...runes.map(r => Renderer.runeItem.getRuneShortName(r)), runeItem.name].join(" ");
+		runeItem.type = "item";
+		runeItem.category = "Rune Item";
+		runeItem.level = Math.max(...runes.map(r => r.level));
+		runeItem.traits = [...new Set([baseItem.traits, ...runes.map(it => it.traits)].flat())].sort(SortUtil.sortTraits);
+		const value = [baseItem, ...runes].map(it => Parser.priceToValue(it.price)).reduce((a, b) => a + b, 0);
+		runeItem.price = {coin: "gp", amount: Math.floor(value / 100)};
+		runeItem.entries = [runeItem.entries, ...runes.map(r => r.entries.map((e, idx) => idx === 0 ? `{@bold ${r.name}} ${e}` : e))].flat();
+		runeItem.runeItem = true;
+		return runeItem;
+	},
+};
+
 Renderer.rule = {
 	getCompactRenderedString (rule) {
 		return `
@@ -6941,6 +6980,14 @@ Renderer.hover = {
 				case VeCt.HASH_MON_SCALED: {
 					const baseMon = await Renderer.hover.pCacheAndGet(page, source, hash);
 					toRender = await ScaleCreature.scale(baseMon, Number(data));
+					break;
+				}
+				case VeCt.HASH_ITEM_RUNES: {
+					toRender = Renderer.hover._getFromCache(page, source, hash);
+					if (toRender) break;
+					const [baseItem, ...runes] = await Promise.all(data.split(HASH_SUB_LIST_SEP).map(h => Renderer.hover.pCacheAndGet(page, h.split(HASH_LIST_SEP)[1], h)));
+					toRender = Renderer.runeItem.getRuneItem(baseItem, runes);
+					Renderer.hover._addToCache(page, source, hash, toRender);
 					break;
 				}
 			}
@@ -8813,6 +8860,11 @@ Renderer._stripTagLayer = function (str) {
 					case "@subclassFeature": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 8 ? parts[7] : parts[0];
+					}
+
+					case "@runeItem": {
+						const parts = Renderer.splitTagByPipe(text);
+						return parts.length % 2 ? parts[parts.length - 1] : parts.push(parts.shift()).map(it => it[0]).map(it => Renderer.runeItem.getRuneShortName(it)).join(" ");
 					}
 
 					case "@homebrew": {

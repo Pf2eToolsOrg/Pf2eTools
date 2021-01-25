@@ -146,6 +146,16 @@
 		line-height: 1.35em;
 	}
 
+	&--stat {
+		font-size: 0.75em;
+		margin: 0.6em 0;
+
+		.rd__list li {
+			font-family: 'good-pro', sans-serif;
+			font-size: 1em;
+		}
+	}
+
 	// TODO: refactor into list rendering
 	&__option {
 		font-family: 'good-pro', sans-serif;
@@ -971,6 +981,48 @@
 			50% {
 				opacity: 10%;
 			}
+		}
+	}
+}
+
+.rigen__ {
+	&visible {
+		display: none;
+	}
+
+	&btn_list {
+		padding: 0 1px;
+		line-height: 12px;
+		font-size: 9px;
+		border-radius: 3px;
+	}
+}
+
+.rigen_active {
+	.rigen {
+		&__visible {
+			display: block;
+		}
+
+		&__visible--flex {
+			display: flex;
+		}
+
+		&__visible--flex-col {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__hidden {
+			display: none !important;
+		}
+
+		&__name {
+			width: 26.66666666%;
+		}
+
+		&__name--sub {
+			width: 29.16666667%;
 		}
 	}
 }

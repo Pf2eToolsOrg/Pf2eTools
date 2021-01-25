@@ -29,8 +29,8 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	initUi () {
-		$(`#btn-encounterbuild`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
-		$(`#btn-encounterstatblock`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, null));
+		$(`#btn-encounterbuild`).off("click").click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
+		$(`#btn-encounterstatblock`).off("click").click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, null));
 
 		this._initRandomHandlers();
 		this._initAdjustHandlers();
