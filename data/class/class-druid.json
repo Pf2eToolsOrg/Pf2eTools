@@ -3,36 +3,39 @@
 		{
 			"name": "Druid",
 			"source": "CRB",
-			"page": 71,
+			"page": 129,
 			"HP": 8,
-			"keyAbility": "Intelligence",
+			"keyAbility": "Wisdom",
 			"initialProficiencies": {
 				"perception": "T",
-				"fort": "E",
-				"ref": "E",
-				"will": "T",
+				"fort": "T",
+				"ref": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"Nature",
+						"one skill determined by your druidic order"
 					],
-					"add": 3
+					"add": 2
 				},
 				"attacks": {
 					"t": [
 						"simple weapons",
-						"alchemical bombs",
 						"unarmed attacks"
 					]
 				},
 				"defenses": {
 					"t": [
 						"light armor",
+						"medium armor",
 						"unarmored defense"
 					]
 				},
-				"classDc": {
-					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+				"spells": {
+					"T": [
+						"primal spell attacks",
+						"primal spell DCs"
+					]
 				}
 			},
 			"advancement": {
@@ -93,87 +96,119 @@
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
+				"Ancestry and Background|Druid|CRB|1",
+				"Initial Proficiencies|Druid|CRB|1",
+				"Primal Spellcasting|Druid|CRB|1",
+				"Anathema|Druid|CRB|1",
+				"Druidic Language|Druid|CRB|1",
 				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
+					"classFeature": "Druidic Order|Druid|CRB|1",
 					"gainSubclassFeature": true
-				},
-				"Book|Alchemist|CRB|2"
+				}
 			],
 			"subclasses": [
 				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
+					"name": "Animal",
+					"type": "Druidic Order",
+					"shortName": "Animal",
 					"source": "CRB",
-					"page": 73,
+					"page": 131,
 					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
+						"Druidic Order|Druid|CRB|Animal|CRB|1"
+					]
+				},
+				{
+					"name": "Leaf",
+					"type": "Order",
+					"shortName": "Leaf",
+					"source": "CRB",
+					"page": 131,
+					"subclassFeatures": [
+						"Druidic Order|Druid|CRB|Leaf|CRB|1"
+					]
+				},
+				{
+					"name": "Storm",
+					"type": "Druidic Order",
+					"shortName": "Storm",
+					"source": "CRB",
+					"page": 132,
+					"subclassFeatures": [
+						"Druidic Order|Druid|CRB|Storm|CRB|1"
+					]
+				},
+				{
+					"name": "Wild",
+					"type": "Druidic Order",
+					"shortName": "Wild",
+					"source": "CRB",
+					"page": 132,
+					"subclassFeatures": [
+						"Druidic Order|Druid|CRB|Wild|CRB|1"
 					]
 				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"The power of nature is impossible to resist. It can bring ruin to the stoutest fortress in minutes, reducing even the mightiest works to rubble, burning them to ash, burying them beneath an avalanche of snow, or drowning them beneath the waves. It can provide endless bounty and breathtaking splendor to those who respect it— and an agonizing death to those who take it too lightly. You are one of those who hear nature’s call. You stand in awe of the majesty of its power and give yourself over to its service."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"You call upon the forces of nature to defeat your enemies and protect your allies. You cast spells that draw upon primal magic to protect yourself and your friends, heal their wounds, or summon deadly animals to fight at your side. Depending on your bond to nature, you might call upon powerful elemental magic or change shape into a terrifying beast."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 129,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"You represent balance and a reasoned approach to problems, looking for solutions that not only are best for the natural world, but also allow the creatures within it to live in harmony and peace. You often propose compromises that allow both sides to gain what they truly need, even if they can’t have all that they desire."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 129,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"Your nature skills are invaluable. You track down enemies, navigate the wilderness, and use spells to detect magical auras around you. You might even ask wild animals to lend their extraordinary senses and scouting abilities to your group."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 129,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You might craft magic items or potions. Alternatively, your tie to nature might lead you to tend a wilderness area, befriending beasts and healing the wounds caused by civilization. You might even teach sustainable farming and animal husbandry techniques that allow others to subsist off the land without harming the natural balance."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 129,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Have a deep and meaningful respect for the power of nature.",
+								"Be in constant awe of the natural world, eager to share it with others but wary of their influence upon it.",
+								"Treat plants and animals as allies, working with them to reach your goals."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 129,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"View you as a representative of nature, and are sure you can control it.",
+								"Assume you’re a recluse who avoids society and cities and prefers to live in the wild.",
+								"Consider you a mystic, similar to a priest, but answering only to the forces of nature."
 							]
 						}
 					]
@@ -183,71 +218,181 @@
 	],
 	"classFeature": [
 		{
-			"name": "Alchemy",
+			"name": "Ancestry and Background",
 			"source": "CRB",
-			"page": 72,
-			"className": "Alchemist",
+			"page": 130,
+			"className": "Druid",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the Craft activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don’t understand your strange science.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"In addition to the abilities provided by your class at 1st level, you have the benefits of your selected ancestry and background, as described in Chapter 2."
 			]
 		},
 		{
-			"name": "Formula Book",
+			"name": "Initial Proficiencies",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 130,
+			"className": "Druid",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"At 1st level, you gain a number of proficiencies that represent your basic training, noted at the start of this class."
 			]
 		},
 		{
-			"name": "Research Field",
+			"name": "Primal Spellcasting",
 			"source": "CRB",
-			"subclasses": "Research Field",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 130,
+			"className": "Druid",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute,  correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
+				"The power of the wild world flows through you. You can cast primal spells using the Cast a Spell activity, and you can supply material, somatic, and verbal components when casting spells (see Casting Spells). Because you're a druid, you can usually hold a primal focus (such as holly and mistletoe) for spells requiring material components instead of needing to use a material component pouch.",
+				"At 1st level, you can prepare two 1st-level spells and five cantrips each morning from the common spells on the primal spell list in this book, or from other primal spells to which you gain access. Prepared spells remain available to you until you cast them or until you prepare your spells again. The number of spells you can prepare is called your spell slots.",
+				"As you increase in level as a druid, the number of spells you can prepare each day increases, as does the highest level of spell you can cast, as shown in Table 3–11: Druid Spells per Day.",
+				"Some of your spells require you to attempt a spell attack roll to see how effective they are, or have your enemies roll against your spell DC (typically by attempting a saving throw). Since your key ability is Wisdom, your spell attack rolls and spell DCs use your Wisdom modifier. Details on calculating these statistics appear in Spell Attack Rolls.",
+				{
+					"type": "pf2-h4",
+					"page": 130,
+					"name": "Heightening Spells",
+					"entries": [
+						"When you gain spell slots of 2nd level and higher, you can fill those slots with stronger versions of lower-level spells. This increases the spell's level, heightening it to match the spell slot. Many spells have specific improvements when they are heightened to certain levels."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"page": 130,
+					"name": "Cantrips",
+					"entries": [
+						"Some of your spells are cantrips. A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is automatically heightened to half your level rounded up—this is usually equal to the highest level of druid spell slot you have. For example, as a 1st-level druid, your cantrips are 1st-level spells, and as a 5th-level druid, your cantrips are 3rd-level spells."
+					]
+				}
 			]
 		},
 		{
-			"name": "Book",
+			"name": "Anathema",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 130,
+			"className": "Druid",
 			"classSource": "CRB",
-			"level": 2,
+			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"As stewards of the natural order, druids find affronts to nature anathema. If you perform enough acts that are anathema to nature, you lose your magical abilities that come from the druid class, including your primal spellcasting and the benefits of your order. These abilities can be regained only if you demonstrate your repentance by conducting an atone ritual.",
+				"The following acts are anathema to all druids:",
+				{
+					"type": "list",
+					"items": [
+						"Using metal armor or shields.",
+						"Despoiling natural places.",
+						"Teaching the Druidic langauge to non-druids."
+					]
+				},
+				"Each druidic order also has additional anathema acts, detailed in the order’s entry."
+			]
+		},
+		{
+			"name": "Druidic Language",
+			"source": "CRB",
+			"page": 130,
+			"className": "Druid",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You know Druidic, a secret language known to only druids, in addition to any languages you know through your ancestry. Druidic has its own alphabet. Teaching the Druidic language to non-druids is anathema."
+			]
+		},
+		{
+			"name": "Druidic Order",
+			"source": "CRB",
+			"subclasses": "Druidic Order",
+			"page": 131,
+			"className": "Druid",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Upon becoming a druid, you align yourself with a druidic order, which grants you a class feat, an order spell (see below), and an additional trained skill tied to your order. While you'll always be a member of your initial order, it's not unheard of for a druid to request to study with other orders in search of greater understanding of the natural world, and PC druids are among the most likely to blend the powers of different orders.",
+				"Order spells are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the Refocus activity to commune with local nature spirits or otherwise tend to the wilderness in a way befitting your order.",
+				"Focus spells are automatically heightened to half your level rounded up, much like cantrips. Focus spells don't require spell slots to cast, and you can't cast them using spell slots. Selecting druid feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 points. The full rules for focus spells are found here."
 			]
 		}
 	],
 	"subclassFeature": [
 		{
-			"name": "Bomber",
+			"name": "Druidic Order",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 131,
+			"className": "Druid",
 			"classSource": "CRB",
-			"subclassShortName": "Bomber",
+			"subclassShortName": "Animal",
 			"subclassSource": "CRB",
 			"level": 1,
 			"entries": [
 				{
 					"type": "pf2-h4",
-					"name": "Bomber",
+					"page": 131,
+					"name": "Animal",
 					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.",
-						"When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area."
+						"You have a strong connection to beasts, and you are allied with a beast companion. You are trained in Athletics. You also gain the Animal Companion druid feat. You gain the heal animal order spell. Committing wanton cruelty to animals or killing animals unnecessarily is anathema to your order. (This doesn’t prevent you from defending yourself against animals or killing them cleanly for food."
+					]
+				}
+			]
+		},
+		{
+			"name": "Druidic Order",
+			"source": "CRB",
+			"page": 131,
+			"className": "Druid",
+			"classSource": "CRB",
+			"subclassShortName": "Leaf",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 131,
+					"name": "Leaf",
+					"entries": [
+						"You revere plants and the bounty of nature, acting as both a gardener and warden for the wilderness, teaching sustainable techniques to communities, and helping areas regrow after disasters or negligent humanoid expansion. You are trained in Diplomacy. You also gain the Leshy Familiar druid feat. You gain the goodberry order spell, and you increase the number of Focus Points in your focus pool by 1. Committing wanton cruelty to plants or killing plants unnecessarily is anathema to your order. (This doesn’t prevent you from defending yourself against plants or harvesting them when necessary for survival.)"
+					]
+				}
+			]
+		},
+		{
+			"name": "Druidic Order",
+			"source": "CRB",
+			"page": 132,
+			"className": "Druid",
+			"classSource": "CRB",
+			"subclassShortName": "Storm",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 132,
+					"name": "Storm",
+					"entries": [
+						"You carry the fury of the storm within you, channeling it to terrifying effect and riding the winds through the sky. You are trained in Acrobatics. You also gain the Storm Born druid feat. You gain the tempest surge order spell, and you increase the number of Focus Points in your focus pool by 1. Polluting the air or allowing those who cause major air pollution or climate shifts to go unpunished is anathema to your order. (This doesn’t force you to take action against merely potential harm to the environment or to sacrifice yourself against an obviously superior foe.)"
+					]
+				}
+			]
+		},
+		{
+			"name": "Druidic Order",
+			"source": "CRB",
+			"page": 132,
+			"className": "Druid",
+			"classSource": "CRB",
+			"subclassShortName": "Wild",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"page": 132,
+					"name": "Wild",
+					"entries": [
+						"The savage, uncontrollable call of the natural world infuses you, granting you the ability to change your shape and take on the ferocious form of a wild creature. You are trained in Intimidation. You also gain the Wild Shape druid feat. You gain the wild morph order spell. Becoming fully domesticated by the temptations of civilization is anathema to your order. (This doesn’t prevent you from buying and using processed goods or staying in a city for an adventure, but you can never come to rely on these conveniences or truly call such a place your permanent home.)"
 					]
 				}
 			]
