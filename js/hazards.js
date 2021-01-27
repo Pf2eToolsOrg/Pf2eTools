@@ -94,8 +94,26 @@ class HazardsPage extends ListPage {
 	doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const it = this._dataList[id];
+		const $pgContent = $("#pagecontent").empty();
 
-		$(`#pagecontent`).empty().append(RenderHazards.$getRenderedTrapHazard(it));
+		const buildStatsTab = () => {
+			$pgContent.append(RenderHazards.$getRenderedTrapHazard(it));
+		};
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("hazard");
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Hazard",
+			() => {},
+			buildStatsTab,
+		);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

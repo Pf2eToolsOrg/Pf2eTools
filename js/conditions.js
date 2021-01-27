@@ -87,14 +87,22 @@ class ConditionsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderConditionDiseases.$getRenderedConditionDisease(it));
 		}
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("condition");
+			$content.append(quickRules);
+		}
 
 		const statTab = Renderer.utils.tabButton(
-			"Traits",
+			"Condition",
 			() => {},
 			buildStatsTab,
 		);
-
-		Renderer.utils.bindTabButtons(statTab);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

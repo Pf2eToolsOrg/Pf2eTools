@@ -1,7 +1,6 @@
 "use strict";
 
 class PageFilterAfflictions extends PageFilter {
-
 	static getFilterLevel (level) {
 		return isNaN(Number(level)) ? "Varies" : Number(level);
 	}

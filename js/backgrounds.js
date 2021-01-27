@@ -95,28 +95,21 @@ class BackgroundPage extends ListPage {
 		const buildStatsTab = () => {
 			$pgContent.append(RenderBackgrounds.$getRenderedBackground(bg));
 		};
-
-		const buildFluffTab = (isImageTab) => {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content: $pgContent,
-				pFnGetFluff: Renderer.background.pGetFluff,
-				entity: bg,
-			});
-		};
-
-		const traitTab = Renderer.utils.tabButton(
-			"Traits",
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("background");
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Background",
 			() => {},
 			buildStatsTab,
 		);
-
-		const picTab = Renderer.utils.tabButton(
-			"Images",
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
 			() => {},
-			buildFluffTab.bind(null, true),
+			buildInfoTab,
 		);
-		Renderer.utils.bindTabButtons(traitTab);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

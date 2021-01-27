@@ -1217,6 +1217,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h1" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
+		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1270,6 +1271,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
+		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1296,6 +1298,7 @@ function Renderer () {
 			if (entry.level) textStack[0] += `<span class="pf2-h3--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
 			textStack[0] += `</p>`;
 		}
+		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1319,6 +1322,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
+		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1342,6 +1346,7 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
+		this._firstSection = false;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -3866,6 +3871,15 @@ Renderer.utils = {
 		$td.fastSetHtml(renderedText);
 	},
 
+	async pGetQuickRules (prop) {
+		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/quickrules.json`);
+		const renderer = Renderer.get().setFirstSection(true);
+		const toRender = data[prop];
+		const textStack = [""];
+		renderer.recursiveRender(toRender.entries, textStack, {depth: 1}, {prefix: "<p class='pf2-p'>", suffix: "</p>"});
+		return $$`${textStack.join("")}${Renderer.utils.getPageP(toRender)}`;
+	},
+
 	HTML_NO_INFO: "<i>No information available.</i>",
 	HTML_NO_IMAGES: "<i>No images available.</i>",
 
@@ -4266,7 +4280,7 @@ Renderer.affliction = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const rLvl = isNaN(Number(affliction.level)) ? `, ${affliction.level}` : affliction.level;
+		const rLvl = isNaN(Number(affliction.level)) ? `, ${affliction.level}` : ` ${affliction.level}`;
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(affliction, affliction.__prop || affliction._type, UrlUtil.PG_AFFLICTIONS)}`)
 		renderStack.push(`
@@ -4800,7 +4814,7 @@ Renderer.hazard = {
 		}
 		if (hazard.actions) {
 			hazard.actions.forEach(a => {
-				if (a.type === "ability") renderer.recursiveRender(a, renderStack, {depth: 1}, {isAbility: true});
+				if (a.type === "ability") renderStack.push(Renderer.hazard.getRenderedAbility(a));
 				else {
 					renderStack.push(`<p class="pf2-stat__section">`);
 					renderStack.push(`<span><strong>${a.range} </strong>`);
@@ -4829,7 +4843,7 @@ Renderer.hazard = {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			hazard.routine.forEach((entry, idx) => {
 				if (idx !== 0) {
-					if (typeof entry === "object") renderer.recursiveRender(entry, renderStack, {depth: 1});
+					if (typeof entry === "object") renderStack.push(Renderer.hazard.getRenderedAbility(entry));
 					else renderer.recursiveRender(entry, renderStack, {depth: 1}, {prefix: `<p class="pf2-stat__text--wide">`, suffix: "</p>"});
 				} else renderStack.push(`<p class="pf2-stat__text--wide"><strong>Routine </strong>${renderer.render(entry)}</p>`);
 			});
@@ -4842,6 +4856,32 @@ Renderer.hazard = {
 		}
 		renderStack.push(Renderer.utils.getPageP(hazard))
 		return renderStack.join("")
+	},
+
+	getRenderedAbility (ability, options) {
+		options = options || {};
+
+		const renderer = Renderer.get();
+		const entryStack = [];
+		renderer.recursiveRender(ability.entries, entryStack, {depth: 2}, {isAbility: true});
+
+		let trts = []
+		if (ability.traits != null && ability.traits.length) {
+			ability.traits.forEach((t) => {
+				let traitname = Parser.getTraitName(t)
+				trts.push(Renderer.get().render(`{@trait ${traitname}|${Parser.TRAITS_TO_TRAITS_SRC[traitname]}|${t}}`))
+			});
+		}
+
+		return `<p class="pf2-stat__section"><span><strong>${ability.name} </strong>
+					${ability.activity ? renderer.render(ability.activity.entry) : ""}
+					${trts.length ? `(${trts.join(", ")}); ` : ""}
+					${ability.frequency ? `<strong>Frequency </strong>${renderer.render(ability.frequency)}` : ""}
+					${ability.requirements ? `<strong>Requirements </strong>${renderer.render(ability.requirements)}` : ""}
+					${ability.trigger ? `<strong>Trigger </strong>${renderer.render(ability.trigger)}` : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect </strong>" : ""}
+					${entryStack.join("")}
+					</span></p>`;
 	},
 };
 

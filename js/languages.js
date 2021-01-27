@@ -90,9 +90,12 @@ class LanguagesPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderLanguages.$getRenderedLanguage(it));
 		}
-
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("language");
+			$content.append(quickRules);
+		}
 		const statTab = Renderer.utils.tabButton(
-			"Traits",
+			"Language",
 			() => {},
 			buildStatsTab,
 		);
@@ -177,9 +180,13 @@ class LanguagesPage extends ListPage {
 				</div>`.appendTo($div);
 			},
 		);
-
-		if (it.fonts) Renderer.utils.bindTabButtons(statTab, fontTab);
-		else Renderer.utils.bindTabButtons(statTab);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		if (it.fonts) Renderer.utils.bindTabButtons(statTab, fontTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}
