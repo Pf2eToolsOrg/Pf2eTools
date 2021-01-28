@@ -8,7 +8,7 @@ class PageFilterAfflictions extends PageFilter {
 	constructor () {
 		super();
 		this._typeFilter = new Filter({header: "Type"});
-		this._levelFilter = new RangeFilter({header: "Level"});
+		this._levelFilter = new RangeFilter({header: "Level", isLabelled: true, labels: [...[...Array(21).keys()].slice(1), "Varies"]});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
 	}
 
