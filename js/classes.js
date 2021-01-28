@@ -151,8 +151,18 @@ class ClassesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		const {class: rawClassData} = homebrew;
-		const cpy = MiscUtil.copy({class: rawClassData});
+		const {class: rawClassData, subclass: rawSubclassData} = homebrew;
+		const cpy = MiscUtil.copy({class: rawClassData, subclass: rawSubclassData});
+		if (cpy.class) {
+			for (let i = 0; i < cpy.class.length; ++i) {
+				cpy.class[i] = await DataUtil.class.pGetDereferencedClassData(cpy.class[i])
+			}
+		}
+		if (cpy.subclass) {
+			for (let i = 0; i < cpy.subclass.length; ++i) {
+				cpy.subclass[i] = await DataUtil.class.pGetDereferencedSubclassData(cpy.subclass[i])
+			}
+		}
 
 		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(cpy);
 
