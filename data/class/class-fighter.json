@@ -3,36 +3,39 @@
 		{
 			"name": "Fighter",
 			"source": "CRB",
-			"page": 71,
-			"HP": 8,
-			"keyAbility": "Intelligence",
+			"page": 140,
+			"HP": 10,
+			"keyAbility": "Strength or Dexterity",
 			"initialProficiencies": {
-				"perception": "T",
+				"perception": "E",
 				"fort": "E",
 				"ref": "E",
 				"will": "T",
 				"skills": {
 					"t": [
-						"Crafting"
+						"your choice of Acrobatics or Athletics"
 					],
 					"add": 3
 				},
 				"attacks": {
-					"t": [
+					"e": [
 						"simple weapons",
-						"alchemical bombs",
+						"martial weapons",
 						"unarmed attacks"
+					],
+					"t": [
+						"advanced weapons"
 					]
 				},
 				"defenses": {
 					"t": [
-						"light armor",
+						"all armor",
 						"unarmored defense"
 					]
 				},
 				"classDc": {
 					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+					"entry": "Trained in fighter class DC"
 				}
 			},
 			"advancement": {
@@ -93,87 +96,76 @@
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
-				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
-					"gainSubclassFeature": true
-				},
-				"Book|Alchemist|CRB|2"
+				"Ancestry and Background|Fighter|CRB|1",
+				"Initial Proficiencies|Fighter|CRB|1",
+				"Attack of Opportunity|Fighter|CRB|1",
+				"Fighter Feats|Fighter|CRB|1",
+				"Shield Block|Fighter|CRB|1"
 			],
 			"subclasses": [
-				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
-					"source": "CRB",
-					"page": 73,
-					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
-					]
-				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"Fighting for honor, greed, loyalty, or simply the thrill of battle, you are an undisputed master of weaponry and combat techniques. You combine your actions through clever combinations of opening moves, finishing strikes, and counterattacks whenever your foes are unwise enough to drop their guard. Whether you are a knight, mercenary, sharpshooter, or blade master, you have honed your martial skills into an art form and perform devastating critical attacks on your enemies."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
+					"page": 140,
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"You strike with unmatched accuracy and use specialized combat techniques. A melee fighter stands between allies and enemies, attacking foes who try to get past. A ranged fighter delivers precise shots from a distance."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 140,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"You can be an intimidating presence. This can be useful when negotiating with enemies, but is sometimes a liability in more genteel interactions."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 140,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You keep up your defenses in preparation for combat, and keep an eye out for hidden threats. You also overcome physical challenges in your way, breaking down doors, lifting obstacles, climbing adeptly, and leaping across pits."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 140,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You might perform manual labor or craft and repair armaments. If you know techniques you no longer favor, you might train yourself in new ones. If you’ve established your reputation, you might build an organization or a stronghold of your own."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 140,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Know the purpose and quality of every weapon and piece of armor you own.",
+								"Recognize that the danger of an adventurer’s life must be balanced out with great revelry or ambitious works.",
+								"Have little patience for puzzles or problems that require detailed logic or study."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 140,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"Find you intimidating until they get to know you—and maybe even after they get to know you.",
+								"Expect you’re all brawn and no brains.",
+								"Respect your expertise in the art of warfare and value your opinion on the quality of armaments."
 							]
 						}
 					]
@@ -183,74 +175,74 @@
 	],
 	"classFeature": [
 		{
-			"name": "Alchemy",
+			"name": "Ancestry and Background",
 			"source": "CRB",
-			"page": 72,
-			"className": "Alchemist",
+			"page": 141,
+			"className": "Fighter",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the Craft activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don’t understand your strange science.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"In addition to the abilities provided by your class at 1st level, you have the benefits of your selected ancestry and background, as described in Chapter 2."
 			]
 		},
 		{
-			"name": "Formula Book",
+			"name": "Initial Proficiencies",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 141,
+			"className": "Fighter",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"At 1st level, you gain a number of proficiencies that represent your basic training, noted at the start of this class."
 			]
 		},
 		{
-			"name": "Research Field",
+			"name": "Attack of Opportunity",
 			"source": "CRB",
-			"subclasses": "Research Field",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 141,
+			"className": "Fighter",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute,  correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
+				"Ever watchful for weaknesses, you can quickly attack foes that leave an opening in their defenses. You gain the Attack of Opportunity reaction.",
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
+					],
+					"type": "ability",
+					"name": "Attack of Opportunity",
+					"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it’s using."
+				}
 			]
 		},
 		{
-			"name": "Book",
+			"name": "Fighter Feats",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 141,
+			"className": "Fighter",
 			"classSource": "CRB",
-			"level": 2,
+			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"At 1st level and every even-numbered level thereafter, you gain a fighter class feat. Fighter class feats are described beginning on page 144."
+			]
+		},
+		{
+			"name": "Shield Block",
+			"source": "CRB",
+			"page": 141,
+			"className": "Fighter",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"You gain the Shield Block general feat (found on page 266), a reaction that lets you reduce damage with your shield."
 			]
 		}
 	],
 	"subclassFeature": [
-		{
-			"name": "Bomber",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"subclassShortName": "Bomber",
-			"subclassSource": "CRB",
-			"level": 1,
-			"entries": [
-				{
-					"type": "pf2-h4",
-					"name": "Bomber",
-					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.",
-						"When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area."
-					]
-				}
-			]
-		}
 	]
 }
