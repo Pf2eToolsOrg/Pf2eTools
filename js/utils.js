@@ -3895,7 +3895,7 @@ BrewUtil = {
 
 		$$($modalInner)`
 		<div class="mt-1"><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
-		Contributions are welcome; see the <a href="https://github.com/MrVauxs/pf2e-homebrew/blob/master/README.md" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/nGvRCDs" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
+		Contributions are welcome; see the <a href="https://github.com/MrVauxs/pf2e-homebrew/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
 		<hr class="hr-1">
 		<div class="flex-h-right mb-1">${$btnToggleDisplayNonPageBrews}${$btnAll}</div>
 		${$iptSearch}
