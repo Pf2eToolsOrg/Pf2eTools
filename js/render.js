@@ -2164,11 +2164,11 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</u>`;
 				break;
-				case "@sup":
-				textStack[0] += `<sup>`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</sup>`;
-				break;
+			case "@sup":
+			textStack[0] += `<sup>`;
+			this._recursiveRender(text, textStack, meta);
+			textStack[0] += `</sup>`;
+			break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
@@ -2202,11 +2202,6 @@ function Renderer () {
 				textStack[0] += `<span class="text-indent">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
-				break;
-			case "@sup":
-				textStack[0] += `<sup>`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</sup>`;
 				break;
 
 			// Comic styles ////////////////////////////////////////////////////////////////////////////////////
