@@ -3,36 +3,39 @@
 		{
 			"name": "Sorcerer",
 			"source": "CRB",
-			"page": 71,
-			"HP": 8,
-			"keyAbility": "Intelligence",
+			"page": 191,
+			"HP": 6,
+			"keyAbility": "Charisma",
 			"initialProficiencies": {
 				"perception": "T",
-				"fort": "E",
-				"ref": "E",
-				"will": "T",
+				"fort": "T",
+				"ref": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"one or more skills determined by your bloodline"
 					],
-					"add": 3
+					"add": 2
 				},
 				"attacks": {
 					"t": [
 						"simple weapons",
-						"alchemical bombs",
 						"unarmed attacks"
 					]
 				},
 				"defenses": {
+					"u": [
+						"all armor"
+					],
 					"t": [
-						"light armor",
 						"unarmored defense"
 					]
 				},
-				"classDc": {
-					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+				"spells": {
+					"t": [
+						"spell attack rolls of your spellcasting tradition, as indicated by your bloodline",
+						"spell DCs of your spellcasting tradition, as indicated by your bloodline"
+					]
 				}
 			},
 			"advancement": {
@@ -93,87 +96,186 @@
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
+				"Ancestry and Background|Sorcerer|CRB|1",
+				"Initial Proficiencies|Sorcerer|CRB|1",
 				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
+					"classFeature": "Bloodline|Sorcerer|CRB|1",
 					"gainSubclassFeature": true
 				},
-				"Book|Alchemist|CRB|2"
+				"Sorcerer Spellcasting|Sorcerer|CRB|1",
+				"Spell Repertoire|Sorcerer|CRB|1",
+				"Skill Feats|Sorcerer|CRB|2",
+				"Sorcerer Feats|Sorcerer|CRB|1",
+				"General Feats|Sorcerer|CRB|3",
+				"Signature Spells|Sorcerer|CRB|3",
+				"Skill Increases|Sorcerer|CRB|3",
+				"Ability Boosts|Sorcerer|CRB|5",
+				"Ancestry Feats|Sorcerer|CRB|5",
+				"Magical Fortitude|Sorcerer|CRB|5",
+				"Expert Spellcaster|Sorcerer|CRB|7",
+				"Lightning Reflexes|Sorcerer|CRB|9",
+				"Alertness|Sorcerer|CRB|11",
+				"Simple Weapon Expertise|Sorcerer|CRB|11",
+				"Defensive Robes|Sorcerer|CRB|13",
+				"Weapon Specialization|Sorcerer|CRB|13",
+				"Master Spellcaster|Sorcerer|CRB|15",
+				"Bloodline Paragon|Sorcerer|CRB|19",
+				"Legendary Spellcaster|Sorcerer|CRB|19"
 			],
 			"subclasses": [
 				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
+					"name": "Aberrant",
+					"shortName": "Aberrant",
 					"source": "CRB",
-					"page": 73,
+					"page": 195,
 					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
+						"Bloodline|Sorcerer|CRB|Aberrant|CRB|1"
+					]
+				},
+				{
+					"name": "Angelic",
+					"shortName": "Angelic",
+					"source": "CRB",
+					"page": 195,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Angelic|CRB|1"
+					]
+				},
+				{
+					"name": "Demonic",
+					"shortName": "Demonic",
+					"source": "CRB",
+					"page": 195,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Demonic|CRB|1"
+					]
+				},
+				{
+					"name": "Diabolic",
+					"shortName": "Diabolic",
+					"source": "CRB",
+					"page": 196,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Diabolic|CRB|1"
+					]
+				},
+				{
+					"name": "Draconic",
+					"shortName": "Draconic",
+					"source": "CRB",
+					"page": 196,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Draconic|CRB|1"
+					]
+				},
+				{
+					"name": "Elemental",
+					"shortName": "Elemental",
+					"source": "CRB",
+					"page": 196,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Elemental|CRB|1"
+					]
+				},
+				{
+					"name": "Fey",
+					"shortName": "Fey",
+					"source": "CRB",
+					"page": 197,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Fey|CRB|1"
+					]
+				},
+				{
+					"name": "Hag",
+					"shortName": "Hag",
+					"source": "CRB",
+					"page": 197,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Hag|CRB|1"
+					]
+				},
+				{
+					"name": "Imperial",
+					"shortName": "Imperial",
+					"source": "CRB",
+					"page": 198,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Imperial|CRB|1"
+					]
+				},
+				{
+					"name": "Undead",
+					"shortName": "Undead",
+					"source": "CRB",
+					"page": 198,
+					"subclassFeatures": [
+						"Bloodline|Sorcerer|CRB|Undead|CRB|1"
 					]
 				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"You didn’t choose to become a spellcaster—you were born one. There’s magic in your blood, whether a divinity touched one of your ancestors, a forebear communed with a primal creature, or a powerful occult ritual influenced your line. Self-reflection and study allow you to refine your inherent magical skills and unlock new, more powerful abilities. The power in your blood carries a risk, however, and you constantly face the choice of whether you’ll rise to become a master spellcaster or fall into destruction."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
+					"page": 191,
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"You use spells to injure your enemies, influence their minds, and hamper their movements. You might be too vulnerable to get into melee combat, or your bloodline might give you abilities that help you hold your own in a brawl. While your magic is powerful, to conserve your best spells—or when you’ve used them all up—you also rely on cantrips."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 191,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"Your natural charisma makes you good at interacting with people."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 191,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You detect the magic around you, finding treasures and warning your adventuring group of magical traps. When the group encounters mysteries or problems related to your bloodline, you try to solve them."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 191,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You craft magic items or scribe scrolls. Your bloodline might drive you to research your ancestry or associate with affiliated people or creatures."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 191,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Have a strong independent streak, and whether you embrace or reject your magical heritage, you long to distinguish yourself both as a spellcaster and as an individual.",
+								"View your lineage with fascination, fear, or something in between—anything from wholehearted acceptance to vehement rejection.",
+								"Rely on magic items, such as scrolls and wands, to supplement your limited selection of spells."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 191,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"Marvel at your ability to create magic from thin air and view your abilities with equal parts admiration and mistrust.",
+								"Consider you less dedicated than studious wizards, devoted clerics, and other practitioners of magic, since power comes to you naturally.",
+								"Assume you’re as unpredictable as the magic you bring forth, even if your personality proves otherwise."
 							]
 						}
 					]
@@ -183,71 +285,406 @@
 	],
 	"classFeature": [
 		{
-			"name": "Alchemy",
+			"name": "Ancestry and Background",
 			"source": "CRB",
-			"page": 72,
-			"className": "Alchemist",
+			"page": 196,
+			"className": "Sorcerer",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the Craft activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don’t understand your strange science.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"In addition to the abilities provided by your class at 1st level, you have the benefits of your selected ancestry and background, as described in Chapter 2."
 			]
 		},
 		{
-			"name": "Formula Book",
+			"name": "Bloodline",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 196,
+			"className": "Sorcerer",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"Choose a bloodline that gives you your spellcasting talent. This choice determines the type of spells you cast and the spell list you choose them from, additional spells you learn, and additional trained skills. You also gain Focus Points and special focus spells based on your bloodline. The bloodlines presented in this book are as follows."
 			]
 		},
 		{
-			"name": "Research Field",
+			"name": "Initial Proficiencies",
 			"source": "CRB",
-			"subclasses": "Research Field",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 196,
+			"className": "Sorcerer",
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute,  correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
+				"At 1st level, you gain a number of proficiencies that represent your basic training. These proficiencies are noted at the start of this class."
 			]
 		},
 		{
-			"name": "Book",
+			"name": "Sorcerer Spellcasting",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 192,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"Your bloodline provides you with incredible magical power. You can cast spells using the Cast a Spell activity, and you can supply material, somatic, and verbal components when casting spells (see Casting Spells). Because you're a sorcerer, you can usually replace material components with somatic components, so you don't need to use a material component pouch.",
+				"Each day, you can cast up to three 1st-level spells. You must know spells to cast them, and you learn them via the spell repertoire class feature. The number of spells you can cast each day is called your spell slots.",
+				"As you increase in level as a sorcerer, your number of spells per day increases, as does the highest level of spells you can cast, as shown on Table 3–17: Sorcerer Spells per Day.",
+				"Some of your spells require you to attempt a spell attack roll to see how effective they are, or have your enemies roll against your spell DC (typically by attempting a saving throw). Since your key ability is Charisma, your spell attack rolls and spell DCs use your Charisma modifier. Details on calculating these statistics appear in Spell Attack Rolls.",
+				{
+					"type": "pf2-h4",
+					"page": 192,
+					"name": "Heightening Spells",
+					"entries": [
+						"When you get spell slots of 2nd level and higher, you can fill those slots with stronger versions of lower-level spells. This increases the spell's level to match the spell slot. You must have a spell in your spell repertoire at the level you want to cast in order to heighten it to that level. Many spells have specific improvements when they are heightened to certain levels. The signature spells class feature lets you heighten certain spells freely."
+					]
+				},
+				{
+					"type": "pf2-h4",
+					"page": 192,
+					"name": "Cantrips",
+					"entries": [
+						"Some of your spells are cantrips. A cantrip is a special type of spell that doesn't use spell slots. You can cast a cantrip at will, any number of times per day. A cantrip is automatically heightened to half your level rounded up—this is usually equal to the highest level of sorcerer spell slot you have. For example, as a 1st-level sorcerer, your cantrips are 1st-level spells, and as a 5th-level sorcerer, your cantrips are 3rd-level spells."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spell Repertoire",
+			"source": "CRB",
+			"page": 193,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 1,
+			"entries": [
+				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn two 1st-level spells of your choice and four cantrips of your choice, as well as an additional spell and cantrip from your bloodline. You choose these from the common spells from the tradition corresponding to your bloodline, or from other spells from that tradition to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level.",
+				"You add to this spell repertoire as you increase in level. Each time you get a spell slot (see Table 3–17), you add a spell of the same level to your spell repertoire. When you gain access to a new level of spells, your first new spell is always the spell granted by your bloodline, but you can choose the other spells. At 2nd level, you select another 1st-level spell; at 3rd level, you gain a new spell from your bloodline and two other 2nd-level spells, and so on. When you add spells, you might select a higher-level version of a spell you already know so that you can cast a heightened version of that spell.",
+				"Though you gain them at the same rate, your spell slots and the spells in your spell repertoire are separate. If a feat or other ability adds a spell to your spell repertoire, it wouldn't give you another spell slot, and vice versa.",
+				{
+					"type": "pf2-h4",
+					"page": 193,
+					"name": "Swapping Spells In Your Repertoire",
+					"entries": [
+						"As you gain new spells in your spell repertoire, you might want to replace some of the spells you previously learned. Each time you gain a level and learn new spells, you can swap out one of your old spells for a different spell of the same level. This spell can be a cantrip, but you can't swap out bloodline spells. You can also swap out spells by retraining during downtime."
+					]
+				}
+			]
+		},
+		{
+			"name": "Skill Feats",
+			"page": 193,
+			"source": "CRB",
+			"className": "Sorcerer",
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"At 1st level and every level thereafter, you gain a skill feat. Skill feats can be found in Chapter 5 and have the skill trait."
+			]
+		},
+		{
+			"name": "Sorcerer Feats",
+			"page": 193,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 2,
+			"entries": [
+				"At 2nd level and every even-numbered level, you gain a sorcerer class feat. These begin on page 198."
+			]
+		},
+		{
+			"name": "General Feats",
+			"page": 193,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 4 levels thereafter, you gain a general feat. General feats are listed in Chapter 5."
+			]
+		},
+		{
+			"name": "Signature Spells",
+			"page": 193,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"You’ve learned to cast some of your spells more flexibly. For each spell level you have access to, choose one spell of that level to be a signature spell. You don’t need to learn heightened versions of signature spells separately; instead, you can heighten these spells freely. If you’ve learned a signature spell at a higher level than its minimum, you can also cast all its lower-level versions without learning those separately. If you swap out a signature spell, you can choose a replacement signature spell of the same spell level at which you learned the previous spell. You can also retrain specifically to change a signature spell to a different spell of that level without swapping any spells; this takes as much time as retraining a spell normally does."
+			]
+		},
+		{
+			"name": "Skill Increases",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 2 levels thereafter, you gain a skill increase. You can use an increase to either become trained in one skill you’re untrained in, or to increase your proficiency rank in one skill in which you’re already trained to expert.",
+				"At 7th level, you can use skill increases to become a master in a skill in which you’re already an expert, and at 15th level, you can use them to become legendary in a skill in which you’re already a master."
+			]
+		},
+		{
+			"name": "Ability Boosts",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"At 5th level and every 5 levels thereafter, you boost four different ability scores. You can use these ability boosts to increase your ability scores above 18. Boosting an ability score increases it by 1 if it’s already 18 or above, or by 2 if it starts out below 18."
+			]
+		},
+		{
+			"name": "Ancestry Feats",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"In addition to the ancestry feat you started with, you gain an ancestry feat at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry’s entry in Chapter 2."
+			]
+		},
+		{
+			"name": "Magical Fortitude",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"Magical power has improved your body’s resiliency. Your proficiency rank for Fortitude saves increases to expert."
+			]
+		},
+		{
+			"name": "Expert Spellcaster",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 7,
+			"entries": [
+				"Your inherent magic responds easily and powerfully to your command. Your proficiency ranks for spell attack rolls and spell DCs for spells of your bloodline’s tradition increase to expert."
+			]
+		},
+		{
+			"name": "Lightning Reflexes",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 9,
+			"entries": [
+				"Your reflexes are lightning fast. Your proficiency rank for Reflex saves increases to expert."
+			]
+		},
+		{
+			"name": "Alertness",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 11,
+			"entries": [
+				"You remain alert to threats around you. Your proficiency rank for Perception increases to expert."
+			]
+		},
+		{
+			"name": "Weapon Expertise",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 11,
+			"entries": [
+				"Training and magic improved your weapon technique. Your proficiency rank for simple weapons and unarmed attacks increases to expert."
+			]
+		},
+		{
+			"name": "Defensive Robes",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 13,
+			"entries": [
+				"The flow of magic and your defensive training combine to help you get out of the way before an attack. Your proficiency rank in unarmored defense increases to expert."
+			]
+		},
+		{
+			"name": "Weapon Specialization",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 13,
+			"entries": [
+				"You’ve learned to inflict grave wounds with your practiced weapons. You deal 2 additional damage with weapons and unarmed attacks in which you are an expert. This damage increases to 3 if you’re a master, and 4 if you’re legendary."
+			]
+		},
+		{
+			"name": "Master Spellcaster",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 15,
+			"entries": [
+				"You have achieved mastery over the magic in your blood. Your proficiency ranks for spell attack rolls and spell DCs for spells of your bloodline’s tradition increase to master."
+			]
+		},
+		{
+			"name": "Resolve",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 17,
+			"entries": [
+				"You’ve steeled you mind with resolve. Your proficiency rank for Will saves increase to master. When you roll a success at a Will save, you get a critical success instead."
+			]
+		},
+		{
+			"name": "Bloodline Paragon",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 19,
+			"entries": [
+				"You have perfected the magic in your bloodline. Add two common 10th-level spells of your tradition to your repertoire. You gain a single 10th-level spell slot you can use to cast these spells, using sorcerer spellcasting. Unlike other spell slots, you don’t gain more 10th-level spells as you level up, and they can’t be used for abilities that let you cast spells without expending spell slots or abilities that give you more spell slots. You can take the Bloodline Perfection sorcerer feat to gain a second slot."
+			]
+		},
+		{
+			"name": "Legendary Spellcaster",
+			"page": 194,
+			"source": "CRB",
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"level": 19,
+			"entries": [
+				"You demonstrate prodigious talent for spellcasting. Your proficiency ranks for spell attack rolls and spell DCs for spells of your bloodline’s tradition increase to legendary."
 			]
 		}
 	],
 	"subclassFeature": [
 		{
-			"name": "Bomber",
+			"name": "Bloodline",
 			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
+			"page": 196,
+			"className": "Sorcerer",
 			"classSource": "CRB",
-			"subclassShortName": "Bomber",
+			"subclassShortName": "Aberrant",
 			"subclassSource": "CRB",
 			"level": 1,
 			"entries": [
 				{
 					"type": "pf2-h4",
-					"name": "Bomber",
+					"name": "Aberrant",
 					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.",
-						"When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area."
+						"Something speaks to you from beyond the stars or below the earth. Ancient and unknowable, this alien influence presses against your mind.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter occult|spells|tradition=occult}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"Intimidation, Occultism"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell daze|CRB}}; 1st: {@i {@spell spider sting|CRB}}; 2nd: {@i {@spell touch of idiocy|CRB}}; 3rd: {@i {@spell vampiric touch|CRB}}; 4th: {@i {@spell confusion|CRB}}; 5th: {@i {@spell black tentacles|CRB}}; 6th: {@i {@spell feeblemind|CRB}}; 7th: {@i {@spell warp mind|CRB}}; 8th: {@i {@spell uncontrollable dance|CRB}}; 9th: {@i {@spell unfathomable song|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell tentacular limbs|CRB}}; advanced: {@i {@spell aberrant whispers|CRB}}; greater: {@i {@spell unusual anatomy|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"Aberrant whispers shield one target’s mind or your own, granting a +2 status bonus to Will saving throws for 1 round."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodline",
+			"source": "CRB",
+			"page": 196,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Angelic",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Angelic",
+					"entries": [
+						"One of your forebears hailed from a celestial realm, or your ancestors’ devotion led to their lineage being blessed.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter divine|spells|tradition=divine}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"Diplomacy, Religion"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell light|CRB}}; 1st: {@i {@spell heal|CRB}}; 2nd: {@i {@spell spiritual weapon|CRB}}; 3rd: {@i {@spell searing light|CRB}}; 4th: {@i {@spell divine wrath|CRB}}; 5th: {@i {@spell flame strike|CRB}}; 6th: {@i {@spell blade barrier|CRB}}; 7th: {@i {@spell divine decree|CRB}}; 8th: {@i {@spell divine aura|CRB}}; 9th: {@i {@spell foresight|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell angelic halo|CRB}}; advanced: {@i {@spell angelic wings|CRB}}; greater: {@i {@spell celestial brand|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"An angelic aura protects you or one target, granting a +1 status bonus to saving throws for 1 round."
+									]
+								}
+							]
+						}
 					]
 				}
 			]
