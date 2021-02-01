@@ -1,50 +1,27 @@
 class RenderBestiary {
-	static _getRenderedSection(sectionTrClass, sectionEntries, sectionLevel) {
-		const renderer = Renderer.get();
-		const renderStack = [];
-		sectionEntries.forEach(e => {
-			if (e.rendered) renderStack.push(e.rendered);
-			else renderer.recursiveRender(e, renderStack, {depth: sectionLevel + 1});
-		});
-
-		return `<tr class="${sectionTrClass}"><td colspan="6" class="mon__sect-row-inner">${renderStack.join("")}</td></tr>`;
-	}
-
-
-	/**
-	 * @param {Object} mon Creature data.
-	 * @param {Object} options
-	 * @param {jQuery} options.$btnScaleCr CR scaler button.
-	 * @param {jQuery} options.$btnResetScaleCr CR scaler reset button.
-	 */
-	static $getRenderedCreature(mon, options) {
+	static $getRenderedCreature (cr, options) {
 		options = options || {};
-		const renderer = Renderer.get();
+		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat(cr.traits.concat(cr.creature_type).sort());
 
-		let renderStack = []
-
-		const traits = (mon.rarity === "Common" ? [] : [mon.rarity]).concat([mon.alignment]).concat([mon.size]).concat(mon.traits.concat(mon.creature_type).sort())
-
-		renderStack.push(`${Renderer.utils.getNameDiv(mon, {page: UrlUtil.PG_BESTIARY})}
+		return $$`${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
+			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(traits)}
-			${Renderer.monster.getPerception(mon)}
-			${Renderer.monster.getLanguages(mon)}
-			${Renderer.monster.getSkills(mon)}
-			${Renderer.monster.getAbilityMods(mon)}`)
-		mon.abilities_interactive.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
-		renderStack.push(`${Renderer.monster.getItems(mon)}
+			${Renderer.creature.getPerception(cr)}
+			${Renderer.creature.getLanguages(cr)}
+			${Renderer.creature.getSkills(cr)}
+			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}
+			${cr.abilities_interactive.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.monster.getDefenses(mon)}`)
-		mon.abilities_automatic.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
-		renderStack.push(`${Renderer.utils.getDividerDiv()}
-			${Renderer.monster.getSpeed(mon)}
-			${Renderer.monster.getAttacks(mon)}
-			${Renderer.monster.getSpellcasting(mon)}
-			${Renderer.monster.getRituals(mon)}`)
-		mon.abilities_active.forEach((ab) => {renderer.recursiveRender(ab, renderStack, {depth: 1})})
-		renderStack.push(`<p class="pf2-stat-source"><strong>${mon.source}</strong> page ${mon.page}</p>`);
-
-		return (renderStack.join(''))
+			${Renderer.creature.getDefenses(cr)}
+			${cr.abilities_automatic.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.creature.getSpeed(cr)}
+			${Renderer.creature.getAttacks(cr)}
+			${Renderer.creature.getSpellcasting(cr)}
+			${Renderer.creature.getRituals(cr)}
+			${cr.abilities_active.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getPageP(cr)}`;
 	}
 }

@@ -16,8 +16,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -69,7 +67,10 @@
 
 <body>
 <div class="viewport-wrapper">
-	<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+	</div>
 
 	<header class="hidden-xs hidden-sm page__header">
 		<div class="container">
@@ -88,16 +89,20 @@
 			<div class="view-col" id="listcontainer">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
-						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
 						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-10 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span class="caret_wrp"></span></button>
+					<button class="col-10 sort btn btn-default btn-xs" data-sort="name">Name <span
+						class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+						class="caret_wrp"></span></button>
 				</div>
 
 				<ul id="traitsList" class="list list--stats traits"></ul>
@@ -106,7 +111,8 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-12 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subtraits"></ul>
 				</div>
@@ -116,7 +122,7 @@
 				</div>
 
 				<div class="wrp-stats-table">
-					<div id="pagecontent" class="stats">
+					<div id="pagecontent" class="stats pf2-stat">
 						<div class="border"></div>
 						<div class="initial-message">Select a trait from the list to view it here</div>
 						<div class="border"></div>

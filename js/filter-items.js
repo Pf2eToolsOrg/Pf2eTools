@@ -1,115 +1,51 @@
 "use strict";
 
-class PageFilterEquipment extends PageFilter {
-	constructor () {
-		super();
-
-		this._typeFilter = new Filter({header: "Type", deselFn: (it) => PageFilterItems._DEFAULT_HIDDEN_TYPES.has(it), displayFn: StrUtil.toTitleCase});
-		this._propertyFilter = new Filter({header: "Property", displayFn: StrUtil.uppercaseFirst});
-		this._costFilter = new RangeFilter({header: "Cost", min: 0, max: 100, isAllowGreater: true, suffix: " gp"});
-		this._weightFilter = new RangeFilter({header: "Weight", min: 0, max: 100, isAllowGreater: true, suffix: " lb."});
-		this._focusFilter = new Filter({header: "Spellcasting Focus", items: []});
-		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: it => Parser.dmgTypeToFull(it).uppercaseFirst(), itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.dmgTypeToFull(a), Parser.dmgTypeToFull(b))});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Item Group", "SRD"], isSrdFilter: true});
-		this._poisonTypeFilter = new Filter({header: "Poison Type", items: ["ingested", "injury", "inhaled", "contact"], displayFn: StrUtil.toTitleCase});
-	}
-
-	mutateForFilters (item) {
-		item._fProperties = item.property ? item.property.map(p => Renderer.item.propertyMap[p].name).filter(n => n) : [];
-
-		item._fMisc = item.srd ? ["SRD"] : [];
-		if (item._isItemGroup) item._fMisc.push("Item Group");
-
-		if (item.focus || item.type === "INS" || item.type === "SCF") {
-			item._fFocus = item.focus ? item.focus === true ? [] : [...item.focus] : [];
-			if (item.type === "INS" && !item._fFocus.includes("Bard")) item._fFocus.push("Bard");
-			if (item.type === "SCF") {
-				switch (item.scfType) {
-					case "arcane": {
-						if (!item._fFocus.includes("Sorcerer")) item._fFocus.push("Sorcerer");
-						if (!item._fFocus.includes("Warlock")) item._fFocus.push("Warlock");
-						if (!item._fFocus.includes("Wizard")) item._fFocus.push("Wizard");
-						break;
-					}
-					case "druid": {
-						if (!item._fFocus.includes("Druid")) item._fFocus.push("Druid");
-						break;
-					}
-					case "holy":
-						if (!item._fFocus.includes("Cleric")) item._fFocus.push("Cleric");
-						if (!item._fFocus.includes("Paladin")) item._fFocus.push("Paladin");
-						break;
-				}
-			}
-		}
-
-		item._fValue = (item.value || 0) / 100;
-	}
-
-	addToFilters (item, isExcluded) {
-		if (isExcluded) return;
-
-		this._typeFilter.addItem(item._typeListText);
-		this._propertyFilter.addItem(item._fProperties);
-		this._damageTypeFilter.addItem(item.dmgType);
-		this._poisonTypeFilter.addItem(item.poisonTypes);
-	}
-
-	async _pPopulateBoxOptions (opts) {
-		opts.filters = [
-			this._typeFilter,
-			this._propertyFilter,
-			this._costFilter,
-			this._weightFilter,
-			this._focusFilter,
-			this._damageTypeFilter,
-			this._miscFilter,
-			this._poisonTypeFilter,
-		];
-	}
-
-	toDisplay (values, it) {
-		return this._filterBox.toDisplay(
-			values,
-			it._typeListText,
-			it._fProperties,
-			it._fValue,
-			it.weight,
-			it._fFocus,
-			it.dmgType,
-			it._fMisc,
-			it.poisonTypes,
-		);
-	}
-}
-
-class PageFilterItems extends PageFilterEquipment {
+class PageFilterItems extends PageFilter {
 	// region static
-	static _rarityValue (rarity) {
-		switch (rarity) {
-			case "none": return 0;
-			case "common": return 1;
-			case "uncommon": return 2;
-			case "rare": return 3;
-			case "very rare": return 4;
-			case "legendary": return 5;
-			case "artifact": return 6;
-			case "varies": return 7;
-			case "unknown (magic)": return 8;
-			case "unknown": return 9;
-			default: return 10;
+	static _levelValue (level) {
+		if (typeof level === "number") {
+			return level;
+		} else if (typeof level === "string") {
+			return Number(level.replace("+", "")) + 0.1
+		} else return 0;
+	}
+
+	static _bulkValue (bulk) {
+		if (typeof bulk === "number") {
+			return bulk;
+		} else if (typeof bulk === "string") {
+			if (bulk === "L") return 0.1;
+			else if (!isNaN(Number(bulk))) return Number(bulk);
 		}
+		return 0;
+	}
+
+	static _priceCategory (value) {
+		if (typeof value !== "number") return "0 gp";
+		if (value < 5 * 100) return "0 gp";
+		else if (value < 10 * 100) return "5 gp";
+		else if (value < 50 * 100) return "10 gp";
+		else if (value < 100 * 100) return "50 gp";
+		else if (value < 500 * 100) return "100 gp";
+		else if (value < 750 * 100) return "500 gp";
+		else if (value < 1000 * 100) return "750 gp";
+		else if (value < 2500 * 100) return "1,000 gp";
+		else if (value < 5000 * 100) return "2,500 gp";
+		else if (value < 10000 * 100) return "5,000 gp";
+		else if (value < 25000 * 100) return "10,000 gp";
+		else if (value < 50000 * 100) return "25,000 gp";
+		else if (value < 100000 * 100) return "50,000 gp";
+		else return "100,000+ gp";
 	}
 
 	static sortItems (a, b, o) {
 		if (o.sortBy === "name") return SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "type") return SortUtil.ascSortLower(a.values.type, b.values.type) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "category") return SortUtil.ascSortLower(a.values.category, b.values.category) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "source") return SortUtil.ascSortLower(a.values.source, b.values.source) || SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "rarity") return SortUtil.ascSort(PageFilterItems._rarityValue(a.values.rarity), PageFilterItems._rarityValue(b.values.rarity)) || SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "attunement") return SortUtil.ascSort(a.values.attunement, b.values.attunement) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "level") return SortUtil.ascSort(a.values.level, b.values.level) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "bulk") return SortUtil.ascSort(a.values.bulk, b.values.bulk) || SortUtil.compareListNames(a, b);
 		else if (o.sortBy === "count") return SortUtil.ascSort(a.values.count, b.values.count) || SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "weight") return SortUtil.ascSort(a.values.weight, b.values.weight) || SortUtil.compareListNames(a, b);
-		else if (o.sortBy === "cost") return SortUtil.ascSort(a.values.cost, b.values.cost) || SortUtil.compareListNames(a, b);
+		else if (o.sortBy === "price") return SortUtil.ascSort(a.values.price, b.values.price) || SortUtil.compareListNames(a, b);
 		else return 0;
 	}
 
@@ -117,90 +53,134 @@ class PageFilterItems extends PageFilterEquipment {
 	constructor () {
 		super();
 
-		this._tierFilter = new Filter({header: "Tier", items: ["none", "minor", "major"], itemSortFn: null, displayFn: StrUtil.toTitleCase});
-		this._attachedSpellsFilter = new Filter({header: "Attached Spells", displayFn: (it) => it.split("|")[0].toTitleCase(), itemSortFn: SortUtil.ascSortLower});
-		this._lootTableFilter = new Filter({
-			header: "Found On",
-			items: ["Magic Item Table A", "Magic Item Table B", "Magic Item Table C", "Magic Item Table D", "Magic Item Table E", "Magic Item Table F", "Magic Item Table G", "Magic Item Table H", "Magic Item Table I"],
-			displayFn: it => {
-				const [name, sourceJson] = it.split("|");
-				return `${name}${sourceJson ? ` (${Parser.sourceJsonToAbv(sourceJson)})` : ""}`
-			},
+		this._sourceFilter = new SourceFilter()
+		this._levelFilter = new RangeFilter({
+			header: "Level",
+			isLabelled: true,
 		});
-		this._rarityFilter = new Filter({
-			header: "Rarity",
-			items: [...Parser.ITEM_RARITIES],
+		this._typeFilter = new Filter({
+			header: "Type",
+			items: ["Equipment", "Treasure", "Generic Variant", "Specific Variant"],
 			itemSortFn: null,
-			displayFn: StrUtil.toTitleCase,
-		});
-		this._attunementFilter = new Filter({header: "Attunement", items: ["Yes", "By...", "Optional", "No"], itemSortFn: null});
+		})
 		this._categoryFilter = new Filter({
 			header: "Category",
-			items: ["Basic", "Generic Variant", "Specific Variant", "Other"],
-			deselFn: (it) => it === "Specific Variant",
+		});
+		this._generalTrtFilter = new Filter({header: "General"});
+		this._weaponTrtFilter = new Filter({header: "Weapon"});
+		this._schoolTrtFilter = new Filter({header: "Magic Schools"});
+		this._rarityTrtFilter = new Filter({
+			header: "Rarity",
+			items: [...Parser.TRAITS_RARITY],
 			itemSortFn: null,
 		});
-		this._bonusFilter = new Filter({header: "Bonus", items: ["Armor Class", "Spell Attacks", "Saving Throws", "Weapon Attack and Damage Rolls", "Weapon Attack Rolls", "Weapon Damage Rolls"]});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Ability Score Adjustment", "Charges", "Cursed", "Grants Proficiency", "Item Group", "Magic", "Mundane", "Sentient", "SRD"], isSrdFilter: true});
-		this._baseSourceFilter = new SourceFilter({header: "Base Source", selFn: null});
+		this._traitFilter = new MultiFilter({
+			header: "Traits",
+			filters: [this._rarityTrtFilter, this._weaponTrtFilter, this._schoolTrtFilter, this._generalTrtFilter],
+		});
+		this._priceFilter = new RangeFilter({
+			header: "Price",
+			isLabelled: true,
+			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000+ gp"],
+			labelSortFn: null,
+		});
+		this._bulkFilter = new RangeFilter({header: "Bulk"});
+		this._hpFilter = new RangeFilter({
+			header: "HP",
+			isLabelled: true,
+		});
+		this._btFilter = new RangeFilter({
+			header: "BT",
+			isLabelled: true,
+		});
+		this._hardnessFilter = new RangeFilter({
+			header: "Hardness",
+			isLabelled: true,
+		});
+		this._shieldStatsFilter = new MultiFilter({
+			header: "Shield Stats",
+			filters: [this._hpFilter, this._btFilter, this._hardnessFilter],
+		});
+		this._ammoFilter = new Filter({header: "Ammunition"});
+		this._miscFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Consumable"],
+		});
+		this._appliesToFilter = new Filter({header: "Rune applies to..."})
+
+		this._categoriesRuneItems = [];
 	}
 
 	mutateForFilters (item) {
-		super.mutateForFilters(item);
+		// Sorting
+		item._fLvl = PageFilterItems._levelValue(item.level)
+		item._fBulk = PageFilterItems._bulkValue(item.bulk)
+		item._sPrice = Parser.priceToValue(item.price)
 
-		item._fTier = [item.tier ? item.tier : "none"];
+		// Filters
+		item._fPrice = PageFilterItems._priceCategory(item._sPrice)
+		item._fType = []
+		item._fMisc = item.consumable ? ["Consumable"] : [];
+		item._fIsEquipment = item.type === "Equipment" || item.type === "Material" || item.type === "Snare";
+		item._fWeaponTraits = [];
+		item._fSchoolTraits = [];
+		item._fRarity = "Common";
+		item._fGeneralTraits = [];
+		for (let trait of item.traits) {
+			if (Parser.TRAITS_WEAPON.concat(Parser.TRAITS_ARMOR).includes(trait)) item._fWeaponTraits.push(trait);
+			else if (Parser.TRAITS_SCHOOL.includes(trait)) item._fSchoolTraits.push(trait);
+			else if (Parser.TRAITS_RARITY.includes(trait)) item._fRarity = trait;
+			else item._fGeneralTraits.push(trait);
+		}
+		for (let entry of item.entries) {
+			if (typeof entry === "object") {
+				if (entry.type === "activation") item._fMisc.push("Activatable");
+				if (entry.type === "affliction") {
+					// TODO: More Filters?
+				}
+			}
+		}
+		item._fIsEquipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
+		if (item.generic === "G") item._fType.push("Generic Variant");
+		if (item.generic === "V") item._fType.push("Specific Variant");
+		item._fAppliesTo = item.applies_to ? `${item.applies_to} Rune` : null
 
-		if (item.curse) item._fMisc.push("Cursed");
-		const isMundane = item.rarity === "none" || item.rarity === "unknown" || item._category === "basic";
-		item._fMisc.push(isMundane ? "Mundane" : "Magic");
-		item._fIsMundane = isMundane;
-		if (item.ability) item._fMisc.push("Ability Score Adjustment");
-		if (item.charges) item._fMisc.push("Charges");
-		if (item.sentient) item._fMisc.push("Sentient");
-		if (item.grantsProficiency) item._fMisc.push("Grants Proficiency");
-
-		item._fBonus = [];
-		if (item.bonusAc) item._fBonus.push("Armor Class");
-		if (item.bonusWeapon) item._fBonus.push("Weapon Attack and Damage Rolls");
-		if (item.bonusWeaponAttack) item._fBonus.push("Weapon Attack Rolls");
-		if (item.bonusWeaponDamage) item._fBonus.push("Weapon Damage Rolls");
-		if (item.bonusSpellAttack) item._fBonus.push("Spell Attacks");
-		if (item.bonusSavingThrow) item._fBonus.push("Saving Throws");
+		// RuneItem Builder
+		if (item.applies_to) this._categoriesRuneItems.push(item.applies_to);
 	}
 
 	addToFilters (item, isExcluded) {
 		if (isExcluded) return;
 
-		super.addToFilters(item, isExcluded);
-
 		this._sourceFilter.addItem(item.source);
-		this._tierFilter.addItem(item._fTier)
-		this._attachedSpellsFilter.addItem(item.attachedSpells);
-		this._lootTableFilter.addItem(item.lootTables);
-		this._baseSourceFilter.addItem(item._baseSource);
+		this._levelFilter.addItem(Math.floor(item._fLvl));
+		this._categoryFilter.addItem(item.category);
+		this._weaponTrtFilter.addItem(item._fWeaponTraits);
+		this._schoolTrtFilter.addItem(item._fSchoolTraits);
+		this._generalTrtFilter.addItem(item._fGeneralTraits);
+		this._priceFilter.addItem(item._fPrice);
+		this._bulkFilter.addItem(item._fBulk);
+		if (item.shield_stats != null) this._hpFilter.addItem(item.shield_stats.HP);
+		if (item.shield_stats != null) this._btFilter.addItem(item.shield_stats.BT);
+		if (item.shield_stats != null) this._hardnessFilter.addItem(item.shield_stats.hardness);
+		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
+		if (item.craft_requirements != null) this._miscFilter.addItem("Has Craft Requirements");
+		this._miscFilter.addItem(item._fMisc);
+		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo)
 	}
 
 	async _pPopulateBoxOptions (opts) {
-		await super._pPopulateBoxOptions(opts);
-
 		opts.filters = [
 			this._sourceFilter,
-			this._typeFilter,
-			this._tierFilter,
-			this._rarityFilter,
-			this._propertyFilter,
-			this._attunementFilter,
+			this._levelFilter,
 			this._categoryFilter,
-			this._costFilter,
-			this._weightFilter,
-			this._focusFilter,
-			this._damageTypeFilter,
-			this._bonusFilter,
+			this._traitFilter,
+			this._priceFilter,
+			this._typeFilter,
 			this._miscFilter,
-			this._lootTableFilter,
-			this._baseSourceFilter,
-			this._poisonTypeFilter,
-			this._attachedSpellsFilter,
+			this._bulkFilter,
+			this._shieldStatsFilter,
+			this._appliesToFilter,
 		];
 	}
 
@@ -208,26 +188,29 @@ class PageFilterItems extends PageFilterEquipment {
 		return this._filterBox.toDisplay(
 			values,
 			it.source,
-			it._typeListText,
-			it._fTier,
-			it.rarity,
-			it._fProperties,
-			it._attunementCategory,
-			it._category,
-			it._fValue,
-			it.weight,
-			it._fFocus,
-			it.dmgType,
-			it._fBonus,
+			it._fLvl,
+			it.category,
+			[
+				it._fRarity,
+				it._fWeaponTraits,
+				it._fSchoolTraits,
+				it._fGeneralTraits,
+			],
+			it._fPrice,
+			it._fType,
 			it._fMisc,
-			it.lootTables,
-			it._baseSource,
-			it.poisonTypes,
-			it.attachedSpells,
+			it._fBulk,
+			[
+				it.shield_stats ? it.shield_stats.HP : 0,
+				it.shield_stats ? it.shield_stats.BT : 0,
+				it.shield_stats ? it.shield_stats.hardness : 0,
+			],
+			it._fAppliesTo,
 		);
 	}
 }
-PageFilterItems._DEFAULT_HIDDEN_TYPES = new Set(["Treasure", "Futuristic", "Modern", "Renaissance"]);
+
+PageFilterItems._DEFAULT_HIDDEN_TYPES = new Set([]);
 
 class ModalFilterItems extends ModalFilter {
 	/**

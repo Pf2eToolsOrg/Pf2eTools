@@ -889,7 +889,6 @@ SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_BOOK,
 	Parser.CAT_ID_QUICKREF,
 	Parser.CAT_ID_PAGE,
-	Parser.CAT_ID_LEGENDARY_GROUP,
 ]);
 
 // based on DM screen's AddMenuSearchTab
@@ -1263,7 +1262,7 @@ class SearchWidget {
 
 	static async pGetUserFeatSearch () {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
-		await SearchWidget.pLoadCustomIndex("entity_Feats", `${Renderer.get().baseUrl}data/feats.json`, "feat", Parser.CAT_ID_FEAT, UrlUtil.PG_FEATS, "feats");
+		await SearchWidget.pLoadCustomIndex("entity_Feats", `${Renderer.get().baseUrl}data/feats/feats-crb.json`, "feat", Parser.CAT_ID_FEAT, UrlUtil.PG_FEATS, "feats");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Feat",
@@ -1301,10 +1300,10 @@ class SearchWidget {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
 		const dataSource = async () => {
 			const raceJson = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/races.json`);
-			const raceData = Renderer.race.mergeSubraces(raceJson.race);
+			const raceData = Renderer.ancestry.mergeSubraces(raceJson.race);
 			return {race: raceData};
 		};
-		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_RACE, UrlUtil.PG_RACES, "races");
+		await SearchWidget.pLoadCustomIndex("entity_Races", dataSource, "race", Parser.CAT_ID_ANCESTRY, UrlUtil.PG_ANCESTRIES, "races");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Race",
@@ -1322,7 +1321,7 @@ class SearchWidget {
 
 	static async pGetUserOptionalFeatureSearch () {
 		// FIXME convert to be more like spell/creature search instead of running custom indexes
-		await SearchWidget.pLoadCustomIndex("entity_OptionalFeatures", `${Renderer.get().baseUrl}data/optionalfeatures.json`, "optionalfeature", Parser.CAT_ID_OPTIONAL_FEATURE_OTHER, UrlUtil.PG_OPT_FEATURES, "optional features");
+		await SearchWidget.pLoadCustomIndex("entity_OptionalFeatures", `${Renderer.get().baseUrl}data/optionalfeatures.json`, "optionalfeature", Parser.CAT_ID_OPTIONAL_FEATURE_OTHER, UrlUtil.PG_COMPANIONS_FAMILIARS, "optional features");
 
 		return SearchWidget.pGetUserEntitySearch(
 			"Select Optional Feature",

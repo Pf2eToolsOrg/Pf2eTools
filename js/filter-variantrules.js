@@ -8,20 +8,19 @@ class PageFilterVariantRules extends PageFilter {
 		super();
 
 		this._sourceFilter = new SourceFilter();
-		this._ruleTypeFilter = new Filter({header: "Rule Type", items: ["O", "V", "VO", "VV", "U"], displayFn: Parser.ruleTypeToFull});
+		this._ruleTypeFilter = new Filter({header: "Rule Type"});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (rule) {
 		rule._fMisc = rule.srd ? ["SRD"] : [];
-		rule._fRuleType = rule.ruleType || "U";
 	}
 
 	addToFilters (rule, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(rule.source);
-		this._ruleTypeFilter.addItem(rule._fRuleType);
+		if (rule.type) this._ruleTypeFilter.addItem(rule.type);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -36,7 +35,7 @@ class PageFilterVariantRules extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			r.source,
-			r._fRuleType,
+			r.type,
 			r._fMisc,
 		)
 	}

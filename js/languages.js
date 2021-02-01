@@ -27,9 +27,8 @@ class LanguagesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
-			<span class="col-2 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
-			<span class="col-2 text-center">${(it.script || "\u2014").toTitleCase()}</span>
-			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
+			<span class="col-3 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
+			<span class="col-3 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
 		const listItem = new ListItem(
@@ -41,7 +40,6 @@ class LanguagesPage extends ListPage {
 				source,
 				dialects: it.dialects || [],
 				type: it.type || "",
-				script: it.script || "",
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -66,9 +64,8 @@ class LanguagesPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="col-2 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
-				<span class="col-2 text-center pr-0">${(it.script || "\u2014").toTitleCase()}</span>
+				<span class="bold col-9 pl-0">${it.name}</span>
+				<span class="col-3 text-center">${(it.type || "\u2014").uppercaseFirst()}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -93,38 +90,26 @@ class LanguagesPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderLanguages.$getRenderedLanguage(it));
 		}
-
-		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content,
-				entity: it,
-				pFnGetFluff: Renderer.language.pGetFluff,
-			});
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("language");
+			$content.append(quickRules);
 		}
-
 		const statTab = Renderer.utils.tabButton(
-			"Traits",
+			"Language",
 			() => {},
 			buildStatsTab,
-		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true),
 		);
 		const fontTab = Renderer.utils.tabButton(
 			"Fonts",
 			() => {},
 			() => {
-				$content.append(Renderer.utils.getBorderTr());
-				$content.append(Renderer.utils.getNameTr(it));
-				const $td = $(`<td colspan="6" class="text"/>`);
-				$$`<tr class="text">${$td}</tr>`.appendTo($content);
-				$content.append(Renderer.utils.getBorderTr());
+				$content.append(Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_LANGUAGES, type: `${it.type ? `${it.type} ` : ""}language`}));
+				$content.append(Renderer.utils.getDividerDiv());
+				const $div = $(`<div class=""></div>`);
+				$$`<div class="text">${$div}</div>`.appendTo($content);
 
 				if (!it.fonts) {
-					$td.append("<i>No fonts available.</i>");
+					$div.append("<i>No fonts available.</i>");
 					return;
 				}
 
@@ -159,7 +144,7 @@ class LanguagesPage extends ListPage {
 					saveTextDebounced(val);
 				};
 
-				const DEFAULT_TEXT = "The big quick brown flumph jumped over the lazy dire xorn";
+				const DEFAULT_TEXT = "Dr. Pavel, I'm CIA.";
 
 				const $iptSample = $(`<textarea class="form-control w-100 mr-2 resize-vertical font-ui mb-2" style="height: 110px">${DEFAULT_TEXT}</textarea>`)
 					.keyup(() => updateText())
@@ -192,11 +177,16 @@ class LanguagesPage extends ListPage {
 					<ul class="pl-5 mb-0">
 						${it.fonts.map(f => `<li><a href="${f}" target="_blank">${f.split("/").last()}</a></li>`).join("")}
 					</ul>
-				</div>`.appendTo($td);
+				</div>`.appendTo($div);
 			},
 		);
-
-		Renderer.utils.bindTabButtons(statTab, picTab, fontTab);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		if (it.fonts) Renderer.utils.bindTabButtons(statTab, fontTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

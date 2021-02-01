@@ -1,0 +1,89 @@
+{
+	"disease": [
+		{
+			"name": "Bog Rot",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": "Level Varies",
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"Sometimes called bog foot, bog rot is caused by having waterlogged feet for an extended period of time. In addition to the usual cures for an affliction, bog rot can be cured through amputation of the affected appendages.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 13,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition clumsy||clumsy 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy||clumsy 1} and a –5‑foot status penalty to Speed",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition clumsy||clumsy 2} and a –10‑foot status penalty to Speed",
+								"duration": "1 day"
+							}
+						]
+					}
+				}
+			]
+		}
+	],
+	"curse": [
+		{
+			"name": "Curse of Nightmares",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 2,
+			"traits": [
+				"Curse",
+				"Illusion",
+				"Magical",
+				"Mental"
+			],
+			"entries": [
+				"This curse plagues you with terrible nightmares whenever you sleep, preventing you from resting properly.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 16,
+						"saving throw": "Will",
+						"effect": [
+							"You must rest for 12 hours instead of 8 to avoid becoming fatigued and can’t gain any benefits from resting or long‑term rest. You can still make your daily preparations."
+						]
+					}
+				}
+			]
+		}
+	],
+	"itemcurse": [
+		{
+			"name": "Arrow Attracting",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 92,
+			"level": 8,
+			"traits": [
+				"Rare",
+				"Abjuration",
+				"Cursed",
+				"Magical"
+			],
+			"usage": "curses armor or shield",
+			"entries": [
+				"An item affected by an arrow attracting curse protects you normally, but it draws ranged attacks like a magnet. Whenever a creature within 120 feet misses with a ranged attack, it must immediately reroll the attack against your AC, affecting you depending on the result of the new attack roll. The arrow attraction curse activates only if you could have been a legitimate target. Creatures that intentionally attempt to miss a ranged attack do not activate an arrow attraction curse. Once the curse has activated for the first time, the item fuses to you."
+			]
+		}
+	]
+}

@@ -38,16 +38,11 @@ class Blacklist {
 
 		const FILES = [
 			"backgrounds.json",
-			"cultsboons.json",
 			"deities.json",
-			"feats.json",
+			"feats/feats-crb.json",
 			"magicvariants.json",
-			"optionalfeatures.json",
-			"objects.json",
-			"psionics.json",
-			"races.json",
-			"rewards.json",
-			"trapshazards.json",
+			"ancestries.json",
+			"hazards.json",
 			"variantrules.json",
 		];
 
@@ -64,7 +59,7 @@ class Blacklist {
 
 		// LOAD DATA ===============================================================================
 		// bestiary
-		mergeData({monster: await DataUtil.monster.pLoadAll()});
+		mergeData({creature: await DataUtil.creature.pLoadAll()});
 
 		// spells
 		mergeData({spell: await DataUtil.spell.pLoadAll()});
@@ -111,7 +106,7 @@ class Blacklist {
 		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
 		const contentData = await Promise.all(promises);
 		contentData.forEach(d => {
-			if (d.race) d.race = Renderer.race.mergeSubraces(d.race);
+			if (d.race) d.race = Renderer.ancestry.mergeSubraces(d.race);
 			if (d.variant) d.variant.forEach(it => it.source = it.source || it.inherits.source);
 			mergeData(d);
 		});

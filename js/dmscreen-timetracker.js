@@ -1329,7 +1329,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 		const hookEnvEffects = () => {
 			$hovEnvEffects.off("mouseover").off("mousemove").off("mouseleave");
 			const hashes = [];
-			const fnGetHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAPS_HAZARDS];
+			const fnGetHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS];
 			if (this._state.temperature === TimeTrackerRoot_Clock_Weather._TEMPERATURES[0]) {
 				hashes.push(fnGetHash(({name: "Extreme Cold", source: SRC_DMG})));
 			}
@@ -1349,7 +1349,7 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 			$hovEnvEffects.show();
 			if (hashes.length === 1) {
 				const ele = $hovEnvEffects[0];
-				$hovEnvEffects.mouseover(evt => Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0]));
+				$hovEnvEffects.mouseover(evt => Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_HAZARDS, SRC_DMG, hashes[0]));
 				$hovEnvEffects.mouseleave(evt => Renderer.hover.handleLinkMouseLeave(evt, ele));
 				$hovEnvEffects.mousemove(evt => Renderer.hover.handleLinkMouseMove(evt, ele));
 			} else if (hashes.length) {
@@ -1358,8 +1358,8 @@ class TimeTrackerRoot_Clock_Weather extends TimeTrackerComponent {
 				$hovEnvEffects
 					.mouseover(async evt => {
 						// load the first on its own, to avoid racing to fill the cache
-						const first = await Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hashes[0]);
-						const others = await Promise.all(hashes.slice(1).map(hash => Renderer.hover.pCacheAndGet(UrlUtil.PG_TRAPS_HAZARDS, SRC_DMG, hash)));
+						const first = await Renderer.hover.pCacheAndGet(UrlUtil.PG_HAZARDS, SRC_DMG, hashes[0]);
+						const others = await Promise.all(hashes.slice(1).map(hash => Renderer.hover.pCacheAndGet(UrlUtil.PG_HAZARDS, SRC_DMG, hash)));
 						const allEntries = [first, ...others].map(it => ({type: "dataTrapHazard", dataTrapHazard: MiscUtil.copy(it)}));
 						const toShow = {
 							type: "entries",

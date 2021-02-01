@@ -32,43 +32,72 @@ Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
 
-	function getAsText(num) {
+	function getAsText (num) {
 		const abs = Math.abs(num);
 		switch (abs) {
-			case 0: return "zero";
-			case 1: return "one";
-			case 2: return "two";
-			case 3: return "three";
-			case 4: return "four";
-			case 5: return "five";
-			case 6: return "six";
-			case 7: return "seven";
-			case 8: return "eight";
-			case 9: return "nine";
-			case 10: return "ten";
-			case 11: return "eleven";
-			case 12: return "twelve";
-			case 13: return "thirteen";
-			case 14: return "fourteen";
-			case 15: return "fifteen";
-			case 16: return "sixteen";
-			case 17: return "seventeen";
-			case 18: return "eighteen";
-			case 19: return "nineteen";
-			case 20: return "twenty";
-			case 30: return "thirty";
-			case 40: return "forty";
-			case 50: return "fiddy"; // :^)
-			case 60: return "sixty";
-			case 70: return "seventy";
-			case 80: return "eighty";
-			case 90: return "ninety";
+			case 0:
+				return "zero";
+			case 1:
+				return "one";
+			case 2:
+				return "two";
+			case 3:
+				return "three";
+			case 4:
+				return "four";
+			case 5:
+				return "five";
+			case 6:
+				return "six";
+			case 7:
+				return "seven";
+			case 8:
+				return "eight";
+			case 9:
+				return "nine";
+			case 10:
+				return "ten";
+			case 11:
+				return "eleven";
+			case 12:
+				return "twelve";
+			case 13:
+				return "thirteen";
+			case 14:
+				return "fourteen";
+			case 15:
+				return "fifteen";
+			case 16:
+				return "sixteen";
+			case 17:
+				return "seventeen";
+			case 18:
+				return "eighteen";
+			case 19:
+				return "nineteen";
+			case 20:
+				return "twenty";
+			case 30:
+				return "thirty";
+			case 40:
+				return "forty";
+			case 50:
+				return "fiddy"; // :^)
+			case 60:
+				return "sixty";
+			case 70:
+				return "seventy";
+			case 80:
+				return "eighty";
+			case 90:
+				return "ninety";
 			default: {
 				const str = String(abs);
 				return `${getAsText(Number(`${str[0]}0`))}-${getAsText(Number(str[1]))}`;
 			}
 		}
 	}
+
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
 };
 
@@ -76,34 +105,65 @@ Parser.textToNumber = function (str) {
 	str = str.trim().toLowerCase();
 	if (!isNaN(str)) return Number(str);
 	switch (str) {
-		case "zero": return 0;
-		case "one": case "a": case "an": return 1;
-		case "two": return 2;
-		case "three": return 3;
-		case "four": return 4;
-		case "five": return 5;
-		case "six": return 6;
-		case "seven": return 7;
-		case "eight": return 8;
-		case "nine": return 9;
-		case "ten": return 10;
-		case "eleven": return 11;
-		case "twelve": return 12;
-		case "thirteen": return 13;
-		case "fourteen": return 14;
-		case "fifteen": return 15;
-		case "sixteen": return 16;
-		case "seventeen": return 17;
-		case "eighteen": return 18;
-		case "nineteen": return 19;
-		case "twenty": return 20;
-		case "thirty": return 30;
-		case "forty": return 40;
-		case "fifty": case "fiddy": return 50;
-		case "sixty": return 60;
-		case "seventy": return 70;
-		case "eighty": return 80;
-		case "ninety": return 90;
+		case "zero":
+			return 0;
+		case "one":
+		case "a":
+		case "an":
+			return 1;
+		case "two":
+			return 2;
+		case "three":
+			return 3;
+		case "four":
+			return 4;
+		case "five":
+			return 5;
+		case "six":
+			return 6;
+		case "seven":
+			return 7;
+		case "eight":
+			return 8;
+		case "nine":
+			return 9;
+		case "ten":
+			return 10;
+		case "eleven":
+			return 11;
+		case "twelve":
+			return 12;
+		case "thirteen":
+			return 13;
+		case "fourteen":
+			return 14;
+		case "fifteen":
+			return 15;
+		case "sixteen":
+			return 16;
+		case "seventeen":
+			return 17;
+		case "eighteen":
+			return 18;
+		case "nineteen":
+			return 19;
+		case "twenty":
+			return 20;
+		case "thirty":
+			return 30;
+		case "forty":
+			return 40;
+		case "fifty":
+		case "fiddy":
+			return 50;
+		case "sixty":
+			return 60;
+		case "seventy":
+			return 70;
+		case "eighty":
+			return 80;
+		case "ninety":
+			return 90;
 	}
 	return NaN;
 };
@@ -159,8 +219,8 @@ Parser.getAbilityModifier = function (abilityScore) {
 Parser.getSpeedString = (it) => {
 	if (it.speed == null) return "\u2014";
 
-	function procSpeed(propName) {
-		function addSpeed(s) {
+	function procSpeed (propName) {
+		function addSpeed (s) {
 			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
 		}
 
@@ -168,11 +228,11 @@ Parser.getSpeedString = (it) => {
 		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
 	}
 
-	function getVal(speedProp) {
+	function getVal (speedProp) {
 		return speedProp.number != null ? speedProp.number : speedProp;
 	}
 
-	function getCond(speedProp) {
+	function getCond (speedProp) {
 		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
 	}
 
@@ -199,7 +259,7 @@ Parser.SPEED_TO_PROGRESSIVE = {
 	"burrow": "burrowing",
 	"climb": "climbing",
 	"fly": "flying",
-	"swim": "swimming"
+	"swim": "swimming",
 };
 
 Parser.speedToProgressive = function (prop) {
@@ -208,6 +268,10 @@ Parser.speedToProgressive = function (prop) {
 
 Parser._addCommas = function (intNum) {
 	return `${intNum}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
+};
+
+Parser.numToBonus = function (intNum) {
+	return `${intNum >= 0 ? "+" : ""}${intNum}`
 };
 
 Parser.crToXp = function (cr, {isDouble = false} = {}) {
@@ -276,24 +340,23 @@ Parser.levelToPb = function (level) {
 };
 
 Parser.SKILL_TO_ATB_ABV = {
-	"athletics": "str",
 	"acrobatics": "dex",
-	"sleight of hand": "dex",
-	"stealth": "dex",
 	"arcana": "int",
-	"history": "int",
-	"investigation": "int",
-	"nature": "int",
-	"religion": "int",
-	"animal handling": "wis",
-	"insight": "wis",
-	"medicine": "wis",
-	"perception": "wis",
-	"survival": "wis",
+	"athletics": "str",
+	"crafting": "int",
 	"deception": "cha",
+	"diplomacy": "cha",
 	"intimidation": "cha",
+	"lore": "int",
+	"medicine": "wis",
+	"nature": "wis",
+	"occultism": "int",
 	"performance": "cha",
-	"persuasion": "cha"
+	"religion": "wis",
+	"society": "int",
+	"stealth": "dex",
+	"survival": "wis",
+	"thievery": "dex",
 };
 
 Parser.skillToAbilityAbv = function (skill) {
@@ -301,65 +364,64 @@ Parser.skillToAbilityAbv = function (skill) {
 };
 
 Parser.SKILL_TO_SHORT = {
-	"athletics": "ath",
 	"acrobatics": "acro",
-	"sleight of hand": "soh",
-	"stealth": "slth",
 	"arcana": "arc",
-	"history": "hist",
-	"investigation": "invn",
-	"nature": "natr",
-	"religion": "reli",
-	"animal handling": "hndl",
-	"insight": "ins",
+	"athletics": "ath",
+	"crafting": "cra",
+	"deception": "dec",
+	"diplomacy": "dip",
+	"intimidation": "int",
+	"lore": "lore",
 	"medicine": "med",
-	"perception": "perp",
-	"survival": "surv",
-	"deception": "decp",
-	"intimidation": "intm",
-	"performance": "perf",
-	"persuasion": "pers"
+	"nature": "nat",
+	"occultism": "occ",
+	"performance": "per",
+	"religion": "rel",
+	"society": "soc",
+	"stealth": "ste",
+	"survival": "sur",
+	"thievery": "thi",
 };
 
 Parser.skillToShort = function (skill) {
 	return Parser._parse_aToB(Parser.SKILL_TO_SHORT, skill);
 };
 
-Parser.LANGUAGES_STANDARD = [
+Parser.LANGUAGES_COMMON = [
 	"Common",
-	"Dwarvish",
-	"Elvish",
-	"Giant",
+	"Draconic",
+	"Dwarven",
+	"Elven",
 	"Gnomish",
 	"Goblin",
 	"Halfling",
-	"Orc"
+	"Jotun",
+	"Orcish",
+	"Sylvan",
+	"Undercommon",
 ];
 
-Parser.LANGUAGES_EXOTIC = [
+Parser.LANGUAGES_UNCOMMON = [
 	"Abyssal",
+	"Aklo",
 	"Aquan",
 	"Auran",
 	"Celestial",
-	"Draconic",
-	"Deep Speech",
+	"Gnoll",
 	"Ignan",
-	"Infernal",
-	"Primordial",
-	"Sylvan",
+	"Necril",
+	"Shadowtongue",
 	"Terran",
-	"Undercommon"
 ];
 
 Parser.LANGUAGES_SECRET = [
 	"Druidic",
-	"Thieves' cant"
 ];
 
 Parser.LANGUAGES_ALL = [
-	...Parser.LANGUAGES_STANDARD,
-	...Parser.LANGUAGES_EXOTIC,
-	...Parser.LANGUAGES_SECRET
+	...Parser.LANGUAGES_COMMON,
+	...Parser.LANGUAGES_UNCOMMON,
+	...Parser.LANGUAGES_SECRET,
 ].sort();
 
 Parser.dragonColorToFull = function (c) {
@@ -376,7 +438,7 @@ Parser.DRAGON_COLOR_TO_FULL = {
 	Z: "bronze",
 	C: "copper",
 	O: "gold",
-	S: "silver"
+	S: "silver",
 };
 
 Parser.acToFull = function (ac, renderer) {
@@ -499,9 +561,7 @@ Parser.sourceJsonToFull = function (source) {
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
 	return Parser.sourceJsonToFull(source)
-		.replace(UA_PREFIX, UA_PREFIX_SHORT)
-		.replace(AL_PREFIX, AL_PREFIX_SHORT)
-		.replace(PS_PREFIX, PS_PREFIX_SHORT);
+		.replace(LO_PREFIX, LO_PREFIX_SHORT);
 };
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
@@ -528,6 +588,38 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
+Parser.priceToValue = function (price) {
+	if (price == null) return 0;
+	let mult = 0;
+	let offset = 0;
+	let amount = price.amount || 0;
+	switch (price.coin) {
+		case "cp":
+			mult = 1;
+			break;
+		case "sp":
+			mult = 10;
+			break;
+		case "gp":
+			mult = 100;
+			break;
+		case "pp":
+			mult = 1000;
+			break;
+	}
+	if (price.note != null) offset = 0.1;
+	return mult * amount + offset
+};
+
+Parser.priceToFull = function (price) {
+	if (price == null) return "\u2014";
+	if (typeof price === "object") {
+		if (price.amount == null || price.coin == null) return "\u2014";
+		return `${Parser._addCommas(price.amount)} ${price.coin}${price.note ? ` ${price.note}` : ""}`
+	}
+	return "\u2014"
+};
+
 Parser.itemValueToFull = function (item, isShortForm) {
 	return Parser._moneyToFull(item, "value", "valueMult", isShortForm);
 };
@@ -539,7 +631,7 @@ Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
 Parser.itemVehicleCostsToFull = function (item, isShortForm) {
 	return {
 		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
-		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm)
+		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm),
 	};
 };
 
@@ -559,11 +651,11 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 	if (it[prop]) {
 		const simplified = CurrencyUtil.doSimplifyCoins(
 			{
-				cp: it[prop]
+				cp: it[prop],
 			},
 			{
-				currencyConversionId: it.currencyConversion
-			}
+				currencyConversionId: it.currencyConversion,
+			},
 		);
 
 		const conversionTable = Parser.getCurrencyConversionTable(it.currencyConversion);
@@ -580,40 +672,36 @@ Parser._moneyToFullMultiCurrency = function (it, prop, propMult, isShortForm) {
 Parser.DEFAULT_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
+		mult: 0.1,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
-	}
+		isFallback: true,
+	},
 ];
 Parser.FULL_CURRENCY_CONVERSION_TABLE = [
 	{
 		coin: "cp",
-		mult: 1
+		mult: 1,
 	},
 	{
 		coin: "sp",
-		mult: 0.1
-	},
-	{
-		coin: "ep",
-		mult: 0.02
+		mult: 0.1,
 	},
 	{
 		coin: "gp",
 		mult: 0.01,
-		isFallback: true
+		isFallback: true,
 	},
 	{
 		coin: "pp",
-		mult: 0.001
-	}
+		mult: 0.001,
+	},
 ];
 Parser.getCurrencyConversionTable = function (currencyConversionId) {
 	const fromBrew = currencyConversionId ? MiscUtil.get(BrewUtil.homebrewMeta, "currencyConversions", currencyConversionId) : null;
@@ -635,15 +723,15 @@ Parser.getCurrencyAndMultiplier = function (value, currencyConversionId) {
 	return conversionTable.last();
 };
 
-Parser.COIN_ABVS = ["cp", "sp", "ep", "gp", "pp"];
+Parser.COIN_ABVS = ["cp", "sp", "gp", "pp"];
 Parser.COIN_ABV_TO_FULL = {
 	"cp": "copper pieces",
 	"sp": "silver pieces",
 	"ep": "electrum pieces",
 	"gp": "gold pieces",
-	"pp": "platinum pieces"
+	"pp": "platinum pieces",
 };
-Parser.COIN_CONVERSIONS = [1, 10, 50, 100, 1000];
+Parser.COIN_CONVERSIONS = [1, 10, 100, 1000];
 
 Parser.coinAbvToFull = function (coin) {
 	return Parser._parse_aToB(Parser.COIN_ABV_TO_FULL, coin);
@@ -701,7 +789,7 @@ Parser.senseToExplanation = function (senseType) {
 };
 
 Parser.skillProficienciesToFull = function (skillProficiencies) {
-	function renderSingle(skProf) {
+	function renderSingle (skProf) {
 		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
 
 		const ixChoose = keys.indexOf("choose");
@@ -730,6 +818,83 @@ Parser.skillProficienciesToFull = function (skillProficiencies) {
 
 	return skillProficiencies.map(renderSingle).join(" <i>or</i> ");
 };
+
+Parser.proficiencyAbvToFull = function (abv) {
+	switch (abv) {
+		case "t": return "trained";
+		case "T": return "Trained";
+		case "e": return "expert";
+		case "E": return "Expert";
+		case "m": return "master";
+		case "M": return "Master";
+		case "l": return "legendary";
+		case "L": return "Legendary";
+		case "u": return "untrained";
+		case "U": return "Untrained";
+		default: throw new Error(`Unknown proficiency rank ${abv}.`)
+	}
+}
+
+Parser.proficiencyToNumber = function (prof) {
+	switch (prof[0].toLowerCase()) {
+		case "u": return 0;
+		case "t": return 1;
+		case "e": return 2;
+		case "m": return 3;
+		case "l": return 4;
+		default: return 69;
+	}
+}
+
+Parser.savingThrowAbvToFull = function (abv) {
+	switch (abv) {
+		case "Fort":
+		case "fort": return "Fortitude";
+		case "Ref":
+		case "ref": return "Reflex";
+		case "Will":
+		case "will": return "Will";
+		default: throw new Error(`Unknown saving throw abv ${abv}.`)
+	}
+}
+
+Parser.initialProficienciesToFull = function (initProf) {
+	let out = {
+		type: "pf2-sidebar",
+		name: "INITIAL PROFICIENCIES",
+		entries: [
+			"At 1st level, you gain the listed proficiency ranks in  the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way.",
+		],
+	};
+	out.entries.push({type: "pf2-title", name: "PERCEPTION"});
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`);
+	out.entries.push({type: "pf2-title", name: "SAVING THROWS"});
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.fort)} in Fortitude`);
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
+	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
+	out.entries.push({type: "pf2-title", name: "SKILLS"});
+	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`{@indent Trained in ${it}}`));
+	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`{@indent Expert in ${it}}`));
+	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`{@indent Master in ${it}}`));
+	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`{@indent Legendary in ${it}}`));
+	if (initProf.skills.add) out.entries.push(`{@indent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
+	out.entries.push({type: "pf2-title", name: "ATTACKS"});
+	if (initProf.attacks.t) initProf.attacks.t.forEach(it => out.entries.push(`Trained in ${it}`));
+	if (initProf.attacks.e) initProf.attacks.e.forEach(it => out.entries.push(`Expert in ${it}`));
+	if (initProf.attacks.m) initProf.attacks.m.forEach(it => out.entries.push(`Master in ${it}`));
+	if (initProf.attacks.l) initProf.attacks.l.forEach(it => out.entries.push(`Legendary in ${it}`));
+	out.entries.push({type: "pf2-title", name: "DEFENSES"});
+	if (initProf.defenses.t) initProf.defenses.t.forEach(it => out.entries.push(`Trained in ${it}`));
+	if (initProf.defenses.e) initProf.defenses.e.forEach(it => out.entries.push(`Expert in ${it}`));
+	if (initProf.defenses.m) initProf.defenses.m.forEach(it => out.entries.push(`Master in ${it}`));
+	if (initProf.defenses.l) initProf.defenses.l.forEach(it => out.entries.push(`Legendary in ${it}`));
+	if (initProf.classDc) {
+		out.entries.push({type: "pf2-title", name: "CLASS DC"});
+		out.entries.push(initProf.classDc.entry);
+	}
+
+	return out
+}
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
 Parser.spSchoolAndSubschoolsAbvsToFull = function (school, subschools) {
@@ -768,7 +933,8 @@ Parser.spSchoolAbvToStyle = function (school) { // For homebrew
 Parser.getOrdinalForm = function (i) {
 	i = Number(i);
 	if (isNaN(i)) return "";
-	const j = i % 10; const k = i % 100;
+	const j = i % 10;
+	const k = i % 100;
 	if (j === 1 && k !== 11) return `${i}st`;
 	if (j === 2 && k !== 12) return `${i}nd`;
 	if (j === 3 && k !== 13) return `${i}rd`;
@@ -813,7 +979,7 @@ Parser.spLevelSchoolMetaToFull = function (level, school, meta, subschools) {
 	if (metaArr.length || (subschools && subschools.length)) {
 		const metaAndSubschoolPart = [
 			(subschools || []).map(sub => Parser.spSchoolAbvToFull(sub)).join(", "),
-			metaArr.join(", ")
+			metaArr.join(", "),
 		].filter(Boolean).join("; ").toLowerCase();
 		return `${levelSchoolStr} (${metaAndSubschoolPart})`;
 	}
@@ -827,7 +993,6 @@ Parser.spTimeListToFull = function (times, isStripTags) {
 Parser.getTimeToFull = function (time) {
 	return `${time.number} ${time.unit === "free" ? "free action" : time.unit}${time.number > 1 ? "s" : ""}`;
 };
-
 
 RNG_SPECIAL = "special";
 RNG_POINT = "point";
@@ -857,7 +1022,7 @@ Parser.SP_RANGE_TYPE_TO_FULL = {
 	[RNG_SIGHT]: "Sight",
 	[RNG_UNLIMITED]: "Unlimited",
 	[RNG_UNLIMITED_SAME_PLANE]: "Planetary",
-	[RNG_TOUCH]: "Touch"
+	[RNG_TOUCH]: "Touch",
 };
 
 Parser.spRangeTypeToFull = function (range) {
@@ -873,7 +1038,7 @@ Parser.SP_DIST_TYPE_TO_FULL = {
 	[RNG_TOUCH]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_TOUCH],
 	[RNG_SIGHT]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_SIGHT],
 	[RNG_UNLIMITED]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED],
-	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE]
+	[RNG_UNLIMITED_SAME_PLANE]: Parser.SP_RANGE_TYPE_TO_FULL[RNG_UNLIMITED_SAME_PLANE],
 };
 
 Parser.spDistanceTypeToFull = function (range) {
@@ -894,7 +1059,7 @@ Parser.SP_RANGE_TO_ICON = {
 	[RNG_SIGHT]: "fa-eye",
 	[RNG_UNLIMITED_SAME_PLANE]: "fa-globe-americas",
 	[RNG_UNLIMITED]: "fa-infinity",
-	[RNG_TOUCH]: "fa-hand-paper"
+	[RNG_TOUCH]: "fa-hand-paper",
 };
 
 Parser.spRangeTypeToIcon = function (range) {
@@ -1016,7 +1181,7 @@ Parser.RANGE_TYPES = [
 	{type: RNG_HEMISPHERE, hasDistance: true, isRequireAmount: true},
 	{type: RNG_CYLINDER, hasDistance: true, isRequireAmount: true},
 
-	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false}
+	{type: RNG_SPECIAL, hasDistance: false, isRequireAmount: false},
 ];
 
 Parser.DIST_TYPES = [
@@ -1028,7 +1193,7 @@ Parser.DIST_TYPES = [
 
 	{type: RNG_SIGHT, hasAmount: false},
 	{type: RNG_UNLIMITED_SAME_PLANE, hasAmount: false},
-	{type: RNG_UNLIMITED, hasAmount: false}
+	{type: RNG_UNLIMITED, hasAmount: false},
 ];
 
 Parser.spComponentsToFull = function (comp, level) {
@@ -1044,7 +1209,7 @@ Parser.spComponentsToFull = function (comp, level) {
 Parser.SP_END_TYPE_TO_FULL = {
 	"dispel": "dispelled",
 	"trigger": "triggered",
-	"discharge": "discharged"
+	"discharge": "discharged",
 };
 Parser.spEndTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_END_TYPE_TO_FULL, type);
@@ -1078,7 +1243,7 @@ Parser.DURATION_TYPES = [
 	{type: "instant", full: "Instantaneous"},
 	{type: "timed", hasAmount: true},
 	{type: "permanent", hasEnds: true},
-	{type: "special"}
+	{type: "special"},
 ];
 
 Parser.DURATION_AMOUNT_TYPES = [
@@ -1088,7 +1253,7 @@ Parser.DURATION_AMOUNT_TYPES = [
 	"hour",
 	"day",
 	"week",
-	"year"
+	"year",
 ];
 
 Parser.spClassesToFull = function (classes, textOnly, subclassLookup = {}) {
@@ -1132,13 +1297,14 @@ Parser._spSubclassItem = function (fromSubclass, textOnly, subclassLookup) {
 	if (textOnly) return text;
 	const classPart = `<a href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}" title="Source: ${Parser.sourceJsonToFull(c.source)}">${c.name}</a>`;
 	const fromLookup = subclassLookup ? MiscUtil.get(subclassLookup, c.source, c.name, sc.source, sc.name) : null;
-	if (fromLookup) return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
-		subclass: {
-			shortName: sc.name,
-			source: sc.source
-		}
-	})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
-	else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
+	if (fromLookup) {
+		return `<a class="italic" href="${UrlUtil.PG_CLASSES}#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES](c)}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({
+			subclass: {
+				shortName: sc.name,
+				source: sc.source,
+			},
+		})}" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</a> ${classPart}`;
+	} else return `<span class="italic" title="Source: ${Parser.sourceJsonToFull(fromSubclass.subclass.source)}">${text}</span> ${classPart}`;
 };
 
 Parser.SPELL_ATTACK_TYPE_TO_FULL = {};
@@ -1161,7 +1327,7 @@ Parser.SPELL_AREA_TYPE_TO_FULL = {
 	Q: "Square",
 	L: "Line",
 	H: "Hemisphere",
-	W: "Wall"
+	W: "Wall",
 };
 Parser.spAreaTypeToFull = function (type) {
 	return Parser._parse_aToB(Parser.SPELL_AREA_TYPE_TO_FULL, type);
@@ -1172,7 +1338,7 @@ Parser.SP_MISC_TAG_TO_FULL = {
 	SGT: "Requires Sight",
 	PRM: "Permanent Effects",
 	SCL: "Scaling Effects",
-	SMN: "Summons Creature"
+	SMN: "Summons Creature",
 };
 Parser.spMiscTagToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_MISC_TAG_TO_FULL, type);
@@ -1182,296 +1348,42 @@ Parser.SP_CASTER_PROGRESSION_TO_FULL = {
 	full: "Full",
 	"1/2": "Half",
 	"1/3": "One-Third",
-	"pact": "Pact Magic"
+	"pact": "Pact Magic",
 };
 Parser.spCasterProgressionToFull = function (type) {
 	return Parser._parse_aToB(Parser.SP_CASTER_PROGRESSION_TO_FULL, type);
 };
 
-// mon-prefix functions are for parsing monster data, and shared with the roll20 script
-Parser.monAlignToFull = function (align) {
+Parser.creatureAlignToFull = function (align) {
 	switch (align) {
-		case null: return "";
-		case "ANY": return "Any";
-		case "LG": return "Lawful Good";
-		case "NG": return "Neutral Good";
-		case "CG": return "Chaotic Good";
-		case "LN": return "Lawful Neutral";
-		case "N": return "Neutral";
-		case "CN": return "Chaotic Neutral";
-		case "LE": return "Lawful Evil";
-		case "NE": return "Neutral Evil";
-		case "CE": return "Chaotic Evil";
-		default: return "Unknown";
+		case null:
+			return "";
+		case "ANY":
+			return "Any";
+		case "LG":
+			return "Lawful Good";
+		case "NG":
+			return "Neutral Good";
+		case "CG":
+			return "Chaotic Good";
+		case "LN":
+			return "Lawful Neutral";
+		case "N":
+			return "Neutral";
+		case "CN":
+			return "Chaotic Neutral";
+		case "LE":
+			return "Lawful Evil";
+		case "NE":
+			return "Neutral Evil";
+		case "CE":
+			return "Chaotic Evil";
+		default:
+			return "Unknown";
 	}
-};
-
-Parser.monTypeToFullObj = function (type) {
-	const out = {type: "", tags: [], asText: ""};
-
-	if (typeof type === "string") {
-		// handles e.g. "fey"
-		out.type = type;
-		out.asText = type;
-		return out;
-	}
-
-	const tempTags = [];
-	if (type.tags) {
-		for (const tag of type.tags) {
-			if (typeof tag === "string") {
-				// handles e.g. "fiend (devil)"
-				out.tags.push(tag);
-				tempTags.push(tag);
-			} else {
-				// handles e.g. "humanoid (Chondathan human)"
-				out.tags.push(tag.tag);
-				tempTags.push(`${tag.prefix} ${tag.tag}`);
-			}
-		}
-	}
-	out.type = type.type;
-	if (type.swarmSize) {
-		out.tags.push("swarm");
-		out.asText = `swarm of ${Parser.sizeAbvToFull(type.swarmSize).toLowerCase()} ${Parser.monTypeToPlural(type.type)}`;
-	} else {
-		out.asText = `${type.type}`;
-	}
-	if (tempTags.length) out.asText += ` (${tempTags.join(", ")})`;
-	return out;
-};
-
-Parser.monTypeToPlural = function (type) {
-	return Parser._parse_aToB(Parser.MON_TYPE_TO_PLURAL, type);
-};
-
-Parser.monTypeFromPlural = function (type) {
-	return Parser._parse_bToA(Parser.MON_TYPE_TO_PLURAL, type);
-};
-
-Parser.monCrToFull = function (cr, xp) {
-	if (cr == null) return "";
-	if (typeof cr === "string") return `${cr} (${xp != null ? Parser._addCommas(xp) : Parser.crToXp(cr)} XP)`;
-	else {
-		const stack = [Parser.monCrToFull(cr.cr, cr.xp)];
-		if (cr.lair) stack.push(`${Parser.monCrToFull(cr.lair)} when encountered in lair`);
-		if (cr.coven) stack.push(`${Parser.monCrToFull(cr.coven)} when part of a coven`);
-		return stack.join(" or ");
-	}
-};
-
-Parser.monImmResToFull = function (toParse) {
-	const outerLen = toParse.length;
-	let maxDepth = 0;
-	if (outerLen === 1 && (toParse[0].immune || toParse[0].resist)) {
-		return toParse.map(it => toString(it, -1)).join(maxDepth ? "; " : ", ");
-	}
-
-	function toString(it, depth = 0) {
-		maxDepth = Math.max(maxDepth, depth);
-		if (typeof it === "string") {
-			return it;
-		} else if (it.special) {
-			return it.special;
-		} else {
-			let stack = it.preNote ? `${it.preNote} ` : "";
-			const prop = it.immune ? "immune" : it.resist ? "resist" : it.vulnerable ? "vulnerable" : null;
-			if (prop) {
-				const toJoin = it[prop].map(nxt => toString(nxt, depth + 1));
-				stack += depth ? toJoin.join(maxDepth ? "; " : ", ") : toJoin.joinConjunct(", ", " and ");
-			}
-			if (it.note) stack += ` ${it.note}`;
-			return stack;
-		}
-	}
-
-	function serialJoin(arr) {
-		if (arr.length <= 1) return arr.join("");
-
-		let out = "";
-		for (let i = 0; i < arr.length - 1; ++i) {
-			const it = arr[i];
-			const nxt = arr[i + 1];
-			out += it;
-			out += (it.includes(",") || nxt.includes(",")) ? "; " : ", ";
-		}
-		out += arr.last();
-		return out;
-	}
-
-	return serialJoin(toParse.map(it => toString(it)));
-};
-
-Parser.monCondImmToFull = function (condImm, isPlainText) {
-	function render(condition) {
-		return isPlainText ? condition : Renderer.get().render(`{@condition ${condition}}`);
-	}
-
-	return condImm.map(it => {
-		if (it.special) return it.special;
-		if (it.conditionImmune) return `${it.preNote ? `${it.preNote} ` : ""}${it.conditionImmune.map(render).join(", ")}${it.note ? ` ${it.note}` : ""}`;
-		return render(it);
-	}).sort(SortUtil.ascSortLower).join(", ");
-};
-
-Parser.MON_SENSE_TAG_TO_FULL = {
-	"B": "blindsight",
-	"D": "darkvision",
-	"SD": "superior darkvision",
-	"T": "tremorsense",
-	"U": "truesight"
-};
-Parser.monSenseTagToFull = function (tag) {
-	return Parser._parse_aToB(Parser.MON_SENSE_TAG_TO_FULL, tag);
-};
-
-Parser.MON_SPELLCASTING_TAG_TO_FULL = {
-	"P": "Psionics",
-	"I": "Innate",
-	"F": "Form Only",
-	"S": "Shared",
-	"CB": "Class, Bard",
-	"CC": "Class, Cleric",
-	"CD": "Class, Druid",
-	"CP": "Class, Paladin",
-	"CR": "Class, Ranger",
-	"CS": "Class, Sorcerer",
-	"CL": "Class, Warlock",
-	"CW": "Class, Wizard"
-};
-Parser.monSpellcastingTagToFull = function (tag) {
-	return Parser._parse_aToB(Parser.MON_SPELLCASTING_TAG_TO_FULL, tag);
-};
-
-Parser.MON_MISC_TAG_TO_FULL = {
-	"AOE": "Has Areas of Effect",
-	"MW": "Has Melee Weapon Attacks",
-	"RW": "Has Ranged Weapon Attacks",
-	"RNG": "Has Ranged Weapons",
-	"RCH": "Has Reach Attacks",
-	"THW": "Has Thrown Weapons"
-};
-Parser.monMiscTagToFull = function (tag) {
-	return Parser._parse_aToB(Parser.MON_MISC_TAG_TO_FULL, tag);
-};
-
-Parser.MON_LANGUAGE_TAG_TO_FULL = {
-	"AB": "Abyssal",
-	"AQ": "Aquan",
-	"AU": "Auran",
-	"C": "Common",
-	"CE": "Celestial",
-	"CS": "Can't Speak Known Languages",
-	"D": "Dwarvish",
-	"DR": "Draconic",
-	"DS": "Deep Speech",
-	"DU": "Druidic",
-	"E": "Elvish",
-	"G": "Gnomish",
-	"GI": "Giant",
-	"GO": "Goblin",
-	"GTH": "Gith",
-	"H": "Halfling",
-	"I": "Infernal",
-	"IG": "Ignan",
-	"LF": "Languages Known in Life",
-	"O": "Orc",
-	"OTH": "Other",
-	"P": "Primordial",
-	"S": "Sylvan",
-	"T": "Terran",
-	"TC": "Thieves' cant",
-	"TP": "Telepathy",
-	"U": "Undercommon",
-	"X": "Any (Choose)",
-	"XX": "All"
-};
-Parser.monLanguageTagToFull = function (tag) {
-	return Parser._parse_aToB(Parser.MON_LANGUAGE_TAG_TO_FULL, tag);
 };
 
 Parser.ENVIRONMENTS = ["arctic", "coastal", "desert", "forest", "grassland", "hill", "mountain", "swamp", "underdark", "underwater", "urban"];
-
-// psi-prefix functions are for parsing psionic data, and shared with the roll20 script
-Parser.PSI_ABV_TYPE_TALENT = "T";
-Parser.PSI_ABV_TYPE_DISCIPLINE = "D";
-Parser.PSI_ORDER_NONE = "None";
-Parser.psiTypeToFull = type => Parser.psiTypeToMeta(type).full;
-
-Parser.psiTypeToMeta = type => {
-	let out = {};
-	if (type === Parser.PSI_ABV_TYPE_TALENT) out = {hasOrder: false, full: "Talent"};
-	else if (type === Parser.PSI_ABV_TYPE_DISCIPLINE) out = {hasOrder: true, full: "Discipline"};
-	else if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.psionicTypes && BrewUtil.homebrewMeta.psionicTypes[type]) out = BrewUtil.homebrewMeta.psionicTypes[type];
-	out.full = out.full || "Unknown";
-	out.short = out.short || out.full;
-	return out;
-};
-
-Parser.psiOrderToFull = (order) => {
-	return order === undefined ? Parser.PSI_ORDER_NONE : order;
-};
-
-Parser.prereqSpellToFull = function (spell) {
-	if (spell) {
-		const [text, suffix] = spell.split("#");
-		if (!suffix) return Renderer.get().render(`{@spell ${spell}}`);
-		else if (suffix === "c") return Renderer.get().render(`{@spell ${text}} cantrip`);
-		else if (suffix === "x") return Renderer.get().render("{@spell hex} spell or a warlock feature that curses");
-	} else return VeCt.STR_NONE;
-};
-
-Parser.prereqPactToFull = function (pact) {
-	if (pact === "Chain") return "Pact of the Chain";
-	if (pact === "Tome") return "Pact of the Tome";
-	if (pact === "Blade") return "Pact of the Blade";
-	if (pact === "Talisman") return "Pact of the Talisman";
-	return pact;
-};
-
-Parser.prereqPatronToShort = function (patron) {
-	if (patron === "Any") return patron;
-	const mThe = /^The (.*?)$/.exec(patron);
-	if (mThe) return mThe[1];
-	return patron;
-};
-
-// NOTE: These need to be reflected in omnidexer.js to be indexed
-Parser.OPT_FEATURE_TYPE_TO_FULL = {
-	AI: "Artificer Infusion",
-	ED: "Elemental Discipline",
-	EI: "Eldritch Invocation",
-	MM: "Metamagic",
-	"MV": "Maneuver",
-	"MV:B": "Maneuver, Battle Master",
-	"MV:C2-UA": "Maneuver, Cavalier V2 (UA)",
-	"AS:V1-UA": "Arcane Shot, V1 (UA)",
-	"AS:V2-UA": "Arcane Shot, V2 (UA)",
-	"AS": "Arcane Shot",
-	OTH: "Other",
-	"FS:F": "Fighting Style; Fighter",
-	"FS:B": "Fighting Style; Bard",
-	"FS:P": "Fighting Style; Paladin",
-	"FS:R": "Fighting Style; Ranger",
-	"PB": "Pact Boon",
-	"SHP:H": "Ship Upgrade, Hull",
-	"SHP:M": "Ship Upgrade, Movement",
-	"SHP:W": "Ship Upgrade, Weapon",
-	"SHP:F": "Ship Upgrade, Figurehead",
-	"SHP:O": "Ship Upgrade, Miscellaneous",
-	"IWM:W": "Infernal War Machine Variant, Weapon",
-	"IWM:A": "Infernal War Machine Upgrade, Armor",
-	"IWM:G": "Infernal War Machine Upgrade, Gadget",
-	"OR": "Onomancy Resonant",
-	"RN": "Rune Knight Rune",
-	"AF": "Alchemical Formula"
-};
-
-Parser.optFeatureTypeToFull = function (type) {
-	if (Parser.OPT_FEATURE_TYPE_TO_FULL[type]) return Parser.OPT_FEATURE_TYPE_TO_FULL[type];
-	if (BrewUtil.homebrewMeta && BrewUtil.homebrewMeta.optionalFeatureTypes && BrewUtil.homebrewMeta.optionalFeatureTypes[type]) return BrewUtil.homebrewMeta.optionalFeatureTypes[type];
-	return type;
-};
 
 Parser.alignmentAbvToFull = function (alignment) {
 	if (!alignment) return null; // used in sidekicks
@@ -1548,7 +1460,7 @@ Parser.weightToFull = function (lbs, isSmallUnit) {
 	lbs = lbs - (2000 * tons);
 	return [
 		tons ? `${tons}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}ton${tons === 1 ? "" : "s"}${isSmallUnit ? `</span>` : ""}` : null,
-		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null
+		lbs ? `${lbs}${isSmallUnit ? `<span class="ve-small ml-1">` : " "}lb.${isSmallUnit ? `</span>` : ""}` : null,
 	].filter(Boolean).join(", ");
 };
 
@@ -1561,46 +1473,25 @@ Parser.CAT_ID_ITEM = 4;
 Parser.CAT_ID_CLASS = 5;
 Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
-Parser.CAT_ID_ELDRITCH_INVOCATION = 8;
-Parser.CAT_ID_PSIONIC = 9;
-Parser.CAT_ID_RACE = 10;
-Parser.CAT_ID_OTHER_REWARD = 11;
+Parser.CAT_ID_ANCESTRY = 10;
 Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
-Parser.CAT_ID_OBJECT = 15;
-Parser.CAT_ID_TRAP = 16;
 Parser.CAT_ID_HAZARD = 17;
 Parser.CAT_ID_QUICKREF = 18;
-Parser.CAT_ID_CULT = 19;
-Parser.CAT_ID_BOON = 20;
-Parser.CAT_ID_DISEASE = 21;
-Parser.CAT_ID_METAMAGIC = 22;
-Parser.CAT_ID_MANEUVER_BATTLEMASTER = 23;
+Parser.CAT_ID_AFFLICTION = 21;
 Parser.CAT_ID_TABLE = 24;
 Parser.CAT_ID_TABLE_GROUP = 25;
-Parser.CAT_ID_MANEUVER_CAVALIER = 26;
-Parser.CAT_ID_ARCANE_SHOT = 27;
-Parser.CAT_ID_OPTIONAL_FEATURE_OTHER = 28;
-Parser.CAT_ID_FIGHTING_STYLE = 29;
 Parser.CAT_ID_CLASS_FEATURE = 30;
-Parser.CAT_ID_VEHICLE = 31;
-Parser.CAT_ID_PACT_BOON = 32;
-Parser.CAT_ID_ELEMENTAL_DISCIPLINE = 33;
-Parser.CAT_ID_ARTIFICER_INFUSION = 34;
-Parser.CAT_ID_SHIP_UPGRADE = 35;
-Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE = 36;
-Parser.CAT_ID_ONOMANCY_RESONANT = 37;
-Parser.CAT_ID_RUNE_KNIGHT_RUNE = 37;
-Parser.CAT_ID_ALCHEMICAL_FORMULA = 38;
-Parser.CAT_ID_MANEUVER = 39;
 Parser.CAT_ID_SUBCLASS = 40;
 Parser.CAT_ID_SUBCLASS_FEATURE = 41;
 Parser.CAT_ID_ACTION = 42;
+Parser.CAT_ID_ABILITY = 48;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
 Parser.CAT_ID_TRAIT = 46;
+Parser.CAT_ID_ARCHETYPE = 47;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1610,42 +1501,21 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELDRITCH_INVOCATION] = "Eldritch Invocation";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PSIONIC] = "Psionic";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RACE] = "Race";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OTHER_REWARD] = "Other Reward";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OBJECT] = "Object";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAP] = "Trap";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_QUICKREF] = "Quick Reference";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CULT] = "Cult";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOON] = "Boon";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DISEASE] = "Disease";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_METAMAGIC] = "Metamagic";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "Maneuver; Battlemaster";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_AFFLICTION] = "Affliction";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE] = "Table";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TABLE_GROUP] = "Table";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER_CAVALIER] = "Maneuver; Cavalier";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCANE_SHOT] = "Arcane Shot";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "Optional Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FIGHTING_STYLE] = "Fighting Style";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS_FEATURE] = "Class Feature";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PACT_BOON] = "Pact Boon";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "Elemental Discipline";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARTIFICER_INFUSION] = "Infusion";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SHIP_UPGRADE] = "Ship Upgrade";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "Infernal War Machine Upgrade";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ONOMANCY_RESONANT] = "Onomancy Resonant";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "Rune Knight Rune";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "Alchemical Formula";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_MANEUVER] = "Maneuver";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS] = "Subclass";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SUBCLASS_FEATURE] = "Subclass Feature";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ACTION] = "Action";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ABILITY] = "Creature Ability";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
@@ -1663,42 +1533,20 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PSIONIC] = "psionic";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RACE] = "race";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OTHER_REWARD] = "reward";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OBJECT] = "object";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAP] = "trap";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CULT] = "cult";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOON] = "boon";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DISEASE] = "condition";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_AFFLICTION] = "affliction";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE] = "table";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TABLE_GROUP] = "tableGroup";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VEHICLE] = "vehicle";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELDRITCH_INVOCATION] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_CAVALIER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCANE_SHOT] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_OPTIONAL_FEATURE_OTHER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FIGHTING_STYLE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_METAMAGIC] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER_BATTLEMASTER] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PACT_BOON] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ELEMENTAL_DISCIPLINE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARTIFICER_INFUSION] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SHIP_UPGRADE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_INFERNAL_WAR_MACHINE_UPGRADE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ONOMANCY_RESONANT] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_RUNE_KNIGHT_RUNE] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ALCHEMICAL_FORMULA] = "optionalfeature";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_MANEUVER] = "optionalfeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_QUICKREF] = null;
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS_FEATURE] = "classFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS] = "subclass";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassFeature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ACTION] = "action";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
@@ -1760,7 +1608,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 				c.class.source,
 				c.class.name,
 				c.subclass.source,
-				c.subclass.name
+				c.subclass.name,
 			);
 
 			if (fromLookup && fromLookup.isReprinted) {
@@ -1785,7 +1633,7 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	/**
 	 * Get the most recent iteration of a subclass name
 	 */
-	function mapClassShortNameToMostRecent(shortName) {
+	function mapClassShortNameToMostRecent (shortName) {
 		switch (shortName) {
 			case "Favored Soul":
 				return "Divine Soul";
@@ -1815,7 +1663,7 @@ Parser.TRAP_HAZARD_TYPE_TO_FULL = {
 	WTH: "Weather",
 	ENV: "Environmental Hazard",
 	WLD: "Wilderness Hazard",
-	GEN: "Generic"
+	GEN: "Generic",
 };
 
 Parser.tierToFullLevel = function (tier) {
@@ -1853,12 +1701,18 @@ Parser.ATK_TYPE_TO_FULL["RW"] = "Ranged Weapon Attack";
 Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
-		case "part": return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "}`;
-		case "chapter": return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "episode": return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "appendix": return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		case "level": return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
-		default: throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
+		case "part":
+			return `${preNoSuff ? " " : ""}Part ${ordinal.identifier}${preNoSuff ? "" : " \u2014 "}`;
+		case "chapter":
+			return `${preNoSuff ? " " : ""}Ch. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "episode":
+			return `${preNoSuff ? " " : ""}Ep. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "appendix":
+			return `${preNoSuff ? " " : ""}App. ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		case "level":
+			return `${preNoSuff ? " " : ""}Level ${ordinal.identifier}${preNoSuff ? "" : ": "}`;
+		default:
+			throw new Error(`Unhandled ordinal type "${ordinal.type}"`);
 	}
 };
 
@@ -1878,7 +1732,6 @@ SKL_ABV_DIV = "D";
 SKL_ABV_NEC = "N";
 SKL_ABV_TRA = "T";
 SKL_ABV_CON = "C";
-SKL_ABV_PSI = "P";
 Parser.SKL_ABVS = [
 	SKL_ABV_ABJ,
 	SKL_ABV_EVO,
@@ -1888,52 +1741,51 @@ Parser.SKL_ABVS = [
 	SKL_ABV_NEC,
 	SKL_ABV_TRA,
 	SKL_ABV_CON,
-	SKL_ABV_PSI
 ];
 
-Parser.SP_TM_PF_A = "single";
-Parser.SP_TM_PF_AA = "double";
-Parser.SP_TM_PF_AAA = "triple";
-Parser.SP_TM_PF_R = "reaction";
-Parser.SP_TM_PF_F = "free";
-Parser.SP_TM_ROUND = "round";
-Parser.SP_TM_MINS = "minute";
-Parser.SP_TM_HRS = "hour";
-Parser.SP_TIME_ACTIONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F]
-Parser.SP_TIME_SINGLETONS = [Parser.SP_TM_PF_A, Parser.SP_TM_PF_AA, Parser.SP_TM_PF_AAA, Parser.SP_TM_PF_R, Parser.SP_TM_PF_F, Parser.SP_TM_ROUND];
-Parser.SP_TIME_TO_FULL = {
-	[Parser.SP_TM_PF_A]: "Single Action",
-	[Parser.SP_TM_PF_AA]: "Double Action",
-	[Parser.SP_TM_PF_AAA]: "Triple Action",
-	[Parser.SP_TM_PF_R]: "Reaction",
-	[Parser.SP_TM_PF_F]: "Free Action",
-	[Parser.SP_TM_ROUND]: "Rounds",
-	[Parser.SP_TM_MINS]: "Minutes",
-	[Parser.SP_TM_HRS]: "Hours"
+Parser.TM_A = "single";
+Parser.TM_AA = "double";
+Parser.TM_AAA = "triple";
+Parser.TM_R = "reaction";
+Parser.TM_F = "free";
+Parser.TM_ROUND = "round";
+Parser.TM_MINS = "minute";
+Parser.TM_HRS = "hour";
+Parser.TIME_ACTIONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F]
+Parser.TIME_SINGLETONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F, Parser.TM_ROUND];
+Parser.TIME_TO_FULL = {
+	[Parser.TM_A]: "Single Action",
+	[Parser.TM_AA]: "Double Action",
+	[Parser.TM_AAA]: "Triple Action",
+	[Parser.TM_R]: "Reaction",
+	[Parser.TM_F]: "Free Action",
+	[Parser.TM_ROUND]: "Rounds",
+	[Parser.TM_MINS]: "Minutes",
+	[Parser.TM_HRS]: "Hours",
 };
-Parser.spTimeUnitToFull = function (timeUnit) {
-	return Parser._parse_aToB(Parser.SP_TIME_TO_FULL, timeUnit);
-};
-
-Parser.SP_TIME_TO_ABV = {
-	[Parser.SP_TM_PF_A]: "A",
-	[Parser.SP_TM_PF_AA]: "AA",
-	[Parser.SP_TM_PF_AAA]: "AAA",
-	[Parser.SP_TM_PF_R]: "R",
-	[Parser.SP_TM_PF_F]: "F",
-	[Parser.SP_TM_ROUND]: "rnd",
-	[Parser.SP_TM_MINS]: "min",
-	[Parser.SP_TM_HRS]: "hr"
-};
-Parser.spTimeUnitToAbv = function (timeUnit) {
-	return Parser._parse_aToB(Parser.SP_TIME_TO_ABV, timeUnit);
+Parser.timeUnitToFull = function (timeUnit) {
+	return Parser._parse_aToB(Parser.TIME_TO_FULL, timeUnit);
 };
 
-Parser.spTimeToShort = function (time, isHtml) {
+Parser.TIME_TO_ABV = {
+	[Parser.TM_A]: "A",
+	[Parser.TM_AA]: "AA",
+	[Parser.TM_AAA]: "AAA",
+	[Parser.TM_R]: "R",
+	[Parser.TM_F]: "F",
+	[Parser.TM_ROUND]: "rnd",
+	[Parser.TM_MINS]: "min",
+	[Parser.TM_HRS]: "hr",
+};
+Parser.timeUnitToAbv = function (timeUnit) {
+	return Parser._parse_aToB(Parser.TIME_TO_ABV, timeUnit);
+};
+
+Parser.timeToShort = function (time, isHtml) {
 	if (!time) return "";
-	return (time.number === 1 && Parser.SP_TIME_SINGLETONS.includes(time.unit))
-		? `${Parser.spTimeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
-		: `${time.number} ${isHtml ? `<span class="ve-small">` : ""}${Parser.spTimeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
+	return (time.number === 1 && Parser.TIME_SINGLETONS.includes(time.unit))
+		? `${Parser.timeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
+		: `${time.number} ${isHtml ? `<span class="ve-small">` : ""}${Parser.timeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
 };
 
 SKL_ABJ = "Abjuration";
@@ -1944,9 +1796,8 @@ SKL_DIV = "Divination";
 SKL_NEC = "Necromancy";
 SKL_TRA = "Transmutation";
 SKL_CON = "Conjuration";
-SKL_PSI = "Psionic";
 
-Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON, SKL_PSI];
+Parser.SP_SCHOOLS = [SKL_ABJ, SKL_EVO, SKL_ENC, SKL_ILL, SKL_DIV, SKL_NEC, SKL_TRA, SKL_CON];
 
 Parser.SP_SCHOOL_FULL_TO_ABV = {};
 Parser.SP_SCHOOL_FULL_TO_ABV[SKL_ABJ] = SKL_ABV_ABJ;
@@ -1957,7 +1808,6 @@ Parser.SP_SCHOOL_FULL_TO_ABV[SKL_DIV] = SKL_ABV_DIV;
 Parser.SP_SCHOOL_FULL_TO_ABV[SKL_NEC] = SKL_ABV_NEC;
 Parser.SP_SCHOOL_FULL_TO_ABV[SKL_TRA] = SKL_ABV_TRA;
 Parser.SP_SCHOOL_FULL_TO_ABV[SKL_CON] = SKL_ABV_CON;
-Parser.SP_SCHOOL_FULL_TO_ABV[SKL_PSI] = SKL_ABV_PSI;
 
 Parser.SP_SCHOOL_ABV_TO_FULL = {};
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_ABJ] = SKL_ABJ;
@@ -1968,7 +1818,6 @@ Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_DIV] = SKL_DIV;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_NEC] = SKL_NEC;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_TRA] = SKL_TRA;
 Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_CON] = SKL_CON;
-Parser.SP_SCHOOL_ABV_TO_FULL[SKL_ABV_PSI] = SKL_PSI;
 
 Parser.SP_SCHOOL_ABV_TO_SHORT = {};
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_ABJ] = "Abj.";
@@ -1979,7 +1828,6 @@ Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_DIV] = "Divin.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_NEC] = "Necro.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_TRA] = "Trans.";
 Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_CON] = "Conj.";
-Parser.SP_SCHOOL_ABV_TO_SHORT[SKL_ABV_PSI] = "Psi.";
 
 Parser.ATB_ABV_TO_FULL = {
 	"str": "Strength",
@@ -1987,39 +1835,18 @@ Parser.ATB_ABV_TO_FULL = {
 	"con": "Constitution",
 	"int": "Intelligence",
 	"wis": "Wisdom",
-	"cha": "Charisma"
+	"cha": "Charisma",
 };
 
-TP_ABERRATION = "aberration";
-TP_BEAST = "beast";
-TP_CELESTIAL = "celestial";
-TP_CONSTRUCT = "construct";
-TP_DRAGON = "dragon";
-TP_ELEMENTAL = "elemental";
-TP_FEY = "fey";
-TP_FIEND = "fiend";
-TP_GIANT = "giant";
-TP_HUMANOID = "humanoid";
-TP_MONSTROSITY = "monstrosity";
-TP_OOZE = "ooze";
-TP_PLANT = "plant";
-TP_UNDEAD = "undead";
-Parser.MON_TYPES = [TP_ABERRATION, TP_BEAST, TP_CELESTIAL, TP_CONSTRUCT, TP_DRAGON, TP_ELEMENTAL, TP_FEY, TP_FIEND, TP_GIANT, TP_HUMANOID, TP_MONSTROSITY, TP_OOZE, TP_PLANT, TP_UNDEAD];
-Parser.MON_TYPE_TO_PLURAL = {};
-Parser.MON_TYPE_TO_PLURAL[TP_ABERRATION] = "aberrations";
-Parser.MON_TYPE_TO_PLURAL[TP_BEAST] = "beasts";
-Parser.MON_TYPE_TO_PLURAL[TP_CELESTIAL] = "celestials";
-Parser.MON_TYPE_TO_PLURAL[TP_CONSTRUCT] = "constructs";
-Parser.MON_TYPE_TO_PLURAL[TP_DRAGON] = "dragons";
-Parser.MON_TYPE_TO_PLURAL[TP_ELEMENTAL] = "elementals";
-Parser.MON_TYPE_TO_PLURAL[TP_FEY] = "fey";
-Parser.MON_TYPE_TO_PLURAL[TP_FIEND] = "fiends";
-Parser.MON_TYPE_TO_PLURAL[TP_GIANT] = "giants";
-Parser.MON_TYPE_TO_PLURAL[TP_HUMANOID] = "humanoids";
-Parser.MON_TYPE_TO_PLURAL[TP_MONSTROSITY] = "monstrosities";
-Parser.MON_TYPE_TO_PLURAL[TP_OOZE] = "oozes";
-Parser.MON_TYPE_TO_PLURAL[TP_PLANT] = "plants";
-Parser.MON_TYPE_TO_PLURAL[TP_UNDEAD] = "undead";
+Parser.ATB_TO_NUM = {
+	"Strength": 1,
+	"Dexterity": 2,
+	"Constitution": 3,
+	"Intelligence": 4,
+	"Wisdom": 5,
+	"Charisma": 6,
+	"Free": 7,
+}
 
 SZ_FINE = "F";
 SZ_DIMINUTIVE = "D";
@@ -2044,47 +1871,10 @@ Parser.SIZE_ABV_TO_FULL[SZ_GARGANTUAN] = "Gargantuan";
 Parser.SIZE_ABV_TO_FULL[SZ_COLOSSAL] = "Colossal";
 Parser.SIZE_ABV_TO_FULL[SZ_VARIES] = "Varies";
 
-Parser.XP_CHART_ALT = {
-	"0": 10,
-	"1/8": 25,
-	"1/4": 50,
-	"1/2": 100,
-	"1": 200,
-	"2": 450,
-	"3": 700,
-	"4": 1100,
-	"5": 1800,
-	"6": 2300,
-	"7": 2900,
-	"8": 3900,
-	"9": 5000,
-	"10": 5900,
-	"11": 7200,
-	"12": 8400,
-	"13": 10000,
-	"14": 11500,
-	"15": 13000,
-	"16": 15000,
-	"17": 18000,
-	"18": 20000,
-	"19": 22000,
-	"20": 25000,
-	"21": 33000,
-	"22": 41000,
-	"23": 50000,
-	"24": 62000,
-	"25": 75000,
-	"26": 90000,
-	"27": 105000,
-	"28": 120000,
-	"29": 135000,
-	"30": 155000
-};
-
 Parser.ARMOR_ABV_TO_FULL = {
 	"l.": "light",
 	"m.": "medium",
-	"h.": "heavy"
+	"h.": "heavy",
 };
 
 Parser.CONDITION_TO_COLOR = {
@@ -2104,7 +1894,7 @@ Parser.CONDITION_TO_COLOR = {
 	"Stunned": "#a23bcb",
 	"Unconscious": "#3a40ad",
 
-	"Concentration": "#009f7a"
+	"Concentration": "#009f7a",
 };
 
 Parser.RULE_TYPE_TO_FULL = {
@@ -2112,7 +1902,7 @@ Parser.RULE_TYPE_TO_FULL = {
 	"V": "Variant",
 	"VO": "Variant Optional",
 	"VV": "Variant Variant",
-	"U": "Unknown"
+	"U": "Unknown",
 };
 
 Parser.ruleTypeToFull = function (ruleType) {
@@ -2122,689 +1912,66 @@ Parser.ruleTypeToFull = function (ruleType) {
 Parser.VEHICLE_TYPE_TO_FULL = {
 	"SHIP": "Ship",
 	"INFWAR": "Infernal War Machine",
-	"CREATURE": "Creature"
+	"CREATURE": "Creature",
 };
 
 Parser.vehicleTypeToFull = function (vehicleType) {
 	return Parser._parse_aToB(Parser.VEHICLE_TYPE_TO_FULL, vehicleType);
 };
 
-SRC_CoS = "CoS";
-SRC_DMG = "DMG";
-SRC_EEPC = "EEPC";
-SRC_EET = "EET";
-SRC_HotDQ = "HotDQ";
-SRC_LMoP = "LMoP";
-SRC_Mag = "Mag";
-SRC_MM = "MM";
-SRC_OotA = "OotA";
-SRC_PHB = "PHB";
-SRC_PotA = "PotA";
-SRC_RoT = "RoT";
-SRC_RoTOS = "RoTOS";
-SRC_SCAG = "SCAG";
-SRC_SKT = "SKT";
-SRC_ToA = "ToA";
-SRC_ToD = "ToD";
-SRC_TTP = "TTP";
-SRC_TYP = "TftYP";
-SRC_TYP_AtG = "TftYP-AtG";
-SRC_TYP_DiT = "TftYP-DiT";
-SRC_TYP_TFoF = "TftYP-TFoF";
-SRC_TYP_THSoT = "TftYP-THSoT";
-SRC_TYP_TSC = "TftYP-TSC";
-SRC_TYP_ToH = "TftYP-ToH";
-SRC_TYP_WPM = "TftYP-WPM";
-SRC_VGM = "VGM";
-SRC_XGE = "XGE";
-SRC_OGA = "OGA";
-SRC_MTF = "MTF";
-SRC_WDH = "WDH";
-SRC_WDMM = "WDMM";
-SRC_GGR = "GGR";
-SRC_KKW = "KKW";
-SRC_LLK = "LLK";
-SRC_GoS = "GoS";
-SRC_AI = "AI";
-SRC_OoW = "OoW";
-SRC_ESK = "ESK";
-SRC_DIP = "DIP";
-SRC_HftT = "HftT";
-SRC_DC = "DC";
-SRC_SLW = "SLW";
-SRC_SDW = "SDW";
-SRC_BGDIA = "BGDIA";
-SRC_LR = "LR";
-SRC_AL = "AL";
-SRC_SAC = "SAC";
-SRC_ERLW = "ERLW";
-SRC_EFR = "EFR";
-SRC_RMBRE = "RMBRE";
-SRC_RMR = "RMR";
-SRC_MFF = "MFF";
-SRC_AWM = "AWM";
-SRC_IMR = "IMR";
-SRC_SADS = "SADS";
-SRC_EGW = "EGW";
-SRC_EGW_ToR = "ToR";
-SRC_EGW_DD = "DD";
-SRC_EGW_FS = "FS";
-SRC_EGW_US = "US";
-SRC_MOT = "MOT";
-SRC_IDRotF = "IDRotF";
-SRC_SCREEN = "Screen";
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
+SRC_GMG = "GMG";
 SRC_LOCG = "LOCG"
-
-SRC_AL_PREFIX = "AL";
-
-SRC_ALCoS = `${SRC_AL_PREFIX}CurseOfStrahd`;
-SRC_ALEE = `${SRC_AL_PREFIX}ElementalEvil`;
-SRC_ALRoD = `${SRC_AL_PREFIX}RageOfDemons`;
-
-SRC_PS_PREFIX = "PS";
-
-SRC_PSA = `${SRC_PS_PREFIX}A`;
-SRC_PSI = `${SRC_PS_PREFIX}I`;
-SRC_PSK = `${SRC_PS_PREFIX}K`;
-SRC_PSZ = `${SRC_PS_PREFIX}Z`;
-SRC_PSX = `${SRC_PS_PREFIX}X`;
-SRC_PSD = `${SRC_PS_PREFIX}D`;
-
-SRC_UA_PREFIX = "UA";
-
-SRC_UAA = `${SRC_UA_PREFIX}Artificer`;
-SRC_UAEAG = `${SRC_UA_PREFIX}EladrinAndGith`;
-SRC_UAEBB = `${SRC_UA_PREFIX}Eberron`;
-SRC_UAFFR = `${SRC_UA_PREFIX}FeatsForRaces`;
-SRC_UAFFS = `${SRC_UA_PREFIX}FeatsForSkills`;
-SRC_UAFO = `${SRC_UA_PREFIX}FiendishOptions`;
-SRC_UAFT = `${SRC_UA_PREFIX}Feats`;
-SRC_UAGH = `${SRC_UA_PREFIX}GothicHeroes`;
-SRC_UAMDM = `${SRC_UA_PREFIX}ModernMagic`;
-SRC_UASSP = `${SRC_UA_PREFIX}StarterSpells`;
-SRC_UATMC = `${SRC_UA_PREFIX}TheMysticClass`;
-SRC_UATOBM = `${SRC_UA_PREFIX}ThatOldBlackMagic`;
-SRC_UATRR = `${SRC_UA_PREFIX}TheRangerRevised`;
-SRC_UAWA = `${SRC_UA_PREFIX}WaterborneAdventures`;
-SRC_UAVR = `${SRC_UA_PREFIX}VariantRules`;
-SRC_UALDR = `${SRC_UA_PREFIX}LightDarkUnderdark`;
-SRC_UARAR = `${SRC_UA_PREFIX}RangerAndRogue`;
-SRC_UAATOSC = `${SRC_UA_PREFIX}ATrioOfSubclasses`;
-SRC_UABPP = `${SRC_UA_PREFIX}BarbarianPrimalPaths`;
-SRC_UARSC = `${SRC_UA_PREFIX}RevisedSubclasses`;
-SRC_UAKOO = `${SRC_UA_PREFIX}KitsOfOld`;
-SRC_UABBC = `${SRC_UA_PREFIX}BardBardColleges`;
-SRC_UACDD = `${SRC_UA_PREFIX}ClericDivineDomains`;
-SRC_UAD = `${SRC_UA_PREFIX}Druid`;
-SRC_UARCO = `${SRC_UA_PREFIX}RevisedClassOptions`;
-SRC_UAF = `${SRC_UA_PREFIX}Fighter`;
-SRC_UAM = `${SRC_UA_PREFIX}Monk`;
-SRC_UAP = `${SRC_UA_PREFIX}Paladin`;
-SRC_UAMC = `${SRC_UA_PREFIX}ModifyingClasses`;
-SRC_UAS = `${SRC_UA_PREFIX}Sorcerer`;
-SRC_UAWAW = `${SRC_UA_PREFIX}WarlockAndWizard`;
-SRC_UATF = `${SRC_UA_PREFIX}TheFaithful`;
-SRC_UAWR = `${SRC_UA_PREFIX}WizardRevisited`;
-SRC_UAESR = `${SRC_UA_PREFIX}ElfSubraces`;
-SRC_UAMAC = `${SRC_UA_PREFIX}MassCombat`;
-SRC_UA3PE = `${SRC_UA_PREFIX}ThreePillarExperience`;
-SRC_UAGHI = `${SRC_UA_PREFIX}GreyhawkInitiative`;
-SRC_UATSC = `${SRC_UA_PREFIX}ThreeSubclasses`;
-SRC_UAOD = `${SRC_UA_PREFIX}OrderDomain`;
-SRC_UACAM = `${SRC_UA_PREFIX}CentaursMinotaurs`;
-SRC_UAGSS = `${SRC_UA_PREFIX}GiantSoulSorcerer`;
-SRC_UARoE = `${SRC_UA_PREFIX}RacesOfEberron`;
-SRC_UARoR = `${SRC_UA_PREFIX}RacesOfRavnica`;
-SRC_UAWGE = `${SRC_UA_PREFIX}WGE`;
-SRC_UAOSS = `${SRC_UA_PREFIX}OfShipsAndSea`;
-SRC_UASIK = `${SRC_UA_PREFIX}Sidekicks`;
-SRC_UAAR = `${SRC_UA_PREFIX}ArtificerRevisited`;
-SRC_UABAM = `${SRC_UA_PREFIX}BarbarianAndMonk`;
-SRC_UASAW = `${SRC_UA_PREFIX}SorcererAndWarlock`;
-SRC_UABAP = `${SRC_UA_PREFIX}BardAndPaladin`;
-SRC_UACDW = `${SRC_UA_PREFIX}ClericDruidWizard`;
-SRC_UAFRR = `${SRC_UA_PREFIX}FighterRangerRogue`;
-SRC_UACFV = `${SRC_UA_PREFIX}ClassFeatureVariants`;
-SRC_UAFRW = `${SRC_UA_PREFIX}FighterRogueWizard`;
-SRC_UAPCRM = `${SRC_UA_PREFIX}PrestigeClassesRunMagic`;
-SRC_UAR = `${SRC_UA_PREFIX}Ranger`;
-SRC_UA2020SC1 = `${SRC_UA_PREFIX}2020SubclassesPt1`;
-SRC_UA2020SC2 = `${SRC_UA_PREFIX}2020SubclassesPt2`;
-SRC_UA2020SC3 = `${SRC_UA_PREFIX}2020SubclassesPt3`;
-SRC_UA2020SC4 = `${SRC_UA_PREFIX}2020SubclassesPt4`;
-SRC_UA2020SMT = `${SRC_UA_PREFIX}2020SpellsAndMagicTattoos`;
-SRC_UA2020POR = `${SRC_UA_PREFIX}2020PsionicOptionsRevisited`;
-SRC_UA2020SCR = `${SRC_UA_PREFIX}2020SubclassesRevisited`;
-SRC_UA2020F = `${SRC_UA_PREFIX}2020Feats`;
+SRC_LOGM = "LOGM"
 
 SRC_3PP_SUFFIX = " 3pp";
-SRC_STREAM = "Stream";
-SRC_TWITTER = "Twitter";
 
-AL_PREFIX = "Adventurers League: ";
-AL_PREFIX_SHORT = "AL: ";
-PS_PREFIX = "Plane Shift: ";
-PS_PREFIX_SHORT = "PS: ";
-UA_PREFIX = "Unearthed Arcana: ";
-UA_PREFIX_SHORT = "UA: ";
-TftYP_NAME = "Tales from the Yawning Portal";
+LO_PREFIX = "Lost Omens: ";
+LO_PREFIX_SHORT = "LO: ";
 
 Parser.SOURCE_JSON_TO_FULL = {};
-Parser.SOURCE_JSON_TO_FULL[SRC_CoS] = "Curse of Strahd";
-Parser.SOURCE_JSON_TO_FULL[SRC_DMG] = "Dungeon Master's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_EEPC] = "Elemental Evil Player's Companion";
-Parser.SOURCE_JSON_TO_FULL[SRC_EET] = "Elemental Evil: Trinkets";
-Parser.SOURCE_JSON_TO_FULL[SRC_HotDQ] = "Hoard of the Dragon Queen";
-Parser.SOURCE_JSON_TO_FULL[SRC_LMoP] = "Lost Mine of Phandelver";
-Parser.SOURCE_JSON_TO_FULL[SRC_Mag] = "Dragon Magazine";
-Parser.SOURCE_JSON_TO_FULL[SRC_MM] = "Monster Manual";
-Parser.SOURCE_JSON_TO_FULL[SRC_OotA] = "Out of the Abyss";
-Parser.SOURCE_JSON_TO_FULL[SRC_PHB] = "Player's Handbook";
-Parser.SOURCE_JSON_TO_FULL[SRC_PotA] = "Princes of the Apocalypse";
-Parser.SOURCE_JSON_TO_FULL[SRC_RoT] = "The Rise of Tiamat";
-Parser.SOURCE_JSON_TO_FULL[SRC_RoTOS] = "The Rise of Tiamat Online Supplement";
-Parser.SOURCE_JSON_TO_FULL[SRC_SCAG] = "Sword Coast Adventurer's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_SKT] = "Storm King's Thunder";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToA] = "Tomb of Annihilation";
-Parser.SOURCE_JSON_TO_FULL[SRC_ToD] = "Tyranny of Dragons";
-Parser.SOURCE_JSON_TO_FULL[SRC_TTP] = "The Tortle Package";
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP] = TftYP_NAME;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_AtG] = `${TftYP_NAME}: Against the Giants`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_DiT] = `${TftYP_NAME}: Dead in Thay`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TFoF] = `${TftYP_NAME}: The Forge of Fury`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_THSoT] = `${TftYP_NAME}: The Hidden Shrine of Tamoachan`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_TSC] = `${TftYP_NAME}: The Sunless Citadel`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_ToH] = `${TftYP_NAME}: Tomb of Horrors`;
-Parser.SOURCE_JSON_TO_FULL[SRC_TYP_WPM] = `${TftYP_NAME}: White Plume Mountain`;
-Parser.SOURCE_JSON_TO_FULL[SRC_VGM] = "Volo's Guide to Monsters";
-Parser.SOURCE_JSON_TO_FULL[SRC_XGE] = "Xanathar's Guide to Everything";
-Parser.SOURCE_JSON_TO_FULL[SRC_OGA] = "One Grung Above";
-Parser.SOURCE_JSON_TO_FULL[SRC_MTF] = "Mordenkainen's Tome of Foes";
-Parser.SOURCE_JSON_TO_FULL[SRC_WDH] = "Waterdeep: Dragon Heist";
-Parser.SOURCE_JSON_TO_FULL[SRC_WDMM] = "Waterdeep: Dungeon of the Mad Mage";
-Parser.SOURCE_JSON_TO_FULL[SRC_GGR] = "Guildmasters' Guide to Ravnica";
-Parser.SOURCE_JSON_TO_FULL[SRC_KKW] = "Krenko's Way";
-Parser.SOURCE_JSON_TO_FULL[SRC_LLK] = "Lost Laboratory of Kwalish";
-Parser.SOURCE_JSON_TO_FULL[SRC_GoS] = "Ghosts of Saltmarsh";
-Parser.SOURCE_JSON_TO_FULL[SRC_AI] = "Acquisitions Incorporated";
-Parser.SOURCE_JSON_TO_FULL[SRC_OoW] = "The Orrery of the Wanderer";
-Parser.SOURCE_JSON_TO_FULL[SRC_ESK] = "Essentials Kit";
-Parser.SOURCE_JSON_TO_FULL[SRC_DIP] = "Dragon of Icespire Peak";
-Parser.SOURCE_JSON_TO_FULL[SRC_HftT] = "Hunt for the Thessalhydra";
-Parser.SOURCE_JSON_TO_FULL[SRC_DC] = "Divine Contention";
-Parser.SOURCE_JSON_TO_FULL[SRC_SLW] = "Storm Lord's Wrath";
-Parser.SOURCE_JSON_TO_FULL[SRC_SDW] = "Sleeping Dragon's Wake";
-Parser.SOURCE_JSON_TO_FULL[SRC_BGDIA] = "Baldur's Gate: Descent Into Avernus";
-Parser.SOURCE_JSON_TO_FULL[SRC_LR] = "Locathah Rising";
-Parser.SOURCE_JSON_TO_FULL[SRC_AL] = "Adventurers' League";
-Parser.SOURCE_JSON_TO_FULL[SRC_SAC] = "Sage Advice Compendium";
-Parser.SOURCE_JSON_TO_FULL[SRC_ERLW] = "Eberron: Rising from the Last War";
-Parser.SOURCE_JSON_TO_FULL[SRC_EFR] = "Eberron: Forgotten Relics";
-Parser.SOURCE_JSON_TO_FULL[SRC_RMBRE] = "The Lost Dungeon of Rickedness: Big Rick Energy";
-Parser.SOURCE_JSON_TO_FULL[SRC_RMR] = "Dungeons & Dragons vs. Rick and Morty: Basic Rules";
-Parser.SOURCE_JSON_TO_FULL[SRC_MFF] = "Mordenkainen's Fiendish Folio";
-Parser.SOURCE_JSON_TO_FULL[SRC_AWM] = "Adventure with Muk";
-Parser.SOURCE_JSON_TO_FULL[SRC_IMR] = "Infernal Machine Rebuild";
-Parser.SOURCE_JSON_TO_FULL[SRC_SADS] = "Sapphire Anniversary Dice Set";
-Parser.SOURCE_JSON_TO_FULL[SRC_EGW] = "Explorer's Guide to Wildemount";
-Parser.SOURCE_JSON_TO_FULL[SRC_EGW_ToR] = "Tide of Retribution";
-Parser.SOURCE_JSON_TO_FULL[SRC_EGW_DD] = "Dangerous Designs";
-Parser.SOURCE_JSON_TO_FULL[SRC_EGW_FS] = "Frozen Sick";
-Parser.SOURCE_JSON_TO_FULL[SRC_EGW_US] = "Unwelcome Spirits";
-Parser.SOURCE_JSON_TO_FULL[SRC_MOT] = "Mythic Odysseys of Theros";
-Parser.SOURCE_JSON_TO_FULL[SRC_IDRotF] = "Icewind Dale: Rime of the Frostmaiden";
-Parser.SOURCE_JSON_TO_FULL[SRC_SCREEN] = "Dungeon Master's Screen";
-Parser.SOURCE_JSON_TO_FULL[SRC_ALCoS] = `${AL_PREFIX}Curse of Strahd`;
-Parser.SOURCE_JSON_TO_FULL[SRC_ALEE] = `${AL_PREFIX}Elemental Evil`;
-Parser.SOURCE_JSON_TO_FULL[SRC_ALRoD] = `${AL_PREFIX}Rage of Demons`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSA] = `${PS_PREFIX}Amonkhet`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSI] = `${PS_PREFIX}Innistrad`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSK] = `${PS_PREFIX}Kaladesh`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSZ] = `${PS_PREFIX}Zendikar`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSX] = `${PS_PREFIX}Ixalan`;
-Parser.SOURCE_JSON_TO_FULL[SRC_PSD] = `${PS_PREFIX}Dominaria`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAA] = `${UA_PREFIX}Artificer`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEAG] = `${UA_PREFIX}Eladrin and Gith`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAEBB] = `${UA_PREFIX}Eberron`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFR] = `${UA_PREFIX}Feats for Races`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFFS] = `${UA_PREFIX}Feats for Skills`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFO] = `${UA_PREFIX}Fiendish Options`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFT] = `${UA_PREFIX}Feats`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGH] = `${UA_PREFIX}Gothic Heroes`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMDM] = `${UA_PREFIX}Modern Magic`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UASSP] = `${UA_PREFIX}Starter Spells`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UATMC] = `${UA_PREFIX}The Mystic Class`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UATOBM] = `${UA_PREFIX}That Old Black Magic`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UATRR] = `${UA_PREFIX}The Ranger, Revised`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWA] = `${UA_PREFIX}Waterborne Adventures`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAVR] = `${UA_PREFIX}Variant Rules`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UALDR] = `${UA_PREFIX}Light, Dark, Underdark!`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UARAR] = `${UA_PREFIX}Ranger and Rogue`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAATOSC] = `${UA_PREFIX}A Trio of Subclasses`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UABPP] = `${UA_PREFIX}Barbarian Primal Paths`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UARSC] = `${UA_PREFIX}Revised Subclasses`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAKOO] = `${UA_PREFIX}Kits of Old`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UABBC] = `${UA_PREFIX}Bard: Bard Colleges`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UACDD] = `${UA_PREFIX}Cleric: Divine Domains`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAD] = `${UA_PREFIX}Druid`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UARCO] = `${UA_PREFIX}Revised Class Options`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAF] = `${UA_PREFIX}Fighter`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAM] = `${UA_PREFIX}Monk`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAP] = `${UA_PREFIX}Paladin`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMC] = `${UA_PREFIX}Modifying Classes`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAS] = `${UA_PREFIX}Sorcerer`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWAW] = `${UA_PREFIX}Warlock and Wizard`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UATF] = `${UA_PREFIX}The Faithful`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWR] = `${UA_PREFIX}Wizard Revisited`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAESR] = `${UA_PREFIX}Elf Subraces`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAMAC] = `${UA_PREFIX}Mass Combat`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA3PE] = `${UA_PREFIX}Three-Pillar Experience`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGHI] = `${UA_PREFIX}Greyhawk Initiative`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UATSC] = `${UA_PREFIX}Three Subclasses`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAOD] = `${UA_PREFIX}Order Domain`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UACAM] = `${UA_PREFIX}Centaurs and Minotaurs`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAGSS] = `${UA_PREFIX}Giant Soul Sorcerer`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UARoE] = `${UA_PREFIX}Races of Eberron`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UARoR] = `${UA_PREFIX}Races of Ravnica`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAWGE] = "Wayfinder's Guide to Eberron";
-Parser.SOURCE_JSON_TO_FULL[SRC_UAOSS] = `${UA_PREFIX}Of Ships and the Sea`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UASIK] = `${UA_PREFIX}Sidekicks`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAAR] = `${UA_PREFIX}Artificer Revisited`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UABAM] = `${UA_PREFIX}Barbarian and Monk`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UASAW] = `${UA_PREFIX}Sorcerer and Warlock`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UABAP] = `${UA_PREFIX}Bard and Paladin`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UACDW] = `${UA_PREFIX}Cleric, Druid, and Wizard`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFRR] = `${UA_PREFIX}Fighter, Ranger, and Rogue`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UACFV] = `${UA_PREFIX}Class Feature Variants`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UAFRW] = `${UA_PREFIX}Fighter, Rogue, and Wizard`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC1] = `${UA_PREFIX}2020 Subclasses, Part 1`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC2] = `${UA_PREFIX}2020 Subclasses, Part 2`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SC3] = `${UA_PREFIX}2020 Subclasses, Part 3`;
-Parser.SOURCE_JSON_TO_FULL[SRC_UA2020SMT] = `${UA_PREFIX}2020 Spells and Magic Tattoos`;
-Parser.SOURCE_JSON_TO_FULL[SRC_STREAM] = "Livestream";
-Parser.SOURCE_JSON_TO_FULL[SRC_TWITTER] = "Twitter";
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
-
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 
 Parser.SOURCE_JSON_TO_ABV = {};
-Parser.SOURCE_JSON_TO_ABV[SRC_CoS] = "CoS";
-Parser.SOURCE_JSON_TO_ABV[SRC_DMG] = "DMG";
-Parser.SOURCE_JSON_TO_ABV[SRC_EEPC] = "EEPC";
-Parser.SOURCE_JSON_TO_ABV[SRC_EET] = "EET";
-Parser.SOURCE_JSON_TO_ABV[SRC_HotDQ] = "HotDQ";
-Parser.SOURCE_JSON_TO_ABV[SRC_LMoP] = "LMoP";
-Parser.SOURCE_JSON_TO_ABV[SRC_Mag] = "Mag";
-Parser.SOURCE_JSON_TO_ABV[SRC_MM] = "MM";
-Parser.SOURCE_JSON_TO_ABV[SRC_OotA] = "OotA";
-Parser.SOURCE_JSON_TO_ABV[SRC_PHB] = "PHB";
-Parser.SOURCE_JSON_TO_ABV[SRC_PotA] = "PotA";
-Parser.SOURCE_JSON_TO_ABV[SRC_RoT] = "RoT";
-Parser.SOURCE_JSON_TO_ABV[SRC_RoTOS] = "RoTOS";
-Parser.SOURCE_JSON_TO_ABV[SRC_SCAG] = "SCAG";
-Parser.SOURCE_JSON_TO_ABV[SRC_SKT] = "SKT";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToA] = "ToA";
-Parser.SOURCE_JSON_TO_ABV[SRC_ToD] = "ToD";
-Parser.SOURCE_JSON_TO_ABV[SRC_TTP] = "TTP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_AtG] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_DiT] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TFoF] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_THSoT] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_TSC] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_ToH] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_TYP_WPM] = "TftYP";
-Parser.SOURCE_JSON_TO_ABV[SRC_VGM] = "VGM";
-Parser.SOURCE_JSON_TO_ABV[SRC_XGE] = "XGE";
-Parser.SOURCE_JSON_TO_ABV[SRC_OGA] = "OGA";
-Parser.SOURCE_JSON_TO_ABV[SRC_MTF] = "MTF";
-Parser.SOURCE_JSON_TO_ABV[SRC_WDH] = "WDH";
-Parser.SOURCE_JSON_TO_ABV[SRC_WDMM] = "WDMM";
-Parser.SOURCE_JSON_TO_ABV[SRC_GGR] = "GGR";
-Parser.SOURCE_JSON_TO_ABV[SRC_KKW] = "KKW";
-Parser.SOURCE_JSON_TO_ABV[SRC_LLK] = "LLK";
-Parser.SOURCE_JSON_TO_ABV[SRC_GoS] = "GoS";
-Parser.SOURCE_JSON_TO_ABV[SRC_AI] = "AI";
-Parser.SOURCE_JSON_TO_ABV[SRC_OoW] = "OoW";
-Parser.SOURCE_JSON_TO_ABV[SRC_ESK] = "ESK";
-Parser.SOURCE_JSON_TO_ABV[SRC_DIP] = "DIP";
-Parser.SOURCE_JSON_TO_ABV[SRC_HftT] = "HftT";
-Parser.SOURCE_JSON_TO_ABV[SRC_DC] = "DC";
-Parser.SOURCE_JSON_TO_ABV[SRC_SLW] = "SLW";
-Parser.SOURCE_JSON_TO_ABV[SRC_SDW] = "SDW";
-Parser.SOURCE_JSON_TO_ABV[SRC_BGDIA] = "BGDIA";
-Parser.SOURCE_JSON_TO_ABV[SRC_LR] = "LR";
-Parser.SOURCE_JSON_TO_ABV[SRC_AL] = "AL";
-Parser.SOURCE_JSON_TO_ABV[SRC_SAC] = "SAC";
-Parser.SOURCE_JSON_TO_ABV[SRC_ERLW] = "ERLW";
-Parser.SOURCE_JSON_TO_ABV[SRC_EFR] = "EFR";
-Parser.SOURCE_JSON_TO_ABV[SRC_RMBRE] = "RMBRE";
-Parser.SOURCE_JSON_TO_ABV[SRC_RMR] = "RMR";
-Parser.SOURCE_JSON_TO_ABV[SRC_MFF] = "MFF";
-Parser.SOURCE_JSON_TO_ABV[SRC_AWM] = "AWM";
-Parser.SOURCE_JSON_TO_ABV[SRC_IMR] = "IMR";
-Parser.SOURCE_JSON_TO_ABV[SRC_SADS] = "SADS";
-Parser.SOURCE_JSON_TO_ABV[SRC_EGW] = "EGW";
-Parser.SOURCE_JSON_TO_ABV[SRC_SCREEN] = "Screen";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALCoS] = "ALCoS";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALEE] = "ALEE";
-Parser.SOURCE_JSON_TO_ABV[SRC_ALRoD] = "ALRoD";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSA] = "PSA";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSI] = "PSI";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSK] = "PSK";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSZ] = "PSZ";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSX] = "PSX";
-Parser.SOURCE_JSON_TO_ABV[SRC_PSD] = "PSD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAA] = "UAA";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAEAG] = "UAEaG";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAEBB] = "UAEB";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFFR] = "UAFFR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFFS] = "UAFFS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFO] = "UAFO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFT] = "UAFT";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAGH] = "UAGH";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMDM] = "UAMM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UASSP] = "UASS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATMC] = "UAMy";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATOBM] = "UAOBM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATRR] = "UATRR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWA] = "UAWA";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAVR] = "UAVR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UALDR] = "UALDU";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARAR] = "UARAR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAATOSC] = "UAATOSC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABPP] = "UABPP";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARSC] = "UARSC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAKOO] = "UAKoO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABBC] = "UABBC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UACDD] = "UACDD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAD] = "UAD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARCO] = "UARCO";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAF] = "UAF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAM] = "UAMk";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAP] = "UAP";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMC] = "UAMC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAS] = "UAS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWAW] = "UAWAW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATF] = "UATF";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWR] = "UAWR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAESR] = "UAESR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAMAC] = "UAMAC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA3PE] = "UA3PE";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAGHI] = "UAGHI";
-Parser.SOURCE_JSON_TO_ABV[SRC_UATSC] = "UATSC";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAOD] = "UAOD";
-Parser.SOURCE_JSON_TO_ABV[SRC_UACAM] = "UACAM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAGSS] = "UAGSS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARoE] = "UARoE";
-Parser.SOURCE_JSON_TO_ABV[SRC_UARoR] = "UARoR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAWGE] = "WGE";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAOSS] = "UAOSS";
-Parser.SOURCE_JSON_TO_ABV[SRC_UASIK] = "UASIK";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAAR] = "UAAR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABAM] = "UABAM";
-Parser.SOURCE_JSON_TO_ABV[SRC_UASAW] = "UASAW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UABAP] = "UABAP";
-Parser.SOURCE_JSON_TO_ABV[SRC_UACDW] = "UACDW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFRR] = "UAFRR";
-Parser.SOURCE_JSON_TO_ABV[SRC_UACFV] = "UACFV";
-Parser.SOURCE_JSON_TO_ABV[SRC_UAFRW] = "UAFRW";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC1] = "UA2S1";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC2] = "UA2S2";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SC3] = "UA2S3";
-Parser.SOURCE_JSON_TO_ABV[SRC_UA2020SMT] = "UA2SMT";
-Parser.SOURCE_JSON_TO_ABV[SRC_STREAM] = "Stream";
-Parser.SOURCE_JSON_TO_ABV[SRC_TWITTER] = "Twitter";
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
+Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
-
+Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 
 Parser.SOURCE_JSON_TO_DATE = {};
-Parser.SOURCE_JSON_TO_DATE[SRC_CoS] = "2016-03-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_DMG] = "2014-12-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_EEPC] = "2015-03-10";
-Parser.SOURCE_JSON_TO_DATE[SRC_EET] = "2015-03-10";
-Parser.SOURCE_JSON_TO_DATE[SRC_HotDQ] = "2014-08-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_LMoP] = "2014-07-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_MM] = "2014-09-30";
-Parser.SOURCE_JSON_TO_DATE[SRC_OotA] = "2015-09-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_PHB] = "2014-08-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_PotA] = "2015-04-07";
-Parser.SOURCE_JSON_TO_DATE[SRC_RoT] = "2014-11-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_RoTOS] = "2014-11-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_SCAG] = "2015-11-03";
-Parser.SOURCE_JSON_TO_DATE[SRC_SKT] = "2016-09-06";
-Parser.SOURCE_JSON_TO_DATE[SRC_ToA] = "2017-09-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_ToD] = "2019-10-22";
-Parser.SOURCE_JSON_TO_DATE[SRC_TTP] = "2017-09-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_AtG] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_DiT] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_TFoF] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_THSoT] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_TSC] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_ToH] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_TYP_WPM] = "2017-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_VGM] = "2016-11-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_XGE] = "2017-11-21";
-Parser.SOURCE_JSON_TO_DATE[SRC_OGA] = "2017-10-11";
-Parser.SOURCE_JSON_TO_DATE[SRC_MTF] = "2018-05-29";
-Parser.SOURCE_JSON_TO_DATE[SRC_WDH] = "2018-09-18";
-Parser.SOURCE_JSON_TO_DATE[SRC_WDMM] = "2018-11-20";
-Parser.SOURCE_JSON_TO_DATE[SRC_GGR] = "2018-11-20";
-Parser.SOURCE_JSON_TO_DATE[SRC_KKW] = "2018-11-20";
-Parser.SOURCE_JSON_TO_DATE[SRC_LLK] = "2018-11-10";
-Parser.SOURCE_JSON_TO_DATE[SRC_GoS] = "2019-05-21";
-Parser.SOURCE_JSON_TO_DATE[SRC_AI] = "2019-06-18";
-Parser.SOURCE_JSON_TO_DATE[SRC_OoW] = "2019-06-18";
-Parser.SOURCE_JSON_TO_DATE[SRC_ESK] = "2019-06-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_DIP] = "2019-06-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_HftT] = "2019-05-01";
-Parser.SOURCE_JSON_TO_DATE[SRC_DC] = "2019-06-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_SLW] = "2019-06-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_SDW] = "2019-06-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_BGDIA] = "2019-09-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_LR] = "2019-09-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_SAC] = "2019-01-31";
-Parser.SOURCE_JSON_TO_DATE[SRC_ERLW] = "2019-11-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_EFR] = "2019-11-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_RMBRE] = "2019-11-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_RMR] = "2019-11-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_MFF] = "2019-11-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_AWM] = "2019-11-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_IMR] = "2019-11-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_SADS] = "2019-12-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_EGW] = "2020-03-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_SCREEN] = "2015-01-20";
-Parser.SOURCE_JSON_TO_DATE[SRC_ALCoS] = "2016-03-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_ALEE] = "2015-04-07";
-Parser.SOURCE_JSON_TO_DATE[SRC_ALRoD] = "2015-09-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSA] = "2017-07-06";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSI] = "2016-07-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSK] = "2017-02-16";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSZ] = "2016-04-27";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSX] = "2018-01-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_PSD] = "2018-07-31";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAEBB] = "2015-02-02";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAA] = "2017-01-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAEAG] = "2017-09-11";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFFR] = "2017-04-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFFS] = "2017-04-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFO] = "2017-10-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFT] = "2016-06-06";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAGH] = "2016-04-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAMDM] = "2015-08-03";
-Parser.SOURCE_JSON_TO_DATE[SRC_UASSP] = "2017-04-03";
-Parser.SOURCE_JSON_TO_DATE[SRC_UATMC] = "2017-03-13";
-Parser.SOURCE_JSON_TO_DATE[SRC_UATOBM] = "2015-12-07";
-Parser.SOURCE_JSON_TO_DATE[SRC_UATRR] = "2016-09-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAWA] = "2015-05-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAVR] = "2015-06-08";
-Parser.SOURCE_JSON_TO_DATE[SRC_UALDR] = "2015-11-02";
-Parser.SOURCE_JSON_TO_DATE[SRC_UARAR] = "2017-01-16";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAATOSC] = "2017-03-27";
-Parser.SOURCE_JSON_TO_DATE[SRC_UABPP] = "2016-11-07";
-Parser.SOURCE_JSON_TO_DATE[SRC_UARSC] = "2017-05-01";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAKOO] = "2016-01-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_UABBC] = "2016-11-14";
-Parser.SOURCE_JSON_TO_DATE[SRC_UACDD] = "2016-11-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAD] = "2016-11-28";
-Parser.SOURCE_JSON_TO_DATE[SRC_UARCO] = "2017-06-05";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAF] = "2016-12-5";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAM] = "2016-12-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAP] = "2016-12-19";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAMC] = "2015-04-06";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAS] = "2017-02-06";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAWAW] = "2017-02-13";
-Parser.SOURCE_JSON_TO_DATE[SRC_UATF] = "2016-08-01";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAWR] = "2017-03-20";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAESR] = "2017-11-13";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAMAC] = "2017-02-21";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA3PE] = "2017-08-07";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAGHI] = "2017-07-10";
-Parser.SOURCE_JSON_TO_DATE[SRC_UATSC] = "2018-01-08";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAOD] = "2018-04-09";
-Parser.SOURCE_JSON_TO_DATE[SRC_UACAM] = "2018-05-14";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAGSS] = "2018-06-11";
-Parser.SOURCE_JSON_TO_DATE[SRC_UARoE] = "5018-07-23";
-Parser.SOURCE_JSON_TO_DATE[SRC_UARoR] = "2018-08-13";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAWGE] = "2018-07-23";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAOSS] = "2018-11-12";
-Parser.SOURCE_JSON_TO_DATE[SRC_UASIK] = "2018-12-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAAR] = "2019-02-28";
-Parser.SOURCE_JSON_TO_DATE[SRC_UABAM] = "2019-08-15";
-Parser.SOURCE_JSON_TO_DATE[SRC_UASAW] = "2019-09-05";
-Parser.SOURCE_JSON_TO_DATE[SRC_UABAP] = "2019-09-18";
-Parser.SOURCE_JSON_TO_DATE[SRC_UACDW] = "2019-10-03";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFRR] = "2019-10-17";
-Parser.SOURCE_JSON_TO_DATE[SRC_UACFV] = "2019-11-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_UAFRW] = "2019-11-25";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC1] = "2020-01-14";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC2] = "2020-02-04";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SC3] = "2020-02-24";
-Parser.SOURCE_JSON_TO_DATE[SRC_UA2020SMT] = "2020-03-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2019-01-29";
 
-
-Parser.SOURCES_ADVENTURES = new Set([
-	SRC_LMoP,
-	SRC_HotDQ,
-	SRC_RoT,
-	SRC_PotA,
-	SRC_OotA,
-	SRC_CoS,
-	SRC_SKT,
-	SRC_TYP,
-	SRC_TYP_AtG,
-	SRC_TYP_DiT,
-	SRC_TYP_TFoF,
-	SRC_TYP_THSoT,
-	SRC_TYP_TSC,
-	SRC_TYP_ToH,
-	SRC_TYP_WPM,
-	SRC_ToA,
-	SRC_TTP,
-	SRC_WDH,
-	SRC_LLK,
-	SRC_WDMM,
-	SRC_KKW,
-	SRC_GoS,
-	SRC_HftT,
-	SRC_OoW,
-	SRC_DIP,
-	SRC_SLW,
-	SRC_SDW,
-	SRC_DC,
-	SRC_BGDIA,
-	SRC_LR,
-	SRC_EFR,
-	SRC_RMBRE,
-	SRC_IMR,
-
-	SRC_AWM
-]);
+Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
-Parser.SOURCES_NON_STANDARD_WOTC = new Set([
-	SRC_OGA,
-	SRC_Mag,
-	SRC_STREAM,
-	SRC_TWITTER,
-	SRC_LLK,
-	SRC_LR,
-	SRC_TTP,
-	SRC_AWM,
-	SRC_IMR,
-	SRC_SADS
-]);
+
 Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 [
-	SRC_PHB,
-	SRC_MM,
-	SRC_DMG,
-	SRC_SCAG,
-	SRC_VGM,
-	SRC_XGE,
-	SRC_MTF,
-	SRC_GGR,
-	SRC_AI,
-	SRC_ERLW,
-	SRC_RMR,
-	SRC_EGW,
-	SRC_MOT
+	SRC_CRB,
+	SRC_APG,
+	SRC_BST,
+	SRC_GMG,
+	SRC_LOCG,
+	SRC_LOGM,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
 });
 Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
-[
-	SRC_LMoP,
-	SRC_HotDQ,
-	SRC_RoT,
-	SRC_PotA,
-	SRC_OotA,
-	SRC_CoS,
-	SRC_SKT,
-	SRC_TYP_AtG,
-	SRC_TYP_DiT,
-	SRC_TYP_TFoF,
-	SRC_TYP_THSoT,
-	SRC_TYP_TSC,
-	SRC_TYP_ToH,
-	SRC_TYP_WPM,
-	SRC_ToA,
-	SRC_TTP,
-	SRC_WDH,
-	SRC_LLK,
-	SRC_WDMM,
-	SRC_KKW,
-	SRC_GoS,
-	SRC_HftT,
-	SRC_OoW,
-	SRC_DIP,
-	SRC_SLW,
-	SRC_SDW,
-	SRC_DC,
-	SRC_BGDIA,
-	SRC_LR,
-	SRC_EFR,
-	SRC_RMBRE,
-	SRC_IMR,
-	SRC_EGW_ToR,
-	SRC_EGW_DD,
-	SRC_EGW_FS,
-	SRC_EGW_US,
-	SRC_IDRotF
-].forEach(src => {
+[].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
@@ -2815,27 +1982,24 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"class": SRC_CRB,
 	"creature": SRC_BST,
 	"condition": SRC_CRB,
-	"disease": SRC_CRB,
+	"disease": SRC_GMG,
+	"curse": SRC_GMG,
+	"itemcurse": SRC_GMG,
 	"background": SRC_CRB,
-	"race": SRC_CRB,
-	"optfeature": SRC_CRB,
-	"reward": SRC_DMG,
+	"ancestry": SRC_CRB,
+	"archetype": SRC_CRB,
 	"feat": SRC_CRB,
-	"psionic": SRC_UATMC,
-	"object": SRC_DMG,
-	"cult": SRC_MTF,
-	"boon": SRC_MTF,
-	"trap": SRC_DMG,
-	"hazard": SRC_DMG,
+	"trap": SRC_CRB,
+	"hazard": SRC_CRB,
 	"deity": SRC_CRB,
-	"variantrule": SRC_DMG,
-	"vehicle": SRC_GoS,
+	"variantrule": SRC_CRB,
 	"action": SRC_CRB,
+	"ability": SRC_BST,
 	"classFeature": SRC_CRB,
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,
 	"language": SRC_CRB,
-	"trait": SRC_CRB
+	"trait": SRC_CRB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
@@ -3120,6 +2284,7 @@ T_NONLETHAL = "Nonlethal";
 T_PARRY = "Parry";
 T_PROPULSIVE = "Propulsive";
 T_RANGE = "Range";
+T_RANGE_INCREMENT = "Range increment";
 T_RANGED = "Ranged";
 T_TRIP = "Trip";
 T_REACH = "Reach";
@@ -3227,7 +2392,7 @@ T_HUGE = "Huge";
 T_GARGANTUAN = "Gargantuan";
 
 Parser.TRAITS_GENERAL = [T_ADDITIVE, T_ARCHETYPE, T_ATTACK, T_AURA, T_CANTRIP, T_CHARM, T_COMPANION, T_COMPLEX, T_COMPOSITION, T_CONCENTRATE, T_CONSECRATION, T_CURSE, T_CURSEBOUND, T_DARKNESS, T_DEATH, T_DEDICATION, T_DETECTION, T_DISEASE, T_DOWNTIME, T_EMOTION, T_ENVIRONMENTAL, T_EXPLORATION, T_EXTRADIMENSIONAL, T_FEAR, T_FINISHER, T_FLOURISH, T_FOCUSED, T_FORTUNE, T_GENERAL, T_HAUNT, T_HEALING, T_HEX, T_INCAPACITATION, T_INFUSED, T_INSTINCT, T_LEGACY, T_LIGHT, T_LINEAGE, T_LINGUISTIC, T_LITANY, T_MAGICAL, T_MANIPULATE, T_MECHANICAL, T_MENTAL, T_METAMAGIC, T_MINION, T_MISFORTUNE, T_MORPH, T_MOVE, T_MULTICLASS, T_OATH, T_OPEN, T_POLYMORPH, T_POSSESSION, T_PRECIOUS, T_PREDICTION, T_PRESS, T_RAGE, T_RECKLESS, T_RELOAD, T_REVELATION, T_SCRYING, T_SECRET, T_SKILL, T_SLEEP, T_SOCIAL, T_SPLASH, T_STAMINA, T_STANCE, T_SUMMONED, T_TELEPATHY, T_TELEPORTATION, T_TRAP, T_VIGILANTE, T_VIRULENT, T_VOCA]
-Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_DWARF, T_ELF, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GNOME, T_GOBLIN, T_GRAPPLE, T_HALFLING, T_JOUSTING, T_MODULAR, T_MONK, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
+Parser.TRAITS_WEAPON = [T_AGILE, T_ATTACHED, T_BACKSTABBER, T_BACKSWING, T_BRUTAL, T_CONCEALABLE, T_DEADLY, T_DISARM, T_FATAL, T_FINESSE, T_FORCEFUL, T_FREEHAND, T_GRAPPLE, T_JOUSTING, T_MODULAR, T_NONLETHAL, T_PARRY, T_PROPULSIVE, T_RANGE, T_RANGE_INCREMENT, T_RANGED, T_TRIP, T_REACH, T_SHOVE, T_SWEEP, T_TETHERED, T_THROWN, T_TRIP, T_TWIN, T_TWOHAND, T_UNARMED, T_VERSATILE, T_VOLLE]
 Parser.TRAITS_TRADITION = [T_ARCANE, T_DIVINE, T_OCCULT, T_PRIMAL]
 Parser.TRAITS_SETTLEMENT = [T_CITY, T_METROPOLIS, T_TOWN, T_VILLAGE]
 Parser.TRAITS_SENSE = [T_AUDITORY, T_OLFACTORY, T_VISUAL]
@@ -3236,13 +2401,14 @@ Parser.TRAITS_RARITY = [T_COMMON, T_UNCOMMON, T_RARE, T_UNIQUE]
 Parser.TRAITS_POISON = [T_CONTACT, T_INGESTED, T_INHALED, T_INJURY, T_POISON]
 Parser.TRAITS_PLANAR = [T_AIR, T_EARTH, T_ERRATIC, T_FINITE, T_FIRE, T_FLOWING, T_HIGH, T_GRAVITY, T_IMMEASURABLE, T_LOW, T_GRAVITY, T_METAMORPHIC, T_MICROGRAVITY, T_NEGATIVE, T_POSITIVE, T_SENTIENT, T_SHADOW, T_STATIC, T_STRANGE, T_GRAVITY, T_SUBJECTIVE, T_GRAVITY, T_TIMELESS, T_UNBOUNDED, T_WATER]
 Parser.TRAITS_ELEMENTAL = [T_AIR, T_EARTH, T_FIRE, T_WATER]
-Parser.TRAITS_MONSTER = [T_AASIMAR, T_ACID, T_AEON, T_AIR, T_ALCHEMICAL, T_AMPHIBIOUS, T_ANADI, T_ANGEL, T_AQUATIC, T_ARCHON, T_AZATA, T_BOGGARD, T_CALIGNI, T_CATFOLK, T_CHANGELING, T_CHARAUKA, T_COLD, T_COUATL, T_DAEMON, T_DEMON, T_DERO, T_DEVIL, T_DHAMPIR, T_DINOSAUR, T_DROW, T_DUERGAR, T_DUSKWALKER, T_EARTH, T_ELECTRICITY, T_FETCHLING, T_FIRE, T_GENIE, T_GHOST, T_GHOUL, T_GNOLL, T_GOLEM, T_GREMLIN, T_GRIPPLI, T_HAG, T_IFRIT, T_INCORPOREAL, T_INEVITABLE, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_MERFOLK, T_MINDLESS, T_MORLOCK, T_MUMMY, T_MUTANT, T_NYMPH, T_ONI, T_ORC, T_OREAD, T_PROTEAN, T_PSYCHOPOMP, T_QLIPPOTH, T_RAKSHASA, T_RATFOLK, T_SEA, T_DEVIL, T_SERPENTFOLK, T_SKELETON, T_SKULK, T_SONIC, T_SOULBOUND, T_SPRIGGAN, T_SPRITE, T_SULI, T_SWARM, T_SYLPH, T_TANE, T_TENGU, T_TIEFLING, T_TITAN, T_TROLL, T_UNDINE, T_URDEFHAN, T_VAMPIRE, T_VELSTRAC, T_WATER, T_WERECREATURE, T_WIGHT, T_WRAITH, T_XULGATH, T_ZOMBIE]
+Parser.TRAITS_CREATURE = [T_AASIMAR, T_ACID, T_AEON, T_AIR, T_ALCHEMICAL, T_AMPHIBIOUS, T_ANADI, T_ANGEL, T_AQUATIC, T_ARCHON, T_AZATA, T_BOGGARD, T_CALIGNI, T_CATFOLK, T_CHANGELING, T_CHARAUKA, T_COLD, T_COUATL, T_DAEMON, T_DEMON, T_DERO, T_DEVIL, T_DHAMPIR, T_DINOSAUR, T_DROW, T_DUERGAR, T_DUSKWALKER, T_EARTH, T_ELECTRICITY, T_FETCHLING, T_FIRE, T_GENIE, T_GHOST, T_GHOUL, T_GNOLL, T_GOLEM, T_GREMLIN, T_GRIPPLI, T_HAG, T_IFRIT, T_INCORPOREAL, T_INEVITABLE, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_MERFOLK, T_MINDLESS, T_MORLOCK, T_MUMMY, T_MUTANT, T_NYMPH, T_ONI, T_ORC, T_OREAD, T_PROTEAN, T_PSYCHOPOMP, T_QLIPPOTH, T_RAKSHASA, T_RATFOLK, T_SEA, T_DEVIL, T_SERPENTFOLK, T_SKELETON, T_SKULK, T_SONIC, T_SOULBOUND, T_SPRIGGAN, T_SPRITE, T_SULI, T_SWARM, T_SYLPH, T_TANE, T_TENGU, T_TIEFLING, T_TITAN, T_TROLL, T_UNDINE, T_URDEFHAN, T_VAMPIRE, T_VELSTRAC, T_WATER, T_WERECREATURE, T_WIGHT, T_WRAITH, T_XULGATH, T_ZOMBIE]
 Parser.TRAITS_EQUIPMENT = [T_ALCHEMICAL, T_APEX, T_ARTIFACT, T_BOMB, T_CONSUMABLE, T_CONTRACT, T_CURSED, T_DRUG, T_ELIXIR, T_INTELLIGENT, T_INVESTED, T_MUTAGEN, T_OIL, T_POTION, T_SAGGORAK, T_SCROLL, T_SNARE, T_STAFF, T_STRUCTURE, T_TALISMAN, T_TATTOO, T_WAND]
 Parser.TRAITS_ENERGY = [T_ACID, T_COLD, T_ELECTRICITY, T_FIRE, T_FORCE, T_NEGATIVE, T_POSITIVE, T_SONIC]
-Parser.TRAITS_CREATURE = [T_ABERRATION, T_ANIMAL, T_ASTRAL, T_BEAST, T_CELESTIAL, T_CONSTRUCT, T_DRAGON, T_DREAM, T_ELEMENTAL, T_ETHEREAL, T_FEY, T_FIEND, T_FUNGUS, T_GIANT, T_HUMANOID, T_MONITOR, T_NEGATIVE, T_OOZE, T_PETITIONER, T_PLANT, T_POSITIVE, T_SPIRIT, T_TIME, T_UNDEAD]
+Parser.TRAITS_CREATURE_TYPE = [T_ABERRATION, T_ANIMAL, T_ASTRAL, T_BEAST, T_CELESTIAL, T_CONSTRUCT, T_DRAGON, T_DREAM, T_ELEMENTAL, T_ETHEREAL, T_FEY, T_FIEND, T_FUNGUS, T_GIANT, T_HUMANOID, T_MONITOR, T_NEGATIVE, T_OOZE, T_PETITIONER, T_PLANT, T_POSITIVE, T_SPIRIT, T_TIME, T_UNDEAD]
 Parser.TRAITS_CLASS = [T_ALCHEMIST, T_BARBARIAN, T_BARD, T_CHAMPION, T_CLERIC, T_DRUID, T_FIGHTER, T_INVESTIGATOR, T_MONK, T_ORACLE, T_RANGER, T_ROGUE, T_SORCERER, T_SWASHBUCKLER, T_WITCH, T_WIZARD]
 Parser.TRAITS_ARMOR = [T_BULWARK, T_COMFORT, T_FLEXIBLE, T_NOISY]
 Parser.TRAITS_ANCESTRY = [T_AASIMAR, T_CATFOLK, T_CHANGELING, T_DHAMPIR, T_DUSKWALKER, T_DWARF, T_ELF, T_GNOME, T_GOBLIN, T_HALFELF, T_HALFLING, T_HALFORC, T_HOBGOBLIN, T_HUMAN, T_KOBOLD, T_LESHY, T_LIZARDFOLK, T_ORC, T_RATFOLK, T_SHOONY, T_TENGU, T_TIEFLING]
+Parser.TRAITS_HERITAGE = [T_TIEFLING]
 Parser.TRAITS_ALIGN = [T_CHAOTIC, T_EVIL, T_GOOD, T_LAWFUL];
 Parser.TRAITS_ALIGN_ABV = [T_LG, T_NG, T_CG, T_LN, T_N, T_CN, T_LE, T_NE, T_CE, T_ANY];
 Parser.TRAITS_SIZE = [T_TINY, T_SMALL, T_MEDIUM, T_LARGE, T_HUGE, T_GARGANTUAN];
@@ -3252,11 +2418,11 @@ Parser.TRAITS_TO_TRAITS_SRC[T_CHAOTIC] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_EVIL] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_GOOD] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_LAWFUL] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_AASIMAR] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_CATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_AASIMAR] = SRC_APG;
+Parser.TRAITS_TO_TRAITS_SRC[T_CATFOLK] = SRC_APG;
 Parser.TRAITS_TO_TRAITS_SRC[T_CHANGELING] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_DHAMPIR] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_DUSKWALKER] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_DHAMPIR] = SRC_APG;
+Parser.TRAITS_TO_TRAITS_SRC[T_DUSKWALKER] = SRC_APG;
 Parser.TRAITS_TO_TRAITS_SRC[T_DWARF] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_ELF] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_GNOME] = SRC_CRB;
@@ -3266,11 +2432,11 @@ Parser.TRAITS_TO_TRAITS_SRC[T_HALFLING] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_HALFORC] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_HOBGOBLIN] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_HUMAN] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_KOBOLD] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_KOBOLD] = SRC_APG;
 Parser.TRAITS_TO_TRAITS_SRC[T_LESHY] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_LIZARDFOLK] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_ORC] = SRC_CRB;
-Parser.TRAITS_TO_TRAITS_SRC[T_RATFOLK] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RATFOLK] = SRC_APG;
 Parser.TRAITS_TO_TRAITS_SRC[T_SHOONY] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_TENGU] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_TIEFLING] = SRC_CRB;
@@ -3516,6 +2682,7 @@ Parser.TRAITS_TO_TRAITS_SRC[T_NONLETHAL] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_PARRY] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_PROPULSIVE] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_RANGE] = SRC_CRB;
+Parser.TRAITS_TO_TRAITS_SRC[T_RANGE_INCREMENT] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_RANGED] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_TRIP] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_REACH] = SRC_CRB;
@@ -3606,6 +2773,20 @@ Parser.TRAITS_TO_TRAITS_SRC[T_VIGILANTE] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VIRULENT] = SRC_CRB;
 Parser.TRAITS_TO_TRAITS_SRC[T_VOCA] = SRC_CRB;
 
+Parser.getTraitName = function (trait) {
+	return trait.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, "").uppercaseFirst()
+}
+
+Parser.rarityToNumber = function (r) {
+	switch (r) {
+		case T_COMMON: return 0;
+		case T_UNCOMMON: return 1;
+		case T_RARE: return 2;
+		case T_UNIQUE: return 3;
+		default: return 69;
+	}
+}
+
 Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"A": "ammunition",
 	"AF": "ammunition",
@@ -3636,7 +2817,7 @@ Parser.ITEM_TYPE_JSON_TO_ABV = {
 	"VEH": "vehicle (land)",
 	"SHP": "vehicle (water)",
 	"AIR": "vehicle (air)",
-	"WD": "wand"
+	"WD": "wand",
 };
 
 Parser.DMGTYPE_JSON_TO_FULL = {
@@ -3652,7 +2833,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"Y": "psychic",
 	"R": "radiant",
 	"S": "slashing",
-	"T": "thunder"
+	"T": "thunder",
 };
 
 Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
@@ -3660,82 +2841,282 @@ Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": [
-		"Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation, such as when you're trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship's deck. The DM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including dives, rolls, somersaults, and flips."
-	],
-	"Animal Handling": [
-		"When there is any question whether you can calm down a domesticated animal, keep a mount from getting spooked, or intuit an animal's intentions, the DM might call for a Wisdom (Animal Handling) check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver."
+		"Acrobatics measures your ability to perform tasks requiring coordination and grace. When you use the {@action Escape} basic action, you can use your Acrobatics modifier instead of your unarmed attack modifier.",
 	],
 	"Arcana": [
-		"Your Intelligence (Arcana) check measures your ability to recall lore about spells, magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes."
-	],
-	"Athletics": [
-		"Your Strength (Athletics) check covers difficult situations you encounter while climbing, jumping, or swimming. Examples include the following activities:",
+		"Arcana measures how much you know about arcane magic and creatures. Even if you’re untrained, you can {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"You attempt to climb a sheer or slippery cliff, avoid hazards while scaling a wall, or cling to a surface while something is trying to knock you off.",
-				"You try to jump an unusually long distance or pull off a stunt mid jump.",
-				"You struggle to swim or stay afloat in treacherous currents, storm-tossed waves, or areas of thick seaweed. Or another creature tries to push or pull you underwater or otherwise interfere with your swimming."
-			]
-		}
+				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Arcana Trained Actions",
+			"entries": [
+				"You must be trained in Arcana to use it for the following general skill actions.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Decipher Writing}} about arcane theory.",
+						"{@b {@action Identify Magic}}, particularly arcane magic.",
+						"{@b {@action Learn a Spell}} from the arcane tradition.",
+					],
+				},
+			],
+		},
+	],
+	"Athletics": [
+		"Athletics allows you to perform deeds of physical prowess. When you use the {@action Escape} basic action, you can use your Athletics modifier instead of your unarmed attack modifier.",
+	],
+	"Crafting": [
+		"You can use this skill to create, understand, and repair items. Even if you’re untrained, you can {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about alchemical reactions, the value of items, engineering, unusual materials,\n and alchemical or mechanical creatures. The GM determines which creatures this applies to, but it usually includes constructs.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Crafting Trained Actions",
+			"entries": [
+				"You must be trained in Crafting to use it to {@action Earn Income}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Earn Income}} by crafting goods for the market.",
+					],
+				},
+			],
+		},
 	],
 	"Deception": [
-		"Your Charisma (Deception) check determines whether you can convincingly hide the truth, either verbally or through your actions. This deception can encompass everything from misleading others through ambiguity to telling outright lies. Typical situations include trying to fast-talk a guard, con a merchant, earn money through gambling, pass yourself off in a disguise, dull someone's suspicions with false assurances, or maintain a straight face while telling a blatant lie."
+		"You can trick and mislead others using disguises, lies, and other forms of subterfuge.",
 	],
-	"History": [
-		"Your Intelligence (History) check measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations."
-	],
-	"Insight": [
-		"Your Wisdom (Insight) check decides whether you can determine the true intentions of a creature, such as when searching out a lie or predicting someone's next move. Doing so involves gleaning clues from body language, speech habits, and changes in mannerisms."
+	"Diplomacy": [
+		"You influence others through negotiation and flattery.",
 	],
 	"Intimidation": [
-		"When you attempt to influence someone through overt threats, hostile actions, and physical violence, the DM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner, convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier to reconsider a decision."
+		"You bend others to your will using threats.",
 	],
-	"Investigation": [
-		"When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation) check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment of knowledge might also call for an Intelligence (Investigation) check."
+	"Lore": [
+		"You have specialized information on a narrow topic. Lore features many subcategories. You might have Military Lore, Sailing Lore, Vampire Lore, or any similar subcategory of the skill. Each subcategory counts as its own skill, so applying a skill increase to Planar Lore wouldn't increase your proficiency with Sailing Lore, for example.",
+		"You gain a specific subcategory of the Lore skill from your background. The GM determines what other subcategories they'll allow as Lore skills, though these categories are always less broad than any of the other skills that allow you to Recall Knowledge, and they should never be able to fully or mainly take the place of another skill's Recall Knowledge action. For instance, Magic Lore wouldn't enable you to recall the same breadth of knowledge covered by Arcana, Adventuring Lore wouldn't simply give you all the information an adventurer needs, and Planar Lore would not be sufficient to gain all the information spread across various skills and subcategories such as Heaven Lore.",
+		"If you have multiple subcategories of Lore that could apply to a check or that would overlap with another skill in the circumstances, you can use the skill with the better skill modifier or the one you would prefer to use. If there’s any doubt whether a Lore skill applies to a specific topic or action, the GM decides whether it can be used or not.",
+		"Even if you’re untrained in Lore, you can use it to {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about the subject of your Lore skill’s subcategory.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Lore Trained Actions",
+			"entries": [
+				"You must be trained in Lore to use it to {@action Earn Income}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Earn Income}} by using your knowledge to practice a trade.",
+					],
+				},
+			],
+		},
 	],
 	"Medicine": [
-		"A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness."
+		"You can patch up wounds and help people recover from diseases and poisons. Even if you’re untrained in Medicine,  you can use it to {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about diseases, injuries, poisons,  and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed.",
+			],
+		},
 	],
 	"Nature": [
-		"Your Intelligence (Nature) check measures your ability to recall lore about terrain, plants and animals, the weather, and natural cycles."
+		"You know a great deal about the natural world, and you command and train animals and magical beasts. Even if you’re untrained in Nature, you can use it to {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about fauna, flora, geography, weather, the environment, creatures of natural origin (like animals, beasts, fey, and plants), the First World, the Material Plane, and the Elemental Planes.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Nature Trained Actions",
+			"entries": [
+				"You must be trained in Nature to use the following general skill actions.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Identify Magic}}, particularly primal magic.",
+						"{@b {@action Learn a Spell}} from the primal tradition.",
+					],
+				},
+			],
+		},
+	],
+	"Occultism": [
+		"You know a great deal about the natural world, and you command and train animals and magical beasts. Even if you’re untrained in Nature, you can use it to {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about ancient mysteries; obscure philosophies; creatures of occult significance (like aberrations, spirits, and oozes); and the Positive Energy, Negative Energy, Shadow, Astral, and Ethereal Planes.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Occultism Trained Actions",
+			"entries": [
+				"You must be trained in Occultism to use it for the following general skill actions.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Decipher Writing}} on occult topics, including complex metaphysical systems, syncretic principles, weird philosophies, and incoherent ramblings.",
+						"{@b {@action Identify Magic}}, particularly occult magic.",
+						"{@b {@action Learn a Spell}} from the occult tradition.",
+					],
+				},
+			],
+		},
 	],
 	"Perception": [
-		"Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something. It measures your general awareness of your surroundings and the keenness of your senses.", "For example, you might try to hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest. Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs hiding in the shadows of an alley, or candlelight under a closed secret door."
+		"Perception measures your ability to be aware of your environment. Every creature has Perception, which works with and is limited by a creature’s senses (described on page 464). Whenever you need to attempt a check based on your awareness, you’ll attempt a Perception check. Your Perception uses your Wisdom modifier, so you’ll use the following formula when attempting a Perception check.",
+		{
+			"type": "pf2-inset",
+			"entries": [
+				"Perception check result = d20 roll + Wisdom modifier + proficiency bonus + other bonuses + penalties",
+			],
+		},
+		"Nearly all creatures are at least trained in Perception, so you will almost always add a proficiency bonus to your Perception modifier. You might add a circumstance bonus for advantageous situations or environments, and typically get status bonuses from spells or other magical effects. Items can also grant you a bonus to Perception, typically in a certain situation. For instance, a fine spyglass grants a +1 item bonus to Perception when attempting to see something a long distance away. Circumstance penalties to Perception occur when an environment or situation (such as fog) hampers your senses, while status penalties typically come from conditions, spells, and magic effects that foil the senses. You’ll rarely encounter item penalties or untyped penalties for Perception.",
+		"Many abilities are compared to your Perception DC to determine whether they succeed. Your Perception DC is 10 + your total Perception modifier.",
+		{
+			"type": "pf2-h4",
+			"name": "Perception for Initiative",
+			"entries": [
+				"Often, you’ll roll a Perception check to determine your order in initiative. When you do this, instead of comparing the result against a DC, everyone in the encounter will compare their results. The creature with the highest result acts first, the creature with the second-highest result goes second, and so on. Sometimes you may be called on to roll a skill check for initiative instead, but you’ll compare results just as if you had rolled Perception. The full rules for initiative are found in the rules for encounter mode on page 468.",
+			],
+		},
 	],
 	"Performance": [
-		"Your Charisma (Performance) check determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment."
-	],
-	"Persuasion": [
-		"When you attempt to influence someone or a group of people with tact, social graces, or good nature, the DM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk."
+		"You are skilled at a form of performance, using your talents to impress a crowd or make a living.",
+		{
+			"type": "pf2-h3",
+			"name": "Basic Competence",
+			"entries": [
+				"Some performances require you to be more than just charismatic, and if you don’t meet the demands of the art form or the audience, the GM might apply a penalty based on the relevant ability score. For example, if	you’re dancing and have a negative Dexterity modifier, you might take a penalty to your attempt at dancing. Likewise, if you are orating and have a negative Intelligence modifier, you might have to hope your raw Charisma can overcome the penalties from your intellectual shortcomings—or ask someone to help write your speeches!",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Performance Traits",
+			"entries": [
+				"When you use an action that utilizes the Performanceskill, it gains one or more traits relevant to the type of performance. The GM might change these depending on the circumstances, but the most common performancebased traits are listed below.",
+				{
+					"type": "table",
+					"rows": [
+						["Performance", "Additional Traits"],
+						["Act or perform comedy", "Auditory, linguistic, and visual"],
+						["Dance", "Move and visual"],
+						["Play an instrument", "Auditory and manipulate"],
+						["Orate or sing", "Auditory and linguistic"],
+					],
+				},
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Performance Trained Action",
+			"entries": [
+				"You must be trained in Performance to use it to {@action Earn Income}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Earn Income}} by staging a performance.",
+					],
+				},
+			],
+		},
 	],
 	"Religion": [
-		"Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults."
+		"The secrets of deities, dogma, faith, and the realms of divine creatures both sublime and sinister are open to you. You also understand how magic works, though your training imparts a religious slant to that knowledge. Even if you’re untrained in Religion, you can use it to {@action Recall Knowledge}.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about divine agents, the finer points of theology, obscure myths regarding a faith, and creatures of religious significance (like celestials, fiends, and undead), the Outer Sphere, and the Positive and Negative Energy Planes.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Religion Trained Actions",
+			"entries": [
+				"You must be trained in Religion to use it for the following general skill actions.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Decipher Writing}} of a religious nature, including allegories, homilies, and proverbs.",
+						"{@b {@action Identify Magic}}, particularly divine magic.",
+						"{@b {@action Learn a Spell}} from the divine tradition.",
+					],
+				},
+			],
+		},
 	],
-	"Sleight of Hand": [
-		"Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The DM might also call for a Dexterity (Sleight of Hand) check to determine whether you can lift a coin purse off another person or slip something out of another person's pocket."
+	"Society": [
+		"You understand the people and systems that make civilization run, and you know the historical events that make societies what they are today. Further, you can use that knowledge to navigate the complex physical, societal,  and economic workings of settlements. Even if you’re untrained in Society, you can use it for the following general skill actions.",
+		{
+			"type": "list",
+			"items": [
+				"{@b {@action Recall Knowledge}} about local history, important personalities, legal institutions, societal structure,  and humanoid cultures. The GM might allow Society to apply to other creatures that are major elements of society in your region, such as the draconic nobility in a kingdom of humans ruled by dragons.",
+				"{@b {@action Subsist}} in a settlement by finding shelter, scrounging, or begging for food.",
+			],
+		},
+		{
+			"type": "pf2-h3",
+			"name": "Society Trained Actions",
+			"entries": [
+				"You must be trained in Society to use it to {@action Decipher Writing}.",
+				{
+					"type": "list",
+					"items": [
+						"{@b {@action Decipher Writing}} that’s a coded message, text written in an incomplete or archaic form, or in some cases, text in a language you don’t know.",
+					],
+				},
+			],
+		},
 	],
 	"Stealth": [
-		"Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone without being seen or heard."
+		"You are skilled at avoiding detection, allowing you to slip past foes, hide, or conceal an item.",
 	],
 	"Survival": [
-		"The DM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game, guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather, or avoid quicksand and other natural hazards."
-	]
+		"You are adept at living in the wilderness, foraging for food and building shelter, and with training you discover the secrets of tracking and hiding your trail. Even if you’re untrained, you can still use Survival to {@action Subsist}",
+		{
+			"type": "list",
+			"items": [
+				"{@action Subsist} in the wild by foraging for food and building shelter.",
+			],
+		},
+	],
+	"Thievery": [
+		"You are trained in a particular set of skills favored by thieves and miscreants.",
+	],
 };
 
 Parser.SENSE_JSON_TO_FULL = {
 	"blindsight": [
-		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense."
+		"A creature with blindsight can perceive its surroundings without relying on sight, within a specific radius. Creatures without eyes, such as oozes, and creatures with echolocation or heightened senses, such as bats and true dragons, have this sense.",
 	],
 	"darkvision": [
-		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray."
+		"Many creatures in fantasy gaming worlds, especially those that dwell underground, have darkvision. Within a specified range, a creature with darkvision can see in dim light as if it were bright light and in darkness as if it were dim light, so areas of darkness are only lightly obscured as far as that creature is concerned. However, the creature can't discern color in that darkness, only shades of gray.",
 	],
 	"tremorsense": [
-		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense."
+		"A creature with tremorsense can detect and pinpoint the origin of vibrations within a specific radius, provided that the creature and the source of the vibrations are in contact with the same ground or substance. Tremorsense can't be used to detect flying or incorporeal creatures. Many burrowing creatures, such as ankhegs and umber hulks, have this special sense.",
 	],
 	"truesight": [
-		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane."
-	]
+		"A creature with truesight can, out to a specific range, see in normal and magical darkness, see invisible creatures and objects, automatically detect visual illusions and succeed on saving throws against them, and perceives the original form of a shapechanger or a creature that is transformed by magic. Furthermore, the creature can see into the Ethereal Plane.",
+	],
 };
 
 Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];

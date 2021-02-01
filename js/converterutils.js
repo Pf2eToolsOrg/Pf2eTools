@@ -3,7 +3,7 @@
 /*
  * Various utilities to assist in statblock parse/conversion. Formatted as a Node module, to allow external use.
  *
- * In all cases, the first argument, `m`, is a monster statblock.
+ * In all cases, the first argument, `m`, is a creature statblock.
  * Additionally, `cbMan` is a callback which should accept up to two arguments representing part of the statblock which
  * require manual consideration/tagging, and an error message, respectively.
  * Where available, `cbErr` accepts the same arguments, and may be called when an error occurs (the parser encounters

@@ -29,8 +29,8 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	initUi () {
-		$(`#btn-encounterbuild`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
-		$(`#btn-encounterstatblock`).click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, null));
+		$(`#btn-encounterbuild`).off("click").click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, true));
+		$(`#btn-encounterstatblock`).off("click").click(() => Hist.setSubhash(EncounterBuilder.HASH_KEY, null));
 
 		this._initRandomHandlers();
 		this._initAdjustHandlers();
@@ -266,7 +266,7 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	generateCache () {
-		// create a map of {XP: [monster list]}
+		// create a map of {XP: [creature list]}
 		if (this._cache == null) {
 			this._cache = (() => {
 				const out = {};
@@ -442,7 +442,7 @@ class EncounterBuilder extends ProxyBase {
 		this.generateCache();
 
 		const closestSolution = (() => {
-			// If there are enough players that single-monster XP is halved, try generating a range of solutions.
+			// If there are enough players that single-creature XP is halved, try generating a range of solutions.
 			if (partyMeta.cntPlayers > 5) {
 				const NUM_SAMPLES = 10; // should ideally be divisible by 2
 				const solutions = [...new Array(NUM_SAMPLES)]
@@ -510,7 +510,7 @@ class EncounterBuilder extends ProxyBase {
 
 		const addToEncounter = (encounter, xp) => {
 			const existing = encounter.filter(it => it.xp === xp);
-			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
+			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing creature
 				RollerUtil.rollOnArray(existing).count++;
 			} else {
 				const rolled = RollerUtil.rollOnArray(this._cache[xp]);
@@ -627,7 +627,7 @@ class EncounterBuilder extends ProxyBase {
 
 	show () {
 		this._cachedTitle = this._cachedTitle || document.title;
-		document.title = "Encounter Builder - 5etools";
+		document.title = "Encounter Builder - PF2eTools";
 		$(`body`).addClass("ecgen_active");
 		this.updateDifficulty();
 	}
@@ -869,7 +869,7 @@ class EncounterBuilder extends ProxyBase {
 				type: "image",
 				href: {
 					type: "external",
-					url: Renderer.monster.getTokenUrl(mon),
+					url: Renderer.creature.getTokenUrl(mon),
 				},
 				data: {
 					hoverTitle: `Token \u2014 ${mon.name}`,
@@ -923,7 +923,7 @@ class EncounterBuilder extends ProxyBase {
 			} else return handleNoImages();
 		};
 
-		const fluff = await Renderer.monster.pGetFluff(mon);
+		const fluff = await Renderer.creature.pGetFluff(mon);
 
 		if (fluff) handleHasImages();
 		else handleNoImages();

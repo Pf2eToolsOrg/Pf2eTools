@@ -12,7 +12,7 @@ class FeatsPage extends ListPage {
 
 			sublistClass: "subfeats",
 
-			dataProps: ["feat"]
+			dataProps: ["feat"],
 		});
 	}
 
@@ -42,12 +42,12 @@ class FeatsPage extends ListPage {
 				source,
 				level: feat.level,
 				type: feat._slType,
-				prerequisites: feat._slPrereq
+				prerequisites: feat._slPrereq,
 			},
 			{
 				uniqueId: feat.uniqueId ? feat.uniqueId : ftI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -86,16 +86,33 @@ class FeatsPage extends ListPage {
 				source,
 				level: feat.level,
 				type: feat._slType,
-				prerequisites: feat._slPrereq
-			}
+				prerequisites: feat._slPrereq,
+			},
 		);
 		return listItem;
 	}
 
 	doLoadHash (id) {
 		const feat = this._dataList[id];
-
-		$("#pagecontent").empty().append(RenderFeats.$getRenderedFeat(feat));
+		const $pgContent = $("#pagecontent").empty();
+		const buildStatsTab = () => {
+			$pgContent.append(RenderFeats.$getRenderedFeat(feat));
+		};
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("feat");
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Feat",
+			() => {},
+			buildStatsTab,
+		);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

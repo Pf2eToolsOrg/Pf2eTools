@@ -538,7 +538,7 @@ const BookUtil = {
 	booksHashChange () {
 		function cleanName (name) {
 			// prevent TftYP names from causing the header to wrap
-			return name.includes(Parser.SOURCE_JSON_TO_FULL[SRC_TYP]) ? name.replace(Parser.SOURCE_JSON_TO_FULL[SRC_TYP], Parser.sourceJsonToAbv(SRC_TYP)) : name;
+			return name;
 		}
 
 		async function pHandleFound (fromIndex, homebrewData) {

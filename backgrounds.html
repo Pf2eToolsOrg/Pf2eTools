@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -75,16 +73,21 @@
 			<div class="view-col" id="listcontainer">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
-						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
 						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 				<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
-					<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-					<button class="col-6 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs" data-sort="source">Source <span class="caret_wrp"></span></button>
+					<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span
+						class="caret_wrp"></span></button>
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span
+						class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs" data-sort="source">Source <span
+						class="caret_wrp"></span></button>
 				</div>
 
 				<ul class="list list--stats backgrounds">
@@ -94,20 +97,20 @@
 			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
-						<button class="col-8 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-8 sort btn btn-default btn-xs" data-sort="boosts">Ability Boosts <span
+							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subbackgrounds">
 						<!-- populate with JS -->
 					</ul>
 				</div>
 
-				<div class="wrp-stat-tab" id="stat-tabs">
-					<div id="tabs-right"></div>
-				</div>
+				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
 
 				<div class="wrp-stats-table">
-					<div id="pagecontent" class="stats">
+					<div id="pagecontent" class="stats pf2-stat">
 						<div class="initial-message">Select a background from the list to view it here</div>
 					</div>
 				</div>

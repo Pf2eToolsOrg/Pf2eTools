@@ -16,12 +16,15 @@ class ItemsPage {
 
 		this._itemList = [];
 		this._itI = 0;
+		this._itemId = 0;
+		this._runeItems = [];
 
 		this._subList = null;
 	}
 
 	getListItem (item, itI, isExcluded) {
 		const hash = UrlUtil.autoEncodeHash(item);
+		let listItem;
 
 		if (ExcludeUtil.isExcluded(hash, "item", item.source)) return null;
 		if (item.noDisplay) return null;
@@ -31,29 +34,33 @@ class ItemsPage {
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
+		eleLi.addEventListener("click", (evt) => handleItemsLiClick(evt, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => handleItemsLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(item.source);
-		const type = item._typeListText.join(", ").toTitleCase();
+		const level = item.level != null ? `${typeof item.level === "string" && item.level.endsWith("+") ? `\u00A0\u00A0${item.level}` : item.level}` : "\u2014"
 
-		if (item._fIsMundane) {
-			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-				<span class="col-3-5 pl-0 bold">${item.name}</span>
-				<span class="col-4-5">${type}</span>
-				<span class="col-1-5 text-center">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
-				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+		if (item._fIsEquipment) {
+			eleLi.innerHTML = `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
+				<span class="col-4 pl-0 bold">${item.name}</span>
+				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-1-5 text-center">${level}</span>
+				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
+				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
-			const listItem = new ListItem(
+			listItem = new ListItem(
 				itI,
 				eleLi,
 				item.name,
 				{
 					hash,
 					source,
-					type,
-					cost: item.value || 0,
-					weight: Parser.weightValueToNumber(item.weight),
+					level: item._fLvl,
+					bulk: item._fBulk,
+					price: item._sPrice,
+					category: item.category,
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
@@ -64,26 +71,27 @@ class ItemsPage {
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
 			return {mundane: listItem};
 		} else {
-			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
-				<span class="col-3-5 pl-0 bold">${item.name}</span>
-				<span class="col-4">${type}</span>
-				<span class="col-1-5 text-center">${Parser.itemWeightToFull(item, true) || "\u2014"}</span>
-				<span class="attunement col-0-6 text-center">${item._attunementCategory !== "No" ? "×" : ""}</span>
-				<span class="rarity col-1-4">${(item.rarity || "").toTitleCase()}</span>
-				<span class="source col-1 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
+			eleLi.innerHTML += `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
+				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
+				<span class="col-4 pl-0 bold col-name">${item.name}</span>
+				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-1-5 text-center">${level}</span>
+				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
+				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
+				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
 
-			const listItem = new ListItem(
+			listItem = new ListItem(
 				itI,
 				eleLi,
 				item.name,
 				{
 					source,
 					hash,
-					type,
-					rarity: item.rarity,
-					attunement: item._attunementCategory !== "No",
-					weight: Parser.weightValueToNumber(item.weight),
+					level: item._fLvl,
+					price: item._sPrice,
+					bulk: item._fBulk,
+					category: item.category,
 				},
 				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);
@@ -108,12 +116,12 @@ class ItemsPage {
 		const hash = UrlUtil.autoEncodeHash(item);
 		const count = addCount || 1;
 
-		const $dispCount = $(`<span class="text-center col-2 pr-0">${count}</span>`);
+		const $dispCount = $(`<span class="text-center col-2-3 pr-0">${count}</span>`);
 		const $ele = $$`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-6 pl-0">${item.name}</span>
-				<span class="text-center col-2">${item.weight ? `${item.weight} lb${item.weight > 1 ? "s" : ""}.` : "\u2014"}</span>
-				<span class="text-center col-2">${item.value || item.valueMult ? Parser.itemValueToFullMultiCurrency(item, {isShortForm: true}).replace(/ +/g, "\u00A0") : "\u2014"}</span>
+				<span class="bold col-5-4 pl-0">${item.name}</span>
+				<span class="text-center col-2-3">${Parser.priceToFull(item.price)}</span>
+				<span class="text-center col-2">${item.bulk ? item.bulk : "\u2014"}</span>
 				${$dispCount}
 			</a>
 		</li>`.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -125,8 +133,10 @@ class ItemsPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(item.source),
-				weight: Parser.weightValueToNumber(item.weight),
-				cost: item.value || 0,
+				level: item._fLvl,
+				price: item._sPrice,
+				bulk: item._fBulk,
+				category: item.category,
 				count,
 			},
 			{
@@ -140,6 +150,7 @@ class ItemsPage {
 		Renderer.get().setFirstSection(true);
 		const $content = $(`#pagecontent`).empty();
 		const item = this._itemList[id];
+		this._itemId = id;
 
 		function buildStatsTab () {
 			$content.append(RenderItems.$getRenderedItem(item));
@@ -164,15 +175,9 @@ class ItemsPage {
 			() => {},
 			buildFluffTab,
 		);
-		const picTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildFluffTab.bind(null, true),
-		);
 
-		// only display the "Info" tab if there's some fluff info--currently (2018-12-13), no official item has text fluff
-		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab, picTab);
-		else Renderer.utils.bindTabButtons(statTab, picTab);
+		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
+		else Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -180,6 +185,8 @@ class ItemsPage {
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
+
+		await runeBuilder.pHandleSubhash();
 	}
 
 	onSublistChange () {
@@ -273,6 +280,10 @@ class ItemsPage {
 			$btnReset: $(`#reset`),
 		});
 
+		runeBuilder = new RuneBuilder();
+		runeBuilder.initUi();
+		await runeBuilder.initState();
+
 		return this._pPopulateTablesAndFilters({item: await Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true})});
 	}
 
@@ -292,14 +303,14 @@ class ItemsPage {
 		const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 		$(`.side-label--mundane`).click(() => {
 			const filterValues = itemsPage._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Mundane");
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Mundane: curValue === 1 ? 0 : 1}});
+			const curValue = MiscUtil.get(filterValues, "Type", "Equipment");
+			itemsPage._pageFilter.filterBox.setFromValues({Type: {Equipment: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		$(`.side-label--magic`).click(() => {
 			const filterValues = itemsPage._pageFilter.filterBox.getValues();
-			const curValue = MiscUtil.get(filterValues, "Miscellaneous", "Magic");
-			itemsPage._pageFilter.filterBox.setFromValues({Miscellaneous: {Magic: curValue === 1 ? 0 : 1}});
+			const curValue = MiscUtil.get(filterValues, "Type", "Treasure");
+			itemsPage._pageFilter.filterBox.setFromValues({Type: {Treasure: curValue === 1 ? 0 : 1}});
 			itemsPage.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
@@ -396,6 +407,9 @@ class ItemsPage {
 
 				window.dispatchEvent(new Event("toolsLoaded"));
 			});
+
+		await runeBuilder.addFromSaveToItemsPage();
+		await runeBuilder.pHandleSubhash(true);
 	}
 
 	async _pHandleBrew (homebrew) {
@@ -417,8 +431,8 @@ class ItemsPage {
 		}
 
 		// populate table labels
-		$(`h3.ele-mundane span.side-label`).text("Mundane");
-		$(`h3.ele-magic span.side-label`).text("Magic");
+		$(`h3.ele-mundane span.side-label`).text("Equipment");
+		$(`h3.ele-magic span.side-label`).text("Treasure");
 
 		this._mundaneList.update();
 		this._magicList.update();
@@ -433,8 +447,42 @@ class ItemsPage {
 		});
 		ListUtil.bindAddButton();
 		ListUtil.bindSubtractButton();
+
+		// region popout button
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-		Renderer.hover.bindPopoutButton($btnPop, this._itemList);
+		$btnPop.off("click").title("Popout Window (SHIFT for Source Data)");
+		$btnPop.on(
+			"click",
+			(evt) => {
+				if (Hist.lastLoadedId !== null || runeBuilder.isActive()) {
+					let toRender;
+					if (runeBuilder.isActive()) {
+						toRender = runeBuilder.runeItem;
+					} else {
+						toRender = this._itemList[Hist.lastLoadedId];
+					}
+
+					if (evt.shiftKey) {
+						const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+						Renderer.hover.getShowWindow(
+							$content,
+							Renderer.hover.getWindowPositionFromEvent(evt),
+							{
+								title: `${toRender.name} \u2014 Source Data`,
+								isPermanent: true,
+								isBookContent: true,
+							},
+						);
+					} else if (runeBuilder.isActive()) {
+						Renderer.hover.doPopoutCurPage(evt, [toRender], 0);
+					} else {
+						Renderer.hover.doPopoutCurPage(evt, this._itemList, Hist.lastLoadedId);
+					}
+				}
+			},
+		);
+		// endregion
+
 		UrlUtil.bindLinkExportButton(itemsPage._pageFilter.filterBox);
 		ListUtil.bindOtherButtons({
 			download: true,
@@ -443,5 +491,25 @@ class ItemsPage {
 	}
 }
 
+let runeBuilder;
+
+function handleItemsLiClick (evt, listItem) {
+	if (runeBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, itemsPage._itemList, listItem.ix);
+}
+
+function handleItemsLiContext (evt, listItem) {
+	if (!runeBuilder.isActive()) ListUtil.openContextMenu(evt, itemsPage._itemList, listItem);
+	else RuneListUtil.openContextMenu(evt, listItem);
+}
+
+function handleItemsLinkClick (evt) {
+	if (runeBuilder.isActive()) evt.preventDefault();
+}
+
 const itemsPage = new ItemsPage();
 window.addEventListener("load", () => itemsPage.pOnLoad());
+window.addEventListener("beforeunload", () => {
+	if (runeBuilder.isActive() && runeBuilder._cachedFilterState) {
+		StorageUtil.pSetForPage(itemsPage._pageFilter._filterBox._getNamespacedStorageKey(), runeBuilder._cachedFilterState);
+	}
+});

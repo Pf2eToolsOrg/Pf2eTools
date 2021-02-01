@@ -1,19 +1,21 @@
 class RenderSpells {
-	static $getRenderedSpell(sp, subclassLookup) {
+	static $getRenderedSpell (sp, subclassLookup) {
 		const renderer = Renderer.get();
 
 		const renderStack = [];
 		renderer.setFirstSection(true);
+		const level = sp.type === "CANTRIP" ? " 1" : ` ${sp.level}`;
 
 		renderStack.push(`
-		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS})}
+		${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
+		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, level: level})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(sp.traits)}`);
 
 		if (sp.traditions != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>`);
 		} else if (sp.domain != null) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Domain </strong>${sp.domain.toLowerCase()}</p>`);
+			renderStack.push(`<p class="pf2-stat__section"><strong>Domain </strong>${sp.domain.toLowerCase()}</p>`);
 		}
 		let components = ``;
 		let components_list = [];
@@ -32,10 +34,10 @@ class RenderSpells {
 		components = components_list.join(", ")
 		let cast = ``
 		let castStack = []
-		renderer.recursiveRender(sp.cast.entry, castStack, {depth:1}, {prefix: `<span>`, suffix: `</span>`})
-		cast = castStack.join('')
-		if (!Parser.SP_TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
-			components = `(` + components + `)`
+		renderer.recursiveRender(sp.cast.entry, castStack)
+		cast = castStack.join("")
+		if (!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length) {
+			components = `(${components})`
 		}
 
 		let cst_tr_req = ``;
@@ -48,7 +50,7 @@ class RenderSpells {
 		if (sp.requirements != null) {
 			cst_tr_req += `; <strong>Requirements </strong>${sp.requirements}`;
 		}
-		renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
+		renderStack.push(`<p class="pf2-stat__section"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
 
 		let rg_ar_tg = ``;
 		if (sp.range.type != null) {
@@ -69,7 +71,7 @@ class RenderSpells {
 			}
 		}
 		if (rg_ar_tg !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${rg_ar_tg}</p>`);
+			renderStack.push(`<p class="pf2-stat__section">${rg_ar_tg}</p>`);
 		}
 
 		let st_dr = ``
@@ -88,32 +90,29 @@ class RenderSpells {
 			}
 		}
 		if (st_dr !== ``) {
-			renderStack.push(`<p class="pf-2-stat-indent-second-line">${st_dr}</p>`);
+			renderStack.push(`<p class="pf2-stat__section">${st_dr}</p>`);
 		}
 
 		renderStack.push(Renderer.utils.getDividerDiv());
 
-		const entryList = {type: 'entries', entries: sp.entries};
-		renderStack.push(`<div class="pf2-stat-text">`)
-		renderer.recursiveRender(entryList, renderStack, {depth: 1});
-		renderStack.push(`</div>`)
+		renderer.recursiveRender(sp.entries, renderStack, {depth: 1}, {pf2StatFix: true});
 
 		if (sp.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (sp.heightened.plus_x != null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
+				renderStack.push(`<p class="pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
 				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
 			if (sp.heightened.x != null) {
 				for (let x of sp.heightened.x) {
-					renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
+					renderStack.push(`<p class="pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
 					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
 					renderStack.push(`</p>`)
 				}
 			}
 			if (sp.heightened.no_x != null) {
-				renderStack.push(`<p class="pf-2-stat-indent-second-line"><strong>Heightened </strong>`)
+				renderStack.push(`<p class="pf2-stat__section"><strong>Heightened </strong>`)
 				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack, {depth: 1})
 				renderStack.push(`</p>`)
 			}
@@ -123,7 +122,7 @@ class RenderSpells {
 		return $(renderStack.join(""));
 	}
 
-	static async pGetSubclassLookup() {
+	static async pGetSubclassLookup () {
 		const subclassLookup = {};
 		Object.assign(subclassLookup, await DataUtil.loadJSON(`data/generated/gendata-subclass-lookup.json`));
 		const homebrew = await BrewUtil.pAddBrewData();
@@ -131,7 +130,7 @@ class RenderSpells {
 		return subclassLookup
 	}
 
-	static mergeHomebrewSubclassLookup(subclassLookup, homebrew) {
+	static mergeHomebrewSubclassLookup (subclassLookup, homebrew) {
 		if (homebrew.class) {
 			homebrew.class.filter(it => it.subclasses).forEach(c => {
 				(subclassLookup[c.source] =

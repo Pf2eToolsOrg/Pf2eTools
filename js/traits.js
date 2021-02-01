@@ -12,7 +12,7 @@ class TraitsPage extends ListPage {
 
 			sublistClass: "subtraits",
 
-			dataProps: ["trait"]
+			dataProps: ["trait"],
 		});
 	}
 
@@ -36,12 +36,12 @@ class TraitsPage extends ListPage {
 			it.name,
 			{
 				hash,
-				source
+				source,
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : vhI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -67,8 +67,8 @@ class TraitsPage extends ListPage {
 			$ele,
 			it.name,
 			{
-				hash
-			}
+				hash,
+			},
 		);
 		return listItem;
 	}
@@ -80,13 +80,21 @@ class TraitsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderTraits.$getRenderedTrait(trt));
 		}
-
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("trait");
+			$content.append(quickRules);
+		}
 		const statTab = Renderer.utils.tabButton(
-			"Item",
-			buildStatsTab
+			"Trait",
+			() => {},
+			buildStatsTab,
 		);
-
-		Renderer.utils.bindTabButtons(statTab);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

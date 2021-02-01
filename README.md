@@ -1,38 +1,22 @@
-## 5e.tools
+## Pf2e.tools
 
-Visit the [main site](https://5e.tools/5etools.html) or go to the unofficial GitHub [mirror](https://0x0a09942d.github.io/PF2eTools.html).
+Visit the [main site (not yet)](PF2eTools.html) or go to the unofficial GitHub [mirror](https://0x0a09942d.github.io/PF2eTools.html).
 
-[Join the 5etools Discord here!](https://discord.gg/nGvRCDs)
-
-[Support us on Patreon](https://www.patreon.com/bePatron?u=22018559)
+[Join the Pf2eTools Discord here!](https://discord.gg/2hzNxErtVu)
 
 ## Help and Support
 
-Please see [our wiki](https://wiki.5e.tools/) for FAQs, installation guides, supported integrations, and more.
+Please see [our Discord server](https://discord.gg/2hzNxErtVu) for FAQs, installation guides, supported integrations, and more.
 
 ---
 
 ## Developer Notes
 ### Data Sources and Versioning
-Only "official" (that is, published by WotC) data is to be included in the site. Anything else should be added to the homebrew repository.
+Only "official" (that is, published by Paizo) data is to be included in the site. Anything else should be added to the homebrew repository.
 
 Prioritise RAW above all else. Aim to provide a 1:1 copy of the original data. Obvious typos (for instance, mathematical errors in creature statblocks) may be corrected at the discretion of the maintainer(s).
 
 Aim to use the latest version of any published material. Older versions which are sufficiently different (and relevant to community interests) can be moved to the homebrew repository.
-
-#### Page-Specific Notes
-
-*Languages page.* As there is no well-defined RAW format for language data, the languages page collects together information from several disjoint places. A priority list of sources to be considered is:
-- The "Languages" section on PHB p123
-- official sources, in order of:
-  - PHB > (DMG) > MM
-  - Other "official" (i.e. published) products in release-date order
-  - "Unofficial" products (i.e. Unearthed Arcana; Plane Shift) in release-date order
-
-Within this ordering, the following prioritisation should be made:
-- text that directly refers to or describes a language, in order of first appearance in the product (i.e. if a language is mentioned on page 2 and 10 of a book, the entry on page 2 should be taken as the primary source)
-- text that is given for player use (e.g. the "Druidic" feature of the Druid class) (the text of which may have to be adapted to fit a reference format; i.e. changing "You can understand..." to "A speaker or X language can understand...).
-
 
 ### Target JavaScript Version
 Targeting ES6 was the original intent, but more modern features have long since crept into the code. Therefore, if something is available as standard in both Chrome and Firefox (preferably in versions dating back at least a couple of months), and isn't bleeding-edge, one can reasonable justify using it. As with all things, use common sense.
@@ -50,7 +34,7 @@ Targeting ES6 was the original intent, but more modern features have long since 
 - When "tagging" references in data (e.g. `{@creature goblin}`), the following rules apply:
 	- Only tag references which are _intended as references_. For example, the Wizard class in `You gain one cantrip of your choice from the wizard spell list` should be tagged, whereas the Wizard class in `Together, a group of seven powerful wizards sought to contain the demon` should not be tagged. One is a reference to the mechanical class, one is merely the casual usage of the word "wizard."
 	- In a similar vein, never tag anything within a `quote`-type block. Even if the quote directly refers to a specific creature, we can assume the quote is from a universe/perspective in which (for example) statblocks don't exist, and therefore the tag should be omitted to maintain the flavour of the quote.
-	- Within data from a source, avoid referencing content from a source printed after the publication of that source. For example, MTF content might reference SCAG deities, but SCAG deities should refrain from referencing MTF content.
+	- Within data from a source, avoid referencing content from a source printed after the publication of that source.
 
 ### JSON Cleaning
 #### Trailing commas

@@ -13,7 +13,7 @@ class BackgroundPage extends ListPage {
 
 			sublistClass: "subbackgrounds",
 
-			dataProps: ["background"]
+			dataProps: ["background"],
 		});
 	}
 
@@ -26,7 +26,7 @@ class BackgroundPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(bg);
 		const name = bg.name
 		const source = Parser.sourceJsonToAbv(bg.source);
-		const boosts = bg.boosts.join(', ');
+		const boosts = bg.boosts.sort(SortUtil.abilitySort).join(", ");
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-4 pl-0">${bg.name}</span>
@@ -41,12 +41,12 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source,
-				boosts
+				boosts,
 			},
 			{
 				uniqueId: bg.uniqueId || bgI,
-				isExcluded
-			}
+				isExcluded,
+			},
 		);
 
 		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
@@ -63,7 +63,7 @@ class BackgroundPage extends ListPage {
 
 	getSublistItem (bg, pinId) {
 		const hash = UrlUtil.autoEncodeHash(bg);
-		const boosts = bg.boosts.join(', ');
+		const boosts = bg.boosts.join(", ");
 		const name = bg.name
 
 		const $ele = $$`<li class="row">
@@ -81,8 +81,8 @@ class BackgroundPage extends ListPage {
 			{
 				hash,
 				source: Parser.sourceJsonToAbv(bg.source),
-				boosts
-			}
+				boosts,
+			},
 		);
 		return listItem;
 	}
@@ -95,28 +95,21 @@ class BackgroundPage extends ListPage {
 		const buildStatsTab = () => {
 			$pgContent.append(RenderBackgrounds.$getRenderedBackground(bg));
 		};
-
-		const buildFluffTab = (isImageTab) => {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content: $pgContent,
-				pFnGetFluff: Renderer.background.pGetFluff,
-				entity: bg
-			});
-		};
-
-		const traitTab = Renderer.utils.tabButton(
-			"Traits",
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("background");
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Background",
 			() => {},
-			buildStatsTab
+			buildStatsTab,
 		);
-
-		const picTab = Renderer.utils.tabButton(
-			"Images",
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
 			() => {},
-			buildFluffTab.bind(null, true)
+			buildInfoTab,
 		);
-		Renderer.utils.bindTabButtons(traitTab, picTab);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

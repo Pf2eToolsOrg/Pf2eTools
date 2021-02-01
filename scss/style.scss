@@ -5,7 +5,7 @@
 		padding: 0 15px 1px;
 		box-shadow: 0 1px 4px $rgb-shadow-grey--dark;
 		color: white;
-		background-color: rgb(0, 107, 196);
+		background-color: #002664;
 		min-height: 0;
 		flex-shrink: 0;
 	}
@@ -41,7 +41,8 @@
 		line-height: 1;
 		margin-right: 2px;
 
-		@media (min-width: $width-screen-sm) {
+		//$width-screen-sm + 1px
+		@media (min-width: 769px) {
 			display: none;
 		}
 	}
@@ -743,7 +744,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .view-col {
 	position: relative;
-	margin: 7px 7px 12px;
+	margin: 7px 13px 12px;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -783,10 +784,12 @@ input[type=checkbox].sidemenu__row__label__cb {
 .wrp-stats-table {
 	overflow-x: hidden;
 	overflow-y: auto;
-	border-top: 1px solid #e69a28;
-	border-bottom: 1px solid #e69a28;
+	border-top: 1px solid #5e0000;
+	border-bottom: 1px solid #5e0000;
+	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
 	flex-shrink: 1;
+	background: #f6f4f2;
 
 	@media (max-width: $width-screen-md) {
 		overflow-y: initial;
@@ -959,29 +962,19 @@ input[type=checkbox].sidemenu__row__label__cb {
 }
 
 .stats {
-	font-family: 'Convergence', Arial, sans-serif;
 	width: 100%;
-	font-size: 0.9em;
-	table-layout: fixed;
+	font-size: 1.2em;
 	overflow-wrap: break-word;
+	padding: 0.4em;
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 }
 
-.stats.monster {
-	background-size: 100% auto;
-	background: url('../img/bestiary/stat-block-top-texture.png') no-repeat, repeat top center, $rgb-bg-orange;
-}
-
 td,
 th {
 	padding: 1px 0.3em;
-}
-
-.stats-name {
-	color: $rgb-name-red;
 }
 
 /* sub-tables */
@@ -1315,10 +1308,6 @@ img.token:hover {
 	right: 0;
 	opacity: 1 !important;
 	transition: opacity $time-2-frames, max-width $time-2-frames, right $time-2-frames;
-}
-
-.classes .stats {
-	font-family: inherit;
 }
 
 .stats p.subtrait {
@@ -1714,12 +1703,14 @@ input[type=checkbox].readonly {
 }
 
 #sublistcontainer > ul > li,
+#featlistcontainer > ul > li,
 #listcontainer > ul > li {
 	padding: 0;
 }
 
 .lst__wrp-cells,
 #sublistcontainer .list a,
+#featlistcontainer .list a,
 #listcontainer .list a {
 	color: inherit;
 	display: flex;
@@ -2033,12 +2024,13 @@ tr.regionaleffect {
 }
 
 .initial-message {
-	color: $rgb-name-red;
-	font-family: 'Andada', serif;
-	font-variant: small-caps;
+	color: #5e0000;
+	font-family: 'Taroca', serif;
 	font-weight: 500;
 	text-align: center;
-	line-height: 2.3em;
+	text-transform: uppercase;
+	line-height: 1.3em;
+	font-size: 0.75em;
 }
 
 .book-view .initial-message {
@@ -2138,7 +2130,7 @@ ul.list li:hover {
 }
 
 .stats {
-	background: $rgb-bg-orange;
+	background: #f6f4f2;
 }
 
 @media only screen and (min-width: 1600px) {
@@ -2162,8 +2154,6 @@ ul.list li:hover {
 .stats--book {
 	@include shadow-1();
 
-	font-family: Roboto, Helvetica, sans-serif;
-	background: white;
 
 	::selection {
 		background: #242527;
@@ -2251,6 +2241,10 @@ ul.list li:hover {
 }
 
 .stats--bkmv {
+	padding: 0.3em;
+	font-size: 1em;
+	background: none;
+
 	p {
 		margin-bottom: 4px;
 	}
@@ -2466,7 +2460,8 @@ ul.list.books > li > a > span.name:hover {
 }
 
 .hwin .hoverborder .window-title {
-	color: $rgb-name-red;
+	color: #5e0000;
+	font-family: 'good-pro-condensed', sans-serif;
 }
 
 .rollbox {
@@ -3231,12 +3226,13 @@ ul.list.books > li > a > span.name:hover {
 		background: rgba(0, 0, 0, 0.31);
 	}
 
-	.stats-name {
-		color: $rgb-name-red--night;
-	}
 
 	.stats .divider div {
 		background-color: $rgb-name-red--night;
+	}
+
+	.wrp-stats-table {
+		background: #222;
 	}
 
 	.stripe-odd:nth-child(odd),
@@ -3761,6 +3757,14 @@ ul.list.books > li > a > span.name:hover {
 /****************************************
  * Print styles
  ***************************************/
+
+/* Hopefully fixes annoying clipping on iPhones */
+.mobile__mh-100 {
+	min-height: 100px;
+	@media only screen and (min-width: $width-screen-sm) {
+		min-height: 0;
+	}
+}
 
 @media print {
 	@page {

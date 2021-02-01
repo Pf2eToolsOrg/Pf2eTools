@@ -123,7 +123,7 @@ class Omnisearch {
 
 			// Alias categories
 			if (!category) {
-				if (t === "in:creature" || t === "in:creatures" || t === "in:monster" || t === "in:monsters") category = "bestiary";
+				if (t === "in:creature" || t === "in:creatures" || t === "in:creature" || t === "in:monsters") category = "bestiary";
 			}
 
 			const mSource = /^source:(.*)$/.exec(t);
@@ -462,7 +462,7 @@ class Omnisearch {
 
 	static addScrollTopFloat () {
 		// "To top" button
-		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-arrow-up"/></button>`)
+		const $btnToTop = $(`<button class="btn btn-sm btn-default" title="To Top"><span class="glyphicon glyphicon-chevron-up"/></button>`)
 			.click(() => MiscUtil.scrollPageTop());
 
 		const $wrpTop = $$`<div class="bk__to-top">

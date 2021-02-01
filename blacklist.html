@@ -17,8 +17,6 @@
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/pf2-style.css">
-	<link rel="stylesheet" href="css/fonts.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -84,7 +82,10 @@
 </head>
 
 <body>
-<div class="cancer__wrp-leaderboard cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div></div>
+<div class="cancer__wrp-leaderboard cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
+</div>
 
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
@@ -96,18 +97,26 @@
 	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor"><div class="cancer__disp-cancer"></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div><div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div></div>
+<div class="cancer__wrp-sidebar-rhs cancer__wrp-sidebar-rhs--scrolling-page cancer__anchor">
+	<div class="cancer__disp-cancer"></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--top"><!--5ETOOLS_AD_RIGHT_1--></div>
+	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
+</div>
 
 <main class="container" id="main_content">
 	<div class="row intro">
 		<p>
-			This page allows you to create configurations which &quot;blacklist&quot; site content, hiding it from list pages.
-			This can be used, for example, in conjunction with homebrew content, to create a campaign JSON file containing additions to the base game,
+			This page allows you to create configurations which &quot;blacklist&quot; site content, hiding it from list
+			pages.
+			This can be used, for example, in conjunction with homebrew content, to create a campaign JSON file
+			containing additions to the base game,
 			as well as the removal of extraneous content.
 		</p>
 		<p><i class="text-muted">
-			With great power comes great responsibility. If you are a DM intending to use this system to remove parts of the game you
-			consider broken; inconvenient; or otherwise in need of adjustment, please first consider the needs and expectations of your players,
+			With great power comes great responsibility. If you are a GM intending to use this system to remove parts of
+			the game you
+			consider broken; inconvenient; or otherwise in need of adjustment, please first consider the needs and
+			expectations of your players,
 			as well as the extensive playtesting and design iteration of which 5th Edition was the result.
 			If something is in the game, it is probably there for a reason.
 		</i></p>
@@ -118,9 +127,13 @@
 	<div class="row">
 		<div class="form-group col-12">
 			<button class="btn btn-default mr-2" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
-			<button class="btn btn-default help mr-2" onclick="Blacklist.removeAllUa()" title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.</button>
+			<button class="btn btn-default help mr-2" onclick="Blacklist.removeAllUa()"
+					title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.
+			</button>
 			<button class="btn btn-default mr-2" onclick="Blacklist.addAllSources()">Exclude All Sources</button>
-			<button class="btn btn-default help" onclick="Blacklist.removeAllSources()" title="Removes entries added by the &quot;Exclude All Sources&quot; button.">Include All Sources</button>
+			<button class="btn btn-default help" onclick="Blacklist.removeAllSources()"
+					title="Removes entries added by the &quot;Exclude All Sources&quot; button.">Include All Sources
+			</button>
 		</div>
 	</div>
 
@@ -159,8 +172,11 @@
 	<div class="row">
 		<div class="form-group col-12">
 			<button class="btn btn-default" onclick="Blacklist.export()">Export List</button>
-			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List</button>
-			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">Reset List</button>
+			<button class="btn btn-default" onclick="Blacklist.import(event)" title="SHIFT for Add Only">Import List
+			</button>
+			<button class="btn btn-danger btn-offset" onclick="window.confirm('Are you sure?') && Blacklist.reset()">
+				Reset List
+			</button>
 		</div>
 	</div>
 
@@ -172,8 +188,10 @@
 
 		<div class="lst__form-top" id="filter-search-group">
 			<div class="w-100 relative">
-				<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-				<div class="lst__wrp-search-glass no-events flex-vh-center"><span class="glyphicon glyphicon-search"></span></div>
+				<input type="search" id="search" autocomplete="off" autocapitalize="off" spellcheck="false"
+					   class="search form-control lst__search lst__search--no-border-h">
+				<div class="lst__wrp-search-glass no-events flex-vh-center"><span
+					class="glyphicon glyphicon-search"></span></div>
 				<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 			</div>
 			<button class="btn btn-default" id="reset">Reset Search</button>

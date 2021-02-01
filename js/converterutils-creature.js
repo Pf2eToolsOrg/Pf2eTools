@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 class AcConvert {
 	static tryPostProcessAc (mon, cbMan, cbErr) {
 		let nuAc = [];

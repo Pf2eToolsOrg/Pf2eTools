@@ -189,7 +189,7 @@ function calculateCr () {
 	let offensiveCR = -1;
 	let defensiveCR = -1;
 
-	// go through monster features
+	// go through creature features
 	$("#monsterfeatures input:checked").each(function () {
 		// `trait` is used within the "eval"s below
 		let trait = 0;

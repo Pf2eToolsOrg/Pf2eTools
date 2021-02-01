@@ -32,7 +32,7 @@ class VariantRulesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-7 pl-0">${rule.name}</span>
-			<span class="col-3 text-center">${rule.ruleType ? Parser.ruleTypeToFull(rule.ruleType) : "\u2014"}</span>
+			<span class="col-3 text-center">${rule.type ? rule.type : "\u2014"}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(rule.source)} pr-0" title="${Parser.sourceJsonToFull(rule.source)}" ${BrewUtil.sourceJsonToStyle(rule.source)}>${source}</span>
 		</a>`;
 
@@ -44,7 +44,7 @@ class VariantRulesPage extends ListPage {
 				hash,
 				search: searchStack.join(","),
 				source,
-				ruleType: rule.ruleType || "",
+				type: rule.type || "",
 			},
 			{
 				uniqueId: rule.uniqueId ? rule.uniqueId : rlI,
@@ -69,7 +69,7 @@ class VariantRulesPage extends ListPage {
 
 		const $ele = $(`<li class="row"><a href="#${hash}" class="lst--border">
 				<span class="bold col-10 pl-0">${it.name}</span>
-				<span class="col-3 text-center pr-0">${it.ruleType ? Parser.ruleTypeToFull(it.ruleType) : "\u2014"}</span>
+				<span class="col-3 text-center pr-0">${it.type ? it.type : "\u2014"}</span>
 			</a></li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
@@ -79,7 +79,7 @@ class VariantRulesPage extends ListPage {
 			it.name,
 			{
 				hash,
-				ruleType: it.ruleType || "",
+				type: it.type || "",
 			},
 		);
 		return listItem;
@@ -87,9 +87,7 @@ class VariantRulesPage extends ListPage {
 
 	doLoadHash (id) {
 		const rule = this._dataList[id];
-
-		$("#pagecontent").empty().append(RenderVariantRules.$getRenderedVariantRule(rule));
-
+		renderStatblock(rule);
 		ListUtil.updateSelected();
 	}
 
@@ -102,6 +100,30 @@ class VariantRulesPage extends ListPage {
 		const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
 		if ($title.length) $title[0].scrollIntoView();
 	}
+}
+
+function renderStatblock (rule) {
+	const $content = $("#pagecontent").empty();
+
+	function buildStatsTab () {
+		$content.append(RenderVariantRules.$getRenderedVariantRule(rule));
+	}
+	async function buildInfoTab () {
+		const quickRules = await Renderer.utils.pGetQuickRules("variantRule");
+		$content.append(quickRules);
+	}
+
+	const statTab = Renderer.utils.tabButton(
+		"Rule",
+		() => {},
+		buildStatsTab,
+	);
+	const infoTab = Renderer.utils.tabButton(
+		"Quick Rules",
+		() => {},
+		buildInfoTab,
+	);
+	Renderer.utils.bindTabButtons(statTab, infoTab);
 }
 
 const variantRulesPage = new VariantRulesPage();
