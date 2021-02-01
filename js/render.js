@@ -2203,6 +2203,11 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
+			case "@sup":
+				textStack[0] += `<sup>`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</sup>`;
+				break;
 
 			// Comic styles ////////////////////////////////////////////////////////////////////////////////////
 			case "@comic":
