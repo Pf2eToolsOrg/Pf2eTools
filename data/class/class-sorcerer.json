@@ -1042,7 +1042,7 @@
 		{
 			"name": "Bloodline",
 			"source": "CRB",
-			"page": 196,
+			"page": 197,
 			"className": "Sorcerer",
 			"classSource": "CRB",
 			"subclassShortName": "Hag",
@@ -1091,6 +1091,126 @@
 									"name": "Blood Magic",
 									"entries": [
 										"Spiteful curses punish your foes. The first creature that deals damage to you before the end of your next turn takes 2 mental damage per spell level and must attempt a basic Will save."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodline",
+			"source": "CRB",
+			"page": 198,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Imperial",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Imperial",
+					"entries": [
+						"One of your ancestors was a mortal who mastered magic. Such magical blood can remain latent for generations, but in you it manifested in full.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter arcane|spells|tradition=arcane}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"Arcana, Society"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell detect magic|CRB}}; 1st: {@i {@spell magic missile|CRB}}; 2nd: {@i {@spell dispel magic|CRB}}; 3rd: {@i {@spell haste|CRB}}; 4th: {@i {@spell dimension door|CRB}}; 5th: {@i {@spell prying eye|CRB}}; 6th: {@i {@spell disintegrate|CRB}}; 7th: {@i {@spell prismatic spray|CRB}}; 8th: {@i {@spell maze|CRB}}; 9th: {@i {@spell prismatic sphere|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell ancestral memories|CRB}}; advanced: {@i {@spell extend spell|CRB}}; greater: {@i {@spell arcane countermeasure|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"A surge of ancestral memories grants you or one target a +1 status bonus to skill checks for 1 round."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bloodline",
+			"source": "CRB",
+			"page": 198,
+			"className": "Sorcerer",
+			"classSource": "CRB",
+			"subclassShortName": "Undead",
+			"subclassSource": "CRB",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Undead",
+					"entries": [
+						"The touch of undeath runs through your blood. Your family tree might contain powerful undead, like a vampire, or perhaps you died and returned a bit different.",
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"items": [
+								{
+									"type": "item",
+									"name": "Spell List",
+									"entries": [
+										"{@filter divine|spells|tradition=divine}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Skills",
+									"entries": [
+										"Intimidation, Religion"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Spells",
+									"entries": [
+										"cantrip: {@i {@spell chill touch|CRB}}; 1st: {@i {@spell harm|CRB}}; 2nd: {@i {@spell false life|CRB}}; 3rd: {@i {@spell haste|CRB}}; 4th: {@i {@spell bind undead|CRB}}; 5th: {@i {@spell cloudkill|CRB}}; 6th: {@i {@spell vampiric exsanguination|CRB}}; 7th: {@i {@spell finger of death|CRB}}; 8th: {@i {@spell horrid wilting|CRB}}; 9th: {@i {@spell wail of the banshee|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Bloodline Spells",
+									"entries": [
+										"initial: {@i {@spell undeath's blessing|CRB}}; advanced: {@i {@spell drain life|CRB}}; greater: {@i {@spell grasping grave|CRB}}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Blood Magic",
+									"entries": [
+										"Necromantic energy flows through you or one target. Either you gain temporary Hit Points equal to the spell’s level for 1 round, or a target takes 1 negative damage per spell level (if the spell already deals initial negative damage, combine this with the spell’s initial damage before determining weaknesses and resistances)."
 									]
 								}
 							]
