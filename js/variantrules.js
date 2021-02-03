@@ -87,9 +87,7 @@ class VariantRulesPage extends ListPage {
 
 	doLoadHash (id) {
 		const rule = this._dataList[id];
-
-		$("#pagecontent").empty().append(RenderVariantRules.$getRenderedVariantRule(rule));
-
+		renderStatblock(rule);
 		ListUtil.updateSelected();
 	}
 
@@ -102,6 +100,30 @@ class VariantRulesPage extends ListPage {
 		const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
 		if ($title.length) $title[0].scrollIntoView();
 	}
+}
+
+function renderStatblock (rule) {
+	const $content = $("#pagecontent").empty();
+
+	function buildStatsTab () {
+		$content.append(RenderVariantRules.$getRenderedVariantRule(rule));
+	}
+	async function buildInfoTab () {
+		const quickRules = await Renderer.utils.pGetQuickRules("variantRule");
+		$content.append(quickRules);
+	}
+
+	const statTab = Renderer.utils.tabButton(
+		"Rule",
+		() => {},
+		buildStatsTab,
+	);
+	const infoTab = Renderer.utils.tabButton(
+		"Quick Rules",
+		() => {},
+		buildInfoTab,
+	);
+	Renderer.utils.bindTabButtons(statTab, infoTab);
 }
 
 const variantRulesPage = new VariantRulesPage();

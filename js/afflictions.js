@@ -87,14 +87,22 @@ class AfflictionsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderAfflictions.$getRenderedAffliction(it));
 		}
-
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules(it.__prop);
+			$content.append(quickRules);
+		}
 		const statTab = Renderer.utils.tabButton(
-			"Traits",
+			"Affliction",
 			() => {},
 			buildStatsTab,
 		);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
 
-		Renderer.utils.bindTabButtons(statTab);
+		Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

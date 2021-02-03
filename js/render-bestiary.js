@@ -10,7 +10,7 @@ class RenderBestiary {
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
-			${Renderer.creature.getAbilityMods(cr)}
+			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}
 			${cr.abilities_interactive.map(it => Renderer.creature.getRenderedAbility(it))}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}

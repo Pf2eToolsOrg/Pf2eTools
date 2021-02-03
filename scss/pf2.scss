@@ -473,12 +473,16 @@
 .pf2-p {
 	color: black;
 	margin: 0;
-	padding: 0.3em 0;
+	padding: 0;
 	font-family: 'SabonLTStd', sans-serif;
 	font-size: 0.75em;
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.35em;
+
+	~ .pf2-p {
+		text-indent: 1em;
+	}
 }
 
 .pf2-table {

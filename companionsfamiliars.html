@@ -90,7 +90,7 @@
 
 	<div class="view-col-group--cancer h-100 mh-0">
 		<div class="container view-col-wrapper view-col-wrapper--cancer">
-			<div class="view-col" id="listcontainer" style="flex: 6;">
+			<div class="view-col" id="listcontainer">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
 						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
@@ -102,15 +102,11 @@
 					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-3-2 sort btn btn-default btn-xs" data-sort="name">Name <span
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span
 						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="type">Type <span
+					<button class="col-3 sort btn btn-default btn-xs" data-sort="type">Type <span
 						class="caret_wrp"></span></button>
-					<button class="col-4-8 sort btn btn-default btn-xs" data-sort="prerequisite">Prerequisite <span
-						class="caret_wrp"></span></button>
-					<button class="col-1 sort btn btn-default btn-xs" data-sort="level">Level <span
-						class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+					<button class="col-3 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
 						class="caret_wrp"></span></button>
 				</div>
 
@@ -119,16 +115,12 @@
 				</ul>
 			</div>
 
-			<div id="contentwrapper" class="view-col" style="flex: 4;">
+			<div id="contentwrapper" class="view-col">
 				<div id="sublistcontainer" class="sublist sublist--resizable">
 					<div id="sublistsort" class="btn-group sublist__wrp-cols">
-						<button class="col-4 sort btn btn-default btn-xs" data-sort="name">Name <span
+						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span
 							class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="type">Type <span
-							class="caret_wrp"></span></button>
-						<button class="col-4-5 sort btn btn-default btn-xs" data-sort="prerequisite">Prerequisite <span
-							class="caret_wrp"></span></button>
-						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Level <span
+						<button class="col-6 sort btn btn-default btn-xs" data-sort="type">Type <span
 							class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subcompanionsfamiliars">
@@ -141,17 +133,9 @@
 				</div>
 
 				<div class="wrp-stats-table">
-					<table id="pagecontent" class="stats pf2-stat">
-						<tr>
-							<th class="border" colspan="6"></th>
-						</tr>
-						<tr>
-							<td colspan="6" class="initial-message">Select an entry from the list to view it here</td>
-						</tr>
-						<tr>
-							<th class="border" colspan="6"></th>
-						</tr>
-					</table>
+					<div id="pagecontent" class="stats pf2-stat">
+						<div class="initial-message">Select an entry from the list to view it here</div>
+					</div>
 				</div>
 
 				<div class="text-center wrp-footer-buttons">

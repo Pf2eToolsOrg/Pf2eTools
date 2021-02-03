@@ -119,7 +119,7 @@ class ArchetypesPage extends BaseComponent {
 
 		await this._pInitAndRunRender();
 
-		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#archetypestats`));
+		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
 		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
@@ -283,7 +283,7 @@ class ArchetypesPage extends BaseComponent {
 			}
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
-			$(`#archetypestats`).empty().append(ArchetypesPage._render_$getNoContent());
+			$(`#pagecontent`).empty().append(ArchetypesPage._render_$getNoContent());
 			JqueryUtil.doToast({content: "Could not find the archetype to load!", type: "error"})
 		}
 	}
@@ -598,18 +598,37 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	_render_renderArchetype () {
-		const $archetypeStats = $(`#archetypestats`).empty();
+		const $archetypeStats = $(`#pagecontent`).empty();
 		const arc = this.activeArchetype;
 
-		const renderer = Renderer.get().resetHeaderIndex();
-		const archetypeEntry = {
-			type: "pf2-h2",
-			name: arc.name,
-			entries: arc.entries,
+		const buildStatsTab = () => {
+			const renderer = Renderer.get().resetHeaderIndex().setFirstSection(true);
+			const archetypeEntry = {
+				type: "pf2-h2",
+				name: arc.name,
+				entries: arc.entries,
+			}
+
+			$$`${renderer.render(archetypeEntry)}
+		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats);
+		}
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("archetype");
+			$archetypeStats.append(quickRules);
 		}
 
-		$$`${renderer.render(archetypeEntry)}
-		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats);
+		const statsTab = Renderer.utils.tabButton(
+			"Archetype",
+			() => {},
+			buildStatsTab,
+		);
+
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		$archetypeStats.show()
 	}

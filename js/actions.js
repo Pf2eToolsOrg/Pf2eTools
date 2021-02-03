@@ -145,7 +145,7 @@ function renderStatblock (action) {
 		$content.append(Renderer.action.getQuickRules(action))
 	}
 	const statTab = Renderer.utils.tabButton(
-		"Statblock",
+		"Action",
 		() => {},
 		buildStatsTab,
 	);

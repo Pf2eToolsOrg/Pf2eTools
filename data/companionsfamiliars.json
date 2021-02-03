@@ -1,0 +1,130 @@
+{
+	"companion": [
+		{
+			"name": "Badger",
+			"type": "Companion",
+			"source": "CRB",
+			"page": 215,
+			"fluff": "Your companion is a badger, wolverine, or other big mustelid.",
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@dice 1d6} slashing"
+				}
+			],
+			"abilityMod": {
+				"Str": 2,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"HP": 8,
+			"skill": "Survival",
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"burrow ": 10,
+				"climb": 10
+			},
+			"support": "Your badger digs around your foe’s position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can’t use a Step action (unless it can Step through difficult terrain) until it moves from its current position.",
+			"maneuver": {
+				"name": "Badger Rage",
+				"source": "CRB",
+				"page": 215,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"traits": [
+					"Concentrate",
+					"Emotion",
+					"Mental"
+				],
+				"requirements": "The badger isn’t fatigued or raging.",
+				"entries": [
+					"The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls unconscious, whichever comes first. It can’t voluntarily stop raging. While raging, the badger is affected in the following ways.",
+					{
+						"type": "list",
+						"items": [
+							"It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.",
+							"It takes a –1 penalty to AC",
+							"It can’t use actions that have the concentrate trait unless they also have the rage trait. The animal companion can Seek even while raging."
+						]
+					},
+					"After it has stopped raging, it can’t use Badger Rage again for 1 minute."
+				]
+			}
+		}
+	],
+	"familiar": [
+		{
+			"name": "Faerie Dragon",
+			"type": "Familiar",
+			"source": "APG",
+			"page": 147,
+			"traits": [
+				"Dragon"
+			],
+			"requires": 6,
+			"granted": [
+				"amphibious",
+				"darkvision",
+				"flier",
+				"manual dexterity",
+				"speech",
+				"touch telepathy"
+			],
+			"abilities": [
+				{
+					"name": "Breath Weapon",
+					"activity": {
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
+					},
+					"traits": [
+						"arcane",
+						"evocation",
+						"poison"
+					],
+					"frequency": "once per hour",
+					"entries": [
+						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  stupefied 2 and slowed 1 for 1d4 rounds; on a critical failure,  the duration is 1 minute."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Faerie Dragon",
+					"entries": [
+						"These tiny, mischievous dragons make natural allies for  benevolent or capricious characters."
+					]
+				}
+			]
+		}
+	]
+}

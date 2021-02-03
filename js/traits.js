@@ -80,13 +80,21 @@ class TraitsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderTraits.$getRenderedTrait(trt));
 		}
-
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("trait");
+			$content.append(quickRules);
+		}
 		const statTab = Renderer.utils.tabButton(
-			"Item",
+			"Trait",
+			() => {},
 			buildStatsTab,
 		);
-
-		Renderer.utils.bindTabButtons(statTab);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

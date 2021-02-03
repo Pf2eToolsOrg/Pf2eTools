@@ -94,8 +94,25 @@ class FeatsPage extends ListPage {
 
 	doLoadHash (id) {
 		const feat = this._dataList[id];
-
-		$("#pagecontent").empty().append(RenderFeats.$getRenderedFeat(feat));
+		const $pgContent = $("#pagecontent").empty();
+		const buildStatsTab = () => {
+			$pgContent.append(RenderFeats.$getRenderedFeat(feat));
+		};
+		const buildInfoTab = async () => {
+			const quickRules = await Renderer.utils.pGetQuickRules("feat");
+			$pgContent.append(quickRules);
+		}
+		const statsTab = Renderer.utils.tabButton(
+			"Feat",
+			() => {},
+			buildStatsTab,
+		);
+		const infoTab = Renderer.utils.tabButton(
+			"Quick Rules",
+			() => {},
+			buildInfoTab,
+		);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 
 		ListUtil.updateSelected();
 	}

@@ -135,17 +135,18 @@ class AbilitiesPage extends ListPage {
 	}
 }
 
-function renderStatblock (action) {
+function renderStatblock (ability) {
 	const $content = $("#pagecontent").empty()
 
 	function buildStatsTab () {
-		$content.append(RenderAbilities.$getRenderedAbility(action));
+		$content.append(RenderAbilities.$getRenderedAbility(ability));
 	}
-	function buildInfoTab () {
-		$content.append(Renderer.ability.getQuickRules(action))
+	const buildInfoTab = async () => {
+		const quickRules = await Renderer.utils.pGetQuickRules("ability");
+		$content.append(quickRules);
 	}
 	const statTab = Renderer.utils.tabButton(
-		"Statblock",
+		"Ability",
 		() => {},
 		buildStatsTab,
 	);
@@ -154,8 +155,7 @@ function renderStatblock (action) {
 		() => {},
 		buildInfoTab,
 	);
-	if (action.info) Renderer.utils.bindTabButtons(statTab, infoTab);
-	else Renderer.utils.bindTabButtons(statTab);
+	Renderer.utils.bindTabButtons(statTab, infoTab);
 }
 
 const abilitiesPage = new AbilitiesPage();
