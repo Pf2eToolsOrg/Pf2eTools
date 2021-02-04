@@ -894,7 +894,7 @@ class ClassesPage extends BaseComponent {
 			const lvlFeaturesFilt = lvlFeatures
 				.filter(it => it.name && it.type !== "inset"); // don't add inset entry names to class table
 			Object.keys(cls.advancement).forEach(key => {
-				if (cls.advancement[key].includes(ixLvl + 1)) lvlFeaturesFilt.push(key)
+				if (cls.advancement[key].slice(1).includes(ixLvl + 1)) lvlFeaturesFilt.push(key)
 			});
 			const metasFeatureLinks = lvlFeaturesFilt
 				.map((it, ixFeature) => {
