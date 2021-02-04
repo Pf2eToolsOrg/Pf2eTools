@@ -1981,6 +1981,1371 @@
 					"Steal what would normally be impossible to steal"
 				]
 			]
+		},
+		{
+			"name": "Coin Values",
+			"id": "6-1",
+			"source": "CRB",
+			"page": 271,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Coins",
+					"CP",
+					"SP",
+					"GP",
+					"PP"
+				],
+				[
+					"Copper piece (cp)",
+					"1",
+					"1/10",
+					"1/100",
+					"1/1,000"
+				],
+				[
+					"Silver piece (sp)",
+					"10",
+					"1",
+					"1/10",
+					"1/100"
+				],
+				[
+					"Gold piece (gp)",
+					"100",
+					"10",
+					"1",
+					"1/10"
+				],
+				[
+					"Platinum piece (pp)",
+					"1,000",
+					"100",
+					"10",
+					"1"
+				]
+			]
+		},
+		{
+			"name": "Bulk of Creatures",
+			"source": "CRB",
+			"page": 273,
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-center",
+				"text-center"
+			],
+			"intro": [
+				"You might need to know the Bulk of a creature, especially if you need to carry someone off the battlefield. The table that follows lists the typical Bulk of a creature based on its size, but the GM might adjust this number."
+			],
+			"rows": [
+				[
+					"Size of Creature",
+					"Bulk"
+				],
+				[
+					"Tiny",
+					"1"
+				],
+				[
+					"Small",
+					"3"
+				],
+				[
+					"Medium",
+					"6"
+				],
+				[
+					"Large",
+					"12"
+				],
+				[
+					"Huge",
+					"24"
+				],
+				[
+					"Gargantuan",
+					"48"
+				]
+			]
+		},
+		{
+			"name": "Changing Equipment",
+			"id": "6-2",
+			"source": "CRB",
+			"page": 274,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				3,
+				1,
+				1
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Change",
+					"Hands",
+					"Action"
+				],
+				[
+					"Draw or put away a worn item, or pick up an item{@sup 1}",
+					"1 or 2",
+					"{@action Interact}"
+				],
+				[
+					"Pass an item to or take an item from a willing creature{@sup 2}",
+					"1 or 2",
+					"{@action Interact}"
+				],
+				[
+					"Drop an item to the ground",
+					"1 or 2",
+					"{@action Release}"
+				],
+				[
+					"Detach a shield or item strapped to you",
+					"1",
+					"{@action Interact}"
+				],
+				[
+					"Change your grip by removing a hand from an item",
+					"2",
+					"{@action Release}"
+				],
+				[
+					"Change your grip by adding a hand to an item",
+					"2",
+					"{@action Interact}"
+				],
+				[
+					"Retrieve an item from a backpack{@sup 3}, sack, or similar container",
+					"2",
+					"{@action Interact}"
+				]
+			],
+			"footnotes": [
+				"{@sup 1} If you retrieve a two-handed item with only one hand, you still need to change your grip before you can wield or use it.",
+				"{@sup 2} A creature must have a hand free for someone to pass an item to them, and they might then need to change their grip if they receive an item requiring two hands to wield or use.",
+				"{@sup 3} Retrieving an item stowed in your own backpack requires first taking off the backpack with a separate {@action Interact} action."
+			]
+		},
+		{
+			"name": "Unarmored Defense",
+			"id": "6-3",
+			"source": "CRB",
+			"page": 275,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Unarmored",
+					"Price",
+					"AC Bonus",
+					"Dex Cap",
+					"Check Penalty",
+					"Speed Penalty",
+					"",
+					"Bulk",
+					"Group",
+					"Armor Traits"
+				],
+				[
+					"No armor",
+					"—",
+					"+0",
+					"—",
+					"—",
+					"—",
+					"",
+					"—",
+					"—",
+					"—"
+				],
+				[
+					"Explorer’s clothing",
+					"1 sp",
+					"+0",
+					"+5",
+					"—",
+					"—",
+					"",
+					"L",
+					"Cloth",
+					"Comfort"
+				]
+			]
+		},
+		{
+			"name": "Armor",
+			"id": "6-4",
+			"source": "CRB",
+			"page": 275,
+			"labelRowIdx": [
+				0,
+				5,
+				10
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Light Armor",
+					"Price",
+					"AC Bonus",
+					"Dex Cap",
+					"Check Penalty",
+					"Speed Penalty",
+					"Strength",
+					"Bulk",
+					"Group",
+					"Armor Traits"
+				],
+				[
+					"{@item Padded Armor}",
+					"2 sp",
+					"+1",
+					"+3",
+					"—",
+					"—",
+					"10",
+					"L",
+					"Cloth",
+					"{@trait Comfort}"
+				],
+				[
+					"{@item Leather}",
+					"2 gp",
+					"+1",
+					"+4",
+					"-1",
+					"—",
+					"10",
+					"1",
+					"Leather",
+					"—"
+				],
+				[
+					"{@item Studded Leather}",
+					"3 gp",
+					"+2",
+					"+3",
+					"-1",
+					"—",
+					"12",
+					"1",
+					"Leather",
+					"—"
+				],
+				[
+					"{@item Chain shirt}",
+					"5 gp",
+					"+2",
+					"+3",
+					"-1",
+					"—",
+					"12",
+					"1",
+					"Chain",
+					"{@trait Flexible}, {@trait Noisy}"
+				],
+				[
+					"Medium Armor",
+					"Price",
+					"AC Bonus",
+					"Dex Cap",
+					"Check Penalty",
+					"Speed Penalty",
+					"Strength",
+					"Bulk",
+					"Group",
+					"Armor Traits"
+				],
+				[
+					"{@item Hide}",
+					"2 gp",
+					"+3",
+					"+2",
+					"–2",
+					"–5 ft.",
+					"14",
+					"2",
+					"Leather",
+					"—"
+				],
+				[
+					"{@item Scale mail}",
+					"4 gp",
+					"+3",
+					"+2",
+					"–2",
+					"–5 ft.",
+					"14",
+					"2",
+					"Composite",
+					"—"
+				],
+				[
+					"{@item Chain mail}",
+					"6 gp",
+					"+4",
+					"+1",
+					"–2",
+					"–5 ft.",
+					"16",
+					"2",
+					"Chain",
+					"{@trait Flexible}, {@trait Noisy}"
+				],
+				[
+					"{@item Breastplate}",
+					"8 gp",
+					"+4",
+					"+1",
+					"-2",
+					"-5 ft.",
+					"16",
+					"2",
+					"Plate",
+					"—"
+				],
+				[
+					"Heavy Armor",
+					"Price",
+					"AC Bonus",
+					"Dex Cap",
+					"Check Penalty",
+					"Speed Penalty",
+					"Strength",
+					"Bulk",
+					"Group",
+					"Armor Traits"
+				],
+				[
+					"{@item Splint mail} (level 1)",
+					"13 gp",
+					"+5",
+					"+1",
+					"-3",
+					"-10 ft.",
+					"16",
+					"3",
+					"Composite",
+					"—"
+				],
+				[
+					"{@item Half plate} (level 1)",
+					"18 gp",
+					"+5",
+					"+1",
+					"-3",
+					"-10 ft.",
+					"16",
+					"3",
+					"Plate",
+					"—"
+				],
+				[
+					"{@item Full plate} (level 2)",
+					"30 gp",
+					"+6",
+					"+0",
+					"-3",
+					"-10 ft.",
+					"18",
+					"4",
+					"Plate",
+					"{@trait Bulwark}"
+				]
+			]
+		},
+		{
+			"name": "Damaging Armor",
+			"source": "CRB",
+			"page": 276,
+			"labelRowIdx": [
+				0
+			],
+			"colSizes": [
+				3,
+				1,
+				1,
+				1
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Material",
+					"Hardness",
+					"HP",
+					"BT"
+				],
+				[
+					"Cloth ({@item explorer's clothing}, {@item padded armor})",
+					"1",
+					"4",
+					"2"
+				],
+				[
+					"Leather ({@item hide}, {@item leather}, {@item studded leather})",
+					"4",
+					"16",
+					"8"
+				],
+				[
+					"Metal ({@item breastplate}, {@item chain mail}, {@item chain shirt}, {@item full plate}, {@item half plate}, {@item scale mail}, {@item splint mail})",
+					"9",
+					"36",
+					"18"
+				]
+			],
+			"intro": [
+				"Your armor's statistics are based on the material it's predominantly made from. It's not likely your armor will take damage, as explained in Item Damage on page 272."
+			]
+		},
+		{
+			"name": "Shields",
+			"id": "6-5",
+			"source": "CRB",
+			"page": 277,
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"rows": [
+				[
+					"Shield",
+					"Price",
+					"AC Bonus{@sup 1}",
+					"Speed Penalty",
+					"Bulk",
+					"Hardness",
+					"HP (BT)"
+				],
+				[
+					"{@item Buckler}",
+					"1 gp",
+					"+1",
+					"—",
+					"L",
+					"3",
+					"6 (3)"
+				],
+				[
+					"{@item Wooden shield}",
+					"1 gp",
+					"+2",
+					"—",
+					"1",
+					"3",
+					"12 (6)"
+				],
+				[
+					"{@item Steel shield}",
+					"2 gp",
+					"+2",
+					"—",
+					"1",
+					"5",
+					"20 (10)"
+				],
+				[
+					"{@item Tower shield}",
+					"10 gp",
+					"+2/+4{@sup 2}",
+					"–5 ft.",
+					"4",
+					"5",
+					"20 (10)"
+				]
+			],
+			"footnotes": [
+				"{@sup 1} Gaining a shield's circumstance bonus to AC requires using the {@action Raise a Shield} action (found on page 472).",
+				"{@sup 2} Getting the higher bonus for a tower shield requires using the {@action Take Cover} action (page 471) while the shield is raised."
+			]
+		},
+		{
+			"name": "Unarmed Attacks",
+			"id": "6-6",
+			"source": "CRB",
+			"page": 280,
+			"colStyles": [
+				"text-left",
+				"text-left",
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-left",
+				"text-left"
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"rows": [
+				[
+					"Unarmed Attack",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"Fist",
+					"—",
+					"{@dice 1d4} B",
+					"—",
+					"1",
+					"Brawling",
+					"{@trait Agile}, {@trait finesse}, {@trait nonlethal}, {@trait unarmed}"
+				]
+			]
+		},
+		{
+			"name": "Melee Weapons",
+			"id": "6-7",
+			"source": "CRB",
+			"page": 280,
+			"labelRowIdx": [
+				0,
+				12,
+				15,
+				50,
+				64
+			],
+			"colStyles": [
+				"text-left",
+				"text-left",
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-left",
+				"text-left"
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"rows": [
+				[
+					"Simple Weapons",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Club}",
+					"0",
+					"{@dice 1d6} B",
+					"1",
+					"1",
+					"Club",
+					"{@trait Thrown} 10 ft."
+				],
+				[
+					"{@item Dagger}",
+					"2 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knive",
+					"{@trait Agile}, {@trait finesse}, {@trait thrown} 10 ft., {@trait versatile} S"
+				],
+				[
+					"{@item Gauntlet}",
+					"2sp",
+					"{@dice 1d4} B",
+					"L",
+					"1",
+					"Brawling",
+					"{@trait Agile}, {@trait free-hand}"
+				],
+				[
+					"{@item Light mace}",
+					"4 sp",
+					"{@dice 1d4} B",
+					"L",
+					"1",
+					"Club",
+					"{@trait Agile}, {@trait finesse}, {@trait shove}"
+				],
+				[
+					"{@item Longspear}",
+					"5 sp",
+					"{@dice 1d8} P",
+					"2",
+					"2",
+					"Spear",
+					"{@trait Reach}"
+				],
+				[
+					"{@item Mace}",
+					"1 gp",
+					"{@dice 1d6} B",
+					"1",
+					"1",
+					"Club",
+					"{@trait Shove}"
+				],
+				[
+					"{@item Morningstar}",
+					"1 gp",
+					"{@dice 1d6} B",
+					"1",
+					"1",
+					"Club",
+					"{@trait Versatile} P"
+				],
+				[
+					"{@item Sickle}",
+					"2 sp",
+					"{@dice 1d4} S",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait finesse}, {@trait trip}"
+				],
+				[
+					"{@item Spear}",
+					"1 sp",
+					"{@dice 1d6} P",
+					"1",
+					"1",
+					"Spear",
+					"{@trait Thrown} 20 ft."
+				],
+				[
+					"{@item Spiked gauntlet}",
+					"3 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Brawling",
+					"{@trait Agile}, {@trait free-hand}"
+				],
+				[
+					"{@item Staff}",
+					"0",
+					"{@dice 1d4} B",
+					"1",
+					"1",
+					"Club",
+					"{@trait Two-hand} d8"
+				],
+				[
+					"Uncommon Simple Weapons",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Clan dagger}",
+					"2 gp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait dwarf}, {@trait parry}, {@trait versatile} B"
+				],
+				[
+					"{@item Katar}",
+					"3 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait deadly} d6, {@trait monk}"
+				],
+				[
+					"Martial Weapons",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Bastard sword}",
+					"4 gp",
+					"{@dice 1d8} S",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Two-hand} d12"
+				],
+				[
+					"{@item Battle axe}",
+					"1 gp",
+					"{@dice 1d8} S",
+					"1",
+					"1",
+					"Axe",
+					"{@trait Sweep}"
+				],
+				[
+					"{@item Bo staff}",
+					"2 sp",
+					"{@dice 1d8} B",
+					"2",
+					"2",
+					"Club",
+					"{@trait Monk}, {@trait parry}, {@trait reach}, {@trait trip}"
+				],
+				[
+					"{@item Falchion}",
+					"3 gp",
+					"{@dice 1d10} S",
+					"2",
+					"2",
+					"Sword",
+					"{@trait Forceful}, {@trait sweep}"
+				],
+				[
+					"{@item Flail}",
+					"8 sp",
+					"{@dice 1d6} B",
+					"1",
+					"1",
+					"Flail",
+					"{@trait Disarm}, {@trait sweep}, {@trait trip}"
+				],
+				[
+					"{@item Glaive}",
+					"1 gp",
+					"{@dice 1d8} S",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Deadly} d8, {@trait forceful}, {@trait reach}"
+				],
+				[
+					"{@item Greataxe}",
+					"2 gp",
+					"{@dice 1d12} S",
+					"2",
+					"2",
+					"Axe",
+					"{@trait Sweep}"
+				],
+				[
+					"{@item Greatclub}",
+					"1 gp",
+					"{@dice 1d10} B",
+					"2",
+					"2",
+					"Club",
+					"{@trait Backswing}, {@trait shove}"
+				],
+				[
+					"{@item Greatpick}",
+					"1 gp",
+					"{@dice 1d10} P",
+					"2",
+					"2",
+					"Pick",
+					"{@trait Fatal} d12"
+				],
+				[
+					"{@item Greatsword}",
+					"2 gp",
+					"{@dice 1d12} S",
+					"2",
+					"2",
+					"Sword",
+					"{@trait Versatile} P"
+				],
+				[
+					"{@item Guisarme}",
+					"2 gp",
+					"{@dice 1d10} S",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Reach}, {@trait trip}"
+				],
+				[
+					"{@item Halberd}",
+					"2 gp",
+					"{@dice 1d10} P",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Reach}, {@trait versatile} S"
+				],
+				[
+					"{@item Hatchet}",
+					"4 sp",
+					"{@dice 1d6} S",
+					"L",
+					"1",
+					"Axe",
+					"{@trait Agile}, {@trait sweep}, {@trait thrown} 10 ft."
+				],
+				[
+					"{@item Lance}",
+					"1 gp",
+					"{@dice 1d8} P",
+					"2",
+					"2",
+					"Spear",
+					"{@trait Deadly} d8, {@trait jousting} d6, {@trait reach}"
+				],
+				[
+					"{@item Light hammer}",
+					"3 sp",
+					"{@dice 1d6} B",
+					"L",
+					"1",
+					"Hammer",
+					"{@trait Agile}, {@trait thrown} 20 ft."
+				],
+				[
+					"{@item Light pick}",
+					"4 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Pick",
+					"{@trait Agile}, {@trait fatal} d8"
+				],
+				[
+					"{@item Longsword}",
+					"1 gp",
+					"{@dice 1d8} S",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Versatile} P"
+				],
+				[
+					"{@item Main-gauche}",
+					"5 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait disarm}, {@trait finesse}, {@trait parry}, {@trait versatile} S"
+				],
+				[
+					"{@item Maul}",
+					"3 gp",
+					"{@dice 1d12} B",
+					"2",
+					"2",
+					"Hammer",
+					"{@trait Shove}"
+				],
+				[
+					"{@item Pick}",
+					"7 sp",
+					"{@dice 1d6} P",
+					"1",
+					"1",
+					"Pick",
+					"{@trait Fatal} d10"
+				],
+				[
+					"{@item Ranseur}",
+					"2 gp",
+					"{@dice 1d10} P",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Disarm}, {@trait reach}"
+				],
+				[
+					"{@item Rapier}",
+					"2 gp",
+					"{@dice 1d6} P",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Deadly} d8, {@trait disarm}, {@trait finesse}"
+				],
+				[
+					"{@item Sap}",
+					"1 sp",
+					"{@dice 1d6} B",
+					"L",
+					"1",
+					"Club",
+					"{@trait Agile}, {@trait nonlethal}"
+				],
+				[
+					"{@item Scimitar}",
+					"1 gp",
+					"{@dice 1d6} S",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Forceful}, {@trait sweep"
+				],
+				[
+					"{@item Scythe}",
+					"2 gp",
+					"{@dice 1d10} S",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Deadly} d10, {@trait trip}"
+				],
+				[
+					"{@item Shield bash}",
+					"—",
+					"{@dice 1d4} B",
+					"—",
+					"1",
+					"Shield",
+					"—"
+				],
+				[
+					"{@item Shield boss}",
+					"5 sp",
+					"{@dice 1d6} B",
+					"—",
+					"1",
+					"Shield",
+					"Attached to shield"
+				],
+				[
+					"{@item Shield spikes}",
+					"5 sp",
+					"{@dice 1d6} P",
+					"—",
+					"1",
+					"Shield",
+					"Attached to shield"
+				],
+				[
+					"{@item Shortsword}",
+					"9 sp",
+					"{@dice 1d6} P",
+					"L",
+					"1",
+					"Sword",
+					"{@trait Agile}, {@trait finesse}, {@trait versatile} S"
+				],
+				[
+					"{@item Starknife}",
+					"2 gp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait deadly} d6, {@trait finesse}, {@trait thrown} 20 ft., {@trait versatile} S"
+				],
+				[
+					"{@item Trident}",
+					"1 gp",
+					"{@dice 1d8} P",
+					"1",
+					"1",
+					"Spear",
+					"{@trait Thrown} 20 ft."
+				],
+				[
+					"{@item War flail}",
+					"2 gp",
+					"{@dice 1d10} B",
+					"2",
+					"2",
+					"Flail",
+					"{@trait Disarm}, {@trait sweep}, {@trait trip}"
+				],
+				[
+					"{@item Warhammer}",
+					"1 gp",
+					"{@dice 1d8} B",
+					"1",
+					"1",
+					"Hammer",
+					"{@trait Shove}"
+				],
+				[
+					"{@item Whip}",
+					"1 sp",
+					"{@dice 1d4} S",
+					"1",
+					"1",
+					"Flail",
+					"{@trait Disarm}, {@trait finesse}, {@trait nonlethal}, {@trait reach}, {@trait trip}"
+				],
+				[
+					"Uncommon Martial Weapons",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Dogslicer}",
+					"1 sp",
+					"{@dice 1d6} S",
+					"L",
+					"1",
+					"Sword",
+					"{@trait Agile}, {@trait backstabber}, {@trait finesse}, {@trait goblin}"
+				],
+				[
+					"{@item Elven Curce blade}",
+					"4 gp",
+					"{@dice 1d8} S",
+					"2",
+					"2",
+					"Sword",
+					"{@trait Elf}, {@trait finesse}, {@trait forceful}"
+				],
+				[
+					"{@item Filcher's fork}",
+					"1 gp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Spear",
+					"{@trait Agile}, {@trait backstabber}, {@trait deadly} d6, {@trait finesse}, {@trait halfling}, {@trait thrown} 20 ft."
+				],
+				[
+					"{@item Gnome hooked hammer}",
+					"2 gp",
+					"{@dice 1d6} B",
+					"1",
+					"1",
+					"Hammer",
+					"{@trait Gnome}, {@trait trip}, {@trait two-hand} d10, {@trait versatile} P"
+				],
+				[
+					"{@item Horsechopper}",
+					"9 sp",
+					"{@dice 1d8} S",
+					"2",
+					"2",
+					"Polearm",
+					"{@trait Goblin}, {@trait reach}, {@trait trip}, {@trait versatile} P"
+				],
+				[
+					"{@item Kama}",
+					"1 gp",
+					"{@dice 1d6} S",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait monk}, {@trait trip}"
+				],
+				[
+					"{@item Katana}",
+					"2 gp",
+					"{@dice 1d6} S",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Deadly} d8, {@trait two-hand} d10, {@trait versatile} P"
+				],
+				[
+					"{@item Kukri}",
+					"6 sp",
+					"{@dice 1d6} S",
+					"L",
+					"1",
+					"Knive",
+					"{@trait Agile}, {@trait finesse}, {@trait trip}"
+				],
+				[
+					"{@item Nunchaku}",
+					"2 sp",
+					"{@dice 1d6} B",
+					"L",
+					"1",
+					"Club",
+					"{@trait Backswing}, {@trait disarm}, {@trait finesse}, {@trait monk}"
+				],
+				[
+					"{@item Orc knuckle dagger}",
+					"7 sp",
+					"{@dice 1d6} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait disarm}, {@trait orc}"
+				],
+				[
+					"{@item Sai}",
+					"6 sp",
+					"{@dice 1d4} P",
+					"L",
+					"1",
+					"Knife",
+					"{@trait Agile}, {@trait disarm}, {@trait finesse}, {@trait monk}, {@trait versatile} B"
+				],
+				[
+					"{@item Spiked chain}",
+					"3 gp",
+					"{@dice 1d8} S",
+					"1",
+					"2",
+					"Flail",
+					"{@trait Disarm}, {@trait finesse}, {@trait trip}"
+				],
+				[
+					"{@item Temple sword}",
+					"2 gp",
+					"{@dice 1d8} S",
+					"1",
+					"1",
+					"Sword",
+					"{@trait Monk}, {@trait trip}"
+				],
+				[
+					"Uncommon Advanced Weapons",
+					"Price",
+					"Damage",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					"{@item Dwarven waraxe}",
+					"3 gp",
+					"{@dice 1d8} S",
+					"2",
+					"1",
+					"Axe",
+					"{@trait Dwarf}, {@trait sweep}, {@trait two-hand} d12"
+				],
+				[
+					"{@item Gnome flickmace}",
+					"3 gp",
+					"{@dice 1d8} B",
+					"2",
+					"1",
+					"Flail",
+					"{@trait Gnome}, {@trait reach}"
+				],
+				[
+					"{@item Orc necksplitter}",
+					"2 gp",
+					"{@dice 1d8} S",
+					"1",
+					"1",
+					"Axe",
+					"{@trait Forceful}, {@trait orc}, {@trait sweep}"
+				],
+				[
+					"{@item Sawtooth saber}",
+					"5 gp",
+					"{@dice 1d6} S",
+					"L",
+					"1",
+					"Sword",
+					"{@trait Agile}, {@trait finesse}, {@trait twin}"
+				]
+			]
+		},
+		{
+			"name": "Ranged Weapons",
+			"id": "6-8",
+			"source": "CRB",
+			"page": 280,
+			"labelRowIdx": [
+				0
+			],
+			"colStyles": [
+				"text-left",
+				"text-left",
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-left"
+			],
+			"colSizes": [
+				2,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				2
+			],
+			"rows": [
+				[
+					"Simple Weapons",
+					"Price",
+					"Damage",
+					"Range",
+					"Reload",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				[
+					{
+						"type": "entries",
+						"entries": [
+							"{@item Blowgun}",
+							"{@indent 10 Blowgun Darts}"
+						]
+					},
+					{
+						"type": "entries",
+						"entries": [
+							"1 sp",
+							"5 cp"
+						]
+					},
+					"1 P",
+					"20 ft.",
+					"1",
+					{
+						"type": "entries",
+						"entries": [
+							"L",
+							"L"
+						]
+					},
+					"1",
+					"Dart",
+					"{@trait Agile}, {@trait nonlethal}"
+				],
+				[
+					{
+						"type": "entries",
+						"entries": [
+							"{@item Crossbow}",
+							"{@indent 10 Bolts}"
+						]
+					},
+					{
+						"type": "entries",
+						"entries": [
+							"3 gp",
+							"1 sp"
+						]
+					},
+					"{@dice 1d8} P",
+					"120 ft.",
+					"1",
+					{
+						"type": "entries",
+						"entries": [
+							"1",
+							"L"
+						]
+					},
+					"2",
+					"Bow",
+					"—"
+				]
+			]
 		}
 	]
 }
