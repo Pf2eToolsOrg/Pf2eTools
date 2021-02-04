@@ -3,24 +3,24 @@
 		{
 			"name": "Investigator",
 			"source": "APG",
-			"page": 54,
+			"page": 55,
 			"HP": 8,
 			"keyAbility": "Intelligence",
 			"initialProficiencies": {
-				"perception": "T",
-				"fort": "E",
+				"perception": "E",
+				"fort": "T",
 				"ref": "E",
-				"will": "T",
+				"will": "E",
 				"skills": {
 					"t": [
-						"Crafting"
+						"Society",
+						"one or more skills determined by your methodology"
 					],
-					"add": 3
+					"add": 4
 				},
 				"attacks": {
 					"t": [
-						"simple weapons",
-						"alchemical bombs",
+						"simple and martial weapons",
 						"unarmed attacks"
 					]
 				},
@@ -32,7 +32,7 @@
 				},
 				"classDc": {
 					"prof": "T",
-					"entry": "Trained in alchemist class DC"
+					"entry": "Trained in investigator class DC"
 				}
 			},
 			"advancement": {
@@ -75,6 +75,32 @@
 					17
 				],
 				"skillIncrease": [
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					13,
+					14,
+					15,
+					16,
+					17,
+					18,
+					19
+				],
+				"abilityBoosts": [
+					5,
+					10,
+					15,
+					20
+				],
+				"skillfullLessons": [
 					3,
 					5,
 					7,
@@ -84,96 +110,142 @@
 					15,
 					17,
 					19
-				],
-				"abilityBoosts": [
-					5,
-					10,
-					15,
-					20
 				]
 			},
 			"classFeatures": [
-				"Alchemy|Alchemist|CRB|1",
-				"Formula Book|Alchemist|CRB|1",
+				"Ancestry and Background|Investigator|APG|1",
+				"Initial Proficiencies|Investigator|APG|1",
+				"On the Case|Investigator|APG|1",
+				"Devise a Strategem|Investigator|APG|1",
 				{
-					"classFeature": "Research Field|Alchemist|CRB|1",
+					"classFeature": "Methodology|Investigator|APG|1",
 					"gainSubclassFeature": true
 				},
-				"Book|Alchemist|CRB|2"
+				"Investigator Feats|Investigator|APG|1",
+				"Strategic Strike|Investigator|APG|1",
+				"Skill Feats|Investigator|APG|2",
+				"Skill Increases|Investigator|APG|2",
+				"General Feats|Investigator|APG|3",
+				"Keen Recollection|Investigator|APG|3",
+				"Skillful Lessons|Investigator|APG|3",
+				"Ability Boosts|Investigator|APG|5",
+				"Ancestry Feats|Investigator|APG|5",
+				"Weapon Expertise|Investigator|APG|5",
+				"Vigilant Senses|Investigator|APG|7",
+				"Weapon Specialization|Investigator|APG|7",
+				"Great Fortitude|Investigator|APG|9",
+				"Investigator Expertise|Investigator|APG|9",
+				"Deductive Improvisation|Investigator|APG|11",
+				"Resolve|Investigator|APG|11",
+				"Incredible Senses|Investigator|APG|13",
+				"Light Armor Expertise|Investigator|APG|13",
+				"Weapon Mastery|Investigator|APG|13",
+				"Evasion|Investigator|APG|15",
+				"Greater Weapon Specialization|Investigator|APG|15",
+				"Greater Resolve|Investigator|APG|17",
+				"Light Armor Mastery|Investigator|APG|19",
+				"Master Detective|Investigator|APG|19"
 			],
 			"subclasses": [
 				{
-					"name": "Bomber",
-					"type": "Research Field",
-					"shortName": "Bomber",
-					"source": "CRB",
-					"page": 73,
+					"name": "Alchemical Sciences",
+					"shortName": "Alchemical Sciences",
+					"source": "APG",
+					"page": 57,
 					"subclassFeatures": [
-						"Bomber|Alchemist|CRB|Bomber|CRB|1"
+						"Methodology|Investigator|APG|Alchemical Sciences|APG|1"
+					]
+				},
+				{
+					"name": "Empiricism",
+					"shortName": "Empiricism",
+					"source": "APG",
+					"page": 57,
+					"subclassFeatures": [
+						"Methodology|Investigator|APG|Empiricism|APG|1"
+					]
+				},
+				{
+					"name": "Forensic Medicine",
+					"shortName": "Forensic Medicine",
+					"source": "APG",
+					"page": 58,
+					"subclassFeatures": [
+						"Methodology|Investigator|APG|Forensic Medicine|APG|1"
+					]
+				},
+				{
+					"name": "Interrogation",
+					"shortName": "Interrogation",
+					"source": "APG",
+					"page": 58,
+					"subclassFeatures": [
+						"Methodology|Investigator|APG|Interrogation|APG|1"
 					]
 				}
 			],
 			"flavor": [
-				"There’s no sight more beautiful to you than a strange brew bubbling in a beaker, and you consume your ingenious elixirs with abandon. You’re fascinated by uncovering the secrets of science and the natural world, and you’re constantly experimenting in your lab or on the go with inventive concoctions for every eventuality. You are fearless in the face of risk, hurling explosive or toxic creations at your foes. Your unique path toward greatness is lined with alchemical brews that push your mind and body to their limits."
+				"You seek to uncover the truth, doggedly pursuing leads to reveal the plots of devious villains, discover ancient secrets, or unravel other mysteries. Your analytical mind quickly formulates solutions to complicated problems and your honed senses identify even the most obscure clues. Wielding knowledge as a weapon, you study the creatures and dangers you encounter to exploit their weaknesses."
 			],
 			"fluff": [
 				{
 					"type": "pf2-h3",
+					"page": 55,
 					"name": "During Combat Encounters...",
 					"entries": [
-						"You lob bombs at your foes, harry your enemies, and support the rest of your party with potent elixirs. At higher levels, your mutagens warp your body into a resilient and powerful weapon."
+						"Your keen insights regarding your foes make you more dangerous than your physical strength would suggest. After spending a moment to study your enemies, your perceptiveness allows you to act quickly, striking them where it hurts most. You often assist tougher members of your party, wisely protecting yourself while providing vital aid."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 55,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide knowledge and experience about alchemical items and related secrets, such as poisons and diseases."
+						"Few can stand up against your scrutiny. You might not be the most charming, but you see things for what they really are and develop an understanding of a social situation rapidly. Every conversation is an investigation, after all, and you never know what you might uncover!"
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 55,
 					"name": "While exploring...",
 					"entries": [
-						"You keep an eye out for trouble with your bombs at the ready, while giving advice on all things alchemical and mysterious."
+						"You look for clues in your environment. You often prove yourself to be a valuable ally by serving as a party scout, analyzing the intricacies of puzzles or mysterious phenomena, and pursuing leads that could reveal beneficial information."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 55,
 					"name": "In downtime...",
 					"entries": [
-						"You experiment in an alchemical lab, brewing elixirs, making bombs, and furthering your alchemical knowledge."
+						"You study up on subjects new and old, make new allies you can share information with, and pursue hobbies that keep your active mind satisfied. You might make a bit of coin on the side working as a private detective or consulting with the local constabulary."
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 55,
 					"name": "You Might...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Enjoy tinkering with strange formulas and alchemical reagents, often with a single-minded dedication and recklessness that gives others pause.",
-								"Get a kick out of wreaking havoc with the alchemical concoctions you’ve made, and enjoy watching things burn, dissolve, freeze, and jolt.",
-								"Endlessly experiment to discover new, more potent alchemical tools."
+								"Start asking questions—including several that are quite involved—immediately after you're presented with a conundrum.",
+								"Strive to uncover the deeper meanings behind anything you encounter and to identify the social machinations that truly drive events behind the scenes.",
+								"Get so involved in a case that you ignore other matters, deeming them trivial."
 							]
 						}
 					]
 				},
 				{
 					"type": "pf2-h3",
-					"page": 71,
+					"page": 55,
 					"name": "Others Probably...",
 					"entries": [
 						{
 							"type": "list",
 							"items": [
-								"Think you’re some kind of sorcerer or an eccentric wizard and don’t understand that you don’t cast spells; spellcasters who clumsily dabble in alchemy only heighten this misconception.",
-								"Don’t understand your zeal for alchemy, creativity, and invention.",
-								"Assume that if you haven’t caused a catastrophe with your experimentations, you inevitably will."
+								"Find the cascades of information you spout forth extremely helpful, if difficult to fully comprehend.",
+								"Get a bit annoyed that you're such a know-it-all.",
+								"Rely on you to solve mysteries, puzzles, or other challenges requiring intellectual curiosity and reasoning."
 							]
 						}
 					]
@@ -183,71 +255,314 @@
 	],
 	"classFeature": [
 		{
-			"name": "Alchemy",
-			"source": "CRB",
-			"page": 72,
-			"className": "Alchemist",
-			"classSource": "CRB",
+			"name": "Ancestry and Background",
+			"source": "APG",
+			"page": 56,
+			"className": "Investigator",
+			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the Craft activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don’t understand your strange science.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"In addition to what you get from your class at 1st level, you have the benefits of your selected ancestry and background."
 			]
 		},
 		{
-			"name": "Formula Book",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
+			"name": "Strategic Strike",
+			"source": "APG",
+			"page": 56,
+			"className": "Investigator",
+			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"When you strike carefully and with forethought, you deal a telling blow. When making a Strike that adds your Intelligence modifier on your attack roll due to Devising a Stratagem, you deal an additional {@dice 1d6} precision damage.",
+				"As your investigator level increases, so too does the deadliness of your strategic strike. Increase the number of dice by one at 5th, 9th, 13th, and 17th levels."
 			]
 		},
 		{
-			"name": "Research Field",
-			"source": "CRB",
-			"subclasses": "Research Field",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
+			"name": "Initial Proficiencies",
+			"source": "APG",
+			"page": 56,
+			"className": "Investigator",
+			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute,  correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
+				"At 1st level, you gain a number of proficiencies that represent your basic training. These proficiencies are noted at the start of this class."
 			]
 		},
 		{
-			"name": "Book",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
+			"name": "On the Case",
+			"source": "APG",
+			"page": 56,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
+				"As an investigator, you think of your adventures as cases waiting to be solved. You gain one activity and one reaction you can use to investigate cases: {@action Pursue a Lead|APG} and {@action Clue In|APG}.",
+				{
+					"type": "ability",
+					"name": "Pursue a Lead",
+					"traits": [
+						"Concentrate",
+						"Exploration",
+						"Investigator"
+					],
+					"frequency": "once per 10 minutes",
+					"entries": [
+						"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
+						"Whenever you attempt a Perception or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically Perception checks or skill checks that use Intelligence, Wisdom, or Charisma.",
+						"You can maintain two active investigations at a time. If you Pursue another Lead after that, the subject must be different from any of your current investigations (or rather, they must be different as far as you know), and you give up on a current subject of your choice. Once you've given up pursuit of a subject, you can't Pursue that Lead again until after the next time you make your daily preparations."
+					]
+				},
+				{
+					"type": "ability",
+					"name": "Clue In",
+					"traits": [
+						"Concentrate",
+						"Investigator"
+					],
+					"frequency": "once per 10 minutes",
+					"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as r}"
+					},
+					"entries": [
+						"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from Pursue a Lead. The GM can add any relevant traits to this reaction depending on the situation, such as auditory and linguistic if you're conveying information verbally."
+					]
+				}
+			]
+		},
+		{
+			"name": "Devise a Stratagem",
+			"source": "APG",
+			"page": 56,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
+				"You can play out a battle in your head, using brains rather than brawn to execute an attack.",
+				{
+					"type": "ability",
+					"name": "Devise a Stratagem",
+					"traits": [
+						"Concentrate",
+						"Fortune",
+						"Investigator"
+					],
+					"frequency": "once per round",
+					"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"entries": [
+						"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a d20. If you Strike the chosen creature later this round, you must use the result of the roll you made to Devise a Stratagem for your Strike's attack roll instead of rolling. You make this substitution only for the first Strike you make against the creature this round, not any subsequent attacks.",
+						"When you make this substitution, you can also add your Intelligence modifier to your attack roll instead of your Strength or Dexterity modifier, provided your Strike uses an agile or finesse melee weapon, an agile or finesse unarmed attack, a ranged weapon (which must be agile or finesse if it's a melee weapon with the thrown trait), or a sap.",
+						"If you're aware that the creature you choose is the subject of a lead you're pursuing, you can use this ability as a free action."
+					]
+				}
+			]
+		},
+		{
+			"name": "Methodology",
+			"source": "APG",
+			"page": 57,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
+				"Your studies have made you savvy in many areas, but one in particular drew your intense interest. Choose a methodology. The methodologies presented in this book are as follows."
+			]
+		},
+		{
+			"name": "Investigator Feats",
+			"source": "APG",
+			"page": 58,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 1,
+			"entries": [
+				"At 1st level and every even-numbered level, you gain an investigator class feat."
+			]
+		},
+		{
+			"name": "Skill Feats",
+			"source": "APG",
+			"page": 58,
+			"className": "Investigator",
+			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard formula book worth 10 sp or less (as detailed on page 290) for free. The formula book contains the formulas for two common 1st-level alchemical items of your choice, in addition to those you gained from Alchemical Crafting and your research field. The catalog of alchemical items begins on page 543.",
-				"You gain the Alchemical Crafting feat (page 258), even if you don’t meet that feat’s prerequisites, and you gain the four common 1st-level alchemical formulas granted by that feat. The catalog of alchemical items begins on page 543. You can use this feat to create alchemical items as long as you have the items’ formulas in your formula book."
+				"At 2nd level and every 2 levels thereafter, you gain a skill feat. You must be trained or better in the corresponding skill to select a skill feat."
+			]
+		},
+		{
+			"name": "Skill Increases",
+			"source": "APG",
+			"page": 58,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 2,
+			"entries": [
+				"You gain more skill increases than members of other classes. At 2nd level and every level thereafter, you gain a skill increase. You can use this increase to either become trained in one skill you're untrained in or to become an expert in one skill in which you're already trained.",
+				"At 7th level, you can use skill increases to become a master in a skill in which you're already an expert, and at 15th level, you can use them to become legendary in a skill in which you're already a master."
+			]
+		},
+		{
+			"name": "General Feats",
+			"source": "APG",
+			"page": 59,
+			"className": "Investigator",
+			"classSource": "APG",
+			"level": 3,
+			"entries": [
+				"At 3rd level and every 4 levels thereafter, you gain a general feat."
 			]
 		}
 	],
 	"subclassFeature": [
 		{
-			"name": "Bomber",
-			"source": "CRB",
-			"page": 73,
-			"className": "Alchemist",
-			"classSource": "CRB",
-			"subclassShortName": "Bomber",
-			"subclassSource": "CRB",
+			"name": "Methodology",
+			"source": "APG",
+			"page": 57,
+			"className": "Investigator",
+			"classSource": "APG",
+			"subclassShortName": "Alchemical Sciences",
+			"subclassSource": "APG",
 			"level": 1,
 			"entries": [
 				{
 					"type": "pf2-h4",
-					"name": "Bomber",
+					"name": "Alchemical Sciences",
 					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two 1st-level alchemical bombs in your formula book, in addition to your other formulas.",
-						"When throwing an alchemical bomb with the splash trait, you can deal splash damage to only your primary target instead of the usual splash area."
+						"Your methodology emphasizes chemical and alchemical analysis, collecting information from unusual particles and fluids found on the scene. You possess enough alchemical know-how to whip up a few tinctures to help you with your cases.",
+						"You're trained in Crafting and gain the Alchemical Crafting skill feat. In addition, you gain a standard formula book for free and learn the formulas for two additional common 1st-level alchemical items, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
+						"During your daily preparations, you can create a number of versatile vials—alchemical concoctions that can quickly be turned into elixirs and tools— equal to your Intelligence modifier. You can use the Quick Tincture action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
+						{
+							"type": "ability",
+							"name": "Quick Tincture",
+							"traits": [
+								"Investigator",
+								"Manipulate"
+							],
+							"cost": "1 versatile vial",
+							"requirements": "You know the formula for the alchemical item you're creating, you are holding or wearing {@item alchemist’s tools|CRB}, and you have a free hand.",
+							"activity": {
+								"number": 1,
+								"unit": "single",
+								"entry": "{@as 1}"
+							},
+							"entries": [
+								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a Crafting check. This item has the infused trait, but it remains potent only until the end of the current turn."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Methodology",
+			"source": "APG",
+			"page": 57,
+			"className": "Investigator",
+			"classSource": "APG",
+			"subclassShortName": "Empiricism",
+			"subclassSource": "APG",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Empiricism",
+					"entries": [
+						"Everything comes down to data. Calculating statistics, running numbers, and using inductive reasoning allows you to determine the most likely outcome of any scenario, and anything out of place draws your keen attention.",
+						"You are trained in one Intelligence-based skill of your choice. You gain the That's Odd investigator feat, and you gain the Expeditious Inspection free action.",
+						{
+							"type": "ability",
+							"name": "Expeditious Inspection",
+							"traits": [
+								"Investigator",
+								"Manipulate"
+							],
+							"frequency": "once per 10 minutes",
+							"activity": {
+								"number": 1,
+								"unit": "free",
+								"entry": "{@as F}"
+							},
+							"entries": [
+								"You observe and assess your surroundings with great speed. You Recall Knowledge, Seek, or Sense Motive."
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Methodology",
+			"source": "APG",
+			"page": 58,
+			"className": "Investigator",
+			"classSource": "APG",
+			"subclassShortName": "Forensic Medicine",
+			"subclassSource": "APG",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Forensic Medicine",
+					"entries": [
+						"You've learned that in most cases, especially murders, criminals tend to leave more evidence of the crime on the body than they'd like to believe. Information from bruising, bone fractures, blood spatters, and even the life cycle of carrion insects can provide valuable clues that help reconstruct the scene.",
+						"You're trained in Medicine and gain the Forensic Acumen and Battle Medicine skill feats. When you use Battle Medicine, on a success the target recovers additional Hit Points equal to your level, and the target becomes temporarily immune for only 1 hour, not 1 day."
+					]
+				}
+			]
+		},
+		{
+			"name": "Methodology",
+			"source": "APG",
+			"page": 58,
+			"className": "Investigator",
+			"classSource": "APG",
+			"subclassShortName": "Interrogation",
+			"subclassSource": "APG",
+			"level": 1,
+			"entries": [
+				{
+					"type": "pf2-h4",
+					"name": "Interrogation",
+					"entries": [
+						"People can't help but trust you, whether through your inherent likableness or your firm insistence on sticking to the truth. You have a way about you that gets others talking, and you've developed interrogative techniques to help you get to the truth of your investigations.",
+						"You are trained in Diplomacy. You gain the No Cause for Alarm skill feat. You can also Pursue a Lead over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to Make an Impression, you could pursue the creature you're conversing with as a lead, and you could Pursue a Lead about an object while someone is telling you information about that object. You also gain the Pointed Question action.",
+						{
+							"type": "ability",
+							"name": "Pointed Question",
+							"traits": [
+								"Auditory",
+								"Concentrate",
+								"Investigator",
+								"Linguistic",
+								"Mental"
+							],
+							"frequency": "once per 10 minutes",
+							"activity": {
+								"number": 1,
+								"unit": "action",
+								"entry": "{@as 1}"
+							},
+							"entries": [
+								"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a Diplomacy check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
+								{
+									"type": "success_degree",
+									"entries": {
+										"Critical Success": "The target must directly answer your question. It doesn't have to answer truthfully, but you gain a +4 circumstance bonus to your Perception DC if the creature attempts to Lie to you.",
+										"Success": "As critical success, but the circumstance bonus is +2.",
+										"Failure": "The target can refuse to answer you as normal.",
+										"Critical Failure": "The target can refuse to answer you as normal, and its attitude toward you decreases by one step due to your aggravating attention."
+									}
+								}
+							]
+						}
 					]
 				}
 			]
