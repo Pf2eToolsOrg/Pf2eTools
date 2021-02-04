@@ -346,6 +346,9 @@ function Renderer () {
 				case "pf2-title":
 					this._renderPf2Title(entry, textStack, meta, options);
 					break;
+				case "pf2-options":
+					this._renderPf2Options(entry, textStack, meta, options);
+					break;
 				// recursive
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
@@ -1580,6 +1583,15 @@ function Renderer () {
 		textStack[0] += `</div>`;
 
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+	};
+
+	this._renderPf2Options = function (entry, textStack, meta, options) {
+		if (!entry.items || !entry.items.length) return;
+		if (!entry.skipSort) entry.items = entry.items.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+		const renderer = Renderer.get();
+		entry.items.forEach(it => {
+			textStack[0] += `<p class="${entry.style ? entry.style : "pf2-book__option"}">${it.name ? `<strong>${it.name}: </strong>` : ""}${renderer.render(it.entry)}</p>`;
+		});
 	};
 
 	this._renderInset = function (entry, textStack, meta, options) {

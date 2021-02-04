@@ -521,7 +521,7 @@ class IndexableFileItemCurses extends IndexableFile {
 		super({
 			category: Parser.CAT_ID_AFFLICTION,
 			file: "afflictions.json",
-			listProp: "itemCurse",
+			listProp: "itemcurse",
 			baseUrl: "afflictions.html",
 			isHover: true,
 		});
