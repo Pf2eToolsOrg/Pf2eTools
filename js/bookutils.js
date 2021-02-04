@@ -8,12 +8,13 @@ const BookUtil = {
 	_getSelectors (scrollTo) {
 		scrollTo = scrollTo.trim().toLowerCase();
 		return [
-			`.rd__h--0 > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.rd__h--1 > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.rd__h--2 > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.rd__h--2-inset > .entry-title-inner:textEquals("${scrollTo}")`,
-			`.rd__h--3 > .entry-title-inner:textEquals("${scrollTo}.")`,
+			`.pf2-h1 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.pf2-h2 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.pf2-h3 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.pf2-h4 > .entry-title-inner:textEquals("${scrollTo}")`,
+			`.pf2-h5 > .entry-title-inner:textEquals("${scrollTo}")`,
 		];
+		// Todo: there are probably others, add them
 	},
 
 	scrollClick (scrollTo, scrollIndex, ele) {

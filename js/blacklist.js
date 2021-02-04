@@ -40,7 +40,6 @@ class Blacklist {
 			"backgrounds.json",
 			"deities.json",
 			"feats/feats-crb.json",
-			"magicvariants.json",
 			"ancestries.json",
 			"hazards.json",
 			"variantrules.json",

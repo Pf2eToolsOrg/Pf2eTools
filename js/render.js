@@ -2164,6 +2164,11 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</u>`;
 				break;
+			case "@sup":
+			textStack[0] += `<sup>`;
+			this._recursiveRender(text, textStack, meta);
+			textStack[0] += `</sup>`;
+			break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
@@ -4365,35 +4370,6 @@ Renderer.background = {
 	},
 };
 
-Renderer.optionalfeature = {
-	getListPrerequisiteLevelText (prerequisites) {
-		if (!prerequisites || !prerequisites.some(it => it.level)) return "\u2014";
-		const levelPart = prerequisites.find(it => it.level).level;
-		return levelPart.level || levelPart;
-	},
-
-	getPreviouslyPrintedText (it) {
-		return it.previousVersion ? `<tr><td colspan="6"><p>${Renderer.get().render(`{@i An earlier version of this ${Parser.optFeatureTypeToFull(it.featureType)} is available in }${Parser.sourceJsonToFull(it.previousVersion.source)} {@i as {@optfeature ${it.previousVersion.name}|${it.previousVersion.source}}.}`)}</p></td></tr>` : ""
-	},
-
-	getCompactRenderedString (it) {
-		const renderer = Renderer.get();
-		const renderStack = [];
-
-		renderStack.push(`
-			${Renderer.utils.getExcludedTr(it, "optionalfeature", UrlUtil.PG_COMPANIONS_FAMILIARS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_COMPANIONS_FAMILIARS})}
-			<tr class="text"><td colspan="6">
-			${it.prerequisite ? `<p><i>${Renderer.utils.getPrerequisiteText(it.prerequisite)}</i></p>` : ""}
-		`);
-		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-		renderStack.push(`</td></tr>`);
-		renderStack.push(Renderer.optionalfeature.getPreviouslyPrintedText(it));
-
-		return renderStack.join("");
-	},
-};
-
 Renderer.ancestry = {
 	getCompactRenderedString (race) {
 		const renderer = Renderer.get();
@@ -5170,41 +5146,28 @@ Renderer.creature = {
 
 	getCompactRenderedString (cr, renderer, options) {
 		options = options || {};
-		renderer = renderer || Renderer.get();
-
-		let renderStack = []
-
 		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat(cr.traits.concat(cr.creature_type).sort())
 
-		renderStack.push(`
-			${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
+		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(traits)}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
-			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}`)
-		cr.abilities_interactive.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(`${Renderer.creature.getItems(cr)}
+			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}
+			${cr.abilities_interactive.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.creature.getDefenses(cr)}`)
-		cr.abilities_automatic.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(`${Renderer.utils.getDividerDiv()}
+			${Renderer.creature.getDefenses(cr)}
+			${cr.abilities_automatic.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
-			${Renderer.creature.getRituals(cr)}`)
-		cr.abilities_active.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(Renderer.utils.getPageP(cr));
-
-		return (renderStack.join(""))
+			${Renderer.creature.getRituals(cr)}
+			${cr.abilities_active.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getPageP(cr)}</div>`;
 	},
 
 	getRenderedAbility (ability, options) {
@@ -6257,7 +6220,7 @@ Renderer.item = {
 		if (opts.baseItems) {
 			baseItems = opts.baseItems;
 		} else {
-			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
+			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items/items-base.json`;
 			const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
 			Renderer.item._addBasePropertiesAndTypes(baseItemData);
 			baseItems = [...baseItemData.baseitem, ...(opts.additionalBaseItems || [])];
@@ -6562,7 +6525,7 @@ Renderer.item = {
 	populatePropertyAndTypeReference: () => {
 		if (Renderer.item._isRefPopulated) return Promise.resolve();
 		return new Promise((resolve, reject) => {
-			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items-base.json`)
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/items-base.json`)
 				.then(data => {
 					if (Renderer.item._isRefPopulated) {
 						resolve();
@@ -6870,6 +6833,13 @@ Renderer.adventureBook = {
 		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
 
 		return out;
+	},
+};
+
+Renderer.companionfamiliar = {
+	getRenderedString (it) {
+		if (it.type === "Companion") return Renderer.companion.getRenderedString(it);
+		if (it.type === "Familiar") return Renderer.familiar.getRenderedString(it);
 	},
 };
 
@@ -7951,7 +7921,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar"]);
 			case UrlUtil.PG_ANCESTRIES: {
 				const loadKey = UrlUtil.PG_ANCESTRIES;
 
@@ -8095,13 +8065,9 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_SPELLS}`:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "data/backgrounds/fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
-			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
-			case `fluff__${UrlUtil.PG_LANGUAGES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
 				// endregion
 
 			// region props
@@ -8545,6 +8511,7 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_QUICKREF:
 			case UrlUtil.PG_CLASSES:
+				// FIXME: Classes rendering
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
@@ -8564,7 +8531,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.feat.getCompactRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.optionalfeature.getCompactRenderedString;
+				return Renderer.companionfamiliar.getRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
@@ -8816,6 +8783,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@strike":
 					case "@u":
 					case "@underline":
+					case "@sup":
 						return text;
 
 					case "@h":

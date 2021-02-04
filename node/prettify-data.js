@@ -6,13 +6,7 @@ require("../js/utils");
 const PropOrder = require("../js/utils-proporder");
 
 const FILE_BLACKLIST = new Set([
-	"loot.json",
-	"msbcr.json",
-	"monsterfeatures.json",
 	"index.json",
-	"encounters.json",
-	"names.json",
-	"life.json",
 	"renderdemo.json",
 ]);
 

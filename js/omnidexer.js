@@ -177,6 +177,34 @@ class IndexableDirectory {
 	pGetDeepIndex () { return []; }
 }
 
+class IndexableDirectoryAncestry extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ANCESTRY,
+			dir: "ancestries",
+			primary: "name",
+			source: "source",
+			listProp: "ancestry",
+			baseUrl: "ancestries.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableDirectoryArchetype extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ARCHETYPE,
+			dir: "archetypes",
+			primary: "name",
+			source: "source",
+			listProp: "archetype",
+			baseUrl: "archetypes.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableDirectoryBestiary extends IndexableDirectory {
 	constructor () {
 		super({
@@ -351,6 +379,8 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 }
 
 Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
+	new IndexableDirectoryAncestry(),
+	new IndexableDirectoryArchetype(),
 	new IndexableDirectoryBestiary(),
 	new IndexableDirectorySpells(),
 	new IndexableDirectoryClass(),
@@ -406,7 +436,7 @@ class IndexableFileBackgrounds extends IndexableFile {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_BACKGROUND,
-			file: "backgrounds.json",
+			file: "backgrounds/backgrounds-crb.json",
 			listProp: "background",
 			baseUrl: "backgrounds.html",
 			isHover: true,
@@ -450,66 +480,6 @@ class IndexableFileItemGroups extends IndexableFile {
 	}
 }
 
-class IndexableFileMagicVariants extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM,
-			file: "items/magicvariants.json",
-			source: "inherits.source",
-			page: "inherits.page",
-			listProp: "variant",
-			baseUrl: "items.html",
-			hashBuilder: (it) => {
-				return UrlUtil.encodeForHash([it.name, it.inherits.source]);
-			},
-			additionalIndexes: {
-				item: async (indexer, rawVariants) => {
-					const specVars = await (async () => {
-						if (typeof module !== "undefined") return Renderer.item.getAllIndexableItems(rawVariants, require(`../data/items/items-base.json`));
-						else {
-							const baseItemJson = await DataUtil.loadJSON(`data/items/items-base.json`);
-							const rawBaseItems = {...baseItemJson, baseitem: [...baseItemJson.baseitem]};
-							const brew = await BrewUtil.pAddBrewData();
-							if (brew.baseitem) rawBaseItems.baseitem.push(...brew.baseitem);
-							return Renderer.item.getAllIndexableItems(rawVariants, rawBaseItems);
-						}
-					})();
-					return specVars.map(sv => {
-						const out = {
-							c: Parser.CAT_ID_ITEM,
-							u: UrlUtil.encodeForHash([sv.name, sv.source]),
-							s: indexer.getMetaId("s", sv.source),
-							n: sv.name,
-							h: 1,
-							p: sv.page,
-						};
-						if (sv.genericVariant) {
-							// use z-prefixed as "other data" properties
-							out.zg = {
-								n: indexer.getMetaId("n", sv.genericVariant.name),
-								s: indexer.getMetaId("s", sv.genericVariant.source),
-							};
-						}
-						return out;
-					});
-				},
-			},
-			isHover: true,
-		});
-	}
-
-	pGetDeepIndex (indexer, primary, it) {
-		const revName = Renderer.item.modifierPostToPre(it);
-		if (revName) {
-			return [{
-				d: 1,
-				u: UrlUtil.encodeForHash([revName.name, it.inherits.source]),
-			}];
-		}
-		return [];
-	}
-}
-
 class IndexableFileConditions extends IndexableFile {
 	constructor () {
 		super({
@@ -528,7 +498,31 @@ class IndexableFileDiseases extends IndexableFile {
 			category: Parser.CAT_ID_AFFLICTION,
 			file: "afflictions.json",
 			listProp: "disease",
-			baseUrl: "conditions.html",
+			baseUrl: "afflictions.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableFileCurses extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_AFFLICTION,
+			file: "afflictions.json",
+			listProp: "curse",
+			baseUrl: "afflictions.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableFileItemCurses extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_AFFLICTION,
+			file: "afflictions.json",
+			listProp: "itemCurse",
+			baseUrl: "afflictions.html",
 			isHover: true,
 		});
 	}
@@ -543,44 +537,6 @@ class IndexableFileFeats extends IndexableFile {
 			baseUrl: "feats.html",
 			isHover: true,
 		});
-	}
-}
-
-class IndexableFileAncestries extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ANCESTRY,
-			file: "ancestries.json",
-			listProp: "ancestry",
-			baseUrl: "ancestries.html",
-			isOnlyDeep: true,
-			isHover: true,
-		});
-	}
-
-	pGetDeepIndex (indexer, primary, it) {
-		const out = [];
-
-		// If there are subraces, add the base ancestry
-		if (it.subraces) {
-			const r = MiscUtil.copy(it);
-			const isAnyNoName = it.subraces.some(it => !it.name);
-			if (isAnyNoName) r.name = `${r.name} (Base)`;
-			out.push({
-				n: r.name,
-				s: indexer.getMetaId("s", r.source),
-				u: UrlUtil.URL_TO_HASH_BUILDER["ancestries.html"](r),
-			});
-		}
-
-		const subs = Renderer.ancestry._mergeSubraces(it);
-		out.push(...subs.map(r => ({
-			n: r.name,
-			s: indexer.getMetaId("s", r.source),
-			u: UrlUtil.URL_TO_HASH_BUILDER["ancestries.html"](r),
-		})));
-
-		return out;
 	}
 }
 
@@ -766,6 +722,18 @@ class IndexableFileActions extends IndexableFile {
 	}
 }
 
+class IndexableFileCreatureAbilities extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ABILITY,
+			file: "abilities.json",
+			listProp: "ability",
+			baseUrl: "abilities.html",
+			isHover: true,
+		});
+	}
+}
+
 class IndexableFileLanguages extends IndexableFile {
 	constructor () {
 		super({
@@ -799,35 +767,28 @@ class IndexableFileTraits extends IndexableFile {
 Omnidexer.TO_INDEX = [
 	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
-	// new IndexableFileDiseases(),
+	new IndexableFileDiseases(),
+	new IndexableFileCurses(),
+	new IndexableFileItemCurses(),
 	new IndexableFileFeats(),
 
 	new IndexableFileItemsBase(),
 	new IndexableFileItems(),
 	new IndexableFileItemGroups(),
-	new IndexableFileMagicVariants(),
 
-	// new IndexableFileAncestries(),
 	// new IndexableFileRewards(),
-	// new IndexableFileVariantRules(),
+	new IndexableFileVariantRules(),
 	// new IndexableFileAdventures(),
 	new IndexableFileBooks(),
 	// new IndexableFileQuickReference(),
-	// new IndexableFileDeities(),
-	// new IndexableFileObjects(),
-	// new IndexableFileTraps(),
-	// new IndexableFileHazards(),
-	// new IndexableFileCults(),
-	// new IndexableFileBoons(),
+	new IndexableFileDeities(),
+	new IndexableFileHazards(),
 	new IndexableFileTables(),
 	// new IndexableFileTableGroups(),
 
-	// new IndexableFileVehicles(),
-	// new IndexableFileVehicles_ShipUpgrade(),
-	// new IndexableFileVehicles_InfernalWarMachineUpgrade(),
-
 	new IndexableFileActions(),
-	// new IndexableFileLanguages(),
+	new IndexableFileCreatureAbilities(),
+	new IndexableFileLanguages(),
 	new IndexableFileTraits(),
 ];
 
