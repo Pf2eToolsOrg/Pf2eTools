@@ -13,7 +13,7 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"Society",
+						"{@skill Society}",
 						"one or more skills determined by your methodology"
 					],
 					"add": 4
@@ -155,12 +155,12 @@
 					]
 				},
 				{
-					"name": "Forensic Medicine",
-					"shortName": "Forensic Medicine",
+					"name": "Forensic {@skill Medicine}",
+					"shortName": "Forensic {@skill Medicine}",
 					"source": "APG",
 					"page": 58,
 					"subclassFeatures": [
-						"Methodology|Investigator|APG|Forensic Medicine|APG|1"
+						"Methodology|Investigator|APG|Forensic {@skill Medicine}|APG|1"
 					]
 				},
 				{
@@ -383,7 +383,7 @@
 			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a skill feat. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|source=null|type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -428,7 +428,7 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every odd-numbered level thereafter, you gain a skill feat. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
+				"At 3rd level and every odd-numbered level thereafter, you gain a {@filter skill feat|feats|source=null|type=skill}. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
 			]
 		},
 		{
@@ -635,7 +635,7 @@
 					"name": "Alchemical Sciences",
 					"entries": [
 						"Your methodology emphasizes chemical and alchemical analysis, collecting information from unusual particles and fluids found on the scene. You possess enough alchemical know-how to whip up a few tinctures to help you with your cases.",
-						"You're trained in Crafting and gain the Alchemical Crafting skill feat. In addition, you gain a standard formula book for free and learn the formulas for two additional common 1st-level alchemical items, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
+						"You're trained in {@skill Crafting} and gain the Alchemical {@skill Crafting} skill feat. In addition, you gain a standard formula book for free and learn the formulas for two additional common 1st-level alchemical items, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
 						"During your daily preparations, you can create a number of versatile vials—alchemical concoctions that can quickly be turned into elixirs and tools— equal to your Intelligence modifier. You can use the Quick Tincture action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
 						{
 							"type": "ability",
@@ -652,7 +652,7 @@
 								"entry": "{@as 1}"
 							},
 							"entries": [
-								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a Crafting check. This item has the infused trait, but it remains potent only until the end of the current turn."
+								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the infused trait, but it remains potent only until the end of the current turn."
 							]
 						}
 					]
@@ -702,16 +702,16 @@
 			"page": 58,
 			"className": "Investigator",
 			"classSource": "APG",
-			"subclassShortName": "Forensic Medicine",
+			"subclassShortName": "Forensic {@skill Medicine}",
 			"subclassSource": "APG",
 			"level": 1,
 			"entries": [
 				{
 					"type": "pf2-h4",
-					"name": "Forensic Medicine",
+					"name": "Forensic {@skill Medicine}",
 					"entries": [
 						"You've learned that in most cases, especially murders, criminals tend to leave more evidence of the crime on the body than they'd like to believe. Information from bruising, bone fractures, blood spatters, and even the life cycle of carrion insects can provide valuable clues that help reconstruct the scene.",
-						"You're trained in Medicine and gain the Forensic Acumen and Battle Medicine skill feats. When you use Battle Medicine, on a success the target recovers additional Hit Points equal to your level, and the target becomes temporarily immune for only 1 hour, not 1 day."
+						"You're trained in {@skill Medicine} and gain the Forensic Acumen and Battle {@skill Medicine} skill feats. When you use Battle {@skill Medicine}, on a success the target recovers additional Hit Points equal to your level, and the target becomes temporarily immune for only 1 hour, not 1 day."
 					]
 				}
 			]
@@ -731,7 +731,7 @@
 					"name": "Interrogation",
 					"entries": [
 						"People can't help but trust you, whether through your inherent likableness or your firm insistence on sticking to the truth. You have a way about you that gets others talking, and you've developed interrogative techniques to help you get to the truth of your investigations.",
-						"You are trained in Diplomacy. You gain the No Cause for Alarm skill feat. You can also Pursue a Lead over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to Make an Impression, you could pursue the creature you're conversing with as a lead, and you could Pursue a Lead about an object while someone is telling you information about that object. You also gain the Pointed Question action.",
+						"You are trained in {@skill Diplomacy}. You gain the No Cause for Alarm skill feat. You can also Pursue a Lead over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to Make an Impression, you could pursue the creature you're conversing with as a lead, and you could Pursue a Lead about an object while someone is telling you information about that object. You also gain the Pointed Question action.",
 						{
 							"type": "ability",
 							"name": "Pointed Question",
@@ -749,7 +749,7 @@
 								"entry": "{@as 1}"
 							},
 							"entries": [
-								"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a Diplomacy check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
+								"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
 								{
 									"type": "success_degree",
 									"entries": {

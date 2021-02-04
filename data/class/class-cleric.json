@@ -13,7 +13,7 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"Religion",
+						"{@skill Religion}",
 						"one skill determined by your choice of deity"
 					],
 					"add": 2
@@ -299,14 +299,14 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Healing Font:",
+							"name": "Healing Font",
 							"entries": [
 								"You gain additional spell slots each day at your highest level of cleric spell slots. You can prepare only heal spells in these slots, and the number of slots is equal to 1 plus your Charisma modifier."
 							]
 						},
 						{
 							"type": "item",
-							"name": "Harmful Font:",
+							"name": "Harmful Font",
 							"entries": [
 								"You gain additional spell slots each day at your highest level of cleric spell slots. You can prepare only harm spells in these slots, and the number of slots is equal to 1 plus your Charisma modifier."
 							]
@@ -346,7 +346,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a skill feat. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|source=null|type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -357,7 +357,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a general feat. General feats are listed in Chapter 5."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats|source=null|type=general}. General feats are listed in Chapter 5."
 			]
 		},
 		{
@@ -485,42 +485,42 @@
 							"items": [
 								{
 									"type": "item",
-									"name": "First Doctrine (1st):",
+									"name": "First Doctrine (1st)",
 									"entries": [
 										"You gain the Domain Initiate cleric feat."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Second Doctrine (3rd):",
+									"name": "Second Doctrine (3rd)",
 									"entries": [
 										"Your proficiency rank for Fortitude saves increases to expert."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Third Doctrine (7th):",
+									"name": "Third Doctrine (7th)",
 									"entries": [
 										"Your proficiency ranks for divine spell attack rolls and spell DCs increase to expert."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Fourth Doctrine (11th):",
+									"name": "Fourth Doctrine (11th)",
 									"entries": [
 										"You gain expert proficiency with your deity’s favored weapon. When you critically succeed at an attack roll using that weapon, you apply the weapon’s critical specialization effect; use your divine spell DC if necessary."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Fifth Doctrine (15th):",
+									"name": "Fifth Doctrine (15th)",
 									"entries": [
 										"Your proficiency ranks for divine spell attack rolls and spell DCs increase to master."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Final Doctrine (19th):",
+									"name": "Final Doctrine (19th)",
 									"entries": [
 										"Your proficiency ranks for divine spell attack rolls and spell DCs increase to legendary."
 									]
@@ -554,42 +554,42 @@
 							"items": [
 								{
 									"type": "item",
-									"name": "First Doctrine (1st):",
+									"name": "First Doctrine (1st)",
 									"entries": [
 										"You’re trained in light and medium armor, and you have expert proficiency in Fortitude saves. You gain the Shield Block general feat, a reaction to reduce damage with a shield. If your deity’s weapon is simple, you gain the Deadly Simplicity cleric feat. At 13th level, if you gain the divine defense class feature, you also gain expert proficiency in light and medium armor."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Second Doctrine (3rd):",
+									"name": "Second Doctrine (3rd)",
 									"entries": [
 										"You’re trained in martial weapons."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Third Doctrine (7th):",
+									"name": "Third Doctrine (7th)",
 									"entries": [
 										"You gain expert proficiency with your deity’s favored weapon. When you critically succeed at an attack roll using that weapon, you apply the weapon’s critical specialization effect; use your divine spell DC if necessary."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Fourth Doctrine (11th):",
+									"name": "Fourth Doctrine (11th)",
 									"entries": [
 										"Your proficiency ranks for divine spell attack rolls and spell DCs increase to expert."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Fifth Doctrine (15th):",
+									"name": "Fifth Doctrine (15th)",
 									"entries": [
 										"Your proficiency rank for Fortitude saves increases to master. When you roll a success at a Fortitude save, you get a critical success instead."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Final Doctrine (19th):",
+									"name": "Final Doctrine (19th)",
 									"entries": [
 										"Your proficiency ranks for divine spell attack rolls and spell DCs increase to master."
 									]

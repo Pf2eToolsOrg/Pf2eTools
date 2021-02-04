@@ -13,7 +13,7 @@
 				"will": "E",
 				"skills": {
 					"t": [
-						"Religion",
+						"{@skill Religion}",
 						"one skill determined by your choice of deity"
 					],
 					"add": 2
@@ -421,7 +421,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a skill feat. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|source=null|type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -434,7 +434,7 @@
 			"entries": [
 				"Your devotion attracts a spirit of your deity’s alignment.",
 				"Once you choose an ally, your choice can’t be changed.",
-				"The following are divine allies:",
+				"The following are divine allies",
 				{
 					"type": "pf2-options",
 					"style": "pf2-p",
@@ -442,21 +442,21 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Blade Ally:",
+							"name": "Blade Ally",
 							"entries": [
 								"A spirit of battle dwells within your weapon. Select one weapon when you make your daily preparations. In your hands, the weapon gains the effect of a property rune. For a champion following the tenets of good, choose disrupting, ghost touch, returning, or shifting. You also gain the weapon’s critical specialization effect."
 							]
 						},
 						{
 							"type": "item",
-							"name": "Shield Ally:",
+							"name": "Shield Ally",
 							"entries": [
 								"A spirit of protection dwells within your shield. In your hands, the shield’s Hardness increases by 2 and its HP and BT increase by half."
 							]
 						},
 						{
 							"type": "item",
-							"name": "Steed Ally:",
+							"name": "Steed Ally",
 							"entries": [
 								"You gain a young animal companion as a mount (page 214). Ordinarily, your animal companion is one that has the mount special ability, such as a horse. You can select a different animal companion (GM’s discretion), but this ability doesn’t grant it the mount special ability."
 							]
@@ -473,7 +473,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a general feat. General feats are listed in Chapter 5."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats|source=null|type=general}. General feats are listed in Chapter 5."
 			]
 		},
 		{
@@ -704,7 +704,7 @@
 					"page": 106,
 					"name": "Paladin (Lawful Good)",
 					"entries": [
-						"You’re honorable, forthright, and committed to pushing back the forces of cruelty. You gain the Retributive Strike champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets:",
+						"You’re honorable, forthright, and committed to pushing back the forces of cruelty. You gain the Retributive Strike champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets",
 						{
 							"type": "list",
 							"items": [
@@ -731,7 +731,7 @@
 					"page": 106,
 					"name": "Redeemer (Neutral Good)",
 					"entries": [
-						"You’re full of kindness and forgiveness. You gain the Glimpse of Redemption champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these:",
+						"You’re full of kindness and forgiveness. You gain the Glimpse of Redemption champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these",
 						{
 							"type": "list",
 							"items": [
@@ -758,7 +758,7 @@
 					"page": 107,
 					"name": "Liberator (Chaotic Good)",
 					"entries": [
-						"You’re committed to defending the freedom of others. You gain the Liberating Step champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets:",
+						"You’re committed to defending the freedom of others. You gain the Liberating Step champion’s reaction and the lay on hands devotion spell. After the tenets of good, add these tenets",
 						{
 							"type": "list",
 							"items": [
@@ -818,7 +818,7 @@
 						"Champion"
 					],
 					"entries": [
-						"Your foe hesitates under the weight of sin as visions of redemption play in their mind’s eye. The foe must choose one of the following options:",
+						"Your foe hesitates under the weight of sin as visions of redemption play in their mind’s eye. The foe must choose one of the following options",
 						{
 							"type": "list",
 							"items": [
@@ -878,7 +878,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Paladin:",
+							"name": "Paladin",
 							"entries": [
 								"You surround evil targets in a punishing halo. If you hit with your Retributive Strike, the target takes persistent good damage equal to your Charisma modifier."
 							]
@@ -904,7 +904,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Redeemer:",
+							"name": "Redeemer",
 							"entries": [
 								"A guilty conscience assails foes who spurn your Glimpse of Redemption. A foe that responds to your Glimpse of Redemption by dealing damage takes persistent good damage equal to your Charisma modifier."
 							]
@@ -930,7 +930,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Liberator:",
+							"name": "Liberator",
 							"entries": [
 								"You punish those who ensnare your allies in bondage. If the triggering enemy was using any effects to make your ally grabbed, restrained, immobilized, or paralyzed when you used Liberating Step, that enemy takes persistent good damage equal to your Charisma modifier."
 							]
@@ -956,7 +956,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Liberator:",
+							"name": "Liberator",
 							"entries": [
 								"You can help your whole group get into position. When you use Liberating Step, if your ally doesn’t attempt to break free of an effect, you and all allies within 15 feet can Step, in addition to the triggering ally."
 							]
@@ -982,7 +982,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Redeemer:",
+							"name": "Redeemer",
 							"entries": [
 								"You protect multiple allies. You can apply the resistance granted by Glimpse of Redemption to yourself and all allies within 15 feet of you, including the triggering ally, except the resistance is reduced by 2 for all."
 							]
@@ -1008,7 +1008,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Paladin:",
+							"name": "Paladin",
 							"entries": [
 								"When you use Retributive Strike, each ally within 15 feet of you with the target in their melee reach can spend a reaction to Strike the target with a –5 penalty."
 							]
@@ -1103,7 +1103,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Tyrant:",
+							"name": "Tyrant",
 							"entries": [
 								"The regrets of disobedience linger. If an enemy refuses your Iron Command, it takes persistent evil damage equal to your Charisma modifier."
 							]
@@ -1129,7 +1129,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Tyrant:",
+							"name": "Tyrant",
 							"entries": [
 								"When you use Iron Command, each enemy within 15 feet of you other than the triggering creature must also either drop prone or take mental damage (the enemy chooses). These creatures take only minimum damage (typically 3 damage at 11th level, 4 at 12th, 5 at 16th, and 6 at 19th), and the effects they take can't be adjusted by anything that changes your Iron Command. For instance, the Iron Repercussions feat couldn't turn the damage into persistent mental damage for creatures other than the triggering creature."
 							]
@@ -1211,7 +1211,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Desecrator:",
+							"name": "Desecrator",
 							"entries": [
 								"If your Charisma modifier is +2 or greater, your resistance against the triggering damage equals your Charisma modifier + half your level."
 							]
@@ -1320,7 +1320,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Antipaladin:",
+							"name": "Antipaladin",
 							"entries": [
 								"An enemy damaged by the initial damage from your Destructive Vengeance also takes persistent evil damage equal to your Charisma modifier. This applies only to the damage the reaction itself deals to the triggering creature, not the damage you deal with subsequent Strikes."
 							]
@@ -1346,7 +1346,7 @@
 					"items": [
 						{
 							"type": "item",
-							"name": "Antipaladin:",
+							"name": "Antipaladin",
 							"entries": [
 								"When you use Destructive Vengeance, each enemy within 15 feet of you other than the triggering creature takes half the damage you deal to the triggering enemy, of the same damage type you chose."
 							]
