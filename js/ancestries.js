@@ -782,33 +782,14 @@ class AncestriesPage extends BaseComponent {
 					name: "Speed",
 				},
 				`${anc.speed} feet`,
-				{
-					type: "pf2-title",
-					name: "Ability Boosts",
-				},
-				...anc.boosts,
-				{
-					type: "pf2-title",
-					name: "Ability Flaw",
-				},
-				...anc.flaw,
-				{
-					type: "pf2-title",
-					name: "Languages",
-				},
-				...anc.languages,
-				{
-					type: "pf2-title",
-					name: "Traits",
-				},
-				...anc.traits,
-				{
-					type: "pf2-title",
-					name: anc.feature.name,
-				},
-				...anc.feature.entries,
 			],
 		};
+		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, ...anc.rarity);
+		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
+		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
+		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
+		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, ...anc.traits);
+		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
 		const ancestryName = {
 			type: "pf2-h1",
 			name: anc.name,
