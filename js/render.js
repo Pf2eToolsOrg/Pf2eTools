@@ -763,7 +763,7 @@ function Renderer () {
 
 	this._renderTable = function (entry, textStack, meta, options) {
 		// TODO: implement rollable tables
-		const numCol = Math.max(...entry.rows.map(x => x.length))
+		const numCol = Math.max(...entry.rows.map(x => x.type === "multiRow" ? x.rows.map(y => y.length) : x.length).flat());
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol)
 		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
@@ -794,44 +794,54 @@ function Renderer () {
 		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [0];
 		let rowParity = 0;
 		let idxSpan = 0;
-		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
-			const row = entry.rows[idxRow]
-			const lenCol = row.length
 
-			if (lenCol === numCol) {
+		const renderRow = function (renderer, row, idxRow) {
+			const lenCol = row.length;
+			if (row.type === "multiRow") {
+				row.rows.forEach(r => {
+					renderRow(renderer, r, idxRow);
+					rowParity = (rowParity + 1) % 2;
+				});
+				rowParity = (rowParity + 1) % 2;
+			} else if (lenCol === numCol) {
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity)
-					textStack[0] += `<div class="${styles}">`
-					this._recursiveRender(row[idxCol], textStack, meta);
-					textStack[0] += `</div>`
+					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity);
+					textStack[0] += `<div class="${styles}">`;
+					renderer._recursiveRender(row[idxCol], textStack, meta);
+					textStack[0] += `</div>`;
 				}
 				if (labelRowIdx.includes(idxRow)) {
-					rowParity = 0
+					rowParity = 0;
 				} else {
-					rowParity = (rowParity + 1) % 2
+					rowParity = (rowParity + 1) % 2;
 				}
 			} else {
 				let last_end = 1;
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity)
-					let span = entry.spans[idxSpan][idxCol]
+					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity);
+					let span = entry.spans[idxSpan][idxCol];
 					if (last_end !== span[0]) {
-						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`
+						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`;
 					}
-					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`
-					last_end = span[1]
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`;
+					last_end = span[1];
 				}
 				if (labelRowIdx.includes(idxRow)) {
-					rowParity = 0
+					rowParity = 0;
 				} else {
-					rowParity = (rowParity + 1) % 2
+					rowParity = (rowParity + 1) % 2;
 				}
 				if (last_end !== numCol + 1) {
-					let styles = this._renderTable_getStyles(entry, idxRow, numCol, true, rowParity)
-					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`
+					let styles = renderer._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
+					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`;
 				}
 				idxSpan += 1;
 			}
+		};
+
+		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
+			const row = entry.rows[idxRow];
+			renderRow(this, row, idxRow);
 		}
 
 		if (entry.footnotes != null) {
@@ -2177,10 +2187,10 @@ function Renderer () {
 				textStack[0] += `</u>`;
 				break;
 			case "@sup":
-			textStack[0] += `<sup>`;
-			this._recursiveRender(text, textStack, meta);
-			textStack[0] += `</sup>`;
-			break;
+				textStack[0] += `<sup>`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</sup>`;
+				break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
@@ -2210,8 +2220,14 @@ function Renderer () {
 				textStack[0] += `</span>`;
 				break;
 			}
-			case "@indent":
-				textStack[0] += `<span class="text-indent">`;
+			case "@indentFirst":
+				textStack[0] += `<span class="text-indent-first">`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</span>`;
+				break;
+			case "@indent": // FIXME: Deprecated
+			case "@indentSubsequent":
+				textStack[0] += `<span class="text-indent-subsequent">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
@@ -8791,6 +8807,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@i":
 					case "@italic":
 					case "@indent":
+					case "@indentFirst":
+					case "@indentSubsequent":
 					case "@s":
 					case "@strike":
 					case "@u":

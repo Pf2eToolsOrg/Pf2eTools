@@ -873,12 +873,12 @@ Parser.initialProficienciesToFull = function (initProf) {
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
 	out.entries.push({type: "pf2-title", name: "SKILLS"});
-	if (initProf.skills.u) initProf.skills.u.forEach(it => out.entries.push(`{@indent Untrained in ${it}}`));
-	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`{@indent Trained in ${it}}`));
-	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`{@indent Expert in ${it}}`));
-	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`{@indent Master in ${it}}`));
-	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`{@indent Legendary in ${it}}`));
-	if (initProf.skills.add) out.entries.push(`{@indent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
+	if (initProf.skills.u) initProf.skills.u.forEach(it => out.entries.push(`{@indentSubsequent Untrained in ${it}}`));
+	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`{@indentSubsequent Trained in ${it}}`));
+	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`{@indentSubsequent Expert in ${it}}`));
+	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`{@indentSubsequent Master in ${it}}`));
+	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`{@indentSubsequent Legendary in ${it}}`));
+	if (initProf.skills.add) out.entries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
 	out.entries.push({type: "pf2-title", name: "ATTACKS"});
 	if (initProf.attacks.u) initProf.attacks.u.forEach(it => out.entries.push(`Untrained in ${it}`));
 	if (initProf.attacks.t) initProf.attacks.t.forEach(it => out.entries.push(`Trained in ${it}`));
