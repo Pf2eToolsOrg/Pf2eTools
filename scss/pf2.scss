@@ -156,7 +156,6 @@
 		}
 	}
 
-	// TODO: refactor into list rendering
 	&__option {
 		font-family: 'good-pro', sans-serif;
 		font-size: 0.8em;
@@ -970,13 +969,13 @@
 
 .text-indent-first {
 	display: inline-block;
-	padding-left: 1em;
-	text-indent: -1em;
+	text-indent: 1em;
 }
 
 .text-indent-subsequent {
 	display: inline-block;
-	text-indent: 1em;
+	padding-left: 1em;
+	text-indent: -1em;
 }
 
 .hidden-fluff {

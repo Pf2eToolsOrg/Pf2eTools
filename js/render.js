@@ -1600,7 +1600,9 @@ function Renderer () {
 		if (!entry.skipSort) entry.items = entry.items.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
 		const renderer = Renderer.get();
 		entry.items.forEach(it => {
-			textStack[0] += `<p class="${entry.style ? entry.style : "pf2-book__option"}">${it.name ? `<strong>${it.name}: </strong>` : ""}${renderer.render(it.entry)}</p>`;
+			const style = entry.style ? entry.style : "pf2-book__option";
+			textStack[0] += `<p class="${style}">${it.name ? `<strong>${it.name}: </strong>` : ""}${renderer.render(it.entries.shift())}</p>`;
+			it.entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${style}">`, suffix: `</p>`}));
 		});
 	};
 
@@ -4715,11 +4717,13 @@ Renderer.deity = {
 		const renderer = Renderer.get()
 		const b = deity.devoteeBenefits;
 		return `${renderer.render({type: "pf2-h4", name: "Devotee Benefits"})}
-				<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
-				<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
-				<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
-				<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
-				<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`;
+			<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
+			<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
+			<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
+			<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
+			<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
+			${b.alternateDomains ? `<p class="pf2-book__option"><strong>Alternate Domains </strong>${renderer.render(b.domains.join(", "))}</p>` : ""}
+			${b.ability ? `<p class="pf2-book__option"><strong>Divine Ability </strong>${renderer.render(b.ability.entry)}</p>` : ""}`;
 	},
 
 	getRenderedLore (deity) {
