@@ -307,7 +307,7 @@
             "classSource": "APG",
 			"level": 1,
 			"entries": [
-				"Your mystery provides you with divine magical power. You can cast spells using the Cast a Spell activity, and you can supply material, somatic, and verbal components when casting spells. Your unconventional access to this divine power means you can usually replace material components with somatic components, so you don’t need to use a material component pouch when casting spells.",
+				"Your mystery provides you with divine magical power. You can cast spells using the {@action Cast a Spell} activity, and you can supply material, somatic, and verbal components when casting spells. Your unconventional access to this divine power means you can usually replace material components with somatic components, so you don’t need to use a material component pouch when casting spells.",
 				"At 1st level, you can cast up to two 1st-level spells per day. You must know spells to cast them, and you learn them via the spell repertoire class feature. The number of spells you can cast each day is called your spell slots. As you increase in level as an oracle, your number of spells per day increases, as does the highest level of spells you can cast, as shown on Table 2–3: Oracle Spells per Day on page 71.",
 				"Some of your spells require you to attempt a spell attack roll to see how effective they are, or have your enemies roll against your spell DC (typically by attempting a saving throw). Since your key ability is Charisma, your spell attack rolls and spell DCs use your Charisma modifier.",
 				{
@@ -750,7 +750,7 @@
             "classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|source=null|type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|featstype=skill}. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -761,7 +761,7 @@
             "classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a general feat."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|featstype=general}."
 			]
 		},
 		{
@@ -806,7 +806,7 @@
             "classSource": "APG",
 			"level": 5,
 			"entries": [
-				"In addition to the ancestry feat you started with, you gain an ancestry feat at 5th level and every 4 levels thereafter."
+				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|featstype=ancestry} at 5th level and every 4 levels thereafter."
 			]
 		},
 		{
@@ -1048,7 +1048,7 @@
 								[
 									"3",
 									"Spellcasting",
-									"Cast a Spell",
+									"{@action Cast a Spell}",
 									"Non-cantrip spells without a duration gain a status bonus to their damage and healing equal to the spell's level.",
 									"Non-cantrip spells without a duration gain a status bonus to their damage and healing equal to the spell's level +3."
 								],
@@ -1417,7 +1417,7 @@
                     "page": 74,
                     "name": "Lore",
                     "entries": [
-				        "The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can’t speak, use linguistic effects, or otherwise communicate with your allies. If you Cast a Spell with a verbal component, you must succeed at a DC 5 flat check or the spell is lost. You gain a +4 status bonus on saving throws against linguistic effects."
+				        "The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can’t speak, use linguistic effects, or otherwise communicate with your allies. If you {@action Cast a Spell} with a verbal component, you must succeed at a DC 5 flat check or the spell is lost. You gain a +4 status bonus on saving throws against linguistic effects."
                     ]
                 }
 			]
