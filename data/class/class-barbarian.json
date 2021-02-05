@@ -400,7 +400,20 @@
 			"classSource": "CRB",
 			"level": 11,
 			"entries": [
-				"Your rage intensifies and lets you burst into action. Your proficiency rank for your barbarian class DC increases to expert. You gain the Mighty Rage free action."
+				"Your rage intensifies and lets you burst into action. Your proficiency rank for your barbarian class DC increases to expert. You gain the {@action Mighty Rage} free action.",
+				{
+					"type": "ability",
+					"name": "Mighty Rage",
+					"trigger": "You use the Rage action on your turn.",
+					"activity": {
+						"number": 1,
+						"unit": "free",
+						"entry": "{@as F}"
+					},
+					"entries": [
+						"Use an action that has the rage trait. Alternatively, you can increase the actions of the triggering Rage to 2 to instead use a 2-action activity with the rage trait."
+					]
+				}
 			]
 		},
 		{
