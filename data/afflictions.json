@@ -37,7 +37,541 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Scarlet Fever",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 1,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"The relatively simple sore throat caused by this disease leads many victims to initially dismiss it as a mild illness, but scarlet fever can be deadly if left untreated. You can’t reduce your sickened condition while affected with scarlet fever.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 13,
+						"saving throw": "Fortitude",
+						"onset": "2 days",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened||sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened||sickened 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition sickened||sickened 3} and can't speak",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tetanus",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 1,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"An infection introduced through open wounds, tetanus can produce stiffness, muscle spasms strong enough to break bones, and ultimately death.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 14,
+						"saving throw": "Fortitude",
+						"onset": "10 days",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition clumsy||clumsy 1}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy||clumsy 2} and can't speak",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition paralyzed} with spasms",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tuberculosis",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 1,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"An extended respiratory disease, tuberculosis can pose particular challenges to spellcasters and some performers due to the intense coughing fits it produces.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 15,
+						"saving throw": "Fortitude",
+						"onset": "1 week",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no effects",
+								"duration": "1 week"
+							},
+							{
+								"stage": 2,
+								"entry": "coughing requires you to succeed at a DC 5 flat check to Cast a Spell with a verbal component or Activate an Item with a command component",
+								"duration": "1 week"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition fatigued}, can’t recover from the fatigued condition, and coughing requires a successful DC 15 flat check to Cast a Spell with a verbal component or Activate an Item with a command component",
+								"duration": "1 week"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition unconscious}",
+								"duration": "1 week"
+							},
+							{
+								"stage": 5,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Malaria",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 2,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"A pernicious disease spread by bloodsucking insects, malaria sometimes enters long periods of dormancy. If you succumb to malaria, you may continue to be periodically affected by the disease, even if you’re cured. You can’t reduce your sickened condition while affected with malaria.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 16,
+						"saving throw": "Fortitude",
+						"onset": "10 days",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition sickened||sickened 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition sickened||sickened 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition sickened||sickened 2}, and disease recurs every {@dice 1d4} months even if cured",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "unconscious",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bubonic Plague",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 3,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"This widespread illness can sweep through entire communities, leaving few unaffected. The first indication of the disease is a telltale swelling of glands. In some cases, the disease can move into your lungs (pneumonic plague) or blood (septicemic plague), which is even more fatal. If you have bubonic plague, you can’t remove the fatigued condition while affected.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 17,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled||enfeebled 2} and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled||enfeebled 3}, {@condition fatigued}, and take {@dice 1d6} persistent bleed damage every {@dice 1d20} minutes",
+								"duration": "1 day"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Scarlet Leprosy",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 4,
+			"traits": [
+				"Disease",
+				"Virulent"
+			],
+			"entries": [
+				"Scarlet leprosy is widely feared for its devastating effects, crushing bones and organs while making recovery nearly impossible. Damage taken from scarlet leprosy can’t be healed until the disease is cured.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 19,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@dice 2d6} bludgeoning damage",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@dice 2d6} bludgeoning damage, and whenever you gain the {@condition wounded} condition, increase the condition value by 1",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@dice 4d6} bludgeoning damage and can’t heal any Hit Point damage",
+								"duration": "1 day"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Bone Chill",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 5,
+			"traits": [
+				"Disease",
+				"Necromancy",
+				"Primal"
+			],
+			"entries": [
+				"If you are wounded and exposed to persistent cold, you might contract bonechill.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 20,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition clumsy|| clumsy 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition clumsy|| clumsy 2} and can't heal cold damage until this disease is cured",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition clumsy|| clumsy 3} and all cold temperature effects are one step more severe for the victim ({@book {@i Core Rulebook} 517|CRB|10|Temperature})",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition paralyzed} and all cold temperature effects are one step more severe for the victim",
+								"duration": "1 day"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Chocking Death",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 118,
+			"level": 6,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"This disease is capable of wiping out nations or even entire continents. A few pockets of the disease still remain in Iobaria, keeping that region’s population sparse.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 22,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "hoarse voice but no other symptoms",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|| drained 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained|| drained 2} and can't speak",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Blinding Sickness",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				"Endemic to jungles of the Mwangi Expanse, blinding sickness is transmitted by dirty water or the bites of certain creatures.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 23,
+						"saving throw": "Fortitude",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "carrier with no effects",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition enfeebled|| enfeebled 1}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition enfeebled|| enfeebled 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition enfeebled|| enfeebled 2} and permanently blinded",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "{@condition enfeebled|| enfeebled 4}"
+							},
+							{
+								"stage": 6,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sewer Haze",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 119,
+			"level": 7,
+			"traits": [
+				"Disease",
+				"Virulent"
+			],
+			"entries": [
+				"Many healers and alchemists suspect that sewer haze has a supernatural origin, given its association with particularly strong otyughs.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 23,
+						"saving throw": "Fortitude",
+						"onset": "2 days",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition stupefied|| stupefied 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition drained|| drained 2} and {@condition stupefied|| stupefied 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition drained|| drained 3} and {@condition stupefied|| stupefied 3}",
+								"duration": "1 day"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Nightmare Fever",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 119,
+			"level": 8,
+			"traits": [
+				"Disease",
+				"Necromancy",
+				"Occult"
+			],
+			"entries": [
+				"Thought to be caused by a night hag’s curse, nightmare fever inflicts you with terrible nightmares, and you awaken with the wounds you received in your dreams. Some versions cause you to dream of being wounded by bludgeoning or piercing weapons, in which case you take that type of damage instead. Damage and the fatigued condition caused by the disease can’t be healed until the disease is removed.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 25,
+						"saving throw": "Will",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@dice 2d6} slashing damage and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@dice 4d6} slashing damage and {@condition fatigued}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@dice 4d6} slashing damage, {@condition fatigued}, and whenever you take slashing damage, you must succeed at a Will save against the disease’s DC or become {@condition frightened||frightened 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@dice 6d6} slashing damage, {@condition fatigued}, and whenever you take slashing damage, you must succeed at a Will save against the disease’s DC or become {@condition paralyzed}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "{@dice 6d6} slashing damage and {@condition unconscious}"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Brain Worms",
+			"type": "Disease",
+			"source": "GMG",
+			"page": 119,
+			"level": 11,
+			"traits": [
+				"Disease",
+				"Virulent"
+			],
+			"entries": [
+				"Scholars suspect these brain parasites have an otherworldly or extraplanar origin. Though transmitted by the bites of infected targets, the disease remains relatively rare—most hosts are killed by the effects before they can pass it on. While infected, whenever you attack due to confusion, you bite your target (if you don’t have a jaws or fangs attack, you deal piercing damage as an unarmed attack with damage equal to your lowest unarmed attack).",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 28,
+						"saving throw": "Fortitude",
+						"onset": "1 day",
+						"stages": [
+							{
+								"stage": 1,
+								"entry": "{@condition stupefied||stupefied 2}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 2,
+								"entry": "{@condition stupefied||stupefied 2}, and whenever you take damage, you must succeed at a Will save against the disease’s DC or become {@condition confused} for 1 round",
+								"duration": "1 day"
+							},
+							{
+								"stage": 3,
+								"entry": "{@condition stupefied||stupefied 3}, and whenever you take damage, you must succeed at a Will save against the disease’s DC or become {@condition confused} for 1 minute",
+								"duration": "1 day"
+							},
+							{
+								"stage": 4,
+								"entry": "{@condition stupefied||stupefied 4} and {@condition confused}, damage does not end the confused condition",
+								"duration": "1 day"
+							},
+							{
+								"stage": 5,
+								"entry": "{@condition unconscious}",
+								"duration": "1 day"
+							},
+							{
+								"stage": 6,
+								"entry": "death"
+							}
+						]
+					}
+				}
+			]
 		}
+
+
 	],
 	"curse": [
 		{
