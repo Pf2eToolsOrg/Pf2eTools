@@ -5,7 +5,7 @@
 			"type": "Disease",
 			"source": "GMG",
 			"page": 118,
-			"level": "Level Varies",
+			"level": 0,
 			"traits": [
 				"Disease"
 			],
@@ -595,6 +595,394 @@
 						"saving throw": "Will",
 						"effect": [
 							"You must rest for 12 hours instead of 8 to avoid becoming fatigued and can’t gain any benefits from resting or long‑term rest. You can still make your daily preparations."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Theft of Thought",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 3,
+			"traits": [
+				"Curse",
+				"Enchantment",
+				"Magical",
+				"Mental"
+			],
+			"entries": [
+				"This curse protects a single book and activates against any creature who {@action steal||Steals} it.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 18,
+						"saving throw": "Will",
+						"effect": [
+							"You begin to lose details from your memories, as well as a portion of your procedural memory. After being cursed, the first time you attempt a check using a skill in which you are trained or better, your proficiency rank in the skill used decreases by one rank for as long as you are cursed."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Slayer's Haunt",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 4,
+			"traits": [
+				"Curse",
+				"Illusion",
+				"Magical",
+				"Visual"
+			],
+			"entries": [
+				"You are haunted by all those you have killed.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 19,
+						"saving throw": "Will",
+						"effect": [
+							"You see all creatures around you as those you have slain, still bearing their wounds. You can’t identify, {@action Recall Knowledge} about, or otherwise interact with these creatures in any way that involves seeing their true form without first succeeding at a Will save against the curse’s DC to see through the illusion. On a critical failure for such a Will save, you become {@condition frightened||frightened 1}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Coward's Roots",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 4,
+			"traits": [
+				"Curse",
+				"Enchantment",
+				"Fear",
+				"Magical",
+				"Mental"
+			],
+			"entries": [
+				"You find all courage stolen from your heart. When faced with something frightening, you flee in terror or stand frozen in place.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 20,
+						"saving throw": "Will",
+						"effect": [
+							"At the start of your turn, if you are {@condition frightened}, you become your choice of {@condition immobilized} or {@condition fleeing} until the end of that turn."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Curse of the Ravenous",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 5,
+			"traits": [
+				"Curse",
+				"Magical",
+				"Transmutation"
+			],
+			"entries": [
+				"This hideous curse kills through constant hunger. You become gaunt and repeatedly gnash your teeth.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 20,
+						"saving throw": "Fortitude",
+						"effect": [
+							"No matter how much you eat, you aren’t satiated. After 1 day, you begin starving ({@book {@i Core Rulebook} 500|CRB|10|Starvation and Thirst}). Each week, you receive a new saving throw against the curse."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Wizard's Ward",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 116,
+			"level": 6,
+			"traits": [
+				"Abjuration",
+				"Curse",
+				"Magical"
+			],
+			"entries": [
+				"A wizard’s ward is placed upon a single book, usually a spellbook. If you damage the book, you must attempt a save against the curse’s effect.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 22,
+						"saving throw": "Will",
+						"effect": [
+							"You take {@dice 5d6} damage of the same damage type as the damage you dealt to the book, and the damage can’t be healed as long as the curse lasts. Repairing the book, including replacing any missing text, ends this curse."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Oath of the Flesh",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 7,
+			"traits": [
+				"Abjuration",
+				"Curse",
+				"Magical"
+			],
+			"entries": [
+				"When you swear an oath, you must obey that oath or suffer terrible consequences.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 23,
+						"saving throw": "Fortitude",
+						"effect": [
+							"Each time you make a promise to someone, an ornate symbol representing that promise is magically carved into your flesh. Breaking any of these promises causes the symbol tattoo to grow into a gaping wound, dealing {@dice 3d6} slashing damage to you; damage from the curse can’t be healed as long as the curse is still in effect."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sellsword's Folly",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 9,
+			"traits": [
+				"Curse",
+				"Emotion",
+				"Enchantment",
+				"Magical",
+				"Mental"
+			],
+			"entries": [
+				"Even the most experienced combat veteran becomes as reckless as a rookie when suffering from sellsword’s folly.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 26,
+						"saving throw": "Will",
+						"effect": [
+							"The chaos of combat overwhelms you. Each time you roll initiative for a combat encounter, you must attempt a new saving throw against the curse; on a failure, you become {@condition confused} for 1 round. This is an {@trait incapacitation} effect."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Curse of Slumber",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 11,
+			"traits": [
+				"Curse",
+				"Incapacitation",
+				"Magical",
+				"Necromancy",
+				"Sleep"
+			],
+			"entries": [
+				"This legendary curse sends you into a sleep indistinguishable from death.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 28,
+						"saving throw": "Fortitude",
+						"effect": [
+							"You fall asleep for 1 round (or permanently on a critical failure) and seem to be dead; a creature must succeed at a DC 30 Medicine check to realize you are alive. Noise doesn’t awaken you, but taking damage gives you a new saving throw against the curse."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Reviling Earth",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 12,
+			"traits": [
+				"Curse",
+				"Death",
+				"Magical",
+				"Necromancy"
+			],
+			"entries": [
+				"A reviling earth curse usually appears across a specific geographical region, such as a ruined town, a necromancer’s domain, or a similar area.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 30,
+						"saving throw": "Fortitude",
+						"effect": [
+							"When you enter the area, you become {@condition doomed||doomed 1}, or {@condition doomed||doomed 2} on a critical failure."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Spirit Anchor",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 13,
+			"traits": [
+				"Curse",
+				"Magical",
+				"Necromancy",
+				"Negative"
+			],
+			"entries": [
+				"This curse prevents your soul from moving on after death.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 31,
+						"saving throw": "Fortitude",
+						"effect": [
+							"If you die while affected, your spirit is anchored to the Material Plane, and you become a ghost or other incorporeal undead."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Unending Thirst",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 15,
+			"traits": [
+				"Curse",
+				"Transmutation",
+				"Magical"
+			],
+			"entries": [
+				"This curse kills through dehydration in the same vein as the curse of the ravenous, but with deadly speed.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 32,
+						"saving throw": "Fortitude",
+						"effect": [
+							"You gain no benefit from drinking water or other liquids and begin suffering from thirst ({@book {@i Core Rulebook} 500|CRB|10|Starvation and Thirst}). Each day, you receive a new saving throw against the curse."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Reviled of Nature",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 18,
+			"traits": [
+				"Curse",
+				"Emotion",
+				"Enchantment",
+				"Magical",
+				"Mental"
+			],
+			"entries": [
+				"This curse makes the hunter into the hunted, drawing the ire of animals wherever you go.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 38,
+						"saving throw": "Will",
+						"effect": [
+							"Creatures of the natural world abhor you. Whenever an animal becomes aware of you, it must attempt a Will save against the curse. On a failure, it attacks you and fights to the death."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Thief's Retribution",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 19,
+			"traits": [
+				"Conjuration",
+				"Curse",
+				"Magical"
+			],
+			"entries": [
+				"This punishment causes you to lose something dear to you whenever you rob or steal. If you have nothing to lose, the curse exacts its punishment upon your body instead.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 39,
+						"saving throw": "Fortitude",
+						"effect": [
+							"Each time you steal something, you lose something more valuable—this item is whisked away and can’t be found again. Typically this item is one of greater monetary value, but it might be one of greater value in another sense, such as one of greater emotional value, or something you need to complete a task. If you aren’t carrying anything of greater value at the time of the theft, you lose one of your limbs instead, taking {@dice 10d6} slashing damage and losing use of that limb. The damage can’t be healed, nor the limb restored, until the stolen item is returned, even through use of spells like {@i {@spell regenerate}}."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Sword of Anathema",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": 20,
+			"traits": [
+				"Curse",
+				"Divine",
+				"Evocation"
+			],
+			"entries": [
+				"With divine intervention, followers of a deity can bestow this curse upon an enemy of the faith.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": 40,
+						"saving throw": "Will",
+						"effect": [
+							"You are marked by the deity invoked as an enemy of the church. You gain weakness 10 to damage dealt by worshippers of that deity."
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Grave Curse",
+			"type": "Curse",
+			"source": "GMG",
+			"page": 117,
+			"level": "Level Varies",
+			"traits": [
+				"Curse",
+				"Necromancy",
+				"Magical"
+			],
+			"entries": [
+				"A grave curse punishes you for stealing from a tomb or other resting place.",
+				{
+					"type": "affliction",
+					"entries": {
+						"DC": "equal to a high spell DC for a monster of its level (page 65);",
+						"saving throw": "Will",
+						"effect": [
+							"You are hounded by undead creatures of the same level as the curse. Every night, you must attempt a DC 15 flat check. On a failure, an incorporeal undead manifests to hassle and harry you throughout the night, retreating before it can take much damage and often preventing you from gaining a full night’s rest. Whenever you enter a graveyard or other area where bodies are buried, you must succeed at the same flat check or a body animates as a corporeal undead (typically a skeleton or zombie) to attack you.",
+							"These undead are temporary and exist only to harry you; if you take control of the undead, move on, or otherwise avoid their attacks, incorporeal undead discorporate and corporeal undead collapse into ordinary corpses. The curse can be removed by returning the stolen items to their resting place."
 						]
 					}
 				}
