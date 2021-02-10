@@ -586,7 +586,8 @@
 									{
 										"type": "pf2-title",
 										"name": "DEATH AND DYING RULES"
-									},"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459–461. The most significant information not contained in the conditions themselves is this: When you’re reduced to 0 Hit Points, you’re knocked out with the following effects:",
+									},
+									"The {@condition doomed}, {@condition dying}, {@condition unconscious}, and {@condition wounded} conditions all relate to the process of coming closer to death. The full rules are on pages 459–461. The most significant information not contained in the conditions themselves is this: When you’re reduced to 0 Hit Points, you’re knocked out with the following effects:",
 									"directly before the creature or effect that reduced you to 0 Hit Points.",
 									"knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition, increase these values by your {@condition wounded} value. If the damage came from a nonlethal attack or effect, you don’t gain the {@condition dying} condition— you are instead {@condition unconscious} with 0 Hit Points."
 								]
@@ -795,6 +796,87 @@
 						"name": "Sign Language and Reading Lips",
 						"entries": [
 							"The language entry for most characters lists languages they use to communicate in spoken words. However, you might know the signed version of a language or know how to read lips. You can learn these by taking the Sign Language and Read Lips skill feats. If you are creating a character who is deaf, hard of hearing, or unable to speak, discuss with your GM whether it makes sense for your character to know sign languages or lip reading. If so, your GM might allow you to select one of these feats for free (even if you don’t meet the prerequisites) to represent your character concept."
+						]
+					}
+				]
+			}
+		]
+	},
+	"ritual": {
+		"source": "CRB",
+		"page": 408,
+		"entries": [
+			{
+				"type": "pf2-h1",
+				"name": "Rituals",
+				"source": "CRB",
+				"page": 408,
+				"entries": [
+					{
+						"type": "pf2-h1-flavor",
+						"entries": [
+							"A ritual is an esoteric and complex spell that anyone can cast. It takes much longer to cast a ritual than a normal spell, but rituals can have more powerful effects."
+						]
+					},
+					{
+						"type": "pf2-h2",
+						"name": "Casting Rituals",
+						"entries": [
+							"When you take charge of a ritual, you are its primary caster, and others assisting you are secondary casters. You can be a primary caster for a ritual even if you can’t cast spells. You must know the ritual, and the ritual’s spell level can be no higher than half your level rounded up. You must also have the required proficiency rank in the skill used for the ritual’s primary check (see Checks below), and as the primary caster, you must attempt this skill check to determine the ritual’s effects. The primary skill check determines the tradition.",
+							"Rituals do not require spell slots to cast. You can heighten a ritual up to half your level rounded up, decided when the ritual is initiated. A ritual always takes at least 1 hour to perform, and often longer. While a ritual is a downtime activity, it’s possible—albeit risky—to perform a ritual during exploration with enough uninterrupted time. A ritual’s casting time is usually listed in days. Each day of casting requires 8 hours of participation in the ritual from all casters, with breaks during multiday rituals to allow rest. One caster can continue a multiday ritual, usually with some light chanting or meditation, while the other casters rest. All rituals require material, somatic, and verbal components throughout their casting time.",
+							{
+								"type": "pf2-h3",
+								"name": "Learning Rituals",
+								"entries": [
+									"Learning a ritual does not count against any limits on spells in your spell repertoire or on any other normal spellcasting ability. Rituals are never common, though if you look hard, you can probably find someone who can perform an uncommon ritual for you. They may still be unwilling to teach it to you."
+								]
+							},
+							{
+								"type": "pf2-h3",
+								"name": "Cost",
+								"entries": [
+									"A ritual’s Cost entry lists valuable components required to cast the ritual. If a ritual doesn’t have any such components, it won’t have a Cost entry. The cost is consumed when you attempt the primary skill check. Costs are often presented as a base cost multiplied by the target’s level and sometimes the spell’s level. If the target’s level is lower than 1, multiply the cost by 1 instead. Heightened versions that increase the base cost multiply it by the target’s level or another value as appropriate. Most rituals that create permanent creatures, such as {@ritual create undead}, use costs based on the level of the spell, as presented on Table 7–1."
+								]
+							},
+							{
+								"type": "pf2-h3",
+								"name": "Secondary Casters",
+								"entries": [
+									"Many rituals need additional secondary casters, who also don’t need to be able to cast spells. Unlike a primary caster, a secondary caster doesn’t need a minimum level or skill proficiency. The Secondary Casters entry, if present, indicates the minimum number of secondary casters required."
+								]
+							},
+							{
+								"type": "pf2-h3",
+								"name": "Checks",
+								"entries": [
+									"At the ritual’s culmination, you must attempt the skill check listed in the Primary Check entry to determine the ritual’s outcome. Primary checks usually have a very hard DC for a level that’s twice the ritual’s spell level. As with other downtime activities, fortune and misfortune effects can’t modify your checks for the ritual, nor can bonuses or penalties that aren’t active throughout the process.",
+									"The GM can adjust the DCs of rituals, add or change primary or secondary checks, or even waive requirements to fit specific circumstances. For example, performing a ritual in a location where ley lines converge on the night of a new moon might make a normally difficult ritual drastically easier.",
+									{
+										"type": "pf2-h4",
+										"name": "Secondary Checks",
+										"entries": [
+											"Often, a ritual requires secondary checks to represent aspects of its casting, usually with a standard DC for a level twice the ritual’s spell level. A different secondary caster must attempt each secondary check. If there are more secondary casters than checks, the others don’t attempt any.",
+											"Secondary casters attempt their checks before you attempt the primary check; no matter their results, the ritual proceeds to the primary check. Secondary checks affect the primary check depending on their results.",
+											{
+												"type": "success_degree",
+												"entries": {
+													"Critical Success": "You gain a +2 circumstance bonus to the primary check.",
+													"Success": "No bonus or penalty.",
+													"Failure": "You take a –4 circumstance penalty to the primary check.",
+													"Critical Failure": "As failure, and you reduce the degree of success of the primary skill check by one step."
+												}
+											}
+										]
+									}
+								]
+							},
+							{
+								"type": "pf2-h3",
+								"name": "Effect",
+								"entries": [
+									"A ritual’s effect depends on the result of the primary check. If an effect lists a save DC, use your spell DC for the ritual’s magic tradition (or 12 + your level + your highest mental ability modifier, if you don’t have a spell DC)."
+								]
+							}
 						]
 					}
 				]

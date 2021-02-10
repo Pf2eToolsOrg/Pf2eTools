@@ -2782,6 +2782,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@ritual":
+						fauxEntry.href.path = "rituals.html";
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_RITUALS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@item":
 						fauxEntry.href.path = "items.html";
 						fauxEntry.href.hover = {
@@ -4284,6 +4292,14 @@ Renderer.spell = {
 		return renderStack.join("");
 	},
 
+	getHeightenedEntry (sp) {
+		if (!sp.heightened || !sp.heightened.heightened) return "";
+		const renderer = Renderer.get();
+		return `${sp.heightened.plus_x != null ? `<p class="pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>${renderer.render(sp.heightened.plus_x.entry)}</p>` : ""}
+		${sp.heightened.x != null ? sp.heightened.x.map(x => `<p class="pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>${renderer.render(x.entry)}</p>`).join("") : ""}
+		${sp.heightened.no_x != null ? `<p class="pf2-stat__section"><strong>Heightened </strong>${renderer.render(sp.heightened.no_x.entry)}</p>` : ""}`;
+	},
+
 	pGetFluff (sp) {
 		return Renderer.utils.pGetFluff({
 			entity: sp,
@@ -4292,6 +4308,40 @@ Renderer.spell = {
 		});
 	},
 };
+
+Renderer.ritual = {
+	getCompactRenderedString (ritual) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.recursiveRender(ritual.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+
+		return `${Renderer.utils.getExcludedDiv(ritual, "ritual", UrlUtil.PG_RITUALS)}
+		${Renderer.utils.getNameDiv(ritual, {page: UrlUtil.PG_RITUALS, type: ritual.type || "Ritual"})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(ritual.traits)}
+		<p class="pf2-stat__section">
+		${[`<strong>Cast </strong>${renderer.render(ritual.cast.entry)}`,
+		`${ritual.cost ? `<strong>Cost </strong>${renderer.render(ritual.cost)}` : ""}`,
+		`${ritual.secondary_casters ? `<strong>Secondary Casters </strong>${ritual.secondary_casters.number}${ritual.secondary_casters.note ? `, ${ritual.secondary_casters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
+		</p>
+		<p class="pf2-stat__section">
+		${[`<strong>Primary Check </strong>${renderer.render(ritual.primary_check.entry)}`,
+		`${ritual.secondary_check ? `<strong>Secondary Checks </strong>${renderer.render(ritual.secondary_check.entry)}` : ""}`].filter(Boolean).join("; ")}
+		</p>
+		${ritual.range.type || ritual.area || ritual.targets
+		? `<p class="pf2-stat__section">${[`${ritual.range.type ? `<strong>Range </strong>${renderer.render(ritual.range.entry)}` : ""}`,
+			`${ritual.area ? `<strong>Area </strong>${renderer.render(ritual.area.entry)}` : ""}`,
+			`${ritual.targets ? `<strong>Targets </strong>${renderer.render(ritual.targets)}` : ""}`].filter(Boolean).join("; ")}</p>` : ""}
+			${ritual.duration.type ? `<p class="pf2-stat__section"><strong>Duration </strong>${renderer.render(ritual.duration.entry)}</p>`
+		: ""}
+		${Renderer.utils.getDividerDiv()}
+		${renderStack.join("")}
+		${ritual.heightened.heightened
+		? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}`
+		: ""}
+		${Renderer.utils.getPageP(ritual)}`;
+	},
+}
 
 Renderer.condition = {
 	getCompactRenderedString (cond) {
@@ -7912,6 +7962,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
 			case UrlUtil.PG_SPELLS:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
+			case UrlUtil.PG_RITUALS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rituals/rituals-crb.json", "ritual");
 			case UrlUtil.PG_BESTIARY:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "creature", data => DataUtil.creature.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
@@ -8547,6 +8599,8 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
+			case UrlUtil.PG_RITUALS:
+				return Renderer.ritual.getCompactRenderedString;
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:

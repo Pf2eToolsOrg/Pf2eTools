@@ -73,6 +73,7 @@ class NavBar {
 		addLi(ulReferences, "abilities.html", "Creature Abilities");
 		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "languages.html", "Languages");
+		addLi(ulReferences, "rituals.html", "Rituals");
 		addDivider(ulReferences);
 		addLi(ulReferences, "traits.html", "Traits");
 
