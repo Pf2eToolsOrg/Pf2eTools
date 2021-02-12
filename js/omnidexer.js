@@ -543,7 +543,7 @@ class IndexableFileFeats extends IndexableFile {
 class IndexableFileVariantRules extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_VARIANT_OPTIONAL_RULE,
+			category: Parser.CAT_ID_VARIANT_RULE,
 			file: "variantrules.json",
 			listProp: "variantrule",
 			baseUrl: "variantrules.html",

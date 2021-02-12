@@ -1475,8 +1475,10 @@ Parser.CAT_ID_ITEM = 4;
 Parser.CAT_ID_CLASS = 5;
 Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
+Parser.CAT_ID_RITUAL = 8;
+Parser.CAT_ID_VEHICLE = 9;
 Parser.CAT_ID_ANCESTRY = 10;
-Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
+Parser.CAT_ID_VARIANT_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
 Parser.CAT_ID_HAZARD = 17;
@@ -1498,6 +1500,8 @@ Parser.CAT_ID_ARCHETYPE = 47;
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
@@ -1505,7 +1509,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_RULE] = "Variant Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
@@ -1528,8 +1532,10 @@ Parser.pageCategoryToFull = function (catId) {
 };
 
 Parser.CAT_ID_TO_PROP = {};
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "monster";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "creature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "ritual";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "vehicle";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BACKGROUND] = "background";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
@@ -1537,7 +1543,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_RULE] = "variantrule";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
@@ -2039,28 +2045,6 @@ Parser.CONDITION_TO_COLOR = {
 	"Concentration": "#009f7a",
 };
 
-Parser.RULE_TYPE_TO_FULL = {
-	"O": "Optional",
-	"V": "Variant",
-	"VO": "Variant Optional",
-	"VV": "Variant Variant",
-	"U": "Unknown",
-};
-
-Parser.ruleTypeToFull = function (ruleType) {
-	return Parser._parse_aToB(Parser.RULE_TYPE_TO_FULL, ruleType);
-};
-
-Parser.VEHICLE_TYPE_TO_FULL = {
-	"SHIP": "Ship",
-	"INFWAR": "Infernal War Machine",
-	"CREATURE": "Creature",
-};
-
-Parser.vehicleTypeToFull = function (vehicleType) {
-	return Parser._parse_aToB(Parser.VEHICLE_TYPE_TO_FULL, vehicleType);
-};
-
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
@@ -2143,6 +2127,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"language": SRC_CRB,
 	"ritual": SRC_CRB,
 	"trait": SRC_CRB,
+	"vehicle": SRC_GMG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

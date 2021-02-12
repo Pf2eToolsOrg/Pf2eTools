@@ -4857,7 +4857,7 @@ Renderer.hazard = {
 			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
 			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat__section">`);
 			if (def.hardness != null && def.hp != null) {
-				// FIXME: self-evident
+				// FIXME: KILL ME
 				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness </strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
 			} else if (def.hp != null) {
 				sectionTwo.push(Object.keys(def.hp)
@@ -6960,6 +6960,59 @@ Renderer.familiar = {
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
 		${Renderer.utils.getPageP(familiar)}`;
+	},
+};
+
+Renderer.vehicle = {
+	getCompactRenderedString (it) {
+		const renderer = Renderer.get();
+		const traits = it.traits || [];
+		traits.push(it.size);
+		const defensesStack = [];
+		if (it.defenses) {
+			const def = it.defenses;
+			const sectionAcSt = [];
+			const sectionTwo = [];
+			defensesStack.push(`<p class="pf2-stat__section">`);
+			if (def.ac) {
+				sectionAcSt.push(Object.keys(def.ac)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}AC </strong>${def.ac[k]}`).join(", "));
+			}
+			if (def.saving_throws) {
+				sectionAcSt.push(Object.keys(def.saving_throws).filter(k => def.saving_throws[k] != null)
+					.map(k => `<strong>${k.uppercaseFirst()} </strong>{@d20 ${def.saving_throws[k]}||${Parser.savingThrowAbvToFull(k)}}`).join(", "));
+			}
+			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
+			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat__section">`);
+			if (def.hardness != null && def.hp != null) {
+				// FIXME: KILL ME
+				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness </strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
+			} else if (def.hp != null) {
+				sectionTwo.push(Object.keys(def.hp)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));
+			} else throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
+			if (def.immunities) sectionTwo.push(`<strong>Immunities </strong>${def.immunities.join(", ")}`);
+			if (def.weaknesses) sectionTwo.push(`<strong>Weaknesses </strong>${def.weaknesses.map(w => w.amount ? `${w.amount} ${w.name}${w.note ? ` ${w.note}` : ""}` : `${w.name}${w.note ? ` ${w.note}` : ""}`).join(", ")}`);
+			if (def.resistances) sectionTwo.push(`<strong>Resistances </strong>${def.resistances.map(r => r.amount ? `${r.amount} ${r.name}${r.note ? ` ${r.note}` : ""}` : `${r.name}${r.note ? ` ${r.note}` : ""}`).join(", ")}`);
+			defensesStack.push(renderer.render(sectionTwo.join("; ")));
+			defensesStack.push(`</p>`);
+		}
+
+		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
+		${Renderer.utils.getNameDiv(it, {type: "Vehicle"})}
+		${Renderer.utils.getTraitsDiv(traits)}
+		${it.price ? `<p class="pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(it.price)}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat__section"><strong>Space </strong>${it.space.long.number} ${it.space.long.unit} long, ${it.space.wide.number} ${it.space.wide.unit} wide, ${it.space.high.number} ${it.space.high.unit} high</p>
+		<p class="pf2-stat__section"><strong>Crew </strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}, ${it.crew.crew} crew${it.passengers != null ? `; <strong>Passengers </strong>${it.passengers}` : ""}</p>
+		<p class="pf2-stat__section"><strong>Piloting Check </strong>${it.pilot_check.length > 1 ? `${it.pilot_check.slice(0, -1).map(c => `${c.skill} (DC ${c.dc})`).join(", ")} or ${it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`).slice(-1)}` : it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`)}</p>
+		${Renderer.utils.getDividerDiv()}
+		${defensesStack.join("")}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat__section"><strong>Speed </strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type} ${it.speed.speed} feet ${it.speed.traits ? `(${it.speed.traits.map(t => renderer.render(`{@trait ${Parser.getTraitName(t)}|${Parser.TRAITS_TO_TRAITS_SRC[Parser.getTraitName(t)]}|${t}}`)).join(", ")})` : ""}`}</p>
+		<p class="pf2-stat__section"><strong>Collision </strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
+		${it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("")}
+		${Renderer.utils.getPageP(it)}`;
 	},
 };
 
