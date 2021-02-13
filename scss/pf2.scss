@@ -156,7 +156,6 @@
 		}
 	}
 
-	// TODO: refactor into list rendering
 	&__option {
 		font-family: 'good-pro', sans-serif;
 		font-size: 0.8em;
@@ -480,7 +479,7 @@
 	text-align: justify;
 	line-height: 1.35em;
 
-	~ .pf2-p {
+	+ .pf2-p {
 		text-indent: 1em;
 	}
 }
@@ -968,7 +967,12 @@
 	border-right-style: none !important;
 }
 
-.text-indent {
+.text-indent-first {
+	display: inline-block;
+	text-indent: 1em;
+}
+
+.text-indent-subsequent {
 	display: inline-block;
 	padding-left: 1em;
 	text-indent: -1em;

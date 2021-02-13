@@ -346,6 +346,9 @@ function Renderer () {
 				case "pf2-title":
 					this._renderPf2Title(entry, textStack, meta, options);
 					break;
+				case "pf2-options":
+					this._renderPf2Options(entry, textStack, meta, options);
+					break;
 				// recursive
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
@@ -760,7 +763,7 @@ function Renderer () {
 
 	this._renderTable = function (entry, textStack, meta, options) {
 		// TODO: implement rollable tables
-		const numCol = Math.max(...entry.rows.map(x => x.length))
+		const numCol = Math.max(...entry.rows.map(x => x.type === "multiRow" ? x.rows.map(y => y.length) : x.length).flat());
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol)
 		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
@@ -791,44 +794,54 @@ function Renderer () {
 		const labelRowIdx = entry.labelRowIdx ? entry.labelRowIdx : [0];
 		let rowParity = 0;
 		let idxSpan = 0;
-		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
-			const row = entry.rows[idxRow]
-			const lenCol = row.length
 
-			if (lenCol === numCol) {
+		const renderRow = function (renderer, row, idxRow) {
+			const lenCol = row.length;
+			if (row.type === "multiRow") {
+				row.rows.forEach(r => {
+					renderRow(renderer, r, idxRow);
+					rowParity = (rowParity + 1) % 2;
+				});
+				rowParity = (rowParity + 1) % 2;
+			} else if (lenCol === numCol) {
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity)
-					textStack[0] += `<div class="${styles}">`
-					this._recursiveRender(row[idxCol], textStack, meta);
-					textStack[0] += `</div>`
+					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity);
+					textStack[0] += `<div class="${styles}">`;
+					renderer._recursiveRender(row[idxCol], textStack, meta);
+					textStack[0] += `</div>`;
 				}
 				if (labelRowIdx.includes(idxRow)) {
-					rowParity = 0
+					rowParity = 0;
 				} else {
-					rowParity = (rowParity + 1) % 2
+					rowParity = (rowParity + 1) % 2;
 				}
 			} else {
 				let last_end = 1;
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity)
-					let span = entry.spans[idxSpan][idxCol]
+					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity);
+					let span = entry.spans[idxSpan][idxCol];
 					if (last_end !== span[0]) {
-						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`
+						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`;
 					}
-					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`
-					last_end = span[1]
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`;
+					last_end = span[1];
 				}
 				if (labelRowIdx.includes(idxRow)) {
-					rowParity = 0
+					rowParity = 0;
 				} else {
-					rowParity = (rowParity + 1) % 2
+					rowParity = (rowParity + 1) % 2;
 				}
 				if (last_end !== numCol + 1) {
-					let styles = this._renderTable_getStyles(entry, idxRow, numCol, true, rowParity)
-					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`
+					let styles = renderer._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
+					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`;
 				}
 				idxSpan += 1;
 			}
+		};
+
+		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
+			const row = entry.rows[idxRow];
+			renderRow(this, row, idxRow);
 		}
 
 		if (entry.footnotes != null) {
@@ -1582,6 +1595,17 @@ function Renderer () {
 		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
+	this._renderPf2Options = function (entry, textStack, meta, options) {
+		if (!entry.items || !entry.items.length) return;
+		if (!entry.skipSort) entry.items = entry.items.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
+		const renderer = Renderer.get();
+		entry.items.forEach(it => {
+			const style = entry.style ? entry.style : "pf2-book__option";
+			textStack[0] += `<p class="${style}">${it.name ? `<strong>${it.name}: </strong>` : ""}${renderer.render(it.entries.shift())}</p>`;
+			it.entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${style}">`, suffix: `</p>`}));
+		});
+	};
+
 	this._renderInset = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
@@ -2165,10 +2189,10 @@ function Renderer () {
 				textStack[0] += `</u>`;
 				break;
 			case "@sup":
-			textStack[0] += `<sup>`;
-			this._recursiveRender(text, textStack, meta);
-			textStack[0] += `</sup>`;
-			break;
+				textStack[0] += `<sup>`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</sup>`;
+				break;
 			case "@note":
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
@@ -2198,8 +2222,14 @@ function Renderer () {
 				textStack[0] += `</span>`;
 				break;
 			}
-			case "@indent":
-				textStack[0] += `<span class="text-indent">`;
+			case "@indentFirst":
+				textStack[0] += `<span class="text-indent-first">`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</span>`;
+				break;
+			case "@indent": // FIXME: Deprecated
+			case "@indentSubsequent":
+				textStack[0] += `<span class="text-indent-subsequent">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
@@ -4370,35 +4400,6 @@ Renderer.background = {
 	},
 };
 
-Renderer.optionalfeature = {
-	getListPrerequisiteLevelText (prerequisites) {
-		if (!prerequisites || !prerequisites.some(it => it.level)) return "\u2014";
-		const levelPart = prerequisites.find(it => it.level).level;
-		return levelPart.level || levelPart;
-	},
-
-	getPreviouslyPrintedText (it) {
-		return it.previousVersion ? `<tr><td colspan="6"><p>${Renderer.get().render(`{@i An earlier version of this ${Parser.optFeatureTypeToFull(it.featureType)} is available in }${Parser.sourceJsonToFull(it.previousVersion.source)} {@i as {@optfeature ${it.previousVersion.name}|${it.previousVersion.source}}.}`)}</p></td></tr>` : ""
-	},
-
-	getCompactRenderedString (it) {
-		const renderer = Renderer.get();
-		const renderStack = [];
-
-		renderStack.push(`
-			${Renderer.utils.getExcludedTr(it, "optionalfeature", UrlUtil.PG_COMPANIONS_FAMILIARS)}
-			${Renderer.utils.getNameTr(it, {page: UrlUtil.PG_COMPANIONS_FAMILIARS})}
-			<tr class="text"><td colspan="6">
-			${it.prerequisite ? `<p><i>${Renderer.utils.getPrerequisiteText(it.prerequisite)}</i></p>` : ""}
-		`);
-		renderer.recursiveRender({entries: it.entries}, renderStack, {depth: 1});
-		renderStack.push(`</td></tr>`);
-		renderStack.push(Renderer.optionalfeature.getPreviouslyPrintedText(it));
-
-		return renderStack.join("");
-	},
-};
-
 Renderer.ancestry = {
 	getCompactRenderedString (race) {
 		const renderer = Renderer.get();
@@ -4716,11 +4717,13 @@ Renderer.deity = {
 		const renderer = Renderer.get()
 		const b = deity.devoteeBenefits;
 		return `${renderer.render({type: "pf2-h4", name: "Devotee Benefits"})}
-				<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
-				<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
-				<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
-				<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
-				<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>`;
+			<p class="pf2-book__option mt-2"><strong>Divine Font </strong>${renderer.render(`{@spell ${b.font}}`)}</p>
+			<p class="pf2-book__option"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
+			<p class="pf2-book__option"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
+			<p class="pf2-book__option"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
+			<p class="pf2-book__option"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
+			${b.alternateDomains ? `<p class="pf2-book__option"><strong>Alternate Domains </strong>${renderer.render(b.domains.join(", "))}</p>` : ""}
+			${b.ability ? `<p class="pf2-book__option"><strong>Divine Ability </strong>${renderer.render(b.ability.entry)}</p>` : ""}`;
 	},
 
 	getRenderedLore (deity) {
@@ -5175,41 +5178,28 @@ Renderer.creature = {
 
 	getCompactRenderedString (cr, renderer, options) {
 		options = options || {};
-		renderer = renderer || Renderer.get();
-
-		let renderStack = []
-
 		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat(cr.traits.concat(cr.creature_type).sort())
 
-		renderStack.push(`
-			${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
+		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(traits)}
 			${Renderer.creature.getPerception(cr)}
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
-			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}`)
-		cr.abilities_interactive.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(`${Renderer.creature.getItems(cr)}
+			${Renderer.creature.getAbilityMods(cr.ability_modifiers)}
+			${cr.abilities_interactive.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
-			${Renderer.creature.getDefenses(cr)}`)
-		cr.abilities_automatic.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(`${Renderer.utils.getDividerDiv()}
+			${Renderer.creature.getDefenses(cr)}
+			${cr.abilities_automatic.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
-			${Renderer.creature.getRituals(cr)}`)
-		cr.abilities_active.forEach((ab) => {
-			renderer.recursiveRender(ab, renderStack, {depth: 1})
-		})
-		renderStack.push(Renderer.utils.getPageP(cr));
-
-		return (renderStack.join(""))
+			${Renderer.creature.getRituals(cr)}
+			${cr.abilities_active.map(it => Renderer.creature.getRenderedAbility(it))}
+			${Renderer.utils.getPageP(cr)}</div>`;
 	},
 
 	getRenderedAbility (ability, options) {
@@ -6262,7 +6252,7 @@ Renderer.item = {
 		if (opts.baseItems) {
 			baseItems = opts.baseItems;
 		} else {
-			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items-base.json`;
+			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items/items-base.json`;
 			const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
 			Renderer.item._addBasePropertiesAndTypes(baseItemData);
 			baseItems = [...baseItemData.baseitem, ...(opts.additionalBaseItems || [])];
@@ -6567,7 +6557,7 @@ Renderer.item = {
 	populatePropertyAndTypeReference: () => {
 		if (Renderer.item._isRefPopulated) return Promise.resolve();
 		return new Promise((resolve, reject) => {
-			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items-base.json`)
+			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/items-base.json`)
 				.then(data => {
 					if (Renderer.item._isRefPopulated) {
 						resolve();
@@ -6875,6 +6865,13 @@ Renderer.adventureBook = {
 		if (doThrowError) if (out.__BAD) throw new Error(`IDs were already in storage: ${out.__BAD.map(it => `"${it}"`).join(", ")}`);
 
 		return out;
+	},
+};
+
+Renderer.companionfamiliar = {
+	getRenderedString (it) {
+		if (it.type === "Companion") return Renderer.companion.getRenderedString(it);
+		if (it.type === "Familiar") return Renderer.familiar.getRenderedString(it);
 	},
 };
 
@@ -7956,7 +7953,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "optionalfeatures.json", "optionalfeature");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar"]);
 			case UrlUtil.PG_ANCESTRIES: {
 				const loadKey = UrlUtil.PG_ANCESTRIES;
 
@@ -8100,13 +8097,9 @@ Renderer.hover = {
 			case `fluff__${UrlUtil.PG_SPELLS}`:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-backgrounds.json", "backgroundFluff");
+				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "data/backgrounds/fluff-backgrounds.json", "backgroundFluff");
 			case `fluff__${UrlUtil.PG_ITEMS}`:
 				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-conditions.json", ["conditionFluff", "diseaseFluff"]);
-			case `fluff__${UrlUtil.PG_ANCESTRIES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-ancestries.json", "raceFluff");
-			case `fluff__${UrlUtil.PG_LANGUAGES}`:
-				return Renderer.hover._pCacheAndGet_pLoadSimpleFluff(page, source, hash, opts, "fluff-languages.json", "languageFluff");
 				// endregion
 
 			// region props
@@ -8550,6 +8543,7 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_QUICKREF:
 			case UrlUtil.PG_CLASSES:
+				// FIXME: Classes rendering
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
@@ -8569,7 +8563,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.feat.getCompactRenderedString;
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.optionalfeature.getCompactRenderedString;
+				return Renderer.companionfamiliar.getRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
@@ -8817,6 +8811,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@i":
 					case "@italic":
 					case "@indent":
+					case "@indentFirst":
+					case "@indentSubsequent":
 					case "@s":
 					case "@strike":
 					case "@u":

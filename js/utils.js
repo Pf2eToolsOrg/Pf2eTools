@@ -3212,7 +3212,7 @@ DataUtil = {
 			DataUtil.archetype._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/${it}`)));
-				DataUtil.archetype._loadedJson = {archetype: allData.map(it => it.archetype[0]).filter(Boolean)};
+				DataUtil.archetype._loadedJson = {archetype: allData.map(it => it.archetype).flat().filter(Boolean)};
 			})();
 			await DataUtil.archetype._pLoadingJson;
 
@@ -4361,7 +4361,7 @@ BrewUtil = {
 			case UrlUtil.PG_FEATS:
 				return ["feat"];
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return ["optionalfeature"];
+				return ["companion", "familiar"];
 			case UrlUtil.PG_ANCESTRIES:
 				return ["race", "raceFluff", "subrace"];
 			case UrlUtil.PG_HAZARDS:

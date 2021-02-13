@@ -8,7 +8,7 @@ class HazardsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterHazards();
 		super({
-			dataSource: "data/hazards/hazards-crb.json",
+			dataSource: "data/hazards.json",
 
 			pageFilter,
 

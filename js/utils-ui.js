@@ -796,7 +796,7 @@ class TabUiUtil {
 class SearchUiUtil {
 	static async pDoGlobalInit () {
 		elasticlunr.clearStopWords();
-		await Renderer.item.populatePropertyAndTypeReference();
+		// await Renderer.item.populatePropertyAndTypeReference();
 	}
 
 	static _isNoHoverCat (cat) {
