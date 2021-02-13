@@ -281,8 +281,8 @@
 			"level": 1,
 			"entries": [
 				"You care as much about the way you accomplish something as whether you actually accomplish it in the first place. When you perform an action with particular bravado, you can leverage this moment of verve to perform spectacular, deadly maneuvers. This state of flair is called panache, and you are either in a state of panache or you are not.",
-				"You gain panache by successfully performing the skill check associated with specific actions that have a bit of flair, including Tumble Through (Core Rulebook 240) and additional actions determined by your swashbuckler’s style (see below). At the GM’s discretion, after succeeding at a check to perform a particularly daring action, such as swinging on a chandelier or sliding down a drapery, you also gain panache if your result is high enough (typically the very hard DC for your level, but the GM can choose a different threshold).",
-				"While you have panache, you gain a +5-foot status bonus to your Speeds and gain a +1 circumstance bonus to checks to Tumble Through or to take any actions that give you panache due to your style. The precise strike class feature also causes you to deal extra precision damage while you have panache. Powerful finisher actions, including Confident Finisher, can be used only while you have panache and cause you to lose your panache.",
+				"You gain panache by successfully performing the skill check associated with specific actions that have a bit of flair, including {@action Tumble Through} and additional actions determined by your swashbuckler’s style (see below). At the GM’s discretion, after succeeding at a check to perform a particularly daring action, such as swinging on a chandelier or sliding down a drapery, you also gain panache if your result is high enough (typically the very hard DC for your level, but the GM can choose a different threshold).",
+				"While you have panache, you gain a +5-foot status bonus to your Speeds and gain a +1 circumstance bonus to checks to {@action Tumble Through} or to take any actions that give you panache due to your style. The precise strike class feature also causes you to deal extra precision damage while you have panache. Powerful finisher actions, including {@action Confident Finisher}, can be used only while you have panache and cause you to lose your panache.",
 				"Normally, you gain and use panache only in combat encounters; when an encounter ends, you lose panache."
 			]
 		},
@@ -295,7 +295,7 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"As a swashbuckler, you have your own distinctive style that enables you to gracefully handle everyday events and lifeor- death situations alike. Choose a swashbuckler’s style. This style determines the additional actions you use to gain panache and makes you trained in the skill related to that action."
+				"As a swashbuckler, you have your own distinctive style that enables you to gracefully handle everyday events and life-or-death situations alike. Choose a swashbuckler’s style. This style determines the additional actions you use to gain panache and makes you trained in the skill related to that action."
 			]
 		},
 		{
@@ -306,8 +306,8 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"You strike with flair. When you have panache and you Strike with an agile or finesse melee weapon or agile or finesse unarmed attack, you deal 2 additional precision damage. If the strike is part of a finisher, the additional damage is 2d6 precision damage instead",
-				"As your swashbuckler level increases, so does your additional damage for precise strike. Increase the amount of additional damage on a Strike and the number of additional dice on a finisher by one at 5th, 9th, 13th, and 17th levels."
+				"You strike with flair. When you have panache and you {@action Strike} with an {@trait agile} or {@trait finesse} melee weapon or {@trait agile} or {@trait finesse} unarmed attack, you deal 2 additional precision damage. If the strike is part of a finisher, the additional damage is {@dice 2d6} precision damage instead",
+				"As your swashbuckler level increases, so does your additional damage for precise strike. Increase the amount of additional damage on a {@action Strike} and the number of additional dice on a finisher by one at 5th, 9th, 13th, and 17th levels."
 			]
 		},
 		{
@@ -332,11 +332,11 @@
 						"entry": "{@as 1}"
 					},
 					"entries": [
-						"You make an incredibly graceful attack, piercing your foe’s defenses. Make a Strike with a weapon or unarmed attack that would apply your precise strike damage, with the following failure effect.",
+						"You make an incredibly graceful attack, piercing your foe’s defenses. Make a {@action Strike} with a weapon or unarmed attack that would apply your precise strike damage, with the following failure effect.",
 						{
 							"type": "success_degree",
 							"entries": {
-								"Failure": "You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the Strike."
+								"Failure": "You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the {@action Strike}."
 							}
 						}
 					]
@@ -351,7 +351,7 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain an swashbuckler class feat."
+				"At 1st level and every even-numbered level, you gain an {@filter swashbuckler class feat|feats|type=class|classes=swashbuckler|level=[1;1]}."
 			]
 		},
 		{
@@ -395,7 +395,23 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"You turn the tables on foes who fumble, capitalizing immediately on their mistake. You gain the {@action Opportune Riposte|APG} reaction."
+				"You turn the tables on foes who fumble, capitalizing immediately on their mistake. You gain the {@action Opportune Riposte|APG} reaction.",
+				{
+					"type": "ability",
+					"name": "Opportune Riposte",
+					"traits": [
+						"Swashbuckler"
+					],
+					"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"entries": [
+						"You take advantage of an opening from your enemy’s fumbled attack. You either make a melee {@action Strike} against the triggering foe or attempt to {@action Disarm} it of the weapon it used for the {@action Strike}."
+					]
+				}
 			]
 		},
 		{
@@ -618,7 +634,7 @@
 			"level": 19,
 			"entries": [
 				"As a swashbuckler at the peak of your skill, you swell with confidence and bravado in every attack. Your proficiency rank for your swashbuckler class DC increases to master.",
-				"When you Strike as part of a finisher or Opportune Riposte, you can give the Strike the failure effect from the Confident Finisher action, including the increase from Precise Finisher (page 91) if you have that feat. You can do so only if the Strike uses a weapon or unarmed attack that you could use for Confident Finisher."
+				"When you {@action Strike} as part of a finisher or {@action Opportune Riposte|APG}, you can give the {@action Strike} the failure effect from the {@action Confident Finisher} action, including the increase from {@feat Precise Finisher} if you have that feat. You can do so only if the {@action Strike} uses a weapon or unarmed attack that you could use for {@action Confident Finisher}."
 			]
 		},
 		{
@@ -646,7 +662,7 @@
 				"type": "pf2-h4",
 				"name": "Battledancer",
 				"entries": [
-					"To you, a fight is a kind of performance art, and you command your foes’ attention with mesmerizing motions. You are trained in {@skill Performance} and gain the {@feat Fascinating {@skill Performance}|CRB} skill feat. You gain panache during an encounter when the result of your {@skill Performance} check to Perform exceeds the Will DC of an observing foe, even if the foe isn’t fascinated."
+					"To you, a fight is a kind of performance art, and you command your foes’ attention with mesmerizing motions. You are trained in {@skill Performance} and gain the {@feat Fascinating Performance|CRB} skill feat. You gain panache during an encounter when the result of your {@skill Performance} check to Perform exceeds the Will DC of an observing foe, even if the foe isn’t fascinated."
 				]
 			}]
 		},
@@ -680,7 +696,7 @@
 				"type": "pf2-h4",
 				"name": "Braggart",
 				"entries": [
-					"You boast, taunt, and psychologically needle your foes. You are trained in {@skill Intimidation}. You gain panache during an encounter whenever you successfully Demoralize a foe."
+					"You boast, taunt, and psychologically needle your foes. You are trained in {@skill Intimidation}. You gain panache during an encounter whenever you successfully {@action Demoralize} a foe."
 				]
 			}]
 		},
@@ -697,7 +713,7 @@
 				"type": "pf2-h4",
 				"name": "Braggart",
 				"entries": [
-					"If the foe was temporarily immune to your Demoralize, their temporary immunity ends."
+					"If the foe was temporarily immune to your {@action Demoralize}, their temporary immunity ends."
 				]
 			}]
 		},
@@ -714,7 +730,7 @@
 				"type": "pf2-h4",
 				"name": "Fencer",
 				"entries": [
-					"You move carefully, feinting and creating false openings to lead your foes into inopportune attacks. You are trained in {@skill Deception}. You gain panache during an encounter whenever you successfully Feint or Create a Diversion against a foe."
+					"You move carefully, feinting and creating false openings to lead your foes into inopportune attacks. You are trained in {@skill Deception}. You gain panache during an encounter whenever you successfully {@action Feint} or {@action Create a Diversion} against a foe."
 				]
 			}]
 		},
@@ -731,7 +747,7 @@
 				"type": "pf2-h4",
 				"name": "Fencer",
 				"entries": [
-					"The foe is flat-footed until your next turn."
+					"The foe is {@condition flat-footed} until your next turn."
 				]
 			}]
 		},
@@ -748,7 +764,7 @@
 				"type": "pf2-h4",
 				"name": "Gymnast",
 				"entries": [
-					"You reposition, maneuver, and bewilder your foes with daring feats of physical prowess. You are trained in {@skill Athletics}. You gain panache during an encounter whenever you successfully Grapple, Shove, or Trip a foe."
+					"You reposition, maneuver, and bewilder your foes with daring feats of physical prowess. You are trained in {@skill Athletics}. You gain panache during an encounter whenever you successfully {@action Grapple}, {@action Shove}, or {@action Trip} a foe."
 				]
 			}]
 		},
@@ -765,7 +781,7 @@
 				"type": "pf2-h4",
 				"name": "Gymnast",
 				"entries": [
-					"If the foe is grabbed, restrained, or prone, you gain a circumstance bonus to the damage roll equal to twice the number of weapon damage dice."
+					"If the foe is {@condition grabbed}, {@condition restrained}, or {@condition prone}, you gain a circumstance bonus to the damage roll equal to twice the number of weapon damage dice."
 				]
 			}]
 		},
@@ -782,7 +798,7 @@
 				"type": "pf2-h4",
 				"name": "Wit",
 				"entries": [
-					"You are friendly, clever, and full of humor, always knowing just what to say in any situation. Your witticisms leave foes unprepared for the skill and speed of your attacks. You are trained in {@skill Diplomacy} and gain the {@feat Bon Mot|APG} skill feat. You gain panache during an encounter whenever you succeed at a Bon Mot against a foe."
+					"You are friendly, clever, and full of humor, always knowing just what to say in any situation. Your witticisms leave foes unprepared for the skill and speed of your attacks. You are trained in {@skill Diplomacy} and gain the {@feat Bon Mot|APG} skill feat. You gain panache during an encounter whenever you succeed at a {@feat Bon Mot|APG} against a foe."
 				]
 			}]
 		},
