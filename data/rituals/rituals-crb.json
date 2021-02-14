@@ -301,7 +301,7 @@
         "number": 1
       },
       "primary_check": {
-        "entry": "{@skill Occultism} (expert) or {@skill Religion} (expert);",
+        "entry": "{@skill Occultism} (expert) or {@skill Religion} (expert)",
         "skills": [
           "Occultism",
           "Religion"
@@ -367,7 +367,7 @@
         "number": 1
       },
       "primary_check": {
-        "entry": "{@skill Occultism} (master) or {@skill Religion} (master);",
+        "entry": "{@skill Occultism} (master) or {@skill Religion} (master)",
         "skills": [
           "Occultism",
           "Religion"
@@ -694,7 +694,7 @@
         "Abjuration"
       ],
       "entries": [
-        "target’s level; Secondary Casters 2 Primary Check {@skill Arcana} (legendary) or {@skill Occultism} (legendary); Secondary Checks {@skill Society} Range see text; Target 1 creature You perform a ritual to free a creature imprisoned, {@condition petrified}, or otherwise put into stasis by any magical effects from all such effects, even effects like imprisonment that don’t have a duration, as long as freedom’s spell level is equal to or higher than the effect’s spell level. To perform the ritual, you must be within 10 feet of the target, or within 10 feet of the place where the target was imprisoned (in the case of effects that trap the creature in an unreachable prison, like the oubliette form of imprisonment). You must know the name of the creature and details of its background; if the creature is not a close associate, a failure or critical failure on a secondary {@skill Society} check reduces even a critical success on the primary check to a failure.",
+        "You perform a ritual to free a creature imprisoned, {@condition petrified}, or otherwise put into stasis by any magical effects from all such effects, even effects like imprisonment that don’t have a duration, as long as freedom’s spell level is equal to or higher than the effect’s spell level. To perform the ritual, you must be within 10 feet of the target, or within 10 feet of the place where the target was imprisoned (in the case of effects that trap the creature in an unreachable prison, like the oubliette form of imprisonment). You must know the name of the creature and details of its background; if the creature is not a close associate, a failure or critical failure on a secondary {@skill Society} check reduces even a critical success on the primary check to a failure.",
         {
           "type": "success_degree",
           "entries": {
@@ -710,15 +710,34 @@
         "unit": "day",
         "entry": "1 day"
       },
-      "cost": "valuable oils and objects associated with the target worth a total value of 100 gp × the spell level × the",
-      "secondary_casters": {},
-      "primary_check": {},
-      "secondary_check": {},
+      "cost": "valuable oils and objects associated with the target worth a total value of 100 gp × the spell level × the target’s level",
+      "secondary_casters": {
+        "number": 2
+      },
+      "primary_check": {
+        "entry": "{@skill Arcana} (legendary) or {@skill Occultism} (legendary)",
+        "skills": [
+          "Arcana",
+          "Occultism"
+        ],
+        "prof": "legendary"
+      },
+      "secondary_check": {
+        "entry": "{@skill Society}",
+        "skills": [
+          "Society"
+        ]
+      },
       "range": {
-        "type": null
+        "type": "point",
+        "entry": "see text",
+        "distance": {
+          "type": "unknown",
+          "amount": 1
+        }
       },
       "area": null,
-      "targets": null,
+      "targets": "1 creature",
       "duration": {
         "type": null
       },
@@ -770,7 +789,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": {},
+      "secondary_check": null,
       "range": {
         "type": null
       },
@@ -809,7 +828,7 @@
         "Evocation"
       ],
       "entries": [
-        "Casters 6 Primary Check {@skill Arcana} (legendary) or {@skill Occultism} (legendary); Secondary Checks {@skill Crafting}, {@skill Society} Range 10 feet; Target 1 creature of up to 16th level You perform a ritual to imprison a creature in one of several forms. While some versions of this ritual offer all of the forms, others include only a single form or only a few of them. Whichever form you use, the effect can’t be counteracted, though it can be ended by freedom. Some forms of imprisonment can be ended by other means. Because the ritual requires the target to remain within 10 feet at all times, it typically requires you to subdue the target first.",
+        "You perform a ritual to imprison a creature in one of several forms. While some versions of this ritual offer all of the forms, others include only a single form or only a few of them. Whichever form you use, the effect can’t be counteracted, though it can be ended by freedom. Some forms of imprisonment can be ended by other means. Because the ritual requires the target to remain within 10 feet at all times, it typically requires you to subdue the target first.",
         {
           "type": "list",
           "items": [
@@ -837,14 +856,34 @@
         "entry": "1 day"
       },
       "cost": "reagents to construct the magical prison worth a total value of 800 gp × the target’s level",
-      "secondary_casters": {},
-      "primary_check": {},
-      "secondary_check": {},
+      "secondary_casters": {
+        "number": 6
+      },
+      "primary_check": {
+        "entry": "{@skill Arcana} (legendary) or {@skill Occultism} (legendary)",
+        "skills": [
+          "Arcana",
+          "Occultism"
+        ],
+        "prof": "legendary"
+      },
+      "secondary_check": {
+        "entry": "{@skill Crafting}, {@skill Society}",
+        "skills": [
+          "Crafting",
+          "Society"
+        ]
+      },
       "range": {
-        "type": null
+        "type": "point",
+        "entry": "10 feet",
+        "distance": {
+          "type": "feet",
+          "amount": 10
+        }
       },
       "area": null,
-      "targets": null,
+      "targets": "1 creature of up to 16th level",
       "duration": {
         "type": null
       },
@@ -875,7 +914,7 @@
         "Mental"
       ],
       "entries": [
-        "{@skill Religion} (expert) Range 10 feet; Target 1 creature of a level no greater than double the inveigle ritual’s level Duration 1 year or until dismissed You win over the target’s mind, causing it to see you as a close and trusted friend and look upon your every {@spell suggestion|CRB} as reasonable. The target is {@condition helpful} toward you, so it will go out of its way to help you. As with any other {@condition helpful} creature, there are limits to what you can ask of it. If you ever ask the target to do something completely against its nature or needlessly harmful to the target or its interests, not only does it refuse, but it also can attempt a Will save to end the effect early. Because of the casting time and range, it’s generally difficult to cast this ritual unless the target is willing (perhaps convinced the ritual will have some other effect) or {@condition restrained}.",
+        "You win over the target’s mind, causing it to see you as a close and trusted friend and look upon your every {@spell suggestion|CRB} as reasonable. The target is {@condition helpful} toward you, so it will go out of its way to help you. As with any other {@condition helpful} creature, there are limits to what you can ask of it. If you ever ask the target to do something completely against its nature or needlessly harmful to the target or its interests, not only does it refuse, but it also can attempt a Will save to end the effect early. Because of the casting time and range, it’s generally difficult to cast this ritual unless the target is willing (perhaps convinced the ritual will have some other effect) or {@condition restrained}.",
         "If the creature is unwilling to accept the ritual, it can attempt a Will save to negate the effect.",
         {
           "type": "success_degree",
@@ -893,23 +932,34 @@
         "entry": "1 day"
       },
       "cost": "rare oils worth a total value of 10 gp × the target’s level",
-      "secondary_casters": {},
+      "secondary_casters": null,
       "primary_check": {
-        "entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or",
+        "entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion} (expert)",
         "skills": [
           "Arcana",
-          "Occultism"
+          "Occultism",
+          "Religion"
         ],
         "prof": "expert"
       },
-      "secondary_check": {},
+      "secondary_check": null,
       "range": {
-        "type": null
+        "type": "point",
+        "entry": "10 feet",
+        "distance": {
+          "type": "feet",
+          "amount": 10
+        }
       },
       "area": null,
-      "targets": null,
+      "targets": "1 creature of a level no greater than double the inveigle ritual’s level",
       "duration": {
-        "type": null
+        "type": "timed",
+        "entry": "1 year or until dismissed",
+        "duration": {
+          "number": 1,
+          "unit": "year"
+        }
       },
       "heightened": {
         "heightened": true,
@@ -933,7 +983,7 @@
         "Divination"
       ],
       "entries": [
-        "{@skill Performance}, {@skill Society} You attempt to learn useful legends about a particular subject, which must be an important person, place, or thing.",
+        "You attempt to learn useful legends about a particular subject, which must be an important person, place, or thing.",
         "If the subject is present, increase the degree of success of your primary skill check by one step. If you have only vague information about the subject before attempting the ritual, decrease the degree of success of your primary skill check by one step. These modifiers cancel each other out if you have a subject present with little to no baseline information.",
         {
           "type": "success_degree",
@@ -961,7 +1011,13 @@
         ],
         "prof": "master"
       },
-      "secondary_check": {},
+      "secondary_check": {
+        "entry": "{@skill Performance}, {@skill Society}",
+        "skills": [
+          "Performance",
+          "Society"
+        ]
+      },
       "range": {
         "type": null
       },
@@ -987,7 +1043,7 @@
         "Conjuration"
       ],
       "entries": [
-        "Casters 2, must share your religion Primary Check {@skill Religion} (expert); Secondary Checks {@skill Diplomacy} Duration see text You call upon your deity to grant you aid in the form of a divine servitor of your deity’s choice of a level no greater than double planar ally’s spell level. While performing this ritual, the secondary casters entreat your deity, explaining what sort of assistance you need and why you need it; if the task is incredibly fitting to your deity, the GM can grant a circumstance bonus to the secondary {@skill Diplomacy} check or rule that the check is automatically a critical success. If the ritual succeeds, you must offer the servitor payment depending on factors such as the duration and danger of the task. Payment always costs at least as much as a consumable item of the creature’s level, even for a short and simple task, and it often costs as much as a permanent magic item of the creature’s level to persuade a creature to fight alongside you. If you use the ritual without good reason, the result is automatically a critical failure.",
+        "You call upon your deity to grant you aid in the form of a divine servitor of your deity’s choice of a level no greater than double planar ally’s spell level. While performing this ritual, the secondary casters entreat your deity, explaining what sort of assistance you need and why you need it; if the task is incredibly fitting to your deity, the GM can grant a circumstance bonus to the secondary {@skill Diplomacy} check or rule that the check is automatically a critical success. If the ritual succeeds, you must offer the servitor payment depending on factors such as the duration and danger of the task. Payment always costs at least as much as a consumable item of the creature’s level, even for a short and simple task, and it often costs as much as a permanent magic item of the creature’s level to persuade a creature to fight alongside you. If you use the ritual without good reason, the result is automatically a critical failure.",
         {
           "type": "success_degree",
           "entries": {
@@ -1004,16 +1060,35 @@
         "entry": "1 day"
       },
       "cost": "rare incense and offerings worth a total value of 2 gp × the spell level × the target’s level",
-      "secondary_casters": {},
-      "primary_check": {},
-      "secondary_check": {},
+      "secondary_casters": {
+        "number": 2,
+        "note": "must share your religion"
+      },
+      "primary_check": {
+        "entry": "{@skill Religion} (expert)",
+        "skills": [
+          "Religion"
+        ],
+        "prof": "expert"
+      },
+      "secondary_check": {
+        "entry": "{@skill Diplomacy}",
+        "skills": [
+          "Diplomacy"
+        ]
+      },
       "range": {
         "type": null
       },
       "area": null,
       "targets": null,
       "duration": {
-        "type": null
+        "type": "timed",
+        "entry": "see text",
+        "duration": {
+          "number": 1,
+          "unit": "special"
+        }
       },
       "heightened": {
         "heightened": false,
@@ -1110,7 +1185,7 @@
         "Positive"
       ],
       "entries": [
-        "{@skill Lore} or {@skill Survival} Area 1/2-mile-radius circle centered on you Duration 1 year You cause the plants within the area to be healthier and more fruitful. In addition to other benefits of healthy plants, this increases the crop yield for farms, depending on your success.",
+        "You cause the plants within the area to be healthier and more fruitful. In addition to other benefits of healthy plants, this increases the crop yield for farms, depending on your success.",
         "If you cast it in the area of a blight, plant growth attempts to counteract the blight instead of producing its usual effect.",
         {
           "type": "success_degree",
@@ -1139,16 +1214,29 @@
         "prof": "expert"
       },
       "secondary_check": {
-        "entry": "Farming",
-        "skills": []
+        "entry": "Farming {@skill Lore} or {@skill Survival}",
+        "skills": [
+          "Lore",
+          "Survival"
+        ]
       },
       "range": {
         "type": null
       },
-      "area": null,
+      "area": {
+        "types": [
+          "Misc."
+        ],
+        "entry": "1/2-mile-radius circle centered on you"
+      },
       "targets": null,
       "duration": {
-        "type": null
+        "type": "timed",
+        "entry": "1 year",
+        "duration": {
+          "number": 1,
+          "unit": "year"
+        }
       },
       "heightened": {
         "heightened": false,
@@ -1168,7 +1256,7 @@
         "Conjuration"
       ],
       "entries": [
-        "Casters 4 Primary Check {@skill Nature} (master); Secondary Checks {@skill Crafting}, {@skill Diplomacy}, {@skill Survival} Range 100 miles; Targets 1 animal, beast, fey, fungus, or plant Duration see text This functions as planar ally except you craft a faerie circle and call an animal, beast, fey, fungus, or plant from within 100 miles."
+        "This functions as planar ally except you craft a faerie circle and call an animal, beast, fey, fungus, or plant from within 100 miles."
       ],
       "cast": {
         "number": 1,
@@ -1176,16 +1264,41 @@
         "entry": "1 day"
       },
       "cost": "faerie circle ingredients worth a total value of 1 gp × the spell level × the target’s level",
-      "secondary_casters": {},
-      "primary_check": {},
-      "secondary_check": {},
+      "secondary_casters": {
+        "number": 4
+      },
+      "primary_check": {
+        "entry": "{@skill Nature} (master)",
+        "skills": [
+          "Nature"
+        ],
+        "prof": "master"
+      },
+      "secondary_check": {
+        "entry": "{@skill Crafting}, {@skill Diplomacy}, {@skill Survival}",
+        "skills": [
+          "Crafting",
+          "Diplomacy",
+          "Survival"
+        ]
+      },
       "range": {
-        "type": null
+        "type": "point",
+        "entry": "100 miles",
+        "distance": {
+          "type": "miles",
+          "amount": 100
+        }
       },
       "area": null,
-      "targets": null,
+      "targets": "1 animal, beast, fey, fungus, or plant",
       "duration": {
-        "type": null
+        "type": "timed",
+        "entry": "see text",
+        "duration": {
+          "number": 1,
+          "unit": "special"
+        }
       },
       "heightened": {
         "heightened": false,

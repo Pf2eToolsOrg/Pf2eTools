@@ -62,10 +62,10 @@ class PageFilterRituals extends PageFilter {
 
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
 		it._fTimeType = [it.cast["unit"]];
-		it._fSndCasters = it.secondary_casters.number || 0;
+		it._fSndCasters = it.secondary_casters ? it.secondary_casters.number : 0;
 		it._fPmCheck = it.primary_check.skills || [];
 		it._fProf = (it.primary_check.prof || "Untrained").uppercaseFirst();
-		it._fSndCheck = it.secondary_check.skills || [];
+		it._fSndCheck = it.secondary_check ? it.secondary_check.skills : [];
 		it._fDurationType = Parser.getFilterDuration(it);
 		it._fRange = Parser.getFilterRange(it);
 		it._fMisc = [];
