@@ -875,17 +875,20 @@ Parser.initialProficienciesToFull = function (initProf) {
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
 	out.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
 	out.entries.push({type: "pf2-title", name: "SKILLS"});
+	if (initProf.skills.u) initProf.skills.u.forEach(it => out.entries.push(`{@indentSubsequent Untrained in ${it}}`));
 	if (initProf.skills.t) initProf.skills.t.forEach(it => out.entries.push(`{@indentSubsequent Trained in ${it}}`));
 	if (initProf.skills.e) initProf.skills.e.forEach(it => out.entries.push(`{@indentSubsequent Expert in ${it}}`));
 	if (initProf.skills.m) initProf.skills.m.forEach(it => out.entries.push(`{@indentSubsequent Master in ${it}}`));
 	if (initProf.skills.l) initProf.skills.l.forEach(it => out.entries.push(`{@indentSubsequent Legendary in ${it}}`));
 	if (initProf.skills.add) out.entries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
 	out.entries.push({type: "pf2-title", name: "ATTACKS"});
+	if (initProf.attacks.u) initProf.attacks.u.forEach(it => out.entries.push(`Untrained in ${it}`));
 	if (initProf.attacks.t) initProf.attacks.t.forEach(it => out.entries.push(`Trained in ${it}`));
 	if (initProf.attacks.e) initProf.attacks.e.forEach(it => out.entries.push(`Expert in ${it}`));
 	if (initProf.attacks.m) initProf.attacks.m.forEach(it => out.entries.push(`Master in ${it}`));
 	if (initProf.attacks.l) initProf.attacks.l.forEach(it => out.entries.push(`Legendary in ${it}`));
 	out.entries.push({type: "pf2-title", name: "DEFENSES"});
+	if (initProf.defenses.u) initProf.defenses.u.forEach(it => out.entries.push(`Untrained in ${it}`));
 	if (initProf.defenses.t) initProf.defenses.t.forEach(it => out.entries.push(`Trained in ${it}`));
 	if (initProf.defenses.e) initProf.defenses.e.forEach(it => out.entries.push(`Expert in ${it}`));
 	if (initProf.defenses.m) initProf.defenses.m.forEach(it => out.entries.push(`Master in ${it}`));
@@ -893,6 +896,14 @@ Parser.initialProficienciesToFull = function (initProf) {
 	if (initProf.classDc) {
 		out.entries.push({type: "pf2-title", name: "CLASS DC"});
 		out.entries.push(initProf.classDc.entry);
+	};
+	if (initProf.spells) {
+		out.entries.push({type: "pf2-title", name: "SPELLS"});
+		if (initProf.spells.u) initProf.spells.u.forEach(it => out.entries.push(`Untrained in ${it}`));
+		if (initProf.spells.t) initProf.spells.t.forEach(it => out.entries.push(`Trained in ${it}`));
+		if (initProf.spells.e) initProf.spells.e.forEach(it => out.entries.push(`Expert in ${it}`));
+		if (initProf.spells.m) initProf.spells.m.forEach(it => out.entries.push(`Master in ${it}`));
+		if (initProf.spells.l) initProf.spells.l.forEach(it => out.entries.push(`Legendary in ${it}`));
 	}
 
 	return out
