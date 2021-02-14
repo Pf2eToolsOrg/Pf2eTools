@@ -20,6 +20,8 @@ class ActionsPage extends ListPage {
 		if (time == null) {
 			return 0
 		}
+		if (time === "Exploration") return 900000000;
+		if (time === "Downtime") return 900000001;
 		switch (time.unit) {
 			case Parser.TM_F: offset = 1; break;
 			case Parser.TM_R: offset = 2; break;
@@ -61,11 +63,15 @@ class ActionsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity) : "\u2014";
+		let time;
+		if (it.activity) time = ActionsPage.getTblTimeStr(it.activity);
+		else if (it.traits.includes("Exploration")) time = "Exploration";
+		else if (it.traits.includes("Downtime")) time = "Downtime";
+		else time = "\u2014"
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
-			<span class="col-4 bold">${time}</span>
+			<span class="col-4">${time}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(it.source)} pr-0" title="${Parser.sourceJsonToFull(it.source)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${source}</span>
 		</a>`;
 
@@ -77,7 +83,7 @@ class ActionsPage extends ListPage {
 				hash,
 				source,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity),
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity || time),
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -99,13 +105,16 @@ class ActionsPage extends ListPage {
 
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
-
-		const time = it.activity ? ActionsPage.getTblTimeStr(it.activity) : "\u2014";
+		let time;
+		if (it.activity) time = ActionsPage.getTblTimeStr(it.activity);
+		else if (it.traits.includes("Exploration")) time = "Exploration";
+		else if (it.traits.includes("Downtime")) time = "Downtime";
+		else time = "\u2014"
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-8 pl-0">${it.name}</span>
-				<span class="bold col-4 pr-0">${time}</span>
+				<span class="col-4 pr-0">${time}</span>
 			</a>
 		</li>`)
 			.contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
@@ -117,7 +126,7 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity),
+				normalisedTime: ActionsPage.getNormalisedTime(it.activity || time),
 			},
 		);
 		return listItem;
