@@ -2782,6 +2782,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@ritual":
+						fauxEntry.href.path = "rituals.html";
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_RITUALS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
 					case "@item":
 						fauxEntry.href.path = "items.html";
 						fauxEntry.href.hover = {
@@ -4284,6 +4292,14 @@ Renderer.spell = {
 		return renderStack.join("");
 	},
 
+	getHeightenedEntry (sp) {
+		if (!sp.heightened || !sp.heightened.heightened) return "";
+		const renderer = Renderer.get();
+		return `${sp.heightened.plus_x != null ? `<p class="pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>${renderer.render(sp.heightened.plus_x.entry)}</p>` : ""}
+		${sp.heightened.x != null ? sp.heightened.x.map(x => `<p class="pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>${renderer.render(x.entry)}</p>`).join("") : ""}
+		${sp.heightened.no_x != null ? `<p class="pf2-stat__section"><strong>Heightened </strong>${renderer.render(sp.heightened.no_x.entry)}</p>` : ""}`;
+	},
+
 	pGetFluff (sp) {
 		return Renderer.utils.pGetFluff({
 			entity: sp,
@@ -4292,6 +4308,40 @@ Renderer.spell = {
 		});
 	},
 };
+
+Renderer.ritual = {
+	getCompactRenderedString (ritual) {
+		const renderer = Renderer.get();
+		const renderStack = [];
+		renderer.recursiveRender(ritual.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+
+		return `${Renderer.utils.getExcludedDiv(ritual, "ritual", UrlUtil.PG_RITUALS)}
+		${Renderer.utils.getNameDiv(ritual, {page: UrlUtil.PG_RITUALS, type: ritual.type || "Ritual"})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(ritual.traits)}
+		<p class="pf2-stat__section">
+		${[`<strong>Cast </strong>${renderer.render(ritual.cast.entry)}`,
+		`${ritual.cost ? `<strong>Cost </strong>${renderer.render(ritual.cost)}` : ""}`,
+		`${ritual.secondary_casters ? `<strong>Secondary Casters </strong>${ritual.secondary_casters.number}${ritual.secondary_casters.note ? `, ${ritual.secondary_casters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
+		</p>
+		<p class="pf2-stat__section">
+		${[`<strong>Primary Check </strong>${renderer.render(ritual.primary_check.entry)}`,
+		`${ritual.secondary_check ? `<strong>Secondary Checks </strong>${renderer.render(ritual.secondary_check.entry)}` : ""}`].filter(Boolean).join("; ")}
+		</p>
+		${ritual.range.type || ritual.area || ritual.targets
+		? `<p class="pf2-stat__section">${[`${ritual.range.type ? `<strong>Range </strong>${renderer.render(ritual.range.entry)}` : ""}`,
+			`${ritual.area ? `<strong>Area </strong>${renderer.render(ritual.area.entry)}` : ""}`,
+			`${ritual.targets ? `<strong>Targets </strong>${renderer.render(ritual.targets)}` : ""}`].filter(Boolean).join("; ")}</p>` : ""}
+			${ritual.duration.type ? `<p class="pf2-stat__section"><strong>Duration </strong>${renderer.render(ritual.duration.entry)}</p>`
+		: ""}
+		${Renderer.utils.getDividerDiv()}
+		${renderStack.join("")}
+		${ritual.heightened.heightened
+		? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}`
+		: ""}
+		${Renderer.utils.getPageP(ritual)}`;
+	},
+}
 
 Renderer.condition = {
 	getCompactRenderedString (cond) {
@@ -4807,7 +4857,7 @@ Renderer.hazard = {
 			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
 			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat__section">`);
 			if (def.hardness != null && def.hp != null) {
-				// FIXME: self-evident
+				// FIXME: KILL ME
 				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness </strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
 			} else if (def.hp != null) {
 				sectionTwo.push(Object.keys(def.hp)
@@ -6913,6 +6963,59 @@ Renderer.familiar = {
 	},
 };
 
+Renderer.vehicle = {
+	getCompactRenderedString (it) {
+		const renderer = Renderer.get();
+		const traits = it.traits || [];
+		traits.push(it.size);
+		const defensesStack = [];
+		if (it.defenses) {
+			const def = it.defenses;
+			const sectionAcSt = [];
+			const sectionTwo = [];
+			defensesStack.push(`<p class="pf2-stat__section">`);
+			if (def.ac) {
+				sectionAcSt.push(Object.keys(def.ac)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}AC </strong>${def.ac[k]}`).join(", "));
+			}
+			if (def.saving_throws) {
+				sectionAcSt.push(Object.keys(def.saving_throws).filter(k => def.saving_throws[k] != null)
+					.map(k => `<strong>${k.uppercaseFirst()} </strong>{@d20 ${def.saving_throws[k]}||${Parser.savingThrowAbvToFull(k)}}`).join(", "));
+			}
+			defensesStack.push(renderer.render(sectionAcSt.join("; ")))
+			if (sectionAcSt.length) defensesStack.push(`</p><p class="pf2-stat__section">`);
+			if (def.hardness != null && def.hp != null) {
+				// FIXME: KILL ME
+				sectionTwo.push(Object.keys(def.hardness).map(k => `<strong>${k === "default" ? "" : `${k} `}Hardness </strong>${def.hardness[k]}${def.hp[k] != null ? `, <strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? ` (BT ${def.bt[k]})` : ""}${def.notes && def.notes[k] != null ? ` ${renderer.render(def.notes[k])}` : ""}` : ""}`).join("; "));
+			} else if (def.hp != null) {
+				sectionTwo.push(Object.keys(def.hp)
+					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP </strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));
+			} else throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
+			if (def.immunities) sectionTwo.push(`<strong>Immunities </strong>${def.immunities.join(", ")}`);
+			if (def.weaknesses) sectionTwo.push(`<strong>Weaknesses </strong>${def.weaknesses.map(w => w.amount ? `${w.amount} ${w.name}${w.note ? ` ${w.note}` : ""}` : `${w.name}${w.note ? ` ${w.note}` : ""}`).join(", ")}`);
+			if (def.resistances) sectionTwo.push(`<strong>Resistances </strong>${def.resistances.map(r => r.amount ? `${r.amount} ${r.name}${r.note ? ` ${r.note}` : ""}` : `${r.name}${r.note ? ` ${r.note}` : ""}`).join(", ")}`);
+			defensesStack.push(renderer.render(sectionTwo.join("; ")));
+			defensesStack.push(`</p>`);
+		}
+
+		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
+		${Renderer.utils.getNameDiv(it, {type: "Vehicle"})}
+		${Renderer.utils.getTraitsDiv(traits)}
+		${it.price ? `<p class="pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(it.price)}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat__section"><strong>Space </strong>${it.space.long.number} ${it.space.long.unit} long, ${it.space.wide.number} ${it.space.wide.unit} wide, ${it.space.high.number} ${it.space.high.unit} high</p>
+		<p class="pf2-stat__section"><strong>Crew </strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}, ${it.crew.crew} crew${it.passengers != null ? `; <strong>Passengers </strong>${it.passengers}` : ""}</p>
+		<p class="pf2-stat__section"><strong>Piloting Check </strong>${it.pilot_check.length > 1 ? `${it.pilot_check.slice(0, -1).map(c => `${c.skill} (DC ${c.dc})`).join(", ")} or ${it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`).slice(-1)}` : it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`)}</p>
+		${Renderer.utils.getDividerDiv()}
+		${defensesStack.join("")}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat__section"><strong>Speed </strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type} ${it.speed.speed} feet ${it.speed.traits ? `(${it.speed.traits.map(t => renderer.render(`{@trait ${Parser.getTraitName(t)}|${Parser.TRAITS_TO_TRAITS_SRC[Parser.getTraitName(t)]}|${t}}`)).join(", ")})` : ""}`}</p>
+		<p class="pf2-stat__section"><strong>Collision </strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
+		${it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("")}
+		${Renderer.utils.getPageP(it)}`;
+	},
+};
+
 Renderer.generic = {
 	getCompactRenderedString (it) {
 		return `
@@ -7912,6 +8015,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
 			case UrlUtil.PG_SPELLS:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
+			case UrlUtil.PG_RITUALS:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rituals/rituals-crb.json", "ritual");
 			case UrlUtil.PG_BESTIARY:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "creature", data => DataUtil.creature.populateMetaReference(data));
 			case UrlUtil.PG_ITEMS: {
@@ -8547,6 +8652,8 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
+			case UrlUtil.PG_RITUALS:
+				return Renderer.ritual.getCompactRenderedString;
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:

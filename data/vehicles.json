@@ -1,0 +1,109 @@
+{
+	"vehicle": [
+		{
+			"name": "Airship",
+			"level": 12,
+			"source": "GMG",
+			"traits": [
+				"Rare"
+			],
+			"size": "Gargantuan",
+			"price": {
+				"coin": "gp",
+				"amount": 6000,
+				"note": null
+			},
+			"space": {
+				"long": {
+					"number": 90,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 30,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 60,
+					"unit": "feet"
+				}
+			},
+			"crew": {
+				"pilot": 1,
+				"crew": 5
+			},
+			"passengers": 15,
+			"pilot_check": [
+				{
+					"skill": "Arcana",
+					"dc": 32
+				},
+				{
+					"skill": "Crafting",
+					"dc": 32
+				},
+				{
+					"skill": "Nature",
+					"dc": 32
+				},
+				{
+					"skill": "Pilot Lore",
+					"dc": 30
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 28
+				},
+				"saving_throws": {
+					"fort": 22,
+					"ref": null,
+					"will": null
+				},
+				"hardness": {
+					"default": 20
+				},
+				"hp": {
+					"default": 210
+				},
+				"bt": {
+					"default": 105
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					{
+						"name": "fire",
+						"amount": 15,
+						"note": "until broken"
+					}
+				]
+			},
+			"speed": {
+				"type": "fly",
+				"speed": 50,
+				"traits": [
+					"alchemical",
+					"magical"
+				]
+			},
+			"collision": {
+				"damage": "{@dice 9d10}",
+				"type": null,
+				"dc": 30
+			},
+			"abilities": [
+				{
+					"name": "Sluggish",
+					"entries": [
+						"This vehicle must move twice its length for each 90-degree turn it makes."
+					]
+				}
+			],
+			"page": 177
+		}
+	]
+}
+

@@ -11,13 +11,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<title>Archetypes - PF2eTools</title>
+	<title>Rituals - PF2eTools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/classes.css">
 
 	<!-- Favicons -->
 	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
@@ -63,20 +62,26 @@
 	<div class="cancer__sidebar-rhs-inner cancer__sidebar-rhs-inner--bottom"><!--5ETOOLS_AD_RIGHT_2--></div>
 </div>
 
-<header class="hidden-xs hidden-sm page__header">
-	<div class="container">
-		<h1 class="page__title">Archetypes</h1>
-		<p class="page__subtitle">Search by name on the left, click archetype name to display on the right.</p>
+<div class="viewport-wrapper">
+	<div class="cancer__wrp-leaderboard cancer__anchor">
+		<div class="cancer__disp-cancer"></div>
+		<div class="cancer__wrp-leaderboard-inner"><!--5ETOOLS_AD_LEADERBOARD--></div>
 	</div>
-</header>
-<nav class="container page__nav" id="navigation">
-	<ul class="nav page__nav-inner" id="navbar"></ul>
-</nav>
 
-<main class="container archetypes">
-	<div class="row">
-		<div class="col-sm-5" id="listcontainer">
-			<div class="night__shadow-big">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Rituals</h1>
+			<p class="page__subtitle">Search by name on the left, click a name to display on the right.</p>
+		</div>
+	</header>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav page__nav-inner" id="navbar"></ul>
+	</nav>
+
+	<div class="view-col-group--cancer h-100 mh-0">
+		<div class="container view-col-wrapper view-col-wrapper--cancer">
+			<div class="view-col" id="listcontainer" style="flex: 7;">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
 						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
@@ -85,69 +90,53 @@
 							class="glyphicon glyphicon-search"></span></div>
 						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
 					</div>
-					<button class="btn btn-default px-2" id="reset"><span class="glyphicon glyphicon-refresh"></span>
-					</button>
+					<button class="btn btn-default" id="reset">Reset</button>
 				</div>
+
 				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span
+					<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span
 						class="caret_wrp"></span></button>
-					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Level <span
+						class="caret_wrp"></span></button>
+					<button class="col-3 sort btn btn-default btn-xs" data-sort="time">Cast Time <span
+						class="caret_wrp"></span></button>
+					<button class="col-1-5 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
 						class="caret_wrp"></span></button>
 				</div>
 
-				<ul class="list list--stats archetypes cls__list"></ul>
+				<ul class="list list--stats rituals"></ul>
 			</div>
 
-			<p class="text-center">
-				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
-			</p>
-		</div>
-		<div class="col-sm-7">
-			<div class="wrp-stat-tab" id="stat-tabs">
-				<div id="tabs-right"></div>
-			</div>
-			<div class="wrp-stats-table pf2-small-stat">
-				<div class="stats pf2-book" id="pagecontent"></div>
-			</div>
-		</div>
-	</div>
-	<hr class="mt-0">
-	<div class="row flex mobile__flex-col mt-2">
-		<div class="col-sm-7" id="featlistcontainer">
-			<div class="night__shadow-big">
-				<div class="lst__form-top" id="feat-filter-search-group">
-					<div class="w-100 relative">
-						<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
-							   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="feat-lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
-							class="glyphicon glyphicon-search"></span></div>
-						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+			<div id="contentwrapper" class="view-col" style="flex: 5;">
+				<div id="sublistcontainer" class="sublist sublist--resizable">
+					<div id="sublistsort" class="btn-group sublist__wrp-cols">
+						<button class="col-6 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="level">Level <span
+							class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="time">Cast Time <span
+							class="caret_wrp"></span></button>
 					</div>
-					<button class="btn btn-default px-2" id="feat-reset"><span
-						class="glyphicon glyphicon-refresh"></span></button>
-				</div>
-				<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
-						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
-						class="caret_wrp"></span></button>
-					<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
-						class="caret_wrp"></span></button>
-					<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">Source <span
-						class="caret_wrp"></span></button>
+					<ul class="list subrituals">
+						<!-- populate with JS -->
+					</ul>
 				</div>
 
-				<ul class="list list--stats feats cls__list"></ul>
-			</div>
-		</div>
-		<div class="col-sm-5">
-			<div class="wrp-stats-table">
-				<div class="stats pf2-stat" id="featstats"></div>
+				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
+
+				<div class="wrp-stats-table">
+					<div id="pagecontent" class="stats pf2-stat">
+						<div class="initial-message">Select an entry from the list to view it here</div>
+					</div>
+				</div>
+
+				<div class="text-center wrp-footer-buttons">
+					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</main>
-<!--5ETOOLS_SCRIPT_ANCHOR-->
+</div>    <!--5ETOOLS_SCRIPT_ANCHOR-->
 <!--5ETOOLS_AD_ADHESION-->
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery-ui.js"></script>
@@ -160,15 +149,14 @@
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
 <script type="text/javascript" src="js/filter.js"></script>
-<script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-dice.js"></script>
-<script type="text/javascript" src="js/render-feats.js"></script>
+<script type="text/javascript" src="js/render-rituals.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>
+<script type="text/javascript" src="js/hist.js"></script>
 <script type="text/javascript" src="js/listpage.js"></script>
-<script type="text/javascript" src="js/filter-archetypes.js"></script>
-<script type="text/javascript" src="js/filter-feats.js"></script>
-<script type="text/javascript" src="js/archetypes.js"></script>
+<script type="text/javascript" src="js/filter-rituals.js"></script>
+<script type="text/javascript" src="js/rituals.js"></script>
 <script type="text/javascript" src="js/list2.js"></script>
 <script type="text/javascript" src="lib/elasticlunr.js"></script>
 </body>

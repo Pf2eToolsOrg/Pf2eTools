@@ -819,6 +819,8 @@ Parser.skillProficienciesToFull = function (skillProficiencies) {
 	return skillProficiencies.map(renderSingle).join(" <i>or</i> ");
 };
 
+Parser.PROFICIENCIES = ["Untrained", "Trained", "Expert", "Master", "Legendary"]
+
 Parser.proficiencyAbvToFull = function (abv) {
 	switch (abv) {
 		case "t": return "trained";
@@ -1473,8 +1475,10 @@ Parser.CAT_ID_ITEM = 4;
 Parser.CAT_ID_CLASS = 5;
 Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
+Parser.CAT_ID_RITUAL = 8;
+Parser.CAT_ID_VEHICLE = 9;
 Parser.CAT_ID_ANCESTRY = 10;
-Parser.CAT_ID_VARIANT_OPTIONAL_RULE = 12;
+Parser.CAT_ID_VARIANT_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
 Parser.CAT_ID_HAZARD = 17;
@@ -1496,6 +1500,8 @@ Parser.CAT_ID_ARCHETYPE = 47;
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_SPELL] = "Spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "Ritual";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "Vehicle";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BACKGROUND] = "Background";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ITEM] = "Item";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CLASS] = "Class";
@@ -1503,7 +1509,7 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CONDITION] = "Condition";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FEAT] = "Feat";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ANCESTRY] = "Ancestry";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ARCHETYPE] = "Archetype";
-Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "Variant/Optional Rule";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VARIANT_RULE] = "Variant Rule";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_ADVENTURE] = "Adventure";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_DEITY] = "Deity";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_HAZARD] = "Hazard";
@@ -1526,8 +1532,10 @@ Parser.pageCategoryToFull = function (catId) {
 };
 
 Parser.CAT_ID_TO_PROP = {};
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "monster";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CREATURE] = "creature";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_SPELL] = "spell";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_RITUAL] = "ritual";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_VEHICLE] = "vehicle";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BACKGROUND] = "background";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ITEM] = "item";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CLASS] = "class";
@@ -1535,7 +1543,7 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_CONDITION] = "condition";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FEAT] = "feat";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ANCESTRY] = "ancestry";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ARCHETYPE] = "archetype";
-Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_OPTIONAL_RULE] = "variantrule";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_VARIANT_RULE] = "variantrule";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ADVENTURE] = "adventure";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_DEITY] = "deity";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_HAZARD] = "hazard";
@@ -1751,6 +1759,7 @@ Parser.TM_F = "free";
 Parser.TM_ROUND = "round";
 Parser.TM_MINS = "minute";
 Parser.TM_HRS = "hour";
+Parser.TM_DAYS = "day";
 Parser.TIME_ACTIONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F]
 Parser.TIME_SINGLETONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F, Parser.TM_ROUND];
 Parser.TIME_TO_FULL = {
@@ -1762,6 +1771,7 @@ Parser.TIME_TO_FULL = {
 	[Parser.TM_ROUND]: "Rounds",
 	[Parser.TM_MINS]: "Minutes",
 	[Parser.TM_HRS]: "Hours",
+	[Parser.TM_DAYS]: "Days",
 };
 Parser.timeUnitToFull = function (timeUnit) {
 	return Parser._parse_aToB(Parser.TIME_TO_FULL, timeUnit);
@@ -1787,6 +1797,144 @@ Parser.timeToShort = function (time, isHtml) {
 		? `${Parser.timeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
 		: `${time.number} ${isHtml ? `<span class="ve-small">` : ""}${Parser.timeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
 };
+
+Parser.getNormalisedTime = function (time) {
+	let multiplier = 1;
+	let offset = 0;
+	switch (time.unit) {
+		case Parser.TM_F: offset = 1; break;
+		case Parser.TM_R: offset = 2; break;
+		case Parser.TM_A: multiplier = 10; break;
+		case Parser.TM_AA: multiplier = 20; break;
+		case Parser.TM_AAA: multiplier = 30; break;
+		case Parser.TM_ROUND: multiplier = 60; break;
+		case Parser.TM_MINS: multiplier = 600; break;
+		case Parser.TM_HRS: multiplier = 36000; break;
+		case Parser.TM_DAYS: multiplier = 864000; break;
+	}
+	return (multiplier * time.number) + offset;
+};
+
+Parser.INCHES_PER_FOOT = 12;
+Parser.FEET_PER_MILE = 5280;
+
+Parser.getNormalisedRange = function (range) {
+	let multiplier = 1;
+	let distance = 0;
+	let offset = 0;
+
+	switch (range.type) {
+		case RNG_SPECIAL: return 1000000000;
+		case RNG_POINT: adjustForDistance(); break;
+		case RNG_LINE: offset = 1; adjustForDistance(); break;
+		case RNG_CONE: offset = 2; adjustForDistance(); break;
+		case RNG_RADIUS: offset = 3; adjustForDistance(); break;
+		case RNG_HEMISPHERE: offset = 4; adjustForDistance(); break;
+		case RNG_SPHERE: offset = 5; adjustForDistance(); break;
+		case RNG_CYLINDER: offset = 6; adjustForDistance(); break;
+		case RNG_CUBE: offset = 7; adjustForDistance(); break;
+	}
+
+	// value in inches, to allow greater granularity
+	return (multiplier * distance) + offset;
+
+	function adjustForDistance () {
+		const dist = range.distance;
+		switch (dist.type) {
+			case null: distance = 0; break;
+			case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
+			case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;
+			case RNG_TOUCH: distance = 1; break;
+			case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break; // from BolS (homebrew)
+			case RNG_UNLIMITED: distance = 900000001; break;
+			case "unknown": distance = 900000002; break;
+			default: {
+				// it's homebrew?
+				const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
+				if (fromBrew) {
+					const ftPerUnit = fromBrew.feetPerUnit;
+					if (ftPerUnit != null) {
+						multiplier = Parser.INCHES_PER_FOOT * ftPerUnit;
+						distance = dist.amount;
+					} else {
+						distance = 910000000; // default to max distance, to have them displayed at the bottom
+					}
+				}
+				break;
+			}
+		}
+	}
+}
+
+Parser.getFilterRange = function (object) {
+	const fRan = object.range || {type: null};
+	if (fRan.type !== null) {
+		let norm_range = Parser.getNormalisedRange(fRan);
+		if (norm_range === 1) {
+			return "Touch"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * 10) {
+			return "5 feet"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * 25) {
+			return "10 feet"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * 50) {
+			return "25 feet"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * 100) {
+			return "50 feet"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * 500) {
+			return "100 feet"
+		} else if (norm_range < Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE) {
+			return "500 feet"
+		} else if (norm_range < 900000000) {
+			return "1 mile"
+		} else if (norm_range < 900000001) {
+			return "Planetary"
+		} else if (norm_range < 900000002) {
+			return "Unlimited"
+		} else {
+			return "Varies"
+		}
+	} else {
+		return null
+	}
+}
+
+Parser.getFilterDuration = function (object) {
+	const duration = object.duration || {type: "special"}
+	switch (duration.type) {
+		case null: return "Instant";
+		case "timed": {
+			if (!duration.duration) return "Special";
+			switch (duration.duration.unit) {
+				case "turn":
+				case "round": return "1 Round";
+
+				case "minute": {
+					const amt = duration.duration.number || 0;
+					if (amt <= 1) return "1 Minute";
+					if (amt <= 10) return "10 Minutes";
+					if (amt <= 60) return "1 Hour";
+					if (amt <= 8 * 60) return "8 Hours";
+					return "24+ Hours";
+				}
+
+				case "hour": {
+					const amt = duration.duration.number || 0;
+					if (amt <= 1) return "1 Hour";
+					if (amt <= 8) return "8 Hours";
+					return "24+ Hours";
+				}
+
+				case "week":
+				case "day":
+				case "year": return "24+ Hours";
+				default: return "Special";
+			}
+		}
+		case "unlimited": return "Unlimited";
+		case "special":
+		default: return "Special";
+	}
+}
 
 SKL_ABJ = "Abjuration";
 SKL_EVO = "Evocation";
@@ -1897,28 +2045,6 @@ Parser.CONDITION_TO_COLOR = {
 	"Concentration": "#009f7a",
 };
 
-Parser.RULE_TYPE_TO_FULL = {
-	"O": "Optional",
-	"V": "Variant",
-	"VO": "Variant Optional",
-	"VV": "Variant Variant",
-	"U": "Unknown",
-};
-
-Parser.ruleTypeToFull = function (ruleType) {
-	return Parser._parse_aToB(Parser.RULE_TYPE_TO_FULL, ruleType);
-};
-
-Parser.VEHICLE_TYPE_TO_FULL = {
-	"SHIP": "Ship",
-	"INFWAR": "Infernal War Machine",
-	"CREATURE": "Creature",
-};
-
-Parser.vehicleTypeToFull = function (vehicleType) {
-	return Parser._parse_aToB(Parser.VEHICLE_TYPE_TO_FULL, vehicleType);
-};
-
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
@@ -1999,7 +2125,9 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"subclassFeature": SRC_CRB,
 	"table": SRC_CRB,
 	"language": SRC_CRB,
+	"ritual": SRC_CRB,
 	"trait": SRC_CRB,
+	"vehicle": SRC_GMG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

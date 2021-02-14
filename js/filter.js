@@ -3155,6 +3155,11 @@ class TraitsFilter extends MultiFilter {
 			filterIdx.rarity = idx;
 			idx += 1;
 		}
+		if (!opts.discardCategories.size) {
+			opts.filters.push(new Filter({header: "Size"}));
+			filterIdx.size = idx;
+			idx += 1;
+		}
 		if (!opts.discardCategories.alignment) {
 			opts.filters.push(new Filter({header: "Alignment"}));
 			filterIdx.alignment = idx;
@@ -3239,6 +3244,7 @@ class TraitsFilter extends MultiFilter {
 	_getTraitCategories (trait) {
 		let out = new Set()
 		if (Parser.TRAITS_RARITY.includes(trait)) out.add("rarity");
+		if (Parser.TRAITS_SIZE.includes(trait)) out.add("size");
 		if (Parser.TRAITS_ALIGN.includes(trait)) out.add("alignment");
 		if (Parser.TRAITS_ALIGN_ABV.includes(trait)) out.add("alignment");
 		if (Parser.TRAITS_CLASS.includes(trait)) out.add("class");

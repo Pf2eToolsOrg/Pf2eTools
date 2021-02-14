@@ -17,140 +17,6 @@ class PageFilterSpells extends PageFilter {
 		}
 	}
 
-	static getFilterDuration (spell) {
-		const fDur = spell.duration || {type: "special"};
-		switch (fDur.type) {
-			case null: return "Instant";
-			case "timed": {
-				if (!fDur.duration) return "Special";
-				switch (fDur.duration.unit) {
-					case "turn":
-					case "round": return "1 Round";
-
-					case "minute": {
-						const amt = fDur.duration.number || 0;
-						if (amt <= 1) return "1 Minute";
-						if (amt <= 10) return "10 Minutes";
-						if (amt <= 60) return "1 Hour";
-						if (amt <= 8 * 60) return "8 Hours";
-						return "24+ Hours";
-					}
-
-					case "hour": {
-						const amt = fDur.duration.number || 0;
-						if (amt <= 1) return "1 Hour";
-						if (amt <= 8) return "8 Hours";
-						return "24+ Hours";
-					}
-
-					case "week":
-					case "day":
-					case "year": return "24+ Hours";
-					default: return "Special";
-				}
-			}
-			case "unlimited": return "Unlimited";
-			case "special":
-			default: return "Special";
-		}
-	}
-
-	static getFilterRange (spell) {
-		const fRan = spell.range || {type: null};
-		if (fRan.type !== null) {
-			let norm_range = this.getNormalisedRange(fRan);
-			if (norm_range === 1) {
-				return "Touch"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 10) {
-				return "5 feet"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 25) {
-				return "10 feet"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 50) {
-				return "25 feet"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 100) {
-				return "50 feet"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * 500) {
-				return "100 feet"
-			} else if (norm_range < PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE) {
-				return "500 feet"
-			} else if (norm_range < 900000000) {
-				return "1 mile"
-			} else if (norm_range < 900000001) {
-				return "Planetary"
-			} else if (norm_range < 900000002) {
-				return "Unlimited"
-			} else {
-				return "Varies"
-			}
-		} else {
-			return null
-		}
-	}
-
-	static getNormalisedTime (time) {
-		let multiplier = 1;
-		let offset = 0;
-		switch (time.unit) {
-			case Parser.TM_F: offset = 1; break;
-			case Parser.TM_R: offset = 2; break;
-			case Parser.TM_A: multiplier = 10; break;
-			case Parser.TM_AA: multiplier = 20; break;
-			case Parser.TM_AAA: multiplier = 30; break;
-			case Parser.TM_ROUND: multiplier = 60; break;
-			case Parser.TM_MINS: multiplier = 600; break;
-			case Parser.TM_HRS: multiplier = 36000; break;
-		}
-		return (multiplier * time.number) + offset;
-	}
-
-	static getNormalisedRange (range) {
-		let multiplier = 1;
-		let distance = 0;
-		let offset = 0;
-
-		switch (range.type) {
-			case RNG_SPECIAL: return 1000000000;
-			case RNG_POINT: adjustForDistance(); break;
-			case RNG_LINE: offset = 1; adjustForDistance(); break;
-			case RNG_CONE: offset = 2; adjustForDistance(); break;
-			case RNG_RADIUS: offset = 3; adjustForDistance(); break;
-			case RNG_HEMISPHERE: offset = 4; adjustForDistance(); break;
-			case RNG_SPHERE: offset = 5; adjustForDistance(); break;
-			case RNG_CYLINDER: offset = 6; adjustForDistance(); break;
-			case RNG_CUBE: offset = 7; adjustForDistance(); break;
-		}
-
-		// value in inches, to allow greater granularity
-		return (multiplier * distance) + offset;
-
-		function adjustForDistance () {
-			const dist = range.distance;
-			switch (dist.type) {
-				case null: distance = 0; break;
-				case UNT_FEET: multiplier = PageFilterSpells.INCHES_PER_FOOT; distance = dist.amount; break;
-				case UNT_MILES: multiplier = PageFilterSpells.INCHES_PER_FOOT * PageFilterSpells.FEET_PER_MILE; distance = dist.amount; break;
-				case RNG_TOUCH: distance = 1; break;
-				case RNG_UNLIMITED_SAME_PLANE: distance = 900000000; break; // from BolS (homebrew)
-				case RNG_UNLIMITED: distance = 900000001; break;
-				case "unknown": distance = 900000002; break;
-				default: {
-					// it's homebrew?
-					const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "spellDistanceUnits", dist.type);
-					if (fromBrew) {
-						const ftPerUnit = fromBrew.feetPerUnit;
-						if (ftPerUnit != null) {
-							multiplier = PageFilterSpells.INCHES_PER_FOOT * ftPerUnit;
-							distance = dist.amount;
-						} else {
-							distance = 910000000; // default to max distance, to have them displayed at the bottom
-						}
-					}
-					break;
-				}
-			}
-		}
-	}
-
 	static getFltrSpellLevelStr (level) {
 		return level === 0 ? Parser.spLevelToFull(level) : `${Parser.spLevelToFull(level)} level`;
 	}
@@ -253,13 +119,13 @@ class PageFilterSpells extends PageFilter {
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"],
-		})
+		});
 	}
 
 	mutateForFilters (spell) {
 		// used for sorting
-		spell._normalisedTime = PageFilterSpells.getNormalisedTime(spell.cast);
-		spell._normalisedRange = PageFilterSpells.getNormalisedRange(spell.range);
+		spell._normalisedTime = Parser.getNormalisedTime(spell.cast);
+		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
 
 		// used for filtering
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
@@ -272,9 +138,9 @@ class PageFilterSpells extends PageFilter {
 		spell._frarityTrts = spell.traits.concat("Common").filter(t => Parser.TRAITS_RARITY.includes(t))[0];
 		spell._fsenseTrts = spell.traits.filter(t => Parser.TRAITS_SENSE.includes(t)) || [];
 		spell._fTimeType = [spell.cast["unit"]];
-		spell._fDurationType = PageFilterSpells.getFilterDuration(spell);
+		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
-		spell._fRange = PageFilterSpells.getFilterRange(spell)
+		spell._fRange = Parser.getFilterRange(spell);
 		spell._fSavingThrow = spell.saving_throw == null ? [] : spell.saving_throw_basic ? [spell.saving_throw, "Basic"] : [spell.saving_throw];
 		spell._fComponents = spell.cost == null ? [] : ["Cost"];
 		if (spell.components.F) spell._fComponents.push("Focus");

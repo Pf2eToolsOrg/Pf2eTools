@@ -2,18 +2,14 @@
 
 class ConditionsPage extends ListPage {
 	constructor () {
-		const pageFilter = new PageFilterConditions();
+		const pageFilter = new PageFilterVehicles();
 
 		super({
-			dataSource: "data/conditions.json",
-
+			dataSource: "data/vehicles.json",
 			pageFilter,
-
-			listClass: "conditions",
-
-			sublistClass: "subconditions",
-
-			dataProps: ["condition"],
+			listClass: "vehicles",
+			sublistClass: "subvehicles",
+			dataProps: ["vehicle"],
 		});
 	}
 
@@ -85,15 +81,15 @@ class ConditionsPage extends ListPage {
 		const it = this._dataList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderCondition.$getRenderedCondition(it));
+			$content.append(RenderVehicles.$getRenderedVehicle(it));
 		}
 		const buildInfoTab = async () => {
-			const quickRules = await Renderer.utils.pGetQuickRules("condition");
+			const quickRules = await Renderer.utils.pGetQuickRules("vehicle");
 			$content.append(quickRules);
 		}
 
 		const statTab = Renderer.utils.tabButton(
-			"Condition",
+			"Vehicle",
 			() => {},
 			buildStatsTab,
 		);
