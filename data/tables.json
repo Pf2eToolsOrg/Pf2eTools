@@ -3289,7 +3289,9 @@
 			"source": "CRB",
 			"page": 280,
 			"labelRowIdx": [
-				0
+				0,
+				7,
+				13
 			],
 			"colStyles": [
 				"text-left",
@@ -3325,63 +3327,693 @@
 					"Group",
 					"Weapon Traits"
 				],
-				[
-					{
-						"type": "entries",
-						"entries": [
+				{
+					"type": "multiRow",
+					"rows": [
+						[
 							"{@item Blowgun}",
-							"{@indent 10 Blowgun Darts}"
-						]
-					},
-					{
-						"type": "entries",
-						"entries": [
 							"1 sp",
-							"5 cp"
-						]
-					},
-					"1 P",
-					"20 ft.",
-					"1",
-					{
-						"type": "entries",
-						"entries": [
+							"1 P",
+							"20 ft.",
+							"1",
 							"L",
-							"L"
+							"1",
+							"Dart",
+							"{@trait Agile}, {@trait nonlethal}"
+						],
+						[
+							"{@indentFirst 10 blowgun darts}",
+							"5 cp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
 						]
-					},
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Crossbow}",
+							"3 gp",
+							"{@damage 1d8} P",
+							"120 ft.",
+							"1",
+							"1",
+							"2",
+							"Bow",
+							"—"
+						],
+						[
+							"{@indentFirst 10 bolts}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				[
+					"{@item Dart}",
+					"1 cp",
+					"{@damage 1d4} P",
+					"20 ft.",
+					"—",
+					"L",
 					"1",
 					"Dart",
-					"{@trait Agile}, {@trait nonlethal}"
+					"{@trait Agile}, {@trait thrown}"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Hand crossbow}",
+							"3 gp",
+							"{@damage 1d6} P",
+							"60 ft.",
+							"1",
+							"L",
+							"1",
+							"Bow",
+							"—"
+						],
+						[
+							"{@indentFirst 10 bolts}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				[
+					"{@item Javelin}",
+					"1 sp",
+					"{@damage 1d6} P",
+					"30 ft.",
+					"—",
+					"L",
+					"1",
+					"Dart",
+					"{@trait Thrown}"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Sling}",
+							"0",
+							"{@damage 1d6} B",
+							"50 ft.",
+							"1",
+							"L",
+							"1",
+							"Sling",
+							"{@trait Propulsive}"
+						],
+						[
+							"{@indentFirst 10 sling bullets}",
+							"1 cp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				[
+					"Martial Weapons",
+					"Price",
+					"Damage",
+					"Range",
+					"Reload",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
 				],
 				[
-					{
-						"type": "entries",
-						"entries": [
-							"{@item Crossbow}",
-							"{@indent 10 Bolts}"
-						]
-					},
-					{
-						"type": "entries",
-						"entries": [
-							"3 gp",
-							"1 sp"
-						]
-					},
-					"{@dice 1d8} P",
-					"120 ft.",
+					"{@item Alchemical Bomb}*",
+					"Varies",
+					"Varies",
+					"20 ft.",
+					"—",
+					"L",
 					"1",
-					{
-						"type": "entries",
-						"entries": [
-							"1",
-							"L"
+					"Bomb",
+					"Varies"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Composite longbow}",
+							"20 gp",
+							"{@damage 1d8} P",
+							"100 ft.",
+							"0",
+							"2",
+							"1+",
+							"Bow",
+							"{@trait Deadly} d10, {@trait propulsive}, {@trait volley} 30 ft."
+						],
+						[
+							"{@indentFirst 10 arrows}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
 						]
-					},
-					"2",
-					"Bow",
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Composite shortbow}",
+							"14 gp",
+							"{@damage 1d6} P",
+							"60 ft.",
+							"0",
+							"1",
+							"1+",
+							"Bow",
+							"{@trait Deadly} d10, {@trait propulsive}"
+						],
+						[
+							"{@indentFirst 10 arrows}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Longbow}",
+							"6 gp",
+							"{@damage 1d8} P",
+							"100 ft.",
+							"0",
+							"2",
+							"1+",
+							"Bow",
+							"{@trait Deadly} d10, {@trait volley} 30 ft."
+						],
+						[
+							"{@indentFirst 10 arrows}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Shortbow}",
+							"3 gp",
+							"{@damage 1d6} P",
+							"60 ft.",
+							"0",
+							"1",
+							"1+",
+							"Bow",
+							"{@trait Deadly} d10"
+						],
+						[
+							"{@indentFirst 10 arrows}",
+							"1 sp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				[
+					"Uncommon Martial Weapons",
+					"Price",
+					"Damage",
+					"Range",
+					"Reload",
+					"Bulk",
+					"Hands",
+					"Group",
+					"Weapon Traits"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Halfling sling staff}",
+							"5 gp",
+							"{@damage 1d10} B",
+							"80 ft.",
+							"1",
+							"1",
+							"2",
+							"Sling",
+							"{@trait Halfling}, {@trait propulsive}"
+						],
+						[
+							"{@indentFirst 10 sling bullets}",
+							"1 cp",
+							"",
+							"",
+							"",
+							"L",
+							"",
+							"",
+							""
+						]
+					]
+				},
+				[
+					"{@item Shuriken}",
+					"1 cp",
+					"{@dice 1d4} P",
+					"20 ft.",
+					"0",
+					"—",
+					"1",
+					"Dart",
+					"{@trait Agile}, {@trait monk},{@trait thrown}"
+				]
+			],
+			"footnotes": [
+				"* Statistics for alchemical bombs can be found starting on page 544"
+			]
+		},
+		{
+			"name": "Adventuring Gear",
+			"id": "6-9",
+			"source": "CRB",
+			"page": 288,
+			"colStyles": [
+				"text-left",
+				"text-center",
+				"text-center",
+				"text-center"
+			],
+			"colSizes": [
+				4,
+				1,
+				1,
+				1
+			],
+			"rows": [
+				[
+					"Item",
+					"Price",
+					"Bulk",
+					"Hands"
+				],
+				[
+					"{@item Adventurer's pack}",
+					"15 sp",
+					"1",
 					"—"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Alchemist's lab}",
+							"5 gp",
+							"6",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Expanded alchemist’s lab (level 3)}}",
+							"5 gp",
+							"6",
+							"2"
+						]
+					]
+				},
+				[
+					"{@item Alchemist's tools}",
+					"3 gp",
+					"1",
+					"2"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Artisan's tools}",
+							"4 gp",
+							"2",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Sterling artisan's tools (level 3)}}",
+							"50 gp",
+							"2",
+							"2"
+						]
+					]
+				},
+				[
+					"{@item Backpack}",
+					"1 sp",
+					"—",
+					"—"
+				],
+				[
+					"{@item Basic crafter's book}",
+					"1 sp",
+					"L",
+					"2"
+				],
+				[
+					"{@item Bedroll}",
+					"2 cp",
+					"L",
+					"—"
+				],
+				[
+					"{@item Caltrops}",
+					"3 sp",
+					"L",
+					"1"
+				],
+				[
+					"{@item Candle (10)}",
+					"1 cp",
+					"—",
+					"1"
+				],
+				[
+					"{@item Chain (10 feet)}",
+					"4 gp",
+					"1",
+					"2"
+				],
+				[
+					"{@item Chalk (10)}",
+					"1 cp",
+					"—",
+					"1"
+				],
+				[
+					"{@item Chest}",
+					"6 sp",
+					"2",
+					"2"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Clothing}",
+							"",
+							"",
+							""
+						],
+						[
+							"{@indentFirst {@item Ordinary}}",
+							"1 sp",
+							"—",
+							"—"
+						],
+						[
+							"{@indentFirst {@item Explorer's}}",
+							"1 sp",
+							"L",
+							"—"
+						],
+						[
+							"{@indentFirst {@item Fine}}",
+							"2 gp",
+							"L",
+							"—"
+						],
+						[
+							"{@indentFirst {@item High-fashion fine (level 3)}}",
+							"55 gp",
+							"L",
+							"—"
+						],
+						[
+							"{@indentFirst {@item Winter}}",
+							"4 sp",
+							"L",
+							"—"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Compass}",
+							"1 gp",
+							"—",
+							"1"
+						],
+						[
+							"{@indentFirst {@item Lensatic compass (level 3)}}",
+							"20 gp",
+							"—",
+							"1"
+						]
+					]
+				},
+				[
+					"{@item Cookware}",
+					"1 gp",
+					"2",
+					"2"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Crowbar}",
+							"5 sp",
+							"L",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Levered crowbar (level 3)}}",
+							"20 gp",
+							"L",
+							"2"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Disguise kit}",
+							"2 gp",
+							"L",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Replacement cosmetics}}",
+							"1 sp",
+							"—",
+							"—"
+						],
+						[
+							"{@indentFirst {@item Elite disguise kit (level 3)}}",
+							"40 gp",
+							"L",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Elite cosmetics (level 3)}}",
+							"5 sp",
+							"—",
+							"—"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Fishing tackle}",
+							"8 sp",
+							"1",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Professional fishing tackle (level 3)}}",
+							"20 gp",
+							"1",
+							"2"
+						]
+					]
+				},
+				[
+					"{@item Flint and steel}",
+					"5 cp",
+					"—",
+					"2"
+				],
+				[
+					"{@item Formula book (blank)}",
+					"1 gp",
+					"L",
+					"1"
+				],
+				[
+					"{@item Grappling hook}",
+					"1 sp",
+					"L",
+					"1"
+				],
+				[
+					"{@item Hammer}",
+					"1 sp",
+					"L",
+					"1"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Healer's tools}",
+							"5 gp",
+							"1",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Expanded healer's tools (level 3)}}",
+							"50 gp",
+							"1",
+							"2"
+						]
+					]
+				},
+				[
+					"{@item Holly and mistletoe}",
+					"0",
+					"—",
+					"1"
+				],
+				[
+					"{@item Hourglass}",
+					"3 gp",
+					"L",
+					"1"
+				],
+				[
+					"{@item Ladder (10-foot)}",
+					"3 cp",
+					"3",
+					"2"
+				],
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Lantern}",
+							"",
+							"",
+							""
+						],
+						[
+							"{@indentFirst {@item Bull's eye}}",
+							"1 gp",
+							"1",
+							"1"
+						],
+						[
+							"{@indentFirst {@item Hooded}}",
+							"7 sp",
+							"L",
+							"1"
+						]
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"{@item Lock}",
+							"",
+							"",
+							""
+						],
+						[
+							"{@indentFirst {@item Poor lock (level 0)}}",
+							"2 sp",
+							"—",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Simple lock (level 1)}}",
+							"2 gp",
+							"—",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Average lock (level 3)}}",
+							"15 gp",
+							"—",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Good lock (level 9)}}",
+							"200 gp",
+							"—",
+							"2"
+						],
+						[
+							"{@indentFirst {@item Superior lock (level 17)}}",
+							"4,500 gp",
+							"—",
+							"2"
+						]
+					]
+				},
+				[
+					"{@item Magnifying glass (level 3)}",
+					"40 gp",
+					"—",
+					"1"
 				]
 			]
 		}
