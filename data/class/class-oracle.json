@@ -682,7 +682,7 @@
             "classSource": "APG",
 			"level": 1,
 			"entries": [
-				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn two 1st-level spells of your choice and five cantrips of your choice. You choose these from the common spells from the divine spell list, or from other divine spells to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level.",
+				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn two {@filter 1st-level spells|spells|tradition=divine|rarity=common|level=1} and five {@filter cantrips|spells|tradition=divine|rarity=common|level=0} of your choice. You choose these from the common spells from the divine spell list, or from other divine spells to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level.",
 				"You add to this spell repertoire as you increase in level. Each time you get a spell slot (see Table 2–3), you add a spell of the same level to your spell repertoire. At 2nd level, you select another 1st-level spell; at 3rd level, you select two 2nd-level spells, and so on. When you add spells, you might add a higher-level version of a spell you already have, so you can cast a heightened version of that spell.",
 				"Though you gain them at the same rate, your spell slots and the spells in your spell repertoire are separate. If a feat or other ability adds a spell to your spell repertoire, it wouldn’t give you another spell slot, and vice versa.",
 				{
@@ -711,7 +711,7 @@
 					"page": 69,
 					"name": "Revelation Spells",
 					"entries": [
-						"The powers of your mystery manifest in the form of revelation spells, which are a type of focus spell. Casting a revelation spell costs 1 Focus Point and increases the effects of your oracular curse (page 70). You start with a focus pool of 2 Focus Points. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the Refocus activity to reconcile the conflicting or unconventional nature of your divine mystery.",
+						"The powers of your mystery manifest in the form of revelation spells, which are a type of focus spell. Casting a revelation spell costs 1 Focus Point and increases the effects of your oracular curse (page 70). You start with a focus pool of 2 Focus Points. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to reconcile the conflicting or unconventional nature of your divine mystery.",
 						"Focus spells are automatically heightened to half your level rounded up. Focus spells don’t require spell slots, and you can’t cast them using spell slots (see Divine Spellcasting on page 68). Taking feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300 of the Core Rulebook.",
 						"Revelation spells have the {@trait cursebound|APG} trait, unlike other focus spells. This trait means they increase the severity of your oracular curse (see below) when cast. You can’t cast a {@trait cursebound|APG} spell if you don’t have an oracular curse.",
 						"You learn two revelation spells at 1st level. The first is an initial revelation spell determined by your mystery. The second is an initial domain spell you select from one of the domains associated with your mystery, which you cast as a revelation spell, causing it to gain the {@trait cursebound|APG} trait."
@@ -724,9 +724,9 @@
 					"entries": [
 						"Drawing on multiple disparate sources of power inevitably places an incredible stress on your body, manifesting as a supernatural curse. The more revelation spells you cast, the worse the effects of your curse, but these increasingly conflicting energies can also provide you with divine benefits.",
 						"The specific effects of your curse are tied to your mystery, but all curses follow the same progression. A curse continually gives you a mild but constant reminder that you carry otherworldly power. As you cast revelation spells, your curse intensifies, first to a minor effect and then to a moderate effect.",
-						"Your curse progresses to its minor stage the first time you finish casting a revelation spell after your daily preparations. Once your minor curse has manifested, it remains in effect until you rest for 8 hours and again make your daily preparations. If you cast a revelation spell while your minor curse is in effect, you progress to the moderate curse effect immediately after you finish Casting the Spell. The minor effect continues to affect you, though some moderate curse effects might alter the specifics of your minor curse. At higher levels, you can cast more revelation spells, progressing your curse to its major stage and then an extreme stage; these stronger curses are cumulative with the effects of the lower stages and can alter them. When you Refocus while under the effects of your moderate or stronger curse, you reduce your curse’s severity to minor in addition to regaining a Focus Point.",
-						"Drawing upon your mystery’s power while your curse is at its worst causes an irreconcilable conflict between you and the sources of your power. Immediately after casting a revelation spell while under the moderate effect of your curse, you are overwhelmed. While overwhelmed, you can’t Cast or Sustain any revelation spells— you effectively lose access to those spells. You can still Refocus to reduce the effects of your curse and regain a Focus Point, but doing so doesn’t allow you to cast further revelation spells. These effects last until you rest for 8 hours and make your daily preparations, at which point your curse returns to its basic state. At higher levels, you can grow to withstand your curse’s major and even extreme effects, enabling you to cast more revelation spells without becoming overwhelmed.",
-						"Your curse has the {@trait curse|CRB}, {@trait divine|CRB}, and {@trait necromancy|CRB} traits. You can’t mitigate, reduce, or remove the effects of your oracular curse by any means other than Refocusing and resting for 8 hours. For example, if your curse makes creatures concealed from you, you can’t negate that concealed condition through a magic item or spell, such as true strike (though you would still benefit from the other effects of that item or spell). Likewise, remove curse and similar spells don’t affect your curse at all."
+						"Your curse progresses to its minor stage the first time you finish casting a revelation spell after your daily preparations. Once your minor curse has manifested, it remains in effect until you rest for 8 hours and again make your daily preparations. If you cast a revelation spell while your minor curse is in effect, you progress to the moderate curse effect immediately after you finish Casting the Spell. The minor effect continues to affect you, though some moderate curse effects might alter the specifics of your minor curse. At higher levels, you can cast more revelation spells, progressing your curse to its major stage and then an extreme stage; these stronger curses are cumulative with the effects of the lower stages and can alter them. When you {@action Refocus} while under the effects of your moderate or stronger curse, you reduce your curse’s severity to minor in addition to regaining a Focus Point.",
+						"Drawing upon your mystery’s power while your curse is at its worst causes an irreconcilable conflict between you and the sources of your power. Immediately after casting a revelation spell while under the moderate effect of your curse, you are overwhelmed. While overwhelmed, you can’t Cast or Sustain any revelation spells— you effectively lose access to those spells. You can still {@action Refocus} to reduce the effects of your curse and regain a Focus Point, but doing so doesn’t allow you to cast further revelation spells. These effects last until you rest for 8 hours and make your daily preparations, at which point your curse returns to its basic state. At higher levels, you can grow to withstand your curse’s major and even extreme effects, enabling you to cast more revelation spells without becoming overwhelmed.",
+						"Your curse has the {@trait curse|CRB}, {@trait divine|CRB}, and {@trait necromancy|CRB} traits. You can’t mitigate, reduce, or remove the effects of your oracular curse by any means other than {@action Refocus|CRB|Refocusing} and resting for 8 hours. For example, if your curse makes creatures concealed from you, you can’t negate that concealed condition through a magic item or spell, such as true strike (though you would still benefit from the other effects of that item or spell). Likewise, remove curse and similar spells don’t affect your curse at all."
 					]
 				}
 			]
@@ -772,7 +772,7 @@
             "classSource": "APG",
 			"level": 3,
 			"entries": [
-				"Experience enables you to cast some spells more flexibly. For each spell level you have access to, choose one spell of that level to be a signature spell. You don’t need to learn heightened versions of signature spells separately; instead, you can heighten these spells freely. If you’ve learned a signature spell at a higher level than its minimum, you can also cast all its lower-level versions without learning those separately. If you swap out a signature spell, you can replace it with any spell you could have chosen when you first selected it (i.e., of the same spell level or lower). You can also retrain specifically to change a signature spell to a different spell of that level without swapping any spells; this takes as much time as retraining a spell normally does."
+				"Experience enables you to cast some spells more flexibly. For each spell level you have access to, choose one spell of that level to be a signature spell. You don’t need to learn heightened versions of signature spells separately; instead, you can heighten these spells freely. If you’ve learned a signature spell at a higher level than its minimum, you can also cast all its lower-level versions without learning those separately. If you swap out a signature spell, you can replace it with any spell you could have chosen when you first selected it (i.e., of the same spell level or lower). You can also {@action Retraining|CRB|retrain} specifically to change a signature spell to a different spell of that level without swapping any spells; this takes as much time as {@action Retraining|CRB|retraining} a spell normally does."
 			]
 		},
 		{
@@ -862,8 +862,8 @@
 			"classSource": "APG",
 			"level": 11,
 			"entries": [
-				"You’ve learned to better balance the conflicting powers wreaking havoc on your body. Immediately after completing the casting of a revelation spell while you are affected by your moderate curse, your curse progresses to its major effect, rather than overwhelming you. This effect lasts until you Refocus, which reduces your curse to its minor effect. If you cast a revelation spell while under the effects of your major curse, you are overwhelmed by your curse.",
-				"In addition, increase the number of Focus Points in your focus pool from 2 to 3. If you spend at least 2 Focus Points before you again Refocus, you recover 2 Focus Points when you Refocus instead of 1."
+				"You’ve learned to better balance the conflicting powers wreaking havoc on your body. Immediately after completing the casting of a revelation spell while you are affected by your moderate curse, your curse progresses to its major effect, rather than overwhelming you. This effect lasts until you {@action Refocus}, which reduces your curse to its minor effect. If you cast a revelation spell while under the effects of your major curse, you are overwhelmed by your curse.",
+				"In addition, increase the number of Focus Points in your focus pool from 2 to 3. If you spend at least 2 Focus Points before you again {@action Refocus}, you recover 2 Focus Points when you {@action Refocus} instead of 1."
 			]
 		},
 		{
@@ -930,9 +930,9 @@
 			"level": 17,
 			"entries": [
 				"You have mastered a perilous balance between the conflicting divine powers of your mystery, gaining the power to change your fate, but straining both body and soul. When you cast a revelation spell while affected by your major curse, your curse intensifies to an extreme effect instead of overwhelming you. All mysteries share the same effects for their extreme curse.",
-				"When affected by your extreme curse, you become doomed 2 (or increase your doomed condition by 2 if you were already doomed). Once every 10 minutes, when you fail an attack roll, skill or Perception check, or saving throw, you can reroll it and use the second result. The reroll has the fortune trait and doesn’t require you to spend an action, meaning you can use the reroll even if you can’t act. These effects are in addition to all the effects of your major curse, and they can’t be removed by any means until you Refocus to reduce your curse to its minor effect.",
-				"If you cast a revelation spell while under the effects of this extreme curse, you are overwhelmed by your curse, and you remain doomed 2 even if you Refocus.",
-				"Additionally, if you spend at least 3 Focus Points before you again Refocus, you recover 3 Focus Points when you Refocus instead of 1."
+				"When affected by your extreme curse, you become {@condition doomed} 2 (or increase your {@condition doomed} condition by 2 if you were already {@condition doomed}). Once every 10 minutes, when you fail an attack roll, skill or Perception check, or saving throw, you can reroll it and use the second result. The reroll has the {@trait fortune} trait and doesn’t require you to spend an action, meaning you can use the reroll even if you can’t act. These effects are in addition to all the effects of your major curse, and they can’t be removed by any means until you {@action Refocus} to reduce your curse to its minor effect.",
+				"If you cast a revelation spell while under the effects of this extreme curse, you are overwhelmed by your curse, and you remain {@condition doomed} 2 even if you {@action Refocus}.",
+				"Additionally, if you spend at least 3 Focus Points before you again {@action Refocus}, you recover 3 Focus Points when you {@action Refocus} instead of 1."
 			]
 		},
 		{
@@ -965,7 +965,7 @@
             "classSource": "APG",
 			"level": 19,
 			"entries": [
-				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two common 10th-level divine spells to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don’t gain more 10th-level spells as you level up, unlike other spell slots, and you can’t use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence} feat to gain a second slot."
+				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two {@filter 10th-level divine spells|spells|level=10|tradition=divine|rarity=common} to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don’t gain more 10th-level spells as you level up, unlike other spell slots, and you can’t use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence} feat to gain a second slot."
 			]
 		}
 	],
@@ -984,13 +984,50 @@
                     "page": 73,
                     "name": "Ancestors",
                     "entries": [
-                        "The voices of generations past speak to you, and you hear their words. You might resent the constant interruption, or you might revere the spirits of those who came before. Perhaps you hail from a culture with strong ancestral traditions, such as the Shoanti Skoan- Quah (Skull Clan), a traditional dwarven community that worships Torag’s family pantheon, or a group that reveres Erastil or Pharasma. You might commune with powerful psychopomps who shepherd souls to the afterlife, with the River of Souls itself, or with those spirits who have become trapped outside of the great cycle of spiritual rebirth. You learn from their whispers and the fragments of their memories, but opening your mind to their knowledge and experience also allows them to meddle in your worldly affairs.",
-				        "{@b Mystery Benefit} The whispers of your ancestors have bestowed additional knowledge upon you. You gain an additional ancestry feat at 1st level and another additional ancestry feat at 11th level. These feats can’t be ones that grant physiological effects, such as additional senses or unarmed attacks.",
-				        "{@b Trained Skill} {@skill Society}",
-				        "{@b Granted Cantrip} {@spell guidance|CRB}",
-				        "{@b Revelation Spells} initial: {@spell ancestral touch|APG}; advanced: {@spell ancestral defense|APG}; greater: {@spell ancestral form|APG}",
-				        "{@b Related Domains} death, family"
-                    ]
+                        "The voices of generations past speak to you, and you hear their words. You might resent the constant interruption, or you might revere the spirits of those who came before. Perhaps you hail from a culture with strong ancestral traditions, such as the Shoanti Skoan- Quah (Skull Clan), a traditional dwarven community that worships {@deity Torag}’s family pantheon, or a group that reveres {@deity Erastil} or {@deity Pharasma}. You might commune with powerful psychopomps who shepherd souls to the afterlife, with the River of Souls itself, or with those spirits who have become trapped outside of the great cycle of spiritual rebirth. You learn from their whispers and the fragments of their memories, but opening your mind to their knowledge and experience also allows them to meddle in your worldly affairs.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"The whispers of your ancestors have bestowed additional knowledge upon you. You gain an additional ancestry feat at 1st level and another additional ancestry feat at 11th level. These feats can’t be ones that grant physiological effects, such as additional senses or unarmed attacks."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Society}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell guidance|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell ancestral touch|APG}; advanced: {@spell ancestral defense|APG}; greater: {@spell ancestral form|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter death, family|spells|domains=family; death|level=1}"
+									]
+								}
+							]
+						}
+					]
                 },
 				{
 					"type": "pf2-h4",
@@ -998,8 +1035,8 @@
 					"name": "Curse of Ancestral Meddling",
 					"entries": [
 						"The ancestral spirits you commune with haunt you and meddle with your belongings and actions, either out of a well-intentioned (but ultimately detrimental) attempt to assist you, as punishment for your audacity in circumventing the traditional means of achieving divine power, for their own amusement, or a mixture of the above. Your hair, clothing, and belongings constantly shift and stir, seemingly of their own volition.",
-						"{@b Minor Curse} One of your ancestors becomes predominant in their meddling. The first time you gain this effect each day, roll 1d4 on Table 2–4: Ancestral Influence on page 75 to determine which type of ancestor becomes predominant. This predominant ancestor guides you to use their preferred type of action. When you try to use one of the types of actions listed for the other ancestors, you must succeed at a DC 4 flat check. On a failure, you spend the action but gain no effect (though you don’t lose the spell if you were Casting a Spell). If your action would take 1 minute or longer, it’s long enough that you can overcome the meddling, and you don’t need to attempt a flat check.",
-						"During combat or another tense, round-by-round encounter, other ancestors wrestle for control of your actions. When you roll initiative, and then at the end of each of your turns during the encounter, roll 1d4 and change your predominant ancestor appropriately. Once the encounter ends, you return to the influence of the ancestor you first rolled for the day.",
+						"{@b Minor Curse} One of your ancestors becomes predominant in their meddling. The first time you gain this effect each day, roll {@dice 1d4} on Table 2–4: Ancestral Influence on page 75 to determine which type of ancestor becomes predominant. This predominant ancestor guides you to use their preferred type of action. When you try to use one of the types of actions listed for the other ancestors, you must succeed at a DC 4 flat check. On a failure, you spend the action but gain no effect (though you don’t lose the spell if you were {@action Cast a Spell|CRB|Casting a Spell}). If your action would take 1 minute or longer, it’s long enough that you can overcome the meddling, and you don’t need to attempt a flat check.",
+						"During combat or another tense, round-by-round encounter, other ancestors wrestle for control of your actions. When you roll initiative, and then at the end of each of your turns during the encounter, roll {@dice 1d4} and change your predominant ancestor appropriately. Once the encounter ends, you return to the influence of the ancestor you first rolled for the day.",
 						"{@b Moderate Curse} The flat check DC to use other actions is 6, and you get the moderate curse benefit listed for your predominant ancestor in Table 2–4.",
 						{
 							"type": "table",
@@ -1098,12 +1135,49 @@
                     "name": "Battle",
                     "entries": [
                         "Warlike forces fill you with physical might and tactical knowledge, aiming to have you uphold the glory of combat, fight to improve the world, prepare against the necessity of conflict, or endure the inevitability of war. You might draw upon deities such as Gorum, Iomedae, Rovagug, the Horseman of War Szuriel, the Queen of the Night Eiseth, the Vudrani god Diomazul, and others, or you might find power in the unending conflict between the armies of Heaven and Hell, the Elemental Planes, the Outer Gods, or even the collective spirits of those who fought in wars over the ages.",
-				        "{@b Mystery Benefit} You are no stranger to the trappings of warfare. You are trained in medium and heavy armor. At 13th level, if you gain the light armor expertise class feature, you also gain expert proficiency in these armors.",
-				        "Choose one weapon group that embodies your mystery. You are trained in all martial weapons of that group. At 11th level, if you gain the weapon expertise class feature, you also gain expert proficiency for martial weapons in your chosen group, and you become trained in advanced weapons in that group.",
-				        "{@b Trained Skill} {@skill Athletics}",
-				        "{@b Granted Cantrip} {@spell shield|CRB}",
-				        "{@b Revelation Spells} initial: {@spell call to arms|APG}; advanced: {@spell battlefield persistence|APG}; greater: {@spell heroic feat|APG}",
-				        "{@b Related Domains} might, zeal"
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"You are no stranger to the trappings of warfare. You are trained in medium and heavy armor. At 13th level, if you gain the light armor expertise class feature, you also gain expert proficiency in these armors.",
+										"Choose one weapon group that embodies your mystery. You are trained in all martial weapons of that group. At 11th level, if you gain the weapon expertise class feature, you also gain expert proficiency for martial weapons in your chosen group, and you become trained in advanced weapons in that group."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Athletics}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell shield|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell call to arms|APG}; advanced: {@spell battlefield persistence|APG}; greater: {@spell heroic feat|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter might, zeal|spells|domains=might; zeal|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				{
@@ -1112,8 +1186,8 @@
 					"name": "Curse of the Hero's Burden",
 					"entries": [
 						"You thrive while adrenaline flows and your life depends on your might alone, but holding the collective battle prowess of the ages within you leaves your body weakened after a fight. You smell faintly of steel and blood no matter how you try to remove or mask the scent, you appear more muscular than you actually are, and you hear the faint clash and clamor of battle in the distance at all times.",
-						"{@b Minor Curse} Your body languishes when you aren’t bringing harm to your foes. You take a –2 status penalty to AC and saving throws, but each time you make a Strike, you can suspend these penalties until the start of your next turn.",
-						"{@b Moderate Curse} The strain of conflict wears upon your body, even though you gain vitality from it. Making a Strike reduces the penalty from your minor curse to –1 rather than suspending it entirely. You gain a +2 status bonus to weapon and unarmed damage rolls. You also gain fast healing equal to half your level while in a non-trivial combat encounter."
+						"{@b Minor Curse} Your body languishes when you aren’t bringing harm to your foes. You take a –2 status penalty to AC and saving throws, but each time you make a {@action Strike}, you can suspend these penalties until the start of your next turn.",
+						"{@b Moderate Curse} The strain of conflict wears upon your body, even though you gain vitality from it. Making a {@action Strike} reduces the penalty from your minor curse to –1 rather than suspending it entirely. You gain a +2 status bonus to weapon and unarmed damage rolls. You also gain fast healing equal to half your level while in a non-trivial combat encounter."
 					]
 				}
 			]
@@ -1133,7 +1207,7 @@
                     "page": 74,
                     "name": "Battle",
                     "entries": [
-				        "Your body proves capable of truly heroic feats, but doing so interferes with your mental focus. Your moderate curse’s fast healing is equal to your level, and its damage bonus is +6. You gain a +1 status bonus to weapon and unarmed attack rolls, but you are stupefied 2."
+				        "Your body proves capable of truly heroic feats, but doing so interferes with your mental focus. Your moderate curse’s fast healing is equal to your level, and its damage bonus is +6. You gain a +1 status bonus to weapon and unarmed attack rolls, but you are {@condition stupefied} 2."
                     ]
                 }
 			]
@@ -1153,12 +1227,49 @@
                     "page": 74,
                     "name": "Bones",
                     "entries": [
-                        "Your mystery imparts an understanding of death and undeath in all their macabre complexity. You might have had a brush with death yourself—maybe even dying and returning to life—or carry the touch of undeath in your blood. If you commune with deities, you might speak with guardians of death like Pharasma and the psychopomp ushers (the most powerful among creatures that guide souls through the afterlife); a bringer of death like the Mantis God Achaekek or the Horseman of the Apocalypse Charon; or a herald of undeath such as Urgathoa.",
-                        "{@b Mystery Benefit} You can cleverly leverage the subtleties of life and death to your benefit. Each day during your preparations, you can choose to align yourself in the confluence of positive and negative energy so as to gain negative healing, which means you are harmed by positive damage and healed by negative effects as if you were undead. If you already have negative healing, instead the DC of your recovery checks is equal to 9 + your current dying value.",
-                        "{@b Trained Skill} {@skill Medicine}",
-                        "{@b Granted Cantrip} {@spell chill touch|CRB}",
-                        "{@b Revelation Spells} initial: {@spell soul siphon|APG}; advanced: {@spell armor of bones|APG}; greater: {@spell claim undead|APG}",
-                        "{@b Related Domains} death, undeath"
+                        "Your mystery imparts an understanding of death and undeath in all their macabre complexity. You might have had a brush with death yourself—maybe even dying and returning to life—or carry the touch of undeath in your blood. If you commune with deities, you might speak with guardians of death like {@deity Pharasma} and the psychopomp ushers (the most powerful among creatures that guide souls through the afterlife); a bringer of death like the Mantis God {@deity Achaekek} or the Horseman of the Apocalypse {@deity Charon}; or a herald of undeath such as {@deity Urgathoa}.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"You can cleverly leverage the subtleties of life and death to your benefit. Each day during your preparations, you can choose to align yourself in the confluence of positive and negative energy so as to gain negative healing, which means you are harmed by positive damage and healed by negative effects as if you were undead. If you already have negative healing, instead the DC of your recovery checks is equal to 9 + your current dying value."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Medicine}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell chill touch|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell soul siphon|APG}; advanced: {@spell armor of bones|APG}; greater: {@spell claim undead|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter death, undeath|spells|domains=death; undeath|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				{
@@ -1168,7 +1279,7 @@
 					"entries": [
 						"Your body is slowly decaying even though you are alive, and using your powers furthers this unnatural living death. You carry a touch of the grave about you, manifesting as bloodless pallor, a faint smell of earth, or deathly cold skin.",
 						"{@b Minor Curse} Bones protrude through your skin and your flesh rots, combining with a stench of decay and an unearthly chill. Non-magical effects that would restore your Hit Points only grant you half as many HP as normal.",
-						"{@b Moderate Curse} Your dead flesh continues to rot, affecting your health. You become drained 1, and this drained condition is cumulative with any other drained conditions you gain. This drained condition is removed only when you Refocus; effects that normally remove the drained condition reduce your drained condition to drained 1 instead. In addition, you gain resistance to poison equal to half your level. You gain a +4 status bonus to saves against diseases, poisons, and death effects, and if you roll a success on such a save, you get a critical success instead."
+						"{@b Moderate Curse} Your dead flesh continues to rot, affecting your health. You become {@condition drained} 1, and this {@condition drained} condition is cumulative with any other {@condition drained} conditions you gain. This {@condition drained} condition is removed only when you {@action Refocus}; effects that normally remove the {@condition drained} condition reduce your {@condition drained} condition to {@condition drained} 1 instead. In addition, you gain resistance to poison equal to half your level. You gain a +4 status bonus to saves against diseases, poisons, and death effects, and if you roll a success on such a save, you get a critical success instead."
 					]
 				}
 			]
@@ -1188,7 +1299,7 @@
                     "page": 74,
                     "name": "Bones",
                     "entries": [
-				        "You stand just steps from the grave. You become wounded 1. This wounded condition is removed only when you Refocus; effects that normally remove the wounded condition reduce your wounded condition to wounded 1 instead. When you would attempt a recovery check, you can choose to get an automatic success instead of rolling, and if you roll a critical failure on a save against a disease, poison, or death effect, you get a failure instead."
+				        "You stand just steps from the grave. You become {@condition wounded} 1. This {@condition wounded} condition is removed only when you {@action Refocus}; effects that normally remove the {@condition wounded} condition reduce your {@condition wounded} condition to {@condition wounded} 1 instead. When you would attempt a recovery check, you can choose to get an automatic success instead of rolling, and if you roll a critical failure on a save against a disease, poison, or death effect, you get a failure instead."
                     ]
                 }
 				
@@ -1209,12 +1320,49 @@
                     "page": 74,
                     "name": "Cosmos",
                     "entries": [
-                        "Celestial bodies great and small exert influence on you, giving you sublime cosmic power. Perhaps you see the glittering stars as a divine blessing, or perhaps you feel drawn to the infinitely dark spaces between. You might uphold deities like Desna, Sarenrae, or the deific lovers Shizuru and Tsukiyo who represent the sun and the moon—or you might draw power from dark entities from beyond the stars, like certain Outer Gods, or destructive gods of the night like Zon-Kuthon or the rat goddess Lao Shu Po.",
-                        "{@b Mystery Benefit} Your body is as much an astronomical one as it is physical. You gain resistance equal to 2 + half your level against all physical damage.",
-                        "{@b Trained Skill} {@skill Nature}",
-                        "{@b Granted Cantrip} {@spell dancing lights|CRB}",
-                        "{@b Revelation Spells} initial: {@spell spray of stars|APG}; advanced: {@spell interstellar void|APG}; greater: {@spell moonlight bridge|APG}",
-                        "{@b Related Domains} darkness, moon"
+                        "Celestial bodies great and small exert influence on you, giving you sublime cosmic power. Perhaps you see the glittering stars as a divine blessing, or perhaps you feel drawn to the infinitely dark spaces between. You might uphold deities like {@deity Desna}, {@deity Sarenrae}, or the deific lovers {@deity Shizuru} and {@deity Tsukiyo} who represent the sun and the moon—or you might draw power from dark entities from beyond the stars, like certain Outer Gods, or destructive gods of the night like {@deity Zon-Kuthon} or the rat goddess {@deity Lao Shu Po}.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"Your body is as much an astronomical one as it is physical. You gain resistance equal to 2 + half your level against all physical damage."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Nature}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell dancing lights|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell spray of stars|APG}; advanced: {@spell interstellar void|APG}; greater: {@spell moonlight bridge|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter darkness, moon|spells|domains=darkness; moon|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				{
@@ -1224,8 +1372,8 @@
 					"entries": [
                         
 						"You have your head in the clouds—and not just figuratively. Your body is drawn toward the heavens, making you lighter and less substantial than you should be. Your eyes glow with starry light, and your hair and clothing float and drift around you.",
-						"{@b Minor Curse} Your unnatural lightness makes it hard to keep your footing and interact with other physical objects. You are enfeebled 1 and take a –2 penalty to saves and DCs against Grapple, Shove, and other forms of forced movement.",
-						"{@b Moderate Curse} Your body is drawn further skyward. You are enfeebled 2, and the penalty from your minor curse increases to –3. You are treated as one size smaller for wind effects. You gain a +2 status bonus against Trip attempts, you only take half as much damage from falls, and you gain the effects of the Powerful Leap and Quick Jump skill feats. You weigh only half as much, and your Bulk, should someone need to carry you, is also half as much."
+						"{@b Minor Curse} Your unnatural lightness makes it hard to keep your footing and interact with other physical objects. You are {@condition enfeebled} 1 and take a –2 penalty to saves and DCs against {@action Grapple}, {@action Shove}, and other forms of forced movement.",
+						"{@b Moderate Curse} Your body is drawn further skyward. You are {@condition enfeebled} 2, and the penalty from your minor curse increases to –3. You are treated as one size smaller for wind effects. You gain a +2 status bonus against {@action Trip} attempts, you only take half as much damage from falls, and you gain the effects of the {@feat Powerful Leap} and {@feat Quick Jump} skill feats. You weigh only half as much, and your Bulk, should someone need to carry you, is also half as much."
 					]
 				}
 			]
@@ -1245,7 +1393,7 @@
                     "page": 74,
                     "name": "Cosmos",
                     "entries": [
-				        "As your body rises, you float just above the ground beneath you. You become enfeebled 4, and the penalty from your minor curse increases to –4. You can walk on liquids as if they were solid; you gain the effects of the Cloud Jump skill feat; and you don’t leave tracks, trigger weight-sensitive pressure plates, or otherwise connect with the ground below you."
+				        "As your body rises, you float just above the ground beneath you. You become {@condition enfeebled} 4, and the penalty from your minor curse increases to –4. You can walk on liquids as if they were solid; you gain the effects of the {@feat Cloud Jump} skill feat; and you don’t leave tracks, trigger weight-sensitive pressure plates, or otherwise connect with the ground below you."
                     ]
                 }
 				
@@ -1266,12 +1414,49 @@
                     "page": 74,
                     "name": "Flames",
                     "entries": [
-                        "Fire lives at the center of the world, the center of the sun, and the center of civilization. You might revere this elemental force, siphon power from the Elemental Plane of Fire, or venerate a collection of deities such as Asmodeus, Sarenrae, the Tian goddess of disasters and volcanoes Lady Nanbyo, or the elemental lord of fire Ymeri.",
-                        "{@b Mystery Benefit} Like fire itself, you flicker and dance, avoiding effects that would quench your vitality. You have expert proficiency in Reflex saves. At 13th level, if you gain the lightning reflexes class feature, your proficiency rank for Reflex saves increases to master, and when you roll a success on a Reflex save, you get a critical success instead.",
-                        "{@b Trained Skill} {@skill Acrobatics}",
-                        "{@b Granted Cantrip} {@spell produce flame|CRB}",
-                        "{@b Revelation Spells} initial: {@spell incendiary aura|APG}; advanced: {@spell whirling flames|APG}; greater: {@spell flaming fusillade|APG}",
-                        "{@b Related Domains} fire, sun"
+                        "Fire lives at the center of the world, the center of the sun, and the center of civilization. You might revere this elemental force, siphon power from the Elemental Plane of Fire, or venerate a collection of deities such as {@deity Asmodeus}, {@deity Sarenrae}, the Tian goddess of disasters and volcanoes {@deity Lady Nanbyo}, or the elemental lord of fire {@deity Ymeri}.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"Like fire itself, you flicker and dance, avoiding effects that would quench your vitality. You have expert proficiency in Reflex saves. At 13th level, if you gain the lightning reflexes class feature, your proficiency rank for Reflex saves increases to master, and when you roll a success on a Reflex save, you get a critical success instead."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Acrobatics}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell produce flame|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell incendiary aura|APG}; advanced: {@spell whirling flames|APG}; greater: {@spell flaming fusillade|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter fire, sun|spells|domains=fire; sun|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				
@@ -1281,9 +1466,9 @@
 					"name": "Curse of Engulfing Flames",
 					"entries": [
 						"You see flames and smoke wherever you look. These flames might be imagined, or they might be a preternatural glimpse of the metaphorical fires that empower the entire multiverse—but you always see them. Fires flare noticeably (though not dangerously) in your presence, you occasionally smoke slightly, and your body is almost painfully hot to the touch.",
-						"{@b Minor Curse} The smoke, heat, and crackling flames of your curse fill your vision and all your other senses. Creatures further than 30 feet are concealed from you. You can’t benefit from effects that would allow you to ignore or mitigate this concealment, as normal for effects of an oracular curse.",
-						"{@b Moderate Curse} Smoke and flickering visions of flame fill your senses more completely, and harmless flickers of obscuring flames also fill your space. You are concealed from other creatures, though as the other creatures aren’t cursed themselves, they can benefit from effects that would allow them to ignore or mitigate the concealed condition, as normal. All other creatures and objects are concealed from you regardless of distance; however, when casting a fire spell, you automatically succeed at the flat check for this concealed condition for targets within 30 feet.",
-						"All your senses become imprecise beyond 30 feet, meaning everything past 30 feet that you’d normally be able to see is hidden from you."
+						"{@b Minor Curse} The smoke, heat, and crackling flames of your curse fill your vision and all your other senses. Creatures further than 30 feet are {@condition concealed} from you. You can’t benefit from effects that would allow you to ignore or mitigate this concealment, as normal for effects of an oracular curse.",
+						"{@b Moderate Curse} Smoke and flickering visions of flame fill your senses more completely, and harmless flickers of obscuring flames also fill your space. You are {@condition concealed} from other creatures, though as the other creatures aren’t cursed themselves, they can benefit from effects that would allow them to ignore or mitigate the {@condition concealed} condition, as normal. All other creatures and objects are {@condition concealed} from you regardless of distance; however, when casting a fire spell, you automatically succeed at the flat check for this {@condition concealed} condition for targets within 30 feet.",
+						"All your senses become imprecise beyond 30 feet, meaning everything past 30 feet that you’d normally be able to see is {@condition hidden} from you."
 					]
 				}
 			]
@@ -1303,8 +1488,8 @@
                     "page": 74,
                     "name": "Flames",
                     "entries": [
-				        "The flames surrounding you are no longer simply visions. An aura of fire surrounds you in a 10-foot emanation, dealing 4d6 fire damage (basic Reflex save) to all other creatures in the aura at the end of each of your turns. You lose 1d6 Hit Points at the end of your turn each round, with no save; if you have a weakness to fire, increase the number of HP you lose by that weakness.",
-				        "You can suppress your aura until the start of your next turn by spending a single action, which has the concentrate trait, to diminish the flames, causing neither you nor anyone in the aura to take damage. While Refocusing to reduce your curse, you are continually diminishing the flames, so you don’t lose HP. The flames subside if you fall unconscious, but they resume when you wake up unless you rested for long enough to reset your curse. As usual for oracular curses, you can’t mitigate or reduce the lost Hit Points in any way, though you can still heal the lost HP normally after the fact."
+				        "The flames surrounding you are no longer simply visions. An aura of fire surrounds you in a 10-foot emanation, dealing {@dice 4d6} fire damage (basic Reflex save) to all other creatures in the aura at the end of each of your turns. You lose {@dice 1d6} Hit Points at the end of your turn each round, with no save; if you have a weakness to fire, increase the number of HP you lose by that weakness.",
+				        "You can suppress your aura until the start of your next turn by spending a single action, which has the concentrate trait, to diminish the flames, causing neither you nor anyone in the aura to take damage. While {@action Refocus|CRB|Refocusing} to reduce your curse, you are continually diminishing the flames, so you don’t lose HP. The flames subside if you fall {@condition unconscious}, but they resume when you wake up unless you rested for long enough to reset your curse. As usual for oracular curses, you can’t mitigate or reduce the lost Hit Points in any way, though you can still heal the lost HP normally after the fact."
                     ]
                 }
 				
@@ -1325,12 +1510,49 @@
                     "page": 74,
                     "name": "Life",
                     "entries": [
-                        "The never-ending flow of positive energy within living beings is palpable to you. You might uphold the sanctity of life, or perhaps you seek to undermine it. You might draw power from the collective vitality of the world’s living creatures, hold some connection to the Positive Energy Plane, or revere a collection of deities including Irori, Pharasma, Sarenrae, and the god of medicine Qi Zhong.",
-                        "{@b Mystery Benefit} Your body is a deep reservoir of life energy. At each level, you gain Hit Points equal to 10 + your Constitution modifier from the oracle class, instead of 8 + your Constitution modifier.",
-                        "{@b Trained Skill} {@skill Medicine}",
-                        "{@b Granted Cantrip} {@spell stabilize|CRB}",
-                        "{@b Revelation Spells} initial: {@spell life link|APG}; advanced: {@spell delay affliction|APG}; greater: {@spell life-giving form|APG}",
-                        "{@b Related Domains} death, healing"
+                        "The never-ending flow of positive energy within living beings is palpable to you. You might uphold the sanctity of life, or perhaps you seek to undermine it. You might draw power from the collective vitality of the world’s living creatures, hold some connection to the Positive Energy Plane, or revere a collection of deities including {@deity Irori}, {@deity Pharasma}, {@deity Sarenrae}, and the god of medicine {@deity Qi Zhong}.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"Your body is a deep reservoir of life energy. At each level, you gain Hit Points equal to 10 + your Constitution modifier from the oracle class, instead of 8 + your Constitution modifier."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Medicine}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell stabilize|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell life link|APG}; advanced: {@spell delay affliction|APG}; greater: {@spell life-giving form|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter death, healing|spells|domains=death; healing|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				{
@@ -1340,7 +1562,7 @@
 					"entries": [
 						"Life energy flows outward from you and connects you to all living things, but you expend your vital essence to do so. Your presence comforts the ill and injured, causes scars to fade slightly, spurs new growth in plants, and otherwise infuses your surroundings with vitality.",
 						"{@b Minor Curse} As your life force seeps outward, it becomes more difficult to keep your body functioning. Effects that restore Hit Points to you take a status penalty equal to half your level (minimum 1) to the number of HP you recover.",
-						"{@b Moderate Curse} The flow of life energy away from you can’t be reversed. In addition to the effects of your minor curse, you can’t be healed by magical effects originating from other creatures. However, if you are unconscious, magical effects can restore you to 1 HP (but no higher). You are affected normally by healing elixirs, potions, and other items. When you cast heal and all your targets are living creatures, you roll d12s instead of d8s for the amount of healing.",
+						"{@b Moderate Curse} The flow of life energy away from you can’t be reversed. In addition to the effects of your minor curse, you can’t be healed by magical effects originating from other creatures. However, if you are {@condition unconscious}, magical effects can restore you to 1 HP (but no higher). You are affected normally by healing elixirs, potions, and other items. When you cast {@spell heal} and all your targets are living creatures, you roll {@dice d12|d12s} instead of {@dice d8|d8s} for the amount of healing.",
 						"Whenever you finish casting a non-cantrip spell, you restore Hit Points equal to the spell level to your choice of either one target of the spell or the creature nearest to you. You can’t heal yourself in this way. This healing has the {@trait healing|CRB}, {@trait necromancy|CRB}, and {@trait positive|CRB} traits, as well as the tradition trait of the spell."
 					]
 				}
@@ -1361,7 +1583,7 @@
                     "page": 74,
                     "name": "Life",
                     "entries": [
-				        "Life energy tears through you to empower your magic. Some of your spells carry positive energy with them. Each time you use a spell slot to cast a 5th-level or higher spell that takes 2 or more actions to cast, you disperse positive energy in a 30-foot burst with the effects of a 3-action heal spell with a level 4 lower than that of the spell you cast. This healing occurs immediately after you finish Casting the Spell. You don’t benefit from this healing. Instead, you lose double the number of Hit Points rolled for the heal spell."
+				        "Life energy tears through you to empower your magic. Some of your spells carry positive energy with them. Each time you use a spell slot to cast a 5th-level or higher spell that takes 2 or more actions to cast, you disperse positive energy in a 30-foot burst with the effects of a 3-action {@spell heal} spell with a level 4 lower than that of the spell you cast. This healing occurs immediately after you finish {@action Cast a Spell|CRB|Casting the Spell}. You don’t benefit from this healing. Instead, you lose double the number of Hit Points rolled for the {@spell heal} spell."
                     ]
                 }
 			]
@@ -1381,12 +1603,49 @@
                     "page": 74,
                     "name": "Lore",
                     "entries":[
-                        "Knowledge and information come freely to you. You might use this lore to gain power or perhaps to understand the divine mysteries of the multiverse. You might have a conduit to the fabled Akashic Record, maintain a subtle telepathic connection to the collective subconscious of all living creatures, or follow in the footsteps of deities such as Abadar, Irori, Nethys, Irori’s scholarly nephew Gruhastha, the fey triune goddess of fate Magdh, or the lawful aeon god-figure known as the Monad.",
-                        "{@b Mystery Benefit} You hold more mystical knowledge within you than most. You have one additional spell in your repertoire of each level you can cast.",
-                        "{@b Trained Skill} {@skill Occultism} and one Lore skill of your choice",
-                        "{@b Granted Cantrip} {@spell read aura|CRB}",
-                        "{@b Revelation Spells} initial: {@spell brain drain|APG}; advanced: {@spell access lore|APG}; greater: {@spell dread secret|APG}",
-                        "{@b Related Domains} knowledge, truth"
+                        "Knowledge and information come freely to you. You might use this lore to gain power or perhaps to understand the divine mysteries of the multiverse. You might have a conduit to the fabled Akashic Record, maintain a subtle telepathic connection to the collective subconscious of all living creatures, or follow in the footsteps of deities such as {@deity Abadar}, {@deity Irori}, {@deity Nethys}, Irori’s scholarly nephew {@deity Gruhastha}, the fey triune goddess of fate {@deity Magdh}, or the lawful aeon god-figure known as the {@deity Monad}.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"You hold more mystical knowledge within you than most. You have one additional spell in your repertoire of each level you can cast."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Occultism} and one {@skill Lore} skill of your choice"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell read aura|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell brain drain|APG}; advanced: {@spell access lore|APG}; greater: {@spell dread secret|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter knowledge, truth|spells|domains=knowledge; truth|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				
@@ -1397,7 +1656,7 @@
 					"entries": [
 						"You have a link to true divine knowledge, but your mortal mind struggles to process and act on what you know. Loose materials around you, such as dust, grains of rice, and droplets of water, slowly shift to form strange runes or faint indecipherable writing, and you sometimes speak unintelligible truths or statements in unknown languages without realizing it.",
 						"{@b Minor Curse} You take a –4 penalty to initiative, as trying to process a surge of information about what’s happening around you slows your ability to respond to it.",
-						"{@b Moderate Curse} The flow of information through your mind grows. The attention you divert to process this huge influx of information means you are always flat-footed. At the start of each of your turns, you automatically make one check to Recall Knowledge as a free action. This uses a skill of your choice that has the Recall Knowledge action, using a result equal to 10 + your proficiency bonus in that skill (with no other bonuses, penalties, or modifiers)."
+						"{@b Moderate Curse} The flow of information through your mind grows. The attention you divert to process this huge influx of information means you are always {@condition flat-footed}. At the start of each of your turns, you automatically make one check to {@action Recall Knowledge} as a free action. This uses a skill of your choice that has the {@action Recall Knowledge} action, using a result equal to 10 + your proficiency bonus in that skill (with no other bonuses, penalties, or modifiers)."
 					]
 				}
 			]
@@ -1417,7 +1676,7 @@
                     "page": 74,
                     "name": "Lore",
                     "entries": [
-				        "The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can’t speak, use linguistic effects, or otherwise communicate with your allies. If you {@action Cast a Spell} with a verbal component, you must succeed at a DC 5 flat check or the spell is lost. You gain a +4 status bonus on saving throws against linguistic effects."
+				        "The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can’t speak, use {@trait linguistic} effects, or otherwise communicate with your allies. If you {@action Cast a Spell} with a verbal component, you must succeed at a DC 5 flat check or the spell is lost. You gain a +4 status bonus on saving throws against {@trait linguistic} effects."
                     ]
                 }
 			]
@@ -1437,13 +1696,50 @@
                     "page": 74,
                     "name": "Tempest",
                     "entries":[
-                        "The fury of the wind and waves pounds in your heart, whether your power flows from natural storms, a conduit to the elemental Planes of Air and Water, or through reverence of deities such as Gozreh, the tengu god of storms Hei Feng, the demon lord Dagon, or the elemental lords of air and water.",
-                        "{@b Mystery Benefit} You can see perfectly through wind and water, and you send electric charges through both air and water. You never take penalties to Perception from wind, rain, fog, or other precipitation, or from looking through water or being underwater, and such conditions don’t cause anything to be concealed from you.",
-                        "When you deal physical damage with a non-cantrip air or water spell, you deal an additional 1 electricity damage per spell level.",
-                        "{@b Trained Skill} {@skill Nature}",
-                        "{@b Granted Cantrip} {@spell electric arc|CRB}",
-                        "{@b Revelation Spells} initial: {@spell tempest touch|APG}; advanced: {@spell thunderburst|APG}; greater: {@spell tempest form|APG}",
-                        "{@b Related Domains} air, water"
+                        "The fury of the wind and waves pounds in your heart, whether your power flows from natural storms, a conduit to the elemental Planes of Air and Water, or through reverence of deities such as {@deity Gozreh}, the tengu god of storms {@deity Hei Feng}, the demon lord {@deity Dagon}, or the elemental lords of air and water.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"skipSort": true,
+							"items": [
+								{
+									"type": "item",
+									"name": "Mystery Benefit",
+									"entries": [
+										"You can see perfectly through wind and water, and you send electric charges through both air and water. You never take penalties to {@skill Perception} from wind, rain, fog, or other precipitation, or from looking through water or being underwater, and such conditions don’t cause anything to be {@condition concealed} from you.",
+										"When you deal physical damage with a non-cantrip air or water spell, you deal an additional 1 electricity damage per spell level."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Trained Skill",
+									"entries": [
+										"{@skill Nature}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Granted Cantrip",
+									"entries": [
+										"{@spell electric arc|CRB}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Revelation Spells",
+									"entries": [
+										"initial: {@spell tempest touch|APG}; advanced: {@spell thunderburst|APG}; greater: {@spell tempest form|APG}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Related Domains",
+									"entries": [
+										"{@filter air, water|spells|domains=air; water|level=1}"
+									]
+								}
+							]
+						}
                     ]
                 },
 				
@@ -1455,7 +1751,7 @@
 						"You are the center of your own tiny tempest, ever surrounded by wind and rain that worsens the more you tap into your elemental powers. Even when you are calm and at rest, your hair and clothing are blown about by gentle winds, you are slightly damp, and your touch often comes with a static shock.",
 						"{@b Minor Curse} An aura of a whirling storm whips up in a 5-foot emanation around you and in your space. The aura puts out small non-magical fires 1 round after they’re lit or brought into your aura.",
 						"Electrical energy builds up within your storm, turning you into a lightning rod; you gain weakness 2 to electricity, and electricity spells or effects that have additional effects for a creature wearing or holding metal treat you as though you were wearing metal.",
-						"{@b Moderate Curse} Your minor curse’s aura expands to a 10- foot emanation and carries rain on the winds. The whirling winds impose a –2 circumstance penalty on ranged attack rolls using physical ammunition that target you or originate from you. Your weakness to electricity increases to 5 or half your level, whichever is greater, but torrential rain grants you an equal amount of fire resistance."
+						"{@b Moderate Curse} Your minor curse’s aura expands to a 10-foot emanation and carries rain on the winds. The whirling winds impose a –2 circumstance penalty on ranged attack rolls using physical ammunition that target you or originate from you. Your weakness to electricity increases to 5 or half your level, whichever is greater, but torrential rain grants you an equal amount of fire resistance."
 					]
 				}
 			]
@@ -1476,7 +1772,7 @@
                     "name": "Tempest",
                     "entries":[
 				        "Your minor curse’s aura expands to a 15-foot emanation and grows stronger. High winds blowing outward in the aura impede creatures’ progress. The aura is difficult terrain for Large and smaller creatures on the ground, and for Huge or smaller flying creatures. You aren’t affected by this difficult terrain.",
-				        "The electricity arcing through you becomes dangerous. Any creature that touches you, including with a touch spell or a melee unarmed attack, takes 1d6 electricity damage."
+				        "The electricity arcing through you becomes dangerous. Any creature that touches you, including with a touch spell or a melee unarmed attack, takes {@dice 1d6} electricity damage."
                     ]
                 }
             ]

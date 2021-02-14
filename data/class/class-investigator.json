@@ -297,7 +297,7 @@
 					"frequency": "once per 10 minutes",
 					"entries": [
 						"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
-						"Whenever you attempt a Perception or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically Perception checks or skill checks that use Intelligence, Wisdom, or Charisma.",
+						"Whenever you attempt a {@skill Perception} or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically {@skill Perception} checks or skill checks that use Intelligence, Wisdom, or Charisma.",
 						"You can maintain two active investigations at a time. If you Pursue another Lead after that, the subject must be different from any of your current investigations (or rather, they must be different as far as you know), and you give up on a current subject of your choice. Once you've given up pursuit of a subject, you can't Pursue that Lead again until after the next time you make your daily preparations."
 					]
 				},
@@ -316,7 +316,7 @@
 						"entry": "{@as r}"
 					},
 					"entries": [
-						"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from Pursue a Lead. The GM can add any relevant traits to this reaction depending on the situation, such as auditory and linguistic if you're conveying information verbally."
+						"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
 					]
 				}
 			]
@@ -635,8 +635,8 @@
 					"name": "Alchemical Sciences",
 					"entries": [
 						"Your methodology emphasizes chemical and alchemical analysis, collecting information from unusual particles and fluids found on the scene. You possess enough alchemical know-how to whip up a few tinctures to help you with your cases.",
-						"You're trained in {@skill Crafting} and gain the Alchemical {@skill Crafting} skill feat. In addition, you gain a standard formula book for free and learn the formulas for two additional common 1st-level alchemical items, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
-						"During your daily preparations, you can create a number of versatile vials—alchemical concoctions that can quickly be turned into elixirs and tools— equal to your Intelligence modifier. You can use the Quick Tincture action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
+						"You're trained in {@skill Crafting} and gain the {@feat Alchemical Crafting} skill feat. In addition, you gain a standard {@item formula book} for free and learn the formulas for two additional {@filter common 1st-level alchemical items|items|general=alchemical|level=[1;1]|rarity=common|category=elixir; tool}, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
+						"During your daily preparations, you can create a number of versatile vials—alchemical concoctions that can quickly be turned into elixirs and tools— equal to your Intelligence modifier. You can use the {@action Quick Tincture|APG} action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
 						{
 							"type": "ability",
 							"name": "Quick Tincture",
@@ -652,7 +652,7 @@
 								"entry": "{@as 1}"
 							},
 							"entries": [
-								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the infused trait, but it remains potent only until the end of the current turn."
+								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the end of the current turn."
 							]
 						}
 					]
@@ -674,7 +674,7 @@
 					"name": "Empiricism",
 					"entries": [
 						"Everything comes down to data. Calculating statistics, running numbers, and using inductive reasoning allows you to determine the most likely outcome of any scenario, and anything out of place draws your keen attention.",
-						"You are trained in one Intelligence-based skill of your choice. You gain the That's Odd investigator feat, and you gain the Expeditious Inspection free action.",
+						"You are trained in one Intelligence-based skill of your choice. You gain the {@feat That's Odd|APG} investigator feat, and you gain the {@action Expeditious Inspection|APG} free action.",
 						{
 							"type": "ability",
 							"name": "Expeditious Inspection",
@@ -689,7 +689,7 @@
 								"entry": "{@as F}"
 							},
 							"entries": [
-								"You observe and assess your surroundings with great speed. You Recall Knowledge, Seek, or Sense Motive."
+								"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
 							]
 						}
 					]
@@ -711,7 +711,7 @@
 					"name": "Forensic Medicine",
 					"entries": [
 						"You've learned that in most cases, especially murders, criminals tend to leave more evidence of the crime on the body than they'd like to believe. Information from bruising, bone fractures, blood spatters, and even the life cycle of carrion insects can provide valuable clues that help reconstruct the scene.",
-						"You're trained in {@skill Medicine} and gain the Forensic Acumen and Battle {@skill Medicine} skill feats. When you use Battle {@skill Medicine}, on a success the target recovers additional Hit Points equal to your level, and the target becomes temporarily immune for only 1 hour, not 1 day."
+						"You're trained in {@skill Medicine} and gain the {@feat Forensic Acumen} and {@feat Battle Medicine} skill feats. When you use {@feat Battle Medicine}, on a success the target recovers additional Hit Points equal to your level, and the target becomes temporarily immune for only 1 hour, not 1 day."
 					]
 				}
 			]
@@ -731,7 +731,7 @@
 					"name": "Interrogation",
 					"entries": [
 						"People can't help but trust you, whether through your inherent likableness or your firm insistence on sticking to the truth. You have a way about you that gets others talking, and you've developed interrogative techniques to help you get to the truth of your investigations.",
-						"You are trained in {@skill Diplomacy}. You gain the No Cause for Alarm skill feat. You can also Pursue a Lead over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to Make an Impression, you could pursue the creature you're conversing with as a lead, and you could Pursue a Lead about an object while someone is telling you information about that object. You also gain the Pointed Question action.",
+						"You are trained in {@skill Diplomacy}. You gain the {@feat No Cause for Alarm} skill feat. You can also {@action Pursue a Lead|APG} over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to {@action Make an Impression}, you could pursue the creature you're conversing with as a lead, and you could {@action Pursue a Lead|APG} about an object while someone is telling you information about that object. You also gain the {@action Pointed Question} action.",
 						{
 							"type": "ability",
 							"name": "Pointed Question",
