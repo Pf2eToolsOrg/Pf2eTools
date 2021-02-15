@@ -826,14 +826,14 @@ function Renderer () {
 					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}">${row[idxCol]}</div>`;
 					last_end = span[1];
 				}
+				if (last_end !== numCol + 1) {
+					let styles = renderer._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
+					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${numCol}"></div>`;
+				}
 				if (labelRowIdx.includes(idxRow)) {
 					rowParity = 0;
 				} else {
 					rowParity = (rowParity + 1) % 2;
-				}
-				if (last_end !== numCol + 1) {
-					let styles = renderer._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
-					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${lenCol}"></div>`;
 				}
 				idxSpan += 1;
 			}
@@ -1203,7 +1203,7 @@ function Renderer () {
 		}
 		if (dict["stages"]) {
 			for (let stage of dict["stages"]) {
-				textStack[0] += ` <strong>Stage ${stage["stage"]} </strong>`;
+				textStack[0] += ` <strong class="no-wrap">Stage ${stage["stage"]} </strong>`;
 				this._recursiveRender(stage["entry"], textStack, meta);
 				if (stage["duration"] != null) {
 					textStack[0] += ` (${stage["duration"]});`;

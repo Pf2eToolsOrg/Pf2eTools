@@ -138,16 +138,15 @@
 
 .pf2-book {
 	font-family: 'SabonLTStd', sans-serif;
-	font-size: 1.3em;
 
 	.rd__list li {
 		font-family: 'SabonLTStd', sans-serif;
-		font-size: 0.75em;
+		font-size: 1em;
 		line-height: 1.35em;
 	}
 
 	&--stat {
-		font-size: 0.75em;
+		font-size: 1em;
 		margin: 0.6em 0;
 
 		.rd__list li {
@@ -158,7 +157,7 @@
 
 	&__option {
 		font-family: 'good-pro', sans-serif;
-		font-size: 0.8em;
+		font-size: 1em;
 		margin: 0;
 		padding-left: 1em;
 		text-indent: -1em;
@@ -350,7 +349,7 @@
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Taroca', sans-serif;
-	font-size: 1.725em;
+	font-size: 2.3em;
 	font-weight: 700;
 	text-transform: uppercase;
 	text-align: center;
@@ -364,7 +363,7 @@
 	padding: 0;
 	font-family: 'SabonLTStd', sans-serif;
 	font-style: italic;
-	font-size: 0.9em;
+	font-size: 1.2em;
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.34em;
@@ -376,7 +375,7 @@
 	margin: 0 0 0.3em;
 	padding: 0.8em 0 0;
 	font-family: 'Taroca', sans-serif;
-	font-size: 1.2em;
+	font-size: 1.6em;
 	font-weight: 700;
 	text-transform: uppercase;
 	line-height: 1em;
@@ -386,7 +385,7 @@
 		padding: 0.05em;
 		color: #002664;
 		font-family: 'Taroca', sans-serif;
-		font-size: 1.2em;
+		font-size: 1.6em;
 		font-weight: 700;
 		text-transform: uppercase;
 		line-height: 1em;
@@ -410,7 +409,7 @@
 		color: #d9c484;
 		text-align: center;
 		font-family: 'Taroca', sans-serif;
-		font-size: 2.1em;
+		font-size: 2.8em;
 		text-transform: uppercase;
 		float: left;
 		clear: left;
@@ -424,7 +423,7 @@
 	margin: 0;
 	padding: 0.6em 0 0;
 	font-family: 'Gin', sans-serif;
-	font-size: 0.9em;
+	font-size: 1.2em;
 	font-weight: 400;
 	line-height: 1.2em;
 	display: flex;
@@ -439,7 +438,7 @@
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Gin', sans-serif;
-	font-size: 0.675em;
+	font-size: 0.9em;
 	font-weight: 400;
 	line-height: 1em;
 	vertical-align: bottom;
@@ -461,7 +460,7 @@
 	margin: 0.3em 0;
 	padding: 0.3em 0.4em 0.25em;
 	font-family: 'Gin', sans-serif;
-	font-size: 1.02em;
+	font-size: 1.36em;
 	font-weight: 400;
 	line-height: 0.8em;
 	text-transform: uppercase;
@@ -474,7 +473,7 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'SabonLTStd', sans-serif;
-	font-size: 0.75em;
+	font-size: 1em;
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.35em;
@@ -489,8 +488,10 @@
 	padding: 0;
 	display: grid;
 	grid-gap: 0;
-	font-size: 0.9em;
+	line-height: 1.3em;
+	font-size: 1.2em;
 	overflow: auto;
+	text-align: revert;
 
 	&__ {
 		&name {
@@ -507,7 +508,7 @@
 		&caption {
 			padding: 0;
 			font-family: 'good-pro-condensed', sans-serif;
-			font-size: 1.4em;
+			font-size: 1.3em;
 			font-weight: 700;
 			text-transform: uppercase;
 			line-height: 1;
@@ -524,6 +525,8 @@
 			font-size: 0.9em;
 			font-weight: 700;
 			line-height: 1.2em;
+			display: grid;
+			align-content: end;
 		}
 
 		&entry {
@@ -560,6 +563,7 @@
 		}
 
 		&footnote {
+			padding: 0 0.3em;
 			font-family: 'good-pro', sans-serif;
 			font-size: 0.9em;
 			background: #e6d8b0;
@@ -602,7 +606,7 @@
 	width: 50%;
 	max-width: 170px;
 	margin: 0.4em -1em 0.4em 1em;
-	font-size: 0.75em;
+	font-size: 1em;
 
 	.pf2-title {
 		font-size: 1.1em;
@@ -730,14 +734,14 @@
 			padding-bottom: 0.3em;
 			font-family: 'Gin', sans-serif;
 			font-weight: 400;
-			font-size: 0.9em;
+			font-size: 1.2em;
 			text-align: left;
 		}
 
 		&text {
 			font-family: 'good-pro', sans-serif;
 			font-weight: 700;
-			font-size: 0.675em;
+			font-size: 0.9em;
 			text-align: left;
 			line-height: 1.2em;
 			margin: 0;
@@ -780,7 +784,7 @@
 			background: #002664;
 			color: #d9c484;
 			font-weight: 700;
-			font-size: 0.825em;
+			font-size: 1.1em;
 			text-transform: uppercase;
 			text-align: left;
 			line-height: 1.2em;
@@ -788,7 +792,7 @@
 
 		&text {
 			background: #d1d3d4;
-			font-size: 0.675em;
+			font-size: 0.9em;
 			line-height: 1.2em;
 			text-align: justify;
 			margin: 0;
@@ -803,7 +807,7 @@
 	margin: 0.3em 1em 0.3em 0;
 	padding: 0 1em 0.3em;
 	font-family: 'good-pro', sans-serif;
-	font-size: 0.75em;
+	font-size: 1em;
 
 	&__ {
 		&title {
@@ -838,7 +842,7 @@
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
-	font-size: 0.75em;
+	font-size: 1em;
 	font-weight: 700;
 	line-height: 1.2em;
 	text-align: center;
@@ -856,7 +860,7 @@
 	width: 94%;
 	min-width: 120px;
 	border-radius: 2px;
-	font-size: 0.75em;
+	font-size: 1em;
 
 	&__ {
 		&title {
