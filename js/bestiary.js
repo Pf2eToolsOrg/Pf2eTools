@@ -354,7 +354,7 @@ async function pPageInit (loadedSources) {
 
 			const renderCreature = (mon) => {
 				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
-				stack.push(Renderer.creature.getCompactRenderedString(mon, renderer));
+				stack.push(Renderer.creature.getCompactRenderedString(mon));
 				stack.push(`</div></div>`);
 			};
 

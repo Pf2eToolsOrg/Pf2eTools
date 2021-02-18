@@ -100,7 +100,7 @@ const BookUtil = {
 
 			const displayText = h.header ? `<span class="bk-contents__sub_spacer--1">\u2013</span>${h.header}` : h; // handle entries with depth
 			out += `<li class="lst--border">
-				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)}${headerPos > 0 ? `,${headerPos}` : ""}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText.escapeQuotes()}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.escapeQuotes()}', ${headerPos}, this)"` : ""}>${displayText}</a>
+				<a href="${addPrefix || ""}#${bookId},${chapterIndex},${UrlUtil.encodeForHash(headerText)},${headerPos}" data-book="${bookId}" data-chapter="${chapterIndex}" data-header="${headerText.escapeQuotes()}" ${addOnclick ? `onclick="BookUtil.scrollClick('${headerText.escapeQuotes()}', ${headerPos}, this)"` : ""}>${displayText}</a>
 			</li>`;
 		});
 

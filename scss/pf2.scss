@@ -164,23 +164,19 @@
 	}
 }
 
-.pf2-infinite-stat {
-	margin-bottom: 10px;
-}
-
 .pf2-big-stat {
 	margin-bottom: 10px;
 	height: 60vh;
 }
 
-.pf2-medium-stat {
-	margin-bottom: 10px;
-	height: 40vh;
-}
-
 .pf2-small-stat {
 	margin-bottom: 10px;
 	height: 30vh;
+}
+
+.pf2-wrp-stat {
+	margin: 1em 0;
+	clear: both;
 }
 
 .pf2-stat {
@@ -214,6 +210,7 @@
 			border-top: 1px solid black;
 			height: 0;
 			margin: 0.05em 0 0.2em;
+			display: flex;
 		}
 
 		&text {
@@ -367,17 +364,20 @@
 	font-weight: 400;
 	text-align: justify;
 	line-height: 1.34em;
+
+	+ .pf2-h1-flavor {
+		text-indent: 1em;
+	}
 }
 
 .pf2-h2 {
 	clear: left;
 	color: #002664;
-	margin: 0 0 0.3em;
-	padding: 0.8em 0 0;
+	margin: 0 0 0.1em;
+	padding: 0.6em 0 0;
 	font-family: 'Taroca', sans-serif;
-	font-size: 1.6em;
+	font-size: 2em;
 	font-weight: 700;
-	text-transform: uppercase;
 	line-height: 1em;
 
 	&__step {
@@ -438,16 +438,12 @@
 	margin: 0;
 	padding: 0.3em 0 0;
 	font-family: 'Gin', sans-serif;
-	font-size: 0.9em;
+	font-size: 1.2em;
+	font-variant: small-caps;
 	font-weight: 400;
 	line-height: 1em;
 	vertical-align: bottom;
 
-	&::first-letter {
-		font-size: 1.4em;
-		line-height: 1em;
-		font-weight: 400;
-	}
 }
 
 .pf2-h5 {
@@ -489,8 +485,9 @@
 	display: grid;
 	grid-gap: 0;
 	line-height: 1.3em;
-	font-size: 1.2em;
+	font-size: 1.1em;
 	overflow: auto;
+	clear: left;
 	text-align: revert;
 
 	&__ {
@@ -506,7 +503,7 @@
 		}
 
 		&caption {
-			padding: 0;
+			padding: 0 0 0 0.2em;
 			font-family: 'good-pro-condensed', sans-serif;
 			font-size: 1.3em;
 			font-weight: 700;
@@ -514,7 +511,7 @@
 			line-height: 1;
 			grid-column-start: 1;
 			grid-column-end: -1;
-			text-align: center;
+			text-align: left;
 		}
 
 		&label {
@@ -769,6 +766,42 @@
 	}
 }
 
+.pf2-key-box {
+	color: white;
+	background: #5e0000;
+	border: 2px solid #b29e74;
+	margin: 0.3em 0;
+	padding: 0.6em;
+	clear: left;
+
+	&__ {
+		&title {
+			margin: 0;
+			font-family: 'Gin', sans-serif;
+			font-weight: 700;
+			font-size: 1.4em;
+			text-align: center;
+		}
+
+		&text {
+			font-family: 'good-pro', sans-serif;
+			font-weight: 400;
+			font-size: 1.2em;
+			text-align: left;
+			line-height: 1.2em;
+			margin: 0;
+		}
+	}
+
+	.pf2-title {
+		margin: 0;
+		font-family: 'Gin', sans-serif;
+		font-weight: 700;
+		font-size: 1.4em;
+		text-align: center;
+	}
+}
+
 .pf2-tips-box {
 	float: left;
 	font-family: 'good-pro', sans-serif;
@@ -804,7 +837,7 @@
 .pf2-sample-box {
 	float: left;
 	background: #eae4d8;
-	margin: 0.3em 1em 0.3em 0;
+	margin: 0.3em 0;
 	padding: 0 1em 0.3em;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
@@ -835,9 +868,48 @@
 	}
 }
 
+.pf2-beige-box {
+	float: left;
+	background: #f1e9d4;
+	margin: 0.6em 0;
+	padding: 0.3em 1em;
+	font-family: 'good-pro', sans-serif;
+	font-size: 1em;
+
+	&__ {
+		&title {
+			margin: 0;
+			font-weight: 700;
+			line-height: 1.2em;
+			text-align: left;
+		}
+
+		&text {
+			margin: 0;
+			font-weight: 400;
+			line-height: 1.2em;
+			text-align: justify;
+
+			+ .pf2-beige-box__text {
+				text-indent: 1em;
+			}
+		}
+	}
+
+	.pf2-title {
+		margin: 0;
+		font-weight: 700;
+		line-height: 1.2em;
+		text-align: left;
+	}
+
+	* + .pf2-title {
+		margin-top: 0.6em;
+	}
+}
+
 .pf2-inset {
 	background: #eae4d8;
-	display: flex;
 	clear: left;
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
@@ -960,6 +1032,7 @@
 		font-size: 1.22em;
 		font-weight: 700;
 		text-align: center;
+		text-transform: uppercase;
 	}
 }
 
@@ -971,15 +1044,24 @@
 	border-right-style: none !important;
 }
 
+.no-font-style {
+	font-weight: normal !important;
+	font-style: normal !important;
+	font-variant: none !important;
+	text-decoration: none !important;
+}
+
+.text-no-indent {
+	text-indent: 0 !important;
+}
+
 .text-indent-first {
-	display: inline-block;
-	text-indent: 1em;
+	text-indent: 1em !important;
 }
 
 .text-indent-subsequent {
-	display: inline-block;
-	padding-left: 1em;
-	text-indent: -1em;
+	padding-left: 1em !important;
+	text-indent: -1em !important;
 }
 
 .hidden-fluff {

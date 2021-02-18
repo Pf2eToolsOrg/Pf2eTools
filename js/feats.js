@@ -26,7 +26,7 @@ class FeatsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(feat);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
-			<span class="bold col-3-8 pl-0">${feat.name}</span>
+			<span class="bold col-3-8 pl-0">${feat.name}${feat.add_hash ? `<span class="ve-muted"> (${feat.add_hash})</span>` : ""}</span>
 			<span class="col-1-5 text-center">${feat._slType}</span>
 			<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4-1">${feat._slPrereq}</span>
@@ -68,7 +68,7 @@ class FeatsPage extends ListPage {
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
-				<span class="bold col-3-8 pl-0">${feat.name}</span>
+				<span class="bold col-3-8 pl-0">${feat.name}${feat.add_hash ? `<span class="ve-muted"> (${feat.add_hash})</span>` : ""}</span>
 				<span class="col-1-5 text-center">${feat._slType}</span>
 				<span class="col-1-3 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 				<span class="col-4-1">${feat._slPrereq}</span>

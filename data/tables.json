@@ -520,277 +520,363 @@
 					"Untrained Actions",
 					"Trained Actions"
 				],
-				[
-					"Acrobatics",
-					"Dexterity",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Acrobatics",
+							"Dexterity",
 							"{@action Balance} {@as 1}",
-							"{@action Tumble Through} {@as 1}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Maneuver in Flight} {@as 1}",
+							"{@action Maneuver in Flight} {@as 1}"
+						],
+						[
+							"",
+							"",
+							"{@action Tumble Through} {@as 1}",
 							"{@action Squeeze}{@sup E}"
 						]
-					}
-				],
-				[
-					"Arcana",
-					"Intelligence",
-					"{@action Recall Knowledge}{@sup G} {@as 1}",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Borrow an Arcane Spell}{@sup E}",
-							"{@action Decipher Writing}{@sup E, G}",
-							"{@action Identify Magic}{@sup E, G}",
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Arcana",
+							"Intelligence",
+							"{@action Recall Knowledge}{@sup G} {@as 1}",
+							"{@action Borrow an Arcane Spell}{@sup E}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@action Decipher Writing}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@action Identify Magic}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
 							"{@action Learn a Spell}{@sup E, G}"
 						]
-					}
-				],
-				[
-					"Athletics",
-					"Strength",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Athletics",
+							"Strength",
 							"{@action Climb} {@as 1}",
+							"{@action Disarm} {@as 1}"
+						],
+						[
+							"",
+							"",
 							"{@action Force Open} {@as 1}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Grapple} {@as 1}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action High Jump} {@as 2}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Long Jump} {@as 2}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Shove} {@as 1}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Swim} {@as 1}",
-							"{@action Trip} {@as 1}"
+							""
+						],
+						[
+							"",
+							"",
+							"{@action Trip} {@as 1}",
+							""
 						]
-					},
-					"{@action Disarm} {@as 1}"
-				],
-				[
-					"Crafting",
-					"Intelligence",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Crafting",
+							"Intelligence",
 							"{@action Recall Knowledge}{@sup G} {@as 1}",
-							"{@action Repair}{@sup E}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Craft}{@sup D}",
-							"{@action Earn Income}{@sup D, G}",
+							"{@action Craft}{@sup D}"
+						],
+						[
+							"",
+							"",
+							"{@action Repair}{@sup E}",
+							"{@action Earn Income}{@sup D, G}"
+						],
+						[
+							"",
+							"",
+							"",
 							"{@action Identify Alchemy}{@sup E}"
 						]
-					}
-				],
-				[
-					"Deception",
-					"Charisma",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Deception",
+							"Charisma",
 							"{@action Create a Diversion} {@as 1}",
+							"{@action Feint} {@as 1}"
+						],
+						[
+							"",
+							"",
 							"{@action Impersonate}{@sup E}",
-							"{@action Lie}"
+							""
+						],
+						[
+							"",
+							"",
+							"{@action Lie}",
+							""
 						]
-					},
-					"{@action Feint} {@as 1}"
-				],
-				[
-					"Diplomacy",
-					"Charisma",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Diplomacy",
+							"Charisma",
 							"{@action Gather Information}{@sup E}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Make an Impression}{@sup E}",
-							"{@action Request} {@as 1}"
+							""
+						],
+						[
+							"",
+							"",
+							"{@action Request} {@as 1}",
+							""
 						]
-					},
-					""
-				],
-				[
-					"Intimidation",
-					"Charisma",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Intimidation",
+							"Charisma",
 							"{@action Coerce}{@sup E}",
-							"{@action Demoralize} {@as 1}"
+							""
+						],
+						[
+							"",
+							"",
+							"{@action Demoralize} {@as 1}",
+							""
 						]
-					},
-					""
-				],
+					]
+				},
 				[
 					"Lore",
 					"Intelligence",
 					"{@action Recall Knowledge}{@sup G} {@as 1}",
 					"{@action Earn Income}{@sup D, G}"
 				],
-				[
-					"Medicine",
-					"Wisdom",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Medicine",
+							"Wisdom",
 							"{@action Administer First Aid} {@as 2}",
-							"{@action Recall Knowledge}{@sup G} {@as 1}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Treat Disease}{@sup D}",
-							"{@action Treat Poison} {@as 1}",
+							"{@action Treat Disease}{@sup D}"
+						],
+						[
+							"",
+							"",
+							"{@action Recall Knowledge}{@sup G} {@as 1}",
+							"{@action Treat Poison} {@as 1}"
+						],
+						[
+							"",
+							"",
+							"",
 							"{@action Treat Wounds}{@sup E}"
 						]
-					}
-				],
-				[
-					"Nature",
-					"Wisdom",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Nature",
+							"Wisdom",
 							"{@action Command an Animal} {@as 1}",
-							"{@action Recall Knowledge}{@sup G} {@as 1}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Identify Magic}{@sup E, G}",
+							"{@action Identify Magic}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"{@action Recall Knowledge}{@sup G} {@as 1}",
 							"{@action Learn a Spell}{@sup E, G}"
 						]
-					}
-				],
-				[
-					"Occultism",
-					"Intelligence",
-					"{@action Recall Knowledge}{@sup G} {@as 1}",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Decipher Writing}{@sup E, G}",
-							"{@action Identify Magic}{@sup E, G}",
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Occultism",
+							"Intelligence",
+							"{@action Recall Knowledge}{@sup G} {@as 1}",
+							"{@action Decipher Writing}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@action Identify Magic}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
 							"{@action Learn a Spell}{@sup E, G}"
 						]
-					}
-				],
+					]
+				},
 				[
 					"Performance",
 					"Charisma",
 					"{@action Perform} {@as 1}",
 					"{@action Earn Income}{@sup D, G}"
 				],
-				[
-					"Religion",
-					"Wisdom",
-					"{@action Recall Knowledge}{@sup G} {@as 1}",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Decipher Writing}{@sup E, G}",
-							"{@action Identify Magic}{@sup E, G}",
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Religion",
+							"Wisdom",
+							"{@action Recall Knowledge}{@sup G} {@as 1}",
+							"{@action Decipher Writing}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
+							"{@action Identify Magic}{@sup E, G}"
+						],
+						[
+							"",
+							"",
+							"",
 							"{@action Learn a Spell}{@sup E, G}"
 						]
-					}
-				],
-				[
-					"Society",
-					"Intelligence",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Society",
+							"Intelligence",
 							"{@action Recall Knowledge}{@sup G} {@as 1}",
-							"{@action Subsist}{@sup D, G}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Create Forgery}{@sup D}",
+							"{@action Create Forgery}{@sup D}"
+						],
+						[
+							"",
+							"",
+							"{@action Subsist}{@sup D, G}",
 							"{@action Decipher Writing}{@sup E, G}"
 						]
-					}
-				],
-				[
-					"Stealth",
-					"Dexterity",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Stealth",
+							"Dexterity",
 							"{@action Conceal an Object} {@as 1}",
+							""
+						],
+						[
+							"",
+							"",
 							"{@action Hide} {@as 1}",
-							"{@action Sneak} {@as 1}"
+							""
+						],
+						[
+							"",
+							"",
+							"{@action Sneak} {@as 1}",
+							""
 						]
-					},
-					""
-				],
-				[
-					"Survival",
-					"Wisdom",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Survival",
+							"Wisdom",
 							"{@action Sense Direction}{@sup E}",
-							"{@action Subsist}{@sup D, G}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Cover Tracks}{@sup E}",
+							"{@action Cover Tracks}{@sup E}"
+						],
+						[
+							"",
+							"",
+							"{@action Subsist}{@sup D, G}",
 							"{@action Track}{@sup E}"
 						]
-					}
-				],
-				[
-					"Thievery",
-					"Dexterity",
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
+					]
+				},
+				{
+					"type": "multiRow",
+					"rows": [
+						[
+							"Thievery",
+							"Dexterity",
 							"{@action Palm an Object} {@as 1}",
-							"{@action Steal} {@as 1}"
-						]
-					},
-					{
-						"type": "list",
-						"style": "list-hang-notitle",
-						"items": [
-							"{@action Disable a Device} {@as 3}",
+							"{@action Disable a Device} {@as 3}"
+						],
+						[
+							"",
+							"",
+							"{@action Steal} {@as 1}",
 							"{@action Pick a Lock} {@as 3}"
 						]
-					}
-				]
+					]
+				}
 			],
 			"footnotes": [
 				"{@sup D} This skill action can be used only during downtime.",
@@ -2084,46 +2170,18 @@
 			"name": "Bulk of Creatures",
 			"source": "CRB",
 			"page": 273,
-			"labelRowIdx": [
-				0
-			],
 			"colStyles": [
 				"text-center",
 				"text-center"
 			],
-			"intro": [
-				"You might need to know the Bulk of a creature, especially if you need to carry someone off the battlefield. The table that follows lists the typical Bulk of a creature based on its size, but the GM might adjust this number."
-			],
 			"rows": [
-				[
-					"Size of Creature",
-					"Bulk"
-				],
-				[
-					"Tiny",
-					"1"
-				],
-				[
-					"Small",
-					"3"
-				],
-				[
-					"Medium",
-					"6"
-				],
-				[
-					"Large",
-					"12"
-				],
-				[
-					"Huge",
-					"24"
-				],
-				[
-					"Gargantuan",
-					"48"
-				]
-			]
+				["Size of Creature", "Bulk"],
+				["{@trait Tiny}", "1"],
+				["{@trait Small}", "3"],
+				["{@trait Medium}", "6"],
+				["{@trait Large}", "12"],
+				["{@trait Huge}", "24"],
+				["{@trait Gargantuan}", "48"]]
 		},
 		{
 			"name": "Changing Equipment",
@@ -5661,7 +5719,7 @@
 				[
 					"{@b Death}",
 					"You have the power to end lives and destroy undead.",
-					"{@spell Death's call}",
+					"{@spell Death's Call}",
 					"{@spell Eradicate undeath}"
 				],
 				[
@@ -7878,41 +7936,14 @@
 			"name": "Fundamental Runes",
 			"source": "CRB",
 			"page": 580,
-			"colSizes": [
-				1,
-				1,
-				2
-			],
-			"intro": [
-				"Four fundamental runes produce the most essential magic of protection and destruction: {@i armor potency} and {@i resilient} runes for armor, and {@i weapon potency} and {@i striking} runes for weapons. A potency rune is what makes a weapon a magic weapon (page 599) or armor magic armor (page 556).",
-				"An item can have only one fundamental rune of each type, though etching a stronger rune can upgrade an existing rune to the more powerful version (as described in each rune’s entry). As you level up, you typically alternate between increasing an item’s potency rune and its striking or resilient rune when you can afford to."
-			],
+			"colStyles": ["text-center", "text-center", "text-center"],
+			"sizes": [5,3,5],
 			"rows": [
-				[
-					"Fundamental Rune",
-					"Etched Onto",
-					"Benefit"
-				],
-				[
-					"{@item Armor potency}",
-					"Armor",
-					"Increase item bonus to AC and determine maximum number of property runes"
-				],
-				[
-					"{@item Resilient}",
-					"Armor",
-					"Grant item bonus to saves"
-				],
-				[
-					"{@item Weapon potency}",
-					"Weapon",
-					"Grant an item bonus to attack rolls and determine maximum number of property runes"
-				],
-				[
-					"{@item Striking}",
-					"Weapon",
-					"Increase weapon damage dice"
-				]
+				["Fundamental Rune", "Etched Onto", "Benefit"],
+				["{@item Armor Potency (generic)||Armor Potency}", "Armor", "Increase item bonus to AC and determine maximum number of property runes"],
+				["{@item Resilient (generic)||Resilient}", "Armor", "Grant item bonus to saves"],
+				["{@item Weapon Potency (generic)||Weapon Potency}", "Weapon", "Grant an item bonus to attack rolls and determine maximum number of property runes"],
+				["{@item Striking (generic)||Striking}", "Weapon", "Increase weapon damage dice"]
 			]
 		},
 		{

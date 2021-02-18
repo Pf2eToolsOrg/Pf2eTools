@@ -980,8 +980,8 @@ class ClassesPage extends BaseComponent {
 					};
 				});
 			return {
-				$row: $$`<div class="pf2-table__entry ${ixLvl % 2 ? "odd" : ""}">${ixLvl + 1}</div>
-					<div class="pf2-table__entry ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
+				$row: $$`<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${ixLvl + 1}</div>
+					<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
 				metasFeatureLinks,
 			}
 		});
@@ -1006,7 +1006,7 @@ class ClassesPage extends BaseComponent {
 			<div class="pf2-table__label">Your</div>
 			<div class="pf2-table__label"></div>
 			<div class="pf2-table__label">Level</div>
-			<div class="pf2-table__label">Class Features</div>
+			<div class="pf2-table__label"><span>Class Features${Renderer.get()._renderTable_getMinimizeButton()}</span></div>
 			${metasTblRows.map(it => it.$row)}
 		</div>`.appendTo($wrpTblClass);
 		$wrpTblClass.show();
