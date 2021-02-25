@@ -3,8 +3,8 @@ const git = require("simple-git")();
 require("../js/utils");
 
 const FILES_TO_REPLACE_VERSION_IN = ["js/utils.js", "sw.js"];
-const VERSION_MARKER_START = "/* 5ETOOLS_VERSION__OPEN */";
-const VERSION_MARKER_END = "/* 5ETOOLS_VERSION__CLOSE */";
+const VERSION_MARKER_START = "/* PF2ETOOLS_VERSION__OPEN */";
+const VERSION_MARKER_END = "/* PF2ETOOLS_VERSION__CLOSE */";
 const VERSION_REPLACE_REGEXP = new RegExp(`${VERSION_MARKER_START.escapeRegexp()}.*?${VERSION_MARKER_END.escapeRegexp()}`, "g");
 
 const version = JSON.parse(fs.readFileSync("package.json", "utf-8")).version;

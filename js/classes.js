@@ -340,7 +340,7 @@ class ClassesPage extends BaseComponent {
 			if (target._ !== ixToLoad) {
 				Hist.lastLoadedId = ixToLoad;
 				const cls = this._dataList[ixToLoad];
-				document.title = `${cls ? cls.name : "Classes"} - PF2eTools`;
+				document.title = `${cls ? cls.name : "Classes"} - Pf2eTools`;
 				target._ = ixToLoad;
 				this._loadFirstFeat = true;
 			}

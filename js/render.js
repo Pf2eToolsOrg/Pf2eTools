@@ -2531,7 +2531,7 @@ function Renderer () {
 
 				break;
 			}
-			case "@PF2eTools":
+			case "@Pf2eTools":
 			case "@Pf2eTools": {
 				const [displayText, page, hash] = Renderer.splitTagByPipe(text);
 				const fauxEntry = {
@@ -7812,7 +7812,7 @@ Renderer.hover = {
 
 							<!-- Chrome Web App Icons -->
 							<link rel="manifest" href="manifest.webmanifest">
-							<meta name="application-name" content="PF2eTools">
+							<meta name="application-name" content="Pf2eTools">
 							<meta name="theme-color" content="#006bc4">
 
 							<!-- Windows Start Menu tiles -->
@@ -7825,7 +7825,7 @@ Renderer.hover = {
 							<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
 							<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
 							<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
-							<meta name="apple-mobile-web-app-title" content="PF2eTools">
+							<meta name="apple-mobile-web-app-title" content="Pf2eTools">
 
 							<!-- macOS Safari Pinned Tab and Touch Bar -->
 							<link rel="mask-icon" href="safari-pinned-tab.svg" color="#006bc4">
@@ -9074,7 +9074,7 @@ Renderer._stripTagLayer = function (str) {
 						return text;
 					}
 
-					case "@PF2eTools":
+					case "@Pf2eTools":
 					case "@Pf2eTools":
 					case "@adventure":
 					case "@book":

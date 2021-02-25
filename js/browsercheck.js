@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
 		$overlay.append(`<div class="flex-col flex-vh-center">
 			<div class="edge__title mb-2">UPDATE YOUR BROWSER</div>
 			<div><i>It looks like you're using an outdated/unsupported browser.<br>
-			PF2eTools recommends and supports the latest <a href="https://www.google.com/chrome/" class="edge__link">Chrome</a> and the latest <a href="https://www.mozilla.org/firefox/" class="edge__link">Firefox</a>.</i></div>
+			Pf2eTools recommends and supports the latest <a href="https://www.google.com/chrome/" class="edge__link">Chrome</a> and the latest <a href="https://www.mozilla.org/firefox/" class="edge__link">Firefox</a>.</i></div>
 		</div>`).appendTo($body);
 	}
 });

@@ -2,7 +2,7 @@ window.addEventListener("load", async () => {
 	Renderer.get().setBaseUrl("/");
 	const it = await Renderer.hover.pCacheAndGet(`${_SEO_PAGE}.html`, _SEO_SOURCE, _SEO_HASH);
 
-	document.title = `${it.name} - PF2eTools`;
+	document.title = `${it.name} - Pf2eTools`;
 	$(`.page__title`).text(`${_SEO_PAGE.toTitleCase()}: ${it.name}`);
 
 	$(`<div class="col-12 flex-vh-center my-2 pt-3">

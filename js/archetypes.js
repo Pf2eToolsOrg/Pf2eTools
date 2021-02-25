@@ -277,7 +277,7 @@ class ArchetypesPage extends BaseComponent {
 			if (target._ !== ixToLoad) {
 				Hist.lastLoadedId = ixToLoad;
 				const arc = this._dataList[ixToLoad];
-				document.title = `${arc ? arc.name : "Archetypes"} - PF2eTools`;
+				document.title = `${arc ? arc.name : "Archetypes"} - Pf2eTools`;
 				target._ = ixToLoad;
 				this._loadFirstFeat = true;
 			}

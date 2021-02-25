@@ -67,7 +67,7 @@ class TablePage {
 			return;
 		}
 		const id = $a.attr("id");
-		document.title = `${$a.title()} - PF2eTools`;
+		document.title = `${$a.title()} - Pf2eTools`;
 		this._doLoadHash(id);
 	}
 

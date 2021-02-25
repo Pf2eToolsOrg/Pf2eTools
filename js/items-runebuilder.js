@@ -142,7 +142,7 @@ class RuneBuilder extends ProxyBase {
 
 	show () {
 		this._cachedTitle = this._cachedTitle || document.title;
-		document.title = "Rune Builder - PF2eTools";
+		document.title = "Rune Builder - Pf2eTools";
 		$(`#sublistcontainer`).toggleClass("sublist--visible", true);
 		RuneListUtil._updateNoRunesVisible();
 		$(`body`).addClass("rigen_active");

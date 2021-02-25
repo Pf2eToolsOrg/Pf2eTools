@@ -627,7 +627,7 @@ class EncounterBuilder extends ProxyBase {
 
 	show () {
 		this._cachedTitle = this._cachedTitle || document.title;
-		document.title = "Encounter Builder - PF2eTools";
+		document.title = "Encounter Builder - Pf2eTools";
 		$(`body`).addClass("ecgen_active");
 		this.updateDifficulty();
 	}

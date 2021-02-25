@@ -300,7 +300,7 @@ class AncestriesPage extends BaseComponent {
 			if (target._ !== ixToLoad) {
 				Hist.lastLoadedId = ixToLoad;
 				const anc = this._dataList[ixToLoad];
-				document.title = `${anc ? anc.name : "Ancestries"} - PF2eTools`;
+				document.title = `${anc ? anc.name : "Ancestries"} - Pf2eTools`;
 				target._ = ixToLoad;
 				this._loadFirstFeat = true;
 			}

@@ -6,8 +6,8 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* 5ETOOLS_VERSION__OPEN */"1.116.7"/* 5ETOOLS_VERSION__CLOSE */;
-DEPLOYED_STATIC_ROOT = ""; // "https://static.5etools.com/"; // FIXME re-enable this when we have a CDN again
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.0.1"/* PF2ETOOLS_VERSION__CLOSE */;
+DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 // for the roll20 script to set
 IS_VTT = false;
 
@@ -1438,7 +1438,7 @@ UrlUtil = {
 	},
 
 	/**
-	 * All internal URL construction should pass through here, to ensure `static.5etools.com` is used when required.
+	 * All internal URL construction should pass through here, to ensure static url is used when required.
 	 *
 	 * @param href the link
 	 */
@@ -5487,7 +5487,7 @@ function BookModeView (opts) {
 	this.pOpen = async () => {
 		if (this.active) return;
 		this.active = true;
-		document.title = `${pageTitle} - PF2eTools`;
+		document.title = `${pageTitle} - Pf2eTools`;
 
 		this._$body = $(`body`);
 		this._$wrpBook = $(`<div class="bkmv"></div>`);
@@ -5870,114 +5870,4 @@ VeLock = function () {
 BrewUtil._lockHandleBrewJson = new VeLock();
 
 // MISC WEBPAGE ONLOADS ================================================================================================
-if (!IS_VTT && typeof window !== "undefined") {
-	if (location.origin === VeCt.LOC_ORIGIN_CANCER) {
-		const ivsCancer = [];
-
-		window.addEventListener("load", () => {
-			let isPadded = false;
-			let anyFound = false;
-			[
-				"div-gpt-ad-5etools35927", // main banner
-				"div-gpt-ad-5etools35930", // side banner
-				"div-gpt-ad-5etools35928", // sidebar top
-				"div-gpt-ad-5etools35929", // sidebar bottom
-				"div-gpt-ad-5etools36159", // bottom floater
-				"div-gpt-ad-5etools36834", // mobile middle
-			].forEach(id => {
-				const iv = setInterval(() => {
-					const $wrp = $(`#${id}`);
-					if (!$wrp.length) return;
-					if (!$wrp.children().length) return;
-					if ($wrp.children()[0].tagName === "SCRIPT") return;
-					const $tgt = $wrp.closest(".cancer__anchor").find(".cancer__disp-cancer");
-					if ($tgt.length) {
-						anyFound = true;
-						$tgt.css({display: "flex"}).text("Advertisements");
-						clearInterval(iv);
-					}
-				}, 250);
-
-				ivsCancer.push(iv);
-			});
-
-			const ivPad = setInterval(() => {
-				if (!anyFound) return;
-				if (isPadded) return;
-				isPadded = true;
-				// Pad the bottom of the page so the adhesive unit doesn't overlap the content
-				$(`.view-col-group--cancer`).append(`<div class="w-100 no-shrink" style="height: 110px;"></div>`)
-			}, 300);
-			ivsCancer.push(ivPad);
-		});
-
-		// Hack to lock the ad space at original size--prevents the screen from shifting around once loaded
-		setTimeout(() => {
-			const $wrp = $(`.cancer__wrp-leaderboard-inner`);
-			const h = $wrp.outerHeight();
-			$wrp.css({height: h});
-			ivsCancer.forEach(iv => clearInterval(iv));
-		}, 5000);
-	} else {
-		window.addEventListener("load", () => $(`.cancer__anchor`).remove());
-	}
-
-	// window.addEventListener("load", () => {
-	// 	$(`.cancer__sidebar-rhs-inner--top`).append(`<div class="TEST_RHS_TOP"></div>`)
-	// 	$(`.cancer__sidebar-rhs-inner--bottom`).append(`<div class="TEST_RHS_BOTTOM"></div>`)
-	// });
-}
-
-_Donate = {
-	// TAG Disabled until further notice
-	/*
-	init () {
-		if (IS_DEPLOYED) {
-			DataUtil.loadJSON(`https://get.5etools.com/money.php`).then(dosh => {
-				const pct = Number(dosh.donated) / Number(dosh.Goal);
-				$(`#don-total`).text(`€${dosh.Goal}`);
-				if (isNaN(pct)) {
-					throw new Error(`Was not a number! Values were ${dosh.donated} and ${dosh.Goal}`);
-				} else {
-					const $bar = $(`.don__bar_inner`);
-					$bar.css("width", `${Math.min(Math.ceil(100 * pct), 100)}%`).html(pct !== 0 ? `€${dosh.donated}&nbsp;` : "");
-					if (pct >= 1) $bar.css("background-color", "lightgreen");
-				}
-			}).catch(noDosh => {
-				$(`#don-wrapper`).remove();
-				throw noDosh;
-			});
-		}
-	},
-
-	async pNotDonating () {
-		const isFake = await StorageUtil.pIsAsyncFake();
-		const isNotDonating = await StorageUtil.pGet("notDonating");
-		return isFake || isNotDonating;
-	},
-	*/
-
-	// region Test code, please ignore
-	cycleLeader (ele) {
-		const modes = [{width: 970, height: 90}, {width: 970, height: 250}, {width: 320, height: 50}, {
-			width: 728,
-			height: 90,
-		}];
-		_Donate._cycleMode(ele, modes);
-	},
-
-	cycleSide (ele) {
-		const modes = [{width: 300, height: 250}, {width: 300, height: 600}];
-		_Donate._cycleMode(ele, modes);
-	},
-
-	_cycleMode (ele, modes) {
-		const $e = $(ele);
-		const pos = $e.data("pos") || 0;
-		const mode = modes[pos];
-		$e.css(mode);
-		$e.text(`${mode.width}*${mode.height}`);
-		$e.data("pos", (pos + 1) % modes.length)
-	},
-	// endregion
-};
+if (!IS_VTT && typeof window !== "undefined") window.addEventListener("load", () => $(`.cancer__anchor`).remove())

@@ -32,7 +32,7 @@ class NavBar {
 		};
 		document.getElementById("navigation").prepend(btnShowHide);
 
-		addLi(navBar, "PF2eTools.html", "Home", {isRoot: true});
+		addLi(navBar, "Pf2eTools.html", "Home", {isRoot: true});
 
 		const ulRules = addDropdown(navBar, "Rules");
 		addLi(ulRules, "quickreference.html", "Quick Reference");
@@ -130,7 +130,7 @@ class NavBar {
 					const sync = StorageUtil.syncGetDump();
 					const async = await StorageUtil.pGetDump();
 					const dump = {sync, async};
-					DataUtil.userDownload("PF2eTools", dump);
+					DataUtil.userDownload("Pf2eTools", dump);
 				},
 				title: "Save any locally-stored data (loaded homebrew, active blacklists, GM Screen configuration,...) to a file.",
 			},
@@ -385,7 +385,7 @@ class NavBar {
 		let currentPage = window.location.pathname;
 		currentPage = currentPage.substr(currentPage.lastIndexOf("/") + 1);
 
-		if (!currentPage) currentPage = "PF2eTools.html";
+		if (!currentPage) currentPage = "Pf2eTools.html";
 		return currentPage.trim();
 	}
 
