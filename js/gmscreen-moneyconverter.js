@@ -9,15 +9,8 @@ class MoneyConverter {
 		const CURRENCY = [
 			new MoneyConverterUnit("Copper", 1, "cp"),
 			new MoneyConverterUnit("Silver", 10, "sp"),
-			new MoneyConverterUnit("Electrum", 50, "ep"),
 			new MoneyConverterUnit("Gold", 100, "gp"),
-			new MoneyConverterUnit("Platinum", 1000, "pp"),
-			new MoneyConverterUnit("Nib (WDH)", 1, "nib"),
-			new MoneyConverterUnit("Shard (WDH)", 10, "shard"),
-			new MoneyConverterUnit("Taol (WDH)", 200, "taol"),
-			new MoneyConverterUnit("Dragon (WDH)", 100, "dgn"),
-			new MoneyConverterUnit("Sun (WDH)", 1000, "sun"),
-			new MoneyConverterUnit("Harbor Moon (WDH)", 5000, "moon"),
+			new MoneyConverterUnit("Platinum", 1000, "pp")
 		];
 		const CURRENCY_INDEXED = [...CURRENCY].map((it, i) => {
 			it.ix = i;
