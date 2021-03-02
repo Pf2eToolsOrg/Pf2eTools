@@ -3198,8 +3198,8 @@ DataUtil = {
 						if (it.ancestry) return it.ancestry[0];
 					}).filter(Boolean),
 					versatileHeritage: allData.map(it => {
-						if (it.versatileHeritage) return it.versatileHeritage[0];
-					}).filter(Boolean),
+						if (it.versatileHeritage) return it.versatileHeritage;
+					}).filter(Boolean).flat(),
 				};
 			})();
 			await DataUtil.ancestry._pLoadingJson;
