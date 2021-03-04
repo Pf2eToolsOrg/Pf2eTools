@@ -1,5 +1,4 @@
 // ************************************************************************* //
-// Strict mode should not be used, as the roll20 script depends on this file //
 // Do not use classes                                                        //
 // ************************************************************************* //
 if (typeof module !== "undefined") require("./parser.js");
@@ -8,7 +7,6 @@ if (typeof module !== "undefined") require("./parser.js");
 IS_DEPLOYED = undefined;
 VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.0.1"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
-// for the roll20 script to set
 IS_VTT = false;
 
 IMGUR_CLIENT_ID = `abdea4de492d3b0`;
@@ -47,8 +45,6 @@ VeCt = {
 	PG_NONE: "NO_PAGE",
 
 	SYM_UI_SKIP: Symbol("uiSkip"),
-
-	LOC_ORIGIN_CANCER: "https://5e.tools",
 };
 
 // STRING ==============================================================================================================
@@ -1797,18 +1793,6 @@ UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_SUBCLASS_FEATURE] = "subclassfeature";
 
-if (!IS_DEPLOYED && !IS_VTT && typeof window !== "undefined") {
-	// for local testing, hotkey to get a link to the current page on the main site
-	window.addEventListener("keypress", (e) => {
-		if (EventUtil.noModifierKeys(e) && typeof d20 === "undefined") {
-			if (e.key === "#") {
-				const spl = window.location.href.split("/");
-				window.prompt("Copy to clipboard: Ctrl+C, Enter", `https://noads.5e.tools/${spl[spl.length - 1]}`);
-			}
-		}
-	});
-}
-
 // SORTING =============================================================================================================
 SortUtil = {
 	ascSort: (a, b) => {
@@ -3198,8 +3182,8 @@ DataUtil = {
 						if (it.ancestry) return it.ancestry[0];
 					}).filter(Boolean),
 					versatileHeritage: allData.map(it => {
-						if (it.versatileHeritage) return it.versatileHeritage[0];
-					}).filter(Boolean),
+						if (it.versatileHeritage) return it.versatileHeritage;
+					}).filter(Boolean).flat(),
 				};
 			})();
 			await DataUtil.ancestry._pLoadingJson;
@@ -5868,6 +5852,3 @@ VeLock = function () {
 	};
 }
 BrewUtil._lockHandleBrewJson = new VeLock();
-
-// MISC WEBPAGE ONLOADS ================================================================================================
-if (!IS_VTT && typeof window !== "undefined") window.addEventListener("load", () => $(`.cancer__anchor`).remove())

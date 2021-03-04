@@ -15,7 +15,7 @@ let isCacheRunning;
 
 function getPath (urlOrPath) {
 	// Add a fake domain name to allow proper URL conversion
-	if (urlOrPath.startsWith("/")) urlOrPath = `https://5e.com${urlOrPath}`;
+	if (urlOrPath.startsWith("/")) urlOrPath = `https://pf2e.com${urlOrPath}`;
 	return (new URL(urlOrPath)).pathname;
 }
 

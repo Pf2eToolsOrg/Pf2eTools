@@ -379,25 +379,6 @@ class ItemsPage {
 				RollerUtil.addListRollButton();
 				ListUtil.addListShowHide();
 
-				ListUtil.bindShowTableButton(
-					"btn-show-table",
-					"Items",
-					this._itemList,
-					{
-						name: {name: "Name", transform: true},
-						source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
-						rarity: {name: "Rarity", transform: true},
-						_type: {name: "Type", transform: it => it._typeHtml},
-						_attunement: {name: "Attunement", transform: it => it._attunement ? it._attunement.slice(1, it._attunement.length - 1) : ""},
-						_properties: {name: "Properties", transform: it => Renderer.item.getDamageAndPropertiesText(it).filter(Boolean).join(", ")},
-						_weight: {name: "Weight", transform: it => Parser.itemWeightToFull(it)},
-						_value: {name: "Value", transform: it => Parser.itemValueToFullMultiCurrency(it)},
-						_entries: {name: "Text", transform: (it) => Renderer.item.getRenderedEntries(it, true), flex: 3},
-					},
-					{generator: ListUtil.basicFilterGenerator},
-					(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
-				);
-
 				this._mundaneList.init();
 				this._magicList.init();
 				this._subList.init();

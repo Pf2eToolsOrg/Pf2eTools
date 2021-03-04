@@ -89,7 +89,6 @@ class NavBar {
 		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
 		addDivider(ulUtils);
 		addLi(ulUtils, "changelog.html", "Changelog");
-		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
 		addDivider(ulUtils);
 		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
 		addLi(ulUtils, "licenses.html", "Licenses");

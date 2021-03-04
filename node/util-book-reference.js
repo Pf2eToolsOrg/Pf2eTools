@@ -68,7 +68,7 @@ UtilBookReference = {
 			}
 
 			function recursiveAdd (ent, source) {
-				if (ent.entries) {
+				if (ent.entries && ent.entries.length) {
 					ent.entries = ent.entries.filter(nxt => recursiveAdd(nxt, source));
 				}
 

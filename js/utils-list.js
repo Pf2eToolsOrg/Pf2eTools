@@ -602,7 +602,7 @@ const ListUtil = {
 			),
 			null,
 			new ContextUtil.Action(
-				"Send to DM Screen",
+				"Send to GM Screen",
 				() => ListUtil._pDoSendSublistToDmScreen(),
 			),
 			ExtensionUtil.ACTIVE
@@ -672,7 +672,7 @@ const ListUtil = {
 			),
 			null,
 			new ContextUtil.Action(
-				"Send to DM Screen",
+				"Send to GM Screen",
 				() => ListUtil._pDoSendSublistToDmScreen(),
 			),
 			ExtensionUtil.ACTIVE
@@ -695,7 +695,7 @@ const ListUtil = {
 			const list = ListUtil.getExportableSublist();
 			const len = list.items.length;
 			await StorageUtil.pSet(VeCt.STORAGE_DMSCREEN_TEMP_SUBLIST, {page: UrlUtil.getCurrentPage(), list});
-			JqueryUtil.doToast(`${len} pin${len === 1 ? "" : "s"} will be loaded into the DM Screen on your next visit.`)
+			JqueryUtil.doToast(`${len} pin${len === 1 ? "" : "s"} will be loaded into the GM Screen on your next visit.`)
 		} catch (e) {
 			JqueryUtil.doToast(`Failed! ${VeCt.STR_SEE_CONSOLE}`);
 			setTimeout(() => { throw e; })
