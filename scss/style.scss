@@ -209,7 +209,7 @@
 	}
 }
 
-.view-col-group--cancer {
+.view-col-group {
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -222,12 +222,6 @@
 	max-height: 100%;
 	height: 100%;
 	min-height: 0;
-
-	&--cancer {
-		@media (min-width: $width-screen-md) {
-			// min-height: calc(100vh - #{$sz-y-header});
-		}
-	}
 
 	@media (max-width: $width-screen-md) {
 		flex-direction: column;
@@ -963,7 +957,7 @@ input[type=checkbox].sidemenu__row__label__cb {
 
 .stats {
 	width: 100%;
-	font-size: 1em;
+	font-size: 1.1em;
 	overflow-wrap: break-word;
 	padding: 0.4em;
 
@@ -3594,102 +3588,6 @@ ul.list.books > li > a > span.name:hover {
 
 /* Night Mode End */
 
-/* region Cancer */
-.cancer__ {
-	&wrp-leaderboard {
-		margin: 0 auto;
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		flex-shrink: 0;
-		flex-grow: 0;
-		min-height: 0;
-		overflow: hidden;
-
-		&-inner {
-			display: flex;
-			width: 100%;
-			justify-content: center;
-		}
-	}
-
-	&disp-cancer {
-		width: 100%;
-		justify-content: center;
-		font-size: 9px;
-		padding: 2px 0;
-		opacity: 0.6;
-		display: none;
-	}
-
-	&wrp-sidebar-rhs {
-		position: fixed;
-		z-index: 1;
-		top: 160px;
-		right: calc((50vw - (1170px / 2)) - 300px);
-		width: 300px;
-		height: 100%;
-
-		> * {
-			margin-bottom: 10px;
-		}
-
-		&--single {
-			height: calc(100% - 80px);
-		}
-
-		&--scrolling-page {
-			position: absolute;
-			top: 80px;
-		}
-
-		@media (max-width: 1800px) {
-			display: none;
-		}
-	}
-
-	&sidebar-rhs-inner {
-		position: sticky;
-
-		&--top {
-			top: 10px;
-		}
-
-		&--bottom {
-			top: 620px;
-		}
-	}
-
-	&footer-pad {
-		height: 100px;
-	}
-
-	&wrp-mobile-1 {
-		display: flex;
-		flex-direction: column;
-	}
-}
-
-.cancer__sidebar-rhs-inner--scrolling-page .cancer__sidebar-rhs-inner {
-	&--top {
-		top: 20px;
-	}
-
-	&--bottom {
-		top: 630px;
-	}
-}
-
-.night-mode {
-	.cancer__ {
-		&wrp-leaderboard {
-			background: $rgb-off-black;
-		}
-	}
-}
-/* endregion */
-
 // "Update your Browser" overlay
 .edge__ {
 	&body {
@@ -3752,7 +3650,6 @@ ul.list.books > li > a > span.name:hover {
 		height: 250px;
 	}
 }
-/* Cancer end */
 
 /****************************************
  * Print styles

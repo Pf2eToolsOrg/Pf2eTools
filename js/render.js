@@ -1,7 +1,3 @@
-// ************************************************************************* //
-// Strict mode should not be used, as the roll20 script depends on this file //
-// ************************************************************************* //
-
 // ENTRY RENDERING =====================================================================================================
 /*
  * // EXAMPLE USAGE //
@@ -303,7 +299,7 @@ function Renderer () {
 			meta._typeStack.push(type);
 
 			switch (type) {
-				// pf2
+				// recursive
 				case "pf2-h1":
 					this._renderPf2H1(entry, textStack, meta, options);
 					break;
@@ -355,12 +351,8 @@ function Renderer () {
 				case "pf2-options":
 					this._renderPf2Options(entry, textStack, meta, options);
 					break;
-				// recursive
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
-					break;
-				case "options":
-					this._renderOptions(entry, textStack, meta, options);
 					break;
 				case "list":
 					this._renderList(entry, textStack, meta, options);
@@ -368,35 +360,11 @@ function Renderer () {
 				case "table":
 					this._renderTable(entry, textStack, meta, options);
 					break;
-				case "table-legacy":
-					this._renderTableLegacy(entry, textStack, meta, options);
-					break;
 				case "tableGroup":
 					this._renderTableGroup(entry, textStack, meta, options);
 					break;
-				case "inset":
-					this._renderInset(entry, textStack, meta, options);
-					break;
-				case "insetReadaloud":
-					this._renderInsetReadaloud(entry, textStack, meta, options);
-					break;
-				case "variant":
-					this._renderVariant(entry, textStack, meta, options);
-					break;
-				case "variantSub":
-					this._renderVariantSub(entry, textStack, meta, options);
-					break;
-				case "spellcasting":
-					this._renderSpellcasting(entry, textStack, meta, options);
-					break;
 				case "quote":
 					this._renderQuote(entry, textStack, meta, options);
-					break;
-				case "optfeature":
-					this._renderOptfeature(entry, textStack, meta, options);
-					break;
-				case "patron":
-					this._renderPatron(entry, textStack, meta, options);
 					break;
 
 				// pf2-statblock
@@ -422,16 +390,6 @@ function Renderer () {
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
-				// block
-				case "abilityDc":
-					this._renderAbilityDc(entry, textStack, meta, options);
-					break;
-				case "abilityAttackMod":
-					this._renderAbilityAttackMod(entry, textStack, meta, options);
-					break;
-				case "abilityGeneric":
-					this._renderAbilityGeneric(entry, textStack, meta, options);
-					break;
 
 				// inline
 				case "inline":
@@ -440,31 +398,11 @@ function Renderer () {
 				case "inlineBlock":
 					this._renderInlineBlock(entry, textStack, meta, options);
 					break;
-				case "bonus":
-					this._renderBonus(entry, textStack, meta, options);
-					break;
-				case "bonusSpeed":
-					this._renderBonusSpeed(entry, textStack, meta, options);
-					break;
 				case "dice":
 					this._renderDice(entry, textStack, meta, options);
 					break;
 				case "link":
 					this._renderLink(entry, textStack, meta, options);
-					break;
-				case "actions":
-					this._renderActions(entry, textStack, meta, options);
-					break;
-
-				// list items
-				case "item":
-					this._renderItem(entry, textStack, meta, options);
-					break;
-				case "itemSub":
-					this._renderItemSub(entry, textStack, meta, options);
-					break;
-				case "itemSpell":
-					this._renderItemSpell(entry, textStack, meta, options);
 					break;
 
 				// entire data records
@@ -487,14 +425,6 @@ function Renderer () {
 					break;
 				case "gallery":
 					this._renderGallery(entry, textStack, meta, options);
-					break;
-
-				// flowchart
-				case "flowchart":
-					this._renderFlowchart(entry, textStack, meta, options);
-					break;
-				case "flowBlock":
-					this._renderFlowBlock(entry, textStack, meta, options);
 					break;
 
 				// homebrew changes
@@ -635,136 +565,10 @@ function Renderer () {
 		return out.join(" ");
 	};
 
+	// TODO
 	this._renderTableGroup = function (entry, textStack, meta, options) {
 		const len = entry.tables.length;
 		for (let i = 0; i < len; ++i) this._recursiveRender(entry.tables[i], textStack, meta);
-	};
-
-	this._renderTableLegacy = function (entry, textStack, meta, options) {
-		// TODO add handling for rowLabel property
-		if (entry.intro) {
-			const len = entry.intro.length;
-			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.intro[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			}
-		}
-
-		textStack[0] += `<table class="${entry.style || ""} ${entry.isStriped === false ? "" : "stripe-odd-table"}">`;
-
-		const autoRollMode = Renderer.getTableRollMode(entry);
-		const toRenderLabel = autoRollMode ? RollerUtil.getFullRollCol(entry.colLabels[0]) : null;
-		const isInfiniteResults = autoRollMode === RollerUtil.ROLL_COL_VARIABLE;
-
-		// caption
-		if (entry.caption != null) textStack[0] += `<caption>${entry.caption}</caption>`;
-
-		// body -- temporarily build this to own string; append after headers
-		const rollCols = [];
-		let bodyStack = [""];
-		bodyStack[0] += "<tbody>";
-		const lenRows = entry.rows.length;
-		for (let ixRow = 0; ixRow < lenRows; ++ixRow) {
-			bodyStack[0] += "<tr>";
-			const r = entry.rows[ixRow];
-			let roRender = r.type === "row" ? r.row : r;
-
-			const len = roRender.length;
-			for (let ixCell = 0; ixCell < len; ++ixCell) {
-				rollCols[ixCell] = rollCols[ixCell] || false;
-
-				// preconvert rollables
-				if (autoRollMode && ixCell === 0) {
-					roRender = Renderer.getRollableRow(
-						roRender,
-						{
-							isForceInfiniteResults: isInfiniteResults,
-							isFirstRow: ixRow === 0,
-							isLastRow: ixRow === lenRows - 1,
-						},
-					);
-					rollCols[ixCell] = true;
-				}
-
-				let toRenderCell;
-				if (roRender[ixCell].type === "cell") {
-					if (roRender[ixCell].roll) {
-						rollCols[ixCell] = true;
-						if (roRender[ixCell].entry) {
-							toRenderCell = roRender[ixCell].entry;
-						} else if (roRender[ixCell].roll.exact != null) {
-							toRenderCell = roRender[ixCell].roll.pad ? StrUtil.padNumber(roRender[ixCell].roll.exact, 2, "0") : roRender[ixCell].roll.exact;
-						} else {
-							// TODO(Future) render "negative infinite" minimum nicely (or based on an example from a book, if one ever occurs)
-							//   "Selling a Magic Item" from DMG p129 almost meets this, but it has its own display
-
-							const dispMin = roRender[ixCell].roll.displayMin != null ? roRender[ixCell].roll.displayMin : roRender[ixCell].roll.min;
-							const dispMax = roRender[ixCell].roll.displayMax != null ? roRender[ixCell].roll.displayMax : roRender[ixCell].roll.max;
-
-							if (dispMax === Renderer.dice.POS_INFINITE) {
-								toRenderCell = roRender[ixCell].roll.pad
-									? `${StrUtil.padNumber(dispMin, 2, "0")}+`
-									: `${dispMin}+`;
-							} else {
-								toRenderCell = roRender[ixCell].roll.pad
-									? `${StrUtil.padNumber(dispMin, 2, "0")}-${StrUtil.padNumber(dispMax, 2, "0")}`
-									: `${dispMin}-${dispMax}`;
-							}
-						}
-					} else if (roRender[ixCell].entry) {
-						toRenderCell = roRender[ixCell].entry;
-					}
-				} else {
-					toRenderCell = roRender[ixCell];
-				}
-				bodyStack[0] += `<td ${this._renderTable_makeTableTdClassText(entry, ixCell)} ${this._renderTable_getCellDataStr(roRender[ixCell])} ${roRender[ixCell].width ? `colspan="${roRender[ixCell].width}"` : ""}>`;
-				if (r.style === "row-indent-first" && ixCell === 0) bodyStack[0] += `<div class="rd__tab-indent"></div>`;
-				const cacheDepth = this._adjustDepth(meta, 1);
-				this._recursiveRender(toRenderCell, bodyStack, meta);
-				meta.depth = cacheDepth;
-				bodyStack[0] += "</td>";
-			}
-			bodyStack[0] += "</tr>";
-		}
-		bodyStack[0] += "</tbody>";
-
-		// header
-		textStack[0] += "<thead>";
-		textStack[0] += "<tr>";
-		if (entry.colLabels) {
-			const len = entry.colLabels.length;
-			for (let i = 0; i < len; ++i) {
-				const lbl = entry.colLabels[i];
-				textStack[0] += `<th ${this._renderTable_getTableThClassText(entry, i)} data-rd-isroller="${rollCols[i]}" ${entry.isNameGenerator ? `data-rd-namegeneratorrolls="${(entry.colLabels || []).length - 1}"` : ""}>`;
-				this._recursiveRender(autoRollMode && i === 0 ? RollerUtil.getFullRollCol(lbl) : lbl, textStack, meta);
-				textStack[0] += `</th>`;
-			}
-		}
-		textStack[0] += "</tr>";
-		textStack[0] += "</thead>";
-
-		textStack[0] += bodyStack[0];
-
-		// footer
-		if (entry.footnotes != null) {
-			textStack[0] += "<tfoot>";
-			const len = entry.footnotes.length;
-			for (let i = 0; i < len; ++i) {
-				textStack[0] += `<tr><td colspan="99">`;
-				const cacheDepth = this._adjustDepth(meta, 1);
-				this._recursiveRender(entry.footnotes[i], textStack, meta);
-				meta.depth = cacheDepth;
-				textStack[0] += "</td></tr>";
-			}
-			textStack[0] += "</tfoot>";
-		}
-		textStack[0] += "</table>";
-
-		if (entry.outro) {
-			const len = entry.outro.length;
-			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.outro[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			}
-		}
 	};
 
 	this._renderTable = function (entry, textStack, meta, options) {
@@ -930,28 +734,6 @@ function Renderer () {
 		}
 
 		return `${row_styles} ${col_styles} ${cell_styles} ${type_styles} ${minTo}`
-	};
-
-	this._renderTable_getCellDataStr = function (ent) {
-		function convertZeros (num) {
-			if (num === 0) return 100;
-			return num;
-		}
-
-		if (ent.roll) {
-			return `data-roll-min="${convertZeros(ent.roll.exact != null ? ent.roll.exact : ent.roll.min)}" data-roll-max="${convertZeros(ent.roll.exact != null ? ent.roll.exact : ent.roll.max)}"`
-		}
-
-		return "";
-	};
-
-	this._renderTable_getTableThClassText = function (entry, i) {
-		return entry.colStyles == null || i >= entry.colStyles.length ? "" : `class="${entry.colStyles[i]}"`;
-	};
-
-	this._renderTable_makeTableTdClassText = function (entry, i) {
-		if (entry.rowStyles != null) return i >= entry.rowStyles.length ? "" : `class="${entry.rowStyles[i]}"`;
-		else return this._renderTable_getTableThClassText(entry, i);
 	};
 
 	this._renderEntries = function (entry, textStack, meta, options) {
@@ -1662,238 +1444,7 @@ function Renderer () {
 		$(`[data-stat-hash="${hash}"]`).fastSetHtml(renderFn(toRender, {noPage: true}));
 	};
 
-	this._renderInset = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
-		if (entry.name != null) {
-			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${this._getPagePart(entry, true)}</span>`;
-		}
-		if (entry.entries) {
-			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-				meta.depth = cacheDepth;
-			}
-		}
-		textStack[0] += `<div class="float-clear"></div>`;
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
-	this._renderInsetReadaloud = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset rd__b-inset--readaloud" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
-		if (entry.name != null) {
-			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span>${this._getPagePart(entry, true)}</span>`;
-		}
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			const cacheDepth = meta.depth;
-			meta.depth = 2;
-			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			meta.depth = cacheDepth;
-		}
-		textStack[0] += `<div class="float-clear"></div>`;
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
-	this._renderVariant = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-
-		this._handleTrackTitles(entry.name);
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset" ${dataString}>`;
-		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">Variant: ${entry.name}</span></span>`;
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			const cacheDepth = meta.depth;
-			meta.depth = 2;
-			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			meta.depth = cacheDepth;
-		}
-		if (entry.variantSource) textStack[0] += Renderer.utils.getSourceAndPageTrHtml(entry.variantSource);
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
-	this._renderVariantInner = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-
-		this._handleTrackTitles(entry.name);
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
-		textStack[0] += `<${this.wrapperTag} class="rd__b-inset-inner" ${dataString}>`;
-		textStack[0] += `<span class="rd__h rd__h--2-inset" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			const cacheDepth = meta.depth;
-			meta.depth = 2;
-			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-			meta.depth = cacheDepth;
-		}
-		if (entry.variantSource) textStack[0] += Renderer.utils.getSourceAndPageTrHtml(entry.variantSource);
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
-	this._renderVariantSub = function (entry, textStack, meta, options) {
-		// pretend this is an inline-header'd entry, but set a flag so we know not to add bold
-		this._subVariant = true;
-		const fauxEntry = entry;
-		fauxEntry.type = "entries";
-		const cacheDepth = meta.depth;
-		meta.depth = 3;
-		this._recursiveRender(fauxEntry, textStack, meta, {prefix: "<p>", suffix: "</p>"});
-		meta.depth = cacheDepth;
-		this._subVariant = false;
-	};
-
-	this._renderSpellcasting_getEntries = function (entry) {
-		const hidden = new Set(entry.hidden || []);
-		const toRender = [{
-			type: "entries",
-			name: entry.name,
-			entries: entry.headerEntries ? MiscUtil.copy(entry.headerEntries) : [],
-		}];
-
-		if (entry.constant || entry.will || entry.rest || entry.daily || entry.weekly || entry.ritual) {
-			const tempList = {type: "list", style: "list-hang-notitle", items: [], data: {isSpellList: true}};
-			if (entry.constant && !hidden.has("constant")) {
-				tempList.items.push({
-					type: "itemSpell",
-					name: `Constant:`,
-					entry: entry.constant.join(", "),
-				});
-			}
-			if (entry.will && !hidden.has("will")) {
-				tempList.items.push({
-					type: "itemSpell",
-					name: `At will:`,
-					entry: entry.will.join(", "),
-				});
-			}
-			if (entry.rest && !hidden.has("rest")) {
-				for (let lvl = 9; lvl > 0; lvl--) {
-					const rest = entry.rest;
-					if (rest[lvl]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/rest:`,
-							entry: rest[lvl].join(", "),
-						});
-					}
-					const lvlEach = `${lvl}e`;
-					if (rest[lvlEach]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/rest each:`,
-							entry: rest[lvlEach].join(", "),
-						});
-					}
-				}
-			}
-			if (entry.daily && !hidden.has("daily")) {
-				for (let lvl = 9; lvl > 0; lvl--) {
-					const daily = entry.daily;
-					if (daily[lvl]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/day:`,
-							entry: daily[lvl].join(", "),
-						});
-					}
-					const lvlEach = `${lvl}e`;
-					if (daily[lvlEach]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/day each:`,
-							entry: daily[lvlEach].join(", "),
-						});
-					}
-				}
-			}
-			if (entry.weekly && !hidden.has("weekly")) {
-				for (let lvl = 9; lvl > 0; lvl--) {
-					const weekly = entry.weekly;
-					if (weekly[lvl]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/week:`,
-							entry: weekly[lvl].join(", "),
-						});
-					}
-					const lvlEach = `${lvl}e`;
-					if (weekly[lvlEach]) {
-						tempList.items.push({
-							type: "itemSpell",
-							name: `${lvl}/week each:`,
-							entry: weekly[lvlEach].join(", "),
-						});
-					}
-				}
-			}
-			if (entry.ritual && !hidden.has("ritual")) {
-				tempList.items.push({
-					type: "itemSpell",
-					name: `Rituals:`,
-					entry: entry.ritual.join(", "),
-				});
-			}
-			if (tempList.items.length) toRender[0].entries.push(tempList);
-		}
-
-		if (entry.spells && !hidden.has("spells")) {
-			const tempList = {type: "list", style: "list-hang-notitle", items: [], data: {isSpellList: true}};
-			for (let lvl = 0; lvl < 10; ++lvl) {
-				const spells = entry.spells[lvl];
-				if (spells) {
-					let levelCantrip = `${Parser.spLevelToFull(lvl)}${(lvl === 0 ? "s" : " level")}`;
-					let slotsAtWill = ` (at will)`;
-					const slots = spells.slots;
-					if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} slot${slots > 1 ? "s" : ""})` : ``;
-					if (spells.lower && spells.lower !== lvl) {
-						levelCantrip = `${Parser.spLevelToFull(spells.lower)}-${levelCantrip}`;
-						if (slots >= 0) slotsAtWill = slots > 0 ? ` (${slots} ${Parser.spLevelToFull(lvl)}-level slot${slots > 1 ? "s" : ""})` : ``;
-					}
-					tempList.items.push({
-						type: "itemSpell",
-						name: `${levelCantrip}${slotsAtWill}:`,
-						entry: spells.spells.join(", ") || "\u2014",
-					})
-				}
-			}
-			toRender[0].entries.push(tempList);
-		}
-
-		if (entry.footerEntries) toRender.push({type: "entries", entries: entry.footerEntries});
-		return toRender;
-	};
-
-	this._renderSpellcasting = function (entry, textStack, meta, options) {
-		const toRender = this._renderSpellcasting_getEntries(entry);
-		this._recursiveRender({type: "entries", entries: toRender}, textStack, meta);
-	};
-
+	// TODO
 	this._renderQuote = function (entry, textStack, meta, options) {
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
@@ -1908,38 +1459,6 @@ function Renderer () {
 			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
-	};
-
-	this._renderOptfeature = function (entry, textStack, meta, options) {
-		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
-	};
-
-	this._renderPatron = function (entry, textStack, meta, options) {
-		this._renderEntriesSubtypes(entry, textStack, meta, options, false);
-	};
-
-	this._renderAbilityDc = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class="text-center"><b>`;
-		this._recursiveRender(entry.name, textStack, meta);
-		textStack[0] += ` save DC</b> = 8 + your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderAbilityAttackMod = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class="text-center"><b>`;
-		this._recursiveRender(entry.name, textStack, meta);
-		textStack[0] += ` attack modifier</b> = your proficiency bonus + your ${Parser.attrChooseToFull(entry.attributes)}</div>`;
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderAbilityGeneric = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<div class="text-center">`;
-		if (entry.name) this._recursiveRender(entry.name, textStack, meta, {prefix: "<b>", suffix: "</b> = "});
-		textStack[0] += `${entry.text}${entry.attributes ? ` ${Parser.attrChooseToFull(entry.attributes)}` : ""}</div>`;
-		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderInline = function (entry, textStack, meta, options) {
@@ -1958,68 +1477,8 @@ function Renderer () {
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
-	this._renderBonus = function (entry, textStack, meta, options) {
-		textStack[0] += (entry.value < 0 ? "" : "+") + entry.value;
-	};
-
-	this._renderBonusSpeed = function (entry, textStack, meta, options) {
-		textStack[0] += entry.value === 0 ? "\u2014" : `${entry.value < 0 ? "" : "+"}${entry.value} ft.`;
-	};
-
 	this._renderDice = function (entry, textStack, meta, options) {
 		textStack[0] += Renderer.getEntryDice(entry, entry.name, this._isAddHandlers);
-	};
-
-	this._renderActions = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-
-		this._handleTrackTitles(entry.name);
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 2);
-
-		textStack[0] += `<${this.wrapperTag} class="${Renderer.HEAD_2}" ${dataString}><span class="rd__h rd__h--3" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}.</span></span> `;
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			this._recursiveRender(entry.entries[i], textStack, meta, {
-				prefix: "<p>",
-				suffix: "</p>",
-			});
-		}
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
-	this._renderItem = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<p><span class="bold list-item-title">${this.render(entry.name)}</span> `;
-		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
-		else if (entry.entries) {
-			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) {
-				this._recursiveRender(entry.entries[i], textStack, meta, {
-					prefix: i > 0 ? `<span class="rd__p-cont-indent">` : "",
-					suffix: i > 0 ? "</span>" : "",
-				});
-			}
-		}
-		textStack[0] += "</p>";
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderItemSub = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {
-			prefix: `<p><span class="italic list-item-title">${entry.name}</span> `,
-			suffix: "</p>",
-		});
-		this._renderSuffix(entry, textStack, meta, options);
-	};
-
-	this._renderItemSpell = function (entry, textStack, meta, options) {
-		this._renderPrefix(entry, textStack, meta, options);
-		this._recursiveRender(entry.entry, textStack, meta, {prefix: `<p>${entry.name} `, suffix: "</p>"});
-		this._renderSuffix(entry, textStack, meta, options);
 	};
 
 	this._renderDataCreature = function (entry, textStack, meta, options) {
@@ -2082,45 +1541,6 @@ function Renderer () {
 			this._recursiveRender(img, textStack, meta, options);
 		}
 		textStack[0] += `</div>`;
-	};
-
-	this._renderFlowchart = function (entry, textStack, meta, options) {
-		// TODO style this
-		textStack[0] += `<div class="rd__wrp-flowchart">`;
-		const len = entry.blocks.length;
-		for (let i = 0; i < len; ++i) {
-			this._recursiveRender(entry.blocks[i], textStack, meta, options);
-			if (i !== len - 1) {
-				textStack[0] += `<div class="rd__s-v-flow"></div>`
-			}
-		}
-		textStack[0] += `</div>`;
-	};
-
-	this._renderFlowBlock = function (entry, textStack, meta, options) {
-		const dataString = this._getDataString(entry);
-		textStack[0] += `<${this.wrapperTag} class="rd__b-flow" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
-		if (entry.name != null) {
-			this._handleTrackTitles(entry.name);
-			textStack[0] += `<span class="rd__h rd__h--2-flow-block" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></span>`;
-		}
-		if (entry.entries) {
-			const len = entry.entries.length;
-			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
-				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-				meta.depth = cacheDepth;
-			}
-		}
-		textStack[0] += `<div class="float-clear"></div>`;
-		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderHomebrew = function (entry, textStack, meta, options) {
@@ -2289,41 +1709,8 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
-			case "@indent": // FIXME: Deprecated
 			case "@indentSubsequent":
 				textStack[0] += `<span class="text-indent-subsequent inline-block">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-
-			// Comic styles ////////////////////////////////////////////////////////////////////////////////////
-			case "@comic":
-				textStack[0] += `<span class="rd__comic">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-			case "@comicH1":
-				textStack[0] += `<span class="rd__comic rd__comic--h1">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-			case "@comicH2":
-				textStack[0] += `<span class="rd__comic rd__comic--h2">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-			case "@comicH3":
-				textStack[0] += `<span class="rd__comic rd__comic--h3">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-			case "@comicH4":
-				textStack[0] += `<span class="rd__comic rd__comic--h4">`;
-				this._recursiveRender(text, textStack, meta);
-				textStack[0] += `</span>`;
-				break;
-			case "@comicNote":
-				textStack[0] += `<span class="rd__comic rd__comic--note">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</span>`;
 				break;
@@ -2531,7 +1918,7 @@ function Renderer () {
 
 				break;
 			}
-			case "@Pf2eTools":
+			case "@pf2etools":
 			case "@Pf2eTools": {
 				const [displayText, page, hash] = Renderer.splitTagByPipe(text);
 				const fauxEntry = {
@@ -4466,47 +3853,16 @@ Renderer.trait = {
 
 Renderer.background = {
 	getCompactRenderedString (bg) {
+		const renderStack = [];
+		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+
 		return `
-		${Renderer.utils.getExcludedTr(bg, "background", UrlUtil.PG_BACKGROUNDS)}
-		${Renderer.utils.getNameTr(bg, {page: UrlUtil.PG_BACKGROUNDS})}
-		<tr class="text"><td colspan="6">
-		${Renderer.get().render({type: "entries", entries: bg.entries})}
-		</td></tr>
+		${Renderer.utils.getNameDiv(bg, {page: UrlUtil.PG_BACKGROUNDS, type: "BACKGROUND"})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getExcludedDiv(bg, "background", UrlUtil.PG_BACKGROUNDS)}
+		${renderStack.join("")}
+		${Renderer.utils.getPageP(bg)}
 		`;
-	},
-
-	_summariseProfs (profGroupArr, short, collectIn, hoverTag) {
-		if (!profGroupArr) return "";
-
-		function getEntry (s) {
-			return short ? s.toTitleCase() : hoverTag ? `{@${hoverTag} ${s.toTitleCase()}}` : s.toTitleCase();
-		}
-
-		function sortKeys (a, b) {
-			if (a === b) return 0;
-			if (a === "choose") return 1;
-			if (b === "choose") return -1;
-			return SortUtil.ascSort(a, b);
-		}
-
-		return profGroupArr.map(profGroup => {
-			let sep = ", ";
-			const toJoin = Object.keys(profGroup).sort(sortKeys).filter(k => profGroup[k]).map((k, i) => {
-				if (k === "choose") {
-					sep = "; ";
-					const choose = profGroup[k];
-					const chooseProfs = choose.from.map(s => {
-						collectIn && !collectIn.includes(s) && collectIn.push(s);
-						return getEntry(s);
-					});
-					return `${short ? `${i === 0 ? "C" : "c"}hoose ` : ""}${choose.count || 1} ${short ? `of` : `from`} ${chooseProfs.joinConjunct(", ", " or ")}`;
-				} else {
-					collectIn && !collectIn.includes(k) && collectIn.push(k);
-					return getEntry(k);
-				}
-			});
-			return toJoin.join(sep);
-		}).join(" <i>or</i> ");
 	},
 
 	pGetFluff (bg) {
@@ -4519,283 +3875,15 @@ Renderer.background = {
 };
 
 Renderer.ancestry = {
-	getCompactRenderedString (race) {
-		const renderer = Renderer.get();
-		const renderStack = [];
-
-		const ability = Renderer.getAbilityData(race.ability);
-		renderStack.push(`
-			${Renderer.utils.getExcludedTr(race, "ancestry", UrlUtil.PG_ANCESTRIES)}
-			${Renderer.utils.getNameTr(race, {page: UrlUtil.PG_ANCESTRIES})}
-			${!race._isBaseRace ? `
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-4 text-center">Ability Scores</th>
-						<th class="col-4 text-center">Size</th>
-						<th class="col-4 text-center">Speed</th>
-					</tr>
-					<tr>
-						<td class="text-center">${ability.asText}</td>
-						<td class="text-center">${Parser.sizeAbvToFull(race.size)}</td>
-						<td class="text-center">${Parser.getSpeedString(race)}</td>
-					</tr>
-				</table>
-			</td></tr>` : ""}
-			<tr class="text"><td colspan="6">
-		`);
-		race._isBaseRace
-			? renderer.recursiveRender({type: "entries", entries: race._baseRaceEntries}, renderStack, {depth: 1})
-			: renderer.recursiveRender({type: "entries", entries: race.entries}, renderStack, {depth: 1});
-		renderStack.push("</td></tr>");
-
-		return renderStack.join("");
+	getCompactRenderedString (ancestry) {
+		// TODO: unimplemented
 	},
 
-	/**
-	 * @param races
-	 * @param [opts] Options object.
-	 * @param [opts.isAddBaseRaces] If an entity should be created for each base ancestry.
-	 */
-	mergeSubraces (races, opts) {
-		opts = opts || {};
-
-		const out = [];
-		races.forEach(r => {
-			if (r.subraces && !r.subraces.length) delete r.subraces;
-
-			if (r.subraces) {
-				r.subraces.forEach(sr => {
-					sr.source = sr.source || r.source;
-					sr._isSubRace = true;
-				});
-
-				r.subraces.sort((a, b) => SortUtil.ascSortLower(a.name || "_", b.name || "_") || SortUtil.ascSortLower(Parser.sourceJsonToAbv(a.source), Parser.sourceJsonToAbv(b.source)));
-			}
-
-			if (opts.isAddBaseRaces && r.subraces) {
-				const baseRace = MiscUtil.copy(r);
-
-				baseRace._isBaseRace = true;
-
-				const isAnyNoName = r.subraces.some(it => !it.name);
-				if (isAnyNoName) {
-					baseRace._rawName = baseRace.name;
-					baseRace.name = `${baseRace.name} (Base)`;
-				}
-
-				const nameCounts = {};
-				r.subraces.filter(sr => sr.name).forEach(sr => nameCounts[sr.name.toLowerCase()] = (nameCounts[sr.name.toLowerCase()] || 0) + 1);
-				nameCounts._ = r.subraces.filter(sr => !sr.name).length;
-
-				const lst = {
-					type: "list",
-					items: r.subraces.map(sr => {
-						const count = nameCounts[(sr.name || "_").toLowerCase()];
-						const idName = Renderer.ancestry._getSubraceName(r.name, sr.name);
-						return `{@race ${idName}|${sr.source}${count > 1 ? `|${idName} (<span title="${Parser.sourceJsonToFull(sr.source).escapeQuotes()}">${Parser.sourceJsonToAbv(sr.source)}</span>)` : ""}}`;
-					}),
-				};
-
-				baseRace._baseRaceEntries = [
-					{
-						type: "section",
-						entries: [
-							"This ancestry has multiple subraces, as listed below:",
-							lst,
-						],
-					},
-					{
-						type: "section",
-						entries: [
-							{
-								type: "entries",
-								entries: [
-									{
-										type: "entries",
-										name: "Traits",
-										entries: [
-											...MiscUtil.copy(baseRace.entries),
-										],
-									},
-								],
-							},
-						],
-					},
-				];
-
-				delete baseRace.subraces;
-
-				out.push(baseRace);
-			}
-
-			out.push(...Renderer.ancestry._mergeSubraces(r));
-		});
-
-		return out;
-	},
-
-	_getSubraceName (raceName, subraceName) {
-		if (!subraceName) return raceName;
-
-		const mBrackets = /^(.*?)(\(.*?\))$/i.exec(raceName || "");
-		if (!mBrackets) return `${raceName} (${subraceName})`;
-
-		const bracketPart = mBrackets[2].substring(1, mBrackets[2].length - 1);
-		return `${mBrackets[1]}(${[bracketPart, subraceName].join("; ")})`;
-	},
-
-	_mergeSubraces (race) {
-		if (!race.subraces) return [race];
-		return MiscUtil.copy(race.subraces).map(s => Renderer.ancestry._getMergedSubrace(race, s));
-	},
-
-	_getMergedSubrace (race, s) {
-		const cpy = MiscUtil.copy(race);
-		cpy._baseName = cpy.name;
-		cpy._baseSource = cpy.source;
-		cpy._baseSrd = cpy.srd;
-		delete cpy.subraces;
-		delete cpy.srd;
-
-		// merge names, abilities, entries, tags
-		if (s.name) {
-			cpy._subraceName = s.name;
-
-			if (s.alias) {
-				cpy.alias = s.alias.map(it => Renderer.ancestry._getSubraceName(cpy.name, it));
-				delete s.alias;
-			}
-
-			cpy.name = Renderer.ancestry._getSubraceName(cpy.name, s.name);
-			delete s.name;
-		}
-		if (s.ability) {
-			// If the base ancestry doesn't have any ability scores, make a set of empty records
-			if ((s.overwrite && s.overwrite.ability) || !cpy.ability) cpy.ability = s.ability.map(() => ({}));
-
-			if (cpy.ability.length !== s.ability.length) throw new Error(`Race and subrace ability array lengths did not match!`);
-			s.ability.forEach((obj, i) => Object.assign(cpy.ability[i], obj));
-			delete s.ability;
-		}
-		if (s.entries) {
-			s.entries.forEach(e => {
-				if (e.data && e.data.overwrite) {
-					const toOverwrite = cpy.entries.findIndex(it => it.name.toLowerCase().trim() === e.data.overwrite.toLowerCase().trim());
-					if (~toOverwrite) cpy.entries[toOverwrite] = e;
-					else cpy.entries.push(e);
-				} else {
-					cpy.entries.push(e);
-				}
-			});
-			delete s.entries;
-		}
-
-		if (s.traitTags) {
-			if (s.overwrite && s.overwrite.traitTags) cpy.traitTags = s.traitTags;
-			else cpy.traitTags = (cpy.traitTags || []).concat(s.traitTags);
-			delete s.traitTags;
-		}
-
-		if (s.languageProficiencies) {
-			if (s.overwrite && s.overwrite.languageProficiencies) cpy.languageProficiencies = s.languageProficiencies;
-			else cpy.languageProficiencies = cpy.languageProficiencies = (cpy.languageProficiencies || []).concat(s.languageProficiencies);
-			delete s.languageProficiencies;
-		}
-
-		// TODO make a generalised merge system? Probably have one of those lying around somewhere [bestiary schema?]
-		if (s.skillProficiencies) {
-			// Overwrite if possible
-			if (!cpy.skillProficiencies || (s.overwrite && s.overwrite["skillProficiencies"])) cpy.skillProficiencies = s.skillProficiencies;
-			else {
-				if (!s.skillProficiencies.length || !cpy.skillProficiencies.length) throw new Error(`No items!`);
-				if (s.skillProficiencies.length > 1 || cpy.skillProficiencies.length > 1) throw new Error(`Subrace merging does not handle choices!`); // Implement if required
-
-				// Otherwise, merge
-				if (s.skillProficiencies.choose) {
-					if (cpy.skillProficiencies.choose) throw new Error(`Subrace choose merging is not supported!!`); // Implement if required
-					cpy.skillProficiencies.choose = s.skillProficiencies.choose;
-					delete s.skillProficiencies.choose;
-				}
-				Object.assign(cpy.skillProficiencies[0], s.skillProficiencies[0]);
-			}
-
-			delete s.skillProficiencies;
-		}
-
-		// overwrite everything else
-		Object.assign(cpy, s);
-
-		// For any null'd out fields on the subrace, delete the field
-		Object.entries(cpy)
-			.forEach(([k, v]) => {
-				if (v != null) return;
-				delete cpy[k];
-			});
-
-		return cpy;
-	},
-
-	adoptSubraces (allRaces, subraces) {
-		const nxtData = [];
-
-		subraces.forEach(sr => {
-			if (!sr.race || !sr.race.name || !sr.race.source) throw new Error(`Subrace was missing parent race!`);
-
-			const _baseRace = allRaces.find(r => r.name === sr.race.name && r.source === sr.race.source);
-			if (!_baseRace) throw new Error(`Could not find parent race for subrace!`);
-
-			const subraceListEntry = ((_baseRace._baseRaceEntries[0] || {}).entries || []).find(it => it.type === "list");
-			subraceListEntry.items.push(`{@race ${_baseRace._rawName || _baseRace.name} (${sr.name})|${sr.source || _baseRace.source}}`);
-
-			// Attempt to graft multiple subraces from the same data set onto the same base ancestry copy
-			let baseRace = nxtData.find(r => r.name === sr.race.name && r.source === sr.race.source);
-			if (!baseRace) {
-				// copy and remove base-ancestry-specific data
-				baseRace = MiscUtil.copy(_baseRace);
-				if (baseRace._rawName) {
-					baseRace.name = baseRace._rawName;
-					delete baseRace._rawName;
-				}
-				delete baseRace._isBaseRace;
-				delete baseRace._baseRaceEntries;
-
-				nxtData.push(baseRace);
-			}
-
-			baseRace.subraces = baseRace.subraces || [];
-			baseRace.subraces.push(sr);
-		});
-
-		return nxtData;
-	},
-
-	async pPostProcessFluff (race, raceFluff) {
-		if (!(raceFluff.uncommon || raceFluff.monstrous)) return raceFluff;
-
-		raceFluff = MiscUtil.copy(raceFluff);
-
-		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/fluff-races.json`);
-
-		if (raceFluff.uncommon) {
-			raceFluff.entries = raceFluff.entries || [];
-			raceFluff.entries.push(MiscUtil.copy(data.raceFluffMeta.uncommon));
-		}
-
-		if (raceFluff.monstrous) {
-			raceFluff.entries = raceFluff.entries || [];
-			raceFluff.entries.push(MiscUtil.copy(data.raceFluffMeta.monstrous));
-		}
-
-		return raceFluff;
-	},
-
-	pGetFluff (race) {
+	pGetFluff (ancestry) {
 		return Renderer.utils.pGetFluff({
-			entity: race,
-			fluffProp: "raceFluff",
-			fluffUrl: `data/fluff-races.json`,
-			pFnPostProcess: Renderer.ancestry.pPostProcessFluff.bind(null, race),
+			entity: ancestry,
+			fluffProp: "ancestryFluff",
+			fluffUrl: `data/fluff-ancestries.json`,
 		});
 	},
 };
@@ -5327,7 +4415,7 @@ Renderer.creature = {
 
 		const renderer = Renderer.get();
 		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack);
+		renderer.recursiveRender(ability.entries, entryStack, {depth: 2}, {isAbility: true});
 
 		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
 
@@ -5366,573 +4454,9 @@ Renderer.creature = {
 				$(`.${buttonClass}`).toggleClass("hidden");
 			});
 	},
-
-	// legacy
-
-	getCrScaleTarget (win, $btnScaleCr, initialCr, cbRender, isCompact) {
-		const evtName = "click.cr-scaler";
-		const $body = $(win.document.body);
-
-		function cleanSliders () {
-			$body.find(`.mon__cr_slider_wrp`).remove();
-			$btnScaleCr.off(evtName);
-		}
-
-		const $wrp = $(`<div class="mon__cr_slider_wrp ${isCompact ? "mon__cr_slider_wrp--compact" : ""}"></div>`);
-		const $sld = $(`<div class="mon__cr_slider"></div>`).appendTo($wrp);
-
-		const curr = Parser.CRS.indexOf(initialCr);
-		if (curr === -1) throw new Error(`Initial CR ${initialCr} was not valid!`);
-
-		cleanSliders();
-		$btnScaleCr.off(evtName).on(evtName, (evt) => evt.stopPropagation());
-		$wrp.on(evtName, (evt) => evt.stopPropagation());
-		$body.off(evtName).on(evtName, cleanSliders);
-
-		const subOpts = {
-			labels: Parser.CRS,
-		};
-		$sld.slider({
-			min: 0,
-			max: Parser.CRS.length - 1,
-			value: curr,
-		}).slider("pips", subOpts).slider("float", subOpts);
-
-		$sld.slider().on("slidechange", () => {
-			const ix = $sld.slider("value");
-			cbRender(Parser.crToNumber(Parser.CRS[ix]));
-			$body.off(evtName);
-			cleanSliders();
-		});
-
-		$btnScaleCr.after($wrp);
-	},
-
-	getSensesPart (mon) {
-		return `${mon.senses ? `${Renderer.creature.getRenderedSenses(mon.senses)}, ` : ""}passive Perception ${mon.passive || "\u2014"}`;
-	},
-
-	/**
-	 * @param mon
-	 * @param renderer
-	 * @param [opts]
-	 * @param [opts.isCompact]
-	 * @param [opts.isEmbeddedEntity]
-	 */
-	getLegacyCompactRenderedString (mon, renderer, opts) {
-		opts = opts || {};
-		if (opts.isCompact === undefined) opts.isCompact = true;
-
-		renderer = renderer || Renderer.get();
-
-		const renderStack = [];
-		const isCrHidden = Parser.crToNumber(mon.cr) === 100;
-		const legGroup = DataUtil.creature.getMetaGroup(mon);
-		const hasToken = mon.tokenUrl || mon.hasToken;
-		const extraThClasses = !opts.isCompact && hasToken ? ["mon__name--token"] : null;
-
-		renderStack.push(`
-			${Renderer.utils.getExcludedTr(mon, "creature", UrlUtil.PG_BESTIARY)}
-			${Renderer.utils.getNameTr(mon, {
-		page: UrlUtil.PG_BESTIARY,
-		extensionData: mon._isScaledCr,
-		extraThClasses,
-		isEmbeddedEntity: opts.isEmbeddedEntity,
-	})}
-			<tr><td colspan="6"><i>${Renderer.creature.getTypeAlignmentPart(mon)}</i></td></tr>
-			<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr><td colspan="6">
-				<table class="summary-noback relative">
-					<tr>
-						<th>Armor Class</th>
-						<th>Hit Points</th>
-						<th>Speed</th>
-						${isCrHidden ? "" : "<th>Challenge Rating</th>"}
-					</tr>
-					<tr>
-						<td>${Parser.acToFull(mon.ac)}</td>
-						<td>${Renderer.creature.getRenderedHp(mon.hp)}</td>
-						<td>${Parser.getSpeedString(mon)}</td>
-						${isCrHidden ? "" : `
-						<td>
-							${Parser.monCrToFull(mon.cr, {isMythic: !!mon.mythic})}
-							${opts.showScaler && Parser.isValidCr(mon.cr ? (mon.cr.cr || mon.cr) : null) ? `
-							<button title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
-								<span class="glyphicon glyphicon-signal"></span>
-							</button>
-							` : ""}
-							${opts.isScaled ? `
-							<button title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
-								<span class="glyphicon glyphicon-refresh"></span>
-							</button>
-							` : ""}
-						</td>
-						`}
-					</tr>
-				</table>
-			</td></tr>
-			<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr><td colspan="6">
-				<table class="summary stripe-even-table">
-					<tr>
-						<th class="col-2 text-center">STR</th>
-						<th class="col-2 text-center">DEX</th>
-						<th class="col-2 text-center">CON</th>
-						<th class="col-2 text-center">INT</th>
-						<th class="col-2 text-center">WIS</th>
-						<th class="col-2 text-center">CHA</th>
-					</tr>
-					<tr>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "str")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "dex")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "con")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "int")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "wis")}</td>
-						<td class="text-center">${Renderer.utils.getAbilityRoller(mon, "cha")}</td>
-					</tr>
-				</table>
-			</td></tr>
-			<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr><td colspan="6">
-				<div class="rd__compact-stat">
-					${mon.save ? `<p><b>Saving Throws</b> ${Renderer.creature.getSavesPart(mon)}</p>` : ""}
-					${mon.skill ? `<p><b>Skills</b> ${Renderer.creature.getSkillsString(renderer, mon)}</p>` : ""}
-					${mon.vulnerable ? `<p><b>Damage Vuln.</b> ${Parser.monImmResToFull(mon.vulnerable)}</p>` : ""}
-					${mon.resist ? `<p><b>Damage Res.</b> ${Parser.monImmResToFull(mon.resist)}</p>` : ""}
-					${mon.immune ? `<p><b>Damage Imm.</b> ${Parser.monImmResToFull(mon.immune)}</p>` : ""}
-					${mon.conditionImmune ? `<p><b>Condition Imm.</b> ${Parser.monCondImmToFull(mon.conditionImmune)}</p>` : ""}
-					${opts.isHideSenses ? "" : `<p><b>Senses</b> ${Renderer.creature.getSensesPart(mon)}</p>`}
-					${opts.isHideLanguages ? "" : `<p><b>Languages</b> ${Renderer.creature.getRenderedLanguages(mon.languages)}</p>`}
-				</div>
-			</td></tr>
-			${mon.trait || mon.spellcasting ? `<tr><td colspan="6"><div class="border"></div></td></tr>
-			<tr class="text compact"><td colspan="6">
-			${Renderer.creature.getOrderedTraits(mon, renderer).map(it => it.rendered || renderer.render(it, 2)).join("")}
-			</td></tr>` : ""}
-			${Renderer.creature.getCompactRenderedStringSection(mon, renderer, "Actions", "action", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(mon, renderer, "Bonus Actions", "bonus", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(mon, renderer, "Reactions", "reaction", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(mon, renderer, "Legendary Actions", "legendary", 2)}
-			${Renderer.creature.getCompactRenderedStringSection(mon, renderer, "Mythic Actions", "mythic", 2)}
-			${legGroup && legGroup.lairActions ? Renderer.creature.getCompactRenderedStringSection(legGroup, renderer, "Lair Actions", "lairActions", 1) : ""}
-			${legGroup && legGroup.regionalEffects ? Renderer.creature.getCompactRenderedStringSection(legGroup, renderer, "Regional Effects", "regionalEffects", 1) : ""}
-			${mon.variant || (mon.dragonCastingColor && !mon.spellcasting) ? `
-			<tr class="text compact"><td colspan="6">
-			${mon.variant ? mon.variant.map(it => it.rendered || renderer.render(it)).join("") : ""}
-			${mon.dragonCastingColor ? Renderer.creature.getDragonCasterVariant(renderer, mon) : ""}
-			${mon.footer ? renderer.render({entries: mon.footer}) : ""}
-			</td></tr>
-			` : ""}
-		`);
-
-		return renderStack.join("");
-	},
-
-	getRenderedHp: (hp, isPlainText) => {
-		function getMaxStr () {
-			const mHp = /^(\d+)d(\d+)([-+]\d+)?$/i.exec(hp.formula);
-			if (mHp) {
-				const num = Number(mHp[1]);
-				const faces = Number(mHp[2]);
-				const mod = mHp[3] ? Number(mHp[3]) : 0;
-				return `Maximum: ${(num * faces) + mod}`;
-			} else return "";
-		}
-
-		if (hp.special != null) return hp.special;
-		if (/^\d+d1$/.exec(hp.formula)) {
-			return hp.average;
-		} else {
-			const maxStr = getMaxStr(hp.formula);
-			if (isPlainText) return `${hp.average} (${hp.formula})`;
-			return `${maxStr ? `<span title="${maxStr}" class="help--subtle">` : ""}${hp.average}${maxStr ? "</span>" : ""} ${Renderer.get().render(`({@dice ${hp.formula}|${hp.formula}|Hit Points})`)}`;
-		}
-	},
-
-	getSpellcastingRenderedTraits: (mon, renderer) => {
-		const out = [];
-		mon.spellcasting.forEach(entry => {
-			entry.type = entry.type || "spellcasting";
-			const renderStack = [];
-			renderer.recursiveRender(entry, renderStack, {depth: 2});
-			out.push({name: entry.name, rendered: renderStack.join("")});
-		});
-		return out;
-	},
-
-	getOrderedTraits: (mon, renderer) => {
-		let trait = mon.trait ? MiscUtil.copy(mon.trait) : null;
-		if (mon.spellcasting) {
-			const spellTraits = Renderer.creature.getSpellcastingRenderedTraits(mon, renderer);
-			// weave spellcasting in with other traits
-			trait = trait ? trait.concat(spellTraits) : spellTraits;
-		}
-		if (trait) return trait.sort((a, b) => SortUtil.monTraitSort(a, b));
-	},
-
-	getSkillsString (renderer, mon) {
-		function makeSkillRoller (name, mod) {
-			return Renderer.get().render(`{@d20 ${mod}|${mod}|${name}}`);
-		}
-
-		function doSortMapJoinSkillKeys (obj, keys, joinWithOr) {
-			const toJoin = keys.sort(SortUtil.ascSort).map(s => `<span data-mon-skill="${s.toTitleCase()}|${obj[s]}">${renderer.render(`{@skill ${s.toTitleCase()}}`)} ${makeSkillRoller(s.toTitleCase(), obj[s])}</span>`);
-			return joinWithOr ? toJoin.joinConjunct(", ", " or ") : toJoin.join(", ")
-		}
-
-		const skills = doSortMapJoinSkillKeys(mon.skill, Object.keys(mon.skill).filter(k => k !== "other" && k !== "special"));
-		if (mon.skill.other || mon.skill.special) {
-			const others = mon.skill.other && mon.skill.other.map(it => {
-				if (it.oneOf) {
-					return `plus one of the following: ${doSortMapJoinSkillKeys(it.oneOf, Object.keys(it.oneOf), true)}`
-				}
-				throw new Error(`Unhandled monster "other" skill properties!`)
-			});
-			const special = mon.skill.special && Renderer.get().render(mon.skill.special);
-			return [skills, others, special].filter(Boolean).join(", ");
-		} else return skills;
-	},
-
-	getTokenUrl (mon) {
-		return mon.tokenUrl || UrlUtil.link(`${Renderer.get().baseMediaUrls["img"] || Renderer.get().baseUrl}img/${Parser.sourceJsonToAbv(mon.source)}/${Parser.nameToTokenName(mon.name)}.png`);
-	},
-
-	postProcessFluff (mon, fluff) {
-		const cpy = MiscUtil.copy(fluff);
-
-		// TODO is this good enough? Should additionally check for lair blocks which are not the last, and tag them with
-		//   "data": {"lairRegionals": true}, and insert the lair/regional text there if available (do the current "append" otherwise)
-		const thisGroup = DataUtil.creature.getMetaGroup(mon);
-		const handleGroupProp = (prop, name) => {
-			if (thisGroup && thisGroup[prop]) {
-				cpy.entries = cpy.entries || [];
-				cpy.entries.push({
-					type: "entries",
-					entries: [
-						{
-							type: "entries",
-							name,
-							entries: MiscUtil.copy(thisGroup[prop]),
-						},
-					],
-				});
-			}
-		};
-
-		handleGroupProp("lairActions", "Lair Actions");
-		handleGroupProp("regionalEffects", "Regional Effects");
-		handleGroupProp("mythicEncounter", `${mon.name} as a Mythic Encounter`);
-
-		return cpy;
-	},
-
-	getRenderedSenses (senses, isPlainText) {
-		if (typeof senses === "string") senses = [senses]; // handle legacy format
-		if (isPlainText) return senses.join(", ");
-		const senseStr = senses
-			.join(", ")
-			.replace(/(^| |\()(tremorsense|blindsight|truesight|darkvision)(\)| |$)/gi, (...m) => `${m[1]}{@sense ${m[2]}}${m[3]}`)
-			.replace(/(^| |\()(blind|blinded)(\)| |$)/gi, (...m) => `${m[1]}{@condition blinded||${m[2]}}${m[3]}`)
-		;
-		return Renderer.get().render(senseStr);
-	},
-
-	getRenderedLanguages (languages) {
-		if (typeof languages === "string") languages = [languages]; // handle legacy format
-		return languages ? languages.map(it => Renderer.get().render(it)).join(", ") : "\u2014";
-	},
-
-	initParsed (mon) {
-		mon._pTypes = mon._pTypes || Parser.monTypeToFullObj(mon.type); // store the parsed type
-		mon._pCr = mon._pCr || (mon.cr == null ? "\u2014" : (mon.cr.cr || mon.cr));
-		if (!mon._fCr) {
-			mon._fCr = [mon._pCr];
-			if (mon.cr) {
-				if (mon.cr.lair) mon._fCr.push(mon.cr.lair);
-				if (mon.cr.coven) mon._fCr.push(mon.cr.coven);
-			}
-		}
-	},
-
-	updateParsed (mon) {
-		delete mon._pTypes;
-		delete mon._pCr;
-		delete mon._fCr;
-		Renderer.creature.initParsed(mon);
-	},
-
-	pGetFluff (mon) {
-		return Renderer.utils.pGetFluff({
-			entity: mon,
-			pFnPostProcess: Renderer.creature.postProcessFluff.bind(null, mon),
-			fluffBaseUrl: `data/bestiary/`,
-			fluffProp: "monsterFluff",
-		});
-	},
 };
 
 Renderer.item = {
-	// avoid circular references by deciding a global link direction for specific <-> general
-	// default is general -> specific
-	LINK_SPECIFIC_TO_GENERIC_DIRECTION: 1,
-
-	_sortProperties (a, b) {
-		return SortUtil.ascSort(Renderer.item.propertyMap[a].name, Renderer.item.propertyMap[b].name)
-	},
-
-	_getPropertiesText (item) {
-		if (item.property) {
-			let renderedDmg2 = false;
-
-			const renderedProperties = item.property
-				.sort(Renderer.item._sortProperties)
-				.map(prop => {
-					const fullProp = Renderer.item.propertyMap[prop];
-
-					if (fullProp.template) {
-						const toRender = fullProp.template.replace(/{{([^}]+)}}/g, (...m) => {
-							// Special case for damage dice -- need to add @damage tags
-							if (m[1] === "item.dmg1") {
-								return Renderer.item._renderDamage(item.dmg1);
-							} else if (m[1] === "item.dmg2") {
-								renderedDmg2 = true;
-								return Renderer.item._renderDamage(item.dmg2);
-							}
-
-							const spl = m[1].split(".");
-							switch (spl[0]) {
-								case "prop_name":
-									return fullProp.name;
-								case "item": {
-									const path = spl.slice(1);
-									if (!path.length) return `{@i missing key path}`;
-									return MiscUtil.get(item, ...path) || "";
-								}
-								default:
-									return `{@i unknown template root: "${spl[0]}"}`;
-							}
-						});
-						return Renderer.get().render(toRender);
-					} else return fullProp.name;
-				});
-
-			if (!renderedDmg2 && item.dmg2) renderedProperties.unshift(`alt. ${Renderer.item._renderDamage(item.dmg2)}`);
-
-			return `${item.dmg1 && renderedProperties.length ? " - " : ""}${renderedProperties.join(", ")}`
-		} else {
-			const parts = [];
-			if (item.dmg2) parts.push(`alt. ${Renderer.item._renderDamage(item.dmg2)}`);
-			if (item.range) parts.push(`range ${item.range} ft.`);
-			return `${item.dmg1 && parts.length ? " - " : ""}${parts.join(", ")}`;
-		}
-	},
-
-	_renderDamage (dmg) {
-		if (!dmg) return "";
-		dmg = dmg.trim();
-		const mDice = /^{@dice ([^}]+)}$/i.exec(dmg)
-		if (mDice) return Renderer.get().render(`{@damage ${mDice[1]}}`);
-		const tagged = dmg.replace(RollerUtil.DICE_REGEX, (...m) => `{@damage ${m[1]}}`);
-		return Renderer.get().render(tagged);
-	},
-
-	getDamageAndPropertiesText: function (item) {
-		const damageParts = [];
-
-		if (item.dmg1) damageParts.push(Renderer.item._renderDamage(item.dmg1));
-
-		// armor
-		if (item.ac != null) {
-			const prefix = item.type === "S" ? "+" : "";
-			const suffix = item.type === "LA" ? " + Dex" : item.type === "MA" ? " + Dex (max 2)" : "";
-			damageParts.push(`AC ${prefix}${item.ac}${suffix}`);
-		}
-		if (item.acSpecial != null) damageParts.push(item.ac != null ? item.acSpecial : `AC ${item.acSpecial}`);
-
-		// mounts
-		if (item.speed != null) damageParts.push(`Speed: ${item.speed}`);
-		if (item.carryingCapacity) damageParts.push(`Carrying Capacity: ${item.carryingCapacity} lb.`);
-
-		// vehicles
-		if (item.vehSpeed || item.capCargo || item.capPassenger || item.crew || item.crewMin || item.crewMax || item.vehAc || item.vehHp || item.vehDmgThresh || item.travelCost || item.shippingCost) {
-			const vehPartUpper = item.vehSpeed ? `Speed: ${Parser.numberToVulgar(item.vehSpeed)} mph` : null;
-
-			const vehPartMiddle = item.capCargo || item.capPassenger ? `Carrying Capacity: ${[item.capCargo ? `${Parser.numberToFractional(item.capCargo)} ton${item.capCargo === 0 || item.capCargo > 1 ? "s" : ""} cargo` : null, item.capPassenger ? `${item.capPassenger} passenger${item.capPassenger === 1 ? "" : "s"}` : null].filter(Boolean).join(", ")}` : null;
-
-			const {travelCostFull, shippingCostFull} = Parser.itemVehicleCostsToFull(item);
-
-			// These may not be present in homebrew
-			const vehPartLower = [
-				item.crew ? `Crew ${item.crew}` : null,
-				item.crewMin && item.crewMax ? `Crew ${item.crewMin}-${item.crewMax}` : null,
-				item.vehAc ? `AC ${item.vehAc}` : null,
-				item.vehHp ? `HP ${item.vehHp}${item.vehDmgThresh ? `, Damage Threshold ${item.vehDmgThresh}` : ""}` : null,
-			].filter(Boolean).join(", ");
-
-			damageParts.push([
-				vehPartUpper,
-				vehPartMiddle,
-
-				// region ~~Dammit Mercer~~ Additional fields present in EGW
-				travelCostFull ? `Personal Travel Cost: ${travelCostFull} per mile per passenger` : null,
-				shippingCostFull ? `Shipping Cost: ${shippingCostFull} per 100 pounds per mile` : null,
-				// endregion
-
-				vehPartLower,
-			].filter(Boolean).join("<br>"));
-		}
-
-		const damage = damageParts.join(", ");
-		const damageType = item.dmgType ? Parser.dmgTypeToFull(item.dmgType) : "";
-		const propertiesTxt = Renderer.item._getPropertiesText(item);
-
-		return [damage, damageType, propertiesTxt];
-	},
-
-	getAttunementAndAttunementCatText (item, prop = "reqAttune") {
-		let attunement = null;
-		let attunementCat = "No";
-		if (item[prop] != null && item[prop] !== false) {
-			if (item[prop] === true) {
-				attunementCat = "Yes";
-				attunement = "(requires attunement)"
-			} else if (item[prop] === "optional") {
-				attunementCat = "Optional";
-				attunement = "(attunement optional)"
-			} else if (item[prop].toLowerCase().startsWith("by")) {
-				attunementCat = "By...";
-				attunement = `(requires attunement ${item[prop]})`;
-			} else {
-				attunementCat = "Yes"; // throw any weird ones in the "Yes" category (e.g. "outdoors at night")
-				attunement = `(requires attunement ${item[prop]})`;
-			}
-		}
-		return [attunement, attunementCat]
-	},
-
-	getHtmlAndTextTypes (item) {
-		const typeListHtml = [];
-		const typeListText = [];
-		let showingBase = false;
-		if (item.wondrous) {
-			typeListHtml.push(`wondrous item${item.tattoo ? ` (tattoo)` : ""}`);
-			typeListText.push("wondrous item");
-		}
-		if (item.tattoo) {
-			typeListText.push("tattoo");
-		}
-		if (item.staff) {
-			typeListHtml.push("staff");
-			typeListText.push("staff");
-		}
-		if (item.ammo) {
-			typeListHtml.push("ammunition");
-			typeListText.push("ammunition");
-		}
-		if (item.firearm) {
-			typeListHtml.push("firearm");
-			typeListText.push("firearm");
-		}
-		if (item.age) {
-			typeListHtml.push(item.age);
-			typeListText.push(item.age);
-		}
-		if (item.weaponCategory) {
-			typeListHtml.push(`${item.weaponCategory} weapon${item.baseItem ? ` (${Renderer.get().render(`{@item ${item.baseItem}}`)})` : ""}`);
-			typeListText.push(`${item.weaponCategory} weapon`);
-			showingBase = true;
-		}
-		if (item.staff && item.type !== "M") { // DMG p140: "Unless a staff's description says otherwise, a staff can be used as a quarterstaff."
-			typeListHtml.push("melee weapon");
-			typeListText.push("melee weapon");
-		}
-		if (item.type) {
-			const fullType = Renderer.item.getItemTypeName(item.type);
-
-			if (!showingBase && !!item.baseItem) typeListHtml.push(`${fullType} (${Renderer.get().render(`{@item ${item.baseItem}}`)})`);
-			else if (item.type === "S") typeListHtml.push(Renderer.get().render(`armor ({@item shield|phb})`));
-			else typeListHtml.push(fullType);
-
-			typeListText.push(fullType);
-		}
-		if (item.poison) {
-			typeListHtml.push(`poison${item.poisonTypes ? ` (${item.poisonTypes.joinConjunct(", ", " or ")})` : ""}`);
-			typeListText.push("poison");
-		}
-		return [typeListText, typeListHtml.join(", ")];
-	},
-
-	getRenderedEntries (item, isCompact) {
-		const renderer = Renderer.get();
-
-		const handlers = {
-			string: (str) => {
-				const stack = [];
-				let depth = 0;
-
-				const tgtLen = item.name.length;
-				const tgtName = item.name.toLowerCase();
-				const tgtLenPlural = item.name.length + 1;
-				const tgtNamePlural = `${tgtName}s`;
-
-				const len = str.length;
-				for (let i = 0; i < len; ++i) {
-					const c = str[i];
-
-					switch (c) {
-						case "{": {
-							if (str[i + 1] === "@") depth++;
-							stack.push(c);
-							break;
-						}
-						case "}": {
-							if (depth) depth--;
-							stack.push(c);
-							break;
-						}
-						default:
-							stack.push(c);
-							break;
-					}
-
-					if (!depth) {
-						if (stack.slice(-tgtLen).join("").toLowerCase() === tgtName) {
-							stack.splice(stack.length - tgtLen, tgtLen, `{@i ${stack.slice(-tgtLen).join("")}}`)
-						} else if (stack.slice(-tgtLenPlural).join("").toLowerCase() === tgtNamePlural) {
-							stack.splice(stack.length - tgtLenPlural, tgtLenPlural, `{@i ${stack.slice(-tgtLenPlural).join("")}}`)
-						}
-					}
-				}
-
-				return stack.join("");
-			},
-		};
-
-		const walkerKeyBlacklist = new Set(["caption", "type", "colLabels", "dataCreature", "dataSpell", "dataItem", "dataObject", "dataTrapHazard", "name"]);
-
-		const renderStack = [];
-		if (item._fullEntries || (item.entries && item.entries.length)) {
-			const entryList = MiscUtil.copy({type: "entries", entries: item._fullEntries || item.entries});
-			const procEntryList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk(entryList, handlers);
-			renderer.recursiveRender(procEntryList, renderStack, {depth: 1});
-		}
-
-		if (item._fullAdditionalEntries || item.additionalEntries) {
-			const additionEntriesList = MiscUtil.copy({
-				type: "entries",
-				entries: item._fullAdditionalEntries || item.additionalEntries,
-			});
-			const procAdditionEntriesList = MiscUtil.getWalker({keyBlacklist: walkerKeyBlacklist}).walk(additionEntriesList, handlers);
-			renderer.recursiveRender(procAdditionEntriesList, renderStack, {depth: 1});
-		}
-
-		if (!isCompact && item.lootTables) {
-			renderStack.push(`<div><span class="bold">Found On: </span>${item.lootTables.sort(SortUtil.ascSortLower).map(tbl => renderer.render(`{@table ${tbl}}`)).join(", ")}</div>`);
-		}
-
-		return renderStack.join("").trim();
-	},
-
 	getSubHead (item) {
 		const renderStack = [];
 		const renderer = Renderer.get()
@@ -6036,56 +4560,7 @@ Renderer.item = {
 			${Renderer.utils.getPageP(item)}`;
 	},
 
-	_hiddenRarity: new Set(["none", "unknown", "unknown (magic)", "varies"]),
-	doRenderRarity (rarity) {
-		return !Renderer.item._hiddenRarity.has(rarity);
-	},
-
 	_builtLists: {},
-	propertyMap: {},
-	typeMap: {},
-	_additionalEntriesMap: {},
-	_addProperty (p) {
-		if (Renderer.item.propertyMap[p.abbreviation]) return;
-		Renderer.item.propertyMap[p.abbreviation] = p.name ? MiscUtil.copy(p) : {
-			name: p.entries[0].name.toLowerCase(),
-			entries: p.entries,
-			template: p.template,
-		};
-	},
-	_addType (t) {
-		if (Renderer.item.typeMap[t.abbreviation]) return;
-		Renderer.item.typeMap[t.abbreviation] = t.name ? MiscUtil.copy(t) : {
-			name: t.entries[0].name.toLowerCase(),
-			entries: t.entries,
-		};
-	},
-	_addAdditionalEntries (e) {
-		if (Renderer.item._additionalEntriesMap[e.appliesTo]) return;
-		Renderer.item._additionalEntriesMap[e.appliesTo] = MiscUtil.copy(e.entries);
-	},
-	async _pAddBrewPropertiesAndTypes () {
-		const brew = await BrewUtil.pAddBrewData();
-		(brew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
-		(brew.itemType || []).forEach(t => Renderer.item._addType(t));
-	},
-	_addBasePropertiesAndTypes (baseItemData) {
-		Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({
-			abbreviation: abv,
-			name,
-		}));
-		// Convert the property and type list JSONs into look-ups, i.e. use the abbreviation as a JSON property name
-		baseItemData.itemType.forEach(t => {
-			// air/water vehicles share a type
-			if (t.abbreviation === "SHP") {
-				const cpy = MiscUtil.copy(t);
-				cpy.abbreviation = "AIR";
-				Renderer.item._addType(cpy);
-			}
-			Renderer.item._addType(t);
-		});
-		baseItemData.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
-	},
 
 	_lockBuildList: null,
 	async _pLockBuildList () {
@@ -6129,14 +4604,12 @@ Renderer.item = {
 			return cached;
 		}
 
-		// allows URLs to be overridden (used by roll20 script)
 		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items/items-crb.json`;
 		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items/items-base.json`;
 
 		const itemList = await Renderer.item._pGetAndProcItems(await DataUtil.loadJSON(itemUrl));
-		const baseItems = await Renderer.item._pGetAndProcBaseItems(await DataUtil.loadJSON(baseItemUrl));
+		const baseItems = (await DataUtil.loadJSON(baseItemUrl)).baseitem;
 		const allItems = [...itemList, ...baseItems];
-		Renderer.item._enhanceItems(allItems);
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
 		Renderer.item._unlockBuildList();
@@ -6181,546 +4654,8 @@ Renderer.item = {
 		return items
 	},
 
-	async _pGetAndProcBaseItems (baseItemData) {
-		Renderer.item._addBasePropertiesAndTypes(baseItemData);
-		await Renderer.item._pAddBrewPropertiesAndTypes();
-		return baseItemData.baseitem;
-	},
-
-	_getAndProcGenericVariants (variantData, isRespectBlacklist) {
-		variantData.variant.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
-		if (isRespectBlacklist) {
-			return [
-				variantData.variant.filter(it => !ExcludeUtil.isExcluded(it.name, "variant", it.source)),
-				variantData.linkedLootTables,
-			]
-		}
-		return [variantData.variant, variantData.linkedLootTables];
-	},
-
-	_initFullEntries (item) {
-		item._fullEntries = item._fullEntries || (item.entries ? MiscUtil.copy(item.entries) : []);
-	},
-
-	_initFullAdditionalEntries (item) {
-		item._fullAdditionalEntries = item._fullAdditionalEntries || (item.additionalEntries ? MiscUtil.copy(item.additionalEntries) : []);
-	},
-
-	/**
-	 * @param baseItems
-	 * @param genericVariants
-	 * @param [opts]
-	 * @param [opts.linkedLootTables]
-	 */
-	_createSpecificVariants (baseItems, genericVariants, opts) {
-		opts = opts || {};
-
-		const genericAndSpecificVariants = [];
-		baseItems.forEach((curBaseItem) => {
-			curBaseItem._category = "Basic";
-			if (curBaseItem.entries == null) curBaseItem.entries = [];
-
-			if (curBaseItem.packContents) return; // e.g. "Arrows (20)"
-
-			genericVariants.forEach((curGenericVariant) => {
-				if (!Renderer.item._createSpecificVariants_hasRequiredProperty(curBaseItem, curGenericVariant)) return;
-				if (Renderer.item._createSpecificVariants_hasExcludedProperty(curBaseItem, curGenericVariant)) return;
-
-				genericAndSpecificVariants.push(Renderer.item._createSpecificVariants_createSpecificVariant(curBaseItem, curGenericVariant, opts));
-			});
-		});
-		return genericAndSpecificVariants;
-	},
-
-	_createSpecificVariants_hasRequiredProperty (baseItem, genericVariant) {
-		return genericVariant.requires.some(req => Object.entries(req).every(([k, v]) => baseItem[k] === v));
-	},
-
-	_createSpecificVariants_hasExcludedProperty (baseItem, genericVariant) {
-		const curExcludes = genericVariant.excludes || {};
-		return !!Object.keys(curExcludes).find(key => {
-			if (curExcludes[key] instanceof Array) {
-				return (baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key].includes(it)) : curExcludes[key].includes(baseItem[key]));
-			}
-			return baseItem[key] instanceof Array ? baseItem[key].find(it => curExcludes[key] === it) : curExcludes[key] === baseItem[key];
-		});
-	},
-
-	/**
-	 * @param baseItem
-	 * @param genericVariant
-	 * @param [opts]
-	 * @param [opts.linkedLootTables]
-	 */
-	_createSpecificVariants_createSpecificVariant (baseItem, genericVariant, opts) {
-		const inherits = genericVariant.inherits;
-		const specificVariant = MiscUtil.copy(baseItem);
-		// Recent enhancements/entry cache
-		specificVariant._isEnhanced = false;
-		delete specificVariant._fullEntries;
-
-		if (baseItem.source !== SRC_CRB && baseItem.source !== SRC_APG) {
-			Renderer.item._initFullEntries(specificVariant);
-			specificVariant._fullEntries.unshift(`{@note The base item can be found in ${Parser.sourceJsonToFull(baseItem.source)}.}`);
-		}
-
-		specificVariant._baseName = baseItem.name;
-		specificVariant._baseSrd = baseItem.srd;
-		if (baseItem.source !== inherits.source) specificVariant._baseSource = baseItem.source;
-
-		// Magic items do not inherit the value of the non-magical item
-		delete specificVariant.value;
-
-		// Magic variants apply their own SRD info; page info
-		delete specificVariant.srd;
-		delete specificVariant.page;
-
-		specificVariant._category = "Specific Variant";
-		Object.keys(inherits).forEach((inheritedProperty) => {
-			switch (inheritedProperty) {
-				case "namePrefix":
-					specificVariant.name = `${inherits.namePrefix}${specificVariant.name}`;
-					break;
-				case "nameSuffix":
-					specificVariant.name = `${specificVariant.name}${inherits.nameSuffix}`;
-					break;
-				case "entries": {
-					Renderer.item._initFullEntries(specificVariant);
-
-					const appliedPropertyEntries = Renderer.applyAllProperties(inherits.entries, Renderer.item._getInjectableProps(baseItem, inherits));
-					appliedPropertyEntries.forEach((ent, i) => specificVariant._fullEntries.splice(i, 0, ent));
-					break;
-				}
-				case "nameRemove": {
-					specificVariant.name = specificVariant.name.replace(new RegExp(inherits[inheritedProperty], "g"), "")
-
-					break;
-				}
-				case "weightExpression":
-				case "valueExpression": {
-					const exp = Renderer.item._createSpecificVariants_evaluateExpression(baseItem, specificVariant, inherits, inheritedProperty);
-
-					const result = Renderer.dice.parseRandomise2(exp);
-					if (result != null) {
-						switch (inheritedProperty) {
-							case "weightExpression":
-								specificVariant.weight = result;
-								break;
-							case "valueExpression":
-								specificVariant.value = result;
-								break;
-						}
-					}
-
-					break;
-				}
-				case "barding": {
-					specificVariant.bardingType = baseItem.type;
-					break;
-				}
-				default:
-					specificVariant[inheritedProperty] = inherits[inheritedProperty];
-			}
-		});
-
-		// track the specific variant on the parent generic, to later render as part of the stats
-		// TAG ITEM_VARIANTS
-		if (~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) {
-			genericVariant.variants = genericVariant.variants || [];
-			genericVariant.variants.push({base: baseItem, specificVariant});
-		}
-
-		// add reverse link to get generic from specific--primarily used for indexing
-		if (!~Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION) specificVariant.genericVariant = genericVariant;
-
-		// add linked loot tables
-		if (opts.linkedLootTables && opts.linkedLootTables[specificVariant.source] && opts.linkedLootTables[specificVariant.source][specificVariant.name]) {
-			(specificVariant.lootTables = specificVariant.lootTables || []).push(...opts.linkedLootTables[specificVariant.source][specificVariant.name])
-		}
-
-		return specificVariant;
-	},
-
-	_createSpecificVariants_evaluateExpression (baseItem, specificVariant, inherits, inheritedProperty) {
-		return inherits[inheritedProperty].replace(/\[\[([^\]]+)]]/g, (...m) => {
-			const propPath = m[1].split(".");
-			return propPath[0] === "item"
-				? MiscUtil.get(specificVariant, ...propPath.slice(1))
-				: propPath[0] === "baseItem"
-					? MiscUtil.get(baseItem, ...propPath.slice(1))
-					: MiscUtil.get(specificVariant, ...propPath);
-		});
-	},
-
-	_enhanceItems (allItems) {
-		allItems.forEach((item) => Renderer.item.enhanceItem(item));
-		return allItems;
-	},
-
-	/**
-	 * @param genericVariants
-	 * @param opts
-	 * @param [opts.baseItemsUrl]
-	 * @param [opts.additionalBaseItems]
-	 * @param [opts.baseItems]
-	 * @param [opts.isSpecificVariantsOnly]
-	 */
-	async pGetGenericAndSpecificVariants (genericVariants, opts) {
-		opts = opts || {};
-
-		let baseItems;
-		if (opts.baseItems) {
-			baseItems = opts.baseItems;
-		} else {
-			opts.baseItemsUrl = opts.baseItemsUrl || `${Renderer.get().baseUrl}data/items/items-base.json`;
-			const baseItemData = await DataUtil.loadJSON(opts.baseItemsUrl);
-			Renderer.item._addBasePropertiesAndTypes(baseItemData);
-			baseItems = [...baseItemData.baseitem, ...(opts.additionalBaseItems || [])];
-		}
-
-		await Renderer.item._pAddBrewPropertiesAndTypes();
-		genericVariants.forEach(Renderer.item._genericVariants_addInheritedPropertiesToSelf);
-		const specificVariants = Renderer.item._createSpecificVariants(baseItems, genericVariants);
-		const outSpecificVariants = Renderer.item._enhanceItems(specificVariants);
-
-		if (opts.isSpecificVariantsOnly) return outSpecificVariants;
-
-		const outGenericVariants = Renderer.item._enhanceItems(genericVariants);
-		return [...outGenericVariants, ...outSpecificVariants];
-	},
-
-	_getInjectableProps (baseItem, inherits) {
-		return {
-			baseName: baseItem.name,
-			dmgType: baseItem.dmgType ? Parser.dmgTypeToFull(baseItem.dmgType) : null,
-			bonusAc: inherits.bonusAc,
-			bonusWeapon: inherits.bonusWeapon,
-			bonusWeaponAttack: inherits.bonusWeaponAttack,
-			bonusWeaponDamage: inherits.bonusWeaponDamage,
-			bonusSpellAttack: inherits.bonusSpellAttack,
-			bonusSavingThrow: inherits.bonusSavingThrow,
-		}
-	},
-
-	_INHERITED_PROPS_BLACKLIST: new Set([
-		"entries", // Entries have specific merging
-		"namePrefix", // Name prefix/suffix are meaningless
-		"nameSuffix",
-	]),
-	_genericVariants_addInheritedPropertiesToSelf (genericVariant) {
-		if (genericVariant._isInherited) return;
-		genericVariant._isInherited = true;
-
-		for (const prop in genericVariant.inherits) {
-			if (Renderer.item._INHERITED_PROPS_BLACKLIST.has(prop)) continue;
-
-			const val = genericVariant.inherits[prop];
-
-			if (val == null) delete genericVariant[prop];
-			else if (genericVariant[prop]) {
-				if (genericVariant[prop] instanceof Array && val instanceof Array) genericVariant[prop] = MiscUtil.copy(genericVariant[prop]).concat(val);
-				else genericVariant[prop] = val;
-			} else genericVariant[prop] = genericVariant.inherits[prop];
-		}
-
-		if (!genericVariant.entries && genericVariant.inherits.entries) {
-			genericVariant.entries = MiscUtil.copy(Renderer.applyAllProperties(genericVariant.inherits.entries, genericVariant.inherits));
-		}
-		if (genericVariant.requires.armor) genericVariant.armor = genericVariant.requires.armor;
-	},
-
-	getItemTypeName (t) {
-		const fullType = Renderer.item.typeMap[t];
-		if (!fullType) throw new Error(`Item type ${t} not found. You probably meant to load the property/type reference first; see \`Renderer.item.populatePropertyAndTypeReference()\`.`);
-		return fullType.name || t;
-	},
-
-	enhanceItem (item) {
-		return;
-		if (item._isEnhanced) return;
-		item._isEnhanced = true;
-		if (item.noDisplay) return;
-		if (item.type === "GV") item._category = "Generic Variant";
-		if (item._category == null) item._category = "Other";
-		if (item.entries == null) item.entries = [];
-		if (item.type && Renderer.item.typeMap[item.type] && Renderer.item.typeMap[item.type].entries) {
-			Renderer.item._initFullEntries(item);
-			Renderer.item.typeMap[item.type].entries.forEach(e => item._fullEntries.push(e));
-		}
-		if (item.property) {
-			item.property.forEach(p => {
-				if (!Renderer.item.propertyMap[p]) throw new Error(`Item property ${p} not found. You probably meant to load the property/type reference first; see \`Renderer.item.populatePropertyAndTypeReference()\`.`);
-				if (Renderer.item.propertyMap[p].entries) {
-					Renderer.item._initFullEntries(item);
-					Renderer.item.propertyMap[p].entries.forEach(e => item._fullEntries.push(e));
-				}
-			});
-		}
-		// The following could be encoded in JSON, but they depend on more than one JSON property; maybe fix if really bored later
-		if (item.type === "LA" || item.type === "MA" || item.type === "HA") {
-			if (item.resist) {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push(`You have resistance to ${item.resist} damage while you wear this armor.`);
-			}
-			if (item.stealth) {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push("The wearer has disadvantage on Dexterity ({@skill Stealth}) checks.");
-			}
-			if (item.type === "HA" && item.strength) {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push(`If the wearer has a Strength score lower than ${item.strength}, their speed is reduced by 10 feet.`);
-			}
-		} else if (item.resist) {
-			if (item.type === "P") {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push(`When you drink this potion, you gain resistance to ${item.resist} damage for 1 hour.`);
-			}
-			if (item.type === "RG") {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push(`You have resistance to ${item.resist} damage while wearing this ring.`);
-			}
-			if (!item.type && item.wondrous && item.tattoo) {
-				Renderer.item._initFullEntries(item);
-				item._fullEntries.push(
-					`Produced by a special needle, this magic tattoo features designs that emphasize one color (${item.color}).`,
-					{
-						type: "entries",
-						name: "Tattoo Attunement",
-						entries: [
-							"To attune to this item, you hold the needle to your skin where you want the tattoo to appear, pressing the needle there throughout the attunement process. When the attunement is complete, the needle turns into the ink that becomes the tattoo, which appears on the skin.",
-							"If your attunement to the tattoo ends, the tattoo vanishes, and the needle reappears in your space.",
-						],
-					},
-					{
-						type: "entries",
-						name: "Damage Resistance",
-						entries: [
-							`While the tattoo is on your skin, you have resistance to ${item.resist} damage`,
-						],
-					},
-					{
-						type: "entries",
-						name: "Damage Absorption",
-						entries: [
-							`When you take ${item.resist} damage, you can use your reaction to gain immunity against that instance of the damage, and you regain a number of hit points equal to half the damage you would have taken. Once this reaction is used, it can't be used again until the next dawn.`,
-						],
-					},
-				);
-			}
-		}
-		if (item.type === "SCF") {
-			if (item._isItemGroup) {
-				if (item.scfType === "arcane" && item.source !== SRC_ERLW) {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("An arcane focus is a special item\u2014an orb, a crystal, a rod, a specially constructed staff, a wand-like length of wood, or some similar item\u2014designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
-				}
-				if (item.scfType === "druid") {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("A druidic focus might be a sprig of mistletoe or holly, a wand or scepter made of yew or another special wood, a staff drawn whole out of a living tree, or a totem object incorporating feathers, fur, bones, and teeth from sacred animals. A druid can use such an object as a spellcasting focus.");
-				}
-				if (item.scfType === "holy") {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("A holy symbol is a representation of a god or pantheon. It might be an amulet depicting a symbol representing a deity, the same symbol carefully engraved or inlaid as an emblem on a shield, or a tiny box holding a fragment of a sacred relic. A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
-				}
-			} else {
-				if (item.scfType === "arcane") {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.");
-				}
-				if (item.scfType === "druid") {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("A druid can use this object as a spellcasting focus.");
-				}
-				if (item.scfType === "holy") {
-					Renderer.item._initFullEntries(item);
-					item._fullEntries.push("A holy symbol is a representation of a god or pantheon.");
-					item._fullEntries.push("A cleric or paladin can use a holy symbol as a spellcasting focus. To use the symbol in this way, the caster must hold it in hand, wear it visibly, or bear it on a shield.");
-				}
-			}
-		}
-		// add additional entries based on type (e.g. XGE variants)
-		if (item.type === "T" || item.type === "AT" || item.type === "INS" || item.type === "GS") { // tools, artisan's tools, instruments, gaming sets
-			Renderer.item._initFullAdditionalEntries(item);
-			item._fullAdditionalEntries.push({type: "hr"}, `{@note See the {@variantrule Tool Proficiencies|XGE} entry for more information.}`);
-		}
-
-		// Add additional sources for all instruments and gaming sets
-		if (item.type === "INS" || item.type === "GS") item.additionalSources = item.additionalSources || [];
-		if (item.type === "INS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 83)) {
-				item.additionalSources.push({
-					"source": "XGE",
-					"page": 83,
-				});
-			}
-		} else if (item.type === "GS") {
-			if (!item.additionalSources.find(it => it.source === "XGE" && it.page === 81)) {
-				item.additionalSources.push({
-					"source": "XGE",
-					"page": 81,
-				});
-			}
-		}
-
-		if (item.type && Renderer.item._additionalEntriesMap[item.type]) {
-			Renderer.item._initFullAdditionalEntries(item);
-			const additional = Renderer.item._additionalEntriesMap[item.type];
-			item._fullAdditionalEntries.push({type: "entries", entries: additional});
-		}
-
-		// bake in types
-		const [typeListText, typeHtml] = Renderer.item.getHtmlAndTextTypes(item);
-		item._typeListText = typeListText;
-		item._typeHtml = typeHtml;
-
-		// bake in attunement
-		const [attune, attuneCat] = Renderer.item.getAttunementAndAttunementCatText(item);
-		item._attunement = attune;
-		item._attunementCategory = attuneCat;
-
-		if (item.reqAttuneAlt) {
-			const [attuneAlt, attuneCatAlt] = Renderer.item.getAttunementAndAttunementCatText(item, "reqAttuneAlt");
-			item._attunementCategory = [attuneCat, attuneCatAlt];
-		}
-
-		// handle item groups
-		if (item._isItemGroup) {
-			Renderer.item._initFullEntries(item);
-			item._fullEntries.push(
-				"Multiple variations of this item exist, as listed below:",
-				{
-					type: "list",
-					items: item.items.map(it => typeof it === "string" ? `{@item ${it}}` : `{@item ${it.name}|${it.source}}`),
-				},
-			);
-		}
-
-		// region Add base items list
-		// item.variants was added during generic variant creation
-		// TAG ITEM_VARIANTS
-		if (item.variants && item.variants.length) {
-			Renderer.item._initFullEntries(item);
-			item._fullEntries.push({
-				type: "entries",
-				name: "Base items",
-				entries: [
-					"This item variant can be applied to the following base items:",
-					{
-						type: "list",
-						items: item.variants.map(({base, specificVariant}) => {
-							return `{@item ${base.name}|${base.source}} ({@item ${specificVariant.name}|${specificVariant.source}})`
-						}),
-					},
-				],
-			});
-		}
-		// endregion
-	},
-
-	unenhanceItem (item) {
-		if (!item._isEnhanced) return;
-		delete item._isEnhanced;
-		delete item._fullEntries;
-	},
-
 	async getItemsFromHomebrew (homebrew) {
-		(homebrew.itemProperty || []).forEach(p => Renderer.item._addProperty(p));
-		(homebrew.itemType || []).forEach(t => Renderer.item._addType(t));
-		let items = [...(homebrew.baseitem || []), ...(homebrew.item || [])];
-		Renderer.item._enhanceItems(items);
-
-		let isReEnhanceVariants = false;
-
-		// Get specific variants for brew base items, using official generic variants
-		if (homebrew.baseitem && homebrew.baseitem.length) {
-			isReEnhanceVariants = true;
-
-			const variants = await Renderer.item.pGetGenericAndSpecificVariants(
-				Renderer.item._builtLists["genericVariants"],
-				{baseItems: homebrew.baseitem || [], isSpecificVariantsOnly: true},
-			);
-			items = [...items, ...variants];
-		}
-
-		// Get specific and generic variants for official and brew base items, using brew generic variants
-		if (homebrew.variant && homebrew.variant.length) {
-			isReEnhanceVariants = true;
-
-			const variants = await Renderer.item.pGetGenericAndSpecificVariants(
-				homebrew.variant,
-				{additionalBaseItems: homebrew.baseitem || []},
-			);
-			items = [...items, ...variants];
-		}
-
-		// Regenerate the full entries for the generic variants, as there may be more specific variants to add to their
-		//   specific variant lists.
-		if (isReEnhanceVariants && Renderer.item._builtLists["genericVariants"]) {
-			Renderer.item._builtLists["genericVariants"].forEach(item => {
-				item.variants.sort((a, b) => SortUtil.ascSortLower(a.base.name, b.base.name) || SortUtil.ascSortLower(a.base.source, b.base.source));
-				Renderer.item.unenhanceItem(item);
-				Renderer.item.enhanceItem(item);
-			});
-		}
-
-		return items;
-	},
-
-	// flip e.g. "longsword +1" to "+1 longsword"
-	modifierPostToPre (item) {
-		const m = /^(.*)(?:,)? (\+\d+)$/.exec(item.name);
-		if (m) return Object.assign(MiscUtil.copy(item), {name: `${m[2]} ${m[1]}`});
-		else return null
-	},
-
-	_isRefPopulated: false,
-	populatePropertyAndTypeReference: () => {
-		if (Renderer.item._isRefPopulated) return Promise.resolve();
-		return new Promise((resolve, reject) => {
-			DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/items-base.json`)
-				.then(data => {
-					if (Renderer.item._isRefPopulated) {
-						resolve();
-					} else {
-						try {
-							Object.entries(Parser.ITEM_TYPE_JSON_TO_ABV).forEach(([abv, name]) => Renderer.item._addType({
-								abbreviation: abv,
-								name,
-							}));
-							data.itemProperty.forEach(p => Renderer.item._addProperty(p));
-							data.itemType.forEach(t => Renderer.item._addType(t));
-							data.itemTypeAdditionalEntries.forEach(e => Renderer.item._addAdditionalEntries(e));
-							Renderer.item._pAddBrewPropertiesAndTypes()
-								.then(() => {
-									Renderer.item._isRefPopulated = true;
-									resolve();
-								});
-						} catch (e) {
-							reject(e);
-						}
-					}
-				});
-		});
-	},
-
-	// fetch every possible indexable item from official data
-	async getAllIndexableItems (rawVariants, rawBaseItems) {
-		Renderer.item.LINK_SPECIFIC_TO_GENERIC_DIRECTION = -1;
-
-		const basicItems = await Renderer.item._pGetAndProcBaseItems(rawBaseItems);
-		const [genericVariants, linkedLootTables] = await Renderer.item._getAndProcGenericVariants(rawVariants);
-		const specificVariants = Renderer.item._createSpecificVariants(basicItems, genericVariants, {linkedLootTables});
-
-		const revNames = [];
-		[...genericVariants, ...specificVariants].forEach(item => {
-			if (item.variants) delete item.variants; // prevent circular references
-			const revName = Renderer.item.modifierPostToPre(MiscUtil.copy(item));
-			if (revName) revNames.push(revName);
-		});
-
-		specificVariants.push(...revNames);
-
-		return specificVariants;
+		return [...(homebrew.baseitem || []), ...(homebrew.item || [])];
 	},
 
 	pGetFluff (item) {
@@ -6781,14 +4716,12 @@ Renderer.rule = {
 
 Renderer.variantrule = {
 	getCompactRenderedString (rule) {
-		const cpy = MiscUtil.copy(rule);
-		delete cpy.name;
+		const textStack = [];
+		Renderer.get().setFirstSection(true).resetHeaderIndex().recursiveRender(rule.entries, textStack);
 		return `
-			${Renderer.utils.getExcludedTr(rule, "variantrule", UrlUtil.PG_VARIANTRULES)}
-			${Renderer.utils.getNameTr(rule, {page: UrlUtil.PG_VARIANTRULES})}
-			<tr><td colspan="6">
-			${Renderer.get().setFirstSection(true).render(cpy)}
-			</td></tr>
+			${Renderer.utils.getExcludedDiv(rule, "variantrule")}
+			${textStack.join("")}
+			${Renderer.utils.getPageP(rule)}
 		`;
 	},
 };
@@ -6878,22 +4811,10 @@ Renderer.ability = {
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
 	},
-	getQuickRules (it) {
-		let renderStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name: it.name, entries: it.info}, renderStack, {depth: 1})
-		return `
-		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
-		${renderStack.join("")}
-		${Renderer.utils.getPageP(it)}`
-	},
 };
 
 Renderer.language = {
 	getCompactRenderedString (it) {
-		return Renderer.language.getRenderedString(it);
-	},
-
-	getRenderedString (it) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true);
 		const allEntries = [];
@@ -7118,10 +5039,10 @@ Renderer.hover = {
 		"curse": UrlUtil.PG_AFFLICTIONS,
 		"itemcurse": UrlUtil.PG_AFFLICTIONS,
 		"background": UrlUtil.PG_BACKGROUNDS,
-		"race": UrlUtil.PG_ANCESTRIES,
-		"optfeature": UrlUtil.PG_COMPANIONS_FAMILIARS,
+		"ancestry": UrlUtil.PG_ANCESTRIES,
+		"companion": UrlUtil.PG_COMPANIONS_FAMILIARS,
+		"familiar": UrlUtil.PG_COMPANIONS_FAMILIARS,
 		"feat": UrlUtil.PG_FEATS,
-		"trap": UrlUtil.PG_HAZARDS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
 		"variantrule": UrlUtil.PG_VARIANTRULES,
@@ -7418,14 +5339,10 @@ Renderer.hover = {
 	},
 
 	// (Baked into render strings)
-	handlePredefinedMouseLeave (evt, ele) {
-		return Renderer.hover.handleLinkMouseLeave(evt, ele)
-	},
+	handlePredefinedMouseLeave (evt, ele) { return Renderer.hover.handleLinkMouseLeave(evt, ele) },
 
 	// (Baked into render strings)
-	handlePredefinedMouseMove (evt, ele) {
-		return Renderer.hover.handleLinkMouseMove(evt, ele)
-	},
+	handlePredefinedMouseMove (evt, ele) { return Renderer.hover.handleLinkMouseMove(evt, ele) },
 
 	getWindowPositionFromEvent (evt) {
 		const ele = evt.target;
@@ -7561,7 +5478,6 @@ Renderer.hover = {
 		};
 
 		let drag = {};
-
 		function handleDragMousedown (evt, type) {
 			if (evt.which === 0 || evt.which === 1) evt.preventDefault();
 			out.zIndex = Renderer.hover._getNextZIndex(hoverId);
@@ -7701,34 +5617,14 @@ Renderer.hover = {
 			})
 			.on(mouseMoveId, (evt) => {
 				switch (drag.type) {
-					case 1:
-						handleNorthDrag(evt);
-						handleEastDrag(evt);
-						break;
-					case 2:
-						handleEastDrag(evt);
-						break;
-					case 3:
-						handleSouthDrag(evt);
-						handleEastDrag(evt);
-						break;
-					case 4:
-						handleSouthDrag(evt);
-						break;
-					case 5:
-						handleSouthDrag(evt);
-						handleWestDrag(evt);
-						break;
-					case 6:
-						handleWestDrag(evt);
-						break;
-					case 7:
-						handleNorthDrag(evt);
-						handleWestDrag(evt);
-						break;
-					case 8:
-						handleNorthDrag(evt);
-						break;
+					case 1: handleNorthDrag(evt); handleEastDrag(evt); break;
+					case 2: handleEastDrag(evt); break;
+					case 3: handleSouthDrag(evt); handleEastDrag(evt); break;
+					case 4: handleSouthDrag(evt); break;
+					case 5: handleSouthDrag(evt); handleWestDrag(evt); break;
+					case 6: handleWestDrag(evt); break;
+					case 7: handleNorthDrag(evt); handleWestDrag(evt); break;
+					case 8: handleNorthDrag(evt); break;
 					case 9: {
 						const diffX = drag.startX - EventUtil.getClientX(evt);
 						const diffY = drag.startY - EventUtil.getClientY(evt);
@@ -7783,10 +5679,7 @@ Renderer.hover = {
 				.on("click", async evt => {
 					evt.stopPropagation();
 
-					const dimensions = opts.fnGetPopoutSize ? opts.fnGetPopoutSize() : {
-						width: 600,
-						height: $content.height(),
-					};
+					const dimensions = opts.fnGetPopoutSize ? opts.fnGetPopoutSize() : {width: 600, height: $content.height()};
 					const win = open(
 						"",
 						opts.title || "",
@@ -8944,18 +6837,6 @@ Renderer.getNames = function (nameStack, entry, opts) {
 	}
 };
 
-Renderer.getNumberedNames = function (entry) {
-	const renderer = new Renderer().setTrackTitles(true);
-	renderer.render(entry);
-	const titles = renderer.getTrackedTitles();
-	const out = {};
-	Object.entries(titles).forEach(([k, v]) => {
-		v = Renderer.stripTags(v);
-		out[v] = Number(k);
-	});
-	return out;
-};
-
 // dig down until we find a name, as feature names can be nested
 Renderer.findName = function (entry) {
 	function search (it) {
@@ -9027,8 +6908,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@d20":
 					case "@damage":
 					case "@dice":
-					case "@hit":
-					case "@recharge": {
+					case "@hit": {
 						const [rollText, displayText] = Renderer.splitTagByPipe(text);
 						switch (tag) {
 							case "@damage":
@@ -9045,13 +6925,6 @@ Renderer._stripTagLayer = function (str) {
 									return `${n >= 0 ? "+" : ""}${n}`;
 								})();
 							}
-							case "@recharge": {
-								const asNum = Number(rollText || 6);
-								if (isNaN(asNum)) {
-									throw new Error(`Could not parse "${rollText}" as a number!`)
-								}
-								return `(Recharge ${asNum}${asNum < 6 ? `\u20136` : ""})`;
-							}
 							case "@chance": {
 								return displayText || `${rollText} percent`;
 							}
@@ -9059,15 +6932,6 @@ Renderer._stripTagLayer = function (str) {
 						throw new Error(`Unhandled tag: ${tag}`);
 					}
 
-					case "@hitYourSpellAttack":
-						return "your spell attack modifier";
-
-					case "@comic":
-					case "@comicH1":
-					case "@comicH2":
-					case "@comicH3":
-					case "@comicH4":
-					case "@comicNote":
 					case "@note":
 					case "@sense":
 					case "@skill": {
@@ -9075,7 +6939,7 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@Pf2eTools":
-					case "@Pf2eTools":
+					case "@pf2etools":
 					case "@adventure":
 					case "@book":
 					case "@filter":

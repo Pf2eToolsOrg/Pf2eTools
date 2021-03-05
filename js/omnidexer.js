@@ -698,18 +698,6 @@ class IndexableFileTables extends IndexableFile {
 	}
 }
 
-class IndexableFileTableGroups extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_TABLE_GROUP,
-			file: "generated/gendata-tables.json",
-			listProp: "tableGroup",
-			baseUrl: "tables.html",
-			isHover: true,
-		});
-	}
-}
-
 class IndexableFileActions extends IndexableFile {
 	constructor () {
 		super({
