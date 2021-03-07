@@ -66,17 +66,11 @@ class PageFilterItems extends PageFilter {
 		this._categoryFilter = new Filter({
 			header: "Category",
 		});
-		this._generalTrtFilter = new Filter({header: "General"});
-		this._weaponTrtFilter = new Filter({header: "Weapon"});
-		this._schoolTrtFilter = new Filter({header: "Magic Schools"});
-		this._rarityTrtFilter = new Filter({
-			header: "Rarity",
-			items: [...Parser.TRAITS_RARITY],
-			itemSortFn: null,
-		});
-		this._traitFilter = new MultiFilter({
+		this._traitFilter = new TraitsFilter({
 			header: "Traits",
-			filters: [this._rarityTrtFilter, this._weaponTrtFilter, this._schoolTrtFilter, this._generalTrtFilter],
+			discardCategories: {
+				"Equipment": true,
+			},
 		});
 		this._priceFilter = new RangeFilter({
 			header: "Price",
@@ -126,12 +120,7 @@ class PageFilterItems extends PageFilter {
 		item._fSchoolTraits = [];
 		item._fRarity = "Common";
 		item._fGeneralTraits = [];
-		for (let trait of item.traits) {
-			if (Parser.TRAITS_WEAPON.concat(Parser.TRAITS_ARMOR).includes(trait)) item._fWeaponTraits.push(trait);
-			else if (Parser.TRAITS_SCHOOL.includes(trait)) item._fSchoolTraits.push(trait);
-			else if (Parser.TRAITS_RARITY.includes(trait)) item._fRarity = trait;
-			else item._fGeneralTraits.push(trait);
-		}
+		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
 		for (let entry of item.entries) {
 			if (typeof entry === "object") {
 				if (entry.type === "activation") item._fMisc.push("Activatable");
@@ -155,9 +144,7 @@ class PageFilterItems extends PageFilter {
 		this._sourceFilter.addItem(item.source);
 		this._levelFilter.addItem(Math.floor(item._fLvl));
 		this._categoryFilter.addItem(item.category);
-		this._weaponTrtFilter.addItem(item._fWeaponTraits);
-		this._schoolTrtFilter.addItem(item._fSchoolTraits);
-		this._generalTrtFilter.addItem(item._fGeneralTraits);
+		this._traitFilter.addItem(item._fTraits)
 		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
 		if (item.shield_stats != null) this._hpFilter.addItem(item.shield_stats.HP);
@@ -190,12 +177,7 @@ class PageFilterItems extends PageFilter {
 			it.source,
 			it._fLvl,
 			it.category,
-			[
-				it._fRarity,
-				it._fWeaponTraits,
-				it._fSchoolTraits,
-				it._fGeneralTraits,
-			],
+			it._fTraits,
 			it._fPrice,
 			it._fType,
 			it._fMisc,

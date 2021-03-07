@@ -124,5 +124,9 @@ class HazardsPage extends ListPage {
 	}
 }
 
-const trapsHazardsPage = new HazardsPage();
-window.addEventListener("load", () => trapsHazardsPage.pOnLoad());
+let trapsHazardsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	trapsHazardsPage = new HazardsPage()
+	trapsHazardsPage.pOnLoad()
+});

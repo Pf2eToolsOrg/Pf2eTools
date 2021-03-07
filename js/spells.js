@@ -470,5 +470,9 @@ async function pHandleUnknownHash (link, sub) {
 	}
 }
 
-const spellsPage = new SpellsPage();
-window.addEventListener("load", () => spellsPage.pOnLoad());
+let spellsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	spellsPage = new SpellsPage();
+	spellsPage.pOnLoad()
+});

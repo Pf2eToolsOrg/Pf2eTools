@@ -105,5 +105,9 @@ class TraitsPage extends ListPage {
 	}
 }
 
-const traitsPage = new TraitsPage();
-window.addEventListener("load", () => traitsPage.pOnLoad());
+let traitsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	traitsPage = new TraitsPage();
+	traitsPage.pOnLoad()
+});

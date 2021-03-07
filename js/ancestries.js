@@ -1121,5 +1121,9 @@ AncestriesPage._DEFAULT_STATE = {
 	isShowFeats: true,
 };
 
-const ancestriesPage = new AncestriesPage()
-window.addEventListener("load", () => ancestriesPage.pOnLoad());
+let ancestriesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	ancestriesPage = new AncestriesPage();
+	ancestriesPage.pOnLoad()
+});

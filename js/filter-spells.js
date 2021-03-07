@@ -25,7 +25,6 @@ class PageFilterSpells extends PageFilter {
 		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
 			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
 	}
-
 	// endregion
 
 	constructor () {
@@ -64,19 +63,11 @@ class PageFilterSpells extends PageFilter {
 			header: "Saving Throw",
 			items: ["Basic", "Fortitude", "Reflex", "Will"],
 		});
-		this._generalTrtFilter = new Filter({header: "General"});
-		this._alignmentTrtFilter = new Filter({header: "Alignment"});
-		this._elementalTrtFilter = new Filter({header: "Elemental"});
-		this._energyTrtFilter = new Filter({header: "Energy"});
-		this._rarityTrtFilter = new Filter({
-			header: "Rarity",
-			items: [...Parser.TRAITS_RARITY],
-			itemSortFn: null,
-		});
-		this._sensesTrtFilter = new Filter({header: "Senses"});
-		this._traitFilter = new MultiFilter({
-			header: "Traits",
-			filters: [this._rarityTrtFilter, this._alignmentTrtFilter, this._elementalTrtFilter, this._energyTrtFilter, this._sensesTrtFilter, this._generalTrtFilter],
+		this._traitFilter = new TraitsFilter({header: "Traits",
+			discardCategories: {
+				Class: true,
+				"Schools & Traditions": true,
+			},
 		});
 		this._schoolFilter = new Filter({
 			header: "School",
@@ -130,13 +121,8 @@ class PageFilterSpells extends PageFilter {
 		// used for filtering
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
-		spell._fClasses = spell.traits.filter(t => Parser.TRAITS_CLASS.includes(t)) || [];
-		spell._fgeneralTrts = spell.traits.filter(t => Parser.TRAITS_GENERAL.concat("Arcane", "Nonlethal", "Plant", "Poison", "Shadow").includes(t)) || [];
-		spell._falignmentTrts = spell.traits.filter(t => Parser.TRAITS_ALIGN.includes(t)) || [];
-		spell._felementalTrts = spell.traits.filter(t => Parser.TRAITS_ELEMENTAL.includes(t)) || [];
-		spell._fenergyTrts = spell.traits.filter(t => Parser.TRAITS_ENERGY.includes(t)) || [];
-		spell._frarityTrts = spell.traits.concat("Common").filter(t => Parser.TRAITS_RARITY.includes(t))[0];
-		spell._fsenseTrts = spell.traits.filter(t => Parser.TRAITS_SENSE.includes(t)) || [];
+		spell._fClasses = spell.traits.filter(t => Renderer.trait._categoryLookup["Class"].includes(t)) || [];
+		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
@@ -165,12 +151,7 @@ class PageFilterSpells extends PageFilter {
 		this._focusFilter.addItem(spell._fFocus);
 		this._classFilter.addItem(spell._fClasses)
 		if (typeof (spell.domain) === "string") this._domainFilter.addItem(spell.domain);
-		this._generalTrtFilter.addItem(spell._fgeneralTrts);
-		this._alignmentTrtFilter.addItem(spell._falignmentTrts);
-		this._elementalTrtFilter.addItem(spell._felementalTrts);
-		this._energyTrtFilter.addItem(spell._fenergyTrts);
-		this._rarityTrtFilter.addItem(spell._frarityTrts);
-		this._sensesTrtFilter.addItem(spell._fsenseTrts);
+		this._traitFilter.addItem(spell._fTraits)
 		this._areaFilter.addItem(spell._areaTypes)
 		this._miscFilter.addItem(spell._fMisc)
 	}
@@ -209,14 +190,7 @@ class PageFilterSpells extends PageFilter {
 				s._fClasses,
 				s.domain,
 			],
-			[
-				s._frarityTrts,
-				s._falignmentTrts,
-				s._felementalTrts,
-				s._fenergyTrts,
-				s._fsenseTrts,
-				s._fgeneralTrts,
-			],
+			s._fTraits,
 			s._fTimeType,
 			s._fDurationType,
 			s._areaTypes,

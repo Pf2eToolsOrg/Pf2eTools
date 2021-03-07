@@ -28,7 +28,6 @@ class ItemsPage {
 
 		if (ExcludeUtil.isExcluded(hash, "item", item.source)) return null;
 		if (item.noDisplay) return null;
-		Renderer.item.enhanceItem(item);
 
 		this._pageFilter.mutateAndAddToFilters(item, isExcluded);
 
@@ -487,8 +486,12 @@ function handleItemsLinkClick (evt) {
 	if (runeBuilder.isActive()) evt.preventDefault();
 }
 
-const itemsPage = new ItemsPage();
-window.addEventListener("load", () => itemsPage.pOnLoad());
+let itemsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	itemsPage = new ItemsPage();
+	itemsPage.pOnLoad()
+});
 window.addEventListener("beforeunload", () => {
 	if (runeBuilder.isActive() && runeBuilder._cachedFilterState) {
 		StorageUtil.pSetForPage(itemsPage._pageFilter._filterBox._getNamespacedStorageKey(), runeBuilder._cachedFilterState);

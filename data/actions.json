@@ -181,7 +181,7 @@
 				"entry": "{@as f}"
 			},
 			"entries": [
-				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most {@trait manipulate|CRB} actions, Release does not trigger reactions that can be triggered by actions with the {@trait manipulate|CRB} trait (such as {@action Attack of Opportunity|CRB}).",
+				"You release something you’re holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most {@trait manipulate} actions, Release does not trigger reactions that can be triggered by actions with the {@trait manipulate} trait (such as {@action Attack of Opportunity|CRB}).",
 				"If you want to prepare to Release something outside of your turn, use the {@action Ready|CRB} activity."
 			]
 		},
@@ -328,7 +328,7 @@
 			},
 			"requirements": "You are benefiting from cover, are near a feature that allows you to take cover, or are {@condition prone|CRB}.",
 			"entries": [
-				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to {@skill Stealth} checks to {@action Hide|CRB}, {@action Sneak|CRB}, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an {@trait attack|CRB} action, become {@condition unconscious|CRB}, or end this effect as a free action."
+				"You press yourself against a wall or duck behind an obstacle to take better advantage of cover. If you would have standard cover, you instead gain greater cover, which provides a +4 circumstance bonus to AC; to Reflex saves against area effects; and to {@skill Stealth} checks to {@action Hide|CRB}, {@action Sneak|CRB}, or otherwise avoid detection. Otherwise, you gain the benefits of standard cover (a +2 circumstance bonus instead). This lasts until you move from your current space, use an {@trait attack} action, become {@condition unconscious|CRB}, or end this effect as a free action."
 			]
 		},
 		{
@@ -345,14 +345,14 @@
 			"entries": [
 				"You call forth the effect of an item by properly activating it. This is a special activity that takes a variable number of actions, as listed in the item’s stat block.",
 				"Some items can be activated as a reaction or free action. In this case, you Activate the Item as a reaction or free action (as appropriate) instead of as an activity. Such cases are noted in the item’s Activate entry in its stat block—for example, “{@b Activate} {@as R} command.”",
-				"{@b Long Activation Times} Some items take minutes or hours to activate. The Activate an Item activity for these items includes a mix of the listed activation components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while activating such an item, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these activations have the {@trait exploration|CRB} trait, and you can’t activate them in an encounter. If combat breaks out while you’re activating one, your activation is disrupted (see the Disrupting Activations sidebar).",
+				"{@b Long Activation Times} Some items take minutes or hours to activate. The Activate an Item activity for these items includes a mix of the listed activation components, but it’s not necessary to break down which one you’re providing at a given time. You can’t use other actions or reactions while activating such an item, though at the GM’s discretion, you might be able to speak a few sentences. As with other activities that take a long time, these activations have the {@trait exploration} trait, and you can’t activate them in an encounter. If combat breaks out while you’re activating one, your activation is disrupted (see the Disrupting Activations sidebar).",
 				"{@b Activation Components} Each activation entry lists any components involved in the activation after the action icons or text, such as “{@as 1} command.” The activation components, described below, add traits (listed in parentheses) and requirements to the activation. If you can’t provide the components, you fail to Activate the Item.",
 				{
 					"type": "list",
 					"items": [
-						"Command ({@trait auditory|CRB}, {@trait concentrate|CRB})",
-						"Envision ({@trait concentrate|CRB})",
-						"Interact ({@trait manipulate|CRB})",
+						"Command ({@trait auditory}, {@trait concentrate})",
+						"Envision ({@trait concentrate})",
+						"Interact ({@trait manipulate})",
 						"{@action Cast a Spell|CRB}"
 					]
 				}
@@ -2876,7 +2876,7 @@
 			],
 			"entries": [
 				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don’t need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
-				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn’t have the {@trait exploration|CRB} trait."
+				"In some cases, you might Cover Tracks in an encounter. In this case, Cover Tracks is a single action and doesn’t have the {@trait exploration} trait."
 			]
 		},
 		{
@@ -2896,7 +2896,7 @@
 				}
 			],
 			"entries": [
-				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the {@trait exploration|CRB} trait, but you might need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
+				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the {@trait exploration} trait, but you might need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
 					"type": "success_degree",

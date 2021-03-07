@@ -147,5 +147,9 @@ function renderStatblock (deity) {
 	Renderer.utils.bindTabButtons(...tabs);
 }
 
-const deitiesPage = new DeitiesPage();
-window.addEventListener("load", () => deitiesPage.pOnLoad());
+let deitiesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	deitiesPage = new DeitiesPage();
+	deitiesPage.pOnLoad()
+});

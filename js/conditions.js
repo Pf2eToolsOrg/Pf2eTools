@@ -113,5 +113,9 @@ class ConditionsPage extends ListPage {
 	}
 }
 
-const conditionsDiseasesPage = new ConditionsPage();
-window.addEventListener("load", () => conditionsDiseasesPage.pOnLoad());
+let conditionsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	conditionsPage = new ConditionsPage();
+	conditionsPage.pOnLoad()
+});

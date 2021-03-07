@@ -197,5 +197,9 @@ class LanguagesPage extends ListPage {
 	}
 }
 
-const languagesPage = new LanguagesPage();
-window.addEventListener("load", () => languagesPage.pOnLoad());
+let languagesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	languagesPage = new LanguagesPage();
+	languagesPage.pOnLoad()
+});

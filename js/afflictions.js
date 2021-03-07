@@ -113,5 +113,9 @@ class AfflictionsPage extends ListPage {
 	}
 }
 
-const conditionsDiseasesPage = new AfflictionsPage();
-window.addEventListener("load", () => conditionsDiseasesPage.pOnLoad());
+let afflictionsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	afflictionsPage = new AfflictionsPage();
+	afflictionsPage.pOnLoad()
+});

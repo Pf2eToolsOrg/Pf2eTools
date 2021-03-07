@@ -120,5 +120,9 @@ class BackgroundPage extends ListPage {
 	}
 }
 
-const backgroundsPage = new BackgroundPage();
-window.addEventListener("load", () => backgroundsPage.pOnLoad());
+let backgroundsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	backgroundsPage = new BackgroundPage();
+	backgroundsPage.pOnLoad()
+});
