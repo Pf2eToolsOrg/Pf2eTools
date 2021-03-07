@@ -657,5 +657,9 @@ ArchetypesPage._DEFAULT_STATE = {
 	isShowFeats: true,
 };
 
-const archetypesPage = new ArchetypesPage()
-window.addEventListener("load", () => archetypesPage.pOnLoad());
+let archetypesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	archetypesPage = new ArchetypesPage();
+	archetypesPage.pOnLoad()
+});

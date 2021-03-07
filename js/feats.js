@@ -123,5 +123,9 @@ class FeatsPage extends ListPage {
 	}
 }
 
-const featsPage = new FeatsPage();
-window.addEventListener("load", () => featsPage.pOnLoad());
+let featsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	featsPage = new FeatsPage()
+	featsPage.pOnLoad()
+});

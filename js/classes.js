@@ -1283,5 +1283,9 @@ ClassesPage._DEFAULT_STATE = {
 	isShowScSources: false,
 };
 
-const classesPage = new ClassesPage()
-window.addEventListener("load", () => classesPage.pOnLoad());
+let classesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	classesPage = new ClassesPage();
+	classesPage.pOnLoad()
+});

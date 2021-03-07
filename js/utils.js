@@ -1714,7 +1714,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
@@ -1955,6 +1955,10 @@ SortUtil = {
 	},
 
 	ascSortRarity (a, b) {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
 		return SortUtil.ascSort(Parser.rarityToNumber(a), Parser.rarityToNumber(b));
 	},
 
@@ -1967,12 +1971,16 @@ SortUtil = {
 	},
 
 	sortTraits (a, b) {
-		if (Parser.TRAITS_RARITY.includes(a)) return -1;
-		else if (Parser.TRAITS_RARITY.includes(b)) return 1;
-		else if (Parser.TRAITS_ALIGN_ABV.includes(a)) return -1;
-		else if (Parser.TRAITS_ALIGN_ABV.includes(b)) return 1;
-		else if (Parser.TRAITS_SIZE.includes(a)) return -1;
-		else if (Parser.TRAITS_SIZE.includes(b)) return 1;
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+		if (Renderer.trait._categoryLookup["Rarity"].includes(a)) return -1;
+		else if (Renderer.trait._categoryLookup["Rarity"].includes(b)) return 1;
+		else if (a.length <= 3 && Renderer.trait._categoryLookup["Alignment"].includes(a)) return -1;
+		else if (b.length <= 3 && Renderer.trait._categoryLookup["Alignment"].includes(b)) return 1;
+		else if (Renderer.trait._categoryLookup["Size"].includes(a)) return -1;
+		else if (Renderer.trait._categoryLookup["Size"].includes(b)) return 1;
 		else return SortUtil.ascSortLower(a, b);
 	},
 

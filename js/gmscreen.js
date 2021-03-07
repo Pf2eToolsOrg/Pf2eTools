@@ -3350,9 +3350,10 @@ class AdventureOrBookView {
 	}
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	// expose it for dbg purposes
+	await Renderer.trait.buildCategoryLookup();
 	window.DM_SCREEN = new Board();
 	Renderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.pInitialise()

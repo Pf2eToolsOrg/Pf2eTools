@@ -1,6 +1,6 @@
 "use strict";
 
-class ConditionsPage extends ListPage {
+class VehiclesPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterVehicles();
 
@@ -108,6 +108,9 @@ class ConditionsPage extends ListPage {
 		await ListUtil.pSetFromSubHashes(sub);
 	}
 }
-
-const conditionsDiseasesPage = new ConditionsPage();
-window.addEventListener("load", () => conditionsDiseasesPage.pOnLoad());
+let vehiclesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	vehiclesPage = new VehiclesPage();
+	vehiclesPage.pOnLoad()
+});

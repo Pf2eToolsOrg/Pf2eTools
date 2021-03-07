@@ -194,6 +194,7 @@ class BestiaryPage {
 		await Promise.all([
 			ExcludeUtil.pInitialise(),
 		]);
+		// TODO: Homebrew functionality
 		const creatureAbilities = await DataUtil.loadJSON("data/abilities.json");
 		Renderer.hover._pCacheAndGet_populate(UrlUtil.PG_ABILITIES, creatureAbilities, "ability");
 		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addCreatures, pPostLoad);
@@ -890,5 +891,9 @@ function getCr (obj) {
 	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
 }
 
-const bestiaryPage = new BestiaryPage();
-window.addEventListener("load", () => bestiaryPage.pOnLoad());
+let bestiaryPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	bestiaryPage = new BestiaryPage();
+	bestiaryPage.pOnLoad()
+});

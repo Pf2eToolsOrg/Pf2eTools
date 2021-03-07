@@ -126,5 +126,9 @@ function renderStatblock (rule) {
 	Renderer.utils.bindTabButtons(statTab, infoTab);
 }
 
-const variantRulesPage = new VariantRulesPage();
-window.addEventListener("load", () => variantRulesPage.pOnLoad());
+let variantRulesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	variantRulesPage = new VariantRulesPage();
+	variantRulesPage.pOnLoad()
+});
