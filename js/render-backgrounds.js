@@ -1,7 +1,7 @@
 class RenderBackgrounds {
 	static $getRenderedBackground (bg) {
 		const renderStack = [];
-		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {pf2StatFix: true});
 
 		return $$`
 		${Renderer.utils.getNameDiv(bg, {page: UrlUtil.PG_BACKGROUNDS, type: "BACKGROUND"})}

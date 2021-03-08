@@ -34,7 +34,7 @@ class CounterRoot extends CounterComponent {
 		const pod = this.getPod();
 
 		this._$wrpRows = $$`<div class="flex-col w-100 h-100 overflow-y-auto relative"/>`;
-		this._childComps.forEach(it => it.render(this._$wrpRows, pod));
+		this._childComps.forEach(it => it.render(this._$wrpRows));
 
 		const $btnAdd = $(`<button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-plus"/> Add Counter</button>`)
 			.click(() => {

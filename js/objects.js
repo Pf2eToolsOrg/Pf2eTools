@@ -88,8 +88,8 @@ class ObjectsPage extends ListPage {
 
 		const renderStack = [];
 
-		if (obj.entries) this._renderer.recursiveRender({entries: obj.entries}, renderStack, {depth: 2});
-		if (obj.actionEntries) this._renderer.recursiveRender({entries: obj.actionEntries}, renderStack, {depth: 2});
+		if (obj.entries) this._renderer.recursiveRender({entries: obj.entries}, renderStack);
+		if (obj.actionEntries) this._renderer.recursiveRender({entries: obj.actionEntries}, renderStack);
 
 		$(`#pagecontent`).empty().append(RenderObjects.$getRenderedObject(obj));
 

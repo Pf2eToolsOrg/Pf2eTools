@@ -3029,7 +3029,7 @@ class TimeTrackerRoot_Settings extends TimeTrackerComponent {
 				this._tmpComps[prop].push(comp);
 				comp.setStateFrom({state: nxt});
 				comp._addHookAll("state", () => this._parent.set(prop, (this._tmpComps[prop] || []).map(c => c.getState()).filter(it => !it.isDeleted).mergeMap(it => ({[it.id]: it}))));
-				comp.render($wrp, this._tmpComps, prop);
+				comp.render($wrp);
 			});
 
 			if (!nextState.length && opts.isEmptyMessage) $wrp.append(opts.isEmptyMessage);

@@ -831,7 +831,7 @@ class ClassesPage extends BaseComponent {
 			],
 		};
 		const fluffStack = [""];
-		renderer.recursiveRender(cls.fluff, fluffStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
+		renderer.recursiveRender(cls.fluff, fluffStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 
 		$$`<div id="class-name">${renderer.render(className)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>

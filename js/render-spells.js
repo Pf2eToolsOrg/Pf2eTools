@@ -95,25 +95,25 @@ class RenderSpells {
 
 		renderStack.push(Renderer.utils.getDividerDiv());
 
-		renderer.recursiveRender(sp.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(sp.entries, renderStack, {pf2StatFix: true});
 
 		if (sp.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (sp.heightened.plus_x != null) {
 				renderStack.push(`<p class="pf2-stat__section"><strong>Heightened (+${sp.heightened.plus_x.level}) </strong>`)
-				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack, {depth: 1})
+				renderer.recursiveRender(sp.heightened.plus_x.entry, renderStack)
 				renderStack.push(`</p>`)
 			}
 			if (sp.heightened.x != null) {
 				for (let x of sp.heightened.x) {
 					renderStack.push(`<p class="pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
-					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
+					renderer.recursiveRender(x.entry, renderStack)
 					renderStack.push(`</p>`)
 				}
 			}
 			if (sp.heightened.no_x != null) {
 				renderStack.push(`<p class="pf2-stat__section"><strong>Heightened </strong>`)
-				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack, {depth: 1})
+				renderer.recursiveRender(sp.heightened.no_x.entry, renderStack)
 				renderStack.push(`</p>`)
 			}
 		}
