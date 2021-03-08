@@ -20,7 +20,6 @@ function Renderer () {
 	this.baseMediaUrls = {};
 
 	this._lazyImages = false;
-	this._subVariant = false;
 	this._firstSection = true;
 	this._isAddHandlers = true;
 	this._headerIndex = 1;
@@ -30,9 +29,6 @@ function Renderer () {
 	this._hooks = {};
 	this._fnPostProcess = null;
 	this._extraSourceClasses = null;
-	this._depthTracker = null;
-	this._depthTrackerAdditionalProps = [];
-	this._lastDepthTrackerSource = null;
 	this._isInternalLinksDisabled = false;
 	this._fnsGetStyleClasses = {};
 
@@ -189,27 +185,6 @@ function Renderer () {
 		}
 	};
 
-	this._handleTrackDepth = function (entry, depth) {
-		if (entry.name && this._depthTracker) {
-			this._lastDepthTrackerSource = entry.source || this._lastDepthTrackerSource;
-			const additionalData = this._depthTrackerAdditionalProps.length
-				? this._depthTrackerAdditionalProps.mergeMap(it => ({[it]: entry[it]}))
-				: {};
-			this._depthTracker.push({
-				...additionalData,
-				depth,
-				name: entry.name,
-				type: entry.type,
-				ixHeader: this._headerIndex,
-				source: this._lastDepthTrackerSource,
-				data: entry.data,
-				page: entry.page,
-				alias: entry.alias,
-				entry,
-			});
-		}
-	};
-
 	this.addHook = function (entryType, hookType, fnHook) {
 		((this._hooks[entryType] = this._hooks[entryType] || {})[hookType] =
 			this._hooks[entryType][hookType] || []).push(fnHook);
@@ -226,30 +201,18 @@ function Renderer () {
 	};
 
 	/**
-	 * Specify an array where the renderer will record rendered header depths.
-	 * Items added to the array are of the form: `{name: "Header Name", depth: 1, type: "entries", source: "PHB"}`
-	 */
-	this.setDepthTracker = function (arr, ...additionalProps) {
-		this._depthTracker = arr;
-		this._depthTrackerAdditionalProps = additionalProps || [];
-		return this;
-	};
-
-	/**
 	 * Recursively walk down a tree of "entry" JSON items, adding to a stack of strings to be finally rendered to the
 	 * page. Note that this function does _not_ actually do the rendering, see the example code above for how to display
 	 * the result.
 	 *
 	 * @param entry An "entry" usually defined in JSON. A schema is available in tests/schema
 	 * @param textStack A reference to an array, which will hold all our strings as we recurse
-	 * @param meta Meta state.
-	 * @param meta.depth The current recursion depth. Optional; default 0, or -1 for type "section" entries.
 	 * @param options Render options.
 	 * @param options.prefix String to prefix rendered lines with.
 	 */
-	this.recursiveRender = function (entry, textStack, meta, options) {
+	this.recursiveRender = function (entry, textStack, options) {
 		if (entry instanceof Array) {
-			entry.forEach(nxt => this.recursiveRender(nxt, textStack, meta, options));
+			entry.forEach(nxt => this.recursiveRender(nxt, textStack, options));
 			return;
 		}
 
@@ -258,9 +221,8 @@ function Renderer () {
 		else textStack.reverse();
 
 		// initialise meta
-		meta = meta || {};
+		const meta = {};
 		meta._typeStack = [];
-		meta.depth = meta.depth == null ? 0 : meta.depth;
 
 		this._recursiveRender(entry, textStack, meta, options);
 		if (this._fnPostProcess) textStack[0] = this._fnPostProcess(textStack[0]);
@@ -281,12 +243,11 @@ function Renderer () {
 		if (entry == null) return; // Avoid dying on nully entries
 		if (!textStack) throw new Error("Missing stack!");
 		if (!meta) throw new Error("Missing metadata!");
-		if (entry.type === "section") meta.depth = -1;
 
 		options = options || {};
 		if (options.pf2StatFix && !options.prefix && !options.suffix) {
-			options.prefix = "<p class=\"pf2-stat__text\">"
-			options.suffix = "</p>"
+			options.prefix = `<p class="pf2-stat__text">`;
+			options.suffix = "</p>";
 		}
 
 		meta._didRenderPrefix = false;
@@ -452,13 +413,6 @@ function Renderer () {
 			this._renderPrimitive(entry, textStack, meta, options);
 			this._renderSuffix(entry, textStack, meta, options);
 		}
-	};
-
-	this._adjustDepth = function (meta, dDepth) {
-		const cachedDepth = meta.depth;
-		meta.depth += dDepth;
-		meta.depth = Math.min(Math.max(-1, meta.depth), 2); // cap depth between -1 and 2 for general use
-		return cachedDepth;
 	};
 
 	this._renderPrefix = function (entry, textStack, meta, options) {
@@ -736,60 +690,6 @@ function Renderer () {
 		return `${row_styles} ${col_styles} ${cell_styles} ${type_styles} ${minTo}`
 	};
 
-	this._renderEntries = function (entry, textStack, meta, options) {
-		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
-	};
-
-	this._getPagePart = function (entry, isInset) {
-		if (!Renderer.utils.isDisplayPage(entry.page)) return "";
-		return ` <span class="rd__title-link ${isInset ? `rd__title-link--inset` : ""}">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>`;
-	};
-
-	this._inlineHeaderTerminators = new Set([".", ",", "!", "?", ";", ":"]);
-	this._renderEntriesSubtypes = function (entry, textStack, meta, options, incDepth) {
-		const isInlineTitle = meta.depth >= 2;
-		const isAddPeriod = isInlineTitle && entry.name && !this._inlineHeaderTerminators.has(entry.name[entry.name.length - 1]);
-		const pagePart = !isInlineTitle ? this._getPagePart(entry) : "";
-		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
-		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
-		const dataString = this._getDataString(entry);
-		if (entry.name != null) this._handleTrackTitles(entry.name);
-
-		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
-
-		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({
-			type: "inline",
-			entries: [entry.name],
-		})}${isAddPeriod ? "." : ""}</span>${pagePart}</span> ` : "";
-
-		if (meta.depth === -1) {
-			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
-			this._firstSection = false;
-		}
-
-		if (entry.entries || entry.name) {
-			textStack[0] += `<${this.wrapperTag} ${dataString} ${styleString}>${headerSpan}`;
-			this._renderEntriesSubtypes_renderPreReqText(entry, textStack, meta);
-			if (entry.entries) {
-				const cacheDepth = meta.depth;
-				const len = entry.entries.length;
-				for (let i = 0; i < len; ++i) {
-					meta.depth = nextDepth;
-					this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
-					// Add a spacer for style sets that have vertical whitespace instead of indents
-					if (i === 0 && cacheDepth >= 2) textStack[0] += `<div class="rd__spc-inline-post"></div>`;
-				}
-				meta.depth = cacheDepth;
-			}
-			textStack[0] += `</${this.wrapperTag}>`;
-		}
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
-	};
-
 	this._getDataString = function (entry) {
 		let dataString = "";
 		if (entry.source) dataString += `data-source="${entry.source}"`;
@@ -800,44 +700,6 @@ function Renderer () {
 			}
 		}
 		return dataString;
-	};
-
-	this._renderEntriesSubtypes_renderPreReqText = function (entry, textStack, meta) {
-		if (entry.prerequisite) {
-			textStack[0] += `<span class="rd__prerequisite">Prerequisite: `;
-			this._recursiveRender({type: "inline", entries: [entry.prerequisite]}, textStack, meta);
-			textStack[0] += `</span>`;
-		}
-	};
-
-	this._renderEntriesSubtypes_getStyleString = function (entry, meta, isInlineTitle) {
-		const styleClasses = ["rd__b"];
-		styleClasses.push(this._getStyleClass(entry));
-		if (isInlineTitle) {
-			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
-			else styleClasses.push(Renderer.HEAD_2);
-		} else styleClasses.push(meta.depth === -1 ? Renderer.HEAD_NEG_1 : meta.depth === 0 ? Renderer.HEAD_0 : Renderer.HEAD_1);
-		return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
-	};
-
-	this._renderOptions = function (entry, textStack, meta, options) {
-		if (!entry.entries) return;
-		entry.entries = entry.entries.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
-
-		if (entry.style && entry.style === "list-hang-notitle") {
-			const fauxEntry = {
-				type: "list",
-				style: "list-hang-notitle",
-				items: entry.entries.map(ent => {
-					if (typeof ent === "string") return ent;
-
-					const out = {...ent, type: "item"};
-					if (ent.name) out.name = this._inlineHeaderTerminators.has(ent.name[ent.name.length - 1]) ? out.name : `${out.name}.`;
-					return out;
-				}),
-			};
-			this._renderList(fauxEntry, textStack, meta, options);
-		} else this._renderEntriesSubtypes(entry, textStack, meta, options, false);
 	};
 
 	this._renderList = function (entry, textStack, meta, options) {
@@ -856,9 +718,7 @@ function Renderer () {
 				}
 				// If it's a raw string in a hanging list, wrap it in a div to allow for the correct styling
 				if (isListHang && typeof item === "string") textStack[0] += "<div>";
-				const cacheDepth = this._adjustDepth(meta, 1);
 				this._recursiveRender(item, textStack, meta);
-				meta.depth = cacheDepth;
 				if (isListHang && typeof item === "string") textStack[0] += "</div>";
 				if (item.type !== "list") textStack[0] += "</li>";
 			}
@@ -867,16 +727,12 @@ function Renderer () {
 	};
 
 	this._renderLeveledEffect = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 		const arr_effects = entry.entries;
 		arr_effects.forEach(x => {
 			textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${x["range_str"]} </strong>`;
 			this._recursiveRender(x["entry"], textStack, meta);
 			textStack[0] += `</p>`;
 		});
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
 	this._renderAttack = function (entry, textStack, meta, options) {
@@ -902,8 +758,6 @@ function Renderer () {
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 		const renderer = Renderer.get().setFirstSection(true);
 
 		textStack[0] += `<div class="pf2-stat pf2-book--stat">`;
@@ -913,14 +767,9 @@ function Renderer () {
 		textStack[0] += Renderer.action.getSubHead(entry);
 		entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
 	this._renderActivation = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><span><strong>${entry.name ? entry.name : "Activate"} </strong>`
 		if (entry.activity != null) this._recursiveRender(`${entry.activity.entry} `, textStack, meta);
 		if (entry.components != null && entry.components.length) textStack[0] += `${entry.components.join(", ")}; `
@@ -942,14 +791,9 @@ function Renderer () {
 		})
 
 		textStack[0] += `</span></p>`
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
 	this._renderSuccessDegree = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
 		for (let key in entry.entries) {
 			textStack[0] += `<span class="pf2-stat pf2-stat__section"><strong>${key} </strong>`
 			if (typeof (entry.entries[key]) === "string") {
@@ -961,13 +805,9 @@ function Renderer () {
 			}
 			textStack[0] += `</span>`
 		}
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	}
 
 	this._renderAffliction = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 		const renderer = Renderer.get();
 
 		const dict = entry.entries;
@@ -1014,15 +854,11 @@ function Renderer () {
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".");
 		if (!options.isAbility) textStack[0] += `</p>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2H1 = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h1" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1032,21 +868,14 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `<div class="float-clear"></div>`;
 		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2H1Flavor = function (entry, textStack, meta, options) {
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
-
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
@@ -1054,8 +883,6 @@ function Renderer () {
 			}
 		}
 		textStack[0] += this._getPf2ChapterSwirl()
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._getPf2ChapterSwirl = function () {
@@ -1070,8 +897,6 @@ function Renderer () {
 	this._renderPf2H2 = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h2" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.step != null) {
 			textStack[0] += `<p class="pf2-h2__step-num">${entry.step}</p>`
@@ -1086,22 +911,16 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
-		textStack[0] += `<div style="clear: left"></div>`
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
+		textStack[0] += `<div style="clear: left"></div>`;
 	};
 
 	this._renderPf2H3 = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h3" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1113,21 +932,15 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2H4 = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h4" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1137,21 +950,15 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2H5 = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h5" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1161,14 +968,10 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2Title = function (entry, textStack, meta, options) {
@@ -1181,8 +984,6 @@ function Renderer () {
 	this._renderPf2Sidebar = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-sidebar" ${dataString}>`;
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, meta.depth);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1191,26 +992,18 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="pf2-sidebar__text">`,
 					suffix: `</p>`,
 				});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2SampleBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="${options.beige ? "pf2-beige-box" : "pf2-sample-box"}" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1219,46 +1012,31 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="${options.beige ? "pf2-beige-box__text" : "pf2-sample-box__text"}">`,
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2Inset = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-inset" ${dataString}>`;
 
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta);
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2TipsBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-tips-box" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1267,18 +1045,13 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p class=\"pf2-tips-box__text\">",
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._getPf2BoxSwirl = function (right, styles) {
@@ -1297,9 +1070,6 @@ function Renderer () {
 		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--brown"></div>`
 		textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--brown")
 
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
@@ -1307,15 +1077,10 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p class='pf2-box__text'>", suffix: "</p>"});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div></div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2RedBox = function (entry, textStack, meta, options) {
@@ -1325,9 +1090,6 @@ function Renderer () {
 		textStack[0] += `<div class="pf2-box__swirl-connection pf2-box--red"></div>`
 		textStack[0] += this._getPf2BoxSwirl(true, "pf2-box--red")
 
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<span class="pf2-box__title">${entry.name}</span>`;
@@ -1335,26 +1097,18 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: "<p class='pf2-box__text'>",
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2KeyBox = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-key-box" ${dataString}>`;
-
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1363,39 +1117,28 @@ function Renderer () {
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.entries[i], textStack, meta, {
 					prefix: `<p class="pf2-key-box__text">`,
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 		}
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2KeyAbility = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
 		textStack[0] += `<div class="pf2-key-abilities" ${dataString}>`;
 
-		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
-		this._handleTrackDepth(entry, 1);
-
 		if (entry.ability != null) {
 			textStack[0] += `<div class="pf2-key-abilities__ab">`;
 			textStack[0] += `<p class="pf2-key-abilities__title">KEY ABILITY</p>`;
 			const len = entry.ability.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.ability[i], textStack, meta, {
 					prefix: "<p class='pf2-key-abilities__text'>",
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 			textStack[0] += `</div>`;
 		}
@@ -1405,20 +1148,14 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-key-abilities__title">HIT POINTS</p>`;
 			const len = entry.hp.length;
 			for (let i = 0; i < len; ++i) {
-				const cacheDepth = meta.depth;
-				meta.depth = 2;
 				this._recursiveRender(entry.hp[i], textStack, meta, {
 					prefix: "<p class='pf2-key-abilities__text'>",
 					suffix: "</p>",
 				});
-				meta.depth = cacheDepth;
 			}
 			textStack[0] += `</div>`;
 		}
-
 		textStack[0] += `</div>`;
-
-		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2Options = function (entry, textStack, meta, options) {
@@ -2510,27 +2247,26 @@ function Renderer () {
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
-	 * @param depth
 	 * @returns {string}
 	 */
-	this.render = function (entry, depth = 0) {
+	this.render = function (entry) {
 		const tempStack = [];
-		this.recursiveRender(entry, tempStack, {depth});
+		this.recursiveRender(entry, tempStack);
 		return tempStack.join("");
 	};
 }
 
 Renderer.ENTRIES_WITH_ENUMERATED_TITLES = [
-	{type: "section", key: "entries", depth: -1},
-	{type: "entries", key: "entries", depthIncrement: 1},
+	{type: "section", key: "entries"},
+	{type: "entries", key: "entries"},
 	{type: "options", key: "entries"},
-	{type: "inset", key: "entries", depth: 2},
-	{type: "insetReadaloud", key: "entries", depth: 2},
-	{type: "variant", key: "entries", depth: 2},
-	{type: "variantInner", key: "entries", depth: 2},
-	{type: "actions", key: "entries", depth: 2},
-	{type: "flowBlock", key: "entries", depth: 2},
-	{type: "optfeature", key: "entries", depthIncrement: 1},
+	{type: "inset", key: "entries"},
+	{type: "insetReadaloud", key: "entries"},
+	{type: "variant", key: "entries"},
+	{type: "variantInner", key: "entries"},
+	{type: "actions", key: "entries"},
+	{type: "flowBlock", key: "entries"},
+	{type: "optfeature", key: "entries"},
 	{type: "patron", key: "entries"},
 ];
 
@@ -3346,7 +3082,7 @@ Renderer.utils = {
 		const renderer = Renderer.get().setFirstSection(true);
 		const toRender = data[prop];
 		const textStack = [""];
-		renderer.recursiveRender(toRender.entries, textStack, {depth: 1}, {prefix: "<p class='pf2-p'>", suffix: "</p>"});
+		renderer.recursiveRender(toRender.entries, textStack, {prefix: "<p class='pf2-p'>", suffix: "</p>"});
 		return $$`${textStack.join("")}${Renderer.utils.getPageP(toRender)}`;
 	},
 
@@ -3409,7 +3145,7 @@ Renderer.feat = {
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
 		`);
-		renderer.recursiveRender(feat.entries, renderStack, {depth: 2}, {pf2StatFix: true});
+		renderer.recursiveRender(feat.entries, renderStack, {pf2StatFix: true});
 		renderStack.push(Renderer.feat.getSpecial(feat))
 		if (!options.noPage) renderStack.push(Renderer.utils.getPageP(feat));
 
@@ -3458,7 +3194,7 @@ Renderer.spell = {
 		components = components_list.join(", ")
 		let cast = ``
 		let castStack = []
-		renderer.recursiveRender(spell.cast.entry, castStack, {depth: 1}, {prefix: `<span>`, suffix: `</span>`})
+		renderer.recursiveRender(spell.cast.entry, castStack, {prefix: `<span>`, suffix: `</span>`})
 		cast = castStack.join("")
 		if (!Parser.TIME_ACTIONS.includes(spell.cast.unit) && components.length) {
 			components = `(${components})`
@@ -3519,25 +3255,25 @@ Renderer.spell = {
 
 		renderStack.push(Renderer.utils.getDividerDiv());
 
-		renderer.recursiveRender(spell.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(spell.entries, renderStack, {pf2StatFix: true});
 
 		if (spell.heightened.heightened) {
 			renderStack.push(Renderer.utils.getDividerDiv())
 			if (spell.heightened.plus_x !== null) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${spell.heightened.plus_x.level}) </strong>`)
-				renderer.recursiveRender(spell.heightened.plus_x.entry, renderStack, {depth: 1})
+				renderer.recursiveRender(spell.heightened.plus_x.entry, renderStack)
 				renderStack.push(`</p>`)
 			}
 			if (spell.heightened.x !== null) {
 				for (let x of spell.heightened.x) {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
-					renderer.recursiveRender(x.entry, renderStack, {depth: 1})
+					renderer.recursiveRender(x.entry, renderStack)
 					renderStack.push(`</p>`)
 				}
 			}
 			if (spell.heightened.no_x !== null) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened </strong>`)
-				renderer.recursiveRender(spell.heightened.no_x.entry, renderStack, {depth: 1})
+				renderer.recursiveRender(spell.heightened.no_x.entry, renderStack)
 				renderStack.push(`</p>`)
 			}
 		}
@@ -3567,7 +3303,7 @@ Renderer.ritual = {
 		options = options || {};
 		const renderer = Renderer.get();
 		const renderStack = [];
-		renderer.recursiveRender(ritual.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(ritual.entries, renderStack, {pf2StatFix: true});
 
 		return `${Renderer.utils.getExcludedDiv(ritual, "ritual", UrlUtil.PG_RITUALS)}
 		${Renderer.utils.getNameDiv(ritual, {page: UrlUtil.PG_RITUALS, type: ritual.type || "Ritual"})}
@@ -3609,7 +3345,7 @@ Renderer.condition = {
 			${Renderer.utils.getNameDiv(cond, {page: UrlUtil.PG_CONDITIONS, type: "condition"})}
 			${Renderer.utils.getDividerDiv()}
 		`);
-		renderer.recursiveRender(cond.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(cond.entries, renderStack, {pf2StatFix: true});
 		if (!options.noPage) renderStack.push(Renderer.utils.getPageP(cond))
 
 		return renderStack.join("");
@@ -3630,7 +3366,7 @@ Renderer.affliction = {
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(affliction.traits || [])}
 		`);
-		renderer.recursiveRender(affliction.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(affliction.entries, renderStack, {pf2StatFix: true});
 		if (!options.noPage) renderStack.push(Renderer.utils.getPageP(affliction))
 
 		return renderStack.join("");
@@ -3653,7 +3389,7 @@ Renderer.trait = {
 			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
 			${Renderer.utils.getDividerDiv()}
 		`);
-		renderer.recursiveRender(trait.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		renderer.recursiveRender(trait.entries, renderStack, {pf2StatFix: true});
 
 		return renderStack.join("");
 	},
@@ -3678,7 +3414,7 @@ Renderer.trait = {
 Renderer.background = {
 	getCompactRenderedString (bg) {
 		const renderStack = [];
-		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {depth: 1}, {pf2StatFix: true});
+		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {pf2StatFix: true});
 
 		return `
 		${Renderer.utils.getNameDiv(bg, {page: UrlUtil.PG_BACKGROUNDS, type: "BACKGROUND"})}
@@ -3763,7 +3499,7 @@ Renderer.deity = {
 		if (deity.lore) {
 			deity.lore.forEach(l => {
 				if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
-				renderer.recursiveRender(l, textStack, {depth: 1});
+				renderer.recursiveRender(l, textStack);
 			});
 		}
 		return textStack.join("");
@@ -3777,7 +3513,7 @@ Renderer.deity = {
 				name: "Divine Intercession",
 				entries: deity.intercession.flavor ? deity.intercession.flavor : [],
 			};
-			renderer.recursiveRender(entry, textStack, {depth: 1});
+			renderer.recursiveRender(entry, textStack);
 			if (deity.intercession.boon) {
 				Object.keys(deity.intercession.boon)
 					.map(key => `<p class="pf2-book__option"><strong>${key} </strong>${renderer.render(deity.intercession.boon[key])}</p>`)
@@ -3812,14 +3548,14 @@ Renderer.hazard = {
 		}
 		if (hazard.description) {
 			const descriptionStack = [`<p class="pf2-stat pf2-stat__section--wide"><strong>Description </strong>`];
-			renderer.recursiveRender(hazard.description, descriptionStack, {depth: 1});
+			renderer.recursiveRender(hazard.description, descriptionStack);
 			descriptionStack.push(`</p>`);
 			renderStack.push(descriptionStack.join(""));
 		}
 		renderStack.push(Renderer.utils.getDividerDiv());
 		if (hazard.disable) {
 			const disableStack = [`<p class="pf2-stat pf2-stat__section"><strong>Disable </strong>`];
-			renderer.recursiveRender(hazard.disable.entries, disableStack, {depth: 1});
+			renderer.recursiveRender(hazard.disable.entries, disableStack);
 			disableStack.push(`</p>`);
 			renderStack.push(disableStack.join(""));
 		}
@@ -3884,14 +3620,14 @@ Renderer.hazard = {
 			hazard.routine.forEach((entry, idx) => {
 				if (idx !== 0) {
 					if (typeof entry === "object") renderStack.push(Renderer.hazard.getRenderedAbility(entry));
-					else renderer.recursiveRender(entry, renderStack, {depth: 1}, {prefix: `<p class="pf2-stat pf2-stat__text--wide">`, suffix: "</p>"});
+					else renderer.recursiveRender(entry, renderStack, {prefix: `<p class="pf2-stat pf2-stat__text--wide">`, suffix: "</p>"});
 				} else renderStack.push(`<p class="pf2-stat pf2-stat__text--wide"><strong>Routine </strong>${renderer.render(entry)}</p>`);
 			});
 		}
 		if (hazard.reset) {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Reset </strong>`);
-			renderer.recursiveRender(hazard.reset, renderStack, {depth: 1});
+			renderer.recursiveRender(hazard.reset, renderStack);
 			renderStack.push(`</p>`);
 		}
 		if (!options.noPage) renderStack.push(Renderer.utils.getPageP(hazard))
@@ -3903,7 +3639,7 @@ Renderer.hazard = {
 
 		const renderer = Renderer.get();
 		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack, {depth: 2}, {isAbility: true});
+		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
 
 		let trts = []
 		if (ability.traits != null && ability.traits.length) {
@@ -4239,7 +3975,7 @@ Renderer.creature = {
 
 		const renderer = Renderer.get();
 		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack, {depth: 2}, {isAbility: true});
+		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
 
 		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
 
@@ -4371,7 +4107,7 @@ Renderer.item = {
 	getCompactRenderedString (item, opts) {
 		opts = opts || {};
 		const renderStack = [""]
-		Renderer.get().recursiveRender(item.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		Renderer.get().recursiveRender(item.entries, renderStack, {pf2StatFix: true})
 
 		return `${Renderer.utils.getExcludedDiv(item, "item", UrlUtil.PG_ITEMS)}
 			${Renderer.utils.getNameDiv(item, {page: UrlUtil.PG_ITEMS})}
@@ -4566,7 +4302,7 @@ Renderer.action = {
 	getCompactRenderedString (it, opts) {
 		opts = opts || {};
 		let renderStack = [""];
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {pf2StatFix: true})
 		return `
 		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}
@@ -4596,7 +4332,7 @@ Renderer.action = {
 	},
 	getQuickRules (it) {
 		let renderStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name: it.name, entries: it.info}, renderStack, {depth: 1})
+		Renderer.get().setFirstSection(true).recursiveRender({type: "pf2-h3", name: it.name, entries: it.info}, renderStack)
 		return `
 		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
 		${renderStack.join("")}
@@ -4607,7 +4343,7 @@ Renderer.action = {
 Renderer.ability = {
 	getCompactRenderedString (it) {
 		let renderStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {pf2StatFix: true})
 		return `
 		${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ABILITIES, activity: true, type: ""})}
@@ -4644,7 +4380,7 @@ Renderer.language = {
 		const allEntries = [];
 		if (it.entries) allEntries.push(...it.entries);
 		if (!allEntries.length && !it.typicalSpeakers) allEntries.push("{@i No information available.}");
-		renderer.recursiveRender(allEntries, textStack, {depth: 2}, {pf2StatFix: true})
+		renderer.recursiveRender(allEntries, textStack, {pf2StatFix: true})
 
 		return `
 		${Renderer.utils.getExcludedDiv(it, "language", UrlUtil.PG_LANGUAGES)}
@@ -4670,22 +4406,11 @@ Renderer.adventureBook = {
 		const titlesRel = {};
 
 		let chapIx;
-		const depthStack = [];
 		const handlers = {
 			object: (obj) => {
 				Renderer.ENTRIES_WITH_ENUMERATED_TITLES
 					.forEach(meta => {
 						if (obj.type !== meta.type) return;
-
-						const curDepth = depthStack.length ? depthStack.last() : 0;
-						const nxtDepth = meta.depth ? meta.depth : meta.depthIncrement ? curDepth + meta.depthIncrement : curDepth;
-
-						depthStack.push(
-							Math.min(
-								nxtDepth,
-								2,
-							),
-						);
 
 						if (obj.id) {
 							if (out[obj.id]) {
@@ -4694,7 +4419,6 @@ Renderer.adventureBook = {
 								out[obj.id] = {
 									chapter: chapIx,
 									entry: obj,
-									depth: depthStack.last(),
 								};
 
 								if (obj.name) {
@@ -4708,14 +4432,6 @@ Renderer.adventureBook = {
 					});
 
 				return obj;
-			},
-			postObject: (obj) => {
-				Renderer.ENTRIES_WITH_ENUMERATED_TITLES
-					.forEach(meta => {
-						if (obj.type !== meta.type) return;
-
-						depthStack.pop();
-					});
 			},
 		};
 
@@ -6435,9 +6151,9 @@ Renderer.hover = {
 	},
 	// endregion
 
-	getGenericCompactRenderedString (entry, depth = 0) {
+	getGenericCompactRenderedString (entry) {
 		const textStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {depth: depth}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
+		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 		return `
 			${textStack.join("")}
 		`;
@@ -6603,17 +6319,10 @@ Renderer.hover = {
 		return $$`<div class="stats stats--book">${Renderer.get().render(toRenderCode)}</div>`;
 	},
 
-	/**
-	 * @param toRender
-	 * @param [opts]
-	 * @param [opts.isBookContent]
-	 * @param [opts.isLargeBookContent]
-	 * @param [opts.depth]
-	 */
 	$getHoverContent_generic (toRender, opts) {
 		opts = opts || {};
 
-		return $$`<div class="stats ${opts.isBookContent || opts.isLargeBookContent ? "pf2-book" : "pf2-stat"} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender, opts.depth || 0)}</div>`;
+		return $$`<div class="stats ${opts.isBookContent || opts.isLargeBookContent ? "pf2-book" : "pf2-stat"} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender)}</div>`;
 	},
 
 	doPopoutCurPage (evt, allEntries, index) {

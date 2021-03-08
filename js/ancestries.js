@@ -802,8 +802,8 @@ class AncestriesPage extends BaseComponent {
 		const veHeritageTitle = {type: "pf2-h2", name: `Versatile Heritages`};
 		const fluffStack = [""];
 		const titleStack = [""];
-		renderer.recursiveRender(anc.info, fluffStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
-		renderer.recursiveRender(anc.heritageInfo, titleStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
+		renderer.recursiveRender(anc.info, fluffStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
+		renderer.recursiveRender(anc.heritageInfo, titleStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 
 		$$`<div id="ancestry-name">${renderer.render(ancestryName)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>
