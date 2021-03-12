@@ -3725,11 +3725,12 @@ Renderer.deity = {
 
 	getEdictsAnathemaAlign (deity) {
 		let out = [];
+		const renderer = Renderer.get();
 		const edictsDelim = (deity.edicts || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
 		const anathemaDelim = (deity.anathema || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
-		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts </strong>${deity.edicts.join(edictsDelim)}</p>`)
-		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema </strong>${deity.anathema.join(anathemaDelim)}</p>`)
-		if (deity.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Follower Alignments </strong>${Renderer.get().render(deity.followerAlignment.map(a => `{@trait ${a}}`).join(", "))}</p>`)
+		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts </strong>${renderer.render(deity.edicts.join(edictsDelim))}</p>`)
+		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema </strong>${renderer.render(deity.anathema.join(anathemaDelim))}</p>`)
+		if (deity.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Follower Alignments </strong>${renderer.render(deity.followerAlignment.map(a => `{@trait ${a}}`).join(", "))}</p>`)
 		return out.join("")
 	},
 
@@ -3742,8 +3743,8 @@ Renderer.deity = {
 		const renderer = Renderer.get()
 		const b = deity.devoteeBenefits;
 		return `<p class="pf2-stat__section"><strong>Divine Font </strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(", "))}</p>
-			<p class="pf2-stat__section"><strong>Divine Skill </strong>${renderer.render(`{@skill ${b.skill}}`)}</p>
-			<p class="pf2-stat__section"><strong>Favored Weapon </strong>${renderer.render(`{@item ${b.weapon}}`)}</p>
+			<p class="pf2-stat__section"><strong>Divine Skill </strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>
+			<p class="pf2-stat__section"><strong>Favored Weapon </strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(", "))}</p>
 			<p class="pf2-stat__section"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
 			<p class="pf2-stat__section"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
 			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains </strong>${renderer.render(b.domains.join(", "))}</p>` : ""}
@@ -4115,11 +4116,9 @@ Renderer.item = {
 			return cached;
 		}
 
-		const itemUrl = opts.urls.items || `${Renderer.get().baseUrl}data/items/items-crb.json`;
-		const baseItemUrl = opts.urls.baseitems || `${Renderer.get().baseUrl}data/items/items-base.json`;
-
-		const itemList = await Renderer.item._pGetAndProcItems(await DataUtil.loadJSON(itemUrl));
-		const baseItems = (await DataUtil.loadJSON(baseItemUrl)).baseitem;
+		const itemData = await DataUtil.item.loadJSON();
+		const itemList = await Renderer.item._pGetAndProcItems(itemData);
+		const baseItems = itemData.baseitem;
 		const allItems = [...itemList, ...baseItems];
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
@@ -4233,7 +4232,7 @@ Renderer.ritual = {
 		: ""}
 		${Renderer.utils.getDividerDiv()}
 		${renderStack.join("")}
-		${ritual.heightened.heightened
+		${ritual.heightened && ritual.heightened.heightened
 		? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(ritual)}`
 		: ""}
 		${options.noPage ? "" : Renderer.utils.getPageP(ritual)}`;
@@ -4288,126 +4287,49 @@ Renderer.runeItem = {
 };
 
 Renderer.spell = {
-	getCompactRenderedString (spell, options) {
-		options = options || {}
+	getCompactRenderedString (sp, options) {
+		options = options || {};
 		const renderer = Renderer.get();
-		const renderStack = [];
-		renderer.setFirstSection(true);
-		const level = spell.type === "CANTRIP" ? " 1" : ` ${spell.level}`;
+		const entryStack = [];
+		renderer.recursiveRender(sp.entries, entryStack, {pf2StatFix: true});
 
-		renderStack.push(`
-		${Renderer.utils.getExcludedDiv(spell, "spell", UrlUtil.PG_SPELLS)}
-		${Renderer.utils.getNameDiv(spell, {page: UrlUtil.PG_SPELLS, level: level})}
+		const level = sp.type === "CANTRIP" ? " 1" : ` ${sp.level}`;
+
+		return `${Renderer.utils.getExcludedDiv(sp, "spell", UrlUtil.PG_SPELLS)}
+		${Renderer.utils.getNameDiv(sp, {page: UrlUtil.PG_SPELLS, level: level})}
 		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(spell.traits)}`);
+		${Renderer.utils.getTraitsDiv(sp.traits)}
+		${Renderer.spell.getSubHead(sp)}
+		${entryStack.join("")}
+		${sp.heightened && sp.heightened.heightened ? `${Renderer.utils.getDividerDiv()}${Renderer.spell.getHeightenedEntry(sp)}` : ""}
+		${options.noPage ? "" : Renderer.utils.getPageP(sp)}`;
+	},
 
-		if (spell.traditions !== null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${spell.traditions.join(", ").toLowerCase()}</p>`);
-		} else if (spell.domain !== null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Domain </strong>${spell.domain.toLowerCase()}</p>`);
-		}
-		let components = ``;
-		let components_list = [];
-		if (spell.components.F) {
-			components_list.push("focus")
-		}
-		if (spell.components.M) {
-			components_list.push("material")
-		}
-		if (spell.components.S) {
-			components_list.push("somatic")
-		}
-		if (spell.components.V) {
-			components_list.push("verbal")
-		}
-		components = components_list.join(", ")
-		let cast = ``
-		let castStack = []
-		renderer.recursiveRender(spell.cast.entry, castStack, {prefix: `<span>`, suffix: `</span>`})
-		cast = castStack.join("")
-		if (!Parser.TIME_ACTIONS.includes(spell.cast.unit) && components.length) {
-			components = `(${components})`
-		}
+	getSubHead (sp) {
+		const renderer = Renderer.get()
 
-		let cst_tr_req = ``;
-		if (spell.cost !== null) {
-			cst_tr_req = `; <strong>Cost </strong>${spell.cost}`;
-		}
-		if (spell.trigger !== null) {
-			cst_tr_req += `; <strong>Trigger </strong>${spell.trigger}`;
-		}
-		if (spell.requirements !== null) {
-			cst_tr_req += `; <strong>Requirements </strong>${spell.requirements}`;
-		}
-		renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${cast} ${components}${cst_tr_req}</p>`);
+		const components = Object.keys(sp.components).filter(it => sp.components[it]).map(it => Parser.COMPONENTS_TO_FULL[it]);
 
-		let rg_ar_tg = ``;
-		if (spell.range.type !== null) {
-			rg_ar_tg = `<strong>Range </strong>${spell.range.entry}`
-		}
-		if (spell.area !== null) {
-			if (rg_ar_tg === ``) {
-				rg_ar_tg = `<strong>Area </strong>${spell.area.entry}`
-			} else {
-				rg_ar_tg += `; <strong>Area </strong>${spell.area.entry}`
-			}
-		}
-		if (spell.targets !== null) {
-			if (rg_ar_tg === ``) {
-				rg_ar_tg = `<strong>Targets </strong>${spell.targets}`
-			} else {
-				rg_ar_tg += `; <strong>Targets </strong>${spell.targets}`
-			}
-		}
-		if (rg_ar_tg !== ``) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">${rg_ar_tg}</p>`);
-		}
+		let castPart = ``;
+		if (sp.cost != null) castPart += `; <strong>Cost </strong>${renderer.render(sp.cost)}`;
+		if (sp.trigger != null) castPart += `; <strong>Trigger </strong>${renderer.render(sp.trigger)}`;
+		if (sp.requirements != null) castPart += `; <strong>Requirements </strong>${renderer.render(sp.requirements)}`;
 
-		let st_dr = ``
-		let basic = ``
-		if (spell.saving_throw_basic) {
-			basic = `basic `
-		}
-		if (spell.saving_throw !== null) {
-			st_dr = `<strong>Saving Throw </strong>${basic}${spell.saving_throw}`
-		}
-		if (spell.duration["type"] !== null) {
-			if (st_dr === ``) {
-				st_dr = `<strong>Duration </strong>${spell.duration["entry"]}`
-			} else {
-				st_dr += `; <strong>Duration </strong>${spell.duration["entry"]}`
-			}
-		}
-		if (st_dr !== ``) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">${st_dr}</p>`);
-		}
+		const targetingParts = [];
+		if (sp.range && sp.range.type != null) targetingParts.push(`<strong>Range </strong>${sp.range.entry}`);
+		if (sp.area != null) targetingParts.push(`<strong>Area </strong>${sp.area.entry}`);
+		if (sp.targets != null) targetingParts.push(`<strong>Targets </strong>${sp.targets}`);
 
-		renderStack.push(Renderer.utils.getDividerDiv());
+		const stDurationParts = [];
+		if (sp.saving_throw != null) stDurationParts.push(`<strong>Saving Throw </strong>${sp.saving_throw_basic ? "basic " : ""}${sp.saving_throw}`);
+		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration </strong>${sp.duration.entry}`);
 
-		renderer.recursiveRender(spell.entries, renderStack, {pf2StatFix: true});
-
-		if (spell.heightened.heightened) {
-			renderStack.push(Renderer.utils.getDividerDiv())
-			if (spell.heightened.plus_x !== null) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (+${spell.heightened.plus_x.level}) </strong>`)
-				renderer.recursiveRender(spell.heightened.plus_x.entry, renderStack)
-				renderStack.push(`</p>`)
-			}
-			if (spell.heightened.x !== null) {
-				for (let x of spell.heightened.x) {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened (${Parser.getOrdinalForm(x.level)}) </strong>`)
-					renderer.recursiveRender(x.entry, renderStack)
-					renderStack.push(`</p>`)
-				}
-			}
-			if (spell.heightened.no_x !== null) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Heightened </strong>`)
-				renderer.recursiveRender(spell.heightened.no_x.entry, renderStack)
-				renderStack.push(`</p>`)
-			}
-		}
-		if (!options.noPage) renderStack.push(Renderer.utils.getPageP(spell));
-		return renderStack.join("");
+		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>` : ""}
+		${sp.alternate_tradition ? Object.keys(sp.alternate_tradition).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k} </strong>${sp.alternate_tradition[k].join(", ")}</p>`) : ""}
+		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(sp.cast.entry)} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
+		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
+		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}`;
 	},
 
 	getHeightenedEntry (sp) {
@@ -4446,16 +4368,18 @@ Renderer.trait = {
 		"Size": ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"],
 	},
 
-	getRenderedString (trait) {
+	getRenderedString (trait, opts) {
+		opts = opts || {};
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
 		renderStack.push(`${Renderer.utils.getExcludedDiv(trait, "trait", UrlUtil.PG_TRAITS)}`)
 		renderStack.push(`
-			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS})}
+			${Renderer.utils.getNameDiv(trait, {page: UrlUtil.PG_TRAITS, type: "Trait"})}
 			${Renderer.utils.getDividerDiv()}
 		`);
 		renderer.recursiveRender(trait.entries, renderStack, {pf2StatFix: true});
+		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(trait))
 
 		return renderStack.join("");
 	},
@@ -5528,14 +5452,14 @@ Renderer.hover = {
 			case UrlUtil.PG_CLASSES:
 				return Renderer.hover._pCacheAndGet_pLoadClasses(page, source, hash, opts);
 			case UrlUtil.PG_SPELLS:
-				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/spells/`, "spell", Renderer.spell.prePopulateHover);
+				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/spells/`, "spell");
 			case UrlUtil.PG_RITUALS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rituals/rituals-crb.json", "ritual");
+				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/rituals/", "ritual");
 			case UrlUtil.PG_BESTIARY:
-				return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, opts, `data/bestiary/`, "creature", data => DataUtil.creature.populateMetaReference(data));
+				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/bestiary/`, "creature");
 			case UrlUtil.PG_ITEMS: {
 				const loadKey = UrlUtil.PG_ITEMS;
-
+				// FIXME: urgent
 				await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
 					page,
 					source,
@@ -5570,7 +5494,7 @@ Renderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "backgrounds.json", "background");
 			case UrlUtil.PG_FEATS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "feats/feats-crb.json", "feat");
+				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar"]);
 			case UrlUtil.PG_ANCESTRIES: {
@@ -5769,7 +5693,7 @@ Renderer.hover = {
 		});
 	},
 
-	async _pCacheAndGet_pLoadMultiSource (page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
+	async _pCacheAndGet_pLoadWithIndex (page, source, hash, opts, baseUrl, listProp, fnPrePopulate = null) {
 		const loadKey = `${page}${source}`;
 
 		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
@@ -5802,7 +5726,7 @@ Renderer.hover = {
 		const nxtOpts = MiscUtil.copy(opts);
 		nxtOpts.isFluff = true;
 		nxtOpts.fnGetHash = it => UrlUtil.encodeForHash([it.name, it.source]);
-		return Renderer.hover._pCacheAndGet_pLoadMultiSource(page, source, hash, nxtOpts, baseUrl, listProp);
+		return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, nxtOpts, baseUrl, listProp);
 	},
 
 	async _pCacheAndGet_pLoadSingleBrew (page, opts, listProps, fnMutateItem) {
@@ -6724,6 +6648,8 @@ if (typeof module !== "undefined") {
 	global.Renderer = Renderer;
 }
 
+/*
 window.addEventListener("load", async () => {
 	Renderer.trait.buildCategoryLookup()
 });
+*/

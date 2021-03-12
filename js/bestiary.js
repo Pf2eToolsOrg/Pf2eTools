@@ -256,8 +256,7 @@ class BestiaryPage {
 }
 
 function handleBrew (homebrew) {
-	DataUtil.creature.populateMetaReference(homebrew);
-	addCreatures(homebrew.monster);
+	addCreatures(homebrew.creature);
 	return Promise.resolve();
 }
 

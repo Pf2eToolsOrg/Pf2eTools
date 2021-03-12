@@ -84,7 +84,7 @@ class AncestriesPage extends BaseComponent {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.ancestry.loadJSON();
-		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json")
+		const feats = await DataUtil.feat.loadJSON();
 
 		this._list = ListUtil.initList({listClass: "ancestries", isUseJquery: true});
 		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});

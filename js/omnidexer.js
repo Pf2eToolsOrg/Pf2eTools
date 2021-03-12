@@ -177,7 +177,7 @@ class IndexableDirectory {
 	pGetDeepIndex () { return []; }
 }
 
-class IndexableDirectoryAncestry extends IndexableDirectory {
+class IndexableDirectoryAncestries extends IndexableDirectory {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ANCESTRY,
@@ -191,7 +191,7 @@ class IndexableDirectoryAncestry extends IndexableDirectory {
 	}
 }
 
-class IndexableDirectoryArchetype extends IndexableDirectory {
+class IndexableDirectoryArchetypes extends IndexableDirectory {
 	constructor () {
 		super({
 			category: Parser.CAT_ID_ARCHETYPE,
@@ -200,6 +200,20 @@ class IndexableDirectoryArchetype extends IndexableDirectory {
 			source: "source",
 			listProp: "archetype",
 			baseUrl: "archetypes.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableDirectoryBackgrounds extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FEAT,
+			dir: "backgrounds",
+			primary: "name",
+			source: "source",
+			listProp: "background",
+			baseUrl: "backgrounds.html",
 			isHover: true,
 		});
 	}
@@ -214,6 +228,47 @@ class IndexableDirectoryBestiary extends IndexableDirectory {
 			source: "source",
 			listProp: "creature",
 			baseUrl: "bestiary.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableDirectoryFeats extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FEAT,
+			dir: "feats",
+			primary: "name",
+			source: "source",
+			listProp: "feat",
+			baseUrl: "feats.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableDirectoryItems extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FEAT,
+			dir: "items",
+			primary: "name",
+			source: "source",
+			listProp: "item",
+			baseUrl: "items.html",
+			isHover: true,
+		});
+	}
+}
+class IndexableDirectoryBaseItems extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FEAT,
+			dir: "items",
+			primary: "name",
+			source: "source",
+			listProp: "baseitem",
+			baseUrl: "items.html",
 			isHover: true,
 		});
 	}
@@ -379,9 +434,13 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 }
 
 Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
-	new IndexableDirectoryAncestry(),
-	new IndexableDirectoryArchetype(),
+	new IndexableDirectoryAncestries(),
+	new IndexableDirectoryArchetypes(),
 	new IndexableDirectoryBestiary(),
+	new IndexableDirectoryBackgrounds(),
+	new IndexableDirectoryFeats(),
+	new IndexableDirectoryItems(),
+	new IndexableDirectoryBaseItems(),
 	new IndexableDirectorySpells(),
 	new IndexableDirectoryClass(),
 	new IndexableDirectorySubclass(),
@@ -432,54 +491,6 @@ class IndexableFile {
 	pGetDeepIndex () { return []; }
 }
 
-class IndexableFileBackgrounds extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_BACKGROUND,
-			file: "backgrounds/backgrounds-crb.json",
-			listProp: "background",
-			baseUrl: "backgrounds.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileItemsBase extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM,
-			file: "items/items-base.json",
-			listProp: "baseitem",
-			baseUrl: "items.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileItems extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM,
-			file: "items/items-crb.json",
-			listProp: "item",
-			baseUrl: "items.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileItemGroups extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM,
-			file: "items/items-crb.json",
-			listProp: "itemGroup",
-			baseUrl: "items.html",
-			isHover: true,
-		});
-	}
-}
-
 class IndexableFileConditions extends IndexableFile {
 	constructor () {
 		super({
@@ -523,18 +534,6 @@ class IndexableFileItemCurses extends IndexableFile {
 			file: "afflictions.json",
 			listProp: "itemcurse",
 			baseUrl: "afflictions.html",
-			isHover: true,
-		});
-	}
-}
-
-class IndexableFileFeats extends IndexableFile {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_FEAT,
-			file: "feats/feats-crb.json",
-			listProp: "feat",
-			baseUrl: "feats.html",
 			isHover: true,
 		});
 	}
@@ -665,7 +664,6 @@ class IndexableFileDeities extends IndexableFile {
 		super({
 			category: Parser.CAT_ID_DEITY,
 			file: "deities.json",
-			postLoad: DataUtil.deity.doPostLoad,
 			listProp: "deity",
 			baseUrl: "deities.html",
 			isHover: true,
@@ -752,32 +750,49 @@ class IndexableFileTraits extends IndexableFile {
 	}
 }
 
+class IndexableFileCompanions extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_COMPANION,
+			file: "companionsfamiliars.json",
+			listProp: "companion",
+			baseUrl: "companionsfamiliars.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableFileFamiliars extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_FAMILIAR,
+			file: "companionsfamiliars.json",
+			listProp: "familiar",
+			baseUrl: "companionsfamiliars.html",
+			isHover: true,
+		});
+	}
+}
+
 Omnidexer.TO_INDEX = [
-	new IndexableFileBackgrounds(),
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
 	new IndexableFileCurses(),
 	new IndexableFileItemCurses(),
-	new IndexableFileFeats(),
 
-	new IndexableFileItemsBase(),
-	new IndexableFileItems(),
-	new IndexableFileItemGroups(),
-
-	// new IndexableFileRewards(),
 	new IndexableFileVariantRules(),
-	// new IndexableFileAdventures(),
 	new IndexableFileBooks(),
-	// new IndexableFileQuickReference(),
 	new IndexableFileDeities(),
 	new IndexableFileHazards(),
 	new IndexableFileTables(),
-	// new IndexableFileTableGroups(),
 
 	new IndexableFileActions(),
 	new IndexableFileCreatureAbilities(),
 	new IndexableFileLanguages(),
 	new IndexableFileTraits(),
+	new IndexableFileCompanions(),
+	new IndexableFileFamiliars(),
+	new IndexableFileAdventures(),
 ];
 
 class IndexableSpecial {

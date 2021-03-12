@@ -2071,28 +2071,17 @@ DataUtil = {
 	_pDoMetaMerge_handleCopyProp (prop, arr, entry, options) {
 		if (entry._copy) {
 			switch (prop) {
-				case "monster":
-					return DataUtil.creature.pMergeCopy(arr, entry, options);
-				case "monsterFluff":
-					return DataUtil.monsterFluff.pMergeCopy(arr, entry, options);
-				case "spell":
-					return DataUtil.spell.pMergeCopy(arr, entry, options);
-				case "spellFluff":
-					return DataUtil.spellFluff.pMergeCopy(arr, entry, options);
-				case "item":
-					return DataUtil.item.pMergeCopy(arr, entry, options);
-				case "itemFluff":
-					return DataUtil.itemFluff.pMergeCopy(arr, entry, options);
-				case "background":
-					return DataUtil.background.pMergeCopy(arr, entry, options);
-				case "race":
-					return DataUtil.race.pMergeCopy(arr, entry, options);
-				case "raceFluff":
-					return DataUtil.raceFluff.pMergeCopy(arr, entry, options);
-				case "deity":
-					return DataUtil.deity.pMergeCopy(arr, entry, options);
-				default:
-					throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
+				case "creature": return DataUtil.creature.pMergeCopy(arr, entry, options);
+				case "creatureFluff": return DataUtil.creatureFluff.pMergeCopy(arr, entry, options);
+				case "spell": return DataUtil.spell.pMergeCopy(arr, entry, options);
+				case "spellFluff": return DataUtil.spellFluff.pMergeCopy(arr, entry, options);
+				case "item": return DataUtil.item.pMergeCopy(arr, entry, options);
+				case "itemFluff": return DataUtil.itemFluff.pMergeCopy(arr, entry, options);
+				case "background": return DataUtil.background.pMergeCopy(arr, entry, options);
+				case "ancestry": return DataUtil.ancestry.pMergeCopy(arr, entry, options);
+				case "ancestryFluff": return DataUtil.ancestryFluff.pMergeCopy(arr, entry, options);
+				case "deity": return DataUtil.deity.pMergeCopy(arr, entry, options);
+				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 			}
 		}
 	},
@@ -2120,28 +2109,28 @@ DataUtil = {
 				}
 				delete data._meta.internalCopies;
 			}
-		}
 
-		if (data._meta && data._meta.otherSources) {
-			await Promise.all(Object.entries(data._meta.otherSources).map(async ([prop, sources]) => {
-				const toLoads = await Promise.all(Object.entries(sources).map(async ([source, findWith]) => ({
-					findWith,
-					url: await DataUtil.pGetLoadableByMeta(prop, source),
-				})));
+			if (data._meta.otherSources) {
+				await Promise.all(Object.entries(data._meta.otherSources).map(async ([prop, sources]) => {
+					const toLoads = await Promise.all(Object.entries(sources).map(async ([source, findWith]) => ({
+						findWith,
+						url: await DataUtil.pGetLoadableByMeta(prop, source),
+					})));
 
-				const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({
-					findWith,
-					sourceData: await DataUtil.loadJSON(url),
-				})));
+					const additionalData = await Promise.all(toLoads.map(async ({findWith, url}) => ({
+						findWith,
+						sourceData: await DataUtil.loadJSON(url),
+					})));
 
-				additionalData.forEach(dataAndSource => {
-					const findWith = dataAndSource.findWith;
-					const ad = dataAndSource.sourceData;
-					const toAppend = ad[prop].filter(it => it.otherSources && it.otherSources.find(os => os.source === findWith));
-					if (toAppend.length) data[prop] = (data[prop] || []).concat(toAppend);
-				});
-			}));
-			delete data._meta.otherSources;
+					additionalData.forEach(dataAndSource => {
+						const findWith = dataAndSource.findWith;
+						const ad = dataAndSource.sourceData;
+						const toAppend = ad[prop].filter(it => it.otherSources && it.otherSources.find(os => os.source === findWith));
+						if (toAppend.length) data[prop] = (data[prop] || []).concat(toAppend);
+					});
+				}));
+				delete data._meta.otherSources;
+			}
 		}
 		DataUtil._merged[ident] = data;
 	},
@@ -2329,30 +2318,6 @@ DataUtil = {
 
 			if (copyMeta._mod) normaliseMods(copyMeta);
 
-			// fetch and apply any external traits -- append them to existing copy mods where available
-			let racials = null;
-			if (copyMeta._trait) {
-				const traitData = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/traits.json`);
-				racials = traitData.trait.find(t => t.name.toLowerCase() === copyMeta._trait.name.toLowerCase() && t.source.toLowerCase() === copyMeta._trait.source.toLowerCase());
-				if (!racials) throw new Error(`Could not find traits to apply with name "${copyMeta._trait.name}" and source "${copyMeta._trait.source}"`);
-				racials = MiscUtil.copy(racials);
-
-				if (racials.apply._mod) {
-					normaliseMods(racials.apply);
-
-					if (copyMeta._mod) {
-						Object.entries(racials.apply._mod).forEach(([k, v]) => {
-							if (copyMeta._mod[k]) copyMeta._mod[k] = copyMeta._mod[k].concat(v);
-							else copyMeta._mod[k] = v;
-						});
-					} else copyMeta._mod = racials.apply._mod;
-				}
-
-				delete copyMeta._trait;
-			}
-
-			const copyToRootProps = new Set(Object.keys(copyTo));
-
 			// copy over required values
 			Object.keys(copyFrom).forEach(k => {
 				if (copyTo[k] === null) return delete copyTo[k];
@@ -2362,13 +2327,6 @@ DataUtil = {
 					} else copyTo[k] = copyFrom[k];
 				}
 			});
-
-			// apply any root racial properties after doing base copy
-			if (racials && racials.apply._root) {
-				Object.entries(racials.apply._root)
-					.filter(([k, v]) => !copyToRootProps.has(k)) // avoid overwriting any real root properties
-					.forEach(([k, v]) => copyTo[k] = v);
-			}
 
 			// mod helpers /////////////////
 			function doEnsureArray (obj, prop) {
@@ -2524,164 +2482,6 @@ DataUtil = {
 				else applyTo(modInfo.prop);
 			}
 
-			function doMod_addSenses (modInfo) {
-				doEnsureArray(modInfo, "senses");
-				copyTo.senses = copyTo.senses || [];
-				modInfo.senses.forEach(sense => {
-					let found = false;
-					for (let i = 0; i < copyTo.senses.length; ++i) {
-						const m = new RegExp(`${sense.type} (\\d+)`, "i").exec(copyTo.senses[i]);
-						if (m) {
-							found = true;
-							// if the creature already has a greater sense of this type, do nothing
-							if (Number(m[1]) < sense.type) {
-								copyTo.senses[i] = `${sense.type} ${sense.range} ft.`;
-							}
-							break;
-						}
-					}
-
-					if (!found) copyTo.senses.push(`${sense.type} ${sense.range} ft.`);
-				});
-			}
-
-			function doMod_addSkills (modInfo) {
-				copyTo.skill = copyTo.skill || [];
-				Object.entries(modInfo.skills).forEach(([skill, mode]) => {
-					// mode: 1 = proficient; 2 = expert
-					const total = mode * Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(copyTo[Parser.skillToAbilityAbv(skill)]);
-					const asText = total >= 0 ? `+${total}` : `-${total}`;
-					if (copyTo.skill && copyTo.skill[skill]) {
-						// update only if ours is larger (prevent reduction in skill score)
-						if (Number(copyTo.skill[skill]) < total) copyTo.skill[skill] = asText;
-					} else copyTo.skill[skill] = asText;
-				});
-			}
-
-			function doMod_addSpells (modInfo) {
-				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
-
-				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-				const spellcasting = copyTo.spellcasting[0];
-
-				if (modInfo.spells) {
-					const spells = spellcasting.spells;
-
-					Object.keys(modInfo.spells).forEach(k => {
-						if (!spells[k]) spells[k] = modInfo.spells[k];
-						else {
-							// merge the objects
-							const spellCategoryNu = modInfo.spells[k];
-							const spellCategoryOld = spells[k];
-							Object.keys(spellCategoryNu).forEach(kk => {
-								if (!spellCategoryOld[kk]) spellCategoryOld[kk] = spellCategoryNu[kk];
-								else {
-									if (typeof spellCategoryOld[kk] === "object") {
-										if (spellCategoryOld[kk] instanceof Array) spellCategoryOld[kk] = spellCategoryOld[kk].concat(spellCategoryNu[kk]).sort(SortUtil.ascSortLower);
-										else throw new Error(`Object at key ${kk} not an array!`);
-									} else spellCategoryOld[kk] = spellCategoryNu[kk];
-								}
-							});
-						}
-					});
-				}
-
-				if (modInfo.will) {
-					modInfo.will.forEach(sp => (modInfo.will = modInfo.will || []).push(sp));
-				}
-
-				if (modInfo.daily) {
-					for (let i = 1; i <= 9; ++i) {
-						const e = `${i}e`;
-
-						spellcasting.daily = spellcasting.daily || {};
-
-						if (modInfo.daily[i]) {
-							modInfo.daily[i].forEach(sp => (spellcasting.daily[i] = spellcasting.daily[i] || []).push(sp));
-						}
-
-						if (modInfo.daily[e]) {
-							modInfo.daily[e].forEach(sp => (spellcasting.daily[e] = spellcasting.daily[e] || []).push(sp));
-						}
-					}
-				}
-			}
-
-			function doMod_replaceSpells (modInfo) {
-				if (!copyTo.spellcasting) throw new Error(`Creature did not have a spellcasting property!`);
-
-				// TODO could accept a "position" or "name" parameter should spells need to be added to other spellcasting traits
-				const spellcasting = copyTo.spellcasting[0];
-
-				const handleReplace = (curSpells, replaceMeta, k) => {
-					doEnsureArray(replaceMeta, "with");
-
-					const ix = curSpells[k].indexOf(replaceMeta.replace);
-					if (~ix) {
-						curSpells[k].splice(ix, 1, ...replaceMeta.with);
-						curSpells[k].sort(SortUtil.ascSortLower);
-					} else throw new Error(`Could not find spell "${replaceMeta.replace}" to replace`);
-				};
-
-				if (modInfo.spells) {
-					const trait0 = spellcasting.spells;
-					Object.keys(modInfo.spells).forEach(k => { // k is e.g. "4"
-						if (trait0[k]) {
-							const replaceMetas = modInfo.spells[k];
-							const curSpells = trait0[k];
-							replaceMetas.forEach(replaceMeta => handleReplace(curSpells, replaceMeta, "spells"));
-						}
-					});
-				}
-
-				// TODO should be extended  to handle all non-slot-based spellcasters
-				if (modInfo.daily) {
-					for (let i = 1; i <= 9; ++i) {
-						const e = `${i}e`;
-
-						if (modInfo.daily[i]) {
-							modInfo.daily[i].forEach(replaceMeta => handleReplace(spellcasting.daily, replaceMeta, i));
-						}
-
-						if (modInfo.daily[e]) {
-							modInfo.daily[e].forEach(replaceMeta => handleReplace(spellcasting.daily, replaceMeta, e));
-						}
-					}
-				}
-			}
-
-			function doMod_scalarAddHit (modInfo, prop) {
-				if (!copyTo[prop]) return;
-				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@hit ([-+]?\d+)}/g, (m0, m1) => `{@hit ${Number(m1) + modInfo.scalar}}`))
-			}
-
-			function doMod_scalarAddDc (modInfo, prop) {
-				if (!copyTo[prop]) return;
-				copyTo[prop] = JSON.parse(JSON.stringify(copyTo[prop]).replace(/{@dc (\d+)}/g, (m0, m1) => `{@dc ${Number(m1) + modInfo.scalar}}`));
-			}
-
-			function doMod_maxSize (modInfo) {
-				const ixCur = Parser.SIZE_ABVS.indexOf(copyTo.size);
-				const ixMax = Parser.SIZE_ABVS.indexOf(modInfo.max);
-				if (ixCur < 0 || ixMax < 0) throw new Error(`Unhandled size!`);
-				copyTo.size = Parser.SIZE_ABVS[Math.min(ixCur, ixMax)]
-			}
-
-			function doMod_scalarMultXp (modInfo) {
-				function getOutput (input) {
-					let out = input * modInfo.scalar;
-					if (modInfo.floor) out = Math.floor(out);
-					return out;
-				}
-
-				if (copyTo.cr.xp) copyTo.cr.xp = getOutput(copyTo.cr.xp);
-				else {
-					const curXp = Parser.crToXpNumber(copyTo.cr);
-					if (!copyTo.cr.cr) copyTo.cr = {cr: copyTo.cr};
-					copyTo.cr.xp = getOutput(curXp);
-				}
-			}
-
 			function doMod (modInfos, ...properties) {
 				function handleProp (prop) {
 					modInfos.forEach(modInfo => {
@@ -2718,23 +2518,6 @@ DataUtil = {
 									return doMod_scalarAddProp(modInfo, prop);
 								case "scalarMultProp":
 									return doMod_scalarMultProp(modInfo, prop);
-								// bestiary specific
-								case "addSenses":
-									return doMod_addSenses(modInfo);
-								case "addSkills":
-									return doMod_addSkills(modInfo);
-								case "addSpells":
-									return doMod_addSpells(modInfo);
-								case "replaceSpells":
-									return doMod_replaceSpells(modInfo);
-								case "scalarAddHit":
-									return doMod_scalarAddHit(modInfo, prop);
-								case "scalarAddDc":
-									return doMod_scalarAddDc(modInfo, prop);
-								case "maxSize":
-									return doMod_maxSize(modInfo);
-								case "scalarMultXp":
-									return doMod_scalarMultXp(modInfo);
 								default:
 									throw new Error(`Unhandled mode: ${modInfo.mode}`);
 							}
@@ -2791,7 +2574,7 @@ DataUtil = {
 				});
 
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "action", "bonus", "reaction", "trait", "legendary", "mythic", "variant", "spellcasting", "legendaryHeader");
+					if (prop === "*") doMod(modInfos, "abilities_interactive", "abilities_automatic", "attacks", "abilities_active");
 					else if (prop === "_") doMod(modInfos);
 					else doMod(modInfos, prop);
 				});
@@ -2805,35 +2588,56 @@ DataUtil = {
 		},
 	},
 
+	feat: {
+		_loadedJson: null,
+		_pLoadingJson: null,
+
+		async loadJSON () {
+			if (DataUtil.feat._loadedJson) return DataUtil.feat._loadedJson;
+			DataUtil.feat._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/feats/index.json`);
+				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/feats/${file}`)));
+				DataUtil.feat._loadedJson = {
+					feat: allData.map(it => it.feat || []).flat(),
+				}
+			})();
+			await DataUtil.feat._pLoadingJson;
+
+			return DataUtil.feat._loadedJson;
+		},
+	},
+
+	ritual: {
+		_loadedJson: null,
+		_pLoadingJson: null,
+
+		async loadJSON () {
+			if (DataUtil.ritual._loadedJson) return DataUtil.ritual._loadedJson;
+			DataUtil.ritual._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals/index.json`);
+				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals/${file}`)));
+				DataUtil.ritual._loadedJson = {
+					ritual: allData.map(it => it.ritual || []).flat(),
+				}
+			})();
+			await DataUtil.ritual._pLoadingJson;
+
+			return DataUtil.ritual._loadedJson;
+		},
+	},
+
 	creature: {
 		_MERGE_REQUIRES_PRESERVE: {
-			legendaryGroup: true,
-			environment: true,
-			soundClip: true,
 			page: true,
-			altArt: true,
 			otherSources: true,
-			variant: true,
-			dragonCastingColor: true,
-			srd: true,
-			hasToken: true,
 		},
 		_mergeCache: {},
-		async pMergeCopy (monList, mon, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.creature, UrlUtil.PG_BESTIARY, monList, mon, options);
+		async pMergeCopy (crList, cr, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creature, UrlUtil.PG_BESTIARY, crList, cr, options);
 		},
 
 		async pLoadAll () {
-			const [index, legendaryGroups] = await Promise.all([
-				DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`),
-				DataUtil.legendaryGroup.pLoadAll(),
-			]);
-
-			if (!DataUtil.creature._isMetaLoaded) {
-				DataUtil.creature.populateMetaReference({legendaryGroup: legendaryGroups});
-				DataUtil.creature._isMetaLoaded = true;
-			}
-
+			const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/index.json`);
 			const allData = await Promise.all(Object.entries(index).map(async ([source, file]) => {
 				const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${file}`);
 				return data.creature.filter(it => it.source === source);
@@ -2841,26 +2645,13 @@ DataUtil = {
 			return allData.flat();
 		},
 
-		_isMetaLoaded: false,
-		metaGroupMap: {},
-		getMetaGroup (mon) {
-			if (!mon.legendaryGroup || !mon.legendaryGroup.source || !mon.legendaryGroup.name) return null;
-			return (DataUtil.creature.metaGroupMap[mon.legendaryGroup.source] || {})[mon.legendaryGroup.name];
-		},
-		populateMetaReference (data) {
-			(data.legendaryGroup || []).forEach(it => {
-				(DataUtil.creature.metaGroupMap[it.source] =
-					DataUtil.creature.metaGroupMap[it.source] || {})[it.name] =
-					DataUtil.creature.metaGroupMap[it.source][it.name] || it;
-			});
-		},
 	},
 
-	monsterFluff: {
+	creatureFluff: {
 		_MERGE_REQUIRES_PRESERVE: {},
 		_mergeCache: {},
-		async pMergeCopy (monFlfList, monFlf, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.monsterFluff, UrlUtil.PG_BESTIARY, monFlfList, monFlf, options);
+		async pMergeCopy (crFlfList, crFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.creatureFluff, UrlUtil.PG_BESTIARY, crFlfList, crFlf, options);
 		},
 	},
 
@@ -2868,7 +2659,6 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,
 			otherSources: true,
-			srd: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (spellList, spell, options) {
@@ -2895,15 +2685,29 @@ DataUtil = {
 
 	item: {
 		_MERGE_REQUIRES_PRESERVE: {
-			lootTables: true,
-			tier: true,
 			page: true,
 			otherSources: true,
-			srd: true,
 		},
 		_mergeCache: {},
+		_loadedJson: null,
+		_pLoadingJson: null,
 		async pMergeCopy (itemList, item, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.item, UrlUtil.PG_ITEMS, itemList, item, options);
+		},
+
+		async loadJSON () {
+			if (DataUtil.item._loadedJson) return DataUtil.item._loadedJson;
+			DataUtil.item._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index.json`);
+				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
+				DataUtil.item._loadedJson = {
+					item: allData.map(it => it.item || []).flat(),
+					baseitem: allData.map(it => it.baseitem || []).flat(),
+				}
+			})();
+			await DataUtil.item._pLoadingJson;
+
+			return DataUtil.item._loadedJson;
 		},
 	},
 
@@ -2933,32 +2737,53 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,
 			otherSources: true,
-			srd: true,
 		},
 		_mergeCache: {},
+		_loadedJson: null,
+		_pLoadingJson: null,
+
+		async loadJSON () {
+			if (DataUtil.background._loadedJson) return DataUtil.background._loadedJson;
+			DataUtil.background._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/backgrounds/index.json`);
+				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/backgrounds/${file}`)));
+				DataUtil.background._loadedJson = {
+					background: allData.map(it => it.background || []).flat(),
+				}
+			})();
+			await DataUtil.background._pLoadingJson;
+
+			return DataUtil.background._loadedJson;
+		},
 		async pMergeCopy (bgList, bg, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.background, UrlUtil.PG_BACKGROUNDS, bgList, bg, options);
 		},
 	},
 
-	race: {
-		_MERGE_REQUIRES_PRESERVE: {
-			subraces: true,
-			page: true,
-			otherSources: true,
-			srd: true,
-		},
-		_mergeCache: {},
-		async pMergeCopy (raceList, race, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.race, UrlUtil.PG_ANCESTRIES, raceList, race, options);
+	ancestry: {
+		_pLoadingJson: null,
+		_loadedJson: null,
+		async loadJSON () {
+			if (DataUtil.ancestry._loadedJson) return DataUtil.ancestry._loadedJson;
+			DataUtil.ancestry._pLoadingJson = (async () => {
+				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/ancestries/index.json`);
+				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/ancestries/${it}`)));
+				DataUtil.ancestry._loadedJson = {
+					ancestry: allData.map(it => it.ancestry || []).flat(),
+					versatileHeritage: allData.map(it => it.versatileHeritage || []).flat(),
+				};
+			})();
+			await DataUtil.ancestry._pLoadingJson;
+
+			return DataUtil.ancestry._loadedJson;
 		},
 	},
 
-	raceFluff: {
+	ancestryFluff: {
 		_MERGE_REQUIRES_PRESERVE: {},
 		_mergeCache: {},
-		async pMergeCopy (raceFlfList, raceFlf, options) {
-			return DataUtil.generic._pMergeCopy(DataUtil.raceFluff, UrlUtil.PG_ANCESTRIES, raceFlfList, raceFlf, options);
+		async pMergeCopy (ancFlfList, ancFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.ancestryFluff, UrlUtil.PG_ANCESTRIES, ancFlfList, ancFlf, options);
 		},
 	},
 
@@ -3174,32 +2999,6 @@ DataUtil = {
 		},
 	},
 
-	ancestry: {
-		_pLoadingJson: null,
-		_pLoadingRawJson: null,
-		_loadedJson: null,
-		_loadedRawJson: null,
-		async loadJSON () {
-			if (DataUtil.ancestry._loadedJson) return DataUtil.ancestry._loadedJson;
-			DataUtil.ancestry._pLoadingJson = (async () => {
-				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/ancestries/index.json`);
-				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/ancestries/${it}`)));
-				// FIXME: Kill me, I am deformed
-				DataUtil.ancestry._loadedJson = {
-					ancestry: allData.map(it => {
-						if (it.ancestry) return it.ancestry[0];
-					}).filter(Boolean),
-					versatileHeritage: allData.map(it => {
-						if (it.versatileHeritage) return it.versatileHeritage;
-					}).filter(Boolean).flat(),
-				};
-			})();
-			await DataUtil.ancestry._pLoadingJson;
-
-			return DataUtil.ancestry._loadedJson;
-		},
-	},
-
 	archetype: {
 		_pLoadingJson: null,
 		_pLoadingRawJson: null,
@@ -3210,7 +3009,7 @@ DataUtil = {
 			DataUtil.archetype._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/index.json`);
 				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/${it}`)));
-				DataUtil.archetype._loadedJson = {archetype: allData.map(it => it.archetype).flat().filter(Boolean)};
+				DataUtil.archetype._loadedJson = {archetype: allData.map(it => it.archetype || []).flat()};
 			})();
 			await DataUtil.archetype._pLoadingJson;
 
@@ -3222,65 +3021,14 @@ DataUtil = {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,
 			otherSources: true,
-			srd: true,
 		},
 		_mergeCache: {},
 		async pMergeCopy (deityList, deity, options) {
 			return DataUtil.generic._pMergeCopy(DataUtil.deity, UrlUtil.PG_DEITIES, deityList, deity, options);
 		},
 
-		doPostLoad: function (data) {
-			const PRINT_ORDER = [
-				SRC_CRB,
-				SRC_APG,
-			];
-
-			const inSource = {};
-			PRINT_ORDER.forEach(src => {
-				inSource[src] = {};
-				data.deity.filter(it => it.source === src).forEach(it => inSource[src][it.reprintAlias || it.name] = it); // TODO need to handle similar names
-			});
-
-			const laterPrinting = [PRINT_ORDER.last()];
-			[...PRINT_ORDER].reverse().slice(1).forEach(src => {
-				laterPrinting.forEach(laterSrc => {
-					Object.keys(inSource[src]).forEach(name => {
-						const newer = inSource[laterSrc][name];
-						if (newer) {
-							const old = inSource[src][name];
-							old.reprinted = true;
-							if (!newer._isEnhanced) {
-								newer.previousVersions = newer.previousVersions || [];
-								newer.previousVersions.push(old);
-							}
-						}
-					});
-				});
-
-				laterPrinting.push(src);
-			});
-			data.deity.forEach(g => g._isEnhanced = true);
-		},
-
 		loadJSON: async function () {
-			const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/deities.json`);
-			DataUtil.deity.doPostLoad(data);
-			return data;
-		},
-	},
-
-	table: {
-		async pLoadAll () {
-			const datas = await Promise.all([`${Renderer.get().baseUrl}data/generated/gendata-tables.json`, `${Renderer.get().baseUrl}data/tables.json`].map(url => DataUtil.loadJSON(url)));
-			const combined = {};
-			datas.forEach(data => {
-				Object.entries(data).forEach(([k, v]) => {
-					if (combined[k] && combined[k] instanceof Array && v instanceof Array) combined[k] = combined[k].concat(v);
-					else if (combined[k] == null) combined[k] = v;
-					else throw new Error(`Could not merge keys for key "${k}"`);
-				});
-			});
-			return combined;
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/deities.json`);
 		},
 	},
 
@@ -3289,7 +3037,7 @@ DataUtil = {
 			if (urlRoot && urlRoot.trim()) {
 				urlRoot = urlRoot.trim();
 				if (!urlRoot.endsWith("/")) urlRoot = `${urlRoot}/`;
-			} else urlRoot = `https://raw.githubusercontent.com/MrVauxs/pf2e-homebrew/master`;
+			} else urlRoot = `https://raw.githubusercontent.com/Pf2eTools/homebrew/master`;
 			return urlRoot;
 		},
 

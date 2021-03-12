@@ -4,7 +4,7 @@ class BackgroundPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
 		super({
-			dataSource: "data/backgrounds/backgrounds-crb.json",
+			dataSource: DataUtil.background.loadJSON,
 			dataSourceFluff: "data/fluff-backgrounds.json",
 
 			pageFilter,

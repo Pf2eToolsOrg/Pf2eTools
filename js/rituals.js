@@ -9,7 +9,7 @@ class RitualsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterRituals();
 		super({
-			dataSource: "data/rituals/rituals-crb.json",
+			dataSource: DataUtil.ritual.loadJSON,
 			pageFilter,
 			listClass: "rituals",
 			sublistClass: "subrituals",

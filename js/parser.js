@@ -1219,6 +1219,12 @@ Parser.spComponentsToFull = function (comp, level) {
 	return out.join(", ") || "None";
 };
 
+Parser.COMPONENTS_TO_FULL = {};
+Parser.COMPONENTS_TO_FULL["V"] = "verbal";
+Parser.COMPONENTS_TO_FULL["M"] = "material";
+Parser.COMPONENTS_TO_FULL["S"] = "somatic";
+Parser.COMPONENTS_TO_FULL["F"] = "focus";
+
 Parser.SP_END_TYPE_TO_FULL = {
 	"dispel": "dispelled",
 	"trigger": "triggered",
@@ -1487,13 +1493,15 @@ Parser.CAT_ID_CLASS = 5;
 Parser.CAT_ID_CONDITION = 6;
 Parser.CAT_ID_FEAT = 7;
 Parser.CAT_ID_RITUAL = 8;
-Parser.CAT_ID_VEHICLE = 9;
+Parser.CAT_ID_TRAIT = 9;
 Parser.CAT_ID_ANCESTRY = 10;
 Parser.CAT_ID_VARIANT_RULE = 12;
 Parser.CAT_ID_ADVENTURE = 13;
 Parser.CAT_ID_DEITY = 14;
 Parser.CAT_ID_HAZARD = 17;
 Parser.CAT_ID_QUICKREF = 18;
+Parser.CAT_ID_COMPANION = 19;
+Parser.CAT_ID_FAMILIAR = 20;
 Parser.CAT_ID_AFFLICTION = 21;
 Parser.CAT_ID_TABLE = 24;
 Parser.CAT_ID_TABLE_GROUP = 25;
@@ -1505,8 +1513,8 @@ Parser.CAT_ID_ABILITY = 48;
 Parser.CAT_ID_LANGUAGE = 43;
 Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
-Parser.CAT_ID_TRAIT = 46;
 Parser.CAT_ID_ARCHETYPE = 47;
+Parser.CAT_ID_VEHICLE = 49;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -1537,6 +1545,8 @@ Parser.CAT_ID_TO_FULL[Parser.CAT_ID_LANGUAGE] = "Language";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_BOOK] = "Book";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_PAGE] = "Page";
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_TRAIT] = "Trait";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_COMPANION] = "Companion";
+Parser.CAT_ID_TO_FULL[Parser.CAT_ID_FAMILIAR] = "Familiar";
 
 Parser.pageCategoryToFull = function (catId) {
 	return Parser._parse_aToB(Parser.CAT_ID_TO_FULL, catId);
@@ -1569,6 +1579,8 @@ Parser.CAT_ID_TO_PROP[Parser.CAT_ID_ABILITY] = "ability";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_LANGUAGE] = "language";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_BOOK] = "book";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_TRAIT] = "trait";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_FAMILIAR] = "familiar";
+Parser.CAT_ID_TO_PROP[Parser.CAT_ID_COMPANION] = "companion";
 Parser.CAT_ID_TO_PROP[Parser.CAT_ID_PAGE] = null;
 
 Parser.pageCategoryToProp = function (catId) {

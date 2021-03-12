@@ -4,7 +4,7 @@ class FeatsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterFeats();
 		super({
-			dataSource: "data/feats/feats-crb.json",
+			dataSource: DataUtil.feat.loadJSON,
 
 			pageFilter,
 

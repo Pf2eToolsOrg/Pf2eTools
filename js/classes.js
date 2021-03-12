@@ -77,7 +77,7 @@ class ClassesPage extends BaseComponent {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
-		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json")
+		const feats = await DataUtil.feat.loadJSON();
 
 		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
 		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {

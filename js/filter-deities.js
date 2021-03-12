@@ -38,10 +38,8 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Info", PageFilterDeities._STR_REPRINTED, "SRD"],
+			items: [],
 			displayFn: StrUtil.uppercaseFirst,
-			deselFn: (it) => { return it === PageFilterDeities._STR_REPRINTED },
-			isSrdFilter: true,
 		});
 	}
 
@@ -50,7 +48,7 @@ class PageFilterDeities extends PageFilter {
 		if (g.devoteeBenefits) {
 			g._fFont = g.devoteeBenefits.font;
 			g._fSkill = g.devoteeBenefits.skill;
-			g._fWeapon = g.devoteeBenefits.weapon.split("|")[0];
+			g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
 			g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
 			g._fSpells = Object.keys(g.devoteeBenefits.spells).map(k => g.devoteeBenefits.spells[k]).flat().map(s => s.split("|")[0]) || [];
 		} else {
@@ -58,8 +56,7 @@ class PageFilterDeities extends PageFilter {
 		}
 		g._fDomains.sort(SortUtil.ascSort);
 
-		g._fMisc = g.reprinted ? [PageFilterDeities._STR_REPRINTED] : [];
-		if (g.srd) g._fMisc.push("SRD");
+		g._fMisc = [];
 		if (g.lore || g.symbolImg) g._fMisc.push("Has Lore");
 		if (g.intercession) g._fMisc.push("Has Divine Intercession")
 	}
@@ -74,6 +71,7 @@ class PageFilterDeities extends PageFilter {
 		this._domainFilter.addItem(g._fDomains);
 		this._spellFilter.addItem(g._fSpells);
 		this._pantheonFilter.addItem(g.pantheon);
+		this._miscFilter.addItem(g._fMisc);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -103,4 +101,3 @@ class PageFilterDeities extends PageFilter {
 		)
 	}
 }
-PageFilterDeities._STR_REPRINTED = "reprinted";
