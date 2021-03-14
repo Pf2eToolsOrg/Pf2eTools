@@ -192,10 +192,6 @@ class Omnisearch {
 			);
 		}
 
-		if (!this._state.isShowUa) {
-			results = results.filter(r => !r.doc.s || !SourceUtil._isNonstandardSourceWiz(r.doc.s));
-		}
-
 		if (!this._state.isShowBlacklisted && ExcludeUtil.getList().length) {
 			results = results.filter(r => {
 				if (r.doc.c === Parser.CAT_ID_QUICKREF || r.doc.c === Parser.CAT_ID_PAGE) return true;

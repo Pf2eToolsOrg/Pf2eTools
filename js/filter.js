@@ -3152,7 +3152,7 @@ class TraitsFilter extends MultiFilter {
 		opts.filters = [];
 		let filtersByCat = {};
 
-		Object.keys(catLookup).sort(filterSortFn).forEach(cat => {
+		Object.keys(catLookup).filter(k => !k.startsWith("_")).sort(filterSortFn).forEach(cat => {
 			if (opts.discardCategories[cat]) return;
 			filtersByCat[cat] = new Filter({header: cat, ...filterOpts[cat]});
 			opts.filters.push(filtersByCat[cat]);

@@ -1691,6 +1691,7 @@ UrlUtil.PG_GM_SCREEN = "gmscreen.html";
 UrlUtil.PG_ENCOUNTERGEN = "encountergen.html";
 UrlUtil.PG_LOOTGEN = "encountergen.html";
 UrlUtil.PG_CHANGELOG = "changelog.html";
+UrlUtil.PG_PLACES = "places.html";
 
 UrlUtil.URL_TO_HASH_BUILDER = {};
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -1716,6 +1717,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHas
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PLACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
 UrlUtil.URL_TO_HASH_BUILDER["subclass"] = it => {
 	const hashParts = [
@@ -1742,7 +1744,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_FEATS] = "Feats";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_COMPANIONS_FAMILIARS] = "Companions and Familiars";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ANCESTRIES] = "Ancestries";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ARCHETYPES] = "Archetypes";
-UrlUtil.PG_TO_NAME[UrlUtil.PG_VARIANTRULES] = "Optional, Variant, and Expanded Rules";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_VARIANTRULES] = "Variant Rules";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ADVENTURES] = "Adventures";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_BOOKS] = "Books";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_DEITIES] = "Deities";
@@ -1758,6 +1760,7 @@ UrlUtil.PG_TO_NAME[UrlUtil.PG_GM_SCREEN] = "GM Screen";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_ENCOUNTERGEN] = "Encounter Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_LOOTGEN] = "Loot Generator";
 UrlUtil.PG_TO_NAME[UrlUtil.PG_CHANGELOG] = "Changelog";
+UrlUtil.PG_TO_NAME[UrlUtil.PG_PLACES] = "Planes and Places";
 
 UrlUtil.CAT_TO_PAGE = {};
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CREATURE] = UrlUtil.PG_BESTIARY;
@@ -1788,6 +1791,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_LANGUAGE] = UrlUtil.PG_LANGUAGES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -3037,7 +3041,7 @@ DataUtil = {
 			if (urlRoot && urlRoot.trim()) {
 				urlRoot = urlRoot.trim();
 				if (!urlRoot.endsWith("/")) urlRoot = `${urlRoot}/`;
-			} else urlRoot = `https://raw.githubusercontent.com/Pf2eTools/homebrew/master`;
+			} else urlRoot = `https://raw.githubusercontent.com/Pf2eTools/homebrew/master/`;
 			return urlRoot;
 		},
 

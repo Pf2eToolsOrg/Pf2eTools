@@ -862,7 +862,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h1 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-h1 rd__h${entry.blue ? " pf2-h1--blue" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -1175,9 +1175,9 @@ function Renderer () {
 		const page = UrlUtil.CAT_TO_PAGE[cat_id];
 		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 		const renderFn = Renderer.hover._pageToRenderFn(page);
-		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@ ${entry.prop}|${entry.name}}`)}</div>`
+		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag}|${entry.name}}`)}</div>`
 		const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
-		$(`[data-stat-hash="${hash}"]`).fastSetHtml(renderFn(toRender, {noPage: true}));
+		$(`[data-stat-hash="${hash}"]`).innerHTML(renderFn(toRender, {noPage: true}));
 	};
 
 	// TODO
@@ -1236,7 +1236,7 @@ function Renderer () {
 	this._renderDataGeneric = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
 		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.generic.dataGetRendereredString(entry.dataGeneric, {isEmbedded: true, noPage: true});
+		textStack[0] += Renderer.generic.dataGetRenderedString(entry.dataGeneric, {isEmbedded: true, noPage: true});
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1808,26 +1808,6 @@ function Renderer () {
 				break;
 			}
 
-			case "@condition": {
-				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
-
-				const fauxEntry = {
-					type: "link",
-					href: {
-						type: "internal",
-						path: UrlUtil.PG_CONDITIONS,
-						hash: `${name}${source ? `${HASH_LIST_SEP}${source}` : `${HASH_LIST_SEP}${SRC_CRB}`}`,
-						hover: {
-							page: UrlUtil.PG_CONDITIONS,
-							source: source || SRC_CRB,
-						},
-					},
-					text: (displayText || name),
-				};
-				this._recursiveRender(fauxEntry, textStack, meta);
-				break;
-			}
-
 			case "@trait": {
 				const [name, displayText, ...others] = Renderer.splitTagByPipe(text);
 				const fauxEntry = {
@@ -2047,9 +2027,17 @@ function Renderer () {
 					case "@disease":
 					case "@curse":
 					case "@itemcurse":
-						fauxEntry.href.path = "afflictions.html";
+						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_AFFLICTIONS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@condition":
+						fauxEntry.href.path = UrlUtil.PG_CONDITIONS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_CONDITIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -2131,6 +2119,17 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_LANGUAGES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_LANGUAGES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@place":
+					case "@plane":
+					case "@nation":
+					case "@settlement":
+						fauxEntry.href.path = UrlUtil.PG_PLACES;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_PLACES,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -2740,8 +2739,10 @@ Renderer.utils = {
 				styles.push("pf2-trait--unique");
 			} else if (Renderer.trait._categoryLookup["Size"].includes(trait)) {
 				styles.push("pf2-trait--size");
-			} else if (trait.length <= 3 && Renderer.trait._categoryLookup["Alignment"].includes(trait)) {
+			} else if (Renderer.trait._categoryLookup["_alignAbv"].includes(trait)) {
 				styles.push("pf2-trait--alignment");
+			} else if (Renderer.trait._categoryLookup["_settlement"].includes(trait)) {
+				styles.push("pf2-trait--settlement");
 			}
 			traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`);
 		}
@@ -4474,19 +4475,22 @@ Renderer.generic = {
 		${Renderer.utils.getPageP(it)}`;
 	},
 
-	dataGetRendereredString (it, options) {
+	dataGetRenderedString (it, options) {
 		options = options || {};
 		const renderer = Renderer.get();
 		const traits = it.traits || [];
-		const rendererdSections = it.sections.map(section => section.map(a => `<p class="${a.some(e => typeof e !== "string") ? `pf2-stat__section` : `pf2-stat__text`}">${a.map(o => {
-			if (typeof o === "object") return `<strong>${o.name} </strong>${renderer.render(o.entry)}`;
-			return `${renderer.render(o)}`;
-		}).join("; ")}</p>`).join(""));
+		const renderedSections = it.sections.map(section => section.map(a => {
+			if (a.some(e => typeof e !== "string")) {
+				return `<p class="pf2-stat__section">${a.map(o => {
+					if (typeof o === "object") return `<strong>${o.name} </strong>${renderer.render(o.entry)}`;
+					else return `${renderer.render(o)}`;
+				}).join("; ")}</p>`
+			} else return a.map(e => `<p class="pf2-stat__text">${renderer.render(e)}</p>`).join("")
+		}).join(""));
 		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.category ? it.category : ""}`, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
-		${rendererdSections.slice(0, 1)}
-		${rendererdSections.slice(1).map(s => `${Renderer.utils.getDividerDiv()}${s}`).join("")}
+		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
 		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 };
@@ -6129,6 +6133,8 @@ Renderer.hover = {
 				return Renderer.language.getCompactRenderedString;
 			case UrlUtil.PG_TRAITS:
 				return Renderer.trait.getRenderedString;
+			case UrlUtil.PG_PLACES:
+				return Renderer.generic.dataGetRenderedString;
 			// region props
 			case "classfeature":
 			case "classFeature":
@@ -6437,6 +6443,10 @@ Renderer._stripTagLayer = function (str) {
 					case "@status":
 					case "@table":
 					case "@trap":
+					case "@place":
+					case "@plane":
+					case "@nation":
+					case "@settlement":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];

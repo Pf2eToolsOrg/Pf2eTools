@@ -1515,6 +1515,7 @@ Parser.CAT_ID_BOOK = 44;
 Parser.CAT_ID_PAGE = 45;
 Parser.CAT_ID_ARCHETYPE = 47;
 Parser.CAT_ID_VEHICLE = 49;
+Parser.CAT_ID_PLACE = 50;
 
 Parser.CAT_ID_TO_FULL = {};
 Parser.CAT_ID_TO_FULL[Parser.CAT_ID_CREATURE] = "Bestiary";
@@ -2151,6 +2152,10 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"ritual": SRC_CRB,
 	"trait": SRC_CRB,
 	"vehicle": SRC_GMG,
+	"place": SRC_GMG,
+	"plane": SRC_GMG,
+	"settlement": SRC_GMG,
+	"nation": SRC_GMG,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;

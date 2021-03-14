@@ -208,7 +208,7 @@ class IndexableDirectoryArchetypes extends IndexableDirectory {
 class IndexableDirectoryBackgrounds extends IndexableDirectory {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_FEAT,
+			category: Parser.CAT_ID_BACKGROUND,
 			dir: "backgrounds",
 			primary: "name",
 			source: "source",
@@ -250,7 +250,7 @@ class IndexableDirectoryFeats extends IndexableDirectory {
 class IndexableDirectoryItems extends IndexableDirectory {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_FEAT,
+			category: Parser.CAT_ID_ITEM,
 			dir: "items",
 			primary: "name",
 			source: "source",
@@ -263,7 +263,7 @@ class IndexableDirectoryItems extends IndexableDirectory {
 class IndexableDirectoryBaseItems extends IndexableDirectory {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_FEAT,
+			category: Parser.CAT_ID_ITEM,
 			dir: "items",
 			primary: "name",
 			source: "source",
@@ -549,25 +549,6 @@ class IndexableFileVariantRules extends IndexableFile {
 			isHover: true,
 		});
 	}
-
-	// FIXME is this still needed?
-	pGetDeepIndex (indexer, primary, it) {
-		// const names = [];
-		// it.entries.forEach(e => {
-		// 	Renderer.getNames(names, e, 1);
-		// });
-		// const allNames = Renderer.getNumberedNames(it);
-		// const nameKeys = Object.keys(allNames).filter(it => names.includes(it));
-		// return nameKeys.map(n => {
-		// 	const ix = allNames[n];
-		// 	return {
-		// 		u: `${UrlUtil.encodeForHash([it.name, it.source])}${HASH_PART_SEP}${ix}`,
-		// 		d: 1,
-		// 		n: `${primary.parentName}; ${n}`
-		// 	};
-		// });
-		return [];
-	}
 }
 
 class IndexableFileAdventures extends IndexableFile {
@@ -667,7 +648,6 @@ class IndexableFileDeities extends IndexableFile {
 			listProp: "deity",
 			baseUrl: "deities.html",
 			isHover: true,
-			filter: (it) => it.reprinted,
 		});
 	}
 }
