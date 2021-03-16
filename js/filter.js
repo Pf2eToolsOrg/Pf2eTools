@@ -3184,7 +3184,7 @@ class TraitsFilter extends MultiFilter {
 		for (let cat in Renderer.trait._categoryLookup) {
 			if (Renderer.trait._categoryLookup[cat].includes(trait)) out.add(cat);
 		}
-		return Array.from(out).filter(it => !this._discardCategories[it])
+		return Array.from(out).filter(it => !this._discardCategories[it]).filter(it => !it.startsWith("_"))
 	}
 
 	addItem (item) {
