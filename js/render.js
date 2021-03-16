@@ -431,6 +431,35 @@ function Renderer () {
 		}
 	};
 
+	this._renderEntriesSubtypes_renderPreReqText = function (entry, textStack, meta) {
+		if (entry.prerequisite) {
+			textStack[0] += `<span class="rd__prerequisite">Prerequisite: `;
+			this._recursiveRender({type: "inline", entries: [entry.prerequisite]}, textStack, meta);
+			textStack[0] += `</span>`;
+		}
+	};
+
+	this._handleTrackDepth = function (entry, depth) {
+		if (entry.name && this._depthTracker) {
+			this._lastDepthTrackerSource = entry.source || this._lastDepthTrackerSource;
+			const additionalData = this._depthTrackerAdditionalProps.length
+				? this._depthTrackerAdditionalProps.mergeMap(it => ({[it]: entry[it]}))
+				: {};
+			this._depthTracker.push({
+				...additionalData,
+				depth,
+				name: entry.name,
+				type: entry.type,
+				ixHeader: this._headerIndex,
+				source: this._lastDepthTrackerSource,
+				data: entry.data,
+				page: entry.page,
+				alias: entry.alias,
+				entry,
+			});
+		}
+	};
+
 	this._renderImage = function (entry, textStack, meta, options) {
 		function getStylePart () {
 			return entry.maxWidth ? `style="max-width: ${entry.maxWidth}px"` : "";
@@ -807,6 +836,16 @@ function Renderer () {
 		}
 	}
 
+	this._renderEntriesSubtypes_getStyleString = function (entry, meta, isInlineTitle) {
+		const styleClasses = ["rd__b"];
+		styleClasses.push(this._getStyleClass(entry));
+		if (isInlineTitle) {
+			if (this._subVariant) styleClasses.push(Renderer.HEAD_2_SUB_VARIANT);
+			else styleClasses.push(Renderer.HEAD_2);
+		} else styleClasses.push(meta.depth === -1 ? Renderer.HEAD_NEG_1 : meta.depth === 0 ? Renderer.HEAD_0 : Renderer.HEAD_1);
+		return styleClasses.length > 0 ? `class="${styleClasses.join(" ")}"` : "";
+	};
+
 	this._renderAffliction = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
 
@@ -954,6 +993,60 @@ function Renderer () {
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
+	};
+
+	this._renderEntries = function (entry, textStack, meta, options) {
+		this._renderEntriesSubtypes(entry, textStack, meta, options, true);
+	};
+
+	this._getPagePart = function (entry, isInset) {
+		if (!Renderer.utils.isDisplayPage(entry.page)) return "";
+		return ` <span class="rd__title-link ${isInset ? `rd__title-link--inset` : ""}">${entry.source ? `<span class="help--subtle" title="${Parser.sourceJsonToFull(entry.source)}">${Parser.sourceJsonToAbv(entry.source)}</span> ` : ""}p${entry.page}</span>`;
+	};
+
+	this._inlineHeaderTerminators = new Set([".", ",", "!", "?", ";", ":"]);
+	this._renderEntriesSubtypes = function (entry, textStack, meta, options, incDepth) {
+		const isInlineTitle = meta.depth >= 2;
+		const isAddPeriod = isInlineTitle && entry.name && !this._inlineHeaderTerminators.has(entry.name[entry.name.length - 1]);
+		const pagePart = !isInlineTitle ? this._getPagePart(entry) : "";
+		const nextDepth = incDepth && meta.depth < 2 ? meta.depth + 1 : meta.depth;
+		const styleString = this._renderEntriesSubtypes_getStyleString(entry, meta, isInlineTitle);
+		const dataString = this._getDataString(entry);
+		if (entry.name != null) this._handleTrackTitles(entry.name);
+
+		const headerClass = `rd__h--${meta.depth + 1}`; // adjust as the CSS is 0..4 rather than -1..3
+
+		const cachedLastDepthTrackerSource = this._lastDepthTrackerSource;
+		this._handleTrackDepth(entry, meta.depth);
+
+		const headerSpan = entry.name ? `<span class="rd__h ${headerClass}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}> <span class="entry-title-inner"${!pagePart && entry.source ? ` title="Source: ${Parser.sourceJsonToFull(entry.source)}${entry.page ? `, p${entry.page}` : ""}"` : ""}>${this.render({
+			type: "inline",
+			entries: [entry.name],
+		})}${isAddPeriod ? "." : ""}</span>${pagePart}</span> ` : "";
+
+		if (meta.depth === -1) {
+			if (!this._firstSection) textStack[0] += `<hr class="rd__hr rd__hr--section">`;
+			this._firstSection = false;
+		}
+
+		if (entry.entries || entry.name) {
+			textStack[0] += `<${this.wrapperTag} ${dataString} ${styleString}>${headerSpan}`;
+			this._renderEntriesSubtypes_renderPreReqText(entry, textStack, meta);
+			if (entry.entries) {
+				const cacheDepth = meta.depth;
+				const len = entry.entries.length;
+				for (let i = 0; i < len; ++i) {
+					meta.depth = nextDepth;
+					this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<p>", suffix: "</p>"});
+					// Add a spacer for style sets that have vertical whitespace instead of indents
+					if (i === 0 && cacheDepth >= 2) textStack[0] += `<div class="rd__spc-inline-post"></div>`;
+				}
+				meta.depth = cacheDepth;
+			}
+			textStack[0] += `</${this.wrapperTag}>`;
+		}
+
+		this._lastDepthTrackerSource = cachedLastDepthTrackerSource;
 	};
 
 	this._renderPf2H5 = function (entry, textStack, meta, options) {
@@ -2050,6 +2143,14 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@archetype":
+						fauxEntry.href.path = "archetypes.html";
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_ARCHETYPES,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;	
 					case "@ancestry":
 						fauxEntry.href.path = "ancestries.html";
 						fauxEntry.href.hover = {
@@ -5497,6 +5598,8 @@ Renderer.hover = {
 			}
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "backgrounds.json", "background");
+			case UrlUtil.PG_ARCHETYPES:
+				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/archetypes/", "archetype");
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
@@ -6105,6 +6208,8 @@ Renderer.hover = {
 					showScaler: true,
 					isScaled: it._originalCr != null,
 				});
+			case UrlUtil.PG_ARCHETYPES:
+				return Renderer.archetype.getCompactRenderedString;
 			case UrlUtil.PG_CONDITIONS:
 				return Renderer.condition.getCompactRenderedString;
 			case UrlUtil.PG_AFFLICTIONS:
