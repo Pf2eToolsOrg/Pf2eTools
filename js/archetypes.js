@@ -193,7 +193,12 @@ class ArchetypesPage extends BaseComponent {
 						this._featFilter.mutateForFilters(feat);
 						return feat
 					}
-					extraFeats.push(mutateExtraFeat(MiscUtil.copy(MiscUtil.get(this._featLookUp, hash))));
+					const lookUp = MiscUtil.get(this._featLookUp, hash);
+					if (lookUp) {
+						extraFeats.push(mutateExtraFeat(MiscUtil.copy(lookUp)))
+					} else {
+						JqueryUtil.doToast({content: `Failed to load feat ${ft} in archetype ${arc.name}.`, type: "danger"})
+					}
 				}
 			}
 		}
