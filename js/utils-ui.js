@@ -1597,7 +1597,7 @@ class InputUiUtil {
 		}
 
 		return new Promise(resolve => {
-			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYesRemember}</span></button>`)
+			const $btnTrueRemember = opts.textYesRemember ? $(`<button class="btn btn-primary flex-v-center mr-3"><span class="glyphicon glyphicon-ok mr-2"></span><span>${opts.textYesRemember}</span></button>`)
 				.click(() => {
 					doClose(true, true);
 					if (opts.fnRemember) {

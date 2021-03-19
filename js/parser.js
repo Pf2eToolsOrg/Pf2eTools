@@ -309,6 +309,10 @@ Parser.isValidCr = function (cr) {
 	return Parser.CRS.includes(cr);
 };
 
+Parser.isValidCreatureLvl = function (lvl) {
+	return lvl > -2 && lvl < 26
+}
+
 Parser.crToNumber = function (cr) {
 	if (cr === "Unknown" || cr === "\u2014" || cr == null) return 100;
 	if (cr.cr) return Parser.crToNumber(cr.cr);
@@ -509,6 +513,19 @@ Parser.acToFull = function (ac, renderer) {
 };
 
 MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
+
+Parser.XP_CHART = {
+	"-4": 10,
+	"-3": 15,
+	"-2": 20,
+	"-1": 30,
+	"0": 40,
+	"1": 60,
+	"2": 80,
+	"3": 120,
+	"4": 160,
+}
+
 Parser.numMonstersToXpMult = function (num, playerCount = 3) {
 	const baseVal = (() => {
 		if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
@@ -588,6 +605,7 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
+// TODO: Using conversion tables
 Parser.priceToValue = function (price) {
 	if (price == null) return 0;
 	let mult = 0;

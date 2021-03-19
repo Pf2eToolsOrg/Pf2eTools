@@ -21,6 +21,8 @@ class RuneBuilder extends ProxyBase {
 
 		this.baseItem = null;
 		this._runeList = null;
+
+		this._modalFilter = new ModalFilterBaseItems({namespace: "runebuilder.baseitems", isRadio: true})
 	}
 
 	get runeItem () {
@@ -34,21 +36,33 @@ class RuneBuilder extends ProxyBase {
 
 	initUi () {
 		$(`#btn-runebuild`).click(() => Hist.setSubhash(RuneBuilder.HASH_KEY, true));
+		$(`#btn-runebuild--change`).click(async () => {
+			await this.selectBaseItem();
+		});
 		$(`#btn-runebuild--save`).click(() => {
 			this.pSaveRuneItemAndState();
 			Hist.setSubhash(RuneBuilder.HASH_KEY, null);
 			Hist.setMainHash(UrlUtil.autoEncodeHash(this.runeItem));
 		});
 		$(`#btn-runebuild--cancel`).click(() => Hist.setSubhash(RuneBuilder.HASH_KEY, null));
+		$(`#rigen__runelist`).sortable({
+			cursor: "move",
+			cancel: `#rigen__no-runes`,
+			opacity: 0.7,
+			scroll: false,
+			stop: function () {
+				const ordering = $(`#rigen__runelist`).sortable("toArray", {attribute: "data-idx"}).map(ix => Number(ix));
+				RuneListUtil.list._items.sort((a, b) => ordering.indexOf(a.ix) - ordering.indexOf(b.ix));
+				RuneListUtil.list._isDirty = true;
+				RuneListUtil.list.update();
+				RuneListUtil._listChangeFn();
+			},
+		});
 	}
 
-	updateUi (itemId) {
-		itemId = itemId == null ? itemsPage._itemId : itemId;
-		const item = itemsPage._itemList[itemId];
-		if (!this.isActive() && ((item.type === "Equipment" && ["Rune Item"].concat(itemsPage._pageFilter._categoriesRuneItems).includes(item.category)) || item.runeItem)) {
-			$(`#btn-runebuild`).toggleClass("hidden", false);
-		} else $(`#btn-runebuild`).toggleClass("hidden", true);
-
+	updateUi () {
+		$(`#btn-runebuild`).toggleClass("hidden", this.isActive());
+		$(`#btn-runebuild--change`).toggleClass("hidden", !this.isActive());
 		$(`#btn-runebuild--save`).toggleClass("hidden", !this.isActive());
 		$(`#btn-runebuild--cancel`).toggleClass("hidden", !this.isActive());
 	}
@@ -57,8 +71,9 @@ class RuneBuilder extends ProxyBase {
 		this._runeList = RuneListUtil.initList();
 		this._runeList.init();
 		this._runeList.on("updated", () => this.onRuneListUpdate());
-		this.stateInit = true;
 		await this._initSavedRuneItems();
+		await this._modalFilter.pPreloadHidden();
+		this.stateInit = true;
 	}
 
 	reset () {
@@ -140,6 +155,42 @@ class RuneBuilder extends ProxyBase {
 		return state
 	}
 
+	async selectBaseItem () {
+		let confirm = false;
+		let doReset = false;
+		let doSave = false;
+		let selectedItem;
+		while (!confirm) {
+			const selected = await this._modalFilter.pGetUserSelection();
+			if (selected == null || !selected.length) return;
+			selectedItem = itemsPage._itemList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
+			if (!this.runes.length && this.baseItem.category !== selectedItem.category) {
+				doReset = true;
+				confirm = true;
+			} else if (this.baseItem.category !== selectedItem.category) {
+				confirm = await InputUiUtil.pGetUserBoolean({
+					title: "Changing to a different item category will remove selected runes.",
+					textYesRemember: "Save & Create New",
+					textYes: "OK",
+					textNo: "Cancel",
+					fnRemember: () => { doSave = true; doReset = true },
+				});
+			} else confirm = true;
+		}
+		if (doSave) await this.pSaveRuneItemAndState();
+		this.baseItem = MiscUtil.copy(selectedItem);
+		if (doReset) {
+			itemsPage._pageFilter._filterBox.reset();
+			itemsPage._pageFilter._filterBox._setStateFromLoaded(this._getInitialFilterState());
+			itemsPage.handleFilterChange();
+
+			this.reset();
+			RuneListUtil.list.update();
+		}
+		this.renderItem(this.runeItem);
+		Hist.setMainHash(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](this.baseItem));
+	}
+
 	show () {
 		this._cachedTitle = this._cachedTitle || document.title;
 		document.title = "Rune Builder - Pf2eTools";
@@ -175,7 +226,19 @@ class RuneBuilder extends ProxyBase {
 	async activate () {
 		this._active = true;
 
-		this.baseItem = MiscUtil.copy(itemsPage._itemList[itemsPage._itemId]);
+		const pageItem = itemsPage._itemList[itemsPage._itemId];
+		if ((pageItem.type === "Equipment" && ["Rune Item"].concat(itemsPage._pageFilter._categoriesRuneItems).includes(pageItem.category)) || pageItem.runeItem) {
+			this.baseItem = MiscUtil.copy(pageItem);
+		} else {
+			const selected = await this._modalFilter.pGetUserSelection();
+			if (selected == null || !selected.length) {
+				Hist.setSubhash(RuneBuilder.HASH_KEY, null);
+				return;
+			}
+			const selectedItem = itemsPage._itemList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
+			this.baseItem = MiscUtil.copy(selectedItem);
+			Hist.setMainHash(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](this.baseItem));
+		}
 
 		this._cachedFilterState = this._cachedFilterState || itemsPage._pageFilter._filterBox._getSaveableState();
 		itemsPage._pageFilter._filterBox.reset();
@@ -204,18 +267,15 @@ class RuneBuilder extends ProxyBase {
 		else RuneListUtil.pDoSubtract(ix, data);
 	}
 
-	getRuneListItem (item, idx, data) {
+	getRuneListItem (item, idx) {
 		const hash = UrlUtil.autoEncodeHash(item);
 		const source = Parser.sourceJsonToAbv(item.source);
 
-		const $ele = $$`<li class="row"><a class="lst--border">
-			<span class="col-0-6 no-wrap pl-0 text-center" onclick="event.preventDefault(); event.stopPropagation()">
+		const $ele = $$`<li class="row" data-idx="${idx}"><a class="lst--border">
+			<span class="col-1 no-wrap pl-0 text-center" onclick="event.preventDefault(); event.stopPropagation()">
 				<button title="Subtract" class="btn btn-danger btn-xs rigen__btn_list" onclick="runeBuilder.handleClick(event, ${idx}, 0)"><span class="glyphicon glyphicon-minus"></span></button>
 			</span>
-			<span class="col-1-4 no-wrap text-center" onclick="event.preventDefault(); event.stopPropagation()">
-				<button title="Shift Up" class="btn btn-default btn-xs rigen__btn_list" onclick="RuneListUtil.shiftUp(${idx})"><span class="glyphicon glyphicon-chevron-up"></span></button>
-				<button title="Shift Down" class="btn btn-default btn-xs rigen__btn_list " onclick="RuneListUtil.shiftDown(${idx})"><span class="glyphicon glyphicon-chevron-down"></span></button>
-			</span>
+			<span class="col-1"><span class="fa fa-ellipsis-h"></span></span>
 			<span class="bold col-4">${item.name}</span>
 			<span class="col-3 text-center">${item.level}</span>
 			<span class="col-3 text-center ${Parser.sourceJsonToColor(item.source)}" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
@@ -249,12 +309,10 @@ class RuneBuilder extends ProxyBase {
 		const subhash = Hist.getSubHash(RuneBuilder.HASH_KEY);
 		let subhashParts = subhash ? subhash.split(HASH_SUB_LIST_SEP) : [""];
 		subhashParts.shift();
-		let itemId;
 		if (!subhash) {
 			this.deactivate();
-			if (isInitialLoad) itemId = itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === Hist.getHashParts()[0]);
 		} else {
-			if (!this.isActive()) await this.activate();
+			if (!this.isActive() && !isInitialLoad) await this.activate();
 
 			if (subhash === this.getSubhash()) {
 				// if we just added or removed a rune, do nothing
@@ -284,7 +342,7 @@ class RuneBuilder extends ProxyBase {
 		}
 
 		if (this.isActive()) this.show();
-		this.updateUi(itemId);
+		this.updateUi();
 	}
 
 	getSubhash () {
@@ -469,8 +527,8 @@ const RuneListUtil = {
 		await this.pDoAdd(ixItem);
 	},
 
-	async pDoAdd (index, data) {
-		const listItem = await RuneListUtil._getListRow(itemsPage._itemList[index], index, data);
+	async pDoAdd (index) {
+		const listItem = await RuneListUtil._getListRow(itemsPage._itemList[index], index);
 		this.list.addItem(listItem);
 		this.list.update();
 		this._updateNoRunesVisible();
@@ -478,7 +536,7 @@ const RuneListUtil = {
 		this._listChangeFn();
 	},
 
-	async pDoSubtract (index, data) {
+	async pDoSubtract (index) {
 		this.list.removeItem(index);
 		this.list.update();
 		this._updateNoRunesVisible();
@@ -498,36 +556,14 @@ const RuneListUtil = {
 
 	async pDoLoadState () {},
 
-	shiftUp (idx) {
-		const listIdx = this.list.items.map(it => it.ix).indexOf(idx);
-		if (listIdx > 0) {
-			let temp = this.list.items[listIdx - 1];
-			this.list._items[listIdx - 1] = this.list.items[listIdx];
-			this.list._items[listIdx] = temp;
-			this.list._isDirty = true;
-			this.list.update();
-			this._listChangeFn();
-		}
-	},
-
-	shiftDown (idx) {
-		const listIdx = this.list.items.map(it => it.ix).indexOf(idx);
-		if (listIdx < this.list.items.length - 1) {
-			let temp = this.list.items[listIdx + 1];
-			this.list._items[listIdx + 1] = this.list.items[listIdx];
-			this.list._items[listIdx] = temp;
-			this.list._isDirty = true;
-			this.list.update();
-			this._listChangeFn();
-		}
-	},
-
 	openContextMenu (evt, listItem) {
 	},
 
 	_updateNoRunesVisible () {
 		$(`#rigen__no-runes`).remove()
-		if (!this.list.items.length) this.list._$wrpList.append(`<li id="rigen__no-runes" class="row"><a class="lst--border"><span><i class="ve-muted">Add runes to this item by clicking the button on the left.</i></span></a></li>`);
+		if (!this.list.items.length) {
+			this.list._$wrpList.append(`<li id="rigen__no-runes" class="row"><a class="lst--border"><span><i class="ve-muted">Add runes to this item by clicking the buttons on the left.</i></span></a></li>`);
+		}
 	},
 
 	_updateAddSubtractButton (itemId) {

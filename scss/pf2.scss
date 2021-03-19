@@ -362,6 +362,17 @@
 	&--blue {
 		color: #002664;
 	}
+
+	.pf2-h--source {
+		display: none;
+		margin-bottom: -0.3em;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h1-flavor {
@@ -426,6 +437,16 @@
 		clear: left;
 		line-height: 1.4em;
 	}
+
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h3 {
@@ -442,6 +463,16 @@
 	&--lvl {
 		margin-left: auto !important;
 	}
+
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h4 {
@@ -455,6 +486,15 @@
 	line-height: 1em;
 	vertical-align: bottom;
 
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h5 {
@@ -473,6 +513,14 @@
 	text-transform: uppercase;
 	display: flex;
 	width: 100%;
+}
+
+.pf2-h--source {
+	opacity: 60%;
+	font-size: 0.7em;
+	margin-left: 0.4em;
+	line-height: 1.42em;
+	align-self: flex-end;
 }
 
 .pf2-p {
@@ -499,7 +547,7 @@
 	font-size: 1.1em;
 	overflow: auto;
 	clear: left;
-	text-align: revert;
+	text-align: left;
 
 	&__ {
 		&name {
@@ -760,7 +808,7 @@
 		}
 	}
 
-	@media only screen and (max-width:520px) {
+	@media only screen and (max-width: 520px) {
 		flex-direction: column;
 
 		&__ {
@@ -1130,4 +1178,16 @@
 			width: 29.16666667%;
 		}
 	}
+}
+
+.ecgen__xp_total {
+	font-size: 0.8em;
+	margin-left: auto !important;
+	line-height: 28px;
+}
+
+.ecgen__overlevel {
+	color: red;
+	margin-top: 10px;
+	margin-bottom: -10px;
 }

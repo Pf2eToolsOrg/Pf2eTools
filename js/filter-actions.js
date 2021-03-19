@@ -20,7 +20,7 @@ class PageFilterActions extends PageFilter {
 			displayFn: Parser.timeUnitToFull,
 			itemSortFn: null,
 		});
-		this._traitFilter = new Filter({header: "Traits"})
+		this._traitFilter = new TraitsFilter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
 	}
 
@@ -34,7 +34,7 @@ class PageFilterActions extends PageFilter {
 
 		if (!isExcluded) {
 			this._sourceFilter.addItem(it.source);
-			this._traitFilter.addItem(it.traits)
+			this._traitFilter.addItem(it.traits);
 		}
 	}
 
@@ -42,6 +42,7 @@ class PageFilterActions extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._timeFilter,
+			this._traitFilter,
 			this._miscFilter,
 		];
 	}

@@ -189,42 +189,34 @@
 					<div class="row">
 						<div class="flex-h-right">
 							<div class="btn-group mr-3">
-								<button class="btn btn-primary ecgen_rng" data-mode="medium" style="min-width: 135px;"
-										title="Randomly generate a Medium encounter">Random Medium
+								<button class="btn btn-primary ecgen_rng" data-mode="moderate" style="min-width: 135px;"
+										title="Randomly generate a Moderate-threat encounter">Random Moderate
 								</button>
 								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li class="ecgen_rng_easy" title="Randomly generate an Easy encounter"><a href="#">Random
-										Easy</a></li>
-									<li class="ecgen_rng_medium" title="Randomly generate a Medium encounter"><a
-										href="#">Random Medium</a></li>
-									<li class="ecgen_rng_hard" title="Randomly generate a Hard encounter"><a href="#">Random
-										Hard</a></li>
-									<li class="ecgen_rng_deadly" title="Randomly generate a Deadly encounter"><a
-										href="#">Random Deadly</a></li>
+									<li class="ecgen_rng_trivial" title="Randomly generate a Trivial-threat encounter"><a href="#">Random Trivial</a></li>
+									<li class="ecgen_rng_low" title="Randomly generate a Low-threat encounter"><a href="#">Random Low</a></li>
+									<li class="ecgen_rng_moderate" title="Randomly generate a Moderate-threat encounter"><a href="#">Random Moderate</a></li>
+									<li class="ecgen_rng_severe" title="Randomly generate a Severe-threat encounter"><a href="#">Random Severe</a></li>
+									<li class="ecgen_rng_extreme" title="Randomly generate an Extreme-threat encounter"><a href="#">Random Extreme</a></li>
 								</ul>
 							</div>
 
 							<div class="btn-group">
-								<button class="btn btn-primary ecgen_adj" data-mode="medium" style="min-width: 135px;"
-										title="Adjust the current encounter difficulty to Medium">Adjust to Medium
+								<button class="btn btn-primary ecgen_adj" data-mode="moderate" style="min-width: 135px;"
+										title="djust the current encounter difficulty to a Moderate-threat encounter">Adjust to Moderate
 								</button>
 								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li class="ecgen_adj_easy" title="Adjust the current encounter difficulty to Easy">
-										<a href="#">Adjust to Easy</a></li>
-									<li class="ecgen_adj_medium"
-										title="Adjust the current encounter difficulty to Medium"><a href="#">Adjust to
-										Medium</a></li>
-									<li class="ecgen_adj_hard" title="Adjust the current encounter difficulty to Hard">
-										<a href="#">Adjust to Hard</a></li>
-									<li class="ecgen_adj_deadly"
-										title="Adjust the current encounter difficulty to Deadly"><a href="#">Adjust to
-										Deadly</a></li>
+									<li class="ecgen_adj_trivial" title="Adjust the current encounter difficulty to a Trivial-threat encounter"><a href="#">Adjust to Trivial</a></li>
+									<li class="ecgen_adj_low" title="Adjust the current encounter difficulty to a Low-threat encounter"><a href="#">Adjust to Low</a></li>
+									<li class="ecgen_adj_moderate" title="Adjust the current encounter difficulty to a Moderate-threat encounter"><a href="#">Adjust to Moderate</a></li>
+									<li class="ecgen_adj_severe" title="Adjust the current encounter difficulty to a Severe-threat encounter"><a href="#">Adjust to Severe</a></li>
+									<li class="ecgen_adj_extreme" title="Adjust the current encounter difficulty to an Extreme-threat encounter"><a href="#">Adjust to Extreme</a></li>
 								</ul>
 							</div>
 						</div>
@@ -238,7 +230,7 @@
 						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 						<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type <span class="caret_wrp"></span></button>
 						<button class="col-3-8 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
-						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="cr">CR <span class="caret_wrp"></span></button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="level">Level <span class="caret_wrp"></span></button>
 						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
 					</div>
 					<ul class="list subcreatures">
@@ -314,33 +306,21 @@
 
 						<!-- RHS -->
 						<div class="w-30 text-right">
-							<div class="ecgen__easy">Easy: ? XP</div>
-							<div class="ecgen__medium">Medium: ? XP</div>
-							<div class="ecgen__hard">Hard: ? XP</div>
-							<div class="ecgen__deadly">Deadly: ? XP</div>
-							<div class="ecgen__absurd">Absurd: ? XP</div>
-							<br>
-							<div class="ecgen__ttk">TTK: ?</div>
-							<br>
-							<div class="ecgen__daily_budget">Daily Budget: ? XP</div>
+							<div class="ecgen__trivial">Trivial: ? XP</div>
+							<div class="ecgen__low">Low: ? XP</div>
+							<div class="ecgen__moderate">Moderate: ? XP</div>
+							<div class="ecgen__severe">Severe: ? XP</div>
+							<div class="ecgen__extreme">Extreme: ? XP</div>
 						</div>
 					</div>
 
 					<hr class="ecgen__req_creatures hr-1">
 
-					<div class="flex ecgen__req_creatures">
-						<!-- LHS -->
-						<div class="w-50">
-							<h3 class="ecgen__rating">Difficulty: ?</h3>
-						</div>
-
-						<!-- RHS -->
-						<div class="w-50 text-right">
-							<h4 class="ecgen__raw_total">Total XP: ?</h4>
-							<div><i class="ecgen__raw_per_player">(? per player)</i></div>
-							<div><span class="glyphicon glyphicon-info-sign ecgen__adjusted_total_info"></span> <h4
-								class="inline-block ecgen__adjusted_total">Adjusted XP: ?</h4></div>
-							<div><i class="ecgen__adjusted_per_player">(? per player)</i></div>
+					<div class="ecgen__req_creatures">
+						<p class="ecgen__overlevel"><i>WARNING: Encounter includes over-leveled creatures.</i></p>
+						<div class="flex h3">
+							<span class="ecgen__rating">Difficulty: ?</span>
+							<span class="ecgen__xp_total" style="font-size: 0.66em; margin-left: auto !important;">Encounter XP: ?</span>
 						</div>
 					</div>
 

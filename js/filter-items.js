@@ -107,9 +107,9 @@ class PageFilterItems extends PageFilter {
 
 	mutateForFilters (item) {
 		// Sorting
-		item._fLvl = PageFilterItems._levelValue(item.level)
-		item._fBulk = PageFilterItems._bulkValue(item.bulk)
-		item._sPrice = Parser.priceToValue(item.price)
+		item._fLvl = PageFilterItems._levelValue(item.level);
+		item._fBulk = PageFilterItems._bulkValue(item.bulk);
+		item._sPrice = Parser.priceToValue(item.price);
 
 		// Filters
 		item._fPrice = PageFilterItems._priceCategory(item._sPrice)
@@ -189,5 +189,70 @@ class PageFilterItems extends PageFilter {
 			],
 			it._fAppliesTo,
 		);
+	}
+}
+
+class ModalFilterBaseItems extends ModalFilter {
+	constructor (opts) {
+		opts = opts || {};
+		super({
+			...opts,
+			modalTitle: "an Item to add Runes to",
+			pageFilter: new PageFilterItems(),
+		});
+	}
+
+	_$getColumnHeaders () {
+		const btnMeta = [
+			{sort: "name", text: "Name", width: "4-2"},
+			{sort: "category", text: "Category", width: "2-2"},
+			{sort: "price", text: "Price", width: "2"},
+			{sort: "bulk", text: "Bulk", width: "1-3"},
+			{sort: "source", text: "Source", width: "1-3"},
+		];
+		return ModalFilter._$getFilterColumnHeaders(btnMeta);
+	}
+
+	async _pLoadAllData () {
+		const [brew, data] = await Promise.all([
+			BrewUtil.pAddBrewData(),
+			DataUtil.item.loadJSON(),
+		]);
+		const fromBrew = brew.baseitem || [];
+		const fromData = data.baseitem || [];
+		// TODO: Implement with homebrew categories
+		return [...fromBrew, ...fromData].filter(it => ["Armor", "Weapon"].includes(it.category));
+	}
+
+	_getListItem (pagefilter, item, itI) {
+		const eleLabel = document.createElement("label");
+		eleLabel.className = `w-100 flex-vh-center lst--border no-select lst__wrp-cells`;
+
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
+		const source = Parser.sourceJsonToAbv(item.source);
+
+		eleLabel.innerHTML = `<div class="col-1 pl-0 flex-vh-center">${this._isRadio ? `<input type="radio" name="radio" class="no-events">` : `<input type="checkbox" class="no-events">`}</div>
+			<div class="col-4-2 bold">${item.name}</div>
+			<div class="col-2-2 text-center">${item.category}</div>
+			<div class="col-2 text-center">${Parser.priceToFull(item.price)}</div>
+			<div class="col-1-3 text-center">${item.bulk ? item.bulk : "\u2014"}</div>
+			<div class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</div>`;
+
+		return new ListItem(
+			itI,
+			eleLabel,
+			item.name,
+			{
+				hash,
+				source,
+				bulk: item._fBulk,
+				price: item._sPrice,
+				category: item.category,
+			},
+			{
+				uniqueId: item.uniqueId ? item.uniqueId : itI,
+				cbSel: eleLabel.firstElementChild.firstElementChild,
+			},
+		)
 	}
 }

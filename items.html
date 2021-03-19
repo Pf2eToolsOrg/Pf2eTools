@@ -11,6 +11,7 @@
 	<title>Items - Pf2eTools</title>
 
 	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/fontawesome.css">
 	<link rel="stylesheet" href="css/jquery-ui.css">
 	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -247,19 +248,19 @@
 						<button class="col-5-4 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
 						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="price">Price <span
 							class="caret_wrp"></span></button>
-						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="bulk">Bulk <span
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="bulk">Bulk <span
 							class="caret_wrp"></span></button>
-						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span
+						<button class="col-2-3 sort btn btn-default btn-xs" data-sort="count">Number <span
 							class="caret_wrp"></span></button>
 					</div>
 					<ul id="sublistlist" class="list subitems">
 						<!-- populate with JS -->
 					</ul>
-					<div id="sublistsummary" class="row ve-small">
-						<span class="col-5-4 text-right pr-2">Total:</span>
-						<span class="col-2-3 text-center no-wrap" id="totalweight"></span>
-						<span class="col-2-3 text-center no-wrap clickable" id="totalvalue"></span>
-						<span class="col-2 text-center no-wrap pr-0" id="totalitems"></span>
+					<div id="sublistsummary" class="row ve-small" style="padding: 0 2px 1px">
+						<span class="col-5-4 text-right pl-0 pr-2">Total:</span>
+						<span class="col-2-3 text-center no-wrap clickable" id="totalprice"></span>
+						<span class="col-2 text-center no-wrap" id="totalbulk"></span>
+						<span class="col-2-3 text-center no-wrap pr-0" id="totalitems"></span>
 					</div>
 					<div id="rigen__wrp-save-controls" class="rigen__visible"></div>
 
@@ -282,11 +283,12 @@
 				</div>
 
 				<div class="text-center wrp-footer-buttons">
-					<button class="btn btn-success btn-xs hidden" id="btn-runebuild" title="Add Runes to basic Items">Rune Builder</button>
-					<button class="btn btn-success btn-xs hidden" id="btn-runebuild--save" title="Save as new Item and exit Runebuilder">Save & Exit</button>
-					<button class="btn btn-danger btn-xs hidden" id="btn-runebuild--cancel" title="Discard changes and exit Runebuilder">Cancel & Exit</button>
-					<button class="btn btn-default btn-xs" id="btn-show-table" title="View and Download Items in Tabular Format">Table View</button>
-					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
+					<button class="btn btn-default btn-xs mb-1" id="btn-runebuild--change" title="Change the item you are adding Runes to">Change Base Item</button>
+					<button class="btn btn-success btn-xs hidden mb-1" id="btn-runebuild" title="Add Runes to basic Items">Rune Builder</button>
+					<button class="btn btn-success btn-xs hidden mb-1" id="btn-runebuild--save" title="Save as new Item and exit Runebuilder">Save & Exit</button>
+					<button class="btn btn-danger btn-xs hidden mb-1" id="btn-runebuild--cancel" title="Discard changes and exit Runebuilder">Cancel & Exit</button>
+					<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
+					<button class="btn btn-xs btn-info mb-1" id="manage-brew">Manage Homebrew</button>
 				</div>
 			</div>
 		</div>
@@ -303,8 +305,8 @@
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
-<script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/render-items.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>

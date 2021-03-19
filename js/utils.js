@@ -1988,6 +1988,15 @@ SortUtil = {
 		else return SortUtil.ascSortLower(a, b);
 	},
 
+	sortSpellLvlCreature (a, b) {
+		const aNum = Number(a);
+		const bNum = Number(b);
+		if (!isNaN(aNum) && !isNaN(bNum)) return SortUtil.ascSort(bNum, aNum);
+		else if (isNaN(a)) return 1;
+		else if (isNaN(b)) return -1;
+		else return 0;
+	},
+
 	initBtnSortHandlers ($wrpBtnsSort, list) {
 		function addCaret ($btnSort, direction) {
 			$wrpBtnsSort.find(".caret").removeClass("caret");
@@ -5287,6 +5296,7 @@ function BookModeView (opts) {
 
 		this._pRenderContent = () => this._renderContent($wrpContent, $dispName, $wrpControlsToPass);
 
+		this._$wrpBook.append(`<style media="print">.pf2-trait { border-color: #ccc; }</style>`);
 		this._$body.append(this._$wrpBook);
 	};
 

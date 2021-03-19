@@ -814,6 +814,8 @@ class ClassesPage extends BaseComponent {
 		const className = {
 			type: "pf2-h1",
 			name: cls.name,
+			source: cls.source,
+			page: cls.page,
 		};
 		const flavor = {
 			type: "pf2-h1-flavor",
@@ -853,6 +855,8 @@ class ClassesPage extends BaseComponent {
 						name: feature.name,
 						entries: feature.entries,
 						level: ixLvl + 1,
+						source: feature.source,
+						page: feature.page,
 					}))
 					.appendTo($classStats)
 
