@@ -17,10 +17,10 @@ class PageFilterFeats extends PageFilter {
 		this._traitsFilter = new TraitsFilter({
 			header: "Traits",
 			discardCategories: {
-				class: true,
-				ancestry: true,
-				creature: true,
-				creaturetype: true,
+				Class: true,
+				Ancestry: true,
+				Creature: true,
+				"Creature Type": true,
 			},
 		});
 		this._ancestryFilter = new Filter({header: "Ancestries", isHiddenFilter: !!opts.ancFilterHidden})

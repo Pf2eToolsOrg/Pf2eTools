@@ -62,7 +62,7 @@ class ArchetypesPage extends BaseComponent {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.archetype.loadJSON();
-		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json");
+		const feats = await DataUtil.feat.loadJSON();
 		this._featLookUp = {};
 		feats.feat.forEach(feat => {
 			const hash = UrlUtil.autoEncodeHash(feat);
@@ -193,7 +193,12 @@ class ArchetypesPage extends BaseComponent {
 						this._featFilter.mutateForFilters(feat);
 						return feat
 					}
-					extraFeats.push(mutateExtraFeat(MiscUtil.copy(MiscUtil.get(this._featLookUp, hash))));
+					const lookUp = MiscUtil.get(this._featLookUp, hash);
+					if (lookUp) {
+						extraFeats.push(mutateExtraFeat(MiscUtil.copy(lookUp)))
+					} else {
+						JqueryUtil.doToast({content: `Failed to load feat ${ft} in archetype ${arc.name}.`, type: "danger"})
+					}
 				}
 			}
 		}
@@ -657,5 +662,9 @@ ArchetypesPage._DEFAULT_STATE = {
 	isShowFeats: true,
 };
 
-const archetypesPage = new ArchetypesPage()
-window.addEventListener("load", () => archetypesPage.pOnLoad());
+let archetypesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	archetypesPage = new ArchetypesPage();
+	archetypesPage.pOnLoad()
+});

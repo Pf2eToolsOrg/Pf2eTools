@@ -3084,7 +3084,7 @@ const bookLoader = new BookLoader();
 
 class NoteBox {
 	static make$Notebox (board, content) {
-		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the caret in the text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://5e.tools}">${content || ""}</textarea>`)
+		const $iptText = $(`<textarea class="panel-content-textarea" placeholder="Supports inline rolls and content tags (CTRL-q with the caret in the text to activate the embed):\n • Inline rolls,  [[1d20+2]]\n • Content tags (as per the Demo page), {@creature goblin}, {@spell fireball}\n • Link tags, {@link https://pf2etools.github.io/Pf2eTools.html}">${content || ""}</textarea>`)
 			.on("keydown", async evt => {
 				if ((evt.ctrlKey || evt.metaKey) && evt.key === "q") {
 					const txt = $iptText[0];
@@ -3350,9 +3350,10 @@ class AdventureOrBookView {
 	}
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	// expose it for dbg purposes
+	await Renderer.trait.buildCategoryLookup();
 	window.DM_SCREEN = new Board();
 	Renderer.hover.bindDmScreen(window.DM_SCREEN);
 	window.DM_SCREEN.pInitialise()

@@ -77,7 +77,7 @@ class ClassesPage extends BaseComponent {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.class.loadJSON();
-		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json")
+		const feats = await DataUtil.feat.loadJSON();
 
 		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
 		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {
@@ -831,7 +831,7 @@ class ClassesPage extends BaseComponent {
 			],
 		};
 		const fluffStack = [""];
-		renderer.recursiveRender(cls.fluff, fluffStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
+		renderer.recursiveRender(cls.fluff, fluffStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 
 		$$`<div id="class-name">${renderer.render(className)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>
@@ -1283,5 +1283,9 @@ ClassesPage._DEFAULT_STATE = {
 	isShowScSources: false,
 };
 
-const classesPage = new ClassesPage()
-window.addEventListener("load", () => classesPage.pOnLoad());
+let classesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	classesPage = new ClassesPage();
+	classesPage.pOnLoad()
+});

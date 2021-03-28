@@ -23,37 +23,21 @@ class PageFilterBestiary extends PageFilter {
 
 		this._levelFilter = new RangeFilter({
 			header: "Level",
-			isLabelled: true,
-			labelSortFn: SortUtil.ascSort,
-			labels: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+			min: -1,
+			max: 25,
 		});
-
-		this._typeFilter = new Filter({
-			header: "Creature Type",
-		});
-		this._alignmentFilter = new Filter({
-			header: "Alignment",
-			displayFn: Parser.creatureAlignToFull,
-			itemSortFn: SortUtil.ascSort,
-		});
-		this._rarityFilter = new Filter({
-			header: "Rarity",
-			items: [...Parser.TRAITS_RARITY],
-			itemSortFn: null,
-		});
-		this._sizeFilter = new Filter({
-			header: "Size",
-			items: [...Parser.TRAITS_SIZE],
-			itemSortFn: null,
-		});
-		this._otherTraitsFilter = new Filter({
-			header: "Other Traits",
-		});
-		this._traitFilter = new MultiFilter({
+		this._traitFilter = new TraitsFilter({
 			header: "Traits",
-			filters: [this._typeFilter, this._alignmentFilter, this._rarityFilter, this._sizeFilter, this._otherTraitsFilter],
+			discardCategories: {
+				"Ancestry & Heritage": true,
+			},
+			filterOpts: {
+				"Alignment": {
+					displayFn: Parser.creatureAlignToFull,
+					itemSortFn: SortUtil.ascSort,
+				},
+			},
 		});
-
 		this._perceptionFilter = new RangeFilter({
 			header: "Perception",
 		});
@@ -166,124 +150,123 @@ class PageFilterBestiary extends PageFilter {
 		});
 	}
 
-	mutateForFilters (mon) {
-		mon._fsenses = {precise: [], imprecise: [], vague: [], other: []}
-		if (mon.senses) {
-			mon.senses.precise.forEach((s) => {
-				mon._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""))
+	mutateForFilters (cr) {
+		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creature_type).concat([cr.rarity]).map(t => Parser.getTraitName(t));
+		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
+		if (cr.senses) {
+			cr.senses.precise.forEach((s) => {
+				cr._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
-			mon.senses.imprecise.forEach((s) => {
-				mon._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, ""))
+			cr.senses.imprecise.forEach((s) => {
+				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
-			mon.senses.vague.forEach((s) => {
-				mon._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""))
+			cr.senses.vague.forEach((s) => {
+				cr._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
-			mon.senses.other.forEach((s) => {
-				mon._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""))
+			cr.senses.other.forEach((s) => {
+				cr._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 		}
-		mon._flanguages = mon.languages == null ? [] : mon.languages.languages || [];
-		mon._flanguages.forEach((l, i) => {
-			mon._flanguages[i] = l.replace(/\s(?:\().+/, "")
+		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
+		cr._flanguages.forEach((l, i) => {
+			cr._flanguages[i] = l.replace(/\s(?:\().+/, "")
 		})
-		mon._fskills = [];
-		Object.keys(mon.skills).forEach((k) => {
-			mon._fskills.push(k)
-		})
-
-		mon._fHP = 0
-		mon.hit_points.forEach((d) => {
-			mon._fHP += d.HP
+		cr._fskills = [];
+		Object.keys(cr.skills).forEach((k) => {
+			cr._fskills.push(k)
 		})
 
-		mon._fimmunities = []
-		if (mon.immunities) {
-			mon.immunities.damage.forEach((i) => {
-				mon._fimmunities.push(i.replace(/\s(?:\().+/, ""))
+		cr._fHP = 0
+		cr.hit_points.forEach((d) => {
+			cr._fHP += d.HP
+		})
+
+		cr._fimmunities = []
+		if (cr.immunities) {
+			cr.immunities.damage.forEach((i) => {
+				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""))
 			})
-			mon.immunities.condition.forEach((i) => {
-				mon._fimmunities.push(i.replace(/\s(?:\().+/, ""))
+			cr.immunities.condition.forEach((i) => {
+				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""))
 			})
 		}
-		mon._fweaknesses = []
-		if (mon.weaknesses) {
-			mon.weaknesses.forEach((w) => {
+		cr._fweaknesses = []
+		if (cr.weaknesses) {
+			cr.weaknesses.forEach((w) => {
 				let ws = w.name.replace(/\s(?:\().+/, "");
-				mon._fweaknesses.push(ws === "all" ? "all damage" : ws)
+				cr._fweaknesses.push(ws === "all" ? "all damage" : ws)
 			});
 		}
-		mon._fresistances = []
-		if (mon.resistances) {
-			mon.resistances.forEach((r) => {
+		cr._fresistances = []
+		if (cr.resistances) {
+			cr.resistances.forEach((r) => {
 				let rs = r.name.replace(/\s(?:\().+/, "")
-				mon._fresistances.push(rs === "all" ? "all damage" : rs)
+				cr._fresistances.push(rs === "all" ? "all damage" : rs)
 			});
 		}
-		mon._fspeedtypes = []
-		mon._fspeed = 0
-		Object.keys(mon.speed).forEach((k) => {
+		cr._fspeedtypes = []
+		cr._fspeed = 0
+		Object.keys(cr.speed).forEach((k) => {
 			if (k !== "abilities") {
-				mon._fspeed = Math.max(mon.speed[k], mon._fspeed);
-				mon._fspeedtypes.push(k)
+				cr._fspeed = Math.max(cr.speed[k], cr._fspeed);
+				cr._fspeedtypes.push(k)
 			}
 		});
 
-		mon._fspellTypes = []
-		mon._fhighestSpell = 0
-		mon._fspellDC = 0
-		if (mon.spellcasting) {
-			mon.spellcasting.forEach((f) => {
+		cr._fspellTypes = []
+		cr._fhighestSpell = 0
+		cr._fspellDC = 0
+		if (cr.spellcasting) {
+			cr.spellcasting.forEach((f) => {
 				if (f.type !== "Focus") {
-					mon._fspellTypes.push(`${f.type} ${f.tradition}`)
-				} else mon._fspellTypes.push(f.type)
+					cr._fspellTypes.push(`${f.type} ${f.tradition}`)
+				} else cr._fspellTypes.push(f.type)
 				Object.keys(f.entry).forEach((k) => {
-					if (k.isNumeric() && Number(k) > mon._fhighestSpell) mon._fhighestSpell = Number(k)
+					if (k.isNumeric() && Number(k) > cr._fhighestSpell) cr._fhighestSpell = Number(k)
 				});
-				if (Number(f.DC) > mon._fspellDC) mon._fspellDC = Number(f.DC)
+				if (Number(f.DC) > cr._fspellDC) cr._fspellDC = Number(f.DC)
 			});
 		}
-		mon._fritualTraditions = []
-		if (mon.rituals != null) {
-			mon.rituals.forEach((r) => {
-				mon._fritualTraditions.push(r.tradition)
+		cr._fritualTraditions = []
+		if (cr.rituals != null) {
+			cr.rituals.forEach((r) => {
+				cr._fritualTraditions.push(r.tradition)
 			});
 		}
 	}
 
-	addToFilters (mon, isExcluded) {
+	addToFilters (cr, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(mon.source);
+		this._sourceFilter.addItem(cr.source);
 
-		this._typeFilter.addItem(mon.creature_type);
-		this._otherTraitsFilter.addItem(mon.traits);
-		this._alignmentFilter.addItem(mon.alignment);
+		this._traitFilter.addItem(cr._fTraits)
 
-		this._perceptionFilter.addItem(mon.perception.default)
-		this._preciseSenseFilter.addItem(mon._fsenses.precise);
-		this._impreciseSenseFilter.addItem(mon._fsenses.imprecise);
-		this._vagueSenseFilter.addItem(mon._fsenses.vague);
-		this._otherSenseFilter.addItem(mon._fsenses.other);
+		this._perceptionFilter.addItem(cr.perception.default)
+		this._preciseSenseFilter.addItem(cr._fsenses.precise);
+		this._impreciseSenseFilter.addItem(cr._fsenses.imprecise);
+		this._vagueSenseFilter.addItem(cr._fsenses.vague);
+		this._otherSenseFilter.addItem(cr._fsenses.other);
 
-		this._languageFilter.addItem(mon._flanguages);
-		this._skillsFilter.addItem(mon._fskills)
+		this._languageFilter.addItem(cr._flanguages);
+		this._skillsFilter.addItem(cr._fskills)
 
-		this._ACFilter.addItem(mon.armor_class.default)
-		this._HPFilter.addItem(mon._fHP)
-		this._fortitudeFilter.addItem(mon.saving_throws.Fort.default)
-		this._reflexFilter.addItem(mon.saving_throws.Ref.default)
-		this._willFilter.addItem(mon.saving_throws.Will.default)
-		this._immunityFilter.addItem(mon._fimmunities)
-		this._weaknessFilter.addItem(mon._fweaknesses)
-		this._resistanceFilter.addItem(mon._fresistances)
+		this._ACFilter.addItem(cr.armor_class.default)
+		this._HPFilter.addItem(cr._fHP)
+		this._fortitudeFilter.addItem(cr.saving_throws.Fort.default)
+		this._reflexFilter.addItem(cr.saving_throws.Ref.default)
+		this._willFilter.addItem(cr.saving_throws.Will.default)
+		this._immunityFilter.addItem(cr._fimmunities)
+		this._weaknessFilter.addItem(cr._fweaknesses)
+		this._resistanceFilter.addItem(cr._fresistances)
 
-		this._speedFilter.addItem(mon._fspeed)
-		this._speedTypeFilter.addItem(mon._fspeedtypes)
+		this._speedFilter.addItem(cr._fspeed)
+		this._speedTypeFilter.addItem(cr._fspeedtypes)
 
-		this._spelltpyeFilter.addItem(mon._fspellTypes)
-		if (mon._fspellDC > 0) this._spellDCFilter.addItem(mon._fspellDC)
-		if (mon._fhighestSpell > 0) this._highestSpellFilter.addItem(mon._fhighestSpell)
-		this._ritualTraditionFilter.addItem(mon._fritualTraditions)
+		this._spelltpyeFilter.addItem(cr._fspellTypes)
+		if (cr._fspellDC > 0) this._spellDCFilter.addItem(cr._fspellDC)
+		if (cr._fhighestSpell > 0) this._highestSpellFilter.addItem(cr._fhighestSpell)
+		this._ritualTraditionFilter.addItem(cr._fritualTraditions)
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -301,120 +284,49 @@ class PageFilterBestiary extends PageFilter {
 		];
 	}
 
-	toDisplay (values, m) {
+	toDisplay (values, c) {
 		return this._filterBox.toDisplay(
 			values,
-			m.source,
-			m.level,
+			c.source,
+			c.level,
+			c._fTraits,
 			[
-				m.creature_type,
-				m.alignment,
-				m.rarity,
-				m.size,
-				m.traits,
+				c.perception.default,
+				c._fsenses.precise,
+				c._fsenses.imprecise,
+				c._fsenses.vague,
+				c._fsenses.other,
+			],
+			c._flanguages,
+			c._fskills,
+			[
+				c.ability_modifiers.Str,
+				c.ability_modifiers.Dex,
+				c.ability_modifiers.Con,
+				c.ability_modifiers.Int,
+				c.ability_modifiers.Wis,
+				c.ability_modifiers.Cha,
 			],
 			[
-				m.perception.default,
-				m._fsenses.precise,
-				m._fsenses.imprecise,
-				m._fsenses.vague,
-				m._fsenses.other,
-			],
-			m._flanguages,
-			m._fskills,
-			[
-				m.ability_modifiers.Str,
-				m.ability_modifiers.Dex,
-				m.ability_modifiers.Con,
-				m.ability_modifiers.Int,
-				m.ability_modifiers.Wis,
-				m.ability_modifiers.Cha,
+				c.armor_class.default,
+				c._fHP,
+				c.saving_throws.Fort.default,
+				c.saving_throws.Ref.default,
+				c.saving_throws.Will.default,
+				c._fimmunities,
+				c._fweaknesses,
+				c._fresistances,
 			],
 			[
-				m.armor_class.default,
-				m._fHP,
-				m.saving_throws.Fort.default,
-				m.saving_throws.Ref.default,
-				m.saving_throws.Will.default,
-				m._fimmunities,
-				m._fweaknesses,
-				m._fresistances,
+				c._fspeed,
+				c._fspeedtypes,
 			],
 			[
-				m._fspeed,
-				m._fspeedtypes,
+				c._fspellTypes,
+				c._fspellDC,
+				c._fhighestSpell,
+				c._fritualTraditions,
 			],
-			[
-				m._fspellTypes,
-				m._fspellDC,
-				m._fhighestSpell,
-				m._fritualTraditions,
-			],
-		);
-	}
-}
-
-class ModalFilterBestiary extends ModalFilter {
-	constructor (namespace) {
-		super({
-			modalTitle: "Creatures",
-			pageFilter: new PageFilterBestiary(),
-			fnSort: PageFilterBestiary.sortCreatures,
-			namespace: namespace,
-		})
-	}
-
-	_$getColumnHeaders () {
-		const btnMeta = [
-			{sort: "name", text: "Name", width: "4"},
-			{sort: "type", text: "Type", width: "4"},
-			{sort: "level", text: "Level", width: "2"},
-			{sort: "source", text: "Source", width: "1"},
-		];
-		return ModalFilter._$getFilterColumnHeaders(btnMeta);
-	}
-
-	async _pLoadAllData () {
-		const brew = await BrewUtil.pAddBrewData();
-		const fromData = await DataUtil.creature.pLoadAll();
-		const fromBrew = brew.monster || [];
-		return [...fromData, ...fromBrew];
-	}
-
-	_getListItem (pageFilter, mon, itI) {
-		Renderer.creature.initParsed(mon);
-		pageFilter.mutateAndAddToFilters(mon);
-
-		const eleLi = document.createElement("li");
-		eleLi.className = "row px-0";
-
-		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BESTIARY](mon);
-		const source = Parser.sourceJsonToAbv(mon.source);
-		const type = mon._pTypes.asText.uppercaseFirst();
-		const level = mon.level || "\u2014";
-
-		eleLi.innerHTML = `<label class="lst--border no-select">
-			<div class="lst__wrp-cells">
-				<div class="col-1 pl-0 flex-vh-center"><input type="checkbox" class="no-events"></div>
-				<div class="col-4 bold">${mon.name}</div>
-				<div class="col-1 text-center ${Parser.sourceJsonToColor(mon.source)} pr-0" title="${Parser.sourceJsonToFull(mon.source)}" ${BrewUtil.sourceJsonToStyle(mon.source)}>${source}</div>
-			</div>
-		</label>`;
-
-		return new ListItem(
-			itI,
-			eleLi,
-			mon.name,
-			{
-				hash,
-				source,
-				sourceJson: mon.source,
-				type,
-				level,
-			},
-			{
-				cbSel: eleLi.firstElementChild.firstElementChild.firstElementChild.firstElementChild,
-			},
 		);
 	}
 }

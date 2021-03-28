@@ -45,8 +45,8 @@ class NavBar {
 		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
-		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "ancestries.html", "Ancestries");
+		addLi(ulPlayers, "backgrounds.html", "Backgrounds");
 		addLi(ulPlayers, "classes.html", "Classes");
 		addLi(ulPlayers, "archetypes.html", "Archetypes");
 		addDivider(ulPlayers);
@@ -73,6 +73,7 @@ class NavBar {
 		addLi(ulReferences, "abilities.html", "Creature Abilities");
 		addLi(ulReferences, "deities.html", "Deities");
 		addLi(ulReferences, "languages.html", "Languages");
+		addLi(ulReferences, "places.html", "Planes & Places");
 		addLi(ulReferences, "rituals.html", "Rituals");
 		addLi(ulReferences, "vehicles.html", "Vehicles");
 		addDivider(ulReferences);
@@ -89,7 +90,6 @@ class NavBar {
 		addLi(ulUtils, "renderdemo.html", "Renderer Demo");
 		addDivider(ulUtils);
 		addLi(ulUtils, "changelog.html", "Changelog");
-		addLi(ulUtils, `https://wiki.5e.tools/index.php/Page:_${NavBar.getCurrentPage().replace(/.html$/i, "")}`, "Help", {isExternal: true});
 		addDivider(ulUtils);
 		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
 		addLi(ulUtils, "licenses.html", "Licenses");
@@ -395,10 +395,10 @@ class NavBar {
 		let isSecondLevel = false;
 		if (currentPage.toLowerCase() === "book.html" || currentPage.toLowerCase() === "adventure.html") {
 			const hashPart = window.location.hash.split(",")[0];
-			if (currentPage.toLowerCase() === "adventure.html") isSecondLevel = true;
+			if (currentPage.toLowerCase() === "adventure.html" || currentPage.toLowerCase() === "book.html") isSecondLevel = true;
 			currentPage += hashPart.toLowerCase();
 		}
-		if (currentPage.toLowerCase() === "adventures.html") isSecondLevel = true;
+		if (currentPage.toLowerCase() === "adventures.html" || currentPage.toLowerCase() === "books.html") isSecondLevel = true;
 
 		if (typeof _SEO_PAGE !== "undefined") currentPage = `${_SEO_PAGE}.html`;
 

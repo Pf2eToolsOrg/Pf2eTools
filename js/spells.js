@@ -237,8 +237,8 @@ async function pPostLoad () {
 					return Parser.spMainClassesToFull(fromClassList);
 				},
 			},
-			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}, 1), flex: 3},
-			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}, 1), flex: 2},
+			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}), flex: 3},
+			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}), flex: 2},
 		},
 		{generator: ListUtil.basicFilterGenerator},
 		(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
@@ -470,5 +470,9 @@ async function pHandleUnknownHash (link, sub) {
 	}
 }
 
-const spellsPage = new SpellsPage();
-window.addEventListener("load", () => spellsPage.pOnLoad());
+let spellsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	spellsPage = new SpellsPage();
+	spellsPage.pOnLoad()
+});

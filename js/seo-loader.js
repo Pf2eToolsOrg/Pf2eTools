@@ -17,8 +17,6 @@ window.addEventListener("load", async () => {
 		const $e = $(e);
 		const href = $e.attr("href");
 		if (!href.startsWith("http") && href.endsWith(".html")) $e.attr("href", `../${href}`);
-
-		if (href.startsWith("https://wiki.5e.tools")) $e.remove();
 	});
 
 	switch (_SEO_PAGE) {

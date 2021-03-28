@@ -1,7 +1,7 @@
 class RenderActions {
 	static $getRenderedAction (it) {
 		const renderStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {depth: 1}, {pf2StatFix: true})
+		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {pf2StatFix: true})
 		return $$`
 		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: ""})}

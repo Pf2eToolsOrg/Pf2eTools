@@ -4,7 +4,7 @@ class BackgroundPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterBackgrounds();
 		super({
-			dataSource: "data/backgrounds/backgrounds-crb.json",
+			dataSource: DataUtil.background.loadJSON,
 			dataSourceFluff: "data/fluff-backgrounds.json",
 
 			pageFilter,
@@ -120,5 +120,9 @@ class BackgroundPage extends ListPage {
 	}
 }
 
-const backgroundsPage = new BackgroundPage();
-window.addEventListener("load", () => backgroundsPage.pOnLoad());
+let backgroundsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	backgroundsPage = new BackgroundPage();
+	backgroundsPage.pOnLoad()
+});

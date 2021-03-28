@@ -84,7 +84,7 @@ class AncestriesPage extends BaseComponent {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
 		const data = await DataUtil.ancestry.loadJSON();
-		const feats = await DataUtil.loadJSON("data/feats/feats-crb.json")
+		const feats = await DataUtil.feat.loadJSON();
 
 		this._list = ListUtil.initList({listClass: "ancestries", isUseJquery: true});
 		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
@@ -802,8 +802,8 @@ class AncestriesPage extends BaseComponent {
 		const veHeritageTitle = {type: "pf2-h2", name: `Versatile Heritages`};
 		const fluffStack = [""];
 		const titleStack = [""];
-		renderer.recursiveRender(anc.info, fluffStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
-		renderer.recursiveRender(anc.heritageInfo, titleStack, {depth: 1}, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
+		renderer.recursiveRender(anc.info, fluffStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
+		renderer.recursiveRender(anc.heritageInfo, titleStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
 
 		$$`<div id="ancestry-name">${renderer.render(ancestryName)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>
@@ -1121,5 +1121,9 @@ AncestriesPage._DEFAULT_STATE = {
 	isShowFeats: true,
 };
 
-const ancestriesPage = new AncestriesPage()
-window.addEventListener("load", () => ancestriesPage.pOnLoad());
+let ancestriesPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	ancestriesPage = new AncestriesPage();
+	ancestriesPage.pOnLoad()
+});

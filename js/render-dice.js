@@ -1,6 +1,6 @@
 Renderer.dice = {
 	SYSTEM_USER: {
-		name: "Avandra", // goddess of luck
+		name: "Desna", // goddess of luck
 	},
 	POS_INFINITE: 100000000000000000000, // larger than this, and we start to see "e" numbers appear
 
@@ -31,7 +31,7 @@ Renderer.dice = {
 	},
 	// endregion
 
-	// region DM Screen integration
+	// region GM Screen integration
 	_panel: null,
 	bindDmScreenPanel (panel, title) {
 		if (Renderer.dice._panel) { // there can only be one roller box

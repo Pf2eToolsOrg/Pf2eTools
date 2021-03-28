@@ -891,7 +891,7 @@ SearchUiUtil.NO_HOVER_CATEGORIES = new Set([
 	Parser.CAT_ID_PAGE,
 ]);
 
-// based on DM screen's AddMenuSearchTab
+// based on GM screen's AddMenuSearchTab
 class SearchWidget {
 	static getSearchNoResults () {
 		return `<div class="ui-search__message"><i>No results.</i></div>`;

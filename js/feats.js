@@ -4,7 +4,7 @@ class FeatsPage extends ListPage {
 	constructor () {
 		const pageFilter = new PageFilterFeats();
 		super({
-			dataSource: "data/feats/feats-crb.json",
+			dataSource: DataUtil.feat.loadJSON,
 
 			pageFilter,
 
@@ -123,5 +123,9 @@ class FeatsPage extends ListPage {
 	}
 }
 
-const featsPage = new FeatsPage();
-window.addEventListener("load", () => featsPage.pOnLoad());
+let featsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	featsPage = new FeatsPage()
+	featsPage.pOnLoad()
+});

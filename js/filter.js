@@ -3143,126 +3143,48 @@ MultiFilter._DETAULT_STATE = {
 
 class TraitsFilter extends MultiFilter {
 	constructor (opts) {
-		opts = opts || {discardCategories: {}};
+		opts = opts || {};
 		if (opts.discardCategories === undefined) opts.discardCategories = {};
+		let filterOpts = opts.filterOpts || {};
+		filterOpts["Rarity"] = filterOpts["Rarity"] || {itemSortFn: SortUtil.ascSortRarity};
+		const filterSortFn = opts.filterSortFn || TraitsFilter._getDefaultFilterSortFn();
+		const catLookup = Renderer.trait._categoryLookup;
 		opts.filters = [];
-		let idx = 0;
-		let filterIdx = {};
+		let filtersByCat = {};
 
-		// region filters
-		if (!opts.discardCategories.rarity) {
-			opts.filters.push(new Filter({header: "Rarity", itemSortFn: Parser.rarityToNumber}));
-			filterIdx.rarity = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.size) {
-			opts.filters.push(new Filter({header: "Size"}));
-			filterIdx.size = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.alignment) {
-			opts.filters.push(new Filter({header: "Alignment"}));
-			filterIdx.alignment = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.class) {
-			opts.filters.push(new Filter({header: "Class"}));
-			filterIdx.class = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.ancestry) {
-			opts.filters.push(new Filter({header: "Ancestry & Heritage"}));
-			filterIdx.ancestry = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.tradition) {
-			opts.filters.push(new Filter({header: "Traditions"}));
-			filterIdx.tradition = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.school) {
-			opts.filters.push(new Filter({header: "Magic Schools"}));
-			filterIdx.school = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.weapon) {
-			opts.filters.push(new Filter({header: "Weapon & Armor"}));
-			filterIdx.weapon = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.poison) {
-			opts.filters.push(new Filter({header: "Poison"}));
-			filterIdx.poison = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.equipment) {
-			opts.filters.push(new Filter({header: "Equipment"}));
-			filterIdx.equipment = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.creaturetype) {
-			opts.filters.push(new Filter({header: "Creature Types"}));
-			filterIdx.creaturetype = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.creature) {
-			opts.filters.push(new Filter({header: "Creature"}));
-			filterIdx.creature = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.energy) {
-			opts.filters.push(new Filter({header: "Energy"}));
-			filterIdx.energy = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.planar) {
-			opts.filters.push(new Filter({header: "Planar"}));
-			filterIdx.planar = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.elemental) {
-			opts.filters.push(new Filter({header: "Elemental"}));
-			filterIdx.elemental = idx;
-			idx += 1;
-		}
-		if (!opts.discardCategories.general) {
-			opts.filters.push(new Filter({header: "General"}));
-			filterIdx.general = idx;
-		}
-		// endregion
+		Object.keys(catLookup).filter(k => !k.startsWith("_")).sort(filterSortFn).forEach(cat => {
+			if (opts.discardCategories[cat]) return;
+			filtersByCat[cat] = new Filter({header: cat, ...filterOpts[cat]});
+			opts.filters.push(filtersByCat[cat]);
+		});
 
 		super(opts);
 		this._discardCategories = opts.discardCategories;
-		this._filterIdx = filterIdx;
+		this._filtersByCat = filtersByCat;
+	}
+
+	static _getDefaultFilterSortFn () {
+		return function (a, b) {
+			if (a === "Rarity") return -1;
+			else if (b === "Rarity") return 1;
+			else if (a === "General") return 1;
+			else if (b === "General") return -1;
+			else if (a === "Homebrew") return 1;
+			else if (b === "Homebrew") return -1;
+			else return SortUtil.ascSort(a, b);
+		};
 	}
 
 	_getFilterFromCategory (category) {
-		if (this._filterIdx[category] == null) return;
-		return this._filters[this._filterIdx[category]]
+		return this._filtersByCat[category]
 	}
 
 	_getTraitCategories (trait) {
 		let out = new Set()
-		if (Parser.TRAITS_RARITY.includes(trait)) out.add("rarity");
-		if (Parser.TRAITS_SIZE.includes(trait)) out.add("size");
-		if (Parser.TRAITS_ALIGN.includes(trait)) out.add("alignment");
-		if (Parser.TRAITS_ALIGN_ABV.includes(trait)) out.add("alignment");
-		if (Parser.TRAITS_CLASS.includes(trait)) out.add("class");
-		if (Parser.TRAITS_ANCESTRY.includes(trait)) out.add("ancestry");
-		if (Parser.TRAITS_HERITAGE.includes(trait)) out.add("ancestry");
-		if (Parser.TRAITS_TRADITION.includes(trait)) out.add("tradition");
-		if (Parser.TRAITS_SCHOOL.includes(trait)) out.add("school");
-		if (Parser.TRAITS_WEAPON.includes(trait)) out.add("weapon");
-		if (Parser.TRAITS_ARMOR.includes(trait)) out.add("weapon");
-		if (Parser.TRAITS_POISON.includes(trait)) out.add("poison");
-		if (Parser.TRAITS_EQUIPMENT.includes(trait)) out.add("equipment");
-		if (Parser.TRAITS_CREATURE_TYPE.includes(trait)) out.add("creaturetype");
-		if (Parser.TRAITS_CREATURE.includes(trait)) out.add("creature");
-		if (Parser.TRAITS_ENERGY.includes(trait)) out.add("energy");
-		if (Parser.TRAITS_ELEMENTAL.includes(trait)) out.add("elemental");
-		if (Parser.TRAITS_PLANAR.includes(trait)) out.add("planar");
-		if (out.size === 0) out.add("general")
-		return Array.from(out).filter(it => !this._discardCategories[it])
+		for (let cat in Renderer.trait._categoryLookup) {
+			if (Renderer.trait._categoryLookup[cat].includes(trait)) out.add(cat);
+		}
+		return Array.from(out).filter(it => !this._discardCategories[it]).filter(it => !it.startsWith("_"))
 	}
 
 	addItem (item) {

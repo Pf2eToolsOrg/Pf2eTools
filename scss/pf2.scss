@@ -140,7 +140,6 @@
 	font-family: 'SabonLTStd', sans-serif;
 
 	.rd__list li {
-		font-family: 'SabonLTStd', sans-serif;
 		font-size: 1em;
 		line-height: 1.35em;
 	}
@@ -150,7 +149,6 @@
 		margin: 0.6em 0;
 
 		.rd__list li {
-			font-family: 'good-pro', sans-serif;
 			font-size: 1em;
 		}
 	}
@@ -251,6 +249,11 @@
 			text-align: right;
 			font-style: italic;
 			clear: both;
+
+			&--other {
+				display: block;
+				font-size: 0.95em;
+			}
 		}
 	}
 }
@@ -308,6 +311,10 @@
 		&right {
 			border-right-width: 0.33em;
 		}
+
+		&settlement {
+			background: #004416;
+		}
 	}
 }
 
@@ -351,6 +358,10 @@
 	text-transform: uppercase;
 	text-align: center;
 	line-height: 1em;
+
+	&--blue {
+		color: #002664;
+	}
 }
 
 .pf2-h1-flavor {
@@ -451,7 +462,7 @@
 	background: #002664;
 	border-top-left-radius: 0.4em;
 	border-top-right-radius: 0.4em;
-	-webkit-box-shadow: 0 2px #f6f4f2, 0 3px black;
+	box-shadow: 0 2px #f6f4f2, 0 3px black;
 	color: #ede3c8;
 	margin: 0.3em 0;
 	padding: 0.3em 0.4em 0.25em;

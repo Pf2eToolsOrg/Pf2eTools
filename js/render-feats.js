@@ -1,7 +1,7 @@
 class RenderFeats {
 	static $getRenderedFeat (feat) {
 		const renderStack = [];
-		Renderer.get().setFirstSection(true).recursiveRender(feat.entries, renderStack, {depth: 2}, {pf2StatFix: true});
+		Renderer.get().setFirstSection(true).recursiveRender(feat.entries, renderStack, {pf2StatFix: true});
 
 		return $$`
 			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
