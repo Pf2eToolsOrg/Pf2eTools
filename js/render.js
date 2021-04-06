@@ -327,6 +327,10 @@ function Renderer () {
 				case "quote":
 					this._renderQuote(entry, textStack, meta, options);
 					break;
+				// MrVauxs Doing || Prototype OtherSource entry.
+					case "entriesOtherSource":
+					this._renderEntriesOtherSource(entry, textStack, meta, options);
+					break;
 
 				// pf2-statblock
 				case "affliction":
@@ -524,6 +528,15 @@ function Renderer () {
 		const len = entry.tables.length;
 		for (let i = 0; i < len; ++i) this._recursiveRender(entry.tables[i], textStack, meta);
 	};
+
+	// MrVauxs Doing | If the prerequisites for a source and page exist but there is no title, generate the "- Source, page.X".
+	this.renderSourceIfExists = function(entry, textStack) {
+		if (entry.source && entry.page && entry.name == null) {
+			textStack[0] += `<p>`;
+			textStack[0] += `<span class="rd__quote-by">\u2014 ${entry.source}, p.${entry.page}</span>`;
+			textStack[0] += `</p>`;
+		}
+	}
 
 	this._renderTable = function (entry, textStack, meta, options) {
 		// TODO: implement rollable tables
@@ -913,6 +926,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
+			this.renderSourceIfExists
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 		textStack[0] += `<div style="clear: left"></div>`;
@@ -934,6 +948,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
+			this.renderSourceIfExists
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -952,6 +967,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
+			this.renderSourceIfExists
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -970,6 +986,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
+			this.renderSourceIfExists
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -1193,6 +1210,22 @@ function Renderer () {
 			const tempStack = [""];
 			this._recursiveRender(entry.by, tempStack, meta);
 			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
+			textStack[0] += `</p>`;
+		}
+	};
+
+	// Amateur Coder says hello - MrVauxs Doing
+	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
+		const len = entry.entries.length;
+		for (let i = 0; i < len; ++i) {
+			textStack[0] += `<hr> <p class="pf2-p">`;
+			this._recursiveRender(entry.entries[i], textStack, meta);
+			textStack[0] += `</p>`;
+		}
+		if (entry.source && entry.page) {
+			const tempStack = [""];
+			textStack[0] += `<p>`;
+			textStack[0] += `<span class="rd__quote-by">\u2014 ${entry.source}, p.${entry.page}</span>`;
 			textStack[0] += `</p>`;
 		}
 	};

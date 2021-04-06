@@ -2073,8 +2073,11 @@ SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
 SRC_GMG = "GMG";
-SRC_LOCG = "LOCG"
-SRC_LOGM = "LOGM"
+SRC_LOCG = "LOCG";
+SRC_LOAG = "LOAG";
+SRC_LOACLO = "LOACLO";
+SRC_LOGM = "LOGM";
+SRC_AAWS = "AAWS",
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -2087,7 +2090,10 @@ Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
@@ -2095,7 +2101,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
+Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
@@ -2116,6 +2125,9 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_GMG,
 	SRC_LOCG,
 	SRC_LOGM,
+	SRC_LOAG,
+	SRC_LOACLO,
+	SRC_AAWS,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;

@@ -784,7 +784,7 @@ class AncestriesPage extends BaseComponent {
 				`${anc.speed} feet`,
 			],
 		};
-		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, ...anc.rarity);
+		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, anc.rarity);
 		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
 		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
