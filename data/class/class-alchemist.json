@@ -27,6 +27,7 @@
 				"defenses": {
 					"t": [
 						"light armor",
+						"medium armor",
 						"unarmored defense"
 					]
 				},
@@ -334,7 +335,7 @@
 								"Manipulate"
 							],
 							"cost": "1 batch of infused reagents",
-							"requirements": "You have {@item alchemist’s tools|CRB}, the formula for the alchemical item you’re creating, and a free hand.",
+							"requirements": "You have the formula for the alchemical item you're creating, and you're either holding or wearing {@item alchemist’s tools|CRB}.",
 							"activity": {
 								"number": 1,
 								"unit": "single",
@@ -368,7 +369,8 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute, correspond with other researchers in your field, or work as a genius loner. Choose a field of research. The research fields presented in this book are as follows."
+				"Your inquiries into the alchemical nature of the universe have led you to focus on a particular field of research. You might have a degree from an scientific institute, correspond with other researchers in your field, or work as a genius loner. Choose a field of research.",
+				"Your research field adds a number of formulas to your formula book; these are your signature items. When using a batch of infused reagents to create your signature items using advanced alchemy, you create three items instead of two. Each time you gain a level, you can swap one of your signature items with another formula in your formula book. This new signature item must be on your research field's list of possible signature items."
 			]
 		},
 		{
@@ -447,6 +449,17 @@
 			"level": 5,
 			"entries": [
 				"You learn a special discovery depending on your field."
+			]
+		},
+		{
+			"name": "Powerful Alchemy",
+			"source": "CRB",
+			"page": 74,
+			"className": "Alchemist",
+			"classSource": "CRB",
+			"level": 5,
+			"entries": [
+				"Alchemical items you create on the fly are particularly potent. When you use {@action Quick Alchemy|CRB} to create an infused alchemical item that allows a saving throw, you can change its DC to your class DC."
 			]
 		},
 		{
@@ -578,7 +591,7 @@
 			"classSource": "CRB",
 			"level": 15,
 			"entries": [
-				"Your comfort in concocting items is such that you can create three at a time. When using the {@action Quick Alchemy} action, you can spend up to three batches of infused reagents to make up to three alchemical items as described in that action. These items do not have to be the same."
+				"Your comfort in concocting items is such that you can create three at a time. When using the {@action Quick Alchemy} action, you can spend up to three batches of infused reagents to make up to three alchemical items as described in that action. These items do not have to be the same, and you automatically stow one of these new items as you create them."
 			]
 		},
 		{
