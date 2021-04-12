@@ -1245,14 +1245,14 @@ function Renderer () {
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
 		const len = entry.entries.length;
 		for (let i = 0; i < len; ++i) {
-			textStack[0] += `<hr> <p class="pf2-p">`;
+			textStack[0] += `<hr style="height:2px;color:gray;background-color:gray"> <p>`;
 			this._recursiveRender(entry.entries[i], textStack, meta);
 			textStack[0] += `</p>`;
 		}
 		if (entry.source && entry.page) {
 			const tempStack = [""];
 			textStack[0] += `<p>`;
-			textStack[0] += `<span class="rd__quote-by">\u2014 ${entry.source}, p.${entry.page}</span>`;
+			textStack[0] += `<span class="rd__quote-by">\u2014 ${Parser.sourceJsonToFull(entry.source)}, p. ${entry.page}</span>`;
 			textStack[0] += `</p>`;
 		}
 	};
