@@ -771,7 +771,7 @@ class AncestriesPage extends BaseComponent {
 					type: "pf2-title",
 					name: "Hit Points",
 				},
-				`${anc.HP}`,
+				`${anc.hp}`,
 				{
 					type: "pf2-title",
 					name: "Size",
@@ -1021,7 +1021,7 @@ class AncestriesPage extends BaseComponent {
 				li.data.entity.source,
 				anc.boosts || [],
 				anc.flaw || [],
-				anc.HP,
+				anc.hp,
 				anc.size,
 				anc.speed,
 				anc._flanguages,

@@ -1045,10 +1045,13 @@ div#lootoutput {
 }
 
 .mon__ {
-	&btn-reset-cr,
-	&btn-scale-cr {
+	&btn-reset-lvl,
+	&btn-scale-lvl {
+		margin: -4px 2px 0 0;
 		padding: 0 5px;
 		font-size: 10px;
+		line-height: 1.2em;
+		height: 80%;
 	}
 
 	&cr_slider_wrp {
@@ -1062,6 +1065,7 @@ div#lootoutput {
 		padding: 5px 7px 10px;
 		border-radius: 4px;
 		box-shadow: 0 0 3px 0 black;
+		font-size: 15px;
 
 		&--compact {
 			top: 41px;
@@ -3781,8 +3785,8 @@ ul.list.books > li > a > span.name:hover {
 	// endregion
 
 	// region bestiary.html
-	.mon__btn-scale-cr,
-	.mon__btn-reset-cr {
+	.mon__btn-scale-lvl,
+	.mon__btn-scale-lvl {
 		display: none !important;
 	}
 

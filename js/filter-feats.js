@@ -47,35 +47,35 @@ class PageFilterFeats extends PageFilter {
 
 	mutateForFilters (feat) {
 		feat._slPrereq = (feat.prerequisites || `\u2014`).uppercaseFirst();
-		feat._fType = []
-		if (feat.fclass !== false) {
-			feat._slType = "Class"
-			feat._fType.push("Class")
+		feat._fType = [];
+		if (feat.featType.class !== false) {
+			feat._slType = "Class";
+			feat._fType.push("Class");
 		}
-		if (feat.fancestry !== false) {
-			feat._slType = "Ancestry"
-			feat._fType.push("Ancestry")
+		if (feat.featType.ancestry !== false) {
+			feat._slType = "Ancestry";
+			feat._fType.push("Ancestry");
 		}
-		if (feat.fgeneral !== false) {
-			feat._slType = "General"
-			feat._fType.push("General")
+		if (feat.featType.general !== false) {
+			feat._slType = "General";
+			feat._fType.push("General");
 		}
-		if (feat.fskill !== false) {
-			feat._slType = "Skill"
-			feat._fType.push("Skill")
+		if (feat.featType.skill !== false) {
+			feat._slType = "Skill";
+			feat._fType.push("Skill");
 		}
-		if (feat.farchetype !== false) {
-			feat._slType = "Archetype"
-			feat._fType.push("Archetype")
+		if (feat.featType.archetype !== false) {
+			feat._slType = "Archetype";
+			feat._fType.push("Archetype");
 		}
-		feat._fTime = feat.activity != null ? feat.activity.unit : ""
-		feat._fMisc = []
-		if (feat.prerequisites != null) feat._fMisc.push("Has Prerequisites")
-		if (feat.trigger != null) feat._fMisc.push("Has Trigger")
-		if (feat.frequency != null) feat._fMisc.push("Has Frequency")
-		if (feat.requirements != null) feat._fMisc.push("Has Requirements")
-		if (feat.cost != null) feat._fMisc.push("Has Cost")
-		if (feat.special != null) feat._fMisc.push("Has Special")
+		feat._fTime = feat.activity != null ? feat.activity.unit : "";
+		feat._fMisc = [];
+		if (feat.prerequisites != null) feat._fMisc.push("Has Prerequisites");
+		if (feat.trigger != null) feat._fMisc.push("Has Trigger");
+		if (feat.frequency != null) feat._fMisc.push("Has Frequency");
+		if (feat.requirements != null) feat._fMisc.push("Has Requirements");
+		if (feat.cost != null) feat._fMisc.push("Has Cost");
+		if (feat.special != null) feat._fMisc.push("Has Special");
 	}
 
 	addToFilters (feat, isExcluded) {
@@ -83,12 +83,12 @@ class PageFilterFeats extends PageFilter {
 
 		this._typeFilter.addItem(feat._fType);
 		this._traitsFilter.addItem(feat.traits);
-		if (typeof (feat.fancestry) !== "boolean") this._ancestryFilter.addItem(feat.fancestry);
-		if (typeof (feat.farchetype) !== "boolean") this._archetypeFilter.addItem(feat.farchetype);
+		if (typeof (feat.featType.ancestry) !== "boolean") this._ancestryFilter.addItem(feat.featType.ancestry);
+		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
 		// FIXME: remove next line, and fix below once archetype data is correct
-		if (feat.farchetype) this._archetypeFilter.addItem("Archetype")
-		if (typeof (feat.fclass) !== "boolean") this._classFilter.addItem(feat.fclass);
-		if (typeof (feat.fskill) !== "boolean") this._skillFilter.addItem(feat.fskill);
+		if (feat.farchetype) this._archetypeFilter.addItem("Archetype");
+		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
+		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
 		this._sourceFilter.addItem(feat.source);
 	}
 
@@ -113,11 +113,11 @@ class PageFilterFeats extends PageFilter {
 			ft.source,
 			ft._fType,
 			ft.level,
-			ft.fancestry,
+			ft.featType.ancestry,
 			// FIXME Change line below
-			ft.farchetype === true ? "Archetype" : ft.farchetype,
-			ft.fclass,
-			ft.fskill,
+			ft.featType.archetype === true ? "Archetype" : ft.featType.archetype,
+			ft.featType.class,
+			ft.featType.skill,
 			ft._fTime,
 			ft.traits,
 			ft._fMisc,

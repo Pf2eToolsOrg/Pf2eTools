@@ -31,7 +31,7 @@ class BestiaryPage {
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(cr.source);
-		const type = cr.creature_type;
+		const type = cr.creatureType;
 		const level = cr.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
@@ -50,7 +50,7 @@ class BestiaryPage {
 				hash,
 				source,
 				level: cr.level,
-				type: cr.creature_type,
+				type: cr.creatureType,
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
@@ -74,37 +74,31 @@ class BestiaryPage {
 	}
 
 	async pGetSublistItem (monRaw, pinId, addCount, data = {}) {
-		const mon = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
+		const cr = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
 		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 
-		const name = mon._displayName || mon.name;
-		const hash = `${UrlUtil.autoEncodeHash(mon)}${subHash}`;
-		const type = mon.creature_type
+		const name = cr._displayName || cr.name;
+		const hash = `${UrlUtil.autoEncodeHash(cr)}${subHash}`;
+		const type = cr.creatureType
 		const count = addCount || 1;
-		const cr = mon.level
+		const level = cr.level;
 
-		const $hovStatblock = $(`<span class="col-1-4 help--hover ecgen__visible">Statblock</span>`)
-			.mouseover(evt => EncounterBuilder.doStatblockMouseOver(evt, $hovStatblock[0], pinId, mon._isScaledCr))
+		const $hovStatblock = $(`<span class="col-1-9 text-center help--hover ecgen__visible">Statblock</span>`)
+			.mouseover(evt => EncounterBuilder.doStatblockMouseOver(evt, $hovStatblock[0], pinId, cr._isScaledLvl))
 			.mousemove(evt => Renderer.hover.handleLinkMouseMove(evt, $hovStatblock[0]))
 			.mouseleave(evt => Renderer.hover.handleLinkMouseLeave(evt, $hovStatblock[0]));
 
-		const hovTokenMeta = EncounterBuilder.getTokenHoverMeta(mon);
-		const $hovToken = $(`<span class="col-1-2 ecgen__visible help--hover">Token</span>`)
-			.mouseover(evt => hovTokenMeta.mouseOver(evt, $hovToken[0]))
-			.mousemove(evt => hovTokenMeta.mouseMove(evt, $hovToken[0]))
-			.mouseleave(evt => hovTokenMeta.mouseLeave(evt, $hovToken[0]));
-
-		const $hovImage = $(`<span class="col-1-2 ecgen__visible help--hover">Image</span>`)
+		const $hovImage = $(`<span class="col-1-9 text-center ecgen__visible help--hover">Image</span>`)
 			.mouseover(evt => EncounterBuilder.handleImageMouseOver(evt, $hovImage, pinId));
 
 		const $ptCr = (() => {
-			if (cr === "Unknown") return $(`<span class="col-1-2 text-center">${cr}</span>`);
+			if (level === "Unknown") return $(`<span class="col-1-2 text-center">${level}</span>`);
 
-			const $iptCr = $(`<input value="${cr}" class="ecgen__cr_input form-control form-control--minimal input-xs">`)
-				.click(() => $iptCr.select())
-				.change(() => encounterBuilder.pDoCrChange($iptCr, pinId, mon._isScaledCr));
+			const $iptLvl = $(`<input value="${level}" class="ecgen__cr_input form-control form-control--minimal input-xs">`)
+				.click(() => $iptLvl.select())
+				.change(() => encounterBuilder.pDoLvlChange($iptLvl, pinId, cr._isScaledLvl));
 
-			return $$`<span class="col-1-2 text-center">${$iptCr}</span>`;
+			return $$`<span class="col-1-2 text-center">${$iptLvl}</span>`;
 		})();
 
 		const $eleCount1 = $(`<span class="col-2 text-center">${count}</span>`);
@@ -114,15 +108,14 @@ class BestiaryPage {
 			<a href="#${hash}" draggable="false" class="ecgen__hidden lst--border">
 				<span class="bold col-5 pl-0">${name}</span>
 				<span class="col-3-8">${type}</span>
-				<span class="col-1-2 text-center">${cr}</span>
+				<span class="col-1-2 text-center">${level}</span>
 				${$eleCount1}
 			</a>
 
 			<div class="lst__wrp-cells ecgen__visible--flex lst--border">
-				${EncounterBuilder.$getSublistButtons(pinId, getCreatureCustomHashId(mon))}
+				${EncounterBuilder.$getSublistButtons(pinId, getCreatureCustomHashId(cr))}
 				<span class="ecgen__name--sub col-3-5">${name}</span>
 				${$hovStatblock}
-				${$hovToken}
 				${$hovImage}
 				${$ptCr}
 				${$eleCount2}
@@ -136,14 +129,14 @@ class BestiaryPage {
 			name,
 			{
 				hash,
-				source: Parser.sourceJsonToAbv(mon.source),
+				source: Parser.sourceJsonToAbv(cr.source),
 				type,
-				cr,
+				level,
 				count,
 			},
 			{
 				uniqueId: data.uniqueId || "",
-				customHashId: getCreatureCustomHashId(mon),
+				customHashId: getCreatureCustomHashId(cr),
 				$elesCount: [$eleCount1, $eleCount2],
 			},
 		);
@@ -169,10 +162,9 @@ class BestiaryPage {
 		const scaledHash = sub.find(it => it.startsWith(VeCt.HASH_MON_SCALED));
 		if (scaledHash) {
 			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_MON_SCALED][0]);
-			const scaleToStr = Parser.numberToCr(scaleTo);
-			const mon = creatures[Hist.lastLoadedId];
-			if (Parser.isValidCr(scaleToStr) && scaleTo !== Parser.crToNumber(lastRendered.mon.cr)) {
-				ScaleCreature.scale(mon, scaleTo).then(scaled => renderStatblock(scaled, true));
+			const cr = creatures[Hist.lastLoadedId];
+			if (Parser.isValidCreatureLvl(scaleTo) && scaleTo !== lastRendered.creature.level) {
+				ScaleCreature.scale(cr, scaleTo).then(scaled => renderStatblock(scaled, true));
 			}
 		}
 
@@ -205,7 +197,6 @@ class BestiaryPage {
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	// TODO refactor this and spell markdown section
 	static popoutHandlerGenerator (toList) {
 		return (evt) => {
 			const mon = toList[Hist.lastLoadedId];
@@ -222,22 +213,8 @@ class BestiaryPage {
 						isBookContent: true,
 					},
 				);
-			} else if (evt.ctrlKey || evt.metaKey) {
-				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
-				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
-				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
-
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						title: name,
-						isPermanent: true,
-						isBookContent: true,
-					},
-				);
 			} else {
-				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledLvl ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
 
 				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
 				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
@@ -343,7 +320,7 @@ async function pPageInit (loadedSources) {
 		$openBtn: $(`#btn-printbook`),
 		noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
 		pageTitle: "Bestiary Printer View",
-		popTblGetNumShown: async ($wrpContent, $dispName, $wrpControlsToPass) => {
+		popTblGetNumShown: async ($wrpContent) => {
 			const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
 
 			toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
@@ -354,7 +331,7 @@ async function pPageInit (loadedSources) {
 
 			const renderCreature = (mon) => {
 				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
-				stack.push(Renderer.creature.getCompactRenderedString(mon));
+				stack.push(Renderer.creature.getCompactRenderedString(mon).html());
 				stack.push(`</div></div>`);
 			};
 
@@ -368,31 +345,6 @@ async function pPageInit (loadedSources) {
 			numShown += toShow.length;
 			$wrpContent.append(stack.join(""));
 
-			// region Markdown
-			const pGetAsMarkdown = async () => {
-				const toRender = toShow.length ? toShow : [creatures[Hist.lastLoadedId]];
-				return RendererMarkdown.monster.pGetMarkdownDoc(toRender);
-			};
-
-			const $btnDownloadMarkdown = $(`<button class="btn btn-default btn-sm">Download as Markdown</button>`)
-				.click(async () => DataUtil.userDownloadText("bestiary.md", await pGetAsMarkdown()));
-
-			const $btnCopyMarkdown = $(`<button class="btn btn-default btn-sm px-2" title="Copy Markdown to Clipboard"><span class="glyphicon glyphicon-copy"/></button>`)
-				.click(async () => {
-					await MiscUtil.pCopyTextToClipboard(await pGetAsMarkdown());
-					JqueryUtil.showCopiedEffect($btnCopyMarkdown);
-				});
-
-			const $btnDownloadMarkdownSettings = $(`<button class="btn btn-default btn-sm px-2" title="Markdown Settings"><span class="glyphicon glyphicon-cog"/></button>`)
-				.click(async () => RendererMarkdown.pShowSettingsModal());
-
-			$$`<div class="flex-v-center btn-group ml-2">
-				${$btnDownloadMarkdown}
-				${$btnCopyMarkdown}
-				${$btnDownloadMarkdownSettings}
-			</div>`.appendTo($wrpControlsToPass);
-			// endregion
-
 			return numShown;
 		},
 		hasPrintColumns: true,
@@ -403,129 +355,93 @@ async function pPageInit (loadedSources) {
 class EncounterBuilderUtils {
 	static getSublistedEncounter () {
 		return ListUtil.sublist.items.map(it => {
-			const mon = creatures[it.ix];
-			if (mon.cr) {
-				const crScaled = it.data.customHashId ? Number(getUnpackedCustomHashId(it.data.customHashId).scaled) : null;
+			const cr = creatures[it.ix];
+			if (cr.level != null) {
+				const lvlScaled = it.data.customHashId ? Number(getUnpackedCustomHashId(it.data.customHashId).scaled) : null;
 				return {
-					cr: it.values.cr,
+					level: it.values.level,
 					count: Number(it.values.count),
 
-					approxHp: it.data.approxHp,
-					approxAc: it.data.approxAc,
-
 					// used for encounter adjuster
-					crScaled: crScaled,
+					lvlScaled: lvlScaled,
 					customHashId: it.data.customHashId,
-					hash: UrlUtil.autoEncodeHash(mon),
+					hash: UrlUtil.autoEncodeHash(cr),
 				}
 			}
-		}).filter(it => it && it.cr !== 100).sort((a, b) => SortUtil.ascSort(b.cr, a.cr));
+		}).filter(it => it && it.level !== 100).sort((a, b) => SortUtil.ascSort(b.level, a.level));
 	}
 
 	static calculateListEncounterXp (partyMeta) {
 		return EncounterBuilderUtils.calculateEncounterXp(EncounterBuilderUtils.getSublistedEncounter(), partyMeta);
 	}
 
-	static getCrCutoff (data, partyMeta) {
-		data = data.filter(it => getCr(it) !== 100).sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
-		if (!data.length) return 0;
-
-		// no cutoff for CR 0-2
-		if (getCr(data[0]) <= 2) return 0;
-
-		// "When making this calculation, don't count any creatures whose challenge rating is significantly below the average
-		// challenge rating of the other creatures in the group unless you think the weak creatures significantly contribute
-		// to the difficulty of the encounter." -- DMG, p. 82
-
-		// Spread the CRs into a single array
-		const crValues = [];
-		data.forEach(it => {
-			const cr = getCr(it);
-			for (let i = 0; i < it.count; ++i) crValues.push(cr);
-		});
-
-		const crMetas = [];
-
-		// If there's precisely one CR value, use it
-		if (crValues.length === 1) {
-			crMetas.push({
-				mean: crValues[0],
-				deviation: 0,
-			});
-		} else {
-			// Get an average CR for every possible encounter without one of the creatures in the encounter
-			for (let i = 0; i < crValues.length; ++i) {
-				const crValueFilt = crValues.filter((_, j) => i !== j);
-				const crMean = Math.mean(...crValueFilt);
-				const crStdDev = Math.sqrt((1 / crValueFilt.length) * crValueFilt.map(it => (it - crMean) ** 2).reduce((a, b) => a + b, 0));
-				crMetas.push({mean: crMean, deviation: crStdDev});
-			}
-		}
-
-		// "unless you think the weak creatures significantly contribute to the difficulty of the encounter"
-		// For player levels <5, always include every creature. We assume that levels 5> will have strong
-		//   AoE/multiattack, allowing trash to be quickly cleared.
-		if (!partyMeta.isPartyLevelFivePlus()) return crValues[0];
-
-		// Sort by descending CR -> ascending deviation
-		crMetas.sort((a, b) => SortUtil.ascSort(b.mean, a.mean) || SortUtil.ascSort(a.deviation, b.deviation));
-
-		// "significantly below the average" -> cutoff at half the average
-		return crMetas[0].mean / 2;
+	static getCreatureXP (partyMeta, creature) {
+		const d = getLvl(creature) - partyMeta.partyLevel
+		if (d < -4) return 0;
+		else if (d === -4) return 10;
+		else if (d === -3) return 15;
+		else if (d === -2) return 20;
+		else if (d === -1) return 30;
+		else if (d === 0) return 40;
+		else if (d === 1) return 60;
+		else if (d === 2) return 80;
+		else if (d === 3) return 120;
+		else if (d === 4) return 160;
+		else if (d > 4) return 160 + 2 ** (Math.floor((d - 5) / 2)) * 80;
+		return 0
 	}
 
 	/**
-	 * @param data an array of {cr: n, count: m} objects
+	 * @param data an array of {lvl: n, count: m} objects
 	 * @param partyMeta number of players in the party
 	 */
 	static calculateEncounterXp (data, partyMeta = null) {
 		// Make a default, generic-sized party of level 1 players
 		if (partyMeta == null) partyMeta = new EncounterPartyMeta([{level: 1, count: ECGEN_BASE_PLAYERS}])
 
-		data = data.filter(it => getCr(it) !== 100)
-			.sort((a, b) => SortUtil.ascSort(getCr(b), getCr(a)));
+		data = data.filter(it => getLvl(it) !== 100)
+			.sort((a, b) => SortUtil.ascSort(getLvl(b), getLvl(a)));
 
-		let baseXp = 0;
-		let relevantCount = 0;
-		if (!data.length) return {baseXp: 0, relevantCount: 0, adjustedXp: 0};
+		let XP = 0;
+		let feasibleCount = 0;
+		let underCount = 0;
+		let overCount = 0;
+		if (!data.length) return {XP, feasibleCount, overCount, underCount};
 
-		const crCutoff = EncounterBuilderUtils.getCrCutoff(data, partyMeta);
 		data.forEach(it => {
-			if (getCr(it) >= crCutoff) relevantCount += it.count;
-			baseXp += (Parser.crToXpNumber(Parser.numberToCr(getCr(it))) || 0) * it.count;
+			if (getLvl(it) - partyMeta.partyLevel > 4) overCount += 1;
+			else if (getLvl(it) - partyMeta.partyLevel < -4) underCount += 1;
+			else feasibleCount += 1;
+			XP += EncounterBuilderUtils.getCreatureXP(partyMeta, it) * it.count;
 		});
 
-		const playerAdjustedXpMult = Parser.numMonstersToXpMult(relevantCount, partyMeta.cntPlayers);
-
-		const adjustedXp = playerAdjustedXpMult * baseXp;
-		return {baseXp, relevantCount, adjustedXp, meta: {crCutoff, playerCount: partyMeta.cntPlayers, playerAdjustedXpMult}};
+		return {XP, feasibleCount, overCount, underCount, meta: {partySize: partyMeta.partySize}};
 	}
 }
 
 let _$totalCr;
 function onSublistChange () {
 	_$totalCr = _$totalCr || $(`#totalcr`);
-	const xp = EncounterBuilderUtils.calculateListEncounterXp(encounterBuilder.lastPartyMeta);
-	const monCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
-	_$totalCr.html(`${monCount} creature${monCount === 1 ? "" : "s"}; ${xp.baseXp.toLocaleString()} XP (<span class="help" title="Adjusted Encounter XP">Enc</span>: ${(xp.adjustedXp).toLocaleString()} XP)`);
+	const crCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
+	_$totalCr.html(`${crCount} creature${crCount === 1 ? "" : "s"}`);
 	if (encounterBuilder.isActive()) encounterBuilder.updateDifficulty();
 	else encounterBuilder.doSaveState();
 }
 
 let creatures = [];
 let mI = 0;
-const lastRendered = {mon: null, isScaled: false};
+const lastRendered = {creature: null, isScaled: false};
 function getScaledData () {
-	const last = lastRendered.mon;
-	return {scaled: last._isScaledCr, customHashId: getCreatureCustomHashId(last)};
+	const last = lastRendered.creature;
+	return {scaled: last._isScaledLvl, customHashId: getCreatureCustomHashId(last)};
 }
 
-function getCustomHashId (name, source, scaledCr) {
-	return `${name}_${source}_${scaledCr}`.toLowerCase();
+function getCustomHashId (name, source, scaledLvl) {
+	return `${name}_${source}_${scaledLvl}`.toLowerCase();
 }
 
 function getCreatureCustomHashId (mon) {
-	if (mon._isScaledCr != null) return getCustomHashId(mon.name, mon.source, mon._isScaledCr);
+	if (mon._isScaledLvl != null) return getCustomHashId(mon.name, mon.source, mon._isScaledLvl);
 	return null;
 }
 
@@ -567,56 +483,8 @@ function addCreatures (data) {
 		primaryLists: [list],
 	});
 
-	function popoutHandlerGenerator (toList) {
-		return (evt) => {
-			const mon = toList[Hist.lastLoadedId];
-			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
-
-			if (evt.shiftKey) {
-				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						title: `${toRender._displayName || toRender.name} \u2014 Source Data`,
-						isPermanent: true,
-						isBookContent: true,
-					},
-				);
-			} else if (evt.ctrlKey || evt.metaKey) {
-				const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
-				const mdText = RendererMarkdown.get().render({entries: [{type: "dataCreature", dataCreature: toRender}]});
-				const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
-
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						title: name,
-						isPermanent: true,
-						isBookContent: true,
-					},
-				);
-			} else {
-				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledCr ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
-
-				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
-				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
-				Renderer.hover.getShowWindow(
-					$content,
-					Renderer.hover.getWindowPositionFromEvent(evt),
-					{
-						pageUrl,
-						title: toRender._displayName || toRender.name,
-						isPermanent: true,
-					},
-				);
-			}
-		};
-	}
-
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, creatures, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	Renderer.hover.bindPopoutButton($btnPop, creatures, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data)");
 	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
 	ListUtil.bindOtherButtons({
 		download: true,
@@ -653,44 +521,37 @@ async function pPreloadSublistSources (json) {
 	}
 }
 
-let $btnProf = null;
-function renderStatblock (mon, isScaled) {
-	lastRendered.mon = mon;
+function renderStatblock (cr, isScaled) {
+	lastRendered.creature = cr;
 	lastRendered.isScaled = isScaled;
 	renderer.setFirstSection(true);
 
 	const $content = $("#pagecontent").empty();
-	const $wrpBtnProf = $(`#wrp-profbonusdice`);
-
-	if ($btnProf !== null) {
-		$wrpBtnProf.append($btnProf);
-		$btnProf = null;
-	}
 
 	function buildStatsTab () {
-		const $btnScaleCr = mon.cr != null ? $(`
-			<button id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)" class="mon__btn-scale-cr btn btn-xs btn-default">
+		const $btnScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-signal"/>
 			</button>`)
 			.off("click").click((evt) => {
 				evt.stopPropagation();
 				const win = (evt.view || {}).window;
-				const mon = creatures[Hist.lastLoadedId];
-				const lastCr = lastRendered.mon ? lastRendered.mon.cr.cr || lastRendered.mon.cr : mon.cr.cr || mon.cr;
-				Renderer.creature.getCrScaleTarget(win, $btnScaleCr, lastCr, (targetCr) => {
-					if (targetCr === Parser.crToNumber(mon.cr)) renderStatblock(mon);
-					else Hist.setSubhash(VeCt.HASH_MON_SCALED, targetCr);
+				const creature = creatures[Hist.lastLoadedId];
+				const lastLvl = lastRendered.creature ? lastRendered.creature.level : creature.level;
+				Renderer.creature.getLvlScaleTarget(win, $btnScaleLvl, lastLvl, (targetLvl) => {
+					if (targetLvl === creature.level) renderStatblock(creature);
+					else Hist.setSubhash(VeCt.HASH_MON_SCALED, targetLvl);
 				});
-			}).toggle(Parser.crToNumber(mon.cr.cr || mon.cr) !== 100) : null;
+			}).toggle(cr.level !== 100) : null;
 
-		const $btnResetScaleCr = mon.cr != null ? $(`
-			<button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default">
+		const $btnResetScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Reset CR Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
 			</button>`)
 			.click(() => Hist.setSubhash(VeCt.HASH_MON_SCALED, null))
 			.toggle(isScaled) : null;
 
-		$content.append(RenderBestiary.$getRenderedCreature(mon, {$btnScaleCr, $btnResetScaleCr}));
+		$content.append(RenderBestiary.$getRenderedCreature(cr, {$btnScaleLvl, $btnResetScaleLvl}));
 
 		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
 		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
@@ -708,7 +569,7 @@ function renderStatblock (mon, isScaled) {
 			})
 			.each(function () {
 				const bonus = Number($(this).text());
-				const expectedPB = Parser.crToPb(mon.cr);
+				const expectedPB = Parser.crToPb(cr.cr);
 
 				// skills and saves can have expertise
 				let expert = 1;
@@ -718,13 +579,13 @@ function renderStatblock (mon, isScaled) {
 				if ($(this).parent().attr("data-mon-save")) {
 					const monSave = $(this).parent().attr("data-mon-save");
 					ability = monSave.split("|")[0].trim().toLowerCase();
-					fromAbility = Parser.getAbilityModNumber(mon[ability]);
+					fromAbility = Parser.getAbilityModNumber(cr[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).parent().attr("data-mon-skill")) {
 					const monSkill = $(this).parent().attr("data-mon-skill");
 					ability = Parser.skillToAbilityAbv(monSkill.split("|")[0].toLowerCase().trim());
-					fromAbility = Parser.getAbilityModNumber(mon[ability]);
+					fromAbility = Parser.getAbilityModNumber(cr[ability]);
 					pB = bonus - fromAbility;
 					expert = (pB === expectedPB * 2) ? 2 : 1;
 				} else if ($(this).data("packed-dice").successThresh !== null) return; // Ignore "recharge"
@@ -767,7 +628,7 @@ function renderStatblock (mon, isScaled) {
 				const $e = $(e);
 				const dc = Number($e.html());
 
-				const expectedPB = Parser.crToPb(mon.cr);
+				const expectedPB = Parser.crToPb(cr.cr);
 				if (expectedPB > 0) {
 					const withoutPB = dc - expectedPB;
 					const profDiceString = _addSpacesToDiceExp(`1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
@@ -787,75 +648,13 @@ function renderStatblock (mon, isScaled) {
 		$(`#wrp-pagecontent`).scroll();
 	}
 
-	function buildFluffTab (isImageTab) {
-		const pGetFluffEntries = async () => {
-			const mon = creatures[Hist.lastLoadedId];
-			const fluff = await Renderer.creature.pGetFluff(mon);
-			return fluff.entries || [];
-		};
-
-		// Add Markdown copy button
-		const $headerControls = isImageTab ? null : (() => {
-			const actions = [
-				new ContextUtil.Action(
-					"Copy as JSON",
-					async () => {
-						const fluffEntries = await pGetFluffEntries();
-						MiscUtil.pCopyTextToClipboard(JSON.stringify(fluffEntries, null, "\t"));
-						JqueryUtil.showCopiedEffect($btnOptions);
-					},
-				),
-				new ContextUtil.Action(
-					"Copy as Markdown",
-					async () => {
-						const fluffEntries = await pGetFluffEntries();
-						const rendererMd = RendererMarkdown.get().setFirstSection(true);
-						MiscUtil.pCopyTextToClipboard(fluffEntries.map(f => rendererMd.render(f)).join("\n"));
-						JqueryUtil.showCopiedEffect($btnOptions);
-					},
-				),
-			]
-			const menu = ContextUtil.getMenu(actions);
-
-			const $btnOptions = $(`<button class="btn btn-default btn-xs btn-stats-name"><span class="glyphicon glyphicon-option-vertical"/></button>`)
-				.click(evt => ContextUtil.pOpenMenu(evt, menu));
-
-			return $$`<div class="flex-v-center btn-group ml-2">${$btnOptions}</div>`;
-		})();
-
-		return Renderer.utils.pBuildFluffTab({
-			isImageTab,
-			$content,
-			entity: mon,
-			pFnGetFluff: Renderer.creature.pGetFluff,
-			$headerControls,
-		});
-	}
-
 	// reset tabs
 	const statTab = Renderer.utils.tabButton(
 		"Statblock",
 		() => {
-			$wrpBtnProf.append($btnProf);
 			$(`#float-token`).show();
 		},
 		buildStatsTab,
-	);
-	const infoTab = Renderer.utils.tabButton(
-		"Info",
-		() => {
-			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
-			$(`#float-token`).hide();
-		},
-		buildFluffTab,
-	);
-	const picTab = Renderer.utils.tabButton(
-		"Images",
-		() => {
-			$btnProf = $wrpBtnProf.children().length ? $wrpBtnProf.children().detach() : $btnProf;
-			$(`#float-token`).hide();
-		},
-		() => buildFluffTab(true),
 	);
 	Renderer.utils.bindTabButtons(statTab);
 }
@@ -869,25 +668,13 @@ async function pHandleUnknownHash (link, sub) {
 	}
 }
 
-// Used in DC roller event handlers
-function dcRollerClick (event, ele, exp) {
-	if (window.PROF_DICE_MODE === PROF_MODE_BONUS) return;
-	const it = {
-		type: "dice",
-		rollable: true,
-		toRoll: exp,
-	};
-	Renderer.dice.pRollerClick(event, ele, JSON.stringify(it));
-}
-
 function getUnpackedCustomHashId (customHashId) {
 	return {scaled: Number(customHashId.split("_").last()), customHashId};
 }
 
-function getCr (obj) {
-	if (obj.crScaled != null) return obj.crScaled;
-	if (obj.cr == null || obj.cr === "Unknown" || obj.cr === "\u2014") return null;
-	return typeof obj.cr === "string" ? obj.cr.includes("/") ? Parser.crToNumber(obj.cr) : Number(obj.cr) : obj.cr;
+function getLvl (obj) {
+	if (obj.lvlScaled != null) return obj.lvlScaled;
+	return Number(obj.level) || null;
 }
 
 let bestiaryPage;

@@ -997,14 +997,14 @@ class Panel {
 
 	_stats_bindCrScaleClickHandler (mon, meta, $contentInner, $contentStats) {
 		const self = this;
-		$contentStats.off("click", ".mon__btn-scale-cr").on("click", ".mon__btn-scale-cr", function (evt) {
+		$contentStats.off("click", ".mon__btn-scale-lvl").on("click", ".mon__btn-scale-lvl", function (evt) {
 			evt.stopPropagation();
 			const win = (evt.view || {}).window;
 
 			const $this = $(this);
 			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr ? (mon.cr.cr || mon.cr) : null;
 
-			Renderer.creature.getCrScaleTarget(win, $this, lastCr, (targetCr) => {
+			Renderer.creature.getLvlScaleTarget(win, $this, lastCr, (targetCr) => {
 				const originalCr = Parser.crToNumber(mon.cr) === targetCr;
 
 				const doRender = (toRender) => {
@@ -1033,7 +1033,7 @@ class Panel {
 				}
 			}, true);
 		});
-		$contentStats.off("click", ".mon__btn-reset-cr").on("click", ".mon__btn-reset-cr", function () {
+		$contentStats.off("click", ".mon__btn-scale-lvl").on("click", ".mon__btn-scale-lvl", function () {
 			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(mon, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
@@ -2700,7 +2700,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			});
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			/*const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
+			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
 			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
@@ -2718,7 +2718,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			${$btnPlayertracker}
 			</div>`.appendTo($tab);
 
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);*/
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);

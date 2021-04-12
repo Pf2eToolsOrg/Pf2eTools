@@ -21,7 +21,7 @@ class PageFilterBackgrounds extends PageFilter {
 
 		this._sourceFilter.addItem(bg.source);
 		this._skillFilter.addItem(bg.skills);
-		this._loreFilter.addItem(bg.skill_lore);
+		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg.boosts);
 	}
 
@@ -40,7 +40,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.source,
 			bg.boosts,
 			bg.skills,
-			bg.skill_lore,
+			bg.lore,
 		)
 	}
 }

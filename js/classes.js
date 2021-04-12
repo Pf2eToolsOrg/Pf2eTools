@@ -814,6 +814,8 @@ class ClassesPage extends BaseComponent {
 		const className = {
 			type: "pf2-h1",
 			name: cls.name,
+			source: cls.source,
+			page: cls.page,
 		};
 		const flavor = {
 			type: "pf2-h1-flavor",
@@ -826,7 +828,7 @@ class ClassesPage extends BaseComponent {
 				`At 1st level, your class gives you an ability boost to ${cls.keyAbility}.`,
 			],
 			hp: [
-				`${cls.HP} plus your Constitution Modifier`,
+				`${cls.hp} plus your Constitution Modifier`,
 				"You increase your maximum number of HP by this number at 1st level and every level thereafter.",
 			],
 		};
@@ -853,6 +855,8 @@ class ClassesPage extends BaseComponent {
 						name: feature.name,
 						entries: feature.entries,
 						level: ixLvl + 1,
+						source: feature.source,
+						page: feature.page,
 					}))
 					.appendTo($classStats)
 
