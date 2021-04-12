@@ -260,6 +260,10 @@ function Renderer () {
 			meta._typeStack.push(type);
 
 			switch (type) {
+				case "entries":
+					this._renderEntries(entry, textStack, meta, options);
+					break;
+
 				// recursive
 				case "pf2-h1":
 					this._renderPf2H1(entry, textStack, meta, options);
@@ -429,6 +433,11 @@ function Renderer () {
 			textStack[0] += options.suffix;
 			meta._didRenderSuffix = true;
 		}
+	};
+
+	// FIXME: Temp Solution
+	this._renderEntries = function (entry, textStack, meta, options) {
+		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
 	};
 
 	this._renderImage = function (entry, textStack, meta, options) {
