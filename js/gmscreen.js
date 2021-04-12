@@ -2700,7 +2700,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			});
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			/*const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
+			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
 			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
@@ -2718,7 +2718,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			${$btnPlayertracker}
 			</div>`.appendTo($tab);
 
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);*/
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
