@@ -147,11 +147,11 @@ class PageFilterItems extends PageFilter {
 		this._traitFilter.addItem(item._fTraits)
 		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
-		if (item.shield_stats != null) this._hpFilter.addItem(item.shield_stats.HP);
-		if (item.shield_stats != null) this._btFilter.addItem(item.shield_stats.BT);
-		if (item.shield_stats != null) this._hardnessFilter.addItem(item.shield_stats.hardness);
+		if (item.shieldStats != null) this._hpFilter.addItem(item.shieldStats.hp);
+		if (item.shieldStats != null) this._btFilter.addItem(item.shieldStats.bt);
+		if (item.shieldStats != null) this._hardnessFilter.addItem(item.shieldStats.hardness);
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
-		if (item.craft_requirements != null) this._miscFilter.addItem("Has Craft Requirements");
+		if (item.craftReq != null) this._miscFilter.addItem("Has Craft Requirements");
 		this._miscFilter.addItem(item._fMisc);
 		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo)
 	}
@@ -183,9 +183,9 @@ class PageFilterItems extends PageFilter {
 			it._fMisc,
 			it._fBulk,
 			[
-				it.shield_stats ? it.shield_stats.HP : 0,
-				it.shield_stats ? it.shield_stats.BT : 0,
-				it.shield_stats ? it.shield_stats.hardness : 0,
+				it.shieldStats ? it.shieldStats.hp : 0,
+				it.shieldStats ? it.shieldStats.bt : 0,
+				it.shieldStats ? it.shieldStats.hardness : 0,
 			],
 			it._fAppliesTo,
 		);

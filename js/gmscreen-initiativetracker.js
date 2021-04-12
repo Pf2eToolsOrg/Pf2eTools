@@ -1289,7 +1289,7 @@ class InitiativeTracker {
 		}
 
 		function getTotalHp (cr) {
-			return `${cr.hit_points.map(it => it.HP).reduce((a, b) => a + b, 0)}`;
+			return `${cr.hp.map(it => it.hp).reduce((a, b) => a + b, 0)}`;
 		}
 
 		async function pConvertAndLoadBestiaryList (bestiaryList) {

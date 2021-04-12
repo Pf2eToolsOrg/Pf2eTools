@@ -43,9 +43,9 @@ class PageFilterHazards extends PageFilter {
 			if (it.defenses.ac) it._fac = it.defenses.ac[Object.keys(it.defenses.ac)[0]];
 			if (it.defenses.hardness) it._fhardness = it.defenses.hardness[Object.keys(it.defenses.hardness)[0]];
 			if (it.defenses.hp) it._fhp = it.defenses.hp[Object.keys(it.defenses.hp)[0]];
-			if (it.defenses.saving_throws) it._ffort = it.defenses.saving_throws.fort;
-			if (it.defenses.saving_throws) it._fref = it.defenses.saving_throws.ref;
-			if (it.defenses.saving_throws) it._fwill = it.defenses.saving_throws.will;
+			if (it.defenses.savingThrows) it._ffort = it.defenses.savingThrows.fort;
+			if (it.defenses.savingThrows) it._fref = it.defenses.savingThrows.ref;
+			if (it.defenses.savingThrows) it._fwill = it.defenses.savingThrows.will;
 			if (it.defenses.immunities) it._fimmunities = it.defenses.immunities;
 		}
 		it._ftraits = it.traits.map(t => Parser.getTraitName(t));

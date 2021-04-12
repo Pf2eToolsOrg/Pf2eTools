@@ -31,7 +31,7 @@ class BestiaryPage {
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(cr.source);
-		const type = cr.creature_type;
+		const type = cr.creatureType;
 		const level = cr.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
@@ -50,7 +50,7 @@ class BestiaryPage {
 				hash,
 				source,
 				level: cr.level,
-				type: cr.creature_type,
+				type: cr.creatureType,
 			},
 			{
 				uniqueId: cr.uniqueId ? cr.uniqueId : mI,
@@ -79,7 +79,7 @@ class BestiaryPage {
 
 		const name = cr._displayName || cr.name;
 		const hash = `${UrlUtil.autoEncodeHash(cr)}${subHash}`;
-		const type = cr.creature_type
+		const type = cr.creatureType
 		const count = addCount || 1;
 		const level = cr.level;
 

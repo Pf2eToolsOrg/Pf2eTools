@@ -480,10 +480,10 @@ const ScaleCreature = {
 		5–19           | 20
 		20+            | 30
 		 */
-		Object.keys(creature.armor_class).forEach(key => {
-			if (key !== "abilities") creature.armor_class[key] += 2;
+		Object.keys(creature.ac).forEach(key => {
+			if (key !== "abilities") creature.ac[key] += 2;
 		});
-		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.saving_throws[st]).forEach(key => creature.saving_throws[st][key] += 2));
+		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += 2));
 		creature.spellcasting.forEach(sc => {
@@ -527,13 +527,13 @@ const ScaleCreature = {
 			});
 			return ab
 		};
-		creature.abilities_interactive.map(ab => adjustAbility(ab));
-		creature.abilities_automatic.map(ab => adjustAbility(ab));
-		creature.abilities_active.map(ab => adjustAbility(ab));
-		if (creature.level < 2) creature.hit_points[0].hp += 10;
-		else if (creature.level < 5) creature.hit_points[0].hp += 15;
-		else if (creature.level < 20) creature.hit_points[0].hp += 20;
-		else creature.hit_points[0].hp += 30;
+		creature.abilitiesTop.map(ab => adjustAbility(ab));
+		creature.abilitiesMid.map(ab => adjustAbility(ab));
+		creature.abilitiesBot.map(ab => adjustAbility(ab));
+		if (creature.level < 2) creature.hp[0].hp += 10;
+		else if (creature.level < 5) creature.hp[0].hp += 15;
+		else if (creature.level < 20) creature.hp[0].hp += 20;
+		else creature.hp[0].hp += 30;
 
 		creature._displayName = `Elite ${creature.name}`;
 		creature.level += 1;
@@ -560,10 +560,10 @@ const ScaleCreature = {
 		6–20           | –20
 		21+            | –30
 		 */
-		Object.keys(creature.armor_class).forEach(key => {
-			if (key !== "abilities") creature.armor_class[key] -= 2;
+		Object.keys(creature.ac).forEach(key => {
+			if (key !== "abilities") creature.ac[key] -= 2;
 		});
-		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.saving_throws[st]).forEach(key => creature.saving_throws[st][key] -= 2));
+		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] -= 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] -= 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] -= 2));
 		creature.spellcasting.forEach(sc => {
@@ -607,13 +607,13 @@ const ScaleCreature = {
 			});
 			return ab
 		};
-		creature.abilities_interactive.map(ab => adjustAbility(ab));
-		creature.abilities_automatic.map(ab => adjustAbility(ab));
-		creature.abilities_active.map(ab => adjustAbility(ab));
-		if (creature.level < 2) creature.hit_points[0].hp -= 10;
-		else if (creature.level < 5) creature.hit_points[0].hp -= 15;
-		else if (creature.level < 20) creature.hit_points[0].hp -= 20;
-		else creature.hit_points[0].hp -= 30;
+		creature.abilitiesTop.map(ab => adjustAbility(ab));
+		creature.abilitiesMid.map(ab => adjustAbility(ab));
+		creature.abilitiesBot.map(ab => adjustAbility(ab));
+		if (creature.level < 2) creature.hp[0].hp -= 10;
+		else if (creature.level < 5) creature.hp[0].hp -= 15;
+		else if (creature.level < 20) creature.hp[0].hp -= 20;
+		else creature.hp[0].hp -= 30;
 
 		creature._displayName = `Weak ${creature.name}`;
 		creature.level -= 1;
@@ -675,16 +675,16 @@ const ScaleCreature = {
 	},
 
 	_adjustAbilityMods (creature, lvlIn, toLvl) {
-		Object.keys(creature.ability_modifiers).forEach(abMod => {
-			const mod = creature.ability_modifiers[abMod];
+		Object.keys(creature.abilityMods).forEach(abMod => {
+			const mod = creature.abilityMods[abMod];
 			const levelDiff = toLvl - lvlIn;
 			if (mod < -3) {
 				// Do nothing for terrible scores (high level zombies should stay dumb)
 			} else if (mod < 0) {
 				// slightly increase if toLvl >> lvlIn
-				creature.ability_modifiers[abMod] += Math.floor(levelDiff / 5);
+				creature.abilityMods[abMod] += Math.floor(levelDiff / 5);
 			} else {
-				creature.ability_modifiers[abMod] = this._scaleValue(lvlIn, toLvl, mod, this._LvlAbilityMods);
+				creature.abilityMods[abMod] = this._scaleValue(lvlIn, toLvl, mod, this._LvlAbilityMods);
 			}
 		});
 	},
@@ -708,19 +708,19 @@ const ScaleCreature = {
 	},
 
 	_adjustAC (creature, lvlIn, toLvl) {
-		const defaultAc = creature.armor_class.default;
-		creature.armor_class.default = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC);
-		Object.keys(creature.armor_class).forEach(key => {
-			if (key !== "default" && key !== "abilities") creature.armor_class[key] += creature.armor_class.default - defaultAc;
+		const defaultAc = creature.ac.default;
+		creature.ac.default = this._scaleValue(lvlIn, toLvl, defaultAc, this._LvlAC);
+		Object.keys(creature.ac).forEach(key => {
+			if (key !== "default" && key !== "abilities") creature.ac[key] += creature.ac.default - defaultAc;
 		});
 	},
 
 	_adjustSavingThrows (creature, lvlIn, toLvl) {
 		["Fort", "Ref", "Will"].forEach(st => {
-			const defaultSave = creature.saving_throws[st].default;
-			creature.saving_throws[st].default = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows);
-			Object.keys(creature.saving_throws[st]).forEach(key => {
-				if (key !== "default") creature.saving_throws[st][key] += creature.saving_throws[st].default - defaultSave;
+			const defaultSave = creature.savingThrows[st].default;
+			creature.savingThrows[st].default = this._scaleValue(lvlIn, toLvl, defaultSave, this._LvlSavingThrows);
+			Object.keys(creature.savingThrows[st]).forEach(key => {
+				if (key !== "default") creature.savingThrows[st][key] += creature.savingThrows[st].default - defaultSave;
 			});
 		});
 	},
@@ -730,11 +730,11 @@ const ScaleCreature = {
 	},
 
 	_adjustHP (creature, lvlIn, toLvl) {
-		for (let hp of creature.hit_points) {
-			hp.HP = this._scaleValue(lvlIn, toLvl, hp.HP, this._LvlHP);
-			if (hp.HP > 100) {
-				hp.HP += 2;
-				hp.HP -= hp.HP % 5
+		for (let hp of creature.hp) {
+			hp.hp = this._scaleValue(lvlIn, toLvl, hp.hp, this._LvlHP);
+			if (hp.hp > 100) {
+				hp.hp += 2;
+				hp.hp -= hp.hp % 5
 			}
 			for (let i = 0; i < (hp.abilities || []).length; i++) {
 				hp.abilities[i] = hp.abilities[i].replace(this._regexHealingAbilities, (match, name, amt) => {
@@ -877,9 +877,9 @@ const ScaleCreature = {
 			});
 			return ab
 		};
-		creature.abilities_interactive.map(ab => adjustAbility(ab));
-		creature.abilities_automatic.map(ab => adjustAbility(ab));
-		creature.abilities_active.map(ab => adjustAbility(ab));
+		creature.abilitiesTop.map(ab => adjustAbility(ab));
+		creature.abilitiesMid.map(ab => adjustAbility(ab));
+		creature.abilitiesBot.map(ab => adjustAbility(ab));
 	},
 	_isAbilityAreaLimited (ab) {
 		let isArea = Boolean(ab.area);

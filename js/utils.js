@@ -2587,7 +2587,7 @@ DataUtil = {
 				});
 
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
-					if (prop === "*") doMod(modInfos, "abilities_interactive", "abilities_automatic", "attacks", "abilities_active");
+					if (prop === "*") doMod(modInfos, "abilitiesTop", "abilitiesMid", "attacks", "abilitiesBot");
 					else if (prop === "_") doMod(modInfos);
 					else doMod(modInfos, prop);
 				});

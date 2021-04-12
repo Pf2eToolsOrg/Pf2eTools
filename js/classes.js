@@ -828,7 +828,7 @@ class ClassesPage extends BaseComponent {
 				`At 1st level, your class gives you an ability boost to ${cls.keyAbility}.`,
 			],
 			hp: [
-				`${cls.HP} plus your Constitution Modifier`,
+				`${cls.hp} plus your Constitution Modifier`,
 				"You increase your maximum number of HP by this number at 1st level and every level thereafter.",
 			],
 		};

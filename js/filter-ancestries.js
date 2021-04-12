@@ -354,7 +354,7 @@ class PageFilterAncestries extends PageFilter {
 	addToFilters (ancestry, isExcluded, opts) {
 		if (isExcluded) return;
 		this._sourceFilter.addItem(ancestry.source);
-		this._hpFilter.addItem(ancestry.HP);
+		this._hpFilter.addItem(ancestry.hp);
 		this._sizeFilter.addItem(ancestry.size);
 		this._speedFilter.addItem(ancestry.speed);
 		this._languageFilter.addItem(ancestry._flanguages);
@@ -384,7 +384,7 @@ class PageFilterAncestries extends PageFilter {
 			a.source,
 			a.boosts || [],
 			a.flaw || [],
-			a.HP,
+			a.hp,
 			a.size,
 			a.speed,
 			a._flanguages,
