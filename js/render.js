@@ -449,7 +449,7 @@ function Renderer () {
 				suffix: "</p>",
 			}));
 			textStack[0] += Renderer.utils.getPageP(entry, {prefix: "\u2014", noReprints: true});
-			textStack[0] += `<div class="float-clear mt-3"></div>`;
+			textStack[0] += `<div class="mt-3"></div>`;
 		}
 	};
 
