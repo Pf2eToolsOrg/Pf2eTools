@@ -330,11 +330,6 @@ function Renderer () {
 				case "quote":
 					this._renderQuote(entry, textStack, meta, options);
 					break;
-				// MrVauxs Doing || Prototype OtherSource entry.
-					case "entriesOtherSource":
-					this._renderEntriesOtherSource(entry, textStack, meta, options);
-					break;
-
 				// pf2-statblock
 				case "affliction":
 					this._renderAffliction(entry, textStack, meta, options);
@@ -450,7 +445,7 @@ function Renderer () {
 		if (entry.entries && entry.entries.length) {
 			textStack[0] += `<hr class="hr-other-source">`;
 			entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {
-				prefix: "<p class='pf2-p'>",
+				prefix: "<p>",
 				suffix: "</p>",
 			}));
 			textStack[0] += Renderer.utils.getPageP(entry, {prefix: "\u2014", noReprints: true});
@@ -1257,22 +1252,6 @@ function Renderer () {
 			const tempStack = [""];
 			this._recursiveRender(entry.by, tempStack, meta);
 			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${entry.from}</i>` : ""}</span>`;
-			textStack[0] += `</p>`;
-		}
-	};
-
-	// Amateur Coder says hello - MrVauxs Doing
-	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
-		const len = entry.entries.length;
-		for (let i = 0; i < len; ++i) {
-			textStack[0] += `<hr style="height:2px;color:gray;background-color:gray"> <p>`;
-			this._recursiveRender(entry.entries[i], textStack, meta);
-			textStack[0] += `</p>`;
-		}
-		if (entry.source && entry.page) {
-			const tempStack = [""];
-			textStack[0] += `<p>`;
-			textStack[0] += `<span class="rd__quote-by">\u2014 ${Parser.sourceJsonToFull(entry.source)}, p. ${entry.page}</span>`;
 			textStack[0] += `</p>`;
 		}
 	};
