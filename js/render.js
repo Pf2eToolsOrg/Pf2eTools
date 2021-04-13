@@ -315,6 +315,9 @@ function Renderer () {
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
 					break;
+				case "entriesOtherSource":
+					this._renderEntriesOtherSource(entry, textStack, meta, options);
+					break;
 				case "list":
 					this._renderList(entry, textStack, meta, options);
 					break;
@@ -435,6 +438,23 @@ function Renderer () {
 		if (options.suffix != null) {
 			textStack[0] += options.suffix;
 			meta._didRenderSuffix = true;
+		}
+	};
+
+	// TODO: Rework Temp Solution
+	this._renderEntries = function (entry, textStack, meta, options) {
+		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
+	};
+
+	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
+		if (entry.entries && entry.entries.length) {
+			textStack[0] += `<hr class="hr-other-source">`;
+			entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {
+				prefix: "<p class='pf2-p'>",
+				suffix: "</p>",
+			}));
+			textStack[0] += Renderer.utils.getPageP(entry, {prefix: "\u2014", noReprints: true});
+			textStack[0] += `<div class="float-clear mt-3"></div>`;
 		}
 	};
 
@@ -2951,7 +2971,8 @@ Renderer.utils = {
 	getPageP: (it, opts) => {
 		opts = opts || {};
 		return `<p class="pf2-stat pf2-stat__source">
-					<strong>${Parser.sourceJsonToFull(it.source)}</strong>, page ${it.page}.
+					${opts.prefix ? opts.prefix : ""}
+					${it.source != null ? `<strong>${Parser.sourceJsonToFull(it.source)}</strong>${it.page != null ? `, page ${it.page}.` : ""}` : ""}
 					${opts.noReprints || !it.otherSources ? "" : Renderer.utils.getOtherSourceHtml(it.otherSources)}
 				</p>`;
 	},
