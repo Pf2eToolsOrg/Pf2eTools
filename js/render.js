@@ -3009,17 +3009,6 @@ Renderer.utils = {
 		(initialTab || toAdd[toAdd.length - 1]).click();
 	},
 
-	_pronounceButtonsBound: false,
-	bindPronounceButtons () {
-		if (Renderer.utils._pronounceButtonsBound) return;
-		Renderer.utils._pronounceButtonsBound = true;
-		$(`body`).on("click", ".btn-name-pronounce", function () {
-			const audio = $(this).find(`.name-pronounce`)[0];
-			audio.currentTime = 0;
-			audio.play();
-		});
-	},
-
 	/**
 	 * @param entry Data entry to search for fluff on, e.g. a creature
 	 * @param prop The fluff index reference prop, e.g. `"monsterFluff"`
@@ -6311,7 +6300,7 @@ Renderer.hover = {
 		return win.innerWidth <= 768;
 	},
 
-	bindPopoutButton ($btnPop, toList, handlerGenerator, title) {
+	bindPopoutButton ($btnPop, toList, handlerGenerator, title, page) {
 		$btnPop
 			.off("click")
 			.title(title || "Popout Window (SHIFT for Source Data)");
@@ -6336,7 +6325,7 @@ Renderer.hover = {
 								},
 							);
 						} else {
-							Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
+							Renderer.hover.doPopout(evt, toList, Hist.lastLoadedId, page);
 						}
 					}
 				},
@@ -6391,14 +6380,15 @@ Renderer.hover = {
 		return $$`<div class="stats ${opts.isBookContent || opts.isLargeBookContent ? "pf2-book" : "pf2-stat"} ${opts.isLargeBookContent ? "stats--book-large" : ""}">${Renderer.hover.getGenericCompactRenderedString(toRender)}</div>`;
 	},
 
-	doPopoutCurPage (evt, allEntries, index) {
+	doPopout (evt, allEntries, index, page) {
+		page = page || UrlUtil.getCurrentPage();
 		const it = allEntries[index];
-		const $content = Renderer.hover.$getHoverContent_stats(UrlUtil.getCurrentPage(), it);
+		const $content = Renderer.hover.$getHoverContent_stats(page, it);
 		Renderer.hover.getShowWindow(
 			$content,
 			Renderer.hover.getWindowPositionFromEvent(evt),
 			{
-				pageUrl: `#${UrlUtil.autoEncodeHash(it)}`,
+				pageUrl: `#${UrlUtil.URL_TO_HASH_BUILDER[page](it)}`,
 				title: it._displayName || it.name,
 				isPermanent: true,
 			},

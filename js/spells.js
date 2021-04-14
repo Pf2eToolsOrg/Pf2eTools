@@ -177,7 +177,7 @@ class SpellsPage {
 						},
 					);
 				} else {
-					Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
+					Renderer.hover.doPopout(evt, toList, Hist.lastLoadedId);
 				}
 			}
 		}
