@@ -14,7 +14,7 @@
 			],
 			"languages": [
 				"Common",
-				"Additional languages equal to your Intelligence modifier (if positive). Choose from Abyssal, Celestial, Draconic, Dwarven, Undercommon, Utopian, and any other languages to which you have access (such as the languages prevalent in your region)."
+				"Additional languages equal to your Intelligence modifier (if positive). Choose from Elven, Gnomish, Goblin, Halfling, Dwarven, Sylvan, and any other languages to which you have access (such as the languages prevalent in your region)."
 			],
 			"traits": [
                 "Kitsune",
@@ -22,15 +22,34 @@
 			],
 			"features": [
                 {
-                    "name": "Constructed",
+                    "name": "Low-light Vision",
                     "entries": [
-                        "Your synthetic body resists ailments better than those of purely biological organisms. You gain a +1 circumstance bonus to saving throws against diseases, poisons, and radiation."
+                        "You can see in dim light as though it were bright light, and you ignore the concealed condition due to dim light."
                     ]
 			    },
                 {
-                    "name": "Emotionally Unaware",
+                    "name": "Change Shape",
                     "entries": [
-                        "You find it difficult to understand and express complex emotions. You take a –1 circumstance penalty to {@skill Diplomacy} and {@skill Performance} checks, and on {@skill Perception} checks to {@action Sense Motive|CRB}."
+                        "As a kitsune, you gain the Change Shape ability.",
+						{
+							"activity": {
+								"number": 1,
+								"unit": "single",
+								"entry": "{@as 1}"
+							},
+							"traits": [
+								"Concentrate",
+								"Divine",
+								"Kitsune",
+								"Polymorph",
+								"Transmutation"
+							],
+							"entries": [
+								"You transform into a specific alternate form determined by your heritage. If your heritage doesn’t list a form, your alternate form is a tailless form, which is a common Medium humanoid ancestry prevalent where you grew up (typically human). This form is the same age and body type as your true form and has roughly analogous physical traits, such as hair color. Using Change Shape counts as creating a disguise for the Impersonate use of Deception. You lose any unarmed Strikes you gained from a kitsune heritage or ancestry feat in this form. You can remain in your alternate form indefinitely, and you can shift back to your true kitsune form by using this action again."
+							],
+							"type": "ability",
+							"name": "Change Shape"
+						}
                     ]
 			    }
             ],
