@@ -2086,7 +2086,7 @@ Parser.CONDITION_TO_COLOR = {
 
 	"Concentration": "#009f7a",
 };
-
+// Turn Adventure Paths into, well, adventures. Does not seem to work currently.
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
@@ -2096,8 +2096,12 @@ SRC_LOAG = "LOAG";
 SRC_LOACLO = "LOACLO";
 SRC_LOGM = "LOGM";
 SRC_AAWS = "AAWS",
+SRC_APLLS = "APLLS",
 
 SRC_3PP_SUFFIX = " 3pp";
+
+AP_PREFIX = "Adventure Path: ";
+AP_PREFIX_SHORT = "AP: ";
 
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
@@ -2112,6 +2116,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
+Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
@@ -2123,6 +2128,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
+Parser.SOURCE_JSON_TO_ABV[SRC_APLLS] = "APLLS";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
@@ -2151,7 +2157,9 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
 });
 Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
-[].forEach(src => {
+[
+	SRC_APLLS,
+].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
