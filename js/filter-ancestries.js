@@ -24,6 +24,10 @@ class PageFilterAncestries extends PageFilter {
 			isLabelled: true,
 			labels: [20, 25, 30],
 		});
+		this._speedTypeFilter = new Filter({
+			header: "Speed Types",
+			displayFn: (x) => x.uppercaseFirst(),
+		});
 		this._languageFilter = new Filter({header: "Languages"});
 		this._traitsFilter = new Filter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
@@ -53,12 +57,18 @@ class PageFilterAncestries extends PageFilter {
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (ancestry, opts) {
-		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20)
-		ancestry._fMisc = []
+		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20);
+		ancestry._fMisc = [];
 		if (ancestry.feature) {
 			if (ancestry.feature.name === "Low-Light Vision") ancestry._fMisc.push("Has Low-Light Vision")
 			if (ancestry.feature.name === "Darkvision") ancestry._fMisc.push("Has Darkvision")
 		}
+		ancestry._fspeedtypes = []
+		ancestry._fspeed = 0
+		Object.keys(ancestry.speed).forEach((k) => {
+			ancestry._fspeed = Math.max(ancestry.speed[k], ancestry._fspeed);
+			ancestry._fspeedtypes.push(k);
+		});
 	}
 
 	addToFilters (ancestry, isExcluded, opts) {
@@ -80,6 +90,7 @@ class PageFilterAncestries extends PageFilter {
 			this._hpFilter,
 			this._sizeFilter,
 			this._speedFilter,
+			this._speedTypeFilter,
 			this._languageFilter,
 			this._traitsFilter,
 			this._miscFilter,
@@ -96,7 +107,8 @@ class PageFilterAncestries extends PageFilter {
 			a.flaw || [],
 			a.hp,
 			a.size,
-			a.speed,
+			a._fspeed,
+			a._fspeedtypes,
 			a._flanguages,
 			a.traits,
 			a._fMisc,

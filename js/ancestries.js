@@ -849,7 +849,10 @@ class AncestriesPage extends BaseComponent {
 					type: "pf2-title",
 					name: "Speed",
 				},
-				`${anc.speed} feet`,
+				...Object.keys(anc.speed).map(k => {
+					if (k === "walk") return `${anc.speed.walk} feet`
+					else return `${k.uppercaseFirst()} ${anc.speed[k]} feet`
+				}),
 			],
 		};
 		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, anc.rarity);
@@ -1103,7 +1106,8 @@ class AncestriesPage extends BaseComponent {
 				anc.flaw || [],
 				anc.hp,
 				anc.size,
-				anc.speed,
+				anc._fspeed,
+				anc._fspeedtypes,
 				anc._flanguages,
 				anc.traits,
 				anc._fMisc,
