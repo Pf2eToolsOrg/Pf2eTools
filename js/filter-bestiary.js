@@ -121,7 +121,7 @@ class PageFilterBestiary extends PageFilter {
 		this._speedTypeFilter = new Filter({
 			header: "Speed Types",
 			displayFn: (x) => x.uppercaseFirst(),
-		})
+		});
 		this._speedMultiFilter = new MultiFilter({
 			header: "Speeds",
 			filters: [this._speedFilter, this._speedTypeFilter],
