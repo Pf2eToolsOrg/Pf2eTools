@@ -446,7 +446,7 @@ function getCreatureCustomHashId (mon) {
 }
 
 function handleBestiaryLiClick (evt, listItem) {
-	if (encounterBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, creatures, listItem.ix);
+	if (encounterBuilder.isActive()) Renderer.hover.doPopout(evt, creatures, listItem.ix);
 	else list.doSelect(listItem, evt);
 }
 
@@ -500,8 +500,6 @@ function addCreatures (data) {
 			}),
 		},
 	});
-
-	Renderer.utils.bindPronounceButtons();
 }
 
 async function pPreloadSublistSources (json) {

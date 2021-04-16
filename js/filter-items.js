@@ -132,10 +132,10 @@ class PageFilterItems extends PageFilter {
 		item._fIsEquipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
-		item._fAppliesTo = item.applies_to ? `${item.applies_to} Rune` : null
+		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null
 
 		// RuneItem Builder
-		if (item.applies_to) this._categoriesRuneItems.push(item.applies_to);
+		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
 	}
 
 	addToFilters (item, isExcluded) {

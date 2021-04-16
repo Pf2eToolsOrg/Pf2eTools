@@ -33,7 +33,6 @@ class ListPage {
 		this._dataProps = opts.dataProps;
 		this._bookViewOptions = opts.bookViewOptions;
 		this._tableViewOptions = opts.tableViewOptions;
-		this._hasAudio = opts.hasAudio;
 
 		this._renderer = Renderer.get();
 		this._list = null;
@@ -91,7 +90,6 @@ class ListPage {
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton();
 		ListUtil.addListShowHide();
-		if (this._hasAudio) Renderer.utils.bindPronounceButtons();
 
 		if (this._bookViewOptions) {
 			this._bookView = new BookModeView({

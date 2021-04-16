@@ -490,9 +490,9 @@ class ItemsPage {
 							},
 						);
 					} else if (runeBuilder.isActive()) {
-						Renderer.hover.doPopoutCurPage(evt, [toRender], 0);
+						Renderer.hover.doPopout(evt, [toRender], 0);
 					} else {
-						Renderer.hover.doPopoutCurPage(evt, this._itemList, Hist.lastLoadedId);
+						Renderer.hover.doPopout(evt, this._itemList, Hist.lastLoadedId);
 					}
 				}
 			},
@@ -511,7 +511,7 @@ let runeBuilder;
 let printBookView;
 
 function handleItemsLiClick (evt, listItem) {
-	if (runeBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, itemsPage._itemList, listItem.ix);
+	if (runeBuilder.isActive()) Renderer.hover.doPopout(evt, itemsPage._itemList, listItem.ix);
 }
 
 function handleItemsLiContext (evt, listItem) {

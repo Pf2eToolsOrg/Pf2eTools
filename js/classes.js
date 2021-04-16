@@ -27,6 +27,7 @@ class ClassesPage extends BaseComponent {
 		this._ixDataSubclass = 0;
 
 		this._$divNoContent = null;
+		this._rng = RollerUtil.roll(1234) + 5678;
 
 		this._activeClassDataFiltered = null;
 		this._activeFeatDataFiltered = null;
@@ -135,12 +136,17 @@ class ClassesPage extends BaseComponent {
 		this._setFeatFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
+		const $btnLink = ListUtil.getOrTabRightButton(`btn-feat-link`, `list`);
+		$btnLink.title("View this feat on the Feats page");
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._featDataList, null, null, UrlUtil.PG_FEATS);
+		UrlUtil.bindLinkExportButton(this.featFilterBox);
+
 		await this._pInitAndRunRender();
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#classstats`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
 		this._initLinkGrabbers();
-		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
 		Hist.initialLoad = false;
 
@@ -343,6 +349,7 @@ class ClassesPage extends BaseComponent {
 				document.title = `${cls ? cls.name : "Classes"} - Pf2eTools`;
 				target._ = ixToLoad;
 				this._loadFirstFeat = true;
+				this._rng = RollerUtil.roll(1234) + 5678;
 			}
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
@@ -707,6 +714,7 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
+		this._render_renderSummary();
 		this._render_renderClass();
 		this._render_renderClassAdvancementTable()
 		await this._render_pRenderSubclassTabs();
@@ -776,6 +784,21 @@ class ClassesPage extends BaseComponent {
 		this._addHookBase("isHideFeatures", hkDisplayFeatures);
 		MiscUtil.pDefer(hkDisplayFeatures);
 
+		const hkShowFeats = () => {
+			const $clsWrp = $(`#classesstats-wrp`);
+			const $featView = $(`.feat-view`);
+
+			if (this._state.isShowFeats) {
+				$clsWrp.toggleClass("hidden", true);
+				$featView.toggleClass("hidden", false);
+			} else {
+				$clsWrp.toggleClass("hidden", false);
+				$featView.toggleClass("hidden", true);
+			}
+		};
+		this._addHookBase("isShowFeats", hkShowFeats);
+		MiscUtil.pDefer(hkShowFeats);
+
 		const cls = this.activeClass;
 		cls.subclasses.forEach(sc => {
 			const stateKey = UrlUtil.getStateKeySubclass(sc);
@@ -802,6 +825,35 @@ class ClassesPage extends BaseComponent {
 		return this.activeClass.subclasses
 			.filter(sc => this._state[UrlUtil.getStateKeySubclass(sc)])
 			.map(sc => asStateKeys ? UrlUtil.getStateKeySubclass(sc) : sc);
+	}
+
+	_render_renderSummary () {
+		const $summaryText = $(`#class-summary__text`).empty();
+		const $summaryImage = $(`#class-summary__image`).empty();
+		const cls = this.activeClass;
+		const renderer = Renderer.get();
+		if (cls.summary == null) cls.summary = {};
+
+		$$`<p class="pf2-h1">${cls.name}</p>
+			${cls.summary.text ? `<p class="pf2-h1-flavor">${cls.summary.text}</p>` : ""}
+			${renderer._getPf2ChapterSwirl()}
+			<p class="pf2-h3 mt-4">Key Ability Score</p>
+			<p class="pf2-p">${cls.summary.keyAbility ? cls.summary.keyAbility : cls.keyAbility}</p>
+			${cls.summary.sndAbility ? `<p class="pf2-h3">Secondary Ability Scores</p>
+			<p class="pf2-p">${cls.summary.sndAbility}</p>` : ""}
+			<p class="pf2-h4">Source</p>
+			<p class="pf2-p">${cls.source != null ? `${Parser.sourceJsonToFull(cls.source)}${cls.page != null ? `, page ${cls.page}.` : ""}` : ""}</p>`.appendTo($summaryText);
+
+		if (cls.summary.images && cls.summary.images.length) {
+			$summaryImage.removeClass("pf2-summary__image--no-image");
+			const src = cls.summary.images[this._rng % cls.summary.images.length];
+			$$`<img src="${src}" alt="${cls.summary.images[0]}">`.appendTo($summaryImage);
+		} else {
+			$summaryImage.addClass("pf2-summary__image--no-image");
+			$$`<p>No image available.</p>`.appendTo($summaryImage);
+		}
+		$summaryText.show();
+		$summaryImage.show();
 	}
 
 	_render_renderClass () {
@@ -1028,13 +1080,21 @@ class ClassesPage extends BaseComponent {
 
 		// region features/fluff
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
-			text: "Features",
+			text: "Class Features",
 			isInverted: true,
 		}).title("Toggle Class Features");
 
 		const $btnToggleFluff = ComponentUiUtil.$getBtnBool(this, "isShowFluff", {text: "Info"}).title("Toggle Class Info");
 
-		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
+		const $btnToggleFeats = ComponentUiUtil.$getBtnBool(this, "isShowFeats", {
+			text: "Show Feats",
+			activeClass: "btn-danger",
+			activeText: "Hide Feats",
+			inactiveText: "Show Feats",
+		}).title("Toggle Feat View");
+
+		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeats}</div>
+		<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
 		// endregion
 
 		// region subclasses

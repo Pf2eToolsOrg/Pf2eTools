@@ -3304,6 +3304,8 @@ class ComponentUiUtil {
 	 * @param [opts.activeClass] CSS class to use when setting the button as "active."
 	 * @param [opts.activeTitle] Title to use when setting the button as "active."
 	 * @param [opts.inactiveTitle] Title to use when setting the button as "active."
+	 * @param [opts.activeText] Text to use when setting the button as "active."
+	 * @param [opts.inactiveText] Text to use when setting the button as "active."
 	 * @return {JQuery}
 	 */
 	static $getBtnBool (component, prop, opts) {
@@ -3324,6 +3326,7 @@ class ComponentUiUtil {
 		const hook = () => {
 			$btn.toggleClass(activeClass, opts.isInverted ? !component[stateProp][prop] : !!component[stateProp][prop]);
 			if (opts.activeTitle || opts.inactiveTitle) $btn.title(component[stateProp][prop] ? (opts.activeTitle || "") : (opts.inactiveTitle || ""));
+			if (opts.activeText || opts.inactiveText) $btn.text(component[stateProp][prop] ? (opts.activeText || "Toggle") : (opts.inactiveText || "Toggle"));
 			if (opts.fnHookPost) opts.fnHookPost(component[stateProp][prop]);
 		};
 		component._addHook(stateName, prop, hook);
