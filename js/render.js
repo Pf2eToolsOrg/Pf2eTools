@@ -548,11 +548,9 @@ function Renderer () {
 	};
 
 	// MrVauxs Doing | If the prerequisites for a source and page exist but there is no title, generate the "- Source, page.X".
-	this.renderSourceIfExists = function(entry, textStack) {
+	this.renderSourceIfExists = function (entry, textStack) {
 		if (entry.source && entry.page && entry.name == null) {
-			textStack[0] += `<p>`;
-			textStack[0] += `<span class="rd__quote-by">\u2014 ${entry.source}, p.${entry.page}</span>`;
-			textStack[0] += `</p>`;
+			textStack[0] += Renderer.utils.getPageP(entry, {noReprints: true});
 		}
 	}
 
@@ -963,7 +961,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
-			this.renderSourceIfExists
+			this.renderSourceIfExists(entry, textStack);
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 		textStack[0] += `<div style="clear: left"></div>`;
@@ -987,7 +985,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
-			this.renderSourceIfExists
+			this.renderSourceIfExists(entry, textStack);
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -1009,7 +1007,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
-			this.renderSourceIfExists
+			this.renderSourceIfExists(entry, textStack);
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -1028,7 +1026,7 @@ function Renderer () {
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {prefix: `<p class="pf2-p">`, suffix: `</p>`});
 			}
-			this.renderSourceIfExists
+			this.renderSourceIfExists(entry, textStack);
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
 	};
@@ -1234,9 +1232,11 @@ function Renderer () {
 		const page = UrlUtil.CAT_TO_PAGE[cat_id];
 		const hash = entry.hash || UrlUtil.URL_TO_HASH_BUILDER[page](entry);
 		const renderFn = Renderer.hover._pageToRenderFn(page);
-		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag}|${entry.name}}`)}</div>`
+		textStack[0] += `<div class="pf2-wrp-stat pf2-stat" data-stat-hash="${hash}">${Renderer.get().render(`{@${entry.tag} ${entry.name}|${entry.source}}`)}</div>`
 		const toRender = await Renderer.hover.pCacheAndGet(page, entry.source, hash);
-		$(`[data-stat-hash="${hash}"]`).innerHTML(renderFn(toRender, {noPage: true}));
+		const $wrp = $(`[data-stat-hash="${hash}"]`);
+		if (toRender) $wrp.html(renderFn(toRender, {noPage: true}));
+		else throw new Error(`Could not find ${entries.tag}: ${hash}`);
 	};
 
 	// TODO
@@ -1521,6 +1521,7 @@ function Renderer () {
 			case "@damage":
 			case "@hit":
 			case "@d20":
+			case "@flatDC":
 			case "@chance":
 			case "@recharge": {
 				const fauxEntry = {
@@ -1555,9 +1556,17 @@ function Renderer () {
 							mod = `${n >= 0 ? "+" : ""}${n}`;
 						} else mod = rollText;
 						fauxEntry.displayText = fauxEntry.displayText || mod;
-						fauxEntry.toRoll = `1d20${mod}`;
+						fauxEntry.toRoll = `1d20`;
 						fauxEntry.subType = "d20";
 						fauxEntry.d20mod = mod;
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					}
+					case "@flatDC": {
+						// format: {@flatDC 15}
+						fauxEntry.displayText = fauxEntry.displayText || rollText;
+						fauxEntry.toRoll = `1d20`;
+						fauxEntry.subType = "d20";
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					}
@@ -3456,16 +3465,16 @@ Renderer.creature = {
 	},
 
 	getLanguages (cr) {
-		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.language_abilities.length !== 0)) {
+		if (cr.languages != null && (cr.languages.languages.length !== 0 || cr.languages.languageAbilities.length !== 0)) {
 			let renderStack = [];
 
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages </strong></span>`)
 			renderStack.push(`<span>`)
 			renderStack.push(cr.languages.languages.join(", "))
-			if (cr.languages.language_abilities.length !== 0) {
+			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
-				renderStack.push(cr.languages.language_abilities.join(", "))
+				renderStack.push(cr.languages.languageAbilities.join(", "))
 			}
 			renderStack.push(`</span>`)
 			renderStack.push(`</p>`)
@@ -3757,8 +3766,8 @@ Renderer.creature = {
 
 		let renderedGenericAbility;
 		if (ability.generic && !options.noButton) {
-			const hash = UrlUtil.encodeForHash([ability.name, "BST"]);
-			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "BST", hash);
+			const hash = UrlUtil.encodeForHash([ability.name, "Bst"]);
+			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
 			renderedGenericAbility = this.getRenderedAbility(genericAbility, {generic: true});
 		}
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name} </strong>
@@ -5635,15 +5644,11 @@ Renderer.hover = {
 						itemList.forEach(it => {
 							const itHash = UrlUtil.URL_TO_HASH_BUILDER[page](it);
 							Renderer.hover._addToCache(page, it.source, itHash, it);
-							const revName = Renderer.item.modifierPostToPre(it);
-							if (revName) Renderer.hover._addToCache(page, it.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), it);
 						});
 
 						allItems.forEach(item => {
 							const itemHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](item);
 							Renderer.hover._addToCache(page, item.source, itemHash, item);
-							const revName = Renderer.item.modifierPostToPre(item);
-							if (revName) Renderer.hover._addToCache(page, item.source, UrlUtil.URL_TO_HASH_BUILDER[page](revName), item);
 						});
 					},
 				);
@@ -6530,11 +6535,13 @@ Renderer._stripTagLayer = function (str) {
 					case "@chance":
 					case "@d20":
 					case "@damage":
+					case "@@flatDC":
 					case "@dice":
 					case "@hit": {
 						const [rollText, displayText] = Renderer.splitTagByPipe(text);
 						switch (tag) {
 							case "@damage":
+							case "@@flatDC":
 							case "@dice": {
 								return displayText || rollText.replace(/;/g, "/");
 							}
@@ -6816,8 +6823,8 @@ Renderer.DATA_NONE = "data-none";
 if (typeof module !== "undefined") {
 	module.exports.Renderer = Renderer;
 	global.Renderer = Renderer;
+} else {
+	window.addEventListener("load", async () => {
+		await Renderer.trait.buildCategoryLookup()
+	});
 }
-
-window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup()
-});

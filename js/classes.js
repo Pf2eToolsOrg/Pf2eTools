@@ -847,7 +847,7 @@ class ClassesPage extends BaseComponent {
 		if (cls.summary.images && cls.summary.images.length) {
 			$summaryImage.removeClass("pf2-summary__image--no-image");
 			const src = cls.summary.images[this._rng % cls.summary.images.length];
-			$$`<img src="${src}" alt="${cls.summary.images[0]}">`.appendTo($summaryImage);
+			$$`<img src="${src}" alt="No Image License. Sad!">`.appendTo($summaryImage);
 		} else {
 			$summaryImage.addClass("pf2-summary__image--no-image");
 			$$`<p>No image available.</p>`.appendTo($summaryImage);

@@ -3,9 +3,7 @@ require("../js/utils.js");
 require("../js/render.js");
 require("../js/render-dice.js");
 const ut = require("./util.js");
-const {TaggerUtils, SkillTag, ActionTag, SenseTag, TagCondition, DiceConvert} = require("../js/converterutils");
-
-const ARGS = {};
+const {Tagger, TaggerUtils, ActionSymbolTag, DiceTag, SkillTag, ConditionTag} = require("../js/converterutils.js");
 
 /**
  * Args:
@@ -15,6 +13,7 @@ const ARGS = {};
  */
 class ArgParser {
 	static parse () {
+		const ARGS = {};
 		process.argv
 			.slice(2)
 			.forEach(arg => {
@@ -30,6 +29,7 @@ class ArgParser {
 					else ARGS[k] = v;
 				}
 			});
+		return ARGS;
 	}
 }
 
@@ -55,13 +55,15 @@ class TagJsons {
 		ut.patchLoadJson();
 		SpellTag.init();
 		await ItemTag.pInit();
+		ActionTag.init();
+		TraitTag.init();
 	}
 
 	static teardown () {
 		ut.unpatchLoadJson();
 	}
 
-	static run (args = ARGS) {
+	static run (args) {
 		let files;
 		if (args.file) {
 			files = [args.file];
@@ -75,32 +77,9 @@ class TagJsons {
 
 		files.forEach(file => {
 			console.log(`Tagging file "${file}"`)
-			const json = ut.readJson(file);
+			let json = ut.readJson(file);
 
-			if (json instanceof Array) return;
-
-			Object.keys(json)
-				.forEach(k => {
-					json[k] = TagJsons.WALKER.walk(
-						json[k],
-						{
-							object: (obj, lastKey) => {
-								if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj
-
-								obj = TagCondition.tryRunBasic(obj);
-								obj = SkillTag.tryRun(obj);
-								obj = ActionTag.tryRun(obj);
-								obj = SenseTag.tryRun(obj);
-								obj = SpellTag.tryRun(obj);
-								obj = ItemTag.tryRun(obj);
-								obj = TableTag.tryRun(obj);
-								obj = DiceConvert.getTaggedEntry(obj);
-
-								return obj;
-							},
-						},
-					);
-				});
+			json = TagJsons.doTag(json);
 
 			const outPath = args.inplace ? file : file.replace("./data/", "./trash/");
 			if (!args.inplace) {
@@ -110,8 +89,35 @@ class TagJsons {
 			fs.writeFileSync(outPath, CleanUtil.getCleanJson(json));
 		});
 	}
+
+	static doTag (json) {
+		if (json instanceof Array) return json;
+
+		Object.keys(json)
+			.forEach(k => {
+				json[k] = TaggerUtils.WALKER.walk(
+					json[k],
+					{
+						object: (obj, lastKey) => {
+							if (lastKey != null && !LAST_KEY_WHITELIST.has(lastKey)) return obj
+
+							obj = ActionSymbolTag.tryRun(obj);
+							obj = DiceTag.tryRun(obj);
+							obj = TraitTag.tryRun(obj);
+							obj = ConditionTag.tryRun(obj);
+							obj = ActionTag.tryRun(obj);
+							obj = SkillTag.tryRun(obj);
+							obj = SpellTag.tryRun(obj);
+							// obj = ItemTag.tryRun(obj);
+
+							return obj;
+						},
+					},
+				);
+			});
+		return json;
+	}
 }
-TagJsons.WALKER = MiscUtil.getWalker({keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST});
 
 class SpellTag {
 	static init () {
@@ -126,12 +132,14 @@ class SpellTag {
 		});
 
 		SpellTag._SPELL_NAME_REGEX = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
-		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (spell)`, "gi");
-		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (and {@spell)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_LEVEL_CAST = new RegExp(`(level|cast) (${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")})`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AS_LEVEL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) (as a [0-9]+[a-z]{2}.level)`, "gi");
+		SpellTag._SPELL_NAME_REGEX_SPELL = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}) ((?:metamagic )?(?:focus |composition |devotion )?(?:spell|cantrip))`, "gi");
+		SpellTag._SPELL_NAME_REGEX_AND = new RegExp(`(${Object.keys(SpellTag._SPELL_NAMES).map(it => it.escapeRegexp()).join("|")}),? ((?:and|or) {@spell)`, "gi");
 	}
 
 	static tryRun (it) {
-		return TagJsons.WALKER.walk(
+		return TaggerUtils.WALKER.walk(
 			it,
 			{
 				string: (str) => {
@@ -156,42 +164,43 @@ class SpellTag {
 		return strMod
 			.replace(SpellTag._SPELL_NAME_REGEX_SPELL, (...m) => {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
-				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
 			.replace(SpellTag._SPELL_NAME_REGEX_AND, (...m) => {
 				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
-				return `{@spell ${m[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
+			})
+			.replace(SpellTag._SPELL_NAME_REGEX_AS_LEVEL, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[1].toLowerCase()];
+				return `{@spell ${m[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}} ${m[2]}`;
 			})
 			.replace(/(spells(?:|[^.!?:{]*): )([^.!?]+)/gi, (...m) => {
 				const spellPart = m[2].replace(SpellTag._SPELL_NAME_REGEX, (...n) => {
 					const spellMeta = SpellTag._SPELL_NAMES[n[1].toLowerCase()];
-					return `{@spell ${n[1]}${spellMeta.source !== SRC_PHB ? `|${spellMeta.source}` : ""}}`;
+					return `{@spell ${n[1]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}}`;
 				});
 				return `${m[1]}${spellPart}`;
 			})
-		;
+			.replace(SpellTag._SPELL_NAME_REGEX_LEVEL_CAST, (...m) => {
+				const spellMeta = SpellTag._SPELL_NAMES[m[2].toLowerCase()];
+				return `${m[1]} {@spell ${m[2]}${spellMeta.source !== SRC_CRB ? `|${spellMeta.source}` : ""}}`
+			});
 	}
 }
 SpellTag._SPELL_NAMES = {};
 SpellTag._SPELL_NAME_REGEX = null;
 SpellTag._SPELL_NAME_REGEX_SPELL = null;
 SpellTag._SPELL_NAME_REGEX_AND = null;
+SpellTag._SPELL_NAME_REGEX_AS_LEVEL = null;
+SpellTag._SPELL_NAME_REGEX_LEVEL_CAST = null;
 
 class ItemTag {
 	static async pInit () {
 		const itemArr = await Renderer.item.pBuildList({isAddGroups: true});
-
-		const toolTypes = new Set(["AT", "GS", "INS", "T"]);
-		const tools = itemArr.filter(it => toolTypes.has(it.type) && !SourceUtil.isNonstandardSource(it.source));
-		tools.forEach(tool => {
-			ItemTag._ITEM_NAMES_TOOLS[tool.name.toLowerCase()] = {name: tool.name, source: tool.source};
-		});
-
-		ItemTag._ITEM_NAMES_REGEX_TOOLS = new RegExp(`(^|\\W)(${tools.map(it => it.name.escapeRegexp()).join("|")})(\\W|$)`, "gi");
 	}
 
 	static tryRun (it) {
-		return TagJsons.WALKER.walk(
+		return TaggerUtils.WALKER.walk(
 			it,
 			{
 				string: (str) => {
@@ -213,26 +222,25 @@ class ItemTag {
 	}
 
 	static _fnTag (strMod) {
-		return strMod
-			.replace(ItemTag._ITEM_NAMES_REGEX_TOOLS, (...m) => {
-				const toolMeta = ItemTag._ITEM_NAMES_TOOLS[m[2].toLowerCase()];
-				return `${m[1]}{@item ${m[2]}${toolMeta.source !== SRC_DMG ? `|${toolMeta.source}` : ""}}${m[3]}`;
-			})
-		;
+		return strMod;
 	}
 }
-ItemTag._ITEM_NAMES_TOOLS = {};
-ItemTag._ITEM_NAMES_REGEX_TOOLS = null;
 
-class TableTag {
+class TraitTag {
+	static init () {
+		const traits = ut.readJson(`./data/traits.json`).trait.map(it => it.name);
+		TraitTag._TRAITS_REGEX_EFFECT = new RegExp(` (${traits.join("|")}) (effect|trait)`, "gi");
+		TraitTag._TRAITS_REGEX_AND = new RegExp(` (${traits.join("|")})(,? and|,? or) {@trait`, "gi");
+	}
+
 	static tryRun (it) {
-		return TagJsons.WALKER.walk(
+		return TaggerUtils.WALKER.walk(
 			it,
 			{
 				string: (str) => {
 					const ptrStack = {_: ""};
 					TaggerUtils.walkerStringHandler(
-						["@table"],
+						["@trait"],
 						ptrStack,
 						0,
 						0,
@@ -247,22 +255,79 @@ class TableTag {
 		);
 	}
 
-	static _fnTag (strMod) {
-		return strMod
-			.replace(/Wild Magic Surge table/g, `{@table Wild Magic Surge|PHB} table`)
-		;
+	static _fnTag (str) {
+		return str.replace(TraitTag._TRAITS_REGEX_EFFECT, (...m) => {
+			return ` {@trait ${m[1]}} ${m[2]}`;
+		}).replace(TraitTag._TRAITS_REGEX_AND, (...m) => {
+			return ` {@trait ${m[1]}}${m[2]} {@trait`;
+		});
 	}
 }
+TraitTag._TRAITS_REGEX_EFFECT = null;
+TraitTag._TRAITS_REGEX_AND = null;
+
+class ActionTag {
+	static init () {
+		const actionData = ut.readJson(`./data/actions.json`);
+		actionData.action.forEach(a => {
+			ActionTag._ACTIONS[a.name] = {name: a.name, source: a.source};
+			// try and catch some conjugates
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)\s(.+)/, "$1ing $2")] = {name: a.name, source: a.source};
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)\w\s(.+)/, "$1ing $2")] = {name: a.name, source: a.source};
+			ActionTag._ACTIONS[a.name.replace(/([\w]+)(\w)\s(.+)/, "$1$2$2ing $3")] = {name: a.name, source: a.source};
+		});
+
+		ActionTag._ACTIONS_REGEX = new RegExp(`(${Object.keys(ActionTag._ACTIONS).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "g");
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@trait"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(ActionTag._ACTIONS_REGEX, (...m) => {
+			const meta = ActionTag._ACTIONS[m[1]];
+			const pipes = [];
+			if (meta.source !== SRC_CRB) pipes.push(meta.source);
+			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("|");
+			if (meta.name !== m[1]) pipes.push(m[1]);
+			return `{@action ${meta.name}${pipes.join("|")}}`
+		})
+	}
+}
+ActionTag._ACTIONS = {};
+ActionTag._ACTIONS_REGEX = null;
 
 async function main () {
-	ArgParser.parse();
+	const args = ArgParser.parse();
 	await TagJsons.pInit();
-	TagJsons.run();
+	TagJsons.run(args);
 	TagJsons.teardown();
 }
 
 if (require.main === module) {
 	main().then(() => console.log("Run complete.")).catch(e => { throw e; });
 } else {
-	module.exports = TagJsons;
+	module.exports = {
+		TagJsons,
+		ArgParser,
+	};
 }
