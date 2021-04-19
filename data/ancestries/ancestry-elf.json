@@ -3,10 +3,16 @@
 		{
 			"name": "Elf",
 			"source": "CRB",
+			"otherSources": [
+				{
+					"source": "LOCG",
+					"page": 22
+				}
+			],
 			"page": 39,
 			"hp": 6,
 			"size": "Medium",
-			"speed": 30,
+			"speed": {"walk": 30},
 			"boosts": [
 				"Dexterity",
 				"Intelligence",
@@ -16,28 +22,28 @@
 				"Constitution"
 			],
 			"languages": [
-				"Common",
-				"Elven",
-				"Additional languages equal to your Intelligence modifier (if it’s positive). Choose from Celestial, Draconic, Gnoll, Gnomish, Goblin, Orcish, Sylvan, and any other languages to which you have access (such as the languages prevalent in your region)."
+				"{@language Common}",
+				"{@language Elven}",
+				"Additional languages equal to your Intelligence modifier (if it’s positive). Choose from {@language Celestial}, {@language Draconic}, {@language Gnoll}, {@language Gnomish}, {@language Goblin}, {@language Orcish}, {@language Sylvan}, and any other languages to which you have access (such as the languages prevalent in your region)."
 			],
 			"traits": [
-				"Elf",
-				"Humanoid"
+				"{@trait Elf}",
+				"{@trait Humanoid}"
 			],
-			"feature": {
-				"name": "Low-Light Vision",
-				"entries": [
-					"You can see in dim light as though it were bright light, so you ignore the concealed condition due to dim light."
-				]
-			},
+			"features": [
+				{
+					"name": "Low-Light Vision",
+					"entries": [
+						"You can see in dim light as though it were bright light, so you ignore the {@condition concealed} condition due to dim light."
+					]
+				}
+			],
 			"flavor": [
 				"As an ancient people, elves have seen great change and have the perspective that can come only from watching the arc of history. After leaving the world in ancient times, they returned to a changed land, and they still struggle to reclaim their ancestral homes, most notably from terrible demons that have invaded parts of their lands. To some, the elves are objects of awe—graceful and beautiful, with immense talent and knowledge. Among themselves, however, the elves place far more importance on personal freedom than on living up to these ideals."
 			],
 			"info": [
-				"Elves combine otherworldly grace, sharp intellect, and mysterious charm in a way that is practically magnetic to members of other ancestries. They are often voraciously intellectual, though their studies delve into a level of detail that most shorter-lived peoples find excessive or inefficient.",
-				"Valuing kindness and beauty, elves ever strive to improve their manners, appearance, and culture.",
-				"Elves are often rather private people, steeped in the secrets of their groves and kinship groups. They’re slow to build friendships outside their kinsfolk, but for a specific reason:",
-				"they subtly and deeply attune to their environment and their companions. There’s a physical element to this attunement, but it isn’t only superficial. Elves who spend their lives among shorter‑lived peoples often develop a skewed perception of their own mortality and tend to become morose after watching generation after generation of companions age and die. These elves are called the Forlorn.",
+				"Elves combine otherworldly grace, sharp intellect, and mysterious charm in a way that is practically magnetic to members of other ancestries. They are often voraciously intellectual, though their studies delve into a level of detail that most shorter-lived peoples find excessive or inefficient. Valuing kindness and beauty, elves ever strive to improve their manners, appearance, and culture.",
+				"Elves are often rather private people, steeped in the secrets of their groves and kinship groups. They’re slow to build friendships outside their kinsfolk, but for a specific reason: they subtly and deeply attune to their environment and their companions. There’s a physical element to this attunement, but it isn’t only superficial. Elves who spend their lives among shorter‑lived peoples often develop a skewed perception of their own mortality and tend to become morose after watching generation after generation of companions age and die. These elves are called the Forlorn.",
 				"If you want a character who is magical, mystical, and mysterious, you should play an elf.",
 				{
 					"type": "pf2-h3",
@@ -74,10 +80,8 @@
 					"page": 38,
 					"name": "Physical Description",
 					"entries": [
-						"While generally taller than humans, elves possess a fragile grace, accentuated by long features and sharply pointed ears.",
-						"Their eyes are wide and almond-shaped, featuring large and vibrant-colored pupils that make up the entire visible portion of the eye. These pupils give them an alien look and allow them to see sharply even in very little light.",
-						"Elves gradually adapt to their environment and their companions, and they often take on physical traits reflecting their surroundings. An elf who has dwelled in primeval forests for centuries, for example, might exhibit verdant hair and gnarled fingers, while one who’s lived in a desert might have golden pupils and skin.",
-						"Elven fashion, like the elves themselves, tends to reflect their surroundings. Elves living in the forests and other wilderness locales wear clothing that plays off the terrain and flora of their homes, while those who live in cities tend to wear the latest fashions.",
+						"While generally taller than humans, elves possess a fragile grace, accentuated by long features and sharply pointed ears. Their eyes are wide and almond-shaped, featuring large and vibrant-colored pupils that make up the entire visible portion of the eye. These pupils give them an alien look and allow them to see sharply even in very little light.",
+						"Elves gradually adapt to their environment and their companions, and they often take on physical traits reflecting their surroundings. An elf who has dwelled in primeval forests for centuries, for example, might exhibit verdant hair and gnarled fingers, while one who’s lived in a desert might have golden pupils and skin. Elven fashion, like the elves themselves, tends to reflect their surroundings. Elves living in the forests and other wilderness locales wear clothing that plays off the terrain and flora of their homes, while those who live in cities tend to wear the latest fashions.",
 						"Elves reach physical adulthood around the age of 20, though they aren’t considered to be fully emotionally mature by other elves until closer to the passing of their first century, once they’ve experienced more, held several occupations, and outlived a generation of shorter-lived people. A typical elf can live to around 600 years old."
 					]
 				},
@@ -87,7 +91,7 @@
 					"name": "Society",
 					"entries": [
 						"Elven culture is deep, rich, and on the decline. Their society peaked millennia ago, long before they fled the world to escape a great calamity. They’ve since returned, but rebuilding is no easy task. Their inborn patience and intellectual curiosity make elves excellent sages, philosophers, and wizards, and their societies are built upon their inherent sense of wonder and knowledge. Elven architecture displays their deep appreciation of beauty, and elven cities are wondrous works of art.",
-						"Elves hold deeply seated ideals of individualism, allowing each elf to explore multiple occupations before alighting on a particular pursuit or passion that suits {@i her best. Elves bear notorious grudges against rivals, which the elves call ilduliel, but} these antagonistic relationships can sometimes blossom into friendships over time."
+						"Elves hold deeply seated ideals of individualism, allowing each elf to explore multiple occupations before alighting on a particular pursuit or passion that suits her best. Elves bear notorious grudges against rivals, which the elves call ilduliel, but these antagonistic relationships can sometimes blossom into friendships over time."
 					]
 				},
 				{
@@ -95,7 +99,7 @@
 					"page": 39,
 					"name": "Alignment and Religion",
 					"entries": [
-						"Elves are often emotional and capricious, yet they hold high ideals close to their hearts. As such, many are chaotic good. They prefer deities who share their love of all things mystic and artistic. Desna and Shelyn are particular favorites, the former for her sense of wonder and the latter for her appreciation of artistry. Calistria is the most notorious of elven deities, as she represents many of the elven ideals taken to the extreme."
+						"Elves are often emotional and capricious, yet they hold high ideals close to their hearts. As such, many are chaotic good. They prefer deities who share their love of all things mystic and artistic. {@deity Desna} and {@deity Shelyn} are particular favorites, the former for her sense of wonder and the latter for her appreciation of artistry. {@deity Calistria} is the most notorious of elven deities, as she represents many of the elven ideals taken to the extreme."
 					]
 				},
 				{
@@ -112,6 +116,136 @@
 					"name": "Sample Names",
 					"entries": [
 						"Aerel, Amrunelara, Caladrel, Dardlara, Faunra, Heldalel, Jathal, Lanliss, Oparal, Seldlon, Soumral, Talathel, Tessara, Variel, Yalandlara, Zordlon"
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 41,
+					"name": "Elven Adventurers",
+					"entries": [
+						"Many elves adventure to find beauty and discover new things. Typical backgrounds for an elf include emissary, hunter, noble, scholar, or scout. Elves often become rangers or rogues, taking advantage of their dexterity, or alchemists or wizards, exploring their intellectual curiosity."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 22,
+					"source": "LOCG",
+					"name": "Kyonin",
+					"entries": [
+						"A prominent nation in Avistan, Kyonin is considered the spiritual heartland of elven culture. This prestige comes from the presence of the Sovyrian Stone that resides in Kyonin’s capital, Iadara, and the accompanying magical gate that leads to the realm of Sovyrian. The threat of the returned Whispering Tyrant has led Queen Telandia Edasseril to open the borders of the nation to foreigners."
+					]
+				},
+				{
+					"type": "entriesOtherSource",
+					"page": 22,
+					"source": "LOCG",
+					"entries": [
+						"Elves are an ancient people, heirs to a civilization founded in the depths of humanity’s prehistory. Migrants from the elven realm of Sovyrian first came to Golarion through a magical gate that stretched between worlds, powered by an enormous crystal known as the Sovyrian Stone. At the height of their power, the elves clashed with the alien manipulators known as the alghollthus, and by extension the human empire that, wittingly or unwittingly, served the alghollthus’ interests—Azlant. When Azlant’s defiance resulted in the alghollthus summoning the disaster of Earthfall, most of the elves departed the planet, traveling back to their homeland to escape the destruction.",
+						"Yet this was far from the end of the elves’ involvement on Golarion. Not all elves left with their kin, some instead choosing to remain behind. Even the elves of Sovyrian still had their part to play in the planet’s history. Sensing that something threatened the Sovyrian Stone and the magical portal that it powered, the elves began their return to Golarion in 2632 ar. They returned to find their former lands corrupted by the nascent demon lord Treerazer, who sought to corrupt the Sovyrian Stone into a portal to the Abyss. The resulting war between the elves and Treerazer left the demon confined to the Tanglebriar forest, defeated but still alive. With the battle against Treerazer fought to a hard-won standstill, the elves turned their attention to reclaiming their ancient holdings, and with it, their place upon Golarion.",
+						"Though elves can appear similar to humans at a first glance, they are as otherworldly and mercurial as their distant homeland, appearing approachable in one instant and incomprehensible in the next. Elves are usually tall and slender. Their eyes range across a spectrum of colors, with irises that are far larger than those of other humanoids; this usually makes it seem like elves have little or even no white in their eyes. Elves’ natural lifespan is measured in centuries rather than decades, often leaving them unable to relate to the mindsets of shorter-lived peoples. While their love of music and beauty is well known by others, elves’ love of freedom runs just as deep, and many elves feel uncomfortable telling others how to live their lives—to the point that most elven states hesitate to demand military service or collective action from their citizens. Many human nations have felt betrayed by the lack of organized elven aid during a crisis, despite the help of individual elves, due to this misunderstanding of the elven viewpoint.",
+						"This love of freedom leads elves out into the world for a nigh-infinite number of reasons, making them a common sight among adventurers. Their long lifespans mean that even elves who have spent centuries in quiet contemplation might be drawn out from their homes due to exceptional events, or that an elf might find herself journeying to follow up on events that are fresh in her memory but long forgotten to others. Though elves often try to keep themselves distant from shorter-lived peoples, knowing that such friendships will inevitably bring grief, many wind up forging longlasting connections with traveling companions that can even carry down through generations."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 24,
+					"source": "LOCG",
+					"name": "Aquatic Elves",
+					"entries": [
+						"Kin to terrestrial elves despite their incompatible environments, aquatic elves were once air-breathing elves who eventually adapted to life underwater due to their exposure to the sea. Much like Mordant Spire elves, aquatic elves consider themselves enemies of the alghollthus and fight to oppose the aberrations at every turn."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 25,
+					"source": "LOCG",
+					"name": "Mualijae",
+					"entries": [
+						"The Mualijae were once part of a powerful united kingdom, but the people split into three different nations in ancient times for reasons unknown.",
+						"{@indentFirst {@b Alijae:} Located in the northern Mwangi jungles, Alijae defend the elven ruins of Nagisa, the White City, for reasons unknown—perhaps due to a darkness within the Alijae themselves.}",
+						"{@indentFirst {@b Ekujae:} Located in the west Mwangi jungles, the militant Ekujae serve as guardians of the forest, protecting magical sites and fighting a guerrilla war against the Aspis Consortium.}",
+						"{@indentFirst {@b Kallijae:} Located in the northwest Mwangi jungles, Kallijae have taken advantage of recent events to step up their offensives against the minions of the demon lord Angazhan.}"
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"page": 22,
+					"name": "Elves of the Inner Sea",
+					"source": "LOCG",
+					"entries": [
+						"Elves’ longevity means that their cultures remain stable over time, leading to a larger consolidation of elven ethnicities across the Inner Sea region. Elven societies that have been separated for thousands of years can still communicate with each other in the Elven language, with only minor difficulty. Within these broad ethnicities, however, is countless variation, fueled by the elven love of selfexpression and freedom. Elves also develop a powerful connection to their surroundings, and elves who live in an area for long enough are known to slowly shift in appearance to take on aspects of their environment. As a result, elves of any ethnicity are prone to unusual features of all kinds, from white or lavender hair to bright gold eyes.",
+						"While the elven idea of ethnicity closely matches that of humans, one important aspect of it is often lost on non-elven peoples. A number of elves— including the ancestors of the Mualijae, Ilverani, and Vourinoi elves—did not depart Golarion during Earthfall, while the ancestors of the Aiudeen and Spiresworn elves left for the land of Sovyrian. Though the elves of Sovyrian returned centuries ago, they are in some ways considered newcomers by themselves and their kin, still tied to an ancient and distant homeland on another world. In contrast, those elves who stayed behind during Earthfall and suffered alongside the planet during its darkest hour now consider themselves true children of Golarion.",
+						{
+							"type": "pf2-h3",
+							"name": "Aiudeen",
+							"source": "LOCG",
+							"page": 23,
+							"entries": [
+								"Also known as “returners,” Aiudeen are the most common elven ethnicity found in the Inner Sea region, mainly concentrated in the elven nation of Kyonin. These elves are the descendants of the elves who left Golarion when Earthfall struck, and they still guard the massive portal to their refuge of Sovyrian, along with the Sovyrian Stone that powers the gate. Aiudeen are also known for making use of a network of smaller portals, known as aiudara, that connect to gates in distant parts of Golarion. To most Inner Sea residents, all elven culture is Aiudeen culture, filled with glamorous clothing, arcane prowess, and elegant twisting architecture. Yet though Aiudeen culture is highly sophisticated, it has historically been in decline since the elves returned, as Aiudeen struggle to reclaim what they once held and defend what they’ve managed to reclaim. With major changes on the horizon, many Aiudeen seek to look to the future instead of to the past, opening their ancestral homes to outsiders and reaching out to interact with their neighbors.",
+								"Most Aiudeen have the ancient elf (page 25), whisper elf, or woodland elf heritage, though due to the elves’ ability to adapt to their environments, they could manifest any heritage."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Ilverani",
+							"source": "LOCG",
+							"page": 23,
+							"entries": [
+								"Living in the most hostile reaches of the Crown of the World, these elves are called “snowcasters” by almost all who know of them, as their traditions warn them to never share their true names with outsiders. Their name for themselves is Ilverani, derived from the name of their Mierani ancestors, who once resided in Mierani Forest. Ilverani are starkly marked by their frost-white skin and hair, as well as their affinity for blue clothes and silver armor. They live among elven ruins in the frozen wastes, holding an extreme religious reverence for the places they call home. For the most part, they are as cold and unyielding as the ice that surrounds them, willing to do good for others but seemingly incapable of behaving warmly to non-elves. The one exception are the Twilight Speakers, Ilverani who believe that reaching out to and befriending other peoples is a religious duty to their patron goddess, Findeladlara.",
+								"While many might wonder why a goddess of elven architecture—and one known for her unwillingness to answer non-elves—would encourage such behavior, this odd tradition stems from an aspect of elven history lost to most of Golarion. When Earthfall struck, many of the Mierani elves fled to Sovyrian, while others chose to escape underground. One group of elves, however, elected to stay on the surface for the express purpose of creating magical shelters to save as many other people as possible. The descendants of these elves eventually traveled north and became Ilverani. While they no longer need to build such elven shelters, helping others is still considered an honor to that legacy and thus to Findeladlara. That Ilverani as a whole are now so mistrusting of strangers may speak of some manner of great betrayal in the past, perhaps one connected to Findeladlara’s refusal to accept the worship of non-elves.",
+								"Ilverani almost always have the arctic elf heritage. They often select the Unwavering Mien ancestry feat, as their cold and emotionless demeanor provides a measure of protection against mental manipulation."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Mualijae",
+							"source": "LOCG",
+							"page": 24,
+							"entries": [
+								"Mualijae are jungle-dwelling elves who reside in the Mwangi Expanse, enigmas to most due to their dislike of trespassers. Guardians and stewards of their homelands, Mualijae were among those elves who did not depart Golarion during Earthfall, and their legends claim they remained behind to protect the world in the dark days to come. Whether these claims are true or not, Mualijae take their self-appointed stewardship very seriously, training themselves to stand ready to fight against anything that might threaten the world. Mualijae long ago split into three separate subgroups: Alijae, Ekujae, and Kallijae. Alijae are accustomed to the worst of the Mwangi’s heat, with dark-brown skin and coily, dark-brown hair. Ekujae tend toward dark skin and eyes but are prone to individual variation from these norms, and are the Mualijae most likely to interact with outsiders. Kallijae have straighter hair than their kin and are seen only rarely outside their own lands. Mualijae elves have the dark skin and black hair of their human neighbors, and they usually possess jet-black eyes. Individual variations are common, however, such as rose-gold hair or glowing orange eyes. Fashion varies wildly between nations, but Mualijae tend to favor garb made from plants and wood, as well as natural materials such as bone, furs, and leathers. Most Mualijae cultures have some manner of taboos or customs around metal and gems, though these traditions likewise vary by nation.",
+								"Mualijae elves usually have the woodland elf heritage, though they might instead have the seer elf or whisper elf heritage. They often select the Wildborn Magic feat (page 26) to represent a mystic connection to their jungle surroundings."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Spiresworn",
+							"source": "LOCG",
+							"page": 24,
+							"entries": [
+								"An offshoot of Aiudeen elves, Spiresworn are elves who reside within the Mordant Spire, a strange tower that grew in the place where the falling body of Acavna—the Azlanti goddess of the moon and battle who died during Earthfall trying to defend her people— had crashed into the earth. The tower whispered to them in a dead god’s voice, and within these divine whispers, the Spiresworn found a calling. Now considering themselves the true heirs of Azlant, the elves settled in the Mordant Spire and cut themselves off from the rest of the world. After generations of this isolation, the elves of the Mordant Spire have become secretive and xenophobic, bizarre even to their former brethren. Often refusing to speak anything but Azlanti, they wear elaborate wooden masks whenever dealing with outsiders, and they often change the subject or stop speaking mid-sentence, cocking their heads as if listening to an inaudible voice. Beneath their masks, Spiresworn elves often have white hair and violet eyes; they have a wide range of skin tones, but their complexion is often ashen from a lack of light. Spiresworn rarely leave their island for any reason beyond patrolling Azlanti ruins, defending them from explorers seeking to claim ancient secrets. As a result, Spiresworn are rarely seen as adventurers. In recent years, however, some of these elves have found themselves grudgingly forced to work with others to face larger alghollthu threats, and thus they have been pulled into worldly affairs.",
+								"Spiresworn elves often have the seer elf or whisper elf heritage, though those who remain within the Mordant Spire itself might have the cavern elf heritage. They commonly select the Unwavering Mien or Otherworldly Magic ancestry feat in order to represent their unusual connection to the Mordant Spire."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Vourinoi",
+							"source": "LOCG",
+							"page": 25,
+							"entries": [
+								"Elves of the desert oases of Osirion and nearby lands, Vourinoi are often unknown to any but those travelers and nomads who pass by a Vourinoi oasis, but the few who encounter these elves find them a gregarious and welcoming people. The oasis elves know how inimical to life their homes can be, and they eagerly welcome and mingle with travelers in need of water and shelter. Vourinoi learn almost from birth to be charming, eloquent, and hospitable, and when conflict arises, most would rather talk than fight. Vourinoi are easily identified by their rich brown skin and black hair, though individual elves might have vivid blue, green, or white hair.",
+								"Vourinoi consider themselves separate from the nations they occupy, and their friendliness belies a deep and fierce independence. Given their reputation for skill at both magic and desert warfare, the rulers of the desert lands have little desire to infringe upon the elves’ homes. In addition, the Vourinoi consider themselves the sole stewards of their oases, and any attempt to control or corrupt the life-giving sites draws the elves’ fury. Despite their love for their homes, Vourinoi also share a great sense of wanderlust, even by elven standards. Like their patron goddess Desna, the oasis elves delight in traveling where whim takes them and meeting new people, and many leave their homes to wander for many years before returning to their oasis. Vourinoi are especially fond of visiting their Mualijae cousins in the Mwangi Expanse, and vice versa.",
+								"Vourinoi have a loose relationship with gender, and many exist outside of binary gender or move among genders as their feelings take them, an identity they refer to as kala-shei, or, “the dance.” Many Vourinoi also believe in the elven philosophy known as the Brightness, a belief that their current life is but one in a series, and that upon death they are reincarnated as another creature. Searching for one’s Brightness—a beautiful, ecstatic moment of enlightenment leading them to a higher destiny—is a common goal in their wanderings.",
+								"Vourinoi elves often have the desert elf heritage (see below). Their vibrant personalities and fluid philosophies often lead them to take the Elven Verve feat (page 26)."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 26,
+					"source": "LOCG",
+					"name": "Jinin",
+					"entries": [
+						"Some elves did not retreat to Sovyrian during Earthfall, but instead ventured into tunnels that led underground. While many of these elves pressed deeper into the earth, an elf named Jininsiel received a vision that the elves could find their new home by following the roots of a silver tree. Those elves who followed Jininsiel wandered for centuries below the earth, until finally discovering a thick vein of mithral that led them upward into Tian Xia. These elves adopted customs from their neighbors and founded the nation of Jinin."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 26,
+					"source": "LOCG",
+					"name": "The Forlorn",
+					"entries": [
+						"While elves have a love of friendship and laughter, they are known to keep shorter-lived people at a carefully calculated distance, fearing the inevitable pain of watching a friend age and rapidly die. To live entirely among non-elves is considered a terrible fate, as an elf would see everyone they know and love wither away, only for the same tragedy to repeat less than a century later. For this reason, elves who live entirely among humans or other shorter-lived people are called Forlorn."
 					]
 				}
 			],
@@ -132,7 +266,7 @@
 					"source": "CRB",
 					"page": 39,
 					"entries": [
-						"You were born or spent many years in underground tunnels or caverns where light is scarce. You gain darkvision."
+						"You were born or spent many years in underground tunnels or caverns where light is scarce. You gain {@ability darkvision}."
 					]
 				},
 				{
@@ -140,8 +274,8 @@
 					"source": "CRB",
 					"page": 40,
 					"entries": [
-						"You have an inborn ability to detect and understand {@i magical phenomena. You can cast the detect magic cantrip} as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up.",
-						"In addition, you gain a +1 circumstance bonus to checks to Identify Magic and to Decipher Writing of a magical nature. These skill actions typically use the Arcana, Nature, Occultism, or Religion skill."
+						"You have an inborn ability to detect and understand magical phenomena. You can cast the {@spell detect magic} cantrip as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up.",
+						"In addition, you gain a +1 circumstance bonus to checks to {@action Identify Magic} and to {@action Decipher Writing} of a magical nature. These skill actions typically use the {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} skill."
 					]
 				},
 				{
@@ -149,7 +283,7 @@
 					"source": "CRB",
 					"page": 40,
 					"entries": [
-						"Your ears are finely tuned, able to detect even the slightest whispers of sound. As long as you can hear normally, you can use the Seek action to sense undetected creatures in a 60-foot cone instead of a 30-foot cone. You also gain a +2 circumstance bonus to locate undetected creatures that you could hear within 30 feet with a Seek action."
+						"Your ears are finely tuned, able to detect even the slightest whispers of sound. As long as you can hear normally, you can use the {@action Seek} action  to sense {@condition undetected} creatures in a 60-foot cone instead of a 30-foot cone. You also gain a +2 circumstance bonus to locate {@condition undetected} creatures that you could hear within 30 feet with a {@action Seek} action."
 					]
 				},
 				{
@@ -157,16 +291,42 @@
 					"source": "CRB",
 					"page": 40,
 					"entries": [
-						"You’re adapted to life in the forest or the deep jungle, and you know how to climb trees and use foliage to your advantage. When Climbing trees, vines, and other foliage, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have Quick Climb). This doesn’t affect you if you’re using a climb Speed.",
-						"You can always use the Take Cover action when you are within forest terrain to gain cover, even if you’re not next to an obstacle you can Take Cover behind."
+						"You’re adapted to life in the forest or the deep jungle, and you know how to climb trees and use foliage to your advantage. When {@action Climb|CRB|Climbing} trees, vines, and other foliage, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have {@feat Quick Climb}). This doesn’t affect you if you’re using a climb Speed.",
+						"You can always use the {@action Take Cover} action when you are within forest terrain to gain cover, even if you’re not next to an obstacle you can {@action Take Cover} behind."
+					]
+				},
+				{
+					"name": "Ancient Elf",
+					"source": "LOCG",
+					"page": 25,
+					"entries": [
+						"In your long life, you’ve dabbled in many paths and many styles. Choose a class other than your own. You gain the multiclass dedication feat for that class, even though you don’t meet its level prerequisite. You must still meet its other prerequisites to gain the feat."
+					]
+				},
+				{
+					"name": "Desert Elf",
+					"source": "LOCG",
+					"page": 25,
+					"entries": [
+						"You live under the desert’s blazing heat, gaining incredible resilience to warm environments. You gain fire resistance equal to half your level (minimum 1), and environmental heat effects are one step less extreme for you (incredible heat becomes extreme, extreme heat becomes severe, and so on)."
 					]
 				}
 			],
 			"summary": {
 				"text": "Elves are a tall, slender, long-lived people with a strong tradition of art and magic.",
 				"images": [
-					"img/ancestries/CRB/elf-01.png",
-					"img/ancestries/CRB/elf-02.png"
+					"img/ancestries/CRB/elf-01.webp",
+					"img/ancestries/CRB/elf-02.webp",
+					"img/ancestries/LOCG/elf-01.webp",
+					"img/ancestries/LOCG/elf-02.webp",
+					"img/ancestries/LOCG/elf-03.webp",
+					"img/ancestries/LOCG/elf-04.webp",
+					"img/ancestries/LOCG/elf-05.webp",
+					"img/ancestries/LOCG/elf-06.webp",
+					"img/ancestries/LOCG/elf-07.webp",
+					"img/ancestries/LOCG/elf-08.webp",
+					"img/ancestries/LOCG/elf-09.webp",
+					"img/ancestries/LOCG/elf-10.webp"
 				]
 			}
 		}

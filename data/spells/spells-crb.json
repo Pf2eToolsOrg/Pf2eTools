@@ -1630,7 +1630,7 @@
                 "Force"
             ],
             "entries": [
-                "Blades of force form a churning wall. The wall is a straight line 20 feet high, 120 feet long, and 2 inches thick, and it provides cover. The wall deals {@dice 7d8} force damage to each creature that’s in the wall’s space when it is created, that attempts to pass through the wall, or that ends its turn inside the wall. A basic Reflex save reduces the damage.",
+                "Blades of force form a churning wall. The wall is a straight line 20 feet high, 120 feet long, and 2 inches thick, and it provides cover. The wall deals {@damage 7d8} force damage to each creature that’s in the wall’s space when it is created, that attempts to pass through the wall, or that ends its turn inside the wall. A basic Reflex save reduces the damage.",
                 "A creature that succeeds at this save when the wall is created is pushed to the nearest space on the side of its choice. Creatures trying to move through the wall fail to do so if they critically fail the save, ending their movement adjacent to the wall."
             ],
             "cast": {
@@ -2082,7 +2082,7 @@
                     "entries": {
                         "Critical Success": "The creature is unaffected.",
                         "Success": "Calming urges impose a –1 status penalty to the creature’s attack rolls.",
-                        "Failure": "Any emotion effects that would affect the creature are suppressed and the creature can’t use {@condition hostile} actions. If the target is subject to hostility from any other creature, it ceases to be affected by calm emotions.",
+                        "Failure": "Any {@trait emotion} effects that would affect the creature are suppressed and the creature can’t use {@condition hostile} actions. If the target is subject to hostility from any other creature, it ceases to be affected by calm emotions.",
                         "Critical Failure": "As failure, but hostility doesn’t end the effect."
                     }
                 }
@@ -2164,9 +2164,9 @@
                 {
                     "type": "list",
                     "items": [
-                        "Flesh-dissolving acid rain deals {@dice 3d10} acid damage.",
+                        "Flesh-dissolving acid rain deals {@damage 3d10} acid damage.",
                         "A roaring {@spell earthquake|CRB} shakes and bludgeons creatures on the ground, dealing {@dice 3d10} bludgeoning damage.",
-                        "A blast of freezing wind deals {@dice 3d10} cold damage.",
+                        "A blast of freezing wind deals {@damage 3d10} cold damage.",
                         "Incredible lightning lashes the area, dealing {@dice 3d10} electricity damage.",
                         "Beating winds churn across the sky, dealing {@dice 3d10} bludgeoning damage to creatures flying in the area.",
                         "An instant tsunami sweeps over creatures in the area, dealing {@dice 3d10} bludgeoning damage with the water trait (doubled for creatures swimming in the area).",
@@ -4143,7 +4143,7 @@
             ],
             "entries": [
                 "You grant yourself supernatural sight in areas of {@spell darkness|CRB}.",
-                "You gain darkvision."
+                "You gain {@ability darkvision}."
             ],
             "cast": {
                 "number": 1,
@@ -4549,7 +4549,7 @@
             "entries": [
                 "You send out a pulse that registers the presence of magic. You receive no information beyond the presence or absence of magic.",
                 "You can choose to ignore magic you’re fully aware of, such as the magic items and ongoing spells of you and your allies.",
-                "You detect illusion magic only if that magic’s effect has a lower level than the level of your detect magic spell. However, items that have an illusion aura but aren’t deceptive in appearance (such as an {@spell invisibility|CRB} potion) typically are detected normally."
+                "You detect illusion magic only if that magic’s effect has a lower level than the level of your {@spell detect magic} spell. However, items that have an illusion aura but aren’t deceptive in appearance (such as an {@spell invisibility|CRB} potion) typically are detected normally."
             ],
             "cast": {
                 "number": 1,
@@ -5102,7 +5102,7 @@
                 "Revelation"
             ],
             "entries": [
-                "Falsehoods ring in your ears like discordant notes. You gain a +4 status bonus to Perception checks when someone Lies."
+                "Falsehoods ring in your ears like discordant notes. You gain a +4 status bonus to {@skill Perception} checks when someone Lies."
             ],
             "cast": {
                 "number": 1,
@@ -5805,7 +5805,7 @@
                         "A +1 status bonus to saves against spells.",
                         "{@spell Darkvision|CRB}.",
                         "Your unarmed attacks and weapons deal 1 additional damage of the chosen alignment type.",
-                        "One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@dice 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@dice 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@dice 2d8} slashing damage and has the agile and finesse traits."
+                        "One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@dice 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@damage 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@damage 2d8} slashing damage and has the agile and finesse traits."
                     ]
                 }
             ],
@@ -6529,7 +6529,7 @@
                     "items": [
                         "{@bold Shaking Ground} The ground is difficult terrain, and creatures on it take a –2 circumstance penalty to attack rolls, AC, and skill checks.",
                         "{@bold Fissures} Each creature on the ground must attempt a Reflex save at the start of its turn to keep its footing and avoid falling into 40-foot-deep fissures that open beneath it. The fissures are permanent, and their sides require DC 15 {@skill Athletics} to {@action Climb|CRB}.",
-                        "{@bold Collapse} Structures and ceilings might collapse. The GM rolls a flat check for each (DC 16 for a sturdy structure, DC 14 for an average structure and most natural formations, DC 9 for a shoddy structure, all adjusted higher or lower as the GM sees fit). A collapse deals {@dice 11d6} bludgeoning damage; each creature caught in a collapse must attempt a Reflex save to avoid it."
+                        "{@bold Collapse} Structures and ceilings might collapse. The GM rolls a flat check for each (DC 16 for a sturdy structure, DC 14 for an average structure and most natural formations, DC 9 for a shoddy structure, all adjusted higher or lower as the GM sees fit). A collapse deals {@damage 11d6} bludgeoning damage; each creature caught in a collapse must attempt a Reflex save to avoid it."
                     ]
                 },
                 {
@@ -8345,7 +8345,7 @@
                 "Fire"
             ],
             "entries": [
-                "You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@dice 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, you can Sustain this Spell, leaving the sphere in its square or rolling it to another square within range and dealing {@dice 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
+                "You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, you can Sustain this Spell, leaving the sphere in its square or rolling it to another square within range and dealing {@dice 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
                 "Creatures that succeed at their save take no damage (instead of half)."
             ],
             "cast": {
@@ -9313,7 +9313,7 @@
                 "Mental"
             ],
             "entries": [
-                "Falsehoods pass your lips as smoothly as silk. You gain a +4 status bonus to {@skill Deception} checks to {@action Lie|CRB} and against Perception checks to discern if you are telling the truth, and you add your level even if you’re untrained. If the implausibility of your lies prompts a circumstance penalty or a DC increase, reduce that penalty or increase by half."
+                "Falsehoods pass your lips as smoothly as silk. You gain a +4 status bonus to {@skill Deception} checks to {@action Lie|CRB} and against {@skill Perception} checks to discern if you are telling the truth, and you add your level even if you’re untrained. If the implausibility of your lies prompts a circumstance penalty or a DC increase, reduce that penalty or increase by half."
             ],
             "cast": {
                 "number": 1,
@@ -10308,7 +10308,7 @@
                 "Mental"
             ],
             "entries": [
-                "You tap into the target’s inner heroism, granting it a +1 status bonus to attack rolls, Perception checks, saving throws, and skill checks."
+                "You tap into the target’s inner heroism, granting it a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks."
             ],
             "cast": {
                 "number": 1,
@@ -10454,7 +10454,7 @@
                 "Water"
             ],
             "entries": [
-                "You call upon sacred energy to amplify a vial of holy water, tossing it an incredible distance. It explodes in an enormous burst that deals {@dice 3d6} bludgeoning damage to creatures in the area from the cascade of water. The water deals an additional {@dice 6d6} positive damage to undead and {@dice 6d6} good damage to fiends."
+                "You call upon sacred energy to amplify a vial of holy water, tossing it an incredible distance. It explodes in an enormous burst that deals {@damage 3d6} bludgeoning damage to creatures in the area from the cascade of water. The water deals an additional {@dice 6d6} positive damage to undead and {@dice 6d6} good damage to fiends."
             ],
             "cast": {
                 "number": 1,
@@ -10719,7 +10719,7 @@
                 "Water"
             ],
             "entries": [
-                "A swirling torrent of water manifests along a straight line, battering those that are its path and possibly pushing them away from you. The torrent deals {@dice 8d6} bludgeoning damage.",
+                "A swirling torrent of water manifests along a straight line, battering those that are its path and possibly pushing them away from you. The torrent deals {@damage 8d6} bludgeoning damage.",
                 "Each creature in the area must attempt a basic Fortitude save.",
                 "Creatures that fail the save are also knocked back 5 feet (10 feet on a critical failure)."
             ],
@@ -10780,7 +10780,7 @@
                 "Divination"
             ],
             "entries": [
-                "You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 Recall Knowledge actions as part of Casting this Spell. For these actions, you can’t use any special abilities, reactions, or free actions that trigger when you {@action Recall Knowledge|CRB}."
+                "You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 {@action Recall Knowledge} actions as part of Casting this Spell. For these actions, you can’t use any special abilities, reactions, or free actions that trigger when you {@action Recall Knowledge|CRB}."
             ],
             "cast": {
                 "number": 1,
@@ -12419,7 +12419,7 @@
                 "Force"
             ],
             "entries": [
-                "You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@dice 1d4+1} force damage. For each additional action you use when Casting the Spell, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
+                "You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@damage 1d4+1} force damage. For each additional action you use when Casting the Spell, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
             ],
             "cast": {
                 "number": 1,
@@ -12972,7 +12972,7 @@
             ],
             "entries": [
                 "You merge with an adjacent block of stone with enough volume to fit you and your worn and held possessions. You must touch the stone when you Cast the Spell. You can hear, but not see, what’s going on outside the stone, and you can cast spells while in the stone as long as they don’t require line of effect beyond the stone.",
-                "Significant physical damage to the stone while you are inside it expels you and deals {@dice 10d6} damage to you. {@spell Passwall|CRB} expels you without dealing damage and ends meld into stone.",
+                "Significant physical damage to the stone while you are inside it expels you and deals {@damage 10d6} damage to you. {@spell Passwall|CRB} expels you without dealing damage and ends meld into stone.",
                 "You can {@action Dismiss|CRB} this spell."
             ],
             "cast": {
@@ -13172,7 +13172,7 @@
                 "Fire"
             ],
             "entries": [
-                "You call down four meteors that explode in a fiery blast. Each meteor deals {@dice 6d10} bludgeoning damage to any creatures in the 10-foot burst at the center of its area of effect before exploding, dealing {@dice 14d6} fire damage to any creatures in its 40-foot burst. The meteors’ central 10-foot bursts can’t overlap, and a creature takes the same amount of fire damage no matter how many overlapping explosions it’s caught in. The saving throw applies to both the bludgeoning and the fire damage."
+                "You call down four meteors that explode in a fiery blast. Each meteor deals {@damage 6d10} bludgeoning damage to any creatures in the 10-foot burst at the center of its area of effect before exploding, dealing {@dice 14d6} fire damage to any creatures in its 40-foot burst. The meteors’ central 10-foot bursts can’t overlap, and a creature takes the same amount of fire damage no matter how many overlapping explosions it’s caught in. The saving throw applies to both the bludgeoning and the fire damage."
             ],
             "cast": {
                 "number": 1,
@@ -15024,7 +15024,7 @@
                 "Mental"
             ],
             "entries": [
-                "A vision of apocalyptic destruction fills the mind of each creature in the area. The vision deals {@dice 11d6} mental damage (basic Will save). On a critical failure, the creature must also succeed at a Reflex save or believe it’s trapped (stuck in a fissure, adrift at sea, or some other fate in keeping with its vision). If it fails the second save, it’s also {@condition stunned} for 1 minute. It can attempt a new Will save at the end of each of its turns, and on a success, it disbelieves the illusion and recovers from the {@condition stunned} condition."
+                "A vision of apocalyptic destruction fills the mind of each creature in the area. The vision deals {@damage 11d6} mental damage (basic Will save). On a critical failure, the creature must also succeed at a Reflex save or believe it’s trapped (stuck in a fissure, adrift at sea, or some other fate in keeping with its vision). If it fails the second save, it’s also {@condition stunned} for 1 minute. It can attempt a new Will save at the end of each of its turns, and on a success, it disbelieves the illusion and recovers from the {@condition stunned} condition."
             ],
             "cast": {
                 "number": 1,
@@ -16616,7 +16616,7 @@
             ],
             "entries": [
                 "You create an {@condition invisible}, floating eye, 1 inch in diameter, at a location you can see within 500 feet. It sees in all directions with your normal visual senses and continuously transmits what it sees to you.",
-                "The first time you Sustain the Spell each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt {@action Seek|CRB} actions through the eye if you want to attempt Perception checks with it. Any damage dealt to the eye destroys it and ends the spell."
+                "The first time you Sustain the Spell each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt {@action Seek|CRB} actions through the eye if you want to attempt {@skill Perception} checks with it. Any damage dealt to the eye destroys it and ends the spell."
             ],
             "cast": {
                 "number": 1,
@@ -18672,7 +18672,7 @@
                 "Light"
             ],
             "entries": [
-                "You shoot a blazing ray of light tinged with holy energy. Make a ranged spell attack. The ray deals {@dice 5d6} fire damage. If the target is a fiend or undead, you deal an extra {@dice 5d6} good damage.",
+                "You shoot a blazing ray of light tinged with holy energy. Make a ranged spell attack. The ray deals {@damage 5d6} fire damage. If the target is a fiend or undead, you deal an extra {@dice 5d6} good damage.",
                 {
                     "type": "successDegree",
                     "entries": {
@@ -18926,7 +18926,7 @@
                 "Shadow"
             ],
             "entries": [
-                "You shape the quasi-real substance of the Shadow Plane into a blast. Choose acid, bludgeoning, cold, electricity, fire, force, piercing, slashing, or sonic damage, and choose a 30-foot cone, a 15-foot burst within 120 feet, or a 50-foot line. The blast deals {@dice 5d8} damage of the type you chose to each creature in the area."
+                "You shape the quasi-real substance of the Shadow Plane into a blast. Choose acid, bludgeoning, cold, electricity, fire, force, piercing, slashing, or sonic damage, and choose a 30-foot cone, a 15-foot burst within 120 feet, or a 50-foot line. The blast deals {@damage 5d8} damage of the type you chose to each creature in the area."
             ],
             "cast": {
                 "number": 1,
@@ -19903,7 +19903,7 @@
                     "type": "successDegree",
                     "entries": {
                         "Critical Success": "The creature is unaffected.",
-                        "Success": "The creature takes a –1 status penalty to Perception checks for 1 round.",
+                        "Success": "The creature takes a –1 status penalty to {@skill Perception} checks for 1 round.",
                         "Failure": "The creature falls {@condition unconscious}. If it’s still {@condition unconscious} after 1 minute, it wakes up automatically.",
                         "Critical Failure": "The creature falls {@condition unconscious}. If it’s still {@condition unconscious} after 1 hour, it wakes up automatically."
                     }
@@ -19942,7 +19942,7 @@
                 "x": [
                     {
                         "level": 4,
-                        "entry": "The creatures fall {@condition unconscious} for 1 round on a failure or 1 minute on a critical failure. They fall {@condition prone} and release what they’re holding, and they can’t attempt Perception checks to wake up. When the duration ends, the creature is sleeping normally instead of automatically waking up."
+                        "entry": "The creatures fall {@condition unconscious} for 1 round on a failure or 1 minute on a critical failure. They fall {@condition prone} and release what they’re holding, and they can’t attempt {@skill Perception} checks to wake up. When the duration ends, the creature is sleeping normally instead of automatically waking up."
                     }
                 ],
                 "no_x": null
@@ -21596,8 +21596,8 @@
                     "type": "list",
                     "items": [
                         "{@bold Acid Rain} Each creature in the storm takes {@dice 4d8} acid damage with no saving throw.",
-                        "{@bold Hail} The storm deals {@dice 4d10} bludgeoning damage to creatures beneath it (basic Fortitude save).",
-                        "{@bold Lightning} Up to 10 bolts of lightning strike down, targeting creatures of your choice in the storm. No more than one bolt can target any one creature. Each bolt deals {@dice 7d6} electricity damage (basic Reflex save).",
+                        "{@bold Hail} The storm deals {@damage 4d10} bludgeoning damage to creatures beneath it (basic Fortitude save).",
+                        "{@bold Lightning} Up to 10 bolts of lightning strike down, targeting creatures of your choice in the storm. No more than one bolt can target any one creature. Each bolt deals {@damage 7d6} electricity damage (basic Reflex save).",
                         "{@bold Rain and Wind} Heavy rain and whipping wind reduce visibility and mobility, making the area under the storm cloud difficult terrain and making everything seen within or through the area {@condition concealed}.",
                         "{@bold Thunderclap} Each creature in the storm must succeed at a Fortitude save or be {@condition deafened} for 10 minutes"
                     ]
@@ -23609,7 +23609,7 @@
                 "Transmutation"
             ],
             "entries": [
-                "You transform into a Large tree. Perception checks don’t reveal your true nature, but a successful {@skill Nature} or {@skill Survival} check against your spell DC reveals that you appear to be a tree that is strangely new to the area. While in tree form, you can observe everything around you, but you can’t act other than to end the spell, and your turn, by using a single action, which has the concentrate trait. As a tree, your AC is 20, and only status bonuses, status penalties, circumstance bonuses, and circumstance penalties affect you. Any successes and critical successes you roll on Reflex saves are failures."
+                "You transform into a Large tree. {@skill Perception} checks don’t reveal your true nature, but a successful {@skill Nature} or {@skill Survival} check against your spell DC reveals that you appear to be a tree that is strangely new to the area. While in tree form, you can observe everything around you, but you can’t act other than to end the spell, and your turn, by using a single action, which has the concentrate trait. As a tree, your AC is 20, and only status bonuses, status penalties, circumstance bonuses, and circumstance penalties affect you. Any successes and critical successes you roll on Reflex saves are failures."
             ],
             "cast": {
                 "number": 1,
@@ -24684,7 +24684,7 @@
                 "Visual"
             ],
             "entries": [
-                "An illusion of horrific creatures fills the spell’s area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@dice 8d8} mental damage to each creature that’s inside the burst when it’s created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact|CRB} with the monsters or observes one with a {@action Seek|CRB} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
+                "An illusion of horrific creatures fills the spell’s area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage to each creature that’s inside the burst when it’s created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact|CRB} with the monsters or observes one with a {@action Seek|CRB} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
             ],
             "cast": {
                 "number": 1,
@@ -25098,7 +25098,7 @@
             "entries": [
                 "You sculpt a barrier of ice that blocks sight and, once shattered, freezes foes. You create either a 1-foot-thick wall of ice in a straight line up to 60 feet long and 10 feet high (the wall doesn’t have to be vertical, but it must be anchored on both sides to a solid surface) or a 1-foot-thick, 10-foot radius hemisphere of ice.",
                 "The ice that makes up the wall is opaque. If you {@spell wish|CRB}, the wall can be of a smaller length, height, or radius. You must create the wall in an unbroken open space so its edges don’t pass through any creatures or objects, or the spell is lost.",
-                "Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 40 Hit Points, and it’s immune to critical hits, cold damage, and precision damage. A section also has weakness to fire 15; a section of the wall destroyed by fire melts, evaporating into water and steam. A section destroyed by means other than fire leaves behind a chilling mass of ice that is difficult terrain and deals {@dice 2d6} cold damage to any creature passing through it."
+                "Each 10-foot-by-10-foot section of the wall has AC 10, Hardness 10, and 40 Hit Points, and it’s immune to critical hits, cold damage, and precision damage. A section also has weakness to fire 15; a section of the wall destroyed by fire melts, evaporating into water and steam. A section destroyed by means other than fire leaves behind a chilling mass of ice that is difficult terrain and deals {@damage 2d6} cold damage to any creature passing through it."
             ],
             "cast": {
                 "number": 1,
@@ -29021,7 +29021,7 @@
                 "Fire"
             ],
             "entries": [
-                "A blazing band of fire arcs through the air. Make a spell attack roll. The ray deals {@dice 2d6} fire damage.",
+                "A blazing band of fire arcs through the air. Make a spell attack roll. The ray deals {@damage 2d6} fire damage.",
                 {
                     "type": "successDegree",
                     "entries": {
@@ -29766,7 +29766,7 @@
                 "Light"
             ],
             "entries": [
-                "You shine a ray of moonlight. Make a spell attack roll. The beam of light deals {@dice 1d6} fire damage. Moonbeam deals silver damage for the purposes of weaknesses, resistances, and the like.",
+                "You shine a ray of moonlight. Make a spell attack roll. The beam of light deals {@damage 1d6} fire damage. Moonbeam deals silver damage for the purposes of weaknesses, resistances, and the like.",
                 {
                     "type": "successDegree",
                     "entries": {
@@ -30813,7 +30813,7 @@
                 "Nonlethal"
             ],
             "entries": [
-                "You inflict pain upon the target and revel in their anguish. This deals {@dice 1d4} mental damage and {@dice 1d4} {@condition Persistent Damage|CRB|persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition Persistent Damage|CRB|persistent damage} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
+                "You inflict pain upon the target and revel in their anguish. This deals {@damage 1d4} mental damage and {@dice 1d4} {@condition Persistent Damage|CRB|persistent mental damage}; the target must attempt a Will save. As long as the target is taking {@condition Persistent Damage|CRB|persistent damage} from this spell, you gain a +1 status bonus to attack rolls and skill checks against the target.",
                 {
                     "type": "successDegree",
                     "entries": {
@@ -30895,7 +30895,7 @@
                 "entry": "{@as R}"
             },
             "requirements": null,
-            "trigger": "You attempt a Perception check to Seek, or you attempt a skill check to Recall Knowledge with a skill you’re",
+            "trigger": "You attempt a Perception check to Seek, or you attempt a skill check to {@action Recall Knowledge} with a skill you’re",
             "range": {
                 "type": null
             },
@@ -31021,8 +31021,8 @@
                 "Mental"
             ],
             "entries": [
-                "You attempt to calm the target by uttering soothing words in a calm and even tone. The target gains a +1 status bonus to Will saving throws. This bonus increases to +2 against emotion effects.",
-                "In addition, when you Cast this Spell, you can attempt to counteract one emotion effect on the target."
+                "You attempt to calm the target by uttering soothing words in a calm and even tone. The target gains a +1 status bonus to Will saving throws. This bonus increases to +2 against {@trait emotion} effects.",
+                "In addition, when you Cast this Spell, you can attempt to counteract one {@trait emotion} effect on the target."
             ],
             "cast": {
                 "number": 1,
@@ -31057,7 +31057,7 @@
                 "x": [
                     {
                         "level": 5,
-                        "entry": "The bonus to saves increases to +2, or +3 against emotion effects."
+                        "entry": "The bonus to saves increases to +2, or +3 against {@trait emotion} effects."
                     }
                 ],
                 "no_x": null
@@ -32719,7 +32719,7 @@
                     "items": [
                         "{@bold Calm} No additional effect.",
                         "{@bold Fog} Heavy fog rolls in, concealing the area with the effects of {@spell obscuring mist|CRB}.",
-                        "{@bold Rain} Torrential rain falls from the sky, dousing ordinary flames. Creatures in the area take a –2 circumstance penalty to {@skill Acrobatics} and Perception checks.",
+                        "{@bold Rain} Torrential rain falls from the sky, dousing ordinary flames. Creatures in the area take a –2 circumstance penalty to {@skill Acrobatics} and {@skill Perception} checks.",
                         "{@bold Wind} Powerful winds buffet the area in all directions"
                     ]
                 },
@@ -32849,7 +32849,7 @@
                 "Evocation"
             ],
             "entries": [
-                "You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@dice 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy} 2 for 1 round and takes 1 {@condition Persistent Damage|CRB|persistent electricity damage}."
+                "You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy} 2 for 1 round and takes 1 {@condition Persistent Damage|CRB|persistent electricity damage}."
             ],
             "cast": {
                 "number": 1,
@@ -32913,7 +32913,7 @@
                 {
                     "type": "list",
                     "items": [
-                        "If you have {@spell Wild Shape|CRB}, you can morph your hands into wild claws. Your hands transform into incredibly sharp claws. These claws are an unarmed attack you’re trained in and deal {@dice 1d6} slashing damage each (agile, finesse). You can still hold and use items with your hands while they’re transformed by this spell, but you cannot hold an item while attacking. If you have Insect Shape, you can instead transform your mouth into wild jaws, an unarmed attack you’re trained in that deals {@dice 1d8} piercing damage.",
+                        "If you have {@spell Wild Shape|CRB}, you can morph your hands into wild claws. Your hands transform into incredibly sharp claws. These claws are an unarmed attack you’re trained in and deal {@dice 1d6} slashing damage each (agile, finesse). You can still hold and use items with your hands while they’re transformed by this spell, but you cannot hold an item while attacking. If you have Insect Shape, you can instead transform your mouth into wild jaws, an unarmed attack you’re trained in that deals {@damage 1d8} piercing damage.",
                         "If you have Elemental Shape, you can morph your body to be partially composed of elemental matter, granting you resistance 5 to critical hits and precision damage.",
                         "If you have Plant Shape, you can morph your arms into long vines, increasing your reach to 10 feet (or 15 feet with a reach weapon).",
                         "If you have Soaring Shape, you can cast the spell as a two-action activity ({@as 2} somatic, verbal) to grow wings from your back. These wings allow you to fly with a fly Speed of 30 feet."
@@ -33160,7 +33160,7 @@
                 "Monk"
             ],
             "entries": [
-                "You unleash your ki as a powerful blast of force that deals {@dice 2d6} force damage. If you use 2 actions to cast ki blast, increase the size of the cone to 30 feet and the damage to {@dice 3d6}. If you use 3 actions to cast ki blast, increase the size of the cone to 60 feet and the damage to {@dice 4d6}. Each creature in the area must attempt a Fortitude saving throw.",
+                "You unleash your ki as a powerful blast of force that deals {@damage 2d6} force damage. If you use 2 actions to cast ki blast, increase the size of the cone to 30 feet and the damage to {@dice 3d6}. If you use 3 actions to cast ki blast, increase the size of the cone to 60 feet and the damage to {@dice 4d6}. Each creature in the area must attempt a Fortitude saving throw.",
                 {
                     "type": "successDegree",
                     "entries": {
@@ -34281,7 +34281,7 @@
                 "Sorcerer"
             ],
             "entries": [
-                "You close your hand and pull life energy from another creature into yourself. This deals {@dice 3d4} negative damage; the target must attempt a basic Fortitude save. You gain temporary Hit Points equal to the damage the target takes, after resolving its save and applying your blood magic if applicable. If the target’s Hit Points were lower than the damage you dealt, you gain temporary Hit Points equal to their remaining Hit Points instead. The temporary Hit Points last for 1 minute."
+                "You close your hand and pull life energy from another creature into yourself. This deals {@damage 3d4} negative damage; the target must attempt a basic Fortitude save. You gain temporary Hit Points equal to the damage the target takes, after resolving its save and applying your blood magic if applicable. If the target’s Hit Points were lower than the damage you dealt, you gain temporary Hit Points equal to their remaining Hit Points instead. The temporary Hit Points last for 1 minute."
             ],
             "cast": {
                 "number": 1,
@@ -34661,8 +34661,8 @@
                     "type": "successDegree",
                     "entries": {
                         "Success": "The creature is unaffected.",
-                        "Failure": "The creature can’t use reactions and takes a –2 status penalty to Perception checks and Will saves.",
-                        "Critical Failure": "As failure, and the creature also takes a –1 status penalty to Perception checks and Will saves for 1 minute."
+                        "Failure": "The creature can’t use reactions and takes a –2 status penalty to {@skill Perception} checks and Will saves.",
+                        "Critical Failure": "As failure, and the creature also takes a –1 status penalty to {@skill Perception} checks and Will saves for 1 minute."
                     }
                 }
             ],
@@ -35202,7 +35202,7 @@
                 "Sorcerer"
             ],
             "entries": [
-                "Ground in the area turns swampy and fetid. The area is difficult terrain. The sludge at the bottom of the morass animates into diminutive sludge beasts that have a demonic appearance. These don’t function as normal creatures, but they swarm over creatures in the swamp and exude a noxious stench. The swamp deals {@dice 1d6} poison damage; creatures that end their turn in the area must attempt a basic Fortitude save. You can increase the number of actions it takes to Cast the Spell. For each additional action, increase the burst’s radius by 5 feet."
+                "Ground in the area turns swampy and fetid. The area is difficult terrain. The sludge at the bottom of the morass animates into diminutive sludge beasts that have a demonic appearance. These don’t function as normal creatures, but they swarm over creatures in the swamp and exude a noxious stench. The swamp deals {@damage 1d6} poison damage; creatures that end their turn in the area must attempt a basic Fortitude save. You can increase the number of actions it takes to Cast the Spell. For each additional action, increase the burst’s radius by 5 feet."
             ],
             "cast": {
                 "number": 1,
@@ -36044,7 +36044,7 @@
                 "Wizard"
             ],
             "entries": [
-                "You fire an unerring dart of force from your fingertips. It automatically hits and deals {@dice 1d4+1} force damage to the target."
+                "You fire an unerring dart of force from your fingertips. It automatically hits and deals {@damage 1d4+1} force damage to the target."
             ],
             "cast": {
                 "number": 1,

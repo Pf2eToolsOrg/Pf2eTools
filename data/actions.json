@@ -85,13 +85,13 @@
 				"entry": "{@as 1}"
 			},
 			"entries": [
-				"You attempt to escape from being {@condition grabbed|CRB}, {@condition immobilized|CRB}, or {@condition restrained|CRB}. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the {@skill Athletics} DC of a creature grabbing you, the {@skill Thievery} DC of a creature who tied you up, the spell DC for a spell effect, or the listed Escape DC of an object, hazard, or other impediment. You can attempt an {@skill Acrobatics} or {@skill Athletics} check instead of using your attack modifier if you choose (but this action still has the {@trait attack} trait).",
+				"You attempt to escape from being {@condition grabbed|CRB}, {@condition immobilized|CRB}, or {@condition restrained|CRB}. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the {@skill Athletics} DC of a creature grabbing you, the {@skill Thievery} DC of a creature who tied you up, the spell DC for a spell effect, or the listed {@action Escape} DC of an object, hazard, or other impediment. You can attempt an {@skill Acrobatics} or {@skill Athletics} check instead of using your attack modifier if you choose (but this action still has the {@trait attack} trait).",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You get free and remove the {@condition grabbed|CRB}, {@condition immobilized|CRB}, and {@condition restrained|CRB} conditions imposed by your chosen target. You can then {@action Stride|CRB} up to 5 feet.",
 						"Success": "You get free and remove the {@condition grabbed|CRB}, {@condition immobilized|CRB}, and {@condition restrained|CRB} conditions imposed by your chosen target.",
-						"Critical Failure": "You don’t get free, and you can’t attempt to Escape again until your next turn."
+						"Critical Failure": "You don’t get free, and you can’t attempt to {@action Escape} again until your next turn."
 					}
 				}
 			]
@@ -974,7 +974,7 @@
 						"{@b Society:} Local history, key personalities, legal institutions, societal structure, and humanoid culture."
 					]
 				},
-				"The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
+				"The GM might allow checks to {@action Recall Knowledge} using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
 				{
 					"type": "pf2-sample-box",
 					"name": "Recall Knowledge Tasks",
@@ -1269,7 +1269,7 @@
 			"info": [
 				{
 					"type": "pf2-sample-box",
-					"name": "Sample Squeeze Tasks",
+					"name": "Sample {@action Squeeze} Tasks",
 					"entries": [
 						{
 							"type": "list",
