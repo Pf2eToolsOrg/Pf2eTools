@@ -197,6 +197,7 @@
 							"type": "pf2-h3",
 							"name": "Bleachlings",
 							"page": 29,
+							"source": "LOCG",
 							"entries": [
 								"Those gnomes with the debatable fortune to survive the Bleaching awaken as Bleachlings, pale reflections of their former selves drained of color and strong emotion. Despite the fearful stigma that most gnomes have for Bleachlings, the latter seem utterly at peace with their new condition. If anything, Bleachlings are attuned to nature in a way that exceeds their brethren’s natural affinity, speaking to animals with ease and reaching a magical equilibrium with their surroundings."
 							]
@@ -205,6 +206,7 @@
 							"type": "pf2-h3",
 							"name": "Fell Gnomes",
 							"page": 29,
+							"source": "LOCG",
 							"entries": [
 								"While light and laughter suffuse much of the First World, the plane is also home to more sinister fey of blood, spite, and shadows. When gnomes come of age near an area of darker magical forces, their physiology seems to absorb some of these foreboding elements as if activating some recessive genes. Known as fell gnomes, these children boast eerily exaggerated features, such as spindly fingers, too-wide grins, and exaggerated eyes. Fell gnomes also tend to favor dark humor that thoroughly disquiets bystanders, particularly when combined with chilling magic that shatters preconceptions that gnomes are inherently bright creatures.",
 								"Though fell gnomes are not intrinsically cruel or morose, many enjoy leveraging their disquieting characteristics in social settings. To this end, fell gnomes often favor darker colors, asymmetrical clothing, and imposing garments. Fell gnomes often reside near occult nexuses, such as those found in Cheliax, Druma, and Ustalav.",
@@ -215,6 +217,7 @@
 							"type": "pf2-h3",
 							"name": "Feychild Gnomes",
 							"page": 30,
+							"source": "LOCG",
 							"entries": [
 								"Most numerous of the gnomes, Feychild gnomes also have the strongest connection to their ancestral homeland, the First World. Having developed a bond to a mighty natural feature or primal source, these gnomes are the most likely to display naturally bright and fantastic features—including bright hair and eyes that include yellow, green, orange, blue, and pink hues, among others—and tend toward tan, pale, or green skin.",
 								"Despite having the most natural magical foundation, these gnomes’ fey connection is considered the least stable and most in need of stimulus. As a result, Feychild gnomes are often capricious and emotive, regularly seeking new experiences, playing pranks, and fueling countless gnome stereotypes. However, their intense First World connection also often grants Feychild gnomes a rapport with animals and plants, ensuring they never want for friends. Elves usually respect these gnomes’ fey aspect, albeit often through a somewhat paternalistic lens.",
@@ -225,6 +228,7 @@
 							"type": "pf2-h3",
 							"name": "Glimmer Gnomes",
 							"page": 30,
+							"source": "LOCG",
 							"entries": [
 								"Golarion is a tapestry of divine scars where the gods have made their marks through cataclysms and miracles, and these sites retain a magical resonance that shapes nearby gnome populations. This world-shattering power combines with gnomes’ ancestral First World origins to grant the gnomes a degree of influence over existence itself. These glimmer gnomes (a corruption of the original name “glamour gnomes”) possess a natural talent for illusion and reality-warping magic, sometimes causing bystanders to mistake them for godlings—or members of the Eldest—in their own right. It’s an easy mistake to make, given these gnomes’ slightly translucent hair that seems to glow in the light and the warm, metallic irises of their eyes. Most perturbing of all, though, is a glimmer gnome’s penchant for appearing and disappearing unpredictably, like mischievous tricksters who always seem to emerge or vanish at the most advantageous times.",
 								"Glimmer gnomes are most common where there are powerful religious connections. Small groups are associated with Nidal’s obedience to Zon-Kuthon, Osirion’s reverence of Nethys, and Casmaron’s accursed Pit of Gormuz where Rovagug is sealed. A significant population of these gnomes have ties to Absalom’s Starstone Cathedral, where their population is evenly split between gnomes who play up their divinely inspired origins through extravagant clothing and those who resent visitors’ fawning admiration and dress to avoid undue attention.",
@@ -235,6 +239,7 @@
 							"type": "pf2-h3",
 							"name": "Keenspark Gnomes",
 							"page": 31,
+							"source": "LOCG",
 							"entries": [
 								"Some gnomes aren’t content to soak in the world’s wonders; they possess an especially strong drive to create their own. Dedicated to innovation, Keenspark gnomes regularly prod at the edges of reality and possibility alike, not only inventing strange devices and pioneering new magical theories, but also challenging long-held beliefs and religious assumptions. As a result, these iconoclasts and innovators are the gnomes most likely to come across as perfectionistic, dismissive, controlling, or outright irritating, leading to their gnome kin jokingly referring to them as “sour gnomes.” However, their knowledge is a boon in a wide variety of fields, and Keenspark gnomes are among the foremost wizards, engineers, philosophers, and craftspeople.",
 								"Compared to their colorful kin, Keenspark gnomes have comparably drab skin, hair, and eye coloration that closely mirrors common human hues. These gnomes are most common in areas of intense arcane innovation or utter eldritch devastation. As a result, Nex and the Mana Wastes are home to substantial populations of Keenspark gnomes, particularly in Quantium’s laboratories. Likewise, Absalom’s arcane universities attract and shape a healthy Keenspark population. Perhaps more oddly, Rahadoum’s small gnome population is overwhelmingly Keenspark in nature, perhaps due to the country’s longstanding rebuke of divine influence.",
@@ -297,7 +302,7 @@
 					"source": "CRB",
 					"page": 43,
 					"entries": [
-						"The blood of the fey is so strong within you that you’re truly one of them. You gain the fey trait, in addition to the gnome and humanoid traits. Choose one cantrip from the primal spell list (page 314). You can cast this spell as a primal innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up. You can change this cantrip to a different one from the same list once per day by meditating to realign yourself with the First World; this is a 10-minute activity that has the concentrate trait."
+						"The blood of the fey is so strong within you that you’re truly one of them. You gain the {@trait fey} trait, in addition to the {@trait gnome} and {@trait humanoid} traits. Choose one cantrip from the {@filter primal spell list|spells|tradition=primal|level=0}. You can cast this spell as a primal innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up. You can change this cantrip to a different one from the same list once per day by meditating to realign yourself with the First World; this is a 10-minute activity that has the {@trait concentrate} trait."
 					]
 				},
 				{
@@ -306,7 +311,7 @@
 					"page": 44,
 					"entries": [
                         "You see all colors as brighter, hear all sounds as richer, and especially smell all scents with incredible detail. You gain a special sense: imprecise scent with a range of 30 feet. This means you can use your sense of smell to determine the exact location of a creature (as explained on page 465). The GM will usually double the range if you’re downwind from the creature or halve the range if you’re upwind.",
-                        "In addition, you gain a +2 circumstance bonus to Perception checks whenever you’re trying to locate an undetected creature that is within the range of your scent."
+                        "In addition, you gain a +2 circumstance bonus to {@skill Perception} checks whenever you’re trying to locate an {@condition undetected} creature that is within the range of your scent."
 					]
 				},
 				{
@@ -323,7 +328,7 @@
 					"page": 44,
 					"entries": [
                         "Some other source of magic has a greater hold on you than the primal magic of your fey lineage does. This connection might come from an occult plane or an ancient occult song; a deity, celestial, or fiend; magical effluent left behind by a mage war; or ancient rune magic.",
-                        "Choose arcane, divine, or occult. You gain one cantrip from that magical tradition’s spell list (pages 307–315). You can cast this spell as an innate spell at will, as a spell of your chosen tradition. A cantrip is heightened to a spell level equal to half your level rounded up. Whenever you gain a primal innate spell from a gnome ancestry feat, change its tradition from primal to your chosen tradition."
+                        "Choose {@filter arcane|spells|tradition=arcane|level=0}, {@filter divine|spells|tradition=divine|level=0}, or {@filter occult|spells|tradition=occult|level=0}. You gain one cantrip from that magical tradition’s spell list. You can cast this spell as an innate spell at will, as a spell of your chosen tradition. A cantrip is heightened to a spell level equal to half your level rounded up. Whenever you gain a primal innate spell from a gnome ancestry feat, change its tradition from primal to your chosen tradition."
 					]
 				},
 				{
@@ -331,7 +336,7 @@
 					"source": "LOCG",
 					"page": 31,
 					"entries": [
-                        "You have an incredibly strong connection to the positive energy that flows through the First World, making it harder to attack your life force with negative energy. You gain negative resistance equal to half your level (minimum 1). When you have the doomed condition, the condition affects you as if its value was 1 lower than it actually is (doomed 1 has no effect, doomed 2 causes you to die at dying 3, and so on)."
+                        "You have an incredibly strong connection to the positive energy that flows through the First World, making it harder to attack your life force with negative energy. You gain negative resistance equal to half your level (minimum 1). When you have the {@condition doomed} condition, the condition affects you as if its value was 1 lower than it actually is ({@condition doomed} 1 has no effect, {@condition doomed} 2 causes you to die at dying 3, and so on)."
 					]
 				}
 			],

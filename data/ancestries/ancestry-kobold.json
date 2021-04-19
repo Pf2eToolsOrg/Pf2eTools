@@ -263,6 +263,7 @@
 							"type": "pf2-h3",
 							"name": "Dankblade Crew of the Shackles",
 							"page": 36,
+							"source": "LOAG",
 							"entries": [
 								"The black-scaled Dankblade Tribe tunneled their way up from the Darklands into a sea cave on the Shackles’ Raptor Island. They soon discovered that the nearby pirate battles and dangerous nautical hazards frequently caused useful goods to float ashore. The tribe delightedly accepted these seaborne tributes, took to dressing in any nautical garb they found, and renamed themselves the Dankblade Crew. They sell whatever they scavenge, and passing ships have learned it is easier to treat with the Dankblades than fight them. Prime bits of salvage are offered up to the brine dragon Machazmroh, who flies by from time to time. There’s no formal alliance between the Dankblades and the dragon—but the Dankblades see no reason to tell anyone else that.",
 								"Dankblades often have the dragonscaled or tunnelflood kobold heritage."
@@ -272,6 +273,7 @@
 							"type": "pf2-h3",
 							"name": "Embermaw Tribe",
 							"page": 36,
+							"source": "LOAG",
 							"entries": [
 								"In the Cinderlands, beneath the Mindspin Mountains in Varisia, the Embermaw Tribe continues to expand its kingdom beneath the feet of unsuspecting surface-dwellers. Allies of the red dragon Tsazgatherax, Embermaws are red-scaled, broad-shouldered, and uniquely muscular. They mine the Cinderlands, forge fine tools and weapons, protect their patron’s eggs, and fend off fire giants, azers, and salamanders.",
 								"Embermaws often have the cavern or caveclimber kobold heritage."
@@ -280,6 +282,7 @@
 						{
 							"type": "pf2-h3",
 							"name": "Monkey Goblins",
+							"source": "LOAG",
 							"page": 36,
 							"entries": [
 								"Monkey goblins originated on Mediogalti Island, where their distinctive tails give them a significant advantage in the dense jungles. These goblins are taller and heavier than other goblins, standing a bit over 3-1/2 feet tall and weighing between 50 and 60 pounds. Their skin spans the range from tawny bronze to dark blue, and gold eyes are more common than the red eyes of their kin.",
@@ -290,6 +293,7 @@
 						{
 							"type": "pf2-h3",
 							"name": "Glassclaw of Katapesh",
+							"source": "LOAG",
 							"page": 36,
 							"entries": [
 								"The Glassclaw are an old tribe that operate near, and sometimes within, the city of Katapesh. Unlike many larger kobold tribes, they have no patron, but they do have friendly relations with at least one sphinx, for whom they run errands. Small even for kobolds, with yellowish scales and subdued features, the Glassclaws work to ensure that no one ever breaks Katapesh’s famous Glass Pyramids. They claim they were given this task by a celestial entity 100 generations ago and dismiss any claim that the Glass Pyramids aren’t that old.",
@@ -300,6 +304,7 @@
 							"type": "pf2-h3",
 							"name": "Icerenders",
 							"page": 37,
+							"source": "LOAG",
 							"entries": [
 								"The Icerenders inhabit hundreds of tunnel warrens within the Tusk Mountains in the Realm of the Mammoth Lords. Their white scales and icy blue eyes serve as excellent camouflage, which they use to set ambushes on passing caravans. They choose a new pass every few years, clearing it of ice and snow to make it inviting to travelers. Their lord, the dragon Lydek the White, attacks caravans that try to pass to the south, encouraging the use of the Icerenders’ passes. Icerenders only set upon caravans that won’t be missed or that have truly valuable loot—though some of the tribe have begun to wonder what opportunities might lie at either end of these caravan’s journeys.",
 								"Icerenders usually have the dragonscaled or spellscale kobold heritage."
@@ -307,6 +312,7 @@
 						},
 						{
 							"type": "pf2-h3",
+							"source": "LOAG",
 							"name": "Sewer Dragons of Absalom",
 							"page": 37,
 							"entries": [
@@ -326,7 +332,7 @@
 					"source": "APG",
 					"page": 13,
 					"entries": [
-						"You hatched into a warren among narrow tunnels and countless kin. Your body is flexible. When Climbing rock walls, stalactites, and other natural stone features, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have Quick Climb). This doesn’t affect you if you’re using a climb Speed. If you roll a success on an Acrobatics check to Squeeze, you get a critical success instead."
+						"You hatched into a warren among narrow tunnels and countless kin. Your body is flexible. When {@action Climb|CRB|Climbing} rock walls, stalactites, and other natural stone features, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have {@feat Quick Climb}). This doesn’t affect you if you’re using a climb Speed. If you roll a success on an {@skill Acrobatics} check to {@action Squeeze}, you get a critical success instead."
 					]
 				},
 				{
@@ -342,7 +348,7 @@
 					"source": "APG",
 					"page": 14,
 					"entries": [
-						"A trace of draconic magic flows through your veins. Choose one cantrip from the arcane spell list (Core Rulebook 307). You can Cast this Spell as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up. You gain the trained proficiency rank in arcane spell attack rolls and spell DCs, and your key spellcasting ability is Charisma."
+						"A trace of draconic magic flows through your veins. Choose one cantrip from the {@filter arcane spell list|spells|tradition=arcane|level=0}. You can {@action Cast a Spell|CRB|Cast this Spell} as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up. You gain the trained proficiency rank in arcane spell attack rolls and spell DCs, and your key spellcasting ability is Charisma."
 					]
 				},
 				{
@@ -350,7 +356,7 @@
 					"source": "APG",
 					"page": 14,
 					"entries": [
-						"Your bloodline is noted for their powerful jaws and sharp teeth. You gain a jaws unarmed attack that deals 1d6 piercing damage. Your jaws are in the brawling group and have the finesse and unarmed traits."
+						"Your bloodline is noted for their powerful jaws and sharp teeth. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits."
 					]
 				},
 				{
@@ -370,7 +376,7 @@
 								"Poison"
 							],
 							"entries": [
-								"You apply your tail’s venom to a piercing or slashing weapon. If your next Strike with that weapon before the end of your next turn hits and deals damage, you deal persistent poison damage equal to your level to the target."
+								"You apply your tail’s venom to a piercing or slashing weapon. If your next {@action Strike} with that weapon before the end of your next turn hits and deals damage, you deal {@condition persistent damage|CRB|persistent poison damage} equal to your level to the target."
 							],
 							"type": "ability",
 							"name": "Tail Toxin",
@@ -384,7 +390,7 @@
 					"source": "LOAG",
 					"page": 37,
 					"entries": [
-						"You live in a vertically-oriented home, and you’re a consummate climber. You gain the Combat Climber skill feat, even if you don’t meet the prerequisites. You can use your clawed feet and tail to Climb, leaving your hands free. Additionally, if you succeed at an Athletics check to Climb, you critically succeed instead."
+						"You live in a vertically-oriented home, and you’re a consummate climber. You gain the {@feat Combat Climber} skill feat, even if you don’t meet the prerequisites. You can use your clawed feet and tail to {@action Climb}, leaving your hands free. Additionally, if you succeed at an {@skill Athletics} check to {@action Climb}, you critically succeed instead."
 					]
 				},
 				{

@@ -186,6 +186,7 @@
 							"type": "pf2-h3",
 							"name": "Forest Goblins",
 							"page": 35,
+							"source": "LOCG",
 							"entries": [
 								"Hailing from coniferous woodlands, forest goblins tend to be shorter and slimmer than their kin, not quite reaching 3 feet in height and rarely weighing more than 35 pounds. Forest goblins typically have skin ranging in hue from dark green to a sickly green-tinged brown reminiscent of a spoiled avocado. While all goblins have a natural tendency toward pyromania, forest goblins are often far more knowledgeable on the subject than almost any other species. Since forest goblins traditionally produce far fewer primal or divine spellcasters than other goblin ethnicities, they have developed a deep tradition of fire-management practices, taught through song and practical application. There is even evidence to suggest that woodlands inhabited by forest goblins are less prone to disastrous wildfires thanks to the goblins regularly burning away dead wood and dry brush that might otherwise act as fuel for hungry flames.",
 								"Forest goblins are often reclusive and avoid contact with members of other ancestries except when pilfering or scavenging from camps and caravans that pass near their territory, but some exceptions do exist. In 4697 ar, the forest goblins who inhabited Isger’s Chitterwood were recruited into a series of brutal conflicts now known as the Goblinblood Wars, resulting in one of the bloodiest conflicts in Isger’s troubled history. Of more auspicious note, the Crookedtoes and Dragondweller tribes have both recently provided critical assistance to human nations, earning them the patronage and protection of powerful allies.",
@@ -196,6 +197,7 @@
 							"type": "pf2-h3",
 							"name": "Frost Goblins",
 							"page": 35,
+							"source": "LOCG",
 							"entries": [
 								"Born in Irrisen’s eternal winter, frost goblins are well adapted to surviving in frigid environments. Frost goblins’ skin is adapted to help them blend in and survive in arctic environments, ranging in color from a light ice-blue to the dark blue-gray of stormy northern oceans. While most goblins are almost universally hairless, frost goblins occasionally sport blue fur similar in texture and density to that of their bugbear cousins.",
 								"The Frostfur tribe of goblins, originally hailing from Irrisen, are among the most notable tribes of frost goblins due to their association with the Pathfinder Society. Originally recruited as pawns by rebel factions within the Society, the Frostfur have since served as scouts and guides for several Pathfinder expeditions. While few of the Frostfur goblins have chosen to become full members of the Pathfinder Society due to their rambunctious nature and distrust of literacy, they remain steadfast allies and word of their loyalty is spreading. This burgeoning reputation means that frost goblins are, if not precisely well liked or welcomed, at least able to travel, buy goods, and secure lodging in most areas with a Pathfinder presence free of harassment. In the Lands of the Linnorm Kings, Venture-Captain Bjersig Torrsen keeps the few frost goblins who have made their homes at his lodge in Iceferry busy carrying messages, guiding archaeological expeditions into the frozen wastes, and performing any other task he can find to keep the energetic beings gainfully occupied and safely away from his dog, a powerful husky named Mahki, whose relationship with the Frostfurs is adversarial at best.",
@@ -205,6 +207,7 @@
 						{
 							"type": "pf2-h3",
 							"name": "Monkey Goblins",
+							"source": "LOCG",
 							"page": 36,
 							"entries": [
 								"Monkey goblins originated on Mediogalti Island, where their distinctive tails give them a significant advantage in the dense jungles. These goblins are taller and heavier than other goblins, standing a bit over 3-1/2 feet tall and weighing between 50 and 60 pounds. Their skin spans the range from tawny bronze to dark blue, and gold eyes are more common than the red eyes of their kin.",
@@ -214,6 +217,7 @@
 						},
 						{
 							"type": "pf2-h3",
+							"source": "LOCG",
 							"name": "Rasp Goblins",
 							"page": 36,
 							"entries": [
@@ -252,7 +256,7 @@
 					"source": "CRB",
 					"page": 47,
 					"entries": [
-						"Your ancestors have always had a connection to fire and a thicker skin, which allows you to resist burning. You gain fire resistance equal to half your level (minimum 1). You can also recover from being on fire more easily. Your flat check to remove persistent fire damage is DC 10 instead of DC 15, which is reduced to DC 5 if another creature uses a particularly appropriate action to help."
+						"Your ancestors have always had a connection to fire and a thicker skin, which allows you to resist burning. You gain fire resistance equal to half your level (minimum 1). You can also recover from being on fire more easily. Your flat check to remove {@condition persistent damage|CRB|persistent fire damage} is DC 10 instead of DC 15, which is reduced to DC 5 if another creature uses a particularly appropriate action to help."
 					]
 				},
 				{
@@ -260,8 +264,8 @@
 					"source": "CRB",
 					"page": 47,
 					"entries": [
-                        "You can subsist on food that most folks would consider spoiled. You can keep yourself fed with poor meals in a settlement as long as garbage is readily available, without using the Subsist downtime activity. You can eat and drink things when you are sickened.",
-                        "You gain a +2 circumstance bonus to saving throws against afflictions, against gaining the sickened condition, and to remove the sickened condition. When you roll a success on a Fortitude save affected by this bonus, you get a critical success instead. All these benefits apply only when the affliction or condition resulted from something you ingested."
+                        "You can subsist on food that most folks would consider spoiled. You can keep yourself fed with poor meals in a settlement as long as garbage is readily available, without using the {@action Subsist} downtime activity. You can eat and drink things when you are {@condition sickened}.",
+                        "You gain a +2 circumstance bonus to saving throws against afflictions, against gaining the {@condition sickened} condition, and to remove the {@condition sickened} condition. When you roll a success on a Fortitude save affected by this bonus, you get a critical success instead. All these benefits apply only when the affliction or condition resulted from something you ingested."
 					]
 				},
 				{
@@ -269,7 +273,7 @@
 					"source": "CRB",
 					"page": 48,
 					"entries": [
-                        "Your family’s teeth are formidable weapons. You gain a jaws unarmed attack that deals 1d6 piercing damage. Your jaws are in the brawling group and have the finesse and unarmed traits."
+                        "Your family’s teeth are formidable weapons. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits."
 					]
 				},
 				{
@@ -293,7 +297,7 @@
 					"source": "LOCG",
 					"page": 37,
 					"entries": [
-                        "You have a powerful tail, likely because you descend from a community of monkey goblins. You gain a +2 circumstance bonus to Athletics checks to Climb, you gain Combat Climber as a bonus feat, and you reduce the number of free hands required to Climb or Trip by one."
+                        "You have a powerful tail, likely because you descend from a community of monkey goblins. You gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, you gain {@feat Combat Climber} as a bonus feat, and you reduce the number of free hands required to {@action Climb} or {@action Trip} by one."
 					]
 				},
 				{
@@ -301,7 +305,7 @@
 					"source": "LOCG",
 					"page": 37,
 					"entries": [
-                        "You have adapted particularly well to living in forested environments. As long as you are in a forest or jungle, you gain a +2 circumstance bonus to Stealth checks to Hide and Sneak, Survival checks to Subsist, and your Survival DC to Cover Tracks."
+                        "You have adapted particularly well to living in forested environments. As long as you are in a forest or jungle, you gain a +2 circumstance bonus to {@skill Stealth} checks to {@action Hide} and {@action Sneak}, {@skill Survival} checks to {@action Subsist}, and your {@skill Survival} DC to {@action Cover Tracks}."
 					]
 				}
 			],

@@ -3719,7 +3719,7 @@
 							"page": 240,
 							"name": "Subsist (Untrained)",
 							"entries": [
-								"If you need to provide food and shelter, you can use the Subsist downtime activity. This typically uses Society if you’re in a settlement or Survival if you’re in the wild.",
+								"If you need to provide food and shelter, you can use the {@action Subsist} downtime activity. This typically uses Society if you’re in a settlement or Survival if you’re in the wild.",
 								{
 									"type": "statblock",
 									"name": "Subsist",
@@ -8819,7 +8819,7 @@
 								"A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light.",
 								"Closing or opening the shutters takes an Interact action.",
 								"{@b Lock:} Picking a poor lock requires two successful DC 15 Thievery checks, a simple lock requires three successful DC 20 Thievery checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40.",
-								"{@b Magnifying Glass:} This quality handheld lens gives you a +1 item bonus to Perception checks to notice minute details of documents, fabric, and the like.",
+								"{@b Magnifying Glass:} This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like.",
 								"{@b Manacles:} You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10–30 seconds depending on the creature’s size and how many manacles you apply. A two-legged creature with its legs bound takes a –15-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42.",
 								"{@b Material Component Pouch:} This pouch contains material components for those spells that require them.",
 								"Though the components are used up over time, you can refill spent components during your daily preparations.",
@@ -8842,7 +8842,7 @@
 								"{@b Signal Whistle:} When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain.",
 								"{@b Snare Kit:} This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the Crafting skill. A specialist snare kit gives you a +1 item bonus to the check.",
 								"{@b Spellbook:} A spellbook holds the written knowledge necessary to learn and prepare various spells, a necessity for wizards (who typically get one for free) and a useful luxury for other spellcasters looking to learn additional spells. Each spellbook can hold up to 100 spells. The Price listed is for a blank spellbook.",
-								"{@b Spyglass:} A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to Perception checks to notice details at a distance.",
+								"{@b Spyglass:} A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance.",
 								"{@b Survey Map:} Maps are uncommon.",
 								"Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to Survival checks and any skill checks to Recall Knowledge, provided the checks are related to the location detailed on the map.",
 								"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. The GM determines what maps are available in any location.",
@@ -9015,7 +9015,7 @@
 										"{@b Lesser Bottled Lightning:} This alchemical bomb deals 1d6 electricity damage and 1 electricity splash damage, and it makes the target flat-footed.",
 										"{@b Lesser Frost Vial:} This alchemical bomb deals 1d6 cold damage and 1 cold splash damage, and it gives the target a –5-foot status penalty to its Speeds until the end of its next turn.",
 										"{@b Lesser Tanglefoot Bag:} This alchemical bomb gives the target a –10-foot status penalty to its Speeds for 1 minute, and the target is immobilized on a critical hit unless it Escapes.",
-										"{@b Lesser Thunderstone:} This alchemical bomb deals {@dice 1d4} sonic damage and 1 sonic splash damage, and any creature within 10 feet that fails a DC 17 Fortitude save is deafened until the end of its turn."
+										"{@b Lesser Thunderstone:} This alchemical bomb deals {@damage 1d4} sonic damage and 1 sonic splash damage, and any creature within 10 feet that fails a DC 17 Fortitude save is deafened until the end of its turn."
 									]
 								},
 								{
@@ -10153,7 +10153,7 @@
 								"Both prepared and spontaneous spellcasters can cast a spell at a higher spell level than that listed for the spell.",
 								"This is called heightening the spell. A prepared spellcaster can heighten a spell by preparing it in a higher-level slot than its normal spell level, while a spontaneous spellcaster can heighten a spell by casting it using a higher-level spell slot, so long as they know the spell at that level (see Heightened Spontaneous Spells below). When you heighten your spell, the spell’s level increases to match the higher level of the spell slot you’ve prepared it in or used to cast it. This is useful for any spell, because some effects, such as counteracting, depend on the spell’s level.",
 								"In addition, many spells have additional specific benefits when they are heightened, such as increased damage. These extra benefits are described at the end of the spell’s stat block. Some heightened entries specify one or more levels at which the spell must be prepared or cast to gain these extra advantages. Each of these heightened entries states specifically which aspects of the spell change at the given level. Read the heightened entry only for the spell level you’re using or preparing; if its benefits are meant to include any of the effects of a lower-level heightened entry, those benefits will be included in the entry.",
-								"Other heightened entries give a number after a plus sign, indicating that heightening grants extra advantages over multiple levels. The listed effect applies for every increment of levels by which the spell is heightened above its lowest spell level, and the benefit is cumulative. For example, {@spell fireball} says “{@b Heightened (+1)} The damage increases by 2d6.” Because {@spell fireball} deals {@dice 6d6} fire damage at 3rd level, a 4th-level {@spell fireball} would deal {@dice 8d6} fire damage, a 5th-level spell would deal {@dice 10d6} fire damage, and so on.",
+								"Other heightened entries give a number after a plus sign, indicating that heightening grants extra advantages over multiple levels. The listed effect applies for every increment of levels by which the spell is heightened above its lowest spell level, and the benefit is cumulative. For example, {@spell fireball} says “{@b Heightened (+1)} The damage increases by 2d6.” Because {@spell fireball} deals {@damage 6d6} fire damage at 3rd level, a 4th-level {@spell fireball} would deal {@dice 8d6} fire damage, a 5th-level spell would deal {@dice 10d6} fire damage, and so on.",
 								{
 									"type": "pf2-h4",
 									"page": 299,
@@ -11893,7 +11893,7 @@
 								"There are three other types of bonus that frequently appear: circumstance bonuses, item bonuses, and status bonuses. If you have different types of bonus that would apply to the same roll, you’ll add them all. But if you have multiple bonuses of the same type, you can use only the highest bonus on a given roll—in other words, they don’t “stack.” For instance, if you have both a proficiency bonus and an item bonus, you add both to your d20 result, but if you have two item bonuses that could apply to the same check, you add only the higher of the two.",
 								"{@b Circumstance bonuses} typically involve the situation you find yourself in when attempting a check. For instance, using Raise a Shield with a buckler grants you a +1 circumstance bonus to AC. Being behind cover grants you a +2 circumstance bonus to AC. If you are both behind cover and Raising a Shield, you gain only the +2 circumstance bonus for cover, since they’re the same type and the bonus from cover is higher.",
 								"{@b Item bonuses} are granted by some item that you are wearing or using, either mundane or magical. For example, armor gives you an item bonus to AC, while expanded alchemist’s tools grant you an item bonus to Crafting checks when making alchemical items.",
-								"{@b Status bonuses} typically come from spells, other magical effects, or something applying a helpful, often temporary, condition to you. For instance, the 3rd-level {@spell heroism} spell grants a +1 status bonus to attack rolls, Perception checks, saving throws, and skill checks. If you were under the effect of {@spell heroism} and someone cast the {@spell bless} spell, which also grants a +1 status bonus on attacks, your attack rolls would gain only a +1 status bonus, since both spells grant a +1 status bonus to those rolls, and you only take the highest status bonus.",
+								"{@b Status bonuses} typically come from spells, other magical effects, or something applying a helpful, often temporary, condition to you. For instance, the 3rd-level {@spell heroism} spell grants a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks. If you were under the effect of {@spell heroism} and someone cast the {@spell bless} spell, which also grants a +1 status bonus on attacks, your attack rolls would gain only a +1 status bonus, since both spells grant a +1 status bonus to those rolls, and you only take the highest status bonus.",
 								"Penalties work very much like bonuses. You can have {@b circumstance penalties {@b status penalties}, and sometimes even {@b item penalties.} Like bonuses of the same type, you take only the worst all of various penalties of a given type. However, you can apply both a bonus and a penalty of the same type on a single roll. For example, if you had a +1 status bonus from a {@spell heroism} spell but a –2 status penalty from the sickened condition, you’d apply them both to your roll—so {@spell heroism} still helps even though you’re feeling unwell.",
 								"Unlike bonuses, penalties can also be {@b untyped}, in which case they won’t be classified as “circumstance,” “item,” or “status.” Unlike other penalties, you always add all your untyped penalties together rather than simply taking the worst one. For instance, when you use attack actions, you incur a multiple attack penalty on each attack you make on your turn after the first attack, and when you attack a target that’s beyond your weapon’s normal range increment, you incur a range penalty on the attack.",
 								"Because these are both untyped penalties, if you make multiple attacks at a faraway target, you’d apply both the multiple attack penalty and the range penalty to your roll.",
@@ -14240,14 +14240,14 @@
 									"type": "pf2-title",
 									"name": "Blindness or Impaired Vision"
 								},
-								"A blind character can’t detect anything using vision, critically fails Perception checks requiring sight, is immune to visual effects, and can’t be blinded or dazzled. You might give this character the Blind-Fight feat (page 149) for free.",
-								"A character with impaired vision might take a –2 to –4 penalty to vision-based Perception checks. Spectacles or other corrective devices might reduce or remove this.",
+								"A blind character can’t detect anything using vision, critically fails {@skill Perception} checks requiring sight, is immune to visual effects, and can’t be blinded or dazzled. You might give this character the Blind-Fight feat (page 149) for free.",
+								"A character with impaired vision might take a –2 to –4 penalty to vision-based {@skill Perception} checks. Spectacles or other corrective devices might reduce or remove this.",
 								{
 									"type": "pf2-title",
 									"name": "Deafness or Being Hard of Hearing"
 								},
-								"A deaf character can’t detect anything using hearing, critically fails Perception checks that require hearing, and is immune to auditory effects. They have enough practice to supply verbal components for casting spells and command components for activating magic items, but if they perform an action they’re not accustomed to that involves auditory elements, they must succeed at a DC 5 flat check or the action is lost. It’s best to give them the Sign Language feat for free, and you might give them Read Lips as well (page 266 and 265). You might give one or more other characters in the group Sign Language for free as well.",
-								"A hard-of-hearing character might take a –2 to –4 penalty to Perception checks that are hearing-based. Corrective devices for hearing are less common than spectacles are in a typical Pathfinder world.",
+								"A deaf character can’t detect anything using hearing, critically fails {@skill Perception} checks that require hearing, and is immune to auditory effects. They have enough practice to supply verbal components for casting spells and command components for activating magic items, but if they perform an action they’re not accustomed to that involves auditory elements, they must succeed at a DC 5 flat check or the action is lost. It’s best to give them the Sign Language feat for free, and you might give them Read Lips as well (page 266 and 265). You might give one or more other characters in the group Sign Language for free as well.",
+								"A hard-of-hearing character might take a –2 to –4 penalty to {@skill Perception} checks that are hearing-based. Corrective devices for hearing are less common than spectacles are in a typical Pathfinder world.",
 								{
 									"type": "pf2-title",
 									"name": "Missing Limb"
@@ -17506,7 +17506,7 @@
 									"page": 517,
 									"name": "Fog",
 									"entries": [
-										"Fog imposes a circumstance penalty to visual Perception checks, depending on the thickness; it causes creatures viewed through significant amounts of fog to be concealed; and it cuts off all visibility at half a mile or less—possibly much less. Conditions limiting visibility to about a mile are called mist, and those that do so to about 3 miles are called haze."
+										"Fog imposes a circumstance penalty to visual {@skill Perception} checks, depending on the thickness; it causes creatures viewed through significant amounts of fog to be concealed; and it cuts off all visibility at half a mile or less—possibly much less. Conditions limiting visibility to about a mile are called mist, and those that do so to about 3 miles are called haze."
 									]
 								},
 								{
@@ -17520,7 +17520,7 @@
 											"page": 517,
 											"name": "Visibility",
 											"entries": [
-												"Most forms of precipitation impose circumstance penalties on visual Perception checks. Hail often is sparser but loud, instead penalizing auditory Perception checks.",
+												"Most forms of precipitation impose circumstance penalties on visual {@skill Perception} checks. Hail often is sparser but loud, instead penalizing auditory {@skill Perception} checks.",
 												"Especially heavy precipitation, such as a downpour of rain or heavy snow, might make creatures concealed if they’re far away."
 											]
 										},
@@ -17629,7 +17629,7 @@
 									"page": 517,
 									"name": "Wind",
 									"entries": [
-										"Wind imposes a circumstance penalty on auditory Perception checks depending on its strength. It also interferes with physical ranged attacks such as arrows, imposing a circumstance penalty to attack rolls involving such weapons, and potentially making attacks with them impossible in powerful windstorms. Wind snuffs out handheld flames; lanterns protect their flame from the wind, but particularly powerful winds can extinguish these as well.",
+										"Wind imposes a circumstance penalty on auditory {@skill Perception} checks depending on its strength. It also interferes with physical ranged attacks such as arrows, imposing a circumstance penalty to attack rolls involving such weapons, and potentially making attacks with them impossible in powerful windstorms. Wind snuffs out handheld flames; lanterns protect their flame from the wind, but particularly powerful winds can extinguish these as well.",
 										{
 											"type": "pf2-h4",
 											"page": 517,
@@ -17842,7 +17842,7 @@
 											"page": 519,
 											"name": "Smoke",
 											"entries": [
-												"Wind can carry smoke far in front of the wildfire itself. Smoke imposes a circumstance penalty to visual Perception checks, depending on the thickness. It causes creatures viewed through significant amounts of smoke to be concealed, and it cuts off all visibility at half a mile or less. Near or within the wildfire, the combination of smoke and heated air require characters to hold their breath or suffocate (page 478)."
+												"Wind can carry smoke far in front of the wildfire itself. Smoke imposes a circumstance penalty to visual {@skill Perception} checks, depending on the thickness. It causes creatures viewed through significant amounts of smoke to be concealed, and it cuts off all visibility at half a mile or less. Near or within the wildfire, the combination of smoke and heated air require characters to hold their breath or suffocate (page 478)."
 											]
 										}
 									]
