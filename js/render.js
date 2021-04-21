@@ -2016,10 +2016,10 @@ function Renderer () {
 						};
 						// ...|scaledCr}
 						if (others.length) {
-							const targetCrNum = Parser.crToNumber(others[0]);
-							fauxEntry.href.hover.preloadId = `${VeCt.HASH_MON_SCALED}:${targetCrNum}`;
+							const targetLvl = others[0];
+							fauxEntry.href.hover.preloadId = `${VeCt.HASH_MON_SCALED}:${targetLvl}`;
 							fauxEntry.href.subhashes = [
-								{key: VeCt.HASH_MON_SCALED, value: targetCrNum},
+								{key: VeCt.HASH_MON_SCALED, value: targetLvl},
 							];
 							fauxEntry.text = displayText || `${name} (CR ${others[0]})`;
 						}
@@ -2526,7 +2526,7 @@ Renderer.getEntryDiceDisplayText = function (entry) {
 };
 
 Renderer.parseScaleDice = function (tag, text) {
-	// format: {@scaledice 2d6;3d6|2-8,9|1d6|psi} (or @scaledamage)
+	// format: {@scaledice 2d6;3d6|2-8,9|1d6} (or @scaledamage)
 	const [baseRoll, progression, addPerProgress, renderMode] = Renderer.splitTagByPipe(text);
 	const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
 	const baseLevel = Math.min(...progressionParse);
@@ -2561,7 +2561,7 @@ Renderer.parseScaleDice = function (tag, text) {
 		toRoll: baseRoll,
 		displayText: addPerProgress,
 		prompt: {
-			entry: renderMode === "psi" ? "Spend Psi Points..." : "Cast at...",
+			entry: "Heighten to...",
 			mode: renderMode,
 			options,
 		},
@@ -3657,7 +3657,7 @@ Renderer.creature = {
 					renderStack.push(renderer.render(`<span>, attack </span>{@d20 ${sc.attack}||Spell attack}`))
 				}
 				Object.keys(sc.entry).sort(SortUtil.sortSpellLvlCreature).forEach((lvl) => {
-					if (lvl !== " constant") {
+					if (lvl !== "constant") {
 						renderStack.push(`<span>; <strong>${lvl === "0" ? "Cantrips" : Parser.getOrdinalForm(lvl)} </strong>`)
 						if (sc.entry[lvl].level != null) renderStack.push(`<strong>(${Parser.getOrdinalForm(sc.entry[lvl].level)}) </strong>`)
 						if (sc.entry[lvl].slots != null) renderStack.push(`(${sc.entry[lvl].slots} slots) `)
@@ -4455,7 +4455,7 @@ Renderer.spell = {
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration </strong>${sp.duration.entry}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>` : ""}
-		${sp.alternate_tradition ? Object.keys(sp.alternate_tradition).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k} </strong>${sp.alternate_tradition[k].join(", ")}</p>`) : ""}
+		${sp.alternateTradition ? Object.keys(sp.alternateTradition).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k} </strong>${sp.alternateTradition[k].join(", ")}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(sp.cast.entry)} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
@@ -6535,13 +6535,13 @@ Renderer._stripTagLayer = function (str) {
 					case "@chance":
 					case "@d20":
 					case "@damage":
-					case "@@flatDC":
+					case "@flatDC":
 					case "@dice":
 					case "@hit": {
 						const [rollText, displayText] = Renderer.splitTagByPipe(text);
 						switch (tag) {
 							case "@damage":
-							case "@@flatDC":
+							case "@flatDC":
 							case "@dice": {
 								return displayText || rollText.replace(/;/g, "/");
 							}

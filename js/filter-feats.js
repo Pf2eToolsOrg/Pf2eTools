@@ -46,28 +46,26 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	mutateForFilters (feat) {
-		feat._slPrereq = (feat.prerequisites || `\u2014`).uppercaseFirst();
+		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
 		feat._fType = [];
 		if (feat.featType.class !== false) {
-			feat._slType = "Class";
 			feat._fType.push("Class");
 		}
 		if (feat.featType.ancestry !== false) {
-			feat._slType = "Ancestry";
 			feat._fType.push("Ancestry");
 		}
 		if (feat.featType.general !== false) {
-			feat._slType = "General";
 			feat._fType.push("General");
 		}
 		if (feat.featType.skill !== false) {
-			feat._slType = "Skill";
 			feat._fType.push("Skill");
 		}
 		if (feat.featType.archetype !== false) {
-			feat._slType = "Archetype";
 			feat._fType.push("Archetype");
 		}
+		feat._slType = feat._fType
+		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General", 1));
+		feat._slType = feat._slType.sort(SortUtil.ascSort).join(", ")
 		feat._fTime = feat.activity != null ? feat.activity.unit : "";
 		feat._fMisc = [];
 		if (feat.prerequisites != null) feat._fMisc.push("Has Prerequisites");

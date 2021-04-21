@@ -20,28 +20,39 @@ class PageFilterActions extends PageFilter {
 			displayFn: Parser.timeUnitToFull,
 			itemSortFn: null,
 		});
+		this._untrainedFilter = new Filter({header: "Skill (Untrained)"});
+		this._trainedFilter = new Filter({header: "Skill (Trained)"});
+		this._typeFilter = new Filter({
+			header: "Type",
+			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic", "Skill (Trained)", "Skill (Untrained)"],
+		});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
 	}
 
 	mutateForFilters (it) {
 		it._fTime = it.activity ? it.activity.unit : null;
+		it.actionType = it.actionType || {};
+		it._fType = Object.keys(it.actionType).filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
 		it._fMisc = it.srd ? ["SRD"] : [];
 	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		if (!isExcluded) {
-			this._sourceFilter.addItem(it.source);
-			this._traitFilter.addItem(it.traits);
-		}
+		this._sourceFilter.addItem(it.source);
+		this._traitFilter.addItem(it.traits);
+		this._trainedFilter.addItem(it.actionType.trained);
+		this._untrainedFilter.addItem(it.actionType.untrained);
 	}
 
 	async _pPopulateBoxOptions (opts) {
 		opts.filters = [
 			this._sourceFilter,
 			this._timeFilter,
+			this._typeFilter,
+			this._untrainedFilter,
+			this._trainedFilter,
 			this._traitFilter,
 			this._miscFilter,
 		];
@@ -52,6 +63,9 @@ class PageFilterActions extends PageFilter {
 			values,
 			it.source,
 			it._fTime,
+			it._fType,
+			it.actionType.untrained,
+			it.actionType.trained,
 			it.traits,
 			it._fMisc,
 		)

@@ -17,17 +17,6 @@ Parser._parse_bToA = function (abMap, b) {
 	return b;
 };
 
-Parser.attrChooseToFull = function (attList) {
-	if (attList.length === 1) return `${Parser.attAbvToFull(attList[0])} modifier`;
-	else {
-		const attsTemp = [];
-		for (let i = 0; i < attList.length; ++i) {
-			attsTemp.push(Parser.attAbvToFull(attList[i]));
-		}
-		return `${attsTemp.join(" or ")} modifier (your choice)`;
-	}
-};
-
 Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
@@ -101,82 +90,6 @@ Parser.numberToText = function (number) {
 	return `${number < 0 ? "negative " : ""}${getAsText(number)}`;
 };
 
-Parser.textToNumber = function (str) {
-	str = str.trim().toLowerCase();
-	if (!isNaN(str)) return Number(str);
-	switch (str) {
-		case "zero":
-			return 0;
-		case "one":
-		case "a":
-		case "an":
-			return 1;
-		case "two":
-			return 2;
-		case "three":
-			return 3;
-		case "four":
-			return 4;
-		case "five":
-			return 5;
-		case "six":
-			return 6;
-		case "seven":
-			return 7;
-		case "eight":
-			return 8;
-		case "nine":
-			return 9;
-		case "ten":
-			return 10;
-		case "eleven":
-			return 11;
-		case "twelve":
-			return 12;
-		case "thirteen":
-			return 13;
-		case "fourteen":
-			return 14;
-		case "fifteen":
-			return 15;
-		case "sixteen":
-			return 16;
-		case "seventeen":
-			return 17;
-		case "eighteen":
-			return 18;
-		case "nineteen":
-			return 19;
-		case "twenty":
-			return 20;
-		case "thirty":
-			return 30;
-		case "forty":
-			return 40;
-		case "fifty":
-		case "fiddy":
-			return 50;
-		case "sixty":
-			return 60;
-		case "seventy":
-			return 70;
-		case "eighty":
-			return 80;
-		case "ninety":
-			return 90;
-	}
-	return NaN;
-};
-
-Parser.numberToVulgar = function (number) {
-	const spl = `${number}`.split(".");
-	if (spl.length === 1) return number;
-	if (spl[1] === "5") return `${spl[0]}½`;
-	if (spl[1] === "25") return `${spl[0]}¼`;
-	if (spl[1] === "75") return `${spl[0]}¾`;
-	return Parser.numberToFractional(number);
-};
-
 Parser._greatestCommonDivisor = function (a, b) {
 	if (b < Number.EPSILON) return a;
 	return Parser._greatestCommonDivisor(b, Math.floor(a % b));
@@ -198,10 +111,6 @@ Parser.attAbvToFull = function (abv) {
 	return Parser._parse_aToB(Parser.ATB_ABV_TO_FULL, abv);
 };
 
-Parser.attFullToAbv = function (full) {
-	return Parser._parse_bToA(Parser.ATB_ABV_TO_FULL, full);
-};
-
 Parser.sizeAbvToFull = function (abv) {
 	return Parser._parse_aToB(Parser.SIZE_ABV_TO_FULL, abv);
 };
@@ -216,56 +125,6 @@ Parser.getAbilityModifier = function (abilityScore) {
 	return `${modifier}`;
 };
 
-Parser.getSpeedString = (it) => {
-	if (it.speed == null) return "\u2014";
-
-	function procSpeed (propName) {
-		function addSpeed (s) {
-			stack.push(`${propName === "walk" ? "" : `${propName} `}${getVal(s)} ft.${getCond(s)}`);
-		}
-
-		if (it.speed[propName] || propName === "walk") addSpeed(it.speed[propName] || 0);
-		if (it.speed.alternate && it.speed.alternate[propName]) it.speed.alternate[propName].forEach(addSpeed);
-	}
-
-	function getVal (speedProp) {
-		return speedProp.number != null ? speedProp.number : speedProp;
-	}
-
-	function getCond (speedProp) {
-		return speedProp.condition ? ` ${Renderer.get().render(speedProp.condition)}` : "";
-	}
-
-	const stack = [];
-	if (typeof it.speed === "object") {
-		let joiner = ", ";
-		procSpeed("walk");
-		procSpeed("burrow");
-		procSpeed("climb");
-		procSpeed("fly");
-		procSpeed("swim");
-		if (it.speed.choose) {
-			joiner = "; ";
-			stack.push(`${it.speed.choose.from.sort().joinConjunct(", ", " or ")} ${it.speed.choose.amount} ft.${it.speed.choose.note ? ` ${it.speed.choose.note}` : ""}`);
-		}
-		return stack.join(joiner);
-	} else {
-		return it.speed + (it.speed === "Varies" ? "" : " ft. ");
-	}
-};
-
-Parser.SPEED_TO_PROGRESSIVE = {
-	"walk": "walking",
-	"burrow": "burrowing",
-	"climb": "climbing",
-	"fly": "flying",
-	"swim": "swimming",
-};
-
-Parser.speedToProgressive = function (prop) {
-	return Parser._parse_aToB(Parser.SPEED_TO_PROGRESSIVE, prop);
-};
-
 Parser._addCommas = function (intNum) {
 	return `${intNum}`.replace(/(\d)(?=(\d{3})+$)/g, "$1,");
 };
@@ -274,40 +133,7 @@ Parser.numToBonus = function (intNum) {
 	return `${intNum >= 0 ? "+" : ""}${intNum}`
 };
 
-Parser.crToXp = function (cr, {isDouble = false} = {}) {
-	if (cr != null && cr.xp) return Parser._addCommas(`${isDouble ? cr.xp * 2 : cr.xp}`);
-
-	const toConvert = cr ? (cr.cr || cr) : null;
-	if (toConvert === "Unknown" || toConvert == null || !Parser.XP_CHART_ALT) return "Unknown";
-	if (toConvert === "0") return "0 or 10";
-	const xp = Parser.XP_CHART_ALT[toConvert];
-	return Parser._addCommas(`${isDouble ? 2 * xp : xp}`);
-};
-
-Parser.crToXpNumber = function (cr) {
-	if (cr != null && cr.xp) return cr.xp;
-	const toConvert = cr ? (cr.cr || cr) : cr;
-	if (toConvert === "Unknown" || toConvert == null) return null;
-	return Parser.XP_CHART_ALT[toConvert];
-};
-
-LEVEL_TO_XP_EASY = [0, 25, 50, 75, 125, 250, 300, 350, 450, 550, 600, 800, 1000, 1100, 1250, 1400, 1600, 2000, 2100, 2400, 2800];
-LEVEL_TO_XP_MEDIUM = [0, 50, 100, 150, 250, 500, 600, 750, 900, 1100, 1200, 1600, 2000, 2200, 2500, 2800, 3200, 3900, 4100, 4900, 5700];
-LEVEL_TO_XP_HARD = [0, 75, 150, 225, 375, 750, 900, 1100, 1400, 1600, 1900, 2400, 3000, 3400, 3800, 4300, 4800, 5900, 6300, 7300, 8500];
-LEVEL_TO_XP_DEADLY = [0, 100, 200, 400, 500, 1100, 1400, 1700, 2100, 2400, 2800, 3600, 4500, 5100, 5700, 6400, 7200, 8800, 9500, 10900, 12700];
-LEVEL_TO_XP_DAILY = [0, 300, 600, 1200, 1700, 3500, 4000, 5000, 6000, 7500, 9000, 10500, 11500, 13500, 15000, 18000, 20000, 25000, 27000, 30000, 40000];
-
-Parser.LEVEL_XP_REQUIRED = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000];
-
 Parser.CRS = ["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
-
-Parser.levelToXpThreshold = function (level) {
-	return [LEVEL_TO_XP_EASY[level], LEVEL_TO_XP_MEDIUM[level], LEVEL_TO_XP_HARD[level], LEVEL_TO_XP_DEADLY[level]];
-};
-
-Parser.isValidCr = function (cr) {
-	return Parser.CRS.includes(cr);
-};
 
 Parser.isValidCreatureLvl = function (lvl) {
 	return lvl > -2 && lvl < 26
@@ -342,6 +168,15 @@ Parser.levelToPb = function (level) {
 	if (!level) return 2;
 	return Math.ceil(level / 4) + 1;
 };
+
+Parser.actionTypeKeyToFull = function (key) {
+	key = key.toLowerCase();
+	switch (key) {
+		case "untrained": return "Skill (Untrained)"
+		case "trained": return "Skill (Trained)"
+		default: return key.toTitleCase();
+	}
+}
 
 Parser.SKILL_TO_ATB_ABV = {
 	"acrobatics": "dex",
@@ -1696,58 +1531,6 @@ Parser.spSubclassesToCurrentAndLegacyFull = function (classes, subclassLookup) {
 	}
 };
 
-Parser.attackTypeToFull = function (attackType) {
-	return Parser._parse_aToB(Parser.ATK_TYPE_TO_FULL, attackType);
-};
-
-Parser.trapHazTypeToFull = function (type) {
-	return Parser._parse_aToB(Parser.TRAP_HAZARD_TYPE_TO_FULL, type);
-};
-
-Parser.TRAP_HAZARD_TYPE_TO_FULL = {
-	MECH: "Mechanical trap",
-	MAG: "Magical trap",
-	SMPL: "Simple trap",
-	CMPX: "Complex trap",
-	HAZ: "Hazard",
-	WTH: "Weather",
-	ENV: "Environmental Hazard",
-	WLD: "Wilderness Hazard",
-	GEN: "Generic",
-};
-
-Parser.tierToFullLevel = function (tier) {
-	return Parser._parse_aToB(Parser.TIER_TO_FULL_LEVEL, tier);
-};
-
-Parser.TIER_TO_FULL_LEVEL = {};
-Parser.TIER_TO_FULL_LEVEL[1] = "level 1\u20144";
-Parser.TIER_TO_FULL_LEVEL[2] = "level 5\u201410";
-Parser.TIER_TO_FULL_LEVEL[3] = "level 11\u201416";
-Parser.TIER_TO_FULL_LEVEL[4] = "level 17\u201420";
-
-Parser.threatToFull = function (threat) {
-	return Parser._parse_aToB(Parser.THREAT_TO_FULL, threat);
-};
-
-Parser.THREAT_TO_FULL = {};
-Parser.THREAT_TO_FULL[1] = "moderate";
-Parser.THREAT_TO_FULL[2] = "dangerous";
-Parser.THREAT_TO_FULL[3] = "deadly";
-
-Parser.trapInitToFull = function (init) {
-	return Parser._parse_aToB(Parser.TRAP_INIT_TO_FULL, init);
-};
-
-Parser.TRAP_INIT_TO_FULL = {};
-Parser.TRAP_INIT_TO_FULL[1] = "initiative count 10";
-Parser.TRAP_INIT_TO_FULL[2] = "initiative count 20";
-Parser.TRAP_INIT_TO_FULL[3] = "initiative count 20 and initiative count 10";
-
-Parser.ATK_TYPE_TO_FULL = {};
-Parser.ATK_TYPE_TO_FULL["MW"] = "Melee Weapon Attack";
-Parser.ATK_TYPE_TO_FULL["RW"] = "Ranged Weapon Attack";
-
 Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
@@ -2093,10 +1876,14 @@ SRC_BST = "Bst";
 SRC_BST2 = "Bst2";
 SRC_BST3 = "Bst3";
 SRC_GMG = "GMG";
+SRC_LOWG = "LOWG";
 SRC_LOCG = "LOCG";
+SRC_LOGM = "LOGM";
+SRC_LOGMWS = "LOGMWS";
+SRC_LOL = "LOL";
+SRC_LOPSG = "LOPSG";
 SRC_LOAG = "LOAG";
 SRC_LOACLO = "LOACLO";
-SRC_LOGM = "LOGM";
 SRC_AAWS = "AAWS";
 SRC_APLLS = "APLLS";
 
@@ -2110,40 +1897,55 @@ LO_PREFIX_SHORT = "LO: ";
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
-Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
-Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
+Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOWG] = "Lost Omens: World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOGMWS] = "Lost Omens: Gods & Magic Web Supplement";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOL] = "Lost Omens: Legends";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOPSG] = "Lost Omens: Pathfinder Society Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
-Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
-Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "Bst";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
+Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOWG] = "LOWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOGMWS] = "LOGMWS";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOL] = "LOL";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOPSG] = "LOPSG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
-Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_APLLS] = "APLLS";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOWG] = "2019-08-28";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2020-01-29";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOGMWS] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
+Parser.SOURCE_JSON_TO_DATE[SRC_APLLS] = "2020-03-25";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST2] = "2020-05-27";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOL] = "2020-07-30";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOPSG] = "2020-10-14";
+Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
+Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
 
 Parser.SOURCES_ADVENTURES = new Set([]);

@@ -226,6 +226,11 @@ class DiceTag {
 			});
 		}
 
+		// TODO: @scaleDice cant be done using string handler
+		// str = str.replace(/(increases by ){@dice/g, (...m) => {
+		// 	return `${m[1]}{@scaledice`
+		// });
+
 		// @hit (form spells)
 		str = str.replace(/attack modifier is +(\d+)/g, (...m) => {
 			return `attack modifier is {@hit ${m[1]}}`

@@ -1089,7 +1089,7 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "name", "colStyles", "rowStyles", "style", "styles", "shortName", "subclassShortName", "immunities", "resistances", "weaknesses"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "name", "colStyles", "rowStyles", "style", "styles", "shortName", "subclassShortName", "immunities", "resistances", "weaknesses", "featType", "trait", "traits"]),
 
 	/**
 	 * @param [opts]
@@ -1939,25 +1939,6 @@ SortUtil = {
 		return SortUtil.ascSort(a, b);
 	},
 
-	ascSortCr (a, b) {
-		if (typeof FilterItem !== "undefined") {
-			if (a instanceof FilterItem) a = a.item;
-			if (b instanceof FilterItem) b = b.item;
-		}
-		// always put unknown values last
-		if (a === "Unknown") a = "998";
-		if (b === "Unknown") b = "998";
-		if (a === "\u2014" || a == null) a = "999";
-		if (b === "\u2014" || b == null) b = "999";
-		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
-	},
-
-	ascSortAtts (a, b) {
-		const aSpecial = a === "special";
-		const bSpecial = b === "special";
-		return aSpecial && bSpecial ? 0 : aSpecial ? 1 : bSpecial ? -1 : Parser.ABIL_ABVS.indexOf(a) - Parser.ABIL_ABVS.indexOf(b);
-	},
-
 	ascSortRarity (a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
@@ -2454,22 +2435,6 @@ DataUtil = {
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
 
-			function doMod_calculateProp (modInfo, prop) {
-				copyTo[prop] = copyTo[prop] || {};
-				const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
-					switch (m[1]) {
-						case "prof_bonus":
-							return Parser.crToPb(copyTo.cr);
-						case "dex_mod":
-							return Parser.getAbilityModNumber(copyTo.dex);
-						default:
-							throw new Error(`Unknown variable "${m[1]}"`);
-					}
-				});
-				// eslint-disable-next-line no-eval
-				copyTo[prop][modInfo.prop] = eval(toExec);
-			}
-
 			function doMod_scalarAddProp (modInfo, prop) {
 				function applyTo (k) {
 					const out = Number(copyTo[prop][k]) + modInfo.scalar;
@@ -2525,8 +2490,6 @@ DataUtil = {
 									return doMod_insertArr(modInfo, prop);
 								case "removeArr":
 									return doMod_removeArr(modInfo, prop);
-								case "calculateProp":
-									return doMod_calculateProp(modInfo, prop);
 								case "scalarAddProp":
 									return doMod_scalarAddProp(modInfo, prop);
 								case "scalarMultProp":
@@ -2555,30 +2518,6 @@ DataUtil = {
 								switch (parts[0]) {
 									case "name":
 										return copyTo.name;
-									case "short_name":
-									case "title_short_name": {
-										return Renderer.creature.getShortName(copyTo, parts[0] === "title_short_name");
-									}
-									case "spell_dc": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										return 8 + Parser.getAbilityModNumber(Number(copyTo[parts[1]])) + Parser.crToPb(copyTo.cr);
-									}
-									case "to_hit": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										const total = Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-										return total >= 0 ? `+${total}` : total;
-									}
-									case "damage_mod": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										const total = Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-										return total === 0 ? "" : total > 0 ? ` +${total}` : ` ${total}`;
-									}
-									case "damage_avg": {
-										const replaced = parts[1].replace(/(str|dex|con|int|wis|cha)/gi, (...m2) => Parser.getAbilityModNumber(Number(copyTo[m2[0]])));
-										const clean = replaced.replace(/[^-+/*0-9.,]+/g, "");
-										// eslint-disable-next-line no-eval
-										return Math.floor(eval(clean));
-									}
 									default:
 										return m[0];
 								}
@@ -2712,7 +2651,11 @@ DataUtil = {
 			if (DataUtil.item._loadedJson) return DataUtil.item._loadedJson;
 			DataUtil.item._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index.json`);
-				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
+				const indexBase = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index-baseitems.json`);
+				const files = [];
+				files.push(...Object.values(index));
+				files.push(...Object.values(indexBase));
+				const allData = await Promise.all(files.map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
 				DataUtil.item._loadedJson = {
 					item: allData.map(it => it.item || []).flat(),
 					baseitem: allData.map(it => it.baseitem || []).flat(),

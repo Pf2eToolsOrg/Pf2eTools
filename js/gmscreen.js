@@ -41,7 +41,7 @@ const TIME_TRACKER_MOON_SPRITE_LOADER = new Promise(resolve => {
 		resolve();
 	};
 });
-TIME_TRACKER_MOON_SPRITE.src = "img/dmscreen/moon.png";
+TIME_TRACKER_MOON_SPRITE.src = "img/gmscreen/moon.png";
 
 class Board {
 	constructor () {

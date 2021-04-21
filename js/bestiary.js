@@ -3,10 +3,6 @@
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
 const renderer = Renderer.get();
 
-window.PROF_MODE_BONUS = "bonus";
-window.PROF_MODE_DICE = "dice";
-window.PROF_DICE_MODE = PROF_MODE_BONUS;
-
 class BestiaryPage {
 	constructor () {
 		this._pageFilter = new PageFilterBestiary();
@@ -31,7 +27,7 @@ class BestiaryPage {
 		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(cr.source);
-		const type = cr.creatureType;
+		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
 		const level = cr.level;
 
 		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
@@ -79,7 +75,7 @@ class BestiaryPage {
 
 		const name = cr._displayName || cr.name;
 		const hash = `${UrlUtil.autoEncodeHash(cr)}${subHash}`;
-		const type = cr.creatureType
+		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
 		const count = addCount || 1;
 		const level = cr.level;
 
@@ -550,98 +546,6 @@ function renderStatblock (cr, isScaled) {
 			.toggle(isScaled) : null;
 
 		$content.append(RenderBestiary.$getRenderedCreature(cr, {$btnScaleLvl, $btnResetScaleLvl}));
-
-		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
-		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
-		function _addSpacesToDiceExp (exp) {
-			return exp.replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
-		}
-
-		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
-		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
-		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
-		// (Siri integration forthcoming)
-		$content.find(".render-roller")
-			.filter(function () {
-				return $(this).text().match(/^([-+])?\d+$/);
-			})
-			.each(function () {
-				const bonus = Number($(this).text());
-				const expectedPB = Parser.crToPb(cr.cr);
-
-				// skills and saves can have expertise
-				let expert = 1;
-				let pB = expectedPB;
-				let fromAbility;
-				let ability;
-				if ($(this).parent().attr("data-mon-save")) {
-					const monSave = $(this).parent().attr("data-mon-save");
-					ability = monSave.split("|")[0].trim().toLowerCase();
-					fromAbility = Parser.getAbilityModNumber(cr[ability]);
-					pB = bonus - fromAbility;
-					expert = (pB === expectedPB * 2) ? 2 : 1;
-				} else if ($(this).parent().attr("data-mon-skill")) {
-					const monSkill = $(this).parent().attr("data-mon-skill");
-					ability = Parser.skillToAbilityAbv(monSkill.split("|")[0].toLowerCase().trim());
-					fromAbility = Parser.getAbilityModNumber(cr[ability]);
-					pB = bonus - fromAbility;
-					expert = (pB === expectedPB * 2) ? 2 : 1;
-				} else if ($(this).data("packed-dice").successThresh !== null) return; // Ignore "recharge"
-
-				const withoutPB = bonus - pB;
-				try {
-					// if we have proficiency bonus, convert the roller
-					if (expectedPB > 0) {
-						const profDiceString = _addSpacesToDiceExp(`${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
-
-						$(this).attr("data-roll-prof-bonus", $(this).text());
-						$(this).attr("data-roll-prof-dice", profDiceString);
-
-						// here be (chromatic) dragons
-						const cached = $(this).attr("onclick");
-						const nu = `
-							(function(it) {
-								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									Renderer.dice.pRollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
-								} else {
-									${cached.replace(/this/g, "it")}
-								}
-							})(this)`;
-
-						$(this).attr("onclick", nu);
-
-						if (isProfDiceMode) {
-							$(this).html(profDiceString);
-						}
-					}
-				} catch (e) {
-					setTimeout(() => {
-						throw new Error(`Invalid save or skill roller! Bonus was ${bonus >= 0 ? "+" : ""}${bonus}, but creature's PB was +${expectedPB} and relevant ability score (${ability}) was ${fromAbility >= 0 ? "+" : ""}${fromAbility} (should have been ${expectedPB + fromAbility >= 0 ? "+" : ""}${expectedPB + fromAbility} total)`);
-					}, 0);
-				}
-			});
-
-		$content.find("p, li").each(function () {
-			$(this).find(`.rd__dc`).each((i, e) => {
-				const $e = $(e);
-				const dc = Number($e.html());
-
-				const expectedPB = Parser.crToPb(cr.cr);
-				if (expectedPB > 0) {
-					const withoutPB = dc - expectedPB;
-					const profDiceString = _addSpacesToDiceExp(`1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
-
-					$e
-						.addClass("dc-roller")
-						.attr("mode", isProfDiceMode ? "dice" : "")
-						.mousedown((evt) => window.PROF_DICE_MODE === window.PROF_MODE_DICE && evt.preventDefault())
-						.attr("onclick", `dcRollerClick(event, this, '${profDiceString}')`)
-						.attr("data-roll-prof-bonus", `${dc}`)
-						.attr("data-roll-prof-dice", profDiceString)
-						.html(isProfDiceMode ? profDiceString : dc)
-				}
-			});
-		});
 
 		$(`#wrp-pagecontent`).scroll();
 	}

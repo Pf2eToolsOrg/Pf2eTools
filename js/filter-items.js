@@ -66,6 +66,7 @@ class PageFilterItems extends PageFilter {
 		this._categoryFilter = new Filter({
 			header: "Category",
 		});
+		this._groupFilter = new Filter({header: "Group"});
 		this._traitFilter = new TraitsFilter({
 			header: "Traits",
 			discardCategories: {
@@ -100,7 +101,7 @@ class PageFilterItems extends PageFilter {
 			header: "Miscellaneous",
 			items: ["Consumable"],
 		});
-		this._appliesToFilter = new Filter({header: "Rune applies to..."})
+		this._appliesToFilter = new Filter({header: "Rune applies to..."});
 
 		this._categoriesRuneItems = [];
 	}
@@ -147,6 +148,7 @@ class PageFilterItems extends PageFilter {
 		this._traitFilter.addItem(item._fTraits)
 		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
+		if (item.group) this._groupFilter.addItem(item.group)
 		if (item.shieldStats != null) this._hpFilter.addItem(item.shieldStats.hp);
 		if (item.shieldStats != null) this._btFilter.addItem(item.shieldStats.bt);
 		if (item.shieldStats != null) this._hardnessFilter.addItem(item.shieldStats.hardness);
@@ -161,6 +163,7 @@ class PageFilterItems extends PageFilter {
 			this._sourceFilter,
 			this._levelFilter,
 			this._categoryFilter,
+			this._groupFilter,
 			this._traitFilter,
 			this._priceFilter,
 			this._typeFilter,
@@ -177,6 +180,7 @@ class PageFilterItems extends PageFilter {
 			it.source,
 			it._fLvl,
 			it.category,
+			it.group,
 			it._fTraits,
 			it._fPrice,
 			it._fType,

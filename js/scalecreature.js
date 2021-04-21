@@ -745,7 +745,12 @@ const ScaleCreature = {
 		}
 	},
 
+	_adjustResistances (creature, lvlIn, toLvl) {
+		// TODO:
+	},
+
 	_adjustAttacks (creature, lvlIn, toLvl) {
+		if (creature.attacks == null) return;
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus);
 			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
@@ -759,6 +764,7 @@ const ScaleCreature = {
 	},
 
 	_adjustSpellcasting (creature, lvlIn, toLvl) {
+		if (creature.spellcasting == null) return;
 		creature.spellcasting.forEach(sc => {
 			if (sc.DC) sc.DC = this._scaleValue(lvlIn, toLvl, sc.DC, this._LvlSpellDC);
 			if (sc.attack) sc.attack = this._scaleValue(lvlIn, toLvl, sc.attack, this._LvlSpellAtkBonus);

@@ -85,16 +85,12 @@ class EncounterBuilder extends ProxyBase {
 		$(`.ecgen__reset`).title(`SHIFT-click to reset players`).click(evt => confirm("Are you sure?") && encounterBuilder.pReset({isNotResetPlayers: !evt.shiftKey, isNotAddInitialPlayers: !evt.shiftKey}));
 
 		const $btnSvTxt = $(`.ecgen__sv_text`).click(() => {
-			let xpTotal = 0;
 			const toCopyCreatures = ListUtil.sublist.items
 				.map(it => ({name: it.name, ...it.values}))
 				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name))
-				.map(it => {
-					xpTotal += Parser.crToXpNumber(it.cr) * it.count;
-					return `${it.count}× ${it.name}`;
-				})
+				.map(it => `${it.count}× ${it.name}`)
 				.join(", ");
-			MiscUtil.pCopyTextToClipboard(`${toCopyCreatures} (${xpTotal.toLocaleString()} XP)`);
+			MiscUtil.pCopyTextToClipboard(`${toCopyCreatures}`);
 			JqueryUtil.showCopiedEffect($btnSvTxt);
 		});
 	}
