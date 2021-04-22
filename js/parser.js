@@ -2089,14 +2089,16 @@ Parser.CONDITION_TO_COLOR = {
 // Turn Adventure Paths into, well, adventures. Does not seem to work currently.
 SRC_CRB = "CRB";
 SRC_APG = "APG";
-SRC_BST = "BST";
+SRC_BST = "Bst";
+SRC_BST2 = "Bst2";
+SRC_BST3 = "Bst3";
 SRC_GMG = "GMG";
 SRC_LOCG = "LOCG";
 SRC_LOAG = "LOAG";
 SRC_LOACLO = "LOACLO";
 SRC_LOGM = "LOGM";
-SRC_AAWS = "AAWS",
-SRC_APLLS = "APLLS",
+SRC_AAWS = "AAWS";
+SRC_APLLS = "APLLS";
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -2110,6 +2112,8 @@ Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
+Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
+Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
@@ -2121,7 +2125,9 @@ Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
-Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "Bst";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
+Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
@@ -2136,7 +2142,9 @@ Parser.SOURCE_JSON_TO_DATE[SRC_BST] = "2019-08-01";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOCG] = "2019-10-16";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOGM] = "2020-01-29";
 Parser.SOURCE_JSON_TO_DATE[SRC_GMG] = "2020-02-26";
+Parser.SOURCE_JSON_TO_DATE[SRC_BST2] = "2020-05-27";
 Parser.SOURCE_JSON_TO_DATE[SRC_APG] = "2020-08-30";
+Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
 
 Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -2146,6 +2154,8 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_CRB,
 	SRC_APG,
 	SRC_BST,
+	SRC_BST2,
+	SRC_BST3,
 	SRC_GMG,
 	SRC_LOCG,
 	SRC_LOGM,

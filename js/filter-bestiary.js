@@ -68,7 +68,7 @@ class PageFilterBestiary extends PageFilter {
 
 		this._skillsFilter = new Filter({
 			header: "Skills",
-			itemSortFn: SortUtil.monSkillSort,
+			itemSortFn: SortUtil.ascSort,
 		});
 
 		this._strengthFilter = new RangeFilter({header: "Strength", min: -5, max: 12});
@@ -158,7 +158,7 @@ class PageFilterBestiary extends PageFilter {
 				cr._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""))
 			});
 			cr.senses.imprecise.forEach((s) => {
-				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, ""))
+				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""))
 			});
 			cr.senses.vague.forEach((s) => {
 				cr._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""))
@@ -168,13 +168,13 @@ class PageFilterBestiary extends PageFilter {
 			});
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
-		cr._flanguages.forEach((l, i) => {
-			cr._flanguages[i] = l.replace(/\s(?:\().+/, "")
-		})
-		cr._fskills = [];
+		cr._flanguages = cr._flanguages.map(l => l.replace(/\s(?:\().+/, "")).filter(l => !l.includes(" "));
+		cr._fskills = new Set();
 		Object.keys(cr.skills).forEach((k) => {
-			cr._fskills.push(k)
-		})
+			if (k.match(/lore/i)) cr._fskills.add("Lore");
+			else cr._fskills.add(k)
+		});
+		cr._fskills = Array.from(cr._fskills);
 
 		cr._fHP = 0
 		cr.hp.forEach((d) => {

@@ -86,6 +86,7 @@ const FILE_PREFIX_BLACKLIST = [
 	"roll20-",
 	"foundry-",
 	"gendata-",
+	"index",
 ];
 
 /**

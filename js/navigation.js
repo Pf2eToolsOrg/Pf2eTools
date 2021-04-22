@@ -94,7 +94,7 @@ class NavBar {
 		addLi(ulUtils, "privacy-policy.html", "Privacy Policy");
 		addLi(ulUtils, "licenses.html", "Licenses");
 
-		addLi(navBar, "donate.html", "Donate", {isRoot: true});
+		// addLi(navBar, "donate.html", "Donate", {isRoot: true});
 
 		const ulSettings = addDropdown(navBar, "Settings");
 		addButton(

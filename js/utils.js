@@ -1089,7 +1089,7 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "colLabels", "name", "colStyles", "style", "shortName", "subclassShortName"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "name", "colStyles", "rowStyles", "style", "styles", "shortName", "subclassShortName", "immunities", "resistances", "weaknesses"]),
 
 	/**
 	 * @param [opts]
