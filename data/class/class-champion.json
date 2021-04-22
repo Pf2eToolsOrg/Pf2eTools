@@ -4,7 +4,7 @@
 			"name": "Champion",
 			"source": "CRB",
 			"page": 105,
-			"HP": 10,
+			"hp": 10,
 			"keyAbility": "Strength or Dexterity",
 			"initialProficiencies": {
 				"perception": "T",
@@ -290,7 +290,18 @@
 						}
 					]
 				}
-			]
+			],
+			"summary": {
+				"text": "A warrior dedicated to a deity, the champion uses divine power to enhance their abilities and protect allies.",
+				"images": [
+					"img/classes/CRB/champion-l.webp",
+					"img/classes/CRB/champion-liberator.webp",
+					"img/classes/CRB/champion-redeemer.webp",
+					"img/classes/APG/champion-01.webp"
+				],
+				"keyAbility": "Strength",
+				"sndAbility": "Charisma, Constitution"
+			}
 		}
 	],
 	"classFeature": [
@@ -868,7 +879,7 @@
 						"Champion"
 					],
 					"entries": [
-						"You free an ally from restraint. If the trigger was an ally taking damage, the ally gains resistance to all damage against the triggering damage equal to 2 + your level. The ally can attempt to break free of effects grabbing, restraining, immobilizing, or paralyzing them. They either attempt a new save against one such effect that allows a save, or attempt to Escape from one effect as a free action. If they can move, the ally can Step as a free action, even if they didn’t need to escape."
+						"You free an ally from restraint. If the trigger was an ally taking damage, the ally gains resistance to all damage against the triggering damage equal to 2 + your level. The ally can attempt to break free of effects grabbing, restraining, immobilizing, or paralyzing them. They either attempt a new save against one such effect that allows a save, or attempt to {@action Escape} from one effect as a free action. If they can move, the ally can Step as a free action, even if they didn’t need to escape."
 					],
 					"type": "ability",
 					"name": "Liberating Step",

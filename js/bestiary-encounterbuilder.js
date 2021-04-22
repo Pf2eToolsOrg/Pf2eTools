@@ -107,25 +107,30 @@ class EncounterBuilder extends ProxyBase {
 			this.pDoGenerateEncounter($btnGen.data("mode"))
 		});
 
-		$(`.ecgen_rng_easy`).click((evt) => {
+		$(`.ecgen_rng_trivial`).click((evt) => {
 			evt.preventDefault();
-			this.pDoGenerateEncounter("easy");
-			$btnGen.data("mode", "easy").text("Random Easy").title("Randomly generate an Easy encounter");
+			this.pDoGenerateEncounter("trivial");
+			$btnGen.data("mode", "trivial").text("Random Trivial").title("Randomly generate a Trivial-threat encounter");
 		});
-		$(`.ecgen_rng_medium`).click((evt) => {
+		$(`.ecgen_rng_low`).click((evt) => {
 			evt.preventDefault();
-			this.pDoGenerateEncounter("medium");
-			$btnGen.data("mode", "medium").text("Random Medium").title("Randomly generate a Medium encounter");
+			this.pDoGenerateEncounter("low");
+			$btnGen.data("mode", "low").text("Random Low").title("Randomly generate a Low-threat encounter");
 		});
-		$(`.ecgen_rng_hard`).click((evt) => {
+		$(`.ecgen_rng_moderate`).click((evt) => {
 			evt.preventDefault();
-			this.pDoGenerateEncounter("hard");
-			$btnGen.data("mode", "hard").text("Random Hard").title("Randomly generate a Hard encounter");
+			this.pDoGenerateEncounter("moderate");
+			$btnGen.data("mode", "moderate").text("Random Moderate").title("Randomly generate a Moderate-threat encounter");
 		});
-		$(`.ecgen_rng_deadly`).click((evt) => {
+		$(`.ecgen_rng_severe`).click((evt) => {
 			evt.preventDefault();
-			this.pDoGenerateEncounter("deadly");
-			$btnGen.data("mode", "deadly").text("Random Deadly").title("Randomly generate a Deadly encounter");
+			this.pDoGenerateEncounter("severe");
+			$btnGen.data("mode", "severe").text("Random Severe").title("Randomly generate a Severe-threat encounter");
+		});
+		$(`.ecgen_rng_extreme`).click((evt) => {
+			evt.preventDefault();
+			this.pDoGenerateEncounter("extreme");
+			$btnGen.data("mode", "extreme").text("Random Extreme").title("Randomly generate an Extreme-threat encounter");
 		});
 	}
 
@@ -137,25 +142,30 @@ class EncounterBuilder extends ProxyBase {
 			this.pDoAdjustEncounter($btnAdjust.data("mode"))
 		});
 
-		$(`.ecgen_adj_easy`).click((evt) => {
+		$(`.ecgen_adj_trivial`).click((evt) => {
 			evt.preventDefault();
-			this.pDoAdjustEncounter("easy");
-			$btnAdjust.data("mode", "easy").text("Adjust to Easy").title("Adjust the current encounter difficulty to Easy");
+			this.pDoAdjustEncounter("trivial");
+			$btnAdjust.data("mode", "trivial").text("Adjust to Trivial").title("Adjust the current encounter difficulty to a Trivial-threat encounter");
 		});
-		$(`.ecgen_adj_medium`).click((evt) => {
+		$(`.ecgen_adj_low`).click((evt) => {
 			evt.preventDefault();
-			this.pDoAdjustEncounter("medium");
-			$btnAdjust.data("mode", "medium").text("Adjust to Medium").title("Adjust the current encounter difficulty to Medium");
+			this.pDoAdjustEncounter("low");
+			$btnAdjust.data("mode", "low").text("Adjust to Low").title("Adjust the current encounter difficulty to a Low-threat encounter");
 		});
-		$(`.ecgen_adj_hard`).click((evt) => {
+		$(`.ecgen_adj_moderate`).click((evt) => {
 			evt.preventDefault();
-			this.pDoAdjustEncounter("hard");
-			$btnAdjust.data("mode", "hard").text("Adjust to Hard").title("Adjust the current encounter difficulty to Hard");
+			this.pDoAdjustEncounter("moderate");
+			$btnAdjust.data("mode", "moderate").text("Adjust to Moderate").title("Adjust the current encounter difficulty to a Moderate-threat encounter");
 		});
-		$(`.ecgen_adj_deadly`).click((evt) => {
+		$(`.ecgen_adj_severe`).click((evt) => {
 			evt.preventDefault();
-			this.pDoAdjustEncounter("deadly");
-			$btnAdjust.data("mode", "deadly").text("Adjust to Deadly").title("Adjust the current encounter difficulty to Deadly");
+			this.pDoAdjustEncounter("severe");
+			$btnAdjust.data("mode", "severe").text("Adjust to Severe").title("Adjust the current encounter difficulty to a Severe-threat encounter");
+		});
+		$(`.ecgen_adj_extreme`).click((evt) => {
+			evt.preventDefault();
+			this.pDoAdjustEncounter("extreme");
+			$btnAdjust.data("mode", "extreme").text("Adjust to Extreme").title("Adjust the current encounter difficulty to an Extreme-threat encounter");
 		});
 	}
 
@@ -268,11 +278,12 @@ class EncounterBuilder extends ProxyBase {
 	generateCache () {
 		// create a map of {XP: [creature list]}
 		if (this._cache == null) {
+			const partyMeta = this.getPartyMeta();
 			this._cache = (() => {
 				const out = {};
-				list.visibleItems.map(it => monsters[it.ix]).filter(m => !m.isNpc).forEach(m => {
-					const mXp = Parser.crToXpNumber(m.cr);
-					if (mXp) (out[mXp] = out[mXp] || []).push(m);
+				list.visibleItems.map(it => creatures[it.ix]).filter(c => !c.isNpc).forEach(c => {
+					const xp = EncounterBuilderUtils.getCreatureXP(partyMeta, c);
+					if (xp) (out[xp] = out[xp] || []).push(c);
 				});
 				return out;
 			})();
@@ -291,23 +302,18 @@ class EncounterBuilder extends ProxyBase {
 		currentEncounter.forEach(creatureType => creatureType.count = 1);
 
 		const partyMeta = this.getPartyMeta();
-		let encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta.cntPlayers);
+		let encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta);
 
 		const ixLow = EncounterBuilder.TIERS.indexOf(difficulty);
 		if (!~ixLow) throw new Error(`Unhandled difficulty level: "${difficulty}"`);
-		// fudge min/max numbers slightly
 		const [targetMin, targetMax] = [
-			Math.floor(partyMeta[EncounterBuilder.TIERS[ixLow]] * 0.9),
-			Math.ceil((partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1) * 1.1),
+			Math.floor(partyMeta[EncounterBuilder.TIERS[ixLow - 1] || 10]),
+			Math.ceil((partyMeta[EncounterBuilder.TIERS[ixLow]])),
 		];
 
-		if (encounterXp.adjustedXp > targetMax) {
+		if (encounterXp.XP > targetMax) {
 			JqueryUtil.doToast({content: `Could not adjust the current encounter to ${difficulty.uppercaseFirst()}, try removing some creatures!`, type: "danger"})
 		} else {
-			// only calculate this once rather than during the loop, to ensure stable conditions
-			// less accurate in some cases, but should prevent infinite loops
-			const crCutoff = EncounterBuilderUtils.getCrCutoff(currentEncounter, partyMeta);
-
 			// randomly choose creatures to skip
 			// generate array of [0, 1, ... n-1] where n = number of unique creatures
 			// this will be used to determine how many of the unique creatures we want to skip
@@ -330,7 +336,7 @@ class EncounterBuilder extends ProxyBase {
 				}
 
 				let maxTries = 999;
-				while (!(encounterXp.adjustedXp > targetMin && encounterXp.adjustedXp < targetMax) && maxTries-- > 0) {
+				while (!(encounterXp.XP > targetMin && encounterXp.XP <= targetMax) && maxTries-- > 0) {
 					// chance to skip each creature at each iteration
 					// otherwise, the case where every creature is relevant produces an equal number of every creature
 					const pickFrom = [...curUniqueCreatures];
@@ -348,10 +354,10 @@ class EncounterBuilder extends ProxyBase {
 						const ix = RollerUtil.randomise(pickFrom.length) - 1;
 						const picked = pickFrom.splice(ix, 1)[0];
 						picked.count++;
-						encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta.cntPlayers);
-						if (encounterXp.adjustedXp > targetMax) {
+						encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta);
+						if (encounterXp.XP > targetMax) {
 							picked.count--;
-							encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta.cntPlayers);
+							encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta);
 						}
 					}
 				}
@@ -371,7 +377,7 @@ class EncounterBuilder extends ProxyBase {
 				currentEncounter = invalidSolutions.map(is => ({
 					encounter: is,
 					distance: (() => {
-						const xp = EncounterBuilderUtils.calculateEncounterXp(is, partyMeta.cntPlayers);
+						const xp = EncounterBuilderUtils.calculateEncounterXp(is, partyMeta);
 						if (xp > targetMax) return xp - targetMax;
 						else if (xp < targetMin) return targetMin - xp;
 						else return 0;
@@ -379,45 +385,29 @@ class EncounterBuilder extends ProxyBase {
 				})).sort((a, b) => SortUtil.ascSort(a.distance, b.distance))[0].encounter;
 			}
 
-			const belowCrCutoff = currentEncounter.filter(it => it.cr && it.cr < crCutoff);
+			const trashMobs = currentEncounter.filter(it => it.level && it.level < partyMeta.partyLevel - 4);
+			const throttle = Math.min(...currentEncounter.filter(it => it.level && it.level >= partyMeta.partyLevel - 4).map(it => it.count));
 
-			if (belowCrCutoff.length) {
-				// do a post-step to randomly add "irrelevant" creatures, ensuring plenty of fireball fodder
-				let budget = targetMax - encounterXp.adjustedXp;
-				if (budget > 0) {
-					belowCrCutoff.forEach(it => it._xp = Parser.crToXpNumber(Parser.numberToCr(it.cr)));
-					const usable = belowCrCutoff.filter(it => it._xp < budget);
+			if (trashMobs.length) {
+				const medLvl = partyMeta.median;
+				const partySize = partyMeta.partySize;
 
-					if (usable.length) {
-						const totalPlayers = partyMeta.levelMetas.map(it => it.count).reduce((a, b) => a + b, 0);
-						const averagePlayerLevel = partyMeta.levelMetas.map(it => it.level * it.count).reduce((a, b) => a + b, 0) / totalPlayers;
+				// try to avoid flooding low-level parties
+				const playerToCreatureRatio = [medLvl < 3 ? 0.8 : 1, 4.2 * Math.log10(0.42 * medLvl + 1) + 0.42]
+				const [minDesired, maxDesired] = [Math.floor(playerToCreatureRatio[0] * partySize), Math.min(Math.ceil(playerToCreatureRatio[1] * partySize), throttle + 6)];
+				while (true) {
+					const totalCreatures = currentEncounter.map(it => it.count).reduce((a, b) => a + b, 0);
 
-						// try to avoid flooding low-level parties
-						const playerToCreatureRatio = (() => {
-							if (averagePlayerLevel < 5) return [0.8, 1.3];
-							else if (averagePlayerLevel < 11) return [1, 2];
-							else if (averagePlayerLevel < 17) return [1, 3];
-							else return [1, 4];
-						})();
+					// if there's less than min desired, large chance of adding more
+					// if there's more than max desired, small chance of adding more
+					// if there's between min and max desired, medium chance of adding more
+					const chanceToAdd = totalCreatures < minDesired ? 90 : totalCreatures > maxDesired ? 40 : 75;
 
-						const [minDesired, maxDesired] = [Math.floor(playerToCreatureRatio[0] * totalPlayers), Math.ceil(playerToCreatureRatio[1] * totalPlayers)];
-
-						// keep rolling until we fail to add a creature, or until we're out of budget
-						while (encounterXp.adjustedXp <= targetMax) {
-							const totalCreatures = currentEncounter.map(it => it.count).reduce((a, b) => a + b, 0);
-
-							// if there's less than min desired, large chance of adding more
-							// if there's more than max desired, small chance of adding more
-							// if there's between min and max desired, medium chance of adding more
-							const chanceToAdd = totalCreatures < minDesired ? 90 : totalCreatures > maxDesired ? 40 : 75;
-
-							const isAdd = RollerUtil.roll(100) < chanceToAdd;
-							if (isAdd) {
-								RollerUtil.rollOnArray(belowCrCutoff).count++;
-								encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta.cntPlayers);
-							} else break;
-						}
-					}
+					const isAdd = RollerUtil.roll(100) < chanceToAdd;
+					if (isAdd) {
+						RollerUtil.rollOnArray(trashMobs).count++;
+						encounterXp = EncounterBuilderUtils.calculateEncounterXp(currentEncounter, partyMeta);
+					} else break;
 				}
 			}
 		}
@@ -433,32 +423,22 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	async pDoGenerateEncounter (difficulty) {
-		const {partyMeta} = this.calculateXp();
+		const partyMeta = this.getPartyMeta();
 
 		const ixLow = EncounterBuilder.TIERS.indexOf(difficulty);
 		if (!~ixLow) throw new Error(`Unhandled difficulty level: "${difficulty}"`);
-		const budget = partyMeta[EncounterBuilder.TIERS[ixLow + 1]] - 1;
+		const budget = partyMeta[EncounterBuilder.TIERS[ixLow]];
 
 		this.generateCache();
 
-		const closestSolution = (() => {
-			// If there are enough players that single-creature XP is halved, try generating a range of solutions.
-			if (partyMeta.cntPlayers > 5) {
-				const NUM_SAMPLES = 10; // should ideally be divisible by 2
-				const solutions = [...new Array(NUM_SAMPLES)]
-					.map((_, i) => this._pDoGenerateEncounter_generateClosestEncounter(partyMeta, budget * ((i >= Math.floor(NUM_SAMPLES / 2)) + 1)));
-				const validSolutions = solutions.filter(it => it.adjustedXp >= (budget * 0.6) && it.adjustedXp <= (budget * 1.1));
-				if (validSolutions.length) return RollerUtil.rollOnArray(validSolutions);
-				return null;
-			} else return this._pDoGenerateEncounter_generateClosestEncounter(partyMeta, budget);
-		})();
+		const closestSolution = this._pDoGenerateEncounter_generateClosestEncounter(partyMeta, budget);
 
 		if (closestSolution) {
 			const toLoad = {items: []};
 			const sources = new Set();
 			closestSolution.encounter.forEach(it => {
-				toLoad.items.push({h: UrlUtil.autoEncodeHash(it.mon), c: String(it.count)});
-				sources.add(it.mon.source);
+				toLoad.items.push({h: UrlUtil.autoEncodeHash(it.cr), c: String(it.count)});
+				sources.add(it.cr.source);
 			});
 			toLoad.sources = [...sources];
 			await this._pLoadSublist(toLoad);
@@ -466,29 +446,17 @@ class EncounterBuilder extends ProxyBase {
 			await ListUtil.pDoSublistRemoveAll();
 			this.updateDifficulty();
 		}
+		if (EncounterBuilderUtils.calculateListEncounterXp(partyMeta).XP === 0) {
+			JqueryUtil.doToast({
+				content: `Could not generate a ${difficulty.uppercaseFirst()}-threat encounter with filtered creatures! Try adjusting the filters.`,
+				type: "warning",
+			});
+		}
 	}
 
 	_pDoGenerateEncounter_generateClosestEncounter (partyMeta, budget) {
-		const _xps = Object.keys(this._cache).map(it => Number(it)).sort(SortUtil.ascSort).reverse();
-		/*
-		Sorted array of:
-		{
-			cr: "1/2",
-			xp: 50,
-			crNum: 0.5
-		}
-		 */
-		const _meta = Object.entries(Parser.XP_CHART_ALT).map(([cr, xp]) => ({cr, xp, crNum: Parser.crToNumber(cr)}))
-			.sort((a, b) => SortUtil.ascSort(b.crNum, a.crNum));
-		const standardXpValues = new Set(Object.values(Parser.XP_CHART_ALT));
-		const getXps = budget => _xps.filter(it => {
-			// Make TftYP values (i.e. those that are not real XP thresholds) get skipped 9/10 times
-			if (!standardXpValues.has(it) && RollerUtil.randomise(10) !== 10) return false;
-			return it <= budget;
-		});
-
 		const getCurrentEncounterMeta = (encounter) => {
-			const data = encounter.map(it => ({cr: Parser.crToNumber(it.mon.cr), count: it.count}));
+			const data = encounter.map(it => ({level: it.cr.level, count: it.count}));
 			return EncounterBuilderUtils.calculateEncounterXp(data, partyMeta);
 		};
 
@@ -496,108 +464,52 @@ class EncounterBuilder extends ProxyBase {
 			if (!encounter.length) return budget;
 
 			const curr = getCurrentEncounterMeta(encounter);
-			const budgetRemaining = budget - curr.adjustedXp;
-
-			const meta = _meta.filter(it => it.xp <= budgetRemaining);
-			// if the highest CR creature has CR greater than the cutoff, adjust for next multiplier
-			if (meta.length && meta[0].crNum >= curr.meta.crCutoff) {
-				const nextMult = Parser.numMonstersToXpMult(curr.relevantCount + 1, partyMeta.cntPlayers);
-				return Math.floor((budget - (nextMult * curr.baseXp)) / nextMult);
-			}
-			// otherwise, no creature has CR greater than the cutoff, don't worry about multipliers
-			return budgetRemaining;
+			return budget - curr.XP;
 		};
 
 		const addToEncounter = (encounter, xp) => {
 			const existing = encounter.filter(it => it.xp === xp);
-			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing creature
+			if (existing.length && RollerUtil.roll(100) < 85) { // 85% chance to add another copy of an existing monster
 				RollerUtil.rollOnArray(existing).count++;
 			} else {
 				const rolled = RollerUtil.rollOnArray(this._cache[xp]);
 				// add to an existing group, if present
-				const existing = encounter.find(it => it.mon.source === rolled.source && it.mon.name === rolled.name);
+				const existing = encounter.find(it => it.cr.source === rolled.source && it.cr.name === rolled.name);
 				if (existing) existing.count++;
 				else {
 					encounter.push({
 						xp: xp,
-						mon: rolled,
+						cr: rolled,
 						count: 1,
 					});
 				}
 			}
 		};
 
-		let skipCount = 0;
-		const doSkip = (xps, encounter, xp) => {
-			// if there are existing entries at this XP, don't skip
-			const existing = encounter.filter(it => it.xp === xp);
-			if (existing.length) return false;
-
-			// skip 70% of the time by default, less 13% chance per item skipped
-			if (xps.length > 1) {
-				const isSkip = RollerUtil.roll(100) < (70 - (13 * skipCount));
-				if (isSkip) {
-					skipCount++;
-					const maxSkip = xps.length - 1;
-					// flip coins; so long as we get heads, keep skipping
-					for (let i = 0; i < maxSkip; ++i) {
-						if (RollerUtil.roll(2) === 0) {
-							return i;
-						}
-					}
-					return maxSkip - 1;
-				} else return 0;
-			} else return false;
-		};
-
-		const doInitialSkip = xps => {
-			// 50% of the time, skip the first 0-1/3rd of available CRs
-			if (xps.length > 4 && RollerUtil.roll(2) === 1) {
-				const skips = RollerUtil.roll(Math.ceil(xps.length / 3));
-				return xps.slice(skips);
-			} else return xps;
-		};
-
 		const doFind = (budget) => {
+			const xps = Object.values(Parser.XP_CHART).filter(x => x <= budget).sort(SortUtil.ascSort);
 			const enc = [];
-			const xps = doInitialSkip(getXps(budget));
 
 			let nextBudget = budget;
-			let skips = 0;
-			let steps = 0;
 			while (xps.length) {
-				if (steps++ > 100) break;
-
-				if (skips) {
-					skips--;
-					xps.shift();
-					continue;
-				}
-
-				const xp = xps[0];
-
+				const xp = xps[Math.floor(Math.sqrt(RollerUtil.roll(xps.length ** 2)))];
 				if (xp > nextBudget) {
-					xps.shift();
+					xps.splice(xps.indexOf(xp), 1);
 					continue;
 				}
-
-				skips = doSkip(xps, enc, xp);
-				if (skips) {
-					skips--;
-					xps.shift();
+				if (this._cache[xp] == null) {
+					xps.splice(xps.indexOf(xp), 1);
 					continue;
 				}
-
 				addToEncounter(enc, xp);
 
 				nextBudget = calcNextBudget(enc);
 			}
-
 			return enc;
 		};
 
-		const encounter = doFind(budget);
-		return {encounter, adjustedXp: getCurrentEncounterMeta(encounter).adjustedXp};
+		const encounter = doFind(budget)
+		return {encounter, XP: getCurrentEncounterMeta(encounter).XP}
 	}
 
 	async _pLoadSublist (toLoad) {
@@ -650,12 +562,12 @@ class EncounterBuilder extends ProxyBase {
 		await this._lock.pLock();
 
 		try {
-			const mon = monsters[ix];
-			const xp = Parser.crToXpNumber(mon.cr);
+			const cr = creatures[ix];
+			const xp = EncounterBuilderUtils.getCreatureXP(this.getPartyMeta(), cr);
 			if (!xp) return; // if Unknown/etc
 
 			const curr = ListUtil.getExportableSublist();
-			const hash = UrlUtil.autoEncodeHash(mon);
+			const hash = UrlUtil.autoEncodeHash(cr);
 			const itemToSwitch = curr.items.find(it => it.h === hash);
 
 			this.generateCache();
@@ -663,7 +575,7 @@ class EncounterBuilder extends ProxyBase {
 			if (availMons.length !== 1) {
 				// note that this process does not remove any old sources
 
-				let reroll = mon;
+				let reroll = cr;
 				let rolledHash = hash;
 				while (rolledHash === hash) {
 					reroll = RollerUtil.rollOnArray(availMons);
@@ -713,111 +625,44 @@ class EncounterBuilder extends ProxyBase {
 		this.updateDifficulty();
 	}
 
-	_getApproxTurnsToKill () {
-		const party = this.getPartyMeta().levelMetas;
-		const encounter = EncounterBuilderUtils.getSublistedEncounter();
-
-		const totalDpt = party
-			.map(it => this._getApproxDpt(it.level) * it.count)
-			.reduce((a, b) => a + b, 0);
-		const totalHp = encounter
-			.filter(it => it.approxHp != null && it.approxAc != null)
-			.map(it => (it.approxHp * it.approxAc / 10) * it.count)
-			.reduce((a, b) => a + b, 0);
-
-		return totalHp / totalDpt;
-	}
-
-	_getApproxDpt (pcLevel) {
-		const approxOutputFighterChampion = [
-			{hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.38}, {hit: 0, dmg: 17.59}, {hit: 0, dmg: 33.34}, {hit: 1, dmg: 50.92}, {hit: 2, dmg: 53.92}, {hit: 2, dmg: 53.92}, {hit: 3, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 56.92}, {hit: 4, dmg: 76.51}, {hit: 4, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 76.51}, {hit: 5, dmg: 77.26}, {hit: 5, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 77.26}, {hit: 6, dmg: 97.06},
-		];
-		const approxOutputRogueTrickster = [
-			{hit: 5, dmg: 11.4}, {hit: 5, dmg: 11.4}, {hit: 10, dmg: 15.07}, {hit: 11, dmg: 16.07}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 24.02}, {hit: 12, dmg: 27.7}, {hit: 13, dmg: 28.7}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 32.38}, {hit: 14, dmg: 40.33}, {hit: 14, dmg: 40.33}, {hit: 15, dmg: 44}, {hit: 15, dmg: 44}, {hit: 15, dmg: 47.67}, {hit: 15, dmg: 47.67}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 55.63}, {hit: 16, dmg: 59.3}, {hit: 16, dmg: 59.3},
-		];
-		const approxOutputWizard = [
-			{hit: 5, dmg: 14.18}, {hit: 5, dmg: 14.18}, {hit: 5, dmg: 22.05}, {hit: 6, dmg: 22.05}, {hit: 2, dmg: 28}, {hit: 2, dmg: 28}, {hit: 2, dmg: 36}, {hit: 3, dmg: 36}, {hit: 6, dmg: 67.25}, {hit: 6, dmg: 67.25}, {hit: 4, dmg: 75}, {hit: 4, dmg: 75}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 85.5}, {hit: 5, dmg: 96}, {hit: 5, dmg: 96}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140}, {hit: 6, dmg: 140},
-		];
-		const approxOutputCleric = [
-			{hit: 5, dmg: 17.32}, {hit: 5, dmg: 17.32}, {hit: 5, dmg: 23.1}, {hit: 6, dmg: 23.1}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 28.88}, {hit: 7, dmg: 34.65}, {hit: 8, dmg: 34.65}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 40.42}, {hit: 9, dmg: 46.2}, {hit: 9, dmg: 46.2}, {hit: 10, dmg: 51.98}, {hit: 10, dmg: 51.98}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 57.75}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52}, {hit: 11, dmg: 63.52},
-		];
-
-		const approxOutputs = [approxOutputFighterChampion, approxOutputRogueTrickster, approxOutputWizard, approxOutputCleric];
-
-		const approxOutput = approxOutputs.map(it => it[pcLevel - 1]);
-		return approxOutput.map(it => it.dmg * ((it.hit + 10.5) / 20)).mean(); // 10.5 = average d20
-	}
-
 	updateDifficulty () {
 		const {partyMeta, encounter} = this.calculateXp();
 
-		const $elEasy = $(`.ecgen__easy`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_EASY}">Easy:</span> ${partyMeta.easy.toLocaleString()} XP`);
-		const $elmed = $(`.ecgen__medium`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_MEDIUM}">Medium:</span> ${partyMeta.medium.toLocaleString()} XP`);
-		const $elHard = $(`.ecgen__hard`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_HARD}">Hard:</span> ${partyMeta.hard.toLocaleString()} XP`);
-		const $elDeadly = $(`.ecgen__deadly`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_DEADLY}">Deadly:</span> ${partyMeta.deadly.toLocaleString()} XP`);
-		const $elAbsurd = $(`.ecgen__absurd`).removeClass("bold").html(`<span class="help" title="${EncounterBuilder._TITLE_ABSURD}">Absurd:</span> ${partyMeta.absurd.toLocaleString()} XP`);
+		const $elTrivial = $(`.ecgen__trivial`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_TRIVIAL}">Trivial:</span> ${partyMeta.trivial.toLocaleString()} XP`);
+		const $elLow = $(`.ecgen__low`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_LOW}">Low:</span> ${partyMeta.low.toLocaleString()} XP`);
+		const $elModerate = $(`.ecgen__moderate`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_MODERATE}">Moderate:</span> ${partyMeta.moderate.toLocaleString()} XP`);
+		const $elSevere = $(`.ecgen__severe`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_SEVERE}">Severe:</span> ${partyMeta.severe.toLocaleString()} XP`);
+		const $elExtreme = $(`.ecgen__extreme`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_EXTREME}">Extreme:</span> ${partyMeta.extreme.toLocaleString()} XP`);
 
-		$(`.ecgen__ttk`).html(`<span class="help" title="${EncounterBuilder._TITLE_TTK}">TTK:</span> ${this._getApproxTurnsToKill().toFixed(2)}`);
-
-		$(`.ecgen__daily_budget`).removeClass("bold").html(`<span class="help--subtle" title="${EncounterBuilder._TITLE_BUDGET_DAILY}">Daily Budget:</span> ${partyMeta.dailyBudget.toLocaleString()} XP`);
-
-		let difficulty = "Trivial";
-		if (encounter.adjustedXp >= partyMeta.absurd) {
-			difficulty = "Absurd";
-			$elAbsurd.addClass("bold");
-		} else if (encounter.adjustedXp >= partyMeta.deadly) {
-			difficulty = "Deadly";
-			$elDeadly.addClass("bold");
-		} else if (encounter.adjustedXp >= partyMeta.hard) {
-			difficulty = "Hard";
-			$elHard.addClass("bold");
-		} else if (encounter.adjustedXp >= partyMeta.medium) {
-			difficulty = "Medium";
-			$elmed.addClass("bold");
-		} else if (encounter.adjustedXp >= partyMeta.easy) {
-			difficulty = "Easy";
-			$elEasy.addClass("bold");
-		}
-
-		if (encounter.relevantCount) {
+		if (encounter.feasibleCount + encounter.underCount + encounter.overCount !== 0) {
+			let difficulty = "TPK";
+			if (encounter.XP <= partyMeta.trivial) {
+				difficulty = "Trivial";
+				$elTrivial.addClass("bold");
+			} else if (encounter.XP <= partyMeta.low) {
+				difficulty = "Low";
+				$elLow.addClass("bold");
+			} else if (encounter.XP <= partyMeta.moderate) {
+				difficulty = "Moderate";
+				$elModerate.addClass("bold");
+			} else if (encounter.XP <= partyMeta.severe) {
+				difficulty = "Severe";
+				$elSevere.addClass("bold");
+			} else if (encounter.XP <= partyMeta.extreme) {
+				difficulty = "Extreme";
+				$elExtreme.addClass("bold");
+			} else {
+				// greater than extreme difficulty
+			}
 			$(`.ecgen__req_creatures`).showVe();
 			$(`.ecgen__rating`).text(`Difficulty: ${difficulty}`);
-			$(`.ecgen__raw_total`).text(`Total XP: ${encounter.baseXp.toLocaleString()}`);
-			$(`.ecgen__raw_per_player`).text(`(${Math.floor(encounter.baseXp / partyMeta.cntPlayers).toLocaleString()} per player)`);
-
-			const infoEntry = {
-				type: "entries",
-				entries: [
-					`{@b Adjusted by a ${encounter.meta.playerAdjustedXpMult}× multiplier, based on a minimum challenge rating threshold of approximately ${`${encounter.meta.crCutoff.toFixed(2)}`.replace(/[,.]?0+$/, "")}*&dagger;, and a party size of ${encounter.meta.playerCount} players.}`,
-					`{@note * If the maximum challenge rating is two or less, there is no minimum threshold. Similarly, if less than a third of the party are level 5 or higher, there is no minimum threshold. Otherwise, for each creature in the encounter, the average CR of the encounter is calculated while excluding that creature. The highest of these averages is then halved to produce a minimum CR threshold. CRs less than this minimum are ignored for the purposes of calculating the final CR multiplier.}`,
-					`<hr>`,
-					{
-						type: "quote",
-						entries: [
-							`&dagger; [...] don't count any monsters whose challenge rating is significantly below the average challenge rating of the other monsters in the group [...]`,
-						],
-						"by": "{@book Dungeon Master's Guide, page 82|DMG|3|4 Modify Total XP for Multiple Monsters}",
-					},
-				],
-			};
-
-			if (this._infoHoverId == null) {
-				const hoverMeta = Renderer.hover.getMakePredefinedHover(infoEntry, {isBookContent: true});
-				this._infoHoverId = hoverMeta.id;
-
-				const $hvInfo = $(`.ecgen__adjusted_total_info`);
-				$hvInfo.on("mouseover", function (event) { hoverMeta.mouseOver(event, this) });
-				$hvInfo.on("mousemove", function (event) { hoverMeta.mouseMove(event, this) });
-				$hvInfo.on("mouseleave", function (event) { hoverMeta.mouseLeave(event, this) });
-			} else {
-				Renderer.hover.updatePredefinedHover(this._infoHoverId, infoEntry);
-			}
-
-			$(`.ecgen__adjusted_total`).text(`Adjusted XP: ${encounter.adjustedXp.toLocaleString()}`);
-			$(`.ecgen__adjusted_per_player`).text(`(${Math.floor(encounter.adjustedXp / partyMeta.cntPlayers).toLocaleString()} per player)`);
+			$(`.ecgen__xp_total`).text(`Encounter XP: ${encounter.XP.toLocaleString()}`);
 		} else {
 			$(`.ecgen__req_creatures`).hideVe();
 		}
+
+		if (encounter.overCount) $(`.ecgen__overlevel`).showVe()
+		else $(`.ecgen__overlevel`).hideVe()
 
 		this.doSaveState();
 	}
@@ -856,34 +701,18 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	static async doStatblockMouseOver (evt, ele, ixMon, scaledTo) {
-		const mon = monsters[ixMon];
+		const mon = creatures[ixMon];
 
 		const hash = UrlUtil.autoEncodeHash(mon);
 		const preloadId = scaledTo != null ? `${VeCt.HASH_MON_SCALED}:${scaledTo}` : null;
 		return Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, hash, preloadId);
 	}
 
-	static getTokenHoverMeta (mon) {
-		return Renderer.hover.getMakePredefinedHover(
-			{
-				type: "image",
-				href: {
-					type: "external",
-					url: Renderer.creature.getTokenUrl(mon),
-				},
-				data: {
-					hoverTitle: `Token \u2014 ${mon.name}`,
-				},
-			},
-			{isBookContent: true},
-		);
-	}
-
 	static async handleImageMouseOver (evt, $ele, ixMon) {
 		// We'll rebuild the mouseover handler with whatever we load
 		$ele.off("mouseover");
 
-		const mon = monsters[ixMon];
+		const mon = creatures[ixMon];
 
 		const handleNoImages = () => {
 			const hoverMeta = Renderer.hover.getMakePredefinedHover(
@@ -929,36 +758,32 @@ class EncounterBuilder extends ProxyBase {
 		else handleNoImages();
 	}
 
-	async pDoCrChange ($iptCr, ixMon, scaledTo) {
+	async pDoLvlChange ($iptLvl, ixCr, scaledTo) {
 		await this._lock.pLock();
 
-		if (!$iptCr) return; // Should never occur, but if the creature has a non-adjustable CR, this field will not exist
+		if (!$iptLvl) return;
 
 		try {
-			const mon = monsters[ixMon];
-			const baseCr = mon.cr.cr || mon.cr;
-			if (baseCr == null) return;
-			const baseCrNum = Parser.crToNumber(baseCr);
-			const targetCr = $iptCr.val();
+			const creature = creatures[ixCr];
+			const baseLvl = creature.level;
+			const targetLvl = Number($iptLvl.val());
 
-			if (Parser.isValidCr(targetCr)) {
-				const targetCrNum = Parser.crToNumber(targetCr);
-
-				if (targetCrNum === scaledTo) return;
+			if (Parser.isValidCreatureLvl(targetLvl)) {
+				if (targetLvl === scaledTo) return;
 
 				const state = ListUtil.getExportableSublist();
-				const toFindHash = UrlUtil.autoEncodeHash(mon);
+				const toFindHash = UrlUtil.autoEncodeHash(creature);
 
-				const toFindUid = !(scaledTo == null || baseCrNum === scaledTo) ? getCustomHashId(mon.name, mon.source, scaledTo) : null;
+				const toFindUid = !(scaledTo == null || baseLvl === scaledTo) ? getCustomHashId(creature.name, creature.source, scaledTo) : null;
 				const ixCurrItem = state.items.findIndex(it => {
-					if (scaledTo == null || scaledTo === baseCrNum) return !it.customHashId && it.h === toFindHash;
+					if (scaledTo == null || scaledTo === baseLvl) return !it.customHashId && it.h === toFindHash;
 					else return it.customHashId === toFindUid;
 				});
 				if (!~ixCurrItem) throw new Error(`Could not find previously sublisted item!`);
 
-				const toFindNxtUid = baseCrNum !== targetCrNum ? getCustomHashId(mon.name, mon.source, targetCrNum) : null;
+				const toFindNxtUid = baseLvl !== targetLvl ? getCustomHashId(creature.name, creature.source, targetLvl) : null;
 				const nextItem = state.items.find(it => {
-					if (targetCrNum === baseCrNum) return !it.customHashId && it.h === toFindHash;
+					if (targetLvl === baseLvl) return !it.customHashId && it.h === toFindHash;
 					else return it.customHashId === toFindNxtUid;
 				});
 
@@ -968,18 +793,18 @@ class EncounterBuilder extends ProxyBase {
 					nextItem.c = `${Number(nextItem.c || 1) + Number(curr.c || 1)}`;
 					state.items.splice(ixCurrItem, 1);
 				} else {
-					// if we're returning to the original CR, wipe the existing UID. Otherwise, adjust it
-					if (targetCrNum === baseCrNum) delete state.items[ixCurrItem].customHashId;
-					else state.items[ixCurrItem].customHashId = getCustomHashId(mon.name, mon.source, targetCrNum);
+					// if we're returning to the original level, wipe the existing UID. Otherwise, adjust it
+					if (targetLvl === baseLvl) delete state.items[ixCurrItem].customHashId;
+					else state.items[ixCurrItem].customHashId = getCustomHashId(creature.name, creature.source, targetLvl);
 				}
 
 				await this._pLoadSublist(state);
 			} else {
 				JqueryUtil.doToast({
-					content: `"${$iptCr.val()}" is not a valid Challenge Rating! Please enter a valid CR (0-30). For fractions, "1/X" should be used.`,
+					content: `"${$iptLvl.val()}" is not a valid Level! Please enter a valid level (between -1 and -25).`,
 					type: "danger",
 				});
-				$iptCr.val(Parser.numberToCr(scaledTo || baseCr));
+				$iptLvl.val(scaledTo || baseLvl);
 			}
 		} finally {
 			this._lock.unlock();
@@ -1276,66 +1101,75 @@ class EncounterBuilder extends ProxyBase {
 	// endregion
 }
 EncounterBuilder.HASH_KEY = "encounterbuilder";
-EncounterBuilder.TIERS = ["easy", "medium", "hard", "deadly", "absurd"];
-EncounterBuilder._TITLE_EASY = "An easy encounter doesn't tax the characters' resources or put them in serious peril. They might lose a few hit points, but victory is pretty much guaranteed.";
-EncounterBuilder._TITLE_MEDIUM = "A medium encounter usually has one or two scary moments for the players, but the characters should emerge victorious with no casualties. One or more of them might need to use healing resources.";
-EncounterBuilder._TITLE_HARD = "A hard encounter could go badly for the adventurers. Weaker characters might get taken out of the fight, and there's a slim chance that one or more characters might die.";
-EncounterBuilder._TITLE_DEADLY = "A deadly encounter could be lethal for one or more player characters. Survival often requires good tactics and quick thinking, and the party risks defeat";
-EncounterBuilder._TITLE_ABSURD = "An &quot;absurd&quot; encounter is a deadly encounter as per the rules, but is differentiated here to provide an additional tool for judging just how deadly a &quot;deadly&quot; encounter will be. It is calculated as: &quot;deadly + (deadly - hard)&quot;.";
-EncounterBuilder._TITLE_BUDGET_DAILY = "This provides a rough estimate of the adjusted XP value for encounters the party can handle before the characters will need to take a long rest.";
-EncounterBuilder._TITLE_TTK = "Time to Kill: The estimated number of turns the party will require to defeat the encounter. This assumes single-target damage only.";
+EncounterBuilder.TIERS = ["trivial", "low", "moderate", "severe", "extreme", "tpk"];
+EncounterBuilder._TITLE_TRIVIAL = `Trivial-threat encounters are so easy that the characters have essentially no chance of losing; they shouldn't even need to spend significant resources unless they are particularly wasteful. These encounters work best as warm-ups, palate cleansers, or reminders of how awesome the characters are. A trivial-threat encounter can still be fun to play, so don't ignore them just because of the lack of threat.`
+EncounterBuilder._TITLE_LOW = `Low-threat encounters present a veneer of difficulty and typically use some of the party's resources. However, it would be rare or the result of very poor tactics for the entire party to be seriously threatened.`
+EncounterBuilder._TITLE_MODERATE = `Moderate-threat encounters are a serious challenge to the characters, though unlikely to overpower them completely. Characters usually need to use sound tactics and manage their resources wisely to come out of a moderate-threat encounter ready to continue on and face a harder challenge without resting.`
+EncounterBuilder._TITLE_SEVERE = `Severe-threat encounters are the hardest encounters most groups of characters can consistently defeat. These encounters are most appropriate for important moments in your story, such as confronting a final boss. Bad luck, poor tactics, or a lack of resources due to prior encounters can easily turn a severe-threat encounter against the characters, and a wise group keeps the option to disengage open.`
+EncounterBuilder._TITLE_EXTREME = `Extreme-threat encounters are so dangerous that they are likely to be an even match for the characters, particularly if the characters are low on resources. This makes them too challenging for most uses. An extremethreat encounter might be appropriate for a fully rested group of characters that can go all-out, for the climactic encounter at the end of an entire campaign, or for a group of veteran players using advanced tactics and teamwork.`
 
 class EncounterPartyMeta {
 	constructor (arr) {
 		this.levelMetas = []; // Array of `{level: x, count: y}`
+		this.levels = [];
 
 		arr.forEach(it => {
 			const existingLvl = this.levelMetas.find(x => x.level === it.level);
 			if (existingLvl) existingLvl.count += it.count;
-			else this.levelMetas.push({count: it.count, level: it.level})
+			else this.levelMetas.push({count: it.count, level: it.level});
+			this.levels.push(...Array(it.count).fill(it.level));
 		});
 
-		this.cntPlayers = 0;
-		this.avgPlayerLevel = 0;
-		this.maxPlayerLevel = 0;
+		this.levels.sort(SortUtil.ascSort);
+		const len = this.levels.length;
+		const medianLevel = len % 2 ? this.levels[(len - 1) / 2] : (this.levels[len / 2 - 1] + this.levels[len / 2]) / 2;
+		this.median = medianLevel;
+		const avgLevel = Math.round(this.levels.reduce((a, b) => a + b, 0) / len);
 
-		this.threshEasy = 0;
-		this.threshMedium = 0;
-		this.threshHard = 0;
-		this.threshDeadly = 0;
-		this.threshAbsurd = 0;
+		if (len <= 2) {
+			// There are few characters.
+			this.partyLevel = avgLevel;
+			this.partySize = len;
+		} else if (medianLevel - this.levels[2] <= 1 && this.levels[len - 1] - medianLevel === 0) {
+			// Everyone has the same level.
+			// Use the highest level if only one or two characters are behind.
+			this.partyLevel = this.levels[len - 1];
+			this.partySize = len;
+		} else if (medianLevel - this.levels[0] <= 1 && this.levels[len - 2] - medianLevel <= 1 && this.levels[len - 1] - medianLevel >= 2) {
+			// If only one character is two or more levels ahead, use a party level suitable for the lower-level
+			// characters, and adjust the encounters as if there were one additional PC for every 2 levels the
+			// higher-level character has beyond the rest of the party.
+			this.partyLevel = medianLevel;
+			this.partySize = len + Math.floor((this.levels[len - 1] - medianLevel) / 2);
+		} else {
+			// Imbalanced party.
+			this.partyLevel = avgLevel;
+			this.partySize = len;
+		}
+		this.budgetTrivial = 40 + (this.partySize - ECGEN_BASE_PLAYERS) * 10
+		this.budgetLow = 60 + (this.partySize - ECGEN_BASE_PLAYERS) * 15
+		this.budgetModerate = 80 + (this.partySize - ECGEN_BASE_PLAYERS) * 20
+		this.budgetSevere = 120 + (this.partySize - ECGEN_BASE_PLAYERS) * 30
+		this.budgetExtreme = 160 + (this.partySize - ECGEN_BASE_PLAYERS) * 40
+		this.budgetTPK = 240 + (this.partySize - ECGEN_BASE_PLAYERS) * 80
 
-		this.dailyBudget = 0;
-
-		this.levelMetas.forEach(meta => {
-			this.cntPlayers += meta.count;
-			this.avgPlayerLevel += meta.level * meta.count;
-			this.maxPlayerLevel = Math.max(this.maxPlayerLevel, meta.level);
-
-			this.threshEasy += LEVEL_TO_XP_EASY[meta.level] * meta.count;
-			this.threshMedium += LEVEL_TO_XP_MEDIUM[meta.level] * meta.count;
-			this.threshHard += LEVEL_TO_XP_HARD[meta.level] * meta.count;
-			this.threshDeadly += LEVEL_TO_XP_DEADLY[meta.level] * meta.count;
-
-			this.dailyBudget += LEVEL_TO_XP_DAILY[meta.level] * meta.count;
-		});
-		if (this.avgPlayerLevel) this.avgPlayerLevel /= this.cntPlayers;
-
-		this.threshAbsurd = this.threshDeadly + (this.threshDeadly - this.threshHard);
-	}
-
-	/** Return true if at least a third of the party is level 5+. */
-	isPartyLevelFivePlus () {
-		const [levelMetasHigher, levelMetasLower] = this.levelMetas.partition(it => it.level >= 5);
-		const cntLower = levelMetasLower.map(it => it.count).reduce((a, b) => a + b, 0);
-		const cntHigher = levelMetasHigher.map(it => it.count).reduce((a, b) => a + b, 0);
-		return (cntHigher / (cntLower + cntHigher)) >= 0.333;
+		this.imbalanced = this.levels[len - 1] - this.levels > 5
 	}
 
 	// Expose these as getters to ease factoring elsewhere
-	get easy () { return this.threshEasy; }
-	get medium () { return this.threshMedium; }
-	get hard () { return this.threshHard; }
-	get deadly () { return this.threshDeadly; }
-	get absurd () { return this.threshAbsurd; }
+	get trivial () { return this.budgetTrivial }
+	get low () { return this.budgetLow }
+	get moderate () { return this.budgetModerate }
+	get severe () { return this.budgetSevere }
+	get extreme () { return this.budgetExtreme }
+	get tpk () { return this.budgetTPK }
+
+	encounterDifficulty (xp) {
+		if (xp <= this.trivial) return "trivial";
+		else if (xp <= this.low) return "low";
+		else if (xp <= this.moderate) return "moderate";
+		else if (xp <= this.severe) return "severe";
+		else if (xp <= this.extreme) return "extreme";
+		else return "TPK";
+	}
 }

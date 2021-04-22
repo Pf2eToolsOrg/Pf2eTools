@@ -167,5 +167,9 @@ function renderStatblock (action) {
 	else Renderer.utils.bindTabButtons(statTab);
 }
 
-const actionsPage = new ActionsPage();
-window.addEventListener("load", () => actionsPage.pOnLoad());
+let actionsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.buildCategoryLookup();
+	actionsPage = new ActionsPage();
+	actionsPage.pOnLoad()
+});

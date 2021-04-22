@@ -109,9 +109,9 @@ class PageFilterVehicles extends PageFilter {
 		this._acFilter.addItem(it._fAC);
 		this._hardnessFilter.addItem(it._fHardness);
 		this._hpFilter.addItem(it._fHP);
-		if (it.defenses.saving_throws.fort) this._fortFilter.addItem(it.defenses.saving_throws.fort);
-		if (it.defenses.saving_throws.ref) this._fortFilter.addItem(it.defenses.saving_throws.ref);
-		if (it.defenses.saving_throws.will) this._fortFilter.addItem(it.defenses.saving_throws.will);
+		if (it.defenses.savingThrows.fort) this._fortFilter.addItem(it.defenses.savingThrows.fort);
+		if (it.defenses.savingThrows.ref) this._fortFilter.addItem(it.defenses.savingThrows.ref);
+		if (it.defenses.savingThrows.will) this._fortFilter.addItem(it.defenses.savingThrows.will);
 		this._immunitiesFilter.addItem(it.defenses.immunities);
 		this._resistancesFilter.addItem(it._fResistances);
 		this._weaknessesFilter.addItem(it._fWeaknesses);
@@ -161,7 +161,7 @@ class PageFilterVehicles extends PageFilter {
 				it.defenses._fHP,
 			],
 			[
-				it.defenses.saving_throws.fort,
+				it.defenses.savingThrows.fort,
 			],
 			it.defenses.immunities,
 			it._fResistances,

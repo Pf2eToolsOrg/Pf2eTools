@@ -4,7 +4,7 @@
 			"name": "Barbarian",
 			"source": "CRB",
 			"page": 83,
-			"HP": 12,
+			"hp": 12,
 			"keyAbility": "Strength",
 			"initialProficiencies": {
 				"perception": "E",
@@ -262,7 +262,17 @@
 						}
 					]
 				}
-			]
+			],
+			"summary": {
+				"text": "The barbarian flies into a rage on the battlefield, smashing foes with abandon.",
+				"images": [
+					"img/classes/CRB/barbarian-l.webp",
+					"img/classes/CRB/barbarian-animal-rager.webp",
+					"img/classes/CRB/barbarian-fury.webp"
+				],
+				"keyAbility": "Strength",
+				"sndAbility": "Constitution, Dexterity"
+			}
 		}
 	],
 	"classFeature": [
@@ -301,6 +311,12 @@
 					"type": "ability",
 					"name": "Rage",
 					"requirements": "You aren’t {@condition fatigued} or raging.",
+					"traits": [
+						"Barbarian",
+						"Concentrate",
+						"Emotion",
+						"Mental"
+					],
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -478,6 +494,9 @@
 				{
 					"type": "ability",
 					"name": "Mighty Rage",
+					"traits": [
+						"Barbarian"
+					],
 					"trigger": "You use the {@action Rage} action on your turn.",
 					"activity": {
 						"number": 1,

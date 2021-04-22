@@ -3,7 +3,7 @@
 		"name": "Swashbuckler",
 		"source": "APG",
 		"page": 83,
-		"HP": 10,
+		"hp": 10,
 		"keyAbility": "Dexterity",
 		"initialProficiencies": {
 			"perception": "E",
@@ -248,7 +248,17 @@
 					]
 				}]
 			}
-		]
+		],
+		"summary": {
+			"text": "The swashbuckler earns panache through showy acts and leverages this flair to thwart their foes.",
+			"images": [
+				"img/classes/APG/swashbuckler-01.webp",
+				"img/classes/APG/swashbuckler-02.webp",
+				"img/classes/APG/swashbuckler-03.webp"
+			],
+			"keyAbility": "Dexterity",
+			"sndAbility": "Strength, Charisma"
+		}
 	}],
 	"classFeature": [{
 			"name": "Ancestry and Background",
@@ -334,7 +344,7 @@
 					"entries": [
 						"You make an incredibly graceful attack, piercing your foe’s defenses. Make a {@action Strike} with a weapon or unarmed attack that would apply your precise strike damage, with the following failure effect.",
 						{
-							"type": "success_degree",
+							"type": "successDegree",
 							"entries": {
 								"Failure": "You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the {@action Strike}."
 							}

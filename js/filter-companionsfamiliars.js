@@ -37,7 +37,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	}
 
 	mutateForFilters (it) {
-		it._fHP = it.HP != null ? it.HP : 0;
+		it._fHP = it.hp != null ? it.hp : 0;
 		it._fspeedtypes = [];
 		it._fspeed = 0;
 		if (it.speed) {

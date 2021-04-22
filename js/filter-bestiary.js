@@ -121,7 +121,7 @@ class PageFilterBestiary extends PageFilter {
 		this._speedTypeFilter = new Filter({
 			header: "Speed Types",
 			displayFn: (x) => x.uppercaseFirst(),
-		})
+		});
 		this._speedMultiFilter = new MultiFilter({
 			header: "Speeds",
 			filters: [this._speedFilter, this._speedTypeFilter],
@@ -151,7 +151,7 @@ class PageFilterBestiary extends PageFilter {
 	}
 
 	mutateForFilters (cr) {
-		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creature_type).concat([cr.rarity]).map(t => Parser.getTraitName(t));
+		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType).concat([cr.rarity]).map(t => Parser.getTraitName(t));
 		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
 			cr.senses.precise.forEach((s) => {
@@ -177,8 +177,8 @@ class PageFilterBestiary extends PageFilter {
 		})
 
 		cr._fHP = 0
-		cr.hit_points.forEach((d) => {
-			cr._fHP += d.HP
+		cr.hp.forEach((d) => {
+			cr._fHP += d.hp
 		})
 
 		cr._fimmunities = []
@@ -251,11 +251,11 @@ class PageFilterBestiary extends PageFilter {
 		this._languageFilter.addItem(cr._flanguages);
 		this._skillsFilter.addItem(cr._fskills)
 
-		this._ACFilter.addItem(cr.armor_class.default)
+		this._ACFilter.addItem(cr.ac.default)
 		this._HPFilter.addItem(cr._fHP)
-		this._fortitudeFilter.addItem(cr.saving_throws.Fort.default)
-		this._reflexFilter.addItem(cr.saving_throws.Ref.default)
-		this._willFilter.addItem(cr.saving_throws.Will.default)
+		this._fortitudeFilter.addItem(cr.savingThrows.Fort.default)
+		this._reflexFilter.addItem(cr.savingThrows.Ref.default)
+		this._willFilter.addItem(cr.savingThrows.Will.default)
 		this._immunityFilter.addItem(cr._fimmunities)
 		this._weaknessFilter.addItem(cr._fweaknesses)
 		this._resistanceFilter.addItem(cr._fresistances)
@@ -300,19 +300,19 @@ class PageFilterBestiary extends PageFilter {
 			c._flanguages,
 			c._fskills,
 			[
-				c.ability_modifiers.Str,
-				c.ability_modifiers.Dex,
-				c.ability_modifiers.Con,
-				c.ability_modifiers.Int,
-				c.ability_modifiers.Wis,
-				c.ability_modifiers.Cha,
+				c.abilityMods.Str,
+				c.abilityMods.Dex,
+				c.abilityMods.Con,
+				c.abilityMods.Int,
+				c.abilityMods.Wis,
+				c.abilityMods.Cha,
 			],
 			[
-				c.armor_class.default,
+				c.ac.default,
 				c._fHP,
-				c.saving_throws.Fort.default,
-				c.saving_throws.Ref.default,
-				c.saving_throws.Will.default,
+				c.savingThrows.Fort.default,
+				c.savingThrows.Ref.default,
+				c.savingThrows.Will.default,
 				c._fimmunities,
 				c._fweaknesses,
 				c._fresistances,

@@ -309,6 +309,10 @@ Parser.isValidCr = function (cr) {
 	return Parser.CRS.includes(cr);
 };
 
+Parser.isValidCreatureLvl = function (lvl) {
+	return lvl > -2 && lvl < 26
+}
+
 Parser.crToNumber = function (cr) {
 	if (cr === "Unknown" || cr === "\u2014" || cr == null) return 100;
 	if (cr.cr) return Parser.crToNumber(cr.cr);
@@ -509,6 +513,19 @@ Parser.acToFull = function (ac, renderer) {
 };
 
 MONSTER_COUNT_TO_XP_MULTIPLIER = [1, 1.5, 2, 2, 2, 2, 2.5, 2.5, 2.5, 2.5, 3, 3, 3, 3, 4];
+
+Parser.XP_CHART = {
+	"-4": 10,
+	"-3": 15,
+	"-2": 20,
+	"-1": 30,
+	"0": 40,
+	"1": 60,
+	"2": 80,
+	"3": 120,
+	"4": 160,
+}
+
 Parser.numMonstersToXpMult = function (num, playerCount = 3) {
 	const baseVal = (() => {
 		if (num >= MONSTER_COUNT_TO_XP_MULTIPLIER.length) return 4;
@@ -588,6 +605,7 @@ Parser.stringToCasedSlug = function (str) {
 	return str.replace(/[^\w ]+/g, "").replace(/ +/g, "-");
 };
 
+// TODO: Using conversion tables
 Parser.priceToValue = function (price) {
 	if (price == null) return 0;
 	let mult = 0;
@@ -2068,15 +2086,22 @@ Parser.CONDITION_TO_COLOR = {
 
 	"Concentration": "#009f7a",
 };
-
+// Turn Adventure Paths into, well, adventures. Does not seem to work currently.
 SRC_CRB = "CRB";
 SRC_APG = "APG";
 SRC_BST = "BST";
 SRC_GMG = "GMG";
-SRC_LOCG = "LOCG"
-SRC_LOGM = "LOGM"
+SRC_LOCG = "LOCG";
+SRC_LOAG = "LOAG";
+SRC_LOACLO = "LOACLO";
+SRC_LOGM = "LOGM";
+SRC_AAWS = "AAWS",
+SRC_APLLS = "APLLS",
 
 SRC_3PP_SUFFIX = " 3pp";
+
+AP_PREFIX = "Adventure Path: ";
+AP_PREFIX_SHORT = "AP: ";
 
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
@@ -2087,7 +2112,11 @@ Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST] = "Bestiary";
 Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
+Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
+Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
@@ -2095,7 +2124,11 @@ Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST] = "BST";
 Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
+Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
+Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
+Parser.SOURCE_JSON_TO_ABV[SRC_APLLS] = "APLLS";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
@@ -2116,12 +2149,17 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_GMG,
 	SRC_LOCG,
 	SRC_LOGM,
+	SRC_LOAG,
+	SRC_LOACLO,
+	SRC_AAWS,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
 });
 Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
-[].forEach(src => {
+[
+	SRC_APLLS,
+].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
 });
@@ -2269,7 +2307,7 @@ Parser.SKILL_JSON_TO_FULL = {
 	],
 	"Lore": [
 		"You have specialized information on a narrow topic. Lore features many subcategories. You might have Military Lore, Sailing Lore, Vampire Lore, or any similar subcategory of the skill. Each subcategory counts as its own skill, so applying a skill increase to Planar Lore wouldn't increase your proficiency with Sailing Lore, for example.",
-		"You gain a specific subcategory of the Lore skill from your background. The GM determines what other subcategories they'll allow as Lore skills, though these categories are always less broad than any of the other skills that allow you to Recall Knowledge, and they should never be able to fully or mainly take the place of another skill's Recall Knowledge action. For instance, Magic Lore wouldn't enable you to recall the same breadth of knowledge covered by Arcana, Adventuring Lore wouldn't simply give you all the information an adventurer needs, and Planar Lore would not be sufficient to gain all the information spread across various skills and subcategories such as Heaven Lore.",
+		"You gain a specific subcategory of the Lore skill from your background. The GM determines what other subcategories they'll allow as Lore skills, though these categories are always less broad than any of the other skills that allow you to Recall Knowledge, and they should never be able to fully or mainly take the place of another skill's {@action Recall Knowledge} action. For instance, Magic Lore wouldn't enable you to recall the same breadth of knowledge covered by Arcana, Adventuring Lore wouldn't simply give you all the information an adventurer needs, and Planar Lore would not be sufficient to gain all the information spread across various skills and subcategories such as Heaven Lore.",
 		"If you have multiple subcategories of Lore that could apply to a check or that would overlap with another skill in the circumstances, you can use the skill with the better skill modifier or the one you would prefer to use. If there’s any doubt whether a Lore skill applies to a specific topic or action, the GM decides whether it can be used or not.",
 		"Even if you’re untrained in Lore, you can use it to {@action Recall Knowledge}.",
 		{

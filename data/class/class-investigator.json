@@ -4,7 +4,7 @@
 			"name": "Investigator",
 			"source": "APG",
 			"page": 55,
-			"HP": 8,
+			"hp": 8,
 			"keyAbility": "Intelligence",
 			"initialProficiencies": {
 				"perception": "E",
@@ -239,7 +239,17 @@
 						}
 					]
 				}
-			]
+			],
+			"summary": {
+				"text": "The investigator uses knowledge to uncover mysteries and best their foes.",
+				"images": [
+					"img/classes/APG/investigator-01.webp",
+					"img/classes/APG/investigator-02.webp",
+					"img/classes/APG/investigator-03.webp"
+				],
+				"keyAbility": "Intelligence",
+				"sndAbility": "Dexterity, Wisdom"
+			}
 		}
 	],
 	"classFeature": [
@@ -751,7 +761,7 @@
 							"entries": [
 								"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
 								{
-									"type": "success_degree",
+									"type": "successDegree",
 									"entries": {
 										"Critical Success": "The target must directly answer your question. It doesn't have to answer truthfully, but you gain a +4 circumstance bonus to your {@skill Perception} DC if the creature attempts to Lie to you.",
 										"Success": "As critical success, but the circumstance bonus is +2.",

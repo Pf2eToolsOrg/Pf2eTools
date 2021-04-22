@@ -68,7 +68,7 @@
 
 <main class="container ancestries">
 	<div class="row">
-		<div class="col-sm-4" id="listcontainer">
+		<div class="col-sm-5" id="listcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
@@ -95,9 +95,10 @@
 				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
 		</div>
-		<div class="col-sm-8">
-			<div class="wrp-stats-table pf2-big-stat">
-				<div class="stats pf2-book" id="ancestrystats"></div>
+		<div class="col-sm-7">
+			<div class="wrp-stats-table mb-4 pf2-summary" id="ancestry-summary">
+				<div class="pf2-summary__text" id="ancestry-summary__text"></div>
+				<div class="pf2-summary__image" id="ancestry-summary__image"></div>
 			</div>
 		</div>
 	</div>
@@ -105,7 +106,14 @@
 	<div class="row">
 		<div id="heritagetabs" class="w-100 flex mb-2 cls-tabs__wrp" style="padding: 0 15px"></div>
 	</div>
-	<div class="row flex mobile__flex-col mt-2">
+	<div class="row" id="ancestrystats-wrp">
+		<div class="col-sm-12">
+			<div class="wrp-stats-table mb-4">
+				<div class="stats pf2-book" id="ancestrystats"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row flex mobile__flex-col mt-2 feat-view hidden">
 		<div class="col-sm-6" id="featlistcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="feat-filter-search-group">
@@ -134,6 +142,7 @@
 			</div>
 		</div>
 		<div class="col-sm-6">
+			<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
 			<div class="wrp-stats-table">
 				<div class="stats pf2-stat" id="featstats"></div>
 			</div>

@@ -4,7 +4,7 @@
 			"name": "Rogue",
 			"source": "CRB",
 			"page": 178,
-			"HP": 8,
+			"hp": 8,
 			"keyAbility": "Dexterity or Other",
 			"initialProficiencies": {
 				"perception": "E",
@@ -35,7 +35,7 @@
 					"prof": "T",
 					"entry": "Trained in rogue class DC"
 				}
-				
+
 			},
 			"advancement": {
 				"classFeats": [
@@ -263,7 +263,18 @@
 						}
 					]
 				}
-			]
+			],
+			"summary": {
+				"text": "The rogue is a multitalented master of skulduggery who strikes when enemies least expect it.",
+				"images": [
+					"img/classes/CRB/rogue-l.webp",
+					"img/classes/CRB/rogue-thief.webp",
+					"img/classes/CRB/rogue-scoundrel.webp",
+					"img/classes/APG/rogue-01.webp"
+				],
+				"keyAbility": "Dexterity or other",
+				"sndAbility": "Charisma, Constitution"
+			}
 		}
 	],
 	"classFeature": [
@@ -616,7 +627,7 @@
 					"entries": [
 						"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
 						{
-							"type": "success_degree",
+							"type": "successDegree",
 							"entries": {
 								"Critical Success": "The target is unaffected.",
 								"Success": "The target is {@condition enfeebled} 2 until the end of your next turn.",

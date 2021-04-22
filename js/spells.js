@@ -1,11 +1,6 @@
 "use strict";
 
-const JSON_DIR = "data/spells/";
-
-const SUBCLASS_LOOKUP = {};
-
 function handleBrew (homebrew) {
-	RenderSpells.mergeHomebrewSubclassLookup(SUBCLASS_LOOKUP, homebrew);
 	addSpells(homebrew.spell);
 	return Promise.resolve();
 }
@@ -110,7 +105,7 @@ class SpellsPage {
 		const spell = spellList[id];
 
 		function buildStatsTab () {
-			$content.append(RenderSpells.$getRenderedSpell(spell, SUBCLASS_LOOKUP));
+			$content.append(RenderSpells.$getRenderedSpell(spell));
 		}
 
 		function buildFluffTab (isImageTab) {
@@ -157,19 +152,14 @@ class SpellsPage {
 			$btnReset: $(`#reset`),
 		});
 
-		const [subclassLookup] = await Promise.all([
-			RenderSpells.pGetSubclassLookup(),
-			ExcludeUtil.pInitialise(),
-		]);
-		Object.assign(SUBCLASS_LOOKUP, subclassLookup);
-		await spellsPage._multiSource.pMultisourceLoad(JSON_DIR, this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
+		await ExcludeUtil.pInitialise();
+		await spellsPage._multiSource.pMultisourceLoad("data/spells/", this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
 		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	// TODO refactor this and bestiary markdown section
 	static popoutHandlerGenerator (toList) {
 		return (evt) => {
 			if (Hist.lastLoadedId !== null) {
@@ -186,22 +176,8 @@ class SpellsPage {
 							isBookContent: true,
 						},
 					);
-				} else if (evt.ctrlKey || evt.metaKey) {
-					const name = `${toRender._displayName || toRender.name} \u2014 Markdown`;
-					const mdText = RendererMarkdown.get().render({entries: [{type: "dataSpell", dataSpell: toRender}]});
-					const $content = Renderer.hover.$getHoverContent_miscCode(name, mdText);
-
-					Renderer.hover.getShowWindow(
-						$content,
-						Renderer.hover.getWindowPositionFromEvent(evt),
-						{
-							title: name,
-							isPermanent: true,
-							isBookContent: true,
-						},
-					);
 				} else {
-					Renderer.hover.doPopoutCurPage(evt, toList, Hist.lastLoadedId);
+					Renderer.hover.doPopout(evt, toList, Hist.lastLoadedId);
 				}
 			}
 		}
@@ -216,33 +192,6 @@ async function pPostLoad () {
 	BrewUtil.makeBrewButton("manage-brew");
 	BrewUtil.bind({filterBox: spellsPage._pageFilter.filterBox, sourceFilter: spellsPage._pageFilter.sourceFilter});
 	await ListUtil.pLoadState();
-
-	ListUtil.bindShowTableButton(
-		"btn-show-table",
-		"Spells",
-		spellList,
-		{
-			name: {name: "Name", transform: true},
-			source: {name: "Source", transform: (it) => `<span class="${Parser.sourceJsonToColor(it)}" title="${Parser.sourceJsonToFull(it)}" ${BrewUtil.sourceJsonToStyle(it.source)}>${Parser.sourceJsonToAbv(it)}</span>`},
-			level: {name: "Level", transform: (it) => Parser.spLevelToFull(it)},
-			time: {name: "Casting Time", transform: (it) => PageFilterSpells.getTblTimeStr(it[0])},
-			duration: {name: "Duration", transform: (it) => Parser.spDurationToFull(it)},
-			_school: {name: "School", transform: (sp) => `<span class="school_${sp.school}" ${Parser.spSchoolAbvToStyle(sp.school)}>${Parser.spSchoolAndSubschoolsAbvsToFull(sp.school, sp.subschools)}</span>`},
-			range: {name: "Range", transform: (it) => Parser.spRangeToFull(it)},
-			_components: {name: "Components", transform: (sp) => Parser.spComponentsToFull(sp.components, sp.level)},
-			_classes: {
-				name: "Classes",
-				transform: (sp) => {
-					const fromClassList = Renderer.spell.getCombinedClasses(sp, "fromClassList");
-					return Parser.spMainClassesToFull(fromClassList);
-				},
-			},
-			entries: {name: "Text", transform: (it) => Renderer.get().render({type: "entries", entries: it}), flex: 3},
-			entriesHigherLevel: {name: "At Higher Levels", transform: (it) => Renderer.get().render({type: "entries", entries: (it || [])}), flex: 2},
-		},
-		{generator: ListUtil.basicFilterGenerator},
-		(a, b) => SortUtil.ascSort(a.name, b.name) || SortUtil.ascSort(a.source, b.source),
-	);
 }
 
 let list;
@@ -289,9 +238,9 @@ async function pPageInit (loadedSources) {
 				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
 			const renderSpell = (stack, sp) => {
-				stack.push(`<div class="bkmv__wrp-item"><table class="stats stats--book stats--bkmv"><tbody>`);
+				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
 				stack.push(Renderer.spell.getCompactRenderedString(sp));
-				stack.push(`</tbody></table></div>`);
+				stack.push(`</div></div>`);
 			};
 
 			let lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
@@ -314,53 +263,9 @@ async function pPageInit (loadedSources) {
 
 			$$`<div class="flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
 
-			// region Markdown
-			// TODO refactor this and bestiary markdown section
-			const getAsMarkdown = () => {
-				const toRender = toShow.length ? toShow : [spellList[Hist.lastLoadedId]];
-				const parts = [...toRender]
-					.sort((a, b) => lastOrder === "0" ? SortUtil.ascSort(a.level, b.level) : SortUtil.ascSortLower(a.name, b.name))
-					.map(sp => RendererMarkdown.get().render({type: "dataSpell", dataSpell: sp}).trim());
-
-				const out = [];
-				let charLimit = RendererMarkdown._PAGE_CHARS;
-				for (let i = 0; i < parts.length; ++i) {
-					const part = parts[i];
-					out.push(part);
-
-					if (i < parts.length - 1) {
-						if ((charLimit -= part.length) < 0) {
-							if (RendererMarkdown._isAddPageBreaks) out.push("", "\\pagebreak", "");
-							charLimit = RendererMarkdown._PAGE_CHARS;
-						}
-					}
-				}
-
-				return out.join("\n\n");
-			};
-
-			const $btnDownloadMarkdown = $(`<button class="btn btn-default btn-sm">Download as Markdown</button>`)
-				.click(() => DataUtil.userDownloadText("spells.md", getAsMarkdown()));
-
-			const $btnCopyMarkdown = $(`<button class="btn btn-default btn-sm px-2" title="Copy Markdown to Clipboard"><span class="glyphicon glyphicon-copy"/></button>`)
-				.click(async () => {
-					await MiscUtil.pCopyTextToClipboard(await getAsMarkdown());
-					JqueryUtil.showCopiedEffect($btnCopyMarkdown);
-				});
-
-			const $btnDownloadMarkdownSettings = $(`<button class="btn btn-default btn-sm px-2" title="Markdown Settings"><span class="glyphicon glyphicon-cog"/></button>`)
-				.click(async () => RendererMarkdown.pShowSettingsModal());
-
-			$$`<div class="flex-v-center btn-group ml-3">
-				${$btnDownloadMarkdown}
-				${$btnCopyMarkdown}
-				${$btnDownloadMarkdownSettings}
-			</div>`.appendTo($wrpControls);
-			// endregion
-
 			const renderByLevel = () => {
 				const stack = [];
-				for (let i = 0; i < 10; ++i) {
+				for (let i = 0; i < 11; ++i) {
 					const atLvl = toShow.filter(sp => sp.level === i);
 					if (atLvl.length) {
 						stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
@@ -396,11 +301,6 @@ async function pPageInit (loadedSources) {
 		},
 		hasPrintColumns: true,
 	});
-
-	const homebrew = await BrewUtil.pAddBrewData();
-	BrewUtil.bind({pHandleBrew: () => {}}); // temporarily bind "do nothing" brew handler
-	await BrewUtil.pAddLocalBrewData(); // load local homebrew, so we can add any local spell classes
-	BrewUtil.bind({pHandleBrew: null}); // unbind temporary handler
 }
 
 let spellList = [];
@@ -430,7 +330,7 @@ function addSpells (data) {
 	});
 	ListUtil.bindPinButton();
 	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, spellList, SpellsPage.popoutHandlerGenerator.bind(SpellsPage), "Popout Window (SHIFT for Source Data; CTRL for Markdown Render)");
+	Renderer.hover.bindPopoutButton($btnPop, spellList, SpellsPage.popoutHandlerGenerator.bind(SpellsPage), "Popout Window (SHIFT for Source Data)");
 	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
 	ListUtil.bindOtherButtons({
 		download: true,

@@ -15,14 +15,13 @@ class InitiativeTracker {
 			dir: state.d || DESC,
 			isLocked: false,
 			isRollInit: _propDefaultTrue(state.m),
-			isRollHp: _propDefaultFalse(state.m),
 			importIsRollGroups: _propDefaultTrue(state.g),
 			importIsAddPlayers: _propDefaultTrue(state.p),
 			importIsAppend: _propDefaultFalse(state.a),
 			statsAddColumns: _propDefaultFalse(state.k),
 			playerInitShowExactPlayerHp: _propDefaultFalse(state.piHp),
-			playerInitShowExactMonsterHp: _propDefaultFalse(state.piHm),
-			playerInitHideNewMonster: _propDefaultTrue(state.piV),
+			playerInitShowExactCreatureHp: _propDefaultFalse(state.piHm),
+			playerInitHideNewCreature: _propDefaultTrue(state.piV),
 			playerInitShowOrdinals: _propDefaultFalse(state.piO),
 			playerInitShortTokens: _propDefaultTrue(state.piS),
 			statsCols: state.c || [],
@@ -63,7 +62,6 @@ class InitiativeTracker {
 			const {$modalInner} = UiUtil.getShowModal({title: "Import Settings", cbClose: () => doUpdateExternalStates()});
 			UiUtil.addModalSep($modalInner);
 			UiUtil.$getAddModalRowCb($modalInner, "Roll creature initiative", cfg, "isRollInit");
-			UiUtil.$getAddModalRowCb($modalInner, "Roll creature hit points", cfg, "isRollHp");
 			UiUtil.$getAddModalRowCb($modalInner, "Roll groups of creatures together", cfg, "importIsRollGroups");
 			UiUtil.$getAddModalRowCb($modalInner, "Add players", cfg, "importIsAddPlayers");
 			UiUtil.$getAddModalRowCb($modalInner, "Add to existing tracker state", cfg, "importIsAppend");
@@ -137,7 +135,7 @@ class InitiativeTracker {
 		const $wrpAddNext = $(`<div class="flex"/>`).appendTo($wrpControls);
 		const $wrpAdd = $(`<div class="btn-group flex"/>`).appendTo($wrpAddNext);
 		const $btnAdd = $(`<button class="btn btn-primary btn-xs dm-init-lockable" title="Add Player"><span class="glyphicon glyphicon-plus"/></button>`).appendTo($wrpAdd);
-		const $btnAddMonster = $(`<button class="btn btn-success btn-xs dm-init-lockable mr-2" title="Add Monster"><span class="glyphicon glyphicon-print"/></button>`).appendTo($wrpAdd);
+		const $btnAddCreature = $(`<button class="btn btn-success btn-xs dm-init-lockable mr-2" title="Add Creature"><span class="fa fa-spider"/></button>`).appendTo($wrpAdd);
 		$(`<button class="btn btn-default btn-xs mr-2" title="Next Turn"><span class="glyphicon glyphicon-step-forward"/></button>`).appendTo($wrpAddNext)
 			.click(() => setNextActive());
 		const $iptRound = $(`<input class="form-control ipt-sm dm_init__rounds" type="number" min="1" title="Round">`)
@@ -302,14 +300,14 @@ class InitiativeTracker {
 		});
 
 		const $wrpLockSettings = $(`<div class="btn-group flex"/>`).appendTo($wrpUtils);
-		const $btnLock = $(`<button class="btn btn-danger btn-xs" title="Lock Tracker"><span class="glyphicon glyphicon-lock"></span></button>`).appendTo($wrpLockSettings);
+		const $btnLock = $(`<button class="btn btn-success btn-xs" title="Lock Tracker"><span class="fa fa-lock-open"></span></button>`).appendTo($wrpLockSettings);
 		$btnLock.on("click", () => {
 			if (cfg.isLocked) {
-				$btnLock.removeClass("btn-success").addClass("btn-danger").title("Lock Tracker");
+				$btnLock.removeClass("btn-danger").addClass("btn-success").title("Lock Tracker").children("span").removeClass("fa-lock").addClass("fa-lock-open");
 				$(".dm-init-lockable").removeClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", false);
 			} else {
-				$btnLock.removeClass("btn-danger").addClass("btn-success").title("Unlock Tracker");
+				$btnLock.removeClass("btn-success").addClass("btn-danger").title("Unlock Tracker").children("span").removeClass("fa-lock-open").addClass("fa-lock");
 				$(".dm-init-lockable").addClass("disabled");
 				$("input.dm-init-lockable").prop("disabled", true);
 			}
@@ -329,11 +327,10 @@ class InitiativeTracker {
 				});
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Roll initiative", cfg, "isRollInit");
-				UiUtil.$getAddModalRowCb($modalInner, "Roll hit points", cfg, "isRollHp");
 				UiUtil.addModalSep($modalInner);
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact player HP", cfg, "playerInitShowExactPlayerHp");
-				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact creature HP", cfg, "playerInitShowExactMonsterHp");
-				UiUtil.$getAddModalRowCb($modalInner, "Player View: Auto-hide new monsters", cfg, "playerInitHideNewMonster");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show exact creature HP", cfg, "playerInitShowExactCreatureHp");
+				UiUtil.$getAddModalRowCb($modalInner, "Player View: Auto-hide new creatures", cfg, "playerInitHideNewCreature");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Show ordinals", cfg, "playerInitShowOrdinals", "For example, if you add two Goblins, one will be Goblin (1) and the other Goblin (2), rather than having identical names.");
 				UiUtil.$getAddModalRowCb($modalInner, "Player View: Shorten server tokens", cfg, "playerInitShortTokens", "Server tokens will be roughly half as many characters, but will contain non-standard characters.");
 				UiUtil.addModalSep($modalInner);
@@ -475,7 +472,7 @@ class InitiativeTracker {
 			});
 
 		const $wrpLoadReset = $(`<div class="btn-group"/>`).appendTo($wrpUtils);
-		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-xs dm-init-lockable"><span class="glyphicon glyphicon-upload"/></button>`).appendTo($wrpLoadReset)
+		const $btnLoad = $(`<button title="Import an encounter from the Bestiary" class="btn btn-success btn-xs dm-init-lockable"><span class="fa fa-file-import"/></button>`).appendTo($wrpLoadReset)
 			.click((evt) => {
 				if (cfg.isLocked) return;
 				ContextUtil.pOpenMenu(evt, menu);
@@ -493,7 +490,7 @@ class InitiativeTracker {
 			checkSetFirstActive();
 		});
 
-		$btnAddMonster.on("click", () => {
+		$btnAddCreature.on("click", () => {
 			if (cfg.isLocked) return;
 			const flags = {
 				doClickFirst: false,
@@ -525,8 +522,6 @@ class InitiativeTracker {
 				return Number(val);
 			};
 
-			const $wrpCbRoll = $(`<label class="ui-search__ipt-search-sub-wrp flex-vh-center"> <span>Roll HP</span></label>`).appendTo($controls);
-			const $cbRoll = $(`<input class="mr-1" type="checkbox">`).prop("checked", cfg.isRollHp).on("change", () => cfg.isRollHp = $cbRoll.prop("checked")).prependTo($wrpCbRoll);
 			const $results = $(`<div class="ui-search__wrp-results"/>`).appendTo($modalInner);
 
 			const showMsgIpt = () => {
@@ -571,14 +566,12 @@ class InitiativeTracker {
 						await pMakeRow({
 							nameOrMeta: name,
 							source,
-							isRollHp: $cbRoll.prop("checked"),
 						});
 						if (count > 1) {
 							for (let i = 1; i < count; ++i) {
 								await pMakeRow({
 									nameOrMeta: name,
 									source,
-									isRollHp: $cbRoll.prop("checked"),
 								});
 							}
 						}
@@ -672,14 +665,13 @@ class InitiativeTracker {
 				r: rows,
 				s: cfg.sort,
 				d: cfg.dir,
-				m: cfg.isRollHp,
 				g: cfg.importIsRollGroups,
 				p: cfg.importIsAddPlayers,
 				a: cfg.importIsAppend,
 				k: cfg.statsAddColumns,
 				piHp: cfg.playerInitShowExactPlayerHp,
-				piHm: cfg.playerInitShowExactMonsterHp,
-				piV: cfg.playerInitHideNewMonster,
+				piHm: cfg.playerInitShowExactCreatureHp,
+				piV: cfg.playerInitHideNewCreature,
 				piO: cfg.playerInitShowOrdinals,
 				piS: cfg.playerInitShortTokens,
 				c: cfg.statsCols.filter(it => !it.isDeleted),
@@ -696,13 +688,13 @@ class InitiativeTracker {
 				// if the row is player-hidden
 				if (!$row.find(`.dm_init__btn_eye`).hasClass(`btn-primary`)) return false;
 
-				const isMonster = !!$row.find(`.init-wrp-creature`).length;
+				const isCreature = !!$row.find(`.init-wrp-creature`).length;
 
 				const statCols = getStatColsState($row);
 				const statsVals = statCols.map(it => {
 					const mappedCol = visibleStatsCols.find(sc => sc.id === it.id);
 					if (mappedCol) {
-						if (mappedCol.v === 1 || !isMonster) return it;
+						if (mappedCol.v === 1 || !isCreature) return it;
 						else return {u: true}; // "unknown"
 					} else return null;
 				}).filter(Boolean);
@@ -721,7 +713,7 @@ class InitiativeTracker {
 
 				const hp = Number($row.find(`input.hp`).val());
 				const hpMax = Number($row.find(`input.hp-max`).val());
-				if ((!isMonster && cfg.playerInitShowExactPlayerHp) || (isMonster && cfg.playerInitShowExactMonsterHp)) {
+				if ((!isCreature && cfg.playerInitShowExactPlayerHp) || (isCreature && cfg.playerInitShowExactCreatureHp)) {
 					out.h = hp;
 					out.g = hpMax;
 				} else {
@@ -766,7 +758,7 @@ class InitiativeTracker {
 				const $nxt = $(nxt);
 				let $curr = $nxt;
 				do {
-					// if names and initiatives are the same, skip forwards (groups of monsters)
+					// if names and initiatives are the same, skip forwards (groups of creatures)
 					if ($curr.find(`input.name`).val() === $nxt.find(`input.name`).val()
 						&& $curr.find(`input.score`).val() === $nxt.find(`input.score`).val()) {
 						handleTurnStart($curr);
@@ -806,7 +798,6 @@ class InitiativeTracker {
 				source,
 				conditions,
 				isRollInit,
-				isRollHp,
 				statsCols,
 				isVisible,
 			} = Object.assign({
@@ -817,8 +808,7 @@ class InitiativeTracker {
 				init: "",
 				conditions: [],
 				isRollInit: cfg.isRollInit,
-				isRollHp: false,
-				isVisible: !cfg.playerInitHideNewMonster,
+				isVisible: !cfg.playerInitHideNewCreature,
 			}, opts || {});
 
 			const isMon = !!source;
@@ -897,7 +887,6 @@ class InitiativeTracker {
 							init: evt.shiftKey ? "" : $iptScore.val(),
 							isActive: !evt.shiftKey && $wrpRow.hasClass("dm-init-row-active"),
 							source,
-							isRollHp: cfg.isRollHp,
 							statsCols: evt.shiftKey ? null : getStatColsState($wrpRow),
 							isVisible: $wrpRow.find(`.dm_init__btn_eye`).hasClass("btn-primary"),
 						});
@@ -1024,27 +1013,15 @@ class InitiativeTracker {
 
 			if (isMon && (hpVals.curHp === "" || hpVals.maxHp === "" || init === "")) {
 				const doUpdate = async () => {
-					const m = await Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
+					const cr = await Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash);
 
-					// set or roll HP
-					if (!isRollHp && m.hp.average) {
-						hpVals.curHp = hpVals.maxHp = m.hp.average;
-						$iptHp.val(hpVals.curHp);
-						$iptHpMax.val(hpVals.maxHp);
-					} else if (isRollHp && m.hp.formula) {
-						const roll = await Renderer.dice.pRoll2(m.hp.formula, {
-							isUser: false,
-							name: getRollName(m),
-							label: "HP",
-						}, {isResultUsed: true});
-						hpVals.curHp = hpVals.maxHp = roll;
-						$iptHp.val(roll);
-						$iptHpMax.val(roll);
-					}
+					// set HP
+					$iptHp.val(getTotalHp(cr));
+					$iptHpMax.val(getTotalHp(cr));
 
 					// roll initiative
 					if (!init && isRollInit) {
-						$iptScore.val(await pRollInitiative(m));
+						$iptScore.val(await pRollInitiative(cr));
 					}
 
 					doUpdateHpColors();
@@ -1299,29 +1276,20 @@ class InitiativeTracker {
 			if (!firstLoad && !noReset) $(`.dm_init__rounds`).val(1);
 		}
 
-		function getRollName (monster) {
-			return `Initiative Tracker \u2014 ${monster.name}`;
+		function getRollName (creature) {
+			return `Initiative (Perception) \u2014 ${creature.name}`;
 		}
 
-		function pRollInitiative (monster) {
-			return Renderer.dice.pRoll2(`1d20${Parser.getAbilityModifier(monster.dex)}`, {
+		function pRollInitiative (creature) {
+			return Renderer.dice.pRoll2(`1d20+${creature.perception.default}`, {
 				isUser: false,
-				name: getRollName(monster),
+				name: getRollName(creature),
 				label: "Initiative",
 			}, {isResultUsed: true});
 		}
 
-		async function pGetOrRollHp (monster) {
-			if (!cfg.isRollHp && monster.hp.average) {
-				return `${monster.hp.average}`;
-			} else if (cfg.isRollHp && monster.hp.formula) {
-				return `${await Renderer.dice.pRoll2(monster.hp.formula, {
-					isUser: false,
-					name: getRollName(monster),
-					label: "HP",
-				}, {isResultUsed: true})}`;
-			}
-			return "";
+		function getTotalHp (cr) {
+			return `${cr.hp.map(it => it.hp).reduce((a, b) => a + b, 0)}`;
 		}
 
 		async function pConvertAndLoadBestiaryList (bestiaryList) {
@@ -1435,33 +1403,32 @@ class InitiativeTracker {
 									ScaleCreature.scale(mon, scaling).then(scaled => {
 										resolve({
 											count,
-											monster: scaled,
+											creature: scaled,
 										});
 									});
 								} else {
 									resolve({
 										count,
-										monster: mon,
+										creature: mon,
 									});
 								}
 							});
 					})
 				}));
 				await Promise.all(toAdd.map(async it => {
-					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.monster) : null;
-					const groupHp = cfg.importIsRollGroups ? await pGetOrRollHp(it.monster) : null;
+					const groupInit = cfg.importIsRollGroups && cfg.isRollInit ? await pRollInitiative(it.creature) : null;
 
 					await Promise.all([...new Array(it.count || 1)].map(async () => {
-						const hp = `${cfg.importIsRollGroups ? groupHp : await pGetOrRollHp(it.monster)}`;
+						const hp = `${getTotalHp(it.creature)}`;
 						toLoad.r.push({
 							n: {
-								name: it.monster.name,
-								displayName: it.monster._displayName,
-								scaledTo: it.monster._isScaledCr,
+								name: it.creature.name,
+								displayName: it.creature._displayName,
+								scaledTo: it.creature._isScaledLvl,
 							},
-							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.monster)}` : null,
+							i: cfg.isRollInit ? `${cfg.importIsRollGroups ? groupInit : await pRollInitiative(it.creature)}` : null,
 							a: 0,
-							s: it.monster.source,
+							s: it.creature.source,
 							c: [],
 							h: hp,
 							g: hp,
@@ -1483,7 +1450,7 @@ class InitiativeTracker {
 	static get$btnPlayerVisible (isVisible, fnOnClick, isTriState, ...additionalClasses) {
 		let isVisNum = Number(isVisible || false);
 
-		const getTitle = () => isVisNum === 0 ? `Hidden in player view` : isVisNum === 1 ? `Shown in player view` : `Shown in player view on player characters, hidden in player view on monsters`;
+		const getTitle = () => isVisNum === 0 ? `Hidden in player view` : isVisNum === 1 ? `Shown in player view` : `Shown in player view on player characters, hidden in player view on creatures`;
 		const getClasses = () => `${isVisNum === 0 ? `btn-default` : isVisNum === 1 ? `btn-primary` : `btn-primary btn-primary--half`} btn btn-xs ${additionalClasses.join(" ")}`;
 		const getIconClasses = () => isVisNum === 0 ? `glyphicon glyphicon-eye-close` : `glyphicon glyphicon-eye-open`;
 

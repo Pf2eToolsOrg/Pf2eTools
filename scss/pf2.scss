@@ -248,7 +248,7 @@
 			padding-top: 0.3em;
 			text-align: right;
 			font-style: italic;
-			clear: both;
+			clear: left;
 
 			&--other {
 				display: block;
@@ -362,6 +362,17 @@
 	&--blue {
 		color: #002664;
 	}
+
+	.pf2-h--source {
+		display: none;
+		margin-bottom: -0.3em;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h1-flavor {
@@ -426,6 +437,16 @@
 		clear: left;
 		line-height: 1.4em;
 	}
+
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h3 {
@@ -442,6 +463,16 @@
 	&--lvl {
 		margin-left: auto !important;
 	}
+
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h4 {
@@ -455,6 +486,15 @@
 	line-height: 1em;
 	vertical-align: bottom;
 
+	.pf2-h--source {
+		display: none;
+	}
+
+	&:hover {
+		.pf2-h--source {
+			display: inline-block;
+		}
+	}
 }
 
 .pf2-h5 {
@@ -473,6 +513,14 @@
 	text-transform: uppercase;
 	display: flex;
 	width: 100%;
+}
+
+.pf2-h--source {
+	opacity: 60%;
+	font-size: 0.7em;
+	margin-left: 0.4em;
+	line-height: 1.42em;
+	align-self: flex-end;
 }
 
 .pf2-p {
@@ -499,7 +547,7 @@
 	font-size: 1.1em;
 	overflow: auto;
 	clear: left;
-	text-align: revert;
+	text-align: left;
 
 	&__ {
 		&name {
@@ -611,6 +659,7 @@
 	float: right;
 	clear: right;
 	border-left: solid 2px #5e0000;
+	color: #5e0000;
 	width: 50%;
 	max-width: 170px;
 	margin: 0.4em -1em 0.4em 1em;
@@ -621,7 +670,6 @@
 		font-weight: 700;
 		margin: 0;
 		font-family: 'good-pro', sans-serif;
-		color: #5e0000;
 		padding: 0.6em 0.82em 0;
 	}
 
@@ -631,14 +679,12 @@
 			font-weight: 700;
 			margin: 0;
 			font-family: 'good-pro', sans-serif;
-			color: #5e0000;
 			padding: 0 0.82em;
 		}
 
 		&text {
 			margin: 0;
 			font-family: 'good-pro', sans-serif;
-			color: #5e0000;
 			font-size: 0.9em;
 			font-weight: 400;
 			padding: 0 1em;
@@ -760,7 +806,7 @@
 		}
 	}
 
-	@media only screen and (max-width:520px) {
+	@media only screen and (max-width: 520px) {
 		flex-direction: column;
 
 		&__ {
@@ -1129,5 +1175,241 @@
 		&__name--sub {
 			width: 29.16666667%;
 		}
+	}
+}
+
+.ecgen__xp_total {
+	font-size: 0.8em;
+	margin-left: auto !important;
+	line-height: 28px;
+}
+
+.ecgen__overlevel {
+	color: red;
+	margin-top: 10px;
+	margin-bottom: -10px;
+}
+
+.hr-other-source {
+	margin: 15px 0;
+	border-top: 1px solid #ddd;
+}
+
+.pf2-summary {
+	height: 50vh;
+	display: flex;
+	flex-direction: row;
+}
+
+.pf2-summary__text {
+	margin: 1em;
+	font-size: 1.3em;
+	max-width: 45%;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+
+	.pf2-p {
+		text-align: left;
+	}
+
+	.pf2-h1-flavor {
+		text-align: left;
+	}
+
+	.pf2-h4 {
+		margin-top: auto;
+	}
+}
+
+.pf2-summary__image {
+	height: 100%;
+	display: flex;
+
+	&--no-image {
+		width: 55%;
+
+		p {
+			width: 100%;
+			text-align: center;
+			align-self: center;
+			font-style: italic;
+			color: #5e0000;
+		}
+	}
+
+	img {
+		height: calc(100% - 2em);
+		max-width: 100%;
+		object-fit: scale-down;
+		margin: 1em 0 1em auto;
+	}
+}
+
+$night-pf2-red: #f06e60;
+
+.night-mode {
+	.pf2-h1,
+	.pf2-h1-flavor,
+	.pf2-h3,
+	.pf2-sidebar {
+		color: $night-pf2-red;
+	}
+
+	.pf2-sidebar {
+		border-color: $night-pf2-red;
+	}
+
+	.pf2-chapter__line {
+		background: $night-pf2-red;
+	}
+
+	.pf2-chapter__swirl {
+		fill: $night-pf2-red;
+	}
+
+	.pf2-h2 {
+		color: #5691f0;
+
+		&__step {
+			color: #5691f0;
+			background: #001d2b;
+
+			&-num {
+				color: #001d2b;
+				border-color: #001d2b;
+				background: #5691f0;
+			}
+		}
+	}
+
+	.pf2-h4 {
+		color: #eb9d86;
+	}
+
+	.pf2-h5 {
+		color: #5691f0;
+	}
+
+	.pf2-p {
+		color: #bbb;
+	}
+
+	.pf2-trait {
+		background: $night-pf2-red;
+		border-color: #db9d39;
+		color: #222;
+
+		&-- {
+			&alignment {
+				background: #a0aff2;
+			}
+
+			&size {
+				background: #66d499;
+			}
+
+			&settlement {
+				background: #00ba3b;
+			}
+
+			&uncommon {
+				background: #ff9d82;
+			}
+
+			&rare {
+				background: #5691f0;
+			}
+
+			&unique {
+				background: #d36eff;
+			}
+		}
+	}
+
+	.pf2-table {
+		&__ {
+			&label {
+				background: $night-pf2-red;
+				color: #222;
+			}
+
+			&entry {
+				background-color: #3b3a38;
+				color: #bbb;
+
+				&.odd {
+					background-color: #333230;
+				}
+			}
+
+			&footnote {
+				background-color: black;
+			}
+
+			&intro,
+			&outro {
+				color: #bbb;
+			}
+		}
+	}
+
+	.pf2-box--brown {
+		background-color: #47433b;
+		fill: #47433b;
+		color: #bbb;
+	}
+
+	.pf2-box--red {
+		background-color: $night-pf2-red;
+		fill: $night-pf2-red;
+		color: #222;
+	}
+
+	.pf2-box__table--red {
+		.pf2-table__entry {
+			background: $night-pf2-red;
+			border-color: #db9d39;
+			color: #222;
+		}
+	}
+
+	.pf2-beige-box,
+	.pf2-sample-box {
+		background: #383733;
+	}
+
+	.pf2-tips-box {
+		&__title {
+			background: #5691f0;
+			color: #001d2b;
+		}
+
+		&__text {
+			background: #001d2b;
+		}
+	}
+
+	.pf2-inset {
+		border-color: #bbb;
+		background: #383733;
+	}
+
+	.pf2-key-abilities {
+		background: $night-pf2-red;
+		border-color: #db9d39;
+		color: #222;
+
+		&__ab {
+			box-shadow: 8px 0 0 -6px #db9d39;
+		}
+	}
+
+	.pf2-book-wrapper {
+		border-color: $night-pf2-red;
+	}
+
+	.pf2-summary__image--no-image p {
+		color: $night-pf2-red;
 	}
 }

@@ -61,6 +61,8 @@ class ModalFilter {
 		this._filterCache = null;
 	}
 
+	get pageFilter () { return this._pageFilter; }
+
 	_$getWrpList () { return $(`<div class="list ui-list__wrp overflow-x-hidden overflow-y-auto mb-2 h-100 min-h-0"></div>`); }
 
 	/**
@@ -156,6 +158,7 @@ class ModalFilter {
 		</div>`.appendTo($wrp.empty());
 
 		return {
+			$iptSearch,
 			$wrpInner,
 			$btnConfirm,
 			pageFilter: this._pageFilter,
@@ -165,29 +168,31 @@ class ModalFilter {
 		}
 	}
 
-	async pGetUserSelection () {
+	/**
+	 * @param [opts]
+	 * @param [opts.filterExpression] A filter expression, as usually found in @filter tags, which will be applied.
+	 */
+	async pGetUserSelection (opts) {
+		opts = opts || {};
+
 		// eslint-disable-next-line no-async-promise-executor
 		return new Promise(async resolve => {
-			let $wrpModalInner;
-
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				isHeight100: true,
 				title: `Filter/Search for ${this._modalTitle}`,
 				cbClose: (isDataEntered) => {
-					$wrpModalInner.detach();
+					this._filterCache.$wrpModalInner.detach();
 					if (!isDataEntered) resolve([]);
 				},
 				isUncappedHeight: true,
 			});
 
-			if (this._filterCache) {
-				$wrpModalInner = this._filterCache.$wrpModalInner.appendTo($modalInner);
-			} else {
-				const meta = await this.pPopulateWrapper($modalInner);
-				const {$btnConfirm, pageFilter, list, $cbSelAll} = meta;
-				$wrpModalInner = meta.$wrpInner;
+			await this.pPreloadHidden($modalInner);
 
-				this._filterCache = {$wrpModalInner, $btnConfirm, pageFilter, list, $cbSelAll};
+			if (opts.filterExpression) {
+				const filterSubhashMeta = Renderer.getFilterSubhashes(Renderer.splitTagByPipe(opts.filterExpression), this._namespace);
+				const subhashes = filterSubhashMeta.subhashes.map(it => `${it.key}${HASH_SUB_KV_SEP}${it.value}`);
+				this.pageFilter.filterBox.setFromSubHashes(subhashes, true);
 			}
 
 			this._filterCache.$btnConfirm.off("click").click(async () => {
@@ -204,7 +209,29 @@ class ModalFilter {
 				});
 				// endregion
 			});
+
+			this._filterCache.$iptSearch.focus();
 		});
+	}
+
+	/**
+	 * Pre-heat the modal, thus allowing access to the filter box underneath.
+	 *
+	 * @param [$modalInner]
+	 */
+	async pPreloadHidden ($modalInner) {
+		// If we're rendering in "hidden" mode, create a dummy element to attach the UI to.
+		$modalInner = $modalInner || $(`<div></div>`);
+
+		if (this._filterCache) {
+			this._filterCache.$wrpModalInner.appendTo($modalInner);
+		} else {
+			const meta = await this.pPopulateWrapper($modalInner);
+			const {$iptSearch, $btnConfirm, pageFilter, list, $cbSelAll} = meta;
+			const $wrpModalInner = meta.$wrpInner;
+
+			this._filterCache = {$iptSearch, $wrpModalInner, $btnConfirm, pageFilter, list, $cbSelAll};
+		}
 	}
 
 	/** Widths should total to 11/12ths, as 1/12th is set aside for the checkbox column. */

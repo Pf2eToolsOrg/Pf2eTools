@@ -22,17 +22,10 @@ window.addEventListener("load", async () => {
 	switch (_SEO_PAGE) {
 		case "spells": $content.append(RenderSpells.$getRenderedSpell(it, {})); break;
 		case "bestiary": {
-			Renderer.utils.bindPronounceButtons();
 			$content.append(RenderBestiary.$getRenderedCreature(it));
 			$(`.mon__name--token`).css({paddingRight: 5});
 			break;
 		}
 		case "items": $content.append(RenderItems.$getRenderedItem(it)); break;
-
-		// TODO expand this as required
-		case "races": {
-			Renderer.utils.bindPronounceButtons();
-			break;
-		}
 	}
 });

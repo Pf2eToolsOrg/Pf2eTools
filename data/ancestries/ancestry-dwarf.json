@@ -3,10 +3,16 @@
 		{
 			"name": "Dwarf",
 			"source": "CRB",
+			"otherSources": [
+				{
+					"source": "LOCG",
+					"page": 16
+				}
+			],
 			"page": 34,
-			"HP": 10,
+			"hp": 10,
 			"size": "Medium",
-			"speed": 20,
+			"speed": {"walk": 20},
 			"boosts": [
 				"Constitution",
 				"Wisdom",
@@ -16,20 +22,28 @@
 				"Charisma"
 			],
 			"languages": [
-				"Common",
-				"Dwarven",
-				"Additional languages equal to your Intelligence modifier (if it’s positive). Choose from Gnomish, Goblin, Jotun, Orcish, Terran,  Undercommon, and any other languages to which you have access (such as the languages prevalent in your region)."
+				"{@language Common}",
+				"{@language Dwarven}",
+				"Additional languages equal to your Intelligence modifier (if it’s positive). Choose from {@language Gnomish}, {@language Goblin}, {@language Jotun}, {@language Orcish}, {@language Terran}, {@language Undercommon}, and any other languages to which you have access (such as the languages prevalent in your region)."
 			],
 			"traits": [
-				"Dwarf",
-				"Humanoid"
+				"{@trait Dwarf}",
+				"{@trait Humanoid}"
 			],
-			"feature": {
-				"name": "Darkvision",
-				"entries": [
-					"You can see in darkness and dim light just as well as you can see in bright light, though your vision in darkness is in black and white."
-				]
-			},
+			"features": [
+				{
+					"name": "Darkvision",
+					"entries": [
+						"You can see in darkness and dim light just as well as you can see in bright light, though your vision in darkness is in black and white."
+					]
+				},
+				{
+					"name": "Clan Dagger",
+					"entries": [
+						"You get one clan {@item dagger|CRB} for free, as it was given to you at birth. Selling this clan dagger is a terrible taboo and earns you the disdain of other dwarves."
+					]
+				}
+			],
 			"flavor": [
 				"Dwarves have a well-earned reputation as a stoic and stern people, ensconced within citadels and cities carved from solid rock. While some see them as dour and humorless crafters of stone and metal, dwarves and those who have spent time among them understand their unbridled zeal for their work, caring far more about quality than quantity. To a stranger,  they can seem untrusting and clannish, but to their friends and family, they are warm and caring, their halls filled with the sounds of laughter and hammers hitting anvils."
 			],
@@ -80,9 +94,7 @@
 					"page": 34,
 					"name": "Society",
 					"entries": [
-						"The ancient surface empire the dwarves once ruled fell long ago, overwhelmed by orc and goblinoid enemies.",
-						"Today’s dwarves today retain many of the qualities that propelled their people to greatness in ancient times:",
-						"fierceness, gumption, and stubbornness in endeavors ranging from battle and craftsmanship to forging ties with family and friends.",
+						"The ancient surface empire the dwarves once ruled fell long ago, overwhelmed by orc and goblinoid enemies. Today’s dwarves today retain many of the qualities that propelled their people to greatness in ancient times: fierceness, gumption, and stubbornness in endeavors ranging from battle and craftsmanship to forging ties with family and friends.",
 						"While the distance between their mountain Sky Citadels can create vast cultural divides between various dwarf clans, most dwarven societies share a number of similarities. Nearly all dwarven peoples share a passion for stonework, metalwork, and gem-cutting. Most are highly skilled at architecture and mining, and many share a hatred of giants, orcs, and goblinoids.",
 						"Few dwarves are seen without their clan dagger strapped to their belt. This dagger is forged just before a dwarf’s birth and bears the gemstone of their clan. A parent uses this dagger to cut the infant’s umbilical cord, making it the first weapon to taste their blood."
 					]
@@ -93,7 +105,7 @@
 					"name": "Alignment and Religion",
 					"entries": [
 						"Dwarves tend to value honor and closely follow the traditions of their clans and kingdoms. They have a strong sense of friendship and justice, though they are often very particular about who they consider a friend. They work hard and play harder— especially when strong ale is involved.",
-						"The typical dwarf is lawful good or lawful neutral and prefers to worship deities of those alignments. Torag, god of dwarvenkind, is the dwarves’ primary deity, though worship of Torag’s family members is also common."
+						"The typical dwarf is lawful good or lawful neutral and prefers to worship deities of those alignments. {@deity Torag}, god of dwarvenkind, is the dwarves’ primary deity, though worship of Torag’s family members is also common."
 					]
 				},
 				{
@@ -111,6 +123,169 @@
 					"entries": [
 						"Agna, Bodill, Dolgrin, Edrukk, Grunyar, Ingra, Kazmuk, Kotri, Lupp, Morgrym, Rogar, Rusilka, Torra, Yangrit"
 					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 37,
+					"name": "Dwarven Adventurers",
+					"entries": [
+						"Dwarven adventurers tend to work as treasure hunters or sellswords. They often leave their citadels and subterranean cities in search of wealth to enrich their homeland or to reclaim long-lost dwarven treasures or lands taken by the enemies of their kin.",
+						"Typical dwarven backgrounds include acolyte, artisan, merchant, miner, and warrior. Dwarves excel at many of the martial classes, such as barbarian, fighter, monk, and ranger, but they also make excellent clerics and druids."
+					]
+				},
+				{
+					"type": "entriesOtherSource",
+					"page": 16,
+					"source": "LOCG",
+					"entries": [
+						"The dwarves of the Inner Sea region are a people known for their hardy builds, extensive history, and strong familial bonds. Dwarves originated from far beneath the ground: dwarven oracles ages ago received a vision of the comforting stone roofs of their home splitting to reveal a “sky”—a concept unknown to their populace. When Earthfall occurred, marking the end of the Age of Legend, the shaking earth destroyed countless cities and the dwarven populace was devastated. While they could have rebuilt, dwarves saw this as a sign from their patron deity, Torag. They traveled upward for generations, fighting their way through orc tribes and driving their foes ahead of them with each step of the ascent, in a journey now known as the Quest for Sky.",
+						"After centuries, in –4987 ar, the great King Taargick brought the dwarven clans to the surface in 10 far-flung locales. As a testament to their accomplishment, the dwarves constructed 10 glorious cities as a reminder of where their society had come from and all that they could still accomplish. These Sky Citadels were ruled for centuries by Taargick and his descendants until orc hordes managed to overtake the citadel of Koldukar. That conflict continued as a nigh-stalemate until the empire of Tar Taargadth fell to a unified orc force in 1551 ar.",
+						"In modern times, the dwarven populace has become markedly diverse in its traditions, although even the most disparate of cultures bear a reverence for past accomplishments and a drive to improve in the future. Another commonality across the vast majority of dwarves is a love and respect for its clans. Dwarves keep extensive family trees dating back millennia, carved into stone and minerals. Each clan claims a particular gemstone and its unique cut as their own, and dwarves’ extensive histories mean that two clans having identical gemstones as their crest is exceptionally rare. Most dwarven clans choose a gemstone that is both abundant in their region yet rare enough to have value. These gemstones are most commonly seen in the pommels of stout knives that the dwarves call clan daggers. Every dwarf has a special clan dagger that is forged by other members of the clan in preparation for the infant dwarf’s arrival and used to cut their umbilical cord at birth. Great care is put into these daggers, as superstition states an infant ashamed of their clan dagger will be more prone to sickness or death. When a dwarf reaches adolescence, they are given their clan dagger, and it becomes that dwarf’s independent responsibility to keep their dagger safe. When two dwarves of different clans enter into marriage, tradition usually dictates that each dwarf shows their faith and bond by forging a sheath bearing their own clan’s gemstone for their partner’s dagger.",
+						"Dwarven adventures are renowned for their drive to improve and the steadfast bonds they form with their allies. For a dwarf to take up the adventuring lifestyle is seen as a blessing to their clan, as dwarves would have never accomplished what they have without pushing themselves to leave comfort in favor of glory. As a result, while a dwarf who returns home finds a hero’s welcome, those who never return are also viewed and remembered with pride, as they are seen to embody the determination that brought the dwarven people from deep beneath the earth all the way to their current home on the surface."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 16,
+					"source": "LOCG",
+					"name": "Five Kings Dwarves",
+					"entries": [
+						"Mountain dwarves centered at the site of the first and greatest of the dwarven Sky Citadels, the Five Kings dwarves are prolific traders, smiths, and soldiers who are among the most well-known dwarves throughout all of Avistan. Five Kings dwarves take exceptional pride in their facial hair, typically tying decorations called glory ribbons around the end of their beards.",
+						"Despite technically being a unified culture, the Five Kings dwarves are nevertheless divided and broken, with contentious opinions and stubbornness causing constant conflict within their own culture."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 18,
+					"source": "LOCG",
+					"name": "Kulenett Homelands",
+					"entries": [
+						"Far more nomadic than most underground dwarves, Kulenett travel the entirety of the Geb from below their underground highway network, which few that have not lived their whole lives in it can navigate. The Kulenett claim to have a number of oasis-cities deep beneath the sands, which bubble with positive energy and ward them against the necromantic magic and corruptions of Geb, but no outsider has ever found them and returned with proof. As a culture, the Kulenett maintain relations with Geb out of necessity, despite being slightly opposed to the practice of necromancy."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 18,
+					"source": "LOCG",
+					"name": "Mbe'ke and Taralu Dwarves",
+					"entries": [
+						"Mbe’ke and Taralu dwarves have a particular affinity for cloud dragons, with Mbe’ke building cities in jungle mountains to be closer to the clouds and Taralu forming isolationist villages in fogshrouded lowlands so that the clouds come to them. Mbe’ke have coarse, dark hair that they keep cropped short, and they defend their cities with a mystical form of archery known as ghymthur that infuses wind into their arrows. Taralu grow curly dark hair that they regularly dye in all the colors of the sky; they are known for their mastery of the jungle terrain and their affinity for magical traps."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 20,
+					"source": "LOCG",
+					"name": "Vahird Dwarves",
+					"entries": [
+						"Vahird dwarves follow a staunch belief that no being is greater than any other, practicing a strictly vegetarian diet and accepting any who are willing to give up on the rulers of the world, both mortal and divine. These dwarves wear light-colored robes made from plant products and shave their beards and mustaches, but they let their sideburns, eyebrows, and body hair grow thick."
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"page": 21,
+					"source": "LOCG",
+					"name": "Pahmet Tomb Guardians",
+					"entries": [
+						"While most scholars consider the legends that Pahmet dwarves were sent by the gods to aid Osirion’s pharaohs mere fancy, the ancient pharaohs treated the Pahmet with great reverence. In return, the dwarves guard Erekrus—the necropolis where the Pahmet traditionally interred the bodies of pharaohs they deemed particularly worthy—from undead and tomb robbers to this day."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"page": 17,
+					"name": "Dwarves of the Inner Sea",
+					"source": "LOCG",
+					"entries": [
+						"While there are countless dwarven ethnicities throughout the Inner Sea region, most can be found on the surface. Many dwarves, however, see dwarvenkind as split into three main ethnic groups—Grondaksen, who live underground and are known for their traditionalist preservation of history; Ergaksen, spread across the surface and known for their adaptability and diverse cultures; and Holtaksen, who live atop mountains and are known for their warrior culture and desire for glory. While underground dwarves and mountain dwarves see all dwarves on the surface as belonging to a single group, surface dwarves themselves do not, almost never using the term “surface dwarf” except when communicating with their underground or mountain brethren.",
+						{
+							"type": "pf2-h3",
+							"page": 17,
+							"name": "Underground Dwarves",
+							"source": "LOCG",
+							"entries": [
+								"Grondaksen are recognizable by their shorter frames, their large and stern eyes, their billowing beards—seen even among some women—and their utilitarian approach to fashion. They traditionally wear plain browns and grays, typically reinforced with metal to keep them safe while they work. Their settlements are built into caves far beneath the earth, with the walls of important buildings such as medical offices and the homes of leaders carved with runic family trees and inset with clan gemstones to commemorate their history. As they live without a sky, underground dwarves have a different biological clock than their relatives, tending to sleep for 12 hours before remaining awake for 20. Because this is the same interval at which their forges are regularly warmed, this cycle of 32 hours is referred to as a forge-day.",
+								"Underground dwarves are culturally known for their insistence that while Torag’s Quest for Sky was indeed a divine mandate, staying on the surface instead of returning to the protection of the stone below was a mistake. As underground dwarves are separated from the surface world, the only news of world events they receive comes from surface dwarf couriers. A millennia-old agreement mandates that surface dwarves will come belowground once every 24 forge-days to provide knowledge of current events on the surface, receiving impeccable metalworks in exchange.",
+								"When an underground dwarf chooses to adventure, it is not a decision made lightly. While mountain dwarves see the pursuit of glory as paramount, and surface dwarves are driven to protect their way of life, the backbone of underground dwarf society is instead the importance of safety and sanctity. As such, those among them who become adventurers are largely driven by the need to face an external threat or else to discover the means to face an internal one.",
+								{
+									"type": "pf2-h3",
+									"page": 17,
+									"name": "Kulenett",
+									"source": "LOCG",
+									"entries": [
+										"A society of underground dwarves that make their homes beneath the mountains of Geb, Kulenett dwarves are known for maintaining an intricate network of tunnels that stretch across the entirety of the nation. Kulenett have deep tawny skin tones, their reddish-orange eyes framed by dark hair that grows straight and thick. They typically wear light armor and travelers’ vestments, usually including a pair of goggles to keep the sand out of their eyes when they travel aboveground."
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h4",
+							"page": 17,
+							"name": "Surface Dwarves",
+							"source": "LOCG",
+							"entries": [
+								"Making their homes aboveground and adapting at a comparatively rapid rate, the various Ergaksen peoples are known for their diversity. These are the dwarves who have spread across the Inner Sea region and laid roots, mingling with different cultures while developing their own, and they are the group most other ancestries encounter on a daily basis. They are physically distinguished from their underground and mountain cousins not through their commonalities with other surface dwarves, but by their differences from their underground and mountain kin.",
+								"Women typically bear thick hair, while men grow thick beards, although this varies from ethnicity to ethnicity; surface dwarves also tend to be well adjusted to whichever dangers are most common to their specific surroundings. As a result, surface dwarves are exceptionally diverse in appearance and mindset, ranging from Osirion’s monastic Ouat dwarves to the jungle-dwelling Mbe’ke and Taralu dwarves, with other cultural distinctions commonplace.",
+								"Ergaksen find their greatest commonalities with the other ancestries of their region, rather than with other dwarven ethnicities or societies. The dwarves of the Ouat caste, while geographically and emotionally distant, maintain contact with the other monks on their mountain monastery as well as with certain other groups in the region, including the Pathfinder Society. Although they have extensive contact with the pharaohs of their nation, the Pahmet dwarves of Osirion serve no true master, acting as judges over who is allowed to be interred in the necropolis their culture dedicates itself to watching. The Paraheen dwarves of Katheer, capital of Qadira, are autonomous businesspeople, cooperating to serve the communities of the city while remaining distinct from it, working at the forge and revering a distinct aspect of Sarenrae tied to forge-fire.",
+								"Surface dwarves find many reasons to adventure, although the reason most often heard in almost every community of surface dwarves is the desire to protect their way of life. While a Pahmet dwarf might adventure to remove the threat of an undead menace and a Paraheen dwarf might adventure to make new trade contacts, these disparate groups all recognize the common thread that is securing one’s lifestyle.",
+								{
+									"type": "pf2-h3",
+									"page": 18,
+									"name": "Mbe’ke and Taralu",
+									"source": "LOCG",
+									"entries": [
+										"Two distinct but closely related dwarven cultures found in the Mwangi Expanse, Mbe’ke and Taralu are dark-skinned dwarves that revere and honor ancestors, totems, dragons, and draconic creatures."
+									]
+								},
+								{
+									"type": "pf2-h3",
+									"page": 18,
+									"name": "Ouat",
+									"source": "LOCG",
+									"entries": [
+										"Ouat are a sect of the Pahmet dwarves of Osirion who pursue the art of self-perfection in the same manner as the god {@deity Irori}, training their minds and bodies in the monastic city of Tar Kuata."
+									]
+								},
+								{
+									"type": "pf2-h3",
+									"page": 18,
+									"name": "Pahmet",
+									"source": "LOCG",
+									"entries": [
+										"Residents of Osirion since ancient times, bronzeskinned Pahmet dwarves claim to have been sent by the gods to assist the nation. They often live in rock plateaus or near tombs, and some have learned to command the sand of the deserts to aid them."
+									]
+								},
+								{
+									"type": "pf2-h3",
+									"page": 18,
+									"name": "Paraheen",
+									"source": "LOCG",
+									"entries": [
+										"Paraheen dwarves are a small but important autonomous community in Katheer that operates numerous forges and shops within the city and is a respected part of Qadiran society."
+									]
+								},
+								{
+									"type": "pf2-h3",
+									"page": 18,
+									"name": "Vahird",
+									"source": "LOCG",
+									"entries": [
+										"A culture of surface dwarves found in the Eternal Oasis of Rahadoum, Vahird are monastic followers of Rahadoum’s Laws of Mortality, acknowledging the existence of the dwarven pantheon but believing that the gods are no better than mortals."
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"page": 17,
+							"name": "Underground Dwarves",
+							"source": "LOCG",
+							"entries": [
+								"Distinct from their cousins in that they make their homes in the peaks of Golarion’s tallest mountains, Holtaksen are known for their drive to relive the Quest for Sky’s days of glory. They build massive fortresses into the mountains, readily go to war with orcs and giants, and stockpile the treasures they claim in battle. Easily one of the most reckless and militant dwarven cultures, mountain dwarves are still markedly cautious compared to shorter-lived ancestries. With a penchant for hit-and-run tactics in enemy territory and an impressive defensive acumen in their own, mountain dwarves seek glory without being foolhardy.",
+								"Holtaksen tend to be a few inches taller than other dwarves. Their hair grows quickly and is commonly worn braided, and their eyes have larger-thannormal pupils. Their traditional clothing is mostly made up of dark and muted colors, but almost every outfit bears a single small garment in a bright color, matching the color of their clan gem. This garment, typically a scarf or bandanna, is known as a glory ribbon and serves as a badge of honor and token of remembrance. When a mountain dwarf dies in battle, their comrades take the glory ribbon of the fallen, tear it up, and weave a bit of it into their own outfits. Some older mountain dwarves bear countless battle scars and have dozens of colorful scraps reminding them why they fight.",
+								"While underground dwarves rarely adventure and surface dwarves adventure out of necessity, mountain dwarves embrace the prospect of traveling and questing. As they search for glory and thrive on battle, it is almost unheard of to meet a mountain dwarf who has never gone on an adventure."
+							]
+						}
+					]
 				}
 			],
 			"heritageInfo": [
@@ -122,7 +297,20 @@
 					"source": "CRB",
 					"page": 35,
 					"entries": [
-						"Dwarven heroes of old could shrug off their enemies’ magic, and some of that resistance manifests in you. You gain the Call on Ancient Blood reaction."
+						"Dwarven heroes of old could shrug off their enemies’ magic, and some of that resistance manifests in you. You gain the Call on Ancient Blood reaction.",
+						{
+							"activity": {
+								"number": 1,
+								"unit": "reaction",
+								"entry": "{@as R}"
+							},
+							"entries": [
+								"Your ancestors’ innate resistance to magic surges, before slowly ebbing down. You gain a +1 circumstance bonus until the end of this turn. This bonus also applies to the triggering save."
+							],
+							"type": "ability",
+							"name": "Call on Ancient Blood",
+							"trigger": "You attempt a saving throw against a magical effect, but you haven’t rolled yet."
+						}
 					]
 				},
 				{
@@ -130,7 +318,7 @@
 					"source": "CRB",
 					"page": 35,
 					"entries": [
-						"Your ancestors have been tomb guardians for generations, and the power they cultivated to ward off necromancy has passed on to you. If you roll a success on a saving throw against a necromancy effect, you get a critical success instead."
+						"Your ancestors have been tomb guardians for generations, and the power they cultivated to ward off necromancy has passed on to you. If you roll a success on a saving throw against a {@trait necromancy} effect, you get a critical success instead."
 					]
 				},
 				{
@@ -146,7 +334,7 @@
 					"source": "CRB",
 					"page": 36,
 					"entries": [
-						"Your ancestors lived and worked among the great ancient stones of the mountains or the depths of the earth. This makes you solid as a rock when you plant your feet. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Shove or Trip you. This bonus also applies to saving throws against spells or effects that attempt to knock you prone.",
+						"Your ancestors lived and worked among the great ancient stones of the mountains or the depths of the earth. This makes you solid as a rock when you plant your feet. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to {@action Shove} or {@action Trip} you. This bonus also applies to saving throws against spells or effects that attempt to knock you {@condition prone}.",
 						"In addition, if any effect would force you to move 10 feet or more, you are moved only half the distance."
 					]
 				},
@@ -157,8 +345,66 @@
 					"entries": [
 						"Your blood runs hearty and strong, and you can shake off toxins. You gain poison resistance equal to half your level (minimum 1), and each of your successful saving throws against a poison affliction reduces its stage by 2, or by 1 for a virulent poison. Each critical success against an ongoing poison reduces its stage by 3, or by 2 for a virulent poison."
 					]
+				},
+				{
+					"name": "Anvil Dwarf",
+					"source": "LOCG",
+					"page": 19,
+					"entries": [
+						"You are a descendant of a famed crafter and have your own amazing talent. Other dwarves might consider this a blessing from your ancestors or from the Forgefather himself, depending on where you grew up. You become trained in {@skill Crafting} (or another skill if you were already trained in Crafting) and gain the {@feat Specialty Crafting} skill feat, but you can pick two different specialties instead of one."
+					]
+				},
+				{
+					"name": "Elemental Heart Dwarf",
+					"source": "LOCG",
+					"page": 19,
+					"entries": [
+						"Whether through a connection to Torag’s forge, the azers of the Plane of Fire, or another source, you can exude a burst of energy. Mbe’ke and Taralu dwarves of the Mwangi Expanse believe this heritage is a gift from dragons or elemental spirits. Choose one of the following damage types: acid, cold, electricity, or fire. Once chosen, this can’t be changed. You gain the Energy Emanation activity.",
+						{
+							"activity": {
+								"number": 1,
+								"unit": "double",
+								"entry": "{@as 2}"
+							},
+							"traits": [
+								"Evocation",
+								"Primal"
+							],
+							"entries": [
+								"Energy bursts forth from your body. You deal {@dice 1d6} damage of your chosen type to all adjacent creatures (basic Reflex save using your class DC or spell DC, whichever is higher). At 3rd level, and every 2 levels thereafter, this damage increases by 1d6."
+							],
+							"type": "ability",
+							"name": "Energy Emanation",
+							"frequency": "once per day"
+						}
+					]
+				},
+				{
+					"name": "Oathkeeper Dwarf",
+					"source": "LOCG",
+					"page": 19,
+					"entries": [
+						"Growing up, you never tried to lie to get what you wanted, and even when necessary, lying makes you uncomfortable. The especially faithful might even have thought that you were blessed by the dwarven god of duty, {@deity Kols}. You gain a +1 circumstance bonus to {@skill Perception} checks to {@action Sense Motive} and to {@skill Perception} DCs against attempts to {@action Lie} to you. Furthermore, you gain a +2 circumstance bonus to {@skill Diplomacy} checks to convince others you speak the truth when you are telling the truth, and you take a –4 circumstance penalty to {@action Lie} and to your {@skill Deception} DC against {@action Sense Motive}."
+					]
 				}
-			]
+			],
+			"summary": {
+				"text": "Dwarves are a short, stocky people who are often stubborn, fierce, and devoted.",
+				"images": [
+					"img/ancestries/CRB/dwarf-01.webp",
+					"img/ancestries/CRB/dwarf-02.webp",
+					"img/ancestries/LOCG/dwarf-01.webp",
+					"img/ancestries/LOCG/dwarf-02.webp",
+					"img/ancestries/LOCG/dwarf-03.webp",
+					"img/ancestries/LOCG/dwarf-04.webp",
+					"img/ancestries/LOCG/dwarf-05.webp",
+					"img/ancestries/LOCG/dwarf-06.webp",
+					"img/ancestries/LOCG/dwarf-07.webp",
+					"img/ancestries/LOCG/dwarf-08.webp",
+					"img/ancestries/LOCG/dwarf-09.webp",
+					"img/ancestries/LOCG/dwarf-10.webp"
+				]
+			}
 		}
 	]
 }

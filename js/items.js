@@ -7,8 +7,8 @@ class ItemsPage {
 		this._sublistCurrencyConversion = null;
 		this._sublistCurrencyDisplayMode = null;
 
-		this._$totalWeight = null;
-		this._$totalValue = null;
+		this._$totalBulk = null;
+		this._$totalPrice = null;
 		this._$totalItems = null;
 
 		this._mundaneList = null;
@@ -184,16 +184,17 @@ class ItemsPage {
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
+		await printBookView.pHandleSub(sub);
 
 		await runeBuilder.pHandleSubhash();
 	}
 
 	onSublistChange () {
-		this._$totalwWeight = this._$totalWeight || $(`#totalweight`);
-		this._$totalValue = this._$totalValue || $(`#totalvalue`);
+		this._$totalBulk = this._$totalBulk || $(`#totalbulk`);
+		this._$totalPrice = this._$totalPrice || $(`#totalprice`);
 		this._$totalItems = this._$totalItems || $(`#totalitems`);
 
-		let weight = 0;
+		let bulk = 0;
 		let value = 0;
 		let cntItems = 0;
 
@@ -203,15 +204,15 @@ class ItemsPage {
 			if (item.currencyConversion) availConversions.add(item.currencyConversion);
 			const count = it.values.count;
 			cntItems += it.values.count;
-			if (item.weight) weight += Number(item.weight) * count;
-			if (item.value) value += item.value * count;
+			if (item._fBulk) bulk += item._fBulk * count;
+			if (item._fPrice) value += item._sPrice * count;
 		});
 
-		this._$totalwWeight.text(`${weight.toLocaleString(undefined, {maximumFractionDigits: 5})} lb${weight !== 1 ? "s" : ""}.`);
+		this._$totalBulk.text(`${Math.floor(bulk)}`);
 		this._$totalItems.text(cntItems);
 
 		if (availConversions.size) {
-			this._$totalValue
+			this._$totalPrice
 				.text(Parser.itemValueToFullMultiCurrency({value, currencyConversion: this._sublistCurrencyConversion}))
 				.off("click")
 				.click(async () => {
@@ -247,7 +248,7 @@ class ItemsPage {
 				}
 			})();
 
-			this._$totalValue
+			this._$totalPrice
 				.text(text || "\u2014")
 				.off("click")
 				.click(async () => {
@@ -277,6 +278,41 @@ class ItemsPage {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
+		});
+
+		printBookView = new BookModeView({
+			hashKey: "bookview",
+			$openBtn: $(`#btn-printbook`),
+			noneVisibleMsg: "If you wish to view multiple items, please first make a list",
+			pageTitle: "Items Printer View",
+			popTblGetNumShown: async ($wrpContent) => {
+				const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
+
+				toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
+
+				let numShown = 0;
+
+				const stack = [];
+
+				const renderItem = (it) => {
+					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(Renderer.item.getCompactRenderedString(it));
+					stack.push(`</div></div>`);
+				};
+
+				stack.push(`<div class="w-100 h-100">`);
+				toShow.forEach(it => renderItem(it));
+				if (!toShow.length && Hist.lastLoadedId != null) {
+					renderItem(itemsPage._itemList[Hist.lastLoadedId]);
+				}
+				stack.push(`</div>`);
+
+				numShown += toShow.length;
+				$wrpContent.append(stack.join(""));
+
+				return numShown;
+			},
+			hasPrintColumns: true,
 		});
 
 		runeBuilder = new RuneBuilder();
@@ -454,9 +490,9 @@ class ItemsPage {
 							},
 						);
 					} else if (runeBuilder.isActive()) {
-						Renderer.hover.doPopoutCurPage(evt, [toRender], 0);
+						Renderer.hover.doPopout(evt, [toRender], 0);
 					} else {
-						Renderer.hover.doPopoutCurPage(evt, this._itemList, Hist.lastLoadedId);
+						Renderer.hover.doPopout(evt, this._itemList, Hist.lastLoadedId);
 					}
 				}
 			},
@@ -472,9 +508,10 @@ class ItemsPage {
 }
 
 let runeBuilder;
+let printBookView;
 
 function handleItemsLiClick (evt, listItem) {
-	if (runeBuilder.isActive()) Renderer.hover.doPopoutCurPage(evt, itemsPage._itemList, listItem.ix);
+	if (runeBuilder.isActive()) Renderer.hover.doPopout(evt, itemsPage._itemList, listItem.ix);
 }
 
 function handleItemsLiContext (evt, listItem) {

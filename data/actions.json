@@ -4,7 +4,6 @@
 			"name": "Aid",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
@@ -16,7 +15,7 @@
 				"You try to help your ally with a task. To use this reaction, you must first prepare to help, usually by using an action during your turn. You must explain to the GM exactly how you’re trying to help, and they determine whether you can Aid your ally.",
 				"When you use your Aid reaction, attempt a skill check or attack roll of a type decided by the GM. The typical DC is 20, but the GM might adjust this DC for particularly hard or easy tasks. The GM can add any relevant traits to your preparatory action or to your Aid reaction depending on the situation, or even allow you to Aid checks other than skill checks and attack rolls.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You grant your ally a +2 circumstance bonus to the triggering check. If you’re a master with the check you attempted, the bonus is +3, and if you’re legendary, it’s +4.",
 						"Success": "You grant your ally a +1 circumstance bonus to the triggering check.",
@@ -29,7 +28,6 @@
 			"name": "Crawl",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -47,7 +45,6 @@
 			"name": "Delay",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -63,7 +60,6 @@
 			"name": "Drop Prone",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -80,7 +76,6 @@
 			"name": "Escape",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -90,13 +85,13 @@
 				"entry": "{@as 1}"
 			},
 			"entries": [
-				"You attempt to escape from being {@condition grabbed|CRB}, {@condition immobilized|CRB}, or {@condition restrained|CRB}. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the {@skill Athletics} DC of a creature grabbing you, the {@skill Thievery} DC of a creature who tied you up, the spell DC for a spell effect, or the listed Escape DC of an object, hazard, or other impediment. You can attempt an {@skill Acrobatics} or {@skill Athletics} check instead of using your attack modifier if you choose (but this action still has the {@trait attack} trait).",
+				"You attempt to escape from being {@condition grabbed|CRB}, {@condition immobilized|CRB}, or {@condition restrained|CRB}. Choose one creature, object, spell effect, hazard, or other impediment imposing any of those conditions on you. Attempt a check using your unarmed attack modifier against the DC of the effect. This is typically the {@skill Athletics} DC of a creature grabbing you, the {@skill Thievery} DC of a creature who tied you up, the spell DC for a spell effect, or the listed {@action Escape} DC of an object, hazard, or other impediment. You can attempt an {@skill Acrobatics} or {@skill Athletics} check instead of using your attack modifier if you choose (but this action still has the {@trait attack} trait).",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You get free and remove the {@condition grabbed|CRB}, {@condition immobilized|CRB}, and {@condition restrained|CRB} conditions imposed by your chosen target. You can then {@action Stride|CRB} up to 5 feet.",
 						"Success": "You get free and remove the {@condition grabbed|CRB}, {@condition immobilized|CRB}, and {@condition restrained|CRB} conditions imposed by your chosen target.",
-						"Critical Failure": "You don’t get free, and you can’t attempt to Escape again until your next turn."
+						"Critical Failure": "You don’t get free, and you can’t attempt to {@action Escape} again until your next turn."
 					}
 				}
 			]
@@ -105,7 +100,6 @@
 			"name": "Interact",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -122,7 +116,6 @@
 			"name": "Invest an Item",
 			"source": "CRB",
 			"page": 531,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "Varies",
@@ -137,7 +130,6 @@
 			"name": "Leap",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -153,7 +145,6 @@
 			"name": "Ready",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Concentrate"
 			],
@@ -171,7 +162,6 @@
 			"name": "Release",
 			"source": "CRB",
 			"page": 470,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -189,7 +179,6 @@
 			"name": "Seek",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Secret"
@@ -204,7 +193,7 @@
 				"If you’re using Seek to search for objects (including secret doors and hazards), you search up to a 10-foot square adjacent to you. The GM might determine you need to Seek as an activity, taking more actions or even minutes or hours if you’re searching a particularly cluttered area.",
 				"The GM attempts a single secret {@skill Perception} check for you and compares the result to the {@skill Stealth} DCs of any undetected or hidden creatures in the area or the DC to detect each object in the area (as determined by the GM or by someone Concealing the Object). A creature you detect might remain hidden, rather than becoming observed, if you’re using an imprecise sense or if an effect (such as invisibility) prevents the subject from being observed.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "If you were searching for creatures, any undetected or hidden creature you critically succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location.",
 						"Success": "If you were searching for creatures, any undetected creature you succeeded against becomes hidden from you instead of undetected, and any hidden creature you succeeded against becomes {@condition observed|CRB} by you. If you were searching for an object, you learn its location or get a clue to its whereabouts, as determined by the GM."
@@ -216,7 +205,6 @@
 			"name": "Sense Motive",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Secret"
@@ -229,7 +217,7 @@
 			"entries": [
 				"You try to tell whether a creature’s behavior is abnormal. Choose one creature, and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret {@skill Perception} check for you and compares the result to the Deception DC of the creature, the DC of a spell affecting the creature’s mental state, or another appropriate DC determined by the GM. You typically can’t try to Sense the Motive of the same creature again until the situation changes significantly.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You determine the creature’s true intentions and get a solid idea of any mental magic affecting it.",
 						"Success": "You can tell whether the creature is behaving normally, but you don’t know its exact intentions or what magic might be affecting it.",
@@ -243,7 +231,6 @@
 			"name": "Stand",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -260,7 +247,6 @@
 			"name": "Step",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -279,7 +265,6 @@
 			"name": "Stride",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -296,7 +281,6 @@
 			"name": "Strike",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -308,7 +292,7 @@
 			"entries": [
 				"You attack with a weapon you're wielding or with an unarmed attack, targeting one creature within your reach (for a melee attack) or within range (for a ranged attack). Roll the attack roll for the weapon or unarmed attack you are using, and compare the result to the target creature's AC to determine the effect. See Attack Rolls and Damage for details on calculating your attack and damage rolls.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "As success, but you deal double damage.",
 						"Success": "You deal damage according to the weapon or unarmed attack, including any modifiers, bonuses, and penalties you have to damage."
@@ -320,7 +304,6 @@
 			"name": "Take Cover",
 			"source": "CRB",
 			"page": 471,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -335,7 +318,6 @@
 			"name": "Activate an Item",
 			"source": "CRB",
 			"page": 532,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "Varies",
@@ -443,7 +425,6 @@
 			"name": "Arrest a Fall",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
@@ -454,7 +435,7 @@
 			"entries": [
 				"You attempt an {@skill Acrobatics} check to slow your fall. The DC is typically 15, but it might be higher due to air turbulence or other circumstances.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You fall gently, taking no damage from the fall."
 					}
@@ -465,7 +446,6 @@
 			"name": "Avert Gaze",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -479,7 +459,6 @@
 			"name": "Burrow",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -497,7 +476,6 @@
 			"name": "Cast a Spell",
 			"source": "CRB",
 			"page": 302,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "Varies",
@@ -524,7 +502,6 @@
 			"name": "Dismiss",
 			"source": "CRB",
 			"page": 305,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -541,7 +518,6 @@
 			"name": "Fly",
 			"source": "CRB",
 			"page": 305,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -559,7 +535,6 @@
 			"name": "Grab an Edge",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
@@ -570,7 +545,7 @@
 			"entries": [
 				"When you fall off or past an edge or other handhold, you can try to grab it, potentially stopping your fall. You must succeed at a Reflex save, usually at the {@action Climb|CRB} DC. If you grab the edge or handhold, you can then {@action Climb|CRB} up using {@skill Athletics}.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You grab the edge or handhold, whether or not you have a hand free, typically by using a suitable held item to catch yourself (catching a battle axe on a ledge, for example). You still take damage from the distance fallen so far, but you treat the fall as though it were 30 feet shorter.",
 						"Success": "If you have at least one hand free, you grab the edge or handhold, stopping your fall. You still take damage from the distance fallen so far, but you treat the fall as though it were 20 feet shorter. If you have no hands free, you continue to fall as if you had failed the check.",
@@ -583,7 +558,6 @@
 			"name": "Mount",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -600,7 +574,6 @@
 			"name": "Point Out",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -620,7 +593,6 @@
 			"name": "Raise a Shield",
 			"source": "CRB",
 			"page": 472,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -635,7 +607,6 @@
 			"name": "Sustain a Spell",
 			"source": "CRB",
 			"page": 304,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -654,7 +625,6 @@
 			"name": "Sustain an Activation",
 			"source": "CRB",
 			"page": 534,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -670,7 +640,6 @@
 			"name": "Attack of Opportunity",
 			"source": "CRB",
 			"page": 474,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
@@ -685,7 +654,6 @@
 			"name": "Refocus",
 			"source": "CRB",
 			"page": 300,
-			"srd": true,
 			"activity": {
 				"number": 10,
 				"unit": "minute",
@@ -704,7 +672,6 @@
 			"name": "Hustle",
 			"source": "CRB",
 			"page": 480,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Move"
@@ -717,7 +684,6 @@
 			"name": "Investigate",
 			"source": "CRB",
 			"page": 480,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -730,7 +696,6 @@
 			"name": "Repeat a Spell",
 			"source": "CRB",
 			"page": 480,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -744,7 +709,6 @@
 			"name": "Scout",
 			"source": "CRB",
 			"page": 480,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -757,7 +721,6 @@
 			"name": "Search",
 			"source": "CRB",
 			"page": 480,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -770,7 +733,6 @@
 			"name": "Decipher Writing",
 			"source": "CRB",
 			"page": 234,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -780,7 +742,7 @@
 				"You attempt to decipher complicated writing or literature on an obscure topic. This usually takes 1 minute per page of text, but might take longer (typically an hour per page for decrypting ciphers or the like). The text must be in a language you can read, though the GM might allow you to attempt to decipher text written in an unfamiliar language using {@skill Society} instead.",
 				"The DC is determined by the GM based on the state or complexity of the document. The GM might have you roll one check for a short text or a check for each section of a larger text.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You understand the true meaning of the text.",
 						"Success": "You understand the true meaning of the text. If it was a coded document, you know the general meaning but might not have a word-for-word translation.",
@@ -828,7 +790,6 @@
 			"name": "Earn Income",
 			"source": "CRB",
 			"page": 236,
-			"srd": true,
 			"traits": [
 				"Downtime"
 			],
@@ -837,7 +798,7 @@
 				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task’s level, and your proficiency rank (as listed on {@table Income Earned|CRB|Table 4–2: Income Earned}).",
 				"You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task’s completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You do outstanding work. Gain the amount of currency listed for the task level + 1 and your proficiency rank.",
 						"Success": "You do competent work. Gain the amount of currency listed for the task level and your proficiency rank.",
@@ -886,7 +847,6 @@
 			"name": "Identify Magic",
 			"source": "CRB",
 			"page": 238,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -895,7 +855,7 @@
 			"entries": [
 				"Once you discover that an item, location, or ongoing effect is magical, you can spend 10 minutes to try to identify the particulars of its magic. If your attempt is interrupted, you must start over. The GM sets the DC for your check. Cursed or esoteric subjects usually have higher DCs or might even be impossible to identify using this activity alone. Heightening a spell doesn’t increase the DC to identify it.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You learn all the attributes of the magic, including its name (for an effect), what it does, any means of activating it (for an item or location), and whether it is cursed.",
 						"Success": "For an item or location, you get a sense of what it does and learn any means of activating it. For an ongoing effect (such as a spell with a duration), you learn the effect’s name and what it does. You can’t try again in hopes of getting a critical success.",
@@ -947,7 +907,6 @@
 			"name": "Learn a Spell",
 			"source": "CRB",
 			"page": 238,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -966,7 +925,7 @@
 				},
 				"If you have a spellbook, Learning a Spell lets you add the spell to your spellbook; if you prepare spells from a list, it’s added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You expend half the materials and learn the spell.",
 						"Success": "You expend the materials and learn the spell.",
@@ -980,7 +939,6 @@
 			"name": "Recall Knowledge",
 			"source": "CRB",
 			"page": 239,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -993,7 +951,7 @@
 			"entries": [
 				"You attempt a skill check to try to remember a bit of knowledge regarding a topic related to that skill. The GM determines the DCs for such checks and which skills apply.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You recall the knowledge accurately and gain additional information or context.",
 						"Success": "You recall the knowledge accurately or gain a useful clue about your current situation.",
@@ -1016,7 +974,7 @@
 						"{@b Society:} Local history, key personalities, legal institutions, societal structure, and humanoid culture."
 					]
 				},
-				"The GM might allow checks to Recall Knowledge using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
+				"The GM might allow checks to {@action Recall Knowledge} using other skills. For example, you might assess the skill of an acrobat using Acrobatics. If you’re using a physical skill (like in this example), the GM will most likely have you use a mental ability score—typically Intelligence— instead of the skill’s normal physical ability score.",
 				{
 					"type": "pf2-sample-box",
 					"name": "Recall Knowledge Tasks",
@@ -1061,14 +1019,13 @@
 			"name": "Subsist",
 			"source": "CRB",
 			"page": 240,
-			"srd": true,
 			"traits": [
 				"Downtime"
 			],
 			"entries": [
 				"You try to provide food and shelter for yourself, and possibly others as well, with a standard of living described on page 294. The GM determines the DC based on the nature of the place where you’re trying to Subsist. You might need a minimum proficiency rank to Subsist in particularly strange environments. Unlike most downtime activities, you can Subsist after 8 hours or less of exploration, but if you do, you take a –5 penalty",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You either provide a subsistence living for yourself and one additional creature, or you improve your own food and shelter, granting yourself a comfortable living.",
 						"Success": "You find enough food and shelter with basic protection from the elements to provide you a subsistence living.",
@@ -1123,7 +1080,6 @@
 			"name": "Balance",
 			"source": "CRB",
 			"page": 240,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -1142,7 +1098,7 @@
 			"entries": [
 				"You move across a narrow surface or uneven ground, attempting an {@skill Acrobatics} check against its Balance DC. You are {@condition flat-footed|CRB} while on a narrow surface or uneven ground.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You move up to your Speed.",
 						"Success": "You move up to your Speed, treating it as difficult terrain (every 5 feet costs 10 feet of movement).",
@@ -1195,7 +1151,6 @@
 			"name": "Tumble Through",
 			"source": "CRB",
 			"page": 240,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -1213,7 +1168,7 @@
 			"entries": [
 				"You {@action Stride|CRB} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics} check against the enemy’s Reflex DC as soon as you try to enter its space. You can Tumble Through using Climb, Fly, Swim, or another action instead of {@action Stride|CRB} in the appropriate environment.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You move through the enemy’s space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don’t have enough Speed to move all the way through its space, you get the same effect as a failure.",
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
@@ -1225,7 +1180,6 @@
 			"name": "Maneuver in Flight",
 			"source": "CRB",
 			"page": 240,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -1244,7 +1198,7 @@
 			"entries": [
 				"You try a difficult maneuver while {@action Fly|CRB|Flying}. Attempt an {@skill Acrobatics} check. The GM determines what maneuvers are possible, but they rarely allow you to move farther than your fly Speed.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You succeed at the maneuver.",
 						"Failure": "Your maneuver fails. The GM chooses if you simply can’t move or if some other detrimental effect happens. The outcome should be appropriate for the maneuver you attempted (for instance, being blown off course if you were trying to fly against a strong wind).",
@@ -1291,7 +1245,6 @@
 			"name": "Squeeze",
 			"source": "CRB",
 			"page": 241,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Move"
@@ -1305,7 +1258,7 @@
 			"entries": [
 				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are difficult terrain (page 475) that you can move through more quickly and without a check.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You squeeze through the tight space in 1 minute per 10 feet of squeezing.",
 						"Success": "You squeeze through in 1 minute per 5 feet.",
@@ -1316,7 +1269,7 @@
 			"info": [
 				{
 					"type": "pf2-sample-box",
-					"name": "Sample Squeeze Tasks",
+					"name": "Sample {@action Squeeze} Tasks",
 					"entries": [
 						{
 							"type": "list",
@@ -1342,7 +1295,6 @@
 			"name": "Borrow an Arcane Spell",
 			"source": "CRB",
 			"page": 241,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration"
@@ -1356,7 +1308,7 @@
 			"entries": [
 				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learn a Spell|CRB|Learning the Spell}.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You prepare the borrowed spell as part of your normal spell preparation.",
 						"Failure": "You fail to prepare the spell, but the spell slot remains available for you to prepare a different spell. You can’t try to prepare this spell until the next time you prepare spells."
@@ -1368,7 +1320,6 @@
 			"name": "Climb",
 			"source": "CRB",
 			"page": 241,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -1387,7 +1338,7 @@
 			"entries": [
 				"You move up, down, or across an incline. Unless it’s particularly easy, you must attempt an {@skill Athletics} check. The GM determines the DC based on the nature of the incline and environmental circumstances. You’re {@condition flat-footed|CRB} unless you have a climb Speed.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You move up, across, or safely down the incline for 5 feet plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).",
 						"Success": "You move up, across, or safely down the incline for 5 feet per 20 feet of your land Speed (a total of 5 feet for most PCs, minimum 5 feet if your Speed is below 20 feet).",
@@ -1518,7 +1469,6 @@
 			"name": "Force Open",
 			"source": "CRB",
 			"page": 242,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -1536,7 +1486,7 @@
 			"entries": [
 				"Using your body, a lever, or some other tool, you attempt to forcefully open a door, window, container or heavy gate. With a high enough result, you can even smash through walls. Without a {@item crowbar|CRB}, prying something open takes a –2 item penalty to the {@skill Athletics} check to Force Open.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You open the door, window, container, or gate and can avoid damaging it in the process.",
 						"Success": "You break the door, window, container, or gate open, and the door, window, container, or gate gains the {@condition broken|CRB} condition. If it’s especially sturdy, the GM might have it take damage but not be broken.",
@@ -1588,7 +1538,6 @@
 			"name": "Grapple",
 			"source": "CRB",
 			"page": 242,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -1607,7 +1556,7 @@
 			"entries": [
 				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "Your opponent is {@condition restrained|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes} (page 470).",
 						"Success": "Your opponent is {@condition grabbed|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes}.",
@@ -1621,7 +1570,6 @@
 			"name": "High Jump",
 			"source": "CRB",
 			"page": 242,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "double",
@@ -1636,7 +1584,7 @@
 			"entries": [
 				"You Stride, then make a vertical Leap and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn’t Stride at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "Increase the maximum vertical distance to 8 feet, or increase the maximum vertical distance to 5 feet and maximum horizontal distance to 10 feet.",
 						"Success": "Increase the maximum vertical distance to 5 feet.",
@@ -1659,7 +1607,6 @@
 			"name": "Long Jump",
 			"source": "CRB",
 			"page": 242,
-			"srd": true,
 			"activity": {
 				"number": 1,
 				"unit": "double",
@@ -1675,7 +1622,7 @@
 				"You {@action Stride|CRB}, then make a horizontal {@action Leap|CRB} and attempt an {@skill Athletics} check to increase the length of your jump. The DC of the {@skill Athletics} check is equal to the total distance in feet you’re attempting to move during your Leap (so you’d need to succeed at a DC 20 check to {@action Leap|CRB} 20 feet). You can’t {@action Leap|CRB} farther than your Speed.",
 				"If you didn’t Stride at least 10 feet, or if you attempt to jump in a different direction than your {@action Stride|CRB}, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "Increase the maximum horizontal distance you {@action Leap|CRB} to the desired distance.",
 						"Failure": "You {@action Leap|CRB} normally.",
@@ -1688,7 +1635,6 @@
 			"name": "Shove",
 			"source": "CRB",
 			"page": 243,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -1707,7 +1653,7 @@
 			"entries": [
 				"You push an opponent away from you. Attempt an {@skill Athletics} check against your opponent’s Fortitude DC.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You push your opponent up to 10 feet away from you. You can {@action Stride|CRB} after it, but you must move the same distance and in the same direction.",
 						"Success": "You push your opponent back 5 feet. You can {@action Stride|CRB} after it, but you must move the same distance and in the same direction.",
@@ -1729,7 +1675,6 @@
 			"name": "Swim",
 			"source": "CRB",
 			"page": 243,
-			"srd": true,
 			"traits": [
 				"Move"
 			],
@@ -1748,7 +1693,7 @@
 				"You propel yourself through water. In most calm water, you succeed at the action without needing to attempt a check. If you must breathe air and you’re submerged in water, you must hold your breath each round. If you fail to hold your breath, you begin to drown (as described on page 478). If the water you are swimming in is turbulent or otherwise dangerous, you might have to attempt an {@skill Athletics} check to Swim.",
 				"If you end your turn in water and haven’t succeeded at a Swim action that turn, you sink 10 feet or get moved by the current, as determined by the GM. However, if your last action on your turn was to enter the water, you don’t sink or move with the current that turn.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You move through the water 10 feet, plus 5 feet per 20 feet of your land Speed (a total of 15 feet for most PCs).",
 						"Success": "You move through the water 5 feet, plus 5 feet per 20 feet of your land Speed (a total of 10 feet for most PCs).",
@@ -1800,7 +1745,6 @@
 			"name": "Trip",
 			"source": "CRB",
 			"page": 243,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -1819,7 +1763,7 @@
 			"entries": [
 				"You try to knock an opponent to the ground. Attempt an {@skill Athletics} check against the target’s Reflex DC.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target falls and lands {@condition prone|CRB} and takes {@dice 1d6} bludgeoning damage.",
 						"Success": "The target falls and lands {@condition prone|CRB}.",
@@ -1842,7 +1786,6 @@
 			"name": "Disarm",
 			"source": "CRB",
 			"page": 243,
-			"srd": true,
 			"traits": [
 				"Attack"
 			],
@@ -1861,7 +1804,7 @@
 			"entries": [
 				"You try to knock something out of an opponent’s grasp. Attempt an {@skill Athletics} check against the opponent’s Reflex DC.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You knock the item out of the opponent’s grasp. It falls to the ground in the opponent’s space.",
 						"Success": "You weaken your opponent’s grasp on the item. Until the start of that creature’s turn, attempts to Disarm the opponent of that item gain a +2 circumstance bonus, and the target takes a –2 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item.",
@@ -1874,7 +1817,6 @@
 			"name": "Repair",
 			"source": "CRB",
 			"page": 243,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Manipulate"
@@ -1894,7 +1836,7 @@
 			"entries": [
 				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the {@item repair kit|CRB}with both hands. The GM sets the DC, but it’s usually about the same DC to Repair a given item as it is to {@skill Craft} it in the first place. You can’t Repair a destroyed item.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You restore 10 Hit Points to the item, plus an additional 10 Hit Points per proficiency rank you have in Crafting (a total of 20 HP if you’re trained, 30 HP if you’re an expert, 40 HP if you’re a master, or 50 HP if you’re legendary).",
 						"Success": "You restore 5 Hit Points to the item, plus an additional 5 per proficiency rank you have in Crafting (for a total of 10 HP if you are trained, 15 HP if you’re an expert, 20 HP if you’re a master, or 25 HP if you’re legendary).",
@@ -1907,7 +1849,6 @@
 			"name": "Craft",
 			"source": "CRB",
 			"page": 244,
-			"srd": true,
 			"traits": [
 				"Downtime",
 				"Manipulate"
@@ -1933,7 +1874,7 @@
 				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
 				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item’s Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4–2: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level + 1 and your proficiency rank in {@skill Crafting}.",
 						"Success": "Your attempt is successful. Each additional day spent Crafting reduces the materials needed to complete the item by an amount based on your level and your proficiency rank.",
@@ -1963,7 +1904,6 @@
 			"name": "Retraining",
 			"source": "CRB",
 			"page": 481,
-			"srd": true,
 			"traits": [
 				"Downtime"
 			],
@@ -2004,7 +1944,6 @@
 			"name": "Long-Term Rest",
 			"source": "CRB",
 			"page": 481,
-			"srd": true,
 			"traits": [
 				"Downtime"
 			],
@@ -2038,7 +1977,6 @@
 			"name": "Identify Alchemy",
 			"source": "CRB",
 			"page": 245,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -2059,7 +1997,7 @@
 			"entries": [
 				"You can identify the nature of an alchemical item with 10 minutes of testing using {@item alchemist's tools|CRB}. If your attempt is interrupted in any way, you must start over.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You identify the item and the means of activating it.",
 						"Failure": "You fail to identify the item but can try again.",
@@ -2072,7 +2010,6 @@
 			"name": "Create a Diversion",
 			"source": "CRB",
 			"page": 245,
-			"srd": true,
 			"traits": [
 				"Mental"
 			],
@@ -2091,7 +2028,7 @@
 				"With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures’ attention elsewhere. If you use a gesture or trick, this action gains the {@trait manipulate} trait. If you use distracting words, it gains the {@trait auditory} and {@trait linguistic} traits.",
 				"Attempt a single {@skill Deception} check and compare it to the {@skill Perception} DCs of the creatures whose attention you’re trying to divert. Whether or not you succeed, creatures you attempt to divert gain a +4 circumstance bonus to their {@skill Perception} DCs against your attempts to Create a Diversion for 1 minute.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You become hidden to each creature whose {@skill Perception} DC is less than or equal to your result. (The {@condition hidden|CRB} condition allows you to {@action Sneak|CRB} away, as described on page 252.) This lasts until the end of your turn or until you do anything except {@action Step|CRB} or use the {@action Hide|CRB} or the {@action Sneak|CRB} action of the {@skill Stealth} skill (pages 251 and 252). If you {@action Strike|CRB} a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise.",
 						"Failure": "You don’t divert the attention of any creatures whose {@skill Perception} DC exceeds your result, and those creatures are aware you were trying to trick them."
@@ -2103,7 +2040,6 @@
 			"name": "Impersonate",
 			"source": "CRB",
 			"page": 245,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -2120,7 +2056,7 @@
 				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a {@item disguise kit|CRB} (found on page 290), but a simpler, quicker disguise might do the job if you’re not trying to imitate a specific individual, at the GM’s discretion.",
 				"In most cases, creatures have a chance to detect your deception only if they use the {@action Seek|CRB} action to attempt {@skill Perception} checks against your {@skill Deception} DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret {@skill Deception} check for you against that creature’s {@skill Perception} DC instead. If you’re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you’re imitating, or the GM might roll a secret {@skill Deception} check even if you aren’t directly interacting with others.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You trick the creature into thinking you’re the person you’re disguised as. You might have to attempt a new check if your behavior changes.",
 						"Failure": "The creature can tell you’re not who you claim to be.",
@@ -2133,7 +2069,6 @@
 			"name": "Lie",
 			"source": "CRB",
 			"page": 246,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",
@@ -2156,7 +2091,7 @@
 				"You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single {@skill Deception} check and compare it against the {@skill Perception} DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it’s impossible to get anyone to believe them.",
 				"At the GM’s discretion, if a creature initially believes your lie, it might attempt a {@skill Perception} check later to Sense Motive against your Deception DC to realize it’s a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "The target believes your lie.",
 						"Failure": "The target doesn’t believe your lie and gains a +4 circumstance bonus against your attempts to Lie for the duration of your conversation. The target is also more likely to be suspicious of you in the future."
@@ -2168,7 +2103,6 @@
 			"name": "Feint",
 			"source": "CRB",
 			"page": 246,
-			"srd": true,
 			"traits": [
 				"Mental"
 			],
@@ -2187,7 +2121,7 @@
 			"entries": [
 				"With a misleading flourish, you leave an opponent unprepared for your real attack. Attempt a {@skill Deception} check against that opponent’s {@skill Perception} DC.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You throw your enemy’s defenses against you entirely off. The target is {@condition flat-footed|CRB} against melee attacks that you attempt against it until the end of your next turn.",
 						"Success": "Your foe is fooled, but only momentarily. The target is {@condition flat-footed|CRB} against the next melee attack that you attempt against it before the end of your current turn.",
@@ -2200,7 +2134,6 @@
 			"name": "Gather Information",
 			"source": "CRB",
 			"page": 246,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Secret"
@@ -2214,7 +2147,7 @@
 			"entries": [
 				"You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic. The GM determines the DC of the check and the amount of time it takes (typically 2 hours, but sometimes more), along with any benefit you might be able to gain by spending coin on bribes, drinks, or gifts.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You collect information about the individual or topic. The GM determines the specifics.",
 						"Critical Failure": "You collect incorrect information about the individual or topic."
@@ -2265,7 +2198,6 @@
 			"name": "Make an Impression",
 			"source": "CRB",
 			"page": 246,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",
@@ -2282,7 +2214,7 @@
 			"entries": [
 				"With at least 1 minute of conversation, during which you engage in charismatic overtures, flattery, and other acts of goodwill, you seek to make a good impression on someone to make them temporarily agreeable. At the end of the conversation, attempt a {@skill Diplomacy} check against the Will DC of one target, modified by any circumstances the GM sees fit. Good impressions (or bad impressions, on a critical failure) last for only the current social interaction unless the GM decides otherwise.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target’s attitude toward you improves by two steps.",
 						"Success": "The target’s attitude toward you improves by one step.",
@@ -2316,7 +2248,6 @@
 			"name": "Request",
 			"source": "CRB",
 			"page": 247,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",
@@ -2337,7 +2268,7 @@
 			"entries": [
 				"You can make a request of a creature that’s {@condition friendly|CRB} or {@condition helpful|CRB} to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target agrees to your request without qualifications.",
 						"Success": "The target agrees to your request, but they might demand added provisions or alterations to the request.",
@@ -2351,7 +2282,6 @@
 			"name": "Coerce",
 			"source": "CRB",
 			"page": 247,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",
@@ -2374,7 +2304,7 @@
 			"entries": [
 				"With threats either veiled or overt, you attempt to bully a creature into doing what you want. You must spend at least 1 minute of conversation with a creature you can see and that can either see or sense you. At the end of the conversation, attempt an {@skill Intimidation} check against the target’s Will DC, modified by any circumstances the GM determines. The attitudes referenced in the effects below are summarized in the Changing Attitudes sidebar on page 246 and described in full in the Conditions Appendix, starting on page 618.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target gives you the information you seek or agrees to follow your directives so long as they aren’t likely to harm the target in any way. The target continues to comply for an amount of time determined by the GM but not exceeding 1 day, at which point the target becomes {@condition unfriendly|CRB} (if they weren’t already {@condition unfriendly|CRB} or {@condition hostile|CRB}). However, the target is too scared of you to retaliate—at least in the short term.",
 						"Success": "As critical success, but once the target becomes {@condition unfriendly|CRB}, they might decide to act against you—for example, by reporting you to the authorities or assisting your enemies.",
@@ -2388,7 +2318,6 @@
 			"name": "Demoralize",
 			"source": "CRB",
 			"page": 247,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",
@@ -2409,7 +2338,7 @@
 			"entries": [
 				"With a sudden shout, a well-timed taunt, or a cutting putdown, you can shake an enemy’s resolve. Choose a creature within 30 feet of you who you’re aware of. Attempt an {@skill Intimidation} check against that target’s Will DC. If the target does not understand the language you are speaking, you’re not speaking a language, or they can’t hear you, you take a –4 circumstance penalty to the check. Regardless of your result, the target is temporarily immune to your attempts to Demoralize it for 10 minutes.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target becomes {@condition frightened|CRB} 2.",
 						"Success": "The target becomes {@condition frightened|CRB} 1."
@@ -2421,7 +2350,6 @@
 			"name": "Administer First Aid",
 			"source": "CRB",
 			"page": 248,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -2447,7 +2375,7 @@
 					]
 				},
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "If you’re trying to stabilize, the creature loses the {@condition dying|CRB} condition (but remains {@condition unconscious|CRB}). If you’re trying to stop bleeding, the creature attempts a flat check to end the bleeding.",
 						"Critical Failure": "If you were trying to stabilize, the creature’s {@condition dying|CRB} value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its {@condition persistent damage|CRB|persistent bleed damage}."
@@ -2459,7 +2387,6 @@
 			"name": "Treat Disease",
 			"source": "CRB",
 			"page": 248,
-			"srd": true,
 			"traits": [
 				"Downtime",
 				"Manipulate"
@@ -2479,7 +2406,7 @@
 			"entries": [
 				"You spend at least 8 hours caring for a diseased creature. Attempt a {@skill Medicine} check against the disease’s DC. After you attempt to Treat a Disease for a creature, you can’t try again until after that creature’s next save against the disease.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the disease.",
 						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the disease.",
@@ -2492,7 +2419,6 @@
 			"name": "Treat Poison",
 			"source": "CRB",
 			"page": 248,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -2511,7 +2437,7 @@
 			"entries": [
 				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison’s DC. After you attempt to Treat a Poison for a creature, you can’t try again until after the next time that creature attempts a save against the poison.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You grant the creature a +4 circumstance bonus to its next saving throw against the poison.",
 						"Success": "You grant the creature a +2 circumstance bonus to its next saving throw against the poison.",
@@ -2524,7 +2450,6 @@
 			"name": "Treat Wounds",
 			"source": "CRB",
 			"page": 248,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Healing",
@@ -2548,7 +2473,7 @@
 				"If you succeed at your check, you can continue treating the target to grant additional healing. If you treat them for a total of 1 hour, double the Hit Points they regain from Treat Wounds.",
 				"The result of your {@skill Medicine} check determines how many Hit Points the target regains.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target regains {@dice 4d8} Hit Points, and its wounded condition is removed.",
 						"Success": "The target regains {@dice 2d8} Hit Points, and its wounded condition is removed.",
@@ -2561,7 +2486,6 @@
 			"name": "Command an Animal",
 			"source": "CRB",
 			"page": 249,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate"
@@ -2582,7 +2506,7 @@
 				"You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).",
 				"Most animals know the {@action Leap|CRB}, {@action Seek|CRB}, {@action Stand|CRB}, {@action Stride|CRB}, and {@action Strike|CRB} basic actions. If an animal knows an activity, such as a horse’s Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity’s number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to Stride three times or to Stride twice and then Strike.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "The animal does as you command on its next turn.",
 						"Failure": "The animal is hesitant or resistant, and it does nothing.",
@@ -2595,7 +2519,6 @@
 			"name": "Perform",
 			"source": "CRB",
 			"page": 250,
-			"srd": true,
 			"traits": [
 				"Concentrate"
 			],
@@ -2613,7 +2536,7 @@
 			"entries": [
 				"When making a brief performance—one song, a quick dance, or a few jokes—you use the Perform action. This action is most useful when you want to prove your capability or impress someone quickly. Performing rarely has an impact on its own, but it might influence the DCs of subsequent {@skill Diplomacy} checks against the observers—or even change their attitudes— if the GM sees fit.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "Your performance impresses the observers, and they’re likely to share stories of your ability.",
 						"Success": "You prove yourself, and observers appreciate the quality of your performance.",
@@ -2666,7 +2589,6 @@
 			"name": "Create Forgery",
 			"source": "CRB",
 			"page": 251,
-			"srd": true,
 			"traits": [
 				"Downtime",
 				"Secret"
@@ -2683,7 +2605,7 @@
 				"If your check result was below 20, the forgery has some obvious signs of being a fake, so the GM compares your result to each passive observer’s {@skill Perception} DC or Society DC, whichever is higher, using the success or failure results below. Once the GM rolls your check for a document, that same result is used against all passive observers’ DCs no matter how many creatures passively observe that document.",
 				"An observer who was fooled on a passive glance can still choose to closely scrutinize the documents on the lookout for a forgery, using different techniques and analysis methods beyond the surface elements you successfully forged with your original check. In that case, the observer can attempt a {@skill Perception} or {@skill Society} check against your {@skill Society} DC (if they succeed, they know your document is a forgery).",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "The observer does not detect the forgery.",
 						"Failure": "The observer knows your document is a forgery."
@@ -2695,7 +2617,6 @@
 			"name": "Conceal an Object",
 			"source": "CRB",
 			"page": 251,
-			"srd": true,
 			"traits": [
 				"Manipulate",
 				"Secret"
@@ -2715,7 +2636,7 @@
 				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your {@skill Stealth} check and compares it to this passive observer’s {@skill Perception} DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a {@skill Perception} check against your {@skill Stealth} DC (finding the object on success).",
 				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their {@skill Perception} check results to your {@skill Stealth} DC to determine whether they find the object.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "The object remains {@condition undetected|CRB}.",
 						"Failure": "The searcher finds the object."
@@ -2727,7 +2648,6 @@
 			"name": "Hide",
 			"source": "CRB",
 			"page": 251,
-			"srd": true,
 			"traits": [
 				"Secret"
 			],
@@ -2745,7 +2665,7 @@
 			"entries": [
 				"You huddle behind cover or greater cover or deeper into concealment to become hidden, rather than observed. The GM rolls your {@skill Stealth} check in secret and compares the result to the {@skill Perception} DC of each creature you’re observed by but that you have cover or greater cover against or are concealed from. You gain the circumstance bonus from cover or greater cover to your check.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": [
 							"If the creature could see you, you’re now hidden from it instead of observed. If you were hidden from or undetected by the creature, you retain that condition.",
@@ -2760,7 +2680,6 @@
 			"name": "Sneak",
 			"source": "CRB",
 			"page": 252,
-			"srd": true,
 			"traits": [
 				"Move",
 				"Secret"
@@ -2780,7 +2699,7 @@
 				"You can attempt to move to another place while becoming or staying {@condition undetected|CRB}. {@action Stride|CRB} up to half your Speed. (You can use Sneak while {@action Burrow|CRB|Burrowing}, {@action Climb|CRB|Climbing}, {@action Fly|CRB|Flying}, or {@action Swim|CRB|Swimming} instead of Striding if you have the corresponding movement type; you must move at half that Speed.)",
 				"If you’re {@condition undetected|CRB} by a creature and it’s impossible for that creature to observe you (for a typical creature, this includes when you’re {@condition invisible|CRB}, the observer is {@condition blinded|CRB}, or you’re in darkness and the creature can’t see in darkness), for any critical failure you roll on a check to Sneak, you get a failure instead. You also continue to be {@condition undetected|CRB} if you lose cover or greater cover against or are no longer concealed from such a creature. At the end of your movement, the GM rolls your {@skill Stealth} check in secret and compares the result to the {@skill Perception} DC of each creature you were {@condition hidden|CRB} from or {@condition undetected|CRB} by at the start of your movement. If you have cover or greater cover from the creature throughout your {@action Stride|CRB}, you gain the +2 circumstance bonus from cover (or +4 from greater cover) to your {@skill Stealth} check. Because you’re moving, the bonus increase from {@action Take Cover|CRB|Taking Cover} doesn’t apply. You don’t get to roll against a creature if, at the end of your movement, you neither are concealed from it nor have cover or greater cover against it. You automatically become {@condition observed|CRB} by such a creature.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": [
 							"You’re {@condition undetected|CRB} by the creature during your movement and remain {@condition undetected|CRB} by the creature at the end of it.",
@@ -2797,7 +2716,6 @@
 			"name": "Sense Direction",
 			"source": "CRB",
 			"page": 252,
-			"srd": true,
 			"traits": [
 				"Exploration",
 				"Secret"
@@ -2811,7 +2729,7 @@
 			"entries": [
 				"Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild. Typically, you attempt a {@skill Survival} check only once per day, but some environments or changes might necessitate rolling more often. The GM determines the DC and how long this activity takes (usually just a minute or so). More unusual locales or those you’re unfamiliar with might require you to have a minimum proficiency rank to Sense Direction. Without a compass, you take a –2 item penalty to checks to Sense Direction.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You get an excellent sense of where you are. If you are in an environment with cardinal directions, you know them exactly",
 						"Success": "You gain enough orientation to avoid becoming hopelessly lost. If you are in an environment with cardinal directions, you have a sense of those directions."
@@ -2862,7 +2780,6 @@
 			"name": "Cover Tracks",
 			"source": "CRB",
 			"page": 252,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -2883,7 +2800,6 @@
 			"name": "Track",
 			"source": "CRB",
 			"page": 252,
-			"srd": true,
 			"traits": [
 				"Concentrate",
 				"Exploration",
@@ -2899,7 +2815,7 @@
 				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the {@trait exploration} trait, but you might need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
 				"You attempt your {@skill Survival} check when you start Tracking, once every hour you continue tracking, and any time something significant changes in the trail. The GM determines the DCs for such checks, depending on the freshness of the trail, the weather, and the type of ground.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You find the trail or continue to follow the one you’re already following.",
 						"Failure": "You lose the trail but can try again after a 1-hour delay.",
@@ -2951,7 +2867,6 @@
 			"name": "Palm an Object",
 			"source": "CRB",
 			"page": 253,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -2969,7 +2884,7 @@
 			"entries": [
 				"Palming a small, unattended object without being noticed requires you to roll a single {@skill Thievery} check against the {@skill Perception} DCs of all creatures who are currently observing you. You take the object whether or not you successfully conceal that you did so. You can typically only Palm Objects of negligible Bulk, though the GM might determine otherwise depending on the situation.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "The creature does not notice you Palming the Object.",
 						"Failure": "The creature notices you Palming the Object, and the GM determines the creature’s response."
@@ -2981,7 +2896,6 @@
 			"name": "Steal",
 			"source": "CRB",
 			"page": 253,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -3001,7 +2915,7 @@
 				"Attempt a {@skill Thievery} check to determine if you successfully Steal the object. The DC to Steal is usually the {@skill Perception} DC of the creature wearing the object. This assumes the object is worn but not closely guarded (like a loosely carried pouch filled with coins, or an object within such a pouch). If the object is in a pocket or similarly protected, you take a –5 penalty to your {@skill Thievery} check. The GM might increase the DC of your check if the nature of the object makes it harder to steal (such as a very small item in a large pack, or a sheet of parchment mixed in with other documents).",
 				"You might also need to compare your {@skill Thievery} check result against the {@skill Perception} DCs of observers other than the person wearing the object. The GM may increase the {@skill Perception} DCs of these observers if they’re distracted.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Success": "You steal the item without the bearer noticing, or an observer doesn’t see you take or attempt to take the item.",
 						"Failure": "The item’s bearer notices your attempt before you can take the object, or an observer sees you take or attempt to take the item. The GM determines the response of any creature that notices your theft."
@@ -3013,7 +2927,6 @@
 			"name": "Disable a Device",
 			"source": "CRB",
 			"page": 253,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -3033,7 +2946,7 @@
 				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves’ tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.",
 				"Your {@skill Thievery} check result determines how much progress you make.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You disable the device, or you achieve two successes toward disabling a complex device. You leave no trace of your tampering, and you can rearm the device later, if that type of device can be rearmed.",
 						"Success": "You disable the device, or you achieve one success toward disabling a complex device.",
@@ -3046,7 +2959,6 @@
 			"name": "Pick a Lock",
 			"source": "CRB",
 			"page": 253,
-			"srd": true,
 			"traits": [
 				"Manipulate"
 			],
@@ -3065,7 +2977,7 @@
 			"entries": [
 				"Opening a lock without a key is very similar to {@action Disable a Device|CRB|Disabling a Device}, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.",
 				{
-					"type": "success_degree",
+					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You unlock the lock, or you achieve two successes toward opening a complex lock. You leave no trace of your tampering.",
 						"Success": "You open the lock, or you achieve one success toward opening a complex lock.",
@@ -3078,7 +2990,6 @@
 			"name": "Avoid Notice",
 			"source": "CRB",
 			"page": 479,
-			"srd": true,
 			"traits": [
 				"Exploration"
 			],
@@ -3090,7 +3001,6 @@
 			"name": "Defend",
 			"source": "CRB",
 			"page": 479,
-			"srd": true,
 			"traits": [
 				"Exploration"
 			],
@@ -3102,7 +3012,6 @@
 			"name": "Follow the Expert",
 			"source": "CRB",
 			"page": 479,
-			"srd": true,
 			"traits": [
 				"Auditory",
 				"Concentrate",

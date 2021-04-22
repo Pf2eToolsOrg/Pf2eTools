@@ -11,7 +11,7 @@
       "entries": [
         "You transform the target into an animated object with a level up to that allowed by Table 7–1 and of a type corresponding to the object (so a broom would become an animated broom).",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The target becomes an animated object of the appropriate type. If it’s at least 4 levels lower than you, you can make it a minion. This gives it the minion trait, meaning it can use 2 actions when you {@spell command|CRB} it, and commanding it is a single action that has the auditory and concentrate traits. You can have a maximum of four minions under your control. If it doesn’t become a minion, you can give it one simple {@spell command|CRB}. It pursues that goal single‑mindedly, ignoring any of your subsequent commands.",
             "Success": "As critical success, except an animated object that doesn’t become your minion stays in place and attacks anyone that attacks it or tries to steal or move it, rather than following your {@spell command|CRB}.",
@@ -26,17 +26,17 @@
         "entry": "1 day"
       },
       "cost": "rare oils, see Table 7–1",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (expert)",
         "skills": [
           "Arcana"
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Crafting}",
         "skills": [
           "Crafting"
@@ -74,7 +74,7 @@
       "entries": [
         "You attempt to help a truly penitent creature atone for its misdeeds, typically actions contrary to your deity’s alignment or anathema to your deity. If the creature isn’t truly penitent, the outcome is always a critical failure. This ritual uses {@skill Nature} if the target is a {@class druid|CRB}, and {@skill Religion} in all other cases.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The creature receives absolution for its misdeeds, allowing it to regain standing with your deity. It returns to its previous alignment (if its alignment shifted) and regains any abilities it lost. Before the atonement is complete, the creature must perform a special quest or other task chosen by your deity, as befits its misdeeds. If completed during downtime, this task should take no less than 1 month. For 1 month, the target receives divine insight just before performing an act that would be anathema to your deity or contrary to your deity’s alignment.",
             "Success": "As critical success, but the creature gains no special insight regarding its subsequent actions.",
@@ -89,11 +89,11 @@
         "entry": "1 day"
       },
       "cost": "rare incense and offerings worth a total value of 20 gp × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1,
         "note": "must be the ritual’s target"
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} or {@skill Religion} (expert)",
         "skills": [
           "Nature",
@@ -101,7 +101,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Nature} or {@skill Religion} (whichever is used for the primary check)",
         "skills": [
           "Nature",
@@ -146,7 +146,7 @@
       "entries": [
         "You grant intelligence to the target, transforming it into a beast. If it was previously an animal companion or minion, it can no longer serve as one.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The target’s Intelligence, Wisdom, and Charisma modifiers each increase to +2 if they were lower, and it becomes {@condition helpful} to you for awakening it.",
             "Success": "The target’s Intelligence, Wisdom, and Charisma modifiers increase to +0 if they were worse and it becomes {@condition friendly} to you for awakening it.",
@@ -161,17 +161,17 @@
         "entry": "1 day"
       },
       "cost": "herbs, 1/5 the value on Table 7–1",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 3
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (master)",
         "skills": [
           "Nature"
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Lore} (any), {@skill Society}, {@skill Survival}",
         "skills": [
           "Lore",
@@ -213,7 +213,7 @@
       "entries": [
         "You twist and stunt plants in the area, causing them to wither. In addition to other dangers from failing plant life, this decreases the crop yield for farms. If you cast this ritual in an area affected by plant growth, blight attempts to counteract plant growth instead of producing its usual effect.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "Completely spoil the crop yield in the area, or decrease the yield by half in an area with up to a 1-mile radius.",
             "Success": "Decease the crop yield in the area by half.",
@@ -228,17 +228,17 @@
         "entry": "1 day"
       },
       "cost": null,
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (expert)",
         "skills": [
           "Nature"
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Survival}",
         "skills": [
           "Survival"
@@ -282,7 +282,7 @@
         "You tear the {@spell veil|CRB} to the afterlife and call a spirit from its final resting place. You must call the spirit by name, and you must provide a connection to the spirit, such as a {@spell possession|CRB}, a garment, or a piece of its corpse. A spirit unwilling to heed your call can attempt a Will save to avoid it; on a critical success, a trickster spirit Impersonates the spirit you meant to call. The DC of the Will save is 2 lower if you haven’t met the spirit in life.",
         "Either way, the spirit appears as a wispy form of the creature you meant to call. Each minute of the duration, you can ask the spirit a question. It can answer how it pleases or even refuse to answer. If the spirit isn’t in the afterlife (such as if it’s an undead), all results other than critical failures use the failure effect.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The spirit is particularly cooperative, and even if it has strong reasons to deceive you, it takes a –2 circumstance penalty to its {@skill Deception} checks.",
             "Success": "You call the spirit.",
@@ -297,10 +297,10 @@
         "entry": "1 hour"
       },
       "cost": "rare candles and incense worth a total value of 50 gp",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Occultism} (expert) or {@skill Religion} (expert)",
         "skills": [
           "Occultism",
@@ -308,7 +308,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Occultism} or {@skill Religion} (whichever isn’t\nused for the primary check)",
         "skills": [
           "Occultism",
@@ -346,9 +346,9 @@
         "Prediction"
       ],
       "entries": [
-        "You call upon an unknown planar entity to answer questions; this is a servitor of your deity if you have one and use {@skill Religion}. You can ask up to seven questions that could be answered with “Yes” or “No.” The entity is likely to know answers related to its purview; a servitor of Gozreh would likely know about unnatural weather patterns and a servitor of Desna would likely know someone’s travel route. The entity answers with one word answers such as “Yes,” “No,” “Likely,” and “Unknown,” though its answers always reflect its own agenda and could be deceptive.",
+        "You call upon an unknown planar entity to answer questions; this is a servitor of your deity if you have one and use {@skill Religion}. You can ask up to seven questions that could be answered with “Yes” or “No.” The entity is likely to know answers related to its purview; a servitor of Gozreh would likely know about unnatural weather patterns and a servitor of {@deity Desna} would likely know someone’s travel route. The entity answers with one word answers such as “Yes,” “No,” “Likely,” and “Unknown,” though its answers always reflect its own agenda and could be deceptive.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You contact a more powerful entity aligned strongly with your interests, possibly even your deity. The entity won’t attempt to deceive you, though it still might not know the answers. When it’s important to provide clarity, the entity will answer your questions with up to five words, such as “If you leave immediately” or “That was true once.”",
             "Success": "You can ask your questions and receive answers.",
@@ -363,10 +363,10 @@
         "entry": "1 day"
       },
       "cost": "rare incense worth a total value of 150 gp;",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Occultism} (master) or {@skill Religion} (master)",
         "skills": [
           "Occultism",
@@ -374,7 +374,7 @@
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Occultism} or {@skill Religion} (whichever is used\nfor the primary check)",
         "skills": [
           "Occultism",
@@ -420,17 +420,17 @@
         "entry": "1 day"
       },
       "cost": "rare incense worth a total value of 60 gp;",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (master)",
         "skills": [
           "Nature"
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Nature}",
         "skills": [
           "Nature"
@@ -467,9 +467,9 @@
         "Evocation"
       ],
       "entries": [
-        "You consecrate a site to your deity, chanting praises and creating a sacred space. While within the area, worshippers of your deity gain a +1 status bonus to attack rolls, skill checks, saving throws, and Perception checks, and creatures anathema to your deity (such as undead for Pharasma or Sarenrae) take a –1 status penalty to those checks. Attacks made by worshippers of your deity within the area deal 1 damage of one of your deity’s alignment types (your choice); if your deity is true neutral, you don’t gain this benefit.",
+        "You consecrate a site to your deity, chanting praises and creating a sacred space. While within the area, worshippers of your deity gain a +1 status bonus to attack rolls, skill checks, saving throws, and {@skill Perception} checks, and creatures anathema to your deity (such as undead for Pharasma or Sarenrae) take a –1 status penalty to those checks. Attacks made by worshippers of your deity within the area deal 1 damage of one of your deity’s alignment types (your choice); if your deity is true neutral, you don’t gain this benefit.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The consecration succeeds, and it either lasts for 10 years instead of 1 or covers an area with twice the radius. Occasionally, with your deity’s favor, this might produce an even more amazing effect, such as a permanently consecrated area or the effect covering an entire cathedral.",
             "Success": "The consecration succeeds.",
@@ -484,17 +484,17 @@
         "entry": "3 days"
       },
       "cost": "rare incense and offerings worth a total value of 20 gp × the spell level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 2,
         "note": "must be worshippers of your religion"
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Religion}",
         "skills": [
           "Religion"
         ]
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Crafting}, {@skill Performance}",
         "skills": [
           "Crafting",
@@ -557,7 +557,7 @@
           ]
         },
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You change the weather as desired and can affect a larger area (up to a 5-mile-radius circle), or a longer duration (any number of additional d12 hours, up to {@dice 16d12}).",
             "Success": "You change the weather as desired.",
@@ -572,17 +572,17 @@
         "entry": "1 day"
       },
       "cost": null,
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (master)",
         "skills": [
           "Nature"
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Survival}",
         "skills": [
           "Survival"
@@ -631,7 +631,7 @@
       "entries": [
         "You transform the target into an undead creature with a level up to that allowed in Table 7–1. There are many versions of this ritual, each specific to a particular type of undead (one ritual for all zombies, one for skeletons, one for ghouls, and so on), and the rituals that create rare undead are also rare. Some forms of undead, such as liches, form using their own unique methods and can’t be created with a version of create undead.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The target becomes an undead creature of the appropriate type. If it’s at least 4 levels lower than you, you can make it a minion. This gives it the minion trait, meaning it can use 2 actions when you {@spell command|CRB} it, and commanding it is a single action that has the auditory and concentrate traits. You can have a maximum of four minions under your control. If it’s intelligent and doesn’t become a minion, the undead is {@condition helpful} to you for awakening it, though it’s still a horrid and evil creature. If it’s unintelligent and doesn’t become a minion, you can give it one simple {@spell command|CRB}. It pursues that goal single‑mindedly, ignoring any of your subsequent commands.",
             "Success": "As critical success, except an intelligent undead that doesn’t become your minion is only {@condition friendly} to you, and an unintelligent undead that doesn’t become your minion leaves you alone unless you attack it. It marauds the local area rather than following your {@spell command|CRB}.",
@@ -646,10 +646,10 @@
         "entry": "1 day"
       },
       "cost": "black onyx, see Table 7–1",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion} (expert)",
         "skills": [
           "Arcana",
@@ -658,7 +658,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Religion}",
         "skills": [
           "Religion"
@@ -696,7 +696,7 @@
       "entries": [
         "You perform a ritual to free a creature imprisoned, {@condition petrified}, or otherwise put into stasis by any magical effects from all such effects, even effects like imprisonment that don’t have a duration, as long as freedom’s spell level is equal to or higher than the effect’s spell level. To perform the ritual, you must be within 10 feet of the target, or within 10 feet of the place where the target was imprisoned (in the case of effects that trap the creature in an unreachable prison, like the oubliette form of imprisonment). You must know the name of the creature and details of its background; if the creature is not a close associate, a failure or critical failure on a secondary {@skill Society} check reduces even a critical success on the primary check to a failure.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You free the target from all magical effects imprisoning it, petrifying it, or putting it into stasis. It gains a +1 status bonus to saving throws to resist those same magical effects for 1 week.",
             "Success": "You free the target from all magical effects imprisoning it, petrifying it, or putting it into stasis.",
@@ -711,10 +711,10 @@
         "entry": "1 day"
       },
       "cost": "valuable oils and objects associated with the target worth a total value of 100 gp × the spell level × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 2
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (legendary) or {@skill Occultism} (legendary)",
         "skills": [
           "Arcana",
@@ -722,7 +722,7 @@
         ],
         "prof": "legendary"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Society}",
         "skills": [
           "Society"
@@ -762,7 +762,7 @@
       "entries": [
         "(expert); Secondary Checks {@skill Society} or Legal {@skill Lore} Range 10 feet; Target 1 creature of a level no greater than double the geas ritual’s level Duration see text You enforce a magic rule on a willing target, forcing it to either perform or refrain from carrying out a certain act. A geas to perform an act is usually conditional, such as, “Always offer hospitality to strangers seeking a place to stay.” An unconditional geas to perform a certain act doesn’t require the target to perform that act exclusively, though it must prioritize the task above all leisurely pursuits. The most common geas to refrain from carrying out an act is a specification to avoid violating a contract. In those cases, the secondary caster usually takes charge of making sure the wording of the contract is attuned correctly with the ritual’s magic. Because the target is willing, geas can have a duration that lasts for as long as the target agrees to. If the target is unable to fulfill the geas, it becomes {@condition sickened} 1, and the {@condition sickened} condition increases by 1 for each consecutive day it is prevented from following the geas, to a maximum of {@condition sickened} 4. The {@condition sickened} condition ends immediately when it follows the geas again; it can’t remove the {@condition sickened} condition in any other way. Only powerful magic such as a {@spell wish|CRB} spell can remove the effects of geas from a willing target.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The geas succeeds, and the target receives a +1 status bonus to skill checks that directly uphold the geas (at the GM’s discretion).",
             "Success": "The geas succeeds.",
@@ -777,10 +777,10 @@
         "entry": "1 day"
       },
       "cost": null,
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion}",
         "skills": [
           "Arcana",
@@ -789,7 +789,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": null,
+      "secondaryCheck": null,
       "range": {
         "type": null
       },
@@ -841,7 +841,7 @@
           ]
         },
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You imprison the target. You can either use a form of imprisonment that usually requires 1 additional spell level, or give any creatures trying to use a freedom ritual to rescue the target a –2 circumstance penalty to checks associated with that ritual.",
             "Success": "You imprison the target.",
@@ -856,10 +856,10 @@
         "entry": "1 day"
       },
       "cost": "reagents to construct the magical prison worth a total value of 800 gp × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 6
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (legendary) or {@skill Occultism} (legendary)",
         "skills": [
           "Arcana",
@@ -867,7 +867,7 @@
         ],
         "prof": "legendary"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Crafting}, {@skill Society}",
         "skills": [
           "Crafting",
@@ -917,7 +917,7 @@
         "You win over the target’s mind, causing it to see you as a close and trusted friend and look upon your every {@spell suggestion|CRB} as reasonable. The target is {@condition helpful} toward you, so it will go out of its way to help you. As with any other {@condition helpful} creature, there are limits to what you can ask of it. If you ever ask the target to do something completely against its nature or needlessly harmful to the target or its interests, not only does it refuse, but it also can attempt a Will save to end the effect early. Because of the casting time and range, it’s generally difficult to cast this ritual unless the target is willing (perhaps convinced the ritual will have some other effect) or {@condition restrained}.",
         "If the creature is unwilling to accept the ritual, it can attempt a Will save to negate the effect.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "The ritual succeeds and the target takes a –4 status penalty to Will saves to end the effect.",
             "Success": "The ritual succeeds.",
@@ -932,8 +932,8 @@
         "entry": "1 day"
       },
       "cost": "rare oils worth a total value of 10 gp × the target’s level",
-      "secondary_casters": null,
-      "primary_check": {
+      "secondaryCasters": null,
+      "primaryCheck": {
         "entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion} (expert)",
         "skills": [
           "Arcana",
@@ -942,7 +942,7 @@
         ],
         "prof": "expert"
       },
-      "secondary_check": null,
+      "secondaryCheck": null,
       "range": {
         "type": "point",
         "entry": "10 feet",
@@ -986,7 +986,7 @@
         "You attempt to learn useful legends about a particular subject, which must be an important person, place, or thing.",
         "If the subject is present, increase the degree of success of your primary skill check by one step. If you have only vague information about the subject before attempting the ritual, decrease the degree of success of your primary skill check by one step. These modifiers cancel each other out if you have a subject present with little to no baseline information.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You recite legends, tales, and lore about the subject over the course of an hour after the ritual ends. The information is mostly coherent, emphasizing more accurate or useful legends over those exaggerated over time.",
             "Success": "You recite mysterious legends, tales, and lore about the subject over the course of an hour after the ritual ends. These provide useful information for further inquiry but are generally incomplete or enigmatic. As is the nature of legends, you are likely to learn multiple contradictory versions.",
@@ -1001,17 +1001,17 @@
         "entry": "1 day"
       },
       "cost": "rare incense worth a total value of 300 gp;",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 2
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Occultism} (master)",
         "skills": [
           "Occultism"
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Performance}, {@skill Society}",
         "skills": [
           "Performance",
@@ -1045,7 +1045,7 @@
       "entries": [
         "You call upon your deity to grant you aid in the form of a divine servitor of your deity’s choice of a level no greater than double planar ally’s spell level. While performing this ritual, the secondary casters entreat your deity, explaining what sort of assistance you need and why you need it; if the task is incredibly fitting to your deity, the GM can grant a circumstance bonus to the secondary {@skill Diplomacy} check or rule that the check is automatically a critical success. If the ritual succeeds, you must offer the servitor payment depending on factors such as the duration and danger of the task. Payment always costs at least as much as a consumable item of the creature’s level, even for a short and simple task, and it often costs as much as a permanent magic item of the creature’s level to persuade a creature to fight alongside you. If you use the ritual without good reason, the result is automatically a critical failure.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "Your deity sends a servitor, and the servitor’s payment costs only half as much as normal. If you ask for a particular servitor by name, your deity is likely to send that servitor unless the servitor is busy.",
             "Success": "Your deity sends a servitor.",
@@ -1060,18 +1060,18 @@
         "entry": "1 day"
       },
       "cost": "rare incense and offerings worth a total value of 2 gp × the spell level × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 2,
         "note": "must share your religion"
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Religion} (expert)",
         "skills": [
           "Religion"
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Diplomacy}",
         "skills": [
           "Diplomacy"
@@ -1112,7 +1112,7 @@
         "You can also leave out this step, removing the need for a {@skill Crafting} check, with the same result (if you’re summoning a good outsider you trust, for example). The creature can also attack or leave if you use any {@condition hostile} action against it or if the warding diagram breaks. Once the diagram is complete, you and the secondary casters each take your places at specific points at the diagram’s edge where power concentrates.",
         "You conjure the extraplanar creature within your wards and negotiate a deal with it, generally to perform a task for you in exchange for payment. A creature that doesn’t {@spell wish|CRB} to negotiate at all can attempt a Will save to stay on its home plane. Most good and neutral extraplanar creatures feel that they have something better to do than cater to the whims of mortals and require a significant gift, especially if your task poses significant risks. Evil extraplanar creatures are more likely to accept a bargain for a lower cost as long as it allows them to wreak havoc on the Material Plane or inflict evil upon the world [[insert art: planar binding]] along the way. Monetary prices usually range from the cost of a consumable item of the creature’s level for a short and simple task to a permanent magic item of the creature’s level or more to persuade the creature to fight alongside you. However, some extraplanar creatures may want payments other than money, such as permission to cast a geas on you to fulfill an unspecified later favor or obtain ownership of your soul via an infernal contract. If you can’t come to an agreement in a reasonable length of time after you’ve made your case, the extraplanar creature can return from whence it came at any time.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You call the extraplanar creature and bind it in the wards for up to a full day before it returns home, potentially allowing you to negotiate a better deal by threatening to leave it in the wards for the full day.",
             "Success": "You call the extraplanar creature.",
@@ -1127,10 +1127,10 @@
         "entry": "1 day"
       },
       "cost": "warding diagram ingredients worth a total value of 2 gp × the spell level × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 4
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Arcana} (master) or {@skill Occultism} (master)",
         "skills": [
           "Arcana",
@@ -1138,7 +1138,7 @@
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Crafting}; {@skill Diplomacy} or {@skill Intimidation}; {@skill Arcana} or {@skill Occultism} (whichever isn’t used for the primary check)",
         "skills": [
           "Arcana",
@@ -1188,7 +1188,7 @@
         "You cause the plants within the area to be healthier and more fruitful. In addition to other benefits of healthy plants, this increases the crop yield for farms, depending on your success.",
         "If you cast it in the area of a blight, plant growth attempts to counteract the blight instead of producing its usual effect.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "Double the crop yield in the area, or increase the area to a 1-mile radius.",
             "Success": "Increase the crop yield in the area by one-third.",
@@ -1203,17 +1203,17 @@
         "entry": "1 day"
       },
       "cost": null,
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 1
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (expert)",
         "skills": [
           "Nature"
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "Farming {@skill Lore} or {@skill Survival}",
         "skills": [
           "Lore",
@@ -1264,17 +1264,17 @@
         "entry": "1 day"
       },
       "cost": "faerie circle ingredients worth a total value of 1 gp × the spell level × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 4
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Nature} (master)",
         "skills": [
           "Nature"
         ],
         "prof": "master"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Crafting}, {@skill Diplomacy}, {@skill Survival}",
         "skills": [
           "Crafting",
@@ -1320,7 +1320,7 @@
       "entries": [
         "You attempt to call forth the target’s soul and return it to its body. This requires the target’s body to be present and relatively intact. The target must have died within the past year. If Pharasma has decided that the target’s time has come or the target doesn’t {@spell wish|CRB} to return, this ritual automatically fails, but you discover this after the successful {@skill Religion} check and can end the ritual without paying the cost.",
         {
-          "type": "success_degree",
+          "type": "successDegree",
           "entries": {
             "Critical Success": "You resurrect the target. They return to life with full Hit Points and the same spells prepared and points in their pools they had when they died, and still suffering from any long-term debilitations of the old body. The target meets an agent of their deity during the resurrection who inspires them, granting them a +1 status bonus to attack rolls, Perception, saving throws, and skill checks for 1 week. The target is also permanently changed in some way by their time in the afterlife, such as gaining a slight personality shift, a streak of white in the hair, or a strange new birthmark.",
             "Success": "As critical success, except the target returns to life with 1 Hit Point and no spells prepared or points in any pools, and still is affected by any long-term debilitations of the old body. Instead of inspiring them, the character’s time in the Boneyard has left them temporarily debilitated. The target is {@condition clumsy} 1, {@condition drained} 1, and {@condition enfeebled} 1 for 1 week; these conditions can’t be removed or reduced by any means until the week has passed.",
@@ -1335,17 +1335,17 @@
         "entry": "1 day"
       },
       "cost": "diamonds worth a total value of 75 gp × the target’s level",
-      "secondary_casters": {
+      "secondaryCasters": {
         "number": 2
       },
-      "primary_check": {
+      "primaryCheck": {
         "entry": "{@skill Religion} (expert)",
         "skills": [
           "Religion"
         ],
         "prof": "expert"
       },
-      "secondary_check": {
+      "secondaryCheck": {
         "entry": "{@skill Medicine}, {@skill Society}",
         "skills": [
           "Medicine",
