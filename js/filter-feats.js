@@ -64,7 +64,7 @@ class PageFilterFeats extends PageFilter {
 			feat._fType.push("Archetype");
 		}
 		feat._slType = feat._fType
-		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General", 1));
+		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General"), 1);
 		feat._slType = feat._slType.sort(SortUtil.ascSort).join(", ")
 		feat._fTime = feat.activity != null ? feat.activity.unit : "";
 		feat._fMisc = [];
