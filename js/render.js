@@ -4110,7 +4110,7 @@ Renderer.item = {
 			// TODO: links to items?
 		}
 		if (item.damage) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${item.damageType}`)}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}</p>`);
 			// TODO: links to items?
 		}
 		if (item.hands) {
