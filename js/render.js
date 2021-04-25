@@ -4109,6 +4109,14 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${item.ammunition}</p>`);
 			// TODO: links to items?
 		}
+		if (item.damage) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${item.damageType}`)}</p>`);
+			// TODO: links to items?
+		}
+		if (item.hands) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands </strong>${item.hands}</p>`);
+			// TODO: links to items?
+		}
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.usage != null) renderStack.push(`<strong>Usage </strong>${item.usage}`)
