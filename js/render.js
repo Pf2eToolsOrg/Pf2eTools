@@ -4106,16 +4106,17 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
 		}
 		if (item.ammunition) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${item.ammunition}</p>`);
-			// TODO: links to items?
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}</p>`);
 		}
 		if (item.damage) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}</p>`);
 			// TODO: links to items?
+			// Unsure what this means - MrVauxs
 		}
 		if (item.hands) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands </strong>${item.hands}</p>`);
 			// TODO: links to items?
+			// Unsure what this means - MrVauxs
 		}
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
