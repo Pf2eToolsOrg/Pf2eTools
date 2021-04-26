@@ -4106,8 +4106,17 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
 		}
 		if (item.ammunition) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${item.ammunition}</p>`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}</p>`);
+		}
+		if (item.damage) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}</p>`);
 			// TODO: links to items?
+			// Unsure what this means - MrVauxs
+		}
+		if (item.hands) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands </strong>${item.hands}</p>`);
+			// TODO: links to items?
+			// Unsure what this means - MrVauxs
 		}
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
@@ -4119,6 +4128,7 @@ Renderer.item = {
 		if (item.ac != null || item.dexCap != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.ac != null) renderStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}`)
+			if (item.ac2 != null) renderStack.push(`/${Parser.numToBonus(item.ac2)}`)
 			if (item.ac != null && item.dexCap != null) renderStack.push("; ")
 			if (item.dexCap != null) renderStack.push(`<strong>Dex Cap </strong>${Parser.numToBonus(item.dexCap)}`)
 			renderStack.push(`</p>`);
@@ -4126,8 +4136,8 @@ Renderer.item = {
 		if (item.str != null || item.checkPen != null || item.speedPen != null) {
 			let tempStack = []
 			if (item.str != null) tempStack.push(`<strong>Strength </strong>${item.str}`)
-			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty </strong>${item.speedPen ? `${item.checkPen}` : "\u2014"}`)
-			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty </strong>${item.speedPen ? `${item.speedPen} ft.` : "\u2014"}`)
+			if (item.checkPen != null) tempStack.push(`<strong>Check Penalty </strong>${item.speedPen ? `–${item.checkPen}` : "\u2014"}`)
+			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty </strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
 		if (item.group != null) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Group </strong>${renderer.render(item.group)}</p>`)
