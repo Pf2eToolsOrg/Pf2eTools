@@ -18,13 +18,14 @@ class PageFilterFeats extends PageFilter {
 			header: "Traits",
 			discardCategories: {
 				Class: true,
-				Ancestry: true,
+				"Ancestry & Heritage": true,
+				"Archetype": true,
 				Creature: true,
 				"Creature Type": true,
 			},
 		});
 		this._ancestryFilter = new Filter({header: "Ancestries", isHiddenFilter: !!opts.ancFilterHidden})
-		this._archetypeFilter = new Filter({header: "Archetypes", isHiddenFilter: !!opts.archFilterHidden})
+		this._archetypeFilter = new Filter({header: "Archetypes", items: ["Archetype"], isHiddenFilter: !!opts.archFilterHidden})
 		this._classFilter = new Filter({header: "Classes", isHiddenFilter: !!opts.classFilterHidden})
 		this._skillFilter = new Filter({header: "Skills", isHiddenFilter: !!opts.skillFilterHidden})
 		this._miscFilter = new Filter({
@@ -48,6 +49,7 @@ class PageFilterFeats extends PageFilter {
 	mutateForFilters (feat) {
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
 		feat._fType = [];
+		if (feat.featType == null) feat.featType = {};
 		if (feat.featType.class !== false) {
 			feat._fType.push("Class");
 		}
@@ -83,8 +85,6 @@ class PageFilterFeats extends PageFilter {
 		this._traitsFilter.addItem(feat.traits);
 		if (typeof (feat.featType.ancestry) !== "boolean") this._ancestryFilter.addItem(feat.featType.ancestry);
 		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
-		// FIXME: remove next line, and fix below once archetype data is correct
-		if (feat.farchetype) this._archetypeFilter.addItem("Archetype");
 		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
 		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
 		this._sourceFilter.addItem(feat.source);
@@ -106,6 +106,9 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	toDisplay (values, ft) {
+		if (ft.featType == null) {
+			console.log(ft)
+		}
 		return this._filterBox.toDisplay(
 			values,
 			ft.source,

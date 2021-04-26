@@ -486,10 +486,12 @@ const ScaleCreature = {
 		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += 2));
-		creature.spellcasting.forEach(sc => {
-			if (sc.DC) sc.DC += 2;
-			if (sc.attack) sc.attack += 2;
-		});
+		if (creature.spellcasting != null) {
+			creature.spellcasting.forEach(sc => {
+				if (sc.DC) sc.DC += 2;
+				if (sc.attack) sc.attack += 2;
+			});
+		}
 		creature.attacks.forEach(a => {
 			a.attack += 2;
 			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
@@ -566,10 +568,12 @@ const ScaleCreature = {
 		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] -= 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] -= 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] -= 2));
-		creature.spellcasting.forEach(sc => {
-			if (sc.DC) sc.DC -= 2;
-			if (sc.attack) sc.attack -= 2;
-		});
+		if (creature.spellcasting != null) {
+			creature.spellcasting.forEach(sc => {
+				if (sc.DC) sc.DC -= 2;
+				if (sc.attack) sc.attack -= 2;
+			});
+		}
 		creature.attacks.forEach(a => {
 			a.attack -= 2;
 			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
@@ -878,7 +882,7 @@ const ScaleCreature = {
 						const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
 						return `@damage ${this._scaleDice(m[1], scaleTo)}`;
 					});
-				} else throw new Error(`Unhandled entry type.`);
+				} else throw new Error(`Unhandled entry type ${typeof e}.`);
 				return e;
 			});
 			return ab

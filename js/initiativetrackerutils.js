@@ -140,16 +140,6 @@ InitiativeTrackerUtil.CONDITIONS = [
 		name: k,
 		color: Parser.CONDITION_TO_COLOR[k],
 	})),
-	{
-		name: "Drunk",
-		color: "#ffcc00",
-		condName: null,
-	},
-	{
-		name: "!!On Fire!!",
-		color: "#ff6800",
-		condName: null,
-	},
 ].sort((a, b) => SortUtil.ascSortLower(a.name.replace(/\W+/g, ""), b.name.replace(/\W+/g, "")));
 
 class InitiativeTrackerPlayerUi {

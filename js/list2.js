@@ -19,6 +19,7 @@ class ListItem {
 			if (!v) continue;
 			searchText += `${v} - `;
 		}
+		if (this.name !== StrUtil.getNamePart(this.name)) searchText += StrUtil.getNamePart(this.name);
 		this.searchText = searchText.toLowerCase();
 
 		this._isSelected = false;

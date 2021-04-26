@@ -7,7 +7,7 @@ const DOWN = "DOWN";
 const AX_X = "AXIS_X";
 const AX_Y = "AXIS_Y";
 
-const EVT_NAMESPACE = ".dm_screen";
+const EVT_NAMESPACE = ".gm_screen";
 
 const TITLE_LOADING = "Loading...";
 
@@ -18,7 +18,7 @@ const PANEL_TYP_TEXTBOX = 3;
 const PANEL_TYP_RULES = 4;
 const PANEL_TYP_INITIATIVE_TRACKER = 5;
 const PANEL_TYP_UNIT_CONVERTER = 6;
-const PANEL_TYP_CREATURE_SCALED_CR = 7;
+const PANEL_TYP_CREATURE_SCALED_LVL = 7;
 const PANEL_TYP_TIME_TRACKER = 8;
 const PANEL_TYP_MONEY_CONVERTER = 9;
 const PANEL_TYP_TUBE = 10;
@@ -47,7 +47,7 @@ class Board {
 	constructor () {
 		this.panels = {};
 		this.exiledPanels = [];
-		this.$creen = $(`.dm-screen`);
+		this.$creen = $(`.gm-screen`);
 		this.width = this.getInitialWidth();
 		this.height = this.getInitialHeight();
 		this.sideMenu = new SideMenu(this);
@@ -167,7 +167,7 @@ class Board {
 	}
 
 	doShowLoading () {
-		$(`<div class="dm-screen-loading"><span class="initial-message">Loading...</span></div>`).css({
+		$(`<div class="gm-screen-loading"><span class="initial-message">Loading...</span></div>`).css({
 			gridColumnStart: "1",
 			gridColumnEnd: String(this.width + 1),
 			gridRowStart: "1",
@@ -176,7 +176,7 @@ class Board {
 	}
 
 	doHideLoading () {
-		this.$creen.find(`.dm-screen-loading`).remove();
+		this.$creen.find(`.gm-screen-loading`).remove();
 	}
 
 	async pInitialise () {
@@ -591,11 +591,11 @@ class SideMenu {
 			this.board.isLocked = !this.board.isLocked;
 			if (this.board.isLocked) {
 				this.board.disablePanelMoves();
-				$(`body`).addClass(`dm-screen-locked`);
+				$(`body`).addClass(`gm-screen-locked`);
 				$btnLockPanels.children(`span`).removeClass(`fa-lock-open`).addClass(`fa-lock`);
 				$btnLockPanels.addClass(`btn-danger`).removeClass(`btn-success`);
 			} else {
-				$(`body`).removeClass(`dm-screen-locked`);
+				$(`body`).removeClass(`gm-screen-locked`);
 				$btnLockPanels.children(`span`).addClass(`fa-lock-open`).removeClass(`fa-lock`);
 				$btnLockPanels.removeClass(`btn-danger`).addClass(`btn-success`);
 			}
@@ -607,7 +607,7 @@ class SideMenu {
 		const $wrpSaveLoadFile = $(`<div class="sidemenu__row flex-vh-center-around"/>`).appendTo($wrpSaveLoad);
 		const $btnSaveFile = $(`<button class="btn btn-primary">Save to File</button>`).appendTo($wrpSaveLoadFile);
 		$btnSaveFile.on("click", () => {
-			DataUtil.userDownload(`dm-screen`, this.board.getSaveableState());
+			DataUtil.userDownload(`gm-screen`, this.board.getSaveableState());
 		});
 		const $btnLoadFile = $(`<button class="btn btn-primary">Load from File</button>`).appendTo($wrpSaveLoadFile);
 		$btnLoadFile.on("click", async () => {
@@ -793,12 +793,12 @@ class Panel {
 					handleTabRenamed(p);
 					return p;
 				}
-				case PANEL_TYP_CREATURE_SCALED_CR: {
+				case PANEL_TYP_CREATURE_SCALED_LVL: {
 					const page = saved.c.p;
 					const source = saved.c.s;
 					const hash = saved.c.u;
-					const cr = saved.c.cr;
-					await p.doPopulate_StatsScaledCr(page, source, hash, cr, skipSetTab, saved.r);
+					const lvl = saved.c.l;
+					await p.doPopulate_StatsScaledLvl(page, source, hash, lvl, skipSetTab, saved.r);
 					handleTabRenamed(p);
 					return p;
 				}
@@ -978,10 +978,10 @@ class Panel {
 			const fn = Renderer.hover._pageToRenderFn(page);
 
 			const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
-			const $contentStats = $(`<div class="stats pf2-stat"/>`).appendTo($contentInner);
+			const $contentStats = $(`<div class="stats"/>`).appendTo($contentInner);
 			$contentStats.append(fn(it));
 
-			this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+			this._stats_bindLvlScaleClickHandler(it, meta, $contentInner, $contentStats);
 
 			this.set$Tab(
 				ix,
@@ -995,30 +995,30 @@ class Panel {
 		});
 	}
 
-	_stats_bindCrScaleClickHandler (mon, meta, $contentInner, $contentStats) {
+	_stats_bindLvlScaleClickHandler (creature, meta, $contentInner, $contentStats) {
 		const self = this;
 		$contentStats.off("click", ".mon__btn-scale-lvl").on("click", ".mon__btn-scale-lvl", function (evt) {
 			evt.stopPropagation();
 			const win = (evt.view || {}).window;
 
 			const $this = $(this);
-			const lastCr = self.contentMeta.cr != null ? Parser.numberToCr(self.contentMeta.cr) : mon.cr ? (mon.cr.cr || mon.cr) : null;
+			const lastLvl = self.contentMeta.level != null ? self.contentMeta.level : creature.level ? creature.level : null;
 
-			Renderer.creature.getLvlScaleTarget(win, $this, lastCr, (targetCr) => {
-				const originalCr = Parser.crToNumber(mon.cr) === targetCr;
+			Renderer.creature.getLvlScaleTarget(win, $this, lastLvl, (targetLvl) => {
+				const originalLvl = creature.level === targetLvl;
 
 				const doRender = (toRender) => {
-					$contentStats.empty().append(Renderer.creature.getCompactRenderedString(toRender, {showScaler: true, isScaled: !originalCr}));
+					$contentStats.empty().append(Renderer.creature.getCompactRenderedString(toRender, {showScaler: true, isScaled: !originalLvl}));
 
 					const nxtMeta = {
 						...meta,
-						cr: targetCr,
+						level: targetLvl,
 					};
-					if (originalCr) delete nxtMeta.cr;
+					if (originalLvl) delete nxtMeta.level;
 
 					self.set$Tab(
 						self.tabIndex,
-						originalCr ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_CR,
+						originalLvl ? PANEL_TYP_STATS : PANEL_TYP_CREATURE_SCALED_LVL,
 						nxtMeta,
 						$contentInner,
 						toRender._displayName || toRender.name,
@@ -1026,30 +1026,30 @@ class Panel {
 					);
 				};
 
-				if (originalCr) {
-					doRender(mon)
+				if (originalLvl) {
+					doRender(creature)
 				} else {
-					ScaleCreature.scale(mon, targetCr).then(toRender => doRender(toRender))
+					ScaleCreature.scale(creature, targetLvl).then(toRender => doRender(toRender))
 				}
 			}, true);
 		});
 		$contentStats.off("click", ".mon__btn-scale-lvl").on("click", ".mon__btn-scale-lvl", function () {
-			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(mon, {showScaler: true, isScaled: false}));
+			$contentStats.empty().append(Renderer.creature.getCompactRenderedString(creature, {showScaler: true, isScaled: false}));
 			self.set$Tab(
 				self.tabIndex,
 				PANEL_TYP_STATS,
 				meta,
 				$contentInner,
-				mon.name,
+				creature.name,
 				true,
 			);
 		});
 	}
 
-	doPopulate_StatsScaledCr (page, source, hash, targetCr, skipSetTab, title) { // FIXME skipSetTab is never used
-		const meta = {p: page, s: source, u: hash, cr: targetCr};
+	doPopulate_StatsScaledLvl (page, source, hash, targetLvl, skipSetTab, title) { // FIXME skipSetTab is never used
+		const meta = {p: page, s: source, u: hash, lvl: targetLvl};
 		const ix = this.set$TabLoading(
-			PANEL_TYP_CREATURE_SCALED_CR,
+			PANEL_TYP_CREATURE_SCALED_LVL,
 			meta,
 		);
 		return Renderer.hover.pCacheAndGet(
@@ -1057,16 +1057,16 @@ class Panel {
 			source,
 			hash,
 		).then(it => {
-			ScaleCreature.scale(it, targetCr).then(initialRender => {
+			ScaleCreature.scale(it, targetLvl).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
 				$contentStats.append(Renderer.creature.getCompactRenderedString(initialRender, {showScaler: true, isScaled: true}));
 
-				this._stats_bindCrScaleClickHandler(it, meta, $contentInner, $contentStats);
+				this._stats_bindLvlScaleClickHandler(it, meta, $contentInner, $contentStats);
 
 				this.set$Tab(
 					ix,
-					PANEL_TYP_CREATURE_SCALED_CR,
+					PANEL_TYP_CREATURE_SCALED_LVL,
 					meta,
 					$contentInner,
 					title || initialRender._displayName || initialRender.name,
@@ -1309,7 +1309,7 @@ class Panel {
 		this.set$ContentTab(
 			PANEL_TYP_BLANK,
 			meta,
-			$(`<div class="dm-blank__panel"/>`),
+			$(`<div class="gm-blank__panel"/>`),
 			title,
 			true,
 		);
@@ -1535,7 +1535,7 @@ class Panel {
 
 	doRenderTitle () {
 		const displayText = this.title !== TITLE_LOADING
-		&& (this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_CR || this.type === PANEL_TYP_RULES || this.type === PANEL_TYP_ADVENTURES || this.type === PANEL_TYP_BOOKS) ? this.title : "";
+		&& (this.type === PANEL_TYP_STATS || this.type === PANEL_TYP_CREATURE_SCALED_LVL || this.type === PANEL_TYP_RULES || this.type === PANEL_TYP_ADVENTURES || this.type === PANEL_TYP_BOOKS) ? this.title : "";
 
 		this.$pnlTitle.text(displayText);
 		if (!displayText) this.$pnlTitle.addClass("hidden");
@@ -1601,7 +1601,7 @@ class Panel {
 		};
 
 		function doInitialRender () {
-			const $pnl = $(`<div data-panelId="${this.id}" class="dm-screen-panel" empty="true"/>`);
+			const $pnl = $(`<div data-panelId="${this.id}" class="gm-screen-panel" empty="true"/>`);
 			this.$pnl = $pnl;
 			const $ctrlBar = $(`<div class="panel-control-bar"/>`).appendTo($pnl);
 			this.$pnlTitle = $(`<div class="panel-control-bar panel-control-title"/>`).appendTo($pnl).click(() => this.$pnlTitle.toggleClass("panel-control-title--bumped"));
@@ -1724,8 +1724,8 @@ class Panel {
 		} else {
 			this.$btnAdd.detach(); // preserve the "add panel" controls so we can re-attach them later if the panel empties
 			this.$pnlWrpContent.find(`.ui-search__message.loading-spinner`).remove(); // clean up any temp "loading" panels
-			this.$pnlWrpContent.children().addClass("dms__tab_hidden");
-			$content.removeClass("dms__tab_hidden");
+			this.$pnlWrpContent.children().addClass("gms__tab_hidden");
+			$content.removeClass("gms__tab_hidden");
 			if (!this.$pnlWrpContent.has($content[0]).length) this.$pnlWrpContent.append($content);
 		}
 
@@ -1896,7 +1896,7 @@ class Panel {
 	destroy () {
 		// do cleanup
 		if (this.type === PANEL_TYP_ROLLBOX) Renderer.dice.unbindDmScreenPanel();
-		if (this.$content && this.$content.find(`.dm__data-anchor`).data("onDestroy")) this.$content.find(`.dm__data-anchor`).data("onDestroy")();
+		if (this.$content && this.$content.find(`.gm__data-anchor`).data("onDestroy")) this.$content.find(`.gm__data-anchor`).data("onDestroy")();
 
 		if (this.$pnl) this.$pnl.remove();
 		this.board.destroyPanel(this.id);
@@ -1940,7 +1940,7 @@ class Panel {
 							u: contentMeta.u,
 						},
 					};
-				case PANEL_TYP_CREATURE_SCALED_CR:
+				case PANEL_TYP_CREATURE_SCALED_LVL:
 					return {
 						t: type,
 						r: toSaveTitle,
@@ -1948,7 +1948,7 @@ class Panel {
 							p: contentMeta.p,
 							s: contentMeta.s,
 							u: contentMeta.u,
-							cr: contentMeta.cr,
+							l: contentMeta.level,
 						},
 					};
 				case PANEL_TYP_RULES:
@@ -1991,7 +1991,7 @@ class Panel {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-init`).data("getState")(),
+						s: $content.find(`.gm-init`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_INITIATIVE_TRACKER_PLAYER: {
@@ -2005,35 +2005,35 @@ class Panel {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-cnt__root`).data("getState")(),
+						s: $content.find(`.gm-cnt__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_UNIT_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-unitconv`).data("getState")(),
+						s: $content.find(`.gm-unitconv`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_MONEY_CONVERTER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm_money`).data("getState")(),
+						s: $content.find(`.gm_money`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TIME_TRACKER: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-time__root`).data("getState")(),
+						s: $content.find(`.gm-time__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_ADVENTURE_DYNAMIC_MAP: {
 					return {
 						t: type,
 						r: toSaveTitle,
-						s: $content.find(`.dm-map__root`).data("getState")(),
+						s: $content.find(`.gm-map__root`).data("getState")(),
 					};
 				}
 				case PANEL_TYP_TUBE:
@@ -2700,7 +2700,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			});
 			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
-			/*const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
+			const $wrpTracker = $(`<div class="ui-modal__row"><span>Initiative Tracker</span></div>`).appendTo($tab);
 			const $btnTracker = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpTracker);
 			$btnTracker.on("click", () => {
 				this.menu.pnl.doPopulate_InitiativeTracker();
@@ -2718,7 +2718,7 @@ class AddMenuSpecialTab extends AddMenuTab {
 			${$btnPlayertracker}
 			</div>`.appendTo($tab);
 
-			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);*/
+			$(`<hr class="ui-modal__row-sep"/>`).appendTo($tab);
 
 			const $wrpText = $(`<div class="ui-modal__row"><span>Basic Text Box <i class="text-muted">(for a feature-rich editor, embed a Google Doc or similar)</i></span></div>`).appendTo($tab);
 			const $btnText = $(`<button class="btn btn-primary btn-sm">Add</button>`).appendTo($wrpText);
@@ -3181,7 +3181,7 @@ class UnitConverter {
 		let ixConv = state.c || 0;
 		let dirConv = state.d || 0;
 
-		const $wrpConverter = $(`<div class="dm-unitconv dm__panel-bg split-column"/>`);
+		const $wrpConverter = $(`<div class="gm-unitconv gm__panel-bg split-column"/>`);
 
 		const $tblConvert = $(`<table class="table-striped"/>`).appendTo($wrpConverter);
 		const $tbodyConvert = $(`<tbody/>`).appendTo($tblConvert);
@@ -3297,8 +3297,8 @@ class AdventureOrBookView {
 	}
 
 	$getEle () {
-		this._$titlePrev = $(`<div class="dm-book__controls-title overflow-ellipsis text-right"/>`);
-		this._$titleNext = $(`<div class="dm-book__controls-title overflow-ellipsis"/>`);
+		this._$titlePrev = $(`<div class="gm-book__controls-title overflow-ellipsis text-right"/>`);
+		this._$titleNext = $(`<div class="gm-book__controls-title overflow-ellipsis"/>`);
 
 		const $btnPrev = $(`<button class="btn btn-xs btn-default mr-2" title="Previous Chapter"><span class="glyphicon glyphicon-chevron-left"/></button>`)
 			.click(() => this._handleButtonClick(-1));
@@ -3306,13 +3306,13 @@ class AdventureOrBookView {
 			.click(() => this._handleButtonClick(1));
 
 		this._$wrpContent = $(`<div class="h-100"/>`);
-		this._$wrpContentOuter = $$`<div class="h-100 dm-book__wrp-content">
+		this._$wrpContentOuter = $$`<div class="h-100 gm-book__wrp-content">
 			<table class="stats stats--book stats--book-hover"><tr class="text"><td colspan="6">${this._$wrpContent}</td></tr></table>
 		</div>`;
 
 		const $wrp = $$`<div class="flex-col h-100">
 		${this._$wrpContentOuter}
-		<div class="flex no-shrink dm-book__wrp-controls">${this._$titlePrev}${$btnPrev}${$btnNext}${this._$titleNext}</div>
+		<div class="flex no-shrink gm-book__wrp-controls">${this._$titlePrev}${$btnPrev}${$btnNext}${this._$titleNext}</div>
 		</div>`;
 
 		// assumes the data has already been loaded/cached
@@ -3354,12 +3354,12 @@ window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	// expose it for dbg purposes
 	await Renderer.trait.buildCategoryLookup();
-	window.DM_SCREEN = new Board();
-	Renderer.hover.bindDmScreen(window.DM_SCREEN);
-	window.DM_SCREEN.pInitialise()
+	window.GM_SCREEN = new Board();
+	Renderer.hover.bindGmScreen(window.GM_SCREEN);
+	window.GM_SCREEN.pInitialise()
 		.catch(err => {
 			JqueryUtil.doToast({content: `Failed to load with error "${err.message}". ${VeCt.STR_SEE_CONSOLE}`, type: "danger"});
-			$(`.dm-screen-loading`).find(`.initial-message`).text("Failed!");
+			$(`.gm-screen-loading`).find(`.initial-message`).text("Failed!");
 			setTimeout(() => { throw err; });
 		});
 });

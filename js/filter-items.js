@@ -62,10 +62,18 @@ class PageFilterItems extends PageFilter {
 			header: "Type",
 			items: ["Equipment", "Treasure", "Generic Variant", "Specific Variant"],
 			itemSortFn: null,
+			deselFn: (it) => it === "Specific Variant",
 		})
 		this._categoryFilter = new Filter({
 			header: "Category",
 		});
+		this._subCategoryFilter = new Filter({
+			header: "Weapon/Armor Category",
+			itemSortFn: SortUtil.sortItemSubCategory,
+		});
+		this._damageDiceFilter = new Filter({header: "Damage", itemSortFn: SortUtil.sortDice})
+		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase()})
+		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter]})
 		this._groupFilter = new Filter({header: "Group"});
 		this._traitFilter = new TraitsFilter({
 			header: "Traits",
@@ -80,6 +88,7 @@ class PageFilterItems extends PageFilter {
 			labelSortFn: null,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk"});
+		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]})
 		this._hpFilter = new RangeFilter({
 			header: "HP",
 			isLabelled: true,
@@ -113,14 +122,10 @@ class PageFilterItems extends PageFilter {
 		item._sPrice = Parser.priceToValue(item.price);
 
 		// Filters
-		item._fPrice = PageFilterItems._priceCategory(item._sPrice)
-		item._fType = []
+		item._fPrice = PageFilterItems._priceCategory(item._sPrice);
+		item._fWeaponRange = item.category === "Weapon" ? (item.ranged ? "Ranged" : "Melee") : null;
 		item._fMisc = item.consumable ? ["Consumable"] : [];
 		item._fIsEquipment = item.type === "Equipment" || item.type === "Material" || item.type === "Snare";
-		item._fWeaponTraits = [];
-		item._fSchoolTraits = [];
-		item._fRarity = "Common";
-		item._fGeneralTraits = [];
 		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
 		for (let entry of item.entries) {
 			if (typeof entry === "object") {
@@ -130,10 +135,11 @@ class PageFilterItems extends PageFilter {
 				}
 			}
 		}
+		item._fType = [];
 		item._fIsEquipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
-		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null
+		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null;
 
 		// RuneItem Builder
 		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
@@ -148,14 +154,17 @@ class PageFilterItems extends PageFilter {
 		this._traitFilter.addItem(item._fTraits)
 		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
-		if (item.group) this._groupFilter.addItem(item.group)
+		if (item.subCategory) this._subCategoryFilter.addItem(item.subCategory);
+		if (item.group) this._groupFilter.addItem(item.group);
+		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
+		if (item.damage) this._damageDiceFilter.addItem(item.damage);
 		if (item.shieldStats != null) this._hpFilter.addItem(item.shieldStats.hp);
 		if (item.shieldStats != null) this._btFilter.addItem(item.shieldStats.bt);
 		if (item.shieldStats != null) this._hardnessFilter.addItem(item.shieldStats.hardness);
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
 		if (item.craftReq != null) this._miscFilter.addItem("Has Craft Requirements");
 		this._miscFilter.addItem(item._fMisc);
-		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo)
+		if (item._fAppliesTo) this._appliesToFilter.addItem(item._fAppliesTo);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -163,7 +172,10 @@ class PageFilterItems extends PageFilter {
 			this._sourceFilter,
 			this._levelFilter,
 			this._categoryFilter,
+			this._subCategoryFilter,
+			this._damageFilter,
 			this._groupFilter,
+			this._rangeFilter,
 			this._traitFilter,
 			this._priceFilter,
 			this._typeFilter,
@@ -180,7 +192,13 @@ class PageFilterItems extends PageFilter {
 			it.source,
 			it._fLvl,
 			it.category,
+			it.subCategory,
+			[
+				it.damage,
+				it.damageType,
+			],
 			it.group,
+			it._fWeaponRange,
 			it._fTraits,
 			it._fPrice,
 			it._fType,

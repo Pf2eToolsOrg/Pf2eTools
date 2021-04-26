@@ -54,6 +54,7 @@ class TagJsons {
 	static async pInit () {
 		ut.patchLoadJson();
 		SpellTag.init();
+		FeatTag.init();
 		await ItemTag.pInit();
 		ActionTag.init();
 		TraitTag.init();
@@ -108,6 +109,7 @@ class TagJsons {
 							obj = ActionTag.tryRun(obj);
 							obj = SkillTag.tryRun(obj);
 							obj = SpellTag.tryRun(obj);
+							obj = FeatTag.tryRun(obj);
 							// obj = ItemTag.tryRun(obj);
 
 							return obj;
@@ -225,6 +227,48 @@ class ItemTag {
 		return strMod;
 	}
 }
+
+class FeatTag {
+	static init () {
+		const featIndex = ut.readJson(`./data/feats/index.json`);
+		Object.entries(featIndex).forEach(([source, filename]) => {
+			if (SourceUtil.isNonstandardSource(source)) return;
+
+			const featData = ut.readJson(`./data/feats/${filename}`);
+			featData.feat.forEach(f => {
+				FeatTag._FEAT_NAMES[f.name.toLowerCase()] = {name: f.name, source: f.source};
+			});
+		});
+		FeatTag._FEATS_REGEX_NAMES = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.toTitleCase().escapeRegexp()).join("|")})`, "g")
+		FeatTag._FEATS_REGEX_FEAT = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.escapeRegexp()).join("|")}) ([a-z]+ feat)`, "gi")
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: FeatTag._walkerStringHandler,
+			},
+		);
+	}
+
+	static _walkerStringHandler (str, lastKey) {
+		str = str.replace(FeatTag._FEATS_REGEX_FEAT, (...m) => {
+			const featMeta = FeatTag._FEAT_NAMES[m[1].toLowerCase()];
+			return `{@feat ${m[1]}${featMeta.source !== SRC_CRB ? `|${featMeta.source}` : ""}} ${m[2]}`
+		});
+		if (lastKey === "prerequisites") {
+			str = str.replace(FeatTag._FEATS_REGEX_NAMES, (...m) => {
+				const featMeta = FeatTag._FEAT_NAMES[m[1].toLowerCase()];
+				return `{@feat ${m[1]}${featMeta.source !== SRC_CRB ? `|${featMeta.source}` : ""}}`
+			});
+		}
+		return str
+	}
+}
+FeatTag._FEAT_NAMES = {};
+FeatTag._FEATS_REGEX_FEAT = null;
+FeatTag._FEATS_REGEX_NAMES = null;
 
 class TraitTag {
 	static init () {

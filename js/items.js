@@ -60,6 +60,7 @@ class ItemsPage {
 					bulk: item._fBulk,
 					price: item._sPrice,
 					category: item.category,
+					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
@@ -91,6 +92,7 @@ class ItemsPage {
 					price: item._sPrice,
 					bulk: item._fBulk,
 					category: item.category,
+					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
 				},
 				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);

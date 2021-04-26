@@ -150,6 +150,7 @@ class IndexableDirectory {
 	 * @param opts Options object.
 	 * @param [opts.category]
 	 * @param [opts.dir]
+	 * @param [opts.indexFile]
 	 * @param [opts.primary]
 	 * @param [opts.source]
 	 * @param [opts.listProp]
@@ -163,6 +164,7 @@ class IndexableDirectory {
 	constructor (opts) {
 		this.category = opts.category;
 		this.dir = opts.dir;
+		this.indexFile = opts.indexFile;
 		this.primary = opts.primary;
 		this.source = opts.source;
 		this.listProp = opts.listProp;
@@ -255,19 +257,6 @@ class IndexableDirectoryItems extends IndexableDirectory {
 			primary: "name",
 			source: "source",
 			listProp: "item",
-			baseUrl: "items.html",
-			isHover: true,
-		});
-	}
-}
-class IndexableDirectoryBaseItems extends IndexableDirectory {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ITEM,
-			dir: "items",
-			primary: "name",
-			source: "source",
-			listProp: "baseitem",
 			baseUrl: "items.html",
 			isHover: true,
 		});
@@ -440,7 +429,6 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 	new IndexableDirectoryBackgrounds(),
 	new IndexableDirectoryFeats(),
 	new IndexableDirectoryItems(),
-	new IndexableDirectoryBaseItems(),
 	new IndexableDirectorySpells(),
 	new IndexableDirectoryClass(),
 	new IndexableDirectorySubclass(),
@@ -489,6 +477,18 @@ class IndexableFile {
 	 * A function which returns an additional "deep" list of index docs.
 	 */
 	pGetDeepIndex () { return []; }
+}
+
+class IndexableFileBaseItems extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ITEM,
+			file: "items/baseitems.json",
+			listProp: "baseitem",
+			baseUrl: "items.html",
+			isHover: true,
+		});
+	}
 }
 
 class IndexableFileConditions extends IndexableFile {
@@ -755,6 +755,7 @@ class IndexableFileFamiliars extends IndexableFile {
 }
 
 Omnidexer.TO_INDEX = [
+	new IndexableFileBaseItems(),
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
 	new IndexableFileCurses(),

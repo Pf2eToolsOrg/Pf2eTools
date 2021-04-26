@@ -39,7 +39,7 @@ class UtilSearchIndex {
 			.filter(indexMeta => opts.alternate ? indexMeta.alternateIndexes && indexMeta.alternateIndexes[opts.alternate] : true);
 
 		for (const indexMeta of toIndexMultiPart) {
-			const dataIndex = require(`../data/${indexMeta.dir}/index.json`);
+			const dataIndex = require(`../data/${indexMeta.dir}/${indexMeta.indexFile ? indexMeta.indexFile : "index.json"}`);
 
 			const loadedFiles = Object.entries(dataIndex)
 				.sort(([kA], [kB]) => UtilSearchIndex._sortSources(kA, kB))

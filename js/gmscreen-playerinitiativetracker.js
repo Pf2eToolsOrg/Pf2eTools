@@ -73,7 +73,7 @@ class InitiativeTrackerPlayer {
 		const $btnConnectLocal = $(`<button class="btn btn-primary" style="min-width: 200px;">Connect to Local Tracker</button>`)
 			.click(async () => {
 				const existingTrackers = board.getPanelsByType(PANEL_TYP_INITIATIVE_TRACKER)
-					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.dm__data-anchor`)))
+					.map(it => it.tabDatas.filter(td => td.type === PANEL_TYP_INITIATIVE_TRACKER).map(td => td.$content.find(`.gm__data-anchor`)))
 					.flat();
 
 				if (!existingTrackers.length) return JqueryUtil.doToast({content: "No local trackers detected!", type: "warning"});
@@ -134,7 +134,7 @@ class InitiativeTrackerPlayer {
 				}
 			});
 
-		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col dm__panel-bg">
+		view.$wrpInitial = $$`<div class="flex-vh-center h-100 flex-col gm__panel-bg">
 			${$btnConnectRemote}
 			${$btnConnectLocal}
 		</div>`.appendTo($wrpTracker);
