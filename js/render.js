@@ -4127,6 +4127,7 @@ Renderer.item = {
 		if (item.ac != null || item.dexCap != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.ac != null) renderStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}`)
+			if (item.ac2 != null) renderStack.push(`/${Parser.numToBonus(item.ac2)}`)
 			if (item.ac != null && item.dexCap != null) renderStack.push("; ")
 			if (item.dexCap != null) renderStack.push(`<strong>Dex Cap </strong>${Parser.numToBonus(item.dexCap)}`)
 			renderStack.push(`</p>`);
