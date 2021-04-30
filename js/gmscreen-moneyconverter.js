@@ -18,10 +18,10 @@ class MoneyConverter {
 		}).reverse();
 		const DEFAULT_CURRENCY = 3;
 
-		const $wrpConverter = $(`<div class="dm_money dm__panel-bg split-column"/>`);
+		const $wrpConverter = $(`<div class="gm_money gm__panel-bg split-column"/>`);
 
 		const doUpdate = () => {
-			if (!$wrpRows.find(`.dm_money__row`).length) {
+			if (!$wrpRows.find(`.gm_money__row`).length) {
 				addRow();
 			}
 
@@ -35,7 +35,7 @@ class MoneyConverter {
 				return;
 			}
 
-			const $rows = $wrpRows.find(`.dm_money__row`)
+			const $rows = $wrpRows.find(`.gm_money__row`)
 				.removeClass("form-control--error");
 			$iptSplit.removeClass("form-control--error");
 
@@ -139,7 +139,7 @@ class MoneyConverter {
 		const buildCurrency$Select = (isOutput) => $(`<select class="form-control input-sm" style="padding: 5px">${isOutput ? `<option value="-1">(No conversion)</option>` : ""}${CURRENCY.map((c, i) => `<option value="${i}">${c.n}</option>`).join("")}</select>`);
 
 		const addRow = (currency, count) => {
-			const $row = $(`<div class="dm_money__row"/>`).appendTo($wrpRows);
+			const $row = $(`<div class="gm_money__row"/>`).appendTo($wrpRows);
 			const $iptCount = $(`<input type="number" step="1" placeholder="Coins" class="form-control input-sm">`).appendTo($row).change(doUpdate);
 			if (count != null) $iptCount.val(count);
 			const $selCurrency = buildCurrency$Select().appendTo($row).change(doUpdate);
@@ -150,10 +150,10 @@ class MoneyConverter {
 			});
 		};
 
-		const $wrpRows = $(`<div class="dm_money__rows"/>`).appendTo($wrpConverter);
+		const $wrpRows = $(`<div class="gm_money__rows"/>`).appendTo($wrpConverter);
 
-		const $wrpCtrl = $(`<div class="split dm_money__ctrl"/>`).appendTo($wrpConverter);
-		const $wrpCtrlLhs = $(`<div class="dm_money__ctrl__lhs split-child" style="width: 66%;"/>`).appendTo($wrpCtrl);
+		const $wrpCtrl = $(`<div class="split gm_money__ctrl"/>`).appendTo($wrpConverter);
+		const $wrpCtrlLhs = $(`<div class="gm_money__ctrl__lhs split-child" style="width: 66%;"/>`).appendTo($wrpCtrl);
 		const $wrpBtnAddSettings = $(`<div class="split"/>`).appendTo($wrpCtrlLhs);
 		const $btnAddRow = $(`<button class="btn btn-primary btn-sm" title="Add Row"><span class="glyphicon glyphicon-plus"/></button>`)
 			.appendTo($wrpBtnAddSettings)
@@ -172,14 +172,14 @@ class MoneyConverter {
 					UiUtil.$getAddModalRowCb($modalInner, `Disable ${cx.n} in Output`, disabledCurrency, cx.ix);
 				});
 			});
-		const $iptOut = $(`<input class="form-control input-sm dm_money__out" disabled/>`)
+		const $iptOut = $(`<input class="form-control input-sm gm_money__out" disabled/>`)
 			.appendTo($wrpCtrlLhs)
 			.mousedown(async () => {
 				await MiscUtil.pCopyTextToClipboard($iptOut.val());
 				JqueryUtil.showCopiedEffect($iptOut);
 			});
 
-		const $wrpCtrlRhs = $(`<div class="dm_money__ctrl__rhs split-child" style="width: 33%;"/>`).appendTo($wrpCtrl);
+		const $wrpCtrlRhs = $(`<div class="gm_money__ctrl__rhs split-child" style="width: 33%;"/>`).appendTo($wrpCtrl);
 		const $iptSplit = $(`<input type="number" min="1" step="1" placeholder="Split Between..." class="form-control input-sm">`).appendTo($wrpCtrlRhs).change(doUpdate);
 		const $selOut = buildCurrency$Select(true).appendTo($wrpCtrlRhs).change(doUpdate);
 
@@ -187,7 +187,7 @@ class MoneyConverter {
 			return {
 				c: $selOut.val(),
 				s: $iptSplit.val(),
-				r: $wrpRows.find(`.dm_money__row`).map((i, e) => {
+				r: $wrpRows.find(`.gm_money__row`).map((i, e) => {
 					const $e = $(e);
 					return {
 						c: $e.find(`select`).val(),

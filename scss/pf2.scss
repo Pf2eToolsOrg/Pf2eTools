@@ -401,6 +401,7 @@
 	font-size: 2em;
 	font-weight: 700;
 	line-height: 1em;
+	text-align: left;
 
 	&__step {
 		margin: 0.8em 0 0.1em 2em;
@@ -459,6 +460,7 @@
 	font-weight: 400;
 	line-height: 1.2em;
 	display: flex;
+	text-align: left;
 
 	&--lvl {
 		margin-left: auto !important;
@@ -485,6 +487,7 @@
 	font-weight: 400;
 	line-height: 1em;
 	vertical-align: bottom;
+	text-align: left;
 
 	.pf2-h--source {
 		display: none;
@@ -513,6 +516,7 @@
 	text-transform: uppercase;
 	display: flex;
 	width: 100%;
+	text-align: left;
 }
 
 .pf2-h--source {
@@ -719,6 +723,33 @@
 	@media only screen and (max-width: 220px) {
 		width: calc(100%);
 		max-width: none;
+	}
+}
+
+.pf2-sidebar--compact {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 0;
+	color: #5e0000;
+
+	div:nth-child(2n + 1) {
+		border-right: 2px solid #5e0000;
+	}
+
+	.pf2-title {
+		margin: 0;
+		font-family: 'good-pro', sans-serif;
+		font-size: 1.1em;
+		font-weight: 700;
+		padding: 0 0.6em;
+	}
+
+	.pf2-sidebar__text {
+		margin: 0;
+		font-family: 'good-pro', sans-serif;
+		font-size: 0.9em;
+		font-weight: 400;
+		padding: 0 0.6em 0.6em;
 	}
 }
 
@@ -1246,6 +1277,53 @@
 	}
 }
 
+.feat-view--resizable {
+	min-height: 100px;
+}
+
+.feat-view--active {
+	.feat-view--resizable::after {
+		content: '...';
+		background-color: #aaa4;
+		border: 1px solid rgba(204, 204, 204, 0.4);
+		position: absolute;
+		bottom: 0;
+		height: 1px;
+		width: 100%;
+		cursor: ns-resize;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		line-height: 1px;
+		font-size: 10px;
+		text-align: center;
+	}
+
+	.wrp-stats-table {
+		max-height: calc(100% - 15px);
+	}
+}
+
+.feat-view--inactive {
+	.feat-view {
+		display: none;
+	}
+
+	.feat-view--resizable {
+		height: revert !important;
+
+		.wrp-stats-table {
+			max-height: 100% !important;
+		}
+	}
+}
+
+.feat-view--resizable {
+	position: relative;
+	overflow: hidden;
+}
+
 $night-pf2-red: #f06e60;
 
 .night-mode {
@@ -1258,6 +1336,14 @@ $night-pf2-red: #f06e60;
 
 	.pf2-sidebar {
 		border-color: $night-pf2-red;
+	}
+
+	.pf2-sidebar--compact {
+		color: $night-pf2-red;
+
+		div {
+			border-color: $night-pf2-red;
+		}
 	}
 
 	.pf2-chapter__line {

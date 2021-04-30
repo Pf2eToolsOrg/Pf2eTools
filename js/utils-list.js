@@ -227,10 +227,10 @@ const ListUtil = {
 		if (storedHeight) $ele.css("height", storedHeight);
 	},
 
-	getOrTabRightButton: (id, icon) => {
+	getOrTabRightButton: (id, icon, ele = "button") => {
 		let $btn = $(`#${id}`);
 		if (!$btn.length) {
-			$btn = $(`<button class="ui-tab__btn-tab-head btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></button>`).appendTo($(`#tabs-right`));
+			$btn = $(`<${ele} class="ui-tab__btn-tab-head btn btn-default" id="${id}"><span class="glyphicon glyphicon-${icon}"></span></${ele}>`).appendTo($(`#tabs-right`));
 		}
 		return $btn;
 	},
@@ -909,7 +909,7 @@ const ListUtil = {
 	},
 
 	addListShowHide () {
-		$(`#filter-search-group`).find(`#reset`).before(`<button class="btn btn-default" id="hidesearch">Hide</button>`);
+		$(`#filter-search-group`).find(`#reset`).before(`<button class="btn btn-default btn-xs" id="hidesearch">Hide</button>`);
 		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Filter</button><br></div>`);
 
 		const $wrpList = $(`#listcontainer`);

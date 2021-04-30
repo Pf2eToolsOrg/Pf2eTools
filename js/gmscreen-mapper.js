@@ -2,7 +2,7 @@
 
 class DmMapper {
 	static $getMapper (board, state) {
-		const $wrpPanel = $(`<div class="w-100 h-100 dm-map__root dm__panel-bg dm__data-anchor"/>`) // root class used to identify for saving
+		const $wrpPanel = $(`<div class="w-100 h-100 gm-map__root gm__panel-bg gm__data-anchor"/>`) // root class used to identify for saving
 			.data("getState", () => mapper.getSaveableState());
 		const mapper = new DmMapperRoot(board, $wrpPanel);
 		mapper.setStateFrom(state);
@@ -85,9 +85,9 @@ class DmMapper {
 			.addClass("text-center");
 
 		mapDatas.map(mapData => {
-			$(`<div class="m-1 p-1 clickable dm-map__picker-wrp-img relative">
-							<div class="dm-map__picker-img" style="background-image: url(${mapData.hrefThumbnail || mapData.href})"></div>
-							<span class="absolute text-center dm-map__picker-disp-name">${mapData.name.escapeQuotes()}</span>
+			$(`<div class="m-1 p-1 clickable gm-map__picker-wrp-img relative">
+							<div class="gm-map__picker-img" style="background-image: url(${mapData.hrefThumbnail || mapData.href})"></div>
+							<span class="absolute text-center gm-map__picker-disp-name">${mapData.name.escapeQuotes()}</span>
 						</div>`)
 				.click(() => {
 					doClose();

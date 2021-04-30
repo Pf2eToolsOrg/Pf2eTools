@@ -1,0 +1,526 @@
+{
+	"spell": [
+		{
+			"source": "LOWG",
+			"name": "Mantis Form",
+			"level": 4,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "T",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Polymorph",
+				"Transmutation"
+			],
+			"entries": [
+				"You become a mantis. You gain the effects of insect form, heightened to mantis form's level, and you can only transform into a mantis."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 71
+		},
+		{
+			"source": "LOWG",
+			"name": "Perfect Strike",
+			"level": 2,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "D",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Fortune"
+			],
+			"entries": [
+				"You call upon insight from your training to recover accuracy.",
+				"Reroll the missed attack roll and keep the new result."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"requirements": null,
+			"trigger": "You miss a {@action Strike} with an unarmed attack.",
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": null
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 83
+		},
+		{
+			"source": "LOWG",
+			"name": "Unblinking Flame Revelation",
+			"level": 3,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "A",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Abjuration"
+			],
+			"entries": [
+				"You light your foe with revealing flame. The GM attempts a secret counteract check against each illusion affecting the creature; on a success, you suppress the illusion for the duration, rather than end the effect."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"requirements": "Your previous action was a successful unarmed {@action Strike}.",
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": "the creature you hit",
+			"duration": {
+				"type": "timed",
+				"entry": "2 rounds",
+				"duration": {
+					"number": 2,
+					"unit": "round"
+				}
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 83
+		},
+		{
+			"source": "LOWG",
+			"name": "Unbreaking Wave Advance",
+			"level": 3,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "V",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Water"
+			],
+			"entries": [
+				"You unleash a mighty wave from your hand that buffets back your foes. Each creature in the area must attempt a Fortitude saving throw. If a creature pushed by unbreaking wave advance would be pushed into a solid barrier or another creature, it stops at that point and takes {@dice 3d6} damage.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The creature is unaffected.",
+						"Failure": "The creature is pushed 10 feet.",
+						"Critical Failure": "The creature is pushed 20 feet."
+					}
+				}
+			],
+			"cast": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Cone"
+				],
+				"entry": "15-foot cone"
+			},
+			"targets": null,
+			"duration": {
+				"type": null
+			},
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The damage for pushing a creature into a solid barrier increases by {@dice 1d6}."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 83
+		},
+		{
+			"source": "LOWG",
+			"name": "Unfolding Wind Rush",
+			"level": 3,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "V",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Evocation"
+			],
+			"entries": [
+				"You travel on a rushing wind. Move two times: two Strides, two Steps, or one {@action Stride} and one {@action Step} (in either order). You can {@action Stride} or {@action Step} into the air during this movement, moving upward at a 45-degree angle at most; if you end your movement in the air, you fall after taking one action or when your turn ends, whichever comes first. A wall of wind appears in all the spaces you left during this movement, lasting for 1 round."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": null
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 5,
+						"entry": "The wall of wind lasts 3 rounds."
+					}
+				],
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 83
+		},
+		{
+			"source": "LOWG",
+			"name": "Untwisting Iron Buffer",
+			"level": 3,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "A",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Abjuration"
+			],
+			"entries": [
+				"You send currents of protective ki to the surface of your body that protect you from harm, at least until your enemies dissipate them.",
+				"You gain 15 temporary Hit Points, which last for up to 3 rounds."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": null
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The temporary Hit Points increase by 5."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 83
+		},
+		{
+			"source": "LOWG",
+			"name": "Magic Warrior Aspect",
+			"level": 2,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "T",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Morph",
+				"Transmutation"
+			],
+			"entries": [
+				"You call upon the aspect of the animal from your mask, gaining physical features reminiscent of that animal. You morph slightly into that creature, gaining the Speeds and senses you would gain from using animal form to turn into the type of animal your mask represents; these special Speeds can't be increased by status bonuses or item bonuses."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": "timed",
+				"entry": "5 minutes",
+				"duration": {
+					"number": 5,
+					"unit": "minute"
+				}
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 95
+		},
+		{
+			"source": "LOWG",
+			"name": "Magic Warrior Transformation",
+			"level": 2,
+			"traditions": null,
+			"altTraditions": null,
+			"school": "T",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Uncommon",
+				"Polymorph",
+				"Transmutation"
+			],
+			"entries": [
+				"You transform into the animal from your mask. You gain the effects of animal form, heightened to magic warrior transformation's level, and you can transform into only the type of animal your mask represents."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": null
+			},
+			"area": null,
+			"targets": null,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 95
+		},
+		{
+			"source": "LOWG",
+			"name": "Snowball",
+			"level": 1,
+			"traditions": [
+				"Arcane",
+				"Primal"
+			],
+			"altTraditions": null,
+			"school": "V",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"cost": null,
+			"traits": [
+				"Attack",
+				"Cold",
+				"Evocation",
+				"Water"
+			],
+			"entries": [
+				"You throw a magically propelled and chilled ball of dense snow. The target takes {@damage 2d4} cold damage and potentially other effects, depending on the result of your spell attack roll.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target takes double damage and a\u201310-foot status penalty to its Speeds for 1 round.",
+						"Success": "The target takes full damage and a\u20135-foot status penalty to its Speeds for 1 round.",
+						"Failure": "No effect."
+					}
+				}
+			],
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"requirements": null,
+			"trigger": null,
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"area": null,
+			"targets": "1 creature",
+			"duration": {
+				"type": null
+			},
+			"savingThrow": null,
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The damage increases by {@dice 2d4}. Lands of the Linnorm Kings As in so many other regions along the northern edge of Avistan, life is hard for the people of the Lands of the Linnorm Kings. What land that isn't frozen marsh is heavily strewn with stones and boulders\u2014starvation is thus a constant threat in the barren winter months. Traditionally, the people of the Linnorm Kingdoms fought against the cruel specter of hunger by taking to the seas in their distinctive longships, engaging in violent coastal raids along Avistan's extensive western coastline in order to secure valuable plunder and supplies. As the centuries wore on and the lands to the south grew more heavily populated, more organized, and thus more dangerous to raid, many of the Linnorm Kingdoms turned in their swords and shields for the tools of trade, and their long trips south sought to secure mercantile alliances rather than blood-won conquest. Yet some of the Kingdoms found such changes to tradition as dishonorable to their ancestors, and others simply preferred the act of raiding to the pursuit of trade. The harsh land and harsher winters are far from the only dangers in the Lands of the Linnorm Kings. Vast reaches of wilderness, ranging from rocky tundra to tangled forest to rugged hills, cut wide swaths between the settled reaches of the kingdoms, and in these lands dwell monsters. Capricious fey are common in these places, as are bloodthirsty trolls and murderous giants, strangely enchanted animals that can both plead for their lives and utter dire curses, and the unquiet spirits of the restless dead who haunt the places where they fell. The most dangerous are linnorms\u2014primordial dragons of vast size and great strength. Facing a linnorm in NOTABLE FIGURES The following are key public figures in the region. QUEEN ANASTASIA While Queen Anastasia hails from a distant world where magic is a poorly understood myth, she has adapted to her new role as queen of Irrisen with grace. RUNELORD BELIMARIUS Envious Belimarius clings to the old traditions of Thassilon and sees herself as the only true runelord remaining alive; she jealously eyes Sorshen's power and lands. LORD-MAYOR SABRIYYA KALMERALM When Magnimar's previous lord-mayor died under mysterious circumstances, townsfolk elected this silver-tongued merchant, scandalizing the city's nobles. QUEEN SORSHEN One of the most powerful wizards to rule in ancient Thassilon, Sorshen hopes to sculpt New Thassilon into a haven for exiles from across the world. THIRA ASH-EYES combat is folly for all but the most formidable warriors, and even in death these mighty dragons bestow hideous curses that can linger for a lifetime in the flesh and bones of their killers. In the Lands of the Linnorm Kings, however, anyone who aspires to rightfully rule a kingdom must seek out a linnorm, confront it, and defeat it in combat. Sometimes, this violent rite breeds controversy. For example, none saw King Opir Eightfingers slay his linnorm\u2014he merely returned to the city of Jol with a severed linnorm's head, already decaying, as proof of his deed. Those who whispered that Opir found a dead linnorm and absconded with its head learned to keep their suspicions quiet after enough grisly and very public executions. When New Thassilon rose along the Linnorm Kingdom's southern borders, King Opir made his final mistake and launched an ill-advised series of raids against the holdings of Runelord Belimarius. His defeat left his kingdom without a leader, although none found Opir's body among the dead in the battlefield. Some say the fallen king languishes in a {@condition hidden} dungeon somewhere in the island reaches of western New Thassilon, while others whisper that he fled to the mountains and even now is building a new army and will soon return to his place on the throne. That Opir left behind no friends interested in looking into his disappearance or seeking a potential resurrection only further deepens the mystery of his fate. Elsewhere in the Linnorm Kingdoms, King White Estrid upended tradition by subjugating a linnorm upon defeating it and taking it into her service instead of slaying it. Her mercy toward the linnorm Boiltongue was met initially with skepticism, but her enemies quickly learned that a ruler with a linnorm to back her demands is mighty indeed. King Thira Ash-Eyes was less merciful to her linnorm foe, killing the beast and then claiming the throne in the region's capital of Kalsgard after her father, King Sveinn Blood-Eagle, set sail to the west on a quest to retire to the afterlife in legendary Valenhall. The Varki ranger Nankou caused a stir by taking the title of linnorm king in Icemark, shocking many Ulfen warriors\u2014though none can dispute the new king's triumph over a linnorm, most Ulfen never expected one of the Varki people to claim what they consider to be an Ulfen title. The most recent king to take a throne is the legendary adventurer Ostog the Unslain, who claimed the throne of Jol after Opir's disappearance. Whether Ostog can keep his title of Unslain for long while holding his throne, only time can tell. New Thassilon Runelord Karzoug was the first of Thassilon's seven runelords to wake after thousands of years in stasis, trapped just beyond the borders of reality until an unwitting stone giant wizard set in motion the process enabling the runelord's return. A band of heroes stood against Karzoug and his giant armies and defeated him, and in the process resurrected the legacy of Thassilon. When the revelation spread through Avistan that Varisia was once the site of a powerful and ancient empire of wizards that had been lost to time, adventurers, explorers, scholars, and investigators came from far and wide to study and learn more about Thassilon. Leaders among Varisia's city-states grew worried, though, for seven runelords had vanished at Earthfall, and if only one rising from slumber could wreak so much havoc, what then would happen if the others rose as well? At their urging, a new band of heroes sought out an ancient artifact, the seven-pointed Sihedron, and rebuilt it from its shattered parts. Originally created by Thassilon's founder, the mighty wizard Xin, the Sihedron held within it the secrets of Thassilonian magic and would be a valuable defense against the other runelords should the time come. WORLD GUIDE OVERVIEW ABSALOM AND STARSTONE ISLE {@condition BROKEN} LANDS EYE OF DREAD GOLDEN ROAD HIGH SEAS IMPOSSIBLE LANDS MWANGI EXPANSE OLD CHELIAX SAGA LANDS SHINING KINGDOMS ECONOMICS The greatest exports of the Saga Lands are its legends. Potent magical items and powerful secret traditions remain {@condition hidden} in the land's ancient tombs and have made many adventurers famous and rich. Beyond such ephemeral and unreliable treasures, the Saga Lands are rich in natural resources\u2014vast forests, untouched lodes of precious metals, and a plethora of fish and game can be found in the region. As the role the Saga Lands plays in the region grows, control of these resources will surely be a key factor in guiding the region's global standing and fate. EURYTHNIA Yet when the other runelords inevitably began to rise, Varisia's reigning heroes and the Sihedron alike vanished without a trace. A new band of heroes rose to face the challenge, discovered the Sihedron's fate, stood against Runelord Alaznist, and prevented her from altering time itself to turn the Saga Lands into an empire of pain and wrath. But the heroes needed help to achieve this goal, and they found it in the most unlikely of places\u2014Runelord Sorshen. Once the ruler of Eurythnia along Varisia's southern coast, Sorshen was one of the most powerful of the seven runelords, and after the events of the recent return of the runelords settled, she was one of only two who survived. Sorshen and her counterpart, Runelord Belimarius, went on to claim a swath of thinly inhabited land along the northern edge of Varisia consisting primarily of the towering Kodar Mountains. This became New Thassilon. The land of New Thassilon itself is further divided into two smaller kingdoms. Sorshen rules Eurythnia, the larger of the two, but her rule over this land is light and her involvement in the life of this land's subjects subtle. Working as her adviser and benefactor is her once-demonic patron Nocticula, a newly ascended divinity associated with midnight, exiles, and artists. Together they seek to fashion Eurythnia and, in time, all of New Thassilon into a place where those with no other land to call their own can seek shelter, an asylum state for exiled politicians, subversive artists, and misfits of society. As queen of Eurythnia, Sorshen has abandoned the trappings of runelord and does not seek to follow in the footsteps of her fellows Karzoug and Alaznist. She's seen their attempts at rule by force fail and has realized that the world has moved on since Thassilon's fall. Wiser and accepting of this change, Queen Sorshen seeks to build New Thassilon into a place that can exist peacefully alongside its neighbors. This view is not shared by her co-ruler to the west. Runelord Belimarius continues to be poisoned by the sting of envy, despite mercy and understanding from the heroes who could have destroyed her. She seems incapable of looking upon her neighbors' holdings without jealousy, despite the fact that her own power remains great. Her first major act as ruler was a short but pivotal war with King Opir Eightfingers, whose realm in the Linnorm Kingdoms lay just north of her own. Her defeat of this unpopular ruler ironically cast her in a more favorable light, yet the gratitude of those who had grown tired of Opir's posturing is likely to be short-lived. Sorshen knows Belimarius is an unstable element and may be the greatest threat to her hopes of New Thassilon finding a more peaceful position in the Saga Lands. Though resigned that it's simply a matter of time before something must be done about her rival, Sorshen nevertheless abstains from dissenting publicly, allowing Belimarius to forge her own fate. One significant development among the citizens of New Thassilon is the evolution of the title of \"runelord\" itself. In ancient Thassilon, only seven at a time NOCTICULA Until recently, Nocticula dwelt in the Abyss, where she ruled as the Queen of the Succubi. Though her legacy is one of assassinations against fellow demon lords, she has abandoned her empire and her very nature to rise from the Abyss as a new deity. Now known as the Redeemer Queen, Nocticula has cast aside her former association with lust and slaughter to welcome artists and exiles alike to her faith. Her worshippers\u2014who are chaotic neutral, though her message is spreading to others\u2014hold the powers to bring works of art to life and to manipulate the essence of night for creation. Her symbol is a smirking moon bearing a crown, and her favored weapon is the dagger. Worship of Nocticula is strong in New Thassilon and western Varisia, and it is gaining purchase elsewhere\u2014particularly in parts of Nidal, where many rebels seek a different expression of the wonders of midnight than the pain and loss Zon-Kuthon glorifies. held this title\u2014it was synonymous with \"governor\" or \"ruler\" as much as it indicated mastery over arcane magic. But now, many have begun to explore and examine what it meant to be a runelord. In time, the notion of runelord may well make the transition from a governmental title to a widespread term. One of this movement's most vocal and compelling leaders is a woman named Aethusa, the so-called \"Thrice-born Queen,\" who claims to be the reincarnation of not one but two runelords of old. Realm of the Mammoth Lords The hearty folk of the Realm of the Mammoth Lords are surrounded by upheaval. To the west, the land of Irrisen recently lost its queen and is in the middle of the first significant change in the inheritance of power in 14 centuries. To the south, the orcs of Belkzen seem on the cusp of transitioning from a more warlike and brutal way of life into something new, with their refusal to rejoin the ranks of their one-time oppressor Tar-Baphon as a potential catalyst. But it was to the east that the biggest change surrounding this realm took place, for here, with the closing of the Worldwound, the Mammoth Lords have less to worry about with each passing day. Every demon slaughtered now lessens the whole, whereas before it seemed as if untold more sprang from the rift between worlds with each minor victory. The Mammoth Lords are proud that through it all, life in their lands has remained largely unchanged. They point to this as a strength, seeing it as proof that their ways and traditions have not only withstood the test of time, but vanquished it. And while there is wisdom in these beliefs, there is also bravado, for not all is safe and sound in this rugged landscape. One need look no further than the Mammoth Lords themselves\u2014various bands of nomadic Kellids\u2014for proof of the land's dangers, for the Mammoth Lords are very much a product of this region. Here, megafauna of all sorts live wild, from armored glyptodons and giant ground sloths to ravenous cave bears and smilodons. None are larger or mightier than the mammoths that travel the plains of this land in vast herds. The Mammoth Lords earned their name by mastering these elephantine creatures, as well as many other types of megafauna. These animals serve the Mammoth Lords as mounts, guardians, and engines of war. The Mammoth Lord clans have no central organization and instead gather along extended family lines; occasionally multiple families join together as followings. The followings keep territories that often clash with others, but they have no true capital city. Now that the orcs have grown more peaceful, Irrisen has gained a potentially gentler queen, and the Worldwound has healed, these clashes are growing. Some of the wiser among the Mammoth Lords see that the lack of conflicts along the borders has left the more violent-minded of the various followings without real enemies to face, leaving them to invent conflicts with each other. Traditionally, the Mammoth Lords have had another sort of enemy closer to home\u2014the frost giants. But as with the more distant dangers, the giants have seemed to fade RUNELORDS When the wizard Xin founded the realm of Thassilon, he hoped to create a nation free from the excesses and elitism of Azlant. This dream was dashed when the runelords assassinated him and took control of his empire. Though the title of runelord has passed between many individuals throughout history, the seven runelords that returned to plague Golarion in present times were Alaznist the Runelord of Wrath, Belimarius the Runelord of Envy, Karzoug the Runelord of Greed, Krune the Runelord of Sloth, Sorshen the Runelord of Lust, Xanderghul the Runelord of Pride, and Zutha the Runelord of Gluttony. WORLD GUIDE OVERVIEW ABSALOM AND STARSTONE ISLE {@condition BROKEN} LANDS EYE OF DREAD GOLDEN ROAD HIGH SEAS IMPOSSIBLE LANDS MWANGI EXPANSE OLD CHELIAX SAGA LANDS SHINING KINGDOMS AETHUSA MAMMOTH RIDER from view. The prouder of the Mammoth Lords attribute this too to the superiority of their way of life, bragging that giants can witness \"smaller folk\" defeating their kin in battle only so many times before they retreat for good. Some Mammoth Lords have already taken to calling the giants a folktale of the past, despite the fact that proof of their kind remains scattered throughout the land in the form of lost oversized weapons or immense bones left behind by not-so-ancient battles. The giants have not vanished, though. The greatest among them, Jarl Gnargorak, is no fool, but neither is he kind and forgiving. He and his frost giants have clashed against the Mammoth Lords his entire life, and the voices of his ancestors remind him that this has always been the way of things. Jarl Gnargorak foresees a day in the not-so-distant future when his people rule this land, and the Mammoth Lords are extinct. For now, this canny leader has ordered his armies far into the Tusk Mountains to hunker and remain in quiet wait. He knows the Mammoth Lords see the victories along their borders as engendering weakness and that they claim responsibility for changes beyond their borders that were not directly due to the Mammoth Lords' actions\u2014that they have benefited from the acts of outside heroes. And so Jarl Gnargorak waits for the followings to grow fat and lazy, at which time he will march his armies down from the frozen mountain heights to claim the lands he sees as rightfully belonging to the Jotun. Varisia While the other realms of the Saga Lands may have longer histories as established nations, the stories of recent years have catapulted the wilder reaches of Varisia into modern awareness. Much of Varisia's ancient past, when it formed the bulk of the empire of Thassilon, has only recently been rediscovered by modern historians and scholars. And while Cheliax toyed for a few years at expanding its reach into this land, today Varisia is largely in the control of three other groups. The most widespread of these groups is a motley collection of pilgrims and travelers from all corners of the world, resulting in a wide diversity among the cities in Varisia. But while many of these relative newcomers have dwelt in Varisia for several generations, they are still regarded at best as \"new blood\" by the land's indigenous Varisian and Shoanti people. For Varisians, the integration of the newcomers was marred by numerous clashes between cultures, with prejudice and misunderstandings making initial attempts to live and work together choppy, but when compared to the Shoanti experience, the Varisians' interactions seem almost idyllic. The Shoanti had always had a smaller footprint in their ancestral lands than the Varisians, and while Varisians are traditionally nomadic, the Shoanti RELATIONS The longest-running tension in the Saga Lands is without a doubt the grudge between the Lands of the Linnorm Kings and Irrisen. Now that the frozen land has an untested new queen, many among the Linnorm Kingdoms are agitating for a rekindling of old wars. Just to the south, New Thassilon is beset with its own perils as rivals Sorshen and Belimarius hold drastically different visions for the future. The city-states of Varisia continue to increase their influence and fame with the nations to the south, for this land's ports offer some of the most lucrative destinations and opportunities for trade in all of the Saga Lands. IRESPAN were more {@condition prone} to settling down, living in clan-based groups known as quahs. When Cheliax founded a colony named Korvosa along a large bay in the heart of Shoanti lands, which contained a strange and ancient pyramid sacred to the Shoanti, violence erupted between the Chelish colonizers and the displaced Shoanti. After a prolonged and bloody conflict, the colonizers ultimately won; the bay is now known as Conqueror's Bay, and Korvosa is the largest city in Varisia. The Shoanti of the region were forced to abandon their homeland and relocate to the north, into the harsh wilds known as the Cinderlands. Prejudice against Shoanti is rife in Korvosa to this day, and the displaced Shoanti have not forgiven the Chelish invaders. Geographically, Varisia is divided into two distinct regions. The northeastern portion is plateau, and the southwestern portion is lowlands, consisting of a mix of forested mountains, lush grasslands, verdant forests, and sprawling swamps. In the eastern lowlands, the city of Korvosa is by far the largest settlement. The city has proudly clung to the traditions of its Chelish founders, but those traditions were challenged recently when Queen Ileosa Arabasti gained control after the sudden death of her husband. At first, the people of Korvosa worried that she was ill-equipped to rule, but soon they learned quite the opposite: Ileosa was filled with ambition equaled only by her cruelty, and she proved to be a deadly tyrant indeed. Her rule was relatively short and ended violently, but her time in control has changed Korvosa forever. Thousands died during her regime\u2014many to the ravages of a disease known as bloodveil, a disease Ileosa helped to spread\u2014and her one-time guards, the Gray Maidens, fractured into competing mercenary bands after her defeat. In the western lowlands, the greatest city is Magnimar, founded by expatriates from Korvosa at the site of an ancient Thassilonian monument\u2014a crumbled bridge known as the Irespan. Well to the north of Magnimar, the region's third-largest city is a haven for pirates and other scoundrels: Riddleport. However, the small town of Sandpoint may well be the most influential in the land, for not one but three legendary groups of heroes got their start from this coastal town. The first of these groups defeated Runelord Karzoug, while the second (of which Ostog the Unslain was a member) eventually traveled to distant Osirion before splitting apart to each forge their own stories throughout the Inner Sea region. The third group escorted local barkeep Ameiko Kaijitsu over the Crown of the World, where they aided her in reclaiming her birthright to become empress of the nation of Minkai. The greatest danger Varisia has faced in recent years only recently came to pass. Events set in motion 10 years before by Runelord Karzoug's awakening came to a head as several other runelords rose and fought for dominance. One of the most powerful of their number, Runelord Alaznist, seized control of an ancient artifact that allowed her to manipulate time. If not for the intervention of yet another group of heroes with roots in Varisia, Alaznist would have transformed the Saga Lands into her own rune-blasted, devastated empire. All of these adventurers have left such a significant mark on the world that one could argue Varisia's most potent and important exports to the Inner Sea region are in fact its heroes. Yet Varisia also seems to produce no shortage of epic dangers that require equally epic solutions. Only time can reveal who might be the next great villains\u2014and their heroic counterparts. MEGAFAUNA MINIONS Megafauna animal companions are mostly similar to other animal companions of the same category, though they look different, and they have one difference in their upgrade path. If you take a feat that would normally allow you to choose to have your companion become a savage or nimble animal companion, a megafauna companion instead can choose to become a savage or indomitable companion. An indomitable companion increases its Constitution modifier by 2 and its Strength, Dexterity, and Wisdom modifiers by 1. It deals 3 additional damage with its unarmed attacks. Increase its proficiency rank in {@skill Athletics} to expert and its proficiency rank in barding to expert. It also learns the advanced maneuver for its type. If your companion is Medium or smaller, it grows in size by one category. Its attacks count as magical for the purpose of ignoring resistances. WORLD GUIDE OVERVIEW ABSALOM AND STARSTONE ISLE {@condition BROKEN} LANDS EYE OF DREAD GOLDEN ROAD HIGH SEAS IMPOSSIBLE LANDS MWANGI EXPANSE OLD CHELIAX SAGA LANDS SHINING KINGDOMS Backgrounds The following backgrounds are particularly suitable for characters from the Saga Lands region. MAMMOTH SPEAKER BACKGROUND You have learned the secrets of taming the mighty mammoths and other megafauna of the far north. Perhaps these talents are a part of your people's traditional customs, or perhaps you sought out these massive animals of your own accord. Choose two ability boosts. One must be to Constitution or Wisdom, and one is a free ability boost. You're trained in the {@skill Nature} skill and the {@skill Lore|Animal Lore} skill. You gain the {@feat Train Animal} skill feat. SHOANTI NAME-BEARER BACKGROUND You are a member of a Shoanti quah and have gone through its coming of age ceremony, gaining the traditional tattoo of your quah and earning your adult name. Choose two ability boosts. One must be to Strength or Wisdom, and one is a free ability boost. You're trained in the {@skill Athletics} skill and the {@skill Lore|Quah Lore} skill. You gain the {@feat Combat Climber} skill feat. THASSILONIAN TRAVELER BACKGROUND You come from ancient Thassilon, one of the citizens that appeared out of time alongside the city of Xin-Edasseril. You know many things that have been long forgotten... along with many things that are no longer correct. Choose two ability boosts. One must be to Constitution or Intelligence, and one is a free ability boost. You're trained in the {@skill Arcana} skill and the {@skill Lore|Thassilon Lore} skill. You gain the {@feat Dubious Knowledge} skill feat. ULFEN RAIDER BACKGROUND You are an Ulfen warrior, feared among Avistan for the merciless and devastating raids your people once conducted along the shores. Though the days of these Ulfen raids are largely past, you have been trained to strike terror into the hearts of those who face you. Choose two ability boosts. One must be to Strength or Charisma, and one is a free ability boost. You're trained in the {@skill Intimidation} skill and the {@skill Lore|Sailing Lore} skill. You gain the {@feat Intimidating Glare} skill feat. VARISIAN WANDERER BACKGROUND You have spent your youth wandering the lands of Varisia and beyond among the brightly painted wagons of a Varisian caravan. You have heard endless tales of your people's history and lore, and have learned many songs and stories from the disparate people you have met. Choose two ability boosts. One must be to Dexterity or Charisma, and one is a free ability boost. You're trained in the {@skill Performance} skill and the {@skill Lore|Circus Lore} skill. You gain the Fascinating {@skill Performance} skill feat. WINTER'S CHILD BACKGROUND Your or one of your ancestors hails from Irrisen, and some spark of the icy region's magic has manifested itself within your bones. The blood of Baba Yaga's legacy runs in your veins, and you are at one with the mysteries and dangers of the frozen land. Choose two ability boosts. One must be to Constitution or Charisma, and one is a free ability boost. You're trained in the {@skill Arcana} skill and the {@skill Lore|Weather Lore} skill. You gain the {@feat Arcane Sense} skill feat. WITCH WARY BACKGROUND You have little love or trust for spellcraft and those who practice it, and have developed a paranoid knack for recognizing such tricks. You are constantly on guard for the magic of witches and have been trained to spot the signs of those with minds affected by magic. Choose two ability boosts. One must be to Dexterity or Intelligence, and one is a free ability boost. You're trained in the {@skill Occultism} skill and the {@skill Lore|Curse Lore} skill. You gain the {@feat Oddity Identification} skill feat. 118"
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 112
+		}
+	]
+}

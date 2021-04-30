@@ -136,7 +136,7 @@ class AncestriesPage extends BaseComponent {
 		this._setFeatFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
-		const $btnLink = ListUtil.getOrTabRightButton(`btn-feat-link`, `list`);
+		const $btnLink = ListUtil.getOrTabRightButton(`btn-feat-link`, `list`, "a");
 		$btnLink.title("View this feat on the Feats page");
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._featDataList, null, null, UrlUtil.PG_FEATS);
@@ -147,7 +147,7 @@ class AncestriesPage extends BaseComponent {
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#ancestrystats`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
 		this._initLinkGrabbers();
-		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
+		// FIXME: UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export-anc`));
 
 		Hist.initialLoad = false;
 
@@ -603,12 +603,14 @@ class AncestriesPage extends BaseComponent {
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false})),
 		);
+		this._updateFeatHref();
 	}
 
 	_handleFeatFilterChange () {
 		const f = this.featFilterBox.getValues();
 		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
 		FilterBox.selectFirstVisible(this._featDataList);
+		this._updateFeatHref();
 	}
 
 	async _pInitAndRunRender () {
@@ -849,10 +851,7 @@ class AncestriesPage extends BaseComponent {
 					type: "pf2-title",
 					name: "Speed",
 				},
-				...Object.keys(anc.speed).map(k => {
-					if (k === "walk") return `${anc.speed.walk} feet`
-					else return `${k.uppercaseFirst()} ${anc.speed[k]} feet`
-				}),
+				...Parser.speedToFullMap(anc.speed),
 			],
 		};
 		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, anc.rarity);
@@ -895,7 +894,7 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	_render_renderHeritageStats (heritage) {
-		const renderer = Renderer.get()
+		const renderer = Renderer.get().setFirstSection(false);
 		const renderStack = [""]
 		renderStack.push(`<div data-heritage-id="${UrlUtil.getStateKeyHeritage(heritage)}">`)
 		renderer.recursiveRender({type: "pf2-h3", name: heritage.name, entries: heritage.entries}, renderStack)
@@ -904,7 +903,7 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	_render_renderHeritageFluff (heritage) {
-		const renderer = Renderer.get()
+		const renderer = Renderer.get().setFirstSection(false);
 		const renderStack = [""]
 		renderStack.push(`<div class="pf2-fluff" data-heritage-id="${UrlUtil.getStateKeyHeritage(heritage)}">`)
 		renderer.recursiveRender(heritage.info, renderStack)
@@ -1187,7 +1186,13 @@ class AncestriesPage extends BaseComponent {
 		const feat = this.activeFeat;
 		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
 		$featStats.show();
-		$(`#btn-feat-link`).attr("onclick", `location.href="feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)},${this.featFilterBox.getSubHashes().join(",")}"`);
+		this._updateFeatHref();
+	}
+
+	_updateFeatHref () {
+		const feat = this.activeFeat;
+		if (!feat) return;
+		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().join(HASH_PART_SEP)}`);
 	}
 
 	static _render_$getNoContent () {

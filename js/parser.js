@@ -136,6 +136,7 @@ Parser.numToBonus = function (intNum) {
 Parser.CRS = ["0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
 
 Parser.isValidCreatureLvl = function (lvl) {
+	lvl = Number(lvl);
 	return lvl > -2 && lvl < 26
 }
 
@@ -155,13 +156,6 @@ Parser.numberToCr = function (number, safe) {
 	if (number == null) return "Unknown";
 
 	return Parser.numberToFractional(number);
-};
-
-Parser.crToPb = function (cr) {
-	if (cr === "Unknown" || cr == null) return 0;
-	cr = cr.cr || cr;
-	if (Parser.crToNumber(cr) < 5) return 2;
-	return Math.ceil(cr / 4) + 1;
 };
 
 Parser.levelToPb = function (level) {
@@ -262,23 +256,6 @@ Parser.LANGUAGES_ALL = [
 	...Parser.LANGUAGES_UNCOMMON,
 	...Parser.LANGUAGES_SECRET,
 ].sort();
-
-Parser.dragonColorToFull = function (c) {
-	return Parser._parse_aToB(Parser.DRAGON_COLOR_TO_FULL, c);
-};
-
-Parser.DRAGON_COLOR_TO_FULL = {
-	B: "black",
-	U: "blue",
-	G: "green",
-	R: "red",
-	W: "white",
-	A: "brass",
-	Z: "bronze",
-	C: "copper",
-	O: "gold",
-	S: "silver",
-};
 
 Parser.acToFull = function (ac, renderer) {
 	if (typeof ac === "string") return ac; // handle classic format
@@ -405,6 +382,10 @@ Parser.hasSourceDate = function (source) {
 	Parser._sourceDateCache = Parser._sourceDateCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_DATE);
 	return !!Parser._sourceDateCache[source.toLowerCase()];
 };
+Parser.hasSourceStore = function (source) {
+	Parser._sourceStoreCache = Parser._sourceStoreCache || Parser._buildSourceCache(Parser.SOURCE_JSON_TO_STORE);
+	return !!Parser._sourceStoreCache[source.toLowerCase()];
+};
 Parser.sourceJsonToFull = function (source) {
 	source = Parser._getSourceStringFromSource(source);
 	if (Parser.hasSourceFull(source)) return Parser._sourceFullCache[source.toLowerCase()].replace(/'/g, "\u2019");
@@ -426,6 +407,12 @@ Parser.sourceJsonToDate = function (source) {
 	if (Parser.hasSourceDate(source)) return Parser._sourceDateCache[source.toLowerCase()];
 	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToDate(source);
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_DATE, source, null);
+};
+Parser.sourceJsonToStore = function (source) {
+	source = Parser._getSourceStringFromSource(source);
+	if (Parser.hasSourceStore(source)) return Parser._sourceStoreCache[source.toLowerCase()];
+	if (BrewUtil.hasSourceJson(source)) return BrewUtil.sourceJsonToUrl(source);
+	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_STORE, source, null);
 };
 
 Parser.sourceJsonToColor = function (source) {
@@ -479,17 +466,6 @@ Parser.itemValueToFull = function (item, isShortForm) {
 
 Parser.itemValueToFullMultiCurrency = function (item, isShortForm) {
 	return Parser._moneyToFullMultiCurrency(item, "value", "valueMult", isShortForm);
-};
-
-Parser.itemVehicleCostsToFull = function (item, isShortForm) {
-	return {
-		travelCostFull: Parser._moneyToFull(item, "travelCost", "travelCostMult", isShortForm),
-		shippingCostFull: Parser._moneyToFull(item, "shippingCost", "shippingCostMult", isShortForm),
-	};
-};
-
-Parser.spellComponentCostToFull = function (item, isShortForm) {
-	return Parser._moneyToFull(item, "cost", "costMult", isShortForm);
 };
 
 Parser._moneyToFull = function (it, prop, propMult, isShortForm) {
@@ -624,10 +600,6 @@ Parser.weightValueToNumber = function (value) {
 	else throw new Error(`Badly formatted value ${value}`);
 };
 
-Parser.dmgTypeToFull = function (dmgType) {
-	return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmgType);
-};
-
 Parser.skillToExplanation = function (skillType) {
 	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
 	if (fromBrew) return fromBrew;
@@ -713,6 +685,13 @@ Parser.savingThrowAbvToFull = function (abv) {
 	}
 }
 
+Parser.speedToFullMap = function (speed) {
+	return Object.keys(speed).map(k => {
+		if (k === "walk") return `${speed.walk} feet`
+		else return `${k.uppercaseFirst()} ${speed[k]} feet`
+	})
+}
+
 Parser.initialProficienciesToFull = function (initProf) {
 	let out = {
 		type: "pf2-sidebar",
@@ -749,7 +728,7 @@ Parser.initialProficienciesToFull = function (initProf) {
 	if (initProf.classDc) {
 		out.entries.push({type: "pf2-title", name: "CLASS DC"});
 		out.entries.push(initProf.classDc.entry);
-	};
+	}
 	if (initProf.spells) {
 		out.entries.push({type: "pf2-title", name: "SPELLS"});
 		if (initProf.spells.u) initProf.spells.u.forEach(it => out.entries.push(`Untrained in ${it}`));
@@ -1850,24 +1829,40 @@ Parser.ARMOR_ABV_TO_FULL = {
 	"h.": "heavy",
 };
 
+// TODO: Rework for better clarity?
 Parser.CONDITION_TO_COLOR = {
 	"Blinded": "#525252",
-	"Charmed": "#f01789",
-	"Deafened": "#ababab",
-	"Exhausted": "#947a47",
+	"Clumsy": "#5c57af",
+	"Concealed": "#525252",
+	"Confused": "#c9c91e",
+	"Controlled": "#ed07bb",
+	"Dazzled": "#db8f48",
+	"Deafened": "#666464",
+	"Doomed": "#9e1414",
+	"Drained": "#72aa01",
+	"Dying": "#ff0000",
+	"Enfeebled": "#42a346",
+	"Fascinated": "#fc7b02",
+	"Fatigued": "#7913c6",
+	"Flat-Footed": "#7f7f7f",
+	"Fleeing": "#c9ca18",
 	"Frightened": "#c9ca18",
-	"Grappled": "#8784a0",
-	"Incapacitated": "#3165a0",
-	"Invisible": "#7ad2d6",
-	"Paralyzed": "#c00900",
-	"Petrified": "#a0a0a0",
-	"Poisoned": "#4dc200",
-	"Prone": "#5e60a0",
-	"Restrained": "#d98000",
-	"Stunned": "#a23bcb",
-	"Unconscious": "#3a40ad",
+	"Grabbed": "#00e0ac",
+	"Immobilized": "#009f7a",
+	"Invisible": "#71738c",
+	"Paralyzed": "#015642",
+	"Persistent Damage": "#ed6904",
+	"Petrified": "#2fd62f",
+	"Prone": "#00e070",
+	"Quickened": "#00d5e0",
+	"Restrained": "#007c5f",
+	"Sickened": "#008202",
+	"Slowed": "#2922a5",
+	"Stunned": "#4b43db",
+	"Stupefied": "#c94873",
+	"Unconscious": "#a0111b",
+	"Wounded": "#e81919",
 
-	"Concentration": "#009f7a",
 };
 // Turn Adventure Paths into, well, adventures. Does not seem to work currently.
 SRC_CRB = "CRB";
@@ -1948,6 +1943,23 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
 
+Parser.SOURCE_JSON_TO_STORE = {};
+Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3?Pathfinder-Core-Rulebook";
+Parser.SOURCE_JSON_TO_STORE[SRC_BST] = "https://paizo.com/products/btq01zp4?Pathfinder-Bestiary";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOWG] = "https://paizo.com/products/btq01zoj?Pathfinder-Lost-Omens-World-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4?Pathfinder-Lost-Omens-Character-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
+Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1?Pathfinder-Gamemastery-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_APLLS] = "";
+Parser.SOURCE_JSON_TO_STORE[SRC_BST2] = "https://paizo.com/products/btq022yq?Pathfinder-Bestiary-2";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd?Pathfinder-Lost-Omens-Legends";
+Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih?Pathfinder-Advanced-Players-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x?Pathfinder-Lost-Omens-Pathfinder-Society-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pathfinder-Lost-Omens-Ancestry-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "";
+Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
+
 Parser.SOURCES_ADVENTURES = new Set([]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 
@@ -2023,7 +2035,7 @@ TR_PR = "Primal";
 Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
 
 Parser.getTraitName = function (trait) {
-	return trait.replace(/\s(?:\d|[A-Z]|\()(.+|$)/, "").uppercaseFirst()
+	return trait.replace(/\s(?:\d|[A-Z]|\(|d\d)(.+|$)/, "").uppercaseFirst()
 }
 
 Parser.rarityToNumber = function (r) {
@@ -2036,24 +2048,28 @@ Parser.rarityToNumber = function (r) {
 	}
 }
 
+Parser.dmgTypeToFull = function (dmg) {
+	return Parser._parse_aToB(Parser.DMGTYPE_JSON_TO_FULL, dmg)
+}
 Parser.DMGTYPE_JSON_TO_FULL = {
 	"A": "acid",
 	"B": "bludgeoning",
 	"C": "cold",
+	"D": "bleed",
+	"E": "electricity",
 	"F": "fire",
-	"O": "force",
-	"L": "lightning",
-	"N": "necrotic",
-	"P": "piercing",
+	"H": "chaotic",
 	"I": "poison",
-	"Y": "psychic",
-	"R": "radiant",
+	"L": "lawful",
+	"M": "mental",
+	"N": "sonic",
+	"O": "force",
+	"P": "piercing",
+	"R": "precision",
 	"S": "slashing",
-	"T": "thunder",
+	"+": "positive",
+	"-": "negative",
 };
-
-Parser.DMG_TYPES = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
-Parser.CONDITIONS = ["blinded", "charmed", "deafened", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"];
 
 Parser.SKILL_JSON_TO_FULL = {
 	"Acrobatics": [

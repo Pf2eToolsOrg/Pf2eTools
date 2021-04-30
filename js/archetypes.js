@@ -74,6 +74,13 @@ class ArchetypesPage extends BaseComponent {
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 		SortUtil.initBtnSortHandlers($("#feat-filtertools"), this._listFeat);
+		this._list.on("updated", () => {
+			$(`.lst__wrp-search-visible.archetypes`).html(`${this._list.visibleItems.length}/${this._list.items.length}`);
+		});
+		this._listFeat.on("updated", () => {
+			$(`.lst__wrp-search-visible.feats`).html(`${this._listFeat.visibleItems.length}/${this._listFeat.items.length}`);
+		});
+		ListUtil._pBindSublistResizeHandlers($(`.feat-view--resizable`))
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
@@ -117,11 +124,20 @@ class ArchetypesPage extends BaseComponent {
 		this._setFeatFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
+		const $tabsFeats = $(`#tabs-right-feats`);
+		const $btnLink = $(`<a class="ui-tab__btn-tab-head btn btn-default" id="btn-feat-link"><span class="glyphicon glyphicon-list"></span></a>`).appendTo($tabsFeats);
+		$btnLink.title("View this feat on the Feats page");
+		const $btnPopFeats = $(`<a class="ui-tab__btn-tab-head btn btn-default" id="btn-popout-feat"><span class="glyphicon glyphicon-new-window"></span></a>`).appendTo($tabsFeats);
+		Renderer.hover.bindPopoutButton($btnPopFeats, this._featDataList, null, null, UrlUtil.PG_FEATS);
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
+		UrlUtil.bindLinkExportButton(this.filterBox);
+
 		await this._pInitAndRunRender();
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
-		UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
+		// UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
 		Hist.initialLoad = false;
 
@@ -155,7 +171,7 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	_addFeatsData (feats) {
-		const arcFeats = feats.feat.filter(f => !!f.farchetype)
+		const arcFeats = feats.feat.filter(f => !!f.featType.archetype)
 		arcFeats.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
 			this._featFilter.mutateAndAddToFilters(f, isExcluded)
@@ -187,7 +203,8 @@ class ArchetypesPage extends BaseComponent {
 					const hash = UrlUtil.encodeForHash([name, source]);
 					const mutateExtraFeat = (feat) => {
 						feat.level = Number(lvl);
-						feat.farchetype = arc.name;
+						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
+						feat.featType.archetype.push(arc.name)
 						feat._fType = ["Archetype"];
 						feat.entries.push(`<br>{@note This version of {@feat ${feat.name}|${source}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`);
 						this._featFilter.mutateForFilters(feat);
@@ -242,7 +259,7 @@ class ArchetypesPage extends BaseComponent {
 		let names = ["Archetype"];
 		names.push(this.activeArchetype.name);
 		Object.keys(this._featFilter._archetypeFilter.getValues().Archetypes).forEach(key => {
-			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 2)
+			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 2);
 		});
 		names.forEach(name => { this._featFilter._archetypeFilter.setValue(name, 1) });
 		this._handleFeatFilterChange();
@@ -323,7 +340,7 @@ class ArchetypesPage extends BaseComponent {
 			}
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
-			$(`#featstats`).empty().append(ArchetypesPage._render_$getNoContent());
+			$(`#featstats`).empty().append($(`<div class="pf2-h1-flavor text-center">Select a feat from the list to view it here</div>`));
 			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "error"})
 		}
 	}
@@ -525,11 +542,16 @@ class ArchetypesPage extends BaseComponent {
 
 		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
+		this._updateFeatHref();
 	}
 
 	_handleFeatFilterChange () {
 		const f = this.featFilterBox.getValues();
-		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
+		this._listFeat.filter(item => {
+			return this._featFilter.toDisplay(f, item.data.entity)
+		});
+		FilterBox.selectFirstVisible(this._featDataList);
+		this._updateFeatHref();
 	}
 
 	async _pInitAndRunRender () {
@@ -598,6 +620,24 @@ class ArchetypesPage extends BaseComponent {
 		this._render_renderFeat();
 		// endregion
 
+		const hkShowFeats = () => {
+			if (this._state.isShowFeats) {
+				$(`.feat-view--inactive`).toggleClass("feat-view--active", true).toggleClass("feat-view--inactive", false)
+			} else {
+				$(`.feat-view--active`).toggleClass("feat-view--active", false).toggleClass("feat-view--inactive", true)
+			}
+		};
+		this._addHookBase("isShowFeats", hkShowFeats);
+		MiscUtil.pDefer(hkShowFeats);
+		const $wrpButtons = $(`#toggle-feats`).empty();
+		const $btnToggleFeats = ComponentUiUtil.$getBtnBool(this, "isShowFeats", {
+			text: "Show Feats",
+			activeClass: "btn-danger",
+			activeText: "Hide Feats",
+			inactiveText: "Show Feats",
+		}).title("Toggle Feat View");
+		$btnToggleFeats.prependTo($wrpButtons);
+
 		this._handleFilterChange(false);
 		this._handleFeatFilterChange();
 	}
@@ -643,6 +683,13 @@ class ArchetypesPage extends BaseComponent {
 		const feat = this.activeFeat;
 		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
 		$featStats.show();
+		this._updateFeatHref();
+	}
+
+	_updateFeatHref () {
+		const feat = this.activeFeat;
+		if (!feat) return;
+		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().join(HASH_PART_SEP)}`);
 	}
 
 	static _render_$getNoContent () {
@@ -655,11 +702,7 @@ class ArchetypesPage extends BaseComponent {
 }
 
 ArchetypesPage._DEFAULT_STATE = {
-	isHideFeatures: false,
-	isShowFluff: true,
-	isShowVeHeritages: false,
-	isShowHSources: false,
-	isShowFeats: true,
+	isShowFeats: false,
 };
 
 let archetypesPage;

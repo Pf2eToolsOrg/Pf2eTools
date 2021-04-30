@@ -136,7 +136,7 @@ class ClassesPage extends BaseComponent {
 		this._setFeatFromHash(Hist.initialLoad);
 		this._setStateFromHash(Hist.initialLoad);
 
-		const $btnLink = ListUtil.getOrTabRightButton(`btn-feat-link`, `list`);
+		const $btnLink = ListUtil.getOrTabRightButton(`btn-feat-link`, `list`, "a");
 		$btnLink.title("View this feat on the Feats page");
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._featDataList, null, null, UrlUtil.PG_FEATS);
@@ -640,12 +640,14 @@ class ClassesPage extends BaseComponent {
 				.filter(stateKey => this._state[stateKey])
 				.mergeMap(stateKey => ({[stateKey]: false})),
 		);
+		this._updateFeatHref();
 	}
 
 	_handleFeatFilterChange () {
 		const f = this.featFilterBox.getValues();
 		this._listFeat.filter(item => this._featFilter.toDisplay(f, item.data.entity));
 		FilterBox.selectFirstVisible(this._featDataList);
+		this._updateFeatHref();
 	}
 
 	async _pInitAndRunRender () {
@@ -1329,6 +1331,13 @@ class ClassesPage extends BaseComponent {
 		const feat = this.activeFeat;
 		RenderFeats.$getRenderedFeat(feat).appendTo($featStats);
 		$featStats.show();
+		this._updateFeatHref();
+	}
+
+	_updateFeatHref () {
+		const feat = this.activeFeat;
+		if (!feat) return;
+		$(`#btn-feat-link`).attr("href", `feats.html#${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat)}${HASH_PART_SEP}${this.featFilterBox.getSubHashes().join(HASH_PART_SEP)}`);
 	}
 
 	static _render_$getNoContent () {
