@@ -731,13 +731,13 @@
 			"source": "CRB",
 			"actionType": {
 				"class": [
-					"Fighter",
-					"Champion",
-					"Barbarian",
-					"Swashbuckler"
+					"Fighter|CRB",
+					"Champion|CRB",
+					"Barbarian|CRB",
+					"Swashbuckler|APG"
 				],
 				"archetype": [
-					"Marshal"
+					"Marshal|APG"
 				]
 			},
 			"page": 474,
@@ -3337,13 +3337,13 @@
 				"entry": "{@as r}"
 			},
 			"actionType": {
-				"ancestry": ["Dwarf"],
-				"heritage": ["Ancient-Blooded Dwarf"]
+				"ancestry": ["Dwarf|CRB"],
+				"heritage": ["Ancient-Blooded Dwarf|CRB"]
 			},
 			"page": 35,
 			"traits": [
 			],
-			"trigger": "You attempt a saving throw against a magical effect, but you haven’t rolled yet.",
+			"trigger": "You attempt a saving throw against a {@trait magical} effect, but you haven’t rolled yet.",
 			"entries": [
 				"Your ancestors’ innate resistance to magic surges, before slowly ebbing down. You gain a +1 circumstance bonus until the end of this turn. This bonus also applies to the triggering save."
 			]
@@ -3357,8 +3357,8 @@
 				"entry": "{@as 2}"
 			},
 			"actionType": {
-				"ancestry": ["Dwarf"],
-				"heritage": ["Elemental Heart Dwarf"]
+				"ancestry": ["Dwarf|CRB"],
+				"heritage": ["Elemental Heart Dwarf|LOCG"]
 			},
 			"page": 19,
 			"traits": [
@@ -3377,8 +3377,8 @@
 				"entry": "{@as r}"
 			},
 			"actionType": {
-				"ancestry": ["Kitsune"],
-				"heritage": ["Celestial Envoy Kitsune"]
+				"ancestry": ["Kitsune|LOAG"],
+				"heritage": ["Celestial Envoy Kitsune|LOAG"]
 			},
 			"page": 123,
 			"traits": [
@@ -3397,8 +3397,8 @@
 				"entry": "{@as r}"
 			},
 			"actionType": {
-				"ancestry": ["Kitsune"],
-				"heritage": ["Dark Fields Kitsune"]
+				"ancestry": ["Kitsune|LOAG"],
+				"heritage": ["Dark Fields Kitsune|LOAG"]
 			},
 			"page": 123,
 			"traits": [
@@ -3413,8 +3413,8 @@
 			"name": "Tail Toxin",
 			"source": "APG",
 			"actionType": {
-				"ancestry": ["Kobold"],
-				"heritage": ["Venomtail Kobold"]
+				"ancestry": ["Kobold|APG"],
+				"heritage": ["Venomtail Kobold|APG"]
 			},
 			"page": 14,
 			"activity": {
@@ -3437,8 +3437,8 @@
 			"source": "LOCG",
 			"page": 57,
 			"actionType": {
-				"ancestry": ["Lizardfolk"],
-				"heritage": ["Frilled Lizardfolk"]
+				"ancestry": ["Lizardfolk|LOCG"],
+				"heritage": ["Frilled Lizardfolk|LOCG"]
 			},
 			"activity": {
 				"number": 1,

@@ -3228,6 +3228,30 @@ Renderer.action = {
 	getSubHead (it) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+		if (it.actionType) {
+			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${it.actionType.trained}</p>`);
+			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${it.actionType.untrained}</p>`);
+			if (it.actionType.class) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>`);
+				// To explain this one-line spaghetti, this takes the class array, returns it properly tagged, joins it into a string with ", " and lastly renders it
+				renderStack.push(renderer.render(`${it.actionType.class.map(function(x) { return `{@class ${x}}`}).join(", ")}`))
+				renderStack.push(`</p>`)
+			}
+			if (it.actionType.archetype) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype </strong>`);
+				// Same as above but it's archetypes
+				renderStack.push(renderer.render(`${it.actionType.archetype.map(function(x) { return `{@archetype ${x}}`}).join(", ")}`))
+				renderStack.push(`</p>`)
+			}
+			if (it.actionType.ancestry || it.actionType.heritage) {
+				if (it.actionType.ancestry) {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry </strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}}`)}`);
+					if (it.actionType.heritage) renderStack.push(`; `)
+				}
+				if (it.actionType.heritage) renderStack.push(`<strong>Heritage </strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
+				renderStack.push(`</p>`)
+			} 
+		}
 		if (it.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
 		}
