@@ -3229,8 +3229,8 @@ Renderer.action = {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		if (it.actionType) {
-			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${it.actionType.trained}</p>`);
-			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${it.actionType.untrained}</p>`);
+			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${renderer.render(`{@skill ${it.actionType.trained}}`)}</p>`);
+			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${renderer.render(`{@skill ${it.actionType.untrained}}`)}</p>`);
 			if (it.actionType.class) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>`);
 				// To explain this one-line spaghetti, this takes the class array, returns it properly tagged, joins it into a string with ", " and lastly renders it
