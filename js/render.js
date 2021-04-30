@@ -4145,49 +4145,51 @@ Renderer.item = {
 	getSubHead (item) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
+		// General Item Line
+		if (item.category || item.bulk) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			/* To explain what is happening
 			Create a Category line and fill with the following:
 				if it has a subCategory, do it first (Martial, Simple, Advanced)
 				if it is ranged: true, add Ranged
 				if its not Worn, add the category (Item, Weapon, Armor, Talisman)
 				if it is Worn, add the category (Worn) and item type (Item)
+			Then add the bulk line if exists
 			*/
-		if (item.category) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category </strong>`);
-			if (item.subCategory != null) renderStack.push(`${item.subCategory}`)
-			if (item.weapon === true) {
-				if (item.ranged === true) renderStack.push(` Ranged `)
-			};
-			if (item.category != "Worn") {
-				renderStack.push(` ${item.category}`)
-			} else {
-				renderStack.push(` ${item.category} ${item.type}`)
+			if (item.category) {
+				renderStack.push(`<strong>Category </strong>`);
+				if (item.subCategory != null) renderStack.push(`${item.subCategory}`)
+				if (item.weapon === true) {
+					if (item.ranged === true) renderStack.push(` Ranged `)
+				};
+				if (item.category != "Worn") {
+					renderStack.push(` ${item.category}`)
+				} else {
+					renderStack.push(` ${item.category} ${item.type}`)
+				}
+				if (item.bulk) renderStack.push("; ")
 			}
+			if (item.bulk) renderStack.push(`<strong>Bulk </strong> ${item.bulk}`);
 			renderStack.push(`</p>`)
 		}
-		if (item.price) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
-		}
-		if (item.ammunition) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}</p>`);
-		}
-		if (item.damage) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}</p>`);
-			// TODO: links to items?
-			// Unsure what this means - MrVauxs
-		}
-		if (item.hands) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands </strong>${item.hands}</p>`);
-			// TODO: links to items?
-			// Unsure what this means - MrVauxs
-		}
-		if (item.usage != null || item.bulk != null) {
+		
+		// Weapon Line
+		if (item.ammunition || item.damage || item.hands) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.usage != null) renderStack.push(`<strong>Usage </strong>${item.usage}`)
-			if (item.usage != null && item.bulk != null) renderStack.push("; ")
-			if (item.bulk != null) renderStack.push(`<strong>Bulk </strong> ${item.bulk}`)
-			renderStack.push(`</p>`);
+			if (item.damage) {
+				renderStack.push(`<strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}`);
+				if (item.ammunition || item.hands) renderStack.push("; ")
+			}
+			if (item.ammunition) {
+				renderStack.push(`<strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}`);
+				if (item.hands) renderStack.push("; ")
+			}
+			if (item.hands) renderStack.push(`<strong>Hands </strong>${item.hands}`);
+			renderStack.push(`</p>`)
 		}
+
+		if (item.usage) if (item.usage != null) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Usage </strong>${item.usage}</p>`);
 		if (item.ac != null || item.dexCap != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.ac != null) renderStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}`)
