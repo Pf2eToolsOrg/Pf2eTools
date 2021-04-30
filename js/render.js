@@ -3231,10 +3231,12 @@ Renderer.action = {
 		if (it.actionType) {
 			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${renderer.render(`{@skill ${it.actionType.trained}}`)}</p>`);
 			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${renderer.render(`{@skill ${it.actionType.untrained}}`)}</p>`);
-			if (it.actionType.class) {
+			if (it.actionType.class || it.actionType.subclass) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>`);
 				// To explain this one-line spaghetti, this takes the class array, returns it properly tagged, joins it into a string with ", " and lastly renders it
 				renderStack.push(renderer.render(`${it.actionType.class.map(function(x) { return `{@class ${x}}`}).join(", ")}`))
+				//If subclass exists, post it
+				if (it.actionType.subclass) renderStack.push(`; <strong>Subclass </strong>${renderer.render(`{@class ${it.actionType.class}|${it.actionType.subclass}|${it.actionType.subclass}}`)}`)
 				renderStack.push(`</p>`)
 			}
 			if (it.actionType.archetype) {
