@@ -2019,6 +2019,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"settlement": SRC_GMG,
 	"nation": SRC_GMG,
 	"group": SRC_CRB,
+	"domain": SRC_CRB,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
