@@ -4102,6 +4102,26 @@ Renderer.item = {
 	getSubHead (item) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+			/* To explain what is happening
+			Create a Category line and fill with the following:
+				if it has a subCategory, do it first (Martial, Simple, Advanced)
+				if it is ranged: true, add Ranged
+				if its not Worn, add the category (Item, Weapon, Armor, Talisman)
+				if it is Worn, add the category (Worn) and item type (Item)
+			*/
+		if (item.category) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Category </strong>`);
+			if (item.subCategory != null) renderStack.push(`${item.subCategory}`)
+			if (item.weapon === true) {
+				if (item.ranged === true) renderStack.push(` Ranged `)
+			};
+			if (item.category != "Worn") {
+				renderStack.push(` ${item.category}`)
+			} else {
+				renderStack.push(` ${item.category} ${item.type}`)
+			}
+			renderStack.push(`</p>`)
+		}
 		if (item.price) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
 		}
@@ -4140,7 +4160,7 @@ Renderer.item = {
 			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty </strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
-		if (item.group != null) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Group </strong>${renderer.render(item.group)}</p>`)
+		if (item.group != null) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Group </strong>${renderer.render(`{@group ${item.group}}`)}</p>`)
 		if (item.activate) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate </strong>${renderer.render(item.activate.activity.entry)} `);
 			if (item.activate.components != null) {
