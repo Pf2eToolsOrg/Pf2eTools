@@ -423,7 +423,7 @@ const ScaleCreature = {
 	/**
 	 * @async
 	 * @param creature Creature data.
-	 * @param toLvl target CR, as a number.
+	 * @param toLvl target level, as a number.
 	 * @return {Promise<creature>} the scaled creature.
 	 */
 	async scale (creature, toLvl) {
@@ -448,6 +448,7 @@ const ScaleCreature = {
 			this._adjustAC(creature, lvlIn, toLvl);
 			this._adjustSavingThrows(creature, lvlIn, toLvl);
 			this._adjustHP(creature, lvlIn, toLvl);
+			this._adjustResistancesWeaknesses(creature, lvlIn, toLvl);
 			this._adjustItems(creature, lvlIn, toLvl);
 			this._adjustAttacks(creature, lvlIn, toLvl);
 			this._adjustSpellcasting(creature, lvlIn, toLvl);
@@ -655,7 +656,7 @@ const ScaleCreature = {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
 		let I1;
 		if (idx[1] === -1) I1 = [map[toLvl][idx[0]], map[toLvl][idx[0]] + I0[1] - I0[0]];
-		else if (idx[0] === -1) I1 = [map[toLvl][idx[1]] - I0[1] + I0[0], map[toLvl][idx[1]]];
+		else if (idx[0] === -1) I1 = [Math.max(1, map[toLvl][idx[1]] - I0[1] + I0[0]), map[toLvl][idx[1]]];
 		else I1 = [map[toLvl][idx[0]], map[toLvl][idx[1]]];
 		return this._intervalTransform(value, I0, I1)
 	},
@@ -673,8 +674,8 @@ const ScaleCreature = {
 		// Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier.
 		const targetDice = opts.noMod ? expectation : expectation / 2;
 		const dice = Number(initFormula.match(/d(\d+)/)[1]);
-		const numDice = Math.round(targetDice * 2 / (dice + 1));
-		const mod = opts.noMod ? 0 : Math.round(expectation - numDice * (dice + 1) / 2);
+		const numDice = Math.max(1, Math.round(targetDice * 2 / (dice + 1)));
+		const mod = opts.noMod ? 0 : Math.max(0, Math.round(expectation - numDice * (dice + 1) / 2));
 		return `${numDice}d${dice}${mod ? `+${mod}` : ""}`;
 	},
 
@@ -749,11 +750,24 @@ const ScaleCreature = {
 		}
 	},
 
-	_adjustResistances (creature, lvlIn, toLvl) {
-		// TODO:
+	_adjustResistancesWeaknesses (creature, lvlIn, toLvl) {
+		const I0 = this._LvlResistanceWeakness[lvlIn].reverse();
+		const I1 = this._LvlResistanceWeakness[toLvl].reverse();
+		if (creature.resistances) {
+			creature.resistances.forEach(r => {
+				if (r.amount) r.amount = this._intervalTransform(r.amount, I0, I1);
+			});
+		}
+
+		if (creature.weaknesses) {
+			creature.weaknesses.forEach(w => {
+				if (w.amount) w.amount = this._intervalTransform(w.amount, I0, I1);
+			});
+		}
 	},
 
 	_adjustAttacks (creature, lvlIn, toLvl) {
+		// TODO: Optimize formulas including multiple damage types
 		if (creature.attacks == null) return;
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus);

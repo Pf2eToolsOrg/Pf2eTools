@@ -3974,8 +3974,15 @@ Renderer.feat = {
 
 	getSpecial (feat) {
 		if (feat.special != null) {
-			return `<p><strong>Special </strong>${feat.special}</p>`
+			return `<p class="pf2-stat pf2-stat__text"><strong>Special </strong>${feat.special}</p>`
 		} else return ``
+	},
+
+	getLeadsTo (feat) {
+		const renderer = Renderer.get();
+		if (feat.leadsTo && feat.leadsTo.length) {
+			return `<p class="pf2-stat pf2-stat__text mt-2">${renderer.render(`{@note This feat leads to: ${feat.leadsTo.map(it => `{@feat ${it}}`).joinConjunct(", ", " and ")}.}`)}</p>`
+		} else return "";
 	},
 
 	getCompactRenderedString (feat, options) {

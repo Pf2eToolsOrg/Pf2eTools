@@ -30,7 +30,7 @@ class PageFilterFeats extends PageFilter {
 		this._skillFilter = new Filter({header: "Skills", isHiddenFilter: !!opts.skillFilterHidden})
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special"],
+			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special", "Leads to..."],
 		});
 		this._timeFilter = new Filter({
 			header: "Activity",
@@ -65,7 +65,7 @@ class PageFilterFeats extends PageFilter {
 		if (feat.featType.archetype !== false) {
 			feat._fType.push("Archetype");
 		}
-		feat._slType = feat._fType
+		feat._slType = MiscUtil.copy(feat._fType);
 		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General"), 1);
 		feat._slType = feat._slType.sort(SortUtil.ascSort).join(", ")
 		feat._fTime = feat.activity != null ? feat.activity.unit : "";
@@ -76,6 +76,7 @@ class PageFilterFeats extends PageFilter {
 		if (feat.requirements != null) feat._fMisc.push("Has Requirements");
 		if (feat.cost != null) feat._fMisc.push("Has Cost");
 		if (feat.special != null) feat._fMisc.push("Has Special");
+		if (feat.leadsTo && feat.leadsTo.length) feat._fMisc.push("Leads to...")
 	}
 
 	addToFilters (feat, isExcluded) {
@@ -106,9 +107,6 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	toDisplay (values, ft) {
-		if (ft.featType == null) {
-			console.log(ft)
-		}
 		return this._filterBox.toDisplay(
 			values,
 			ft.source,

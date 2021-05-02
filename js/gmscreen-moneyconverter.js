@@ -10,7 +10,7 @@ class MoneyConverter {
 			new MoneyConverterUnit("Copper", 1, "cp"),
 			new MoneyConverterUnit("Silver", 10, "sp"),
 			new MoneyConverterUnit("Gold", 100, "gp"),
-			new MoneyConverterUnit("Platinum", 1000, "pp")
+			new MoneyConverterUnit("Platinum", 1000, "pp"),
 		];
 		const CURRENCY_INDEXED = [...CURRENCY].map((it, i) => {
 			it.ix = i;

@@ -11,6 +11,7 @@ class RenderFeats {
 			${Renderer.feat.getSubHead(feat)}
 			${renderStack.join("")}
 			${Renderer.feat.getSpecial(feat)}
+			${Renderer.feat.getLeadsTo(feat)}
 			${Renderer.utils.getPageP(feat)}
 		`;
 	}
