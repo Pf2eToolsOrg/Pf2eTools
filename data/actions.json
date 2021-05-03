@@ -3728,6 +3728,327 @@
 			],
 			"name": "Selfish Shield",
 			"trigger": "An enemy within 15 feet damages you."
+		},
+		{
+			"name": "Devise a Stratagem",
+			"source": "APG",
+			"page": 56,
+			"traits": [
+				"Concentrate",
+				"Fortune",
+				"Investigator"
+			],
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				]
+			},
+			"frequency": "once per round",
+			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a {@dice d20}. If you {@action Strike} the chosen creature later this round, you must use the result of the roll you made to {@action Devise a Stratagem|APG} for your {@action Strike}'s attack roll instead of rolling. You make this substitution only for the first {@action Strike} you make against the creature this round, not any subsequent attacks.",
+				"When you make this substitution, you can also add your Intelligence modifier to your attack roll instead of your Strength or Dexterity modifier, provided your {@action Strike} uses an {@trait agile} or {@trait finesse} melee weapon, an {@trait agile} or {@trait finesse} unarmed attack, a ranged weapon (which must be {@trait agile} or {@trait finesse} if it's a melee weapon with the {@trait thrown} trait), or a {@item sap}.",
+				"If you're aware that the creature you choose is the subject of a lead you're pursuing, you can use this ability as a free action."
+			]
+		},
+		{
+			"name": "Pursue a Lead",
+			"source": "APG",
+			"page": 56,
+			"traits": [
+				"Concentrate",
+				"Exploration",
+				"Investigator"
+			],
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				]
+			},
+			"frequency": "once per 10 minutes",
+			"entries": [
+				"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
+				"Whenever you attempt a {@skill Perception} or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically {@skill Perception} checks or skill checks that use Intelligence, Wisdom, or Charisma.",
+				"You can maintain two active investigations at a time. If you Pursue another Lead after that, the subject must be different from any of your current investigations (or rather, they must be different as far as you know), and you give up on a current subject of your choice. Once you've given up pursuit of a subject, you can't Pursue that Lead again until after the next time you make your daily preparations."
+			]
+		},
+		{
+			"name": "Clue In",
+			"source": "APG",
+			"page": 56,
+			"traits": [
+				"Concentrate",
+				"Investigator"
+			],
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				]
+			},
+			"frequency": "once per 10 minutes",
+			"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as r}"
+			},
+			"entries": [
+				"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
+			]
+		},
+		{
+			"name": "Quick Tincture",
+			"source": "APG",
+			"page": 57,
+			"traits": [
+				"Investigator",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				],
+				"subclass": [
+					"Alchemical Sciences|APG"
+				]
+			},
+			"cost": "1 versatile vial",
+			"requirements": "You know the formula for the alchemical item you're creating, you are holding or wearing {@item alchemist’s tools|CRB}, and you have a free hand.",
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the end of the current turn."
+			]
+		},
+		{
+			"name": "Expeditious Inspection",
+			"source": "APG",
+			"page": 57,
+			"traits": [
+				"Investigator",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				],
+				"subclass": [
+					"Empiricism|APG"
+				]
+			},
+			"frequency": "once per 10 minutes",
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"entries": [
+				"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
+			]
+		},
+		{
+			"name": "Pointed Question",
+			"traits": [
+				"Auditory",
+				"Concentrate",
+				"Investigator",
+				"Linguistic",
+				"Mental"
+			],
+			"source": "APG",
+			"page": 58,
+			"actionType": {
+				"class": [
+					"Investigator|APG"
+				],
+				"subclass": [
+					"Interrogation|APG"
+				]
+			},
+			"frequency": "once per 10 minutes",
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target must directly answer your question. It doesn't have to answer truthfully, but you gain a +4 circumstance bonus to your {@skill Perception} DC if the creature attempts to {@action Lie} to you.",
+						"Success": "As critical success, but the circumstance bonus is +2.",
+						"Failure": "The target can refuse to answer you as normal.",
+						"Critical Failure": "The target can refuse to answer you as normal, and its attitude toward you decreases by one step due to your aggravating attention."
+					}
+				}
+			]
+		},
+		{
+			"name": "Flurry of Blows",
+			"traits": [
+				"Flourish",
+				"Monk"
+			],
+			"actionType": {
+				"class": [
+					"Monk|CRB"
+				]
+			},
+			"source": "CRB",
+			"page": 156,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"Make two unarmed {@action Strike|CRB|Strikes}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. Apply your multiple attack penalty to the Strikes normally. As it has the {@trait flourish} trait, you can use {@action Flurry of Blows} only once per turn."
+			]
+		},
+		{
+			"type": "ability",
+			"name": "Hunt Prey",
+			"traits": [
+				"Concentrate",
+				"Ranger"
+			],
+			"actionType": {
+				"class": [
+					"Ranger|CRB"
+				]
+			},
+			"source": "CRB",
+			"page": 168,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"You designate a single creature as your prey and focus your attacks against that creature. You must be able to see or hear the prey, or you must be tracking the prey during exploration.",
+				"You gain a +2 circumstance bonus to {@skill Perception} checks when you {@action Seek} your prey and a +2 circumstance bonus to {@skill Survival} checks when you {@action Track} your prey. You also ignore the penalty for making ranged attacks within your second range increment against the prey you’re hunting.",
+				"You can have only one creature designated as your prey at a time. If you use {@action Hunt Prey} against a creature when you already have a creature designated, the prior creature loses the designation and the new prey gains the designation. Your designation lasts until your next daily preparations."
+			]
+		},
+		{
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"traits": [
+				"Rogue"
+			],
+			"actionType": {
+				"class": [
+					"Rogue|CRB"
+				]
+			},
+			"source": "CRB",
+			"page": 182,
+			"entries": [
+				"You apply one of the following debilitations, which lasts until the end of your next turn. ",
+				{
+					"type": "list",
+					"items": [
+						"{@b Debilitation} the target takes a –10-foot status penalty to its Speeds.",
+						"{@b Debilitation} The target becomes {@condition enfeebled} 1."
+					]
+				}
+			],
+			"name": "Debilitating Strike"
+		},
+		{
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"traits": [
+				"Incapacitation",
+				"Rogue"
+			],
+			"actionType": {
+				"class": [
+					"Rogue|CRB"
+				]
+			},
+			"page": 182,
+			"source": "CRB",
+			"frequency": "once per round.",
+			"entries": [
+				"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target is {@condition enfeebled} 2 until the end of your next turn.",
+						"Failure": "The target is {@condition paralyzed} for 4 rounds.",
+						"Critical Failure": "The target is {@condition paralyzed} for 4 rounds, knocked {@condition unconscious} for 2 hours, or killed (your choice)."
+					}
+				}
+			],
+			"name": "Master Strike"
+		},
+		{
+			"name": "Confident Finisher",
+			"traits": [
+				"Finisher",
+				"Swashbuckler"
+			],
+			"source": "APG",
+			"page": 85,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"actionType": {
+				"class": [
+					"Swashbuckler|APG"
+				]
+			},
+			"entries": [
+				"You make an incredibly graceful attack, piercing your foe’s defenses. Make a {@action Strike} with a weapon or unarmed attack that would apply your precise strike damage, with the following failure effect.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Failure": "You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the {@action Strike}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Drain Bonded Item",
+			"traits": [
+				"Arcane",
+				"Wizard"
+			],
+			"actionType": {
+				"class": [
+					"Wizard|CRB"
+				]
+			},
+			"source": "CRB",
+			"page": 205,
+			"frequency": "once per day",
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"entries": [
+				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell’s other requirements."
+			]
 		}
 	]
 }
