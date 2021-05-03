@@ -3788,6 +3788,12 @@ class ComponentUiUtil {
 		// If no mode is specified, default to a "count 1" chooser
 		if (opts.count == null && opts.min == null && opts.max == null) opts.count = 1;
 	}
+
+	static $getSliderRange (comp, opts) {
+		opts = opts || {};
+		const slider = new ComponentUiUtil.RangeSlider({comp, ...opts});
+		return slider.$get();
+	}
 }
 ComponentUiUtil.RangeSlider = class {
 	constructor (

@@ -23,13 +23,14 @@ class PageFilterAncestries extends PageFilter {
 			header: "Speed",
 			isLabelled: true,
 			labels: [20, 25, 30],
+			labelDisplayFn: (it) => `${it} feet`,
 		});
 		this._speedTypeFilter = new Filter({
 			header: "Speed Types",
 			displayFn: (x) => x.uppercaseFirst(),
 		});
-		this._languageFilter = new Filter({header: "Languages"});
-		this._traitsFilter = new Filter({header: "Traits"});
+		this._languageFilter = new Filter({header: "Languages", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
+		this._traitsFilter = new Filter({header: "Traits", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
 		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
 		this._optionsFilter = new OptionsFilter({
 			header: "Other Options",
@@ -76,7 +77,6 @@ class PageFilterAncestries extends PageFilter {
 		this._sourceFilter.addItem(ancestry.source);
 		this._hpFilter.addItem(ancestry.hp);
 		this._sizeFilter.addItem(ancestry.size);
-		this._speedFilter.addItem(ancestry.speed);
 		this._languageFilter.addItem(ancestry._flanguages);
 		this._traitsFilter.addItem(ancestry.traits);
 		this._miscFilter.addItem(ancestry._fMisc);

@@ -3231,19 +3231,23 @@ Renderer.action = {
 		if (it.actionType) {
 			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${renderer.render(`{@skill ${it.actionType.trained}}`)}</p>`);
 			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${renderer.render(`{@skill ${it.actionType.untrained}}`)}</p>`);
-			if (it.actionType.class || it.actionType.subclass) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>`);
-				// To explain this one-line spaghetti, this takes the class array, returns it properly tagged, joins it into a string with ", " and lastly renders it
-				renderStack.push(renderer.render(`${it.actionType.class.map(function(x) { return `{@class ${x}}`}).join(", ")}`))
-				//If subclass exists, post it
-				if (it.actionType.subclass) renderStack.push(`; <strong>Subclass </strong>${renderer.render(`{@class ${it.actionType.class}|${it.actionType.subclass}|${it.actionType.subclass}}`)}`)
+			if (it.actionType.class) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>${renderer.render(`${it.actionType.class.map(c => `{@class ${c}}`).join(", ")}`)}`);
+				if (it.actionType.subclass) {
+					const subClasses = [];
+					for (let i = 0; i < it.actionType.subclass.length; i++) {
+						if (it.actionType.subclass[i]) {
+							const [c, cSrc] = it.actionType.class[i].split("|");
+							const [sc, scSrc] = it.actionType.subclass[i].split("|");
+							subClasses.push(renderer.render(`{@class ${c}|${cSrc || ""}|${sc}|${sc}|${scSrc || ""}}`))
+						}
+					}
+					renderStack.push(`; <strong>Subclass </strong>${subClasses.join(", ")}`);
+				}
 				renderStack.push(`</p>`)
 			}
 			if (it.actionType.archetype) {
-				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype </strong>`);
-				// Same as above but it's archetypes
-				renderStack.push(renderer.render(`${it.actionType.archetype.map(function(x) { return `{@archetype ${x}}`}).join(", ")}`))
-				renderStack.push(`</p>`)
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype </strong>${renderer.render(`${it.actionType.archetype.map(a => `{@archetype ${a}}`).join(", ")}`)}</p>`);
 			}
 			if (it.actionType.ancestry || it.actionType.heritage) {
 				if (it.actionType.ancestry) {
@@ -3252,7 +3256,7 @@ Renderer.action = {
 				}
 				if (it.actionType.heritage) renderStack.push(`<strong>Heritage </strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
 				renderStack.push(`</p>`)
-			} 
+			}
 		}
 		if (it.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);

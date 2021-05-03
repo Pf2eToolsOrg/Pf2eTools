@@ -128,9 +128,43 @@ class ArchetypesPage extends BaseComponent {
 		const $btnLink = $(`<a class="ui-tab__btn-tab-head btn btn-default" id="btn-feat-link"><span class="glyphicon glyphicon-list"></span></a>`).appendTo($tabsFeats);
 		$btnLink.title("View this feat on the Feats page");
 		const $btnPopFeats = $(`<a class="ui-tab__btn-tab-head btn btn-default" id="btn-popout-feat"><span class="glyphicon glyphicon-new-window"></span></a>`).appendTo($tabsFeats);
-		Renderer.hover.bindPopoutButton($btnPopFeats, this._featDataList, null, null, UrlUtil.PG_FEATS);
+		const featPopoutHandlerGenerator = function (toList) {
+			return (evt) => {
+				const toRender = toList[archetypesPage._featId._];
+				if (evt.shiftKey) {
+					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: `${toRender.name} \u2014 Source Data`,
+							isPermanent: true,
+							isBookContent: true,
+						},
+					);
+				} else Renderer.hover.doPopout(evt, toList, archetypesPage._featId._, UrlUtil.PG_FEATS);
+			}
+		};
+		const popoutHandlerGenerator = function (toList) {
+			return (evt) => {
+				const toRender = toList[archetypesPage._archetypeId._];
+				if (evt.shiftKey) {
+					const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
+					Renderer.hover.getShowWindow(
+						$content,
+						Renderer.hover.getWindowPositionFromEvent(evt),
+						{
+							title: `${toRender.name} \u2014 Source Data`,
+							isPermanent: true,
+							isBookContent: true,
+						},
+					);
+				} else Renderer.hover.doPopout(evt, toList, archetypesPage._archetypeId._);
+			}
+		};
+		Renderer.hover.bindPopoutButton($btnPopFeats, this._featDataList, featPopoutHandlerGenerator, null, UrlUtil.PG_FEATS);
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-		Renderer.hover.bindPopoutButton($btnPop, this._dataList);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList, popoutHandlerGenerator);
 		UrlUtil.bindLinkExportButton(this.filterBox);
 
 		await this._pInitAndRunRender();
