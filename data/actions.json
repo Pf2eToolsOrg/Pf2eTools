@@ -1217,7 +1217,10 @@
 			"name": "Balance",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Acrobatics"
+				]
 			},
 			"page": 240,
 			"activity": {
@@ -1227,12 +1230,6 @@
 			},
 			"traits": [
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Acrobatics"
-				}
 			],
 			"requirements": "You are in a square that contains a narrow surface, uneven ground, or another similar feature.",
 			"entries": [
@@ -1291,7 +1288,10 @@
 			"name": "Tumble Through",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Acrobatics"
+				]
 			},
 			"page": 240,
 			"activity": {
@@ -1301,12 +1301,6 @@
 			},
 			"traits": [
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Acrobatics"
-				}
 			],
 			"entries": [
 				"You {@action Stride|CRB} up to your Speed. During this movement, you can try to move through the space of one enemy. Attempt an {@skill Acrobatics} check against the enemy’s Reflex DC as soon as you try to enter its space. You can Tumble Through using Climb, Fly, Swim, or another action instead of {@action Stride|CRB} in the appropriate environment.",
@@ -1323,7 +1317,10 @@
 			"name": "Maneuver in Flight",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Acrobatics"
+				]
 			},
 			"page": 240,
 			"activity": {
@@ -1333,12 +1330,6 @@
 			},
 			"traits": [
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Acrobatics"
-				}
 			],
 			"requirements": "You have a fly Speed.",
 			"entries": [
@@ -1391,18 +1382,15 @@
 			"name": "Squeeze",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Acrobatics"
+				]
 			},
 			"page": 241,
 			"traits": [
 				"Exploration",
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Acrobatics"
-				}
 			],
 			"entries": [
 				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are difficult terrain (page 475) that you can move through more quickly and without a check.",
@@ -1444,18 +1432,15 @@
 			"name": "Borrow an Arcane Spell",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Arcana"
+				]
 			},
 			"page": 241,
 			"traits": [
 				"Concentrate",
 				"Exploration"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Arcana"
-				}
 			],
 			"entries": [
 				"If you’re an arcane spellcaster who prepares from a spellbook, you can attempt to prepare a spell from someone else’s spellbook. The GM sets the DC for the check based on the spell’s level and rarity; it’s typically a bit easier than {@action Learn a Spell|CRB|Learning the Spell}.",
@@ -1472,7 +1457,10 @@
 			"name": "Climb",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 241,
 			"traits": [
@@ -1483,12 +1471,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"requirements": "You have both hands free.",
 			"entries": [
 				"You move up, down, or across an incline. Unless it’s particularly easy, you must attempt an {@skill Athletics} check. The GM determines the DC based on the nature of the incline and environmental circumstances. You’re {@condition flat-footed|CRB} unless you have a climb Speed.",
@@ -1627,7 +1609,10 @@
 			"name": "Force Open",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 242,
 			"traits": [
@@ -1638,12 +1623,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"entries": [
 				"Using your body, a lever, or some other tool, you attempt to forcefully open a door, window, container or heavy gate. With a high enough result, you can even smash through walls. Without a {@item crowbar|CRB}, prying something open takes a –2 item penalty to the {@skill Athletics} check to Force Open.",
 				{
@@ -1699,7 +1678,10 @@
 			"name": "Grapple",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 242,
 			"traits": [
@@ -1710,19 +1692,13 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"requirements": "You have at least one free hand. Your target cannot be more than one size larger than you.",
 			"entries": [
 				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.",
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "Your opponent is {@condition restrained|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes} (page 470).",
+						"Critical Success": "Your opponent is {@condition restrained|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes}.",
 						"Success": "Your opponent is {@condition grabbed|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes}.",
 						"Failure": "You fail to grab your opponent. If you already had the opponent {@condition grabbed|CRB} or {@condition restrained|CRB} using a Grapple, those conditions on that creature end.",
 						"Critical Failure": "If you already had the opponent {@condition grabbed|CRB} or {@condition restrained|CRB}, it breaks free. Your target can either grab you, as if it succeeded at using the Grapple action against you, or force you to fall and land {@condition prone|CRB}."
@@ -1734,7 +1710,10 @@
 			"name": "High Jump",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 242,
 			"activity": {
@@ -1742,12 +1721,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"entries": [
 				"You Stride, then make a vertical Leap and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn’t Stride at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
@@ -1774,7 +1747,10 @@
 			"name": "Long Jump",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 242,
 			"activity": {
@@ -1782,12 +1758,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"entries": [
 				"You {@action Stride|CRB}, then make a horizontal {@action Leap|CRB} and attempt an {@skill Athletics} check to increase the length of your jump. The DC of the {@skill Athletics} check is equal to the total distance in feet you’re attempting to move during your Leap (so you’d need to succeed at a DC 20 check to {@action Leap|CRB} 20 feet). You can’t {@action Leap|CRB} farther than your Speed.",
 				"If you didn’t Stride at least 10 feet, or if you attempt to jump in a different direction than your {@action Stride|CRB}, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
@@ -1805,7 +1775,10 @@
 			"name": "Shove",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 243,
 			"traits": [
@@ -1816,12 +1789,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"requirements": "You have at least one hand free. The target can’t be more than one size larger than you.",
 			"entries": [
 				"You push an opponent away from you. Attempt an {@skill Athletics} check against your opponent’s Fortitude DC.",
@@ -1848,7 +1815,10 @@
 			"name": "Swim",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 243,
 			"traits": [
@@ -1859,12 +1829,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"entries": [
 				"You propel yourself through water. In most calm water, you succeed at the action without needing to attempt a check. If you must breathe air and you’re submerged in water, you must hold your breath each round. If you fail to hold your breath, you begin to drown (as described on page 478). If the water you are swimming in is turbulent or otherwise dangerous, you might have to attempt an {@skill Athletics} check to Swim.",
 				"If you end your turn in water and haven’t succeeded at a Swim action that turn, you sink 10 feet or get moved by the current, as determined by the GM. However, if your last action on your turn was to enter the water, you don’t sink or move with the current that turn.",
@@ -1921,7 +1885,10 @@
 			"name": "Trip",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Athletics"
+				]
 			},
 			"page": 243,
 			"traits": [
@@ -1932,12 +1899,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Athletics"
-				}
-			],
 			"requirements": "You have at least one hand free. Your target can’t be more than one size larger than you.",
 			"entries": [
 				"You try to knock an opponent to the ground. Attempt an {@skill Athletics} check against the target’s Reflex DC.",
@@ -1956,7 +1917,7 @@
 					"name": "Falling",
 					"entries": [
 						"When you fall more than 5 feet, you take falling damage when you land, which is bludgeoning damage equal to half the distance you fell. If you take any damage from a fall, you’re knocked {@condition prone|CRB} when you land.",
-						"If you fall into water, snow, or another soft substance, calculate the damage from the fall as though your fall were 20 feet shorter. The reduction can’t be greater than the depth of the water (so when falling into water that is only 10 feet deep, you treat the fall as 10 feet shorter). You can Grab an Edge as a reaction (page 472) to reduce or eliminate the damage from some falls. More detailed rules for falling damage appear on page 463."
+						"If you fall into water, snow, or another soft substance, calculate the damage from the fall as though your fall were 20 feet shorter. The reduction can’t be greater than the depth of the water (so when falling into water that is only 10 feet deep, you treat the fall as 10 feet shorter). You can {@action Grab an Edge} as a reaction to reduce or eliminate the damage from some falls. More detailed rules for falling damage appear on page 463."
 					]
 				}
 			]
@@ -1965,7 +1926,10 @@
 			"name": "Disarm",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Athletics"
+				]
 			},
 			"page": 243,
 			"traits": [
@@ -1976,12 +1940,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Athletics"
-				}
-			],
 			"requirements": "You have at least one hand free. The target can’t be more than one size larger than you.",
 			"entries": [
 				"You try to knock something out of an opponent’s grasp. Attempt an {@skill Athletics} check against the opponent’s Reflex DC.",
@@ -1999,7 +1957,10 @@
 			"name": "Repair",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Crafting"
+				]
 			},
 			"page": 243,
 			"traits": [
@@ -2011,13 +1972,7 @@
 				"unit": "minute",
 				"entry": "10 minutes"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Crafting"
-				}
-			],
-			"requirements": "You have a {@item repair kit|CRB} (page 291).",
+			"requirements": "You have a {@item repair kit|CRB}.",
 			"entries": [
 				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the {@item repair kit|CRB}with both hands. The GM sets the DC, but it’s usually about the same DC to Repair a given item as it is to {@skill Craft} it in the first place. You can’t Repair a destroyed item.",
 				{
@@ -2034,18 +1989,15 @@
 			"name": "Craft",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Crafting"
+				]
 			},
 			"page": 244,
 			"traits": [
 				"Downtime",
 				"Manipulate"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Crafting"
-				}
 			],
 			"entries": [
 				"You can make an item from raw materials. You need the {@feat Alchemical Crafting|CRB} skill feat to create alchemical items, the {@feat Magical Crafting|CRB} skill feat to create magic items, and the {@feat Snare Crafting|CRB} feat to create snares.",
@@ -2171,19 +2123,16 @@
 			"name": "Identify Alchemy",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Crafting"
+				]
 			},
 			"page": 245,
 			"traits": [
 				"Concentrate",
 				"Exploration",
 				"Secret"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Crafting"
-				}
 			],
 			"activity": {
 				"number": 10,
@@ -2207,7 +2156,10 @@
 			"name": "Create a Diversion",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Deception"
+				]
 			},
 			"page": 245,
 			"traits": [
@@ -2218,12 +2170,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Deception"
-				}
-			],
 			"entries": [
 				"With a gesture, a trick, or some distracting words, you can create a diversion that draws creatures’ attention elsewhere. If you use a gesture or trick, this action gains the {@trait manipulate} trait. If you use distracting words, it gains the {@trait auditory} and {@trait linguistic} traits.",
 				"Attempt a single {@skill Deception} check and compare it to the {@skill Perception} DCs of the creatures whose attention you’re trying to divert. Whether or not you succeed, creatures you attempt to divert gain a +4 circumstance bonus to their {@skill Perception} DCs against your attempts to Create a Diversion for 1 minute.",
@@ -2240,7 +2186,10 @@
 			"name": "Impersonate",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Deception"
+				]
 			},
 			"page": 245,
 			"traits": [
@@ -2249,14 +2198,8 @@
 				"Manipulate",
 				"Secret"
 			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Deception"
-				}
-			],
 			"entries": [
-				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a {@item disguise kit|CRB} (found on page 290), but a simpler, quicker disguise might do the job if you’re not trying to imitate a specific individual, at the GM’s discretion.",
+				"You create a disguise to pass yourself off as someone or something you are not. Assembling a convincing disguise takes 10 minutes and requires a {@item disguise kit|CRB}, but a simpler, quicker disguise might do the job if you’re not trying to imitate a specific individual, at the GM’s discretion.",
 				"In most cases, creatures have a chance to detect your deception only if they use the {@action Seek|CRB} action to attempt {@skill Perception} checks against your {@skill Deception} DC. If you attempt to directly interact with someone while disguised, the GM rolls a secret {@skill Deception} check for you against that creature’s {@skill Perception} DC instead. If you’re disguised as a specific individual, the GM might give creatures you interact with a circumstance bonus based on how well they know the person you’re imitating, or the GM might roll a secret {@skill Deception} check even if you aren’t directly interacting with others.",
 				{
 					"type": "successDegree",
@@ -2272,7 +2215,10 @@
 			"name": "Lie",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Deception"
+				]
 			},
 			"page": 246,
 			"traits": [
@@ -2287,12 +2233,6 @@
 				"unit": "round",
 				"entry": "at least 1 Round"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Deception"
-				}
-			],
 			"entries": [
 				"You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single {@skill Deception} check and compare it against the {@skill Perception} DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it’s impossible to get anyone to believe them.",
 				"At the GM’s discretion, if a creature initially believes your lie, it might attempt a {@skill Perception} check later to Sense Motive against your Deception DC to realize it’s a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
@@ -2309,7 +2249,10 @@
 			"name": "Feint",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Deception"
+				]
 			},
 			"page": 246,
 			"traits": [
@@ -2320,12 +2263,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Deception"
-				}
-			],
 			"requirements": "You are within melee reach of the opponent you attempt to Feint.",
 			"entries": [
 				"With a misleading flourish, you leave an opponent unprepared for your real attack. Attempt a {@skill Deception} check against that opponent’s {@skill Perception} DC.",
@@ -2343,18 +2280,15 @@
 			"name": "Gather Information",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Diplomacy"
+				]
 			},
 			"page": 246,
 			"traits": [
 				"Exploration",
 				"Secret"
-			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Diplomacy"
-				}
 			],
 			"entries": [
 				"You canvass local markets, taverns, and gathering places in an attempt to learn about a specific individual or topic. The GM determines the DC of the check and the amount of time it takes (typically 2 hours, but sometimes more), along with any benefit you might be able to gain by spending coin on bribes, drinks, or gifts.",
@@ -2410,7 +2344,10 @@
 			"name": "Make an Impression",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Diplomacy"
+				]
 			},
 			"page": 246,
 			"traits": [
@@ -2419,12 +2356,6 @@
 				"Exploration",
 				"Linguistic",
 				"Mental"
-			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Diplomacy"
-				}
 			],
 			"entries": [
 				"With at least 1 minute of conversation, during which you engage in charismatic overtures, flattery, and other acts of goodwill, you seek to make a good impression on someone to make them temporarily agreeable. At the end of the conversation, attempt a {@skill Diplomacy} check against the Will DC of one target, modified by any circumstances the GM sees fit. Good impressions (or bad impressions, on a critical failure) last for only the current social interaction unless the GM decides otherwise.",
@@ -2463,7 +2394,10 @@
 			"name": "Request",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Diplomacy"
+				]
 			},
 			"page": 247,
 			"traits": [
@@ -2477,12 +2411,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Diplomacy"
-				}
-			],
 			"entries": [
 				"You can make a request of a creature that’s {@condition friendly|CRB} or {@condition helpful|CRB} to you. You must couch the request in terms that the target would accept given their current attitude toward you. The GM sets the DC based on the difficulty of the request. Some requests are unsavory or impossible, and even a helpful NPC would never agree to them.",
 				{
@@ -2500,7 +2428,10 @@
 			"name": "Coerce",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Intimidation"
+				]
 			},
 			"page": 247,
 			"traits": [
@@ -2516,12 +2447,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Intimidation"
-				}
-			],
 			"entries": [
 				"With threats either veiled or overt, you attempt to bully a creature into doing what you want. You must spend at least 1 minute of conversation with a creature you can see and that can either see or sense you. At the end of the conversation, attempt an {@skill Intimidation} check against the target’s Will DC, modified by any circumstances the GM determines. The attitudes referenced in the effects below are summarized in the Changing Attitudes sidebar on page 246 and described in full in the Conditions Appendix, starting on page 618.",
 				{
@@ -2539,7 +2464,10 @@
 			"name": "Demoralize",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Intimidation"
+				]
 			},
 			"page": 247,
 			"traits": [
@@ -2553,12 +2481,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Intimidation"
-				}
-			],
 			"entries": [
 				"With a sudden shout, a well-timed taunt, or a cutting putdown, you can shake an enemy’s resolve. Choose a creature within 30 feet of you who you’re aware of. Attempt an {@skill Intimidation} check against that target’s Will DC. If the target does not understand the language you are speaking, you’re not speaking a language, or they can’t hear you, you take a –4 circumstance penalty to the check. Regardless of your result, the target is temporarily immune to your attempts to Demoralize it for 10 minutes.",
 				{
@@ -2574,7 +2496,10 @@
 			"name": "Administer First Aid",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Medicine"
+				]
 			},
 			"page": 248,
 			"traits": [
@@ -2585,13 +2510,7 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Medicine"
-				}
-			],
-			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"requirements": "You have {@item healer's tools|CRB}.",
 			"entries": [
 				"You perform first aid on an adjacent creature that is {@condition dying|CRB} or bleeding. If a creature is both {@condition dying|CRB} and bleeding, choose which ailment you’re trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect.",
 				{
@@ -2614,7 +2533,10 @@
 			"name": "Treat Disease",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Medicine"
+				]
 			},
 			"page": 248,
 			"traits": [
@@ -2626,13 +2548,7 @@
 				"unit": "hour",
 				"entry": "at least 8 hours"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Medicine"
-				}
-			],
-			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"requirements": "You have {@item healer's tools|CRB}.",
 			"entries": [
 				"You spend at least 8 hours caring for a diseased creature. Attempt a {@skill Medicine} check against the disease’s DC. After you attempt to Treat a Disease for a creature, you can’t try again until after that creature’s next save against the disease.",
 				{
@@ -2649,7 +2565,10 @@
 			"name": "Treat Poison",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Medicine"
+				]
 			},
 			"page": 248,
 			"traits": [
@@ -2660,13 +2579,7 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Medicine"
-				}
-			],
-			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"requirements": "You have {@item healer's tools|CRB}.",
 			"entries": [
 				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison’s DC. After you attempt to Treat a Poison for a creature, you can’t try again until after the next time that creature attempts a save against the poison.",
 				{
@@ -2683,7 +2596,10 @@
 			"name": "Treat Wounds",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Medicine"
+				]
 			},
 			"page": 248,
 			"traits": [
@@ -2696,13 +2612,7 @@
 				"unit": "minute",
 				"entry": "10 minutes"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Medicine"
-				}
-			],
-			"requirements": "You have {@item healer's tools|CRB} (page 290).",
+			"requirements": "You have {@item healer's tools|CRB}.",
 			"entries": [
 				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
 				"The {@skill Medicine} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you’re an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you’re a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you’re legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
@@ -2722,7 +2632,10 @@
 			"name": "Command an Animal",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Nature"
+				]
 			},
 			"page": 249,
 			"traits": [
@@ -2734,12 +2647,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Nature"
-				}
-			],
 			"entries": [
 				"You issue an order to an animal. Attempt a {@skill Nature} check against the animal’s Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.",
 				"You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).",
@@ -2758,7 +2665,10 @@
 			"name": "Perform",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Performance"
+				]
 			},
 			"page": 250,
 			"traits": [
@@ -2769,12 +2679,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Performance"
-				}
-			],
 			"entries": [
 				"When making a brief performance—one song, a quick dance, or a few jokes—you use the Perform action. This action is most useful when you want to prove your capability or impress someone quickly. Performing rarely has an impact on its own, but it might influence the DCs of subsequent {@skill Diplomacy} checks against the observers—or even change their attitudes— if the GM sees fit.",
 				{
@@ -2831,18 +2735,15 @@
 			"name": "Create Forgery",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Society"
+				]
 			},
 			"page": 251,
 			"traits": [
 				"Downtime",
 				"Secret"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Society"
-				}
 			],
 			"entries": [
 				"You create a forged document, usually over the course of a day or a week. You must have the proper writing material to create a forgery. When you Create a Forgery, the GM rolls a secret DC 20 {@skill Society} check. If you succeed, the forgery is of good enough quality that passive observers can’t notice the fake. Only those who carefully examine the document and attempt a {@skill Perception} or {@skill Society} check against your {@skill Society} DC can do so.",
@@ -2862,7 +2763,10 @@
 			"name": "Conceal an Object",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Stealth"
+				]
 			},
 			"page": 251,
 			"traits": [
@@ -2874,12 +2778,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Stealth"
-				}
-			],
 			"entries": [
 				"You hide a small object on your person (such as a weapon of light Bulk). When you try to sneak a concealed object past someone who might notice it, the GM rolls your {@skill Stealth} check and compares it to this passive observer’s {@skill Perception} DC. Once the GM rolls your check for a concealed object, that same result is used no matter how many passive observers you try to sneak it past. If a creature is specifically searching you for an item, it can attempt a {@skill Perception} check against your {@skill Stealth} DC (finding the object on success).",
 				"You can also conceal an object somewhere other than your person, such as among undergrowth or in a secret compartment within a piece of furniture. In this case, characters Seeking in an area compare their {@skill Perception} check results to your {@skill Stealth} DC to determine whether they find the object.",
@@ -2896,7 +2794,10 @@
 			"name": "Hide",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Stealth"
+				]
 			},
 			"page": 251,
 			"traits": [
@@ -2907,12 +2808,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Stealth"
-				}
-			],
 			"entries": [
 				"You huddle behind cover or greater cover or deeper into concealment to become hidden, rather than observed. The GM rolls your {@skill Stealth} check in secret and compares the result to the {@skill Perception} DC of each creature you’re observed by but that you have cover or greater cover against or are concealed from. You gain the circumstance bonus from cover or greater cover to your check.",
 				{
@@ -2931,7 +2826,10 @@
 			"name": "Sneak",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Stealth"
+				]
 			},
 			"page": 252,
 			"traits": [
@@ -2943,12 +2841,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Stealth"
-				}
-			],
 			"entries": [
 				"You can attempt to move to another place while becoming or staying {@condition undetected|CRB}. {@action Stride|CRB} up to half your Speed. (You can use Sneak while {@action Burrow|CRB|Burrowing}, {@action Climb|CRB|Climbing}, {@action Fly|CRB|Flying}, or {@action Swim|CRB|Swimming} instead of Striding if you have the corresponding movement type; you must move at half that Speed.)",
 				"If you’re {@condition undetected|CRB} by a creature and it’s impossible for that creature to observe you (for a typical creature, this includes when you’re {@condition invisible|CRB}, the observer is {@condition blinded|CRB}, or you’re in darkness and the creature can’t see in darkness), for any critical failure you roll on a check to Sneak, you get a failure instead. You also continue to be {@condition undetected|CRB} if you lose cover or greater cover against or are no longer concealed from such a creature. At the end of your movement, the GM rolls your {@skill Stealth} check in secret and compares the result to the {@skill Perception} DC of each creature you were {@condition hidden|CRB} from or {@condition undetected|CRB} by at the start of your movement. If you have cover or greater cover from the creature throughout your {@action Stride|CRB}, you gain the +2 circumstance bonus from cover (or +4 from greater cover) to your {@skill Stealth} check. Because you’re moving, the bonus increase from {@action Take Cover|CRB|Taking Cover} doesn’t apply. You don’t get to roll against a creature if, at the end of your movement, you neither are concealed from it nor have cover or greater cover against it. You automatically become {@condition observed|CRB} by such a creature.",
@@ -2970,18 +2862,15 @@
 			"name": "Sense Direction",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Survival"
+				]
 			},
 			"page": 252,
 			"traits": [
 				"Exploration",
 				"Secret"
-			],
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Survival"
-				}
 			],
 			"entries": [
 				"Using the stars, the position of the sun, traits of the geography or flora, or the behavior of fauna, you can stay oriented in the wild. Typically, you attempt a {@skill Survival} check only once per day, but some environments or changes might necessitate rolling more often. The GM determines the DC and how long this activity takes (usually just a minute or so). More unusual locales or those you’re unfamiliar with might require you to have a minimum proficiency rank to Sense Direction. Without a compass, you take a –2 item penalty to checks to Sense Direction.",
@@ -3037,19 +2926,16 @@
 			"name": "Cover Tracks",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Survival"
+				]
 			},
 			"page": 252,
 			"traits": [
 				"Concentrate",
 				"Exploration",
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Survival"
-				}
 			],
 			"entries": [
 				"You cover your tracks, moving up to half your travel Speed, using the rules on page 479). You don’t need to attempt a {@skill Survival} check to cover your tracks, but anyone tracking you must succeed at a {@skill Survival} check against your Survival DC if it is higher than the normal DC to Track.",
@@ -3060,19 +2946,16 @@
 			"name": "Track",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Survival"
+				]
 			},
 			"page": 252,
 			"traits": [
 				"Concentrate",
 				"Exploration",
 				"Move"
-			],
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Survival"
-				}
 			],
 			"entries": [
 				"You follow tracks, moving at up to half your travel Speed, using the rules on page 479). After a successful check to Track, you can continue following the tracks at half your Speed without attempting additional checks for up to 1 hour. In some cases, you might Track in an encounter. In this case, Track is a single action and doesn’t have the {@trait exploration} trait, but you might need to roll more often because you’re in a tense situation. The GM determines how often you must attempt this check.",
@@ -3130,7 +3013,10 @@
 			"name": "Palm an Object",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Thievery"
+				]
 			},
 			"page": 253,
 			"traits": [
@@ -3141,12 +3027,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Thievery"
-				}
-			],
 			"entries": [
 				"Palming a small, unattended object without being noticed requires you to roll a single {@skill Thievery} check against the {@skill Perception} DCs of all creatures who are currently observing you. You take the object whether or not you successfully conceal that you did so. You can typically only Palm Objects of negligible Bulk, though the GM might determine otherwise depending on the situation.",
 				{
@@ -3162,7 +3042,10 @@
 			"name": "Steal",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"untrained": [
+					"Thievery"
+				]
 			},
 			"page": 253,
 			"traits": [
@@ -3173,12 +3056,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"skills": [
-				{
-					"proficiency": "untrained",
-					"skill": "Thievery"
-				}
-			],
 			"entries": [
 				"You try to take a small object from another creature without being noticed. Typically, you can Steal only an object of negligible Bulk, and you automatically fail if the creature who has the object is in combat or on guard.",
 				"Attempt a {@skill Thievery} check to determine if you successfully Steal the object. The DC to Steal is usually the {@skill Perception} DC of the creature wearing the object. This assumes the object is worn but not closely guarded (like a loosely carried pouch filled with coins, or an object within such a pouch). If the object is in a pocket or similarly protected, you take a –5 penalty to your {@skill Thievery} check. The GM might increase the DC of your check if the nature of the object makes it harder to steal (such as a very small item in a large pack, or a sheet of parchment mixed in with other documents).",
@@ -3196,7 +3073,10 @@
 			"name": "Disable a Device",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Thievery"
+				]
 			},
 			"page": 253,
 			"traits": [
@@ -3207,12 +3087,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Thievery"
-				}
-			],
 			"requirements": "Some devices require you to use {@item thieves' tools|CRB} (page 291) when disabling them.",
 			"entries": [
 				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves’ tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.",
@@ -3231,7 +3105,10 @@
 			"name": "Pick a Lock",
 			"source": "CRB",
 			"actionType": {
-				"basic": true
+				"basic": true,
+				"trained": [
+					"Thievery"
+				]
 			},
 			"page": 253,
 			"traits": [
@@ -3242,13 +3119,7 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"skills": [
-				{
-					"proficiency": "trained",
-					"skill": "Thievery"
-				}
-			],
-			"requirements": "You have {@item thieves' tools|CRB} (page 291).",
+			"requirements": "You have {@item thieves' tools|CRB}.",
 			"entries": [
 				"Opening a lock without a key is very similar to {@action Disable a Device|CRB|Disabling a Device}, but the DC of the check is determined by the complexity and construction of the lock you are attempting to pick (locks and their DCs are found on page 290). Locks of higher qualities might require multiple successes to unlock, since otherwise even an unskilled burglar could easily crack the lock by attempting the check until they rolled a natural 20. If you lack the proper tools, the GM might let you used improvised picks, which are treated as shoddy tools, depending on the specifics of the lock.",
 				{
