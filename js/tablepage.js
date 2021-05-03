@@ -23,7 +23,7 @@ class TablePage {
 
 		ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 		this._dataList = (await DataUtil.loadJSON(this._jsonUrl))[this._dataProp];
-		this._list = ListUtil.initList({listClass: this._listClass, isUseJquery: true});
+		this._list = ListUtil.initList({listClass: this._listClass, isUseJquery: true, syntax: this._listSyntax});
 		ListUtil.setOptions({primaryLists: [this._list]});
 
 		for (let i = 0; i < this._dataList.length; i++) {

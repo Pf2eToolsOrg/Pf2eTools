@@ -2005,9 +2005,9 @@ function Renderer () {
 						// ...|scaledLvl}
 						if (others.length) {
 							const targetLvl = others[0];
-							fauxEntry.href.hover.preloadId = `${VeCt.HASH_MON_SCALED}:${targetLvl}`;
+							fauxEntry.href.hover.preloadId = `${VeCt.HASH_CR_SCALED}:${targetLvl}`;
 							fauxEntry.href.subhashes = [
-								{key: VeCt.HASH_MON_SCALED, value: targetLvl},
+								{key: VeCt.HASH_CR_SCALED, value: targetLvl},
 							];
 							fauxEntry.text = displayText || `${name} (CR ${others[0]})`;
 						}
@@ -3392,9 +3392,10 @@ Renderer.background = {
 		Renderer.get().setFirstSection(true).recursiveRender(bg.entries, renderStack, {pf2StatFix: true});
 
 		return `
+		${Renderer.utils.getExcludedDiv(bg, "background", UrlUtil.PG_BACKGROUNDS)}
 		${Renderer.utils.getNameDiv(bg, {page: UrlUtil.PG_BACKGROUNDS, type: "BACKGROUND"})}
 		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getExcludedDiv(bg, "background", UrlUtil.PG_BACKGROUNDS)}
+		${Renderer.utils.getTraitsDiv(bg.traits || [])}
 		${renderStack.join("")}
 		${Renderer.utils.getPageP(bg)}
 		`;
@@ -4904,7 +4905,7 @@ Renderer.hover = {
 		if (preloadId != null) {
 			const [type, data] = preloadId.split(":");
 			switch (type) {
-				case VeCt.HASH_MON_SCALED: {
+				case VeCt.HASH_CR_SCALED: {
 					const baseMon = await Renderer.hover.pCacheAndGet(page, source, hash);
 					toRender = await ScaleCreature.scale(baseMon, Number(data));
 					break;
@@ -6634,6 +6635,11 @@ Renderer._stripTagLayer = function (str) {
 
 					case "@atk":
 						return Renderer.attackTagToFull(text);
+
+					case "@as": {
+						// TODO
+						return text;
+					}
 
 					case "@chance":
 					case "@d20":

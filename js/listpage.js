@@ -49,6 +49,7 @@ class ListPage {
 
 		this._list = ListUtil.initList({
 			$wrpList: $(`ul.list.${this._listClass}`),
+			syntax: this._listSyntax,
 			...this._listOptions,
 		});
 		ListUtil.setOptions({primaryLists: [this._list]});
@@ -167,9 +168,48 @@ class ListPage {
 		}
 	}
 
+	get _listSyntax () {
+		return {
+			text: {
+				help: `"text:<text>" to search within text.`,
+				fn: (listItem, searchTerm) => {
+					if (listItem.data._textCache == null) listItem.data._textCache = this._getSearchCache(this._dataList[listItem.ix]);
+					return listItem.data._textCache && listItem.data._textCache.includes(searchTerm);
+				},
+			},
+		}
+	}
+
+	// TODO(Future) the ideal solution to this is to render every entity to plain text (or failing that, Markdown) and
+	//   indexing that text with e.g. elasticlunr.
+	_getSearchCache (entity) {
+		if (!entity.entries) return "";
+		const ptrOut = {_: ""};
+		this._getSearchCache_handleEntryProp(entity, "entries", ptrOut);
+		return ptrOut._;
+	}
+
+	_getSearchCache_handleEntryProp (entity, prop, ptrOut) {
+		if (!entity[prop]) return;
+		ListPage._READONLY_WALKER.walk(
+			entity[prop],
+			{
+				string: (str) => this._getSearchCache_handleString(ptrOut, str),
+			},
+		);
+	}
+
+	_getSearchCache_handleString (ptrOut, str) {
+		ptrOut._ += `${Renderer.stripTags(str).toLowerCase()} -- `;
+	}
+
 	getListItem () { throw new Error(`Unimplemented!`); }
 	handleFilterChange () { throw new Error(`Unimplemented!`); }
 	getSublistItem () { throw new Error(`Unimplemented!`); }
 	doLoadHash () { throw new Error(`Unimplemented!`); }
 	pDoLoadSubHash () { throw new Error(`Unimplemented!`); }
 }
+ListPage._READONLY_WALKER = MiscUtil.getWalker({
+	keyBlacklist: new Set(["type", "colStyles", "style"]),
+	isNoModification: true,
+});

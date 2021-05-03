@@ -23,7 +23,7 @@ VeCt = {
 	STR_NONE: "None",
 	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for details.",
 
-	HASH_MON_SCALED: "scaled",
+	HASH_CR_SCALED: "scaled",
 	HASH_ITEM_RUNES: "runeitem",
 
 	FILTER_BOX_SUB_HASH_SEARCH_PREFIX: "fbsr",

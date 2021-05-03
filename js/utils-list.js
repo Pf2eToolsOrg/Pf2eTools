@@ -10,6 +10,18 @@ const ListUtil = {
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
 
+		const helpText = [];
+
+		if (listOpts.syntax) {
+			Object.values(listOpts.syntax)
+				.filter(({help}) => help)
+				.forEach(({help}) => {
+					helpText.push(help);
+				});
+		}
+
+		if (helpText.length) $iptSearch.title(helpText.join(" "));
+
 		$(searchIds.reset).click(function () {
 			$iptSearch.val("");
 			list.reset();

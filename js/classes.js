@@ -80,8 +80,8 @@ class ClassesPage extends BaseComponent {
 		const data = await DataUtil.class.loadJSON();
 		const feats = await DataUtil.feat.loadJSON();
 
-		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true});
-		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {
+		this._list = ListUtil.initList({listClass: "classes", isUseJquery: true, syntax: this._listSyntax});
+		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true, syntax: this._listSyntax}, {
 			input: "#feat-lst__search",
 			glass: "#feat-lst__search-glass",
 			reset: "#feat-reset",

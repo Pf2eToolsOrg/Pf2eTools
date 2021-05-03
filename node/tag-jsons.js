@@ -239,7 +239,7 @@ class FeatTag {
 				FeatTag._FEAT_NAMES[f.name.toLowerCase()] = {name: f.name, source: f.source};
 			});
 		});
-		FeatTag._FEATS_REGEX_NAMES = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.toTitleCase().escapeRegexp()).join("|")})`, "g")
+		FeatTag._FEATS_REGEX_NAMES = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.toTitleCase().escapeRegexp()).join("|")})(?: .page [0-9]+.)?`, "g")
 		FeatTag._FEATS_REGEX_FEAT = new RegExp(`(${Object.keys(FeatTag._FEAT_NAMES).map(it => it.escapeRegexp()).join("|")}) ([a-z]+ feat)`, "gi")
 	}
 

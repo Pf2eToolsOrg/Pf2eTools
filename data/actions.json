@@ -3914,6 +3914,26 @@
 			"entries": [
 				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell’s other requirements."
 			]
+		},
+		{
+			"name": "Conduct Energy",
+			"traits": [
+				"Energy"
+			],
+			"actionType": {
+				"item": true
+			},
+			"source": "LOAG",
+			"page": 139,
+			"requirements": "Your last action or spell this turn had the {@trait acid}, {@trait cold}, {@trait electricity}, {@trait fire}, or {@trait sonic} trait.",
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"entries": [
+				"You channel energy into your weapon. The weapon deals 1 additional damage per weapon damage die until the start of your next turn. This damage type matches the trait of the triggering action or spell. If your triggering action or spell had multiple eligible traits, you select one of those traits."
+			]
 		}
 	]
 }

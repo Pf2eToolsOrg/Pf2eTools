@@ -443,10 +443,7 @@ Renderer.dice = {
 			if (entry.subType === "damage") { // If SHIFT is held, roll crit
 				const dice = [];
 				// TODO(future) in order for this to correctly catch everything, would need to parse the toRoll as a tree and then pull all dice expressions from the first level of that tree
-				entry.toRoll
-					.replace(/\s+/g, "") // clean whitespace
-					.replace(/\d*?d\d+/gi, m0 => dice.push(m0));
-				entry.toRoll = `${entry.toRoll}${dice.length ? `+${dice.join("+")}` : ""}`;
+				entry.toRoll = `(${entry.toRoll}) * 2`;
 			} else if (entry.subType === "d20") { // If SHIFT is held, roll advantage
 				// If we have a cached d20mod value, use it
 				if (entry.d20mod != null) entry.toRoll = `2d20dl1${entry.d20mod}`;

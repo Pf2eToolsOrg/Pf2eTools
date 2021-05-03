@@ -274,8 +274,8 @@ class SkillTag {
 		}).replace(SkillTag._SKILLS_REGEX, `{@skill $&}`)
 	}
 }
-SkillTag._LORE_REGEX = new RegExp(/((?:[A-Z][\S]+ )+)?Lore/g);
-SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery)/g);
+SkillTag._LORE_REGEX = new RegExp(/((?:[A-Z][^\s,;]+ )+)?Lore/g);
+SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery|Perception)/g);
 
 class ConditionTag {
 	static tryRun (it) {

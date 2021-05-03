@@ -393,8 +393,11 @@ Parser.sourceJsonToFull = function (source) {
 	return Parser._parse_aToB(Parser.SOURCE_JSON_TO_FULL, source).replace(/'/g, "\u2019");
 };
 Parser.sourceJsonToFullCompactPrefix = function (source) {
-	return Parser.sourceJsonToFull(source)
-		.replace(LO_PREFIX, LO_PREFIX_SHORT);
+	let compact = Parser.sourceJsonToFull(source);
+	Object.keys(Parser.SOURCE_PREFIX_TO_SHORT).forEach(prefix => {
+		compact = compact.replace(prefix, Parser.SOURCE_PREFIX_TO_SHORT[prefix] || prefix);
+	});
+	return compact;
 };
 Parser.sourceJsonToAbv = function (source) {
 	source = Parser._getSourceStringFromSource(source);
@@ -1884,11 +1887,39 @@ SRC_APLLS = "APLLS";
 
 SRC_3PP_SUFFIX = " 3pp";
 
+// region Adventure Paths
+
 AP_PREFIX = "Adventure Path: ";
 AP_PREFIX_SHORT = "AP: ";
 
+FotRP_PREFIX = "Fists of the Ruby Phoenix: "
+FotRP_PREFIX_SHORT = "FotRP: "
+
+AV_PREFIX = "Abomination Vaults: "
+AV_PREFIX_SHORT = "AV: "
+
+AoE_PREFIX = "Agents of Edgewatch: "
+AoE_PREFIX_SHORT = "AoE: "
+
+EC_PREFIX = "Extinction Curse: "
+EC_PREFIX_SHORT = "EC: "
+
+AoA_PREFIX = "Age of Ashes: "
+AoA_PREFIX_SHORT = "AoA: "
+
+// endregion
+
 LO_PREFIX = "Lost Omens: ";
 LO_PREFIX_SHORT = "LO: ";
+
+Parser.SOURCE_PREFIX_TO_SHORT = {};
+Parser.SOURCE_PREFIX_TO_SHORT[LO_PREFIX] = LO_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AP_PREFIX] = AP_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[FotRP_PREFIX] = FotRP_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AV_PREFIX] = AV_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[AoA_PREFIX] = AoA_PREFIX_SHORT;
 
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
@@ -1951,13 +1982,13 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4?Pat
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1?Pathfinder-Gamemastery-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_APLLS] = "";
+Parser.SOURCE_JSON_TO_STORE[SRC_APLLS] = "https://paizo.com/store/pathfinder/adventures/adventurePath/extinctioncurse";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST2] = "https://paizo.com/products/btq022yq?Pathfinder-Bestiary-2";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd?Pathfinder-Lost-Omens-Legends";
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih?Pathfinder-Advanced-Players-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x?Pathfinder-Lost-Omens-Pathfinder-Society-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pathfinder-Lost-Omens-Ancestry-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "";
+Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo.com/products/btq026k5/discuss&page=11?Pathfinder-Lost-Omens-Ancestry-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
 
 Parser.SOURCES_ADVENTURES = new Set([]);

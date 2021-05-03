@@ -125,7 +125,6 @@ class PageFilterItems extends PageFilter {
 		item._fPrice = PageFilterItems._priceCategory(item._sPrice);
 		item._fWeaponRange = item.category === "Weapon" ? (item.ranged ? "Ranged" : "Melee") : null;
 		item._fMisc = item.consumable ? ["Consumable"] : [];
-		item._fIsEquipment = item.type === "Equipment" || item.type === "Material" || item.type === "Snare";
 		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
 		for (let entry of item.entries) {
 			if (typeof entry === "object") {
@@ -136,7 +135,7 @@ class PageFilterItems extends PageFilter {
 			}
 		}
 		item._fType = [];
-		item._fIsEquipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
+		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
 		if (item.generic === "V") item._fType.push("Specific Variant");
 		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null;

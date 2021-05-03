@@ -277,7 +277,7 @@ class EncounterBuilder extends ProxyBase {
 			const partyMeta = this.getPartyMeta();
 			this._cache = (() => {
 				const out = {};
-				list.visibleItems.map(it => creatures[it.ix]).filter(c => !c.isNpc).forEach(c => {
+				bestiaryPage._list.visibleItems.map(it => bestiaryPage._dataList[it.ix]).filter(c => !c.isNpc).forEach(c => {
 					const xp = EncounterBuilderUtils.getCreatureXP(partyMeta, c);
 					if (xp) (out[xp] = out[xp] || []).push(c);
 				});
@@ -558,7 +558,7 @@ class EncounterBuilder extends ProxyBase {
 		await this._lock.pLock();
 
 		try {
-			const cr = creatures[ix];
+			const cr = bestiaryPage._dataList[ix];
 			const xp = EncounterBuilderUtils.getCreatureXP(this.getPartyMeta(), cr);
 			if (!xp) return; // if Unknown/etc
 
@@ -697,10 +697,10 @@ class EncounterBuilder extends ProxyBase {
 	}
 
 	static async doStatblockMouseOver (evt, ele, ixMon, scaledTo) {
-		const mon = creatures[ixMon];
+		const mon = bestiaryPage._dataList[ixMon];
 
 		const hash = UrlUtil.autoEncodeHash(mon);
-		const preloadId = scaledTo != null ? `${VeCt.HASH_MON_SCALED}:${scaledTo}` : null;
+		const preloadId = scaledTo != null ? `${VeCt.HASH_CR_SCALED}:${scaledTo}` : null;
 		return Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_BESTIARY, mon.source, hash, preloadId);
 	}
 
@@ -708,7 +708,7 @@ class EncounterBuilder extends ProxyBase {
 		// We'll rebuild the mouseover handler with whatever we load
 		$ele.off("mouseover");
 
-		const mon = creatures[ixMon];
+		const mon = bestiaryPage._dataList[ixMon];
 
 		const handleNoImages = () => {
 			const hoverMeta = Renderer.hover.getMakePredefinedHover(
@@ -760,7 +760,7 @@ class EncounterBuilder extends ProxyBase {
 		if (!$iptLvl) return;
 
 		try {
-			const creature = creatures[ixCr];
+			const creature = bestiaryPage._dataList[ixCr];
 			const baseLvl = creature.level;
 			const targetLvl = Number($iptLvl.val());
 

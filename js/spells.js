@@ -1,23 +1,27 @@
 "use strict";
 
-function handleBrew (homebrew) {
-	addSpells(homebrew.spell);
-	return Promise.resolve();
-}
-
-class SpellsPage {
+class SpellsPage extends ListPage {
 	constructor () {
-		this._pageFilter = new PageFilterSpells();
+		super({
+			pageFilter: new PageFilterSpells(),
+			sublistClass: "subspells",
+			dataProp: ["spell"],
+		});
+
 		this._multiSource = new MultiSource({
-			fnHandleData: addSpells,
+			fnHandleData: this._addSpells.bind(this),
 			prop: "spell",
 		});
+
+		this._addedHashes = new Set();
+
+		this._spellBookView = null;
 	}
 
 	getListItem (spell, spI) {
 		const hash = UrlUtil.autoEncodeHash(spell);
-		if (!spell.uniqueId && _addedHashes.has(hash)) return null;
-		_addedHashes.add(hash);
+		if (!spell.uniqueId && this._addedHashes.has(hash)) return null;
+		this._addedHashes.add(hash);
 		const isExcluded = ExcludeUtil.isExcluded(spell.name, "spell", spell.source);
 
 		this._pageFilter.mutateAndAddToFilters(spell, isExcluded);
@@ -55,19 +59,19 @@ class SpellsPage {
 			},
 		);
 
-		eleLi.addEventListener("click", (evt) => list.doSelect(listItem, evt));
-		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, list, listItem));
+		eleLi.addEventListener("click", (evt) => this._list.doSelect(listItem, evt));
+		eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._list, listItem));
 
 		return listItem;
 	}
 
 	handleFilterChange () {
 		const f = this._pageFilter.filterBox.getValues();
-		list.filter(li => {
-			const s = spellList[li.ix];
+		this._list.filter(li => {
+			const s = this._dataList[li.ix];
 			return this._pageFilter.toDisplay(f, s);
 		});
-		MultiSource.onFilterChangeMulti(spellList);
+		MultiSource.onFilterChangeMulti(this._dataList);
 	}
 
 	getSublistItem (spell, pinId) {
@@ -102,7 +106,7 @@ class SpellsPage {
 	doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const $content = $("#pagecontent").empty();
-		const spell = spellList[id];
+		const spell = this._dataList[id];
 
 		function buildStatsTab () {
 			$content.append(RenderSpells.$getRenderedSpell(spell));
@@ -139,7 +143,7 @@ class SpellsPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		await spellBookView.pHandleSub(sub);
+		await this._spellBookView.pHandleSub(sub);
 	}
 
 	async pOnLoad () {
@@ -153,9 +157,15 @@ class SpellsPage {
 		});
 
 		await ExcludeUtil.pInitialise();
-		await spellsPage._multiSource.pMultisourceLoad("data/spells/", this._pageFilter.filterBox, pPageInit, addSpells, pPostLoad);
+		await this._multiSource.pMultisourceLoad(
+			"data/spells/",
+			this._pageFilter.filterBox,
+			this._pPageInit.bind(this),
+			this._addSpells.bind(this),
+			this._pPostLoad.bind(this),
+		);
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
-		ExcludeUtil.checkShowAllExcluded(spellList, $(`#pagecontent`));
+		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
@@ -182,182 +192,200 @@ class SpellsPage {
 			}
 		}
 	}
-}
-SpellsPage._BOOK_VIEW_MODE_K = "bookViewMode";
 
-async function pPostLoad () {
-	const homebrew = await BrewUtil.pAddBrewData();
-	await handleBrew(homebrew);
-	BrewUtil.bind({list});
-	BrewUtil.makeBrewButton("manage-brew");
-	BrewUtil.bind({filterBox: spellsPage._pageFilter.filterBox, sourceFilter: spellsPage._pageFilter.sourceFilter});
-	await ListUtil.pLoadState();
-}
+	async _pPostLoad () {
+		const homebrew = await BrewUtil.pAddBrewData();
+		this._addSpells(homebrew.spell);
+		BrewUtil.bind({
+			list: this._list,
+		});
+		BrewUtil.makeBrewButton("manage-brew");
+		BrewUtil.bind({
+			filterBox: this._pageFilter.filterBox,
+			sourceFilter: this._pageFilter.sourceFilter,
+		});
+		await ListUtil.pLoadState();
+	}
 
-let list;
-let subList;
-let spellBookView;
+	async _pPageInit (loadedSources) {
+		Object.keys(loadedSources)
+			.map(src => new FilterItem({item: src, pFnChange: this._multiSource.pLoadSource.bind(this._multiSource)}))
+			.forEach(fi => this._pageFilter.sourceFilter.addItem(fi));
 
-async function pPageInit (loadedSources) {
-	Object.keys(loadedSources)
-		.map(src => new FilterItem({item: src, pFnChange: spellsPage._multiSource.pLoadSource.bind(spellsPage._multiSource)}))
-		.forEach(fi => spellsPage._pageFilter.sourceFilter.addItem(fi));
+		this._list = ListUtil.initList({
+			listClass: "spells",
+			fnSort: PageFilterSpells.sortSpells,
+			syntax: this._listSyntax,
+		});
+		ListUtil.setOptions({primaryLists: [this._list]});
+		SortUtil.initBtnSortHandlers($(`#filtertools`), this._list);
 
-	list = ListUtil.initList({
-		listClass: "spells",
-		fnSort: PageFilterSpells.sortSpells,
-	});
-	ListUtil.setOptions({primaryLists: [list]});
-	SortUtil.initBtnSortHandlers($(`#filtertools`), list);
+		const $outVisibleResults = $(`.lst__wrp-search-visible`);
+		this._list.on("updated", () => {
+			$outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`);
+		});
 
-	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	list.on("updated", () => {
-		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
-	});
+		// filtering function
+		this._pageFilter.filterBox.on(
+			FilterBox.EVNT_VALCHANGE,
+			this.handleFilterChange.bind(this),
+		);
 
-	// filtering function
-	spellsPage._pageFilter.filterBox.on(
-		FilterBox.EVNT_VALCHANGE,
-		spellsPage.handleFilterChange.bind(spellsPage),
-	);
+		this._subList = ListUtil.initSublist({
+			listClass: "subspells",
+			fnSort: PageFilterSpells.sortSpells,
+		});
+		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
+		ListUtil.initGenericPinnable();
 
-	subList = ListUtil.initSublist({
-		listClass: "subspells",
-		fnSort: PageFilterSpells.sortSpells,
-	});
-	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
-	ListUtil.initGenericPinnable();
+		this._spellBookView = new BookModeView({
+			hashKey: "bookview",
+			$openBtn: $(`#btn-spellbook`),
+			noneVisibleMsg: "If you wish to view multiple spells, please first make a list",
+			pageTitle: "Spells Book View",
+			popTblGetNumShown: ($wrpContent, $dispName, $wrpControls) => {
+				const toShow = ListUtil.getSublistedIds().map(id => this._dataList[id])
+					.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
-	spellBookView = new BookModeView({
-		hashKey: "bookview",
-		$openBtn: $(`#btn-spellbook`),
-		noneVisibleMsg: "If you wish to view multiple spells, please first make a list",
-		pageTitle: "Spells Book View",
-		popTblGetNumShown: ($wrpContent, $dispName, $wrpControls) => {
-			const toShow = ListUtil.getSublistedIds().map(id => spellList[id])
-				.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
+				const renderSpell = (stack, sp) => {
+					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(Renderer.spell.getCompactRenderedString(sp));
+					stack.push(`</div></div>`);
+				};
 
-			const renderSpell = (stack, sp) => {
-				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
-				stack.push(Renderer.spell.getCompactRenderedString(sp));
-				stack.push(`</div></div>`);
-			};
+				let lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
+				if (lastOrder != null) lastOrder = `${lastOrder}`;
 
-			let lastOrder = StorageUtil.syncGetForPage(SpellsPage._BOOK_VIEW_MODE_K);
-			if (lastOrder != null) lastOrder = `${lastOrder}`;
-
-			const $selSortMode = $(`<select class="form-control input-sm">
+				const $selSortMode = $(`<select class="form-control input-sm">
 				<option value="0">Spell Level</option>
 				<option value="1">Alphabetical</option>
 			</select>`)
-				.change(() => {
-					if (!toShow.length && Hist.lastLoadedId != null) return;
+					.change(() => {
+						if (!toShow.length && Hist.lastLoadedId != null) return;
 
-					const val = Number($selSortMode.val());
-					if (val === 0) renderByLevel();
-					else renderByAlpha();
+						const val = Number($selSortMode.val());
+						if (val === 0) renderByLevel();
+						else renderByAlpha();
 
-					StorageUtil.syncSetForPage(SpellsPage._BOOK_VIEW_MODE_K, val);
-				});
-			if (lastOrder != null) $selSortMode.val(lastOrder);
+						StorageUtil.syncSetForPage(SpellsPage._BOOK_VIEW_MODE_K, val);
+					});
+				if (lastOrder != null) $selSortMode.val(lastOrder);
 
-			$$`<div class="flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
+				$$`<div class="flex-vh-center ml-3"><div class="mr-2 no-wrap">Sort order:</div>${$selSortMode}</div>`.appendTo($wrpControls);
 
-			const renderByLevel = () => {
-				const stack = [];
-				for (let i = 0; i < 11; ++i) {
-					const atLvl = toShow.filter(sp => sp.level === i);
-					if (atLvl.length) {
-						stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
-						stack.push(`<div class="pf2-h5 flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
-						atLvl.forEach(sp => renderSpell(stack, sp));
-						stack.push(`</div>`);
+				const renderByLevel = () => {
+					const stack = [];
+					for (let i = 0; i < 11; ++i) {
+						const atLvl = toShow.filter(sp => sp.level === i);
+						if (atLvl.length) {
+							stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
+							stack.push(`<div class="pf2-h5 flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
+							atLvl.forEach(sp => renderSpell(stack, sp));
+							stack.push(`</div>`);
+						}
 					}
-				}
-				$wrpContent.empty().append(stack.join(""));
-			};
+					$wrpContent.empty().append(stack.join(""));
+				};
 
-			const renderByAlpha = () => {
-				const stack = [];
-				toShow.forEach(sp => renderSpell(stack, sp));
-				$wrpContent.empty().append(stack.join(""));
-			};
+				const renderByAlpha = () => {
+					const stack = [];
+					toShow.forEach(sp => renderSpell(stack, sp));
+					$wrpContent.empty().append(stack.join(""));
+				};
 
-			const renderNoneSelected = () => {
-				const stack = [];
-				stack.push(`<div class="w-100 h-100 no-breaks">`);
-				const sp = spellList[Hist.lastLoadedId];
-				renderSpell(stack, sp);
-				$dispName.text(Parser.spLevelToFullLevelText(sp.level));
-				stack.push(`</div>`);
-				$wrpContent.empty().append(stack.join(""));
-			};
+				const renderNoneSelected = () => {
+					const stack = [];
+					stack.push(`<div class="w-100 h-100 no-breaks">`);
+					const sp = this._dataList[Hist.lastLoadedId];
+					renderSpell(stack, sp);
+					$dispName.text(Parser.spLevelToFullLevelText(sp.level));
+					stack.push(`</div>`);
+					$wrpContent.empty().append(stack.join(""));
+				};
 
-			if (!toShow.length && Hist.lastLoadedId != null) renderNoneSelected();
-			else if (lastOrder === 1) renderByAlpha();
-			else renderByLevel();
+				if (!toShow.length && Hist.lastLoadedId != null) renderNoneSelected();
+				else if (lastOrder === 1) renderByAlpha();
+				else renderByLevel();
 
-			return toShow.length;
-		},
-		hasPrintColumns: true,
-	});
-}
+				return toShow.length;
+			},
+			hasPrintColumns: true,
+		});
 
-let spellList = [];
-let spI = 0;
-
-const _addedHashes = new Set();
-function addSpells (data) {
-	if (!data || !data.length) return;
-
-	spellList.push(...data);
-
-	for (; spI < spellList.length; spI++) {
-		const spell = spellList[spI];
-		const listItem = spellsPage.getListItem(spell, spI);
-		if (!listItem) continue;
-		list.addItem(listItem);
+		return {list: this._list, subList: this._subList};
 	}
-	list.update();
 
-	spellsPage._pageFilter.filterBox.render();
-	spellsPage.handleFilterChange();
+	_addSpells (data) {
+		if (!data || !data.length) return;
 
-	ListUtil.setOptions({
-		itemList: spellList,
-		getSublistRow: spellsPage.getSublistItem.bind(spellsPage),
-		primaryLists: [list],
-	});
-	ListUtil.bindPinButton();
-	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, spellList, SpellsPage.popoutHandlerGenerator.bind(SpellsPage), "Popout Window (SHIFT for Source Data)");
-	UrlUtil.bindLinkExportButton(spellsPage._pageFilter.filterBox);
-	ListUtil.bindOtherButtons({
-		download: true,
-		upload: {
-			pFnPreLoad: pPreloadSublistSources,
-		},
-		sendToBrew: {
-			mode: "spellBuilder",
-			fnGetMeta: () => ({
-				page: UrlUtil.getCurrentPage(),
-				source: Hist.getHashSource(),
-				hash: Hist.getHashParts()[0],
-			}),
-		},
-	});
+		this._dataList.push(...data);
+
+		for (; this._ixData < this._dataList.length; this._ixData++) {
+			const spell = this._dataList[this._ixData];
+			const listItem = this.getListItem(spell, this._ixData);
+			if (!listItem) continue;
+			this._list.addItem(listItem);
+		}
+		this._list.update();
+
+		this._pageFilter.filterBox.render();
+		this.handleFilterChange();
+
+		ListUtil.setOptions({
+			itemList: this._dataList,
+			getSublistRow: this.getSublistItem.bind(this),
+			primaryLists: [this._list],
+		});
+		ListUtil.bindPinButton();
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList, SpellsPage.popoutHandlerGenerator.bind(SpellsPage), "Popout Window (SHIFT for Source Data)");
+		UrlUtil.bindLinkExportButton(this._pageFilter.filterBox);
+		ListUtil.bindOtherButtons({
+			download: true,
+			upload: {
+				pFnPreLoad: pPreloadSublistSources,
+			},
+			sendToBrew: {
+				mode: "spellBuilder",
+				fnGetMeta: () => ({
+					page: UrlUtil.getCurrentPage(),
+					source: Hist.getHashSource(),
+					hash: Hist.getHashParts()[0],
+				}),
+			},
+		});
+	}
+
+	_getSearchCache (entity) {
+		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
+		const ptrOut = {_: ""};
+		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		return ptrOut._;
+	}
 }
+SpellsPage._BOOK_VIEW_MODE_K = "bookViewMode";
+SpellsPage._INDEXABLE_PROPS = [
+	"entries",
+	"heightened",
+	"requirements",
+	"trigger",
+	"range",
+	"area",
+	"targets",
+	"duration",
+	"savingThrow",
+];
 
 async function pPreloadSublistSources (json) {
-	const loaded = Object.keys(spellsPage._multiSource.loadedSources)
-		.filter(it => spellsPage._multiSource.loadedSources[it].loaded);
+	const loaded = Object.keys(this._multiSource.loadedSources)
+		.filter(it => this._multiSource.loadedSources[it].loaded);
 	const lowerSources = json.sources.map(it => it.toLowerCase());
-	const toLoad = Object.keys(spellsPage._multiSource.loadedSources)
+	const toLoad = Object.keys(this._multiSource.loadedSources)
 		.filter(it => !loaded.includes(it))
 		.filter(it => lowerSources.includes(it.toLowerCase()));
 	const loadTotal = toLoad.length;
 	if (loadTotal) {
-		await Promise.all(toLoad.map(src => spellsPage._multiSource.pLoadSource(src, "yes")));
+		await Promise.all(toLoad.map(src => this._multiSource.pLoadSource(src, "yes")));
 	}
 }
 
@@ -374,5 +402,5 @@ let spellsPage;
 window.addEventListener("load", async () => {
 	await Renderer.trait.buildCategoryLookup();
 	spellsPage = new SpellsPage();
-	spellsPage.pOnLoad()
+	spellsPage.pOnLoad();
 });

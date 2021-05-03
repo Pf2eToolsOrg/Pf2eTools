@@ -69,8 +69,8 @@ class ArchetypesPage extends BaseComponent {
 			this._featLookUp[hash] = feat;
 		});
 
-		this._list = ListUtil.initList({listClass: "archetypes", isUseJquery: true});
-		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
+		this._list = ListUtil.initList({listClass: "archetypes", isUseJquery: true, syntax: this._listSyntax});
+		this._listFeat = ListUtil.initList({listClass: "feats", isUseJquery: true, syntax: this._listSyntax}, {input: "#feat-lst__search", glass: "#feat-lst__search-glass", reset: "#feat-reset"});
 		ListUtil.setOptions({primaryLists: [this._list, this._listFeat]});
 		SortUtil.initBtnSortHandlers($("#filtertools"), this._list);
 		SortUtil.initBtnSortHandlers($("#feat-filtertools"), this._listFeat);
