@@ -25,6 +25,7 @@ class PageFilterActions extends PageFilter {
 		this._typeFilter = new Filter({
 			header: "Type",
 			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic", "Skill (Trained)", "Skill (Untrained)"],
+			selFn: (it) => it === "Basic",
 		});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});

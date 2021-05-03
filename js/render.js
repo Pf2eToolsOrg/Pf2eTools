@@ -3228,6 +3228,32 @@ Renderer.action = {
 	getSubHead (it) {
 		const renderStack = [];
 		const renderer = Renderer.get()
+		if (it.actionType) {
+			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained </strong>${renderer.render(`{@skill ${it.actionType.trained}}`)}</p>`);
+			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained </strong>${renderer.render(`{@skill ${it.actionType.untrained}}`)}</p>`);
+			if (it.actionType.class || it.actionType.subclass) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class </strong>`);
+				// To explain this one-line spaghetti, this takes the class array, returns it properly tagged, joins it into a string with ", " and lastly renders it
+				renderStack.push(renderer.render(`${it.actionType.class.map(function(x) { return `{@class ${x}}`}).join(", ")}`))
+				//If subclass exists, post it
+				if (it.actionType.subclass) renderStack.push(`; <strong>Subclass </strong>${renderer.render(`{@class ${it.actionType.class}|${it.actionType.subclass}|${it.actionType.subclass}}`)}`)
+				renderStack.push(`</p>`)
+			}
+			if (it.actionType.archetype) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype </strong>`);
+				// Same as above but it's archetypes
+				renderStack.push(renderer.render(`${it.actionType.archetype.map(function(x) { return `{@archetype ${x}}`}).join(", ")}`))
+				renderStack.push(`</p>`)
+			}
+			if (it.actionType.ancestry || it.actionType.heritage) {
+				if (it.actionType.ancestry) {
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry </strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}}`)}`);
+					if (it.actionType.heritage) renderStack.push(`; `)
+				}
+				if (it.actionType.heritage) renderStack.push(`<strong>Heritage </strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
+				renderStack.push(`</p>`)
+			} 
+		}
 		if (it.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites </strong>${renderer.render(it.prerequisites)}</p>`);
 		}
@@ -4152,22 +4178,8 @@ Renderer.item = {
 	getSubHead (item) {
 		const renderStack = [];
 		const renderer = Renderer.get()
-		if (item.price) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
-		}
-		if (item.ammunition) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}</p>`);
-		}
-		if (item.damage) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}</p>`);
-			// TODO: links to items?
-			// Unsure what this means - MrVauxs
-		}
-		if (item.hands) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Hands </strong>${item.hands}</p>`);
-			// TODO: links to items?
-			// Unsure what this means - MrVauxs
-		}
+		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price </strong>${Parser.priceToFull(item.price)}</p>`);
+
 		if (item.usage != null || item.bulk != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.usage != null) renderStack.push(`<strong>Usage </strong>${item.usage}`)
@@ -4175,13 +4187,17 @@ Renderer.item = {
 			if (item.bulk != null) renderStack.push(`<strong>Bulk </strong> ${item.bulk}`)
 			renderStack.push(`</p>`);
 		}
-		if (item.ac != null || item.dexCap != null) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
-			if (item.ac != null) renderStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}`)
-			if (item.ac2 != null) renderStack.push(`/${Parser.numToBonus(item.ac2)}`)
-			if (item.ac != null && item.dexCap != null) renderStack.push("; ")
-			if (item.dexCap != null) renderStack.push(`<strong>Dex Cap </strong>${Parser.numToBonus(item.dexCap)}`)
-			renderStack.push(`</p>`);
+		if (item.ac != null || item.dexCap != null || item.shieldStats != null) {
+			let tempStack = [];
+			// FIXME: Rework this to be more in line with creature AC
+			if (item.ac != null) tempStack.push(`<strong>AC Bonus </strong>${Parser.numToBonus(item.ac)}${item.ac2 ? `/${Parser.numToBonus(item.ac2)}` : ""}`);
+			if (item.dexCap != null) tempStack.push(`<strong>Dex Cap </strong>${Parser.numToBonus(item.dexCap)}`);
+			if (item.shieldStats) {
+				if (item.shieldStats.hardness != null) tempStack.push(`<strong>Hardness </strong>${item.shieldStats.hardness}`);
+				if (item.shieldStats.hp != null) tempStack.push(`<strong>HP </strong>${item.shieldStats.hp}`);
+				if (item.shieldStats.bt != null) tempStack.push(`<strong>BT </strong>${item.shieldStats.bt}`);
+			}
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`);
 		}
 		if (item.str != null || item.checkPen != null || item.speedPen != null) {
 			let tempStack = []
@@ -4190,7 +4206,6 @@ Renderer.item = {
 			if (item.speedPen != null) tempStack.push(`<strong>Speed Penalty </strong>${item.speedPen ? `–${item.speedPen} ft.` : "\u2014"}`)
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
-		if (item.group != null) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Group </strong>${renderer.render(item.group)}</p>`)
 		if (item.activate) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate </strong>${renderer.render(item.activate.activity.entry)} `);
 			if (item.activate.components != null) {
@@ -4210,6 +4225,36 @@ Renderer.item = {
 		if (item.onset) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset </strong>${item.price.amount} ${item.price.coin} ${item.price.note ? item.price.note : ""}</p>`);
 		}
+
+		// Weapon Line
+		if (item.ammunition || item.damage || item.hands) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			if (item.damage) {
+				renderStack.push(`<strong>Damage </strong>${renderer.render(`{@damage ${item.damage}} ${Parser.dmgTypeToFull(item.damageType)}`)}`);
+				if (item.ammunition || item.hands) renderStack.push("; ")
+			}
+			if (item.ammunition) {
+				renderStack.push(`<strong>Ammunition </strong>${renderer.render(`{@item ${item.ammunition}}`)}`);
+				if (item.hands) renderStack.push("; ")
+			}
+			if (item.hands) renderStack.push(`<strong>Hands </strong>${item.hands}`);
+			renderStack.push(`</p>`)
+		}
+
+		// General Item Line
+		if (item.category || item.group) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+			if (item.category) {
+				renderStack.push(`<strong>Category </strong>`);
+				if (item.subCategory != null) renderStack.push(`${item.subCategory}`);
+				if (item.category === "Weapon") renderStack.push(` ${item.ranged ? "Ranged" : "Melee"} `);
+				renderStack.push(` ${item.category}${item.category === "Worn" ? ` ${item.type}` : ""}`);
+			}
+			if (item.category != null && item.group != null) renderStack.push("; ")
+			if (item.group != null) renderStack.push(`<strong>Group </strong>${renderer.render(`{@group ${item.group}}`)}`);
+			renderStack.push(`</p>`)
+		}
+
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
 	},
