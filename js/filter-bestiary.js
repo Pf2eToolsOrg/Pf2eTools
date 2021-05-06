@@ -151,7 +151,8 @@ class PageFilterBestiary extends PageFilter {
 	}
 
 	mutateForFilters (cr) {
-		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType).concat([cr.rarity]).map(t => Parser.getTraitName(t));
+		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
+		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType).concat([cr.rarity]);
 		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
 			cr.senses.precise.forEach((s) => {
@@ -233,12 +234,15 @@ class PageFilterBestiary extends PageFilter {
 				cr._fritualTraditions.push(r.tradition)
 			});
 		}
+
+		this.handleTraitImplies(cr, {traitProp: "_fTraits", entityTypes: ["creature"]});
+		cr._fTraits = cr._fTraits.map(t => Parser.getTraitName(t));
 	}
 
 	addToFilters (cr, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(cr.source);
+		this._sourceFilter.addItem(cr._fSources);
 
 		this._traitFilter.addItem(cr._fTraits)
 
@@ -287,7 +291,7 @@ class PageFilterBestiary extends PageFilter {
 	toDisplay (values, c) {
 		return this._filterBox.toDisplay(
 			values,
-			c.source,
+			c._fSources,
 			c.level,
 			c._fTraits,
 			[

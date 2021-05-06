@@ -122,7 +122,7 @@ class BackgroundPage extends ListPage {
 
 let backgroundsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	backgroundsPage = new BackgroundPage();
 	backgroundsPage.pOnLoad()
 });

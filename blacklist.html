@@ -116,14 +116,12 @@
 
 	<div class="row">
 		<div class="form-group col-12">
-			<button class="btn btn-default mr-2" onclick="Blacklist.addAllUa()">Exclude All UA/etc.</button>
-			<button class="btn btn-default help mr-2" onclick="Blacklist.removeAllUa()"
-					title="Removes entries added by the &quot;Exclude All UA/etc.&quot; button.">Include All UA/etc.
-			</button>
-			<button class="btn btn-default mr-2" onclick="Blacklist.addAllSources()">Exclude All Sources</button>
-			<button class="btn btn-default help" onclick="Blacklist.removeAllSources()"
-					title="Removes entries added by the &quot;Exclude All Sources&quot; button.">Include All Sources
-			</button>
+			<button class="btn btn-default mr-2 mt-2" onclick="Blacklist.addAllNonStandard()">Exclude All Non-Standard Sources</button>
+			<button class="btn btn-default mr-2 mt-2" onclick="Blacklist.removeAllNonStandard()">Include All Non-Standard Sources</button>
+			<button class="btn btn-default mr-2 mt-2" onclick="Blacklist.addAllAdventures()">Exclude All Adventures</button>
+			<button class="btn btn-default mr-2 mt-2" onclick="Blacklist.removeAllAdventures()">Include All Adventures</button>
+			<button class="btn btn-default mr-2 mt-2" onclick="Blacklist.addAllSources()">Exclude All Sources</button>
+			<button class="btn btn-default mt-2" onclick="Blacklist.removeAllSources()">Include All Sources</button>
 		</div>
 	</div>
 
@@ -208,6 +206,7 @@
 <script type="text/javascript" src="lib/localforage.js"></script>
 <script type="text/javascript" src="js/omnidexer.js"></script>
 <script type="text/javascript" src="js/omnisearch.js"></script>
+<script type="text/javascript" src="js/filter.js"></script>
 <script type="text/javascript" src="js/render.js"></script>
 <script type="text/javascript" src="js/render-dice.js"></script>
 <script type="text/javascript" src="js/scalecreature.js"></script>

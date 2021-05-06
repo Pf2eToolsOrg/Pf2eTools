@@ -47,6 +47,7 @@ class PageFilterFeats extends PageFilter {
 	}
 
 	mutateForFilters (feat) {
+		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
 		feat._fType = [];
 		if (feat.featType == null) feat.featType = {};
@@ -88,7 +89,7 @@ class PageFilterFeats extends PageFilter {
 		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
 		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
 		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
-		this._sourceFilter.addItem(feat.source);
+		this._sourceFilter.addItem(feat._fSources);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -109,7 +110,7 @@ class PageFilterFeats extends PageFilter {
 	toDisplay (values, ft) {
 		return this._filterBox.toDisplay(
 			values,
-			ft.source,
+			ft._fSources,
 			ft._fType,
 			ft.level,
 			ft.featType.ancestry,

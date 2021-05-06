@@ -304,16 +304,16 @@
 			background: #3b7b59;
 		}
 
+		&settlement {
+			background: #004416;
+		}
+
 		&left {
 			border-left-width: 0.33em;
 		}
 
 		&right {
 			border-right-width: 0.33em;
-		}
-
-		&settlement {
-			background: #004416;
 		}
 	}
 }
@@ -703,7 +703,7 @@
 			width: 50%;
 			max-width: 170px;
 			margin: 0.4em 1em 0.4em -1em;
-			font-size: 0.75em;
+			font-size: 1em;
 
 			@media only screen and (max-width: 220px) {
 				width: calc(100%);
@@ -1324,7 +1324,13 @@
 	overflow: hidden;
 }
 
-$night-pf2-red: #f06e60;
+$night-pf2-red: #e06565;
+$night-pf2-red-bg: #472c2c;
+$night-red-bg-text: #c9c9c9;
+$night-pf2-blue: #6594e0;
+$night-accent-blue: #021830;
+$night-accent-gold: #c99d51;
+$night-pf2-brown: #2e2c27;
 
 .night-mode {
 	.pf2-h1,
@@ -1355,16 +1361,16 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-h2 {
-		color: #5691f0;
+		color: $night-pf2-blue;
 
 		&__step {
-			color: #5691f0;
-			background: #001d2b;
+			color: $night-pf2-blue;
+			background: $night-accent-blue;
 
 			&-num {
-				color: #001d2b;
-				border-color: #001d2b;
-				background: #5691f0;
+				color: $night-accent-blue;
+				border-color: $night-accent-blue;
+				background: $night-pf2-blue;
 			}
 		}
 	}
@@ -1374,7 +1380,7 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-h5 {
-		color: #5691f0;
+		color: $night-pf2-blue;
 	}
 
 	.pf2-p {
@@ -1382,33 +1388,33 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-trait {
-		background: $night-pf2-red;
-		border-color: #db9d39;
-		color: #222;
+		background: $night-pf2-red-bg;
+		border-color: $night-accent-gold;
+		color: #dbdbdb;
 
 		&-- {
 			&alignment {
-				background: #a0aff2;
+				background: #4c505e;
 			}
 
 			&size {
-				background: #66d499;
+				background: #334f40;
 			}
 
 			&settlement {
-				background: #00ba3b;
+				background: #263d2d;
 			}
 
 			&uncommon {
-				background: #ff9d82;
+				background: #664e47;
 			}
 
 			&rare {
-				background: #5691f0;
+				background: #29364a;
 			}
 
 			&unique {
-				background: #d36eff;
+				background: #44354a;
 			}
 		}
 	}
@@ -1416,8 +1422,8 @@ $night-pf2-red: #f06e60;
 	.pf2-table {
 		&__ {
 			&label {
-				background: $night-pf2-red;
-				color: #222;
+				background: $night-pf2-red-bg;
+				color: $night-red-bg-text;
 			}
 
 			&entry {
@@ -1430,7 +1436,7 @@ $night-pf2-red: #f06e60;
 			}
 
 			&footnote {
-				background-color: black;
+				background-color: #141414;
 			}
 
 			&intro,
@@ -1441,53 +1447,53 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-box--brown {
-		background-color: #47433b;
-		fill: #47433b;
+		background-color: $night-pf2-brown;
+		fill: $night-pf2-brown;
 		color: #bbb;
 	}
 
 	.pf2-box--red {
-		background-color: $night-pf2-red;
-		fill: $night-pf2-red;
-		color: #222;
+		background-color: $night-pf2-red-bg;
+		fill: $night-pf2-red-bg;
+		color: $night-red-bg-text;
 	}
 
 	.pf2-box__table--red {
 		.pf2-table__entry {
-			background: $night-pf2-red;
-			border-color: #db9d39;
-			color: #222;
+			background: $night-pf2-red-bg;
+			border-color: $night-accent-gold;
+			color: $night-red-bg-text;
 		}
 	}
 
 	.pf2-beige-box,
 	.pf2-sample-box {
-		background: #383733;
+		background: $night-pf2-brown;
 	}
 
 	.pf2-tips-box {
 		&__title {
-			background: #5691f0;
-			color: #001d2b;
+			background: $night-pf2-blue;
+			color: $night-accent-blue;
 		}
 
 		&__text {
-			background: #001d2b;
+			background: $night-accent-blue;
 		}
 	}
 
 	.pf2-inset {
-		border-color: #bbb;
-		background: #383733;
+		border-color: #544c3a;
+		background: $night-pf2-brown;
 	}
 
 	.pf2-key-abilities {
-		background: $night-pf2-red;
-		border-color: #db9d39;
-		color: #222;
+		background: $night-pf2-red-bg;
+		border-color: $night-accent-gold;
+		color: $night-red-bg-text;
 
 		&__ab {
-			box-shadow: 8px 0 0 -6px #db9d39;
+			box-shadow: 8px 0 0 -6px $night-accent-gold;
 		}
 	}
 
@@ -1496,6 +1502,10 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-summary__image--no-image p {
+		color: $night-pf2-red;
+	}
+
+	.initial-message {
 		color: $night-pf2-red;
 	}
 }

@@ -58,6 +58,7 @@ class PageFilterAncestries extends PageFilter {
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (ancestry, opts) {
+		ancestry._fSources = SourceFilter.getCompleteFilterSources(ancestry);
 		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20);
 		ancestry._fMisc = [];
 		if (ancestry.feature) {
@@ -74,7 +75,7 @@ class PageFilterAncestries extends PageFilter {
 
 	addToFilters (ancestry, isExcluded, opts) {
 		if (isExcluded) return;
-		this._sourceFilter.addItem(ancestry.source);
+		this._sourceFilter.addItem(ancestry._fSources);
 		this._hpFilter.addItem(ancestry.hp);
 		this._sizeFilter.addItem(ancestry.size);
 		this._languageFilter.addItem(ancestry._flanguages);
@@ -102,7 +103,7 @@ class PageFilterAncestries extends PageFilter {
 	toDisplay (values, a) {
 		return this._filterBox.toDisplay(
 			values,
-			a.source,
+			a._fSources,
 			a.boosts || [],
 			a.flaw || [],
 			a.hp,

@@ -44,6 +44,7 @@ class PageFilterDeities extends PageFilter {
 	}
 
 	mutateForFilters (g) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
 		if (g.devoteeBenefits) {
 			g._fFont = g.devoteeBenefits.font;
@@ -64,7 +65,7 @@ class PageFilterDeities extends PageFilter {
 	addToFilters (g, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(g.source);
+		this._sourceFilter.addItem(g._fSources);
 		if (g._fFont) this._fontFilter.addItem(g._fFont);
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
@@ -87,7 +88,7 @@ class PageFilterDeities extends PageFilter {
 	toDisplay (values, g) {
 		return this._filterBox.toDisplay(
 			values,
-			g.source,
+			g._fSources,
 			g._fAlign,
 			g.pantheon,
 			[

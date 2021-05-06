@@ -110,7 +110,7 @@ class VehiclesPage extends ListPage {
 }
 let vehiclesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	vehiclesPage = new VehiclesPage();
 	vehiclesPage.pOnLoad()
 });

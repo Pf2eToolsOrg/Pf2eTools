@@ -169,7 +169,7 @@ function renderStatblock (action) {
 
 let actionsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	actionsPage = new ActionsPage();
 	actionsPage.pOnLoad()
 });

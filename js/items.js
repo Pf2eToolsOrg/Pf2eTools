@@ -164,28 +164,13 @@ class ItemsPage extends ListPage {
 			$content.append(RenderItems.$getRenderedItem(item));
 		}
 
-		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content,
-				entity: item,
-				pFnGetFluff: Renderer.item.pGetFluff,
-			});
-		}
-
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => {},
 			buildStatsTab,
 		);
-		const infoTab = Renderer.utils.tabButton(
-			"Info",
-			() => {},
-			buildFluffTab,
-		);
 
-		if (item.fluff && item.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
-		else Renderer.utils.bindTabButtons(statTab);
+		Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -549,7 +534,7 @@ ItemsPage._INDEXABLE_PROPS = [
 let runeBuilder;
 let itemsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	itemsPage = new ItemsPage();
 	itemsPage.pOnLoad()
 });

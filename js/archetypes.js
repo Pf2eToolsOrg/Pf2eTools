@@ -741,7 +741,7 @@ ArchetypesPage._DEFAULT_STATE = {
 
 let archetypesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	archetypesPage = new ArchetypesPage();
 	archetypesPage.pOnLoad()
 });

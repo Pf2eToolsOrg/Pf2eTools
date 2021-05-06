@@ -115,7 +115,7 @@ class ConditionsPage extends ListPage {
 
 let conditionsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	conditionsPage = new ConditionsPage();
 	conditionsPage.pOnLoad()
 });

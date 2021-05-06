@@ -13,6 +13,7 @@ class PageFilterAfflictions extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fType = it.__prop === "itemcurse" ? "Item Curse" : it.__prop.uppercaseFirst();
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
 		it._fLvl = PageFilterAfflictions.getFilterLevel(it.level);
@@ -21,7 +22,7 @@ class PageFilterAfflictions extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._typeFilter.addItem(it._fType);
 		this._levelFilter.addItem(it._fLvl);
 		this._traitFilter.addItem(it._fTraits);
@@ -39,7 +40,7 @@ class PageFilterAfflictions extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it._fType,
 			it._fLvl,
 			it._fTraits,

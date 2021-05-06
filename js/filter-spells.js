@@ -119,10 +119,11 @@ class PageFilterSpells extends PageFilter {
 		spell._normalisedRange = Parser.getNormalisedRange(spell.range);
 
 		// used for filtering
+		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
-		spell._fClasses = spell.traits.filter(t => Renderer.trait._categoryLookup["Class"].includes(t)) || [];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
+		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
 		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
@@ -146,7 +147,7 @@ class PageFilterSpells extends PageFilter {
 
 		if (spell.level > 10) this._levelFilter.addItem(spell.level);
 		this._schoolFilter.addItem(spell.school);
-		this._sourceFilter.addItem(spell.source);
+		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
 		this._focusFilter.addItem(spell._fFocus);
 		this._classFilter.addItem(spell._fClasses)
@@ -157,8 +158,6 @@ class PageFilterSpells extends PageFilter {
 	}
 
 	async _pPopulateBoxOptions (opts) {
-		await SourceUtil.pInitSubclassReprintLookup();
-
 		opts.filters = [
 			this._sourceFilter,
 			this._levelFilter,
@@ -179,7 +178,7 @@ class PageFilterSpells extends PageFilter {
 	toDisplay (values, s) {
 		return this._filterBox.toDisplay(
 			values,
-			s.source,
+			s._fSources,
 			s.level,
 			s._fTraditions,
 			s.school,

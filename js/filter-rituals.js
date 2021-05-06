@@ -58,6 +58,7 @@ class PageFilterRituals extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._normalisedTime = Parser.getNormalisedTime(it.cast);
 
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
@@ -76,7 +77,7 @@ class PageFilterRituals extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._traitFilter.addItem(it._fTraits);
 		this._timeFilter.addItem(it._fTimeType);
 		this._secondaryCastersFilter.addItem(it._fSndCasters);
@@ -105,7 +106,7 @@ class PageFilterRituals extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.level,
 			it._ftraits,
 			it._fTimeType,

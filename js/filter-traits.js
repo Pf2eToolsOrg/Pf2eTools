@@ -7,12 +7,13 @@ class PageFilterTraits extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		if (it.categories) this._categoryFilter.addItem(it.categories.filter(c => !c.startsWith("_")));
 	}
 
@@ -26,7 +27,7 @@ class PageFilterTraits extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.categories || [],
 		)
 	}

@@ -3353,7 +3353,7 @@ class AdventureOrBookView {
 window.addEventListener("load", async () => {
 	ExcludeUtil.pInitialise(); // don't await, as this is only used for search
 	// expose it for dbg purposes
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	window.GM_SCREEN = new Board();
 	Renderer.hover.bindGmScreen(window.GM_SCREEN);
 	window.GM_SCREEN.pInitialise()

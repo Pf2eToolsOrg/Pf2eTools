@@ -117,7 +117,7 @@ class PlacesPage extends ListPage {
 
 let placesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	placesPage = new PlacesPage();
 	placesPage.pOnLoad()
 });

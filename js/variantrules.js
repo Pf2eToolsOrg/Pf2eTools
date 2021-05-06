@@ -128,7 +128,7 @@ function renderStatblock (rule) {
 
 let variantRulesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	variantRulesPage = new VariantRulesPage();
 	variantRulesPage.pOnLoad()
 });

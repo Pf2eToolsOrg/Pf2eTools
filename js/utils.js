@@ -323,16 +323,6 @@ CleanUtil.JSON_REPLACEMENTS_REGEX = new RegExp(Object.keys(CleanUtil.JSON_REPLAC
 
 // SOURCES =============================================================================================================
 SourceUtil = {
-	_subclassReprintLookup: {},
-	async pInitSubclassReprintLookup () {
-		SourceUtil._subclassReprintLookup = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/generated/gendata-subclass-lookup.json`);
-	},
-
-	isSubclassReprinted (className, classSource, subclassShortName, subclassSource) {
-		const fromLookup = MiscUtil.get(SourceUtil._subclassReprintLookup, classSource, className, subclassSource, subclassShortName);
-		return fromLookup ? fromLookup.isReprinted : false;
-	},
-
 	isAdventure (source) {
 		if (source instanceof FilterItem) source = source.item;
 		return Parser.SOURCES_ADVENTURES.has(source);
@@ -1866,7 +1856,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash([it.name]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(BrewUtil.hasSourceJson(it.source) ? [it.name, it.source] : [it.name]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VEHICLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_PLACES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // region Fake pages (props)
@@ -2115,12 +2105,12 @@ SortUtil = {
 			if (a instanceof FilterItem) a = a.item;
 			if (b instanceof FilterItem) b = b.item;
 		}
-		if (Renderer.trait._categoryLookup["Rarity"].includes(a)) return -1;
-		else if (Renderer.trait._categoryLookup["Rarity"].includes(b)) return 1;
-		else if (a.length <= 3 && Renderer.trait._categoryLookup["Alignment"].includes(a)) return -1;
-		else if (b.length <= 3 && Renderer.trait._categoryLookup["Alignment"].includes(b)) return 1;
-		else if (Renderer.trait._categoryLookup["Size"].includes(a)) return -1;
-		else if (Renderer.trait._categoryLookup["Size"].includes(b)) return 1;
+		if (Renderer.trait.isTraitInCategory(a, "Rarity")) return -1;
+		else if (Renderer.trait.isTraitInCategory(b, "Rarity")) return 1;
+		else if (Renderer.trait.isTraitInCategory(a, "_alignAbv")) return -1;
+		else if (Renderer.trait.isTraitInCategory(b, "_alignAbv")) return 1;
+		else if (Renderer.trait.isTraitInCategory(a, "Size")) return -1;
+		else if (Renderer.trait.isTraitInCategory(b, "Size")) return 1;
 		else return SortUtil.ascSortLower(a, b);
 	},
 
@@ -3248,7 +3238,7 @@ RollerUtil = {
 
 	addListRollButton (isCompact, ids, rollX) {
 		ids = ids || {roll: "feelinglucky", reset: "reset", search: "filter-search-group"}
-		const $btnRoll = $(`<button class="btn btn-default ${isCompact ? "px-2" : ""}" id="${ids.roll}" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
+		const $btnRoll = $(`<button class="btn btn-xs btn-default ${isCompact ? "px-2" : ""}" id="${ids.roll}" title="Feeling Lucky?"><span class="glyphicon glyphicon-random"></span></button>`);
 		$btnRoll.on("click", () => {
 			const primaryLists = ListUtil.getPrimaryLists();
 			if (primaryLists && primaryLists.length) {
@@ -3706,7 +3696,7 @@ BrewUtil = {
 				${$btnLoadFromUrl}
 			</div>
 			<div class="flex-v-center">
-				<a href="https://github.com/MrVauxs/pf2e-homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm">Browse Source Repository</button></a>
+				<a href="https://github.com/Pf2eTools/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm">Browse Source Repository</button></a>
 				${$btnDelAll}
 			</div>
 		</div>`;
@@ -3768,7 +3758,7 @@ BrewUtil = {
 
 		$$($modalInner)`
 		<div class="mt-1"><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
-		Contributions are welcome; see the <a href="https://github.com/MrVauxs/pf2e-homebrew/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
+		Contributions are welcome; see the <a href="https://github.com/Pf2eTools/homebrew#readme" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
 		<hr class="hr-1">
 		<div class="flex-h-right mb-1">${$btnToggleDisplayNonPageBrews}${$btnAll}</div>
 		${$iptSearch}
@@ -4223,36 +4213,54 @@ BrewUtil = {
 		const _PG_BESTIARY = ["creature"];
 
 		switch (page) {
-			case UrlUtil.PG_SPELLS:
-				return _PG_SPELLS;
-			case UrlUtil.PG_CLASSES:
-				return ["class", "subclass", "classFeature", "subclassFeature"];
-			case UrlUtil.PG_BESTIARY:
-				return _PG_BESTIARY;
+			case UrlUtil.PG_VARIANTRULES:
+				return ["variantrule"];
+			case UrlUtil.PG_TABLES:
+				return ["table", "tableGroup"];
+			case UrlUtil.PG_BOOKS:
+				return ["book", "bookData"];
+			case UrlUtil.PG_ANCESTRIES:
+				return ["ancestry", "versatileHeritage"];
 			case UrlUtil.PG_BACKGROUNDS:
 				return ["background"];
+			case UrlUtil.PG_CLASSES:
+				return ["class", "subclass", "classFeature", "subclassFeature"];
+			case UrlUtil.PG_ARCHETYPES:
+				return ["archetype"];
 			case UrlUtil.PG_FEATS:
 				return ["feat"];
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return ["companion", "familiar"];
-			case UrlUtil.PG_ANCESTRIES:
-				return ["race", "raceFluff", "subrace"];
-			case UrlUtil.PG_HAZARDS:
-				return ["trap", "hazard"];
-			case UrlUtil.PG_DEITIES:
-				return ["deity"];
-			case UrlUtil.PG_ITEMS:
-				return ["item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff"];
-			case UrlUtil.PG_VARIANTRULES:
-				return ["variantrule"];
-			case UrlUtil.PG_CONDITIONS:
-				return ["condition", "disease", "status"];
 			case UrlUtil.PG_ADVENTURES:
 				return ["adventure", "adventureData"];
-			case UrlUtil.PG_BOOKS:
-				return ["book", "bookData"];
-			case UrlUtil.PG_TABLES:
-				return ["table", "tableGroup"];
+			case UrlUtil.PG_HAZARDS:
+				return ["hazard"];
+			case UrlUtil.PG_ACTIONS:
+				return ["action"];
+			case UrlUtil.PG_BESTIARY:
+				return _PG_BESTIARY;
+			case UrlUtil.PG_CONDITIONS:
+				return ["condition"];
+			case UrlUtil.PG_ITEMS:
+				return ["item", "baseitem"];
+			case UrlUtil.PG_SPELLS:
+				return _PG_SPELLS;
+			case UrlUtil.PG_AFFLICTIONS:
+				return ["disease", "curse", "itemcurse"];
+			case UrlUtil.PG_ABILITIES:
+				return ["ability"];
+			case UrlUtil.PG_DEITIES:
+				return ["deity"];
+			case UrlUtil.PG_LANGUAGES:
+				return ["language"];
+			case UrlUtil.PG_PLACES:
+				return ["place"];
+			case UrlUtil.PG_RITUALS:
+				return ["ritual"];
+			case UrlUtil.PG_VEHICLES:
+				return ["vehicle"];
+			case UrlUtil.PG_TRAITS:
+				return ["trait"];
 			case UrlUtil.PG_MAKE_BREW:
 				return [
 					..._PG_SPELLS,
@@ -4262,10 +4270,6 @@ BrewUtil = {
 			case UrlUtil.PG_MANAGE_BREW:
 			case UrlUtil.PG_DEMO_RENDER:
 				return BrewUtil._STORABLE;
-			case UrlUtil.PG_ACTIONS:
-				return ["action"];
-			case UrlUtil.PG_LANGUAGES:
-				return ["language"];
 			default:
 				throw new Error(`No homebrew properties defined for category ${page}`);
 		}
@@ -4291,21 +4295,16 @@ BrewUtil = {
 
 	_pRenderBrewScreen_getDisplayCat (cat, isManager) {
 		if (cat === "variantrule") return "Variant Rule";
-		if (cat === "legendaryGroup") return "Legendary Group";
 		if (cat === "optionalfeature") return "Optional Feature";
 		if (cat === "adventure") return isManager ? "Adventure Contents/Info" : "Adventure";
 		if (cat === "adventureData") return "Adventure Text";
 		if (cat === "book") return isManager ? "Book Contents/Info" : "Book";
 		if (cat === "bookData") return "Book Text";
-		if (cat === "itemProperty") return "Item Property";
 		if (cat === "baseitem") return "Base Item";
-		if (cat === "variant") return "Magic Item Variant";
-		if (cat === "monsterFluff") return "Monster Fluff";
-		if (cat === "itemFluff") return "Item Fluff";
-		if (cat === "makebrewCreatureTrait") return "Homebrew Builder Creature Trait";
 		if (cat === "classFeature") return "Class Feature";
+		if (cat === "itemcurse") return "Item Curse";
+		if (cat === "versatileHeritage") return "Versatile Heritage";
 		if (cat === "subclassFeature") return "Subclass Feature";
-		if (cat === "charoption") return "Other Character Creation Option";
 		return cat.uppercaseFirst();
 	},
 
@@ -4341,48 +4340,37 @@ BrewUtil = {
 
 	_getPDeleteFunction (category) {
 		switch (category) {
-			case "spell":
-			case "monster":
-			case "monsterFluff":
-			case "background":
-			case "feat":
-			case "optionalfeature":
-			case "raceFluff":
-			case "subrace":
-			case "object":
-			case "trap":
-			case "hazard":
-			case "deity":
-			case "item":
-			case "baseitem":
-			case "variant":
-			case "itemType":
-			case "itemProperty":
-			case "itemFluff":
-			case "reward":
-			case "psionic":
 			case "variantrule":
-			case "legendaryGroup":
-			case "condition":
-			case "disease":
-			case "status":
 			case "table":
 			case "tableGroup":
-			case "vehicle":
-			case "vehicleUpgrade":
-			case "action":
-			case "cult":
-			case "boon":
-			case "language":
+			case "ancestry":
+			case "versatileHeritage":
+			case "background":
 			case "class":
-			case "makebrewCreatureTrait":
 			case "classFeature":
 			case "subclassFeature":
-			case "charoption":
-			case "charoptionFluff":
+			case "archetype":
+			case "feat":
+			case "companion":
+			case "familiar":
+			case "hazard":
+			case "action":
+			case "creature":
+			case "condition":
+			case "item":
+			case "baseitem":
+			case "spell":
+			case "disease":
+			case "curse":
+			case "itemcurse":
+			case "ability":
+			case "deity":
+			case "language":
+			case "place":
+			case "ritual":
+			case "vehicle":
+			case "trait":
 				return BrewUtil._genPDeleteGenericBrew(category);
-			case "race":
-				return BrewUtil._pDeleteRaceBrew;
 			case "subclass":
 				return BrewUtil._pDeleteSubclassBrew;
 			case "adventure":
@@ -4415,27 +4403,6 @@ BrewUtil = {
 			if (typeof ClassesPage === "undefined") return;
 			await classesPage.pDeleteSubclassBrew(uniqueId, sc);
 		}
-	},
-
-	async _pDeleteRaceBrew (uniqueId) {
-		const removedRace = await BrewUtil._pDoRemove("race", uniqueId);
-		if (!removedRace || !removedRace.subraces) return;
-		if (typeof racesPage === "undefined" || !BrewUtil._lists) return;
-
-		const subraceMetas = removedRace.subraces
-			.map(it => ({name: it.name, source: it.source || removedRace.source}))
-			.filter(it => it.name);
-		if (!subraceMetas.length) return;
-
-		const allAttachedRaces = racesPage.getMergedSubraces(uniqueId)
-			.filter(it => subraceMetas.some(meta => meta.name === it._subraceName && meta.source === it.source))
-			.filter(it => it.uniqueId);
-
-		if (!allAttachedRaces) return;
-
-		allAttachedRaces.forEach(attachedRace => {
-			BrewUtil._lists.forEach(l => l.removeItemByData("uniqueId", attachedRace.uniqueId));
-		});
 	},
 
 	_genPDeleteGenericBrew (category) {
@@ -4496,8 +4463,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_DIRS: ["action", "adventure", "background", "book", "boon", "charoption", "class", "condition", "creature", "cult", "deity", "disease", "feat", "hazard", "item", "language", "magicvariant", "makebrew", "object", "optionalfeature", "psionic", "race", "reward", "spell", /* "status", */ "subclass", "subrace", "table", "trap", "variantrule", "vehicle", "classFeature", "subclassFeature"],
-	_STORABLE: ["class", "subclass", "classFeature", "subclassFeature", "spell", "monster", "legendaryGroup", "monsterFluff", "background", "feat", "optionalfeature", "race", "raceFluff", "subrace", "deity", "item", "baseitem", "variant", "itemProperty", "itemType", "itemFluff", "psionic", "reward", "object", "trap", "hazard", "variantrule", "condition", "disease", "status", "adventure", "adventureData", "book", "bookData", "table", "tableGroup", "vehicle", "vehicleUpgrade", "action", "cult", "boon", "language", "makebrewCreatureTrait", "charoption", "charoptionFluff"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4616,27 +4582,32 @@ BrewUtil = {
 
 		// display on page
 		switch (page) {
-			case UrlUtil.PG_SPELLS:
-			case UrlUtil.PG_CLASSES:
-			case UrlUtil.PG_BESTIARY:
-			case UrlUtil.PG_BACKGROUNDS:
-			case UrlUtil.PG_FEATS:
-			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-			case UrlUtil.PG_ANCESTRIES:
-			case UrlUtil.PG_HAZARDS:
-			case UrlUtil.PG_DEITIES:
-			case UrlUtil.PG_ITEMS:
 			case UrlUtil.PG_VARIANTRULES:
-			case UrlUtil.PG_CONDITIONS:
-			case UrlUtil.PG_AFFLICTIONS:
-			case UrlUtil.PG_ADVENTURE:
-			case UrlUtil.PG_ADVENTURES:
+			case UrlUtil.PG_TABLES:
 			case UrlUtil.PG_BOOK:
 			case UrlUtil.PG_BOOKS:
-			case UrlUtil.PG_TABLES:
+			case UrlUtil.PG_ANCESTRIES:
+			case UrlUtil.PG_BACKGROUNDS:
+			case UrlUtil.PG_CLASSES:
+			case UrlUtil.PG_ARCHETYPES:
+			case UrlUtil.PG_FEATS:
+			case UrlUtil.PG_COMPANIONS_FAMILIARS:
+			case UrlUtil.PG_ADVENTURE:
+			case UrlUtil.PG_ADVENTURES:
+			case UrlUtil.PG_HAZARDS:
 			case UrlUtil.PG_ACTIONS:
+			case UrlUtil.PG_BESTIARY:
+			case UrlUtil.PG_CONDITIONS:
+			case UrlUtil.PG_ITEMS:
+			case UrlUtil.PG_SPELLS:
+			case UrlUtil.PG_AFFLICTIONS:
 			case UrlUtil.PG_ABILITIES:
+			case UrlUtil.PG_DEITIES:
 			case UrlUtil.PG_LANGUAGES:
+			case UrlUtil.PG_PLACES:
+			case UrlUtil.PG_RITUALS:
+			case UrlUtil.PG_VEHICLES:
+			case UrlUtil.PG_TRAITS:
 				await (BrewUtil._pHandleBrew || handleBrew)(MiscUtil.copy(toAdd));
 				break;
 			case UrlUtil.PG_MANAGE_BREW:
@@ -5507,9 +5478,7 @@ ExcludeUtil = {
 	checkShowAllExcluded (list, $pagecontent) {
 		if ((!list.length && ExcludeUtil._excludeCount) || (list.length > 0 && list.length === ExcludeUtil._excludeCount)) {
 			$pagecontent.html(`
-				<tr><th class="border" colspan="6"></th></tr>
-				<tr><td colspan="6" class="initial-message">(Content <a href="blacklist.html">blacklisted</a>)</td></tr>
-				<tr><th class="border" colspan="6"></th></tr>
+				<div class="initial-message">(Content <a href="blacklist.html">blacklisted</a>)</div>
 			`);
 		}
 	},
@@ -5707,18 +5676,6 @@ ExtensionUtil = {
 	},
 };
 if (typeof window !== "undefined") window.addEventListener("rivet.active", () => ExtensionUtil.ACTIVE = true);
-
-// TOKENS ==============================================================================================================
-TokenUtil = {
-	handleStatblockScroll (event, ele) {
-		$(`#token_image`)
-			.toggle(ele.scrollTop < 32)
-			.css({
-				opacity: (32 - ele.scrollTop) / 32,
-				top: -ele.scrollTop,
-			})
-	},
-}
 
 // LOCKS ===============================================================================================================
 VeLock = function () {

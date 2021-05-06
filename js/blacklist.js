@@ -3,10 +3,12 @@
 class Blacklist {
 	static getDisplayCategory (cat) {
 		if (cat === "variantrule") return "Variant Rule";
-		if (cat === "optionalfeature") return "Optional Feature";
-		if (cat === "variant") return "Magic Item Variant";
+		if (cat === "versatileHeritage") return "Versatile Heritage";
 		if (cat === "classFeature") return "Class Feature";
 		if (cat === "subclassFeature") return "Subclass Feature";
+		if (cat === "baseitem") return "Base Item";
+		if (cat === "itemcurse") return "Item Curse";
+		if (cat === "ability") return "Creature Ability";
 		return cat.uppercaseFirst();
 	}
 
@@ -37,12 +39,19 @@ class Blacklist {
 		Blacklist._listId = 1;
 
 		const FILES = [
-			"backgrounds.json",
-			"deities.json",
-			"feats/feats-crb.json",
-			"ancestries.json",
-			"hazards.json",
 			"variantrules.json",
+			"tables.json",
+			"companionsfamiliars.json",
+			"hazards.json",
+			"actions.json",
+			"conditions.json",
+			"afflictions.json",
+			"abilities.json",
+			"deities.json",
+			"languages.json",
+			"places.json",
+			"vehicles.json",
+			"traits.json",
 		];
 
 		const $selSource = $(`#bl-source`);
@@ -102,13 +111,14 @@ class Blacklist {
 
 		// everything else
 		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
+		promises.push(await DataUtil.ancestry.loadJSON());
+		promises.push(await DataUtil.background.loadJSON());
+		promises.push(await DataUtil.archetype.loadJSON());
+		promises.push(await DataUtil.feat.loadJSON());
 		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
+		promises.push(await DataUtil.ritual.loadJSON());
 		const contentData = await Promise.all(promises);
-		contentData.forEach(d => {
-			if (d.race) d.race = Renderer.ancestry.mergeSubraces(d.race);
-			if (d.variant) d.variant.forEach(it => it.source = it.source || it.inherits.source);
-			mergeData(d);
-		});
+		contentData.forEach(d => mergeData(d));
 
 		// PROCESS DATA ============================================================================
 		const sourceSet = new Set();
@@ -255,7 +265,7 @@ class Blacklist {
 		}
 	}
 
-	static addAllUa () {
+	static addAllNonStandard () {
 		$(`#bl-source`).find(`option`).each((i, e) => {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
@@ -267,10 +277,30 @@ class Blacklist {
 		Blacklist._list.update();
 	}
 
-	static removeAllUa () {
+	static removeAllNonStandard () {
 		$(`#bl-source`).find(`option`).each((i, e) => {
 			const val = $(e).val();
 			if (val === "*" || !SourceUtil.isNonstandardSource(val)) return;
+			this._removeSourceByOptionValue(val);
+		});
+	}
+
+	static addAllAdventures () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*" || !SourceUtil.isAdventure(val)) return;
+
+			if (ExcludeUtil.addExclude("*", "*", "*", val)) {
+				Blacklist._addListItem("*", "*", "*", val);
+			}
+		});
+		Blacklist._list.update();
+	}
+
+	static removeAllAdventures () {
+		$(`#bl-source`).find(`option`).each((i, e) => {
+			const val = $(e).val();
+			if (val === "*" || !SourceUtil.isAdventure(val)) return;
 			this._removeSourceByOptionValue(val);
 		});
 	}

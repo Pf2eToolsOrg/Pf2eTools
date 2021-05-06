@@ -1125,7 +1125,16 @@
 			"page": 634,
 			"entries": [
 				"A mental effect can alter the target's mind. It has no effect on an object or a mindless creature."
-			]
+			],
+			"implies": {
+				"creature": {
+					"_fimmunities": [
+						"emotion",
+						"fear",
+						"posession"
+					]
+				}
+			}
 		},
 		{
 			"name": "Merfolk",
@@ -1149,7 +1158,17 @@
 			"page": 634,
 			"entries": [
 				"A mindless creature has either programmed or rudimentary mental attributes. Most, if not all, of their mental ability modifiers are\u20135. They are immune to all mental effects."
-			]
+			],
+			"implies": {
+				"creature": {
+					"_fimmunities": [
+						"emotion",
+						"fear",
+						"mental",
+						"posession"
+					]
+				}
+			}
 		},
 		{
 			"name": "Misfortune",
@@ -1799,7 +1818,16 @@
 			"page": 283,
 			"entries": [
 				"A versatile weapon can be used to deal a different type of damage than that listed in the Damage entry. This trait indicates the alternate damage type. For instance, a piercing weapon that is versatile S can be used to deal piercing or slashing damage. You choose the damage type each time you make an attack."
-			]
+			],
+			"implies": {
+				"item": {
+					"_fDamageType": {
+						"regex": "\\b(B|P|S)\\b",
+						"flags": "g",
+						"value": "$1"
+					}
+				}
+			}
 		},
 		{
 			"name": "Virulent",
@@ -2242,7 +2270,16 @@
 			"page": 120,
 			"entries": [
 				"The weapon has multiple configurations that you can switch between using an Interact action. Typically, switching between configurations of a modular weapon allows it to deal different types of damage (listed in the trait, such as “modular B, P, or S”), though it’s possible for a modular weapon’s description to list more complicated configurations."
-			]
+			],
+			"implies": {
+				"item": {
+					"_fDamageType": {
+						"regex": "\\b(B|P|S)\\b",
+						"flags": "g",
+						"value": "$1"
+					}
+				}
+			}
 		},
 		{
 			"name": "Ranged Trip",

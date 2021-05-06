@@ -115,7 +115,7 @@ class AfflictionsPage extends ListPage {
 
 let afflictionsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	afflictionsPage = new AfflictionsPage();
 	afflictionsPage.pOnLoad()
 });

@@ -38,6 +38,7 @@ class PageFilterHazards extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fstealth = it.stealth.dc == null ? it.stealth.bonus + 10 : it.stealth.dc;
 		if (it.defenses != null) {
 			if (it.defenses.ac) it._fac = it.defenses.ac[Object.keys(it.defenses.ac)[0]];
@@ -56,7 +57,7 @@ class PageFilterHazards extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
 		this._stealthDcFilter.addItem(it._fstealth);
 		if (it.stealth.min_prof) this._stealthMinProfFilter.addItem(it.stealth.min_prof);
@@ -85,7 +86,7 @@ class PageFilterHazards extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.level,
 			it._ftraits,
 			[

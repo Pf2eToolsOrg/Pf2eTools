@@ -15,12 +15,14 @@ class PageFilterTables extends PageFilter {
 		});
 	}
 
-	mutateForFilters (it) { /* no-op */ }
+	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
+	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -32,7 +34,7 @@ class PageFilterTables extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 		)
 	}
 }
