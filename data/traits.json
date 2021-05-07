@@ -58,7 +58,7 @@
 			"source": "CRB",
 			"page": 75,
 			"entries": [
-				"Feats with the additive trait allow you to spend actions to add special substances to bombs or elixirs. You can add only one additive to a single alchemical item, and attempting to add another spoils the item. You can typically use actions with the additive trait only when you’re creating an infused alchemical item, and some can be used only with the Quick Alchemy action. The additive trait is always followed by a level, such as additive 2. An additive adds its level to the level of the alchemical item you’re modifying; the result is the new level of the mixture. The mixture’s item level must be no higher than your advanced alchemy level."
+				"Feats with the additive trait allow you to spend actions to add special substances to bombs or elixirs. You can add only one additive to a single alchemical item, and attempting to add another spoils the item. You can typically use actions with the additive trait only when you’re creating an {@trait infused} {@trait alchemical} item, and some can be used only with the {@action Quick Alchemy|CRB} action. The additive trait is always followed by a level, such as additive 2. An additive adds its level to the level of the alchemical item you’re modifying; the result is the new level of the mixture. The mixture’s item level must be no higher than your advanced alchemy level."
 			]
 		},
 		{
@@ -287,6 +287,10 @@
 		{
 			"name": "Catfolk",
 			"source": "APG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 266,
 			"entries": [
 				"A creature with this trait is a member of the catfolk ancestry. Catfolk are humanoids with feline features. An ability with this trait can be used or selected only by catfolk. An item with this trait is created and used by catfolk."
@@ -303,6 +307,10 @@
 		{
 			"name": "Changeling",
 			"source": "Bst",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 123,
 			"entries": [
 				"A creature with this trait has the changeling versatile heritage. Changelings are the children of {@trait hag|hags} and members of other humanoid ancestries. An ability with this trait can be used or selected only by changelings."
@@ -500,6 +508,10 @@
 		{
 			"name": "Dhampir",
 			"source": "APG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 267,
 			"entries": [
 				"A creature with this trait has the dhampir versatile heritage. These humanoids are the immortal offspring of vampires and members of other ancestries."
@@ -580,6 +592,10 @@
 		{
 			"name": "Duskwalker",
 			"source": "APG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 267,
 			"entries": [
 				"A creature with this trait has the duskwalker versatile heritage. Duskwalkers are planar scions infused with the supernatural energy of psychopomps. An ability with this trait can be used or selected only by duskwalkers."
@@ -588,6 +604,10 @@
 		{
 			"name": "Dwarf",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 631,
 			"entries": [
 				"A creature with this trait is a member of the dwarf ancestry. Dwarves are stout folk who often live underground and typically have {@ability darkvision}. An ability with this trait can be used or selected only by dwarves. An item with this trait is created and used by dwarves."
@@ -612,6 +632,10 @@
 		{
 			"name": "Elf",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 631,
 			"entries": [
 				"A creature with this trait is a member of the elf ancestry. Elves are mysterious people with rich traditions of magic and scholarship who typically have low-light vision. An ability with this trait can be used or selected only by elves. A weapon with this trait is created and used by elves."
@@ -812,6 +836,10 @@
 		{
 			"name": "Gnome",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 632,
 			"entries": [
 				"A creature with this trait is a member of the gnome ancestry. Gnomes are small people skilled at magic who seek out new experiences and usually have low-light vision. An ability with this trait can be used or selected only by gnomes. A weapon with this trait is created and used by gnomes."
@@ -820,6 +848,10 @@
 		{
 			"name": "Goblin",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 632,
 			"entries": [
 				"A creature with this trait can come from multiple tribes of creatures, including goblins, hobgoblins, and bugbears. Goblins tend to have {@ability darkvision}. An ability with this trait can be used or chosen only by goblins. A weapon with this trait is created and used by goblins."
@@ -868,22 +900,60 @@
 		{
 			"name": "Half-Elf",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"otherSources": {
+				"Expanded": [
+					"LOCG|133"
+				]
+			},
 			"page": 632,
 			"entries": [
-				"A creature with this trait is part human and part elf. An ability with this trait can be used or selected only by half-elves."
+				"A creature with this trait is part human and part elf. An ability with this trait can be used or selected only by half-elves.",
+				{
+					"type": "entriesOtherSource",
+					"source": "LOCG",
+					"page": 133,
+					"entries": [
+						"A prominent heritage in the Inner Sea region, half-elves share characteristics with both elves and humans."
+					]
+				}
 			]
 		},
 		{
 			"name": "Half-Orc",
 			"source": "CRB",
+			"otherSources": {
+				"Expanded": [
+					"LOCG|133"
+				]
+			},
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 632,
 			"entries": [
-				"A creature with this trait is part human and part orc. An ability with this trait can be used or selected only by half-orcs."
+				"A creature with this trait is part human and part orc. An ability with this trait can be used or selected only by half-orcs.",
+				{
+					"type": "entriesOtherSource",
+					"source": "LOCG",
+					"page": 133,
+					"entries": [
+						"A prominent heritage in the Inner Sea region, half-orcs share characteristics with both humans and orcs."
+					]
+				}
 			]
 		},
 		{
 			"name": "Halfling",
 			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 632,
 			"entries": [
 				"A creature with this trait is a member of the halfling ancestry. These small people are friendly wanderers considered to be lucky. An ability with this trait can be used or selected only by halflings. A weapon with this trait is created and used by halflings."
@@ -900,14 +970,10 @@
 		{
 			"name": "Human",
 			"source": "CRB",
-			"page": 633,
-			"entries": [
-				"A creature with this trait is a member of the human ancestry. Humans are a diverse array of people known for their adaptability. An ability with this trait can be used or selected only by humans."
-			]
-		},
-		{
-			"name": "Human",
-			"source": "CRB",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
 			"page": 633,
 			"entries": [
 				"A creature with this trait is a member of the human ancestry. Humans are a diverse array of people known for their adaptability. An ability with this trait can be used or selected only by humans."
@@ -1004,11 +1070,45 @@
 			]
 		},
 		{
+			"name": "Dragon",
+			"source": "CRB",
+			"page": 631,
+			"categories": [
+				"Creature"
+			],
+			"entries": [
+				"Dragons are reptilian creatures, often winged or with the power of flight. Most are able to use a breath weapon and are immune to {@trait sleep} and {@condition paralyzed|CRB|paralysis}."
+			]
+		},
+		{
+			"name": "Shoony",
+			"source": "APLLS",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"entries": [
+				""
+			]
+		},
+		{
 			"name": "Kobold",
 			"source": "APG",
 			"page": 268,
 			"entries": [
+<<<<<<< Updated upstream
 				"A creature with this trait is a member of the kobold ancestry. Kobolds are reptilian humanoids who are usually Small and typically have {@ability darkvision}. An ability with this trait can be used or selected only by kobolds."
+=======
+				"A creature with this trait is a member of the kobold ancestry. Kobolds are reptilian humanoids who are usually {@trait Small} and typically have {@ability darkvision}. An ability with this trait can be used or selected only by kobolds.",
+				{
+					"type": "entriesOtherSource",
+					"source": "LOAG",
+					"page": 139,
+					"entries": [
+						"A small, reptilian {@trait humanoid} ancestry proud of their kinship to {@filter dragons|bestiary|creature=dragon}."
+					]
+				}
+>>>>>>> Stashed changes
 			]
 		},
 		{
@@ -2105,6 +2205,228 @@
 			"entries": [
 				"A Town is a type of settlement."
 			]
+<<<<<<< Updated upstream
+=======
+		},
+		{
+			"name": "Tattoo",
+			"categories": [
+				"Equipment"
+			],
+			"source": "LOWG",
+			"page": 124,
+			"entries": [
+				"A tattoo is a type of item that is drawn or cut into a creature’s skin and usually takes the form of images or symbols."
+			]
+		},
+		{
+			"name": "Academic",
+			"categories": [
+				"General"
+			],
+			"source": "LOCG",
+			"page": 132,
+			"entries": [
+					"Academic entities are centered around study and the pursuit of knowledge. Academic organizations are often schools or groups including students, teachers, and researchers."
+			]
+		},
+		{
+			"name": "Hobgoblin",
+			"categories": [
+				"Creature",
+				"Ancestry & Heritage"
+			],
+			"source": "LOCG",
+			"page": 133,
+			"entries": [
+				"Hobgoblins are a sturdy, clever people with a propensity for militaristic order."
+			]
+		},
+		{
+			"name": "Militaristic",
+			"categories": [
+				"General"
+			],
+			"source": "LOCG",
+			"page": 133,
+			"entries": [
+				"Militaristic entities have a command structure and an emphasis on armed combat in organized groups; militaristic organizations are often armies or law enforcement agencies."
+			]
+		},
+		{
+			"name": "Revolutionary",
+			"categories": [
+				"General"
+			],
+			"source": "LOCG",
+			"page": 134,
+			"entries": [
+				"Revolutionary entities use armed conflict to oppose authority. A revolutionary organization often has a loose structure of agents with loyalty to charismatic individuals."
+			]
+		},
+		{
+			"name": "Wayfaring",
+			"categories": [
+				"General"
+			],
+			"source": "LOCG",
+			"page": 135,
+			"entries": [
+				"Wayfaring entities are focused on exploration and discovery."
+			]
+		},
+		{
+			"name": "Modular",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOGM",
+			"otherSources": {
+				"Reprinted": [
+					"LOAG|139"
+				]
+			},
+			"page": 120,
+			"entries": [
+				"The weapon has multiple configurations that you can switch between using an Interact action. Typically, switching between configurations of a modular weapon allows it to deal different types of damage (listed in the trait, such as “modular B, P, or S”), though it’s possible for a modular weapon’s description to list more complicated configurations."
+			]
+		},
+		{
+			"name": "Ranged Trip",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOGM",
+			"page": 120,
+			"entries": [
+				"The weapon can be used to Trip with the Athletics skill at a distance up to the weapon’s first range increment. The skill check is attempted with a –2 circumstance penalty. You can add the weapon’s item bonus to attack rolls as a bonus to the check. As with using a melee weapon to Trip, a ranged trip weapon doesn’t deal any damage when used to Trip. This trait usually appears only on a thrown weapon."
+			]
+		},
+		{
+			"name": "Contract",
+			"categories": [
+				"Equipment"
+			],
+			"source": "LOL",
+			"page": 126,
+			"entries": [
+				"A contract is a type of item that magically establishes an agreement between multiple parties and typically grants magical benefits."
+			]
+		},
+		{
+			"name": "Conrasu",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOAG",
+			"page": 138,
+			"entries": [
+				"Conrasus craft and use these weapons."
+			]
+		},
+		{
+			"name": "Geniekin",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOAG",
+			"page": 138,
+			"entries": [
+				"Geniekin craft and use these weapons."
+			]
+		},
+		{
+			"name": "Grippli",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOAG",
+			"page": 138,
+			"entries": [
+				"Grippli craft and use these weapons."
+			]
+		},
+		{
+			"name": "Hampering",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOAG",
+			"page": 139,
+			"entries": [
+				"A weapon with the hampering trait is designed to be shaken, cast outward, or whipped about to control space on the battlefield. You can use an Interact action to thrash the weapon in a square within the weapon’s reach. That square becomes difficult terrain until you attack with the weapon, move, or would otherwise stop intentionally thrashing it."
+			]
+		},
+		{
+			"name": "Resonant",
+			"categories": [
+				"Armor & Weapon"
+			],
+			"source": "LOAG",
+			"page": 139,
+			"entries": [
+				"This weapon can channel energy damage. You gain the {@action Conduct Energy|LOAG} free action while wielding a resonant weapon."
+			]
+		},
+		{
+			"name": "Humanoid",
+			"categories": [
+				"Creature"
+			],
+			"source": "CRB",
+			"page": 633,
+			"entries": [
+				"Humanoid creatures reason and act much like humans. They typically stand upright and have two arms and two legs."
+			]
+		},
+		{
+			"name": "Azarketi",
+			"source": "LOAG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"page": 140,
+			"entries": [
+				"Amphibious humanoids who live among the seas of the Inner Sea region, said to have descended from the people of Azlant. Sometimes known as gillmen or Low Azlanti."
+			]
+		},
+		{
+			"name": "Fetchling",
+			"source": "LOAG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"page": 141,
+			"entries": [
+				"A humanoid ancestry that fled to and has been shaped by the Shadow Plane. Typically refer to themselves as kayals. "
+			]
+		},
+		{
+			"name": "Fleshwarp",
+			"source": "LOAG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"page": 141,
+			"entries": [
+				"A humanoid transformed so completely by outside forces that they are now a unique ancestry."
+			]
+		},
+		{
+			"name": "Kitsune",
+			"source": "LOAG",
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"page": 141,
+			"entries": [
+				"Shapeshifting humanoids whose true forms resemble foxes."
+			]
+>>>>>>> Stashed changes
 		}
 	]
 }

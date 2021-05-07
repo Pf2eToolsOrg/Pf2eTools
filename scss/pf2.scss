@@ -1246,7 +1246,58 @@
 	}
 }
 
+<<<<<<< Updated upstream
 $night-pf2-red: #f06e60;
+=======
+.feat-view--resizable {
+	min-height: 100px;
+}
+
+.feat-view--active {
+	.feat-view--resizable::after {
+		content: '...';
+		background-color: #aaa4;
+		border: 1px solid rgba(204, 204, 204, 0.4);
+		position: absolute;
+		bottom: 0;
+		height: 1px;
+		width: 100%;
+		cursor: ns-resize;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		line-height: 1px;
+		font-size: 10px;
+		text-align: center;
+	}
+
+	.wrp-stats-table {
+		max-height: calc(100% - 15px);
+	}
+}
+
+.feat-view--inactive {
+	.feat-view {
+		display: none;
+	}
+
+	.feat-view--resizable {
+		height: revert !important;
+
+		.wrp-stats-table {
+			max-height: 100% !important;
+		}
+	}
+}
+
+.feat-view--resizable {
+	position: relative;
+	overflow: hidden;
+}
+
+$night-pf2-red: #CC7652;
+>>>>>>> Stashed changes
 
 .night-mode {
 	.pf2-h1,
@@ -1284,7 +1335,7 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-h4 {
-		color: #eb9d86;
+		color: #dba292;
 	}
 
 	.pf2-h5 {
@@ -1296,33 +1347,42 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-trait {
-		background: $night-pf2-red;
+		background: #5e0000;
 		border-color: #db9d39;
-		color: #222;
+		color: white;
 
 		&-- {
-			&alignment {
-				background: #a0aff2;
-			}
-
-			&size {
-				background: #66d499;
-			}
-
-			&settlement {
-				background: #00ba3b;
-			}
-
-			&uncommon {
-				background: #ff9d82;
-			}
-
-			&rare {
-				background: #5691f0;
-			}
-
 			&unique {
-				background: #d36eff;
+				background: #54166e;
+			}
+	
+			&rare {
+				background: #002664;
+			}
+	
+			&uncommon {
+				background: #98513d;
+			}
+	
+			&alignment {
+				background: #576293;
+				min-width: 2em;
+			}
+	
+			&size {
+				background: #3b7b59;
+			}
+	
+			&left {
+				border-left-width: 0.33em;
+			}
+	
+			&right {
+				border-right-width: 0.33em;
+			}
+	
+			&settlement {
+				background: #004416;
 			}
 		}
 	}
@@ -1330,8 +1390,8 @@ $night-pf2-red: #f06e60;
 	.pf2-table {
 		&__ {
 			&label {
-				background: $night-pf2-red;
-				color: #222;
+				background: #5e0000;
+				color: white;
 			}
 
 			&entry {
@@ -1396,9 +1456,9 @@ $night-pf2-red: #f06e60;
 	}
 
 	.pf2-key-abilities {
-		background: $night-pf2-red;
+		background: #5e0000;
 		border-color: #db9d39;
-		color: #222;
+		color: white;
 
 		&__ab {
 			box-shadow: 8px 0 0 -6px #db9d39;
