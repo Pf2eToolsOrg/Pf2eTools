@@ -29,7 +29,7 @@ class SearchPage {
 		const $btnHelp = $(`<button class="btn btn-default mr-2 mobile__hidden" title="Help"><span class="glyphicon glyphicon-info-sign"></span></button>`)
 			.click(() => Omnisearch.doShowHelp());
 
-		const $btnToggleUa = $(`<button class="btn btn-default" title="Filter Unearthed Arcana and other unofficial source results">Include UA</button>`)
+		const $btnToggleUa = $(`<button class="btn btn-default" title="Filter unofficial source results">Include unofficial</button>`)
 			.click(() => Omnisearch.doToggleUa());
 		const hkUa = () => {
 			$btnToggleUa.toggleClass("active", Omnisearch.isShowUa);
@@ -149,7 +149,6 @@ class SearchPage {
 
 					const $row = $$`<div class="my-2 py-2 pl-3 pr-2 pg-search__wrp-result flex relative mobile__flex-col">
 						<div class="flex-v-center mobile__mb-2 w-100">
-							${$dispImage}
 							<div class="flex-col flex-h-center mr-auto">
 								<div class="mb-2">${$link}</div>
 								<div>${ptSource}${ptPage ? `, ${ptPage}` : ""}</div>

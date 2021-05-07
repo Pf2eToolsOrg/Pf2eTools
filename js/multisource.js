@@ -88,6 +88,7 @@ class MultiSource {
 		const toLoads = allSources.map(src => ({src: src, url: jsonDir + src2UrlMap[src]}));
 
 		// load the sources
+		let list, subList;
 		if (toLoads.length > 0) {
 			const dataStack = (await Promise.all(toLoads.map(async toLoad => {
 				const data = await DataUtil.loadJSON(toLoad.url);
@@ -95,13 +96,17 @@ class MultiSource {
 				return data;
 			}))).flat();
 
-			await pPageInit(this._loadedSources);
+			const pair = await pPageInit(this._loadedSources);
+			list = pair.list;
+			subList = pair.subList;
 
 			let toAdd = [];
 			dataStack.forEach(d => toAdd = toAdd.concat(d[this._prop]));
 			addFn(toAdd);
 		} else {
-			await pPageInit(this._loadedSources);
+			const pair = await pPageInit(this._loadedSources);
+			list = pair.list;
+			subList = pair.subList;
 		}
 
 		if (pOptional) await pOptional();

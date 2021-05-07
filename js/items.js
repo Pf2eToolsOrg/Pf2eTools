@@ -1,8 +1,13 @@
 "use strict";
 
-class ItemsPage {
+class ItemsPage extends ListPage {
 	constructor () {
-		this._pageFilter = new PageFilterItems();
+		super({
+			dataSource: Renderer.item.pBuildList({isAddGroups: true, isBlacklistVariants: true}),
+			pageFilter: new PageFilterItems(),
+			sublistClass: "subitems",
+			dataProps: ["item"],
+		});
 
 		this._sublistCurrencyConversion = null;
 		this._sublistCurrencyDisplayMode = null;
@@ -14,12 +19,10 @@ class ItemsPage {
 		this._mundaneList = null;
 		this._magicList = null;
 
-		this._itemList = [];
-		this._itI = 0;
 		this._itemId = 0;
 		this._runeItems = [];
 
-		this._subList = null;
+		this._printBookView = null;
 	}
 
 	getListItem (item, itI, isExcluded) {
@@ -33,14 +36,14 @@ class ItemsPage {
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
-		eleLi.addEventListener("click", (evt) => handleItemsLiClick(evt, listItem));
-		eleLi.addEventListener("contextmenu", (evt) => handleItemsLiContext(evt, listItem));
+		eleLi.addEventListener("click", (evt) => this._handleItemsLiClick(evt, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._handleItemsLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(item.source);
 		const level = item.level != null ? `${typeof item.level === "string" && item.level.endsWith("+") ? `\u00A0\u00A0${item.level}` : item.level}` : "\u2014"
 
-		if (item._fIsEquipment) {
-			eleLi.innerHTML = `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
+		if (item.equipment) {
+			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-4 pl-0 bold">${item.name}</span>
 				<span class="col-2-2 text-center">${item.category}</span>
 				<span class="col-1-5 text-center">${level}</span>
@@ -48,6 +51,8 @@ class ItemsPage {
 				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
 				<span class="col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
+
+			eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));
 
 			listItem = new ListItem(
 				itI,
@@ -60,6 +65,7 @@ class ItemsPage {
 					bulk: item._fBulk,
 					price: item._sPrice,
 					category: item.category,
+					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
 				},
 				{
 					uniqueId: item.uniqueId ? item.uniqueId : itI,
@@ -70,7 +76,7 @@ class ItemsPage {
 			eleLi.addEventListener("contextmenu", (evt) => ListUtil.openContextMenu(evt, this._mundaneList, listItem));
 			return {mundane: listItem};
 		} else {
-			eleLi.innerHTML += `<a href="#${hash}" onclick="handleItemsLinkClick(event)" class="lst--border">
+			eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
 				${item.category === "Rune" ? RuneBuilder.getButtons(itI) : ""}
 				<span class="col-4 pl-0 bold col-name">${item.name}</span>
 				<span class="col-2-2 text-center">${item.category}</span>
@@ -79,6 +85,8 @@ class ItemsPage {
 				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>
 				<span class="source col-1-3 text-center ${Parser.sourceJsonToColor(item.source)} pr-0" title="${Parser.sourceJsonToFull(item.source)}" ${BrewUtil.sourceJsonToStyle(item.source)}>${source}</span>
 			</a>`;
+
+			eleLi.firstElementChild.addEventListener("click", evt => this._handleItemsLinkClick(evt));
 
 			listItem = new ListItem(
 				itI,
@@ -91,6 +99,7 @@ class ItemsPage {
 					price: item._sPrice,
 					bulk: item._fBulk,
 					category: item.category,
+					_searchStr: item.generic === "G" && item.variants ? item.variants.map(v => `${v.type} ${item.name}`).join(" - ") : "",
 				},
 				{uniqueId: item.uniqueId ? item.uniqueId : itI},
 			);
@@ -103,12 +112,12 @@ class ItemsPage {
 	handleFilterChange () {
 		const f = this._pageFilter.filterBox.getValues();
 		function listFilter (li) {
-			const it = this._itemList[li.ix];
+			const it = this._dataList[li.ix];
 			return this._pageFilter.toDisplay(f, it);
 		}
 		this._mundaneList.filter(listFilter.bind(this));
 		this._magicList.filter(listFilter.bind(this));
-		FilterBox.selectFirstVisible(this._itemList);
+		FilterBox.selectFirstVisible(this._dataList);
 	}
 
 	getSublistItem (item, pinId, addCount) {
@@ -148,7 +157,7 @@ class ItemsPage {
 	doLoadHash (id) {
 		Renderer.get().setFirstSection(true);
 		const $content = $(`#pagecontent`).empty();
-		const item = this._itemList[id];
+		const item = this._dataList[id];
 		this._itemId = id;
 
 		function buildStatsTab () {
@@ -184,7 +193,7 @@ class ItemsPage {
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
-		await printBookView.pHandleSub(sub);
+		await this._printBookView.pHandleSub(sub);
 
 		await runeBuilder.pHandleSubhash();
 	}
@@ -200,7 +209,7 @@ class ItemsPage {
 
 		const availConversions = new Set();
 		ListUtil.sublist.items.forEach(it => {
-			const item = this._itemList[it.ix];
+			const item = this._dataList[it.ix];
 			if (item.currencyConversion) availConversions.add(item.currencyConversion);
 			const count = it.values.count;
 			cntItems += it.values.count;
@@ -280,7 +289,7 @@ class ItemsPage {
 			$btnReset: $(`#reset`),
 		});
 
-		printBookView = new BookModeView({
+		this._printBookView = new BookModeView({
 			hashKey: "bookview",
 			$openBtn: $(`#btn-printbook`),
 			noneVisibleMsg: "If you wish to view multiple items, please first make a list",
@@ -303,7 +312,7 @@ class ItemsPage {
 				stack.push(`<div class="w-100 h-100">`);
 				toShow.forEach(it => renderItem(it));
 				if (!toShow.length && Hist.lastLoadedId != null) {
-					renderItem(itemsPage._itemList[Hist.lastLoadedId]);
+					renderItem(this._dataList[Hist.lastLoadedId]);
 				}
 				stack.push(`</div>`);
 
@@ -326,10 +335,12 @@ class ItemsPage {
 		this._mundaneList = ListUtil.initList({
 			listClass: "mundane",
 			fnSort: PageFilterItems.sortItems,
+			syntax: this._listSyntax,
 		});
 		this._magicList = ListUtil.initList({
 			listClass: "magic",
 			fnSort: PageFilterItems.sortItems,
+			syntax: this._listSyntax,
 		});
 		this._mundaneList.nextList = this._magicList;
 		this._magicList.prevList = this._mundaneList;
@@ -337,16 +348,16 @@ class ItemsPage {
 
 		const $elesMundaneAndMagic = $(`.ele-mundane-and-magic`);
 		$(`.side-label--mundane`).click(() => {
-			const filterValues = itemsPage._pageFilter.filterBox.getValues();
+			const filterValues = this._pageFilter.filterBox.getValues();
 			const curValue = MiscUtil.get(filterValues, "Type", "Equipment");
-			itemsPage._pageFilter.filterBox.setFromValues({Type: {Equipment: curValue === 1 ? 0 : 1}});
-			itemsPage.handleFilterChange();
+			this._pageFilter.filterBox.setFromValues({Type: {Equipment: curValue === 1 ? 0 : 1}});
+			this.handleFilterChange();
 		});
 		$(`.side-label--magic`).click(() => {
-			const filterValues = itemsPage._pageFilter.filterBox.getValues();
+			const filterValues = this._pageFilter.filterBox.getValues();
 			const curValue = MiscUtil.get(filterValues, "Type", "Treasure");
-			itemsPage._pageFilter.filterBox.setFromValues({Type: {Treasure: curValue === 1 ? 0 : 1}});
-			itemsPage.handleFilterChange();
+			this._pageFilter.filterBox.setFromValues({Type: {Treasure: curValue === 1 ? 0 : 1}});
+			this.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
 		const $wrpListMundane = $(`.itm__wrp-list--mundane`);
@@ -385,9 +396,9 @@ class ItemsPage {
 		});
 
 		// filtering function
-		itemsPage._pageFilter.filterBox.on(
+		this._pageFilter.filterBox.on(
 			FilterBox.EVNT_VALCHANGE,
-			itemsPage.handleFilterChange.bind(itemsPage),
+			this.handleFilterChange.bind(this),
 		);
 
 		SortUtil.initBtnSortHandlers($("#filtertools-mundane"), this._mundaneList);
@@ -396,8 +407,8 @@ class ItemsPage {
 		this._subList = ListUtil.initSublist({
 			listClass: "subitems",
 			fnSort: PageFilterItems.sortItems,
-			getSublistRow: itemsPage.getSublistItem.bind(itemsPage),
-			onUpdate: itemsPage.onSublistChange.bind(itemsPage),
+			getSublistRow: this.getSublistItem.bind(this),
+			onUpdate: this.onSublistChange.bind(this),
 		});
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
 		ListUtil.initGenericAddable();
@@ -409,7 +420,7 @@ class ItemsPage {
 			.then(() => BrewUtil.pAddLocalBrewData())
 			.then(async () => {
 				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({lists: [this._mundaneList, this._magicList], filterBox: itemsPage._pageFilter.filterBox, sourceFilter: itemsPage._pageFilter.sourceFilter});
+				BrewUtil.bind({lists: [this._mundaneList, this._magicList], filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
 				await ListUtil.pLoadState();
 				RollerUtil.addListRollButton();
 				ListUtil.addListShowHide();
@@ -419,7 +430,7 @@ class ItemsPage {
 				this._subList.init();
 
 				Hist.init(true);
-				ExcludeUtil.checkShowAllExcluded(this._itemList, $(`#pagecontent`));
+				ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 
 				window.dispatchEvent(new Event("toolsLoaded"));
 			});
@@ -436,11 +447,11 @@ class ItemsPage {
 	_addItems (data) {
 		if (!data.item || !data.item.length) return;
 
-		this._itemList.push(...data.item);
+		this._dataList.push(...data.item);
 
-		for (; this._itI < this._itemList.length; this._itI++) {
-			const item = this._itemList[this._itI];
-			const listItem = itemsPage.getListItem(item, this._itI);
+		for (; this._ixData < this._dataList.length; this._ixData++) {
+			const item = this._dataList[this._ixData];
+			const listItem = this.getListItem(item, this._ixData);
 			if (!listItem) continue;
 			if (listItem.mundane) this._mundaneList.addItem(listItem.mundane);
 			if (listItem.magic) this._magicList.addItem(listItem.magic);
@@ -453,12 +464,12 @@ class ItemsPage {
 		this._mundaneList.update();
 		this._magicList.update();
 
-		itemsPage._pageFilter.filterBox.render();
-		itemsPage.handleFilterChange();
+		this._pageFilter.filterBox.render();
+		this.handleFilterChange();
 
 		ListUtil.setOptions({
-			itemList: this._itemList,
-			getSublistRow: itemsPage.getSublistItem.bind(itemsPage),
+			itemList: this._dataList,
+			getSublistRow: this.getSublistItem.bind(this),
 			primaryLists: [this._mundaneList, this._magicList],
 		});
 		ListUtil.bindAddButton();
@@ -475,7 +486,7 @@ class ItemsPage {
 					if (runeBuilder.isActive()) {
 						toRender = runeBuilder.runeItem;
 					} else {
-						toRender = this._itemList[Hist.lastLoadedId];
+						toRender = this._dataList[Hist.lastLoadedId];
 					}
 
 					if (evt.shiftKey) {
@@ -492,37 +503,50 @@ class ItemsPage {
 					} else if (runeBuilder.isActive()) {
 						Renderer.hover.doPopout(evt, [toRender], 0);
 					} else {
-						Renderer.hover.doPopout(evt, this._itemList, Hist.lastLoadedId);
+						Renderer.hover.doPopout(evt, this._dataList, Hist.lastLoadedId);
 					}
 				}
 			},
 		);
 		// endregion
 
-		UrlUtil.bindLinkExportButton(itemsPage._pageFilter.filterBox);
+		UrlUtil.bindLinkExportButton(this._pageFilter.filterBox);
 		ListUtil.bindOtherButtons({
 			download: true,
 			upload: true,
 		});
 	}
+
+	_handleItemsLiClick (evt, listItem) {
+		if (runeBuilder.isActive()) Renderer.hover.doPopout(evt, this._dataList, listItem.ix);
+	}
+
+	_handleItemsLiContext (evt, listItem) {
+		if (!runeBuilder.isActive()) ListUtil.openContextMenu(evt, this._dataList, listItem);
+		else RuneListUtil.openContextMenu(evt, listItem);
+	}
+
+	_handleItemsLinkClick (evt) {
+		if (runeBuilder.isActive()) evt.preventDefault();
+	}
+
+	_getSearchCache (entity) {
+		if (this.constructor._INDEXABLE_PROPS.every(it => !entity[it])) return "";
+		const ptrOut = {_: ""};
+		this.constructor._INDEXABLE_PROPS.forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		return ptrOut._;
+	}
 }
+ItemsPage._INDEXABLE_PROPS = [
+	"entries",
+	"ammunition",
+	"usage",
+	"activate",
+	"onset",
+	"variants",
+];
 
 let runeBuilder;
-let printBookView;
-
-function handleItemsLiClick (evt, listItem) {
-	if (runeBuilder.isActive()) Renderer.hover.doPopout(evt, itemsPage._itemList, listItem.ix);
-}
-
-function handleItemsLiContext (evt, listItem) {
-	if (!runeBuilder.isActive()) ListUtil.openContextMenu(evt, itemsPage._itemList, listItem);
-	else RuneListUtil.openContextMenu(evt, listItem);
-}
-
-function handleItemsLinkClick (evt) {
-	if (runeBuilder.isActive()) evt.preventDefault();
-}
-
 let itemsPage;
 window.addEventListener("load", async () => {
 	await Renderer.trait.buildCategoryLookup();

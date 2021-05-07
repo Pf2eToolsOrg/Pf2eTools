@@ -1,25 +1,30 @@
 "use strict";
 
 const ECGEN_BASE_PLAYERS = 4; // assume a party size of four
-const renderer = Renderer.get();
 
-window.PROF_MODE_BONUS = "bonus";
-window.PROF_MODE_DICE = "dice";
-window.PROF_DICE_MODE = PROF_MODE_BONUS;
-
-class BestiaryPage {
+class BestiaryPage extends ListPage {
 	constructor () {
-		this._pageFilter = new PageFilterBestiary();
+		super({
+			pageFilter: new PageFilterBestiary(),
+			sublistClass: "subcreatures",
+			dataProp: ["creature"],
+		});
 		this._multiSource = new MultiSource({
-			fnHandleData: addCreatures,
+			fnHandleData: this._addCreatures,
 			prop: "creature",
 		});
+
+		this._addedHashes = new Set();
+
+		this._$totalCr = null;
+		this._lastRendered = {creature: null, isScaled: false};
+		this._printBookView = null;
 	}
 
 	getListItem (cr, mI) {
 		const hash = UrlUtil.autoEncodeHash(cr);
-		if (!cr.uniqueId && _addedHashes.has(hash)) return null;
-		_addedHashes.add(hash);
+		if (!cr.uniqueId && this._addedHashes.has(hash)) return null;
+		this._addedHashes.add(hash);
 
 		const isExcluded = ExcludeUtil.isExcluded(hash, "monster", cr.source);
 
@@ -27,20 +32,21 @@ class BestiaryPage {
 
 		const eleLi = document.createElement("li");
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
-		eleLi.addEventListener("click", (evt) => handleBestiaryLiClick(evt, listItem));
-		eleLi.addEventListener("contextmenu", (evt) => handleBestiaryLiContext(evt, listItem));
+		eleLi.addEventListener("click", (evt) => this._handleBestiaryLiClick(evt, listItem));
+		eleLi.addEventListener("contextmenu", (evt) => this._handleBestiaryLiContext(evt, listItem));
 
 		const source = Parser.sourceJsonToAbv(cr.source);
-		const type = cr.creatureType;
+		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
 		const level = cr.level;
 
-		eleLi.innerHTML += `<a href="#${hash}" onclick="handleBestiaryLinkClick(event)" class="lst--border">
+		eleLi.innerHTML += `<a href="#${hash}"class="lst--border">
 			${EncounterBuilder.getButtons(mI)}
 			<span class="ecgen__name bold col-4-2 pl-0">${cr.name}</span>
 			<span class="type col-4-1">${type}</span>
 			<span class="col-1-7 text-center">${level}</span>
 			<span title="${Parser.sourceJsonToFull(cr.source)}${Renderer.utils.getSourceSubText(cr)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
 		</a>`;
+		eleLi.firstElementChild.addEventListener("click", evt => this._handleBestiaryLinkClick(evt));
 
 		const listItem = new ListItem(
 			mI,
@@ -65,21 +71,21 @@ class BestiaryPage {
 		if (Hist.initialLoad) return;
 
 		const f = this._pageFilter.filterBox.getValues();
-		list.filter(li => {
-			const m = creatures[li.ix];
-			return this._pageFilter.toDisplay(f, m);
+		this._list.filter(li => {
+			const c = this._dataList[li.ix];
+			return this._pageFilter.toDisplay(f, c);
 		});
-		MultiSource.onFilterChangeMulti(creatures);
+		MultiSource.onFilterChangeMulti(this._dataList);
 		encounterBuilder.resetCache();
 	}
 
-	async pGetSublistItem (monRaw, pinId, addCount, data = {}) {
-		const cr = await (data.scaled ? ScaleCreature.scale(monRaw, data.scaled) : monRaw);
-		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
+	async pGetSublistItem (crRaw, pinId, addCount, data = {}) {
+		const cr = await (data.scaled ? ScaleCreature.scale(crRaw, data.scaled) : crRaw);
+		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_CR_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 
 		const name = cr._displayName || cr.name;
 		const hash = `${UrlUtil.autoEncodeHash(cr)}${subHash}`;
-		const type = cr.creatureType
+		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
 		const count = addCount || 1;
 		const level = cr.level;
 
@@ -145,9 +151,9 @@ class BestiaryPage {
 	}
 
 	doLoadHash (id) {
-		const mon = creatures[id];
+		const cr = this._dataList[id];
 
-		renderStatblock(mon);
+		this._renderStatblock(cr);
 
 		loadSubHash([]);
 		ListUtil.updateSelected();
@@ -157,13 +163,13 @@ class BestiaryPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		await printBookView.pHandleSub(sub);
+		await this._printBookView.pHandleSub(sub);
 
-		const scaledHash = sub.find(it => it.startsWith(VeCt.HASH_MON_SCALED));
+		const scaledHash = sub.find(it => it.startsWith(VeCt.HASH_CR_SCALED));
 		if (scaledHash) {
-			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_MON_SCALED][0]);
-			const cr = creatures[Hist.lastLoadedId];
-			if (Parser.isValidCreatureLvl(scaleTo) && scaleTo !== lastRendered.creature.level) {
+			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_CR_SCALED][0]);
+			const cr = this._dataList[Hist.lastLoadedId];
+			if (Parser.isValidCreatureLvl(scaleTo) && scaleTo !== this._lastRendered.creature.level) {
 				ScaleCreature.scale(cr, scaleTo).then(scaled => renderStatblock(scaled, true));
 			}
 		}
@@ -189,18 +195,66 @@ class BestiaryPage {
 		// TODO: Homebrew functionality
 		const creatureAbilities = await DataUtil.loadJSON("data/abilities.json");
 		Renderer.hover._pCacheAndGet_populate(UrlUtil.PG_ABILITIES, creatureAbilities, "ability");
-		await bestiaryPage._multiSource.pMultisourceLoad("data/bestiary/", this._pageFilter.filterBox, pPageInit, addCreatures, pPostLoad);
+		await this._multiSource.pMultisourceLoad(
+			"data/bestiary/",
+			this._pageFilter.filterBox,
+			this._pPageInit.bind(this),
+			this._addCreatures.bind(this),
+			this._pPostLoad.bind(this));
 		if (Hist.lastLoadedId == null) Hist._freshLoad();
-		ExcludeUtil.checkShowAllExcluded(creatures, $(`#pagecontent`));
-		bestiaryPage.handleFilterChange();
-		encounterBuilder.initState();
+		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
+		this.handleFilterChange();
+		await encounterBuilder.initState();
 		window.dispatchEvent(new Event("toolsLoaded"));
 	}
 
-	static popoutHandlerGenerator (toList) {
+	_addCreatures (data) {
+		if (!data || !data.length) return;
+
+		this._dataList.push(...data);
+
+		// build the table
+		for (; this._ixData < this._dataList.length; this._ixData++) {
+			const cr = this._dataList[this._ixData];
+			const listItem = this.getListItem(cr, this._ixData);
+			if (!listItem) continue;
+			this._list.addItem(listItem);
+		}
+
+		this._list.update();
+
+		this._pageFilter.filterBox.render();
+		this.handleFilterChange();
+
+		ListUtil.setOptions({
+			itemList: this._dataList,
+			getSublistRow: this.pGetSublistItem.bind(this),
+			primaryLists: [this._list],
+		});
+
+		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
+		Renderer.hover.bindPopoutButton($btnPop, this._dataList, this._popoutHandlerGenerator.bind(this), "Popout Window (SHIFT for Source Data)");
+		UrlUtil.bindLinkExportButton(this._pageFilter.filterBox);
+		ListUtil.bindOtherButtons({
+			download: true,
+			upload: {
+				pFnPreLoad: pPreloadSublistSources,
+			},
+			sendToBrew: {
+				mode: "creatureBuilder",
+				fnGetMeta: () => ({
+					page: UrlUtil.getCurrentPage(),
+					source: Hist.getHashSource(),
+					hash: Hist.getHashParts()[0],
+				}),
+			},
+		});
+	}
+
+	_popoutHandlerGenerator (toList) {
 		return (evt) => {
-			const mon = toList[Hist.lastLoadedId];
-			const toRender = lastRendered.mon != null && lastRendered.isScaled ? lastRendered.mon : mon;
+			const cr = toList[Hist.lastLoadedId];
+			const toRender = this._lastRendered.creature != null && this._lastRendered.isScaled ? this._lastRendered.creature : cr;
 
 			if (evt.shiftKey) {
 				const $content = Renderer.hover.$getHoverContent_statsCode(toRender);
@@ -214,7 +268,7 @@ class BestiaryPage {
 					},
 				);
 			} else {
-				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledLvl ? `${HASH_PART_SEP}${VeCt.HASH_MON_SCALED}${HASH_SUB_KV_SEP}${toRender._isScaledCr}` : ""}`;
+				const pageUrl = `#${UrlUtil.autoEncodeHash(toRender)}${toRender._isScaledLvl ? `${HASH_PART_SEP}${VeCt.HASH_CR_SCALED}${HASH_SUB_KV_SEP}${toRender._isscaledLvl}` : ""}`;
 
 				const renderFn = Renderer.hover._pageToRenderFn(UrlUtil.getCurrentPage());
 				const $content = $$`<table class="stats">${renderFn(toRender)}</table>`;
@@ -230,132 +284,199 @@ class BestiaryPage {
 			}
 		};
 	}
-}
 
-function handleBrew (homebrew) {
-	addCreatures(homebrew.creature);
-	return Promise.resolve();
-}
+	_getScaledData () {
+		const last = this._lastRendered.creature;
+		return {scaled: last._isScaledLvl, customHashId: getCreatureCustomHashId(last)};
+	}
 
-function pPostLoad () {
-	return new Promise(resolve => {
-		BrewUtil.pAddBrewData()
-			.then(handleBrew)
-			.then(() => BrewUtil.bind({list}))
-			.then(() => BrewUtil.pAddLocalBrewData())
-			.then(async () => {
-				BrewUtil.makeBrewButton("manage-brew");
-				BrewUtil.bind({filterBox: bestiaryPage._pageFilter.filterBox, sourceFilter: bestiaryPage._pageFilter.sourceFilter});
-				await ListUtil.pLoadState();
-				resolve();
-			});
-	})
+	_onSublistChange () {
+		this._$totalCr = this._$totalCr || $(`#totalcr`);
+		const crCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
+		this._$totalCr.html(`${crCount} creature${crCount === 1 ? "" : "s"}`);
+		if (encounterBuilder.isActive()) encounterBuilder.updateDifficulty();
+		else encounterBuilder.doSaveState();
+	}
+
+	async _pPageInit (loadedSources) {
+		Object.keys(loadedSources)
+			.map(src => new FilterItem({item: src, pFnChange: this._multiSource.pLoadSource.bind(this._multiSource)}))
+			.forEach(fi => this._pageFilter.sourceFilter.addItem(fi));
+
+		this._list = ListUtil.initList(
+			{
+				listClass: "creatures",
+				fnSort: PageFilterBestiary.sortCreatures,
+				syntax: this._listSyntax,
+			},
+		);
+		ListUtil.setOptions({primaryLists: [this._list]});
+		SortUtil.initBtnSortHandlers($(`#filtertools`), this._list);
+
+		const $outVisibleResults = $(`.lst__wrp-search-visible`);
+		this._list.on("updated", () => {
+			$outVisibleResults.html(`${this._list.visibleItems.length}/${this._list.items.length}`);
+		});
+
+		// filtering function
+		this._pageFilter.filterBox.on(
+			FilterBox.EVNT_VALCHANGE,
+			this.handleFilterChange.bind(this),
+		);
+
+		this._subList = ListUtil.initSublist({
+			listClass: "subcreatures",
+			fnSort: PageFilterBestiary.sortCreatures,
+			onUpdate: this._onSublistChange.bind(this),
+			customHashHandler: (cr, uid) => ScaleCreature.scale(cr, Number(uid.split("_").last())),
+			customHashUnpacker: getUnpackedCustomHashId,
+		});
+		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
+
+		const baseHandlerOptions = {shiftCount: 5};
+		const addHandlerGenerator = () => {
+			return (evt, proxyEvt) => {
+				evt = proxyEvt || evt;
+				if (this._lastRendered.isScaled) {
+					if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 5, this._getScaledData());
+					else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 1, this._getScaledData());
+				} else ListUtil.genericAddButtonHandler(evt, baseHandlerOptions);
+			};
+		}
+		const subtractHandlerGenerator = () => {
+			return (evt, proxyEvt) => {
+				evt = proxyEvt || evt;
+				if (this._lastRendered.isScaled) {
+					if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 5, this._getScaledData());
+					else ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 1, this._getScaledData());
+				} else ListUtil.genericSubtractButtonHandler(evt, baseHandlerOptions);
+			};
+		}
+		ListUtil.bindAddButton(addHandlerGenerator, baseHandlerOptions);
+		ListUtil.bindSubtractButton(subtractHandlerGenerator, baseHandlerOptions);
+		ListUtil.initGenericAddable();
+
+		// region print view
+		this._printBookView = new BookModeView({
+			hashKey: "bookview",
+			$openBtn: $(`#btn-printbook`),
+			noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
+			pageTitle: "Bestiary Printer View",
+			popTblGetNumShown: async ($wrpContent) => {
+				const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
+
+				toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
+
+				let numShown = 0;
+
+				const stack = [];
+
+				const renderCreature = (cr) => {
+					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(Renderer.creature.getCompactRenderedString(cr).html());
+					stack.push(`</div></div>`);
+				};
+
+				stack.push(`<div class="w-100 h-100">`);
+				toShow.forEach(cr => renderCreature(cr));
+				if (!toShow.length && Hist.lastLoadedId != null) {
+					renderCreature(this._dataList[Hist.lastLoadedId]);
+				}
+				stack.push(`</div>`);
+
+				numShown += toShow.length;
+				$wrpContent.append(stack.join(""));
+
+				return numShown;
+			},
+			hasPrintColumns: true,
+		});
+		// endregion
+
+		return {list: this._list, subList: this._subList}
+	}
+
+	async _pPostLoad () {
+		const homebrew = await BrewUtil.pAddBrewData();
+		await this._addCreatures(homebrew);
+		BrewUtil.bind({list: this._list});
+		await BrewUtil.pAddLocalBrewData();
+		BrewUtil.makeBrewButton("manage-brew");
+		BrewUtil.bind({filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
+		await ListUtil.pLoadState();
+	}
+
+	_handleBestiaryLiClick (evt, listItem) {
+		if (encounterBuilder.isActive()) Renderer.hover.doPopout(evt, this._dataList, listItem.ix);
+		else this._list.doSelect(listItem, evt);
+	}
+
+	_handleBestiaryLiContext (evt, listItem) {
+		if (!encounterBuilder.isActive()) ListUtil.openContextMenu(evt, this._list, listItem);
+	}
+
+	_handleBestiaryLinkClick (evt) {
+		if (encounterBuilder.isActive()) evt.preventDefault();
+	}
+
+	_renderStatblock (cr, isScaled) {
+		this._lastRendered.creature = cr;
+		this._lastRendered.isScaled = isScaled;
+		Renderer.get().setFirstSection(true);
+
+		const $content = $("#pagecontent").empty();
+
+		const buildStatsTab = () => {
+			const $btnScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-signal"/>
+			</button>`)
+				.off("click").click((evt) => {
+					evt.stopPropagation();
+					const win = (evt.view || {}).window;
+					const creature = this._dataList[Hist.lastLoadedId];
+					const lastLvl = this._lastRendered.creature ? this._lastRendered.creature.level : creature.level;
+					Renderer.creature.getLvlScaleTarget(win, $btnScaleLvl, lastLvl, (targetLvl) => {
+						if (targetLvl === creature.level) this._renderStatblock(creature);
+						else Hist.setSubhash(VeCt.HASH_CR_SCALED, targetLvl);
+					});
+				}).toggle(cr.level !== 100) : null;
+
+			const $btnResetScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Reset CR Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-refresh"></span>
+			</button>`)
+				.click(() => Hist.setSubhash(VeCt.HASH_CR_SCALED, null))
+				.toggle(isScaled) : null;
+
+			$content.append(RenderBestiary.$getRenderedCreature(cr, {$btnScaleLvl, $btnResetScaleLvl}));
+
+			$(`#wrp-pagecontent`).scroll();
+		}
+
+		// reset tabs
+		const statTab = Renderer.utils.tabButton(
+			"Statblock",
+			() => {
+				$(`#float-token`).show();
+			},
+			buildStatsTab,
+		);
+		Renderer.utils.bindTabButtons(statTab);
+	}
+
+	_getSearchCache (entity) {
+		const ptrOut = {_: ""};
+		Object.keys(entity).filter(it => !it.startsWith("_")).forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		return ptrOut._;
+	}
 }
 
 let encounterBuilder;
-let list;
-let subList;
-let printBookView;
-
-async function pPageInit (loadedSources) {
-	Object.keys(loadedSources)
-		.map(src => new FilterItem({item: src, pFnChange: bestiaryPage._multiSource.pLoadSource.bind(bestiaryPage._multiSource)}))
-		.forEach(fi => bestiaryPage._pageFilter.sourceFilter.addItem(fi));
-
-	list = ListUtil.initList(
-		{
-			listClass: "creatures",
-			fnSort: PageFilterBestiary.sortCreatures,
-		},
-	);
-	ListUtil.setOptions({primaryLists: [list]});
-	SortUtil.initBtnSortHandlers($(`#filtertools`), list);
-
-	const $outVisibleResults = $(`.lst__wrp-search-visible`);
-	list.on("updated", () => {
-		$outVisibleResults.html(`${list.visibleItems.length}/${list.items.length}`);
-	});
-
-	// filtering function
-	bestiaryPage._pageFilter.filterBox.on(
-		FilterBox.EVNT_VALCHANGE,
-		bestiaryPage.handleFilterChange.bind(bestiaryPage),
-	);
-
-	subList = ListUtil.initSublist({
-		listClass: "subcreatures",
-		fnSort: PageFilterBestiary.sortCreatures,
-		onUpdate: onSublistChange,
-		customHashHandler: (mon, uid) => ScaleCreature.scale(mon, Number(uid.split("_").last())),
-		customHashUnpacker: getUnpackedCustomHashId,
-	});
-	SortUtil.initBtnSortHandlers($("#sublistsort"), subList);
-
-	const baseHandlerOptions = {shiftCount: 5};
-	function addHandlerGenerator () {
-		return (evt, proxyEvt) => {
-			evt = proxyEvt || evt;
-			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 5, getScaledData());
-				else ListUtil.pDoSublistAdd(Hist.lastLoadedId, true, 1, getScaledData());
-			} else ListUtil.genericAddButtonHandler(evt, baseHandlerOptions);
-		};
-	}
-	function subtractHandlerGenerator () {
-		return (evt, proxyEvt) => {
-			evt = proxyEvt || evt;
-			if (lastRendered.isScaled) {
-				if (evt.shiftKey) ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 5, getScaledData());
-				else ListUtil.pDoSublistSubtract(Hist.lastLoadedId, 1, getScaledData());
-			} else ListUtil.genericSubtractButtonHandler(evt, baseHandlerOptions);
-		};
-	}
-	ListUtil.bindAddButton(addHandlerGenerator, baseHandlerOptions);
-	ListUtil.bindSubtractButton(subtractHandlerGenerator, baseHandlerOptions);
-	ListUtil.initGenericAddable();
-
-	// region print view
-	printBookView = new BookModeView({
-		hashKey: "bookview",
-		$openBtn: $(`#btn-printbook`),
-		noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
-		pageTitle: "Bestiary Printer View",
-		popTblGetNumShown: async ($wrpContent) => {
-			const toShow = await Promise.all(ListUtil.genericPinKeyMapper());
-
-			toShow.sort((a, b) => SortUtil.ascSort(a._displayName || a.name, b._displayName || b.name));
-
-			let numShown = 0;
-
-			const stack = [];
-
-			const renderCreature = (mon) => {
-				stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
-				stack.push(Renderer.creature.getCompactRenderedString(mon).html());
-				stack.push(`</div></div>`);
-			};
-
-			stack.push(`<div class="w-100 h-100">`);
-			toShow.forEach(mon => renderCreature(mon));
-			if (!toShow.length && Hist.lastLoadedId != null) {
-				renderCreature(creatures[Hist.lastLoadedId]);
-			}
-			stack.push(`</div>`);
-
-			numShown += toShow.length;
-			$wrpContent.append(stack.join(""));
-
-			return numShown;
-		},
-		hasPrintColumns: true,
-	});
-	// endregion
-}
-
 class EncounterBuilderUtils {
 	static getSublistedEncounter () {
 		return ListUtil.sublist.items.map(it => {
-			const cr = creatures[it.ix];
+			const cr = bestiaryPage._dataList[it.ix];
 			if (cr.level != null) {
 				const lvlScaled = it.data.customHashId ? Number(getUnpackedCustomHashId(it.data.customHashId).scaled) : null;
 				return {
@@ -419,87 +540,13 @@ class EncounterBuilderUtils {
 	}
 }
 
-let _$totalCr;
-function onSublistChange () {
-	_$totalCr = _$totalCr || $(`#totalcr`);
-	const crCount = ListUtil.sublist.items.map(it => it.values.count).reduce((a, b) => a + b, 0);
-	_$totalCr.html(`${crCount} creature${crCount === 1 ? "" : "s"}`);
-	if (encounterBuilder.isActive()) encounterBuilder.updateDifficulty();
-	else encounterBuilder.doSaveState();
-}
-
-let creatures = [];
-let mI = 0;
-const lastRendered = {creature: null, isScaled: false};
-function getScaledData () {
-	const last = lastRendered.creature;
-	return {scaled: last._isScaledLvl, customHashId: getCreatureCustomHashId(last)};
-}
-
 function getCustomHashId (name, source, scaledLvl) {
 	return `${name}_${source}_${scaledLvl}`.toLowerCase();
 }
 
-function getCreatureCustomHashId (mon) {
-	if (mon._isScaledLvl != null) return getCustomHashId(mon.name, mon.source, mon._isScaledLvl);
+function getCreatureCustomHashId (cr) {
+	if (cr._isScaledLvl != null) return getCustomHashId(cr.name, cr.source, cr._isScaledLvl);
 	return null;
-}
-
-function handleBestiaryLiClick (evt, listItem) {
-	if (encounterBuilder.isActive()) Renderer.hover.doPopout(evt, creatures, listItem.ix);
-	else list.doSelect(listItem, evt);
-}
-
-function handleBestiaryLiContext (evt, listItem) {
-	if (!encounterBuilder.isActive()) ListUtil.openContextMenu(evt, list, listItem);
-}
-
-function handleBestiaryLinkClick (evt) {
-	if (encounterBuilder.isActive()) evt.preventDefault();
-}
-
-const _addedHashes = new Set();
-function addCreatures (data) {
-	if (!data || !data.length) return;
-
-	creatures.push(...data);
-
-	// build the table
-	for (; mI < creatures.length; mI++) {
-		const mon = creatures[mI];
-		const listItem = bestiaryPage.getListItem(mon, mI);
-		if (!listItem) continue;
-		list.addItem(listItem);
-	}
-
-	list.update();
-
-	bestiaryPage._pageFilter.filterBox.render();
-	bestiaryPage.handleFilterChange();
-
-	ListUtil.setOptions({
-		itemList: creatures,
-		getSublistRow: bestiaryPage.pGetSublistItem.bind(bestiaryPage),
-		primaryLists: [list],
-	});
-
-	const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
-	Renderer.hover.bindPopoutButton($btnPop, creatures, BestiaryPage.popoutHandlerGenerator.bind(BestiaryPage), "Popout Window (SHIFT for Source Data)");
-	UrlUtil.bindLinkExportButton(bestiaryPage._pageFilter.filterBox);
-	ListUtil.bindOtherButtons({
-		download: true,
-		upload: {
-			pFnPreLoad: pPreloadSublistSources,
-		},
-		sendToBrew: {
-			mode: "creatureBuilder",
-			fnGetMeta: () => ({
-				page: UrlUtil.getCurrentPage(),
-				source: Hist.getHashSource(),
-				hash: Hist.getHashParts()[0],
-			}),
-		},
-	});
 }
 
 async function pPreloadSublistSources (json) {
@@ -517,144 +564,6 @@ async function pPreloadSublistSources (json) {
 	if (loadTotal) {
 		await Promise.all(toLoad.map(src => bestiaryPage._multiSource.pLoadSource(src, "yes")));
 	}
-}
-
-function renderStatblock (cr, isScaled) {
-	lastRendered.creature = cr;
-	lastRendered.isScaled = isScaled;
-	renderer.setFirstSection(true);
-
-	const $content = $("#pagecontent").empty();
-
-	function buildStatsTab () {
-		const $btnScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
-				<span class="glyphicon glyphicon-signal"/>
-			</button>`)
-			.off("click").click((evt) => {
-				evt.stopPropagation();
-				const win = (evt.view || {}).window;
-				const creature = creatures[Hist.lastLoadedId];
-				const lastLvl = lastRendered.creature ? lastRendered.creature.level : creature.level;
-				Renderer.creature.getLvlScaleTarget(win, $btnScaleLvl, lastLvl, (targetLvl) => {
-					if (targetLvl === creature.level) renderStatblock(creature);
-					else Hist.setSubhash(VeCt.HASH_MON_SCALED, targetLvl);
-				});
-			}).toggle(cr.level !== 100) : null;
-
-		const $btnResetScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Reset CR Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
-				<span class="glyphicon glyphicon-refresh"></span>
-			</button>`)
-			.click(() => Hist.setSubhash(VeCt.HASH_MON_SCALED, null))
-			.toggle(isScaled) : null;
-
-		$content.append(RenderBestiary.$getRenderedCreature(cr, {$btnScaleLvl, $btnResetScaleLvl}));
-
-		// inline rollers //////////////////////////////////////////////////////////////////////////////////////////////
-		const isProfDiceMode = PROF_DICE_MODE === PROF_MODE_DICE;
-		function _addSpacesToDiceExp (exp) {
-			return exp.replace(/([^0-9d])/gi, " $1 ").replace(/\s+/g, " ");
-		}
-
-		// add proficiency dice stuff for attack rolls, since those _generally_ have proficiency
-		// this is not 100% accurate; for example, ghouls don't get their prof bonus on bite attacks
-		// fixing it would probably involve machine learning though; we need an AI to figure it out on-the-fly
-		// (Siri integration forthcoming)
-		$content.find(".render-roller")
-			.filter(function () {
-				return $(this).text().match(/^([-+])?\d+$/);
-			})
-			.each(function () {
-				const bonus = Number($(this).text());
-				const expectedPB = Parser.crToPb(cr.cr);
-
-				// skills and saves can have expertise
-				let expert = 1;
-				let pB = expectedPB;
-				let fromAbility;
-				let ability;
-				if ($(this).parent().attr("data-mon-save")) {
-					const monSave = $(this).parent().attr("data-mon-save");
-					ability = monSave.split("|")[0].trim().toLowerCase();
-					fromAbility = Parser.getAbilityModNumber(cr[ability]);
-					pB = bonus - fromAbility;
-					expert = (pB === expectedPB * 2) ? 2 : 1;
-				} else if ($(this).parent().attr("data-mon-skill")) {
-					const monSkill = $(this).parent().attr("data-mon-skill");
-					ability = Parser.skillToAbilityAbv(monSkill.split("|")[0].toLowerCase().trim());
-					fromAbility = Parser.getAbilityModNumber(cr[ability]);
-					pB = bonus - fromAbility;
-					expert = (pB === expectedPB * 2) ? 2 : 1;
-				} else if ($(this).data("packed-dice").successThresh !== null) return; // Ignore "recharge"
-
-				const withoutPB = bonus - pB;
-				try {
-					// if we have proficiency bonus, convert the roller
-					if (expectedPB > 0) {
-						const profDiceString = _addSpacesToDiceExp(`${expert}d${pB * (3 - expert)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
-
-						$(this).attr("data-roll-prof-bonus", $(this).text());
-						$(this).attr("data-roll-prof-dice", profDiceString);
-
-						// here be (chromatic) dragons
-						const cached = $(this).attr("onclick");
-						const nu = `
-							(function(it) {
-								if (PROF_DICE_MODE === PROF_MODE_DICE) {
-									Renderer.dice.pRollerClick(event, it, '{"type":"dice","rollable":true,"toRoll":"1d20 + ${profDiceString}"}'${$(this).prop("title") ? `, '${$(this).prop("title")}'` : ""})
-								} else {
-									${cached.replace(/this/g, "it")}
-								}
-							})(this)`;
-
-						$(this).attr("onclick", nu);
-
-						if (isProfDiceMode) {
-							$(this).html(profDiceString);
-						}
-					}
-				} catch (e) {
-					setTimeout(() => {
-						throw new Error(`Invalid save or skill roller! Bonus was ${bonus >= 0 ? "+" : ""}${bonus}, but creature's PB was +${expectedPB} and relevant ability score (${ability}) was ${fromAbility >= 0 ? "+" : ""}${fromAbility} (should have been ${expectedPB + fromAbility >= 0 ? "+" : ""}${expectedPB + fromAbility} total)`);
-					}, 0);
-				}
-			});
-
-		$content.find("p, li").each(function () {
-			$(this).find(`.rd__dc`).each((i, e) => {
-				const $e = $(e);
-				const dc = Number($e.html());
-
-				const expectedPB = Parser.crToPb(cr.cr);
-				if (expectedPB > 0) {
-					const withoutPB = dc - expectedPB;
-					const profDiceString = _addSpacesToDiceExp(`1d${(expectedPB * 2)}${withoutPB >= 0 ? "+" : ""}${withoutPB}`);
-
-					$e
-						.addClass("dc-roller")
-						.attr("mode", isProfDiceMode ? "dice" : "")
-						.mousedown((evt) => window.PROF_DICE_MODE === window.PROF_MODE_DICE && evt.preventDefault())
-						.attr("onclick", `dcRollerClick(event, this, '${profDiceString}')`)
-						.attr("data-roll-prof-bonus", `${dc}`)
-						.attr("data-roll-prof-dice", profDiceString)
-						.html(isProfDiceMode ? profDiceString : dc)
-				}
-			});
-		});
-
-		$(`#wrp-pagecontent`).scroll();
-	}
-
-	// reset tabs
-	const statTab = Renderer.utils.tabButton(
-		"Statblock",
-		() => {
-			$(`#float-token`).show();
-		},
-		buildStatsTab,
-	);
-	Renderer.utils.bindTabButtons(statTab);
 }
 
 async function pHandleUnknownHash (link, sub) {

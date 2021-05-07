@@ -423,7 +423,7 @@ const ScaleCreature = {
 	/**
 	 * @async
 	 * @param creature Creature data.
-	 * @param toLvl target CR, as a number.
+	 * @param toLvl target level, as a number.
 	 * @return {Promise<creature>} the scaled creature.
 	 */
 	async scale (creature, toLvl) {
@@ -448,6 +448,7 @@ const ScaleCreature = {
 			this._adjustAC(creature, lvlIn, toLvl);
 			this._adjustSavingThrows(creature, lvlIn, toLvl);
 			this._adjustHP(creature, lvlIn, toLvl);
+			this._adjustResistancesWeaknesses(creature, lvlIn, toLvl);
 			this._adjustItems(creature, lvlIn, toLvl);
 			this._adjustAttacks(creature, lvlIn, toLvl);
 			this._adjustSpellcasting(creature, lvlIn, toLvl);
@@ -486,10 +487,12 @@ const ScaleCreature = {
 		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] += 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] += 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] += 2));
-		creature.spellcasting.forEach(sc => {
-			if (sc.DC) sc.DC += 2;
-			if (sc.attack) sc.attack += 2;
-		});
+		if (creature.spellcasting != null) {
+			creature.spellcasting.forEach(sc => {
+				if (sc.DC) sc.DC += 2;
+				if (sc.attack) sc.attack += 2;
+			});
+		}
 		creature.attacks.forEach(a => {
 			a.attack += 2;
 			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
@@ -566,10 +569,12 @@ const ScaleCreature = {
 		["Fort", "Ref", "Will"].forEach(st => Object.keys(creature.savingThrows[st]).forEach(key => creature.savingThrows[st][key] -= 2));
 		Object.keys(creature.perception).forEach(key => creature.perception[key] -= 2);
 		Object.keys(creature.skills).forEach(skill => Object.keys(creature.skills[skill]).forEach(key => creature.skills[skill][key] -= 2));
-		creature.spellcasting.forEach(sc => {
-			if (sc.DC) sc.DC -= 2;
-			if (sc.attack) sc.attack -= 2;
-		});
+		if (creature.spellcasting != null) {
+			creature.spellcasting.forEach(sc => {
+				if (sc.DC) sc.DC -= 2;
+				if (sc.attack) sc.attack -= 2;
+			});
+		}
 		creature.attacks.forEach(a => {
 			a.attack -= 2;
 			a.damage = a.damage.replace(/(\d+d\d+)([+-]?\d*)/, (formula, formulaNoMod, mod) => {
@@ -651,7 +656,7 @@ const ScaleCreature = {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
 		let I1;
 		if (idx[1] === -1) I1 = [map[toLvl][idx[0]], map[toLvl][idx[0]] + I0[1] - I0[0]];
-		else if (idx[0] === -1) I1 = [map[toLvl][idx[1]] - I0[1] + I0[0], map[toLvl][idx[1]]];
+		else if (idx[0] === -1) I1 = [Math.max(1, map[toLvl][idx[1]] - I0[1] + I0[0]), map[toLvl][idx[1]]];
 		else I1 = [map[toLvl][idx[0]], map[toLvl][idx[1]]];
 		return this._intervalTransform(value, I0, I1)
 	},
@@ -669,8 +674,8 @@ const ScaleCreature = {
 		// Usually a damage expression works best when roughly half the damage is from dice and half is from the flat modifier.
 		const targetDice = opts.noMod ? expectation : expectation / 2;
 		const dice = Number(initFormula.match(/d(\d+)/)[1]);
-		const numDice = Math.round(targetDice * 2 / (dice + 1));
-		const mod = opts.noMod ? 0 : Math.round(expectation - numDice * (dice + 1) / 2);
+		const numDice = Math.max(1, Math.round(targetDice * 2 / (dice + 1)));
+		const mod = opts.noMod ? 0 : Math.max(0, Math.round(expectation - numDice * (dice + 1) / 2));
 		return `${numDice}d${dice}${mod ? `+${mod}` : ""}`;
 	},
 
@@ -745,7 +750,25 @@ const ScaleCreature = {
 		}
 	},
 
+	_adjustResistancesWeaknesses (creature, lvlIn, toLvl) {
+		const I0 = this._LvlResistanceWeakness[lvlIn].reverse();
+		const I1 = this._LvlResistanceWeakness[toLvl].reverse();
+		if (creature.resistances) {
+			creature.resistances.forEach(r => {
+				if (r.amount) r.amount = this._intervalTransform(r.amount, I0, I1);
+			});
+		}
+
+		if (creature.weaknesses) {
+			creature.weaknesses.forEach(w => {
+				if (w.amount) w.amount = this._intervalTransform(w.amount, I0, I1);
+			});
+		}
+	},
+
 	_adjustAttacks (creature, lvlIn, toLvl) {
+		// TODO: Optimize formulas including multiple damage types
+		if (creature.attacks == null) return;
 		creature.attacks.forEach(a => {
 			a.attack = this._scaleValue(lvlIn, toLvl, a.attack, this._LvlAttackBonus);
 			const dpr = (a.damage.match(/\d+d\d+[+-]?\d*/g) || []).map(f => this._getDiceEV(f)).reduce((a, b) => a + b, 0);
@@ -759,6 +782,7 @@ const ScaleCreature = {
 	},
 
 	_adjustSpellcasting (creature, lvlIn, toLvl) {
+		if (creature.spellcasting == null) return;
 		creature.spellcasting.forEach(sc => {
 			if (sc.DC) sc.DC = this._scaleValue(lvlIn, toLvl, sc.DC, this._LvlSpellDC);
 			if (sc.attack) sc.attack = this._scaleValue(lvlIn, toLvl, sc.attack, this._LvlSpellAtkBonus);
@@ -872,7 +896,7 @@ const ScaleCreature = {
 						const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
 						return `@damage ${this._scaleDice(m[1], scaleTo)}`;
 					});
-				} else throw new Error(`Unhandled entry type.`);
+				} else throw new Error(`Unhandled entry type ${typeof e}.`);
 				return e;
 			});
 			return ab

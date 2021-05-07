@@ -19,6 +19,7 @@ class ListItem {
 			if (!v) continue;
 			searchText += `${v} - `;
 		}
+		if (this.name !== StrUtil.getNamePart(this.name)) searchText += StrUtil.getNamePart(this.name);
 		this.searchText = searchText.toLowerCase();
 
 		this._isSelected = false;
@@ -45,16 +46,20 @@ class List {
 	 * @param [opts] Options object.
 	 * @param [opts.fnSort] Sort function. Should accept `(a, b, o)` where `o` is an options object. Pass `null` to
 	 * disable sorting.
+	 * @param [opts.fnSearch] Search function. Should accept `(li, searchTerm)` where `li` is a list item.
 	 * @param [opts.$iptSearch] Search input.
 	 * @param opts.$wrpList List wrapper.
 	 * @param [opts.isUseJquery] If the list items are using jQuery elements. Significantly slower for large lists.
 	 * @param [opts.sortByInitial] Initial sortBy.
 	 * @param [opts.sortDirInitial] Initial sortDir.
+	 * @param [opts.syntax] A dictionary of search syntax prefixes, each with an item "to display" checker function.
 	 */
 	constructor (opts) {
 		this._$iptSearch = opts.$iptSearch;
 		this._$wrpList = opts.$wrpList;
 		this._fnSort = opts.fnSort === undefined ? SortUtil.listSort : opts.fnSort;
+		this._fnSearch = opts.fnSearch;
+		this._syntax = opts.syntax;
 
 		this._items = [];
 		this._eventHandlers = {};
@@ -114,13 +119,29 @@ class List {
 	}
 
 	_doSearch () {
-		if (this._searchTerm) this._searchedItems = this._items.filter(it => it.searchText.includes(this._searchTerm));
-		else this._searchedItems = [...this._items];
+		this._doSearch_doSearchTerm();
 
 		// Never show excluded items
 		this._searchedItems = this._searchedItems.filter(it => !it.data.isExcluded);
 
 		this._doFilter();
+	}
+
+	_doSearch_doSearchTerm () {
+		if (!this._searchTerm) return this._searchedItems = [...this._items];
+
+		if (this._syntax) {
+			const [command, term] = this._searchTerm.split(/^([a-z]+):/).filter(Boolean);
+			if (command && term && this._syntax[command]) {
+				const fnCommand = this._syntax[command].fn;
+				this._searchedItems = this._items.filter(it => fnCommand(it, term));
+				return;
+			}
+		}
+
+		if (this._fnSearch) return this._searchedItems = this._items.filter(it => this._fnSearch(it, this._searchTerm));
+
+		this._searchedItems = this._items.filter(it => it.searchText.includes(this._searchTerm));
 	}
 
 	_doFilter () {

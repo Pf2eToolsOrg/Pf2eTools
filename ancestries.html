@@ -93,11 +93,14 @@
 
 			<p class="text-center">
 				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
+				<button class="btn btn-default btn-xs btn-copy-effect" id="btn-link-export-anc" title="Get Link to Filters (SHIFT adds List)"><span class="glyphicon glyphicon-magnet"></span></button>
 			</p>
 		</div>
 		<div class="col-sm-7">
 			<div class="wrp-stats-table mb-4 pf2-summary" id="ancestry-summary">
-				<div class="pf2-summary__text" id="ancestry-summary__text"></div>
+				<div class="pf2-summary__text" id="ancestry-summary__text">
+					<div class="initial-message" style="font-size: 2em;">Loading...</div>
+				</div>
 				<div class="pf2-summary__image" id="ancestry-summary__image"></div>
 			</div>
 		</div>
@@ -113,7 +116,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row flex mobile__flex-col mt-2 feat-view hidden">
+	<div class="row flex mt-2 feat-view hidden">
 		<div class="col-sm-6" id="featlistcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="feat-filter-search-group">

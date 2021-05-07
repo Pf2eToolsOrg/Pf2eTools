@@ -2,7 +2,7 @@
 
 class Counter {
 	static $getCounter (board, state) {
-		const $wrpPanel = $(`<div class="w-100 h-100 dm-cnt__root dm__panel-bg dm__data-anchor"/>`) // root class used to identify for saving
+		const $wrpPanel = $(`<div class="w-100 h-100 gm-cnt__root gm__panel-bg gm__data-anchor"/>`) // root class used to identify for saving
 			.data("getState", () => counters.getSaveableState());
 		const counters = new CounterRoot(board, $wrpPanel);
 		counters.setStateFrom(state);
@@ -113,8 +113,8 @@ class CounterRow extends CounterComponent {
 
 		const $iptName = ComponentUiUtil.$getIptStr(this, "name").addClass("mr-2 small-caps");
 
-		const $iptCur = ComponentUiUtil.$getIptInt(this, "current", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center dm-cnt__ipt dm-cnt__ipt--cur bold">`)});
-		const $iptMax = ComponentUiUtil.$getIptInt(this, "max", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center dm-cnt__ipt dm-cnt__ipt--max mr-2 text-muted bold">`)});
+		const $iptCur = ComponentUiUtil.$getIptInt(this, "current", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center gm-cnt__ipt gm-cnt__ipt--cur bold">`)});
+		const $iptMax = ComponentUiUtil.$getIptInt(this, "max", 0, {$ele: $(`<input class="form-control input-xs form-control--minimal text-center gm-cnt__ipt gm-cnt__ipt--max mr-2 text-muted bold">`)});
 
 		const hookDisplayMinMax = () => {
 			$iptCur.removeClass("text-success text-danger");
@@ -141,7 +141,7 @@ class CounterRow extends CounterComponent {
 			${$iptName}
 			<div class="relative flex-vh-center">
 				${$iptCur}
-				<div class="dm-cnt__slash text-muted text-center">/</div>
+				<div class="gm-cnt__slash text-muted text-center">/</div>
 				${$iptMax}
 			</div>
 			<div class="flex btn-group mr-2">

@@ -209,8 +209,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition slowed}",
@@ -230,8 +230,8 @@
 				"Monitor"
 			],
 			"traits": [
-				"Inevitable",
-				"Aeon"
+				"Aeon",
+				"Inevitable"
 			],
 			"perception": {
 				"default": 21
@@ -449,8 +449,8 @@
 				"Monitor"
 			],
 			"traits": [
-				"Inevitable",
-				"Aeon"
+				"Aeon",
+				"Inevitable"
 			],
 			"perception": {
 				"default": 26
@@ -667,7 +667,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"8": {
 								"spells": [
 									{
@@ -691,8 +691,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"bludgeoning"
+					"bludgeoning",
+					"electricity"
 				],
 				"condition": [
 					"{@condition blinded}"
@@ -1167,8 +1167,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -1620,7 +1620,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -1906,7 +1906,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -1926,9 +1926,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"good",
 					"force",
-					"bludgeoning",
-					"good"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition stunned}"
@@ -2457,8 +2457,8 @@
 			"size": "Medium",
 			"creatureType": [],
 			"traits": [
-				"Incorporeal",
-				"Dream"
+				"Dream",
+				"Incorporeal"
 			],
 			"perception": {
 				"default": 14
@@ -2756,15 +2756,17 @@
 				{
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "Varies",
+						"entry": "{@as 1} to {@as 3}"
 					},
 					"traits": [
-						"to"
+						"illusion",
+						"occult",
+						"shadow"
 					],
 					"frequency": "once per day",
 					"entries": [
-						"{@as 3} (illusion, occult, shadow) ; For each action spent to use this ability, the ankou creates one shadowy duplicate of themself anywhere within 60 feet of themself. Shadow doubles have the same statistics as an ankou, but they have the summoned trait, have 84 Hit Points, can't use Shadow Doubles or innate spells, and have an attack bonus of +25 for their Strikes. A shadow double that attempts a saving throw against a {@trait light} effect can't get a result better than failure. Each double remains for 1 round, until it's reduced to 0 Hit Points, or until it moves further than 120 feet from the ankou, whichever comes first. Each round thereafter, the ankou can spend a single action that has the {@trait concentrate} trait to extend the duration of surviving duplicates by 1 round, to a maximum duration of 1 minute. The ankou can see through the eyes of all of the shadow doubles at once. A character who Seeks can identify an ankou as real or a shadow double with a successful DC 39 Perception check."
+						"For each action spent to use this ability, the ankou creates one shadowy duplicate of themself anywhere within 60 feet of themself. Shadow doubles have the same statistics as an ankou, but they have the summoned trait, have 84 Hit Points, can't use Shadow Doubles or innate spells, and have an attack bonus of +25 for their Strikes. A shadow double that attempts a saving throw against a {@trait light} effect can't get a result better than failure. Each double remains for 1 round, until it's reduced to 0 Hit Points, or until it moves further than 120 feet from the ankou, whichever comes first. Each round thereafter, the ankou can spend a single action that has the {@trait concentrate} trait to extend the duration of surviving duplicates by 1 round, to a maximum duration of 1 minute. The ankou can see through the eyes of all of the shadow doubles at once. A character who Seeks can identify an ankou as real or a shadow double with a successful DC 39 Perception check."
 					],
 					"name": "Shadow Doubles"
 				},
@@ -2876,9 +2878,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"precision",
 					"piercing",
-					"slashing",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -3392,7 +3394,7 @@
 					"tradition": "Arcane",
 					"DC": 40,
 					"entry": {
-						" constant": {
+						"constant": {
 							"9": {
 								"spells": [
 									{
@@ -3916,7 +3918,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -4131,7 +4133,7 @@
 					"attack": 38,
 					"traits": [
 						"agile",
-						"deadly {@dice 1d8}",
+						"deadly 1d8",
 						"finesse",
 						"good",
 						"magical",
@@ -4152,7 +4154,7 @@
 					"attack": 38,
 					"traits": [
 						"agile",
-						"deadly {@dice 1d8}",
+						"deadly 1d8",
 						"good",
 						"magical",
 						"thrown 60 feet",
@@ -4212,7 +4214,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -4245,8 +4247,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"fire",
-					"piercing"
+					"piercing",
+					"fire"
 				],
 				"condition": [
 					"{@condition blinded}",
@@ -4520,7 +4522,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"10": {
 								"spells": [
 									{
@@ -4548,8 +4550,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"good"
+					"good",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition blinded}",
@@ -4729,8 +4731,8 @@
 			"alignment": "CE",
 			"size": "Huge",
 			"creatureType": [
-				"Giant",
-				"Humanoid"
+				"Humanoid",
+				"Giant"
 			],
 			"traits": [],
 			"perception": {
@@ -4956,9 +4958,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition enfeebled}"
@@ -5170,8 +5172,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"piercing"
+					"piercing",
+					"negative"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -5343,8 +5345,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -5516,7 +5518,7 @@
 					"name": "composite longbow",
 					"attack": 18,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"reload 0",
 						"volley 30 feet"
 					],
@@ -5573,7 +5575,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -5596,9 +5598,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
+					"bludgeoning",
 					"slashing",
-					"bludgeoning"
+					"electricity"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -5849,7 +5851,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"9": {
 								"spells": [
 									{
@@ -6008,8 +6010,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -6163,8 +6165,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition unconscious}"
@@ -6582,8 +6584,8 @@
 			"alignment": "N",
 			"size": "Large",
 			"creatureType": [
-				"Dragon",
-				"Beast"
+				"Beast",
+				"Dragon"
 			],
 			"traits": [],
 			"perception": {
@@ -6822,8 +6824,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition petrified}",
@@ -6952,8 +6954,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -7092,9 +7094,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"precision",
 					"piercing",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition flat-footed}",
@@ -7348,9 +7350,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -7462,15 +7464,9 @@
 						"primal"
 					],
 					"entries": [
-						"The behir breathes lightning that deals {@damage 9d6} electricity damage in an 60-foot line (DC 27 basic Reflex save). It can't use."
+						"The behir breathes lightning that deals {@damage 9d6} electricity damage in an 60-foot line (DC 27 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
 					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath"
 				},
 				{
 					"activity": {
@@ -7604,10 +7600,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing",
+					"electricity"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -7757,8 +7753,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition blinded}",
@@ -7893,8 +7889,8 @@
 			"alignment": "CN",
 			"size": "Medium",
 			"creatureType": [
-				"Plant",
-				"Fey"
+				"Fey",
+				"Plant"
 			],
 			"traits": [],
 			"perception": {
@@ -8131,7 +8127,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -8916,10 +8912,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
 					"bludgeoning",
-					"cold",
-					"piercing"
+					"cold"
 				],
 				"condition": []
 			},
@@ -9161,8 +9157,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
 					"negative",
+					"slashing",
 					"sonic"
 				],
 				"condition": [
@@ -9325,14 +9321,6 @@
 					"tradition": "Primal",
 					"DC": 18,
 					"entry": {
-						"0": {
-							"level": 1,
-							"spells": [
-								{
-									"name": "daze"
-								}
-							]
-						},
 						"1": {
 							"spells": [
 								{
@@ -9570,8 +9558,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -9901,8 +9889,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition clumsy}"
@@ -10091,8 +10079,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -10400,8 +10388,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -10878,20 +10866,6 @@
 					"tradition": "Divine",
 					"DC": 29,
 					"entry": {
-						"0": {
-							"level": 5,
-							"spells": [
-								{
-									"name": "disrupt undead"
-								},
-								{
-									"name": "light"
-								},
-								{
-									"name": "mage hand"
-								}
-							]
-						},
 						"2": {
 							"spells": [
 								{
@@ -10945,7 +10919,7 @@
 								}
 							]
 						},
-						" constant": {}
+						"constant": {}
 					}
 				}
 			],
@@ -11112,8 +11086,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -11397,8 +11371,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"slashing"
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -11626,8 +11600,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition restrained}"
@@ -11930,8 +11904,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition enfeebled}"
@@ -12228,9 +12202,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
+					"evil",
 					"slashing",
-					"evil"
+					"negative"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -12409,7 +12383,7 @@
 					"name": "claw",
 					"attack": 25,
 					"traits": [
-						"deadly {@dice 1d12}",
+						"deadly 1d12",
 						"evil",
 						"magical",
 						"reach 10 feet"
@@ -12774,7 +12748,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"7": {
 								"spells": [
 									{
@@ -12799,8 +12773,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -13007,7 +12981,7 @@
 					"name": "hurled weapon",
 					"attack": 35,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"evil",
 						"magical",
 						"propulsive",
@@ -13077,7 +13051,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"6": {
 								"spells": [
 									{
@@ -13366,7 +13340,7 @@
 								}
 							]
 						},
-						" constant": {}
+						"constant": {}
 					}
 				}
 			],
@@ -13379,10 +13353,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"negative",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition doomed}",
@@ -13617,7 +13591,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -13639,10 +13613,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"acid",
-					"piercing",
 					"precision",
+					"acid",
 					"mental",
+					"piercing",
 					"slashing"
 				],
 				"condition": [
@@ -13663,8 +13637,8 @@
 				"Fiend"
 			],
 			"traits": [
-				"Incorporeal",
-				"Demon"
+				"Demon",
+				"Incorporeal"
 			],
 			"perception": {
 				"default": 15
@@ -14110,9 +14084,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"mental",
-					"slashing",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -14131,8 +14105,8 @@
 				"Fiend"
 			],
 			"traits": [
-				"Amphibious",
-				"Demon"
+				"Demon",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 21
@@ -14337,10 +14311,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"mental",
-					"slashing",
+					"poison",
 					"piercing",
-					"poison"
+					"mental",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -14589,7 +14563,7 @@
 								}
 							]
 						},
-						" constant": {}
+						"constant": {}
 					}
 				}
 			],
@@ -14602,9 +14576,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"mental",
-					"slashing",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -14910,7 +14884,7 @@
 								}
 							]
 						},
-						" constant": {}
+						"constant": {}
 					}
 				}
 			],
@@ -14923,8 +14897,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"piercing"
+					"piercing",
+					"negative"
 				],
 				"condition": [
 					"{@condition confused}",
@@ -15390,8 +15364,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
+					"slashing",
 					"sonic"
 				],
 				"condition": [
@@ -15649,8 +15623,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
-					"precision"
+					"precision",
+					"piercing"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -15936,7 +15910,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"2": {
 								"spells": [
 									{
@@ -15957,8 +15931,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -16276,9 +16250,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
+					"piercing",
 					"mental",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -16822,7 +16796,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"7": {
 								"spells": [
 									{
@@ -16843,8 +16817,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -17354,8 +17328,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"slashing"
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -17533,8 +17507,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
-					"precision"
+					"precision",
+					"piercing"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -18054,8 +18028,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -18238,8 +18212,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": [
@@ -18790,7 +18764,7 @@
 					"tradition": "Occult",
 					"DC": 28,
 					"entry": {
-						" constant": {
+						"constant": {
 							"6": {
 								"spells": [
 									{
@@ -18961,8 +18935,8 @@
 				"Dragon"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 16
@@ -19213,9 +19187,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
+					"slashing",
 					"piercing"
 				],
 				"condition": []
@@ -19234,8 +19208,8 @@
 				"Dragon"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 23
@@ -19603,9 +19577,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
+					"slashing",
 					"piercing"
 				],
 				"condition": [
@@ -19626,8 +19600,8 @@
 				"Dragon"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 32
@@ -19941,9 +19915,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
+					"slashing",
 					"piercing"
 				],
 				"condition": [
@@ -20234,10 +20208,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing",
+					"electricity"
 				],
 				"condition": []
 			},
@@ -20546,10 +20520,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing",
+					"electricity"
 				],
 				"condition": []
 			},
@@ -20884,10 +20858,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing",
+					"electricity"
 				],
 				"condition": [
 					"{@condition deafened}"
@@ -21211,8 +21185,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -21464,14 +21438,6 @@
 					"tradition": "Primal",
 					"DC": 30,
 					"entry": {
-						"0": {
-							"level": 5,
-							"spells": [
-								{
-									"name": "dancing lights"
-								}
-							]
-						},
 						"3": {
 							"spells": [
 								{
@@ -21499,8 +21465,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition slowed}"
@@ -21826,8 +21792,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition dazzled}",
@@ -22109,10 +22075,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -22415,10 +22381,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -22726,7 +22692,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -22748,10 +22714,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition restrained}"
@@ -23025,10 +22991,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"force",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": []
 			},
@@ -23186,13 +23152,7 @@
 						"entry": "{@as 2}"
 					},
 					"entries": [
-						"The umbral dragon breathes in one of two ways. They can't use."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"Weapon again for {@dice 1d4} rounds.",
+						"The umbral dragon breathes in one of two ways. They can't use Breath Weapon again for {@dice 1d4} rounds.",
 						{
 							"type": "list",
 							"items": [
@@ -23210,7 +23170,7 @@
 							}
 						}
 					],
-					"name": "Breath"
+					"name": "Breath Weapon"
 				},
 				{
 					"activity": {
@@ -23334,10 +23294,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"force",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition enfeebled}"
@@ -23494,7 +23454,23 @@
 					],
 					"name": "Breath Weapon",
 					"entries_as_xyz": [
-						"The umbral dragon breathes in one of two ways. They can't use."
+						"The umbral dragon breathes in one of two ways. They can't use Breath Weapon again for {@dice 1d4} rounds.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Negative} (necromancy, negative, primal) The dragon breathes a blast of darkness in a 40-foot cone that deals {@damage 16d6} negative damage (DC 36 basic Reflex save). Undead creatures take {@damage 19d6} force damage instead of the negative damage.",
+								"{@bold Shadows} (necromancy, primal, shadow) The dragon breathes a blast of shadows in a 40-foot cone. Each creature within the cone must attempt a DC 36 Fortitude save."
+							]
+						},
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition enfeebled|CRB|enfeebled 2} for 1 round.",
+								"Failure": "The creature is {@condition enfeebled|CRB|enfeebled 2} for 1 minute.",
+								"Critical Failure": "The creature is {@condition enfeebled|CRB|enfeebled 2} for 1 minute and {@condition blinded} for 1 round."
+							}
+						}
 					]
 				},
 				{
@@ -23651,10 +23627,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"force",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition enfeebled}"
@@ -24301,9 +24277,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"bludgeoning",
-					"cold",
-					"piercing"
+					"cold"
 				],
 				"condition": []
 			},
@@ -24320,8 +24296,8 @@
 				"Dragon"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 14
@@ -24518,9 +24494,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"electricity"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -24634,7 +24610,7 @@
 						"necromancy"
 					],
 					"entries": [
-						"A creature that slays a draugr is subjected to a {@spell mariner's curse} spell with a save DC of 17. The curse ends if the draugr is buried in a calm sea or after 1 week passes."
+						"A creature that slays a draugr is subjected to a mariner's curse spell with a save DC of 17. The curse ends if the draugr is buried in a calm sea or after 1 week passes."
 					],
 					"name": "The Sea's Revenge"
 				}
@@ -24956,7 +24932,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -24975,9 +24951,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"force",
-					"slashing",
-					"piercing"
+					"slashing"
 				],
 				"condition": []
 			},
@@ -25360,8 +25336,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -25632,8 +25608,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"bludgeoning"
+					"bludgeoning",
+					"electricity"
 				],
 				"condition": [
 					"{@condition deafened}"
@@ -26025,8 +26001,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"sonic",
-					"bludgeoning"
+					"bludgeoning",
+					"sonic"
 				],
 				"condition": [
 					"{@condition fascinated}"
@@ -26320,8 +26296,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -26926,9 +26902,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -27451,8 +27427,8 @@
 				"Elemental"
 			],
 			"traits": [
-				"Air",
-				"Water"
+				"Water",
+				"Air"
 			],
 			"perception": {
 				"default": 3
@@ -27578,8 +27554,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"cold",
-					"slashing"
+					"slashing",
+					"cold"
 				],
 				"condition": []
 			},
@@ -27596,9 +27572,9 @@
 				"Elemental"
 			],
 			"traits": [
-				"Amphibious",
+				"Water",
 				"Earth",
-				"Water"
+				"Amphibious"
 			],
 			"perception": {
 				"default": 3
@@ -27857,15 +27833,9 @@
 						"fire"
 					],
 					"entries": [
-						"The steam mephit spits a cloud of steam in a 15-foot cone that deals {@damage 2d6} fire damage to each creature within the area (DC 17 basic Reflex save). The steam mephit can't use."
+						"The steam mephit spits a cloud of steam in a 15-foot cone that deals {@damage 2d6} fire damage to each creature within the area (DC 17 basic Reflex save). The steam mephit can't use Breath Weapon again for {@dice 1d4} rounds."
 					],
 					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"Weapon again for {@dice 1d4} rounds."
-					],
-					"name": "Breath"
 				},
 				{
 					"entries": [
@@ -28066,8 +28036,8 @@
 				"Elemental"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 13
@@ -28380,8 +28350,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition blinded}"
@@ -28400,9 +28370,9 @@
 				"Elemental"
 			],
 			"traits": [
-				"Amphibious",
 				"Cold",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 19
@@ -28574,9 +28544,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"cold",
-					"piercing"
+					"cold"
 				],
 				"condition": []
 			},
@@ -28884,8 +28854,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -29293,8 +29263,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition stunned}",
@@ -29527,9 +29497,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"acid",
-					"piercing"
+					"acid"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -30380,8 +30350,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": [
@@ -30585,8 +30555,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"cold",
-					"piercing"
+					"piercing",
+					"cold"
 				],
 				"condition": [
 					"{@condition fascinated}"
@@ -30602,8 +30572,8 @@
 			"alignment": "CG",
 			"size": "Large",
 			"creatureType": [
-				"Giant",
-				"Humanoid"
+				"Humanoid",
+				"Giant"
 			],
 			"traits": [],
 			"perception": {
@@ -30826,7 +30796,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"2": {
 								"spells": [
 									{
@@ -30851,8 +30821,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -30866,8 +30836,8 @@
 			"alignment": "CE",
 			"size": "Large",
 			"creatureType": [
-				"Giant",
-				"Humanoid"
+				"Humanoid",
+				"Giant"
 			],
 			"traits": [
 				"Amphibious"
@@ -31078,8 +31048,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition prone}"
@@ -31095,8 +31065,8 @@
 			"alignment": "CN",
 			"size": "Huge",
 			"creatureType": [
-				"Giant",
-				"Humanoid"
+				"Humanoid",
+				"Giant"
 			],
 			"traits": [],
 			"perception": {
@@ -31299,9 +31269,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"mental",
-					"bludgeoning",
-					"piercing"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition controlled}"
@@ -31317,8 +31287,8 @@
 			"alignment": "LE",
 			"size": "Large",
 			"creatureType": [
-				"Giant",
-				"Humanoid"
+				"Humanoid",
+				"Giant"
 			],
 			"traits": [
 				"Shadow"
@@ -31721,8 +31691,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition sickened}",
@@ -31744,8 +31714,8 @@
 			],
 			"traits": [
 				"Golem",
-				"Mindless",
-				"Cold"
+				"Cold",
+				"Mindless"
 			],
 			"perception": {
 				"default": 9
@@ -31905,8 +31875,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"cold",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": [
@@ -32446,8 +32416,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition petrified}",
@@ -32723,9 +32693,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"mental",
-					"slashing",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition confused}"
@@ -33028,9 +32998,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"precision",
 					"piercing",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition prone}"
@@ -33714,8 +33684,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -33911,12 +33881,12 @@
 			"alignment": "CN",
 			"size": "Medium",
 			"creatureType": [
-				"Beast",
-				"Fey"
+				"Fey",
+				"Beast"
 			],
 			"traits": [
-				"Amphibious",
-				"Water"
+				"Water",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 13
@@ -34327,9 +34297,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"precision",
 					"piercing",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition frightened}"
@@ -34758,9 +34728,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing"
 				],
 				"condition": []
 			},
@@ -34933,8 +34903,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -35320,9 +35290,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition prone}"
@@ -35566,8 +35536,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"mental",
 					"piercing",
+					"mental",
 					"slashing"
 				],
 				"condition": [
@@ -36006,8 +35976,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -36264,7 +36234,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"1": {
 								"spells": [
 									{
@@ -36285,8 +36255,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition fatigued}",
@@ -36473,7 +36443,7 @@
 					"name": "jaws",
 					"attack": 42,
 					"traits": [
-						"deadly {@dice 2d12}",
+						"deadly 2d12",
 						"magical",
 						"reach 15 feet"
 					],
@@ -36527,9 +36497,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition frightened}"
@@ -36548,9 +36518,9 @@
 				"Animal"
 			],
 			"traits": [
-				"Aquatic",
+				"Swarm",
 				"Mindless",
-				"Swarm"
+				"Aquatic"
 			],
 			"perception": {
 				"default": 10
@@ -36713,8 +36683,8 @@
 				"Animal"
 			],
 			"traits": [
-				"Aquatic",
-				"Mindless"
+				"Mindless",
+				"Aquatic"
 			],
 			"perception": {
 				"default": 12
@@ -37111,9 +37081,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"piercing",
 					"fire",
-					"piercing"
+					"slashing"
 				],
 				"condition": []
 			},
@@ -37711,8 +37681,8 @@
 				"Animal"
 			],
 			"traits": [
-				"Amphibious",
-				"Swarm"
+				"Swarm",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 9
@@ -38175,9 +38145,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition confused}",
@@ -39155,8 +39125,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"acid",
-					"piercing"
+					"piercing",
+					"acid"
 				],
 				"condition": [
 					"{@condition dying}",
@@ -39601,10 +39571,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"mental",
-					"slashing",
 					"bludgeoning",
-					"piercing"
+					"slashing"
 				],
 				"condition": []
 			},
@@ -39851,7 +39821,7 @@
 					"tradition": "Primal",
 					"DC": 36,
 					"entry": {
-						" constant": {
+						"constant": {
 							"6": {
 								"spells": [
 									{
@@ -39880,10 +39850,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -40131,7 +40101,7 @@
 					"tradition": "Primal",
 					"DC": 37,
 					"entry": {
-						" constant": {}
+						"constant": {}
 					}
 				}
 			],
@@ -40145,10 +40115,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
 					"bludgeoning",
-					"cold",
-					"piercing"
+					"cold"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -40297,16 +40267,10 @@
 					],
 					"entries": [
 						"The cairn linnorm expels a 60-foot cone of negative energy\u2013infused acid, dealing {@damage 19d6} acid damage to creatures in the area (DC 40 basic Reflex save)",
-						"The acid also saps the life out of affected creatures. At the beginning of the linnorm's next turn, each creature that failed the Reflex save must succeed at a DC 40 Fortitude save or become {@condition drained|CRB|drained 1} ({@condition drained|CRB|drained 2} on a critical failure). The cairn linnorm can't use."
-					],
-					"name": "Breath Weapon"
-				},
-				{
-					"entries": [
-						"Weapon again for {@dice 1d4} rounds.",
+						"The acid also saps the life out of affected creatures. At the beginning of the linnorm's next turn, each creature that failed the Reflex save must succeed at a DC 40 Fortitude save or become {@condition drained|CRB|drained 1} ({@condition drained|CRB|drained 2} on a critical failure). The cairn linnorm can't use Breath Weapon again for {@dice 1d4} rounds.",
 						"and in the first Bestiary constitute the."
 					],
-					"name": "Breath"
+					"name": "Breath Weapon"
 				},
 				{
 					"entries": [
@@ -40396,7 +40360,7 @@
 					"tradition": "Primal",
 					"DC": 40,
 					"entry": {
-						" constant": {
+						"constant": {
 							"8": {
 								"spells": [
 									{
@@ -40418,9 +40382,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
+					"slashing",
 					"piercing"
 				],
 				"condition": [
@@ -40653,7 +40617,7 @@
 					"tradition": "Primal",
 					"DC": 41,
 					"entry": {
-						" constant": {
+						"constant": {
 							"9": {
 								"spells": [
 									{
@@ -40675,10 +40639,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing",
+					"electricity"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -41173,9 +41137,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"precision",
 					"force",
-					"slashing",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition dazzled}",
@@ -41399,8 +41363,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -42263,9 +42227,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"precision",
 					"piercing",
-					"bludgeoning",
-					"precision"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -42617,8 +42581,8 @@
 				"Elemental"
 			],
 			"traits": [
-				"Earth",
-				"Water"
+				"Water",
+				"Earth"
 			],
 			"perception": {
 				"default": 9
@@ -43939,23 +43903,6 @@
 					"DC": 38,
 					"attack": 30,
 					"entry": {
-						"0": {
-							"level": 8,
-							"spells": [
-								{
-									"name": "daze"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "mage hand"
-								},
-								{
-									"name": "telekinetic projectile"
-								}
-							]
-						},
 						"5": {
 							"spells": [
 								{
@@ -44015,10 +43962,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing",
 					"acid",
-					"slashing"
+					"bludgeoning",
+					"slashing",
+					"piercing"
 				],
 				"condition": []
 			},
@@ -44035,8 +43982,8 @@
 				"Fey"
 			],
 			"traits": [
-				"Aquatic",
-				"Water"
+				"Water",
+				"Aquatic"
 			],
 			"perception": {
 				"default": 20
@@ -44602,7 +44549,7 @@
 					"name": "norn shears",
 					"attack": 38,
 					"traits": [
-						"deadly {@dice 2d12}",
+						"deadly 2d12",
 						"magical",
 						"reach 10 feet",
 						"versatile P"
@@ -44699,8 +44646,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"slashing"
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -44997,10 +44944,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
-					"negative",
-					"slashing"
+					"bludgeoning",
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -45398,8 +45345,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -45416,8 +45363,8 @@
 			"size": "Large",
 			"creatureType": [
 				"Fiend",
-				"Humanoid",
-				"Giant"
+				"Giant",
+				"Humanoid"
 			],
 			"traits": [
 				"Oni"
@@ -45578,7 +45525,7 @@
 					"name": "composite shortbow",
 					"attack": 17,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"range increment 100 feet",
 						"reload 0"
 					],
@@ -45650,8 +45597,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": []
@@ -45666,13 +45613,13 @@
 			"alignment": "CE",
 			"size": "Large",
 			"creatureType": [
-				"Fiend",
 				"Humanoid",
-				"Giant"
+				"Giant",
+				"Fiend"
 			],
 			"traits": [
-				"Oni",
-				"Cold"
+				"Cold",
+				"Oni"
 			],
 			"perception": {
 				"default": 26
@@ -45943,8 +45890,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"cold",
-					"bludgeoning"
+					"bludgeoning",
+					"cold"
 				],
 				"condition": [
 					"{@condition slowed}"
@@ -45965,8 +45912,8 @@
 				"Giant"
 			],
 			"traits": [
-				"Oni",
-				"Fire"
+				"Fire",
+				"Oni"
 			],
 			"perception": {
 				"default": 26
@@ -46138,7 +46085,7 @@
 					"name": "katana",
 					"attack": 30,
 					"traits": [
-						"deadly {@dice 1d8}",
+						"deadly 1d8",
 						"magical",
 						"reach 10 feet",
 						"two-hand d10",
@@ -46257,8 +46204,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"fire",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": [
@@ -46281,8 +46228,8 @@
 				"Giant"
 			],
 			"traits": [
-				"Oni",
-				"Water"
+				"Water",
+				"Oni"
 			],
 			"perception": {
 				"default": 32
@@ -46565,7 +46512,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"9": {
 								"spells": [
 									{
@@ -46588,9 +46535,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"electricity"
 				],
 				"condition": [
 					"{@condition flat-footed}",
@@ -46610,9 +46557,9 @@
 				"Ooze"
 			],
 			"traits": [
+				"Swarm",
 				"Mindless",
-				"Amphibious",
-				"Swarm"
+				"Amphibious"
 			],
 			"perception": {
 				"default": 3
@@ -46901,8 +46848,8 @@
 			"alignment": "N",
 			"size": "Large",
 			"creatureType": [
-				"Ooze",
-				"Fungus"
+				"Fungus",
+				"Ooze"
 			],
 			"traits": [
 				"Mindless"
@@ -47839,9 +47786,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -48006,8 +47953,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition frightened}"
@@ -48337,10 +48284,10 @@
 			],
 			"inflicts": {
 				"damage": [
+					"positive",
+					"piercing",
 					"fire",
 					"bludgeoning",
-					"piercing",
-					"positive",
 					"slashing"
 				],
 				"condition": [
@@ -48505,8 +48452,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"fire",
-					"piercing"
+					"piercing",
+					"fire"
 				],
 				"condition": []
 			},
@@ -48523,8 +48470,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Human",
-				"Oread"
+				"Oread",
+				"Human"
 			],
 			"perception": {
 				"default": 7
@@ -48702,8 +48649,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Suli",
-				"Human"
+				"Human",
+				"Suli"
 			],
 			"perception": {
 				"default": 5
@@ -48877,8 +48824,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Human",
-				"Sylph"
+				"Sylph",
+				"Human"
 			],
 			"perception": {
 				"default": 5
@@ -49067,8 +49014,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Undine",
 				"Human",
+				"Undine",
 				"Amphibious"
 			],
 			"perception": {
@@ -49340,12 +49287,6 @@
 			},
 			"abilitiesBot": [
 				{
-					"entries": [
-						"Divine Innate Spells DC 20, attack +12; 3rd glyph of warding, secret page; 1st detect alignment (at will, lawful only); Cantrips (2nd) acid splash, daze, ghost sound, mage hand, sigil; Constant (4th) freedom of movement."
-					],
-					"name": "and Grab"
-				},
-				{
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -49493,7 +49434,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -49836,9 +49777,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition blinded}"
@@ -50175,7 +50116,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -50203,10 +50144,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"precision",
 					"piercing",
 					"bludgeoning",
-					"precision"
+					"slashing"
 				],
 				"condition": [
 					"{@condition blinded}",
@@ -50424,9 +50365,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -50699,7 +50640,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -50719,8 +50660,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"bludgeoning"
+					"bludgeoning",
+					"negative"
 				],
 				"condition": [
 					"{@condition unconscious}"
@@ -51000,8 +50941,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"slashing"
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition stupefied}"
@@ -51357,7 +51298,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"10": {
 								"spells": [
 									{
@@ -51379,11 +51320,11 @@
 			],
 			"inflicts": {
 				"damage": [
-					"negative",
-					"slashing",
-					"piercing",
 					"poison",
-					"bludgeoning"
+					"piercing",
+					"negative",
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -51655,8 +51596,8 @@
 				"Fiend"
 			],
 			"traits": [
-				"Amphibious",
-				"Qlippoth"
+				"Qlippoth",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 13
@@ -51897,9 +51838,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition fascinated}",
@@ -52168,9 +52109,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
 					"acid",
-					"slashing"
+					"slashing",
+					"piercing"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -52458,7 +52399,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -52737,7 +52678,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"7": {
 								"spells": [
 									{
@@ -52760,9 +52701,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -53092,10 +53033,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"mental",
+					"poison",
 					"piercing",
-					"bludgeoning",
-					"poison"
+					"mental",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -53316,8 +53257,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
-					"precision"
+					"precision",
+					"piercing"
 				],
 				"condition": [
 					"{@condition flat-footed}",
@@ -53526,9 +53467,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -54051,8 +53992,8 @@
 			"alignment": "CE",
 			"size": "Gargantuan",
 			"creatureType": [
-				"Dragon",
-				"Undead"
+				"Undead",
+				"Dragon"
 			],
 			"traits": [
 				"Fire"
@@ -54369,17 +54310,6 @@
 					"tradition": "Arcane",
 					"DC": 44,
 					"entry": {
-						"0": {
-							"level": 9,
-							"spells": [
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "read aura"
-								}
-							]
-						},
 						"4": {
 							"spells": [
 								{
@@ -54408,9 +54338,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"piercing",
 					"fire",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -54426,8 +54356,8 @@
 			"alignment": "CE",
 			"size": "Gargantuan",
 			"creatureType": [
-				"Dragon",
-				"Undead"
+				"Undead",
+				"Dragon"
 			],
 			"traits": [],
 			"perception": {
@@ -54614,9 +54544,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": []
 			},
@@ -55106,8 +55036,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition dying}",
@@ -55250,8 +55180,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition prone}"
@@ -55409,8 +55339,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -55427,8 +55357,8 @@
 				"Fey"
 			],
 			"traits": [
-				"Aquatic",
-				"Water"
+				"Water",
+				"Aquatic"
 			],
 			"perception": {
 				"default": 22
@@ -55679,7 +55609,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"6": {
 								"spells": [
 									{
@@ -55980,9 +55910,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
+					"piercing",
 					"fire",
-					"piercing"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition frightened}",
@@ -56002,8 +55932,8 @@
 				"Plant"
 			],
 			"traits": [
-				"Electricity",
-				"Tane"
+				"Tane",
+				"Electricity"
 			],
 			"perception": {
 				"default": 35
@@ -56285,9 +56215,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"electricity"
 				],
 				"condition": [
 					"{@condition clumsy}"
@@ -56734,9 +56664,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"slashing",
-					"negative",
-					"piercing"
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}"
@@ -57066,9 +56996,9 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition clumsy}"
@@ -57408,7 +57338,7 @@
 					"name": "shortbow",
 					"attack": 10,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"range increment 60 feet"
 					],
 					"effects": [
@@ -57662,8 +57592,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": []
@@ -57915,8 +57845,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
-					"precision"
+					"precision",
+					"piercing"
 				],
 				"condition": [
 					"{@condition flat-footed}",
@@ -58101,26 +58031,6 @@
 					"DC": 28,
 					"attack": 20,
 					"entry": {
-						"0": {
-							"level": 4,
-							"spells": [
-								{
-									"name": "chill touch"
-								},
-								{
-									"name": "detect magic"
-								},
-								{
-									"name": "guidance"
-								},
-								{
-									"name": "light"
-								},
-								{
-									"name": "read aura"
-								}
-							]
-						},
 						"1": {
 							"slots": 4,
 							"spells": [
@@ -58433,8 +58343,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
-					"piercing"
+					"piercing",
+					"electricity"
 				],
 				"condition": []
 			},
@@ -59004,8 +58914,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
-					"precision"
+					"precision",
+					"piercing"
 				],
 				"condition": [
 					"{@condition flat-footed}"
@@ -59183,8 +59093,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": []
@@ -59646,8 +59556,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -59822,8 +59732,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition blinded}",
@@ -60898,8 +60808,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Spriggan",
-				"Gnome"
+				"Gnome",
+				"Spriggan"
 			],
 			"perception": {
 				"default": 10
@@ -61097,9 +61007,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"precision",
 					"piercing",
-					"bludgeoning",
-					"precision"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition fatigued}",
@@ -61119,8 +61029,8 @@
 				"Humanoid"
 			],
 			"traits": [
-				"Spriggan",
-				"Gnome"
+				"Gnome",
+				"Spriggan"
 			],
 			"perception": {
 				"default": 14
@@ -61340,9 +61250,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"precision",
 					"piercing",
-					"bludgeoning",
-					"precision"
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition fatigued}",
@@ -61480,8 +61390,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
-					"piercing"
+					"piercing",
+					"bludgeoning"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -61665,9 +61575,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -62077,8 +61987,8 @@
 			"inflicts": {
 				"damage": [
 					"poison",
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition enfeebled}",
@@ -62096,8 +62006,8 @@
 			"alignment": "N",
 			"size": "Huge",
 			"creatureType": [
-				"Fungus",
-				"Plant"
+				"Plant",
+				"Fungus"
 			],
 			"traits": [],
 			"perception": {
@@ -62308,8 +62218,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"acid",
+					"bludgeoning",
 					"piercing"
 				],
 				"condition": [
@@ -62469,8 +62379,8 @@
 				"Beast"
 			],
 			"traits": [
-				"Electricity",
-				"Air"
+				"Air",
+				"Electricity"
 			],
 			"perception": {
 				"default": 22
@@ -62676,9 +62586,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"electricity",
+					"piercing",
 					"slashing",
-					"piercing"
+					"electricity"
 				],
 				"condition": [
 					"{@condition prone}"
@@ -63178,9 +63088,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}",
@@ -63356,8 +63266,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition sickened}"
@@ -63736,8 +63646,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -63754,8 +63664,8 @@
 				"Giant"
 			],
 			"traits": [
-				"Earth",
-				"Troll"
+				"Troll",
+				"Earth"
 			],
 			"perception": {
 				"default": 14
@@ -63947,9 +63857,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing"
 				],
 				"condition": [
 					"{@condition slowed}"
@@ -64152,9 +64062,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
+					"piercing",
 					"bludgeoning",
-					"piercing"
+					"slashing"
 				],
 				"condition": []
 			},
@@ -64171,8 +64081,8 @@
 				"Giant"
 			],
 			"traits": [
-				"Mutant",
-				"Troll"
+				"Troll",
+				"Mutant"
 			],
 			"perception": {
 				"default": 29
@@ -64431,9 +64341,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition confused}",
@@ -64897,8 +64807,8 @@
 			"alignment": "CE",
 			"size": "Tiny",
 			"creatureType": [
-				"Plant",
-				"Fey"
+				"Fey",
+				"Plant"
 			],
 			"traits": [],
 			"perception": {
@@ -65026,7 +64936,7 @@
 					"name": "splinter",
 					"attack": 11,
 					"traits": [
-						"deadly {@dice 1d6}",
+						"deadly 1d6",
 						"range increment 30 feet"
 					],
 					"effects": [],
@@ -65046,8 +64956,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -65064,8 +64974,8 @@
 				"Beast"
 			],
 			"traits": [
-				"Amphibious",
-				"Cold"
+				"Cold",
+				"Amphibious"
 			],
 			"perception": {
 				"default": 25
@@ -65231,10 +65141,10 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"cold",
-					"bludgeoning"
+					"slashing",
+					"bludgeoning",
+					"cold"
 				],
 				"condition": [
 					"{@condition slowed}"
@@ -65408,8 +65318,8 @@
 					"name": "rhoka sword",
 					"attack": 12,
 					"traits": [
-						"deadly {@dice 1d8}",
-						"two-hand {@dice 1d10}"
+						"deadly 1d8",
+						"two-hand 1d10"
 					],
 					"effects": [],
 					"damage": "{@damage 1d8+6} slashing",
@@ -65435,7 +65345,7 @@
 					"name": "composite longbow",
 					"attack": 10,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"propulsive",
 						"range increment 100 feet",
 						"volley 30 feet"
@@ -65460,8 +65370,8 @@
 			"inflicts": {
 				"damage": [
 					"piercing",
-					"negative",
-					"slashing"
+					"slashing",
+					"negative"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -65630,8 +65540,8 @@
 			"inflicts": {
 				"damage": [
 					"piercing",
-					"negative",
-					"bludgeoning"
+					"bludgeoning",
+					"negative"
 				],
 				"condition": []
 			},
@@ -65825,8 +65735,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": []
 			},
@@ -66330,8 +66240,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition unconscious}"
@@ -66751,7 +66661,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"7": {
 								"spells": [
 									{
@@ -67760,8 +67670,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"mental",
-					"piercing"
+					"piercing",
+					"mental"
 				],
 				"condition": [
 					"{@condition deafened}",
@@ -67952,7 +67862,7 @@
 					"name": "claw",
 					"attack": 25,
 					"traits": [
-						"deadly {@dice 2d10}",
+						"deadly 2d10",
 						"evil",
 						"magical",
 						"reach 10 feet"
@@ -68263,14 +68173,6 @@
 					"tradition": "Divine",
 					"DC": 42,
 					"entry": {
-						"0": {
-							"level": 9,
-							"spells": [
-								{
-									"name": "stabilize"
-								}
-							]
-						},
 						"7": {
 							"spells": [
 								{
@@ -68320,7 +68222,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"9": {
 								"spells": [
 									{
@@ -68340,8 +68242,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition clumsy}",
@@ -68827,9 +68729,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"piercing",
 					"acid",
-					"bludgeoning"
+					"bludgeoning",
+					"piercing"
 				],
 				"condition": [
 					"{@condition drained}",
@@ -68849,8 +68751,8 @@
 				"Beast"
 			],
 			"traits": [
-				"Aquatic",
-				"Water"
+				"Water",
+				"Aquatic"
 			],
 			"perception": {
 				"default": 21
@@ -69460,8 +69362,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"bludgeoning",
 					"piercing",
+					"bludgeoning",
 					"slashing"
 				],
 				"condition": []
@@ -70099,14 +70001,16 @@
 				{
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "Varies",
+						"entry": "{@as 1} to {@as 3}"
 					},
 					"traits": [
-						"to"
+						"arcane",
+						"evocation",
+						"force"
 					],
 					"entries": [
-						"{@as 3} (arcane, evocation, force) The witchwyrd fires one magic missile per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
+						"The witchwyrd fires one magic missile per action spent (dealing {@damage 1d4+1} force damage each). They can't spend more actions on this ability than they have free hands. If they use a hand that has Absorbed Force, that hand hurls two missiles instead of one, expending the held energy."
 					],
 					"name": "Force Bolt"
 				}
@@ -70206,7 +70110,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"5": {
 								"spells": [
 									{
@@ -70227,9 +70131,9 @@
 			],
 			"inflicts": {
 				"damage": [
+					"piercing",
 					"force",
-					"bludgeoning",
-					"piercing"
+					"bludgeoning"
 				],
 				"condition": []
 			},
@@ -70390,8 +70294,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition unconscious}"
@@ -70569,8 +70473,8 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
-					"piercing"
+					"piercing",
+					"slashing"
 				],
 				"condition": [
 					"{@condition grabbed}"
@@ -70914,8 +70818,8 @@
 				"Undead"
 			],
 			"traits": [
-				"Incorporeal",
-				"Wraith"
+				"Wraith",
+				"Incorporeal"
 			],
 			"perception": {
 				"default": 19
@@ -71113,8 +71017,8 @@
 			"alignment": "LE",
 			"size": "Medium",
 			"creatureType": [
-				"Ethereal",
-				"Aberration"
+				"Aberration",
+				"Ethereal"
 			],
 			"traits": [],
 			"perception": {
@@ -71353,7 +71257,7 @@
 					"name": "longbow",
 					"attack": 17,
 					"traits": [
-						"deadly {@dice 1d10}",
+						"deadly 1d10",
 						"magical",
 						"range 100 feet",
 						"reload 0",
@@ -72036,7 +71940,7 @@
 					"tradition": "Divine",
 					"DC": 20,
 					"entry": {
-						" constant": {
+						"constant": {
 							"4": {
 								"spells": [
 									{
@@ -72072,8 +71976,8 @@
 			"alignment": "N",
 			"size": "Gargantuan",
 			"creatureType": [
-				"Dragon",
-				"Plant"
+				"Plant",
+				"Dragon"
 			],
 			"traits": [],
 			"perception": {
@@ -72315,7 +72219,7 @@
 								}
 							]
 						},
-						" constant": {
+						"constant": {
 							"1": {
 								"spells": [
 									{
@@ -72345,9 +72249,9 @@
 			],
 			"inflicts": {
 				"damage": [
-					"slashing",
 					"piercing",
-					"bludgeoning"
+					"bludgeoning",
+					"slashing"
 				],
 				"condition": [
 					"{@condition prone}"

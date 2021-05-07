@@ -226,6 +226,11 @@ class DiceTag {
 			});
 		}
 
+		// TODO: @scaleDice cant be done using string handler
+		// str = str.replace(/(increases by ){@dice/g, (...m) => {
+		// 	return `${m[1]}{@scaledice`
+		// });
+
 		// @hit (form spells)
 		str = str.replace(/attack modifier is +(\d+)/g, (...m) => {
 			return `attack modifier is {@hit ${m[1]}}`
@@ -269,8 +274,8 @@ class SkillTag {
 		}).replace(SkillTag._SKILLS_REGEX, `{@skill $&}`)
 	}
 }
-SkillTag._LORE_REGEX = new RegExp(/((?:[A-Z][\S]+ )+)?Lore/g);
-SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery)/g);
+SkillTag._LORE_REGEX = new RegExp(/((?:[A-Z][^\s,;]+ )+)?Lore/g);
+SkillTag._SKILLS_REGEX = new RegExp(/(Acrobatics|Arcana|Athletics|Crafting|Deception|Diplomacy|Intimidation|Medicine|Nature|Occultism|Performance|Religion|Society|Stealth|Survival|Thievery|Perception)/g);
 
 class ConditionTag {
 	static tryRun (it) {

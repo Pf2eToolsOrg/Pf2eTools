@@ -100,7 +100,9 @@
 		</div>
 		<div class="col-sm-7">
 			<div class="wrp-stats-table mb-4 pf2-summary" id="class-summary">
-				<div class="pf2-summary__text" id="class-summary__text"></div>
+				<div class="pf2-summary__text" id="class-summary__text">
+					<div class="initial-message" style="font-size: 2em;">Loading...</div>
+				</div>
 				<div class="pf2-summary__image" id="class-summary__image"></div>
 			</div>
 		</div>
@@ -116,7 +118,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row flex mobile__flex-col mt-2 feat-view hidden">
+	<div class="row flex mt-2 feat-view hidden">
 		<div class="col-sm-6" id="featlistcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="feat-filter-search-group">
@@ -145,7 +147,8 @@
 			<ul class="list list--stats feats cls__list" style="max-height: 200px"></ul>
 		</div>
 		<div class="col-sm-6">
-			<div class="wrp-stats-table" style="margin: 10px 0; max-height: 300px">
+			<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
+			<div class="wrp-stats-table">
 				<div class="stats pf2-stat" id="featstats"></div>
 			</div>
 		</div>

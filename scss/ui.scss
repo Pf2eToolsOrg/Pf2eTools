@@ -809,3 +809,104 @@ Shared UI components
 	}
 }
 /* endregion */
+
+/* region Range Slider */
+.ui-slidr {
+	&__ {
+		$sz-top-row-pad: 6px;
+
+		&wrp {
+			font-size: 14px;
+		}
+
+		&wrp-top {}
+
+		&thumb {
+			width: 14px;
+			height: 18px;
+			top: -5px;
+			background: $rgb-bg--alt;
+			border: 1px solid $rgb-border-grey;
+			border-radius: 2px;
+
+			&--hover,
+			&:hover {
+				background: darken($rgb-bg--alt, 10%);
+				border-color: darken($rgb-border-grey, 10%);
+			}
+		}
+
+		&wrp-track {
+			padding-top: $sz-top-row-pad;
+			padding-bottom: 7px;
+		}
+
+		&track-outer {
+			border: 1px solid $rgb-border-grey;
+			height: 10px;
+			border-radius: 3px;
+		}
+
+		&track-inner {
+			background: $rgb-border-grey--muted;
+		}
+
+		&disp-value {
+			width: 86px;
+			height: 26px;
+			border-radius: 4px;
+
+			&--visible {
+				border: 1px solid $rgb-border-grey;
+				background: $rgb-bg;
+			}
+
+			&--left {
+				margin-right: 15px;
+				margin-left: 7px;
+			}
+
+			&--right {
+				margin-right: 7px;
+				margin-left: 15px;
+			}
+		}
+
+		&wrp-bottom {
+			height: 3em; // Padded so our `absolute` elements have space
+		}
+
+		&wrp-pips {
+			padding-top: 6px;
+		}
+
+		&pip {
+			width: 1px;
+			height: 4px;
+			background: $rgb-border-grey;
+
+			&--major {
+				height: 6px;
+				background: darken($rgb-border-grey, 15%);
+			}
+		}
+
+		&pip-label {
+			top: 0;
+			width: 24px;
+			height: 20px;
+			padding-top: 20px;
+		}
+
+		&btn {
+			width: 80px;
+			height: 26px;
+			border-radius: 4px;
+			flex-grow: 1;
+			margin: 0 7px;
+			border: 1px solid $rgb-border-grey;
+			background: $rgb-bg;
+		}
+	}
+}
+/* endregion */

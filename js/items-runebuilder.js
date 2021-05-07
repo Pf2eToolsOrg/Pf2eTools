@@ -31,7 +31,7 @@ class RuneBuilder extends ProxyBase {
 	}
 
 	get runes () {
-		return this._runeList.items.map(li => li.ix).map(ix => itemsPage._itemList[ix]);
+		return this._runeList.items.map(li => li.ix).map(ix => itemsPage._dataList[ix]);
 	}
 
 	initUi () {
@@ -85,7 +85,7 @@ class RuneBuilder extends ProxyBase {
 	async pDoLoadState (savedState) {
 		if (!savedState || !savedState.data) return;
 		const hashes = Renderer.runeItem.getHashesFromTag(savedState.data.t);
-		this.baseItem = itemsPage._itemList[itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hashes[0])];
+		this.baseItem = itemsPage._dataList[itemsPage._dataList.findIndex(it => UrlUtil.autoEncodeHash(it) === hashes[0])];
 		this.reset();
 		for (const hash of hashes.splice(1)) {
 			await RuneListUtil.pAddByHash(hash);
@@ -97,7 +97,7 @@ class RuneBuilder extends ProxyBase {
 
 	async pSaveRuneItemAndState () {
 		const hash = UrlUtil.autoEncodeHash(this.runeItem);
-		const isDuplicate = itemsPage._runeItems.map(idx => UrlUtil.autoEncodeHash(itemsPage._itemList[idx]) === hash).some(Boolean);
+		const isDuplicate = itemsPage._runeItems.map(idx => UrlUtil.autoEncodeHash(itemsPage._dataList[idx]) === hash).some(Boolean);
 
 		if (!this.runes.length) {
 			JqueryUtil.doToast({type: "warning", content: "Add runes to this item before saving."});
@@ -106,7 +106,7 @@ class RuneBuilder extends ProxyBase {
 		} else {
 			const data = {item: [this.runeItem]};
 			itemsPage._addItems(data);
-			const id = itemsPage._itI - 1;
+			const id = itemsPage._ixData - 1;
 			itemsPage._runeItems.push(id);
 			await ListUtil.pDoSublistAdd(id, true);
 
@@ -163,7 +163,7 @@ class RuneBuilder extends ProxyBase {
 		while (!confirm) {
 			const selected = await this._modalFilter.pGetUserSelection();
 			if (selected == null || !selected.length) return;
-			selectedItem = itemsPage._itemList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
+			selectedItem = itemsPage._dataList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
 			if (!this.runes.length && this.baseItem.category !== selectedItem.category) {
 				doReset = true;
 				confirm = true;
@@ -226,7 +226,7 @@ class RuneBuilder extends ProxyBase {
 	async activate () {
 		this._active = true;
 
-		const pageItem = itemsPage._itemList[itemsPage._itemId];
+		const pageItem = itemsPage._dataList[itemsPage._itemId];
 		if ((pageItem.type === "Equipment" && ["Rune Item"].concat(itemsPage._pageFilter._categoriesRuneItems).includes(pageItem.category)) || pageItem.runeItem) {
 			this.baseItem = MiscUtil.copy(pageItem);
 		} else {
@@ -235,7 +235,7 @@ class RuneBuilder extends ProxyBase {
 				Hist.setSubhash(RuneBuilder.HASH_KEY, null);
 				return;
 			}
-			const selectedItem = itemsPage._itemList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
+			const selectedItem = itemsPage._dataList.find(it => UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](it) === selected[0].values.hash);
 			this.baseItem = MiscUtil.copy(selectedItem);
 			Hist.setMainHash(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ITEMS](this.baseItem));
 		}
@@ -318,7 +318,7 @@ class RuneBuilder extends ProxyBase {
 				// if we just added or removed a rune, do nothing
 			} else if (isInitialLoad) {
 				// load from url
-				const ixItem = itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === Hist.getHashParts()[0]);
+				const ixItem = itemsPage._dataList.findIndex(it => UrlUtil.autoEncodeHash(it) === Hist.getHashParts()[0]);
 				itemsPage.doLoadHash(ixItem);
 				await this.activate();
 				if (subhashParts && subhashParts.length) {
@@ -468,11 +468,11 @@ class RuneBuilder extends ProxyBase {
 			Object.keys(savedState.savedRuneItems).forEach(k => {
 				const tag = savedState.savedRuneItems[k].data.t;
 				const hashes = Renderer.runeItem.getHashesFromTag(tag);
-				const items = hashes.map(hash => itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash))
-					.map(idx => itemsPage._itemList[idx]);
+				const items = hashes.map(hash => itemsPage._dataList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash))
+					.map(idx => itemsPage._dataList[idx]);
 				const data = {item: [Renderer.runeItem.getRuneItem(items[0], items.splice(1))]};
 				itemsPage._addItems(data);
-				itemsPage._runeItems.push(itemsPage._itI - 1);
+				itemsPage._runeItems.push(itemsPage._ixData - 1);
 			});
 		}
 	}
@@ -523,12 +523,12 @@ const RuneListUtil = {
 	},
 
 	async pAddByHash (hash) {
-		const ixItem = itemsPage._itemList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash);
+		const ixItem = itemsPage._dataList.findIndex(it => UrlUtil.autoEncodeHash(it) === hash);
 		await this.pDoAdd(ixItem);
 	},
 
 	async pDoAdd (index) {
-		const listItem = await RuneListUtil._getListRow(itemsPage._itemList[index], index);
+		const listItem = await RuneListUtil._getListRow(itemsPage._dataList[index], index);
 		this.list.addItem(listItem);
 		this.list.update();
 		this._updateNoRunesVisible();

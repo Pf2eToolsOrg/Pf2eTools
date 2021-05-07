@@ -23,7 +23,7 @@ VeCt = {
 	STR_NONE: "None",
 	STR_SEE_CONSOLE: "See the console (CTRL+SHIFT+J) for details.",
 
-	HASH_MON_SCALED: "scaled",
+	HASH_CR_SCALED: "scaled",
 	HASH_ITEM_RUNES: "runeitem",
 
 	FILTER_BOX_SUB_HASH_SEARCH_PREFIX: "fbsr",
@@ -252,6 +252,11 @@ StrUtil = {
 
 	toTitleCase (str) {
 		return str.toTitleCase();
+	},
+
+	getNamePart (str) {
+		if (typeof str !== "string") return str
+		return str.split(" ").filter(it => !StrUtil.TITLE_LOWER_WORDS.includes(it.toLowerCase())).join(" ")
 	},
 };
 
@@ -659,6 +664,152 @@ JqueryUtil = {
 };
 
 if (typeof window !== "undefined") window.addEventListener("load", JqueryUtil.initEnhancements);
+
+ElementUtil = {
+	getOrModify ({
+		tag,
+		clazz,
+		style,
+		click,
+		contextmenu,
+		change,
+		mousedown,
+		mouseup,
+		mousemove,
+		html,
+		text,
+		ele,
+		title,
+		children,
+	}) {
+		ele = ele || document.createElement(tag);
+
+		if (clazz) ele.className = clazz;
+		if (style) ele.setAttribute("style", style);
+		if (click) ele.addEventListener("click", click);
+		if (contextmenu) ele.addEventListener("contextmenu", contextmenu);
+		if (change) ele.addEventListener("change", change);
+		if (mousedown) ele.addEventListener("mousedown", mousedown);
+		if (mouseup) ele.addEventListener("mouseup", mouseup);
+		if (mousemove) ele.addEventListener("mousemove", mousemove);
+		if (html != null) ele.innerHTML = html;
+		if (text != null) ele.innerHTML = `${text}`.qq();
+		if (title != null) ele.setAttribute("title", title);
+		if (children) for (let i = 0, len = children.length; i < len; ++i) ele.append(children[i]);
+
+		ele.appends = ele.appends || ElementUtil._appends.bind(ele);
+		ele.appendTo = ele.appendTo || ElementUtil._appendTo.bind(ele);
+		ele.prependTo = ele.prependTo || ElementUtil._prependTo.bind(ele);
+		ele.addClass = ele.addClass || ElementUtil._addClass.bind(ele);
+		ele.removeClass = ele.removeClass || ElementUtil._removeClass.bind(ele);
+		ele.toggleClass = ele.toggleClass || ElementUtil._toggleClass.bind(ele);
+		ele.showVe = ele.showVe || ElementUtil._showVe.bind(ele);
+		ele.hideVe = ele.hideVe || ElementUtil._hideVe.bind(ele);
+		ele.toggleVe = ele.toggleVe || ElementUtil._toggleVe.bind(ele);
+		ele.empty = ele.empty || ElementUtil._empty.bind(ele);
+		ele.detach = ele.detach || ElementUtil._detach.bind(ele);
+		ele.attr = ele.attr || ElementUtil._attr.bind(ele);
+		ele.val = ele.val || ElementUtil._val.bind(ele);
+		ele.html = ele.html || ElementUtil._html.bind(ele);
+
+		return ele;
+	},
+
+	_appends (child) {
+		this.appendChild(child);
+		return this;
+	},
+
+	_appendTo (parent) {
+		parent.appendChild(this);
+		return this;
+	},
+
+	_prependTo (parent) {
+		parent.prepend(this);
+		return this;
+	},
+
+	_addClass (clazz) {
+		this.classList.add(clazz);
+		return this;
+	},
+
+	_removeClass (clazz) {
+		this.classList.remove(clazz);
+		return this;
+	},
+
+	_toggleClass (clazz, isActive) {
+		if (isActive == null) this.classList.toggle(clazz);
+		else if (isActive) this.classList.add(clazz);
+		else this.classList.remove(clazz);
+		return this;
+	},
+
+	_showVe () {
+		this.classList.remove("ve-hidden");
+		return this;
+	},
+
+	_hideVe () {
+		this.classList.add("ve-hidden");
+		return this;
+	},
+
+	_toggleVe (isActive) {
+		this.toggleClass("ve-hidden", isActive == null ? isActive : !isActive);
+		return this;
+	},
+
+	_empty () {
+		this.innerHTML = "";
+		return this;
+	},
+
+	_detach () {
+		if (this.parentElement) this.parentElement.removeChild(this);
+		return this;
+	},
+
+	_attr (name, value) {
+		this.setAttribute(name, value);
+		return this;
+	},
+
+	_html (html) {
+		this.innerHTML = html;
+		return this;
+	},
+
+	_val (val) {
+		if (val !== undefined) {
+			switch (this.tagName) {
+				case "SELECT": {
+					let selectedIndexNxt = -1;
+					for (let i = 0, len = this.options.length; i < len; ++i) {
+						if (this.options[i]?.value === val) { selectedIndexNxt = i; break; }
+					}
+					this.selectedIndex = selectedIndexNxt;
+					return this;
+				}
+
+				default: {
+					this.value = val;
+					return this;
+				}
+			}
+		}
+
+		switch (this.tagName) {
+			case "SELECT": return this.options[this.selectedIndex]?.value;
+
+			default: return this.value;
+		}
+	},
+}
+
+if (typeof window !== "undefined") window.e_ = ElementUtil.getOrModify;
 
 ObjUtil = {
 	mergeWith (source, target, fnMerge, options = {depth: 1}) {
@@ -1089,7 +1240,7 @@ MiscUtil = {
 		return new Promise(resolve => setTimeout(() => resolve(resolveAs), msecs));
 	},
 
-	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "name", "colStyles", "rowStyles", "style", "styles", "shortName", "subclassShortName", "immunities", "resistances", "weaknesses"]),
+	GENERIC_WALKER_ENTRIES_KEY_BLACKLIST: new Set(["caption", "type", "name", "colStyles", "rowStyles", "style", "styles", "shortName", "subclassShortName", "immunities", "resistances", "weaknesses", "featType", "trait", "traits", "components"]),
 
 	/**
 	 * @param [opts]
@@ -1730,6 +1881,8 @@ UrlUtil.URL_TO_HASH_BUILDER["classFeature"] = (it) => UrlUtil.encodeForHash([it.
 UrlUtil.URL_TO_HASH_BUILDER["subclassFeature"] = (it) => UrlUtil.encodeForHash([it.name, it.className, it.classSource, it.subclassShortName, it.subclassSource, it.level, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["runeItem"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["domain"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["group"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // endregion
 
 UrlUtil.PG_TO_NAME = {};
@@ -1792,6 +1945,8 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_TRAIT] = UrlUtil.PG_TRAITS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_BOOK] = UrlUtil.PG_BOOK;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PAGE] = null;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_PLACE] = UrlUtil.PG_PLACES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_COMPANION] = UrlUtil.PG_COMPANIONS_FAMILIARS;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FAMILIAR] = UrlUtil.PG_COMPANIONS_FAMILIARS;
 
 UrlUtil.CAT_TO_HOVER_PAGE = {};
 UrlUtil.CAT_TO_HOVER_PAGE[Parser.CAT_ID_CLASS_FEATURE] = "classfeature";
@@ -1939,25 +2094,6 @@ SortUtil = {
 		return SortUtil.ascSort(a, b);
 	},
 
-	ascSortCr (a, b) {
-		if (typeof FilterItem !== "undefined") {
-			if (a instanceof FilterItem) a = a.item;
-			if (b instanceof FilterItem) b = b.item;
-		}
-		// always put unknown values last
-		if (a === "Unknown") a = "998";
-		if (b === "Unknown") b = "998";
-		if (a === "\u2014" || a == null) a = "999";
-		if (b === "\u2014" || b == null) b = "999";
-		return SortUtil.ascSort(Parser.crToNumber(a), Parser.crToNumber(b));
-	},
-
-	ascSortAtts (a, b) {
-		const aSpecial = a === "special";
-		const bSpecial = b === "special";
-		return aSpecial && bSpecial ? 0 : aSpecial ? 1 : bSpecial ? -1 : Parser.ABIL_ABVS.indexOf(a) - Parser.ABIL_ABVS.indexOf(b);
-	},
-
 	ascSortRarity (a, b) {
 		if (typeof FilterItem !== "undefined") {
 			if (a instanceof FilterItem) a = a.item;
@@ -1995,6 +2131,25 @@ SortUtil = {
 		else if (isNaN(a)) return 1;
 		else if (isNaN(b)) return -1;
 		else return 0;
+	},
+
+	sortItemSubCategory (a, b) {
+		const out = SortUtil.ascSort(a.item.split(" ").last(), b.item.split(" ").last());
+		if (out === 0) return SortUtil.ascSort(a, b)
+		else return out;
+	},
+
+	sortDice (a, b) {
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+		const A = String(a).split("d");
+		const B = String(b).split("d");
+		if (A.length < B.length) return -1;
+		else if (A.length > B.length) return 1;
+		else if (SortUtil._ascSort(A[0], B[0]) !== 0) return SortUtil._ascSort(A[0], B[0]);
+		return SortUtil.ascSort((`000${A[1]}`).slice(-3), (`000${B[1]}`).slice(-3));
 	},
 
 	initBtnSortHandlers ($wrpBtnsSort, list) {
@@ -2454,22 +2609,6 @@ DataUtil = {
 				} else throw new Error(`One of "names" or "items" must be provided!`)
 			}
 
-			function doMod_calculateProp (modInfo, prop) {
-				copyTo[prop] = copyTo[prop] || {};
-				const toExec = modInfo.formula.replace(/<\$([^$]+)\$>/g, (...m) => {
-					switch (m[1]) {
-						case "prof_bonus":
-							return Parser.crToPb(copyTo.cr);
-						case "dex_mod":
-							return Parser.getAbilityModNumber(copyTo.dex);
-						default:
-							throw new Error(`Unknown variable "${m[1]}"`);
-					}
-				});
-				// eslint-disable-next-line no-eval
-				copyTo[prop][modInfo.prop] = eval(toExec);
-			}
-
 			function doMod_scalarAddProp (modInfo, prop) {
 				function applyTo (k) {
 					const out = Number(copyTo[prop][k]) + modInfo.scalar;
@@ -2525,8 +2664,6 @@ DataUtil = {
 									return doMod_insertArr(modInfo, prop);
 								case "removeArr":
 									return doMod_removeArr(modInfo, prop);
-								case "calculateProp":
-									return doMod_calculateProp(modInfo, prop);
 								case "scalarAddProp":
 									return doMod_scalarAddProp(modInfo, prop);
 								case "scalarMultProp":
@@ -2555,30 +2692,6 @@ DataUtil = {
 								switch (parts[0]) {
 									case "name":
 										return copyTo.name;
-									case "short_name":
-									case "title_short_name": {
-										return Renderer.creature.getShortName(copyTo, parts[0] === "title_short_name");
-									}
-									case "spell_dc": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										return 8 + Parser.getAbilityModNumber(Number(copyTo[parts[1]])) + Parser.crToPb(copyTo.cr);
-									}
-									case "to_hit": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										const total = Parser.crToPb(copyTo.cr) + Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-										return total >= 0 ? `+${total}` : total;
-									}
-									case "damage_mod": {
-										if (!Parser.ABIL_ABVS.includes(parts[1])) throw new Error(`Unknown ability score "${parts[1]}"`);
-										const total = Parser.getAbilityModNumber(Number(copyTo[parts[1]]));
-										return total === 0 ? "" : total > 0 ? ` +${total}` : ` ${total}`;
-									}
-									case "damage_avg": {
-										const replaced = parts[1].replace(/(str|dex|con|int|wis|cha)/gi, (...m2) => Parser.getAbilityModNumber(Number(copyTo[m2[0]])));
-										const clean = replaced.replace(/[^-+/*0-9.,]+/g, "");
-										// eslint-disable-next-line no-eval
-										return Math.floor(eval(clean));
-									}
 									default:
 										return m[0];
 								}
@@ -2712,7 +2825,8 @@ DataUtil = {
 			if (DataUtil.item._loadedJson) return DataUtil.item._loadedJson;
 			DataUtil.item._pLoadingJson = (async () => {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index.json`);
-				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
+				const files = ["baseitems.json", ...Object.values(index)];
+				const allData = await Promise.all(files.map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
 				DataUtil.item._loadedJson = {
 					item: allData.map(it => it.item || []).flat(),
 					baseitem: allData.map(it => it.baseitem || []).flat(),
@@ -4625,6 +4739,13 @@ BrewUtil = {
 		source = source.toLowerCase();
 		BrewUtil._buildSourceCache();
 		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].dateReleased || source : source;
+	},
+
+	sourceJsonToUrl (source) {
+		if (!source) return "";
+		source = source.toLowerCase();
+		BrewUtil._buildSourceCache();
+		return BrewUtil._sourceCache[source] ? BrewUtil._sourceCache[source].url || source : source;
 	},
 
 	sourceJsonToSource (source) {

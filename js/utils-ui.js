@@ -3788,7 +3788,410 @@ class ComponentUiUtil {
 		// If no mode is specified, default to a "count 1" chooser
 		if (opts.count == null && opts.min == null && opts.max == null) opts.count = 1;
 	}
+
+	static $getSliderRange (comp, opts) {
+		opts = opts || {};
+		const slider = new ComponentUiUtil.RangeSlider({comp, ...opts});
+		return slider.$get();
+	}
 }
+ComponentUiUtil.RangeSlider = class {
+	constructor (
+		{
+			comp,
+			propMin,
+			propMax,
+			propCurMin,
+			propCurMax,
+			fnDisplay,
+		},
+	) {
+		this._comp = comp;
+		this._propMin = propMin;
+		this._propMax = propMax;
+		this._propCurMin = propCurMin;
+		this._propCurMax = propCurMax;
+		this._fnDisplay = fnDisplay;
+
+		this._isSingle = !this._propCurMax;
+
+		// region Make a copy of the interesting bits of the parent component, so we can freely change them without
+		//   outside performance implications
+		const compCpyState = {
+			[this._propMin]: this._comp._state[this._propMin],
+			[this._propCurMin]: this._comp._state[this._propCurMin],
+			[this._propMax]: this._comp._state[this._propMax],
+		};
+		if (!this._isSingle) compCpyState[this._propCurMax] = this._comp._state[this._propCurMax];
+		this._compCpy = BaseComponent.fromObject(compCpyState);
+
+		// Sync parent changes to our state
+		this._comp._addHook("state", this._propMin, () => this._compCpy._state[this._propMin] = this._comp._state[this._propMin]);
+		this._comp._addHook("state", this._propCurMin, () => this._compCpy._state[this._propCurMin] = this._comp._state[this._propCurMin]);
+		this._comp._addHook("state", this._propMax, () => this._compCpy._state[this._propMax] = this._comp._state[this._propMax]);
+
+		if (!this._isSingle) this._comp._addHook("state", this._propCurMax, () => this._compCpy._state[this._propCurMax] = this._comp._state[this._propCurMax]);
+		// endregion
+
+		this._cacheRendered = null;
+		this._dispTrackOuter = null;
+		this._dispTrackInner = null;
+		this._thumbLow = null;
+		this._thumbHigh = null;
+		this._dragMeta = null;
+	}
+
+	$get () {
+		const out = this.get();
+		return $(out);
+	}
+
+	get () {
+		this.constructor._init();
+		this.constructor._ALL_SLIDERS.add(this);
+
+		if (this._cacheRendered) return this._cacheRendered;
+
+		// region Top part
+		const dispValueLeft = this._isSingle ? this._getSpcSingleValue() : this._getDispValue({isVisible: true, side: "left"});
+		const dispValueRight = this._getDispValue({isVisible: true, side: "right"});
+
+		this._dispTrackInner = this._isSingle ? null : e_({
+			tag: "div",
+			clazz: "ui-slidr__track-inner h-100 absolute",
+		});
+
+		this._thumbLow = this._getThumb();
+		this._thumbHigh = this._isSingle ? null : this._getThumb();
+
+		this._dispTrackOuter = e_({
+			tag: "div",
+			clazz: `relative w-100 ui-slidr__track-outer`,
+			children: [
+				this._dispTrackInner,
+				this._thumbLow,
+				this._thumbHigh,
+			].filter(Boolean),
+		});
+
+		const wrpTrack = e_({
+			tag: "div",
+			clazz: `flex-v-center w-100 h-100 ui-slidr__wrp-track clickable`,
+			mousedown: evt => {
+				const thumb = this._getClosestThumb(evt);
+				this._handleMouseDown(evt, thumb);
+			},
+			children: [
+				this._dispTrackOuter,
+			],
+		});
+
+		const wrpTop = e_({
+			tag: "div",
+			clazz: "flex-v-center w-100 ui-slidr__wrp-top",
+			children: [
+				dispValueLeft,
+				wrpTrack,
+				dispValueRight,
+			].filter(Boolean),
+		});
+		// endregion
+
+		// region Bottom part
+		const wrpPips = e_({
+			tag: "div",
+			clazz: `w-100 flex relative clickable h-100 ui-slidr__wrp-pips`,
+			mousedown: evt => {
+				const thumb = this._getClosestThumb(evt);
+				this._handleMouseDown(evt, thumb);
+			},
+		});
+
+		const wrpBottom = e_({
+			tag: "div",
+			clazz: "w-100 flex-vh-center ui-slidr__wrp-bottom",
+			children: [
+				this._isSingle ? this._getSpcSingleValue() : this._getDispValue({side: "left"}), // Pad the start
+				wrpPips,
+				this._getDispValue({side: "right"}), // and the end
+			].filter(Boolean),
+		});
+		// endregion
+
+		// region Hooks
+		const hkChangeValue = () => {
+			const min = this._compCpy._state[this._propMin]; const max = this._compCpy._state[this._propMax];
+
+			const curMin = this._compCpy._state[this._propCurMin];
+			const pctMin = ((curMin - min) / (max - min)) * 100;
+			this._thumbLow.style.left = `calc(${pctMin}% - ${this.constructor._W_THUMB_PX / 2}px)`;
+			const toDisplayLeft = this._fnDisplay ? `${this._fnDisplay(curMin)}`.qq() : curMin;
+			if (!this._isSingle) dispValueLeft.html(toDisplayLeft);
+
+			if (!this._isSingle) {
+				this._dispTrackInner.style.left = `${pctMin}%`;
+
+				const curMax = this._compCpy._state[this._propCurMax];
+				const pctMax = ((curMax - min) / (max - min)) * 100;
+				this._dispTrackInner.style.right = `${100 - pctMax}%`;
+				this._thumbHigh.style.left = `calc(${pctMax}% - ${this.constructor._W_THUMB_PX / 2}px)`;
+				dispValueRight.html(this._fnDisplay ? `${this._fnDisplay(curMax)}`.qq() : curMax);
+			} else {
+				dispValueRight.html(toDisplayLeft);
+			}
+		};
+
+		const hkChangeLimit = () => {
+			const pips = [];
+
+			const numPips = this._compCpy._state[this._propMax] - this._compCpy._state[this._propMin];
+			let pipIncrement = 1;
+			// Cap the number of pips
+			if (numPips > ComponentUiUtil.RangeSlider._MAX_PIPS) pipIncrement = Math.ceil(numPips / ComponentUiUtil.RangeSlider._MAX_PIPS);
+
+			let i, len;
+			for (
+				i = this._compCpy._state[this._propMin], len = this._compCpy._state[this._propMax] + 1;
+				i < len;
+				i += pipIncrement
+			) {
+				pips.push(this._getWrpPip({
+					isMajor: i === this._compCpy._state[this._propMin] || i === (len - 1),
+					value: i,
+				}));
+			}
+
+			// Ensure the last pip is always rendered, even if we're reducing pips
+			if (i !== this._compCpy._state[this._propMax]) pips.push(this._getWrpPip({isMajor: true, value: this._compCpy._state[this._propMax]}));
+
+			wrpPips.empty();
+			e_({
+				ele: wrpPips,
+				children: pips,
+			});
+
+			hkChangeValue();
+		};
+
+		this._compCpy._addHook("state", this._propMin, hkChangeLimit);
+		this._compCpy._addHook("state", this._propMax, hkChangeLimit);
+		this._compCpy._addHook("state", this._propCurMin, hkChangeValue);
+		if (!this._isSingle) this._compCpy._addHook("state", this._propCurMax, hkChangeValue);
+
+		hkChangeLimit();
+		// endregion
+
+		const wrp = e_({
+			tag: "div",
+			clazz: "flex-col w-100 ui-slidr__wrp",
+			children: [
+				wrpTop,
+				wrpBottom,
+			],
+		});
+
+		return this._cacheRendered = wrp;
+	}
+
+	destroy () {
+		this.constructor._ALL_SLIDERS.delete(this);
+		if (this._cacheRendered) this._cacheRendered.remove();
+	}
+
+	_getDispValue ({isVisible, side}) {
+		return e_({
+			tag: "div",
+			clazz: `overflow-hidden ui-slidr__disp-value no-shrink no-grow flex-vh-center bold no-select ${isVisible ? `ui-slidr__disp-value--visible` : ""} ui-slidr__disp-value--${side}`,
+		});
+	}
+
+	_getSpcSingleValue () {
+		return e_({
+			tag: "div",
+			clazz: `px-2`,
+		});
+	}
+
+	_getThumb () {
+		const thumb = e_({
+			tag: "div",
+			clazz: "ui-slidr__thumb absolute clickable",
+			mousedown: evt => this._handleMouseDown(evt, thumb),
+		}).attr("draggable", true);
+
+		return thumb;
+	}
+
+	_getWrpPip ({isMajor, value} = {}) {
+		const min = this._compCpy._state[this._propMin]; const max = this._compCpy._state[this._propMax];
+		const pctValue = ((value - min) / (max - min)) * 100;
+		const posLeft = `${pctValue}%`;
+		const styleLeft = `left: ${posLeft};`;
+
+		const pip = e_({
+			tag: "div",
+			clazz: `ui-slidr__pip ${isMajor ? `ui-slidr__pip--major` : `absolute`}`,
+		});
+
+		const dispLabel = e_({
+			tag: "div",
+			clazz: "absolute ui-slidr__pip-label flex-vh-center ve-small no-wrap",
+			html: isMajor ? this._fnDisplay ? `${this._fnDisplay(value)}`.qq() : value : "",
+		});
+
+		return e_({
+			tag: "div",
+			clazz: "flex-col flex-vh-center absolute no-select",
+			children: [
+				pip,
+				dispLabel,
+			],
+			style: styleLeft,
+		});
+	}
+
+	/**
+	 * Convert pixel-space to track-space.
+	 * Example usage:
+	 * ```
+	 * click: evt => {
+	 *   const {x: trackOriginX, width: trackWidth} = this._dispTrackOuter.getBoundingClientRect();
+	 *   const value = this._getRelativeValue(evt, {trackOriginX, trackWidth});
+	 *   this._handleClick(evt, value);
+	 * }
+	 * ```
+	 */
+	_getRelativeValue (evt, {trackOriginX, trackWidth}) {
+		const min = this._compCpy._state[this._propMin]; const max = this._compCpy._state[this._propMax];
+
+		const xEvt = EventUtil.getClientX(evt) - trackOriginX;
+		const rawVal = min
+			+ Math.round(
+				(xEvt / trackWidth) * (max - min),
+			);
+
+		return Math.min(max, Math.max(min, rawVal)); // Clamp eet
+	}
+
+	_getClosestThumb (evt) {
+		if (this._isSingle) return this._thumbLow;
+
+		const {x: trackOriginX, width: trackWidth} = this._dispTrackOuter.getBoundingClientRect();
+		const value = this._getRelativeValue(evt, {trackOriginX, trackWidth});
+
+		if (value < this._compCpy._state[this._propCurMin]) return this._thumbLow;
+		if (value > this._compCpy._state[this._propCurMax]) return this._thumbHigh;
+
+		const {distToMin, distToMax} = this._getDistsToCurrentMinAndMax(value);
+		if (distToMax < distToMin) return this._thumbHigh;
+		return this._thumbLow;
+	}
+
+	_getDistsToCurrentMinAndMax (value) {
+		if (this._isSingle) throw new Error(`Can not get distance to max value for singleton slider!`);
+
+		// Move the closest slider to this pip's location
+		const distToMin = Math.abs(this._compCpy._state[this._propCurMin] - value);
+		const distToMax = Math.abs(this._compCpy._state[this._propCurMax] - value);
+		return {distToMin, distToMax}
+	}
+
+	_handleClick (evt, value) {
+		evt.stopPropagation();
+		evt.preventDefault();
+
+		// If lower than the lowest value, set the low value
+		if (value < this._compCpy._state[this._propCurMin]) this._compCpy._state[this._propCurMin] = value;
+
+		// If higher than the highest value, set the high value
+		if (value > this._compCpy._state[this._propCurMax]) this._compCpy._state[this._propCurMax] = value;
+
+		// Move the closest slider to this pip's location
+		const {distToMin, distToMax} = this._getDistsToCurrentMinAndMax(value);
+
+		if (distToMax < distToMin) this._compCpy._state[this._propCurMax] = value;
+		else this._compCpy._state[this._propCurMin] = value;
+	}
+
+	_handleMouseDown (evt, thumb) {
+		evt.preventDefault();
+		evt.stopPropagation();
+
+		// region Set drag metadata
+		const {x: trackOriginX, width: trackWidth} = this._dispTrackOuter.getBoundingClientRect();
+
+		thumb.addClass(`ui-slidr__thumb--hover`);
+
+		this._dragMeta = {
+			trackOriginX,
+			trackWidth,
+			thumb,
+		};
+		// endregion
+
+		this._handleMouseMove(evt)
+	}
+
+	_handleMouseUp () {
+		const wasActive = this._doDragCleanup();
+
+		// On finishing a slide, push our state to the parent comp
+		if (wasActive) {
+			const nxtState = {
+				[this._propMin]: this._compCpy._state[this._propMin],
+				[this._propMax]: this._compCpy._state[this._propMax],
+				[this._propCurMin]: this._compCpy._state[this._propCurMin],
+			};
+			if (!this._isSingle) nxtState[this._propCurMax] = this._compCpy._state[this._propCurMax];
+
+			this._comp._proxyAssignSimple("state", nxtState);
+		}
+	}
+
+	_handleMouseMove (evt) {
+		if (!this._dragMeta) return;
+
+		const val = this._getRelativeValue(evt, this._dragMeta);
+
+		if (this._dragMeta.thumb === this._thumbLow) {
+			if (val > this._compCpy._state[this._propCurMax]) return;
+			this._compCpy._state[this._propCurMin] = val;
+		} else if (this._dragMeta.thumb === this._thumbHigh) {
+			if (val < this._compCpy._state[this._propCurMin]) return;
+			this._compCpy._state[this._propCurMax] = val;
+		}
+	}
+
+	_doDragCleanup () {
+		const isActive = this._dragMeta != null;
+
+		if (this._dragMeta?.thumb) this._dragMeta.thumb.removeClass(`ui-slidr__thumb--hover`);
+
+		this._dragMeta = null;
+
+		return isActive;
+	}
+
+	static _init () {
+		if (this._isInit) return;
+		document.addEventListener("mousemove", evt => {
+			for (const slider of this._ALL_SLIDERS) {
+				slider._handleMouseMove(evt);
+			}
+		});
+
+		document.addEventListener("mouseup", evt => {
+			for (const slider of this._ALL_SLIDERS) {
+				slider._handleMouseUp(evt);
+			}
+		});
+	}
+}
+ComponentUiUtil.RangeSlider._isInit = false;
+ComponentUiUtil.RangeSlider._ALL_SLIDERS = new Set();
+ComponentUiUtil.RangeSlider._W_THUMB_PX = 16;
+ComponentUiUtil.RangeSlider._W_LABEL_PX = 24;
+ComponentUiUtil.RangeSlider._MAX_PIPS = 40;
 
 if (typeof module !== "undefined") {
 	module.exports = {

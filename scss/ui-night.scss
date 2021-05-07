@@ -235,3 +235,43 @@ Shared UI components
 }
 /* endregion */
 
+/* region Range Slider */
+.night-mode .ui-slidr {
+	&__ {
+		&thumb {
+			background: $rgb-border-grey--trans;
+			border-color: $rgb-font--night;
+
+			&--hover,
+			&:hover {
+				background: lighten($rgb-border-grey--trans, 10%);
+				border-color: $rgb-font--night;
+			}
+		}
+
+		&track-outer {
+			border-color: $rgb-border-grey--night;
+		}
+
+		&track-inner {
+			background: $rgb-border-grey--trans-night;
+		}
+
+		&disp-value {
+			&--visible {
+				border-color: $rgb-border-grey--night;
+				background: $rgb-bg--night;
+			}
+		}
+
+		&pip {
+			background: $rgb-font--night;
+		}
+
+		&btn {
+			border-color: $rgb-border-grey--night;
+			background: $rgb-bg--night;
+		}
+	}
+}
+/* endregion */
