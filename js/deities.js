@@ -149,7 +149,7 @@ function renderStatblock (deity) {
 
 let deitiesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	deitiesPage = new DeitiesPage();
 	deitiesPage.pOnLoad()
 });

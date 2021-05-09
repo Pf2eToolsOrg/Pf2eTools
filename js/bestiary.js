@@ -26,7 +26,7 @@ class BestiaryPage extends ListPage {
 		if (!cr.uniqueId && this._addedHashes.has(hash)) return null;
 		this._addedHashes.add(hash);
 
-		const isExcluded = ExcludeUtil.isExcluded(hash, "monster", cr.source);
+		const isExcluded = ExcludeUtil.isExcluded(hash, "creature", cr.source);
 
 		this._pageFilter.mutateAndAddToFilters(cr, isExcluded);
 
@@ -399,11 +399,16 @@ class BestiaryPage extends ListPage {
 	async _pPostLoad () {
 		const homebrew = await BrewUtil.pAddBrewData();
 		await this._addCreatures(homebrew);
-		BrewUtil.bind({list: this._list});
+		BrewUtil.bind({list: this._list, pHandleBrew: this._handleBrew.bind(this)});
 		await BrewUtil.pAddLocalBrewData();
 		BrewUtil.makeBrewButton("manage-brew");
 		BrewUtil.bind({filterBox: this._pageFilter.filterBox, sourceFilter: this._pageFilter.sourceFilter});
 		await ListUtil.pLoadState();
+	}
+
+	_handleBrew (homebrew) {
+		this._addCreatures(homebrew.creature);
+		return Promise.resolve();
 	}
 
 	_handleBestiaryLiClick (evt, listItem) {
@@ -586,7 +591,7 @@ function getLvl (obj) {
 
 let bestiaryPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	bestiaryPage = new BestiaryPage();
 	bestiaryPage.pOnLoad()
 });

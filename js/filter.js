@@ -23,6 +23,31 @@ class PageFilter {
 	}
 
 	mutateForFilters (entity, opts) { throw new Error("Unimplemented!"); }
+	handleTraitImplies (entity, opts) {
+		opts = opts || {};
+		if (!Renderer.trait.TRAITS) return;
+		entity[opts.traitProp].forEach(trt => {
+			const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trt)];
+			if (!lookup || !lookup.implies) return;
+			Object.keys(lookup.implies).filter(it => opts.entityTypes.includes(it))
+				.forEach(key => Object.entries(lookup.implies[key]).forEach(([prop, values]) => {
+					entity[prop] = entity[prop] || [];
+					if (typeof entity[prop] === "string") entity[prop] = [entity[prop]];
+					else if (entity[prop] instanceof Array) {
+						// Do nothing
+					} else return;
+
+					if (values instanceof Array) entity[prop].push(...values);
+					else if (typeof values === "string") entity[prop].push(values);
+					else if (typeof values === "object") {
+						const regex = new RegExp(values.regex, values.flags);
+						Array.from(trt.matchAll(regex)).forEach(m => {
+							entity[prop].push(values.value.replace(/(?<!\\)\$(\d+)/g, g => m[Number(g[1])]));
+						});
+					}
+				}));
+		});
+	}
 	addToFilters (entity, isExcluded, opts) { throw new Error("Unimplemented!"); }
 	toDisplay (values, entity) { throw new Error("Unimplemented!"); }
 	async _pPopulateBoxOptions () { throw new Error("Unimplemented!"); }
@@ -2101,11 +2126,6 @@ class SourceFilter extends Filter {
 			),
 			null,
 			new ContextUtil.Action(
-				"Select SRD Sources",
-				() => this._doSetPinsSrd(),
-			),
-			null,
-			new ContextUtil.Action(
 				"Invert Selection",
 				() => this._doInvertPins(),
 			),
@@ -2167,20 +2187,14 @@ class SourceFilter extends Filter {
 		Object.keys(this._state).forEach(k => this._state[k] = Parser.SOURCES_VANILLA.has(k) ? 1 : 0);
 	}
 
-	_doSetPinsSrd () {
-		SourceFilter._SRD_SOURCES = SourceFilter._SRD_SOURCES || new Set([SRC_PHB, SRC_MM, SRC_DMG]);
-
-		Object.keys(this._state).forEach(k => this._state[k] = SourceFilter._SRD_SOURCES.has(k) ? 1 : 0);
-
-		const srdFilter = this._filterBox.filters.find(it => it.isSrdFilter);
-		if (!srdFilter) return;
-		srdFilter.setValue("SRD", 1);
-	}
-
 	static getCompleteFilterSources (ent) {
 		return ent.otherSources
-			? [ent.source].concat(ent.otherSources.map(src => new SourceFilterItem({item: src.source, isIgnoreRed: true, isOtherSource: true})))
-			: ent.source;
+			? [ent.source].concat(Object.values(ent.otherSources).flat().map(src => new SourceFilterItem({
+				item: src.split("|")[0],
+				isIgnoreRed: true,
+				isOtherSource: true,
+			})))
+			: ent.source
 	}
 
 	_doRenderPills_doRenderWrpGroup_getHrDivider (group) {
@@ -3412,11 +3426,11 @@ class TraitsFilter extends MultiFilter {
 		let filterOpts = opts.filterOpts || {};
 		filterOpts["Rarity"] = filterOpts["Rarity"] || {itemSortFn: SortUtil.ascSortRarity};
 		const filterSortFn = opts.filterSortFn || TraitsFilter._getDefaultFilterSortFn();
-		const catLookup = Renderer.trait._categoryLookup;
+		const categories = Renderer.trait.TRAITS._categories;
 		opts.filters = [];
 		let filtersByCat = {};
 
-		Object.keys(catLookup).filter(k => !k.startsWith("_")).sort(filterSortFn).forEach(cat => {
+		categories.filter(k => !k.startsWith("_")).sort(filterSortFn).forEach(cat => {
 			if (opts.discardCategories[cat]) return;
 			filtersByCat[cat] = new Filter({header: cat, ...filterOpts[cat]});
 			opts.filters.push(filtersByCat[cat]);
@@ -3444,11 +3458,11 @@ class TraitsFilter extends MultiFilter {
 	}
 
 	_getTraitCategories (trait) {
-		let out = new Set()
-		for (let cat in Renderer.trait._categoryLookup) {
-			if (Renderer.trait._categoryLookup[cat].includes(trait)) out.add(cat);
-		}
-		return Array.from(out).filter(it => !this._discardCategories[it]).filter(it => !it.startsWith("_"))
+		let out = new Set();
+		const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trait)]
+		if (lookup) lookup.categories.forEach(cat => out.add(cat));
+		else out.add("General")
+		return Array.from(out).filter(it => !this._discardCategories[it]).filter(it => !it.startsWith("_"));
 	}
 
 	addItem (item) {

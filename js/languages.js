@@ -199,7 +199,7 @@ class LanguagesPage extends ListPage {
 
 let languagesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	languagesPage = new LanguagesPage();
 	languagesPage.pOnLoad()
 });

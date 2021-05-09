@@ -2976,7 +2976,9 @@ ul.list.books > li > a > span.name:hover {
 		&.active {
 			> a,
 			> span {
-				color: white;
+				color: black;
+				// $night-pf2-red
+				background: #e06565;
 			}
 		}
 
@@ -3657,10 +3659,6 @@ ul.list.books > li > a > span.name:hover {
 	}
 }
 
-/****************************************
- * Print styles
- ***************************************/
-
 /* Hopefully fixes annoying clipping on iPhones */
 .mobile__mh-100 {
 	min-height: 100px;
@@ -3668,6 +3666,10 @@ ul.list.books > li > a > span.name:hover {
 		min-height: 0;
 	}
 }
+
+/****************************************
+ * Print styles
+ ***************************************/
 
 @media print {
 	@page {

@@ -122,10 +122,10 @@ class PageFilterItems extends PageFilter {
 		item._sPrice = Parser.priceToValue(item.price);
 
 		// Filters
+		item._fSources = SourceFilter.getCompleteFilterSources(item);
 		item._fPrice = PageFilterItems._priceCategory(item._sPrice);
 		item._fWeaponRange = item.category === "Weapon" ? (item.ranged ? "Ranged" : "Melee") : null;
 		item._fMisc = item.consumable ? ["Consumable"] : [];
-		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
 		for (let entry of item.entries) {
 			if (typeof entry === "object") {
 				if (entry.type === "activation") item._fMisc.push("Activatable");
@@ -140,6 +140,10 @@ class PageFilterItems extends PageFilter {
 		if (item.generic === "V") item._fType.push("Specific Variant");
 		item._fAppliesTo = item.appliesTo ? `${item.appliesTo} Rune` : null;
 
+		item._fDamage = undefined; // set by trait implies
+		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
+		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
+
 		// RuneItem Builder
 		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
 	}
@@ -147,7 +151,7 @@ class PageFilterItems extends PageFilter {
 	addToFilters (item, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(item.source);
+		this._sourceFilter.addItem(item._fSources);
 		this._levelFilter.addItem(Math.floor(item._fLvl));
 		this._categoryFilter.addItem(item.category);
 		this._traitFilter.addItem(item._fTraits)
@@ -155,6 +159,7 @@ class PageFilterItems extends PageFilter {
 		this._bulkFilter.addItem(item._fBulk);
 		if (item.subCategory) this._subCategoryFilter.addItem(item.subCategory);
 		if (item.group) this._groupFilter.addItem(item.group);
+		if (item._fDamageType) this._damageTypeFilter.addItem(item._fDamageType);
 		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
 		if (item.damage) this._damageDiceFilter.addItem(item.damage);
 		if (item.shieldStats != null) this._hpFilter.addItem(item.shieldStats.hp);
@@ -188,13 +193,13 @@ class PageFilterItems extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it._fLvl,
 			it.category,
 			it.subCategory,
 			[
 				it.damage,
-				it.damageType,
+				it._fDamageType || it.damageType,
 			],
 			it.group,
 			it._fWeaponRange,

@@ -14,12 +14,13 @@ class PageFilterBackgrounds extends PageFilter {
 	}
 
 	mutateForFilters (bg) {
+		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
 	}
 
 	addToFilters (bg, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(bg.source);
+		this._sourceFilter.addItem(bg._fSources);
 		this._skillFilter.addItem(bg.skills);
 		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg.boosts);
@@ -37,7 +38,7 @@ class PageFilterBackgrounds extends PageFilter {
 	toDisplay (values, bg) {
 		return this._filterBox.toDisplay(
 			values,
-			bg.source,
+			bg._fSources,
 			bg.boosts,
 			bg.skills,
 			bg.lore,

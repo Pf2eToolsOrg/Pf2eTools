@@ -81,6 +81,7 @@ class PageFilterVehicles extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._sPrice = Parser.priceToValue(it.price);
 
 		it._fPrice = PageFilterVehicles._priceCategory(it._sPrice);
@@ -94,7 +95,7 @@ class PageFilterVehicles extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
 		this._traitFilter.addItem([...it.traits, it.size]);
 		this._priceFilter.addItem(it._fPrice);
@@ -139,7 +140,7 @@ class PageFilterVehicles extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.level,
 			it.traits,
 			it._fPrice,

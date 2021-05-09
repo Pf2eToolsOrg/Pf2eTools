@@ -1358,7 +1358,7 @@ ClassesPage._DEFAULT_STATE = {
 
 let classesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	classesPage = new ClassesPage();
 	classesPage.pOnLoad()
 });

@@ -1218,7 +1218,7 @@ AncestriesPage._DEFAULT_STATE = {
 
 let ancestriesPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	ancestriesPage = new AncestriesPage();
 	ancestriesPage.pOnLoad()
 });

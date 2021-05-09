@@ -32,6 +32,7 @@ class PageFilterActions extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fTime = it.activity ? it.activity.unit : null;
 		it.actionType = it.actionType || {};
 		it._fType = Object.keys(it.actionType).filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
@@ -41,7 +42,7 @@ class PageFilterActions extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._traitFilter.addItem(it.traits);
 		this._trainedFilter.addItem(it.actionType.trained);
 		this._untrainedFilter.addItem(it.actionType.untrained);
@@ -62,7 +63,7 @@ class PageFilterActions extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it._fTime,
 			it._fType,
 			it.actionType.untrained,

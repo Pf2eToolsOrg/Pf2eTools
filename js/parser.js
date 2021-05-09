@@ -1991,8 +1991,9 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pat
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo.com/products/btq026k5/discuss&page=11?Pathfinder-Lost-Omens-Ancestry-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
 
-Parser.SOURCES_ADVENTURES = new Set([]);
+Parser.SOURCES_ADVENTURES = new Set([SRC_APLLS]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
+Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST]);
 
 Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 [
@@ -2068,7 +2069,8 @@ TR_PR = "Primal";
 Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
 
 Parser.getTraitName = function (trait) {
-	return trait.replace(/\s(?:\d|[A-Z]|\(|d\d)(.+|$)/, "").uppercaseFirst()
+	// FIXME: This implementation is just to lazy and prone to bugs
+	return trait.replace(/\s(?:\d|[A-Z]$|\(|d\d)(.+|$)/, "").uppercaseFirst()
 }
 
 Parser.rarityToNumber = function (r) {

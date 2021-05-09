@@ -921,7 +921,7 @@ const ListUtil = {
 	},
 
 	addListShowHide () {
-		$(`#filter-search-group`).find(`#reset`).before(`<button class="btn btn-default btn-xs" id="hidesearch">Hide</button>`);
+		$(`#filter-search-group`).find(`#reset`).after(`<button class="btn btn-default btn-xs" id="hidesearch">Hide</button>`);
 		$(`#contentwrapper`).prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Filter</button><br></div>`);
 
 		const $wrpList = $(`#listcontainer`);

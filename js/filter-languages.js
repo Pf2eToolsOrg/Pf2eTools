@@ -10,13 +10,14 @@ class PageFilterLanguages extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fMisc = it.fonts ? ["Has Fonts"] : [];
 	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -30,7 +31,7 @@ class PageFilterLanguages extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.type,
 			it._fMisc,
 		)

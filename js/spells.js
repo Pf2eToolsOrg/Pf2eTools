@@ -112,29 +112,13 @@ class SpellsPage extends ListPage {
 			$content.append(RenderSpells.$getRenderedSpell(spell));
 		}
 
-		function buildFluffTab (isImageTab) {
-			return Renderer.utils.pBuildFluffTab({
-				isImageTab,
-				$content,
-				entity: spell,
-				pFnGetFluff: Renderer.spell.pGetFluff,
-			});
-		}
-
 		const statTab = Renderer.utils.tabButton(
 			"Spell",
 			() => {},
 			buildStatsTab,
 		);
-		const infoTab = Renderer.utils.tabButton(
-			"Info",
-			() => {},
-			buildFluffTab,
-		);
 
-		// only display the "Info" tab if there's some fluff text--currently (2020-03-20), no official spell has fluff text
-		if (spell.fluff && spell.fluff.entries) Renderer.utils.bindTabButtons(statTab, infoTab);
-		else Renderer.utils.bindTabButtons(statTab);
+		Renderer.utils.bindTabButtons(statTab);
 
 		ListUtil.updateSelected();
 	}
@@ -400,7 +384,7 @@ async function pHandleUnknownHash (link, sub) {
 
 let spellsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	spellsPage = new SpellsPage();
 	spellsPage.pOnLoad();
 });

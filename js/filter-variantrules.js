@@ -13,13 +13,14 @@ class PageFilterVariantRules extends PageFilter {
 	}
 
 	mutateForFilters (rule) {
+		rule._fSources = SourceFilter.getCompleteFilterSources(rule);
 		rule._fMisc = rule.srd ? ["SRD"] : [];
 	}
 
 	addToFilters (rule, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(rule.source);
+		this._sourceFilter.addItem(rule._fSources);
 		if (rule.type) this._ruleTypeFilter.addItem(rule.type);
 	}
 
@@ -34,7 +35,7 @@ class PageFilterVariantRules extends PageFilter {
 	toDisplay (values, r) {
 		return this._filterBox.toDisplay(
 			values,
-			r.source,
+			r._fSources,
 			r.type,
 			r._fMisc,
 		)

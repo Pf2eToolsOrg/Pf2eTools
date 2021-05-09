@@ -774,25 +774,10 @@ function Renderer () {
 	}
 
 	this._renderAttack = function (entry, textStack, meta, options) {
-		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">`
-		textStack[0] += `<span><strong>${entry.range} </strong>`
-		textStack[0] += this.render(`{@as 1} `)
-		textStack[0] += `${entry.name} `
-		textStack[0] += `</span>`
-		textStack[0] += this.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()} `)
-		textStack[0] += `<span>`
-		if (entry.traits != null) {
-			let traits = []
-			entry.traits.forEach((t) => {
-				let traitname = Parser.getTraitName(t)
-				traits.push(`{@trait ${traitname}|${t}}`)
-			});
-			textStack[0] += this.render(` (${traits.join(", ")})`)
-		}
-		textStack[0] += `, <strong>Damage </strong>`
-		textStack[0] += this.render(entry.damage)
-
-		textStack[0] += `</span></p>`
+		const renderer = Renderer.get();
+		textStack[0] += `<p class="pf2-stat pf2-stat__section attack">
+			<strong>${entry.range} </strong>${renderer.render("{@as 1}")} ${entry.name} ${renderer.render(`{@hit ${entry.attack}||${entry.name.uppercaseFirst()}`)}
+			${entry.traits != null ? ` ${renderer.render(`(${entry.traits.map((t) => `{@trait ${t}}`).join(", ")})`)}` : ""}, <strong>Damage </strong>${renderer.render(entry.damage)}</p>`;
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
@@ -851,45 +836,25 @@ function Renderer () {
 
 		const affliction = entry.entries;
 		let traits = []
-		if (affliction["traits"]) {
-			affliction["traits"].forEach((t) => {
-				traits.push(`{@trait ${Parser.getTraitName(t)}}`);
-			});
-		}
+		if (affliction.traits) affliction.traits.forEach((t) => traits.push(`{@trait ${t}}`));
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat pf2-stat__section">`
-		if (affliction["name"] != null) {
-			textStack[0] += `<strong>${affliction["name"]} </strong> `;
-		}
-		if (traits.length) {
-			textStack[0] += `(${renderer.render(traits.join(", "))}); `;
-		}
-		if (affliction["level"] != null) {
-			textStack[0] += `<strong>Level </strong>${affliction["level"]}. `;
-		}
-		if (affliction["note"] != null) {
-			textStack[0] += `${this.render(affliction["note"])} `;
-		}
-		if (affliction["DC"] != null) {
-			textStack[0] += `<strong>Saving Throw </strong>DC ${affliction["DC"]} ${affliction["savingThrow"]}. `;
-		}
-		if (affliction["onset"] != null) {
-			textStack[0] += ` <strong>Onset</strong> ${affliction["onset"]}`;
-		}
-		if (affliction["maxDuration"] != null) {
-			textStack[0] += ` <strong>Maximum Duration</strong> ${affliction["maxDuration"]}`;
-		}
-		if (affliction["stages"]) {
-			for (let stage of affliction["stages"]) {
-				textStack[0] += ` <strong class="no-wrap">Stage ${stage["stage"]} </strong>`;
-				this._recursiveRender(stage["entry"], textStack, meta);
-				if (stage["duration"] != null) {
-					textStack[0] += ` (${stage["duration"]});`;
-				}
+		if (affliction.name != null) textStack[0] += `<strong>${affliction.name} </strong> `;
+		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
+		if (affliction.level != null) textStack[0] += `<strong>Level </strong>${affliction.level}. `;
+		if (affliction.note != null) textStack[0] += `${this.render(affliction.note)} `;
+		if (affliction.DC != null) textStack[0] += `<strong>Saving Throw </strong>DC ${affliction.DC} ${affliction.savingThrow}. `;
+		if (affliction.onset != null) textStack[0] += ` <strong>Onset</strong> ${affliction.onset}`;
+		if (affliction.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${affliction.maxDuration}`;
+		if (affliction.stages) {
+			for (let stage of affliction.stages) {
+				textStack[0] += ` <strong class="no-wrap">Stage ${stage.stage} </strong>`;
+				this._recursiveRender(stage.entry, textStack, meta);
+				if (stage.duration != null) textStack[0] += ` (${stage.duration});`;
 			}
 		}
-		if (affliction["effect"]) {
+		if (affliction.effect) {
 			textStack[0] += ` <strong>Effect </strong>`;
-			affliction["effect"].forEach(it => this._recursiveRender(it, textStack, meta));
+			affliction.effect.forEach(it => this._recursiveRender(it, textStack, meta));
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".");
 		if (!options.isAbility) textStack[0] += `</p>`;
@@ -1037,7 +1002,7 @@ function Renderer () {
 
 	this._renderPf2Sidebar = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
-		textStack[0] += `<div class="pf2-sidebar" ${dataString}>`;
+		textStack[0] += `<div class="pf2-sidebar ${(entry.style || []).join(" ")}" ${dataString}>`;
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
@@ -1798,13 +1763,14 @@ function Renderer () {
 			}
 
 			case "@trait": {
-				const [name, displayText, ...others] = Renderer.splitTagByPipe(text);
+				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
+				const hash = BrewUtil.hasSourceJson(source) ? `${Parser.getTraitName(name)}${HASH_LIST_SEP}${source}` : Parser.getTraitName(name);
 				const fauxEntry = {
 					type: "link",
 					href: {
 						type: "internal",
 						path: UrlUtil.PG_TRAITS,
-						hash: Parser.getTraitName(name),
+						hash,
 						hover: {
 							page: UrlUtil.PG_TRAITS,
 						},
@@ -2787,11 +2753,14 @@ Renderer.utils = {
 
 	getTraitsDiv: (traits) => {
 		traits = traits || [];
+		let source;
 		const traitsHtml = [];
-		for (let trait of traits) {
-			let hash = Parser.getTraitName(trait);
-			let url = `${UrlUtil.PG_TRAITS}#${hash}`;
-			let href = {
+		for (let trait of traits.sort(SortUtil.sortTraits)) {
+			[trait, source] = trait.split("|");
+			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
+			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
+			source = source || "TRT";
+			const href = {
 				type: "internal",
 				path: "traits.html",
 				hash,
@@ -2799,8 +2768,7 @@ Renderer.utils = {
 					page: UrlUtil.PG_TRAITS,
 				},
 			}
-			let procHash = UrlUtil.encodeForHash(href.hash).replace(/'/g, "\\'");
-			const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${href.hover.page}', 'TRT', '${procHash}', ${href.hover.preloadId ? `'${href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
+			const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${href.hover.page}', '${source}', '${hash.replace(/'/g, "\\'")}', ${href.hover.preloadId ? `'${href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
 
 			const styles = ["pf2-trait"];
 			if (traits.indexOf(trait) === 0) {
@@ -2815,11 +2783,11 @@ Renderer.utils = {
 				styles.push("pf2-trait--rare");
 			} else if (trait === "Unique") {
 				styles.push("pf2-trait--unique");
-			} else if (Renderer.trait._categoryLookup["Size"].includes(trait)) {
+			} else if (Renderer.trait.isTraitInCategory(trait, "Size")) {
 				styles.push("pf2-trait--size");
-			} else if (Renderer.trait._categoryLookup["_alignAbv"].includes(trait)) {
+			} else if (Renderer.trait.isTraitInCategory(trait, "_alignAbv")) {
 				styles.push("pf2-trait--alignment");
-			} else if (Renderer.trait._categoryLookup["_settlement"].includes(trait)) {
+			} else if (Renderer.trait.isTraitInCategory(trait, "_settlement")) {
 				styles.push("pf2-trait--settlement");
 			}
 			traitsHtml.push(`<a href="${url}" class="${styles.join(" ")}" ${hoverMeta}>${trait}</a>`);
@@ -2930,11 +2898,6 @@ Renderer.utils = {
 		return isExcluded ? `<div class="pt-3 text-center text-danger"><b><i>Warning: This content has been <a href="blacklist.html">blacklisted</a>.</i></b></div>` : "";
 	},
 
-	getSourceAndPageTrHtml (it) {
-		const html = Renderer.utils.getSourceAndPageHtml(it);
-		return html ? `<b>Source:</b> ${html}` : "";
-	},
-
 	_getAltSourceHtmlOrText (it, prop, introText, isText) {
 		if (!it[prop] || !it[prop].length) return "";
 
@@ -2958,16 +2921,13 @@ Renderer.utils = {
 		${Object.keys(otherSources).map(k => `${k} in ${otherSources[k]
 		.map(str => {
 			const [src, page] = str.split("|");
-			return `<span title="${Parser.sourceJsonToFull(src)}${page ? `, page ${page}` : ""}"><strong>${src}</strong></span>`
+			return `<span title="${Parser.sourceJsonToFull(src)}${page ? `, page ${page}` : ""}"><a href="${Parser.sourceJsonToStore(src)}"><strong>${src}</strong></a></span>`
 		}).join(", ")}.`).join(" ")}
 		</span>`;
 	},
 
 	getSourceAndPageHtml (it) {
 		return this._getSourceAndPageHtmlOrText(it);
-	},
-	getSourceAndPageText (it) {
-		return this._getSourceAndPageHtmlOrText(it, true);
 	},
 
 	_getSourceAndPageHtmlOrText (it, isText) {
@@ -3106,44 +3066,6 @@ Renderer.utils = {
 		// Avoid modifying the original object
 		if (pFnPostProcess) fluff = await pFnPostProcess(fluff);
 		return fluff;
-	},
-
-	_TITLE_SKIP_TYPES: new Set(["entries", "section"]),
-
-	async pBuildFluffTab ({isImageTab, $content, entity, $headerControls, pFnGetFluff} = {}) {
-		const renderer = Renderer.get();
-
-		$content.append(Renderer.utils.getBorderTr());
-		$content.append(Renderer.utils.getNameTr(entity, {controlRhs: $headerControls, asJquery: true}));
-		const $td = $(`<td colspan="6" class="text"></td>`);
-		$$`<tr class="text">${$td}</tr>`.appendTo($content);
-		$content.append(Renderer.utils.getBorderTr());
-
-		const fluff = MiscUtil.copy((await pFnGetFluff(entity)) || {});
-		fluff.entries = fluff.entries || [Renderer.utils.HTML_NO_INFO];
-		fluff.images = fluff.images || [Renderer.utils.HTML_NO_IMAGES];
-
-		renderer.setFirstSection(true);
-		const renderedText = fluff[isImageTab ? "images" : "entries"].map((ent, i) => {
-			if (isImageTab) return `<p>${renderer.render(ent)}</p>`;
-
-			// If the first entry has a name, and it matches the name of the statblock, remove it to avoid having two
-			//   of the same title stacked on top of each other.
-			if (i === 0 && ent.name && entity.name && (Renderer.utils._TITLE_SKIP_TYPES).has(ent.type)) {
-				const entryLowName = ent.name.toLowerCase().trim();
-				const entityLowName = entity.name.toLowerCase().trim();
-
-				if (entryLowName.includes(entityLowName) || entityLowName.includes(entryLowName)) {
-					const cpy = MiscUtil.copy(ent);
-					delete cpy.name;
-					return renderer.render(cpy);
-				} else return renderer.render(ent);
-			} else {
-				if (typeof ent === "string") return `<p>${renderer.render(ent)}</p>`;
-				else return renderer.render(ent);
-			}
-		}).join("");
-		$td.fastSetHtml(renderedText);
 	},
 
 	async pGetQuickRules (prop) {
@@ -3665,10 +3587,7 @@ Renderer.creature = {
 			renderStack.push(`<span>`)
 			if (attack.traits != null) {
 				let traits = []
-				attack.traits.forEach((t) => {
-					let traitname = Parser.getTraitName(t)
-					traits.push(`{@trait ${traitname}|${t}}`)
-				});
+				attack.traits.forEach((t) => traits.push(`{@trait ${t}}`));
 				renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
 			}
 			renderStack.push(`, <strong>Damage </strong>`)
@@ -3792,10 +3711,7 @@ Renderer.creature = {
 
 		let trts = []
 		if (ability.traits != null && ability.traits.length) {
-			ability.traits.forEach((t) => {
-				let traitname = Parser.getTraitName(t)
-				trts.push(Renderer.get().render(`{@trait ${traitname}|${t}}`))
-			});
+			ability.traits.forEach((t) => trts.push(Renderer.get().render(`{@trait ${t}}`)));
 		}
 
 		let renderedGenericAbility;
@@ -4113,19 +4029,12 @@ Renderer.hazard = {
 				else {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 					renderStack.push(`<span><strong>${a.range} </strong>`);
-					renderStack.push(Renderer.get().render(`{@as 1} `));
+					renderStack.push(renderer.render(`{@as 1} `));
 					renderStack.push(`${a.name} `);
 					renderStack.push(`</span>`);
-					renderStack.push(Renderer.get().render(`{@hit ${a.attack}||${a.name.uppercaseFirst()} `));
+					renderStack.push(renderer.render(`{@hit ${a.attack}||${a.name.uppercaseFirst()} `));
 					renderStack.push(`<span>`);
-					if (a.traits != null) {
-						let traits = [];
-						a.traits.forEach((t) => {
-							let traitname = Parser.getTraitName(t)
-							traits.push(`{@trait ${traitname}|${t}}`)
-						});
-						renderStack.push(Renderer.get().render(` (${traits.join(", ")})`));
-					}
+					if (a.traits != null) renderStack.push(renderer.render(` (${a.traits.map(t => `{@trait ${t}}`).join(", ")})`));
 					renderStack.push(`, <strong>Damage </strong>`);
 					renderStack.push(renderer.render(a.damage));
 
@@ -4160,17 +4069,9 @@ Renderer.hazard = {
 		const entryStack = [];
 		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
 
-		let trts = []
-		if (ability.traits != null && ability.traits.length) {
-			ability.traits.forEach((t) => {
-				let traitname = Parser.getTraitName(t)
-				trts.push(Renderer.get().render(`{@trait ${traitname}|${t}}`))
-			});
-		}
-
 		return `<p class="pf2-stat pf2-stat__section"><span><strong>${ability.name} </strong>
 					${ability.activity ? renderer.render(ability.activity.entry) : ""}
-					${trts.length ? `(${trts.join(", ")}); ` : ""}
+					${ability.traits != null && ability.traits.length ? `(${renderer.render(ability.traits.map(t => `{@trait ${t}}`).join(", "))}); ` : ""}
 					${ability.frequency ? `<strong>Frequency </strong>${renderer.render(ability.frequency)}` : ""}
 					${ability.requirements ? `<strong>Requirements </strong>${renderer.render(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger </strong>${renderer.render(ability.trigger)}` : ""}
@@ -4270,23 +4171,16 @@ Renderer.item = {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
-			renderStack.push(Renderer.utils.getDividerDiv())
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type </strong>${v.type}; `)
-			if (v.level != null) renderStack.push(`<strong>Level </strong>${v.level}; `)
-			if (v.traits != null && v.traits.length) {
-				let trts = []
-				v.traits.forEach((t) => {
-					let traitname = Parser.getTraitName(t)
-					trts.push(renderer.render(`{@trait ${traitname}|${t}}`))
-				});
-				renderStack[0] += `(${trts.join(", ")}); `
-			}
-			if (v.price != null) renderStack.push(`<strong>Price </strong>${Parser.priceToFull(v.price)}; `)
-			if (v.bulk != null) renderStack.push(`<strong>Bulk </strong>${v.bulk}; `)
-			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack)
-			if (v.craftReq != null) renderStack.push(`<strong>Craft Requirements </strong>${v.craftReq}; `)
-			if (v.shieldStats != null) renderStack.push(`The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`)
-			renderStack.push(`</p>`)
+			renderStack.push(Renderer.utils.getDividerDiv());
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type </strong>${v.type}; `);
+			if (v.level != null) renderStack.push(`<strong>Level </strong>${v.level}; `);
+			if (v.traits != null && v.traits.length) renderStack[0] += `(${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))}); `;
+			if (v.price != null) renderStack.push(`<strong>Price </strong>${Parser.priceToFull(v.price)}; `);
+			if (v.bulk != null) renderStack.push(`<strong>Bulk </strong>${v.bulk}; `);
+			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack);
+			if (v.craftReq != null) renderStack.push(`<strong>Craft Requirements </strong>${v.craftReq}; `);
+			if (v.shieldStats != null) renderStack.push(`The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
+			renderStack.push(`</p>`);
 		});
 		return renderStack.join("")
 	},
@@ -4637,11 +4531,7 @@ Renderer.table = {
 };
 
 Renderer.trait = {
-	_categoryLookup: {
-		"Rarity": ["Common", "Uncommon", "Rare", "Unique"],
-		"Size": ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"],
-		"_alignAbv": ["LG", "NG", "CG", "LN", "N", "CN", "LE", "NE", "CE", "ANY"],
-	},
+	TRAITS: {},
 
 	getRenderedString (trait, opts) {
 		opts = opts || {};
@@ -4659,21 +4549,27 @@ Renderer.trait = {
 		return renderStack.join("");
 	},
 
-	async buildCategoryLookup () {
-		let building = {};
+	async preloadTraits () {
+		let loading = {};
+		const cats = new Set([]);
 		const traits = (await Promise.all([DataUtil.loadJSON("data/traits.json"), BrewUtil.pAddBrewData()])).map(it => it.trait).filter(Boolean).flat();
 		for (let trait of traits) {
 			if (!trait.categories || !trait.categories.length) {
-				building["General"] = building["General"] || [];
-				building["General"].push(trait.name);
-			} else {
-				for (let cat of trait.categories) {
-					building[cat] = building[cat] || [];
-					building[cat].push(trait.name);
-				}
+				trait.categories = ["General"];
 			}
+			trait.categories.forEach(c => cats.add(c));
+			loading[trait.name] = trait;
 		}
-		Renderer.trait._categoryLookup = building;
+		loading._categories = Array.from(cats);
+		Renderer.trait.TRAITS = loading;
+	},
+
+	isTraitInCategory (trait, category) {
+		const name = Parser.getTraitName(trait);
+		let lookup;
+		if (Renderer.trait.TRAITS) lookup = Renderer.trait.TRAITS[name];
+		if (lookup) return lookup.categories.includes(category);
+		return category === "General";
 	},
 };
 
@@ -4735,7 +4631,7 @@ Renderer.vehicle = {
 		${Renderer.utils.getDividerDiv()}
 		${defensesStack.join("")}
 		${Renderer.utils.getDividerDiv()}
-		<p class="pf2-stat pf2-stat__section"><strong>Speed </strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type} ${it.speed.speed} feet ${it.speed.traits ? `(${it.speed.traits.map(t => renderer.render(`{@trait ${Parser.getTraitName(t)}|${t}}`)).join(", ")})` : ""}`}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Speed </strong>${it.speed.type === "special" ? it.speed.entry : `${it.speed.type} ${it.speed.speed} feet ${it.speed.traits ? `(${renderer.render(it.speed.traits.map(t => `{@trait ${t}}`).join(", "))})` : ""}`}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Collision </strong>${renderer.render(it.collision.damage)}${it.collision.type ? ` ${it.collision.type}` : ""} DC (${it.collision.dc})</p>
 		${it.abilities.map(a => Renderer.creature.getRenderedAbility(a)[0].outerHTML).join("")}
 		${Renderer.utils.getPageP(it)}`;
@@ -5950,6 +5846,7 @@ Renderer.hover = {
 	 * @param [opts]
 	 * @param [opts.fnMutateItem] optional function to run per item; takes listProp and an item as parameters
 	 * @param [opts.fnGetHash]
+	 * @param [opts.sourceOverride]
 	 */
 	_pCacheAndGet_populate (page, data, listProp, opts) {
 		opts = opts || {};
@@ -6721,7 +6618,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@spell":
 					case "@status":
 					case "@table":
-					case "@trap":
+					case "@trait":
 					case "@place":
 					case "@plane":
 					case "@nation":
@@ -6729,11 +6626,6 @@ Renderer._stripTagLayer = function (str) {
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];
-					}
-
-					case "@trait": {
-						const parts = Renderer.splitTagByPipe(text);
-						return parts.length >= 2 ? parts[1] : parts[0];
 					}
 
 					case "@deity": {
@@ -6937,6 +6829,6 @@ if (typeof module !== "undefined") {
 	global.Renderer = Renderer;
 } else {
 	window.addEventListener("load", async () => {
-		await Renderer.trait.buildCategoryLookup()
+		await Renderer.trait.preloadTraits()
 	});
 }

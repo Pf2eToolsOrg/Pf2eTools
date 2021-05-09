@@ -21,19 +21,20 @@ class PageFilterAbilities extends PageFilter {
 			itemSortFn: null,
 		});
 		this._traitFilter = new Filter({header: "Traits"})
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action"]});
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fTime = it.activity ? it.activity.unit : null;
-		it._fMisc = it.srd ? ["SRD"] : [];
+		it._fMisc = [];
 	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
 		if (!isExcluded) {
-			this._sourceFilter.addItem(it.source);
+			this._sourceFilter.addItem(it._fSources);
 			this._traitFilter.addItem(it.traits)
 		}
 	}
@@ -49,7 +50,7 @@ class PageFilterAbilities extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it._fTime,
 			it.traits,
 			it._fMisc,

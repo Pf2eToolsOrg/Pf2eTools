@@ -36,6 +36,7 @@ class PageFilterClasses extends PageFilter {
 	get optionsFilter () { return this._optionsFilter; }
 
 	mutateForFilters (cls, opts) {
+		cls._fSources = SourceFilter.getCompleteFilterSources(cls);
 		cls._fPerception = Parser.proficiencyAbvToFull(cls.initialProficiencies.perception);
 		cls._fFort = Parser.proficiencyAbvToFull(cls.initialProficiencies.fort);
 		cls._fRef = Parser.proficiencyAbvToFull(cls.initialProficiencies.ref);
@@ -55,7 +56,7 @@ class PageFilterClasses extends PageFilter {
 
 	addToFilters (cls, isExcluded, opts) {
 		if (isExcluded) return;
-		this._sourceFilter.addItem(cls.source);
+		this._sourceFilter.addItem(cls._fSources);
 		this._perceptionFilter.addItem(cls._fPerception);
 		this._fortFilter.addItem(cls._fFort);
 		this._refFilter.addItem(cls._fRef);
@@ -76,7 +77,7 @@ class PageFilterClasses extends PageFilter {
 	toDisplay (values, c) {
 		return this._filterBox.toDisplay(
 			values,
-			c.source,
+			c._fSources,
 			[
 				c._fPerception,
 				c._fFort,

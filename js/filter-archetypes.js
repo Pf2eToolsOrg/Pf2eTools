@@ -6,11 +6,12 @@ class PageFilterArchetypes extends PageFilter {
 	}
 
 	mutateForFilters (archetype, opts) {
+		archetype._fSources = SourceFilter.getCompleteFilterSources(archetype);
 	}
 
 	addToFilters (archetype, isExcluded, opts) {
 		if (isExcluded) return;
-		this._sourceFilter.addItem(archetype.source);
+		this._sourceFilter.addItem(archetype._fSources);
 		this._miscFilter.addItem(archetype.miscTags)
 	}
 
@@ -24,7 +25,7 @@ class PageFilterArchetypes extends PageFilter {
 	toDisplay (values, a) {
 		return this._filterBox.toDisplay(
 			values,
-			a.source,
+			a._fSources,
 			a.miscTags,
 		)
 	}

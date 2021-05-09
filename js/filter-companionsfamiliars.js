@@ -37,6 +37,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	}
 
 	mutateForFilters (it) {
+		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fHP = it.hp != null ? it.hp : 0;
 		it._fspeedtypes = [];
 		it._fspeed = 0;
@@ -53,7 +54,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
-		this._sourceFilter.addItem(it.source);
+		this._sourceFilter.addItem(it._fSources);
 		this._typeFilter.addItem(it.type);
 		if (it.traits) this._traitsFilter.addItem(it.traits);
 		if (it.skill) this._skillFilter.addItem(it.skill);
@@ -81,7 +82,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
-			it.source,
+			it._fSources,
 			it.type,
 			it.traits,
 			[

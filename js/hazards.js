@@ -122,7 +122,7 @@ class HazardsPage extends ListPage {
 
 let trapsHazardsPage;
 window.addEventListener("load", async () => {
-	await Renderer.trait.buildCategoryLookup();
+	await Renderer.trait.preloadTraits();
 	trapsHazardsPage = new HazardsPage()
 	trapsHazardsPage.pOnLoad()
 });
