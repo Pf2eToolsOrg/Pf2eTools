@@ -3927,16 +3927,17 @@ Renderer.deity = {
 			<p class="pf2-stat__section"><strong>Favored Weapon </strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(", "))}</p>
 			<p class="pf2-stat__section"><strong>Domains </strong>${renderer.render(b.domains.join(", "))}</p>
 			<p class="pf2-stat__section"><strong>Cleric Spells </strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
-			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains </strong>${renderer.render(b.domains.join(", "))}</p>` : ""}
+			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains </strong>${renderer.render(b.alternateDomains.join(", "))}</p>` : ""}
 			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability </strong>${renderer.render(b.ability.entry)}</p>` : ""}`;
 	},
-
+	
 	getRenderedLore (deity) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true)
 		if (deity.lore) {
 			deity.lore.forEach(l => {
-				if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
+				// Not needed with existence of entriesOtherSource and other source-showing features
+				//if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
 				renderer.recursiveRender(l, textStack);
 			});
 		}
