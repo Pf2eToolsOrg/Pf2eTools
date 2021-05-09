@@ -44,7 +44,7 @@ class PageFilterDeities extends PageFilter {
 	}
 
 	mutateForFilters (g) {
-		it._fSources = SourceFilter.getCompleteFilterSources(it);
+		g._fSources = SourceFilter.getCompleteFilterSources(g);
 		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
 		if (g.devoteeBenefits) {
 			g._fFont = g.devoteeBenefits.font;
