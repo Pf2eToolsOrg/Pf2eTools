@@ -260,7 +260,7 @@
 						"Abadar curses all your enterprises, leading to financial disaster as all your ventures always seem to fail. The result of your check to {@action Earn Income} is always one degree of success worse than the one you rolled."
 					],
 					"Major Curse": [
-						"You become honest to a fault. You constantly suffer the critical failure effect of zone of truth. Additionally, you are always offered the worst possible option in a bargain."
+						"You become honest to a fault. You constantly suffer the critical failure effect of {@spell zone of truth}. Additionally, you are always offered the worst possible option in a bargain."
 					]
 				}
 			},
@@ -808,9 +808,12 @@
 			]
 		},
 		{
-			"name": "Erastyl",
+			"name": "Erastil",
 			"altNames": [
 				"Old Deadeye"
+			],
+			"images": [
+				"https://2e.aonprd.com/Images/Deities/Erastyl.png"	
 			],
 			"source": "CRB",
 			"page": 438,
@@ -864,8 +867,110 @@
 					"5": [
 						"tree stride"
 					]
+				},
+				"ability": {
+					"abilities": [
+						"Con",
+						"Wis"
+					],
+					"entry": "Constitution or Wisdom"
+				},
+				"alternateDomains": [
+					"duty"
+				]
+			},
+			"intercession": {
+				"source": "LOGM",
+				"flavor": [
+					"Erastil favors those who commit themselves to their communities and detests those who disrupt these families."
+				],
+				"page": 22,
+				"boon": {
+					"Minor Boon": [
+						"Erastil shares in his bounty as long as you work for it. Whenever you roll a critical failure at a check to {@action Subsist} in the wild, you get a failure instead."
+					],
+					"Moderate Boon": [
+						"You share Erastil’s sharp eye, allowing you to use a {@item longbow} in any situation. When you attack with a {@item longbow}, you can ignore the {@item longbow|CRB|longbow’s} {@trait volley} trait, and {@item longbow|CRB|longbows} have double the normal range increment for you."
+					],
+					"Major Boon": [
+						"You become a friend to the land. You can cast {@spell speak with plants} as a {@trait divine} innate spell. When you are in a healthy natural environment, the land sustains you without need for food or drink. You can cast the {@ritual commune with nature} ritual without any secondary casters or secondary checks."
+					]
+				},
+				"curse": {
+					"Minor Curse": [
+						"Erastil curses your table and punishes you for relying on others’ hard work. Any food you didn’t grow, gather, or otherwise harvest yourself tastes like ash and leaves you {@condition fatigued}."
+					],
+					"Moderate Curse": [
+						"Erastil’s beasts take a dislike to you. Animals’ attitudes toward you are one category worse ({@condition friendly} instead of {@condition helpful}, {@condition indifferent} instead of {@condition friendly}, and so on)."
+					],
+					"Major Curse": [
+						"Erastil leaves you unable to have children (or otherwise reproduce or propagate if you do so in a different manner). This curse also affects your livestock, pets, and crops."
+					]
 				}
-			}
+			},
+			"lore": [
+				{
+					"type": "pf2-h1",
+					"name": "Erastil",
+					"source": "LOGM",
+					"page": 22,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"name": "Old Deadeye",
+							"source": "LOGM",
+							"page": 22,
+							"entries": [
+								"{@trait LG} god of family, farming, hunting, and trade"
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"source": "LOGM",
+							"page": 22,
+							"items": [
+								"{@b Realm} Summerlands ({@place Heaven})",
+								"{@b Allies} {@deity Abadar}, {@deity Gozreh}, {@deity Kazutal}, {@deity Shelyn}, {@deity Torag}",
+								"{@b Enemies} {@deity Urgathoa}",
+								"{@b Relationships} {@deity Cernunnos} (son), {@deity Halcamora} (daughter), {@deity Jaidi} (wife)",
+								"{@b Temples} wooden longhouses or halls that also double as assembly places for people in the community",
+								"{@b Worshippers} farmers, hunters, rangers, settlers, shapeshifters, traders, trappers",
+								"{@b Sacred Animal} stag",
+								"{@b Sacred Colors} brown and green"
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"source": "LOGM",
+							"name": "Aphorisms",
+							"page": 23,
+							"entries": [
+								"Followers of Erastil share common wisdom among their villages, and these sayings hold strong over generations.",
+								"{@indentFirst {@b Never trust a fool:} Erastil’s followers often includes adventurers in their definition of fool, but the saying serves as a reminder not to listen to somebody known to have silly or dangerous ideas. }",
+								"{@indentFirst {@b Nothing is more satisfying than the fruits of a day’s labor:} This reminder to work hard and take satisfaction in it, rather than aspiring to more, is often used to chastise folk who shirk their tasks, including children who put play before work.}",
+								"{@indentFirst {@b The hardest task becomes easy with a friend:} Similar to “many hands make light work,” this message suggests that a task that would be hard or impossible alone is easy to do with help.}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"source": "LOGM",
+							"page": 22,
+							"entries": [
+								"Unlike many other good deities, Erastil does not send his followers out into the world to fight and crush evil. Eschewing crusades and other ventures that take his followers away from their homes, Erastil watches over those who devote their lives to family and community. He is primarily an agricultural deity, specifically focusing on those aspects of nature that either can be tamed or are of use to his followers. His domain encompasses the plants and animals that farmers, hunters, and ranchers deal with in their everyday lives. While he is a protective deity, Erastil steps in only when quiet, pastoral lives are threatened. He desires his followers to live their lives in peace, with no risk of being conscripted into armies, devoured by monsters, or destroyed by magic.",
+								"Family is of vital importance to the Elk Father. He places a high value on marriage and children, considering caring for a spouse and family to be one of the most important tasks in life. Erastil’s communities advocate for the unmarried to wed as soon as possible, though they never force a marriage for the sake of tying the knot. Widows and widowers often remarry, especially if they are caring for children. Erastil frowns upon adultery and anything else that bends or breaks the bonds of marriage, such as a union built on lies. However, he understands when a marriage has been sullied by the likes of abuse and supports separation when it encourages the safety of an individual and community.",
+								"Erastil sees building families as a goal for all people. Those who cannot bear children should still be ready to take in those who need a family, and his followers encourage those who remain single to act as surrogate parents and role models for children. He values traditions that build families, even when they are viewed as quaint by others, but he is willing to accept new traditions as long as they strengthen families rather than weakening them. The Elk Father is known to be slow to adapt to change, often trying to fit foreign ideas into a familiar framework, but he always supports strong relationships rather than rejecting them—he thus accepts all manner of matrimony and family, so long as they are supportive of their respective communities.",
+								"Erastil is thought by most to have his own family, but he rarely speaks of them to his followers or involves them directly in his faith. The Elk Father wishes to avoid worshippers becoming distracted by their god’s relationships—mortals should view their own families, whatever their makeup, as sacred, rather than focus on the family of a god simply because it is divine.",
+								"When granting gifts, Erastil prefers practical boons over flashier miracles. Many believe he is the deity who originally gifted mortals the bow so they could hunt for sustenance—but not for pleasure. He teaches farmers how to know when to sow and reap; ranchers how to tell when livestock are sick, lame, or gravid; and both how to heal humans and animals. His values are those of a slow-paced, pastoral life, one in which his followers respect and are sustained by the gifts of nature. He also teaches cooperation, and his priests are often the first to arrive at a barn-raising or house-building. Their sermons are as likely to be lessons in how to spot corn blight as anything philosophical.",
+								"The vast majority of Erastilian priests are clerics, with a few druids and the occasional ranger. Champions of Erastil exist but are far less common than those of Torag or Iomedae. Although priests of Erastil act as leaders of the faith as the community requires, they live among the communities they serve and might be established artisans, farmers, or hunters in their own right. They support the community, often by providing healing services to livestock as well as people, blessing crops, and assisting with trade. Priests of Erastil are expected to marry, though it is not a requirement; many priests see their entire community as their family and a sacred commitment.",
+								"Erastilian worship services are short and to the point, with sacred music designed to be sung and played while working. His temples, like his priests, serve multiple duties. In addition to being used for worship, these simple buildings serve as a general gathering place and a space to engage in crafts that require a lot of space and a roof. Erastil’s major festival, Archerday, is celebrated with archery competitions, feasting, and often proposals of marriage.",
+								"Erastil generally appears as a tall humanoid man with the head of an elk, clad in traditional hunter trappings and holding a bow, though he sometimes instead appears as a trapper of the particular follower’s ancestry. This is especially common when he makes himself known to children or lost travelers, to help them remain at ease. All hooved animals are associated with Erastil, and elk are particularly sacred to his faith—though he still allows hunting of these creatures, so long they are hunted out of necessity and with respect.",
+								"Adventurers rarely worship Erastil, as he tends to attract those who prefer to stay home and concern themselves with their community and family. Those who do serve him tend to adventure for the good of their community; they may attempt to determine the cause of monster attacks on their settlement, earn money for something the villagers need and can’t build themselves, or gain knowledge that is of use to their people."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Gorum",
@@ -890,6 +995,9 @@
 				"kill prisoners or surrendering foes",
 				"prevent conflict through negotiation",
 				"win a battle through underhanded tactics or indirect magic"
+			],
+			"images": [
+				"https://2e.aonprd.com/Images/Deities/Gorum.png"
 			],
 			"followerAlignment": [
 				"CN",
@@ -922,8 +1030,103 @@
 					"4": [
 						"weapon storm"
 					]
+				},
+				"ability": {
+					"abilities": [
+						"Str",
+						"Con"
+					],
+					"entry": "Strength or Constitution"
 				}
-			}
+			},
+			"intercession": {
+				"source": "LOGM",
+				"flavor": [
+					"Gorum views things very simply: one either fights and earns his favor, or one is a coward and receives only scorn."
+				],
+				"page": 22,
+				"boon": {
+					"Minor Boon": [
+						"Gorum grants you a weapon whenever you need one. You can use an {@action Interact} action to draw a 0-level non-magical iron weapon, even if you have no weapons on your person. Such a weapon lasts only as long as you continue using it to attack, and it can’t be sold, given away, melted for scrap iron, or the like."
+					],
+					"Moderate Boon": [
+						"Your blows become unstoppable, carrying the momentum of Gorum’s thrill for battle. Your {@item greatsword} {@action Strike|CRB|Strikes} gain the {@trait forceful} trait."
+					],
+					"Major Boon": [
+						"Gorum feeds you the zeal of his undying warriors, allowing you to draw upon your own life force to fight on and on without falling. Whenever you would be reduced to 0 Hit Points, you are instead healed to half your maximum Hit Points and become {@condition doomed} 1 (or increase your {@condition doomed} condition by 1)."
+					]
+				},
+				"curse": {
+					"Minor Curse": [
+						"Gorum rewards cowardice with frailty. Any armor you wear and shield you wield reduces its item bonus to AC by 2 (minimum 0) and its Hardness, Hit Points, and Break Threshold by half."
+					],
+					"Moderate Curse": [
+						"You’ve lost the glory of slaying a worthy opponent. All of your weapon and unarmed attacks decrease their damage dice by one step, and all your attacks are {@trait nonlethal}."
+					],
+					"Major Curse": [
+						"You are unable to keep up with the rigors of combat. The moment a combat breaks out, you become {@condition fatigued} and {@condition slowed} 1. At the end of each of your turns, your {@condition slowed} condition increases by 1. These conditions end only when you are no longer in combat."
+					]
+				}
+			},
+			"lore": [
+				{
+					"type": "pf2-h1",
+					"name": "Gorum",
+					"source": "LOGM",
+					"page": 24,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"name": "Our Lord in Iron",
+							"source": "LOGM",
+							"page": 24,
+							"entries": [
+								"{@trait CN} god of battle, strength, and weapons"
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"source": "LOGM",
+							"page": 24,
+							"items": [
+								"{@b Realm} Clashing Shore ({@place Elysium})",
+								"{@b Allies} none",
+								"{@b Enemies} {@deity Achaekek}, {@deity Norgorber}, {@deity Urgathoa}",
+								"{@b Temples} armories, battlefields, fortresses",
+								"{@b Worshippers} half-orcs, mercenaries, smiths, soldiers",
+								"{@b Sacred Animal} rhinoceros",
+								"{@b Sacred Colors} gray and red"
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"source": "LOGM",
+							"name": "Aphorisms",
+							"page": 25,
+							"entries": [
+								"With worship of Gorum widespread across the Inner Sea region, these common sayings can be heard in many languages and cultures.",
+								"{@indentFirst {@b Blood, not rust:} Gorum believes a warrior should keep her armor clean, but if it must be dirty, better with an enemy’s blood—or even the wearer’s—than rust. This phrase encapsulates the idea that something that may not seem perfect can still be acceptable. Some devotees of the god instead interpret this phrase as a call to action, especially in the face of hopeless odds, believing it is far better to risk death in battle than to simply rot into old age.}",
+								"{@indentFirst {@b Iron-tongued:} This descriptor—kin to silver-tongued and acid-tongued—is used to describe people who always manage to say the right thing to start a fight, though few openly connect the phrase to Our Lord in Iron.}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"source": "LOGM",
+							"page": 24,
+							"entries": [
+								"The clash of steel, the cry of victory, the gasping denial of death: these are the sound of prayers to Our Lord in Iron, for to follow Gorum is to fight. Gorum does not care the reason for battle—a village’s desperate stand against raiders is no less worthwhile to him than a crusader army marching against demons in the Sarkoris Scar—nor does he choose sides in such clashes. Good or evil, law or chaos, the reason for the fight is irrelevant. It is the thrill of battle that finds his favor, the crucible of struggle in which victory is there for the taking.",
+								"Gorum recognizes the value of strategic warfare and the need for archery, siege weapons, and stealth, but those hold little allure for him compared to hand-to-hand combat, the contest of raw, brute strength against honed, deadly skill. Gorum takes no pleasure in one-sided fights or the slaughter of innocents; an armored knight drawing a sword in his name against a helpless peasant might find his blade rust away. Far more delightful would be the peasant’s seemingly pointless swing of an iron pot, which might be answered as if it were a spoken prayer and transformed into a deadly blow.",
+								"The god’s followers hold that one is either brave or a coward, with battle the threshing floor that separates the wheat from the chaff. Death in battle is an honor. While tactical retreats or even breaks in fighting to negotiate are tolerable, no greater shame can befall a person than to flee from combat. Murder and assassination similarly offer no honor, and Gorum feels nothing but contempt for those practices, as well as for Achaekek and Norgorber, who condone them. The god and his followers likewise look on Urgathoa with disdain, as her diseases steal lives in the sickbed while the gluttony she promotes destroys warriors’ fitness for meaningful battle.",
+								"Gorum’s followers are innumerable: soldiers, mercenaries, knights, and raiders across the Inner Sea region offer him tribute, especially in places where battle is an everyday way of life, such as Belkzen, the Lands of the Linnorm Kings, the Realm of the Mammoth Lords, and the Gravelands. Believers claim that the god’s spirit lives in iron and gird themselves in metal armor whenever possible. They fight frequently, though not always, to the death—battle can establish dominance, relieve tension, or even just serve as prayer.",
+								"His priests are hard to differentiate from his other followers. They commonly wear armor (or heavy robes that incorporate metal) as their vestments and are adorned with all manner of weapons, making them walking arsenals ready to draw steel at the slightest opportunity. Though Gorum has no sacred text, his followers learn the church’s creed from a collection of seven heroic poems called the Gorumskagat. Each verse keeps to a rhythm that remains the same across all translations, which warriors learn to recognize and chant while on the march. These chants harmonize into the haunting sound of a roaring battle, and Gorumite warbands take great pride in chants that suggest great conflicts. Battle is the true language of Gorum, acting as the great unifier, and it differs little whether fought by those speaking Shoanti or Dwarven.",
+								"Gorum’s clerics preach that should all battle ever end, Gorum would abandon Golarion, only to return when mortals inevitably clash again. His most holy sites are battlefields, consecrated by the struggles, blood, and lives of those fighting on them. His temples resemble fortresses, complete with armories and forges—even those in the midst of peaceful cities. They contain images of the god, often pictured as a suit of spiked plate armor with burning red eyes. Shrines to him are simple: a pile of stones capped with a metal helm or a blade jammed into a crevice.",
+								"Among adventurers, most Gorumites are humans or half-orcs, though followers can be found among all ancestries. They are valued companions thanks to their skill at defeating foes, even though violence tends to be their first answer to every problem. They typically set out not in search of great treasures but rather to find challenges, test their mettle, and honor their god in glorious combat. The most fortunate prove themselves by emerging from battle victorious time and time again, but even these are more likely to be slain on the battlefield than to retire and fade away into old age."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Gozreh",
@@ -932,6 +1135,9 @@
 			],
 			"source": "CRB",
 			"page": 438,
+			"images": [
+				"https://2e.aonprd.com/Images/Deities/Gozreh.png"
+			],
 			"pantheon": "Golarion",
 			"alignment": [
 				"N"
@@ -980,8 +1186,107 @@
 					"5": [
 						"control water"
 					]
+				},
+				"ability": {
+					"abilities": [
+						"Con",
+						"Wis"
+					],
+					"entry": "Constitution or Wisdom"
+				},
+				"alternateDomains": [
+					"cold",
+					"lightning"
+				]
+			},
+			"intercession": {
+				"source": "LOGM",
+				"flavor": [
+					"Gozreh is pleased when their creatures and waterways are treated with respect but quick to show their displeasure."
+				],
+				"page": 27,
+				"boon": {
+					"Minor Blessing": [
+						"Gozreh grants their guidance while at sea. You are under the constant effects of {@spell know direction} and become trained in {@skill Lore|Sailing Lore} (or another {@skill Lore} skill if you are already trained in {@skill Lore|Sailing Lore})."
+					],
+					"Moderate Blessing": [
+						"You gain the touch of the sea. You can breathe underwater and gain a swim Speed equal to your land Speed."
+					],
+					"Major Blessing": [
+						"Gozreh has blessed you with their wind in your stride. You gain a +30-foot status bonus to your Speeds, and you gain a fly Speed equal to your land Speed."
+					]
+				},
+				"curse": {
+					"Minor Curse": [
+						"Lightning begins to strike twice. You gain weakness 5 to electricity, and any natural or magical bolts of lightning always target you rather than the other creatures around you."
+					],
+					"Moderate Curse": [
+						"The current of the waves constantly fights against you, putting you at risk of drowning any time you must {@action Swim}. You lose any swim Speed you have, unless it’s your only Speed, in which case you take a –20-foot status penalty to your swim Speed. When you roll an {@skill Athletics} check to {@action Swim}, you always use the outcome for one degree of success worse than the result of your roll."
+					],
+					"Major Curse": [
+						"Those who displease Gozreh are shunned by nature itself. All animals and nonsapient plant creatures are {@condition hostile} to you, and any animal companion or familiar abandons you. Sapient plants’ attitude toward you begins two categories worse than normal, as something about you seems repugnant to them. While plants and animals might not attack you outright if it’s not normally in their nature to do so when they are hostile, dogs growl at you, cats hiss, and so on."
+					]
 				}
-			}
+			},
+			"lore": [
+				{
+					"type": "pf2-h1",
+					"name": "Gozreh",
+					"source": "LOGM",
+					"page": 26,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"name": "The Wind and the Waves",
+							"source": "LOGM",
+							"page": 26,
+							"entries": [
+								"{@trait N} god of nature, the sea, and weather"
+							]
+						},
+						{
+							"type": "list",
+							"style": "list-hang-notitle",
+							"source": "LOGM",
+							"page": 26,
+							"items": [
+								"{@b Realm} nomadic ({@place Material Plane})",
+								"{@b Allies} {@deity Besmara}, {@deity Desna}, {@deity Erastil}",
+								"{@b Enemies} {@deity Nethys}, {@deity Rovagug}, {@deity Urgathoa}",
+								"{@b Temples} areas of great natural beauty, lighthouses, mills, shorelines",
+								"{@b Worshippers} druids, explorers, fishers, hermits, survivalists",
+								"{@b Sacred Animal} all",
+								"{@b Sacred Colors} blue and green"
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"source": "LOGM",
+							"name": "Aphorisms",
+							"page": 27,
+							"entries": [
+								"Adherents of Gozreh typically speak with a bluntness that belies their shrewd insight. Most followers prefer acting over speaking, and axioms vary from temple to temple. Common phrases often consist of simple statements used for giving everyday wisdom.",
+								"{@indentFirst {@b The storm also passes:} As dark as the skies can turn, weather and emotion are both temporary. Life continues, event after event, and while lasting impressions are made, the clouds will eventually clear. Followers of Gozreh use this as a mantra or calming advice for those who come to them in despair.}",
+								"{@indentFirst {@b By the tide and the tempest:} Worshippers speak these words to seal solemn oaths, making a promise to both of their deity’s aspects. This aphorism is used when swearing in a new acolyte, offering a sacrifice to Gozreh, or threatening retribution for a trespass against nature.}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"source": "LOGM",
+							"page": 26,
+							"entries": [
+								"A timeless entity birthed from the first wind to stir the vast oceans, Gozreh wanders the world in the air and the seas. Sailors drop boxes of cargo as offerings to avoid a fatal storm, hoping to please the Wind and the Waves, even though they know that such pleas are far more likely to go unnoticed as they are to draw their deity’s attention. The deity’s temperament is fickle and their fury swift, hurling bolts of lightning and dragging to the crushing depths those who dare befoul the natural world. Gozreh is the sea that encapsulates the land and the wind that moves its surface, the birds that traverse the sky and the clouds that shield them.",
+								"Gozreh is a deity of two aspects, depicted in art as one, the other, or both, depending on where the piece is featured. When coming from the ocean, she is shown as a woman with hair made of sea-foam rising waist-high from the waves. Over land and from the sky, he is drawn as an old man with a long beard, flecked black and gray by storm clouds with eyes of lightning. When depicted together, such as along shorelines, the two are portrayed reaching towards each other, their fingers separated by the smallest of margins. Yet these aspects are not separate: they represent the Wind and the Waves, but the deity is both of them and also neither, for they transcend the mortal concepts of gender and body.",
+								"Much like the winds and seas, Gozreh is temperamental and prone to sudden outbursts of wrath. They see all, flitting from the north breeze to the eyes of a starling to the roots of a mighty oak on the other side of the world. Those who pollute nature or destroy the unspoiled wilds might feel a sudden storm of Gozreh’s wrath descending upon them, but such fits are unpredictable and indiscriminate, sometimes striking years later and upturning the lives of nearby innocents with no tie to the original trespass. While Gozreh is volatile, they are not malicious. Their rage ceases as quickly as it begins, leaving the sky and waters calm again. The Wind and the Waves sees and feels everything at once, and they do not have the luxury of remaining focused on a single act of desecration for long.",
+								"Gozreh is a worldly deity, their interest focused on the weather and living things. Land has little meaning to them, save that the soil gives foundation to trees and fire clears the way for new life. Such things are not reviled by Gozreh’s faith; they are simply considered unimportant on their own. Creatures likewise exist and then they fade, ceding their energy to what comes after. The Wind and the Waves cares more for the wilds, unspoiled by mortals and free to ebb and flow as it sees fit.",
+								"Gozreh’s clergy and followers represent a wide variety of gender identities. The deity’s dual nature resonates with these worshippers, and the faith accepts all identities as part of the natural order. The church doesn’t place an emphasis on marriage in particular, and seasonal trysts are equally as common among worshippers as unions that last for life. Members of some of the more secluded sects of the faith remain celibate and isolated, residing in the most remote mountains or shoreline caves and reflecting on Gozreh’s independence from relationships—after all, as a deity of dual natures, Gozreh is never truly alone.",
+								"Most of Gozreh’s followers wear their hair long—sometimes all the way to the ground—and weave seaweed, coral, or shells into it in intricate patterns. Clergy who can do so grow their beards long, often braiding them into tangled tresses. It is not uncommon for Gozran priests to grow their beards or hair to provide nesting material for small, local creatures, matting their hair over several months before cutting this hair to create small nests. Only the occasional priest houses small birds, frogs, or rodents in their hair while it is still attached.",
+								"The most devout members of Gozreh’s faith stay as far from civilization as possible, living deep in the woods or on barren coastal shores. Those who are more sociable often take positions on ships, where they serve as navigators and are seen as good luck charms who can help the ships avoid the fiercest of storms. These “gale-speakers” come ashore only to change to another vessel and are highly sought after by ship captains. Gale-speakers are not bought, however, choosing their own journeys and favoring vessels with far-flung destinations, waters rarely touched by anything but the Wind and the Waves."
+							]
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Iomedae",
