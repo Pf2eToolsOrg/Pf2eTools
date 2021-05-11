@@ -3806,11 +3806,12 @@ Renderer.deity = {
 		options = options || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		renderer.recursiveRender(deity.info, renderStack, {pf2StatFix: true});
-
+		if (deity.info != "") {
+			renderer.recursiveRender(`${Renderer.utils.getDividerDiv()}`, renderStack)
+			renderer.recursiveRender(deity.info, renderStack, {pf2StatFix: true})
+		}
 		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
 			${Renderer.utils.getNameDiv(deity, {type: `${deity.alignment && deity.alignment.length === 1 ? `${deity.alignment[0]}` : ""} Deity`})}
-			${Renderer.utils.getDividerDiv()}
 			${renderStack.join("")}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.deity.getEdictsAnathemaAlign(deity)}
