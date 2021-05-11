@@ -2069,8 +2069,14 @@ TR_PR = "Primal";
 Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
 
 Parser.getTraitName = function (trait) {
-	// FIXME: This implementation is just to lazy and prone to bugs
-	return trait.replace(/\s(?:\d|[A-Z]$|\(|d\d)(.+|$)/, "").uppercaseFirst()
+	/*
+		MrVauxs'es Implementation:
+		Assuming all relevant trait names are going to be one word, we can always just cut out the rest of the trait sentence.
+		Gravity traits are the only outliar so currently it is hardcoded to be ignored.
+	*/
+	if (!trait.includes("gravity")) {
+		return trait.replace(/\s.+/g, "").uppercaseFirst()
+	} else return trait
 }
 
 Parser.rarityToNumber = function (r) {
