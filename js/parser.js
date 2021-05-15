@@ -709,6 +709,7 @@ Parser.classSideBar = function (cls) {
 		sideBar.entries.push(`{@trait ${cls.rarity}}`);
 		sideBar.entries.push({type: "pf2-title", name: "INITIAL PROFICIENCIES"});
 	}
+	sideBar.entries.push("At 1st level, you gain the listed proficiency ranks in the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way.");
 	sideBar.entries.push({type: "pf2-title", name: "PERCEPTION"});
 	sideBar.entries.push(`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`);
 	sideBar.entries.push({type: "pf2-title", name: "SAVING THROWS"});
