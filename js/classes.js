@@ -864,7 +864,7 @@ class ClassesPage extends BaseComponent {
 
 		const renderer = Renderer.get().resetHeaderIndex();
 
-		const statSidebar = Parser.initialProficienciesToFull(cls.initialProficiencies)
+		const statSidebar = Parser.classSideBar(cls)
 		const className = {
 			type: "pf2-h1",
 			name: cls.name,
