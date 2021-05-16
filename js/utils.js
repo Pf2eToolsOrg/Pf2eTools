@@ -778,7 +778,7 @@ ElementUtil = {
 				case "SELECT": {
 					let selectedIndexNxt = -1;
 					for (let i = 0, len = this.options.length; i < len; ++i) {
-						if (this.options[i].value === val) { selectedIndexNxt = i; break; }
+						if (this.options[i]?.value === val) { selectedIndexNxt = i; break; }
 					}
 					this.selectedIndex = selectedIndexNxt;
 					return this;
@@ -792,7 +792,7 @@ ElementUtil = {
 		}
 
 		switch (this.tagName) {
-			case "SELECT": return this.options[this.selectedIndex].value;
+			case "SELECT": return this.options[this.selectedIndex]?.value;
 
 			default: return this.value;
 		}
