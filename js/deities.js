@@ -29,7 +29,7 @@ class DeitiesPage extends ListPage {
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="bold col-3 pl-0">${g.name}</span>
-			<span class="col-2 text-center">${g.pantheon}</span>
+			<span class="col-2 text-center">${g.category}</span>
 			<span class="col-2 text-center">${alignment}</span>
 			<span class="col-3 ${g._fDomains[0] === VeCt.STR_NONE ? `list-entry-none` : ""}">${domains}</span>
 			<span class="col-2 text-center ${Parser.sourceJsonToColor(g.source)} pr-0" title="${Parser.sourceJsonToFull(g.source)}" ${BrewUtil.sourceJsonToStyle(g.source)}>${source}</span>
@@ -43,7 +43,7 @@ class DeitiesPage extends ListPage {
 				hash,
 				source,
 				title: g.title || "",
-				pantheon: g.pantheon,
+				category: g.category,
 				alignment,
 				domains,
 			},
@@ -73,7 +73,7 @@ class DeitiesPage extends ListPage {
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
 				<span class="bold col-5-2 pl-0">${g.name}</span>
-				<span class="col-3-4 text-center">${g.pantheon}</span>
+				<span class="col-3-4 text-center">${g.category}</span>
 				<span class="col-3-4 text-center pr-0">${alignment}</span>
 			</a>
 		</li>`)
@@ -85,7 +85,7 @@ class DeitiesPage extends ListPage {
 			g.name,
 			{
 				hash,
-				pantheon: g.pantheon,
+				category: g.category,
 				alignment,
 			},
 		);

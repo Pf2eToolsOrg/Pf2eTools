@@ -15,11 +15,9 @@ class PageFilterDeities extends PageFilter {
 	constructor () {
 		super();
 		this._sourceFilter = new SourceFilter();
-		this._pantheonFilter = new Filter({
-			header: "Pantheon",
-			items: [
-				"Golarion",
-			],
+		this._categoryFilter = new Filter({
+			header: "Category",
+			items: [],
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
@@ -60,6 +58,7 @@ class PageFilterDeities extends PageFilter {
 		g._fMisc = [];
 		if (g.lore || g.symbolImg) g._fMisc.push("Has Lore");
 		if (g.intercession) g._fMisc.push("Has Divine Intercession")
+		if (g.core === true) g._fMisc.push("Core")
 	}
 
 	addToFilters (g, isExcluded) {
@@ -71,7 +70,7 @@ class PageFilterDeities extends PageFilter {
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
 		this._domainFilter.addItem(g._fDomains);
 		this._spellFilter.addItem(g._fSpells);
-		this._pantheonFilter.addItem(g.pantheon);
+		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
 	}
 
@@ -79,7 +78,7 @@ class PageFilterDeities extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._alignmentFilter,
-			this._pantheonFilter,
+			this._categoryFilter,
 			this._benefitsFilter,
 			this._miscFilter,
 		];
@@ -90,7 +89,7 @@ class PageFilterDeities extends PageFilter {
 			values,
 			g._fSources,
 			g._fAlign,
-			g.pantheon,
+			g.category,
 			[
 				g._fFont,
 				g._fSkill,
