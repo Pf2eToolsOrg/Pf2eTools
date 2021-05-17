@@ -350,8 +350,8 @@ function Renderer () {
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
-				case "quote": 
-					this._renderQuote(entry, textStack, meta, options); 
+				case "quote":
+					this._renderQuote(entry, textStack, meta, options);
 					break;
 
 				// inline
@@ -3826,7 +3826,7 @@ Renderer.deity = {
 		options = options || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		if (deity.info != "") {
+		if (deity.info !== "") {
 			renderer.recursiveRender(`${Renderer.utils.getDividerDiv()}`, renderStack)
 			renderer.recursiveRender(deity.info, renderStack, {pf2StatFix: true})
 		}
@@ -3870,14 +3870,13 @@ Renderer.deity = {
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
 			`;
 	},
-	
 	getRenderedLore (deity) {
 		const textStack = [""];
 		const renderer = Renderer.get().setFirstSection(true)
 		if (deity.lore) {
 			deity.lore.forEach(l => {
 				// Not needed with existence of entriesOtherSource and other source-showing features
-				//if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
+				// if (l.source !== deity.source) l.entries.push(`{@note published in ${l.source}, page ${l.page}.}`);
 				renderer.recursiveRender(l, textStack);
 			});
 		}
@@ -3903,7 +3902,7 @@ Renderer.deity = {
 					.map(key => `<p class="pf2-book__option"><strong>${key}&nbsp;</strong>${renderer.render(deity.intercession.curse[key])}</p>`)
 					.forEach(it => textStack.push(it))
 			}
-			//textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
+			// textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
 		}
 		return textStack.join("");
 	},
@@ -4166,14 +4165,14 @@ Renderer.item = {
 			}
 			if (item.hands) renderStack.push(`<strong>Hands&nbsp;</strong>${item.hands}`);
 			// Due to how many things ranged weapons introduce to the table, it's best to put it in another line
-			if (item.ammunition || item.range || item.reload ) {
+			if (item.ammunition || item.range || item.reload) {
 				renderStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
 				if (item.ammunition) {
 					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(`{@item ${item.ammunition}}`)}`);
 					if (item.range != null) renderStack.push("; ")
 				}
 				if (item.range != null) {
-					renderStack.push(`<strong>Range&nbsp;</strong>${renderer.render(`${item.range}`)}`);
+					renderStack.push(`<strong>Range&nbsp;</strong>${renderer.render(`${item.range} ft.`)}`);
 					if (item.reload != null) renderStack.push("; ")
 				}
 				if (item.reload != null) {
