@@ -4177,7 +4177,6 @@ Renderer.item = {
 				}
 				if (item.reload != null) {
 					renderStack.push(`<strong>Reload&nbsp;</strong>${renderer.render(`${item.reload}`)}`);
-					if (item.hands) renderStack.push("; ")
 				}
 			}
 			renderStack.push(`</p>`)
