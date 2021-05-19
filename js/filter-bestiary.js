@@ -71,12 +71,12 @@ class PageFilterBestiary extends PageFilter {
 			itemSortFn: SortUtil.ascSort,
 		});
 
-		this._strengthFilter = new RangeFilter({header: "Strength", min: -5, max: 12});
-		this._dexterityFilter = new RangeFilter({header: "Dexterity", min: -5, max: 12});
-		this._constitutionFilter = new RangeFilter({header: "Constitution", min: -5, max: 12});
-		this._intelligenceFilter = new RangeFilter({header: "Intelligence", min: -5, max: 12});
-		this._wisdomFilter = new RangeFilter({header: "Wisdom", min: -5, max: 12});
-		this._charismaFilter = new RangeFilter({header: "Charisma", min: -5, max: 12});
+		this._strengthFilter = new RangeFilter({header: "Strength"});
+		this._dexterityFilter = new RangeFilter({header: "Dexterity"});
+		this._constitutionFilter = new RangeFilter({header: "Constitution"});
+		this._intelligenceFilter = new RangeFilter({header: "Intelligence"});
+		this._wisdomFilter = new RangeFilter({header: "Wisdom"});
+		this._charismaFilter = new RangeFilter({header: "Charisma"});
 		this._abilityFilter = new MultiFilter({
 			header: "Ability Modifiers",
 			filters: [this._strengthFilter, this._dexterityFilter, this._constitutionFilter, this._intelligenceFilter, this._wisdomFilter, this._charismaFilter],
@@ -84,18 +84,23 @@ class PageFilterBestiary extends PageFilter {
 
 		this._ACFilter = new RangeFilter({
 			header: "Armor Class",
+			min: 10,
 		});
 		this._HPFilter = new RangeFilter({
 			header: "Hit Points",
+			min: 5,
 		});
 		this._fortitudeFilter = new RangeFilter({
 			header: "Fortitude",
+			min: 2,
 		});
 		this._reflexFilter = new RangeFilter({
 			header: "Reflex",
+			min: 2,
 		});
 		this._willFilter = new RangeFilter({
 			header: "Will",
+			min: 2,
 		});
 		this._immunityFilter = new Filter({
 			header: "Immunities",
@@ -116,7 +121,7 @@ class PageFilterBestiary extends PageFilter {
 
 		this._speedFilter = new RangeFilter({
 			header: "Speed",
-			isLabelled: true,
+			min: 5,
 		});
 		this._speedTypeFilter = new Filter({
 			header: "Speed Types",
@@ -244,7 +249,13 @@ class PageFilterBestiary extends PageFilter {
 
 		this._sourceFilter.addItem(cr._fSources);
 
-		this._traitFilter.addItem(cr._fTraits)
+		this._traitFilter.addItem(cr._fTraits);
+		this._strengthFilter.addItem(cr.abilityMods.Str);
+		this._constitutionFilter.addItem(cr.abilityMods.Con);
+		this._dexterityFilter.addItem(cr.abilityMods.Dex);
+		this._intelligenceFilter.addItem(cr.abilityMods.Int);
+		this._wisdomFilter.addItem(cr.abilityMods.Wis);
+		this._charismaFilter.addItem(cr.abilityMods.Cha);
 
 		this._perceptionFilter.addItem(cr.perception.default)
 		this._preciseSenseFilter.addItem(cr._fsenses.precise);

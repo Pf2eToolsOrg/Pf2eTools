@@ -696,7 +696,7 @@ Parser.speedToFullMap = function (speed) {
 }
 
 Parser.classSideBar = function (cls) {
-	
+
 	const renderer = Renderer.get();
 	let initProf = cls.initialProficiencies
 	let sideBar = {
@@ -2076,14 +2076,9 @@ TR_PR = "Primal";
 Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
 
 Parser.getTraitName = function (trait) {
-	/*
-		MrVauxs'es Implementation:
-		Assuming all relevant trait names are going to be one word, we can always just cut out the rest of the trait sentence.
-		Gravity traits are the only outliar so currently it is hardcoded to be ignored.
-	*/
-	if (!trait.includes("gravity")) {
-		return trait.replace(/\s.+/g, "").uppercaseFirst()
-	} else return trait
+	// TODO: This implementation is not perfect, but for now it will do
+	const regex = new RegExp(`\\s(?:\\d|[A-Z]$|\\(|d\\d|[A-Z],|${Object.values(Parser.DMGTYPE_JSON_TO_FULL).join("|")})(.+|$)`);
+	return trait.replace(regex, "").toTitleCase()
 }
 
 Parser.rarityToNumber = function (r) {

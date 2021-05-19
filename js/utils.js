@@ -1850,7 +1850,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ARCHETYPES] = (it) => UrlUtil.encodeForHa
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_VARIANTRULES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ADVENTURE] = (it) => UrlUtil.encodeForHash(it.id);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.id);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.pantheon, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
@@ -4209,7 +4209,7 @@ BrewUtil = {
 	getPageProps (page) {
 		page = BrewUtil._PAGE || page || UrlUtil.getCurrentPage();
 
-		const _PG_SPELLS = ["spell"];
+		const _PG_SPELLS = ["spell", "domain"];
 		const _PG_BESTIARY = ["creature"];
 
 		switch (page) {
@@ -4242,7 +4242,7 @@ BrewUtil = {
 			case UrlUtil.PG_CONDITIONS:
 				return ["condition"];
 			case UrlUtil.PG_ITEMS:
-				return ["item", "baseitem"];
+				return ["item", "baseitem", "group"];
 			case UrlUtil.PG_SPELLS:
 				return _PG_SPELLS;
 			case UrlUtil.PG_AFFLICTIONS:
@@ -4250,7 +4250,7 @@ BrewUtil = {
 			case UrlUtil.PG_ABILITIES:
 				return ["ability"];
 			case UrlUtil.PG_DEITIES:
-				return ["deity"];
+				return ["deity", "domain"];
 			case UrlUtil.PG_LANGUAGES:
 				return ["language"];
 			case UrlUtil.PG_PLACES:
@@ -4370,6 +4370,8 @@ BrewUtil = {
 			case "ritual":
 			case "vehicle":
 			case "trait":
+			case "group":
+			case "domain":
 				return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass":
 				return BrewUtil._pDeleteSubclassBrew;
@@ -4463,7 +4465,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();

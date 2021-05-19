@@ -49,10 +49,14 @@ class PageFilterSpells extends PageFilter {
 			itemSortFn: null,
 		});
 		this._classFilter = new Filter({header: "Classes"});
-		this._domainFilter = new Filter({header: "Domains"})
+		this._subClassFilter = new Filter({
+			header: "Subclass",
+			displayFn: (it) => it.toTitleCase(),
+			nests: {},
+		});
 		this._multiFocusFilter = new MultiFilter({
 			header: "Focus Spells",
-			filters: [this._focusFilter, this._classFilter, this._domainFilter],
+			filters: [this._focusFilter, this._classFilter, this._subClassFilter],
 		});
 		this._componentsFilter = new Filter({
 			header: "Components",
@@ -124,6 +128,15 @@ class PageFilterSpells extends PageFilter {
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
+		spell._fSubClasses = Object.entries(spell.subclass || {}).map(([k, v]) => {
+			return v.map(sc => {
+				const [cls, subCls] = k.split("|")
+				return new FilterItem({
+					item: sc,
+					nest: `${subCls} (${cls})`,
+				});
+			});
+		}).flat();
 		spell._fTimeType = [spell.cast["unit"]];
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
@@ -150,11 +163,14 @@ class PageFilterSpells extends PageFilter {
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
 		this._focusFilter.addItem(spell._fFocus);
-		this._classFilter.addItem(spell._fClasses)
-		if (typeof (spell.domain) === "string") this._domainFilter.addItem(spell.domain);
-		this._traitFilter.addItem(spell._fTraits)
-		this._areaFilter.addItem(spell._areaTypes)
-		this._miscFilter.addItem(spell._fMisc)
+		this._classFilter.addItem(spell._fClasses);
+		spell._fSubClasses.forEach(sc => {
+			this._subClassFilter.addNest(sc.nest, {isHidden: true});
+			this._subClassFilter.addItem(sc);
+		});
+		this._traitFilter.addItem(spell._fTraits);
+		this._areaFilter.addItem(spell._areaTypes);
+		this._miscFilter.addItem(spell._fMisc);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -187,7 +203,7 @@ class PageFilterSpells extends PageFilter {
 			[
 				s._fFocus,
 				s._fClasses,
-				s.domain,
+				s._fSubClasses,
 			],
 			s._fTraits,
 			s._fTimeType,

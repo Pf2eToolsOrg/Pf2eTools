@@ -10,7 +10,7 @@ class BestiaryPage extends ListPage {
 			dataProp: ["creature"],
 		});
 		this._multiSource = new MultiSource({
-			fnHandleData: this._addCreatures,
+			fnHandleData: this._addCreatures.bind(this),
 			prop: "creature",
 		});
 
@@ -39,7 +39,7 @@ class BestiaryPage extends ListPage {
 		const type = cr.creatureType && cr.creatureType.length ? cr.creatureType.join(", ") : "\u2014";
 		const level = cr.level;
 
-		eleLi.innerHTML += `<a href="#${hash}"class="lst--border">
+		eleLi.innerHTML += `<a href="#${hash}" class="lst--border">
 			${EncounterBuilder.getButtons(mI)}
 			<span class="ecgen__name bold col-4-2 pl-0">${cr.name}</span>
 			<span class="type col-4-1">${type}</span>
@@ -170,7 +170,7 @@ class BestiaryPage extends ListPage {
 			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_CR_SCALED][0]);
 			const cr = this._dataList[Hist.lastLoadedId];
 			if (Parser.isValidCreatureLvl(scaleTo) && scaleTo !== this._lastRendered.creature.level) {
-				ScaleCreature.scale(cr, scaleTo).then(scaled => renderStatblock(scaled, true));
+				ScaleCreature.scale(cr, scaleTo).then(scaled => this._renderStatblock(scaled, true));
 			}
 		}
 
@@ -189,9 +189,7 @@ class BestiaryPage extends ListPage {
 
 		encounterBuilder = new EncounterBuilder();
 		encounterBuilder.initUi();
-		await Promise.all([
-			ExcludeUtil.pInitialise(),
-		]);
+		await ExcludeUtil.pInitialise();
 		// TODO: Homebrew functionality
 		const creatureAbilities = await DataUtil.loadJSON("data/abilities.json");
 		Renderer.hover._pCacheAndGet_populate(UrlUtil.PG_ABILITIES, creatureAbilities, "ability");

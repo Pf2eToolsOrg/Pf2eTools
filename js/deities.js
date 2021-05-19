@@ -102,6 +102,12 @@ class DeitiesPage extends ListPage {
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 	}
+
+	_getSearchCache (entity) {
+		const ptrOut = {_: ""};
+		Object.keys(entity).filter(it => !it.startsWith("_")).forEach(it => this._getSearchCache_handleEntryProp(entity, it, ptrOut));
+		return ptrOut._;
+	}
 }
 
 function renderStatblock (deity) {

@@ -72,9 +72,7 @@ async function initDemo (data, rendererType) {
 		renderer.setFirstSection(true);
 		renderer.resetHeaderIndex();
 		renderer.recursiveRender(json, renderStack);
-		$out.html(`
-			<div class="text">${renderStack.join("")}</div>
-		`)
+		$out.html(`${renderStack.join("")}`);
 	}
 
 	function demoReset () {

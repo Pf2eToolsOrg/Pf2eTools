@@ -134,6 +134,7 @@
 	padding: 1em !important;
 	border-top: 2px solid #5e0000;
 	border-bottom: 2px solid #5e0000;
+	overflow-x: hidden;
 }
 
 .pf2-book {
@@ -393,10 +394,9 @@
 }
 
 .pf2-h2 {
-	clear: left;
 	color: #002664;
 	margin: 0 0 0.1em;
-	padding: 0.6em 0 0;
+	padding: 0;
 	font-family: 'Taroca', sans-serif;
 	font-size: 2em;
 	font-weight: 700;
@@ -404,24 +404,28 @@
 	text-align: left;
 
 	&__step {
-		margin: 0.8em 0 0.1em 2em;
-		padding: 0.05em;
+		z-index: 40;
+		display: flex;
+		flex: 1;
+		margin: 0 0 0.1em -2em;
+		padding: 0.05em 0.05em 0.05em 1.8em;
+		height: fit-content;
+		min-width: calc(100% - 3.4em);
 		color: #002664;
+		background: #d1d3d4;
 		font-family: 'Taroca', sans-serif;
 		font-size: 1.6em;
 		font-weight: 700;
 		text-transform: uppercase;
 		line-height: 1em;
-		background: #d1d3d4;
-		display: flex;
 
 		+ .pf2-h2 {
-			padding: 0;
-			clear: none;
+			margin: -0.9em 0 0.1em calc(2.02em + 6px);
 		}
 	}
 
 	&__step-num {
+		z-index: 50;
 		margin: -0.15em 0.3em 0 0;
 		padding: 0;
 		border: 3px solid #d9c484;
@@ -434,9 +438,13 @@
 		font-family: 'Taroca', sans-serif;
 		font-size: 2.8em;
 		text-transform: uppercase;
-		float: left;
-		clear: left;
 		line-height: 1.4em;
+	}
+
+	&--wrp {
+		display: flex;
+		flex-flow: wrap;
+		margin: 1em 0 0;
 	}
 
 	.pf2-h--source {
@@ -451,7 +459,6 @@
 }
 
 .pf2-h3 {
-	clear: left;
 	color: #5e0000;
 	margin: 0;
 	padding: 0.6em 0 0;
@@ -501,7 +508,6 @@
 }
 
 .pf2-h5 {
-	clear: left;
 	background: #002664;
 	border-top-left-radius: 0.4em;
 	border-top-right-radius: 0.4em;
@@ -515,7 +521,6 @@
 	line-height: 0.8em;
 	text-transform: uppercase;
 	display: flex;
-	width: 100%;
 	text-align: left;
 }
 
@@ -800,7 +805,6 @@
 	border: 2px solid #b29e74;
 	display: flex;
 	margin: 0.3em 0;
-	clear: left;
 
 	&__ {
 		&ab {
@@ -860,7 +864,6 @@
 	border: 2px solid #b29e74;
 	margin: 0.3em 0;
 	padding: 0.6em;
-	clear: left;
 
 	&__ {
 		&title {
@@ -891,12 +894,12 @@
 }
 
 .pf2-tips-box {
-	float: left;
 	font-family: 'good-pro', sans-serif;
-	width: calc(50% - 1em);
-	max-width: 300px;
-	min-width: 150px;
-	margin: 0.3em 1em 0.3em 0;
+	background: #d1d3d4;
+	margin: 0.3em 0;
+	padding: 0;
+	font-size: 0.9em;
+	max-width: 100%;
 
 	&__ {
 		&title {
@@ -905,15 +908,13 @@
 			background: #002664;
 			color: #d9c484;
 			font-weight: 700;
-			font-size: 1.1em;
+			font-size: 1.22em;
 			text-transform: uppercase;
 			text-align: left;
 			line-height: 1.2em;
 		}
 
 		&text {
-			background: #d1d3d4;
-			font-size: 0.9em;
 			line-height: 1.2em;
 			text-align: justify;
 			margin: 0;
@@ -923,12 +924,12 @@
 }
 
 .pf2-sample-box {
-	float: left;
 	background: #eae4d8;
 	margin: 0.3em 0;
 	padding: 0 1em 0.3em;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
+	max-width: 100%;
 
 	&__ {
 		&title {
@@ -954,15 +955,27 @@
 			line-height: 1.2em;
 		}
 	}
+
+	.pf2-title {
+		margin: 0;
+		padding: 0.3em 1em;
+		font-weight: 700;
+		line-height: 1.2em;
+		text-align: center;
+	}
+
+	* + .pf2-title {
+		margin-top: 0.6em;
+	}
 }
 
 .pf2-beige-box {
-	float: left;
 	background: #f1e9d4;
 	margin: 0.6em 0;
 	padding: 0.3em 1em;
 	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
+	max-width: 100%;
 
 	&__ {
 		&title {
@@ -998,7 +1011,6 @@
 
 .pf2-inset {
 	background: #eae4d8;
-	clear: left;
 	border-top: 1px solid #c99a89;
 	border-bottom: 1px solid #c99a89;
 	font-family: 'good-pro', sans-serif;
@@ -1360,6 +1372,10 @@ $night-pf2-brown: #2e2c27;
 		fill: $night-pf2-red;
 	}
 
+	.pf2-h1--blue {
+		color: $night-pf2-blue;
+	}
+
 	.pf2-h2 {
 		color: $night-pf2-blue;
 
@@ -1380,7 +1396,9 @@ $night-pf2-brown: #2e2c27;
 	}
 
 	.pf2-h5 {
-		color: $night-pf2-blue;
+		color: $night-accent-gold;
+		background: $night-accent-blue;
+		box-shadow: 0 2px #222, 0 3px $night-accent-blue;
 	}
 
 	.pf2-p {
@@ -1472,13 +1490,11 @@ $night-pf2-brown: #2e2c27;
 	}
 
 	.pf2-tips-box {
-		&__title {
-			background: $night-pf2-blue;
-			color: $night-accent-blue;
-		}
+		background: $night-accent-blue;
 
-		&__text {
-			background: $night-accent-blue;
+		&__title {
+			color: $night-accent-blue;
+			background: $night-pf2-blue;
 		}
 	}
 
@@ -1487,6 +1503,7 @@ $night-pf2-brown: #2e2c27;
 		background: $night-pf2-brown;
 	}
 
+	.pf2-key-box,
 	.pf2-key-abilities {
 		background: $night-pf2-red-bg;
 		border-color: $night-accent-gold;

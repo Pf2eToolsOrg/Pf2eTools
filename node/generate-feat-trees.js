@@ -1,7 +1,6 @@
 const fs = require("fs");
 require("../js/utils.js");
 const ut = require("./util.js");
-const {ArgParser} = require("./tag-jsons.js");
 
 FEAT_LEADS_TO = {};
 
@@ -72,7 +71,7 @@ function generateFeatTrees (args) {
 }
 
 async function main () {
-	const args = ArgParser.parse();
+	const args = ut.parseArgs();
 	generateFeatTrees(args);
 }
 

@@ -136,6 +136,28 @@ class PatchLoadJson {
 }
 PatchLoadJson._CACHED = null;
 
+class ArgParser {
+	static parse () {
+		const ARGS = {};
+		process.argv
+			.slice(2)
+			.forEach(arg => {
+				let [k, v] = arg.split("=").map(it => it.trim()).filter(Boolean);
+				if (v == null) ARGS[k] = true;
+				else {
+					v = v
+						.replace(/^"(.*)"$/, "$1")
+						.replace(/^'(.*)'$/, "$1")
+					;
+
+					if (!isNaN(v)) ARGS[k] = Number(v);
+					else ARGS[k] = v;
+				}
+			});
+		return ARGS;
+	}
+}
+
 module.exports = {
 	dataRecurse,
 	readJson,
@@ -143,4 +165,5 @@ module.exports = {
 	FILE_PREFIX_BLACKLIST,
 	patchLoadJson: PatchLoadJson.patchLoadJson,
 	unpatchLoadJson: PatchLoadJson.unpatchLoadJson,
+	parseArgs: ArgParser.parse,
 };

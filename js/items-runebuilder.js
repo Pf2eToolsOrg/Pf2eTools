@@ -509,6 +509,7 @@ RuneBuilder.RUNEBUILDER_DEFAULT_FILTER_STATE = {
 			},
 			"state": {
 				"Generic Variant": 2,
+				"Specific Variant": 0,
 			},
 		},
 	},
