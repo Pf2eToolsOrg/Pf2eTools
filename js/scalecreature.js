@@ -508,7 +508,9 @@ const ScaleCreature = {
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
 			const bonus = isLimited ? 4 : 2;
 			ab.entries = ab.entries.map(e => {
-				if (typeof e === "string") {
+				if (typeof e === "object") {
+					if (e.type === "affliction") e.DC += 2;
+				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
 					e = e.replaceAll(/DC (\d+)(?!\d* flat)/g, (...m) => {
 						return `DC ${Number(m[1]) + 2}`;
@@ -525,7 +527,7 @@ const ScaleCreature = {
 							else return `@damage ${formulaNoMod}`
 						}
 					});
-				} else throw new Error(`Unhandled entry type.`);
+				}
 				return e;
 			});
 			return ab
@@ -590,7 +592,9 @@ const ScaleCreature = {
 			const {isLimited, isArea} = this._isAbilityAreaLimited(ab);
 			const bonus = isLimited ? -4 : -2;
 			ab.entries = ab.entries.map(e => {
-				if (typeof e === "string") {
+				if (typeof e === "object") {
+					if (e.type === "affliction") e.DC -= 2;
+				} else if (typeof e === "string") {
 					// Do not scale flat check DCs
 					e = e.replaceAll(/DC (\d+)(?!\d* flat)/g, (...m) => {
 						return `DC ${Number(m[1]) - 2}`;
@@ -607,7 +611,7 @@ const ScaleCreature = {
 							else return `@damage ${formulaNoMod}`
 						}
 					});
-				} else throw new Error(`Unhandled entry type.`);
+				}
 				return e;
 			});
 			return ab
@@ -896,7 +900,7 @@ const ScaleCreature = {
 						const scaleTo = isArea ? this._LvlAreaDamage[toLvl][Number(isLimited)] / this._LvlAreaDamage[lvlIn][Number(isLimited)] * this._getDiceEV(m[1]) : this._scaleValue(lvlIn, toLvl, this._getDiceEV(m[1]), this._LvlExpectedDamage);
 						return `@damage ${this._scaleDice(m[1], scaleTo)}`;
 					});
-				} else throw new Error(`Unhandled entry type ${typeof e}.`);
+				}
 				return e;
 			});
 			return ab

@@ -7,8 +7,8 @@ class MultiSource {
 
 	/**
 	 * @param opts Options object.
-	 * @param opts.fnHandleData Data handling function, e.g. "addMonsters"
-	 * @param opts.prop Data property, e.g. "monster"
+	 * @param opts.fnHandleData Data handling function, e.g. "addCreatures"
+	 * @param opts.prop Data property, e.g. "creature"
 	 */
 	constructor (opts) {
 		opts = opts || {};
@@ -50,12 +50,11 @@ class MultiSource {
 		// collect a list of sources to load
 		const sources = Object.keys(src2UrlMap);
 		const defaultSel = sources.filter(s => PageFilter.defaultSourceSelFn(s));
-		const hashSourceRaw = Hist.getHashSource();
-		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 		const filterSel = await filterBox.pGetStoredActiveSources() || defaultSel;
 		const listSel = await ListUtil.pGetSelectedSources() || [];
+		const hashSourceRaw = Hist.getHashSource();
+		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
 		const userSel = [...new Set([...filterSel, ...listSel, hashSource].filter(Boolean))];
-
 		const allSources = [];
 
 		// add any sources from the user's saved filters, provided they have URLs and haven't already been added

@@ -2,7 +2,7 @@ const fs = require("fs");
 const ut = require("./util.js");
 const {TraitConverter} = require("../js/converterutils-trait");
 const {Source} = require("../js/converterutils.js");
-const {TagJsons, ArgParser} = require("./tag-jsons.js");
+const {TagJsons} = require("./tag-jsons.js");
 
 class PdfConverter {
 	static doConvert (args) {
@@ -84,7 +84,7 @@ class PdfConverter {
  */
 async function main () {
 	await TagJsons.pInit();
-	const ARGS = ArgParser.parse();
+	const ARGS = ut.parseArgs();
 	PdfConverter.doConvert(ARGS);
 }
 

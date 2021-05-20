@@ -87,8 +87,8 @@
 				</div>
 				<ul class="list list--stats archetypes" style="flex: 1;"></ul>
 
-
-				<div class="feat-view mt-2" id="featlistcontainer" style="flex: 1;">
+				<!--TODO: Fix that stupid scrollbar, fuck css-->
+				<div class="feat-view mt-2" id="featlistcontainer" style="flex: 1; overflow: hidden;">
 					<div class="lst__form-top" id="feat-filter-search-group">
 						<div class="w-100 relative">
 							<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
@@ -110,7 +110,7 @@
 						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">Source <span
 							class="caret_wrp"></span></button>
 					</div>
-					<ul class="list list--stats feats cls__list" style="flex: 1; height: auto;"></ul>
+					<ul class="list list--stats feats" style="margin-right: 0;"></ul>
 				</div>
 			</div>
 

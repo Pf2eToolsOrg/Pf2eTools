@@ -5,34 +5,6 @@ require("../js/render-dice.js");
 const ut = require("./util.js");
 const {Tagger, TaggerUtils, ActionSymbolTag, DiceTag, SkillTag, ConditionTag} = require("../js/converterutils.js");
 
-/**
- * Args:
- * file="./data/my-file.json"
- * filePrefix="./data/dir/"
- * inplace
- */
-class ArgParser {
-	static parse () {
-		const ARGS = {};
-		process.argv
-			.slice(2)
-			.forEach(arg => {
-				let [k, v] = arg.split("=").map(it => it.trim()).filter(Boolean);
-				if (v == null) ARGS[k] = true;
-				else {
-					v = v
-						.replace(/^"(.*)"$/, "$1")
-						.replace(/^'(.*)'$/, "$1")
-					;
-
-					if (!isNaN(v)) ARGS[k] = Number(v);
-					else ARGS[k] = v;
-				}
-			});
-		return ARGS;
-	}
-}
-
 const BLACKLIST_FILE_PREFIXES = [
 	...ut.FILE_PREFIX_BLACKLIST,
 
@@ -360,8 +332,14 @@ class ActionTag {
 ActionTag._ACTIONS = {};
 ActionTag._ACTIONS_REGEX = null;
 
+/**
+ * Args:
+ * file="./data/my-file.json"
+ * filePrefix="./data/dir/"
+ * inplace
+ */
 async function main () {
-	const args = ArgParser.parse();
+	const args = ut.parseArgs();
 	await TagJsons.pInit();
 	TagJsons.run(args);
 	TagJsons.teardown();
@@ -372,6 +350,5 @@ if (require.main === module) {
 } else {
 	module.exports = {
 		TagJsons,
-		ArgParser,
 	};
 }

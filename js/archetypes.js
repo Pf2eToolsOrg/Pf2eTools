@@ -80,11 +80,12 @@ class ArchetypesPage extends BaseComponent {
 		this._listFeat.on("updated", () => {
 			$(`.lst__wrp-search-visible.feats`).html(`${this._listFeat.visibleItems.length}/${this._listFeat.items.length}`);
 		});
-		ListUtil._pBindSublistResizeHandlers($(`.feat-view--resizable`))
+		ListUtil._pBindSublistResizeHandlers($(`.feat-view--resizable`));
+		const $filterSearch = $(`#filter-search-group`).title("Hotkey: f");
 
 		await this._pageFilter.pInitFilterBox({
 			$iptSearch: $(`#lst__search`),
-			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
+			$wrpFormTop: $filterSearch,
 			$btnReset: $(`#reset`),
 		});
 		await this._featFilter.pInitFilterBox({
@@ -111,6 +112,22 @@ class ArchetypesPage extends BaseComponent {
 		await ListUtil.pLoadState();
 		RollerUtil.addListRollButton(true, null, 0);
 		RollerUtil.addListRollButton(true, {roll: "feat-feelinglucky", reset: "feat-reset", search: "feat-filter-search-group"}, 1);
+		$filterSearch.find(`#reset`).after(`<button class="btn btn-default btn-xs" id="hidesearch">Hide</button>`);
+		const $listcontainer = $(`#listcontainer`);
+		$listcontainer.prepend(`<div class="col-12" id="showsearch"><button class="btn btn-block btn-default btn-xs" type="button">Show Filter</button><br></div>`);
+		const $btnShowSearch = $(`div#showsearch`);
+		const $btnHideSearch = $(`button#hidesearch`).title("Hide Archetypes Search Bar and Entry List");
+		const $toHide = $listcontainer.children().not(`.feat-view`).not(`#showsearch`);
+		$btnHideSearch.click(() => {
+			$toHide.toggleClass("hidden", true);
+			$btnShowSearch.toggleClass("block", true);
+			$btnHideSearch.toggleClass("hidden", true);
+		});
+		$btnShowSearch.find("button").click(() => {
+			$toHide.toggleClass("hidden", false);
+			$btnShowSearch.toggleClass("block", false);
+			$btnHideSearch.toggleClass("hidden", false);
+		});
 
 		window.onhashchange = this._handleHashChange.bind(this);
 
@@ -490,13 +507,13 @@ class ArchetypesPage extends BaseComponent {
 		return hashParts.join("#")
 	}
 
-	getListItem (anc, ancI, isExcluded) {
-		const hash = UrlUtil.autoEncodeHash(anc);
-		const source = Parser.sourceJsonToAbv(anc.source);
+	getListItem (arc, ancI, isExcluded) {
+		const hash = UrlUtil.autoEncodeHash(arc);
+		const source = Parser.sourceJsonToAbv(arc.source);
 
 		const $lnk = $(`<a href="#${hash}" class="lst--border">
-			<span class="bold col-8 pl-0">${anc.name}</span>
-			<span class="col-4 text-center ${Parser.sourceJsonToColor(anc.source)} pr-0" title="${Parser.sourceJsonToFull(anc.source)}" ${BrewUtil.sourceJsonToStyle(anc.source)}>${source}</span>
+			<span class="bold col-8 pl-0">${arc.name}</span>
+			<span class="col-4 text-center ${Parser.sourceJsonToColor(arc.source)} pr-0" title="${Parser.sourceJsonToFull(arc.source)}" ${BrewUtil.sourceJsonToStyle(arc.source)}>${source}</span>
 		</a>`);
 
 		const $ele = $$`<li class="row ${isExcluded ? "row--blacklisted" : ""}">${$lnk}</li>`;
@@ -504,15 +521,15 @@ class ArchetypesPage extends BaseComponent {
 		return new ListItem(
 			ancI,
 			$ele,
-			anc.name,
+			arc.name,
 			{
 				hash,
 				source,
 			},
 			{
 				$lnk,
-				entity: anc,
-				uniqueId: anc.uniqueId ? anc.uniqueId : ancI,
+				entity: arc,
+				uniqueId: arc.uniqueId ? arc.uniqueId : ancI,
 				isExcluded,
 			},
 		);
@@ -656,9 +673,11 @@ class ArchetypesPage extends BaseComponent {
 
 		const hkShowFeats = () => {
 			if (this._state.isShowFeats) {
-				$(`.feat-view--inactive`).toggleClass("feat-view--active", true).toggleClass("feat-view--inactive", false)
+				$(`.feat-view--inactive`).toggleClass("feat-view--active", true).toggleClass("feat-view--inactive", false);
+				const $featView = $(`.feat-view--resizable`)
+				if (!$featView.attr("style")) $featView.height(Math.min($featView.height() + 25, $(window).height() * 0.5));
 			} else {
-				$(`.feat-view--active`).toggleClass("feat-view--active", false).toggleClass("feat-view--inactive", true)
+				$(`.feat-view--active`).toggleClass("feat-view--active", false).toggleClass("feat-view--inactive", true);
 			}
 		};
 		this._addHookBase("isShowFeats", hkShowFeats);

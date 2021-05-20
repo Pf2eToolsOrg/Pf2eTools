@@ -3459,7 +3459,7 @@ class TraitsFilter extends MultiFilter {
 
 	_getTraitCategories (trait) {
 		let out = new Set();
-		const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trait)]
+		const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trait).toLowerCase()]
 		if (lookup) lookup.categories.forEach(cat => out.add(cat));
 		else out.add("General")
 		return Array.from(out).filter(it => !this._discardCategories[it]).filter(it => !it.startsWith("_"));
