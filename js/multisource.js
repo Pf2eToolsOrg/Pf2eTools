@@ -7,8 +7,8 @@ class MultiSource {
 
 	/**
 	 * @param opts Options object.
-	 * @param opts.fnHandleData Data handling function, e.g. "addCreatures"
-	 * @param opts.prop Data property, e.g. "creature"
+	 * @param opts.fnHandleData Data handling function, e.g. "addMonsters"
+	 * @param opts.prop Data property, e.g. "monster"
 	 */
 	constructor (opts) {
 		opts = opts || {};
@@ -52,9 +52,9 @@ class MultiSource {
 		const defaultSel = sources.filter(s => PageFilter.defaultSourceSelFn(s));
 		const hashSourceRaw = Hist.getHashSource();
 		const hashSource = hashSourceRaw ? Object.keys(src2UrlMap).find(it => it.toLowerCase() === hashSourceRaw.toLowerCase()) : null;
-		const userSel = [...new Set(
-			(await filterBox.pGetStoredActiveSources() || []).concat(await ListUtil.pGetSelectedSources() || []).concat(hashSource ? [hashSource] : []),
-		)];
+		const filterSel = await filterBox.pGetStoredActiveSources() || defaultSel;
+		const listSel = await ListUtil.pGetSelectedSources() || [];
+		const userSel = [...new Set([...filterSel, ...listSel, hashSource].filter(Boolean))];
 
 		const allSources = [];
 
