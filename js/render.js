@@ -3794,7 +3794,9 @@ Renderer.deity = {
 		opts = opts || {};
 		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		if (deity.info !== "") {
+		// Do not change !=
+		// eslint-disable-next-line eqeqeq
+		if (deity.info != "") {
 			renderer.recursiveRender(`${Renderer.utils.getDividerDiv()}`, renderStack)
 			renderer.recursiveRender(deity.info, renderStack, {pf2StatFix: true})
 		}
@@ -3831,8 +3833,8 @@ Renderer.deity = {
 			<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(", "))}</p>
 			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>` : ""}
 			<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>
-			<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.join(", "))}</p>
-			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.join(", "))}</p>` : ""}
+			<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>
+			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>` : ""}
 			<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
 			<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(", "))}</p>
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}

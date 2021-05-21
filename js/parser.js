@@ -696,14 +696,13 @@ Parser.speedToFullMap = function (speed) {
 }
 
 Parser.classSideBar = function (cls) {
-
 	const renderer = Renderer.get();
 	let initProf = cls.initialProficiencies
 	let sideBar = {
 		type: "pf2-sidebar",
 		name: `${(cls.rarity ? "RARITY" : "INITIAL PROFICIENCIES")}`,
 		entries: [
-		]
+		],
 	}
 	if (cls.rarity) {
 		sideBar.entries.push(`{@trait ${cls.rarity}}`);

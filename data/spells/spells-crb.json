@@ -2525,14 +2525,16 @@
 				"You create an opaque wall of light in a single vibrant color.",
 				"The wall is straight and vertical, stretching 60 feet long and 30 feet high. If the wall would pass through a creature, the spell is lost. The wall sheds bright light for 20 feet on each side, and dim light for the next 20 feet. You can ignore the wall's effects.",
 				"Roll {@dice 1d4} to determine the color of the wall. Each color has a particular effect on items, effects, or creatures that attempt to pass through. Chromatic wall can't be counteracted normally; rather, each color is automatically counteracted when targeted by a specific spell, even if that spell's level is lower than that of chromatic wall.",
-				"1. Red The wall destroys ranged weapon ammunition (such as arrows and crossbow bolts) that would pass through, and it deals 20 fire damage to anyone passing through, with a basic Reflex save. Cone of cold can counteract a red chromatic wall.",
-				"2. Orange The wall destroys thrown weapons that would pass through, and it deals 25 acid damage to anyone passing through, with a basic Reflex save. Gust of wind can counteract an orange chromatic wall.",
-				"3. Yellow The wall stops acid, cold, electricity, fire, force, negative, {@trait positive}, and {@trait sonic} effects from passing through, and it deals 30 electricity damage to anyone passing through, with a basic Reflex save. Disintegrate can counteract a yellow chromatic wall.",
-				"4. Green The wall stops toxins, gases, and breath weapons from passing through. It deals 10 poison damage to anyone passing through and makes them {@condition enfeebled|CRB|enfeebled 1} for 1 minute. A basic Fortitude save reduces the damage and negates the {@condition enfeebled} condition on a success. Passwall can counteract a green chromatic wall.",
-				"MAGIC AND MORALITY While magic allows you to perform wondrous acts in the game, it can be used for terrible purposes. While some spells are obviously vile or have the {@trait evil} trait and a direct connection to the profane, other spells can be used for good or ill. Using magic does not free you from the morality of the outcome.",
-				"Nowhere is this more true than when it comes to enchantment spells, especially those used to compel a character to do something. These spells can remove the power of choice from a character and can very easily be used in ways that are evil. Dominating an ogre and forcing him to abandon his guard post is not necessarily evil, but using that same spell to force a merchant to give you all of his wares certainly is. Using a spell for an evil purpose can cause a player character's alignment to shift to evil, with the ultimate judgment of whether a player is using a spell for an evil purpose left up to the GM.",
-				"Regardless of in-game effects, all players should take care when using such spells. These effects can negatively affect people at the table, as they might create situations that echo truly awful experiences players might have had, creating uncomfortable or {@condition hostile} environments.",
-				"Players and GMs should work to prevent these situations so everyone can focus on having fun at the table."
+				{
+					"type": "list",
+					"style": "list-decimal",
+					"items": [
+						"{@b Red} The wall destroys ranged weapon ammunition (such as arrows and crossbow bolts) that would pass through, and it deals 20 fire damage to anyone passing through, with a basic Reflex save. {@spell Cone of cold} can counteract a red chromatic wall.",
+						"{@b Orange} The wall destroys thrown weapons that would pass through, and it deals 25 acid damage to anyone passing through, with a basic Reflex save. {@spell Gust of wind} can counteract an orange chromatic wall.",
+						"{@b Yellow} The wall stops acid, cold, electricity, fire, force, negative, {@trait positive}, and {@trait sonic} effects from passing through, and it deals 30 electricity damage to anyone passing through, with a basic Reflex save. {@spell Disintegrate} can counteract a yellow chromatic wall.",
+						"{@b Green} The wall stops toxins, gases, and breath weapons from passing through. It deals 10 poison damage to anyone passing through and makes them {@condition enfeebled|CRB|enfeebled 1} for 1 minute. A basic Fortitude save reduces the damage and negates the {@condition enfeebled} condition on a success. {@spell Passwall} can counteract a green chromatic wall."		
+					]
+				}
 			],
 			"cast": {
 				"number": 1,
@@ -2567,7 +2569,19 @@
 				"x": [
 					{
 						"level": 7,
-						"entry": "The spell's duration increases to 1 hour. Roll {@dice 1d8} to determine the wall's color; the results for 5\u20138 are below. A red, orange, yellow, or green wall deals an extra 10 damage. 5. Blue The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of flesh to stone. Magic missile can counteract a blue chromatic wall. 6. Indigo The wall stops {@trait divination} and {@trait mental} effects from passing through, and those passing through are subject to the effects of warp mind. Searing light can counteract an indigo chromatic wall. 7. Violet The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed|CRB|slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of plane shift. Dispel magic can counteract a violet chromatic wall. 8. Reroll, and creatures that pass through the wall take a\u20132 circumstance penalty to their saves."
+						"entry": [
+							"The spell's duration increases to 1 hour. Roll {@dice 1d8} to determine the wall's color; the results for 5\u20138 are below. A red, orange, yellow, or green wall deals an extra 10 damage.",
+							{
+								"type": "list",
+								"style": "list-no-bullets",
+								"items": [
+									"5. {@b Blue} The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of flesh to stone. {@spell Magic missile} can counteract a blue chromatic wall.",
+									"6. {@b Indigo} The wall stops {@trait divination} and {@trait mental} effects from passing through, and those passing through are subject to the effects of warp mind. {@spell Searing light} can counteract an indigo chromatic wall.",
+									"7. {@b Violet} The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed|CRB|slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of {@spell plane shift}. {@spell Dispel magic} can counteract a violet chromatic wall.",
+									"8. Reroll, and creatures that pass through the wall take a\u20132 circumstance penalty to their saves."
+								]
+							}
+						]
 					}
 				],
 				"no_x": null
@@ -26395,9 +26409,15 @@
 			],
 			"entries": [
 				"You perform music so perfect that the target may die of joy or sorrow. Once targeted, the creature becomes temporarily immune for 1 minute. The effect of the spell depends on the target's level and current Hit Points.",
-				"16th or Lower The target dies instantly.",
-				"17th If the target has 50 Hit Points or fewer, it dies instantly; otherwise, it drops to 0 Hit Points and becomes {@condition dying|CRB|dying 1}.",
-				"18th or Higher The target takes 50 damage. If this brings it to 0 Hit Points, it dies instantly."
+				{
+					"type": "list",
+					"style": "list-no-bullets",
+					"items": [
+						"{@b 16th or Lower} The target dies instantly.",
+						"{@b 17th} If the target has 50 Hit Points or fewer, it dies instantly; otherwise, it drops to 0 Hit Points and becomes {@condition dying|CRB|dying 1}.",
+						"{@b 18th or Higher} The target takes 50 damage. If this brings it to 0 Hit Points, it dies instantly."
+					]
+				}
 			],
 			"cast": {
 				"number": 1,
