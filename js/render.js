@@ -1509,6 +1509,8 @@ function Renderer () {
 						fauxEntry.displayText = fauxEntry.displayText || rollText;
 						fauxEntry.toRoll = `1d20`;
 						fauxEntry.subType = "d20";
+						fauxEntry.successThresh = 21 - Number(fauxEntry.displayText);
+						fauxEntry.successMax = 20;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					}
@@ -3903,13 +3905,17 @@ Renderer.feat = {
 		if (feat.requirements != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Requirements&nbsp;</strong>${renderer.render(feat.requirements)}</p>`);
 		}
+		if (feat.access != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(feat.access)}</p>`);
+		}
 		if (renderStack.length !== 0) renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		return renderStack.join("");
 	},
 
 	getSpecial (feat) {
+		const renderer = Renderer.get()
 		if (feat.special != null) {
-			return `<p class="pf2-stat pf2-stat__text"><strong>Special&nbsp;</strong>${feat.special}</p>`
+			return `<p class="pf2-stat pf2-stat__text"><strong>Special&nbsp;</strong>${renderer.render(feat.special)}</p>`
 		} else return ``
 	},
 

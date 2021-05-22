@@ -3367,6 +3367,73 @@
 			"page": 120
 		},
 		{
+			"source": "APG",
+			"name": "Wakizashi",
+			"type": "Equipment",
+			"equipment": true,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"traits": [
+				"Uncommon",
+				"Agile",
+				"Deadly d8",
+				"Finesse",
+				"Versatile P"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"amount": 1,
+				"coin": "gp",
+				"note": null
+			},
+			"hands": 1,
+			"ammunition": null,
+			"onset": null,
+			"damage": "1d4",
+			"damageType": "S",
+			"bulk": "L",
+			"group": "Sword",
+			"entries": [
+				"This short-bladed, single-edged sword is typically carried as part of a pair alongside a katana."
+			],
+			"craftReq": null,
+			"page": 248
+		},
+		{
+			"source": "APG",
+			"name": "Khakkara",
+			"type": "Equipment",
+			"equipment": true,
+			"category": "Weapon",
+			"subCategory": "Martial",
+			"traits": [
+				"Uncommon",
+				"Shove",
+				"Two-Hand 1d10",
+				"Versatile P"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"amount": 2,
+				"coin": "gp",
+				"note": null
+			},
+			"hands": 1,
+			"ammunition": null,
+			"onset": null,
+			"damage": "1d6",
+			"damageType": "B",
+			"bulk": 1,
+			"group": "Club",
+			"entries": [
+				"This staff is topped by a pointed metal circle from which hang several smaller rings that jingle and clang noisily as the staff is moved, allowing you to announce your presence and scare off wild animals as you walk."
+			],
+			"craftReq": null,
+			"page": 248
+		},
+		{
 			"source": "LOGM",
 			"name": "Tekko-Kagi",
 			"type": "Equipment",
@@ -3901,7 +3968,7 @@
 			"bulk": "L",
 			"group": "Sling",
 			"entries": [
-				"Tengu use these specialized slings to fire darts further and with greater force than when thrown by hand, which is particularly effective when attacking from great heights. A thunder sling uses darts as ammunition. It can also hurl blowgun darts as ammunition but deals 1d4 piercing damage instead of 1d6 when used this way."
+				"Tengu use these specialized slings to fire darts further and with greater force than when thrown by hand, which is particularly effective when attacking from great heights. A thunder sling uses {@item dart|crb|darts} as ammunition. It can also hurl {@item blowgun darts} as ammunition but deals {@damage 1d4} piercing damage instead of {@damage 1d6} when used this way."
 			],
 			"craftReq": null,
 			"page": 139
@@ -3930,10 +3997,10 @@
 				"note": null
 			},
 			"hands": 2,
-			"ammunition": null,
+			"ammunition": "Wooden Taws|LOAG",
 			"onset": null,
 			"damage": "1d6",
-			"damageType": "P",
+			"damageType": "modular",
 			"bulk": "1",
 			"group": "Bow",
 			"entries": [

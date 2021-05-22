@@ -1815,7 +1815,7 @@
 						"Lamashtu marks you as prey. Any creature with imprecise or better scent can smell you from 100 × the usual range of their scent and can't shake the feeling that you smell like prey, so they might attack you even if they would normally avoid attacking creatures of your ancestry. This smell doesn't magically compel their action, and the scent of prey doesn't overcome a deeper bond such as that with an animal companion."
 					],
 					"Major Curse": [
-						"Your dreams are an unending stream of nightmares. You need 16 hours of rest to try to get enough sleep to recover resources in daily preparation that normally require an 8-hour rest, and even then, you must succeed at a DC 15 flat check to do so, and you are still {@condition fatigued} on a successful check."
+						"Your dreams are an unending stream of nightmares. You need 16 hours of rest to try to get enough sleep to recover resources in daily preparation that normally require an 8-hour rest, and even then, you must succeed at a DC {@flatDC 15} flat check to do so, and you are still {@condition fatigued} on a successful check."
 					]
 				}
 			},
@@ -2000,7 +2000,7 @@
 						"The secrets of magic become mentally taxing. You are permanently {@condition stupefied} 1."
 					],
 					"Moderate Curse": [
-						"Your magic wars against itself like Nethys's dueling halves. Whenever you cast a spell, attempt a DC 11 flat check. On a failure, if your spell was harmful, you instead cast a beneficial spell of the same level on your intended targets, and if it was beneficial, you instead cast a harmful spell of the same level on your intended targets. If the spell benefited some targets and harmed others, you cast a spell of the same level that switches who benefited (for instance, changing a {@spell heal} spell that harmed undead and healed the living to a {@spell harm} spell that healed undead and harmed the living). You still lose the spell slot for the spell you were trying to cast."
+						"Your magic wars against itself like Nethys's dueling halves. Whenever you cast a spell, attempt a DC {@flatDC 11} flat check. On a failure, if your spell was harmful, you instead cast a beneficial spell of the same level on your intended targets, and if it was beneficial, you instead cast a harmful spell of the same level on your intended targets. If the spell benefited some targets and harmed others, you cast a spell of the same level that switches who benefited (for instance, changing a {@spell heal} spell that harmed undead and healed the living to a {@spell harm} spell that healed undead and harmed the living). You still lose the spell slot for the spell you were trying to cast."
 					],
 					"Major Curse": [
 						"Nethys severs your connection to magic. You lose all your spellcasting abilities and cannot gain any future spellcasting."
@@ -6358,7 +6358,24 @@
 				"CE"
 			],
 			"info": [
-				"Abraxas, the Master of the Final Incantation, is the demon lord of forbidden lore, magic, and snakes. Abraxas has an encyclopedic knowledge of magical formulas and destructive secrets, favoring those that inflict suffering and destruction. His Final Incantation is a word of power that can unravel the mightiest of spells and unmake even artifacts. He takes the form of a viper-legged humanoid with a fanged, deformed bird’s head. Abraxas’s cults are most prevalent among the drow of Golarion, but small circles devoted to him can be found in most major cities on the surface as well."
+			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Abraxas",
+					"source": "LOGM",
+					"page": 76,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 76,
+							"source": "LOGM",
+							"entries": [
+								"Abraxas, the Master of the Final Incantation, is the demon lord of forbidden lore, magic, and snakes. Abraxas has an encyclopedic knowledge of magical formulas and destructive secrets, favoring those that inflict suffering and destruction. His Final Incantation is a word of power that can unravel the mightiest of spells and unmake even artifacts. He takes the form of a viper-legged humanoid with a fanged, deformed bird’s head. Abraxas’s cults are most prevalent among the drow of Golarion, but small circles devoted to him can be found in most major cities on the surface as well."
+							]
+						}
+					]
+				}
 			],
 			"edicts": [
 				"learn and hoard forbidden magic", 
@@ -6437,8 +6454,25 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Baphomet",
+					"source": "LOGM",
+					"page": 76,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 76,
+							"source": "LOGM",
+							"entries": [
+								"Baphomet, Lord of the Labyrinth, is the demon lord of beasts, labyrinths, and minotaurs. Baphomet was originally a consort of {@deity Lamashtu} who achieved demon lord status after escaping from imprisonment in a labyrinth constructed by {@deity Asmodeus}. Baphomet appears as an enormous emaciated minotaur with feathered wings and a goat-like head that bears three horns, as well as a blazing pentagram branded into his forehead. Baphomet’s cults are among the most prolific in Golarion—human-dominated secret societies devoted to the demon lord are present in many cities and may have members ensconced in positions of political power, while most minotaurs prefer his patronage to that of {@deity Lamashtu}."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Baphomet, Lord of the Labyrinth, is the demon lord of beasts, labyrinths, and minotaurs. Baphomet was originally a consort of Lamashtu who achieved demon lord status after escaping from imprisonment in a labyrinth constructed by Asmodeus. Baphomet appears as an enormous emaciated minotaur with feathered wings and a goat-like head that bears three horns, as well as a blazing pentagram branded into his forehead. Baphomet’s cults are among the most prolific in Golarion—human-dominated secret societies devoted to the demon lord are present in many cities and may have members ensconced in positions of political power, while most minotaurs prefer his patronage to that of Lamashtu."
 			],
 			"edicts": [
 				"confuse paths and roads", 
@@ -6501,8 +6535,25 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Cyth-V’sug",
+					"source": "LOGM",
+					"page": 76,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 76,
+							"source": "LOGM",
+							"entries": [
+								"Cyth-V’sug, Prince of the Blasted Heath, is the demon lord of disease, fungus, and parasites. Originally a qlippoth lord, he was exiled by his peers for accepting mortal worshippers. Transformed into one of the demons he despises, Cyth-V’sug seeks to devour all life to put an end to demons and, ultimately, himself. He most often appears as an enormous draconic figure of snarled vines, fungal growths, and flailing tentacles. Cyth-V’sug is most often worshipped by recluses who seek to bring decay and destruction to their environs, though denizens of the Darklands also pay homage to him."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Cyth-V’sug, Prince of the Blasted Heath, is the demon lord of disease, fungus, and parasites. Originally a qlippoth lord, he was exiled by his peers for accepting mortal worshippers. Transformed into one of the demons he despises, Cyth-V’sug seeks to devour all life to put an end to demons and, ultimately, himself. He most often appears as an enormous draconic figure of snarled vines, fungal growths, and flailing tentacles. Cyth-V’sug is most often worshipped by recluses who seek to bring decay and destruction to their environs, though denizens of the Darklands also pay homage to him."
 			],
 			"edicts": [
 				"corrupt all that exists with parasites or fungus", 
@@ -6512,7 +6563,7 @@
 			"anathema": [
 				"Purify your food", 
 				"cure a disease or kill a parasite", 
-				"tolerate another demon lord or their servants (except {@deity Treerazer})"
+				"tolerate another demon lord or their servants (except {@deity Treerazer|Bst})"
 			],
 			"followerAlignment": [
 				"CE"
@@ -6564,8 +6615,26 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Dagon",
+					"source": "LOGM",
+					"page": 76,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 76,
+							"source": "LOGM",
+							"entries": [
+								"Dagon, the Shadow in the Sea, is the demon lord of deformity, the sea, and sea monsters. He holds court in an infinite ocean covered in disconcerting islands and deep-sea trenches filled with incomprehensible sunken cities. He appears as a massive creature with the lower body of an eel, a head reminiscent of deep-sea predators, and four thrashing tentacles in place of arms. Dagon began as a qlippoth, and no mortal understands his transformation into a demon lord, though it earned him the enmity of his former kin. Dagon is primarily worshipped by boggards, sahuagin, skum, and marsh giants, though desperate or depraved coastal villages have been known to pledge themselves to the demon lord."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Dagon, the Shadow in the Sea, is the demon lord of deformity, the sea, and sea monsters. He holds court in an infinite ocean covered in disconcerting islands and deep-sea trenches filled with incomprehensible sunken cities. He appears as a massive creature with the lower body of an eel, a head reminiscent of deep-sea predators, and four thrashing tentacles in place of arms. Dagon began as a qlippoth, and no mortal understands his transformation into a demon lord, though it earned him the enmity of his former kin. Dagon is primarily worshipped by boggards, sahuagin, skum, and marsh giants, though desperate or depraved coastal villages have been known to pledge themselves to the demon lord."
+				
 			],
 			"edicts": [
 				"swim underwater", 
@@ -6621,7 +6690,9 @@
 			"name": "Gogunta",
 			"source": "Bst",
 			"otherSources": {
-				"Expanded": "LOGM|77"
+				"Expanded": [
+					"LOGM|77"
+				]
 			},
 			"page": 45,
 			"altNames": [
@@ -6631,16 +6702,26 @@
 			"alignment": [
 				"CE"
 			],
-			"info": [
-				"Gogunta is the patron of the {@trait boggard} people, may of whom worship her as their goddess.",
+			"lore": [
 				{
-					"type": "entriesOtherSource",
-					"page": 77,
+					"type": "pf2-h2",
+					"name": "Gogunta",
 					"source": "LOGM",
+					"page": 77,
 					"entries": [
-						"Gogunta, Song of the Swamp, is the demon lord of amphibians, boggards, and swamps. Gogunta is worshipped as a goddess by boggards, who believe her to be an ascended mobogo, though scholars suspect she was a former hezrou who gained the favor of Dagon. Lending credence to this latter theory, her realm, a stinking salt marsh, is located within Dagon’s oceanic realm. Gogunta appears as an enormous, multi-headed frog with dozens of eyes and even more tongues, though boggards typically depict her as a titanic boggard queen."
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Gogunta, Song of the Swamp, is the demon lord of {@trait amphibious|Bst|amphibians}, {@trait boggard|Bst|boggards}, and swamps. Gogunta is worshipped as a goddess by boggards, who believe her to be an ascended mobogo, though scholars suspect she was a former hezrou who gained the favor of Dagon. Lending credence to this latter theory, her realm, a stinking salt marsh, is located within Dagon’s oceanic realm. Gogunta appears as an enormous, multi-headed frog with dozens of eyes and even more tongues, though boggards typically depict her as a titanic boggard queen."
+							]
+						}
 					]
 				}
+			],
+			"info": [
+				"Gogunta is the patron of the {@trait boggard} people, may of whom worship her as their goddess."
 			],
 			"edicts": [
 				"sacrifice creatures by drowning them", 
@@ -6700,8 +6781,26 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Kabriri",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Kabriri, Him Who Gnaws, is the demon lord of ghouls, graves, and secrets kept by the dead. According to legend, Kabriri is the reborn form of the first humanoid to devour his kin in life. His realm, Everglut, is connected to graveyards throughout the multiverse by a snarled network of tunnels that bring knowledge and sacrifices to the demon lord. Kabriri appears as a hulking ghoul with elven ears, teeth filed to points, an unnaturally long tongue, ashen skin, and cloven hooves. He is worshipped primarily by ghouls, ghasts, and lacedons."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Kabriri, Him Who Gnaws, is the demon lord of ghouls, graves, and secrets kept by the dead. According to legend, Kabriri is the reborn form of the first humanoid to devour his kin in life. His realm, Everglut, is connected to graveyards throughout the multiverse by a snarled network of tunnels that bring knowledge and sacrifices to the demon lord. Kabriri appears as a hulking ghoul with elven ears, teeth filed to points, an unnaturally long tongue, ashen skin, and cloven hooves. He is worshipped primarily by ghouls, ghasts, and lacedons."
+				
 			],
 			"edicts": [
 				"eat the flesh of your own kind"
@@ -6822,8 +6921,25 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Nurgal",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Nurgal, the Shining Scourge, is the demon lord of deserts, senseless warfare, and the sun. He was formerly a fully fledged deity of ancient Azlant, but fell to demigodhood after being defeated in combat. Nurgal represents the sun’s potential for devastation, and his followers venerate him out of cowed awe. The demon lord appears as a muscular, tanned man with the head and lower body of a golden lion and a dragon’s tail. He is almost always depicted as wielding a mace in the form of a miniature sun, held in a taloned hand. Nurgal’s worshippers are primarily found in the deserts of Garund, Ninshabur, and Qadira."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Nurgal, the Shining Scourge, is the demon lord of deserts, senseless warfare, and the sun. He was formerly a fully fledged deity of ancient Azlant, but fell to demigodhood after being defeated in combat. Nurgal represents the sun’s potential for devastation, and his followers venerate him out of cowed awe. The demon lord appears as a muscular, tanned man with the head and lower body of a golden lion and a dragon’s tail. He is almost always depicted as wielding a mace in the form of a miniature sun, held in a taloned hand. Nurgal’s worshippers are primarily found in the deserts of Garund, Ninshabur, and Qadira."
 			],
 			"edicts": [
 				"wage war in the desert", 
@@ -6884,8 +7000,25 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Pazuzu",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Pazuzu, King of the Wind Demons, is the demon lord of the sky, temptation, and winged creatures. He counts himself among the most ancient of demon lords, though his constant warring with Lamashtu has hindered his accumulation of power to the point of denying him godhood. He is exceptionally active in meddling in mortal affairs and takes great pleasure in possessing and corrupting good-hearted folk who invoke his name. Pazuzu appears as a humanoid figure with eagle’s talons, two pairs of bird wings, a scorpion tail, and an avian demonic head. He is worshipped by harpies, other evil winged creatures, and by countless champions and clerics who fell from grace at his temptations."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Pazuzu, King of the Wind Demons, is the demon lord of the sky, temptation, and winged creatures. He counts himself among the most ancient of demon lords, though his constant warring with Lamashtu has hindered his accumulation of power to the point of denying him godhood. He is exceptionally active in meddling in mortal affairs and takes great pleasure in possessing and corrupting good-hearted folk who invoke his name. Pazuzu appears as a humanoid figure with eagle’s talons, two pairs of bird wings, a scorpion tail, and an avian demonic head. He is worshipped by harpies, other evil winged creatures, and by countless champions and clerics who fell from grace at his temptations."
 			],
 			"edicts": [
 				"tempt others to immoral acts", 
@@ -6947,9 +7080,25 @@
 			"alignment": [
 				"CE"
 			],
-			"info": [
-				"Shax, the Blood Marquis, is the demon lord of envy, lies, and sadistic murders. Shax’s capacity for cruelty is legendary even among the ranks of demon lords, and he takes extreme pleasure in watching the last light of hope fade from the eyes of his victims. He is the original creator of the babau demons, and those whom he personally flays and corrupts with Abyssal influence remain exemplars of their kind. Shax appears as a human man with a dove’s head, feet, and wings, carrying countless knives and other weapons all over his body. Shax is most frequently worshipped by sadists, lone murderers, and serial killers."
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Shax",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Shax, the Blood Marquis, is the demon lord of envy, lies, and sadistic murders. Shax’s capacity for cruelty is legendary even among the ranks of demon lords, and he takes extreme pleasure in watching the last light of hope fade from the eyes of his victims. He is the original creator of the babau demons, and those whom he personally flays and corrupts with Abyssal influence remain exemplars of their kind. Shax appears as a human man with a dove’s head, feet, and wings, carrying countless knives and other weapons all over his body. Shax is most frequently worshipped by sadists, lone murderers, and serial killers."
+							]
+						}
+					]
+				}
 			],
+			"info": [],
 			"edicts": [
 				"plot and commit murders", 
 				"tell lies", 
@@ -7066,8 +7215,28 @@
 			"source": "Bst",
 			"page": 312,
 			"otherSources": {
-				"Reprinted": "LOGM|77"
+				"Expanded": [
+					"LOGM|77"
+				]
 			},
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Treerazer",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Treerazer, the Lord of the Blasted Tarn, is a nascent demon lord of pollution and the corruption of nature, believed by many to be an exiled servant or spawn of Cyth-V’sug who was banished to Golarion after a failed attempt at supplanting the demon lord. Though Treerazer is a nascent demon lord, and thus lacks the power of a true demon lord, he is perhaps most noteworthy among those who have a stake in Golarion due to his physical presence within the Tanglebriar, a corrupted, fetid swamp that was once the southern edges of the elven nation of Kyonin. He is served by devoted cultists in and around Kyonin, though small pockets of believers can be found around Golarion working furtively to free him in hopes of gaining his favor upon his ascension. Treerazer’s religious symbol is a bleeding dead tree that’s been split in half."
+							]
+						}
+					]
+				}
+			],
 			"altNames": [
 				"Lord of the Blasted Tarn"
 			],
@@ -7076,7 +7245,7 @@
 				"CE"
 			],
 			"info": [
-				"Treerazer, the Lord of the Blasted Tarn, is a nascent demon lord of pollution and the corruption of nature, believed by many to be an exiled servant or spawn of Cyth-V’sug who was banished to Golarion after a failed attempt at supplanting the demon lord. Though Treerazer is a nascent demon lord, and thus lacks the power of a true demon lord, he is perhaps most noteworthy among those who have a stake in Golarion due to his physical presence within the Tanglebriar, a corrupted, fetid swamp that was once the southern edges of the elven nation of Kyonin. He is served by devoted cultists in and around Kyonin, though small pockets of believers can be found around Golarion working furtively to free him in hopes of gaining his favor upon his ascension. Treerazer’s religious symbol is a bleeding dead tree that’s been split in half."
+				"Treerazer is worshipped by cultists throughout the Inner Sea region. The majority of these deranged maniacs can be found within or near the exapnse of the Tanglebriar, consisting of fungus-corrupted fey, debased elves, or other sinister demon worshippers. Beyond Tanglebriar, his cultists are rarer and tend to be loners or leaders of very small groups. Treerazer's religious symbol is a bleeding dead tree that's been split in half."
 			],
 			"edicts": [
 				"corrupt plant life with evil or fungal influences", 
@@ -7134,7 +7303,9 @@
 			"source": "APLLS",
 			"page": 67,
 			"otherSources": {
-				"Expanded": "LOGM|77"
+				"Expanded": [
+					"LOGM|77"
+				]
 			},
 			"altNames": [
 				"The Beast of Gluttondark"
@@ -7143,16 +7314,26 @@
 			"alignment": [
 				"CE"
 			],
-			"info": [
-				"Treerazer, the Lord of the Blasted Tarn, is a nascent demon lord of pollution and the corruption of nature, believed by many to be an exiled servant or spawn of Cyth-V’sug who was banished to Golarion after a failed attempt at supplanting the demon lord. Though Treerazer is a nascent demon lord, and thus lacks the power of a true demon lord, he is perhaps most noteworthy among those who have a stake in Golarion due to his physical presence within the Tanglebriar, a corrupted, fetid swamp that was once the southern edges of the elven nation of Kyonin. He is served by devoted cultists in and around Kyonin, though small pockets of believers can be found around Golarion working furtively to free him in hopes of gaining his favor upon his ascension. Treerazer’s religious symbol is a bleeding dead tree that’s been split in half.",
+			"lore": [
 				{
-					"type": "entriesOtherSource",
-					"page": 77,
+					"type": "pf2-h2",
+					"name": "Zevgavizeb",
 					"source": "LOGM",
+					"page": 77,
 					"entries": [
-						"Zevgavizeb, the Glutton in the Dark, is the demon lord of caverns, reptiles, and troglodytes. He dwells at the center of a massive network of caverns called Gluttondark, filled with continually warring nations of reptilian races, along with other, more hideous subterranean creatures. He encourages these conflicts to cull the weakest of his followers and devours all life found within defeated nations as a price for failure. Largely concerned with these perpetual conflicts, Zevgavizeb seldom seeks to influence Golarion directly, though reptilian races and xulgaths in particular routinely commit atrocities in his name."
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Zevgavizeb, the Glutton in the Dark, is the demon lord of caverns, reptiles, and troglodytes. He dwells at the center of a massive network of caverns called Gluttondark, filled with continually warring nations of reptilian races, along with other, more hideous subterranean creatures. He encourages these conflicts to cull the weakest of his followers and devours all life found within defeated nations as a price for failure. Largely concerned with these perpetual conflicts, Zevgavizeb seldom seeks to influence Golarion directly, though reptilian races and xulgaths in particular routinely commit atrocities in his name."
+							]
+						}
 					]
 				}
+			],
+			"info": [
+				"The Beast of Gluttondark’s sphere of influence encompasses caverns, reptiles, the strong, and all-consuming hunger. A primordial qlippoth-turned-demon lord, Zevgavizeb seems to care little for his followers, and so he is more often propitiated than worshipped."
 			],
 			"edicts": [
 				"expand your clutch’s domain", 
@@ -7216,8 +7397,25 @@
 			"alignment": [
 				"CE"
 			],
+			"lore": [
+				{
+					"type": "pf2-h2",
+					"name": "Zura",
+					"source": "LOGM",
+					"page": 77,
+					"entries": [
+						{
+							"type": "pf2-h3",
+							"page": 77,
+							"source": "LOGM",
+							"entries": [
+								"Zura, the Vampire Queen, is the demon lord of blood, cannibalism, and vampires. According to legend, she is the reincarnated form of an Azlanti queen who indulged in blood rites and acts of cannibalism in a quest for eternal life. After death, she was reborn as a unique vampiric succubus who quickly ascended to the status of demon lord. Though many of her cults died out with the Azlanti empire, Zura is still worshipped by vampires and those aspiring to become vampires, particularly within Cheliax and Ustalav, as well as among the drow of the Darklands."
+							]
+						}
+					]
+				}
+			],
 			"info": [
-				"Zura, the Vampire Queen, is the demon lord of blood, cannibalism, and vampires. According to legend, she is the reincarnated form of an Azlanti queen who indulged in blood rites and acts of cannibalism in a quest for eternal life. After death, she was reborn as a unique vampiric succubus who quickly ascended to the status of demon lord. Though many of her cults died out with the Azlanti empire, Zura is still worshipped by vampires and those aspiring to become vampires, particularly within Cheliax and Ustalav, as well as among the drow of the Darklands."
 			],
 			"edicts": [
 				"drink blood", 

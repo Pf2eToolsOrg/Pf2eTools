@@ -85,7 +85,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"You favor weapons that you can use with quick, darting slashes like a cat's claws. You are trained with the hatchet, kama, kukri, scimitar, and sickle. In addition, you gain access to kama, kukris, and all uncommon catfolk weapons. For you, martial catfolk weapons are simple weapons and advanced catfolk weapons are martial weapons."
+				"You favor weapons that you can use with quick, darting slashes like a cat's claws. You are trained with the {@item hatchet}, {@item kama}, {@item kukri}, {@item scimitar}, and {@item sickle}. In addition, you gain access to {@item kama}, {@item kukri|crb|kukris}, and all {@filter uncommon catfolk weapons|items|rarity=uncommon|ancestry & heritage=catfolk}. For you, martial catfolk weapons are simple weapons and advanced catfolk weapons are martial weapons."
 			],
 			"activity": null,
 			"special": null,
@@ -1854,10 +1854,8 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to khakkaras (page 248)",
-				"Additionally, choose two weapons from the sword group.",
-				"You can choose from among all common martial swords, plus the katana, temple sword, and wakizashi (page 248). For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
-				"You also gain access to all uncommon tengu weapons. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
+				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the {@group sword} group. You can choose from among all {@filter common martial swords|items|rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
+				"You also gain access to all {@filter uncommon tengu weapons|items|rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
 			],
 			"activity": null,
 			"special": null,
@@ -21909,10 +21907,9 @@
 			"prerequisites": null,
 			"frequency": null,
 			"trigger": null,
-			"requirements": null,
+			"access": "You are a {@ancestry kobold|apg} with the {@ancestry kobold|APG|dragonscaled|dragonscaled kobold} or {@ancestry kobold|APG|spellscaled|spellscaled} heritage, a {@class barbarian|crb|dragon instinct barbarian|dragon}, or a {@class sorcerer|crb|draconic bloodline sorcerer|draconic}.",
 			"cost": null,
 			"entries": [
-				"Access You are a kobold with the dragonscaled or spellscaled heritage, a dragon instinct barbarian, or a draconic bloodline sorcerer.",
 				"You choose to study or worship one type of dragon, and your focus grants you a measure of its power. Choose one color of dragon when you select this feat; if you are a sorcerer with the draconic bloodline, this must be the same type as your bloodline. You gain resistance equal to half your level against one type of damage determined by the chosen dragon type.",
 				"The GM may allow you to choose a dragon type not listed below, and will determine the damage type appropriate for that dragon.",
 				{
@@ -21922,12 +21919,13 @@
 						"{@bold Blue or Bronze} Electricity",
 						"{@bold Brass, Gold, or Red} Fire",
 						"{@bold Green} Poison",
-						"{@bold Silver or White Cold} You also gain a +1 circumstance bonus to saving throws against {@trait sleep} effects and effects that would make you {@condition paralyzed}."
+						"{@bold Silver or White} Cold"
 					]
-				}
+				},
+				"You also gain a +1 circumstance bonus to saving throws against {@trait sleep} effects and effects that would make you {@condition paralyzed}."
 			],
 			"activity": null,
-			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the sorcerer archetype, you must choose the draconic bloodline.",
+			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the {@archetype sorcerer|CRB|sorcerer archetype}, you must choose the draconic bloodline.",
 			"successDegree": null,
 			"page": 168,
 			"leadsTo": [
@@ -21989,7 +21987,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"Your sense of smell is uncanny, much like a dragon's. You gain imprecise scent with a range of 30 feet. The GM might double the range if you're downwind from the creature or halve the range if you're upwind, at their discretion."
+				"Your sense of smell is uncanny, much like a dragon's. You gain imprecise {@ability scent} with a range of 30 feet. The GM might double the range if you're downwind from the creature or halve the range if you're upwind, at their discretion."
 			],
 			"activity": null,
 			"special": null,
@@ -22011,17 +22009,13 @@
 				"skill": false,
 				"archetype": true
 			},
-			"prerequisites": "ability to cast spells from spell slots, Dragon",
+			"prerequisites": "ability to cast spells from spell slots, {@feat Dragon Disciple Dedication|APG}",
 			"frequency": null,
 			"trigger": null,
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"Disciple Dedication You've discovered how to add the magic of dragons to your tradition. Add the draconic bloodline's granted spells to your spell list; you must still learn them or add them to your repertoire as normal. These spells are shield, true strike, resist energy, haste, spell immunity, chromatic wall, dragon form, mask of terror, prismatic wall, and overwhelming presence.",
-				"INSTINCT OF THE WYRM The acquisition of draconic might can change the dragon disciple's body and give them magical abilities, as reflected in the archetype's feats, but the mind often changes as well, potentially even overwhelming the disciple's normal personality. Any dragon disciple can find the attitudes of dragonkind intruding into their thoughts. The foremost emotion among all types of dragons is pride. Even the influence of a benevolent metallic dragon can overwhelm a dragon disciple with pride. When tempered, this feeling levels out to a steady confidence, but when uncontrolled, it can grow to an air of arrogance or superiority.",
-				"Disciples of metallic dragons also feel the pangs of compassion and benevolence. They grow to be more focused on cooperation and might take on leadership roles. Disciples of the vile chromatic dragons are plagued by thoughts of cruelty and greed. They long to see fear in the eyes of foe and friend alike. Those who succumb to these thoughts become bullies or tyrants.",
-				"Instinctual draconic feelings can be constant, yet they seem to intensify when the disciple uses their draconic powers. In the few seconds after using a breath weapon or attacking with claws, or when the disciple sprouts wings, they might have a moment of mental transformation. This can bring on the full mindset of a dragon, or even make the disciple temporarily believe they truly are a dragon, and is often accompanied by a draconic roar, cackle, or majestic display.",
-				"Advanced Player's Guide 168."
+				"You've discovered how to add the magic of dragons to your tradition. Add the draconic bloodline's granted spells to your spell list; you must still learn them or add them to your repertoire as normal. These spells are {@spell shield}, {@spell true strike}, {@spell resist energy}, {@spell haste}, {@spell spell immunity}, {@spell chromatic wall}, {@spell dragon form}, {@spell mask of terror}, {@spell prismatic wall}, and {@spell overwhelming presence}."
 			],
 			"activity": null,
 			"special": null,
