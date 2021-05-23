@@ -60,7 +60,7 @@ class PageFilterHazards extends PageFilter {
 		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
 		this._stealthDcFilter.addItem(it._fstealth);
-		if (it.stealth.min_prof) this._stealthMinProfFilter.addItem(it.stealth.min_prof);
+		if (it.stealth.minProf) this._stealthMinProfFilter.addItem(it.stealth.minProf);
 		if (it._fac != null) this._acFilter.addItem(it._fac);
 		if (it._fhardness != null) this._hardnessFilter.addItem(it._fhardness);
 		if (it._fhp != null) this._hpFilter.addItem(it._fhp);
@@ -91,7 +91,7 @@ class PageFilterHazards extends PageFilter {
 			it._ftraits,
 			[
 				it._fstealth,
-				it.stealth.min_prof,
+				it.stealth.minProf,
 			],
 			[
 				it._fac,

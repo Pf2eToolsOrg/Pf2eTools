@@ -16,7 +16,7 @@ class PageFilterRituals extends PageFilter {
 			items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			displayFn: PageFilterRituals.getFltrRitualLevelStr,
 		});
-		this._traitFilter = new Filter({header: "Traits"});
+		this._traitFilter = new TraitsFilter({header: "Traits"});
 		this._timeFilter = new Filter({
 			header: "Cast Time",
 			items: [
@@ -62,6 +62,7 @@ class PageFilterRituals extends PageFilter {
 		it._normalisedTime = Parser.getNormalisedTime(it.cast);
 
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
+		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fTimeType = [it.cast["unit"]];
 		it._fSndCasters = it.secondaryCasters ? it.secondaryCasters.number : 0;
 		it._fPmCheck = it.primaryCheck.skills || [];
@@ -108,7 +109,7 @@ class PageFilterRituals extends PageFilter {
 			values,
 			it._fSources,
 			it.level,
-			it._ftraits,
+			it._fTraits,
 			it._fTimeType,
 			it._fSndCasters,
 			[

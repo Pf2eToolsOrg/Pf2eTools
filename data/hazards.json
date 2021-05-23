@@ -17,7 +17,7 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 12 to remove the trapdoor."
+					"{@skill Thievery} DC 12 to remove the trapdoor."
 				]
 			},
 			"defenses": {
@@ -48,7 +48,7 @@
 					},
 					"trigger": "A creature walks onto the trapdoor.",
 					"entries": [
-						"The triggering creature falls in and takes falling damage (typically 10 bludgeoning damage). That creature can use the {@action Grab an Edge|CRB} reaction to avoid falling."
+						"The triggering creature falls in and takes falling damage (typically 10 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling."
 					],
 					"type": "ability",
 					"name": "Pitfall"
@@ -70,14 +70,14 @@
 			],
 			"stealth": {
 				"dc": 17,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
-				"A spring-loaded, poisoned spine is {@condition hidden} near the keyhole of a {@spell lock|CRB}. Disabling or breaking the trap does not disable or break the {@spell lock|CRB}."
+				"A spring-loaded, poisoned spine is {@condition hidden} near the keyhole of a lock. Disabling or breaking the trap does not disable or break the lock."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 17 (trained) on the spring mechanism."
+					"{@skill Thievery} DC 17 (trained) on the spring mechanism."
 				]
 			},
 			"defenses": {
@@ -116,7 +116,7 @@
 					],
 					"trigger": "A creature tries to unlock or Pick the",
 					"entries": [
-						"{@spell Lock|CRB}. A spine extends to attack the triggering creature."
+						"Lock. A spine extends to attack the triggering creature."
 					],
 					"type": "ability",
 					"name": "Spring"
@@ -134,7 +134,7 @@
 					"types": [
 						"piercing"
 					],
-					"no_map": true
+					"noMAP": true
 				},
 				{
 					"entries": [
@@ -147,23 +147,23 @@
 								],
 								"note": "",
 								"DC": "19",
-								"saving throw": "Fortitude",
+								"savingThrow": "Fortitude",
 								"onset": null,
-								"max duration": "4 hours",
+								"maxDuration": "4 hours",
 								"stages": [
 									{
 										"stage": 1,
-										"entry": "1d6 poison damage and drained 1",
+										"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
 										"duration": "1 hour"
 									},
 									{
 										"stage": 2,
-										"entry": "2d6 poison damage and drained 2",
+										"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
 										"duration": "1 hour"
 									},
 									{
 										"stage": 3,
-										"entry": "3d6 poison damage and drained 2",
+										"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
 										"duration": "1 hour"
 									}
 								]
@@ -188,14 +188,14 @@
 			],
 			"stealth": {
 				"dc": 17,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"Pressure-sensitive panels in the floor connect to a stone slab {@condition hidden} in a hallway's ceiling."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 15 (trained) on the floor panels before the slab falls."
+					"{@skill Thievery} DC 15 (trained) on the floor panels before the slab falls."
 				]
 			},
 			"defenses": {
@@ -231,7 +231,7 @@
 					},
 					"trigger": "Pressure is placed on any floor tile.",
 					"entries": [
-						"The door falls, closing off the hallway. The stone slab deals {@damage 3d8} bludgeoning damage to anyone beneath or adjacent to the slab when it drops and pushes them out of its space in a random direction. A creature that succeeds at a DC 17 Reflex save takes no damage and rolls out of the way in a random direction. On a critical success, they can choose the direction. Lifting the fallen slab requires a successful DC 25 Athletics check. Hitting the floor panels triggers the trap. The slab uses the same AC and saves as the trap, but it has Hardness 12, HP 48 (BT 24)."
+						"The door falls, closing off the hallway. The stone slab deals {@damage 3d8} bludgeoning damage to anyone beneath or adjacent to the slab when it drops and pushes them out of its space in a random direction. A creature that succeeds at a DC 17 Reflex save takes no damage and rolls out of the way in a random direction. On a critical success, they can choose the direction. Lifting the fallen slab requires a successful DC 25 {@skill Athletics} check. Hitting the floor panels triggers the trap. The slab uses the same AC and saves as the trap, but it has Hardness 12, HP 48 (BT 24)."
 					],
 					"type": "ability",
 					"name": "Slam Shut"
@@ -251,14 +251,14 @@
 			],
 			"stealth": {
 				"dc": 20,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"A wall socket loaded with a spear connects to a floor tile in one 5-foot square."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 18 (trained) on the floor tile or wall socket."
+					"{@skill Thievery} DC 18 (trained) on the floor tile or wall socket."
 				]
 			},
 			"defenses": {
@@ -309,11 +309,11 @@
 					"attack": 14,
 					"traits": null,
 					"effects": [],
-					"damage": "{@dice 2d6+6} piercing",
+					"damage": "{@damage 2d6+6} piercing",
 					"types": [
 						"piercing"
 					],
-					"no_map": true
+					"noMAP": true
 				}
 			],
 			"routine": null,
@@ -332,14 +332,14 @@
 			],
 			"stealth": {
 				"dc": 20,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"An {@condition invisible} rune imprinted on a door latch releases a powerful electric discharge."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 20 (expert) to scratch out the rune without allowing electricity to flow, or {@spell dispel magic|CRB} (2nd level; counteract DC 18) to counteract the rune."
+					"{@skill Thievery} DC 20 (expert) to scratch out the rune without allowing electricity to flow, or dispel magic (2nd level; counteract DC 18) to counteract the rune."
 				]
 			},
 			"defenses": null,
@@ -377,14 +377,14 @@
 			],
 			"stealth": {
 				"dc": 23,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"Two blades, each {@condition hidden} in a 15-foot-long ceiling groove, are both connected to a trip wire."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 21 (trained) to disable each blade."
+					"{@skill Thievery} DC 21 (trained) to disable each blade."
 				]
 			},
 			"defenses": {
@@ -437,11 +437,11 @@
 						"deadly 1d12"
 					],
 					"effects": [],
-					"damage": "{@dice 2d12+4} slashing",
+					"damage": "{@damage 2d12+4} slashing",
 					"types": [
 						"slashing"
 					],
-					"no_map": true
+					"noMAP": true
 				}
 			],
 			"routine": null,
@@ -462,14 +462,14 @@
 			],
 			"stealth": {
 				"dc": 24,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"An {@condition invisible} rune creates an {@condition invisible}, spherical magical sensor with a 20-foot radius."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 22 (expert) to erase the rune without triggering the sensor, or {@spell dispel magic|CRB} (3rd level; counteract DC 20) to counteract the rune."
+					"{@skill Thievery} DC 22 (expert) to erase the rune without triggering the sensor, or dispel magic (3rd level; counteract DC 20) to counteract the rune."
 				]
 			},
 			"defenses": null,
@@ -487,7 +487,7 @@
 					],
 					"trigger": "A living creature enters the sensor area.",
 					"entries": [
-						"The rune detonates a {@spell fireball|CRB} centered on the triggering creature's square. This is a 3rdlevel {@spell fireball|CRB} spell that deals {@damage 6d6} fire damage (DC 22 basic Reflex save)."
+						"The rune detonates a fireball centered on the triggering creature's square. This is a 3rdlevel {@spell fireball} spell that deals {@damage 6d6} fire damage (DC 22 basic Reflex save)."
 					],
 					"type": "ability",
 					"name": "Fireball"
@@ -507,14 +507,14 @@
 			],
 			"stealth": {
 				"dc": 24,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"A tube of hallucinogenic powder armed with a miniature explosive is connected to a doorknob or similar latch."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 26 (expert) to disable the hammer that strikes the percussion cap."
+					"{@skill Thievery} DC 26 (expert) to disable the hammer that strikes the percussion cap."
 				]
 			},
 			"defenses": {
@@ -549,9 +549,9 @@
 						"mental",
 						"poison"
 					],
-					"trigger": "The latch is opened or the tube is broken.",
+					"trigger": "The latch is opened or the tube is {@condition broken}.",
 					"entries": [
-						"The tube explodes, spraying hallucinogenic powder in a 30-foot cone. Any creature in the cone must succeed at a DC 24 Will save or be {@condition confused} for 1 round and take a\u20132 status penalty to {@skill Perception} checks and saves against mental effects for {@dice 1d4} hours. On a critical failure, the penalty is instead\u20134."
+						"The tube explodes, spraying hallucinogenic powder in a 30-foot cone. Any creature in the cone must succeed at a DC 24 Will save or be {@condition confused} for 1 round and take a \u20132 status penalty to {@skill Perception} checks and saves against {@trait mental} effects for {@dice 1d4} hours. On a critical failure, the penalty is instead \u20134."
 					],
 					"type": "ability",
 					"name": "Powder Burst"
@@ -571,14 +571,14 @@
 			],
 			"stealth": {
 				"dc": 25,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"A curse is imbued on an entryway's threshold."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 27 (master) to painstakingly remove the lintel without triggering the magic, or {@spell dispel magic|CRB} (4th level; counteract DC 25) to counteract the rune."
+					"{@skill Thievery} DC 27 (master) to painstakingly remove the lintel without triggering the magic, or dispel magic (4th level; counteract DC 25) to counteract the rune."
 				]
 			},
 			"defenses": null,
@@ -594,9 +594,9 @@
 						"divine",
 						"necromancy"
 					],
-					"trigger": "The seal on the tomb is broken from the outside.",
+					"trigger": "The seal on the tomb is {@condition broken} from the outside.",
 					"entries": [
-						"Each living creature within 60 feet must succeed at a DC 23 Will save or be subjected to the pharaoh's curse. A cursed creature takes a\u20132 status penalty to Fortitude saves, and any natural or magical healing it receives is halved. The curse remains until removed by {@spell remove curse|CRB} or similar magic."
+						"Each living creature within 60 feet must succeed at a DC 23 Will save or be subjected to the pharaoh's curse. A cursed creature takes a \u20132 status penalty to Fortitude saves, and any natural or magical healing it receives is halved. The curse remains until removed by remove curse or similar magic."
 					],
 					"type": "ability",
 					"name": "Curse the Intruders"
@@ -618,14 +618,14 @@
 			],
 			"stealth": {
 				"dc": 28,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"Poisonous mold spores assault nearby creatures."
 			],
 			"disable": {
 				"entries": [
-					"Survival DC 26 (expert) to remove the mold without triggering the spores."
+					"{@skill Survival} DC 26 (expert) to remove the mold without triggering the spores."
 				]
 			},
 			"defenses": {
@@ -670,25 +670,25 @@
 									"inhaled",
 									"poison"
 								],
-								"note": " Any drained condition\nfrom the spores persists after the poison's duration ends",
+								"note": " Any {@condition drained} condition\nfrom the spores persists after the poison's duration ends",
 								"DC": "26",
-								"saving throw": "Fortitude",
+								"savingThrow": "Fortitude",
 								"onset": null,
-								"max duration": "6\nrounds",
+								"maxDuration": "6\nrounds",
 								"stages": [
 									{
 										"stage": 1,
-										"entry": "1d8 poison damage and drained 1",
+										"entry": "{@damage 1d8} poison damage and {@condition drained|CRB|drained 1}",
 										"duration": "1 round"
 									},
 									{
 										"stage": 2,
-										"entry": "2d8 poison damage and drained 2",
+										"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 2}",
 										"duration": "1 round"
 									},
 									{
 										"stage": 3,
-										"entry": "3d8 poison damage and drained 3",
+										"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 3}",
 										"duration": "1 round"
 									}
 								]
@@ -714,14 +714,14 @@
 			],
 			"stealth": {
 				"dc": 30,
-				"notes": "(or 0 if the trapdoor is disabled or {@condition broken}) or {@spell detect magic|CRB}."
+				"notes": "(or 0 if the trapdoor is disabled or {@condition broken}) or detect magic."
 			},
 			"description": [
 				"An iron trapdoor covers an infinitely deep 10-foot‑square pit."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 28 (trained) to remove the trapdoor."
+					"{@skill Thievery} DC 28 (trained) to remove the trapdoor."
 				]
 			},
 			"defenses": {
@@ -752,7 +752,7 @@
 					},
 					"trigger": "A creature walks onto the trapdoor.",
 					"entries": [
-						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge|CRB} to avoid falling (page 472). The DC to {@action Climb|CRB} the walls or {@action Grab an Edge|CRB} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge|CRB} again every 6 seconds. If the creature succeeds, it can start to {@action Climb|CRB} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
+						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge} to avoid falling (page 472). The DC to {@action Climb} the walls or {@action Grab an Edge} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge} again every 6 seconds. If the creature succeeds, it can start to {@action Climb} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
 					],
 					"type": "ability",
 					"name": "Infinite Pitfall"
@@ -773,14 +773,14 @@
 			],
 			"stealth": {
 				"dc": 31,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"An object haunted by the echoes of a vicious mind attempts to kill someone who comes near."
 			],
 			"disable": {
 				"entries": [
-					"Religion DC 29 (master) to exorcise the spirit or."
+					"{@skill Religion} DC 29 (master) to exorcise the spirit or."
 				]
 			},
 			"defenses": null,
@@ -808,7 +808,7 @@
 					],
 					"trigger": "A creature moves within 10 feet of the haunted object.",
 					"entries": [
-						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike|CRB} against itself and automatically hits; the target also becomes {@condition frightened} 1. Failure The target makes a {@action Strike|CRB} against itself and automatically scores a critical hit; the target also becomes {@condition frightened} 2. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
+						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened|CRB|frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened|CRB|frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
 					],
 					"type": "ability",
 					"name": "Quietus"
@@ -829,14 +829,14 @@
 			],
 			"stealth": {
 				"dc": 30,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"An enormous hammer at an edifice's entrance swings down in an attempt to damage a creature entering an area, push it back, and prevent it from going any further."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 28 (expert) once on the hammer itself and once on its joint to prevent the hammer from swinging."
+					"{@skill Thievery} DC 28 (expert) once on the hammer itself and once on its joint to prevent the hammer from swinging."
 				]
 			},
 			"defenses": {
@@ -894,12 +894,12 @@
 					"effects": [
 						"the target automatically fails the Will save)"
 					],
-					"damage": "{@dice 6d8+20} bludgeoning plus the target is knocked back 10 feet and must succeed at a DC 30 Will save or be unable to enter the edifice through any entrance for 24 hours (on a critical hit, the target automatically fails the Will save)",
+					"damage": "{@damage 6d8+20} bludgeoning plus the target is knocked back 10 feet and must succeed at a DC 30 Will save or be unable to enter the edifice through any entrance for 24 hours (on a critical hit, the target automatically fails the Will save)",
 					"types": [
 						"bludgeoning",
 						"hours"
 					],
-					"no_map": true
+					"noMAP": true
 				}
 			],
 			"routine": null,
@@ -918,14 +918,14 @@
 			],
 			"stealth": {
 				"dc": 34,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"A Druidic glyph tries to transforms a trespasser into an animal."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 32 (master) to drain the glyph's power harmlessly, or {@spell dispel magic|CRB} (6th level; counteract DC 30) to counteract the glyph."
+					"{@skill Thievery} DC 32 (master) to drain the glyph's power harmlessly, or dispel magic (6th level; counteract DC 30) to counteract the glyph."
 				]
 			},
 			"defenses": null,
@@ -941,7 +941,7 @@
 						"transmutation"
 					],
 					"entries": [
-						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by {@spell baleful polymorph|CRB} (DC 32 Will save)."
+						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by baleful polymorph (DC 32 Will save)."
 					],
 					"type": "ability",
 					"name": "Baleful Polymorph"
@@ -961,14 +961,14 @@
 			],
 			"stealth": {
 				"dc": 35,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"A rift attempts to draw creatures into another plane (the GM chooses the specific plane)."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 33 (master) to assemble a rift seal using objects strongly grounded to your plane, or {@spell dispel magic|CRB} (7th level; counteract DC 31) to counteract the rift."
+					"{@skill Thievery} DC 33 (master) to assemble a rift seal using objects strongly grounded to your plane, or dispel magic (7th level; counteract DC 31) to counteract the rift."
 				]
 			},
 			"defenses": null,
@@ -1006,14 +1006,14 @@
 			],
 			"stealth": {
 				"dc": 40,
-				"min_prof": "master"
+				"minProf": "master"
 			},
 			"description": [
 				"Warding magic attempts to trap intruders or would-be thieves in a disrupted time flow."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 38 (legendary) to rapidly disassemble the spell's myriad components in a single {@spell blink|CRB} of an eye; or {@spell dispel magic|CRB} (9th level; counteract DC 36) to counteract the trap before it triggers or to counteract the effect on one creature after the trap is triggered."
+					"{@skill Thievery} DC 38 (legendary) to rapidly disassemble the spell's myriad components in a single blink of an eye; or dispel magic (9th level; counteract DC 36) to counteract the trap before it triggers or to counteract the effect on one creature after the trap is triggered."
 				]
 			},
 			"defenses": null,
@@ -1037,7 +1037,7 @@
 				},
 				{
 					"entries": [
-						"An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind|CRB} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
+						"An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
 					],
 					"type": "ability",
 					"name": "Knowledge."
@@ -1057,14 +1057,14 @@
 			],
 			"stealth": {
 				"dc": 43,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"A wickedly sharp saw blade descends and travels along grooves in a complex path throughout the room, attempting to decapitate everyone within."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 41 (expert) at four different junctions to jam all the saw blade's possible paths, preventing it from traveling through the room."
+					"{@skill Thievery} DC 41 (expert) at four different junctions to jam all the saw blade's possible paths, preventing it from traveling through the room."
 				]
 			},
 			"defenses": {
@@ -1107,7 +1107,7 @@
 					],
 					"trigger": "A creature attempts to exit the room.",
 					"entries": [
-						"The saw blade travels along its path, making one {@action Strike|CRB} against each creature in the room, twisting and varying its height for a maximum chance of beheading its targets."
+						"The saw blade travels along its path, making one {@action Strike} against each creature in the room, twisting and varying its height for a maximum chance of beheading its targets."
 					],
 					"type": "ability",
 					"name": "Total Decapitation"
@@ -1123,11 +1123,11 @@
 					"effects": [
 						"decapitation"
 					],
-					"damage": "{@dice 6d12+25} slashing plus decapitation",
+					"damage": "{@damage 6d12+25} slashing plus decapitation",
 					"types": [
 						"slashing"
 					],
-					"no_map": true
+					"noMAP": true
 				},
 				{
 					"entries": [
@@ -1153,14 +1153,14 @@
 			],
 			"stealth": {
 				"dc": 44,
-				"min_prof": "legendary"
+				"minProf": "legendary"
 			},
 			"description": [
 				"Powerful warding magic tied to an object or location tries to regress the ages of a creature and its allies."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 46 (legendary) to take apart the spell one tiny piece at a time, with eyes closed, while recalling every vivid life memory in order, starting from the earliest memory."
+					"{@skill Thievery} DC 46 (legendary) to take apart the spell one tiny piece at a time, with eyes closed, while recalling every vivid life memory in order, starting from the earliest memory."
 				]
 			},
 			"defenses": null,
@@ -1177,7 +1177,7 @@
 					],
 					"trigger": "A creature tries to steal the object or intrude upon the location.",
 					"entries": [
-						"If someone uses a proxy or dupe for the theft or intrusion, the trap unerringly targets the true perpetrator or perpetrators at any distance\u2014even across planes. The triggering creature and up to five coconspirators instantly revert to infants, losing all memories, class abilities, and other skills acquired during their lives (DC 44 Fortitude negates). Reversing this effect is nearly impossible, requiring powerful magic such as {@spell wish|CRB}."
+						"If someone uses a proxy or dupe for the theft or intrusion, the trap unerringly targets the true perpetrator or perpetrators at any distance\u2014even across planes. The triggering creature and up to five coconspirators instantly revert to infants, losing all memories, class abilities, and other skills acquired during their lives (DC 44 Fortitude negates). Reversing this effect is nearly impossible, requiring powerful magic such as wish."
 					],
 					"type": "ability",
 					"name": "In the Beginning"
@@ -1198,14 +1198,14 @@
 			],
 			"stealth": {
 				"dc": 10,
-				"notes": "or {@spell detect magic|CRB}."
+				"notes": "or detect magic."
 			},
 			"description": [
 				"A roiling red orb, forged from a drop of the god Rovagug's blood, rains fire from the sky when a specified condition is met."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 48 (legendary) to imbue thieves' tools with aspects representing Asmodeus and Sarenrae and use them to drain away the orb's power over 10 minutes; the character attempting this check takes 5 fire damage each round until the orb is depleted."
+					"{@skill Thievery} DC 48 (legendary) to imbue thieves' tools with aspects representing Asmodeus and Sarenrae and use them to drain away the orb's power over 10 minutes; the character attempting this check takes 5 fire damage each round until the orb is depleted."
 				]
 			},
 			"defenses": null,
@@ -1222,9 +1222,9 @@
 						"evocation",
 						"fire"
 					],
-					"trigger": "A special condition set by the trap's creator occurs;",
+					"trigger": "A special condition set by the trap's creator occurs; this is typically the event of their death.",
 					"entries": [
-						"this is typically the event of their death. Fire rains from the sky in a 100-mile radius, dealing {@dice 10d6} fire damage to creatures and objects in the area. Each creature or object can attempt a DC 46 basic Reflex save. Any creature reduced to 0 Hit Points by this damage dies instantly. This is not enough damage to completely burn away a forest or level an entire mountain or city, but it typically kills most creatures in the area."
+						"Fire rains from the sky in a 100-mile radius, dealing {@damage 10d6} fire damage to creatures and objects in the area. Each creature or object can attempt a DC 46 basic Reflex save. Any creature reduced to 0 Hit Points by this damage dies instantly. This is not enough damage to completely burn away a forest or level an entire mountain or city, but it typically kills most creatures in the area."
 					],
 					"type": "ability",
 					"name": "Burn It All"
@@ -1245,14 +1245,14 @@
 			],
 			"stealth": {
 				"bonus": 7,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"A cloud of {@condition invisible} magical sensors in a 10-foot radius surrounds an {@condition invisible} wall or floor rune the size of the creature to be summoned."
 			],
 			"disable": {
 				"entries": [
-					"Acrobatics DC 15 to approach without triggering the trap followed by Thievery DC 17 (trained) to erase the rune, or {@spell dispel magic|CRB} (1st level; counteract DC 15) to counteract the rune."
+					"{@skill Acrobatics} DC 15 to approach without triggering the trap followed by {@skill Thievery} DC 17 (trained) to erase the rune, or dispel magic (1st level; counteract DC 15) to counteract the rune."
 				]
 			},
 			"defenses": null,
@@ -1287,7 +1287,7 @@
 			],
 			"stealth": {
 				"bonus": 10,
-				"min_prof": "trained",
+				"minProf": "trained",
 				"notes": "DC 22 (expert) to notice the water spouts once the pit opens."
 			},
 			"description": [
@@ -1295,14 +1295,14 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 18 (trained) to seal each water spout,"
+					"{@skill Thievery} DC 18 (trained) to seal each water spout,"
 				]
 			},
 			"defenses": null,
 			"actions": [
 				{
 					"entries": [
-						"22 (trained) to open the trapdoor, or Athletics DC 22 to {@action Force Open|CRB} the trapdoor AC 19; Fort +8, Ref +5 Trapdoor Hardness 15, Trapdoor HP 60 (BT 30); Spout Hardness 8, Spout HP 32 (BT 16); Immunities critical hits, object immunities, precision damage."
+						"22 (trained) to open the trapdoor, or {@skill Athletics} DC 22 to {@action Force Open} the trapdoor AC 19; Fort +8, Ref +5 Trapdoor Hardness 15, Trapdoor HP 60 (BT 30); Spout Hardness 8, Spout HP 32 (BT 16); Immunities critical hits, object immunities, precision damage."
 					],
 					"type": "ability",
 					"name": "Thievery DC"
@@ -1315,7 +1315,7 @@
 					},
 					"trigger": "A creature walks onto the trapdoor.",
 					"entries": [
-						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge|CRB} to avoid falling (page 472). The trapdoor then slams shut, and the hazard rolls initiative."
+						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge} to avoid falling (page 472). The trapdoor then slams shut, and the hazard rolls initiative."
 					],
 					"type": "ability",
 					"name": "Pitfall"
@@ -1340,15 +1340,15 @@
 			],
 			"stealth": {
 				"bonus": 12,
-				"min_prof": "trained",
-				"notes": "(or\u201310 and no minimum proficiency if the surface is disturbed)"
+				"minProf": "trained",
+				"notes": "(or \u201310 and no minimum proficiency if the surface is disturbed)"
 			},
 			"description": [
 				"A 15-foot-wide patch of water and sand attempts to submerge creatures that step onto it."
 			],
 			"disable": {
 				"entries": [
-					"Survival DC 18 (trained) to disturb the surface."
+					"{@skill Survival} DC 18 (trained) to disturb the surface."
 				]
 			},
 			"defenses": null,
@@ -1385,9 +1385,9 @@
 				},
 				{
 					"entries": [
-						"DC and spell DC, using the trap's level and applying a hard adjustment (+2). The Stealth modifier for the trap is equal to this number\u201310. Stronger summoning runes usually require expert proficiency or better in Perception to find, and they might require a higher proficiency rank in Thievery to disable.",
+						"DC and spell DC, using the trap's level and applying a hard adjustment (+2). The {@skill Stealth} modifier for the trap is equal to this number \u2013 10. Stronger summoning runes usually require expert proficiency or better in {@skill Perception} to find, and they might require a higher proficiency rank in {@skill Thievery} to disable.",
 						"that was submerged up to its neck is pulled under and has to hold its breath to avoid suffocation (page 478)",
-						"A creature in the quicksand can attempt a DC 20 Athletics check to {@action Swim|CRB} to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. A creature that Swims out of the quicksand escapes the hazard and is {@condition prone} in a space adjacent to the quicksand patch. Other creatures can {@action Aid|CRB} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 Athletics check, with the same results as if the creature attempted the check."
+						"A creature in the quicksand can attempt a DC 20 {@skill Athletics} check to {@action Swim} to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. A creature that Swims out of the quicksand escapes the hazard and is {@condition prone} in a space adjacent to the quicksand patch. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 {@skill Athletics} check, with the same results as if the creature attempted the check."
 					],
 					"type": "ability",
 					"name": "the Thievery"
@@ -1409,7 +1409,7 @@
 			],
 			"stealth": {
 				"bonus": 11,
-				"min_prof": "trained",
+				"minProf": "trained",
 				"notes": "or DC 26 (expert) to notice the control panel."
 			},
 			"description": [
@@ -1417,7 +1417,7 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 21 (trained) twice on the pillar, or Thievery DC 19 (expert) once on the control panel deactivates the whole trap. Breaking the control panel prevents anyone from disabling the trap using the control panel and prevents the trap from deactivating automatically (see Reset below)."
+					"{@skill Thievery} DC 21 (trained) twice on the pillar, or {@skill Thievery} DC 19 (expert) once on the control panel deactivates the whole trap. Breaking the control panel prevents anyone from disabling the trap using the control panel and prevents the trap from deactivating automatically (see Reset below)."
 				]
 			},
 			"defenses": {
@@ -1466,7 +1466,7 @@
 				}
 			],
 			"routine": [
-				"(3 actions) The trap uses its first action to make a spinning blade {@action Strike|CRB} against each adjacent creature, its second action to move straight in a random direction (roll {@dice 1d4} to determine the direction), and its third action to make a spinning blade {@action Strike|CRB} against each adjacent creature. This trap doesn't take a multiple attack penalty."
+				"(3 actions) The trap uses its first action to make a spinning blade {@action Strike} against each adjacent creature, its second action to move straight in a random direction (roll {@dice 1d4} to determine the direction), and its third action to make a spinning blade {@action Strike} against each adjacent creature. This trap doesn't take a multiple attack penalty."
 			],
 			"reset": null,
 			"page": 527
@@ -1483,7 +1483,7 @@
 			],
 			"stealth": {
 				"bonus": 16,
-				"min_prof": "expert",
+				"minProf": "expert",
 				"notes": "to detect the magical sensor; noticing the wheel has a DC of 0."
 			},
 			"description": [
@@ -1491,7 +1491,7 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 26 (expert) on the wheel to stop it from spinning, Thievery DC 22 (master) to erase each rune, or {@spell dispel magic|CRB} (4th level; counteract DC 22) to counteract each rune."
+					"{@skill Thievery} DC 26 (expert) on the wheel to stop it from spinning, {@skill Thievery} DC 22 (master) to erase each rune, or dispel magic (4th level; counteract DC 22) to counteract each rune."
 				]
 			},
 			"defenses": {
@@ -1551,7 +1551,7 @@
 			],
 			"stealth": {
 				"bonus": 16,
-				"min_prof": "expert",
+				"minProf": "expert",
 				"notes": "or DC 31 (master) to notice the control panel."
 			},
 			"description": [
@@ -1559,7 +1559,7 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 21 (expert) on the control panel deactivates the trap."
+					"{@skill Thievery} DC 21 (expert) on the control panel deactivates the trap."
 				]
 			},
 			"defenses": {
@@ -1601,7 +1601,7 @@
 					],
 					"trigger": "A creature enters the hallway or ends its turn in the hallway.",
 					"entries": [
-						"The trap makes a poisoned dart {@action Strike|CRB} against the triggering creature, then rolls initiative."
+						"The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
 					],
 					"type": "ability",
 					"name": "Dart Volley"
@@ -1618,11 +1618,11 @@
 					"effects": [
 						"flesset poison"
 					],
-					"damage": "{@dice 3d4} piercing plus flesset poison",
+					"damage": "{@damage 3d4} piercing plus flesset poison",
 					"types": [
 						"piercing"
 					],
-					"no_map": true
+					"noMAP": true
 				},
 				{
 					"activity": {
@@ -1632,7 +1632,7 @@
 					},
 					"trigger": "A creature within the active gallery finishes an action.",
 					"entries": [
-						"The trap makes a poisoned dart {@action Strike|CRB} against the triggering creature."
+						"The trap makes a poisoned dart {@action Strike} against the triggering creature."
 					],
 					"type": "ability",
 					"name": "Continuous Barrage"
@@ -1648,23 +1648,23 @@
 								],
 								"note": "",
 								"DC": "22",
-								"saving throw": "Fortitude",
+								"savingThrow": "Fortitude",
 								"onset": null,
-								"max duration": "6 rounds",
+								"maxDuration": "6 rounds",
 								"stages": [
 									{
 										"stage": 1,
-										"entry": "1d6 poison damage and clumsy 1",
+										"entry": "{@damage 1d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
 										"duration": "1 round"
 									},
 									{
 										"stage": 2,
-										"entry": "2d6 poison damage and clumsy 2",
+										"entry": "{@damage 2d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
 										"duration": "1 round"
 									},
 									{
 										"stage": 3,
-										"entry": "3d6 poison damage and clumsy 3",
+										"entry": "{@damage 3d6} poison damage and {@condition clumsy|CRB|clumsy 3}",
 										"duration": "1 round"
 									}
 								]
@@ -1691,14 +1691,14 @@
 			],
 			"stealth": {
 				"bonus": 19,
-				"min_prof": "trained"
+				"minProf": "trained"
 			},
 			"description": [
 				"Four gated channels carved into stone allow lava to flow into a 15-foot-tall room; the floor can withdraw to allow the hardened lava to fall into a chamber beneath."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 29 (expert) to block a channel, or Thievery DC 31 (master) to release the floor latch and escape to the chamber below."
+					"{@skill Thievery} DC 29 (expert) to block a channel, or {@skill Thievery} DC 31 (master) to release the floor latch and escape to the chamber below."
 				]
 			},
 			"defenses": {
@@ -1723,7 +1723,7 @@
 					"Floor": 36
 				},
 				"notes": {
-					"Channel": "to destroy a channel {@spell gate|CRB} (this prevents that channel from being disabled and stops the trap from resetting)"
+					"Channel": "to destroy a channel gate (this prevents that channel from being disabled and stops the trap from resetting)"
 				},
 				"immunities": [
 					"critical hits",
@@ -1747,8 +1747,8 @@
 				}
 			],
 			"routine": [
-				"(4 actions) The trap loses 1 action per disabled channel each turn. On each action, a different channel spews lava, dealing {@dice 4d6} fire damage to each creature within 10 feet of the channel (DC 27 basic Reflex save), and increasing the depth of the lava in the room by 1 foot (4 feet per round if all the channels are active)",
-				"A creature that starts its turn in lava takes {@dice 8d6} fire damage and is {@condition immobilized} until it Escapes the hardening lava (DC 27)",
+				"(4 actions) The trap loses 1 action per disabled channel each turn. On each action, a different channel spews lava, dealing {@damage 4d6} fire damage to each creature within 10 feet of the channel (DC 27 basic Reflex save), and increasing the depth of the lava in the room by 1 foot (4 feet per round if all the channels are active)",
+				"A creature that starts its turn in lava takes {@damage 8d6} fire damage and is {@condition immobilized} until it Escapes the hardening lava (DC 27)",
 				"The creature might suffocate if covered in lava (page 478). Lava from the previous round hardens fully at the start of the trap's turn, effectively raising the floor of the room. Once the room is full of lava, the trap stops taking actions, but creatures in the room remain stuck until the floor opens and the trap resets."
 			],
 			"reset": [
@@ -1768,14 +1768,14 @@
 			],
 			"stealth": {
 				"bonus": 24,
-				"min_prof": "expert"
+				"minProf": "expert"
 			},
 			"description": [
 				"Three innocuous decorations instilled with telekinetic magic pull objects and pieces of the room itself into spinning clouds of debris that attack all creatures in the room."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 27 (expert) to take apart a telekinetic cloud, Thievery DC 32 (master) to disable each telekinetic decoration, or {@spell dispel magic|CRB} (6th level; counteract DC 30) to counteract each telekinetic decoration."
+					"{@skill Thievery} DC 27 (expert) to take apart a telekinetic cloud, {@skill Thievery} DC 32 (master) to disable each telekinetic decoration, or dispel magic (6th level; counteract DC 30) to counteract each telekinetic decoration."
 				]
 			},
 			"defenses": {
@@ -1820,7 +1820,7 @@
 				}
 			],
 			"routine": [
-				"(9 actions) Each decoration uses 3 of the trap's actions each turn, and the trap loses 3 actions each turn for every decoration that is disabled. A decoration uses its first action to move its cloud of objects up to 200 feet, its second action to make the objects {@action Strike|CRB}, and its third action to add more objects to the cloud, increasing its damage by {@dice 1d12} (to a maximum of {@dice 4d12+10}). If a decoration's cloud is already at maximum damage, it does nothing with its third action.",
+				"(9 actions) Each decoration uses 3 of the trap's actions each turn, and the trap loses 3 actions each turn for every decoration that is disabled. A decoration uses its first action to move its cloud of objects up to 200 feet, its second action to make the objects {@action Strike}, and its third action to add more objects to the cloud, increasing its damage by {@dice 1d12} (to a maximum of {@dice 4d12+10}). If a decoration's cloud is already at maximum damage, it does nothing with its third action.",
 				"If a decoration's cloud has been destroyed, the decoration instead spends its first action to create a new cloud of objects inside the room (using the starting damage value) and then its second and third actions to have the cloud move and attack.",
 				{
 					"type": "attack",
@@ -1829,11 +1829,11 @@
 					"attack": 24,
 					"traits": null,
 					"effects": [],
-					"damage": "{@dice 2d12+10} bludgeoning",
+					"damage": "{@damage 2d12+10} bludgeoning",
 					"types": [
 						"bludgeoning"
 					],
-					"no_map": true
+					"noMAP": true
 				}
 			],
 			"reset": [
@@ -1853,7 +1853,7 @@
 			],
 			"stealth": {
 				"bonus": 24,
-				"min_prof": "master",
+				"minProf": "master",
 				"notes": "to notice it isn't a regular mirror."
 			},
 			"description": [
@@ -1861,7 +1861,7 @@
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 34 (legendary) to retrieve a creature from the other dimension within 10 minutes of the switch (possible only if their mirror duplicate is dead), Thievery DC 39 (master) to permanently disable the mirror once all mirror duplicates are dead, or {@spell dispel magic|CRB} (7th level; counteract DC 32) to counteract the mirror for 1 minute and prevent additional replacements during that time."
+					"{@skill Thievery} DC 34 (legendary) to retrieve a creature from the other dimension within 10 minutes of the switch (possible only if their mirror duplicate is dead), {@skill Thievery} DC 39 (master) to permanently disable the mirror once all mirror duplicates are dead, or dispel magic (7th level; counteract DC 32) to counteract the mirror for 1 minute and prevent additional replacements during that time."
 				]
 			},
 			"defenses": {
@@ -1910,8 +1910,8 @@
 				"(1 action) The mirror absorbs another reflected creature into the mirror and replaces it with a mirror duplicate. Mirror duplicates attack on their own initiative, using the same statistics as the original creature, but with an evil alignment (changing only abilities that shift with the alignment change). A mirror duplicate can spend 3 actions in contact with the mirror to return to its original dimension and release the creature it duplicated, but most mirror duplicates prefer not to."
 			],
 			"reset": [
-				"The mirror is always ready to absorb creatures into the other dimension. Ten minutes after a creature is sucked into the mirror, if an ally doesn't rescue the creature with Thievery, it reaches the other dimension, where it might be captured or killed. In the mirror dimension, it counts as a mirror duplicate, so the denizens of the other dimension can't destroy the mirror on their side while the absorbed creature is there.",
-				"These dimensions are alternate realities, not planes, so even rituals like {@spell plane shift|CRB} can't reach them."
+				"The mirror is always ready to absorb creatures into the other dimension. Ten minutes after a creature is sucked into the mirror, if an ally doesn't rescue the creature with {@skill Thievery}, it reaches the other dimension, where it might be captured or killed. In the mirror dimension, it counts as a mirror duplicate, so the denizens of the other dimension can't destroy the mirror on their side while the absorbed creature is there.",
+				"These dimensions are alternate realities, not planes, so even rituals like plane shift can't reach them."
 			],
 			"page": 528
 		},
@@ -1926,14 +1926,14 @@
 			],
 			"stealth": {
 				"bonus": 30,
-				"min_prof": "legendary"
+				"minProf": "legendary"
 			},
 			"description": [
-				"A magically contagious {@spell wail of the banshee|CRB} spell is trapped in the larynx of an {@condition invisible}, mummified elf."
+				"A magically contagious {@spell wail of the banshee} spell is trapped in the larynx of an {@condition invisible}, mummified elf."
 			],
 			"disable": {
 				"entries": [
-					"Thievery DC 42 (master) to pierce the {@condition invisible} larynx so precisely that the magic releases in a trickle before the trap activates, Thievery DC 44 (legendary) three times to deconstruct the larynx while the trap is active in such a way that it tears the spell apart, or spell DC 38 (9th level) to counteract the {@spell wail of the banshee|CRB} before the trap activates."
+					"{@skill Thievery} DC 42 (master) to pierce the {@condition invisible} larynx so precisely that the magic releases in a trickle before the trap activates, {@skill Thievery} DC 44 (legendary) three times to deconstruct the larynx while the trap is active in such a way that it tears the spell apart, or spell DC 38 (9th level) to counteract the wail of the banshee before the trap activates."
 				]
 			},
 			"defenses": null,
@@ -1946,14 +1946,14 @@
 					},
 					"trigger": "Three or more living creatures remain within 100 feet of the trap for 6 seconds or longer.",
 					"entries": [
-						"The trap releases an arcane {@spell wail of the banshee|CRB} (DC 40) with a 100-foot-radius emanation instead of 40 feet, targeting all living creatures in the area, and rolls initiative."
+						"The trap releases an arcane wail of the banshee (DC 40) with a 100-foot-radius emanation instead of 40 feet, targeting all living creatures in the area, and rolls initiative."
 					],
 					"type": "ability",
 					"name": "Scream"
 				}
 			],
 			"routine": [
-				"(1 action) The trap uses its action to force one random creature that failed its save against {@spell wail of the banshee|CRB} last turn to emit a {@spell wail of the banshee|CRB} with the same statistics as the initial one. The creature wails even if it is dead or unable to speak, no matter how far away from the trap it is. Unlike a casting of the spell, the {@condition drained} condition from this trap's wail of the banshee spells increases the targets' {@condition drained} condition values. A creature that critically succeeds at any of its saves can still be affected by the trap on future rounds, but can't be forced to wail by the trap."
+				"(1 action) The trap uses its action to force one random creature that failed its save against wail of the banshee last turn to emit a wail of the banshee with the same statistics as the initial one. The creature wails even if it is dead or unable to speak, no matter how far away from the trap it is. Unlike a casting of the spell, the {@condition drained} condition from this trap's {@spell wail of the banshee} spells increases the targets' {@condition drained} condition values. A creature that critically succeeds at any of its saves can still be affected by the trap on future rounds, but can't be forced to wail by the trap."
 			],
 			"reset": [
 				"The trap ends when the trap is unable to make a creature scream (usually because no creature failed its save on the previous turn or because all creatures have critically succeeded in the past). It then resets over 24 hours, as a new scream builds up in the mummified larynx."

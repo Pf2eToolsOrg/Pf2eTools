@@ -157,20 +157,20 @@ class PageFilterBestiary extends PageFilter {
 
 	mutateForFilters (cr) {
 		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
-		cr._fTraits = cr.traits.concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType).concat([cr.rarity]);
+		cr._fTraits = (cr.traits || []).concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType || []).concat([cr.rarity]);
 		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
 			cr.senses.precise.forEach((s) => {
-				cr._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""))
+				cr._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""));
 			});
 			cr.senses.imprecise.forEach((s) => {
-				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""))
+				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""));
 			});
 			cr.senses.vague.forEach((s) => {
-				cr._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""))
+				cr._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""));
 			});
 			cr.senses.other.forEach((s) => {
-				cr._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""))
+				cr._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""));
 			});
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
@@ -178,50 +178,50 @@ class PageFilterBestiary extends PageFilter {
 		cr._fskills = new Set();
 		Object.keys(cr.skills).forEach((k) => {
 			if (k.match(/lore/i)) cr._fskills.add("Lore");
-			else cr._fskills.add(k)
+			else cr._fskills.add(k);
 		});
 		cr._fskills = Array.from(cr._fskills);
 
-		cr._fHP = 0
+		cr._fHP = 0;
 		cr.hp.forEach((d) => {
-			cr._fHP += d.hp
+			cr._fHP += d.hp;
 		})
 
-		cr._fimmunities = []
+		cr._fimmunities = [];
 		if (cr.immunities) {
 			cr.immunities.damage.forEach((i) => {
-				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""))
+				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
 			})
 			cr.immunities.condition.forEach((i) => {
-				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""))
+				cr._fimmunities.push(i.replace(/\s(?:\().+/, ""));
 			})
 		}
-		cr._fweaknesses = []
+		cr._fweaknesses = [];
 		if (cr.weaknesses) {
 			cr.weaknesses.forEach((w) => {
 				let ws = w.name.replace(/\s(?:\().+/, "");
-				cr._fweaknesses.push(ws === "all" ? "all damage" : ws)
+				cr._fweaknesses.push(ws === "all" ? "all damage" : ws);
 			});
 		}
-		cr._fresistances = []
+		cr._fresistances = [];
 		if (cr.resistances) {
 			cr.resistances.forEach((r) => {
-				let rs = r.name.replace(/\s(?:\().+/, "")
-				cr._fresistances.push(rs === "all" ? "all damage" : rs)
+				let rs = r.name.replace(/\s(?:\().+/, "");
+				cr._fresistances.push(rs === "all" ? "all damage" : rs);
 			});
 		}
-		cr._fspeedtypes = []
-		cr._fspeed = 0
+		cr._fspeedtypes = [];
+		cr._fspeed = 0;
 		Object.keys(cr.speed).forEach((k) => {
 			if (k !== "abilities") {
 				cr._fspeed = Math.max(cr.speed[k], cr._fspeed);
-				cr._fspeedtypes.push(k)
+				cr._fspeedtypes.push(k);
 			}
 		});
 
-		cr._fspellTypes = []
-		cr._fhighestSpell = 0
-		cr._fspellDC = 0
+		cr._fspellTypes = [];
+		cr._fhighestSpell = 0;
+		cr._fspellDC = 0;
 		if (cr.spellcasting) {
 			cr.spellcasting.forEach((f) => {
 				if (f.type !== "Focus") {
@@ -242,6 +242,7 @@ class PageFilterBestiary extends PageFilter {
 
 		this.handleTraitImplies(cr, {traitProp: "_fTraits", entityTypes: ["creature"]});
 		cr._fTraits = cr._fTraits.map(t => Parser.getTraitName(t));
+		if (!cr._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) cr._fTraits.push("Common");
 	}
 
 	addToFilters (cr, isExcluded) {

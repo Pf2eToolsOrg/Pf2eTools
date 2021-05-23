@@ -29,10 +29,24 @@ class PageFilterDeities extends PageFilter {
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
 		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
 		this._domainFilter = new Filter({header: "Domain", displayFn: StrUtil.toTitleCase});
-		this._spellFilter = new Filter({header: "Cleric Spells", displayFn: StrUtil.toTitleCase});
+		this._0Filter = new Filter({"header": "Cantrips", displayFn: StrUtil.toTitleCase});
+		this._1Filter = new Filter({"header": "1st", displayFn: StrUtil.toTitleCase});
+		this._2Filter = new Filter({"header": "2nd", displayFn: StrUtil.toTitleCase});
+		this._3Filter = new Filter({"header": "3rd", displayFn: StrUtil.toTitleCase});
+		this._4Filter = new Filter({"header": "4th", displayFn: StrUtil.toTitleCase});
+		this._5Filter = new Filter({"header": "5th", displayFn: StrUtil.toTitleCase});
+		this._6Filter = new Filter({"header": "6th", displayFn: StrUtil.toTitleCase});
+		this._7Filter = new Filter({"header": "7th", displayFn: StrUtil.toTitleCase});
+		this._8Filter = new Filter({"header": "8th", displayFn: StrUtil.toTitleCase});
+		this._9Filter = new Filter({"header": "9th", displayFn: StrUtil.toTitleCase});
+		this._10Filter = new Filter({"header": "10th", displayFn: StrUtil.toTitleCase});
+		this._spellFilter = new MultiFilter({
+			header: "Cleric Spells by Level",
+			filters: [this._0Filter, this._1Filter, this._2Filter, this._3Filter, this._4Filter, this._5Filter, this._6Filter, this._7Filter, this._8Filter, this._9Filter, this._10Filter],
+		});
 		this._benefitsFilter = new MultiFilter({
 			header: "Devotee Benefits",
-			filters: [this._fontFilter, this._skillFilter, this._weaponFilter, this._domainFilter, this._spellFilter],
+			filters: [this._fontFilter, this._skillFilter, this._weaponFilter, this._domainFilter],
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
@@ -49,7 +63,7 @@ class PageFilterDeities extends PageFilter {
 			g._fSkill = g.devoteeBenefits.skill;
 			g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
 			g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
-			g._fSpells = Object.keys(g.devoteeBenefits.spells).map(k => g.devoteeBenefits.spells[k]).flat().map(s => s.split("|")[0]) || [];
+			g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
 		} else {
 			g._fDomains = [VeCt.STR_NONE];
 		}
@@ -69,9 +83,25 @@ class PageFilterDeities extends PageFilter {
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
 		this._domainFilter.addItem(g._fDomains);
-		this._spellFilter.addItem(g._fSpells);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
+		g._fSpells.forEach((sp, i) => {
+			if (sp) {
+				switch (String(i)) {
+					case "0": this._0Filter.addItem(sp); break;
+					case "1": this._1Filter.addItem(sp); break;
+					case "2": this._2Filter.addItem(sp); break;
+					case "3": this._3Filter.addItem(sp); break;
+					case "4": this._4Filter.addItem(sp); break;
+					case "5": this._5Filter.addItem(sp); break;
+					case "6": this._6Filter.addItem(sp); break;
+					case "7": this._7Filter.addItem(sp); break;
+					case "8": this._8Filter.addItem(sp); break;
+					case "9": this._9Filter.addItem(sp); break;
+					case "10": this._10Filter.addItem(sp); break;
+				}
+			}
+		});
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -80,6 +110,7 @@ class PageFilterDeities extends PageFilter {
 			this._alignmentFilter,
 			this._categoryFilter,
 			this._benefitsFilter,
+			this._spellFilter,
 			this._miscFilter,
 		];
 	}
@@ -95,8 +126,8 @@ class PageFilterDeities extends PageFilter {
 				g._fSkill,
 				g._fWeapon,
 				g._fDomains,
-				g._fSpells,
 			],
+			g._fSpells,
 			g._fMisc,
 		)
 	}

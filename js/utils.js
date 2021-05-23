@@ -279,11 +279,9 @@ CleanUtil = {
 		if (isJsonDump) {
 			return str
 				.replace(CleanUtil.STR_REPLACEMENTS_REGEX, (match) => CleanUtil.STR_REPLACEMENTS[match])
-				.replace(/\s*(\\u2014|\\u2013)\s*/g, "$1");
 		} else {
 			return str
 				.replace(CleanUtil.JSON_REPLACEMENTS_REGEX, (match) => CleanUtil.JSON_REPLACEMENTS[match])
-				.replace(/[ ]*([\u2014\u2013])[ ]*/g, "$1");
 		}
 	},
 };
@@ -1793,6 +1791,17 @@ UrlUtil = {
 		const stateParts = [
 			opts.subclass ? `${UrlUtil.getStateKeySubclass(opts.subclass)}=${UrlUtil.mini.compress(true)}` : null,
 			opts.feature ? `feature=${UrlUtil.mini.compress(`${opts.feature.ixLevel}-${opts.feature.ixFeature}`)}` : "",
+		].filter(Boolean);
+		return stateParts.length ? UrlUtil.packSubHash("state", stateParts) : "";
+	},
+
+	/**
+	 * @param opts Options object.
+	 * @param [opts.heritage] Heritage (or object of the form `{name: "str", source: "str"}`)
+	 */
+	getAncestriesPageStatePart (opts) {
+		const stateParts = [
+			opts.heritage ? `${UrlUtil.getStateKeyHeritage(opts.heritage)}=${UrlUtil.mini.compress(true)}` : null,
 		].filter(Boolean);
 		return stateParts.length ? UrlUtil.packSubHash("state", stateParts) : "";
 	},
@@ -3698,6 +3707,7 @@ BrewUtil = {
 			<div class="flex-v-center">
 				<a href="https://github.com/Pf2eTools/homebrew" class="flex-v-center" target="_blank" rel="noopener noreferrer"><button class="btn btn-default btn-sm">Browse Source Repository</button></a>
 				${$btnDelAll}
+				${opts.isModal ? $(`<button class="btn btn-danger btn-sm ml-2">Cancel</button>`).click(() => opts.doClose()) : ""}
 			</div>
 		</div>`;
 
@@ -3756,6 +3766,10 @@ BrewUtil = {
 			isHeaderBorder: true,
 		});
 
+		const $wrpBtn = $$`<div class="flex-vh-center no-shrink mobile__flex-col">
+			${$(`<button class="btn btn-danger btn-sm">Cancel</button>`).click(() => doClose())}
+			</div>`;
+
 		$$($modalInner)`
 		<div class="mt-1"><i>A list of homebrew available in the public repository. Click a name to load the homebrew, or view the source directly.<br>
 		Contributions are welcome; see the <a href="https://github.com/Pf2eTools/homebrew#readme" target="_blank" rel="noopener noreferrer">README</a>, or stop by our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">Discord</a>.</i></div>
@@ -3770,7 +3784,7 @@ BrewUtil = {
 			<button class="col-1-4 sort btn btn-default btn-xs" data-sort="added">Added</button>
 			<button class="sort btn btn-default btn-xs ve-grow" disabled>Source</button>
 		</div>
-		${$ulRows}`;
+		${$ulRows}${$wrpBtn}`;
 
 		// populate list
 		let dataList;
@@ -4202,7 +4216,7 @@ BrewUtil = {
 	},
 
 	_isSourceRelevantForCurrentPage (source) {
-		const cats = BrewUtil.getPageProps();
+		const cats = ["trait", ...BrewUtil.getPageProps()];
 		return !!cats.find(cat => !!(BrewUtil.homebrew[cat] || []).some(entry => (entry.inherits ? entry.inherits.source : entry.source) === source));
 	},
 
@@ -4280,8 +4294,6 @@ BrewUtil = {
 		else if (BrewUtil._STORABLE.includes(dir)) return dir;
 		else {
 			switch (dir) {
-				case "creature":
-					return "monster";
 				case "collection":
 					return dir;
 				case "magicvariant":
@@ -4421,7 +4433,7 @@ BrewUtil = {
 	},
 
 	manageBrew: () => {
-		const {$modalInner} = UiUtil.getShowModal({
+		const {$modalInner, doClose} = UiUtil.getShowModal({
 			isHeight100: true,
 			isWidth100: true,
 			title: `Manage Homebrew`,
@@ -4430,7 +4442,7 @@ BrewUtil = {
 			isHeaderBorder: true,
 		});
 
-		BrewUtil._pRenderBrewScreen($modalInner, {isModal: true});
+		BrewUtil._pRenderBrewScreen($modalInner, {isModal: true, doClose});
 	},
 
 	async pAddEntry (prop, obj) {

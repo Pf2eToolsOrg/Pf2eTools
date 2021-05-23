@@ -4,8 +4,6 @@
 			"source": "APG",
 			"name": "Beastmaster Trance",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -15,7 +13,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Archetype",
 				"Concentrate",
@@ -23,7 +20,7 @@
 				"Mental"
 			],
 			"entries": [
-				"You enter a magical trance that allows you to perceive through the senses of the target companion. You attempt Perception checks using your own Perception, but you have any special senses the target has, such as low-light vision or darkvision. This spell grants no special method of communication with the chosen animal, so it follows any instructions you gave it before you entered the trance and, failing that, it does as it wishes.",
+				"You enter a magical trance that allows you to perceive through the senses of the target companion. You attempt {@skill Perception} checks using your own {@skill Perception}, but you have any special senses the target has, such as low-light vision or darkvision. This spell grants no special method of communication with the chosen animal, so it follows any instructions you gave it before you entered the trance and, failing that, it does as it wishes.",
 				"For the duration of the trance, your own senses are muted, though you can still communicate. This lack of awareness makes you {@condition flat-footed}. You can't take actions with the {@trait attack} or {@trait move} traits."
 			],
 			"cast": {
@@ -31,8 +28,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "1 mile",
@@ -41,7 +36,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "one of your animal companions you can perceive",
 			"duration": {
 				"type": "timed",
@@ -51,7 +45,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -63,7 +56,7 @@
 					},
 					{
 						"level": 8,
-						"entry": "Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance. Blessed One Through luck or deed, heritage or heroics, you carry the blessing of a deity. This blessing manifests as the ability to heal wounds and remove harmful conditions, and exists independent of worship. You might offer thanks daily to the deity whose power you wield, or you might carry these blessings reluctantly, seeking to avoid responsibility or even acting to defy the deity's influence on you. You might wear the robes of the deity's order, or you might give little thought and even less reverence to the source of your powers. However you feel about these gifts, there can be no doubt that you wield a special power. Good-aligned deities are most likely to empower a blessed one. However, deities of any alignment can grant such a blessing, as long as they are capable of granting a positive divine font to their clerics. This means such deities as Lamashtu might grant a foul version of the blessed one's powers. Additional Feats: 6th Accelerating Touch (page 119), Mercy (Core Rulebook 111); 8th Invigorating Mercy (page 119); 10th Greater Mercy (Core Rulebook 112); 12th Elucidating Mercy (page 120), Resilient Touch (page 120); 14th Affliction Mercy (Core Rulebook 113), Amplifying Touch (page 120); 20th Rejuvenating Touch (page 121) BLESSED ONE DEDICATION FEAT 2 ARCHETYPE DEDICATION You are touched by a deity and gifted with the ability to alleviate the suffering of others. You gain the {@spell lay on hands} devotion spell. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity (Core Rulebook 300). You can {@action Refocus} by meditating, whether you reflect on the deity granting the blessing or not, allowing your blessing to refill your focus pool. Your devotion spells from the blessed one archetype are divine spells. Special You can't select another dedication feat until you have gained two other feats from the blessed one archetype. BLESSED SACRIFICE FEAT 4 ARCHETYPE Prerequisites Blessed One Dedication You gain the protector's sacrifice domain spell as a devotion spell. Increase the number of Focus Points in your focus pool by 1. BLESSED SPELL {@as 1} FEAT 8 ARCHETYPE CONCENTRATE METAMAGIC Prerequisites Blessed One Dedication, ability to cast spells from spell slots, Mercy Frequency once per 10 minutes When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your Mercy feat, including those granted by later feats such as Greater Mercy. Attempt a counteract check based on the spell's DC and level. This effect is in addition to the normal effects of your spell. BLESSED DENIAL {@as R} FEAT 12 ARCHETYPE Prerequisites Blessed One Dedication Trigger An ally within 30 feet would become {@condition frightened}, {@condition drained}, {@condition enfeebled}, {@condition sickened}, or {@condition stupefied}. You exude peace and protection, lessening a harmful condition as it falls upon an ally. Reduce the value of the condition your ally would take by 1 (to a minimum of 0). If the ally takes more than one condition at the same time, choose one to reduce. Bounty Hunter Whether for coin, glory, or justice, you know how to track, defeat, and capture dangerous individuals. You're accustomed to perusing wanted posters, searching up on leads, and pursuing villains to hell and back. Additional Feats: 14th Double Prey (Core Rulebook 175) BOUNTY HUNTER DEDICATION FEAT 2 ARCHETYPE DEDICATION Prerequisites trained in {@skill Survival} When focused on finding your quarry, you're relentless. You gain the Hunt Prey action (Core Rulebook 168). You can use Hunt Prey to designate only a creature that you've seen, heard about, or learned about through some other means, such as a bounty board or wanted poster. In addition to the other benefits of Hunt Prey, you gain a +2 circumstance bonus to checks to {@action Gather Information} regarding your prey. If you already have Hunt Prey, you become an expert in {@skill Survival} and gain the circumstance bonus to {@action Gather Information} about your prey; you can still designate a creature you're tracking during exploration, in addition to the conditions above. Special You can't select another dedication feat until you have gained two other feats from the bounty hunter archetype. TOOLS OF THE TRADE FEAT 4 ARCHETYPE You're well-versed in weapons that allow you to bring bounties in alive. You are trained with the following weapons: bola (page 248), sap, and whip. You gain access to bolas. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the weapons listed. In addition, you take no penalty when making a nonlethal attack with a weapon without the {@trait nonlethal} trait. POSSE FEAT 4 ARCHETYPE EXPLORATION Requirements You have designated prey with Hunt Prey. By spending 1 minute giving guidance to help hunt down your prey, you instruct up to five willing creatures to assist you. They gain a +1 circumstance bonus to {@action Seek} your prey, to {@action Track} your prey, and to {@action Gather Information} about your prey. You and the creatures assisting you gain a +1 circumstance bonus to initiative rolls when entering combat with your prey. This benefit lasts until you designate a new prey or your prey dies, whichever comes first. An individual creature assisting you loses this benefit if they're out of your presence for too long to benefit from your instructions. This is usually 1 hour, but is determined by the GM. KEEP PACE {@as R} FEAT 6 ARCHETYPE Trigger Your prey is within reach and attempts to move away from you. Your prey can't {@action Escape}. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use Keep Pace to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type. OPPORTUNISTIC GRAPPLE {@as R} FEAT 8 ARCHETYPE Requirements Your prey is within your reach, you have at least one free hand, and your target is no more than one size larger than you. Trigger Your prey critically fails on a melee {@action Strike}'s attack roll against you. You attempt an {@skill Athletics} check to {@action Grapple} your prey. Dedication feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}. QUICK MOUNT {@as 1} FEAT 4 ARCHETYPE SKILL Prerequisites Cavalier Dedication, expert in {@skill Nature} Requirements You are adjacent to a creature that is at least one size larger than you and is willing to be your mount. You and your mount can spring into action at a moment's notice. You {@action Mount} the creature and {@action Command an Animal} to issue it an order of your choice. DEFEND MOUNT {@as R} FEAT 6 ARCHETYPE Prerequisites Cavalier Dedication Trigger An enemy makes an attack roll against your mount while you're riding it. You interpose yourself between an attacker and your mount, defending your mount from harm. Use your own AC against the triggering attack instead your mount's AC. If the triggering attack hits, you take the effects of the attack instead of your mount. MOUNTED SHIELD FEAT 6 ARCHETYPE Prerequisites Cavalier Dedication You've trained with your shield to defend both yourself and your mount. When you {@action Raise a Shield} while mounted, both you and your mount gain the shield's circumstance bonus to AC. If you have the Shield Block reaction, you can use it in response to your mount taking damage, as long as you're CAVALIER PLEDGES Many cavaliers pledge themselves in service to a specific organization or individual, such as a noble family or sovereign ruler, a knightly order or another organization, or a particular ideal. A cavalier pledged to an order or ideal must uphold its edicts and is beholden to any anathema it has; for example, a cavalier pledged to the druid's animal order would be tied to that anathema, while a cavalier pledged to the church of Abadar would be held to the same standards as a cleric of that god. If you pledge yourself to an entity or cause without a stated anathema, you should work with your GM to determine the edicts and anathema associated with your pledge. Cavaliers who have pledged themselves can gain access to certain abilities related to that pledge, such as Cavalier's Banner. If you violate the anathema of your pledge, you lose access to those feats until you benefit from an atone ritual. Changing the subject of your pledge is equivalent to retraining a class feature."
+						"entry": "Increase the range to planetary and the duration to sustained up to 1 hour. You can communicate telepathically with the target for the duration of the trance."
 					}
 				],
 				"no_x": null
@@ -76,8 +69,6 @@
 			"source": "APG",
 			"name": "Dance Of Darkness",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -87,7 +78,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Darkness",
 				"Evocation"
@@ -108,13 +98,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "varies",
@@ -123,7 +109,6 @@
 					"unit": "special"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -139,8 +124,6 @@
 			"source": "APG",
 			"name": "Shadow Illusion",
 			"level": 6,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "I",
 			"type": "FOCUS",
 			"focus": true,
@@ -150,7 +133,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Auditory",
 				"Illusion",
@@ -169,8 +151,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "500 feet",
@@ -179,8 +159,6 @@
 					"amount": 500
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
@@ -189,7 +167,6 @@
 					"unit": "unlimited"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -205,8 +182,6 @@
 			"source": "APG",
 			"name": "Shadow Jump",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "C",
 			"type": "FOCUS",
 			"focus": true,
@@ -216,7 +191,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration",
 				"Shadow",
@@ -232,7 +206,6 @@
 				"entry": "{@as 2}"
 			},
 			"requirements": "You are in dim light or darkness.",
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -241,12 +214,9 @@
 					"amount": 120
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -272,7 +242,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -282,7 +251,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Emotion",
 				"Enchantment",
@@ -306,8 +274,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -316,7 +282,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
@@ -345,7 +310,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -355,20 +319,17 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy"
 			],
 			"entries": [
-				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the undead trait and whose level is\u20131; this creature gains the summoned trait. Heightening the spell increases the maximum level of creature you can summon."
+				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the {@trait undead} trait and whose level is \u20131; this creature gains the summoned trait. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -377,8 +338,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -387,7 +346,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -444,7 +402,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -454,7 +411,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Transmutation"
 			],
@@ -463,7 +419,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Bind} (attack) The rope attempts to partially bind a creature. Attempt a spell attack roll against the target's Reflex DC. If you succeed, the target takes a\u201310-foot circumstance penalty to its Speed (\u201320-foot on a critical success). This ends if the target Escapes against your spell DC or breaks the rope. (A standard adventuring rope has Hardness 2, HP 8, and a {@condition Broken} Threshold of 4.)",
+						"{@bold Bind} (attack) The rope attempts to partially bind a creature. Attempt a spell attack roll against the target's Reflex DC. If you succeed, the target takes a \u201310-foot circumstance penalty to its Speed (\u201320-foot on a critical success). This ends if the target Escapes against your spell DC or breaks the rope. (A standard adventuring rope has Hardness 2, HP 8, and a {@condition Broken} Threshold of 4.)",
 						"{@bold Coil} The rope forms a tidy, coiled stack.",
 						"{@bold Crawl} The rope inches along the ground like a snake, moving one of its ends 10 feet. The rope must move along a surface, but that surface doesn't need to be horizontal.",
 						"{@bold Knot} The rope ties a sturdy knot in itself.",
@@ -478,8 +434,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "100 feet",
@@ -488,7 +442,6 @@
 					"amount": 100
 				}
 			},
-			"area": null,
 			"targets": "up to 50 feet of rope or a nonliving rope-like object",
 			"duration": {
 				"type": "timed",
@@ -498,7 +451,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -521,7 +473,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -531,7 +482,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation"
 			],
@@ -543,8 +493,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -559,7 +507,6 @@
 				],
 				"entry": "10-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -591,7 +538,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -601,7 +547,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration",
 				"Water"
@@ -618,8 +563,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -628,8 +571,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -638,7 +579,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -659,7 +599,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -669,7 +608,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Polymorph",
@@ -692,8 +630,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -702,7 +638,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 living humanoid",
 			"duration": {
 				"type": "timed",
@@ -732,7 +667,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -742,7 +676,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Illusion"
 			],
@@ -763,13 +696,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -799,7 +728,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -809,7 +737,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Emotion",
@@ -834,7 +761,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "A creature damages you.",
 			"range": {
 				"type": "point",
@@ -844,7 +770,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "the triggering creature",
 			"duration": {
 				"type": "timed",
@@ -875,7 +800,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -885,7 +809,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy"
 			],
@@ -906,8 +829,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -916,7 +837,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -948,7 +868,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -958,7 +877,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Auditory",
 				"Emotion",
@@ -967,7 +885,7 @@
 				"Mental"
 			],
 			"entries": [
-				"A heap of insults and invectives spew from your mouth\u2014words so devastating your foes burn from the intensity of your diatribe. Your words deal {@damage 2d6} {@condition persistent damage ||persistent fire damage}, and the target must attempt a Will save. If the target doesn't understand the language or you're not speaking a language, it gains a +4 circumstance bonus to its save.",
+				"A heap of insults and invectives spew from your mouth\u2014 words so devastating your foes burn from the intensity of your diatribe. Your words deal {@damage 2d6} {@condition persistent damage ||persistent fire damage}, and the target must attempt a Will save. If the target doesn't understand the language or you're not speaking a language, it gains a +4 circumstance bonus to its save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -983,8 +901,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -993,7 +909,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
@@ -1022,7 +937,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -1032,7 +946,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Necromancy"
@@ -1064,7 +977,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "the triggering creature",
 			"duration": {
 				"type": "timed",
@@ -1096,7 +1008,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -1106,7 +1017,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Illusion"
 			],
@@ -1118,8 +1028,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "15 feet",
@@ -1128,7 +1036,6 @@
 					"amount": 15
 				}
 			},
-			"area": null,
 			"targets": "up to 8 creatures",
 			"duration": {
 				"type": "timed",
@@ -1138,7 +1045,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -1168,7 +1074,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -1178,7 +1083,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Enchantment",
 				"Incapacitation",
@@ -1201,8 +1105,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -1211,7 +1113,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -1241,7 +1142,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -1251,7 +1151,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Cold",
 				"Evocation"
@@ -1263,8 +1162,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and takes a\u20135-foot status penalty to its Speeds for 2 rounds.",
-						"Critical Failure": "The creature takes double damage and takes a\u201310-foot status penalty to its Speeds for 2 rounds."
+						"Failure": "The creature takes full damage and takes a \u20135-foot status penalty to its Speeds for 2 rounds.",
+						"Critical Failure": "The creature takes double damage and takes a \u201310-foot status penalty to its Speeds for 2 rounds."
 					}
 				}
 			],
@@ -1273,8 +1172,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -1284,7 +1181,6 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -1310,7 +1206,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -1320,13 +1215,12 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy"
 			],
 			"entries": [
 				"Your hand glows with impossible colors from beyond the stars, and your touch saps both color and vitality from the living.",
-				"The target must attempt a Fortitude save; creatures with the {@trait gnome} trait take a\u20132 circumstance penalty to this save.",
+				"The target must attempt a Fortitude save; creatures with the {@trait gnome} trait take a \u20132 circumstance penalty to this save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1342,8 +1236,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -1352,7 +1244,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 living creature",
 			"duration": {
 				"type": null
@@ -1378,7 +1269,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -1388,7 +1278,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Divination"
 			],
@@ -1400,8 +1289,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -1410,7 +1297,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -1420,7 +1306,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -1440,7 +1325,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -1450,7 +1334,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration"
 			],
@@ -1463,8 +1346,6 @@
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -1473,8 +1354,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "12 hours",
@@ -1483,7 +1362,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -1503,7 +1381,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -1513,7 +1390,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation",
 				"Water"
@@ -1526,8 +1402,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -1537,7 +1411,6 @@
 				],
 				"entry": "30-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -1565,7 +1438,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -1575,7 +1447,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Negative",
@@ -1607,8 +1478,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -1617,7 +1486,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 Large or smaller object, construct, or living creature",
 			"duration": {
 				"type": "timed",
@@ -1650,7 +1518,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -1660,7 +1527,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Enchantment",
 				"Incapacitation",
@@ -1675,8 +1541,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "100 feet",
@@ -1685,7 +1549,6 @@
 					"amount": 100
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -1715,7 +1578,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -1725,7 +1587,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Transmutation"
 			],
@@ -1738,8 +1599,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -1748,7 +1607,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 non-magical object in your possession of 1 Bulk or less",
 			"duration": {
 				"type": "timed",
@@ -1758,7 +1616,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -1788,7 +1645,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "E",
 			"type": "SPELL",
 			"focus": false,
@@ -1798,7 +1654,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Enchantment",
@@ -1822,8 +1677,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -1832,7 +1685,6 @@
 					"amount": 120
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -1863,7 +1715,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -1873,7 +1724,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy",
 				"Negative"
@@ -1895,8 +1745,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -1906,7 +1754,6 @@
 				],
 				"entry": "30-foot line"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -1935,7 +1782,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -1945,7 +1791,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Divination",
 				"Scrying"
@@ -1959,8 +1804,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "1 mile",
@@ -1969,7 +1812,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
 				"type": "timed",
@@ -1979,7 +1821,6 @@
 					"unit": "unlimited"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2001,7 +1842,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -2011,7 +1851,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation",
 				"Fire"
@@ -2025,8 +1864,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -2035,12 +1872,10 @@
 					"amount": 120
 				}
 			},
-			"area": null,
 			"targets": "1 creature with the minion trait that you summoned or permanently control",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -2063,7 +1898,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -2073,7 +1907,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation",
 				"Force"
@@ -2082,15 +1915,13 @@
 				"You create an immobile, {@condition invisible} prison of sheer force. The cage is a 20-foot cube made of bands of force, each a half inch thick and a half inch apart, that extend to the Ethereal Plane. Each creature in the area where you create the cage must attempt a Reflex save. If such a creature fails, it becomes trapped inside the cage. If it succeeds, it's pushed outside the cage into a space of its choice. If a creature in the area is too big to fit inside the prison, the spell automatically fails.",
 				"The cage has AC 10, Hardness 20, and 40 Hit Points, and it's immune to critical hits and precision damage. A creature capable of passing through the space between the bars (typically a Tiny creature) can leave; all others are confined within. Attacks with a weapon too large to fit between the bars can't pass through the cage, and the bars provide standard cover even against attacks that can pass through the gaps. Spells and breath weapons can pass through the cage uninhibited.",
 				"Force cage is immune to counteracting effects of its level or lower, but it is automatically destroyed by a {@spell disintegrate} spell of any level, or by contact with a rod of cancellation (page 262) or sphere of annihilation (Gamemastery Guide 113)",
-				"Spells 5 219."
+				"Spells 5."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -2105,7 +1936,6 @@
 				],
 				"entry": "1 cube 20 feet on each side"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -2133,7 +1963,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -2143,7 +1972,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration"
 			],
@@ -2164,8 +1992,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -2180,7 +2006,6 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -2207,7 +2032,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -2217,7 +2041,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Divination"
@@ -2231,8 +2054,6 @@
 				"unit": "minute",
 				"entry": "(1 minute)"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -2242,7 +2063,6 @@
 				],
 				"entry": "60-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -2251,7 +2071,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2271,7 +2090,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -2281,7 +2099,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Transmutation"
 			],
@@ -2304,8 +2121,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -2314,7 +2129,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 corporeal creature",
 			"duration": {
 				"type": null
@@ -2342,7 +2156,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -2352,7 +2165,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation",
 				"Fire"
@@ -2375,8 +2187,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -2385,12 +2195,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 metal item or metal creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -2413,7 +2221,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -2423,7 +2230,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Cold",
 				"Evocation"
@@ -2436,8 +2242,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -2452,7 +2256,6 @@
 				],
 				"entry": "5-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -2483,7 +2286,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -2493,7 +2295,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Divination",
@@ -2515,8 +2316,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -2525,7 +2324,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -2535,7 +2333,6 @@
 					"unit": "round"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2555,7 +2352,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -2565,7 +2361,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration"
 			],
@@ -2586,8 +2381,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -2596,7 +2389,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -2628,7 +2420,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -2638,7 +2429,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Divination"
 			],
@@ -2651,8 +2441,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -2661,12 +2449,10 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 object",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2688,7 +2474,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "A",
 			"type": "SPELL",
 			"focus": false,
@@ -2698,7 +2483,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Abjuration"
 			],
@@ -2711,13 +2495,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "until the start of your next turn",
@@ -2726,7 +2506,6 @@
 					"unit": "turn"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2746,7 +2525,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -2756,7 +2534,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Illusion"
 			],
@@ -2768,8 +2545,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -2778,7 +2553,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 object",
 			"duration": {
 				"type": "timed",
@@ -2788,7 +2562,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -2816,7 +2589,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -2826,7 +2598,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Electricity",
 				"Evocation"
@@ -2839,8 +2610,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -2855,7 +2624,6 @@
 				],
 				"entry": "5-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -2870,7 +2638,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage of each bolt increases by {@dice 1d12}. Spells 5 221"
+					"entry": "The damage of each bolt increases by {@dice 1d12}. Spells 5"
 				},
 				"x": null,
 				"no_x": null
@@ -2886,7 +2654,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -2896,7 +2663,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration"
 			],
@@ -2906,7 +2672,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Flagrant Burglary} The monkeys try to {@action Steal} any one item from one creature in the area. Use your spell DC\u201310 as the monkeys' {@skill Thievery} modifier. Their attempt relies more on distraction than subtlety, so the victim knows what item the monkeys were trying to take and whether it was taken. Getting a stolen item from the monkeys\u2014even for the caster\u2014requires Stealing it from them or Disarming them, using your spell DC. When the spell ends, any stolen items fall to the ground in any square of the spell's area you choose.",
+						"{@bold Flagrant Burglary} The monkeys try to {@action Steal} any one item from one creature in the area. Use your spell DC \u2013 10 as the monkeys' {@skill Thievery} modifier. Their attempt relies more on distraction than subtlety, so the victim knows what item the monkeys were trying to take and whether it was taken. Getting a stolen item from the monkeys\u2014 even for the caster\u2014requires Stealing it from them or Disarming them, using your spell DC. When the spell ends, any stolen items fall to the ground in any square of the spell's area you choose.",
 						"{@bold Raucous Din} The monkeys screech loudly, potentially deafening creatures in the spell's area. Each creature in the spell's area must attempt a Fortitude save."
 					]
 				},
@@ -2925,8 +2691,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -2941,7 +2705,6 @@
 				],
 				"entry": "5-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -2950,7 +2713,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -2970,7 +2732,6 @@
 				"Divine",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -2980,7 +2741,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy",
 				"Positive"
@@ -2994,8 +2754,6 @@
 				"unit": "Varies",
 				"entry": "{@as 1} to {@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3004,7 +2762,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 to 3 non-magical stones or sling bullets",
 			"duration": {
 				"type": "timed",
@@ -3014,7 +2771,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -3034,7 +2790,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -3044,7 +2799,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation",
 				"Poison"
@@ -3058,8 +2812,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -3069,7 +2821,6 @@
 				],
 				"entry": "10-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -3100,7 +2851,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -3110,7 +2860,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Divination"
 			],
@@ -3122,8 +2871,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3132,12 +2879,10 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 object",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3180,7 +2925,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -3190,7 +2934,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration",
 				"Extradimensional"
@@ -3204,8 +2947,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3214,7 +2955,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 willing creature that is your animal companion or familiar",
 			"duration": {
 				"type": "timed",
@@ -3224,7 +2964,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -3244,7 +2983,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -3254,7 +2992,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Emotion",
 				"Illusion",
@@ -3278,8 +3015,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -3288,7 +3023,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 living creature",
 			"duration": {
 				"type": "timed",
@@ -3318,7 +3052,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -3328,7 +3061,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Earth",
 				"Evocation"
@@ -3350,8 +3082,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -3361,7 +3091,6 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -3387,7 +3116,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "A",
 			"type": "SPELL",
 			"focus": false,
@@ -3397,7 +3125,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Abjuration",
 				"Water"
@@ -3412,8 +3139,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -3428,7 +3153,6 @@
 				],
 				"entry": "20-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
@@ -3437,7 +3161,6 @@
 					"unit": "unlimited"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3461,7 +3184,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -3471,7 +3193,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Death",
 				"Light",
@@ -3486,8 +3207,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -3497,7 +3216,6 @@
 				],
 				"entry": "5-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -3525,7 +3243,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -3535,7 +3252,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Transmutation"
 			],
@@ -3557,8 +3273,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3567,12 +3281,10 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 metal creature, 1 non-magical metal hazard, or 1 non-magical metal item of up to 1 Bulk",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3596,7 +3308,6 @@
 				"Divine",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "A",
 			"type": "SPELL",
 			"focus": false,
@@ -3606,7 +3317,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Abjuration"
 			],
@@ -3620,8 +3330,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3636,7 +3344,6 @@
 				],
 				"entry": "10-foot-wide, 10-foot-tall, 60-foot-long section of terrain"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -3645,7 +3352,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3675,7 +3381,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "A",
 			"type": "SPELL",
 			"focus": false,
@@ -3685,7 +3390,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Abjuration"
 			],
@@ -3697,7 +3401,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "An effect would deal physical or energy damage to you or a creature in range.",
 			"range": {
 				"type": "point",
@@ -3707,12 +3410,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "up to 5 willing creatures who would be harmed by the triggering effect",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3734,7 +3435,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -3744,12 +3444,11 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Illusion"
 			],
 			"entries": [
-				"You change the sounds made by a creature or object. Choose how you're altering the sounds when you Cast the Spell; you can't alter it later. You can cause something that didn't create a sound to make sound, alter the voice of a creature, amplify or deaden a sound, or transform one sound into another. A creature who succeeds at a Perception check against your spell DC can determine that the sound was altered by an illusion, including hearing faint sounds if you deadened the sound, but they can't determine the true sound unless they critically succeed at the Perception check. You can {@action Dismiss} the spell.",
+				"You change the sounds made by a creature or object. Choose how you're altering the sounds when you Cast the Spell; you can't alter it later. You can cause something that didn't create a sound to make sound, alter the voice of a creature, amplify or deaden a sound, or transform one sound into another. A creature who succeeds at a {@skill Perception} check against your spell DC can determine that the sound was altered by an illusion, including hearing faint sounds if you deadened the sound, but they can't determine the true sound unless they critically succeed at the {@skill Perception} check. You can {@action Dismiss} the spell.",
 				"Because this spell obscures sound instead of preventing it, using the spell to quiet a creature doesn't prevent that creature from using verbal spell components, though it does prevent most {@trait auditory} effects that rely on another creature hearing them accurately. An unwilling target can attempt a Will save.",
 				{
 					"type": "successDegree",
@@ -3765,8 +3464,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3775,7 +3472,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 creature or object",
 			"duration": {
 				"type": "timed",
@@ -3785,7 +3481,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -3811,7 +3506,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -3821,7 +3515,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Curse",
 				"Death",
@@ -3844,8 +3537,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3854,7 +3545,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 living creature",
 			"duration": {
 				"type": null
@@ -3882,7 +3572,6 @@
 				"Arcane",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -3892,7 +3581,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration"
 			],
@@ -3905,8 +3593,6 @@
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -3915,12 +3601,10 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 container and its contents, totaling 10",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -3939,7 +3623,6 @@
 			"traditions": [
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -3949,7 +3632,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration",
 				"Earth"
@@ -3963,8 +3645,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -3979,7 +3659,6 @@
 				],
 				"entry": "20-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -3988,7 +3667,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4011,7 +3689,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "D",
 			"type": "SPELL",
 			"focus": false,
@@ -4021,22 +3698,19 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Detection",
 				"Divination",
 				"Mental"
 			],
 			"entries": [
-				"You open your mind to the metaphysical, enabling you to sense nearby spirits. Even if you aren't Searching, you get a check to find haunts and spirits in the area. You gain a +1 status bonus to the following checks regarding haunts or spirits: Perception checks to {@action Seek}, attempts to {@action Recall Knowledge}, skill checks to determine the reason for their existence, and skill checks to disable a haunt. You also gain a +1 status bonus to AC and saving throws against haunts and spirits."
+				"You open your mind to the metaphysical, enabling you to sense nearby spirits. Even if you aren't Searching, you get a check to find haunts and spirits in the area. You gain a +1 status bonus to the following checks regarding haunts or spirits: {@skill Perception} checks to {@action Seek}, attempts to {@action Recall Knowledge}, skill checks to determine the reason for their existence, and skill checks to disable a haunt. You also gain a +1 status bonus to AC and saving throws against haunts and spirits."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -4046,7 +3720,6 @@
 				],
 				"entry": "30-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -4055,7 +3728,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4079,7 +3751,6 @@
 			"traditions": [
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "I",
 			"type": "SPELL",
 			"focus": false,
@@ -4089,7 +3760,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Illusion"
 			],
@@ -4108,8 +3778,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -4124,7 +3792,6 @@
 				],
 				"entry": "4 cubes, each 10 feet on a side"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -4153,7 +3820,6 @@
 				"Divine",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -4163,13 +3829,12 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy",
 				"Negative"
 			],
 			"entries": [
-				"You accelerate the processes of decay in the area. Each living creature in the area takes {@damage 2d10} negative damage (basic Fortitude save). A creature afflicted by a disease takes a\u20132 circumstance penalty to this save.",
+				"You accelerate the processes of decay in the area. Each living creature in the area takes {@damage 2d10} negative damage (basic Fortitude save). A creature afflicted by a disease takes a \u20132 circumstance penalty to this save.",
 				"You can also direct the blight to rot all Small and Tiny non-creature plants in the area, eliminating non-magical undergrowth and any resulting difficult terrain, cover, and concealment. Sudden blight attempts to counteract any {@trait magical} effect on the plants before withering them."
 			],
 			"cast": {
@@ -4177,8 +3842,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -4193,7 +3856,6 @@
 				],
 				"entry": "20-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -4220,7 +3882,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "CANTRIP",
 			"focus": false,
@@ -4230,7 +3891,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Cantrip",
 				"Conjuration"
@@ -4244,13 +3904,9 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -4259,7 +3915,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4285,7 +3940,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "C",
 			"type": "SPELL",
 			"focus": false,
@@ -4295,7 +3949,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Conjuration",
 				"Teleportation"
@@ -4309,8 +3962,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -4319,12 +3970,10 @@
 					"amount": 120
 				}
 			},
-			"area": null,
 			"targets": "1 willing creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4353,7 +4002,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -4363,7 +4011,6 @@
 				"S": false,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Polymorph",
 				"Transmutation"
@@ -4377,13 +4024,9 @@
 				"unit": "minute",
 				"entry": "1 minute"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "until the next time you make your daily preparations",
@@ -4392,7 +4035,6 @@
 					"unit": "special"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -4412,7 +4054,6 @@
 				"Arcane",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "T",
 			"type": "SPELL",
 			"focus": false,
@@ -4422,7 +4063,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Earth",
 				"Transmutation"
@@ -4452,8 +4092,6 @@
 				"unit": "triple",
 				"entry": "{@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -4468,11 +4106,9 @@
 				],
 				"entry": "2 adjacent 10-foot cubes"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4496,7 +4132,6 @@
 				"Divine",
 				"Occult"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -4506,7 +4141,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy",
 				"Negative"
@@ -4528,8 +4162,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -4538,7 +4170,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
@@ -4567,7 +4198,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "V",
 			"type": "SPELL",
 			"focus": false,
@@ -4577,7 +4207,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Evocation"
 			],
@@ -4589,8 +4218,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -4600,7 +4227,6 @@
 				],
 				"entry": "30-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -4628,7 +4254,6 @@
 				"Occult",
 				"Primal"
 			],
-			"altTraditions": null,
 			"school": "N",
 			"type": "SPELL",
 			"focus": false,
@@ -4638,7 +4263,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Necromancy"
 			],
@@ -4649,7 +4273,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Mouths} The wall has countless toothy mouths along its surface. The mouths {@action Strike} any creature that ends its turn within 5 feet of the wall, using your spell attack roll for these Strikes and dealing piercing damage equal to {@dice 1d6} + your spellcasting ability modifier. The mouths are capable of consuming potions; since the wall is alive, it can recover Hit Points from a potion of healing, but it can't benefit from {@trait any} effect that would give it the ability to move. Otherwise, the GM determines which potions can affect the wall.",
-						"{@bold Eyes} The wall sprouts hundreds of unblinking eyes. You can see through these eyes, gaining a +2 circumstance bonus to visual Perception checks within the wall's line of sight. You can also use the eyes for determining line of sight for ranged attacks and spells, but you don't have line of effect through the wall.",
+						"{@bold Eyes} The wall sprouts hundreds of unblinking eyes. You can see through these eyes, gaining a +2 circumstance bonus to visual {@skill Perception} checks within the wall's line of sight. You can also use the eyes for determining line of sight for ranged attacks and spells, but you don't have line of effect through the wall.",
 						"{@bold Arms} The wall is a mass of grasping arms. Any creature that ends its turn within 5 feet of the wall must attempt a Reflex save."
 					]
 				},
@@ -4667,8 +4291,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "20 feet",
@@ -4677,8 +4299,6 @@
 					"amount": 20
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -4687,7 +4307,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -4703,8 +4322,6 @@
 			"source": "APG",
 			"name": "Hymn Of Healing",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -4714,7 +4331,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Bard",
@@ -4731,8 +4347,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -4741,7 +4355,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "you or 1 ally",
 			"duration": {
 				"type": "timed",
@@ -4751,7 +4364,6 @@
 					"unit": "round"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4770,8 +4382,6 @@
 			"source": "APG",
 			"name": "Ode To Ouroboros",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -4781,7 +4391,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Bard",
@@ -4796,7 +4405,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "A creature's {@condition dying} condition would reach the value at which they would die.",
 			"range": {
 				"type": "point",
@@ -4806,12 +4414,10 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "the triggering creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -4827,8 +4433,6 @@
 			"source": "APG",
 			"name": "Pied Piping",
 			"level": 10,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -4838,7 +4442,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Bard",
@@ -4865,8 +4468,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -4876,7 +4477,6 @@
 				],
 				"entry": "5-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -4901,8 +4501,6 @@
 			"source": "APG",
 			"name": "Song Of Marching",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "CANTRIP",
 			"focus": true,
@@ -4912,7 +4510,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Bard",
@@ -4929,8 +4526,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -4940,7 +4535,6 @@
 				],
 				"entry": "60-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 hour",
@@ -4949,7 +4543,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -4974,8 +4567,6 @@
 			"source": "APG",
 			"name": "Song Of Strength",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "CANTRIP",
 			"focus": true,
@@ -4985,7 +4576,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Bard",
@@ -5004,8 +4594,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -5015,7 +4603,6 @@
 				],
 				"entry": "60-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -5024,7 +4611,6 @@
 					"unit": "round"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5040,8 +4626,6 @@
 			"source": "APG",
 			"name": "Symphony Of The Unfettered Heart",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -5051,7 +4635,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -5067,8 +4650,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -5077,12 +4658,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "you or 1 ally",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -5103,8 +4682,6 @@
 			"source": "APG",
 			"name": "Litany Of Depravity",
 			"level": 7,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -5114,7 +4691,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Champion",
@@ -5130,8 +4706,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -5140,7 +4714,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 good creature",
 			"duration": {
 				"type": "timed",
@@ -5150,13 +4723,12 @@
 					"unit": "round"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The weakness increases by 1. FOCUS SPELLS A focus spell is unique to a class and reflects its individual role and style. This section introduces focus spells for the oracle and witch and presents several new options for some Core Rulebook classes. The full rules for casting focus spells appear on page 300 of the Core Rulebook. Advanced Player's Guide 228"
+					"entry": "The weakness increases by 1."
 				},
 				"x": null,
 				"no_x": null
@@ -5169,8 +4741,6 @@
 			"source": "APG",
 			"name": "Litany Of Self-interest",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -5180,7 +4750,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Champion",
@@ -5195,7 +4764,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "The target gains a +2 status bonus to attack rolls, Perception checks, saving throws, and skill checks. The target can't {@action Aid} other creatures, consider any creature an ally, or use spells or abilities that directly benefit another creature (as determined by the GM), even if they also benefit the target. Other creatures allied with the spell's target can still consider the target an ally and affect it accordingly."
+						"Failure": "The target gains a +2 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks. The target can't {@action Aid} other creatures, consider any creature an ally, or use spells or abilities that directly benefit another creature (as determined by the GM), even if they also benefit the target. Other creatures allied with the spell's target can still consider the target an ally and affect it accordingly."
 					}
 				}
 			],
@@ -5204,8 +4773,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -5214,7 +4781,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -5245,8 +4811,6 @@
 			"source": "APG",
 			"name": "Touch Of Corruption",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -5256,7 +4820,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Champion",
@@ -5264,7 +4827,7 @@
 				"Negative"
 			],
 			"entries": [
-				"You infuse the target with negative energy. If the target is living, this deals {@damage 1d6} negative damage (basic Fortitude save); on a failed save, the target also takes a\u20132 status penalty to AC for 1 round.",
+				"You infuse the target with negative energy. If the target is living, this deals {@damage 1d6} negative damage (basic Fortitude save); on a failed save, the target also takes a \u20132 status penalty to AC for 1 round.",
 				"If the target is a willing undead creature, the target instead regains 6 Hit Points, and if you are the undead target, you also gain a +2 status bonus to damage rolls for 1 round."
 			],
 			"cast": {
@@ -5272,8 +4835,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -5282,12 +4843,10 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 willing undead creature or 1 living creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -5306,8 +4865,6 @@
 			"source": "APG",
 			"name": "Clinging Shadows Stance",
 			"level": 4,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -5317,7 +4874,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -5334,13 +4890,9 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "until you leave the stance",
@@ -5349,7 +4901,6 @@
 					"unit": "special"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5365,9 +4916,6 @@
 			"source": "APG",
 			"name": "Ki Form",
 			"level": 9,
-			"traditions": null,
-			"altTraditions": null,
-			"school": null,
 			"type": "FOCUS",
 			"focus": true,
 			"components": {
@@ -5376,7 +4924,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Monk",
@@ -5384,20 +4931,16 @@
 			],
 			"entries": [
 				"Drawing from deep wells of spiritual power, you take on a special ki form. In your ki form, your hair, feathers, skin, or scales change color and begin to glow. In this form you gain a fly Speed equal to your land Speed. Choose force, lawful (only if you are lawful), negative, or positive damage. All your Strikes deal {@damage 1d6} additional damage of the chosen type. Your entire body is also surrounded by a glowing corona of the same color as your inner ki; this is a {@trait light} effect. Your corona is a 5-foot emanation that deals {@dice 2d6} damage of the chosen type to creatures who start their turn within the emanation. If the emanation overlaps with a {@trait darkness} effect, the corona's glow attempts to counteract the {@trait darkness} effect. Regardless of the outcome, the corona can't attempt to counteract that effect again for 1 day. As a single action, which has the {@trait concentrate} trait, you can flare your corona out to become a 30-foot emanation.",
-				"In your ki form, your emotions surge to the forefront and it's difficult to moderate your attacks. Your weapons and unarmed attacks lose the {@trait nonlethal} trait. You take a\u20132 status penalty to saves against {@trait emotion} effects but gain a +2 status bonus to saves against all other {@trait mental} effects."
+				"In your ki form, your emotions surge to the forefront and it's difficult to moderate your attacks. Your weapons and unarmed attacks lose the {@trait nonlethal} trait. You take a \u20132 status penalty to saves against {@trait emotion} effects but gain a +2 status bonus to saves against all other {@trait mental} effects."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -5406,7 +4949,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5422,8 +4964,6 @@
 			"source": "APG",
 			"name": "Medusa's Wrath",
 			"level": 8,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "T",
 			"type": "FOCUS",
 			"focus": true,
@@ -5433,7 +4973,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Monk",
@@ -5455,17 +4994,12 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5481,8 +5015,6 @@
 			"source": "APG",
 			"name": "Shadow's Web",
 			"level": 7,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -5492,7 +5024,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -5515,8 +5046,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -5526,7 +5055,6 @@
 				],
 				"entry": "30-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -5549,7 +5077,6 @@
 			"source": "APG",
 			"name": "Access Lore",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -5564,7 +5091,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5580,13 +5106,9 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -5595,7 +5117,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5611,7 +5132,6 @@
 			"source": "APG",
 			"name": "Ancestral Defense",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -5626,7 +5146,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -5643,17 +5162,13 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "You are about to attempt a Will save.",
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5669,7 +5184,6 @@
 			"source": "APG",
 			"name": "Ancestral Form",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -5684,7 +5198,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5699,13 +5212,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -5714,7 +5223,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -5733,7 +5241,6 @@
 			"source": "APG",
 			"name": "Ancestral Touch",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"ancestors"
@@ -5748,7 +5255,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5775,8 +5281,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -5785,7 +5289,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 living creature",
 			"duration": {
 				"type": null
@@ -5809,7 +5312,6 @@
 			"source": "APG",
 			"name": "Armor Of Bones",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -5824,7 +5326,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5839,13 +5340,9 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -5854,7 +5351,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -5873,7 +5369,6 @@
 			"source": "APG",
 			"name": "Battlefield Persistence",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -5888,7 +5383,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5904,17 +5398,13 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "You are about to attempt a saving throw, but you haven't rolled yet.",
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -5930,7 +5420,6 @@
 			"source": "APG",
 			"name": "Brain Drain",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -5945,7 +5434,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -5961,8 +5449,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -5971,7 +5457,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
@@ -5995,7 +5480,6 @@
 			"source": "APG",
 			"name": "Call To Arms",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -6010,7 +5494,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Auditory",
@@ -6029,7 +5512,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "You are about to roll for initiative.",
 			"range": {
 				"type": null
@@ -6040,7 +5522,6 @@
 				],
 				"entry": "20-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -6049,7 +5530,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6074,7 +5554,6 @@
 			"source": "APG",
 			"name": "Claim Undead",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -6089,7 +5568,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6114,8 +5592,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6124,7 +5600,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 undead creature",
 			"duration": {
 				"type": "timed",
@@ -6150,8 +5625,6 @@
 			"source": "APG",
 			"name": "Debilitating Dichotomy",
 			"level": 4,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -6161,7 +5634,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6177,8 +5649,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6187,7 +5657,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature other than you",
 			"duration": {
 				"type": null
@@ -6211,7 +5680,6 @@
 			"source": "APG",
 			"name": "Delay Affliction",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -6226,7 +5694,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6243,8 +5710,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6253,12 +5718,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6277,7 +5740,6 @@
 			"source": "APG",
 			"name": "Dread Secret",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"lore"
@@ -6292,7 +5754,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6319,8 +5780,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -6329,7 +5788,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "up to 6 creatures",
 			"duration": {
 				"type": "timed",
@@ -6355,7 +5813,6 @@
 			"source": "APG",
 			"name": "Flaming Fusillade",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -6370,7 +5827,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6386,13 +5842,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -6401,7 +5853,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6422,7 +5873,6 @@
 			"source": "APG",
 			"name": "Heroic Feat",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"battle"
@@ -6437,7 +5887,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6453,17 +5902,12 @@
 				"unit": "Varies",
 				"entry": "{@as 2} or {@as 3}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -6479,7 +5923,6 @@
 			"source": "APG",
 			"name": "Incendiary Aura",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -6494,7 +5937,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6510,8 +5952,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -6521,7 +5961,6 @@
 				],
 				"entry": "10-foot emanation"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -6530,7 +5969,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6549,7 +5987,6 @@
 			"source": "APG",
 			"name": "Interstellar Void",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -6564,7 +6001,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cold",
@@ -6581,8 +6017,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6591,7 +6025,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -6620,7 +6053,6 @@
 			"source": "APG",
 			"name": "Life-giving Form",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -6635,7 +6067,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6656,13 +6087,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -6671,7 +6098,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6690,7 +6116,6 @@
 			"source": "APG",
 			"name": "Life Link",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"life"
@@ -6705,7 +6130,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6723,8 +6147,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6733,7 +6155,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature other than you",
 			"duration": {
 				"type": "timed",
@@ -6743,7 +6164,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6759,7 +6179,7 @@
 					},
 					{
 						"level": 9,
-						"entry": "You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15. Advanced Player's Guide 232"
+						"entry": "You can target 4 creatures other than you. Increase the initial healing to {@dice 9d4} and the maximum damage reduced and Hit Points lost to 15."
 					}
 				],
 				"no_x": null
@@ -6772,7 +6192,6 @@
 			"source": "APG",
 			"name": "Moonlight Bridge",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -6787,7 +6206,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -6804,8 +6222,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6814,8 +6230,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -6824,7 +6238,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -6843,7 +6256,6 @@
 			"source": "APG",
 			"name": "Soul Siphon",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"bones"
@@ -6858,7 +6270,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6883,8 +6294,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -6893,7 +6302,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 living creature",
 			"duration": {
 				"type": null
@@ -6917,7 +6325,6 @@
 			"source": "APG",
 			"name": "Spray Of Stars",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"cosmos"
@@ -6932,7 +6339,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -6958,8 +6364,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -6969,7 +6373,6 @@
 				],
 				"entry": "15-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -6992,7 +6395,6 @@
 			"source": "APG",
 			"name": "Tempest Form",
 			"level": 6,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7007,7 +6409,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -7034,13 +6435,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained up to 1 minute",
@@ -7049,7 +6446,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -7068,7 +6464,6 @@
 			"source": "APG",
 			"name": "Tempest Touch",
 			"level": 1,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7083,7 +6478,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cold",
@@ -7098,8 +6492,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half damage and a\u20135-foot circumstance penalty to its Speeds until the end of your next turn.",
-						"Failure": "The target takes full damage and a\u201310-foot circumstance penalty to its Speeds until the end of your next turn.",
+						"Success": "The target takes half damage and a \u20135-foot circumstance penalty to its Speeds until the end of your next turn.",
+						"Failure": "The target takes full damage and a \u201310-foot circumstance penalty to its Speeds until the end of your next turn.",
 						"Critical Failure": "As failure, but the target takes double damage."
 					}
 				}
@@ -7109,8 +6503,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch",
@@ -7119,7 +6511,6 @@
 					"amount": 1
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
@@ -7130,7 +6521,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The bludgeoning and cold damage each increase by {@dice 1d4}. Spells 5 233"
+					"entry": "The bludgeoning and cold damage each increase by {@dice 1d4}. Spells 5"
 				},
 				"x": null,
 				"no_x": null
@@ -7143,7 +6534,6 @@
 			"source": "APG",
 			"name": "Thunderburst",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"tempest"
@@ -7158,7 +6548,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Air",
@@ -7185,8 +6574,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "100 feet",
@@ -7201,7 +6588,6 @@
 				],
 				"entry": "20-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -7224,8 +6610,6 @@
 			"source": "APG",
 			"name": "Vision Of Weakness",
 			"level": 2,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -7235,7 +6619,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -7250,17 +6633,13 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7276,7 +6655,6 @@
 			"source": "APG",
 			"name": "Whirling Flames",
 			"level": 3,
-			"traditions": null,
 			"subclass": {
 				"Oracle|Mystery": [
 					"flames"
@@ -7291,7 +6669,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cursebound",
@@ -7307,8 +6684,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -7323,7 +6698,6 @@
 				],
 				"entry": "up to two 5-foot bursts that don't overlap"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -7346,8 +6720,6 @@
 			"source": "APG",
 			"name": "Animal Feature",
 			"level": 2,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "T",
 			"type": "FOCUS",
 			"focus": true,
@@ -7357,7 +6729,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Morph",
@@ -7380,13 +6751,9 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -7395,7 +6762,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -7416,8 +6782,6 @@
 			"source": "APG",
 			"name": "Enlarge Companion",
 			"level": 4,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "T",
 			"type": "FOCUS",
 			"focus": true,
@@ -7427,7 +6791,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Polymorph",
@@ -7442,8 +6805,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -7452,7 +6813,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "your animal companion",
 			"duration": {
 				"type": "timed",
@@ -7462,7 +6822,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7478,8 +6837,6 @@
 			"source": "APG",
 			"name": "Ephemeral Tracking",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -7489,7 +6846,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Divination",
@@ -7503,13 +6859,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 hour",
@@ -7518,7 +6870,6 @@
 					"unit": "hour"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7534,8 +6885,6 @@
 			"source": "APG",
 			"name": "Gravity Weapon",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -7545,7 +6894,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -7560,13 +6908,9 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -7575,7 +6919,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7591,8 +6934,6 @@
 			"source": "APG",
 			"name": "Heal Companion",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -7602,7 +6943,6 @@
 				"S": false,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Healing",
@@ -7620,8 +6960,6 @@
 				"unit": "Varies",
 				"entry": "{@as 1} or {@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "touch or 30 feet",
@@ -7630,18 +6968,16 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "your animal companion",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8. Advanced Player's Guide 234"
+					"entry": "The amount of healing increases by {@dice 1d10}, and the additional healing for the 2-action version increases by 8."
 				},
 				"x": null,
 				"no_x": null
@@ -7654,8 +6990,6 @@
 			"source": "APG",
 			"name": "Hunter's Luck",
 			"level": 2,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -7665,7 +6999,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Divination",
@@ -7681,17 +7014,13 @@
 				"unit": "free",
 				"entry": "{@as F}"
 			},
-			"requirements": null,
 			"trigger": "You attempt a check to Recall",
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7707,8 +7036,6 @@
 			"source": "APG",
 			"name": "Hunter's Vision",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -7718,22 +7045,19 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Divination",
 				"Ranger"
 			],
 			"entries": [
-				"Your target glows with a magical aura visible only to you and those who follow your lead. Your target is visible to you and others sharing your Hunt Prey benefits even if it wouldn't normally be due to lighting or the {@condition concealed} or {@condition invisible} conditions, though cover from opaque objects still blocks your sight. You ignore the flat check against the target due to the {@condition concealed} condition, and the target isn't automatically {@condition hidden} from you due to darkness or being {@condition invisible}."
+				"Your target glows with a magical aura visible only to you and those who follow your lead. Your target is visible to you and others sharing your {@action Hunt Prey} benefits even if it wouldn't normally be due to lighting or the {@condition concealed} or {@condition invisible} conditions, though cover from opaque objects still blocks your sight. You ignore the flat check against the target due to the {@condition concealed} condition, and the target isn't automatically {@condition hidden} from you due to darkness or being {@condition invisible}."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -7742,7 +7066,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 hunted prey",
 			"duration": {
 				"type": "timed",
@@ -7752,7 +7075,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7768,8 +7090,6 @@
 			"source": "APG",
 			"name": "Magic Hide",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -7779,7 +7099,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -7793,8 +7112,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -7803,7 +7120,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "your animal companion",
 			"duration": {
 				"type": "timed",
@@ -7813,7 +7129,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -7829,8 +7144,6 @@
 			"source": "APG",
 			"name": "Ranger's Bramble",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "T",
 			"type": "FOCUS",
 			"focus": true,
@@ -7840,7 +7153,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Plant",
@@ -7856,8 +7168,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "100 feet",
@@ -7872,11 +7182,9 @@
 				],
 				"entry": "all squares that contain plants in a"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -7895,8 +7203,6 @@
 			"source": "APG",
 			"name": "Snare Hopping",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "C",
 			"type": "FOCUS",
 			"focus": true,
@@ -7906,7 +7212,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -7921,8 +7226,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "10 feet",
@@ -7931,12 +7234,10 @@
 					"amount": 10
 				}
 			},
-			"area": null,
 			"targets": "one snare you built",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -7955,8 +7256,6 @@
 			"source": "APG",
 			"name": "Soothing Mist",
 			"level": 2,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -7966,7 +7265,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Healing",
@@ -7982,8 +7280,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -7992,12 +7288,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 willing living creature or 1 undead creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8016,8 +7310,6 @@
 			"source": "APG",
 			"name": "Terrain Transposition",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "C",
 			"type": "FOCUS",
 			"focus": true,
@@ -8027,7 +7319,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -8045,8 +7336,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "90 feet",
@@ -8055,12 +7344,9 @@
 					"amount": 90
 				}
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -8076,8 +7362,6 @@
 			"source": "APG",
 			"name": "Blinding Beauty",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -8087,7 +7371,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Emotion",
@@ -8113,8 +7396,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -8124,7 +7405,6 @@
 				],
 				"entry": "30-foot cone"
 			},
-			"targets": null,
 			"duration": {
 				"type": null
 			},
@@ -8144,8 +7424,6 @@
 			"source": "APG",
 			"name": "Consuming Darkness",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -8155,7 +7433,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -8169,8 +7446,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature sinks partially into the shadow, taking half damage and a\u20135-foot circumstance penalty to its Speeds for as long it remains in the area.",
-						"Failure": "As success, but the creature takes full damage and a\u201310-foot circumstance penalty.",
+						"Success": "The creature sinks partially into the shadow, taking half damage and a \u20135-foot circumstance penalty to its Speeds for as long it remains in the area.",
+						"Failure": "As success, but the creature takes full damage and a \u201310-foot circumstance penalty.",
 						"Critical Failure": "The creature is absorbed into the shadows, where it can be seen below the surface; it takes double damage and is {@condition immobilized} for 1 round or until it Escapes."
 					}
 				}
@@ -8180,8 +7457,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -8219,8 +7494,6 @@
 			"source": "APG",
 			"name": "Dim The Light",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -8230,7 +7503,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Darkness",
@@ -8246,17 +7518,13 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "You cast a darkness or shadow spell.",
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -8272,8 +7540,6 @@
 			"source": "APG",
 			"name": "Establish Ward",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -8283,7 +7549,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -8298,8 +7563,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -8309,7 +7572,6 @@
 				],
 				"entry": "30-foot burst"
 			},
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -8318,7 +7580,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8337,8 +7598,6 @@
 			"source": "APG",
 			"name": "Genie's Veil",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -8348,7 +7607,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -8362,7 +7620,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "A creature within range is attacked.",
 			"range": {
 				"type": "point",
@@ -8372,12 +7629,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 willing creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -8393,8 +7648,6 @@
 			"source": "APG",
 			"name": "Heart's Desire",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "I",
 			"type": "FOCUS",
 			"focus": true,
@@ -8404,7 +7657,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Emotion",
@@ -8418,7 +7670,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target disbelieves the illusion and is unaffected.",
-						"Success": "For 1 round, the target is {@condition stupefied|CRB|stupefied 2} and takes a\u20132 status penalty to any checks it makes to determine the effects of reactions.",
+						"Success": "For 1 round, the target is {@condition stupefied|CRB|stupefied 2} and takes a \u20132 status penalty to any checks it makes to determine the effects of reactions.",
 						"Failure": "For 1 minute, the target is {@condition stupefied|CRB|stupefied 2} and can't use reactions.",
 						"Critical Failure": "As failure, and all spaces are difficult terrain for the target."
 					}
@@ -8429,8 +7681,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -8439,7 +7689,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -8468,8 +7717,6 @@
 			"source": "APG",
 			"name": "Nymph's Token",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -8479,7 +7726,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -8493,13 +7739,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -8508,7 +7750,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8529,8 +7770,6 @@
 			"source": "APG",
 			"name": "Sepulchral Mask",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "FOCUS",
 			"focus": true,
@@ -8540,7 +7779,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Divination",
@@ -8556,8 +7794,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and takes a\u20131 status penalty to Will saves against {@trait emotion} effects for 1 round.",
-						"Critical Failure": "The creature takes double damage and a\u20131 status penalty to Will saves against {@trait emotion} effects for 1 minute."
+						"Failure": "The creature takes full damage and takes a \u20131 status penalty to Will saves against {@trait emotion} effects for 1 round.",
+						"Critical Failure": "The creature takes double damage and a \u20131 status penalty to Will saves against {@trait emotion} effects for 1 minute."
 					}
 				}
 			],
@@ -8566,8 +7804,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
@@ -8605,8 +7841,6 @@
 			"source": "APG",
 			"name": "Shepherd Of Souls",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -8616,7 +7850,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Healing",
@@ -8631,7 +7864,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "A living creature within 30 feet takes damage.",
 			"range": {
 				"type": "point",
@@ -8641,12 +7873,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8665,8 +7895,6 @@
 			"source": "APG",
 			"name": "Spirit Veil",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "I",
 			"type": "FOCUS",
 			"focus": true,
@@ -8676,7 +7904,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Illusion",
@@ -8690,13 +7917,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -8705,7 +7928,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8724,8 +7946,6 @@
 			"source": "APG",
 			"name": "Steal Shadow",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -8735,7 +7955,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Necromancy",
@@ -8759,8 +7978,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -8769,7 +7986,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -8798,8 +8014,6 @@
 			"source": "APG",
 			"name": "Wish-twisted Form",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "T",
 			"type": "FOCUS",
 			"focus": true,
@@ -8809,7 +8023,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Sorcerer",
@@ -8823,8 +8036,8 @@
 					"items": [
 						"The target gains weakness 5 to one energy type of your choice.",
 						"The target's resistances are reduced by 5.",
-						"The target takes a\u201310-foot status penalty to all its Speeds.",
-						"The target takes a\u20131 status penalty to its saving throws."
+						"The target takes a \u201310-foot status penalty to all its Speeds.",
+						"The target takes a \u20131 status penalty to its saving throws."
 					]
 				},
 				{
@@ -8833,7 +8046,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes the penalties for 1 round.",
 						"Failure": "The target takes the penalties for 1 minute.",
-						"Critical Failure": "As failure, and the target takes a\u20131 status penalty to AC for the duration."
+						"Critical Failure": "As failure, and the target takes a \u20131 status penalty to AC for the duration."
 					}
 				}
 			],
@@ -8842,8 +8055,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "60 feet",
@@ -8852,7 +8063,6 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -8881,8 +8091,6 @@
 			"source": "APG",
 			"name": "Blood Ward",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -8892,7 +8100,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -8907,8 +8114,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -8917,7 +8122,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -8927,7 +8131,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -8948,8 +8151,6 @@
 			"source": "APG",
 			"name": "Cackle",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -8959,7 +8160,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -8974,17 +8174,12 @@
 				"unit": "free",
 				"entry": "{@as F}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -9000,8 +8195,6 @@
 			"source": "APG",
 			"name": "Clinging Ice",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "C",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9011,7 +8204,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9027,8 +8219,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
-						"Failure": "The target takes full damage, and takes a\u20135-foot circumstance penalty to its Speeds until the spell ends.",
-						"Critical Failure": "The target takes double damage and a\u201310-foot circumstance penalty to its Speeds until the spell ends."
+						"Failure": "The target takes full damage, and takes a \u20135-foot circumstance penalty to its Speeds until the spell ends.",
+						"Critical Failure": "The target takes double damage and a \u201310-foot circumstance penalty to its Speeds until the spell ends."
 					}
 				}
 			],
@@ -9037,8 +8229,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9047,7 +8237,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9076,8 +8265,6 @@
 			"source": "APG",
 			"name": "Curse Of Death",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -9087,7 +8274,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Curse",
@@ -9113,8 +8299,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9123,7 +8307,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9152,8 +8335,6 @@
 			"source": "APG",
 			"name": "Deceiver's Cloak",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "I",
 			"type": "FOCUS",
 			"focus": true,
@@ -9163,7 +8344,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Hex",
@@ -9178,13 +8358,9 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": null
 			},
-			"area": null,
-			"targets": null,
 			"duration": {
 				"type": "timed",
 				"entry": "sustained",
@@ -9193,7 +8369,6 @@
 					"unit": "unlimited"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -9214,8 +8389,6 @@
 			"source": "APG",
 			"name": "Discern Secrets",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9225,7 +8398,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9235,15 +8407,13 @@
 			],
 			"entries": [
 				"You call upon your patron's power to better uncover secrets.",
-				"When you Cast the Spell, the target can {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}. The target gains a +1 status bonus to the skill or Perception used for the roll, and this bonus remains as long as you Sustain the Spell. The target is temporarily immune to discern secrets for 1 minute."
+				"When you Cast the Spell, the target can {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}. The target gains a +1 status bonus to the skill or {@skill Perception} used for the roll, and this bonus remains as long as you Sustain the Spell. The target is temporarily immune to discern secrets for 1 minute."
 			],
 			"cast": {
 				"number": 1,
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9252,7 +8422,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9262,7 +8431,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -9283,8 +8451,6 @@
 			"source": "APG",
 			"name": "Elemental Betrayal",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -9294,7 +8460,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -9309,8 +8474,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9319,7 +8482,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9329,7 +8491,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -9348,8 +8509,6 @@
 			"source": "APG",
 			"name": "Evil Eye",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9359,7 +8518,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9388,8 +8546,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9398,7 +8554,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9424,8 +8579,6 @@
 			"source": "APG",
 			"name": "Life Boost",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -9435,7 +8588,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Healing",
@@ -9451,8 +8603,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9461,7 +8611,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9471,7 +8620,6 @@
 					"unit": "round"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -9487,8 +8635,6 @@
 			"source": "APG",
 			"name": "Malicious Shadow",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "FOCUS",
 			"focus": true,
@@ -9498,7 +8644,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Evocation",
@@ -9516,8 +8661,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9526,7 +8669,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9536,7 +8678,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -9555,8 +8696,6 @@
 			"source": "APG",
 			"name": "Needle Of Vengeance",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -9566,7 +8705,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -9582,8 +8720,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9592,7 +8728,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 enemy",
 			"duration": {
 				"type": "timed",
@@ -9608,7 +8743,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by 2. Advanced Player's Guide 238"
+					"entry": "Increase the damage by 2."
 				},
 				"x": null,
 				"no_x": null
@@ -9621,8 +8756,6 @@
 			"source": "APG",
 			"name": "Nudge Fate",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "D",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9632,7 +8765,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9649,8 +8781,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9659,7 +8789,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9685,8 +8814,6 @@
 			"source": "APG",
 			"name": "Personal Blizzard",
 			"level": 3,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "C",
 			"type": "FOCUS",
 			"focus": true,
@@ -9696,7 +8823,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Conjuration",
@@ -9720,8 +8846,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9730,7 +8854,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9759,8 +8882,6 @@
 			"source": "APG",
 			"name": "Phase Familiar",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "A",
 			"type": "FOCUS",
 			"focus": true,
@@ -9770,7 +8891,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Abjuration",
@@ -9785,7 +8905,6 @@
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"requirements": null,
 			"trigger": "Your familiar would take damage.",
 			"range": {
 				"type": "point",
@@ -9795,12 +8914,10 @@
 					"amount": 60
 				}
 			},
-			"area": null,
 			"targets": "your familiar",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -9819,8 +8936,6 @@
 			"source": "APG",
 			"name": "Restorative Moment",
 			"level": 5,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "N",
 			"type": "FOCUS",
 			"focus": true,
@@ -9830,7 +8945,6 @@
 				"S": true,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Hex",
@@ -9845,8 +8959,6 @@
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9855,12 +8967,10 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": null
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
@@ -9876,8 +8986,6 @@
 			"source": "APG",
 			"name": "Shroud Of Night",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "V",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9887,7 +8995,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9911,8 +9018,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9921,7 +9026,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9947,8 +9051,6 @@
 			"source": "APG",
 			"name": "Stoke The Heart",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "CANTRIP",
 			"focus": true,
@@ -9958,7 +9060,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -9976,8 +9077,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -9986,7 +9085,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -9996,7 +9094,6 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrow": null,
 			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": true,
@@ -10015,8 +9112,6 @@
 			"source": "APG",
 			"name": "Veil Of Dreams",
 			"level": 1,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "FOCUS",
 			"focus": true,
@@ -10026,7 +9121,6 @@
 				"S": true,
 				"V": false
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Enchantment",
@@ -10040,7 +9134,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes a\u20131 status penalty to Perception, attack rolls, and Will saves. This penalty increases to\u20132 for Will saves against {@trait sleep} effects.",
+						"Success": "The target takes a \u20131 status penalty to {@skill Perception}, attack rolls, and Will saves. This penalty increases to \u20132 for Will saves against {@trait sleep} effects.",
 						"Failure": "As success, and any time the target uses a concentrate action, it must succeed at a DC {@flatDC 5} flat check or the action is disrupted."
 					}
 				}
@@ -10050,8 +9144,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -10060,7 +9152,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 creature",
 			"duration": {
 				"type": "timed",
@@ -10086,8 +9177,6 @@
 			"source": "APG",
 			"name": "Wilding Word",
 			"level": 0,
-			"traditions": null,
-			"altTraditions": null,
 			"school": "E",
 			"type": "CANTRIP",
 			"focus": true,
@@ -10097,7 +9186,6 @@
 				"S": false,
 				"V": true
 			},
-			"cost": null,
 			"traits": [
 				"Uncommon",
 				"Cantrip",
@@ -10110,10 +9198,10 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "You create a new demiplane whose area consists of two contiguous squares, each 100 feet on a side. The ceiling is 20 feet high. If modifying an existing demiplane, you can instead either add this area to the demiplane's size or add two special traits or features.",
-						"Success": "As critical success, but the demiplane's area is a single square, 100 feet on a side and a ceiling 20 feet high. If modifying an existing demiplane, you can add one special trait or feature.",
-						"Failure": "The ritual has no effect.",
-						"Critical Failure": "Something goes horribly wrong, and all casters are teleported to an unknown but likely {@condition hostile} plane."
+						"Critical Success": "The target is unaffected.",
+						"Success": "When the target attempts an attack roll or skill check that would harm you, it takes a \u20132 status penalty to its roll.",
+						"Failure": "As success, but the target also becomes {@condition sickened|CRB|sickened 1} each time it damages you.",
+						"Critical Failure": "As success, but the target also becomes {@condition sickened|CRB|sickened 2} each time it damages you."
 					}
 				}
 			],
@@ -10122,8 +9210,6 @@
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"requirements": null,
-			"trigger": null,
 			"range": {
 				"type": "point",
 				"entry": "30 feet",
@@ -10132,7 +9218,6 @@
 					"amount": 30
 				}
 			},
-			"area": null,
 			"targets": "1 animal, fungus, or plant",
 			"duration": {
 				"type": "timed",
@@ -10145,28 +9230,12 @@
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
 			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "Increase the Hit Points recovered by 10 and the temporary Hit Points by 2 (or twice each amount on a critical success). REINCARNATE RITUAL 3 UNCOMMON NECROMANCY Cast 4 hours; Cost rare herbs worth a total value of the target's level (minimum 1) × 25 gp; Secondary Casters 2 Primary Check {@skill Nature} (expert); Secondary Checks {@skill Occultism},"
-				},
-				"x": [
-					{
-						"level": 10,
-						"entry": "The ritual creates a square area 1,000 feet on a side, with a ceiling 20 feet high (two contiguous areas of this size on a critical success). The cost of the ritual increases to 20,000 gp. FANTASTIC FACADE RITUAL 9 RARE ILLUSION Cast 1 week; Cost mystical paint, elaborate veils, and powdered minerals worth 20,000 gp total; Secondary Casters 3 Primary Check {@skill Arcana} or {@skill Occultism} (legendary); Secondary Checks {@skill Society} or {@skill Survival}; {@skill Deception}; {@skill Stealth} Area circle centered on you up to 1 mile in radius; Targets 1 settlement and its residents Duration unlimited You draw a permanent series of complex illusions over the target settlement, choosing the look, sound, feel, and smell of the structures, terrain, and creatures within at the time the ritual is cast. You can alter the appearance of existing structures and creatures, and you can add illusory structures or creatures. For example, you could cause everything and everyone in the target area to appear green, create an illusory forest with a thick canopy that obscures the settlement from outside view, or make empty ruins seem inhabited and pristine. When you create the facade, you determine which illusory elements remain static (limited to basic natural movement, such as flags blowing in the breeze) and which follow a basic program (for example, a daily parade in the town square, complete with marching band). You're unable to alter the programs after you create the facade. You can disguise creatures as you please, with the same effects as a 3rd-level {@spell illusory disguise}. If a creature affected by the facade leaves the area, any illusions affecting it fade after 1 day. You decide when casting the ritual whether newcomers are disguised by the illusions, and whether the disguise appears immediately or after a set period, up to 1 week. A creature that interacts with the target settlement in a way that would suggest or reveal the illusory nature of the facade, such as by trying to paint a building affected by the facade or climbing an illusory structure, can attempt to disbelieve the illusion. The illusions created by the spell are harmless, so an illusory river of lava wouldn't cause damage, nor could thorns on an illusory rose bush prick someone. Critical Success You create the facade as described, and you can alter the programs within your facade by spending 1 day to reprogram them. Success You create the facade as described. Failure Your illusions fail and the ritual has no effect. Critical Failure Your ritual produces unexpected and uncontrolled illusions different from what you had planned, such as unexpected and slowly shifting colors across the buildings, unpleasant smells, and creatures appearing as skeletons. These effects fade after 1 month."
-					},
-					{
-						"level": 10,
-						"entry": "The cost increases to 100,000 gp and the radius can be up to 5 miles. HEARTBOND RITUAL 2 UNCOMMON ABJURATION Cast 1 hour; Cost fine wine and a set of matching rings or other tokens worth 40 gp total; Secondary Casters 2 Primary Check {@skill Nature} or {@skill Religion} (expert); Secondary Checks {@skill Diplomacy}, {@skill Society} Range 20 feet You create a magical bond between two willing creatures, who are secondary casters of the ritual and must share genuine affection for one another. As part of the ritual, both members of the bond receive a ring, amulet, or similar token to symbolize their shared connection. They lose the effects of the ritual when not wearing the token, and the bond is {@condition broken} if either token is destroyed. Creatures benefiting from a successful heartbond ritual can later participate in a heightened version of the ritual without requiring new checks by spending the required time and paying the difference of the two costs. A creature can be under the effects of multiple heartbond rituals at once. Critical Success Once per day, each bonded creature can use a 2-action activity, which has the {@trait concentrate} trait, to learn the present state of the other bonded creature. The creature knows the other creature's direction and distance and any conditions affecting them. Both of the participants can cast {@spell message} as a divine innate spell at will, but can only target the other participant. Success As a critical success, except the bonded creatures can't cast {@spell message} as a divine innate spell. Failure The ritual has no effect. Critical Failure Magical backlash creates discordant energy among the participants. For 1 week, each ritual participant is {@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2} whenever they are within 30 feet of another ritual participant."
-					},
-					{
-						"level": 6,
-						"entry": "Increase the cost to a total value of 600 gp. On a success, secondary casters in the ritual permanently gain the effects of a 6th-level {@spell telepathy} spell, but only with each other. HEROES' FEAST RITUAL 5 UNCOMMON CONJURATION Cast 4 hours; Cost 25 gp; Secondary Casters 1 Primary Check {@skill Nature}, {@skill Religion}, or {@skill Occultism} (expert); Secondary Checks {@skill Diplomacy} or {@skill Society} Range 40 feet You conjure otherworldly beings to serve you and your companions a feast with restorative properties. These mysterious beings may be fey, divine, or other supernatural servitors, as appropriate for the primary check. After the first hour of the ritual, these servants appear and serve a massive feast, complete with an exquisite table and up to 10 place settings. The bounteous spread consists of all manner of dishes, including the guests' childhood comfort foods, modern delicacies, and preferred drinks. The summoned servants spend the next 3 hours waiting on you and the other guests, fetching additional food, pouring drinks, and so forth. During this time, you and the other guests must strive to be as polite and gracious as possible to avoid offending your mysterious hosts. At the feast's end, the ritual is completed and you and the secondary caster attempt your checks as normal. If the feast is interrupted at any point, the servants immediately vanish with their provisions and the ritual is disrupted. Critical Success The feast is nourishing and revitalizing. The magical food casts neutralize poison, remove disease, and remove fear on each guest for each relevant affliction, using your modifier for the primary skill check as the counteract modifier. Each guest also recovers 100 Hit Points and gains 20 temporary Hit Points for the next 12 hours. Guests also gain a +2 status bonus to saves against disease, {@trait fear}, and {@trait poison} effects for the next 12 hours. Success As critical success, except guests recover only 50 Hit Points, gain only 10 temporary Hit Points, and don't gain the status bonus to saves. Failure You and the other guests taste ash in your mouths and realize that the feast contained nothing of sustenance. Critical Failure The otherworldly servants were offended by your behavior or the hubris you demonstrated in summoning them and poisoned the feast. You and your guests become {@condition sickened|CRB|sickened 4} and can't reduce the condition for 12 hours. Heightened (+1) Increase the Hit Points recovered by 10 and the temporary Hit Points by 2 (or twice each amount on a critical success). REINCARNATE RITUAL 3 UNCOMMON NECROMANCY Cast 4 hours; Cost rare herbs worth a total value of the target's level (minimum 1) × 25 gp; Secondary Casters 2 Primary Check {@skill Nature} (expert); Secondary Checks {@skill Occultism},"
-					}
-				],
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
 				"no_x": null
 			},
-			"dismiss": true,
+			"dismiss": false,
 			"sustain": true,
 			"page": 239
 		}

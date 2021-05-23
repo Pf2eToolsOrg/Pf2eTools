@@ -44,7 +44,7 @@ class BestiaryPage extends ListPage {
 			<span class="ecgen__name bold col-4-2 pl-0">${cr.name}</span>
 			<span class="type col-4-1">${type}</span>
 			<span class="col-1-7 text-center">${level}</span>
-			<span title="${Parser.sourceJsonToFull(cr.source)}${Renderer.utils.getSourceSubText(cr)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
+			<span title="${Parser.sourceJsonToFull(cr.source)}" class="col-2 text-center ${Parser.sourceJsonToColor(cr.source)} pr-0" ${BrewUtil.sourceJsonToStyle(cr.source)}>${source}</span>
 		</a>`;
 		eleLi.firstElementChild.addEventListener("click", evt => this._handleBestiaryLinkClick(evt));
 

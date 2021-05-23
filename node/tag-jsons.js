@@ -321,11 +321,11 @@ class ActionTag {
 	static _fnTag (str) {
 		return str.replace(ActionTag._ACTIONS_REGEX, (...m) => {
 			const meta = ActionTag._ACTIONS[m[1]];
-			const pipes = [];
+			const pipes = [meta.name];
 			if (meta.source !== SRC_CRB) pipes.push(meta.source);
-			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("|");
+			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("");
 			if (meta.name !== m[1]) pipes.push(m[1]);
-			return `{@action ${meta.name}${pipes.join("|")}}`
+			return `{@action ${pipes.join("|")}}`
 		})
 	}
 }

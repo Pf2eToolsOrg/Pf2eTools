@@ -28,7 +28,7 @@ class PageFilterActions extends PageFilter {
 			selFn: (it) => it === "Basic",
 		});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action", "SRD"]});
+		this._miscFilter = new Filter({header: "Miscellaneous", items: ["Optional/Variant Action"]});
 	}
 
 	mutateForFilters (it) {
@@ -36,14 +36,16 @@ class PageFilterActions extends PageFilter {
 		it._fTime = it.activity ? it.activity.unit : null;
 		it.actionType = it.actionType || {};
 		it._fType = Object.keys(it.actionType).filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
-		it._fMisc = it.srd ? ["SRD"] : [];
+		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
+		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
+		it._fMisc = [];
 	}
 
 	addToFilters (it, isExcluded) {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(it._fSources);
-		this._traitFilter.addItem(it.traits);
+		this._traitFilter.addItem(it._fTraits);
 		this._trainedFilter.addItem(it.actionType.trained);
 		this._untrainedFilter.addItem(it.actionType.untrained);
 	}
@@ -68,7 +70,7 @@ class PageFilterActions extends PageFilter {
 			it._fType,
 			it.actionType.untrained,
 			it.actionType.trained,
-			it.traits,
+			it._fTraits,
 			it._fMisc,
 		)
 	}

@@ -921,7 +921,7 @@ class ClassesPage extends BaseComponent {
 						if (!scLvlFeatures) return;
 
 						scLvlFeatures.filter(it => it.name === feature.name).forEach((scFeature) => {
-							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note {@b Subclass source:} ${Renderer.utils.getSourceAndPageHtml(sc)}}` : "";
+							const ptSources = ixScLvl === 0 && sc.otherSources ? `{@note ${Renderer.utils.getPageP(sc, {prefix: "{@b Subclass source:} "})}}` : "";
 							const toRender = ptSources && scFeature.entries ? MiscUtil.copy(scFeature) : scFeature;
 							if (ptSources && toRender.entries) toRender.entries.push(ptSources);
 
