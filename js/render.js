@@ -350,6 +350,9 @@ function Renderer () {
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
 					break;
+				case "quote":
+					this._renderQuote(entry, textStack, meta, options);
+					break
 
 				// inline
 				case "inline":
@@ -1178,7 +1181,22 @@ function Renderer () {
 			entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${style}">`, suffix: `</p>`}));
 		});
 	};
-
+	this._renderQuote = function (entry, textStack, meta, options) {
+		const renderer = Renderer.get();
+		const len = entry.entries.length;
+		for (let i = 0; i < len; ++i) {
+			textStack[0] += `<p class="rd__quote-line ${i === len - 1 && entry.by ? `rd__quote-line--last` : ""}">${i === 0 && !entry.skipMarks ? "&ldquo;" : ""}`;
+			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<i>", suffix: "</i>"});
+			textStack[0] += `${i === len - 1 && !entry.skipMarks ? "&rdquo;" : ""}</p>`;
+		}
+		if (entry.by) {
+			textStack[0] += `<p>`;
+			const tempStack = [""];
+			this._recursiveRender(entry.by, tempStack, meta);
+			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${renderer.render(entry.from)}</i>` : ""}</span>`;
+			textStack[0] += `</p>`;
+		}
+	};
 	this._renderStatblock = async function (entry, textStack, meta, options) {
 		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = UrlUtil.CAT_TO_PAGE[cat_id];
