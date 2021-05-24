@@ -45,7 +45,7 @@ class ItemsPage extends ListPage {
 		if (item.equipment) {
 			eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 				<span class="col-4 pl-0 bold">${item.name}</span>
-				<span class="col-2-2 text-center">${item.category}</span>
+				<span class="col-2-2 text-center">${item.category ? item.category : "\u2014"}</span>
 				<span class="col-1-5 text-center">${level}</span>
 				<span class="col-1-8 text-center">${Parser.priceToFull(item.price)}</span>
 				<span class="col-1-2 text-center">${item.bulk ? item.bulk : "\u2014"}</span>

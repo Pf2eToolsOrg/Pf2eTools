@@ -51,19 +51,19 @@ class PageFilterFeats extends PageFilter {
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
 		feat._fType = [];
 		if (feat.featType == null) feat.featType = {};
-		if (feat.featType.class !== false) {
+		if (feat.featType.class !== false && feat.featType.class != null) {
 			feat._fType.push("Class");
 		}
-		if (feat.featType.ancestry !== false) {
+		if (feat.featType.ancestry !== false && feat.featType.ancestry != null) {
 			feat._fType.push("Ancestry");
 		}
-		if (feat.featType.general !== false) {
+		if (feat.featType.general !== false && feat.featType.general != null) {
 			feat._fType.push("General");
 		}
-		if (feat.featType.skill !== false) {
+		if (feat.featType.skill !== false && feat.featType.skill != null) {
 			feat._fType.push("Skill");
 		}
-		if (feat.featType.archetype !== false) {
+		if (feat.featType.archetype !== false && feat.featType.archetype != null) {
 			feat._fType.push("Archetype");
 		}
 		feat._slType = MiscUtil.copy(feat._fType);
