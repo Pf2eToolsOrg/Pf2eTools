@@ -89,18 +89,9 @@ class PageFilterItems extends PageFilter {
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk"});
 		this._rangeFilter = new Filter({header: "Weapon Range", items: ["Melee", "Ranged"]})
-		this._hpFilter = new RangeFilter({
-			header: "HP",
-			isLabelled: true,
-		});
-		this._btFilter = new RangeFilter({
-			header: "BT",
-			isLabelled: true,
-		});
-		this._hardnessFilter = new RangeFilter({
-			header: "Hardness",
-			isLabelled: true,
-		});
+		this._hpFilter = new RangeFilter({header: "HP"});
+		this._btFilter = new RangeFilter({header: "BT"});
+		this._hardnessFilter = new RangeFilter({header: "Hardness"});
 		this._shieldStatsFilter = new MultiFilter({
 			header: "Shield Stats",
 			filters: [this._hpFilter, this._btFilter, this._hardnessFilter],
@@ -142,7 +133,8 @@ class PageFilterItems extends PageFilter {
 
 		item._fDamage = undefined; // set by trait implies
 		this.handleTraitImplies(item, {traitProp: "traits", entityTypes: ["item"]});
-		item._fTraits = item.traits.map(t => Parser.getTraitName(t));
+		item._fTraits = (item.traits || []).map(t => Parser.getTraitName(t));
+		if (!item._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) item._fTraits.push("Common");
 
 		// RuneItem Builder
 		if (item.appliesTo) this._categoriesRuneItems.push(item.appliesTo);
@@ -162,9 +154,11 @@ class PageFilterItems extends PageFilter {
 		if (item._fDamageType) this._damageTypeFilter.addItem(item._fDamageType);
 		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
 		if (item.damage) this._damageDiceFilter.addItem(item.damage);
-		if (item.shieldStats != null) this._hpFilter.addItem(item.shieldStats.hp);
-		if (item.shieldStats != null) this._btFilter.addItem(item.shieldStats.bt);
-		if (item.shieldStats != null) this._hardnessFilter.addItem(item.shieldStats.hardness);
+		if (item.shieldStats != null) {
+			this._hpFilter.addItem(item.shieldStats.hp);
+			this._btFilter.addItem(item.shieldStats.bt);
+			this._hardnessFilter.addItem(item.shieldStats.hardness);
+		}
 		if (item.ammunition != null) this._ammoFilter.addItem(item.ammunition);
 		if (item.craftReq != null) this._miscFilter.addItem("Has Craft Requirements");
 		this._miscFilter.addItem(item._fMisc);

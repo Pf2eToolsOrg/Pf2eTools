@@ -127,6 +127,7 @@ class PageFilterSpells extends PageFilter {
 		spell._fTraditions = spell.traditions ? spell.traditions : [];
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
+		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
 		spell._fClasses = spell._fTraits.filter(t => Renderer.trait.isTraitInCategory(t, "Class")) || [];
 		spell._fSubClasses = Object.entries(spell.subclass || {}).map(([k, v]) => {
 			return v.map(sc => {

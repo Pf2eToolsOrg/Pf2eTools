@@ -124,5 +124,9 @@ function renderStatblock (ritual) {
 	Renderer.utils.bindTabButtons(statTab, infoTab);
 }
 
-const ritualsPage = new RitualsPage();
-window.addEventListener("load", () => ritualsPage.pOnLoad());
+let ritualsPage;
+window.addEventListener("load", async () => {
+	await Renderer.trait.preloadTraits();
+	ritualsPage = new RitualsPage();
+	ritualsPage.pOnLoad();
+});

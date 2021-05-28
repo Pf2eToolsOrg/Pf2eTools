@@ -49,6 +49,8 @@ class PageFilterFeats extends PageFilter {
 	mutateForFilters (feat) {
 		feat._fSources = SourceFilter.getCompleteFilterSources(feat);
 		feat._slPrereq = Renderer.stripTags(feat.prerequisites || `\u2014`).uppercaseFirst();
+		feat._fTraits = feat.traits.map(t => Parser.getTraitName(t));
+		if (!feat._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) feat._fTraits.push("Common");
 		feat._fType = [];
 		if (feat.featType == null) feat.featType = {};
 		if (feat.featType.class !== false && feat.featType.class != null) {
@@ -84,7 +86,7 @@ class PageFilterFeats extends PageFilter {
 		if (isExcluded) return;
 
 		this._typeFilter.addItem(feat._fType);
-		this._traitsFilter.addItem(feat.traits);
+		this._traitsFilter.addItem(feat._fTraits);
 		if (typeof (feat.featType.ancestry) !== "boolean") this._ancestryFilter.addItem(feat.featType.ancestry);
 		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
 		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
@@ -119,7 +121,7 @@ class PageFilterFeats extends PageFilter {
 			ft.featType.class,
 			ft.featType.skill,
 			ft._fTime,
-			ft.traits,
+			ft._fTraits,
 			ft._fMisc,
 		)
 	}

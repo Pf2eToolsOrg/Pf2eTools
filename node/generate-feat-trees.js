@@ -59,6 +59,7 @@ function generateFeatTrees (args) {
 		json.feat.forEach(f => {
 			const hash = getHash(f);
 			f.leadsTo = Array.from(getChildren(hash));
+			if (f.leadsTo.length === 0) delete f.leadsTo
 		});
 
 		const outPath = args.inplace ? file : file.replace("./data/", "./trash/");

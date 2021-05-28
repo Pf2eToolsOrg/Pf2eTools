@@ -59,7 +59,7 @@ class NavBar {
 		const ulAdventures = addDropdown(ulDms, "Adventures", true);
 		addLi(ulAdventures, "adventures.html", "View All/Homebrew");
 		addDivider(ulAdventures);
-		addLi(ulAdventures, "adventure.html", "Test", {isSide: true, aHash: "Test", date: "1234"});
+		addLi(ulAdventures, "adventure.html", "Sample Adventure", {isSide: true, aHash: "ID", date: "2019"});
 		addLi(ulDms, "hazards.html", "Hazards");
 
 		const ulReferences = addDropdown(navBar, "References");

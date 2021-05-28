@@ -26,7 +26,7 @@ class PageFilter {
 	handleTraitImplies (entity, opts) {
 		opts = opts || {};
 		if (!Renderer.trait.TRAITS) return;
-		entity[opts.traitProp].forEach(trt => {
+		(entity[opts.traitProp] || []).forEach(trt => {
 			const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trt)];
 			if (!lookup || !lookup.implies) return;
 			Object.keys(lookup.implies).filter(it => opts.entityTypes.includes(it))

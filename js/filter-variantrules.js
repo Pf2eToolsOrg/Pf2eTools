@@ -9,12 +9,10 @@ class PageFilterVariantRules extends PageFilter {
 
 		this._sourceFilter = new SourceFilter();
 		this._ruleTypeFilter = new Filter({header: "Rule Type"});
-		this._miscFilter = new Filter({header: "Miscellaneous", items: ["SRD"], isSrdFilter: true});
 	}
 
 	mutateForFilters (rule) {
 		rule._fSources = SourceFilter.getCompleteFilterSources(rule);
-		rule._fMisc = rule.srd ? ["SRD"] : [];
 	}
 
 	addToFilters (rule, isExcluded) {
@@ -28,7 +26,6 @@ class PageFilterVariantRules extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._ruleTypeFilter,
-			this._miscFilter,
 		];
 	}
 
@@ -37,7 +34,6 @@ class PageFilterVariantRules extends PageFilter {
 			values,
 			r._fSources,
 			r.type,
-			r._fMisc,
 		)
 	}
 }

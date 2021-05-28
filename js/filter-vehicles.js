@@ -84,6 +84,8 @@ class PageFilterVehicles extends PageFilter {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._sPrice = Parser.priceToValue(it.price);
 
+		it._fTraits = ([...it.traits, it.size]).map(t => Parser.getTraitName(t));
+		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fPrice = PageFilterVehicles._priceCategory(it._sPrice);
 		it._fAC = Math.max(...Object.values(it.defenses.ac));
 		it._fHardness = Math.max(...Object.values(it.defenses.hardness));
@@ -97,7 +99,7 @@ class PageFilterVehicles extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._levelFilter.addItem(it.level);
-		this._traitFilter.addItem([...it.traits, it.size]);
+		this._traitFilter.addItem(it._fTraits);
 		this._priceFilter.addItem(it._fPrice);
 		this._longFilter.addItem(it.space.long.number);
 		this._wideFilter.addItem(it.space.wide.number);
@@ -142,7 +144,7 @@ class PageFilterVehicles extends PageFilter {
 			values,
 			it._fSources,
 			it.level,
-			it.traits,
+			it._fTraits,
 			it._fPrice,
 			[
 				it.space.long.number,
