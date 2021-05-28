@@ -13871,7 +13871,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"You can teleport yourself a short distance. You gain the abundant step ki spell (page 401). Increase the number of Focus Points in your focus pool by 1."
+				"You can teleport yourself a short distance. You gain the {@spell abundant step} ki spell. Increase the number of Focus Points in your focus pool by 1."
 			],
 			"activity": null,
 			"special": null,
@@ -18705,25 +18705,26 @@
 			},
 			"prerequisites": null,
 			"frequency": null,
-			"trigger": "A creature casts a spell that you have in your repertoire.",
+			"trigger": "A creature {@action Cast a Spell|CRB|Casts a Spell} that you have in your repertoire.",
 			"requirements": "You have an unexpended spell slot you could use to cast the triggering spell.",
 			"cost": null,
 			"entries": [
-				"When a foe Casts a Spell you know and you can see its manifestations, you can use your own magic to disrupt it.",
-				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire.",
-				"You lose your spell slot as if you had cast the triggering spell.",
-				"You then attempt to counteract the triggering spell (page 458)."
+				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
+				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
 			],
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, natural, or occult).",
+			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait natural}, or {@trait occult}).",
 			"successDegree": null,
 			"page": 198,
 			"add_hash": "Sorcerer",
-			"leadsTo": []
+			"leadsTo": [
+				"Consume Spell|APG",
+				"Reflect Spell (Sorcerer)"
+			]
 		},
 		{
 			"source": "CRB",
@@ -19071,7 +19072,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"You can call upon the creatures of the wild for aid. You gain an additional spell slot of your highest level, which you can use only to cast {@spell summon animal} or summon plants and fungi. You can cast either of these spells using that spell slot, even if it they aren't in your spell repertoire.Evolution Greater Mental Evolution 16 Greater Vital Evolution 16 Interweave Dispel 14 Magic Sense 12 Metamagic Mastery 20 Occult Evolution 4 Overwhelming Energy 10 Primal Evolution 4 {@condition Quickened} Casting 10 Reach Spell 1 Reflect Spell 14 Steady Spellcasting 6 Widen Spell 1 break."
+				"You can call upon the creatures of the wild for aid. You gain an additional spell slot of your highest level, which you can use only to cast {@spell summon animal} or summon plants and fungi. You can cast either of these spells using that spell slot, even if it they aren't in your spell repertoire."
 			],
 			"activity": null,
 			"special": null,
@@ -19409,7 +19410,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"When you successfully use Counterspell to counteract a spell that affects targeted creatures or an area, you can turn that spell's effect back on its caster. When reflected, the spell affects only the original caster, even if it's an area spell or it would normally affect more than one creature. The original caster can attempt a save and use other defenses against the reflected spell as normal."
+				"When you successfully use {@feat Counterspell (Sorcerer)|CRB|Counterspell} to counteract a spell that affects targeted creatures or an area, you can turn that spell's effect back on its caster. When reflected, the spell affects only the original caster, even if it's an area spell or it would normally affect more than one creature. The original caster can attempt a save and use other defenses against the reflected spell as normal."
 			],
 			"activity": null,
 			"special": null,
@@ -19673,11 +19674,12 @@
 			},
 			"prerequisites": null,
 			"frequency": null,
-			"trigger": "A creature Casts a Spell that you have prepared.",
+			"trigger": "A creature {@action Cast a Spell|CRB|Casts a Spell} that you have prepared.",
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"When a foe Casts a Spell and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
+				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
+				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
 			],
 			"activity": {
 				"number": 1,
@@ -19688,7 +19690,10 @@
 			"successDegree": null,
 			"page": 209,
 			"add_hash": "Wizard",
-			"leadsTo": []
+			"leadsTo": [
+				"Clever Counterspell",
+				"Reflect Spell (Wizard)"
+			]
 		},
 		{
 			"source": "CRB",
@@ -20308,13 +20313,13 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Counterspell|APG}, Quick Recognize",
+			"prerequisites": "{@feat Counterspell (Wizard)}, {@feat Quick Recognition}",
 			"frequency": null,
 			"trigger": null,
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"You creatively apply your prepared spells to Counterspell a much wider variety of your opponents' magic. Instead of being able to counter a foe's spell with Counterspell only if you have that same spell prepared, you can use Counterspell as long as you have the spell the foe is casting in your spellbook. When you use Counterspell in this way, the prepared spell you expend must share a trait other than its tradition with the triggering spell. At the GM's discretion, you can instead use a spell that has an opposing trait or that otherwise logically would counter the triggering spell (such as using a cold or water spell to counter fireball or using remove fear to counter a {@spell fear} spell)",
+				"You creatively apply your prepared spells to {@feat Counterspell (Wizard)|CRB|Counterspell} a much wider variety of your opponents' magic. Instead of being able to counter a foe's spell with {@feat Counterspell (Wizard)|CRB|Counterspell} only if you have that same spell prepared, you can use {@feat Counterspell (Wizard)|CRB|Counterspell} as long as you have the spell the foe is casting in your spellbook. When you use {@feat Counterspell (Wizard)|CRB|Counterspell} in this way, the prepared spell you expend must share a trait other than its tradition with the triggering spell. At the GM's discretion, you can instead use a spell that has an opposing trait or that otherwise logically would counter the triggering spell (such as using a {@trait cold} or {@trait water} spell to counter {@spell fireball} or using {@spell remove fear} to counter a {@spell fear} spell)",
 				"Regardless of what spell you expend, you take a \u20132 penalty to your counteract check, though the GM can waive this penalty if the expended spell is especially appropriate."
 			],
 			"activity": null,
@@ -20405,7 +20410,7 @@
 			"requirements": null,
 			"cost": null,
 			"entries": [
-				"When you successfully use Counterspell to counteract a spell that affects targeted creatures or an area, you can turn that spell's effect back on its caster. When reflected, the spell affects only the original caster, even if it's an area spell or it would normally affect more than one creature. The original caster can attempt a save and use other defenses against the reflected spell as normal."
+				"When you successfully use {@feat Counterspell (Wizard)|CRB|Counterspell} to counteract a spell that affects targeted creatures or an area, you can turn that spell's effect back on its caster. When reflected, the spell affects only the original caster, even if it's an area spell or it would normally affect more than one creature. The original caster can attempt a save and use other defenses against the reflected spell as normal."
 			],
 			"activity": null,
 			"special": null,
@@ -25870,7 +25875,7 @@
 			},
 			"prerequisites": "trained in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"frequency": null,
-			"trigger": "A creature within line of sight casts a spell that you don't have prepared or in your spell repertoire, or a trap or similar object casts such a spell.",
+			"trigger": "A creature within line of sight {@action Cast a Spell|CRB|Casts a Spell} that you don't have prepared or in your spell repertoire, or a trap or similar object casts such a spell.",
 			"requirements": null,
 			"cost": null,
 			"entries": [
