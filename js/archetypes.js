@@ -306,8 +306,7 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	_setFeatArchetypeFilters () {
-		// FIXME:
-		let names = ["Archetype"];
+		let names = [];
 		names.push(this.activeArchetype.name);
 		Object.keys(this._featFilter._archetypeFilter.getValues().Archetypes).forEach(key => {
 			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 2);
