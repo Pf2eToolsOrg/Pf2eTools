@@ -73,7 +73,11 @@ class PageFilterItems extends PageFilter {
 		});
 		this._damageDiceFilter = new Filter({header: "Damage", itemSortFn: SortUtil.sortDice})
 		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase()})
-		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter]})
+		this._handsFilter = new Filter({
+			header: "Hands",
+			displayFnMini: (it) => `${it} hand${Number(it) === 1 ? "" : "s"}`,
+		});
+		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter]})
 		this._groupFilter = new Filter({header: "Group"});
 		this._traitFilter = new TraitsFilter({
 			header: "Traits",
@@ -154,6 +158,7 @@ class PageFilterItems extends PageFilter {
 		if (item._fDamageType) this._damageTypeFilter.addItem(item._fDamageType);
 		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
 		if (item.damage) this._damageDiceFilter.addItem(item.damage);
+		if (item.hands) this._handsFilter.addItem(String(item.hands));
 		if (item.shieldStats != null) {
 			this._hpFilter.addItem(item.shieldStats.hp);
 			this._btFilter.addItem(item.shieldStats.bt);
@@ -194,6 +199,7 @@ class PageFilterItems extends PageFilter {
 			[
 				it.damage,
 				it._fDamageType || it.damageType,
+				String(it.hands),
 			],
 			it.group,
 			it._fWeaponRange,

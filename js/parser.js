@@ -2077,7 +2077,9 @@ Parser.TRADITIONS = [TR_AC, TR_DV, TR_OC, TR_PR];
 Parser.getTraitName = function (trait) {
 	// TODO: This implementation is not perfect, but for now it will do
 	const regex = new RegExp(`\\s(?:\\d|[A-Z]$|\\(|d\\d|[A-Z],|${Object.values(Parser.DMGTYPE_JSON_TO_FULL).join("|")})(.+|$)`);
-	return trait.replace(/\|.+/, "").replace(regex, "").toTitleCase()
+	const name = trait.replace(/\|.+/, "").replace(regex, "");
+	if (name === name.toUpperCase()) return name;
+	else return name.toTitleCase();
 }
 
 Parser.rarityToNumber = function (r) {

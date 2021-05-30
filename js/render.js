@@ -3736,8 +3736,12 @@ Renderer.creature = {
 		$btnScaleLvl.after($wrp);
 	},
 
-	async pGetFluff () {
-		// TODO:
+	async pGetFluff (creature) {
+		// FIXME: Lazy temporary solution
+		const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/fluff-index.json`);
+		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${index[creature.source]}`);
+		if (!data || !data.creatureFluff) return null;
+		return data.creatureFluff.find(it => it.name === creature.name && it.source === creature.source);
 	},
 };
 
@@ -5798,7 +5802,7 @@ Renderer.hover = {
 
 			// region per-page fluff
 			case `fluff__${UrlUtil.PG_BESTIARY}`:
-				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "monsterFluff");
+				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "creatureFluff");
 			case `fluff__${UrlUtil.PG_SPELLS}`:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
