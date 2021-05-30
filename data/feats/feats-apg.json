@@ -218,7 +218,7 @@
 			},
 			"prerequisites": "claw unarmed attack",
 			"entries": [
-				"Your claws carry an irritant that is harmless to you but can be damaging to others. Your claw Strikes deal an additional {@damage 1d4} {@condition persistent damage ||persistent poison damage} on a critical hit."
+				"Your claws carry an irritant that is harmless to you but can be damaging to others. Your claw {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage ||persistent poison damage} on a critical hit."
 			],
 			"page": 10
 		},
@@ -1410,7 +1410,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You can transform into a specific, curious-looking human form. This human form is the same age and body type as your tengu form and has roughly analogous physical traits, such as height, though your nose remains as long as your beak and your complexion has red undertones, no matter the skin color of your human form. Using Long-Nosed Form counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. Due to your imperfect transformation, your transformation doesn't automatically defeat {@skill Perception} DCs to determine whether you are human, though you may be able to explain away or hide your {@trait tengu} traits. You lose your beak unarmed {@action Strike} in your human form, as well as any other unarmed Strikes you gained from a tengu heritage or ancestry feat. You can remain."
+				"You can transform into a specific, curious-looking human form. This human form is the same age and body type as your tengu form and has roughly analogous physical traits, such as height, though your nose remains as long as your beak and your complexion has red undertones, no matter the skin color of your human form. Using Long-Nosed Form counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. Due to your imperfect transformation, your transformation doesn't automatically defeat {@skill Perception} DCs to determine whether you are human, though you may be able to explain away or hide your {@trait tengu} traits. You lose your beak unarmed {@action Strike} in your human form, as well as any other unarmed {@action Strike|CRB|Strikes} you gained from a tengu heritage or ancestry feat. You can remain."
 			],
 			"activity": {
 				"number": 1,
@@ -2004,7 +2004,7 @@
 			},
 			"prerequisites": "fangs unarmed attack",
 			"entries": [
-				"You emulate your vampiric parent's techniques for drawing blood from a victim. Your fangs Strikes deal an additional {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical hit."
+				"You emulate your vampiric parent's techniques for drawing blood from a victim. Your fangs {@action Strike|CRB|Strikes} deal an additional {@damage 1d4} {@condition persistent damage ||persistent bleed damage} on a critical hit."
 			],
 			"page": 33
 		},
@@ -2401,7 +2401,7 @@
 		},
 		{
 			"source": "APG",
-			"name": "Celestial Strikes",
+			"name": "Celestial {@action Strike|CRB|Strikes}",
 			"level": 13,
 			"traits": [
 				"Aasimar"
@@ -2414,7 +2414,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your connection to good arms all your attacks against forces of evil. All your weapon and unarmed Strikes deal 1 additional good damage and have the {@trait good} and {@trait magical} traits."
+				"Your connection to good arms all your attacks against forces of evil. All your weapon and unarmed {@action Strike|CRB|Strikes} deal 1 additional good damage and have the {@trait good} and {@trait magical} traits."
 			],
 			"page": 36
 		},
@@ -2511,7 +2511,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack Strikes against incorporeal creatures become magical.",
+				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack {@action Strike|CRB|Strikes} against incorporeal creatures become magical.",
 				"If they are already magical, they instead gain the effects of a ghost touch property rune."
 			],
 			"page": 38
@@ -2617,7 +2617,7 @@
 		},
 		{
 			"source": "APG",
-			"name": "Spirit Strikes",
+			"name": "Spirit {@action Strike|CRB|Strikes}",
 			"level": 9,
 			"traits": [
 				"Duskwalker"
@@ -2630,7 +2630,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your connection to the Boneyard empowers you to bring death to all forms of life and unlife, exploiting their weaknesses. All your weapon and unarmed Strikes are magical and deal 1 additional negative damage to living creatures and 1 additional positive damage to undead."
+				"Your connection to the Boneyard empowers you to bring death to all forms of life and unlife, exploiting their weaknesses. All your weapon and unarmed {@action Strike|CRB|Strikes} are magical and deal 1 additional negative damage to living creatures and 1 additional positive damage to undead."
 			],
 			"page": 38
 		},
@@ -3016,7 +3016,7 @@
 		},
 		{
 			"source": "APG",
-			"name": "Fiendish Strikes",
+			"name": "Fiendish {@action Strike|CRB|Strikes}",
 			"level": 13,
 			"traits": [
 				"Tiefling"
@@ -3029,7 +3029,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your festering connection to the forces of evil infuses your weapons with debilitating malevolence, tearing down creatures of good with every attack. All your weapon and unarmed Strikes deal 1 additional evil damage and have the {@trait evil} and {@trait magical} traits."
+				"Your festering connection to the forces of evil infuses your weapons with debilitating malevolence, tearing down creatures of good with every attack. All your weapon and unarmed {@action Strike|CRB|Strikes} deal 1 additional evil damage and have the {@trait evil} and {@trait magical} traits."
 			],
 			"page": 41
 		},
@@ -3519,7 +3519,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature pulls its attack, wasting its action, and can't use {@condition hostile} actions against you until the beginning of its next turn.",
-						"Success": "The creature takes a \u20132 circumstance penalty to damage on the triggering {@action Strike} and all its Strikes against you until the beginning of its next turn. The penalty is \u20134 if you're an expert in {@skill Diplomacy}, \u20136 if you're a master, and \u20138 if you're legendary.",
+						"Success": "The creature takes a \u20132 circumstance penalty to damage on the triggering {@action Strike} and all its {@action Strike|CRB|Strikes} against you until the beginning of its next turn. The penalty is \u20134 if you're an expert in {@skill Diplomacy}, \u20136 if you're a master, and \u20138 if you're legendary.",
 						"Failure": "The creature's attack is unaffected, and the creature is temporarily immune to your Empathic Pleas for 24 hours."
 					}
 				}
@@ -4241,7 +4241,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You've mastered combat practices that let you get up close and bring down perpetrators alive. You can use your Intelligence modifier on attack rolls when you {@action Devise a Stratagem|APG} if you're using a weapon of the club group in one hand (like a club, staff, or sap), in addition to the usual weapons, and those Strikes qualify for your strategic strike. Additionally, you can make any of your Strikes nonlethal without taking the normal \u20132 penalty."
+				"You've mastered combat practices that let you get up close and bring down perpetrators alive. You can use your Intelligence modifier on attack rolls when you {@action Devise a Stratagem|APG} if you're using a weapon of the club group in one hand (like a club, staff, or sap), in addition to the usual weapons, and those {@action Strike|CRB|Strikes} qualify for your strategic strike. Additionally, you can make any of your {@action Strike|CRB|Strikes} nonlethal without taking the normal \u20132 penalty."
 			],
 			"page": 60
 		},
@@ -5928,7 +5928,7 @@
 			},
 			"prerequisites": "precise strike",
 			"entries": [
-				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged Strikes you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an agile or finesse weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
+				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an agile or finesse weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
 			],
 			"page": 88
 		},
@@ -6232,8 +6232,8 @@
 				"entry": "{@as 1}"
 			},
 			"page": 90,
+			"add_hash": "Swashbuckler",
 			"leadsTo": [
-				"Twinned Defense",
 				"Twinned Defense|APG"
 			]
 		},
@@ -6299,7 +6299,7 @@
 			},
 			"entries": [
 				"You combine a series of attacks with a powerful finishing blow.",
-				"Your finishers' Strikes have a lower multiple attack penalty: \u20134 (or \u20133 with an agile weapon) if it's the second attack on your turn, or \u20138 (or \u20136 with an agile weapon) if it's the third or subsequent attack on your turn, instead of \u20135 and \u201310, respectively."
+				"Your finishers' {@action Strike|CRB|Strikes} have a lower multiple attack penalty: \u20134 (or \u20133 with an agile weapon) if it's the second attack on your turn, or \u20138 (or \u20136 with an agile weapon) if it's the third or subsequent attack on your turn, instead of \u20135 and \u201310, respectively."
 			],
 			"page": 91
 		},
@@ -6397,8 +6397,8 @@
 			},
 			"requirements": "You wield two melee weapons, one in each hand.",
 			"entries": [
-				"You split your attacks. Make two melee Strikes, one with each required weapon, each against a different foe. If the second {@action Strike} is made with a non-agile weapon, it takes a \u20132 penalty.",
-				"Increase your multiple attack penalty only after attempting both Strikes."
+				"You split your attacks. Make two melee {@action Strike|CRB|Strikes}, one with each required weapon, each against a different foe. If the second {@action Strike} is made with a non-agile weapon, it takes a \u20132 penalty.",
+				"Increase your multiple attack penalty only after attempting both {@action Strike|CRB|Strikes}."
 			],
 			"activity": {
 				"number": 1,
@@ -6757,6 +6757,7 @@
 			"entries": [
 				"You're always ready to use your off-hand weapon to interfere with attacks against you. While you are in this stance, you constantly gain the benefits of the Twin Parry action."
 			],
+			"add_hash": "Swashbuckler",
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -6875,9 +6876,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "Opportune Riposte",
+			"prerequisites": "{@feat Opportune Riposte}",
 			"entries": [
-				"Your parries and finishers allow you to riposte with the slightest provocation. You can use Opportune Riposte against an enemy who fails at a {@action Strike} against you (not just critically fails), provided you have both damaged that creature with a finisher on your last turn and currently have a circumstance bonus to AC from the parry weapon trait, Dueling Parry, or Twin Parry."
+				"Your parries and finishers allow you to riposte with the slightest provocation. You can use {@feat Opportune Riposte|APG} against an enemy who fails at a {@action Strike} against you (not just critically fails), provided you have both damaged that creature with a finisher on your last turn and currently have a circumstance bonus to AC from the parry weapon trait, {@feat Dueling Parry|APG}, or {@feat Twin Parry|APG}."
 			],
 			"page": 93
 		},
@@ -7752,7 +7753,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You can capably deliver toxins with a blowgun. Your blowgun Strikes can apply injury poisons even if they deal no damage due to a creature's resistance. If you critically succeed at an attack roll using a blowgun loaded with a dart you've poisoned and the target rolls a failure on the poison's initial save, the target critically fails instead."
+				"You can capably deliver toxins with a blowgun. Your blowgun {@action Strike|CRB|Strikes} can apply injury poisons even if they deal no damage due to a creature's resistance. If you critically succeed at an attack roll using a blowgun loaded with a dart you've poisoned and the target rolls a failure on the poison's initial save, the target critically fails instead."
 			],
 			"page": 106
 		},
@@ -8674,7 +8675,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your forceful blows shatter objects with ease. While you are raging, your melee Strikes ignore 5 points of an object's Hardness. If you have the devastator class feature, you instead ignore 10 points of an object's Hardness."
+				"Your forceful blows shatter objects with ease. While you are raging, your melee {@action Strike|CRB|Strikes} ignore 5 points of an object's Hardness. If you have the devastator class feature, you instead ignore 10 points of an object's Hardness."
 			],
 			"page": 111
 		},
@@ -9430,7 +9431,7 @@
 			},
 			"prerequisites": "inspire courage",
 			"entries": [
-				"Your inspire courage lets loose a discordant shriek that imbues your allies' attacks with powerful sonic reverberations. While your allies are affected by your inspire courage, their weapon Strikes and unarmed attacks deal an additional {@damage 1d6} sonic damage."
+				"Your inspire courage lets loose a discordant shriek that imbues your allies' attacks with powerful sonic reverberations. While your allies are affected by your inspire courage, their weapon {@action Strike|CRB|Strikes} and unarmed attacks deal an additional {@damage 1d6} sonic damage."
 			],
 			"page": 115
 		},
@@ -9631,7 +9632,7 @@
 			},
 			"prerequisites": "tenets of evil",
 			"entries": [
-				"You've sworn to rid the world of the self-righteousness of celestial beings. Add the following tenet to your code, after the other tenets. \"You must banish or slay celestials you encounter as long as you have a reasonable chance of success; in the incredibly unlikely event you find an evil celestial, you don't have to banish or kill it.\" When you use your champion's reaction against a celestial, the extra damage you deal with Strikes increases by 1 (or by 2 at 9th level and by 3 at 16th level)."
+				"You've sworn to rid the world of the self-righteousness of celestial beings. Add the following tenet to your code, after the other tenets. \"You must banish or slay celestials you encounter as long as you have a reasonable chance of success; in the incredibly unlikely event you find an evil celestial, you don't have to banish or kill it.\" When you use your champion's reaction against a celestial, the extra damage you deal with {@action Strike|CRB|Strikes} increases by 1 (or by 2 at 9th level and by 3 at 16th level)."
 			],
 			"page": 118
 		},
@@ -9770,7 +9771,7 @@
 			"prerequisites": "divine ally (blade), tenets of evil",
 			"entries": [
 				"Your blade ally shares your lust for the blood of good creatures. Select one enemy you can see.",
-				"Until the start of your next turn, your Strikes against that foe using the weapon your blade ally inhabits deal an extra 4 evil damage, increasing to 6 if you have master proficiency with this weapon.",
+				"Until the start of your next turn, your {@action Strike|CRB|Strikes} against that foe using the weapon your blade ally inhabits deal an extra 4 evil damage, increasing to 6 if you have master proficiency with this weapon.",
 				"If the chosen enemy attacks you before the start of your next turn, the duration extends to the end of that enemy's next turn.",
 				"If the enemy continues to attack you each turn, the duration continues to extend."
 			],
@@ -9929,7 +9930,7 @@
 			},
 			"prerequisites": "devotion spell (lay on hands)",
 			"entries": [
-				"Your healing energies empower attacks. An ally that recovers Hit Points from your lay on hands gains a +1 status bonus to their attack rolls and deals 1 additional good damage on all their Strikes until the end of their next turn."
+				"Your healing energies empower attacks. An ally that recovers Hit Points from your lay on hands gains a +1 status bonus to their attack rolls and deals 1 additional good damage on all their {@action Strike|CRB|Strikes} until the end of their next turn."
 			],
 			"page": 120
 		},
@@ -9975,8 +9976,8 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "tenets of evil, champion's reaction that grants extra damage with your Strikes",
-			"requirements": "Your Strikes currently deal extra damage from your champion's reaction.",
+			"prerequisites": "tenets of evil, champion's reaction that grants extra damage with your {@action Strike|CRB|Strikes}",
+			"requirements": "Your {@action Strike|CRB|Strikes} currently deal extra damage from your champion's reaction.",
 			"entries": [
 				"Make a {@action Strike} against the creature that triggered your champion's reaction. If you hit, the target takes double the extra damage from your reaction and must succeed at a Fortitude save against your class DC or be {@condition drained|CRB|drained 1}.",
 				"Regardless of the result, the creature is temporarily immune to your Gruesome {@action Strike} for 24 hours."
@@ -10996,7 +10997,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You adopt a stance designed to rebound your thrown weapons back toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional Strikes. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
+				"You adopt a stance designed to rebound your thrown weapons back toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional {@action Strike|CRB|Strikes}. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
 			],
 			"activity": {
 				"number": 1,
@@ -11174,7 +11175,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You lower yourself to the ground and take an imposing, knuckle-walking stance. While in this stance, the only Strikes you can make are gorilla slam unarmed attacks.",
+				"You lower yourself to the ground and take an imposing, knuckle-walking stance. While in this stance, the only {@action Strike|CRB|Strikes} you can make are gorilla slam unarmed attacks.",
 				"These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the backswing, forceful, grapple, {@trait nonlethal}, and {@trait unarmed} traits. While you are in Gorilla Stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, and if you roll a success on an {@skill Athletics} check to {@action Climb}, you get a critical success instead."
 			],
 			"activity": {
@@ -11204,7 +11205,7 @@
 			},
 			"requirements": "You are unarmored and wielding a longbow, shortbow, or a bow with the {@trait monk} trait.",
 			"entries": [
-				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only Strikes you can make are those using longbows, shortbows, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
+				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using longbows, shortbows, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
 			],
 			"activity": {
 				"number": 1,
@@ -11236,7 +11237,7 @@
 			},
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only Strikes you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
+				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only {@action Strike|CRB|Strikes} you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
 			],
 			"activity": {
 				"number": 1,
@@ -11310,7 +11311,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You enter a tight stance, coiled up like a lashing cobra with your hands poised as venomous fangs. While in this stance, the only Strikes you can make are cobra fang unarmed attacks.",
+				"You enter a tight stance, coiled up like a lashing cobra with your hands poised as venomous fangs. While in this stance, the only {@action Strike|CRB|Strikes} you can make are cobra fang unarmed attacks.",
 				"These deal {@damage 1d4} poison damage; are in the brawling group; and have the agile, deadly d10, finesse, nonlethal, {@trait poison}, and {@trait unarmed} traits.",
 				"While in Cobra Stance, you gain a +1 circumstance bonus to Fortitude saves and your Fortitude DC, and you gain poison resistance equal to half your level."
 			],
@@ -11342,7 +11343,7 @@
 			"prerequisites": "{@feat Monastic Weaponry}",
 			"requirements": "You are wielding a sword that has the {@trait monk} trait in one hand.",
 			"entries": [
-				"You enter a tall and proud stance while remaining mobile, with all the grace and composure of a peafowl. While in this stance, the only Strikes you can make are melee Strikes with the required sword. Once per round, after you hit with a monk sword {@action Strike}, you can {@action Step} as a free action as your next action."
+				"You enter a tall and proud stance while remaining mobile, with all the grace and composure of a peafowl. While in this stance, the only {@action Strike|CRB|Strikes} you can make are melee {@action Strike|CRB|Strikes} with the required sword. Once per round, after you hit with a monk sword {@action Strike}, you can {@action Step} as a free action as your next action."
 			],
 			"activity": {
 				"number": 1,
@@ -11515,7 +11516,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"trigger": "You use {@action Flurry of Blows} to make two ranged piercing weapon Strikes against the same target.",
+			"trigger": "You use {@action Flurry of Blows} to make two ranged piercing weapon {@action Strike|CRB|Strikes} against the same target.",
 			"entries": [
 				"You target your opponent's clothing, equipment, or loose flesh with piercing projectiles to pin them to the ground or a nearby surface. If both your attacks hit, the target must succeed at a Reflex save against your class DC or become {@condition immobilized} until it or an adjacent creature succeeds at a DC 10 {@skill Athletics} check to remove the pinning projectiles. The creature doesn't become stuck if it is incorporeal, is liquid (like a water elemental or some oozes), or could otherwise escape without effort."
 			],
@@ -11680,7 +11681,7 @@
 			},
 			"prerequisites": "ki spells",
 			"entries": [
-				"You control your breathing and align it with your ki, exhaling with {@condition controlled} force in order to overcome your opponent's resistance. If you use your next action to {@action Cast a Spell} that has the {@trait monk} trait and no duration, the spell and any Strikes you make as a result of casting it ignore an amount of the target's resistance to physical damage equal to your level."
+				"You control your breathing and align it with your ki, exhaling with {@condition controlled} force in order to overcome your opponent's resistance. If you use your next action to {@action Cast a Spell} that has the {@trait monk} trait and no duration, the spell and any {@action Strike|CRB|Strikes} you make as a result of casting it ignore an amount of the target's resistance to physical damage equal to your level."
 			],
 			"activity": {
 				"number": 1,
@@ -11904,7 +11905,7 @@
 			"requirements": "You are in Monastic Archer Stance and wielding a bow usable with that stance.",
 			"entries": [
 				"You string three arrows to your bow and fire them all at once.",
-				"Make three ranged Strikes against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three Strikes hit, the target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
+				"Make three ranged {@action Strike|CRB|Strikes} against a single target with the required weapon, each using your current multiple attack penalty, and you take an additional \u20132 penalty. This counts as two attacks when calculating your multiple attack penalty, and you combine the attacks' damage for the purpose of resistances and weaknesses. Your Stunning Fist benefit applies to Triangle Shot, even though it isn't a {@action Flurry of Blows}. If all three {@action Strike|CRB|Strikes} hit, the target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}."
 			],
 			"activity": {
 				"number": 1,
@@ -11915,7 +11916,7 @@
 		},
 		{
 			"source": "APG",
-			"name": "Deadly Strikes",
+			"name": "Deadly {@action Strike|CRB|Strikes}",
 			"level": 20,
 			"traits": [
 				"Monk"
@@ -12546,7 +12547,7 @@
 			"prerequisites": "Twin {@action Feint}",
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin {@action Feint}, if both your Strikes deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied|CRB|stupefied 1} until the end of your next turn."
+				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin {@action Feint}, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied|CRB|stupefied 1} until the end of your next turn."
 			],
 			"page": 135
 		},
@@ -12782,7 +12783,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You adopt a stance (page 150) to rebound your thrown weapons toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional Strikes. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
+				"You adopt a stance (page 150) to rebound your thrown weapons toward you. While you are in this stance, any thrown weapons you use as part of a ranged {@action Strike} to deal bludgeoning or slashing damage immediately return to your hand, enabling you to use them for additional {@action Strike|CRB|Strikes}. You must be within the weapon's listed range increment and have a hand free to catch the weapon. If you make a ranged {@action Strike} with a thrown weapon outside of its listed range increment, it instead flies back toward you a number of feet equal to its listed range increment and then falls to the ground."
 			],
 			"activity": {
 				"number": 1,
@@ -15043,7 +15044,7 @@
 			},
 			"prerequisites": "{@feat Assassin Dedication|APG}",
 			"entries": [
-				"All your Strikes against a creature you have Marked for Death have the {@trait death} trait, causing the mark to be instantly killed when reduced to 0 Hit Points. When killed in this way, attempts to communicate with it, return it to life, turn it into an undead, or otherwise disturb its afterlife fail unless the effect's counteract level is higher than half your level when you killed the creature (rounded up), or originates from an artifact or a deity."
+				"All your {@action Strike|CRB|Strikes} against a creature you have Marked for Death have the {@trait death} trait, causing the mark to be instantly killed when reduced to 0 Hit Points. When killed in this way, attempts to communicate with it, return it to life, turn it into an undead, or otherwise disturb its afterlife fail unless the effect's counteract level is higher than half your level when you killed the creature (rounded up), or originates from an artifact or a deity."
 			],
 			"page": 158
 		},
@@ -16435,15 +16436,13 @@
 			},
 			"prerequisites": "{@feat Shape of the Dragon|APG}",
 			"entries": [
-				"You've practiced and increased your draconic might, allowing you to take your draconic form more often. You can use Shape of the Dragon once per hour instead of once per day.",
-				"Dual-Weapon Warrior You're able to effortlessly fight with multiple weapons simultaneously, weaving your weapons together into a storm of quick attacks. To you, continual offense is the best form of defense, and you leave little room for your foes to avoid your whirlwind of weapons.",
-				"Additional Feats: 6th Twin Parry (Core Rulebook 147); 12th Twin Riposte (Core Rulebook 151); 16th Improved Twin Riposte (Core Rulebook 153), Two-Weapon Flurry (Core Rulebook 153); 18th Twinned Defense (Core Rulebook 153)"
+				"You've practiced and increased your draconic might, allowing you to take your draconic form more often. You can use {@feat Shape of the Dragon|APG} once per hour instead of once per day."
 			],
 			"page": 169
 		},
 		{
 			"source": "APG",
-			"name": "Dual-weapon Warrior Dedication",
+			"name": "Dual-Weapon Warrior Dedication",
 			"level": 2,
 			"traits": [
 				"Archetype",
@@ -16454,10 +16453,10 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": "Dual-weapon Warrior"
+				"archetype": "Dual-Weapon Warrior"
 			},
 			"entries": [
-				"You're exceptional in your use of two weapons. You gain the {@feat Double Slice} fighter feat (Core Rulebook 144). This serves as Double Slice for the purpose of meeting prerequisites."
+				"You're exceptional in your use of two weapons. You gain the {@feat Double Slice} fighter feat. This serves as Double Slice for the purpose of meeting prerequisites."
 			],
 			"special": "You can't select another dedication feat until you gain two other feats from the dual-weapon warrior archetype.",
 			"page": 170
@@ -16478,13 +16477,13 @@
             },
             "prerequisites": "{@feat Dual-Weapon Warrior Dedication|APG}",
 			"entries": [
-				"You know how to throw two weapons as easily as strike with them. Whenever a dual-weapon warrior feat allows you to make a melee {@action Strike}, you can instead make a ranged {@action Strike} with a thrown weapon or a one-handed ranged weapon you are wielding. {@trait Any} effects from these feats that apply to one-handed melee weapons or melee Strikes also apply to one-handed ranged weapons and ranged Strikes."
+				"You know how to throw two weapons as easily as strike with them. Whenever a dual-weapon warrior feat allows you to make a melee {@action Strike}, you can instead make a ranged {@action Strike} with a thrown weapon or a one-handed ranged weapon you are wielding. Any effects from these feats that apply to one-handed melee weapons or melee {@action Strike|CRB|Strikes} also apply to one-handed ranged weapons and ranged {@action Strike|CRB|Strikes}."
 			],
 			"page": 170
 		},
 		{
 			"source": "APG",
-			"name": "Dual-weapon Reload",
+			"name": "Dual-Weapon Reload",
 			"level": 4,
 			"traits": [
 				"Archetype"
@@ -16536,7 +16535,7 @@
 		},
 		{
 			"source": "APG",
-			"name": "Dual-weapon Blitz",
+			"name": "Dual-Weapon Blitz",
 			"level": 10,
 			"traits": [
 				"Archetype"
@@ -16551,7 +16550,7 @@
             "prerequisites": "{@feat Dual-Weapon Warrior Dedication|APG}",
 			"requirements": "You are wielding two one-handed melee weapons, each in a different hand.",
 			"entries": [
-				"You attack as you dash among foes. {@action Stride} up to your Speed. At any point during this movement, you can {@action Strike} once with each of the two required weapons. These Strikes can be against the same or different targets, as you see fit."
+				"You attack as you dash among foes. {@action Stride} up to your Speed. At any point during this movement, you can {@action Strike} once with each of the two required weapons. These {@action Strike|CRB|Strikes} can be against the same or different targets, as you see fit."
 			],
 			"activity": {
 				"number": 1,
@@ -16572,11 +16571,11 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": "Dual-Weapon"
+				"archetype": "Dual-Weapon Warrior"
             },
             "prerequisites": "{@feat Dual-Weapon Dedication|APG}",
 			"entries": [
-				"When you lash out with both weapons, you leave no room for the target to escape your attack. When you use Double Slice, if you miss with both Strikes, choose one of the two weapons and apply the effects of a hit with that weapon. You can't choose a weapon if your attack roll with that weapon was a critical failure, meaning you still miss entirely if both attack rolls were critical failures."
+				"When you lash out with both weapons, you leave no room for the target to escape your attack. When you use Double Slice, if you miss with both {@action Strike|CRB|Strikes}, choose one of the two weapons and apply the effects of a hit with that weapon. You can't choose a weapon if your attack roll with that weapon was a critical failure, meaning you still miss entirely if both attack rolls were critical failures."
 			],
 			"page": 170
 		},
@@ -19046,7 +19045,7 @@
             "prerequisites": "{@feat Scout Dedication|APG}",
 			"requirements": "You are {@condition hidden} from or {@condition undetected} by all of your opponents, and you aren't within 10 feet of any enemy.",
 			"entries": [
-				"You leap from the shadows to strike your foes. {@action Stride} up to your Speed, then {@action Strike} twice. If you were {@condition hidden} or {@condition unnoticed} by the target of these Strikes, your foe is {@condition flat-footed} against both attacks. Your multiple attack penalty applies normally for both attacks.",
+				"You leap from the shadows to strike your foes. {@action Stride} up to your Speed, then {@action Strike} twice. If you were {@condition hidden} or {@condition unnoticed} by the target of these {@action Strike|CRB|Strikes}, your foe is {@condition flat-footed} against both attacks. Your multiple attack penalty applies normally for both attacks.",
 				"Scroll Trickster Magic has long been written down, and in myriad forms. From the classic rolled parchment to strings tied with a hundred intricate knots, from baked clay tablets covered with incisions to bound collections of bamboo slips, magic is everywhere. You just need to know how to read it."
 			],
 			"activity": {
@@ -19430,7 +19429,7 @@
 			"prerequisites": "{@feat Shadow Magic|APG}",
 			"entries": [
 				"With an artful eye, you shape shadows into illusory forms.",
-				"You gain the shadow illusion (page 191) focus spell. Increase the number of Focus Points in your pool by 1. You become an expert in occult spell attack rolls and DCs."
+				"You gain the {@spell shadow illusion|APG} focus spell. Increase the number of Focus Points in your pool by 1. You become an expert in occult spell attack rolls and DCs."
 			],
 			"page": 192
 		},
@@ -19450,7 +19449,7 @@
 			},
 			"prerequisites": "{@feat Shadow Magic|APG}",
 			"entries": [
-				"You can focus the shadows into a powerful blast. You can cast {@spell shadow blast} (Core Rulebook 367) as an innate occult spell once per day. Its level is always 1 level lower than the level of your shadowdancer focus spells. You become an expert in occult spell attack rolls and DCs."
+				"You can focus the shadows into a powerful blast. You can cast {@spell shadow blast|CRB} as an innate occult spell once per day. Its level is always 1 level lower than the level of your shadowdancer focus spells. You become an expert in occult spell attack rolls and DCs."
 			],
 			"page": 192
 		},
@@ -19470,7 +19469,7 @@
 			},
 			"prerequisites": "{@feat Shadowdancer Dedication|APG}",
 			"entries": [
-				"The shadows protect you better than any armor can, and they give you power to plunge others into darkness. Whenever you are in an area of dim light or darkness, you gain resistance 5 to all damage except force and damage from Strikes with the."
+				"The shadows protect you better than any armor can, and they give you power to plunge others into darkness. Whenever you are in an area of dim light or darkness, you gain resistance 5 to all damage except force and damage from {@action Strike|CRB|Strikes} with the."
 			],
 			"page": 192
 		},
@@ -19541,7 +19540,7 @@
             },
             "prerequisites": "{@feat Shadowdancer Dedication|APG}",
 			"entries": [
-				"You gain the ability to fuse and play with shadows by using focus spells specific to shadowdancers. You learn a shadowdancer focus spell of your choice: dance of darkness (page 191) or shadow jump (page 191). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by meditating within an area of dim light or darkness. The rules for focus spells appear on page 300 of the Core Rulebook.",
+				"You gain the ability to fuse and play with shadows by using focus spells specific to shadowdancers. You learn a shadowdancer focus spell of your choice: {@spell dance of darkness|apg} or {@spell shadow jump|apg}. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by meditating within an area of dim light or darkness. The rules for focus spells appear on page 300 of the Core Rulebook.",
 				"Shadowdancer focus spells are occult spells. You become trained in occult spell attack rolls and spell DCs, and your spellcasting ability for these spells is Charisma."
 			],
 			"page": 192,
@@ -20168,25 +20167,11 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the weapon improviser archetype.",
 			"page": 199,
 			"leadsTo": [
-				"Dual Onslaught|APG",
-				"Familiar Mascot|APG",
-				"Familiar Conduit|APG",
-				"Improved Familiar (true)|APG",
-				"Mutable Familiar|APG",
-				"Magical Edification|APG",
-				"Greater Magical Edification|APG",
-				"Orthographic Mastery|APG",
-				"Quick Study|APG",
-				"Scout's Charge|APG",
-				"Terrain Scout|APG",
-				"Fleeting Shadow|APG",
-				"Scout's Speed|APG",
-				"Scout's Pounce|APG",
 				"Improvised Pummel|APG",
-				"Shattering Strike|APG",
 				"Surprise Strike|APG",
 				"Improvised Critical|APG",
-				"Vigil's Walls Rise Anew!|LOL"
+				"Makeshift Strike|APG",
+				"Shattering Strike|APG"
 			]
 		},
 		{
@@ -20231,9 +20216,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Weapon Improviser"
 			},
-			"prerequisites": "Weapon Improviser {@feat Dedication|APG}",
+			"prerequisites": "{@feat Weapon Improviser Dedication|APG}",
 			"entries": [
 				"Whenever you make a {@action Strike} with an improvised weapon against a creature that hasn't seen you make a {@action Strike} using an improvised weapon or that is otherwise ignorant of your skill with improvised weapons, the creature is {@condition flat-footed} against you for that {@action Strike}."
 			],
@@ -20251,9 +20236,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Weapon Improviser"
 			},
-			"prerequisites": "Weapon Improviser {@feat Dedication|APG}",
+			"prerequisites": "{@feat Weapon Improviser Dedication|APG}",
 			"entries": [
 				"You can apply critical specialization effects to improvised weapons you wield. For any given improvised weapon, the GM determines which critical specialization effect is most applicable, based on the type of object it is."
 			],
@@ -20271,10 +20256,11 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Weapon Improviser"
 			},
+			"prerequisites": "{@feat Weapon Improviser Dedication|APG}",
 			"entries": [
-				"Prerequisites Weapon Improviser."
+				"You quickly snatch up whatever's nearby and then attack with it as an improvised weapon. You {@action Interact} to pick up a nearby object you could use as an improvised weapon. It must be located at around your chest level, such as a mug on a table, rather than an object on the floor. You then either {@action Strike} or make an {@feat Improvised Pummel|APG} with the improvised weapon."
 			],
 			"activity": {
 				"number": 1,
@@ -20295,10 +20281,10 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Weapon Improviser"
 			},
 			"prerequisites": "{@feat Improvised Pummel|APG}",
-			"trigger": "An improvised weapon that you are wielding becomes {@condition broken} as a result of a critical success on an Improvised Pummel.",
+			"trigger": "An improvised weapon that you are wielding becomes {@condition broken} as a result of a critical success on an {@feat Improvised Pummel|APG}.",
 			"entries": [
 				"The improvised weapon shatters, destroying it completely but dealing an additional {@damage 3d6} piercing damage to the creature you hit with the Improvised Pummel. This extra damage you apply on the critical hit doesn't double from the critical hit, as normal."
 			],

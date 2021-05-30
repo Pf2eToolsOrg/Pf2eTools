@@ -8614,6 +8614,9 @@
 				"entry": "{@as 1}"
 			},
 			"page": 147,
+			"leadsTo": [
+				"Twinned Defense|CRB"
+			],
 			"add_hash": "Fighter"
 		},
 		{
@@ -9672,7 +9675,7 @@
 		},
 		{
 			"source": "CRB",
-			"name": "Two-weapon Flurry",
+			"name": "Two-Weapon Flurry",
 			"level": 14,
 			"traits": [
 				"Fighter",
@@ -9818,6 +9821,7 @@
 			"entries": [
 				"You're always ready to use your off-hand weapon to interfere with attacks against you. While you are in this stance, you constantly gain the benefits of the Twin Parry action."
 			],
+			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -12461,6 +12465,7 @@
 				"skill": false,
 				"archetype": false
 			},
+			"prerequisites": "{@feat Twin Riposte}",
 			"entries": [
 				"At the start of each of your turns, you gain an additional reaction that you can use only to perform a Twin Riposte against your hunted prey. You can use this extra reaction even if you are not benefiting from Twin Parry."
 			],
@@ -12817,12 +12822,12 @@
 			},
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"You make a dazzling series of attacks with both weapons, using the first attack to throw your foe off guard against a second attack at a different angle. Make one {@action Strike} with each of your two melee weapons, both against the same target. The target is automatically {@condition flat‑footed} against the second attack. Apply your multiple attack penalty to the Strikes normally."
+				"You make a dazzling series of attacks with both weapons, using the first attack to throw your foe off guard against a second attack at a different angle. Make one {@action Strike} with each of your two melee weapons, both against the same target. The target is automatically {@condition flat‑footed} against the second attack. Apply your multiple attack penalty to the {@action Strike|CRB|Strikes} normally."
 			],
 			"activity": {
 				"number": 1,
 				"unit": "Varies",
-				"entry": "{@as 2}]"
+				"entry": "{@as 2}"
 			},
 			"page": 183
 		},
