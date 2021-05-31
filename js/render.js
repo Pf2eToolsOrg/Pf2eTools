@@ -3737,11 +3737,11 @@ Renderer.creature = {
 	},
 
 	async pGetFluff (creature) {
-		// FIXME: Lazy temporary solution
-		const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/fluff-index.json`);
-		const data = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/bestiary/${index[creature.source]}`);
-		if (!data || !data.creatureFluff) return null;
-		return data.creatureFluff.find(it => it.name === creature.name && it.source === creature.source);
+		return Renderer.utils.pGetFluff({
+			entity: creature,
+			fluffBaseUrl: `data/bestiary/`,
+			fluffProp: "creatureFluff",
+		});
 	},
 };
 
@@ -3823,6 +3823,14 @@ Renderer.deity = {
 			// textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
 		}
 		return textStack.join("");
+	},
+
+	async pGetFluff (deity) {
+		return Renderer.utils.pGetFluff({
+			entity: deity,
+			fluffUrl: `data/fluff-deities.json`,
+			fluffProp: "deityFluff",
+		});
 	},
 };
 

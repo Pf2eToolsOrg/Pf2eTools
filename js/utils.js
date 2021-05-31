@@ -2248,6 +2248,7 @@ DataUtil = {
 				case "ancestry": return DataUtil.ancestry.pMergeCopy(arr, entry, options);
 				case "ancestryFluff": return DataUtil.ancestryFluff.pMergeCopy(arr, entry, options);
 				case "deity": return DataUtil.deity.pMergeCopy(arr, entry, options);
+				case "deityFluff": return DataUtil.deityFluff.pMergeCopy(arr, entry, options);
 				default: throw new Error(`No dependency _copy merge strategy specified for property "${prop}"`);
 			}
 		}
@@ -3155,6 +3156,17 @@ DataUtil = {
 
 		loadJSON: async function () {
 			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/deities.json`);
+		},
+	},
+
+	deityFluff: {
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (deityFlfList, deityFlf, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.deityFluff, UrlUtil.PG_DEITIES, deityFlfList, deityFlf, options);
 		},
 	},
 

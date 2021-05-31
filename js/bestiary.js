@@ -461,7 +461,7 @@ class BestiaryPage extends ListPage {
 			const pGetFluff = async () => {
 				const creature = this._dataList[Hist.lastLoadedId];
 				const fluff = await Renderer.creature.pGetFluff(creature);
-				return fluff.entries || [];
+				return fluff ? fluff.entries || [] : [];
 			}
 			const fluffEntries = await pGetFluff();
 			const renderStack = [];
