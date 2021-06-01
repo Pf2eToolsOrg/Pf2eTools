@@ -1356,7 +1356,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "unbreakable goblin heritage",
+			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable goblin} heritage",
 			"entries": [
 				"You have a particular elasticity that makes it easy for you to bounce and squish. You gain the trained proficiency rank in {@skill Acrobatics} (or another skill of your choice, if you were already trained in {@skill Acrobatics}). You also gain a +2 circumstance bonus to {@skill Acrobatics} checks to {@action Tumble Through} a foe's space."
 			],
@@ -1407,7 +1407,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@ancestry goblin|crb|tailed goblin heritage|tailed goblin}",
+			"prerequisites": "{@ancestry goblin|crb|tailed goblin|tailed goblin} heritage",
 			"frequency": null,
 			"trigger": null,
 			"requirements": null,
@@ -1431,7 +1431,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Fang Sharpener|LOCG} or razortooth goblin heritage",
+			"prerequisites": "{@feat Fang Sharpener|LOCG} or {@ancestry goblin|crb|razortooth goblin|razortooth goblin} heritage",
 			"trigger": "A foe gives you the {@condition grabbed} or {@condition restrained} condition using a part of its body.",
 			"entries": [
 				"Whenever someone grabs onto you, you instinctively bite down hard. Sometimes that makes them let go, and sometimes it just makes them angrier, but either way, it's both satisfying and tasty. Make a jaws {@action Strike} against the triggering foe.",
@@ -1479,9 +1479,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "tailed goblin heritage (page 37),",
+			"prerequisites": "{@ancestry goblin|crb|tailed goblin|tailed goblin} heritage, {@feat Hard Tail|LOCG}",
 			"entries": [
-				"Hard Tail (see above) You excel at using your tail as a weapon to upend your foes.",
+				"You excel at using your tail as a weapon to upend your foes.",
 				"Attempt a single {@skill Athletics} check to {@action Trip} up to two adjacent creatures. If you roll a success against a target, you get a critical success against that target instead."
 			],
 			"activity": {
@@ -1505,7 +1505,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "charhide goblin heritage",
+			"prerequisites": "{@ancestry goblin|crb|charhide goblin |charhide goblin} heritage",
 			"entries": [
 				"You've spent enough time on fire that you know how to use it to your advantage.",
 				"You can light yourself thoroughly on fire with a held torch, a bottle of alchemist's fire, or a similar incendiary, dealing yourself {@damage 1d6} {@condition persistent damage ||persistent fire damage}. As long as you are suffering {@condition persistent damage ||persistent fire damage}, all your melee attacks against adjacent creatures deal an additional 1 fire damage per weapon damage die. Any creature that successfully Grapples, Shoves, or Trips you takes {@damage 1d6} fire damage; if it uses a weapon for that action, the weapon takes the damage instead. You must still attempt the flat check to remove the {@condition persistent damage ||persistent fire damage} each round, as normal."
@@ -1534,7 +1534,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "tailed goblin (page 37) or treedweller goblin (page 37) heritage",
+			"prerequisites": "{@ancestry goblin|crb|tailed goblin|tailed goblin} or {@ancestry goblin|crb|treedweller goblin|treedweller goblin} heritage",
 			"entries": [
 				"Your time in forest or jungle canopies has taught you how to scramble across branches with sure feet. You gain a climb Speed of 10 feet. If you also have the."
 			],
@@ -1554,7 +1554,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "snow goblin heritage",
+			"prerequisites": "{@ancestry goblin|crb|snow goblin|snow goblin} heritage",
 			"entries": [
 				"You are no rime hag or Jadwiga, but the magic of the north has still left a mark on you.",
 				"Frigid ice runs through your veins, and you can expel frost from your body to freeze your foes. Attempt an {@skill Athletics} check against the Fortitude DC of an adjacent foe.",
@@ -1609,7 +1609,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "unbreakable goblin heritage, {@feat Bouncy Goblin|LOCG}",
+			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable goblin} heritage, {@feat Bouncy Goblin|LOCG}",
 			"trigger": "A foe hits you with a melee weapon or unarmed attack.",
 			"entries": [
 				"When you take a big hit, your foe bounces you around like a rubber ball, but you escape the worst of the blow. Your foe can move you any distance of its choice up to 30 feet in a direction of its choice (this is not forced movement, and it triggers reactions as normal). You fall {@condition prone} and are {@condition stunned|CRB|stunned 1}. Attempt a DC {@flatDC 6} flat check. On a success, you take minimum damage from the attack, and on a critical success, if the attack was a critical hit, you don't take double damage from the critical hit."
@@ -1655,9 +1655,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "unbreakable goblin heritage",
+			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable goblin} heritage",
 			"entries": [
-				"As hard as most unbreakable goblins are to break, you are that much harder to break. You gain 20 Hit Points from your ancestry instead of 10. When you fall, you take no falling damage. If you have the Bouncy Goblin feat (page 37), after falling or jumping from a height of at least 20 feet, you can bounce back into the air, up to half the distance you fell (and half as far forward if you jumped). These bounces continue until you bounce less than 20 feet."
+				"As hard as most {@ancestry goblin|crb|unbreakable goblin|unbreakable goblins} are to break, you are that much harder to break. You gain 20 Hit Points from your ancestry instead of 10. When you fall, you take no falling damage. If you have the {@feat Bouncy Goblin|APG} feat, after falling or jumping from a height of at least 20 feet, you can bounce back into the air, up to half the distance you fell (and half as far forward if you jumped). These bounces continue until you bounce less than 20 feet."
 			],
 			"page": 39
 		},
@@ -1964,8 +1964,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You are trained with composite longbows, composite shortbows, glaives, halberds, longbows, longspears, longswords, shortbows, and spears.",
-				"In addition, you gain access to all uncommon hobgoblin weapons. For the purpose of determining your proficiency, martial hobgoblin weapons are simple weapons and advanced hobgoblin weapons are martial weapons."
+				"You are trained with {@item composite longbows}, {@item composite shortbows}, {@item glaives}, {@item halberds}, {@item longbows}, {@item longspears}, {@item longswords}, {@item shortbows}, and {@item spears}.",
+				"In addition, you gain access to all {@filter uncommon hobgoblin weapons|items|rarity=uncommon|ancestry & heritage=hobgoblin}. For the purpose of determining your proficiency, martial hobgoblin weapons are simple weapons and advanced hobgoblin weapons are martial weapons."
 			],
 			"page": 50,
 			"leadsTo": [
@@ -2045,7 +2045,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"When you terrorize your enemies, you also cause them painful mental distress."
+				"When you terrorize your enemies, you also cause them painful mental distress.",
+				"When you successfully {@action Demoralize} a foe, that foe takes {@damage 1d4} mental damage at the start of each of its turns as long as it remains {@condition frightened} and continues to engage in combat with you. If you have master proficiency in {@skill Intimidation}, the damage increases to {@damage 2d4}, and if you have legendary proficiency, the damage increases to {@damage 3d4}."
 			],
 			"page": 50
 		},
@@ -3330,12 +3331,43 @@
 			"traits": [
 				"Uncommon",
 				"Champion",
+				"Stance"
+			],
+			"featType": {
+				"class": [
+					"Champion"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"requirements": "You are wielding a shield.",
+			"entries": [
+				"You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield's boss or spikes by one step, and increase the shield's Hardness by 2 when using the Shield Block reaction."
+			],
+			"add_hash": "Champion",
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"page": 90,
+			"leadsTo": [
+				"Everstand Strike (Champion)|LOCG|Everstand Strike"
+			]
+		},
+		{
+			"source": "LOCG",
+			"name": "Everstand Stance",
+			"level": 1,
+			"traits": [
+				"Uncommon",
 				"Fighter",
 				"Stance"
 			],
 			"featType": {
 				"class": [
-					"Champion",
 					"Fighter"
 				],
 				"general": false,
@@ -3347,6 +3379,7 @@
 			"entries": [
 				"You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield's boss or spikes by one step, and increase the shield's Hardness by 2 when using the Shield Block reaction."
 			],
+			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
 				"unit": "single",
@@ -3354,22 +3387,21 @@
 			},
 			"page": 90,
 			"leadsTo": [
-				"Everstand Strike|LOCG"
+				"Everstand Strike (Fighter)|LOCG"
 			]
 		},
 		{
 			"source": "LOCG",
 			"name": "Everstand Strike",
 			"level": 4,
+			"add_hash": "Fighter",
 			"traits": [
 				"Uncommon",
-				"Champion",
 				"Fighter",
 				"Press"
 			],
 			"featType": {
 				"class": [
-					"Champion",
 					"Fighter"
 				],
 				"general": false,
@@ -3377,10 +3409,41 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Everstand Stance|LOCG} (see above)",
+			"prerequisites": "{@feat Everstand Stance (Fighter)|LOCG|Everstand Stance}",
 			"requirements": "You are wielding a shield in two hands.",
 			"entries": [
-				"Your follow-up blow leaves you an opening to set your shield. Make a {@action Strike} with the wielded shield. If the {@action Strike} hits and deals damage, you also Raise your Shield."
+				"Your follow-up blow leaves you an opening to set your shield. Make a {@action Strike} with the wielded shield. If the {@action Strike} hits and deals damage, you also {@action Raise a Shield|CRB|Raise your Shield}."
+			],
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"page": 90
+		},
+		{
+			"source": "LOCG",
+			"name": "Everstand Strike",
+			"level": 4,
+			"add_hash": "Champion",
+			"traits": [
+				"Uncommon",
+				"Champion",
+				"Press"
+			],
+			"featType": {
+				"class": [
+					"Champion"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"prerequisites": "{@feat Everstand Stance (Champion)|LOCG|Everstand Stance}",
+			"requirements": "You are wielding a shield in two hands.",
+			"entries": [
+				"Your follow-up blow leaves you an opening to set your shield. Make a {@action Strike} with the wielded shield. If the {@action Strike} hits and deals damage, you also {@action Raise a Shield|CRB|Raise your Shield}."
 			],
 			"activity": {
 				"number": 1,
@@ -3435,12 +3498,10 @@
 			"level": 8,
 			"traits": [
 				"Uncommon",
-				"Champion",
 				"Fighter"
 			],
 			"featType": {
 				"class": [
-					"Champion",
 					"Fighter"
 				],
 				"general": false,
@@ -3448,7 +3509,37 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@action {@feat Attack of Opportunity|APG}}",
+			"prerequisites": "{@action Attack of Opportunity}",
+			"entries": [
+				"You refuse to let foes past your guard. As long as you are in this stance, when you critically hit with an {@action Attack of Opportunity} triggered by a move action, you disrupt that move action."
+			],
+			"add_hash": "Fighter",
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"page": 90
+		},
+		{
+			"source": "LOCG",
+			"name": "Impassable Wall Stance",
+			"level": 8,
+			"traits": [
+				"Uncommon",
+				"Champion"
+			],
+			"featType": {
+				"class": [
+					"Champion"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"add_hash": "Champion",
+			"prerequisites": "{@feat Attack of Opportunity (Champion)|CRB|Attack of Opportunity}",
 			"entries": [
 				"You refuse to let foes past your guard. As long as you are in this stance, when you critically hit with an {@action Attack of Opportunity} triggered by a move action, you disrupt that move action."
 			],
@@ -3550,10 +3641,27 @@
 				"skill": false,
 				"archetype": true
 			},
-			"prerequisites": "{@feat Knight Vigilant|LOCG} (see above), {@feat Shield Block}, master in",
+			"prerequisites": "{@feat Knight Vigilant|LOCG}, {@feat Shield Block}, master in {@skill Religion}",
 			"requirements": "You are wielding a shield.",
 			"entries": [
-				"Inspired by the tale of Arnisant, you transform your shield into a magic ward. Until the beginning of your next turn, you gain the following reaction: Absorb into the Aegis {@as R} (manipulate) Trigger An enemy casts a spell that targets you or an ally within 15 feet of you; Effect You interpose your shield's ward against the spell. Attempt a counteract check, using your {@skill Religion} modifier as your counteract modifier. On a success, the spell is counteracted and your shield takes damage equal to four times the spell level as it absorbs and disperses the magical energy. On a failure, the shield takes damage equal to twice the spell's level."
+				"Inspired by the tale of Arnisant, you transform your shield into a magic ward. Until the beginning of your next turn, you gain the following reaction:",
+				{
+					"type": "ability",
+					"name": "Absorb into the Aegis",
+					"activity": {
+						"entry": "{@as R}",
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"trigger": "An enemy casts a spell that targets you or an ally within 15 feet of you.",
+					"entries": [
+						"You interpose your shield's ward against the spell. Attempt a counteract check, using your {@skill Religion} modifier as your counteract modifier. On a success, the spell is counteracted and your shield takes damage equal to four times the spell level as it absorbs and disperses the magical energy. On a failure, the shield takes damage equal to twice the spell's level."
+					]
+				} 
+				
 			],
 			"activity": {
 				"number": 1,

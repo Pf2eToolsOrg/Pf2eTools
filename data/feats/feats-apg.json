@@ -3701,9 +3701,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "unbreakable goblin heritage",
+			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable goblin} heritage",
 			"entries": [
-				"Your rubbery physique makes it easier for you to wedge yourself into tight spaces and more difficult for your enemies to dislodge you. You become trained in {@skill Acrobatics}. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice. If you roll a success to {@action Squeeze}, you get a critical success instead. While you're Squeezing, you gain a +4 circumstance bonus to your Fortitude or Reflex DCs against attempts to {@action Shove} you or otherwise move you from your space."
+				"Your rubbery physique makes it easier for you to wedge yourself into tight spaces and more difficult for your enemies to dislodge you. You become trained in {@skill Acrobatics}. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice. If you roll a success to {@action Squeeze}, you get a critical success instead. While you're {@action Squeeze|CRB|Squeezing}, you gain a +4 circumstance bonus to your Fortitude or Reflex DCs against attempts to {@action Shove} you or otherwise move you from your space."
 			],
 			"page": 45
 		},
@@ -3835,9 +3835,9 @@
 			"frequency": "once per day",
 			"entries": [
 				"Despite a lifetime filled with questionable decisions, you've managed to survive, as though you have uncanny luck that lets you avoid the consequences of your own actions. For the remainder of your turn, if you roll a failure or critical failure on a saving throw against a harmful effect, you get a success instead. Further, enemies and hazards that would damage you this turn roll the minimum possible damage.",
-				"These benefits apply only to harmful effects incurred entirely during your turn in which you activate Reckless Abandon, such as running through a prismatic wall.",
-				"{@condition persistent damage} and conditions that were applied prior to your turn proceed normally, and as soon as your turn ends you are subject to the full consequences of any dangers still threatening you."
+				"These benefits apply only to harmful effects incurred entirely during your turn in which you activate Reckless Abandon, such as running through a prismatic wall. {@condition Persistent damage} and conditions that were applied prior to your turn proceed normally, and as soon as your turn ends you are subject to the full consequences of any dangers still threatening you."
 			],
+			"add_hash": "Goblin",
 			"activity": {
 				"number": 1,
 				"unit": "free",
@@ -6276,6 +6276,7 @@
 				"You swat a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action.",
 				"This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
 			],
+			"add_hash": "Swashbuckler",
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
@@ -6897,7 +6898,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You can react whenever a foe leaves a gap in their defenses. At the start of each enemy's turn, you gain an extra reaction you can use only during that turn to perform an Opportune Riposte, or an {@action Attack of Opportunity} if you have that reaction."
+				"You can react whenever a foe leaves a gap in their defenses. At the start of each enemy's turn, you gain an extra reaction you can use only during that turn to perform an Opportune Riposte, or an {@action Attack of Opportunity (Swashbuckler)|APG|Attack of Opportunity} if you have that reaction."
 			],
 			"page": 93
 		},
@@ -11021,7 +11022,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@action {@feat Attack of Opportunity|APG}}",
+			"prerequisites": "{@action Attack of Opportunity}",
 			"entries": [
 				"You use your foes' openings to expose even greater weaknesses. When you hit a creature as part of an {@action Attack of Opportunity}, that creature becomes {@condition flat-footed} until the start of your next turn."
 			],
@@ -16224,7 +16225,7 @@
 				"skill": false,
 				"archetype": "Dragon Disciple"
 			},
-			"access": "You are a kobold with the dragonscaled or spellscaled heritage, a dragon instinct barbarian, or a draconic bloodline sorcerer.",
+			"access": "You are a {@ancestry kobold|APG} with the {@ancestry kobold|APG|dragonscaled|Dragonscaled Kobold|APG} or {@ancestry kobold|APG|spellscaled|Spellscale Kobold|APG} heritage, a {@class Barbarian|CRB|dragon instinct barbarian|Dragon}, or a {@class Sorcerer|CRB|draconic bloodline sorcerer|draconic}.",
 			"entries": [
 				"You choose to study or worship one type of dragon, and your focus grants you a measure of its power. Choose one color of dragon when you select this feat; if you are a sorcerer with the draconic bloodline, this must be the same type as your bloodline. You gain resistance equal to half your level against one type of damage determined by the chosen dragon type.",
 				"The GM may allow you to choose a dragon type not listed below, and will determine the damage type appropriate for that dragon.",
@@ -16240,7 +16241,7 @@
 				},
 				"You also gain a +1 circumstance bonus to saving throws against {@trait sleep} effects and effects that would make you {@condition paralyzed}."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the sorcerer archetype, you must choose the draconic bloodline.",
+			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the {@archetype sorcerer|crb|sorcerer archetype}, you must choose the {@class Sorcerer|CRB|draconic bloodline|draconic}.",
 			"page": 168,
 			"leadsTo": [
 				"Claws Of The Dragon|APG",
@@ -16268,8 +16269,8 @@
             },
             "prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the brawling weapon group.",
-				"If you're a draconic sorcerer, when you cast {@spell dragon claws}, increase the spell's slashing damage die from d4 to d6 and increase the resistance to 10 at 1st level, 15 at 5th level, and 20 at 9th level."
+				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the {@group brawling} weapon group.",
+				"If you're a draconic sorcerer, when you cast {@spell dragon claws}, increase the spell's slashing damage die from {@damage d4} to {@damage d6} and increase the resistance to 10 at 1st level, 15 at 5th level, and 20 at 9th level."
 			],
 			"page": 168
 		},
@@ -16309,7 +16310,7 @@
 			},
 			"prerequisites": "ability to cast spells from spell slots, {@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"You've discovered how to add the magic of dragons to your tradition. Add the draconic bloodline's granted spells to your spell list; you must still learn them or add them to your repertoire as normal. These spells are shield, true strike, resist energy, haste, spell immunity, chromatic wall, dragon form, mask of terror, prismatic wall, and overwhelming presence."
+				"You've discovered how to add the magic of dragons to your tradition. Add the {@class Sorcerer|CRB|draconic bloodline's|draconic} granted spells to your spell list; you must still learn them or add them to your repertoire as normal. These spells are {@spell shield}, {@spell true strike}, {@spell resist energy}, {@spell haste}, {@spell spell immunity}, {@spell chromatic wall}, {@spell dragon form}, {@spell mask of terror}, {@spell prismatic wall}, and {@spell overwhelming presence}."
 			],
 			"page": 168
 		},
@@ -16349,7 +16350,7 @@
             },
             "prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"You can use a powerful breath weapon, much like the dragon you emulate. You gain the dragon breath sorcerer bloodline spell and a focus pool of 1 Focus Point. If you already have a focus pool, increase your number of Focus Points by 1."
+				"You can use a powerful breath weapon, much like the dragon you emulate. You gain the {@spell dragon breath} sorcerer bloodline spell and a focus pool of 1 Focus Point. If you already have a focus pool, increase your number of Focus Points by 1."
 			],
 			"page": 169
 		},
@@ -16369,8 +16370,7 @@
             },
             "prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"You can manifest draconic wings to soar through the air at great speed.",
-				"You gain the dragon wings sorcerer bloodline spell and a focus pool of 1 Focus Point. If you already have a focus pool, increase your number of Focus Points by 1."
+				"You can manifest draconic wings to soar through the air at great speed. You gain the {@spell dragon wings} sorcerer bloodline spell and a focus pool of 1 Focus Point. If you already have a focus pool, increase your number of Focus Points by 1."
 			],
 			"page": 169
 		},
@@ -16409,9 +16409,9 @@
 				"skill": false,
 				"archetype": "Dragon Disciple"
             },
-            "prerequisites": "{@feat Dragon Disciple Dedication|APG}, dragon breath sorcerer bloodline spell",
+            "prerequisites": "{@feat Dragon Disciple Dedication|APG}, {@spell dragon breath} sorcerer bloodline spell",
 			"entries": [
-				"You unleash your breath weapon without spending focus. This has the effects of your dragon breath sorcerer bloodline spell, though it deals {@dice 9d6} damage instead of its usual damage, and you don't have to cast it or spend a Focus Point. You can't use Disciple's Breath again for {@dice 1d4} rounds."
+				"You unleash your breath weapon without spending focus. This has the effects of your {@spell dragon breath} sorcerer bloodline spell, though it deals {@dice 9d6} damage instead of its usual damage, and you don't have to cast it or spend a Focus Point. You can't use Disciple's Breath again for {@dice 1d4} rounds."
 			],
 			"activity": {
 				"number": 1,

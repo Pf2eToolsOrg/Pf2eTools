@@ -35,8 +35,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your kin have instilled in you an affinity for hard-hitting weapons, and you prefer these to more elegant arms. You are trained with the battle axe, pick, and warhammer.",
-				"You also gain access to all uncommon dwarf weapons. For the purpose of determining your proficiency, martial dwarf weapons are simple weapons and advanced dwarf weapons are martial weapons."
+				"Your kin have instilled in you an affinity for hard-hitting weapons, and you prefer these to more elegant arms. You are trained with the {@item battle axe}, {@item pick}, and {@item warhammer}.",
+				"You also gain access to all {@filter uncommon dwarf weapons|items|rarity=uncommon|ancestry & heritage=dwarf}. For the purpose of determining your proficiency, martial dwarf weapons are simple weapons and advanced dwarf weapons are martial weapons."
 			],
 			"page": 36,
 			"leadsTo": [
@@ -299,8 +299,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You favor bows and other elegant weapons. You are trained with longbows, composite longbows, longswords, rapiers, shortbows, and composite shortbows.",
-				"In addition, you gain access to all uncommon elf weapons.",
+				"You favor bows and other elegant weapons. You are trained with {@item longbows}, {@item composite longbows}, {@item longswords}, {@item rapiers}, {@item shortbows}, and {@item composite shortbows}.",
+				"In addition, you gain access to all {@filter uncommon elf weapons|items|rarity=uncommon|ancestry & heritage=elf}.",
 				"For the purpose of determining your proficiency, martial elf weapons are simple weapons and advanced elf weapons are martial weapons."
 			],
 			"page": 40,
@@ -634,8 +634,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You favor unusual weapons tied to your people, such as blades with curved and peculiar shapes. You are trained with the glaive and kukri.",
-				"In addition, you gain access to all uncommon gnome weapons. For the purpose of determining your proficiency, martial gnome weapons are simple weapons and advanced gnome weapons are martial weapons."
+				"You favor unusual weapons tied to your people, such as blades with curved and peculiar shapes. You are trained with the {@item glaive} and {@item kukri}.",
+				"In addition, you gain access to all {@filter uncommon gnome weapons|items|rarity=uncommon|ancestry & heritage=gnome}. For the purpose of determining your proficiency, martial gnome weapons are simple weapons and advanced gnome weapons are martial weapons."
 			],
 			"page": 44,
 			"leadsTo": [
@@ -911,7 +911,7 @@
 			"activity": {
 				"number": 1,
 				"unit": "Varies",
-				"entry": "[ {@as 1}"
+				"entry": "{@as 1}"
 			},
 			"page": 48,
 			"leadsTo": [
@@ -934,8 +934,8 @@
 			},
 			"entries": [
 				"Others might look upon them with disdain, but you know that the weapons of your people are as effective as they are sharp.",
-				"You are trained with the dogslicer and horsechopper.",
-				"In addition, you gain access to all uncommon goblin weapons.",
+				"You are trained with the {@item dogslicer} and {@item horsechopper}.",
+				"In addition, you gain access to all {@filter uncommon goblin weapons|items|rarity=uncommon|ancestry & heritage=goblin}.",
 				"For the purpose of determining your proficiency, martial goblin weapons are simple weapons and advanced goblin weapons are martial weapons."
 			],
 			"page": 48,
@@ -1063,7 +1063,7 @@
 			},
 			"prerequisites": "{@feat Goblin Scuttle}",
 			"entries": [
-				"You can scuttle farther and faster when maneuvering alongside allies. When you use Goblin Scuttle, you can {@action Stride} up to half your Speed instead of Stepping."
+				"You can scuttle farther and faster when maneuvering alongside allies. When you use {@feat Goblin Scuttle}, you can {@action Stride} up to half your Speed instead of {@action Step|CRB|Stepping}."
 			],
 			"page": 49
 		},
@@ -1197,8 +1197,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You favor traditional halfling weapons, so you've learned how to use them more effectively. You have the trained proficiency with the sling, halfling sling staff, and shortsword.",
-				"In addition, you gain access to all uncommon halfling weapons. For you, martial halfling weapons are simple weapons, and advanced halfling weapons are martial weapons."
+				"You favor traditional halfling weapons, so you've learned how to use them more effectively. You have the trained proficiency with the {@item sling}, {@item halfling sling staff}, and {@item shortsword}.",
+				"In addition, you gain access to all {@filter uncommon halfling weapons|items|rarity=uncommon|ancestry & heritage=halfling}. For you, martial halfling weapons are simple weapons, and advanced halfling weapons are martial weapons."
 			],
 			"page": 52,
 			"leadsTo": [
@@ -1854,7 +1854,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"In combat, you favor the brutal weapons that are traditional for your orc ancestors. You are trained with the falchion and greataxe. In addition, you gain access to all uncommon orc weapons.",
+				"In combat, you favor the brutal weapons that are traditional for your orc ancestors. You are trained with the {@item falchion} and {@item greataxe}. In addition, you gain access to all {@filter uncommon orc weapons|items|rarity=uncommon|ancestry & heritage=orc}.",
 				"For you, martial orc weapons are simple weapons, and advanced orc weapons are martial weapons."
 			],
 			"page": 59,
@@ -3922,6 +3922,7 @@
 			"source": "CRB",
 			"name": "Reckless Abandon",
 			"level": 16,
+			"add_hash": "Barbarian",
 			"traits": [
 				"Barbarian",
 				"Rage"
