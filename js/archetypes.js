@@ -65,7 +65,7 @@ class ArchetypesPage extends BaseComponent {
 		const feats = await DataUtil.feat.loadJSON();
 		this._featLookUp = {};
 		feats.feat.forEach(feat => {
-			const hash = UrlUtil.autoEncodeHash(feat);
+			const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat);
 			this._featLookUp[hash] = feat;
 		});
 
@@ -535,11 +535,11 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	getFeatListItem (feat, featI, isExcluded) {
-		const hash = UrlUtil.autoEncodeHash(feat);
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
 		const $lnk = $(`<a href="##${hash}" class="lst--border">
-			<span class="bold col-5 pl-0">${feat.name}</span>
+			<span class="bold col-5 pl-0">${feat.name}${feat.add_hash ? `<span class="ve-muted"> (${feat.add_hash})</span>` : ""}</span>
 			<span class="col-1-5 text-center">${Parser.getOrdinalForm(feat.level)}</span>
 			<span class="col-4 text-center">${feat._slPrereq}</span>
 			<span class="col-1-5 text-center ${Parser.sourceJsonToColor(feat.source)} pr-0" title="${Parser.sourceJsonToFull(feat.source)}" ${BrewUtil.sourceJsonToStyle(feat.source)}>${source}</span>

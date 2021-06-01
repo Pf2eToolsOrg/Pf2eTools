@@ -329,24 +329,11 @@ PropOrder._TRAIT = [
 
 	"source",
 	"page",
+	"otherSources",
 
-	"ref",
-
-	"crMin",
-
-	new PropOrder._ObjectKey("prerequisite", {
-		order: PropOrder._MONSTER,
-	}),
-	new PropOrder._ObjectKey("apply", {
-		order: [
-			new PropOrder._ObjectKey("_root", {
-				order: PropOrder._MONSTER,
-			}),
-			new PropOrder._ObjectKey("_mod", {
-				fnGetOrder: () => PropOrder._MONSTER__COPY_MOD,
-			}),
-		],
-	}),
+	"categories",
+	"implies",
+	"entries",
 ];
 PropOrder._LEGENDARY_GROUP = [
 	"name",

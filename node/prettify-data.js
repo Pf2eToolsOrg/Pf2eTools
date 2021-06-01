@@ -21,7 +21,6 @@ function getFnListSort (prop) {
 		case "monsterFluff":
 		case "action":
 		case "background":
-		case "trait":
 		case "legendaryGroup":
 		case "language":
 		case "condition":
@@ -76,6 +75,8 @@ function getFnListSort (prop) {
 		case "adventure":
 		case "book":
 			return (a, b) => SortUtil.ascSortDate(new Date(b.published), new Date(a.published) || SortUtil.ascSortLower(a.name, b.name));
+		case "trait":
+			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.name, b.name);
 		default: throw new Error(`Unhandled prop "${prop}"`);
 	}
 }
@@ -95,6 +96,7 @@ function prettifyFolder (folder) {
 				.forEach(([k, v]) => {
 					if (PropOrder.hasOrder(k)) {
 						PROPS_TO_UNHANDLED_KEYS[k] = PROPS_TO_UNHANDLED_KEYS[k] || new Set();
+						json[k].forEach(t => t.categories = t.categories || [])
 
 						json[k] = v.map(it => PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)}));
 
@@ -115,5 +117,5 @@ function prettifyFolder (folder) {
 		})
 }
 
-prettifyFolder(`./data`);
+prettifyFolder(`./trash`);
 console.log("Prettifying complete.");

@@ -116,8 +116,12 @@ function renderStatblock (deity) {
 	function buildStatsTab () {
 		$content.append(RenderDeities.$getRenderedDeity(deity));
 	}
-	function buildLoreTab () {
-		$content.append(Renderer.deity.getRenderedLore(deity))
+	async function buildLoreTab () {
+		const pGetFluff = async () => {
+			const fluff = await Renderer.deity.pGetFluff(deity);
+			return fluff ? fluff.lore || [] : [];
+		}
+		$content.append(Renderer.deity.getRenderedLore({lore: await pGetFluff()}))
 	}
 	function buildIntercessionTab () {
 		$content.append(Renderer.deity.getIntercession(deity))
@@ -148,7 +152,7 @@ function renderStatblock (deity) {
 	);
 	const tabs = [statTab]
 	if (deity.intercession) tabs.push(intercessionTab);
-	if (deity.lore) tabs.push(loreTab);
+	if (deity.hasLore) tabs.push(loreTab);
 	tabs.push(infoTab)
 	Renderer.utils.bindTabButtons(...tabs);
 }

@@ -457,6 +457,18 @@ class BestiaryPage extends ListPage {
 			$(`#wrp-pagecontent`).scroll();
 		}
 
+		const buildFluffTab = async () => {
+			const pGetFluff = async () => {
+				const creature = this._dataList[Hist.lastLoadedId];
+				const fluff = await Renderer.creature.pGetFluff(creature);
+				return fluff ? fluff.entries || [] : [];
+			}
+			const fluffEntries = await pGetFluff();
+			const renderStack = [];
+			Renderer.get().recursiveRender(fluffEntries, renderStack);
+			$content.append(renderStack.join(""));
+		}
+
 		// reset tabs
 		const statTab = Renderer.utils.tabButton(
 			"Statblock",
@@ -465,7 +477,12 @@ class BestiaryPage extends ListPage {
 			},
 			buildStatsTab,
 		);
-		Renderer.utils.bindTabButtons(statTab);
+		const fluffTab = Renderer.utils.tabButton(
+			"Fluff",
+			() => {},
+			buildFluffTab,
+		);
+		Renderer.utils.bindTabButtons(statTab, fluffTab);
 	}
 
 	_getSearchCache (entity) {

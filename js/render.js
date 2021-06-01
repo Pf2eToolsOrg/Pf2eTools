@@ -3736,8 +3736,12 @@ Renderer.creature = {
 		$btnScaleLvl.after($wrp);
 	},
 
-	async pGetFluff () {
-		// TODO:
+	async pGetFluff (creature) {
+		return Renderer.utils.pGetFluff({
+			entity: creature,
+			fluffBaseUrl: `data/bestiary/`,
+			fluffProp: "creatureFluff",
+		});
 	},
 };
 
@@ -3819,6 +3823,14 @@ Renderer.deity = {
 			// textStack.push(`<p class="pf2-p">${renderer.render(`{@note published in ${deity.intercession.source}, page ${deity.intercession.page}.}`)}</p>`)
 		}
 		return textStack.join("");
+	},
+
+	async pGetFluff (deity) {
+		return Renderer.utils.pGetFluff({
+			entity: deity,
+			fluffUrl: `data/fluff-deities.json`,
+			fluffProp: "deityFluff",
+		});
 	},
 };
 
@@ -5798,7 +5810,7 @@ Renderer.hover = {
 
 			// region per-page fluff
 			case `fluff__${UrlUtil.PG_BESTIARY}`:
-				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "monsterFluff");
+				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/bestiary/`, "creatureFluff");
 			case `fluff__${UrlUtil.PG_SPELLS}`:
 				return Renderer.hover._pCacheAndGet_pLoadMultiSourceFluff(page, source, hash, opts, `data/spells/`, "spellFluff");
 			case `fluff__${UrlUtil.PG_BACKGROUNDS}`:
