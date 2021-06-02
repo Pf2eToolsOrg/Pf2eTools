@@ -2734,21 +2734,17 @@ DataUtil = {
 	},
 
 	ritual: {
-		_loadedJson: null,
-		_pLoadingJson: null,
+		_MERGE_REQUIRES_PRESERVE: {
+			page: true,
+			otherSources: true,
+		},
+		_mergeCache: {},
+		async pMergeCopy (deityList, deity, options) {
+			return DataUtil.generic._pMergeCopy(DataUtil.deity, UrlUtil.PG_DEITIES, deityList, deity, options);
+		},
 
-		async loadJSON () {
-			if (DataUtil.ritual._loadedJson) return DataUtil.ritual._loadedJson;
-			DataUtil.ritual._pLoadingJson = (async () => {
-				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals/index.json`);
-				const allData = await Promise.all(Object.values(index).map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals/${file}`)));
-				DataUtil.ritual._loadedJson = {
-					ritual: allData.map(it => it.ritual || []).flat(),
-				}
-			})();
-			await DataUtil.ritual._pLoadingJson;
-
-			return DataUtil.ritual._loadedJson;
+		loadJSON: async function () {
+			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/rituals.json`);
 		},
 	},
 

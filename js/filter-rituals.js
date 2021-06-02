@@ -71,7 +71,7 @@ class PageFilterRituals extends PageFilter {
 		it._fDurationType = Parser.getFilterDuration(it);
 		it._fRange = Parser.getFilterRange(it);
 		it._fMisc = [];
-		if (it.heightened.heightened) it._fMisc.push("Can be Heightened");
+		if (it.heightened && it.heightened.heightened) it._fMisc.push("Can be Heightened");
 		if (it.cost) it._fMisc.push("Has a Cost");
 	}
 

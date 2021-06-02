@@ -1652,8 +1652,9 @@ Parser.getNormalisedRange = function (range) {
 	return (multiplier * distance) + offset;
 
 	function adjustForDistance () {
-		const dist = range.distance;
-		switch (dist.type) {
+		let dist = {}
+		if (`distance` in range) dist = range.distance;
+		switch (`distance` in range) {
 			case null: distance = 0; break;
 			case UNT_FEET: multiplier = Parser.INCHES_PER_FOOT; distance = dist.amount; break;
 			case UNT_MILES: multiplier = Parser.INCHES_PER_FOOT * Parser.FEET_PER_MILE; distance = dist.amount; break;

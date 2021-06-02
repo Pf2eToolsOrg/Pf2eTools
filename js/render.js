@@ -3199,7 +3199,7 @@ Renderer.affliction = {
 		const renderer = Renderer.get();
 		const renderStack = [];
 		renderer.setFirstSection(true);
-		const rLvl = isNaN(Number(affliction.level)) ? `, ${affliction.level}` : ` ${affliction.level}`;
+		const rLvl = isNaN(Number(affliction.level)) ? `` : ` ${affliction.level}`;
 
 		renderStack.push(`${Renderer.utils.getExcludedDiv(affliction, affliction.__prop || affliction._type, UrlUtil.PG_AFFLICTIONS)}`)
 		renderStack.push(`
@@ -4364,18 +4364,18 @@ Renderer.ritual = {
 		<p class="pf2-stat pf2-stat__section">
 		${[`<strong>Cast&nbsp;</strong>${renderer.render(ritual.cast.entry)}`,
 		`${ritual.cost ? `<strong>Cost&nbsp;</strong>${renderer.render(ritual.cost)}` : ""}`,
-		`${ritual.secondaryCasters ? `<strong>Secondary Casters&nbsp;</strong>${ritual.secondaryCasters.number}${ritual.secondaryCasters.note ? `, ${ritual.secondaryCasters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
+		`${ritual.secondaryCasters ? `<strong>Secondary Casters&nbsp;</strong>${ritual.secondaryCasters.entry ? ritual.secondaryCasters.entry : ritual.secondaryCasters.number}${ritual.secondaryCasters.note ? `, ${ritual.secondaryCasters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
 		</p>
 		<p class="pf2-stat pf2-stat__section">
-		${[`<strong>Primary Check&nbsp;</strong>${renderer.render(ritual.primaryCheck.entry)}`,
-		`${ritual.secondaryCheck ? `<strong>Secondary Checks&nbsp;</strong>${renderer.render(ritual.secondaryCheck.entry)}` : ""}`].filter(Boolean).join("; ")}
+		${[`<strong>Primary&nbsp;Check&nbsp;</strong>${renderer.render(ritual.primaryCheck.entry)}`,
+		`${ritual.secondaryCheck ? `<strong>Secondary&nbsp;Checks&nbsp;</strong>${renderer.render(ritual.secondaryCheck.entry)}` : ""}`].filter(Boolean).join("; ")}
 		</p>
-		${ritual.range.type || ritual.area || ritual.targets
-		? `<p class="pf2-stat pf2-stat__section">${[`${ritual.range.type ? `<strong>Range&nbsp;</strong>${renderer.render(ritual.range.entry)}` : ""}`,
+		${ritual.area || ritual.targets || ritual.range
+		? `<p class="pf2-stat pf2-stat__section">${[`${ritual.range && ritual.range.entry ? `<strong>Range&nbsp;</strong>${renderer.render(ritual.range.entry)}` : ""}`,
 			`${ritual.area ? `<strong>Area&nbsp;</strong>${renderer.render(ritual.area.entry)}` : ""}`,
 			`${ritual.targets ? `<strong>Targets&nbsp;</strong>${renderer.render(ritual.targets)}` : ""}`].filter(Boolean).join("; ")}</p>` : ""}
-			${ritual.duration.type ? `<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(ritual.duration.entry)}</p>`
-		: ""}
+			${ritual.duration && ritual.duration.type ? `<p class="pf2-stat pf2-stat__section"><strong>Duration&nbsp;</strong>${renderer.render(ritual.duration.entry)}</p>` : ""}
+		${ritual.requirements ? `<p class="pf2-stat pf2-stat__section"> <strong>Requirements</strong> ${renderer.render(ritual.requirements)} </p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		${renderStack.join("")}
 		${ritual.heightened && ritual.heightened.heightened
