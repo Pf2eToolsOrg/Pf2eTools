@@ -59,15 +59,15 @@ class PageFilterDeities extends PageFilter {
 		g._fSources = SourceFilter.getCompleteFilterSources(g);
 		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
 		if (g.devoteeBenefits) {
-			g._fFont = g.devoteeBenefits.font;
-			g._fSkill = g.devoteeBenefits.skill;
-			g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
-			g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
-			g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
+			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
+			if (g.devoteeBenefits.skill) g._fSkill = g.devoteeBenefits.skill;
+			if (g.devoteeBenefits.weapon) g._fWeapon = g.devoteeBenefits.weapon.map(w => w.split("|")[0]);
+			if (g.devoteeBenefits.domains) g._fDomains = g.devoteeBenefits.domains || [VeCt.STR_NONE];
+			if (g.devoteeBenefits.spells) g._fSpells = [...Array(11).keys()].map(l => (g.devoteeBenefits.spells[l] || []).map(s => s.split("|")[0]));
 		} else {
 			g._fDomains = [VeCt.STR_NONE];
 		}
-		g._fDomains.sort(SortUtil.ascSort);
+		if (g.domains) g._fDomains.sort(SortUtil.ascSort);
 
 		g._fMisc = [];
 		if (g.lore || g.symbolImg) g._fMisc.push("Has Lore");
@@ -85,23 +85,25 @@ class PageFilterDeities extends PageFilter {
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
-		g._fSpells.forEach((sp, i) => {
-			if (sp) {
-				switch (String(i)) {
-					case "0": this._0Filter.addItem(sp); break;
-					case "1": this._1Filter.addItem(sp); break;
-					case "2": this._2Filter.addItem(sp); break;
-					case "3": this._3Filter.addItem(sp); break;
-					case "4": this._4Filter.addItem(sp); break;
-					case "5": this._5Filter.addItem(sp); break;
-					case "6": this._6Filter.addItem(sp); break;
-					case "7": this._7Filter.addItem(sp); break;
-					case "8": this._8Filter.addItem(sp); break;
-					case "9": this._9Filter.addItem(sp); break;
-					case "10": this._10Filter.addItem(sp); break;
+		if (g.spells) {
+			g._fSpells.forEach((sp, i) => {
+				if (sp) {
+					switch (String(i)) {
+						case "0": this._0Filter.addItem(sp); break;
+						case "1": this._1Filter.addItem(sp); break;
+						case "2": this._2Filter.addItem(sp); break;
+						case "3": this._3Filter.addItem(sp); break;
+						case "4": this._4Filter.addItem(sp); break;
+						case "5": this._5Filter.addItem(sp); break;
+						case "6": this._6Filter.addItem(sp); break;
+						case "7": this._7Filter.addItem(sp); break;
+						case "8": this._8Filter.addItem(sp); break;
+						case "9": this._9Filter.addItem(sp); break;
+						case "10": this._10Filter.addItem(sp); break;
+					}
 				}
-			}
-		});
+			})
+		}
 	}
 
 	async _pPopulateBoxOptions (opts) {
