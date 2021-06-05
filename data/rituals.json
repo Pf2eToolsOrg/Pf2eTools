@@ -426,12 +426,12 @@
 										},
 										{
 											"stage": 3,
-											"entry": "{@condition fatigued} and {@condition drained 1}",
+											"entry": "{@condition fatigued} and {@condition drained} 1",
 											"duration": "1 day"
 										},
 										{
 											"stage": 4,
-											"entry": "{@condition fatigued} and {@condition drained 3}",
+											"entry": "{@condition fatigued} and {@condition drained} 3",
 											"duration": "1 day"
 										},
 										{
@@ -1731,7 +1731,7 @@
 				"Prediction"
 			],
 			"entries": [
-				"As commune, except you contact the primal spirits of nature, which know about animals, beasts, fey, plants, topography, and natural resources within a 3-mile radius of the ritual's location."
+				"As {@ritual commune}, except you contact the primal spirits of nature, which know about animals, beasts, fey, plants, topography, and natural resources within a 3-mile radius of the ritual's location."
 			],
 			"cast": {
 				"number": 1,
@@ -2072,7 +2072,7 @@
 				"Mental"
 			],
 			"entries": [
-				"(expert); Secondary Checks {@skill Society} or {@skill Lore|Legal Lore} Range 10 feet; Target 1 creature of a level no greater than double the geas ritual's level Duration see text You enforce a magic rule on a willing target, forcing it to either perform or refrain from carrying out a certain act. A geas to perform an act is usually conditional, such as, \"Always offer hospitality to strangers seeking a place to stay.\" An unconditional geas to perform a certain act doesn't require the target to perform that act exclusively, though it must prioritize the task above all leisurely pursuits. The most common geas to refrain from carrying out an act is a specification to avoid violating a contract. In those cases, the secondary caster usually takes charge of making sure the wording of the contract is attuned correctly with the ritual's magic. Because the target is willing, geas can have a duration that lasts for as long as the target agrees to. If the target is unable to fulfill the geas, it becomes {@condition sickened|CRB|sickened 1}, and the {@condition sickened} condition increases by 1 for each consecutive day it is prevented from following the geas, to a maximum of {@condition sickened|CRB|sickened 4}. The {@condition sickened} condition ends immediately when it follows the geas again; it can't remove the {@condition sickened} condition in any other way. Only powerful magic such as a {@spell wish} spell can remove the effects of geas from a willing target.",
+				"You enforce a magic rule on a willing target, forcing it to either perform or refrain from carrying out a certain act. A geas to perform an act is usually conditional, such as, \"Always offer hospitality to strangers seeking a place to stay.\" An unconditional geas to perform a certain act doesn't require the target to perform that act exclusively, though it must prioritize the task above all leisurely pursuits. The most common geas to refrain from carrying out an act is a specification to avoid violating a contract. In those cases, the secondary caster usually takes charge of making sure the wording of the contract is attuned correctly with the ritual's magic. Because the target is willing, geas can have a duration that lasts for as long as the target agrees to. If the target is unable to fulfill the geas, it becomes {@condition sickened|CRB|sickened 1}, and the {@condition sickened} condition increases by 1 for each consecutive day it is prevented from following the geas, to a maximum of {@condition sickened|CRB|sickened 4}. The {@condition sickened} condition ends immediately when it follows the geas again; it can't remove the {@condition sickened} condition in any other way. Only powerful magic such as a {@spell wish} spell can remove the effects of geas from a willing target.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2083,6 +2083,15 @@
 					}
 				}
 			],
+			"duration": {
+				"type": "timed",
+				"entry": "see text",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"targets": "1 creature of a level no greater than double the geas ritual's level",
 			"cast": {
 				"number": 1,
 				"unit": "day",
@@ -2091,8 +2100,11 @@
 			"secondaryCasters": {
 				"number": 1
 			},
+			"secondaryCheck": {
+				"entry": "{@skill Society} or {@skill Lore|Legal Lore}"
+			},
 			"primaryCheck": {
-				"entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion}",
+				"entry": "{@skill Arcana} (expert), {@skill Occultism} (expert), or {@skill Religion} (expert)",
 				"skills": [
 					"{@skill Arcana}",
 					"{@skill Occultism}",
@@ -2101,10 +2113,12 @@
 				"prof": "expert"
 			},
 			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": null
+				"type": "point",
+				"distance": {
+					"amount": 10,
+					"type": "feet"
+				},
+				"entry": "10 feet"
 			},
 			"heightened": {
 				"heightened": true,

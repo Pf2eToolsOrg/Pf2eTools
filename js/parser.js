@@ -1891,6 +1891,10 @@ SRC_LOAG = "LOAG";
 SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_APLLS = "APLLS";
+SRC_APROG = "APRoG";
+SRC_APSFU = "APSFU";
+SRC_APLOTBS = "APLotBS";
+SRC_APSOTD = "APSotD";
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -1945,6 +1949,10 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
+Parser.SOURCE_JSON_TO_FULL[SRC_APROG] = "Adventure Path: Ruins of Gauntlight";
+Parser.SOURCE_JSON_TO_FULL[SRC_APSFU] = "Adventure Path: Sixty Feet Under";
+Parser.SOURCE_JSON_TO_FULL[SRC_APLOTBS] = "Adventure Path: Lord of the Black Sands";
+Parser.SOURCE_JSON_TO_FULL[SRC_APSOTD] = "Adventure Path: Siege of Dinosaurs";
 
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
@@ -1963,6 +1971,10 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_APLLS] = "APLLS";
+Parser.SOURCE_JSON_TO_ABV[SRC_APROG] = "APRoG";
+Parser.SOURCE_JSON_TO_ABV[SRC_APSFU] = "APSFU";
+Parser.SOURCE_JSON_TO_ABV[SRC_APLOTBS] = "APLotBS";
+Parser.SOURCE_JSON_TO_ABV[SRC_APSOTD] = "APSotD";
 
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
@@ -1989,14 +2001,18 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOCG] = "https://paizo.com/products/btq01zt4?Pat
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGM] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOGMWS] = "https://paizo.com/products/btq021wf?Pathfinder-Lost-Omens-Gods-Magic";
 Parser.SOURCE_JSON_TO_STORE[SRC_GMG] = "https://paizo.com/products/btq022c1?Pathfinder-Gamemastery-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_APLLS] = "https://paizo.com/store/pathfinder/adventures/adventurePath/extinctioncurse";
+Parser.SOURCE_JSON_TO_STORE[SRC_APLLS] = "https://paizo.com/products/btq01zuh?Pathfinder-Adventure-Path-153-Life-s-Long-Shadows";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST2] = "https://paizo.com/products/btq022yq?Pathfinder-Bestiary-2";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd?Pathfinder-Lost-Omens-Legends";
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih?Pathfinder-Advanced-Players-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x?Pathfinder-Lost-Omens-Pathfinder-Society-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pathfinder-Lost-Omens-Ancestry-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo.com/products/btq026k5/discuss&page=11?Pathfinder-Lost-Omens-Ancestry-Guide";
+Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
+Parser.SOURCE_JSON_TO_STORE[SRC_APROG] = "https://paizo.com/products/btq026kj?Pathfinder-Adventure-Path-163-Ruins-of-Gauntlight";
+Parser.SOURCE_JSON_TO_STORE[SRC_APSFU] = "https://paizo.com/products/btq022ci?Pathfinder-Adventure-Path-158-Sixty-Feet-Under";
+Parser.SOURCE_JSON_TO_STORE[SRC_APLOTBS] = "https://paizo.com/products/btq021by?Pathfinder-Adventure-Path-155-Lord-of-the-Black-Sands";
+Parser.SOURCE_JSON_TO_STORE[SRC_APSOTD] = "https://paizo.com/products/btq0216l?Pathfinder-Adventure-Path-154-Siege-of-the-Dinosaurs";
 
 Parser.SOURCES_ADVENTURES = new Set([SRC_APLLS]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -2015,6 +2031,10 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_LOAG,
 	SRC_LOACLO,
 	SRC_AAWS,
+	SRC_APROG,
+	SRC_APSFU,
+	SRC_APLOTBS,
+	SRC_APSOTD,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_BOOK[src.toLowerCase()] = src;
