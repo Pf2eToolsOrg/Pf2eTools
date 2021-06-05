@@ -20,11 +20,18 @@ class PageFilterActions extends PageFilter {
 			displayFn: Parser.timeUnitToFull,
 			itemSortFn: null,
 		});
-		this._untrainedFilter = new Filter({header: "Skill (Untrained)"});
-		this._trainedFilter = new Filter({header: "Skill (Trained)"});
+		this._untrainedFilter = new Filter({header: "Untrained"});
+		this._trainedFilter = new Filter({header: "Trained"});
+		this._expertFilter = new Filter({header: "Expert"});
+		this._masterFilter = new Filter({header: "Master"});
+		this._legendaryFilter = new Filter({header: "Legendary"});
+		this._skillFilter = new MultiFilter({
+			header: "Skills",
+			filters: [this._untrainedFilter, this._trainedFilter, this._expertFilter, this._masterFilter, this._legendaryFilter],
+		});
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic", "Skill (Trained)", "Skill (Untrained)"],
+			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic"],
 			selFn: (it) => it === "Basic",
 		});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
@@ -35,7 +42,13 @@ class PageFilterActions extends PageFilter {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._fTime = it.activity ? it.activity.unit : null;
 		it.actionType = it.actionType || {};
-		it._fType = Object.keys(it.actionType).filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
+		it._fType = Object.keys(it.actionType).filter(it => it !== "skill").filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
+		if (it.actionType.skill) it._fType.concat(Object.keys(it.actionType.skill).map(k => Parser.actionTypeKeyToFull(k)));
+		it._fUntrained = it.actionType.skill ? it.actionType.skill.untrained || null : null;
+		it._fTrained = it.actionType.skill ? it.actionType.skill.trained || null : null;
+		it._fExpert = it.actionType.skill ? it.actionType.skill.expert || null : null;
+		it._fMaster = it.actionType.skill ? it.actionType.skill.master || null : null;
+		it._fLegendary = it.actionType.skill ? it.actionType.skill.legendary || null : null;
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fMisc = [];
@@ -46,9 +59,11 @@ class PageFilterActions extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._traitFilter.addItem(it._fTraits);
-		// FIXME - Would be good to allow other types of skills in there, so probably best to have it self-populate like Traits
-		// this._trainedFilter.addItem(it.actionType.skill.trained);
-		// this._untrainedFilter.addItem(it.actionType.skill.untrained);
+		if (it._fUntrained) this._untrainedFilter.addItem(it._fUntrained);
+		if (it._fTrained) this._trainedFilter.addItem(it._fTrained);
+		if (it._fExpert) this._expertFilter.addItem(it._fExpert);
+		if (it._fMaster) this._masterFilter.addItem(it._fMaster);
+		if (it._fLegendary) this._legendaryFilter.addItem(it._fLegendary);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -56,8 +71,7 @@ class PageFilterActions extends PageFilter {
 			this._sourceFilter,
 			this._timeFilter,
 			this._typeFilter,
-			// this._untrainedFilter,
-			// this._trainedFilter,
+			this._skillFilter,
 			this._traitFilter,
 			this._miscFilter,
 		];
@@ -69,8 +83,13 @@ class PageFilterActions extends PageFilter {
 			it._fSources,
 			it._fTime,
 			it._fType,
-			it.actionType.untrained,
-			it.actionType.trained,
+			[
+				it._fUntrained,
+				it._fTrained,
+				it._fExpert,
+				it._fMaster,
+				it._fLegendary,
+			],
 			it._fTraits,
 			it._fMisc,
 		)

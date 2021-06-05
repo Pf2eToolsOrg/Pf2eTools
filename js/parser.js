@@ -168,6 +168,9 @@ Parser.actionTypeKeyToFull = function (key) {
 	switch (key) {
 		case "untrained": return "Skill (Untrained)"
 		case "trained": return "Skill (Trained)"
+		case "expert": return "Skill (Expert)"
+		case "master": return "Skill (Master)"
+		case "legendary": return "Skill (Legendary)"
 		default: return key.toTitleCase();
 	}
 }
