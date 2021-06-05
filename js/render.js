@@ -3093,8 +3093,14 @@ Renderer.action = {
 		const renderStack = [];
 		const renderer = Renderer.get()
 		if (it.actionType) {
-			if (it.actionType.trained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Trained&nbsp;</strong>${renderer.render(`{@skill ${it.actionType.trained}}`)}</p>`);
-			if (it.actionType.untrained) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Untrained&nbsp;</strong>${renderer.render(`{@skill ${it.actionType.untrained}}`)}</p>`);
+			if (it.actionType.skill) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>`);
+				if (it.actionType.skill.untrained) renderStack.push(`${renderer.render(`${it.actionType.skill.untrained.map(a => `{@skill ${a}}`).join(", ")} (untrained)`)}`)
+				if (it.actionType.skill.trained) renderStack.push(`${renderer.render(`${it.actionType.skill.trained.map(a => `{@skill ${a}}`).join(", ")} (trained)`)}`)
+				if (it.actionType.skill.expert) renderStack.push(`${renderer.render(`${it.actionType.skill.expert.map(a => `{@skill ${a}}`).join(", ")} (expert)`)}`)
+				if (it.actionType.skill.legendary) renderStack.push(`${renderer.render(`${it.actionType.skill.legendary.map(a => `{@skill ${a}}`).join(", ")} (legendary)`)}`)
+				renderStack.push(`</p>`)
+			}
 			if (it.actionType.class) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Class&nbsp;</strong>${renderer.render(`${it.actionType.class.map(c => `{@class ${c}}`).join(", ")}`)}`);
 				if (it.actionType.subclass) {

@@ -46,8 +46,9 @@ class PageFilterActions extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._traitFilter.addItem(it._fTraits);
-		this._trainedFilter.addItem(it.actionType.trained);
-		this._untrainedFilter.addItem(it.actionType.untrained);
+		// FIXME - Would be good to allow other types of skills in there, so probably best to have it self-populate like Traits
+		// this._trainedFilter.addItem(it.actionType.skill.trained);
+		// this._untrainedFilter.addItem(it.actionType.skill.untrained);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -55,8 +56,8 @@ class PageFilterActions extends PageFilter {
 			this._sourceFilter,
 			this._timeFilter,
 			this._typeFilter,
-			this._untrainedFilter,
-			this._trainedFilter,
+			// this._untrainedFilter,
+			// this._trainedFilter,
 			this._traitFilter,
 			this._miscFilter,
 		];
