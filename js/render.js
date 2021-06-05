@@ -3763,9 +3763,9 @@ Renderer.deity = {
 		return `${Renderer.utils.getExcludedDiv(deity, "deity", UrlUtil.PG_DEITIES)}
 			${Renderer.utils.getNameDiv(deity, {type: `${deity.alignment && deity.alignment.length === 1 ? `${deity.alignment[0]}` : ""} Deity`, ...opts})}
 			${renderStack.join("")}
-			${Renderer.utils.getDividerDiv()}
+			${deity.anathema || deity.edicts || deity.followerAlignment ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.deity.getEdictsAnathemaAlign(deity)}
-			${Renderer.utils.getDividerDiv()}
+			${deity.devoteeBenefits ? Renderer.utils.getDividerDiv() : ""}
 			${Renderer.deity.getDevoteeBenefits(deity)}
 			${opts.noPage ? "" : Renderer.utils.getPageP(deity)}`;
 	},
@@ -3777,7 +3777,7 @@ Renderer.deity = {
 		const anathemaDelim = (deity.anathema || []).map(it => it.includes(",")).some(Boolean) ? "; " : ", ";
 		if (deity.edicts) out.push(`<p class="pf2-stat__section"><strong>Edicts&nbsp;</strong>${renderer.render(deity.edicts.join(edictsDelim))}</p>`)
 		if (deity.anathema) out.push(`<p class="pf2-stat__section"><strong>Anathema&nbsp;</strong>${renderer.render(deity.anathema.join(anathemaDelim))}</p>`)
-		if (deity.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Follower Alignments&nbsp;</strong>${renderer.render(deity.followerAlignment.map(a => `{@trait ${a}}`).join(", "))}</p>`)
+		if (deity.followerAlignment) out.push(`<p class="pf2-stat__section"><strong>Follower Alignments&nbsp;</strong>${deity.followerAlignment[0].length > 2 ? renderer.render(deity.followerAlignment.join(", ")) : renderer.render(deity.followerAlignment.map(a => `{@trait ${a}}`).join(", "))}</p>`)
 		return out.join("")
 	},
 
@@ -3790,13 +3790,13 @@ Renderer.deity = {
 		const renderer = Renderer.get()
 		const b = deity.devoteeBenefits;
 		return `
-			<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(", "))}</p>
+			${b.font ? `<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(", "))}</p>` : ""}
 			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>` : ""}
-			<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>
-			<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>
+			${b.skill ? `<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>` : ""}
+			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>` : ""}
 			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>` : ""}
-			<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>
-			<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(", "))}</p>
+			${b.spells ? `<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>` : ""}
+			${b.weapon ? `<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(", "))}</p>` : ""}
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
 			`;
 	},
