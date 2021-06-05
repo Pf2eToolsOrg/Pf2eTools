@@ -86,25 +86,23 @@ class PageFilterDeities extends PageFilter {
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
-		if (g.spells) {
-			g._fSpells.forEach((sp, i) => {
-				if (sp) {
-					switch (String(i)) {
-						case "0": this._0Filter.addItem(sp); break;
-						case "1": this._1Filter.addItem(sp); break;
-						case "2": this._2Filter.addItem(sp); break;
-						case "3": this._3Filter.addItem(sp); break;
-						case "4": this._4Filter.addItem(sp); break;
-						case "5": this._5Filter.addItem(sp); break;
-						case "6": this._6Filter.addItem(sp); break;
-						case "7": this._7Filter.addItem(sp); break;
-						case "8": this._8Filter.addItem(sp); break;
-						case "9": this._9Filter.addItem(sp); break;
-						case "10": this._10Filter.addItem(sp); break;
-					}
+		g._fSpells.forEach((sp, i) => {
+			if (sp) {
+				switch (i) {
+					case 0: this._0Filter.addItem(sp); break;
+					case 1: this._1Filter.addItem(sp); break;
+					case 2: this._2Filter.addItem(sp); break;
+					case 3: this._3Filter.addItem(sp); break;
+					case 4: this._4Filter.addItem(sp); break;
+					case 5: this._5Filter.addItem(sp); break;
+					case 6: this._6Filter.addItem(sp); break;
+					case 7: this._7Filter.addItem(sp); break;
+					case 8: this._8Filter.addItem(sp); break;
+					case 9: this._9Filter.addItem(sp); break;
+					case 10: this._10Filter.addItem(sp); break;
 				}
-			})
-		}
+			}
+		})
 	}
 
 	async _pPopulateBoxOptions (opts) {
