@@ -520,7 +520,7 @@ const ScaleCreature = {
 						return `@hit ${Number(m[1]) + 2}`;
 					});
 					e = e.replaceAll(/@damage (\d+d\d+)([+-]?\d*)/g, (formula, formulaNoMod, mod) => {
-						if (!mod) return `@damage ${formula}+${bonus}`;
+						if (!mod) return `@damage ${formulaNoMod}+${bonus}`;
 						else {
 							if (Number(mod) + bonus > 0) return `@damage ${formulaNoMod}+${Number(mod) + bonus}`;
 							else if (Number(mod) + bonus < 0) return `@damage ${formulaNoMod}${Number(mod) + bonus}`;
@@ -604,7 +604,7 @@ const ScaleCreature = {
 						return `@hit ${Number(m[1]) - 2}`;
 					});
 					e = e.replaceAll(/@damage (\d+d\d+)([+-]?\d*)/g, (formula, formulaNoMod, mod) => {
-						if (!mod) return `@damage ${formula}+${bonus}`;
+						if (!mod) return `@damage ${formulaNoMod}+${bonus}`;
 						else {
 							if (Number(mod) + bonus > 0) return `@damage ${formulaNoMod}+${Number(mod) + bonus}`;
 							else if (Number(mod) + bonus < 0) return `@damage ${formulaNoMod}${Number(mod) + bonus}`;
