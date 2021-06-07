@@ -113,7 +113,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"],
+			items: ["Has Battle Form", "Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"],
 		});
 	}
 
@@ -154,6 +154,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell.heightened.heightened) spell._fMisc.push("Can be Heightened");
 		if (spell.sustain) spell._fMisc.push("Sustained");
 		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
+		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");
 	}
 
 	addToFilters (spell, isExcluded) {
