@@ -9001,10 +9001,10 @@
 				"skill": false,
 				"archetype": false
 			},
-			"trigger": "An ally within 30 feet Casts a Spell.",
+			"trigger": "An ally within 30 feet {@action Cast a Spell|CRB|Casts a Spell}.",
 			"entries": [
 				"You use your performances to supplement an ally's spellcasting, providing magical energy for their spells.",
-				"Attempt a {@skill Performance} check, using a very high DC for the ally's level (Core Rulebook 503\u2013504), and either spend a Focus Point (if the triggering spell is a focus spell) or expend a spell slot at least 1 level higher than the triggering spell.",
+				"Attempt a {@skill Performance} check, {@table DCs by Level|CRB|using a very high DC for the ally's level}, and either spend a Focus Point (if the triggering spell is a focus spell) or expend a spell slot at least 1 level higher than the triggering spell.",
 				"If you succeed at the {@skill Performance} check, your ally's spell doesn't cost the Focus Point or spell slot."
 			],
 			"activity": {
@@ -9653,7 +9653,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "devotion spell (lay on hands)",
+			"prerequisites": "devotion spell ({@spell lay on hands})",
 			"entries": [
 				"Your healing energies are infused with bounding energy. A creature that recovers Hit Points from your lay on hands gains a +10-foot status bonus to its Speed until the end of its next turn."
 			],
@@ -12265,7 +12265,7 @@
 			"prerequisites": "{@feat Impossible Flurry}",
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"You refine the precision of your unbelievable storm of blows. When you perform an Impossible Flurry, your first attack with each weapon instead takes the multiple attack penalty as though you had already made one attack this turn. All subsequent attacks take the maximum multiple attack penalty, as though you had already made two or more attacks this turn."
+				"You refine the precision of your unbelievable storm of blows. When you perform an {@feat Impossible Flurry}, your first attack with each weapon instead takes the multiple attack penalty as though you had already made one attack this turn. All subsequent attacks take the maximum multiple attack penalty, as though you had already made two or more attacks this turn."
 			],
 			"page": 133
 		},
@@ -15530,9 +15530,7 @@
             "prerequisites": "{@feat Blessed One Dedication|APG}",
 			"trigger": "An ally within 30 feet would become {@condition frightened}, {@condition drained}, {@condition enfeebled}, {@condition sickened}, or {@condition stupefied}.",
 			"entries": [
-				"You exude peace and protection, lessening a harmful condition as it falls upon an ally. Reduce the value of the condition your ally would take by 1 (to a minimum of 0). If the ally takes more than one condition at the same time, choose one to reduce.",
-				"Bounty Hunter Whether for coin, glory, or justice, you know how to track, defeat, and capture dangerous individuals. You're accustomed to perusing wanted posters, searching up on leads, and pursuing villains to hell and back.",
-				"Additional Feats: 14th Double Prey (Core Rulebook 175)"
+				"You exude peace and protection, lessening a harmful condition as it falls upon an ally. Reduce the value of the condition your ally would take by 1 (to a minimum of 0). If the ally takes more than one condition at the same time, choose one to reduce."
 			],
 			"activity": {
 				"number": 1,
@@ -15558,7 +15556,7 @@
 			},
 			"prerequisites": "trained in {@skill Survival}",
 			"entries": [
-				"When focused on finding your quarry, you're relentless. You gain the {@action Hunt Prey} action (Core Rulebook 168). You can use {@action Hunt Prey} to designate only a creature that you've seen, heard about, or learned about through some other means, such as a bounty board or wanted poster. In addition to the other benefits of {@action Hunt Prey}, you gain a +2 circumstance bonus to checks to {@action Gather Information} regarding your prey.",
+				"When focused on finding your quarry, you're relentless. You gain the {@action Hunt Prey} action. You can use {@action Hunt Prey} to designate only a creature that you've seen, heard about, or learned about through some other means, such as a bounty board or wanted poster. In addition to the other benefits of {@action Hunt Prey}, you gain a +2 circumstance bonus to checks to {@action Gather Information} regarding your prey.",
 				"If you already have {@action Hunt Prey}, you become an expert in {@skill Survival} and gain the circumstance bonus to {@action Gather Information} about your prey; you can still designate a creature you're tracking during exploration, in addition to the conditions above."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the bounty hunter archetype.",
@@ -15579,7 +15577,7 @@
 				"archetype": "Bounty Hunter"
 			},
 			"entries": [
-				"You're well-versed in weapons that allow you to bring bounties in alive. You are trained with the following weapons: bola (page 248), sap, and whip. You gain access to bolas. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the weapons listed.",
+				"You're well-versed in weapons that allow you to bring bounties in alive. You are trained with the following weapons: {@item bola|apg}, {@item sap}, and {@item whip}. You gain access to {@item bola|apg|bolas}. Whenever you gain a class feature that grants you expert or greater proficiency in a given weapon or weapons, you also gain that proficiency in the weapons listed.",
 				"In addition, you take no penalty when making a nonlethal attack with a weapon without the {@trait nonlethal} trait."
 			],
 			"page": 163
@@ -15649,8 +15647,7 @@
 			"trigger": "Your prey critically fails on a melee {@action Strike}'s attack roll against you.",
 			"requirements": "Your prey is within your reach, you have at least one free hand, and your target is no more than one size larger than you.",
 			"entries": [
-				"You attempt an {@skill Athletics} check to {@action Grapple} your prey.",
-				"Dedication feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}."
+				"You attempt an {@skill Athletics} check to {@action Grapple} your prey."
 			],
 			"activity": {
 				"number": 1,
@@ -15730,7 +15727,7 @@
             },
             "prerequisites": "{@feat Cavalier Dedication|APG}",
 			"entries": [
-				"You've trained with your shield to defend both yourself and your mount. When you {@action Raise a Shield} while mounted, both you and your mount gain the shield's circumstance bonus to AC. If you have the Shield Block reaction, you can use it in response to your mount taking damage, as long as you're."
+				"You've trained with your shield to defend both yourself and your mount. When you {@action Raise a Shield} while mounted, both you and your mount gain the shield's circumstance bonus to AC. If you have the {@feat Shield Block} reaction, you can use it in response to your mount taking damage, as long as you're riding your mount. If you do, the shield prevents your mount from taking damage instead of preventing you from taking damage, following the normal rules for {@feat Shield Block}."
 			],
 			"page": 164
 		},
@@ -15836,7 +15833,7 @@
             },
             "prerequisites": "{@feat Cavalier Dedication|APG}",
 			"entries": [
-				"You've trained your mount to become a powerful force on the battlefield. The mount you gained through the Cavalier riding your mount. If you do, the shield prevents your mount from taking damage instead of preventing you from taking damage, following the normal rules for Shield Block."
+				"You've trained your mount to become a powerful force on the battlefield. The mount you gained through the Cavalier Dedication feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}."
 			],
 			"page": 164
 		},
