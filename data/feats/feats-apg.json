@@ -723,7 +723,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your fists have been forged by battle, your naturally tough skin and dense bone further hardened by conflict. Your fist unarmed attacks no longer have the {@trait nonlethal} trait and gain the shove weapon trait."
+				"Your fists have been forged by battle, your naturally tough skin and dense bone further hardened by conflict. Your fist unarmed attacks no longer have the {@trait nonlethal} trait and gain the {@trait shove} weapon trait."
 			],
 			"page": 18
 		},
@@ -800,7 +800,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your lethal unarmed attacks leave bloody gouges or cause severe internal bleeding. When you critically hit with a {@action Strike} using an unarmed attack that isn't nonlethal, the target takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}. This can be because you're taking the penalty to use a fist for a lethal attack or because you have an unarmed attack without the {@trait nonlethal} trait due to Iron Fists, Tusks, or a similar ability."
+				"Your lethal unarmed attacks leave bloody gouges or cause severe internal bleeding. When you critically hit with a {@action Strike} using an unarmed attack that isn't {@trait nonlethal}, the target takes {@damage 1d4} {@condition persistent damage||persistent bleed damage}. This can be because you're taking the penalty to use a fist for a lethal attack or because you have an unarmed attack without the {@trait nonlethal} trait due to {@feat Iron Fists|APG}, {@feat Tusks|APG}, or a similar ability."
 			],
 			"page": 18
 		},
@@ -819,7 +819,15 @@
 				"archetype": false
 			},
 			"entries": [
-				"You bear scars or tattoos enhanced by the mark of your community's prowess. When you select this feat, choose one of the options on the following page. When you critically hit using a weapon of the listed group, you apply the weapon's critical specialization effect. You gain a large brand or tattoo."
+				"You bear scars or tattoos enhanced by the mark of your community's prowess. When you select this feat, choose one of the options on the following page. When you critically hit using a weapon of the listed group, you apply the weapon's critical specialization effect. You gain a large brand or tattoo.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Axe} {@group axe} or {@group pick}",
+						"{@b Shield} {@group hammer} or {@group shield}",
+						"{@b Torch} {@group bomb} or {@group knife}"
+					]
+				}
 			],
 			"page": 18
 		},
@@ -856,9 +864,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Orc Ferocity} (Core Rulebook 59)",
+			"prerequisites": "{@feat Orc Ferocity}",
 			"entries": [
-				"You resist death's clutches with supernatural vigor. When you use Orc Ferocity, you gain temporary Hit Points equal to your level."
+				"You resist death's clutches with supernatural vigor. When you use {@feat Orc Ferocity}, you gain temporary Hit Points equal to your level."
 			],
 			"page": 19
 		},
@@ -876,9 +884,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Beast Trainer|APG} or animal companion, {@feat Orc Ferocity} (Core Rulebook 59)",
+			"prerequisites": "{@feat Beast Trainer|APG} or animal companion, {@feat Orc Ferocity}",
 			"entries": [
-				"Since ancient times, the mightiest orc beast tamers would draw out the true fighting spirit of their companion beasts by feeding the creatures a draft incorporating the orc's own blood. Animal companions or bonded animals you have gain the Orc Ferocity feat, and they gain a reaction they can use only for Orc Ferocity. If you have the {@feat Undying Ferocity|APG} ancestry feat, all animal companions or bonded animals you have also gain the benefits of that feat when using the Orc Ferocity reaction."
+				"Since ancient times, the mightiest orc beast tamers would draw out the true fighting spirit of their companion beasts by feeding the creatures a draft incorporating the orc's own blood. Animal companions or bonded animals you have gain the {@feat Orc Ferocity} feat, and they gain a reaction they can use only for {@feat Orc Ferocity}. If you have the {@feat Undying Ferocity|APG} ancestry feat, all animal companions or bonded animals you have also gain the benefits of that feat when using the {@feat Orc Ferocity} reaction."
 			],
 			"page": 19
 		},
@@ -896,7 +904,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Pervasive Superstition} (Core Rulebook 59)",
+			"prerequisites": "{@feat Pervasive Superstition}",
 			"entries": [
 				"You don't just resist magic; you devour it. Whenever you succeed at a saving throw against a spell or {@trait magical} effect, you gain temporary Hit Points equal to double the spell's level, or equal to the level if the {@trait magical} effect isn't a spell. These temporary Hit Points last until the end of your next turn."
 			],
@@ -916,13 +924,10 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Orc Ferocity} (Core Rulebook 59)",
-			"trigger": "You use Orc Ferocity.",
+			"prerequisites": "{@feat Orc Ferocity}",
+			"trigger": "You use {@feat Orc Ferocity}.",
 			"entries": [
-				"You lash out viciously even as you fend off death. Make a single melee {@action Strike}. If this {@action Strike} brings a foe to 0 Hit Points, this activation of Orc Ferocity doesn't count against its frequency.",
-				"Most surface-dwelling humanoids call ysoki \"ratfolk\" and know them as a communal people who prefer cramped conditions, with up to 100 individuals living in a given house. If they can't find homes in town, ysoki may instead live in caves and cavern complexes, as these provide great storage for the many and varied goods they bring back from trading expeditions.",
-				"Ratfolk love to travel, and they can often be found on the road in merchant caravans. They're good with their hands and have a keen eye for spotting anything out of the ordinary, from threats to treasures. They're also inveterate hoarders; ysoki warrens are crammed full of unusual odds and ends gathered by previous generations and stowed away in preparation for some future emergency.",
-				"If you want a character who is smart, fast, well-traveled, and adaptable, try playing a ysoki!"
+				"You lash out viciously even as you fend off death. Make a single melee {@action Strike}. If this {@action Strike} brings a foe to 0 Hit Points, this activation of {@feat Orc Ferocity} doesn't count against its frequency."
 			],
 			"activity": {
 				"number": 1,
@@ -7954,7 +7959,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"In the heat of battle, you are capable of amazing feats of strength. While you are raging, increase your {@condition encumbered} and maximum Bulk limits by 2; you also gain a +1 status bonus to {@skill Athletics} checks to lift heavy objects, {@action Escape}, and {@action Force Open}."
+				"In the heat of battle, you are capable of amazing feats of strength. While you are {@action Rage|CRB|raging}, increase your {@condition encumbered} and maximum Bulk limits by 2; you also gain a +1 status bonus to {@skill Athletics} checks to lift heavy objects, {@action Escape}, and {@action Force Open}."
 			],
 			"page": 108
 		},
@@ -7975,7 +7980,7 @@
 			},
 			"prerequisites": "dragon instinct",
 			"entries": [
-				"Few can sway you from your goals while the fury of combat fills you. While raging, you gain a +2 status bonus to saving throws against {@trait emotion} effects."
+				"Few can sway you from your goals while the fury of combat fills you. While {@action Rage|CRB|raging}, you gain a +2 status bonus to saving throws against {@trait emotion} effects."
 			],
 			"page": 108
 		},
@@ -8079,7 +8084,7 @@
 			"frequency": "once per day",
 			"trigger": "You fail, but don't critically fail, a {@skill Perception} check or a skill check.",
 			"entries": [
-				"Though no one sees them and only you can hear them, the spirits around you constantly chatter, save when you are raging. Sometimes they're even {@condition helpful}. You can heed the spirits' guidance to reroll the triggering check, using the second result even if it's worse."
+				"Though no one sees them and only you can hear them, the spirits around you constantly chatter, save when you are {@action Rage|CRB|raging}. Sometimes they're even {@condition helpful}. You can heed the spirits' guidance to reroll the triggering check, using the second result even if it's worse."
 			],
 			"activity": {
 				"number": 1,
@@ -8105,7 +8110,7 @@
 			},
 			"prerequisites": "{@feat Acute Scent} or precise or imprecise scent",
 			"entries": [
-				"Your scent is preternaturally sharp, and you can always rely on your sense of smell to help guide you when your vision is compromised. When you target a {@condition concealed} or {@condition hidden} opponent while you are raging, you reduce the DC of the flat check to 3 for a {@condition concealed} target or to 9 for a {@condition hidden} one."
+				"Your scent is preternaturally sharp, and you can always rely on your sense of smell to help guide you when your vision is compromised. When you target a {@condition concealed} or {@condition hidden} opponent while you are {@action Rage|CRB|raging}, you reduce the DC of the flat check to 3 for a {@condition concealed} target or to 9 for a {@condition hidden} one."
 			],
 			"page": 109
 		},
@@ -8179,9 +8184,9 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "{@feat Acute Scent}, or precise or imprecise scent and low-light vision",
+			"prerequisites": "{@feat Acute Scent}, or precise or imprecise {@ability scent} and {@ability low-light vision}",
 			"entries": [
-				"Your senses gain even greater clarity. While raging, you gain darkvision if you don't already have it, and the range of your imprecise scent increases to 60 feet."
+				"Your senses gain even greater clarity. While {@action Rage|CRB|raging}, you gain {@ability darkvision} if you don't already have it, and the range of your imprecise {@ability scent} increases to 60 feet."
 			],
 			"page": 110
 		},
@@ -8678,7 +8683,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"Your forceful blows shatter objects with ease. While you are raging, your melee {@action Strike|CRB|Strikes} ignore 5 points of an object's Hardness. If you have the devastator class feature, you instead ignore 10 points of an object's Hardness."
+				"Your forceful blows shatter objects with ease. While you are {@action Rage|CRB|raging}, your melee {@action Strike|CRB|Strikes} ignore 5 points of an object's Hardness. If you have the devastator class feature, you instead ignore 10 points of an object's Hardness."
 			],
 			"page": 111
 		},
@@ -8697,8 +8702,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You have become a brutal, unstoppable force of nature, able to shrug off mortal wounds with ease. You gain resistance equal to 3 + your Constitution modifier to all damage, and your resistance from raging increases to 8 + your Constitution modifier.",
-				"In addition, if you are reduced to 0 Hit Points while raging, you can end your rage as a reaction to stay at 1 Hit Point. If you do, you become {@condition wounded|CRB|wounded 2} (or increase your {@condition wounded} condition by 2 if you are already {@condition wounded})."
+				"You have become a brutal, unstoppable force of nature, able to shrug off mortal wounds with ease. You gain resistance equal to 3 + your Constitution modifier to all damage, and your resistance from {@action Rage|CRB|raging} increases to 8 + your Constitution modifier.",
+				"In addition, if you are reduced to 0 Hit Points while {@action Rage|CRB|raging}, you can end your rage as a reaction to stay at 1 Hit Point. If you do, you become {@condition wounded|CRB|wounded 2} (or increase your {@condition wounded} condition by 2 if you are already {@condition wounded})."
 			],
 			"page": 111
 		},
@@ -14579,7 +14584,7 @@
 			"prerequisites": "{@feat Acrobat Dedication|APG}",
 			"entries": [
 				"You can squeeze out of tight situations surprisingly quickly, gaining an advantage against foes that try to pin you down.",
-				"You gain the Quick {@action Squeeze} skill feat, and if you're a master in {@skill Acrobatics}, you can {@action Squeeze} at full Speed. Whenever you successfully {@action Escape} using {@skill Acrobatics}, the creature you Escaped from is {@condition flat-footed} against the next attack you make against it before the end of your next turn."
+				"You gain the {@feat Quick Squeeze} skill feat, and if you're a master in {@skill Acrobatics}, you can {@action Squeeze} at full Speed. Whenever you successfully {@action Escape} using {@skill Acrobatics}, the creature you {@action Escape|CRB|Escaped} from is {@condition flat-footed} against the next attack you make against it before the end of your next turn."
 			],
 			"page": 155
 		},
@@ -20062,7 +20067,7 @@
             },
             "prerequisites": "{@feat Viking Dedication|APG}",
 			"entries": [
-				"You make a ranged {@action Strike} with a thrown weapon you already have in your hand, {@action Stride}, and then {@action Interact} to draw another weapon. If you are raging, you can add the additional damage with melee weapons you receive from raging to your damage with the thrown weapon."
+				"You make a ranged {@action Strike} with a thrown weapon you already have in your hand, {@action Stride}, and then {@action Interact} to draw another weapon. If you are {@action Rage|CRB|raging}, you can add the additional damage with melee weapons you receive from {@action Rage|CRB|raging} to your damage with the thrown weapon."
 			],
 			"activity": {
 				"number": 1,
