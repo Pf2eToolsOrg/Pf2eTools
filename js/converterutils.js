@@ -50,7 +50,17 @@ class ConverterBase {
 		this.postConversion();
 	}
 
-	cleanString (string, opts) {
+	getPageNumber () {
+		const sliced = this.source.txt.slice(this.converting.index + this.converting[0].length);
+		const nextEven = sliced.match(this.source.patEvenPage);
+		const nextOdd = sliced.match(this.source.patOddPage);
+		if (nextEven.index < nextOdd.index) return Number(nextEven[1]) + this.source.pageOffset;
+		else return Number(nextOdd[1]) + this.source.pageOffset;
+	}
+}
+
+class ConverterUtils {
+	static cleanString (string, opts) {
 		opts = opts || {};
 		if (!opts.ignoreMultiLinebreak) {
 			string = string.replace(/\n\n\n.+/s, "");
@@ -65,29 +75,26 @@ class ConverterBase {
 		return string
 	}
 
-	cleanEntry (rawEntry) {
-		let entries;
+	static cleanEntry (rawEntry) {
+		let entries = [];
 		if (rawEntry.includes("•")) {
-			// handle lists
+			const bullets = rawEntry.split("•").map(it => it.trim()).filter(it => it.length);
+			entries.push(ConverterUtils.cleanString(bullets[0], {cleanWhitespace: true}));
+			const list = {"type": "list", "items": bullets.slice(1, bullets.length - 1)}
+			// TODO: Clean *this*
+			const afterList = bullets.last().split(".\n").map(s => s.trim().replace(/(?<![\W])$/, "."));
+			list.items.push(afterList[0]);
+			list.items = list.items.map(s => ConverterUtils.cleanString(s, {cleanWhitespace: true}));
+			// .replace(/^(?:[A-Z]\S+ (\S+ )?)+(?=[A-Z]\S*|[([])/, (...m) => `{@b ${m[0].trim()}}`)
+			entries.push(list);
+			entries.push(...afterList.slice(1).map(it => ConverterUtils.cleanString(it, {cleanWhitespace: true})));
 		} else {
-			// split by .\n
 			entries = rawEntry.split(".\n").filter(it => it.replace(/\s/g, "").length)
-				.map(s => this.cleanString(s, {cleanWhitespace: true}));
+				.map(s => s.trim().replace(/(?<![\W])$/, "."))
+				.map(s => ConverterUtils.cleanString(s, {cleanWhitespace: true}));
 		}
 		return entries;
 	}
-
-	getPageNumber () {
-		const sliced = this.source.txt.slice(this.converting.index + this.converting[0].length);
-		const nextEven = sliced.match(this.source.patEvenPage);
-		const nextOdd = sliced.match(this.source.patOddPage);
-		if (nextEven.index < nextOdd.index) return Number(nextEven[1]) + this.source.pageOffset;
-		else return Number(nextOdd[1]) + this.source.pageOffset;
-	}
-}
-
-class ConverterUtils {
-	// TODO:
 }
 
 class TaggerUtils {
@@ -321,6 +328,7 @@ if (typeof module !== "undefined") {
 	module.exports = {
 		Source,
 		ConverterBase,
+		ConverterUtils,
 		TaggerUtils,
 		ActionSymbolTag,
 		DiceTag,

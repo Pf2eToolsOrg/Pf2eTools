@@ -42,7 +42,7 @@ class PageFilter {
 					else if (typeof values === "object") {
 						const regex = new RegExp(values.regex, values.flags);
 						Array.from(trt.matchAll(regex)).forEach(m => {
-							entity[prop].push(values.value.replace(/(?<!\\)\$(\d+)/g, g => m[Number(g[1])]));
+							entity[prop].push(values.value.replace(/\$(\d+)/g, g => m[Number(g[1])]));
 						});
 					}
 				}));
