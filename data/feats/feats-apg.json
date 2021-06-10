@@ -5776,6 +5776,7 @@
 			"source": "APG",
 			"name": "You're Next",
 			"level": 1,
+			"add_hash": "Swashbuckler",
 			"traits": [
 				"Emotion",
 				"Fear",
@@ -9410,7 +9411,7 @@
 				"skill": false,
 				"archetype": false
 			},
-			"trigger": "You would take damage from a {@action Strike} or spell that doesn't have the {@trait death} trait or otherwise cause instant death (such as disintegrate).",
+			"trigger": "You would take damage from a {@action Strike} or spell that doesn't have the {@trait death} trait or otherwise cause instant death (such as {@spell disintegrate}).",
 			"entries": [
 				"Using your occult connections and incredible powers of persuasion, you convince yourself that the triggering damage is a figment of your imagination. The damage changes from its usual damage type to mental damage, and the damaging effect gains the {@trait nonlethal} trait. You can't use this reaction if you are immune to {@trait mental} effects or mental damage."
 			],
@@ -13966,7 +13967,7 @@
 			},
 			"prerequisites": "{@feat Basic Deduction|APG}",
 			"entries": [
-				"You gain one investigator feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
+				"You gain one {@filter investigator|feats|classes=investigator} feat. For the purpose of meeting its prerequisites, your investigator level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another investigator feat.",
 			"page": 151
@@ -14150,7 +14151,7 @@
 			},
 			"prerequisites": "{@feat Basic Mysteries|APG}",
 			"entries": [
-				"You gain one oracle feat. For meeting its prerequisites, your oracle level is equal to half your level."
+				"You gain one {@filter oracle|feats|classes=oracle} feat. For meeting its prerequisites, your oracle level is equal to half your level."
 			],
 			"special": "You can select this feat more than once. Each time, you gain another oracle feat.",
 			"page": 152
@@ -14310,7 +14311,7 @@
 			},
 			"prerequisites": "{@feat Basic Flair|APG}",
 			"entries": [
-				"You gain one swashbuckler feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
+				"You gain one {@filter swashbuckler|feats|classes=swashbuckler} feat. For the purpose of meeting its prerequisites, your swashbuckler level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another swashbuckler feat.",
 			"page": 153
@@ -14470,7 +14471,7 @@
 			},
 			"prerequisites": "{@feat Basic Witchcraft|APG}",
 			"entries": [
-				"You gain one witch feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
+				"You gain one {@filter witch|feats|classes=witch} feat. For the purpose of meeting its prerequisites, your witch level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another witch feat.",
 			"page": 154
@@ -14915,7 +14916,7 @@
 			},
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with all advanced bows as if they were martial weapons in the bow weapon group."
+				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items|group=bow|rarity=uncommon} as if they were martial weapons in the {@group bow} weapon group."
 			],
 			"page": 157
 		},
@@ -14935,7 +14936,7 @@
 			},
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"You are a dynamo with the crossbow. You gain a +2 circumstance bonus to damage with crossbows. If the crossbow is a simple weapon, also increase the damage die size for your attacks made with that crossbow by one step. As normal, this damage die increase can't be combined with other abilities that alter the weapon damage die (such as the ranger feat Crossbow Ace)."
+				"You are a dynamo with the crossbow. You gain a +2 circumstance bonus to damage with crossbows. If the crossbow is a simple weapon, also increase the damage die size for your attacks made with that crossbow by one step. As normal, this damage die increase can't be combined with other abilities that alter the weapon damage die (such as the ranger feat {@feat Crossbow Ace})."
 			],
 			"page": 157
 		},
@@ -19412,7 +19413,7 @@
 			},
 			"prerequisites": "{@feat Shadow Magic|APG}",
 			"entries": [
-				"Choose an additional shadowdancer focus spell you haven't already selected from Shadow Magic. Increase the number of Focus Points in your pool by 1."
+				"Choose an additional shadowdancer focus spell you haven't already selected from {@feat Shadow Magic|APG}. Increase the number of Focus Points in your pool by 1."
 			],
 			"page": 192
 		},
