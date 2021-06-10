@@ -1196,11 +1196,9 @@ function Renderer () {
 			this._recursiveRender(entry.entries[i], textStack, meta, {prefix: "<i>", suffix: "</i>"});
 			textStack[0] += `${i === len - 1 && !entry.skipMarks ? "&rdquo;" : ""}</p>`;
 		}
-		if (entry.by) {
-			textStack[0] += `<p>`;
-			const tempStack = [""];
-			this._recursiveRender(entry.by, tempStack, meta);
-			textStack[0] += `<span class="rd__quote-by">\u2014 ${tempStack.join("")}${entry.from ? `, <i>${renderer.render(entry.from)}</i>` : ""}</span>`;
+		if (entry.by || entry.from) {
+			textStack[0] += `<p> <span class="rd__quote-by">\u2014 `;
+			textStack[0] += `${entry.by != null ? `${renderer.render(entry.by)}, ` : ""}${entry.from ? `<i>${renderer.render(entry.from)}</i>` : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
 	};
@@ -3782,7 +3780,7 @@ Renderer.deity = {
 	},
 
 	getClericSpells (spells) {
-		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ");
+		return Object.keys(spells).map(k => `${Parser.getOrdinalForm(k)}: ${spells[k].map(s => `{@spell ${s}}`).join(", ")}`).join(", ").replace(/ \((.+)\)\}/g, `} ($1)`);
 	},
 
 	getDevoteeBenefits (deity) {
@@ -6642,6 +6640,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@place":
 					case "@plane":
 					case "@nation":
+					case "@ritual":
 					case "@settlement":
 					case "@deity":
 					case "@variantrule": {
