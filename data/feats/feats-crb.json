@@ -18590,9 +18590,9 @@
 				],
 				"archetype": false
 			},
-			"prerequisites": "master in {@skill Crafting}, Specialty {@skill Crafting}",
+			"prerequisites": "master in {@skill Crafting}, {@feat Specialty Crafting}",
 			"entries": [
-				"You craft flawless creations with great efficiency. Whenever you roll a success at a {@skill Crafting} check to make an item of the type you chose with Specialty {@skill Crafting}, you get a critical success instead."
+				"You craft flawless creations with great efficiency. Whenever you roll a success at a {@skill Crafting} check to make an item of the type you chose with {@feat Specialty Crafting}, you get a critical success instead."
 			],
 			"page": 262
 		},
@@ -19727,10 +19727,78 @@
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
 				"Your training focused on {@skill Crafting} one particular kind of item.",
-				"Select one of the specialties listed on page 267; you gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Craft} items of that type. If you are a master in {@skill Crafting}, this bonus increases to +2.",
+				"Select one of the specialties; you gain a +1 circumstance bonus to {@skill Crafting} checks to {@action Craft} items of that type. If you are a master in {@skill Crafting}, this bonus increases to +2.",
 				"If it's unclear whether the specialty applies, the GM decides.",
 				"Some specialties might apply only partially. For example, if you were making a morningstar and had specialty in woodworking, the GM might give you half your bonus because the item requires both blacksmithing and woodworking.",
-				"Specialty Applicable Items Alchemy* Alchemical items such as elixirs Artistry Fine art, including jewelry Blacksmithing Durable metal goods, including metal armor Bookmaking Books and paper Glassmaking Glass, including glassware and windows Leatherworking Leather goods, including leather armor Pottery Ceramic goods Shipbuilding Ships and boats Stonemasonry Stone goods and structures Tailoring Clothing Weaving Textiles, baskets, and rugs Woodworking Wooden goods and structures * You must have the Alchemical {@skill Crafting} skill feat to {@action Craft} alchemical items."
+				{
+					"type": "table",
+					"source": "CRB",
+					"page": 267,
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-left",
+						"text-left"
+					],
+					"rows": [
+						[
+							"Specialty",
+							"Applicable Items"
+						],
+						[
+							"Alchemy*",
+							"{@filter Alchemical items|items|item=alchemical} such as {@filter elixirs|items|category=elixir}"
+						],
+						[
+							"Artistry",
+							"Fine art, including jewelry"
+						],
+						[
+							"Blacksmithing",
+							"Durable metal goods, including {@filter metal armor|items|group=plate;chain;composite}"
+						],
+						[
+							"Bookmaking",
+							"Books and paper"
+						],
+						[
+							"Glassmaking",
+							"Glass, including glassware and windows"
+						],
+						[
+							"Leatherworking",
+							"Leather goods, including {@filter leather armor|items|group=leather}"
+						],
+						[
+							"Pottery",
+							"Ceramic goods"
+						],
+						[
+							"Shipbuilding",
+							"Ships and boats"
+						],
+						[
+							"Stonemasonry",
+							"Stone goods and structures"
+						],
+						[
+							"Tailoring",
+							"Clothing"
+						],
+						[
+							"Weaving",
+							"Textiles, baskets, and rugs"
+						],
+						[
+							"Woodworking",
+							"Wooden goods and structures"
+						]
+					],
+					"footnotes": [
+						"*You must have the {@feat Alchemical Crafting} skill feat to {@action Craft} {@filter alchemical items|items|item=alchemical}"
+					]
+				}
 			],
 			"page": 266
 		},

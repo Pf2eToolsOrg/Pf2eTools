@@ -1,6 +1,6 @@
 ## Pf2e.tools
 
-Visit the [main site (not yet)](Pf2eTools.html) or go to the unofficial GitHub [mirror](https://pf2etools.github.io/Pf2eTools.html).
+Visit the main site (not yet) or go to the unofficial GitHub [mirror](https://pf2etools.github.io/Pf2eTools.html).
 
 [Join the Pf2eTools Discord here!](https://discord.gg/2hzNxErtVu)
 

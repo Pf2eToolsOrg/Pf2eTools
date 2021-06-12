@@ -4122,8 +4122,8 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 			if (item.category) {
 				renderStack.push(`<strong>Category&nbsp;</strong>`);
-				if (item.subCategory != null) renderStack.push(`${item.subCategory}`);
-				if (item.category === "Weapon") renderStack.push(` ${item.ranged ? "Ranged" : "Melee"} `);
+				if (item.subCategory != null) renderStack.push(`${item.subCategory} `);
+				if (item.category === "Weapon") renderStack.push(`${item.ranged ? "Ranged" : "Melee"} `);
 				renderStack.push(`${item.category}${item.category === "Worn" ? `&nbsp;${item.type}` : ""}`);
 			}
 			if (item.category != null && item.group != null) renderStack.push("; ")
