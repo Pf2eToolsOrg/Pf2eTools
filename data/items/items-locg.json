@@ -12,14 +12,14 @@
 				"Magical",
 				"Worn"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "worn cloak",
 			"bulk": "1",
 			"entries": [
 				"This gaudy and extravagant cloak is adorned with brilliant gems and a fur trim. While wearing the cloak, you gain instant fame and notoriety, granting you a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}. Creatures attempting to learn about you gain the same bonus to {@action Gather Information} about you.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -31,7 +31,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You wield your great stature to make a {@action Request} of a creature. If you roll a success on the check, you get a critical success instead."
 					]
 				}
@@ -84,7 +84,6 @@
 				"Conjuration",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "1",
@@ -92,7 +91,8 @@
 				"This dark iron door knocker comes in a variety of shapes, such as a bird clutching a ring in its talons or a gargoyle holding a ring in its mouth. Placing the door knocker on the surface of a door (an {@action Interact} action) causes it to attach and remain in place. While in place, the door knocker whispers hints to you while you attempt to unlock the door, granting a +1 item bonus to {@skill Thievery} checks to {@action Pick a Lock}.",
 				"Removing the door knocker from a surface requires you to use an {@action Interact} action.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -105,7 +105,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You place the door knocker against a wall, floor, or ceiling. The door knocker fuses in place and creates a usable door within the surface. Any creature can move through the door normally, as if the door had always been there. The door can penetrate up to 1 foot of material, so thick material, such as heavy stone walls, can cause this effect to fail, expending its use for the day. A thin layer of metal in a wall, floor, or ceiling also causes the effect to fail. You can use an {@action Interact} action to release the door knocker from the surface and return the surface to its previous shape."
 					]
 				}
@@ -160,7 +160,6 @@
 				"Magical",
 				"Talisman"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -197,14 +196,14 @@
 				"Magical",
 				"Worn"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "worn cloak",
 			"bulk": "1",
 			"entries": [
 				"This long, shoddy cloak bears a hood and a simple brass clasp. While wearing the cloak, you gain a +1 item bonus to {@skill Deception} checks to {@action Impersonate} an individual and to {@action Lie} while in character as that individual.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -217,7 +216,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "You are Impersonating someone else",
-					"effect": [
+					"entries": [
 						"While conversing or otherwise casually interacting with other creatures, you can adjust the mantle's clasp to modify those creatures' recollections of the last 5 minutes of their interaction with you. Each creature must attempt a DC 25 Will save.",
 						{
 							"type": "successDegree",
@@ -280,7 +279,6 @@
 				"Evocation",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -307,7 +305,6 @@
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -335,7 +332,6 @@
 				"Good",
 				"Light"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -371,7 +367,6 @@
 				"Illusion",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -383,7 +378,8 @@
 			"entries": [
 				"Sinister knight armor shrouds the wearer's identity in secrecy, allowing Crimson Reclaimers to pass among foes without being immediately unmasked. The wearer gains a +1 item bonus to {@skill Deception} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -395,7 +391,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"With a thought, the wearer activates a disguise. While the sinister knight armor's disguise is active, any identifying insignia or aesthetic of the armor is replaced by generic malevolent aesthetics such as spikes or demonic faces. While in the disguise, the wearer is always considered to be taking precautions against lifesense, and even a creature that successfully notices the wearer with its lifesense mistakes the wearer for an undead unless it critically succeeds at its {@skill Perception} check or the wearer critically fails a {@skill Deception} or {@skill Stealth} check. Finally, while in the disguise, the rune attempts to counteract {@trait any} effects that would reveal your alignment; on a successful counteract check, rather than negate the effect, the rune causes the effect to perceive your alignment as evil (maintaining any lawful or chaotic component of your alignment)",
 						"The wearer can {@action Dismiss} the disguise, and if the wearer's armor is removed, the disguise deactivates automatically."
 					]
@@ -414,7 +410,6 @@
 				"Evocation",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -426,7 +421,8 @@
 			"entries": [
 				"A serrating weapon's bladed edge separates into jagged, swirling shards that spin along the blade. When dealing slashing damage, the weapon deals an additional {@dice 1d4} damage.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -438,7 +434,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You brandish the weapon and focus its power, causing the serrated shards to buzz as they spin at a dizzying speed. On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional {@dice 1d12} damage instead of the additional {@dice 1d4} damage, and then the shards return to their usual speed."
 					]
 				}
@@ -458,7 +454,6 @@
 				"Light",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -491,7 +486,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -520,7 +514,6 @@
 			"traits": [
 				"Uncommon"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -548,7 +541,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -575,7 +567,6 @@
 				"Magical",
 				"Talisman"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -611,7 +602,6 @@
 				"Illusion",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -623,7 +613,8 @@
 			"entries": [
 				"This coin usually resembles ancient currency. An intricate matrix of gold and platinum wires inside the coin causes it to float an inch in the air and spin if placed on a wayfinder.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -635,7 +626,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The coin is levitating above a wayfinder",
-					"effect": [
+					"entries": [
 						"You give the coin a message of 25 words or fewer. The message repeats in your voice the next time the coin is floated above a wayfinder. A Pathfinder's coin can hold only one message at a time, and it replays its message only once."
 					]
 				}
@@ -656,7 +647,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -669,7 +659,8 @@
 				"This unobtrusive belt pouch is popular among Pathfinders who operate in places where the {@skill Society} is not welcome. It is constantly under the effects of a 3rd-level {@spell magic aura} spell to appear non-magical. The pouch's normal space holds as much as an ordinary belt pouch, but it also has a small extradimensional space that holds up to 1 Bulk of items.",
 				"A creature actively inspecting the pouch in its ordinary state discovers the existence of the extradimensional space only on a critical success to {@action Search} the pouch (see the Concealing an Item action of the {@skill Stealth} skill), though when the extradimensional space is active, it's obvious to anyone examining the pouch that it is more than it seems.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -681,7 +672,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You switch the pouch to allow access to its extradimensional space instead of its normal space, or vice versa. This lasts until you next activate it. Items in the other space are inaccessible and hard to find until you switch the pouch back."
 					]
 				}
@@ -700,14 +691,14 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
 			"entries": [
 				"The four different types of scroll cases of simplicity often bear adornments appropriate to their magical tradition, such as angelic wings or otherworldly lettering. On the inside, intricate runic diagrams spiral out to surround the scroll stored within. A scroll placed within the case can be converted into energy to cast consistently useful spells depending on its type. You must be able to cast spells of a given tradition to use a scroll case of simplicity of a corresponding type.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -719,7 +710,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The scroll case contains a single scroll of a 1st‑level spell",
-					"effect": [
+					"entries": [
 						"You transfer the scroll's energy into the scroll case, consuming the scroll, and you can immediately begin casting one of the scroll case's spells. If you use any action other than to {@action Cast a Spell} from the scroll case after activating the scroll case of simplicity, the scroll and its energy are lost."
 					]
 				}
@@ -740,7 +731,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -752,7 +742,8 @@
 			"entries": [
 				"A shining wayfinder is a polished silver compass blessed by the power of benevolent deities. It has the usual functions of a wayfinder, except instead of an activation to cast {@spell light}, the shining wayfinder has the following two activations.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -765,12 +756,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold the wayfinder and ask for guidance. The wayfinder casts guidance on you."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -783,7 +775,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call upon the wayfinder's divine blessings for yourself and your allies. The wayfinder casts bless, with an emanation centered on itself. Once per turn, you can use a single action, which has the {@trait concentrate} trait, to increase the emanation's radius by 5 feet."
 					]
 				}
@@ -803,7 +795,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -815,7 +806,8 @@
 			"entries": [
 				"A vanishing wayfinder is crafted of ivory chased with gold and silver. It has the usual functions of a wayfinder and the following additional activation.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -828,7 +820,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You turn the wayfinder in a circle while invoking its command word, gaining the effects of a 2nd‑level {@spell invisibility} spell for 5 minutes."
 					]
 				}

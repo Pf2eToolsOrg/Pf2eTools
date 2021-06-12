@@ -11,7 +11,6 @@
 				"Divination",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -36,7 +35,6 @@
 				"Conjuration",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -62,7 +60,6 @@
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -74,7 +71,8 @@
 			"entries": [
 				"Access follower of Achaekek This tiny serrated dagger looks like a miniature sawtooth sabre. Until activated, it is too small and ornamental to function as a weapon, which might allow it to be passed off as a weapon-shaped decoration.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -86,7 +84,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You transform the dagger of eternal sleep into a +1 grievous striking dagger and {@action Strike} an {@condition unconscious} target with the dagger. If you are not in an encounter or otherwise threatened and you roll a hit with your {@action Strike}, you get a critical hit instead. The damage from the {@action Strike} and the bleed from the critical specialization effect do not awaken the target, though the target becomes temporarily immune to this effect until the next time it wakes up, meaning further daggers of eternal sleep awaken it as normal. The dagger disintegrates immediately after use."
 					]
 				}
@@ -105,14 +103,14 @@
 				"Evocation",
 				"Magical"
 			],
-			"consumable": true,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
 			"entries": [
 				"Access follower of Rovagug Contained in a specially enchanted small leather or hide sack, deteriorating dust is a potent caustic agent and a prized item among Rovagug's more discreet followers.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -124,7 +122,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You sprinkle the deteriorating dust over an unattended Medium or smaller object. The dust quickly fades to a transparent color and the object immediately begins to rust, melt, or otherwise fall apart.",
 						"For the listed time, the object takes constant damage; if the object has a Hardness, then the dust gradually reduces the object's Hardness instead. If the deteriorating dust is still active after the object's Hardness is reduced to 0, it deals damage to the object as previously described. If the object survives, reduced Hardness returns after the dust's duration expires, but any damage remains."
 					]
@@ -181,7 +179,6 @@
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -193,7 +190,8 @@
 			"entries": [
 				"Access follower of Urgathoa This black-and-gray thurible is decorated with a skeleton motif; the jaw of one of the decorative skulls unhinges, allowing you to load it with incense as an action. A long, thin chain is connected to the top of the thurible.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -205,7 +203,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You swing the thurible around you, spreading inky black smoke in a 20-foot emanation that has the effect of obscuring mist.",
 						"Undead creatures can see through the smoke as if it didn't exist. Negative energy also disrupts the magic of the smoke; anyone who uses a {@trait negative} effect, along with creatures affected by a {@trait negative} effect, can see through the smoke for 1 round."
 					]
@@ -224,7 +222,6 @@
 				"Enchantment",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -236,7 +233,8 @@
 			"entries": [
 				"Access follower of Shelyn This +2 holy greater striking glaive has a long, multi-tailed rainbow-colored banner affixed to the butt of the pole in the style of Shelyn's religious symbol. While wielding the glaive, you gain a +2 item bonus on {@skill Crafting} and {@skill Performance} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -248,12 +246,13 @@
 					"frequency": "once per round",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You furl one of the colored tails around the pole, causing the glaive to gain the effects of your choice of the corrosive, flaming, frost, shocking, or thundering property runes for 1 round, depending on the tail you chose."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -265,7 +264,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You thrust the blade of the glaive into the ground, activating the power of the banner. (The blade can penetrate any non-metallic surface when used in this way, and does not leave a mark when withdrawn.) As long as the glaive is thrust into the ground and standing upright, all allies within 60 feet who can see the glaive's banner gain a +2 item bonus to {@skill Performance} checks."
 					]
 				}
@@ -286,7 +285,6 @@
 				"Magical",
 				"Talisman"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -323,7 +321,6 @@
 				"Necromancy",
 				"Nonlethal"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -351,7 +348,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -363,7 +359,8 @@
 			"entries": [
 				"This ornate headgear comes in many different shapes and sizes, though most are elaborately decorated with motifs of the deity whose honor in which it was made. The miter brings you spiritually closer to your deity's servitors, granting you a +2 item bonus to {@skill Religion} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -375,7 +372,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You chant for a minute about a task at hand for the coming week to cast a 4th-level {@spell read omens} spell that grants you cryptic but useful advice."
 					]
 				}
@@ -392,7 +389,6 @@
 				"Divination",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -404,7 +400,8 @@
 			"entries": [
 				"This matching mortar and pestle are made from immaculate darkwood that looks nearly olive in the right light.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -416,7 +413,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You use the mortar of {@condition hidden} meaning to grind tea leaves (or another suitable substance for making a hot beverage). While grinding the tea leaves, which takes no less than 1 minute, you can speak a message into the mortar. After the leaves are steeped in hot water, the first person who drinks from the resulting brew hears the message whispered in their ear."
 					]
 				}
@@ -435,7 +432,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -448,7 +444,8 @@
 				"Access follower of Pharasma This necklace strung with miniature stone throwing knives.",
 				"As long as you wear it, you are never without a weapon, a crude surgical tool, or stake for a vampire, if necessary in following Pharasma's teachings.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -460,7 +457,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You pluck a miniature knife from the necklace, and it grows into a normal stone, steel, or wooden dagger for as long as you hold it, fading away 1 round after it leaves your hand. No matter how many knives you pull from the necklace, you never seem to deplete them. Wooden daggers from the necklace are as effective as ordinary steel daggers and can be useful to stake vampires."
 					]
 				}
@@ -478,7 +475,6 @@
 				"Conjuration",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -490,7 +486,8 @@
 			"entries": [
 				"Access follower of Hanspur The haft of this +2 striking trident is carved with intricate designs of swarming rodents sacred to Hanspur, the drowned god of the Sellen River. When used against a swarm, it ignores the swarm's resistance to piercing damage, if any.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -502,7 +499,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"While floating down a river on a raft or boat, you plunge the rat-catcher trident into the water. The trident casts a 5th-level {@spell control water} spell on the body of water."
 					]
 				}
@@ -520,7 +517,6 @@
 				"Enchantment",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -533,7 +529,8 @@
 				"Access follower of Irori In true Iroran form, the simplicity of this small, inverted copper bell belies its flawlessness.",
 				"When struck with a mallet (included with the singing bowl), it emits a harmonious tone that inspires bodily perfection in those who know how to hear it.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -545,7 +542,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"While holding the singing bowl of the versatile stance with one hand, you strike the lip of it with a mallet held in the other.",
 						"Anyone within 60 feet currently in a stance can spend a reaction to use one of their stance actions in order to change to a different stance."
 					]
@@ -565,7 +562,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
