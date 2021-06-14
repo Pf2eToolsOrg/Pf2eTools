@@ -75,6 +75,7 @@ class PageFilterDeities extends PageFilter {
 		if (g.intercession) g._fMisc.push("Has Divine Intercession")
 		if (g.core === true) g._fMisc.push("Core")
 		if (g.hasLore === true) g._fMisc.push("Has Lore")
+		if (g.images) g._fMisc.push("Has Images")
 	}
 
 	addToFilters (g, isExcluded) {
