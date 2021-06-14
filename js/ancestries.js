@@ -825,7 +825,7 @@ class AncestriesPage extends BaseComponent {
 			$$`<p>No image available.</p>`.appendTo($summaryImage);
 		}
 		$summaryText.show();
-		$summaryImage.show();
+		// $summaryImage.show();
 	}
 
 	_render_renderAncestry () {

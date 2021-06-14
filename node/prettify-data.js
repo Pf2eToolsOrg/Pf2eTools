@@ -16,47 +16,38 @@ const PROPS_TO_UNHANDLED_KEYS = {};
 
 function getFnListSort (prop) {
 	switch (prop) {
-		case "spell":
-		case "monster":
-		case "monsterFluff":
-		case "action":
+		case "variantrule":
+		case "table":
+		case "tableGroup":
+		case "bookData":
+		case "ancestry":
+		case "versatileHeritage":
 		case "background":
-		case "legendaryGroup":
-		case "language":
-		case "condition":
-		case "disease":
-		case "status":
-		case "cult":
-		case "boon":
+		case "subclass":
+		case "archetype":
 		case "feat":
-		case "vehicle":
-		case "vehicleUpgrade":
-		case "backgroundFluff":
-		case "conditionFluff":
-		case "spellFluff":
-		case "itemFluff":
-		case "languageFluff":
-		case "vehicleFluff":
-		case "raceFluff":
+		case "companion":
+		case "familiar":
+		case "hazard":
+		case "action":
+		case "creature":
+		case "condition":
 		case "item":
 		case "baseitem":
-		case "variant":
-		case "itemGroup":
-		case "object":
-		case "optionalfeature":
-		case "psionic":
-		case "reward":
-		case "variantrule":
-		case "race":
-		case "table":
-		case "trap":
-		case "hazard":
-		case "charoption":
-		case "charoptionFluff":
-		case "recipe":
-			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
+		case "spell":
+		case "disease":
+		case "curse":
+		case "itemcurse":
+		case "ability":
 		case "deity":
-			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.pantheon, b.pantheon);
+		case "language":
+		case "place":
+		case "ritual":
+		case "vehicle":
+		case "trait":
+		case "group":
+		case "domain":
+			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "class":
 			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "classFeature": return (a, b) => SortUtil.ascSortLower(a.classSource, b.classSource)
@@ -75,8 +66,6 @@ function getFnListSort (prop) {
 		case "adventure":
 		case "book":
 			return (a, b) => SortUtil.ascSortDate(new Date(b.published), new Date(a.published) || SortUtil.ascSortLower(a.name, b.name));
-		case "trait":
-			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.source, b.source) || SortUtil.ascSortLower(a.name, b.name);
 		default: throw new Error(`Unhandled prop "${prop}"`);
 	}
 }
@@ -96,7 +85,6 @@ function prettifyFolder (folder) {
 				.forEach(([k, v]) => {
 					if (PropOrder.hasOrder(k)) {
 						PROPS_TO_UNHANDLED_KEYS[k] = PROPS_TO_UNHANDLED_KEYS[k] || new Set();
-						json[k].forEach(t => t.categories = t.categories || [])
 
 						json[k] = v.map(it => PropOrder.getOrdered(it, k, {fnUnhandledKey: uk => PROPS_TO_UNHANDLED_KEYS[k].add(uk)}));
 
@@ -117,5 +105,5 @@ function prettifyFolder (folder) {
 		})
 }
 
-prettifyFolder(`./trash`);
+prettifyFolder(`./data`);
 console.log("Prettifying complete.");

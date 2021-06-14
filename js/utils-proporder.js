@@ -170,6 +170,7 @@ PropOrder._BACKGROUND = [
 	"page",
 	"otherSources",
 
+	"traits",
 	"entries",
 
 	"boosts",
@@ -192,6 +193,7 @@ PropOrder._CLASS = [
 	"classFeatures",
 	"subclasses",
 
+	"classFeaturesIntro",
 	"flavor",
 	"fluff",
 	"summary",
@@ -213,6 +215,7 @@ PropOrder._FEAT = [
 	"otherSources",
 	"add_hash",
 
+	"activity",
 	"level",
 	"featType",
 	"traits",
@@ -274,6 +277,7 @@ PropOrder._HAZARD = [
 	"page",
 	"otherSources",
 
+	"level",
 	"traits",
 	"stealth",
 	"description",
@@ -329,6 +333,7 @@ PropOrder._CREATURE = [
 	"size",
 	"type",
 	"traits",
+	"creatureType",
 
 	"perception",
 	new PropOrder._ObjectKey("senses", {
@@ -396,6 +401,7 @@ PropOrder._ITEM = [
 	"page",
 	"otherSources",
 
+	"equipment",
 	"type",
 	"level",
 
@@ -405,6 +411,7 @@ PropOrder._ITEM = [
 	"usage",
 	"bulk",
 	"ac",
+	"ac2", // FIXME:
 	"dexCap",
 	"shieldStats",
 	"str",
@@ -418,9 +425,11 @@ PropOrder._ITEM = [
 	"hands",
 	"reload",
 	"range",
+	"ranged",
 	"category",
 	"subCategory",
 	"group",
+	"appliesTo",
 
 	"perception",
 	"communication",
@@ -465,6 +474,8 @@ PropOrder._SPELL = [
 	"entries",
 
 	"heightened",
+
+	"hasBattleForm",
 ];
 PropOrder._AFFLICTION = [
 	"name",
@@ -473,6 +484,7 @@ PropOrder._AFFLICTION = [
 	"otherSources",
 
 	"type",
+	"level",
 	"traits",
 	"usage",
 	"entries",
@@ -508,9 +520,12 @@ PropOrder._DEITY = [
 
 	new PropOrder._ObjectKey("devoteeBenefits", {
 		order: [
+			"edicts",
+			"anathema",
 			"font",
 			"ability",
 			"skill",
+			"domains",
 			"alternateDomains",
 			"spells",
 			"weapon",
@@ -542,6 +557,7 @@ PropOrder._PLACE = [
 	"otherSources",
 
 	"category",
+	"level",
 	"traits",
 	"sections",
 ];
@@ -558,6 +574,7 @@ PropOrder._RITUAL = [
 	"secondaryCasters",
 	"primaryCheck",
 	"secondaryCheck",
+	"requirements",
 	"range",
 	"area",
 	"targets",

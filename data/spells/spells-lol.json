@@ -1,269 +1,46 @@
 {
 	"spell": [
 		{
-			"source": "LOL",
-			"name": "Spirit Object",
-			"level": 0,
-			"school": "N",
-			"type": "CANTRIP",
-			"focus": true,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Rare",
-				"Hex",
-				"Necromancy",
-				"Witch"
-			],
-			"entries": [
-				"Using a sliver of Baba Yaga's power, you briefly bring an object to life. The object gains a means of locomotion, such as sprouting chicken legs, and Strides up to 25 feet to a space you decide within range. If you spent 2 actions Casting the Spell, the object then attacks one creature of your choice adjacent to its new space. Make a melee spell attack roll against the creature. On a success, the creature takes bludgeoning, piercing, or slashing damage (as appropriate for the object) equal to {@dice 1d4} plus your spellcasting ability modifier, and on a critical success, it takes double damage."
-			],
-			"cast": {
-				"number": 1,
-				"unit": "Varies",
-				"entry": "{@as 1} or {@as 2}"
-			},
-			"range": {
-				"type": "point",
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"targets": "1 unattended object up to 1 Bulk",
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "Increase the maximum Bulk of the target by 1 and the damage by {@dice 1d4}."
-				},
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 32
-		},
-		{
-			"source": "LOL",
-			"name": "Glacial Heart",
-			"level": 5,
-			"school": "V",
-			"type": "FOCUS",
-			"focus": true,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Rare",
-				"Evocation",
-				"Hex",
-				"Witch"
-			],
-			"entries": [
-				"Ice and bone-deep cold assail the target, freezing it from the inside out. The frosty assault deals {@damage 10d6} cold damage, subject to the target's Fortitude save. After the effects are resolved, the target is temporarily immune for 1 day.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half damage and is {@condition slowed|CRB|slowed 1} for 1 round. The spell ends.",
-						"Failure": "The target takes full damage, is {@condition slowed|CRB|slowed 1}, and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure), to a maximum of {@condition slowed|CRB|slowed 4}. On a success, the {@condition slowed} condition decreases by 1. If at any point the {@condition slowed} condition is reduced to 0, the spell ends. Once a creature's actions are reduced to 0 by this {@condition slowed} condition, the creature is completely encased in ice. It continues making saves against glacial heart, possibly allowing it to reduce its {@condition slowed} condition enough that it can act. This ice has Hardness 4 and 8 Hit Points, and its DC to {@action Force Open} is your spell DC. Breaking the ice frees the creature and ends the spell. If someone other than the target breaks the ice from outside, the target is {@condition stunned|CRB|stunned 1} and takes any damage dealt by the breaking effect in excess of the ice's Hit Points.",
-						"Critical Failure": "As failure, but the target takes double damage and is initially {@condition slowed|CRB|slowed 2}."
-					}
-				}
-			],
-			"cast": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"range": {
-				"type": "point",
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrow": "Fortitude",
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "Increase the cold damage by {@dice 2d6}."
-				},
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 32
-		},
-		{
-			"source": "LOL",
-			"name": "Aromatic Lure",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "E",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Rare",
-				"Emotion",
-				"Enchantment",
-				"Incapacitation",
-				"Mental"
-			],
-			"entries": [
-				"You override a target's olfactory senses, luring them to a specific location through tantalizing false scents. Select a single square within range that is not hazardous or occupied by a creature. The target is drawn to the selected location, becoming euphoric upon arrival. The target must attempt a Will save.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target is distracted by the tantalizing scents, becoming {@condition stupefied|CRB|stupefied 1} for 1 round.",
-						"Failure": "The target is {@condition stupefied|CRB|stupefied 2} and moves toward the selected location via the most direct route possible for 1 round, bypassing any obvious hazards and enemies in the way.",
-						"Critical Failure": "The target is {@condition stupefied|CRB|stupefied 4} and moves to the selected location via the most direct route possible for 1 round, bypassing any obvious hazards and enemies in the way. If the creature reaches the destination, it must remain in that location for {@dice 1d4} rounds but can otherwise act normally."
-					}
-				}
-			],
-			"cast": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"range": {
-				"type": "point",
-				"entry": "60 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 60
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": "timed",
-				"entry": "varies",
-				"duration": {
-					"number": 1,
-					"unit": "special"
-				}
-			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 2,
-					"entry": "You target 1 additional creature, selecting a different square within range as their destination."
-				},
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 37
-		},
-		{
-			"source": "LOL",
-			"name": "Rebounding Barrier",
-			"level": 4,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "A",
-			"type": "SPELL",
-			"focus": false,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": false,
-				"V": true
-			},
-			"traits": [
-				"Rare",
-				"Abjuration"
-			],
-			"entries": [
-				"You swiftly raise a reflective barrier, reducing physical damage and rebounding it onto your attacker.",
-				"You gain resistance 10 against one physical damage type the triggering attack deals. Your attacker takes 5 damage of the same type."
-			],
-			"cast": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"trigger": "You are hit by a physical {@action Strike}.",
-			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The resistance increases by 2. Damage dealt to your attacker increases by 1."
-				},
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 37
-		},
-		{
-			"source": "LOL",
 			"name": "Achaekek's Clutch",
-			"level": 4,
-			"school": "N",
+			"source": "LOL",
+			"page": 58,
 			"type": "FOCUS",
 			"focus": true,
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
+			"level": 4,
 			"traits": [
 				"Rare",
 				"Curse",
 				"Death",
 				"Necromancy"
 			],
+			"school": "N",
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
 			"entries": [
 				"You mark the holy symbol of Achaekek in a visible location on the target's body.",
 				{
@@ -276,63 +53,39 @@
 					}
 				}
 			],
-			"cast": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"range": {
-				"type": "point",
-				"entry": "30 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 30
-				}
-			},
-			"targets": "1 creature",
-			"duration": {
-				"type": null
-			},
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 58
+			}
 		},
 		{
-			"source": "LOL",
 			"name": "All Is One, One Is All",
-			"level": 8,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "N",
+			"source": "LOL",
+			"page": 65,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"level": 8,
 			"traits": [
 				"Rare",
 				"Necromancy"
 			],
-			"entries": [
-				"You meld the targets' matter and life force into one and then, in an instant, sift them back out into their component selves. When you separate the targets back into themselves, you can choose to switch the positions of any number of targets with the positions of other targets. Additionally, you can modulate the share of vital essence to share the burden of pain. Distribute the Hit Points of all targets however you choose, except that no target can receive fewer than 1 Hit Point or more than their maximum Hit Points."
+			"school": "N",
+			"traditions": [
+				"Arcane",
+				"Primal"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "triple",
 				"entry": "{@as 3}"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -343,51 +96,190 @@
 				}
 			},
 			"targets": "you and up to 10 willing living allies",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": null
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You meld the targets' matter and life force into one and then, in an instant, sift them back out into their component selves. When you separate the targets back into themselves, you can choose to switch the positions of any number of targets with the positions of other targets. Additionally, you can modulate the share of vital essence to share the burden of pain. Distribute the Hit Points of all targets however you choose, except that no target can receive fewer than 1 Hit Point or more than their maximum Hit Points."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 65
+			}
 		},
 		{
+			"name": "Aromatic Lure",
 			"source": "LOL",
-			"name": "Halcyon Infusion",
-			"level": 6,
-			"traditions": [
-				"Arcane",
-				"Primal"
-			],
-			"school": "D",
+			"page": 37,
 			"type": "SPELL",
 			"focus": false,
+			"level": 4,
+			"traits": [
+				"Rare",
+				"Emotion",
+				"Enchantment",
+				"Incapacitation",
+				"Mental"
+			],
+			"school": "E",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
 			"components": {
 				"F": false,
-				"M": true,
+				"M": false,
 				"S": true,
 				"V": true
 			},
+			"range": {
+				"type": "point",
+				"entry": "60 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You override a target's olfactory senses, luring them to a specific location through tantalizing false scents. Select a single square within range that is not hazardous or occupied by a creature. The target is drawn to the selected location, becoming euphoric upon arrival. The target must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target is distracted by the tantalizing scents, becoming {@condition stupefied|CRB|stupefied 1} for 1 round.",
+						"Failure": "The target is {@condition stupefied|CRB|stupefied 2} and moves toward the selected location via the most direct route possible for 1 round, bypassing any obvious hazards and enemies in the way.",
+						"Critical Failure": "The target is {@condition stupefied|CRB|stupefied 4} and moves to the selected location via the most direct route possible for 1 round, bypassing any obvious hazards and enemies in the way. If the creature reaches the destination, it must remain in that location for {@dice 1d4} rounds but can otherwise act normally."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 2,
+					"entry": "You target 1 additional creature, selecting a different square within range as their destination."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Glacial Heart",
+			"source": "LOL",
+			"page": 32,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 5,
+			"traits": [
+				"Rare",
+				"Evocation",
+				"Hex",
+				"Witch"
+			],
+			"school": "V",
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 creature",
+			"savingThrow": "Fortitude",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"Ice and bone-deep cold assail the target, freezing it from the inside out. The frosty assault deals {@damage 10d6} cold damage, subject to the target's Fortitude save. After the effects are resolved, the target is temporarily immune for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target takes half damage and is {@condition slowed|CRB|slowed 1} for 1 round. The spell ends.",
+						"Failure": "The target takes full damage, is {@condition slowed|CRB|slowed 1}, and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure), to a maximum of {@condition slowed|CRB|slowed 4}. On a success, the {@condition slowed} condition decreases by 1. If at any point the {@condition slowed} condition is reduced to 0, the spell ends. Once a creature's actions are reduced to 0 by this {@condition slowed} condition, the creature is completely encased in ice. It continues making saves against glacial heart, possibly allowing it to reduce its {@condition slowed} condition enough that it can act. This ice has Hardness 4 and 8 Hit Points, and its DC to {@action Force Open} is your spell DC. Breaking the ice frees the creature and ends the spell. If someone other than the target breaks the ice from outside, the target is {@condition stunned|CRB|stunned 1} and takes any damage dealt by the breaking effect in excess of the ice's Hit Points.",
+						"Critical Failure": "As failure, but the target takes double damage and is initially {@condition slowed|CRB|slowed 2}."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "Increase the cold damage by {@dice 2d6}."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Halcyon Infusion",
+			"source": "LOL",
+			"page": 66,
+			"type": "SPELL",
+			"focus": false,
+			"level": 6,
 			"traits": [
 				"Rare",
 				"Divination",
 				"Mental"
 			],
-			"entries": [
-				"You infuse magical energy into your target, opening up their mind to the pathways of magic and granting them the ability to use magic to affect the world around them.",
-				"Choose a 1st-level spell you prepared today or that's in your repertoire, of the same tradition you used to cast {@spell halcyon infusion|LOL}. The spell must be one that has a listed range. If the target is at least 3rd level, you can choose a 2nd-level spell instead of a 1st-level spell; and if the target is at least 5th level, you can choose a 3rd-level spell. The target can Cast the Spell once per day as an innate spell of the tradition you used to cast {@spell halcyon infusion|LOL}. If they are untrained in the appropriate magical tradition, their spell attack bonus is 2 + their level + their highest mental ability modifier, and their spell DC is 12 + their level + their highest mental ability modifier.",
-				"Unlike most abilities that can only be used once per day, the target refreshes their use of the granted innate spell each day only after you make your daily preparations and choose to extend halcyon infusion's duration by either refraining from preparing a spell in the slot (if you're a prepared spellcaster) or expending another spell slot (if you're a spontaneous spellcaster)."
+			"school": "D",
+			"traditions": [
+				"Arcane",
+				"Primal"
 			],
 			"cast": {
 				"number": 10,
 				"unit": "minute",
 				"entry": "10 minutes"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -398,6 +290,7 @@
 				}
 			},
 			"targets": "one willing creature of lower level than you",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "until your next daily preparations",
@@ -406,7 +299,13 @@
 					"unit": "special"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You infuse magical energy into your target, opening up their mind to the pathways of magic and granting them the ability to use magic to affect the world around them.",
+				"Choose a 1st-level spell you prepared today or that's in your repertoire, of the same tradition you used to cast {@spell halcyon infusion|LOL}. The spell must be one that has a listed range. If the target is at least 3rd level, you can choose a 2nd-level spell instead of a 1st-level spell; and if the target is at least 5th level, you can choose a 3rd-level spell. The target can Cast the Spell once per day as an innate spell of the tradition you used to cast {@spell halcyon infusion|LOL}. If they are untrained in the appropriate magical tradition, their spell attack bonus is 2 + their level + their highest mental ability modifier, and their spell DC is 12 + their level + their highest mental ability modifier.",
+				"Unlike most abilities that can only be used once per day, the target refreshes their use of the granted innate spell each day only after you make your daily preparations and choose to extend halcyon infusion's duration by either refraining from preparing a spell in the slot (if you're a prepared spellcaster) or expending another spell slot (if you're a spontaneous spellcaster)."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -421,40 +320,87 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 66
+			}
 		},
 		{
+			"name": "Rebounding Barrier",
 			"source": "LOL",
-			"name": "Shall Not Falter, Shall Not Rout",
-			"level": 5,
-			"school": "N",
-			"type": "FOCUS",
-			"focus": true,
+			"page": 37,
+			"type": "SPELL",
+			"focus": false,
+			"level": 4,
+			"traits": [
+				"Rare",
+				"Abjuration"
+			],
+			"school": "A",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": false,
 				"V": true
 			},
+			"trigger": "You are hit by a physical {@action Strike}.",
+			"range": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You swiftly raise a reflective barrier, reducing physical damage and rebounding it onto your attacker.",
+				"You gain resistance 10 against one physical damage type the triggering attack deals. Your attacker takes 5 damage of the same type."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The resistance increases by 2. Damage dealt to your attacker increases by 1."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Shall Not Falter, Shall Not Rout",
+			"source": "LOL",
+			"page": 69,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 5,
 			"traits": [
 				"Rare",
 				"Healing",
 				"Necromancy"
 			],
-			"entries": [
-				"Calling out the fifth line of the Crimson Oath, you seal your most grievous injuries with a stroke of your blade. The first time each round that you {@action Strike} with your weapon and deal damage to a foe, you recover a number of HP equal to twice shall not falter, shall not rout's level. This healing can't raise your current HP above half of your maximum HP."
-			],
+			"school": "N",
 			"cast": {
 				"number": 1,
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
 			"range": {
 				"type": null
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -463,43 +409,95 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"Calling out the fifth line of the Crimson Oath, you seal your most grievous injuries with a stroke of your blade. The first time each round that you {@action Strike} with your weapon and deal damage to a foe, you recover a number of HP equal to twice shall not falter, shall not rout's level. This healing can't raise your current HP above half of your maximum HP."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 69
+			}
 		},
 		{
+			"name": "Spirit Object",
 			"source": "LOL",
-			"name": "Sun's Fury",
-			"level": 3,
-			"school": "V",
-			"type": "FOCUS",
+			"page": 32,
+			"type": "CANTRIP",
 			"focus": true,
+			"level": 0,
+			"traits": [
+				"Rare",
+				"Hex",
+				"Necromancy",
+				"Witch"
+			],
+			"school": "N",
+			"cast": {
+				"number": 1,
+				"unit": "Varies",
+				"entry": "{@as 1} or {@as 2}"
+			},
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 unattended object up to 1 Bulk",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"Using a sliver of Baba Yaga's power, you briefly bring an object to life. The object gains a means of locomotion, such as sprouting chicken legs, and Strides up to 25 feet to a space you decide within range. If you spent 2 actions Casting the Spell, the object then attacks one creature of your choice adjacent to its new space. Make a melee spell attack roll against the creature. On a success, the creature takes bludgeoning, piercing, or slashing damage (as appropriate for the object) equal to {@dice 1d4} plus your spellcasting ability modifier, and on a critical success, it takes double damage."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "Increase the maximum Bulk of the target by 1 and the damage by {@dice 1d4}."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Sun's Fury",
+			"source": "LOL",
+			"page": 101,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 3,
 			"traits": [
 				"Uncommon",
 				"Evocation",
 				"Fire",
 				"Good"
 			],
-			"entries": [
-				"The target weapon becomes wreathed in a glowing flame. The weapon deals an additional {@damage 1d4} fire and 1 good damage on a successful {@action Strike}. In addition, the flame causes the weapon to glow as bright as a torch. You can {@action Dismiss} the spell."
-			],
+			"school": "V",
 			"cast": {
 				"number": 1,
 				"unit": "double",
 				"entry": "{@as 2}"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -510,6 +508,7 @@
 				}
 			},
 			"targets": "1 weapon without an unholy rune that is unattended or wielded by you or a willing ally",
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -518,16 +517,17 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": true,
+			"entries": [
+				"The target weapon becomes wreathed in a glowing flame. The weapon deals an additional {@damage 1d4} fire and 1 good damage on a successful {@action Strike}. In addition, the flame causes the weapon to glow as bright as a torch. You can {@action Dismiss} the spell."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			},
-			"dismiss": true,
-			"sustain": false,
-			"page": 101
+			}
 		}
 	]
 }

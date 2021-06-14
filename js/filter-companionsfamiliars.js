@@ -86,12 +86,12 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 			it.type,
 			it.traits,
 			[
-				it.abilityMod ? it.abilityMod.Str : null,
-				it.abilityMod ? it.abilityMod.Dex : null,
-				it.abilityMod ? it.abilityMod.Con : null,
-				it.abilityMod ? it.abilityMod.Int : null,
-				it.abilityMod ? it.abilityMod.Wis : null,
-				it.abilityMod ? it.abilityMod.Cha : null,
+				it.abilityMods ? it.abilityMods.Str : null,
+				it.abilityMods ? it.abilityMods.Dex : null,
+				it.abilityMods ? it.abilityMods.Con : null,
+				it.abilityMods ? it.abilityMods.Int : null,
+				it.abilityMods ? it.abilityMods.Wis : null,
+				it.abilityMods ? it.abilityMods.Cha : null,
 			],
 			it._fHP,
 			[

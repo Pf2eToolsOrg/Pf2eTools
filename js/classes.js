@@ -855,7 +855,7 @@ class ClassesPage extends BaseComponent {
 			$$`<p>No image available.</p>`.appendTo($summaryImage);
 		}
 		$summaryText.show();
-		$summaryImage.show();
+		// $summaryImage.show();
 	}
 
 	_render_renderClass () {

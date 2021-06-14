@@ -1,153 +1,15 @@
 {
 	"feat": [
 		{
-			"source": "LOPSG",
-			"name": "Dead Reckoning",
-			"level": 4,
-			"traits": [
-				"Archetype",
-				"Concentrate",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": true,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, trained in",
-			"entries": [
-				"{@skill Survival} You've trained yourself to maintain a strong sense of direction at all times, even when you can't use a compass or see the sky above. You immediately intuit which direction is north (assuming the concept of north exists at your current location)."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Environmental Explorer",
-			"level": 4,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"entries": [
-				"You've traversed enough untamed wilderness to gain an intuitive understanding of the dangers that exist in such places. Your extensive familiarity means you sometimes notice perils even when you're not trying to. Even if you aren't Searching in exploration mode, you can attempt a check to find environmental hazards that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular hazard."
-			],
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Observant Explorer",
-			"level": 4,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"entries": [
-				"Thanks to the time you've spent wandering through wild and untamed environments, you've gained an intuitive sense about creatures. You sometimes notice them before they attack, or spot them nearby even if they weren't planning on attacking. You can attempt a check to notice {@condition hidden} creatures attempting to {@action Avoid Notice} nearby even if you aren't actively Searching for them. You still need to meet any other requirements to notice a particular creature."
-			],
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Remember Your Training",
-			"level": 4,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"frequency": "once per day",
-			"entries": [
-				"During your training to become a Pathfinder Agent you were schooled on a wide variety of creatures you might encounter, and you can think back to that training to gain crucial insight in times of need. Attempt a check to {@action Recall Knowledge} about a creature you can see, adding your level as a proficiency bonus if you are untrained (rather than 0)",
-				"If you roll a failure (but not a critical failure) on this check, you get a success instead."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Spiritual Explorer",
-			"level": 4,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"entries": [
-				"You're familiar with the danger that lingering spirits can pose to an unwary adventurer, and you're particularly attuned to their presence. Even if you aren't Searching in exploration mode, you can attempt a check to find haunts Pathfinder Agent Feats The following feats are available to characters with the Pathfinder Agent Dedication (Pathfinder Lost Omens World Guide 23)",
-				"that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular haunt."
-			],
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Watch And Learn",
-			"level": 4,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"trigger": "An ally you can see succeeds or critically succeeds at a Strength- or Dexterity-based skill check, using a skill in which you are untrained.",
-			"entries": [
-				"Pathfinder agents serve as members of diverse teams with complementary skill sets. You are practiced at following the example of a more skilled ally to accomplish a wide variety of tasks. For the next minute you can add your level as a proficiency bonus to the {@condition observed} skill check, even though you are untrained. This does not allow you to attempt trained actions using that skill unless you would otherwise be able to do so."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
 			"name": "Archaeologist's Warning",
+			"source": "LOPSG",
+			"page": 41,
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
 			"level": 6,
-			"traits": [
-				"Archetype"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -155,717 +17,40 @@
 				"skill": false,
 				"archetype": true
 			},
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"trigger": "You are about to roll a {@skill Perception}, {@skill Society}, or {@skill Thievery} check for initiative.",
 			"entries": [
 				"You visually or audibly warn your companions of danger, granting them a +1 circumstance bonus to their initiative rolls. Depending on whether you use gestures or call out, this free action gains either the {@trait visual} or {@trait auditory} trait."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
-			},
-			"page": 41
+			]
 		},
 		{
+			"name": "Armored Exercise",
 			"source": "LOPSG",
-			"name": "Craft Facsimile",
-			"level": 6,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Crafting"
-				],
-				"archetype": true
-			},
-			"prerequisites": "expert in {@skill Crafting}, Pathfinder Agent",
-			"entries": [
-				"Dedication You're renowned for your ability to recover important items, whether they're from a long-abandoned temple or a thieves' den, and sometimes that requires creating a stand-in. You can spend 1 minute to assemble a facsimile of an object of no more than 1 Bulk that you can see from available materials. The facsimile has the same shape and Bulk as the replaced object and can pass as the object if not examined.",
-				"A creature familiar with the original who examines the object automatically realizes that it is a fake. A creature not familiar with the original can still tell it was a hastily jury-rigged stand-in of some kind, but they might not know the object was supposed to be something else."
-			],
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Diverse Recognition",
-			"level": 8,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": true,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, master in a skill used to {@action Recall Knowledge}",
-			"frequency": "once per round",
-			"trigger": "You successfully {@action Recall Knowledge} about a creature you can see, using a skill in which you are a master.",
-			"entries": [
-				"Your Pathfinder training allows you to quickly size up numerous threats. Attempt to {@action Recall Knowledge} against a different kind of creature you can see using the same skill. You must still meet the requirements to attempt this check."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "free",
-				"entry": "{@as F}"
-			},
-			"page": 41
-		},
-		{
-			"source": "LOPSG",
-			"name": "Snap Out Of It!",
-			"level": 8,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Medicine"
-				],
-				"archetype": true
-			},
-			"prerequisites": "master in {@skill Medicine}, {@feat Pathfinder Agent Dedication|LOWG}",
-			"entries": [
-				"Pathfinders are trained to help each other be safe and successful, and you know how to jolt your allies back to their senses. Attempt a {@skill Medicine} check on an adjacent ally who is {@condition fascinated}, {@condition frightened}, {@condition stunned}, or {@condition stupefied} and choose one of those conditions. The DC is the DC for the effect that caused the condition.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "Reduce the value of the chosen condition by 2. If you chose {@condition fascinated}, that condition ends.",
-						"Success": "Reduce the value of the chosen condition by 1. If you chose {@condition fascinated}, that condition ends.",
-						"Failure": "The target is unaffected.",
-						"Critical Failure": "You increase the value of the chosen condition by 1. If you chose {@condition fascinated}, increase the duration by 1 round instead."
-					}
-				}
-			],
-			"activity": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"page": 4422
-		},
-		{
-			"source": "LOPSG",
-			"name": "Wayfinder Resonance Infiltrator",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Wayfinder Resonance Tinkerer|LOWG} (World Guide 23)",
-			"entries": [
-				"You are adept at using the unusual resonance of your wayfinder to aid in any deceptions you might employ. Once per day you can activate your wayfinder to cast {@spell illusory disguise}, heightened to 2nd level, as an arcane spell. Additionally, once per day, you can Activate your wayfinder with a single-action envision activation to transform it into a perfect replica of another similarly sized badge of membership or office, such as an Aspis Consortium badge. This transformation lasts for 1 hour."
-			],
-			"page": 4422
-		},
-		{
-			"source": "LOPSG",
-			"name": "Eidetic Memorization",
-			"level": 10,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"entries": [
-				"Pathfinders are often asked to study the intricacies of ancient history under less than ideal conditions, and you've trained your brain to make the most of your limited time. You quickly memorize an inscription, scroll, or other piece of writing you can clearly see whose length is equivalent to no more than one page. You can then accurately recreate this writing using a writing kit, wax tablet, or other writing medium, once you have reached safety. You don't need to understand the writing or identify the language to reproduce it. Your memory lasts until the next time you make your daily preparations; if you have not written down or otherwise recreated what you saw by this point, your memory fades and any attempt to recreate what you saw is garbled and unintelligible. You can have only one piece of writing memorized at a time; any previous memorization fades the next time you use this ability."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "triple",
-				"entry": "{@as 3}"
-			},
-			"page": 4422
-		},
-		{
-			"source": "LOPSG",
-			"name": "Swap Investment",
-			"level": 12,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
-			"frequency": "once per day",
-			"entries": [
-				"Your time as a Pathfinder has taught you how to improvise, and you've learned to make use of the resources you find in the field. You Invest a magic item and remove a previously invested item. The previous item no longer counts against your limit of 10 invested items."
-			],
-			"page": 4422
-		},
-		{
-			"source": "LOPSG",
-			"name": "Foolproof Instructions",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You feel confident that you can explain your scrolls so well that even your allies can use them... hopefully. During your daily preparations, you can select a single scroll and instruct a single ally in its use. Until your next daily preparations, the ally can attempt to use the scroll with a single action that has the {@trait manipulate} trait. The ally rolls the skill corresponding to the spellcasting tradition. The GM determines the DC based on the scroll's level, possibly adjusted for the situation. If the spell has a spell attack bonus or a spell DC, use your level as the proficiency bonus and the highest of your ally's Intelligence, Wisdom, or Charisma modifiers.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Success": "For the rest of the ally's turn, they can spend actions to Cast the Spell.",
-						"Failure": "The ally misremembers your instructions and can't use the scroll this turn.",
-						"Critical Failure": "The ally misunderstood your instructions and can't use the scroll."
-					}
-				}
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Innate Magic Intuition",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You've spent countless hours learning to recognize and predict a creature's innate magical abilities. The first time you successfully {@action Recall Knowledge} to identify a creature, in addition to any information you learn from your successful check, you learn the names of three of the highest-level innate spells it can cast, and you gain a +2 circumstance bonus on your next save against an innate spell cast by that creature."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Magic Finder",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You've learned a few tricks to ensure you find every last magic item and interesting {@trait magical} effect during your missions. You can cast {@spell detect magic} and read aura as innate spells at will. You can also cast {@spell locate} as an innate spell once per day, but only to locate magic items, not specific mundane objects or types of objects. If you could already cast spells, these spells are of the same tradition. Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells.",
-				"When you cast {@spell detect magic} or read aura from this feat on an item or creature under the effect of a {@spell magic aura} spell or interact with an item under the effect of an {@spell item facade} spell, you gain a +2 circumstance bonus on your check to disbelieve the illusion."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Transcribe Moment",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You gain the {@spell transcribe moment|LOPSG} focus spell (page 45). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by spending 10 minutes to study a text or record notes on your recent experiences."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Bestiary Scholar",
-			"level": 10,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "master in {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You learn how to apply your extensive knowledge of certain creatures using the lore you know. When you gain this feat, choose one of the following skills in which you have attained master proficiency: {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}. You can use the chosen skill to {@action Recall Knowledge} to identify any creature normally identifiable by any of the above skills. In addition, when you critically succeed at identifying a creature, you gain a +1 circumstance bonus to your next attack roll or saving throw against that creature."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Cautious Delver",
-			"level": 10,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"entries": [
-				"You've studied the many ways that ancient architects and spellcasters protected their possessions, such as by implementing deadly traps and curses, and learned some magic to counteract them. You can cast {@spell dispel magic}, knock, and resist energy as innate spells, each once per day. If you can already cast spells, these spells are of the same tradition.",
-				"Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Masterful Obfuscation",
-			"level": 10,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": true,
-				"archetype": true
-			},
-			"prerequisites": "master in a skill with the {@action Recall Knowledge} action,",
-			"entries": [
-				"Scrollmaster Dedication You've mastered the art of deceiving others about your area of study. When you gain this feat, choose one skill with the {@action Recall Knowledge} action in which you have attained master proficiency. You can attempt to deceive others about the truth of facts and knowledge related to that skill\u2014such as by pretending to know something that you don't, planting false information, or the like\u2014using the {@action Lie} action of the {@skill Deception} skill. When you {@action Lie} in this way, attempt your skill check using the skill you selected when you gained this feat instead of {@skill Deception}, applying all bonuses or penalties related from the selected skill to the check. While it's easier to convince someone who knows nothing about your chosen false information, on a critical success, you can even convince someone who has heard something contradictory, unless they have reason to be certain from direct experience. For instance, you might say, \"I know you may have heard to use silver weapons against vampires, but that's a misconception based on conflating them with werewolves. According to all credible scholars, cold iron will do the trick.\" Once a creature realizes you've used masterful obfuscation to {@action Lie} to them, either from a failed check or due to later discovering the falsehood, you can't use this feat against them again, as it relies on blind trust in your superior knowledge. However, you can still {@action Lie} to them normally."
-			],
-			"page": 45
-		},
-		{
-			"source": "LOPSG",
-			"name": "Determined Lore Seeker",
-			"level": 12,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@skill Lore} Seeker",
-			"entries": [
-				"You've mastered useful spells that let you find {@condition hidden} truths others might miss, and a preferred spell comes naturally to you. When you gain this feat, choose one of the innate spells granted by the {@skill Lore} Seeker feat: comprehend language, restore senses, or see invisibility. You can cast this spell three times per day instead of once per day.",
-				"When you cast any of the spells granted by {@skill Lore} Seeker as innate spells, they gain additional effects. When you cast {@spell comprehend language}, the spell is heightened to 4th level. When you cast {@spell restore senses},the spell is heightened to half your level, rounded up. When you cast {@spell see invisibility}, for the duration of the spell you can use an action, which has the {@trait concentrate} trait, to see {@condition invisible} creatures normally (instead of seeing them as translucent shapes that are {@condition concealed} to you) until the end of your next turn."
-			],
-			"page": 46
-		},
-		{
-			"source": "LOPSG",
-			"name": "Ward Mind",
-			"level": 16,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
-			"trigger": "Your turn ends.",
-			"requirements": "You're currently affected by a {@trait mental} effect that you gained by failing, but not critically failing, a saving throw.",
-			"entries": [
-				"To protect the knowledge within your mind from intrusion or erasure, you ward yourself against a mental attack, temporarily delaying its effects. Until the end of your next turn, you ignore a single {@trait mental} effect that meets the requirement.",
-				"You can suppress a particular effect using Ward Mind or Cognitive Loophole (Core Rulebook 188) only once, even if you have both feats."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"special": "You can use this reaction even if the {@trait mental} effect prevents you from using reactions.",
-			"page": 46
-		},
-		{
-			"source": "LOPSG",
-			"name": "Familiar Form",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"entries": [
-				"You can use your magic to transform into a small creature of a type that commonly serves as a spellcaster's familiar, potentially allowing you to safely scout for your party while retaining a degree of spellcasting ability. You gain the {@spell familiar form|LOPSG} focus spell. Increase the number of Focus Points in your focus pool by 1."
-			],
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Glyph Expert",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"entries": [
-				"You've learned to recognize the telltale writings and other signs that indicate the presence of magical traps. You gain a +2 circumstance bonus to {@skill Perception} checks to find magical traps, to AC against attacks made by magical traps, to saves against magical traps, and to checks to Disable magical traps. Even if you aren't Searching, you get a check to find magical traps that normally require you to be Searching. You still need to meet any other requirements to find the trap.",
-				"You're also adept at avoiding the effects of traps that feature magical writing, such as runes, glyphs, ancient script, or other forms. When you attempt a saving throw against the effects of these traps, if you roll a success, you get a critical success instead. If you roll a critical failure, you get a failure instead."
-			],
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Recover Spell",
-			"level": 10,
-			"traits": [
-				"Archetype",
-				"Concentrate",
-				"Metamagic"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"requirements": "An enemy's action disrupted your attempts to {@action Cast a Spell} since the beginning of your last turn.",
-			"entries": [
-				"You recover the energy of a recently disrupted spell, allowing you to cast it again as long as you do so immediately before the energy dissipates. You regain the use of a spell that was disrupted since the beginning of your last turn, but you must immediately Cast the Spell again with your next action or else you lose the spell; as normal for metamagic, this must be on the same turn that you use Recover Spell. You can change the area, targets, and other variables, including the number of actions used to Cast the Spell if the spell allows, such as when casting heal or magic missile."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Spellmaster's Ward",
-			"level": 10,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"entries": [
-				"You can create a number of powerful shielding runes that bolster your defenses against damaging spells by absorbing the worst of the energy to keep you safe. You gain the spellmaster's ward focus spell. Increase the number of Focus Points in your focus pool by 1."
-			],
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Communal Sustain",
-			"level": 12,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"frequency": "once per round",
-			"entries": [
-				"Choose one spell with a sustained duration that one of your allies has in effect. You must be within 30 feet of the chosen ally. The ally can Sustain the Spell once as a free action, triggered at the start of their next turn."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Spellmaster's Tenacity",
+			"page": 5544,
 			"level": 14,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
 			"traits": [
 				"Archetype"
 			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster's Resilience|LOCG}",
-			"frequency": "once per day",
-			"trigger": "You critically fail at a saving throw against a foe's spell, and that spell was cast or created with the tradition of magic you selected with the Spellmaster's Resilience feat.",
+			"prerequisites": "Swordmaster",
 			"entries": [
-				"You call upon the power of your spells to protect you from the worst of the magic headed your way. You fail your saving throw instead of critically failing. For 1 minute, increase the circumstance bonus to saving throws from the Spellmaster's Resilience feat to +2, and increase the resistance to damage it grants to 10."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"page": 49
+				"Dedication; trained in light, medium, or heavy armor You've spent time training in your armor alongside other agents from the Swords. Your proficiency rank for light, medium, and heavy armor increases to expert for whichever of those you already had the trained proficiency rank in."
+			]
 		},
 		{
-			"source": "LOPSG",
-			"name": "Master's Counterspell",
-			"level": 16,
-			"traits": [
-				"Abjuration",
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": "Spellmaster"
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}, master in spell attack rolls and spell DCs",
-			"trigger": "A creature Casts a Spell that you have prepared, and that spell was cast or created with a tradition of magic in which you have master proficiency in spell attack rolls and spell DCs.",
-			"entries": [
-				"When a foe Casts a Spell and you can see its manifestations, you can use your magic to disrupt it. If you're a prepared caster, you can expend a prepared spell to counter the triggering creature's casting of a spell. If you're a spontaneous caster, you can expend a spell slot. The level of the prepared spell or spell slot must be at least as high as the triggering spell's level. You lose your prepared spell or spell slot as if you had Cast the Spell. You then attempt to counteract the triggering spell, and you take a \u20132 penalty to your counteract check; for prepared casters, the GM might waive the penalty if the spell you're expending to counterspell is especially appropriate\u2014such as countering with the same spell, or using a cone of cold to counteract a fireball."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Mobile Magical Combat",
-			"level": 16,
-			"traits": [
-				"Archetype",
-				"Flourish"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
-			"requirements": "You're wielding a melee weapon and have {@action Cast a Spell} requiring at least 1 action this turn.",
-			"entries": [
-				"You dart around the battlefield, casting spells while you Spellmaster Feats The Spellmasters of the Pathfinder {@skill Society} have numerous magical secrets available to those who delve into their lore.",
-				"The following archetype feats are available to characters with the spellmaster archetype (Character Guide 114)",
-				"carefully make melee attacks with your weapon. {@action Stride} once. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Mobile Magical Combat while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 49
-		},
-		{
-			"source": "LOPSG",
-			"name": "Retain Absorbed Spell",
-			"level": 18,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Absorb Spell|LOCG}",
-			"entries": [
-				"When you absorb a spell using the Absorb Spell reaction, you utilize secret, techniques that allow you to retain the power and knowledge necessary to cast the spell repeatedly\u2014potentially for a greater period of time. If you're a spontaneous caster, you can cast the triggering spell up to three times instead of once. If you're a prepared spellcaster, you can replace up to three of your prepared spells of the same level with the absorbed spell instead of one. Either way, you can choose to retain the absorbed spell for the next hour instead of the next 10 minutes; if you choose to extend the absorption to an hour, you can't use Absorb Spell again until one hour after the spell is absorbed."
-			],
-			"page": 5500
-		},
-		{
-			"source": "LOPSG",
-			"name": "Improvised Crafting",
-			"level": 8,
-			"traits": [
-				"Archetype",
-				"Exploration",
-				"Manipulate",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Crafting"
-				],
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Crafting}",
-			"entries": [
-				"You've learned to repair your equipment even in challenging circumstances, making use of what you have available. You can attempt to {@action Repair} an item without a repair kit, instead improvising tools out of your gear or found items. This adds 5 minutes to the time it takes to {@action Repair} the item. You can also {@action Repair} an item while on the move without needing a stable surface. This adds 10 minutes to the times it takes to {@action Repair} the item."
-			],
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Physical Training",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Athletics} and {@skill Acrobatics}",
-			"entries": [
-				"You spend a lot of time focusing on your physical fitness. You increase your proficiency rank in {@skill Acrobatics} and {@skill Athletics} from expert to master."
-			],
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Protect Ally",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"entries": [
-				"You place your body between your friends and your enemies, protecting your allies against oncoming attacks. You choose one adjacent ally. That ally gains a +1 circumstance bonus to AC until the start of your next turn or until that ally is no longer adjacent to you, whichever comes first. You can only protect a single ally in this way. If you choose to Protect a different Ally, the previous ally loses the bonus to AC."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Quick Stow",
-			"level": 8,
-			"traits": [
-				"Archetype",
-				"Manipulate"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"entries": [
-				"You know that situations can change rapidly and might leave you needing to change equipment in the middle of combat.",
-				"Your training has taught you how to swap your equipment on the fly. You {@action Interact} to stow a weapon and then {@action Interact} again to draw a readied item or weapon."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Reflexive Grip",
-			"level": 8,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"entries": [
-				"You keep hold of your weapons even when knocked out.",
-				"You gain a +2 circumstance bonus to your Reflex DC when defending against checks to {@action Disarm} you. In addition, when you fall {@condition unconscious}, you don't drop any weapons that you're currently wielding, though somebody else can remove them from you."
-			],
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
 			"name": "Armored Rest",
+			"source": "LOPSG",
+			"page": 5533,
 			"level": 10,
-			"traits": [
-				"Archetype"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -873,20 +58,20 @@
 				"skill": false,
 				"archetype": true
 			},
+			"traits": [
+				"Archetype"
+			],
 			"prerequisites": "{@feat Swordmaster Dedication|LOCG}; trained in light, medium, or heavy armor",
 			"entries": [
 				"You've slept many nights in your armor and gotten used to it.",
 				"You can sleep in armor overnight without being {@condition fatigued} the next day. If you were already {@condition fatigued} before sleeping, the armor doesn't prevent you from recovering from being {@condition fatigued}."
-			],
-			"page": 5533
+			]
 		},
 		{
+			"name": "Bestiary Scholar",
 			"source": "LOPSG",
-			"name": "Martial Exercise",
+			"page": 45,
 			"level": 10,
-			"traits": [
-				"Archetype"
-			],
 			"featType": {
 				"class": false,
 				"general": false,
@@ -894,343 +79,24 @@
 				"skill": false,
 				"archetype": true
 			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"entries": [
-				"You've become comfortable in using weapons that you might not have picked up before training with the Swords. Choose one weapon group, such as hammer or sword. Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with both simple and martial weapons of your chosen weapon group."
-			],
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Practiced Defender",
-			"level": 10,
 			"traits": [
 				"Archetype"
 			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"prerequisites": "master in {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
-				"After extensive practice with the Swords, you're comfortable enough with your shield to move at a normal pace with it raised. You may use the {@action Defend} exploration activity while traveling at your full travel speed instead of half your travel speed."
-			],
-			"page": 5533
+				"You learn how to apply your extensive knowledge of certain creatures using the lore you know. When you gain this feat, choose one of the following skills in which you have attained master proficiency: {@skill Arcana}, {@skill Crafting}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}. You can use the chosen skill to {@action Recall Knowledge} to identify any creature normally identifiable by any of the above skills. In addition, when you critically succeed at identifying a creature, you gain a +1 circumstance bonus to your next attack roll or saving throw against that creature."
+			]
 		},
 		{
+			"name": "Blazing Talon Surge",
 			"source": "LOPSG",
-			"name": "Emergency Medical Assistance",
-			"level": 12,
-			"traits": [
-				"Archetype",
-				"Manipulate",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Medicine"
-				],
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Medicine}",
-			"requirements": "An adjacent ally is suffering {@condition persistent damage}.",
-			"entries": [
-				"You've learned a variety of methods for helping allies who are bleeding, burning, or otherwise suffering {@condition persistent damage}, from brushing off acid to patting down fires.",
-				"Your ally immediately attempts a flat check to remove all types of {@condition persistent damage}, and your use of this feat automatically counts as especially effective aid, reducing the DC from 15 to 10 for all future flat checks to remove the {@condition persistent damage}."
-			],
+			"page": 119,
 			"activity": {
 				"number": 1,
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Recollect Studies",
-			"level": 12,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": true,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in a skill used to {@action Recall Knowledge}",
-			"requirements": "You're fighting a creature of your level or lower that could be identified by {@action Recall Knowledge} with a skill in which you're an expert.",
-			"entries": [
-				"You paid attention during your studies and remember the right way to attack various creatures. Choose a creature that meets the requirements. You learn the resistances, immunities, or weaknesses of the creature (your choice) without needing to successfully {@action Recall Knowledge}."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Rugged Survivalist",
-			"level": 12,
-			"traits": [
-				"Archetype",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": [
-					"Survival"
-				],
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Survival}",
-			"entries": [
-				"Swordmaster Feats The following archetype feats are available to characters with the swordmaster archetype (Character Guide 115)",
-				"You've studied survival skills with the School of Swords experts and are comfortable spending long periods of time in the wilderness. You don't get {@condition fatigued} more quickly due to precipitation during overland travel, though you can otherwise be {@condition fatigued} as normal. You can go 3 days + your Constitution modifier without water before you take damage from thirst and you can go 5 days + your Constitution modifier without food before you take damage from starvation (Core Rulebook 500)."
-			],
-			"page": 5533
-		},
-		{
-			"source": "LOPSG",
-			"name": "Tense Negotiator",
-			"level": 12,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Diplomacy}",
-			"entries": [
-				"You often find that the best way to win a conflict means avoiding a fight in the first place. You're good at talking to potential opponents without making things worse.",
-				"If you would critically fail at a check to {@action Make an Impression}, you instead fail. You can attempt checks to make Requests of creatures who're {@condition indifferent} or {@condition unfriendly} toward you."
-			],
-			"page": 5544
-		},
-		{
-			"source": "LOPSG",
-			"name": "Armored Exercise",
-			"level": 14,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "Swordmaster",
-			"entries": [
-				"Dedication; trained in light, medium, or heavy armor You've spent time training in your armor alongside other agents from the Swords. Your proficiency rank for light, medium, and heavy armor increases to expert for whichever of those you already had the trained proficiency rank in."
-			],
-			"page": 5544
-		},
-		{
-			"source": "LOPSG",
-			"name": "Forceful Shot",
-			"level": 14,
-			"traits": [
-				"Archetype",
-				"Attack",
-				"Press"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"entries": [
-				"Your ranged attacks push your foes away from your allies.",
-				"Make a ranged {@action Strike}, adding the following effects in addition to the normal effects of the {@action Strike}.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is pushed 10 feet away from you.",
-						"Success": "The target is pushed 5 feet away from you.",
-						"Failure": "The target is {@condition flat-footed} for 1 round."
-					}
-				}
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 5544
-		},
-		{
-			"source": "LOPSG",
-			"name": "Focus Ally",
-			"level": 16,
-			"traits": [
-				"Archetype",
-				"Fortune"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
-			"trigger": "An adjacent ally fails, but doesn't critically fail, a saving throw against an effect with the {@trait incapacitation} trait.",
-			"entries": [
-				"You're so focused on your allies that you can help them to recenter when something would take them out of the fight. Your ally rerolls the failed saving throw. That ally must take the second result."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"page": 5544
-		},
-		{
-			"source": "LOPSG",
-			"name": "Stave Off Catastrophe",
-			"level": 18,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Shoulder Catastrophe|LOCG}",
-			"entries": [
-				"You fully protect your allies from the worst blows. When you use the Shoulder Catastrophe reaction, you can choose to take the full critical damage and effects from the attack, including effects that apply on a critical hit, and have your ally take no damage and avoid the attack's effects."
-			],
-			"page": 5544
-		},
-		{
-			"source": "LOPSG",
-			"name": "Fane's Fourberie",
-			"level": 2,
-			"traits": [
-				"Uncommon",
-				"Rogue",
-				"Stance",
-				"Swashbuckler"
-			],
-			"featType": {
-				"class": [
-					"Rogue",
-					"Swashbuckler"
-				],
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
-			},
-			"entries": [
-				"Stella Fane has perfected a technique for using playing cards as weapons that's one part sleight of hand and one part magic.",
-				"When you enter this stance, choose whether to treat playing cards (page 115) in your possession as daggers or darts; you can wield a playing card in all ways as the chosen weapon until the stance ends. As long as the majority of the deck remains in your possession, any cards that are lost or thrown can be found after 1 minute. Otherwise, the remaining cards are likely lost or destroyed.",
-				"A character who has this feat can enchant a single deck of playing cards as a magic weapon, etching fundamental and property runes directly onto the deck of cards."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 119
-		},
-		{
-			"source": "LOPSG",
-			"name": "Fane's Escape",
-			"level": 4,
-			"traits": [
-				"Uncommon",
-				"General",
-				"Skill"
-			],
-			"featType": {
-				"class": false,
-				"general": true,
-				"ancestry": false,
-				"skill": [
-					"Stealth"
-				],
-				"archetype": false
-			},
-			"prerequisites": "expert in {@skill Stealth}",
-			"requirements": "You have a deck of playing cards in your possession.",
-			"entries": [
-				"A good getaway requires a good distraction. You {@action Interact} to draw a deck of cards and flip it in a fluttering explosion, causing you to become briefly {@condition hidden} to all other creatures using vision as their precise sense, and then you {@action Sneak}. You have enough cover to {@action Sneak} until the end of your turn. This leaves all of the cards from the deck scattered about the room; collecting them into a deck again takes several minutes."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"page": 119
-		},
-		{
-			"source": "LOPSG",
-			"name": "Stella's Stab And Snag",
 			"level": 6,
-			"traits": [
-				"Uncommon",
-				"Rogue",
-				"Swashbuckler"
-			],
-			"featType": {
-				"class": [
-					"Rogue",
-					"Swashbuckler"
-				],
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
-			},
-			"prerequisites": "expert in {@skill Thievery}",
-			"requirements": "You are wielding a piercing or slashing melee weapon.",
-			"entries": [
-				"You dart towards your opponent, seeking to stab them and slice their purse-strings with a single movement. {@action Stride} up to your Speed; this movement does not trigger reactions triggered Academy Instructors One of the more significant, if less widely advertised, benefits of joining the Pathfinder {@skill Society} is the opportunity for initiates and agents to learn from teachers and specialists from across Golarion, including the deans of the Pathfinder {@skill Society}'s three schools. Characters who are members of the Pathfinder {@skill Society} have access to the uncommon feats in this section. Many of these feats require the Pathfinder Agent Archetype Dedication (Pathfinder Lost Omens World Guide 23)",
-				"by movement. At any point during this movement you can {@action Strike} an opponent within reach. If this {@action Strike} is successful, you can attempt a {@skill Thievery} check to {@action Steal} from the target.",
-				"Rain of Embers Style The martial artist Meleeka Sanvara (CN female human monk) originally met agents of the Pathfinder {@skill Society} as an enemy when the agents were sent to retrieve an artifact she had stolen. Now, Meleeka works as a Pathfinder agent and occasionally shares the knowledge of her family's unique martial arts techniques with agents who earn her trust."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"page": 119
-		},
-		{
-			"source": "LOPSG",
-			"name": "Rain Of Embers Stance",
-			"level": 1,
-			"traits": [
-				"Rare",
-				"Fire",
-				"Monk",
-				"Stance"
-			],
 			"featType": {
 				"class": "Monk",
 				"general": false,
@@ -1238,57 +104,280 @@
 				"skill": false,
 				"archetype": false
 			},
-			"requirements": "You are unarmored.",
-			"entries": [
-				"You enter the stance of an enraged phoenix, holding your fingers as rigid as deadly talons while moving with quick, flickering gestures that dance with biting flames. The only Strikes you can make are fire talon Strikes. These deal {@damage 1d4} fire damage; are in the brawling group; and have the agile, finesse, fire, {@trait nonlethal}, and {@trait unarmed} traits.",
-				"While in Rain of Embers Stance, you gain a +1 status bonus to AC and fire resistance equal to half your level (minimum 1)."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 119
-		},
-		{
-			"source": "LOPSG",
-			"name": "Blazing Talon Surge",
-			"level": 6,
 			"traits": [
 				"Fire",
 				"Flourish",
 				"Monk"
 			],
-			"featType": {
-				"class": "Monk",
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": false
-			},
 			"prerequisites": "{@feat Rain of Embers Stance|LOPSG}",
 			"requirements": "You are in Rain of Embers Stance.",
 			"entries": [
 				"You rush forward and latch onto your enemy with talons of hungering fire. {@action Stride} once. If you end your movement within reach of at least one enemy, you can make a fire talon {@action Strike} against that enemy that deals an additional {@damage 1d4} {@condition persistent damage ||persistent fire damage}. If it hits and deals damage, you can attempt an {@skill Athletics} check to {@action Grapple} the creature you hit."
 			],
-			"activity": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
-			"page": 119,
 			"leadsTo": [
 				"Explosive Death Drop|LOPSG"
 			]
 		},
 		{
+			"name": "Cautious Delver",
 			"source": "LOPSG",
-			"name": "Explosive Death Drop",
-			"level": 14,
+			"page": 45,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
 			"traits": [
-				"Fire",
-				"Monk"
+				"Archetype"
 			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"entries": [
+				"You've studied the many ways that ancient architects and spellcasters protected their possessions, such as by implementing deadly traps and curses, and learned some magic to counteract them. You can cast {@spell dispel magic}, knock, and resist energy as innate spells, each once per day. If you can already cast spells, these spells are of the same tradition.",
+				"Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells."
+			]
+		},
+		{
+			"name": "Communal Sustain",
+			"source": "LOPSG",
+			"page": 49,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"frequency": "once per round",
+			"entries": [
+				"Choose one spell with a sustained duration that one of your allies has in effect. You must be within 30 feet of the chosen ally. The ally can Sustain the Spell once as a free action, triggered at the start of their next turn."
+			]
+		},
+		{
+			"name": "Craft Facsimile",
+			"source": "LOPSG",
+			"page": 41,
+			"level": 6,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": [
+					"Crafting"
+				],
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "expert in {@skill Crafting}, Pathfinder Agent",
+			"entries": [
+				"Dedication You're renowned for your ability to recover important items, whether they're from a long-abandoned temple or a thieves' den, and sometimes that requires creating a stand-in. You can spend 1 minute to assemble a facsimile of an object of no more than 1 Bulk that you can see from available materials. The facsimile has the same shape and Bulk as the replaced object and can pass as the object if not examined.",
+				"A creature familiar with the original who examines the object automatically realizes that it is a fake. A creature not familiar with the original can still tell it was a hastily jury-rigged stand-in of some kind, but they might not know the object was supposed to be something else."
+			]
+		},
+		{
+			"name": "Dead Reckoning",
+			"source": "LOPSG",
+			"page": 41,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": true,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Concentrate",
+				"Skill"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, trained in",
+			"entries": [
+				"{@skill Survival} You've trained yourself to maintain a strong sense of direction at all times, even when you can't use a compass or see the sky above. You immediately intuit which direction is north (assuming the concept of north exists at your current location)."
+			]
+		},
+		{
+			"name": "Determined Lore Seeker",
+			"source": "LOPSG",
+			"page": 46,
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@skill Lore} Seeker",
+			"entries": [
+				"You've mastered useful spells that let you find {@condition hidden} truths others might miss, and a preferred spell comes naturally to you. When you gain this feat, choose one of the innate spells granted by the {@skill Lore} Seeker feat: comprehend language, restore senses, or see invisibility. You can cast this spell three times per day instead of once per day.",
+				"When you cast any of the spells granted by {@skill Lore} Seeker as innate spells, they gain additional effects. When you cast {@spell comprehend language}, the spell is heightened to 4th level. When you cast {@spell restore senses},the spell is heightened to half your level, rounded up. When you cast {@spell see invisibility}, for the duration of the spell you can use an action, which has the {@trait concentrate} trait, to see {@condition invisible} creatures normally (instead of seeing them as translucent shapes that are {@condition concealed} to you) until the end of your next turn."
+			]
+		},
+		{
+			"name": "Discerning Strike",
+			"source": "LOPSG",
+			"page": 120,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 6,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Thorough Reports|LOWG}",
+			"requirements": "You have successfully identified the target with {@action Recall Knowledge} during this combat.",
+			"entries": [
+				"Identifying a creature is the first step in finding its weaknesses.",
+				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using Thorough Reports, you also deal 1 point of {@condition persistent damage ||persistent bleed damage}. The creature is then temporarily immune to Discerning {@action Strike} for 1 day."
+			]
+		},
+		{
+			"name": "Diverse Recognition",
+			"source": "LOPSG",
+			"page": 41,
+			"activity": {
+				"number": 1,
+				"unit": "free",
+				"entry": "{@as F}"
+			},
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": true,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, master in a skill used to {@action Recall Knowledge}",
+			"frequency": "once per round",
+			"trigger": "You successfully {@action Recall Knowledge} about a creature you can see, using a skill in which you are a master.",
+			"entries": [
+				"Your Pathfinder training allows you to quickly size up numerous threats. Attempt to {@action Recall Knowledge} against a different kind of creature you can see using the same skill. You must still meet the requirements to attempt this check."
+			]
+		},
+		{
+			"name": "Eidetic Memorization",
+			"source": "LOPSG",
+			"page": 4422,
+			"activity": {
+				"number": 1,
+				"unit": "triple",
+				"entry": "{@as 3}"
+			},
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"Pathfinders are often asked to study the intricacies of ancient history under less than ideal conditions, and you've trained your brain to make the most of your limited time. You quickly memorize an inscription, scroll, or other piece of writing you can clearly see whose length is equivalent to no more than one page. You can then accurately recreate this writing using a writing kit, wax tablet, or other writing medium, once you have reached safety. You don't need to understand the writing or identify the language to reproduce it. Your memory lasts until the next time you make your daily preparations; if you have not written down or otherwise recreated what you saw by this point, your memory fades and any attempt to recreate what you saw is garbled and unintelligible. You can have only one piece of writing memorized at a time; any previous memorization fades the next time you use this ability."
+			]
+		},
+		{
+			"name": "Emergency Medical Assistance",
+			"source": "LOPSG",
+			"page": 5533,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": [
+					"Medicine"
+				],
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Manipulate",
+				"Skill"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Medicine}",
+			"requirements": "An adjacent ally is suffering {@condition persistent damage}.",
+			"entries": [
+				"You've learned a variety of methods for helping allies who are bleeding, burning, or otherwise suffering {@condition persistent damage}, from brushing off acid to patting down fires.",
+				"Your ally immediately attempts a flat check to remove all types of {@condition persistent damage}, and your use of this feat automatically counts as especially effective aid, reducing the DC from 15 to 10 for all future flat checks to remove the {@condition persistent damage}."
+			]
+		},
+		{
+			"name": "Environmental Explorer",
+			"source": "LOPSG",
+			"page": 41,
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"You've traversed enough untamed wilderness to gain an intuitive understanding of the dangers that exist in such places. Your extensive familiarity means you sometimes notice perils even when you're not trying to. Even if you aren't Searching in exploration mode, you can attempt a check to find environmental hazards that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular hazard."
+			]
+		},
+		{
+			"name": "Explosive Death Drop",
+			"source": "LOPSG",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 14,
 			"featType": {
 				"class": "Monk",
 				"general": false,
@@ -1296,6 +385,10 @@
 				"skill": false,
 				"archetype": false
 			},
+			"traits": [
+				"Fire",
+				"Monk"
+			],
 			"prerequisites": "{@feat Blazing Talon Surge|LOPSG}",
 			"requirements": "You are in Rain of Embers Stance and have a target {@condition grabbed} or {@condition restrained}.",
 			"entries": [
@@ -1309,100 +402,100 @@
 						"Critical Failure": "As failure, but you fall {@condition prone}. Scrolls Training The {@skill Society}'s Master of Scrolls, Kreighton Shaine (page 42), may be considered strange and absent-minded by his peers, but the elf venture-captain takes his duties quite seriously. Skilled in researching obscure subjects and unraveling inscrutable secrets, Kreighton teaches his students the value of an inquisitive mind."
 					}
 				}
-			],
-			"activity": {
-				"number": 1,
-				"unit": "single",
-				"entry": "{@as 1}"
-			},
-			"page": 119
+			]
 		},
 		{
+			"name": "Familiar Form",
 			"source": "LOPSG",
-			"name": "Kreighton's Cognitive Crossover",
+			"page": 49,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"entries": [
+				"You can use your magic to transform into a small creature of a type that commonly serves as a spellcaster's familiar, potentially allowing you to safely scout for your party while retaining a degree of spellcasting ability. You gain the {@spell familiar form|LOPSG} focus spell. Increase the number of Focus Points in your focus pool by 1."
+			]
+		},
+		{
+			"name": "Fane's Escape",
+			"source": "LOPSG",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
 			"level": 4,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Stealth"
+				],
+				"archetype": false
+			},
 			"traits": [
 				"Uncommon",
 				"General",
 				"Skill"
 			],
-			"featType": {
-				"class": false,
-				"general": true,
-				"ancestry": false,
-				"skill": true,
-				"archetype": false
-			},
-			"trigger": "You gain no information from a {@action Recall Knowledge} check (usually because you failed the secret check) using one of the two skills you chose for this feat.",
+			"prerequisites": "expert in {@skill Stealth}",
+			"requirements": "You have a deck of playing cards in your possession.",
 			"entries": [
-				"Kreighton teaches his students that an agile mind can glean clues leading to the truth, even from the most unlikely of sources. You immediately reattempt the triggering check using the other chosen skill."
-			],
-			"activity": {
-				"number": 1,
-				"unit": "reaction",
-				"entry": "{@as R}"
-			},
-			"special": "When you gain this feat, choose two of the following skills: {@skill Arcana}, {@skill Crafting}, {@skill Lore} (any one), {@skill Medicine}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, or {@skill Society}.",
-			"page": 120
+				"A good getaway requires a good distraction. You {@action Interact} to draw a deck of cards and flip it in a fluttering explosion, causing you to become briefly {@condition hidden} to all other creatures using vision as their precise sense, and then you {@action Sneak}. You have enough cover to {@action Sneak} until the end of your turn. This leaves all of the cards from the deck scattered about the room; collecting them into a deck again takes several minutes."
+			]
 		},
 		{
+			"name": "Fane's Fourberie",
 			"source": "LOPSG",
-			"name": "Westyr's Wayfinder Repository",
-			"level": 6,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, Wayfinder",
-			"requirements": "You have at least one 1st-level spell slot and a wayfinder.",
-			"entries": [
-				"You can use your wayfinder to store a little extra magic for when you need it most. When making your daily preparations, you can choose one 1st-level spell from your spellbook or spell repertoire and store it in your wayfinder. You can cast this spell from the wayfinder using the normal actions required. Once the spell has been cast, it is expended, and you must make your next daily preparations to store another spell in your wayfinder."
-			],
-			"page": 120
-		},
-		{
-			"source": "LOPSG",
-			"name": "Discerning Strike",
-			"level": 6,
-			"traits": [
-				"Archetype"
-			],
-			"featType": {
-				"class": false,
-				"general": false,
-				"ancestry": false,
-				"skill": false,
-				"archetype": true
-			},
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Thorough Reports|LOWG}",
-			"requirements": "You have successfully identified the target with {@action Recall Knowledge} during this combat.",
-			"entries": [
-				"Identifying a creature is the first step in finding its weaknesses.",
-				"Attempt a {@action Strike} against the target; if successful, you deal an additional {@damage 1d6} precision damage. If you have succeeded on a {@action Recall Knowledge} check against the target during this combat and their creature type was previously recorded using Thorough Reports, you also deal 1 point of {@condition persistent damage ||persistent bleed damage}. The creature is then temporarily immune to Discerning {@action Strike} for 1 day."
-			],
+			"page": 119,
 			"activity": {
 				"number": 1,
 				"unit": "single",
 				"entry": "{@as 1}"
 			},
-			"page": 120
-		},
-		{
-			"source": "LOPSG",
-			"name": "Farabellus Flip",
-			"level": 4,
+			"level": 2,
+			"featType": {
+				"class": [
+					"Rogue",
+					"Swashbuckler"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
 			"traits": [
 				"Uncommon",
-				"Barbarian",
-				"Fighter",
-				"Ranger"
+				"Rogue",
+				"Stance",
+				"Swashbuckler"
 			],
+			"entries": [
+				"Stella Fane has perfected a technique for using playing cards as weapons that's one part sleight of hand and one part magic.",
+				"When you enter this stance, choose whether to treat playing cards (page 115) in your possession as daggers or darts; you can wield a playing card in all ways as the chosen weapon until the stance ends. As long as the majority of the deck remains in your possession, any cards that are lost or thrown can be found after 1 minute. Otherwise, the remaining cards are likely lost or destroyed.",
+				"A character who has this feat can enchant a single deck of playing cards as a magic weapon, etching fundamental and property runes directly onto the deck of cards."
+			]
+		},
+		{
+			"name": "Farabellus Flip",
+			"source": "LOPSG",
+			"page": 120,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 4,
 			"featType": {
 				"class": [
 					"Barbarian",
@@ -1414,18 +507,925 @@
 				"skill": false,
 				"archetype": false
 			},
+			"traits": [
+				"Uncommon",
+				"Barbarian",
+				"Fighter",
+				"Ranger"
+			],
 			"prerequisites": "trained in {@skill Acrobatics} and medium armor",
 			"trigger": "An enemy targets you with a melee {@action Strike}.",
 			"entries": [
 				"Surprisingly agile even in a breastplate and carrying a full rucksack, Marcos Farabellus developed this evasive maneuver during one of his many adventures. Flinging your body into a twisting somersault, you gain a +2 circumstance bonus to your AC against the triggering attack.",
 				"If the attack still hits you, you can {@action Step} to an open space that's still within the triggering enemy's reach, turning the impact of the blow into momentum."
-			],
+			]
+		},
+		{
+			"name": "Focus Ally",
+			"source": "LOPSG",
+			"page": 5544,
 			"activity": {
 				"number": 1,
 				"unit": "reaction",
 				"entry": "{@as R}"
 			},
-			"page": 120
+			"level": 16,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Fortune"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"trigger": "An adjacent ally fails, but doesn't critically fail, a saving throw against an effect with the {@trait incapacitation} trait.",
+			"entries": [
+				"You're so focused on your allies that you can help them to recenter when something would take them out of the fight. Your ally rerolls the failed saving throw. That ally must take the second result."
+			]
+		},
+		{
+			"name": "Foolproof Instructions",
+			"source": "LOPSG",
+			"page": 45,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"entries": [
+				"You feel confident that you can explain your scrolls so well that even your allies can use them... hopefully. During your daily preparations, you can select a single scroll and instruct a single ally in its use. Until your next daily preparations, the ally can attempt to use the scroll with a single action that has the {@trait manipulate} trait. The ally rolls the skill corresponding to the spellcasting tradition. The GM determines the DC based on the scroll's level, possibly adjusted for the situation. If the spell has a spell attack bonus or a spell DC, use your level as the proficiency bonus and the highest of your ally's Intelligence, Wisdom, or Charisma modifiers.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "For the rest of the ally's turn, they can spend actions to Cast the Spell.",
+						"Failure": "The ally misremembers your instructions and can't use the scroll this turn.",
+						"Critical Failure": "The ally misunderstood your instructions and can't use the scroll."
+					}
+				}
+			]
+		},
+		{
+			"name": "Forceful Shot",
+			"source": "LOPSG",
+			"page": 5544,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 14,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Attack",
+				"Press"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"Your ranged attacks push your foes away from your allies.",
+				"Make a ranged {@action Strike}, adding the following effects in addition to the normal effects of the {@action Strike}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is pushed 10 feet away from you.",
+						"Success": "The target is pushed 5 feet away from you.",
+						"Failure": "The target is {@condition flat-footed} for 1 round."
+					}
+				}
+			]
+		},
+		{
+			"name": "Glyph Expert",
+			"source": "LOPSG",
+			"page": 49,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"entries": [
+				"You've learned to recognize the telltale writings and other signs that indicate the presence of magical traps. You gain a +2 circumstance bonus to {@skill Perception} checks to find magical traps, to AC against attacks made by magical traps, to saves against magical traps, and to checks to Disable magical traps. Even if you aren't Searching, you get a check to find magical traps that normally require you to be Searching. You still need to meet any other requirements to find the trap.",
+				"You're also adept at avoiding the effects of traps that feature magical writing, such as runes, glyphs, ancient script, or other forms. When you attempt a saving throw against the effects of these traps, if you roll a success, you get a critical success instead. If you roll a critical failure, you get a failure instead."
+			]
+		},
+		{
+			"name": "Improvised Crafting",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": [
+					"Crafting"
+				],
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Exploration",
+				"Manipulate",
+				"Skill"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Crafting}",
+			"entries": [
+				"You've learned to repair your equipment even in challenging circumstances, making use of what you have available. You can attempt to {@action Repair} an item without a repair kit, instead improvising tools out of your gear or found items. This adds 5 minutes to the time it takes to {@action Repair} the item. You can also {@action Repair} an item while on the move without needing a stable surface. This adds 10 minutes to the times it takes to {@action Repair} the item."
+			]
+		},
+		{
+			"name": "Innate Magic Intuition",
+			"source": "LOPSG",
+			"page": 45,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"entries": [
+				"You've spent countless hours learning to recognize and predict a creature's innate magical abilities. The first time you successfully {@action Recall Knowledge} to identify a creature, in addition to any information you learn from your successful check, you learn the names of three of the highest-level innate spells it can cast, and you gain a +2 circumstance bonus on your next save against an innate spell cast by that creature."
+			]
+		},
+		{
+			"name": "Kreighton's Cognitive Crossover",
+			"source": "LOPSG",
+			"page": 120,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": true,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"General",
+				"Skill"
+			],
+			"trigger": "You gain no information from a {@action Recall Knowledge} check (usually because you failed the secret check) using one of the two skills you chose for this feat.",
+			"entries": [
+				"Kreighton teaches his students that an agile mind can glean clues leading to the truth, even from the most unlikely of sources. You immediately reattempt the triggering check using the other chosen skill."
+			],
+			"special": "When you gain this feat, choose two of the following skills: {@skill Arcana}, {@skill Crafting}, {@skill Lore} (any one), {@skill Medicine}, {@skill Nature}, {@skill Occultism}, {@skill Religion}, or {@skill Society}."
+		},
+		{
+			"name": "Magic Finder",
+			"source": "LOPSG",
+			"page": 45,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"entries": [
+				"You've learned a few tricks to ensure you find every last magic item and interesting {@trait magical} effect during your missions. You can cast {@spell detect magic} and read aura as innate spells at will. You can also cast {@spell locate} as an innate spell once per day, but only to locate magic items, not specific mundane objects or types of objects. If you could already cast spells, these spells are of the same tradition. Otherwise, they're arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells.",
+				"When you cast {@spell detect magic} or read aura from this feat on an item or creature under the effect of a {@spell magic aura} spell or interact with an item under the effect of an {@spell item facade} spell, you gain a +2 circumstance bonus on your check to disbelieve the illusion."
+			]
+		},
+		{
+			"name": "Martial Exercise",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"You've become comfortable in using weapons that you might not have picked up before training with the Swords. Choose one weapon group, such as hammer or sword. Whenever your proficiency rank in any weapon increases to expert or beyond, you also gain that new proficiency rank with both simple and martial weapons of your chosen weapon group."
+			]
+		},
+		{
+			"name": "Master's Counterspell",
+			"source": "LOPSG",
+			"page": 49,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 16,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": "Spellmaster"
+			},
+			"traits": [
+				"Abjuration",
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}, master in spell attack rolls and spell DCs",
+			"trigger": "A creature Casts a Spell that you have prepared, and that spell was cast or created with a tradition of magic in which you have master proficiency in spell attack rolls and spell DCs.",
+			"entries": [
+				"When a foe Casts a Spell and you can see its manifestations, you can use your magic to disrupt it. If you're a prepared caster, you can expend a prepared spell to counter the triggering creature's casting of a spell. If you're a spontaneous caster, you can expend a spell slot. The level of the prepared spell or spell slot must be at least as high as the triggering spell's level. You lose your prepared spell or spell slot as if you had Cast the Spell. You then attempt to counteract the triggering spell, and you take a \u20132 penalty to your counteract check; for prepared casters, the GM might waive the penalty if the spell you're expending to counterspell is especially appropriate\u2014such as countering with the same spell, or using a cone of cold to counteract a fireball."
+			]
+		},
+		{
+			"name": "Masterful Obfuscation",
+			"source": "LOPSG",
+			"page": 45,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": true,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "master in a skill with the {@action Recall Knowledge} action,",
+			"entries": [
+				"Scrollmaster Dedication You've mastered the art of deceiving others about your area of study. When you gain this feat, choose one skill with the {@action Recall Knowledge} action in which you have attained master proficiency. You can attempt to deceive others about the truth of facts and knowledge related to that skill\u2014such as by pretending to know something that you don't, planting false information, or the like\u2014using the {@action Lie} action of the {@skill Deception} skill. When you {@action Lie} in this way, attempt your skill check using the skill you selected when you gained this feat instead of {@skill Deception}, applying all bonuses or penalties related from the selected skill to the check. While it's easier to convince someone who knows nothing about your chosen false information, on a critical success, you can even convince someone who has heard something contradictory, unless they have reason to be certain from direct experience. For instance, you might say, \"I know you may have heard to use silver weapons against vampires, but that's a misconception based on conflating them with werewolves. According to all credible scholars, cold iron will do the trick.\" Once a creature realizes you've used masterful obfuscation to {@action Lie} to them, either from a failed check or due to later discovering the falsehood, you can't use this feat against them again, as it relies on blind trust in your superior knowledge. However, you can still {@action Lie} to them normally."
+			]
+		},
+		{
+			"name": "Mobile Magical Combat",
+			"source": "LOPSG",
+			"page": 49,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 16,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Flourish"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"requirements": "You're wielding a melee weapon and have {@action Cast a Spell} requiring at least 1 action this turn.",
+			"entries": [
+				"You dart around the battlefield, casting spells while you Spellmaster Feats The Spellmasters of the Pathfinder {@skill Society} have numerous magical secrets available to those who delve into their lore.",
+				"The following archetype feats are available to characters with the spellmaster archetype (Character Guide 114)",
+				"carefully make melee attacks with your weapon. {@action Stride} once. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Mobile Magical Combat while Burrowing, Climbing, Flying, or Swimming instead of Striding if you have the corresponding movement type."
+			]
+		},
+		{
+			"name": "Observant Explorer",
+			"source": "LOPSG",
+			"page": 41,
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"Thanks to the time you've spent wandering through wild and untamed environments, you've gained an intuitive sense about creatures. You sometimes notice them before they attack, or spot them nearby even if they weren't planning on attacking. You can attempt a check to notice {@condition hidden} creatures attempting to {@action Avoid Notice} nearby even if you aren't actively Searching for them. You still need to meet any other requirements to notice a particular creature."
+			]
+		},
+		{
+			"name": "Physical Training",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in {@skill Athletics} and {@skill Acrobatics}",
+			"entries": [
+				"You spend a lot of time focusing on your physical fitness. You increase your proficiency rank in {@skill Acrobatics} and {@skill Athletics} from expert to master."
+			]
+		},
+		{
+			"name": "Practiced Defender",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"After extensive practice with the Swords, you're comfortable enough with your shield to move at a normal pace with it raised. You may use the {@action Defend} exploration activity while traveling at your full travel speed instead of half your travel speed."
+			]
+		},
+		{
+			"name": "Protect Ally",
+			"source": "LOPSG",
+			"page": 5533,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"You place your body between your friends and your enemies, protecting your allies against oncoming attacks. You choose one adjacent ally. That ally gains a +1 circumstance bonus to AC until the start of your next turn or until that ally is no longer adjacent to you, whichever comes first. You can only protect a single ally in this way. If you choose to Protect a different Ally, the previous ally loses the bonus to AC."
+			]
+		},
+		{
+			"name": "Quick Stow",
+			"source": "LOPSG",
+			"page": 5533,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Manipulate"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"You know that situations can change rapidly and might leave you needing to change equipment in the middle of combat.",
+				"Your training has taught you how to swap your equipment on the fly. You {@action Interact} to stow a weapon and then {@action Interact} again to draw a readied item or weapon."
+			]
+		},
+		{
+			"name": "Rain Of Embers Stance",
+			"source": "LOPSG",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 1,
+			"featType": {
+				"class": "Monk",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Rare",
+				"Fire",
+				"Monk",
+				"Stance"
+			],
+			"requirements": "You are unarmored.",
+			"entries": [
+				"You enter the stance of an enraged phoenix, holding your fingers as rigid as deadly talons while moving with quick, flickering gestures that dance with biting flames. The only Strikes you can make are fire talon Strikes. These deal {@damage 1d4} fire damage; are in the brawling group; and have the agile, finesse, fire, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"While in Rain of Embers Stance, you gain a +1 status bonus to AC and fire resistance equal to half your level (minimum 1)."
+			]
+		},
+		{
+			"name": "Recollect Studies",
+			"source": "LOPSG",
+			"page": 5533,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": true,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, expert in a skill used to {@action Recall Knowledge}",
+			"requirements": "You're fighting a creature of your level or lower that could be identified by {@action Recall Knowledge} with a skill in which you're an expert.",
+			"entries": [
+				"You paid attention during your studies and remember the right way to attack various creatures. Choose a creature that meets the requirements. You learn the resistances, immunities, or weaknesses of the creature (your choice) without needing to successfully {@action Recall Knowledge}."
+			]
+		},
+		{
+			"name": "Recover Spell",
+			"source": "LOPSG",
+			"page": 49,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Concentrate",
+				"Metamagic"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"requirements": "An enemy's action disrupted your attempts to {@action Cast a Spell} since the beginning of your last turn.",
+			"entries": [
+				"You recover the energy of a recently disrupted spell, allowing you to cast it again as long as you do so immediately before the energy dissipates. You regain the use of a spell that was disrupted since the beginning of your last turn, but you must immediately Cast the Spell again with your next action or else you lose the spell; as normal for metamagic, this must be on the same turn that you use Recover Spell. You can change the area, targets, and other variables, including the number of actions used to Cast the Spell if the spell allows, such as when casting heal or magic missile."
+			]
+		},
+		{
+			"name": "Reflexive Grip",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}",
+			"entries": [
+				"You keep hold of your weapons even when knocked out.",
+				"You gain a +2 circumstance bonus to your Reflex DC when defending against checks to {@action Disarm} you. In addition, when you fall {@condition unconscious}, you don't drop any weapons that you're currently wielding, though somebody else can remove them from you."
+			]
+		},
+		{
+			"name": "Remember Your Training",
+			"source": "LOPSG",
+			"page": 41,
+			"activity": {
+				"number": 1,
+				"unit": "single",
+				"entry": "{@as 1}"
+			},
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"frequency": "once per day",
+			"entries": [
+				"During your training to become a Pathfinder Agent you were schooled on a wide variety of creatures you might encounter, and you can think back to that training to gain crucial insight in times of need. Attempt a check to {@action Recall Knowledge} about a creature you can see, adding your level as a proficiency bonus if you are untrained (rather than 0)",
+				"If you roll a failure (but not a critical failure) on this check, you get a success instead."
+			]
+		},
+		{
+			"name": "Retain Absorbed Spell",
+			"source": "LOPSG",
+			"page": 5500,
+			"level": 18,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Absorb Spell|LOCG}",
+			"entries": [
+				"When you absorb a spell using the Absorb Spell reaction, you utilize secret, techniques that allow you to retain the power and knowledge necessary to cast the spell repeatedly\u2014potentially for a greater period of time. If you're a spontaneous caster, you can cast the triggering spell up to three times instead of once. If you're a prepared spellcaster, you can replace up to three of your prepared spells of the same level with the absorbed spell instead of one. Either way, you can choose to retain the absorbed spell for the next hour instead of the next 10 minutes; if you choose to extend the absorption to an hour, you can't use Absorb Spell again until one hour after the spell is absorbed."
+			]
+		},
+		{
+			"name": "Rugged Survivalist",
+			"source": "LOPSG",
+			"page": 5533,
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": [
+					"Survival"
+				],
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Survival}",
+			"entries": [
+				"Swordmaster Feats The following archetype feats are available to characters with the swordmaster archetype (Character Guide 115)",
+				"You've studied survival skills with the School of Swords experts and are comfortable spending long periods of time in the wilderness. You don't get {@condition fatigued} more quickly due to precipitation during overland travel, though you can otherwise be {@condition fatigued} as normal. You can go 3 days + your Constitution modifier without water before you take damage from thirst and you can go 5 days + your Constitution modifier without food before you take damage from starvation (Core Rulebook 500)."
+			]
+		},
+		{
+			"name": "Snap Out Of It!",
+			"source": "LOPSG",
+			"page": 4422,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": [
+					"Medicine"
+				],
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Medicine}, {@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"Pathfinders are trained to help each other be safe and successful, and you know how to jolt your allies back to their senses. Attempt a {@skill Medicine} check on an adjacent ally who is {@condition fascinated}, {@condition frightened}, {@condition stunned}, or {@condition stupefied} and choose one of those conditions. The DC is the DC for the effect that caused the condition.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Reduce the value of the chosen condition by 2. If you chose {@condition fascinated}, that condition ends.",
+						"Success": "Reduce the value of the chosen condition by 1. If you chose {@condition fascinated}, that condition ends.",
+						"Failure": "The target is unaffected.",
+						"Critical Failure": "You increase the value of the chosen condition by 1. If you chose {@condition fascinated}, increase the duration by 1 round instead."
+					}
+				}
+			]
+		},
+		{
+			"name": "Spellmaster's Tenacity",
+			"source": "LOPSG",
+			"page": 49,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 14,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster's Resilience|LOCG}",
+			"frequency": "once per day",
+			"trigger": "You critically fail at a saving throw against a foe's spell, and that spell was cast or created with the tradition of magic you selected with the Spellmaster's Resilience feat.",
+			"entries": [
+				"You call upon the power of your spells to protect you from the worst of the magic headed your way. You fail your saving throw instead of critically failing. For 1 minute, increase the circumstance bonus to saving throws from the Spellmaster's Resilience feat to +2, and increase the resistance to damage it grants to 10."
+			]
+		},
+		{
+			"name": "Spellmaster's Ward",
+			"source": "LOPSG",
+			"page": 49,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Spellmaster Dedication|LOCG}",
+			"entries": [
+				"You can create a number of powerful shielding runes that bolster your defenses against damaging spells by absorbing the worst of the energy to keep you safe. You gain the spellmaster's ward focus spell. Increase the number of Focus Points in your focus pool by 1."
+			]
+		},
+		{
+			"name": "Spiritual Explorer",
+			"source": "LOPSG",
+			"page": 41,
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"entries": [
+				"You're familiar with the danger that lingering spirits can pose to an unwary adventurer, and you're particularly attuned to their presence. Even if you aren't Searching in exploration mode, you can attempt a check to find haunts Pathfinder Agent Feats The following feats are available to characters with the Pathfinder Agent Dedication (Pathfinder Lost Omens World Guide 23)",
+				"that normally require you to {@action Search} for them. You still need to meet any other requirements to find a particular haunt."
+			]
+		},
+		{
+			"name": "Stave Off Catastrophe",
+			"source": "LOPSG",
+			"page": 5544,
+			"level": 18,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Shoulder Catastrophe|LOCG}",
+			"entries": [
+				"You fully protect your allies from the worst blows. When you use the Shoulder Catastrophe reaction, you can choose to take the full critical damage and effects from the attack, including effects that apply on a critical hit, and have your ally take no damage and avoid the attack's effects."
+			]
+		},
+		{
+			"name": "Stella's Stab And Snag",
+			"source": "LOPSG",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"level": 6,
+			"featType": {
+				"class": [
+					"Rogue",
+					"Swashbuckler"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Rogue",
+				"Swashbuckler"
+			],
+			"prerequisites": "expert in {@skill Thievery}",
+			"requirements": "You are wielding a piercing or slashing melee weapon.",
+			"entries": [
+				"You dart towards your opponent, seeking to stab them and slice their purse-strings with a single movement. {@action Stride} up to your Speed; this movement does not trigger reactions triggered Academy Instructors One of the more significant, if less widely advertised, benefits of joining the Pathfinder {@skill Society} is the opportunity for initiates and agents to learn from teachers and specialists from across Golarion, including the deans of the Pathfinder {@skill Society}'s three schools. Characters who are members of the Pathfinder {@skill Society} have access to the uncommon feats in this section. Many of these feats require the Pathfinder Agent Archetype Dedication (Pathfinder Lost Omens World Guide 23)",
+				"by movement. At any point during this movement you can {@action Strike} an opponent within reach. If this {@action Strike} is successful, you can attempt a {@skill Thievery} check to {@action Steal} from the target.",
+				"Rain of Embers Style The martial artist Meleeka Sanvara (CN female human monk) originally met agents of the Pathfinder {@skill Society} as an enemy when the agents were sent to retrieve an artifact she had stolen. Now, Meleeka works as a Pathfinder agent and occasionally shares the knowledge of her family's unique martial arts techniques with agents who earn her trust."
+			]
+		},
+		{
+			"name": "Swap Investment",
+			"source": "LOPSG",
+			"page": 4422,
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"frequency": "once per day",
+			"entries": [
+				"Your time as a Pathfinder has taught you how to improvise, and you've learned to make use of the resources you find in the field. You Invest a magic item and remove a previously invested item. The previous item no longer counts against your limit of 10 invested items."
+			]
+		},
+		{
+			"name": "Tense Negotiator",
+			"source": "LOPSG",
+			"page": 5544,
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}, master in {@skill Diplomacy}",
+			"entries": [
+				"You often find that the best way to win a conflict means avoiding a fight in the first place. You're good at talking to potential opponents without making things worse.",
+				"If you would critically fail at a check to {@action Make an Impression}, you instead fail. You can attempt checks to make Requests of creatures who're {@condition indifferent} or {@condition unfriendly} toward you."
+			]
+		},
+		{
+			"name": "Transcribe Moment",
+			"source": "LOPSG",
+			"page": 45,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"entries": [
+				"You gain the {@spell transcribe moment|LOPSG} focus spell (page 45). If you don't already have one, you gain a focus pool of 1 Focus Point, which you can {@action Refocus} by spending 10 minutes to study a text or record notes on your recent experiences."
+			]
+		},
+		{
+			"name": "Ward Mind",
+			"source": "LOPSG",
+			"page": 46,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 16,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Scrollmaster Dedication|LOCG}",
+			"trigger": "Your turn ends.",
+			"requirements": "You're currently affected by a {@trait mental} effect that you gained by failing, but not critically failing, a saving throw.",
+			"entries": [
+				"To protect the knowledge within your mind from intrusion or erasure, you ward yourself against a mental attack, temporarily delaying its effects. Until the end of your next turn, you ignore a single {@trait mental} effect that meets the requirement.",
+				"You can suppress a particular effect using Ward Mind or Cognitive Loophole (Core Rulebook 188) only once, even if you have both feats."
+			],
+			"special": "You can use this reaction even if the {@trait mental} effect prevents you from using reactions."
+		},
+		{
+			"name": "Watch And Learn",
+			"source": "LOPSG",
+			"page": 41,
+			"activity": {
+				"number": 1,
+				"unit": "reaction",
+				"entry": "{@as R}"
+			},
+			"level": 4,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
+			"trigger": "An ally you can see succeeds or critically succeeds at a Strength- or Dexterity-based skill check, using a skill in which you are untrained.",
+			"entries": [
+				"Pathfinder agents serve as members of diverse teams with complementary skill sets. You are practiced at following the example of a more skilled ally to accomplish a wide variety of tasks. For the next minute you can add your level as a proficiency bonus to the {@condition observed} skill check, even though you are untrained. This does not allow you to attempt trained actions using that skill unless you would otherwise be able to do so."
+			]
+		},
+		{
+			"name": "Wayfinder Resonance Infiltrator",
+			"source": "LOPSG",
+			"page": 4422,
+			"level": 8,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, {@feat Wayfinder Resonance Tinkerer|LOWG} (World Guide 23)",
+			"entries": [
+				"You are adept at using the unusual resonance of your wayfinder to aid in any deceptions you might employ. Once per day you can activate your wayfinder to cast {@spell illusory disguise}, heightened to 2nd level, as an arcane spell. Additionally, once per day, you can Activate your wayfinder with a single-action envision activation to transform it into a perfect replica of another similarly sized badge of membership or office, such as an Aspis Consortium badge. This transformation lasts for 1 hour."
+			]
+		},
+		{
+			"name": "Westyr's Wayfinder Repository",
+			"source": "LOPSG",
+			"page": 120,
+			"level": 6,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, Wayfinder",
+			"requirements": "You have at least one 1st-level spell slot and a wayfinder.",
+			"entries": [
+				"You can use your wayfinder to store a little extra magic for when you need it most. When making your daily preparations, you can choose one 1st-level spell from your spellbook or spell repertoire and store it in your wayfinder. You can cast this spell from the wayfinder using the normal actions required. Once the spell has been cast, it is expended, and you must make your next daily preparations to store another spell in your wayfinder."
+			]
 		}
 	]
 }

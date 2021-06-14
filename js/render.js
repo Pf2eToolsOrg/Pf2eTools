@@ -3313,7 +3313,7 @@ Renderer.companion = {
 		${companion.fluff ? `<p class="pf2-stat pf2-stat__section--wide">${renderer.render(companion.fluff)}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${companion.size}</p>
 		${Renderer.creature.getAttacks(companion)}
-		${Renderer.creature.getAbilityMods(companion.abilityMod)}
+		${Renderer.creature.getAbilityMods(companion.abilityMods)}
 		<p class="pf2-stat pf2-stat__section"><strong>Hit Points&nbsp;</strong>${companion.hp}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill}}`)}</p>
 		${Renderer.creature.getSpeed(companion)}
@@ -3847,9 +3847,11 @@ Renderer.deity = {
 
 	getImage (deity) {
 		const textStack = [""];
-		// This could, no, SHOULD be improved
+		// TODO: This could, no, SHOULD be improved
 		if (deity.images) {
-			textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${deity.images}" alt="No Image Found."></p>`)
+			const img = deity.images[0];
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a href="${img}">Images available on the Archives of Nethys.</a>`);
+			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
 		return textStack.join("");
 	},

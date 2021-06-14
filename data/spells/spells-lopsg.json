@@ -1,77 +1,33 @@
 {
 	"spell": [
 		{
+			"name": "Familiar Form",
 			"source": "LOPSG",
-			"name": "Transcribe Moment",
-			"level": 4,
-			"school": "V",
+			"page": 5500,
 			"type": "FOCUS",
 			"focus": true,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": false
-			},
+			"level": 4,
 			"traits": [
 				"Uncommon",
-				"Evocation"
+				"Polymorph",
+				"Transmutation"
 			],
-			"entries": [
-				"You instantly create a small, permanent scroll that contains a magically precise written description of your current surroundings in every direction. Any creature who spends 1 minute to read the scroll\u2014written in a language of your choice that you know\u2014 immediately sees and experiences your surroundings during the moment that you recorded (including whatever events transpired that round) exactly as you experienced it. This depiction records only what you can sense yourself. For example, if you can't see {@condition invisible} creatures, the depiction doesn't reveal them even to a reader who could normally see them; a reader can't use their {@skill Perception} to notice details you missed, but they can attempt a check to {@action Recall Knowledge} based on what they just experienced if they have knowledge that you lack. You can have multiple scrolls from transcribe moment in existence at the same time, up to a number equal to your Intelligence modifier. If you Cast the Spell again while already at the maximum number of scrolls, choose one of the current scrolls to lose its magic, then create the new one."
-			],
+			"school": "T",
 			"cast": {
 				"number": 1,
 				"unit": "double",
 				"entry": "{@as 2}"
 			},
-			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": null
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 46
-		},
-		{
-			"source": "LOPSG",
-			"name": "Familiar Form",
-			"level": 4,
-			"school": "T",
-			"type": "FOCUS",
-			"focus": true,
 			"components": {
 				"F": false,
 				"M": false,
 				"S": true,
 				"V": true
 			},
-			"traits": [
-				"Uncommon",
-				"Polymorph",
-				"Transmutation"
-			],
-			"entries": [
-				"You transform into a Tiny animal that commonly serves as a spellcaster's familiar. You gain the effects of the spell pest form, heightened to the level of familiar form you cast. However, you can transform into only a bat, cat, raven, snake, or other Tiny animal of a type that you have seen serve as a spellcaster's familiar.",
-				"While in this form, despite the restrictions from polymorph battle forms, you retain the ability to cast spells of 1st level or lower but only those without material components. You still can't make any Strikes or other attacks in pest form, as normal."
-			],
-			"cast": {
-				"number": 1,
-				"unit": "double",
-				"entry": "{@as 2}"
-			},
 			"range": {
 				"type": null
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "1 minute",
@@ -80,7 +36,12 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You transform into a Tiny animal that commonly serves as a spellcaster's familiar. You gain the effects of the spell pest form, heightened to the level of familiar form you cast. However, you can transform into only a bat, cat, raven, snake, or other Tiny animal of a type that you have seen serve as a spellcaster's familiar.",
+				"While in this form, despite the restrictions from polymorph battle forms, you retain the ability to cast spells of 1st level or lower but only those without material components. You still can't make any Strikes or other attacks in pest form, as normal."
+			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
@@ -95,93 +56,36 @@
 					}
 				],
 				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": false,
-			"page": 5500
+			}
 		},
 		{
-			"source": "LOPSG",
-			"name": "Spellmaster's Ward",
-			"level": 5,
-			"school": "A",
-			"type": "FOCUS",
-			"focus": true,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
-			"traits": [
-				"Uncommon",
-				"Abjuration"
-			],
-			"entries": [
-				"You create one or more glowing protective runes that revolve around you. For each additional action you use when Casting the Spell, increase the number of runes you create by one, to a maximum of three runes for 3 actions.",
-				"When you next take damage from a spell, a rune is expended to prevent {@dice 2d6} of that spell's damage. If damage from the triggering spell remains, additional runes are expended until the damage is completely negated, or until all runes have been spent, whichever comes first."
-			],
-			"cast": {
-				"number": 1,
-				"unit": "Varies",
-				"entry": "{@as 1} to {@as 3}"
-			},
-			"range": {
-				"type": null
-			},
-			"duration": {
-				"type": "timed",
-				"entry": "sustained up to 1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"savingThrowBasic": false,
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "Each rune prevents an additional 1 damage."
-				},
-				"x": null,
-				"no_x": null
-			},
-			"dismiss": false,
-			"sustain": true,
-			"page": 5500
-		},
-		{
-			"source": "LOPSG",
 			"name": "Perseis's Precautions",
-			"level": 3,
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"school": "D",
+			"source": "LOPSG",
+			"page": 124,
 			"type": "SPELL",
 			"focus": false,
-			"components": {
-				"F": false,
-				"M": true,
-				"S": true,
-				"V": true
-			},
+			"level": 3,
 			"traits": [
 				"Uncommon",
 				"Divination",
 				"Fortune",
 				"Prediction"
 			],
-			"entries": [
-				"Leaving nothing to chance, you weave divinatory precautions against an ambush, alerting the target to danger. Once during the duration of this spell, the target can roll one {@skill Perception}, {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, or {@skill Society} initiative roll twice and take the better result, after which the spell ends.",
-				"The strain of staying so prepared is too much for a mind to handle for long; the target is temporarily immune to this spell for 24 hours once the spell ends, whether they used the initiative benefit or not."
+			"school": "D",
+			"traditions": [
+				"Arcane",
+				"Occult"
 			],
 			"cast": {
 				"number": 1,
 				"unit": "triple",
 				"entry": "{@as 3}"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
 			},
 			"range": {
 				"type": "point",
@@ -191,6 +95,7 @@
 					"amount": 1
 				}
 			},
+			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
 				"entry": "10 minutes",
@@ -199,16 +104,111 @@
 					"unit": "minute"
 				}
 			},
-			"savingThrowBasic": false,
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"Leaving nothing to chance, you weave divinatory precautions against an ambush, alerting the target to danger. Once during the duration of this spell, the target can roll one {@skill Perception}, {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, or {@skill Society} initiative roll twice and take the better result, after which the spell ends.",
+				"The strain of staying so prepared is too much for a mind to handle for long; the target is temporarily immune to this spell for 24 hours once the spell ends, whether they used the initiative benefit or not."
+			],
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
 				"x": null,
 				"no_x": null
+			}
+		},
+		{
+			"name": "Spellmaster's Ward",
+			"source": "LOPSG",
+			"page": 5500,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Abjuration"
+			],
+			"school": "A",
+			"cast": {
+				"number": 1,
+				"unit": "Varies",
+				"entry": "{@as 1} to {@as 3}"
 			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
 			"dismiss": false,
+			"entries": [
+				"You create one or more glowing protective runes that revolve around you. For each additional action you use when Casting the Spell, increase the number of runes you create by one, to a maximum of three runes for 3 actions.",
+				"When you next take damage from a spell, a rune is expended to prevent {@dice 2d6} of that spell's damage. If damage from the triggering spell remains, additional runes are expended until the damage is completely negated, or until all runes have been spent, whichever comes first."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "Each rune prevents an additional 1 damage."
+				},
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Transcribe Moment",
+			"source": "LOPSG",
+			"page": 46,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Evocation"
+			],
+			"school": "V",
+			"cast": {
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": false
+			},
+			"range": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
 			"sustain": false,
-			"page": 124
+			"dismiss": false,
+			"entries": [
+				"You instantly create a small, permanent scroll that contains a magically precise written description of your current surroundings in every direction. Any creature who spends 1 minute to read the scroll\u2014written in a language of your choice that you know\u2014 immediately sees and experiences your surroundings during the moment that you recorded (including whatever events transpired that round) exactly as you experienced it. This depiction records only what you can sense yourself. For example, if you can't see {@condition invisible} creatures, the depiction doesn't reveal them even to a reader who could normally see them; a reader can't use their {@skill Perception} to notice details you missed, but they can attempt a check to {@action Recall Knowledge} based on what they just experienced if they have knowledge that you lack. You can have multiple scrolls from transcribe moment in existence at the same time, up to a number equal to your Intelligence modifier. If you Cast the Spell again while already at the maximum number of scrolls, choose one of the current scrolls to lose its magic, then create the new one."
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
 		}
 	]
 }
