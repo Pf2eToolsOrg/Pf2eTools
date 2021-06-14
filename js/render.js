@@ -3830,6 +3830,15 @@ Renderer.deity = {
 		return textStack.join("");
 	},
 
+	getImage (deity) {
+		const textStack = [""];
+		// This could, no, SHOULD be improved
+		if (deity.images) {
+			textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${deity.images}" alt="No Image Found."></p>`)
+		}
+		return textStack.join("");
+	},
+
 	async pGetFluff (deity) {
 		return Renderer.utils.pGetFluff({
 			entity: deity,

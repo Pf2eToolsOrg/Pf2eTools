@@ -130,6 +130,9 @@ function renderStatblock (deity) {
 		const quickRules = await Renderer.utils.pGetQuickRules("deity");
 		$content.append(quickRules);
 	}
+	const buildImageTab = async () => {
+		$content.append(Renderer.deity.getImage(deity))
+	}
 	const statTab = Renderer.utils.tabButton(
 		"Deity",
 		() => {},
@@ -150,9 +153,15 @@ function renderStatblock (deity) {
 		() => {},
 		buildInfoTab,
 	);
+	const imageTab = Renderer.utils.tabButton(
+		"Images",
+		() => {},
+		buildImageTab,
+	);
 	const tabs = [statTab]
 	if (deity.intercession) tabs.push(intercessionTab);
 	if (deity.hasLore) tabs.push(loreTab);
+	if (deity.images) tabs.push(imageTab);
 	tabs.push(infoTab)
 	Renderer.utils.bindTabButtons(...tabs);
 }
