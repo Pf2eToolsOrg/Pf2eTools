@@ -51,6 +51,7 @@
 						"The triggering creature falls in and takes falling damage (typically 10 bludgeoning damage). That creature can use the {@action Grab an Edge} reaction to avoid falling."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Pitfall"
 				}
 			],
@@ -119,6 +120,7 @@
 						"Lock. A spine extends to attack the triggering creature."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Spring"
 				},
 				{
@@ -140,34 +142,32 @@
 					"entries": [
 						{
 							"type": "affliction",
-							"entries": {
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": "19",
-								"savingThrow": "Fortitude",
-								"onset": null,
-								"maxDuration": "4 hours",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
-										"duration": "1 hour"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
-										"duration": "1 hour"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
-										"duration": "1 hour"
-									}
-								]
-							}
+							"name": "",
+							"traits": [
+								"poison"
+							],
+							"note": "",
+							"DC": "19",
+							"savingThrow": "Fortitude",
+							"onset": null,
+							"maxDuration": "4 hours",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
+									"duration": "1 hour"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
+									"duration": "1 hour"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
+									"duration": "1 hour"
+								}
+							]
 						}
 					],
 					"name": "Cladis Poison",
@@ -234,6 +234,7 @@
 						"The door falls, closing off the hallway. The stone slab deals {@damage 3d8} bludgeoning damage to anyone beneath or adjacent to the slab when it drops and pushes them out of its space in a random direction. A creature that succeeds at a DC 17 Reflex save takes no damage and rolls out of the way in a random direction. On a critical success, they can choose the direction. Lifting the fallen slab requires a successful DC 25 {@skill Athletics} check. Hitting the floor panels triggers the trap. The slab uses the same AC and saves as the trap, but it has Hardness 12, HP 48 (BT 24)."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Slam Shut"
 				}
 			],
@@ -300,6 +301,7 @@
 						"The trap shoots a spear, making an attack against the creature or object on the floor tile."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Spear"
 				},
 				{
@@ -360,6 +362,7 @@
 						"The trap deals {@damage 3d12} electricity damage to the triggering creature (DC 22 basic Reflex save)."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Electrocution"
 				}
 			],
@@ -426,6 +429,7 @@
 						"Both blades swing down, each one attacking all creatures under the ceiling grooves."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Falling Scythes"
 				},
 				{
@@ -490,6 +494,7 @@
 						"The rune detonates a fireball centered on the triggering creature's square. This is a 3rdlevel {@spell fireball} spell that deals {@damage 6d6} fire damage (DC 22 basic Reflex save)."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Fireball"
 				}
 			],
@@ -554,6 +559,7 @@
 						"The tube explodes, spraying hallucinogenic powder in a 30-foot cone. Any creature in the cone must succeed at a DC 24 Will save or be {@condition confused} for 1 round and take a \u20132 status penalty to {@skill Perception} checks and saves against {@trait mental} effects for {@dice 1d4} hours. On a critical failure, the penalty is instead \u20134."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Powder Burst"
 				}
 			],
@@ -599,6 +605,7 @@
 						"Each living creature within 60 feet must succeed at a DC 23 Will save or be subjected to the pharaoh's curse. A cursed creature takes a \u20132 status penalty to Fortitude saves, and any natural or magical healing it receives is halved. The curse remains until removed by {@spell remove curse|CRB} or similar magic."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Curse the Intruders"
 				}
 			],
@@ -658,41 +665,40 @@
 						"The mold can't use this reaction if it's in direct sunlight or if the damage was fire damage. The triggering creature and all creatures within 10 feet are exposed to yellow mold spores."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Spore Explosion"
 				},
 				{
 					"entries": [
 						{
 							"type": "affliction",
-							"entries": {
-								"name": "",
-								"traits": [
-									"inhaled",
-									"poison"
-								],
-								"note": " Any {@condition drained} condition\nfrom the spores persists after the poison's duration ends",
-								"DC": "26",
-								"savingThrow": "Fortitude",
-								"onset": null,
-								"maxDuration": "6\nrounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d8} poison damage and {@condition drained|CRB|drained 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 3}",
-										"duration": "1 round"
-									}
-								]
-							}
+							"name": "",
+							"traits": [
+								"inhaled",
+								"poison"
+							],
+							"note": " Any {@condition drained} condition\nfrom the spores persists after the poison's duration ends",
+							"DC": "26",
+							"savingThrow": "Fortitude",
+							"onset": null,
+							"maxDuration": "6\nrounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d8} poison damage and {@condition drained|CRB|drained 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 2}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 3}",
+									"duration": "1 round"
+								}
+							]
 						}
 					],
 					"name": "Yellow Mold Spores",
@@ -755,6 +761,7 @@
 						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge} to avoid falling (page 472). The DC to {@action Climb} the walls or {@action Grab an Edge} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge} again every 6 seconds. If the creature succeeds, it can start to {@action Climb} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Infinite Pitfall"
 				}
 			],
@@ -790,6 +797,7 @@
 						"31 (expert) to talk it down."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Diplomacy DC"
 				},
 				{
@@ -811,6 +819,7 @@
 						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened|CRB|frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened|CRB|frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Quietus"
 				}
 			],
@@ -883,6 +892,7 @@
 						"The hammer swings down, making an attack against the triggering creature."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Forbid Entry"
 				},
 				{
@@ -944,6 +954,7 @@
 						"Trigger A creature moves within 30 feet of the glyph without speaking the passphrase in Druidic. The creature is targeted by baleful polymorph (DC 32 Will save)."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Baleful Polymorph"
 				}
 			],
@@ -989,6 +1000,7 @@
 						"The triggering creature and all creatures within 30 feet of the rift are drawn into another plane. Each creature can attempt a DC 33 Reflex save to avoid this fate."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Into the Great Beyond"
 				}
 			],
@@ -1033,6 +1045,7 @@
 						"The triggering creature and all creatures within 30 feet are trapped in a disrupted time flow (DC 38 Fortitude negates). The creatures' minds move so quickly that each round seems to last a century, but their bodies and magical energies move so slowly that they can't use any actions except Recall."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Adrift in Time"
 				},
 				{
@@ -1040,6 +1053,7 @@
 						"An affected creature must attempt a DC 36 Will saving throw against a {@spell warp mind} spell immediately and again for every minute of real time that passes while the creature is trapped in the frozen moment. This effect has an unlimited duration but can be counteracted."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Knowledge."
 				}
 			],
@@ -1110,6 +1124,7 @@
 						"The saw blade travels along its path, making one {@action Strike} against each creature in the room, twisting and varying its height for a maximum chance of beheading its targets."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Total Decapitation"
 				},
 				{
@@ -1134,6 +1149,7 @@
 						"On a critical hit, a target must succeed at a DC 39 Fortitude save or be decapitated, {@condition dying} instantly unless it can survive without a head."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Decapitation"
 				}
 			],
@@ -1180,6 +1196,7 @@
 						"If someone uses a proxy or dupe for the theft or intrusion, the trap unerringly targets the true perpetrator or perpetrators at any distance\u2014even across planes. The triggering creature and up to five coconspirators instantly revert to infants, losing all memories, class abilities, and other skills acquired during their lives (DC 44 Fortitude negates). Reversing this effect is nearly impossible, requiring powerful magic such as wish."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "In the Beginning"
 				}
 			],
@@ -1227,6 +1244,7 @@
 						"Fire rains from the sky in a 100-mile radius, dealing {@damage 10d6} fire damage to creatures and objects in the area. Each creature or object can attempt a DC 46 basic Reflex save. Any creature reduced to 0 Hit Points by this damage dies instantly. This is not enough damage to completely burn away a forest or level an entire mountain or city, but it typically kills most creatures in the area."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Burn It All"
 				}
 			],
@@ -1267,6 +1285,7 @@
 						"(arcane, conjuration, summon; Trigger A creature enters the cloud of magical sensors. This trap summons a specific level 1 creature, determined when the trap is created. The creature rolls initiative and remains for {@dice 2d6} rounds, after which the spell ends and the creature disappears. The creature also disappears if someone disables the trap before the duration expires. The summoned creature can use 3 actions each round and can use reactions, unlike most summoned creatures."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Summon Monster"
 				}
 			],
@@ -1305,6 +1324,7 @@
 						"22 (trained) to open the trapdoor, or {@skill Athletics} DC 22 to {@action Force Open} the trapdoor AC 19; Fort +8, Ref +5 Trapdoor Hardness 15, Trapdoor HP 60 (BT 30); Spout Hardness 8, Spout HP 32 (BT 16); Immunities critical hits, object immunities, precision damage."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Thievery DC"
 				},
 				{
@@ -1318,6 +1338,7 @@
 						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge} to avoid falling (page 472). The trapdoor then slams shut, and the hazard rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Pitfall"
 				}
 			],
@@ -1364,34 +1385,13 @@
 						"The triggering creature sinks into the quicksand up to its waist. The quicksand rolls initiative if it hasn't already."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Submerge"
 				}
 			],
 			"routine": [
-				"(1 action) On its initiative, the quicksand pulls down each creature within it. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature.",
-				{
-					"entries": [
-						"You can make a summoning rune of nearly any level. It summons a creature of a level equal to the trap's level."
-					],
-					"type": "ability",
-					"name": "UPGRADED SUMMONING RUNES"
-				},
-				{
-					"entries": [
-						"10\u20135: DCs by Level on page 503 to determine."
-					],
-					"type": "ability",
-					"name": "Use Table"
-				},
-				{
-					"entries": [
-						"DC and spell DC, using the trap's level and applying a hard adjustment (+2). The {@skill Stealth} modifier for the trap is equal to this number \u201310. Stronger summoning runes usually require expert proficiency or better in {@skill Perception} to find, and they might require a higher proficiency rank in {@skill Thievery} to disable.",
-						"that was submerged up to its neck is pulled under and has to hold its breath to avoid suffocation (page 478)",
-						"A creature in the quicksand can attempt a DC 20 {@skill Athletics} check to {@action Swim} to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. A creature that Swims out of the quicksand escapes the hazard and is {@condition prone} in a space adjacent to the quicksand patch. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 {@skill Athletics} check, with the same results as if the creature attempted the check."
-					],
-					"type": "ability",
-					"name": "the Thievery"
-				}
+				"(1 action) On its initiative, the quicksand pulls down each creature within it. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature. that was submerged up to its neck is pulled under and has to hold its breath to avoid suffocation (page 478).",
+				"A creature in the quicksand can attempt a DC 20 {@skill Athletics} check to {@action Swim} to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. A creature that Swims out of the quicksand escapes the hazard and is {@condition prone} in a space adjacent to the quicksand patch. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 {@skill Athletics} check, with the same results as if the creature attempted the check."
 			],
 			"reset": [
 				"The hazard still submerges anyone who walks in, but the surface doesn't become {@condition hidden} again until it settles over the course of 24 hours."
@@ -1462,6 +1462,7 @@
 						"The trap pops up in a grid intersection and makes a spinning blade attack against one adjacent creature (if any), then rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Rising Pillar"
 				}
 			],
@@ -1530,6 +1531,7 @@
 						"The wheel begins to spin and rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Wheel Spin"
 				}
 			],
@@ -1604,6 +1606,7 @@
 						"The trap makes a poisoned dart {@action Strike} against the triggering creature, then rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Dart Volley"
 				}
 			],
@@ -1635,40 +1638,39 @@
 						"The trap makes a poisoned dart {@action Strike} against the triggering creature."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Continuous Barrage"
 				},
 				{
 					"entries": [
 						{
 							"type": "affliction",
-							"entries": {
-								"name": "",
-								"traits": [
-									"poison"
-								],
-								"note": "",
-								"DC": "22",
-								"savingThrow": "Fortitude",
-								"onset": null,
-								"maxDuration": "6 rounds",
-								"stages": [
-									{
-										"stage": 1,
-										"entry": "{@damage 1d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 2,
-										"entry": "{@damage 2d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
-										"duration": "1 round"
-									},
-									{
-										"stage": 3,
-										"entry": "{@damage 3d6} poison damage and {@condition clumsy|CRB|clumsy 3}",
-										"duration": "1 round"
-									}
-								]
-							}
+							"name": "",
+							"traits": [
+								"poison"
+							],
+							"note": "",
+							"DC": "22",
+							"savingThrow": "Fortitude",
+							"onset": null,
+							"maxDuration": "6 rounds",
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@damage 1d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@damage 2d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@damage 3d6} poison damage and {@condition clumsy|CRB|clumsy 3}",
+									"duration": "1 round"
+								}
+							]
 						}
 					],
 					"name": "Flesset Poison",
@@ -1743,6 +1745,7 @@
 						"The exits seal instantly and the trap rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Flume Activation"
 				}
 			],
@@ -1816,6 +1819,7 @@
 						"Each telekinetic decoration constructs a cloud of objects in the room (three clouds total) and the trap rolls initiative. The creatures in the room when the trap is triggered become the trap's targets, regardless of whether they leave the room or other creatures later enter the room. Each decoration targets a different creature if possible. A target creature that moves at least 1 mile from the trap ceases being a target, at which point the decoration designates a new target."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Agitate"
 				}
 			],
@@ -1903,6 +1907,7 @@
 						"The mirror absorbs the creature into the mirror, replacing it with an evil mirror duplicate (DC 34 Reflex to avoid being absorbed into the mirror), and rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Reflection of Evil"
 				}
 			],
@@ -1949,6 +1954,7 @@
 						"The trap releases an arcane wail of the banshee (DC 40) with a 100-foot-radius emanation instead of 40 feet, targeting all living creatures in the area, and rolls initiative."
 					],
 					"type": "ability",
+					"style": "compact",
 					"name": "Scream"
 				}
 			],

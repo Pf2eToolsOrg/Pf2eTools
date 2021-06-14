@@ -1268,6 +1268,8 @@
 .pf2-summary__image {
 	height: 100%;
 	display: flex;
+	width: 100%;
+	align-items: center;
 
 	&--no-image {
 		width: 55%;
@@ -1286,6 +1288,11 @@
 		max-width: 100%;
 		object-fit: scale-down;
 		margin: 1em 0 1em auto;
+	}
+
+	a {
+		width: 100%;
+		text-align: center;
 	}
 }
 
@@ -1450,6 +1457,14 @@ $night-pf2-brown: #2e2c27;
 
 				&.odd {
 					background-color: #333230;
+				}
+
+				&.border-left {
+					border-color: $night-pf2-red-bg;
+				}
+
+				&.border-right {
+					border-color: $night-pf2-red-bg;
 				}
 			}
 

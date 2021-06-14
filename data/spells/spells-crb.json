@@ -38,28 +38,26 @@
 				},
 				{
 					"type": "affliction",
-					"entries": {
-						"name": "Abyssal Plague",
-						"traits": [
-							"disease"
-						],
-						"level": 9,
-						"note": "The target can't recover from the {@condition drained} condition from Abyssal plague until the disease is cured.",
-						"onset": null,
-						"maxDuration": null,
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition drained|CRB|drained 1}",
-								"duration": "1 day"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition drained} increases by 2",
-								"duration": "1 day"
-							}
-						]
-					}
+					"name": "Abyssal Plague",
+					"traits": [
+						"disease"
+					],
+					"level": 9,
+					"note": "The target can't recover from the {@condition drained} condition from Abyssal plague until the disease is cured.",
+					"onset": null,
+					"maxDuration": null,
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition drained|CRB|drained 1}",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition drained} increases by 2",
+							"duration": "1 day"
+						}
+					]
 				}
 			],
 			"cast": {
@@ -8459,43 +8457,41 @@
 				},
 				{
 					"type": "affliction",
-					"entries": {
-						"name": "Ghoul Fever",
-						"traits": [
-							"disease"
-						],
-						"level": 3,
-						"note": null,
-						"onset": null,
-						"maxDuration": null,
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "carrier with no ill effects",
-								"duration": "1 day"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 3d8} negative damage and the creature regains half as many Hit Points from all healing",
-								"duration": "1 day"
-							},
-							{
-								"stage": 3,
-								"entry": "as stage 2",
-								"duration": "1 day"
-							},
-							{
-								"stage": 4,
-								"entry": "{@damage 3d8} negative damage and the creature gains no benefit from healing",
-								"duration": "1 day"
-							},
-							{
-								"stage": 5,
-								"entry": "as stage 4",
-								"duration": "1 day"
-							}
-						]
-					}
+					"name": "Ghoul Fever",
+					"traits": [
+						"disease"
+					],
+					"level": 3,
+					"note": null,
+					"onset": null,
+					"maxDuration": null,
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effects",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d8} negative damage and the creature regains half as many Hit Points from all healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "as stage 2",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 3d8} negative damage and the creature gains no benefit from healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "as stage 4",
+							"duration": "1 day"
+						}
+					]
 				}
 			],
 			"cast": {
@@ -8797,33 +8793,31 @@
 				},
 				{
 					"type": "affliction",
-					"entries": {
-						"name": "Goblin Pox",
-						"traits": [
-							"disease"
-						],
-						"level": 1,
-						"note": "Goblins and goblin dogs are immune.",
-						"onset": null,
-						"maxDuration": null,
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition sickened|CRB|sickened 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition sickened|CRB|sickened 1} and the creature can't reduce its {@condition sickened} value below 1",
-								"duration": "1 day"
-							}
-						]
-					}
+					"name": "Goblin Pox",
+					"traits": [
+						"disease"
+					],
+					"level": 1,
+					"note": "Goblins and goblin dogs are immune.",
+					"onset": null,
+					"maxDuration": null,
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition sickened|CRB|sickened 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition sickened|CRB|sickened 1} and the creature can't reduce its {@condition sickened} value below 1",
+							"duration": "1 day"
+						}
+					]
 				}
 			],
 			"cast": {
@@ -15418,33 +15412,31 @@
 				},
 				{
 					"type": "affliction",
-					"entries": {
-						"name": "Purple Worm Venom",
-						"traits": [
-							"poison"
-						],
-						"level": 11,
-						"note": null,
-						"onset": null,
-						"maxDuration": "6 rounds",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": "Purple Worm Venom",
+					"traits": [
+						"poison"
+					],
+					"level": 11,
+					"note": null,
+					"onset": null,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"cast": {
@@ -18966,28 +18958,26 @@
 				},
 				{
 					"type": "affliction",
-					"entries": {
-						"name": "Spider Venom",
-						"traits": [
-							"poison"
-						],
-						"level": 1,
-						"note": null,
-						"onset": null,
-						"maxDuration": "4 rounds",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": "Spider Venom",
+					"traits": [
+						"poison"
+					],
+					"level": 1,
+					"note": null,
+					"onset": null,
+					"maxDuration": "4 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"cast": {

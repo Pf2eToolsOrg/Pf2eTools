@@ -120,9 +120,9 @@ class HazardsPage extends ListPage {
 	}
 }
 
-let trapsHazardsPage;
+let hazardsPage;
 window.addEventListener("load", async () => {
 	await Renderer.trait.preloadTraits();
-	trapsHazardsPage = new HazardsPage()
-	trapsHazardsPage.pOnLoad()
+	hazardsPage = new HazardsPage()
+	hazardsPage.pOnLoad()
 });

@@ -26,7 +26,7 @@
 							"type": "list",
 							"items": [
 								"Spells: {@spell fireball} assumes CRB by default, {@spell agonizing despair|apg} can have sources added with a pipe, {@spell pied piping|apg|and optional link text added with another pipe}.",
-								"Items: {@item longsword} assumed CRB by default, {@item vaccine|LOL} can have sources added with a pipe, {@item Mending Lattice|crb|and optional link text added with another pipe}.",
+								"Items: {@item longsword} assumed CRB by default, {@item Alchemical Atomizer|LOL} can have sources added with a pipe, {@item Mending Lattice|crb|and optional link text added with another pipe}.",
 								"Items with Runes: {@runeItem longsword||+1 weapon potency||flaming|}, {@runeItem buugeng|LOAG|+3 weapon potency||optional display text}. In general, the syntax is this: (open curly brace)@runeItem base item|base item source|rune 1|rune 1 source|rune 2|rune 2 source|...|rune n|rune n source|display text(close curly brace). For each source, we assume CRB by default.",
 								"Creatures: {@creature giant rat} assumes Bestiary by default, {@creature quickling|bst2} can have sources added with a pipe, {@creature treerazer||and optional link text added with another pipe}."
 							]
@@ -269,16 +269,6 @@
 									"type": "table",
 									"name": "Example Table",
 									"id": "1-1",
-									"intro": [
-										"This is a table with examples for all{@sup 1} optional properties. The only required properties are row and type. Indices start counting at 0."
-									],
-									"outro": [
-										"Outro text is rendered immediately after the table."
-									],
-									"footnotes": [
-										"{@sup 1}There is an additional property \"labelColIdx\", which works like \"labelRowIdx\" except for columns, and with default value [ ].",
-										"{@sup 1}Additionally, \"style\" applies CSS classes to the whole table."
-									],
 									"minimizeTo": [
 										0
 									],
@@ -359,6 +349,9 @@
 												5
 											]
 										]
+									],
+									"intro": [
+										"This is a table with examples for all{@sup 1} optional properties. The only required properties are row and type. Indices start counting at 0."
 									],
 									"rows": [
 										[
@@ -441,6 +434,13 @@
 											"Spans",
 											"Example"
 										]
+									],
+									"footnotes": [
+										"{@sup 1}There is an additional property \"labelColIdx\", which works like \"labelRowIdx\" except for columns, and with default value [ ].",
+										"{@sup 1}Additionally, \"style\" applies CSS classes to the whole table."
+									],
+									"outro": [
+										"Outro text is rendered immediately after the table."
 									]
 								},
 								{
@@ -553,29 +553,6 @@
 										{
 											"type": "item",
 											"entries": [
-												"{@b Activations} are used in many items and rarely in backgrounds (e.g. {@background Feybound|APG}).",
-												{
-													"type": "activation",
-													"activity": {
-														"number": 1,
-														"unit": "double",
-														"entry": "{@as 2}"
-													},
-													"components": [
-														"command"
-													],
-													"frequency": "once per day",
-													"trigger": null,
-													"requirements": null,
-													"effect": [
-														"You cast {@spell dimension door}."
-													]
-												}
-											]
-										},
-										{
-											"type": "item",
-											"entries": [
 												"{@b Attacks} are used in hazards.",
 												{
 													"type": "attack",
@@ -592,9 +569,67 @@
 										{
 											"type": "item",
 											"entries": [
-												"{@b Abilities} and actions are used all over the place.",
+												"{@b Abilities} and actions are used all over the place. Many items have activations, which are abilities. The ability name defaults to \"Activate\".",
 												{
 													"type": "ability",
+													"style": "compact",
+													"name": "Devastating Blast",
+													"activity": {
+														"number": 1,
+														"unit": "double",
+														"entry": "{@as 2}"
+													},
+													"traits": [
+														"arcane",
+														"evocation"
+													],
+													"entries": [
+														"The graveknight unleashes a 30-foot cone of energy. Creatures in the area take {@damage 1d12} damage, plus an additional {@damage 1d12} damage for every two levels the graveknight has (basic Reflex save). The graveknight can use this ability once every {@dice 1d4} rounds. This energy damage is of the same type as that of its ruinous weapons; Devastating Blast gains the associated energy trait."
+													]
+												},
+												{
+													"type": "ability",
+													"style": "compact",
+													"activity": {
+														"number": 1,
+														"unit": "double",
+														"entry": "{@as 2}"
+													},
+													"components": [
+														"Interact"
+													],
+													"traits": [
+														"sonic"
+													],
+													"frequency": "once per day",
+													"entries": [
+														"You pull the white thread free, then whirl the sling in circles at high speed. It lets out an ear-piercing wave of sound.",
+														"Each creature in a 30-foot cone takes {@damage 4d6} sonic damage (DC 21 basic Fortitude save). Any creature that fails is {@condition deafened} for 1 round, or 1 hour on a critical failure."
+													]
+												},
+												{
+													"type": "ability",
+													"style": "compact",
+													"name": "Attack of Opportunity",
+													"activity": {
+														"number": 1,
+														"unit": "reaction",
+														"entry": "{@as R}"
+													},
+													"trigger": "A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+													"entries": [
+														"You lash out at a foe that leaves an opening. Make a melee {@action Strike} against the triggering creature. If your attack is a critical hit and the trigger was a {@trait manipulate} action, you disrupt that action. This {@action Strike} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike}."
+													]
+												}
+											]
+										},
+										{
+											"type": "item",
+											"entries": [
+												"The {@i style} property determines if the ability is rendered inline or as a full statblock.",
+												{
+													"type": "ability",
+													"style": "full",
 													"name": "Attack of Opportunity",
 													"activity": {
 														"number": 1,

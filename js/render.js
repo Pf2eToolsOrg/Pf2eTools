@@ -339,15 +339,11 @@ function Renderer () {
 				case "lvlEffect":
 					this._renderLeveledEffect(entry, textStack, meta, options);
 					break;
-				case "ability":
-					this._renderAbility(entry, textStack, meta, options);
-					break;
 				case "attack":
 					this._renderAttack(entry, textStack, meta, options);
 					break;
-				case "activation":
-				case "activate":
-					this._renderActivation(entry, textStack, meta, options);
+				case "ability":
+					this._renderAbility(entry, textStack, meta, options);
 					break;
 				case "statblock":
 					this._renderStatblock(entry, textStack, meta, options);
@@ -438,7 +434,6 @@ function Renderer () {
 		}
 	};
 
-	// TODO: Rework Temp Solution
 	this._renderEntries = function (entry, textStack, meta, options) {
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
 	};
@@ -783,39 +778,47 @@ function Renderer () {
 	};
 
 	this._renderAbility = function (entry, textStack, meta, options) {
+		const style = entry.style || "inline";
+		switch (style) {
+			case "compact":
+			case "inline":
+				this._renderAbility_compact(entry, textStack, meta, options);
+				break;
+			case "full":
+			case "block":
+				this._renderAbility_full(entry, textStack, meta, options);
+				break;
+		}
+	}
+
+	this._renderAbility_full = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get().setFirstSection(true);
 
 		textStack[0] += `<div class="pf2-stat pf2-book--stat">`;
 		textStack[0] += Renderer.utils.getNameDiv(entry, {activity: true, type: ""});
 		textStack[0] += Renderer.utils.getDividerDiv();
 		textStack[0] += Renderer.utils.getTraitsDiv(entry.traits || []);
-		textStack[0] += Renderer.action.getSubHead(entry);
-		entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
+		textStack[0] += Renderer.ability.getSubHead(entry);
+		if (entry.entries) entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
 		textStack[0] += `</div>`;
 	}
 
-	this._renderActivation = function (entry, textStack, meta, options) {
-		textStack[0] += `<p class="pf2-stat pf2-stat__section"><span><strong>${entry.name ? entry.name : "Activate"}&nbsp;</strong>`
-		if (entry.activity != null) this._recursiveRender(`${entry.activity.entry} `, textStack, meta);
-		if (entry.components != null && entry.components.length) textStack[0] += `${entry.components.join(", ")}; `
-		if (entry.frequency != null) {
-			textStack[0] += `<strong>Frequency&nbsp;</strong>`
-			this._recursiveRender(`${entry.frequency} `, textStack, meta)
+	this._renderAbility_compact = function (entry, textStack, meta, options) {
+		const renderer = Renderer.get();
+		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
+		if (entry.activity != null) renderer._recursiveRender(`${entry.activity.entry} `, textStack, meta);
+		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
+			textStack[0] += `${entry.components != null ? `${entry.components.join(", ")}${entry.traits != null ? " " : "; "}` : ""}`;
+			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t}}`)).join(", ")}); ` : ""}`;
+		} else {
+			if (entry.components || entry.traits) textStack[0] += `(${[entry.components || [], (entry.traits || []).map(t => renderer.render(`{@trait ${t}}`))].map(it => it.join(", ")).filter(Boolean).join("; ")}); `;
 		}
-		if (entry.requirements != null) {
-			textStack[0] += `<strong>Requirements&nbsp;</strong>`
-			this._recursiveRender(`${entry.requirements} `, textStack, meta)
-		}
-		if (entry.trigger != null) {
-			textStack[0] += `<strong>Trigger&nbsp;</strong>`
-			this._recursiveRender(`${entry.trigger} `, textStack, meta)
-		}
-		textStack[0] += `<strong>Effect&nbsp;</strong>`
-		entry.effect.forEach((e) => {
-			this._recursiveRender(e, textStack, meta)
-		})
-
-		textStack[0] += `</span></p>`
+		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(entry.frequency)} `;
+		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
+		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		if (entry.entries) entry.entries.forEach(e => renderer._recursiveRender(e, textStack, meta, {isAbility: true}));
+		textStack[0] += `</p>`
 	}
 
 	this._renderSuccessDegree = function (entry, textStack, meta, options) {
@@ -837,27 +840,26 @@ function Renderer () {
 		const renderer = Renderer.get();
 
 		// TODO: The spaces seem whack here... make sure this is correct with all entries.
-		const affliction = entry.entries;
 		let traits = []
-		if (affliction.traits) affliction.traits.forEach((t) => traits.push(`{@trait ${t}}`));
+		if (entry.traits) entry.traits.forEach((t) => traits.push(`{@trait ${t}}`));
 		if (!options.isAbility) textStack[0] += `<p class="pf2-stat pf2-stat__section">`
-		if (affliction.name) textStack[0] += `<strong>${affliction.name}&nbsp;</strong>`;
+		if (entry.name) textStack[0] += `<strong>${entry.name}&nbsp;</strong>`;
 		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
-		if (affliction.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${affliction.level}. `;
-		if (affliction.note != null) textStack[0] += `${this.render(affliction.note)} `;
-		if (affliction.DC != null) textStack[0] += `<strong>Saving Throw&nbsp;</strong>DC ${affliction.DC} ${affliction.savingThrow}. `;
-		if (affliction.onset != null) textStack[0] += ` <strong>Onset</strong> ${affliction.onset}`;
-		if (affliction.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${affliction.maxDuration}`;
-		if (affliction.stages) {
-			for (let stage of affliction.stages) {
+		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}. `;
+		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
+		if (entry.DC != null) textStack[0] += `<strong>Saving Throw&nbsp;</strong>DC ${entry.DC} ${entry.savingThrow}. `;
+		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
+		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
+		if (entry.stages) {
+			for (let stage of entry.stages) {
 				textStack[0] += ` <strong class="no-wrap">Stage ${stage.stage}&nbsp;</strong>`;
 				this._recursiveRender(stage.entry, textStack, meta);
 				if (stage.duration != null) textStack[0] += ` (${stage.duration});`;
 			}
 		}
-		if (affliction.effect) {
+		if (entry.entries) {
 			textStack[0] += ` <strong>Effect&nbsp;</strong>`;
-			affliction.effect.forEach(it => this._recursiveRender(it, textStack, meta));
+			entry.entries.forEach(it => this._recursiveRender(it, textStack, meta));
 		}
 		textStack[0] = textStack[0].replace(/;$/, ".");
 		if (!options.isAbility) textStack[0] += `</p>`;
@@ -2245,6 +2247,15 @@ function Renderer () {
 		this.recursiveRender(entry, tempStack);
 		return tempStack.join("");
 	};
+
+	this.render_addTerm = function (entry, terminator = ";") {
+		const tempStack = [];
+		this.recursiveRender(entry, tempStack);
+		let str = tempStack.join("");
+		// checking for closing html tags
+		if (/[^<>\w\s](?:<\/[^<\s]+)*$/.test(str)) return str;
+		else return `${str}${terminator}`;
+	};
 }
 
 Renderer.ENTRIES_WITH_ENUMERATED_TITLES = [
@@ -3126,6 +3137,9 @@ Renderer.action = {
 				renderStack.push(`</p>`)
 			}
 		}
+		if (it.cost != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cost&nbsp;</strong>${renderer.render(it.cost)}</p>`);
+		}
 		if (it.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>${renderer.render(it.prerequisites)}</p>`);
 		}
@@ -3211,6 +3225,7 @@ Renderer.affliction = {
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(affliction.traits || [])}
 		`);
+		if (affliction.usage) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Usage </strong>${renderer.render(affliction.usage)}</p>${Renderer.utils.getDividerDiv()}`)
 		renderer.recursiveRender(affliction.entries, renderStack, {pf2StatFix: true});
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(affliction))
 
@@ -3662,15 +3677,15 @@ Renderer.creature = {
 		if (ability.generic && !options.noButton) {
 			const hash = UrlUtil.encodeForHash([ability.name, "Bst"]);
 			const genericAbility = Renderer.hover._getFromCache(UrlUtil.PG_ABILITIES, "Bst", hash);
-			renderedGenericAbility = this.getRenderedAbility(genericAbility, {generic: true});
+			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, {generic: true});
 		}
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name}&nbsp;</strong>
 					${ability.activity ? renderer.render(ability.activity.entry) : ""}
-					${(ability.generic || options.generic) && !options.noButton ? this.getAbilityTextButton(buttonClass, options.generic) : ""}
+					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
 					${trts.length ? `(${trts.join(", ")}); ` : ""}
-					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render(ability.frequency)}` : ""}
-					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render(ability.requirements)}` : ""}
-					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render(ability.trigger)}` : ""}
+					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(ability.frequency)}` : ""}
+					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
+					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
 					${entryStack.join("")}
 					</span></p>
@@ -3992,7 +4007,7 @@ Renderer.hazard = {
 		}
 		if (hazard.actions) {
 			hazard.actions.forEach(a => {
-				if (a.type === "ability") renderStack.push(Renderer.hazard.getRenderedAbility(a));
+				if (a.type === "ability") renderer.recursiveRender(a, renderStack);
 				else {
 					renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
 					renderStack.push(`<span><strong>${a.range}&nbsp;</strong>`);
@@ -4014,7 +4029,7 @@ Renderer.hazard = {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			hazard.routine.forEach((entry, idx) => {
 				if (idx !== 0) {
-					if (typeof entry === "object") renderStack.push(Renderer.hazard.getRenderedAbility(entry));
+					if (typeof entry === "object") renderer.recursiveRender(entry, renderStack);
 					else renderer.recursiveRender(entry, renderStack, {prefix: `<p class="pf2-stat pf2-stat__text--wide">`, suffix: "</p>"});
 				} else renderStack.push(`<p class="pf2-stat pf2-stat__text--wide"><strong>Routine&nbsp;</strong>${renderer.render(entry)}</p>`);
 			});
@@ -4027,24 +4042,6 @@ Renderer.hazard = {
 		}
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(hazard))
 		return renderStack.join("")
-	},
-
-	getRenderedAbility (ability, options) {
-		options = options || {};
-
-		const renderer = Renderer.get();
-		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
-
-		return `<p class="pf2-stat pf2-stat__section"><span><strong>${ability.name}&nbsp;</strong>
-					${ability.activity ? renderer.render(ability.activity.entry) : ""}
-					${ability.traits != null && ability.traits.length ? `(${renderer.render(ability.traits.map(t => `{@trait ${t}}`).join(", "))}); ` : ""}
-					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render(ability.frequency)}` : ""}
-					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render(ability.requirements)}` : ""}
-					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render(ability.trigger)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
-					${entryStack.join("")}
-					</span></p>`;
 	},
 };
 
@@ -4648,12 +4645,13 @@ Renderer.vehicle = {
 
 		return `${Renderer.utils.getExcludedDiv(it, "vehicle", UrlUtil.PG_VEHICLES)}
 		${Renderer.utils.getNameDiv(it, {type: "Vehicle", ...opts})}
+		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
 		${it.price ? `<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(it.price)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Space&nbsp;</strong>${it.space.long.number} ${it.space.long.unit} long, ${it.space.wide.number} ${it.space.wide.unit} wide, ${it.space.high.number} ${it.space.high.unit} high</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Crew&nbsp;</strong>${it.crew.pilot} pilot${it.crew.pilot > 1 ? "s" : ""}, ${it.crew.crew} crew${it.passengers != null ? `; <strong>Passengers&nbsp;</strong>${it.passengers}` : ""}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Piloting Check&nbsp;</strong>${it.pilot_check.length > 1 ? `${it.pilot_check.slice(0, -1).map(c => `${c.skill} (DC ${c.dc})`).join(", ")} or ${it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`).slice(-1)}` : it.pilot_check.map(c => `${c.skill} (DC ${c.dc})`)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Piloting Check&nbsp;</strong>${it.pilotingCheck.length > 1 ? `${it.pilotingCheck.slice(0, -1).map(c => `${c.skill} (DC ${c.dc})`).join(", ")} or ${it.pilotingCheck.map(c => `${c.skill} (DC ${c.dc})`).slice(-1)}` : it.pilotingCheck.map(c => `${c.skill} (DC ${c.dc})`)}</p>
 		${Renderer.utils.getDividerDiv()}
 		${defensesStack.join("")}
 		${Renderer.utils.getDividerDiv()}

@@ -434,7 +434,8 @@
 				"Choose two ability boosts. One must be to Intelligence or Charisma, and one is a free ability boost.",
 				"You are trained in {@skill Occultism} and {@skill Lore|Curse Lore}. You gain the Warding Sign reaction. You and the GM should determine the full effects of the curse, though you've staved most of them off for now. The GM determines the curse's lingering manifestations on you, which usually include at least a constant or very frequent thematic effect and occasional more dangerous effects.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"name": "Warding Sign",
 					"activity": {
 						"number": 1,
@@ -447,7 +448,7 @@
 					"frequency": null,
 					"trigger": "You attempt a saving throw against a {@trait magical} effect, but you haven't rolled yet",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call on the power of a personal, eldritch sign of protection, which flares brightly before slowly fading. You gain a +2 circumstance bonus to the triggering saving throw, or a +3 circumstance bonus if the effect is a curse."
 					]
 				}
@@ -500,7 +501,8 @@
 				"Choose two ability boosts. One must be to Dexterity or Charisma, and one is a free ability boost.",
 				"You are trained in {@skill Lore|Fey Lore} and gain the Fey's Fortune free action. You must follow some rule or limitation as part of your pact with the fey. If you violate the rule, you lose Fey's Fortune until you receive the effects of a successful atone ritual using the {@skill Nature} skill. The exact limitation is up to you and the GM, but the most common requirement is that you must fulfill a single request from any fey who knows your name.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"name": "Fey's Fortune",
 					"activity": {
 						"number": 1,
@@ -514,7 +516,7 @@
 					"frequency": null,
 					"trigger": "You attempt a skill check and haven't yet rolled",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Roll the skill check twice and use the better result."
 					]
 				}

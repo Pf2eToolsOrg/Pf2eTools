@@ -819,7 +819,7 @@ class AncestriesPage extends BaseComponent {
 		if (anc.summary.images && anc.summary.images.length) {
 			$summaryImage.removeClass("pf2-summary__image--no-image");
 			const src = anc.summary.images[this._rng % anc.summary.images.length];
-			$$`<img src="${src}" alt="No Image License. Sad!">`.appendTo($summaryImage);
+			$$`<a href="${src}">Image on AoN</a>`.appendTo($summaryImage);
 		} else {
 			$summaryImage.addClass("pf2-summary__image--no-image");
 			$$`<p>No image available.</p>`.appendTo($summaryImage);

@@ -60,7 +60,8 @@
 			"entries": [
 				"The genius diadem is a {@item diadem of intellect} that typically acts like an arrogant professor or mentor, often boasting that it is a certified greater intellect and far superior to your own intelligence, even after the benefits the diadem grants you. The genius diadem encourages you to learn things for yourself rather than actually attempting to {@action Recall Knowledge} for you, though you or your allies might be able to play on its arrogance using {@skill Deception} to trick it into doing so. In addition to allowing you to activate it, the diadem can use the diadem of intellect's hypercognition activation with its own actions, though if it does so, the diadem gains the benefits instead of you. Only the diadem can use the following activation.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -71,7 +72,7 @@
 						"Interact"
 					],
 					"frequency": "once per hour",
-					"effect": [
+					"entries": [
 						"The genius diadem casts 7th-level {@spell feeblemind}."
 					]
 				}
@@ -185,7 +186,8 @@
 				"A singing sword is a {@runeItem longsword||+1 weapon potency||striking|} imbued with the consciousness of a boisterous bard, and therefore constantly sings at all times. A singing sword can't stop singing and in fact communicates in no way other than by singing. A successful {@skill Diplomacy} or {@skill Intimidation} check against its Will DC can convince it to quiet its singing to a whisper for 10 minutes, or 20 minutes on a critical success, though it quickly grows displeased at anyone who attempts this repeatedly.",
 				"The singing sword can spend its actions to attack on its own, with the effects of a {@item dancing} weapon's activation, except that its attack modifier is {@hit +12}. Additionally, it can perform the following activations; each casts a composition spell and follows all the usual rules for compositions.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -197,12 +199,13 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The singing sword casts {@spell inspire courage}."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -214,12 +217,13 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The singing sword casts {@spell inspire defense}."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "reaction",
@@ -231,7 +235,7 @@
 					"frequency": "once per hour",
 					"trigger": "You or an ally within 60 feet rolls a saving throw against an {@trait auditory} effect",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The singing sword casts {@spell counter performance}."
 					]
 				}
@@ -251,7 +255,6 @@
 				"Extradimensional",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 2 hands",
 			"bulk": "1",
@@ -273,7 +276,6 @@
 				"Extradimensional",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 2 hands",
 			"bulk": "1",
@@ -298,7 +300,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn shoes",
 			"bulk": "L",
@@ -321,7 +322,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn cloak",
 			"bulk": "L",
@@ -345,7 +345,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn gloves",
 			"bulk": "L",
@@ -368,7 +367,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn armor",
 			"bulk": "3",
@@ -391,7 +389,6 @@
 				"Misfortune",
 				"Necromancy"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -414,7 +411,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn necklace",
 			"bulk": "L",
@@ -437,7 +433,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "worn cloak",
 			"bulk": "L",
@@ -459,7 +454,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn",
 			"bulk": "\u2014",
@@ -481,7 +475,6 @@
 				"Cursed",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "L",
@@ -504,7 +497,6 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 2 hands",
 			"bulk": "3",
@@ -512,7 +504,8 @@
 				"The blade of this +4 major striking keen returning speed dwarven waraxe is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
 				"The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@skill Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain greater darkvision (Core Rulebook 465) while holding the axe. If you are not a dwarf, you are {@condition stupefied|CRB|stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained|CRB|drained 4} and {@condition enfeebled|CRB|enfeebled 4} while holding it.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -525,7 +518,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The axe casts a 10th‑level {@spell summon elemental} spell to conjure an elite elemental avalanche (Bestiary 6, 147). The spell is automatically sustained, requiring no action on your part but still allowing you to command the elemental on each of your turns. You can {@action Dismiss} the Spell.",
 						"Destruction If an orc beheads a dwarven king with the Axe of the Dwarven Lords, the axe rusts away to nothing."
 					]
@@ -545,14 +538,14 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
 			"entries": [
 				"These 22 cards of heavy vellum, usually stored in a box or a pouch, bear images or glyphs depicting symbols of magical power. Looking at a card without activating it shows the card face but has no {@trait magical} effect. Once the deck is face down, the cards randomize themselves\u2014if you look at the top card multiple times, you may find it changes. Any card removed from the deck goes missing after a few seconds, reappearing in the deck. Advice on randomly selecting cards appears on page 108.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -565,7 +558,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You declare how many cards you will draw facedown from the deck, then draw your first card. The card takes effect immediately. Any further cards must be drawn within the next hour, and any card you don't voluntarily draw flits off the deck and affects you anyway. You can never activate the same deck of many things again.",
 						"Once a card is drawn, it produces its effect immediately and then disappears back into the deck, which immediately shuffles itself. (The Dullard and Jester are exceptions, as described in their entries below.) The effects of each card are as follows.",
 						{
@@ -613,14 +606,14 @@
 				"Artifact",
 				"Occult"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in one hand",
 			"bulk": "1",
 			"entries": [
 				"This stone tablet is carved with the symbol of a five‑branched twig. There are only a limited number of elder signs, and each time one is destroyed, the universe's doom creeps inexorably closer. Reciting one of three different occult mantras (DC 20 {@skill Occultism} check to do so correctly) allows three different activations. All three abilities work only on a creature connected to the Elder Mythos or a cosmic horror, such as a wendigo or gug; the activations refer to them as \"eldritch creatures.\"",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -634,12 +627,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The elder sign casts a 10th‑level {@spell banishment} spell on an eldritch creature. Even if the creature isn't extraplanar, the elder sign can still banish it, sending it back to the part of the Material Plane from which it originated. If the creature is a Great Old One, the elder sign banishes it automatically (as if it critically failed its save) but is then forever destroyed."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -653,12 +647,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The elder sign casts dispel magic on an effect from an eldritch creature, using a counteract level of 10 and +30 modifier for the roll."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -672,7 +667,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The elder sign casts dimensional lock, though it wards against travel by only eldritch creatures. Each time the elder sign casts dimensional lock in this way, the previous {@spell dimensional lock} spell ends.",
 						"Destruction The only way to destroy an elder sign is to use it to banish a Great Old One."
 					]
@@ -691,13 +686,13 @@
 				"Artifact",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"bulk": "5",
 			"entries": [
 				"This enormous, multifaceted prism normally rests on a pedestal, eerily refracting many‑colored lights even when no light source is present. In reality, the prism refracts the four magical essences into the visible spectrum (see page 300 in the Core Rulebook for more on the four essences). A creature adjacent to the prism can adjust its facets with an {@action Interact} action to change between two polarities. Two essences flow from two input streams into the prism, where the prism combines them into a single output stream; alternatively, a single essence flows from one input stream into the prism and is split into two output streams. A creature that enters and stays within an input essence stream for 1 minute is slowly encased in solid magic, at which point it is {@condition paralyzed} until anyone reverses the prism's flow or finishes activating the prism. A creature stepping into an output essence stream is gently pushed back and out of the stream.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -709,12 +704,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The prism has only one input stream",
-					"effect": [
+					"entries": [
 						"You alter and rearrange the facets of the essence prism, adjusting the essences to select for a single quality, which might be associated with mental essence, like a personality trait; material essence, like a physical quality; vital essence, like a belief or instinct; or spiritual essence, like an alignment component such as good or lawful. You must succeed at a secret DC 30 skill check with a skill associated with a magical tradition that uses the essence you chose (for instance, {@skill Arcana} or {@skill Occultism} for mental essence, as arcane and occult magic both use mental essence). On a failure, you accidentally set the prism for some other quality."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -726,7 +722,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The prism has only one input stream, and a creature is encased in magic in the input stream",
-					"effect": [
+					"entries": [
 						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the."
 					]
 				}
@@ -745,7 +741,6 @@
 				"Artifact",
 				"Divine"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "etched onto armor",
 			"appliesTo": "Armor",
@@ -754,7 +749,8 @@
 				"A seal constantly rings with the quiet sound of a hammer striking an anvil when etched onto a runestone. A Forgefather's seal can be etched only onto armor that can bear two or more property runes, and it is so powerful that it takes the place of two property runes. While wearing armor etched with a Forgefather's seal, you gain fire resistance 40. You ignore the armor's check penalty and Speed penalty (if any); if the armor is light or medium, increase its item bonus to AC by 1.",
 				"In addition, any shield you wield automatically recovers 10 Hit Points at the start of your turn each round.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "reaction",
@@ -766,12 +762,13 @@
 					"frequency": "once per hour",
 					"trigger": "You are hit by an attack",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Forgefather's seal glows and your armor shakes as it absorbs the blow. The attack's damage is reduced by 100 and you cast {@spell earthquake} (DC 40), centered directly on the triggering creature. You decide the area of the earthquake when you Cast the Spell, from as small as the size of the creature and up to a 60‑foot burst."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -783,12 +780,13 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call upon on the restorative powers of the seal to repair an item within reach. The rune instantly restores the item to full Hit Points, even if the item was destroyed, using the effects of the {@spell remake} spell, so long as the majority of the item is available for the repair. The seal can restore even magic items and artifacts of its level or lower. Once you have used this ability, the seal's ability to automatically repair shields becomes inactive until the next time you make your daily preparations."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "free",
@@ -800,7 +798,7 @@
 					"frequency": null,
 					"trigger": "You have not acted yet on your turn",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call upon Torag to defend your allies and those around you, sacrificing yourself in the process. Creatures of your choosing within 60 feet recover all their Hit Points. If any of the creatures are dead, they are instead brought back to life with half of their maximum Hit Points. The chosen creatures also gain a +4 status bonus to AC and saving throws, and fast healing 15 for 1 hour. You can use this ability to bring back to life a creature that requires a {@spell miracle} spell or divine intervention to raise from the dead, as long as you choose no other creatures within 60 feet to recover.",
 						"Once you use this activation, you are turned into a perfect statue made from stone or metal that depicts you in a glorious pose honoring your sacrifice, and you can never be restored. The Forgefather's seal remains on this statue and can be transferred to another suit of armor or a runestone as normal.",
 						"Destruction Using the Forgefather's seal ability to bring the dead back to life on an evil demigod causes it to shatter in a violent explosion that destroys the seal and the statue made as part of the sacrifice, erasing all knowledge of the user from existence. It does, however, bring the evil demigod back to life."
@@ -822,14 +820,14 @@
 				"Magical",
 				"Necromancy"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "worn headwear",
 			"bulk": "2",
 			"entries": [
 				"This imposing helm bears the horns of a powerful black dragon. While wearing the Horns of Naraga, you gain greater darkvision and immunity to acid. If you are undead, you gain resistance 40 to positive damage. If you are not undead, the helm quickly saps the life from you, dealing {@damage 10d6} negative damage to you every round. If you die from this damage, you rise as an undead of an equal level in {@dice 1d4} rounds.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "free",
@@ -841,12 +839,13 @@
 					"frequency": null,
 					"trigger": "You touch a creature as part of an unarmed attack or melee spell attack roll",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The creature takes {@damage 5d6} negative damage. If you are an undead, you regain Hit Points equal to the negative damage the creature took."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -858,7 +857,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Horns of Naraga transform into Naraga, an ancient black dragon (Bestiary 106). Naraga appears in an adjacent appropriate space, and if no such space is available, she does not appear. Naraga follows your commands without question. She remains for up to 1 hour or until you use an {@action Interact} action to dismiss her, after which she reverts back to the helm. If Naraga is slain, she immediately reverts back to the helm and can't be summoned for 1 week. You don't receive any of the helm's other benefits while it is transformed.",
 						"Destruction The helm is utterly obliterated if crushed between the jaws of an ancient black dragon's skull located in a desert while the sun is at its zenith."
 					]
@@ -878,7 +877,6 @@
 				"Enchantment",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "bonded (see below)",
 			"bulk": "L",
@@ -887,7 +885,8 @@
 				"The mirror can form a bond with a spellcaster who has legendary proficiency in {@skill Arcana} or {@skill Occultism}, who becomes the mirror's owner. Regardless of where the mirror is, as long as the bond remains, the owner is aware of everything the mirror is currently reflecting and can use the mirror's activations.",
 				"Whenever an intelligent creature looks in the mirror, they see an image of a person, creature, or item they find irresistible\u2014most often one they find attractive. The specific image varies depending on the observer, even when more than one creature is looking into the mirror at the same time. Observers are {@condition fascinated} by the images in the mirror unless they succeed at a DC 35 Will save each round. On a failure, they stare blankly at the mirror for as long as it remains in view, and if it leaves their view, they stare toward the last place they saw the mirror for several minutes thereafter. This is an emotion, enchantment, {@trait incapacitation}, and {@trait visual} effect. Creatures that are {@condition fascinated} by the mirror are so deeply entranced that they don't end their {@condition fascinated} condition automatically even if a creature uses {@condition hostile} actions against them or their allies; instead, they can attempt a DC 30 Will save to end the fascination. At the GM's discretion, a truly innocent creature or a creature that has renounced all worldly pleasures might be immune to the mirror's fascination.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "Varies",
@@ -899,12 +898,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You force a creature looking at the mirror to attempt an additional Will save against the mirror's fascination effect, even if they succeeded at their save."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "Varies",
@@ -916,7 +916,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The target must be {@condition fascinated} by the mirror",
-					"effect": [
+					"entries": [
 						"You control the target for 30 days, with the effect of a critically failed saving throw against dominate. If the victim sees the mirror again at any point before this duration expires, the control extends for an additional 30 days from the moment it looked at the mirror again. While there is no initial saving throw, the DC to break free due to commands against the creature's nature is 35.",
 						"Destruction The Mirror of Sorshen shatters into a thousand pieces if an intelligent but completely innocent creature resists the mirror's attraction and then accidentally drops it."
 					]
@@ -936,7 +936,6 @@
 				"Artifact",
 				"Enchantment"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "1",
@@ -947,7 +946,8 @@
 				"Bearing an orb of dragonkind earns you the enmity of all dragonkind forever because you profited from the enslavement of the dragon within the orb, even if you later lose the orb.",
 				"Spell Granted (DC 40) black dragon (darkness), blue dragon (hallucinatory terrain), brass dragon (speak with animals), bronze dragon (control water), copper dragon (hideous laughter), green dragon (entangle), red dragon (wall of fire), silver dragon (detect alignment [evil only]), white dragon (wall of ice)",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -959,12 +959,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast a 10th‑level {@spell dominate} spell (DC 40) on a dragon of the type associated with the orb within 500 feet, except the effect lasts for 1 month rather than unlimited. The dragon does not receive its status bonus to saving throws against magic. The dragon is then temporarily immune to further domination via the orb for 24 hours."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -977,7 +978,7 @@
 					"frequency": "three times per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You breathe an elemental blast that deals {@dice 25d6} damage (DC 40 basic Reflex save) in either a 60‑foot cone or a 100‑foot line (your choice). The breath's damage type matches the Breath Weapon of the dragon type associated with the orb of dragonkind (acid for the black orb, electricity for the blue orb, and so on)",
 						"Destruction An orb of dragonkind violently shatters and explodes when exposed to the Breath Weapon of a dragon who is a descendant of the dragon trapped within. The explosion deals damage as the 2‑action activation above to all creatures within 90 feet."
 					]
@@ -998,14 +999,14 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"bulk": "8",
 			"entries": [
 				"This bizarre machine is a complex arrangement of flasks, tubes, and other alchemical equipment. The philosopher's extractor is designed to create the ultimate alchemical concoctions.",
 				"The extractor functions as an exceptional set of alchemist's tools, granting a +4 item bonus to {@skill Crafting} checks related to alchemy. When using the extractor to {@action Craft} an alchemical item or with infused reagents as part of your daily preparations, you can create impeccable alchemical items. An impeccable alchemical item always uses the maximum numerical value possible for any rolls it requires, such as dealing maximum damage with alchemist's fire or restoring the maximum number of Hit Points with an elixir of life. If the impeccable item has a duration, it lasts twice as long as normal. Finally, an impeccable alchemical item never has a drawback.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -1017,13 +1018,14 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You use the extractor to produce an alchemical item of your level or lower whose formula you know. The extractor can create 56 levels' worth of items per day in this way.",
 						"For example, the extractor could create two true elixirs of life (19th level) and two moderate elixirs of life (9th level), or eight comprehension elixirs (7th level), and so on."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "hour",
@@ -1035,7 +1037,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You take a sizable portion of a creature (at least two‑thirds of its original mass) and filter it through the mechanisms of the extractor. After the end of the process, the philosopher's extractor creates a transmogrifying mutagen that imparts the essence of the creature to the drinker. The extractor can make several transmogrifying mutagens simultaneously using the same activation if enough mass is provided at once, up to a maximum of 10 concurrent mutagens. Drinking a transmogrifying mutagen imparts you with one of the creature's unique abilities for 1 hour. This could grant one of several abilities such as a dragon's Breath Weapon, darkvision, flight, frightful presence, or immunity to sleep. The ability functions as it did for the original creature, except it uses your class DC or your spell DC (whichever is higher) instead of the creature's DC.",
 						"The mutagen grants only abilities based on a creature's physiology and never grants magic‑related abilities such as innate spells or spellcasting ability. The GM ultimately decides what ability a transmogrifying mutagen grants.",
 						"Unlike normal for mutagens and {@trait polymorph} effects, you can drink multiple transmogrifying mutagens and gain benefits from each. When you drink transmogrifying mutagens made from different creatures, you receive abilities from each creature. When you drink multiple transmogrifying mutagens made from the same type of creature, such as multiple mutagens made from trolls, you gain an additional ability for each transmogrifying mutagen you drink, and the duration of the abilities from that creature type increases by 1 hour for each additional concoction you drink.",
@@ -1100,7 +1102,8 @@
 				"Serithtial was forged as a bastard sword, and she reverts to this shape when no one wields her, but she can also detect what sort of blade her current wielder prefers and transform into it (choosing from dagger, shortsword, longsword, scimitar, falchion, greatsword, rapier, or bastard sword) using an action, which she does when first held. The wielder can empathically tell Serithtial to transform at any time by using a single action, which has the {@trait concentrate} trait, after which Serithtial uses an action to transform.",
 				"Serithtial is willing to work with a partner of almost any alignment as long as they are dedicated to defeating the great wyrm Kazavon and the forces of Zon‑Kuthon. If you ignore those threats and pursue your own agenda instead, before long Serithtial attempts to seize control of your body (DC 45 Will save to resist her control), though she typically remains in control for only long enough to find a more worthy partner. You can attempt a new Will save each day to retake control of your body.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "Varies",
@@ -1112,7 +1115,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Serithtial spends the appropriate number of actions and casts a 9th level {@spell heal} or {@spell zone of truth} spell (DC 45 for either of the two spells)",
 						"Destruction If Kazavon or a great wyrm shadow dragon who is a worshipper of Zon‑Kuthon uses its breath weapon on Serithtial while she is unattended, the sword melts into a pool of mundane iron."
 					]
@@ -1132,7 +1135,6 @@
 				"Divine",
 				"Evocation"
 			],
-			"consumable": false,
 			"generic": false,
 			"ammunition": "any",
 			"entries": [
@@ -1140,7 +1142,8 @@
 				"Since then, individual pieces have turned up throughout the multiverse. When you pick up a shot of the First Vault, it immediately reshapes itself to function with any ranged weapon and establishes you as its owner until another creature picks it up. As its owner, you can use the shot's single‑action activation after shooting it.",
 				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy|CRB|clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage ||persistent bleed damage} to the creature with the embedded fragment.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -1152,13 +1155,14 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You recall the shot of the First Vault, which automatically reloads itself into your weapon. If the shot had fragmented, the fragments violently dislodge themselves, dealing 15 {@condition persistent damage ||persistent bleed damage} to each creature in which they were embedded.",
 						"The fragments then unite to re‑form the shot of the First Vault, which automatically reloads itself into your weapon."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -1170,7 +1174,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The shot is loaded in your ranged weapon, or at hand if your ranged weapon has a reload of 0",
-					"effect": [
+					"entries": [
 						"You line up a perfectly aimed attack directly toward the First Vault. You {@action Strike} a creature, then the shot of the First Vault attempts to bring your target with it as it returns to the First Vault. Unless your attack roll is a critical failure, the creature must attempt a DC 45 Reflex save; this effect has the {@trait incapacitation} trait. Regardless, the shot of the First Vault returns to the First Vault.",
 						{
 							"type": "successDegree",
@@ -1198,14 +1202,14 @@
 				"Magical",
 				"Transmutation"
 			],
-			"consumable": false,
 			"generic": false,
 			"bulk": "\u2014",
 			"entries": [
 				"A sphere of annihilation is a floating black sphere that pulls any matter that comes into contact with it into a void, destroying it utterly. Anything or anyone destroyed by the sphere can be brought back only by a deity's direct intervention. The sphere can't be counteracted by dispel magic or similar effects.",
 				"The sphere stays entirely still until caused to move by a creature controlling it. Taking control of the sphere requires succeeding at an attempt to activate it. A talisman of the sphere (see below) makes it easier to control the sphere.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -1217,7 +1221,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You are within 40 feet of the sphere",
-					"effect": [
+					"entries": [
 						"You attempt a DC 30 {@skill Arcana} or {@skill Occultism} check to take control of the sphere. If someone else already controls the sphere, this check uses their Will DC if higher. If you succeed, you take control of the sphere. If you fail, the sphere moves 10 feet closer to you (or 20 feet on a critical failure). You keep control as long as you remain within 80 feet of the sphere and Sustain the Activation each round.",
 						"When you Sustain the Activation, you must attempt a DC 30 {@skill Arcana} or {@skill Occultism} check. If you succeed, you direct the sphere to move up to 10 feet in a straight line (or up to 20 feet on a critical success). On a failure, you lose control of the sphere, and it moves 10 feet closer to you in a straight line (or 20 feet on a critical failure)",
 						"Destruction When a {@spell gate} spell is cast such that its rift overlaps a sphere of annihilation, roll d%. On a result of 1\u201350, the sphere is destroyed; on a 51\u201385, the spell is disrupted; and on a 86\u2013100, everything within an 180‑foot emanation of the sphere is pulled to another plane through a tear in the spatial fabric.",
@@ -1239,7 +1243,6 @@
 				"Evocation",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"bulk": "\u2014",
@@ -1264,7 +1267,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"usage": "held in 1 hand",
 			"activate": {
@@ -1301,7 +1303,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "sp",
@@ -1325,31 +1326,29 @@
 				"A strong blend including several spices common in the Padishah Empire of Kelesh, bloodeye coffee is a favorite morning drink across the Inner Sea region. The maximum addiction stage of bloodeye coffee never progresses beyond stage 1.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "14",
-						"savingThrow": "Fortitude",
-						"onset": "10 minutes",
-						"maxDuration": "8 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "+1 item bonus to AC and saves to which you are taking penalties caused by the {@condition fatigued} condition",
-								"duration": "10 minutes"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 3,
-								"entry": "can't recover from {@condition fatigued}",
-								"duration": "1 day, after which the drug ends"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "14",
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"maxDuration": "8 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+1 item bonus to AC and saves to which you are taking penalties caused by the {@condition fatigued} condition",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "can't recover from {@condition fatigued}",
+							"duration": "1 day, after which the drug ends"
+						}
+					]
 				}
 			],
 			"page": 120
@@ -1368,7 +1367,6 @@
 				"Inhaled",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1392,36 +1390,34 @@
 				"The flayleaf plant is relatively common, though the mildly euphoric effects of smoking its dried leaves increase when it's sourced from plants specifically grown to produce such effects.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "12",
-						"savingThrow": "Fortitude",
-						"onset": "10 minutes",
-						"maxDuration": "4 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "+1 item bonus to saving throws against {@trait mental} effects",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition fatigued} and +1 item bonus to saving throws against {@trait mental} effects",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition fatigued} and {@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 4,
-								"entry": "{@condition fatigued}, {@condition frightened|CRB|frightened 2}, {@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "12",
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"maxDuration": "4 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+1 item bonus to saving throws against {@trait mental} effects",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition fatigued} and +1 item bonus to saving throws against {@trait mental} effects",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition fatigued} and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition fatigued}, {@condition frightened|CRB|frightened 2}, {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 120
@@ -1439,7 +1435,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1463,26 +1458,24 @@
 				"This potent drug is distilled from a certain tropical vine into a deep‑red syrup that, over time, stains the user's lips and teeth a vivid shade of red.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "16",
-						"savingThrow": "Fortitude",
-						"onset": "10 minutes",
-						"maxDuration": "3 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition drained|CRB|drained 1}, +1 item bonus to weapon and unarmed attack rolls, {@skill Acrobatics} checks, and {@skill Athletics} checks",
-								"duration": "10 minutes"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition slowed|CRB|slowed 1}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "16",
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"maxDuration": "3 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition drained|CRB|drained 1}, +1 item bonus to weapon and unarmed attack rolls, {@skill Acrobatics} checks, and {@skill Athletics} checks",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition slowed|CRB|slowed 1}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 120
@@ -1501,7 +1494,6 @@
 				"Inhaled",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1525,31 +1517,29 @@
 				"When eaten or smoked, pesh gives users a sense of well‑being, sometimes with hallucinations, aggression, and exhaustion.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "12",
-						"savingThrow": "Fortitude",
-						"onset": "1 minute",
-						"maxDuration": "6 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition stupefied|CRB|stupefied 1} and a +2 item bonus to saves versus {@trait fear} effects",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 2,
-								"entry": "1 temporary Hit Point per level , +2 item bonus to saves versus {@trait fear} effects, {@condition clumsy|CRB|clumsy 1}, and {@condition stupefied|CRB|stupefied 1}",
-								"duration": "first time you reach this stage only"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "12",
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "6 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied|CRB|stupefied 1} and a +2 item bonus to saves versus {@trait fear} effects",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "1 temporary Hit Point per level , +2 item bonus to saves versus {@trait fear} effects, {@condition clumsy|CRB|clumsy 1}, and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "first time you reach this stage only"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 120
@@ -1567,7 +1557,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1592,31 +1581,29 @@
 				"The addiction to shiver has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "19",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "4\nhours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "whenever you become {@condition frightened}, reduce that condition's value by 1",
-								"duration": "10 minutes"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition clumsy|CRB|clumsy 2}",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 3,
-								"entry": "asleep",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "19",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "4\nhours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "whenever you become {@condition frightened}, reduce that condition's value by 1",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition clumsy|CRB|clumsy 2}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "asleep",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 121
@@ -1634,7 +1621,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1658,26 +1644,24 @@
 				"This lemony tea blended from rare Vudrani herbs and flowers is widely circulated by occult circles looking to transcend the boundaries of reality. The saving throw for addiction to dreamtime tea is DC 19.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "21",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "30 minutes",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition unconscious} and can ask a question with the effects of augury except the flat check DC is 10",
-								"duration": "10 minutes"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "21",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "30 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition unconscious} and can ask a question with the effects of augury except the flat check DC is 10",
+							"duration": "10 minutes"
+						}
+					]
 				}
 			],
 			"page": 121
@@ -1695,7 +1679,6 @@
 				"Injury",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1719,26 +1702,24 @@
 				"This bitter paste is used among some gladiatorial rings for its short‑term benefits in a fight.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "20",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "1 hour",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "+2 item bonus to {@skill Perception} rolls for initiative, and if you have an addiction to zerk, your melee weapon and unarmed attacks deal an extra 2 damage during the first round of a combat encounter",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition drained|CRB|drained 1}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "20",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "1 hour",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+2 item bonus to {@skill Perception} rolls for initiative, and if you have an addiction to zerk, your melee weapon and unarmed attacks deal an extra 2 damage during the first round of a combat encounter",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition drained|CRB|drained 1}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 121
@@ -1757,7 +1738,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1781,26 +1761,24 @@
 				"Deros use cytillesh in a variety of ways, and some surface‑dwellers seek out the fungus for their own use. Memories lost to cytillesh can be restored through modify memory. The save for addiction to cytillesh is DC 20, and the addiction has the {@trait virulent} trait.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "15",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "8 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 2,
-								"entry": "lose all memories made in the previous hour",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "15",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "8 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "lose all memories made in the previous hour",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 121
@@ -1818,7 +1796,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1842,31 +1819,29 @@
 				"Specialists in Kyonin prepare this emerald‑green beverage.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "20",
-						"savingThrow": "Fortitude",
-						"onset": "1 hour",
-						"maxDuration": "1 day",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "+2 item bonus to {@skill Diplomacy} and {@skill Performance} checks",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition drained|CRB|drained 2}",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition stupefied|CRB|stupefied 4}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "20",
+					"savingThrow": "Fortitude",
+					"onset": "1 hour",
+					"maxDuration": "1 day",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+2 item bonus to {@skill Diplomacy} and {@skill Performance} checks",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition drained|CRB|drained 2}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition stupefied|CRB|stupefied 4}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 121
@@ -1886,7 +1861,6 @@
 				"Inhaled",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1910,31 +1884,29 @@
 				"This gritty powder improves responsiveness but suppresses thoughts and leaves you weakened. The saving throw for addiction to scour is DC 30, and the addiction is virulent.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "25",
-						"savingThrow": "Fortitude",
-						"onset": "1 hour",
-						"maxDuration": "6 hours",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition stupefied|CRB|stupefied 2} and +2 item bonus to Reflex saves and Dexterity‑based skill checks",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition fatigued}",
-								"duration": "1 hour"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition drained|CRB|drained 2} and {@condition fatigued}",
-								"duration": "1 hour"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "25",
+					"savingThrow": "Fortitude",
+					"onset": "1 hour",
+					"maxDuration": "6 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied|CRB|stupefied 2} and +2 item bonus to Reflex saves and Dexterity‑based skill checks",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition fatigued}",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition drained|CRB|drained 2} and {@condition fatigued}",
+							"duration": "1 hour"
+						}
+					]
 				}
 			],
 			"page": 121

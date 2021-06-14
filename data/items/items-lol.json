@@ -13,12 +13,12 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"entries": [
 				"You tap into the fiendish ability to slip through space. When you {@action Stride}, you gain a +3 item bonus to Armor Class against reactions triggered by your movement. Once per day, from any distance, Abrogail Thrune II can call on a provision in your Thrune contract as a single action, causing you to become {@condition paralyzed} for 1 hour or until Abrogail releases you, whichever comes first.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -30,7 +30,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You recite a subclause of your contract regarding change in venue. You cast {@spell dimension door}. The space you leave and the one you appear in are filled with the scent of brimstone, dealing {@damage 2d6} evil damage to creatures adjacent to both spaces."
 					]
 				}
@@ -50,12 +50,12 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"entries": [
 				"You regain triple the normal number of Hit Points when resting (meaning you regain triple your Constitution modifier multiplied by your level). The healing you gain from long-term rest is similarly tripled. Once per day, from any distance, Abrogail Thrune II can recite a voidability clause in your Thrune contract as a 1-minute activity to prevent you from regaining Hit Points from resting for 1 day.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -67,7 +67,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You recite a subclause regarding mandatory remediation from your Thrune contract. For 6 rounds, at the start of your turn each round, you recover 25 Hit Points unless you took good damage since the start of your previous turn."
 					]
 				}
@@ -87,12 +87,12 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"entries": [
 				"You cease aging, and if you were older than young adult in age, you become a young adult again. You gain a +4 status bonus to saves against {@trait death} effects and resistance to negative damage equal to half your level. Once per day, from any distance, Abrogail Thrune II can recite a mandatory appearance clause in your Thrune contract as a 3-action activity to summon you to her side, where you are {@condition controlled} by Abrogail for 1 minute before you return.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -104,7 +104,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You recite a hold harmless provision from your Thrune contract. Reduce your {@condition doomed} value to 0. Abrogail Thrune II is immediately made aware that you have used this ability."
 					]
 				}
@@ -122,7 +122,6 @@
 				"Alchemical",
 				"Consumable"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -156,7 +155,6 @@
 			"traits": [
 				"Rare"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -169,7 +167,8 @@
 				"This small recording device can be as tiny as a music box or around the size of large book and is typically {@condition concealed} in hollowed-out books and jewelry. A clockwork recorder can record up to 1 hour of sound before its wax cylinders must be retrieved and replaced.",
 				"Any given clockwork recorder can play back the recordings of a cylinder, regardless of whether it was the recorder used for the original recording.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "triple",
@@ -181,7 +180,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You wind the recorder to start recording sound or to play back a recording. You can have the recording or playback start immediately or be timed to start at any point up to one month later.",
 						"\"Walls might have ears, and statues can be fonts of information.\" \u2014a."
 					]
@@ -200,7 +199,6 @@
 				"Alchemical",
 				"Consumable"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -224,7 +222,6 @@
 			"traits": [
 				"Rare"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -236,7 +233,8 @@
 			"entries": [
 				"This thick, elegant bracelet conceals a specialized firing mechanism that can hold a single blowgun dart. You can fire the dart normally from the bracelet. Recognizing the bracelet's nature requires a successful DC 25 {@skill Perception} check.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -248,7 +246,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expand the bracelet into a hand crossbow. The bracelet has enough pieces to assemble up to three bolts, but the bolts contain necessary components for the bracelet. Without all of the bolt pieces, you cannot collapse the crossbow back into a bracelet.",
 						"\"The most innocuous things oft make the best tools.\" \u2014a."
 					]
@@ -266,7 +264,6 @@
 				"Rare",
 				"Alchemical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -293,7 +290,6 @@
 				"Invested",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -305,7 +301,8 @@
 			"entries": [
 				"One of a set of four identical spears collectively known as the Four Claws of the Deepdread, this weapon is fashioned from a single seamless piece of matte-black metal with a razored silver edge. In bright light, it functions as a +1 striking spear, but in darkness or dim light, it becomes a +2 greater striking spear. You can upgrade its fundamental runes as normal for a specific weapon, starting from a +2 greater striking spear, but its fundamental runes are always one type worse in bright light.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -317,12 +314,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You establish a telepathic link with someone else wielding a deepdread claw, enabling you to telepathically communicate with the creature while they possess the deepdread claw regardless of distance, so long as you remain on the same plane. You can end a telepathic link you create or that you are part of as an action, which has the {@trait concentrate} trait."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -335,7 +333,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast 4th-level {@spell darkness}. You can see clearly in this darkness."
 					]
 				}
@@ -357,7 +355,6 @@
 				"Necromancy",
 				"Positive"
 			],
-			"consumable": true,
 			"generic": "G",
 			"usage": "held in one hand",
 			"activate": {
@@ -415,7 +412,6 @@
 				"Magical",
 				"Structure"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -440,7 +436,6 @@
 				"Conjuration",
 				"Consumable"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -452,7 +447,8 @@
 			"entries": [
 				"The frayed threads from the rips and tears in Hao Jin's Tapestry still contain traces of the Ruby Phoenix's magic. Hao Jin has collected most of these loose strings, but others occasionally find these potent silk strands in unexpected places. A ruby string can fulfill the cost requirement for an 8th-level create demiplane ritual (Advanced Player's Guide 241). When used in this way, the ruby string negates the need for secondary casters, and you get a success for all secondary checks. Alternatively, you can activate it to create a smaller demiplane without requiring the ritual.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 8,
 						"unit": "hour",
@@ -465,7 +461,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You spin the thread to form a demiplane with the effects of a successful 8th-level create demiplane, but the space is a single 10-foot cube."
 					]
 				}
@@ -484,7 +480,6 @@
 				"Consumable",
 				"Magical"
 			],
-			"consumable": true,
 			"generic": "G",
 			"ammunition": "arrow",
 			"activate": {
@@ -541,7 +536,6 @@
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"activate": {
@@ -610,7 +604,6 @@
 				"Consumable",
 				"Elixir"
 			],
-			"consumable": true,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"activate": {
@@ -692,7 +685,6 @@
 				"Electricity",
 				"Magical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -705,7 +697,8 @@
 				"This +2 greater striking shock greatsword is forged from standard-grade adamantine, with inlays of {@condition broken} circuitry and a robot's ocular lens on the cross guard. A soft thrum comes from the blade, which you feel as a subtle pulse through the grip when wielding it.",
 				"It sparks when unsheathed, emitting dim light within 5 feet. On a hit against a foe made of metal, wearing metal armor, or using a metal shield, if the foe takes electricity damage from the blade, the makes the foe {@condition flat-footed} for 1 round; if the {@action Strike} was a critical hit, it also makes them {@condition clumsy|CRB|clumsy 1} for 1 round.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -718,7 +711,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast the {@spell electric arc} cantrip from the sword as an 8th-level primal spell, using 10 + your melee attack modifier with the Blade of the Black Sovereign as your spell DC."
 					]
 				}
@@ -735,7 +728,6 @@
 				"Rare",
 				"Precious"
 			],
-			"consumable": false,
 			"generic": "G",
 			"entries": [
 				"Created by Black Sovereign Kevoth-Kul, this unique alloy of cold iron and the skymetal noqual can provide protection from magical assault. The process of cold-forging the two materials together is quite complicated and precise. Characters in search of sovereign steel weapons and armor will almost assuredly have to travel to Starfall to procure gear made from this rare alloy. While some believe it possible to craft shields of sovereign steel as well, in one of his fits, Kevoth-Kul yelled that he had no use for them and banned anyone from making such a thing. So far, his smiths have been too afraid to confirm whether or not it was a joke. All sovereign steel items (including weapon and armor below) have a +4 circumstance bonus on saves against magic that the item makes, and grant their bonus to saves the owner makes specifically to protect the item from magic (such as against the {@spell rusting grasp|APG} spell)."
@@ -796,7 +788,6 @@
 			"traits": [
 				"Rare"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "worn armor",
 			"bulk": "varies by armor",
@@ -838,7 +829,6 @@
 			"traits": [
 				"Rare"
 			],
-			"consumable": false,
 			"generic": "G",
 			"usage": "varies by weapon",
 			"bulk": "varies by weapon",
@@ -881,7 +871,6 @@
 				"Rare",
 				"Alchemical"
 			],
-			"consumable": false,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -892,7 +881,8 @@
 			"entries": [
 				"Khismar developed this unique atomizer that allows for the distribution of elixirs, oils, and potions as a fine spray or mist. The atomizer can hold a single elixir, oil, or potion. An atomizer contains enough reagents to use it up to 10 times before the reagents must be replaced. A new batch of reagents costs 5 gp and requires an {@action Interact} action to replace.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "single",
@@ -904,12 +894,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You spray the contents of the atomizer on yourself or an adjacent willing ally or unattended object. The target gains the effects of the applied elixir, oil, or potion. The target must be a valid target for the effect, such as food or drink for a nectar of purification, or the consumable is lost."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 1,
 						"unit": "double",
@@ -921,7 +912,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause the atomizer to mix its reagents and fire its held consumable at a square within 30 feet. The consumable forms a cloud that fills the space. The first willing valid target to enter the space automatically gains the effect of the consumable. If there are multiple valid targets, such as with multiple weapons for aligned oil, the creature entering the space determines how the effect is applied. The cloud is consumed upon contact with a willing valid target or at the start of your next turn, whichever comes first."
 					]
 				}
@@ -942,7 +933,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -966,31 +956,29 @@
 				"A synthetic adrenaline supplement that increases awareness and reaction time. Diluted hype has been mixed with saltwater to allow for cheaper mass production.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "21",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "1 minute",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition quickened} and can use the additional action to {@action Step}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition drained|CRB|drained 1} and {@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "21",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "1 minute",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition quickened} and can use the additional action to {@action Step}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition drained|CRB|drained 1} and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"page": 81
@@ -1009,7 +997,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1033,31 +1020,29 @@
 				"A synthetic adrenaline supplement that increases awareness and reaction time.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "25",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "1 minute",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@condition quickened} and can use the additional action to {@action Step} or {@action Stride}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "25",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "1 minute",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition quickened} and can use the additional action to {@action Step} or {@action Stride}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"page": 81
@@ -1076,7 +1061,6 @@
 				"Ingested",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1100,31 +1084,29 @@
 				"A synthetic adrenaline supplement that increases awareness and reaction time. Plasma hype has been infused with a specific mixture of Numerian fluids and other alchemical reagents to improve upon the original hype formula.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "30",
-						"savingThrow": "Fortitude",
-						"onset": null,
-						"maxDuration": "1 minute",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "+10-foot status bonus to speed, {@condition quickened} and can use the additional action to {@action Step}, {@action Stride}, {@action Climb}, or {@action Swim}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@condition quickened} and can use the additional action to {@action Step} or {@action Stride}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "30",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "1 minute",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+10-foot status bonus to speed, {@condition quickened} and can use the additional action to {@action Step}, {@action Stride}, {@action Climb}, or {@action Swim}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition quickened} and can use the additional action to {@action Step} or {@action Stride}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition drained|CRB|drained 2} and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"page": 81
@@ -1143,7 +1125,6 @@
 				"Mutagen",
 				"Polymorph"
 			],
-			"consumable": true,
 			"generic": "G",
 			"usage": "held in 1 hand",
 			"activate": {
@@ -1216,7 +1197,6 @@
 				"Inhaled",
 				"Poison"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
@@ -1240,31 +1220,29 @@
 				"This sweet-scented poison triggers vivid hallucinations in those who succumb to it, causing most to believe swarms of ravenous biting insects are feeding on them. So vivid are these hallucinations that the victims damage themselves by scratching and clawing at the imaginary swarm. At the GM's discretion, a creature incapable of clawing at itself might instead slam against solid objects, in which case the poison inflicts bludgeoning damage.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "30",
-						"savingThrow": "Will",
-						"onset": null,
-						"maxDuration": "6 rounds",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@damage 2d6} slashing damage",
-								"duration": "1 round"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 2d6} slashing damage and {@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 round"
-							},
-							{
-								"stage": 3,
-								"entry": "{@damage 2d6} slashing damage, {@condition drained|CRB|drained 1}, and {@condition stupefied|CRB|stupefied 1}",
-								"duration": "1 round"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "30",
+					"savingThrow": "Will",
+					"onset": null,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 2d6} slashing damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} slashing damage and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 2d6} slashing damage, {@condition drained|CRB|drained 1}, and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						}
+					]
 				}
 			],
 			"page": 86
@@ -1280,7 +1258,6 @@
 				"Alchemical",
 				"Consumable"
 			],
-			"consumable": true,
 			"generic": false,
 			"price": {
 				"coin": "gp",
