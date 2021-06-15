@@ -129,8 +129,8 @@ class PageFilterVehicles extends PageFilter {
 			this._traitFilter,
 			this._priceFilter,
 			this._spaceFilter,
-			this._pilotFilter,
-			this._crewFilter,
+			// this._pilotFilter,
+			// this._crewFilter,
 			this._passengerFilter,
 			this._speedMultiFilter,
 			this._defenseFilter,
@@ -140,7 +140,7 @@ class PageFilterVehicles extends PageFilter {
 			this._weaknessesFilter,
 		];
 	}
-
+	// CHECK/FIXME: Disabled pilot and crew filters due to new schema allowing for any types of crewmembers
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
@@ -153,8 +153,8 @@ class PageFilterVehicles extends PageFilter {
 				it.space.wide.number,
 				it.space.high.number,
 			],
-			it.crew.pilot || 0,
-			it.crew.crew || 0,
+			// it.crew.pilot || 0,
+			// it.crew.crew || 0,
 			it.passengers || 0,
 			[
 				it.speed.speed,
