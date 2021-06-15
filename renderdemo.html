@@ -62,8 +62,20 @@
 			height: calc(100% - 35px);
 		}
 
+		#wrp-output {
+			overflow-y: scroll;
+			margin-bottom: 28px;
+			height: calc(100% - 35px);
+		}
+
 		#demoSelectRenderer {
 			width: 200px;
+		}
+
+		@media (max-width: 991px) {
+			#wrp-jsoninput {
+				height: 480px;
+			}
 		}
 	</style>
 </head>
@@ -82,7 +94,7 @@
 	</nav>
 
 	<div class="view-col-wrapper">
-		<div class="view-col">
+		<div class="view-col" id="wrp-jsoninput">
 			<pre id="jsoninput" class="inputArea ace_editor"></pre>
 			<div class="flex-h-right">
 				<select class="form-control input-sm mr-2" id="demoSelectRenderer">
@@ -96,7 +108,7 @@
 			</div>
 		</div>
 
-		<div id="capheight" class="view-col">
+		<div id="wrp-output" class="view-col">
 			<div id="pagecontent" class="stats pf2-book-wrapper pf2-book">
 				<!-- populate with JS -->
 			</div>
