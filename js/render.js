@@ -3235,9 +3235,29 @@ Renderer.affliction = {
 
 Renderer.ancestry = {
 	getCompactRenderedString (anc, opts) {
-		// FIXME: This is extremely bad
+		// FIXME: This is now less bad
+		opts = opts || {};
 		const renderer = Renderer.get();
-		return `${renderer.render({type: "pf2-h3", name: anc.name})}
+		const renderStack = [];
+		renderer.setFirstSection(true);
+		renderStack.push(`${Renderer.utils.getNameDiv(anc, {page: UrlUtil.PG_ANCESTRIES, type: "Ancestry", ...opts})}`)
+		renderStack.push(`${Renderer.utils.getDividerDiv()}`)
+		renderStack.push(`<div class="pf2-sidebar--compact">`)
+		if (anc.rarity) renderStack.push(`<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">${anc.rarity}</p></div>`)
+		renderStack.push(`<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>`)
+		renderStack.push(`<div><p class="pf2-title">Size</p><p class="pf2-sidebar__text">${anc.size}</p></div>`)
+		renderStack.push(`<div><p class="pf2-title">Speed</p><p class="pf2-sidebar__text">${Parser.speedToFullMap(anc.speed).join(", ")}</p></div>`)
+		if (anc.boosts) renderStack.push(`<div><p class="pf2-title">Ability Boosts</p><p class="pf2-sidebar__text">${anc.boosts.join(", ")}</p></div>`)
+		if (anc.flaw) renderStack.push(`<div><p class="pf2-title">Ability Flaw</p><p class="pf2-sidebar__text">${anc.flaw.join(", ")}</p></div>`)
+		// FIXME: This is a wonky solution to the hover pup-up being spammed with the "you can choose your language" text. Perhaps split the data between languages you always know and ones you can choose?
+		if (anc.languages) renderStack.push(`<div><p class="pf2-title">Languages</p><p class="pf2-sidebar__text">${renderer.render(anc.languages.join(", ").replace(/, Additional languages [\s\S]+region\)\./g, ""))}</p></div>`)
+		if (anc.traits) renderStack.push(`<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", "))}</p></div>`)
+		renderStack.push(`
+			${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
+			${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
+		`)
+		/* return `
+		${renderer.render({type: "pf2-h1", name: anc.name})}
 		<div class="pf2-sidebar--compact">
 		${anc.rarity ? `<div><p class="pf2-title">Rarity</p><p class="pf2-sidebar__text">${anc.rarity}</p></div>` : ""}
 		<div><p class="pf2-title">Hit Points</p><p class="pf2-sidebar__text">${anc.hp}</p></div>
@@ -3249,7 +3269,11 @@ Renderer.ancestry = {
 		${anc.traits ? `<div><p class="pf2-title">Traits</p><p class="pf2-sidebar__text">${renderer.render(anc.traits.join(", "))}</p></div>` : ""}
 		${anc.feature ? `<div><p class="pf2-title">${anc.feature.name}</p><p class="pf2-sidebar__text">${renderer.render(anc.feature.entries)}</p></div>` : ""}
 		${anc.features ? anc.features.map(f => `<div><p class="pf2-title">${f.name}</p><p class="pf2-sidebar__text">${renderer.render(f.entries)}</p></div>`).join("") : ""}
-		</div>`;
+		</div>
+		`; */
+		renderStack.push(`</div>`)
+		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(anc));
+		return renderStack.join("");
 	},
 
 	pGetFluff (ancestry) {
