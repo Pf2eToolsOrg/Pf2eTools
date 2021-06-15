@@ -609,7 +609,7 @@ Parser.weightValueToNumber = function (value) {
 Parser.skillToExplanation = function (skillType) {
 	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
 	if (fromBrew) return fromBrew;
-	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
+	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType.replace(/.*Lore.*/g, "Lore"));
 };
 
 Parser.senseToExplanation = function (senseType) {
@@ -2148,7 +2148,7 @@ Parser.SKILL_JSON_TO_FULL = {
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral,  and Shadow Planes.",
+				"{@b {@action Recall Knowledge}} about arcane theories; magic traditions; creatures of arcane significance (like dragons and beasts); and the Elemental, Astral, and Shadow Planes.",
 			],
 		},
 		{
@@ -2227,11 +2227,11 @@ Parser.SKILL_JSON_TO_FULL = {
 		},
 	],
 	"Medicine": [
-		"You can patch up wounds and help people recover from diseases and poisons. Even if you’re untrained in Medicine,  you can use it to {@action Recall Knowledge}.",
+		"You can patch up wounds and help people recover from diseases and poisons. Even if you’re untrained in Medicine, you can use it to {@action Recall Knowledge}.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about diseases, injuries, poisons,  and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed.",
+				"{@b {@action Recall Knowledge}} about diseases, injuries, poisons, and other ailments. You can use this to perform forensic examinations if you spend 10 minutes (or more, as determined by the GM) checking for evidence such as wound patterns. This is most useful when determining how a body was injured or killed.",
 			],
 		},
 	],
@@ -2365,11 +2365,11 @@ Parser.SKILL_JSON_TO_FULL = {
 		},
 	],
 	"Society": [
-		"You understand the people and systems that make civilization run, and you know the historical events that make societies what they are today. Further, you can use that knowledge to navigate the complex physical, societal,  and economic workings of settlements. Even if you’re untrained in Society, you can use it for the following general skill actions.",
+		"You understand the people and systems that make civilization run, and you know the historical events that make societies what they are today. Further, you can use that knowledge to navigate the complex physical, societal, and economic workings of settlements. Even if you’re untrained in Society, you can use it for the following general skill actions.",
 		{
 			"type": "list",
 			"items": [
-				"{@b {@action Recall Knowledge}} about local history, important personalities, legal institutions, societal structure,  and humanoid cultures. The GM might allow Society to apply to other creatures that are major elements of society in your region, such as the draconic nobility in a kingdom of humans ruled by dragons.",
+				"{@b {@action Recall Knowledge}} about local history, important personalities, legal institutions, societal structure, and humanoid cultures. The GM might allow Society to apply to other creatures that are major elements of society in your region, such as the draconic nobility in a kingdom of humans ruled by dragons.",
 				"{@b {@action Subsist}} in a settlement by finding shelter, scrounging, or begging for food.",
 			],
 		},

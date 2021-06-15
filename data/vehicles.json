@@ -103,6 +103,153 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Cart",
+			"source": "GMG",
+			"page": 178,
+			"level": 0,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"space": {
+				"long": {
+					"number": 10,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": {
+				"pilot": 1
+			},
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 14
+				},
+				{
+					"skill": "Nature",
+					"dc": 16
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6,
+					"ref": null,
+					"will": null
+				},
+				"hardness": {
+					"default": 4
+				},
+				"hp": {
+					"default": 14
+				},
+				"bt": {
+					"default": 7
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the Speed of the slowest pulling creature (pulled by 1 Large creature)"
+			},
+			"collision": {
+				"damage": "{@dice 1d10}",
+				"type": null,
+				"dc": 14
+			}
+		},
+		{
+			"name": "Light Chariot",
+			"source": "GMG",
+			"page": 178,
+			"level": 0,
+			"size": "Large",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"space": {
+				"long": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"wide": {
+					"number": 5,
+					"unit": "feet"
+				},
+				"high": {
+					"number": 4,
+					"unit": "feet"
+				}
+			},
+			"crew": {
+				"pilot": 1
+			},
+			"passengers": 1,
+			"pilotingCheck": [
+				{
+					"skill": "Driving Lore",
+					"dc": 14
+				},
+				{
+					"skill": "Nature",
+					"dc": 16,
+					"entry": "DC 16 to DC 24, depending on pulling creature)"
+				}
+			],
+			"defenses": {
+				"ac": {
+					"default": 10
+				},
+				"savingThrows": {
+					"fort": 6,
+					"ref": null,
+					"will": null
+				},
+				"hardness": {
+					"default": 4
+				},
+				"hp": {
+					"default": 14
+				},
+				"bt": {
+					"default": 7
+				},
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				]
+			},
+			"speed": {
+				"type": "special",
+				"entry": "the Speed of the slowest pulling creature (pulled by 1 Large creature)"
+			},
+			"collision": {
+				"damage": "{@dice 1d10}",
+				"type": null,
+				"dc": 14
+			}
 		}
 	]
 }
