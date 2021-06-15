@@ -6,9 +6,14 @@ class ClassesPage extends BaseComponent {
 	}
 
 	static _fnSortSubclassFilterItems (a, b) {
-		if (a.values.isAlwaysVisible) return 1;
-		else if (b.values.isAlwaysVisible) return -1;
-		else return SortUtil._listSort_compareBy(a, b, "type");
+		const compType = SortUtil._listSort_compareBy(a, b, "type");
+		if (a.values.isAlwaysVisible && a.values.type === null) return 1;
+		else if (b.values.isAlwaysVisible && b.values.type === null) return -1;
+		else if (compType === 0) {
+			if (a.values.isAlwaysVisible) return -1;
+			else if (b.values.isAlwaysVisible) return 1;
+			else return SortUtil.ascSort(a.name, b.name);
+		} else return compType;
 	}
 
 	constructor () {
@@ -23,14 +28,13 @@ class ClassesPage extends BaseComponent {
 		this._outlineData = {};
 		this._pageFilter = new PageFilterClasses();
 
-		this._listSubclass = null;
+		this._listsSubclasses = {};
 		this._ixDataSubclass = 0;
 
 		this._$divNoContent = null;
 		this._rng = RollerUtil.roll(1234) + 5678;
 
 		this._activeClassDataFiltered = null;
-		this._activeFeatDataFiltered = null;
 
 		this._loadFirstFeat = false;
 		this._listFeat = null;
@@ -58,11 +62,6 @@ class ClassesPage extends BaseComponent {
 	}
 
 	get activeFeat () {
-		if (this._activeFeatDataFiltered) return this._activeFeatDataFiltered;
-		return this.activeFeatRaw;
-	}
-
-	get activeFeatRaw () {
 		return this._featDataList[this._featId._];
 	}
 
@@ -94,11 +93,13 @@ class ClassesPage extends BaseComponent {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
+			namespace: "classes.classes",
 		});
 		await this._featFilter.pInitFilterBox({
 			$iptSearch: $(`#feat-lst__search`),
 			$wrpFormTop: $(`#feat-filter-search-group`),
 			$btnReset: $(`#feat-reset`),
+			namespace: "classes.feats",
 		});
 
 		this._addData(data);
@@ -389,7 +390,7 @@ class ClassesPage extends BaseComponent {
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
 			$(`#featstats`).empty().append(ClassesPage._render_$getNoContent());
-			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "error"})
+			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "danger"})
 		}
 	}
 
@@ -604,14 +605,81 @@ class ClassesPage extends BaseComponent {
 
 	_doGenerateFilteredActiveClassData () {
 		const f = this.filterBox.getValues();
-		const cpyAnc = MiscUtil.copy(this.activeClassRaw);
+		const cpyCls = MiscUtil.copy(this.activeClassRaw);
 		const walker = MiscUtil.getWalker({
 			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
 			isAllowDeleteObjects: true,
 			isDepthFirst: true,
 		});
 
-		this._activeClassDataFiltered = cpyAnc
+		cpyCls.classFeatures = cpyCls.classFeatures.map(lvlFeatures => {
+			return walker.walk(
+				lvlFeatures,
+				{
+					object: (obj) => {
+						if (!obj.source) return obj;
+						return this.filterBox.toDisplayByFilters(
+							f,
+							{
+								filter: this._pageFilter.sourceFilter,
+								value: obj.gainSubclassFeature && this._pageFilter.isAnySubclassDisplayed(f, cpyCls) ? this._pageFilter.getActiveSource(f) : obj.source,
+							},
+						) ? obj : null;
+					},
+					array: (arr) => {
+						return arr.filter(it => it != null);
+					},
+				},
+			);
+		});
+
+		(cpyCls.subclasses || []).forEach(sc => {
+			sc.subclassFeatures = sc.subclassFeatures.map(lvlFeatures => {
+				return walker.walk(
+					lvlFeatures,
+					{
+						object: (obj) => {
+							if (!obj.source) return obj;
+							const fText = obj.isClassFeatureVariant ? {isClassFeatureVariant: true} : null;
+							return this.filterBox.toDisplayByFilters(
+								f,
+								{
+									filter: this._pageFilter.sourceFilter,
+									value: obj.source,
+								},
+								{
+									filter: this._pageFilter.optionsFilter,
+									value: fText,
+								},
+							) ? obj : null;
+						},
+						array: (arr) => {
+							return arr.filter(it => it != null);
+						},
+					},
+				);
+			});
+		});
+
+		cpyCls.fluff = cpyCls.fluff.map(fluffEntry => {
+			return walker.walk(
+				fluffEntry,
+				{
+					object: (obj) => {
+						const src = obj.source || cpyCls.source;
+						return this.filterBox.toDisplayByFilters(
+							f,
+							{
+								filter: this._pageFilter.sourceFilter,
+								value: src,
+							},
+						) ? obj : null;
+					},
+				},
+			);
+		});
+
+		this._activeClassDataFiltered = cpyCls
 	}
 
 	_handleFilterChange (isFilterValueChange) {
@@ -625,9 +693,6 @@ class ClassesPage extends BaseComponent {
 
 		const f = this.filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
-
-		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
-		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
 
 		// Force-hide any subclasses which are filtered out
 		this._proxyAssign(
@@ -716,14 +781,27 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
-		this._render_renderSummary();
 		this._render_renderClass();
 		this._render_renderClassAdvancementTable()
-		await this._render_pRenderSubclassTabs();
+		this._render_renderSubclassTabs();
 		this._render_renderFeat();
 		// endregion
 
 		// region state handling
+		const keepYScroll = (hook) => {
+			const topEle = $(`#classesstats`).children().get().filter(it => it.getBoundingClientRect().bottom > 0)[0];
+			const offset = 1 - topEle.getBoundingClientRect().y;
+			hook();
+			if (topEle.className.split(" ").includes("hidden")) {
+				// try to scroll to next element
+				const next = $(topEle).nextAll().not(".hidden")[0];
+				if (next) next.scrollIntoView();
+			} else {
+				topEle.scrollIntoView();
+				window.scrollBy(0, offset);
+			}
+		};
+
 		const hkScrollToFeature = () => {
 			// `state.feature` is set by clicking links in the class feature table
 			if (this._state.feature) {
@@ -754,7 +832,7 @@ class ClassesPage extends BaseComponent {
 			if (this._state.isHideFeatures && !this._isAnySubclassActive()) this._$divNoContent.toggleClass("hidden", this._state.isShowFluff);
 			$(`.pf2-fluff`).toggleClass("hidden-fluff", !this._state.isShowFluff);
 		}
-		this._addHookBase("isShowFluff", hkDisplayFluff);
+		this._addHookBase("isShowFluff", () => keepYScroll(hkDisplayFluff));
 		MiscUtil.pDefer(hkDisplayFluff);
 
 		const hkDisplayFeatures = () => {
@@ -768,22 +846,23 @@ class ClassesPage extends BaseComponent {
 					this._$divNoContent.toggleClass("hidden", true);
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", false);
+					$dispClassTitle.toggleClass("hidden", false);
 				} else {
 					$dispClassTitle.toggleClass("hidden", !this._state.isShowFluff)
 					this._$wrpOutline.toggleClass("hidden", true);
-					this._$divNoContent.toggleClass("hidden", false);
+					this._$divNoContent.toggleClass("hidden", this._state.isShowFluff);
 					$dispClassFeatures.toggleClass("hidden", true);
 					$dispFeaturesSubclassHeader.toggleClass("hidden", true);
 				}
 			} else {
-				$dispClassTitle.toggleClass("hidden", false)
+				$dispClassTitle.toggleClass("hidden", false);
 				this._$wrpOutline.toggleClass("hidden", false);
 				this._$divNoContent.toggleClass("hidden", true);
 				$dispClassFeatures.toggleClass("hidden", false);
 				$dispFeaturesSubclassHeader.toggleClass("hidden", false);
 			}
 		};
-		this._addHookBase("isHideFeatures", hkDisplayFeatures);
+		this._addHookBase("isHideFeatures", () => keepYScroll(hkDisplayFeatures));
 		MiscUtil.pDefer(hkDisplayFeatures);
 
 		const hkShowFeats = () => {
@@ -808,9 +887,9 @@ class ClassesPage extends BaseComponent {
 				const isVisible = this._state[stateKey];
 				$(`[data-subclass-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
 			};
-			this._addHookBase(stateKey, hkDisplaySubclass);
+			this._addHookBase(stateKey, () => keepYScroll(hkDisplaySubclass));
 			// Check/update main feature display here, as if there are no subclasses active we can hide more
-			this._addHookBase(stateKey, hkDisplayFeatures);
+			this._addHookBase(stateKey, () => keepYScroll(hkDisplayFeatures));
 			MiscUtil.pDefer(hkDisplaySubclass);
 		});
 		// endregion
@@ -827,35 +906,6 @@ class ClassesPage extends BaseComponent {
 		return this.activeClass.subclasses
 			.filter(sc => this._state[UrlUtil.getStateKeySubclass(sc)])
 			.map(sc => asStateKeys ? UrlUtil.getStateKeySubclass(sc) : sc);
-	}
-
-	_render_renderSummary () {
-		const $summaryText = $(`#class-summary__text`).empty();
-		const $summaryImage = $(`#class-summary__image`).empty();
-		const cls = this.activeClass;
-		const renderer = Renderer.get();
-		if (cls.summary == null) cls.summary = {};
-
-		$$`<p class="pf2-h1">${cls.name}</p>
-			${cls.summary.text ? `<p class="pf2-h1-flavor">${cls.summary.text}</p>` : ""}
-			${renderer._getPf2ChapterSwirl()}
-			<p class="pf2-h3 mt-4">Key Ability Score</p>
-			<p class="pf2-p">${cls.summary.keyAbility ? cls.summary.keyAbility : cls.keyAbility}</p>
-			${cls.summary.sndAbility ? `<p class="pf2-h3">Secondary Ability Scores</p>
-			<p class="pf2-p">${cls.summary.sndAbility}</p>` : ""}
-			<p class="pf2-h4">Source</p>
-			<p class="pf2-p">${cls.source != null ? `${Parser.sourceJsonToFull(cls.source)}${cls.page != null ? `, page ${cls.page}.` : ""}` : ""}</p>`.appendTo($summaryText);
-
-		if (cls.summary.images && cls.summary.images.length) {
-			$summaryImage.removeClass("pf2-summary__image--no-image");
-			const src = cls.summary.images[this._rng % cls.summary.images.length];
-			$$`<a href="${src}">Image on AoN</a>`.appendTo($summaryImage);
-		} else {
-			$summaryImage.addClass("pf2-summary__image--no-image");
-			$$`<p>No image available.</p>`.appendTo($summaryImage);
-		}
-		$summaryText.show();
-		// $summaryImage.show();
 	}
 
 	_render_renderClass () {
@@ -951,18 +1001,81 @@ class ClassesPage extends BaseComponent {
 		const metasTblRows = cls.classFeatures.map((lvlFeatures, ixLvl) => {
 			const lvlFeaturesFilt = lvlFeatures
 				.filter(it => it.name && it.type !== "inset"); // don't add inset entry names to class table
-			Object.keys(cls.advancement).forEach(key => {
-				if (cls.advancement[key].slice(1).includes(ixLvl + 1)) lvlFeaturesFilt.push(key)
-			});
-			const metasFeatureLinks = lvlFeaturesFilt
+			if (this._pageFilter.isClassNaturallyDisplayed(this.filterBox.getValues(), cls)) {
+				Object.keys(cls.advancement).forEach(key => {
+					if (cls.advancement[key].slice(1).includes(ixLvl + 1)) {
+						switch (key) {
+							case "classFeats": {
+								lvlFeaturesFilt.push({
+									name: "class feat",
+									source: cls.source,
+									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`),
+									preCalc: true,
+								});
+								break;
+							}
+							case "generalFeats": {
+								lvlFeaturesFilt.push({
+									name: "general feat",
+									source: cls.source,
+									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`),
+									preCalc: true,
+								});
+								break;
+							}
+							case "skillFeats": {
+								lvlFeaturesFilt.push({
+									name: "skill feat",
+									source: cls.source,
+									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1~archetype=2">skill feat</a>`),
+									preCalc: true,
+								});
+								break;
+							}
+							case "ancestryFeats": {
+								lvlFeaturesFilt.push({
+									name: "ancestry feat",
+									source: cls.source,
+									$lnk: $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`),
+									preCalc: true,
+								});
+								break;
+							}
+							case "skillIncrease": {
+								lvlFeaturesFilt.push({
+									name: "skill increase",
+									source: cls.source,
+									$lnk: $(`<span>skill increase</span>`),
+									preCalc: true,
+								});
+								break;
+							}
+							case "abilityBoosts": {
+								lvlFeaturesFilt.push({
+									name: "ability boosts",
+									source: cls.source,
+									$lnk: $(`<span>ability boosts</span>`),
+									preCalc: true,
+								});
+								break;
+							}
+						}
+					}
+				});
+			}
+			const metasFeatureLinks = lvlFeaturesFilt.sort(SortUtil.compareListNames)
 				.map((it, ixFeature) => {
 					const featureId = `${ixLvl}-${ixFeature}`;
 
-					let $lnk = null;
-					let name = null;
-					let source = null;
+					let $lnk;
+					let name;
+					let source;
 
-					if (it instanceof Object) {
+					if (it.preCalc) {
+						$lnk = it.$lnk;
+						name = it.name;
+						source = it.source;
+					} else {
 						$lnk = $(`<a>${it.name.toLowerCase()}</a>`)
 							.click(() => {
 								this._lastScrollFeature = null;
@@ -984,51 +1097,10 @@ class ClassesPage extends BaseComponent {
 						};
 						this._addHookAll("state", hkSetHref);
 						hkSetHref();
-					} else {
-						switch (it) {
-							case "classFeats": {
-								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:class=1,flstclasses:${this.activeClass.name.toLowerCase()}=1">class feat</a>`);
-								name = "class feat";
-								source = this.activeClass.source;
-								break;
-							}
-							case "skillFeats": {
-								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:skill=1">skill feat</a>`)
-								name = "skill feat";
-								source = this.activeClass.source;
-								break;
-							}
-							case "generalFeats": {
-								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:general=1">general feat</a>`)
-								name = "general feat";
-								source = this.activeClass.source;
-								break;
-							}
-							case "ancestryFeats": {
-								$lnk = $(`<a href="feats.html#blankhash,flstlevel:max=${ixLvl + 1},flsttype:ancestry=1">ancestry feat</a>`)
-								name = "ancestry feat";
-								source = this.activeClass.source;
-								break;
-							}
-							case "skillIncrease": {
-								$lnk = $(`<span>skill increase</span>`)
-								name = "skill increase";
-								source = this.activeClass.source;
-								break;
-							}
-							case "abilityBoosts": {
-								$lnk = $(`<span>ability boosts</span>`)
-								name = "ability boosts";
-								source = this.activeClass.source;
-								break;
-							}
-							default:
-								throw new Error(`Key ${it} not implemented.`)
-						}
 					}
 
 					// Make a dummy for the last item
-					const $dispComma = $(`<span class="mr-1">,</span>`);
+					const $dispComma = ixFeature === lvlFeaturesFilt.length - 1 ? $(`<span/>`) : $(`<span>,&nbsp;</span>`);
 					return {
 						name,
 						$wrpLink: $$`<span class="inline-block">${$lnk}${$dispComma}</span>`,
@@ -1039,7 +1111,7 @@ class ClassesPage extends BaseComponent {
 				});
 			return {
 				$row: $$`<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${ixLvl + 1}</div>
-					<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.sort(SortUtil.compareListNames).map(it => it.$wrpLink) : `\u2014`}</div>`,
+					<div class="pf2-table__entry pf2-table--minimize ${ixLvl % 2 ? "odd" : ""}">${metasFeatureLinks.length ? metasFeatureLinks.map(it => it.$wrpLink) : `\u2014`}</div>`,
 				metasFeatureLinks,
 			}
 		});
@@ -1048,6 +1120,7 @@ class ClassesPage extends BaseComponent {
 			metasTblRows.forEach(metaTblRow => {
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => {
 					if (metaFeatureLink.source) {
+						// FIXME: length of _filters hardcoded...
 						const isHidden = !this.filterBox.toDisplay(filterValues, metaFeatureLink.source, Array(5), null);
 						metaFeatureLink.isHidden = isHidden;
 						metaFeatureLink.$wrpLink.toggleClass("hidden", isHidden);
@@ -1070,17 +1143,15 @@ class ClassesPage extends BaseComponent {
 		$wrpTblClass.show();
 	}
 
-	async _render_pRenderSubclassTabs () {
+	_render_renderSubclassTabs () {
 		const $wrp = $(`#subclasstabs`).empty();
 
 		this._render_renderSubclassPrimaryControls($wrp);
-		await this._render_pInitSubclassControls($wrp);
+		this._render_initSubclassControls($wrp);
+		this._render_renderSubclassButtons($wrp);
 	}
 
 	_render_renderSubclassPrimaryControls ($wrp) {
-		const cls = this.activeClass;
-
-		// region features/fluff
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
 			text: "Class Features",
 			isInverted: true,
@@ -1093,49 +1164,58 @@ class ClassesPage extends BaseComponent {
 			activeClass: "btn-danger",
 			activeText: "Hide Feats",
 			inactiveText: "Show Feats",
-		}).title("Toggle Feat View");
+		}).title("Toggle Feat View").addClass("mb-1");
 
-		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeats}</div>
-		<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
-		// endregion
+		$$`<div class="flex-v-center m-1 flex-wrap"><div class="btn-group mr-3 no-shrink flex-1">${$btnToggleFeats}</div>
+		<div class="btn-group no-shrink mb-1">${$btnToggleFeatures}${$btnToggleFluff}</div></divc>`.appendTo($wrp);
+	}
 
-		// region subclasses
-		const $wrpHTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100"/>`).appendTo($wrp);
-		this._listSubclass = new List({
-			$wrpList: $wrpHTabs,
-			isUseJquery: true,
-			fnSort: ClassesPage._fnSortSubclassFilterItems,
-		});
+	_render_renderSubclassButtons ($wrp) {
+		const cls = this.activeClass;
 		const subclasses = this.activeClass.subclasses;
 
 		this._ixDataSubclass = 0;
+		this._listsSubclasses = {};
 		for (; this._ixDataSubclass < subclasses.length; ++this._ixDataSubclass) {
 			const sc = subclasses[this._ixDataSubclass];
+			if (!this._listsSubclasses[sc.type]) {
+				const $wrpList = $(`<div class="flex-v-center flex-wrap mr-2 w-100 cls-sc-tabs__wrp" data-sc-type="${sc.type}"></div>`).appendTo($wrp);
+				this._listsSubclasses[sc.type] = new List({
+					$wrpList: $wrpList,
+					isUseJquery: true,
+					fnSort: ClassesPage._fnSortSubclassFilterItems,
+				});
+			}
 			const listItem = this._render_getSubclassTab(cls, sc, this._ixDataSubclass);
 			if (!listItem) continue;
-			this._listSubclass.addItem(listItem);
+			this._listsSubclasses[sc.type].addItem(listItem);
 		}
 
-		const $dispCount = $(`<div class="text-muted m-1 cls-tabs__sc-not-shown flex-vh-center"/>`);
-		this._listSubclass.addItem(new ListItem(
-			-1,
-			$dispCount,
-			null,
-			{isAlwaysVisible: true},
-		));
+		Object.values(this._listsSubclasses).forEach(list => {
+			const $dispCount = $(`<div class="text-muted m-1 cls-tabs__sc-not-shown flex-vh-center"/>`);
+			list.addItem(new ListItem(
+				-1,
+				$dispCount,
+				null,
+				{isAlwaysVisible: true},
+			));
+			list.on("updated", () => {
+				$dispCount.off("click");
+				if (list.visibleItems.length) {
+					const cntNotShown = list.items.length - list.visibleItems.length;
+					$dispCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllSubclasses());
+				} else if (list.items.length > 1) {
+					$dispCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${list.items.length - 1} subclasses not shown)</i>`).click(() => this._doSelectAllSubclasses());
+				} else $dispCount.html("");
+			});
 
-		this._listSubclass.on("updated", () => {
-			$dispCount.off("click");
-			if (this._listSubclass.visibleItems.length) {
-				const cntNotShown = this._listSubclass.items.length - this._listSubclass.visibleItems.length;
-				$dispCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllSubclasses());
-			} else if (this._listSubclass.items.length > 1) {
-				$dispCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${this._listSubclass.items.length - 1} subclasses not shown)</i>`).click(() => this._doSelectAllSubclasses());
-			} else $dispCount.html("");
+			list.init();
 		});
 
-		this._listSubclass.init();
-		// endregion
+		this.filterBox.on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
+		this._handleSubclassFilterChange();
+		// Remove the temporary "hidden" class used to prevent popping
+		Object.values(this._listsSubclasses).forEach(list => list.items.forEach(it => it.ele.removeClass("hidden")));
 	}
 
 	_doSelectAllSubclasses () {
@@ -1146,10 +1226,10 @@ class ClassesPage extends BaseComponent {
 		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
-	async _render_pInitSubclassControls ($wrp) {
+	_render_initSubclassControls ($wrp) {
 		const cls = this.activeClass;
 
-		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All (SHIFT to include most recent UA/etc.; CTRL to select official only)"><span class="glyphicon glyphicon-check"/></button>`)
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default flex-1" title="Select All"><span class="glyphicon glyphicon-check"/></button>`)
 			.click(evt => {
 				const allStateKeys = this._getActiveSubclasses().map(sc => UrlUtil.getStateKeySubclass(sc));
 				if (evt.shiftKey) {
@@ -1157,7 +1237,8 @@ class ClassesPage extends BaseComponent {
 				} else if (evt.ctrlKey || evt.metaKey) {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
-					this._listSubclass.visibleItems
+					Object.values(this._listsSubclasses).map(l => l.visibleItems)
+						.flat()
 						.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
 						.map(it => it.values.stateKey)
 						.forEach(stateKey => nxtState[stateKey] = true);
@@ -1165,8 +1246,8 @@ class ClassesPage extends BaseComponent {
 				} else {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
-					this._listSubclass.visibleItems
-						.map(it => it.values.stateKey)
+					Object.values(this._listsSubclasses).map(l => l.visibleItems.map(it => it.values.stateKey))
+						.flat()
 						.filter(Boolean)
 						.forEach(stateKey => nxtState[stateKey] = true);
 					this._proxyAssign("state", "_state", "__state", nxtState);
@@ -1198,7 +1279,7 @@ class ClassesPage extends BaseComponent {
 			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
-		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset"><option value="-1" disabled>Filter...</option></select>`)
+		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset mr-2 mb-1 flex-3"><option value="-1" disabled>Filter...</option></select>`)
 			.change(() => {
 				const val = Number($selFilterPreset.val());
 				if (val == null) return;
@@ -1207,55 +1288,51 @@ class ClassesPage extends BaseComponent {
 		filterSets.forEach((it, i) => $selFilterPreset.append(`<option value="${i}">${it.name}</option>`));
 		$selFilterPreset.val("-1");
 
-		const $btnReset = $(`<button class="btn btn-xs btn-default" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
+		const $btnReset = $(`<button class="btn btn-xs btn-default flex-1" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => {
 				this._proxyAssign("state", "_state", "__state", cls.subclasses.mergeMap(sc => ({[UrlUtil.getStateKeySubclass(sc)]: false})));
 			});
-
-		this.filterBox.on(FilterBox.EVNT_VALCHANGE, this._handleSubclassFilterChange.bind(this));
-		this._handleSubclassFilterChange();
-		// Remove the temporary "hidden" class used to prevent popping
-		this._listSubclass.items.forEach(it => it.ele.removeClass("hidden"));
 
 		const $btnToggleSources = ComponentUiUtil.$getBtnBool(this, "isShowScSources", {$ele: $(`<button class="btn btn-xs btn-default flex-1" title="Show Subclass Sources"><span class="glyphicon glyphicon-book"/></button>`)});
 
 		const $btnShuffle = $(`<button title="Feeling Lucky?" class="btn btn-xs btn-default flex-1"><span class="glyphicon glyphicon-random"/></button>`)
 			.click(() => {
-				if (!this._listSubclass.visibleItems.length) {
+				if (Object.values(this._listsSubclasses).map(l => l.visibleItems.length).reduce((a, b) => a + b, 0) === 0) {
 					return JqueryUtil.doToast({
 						content: "No subclasses to choose from!",
 						type: "warning",
 					});
 				}
 
-				const doDeselAll = () => this._listSubclass.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
+				const doDeselAll = (list) => list.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
 
-				const visibleSubclasses = this._listSubclass.visibleItems.filter(it => it.values.stateKey)
-				const activeKeys = Object.keys(this._state).filter(it => this._state[it] && it.startsWith("sub"));
-				const visibleActiveKeys = visibleSubclasses.map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
+				Object.values(this._listsSubclasses).forEach(list => {
+					const visibleSubclasses = list.visibleItems.filter(it => it.values.stateKey)
+					const activeKeys = Object.keys(this._state).filter(it => this._state[it] && it.startsWith("sub"));
+					const visibleActiveKeys = visibleSubclasses.map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
 
-				// Avoid re-selecting the same option if there's only one selected, unless there is only one subclass total
-				if (visibleActiveKeys.length === 1 && visibleSubclasses.length !== 1) {
-					doDeselAll();
-					const options = this._listSubclass.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it !== visibleActiveKeys[0]);
-					this._state[RollerUtil.rollOnArray(options)] = true;
-				} else {
-					doDeselAll();
-					const it = RollerUtil.rollOnArray(this._listSubclass.visibleItems.filter(it => it.values.stateKey));
-					this._state[it.values.stateKey] = true;
-				}
+					// Avoid re-selecting the same option if there's only one selected, unless there is only one subclass total
+					if (visibleActiveKeys.length === 1 && visibleSubclasses.length !== 1) {
+						doDeselAll(list);
+						const options = list.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it !== visibleActiveKeys[0]);
+						this._state[RollerUtil.rollOnArray(options)] = true;
+					} else {
+						doDeselAll(list);
+						const it = RollerUtil.rollOnArray(list.visibleItems.filter(it => it.values.stateKey));
+						this._state[it.values.stateKey] = true;
+					}
+				});
 			});
 
-		$$`<div class="flex-v-center m-1 no-shrink">${$selFilterPreset}</div>`.appendTo($wrp);
-		$$`<div class="flex-v-center m-1 btn-group no-shrink">
-			${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}
+		$$`<div class="flex-v-center m-1 flex-wrap">${$selFilterPreset}
+			<div class="btn-group flex-1 flex-h-center mb-1">${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}</div>
 		</div>`.appendTo($wrp);
 	}
 
 	_handleSubclassFilterChange () {
 		const f = this.filterBox.getValues();
 		const cls = this.activeClass;
-		this._listSubclass.filter(li => {
+		Object.keys(this._listsSubclasses).forEach(k => this._listsSubclasses[k].filter(li => {
 			if (li.values.isAlwaysVisible) return true;
 			return this.filterBox.toDisplay(
 				f,
@@ -1263,7 +1340,7 @@ class ClassesPage extends BaseComponent {
 				Array(5),
 				cls._fMisc,
 			);
-		});
+		}));
 	}
 
 	_render_getSubclassTab (cls, sc, ix) {
@@ -1304,6 +1381,7 @@ class ClassesPage extends BaseComponent {
 			sc.name,
 			{
 				source: sc.source,
+				type: sc.type,
 				stateKey,
 				mod,
 			},

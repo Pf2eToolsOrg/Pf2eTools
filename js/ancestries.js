@@ -22,12 +22,11 @@ class AncestriesPage extends BaseComponent {
 		this._ixData = 0;
 		this._dataList = [];
 		this._lastScrollFeature = null;
-		this._outlineData = {};
 		this._pageFilter = new PageFilterAncestries();
 
 		this._listHeritage = null;
+		this._listVeHeritage = null;
 		this._veHeritagesDataList = [];
-		this._ixDataHeritage = 0;
 
 		this._$divNoContent = null;
 		this._$divNoHeritage = null;
@@ -98,11 +97,13 @@ class AncestriesPage extends BaseComponent {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $(`#filter-search-group`).title("Hotkey: f"),
 			$btnReset: $(`#reset`),
+			namespace: "ancestries.ancestries",
 		});
 		await this._featFilter.pInitFilterBox({
 			$iptSearch: $(`#feat-lst__search`),
 			$wrpFormTop: $(`#feat-filter-search-group`),
 			$btnReset: $(`#feat-reset`),
+			namespace: "ancestries.feats",
 		});
 
 		this._addData(data);
@@ -352,7 +353,7 @@ class AncestriesPage extends BaseComponent {
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
 			$(`#featstats`).empty().append(AncestriesPage._render_$getNoContent());
-			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "error"})
+			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "danger"})
 		}
 	}
 
@@ -574,7 +575,7 @@ class AncestriesPage extends BaseComponent {
 			isDepthFirst: true,
 		});
 
-		this._activeAncestryDataFiltered = cpyAnc
+		this._activeAncestryDataFiltered = cpyAnc;
 	}
 
 	_handleFilterChange (isFilterValueChange) {
@@ -675,13 +676,26 @@ class AncestriesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
-		this._render_renderSummary();
 		this._render_renderAncestry();
-		await this._render_pRenderHeritageTabs();
+		this._render_renderHeritageTabs();
 		this._render_renderFeat();
 		// endregion
 
 		// region state handling
+		const keepYScroll = (hook) => {
+			const topEle = $(`#ancestrystats`).children().get().filter(it => it.getBoundingClientRect().bottom > 0)[0];
+			const offset = 1 - topEle.getBoundingClientRect().y;
+			hook();
+			if (topEle.className.split(" ").includes("hidden")) {
+				// try to scroll to next element
+				const next = $(topEle).nextAll().not(".hidden")[0];
+				if (next) next.scrollIntoView();
+			} else {
+				topEle.scrollIntoView();
+				window.scrollBy(0, offset);
+			}
+		};
+
 		const hkScrollToFeature = () => {
 			// `state.feature` is set by clicking links in the class feature table
 			if (this._state.feature) {
@@ -713,7 +727,7 @@ class AncestriesPage extends BaseComponent {
 
 			this._$divNoContent.toggleClass("hidden", this._isAnyContentActive());
 		}
-		this._addHookBase("isShowFluff", hkDisplayFluff);
+		this._addHookBase("isShowFluff", () => keepYScroll(hkDisplayFluff));
 		MiscUtil.pDefer(hkDisplayFluff);
 
 		const hkDisplayFeatures = () => {
@@ -721,28 +735,20 @@ class AncestriesPage extends BaseComponent {
 			const $dispAncestryTitle = $(`#ancestry-name`);
 
 			if (this._state.isHideFeatures) {
-				if (this._isAnyHeritageActive()) {
-					this._$wrpOutline.toggleClass("hidden", false);
-					$dispAncestryFeatures.toggleClass("hidden", true);
-				} else {
-					$dispAncestryTitle.toggleClass("hidden", !this._state.isShowFluff)
-					this._$wrpOutline.toggleClass("hidden", true);
-					$dispAncestryFeatures.toggleClass("hidden", true);
-				}
+				$dispAncestryTitle.toggleClass("hidden", !this._state.isShowFluff)
+				$dispAncestryFeatures.toggleClass("hidden", true);
+				this._$wrpOutline.toggleClass("hidden", !this._isAnyHeritageActive());
 			} else {
-				if (!this._isAnyHeritageActive()) {
-					this._$divNoHeritage.toggleClass("hidden", this._state.isShowFluff)
-				}
-				$dispAncestryTitle.toggleClass("hidden", false)
+				$dispAncestryTitle.toggleClass("hidden", false);
 				this._$wrpOutline.toggleClass("hidden", false);
 				$dispAncestryFeatures.toggleClass("hidden", false);
 			}
+
 			if (!this._isAnyHeritageActive() && !this._state.isHideFeatures && !this._state.isShowFluff) this._$divNoHeritage.toggleClass("hidden", false);
 			else this._$divNoHeritage.toggleClass("hidden", true);
-
 			this._$divNoContent.toggleClass("hidden", this._isAnyContentActive());
 		};
-		this._addHookBase("isHideFeatures", hkDisplayFeatures);
+		this._addHookBase("isHideFeatures", () => keepYScroll(hkDisplayFeatures));
 		MiscUtil.pDefer(hkDisplayFeatures);
 
 		const hkShowFeats = () => {
@@ -766,9 +772,9 @@ class AncestriesPage extends BaseComponent {
 				const isVisible = this._state[stateKey];
 				$(`[data-heritage-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
 			};
-			this._addHookBase(stateKey, hkDisplayHeritage);
+			this._addHookBase(stateKey, () => keepYScroll(hkDisplayHeritage));
 			// Check/update main feature display here, as if there are no heritages active we can hide more
-			this._addHookBase(stateKey, hkDisplayFeatures);
+			this._addHookBase(stateKey, () => keepYScroll(hkDisplayFeatures));
 			MiscUtil.pDefer(hkDisplayHeritage);
 		});
 		// endregion
@@ -797,35 +803,6 @@ class AncestriesPage extends BaseComponent {
 		return this.activeAncestryAllHeritages
 			.filter(h => this._state[UrlUtil.getStateKeyHeritage(h)])
 			.map(h => asStateKeys ? UrlUtil.getStateKeyHeritage(h) : h);
-	}
-
-	_render_renderSummary () {
-		const $summaryText = $(`#ancestry-summary__text`).empty();
-		const $summaryImage = $(`#ancestry-summary__image`).empty();
-		const anc = this.activeAncestry;
-		const renderer = Renderer.get();
-		if (anc.summary == null) anc.summary = {};
-
-		$$`<p class="pf2-h1">${anc.name}</p>
-			${anc.summary.text ? `<p class="pf2-h1-flavor">${anc.summary.text}</p>` : ""}
-			${renderer._getPf2ChapterSwirl()}
-			<p class="pf2-h3 mt-4">Ability Boosts</p>
-			<p class="pf2-p">${anc.boosts ? anc.boosts.join(", ") : "None"}</p>
-			<p class="pf2-h3">Ability Flaw${anc.flaw && anc.flaw.length !== 1 ? "s" : ""}</p>
-			<p class="pf2-p">${anc.flaw ? anc.flaw.join(", ") : "None"}</p>
-			<p class="pf2-h4">Source</p>
-			<p class="pf2-p">${anc.source != null ? `${Parser.sourceJsonToFull(anc.source)}${anc.page != null ? `, page ${anc.page}.` : ""}` : ""}</p>`.appendTo($summaryText);
-
-		if (anc.summary.images && anc.summary.images.length) {
-			$summaryImage.removeClass("pf2-summary__image--no-image");
-			const src = anc.summary.images[this._rng % anc.summary.images.length];
-			$$`<a href="${src}">Image on AoN</a>`.appendTo($summaryImage);
-		} else {
-			$summaryImage.addClass("pf2-summary__image--no-image");
-			$$`<p>No image available.</p>`.appendTo($summaryImage);
-		}
-		$summaryText.show();
-		// $summaryImage.show();
 	}
 
 	_render_renderAncestry () {
@@ -911,17 +888,15 @@ class AncestriesPage extends BaseComponent {
 		return renderStack.join("")
 	}
 
-	async _render_pRenderHeritageTabs () {
+	_render_renderHeritageTabs () {
 		const $wrp = $(`#heritagetabs`).empty();
 
 		this._render_renderHeritagePrimaryControls($wrp);
-		await this._render_pInitHeritageControls($wrp);
+		this._render_initHeritageControls($wrp);
+		this._render_renderHeritageButtons($wrp);
 	}
 
 	_render_renderHeritagePrimaryControls ($wrp) {
-		const anc = this.activeAncestry;
-
-		// region features/fluff
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
 			text: "Features",
 			isInverted: true,
@@ -934,49 +909,10 @@ class AncestriesPage extends BaseComponent {
 			activeClass: "btn-danger",
 			activeText: "Hide Feats",
 			inactiveText: "Show Feats",
-		}).title("Toggle Feat View");
+		}).title("Toggle Feat View").addClass("mb-1");
 
-		$$`<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeats}</div>
-		<div class="flex-v-center m-1 btn-group mr-3 no-shrink">${$btnToggleFeatures}${$btnToggleFluff}</div>`.appendTo($wrp);
-		// endregion
-
-		// region heritages
-		const $wrpHTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100"/>`).appendTo($wrp);
-		this._listHeritage = new List({
-			$wrpList: $wrpHTabs,
-			isUseJquery: true,
-			fnSort: AncestriesPage._fnSortHeritageFilterItems,
-		});
-		const allHeritages = this.activeAncestryAllHeritages
-
-		this._ixDataHeritage = 0;
-		for (; this._ixDataHeritage < allHeritages.length; ++this._ixDataHeritage) {
-			const h = allHeritages[this._ixDataHeritage];
-			const listItem = this._render_getHeritageTab(anc, h, this._ixDataHeritage);
-			if (!listItem) continue;
-			this._listHeritage.addItem(listItem);
-		}
-
-		const $dispCount = $(`<div class="text-muted m-1 cls-tabs__sc-not-shown flex-vh-center"/>`);
-		this._listHeritage.addItem(new ListItem(
-			-1,
-			$dispCount,
-			null,
-			{isAlwaysVisible: true},
-		));
-
-		this._listHeritage.on("updated", () => {
-			$dispCount.off("click");
-			if (this._listHeritage.visibleItems.length) {
-				const cntNotShown = this._listHeritage.items.length - this._listHeritage.visibleItems.length;
-				$dispCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllHeritages());
-			} else if (this._listHeritage.items.length > 1) {
-				$dispCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${this._listHeritage.items.length - 1} heritages not shown)</i>`).click(() => this._doSelectAllHeritages());
-			} else $dispCount.html("");
-		});
-
-		this._listHeritage.init();
-		// endregion
+		$$`<div class="flex-v-center m-1 flex-wrap"><div class="btn-group mr-3 no-shrink flex-1">${$btnToggleFeats}</div>
+		<div class="btn-group no-shrink mb-1">${$btnToggleFeatures}${$btnToggleFluff}</div></divc>`.appendTo($wrp);
 	}
 
 	_doSelectAllHeritages () {
@@ -987,8 +923,16 @@ class AncestriesPage extends BaseComponent {
 		this._proxyAssign("state", "_state", "__state", allStateKeys.mergeMap(stateKey => ({[stateKey]: true})));
 	}
 
-	async _render_pInitHeritageControls ($wrp) {
-		const $btnSelAll = $(`<button class="btn btn-xs btn-default" title="Select All"><span class="glyphicon glyphicon-check"/></button>`)
+	_doSelectAllHeritages_fromList (list) {
+		const stateKeys = list.items.map(it => it.values.stateKey);
+
+		this._pageFilter.sourceFilter.doSetPillsClear();
+		this.filterBox.fireChangeEvent();
+		this._proxyAssign("state", "_state", "__state", stateKeys.mergeMap(stateKey => ({[stateKey]: true})));
+	}
+
+	_render_initHeritageControls ($wrp) {
+		const $btnSelAll = $(`<button class="btn btn-xs btn-default flex-1" title="Select All"><span class="glyphicon glyphicon-check"/></button>`)
 			.click(evt => {
 				const allStateKeys = this.activeAncestryAllHeritages.map(h => UrlUtil.getStateKeyHeritage(h));
 				// TODO:
@@ -997,7 +941,7 @@ class AncestriesPage extends BaseComponent {
 				} else if (evt.ctrlKey || evt.metaKey) {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
-					this._listHeritage.visibleItems
+					this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems)
 						.filter(it => it.values.mod === "brew" || it.values.mod === "fresh")
 						.map(it => it.values.stateKey)
 						.forEach(stateKey => nxtState[stateKey] = true);
@@ -1005,7 +949,7 @@ class AncestriesPage extends BaseComponent {
 				} else {
 					const nxtState = {};
 					allStateKeys.forEach(k => nxtState[k] = false);
-					this._listHeritage.visibleItems
+					this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems)
 						.map(it => it.values.stateKey)
 						.filter(Boolean)
 						.forEach(stateKey => nxtState[stateKey] = true);
@@ -1039,7 +983,7 @@ class AncestriesPage extends BaseComponent {
 			].filter(Boolean), true);
 			$selFilterPreset.val("-1");
 		};
-		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset"><option value="-1" disabled>Filter...</option></select>`)
+		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset mr-2 mb-1 flex-3"><option value="-1" disabled>Filter...</option></select>`)
 			.change(() => {
 				const val = Number($selFilterPreset.val());
 				if (val == null) return;
@@ -1048,54 +992,140 @@ class AncestriesPage extends BaseComponent {
 		filterSets.forEach((it, i) => $selFilterPreset.append(`<option value="${i}">${it.name}</option>`));
 		$selFilterPreset.val("-1");
 
-		const $btnReset = $(`<button class="btn btn-xs btn-default" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
+		const $btnReset = $(`<button class="btn btn-xs btn-default flex-1" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
 			.click(() => {
 				this._proxyAssign("state", "_state", "__state", this.activeAncestryAllHeritages.mergeMap(h => ({[UrlUtil.getStateKeyHeritage(h)]: false})));
 			});
-
-		this.filterBox.on(FilterBox.EVNT_VALCHANGE, this._handleHeritageFilterChange.bind(this));
-		this._handleHeritageFilterChange();
-		// Remove the temporary "hidden" class used to prevent popping
-		this._listHeritage.items.forEach(it => it.ele.removeClass("hidden"));
 
 		const $btnToggleSources = ComponentUiUtil.$getBtnBool(this, "isShowHSources", {$ele: $(`<button class="btn btn-xs btn-default flex-1" title="Show Heritage Sources"><span class="glyphicon glyphicon-book"/></button>`)});
 
 		const $btnShuffle = $(`<button title="Feeling Lucky?" class="btn btn-xs btn-default flex-1"><span class="glyphicon glyphicon-random"/></button>`)
 			.click(() => {
-				if (!this._listHeritage.visibleItems.length) {
+				if (!this._listHeritage.visibleItems.length && !this._listVeHeritage.visibleItems.length) {
 					return JqueryUtil.doToast({
 						content: "No heritages to choose from!",
 						type: "warning",
 					});
 				}
 
-				const doDeselAll = () => this._listHeritage.items.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
+				const doDeselAll = () => this._listHeritage.items.concat(this._listVeHeritage.items).filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = false);
 
 				const activeKeys = Object.keys(this._state).filter(it => it.startsWith("sub"));
-				const visibleActiveKeys = this._listHeritage.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
+				const visibleActiveKeys = this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems).filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => activeKeys.includes(it));
 
 				// Avoid re-selecting the same option if there's only one selected
 				if (visibleActiveKeys.length === 1) {
 					doDeselAll();
-					const options = this._listHeritage.visibleItems.filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it.values.stateKey !== visibleActiveKeys[0]);
+					const options = this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems).filter(it => it.values.stateKey).map(it => it.values.stateKey).filter(it => it.values.stateKey !== visibleActiveKeys[0]);
 					this._state[RollerUtil.rollOnArray(options)] = true;
 				} else {
 					doDeselAll();
-					const it = RollerUtil.rollOnArray(this._listHeritage.visibleItems.filter(it => it.values.stateKey));
+					const it = RollerUtil.rollOnArray(this._listHeritage.visibleItems.concat(this._listVeHeritage.visibleItems).filter(it => it.values.stateKey));
 					this._state[it.values.stateKey] = true;
 				}
 			});
 
-		$$`<div class="flex-v-center m-1 no-shrink">${$selFilterPreset}</div>`.appendTo($wrp);
-		$$`<div class="flex-v-center m-1 btn-group no-shrink">
-			${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}
+		$$`<div class="flex-v-center m-1 no-shrink">${$selFilterPreset}
+			<div class="btn-group flex-1 flex-h-center mb-1">${$btnSelAll}${$btnShuffle}${$btnReset}${$btnToggleSources}</div>
 		</div>`.appendTo($wrp);
+	}
+
+	_render_renderHeritageButtons ($wrp) {
+		const anc = this.activeAncestry;
+
+		const $wrpHTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100 anc-h-tabs__wrp" data-h-type="${anc.name} Heritages"/>`).appendTo($wrp);
+		const $wrpVeHTabs = $(`<div class="flex-v-center flex-wrap mr-2 w-100 anc-h-tabs__wrp" data-h-type="Versatile Heritages"/>`).appendTo($wrp);
+		this._listHeritage = new List({
+			$wrpList: $wrpHTabs,
+			isUseJquery: true,
+			fnSort: AncestriesPage._fnSortHeritageFilterItems,
+		});
+		this._listVeHeritage = new List({
+			$wrpList: $wrpVeHTabs,
+			isUseJquery: true,
+			fnSort: AncestriesPage._fnSortHeritageFilterItems,
+		});
+		const heritages = anc.heritage;
+
+		for (let idx = 0; idx < heritages.length; ++idx) {
+			const h = heritages[idx];
+			const listItem = this._render_getHeritageTab(anc, h, idx);
+			if (!listItem) continue;
+			this._listHeritage.addItem(listItem);
+		}
+		for (let idx = 0; idx < this._veHeritagesDataList.length; ++idx) {
+			const h = this._veHeritagesDataList[idx];
+			const listItem = this._render_getHeritageTab(anc, h, idx);
+			if (!listItem) continue;
+			this._listVeHeritage.addItem(listItem);
+		}
+
+		const $dispCount = $(`<div class="text-muted m-1 cls-tabs__sc-not-shown flex-vh-center"/>`);
+		const $dispVeCount = $(`<div class="text-muted m-1 cls-tabs__sc-not-shown flex-vh-center"/>`);
+		this._listHeritage.addItem(new ListItem(
+			-1,
+			$dispCount,
+			null,
+			{isAlwaysVisible: true},
+		));
+		this._listVeHeritage.addItem(new ListItem(
+			-1,
+			$dispVeCount,
+			null,
+			{isAlwaysVisible: true},
+		));
+
+		this._listHeritage.on("updated", () => {
+			$dispCount.off("click");
+			if (this._listHeritage.visibleItems.length) {
+				const cntNotShown = this._listHeritage.items.length - this._listHeritage.visibleItems.length;
+				$dispCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllHeritages_fromList(this._listHeritage));
+			} else if (this._listHeritage.items.length > 1) {
+				$dispCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${this._listHeritage.items.length - 1} heritages not shown)</i>`).click(() => this._doSelectAllHeritages_fromList(this._listHeritage));
+			} else $dispCount.html("");
+		});
+		this._listVeHeritage.on("updated", () => {
+			$dispVeCount.off("click");
+			if (this._listVeHeritage.visibleItems.length) {
+				const cntNotShown = this._listVeHeritage.items.length - this._listVeHeritage.visibleItems.length;
+				$dispVeCount.html(cntNotShown ? `<i class="clickable" title="Adjust your filters to see more.">(${cntNotShown} more not shown)</i>` : "").click(() => this._doSelectAllHeritages_fromList(this._listVeHeritage));
+			} else if (this._listVeHeritage.items.length > 1) {
+				$dispVeCount.html(`<i class="clickable" title="Adjust your filters to see more.">(${this._listVeHeritage.items.length - 1} heritages not shown)</i>`).click(() => this._doSelectAllHeritages_fromList(this._listVeHeritage));
+			} else $dispVeCount.html("");
+		});
+
+		this._listHeritage.init();
+		this._listVeHeritage.init();
+
+		this.filterBox.on(FilterBox.EVNT_VALCHANGE, this._handleHeritageFilterChange.bind(this));
+		this._handleHeritageFilterChange();
+		// Remove the temporary "hidden" class used to prevent popping
+		this._listHeritage.items.forEach(it => it.ele.removeClass("hidden"));
+		this._listVeHeritage.items.forEach(it => it.ele.removeClass("hidden"));
 	}
 
 	_handleHeritageFilterChange () {
 		const f = this.filterBox.getValues();
 		const anc = this.activeAncestry;
 		this._listHeritage.filter(li => {
+			if (li.values.isAlwaysVisible) return true;
+			if (li.values.versatile && !this.filterBox.getValues()[this._pageFilter.optionsFilter.header].isShowVeHeritages) return false;
+			if (!li.values.versatile && !this.filterBox.getValues()[this._pageFilter.optionsFilter.header].isShowStdHeritages) return false;
+			return this.filterBox.toDisplay(
+				f,
+				li.data.entity.source,
+				anc.boosts || [],
+				anc.flaw || [],
+				anc.hp,
+				anc.size,
+				anc._fspeed,
+				anc._fspeedtypes,
+				anc._flanguages,
+				anc.traits,
+				anc._fMisc,
+			);
+		});
+		this._listVeHeritage.filter(li => {
 			if (li.values.isAlwaysVisible) return true;
 			if (li.values.versatile && !this.filterBox.getValues()[this._pageFilter.optionsFilter.header].isShowVeHeritages) return false;
 			if (!li.values.versatile && !this.filterBox.getValues()[this._pageFilter.optionsFilter.header].isShowStdHeritages) return false;
