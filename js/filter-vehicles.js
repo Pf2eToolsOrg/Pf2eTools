@@ -37,8 +37,15 @@ class PageFilterVehicles extends PageFilter {
 			header: "Space",
 			filters: [this._longFilter, this._wideFilter, this._highFilter],
 		});
-		this._pilotFilter = new RangeFilter({header: "Pilots"});
-		this._crewFilter = new RangeFilter({header: "Crew"});
+		this._crewSizeFilter = new RangeFilter({header: "Crew Size"});
+		this._crewTypesFilter = new Filter({
+			header: "Members",
+			displayFn: (it) => it.toTitleCase(),
+		});
+		this._crewFilter = new MultiFilter({
+			header: "Crew",
+			filters: [this._crewSizeFilter, this._crewTypesFilter],
+		});
 		this._passengerFilter = new RangeFilter({header: "Passengers"});
 		this._speedFilter = new RangeFilter({
 			header: "Speed",
@@ -84,10 +91,10 @@ class PageFilterVehicles extends PageFilter {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
 		it._sPrice = Parser.priceToValue(it.price);
 
-		if (it.traits != null) {
-			it._fTraits = ([...it.traits, it.size]).map(t => Parser.getTraitName(t));
-			if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
-		}
+		it._fTraits = ([...(it.traits || []), it.size]).filter(Boolean).map(t => Parser.getTraitName(t));
+		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
+		it._fCrewSize = (it.crew || []).map(it => it.number).reduce((a, b) => a + b, 0);
+		it._fCrewTypes = (it.crew || []).map(it => it.type);
 		it._fPrice = PageFilterVehicles._priceCategory(it._sPrice);
 		it._fAC = Math.max(...Object.values(it.defenses.ac));
 		it._fHardness = Math.max(...Object.values(it.defenses.hardness));
@@ -106,8 +113,8 @@ class PageFilterVehicles extends PageFilter {
 		this._longFilter.addItem(it.space.long.number);
 		this._wideFilter.addItem(it.space.wide.number);
 		this._highFilter.addItem(it.space.high.number);
-		this._pilotFilter.addItem(it.crew.pilot || 0);
-		this._crewFilter.addItem(it.crew.crew || 0);
+		this._crewSizeFilter.addItem(it._fCrewSize);
+		this._crewTypesFilter.addItem(it._fCrewTypes);
 		this._passengerFilter.addItem(it.passengers || 0);
 		this._speedTypeFilter.addItem(it.speed.type);
 		this._speedFilter.addItem(it.speed.speed);
@@ -129,8 +136,7 @@ class PageFilterVehicles extends PageFilter {
 			this._traitFilter,
 			this._priceFilter,
 			this._spaceFilter,
-			// this._pilotFilter,
-			// this._crewFilter,
+			this._crewFilter,
 			this._passengerFilter,
 			this._speedMultiFilter,
 			this._defenseFilter,
@@ -140,7 +146,7 @@ class PageFilterVehicles extends PageFilter {
 			this._weaknessesFilter,
 		];
 	}
-	// CHECK/FIXME: Disabled pilot and crew filters due to new schema allowing for any types of crewmembers
+
 	toDisplay (values, it) {
 		return this._filterBox.toDisplay(
 			values,
@@ -153,8 +159,10 @@ class PageFilterVehicles extends PageFilter {
 				it.space.wide.number,
 				it.space.high.number,
 			],
-			// it.crew.pilot || 0,
-			// it.crew.crew || 0,
+			[
+				it._fCrewSize,
+				it._fCrewTypes,
+			],
 			it.passengers || 0,
 			[
 				it.speed.speed,

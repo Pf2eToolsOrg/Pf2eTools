@@ -47,6 +47,7 @@ function getFnListSort (prop) {
 		case "trait":
 		case "group":
 		case "domain":
+		case "skill":
 			return (a, b) => SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);
 		case "class":
 			return (a, b) => SortUtil.ascSortDateString(Parser.sourceJsonToDate(b.source), Parser.sourceJsonToDate(a.source)) || SortUtil.ascSortLower(a.name, b.name) || SortUtil.ascSortLower(a.source, b.source);

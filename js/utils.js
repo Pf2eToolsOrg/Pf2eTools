@@ -1882,6 +1882,7 @@ UrlUtil.URL_TO_HASH_BUILDER["legendaryGroup"] = (it) => UrlUtil.encodeForHash([i
 UrlUtil.URL_TO_HASH_BUILDER["runeItem"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["domain"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER["group"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER["skill"] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 // endregion
 
 UrlUtil.PG_TO_NAME = {};
@@ -4392,6 +4393,7 @@ BrewUtil = {
 			case "trait":
 			case "group":
 			case "domain":
+			case "skill":
 				return BrewUtil._genPDeleteGenericBrew(category);
 			case "subclass":
 				return BrewUtil._pDeleteSubclassBrew;
@@ -4485,7 +4487,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();

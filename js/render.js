@@ -1671,19 +1671,18 @@ function Renderer () {
 				break;
 			}
 			case "@domain":
+			case "@skill":
 			case "@group": {
 				const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
 				const hash = UrlUtil.encodeForHash([name, source]);
-				const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${tag.replace(/^@/, "")}', '${source}', '${hash}')" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
+				const fakePage = tag.replace(/^@/, "");
+				const hoverMeta = Renderer.get()._getHoverString(fakePage, source, hash, null);
 				textStack[0] += `<span class="help--hover" ${hoverMeta}>${displayText || name}</span>`;
 				break;
 			}
-			case "@skill":
 			case "@sense": {
 				const expander = (() => {
 					switch (tag) {
-						case "@skill":
-							return Parser.skillToExplanation;
 						case "@sense":
 							return Parser.senseToExplanation;
 					}
@@ -2233,9 +2232,13 @@ function Renderer () {
 			}
 		}
 
-		if (this._isAddHandlers) return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${entry.href.hover.page}', '${entry.href.hover.source}', '${procHash}', ${entry.href.hover.preloadId ? `'${entry.href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`;
+		if (this._isAddHandlers) return this._getHoverString(entry.href.hover.page, entry.href.hover.source, procHash, entry.href.hover.preloadId);
 		else return "";
 	};
+
+	this._getHoverString = function (page, source, procHash, preloadId) {
+		return `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${page}', '${source}', '${procHash}', ${preloadId ? `'${preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`;
+	}
 
 	/**
 	 * Helper function to render an entity using this renderer
@@ -2800,15 +2803,9 @@ Renderer.utils = {
 			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
 			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			source = source || "TRT";
-			const href = {
-				type: "internal",
-				path: "traits.html",
-				hash,
-				hover: {
-					page: UrlUtil.PG_TRAITS,
-				},
-			}
-			const hoverMeta = `onmouseover="Renderer.hover.pHandleLinkMouseOver(event, this, '${href.hover.page}', '${source}', '${hash.replace(/'/g, "\\'")}', ${href.hover.preloadId ? `'${href.hover.preloadId}'` : "null"})" onmouseleave="Renderer.hover.handleLinkMouseLeave(event, this)" onmousemove="Renderer.hover.handleLinkMouseMove(event, this)"  ${Renderer.hover.getPreventTouchString()}`
+
+			const procHash = hash.replace(/'/g, "\\'");
+			const hoverMeta = Renderer.get()._getHoverString(UrlUtil.PG_TRAITS, source, procHash, null);
 
 			const styles = ["pf2-trait"];
 			if (traits.indexOf(trait) === 0) {
@@ -4468,6 +4465,17 @@ Renderer.runeItem = {
 	},
 };
 
+Renderer.skill = {
+	getCompactRenderedString (it) {
+		const fakeEntry = {
+			type: "pf2-h3",
+			name: it.name,
+			entries: it.entries,
+		};
+		return `${Renderer.get().setFirstSection(true).render(fakeEntry)}`;
+	},
+};
+
 Renderer.spell = {
 	getCompactRenderedString (sp, opts) {
 		opts = opts || {};
@@ -5866,6 +5874,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "domains.json", ["domain"]);
 			case "group":
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "groups.json", ["group"]);
+			case "skill":
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "skills.json", ["skill"]);
 
 			case "raw_classfeature":
 				return Renderer.hover._pCacheAndGet_pLoadClassFeatures(page, source, hash, opts);
@@ -6359,6 +6369,7 @@ Renderer.hover = {
 				return Renderer.hover.getGenericCompactRenderedString;
 			case "domain": return Renderer.domain.getCompactRenderedString;
 			case "group": return Renderer.group.getCompactRenderedString;
+			case "skill": return Renderer.skill.getCompactRenderedString;
 			// endregion
 			default:
 				return null;
