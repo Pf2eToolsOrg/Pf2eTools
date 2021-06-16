@@ -609,7 +609,7 @@ Parser.weightValueToNumber = function (value) {
 Parser.skillToExplanation = function (skillType) {
 	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
 	if (fromBrew) return fromBrew;
-	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType.replace(/.*Lore.*/g, "Lore"));
+	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
 };
 
 Parser.senseToExplanation = function (senseType) {
