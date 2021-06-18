@@ -1766,6 +1766,7 @@ function Renderer () {
 						hash,
 						hover: {
 							page: UrlUtil.PG_TRAITS,
+							source,
 						},
 					},
 					text: (displayText || name),
@@ -3933,7 +3934,8 @@ Renderer.feat = {
 			${Renderer.feat.getSubHead(feat)}
 		`);
 		renderer.recursiveRender(feat.entries, renderStack, {pf2StatFix: true});
-		renderStack.push(Renderer.feat.getSpecial(feat))
+		renderStack.push(Renderer.feat.getSpecial(feat));
+		if (feat.addSections) renderStack.push(Renderer.generic.getRenderedSection(feat.addSections).join(Renderer.utils.getDividerDiv()))
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(feat));
 
 		return renderStack.join("");
@@ -4689,9 +4691,18 @@ Renderer.generic = {
 
 	dataGetRenderedString (it, options) {
 		options = options || {};
-		const renderer = Renderer.get();
 		const traits = it.traits || [];
-		const renderedSections = it.sections.map(section => section.map(a => {
+		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
+		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.category ? it.category : ""}`, "level": typeof it.level !== "number" ? it.level : undefined})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(traits)}
+		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
+		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
+	},
+
+	getRenderedSection (sections) {
+		const renderer = Renderer.get();
+		return sections.map(section => section.map(a => {
 			if (a.some(e => typeof e !== "string")) {
 				return `<p class="pf2-stat__section">${a.map(o => {
 					if (typeof o === "object") return `<strong>${o.name}&nbsp;</strong>${renderer.render(o.entry)}`;
@@ -4699,11 +4710,6 @@ Renderer.generic = {
 				}).join("; ")}</p>`
 			} else return a.map(e => `<p class="pf2-stat__text">${renderer.render(e)}</p>`).join("")
 		}).join(""));
-		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.category ? it.category : ""}`, "level": typeof it.level !== "number" ? it.level : undefined})}
-		${Renderer.utils.getDividerDiv()}
-		${Renderer.utils.getTraitsDiv(traits)}
-		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
-		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 };
 
@@ -4833,6 +4839,7 @@ Renderer.hover = {
 	// (Baked into render strings)
 	async pHandleLinkMouseOver (evt, ele, page, source, hash, preloadId) {
 		Renderer.hover._doInit();
+		console.log(page, source, hash, preloadId)
 
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
 		if (meta == null) return;

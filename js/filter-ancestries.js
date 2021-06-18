@@ -35,7 +35,7 @@ class PageFilterAncestries extends PageFilter {
 		this._optionsFilter = new OptionsFilter({
 			header: "Other Options",
 			defaultState: {
-				isShowVeHeritages: false,
+				isShowVeHeritages: true,
 				isShowStdHeritages: true,
 			},
 			displayFn: k => {

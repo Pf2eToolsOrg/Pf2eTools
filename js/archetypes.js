@@ -87,11 +87,13 @@ class ArchetypesPage extends BaseComponent {
 			$iptSearch: $(`#lst__search`),
 			$wrpFormTop: $filterSearch,
 			$btnReset: $(`#reset`),
+			namespace: ".archetypes.archetypes",
 		});
 		await this._featFilter.pInitFilterBox({
 			$iptSearch: $(`#feat-lst__search`),
 			$wrpFormTop: $(`#feat-filter-search-group`),
 			$btnReset: $(`#feat-reset`),
+			namespace: "archetypes.feats",
 		});
 
 		this._addData(data);
@@ -257,7 +259,8 @@ class ArchetypesPage extends BaseComponent {
 						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
 						feat.featType.archetype.push(arc.name)
 						feat._fType = ["Archetype"];
-						feat.entries.push(`<br>{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`);
+						feat.addSections = feat.addSections || [];
+						feat.addSections.push([[`{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`]]);
 						this._featFilter.mutateForFilters(feat);
 						return feat
 					}

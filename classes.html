@@ -54,8 +54,6 @@
 </head>
 
 <body>
-
-
 <header class="hidden-xs hidden-sm page__header">
 	<div class="container">
 		<h1 class="page__title">Classes</h1>
@@ -66,9 +64,10 @@
 	<ul class="nav page__nav-inner" id="navbar"></ul>
 </nav>
 
-<main class="container classes">
-	<div class="row">
-		<div class="col-sm-5">
+<!--FIXME: remove w-90, should be more sophisticated to accommodate for smaller screen sizes -->
+<main class="container w-90 h-100 classes">
+	<div class="row flex mobile__flex-col mt-2">
+		<div class="col-sm-3">
 			<div id="listcontainer">
 				<div class="night__shadow-big">
 					<div class="lst__form-top" id="filter-search-group">
@@ -97,59 +96,45 @@
 			<p class="text-center">
 				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
 			</p>
+			<div id="subclasstabs" class="w-100 my-2 cls-tabs__wrp"></div>
 		</div>
-		<div class="col-sm-7">
-			<div class="wrp-stats-table mb-4 pf2-summary" id="class-summary">
-				<div class="pf2-summary__text" id="class-summary__text">
-					<div class="initial-message" style="font-size: 2em;">Loading...</div>
-				</div>
-				<div class="pf2-summary__image" id="class-summary__image"></div>
-			</div>
-		</div>
-	</div>
-	<hr class="mt-0">
-	<div class="row">
-		<div id="subclasstabs" class="w-100 flex mb-2 cls-tabs__wrp" style="padding: 0 15px"></div>
-	</div>
-	<div class="row flex mobile__flex-col mt-2" id="classesstats-wrp">
-		<div class="col-sm-12">
+		<div class="col-sm-9" id="classesstats-wrp">
 			<div class="mb-2 wrp-stats-table">
 				<div class="stats pf2-book" id="classesstats"></div>
 			</div>
 		</div>
-	</div>
-	<div class="row flex mt-2 feat-view hidden">
-		<div class="col-sm-6" id="featlistcontainer">
-			<div class="night__shadow-big">
-				<div class="lst__form-top" id="feat-filter-search-group">
-					<div class="w-100 relative">
-						<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
-							   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
-						<div id="feat-lst__search-glass"
-							 class="lst__wrp-search-glass no-events flex-vh-center"><span
-							class="glyphicon glyphicon-search"></span></div>
-						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+		<div class="col-sm-9 feat-view hidden">
+			<div class="col-sm-6" id="featlistcontainer">
+				<div class="night__shadow-big">
+					<div class="lst__form-top" id="feat-filter-search-group">
+						<div class="w-100 relative">
+							<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
+								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+							<div id="feat-lst__search-glass"
+								 class="lst__wrp-search-glass no-events flex-vh-center"><span
+								class="glyphicon glyphicon-search"></span></div>
+							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+						</div>
+						<button class="btn btn-default px-2" id="feat-reset"><span
+							class="glyphicon glyphicon-refresh"></span></button>
 					</div>
-					<button class="btn btn-default px-2" id="feat-reset"><span
-						class="glyphicon glyphicon-refresh"></span></button>
+					<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
+						<button class="col-4-3 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-1-7 sort btn btn-default btn-xs ve-grow" data-sort="level">Level <span
+							class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
+							class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+							class="caret_wrp"></span></button>
+					</div>
 				</div>
-				<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
-					<button class="col-4-3 sort btn btn-default btn-xs" data-sort="name">Name <span
-						class="caret_wrp"></span></button>
-					<button class="col-1-7 sort btn btn-default btn-xs ve-grow" data-sort="level">Level <span
-						class="caret_wrp"></span></button>
-					<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
-						class="caret_wrp"></span></button>
-					<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
-						class="caret_wrp"></span></button>
-				</div>
+				<!--FIXME: Get this list to behave-->
+				<ul class="list list--stats feats"></ul>
 			</div>
-			<ul class="list list--stats feats cls__list" style="max-height: 200px"></ul>
-		</div>
-		<div class="col-sm-6">
-			<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
-			<div class="wrp-stats-table">
-				<div class="stats pf2-stat" id="featstats"></div>
+			<div class="col-sm-6">
+				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
+				<div class="wrp-stats-table"><div class="stats pf2-stat" id="featstats"></div></div>
 			</div>
 		</div>
 	</div>

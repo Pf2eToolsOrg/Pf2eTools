@@ -1345,6 +1345,22 @@
 	overflow: hidden;
 }
 
+.cls-sc-tabs__wrp::before {
+	content: attr(data-sc-type);
+	width: 100%;
+	margin: 1rem 0.25rem 0.25rem;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+.anc-h-tabs__wrp::before {
+	content: attr(data-h-type);
+	width: 100%;
+	margin: 1rem 0.25rem 0.25rem;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
 $night-pf2-red: #e06565;
 $night-pf2-red-bg: #472c2c;
 $night-red-bg-text: #c9c9c9;
@@ -1529,6 +1545,12 @@ $night-pf2-brown: #2e2c27;
 		&__ab {
 			box-shadow: 8px 0 0 -6px $night-accent-gold;
 		}
+
+		@media only screen and (max-width: 520px) {
+			&__ab {
+				box-shadow: 0 8px 0 -6px $night-accent-gold;
+			}
+		}
 	}
 
 	.pf2-book-wrapper {
@@ -1541,5 +1563,10 @@ $night-pf2-brown: #2e2c27;
 
 	.initial-message {
 		color: $night-pf2-red;
+	}
+
+	.anc-h-tabs__wrp::before,
+	.cls-sc-tabs__wrp::before {
+		border-color: #555;
 	}
 }
