@@ -808,10 +808,10 @@ function Renderer () {
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
 		if (entry.activity != null) renderer._recursiveRender(`${entry.activity.entry} `, textStack, meta);
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
-			textStack[0] += `${entry.components != null ? `${entry.components.join(", ")}${entry.traits != null ? " " : "; "}` : ""}`;
+			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
 			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t}}`)).join(", ")}); ` : ""}`;
 		} else {
-			if (entry.components || entry.traits) textStack[0] += `(${[entry.components || [], (entry.traits || []).map(t => renderer.render(`{@trait ${t}}`))].map(it => it.join(", ")).filter(Boolean).join("; ")}); `;
+			if (entry.components || entry.traits) textStack[0] += renderer.render(`(${[entry.components || [], (entry.traits || []).map(t => renderer.render(`{@trait ${t}}`))].map(it => it.join(", ")).filter(Boolean).join("; ")}); `);
 		}
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(entry.frequency)} `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
@@ -1678,23 +1678,6 @@ function Renderer () {
 				const fakePage = tag.replace(/^@/, "");
 				const hoverMeta = Renderer.get()._getHoverString(fakePage, source, hash, null);
 				textStack[0] += `<span class="help--hover" ${hoverMeta}>${displayText || name}</span>`;
-				break;
-			}
-			case "@sense": {
-				const expander = (() => {
-					switch (tag) {
-						case "@sense":
-							return Parser.senseToExplanation;
-					}
-				})();
-				const [name, displayText] = Renderer.splitTagByPipe(text);
-				const hoverMeta = Renderer.hover.getMakePredefinedHover({
-					type: "pf2-h3",
-					name: name.toTitleCase(),
-					entries: expander(name),
-				}, {isBookContent: true});
-				textStack[0] += `<span class="help--hover" ${hoverMeta.html}>${displayText || name}</span>`;
-
 				break;
 			}
 			case "@area": {
@@ -4213,14 +4196,14 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${v.type}; `);
-			if (v.level != null) renderStack.push(`<strong>Level&nbsp;</strong>${v.level}; `);
-			if (v.traits != null && v.traits.length) renderStack[0] += `(${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))}); `;
-			if (v.price != null) renderStack.push(`<strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}; `);
-			if (v.bulk != null) renderStack.push(`<strong>Bulk&nbsp;</strong>${v.bulk}; `);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${v.type}`);
+			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
+			if (v.traits != null && v.traits.length) renderStack[0] += `(; ${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))})`;
+			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
+			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
 			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack);
-			if (v.craftReq != null) renderStack.push(`<strong>Craft Requirements&nbsp;</strong>${v.craftReq}; `);
-			if (v.shieldStats != null) renderStack.push(`The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
+			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
+			if (v.shieldStats != null) renderStack.push(`; The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
 			renderStack.push(`</p>`);
 		});
 		return renderStack.join("")
@@ -6633,7 +6616,6 @@ Renderer._stripTagLayer = function (str) {
 					}
 
 					case "@note":
-					case "@sense":
 					case "@domain":
 					case "@group":
 					case "@skill": {

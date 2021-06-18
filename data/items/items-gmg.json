@@ -641,7 +641,7 @@
 						"entry": "{@as 2}"
 					},
 					"components": [
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -659,15 +659,34 @@
 						"entry": "1 minute"
 					},
 					"components": [
-						"(Interact)"
+						"{@action Interact}"
 					],
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The prism has only one input stream, and a creature is encased in magic in the input stream",
 					"entries": [
-						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the."
+						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the last quality set by the prism’s first activation. For instance, if you set the prism to “good,” one creature would have all the original creature’s good aspects and the other would be the original creature’s evil side. Unless you selected a physical quality, both new creatures look just like the original. The new creatures are usually 2 levels lower than the original, but if the original creature was strongly biased with respect to the quality you chose (for instance, if splitting out the good and evil side of a redeemer), the stronger creature is 1 level lower and the weaker creature is 3 or more levels lower. If calibrated correctly, this activation can also reverse the effect of the third activation."
 					]
-				}
+				},
+				{
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "minute",
+						"entry": "1 minute"
+					},
+					"components": [
+						"{@action Interact}"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": "The prism has two input streams, and a creature is encased in magic in each of the input streams",
+					"entries": [
+						"Over the course of the next hour, the essences of both creatures in the input streams are refracted through the prism, creating a cocoon of magic in the output stream that contains a new creature. At the end of the process, the original creatures are gone, and the new creature breaks free of its cocoon. The new creature is an amalgam of the originals, with a new personality blended from both, and is usually 1 or 2 levels higher than the higher level of the original creatures unless the lower-level creature was much weaker. This activation also reverses the effect of the second activation."
+					]
+				},
+				"{@b Destruction} Forcing the {@i essence prism} to combine two incompatible demigods destroys the prism, though it might also result in a new divinity."
 			],
 			"generic": false
 		},
