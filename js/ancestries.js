@@ -684,7 +684,10 @@ class AncestriesPage extends BaseComponent {
 		// region state handling
 		const keepYScroll = (hook) => {
 			const topEle = $(`#ancestrystats`).children().get().filter(it => it.getBoundingClientRect().bottom > 0)[0];
-			const offset = 1 - topEle.getBoundingClientRect().y;
+			if (!topEle) {
+				hook();
+				return;
+			}			const offset = 1 - topEle.getBoundingClientRect().y;
 			hook();
 			if (topEle.className.split(" ").includes("hidden")) {
 				// try to scroll to next element
@@ -1230,7 +1233,7 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	static _render_$getNoHeritage () {
-		return $(`<div class="pf2-h1-flavor text-center" style="clear: none; position: absolute; width: 100%">Select Heritages to display them here.</div>`)
+		return $(`<div class="pf2-h1-flavor text-center" style="clear: none; width: 100%">Select Heritages to display them here.</div>`)
 	}
 
 	_getDefaultState () {

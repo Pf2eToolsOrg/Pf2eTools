@@ -273,6 +273,10 @@ i > i {
 	min-width: 80% !important;
 }
 
+.max-w-100 {
+	max-width: 100% !important;
+}
+
 .grid {
 	display: grid !important;
 }
@@ -1306,6 +1310,21 @@ body::-webkit-scrollbar {
 .col-0-1 {
 	@extend %col-base;
 	width: 0.83333333333333% !important;
+}
+
+.col-ml-9,
+.col-ml-3 {
+	@extend %col-base;
+}
+
+@media (min-width: 887px) {
+	.col-ml-9 {
+		width: 75%;
+	}
+
+	.col-ml-3 {
+		width: 25%;
+	}
 }
 
 .b-0 {

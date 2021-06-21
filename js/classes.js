@@ -694,6 +694,8 @@ class ClassesPage extends BaseComponent {
 		const f = this.filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity));
 
+		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
+
 		// Force-hide any subclasses which are filtered out
 		this._proxyAssign(
 			"state",
@@ -790,7 +792,11 @@ class ClassesPage extends BaseComponent {
 		// region state handling
 		const keepYScroll = (hook) => {
 			const topEle = $(`#classesstats`).children().get().filter(it => it.getBoundingClientRect().bottom > 0)[0];
-			const offset = 1 - topEle.getBoundingClientRect().y;
+			if (!topEle) {
+				hook();
+				return;
+			}
+			const offset = topEle.id === "class-name" ? -topEle.getBoundingClientRect().y : 1 - topEle.getBoundingClientRect().y;
 			hook();
 			if (topEle.className.split(" ").includes("hidden")) {
 				// try to scroll to next element
@@ -914,7 +920,8 @@ class ClassesPage extends BaseComponent {
 
 		const renderer = Renderer.get().resetHeaderIndex();
 
-		const statSidebar = Parser.classSideBar(cls)
+		const statSidebarEntries = Parser.getClassSideBarEntries(cls);
+		const statSidebar = Parser.getClassSideBar(statSidebarEntries);
 		const className = {
 			type: "pf2-h1",
 			name: cls.name,
@@ -941,8 +948,9 @@ class ClassesPage extends BaseComponent {
 
 		$$`<div id="class-name">${renderer.render(className)}</div>
 		<div class="pf2-fluff">${renderer.render(flavor)}</div>
-		<div data-feature-type="class"><div class="pf2-sidebar--class">${renderer.render(statSidebar)}</div></div>
+		<div data-feature-type="class"><div class="pf2-sidebar--class mobile__hidden">${renderer.render(statSidebar)}</div></div>
 		<div data-feature-type="class">${renderer.render(keyAbility)}</div>
+		<div data-feature-type="class"><div class="pf2-sidebar--class pf2-sidebar--compact mobile__visible">${statSidebarEntries.map(e => `<div>${renderer.render({type: "pf2-title", name: e.name})}${e.entries.map(r => `<p class="pf2-sidebar__text">${renderer.render(r)}</p>`).join("")}</div>`)}</div></div>
 		<div class="pf2-fluff">${fluffStack.join("")}</div>
 		<div data-feature-type="class" id="advancements"></div>
 		`.appendTo($classStats);
@@ -1063,9 +1071,11 @@ class ClassesPage extends BaseComponent {
 					}
 				});
 			}
-			const metasFeatureLinks = lvlFeaturesFilt.sort(SortUtil.compareListNames)
+			// FIXME: this works for now
+			const skipSort = lvlFeaturesFilt.filter(f => !f.preCalc).length;
+			const metasFeatureLinks = lvlFeaturesFilt.sort(skipSort ? () => {} : SortUtil.compareListNames)
 				.map((it, ixFeature) => {
-					const featureId = `${ixLvl}-${ixFeature}`;
+					const featureId = `${ixLvl}-${lvlFeaturesFilt.filter(ft => !ft.preCalc).indexOf(it)}`;
 
 					let $lnk;
 					let name;
@@ -1103,7 +1113,8 @@ class ClassesPage extends BaseComponent {
 					const $dispComma = ixFeature === lvlFeaturesFilt.length - 1 ? $(`<span/>`) : $(`<span>,&nbsp;</span>`);
 					return {
 						name,
-						$wrpLink: $$`<span class="inline-block">${$lnk}${$dispComma}</span>`,
+						$wrpLink: $$`<span>${$lnk}${$dispComma}</span>`,
+						$lnk,
 						$dispComma,
 						source,
 						isHidden: false,
@@ -1128,7 +1139,10 @@ class ClassesPage extends BaseComponent {
 				});
 
 				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => metaFeatureLink.$dispComma.toggleClass("hidden", false));
+				metaTblRow.metasFeatureLinks.forEach(metaFeatureLink => metaFeatureLink.$lnk.html(metaFeatureLink.$lnk.html().toLowerCase()));
+				const firstVisible = metaTblRow.metasFeatureLinks.filter(metaFeatureLink => !metaFeatureLink.isHidden)[0];
 				const lastVisible = metaTblRow.metasFeatureLinks.filter(metaFeatureLink => !metaFeatureLink.isHidden).last();
+				if (firstVisible) firstVisible.$lnk.html(firstVisible.$lnk.html().uppercaseFirst());
 				if (lastVisible) lastVisible.$dispComma.addClass("hidden");
 			});
 		};

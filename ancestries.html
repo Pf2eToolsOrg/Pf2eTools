@@ -51,13 +51,25 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/browsercheck.js"></script>
+	<style>
+		@media only screen and (max-width: 886px) {
+			.mobile__flex-col {
+				display: flex !important;
+				flex-direction: column !important;
+			}
+
+			.ancestries {
+				width: 100% !important;
+			}
+		}
+	</style>
 </head>
 
 <body>
 
 
 <header class="hidden-xs hidden-sm page__header">
-	<div class="container">
+	<div class="container max-w-100">
 		<h1 class="page__title">Ancestries</h1>
 		<p class="page__subtitle">Search by name on the left, click ancestry name to display on the right.</p>
 	</div>
@@ -69,7 +81,7 @@
 <!--FIXME: remove w-90, should be more sophisticated to accommodate for smaller screen sizes -->
 <main class="container w-90 h-100 ancestries">
 	<div class="row flex mobile__flex-col mt-2">
-		<div class="col-sm-3" id="listcontainer">
+		<div class="col-ml-3" id="listcontainer">
 			<div class="night__shadow-big">
 				<div class="lst__form-top" id="filter-search-group">
 					<div class="w-100 relative">
@@ -98,13 +110,13 @@
 			</p>
 			<div id="heritagetabs" class="w-100 my-2 cls-tabs__wrp"></div>
 		</div>
-		<div class="col-sm-9" id="ancestrystats-wrp">
+		<div class="col-ml-9" id="ancestrystats-wrp">
 			<div class="wrp-stats-table mb-4">
 				<div class="stats pf2-book" id="ancestrystats"></div>
 			</div>
 		</div>
-		<div class="col-sm-9 feat-view hidden">
-			<div class="col-sm-6" id="featlistcontainer">
+		<div class="col-ml-9 feat-view hidden">
+			<div class="col-6" id="featlistcontainer">
 				<div class="night__shadow-big">
 					<div class="lst__form-top" id="feat-filter-search-group">
 						<div class="w-100 relative">
@@ -131,7 +143,7 @@
 					<ul class="list list--stats feats cls__list"></ul>
 				</div>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-6">
 				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
 				<div class="wrp-stats-table">
 					<div class="stats pf2-stat" id="featstats"></div>

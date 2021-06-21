@@ -656,10 +656,6 @@
 	&-- {
 		&advancements {
 			grid-template-columns: 1fr 7fr;
-
-			.pf2-table__entry span:first-of-type::first-letter {
-				text-transform: uppercase;
-			}
 		}
 	}
 }
@@ -746,7 +742,7 @@
 		font-family: 'good-pro', sans-serif;
 		font-size: 1.1em;
 		font-weight: 700;
-		padding: 0 0.6em;
+		padding: 0.6em 0.6em 0;
 	}
 
 	.pf2-sidebar__text {
@@ -754,7 +750,8 @@
 		font-family: 'good-pro', sans-serif;
 		font-size: 0.9em;
 		font-weight: 400;
-		padding: 0 0.6em 0.6em;
+		padding: 0 0.6em;
+
 	}
 }
 
@@ -784,6 +781,7 @@
 			padding: 0;
 			fill: #5e0000;
 			width: 3.2em;
+			height: 1.38em;
 
 			&-- {
 				&l {
@@ -1359,6 +1357,10 @@
 	margin: 1rem 0.25rem 0.25rem;
 	font-weight: bold;
 	border-bottom: 1px solid #ccc;
+}
+
+.cap-first::first-letter {
+	text-transform: uppercase;
 }
 
 $night-pf2-red: #e06565;

@@ -558,7 +558,7 @@ class FilterBox extends ProxyBase {
 		const $btnCancel = $(`<button class="btn btn-default fltr__btn-close">Cancel</button>`)
 			.click(() => this._modalMeta.doClose(false));
 
-		$$(this._modalMeta.$modal)`<div class="split mb-2 mt-2 flex-v-center mobile__flex-col mobile__mh-100">
+		$$(this._modalMeta.$modal)`<div class="split mb-2 mt-2 flex-v-center mobile__flex-col">
 			<div class="flex-v-baseline mobile__flex-col">
 				<h4 class="m-0 mr-2 mobile__mb-2">Filters</h4>
 				${metaIptSearch.$wrp.addClass("mobile__mb-2")}
