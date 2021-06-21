@@ -3659,11 +3659,10 @@ ul.list.books > li > a > span.name:hover {
 	}
 }
 
-/* Hopefully fixes annoying clipping on iPhones */
-.mobile__mh-100 {
-	min-height: 100px;
-	@media only screen and (min-width: $width-screen-sm) {
-		min-height: 0;
+/* FIXME: Digusting Hack for iOS devices */
+@supports (-webkit-touch-callout: none) {
+	select.form-control {
+		color: black;
 	}
 }
 

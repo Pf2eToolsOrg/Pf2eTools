@@ -97,7 +97,6 @@ class PageFilterAncestries extends PageFilter {
 			this._miscFilter,
 			this._optionsFilter,
 		];
-		opts.isCompact = true;
 	}
 
 	toDisplay (values, a) {

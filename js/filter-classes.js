@@ -97,7 +97,6 @@ class PageFilterClasses extends PageFilter {
 			this._miscFilter,
 			this._optionsFilter,
 		];
-		opts.isCompact = true;
 	}
 
 	isClassNaturallyDisplayed (values, cls) {

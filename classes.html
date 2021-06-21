@@ -51,11 +51,23 @@
 	<script type="text/javascript" src="js/styleswitch.js"></script>
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/browsercheck.js"></script>
+	<style>
+		@media only screen and (max-width: 886px) {
+			.mobile__flex-col {
+				display: flex !important;
+				flex-direction: column !important;
+			}
+
+			.classes {
+				width: 100% !important;
+			}
+		}
+	</style>
 </head>
 
 <body>
 <header class="hidden-xs hidden-sm page__header">
-	<div class="container">
+	<div class="container max-w-100">
 		<h1 class="page__title">Classes</h1>
 		<p class="page__subtitle">Search by name on the left, click class name to display on the right.</p>
 	</div>
@@ -67,7 +79,7 @@
 <!--FIXME: remove w-90, should be more sophisticated to accommodate for smaller screen sizes -->
 <main class="container w-90 h-100 classes">
 	<div class="row flex mobile__flex-col mt-2">
-		<div class="col-sm-3">
+		<div class="col-ml-3">
 			<div id="listcontainer">
 				<div class="night__shadow-big">
 					<div class="lst__form-top" id="filter-search-group">
@@ -98,13 +110,13 @@
 			</p>
 			<div id="subclasstabs" class="w-100 my-2 cls-tabs__wrp"></div>
 		</div>
-		<div class="col-sm-9" id="classesstats-wrp">
+		<div class="col-ml-9" id="classesstats-wrp">
 			<div class="mb-2 wrp-stats-table">
 				<div class="stats pf2-book" id="classesstats"></div>
 			</div>
 		</div>
-		<div class="col-sm-9 feat-view hidden">
-			<div class="col-sm-6" id="featlistcontainer">
+		<div class="col-ml-9 feat-view hidden">
+			<div class="col-6" id="featlistcontainer">
 				<div class="night__shadow-big">
 					<div class="lst__form-top" id="feat-filter-search-group">
 						<div class="w-100 relative">
@@ -132,7 +144,7 @@
 				<!--FIXME: Get this list to behave-->
 				<ul class="list list--stats feats"></ul>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-6">
 				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
 				<div class="wrp-stats-table"><div class="stats pf2-stat" id="featstats"></div></div>
 			</div>

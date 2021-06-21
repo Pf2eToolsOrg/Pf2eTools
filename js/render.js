@@ -4839,7 +4839,6 @@ Renderer.hover = {
 	// (Baked into render strings)
 	async pHandleLinkMouseOver (evt, ele, page, source, hash, preloadId) {
 		Renderer.hover._doInit();
-		console.log(page, source, hash, preloadId)
 
 		const meta = Renderer.hover._handleGenericMouseOverStart(evt, ele);
 		if (meta == null) return;

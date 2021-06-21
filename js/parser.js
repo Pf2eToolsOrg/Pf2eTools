@@ -691,59 +691,73 @@ Parser.speedToFullMap = function (speed) {
 	})
 }
 
-Parser.classSideBar = function (cls) {
-	const renderer = Renderer.get();
+Parser.getClassSideBar = function (sidebarEntries) {
+	sidebarEntries = MiscUtil.copy(sidebarEntries)
+	const first = sidebarEntries.splice(0, 1)[0];
+	return {
+		type: "pf2-sidebar",
+		name: first.name,
+		entries: first.entries.concat(sidebarEntries.map(it => [{type: "pf2-title", name: it.name}, ...it.entries]).flat()),
+	}
+}
+
+Parser.getClassSideBarEntries = function (cls) {
 	let initProf = cls.initialProficiencies
+	const out = [];
 	let sideBar = {
 		type: "pf2-sidebar",
 		name: `${(cls.rarity ? "RARITY" : "INITIAL PROFICIENCIES")}`,
 		entries: [
 		],
 	}
-	if (cls.rarity) {
-		sideBar.entries.push(`{@trait ${cls.rarity}}`);
-		sideBar.entries.push({type: "pf2-title", name: "INITIAL PROFICIENCIES"});
-	}
-	sideBar.entries.push("At 1st level, you gain the listed proficiency ranks in the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way.");
-	sideBar.entries.push({type: "pf2-title", name: "PERCEPTION"});
-	sideBar.entries.push(`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`);
-	sideBar.entries.push({type: "pf2-title", name: "SAVING THROWS"});
-	sideBar.entries.push(`${Parser.proficiencyAbvToFull(initProf.fort)} in Fortitude`);
-	sideBar.entries.push(`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`);
-	sideBar.entries.push(`${Parser.proficiencyAbvToFull(initProf.will)} in Will`);
-	sideBar.entries.push({type: "pf2-title", name: "SKILLS"});
-	if (initProf.skills.u) initProf.skills.u.forEach(it => sideBar.entries.push(`{@indentSubsequent Untrained in ${it}}`));
-	if (initProf.skills.t) initProf.skills.t.forEach(it => sideBar.entries.push(`{@indentSubsequent Trained in ${it}}`));
-	if (initProf.skills.e) initProf.skills.e.forEach(it => sideBar.entries.push(`{@indentSubsequent Expert in ${it}}`));
-	if (initProf.skills.m) initProf.skills.m.forEach(it => sideBar.entries.push(`{@indentSubsequent Master in ${it}}`));
-	if (initProf.skills.l) initProf.skills.l.forEach(it => sideBar.entries.push(`{@indentSubsequent Legendary in ${it}}`));
-	if (initProf.skills.add) sideBar.entries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`)
-	sideBar.entries.push({type: "pf2-title", name: "ATTACKS"});
-	if (initProf.attacks.u) initProf.attacks.u.forEach(it => sideBar.entries.push(`Untrained in ${it}`));
-	if (initProf.attacks.t) initProf.attacks.t.forEach(it => sideBar.entries.push(`Trained in ${it}`));
-	if (initProf.attacks.e) initProf.attacks.e.forEach(it => sideBar.entries.push(`Expert in ${it}`));
-	if (initProf.attacks.m) initProf.attacks.m.forEach(it => sideBar.entries.push(`Master in ${it}`));
-	if (initProf.attacks.l) initProf.attacks.l.forEach(it => sideBar.entries.push(`Legendary in ${it}`));
-	sideBar.entries.push({type: "pf2-title", name: "DEFENSES"});
-	if (initProf.defenses.u) initProf.defenses.u.forEach(it => sideBar.entries.push(`Untrained in ${it}`));
-	if (initProf.defenses.t) initProf.defenses.t.forEach(it => sideBar.entries.push(`Trained in ${it}`));
-	if (initProf.defenses.e) initProf.defenses.e.forEach(it => sideBar.entries.push(`Expert in ${it}`));
-	if (initProf.defenses.m) initProf.defenses.m.forEach(it => sideBar.entries.push(`Master in ${it}`));
-	if (initProf.defenses.l) initProf.defenses.l.forEach(it => sideBar.entries.push(`Legendary in ${it}`));
-	if (initProf.classDc) {
-		sideBar.entries.push({type: "pf2-title", name: "CLASS DC"});
-		sideBar.entries.push(initProf.classDc.entry);
-	}
+	if (cls.rarity) out.push({name: "RARITY", entries: [`{@trait ${cls.rarity}}`]});
+	const initProfText = "At 1st level, you gain the listed proficiency ranks in the following statistics. You are untrained in anything not listed unless you gain a better proficiency rank in some other way."
+	out.push({name: "INITIAL PROFICIENCIES", entries: [initProfText]});
+	out.push({name: "PERCEPTION", entries: [`${Parser.proficiencyAbvToFull(initProf.perception)} in Perception`]});
+	out.push({
+		name: "SAVING THROWS",
+		entries: [
+			`${Parser.proficiencyAbvToFull(initProf.fort)} in Fortitude`,
+			`${Parser.proficiencyAbvToFull(initProf.ref)} in Reflex`,
+			`${Parser.proficiencyAbvToFull(initProf.will)} in Will`,
+		]});
+
+	const skillsEntries = [];
+	if (initProf.skills.u) initProf.skills.u.forEach(it => skillsEntries.push(`{@indentSubsequent Untrained in ${it}}`));
+	if (initProf.skills.t) initProf.skills.t.forEach(it => skillsEntries.push(`{@indentSubsequent Trained in ${it}}`));
+	if (initProf.skills.e) initProf.skills.e.forEach(it => skillsEntries.push(`{@indentSubsequent Expert in ${it}}`));
+	if (initProf.skills.m) initProf.skills.m.forEach(it => skillsEntries.push(`{@indentSubsequent Master in ${it}}`));
+	if (initProf.skills.l) initProf.skills.l.forEach(it => skillsEntries.push(`{@indentSubsequent Legendary in ${it}}`));
+	if (initProf.skills.add) sideBar.entries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`);
+	out.push({name: "SKILLS", entries: skillsEntries});
+
+	const attacksEntries = [];
+	if (initProf.attacks.u) initProf.attacks.u.forEach(it => attacksEntries.push(`Untrained in ${it}`));
+	if (initProf.attacks.t) initProf.attacks.t.forEach(it => attacksEntries.push(`Trained in ${it}`));
+	if (initProf.attacks.e) initProf.attacks.e.forEach(it => attacksEntries.push(`Expert in ${it}`));
+	if (initProf.attacks.m) initProf.attacks.m.forEach(it => attacksEntries.push(`Master in ${it}`));
+	if (initProf.attacks.l) initProf.attacks.l.forEach(it => attacksEntries.push(`Legendary in ${it}`));
+	out.push({name: "ATTACKS", entries: attacksEntries});
+
+	const defensesEntries = [];
+	if (initProf.defenses.u) initProf.defenses.u.forEach(it => defensesEntries.push(`Untrained in ${it}`));
+	if (initProf.defenses.t) initProf.defenses.t.forEach(it => defensesEntries.push(`Trained in ${it}`));
+	if (initProf.defenses.e) initProf.defenses.e.forEach(it => defensesEntries.push(`Expert in ${it}`));
+	if (initProf.defenses.m) initProf.defenses.m.forEach(it => defensesEntries.push(`Master in ${it}`));
+	if (initProf.defenses.l) initProf.defenses.l.forEach(it => defensesEntries.push(`Legendary in ${it}`));
+	out.push({name: "DEFENSES", entries: defensesEntries});
+
+	if (initProf.classDc) out.push({name: "CLASS DC", entries: [initProf.classDc.entry]});
 	if (initProf.spells) {
-		sideBar.entries.push({type: "pf2-title", name: "SPELLS"});
-		if (initProf.spells.u) initProf.spells.u.forEach(it => sideBar.entries.push(`Untrained in ${it}`));
-		if (initProf.spells.t) initProf.spells.t.forEach(it => sideBar.entries.push(`Trained in ${it}`));
-		if (initProf.spells.e) initProf.spells.e.forEach(it => sideBar.entries.push(`Expert in ${it}`));
-		if (initProf.spells.m) initProf.spells.m.forEach(it => sideBar.entries.push(`Master in ${it}`));
-		if (initProf.spells.l) initProf.spells.l.forEach(it => sideBar.entries.push(`Legendary in ${it}`));
+		const spellsEntries = [];
+		if (initProf.spells.u) initProf.spells.u.forEach(it => spellsEntries.push(`Untrained in ${it}`));
+		if (initProf.spells.t) initProf.spells.t.forEach(it => spellsEntries.push(`Trained in ${it}`));
+		if (initProf.spells.e) initProf.spells.e.forEach(it => spellsEntries.push(`Expert in ${it}`));
+		if (initProf.spells.m) initProf.spells.m.forEach(it => spellsEntries.push(`Master in ${it}`));
+		if (initProf.spells.l) initProf.spells.l.forEach(it => spellsEntries.push(`Legendary in ${it}`));
+		out.push({name: "SPELLS", entries: spellsEntries});
 	}
-	if (initProf.custom) sideBar.entries.push(`${initProf.custom}`)
-	return sideBar
+	return out
 }
 
 // sp-prefix functions are for parsing spell data, and shared with the roll20 script
