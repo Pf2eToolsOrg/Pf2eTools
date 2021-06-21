@@ -262,6 +262,7 @@ class ArchetypesPage extends BaseComponent {
 						feat.addSections = feat.addSections || [];
 						feat.addSections.push([[`{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`]]);
 						this._featFilter.mutateForFilters(feat);
+						if (feat.add_hash) feat.add_hash = feat.featType.archetype
 						return feat
 					}
 					const lookUp = MiscUtil.get(this._featLookUp, hash);
