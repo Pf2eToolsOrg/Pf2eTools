@@ -486,11 +486,14 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		// region feats
-		let featHash = cls ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
-		if (!featHash) {
-			const firstItem = this._listFeat.items[0];
-			primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
-		}
+		let featHash;
+		if (!opts.blankFeatHash) {
+			featHash = feat ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
+			if (!featHash) {
+				const firstItem = this._listFeat.items[0];
+				primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
+			}
+		} else featHash = HASH_BLANK;
 		// endregion
 
 		// region state
@@ -572,7 +575,7 @@ class ClassesPage extends BaseComponent {
 	}
 
 	getFeatListItem (feat, featI, isExcluded) {
-		const hash = UrlUtil.autoEncodeHash(feat);
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
 		const $lnk = $(`<a href="##${hash}" class="lst--border">
@@ -727,23 +730,23 @@ class ClassesPage extends BaseComponent {
 		});
 
 		this._addHookAll("featId", async () => {
-			await this._pDoSynchronizedRender();
+			await this._pDoSynchronizedRender(true);
 		});
 
 		this._doGenerateFilteredActiveClassData();
 		await this._pDoRender();
 	}
 
-	async _pDoSynchronizedRender () {
+	async _pDoSynchronizedRender (skipClsRender) {
 		await this._pLock("render");
 		try {
-			await this._pDoRender();
+			await this._pDoRender(skipClsRender);
 		} finally {
 			this._unlock("render");
 		}
 	}
 
-	async _pDoRender () {
+	async _pDoRender (skipClsRender) {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
@@ -758,22 +761,23 @@ class ClassesPage extends BaseComponent {
 		const hkSetHref = () => {
 			// defer this for performance
 			setTimeout(() => {
+				const state = MiscUtil.copy(this.__state);
 				this._list.items
 					.filter(it => it.data.$lnk)
 					.forEach(it => {
-						let state = MiscUtil.copy(this.__state);
 						state.feature = null;
-						const href = `#${this._getHashState({class: it.data.entity, feat: "", state})}`;
+						const href = `#${this._getHashState({class: it.data.entity, blankFeatHash: true, state})}`;
 						it.data.$lnk.attr("href", href)
 					});
-				this._listFeat.items
-					.filter(it => it.data.$lnk)
-					.forEach(it => {
-						let state = MiscUtil.copy(this.__state);
-						state.feature = null;
-						const href = `#${this._getHashState({feat: it.data.entity, state})}`;
-						it.data.$lnk.attr("href", href)
-					});
+				if (this._state.isShowFeats) {
+					this._listFeat.items
+						.filter(it => it.data.$lnk)
+						.forEach(it => {
+							state.feature = null;
+							const href = `#${this._getHashState({feat: it.data.entity, state})}`;
+							it.data.$lnk.attr("href", href)
+						});
+				}
 			}, 5);
 		};
 		this._addHook("classId", "_", hkSetHref);
@@ -783,9 +787,11 @@ class ClassesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
-		this._render_renderClass();
-		this._render_renderClassAdvancementTable()
-		this._render_renderSubclassTabs();
+		if (!skipClsRender) {
+			this._render_renderClass();
+			this._render_renderClassAdvancementTable()
+			this._render_renderSubclassTabs();
+		}
 		this._render_renderFeat();
 		// endregion
 

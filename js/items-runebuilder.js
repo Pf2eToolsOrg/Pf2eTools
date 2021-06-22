@@ -93,6 +93,10 @@ class RuneBuilder extends ProxyBase {
 		RuneListUtil.list.items.forEach(it => RuneListUtil._updateAddSubtractButton(it.ix));
 		this.renderItem(this.runeItem);
 		this.setSubhashFromState();
+
+		itemsPage._pageFilter._filterBox.reset();
+		itemsPage._pageFilter._filterBox._setStateFromLoaded(this._getInitialFilterState());
+		itemsPage.handleFilterChange();
 	}
 
 	async pSaveRuneItemAndState () {
@@ -173,8 +177,9 @@ class RuneBuilder extends ProxyBase {
 					textYesRemember: "Save & Create New",
 					textYes: "OK",
 					textNo: "Cancel",
-					fnRemember: () => { doSave = true; doReset = true },
+					fnRemember: () => { doSave = true; },
 				});
+				if (confirm) doReset = true;
 			} else confirm = true;
 		}
 		if (doSave) await this.pSaveRuneItemAndState();
