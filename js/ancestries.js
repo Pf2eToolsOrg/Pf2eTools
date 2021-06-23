@@ -683,8 +683,8 @@ class AncestriesPage extends BaseComponent {
 		// region rendering
 		if (!skipAncRender) {
 			this._render_renderAncestry();
-			this._render_renderHeritageTabs();
 		}
+		this._render_renderHeritageTabs();
 		this._render_renderFeat();
 		// endregion
 

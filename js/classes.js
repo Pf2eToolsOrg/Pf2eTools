@@ -790,8 +790,8 @@ class ClassesPage extends BaseComponent {
 		if (!skipClsRender) {
 			this._render_renderClass();
 			this._render_renderClassAdvancementTable()
-			this._render_renderSubclassTabs();
 		}
+		this._render_renderSubclassTabs();
 		this._render_renderFeat();
 		// endregion
 
