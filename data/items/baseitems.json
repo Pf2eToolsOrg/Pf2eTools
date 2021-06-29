@@ -227,7 +227,8 @@
 			"name": "Boarding Pike",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Item",
+			"equipment": true,
+			"type": "Equipment",
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -513,7 +514,8 @@
 			"name": "Combat Grapnel",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Item",
+			"equipment": true,
+			"type": "Equipment",
 			"level": 1,
 			"traits": [
 				"Uncommon",
@@ -901,9 +903,16 @@
 			"source": "LOCG",
 			"page": 92,
 			"equipment": true,
-			"type": "Item",
+			"type": "Equipment",
+			"subCategory": "Martial",
 			"level": 0,
-			"traits": [],
+			"traits": [
+				"Deadly d8",
+				"Reach",
+				"Sweep",
+				"Trip"
+			],
+			"group": "Polearm",
 			"price": {
 				"coin": "sp",
 				"amount": 14,
@@ -911,6 +920,9 @@
 			},
 			"usage": null,
 			"bulk": "2",
+			"damage": "1d8",
+			"damageType": "S",
+			"hands": 2,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
@@ -918,7 +930,7 @@
 			"category": "Weapon",
 			"appliesTo": null,
 			"entries": [
-				"A fauchard is similar to a glaive, save that its cutting edge is along the concave side. Fauchards are favored by Crimson Reclaimers for hacking through waves of zombies. The fauchard is a martial melee weapon."
+				"A fauchard is similar to a {@item glaive}, save that its cutting edge is along the concave side. Fauchards are favored by Crimson Reclaimers for hacking through waves of zombies. The fauchard is a martial melee weapon."
 			],
 			"craftReq": null,
 			"generic": false,
@@ -1551,7 +1563,7 @@
 			"source": "LOCG",
 			"page": 80,
 			"equipment": true,
-			"type": "Item",
+			"type": "Equipment",
 			"level": 2,
 			"traits": [
 				"Uncommon",
@@ -2638,34 +2650,6 @@
 			"generic": false
 		},
 		{
-			"name": "Ruler",
-			"source": "LOPSG",
-			"page": 35,
-			"equipment": true,
-			"type": "Item",
-			"level": 0,
-			"traits": [],
-			"price": {
-				"coin": "sp",
-				"amount": 5,
-				"note": null
-			},
-			"usage": "held in 1 hand",
-			"bulk": "\u2014",
-			"shieldStats": null,
-			"activate": null,
-			"onset": null,
-			"ammunition": null,
-			"category": "Held",
-			"appliesTo": null,
-			"entries": [
-				"A ruler is a straight-edged object used for measuring small distances accurately and drawing straight lines."
-			],
-			"craftReq": null,
-			"generic": false,
-			"variants": null
-		},
-		{
 			"name": "Sai",
 			"source": "CRB",
 			"page": 281,
@@ -2824,7 +2808,8 @@
 			"name": "Scourge",
 			"source": "LOCG",
 			"page": 80,
-			"type": "Item",
+			"equipment": true,
+			"type": "Equipment",
 			"level": 0,
 			"traits": [
 				"agile",
@@ -3257,7 +3242,8 @@
 			"name": "Stiletto Pen",
 			"source": "LOPSG",
 			"page": 81,
-			"type": "Item",
+			"equipment": true,
+			"type": "Equipment",
 			"level": 1,
 			"traits": [
 				"Uncommon",

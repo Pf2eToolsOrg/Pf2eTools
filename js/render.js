@@ -964,8 +964,9 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
 							<span class="entry-title-inner">${entry.name}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
-							</p>`;
+							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
+			if (entry.level) textStack[0] += `<span class="pf2-h4--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
+			textStack[0] += `</p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -4203,7 +4204,7 @@ Renderer.item = {
 			if (v.traits != null && v.traits.length) renderStack[0] += `(; ${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))})`;
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
-			if (v.entries != null && v.entries.length) renderer.recursiveRender(v.entries, renderStack);
+			if (v.entries != null && v.entries.length) renderer.recursiveRender(`; ${v.entries}`, renderStack);
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			if (v.shieldStats != null) renderStack.push(`; The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
 			renderStack.push(`</p>`);
