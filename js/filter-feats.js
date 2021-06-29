@@ -30,7 +30,8 @@ class PageFilterFeats extends PageFilter {
 		this._skillFilter = new Filter({header: "Skills", isHiddenFilter: !!opts.skillFilterHidden})
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special", "Leads to..."],
+			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special", "Leads to...", "Variant"],
+			deselFn: (it) => it === "Variant",
 		});
 		this._timeFilter = new Filter({
 			header: "Activity",
@@ -80,6 +81,7 @@ class PageFilterFeats extends PageFilter {
 		if (feat.cost != null) feat._fMisc.push("Has Cost");
 		if (feat.special != null) feat._fMisc.push("Has Special");
 		if (feat.leadsTo && feat.leadsTo.length) feat._fMisc.push("Leads to...")
+		if (feat.featType.variant === true) feat._fMisc.push("Variant")
 	}
 
 	addToFilters (feat, isExcluded) {
