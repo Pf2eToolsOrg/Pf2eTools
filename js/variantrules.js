@@ -21,7 +21,7 @@ class VariantRulesPage extends ListPage {
 
 		const searchStack = [];
 		for (const e1 of rule.entries) {
-			Renderer.getNames(searchStack, e1);
+			Renderer.getNames(searchStack, e1, {typeBlacklist: new Set(["successDegree"])});
 		}
 
 		const eleLi = document.createElement("li");
