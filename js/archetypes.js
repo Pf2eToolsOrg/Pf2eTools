@@ -33,11 +33,6 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	get activeArchetype () {
-		if (this._activeArchetypeDataFiltered) return this._activeArchetypeDataFiltered;
-		return this.activeArchetypeRaw;
-	}
-
-	get activeArchetypeRaw () {
 		return this._dataList[this._archetypeId._];
 	}
 
@@ -481,11 +476,14 @@ class ArchetypesPage extends BaseComponent {
 		// endregion
 
 		// region feats
-		let featHash = arc ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
-		if (!featHash) {
-			const firstItem = this._listFeat.items[0];
-			primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
-		}
+		let featHash;
+		if (!opts.blankFeatHash) {
+			featHash = feat ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
+			if (!featHash) {
+				const firstItem = this._listFeat.items[0];
+				primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
+			}
+		} else featHash = HASH_BLANK;
 		// endregion
 
 		// region state
@@ -570,32 +568,16 @@ class ArchetypesPage extends BaseComponent {
 		);
 	}
 
-	_doGenerateFilteredActiveArchetypeData () {
-		const f = this.filterBox.getValues();
-		const cpyAnc = MiscUtil.copy(this.activeArchetypeRaw);
-		const walker = MiscUtil.getWalker({
-			keyBlacklist: MiscUtil.GENERIC_WALKER_ENTRIES_KEY_BLACKLIST,
-			isAllowDeleteObjects: true,
-			isDepthFirst: true,
-		});
-
-		this._activeArchetypeDataFiltered = cpyAnc
-	}
-
 	_handleFilterChange (isFilterValueChange) {
 		// If the filter values changes (i.e. we're not handling an initial load), mutate the state, and trigger a
 		//   re-render.
 		if (isFilterValueChange) {
-			this._doGenerateFilteredActiveArchetypeData();
 			this._pDoSynchronizedRender();
 			return;
 		}
 
 		const f = this.filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity, [], null));
-
-		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
-		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
 		this._updateFeatHref();
 	}
 
@@ -613,28 +595,26 @@ class ArchetypesPage extends BaseComponent {
 
 		// Use hookAll to allow us to reset temp hooks on the property itself
 		this._addHookAll("archetypeId", async () => {
-			this._doGenerateFilteredActiveArchetypeData();
 			await this._pDoSynchronizedRender();
 		});
 
 		this._addHookAll("featId", async () => {
-			await this._pDoSynchronizedRender();
+			await this._pDoSynchronizedRender(true);
 		});
 
-		this._doGenerateFilteredActiveArchetypeData();
 		await this._pDoRender();
 	}
 
-	async _pDoSynchronizedRender () {
+	async _pDoSynchronizedRender (skipArcRender) {
 		await this._pLock("render");
 		try {
-			await this._pDoRender();
+			await this._pDoRender(skipArcRender);
 		} finally {
 			this._unlock("render");
 		}
 	}
 
-	async _pDoRender () {
+	async _pDoRender (skipArcRender) {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
@@ -649,18 +629,21 @@ class ArchetypesPage extends BaseComponent {
 		const hkSetHref = () => {
 			// defer this for performance
 			setTimeout(() => {
+				const state = MiscUtil.copy(this.__state);
 				this._list.items
 					.filter(it => it.data.$lnk)
 					.forEach(it => {
-						const href = `#${this._getHashState({archetype: it.data.entity, feat: ""})}`;
+						const href = `#${this._getHashState({state, archetype: it.data.entity, blankFeatHash: true})}`;
 						it.data.$lnk.attr("href", href)
 					});
-				this._listFeat.items
-					.filter(it => it.data.$lnk)
-					.forEach(it => {
-						const href = `#${this._getHashState({feat: it.data.entity})}`;
-						it.data.$lnk.attr("href", href)
-					});
+				if (this._state.isShowFeats) {
+					this._listFeat.items
+						.filter(it => it.data.$lnk)
+						.forEach(it => {
+							const href = `#${this._getHashState({state, feat: it.data.entity})}`;
+							it.data.$lnk.attr("href", href)
+						});
+				}
 			}, 5);
 		};
 		this._addHook("archetypeId", "_", hkSetHref);
@@ -670,7 +653,7 @@ class ArchetypesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
-		this._render_renderArchetype();
+		if (!skipArcRender) this._render_renderArchetype();
 		this._render_renderFeat();
 		// endregion
 
@@ -699,7 +682,7 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	_render_renderArchetype () {
-		const $archetypeStats = $(`#pagecontent`).empty();
+		const $archetypeStats = $(`#pagecontent`);
 		const arc = this.activeArchetype;
 
 		const buildStatsTab = () => {
@@ -711,11 +694,11 @@ class ArchetypesPage extends BaseComponent {
 			}
 
 			$$`${renderer.render(archetypeEntry)}
-		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats);
+		${Renderer.utils.getPageP(arc)}`.appendTo($archetypeStats.empty());
 		}
 		const buildInfoTab = async () => {
 			const quickRules = await Renderer.utils.pGetQuickRules("archetype");
-			$archetypeStats.append(quickRules);
+			$archetypeStats.empty().append(quickRules);
 		}
 
 		const statsTab = Renderer.utils.tabButton(

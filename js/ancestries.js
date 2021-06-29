@@ -449,11 +449,14 @@ class AncestriesPage extends BaseComponent {
 		// endregion
 
 		// region feats
-		let featHash = anc ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
-		if (!featHash) {
-			const firstItem = this._listFeat.items[0];
-			primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
-		}
+		let featHash;
+		if (!opts.blankFeatHash) {
+			featHash = feat ? UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat) : null;
+			if (!featHash) {
+				const firstItem = this._listFeat.items[0];
+				primaryHash = firstItem ? firstItem.values.hash : HASH_BLANK;
+			}
+		} else featHash = HASH_BLANK;
 		// endregion
 
 		// region state
@@ -535,7 +538,7 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	getFeatListItem (feat, featI, isExcluded) {
-		const hash = UrlUtil.autoEncodeHash(feat);
+		const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](feat);
 		const source = Parser.sourceJsonToAbv(feat.source);
 
 		const $lnk = $(`<a href="##${hash}" class="lst--border">
@@ -590,7 +593,6 @@ class AncestriesPage extends BaseComponent {
 		const f = this.filterBox.getValues();
 		this._list.filter(item => this._pageFilter.toDisplay(f, item.data.entity, [], null));
 
-		if (this._fnOutlineHandleFilterChange) this._fnOutlineHandleFilterChange();
 		if (this._fnTableHandleFilterChange) this._fnTableHandleFilterChange(f);
 
 		// Force-hide any heritages which are filtered out
@@ -624,23 +626,23 @@ class AncestriesPage extends BaseComponent {
 		});
 
 		this._addHookAll("featId", async () => {
-			await this._pDoSynchronizedRender();
+			await this._pDoSynchronizedRender(true);
 		});
 
 		this._doGenerateFilteredActiveAncestryData();
 		await this._pDoRender();
 	}
 
-	async _pDoSynchronizedRender () {
+	async _pDoSynchronizedRender (skipAncRender) {
 		await this._pLock("render");
 		try {
-			await this._pDoRender();
+			await this._pDoRender(skipAncRender);
 		} finally {
 			this._unlock("render");
 		}
 	}
 
-	async _pDoRender () {
+	async _pDoRender (skipAncRender) {
 		// reset all hooks in preparation for rendering
 		this._initHashAndStateSync();
 		this.filterBox
@@ -655,18 +657,21 @@ class AncestriesPage extends BaseComponent {
 		const hkSetHref = () => {
 			// defer this for performance
 			setTimeout(() => {
+				const state = MiscUtil.copy(this.__state);
 				this._list.items
 					.filter(it => it.data.$lnk)
 					.forEach(it => {
-						const href = `#${this._getHashState({ancestry: it.data.entity, feat: ""})}`;
+						const href = `#${this._getHashState({state, ancestry: it.data.entity, blankFeatHash: true})}`;
 						it.data.$lnk.attr("href", href)
 					});
-				this._listFeat.items
-					.filter(it => it.data.$lnk)
-					.forEach(it => {
-						const href = `#${this._getHashState({feat: it.data.entity})}`;
-						it.data.$lnk.attr("href", href)
-					});
+				if (this._state.isShowFeats) {
+					this._listFeat.items
+						.filter(it => it.data.$lnk)
+						.forEach(it => {
+							const href = `#${this._getHashState({state, feat: it.data.entity})}`;
+							it.data.$lnk.attr("href", href)
+						});
+				}
 			}, 5);
 		};
 		this._addHook("ancestryId", "_", hkSetHref);
@@ -676,7 +681,9 @@ class AncestriesPage extends BaseComponent {
 		// endregion
 
 		// region rendering
-		this._render_renderAncestry();
+		if (!skipAncRender) {
+			this._render_renderAncestry();
+		}
 		this._render_renderHeritageTabs();
 		this._render_renderFeat();
 		// endregion

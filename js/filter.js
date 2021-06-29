@@ -27,7 +27,7 @@ class PageFilter {
 		opts = opts || {};
 		if (!Renderer.trait.TRAITS) return;
 		(entity[opts.traitProp] || []).forEach(trt => {
-			const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trt)];
+			const lookup = Renderer.trait.TRAITS[Parser.getTraitName(trt).toLowerCase()];
 			if (!lookup || !lookup.implies) return;
 			Object.keys(lookup.implies).filter(it => opts.entityTypes.includes(it))
 				.forEach(key => Object.entries(lookup.implies[key]).forEach(([prop, values]) => {
