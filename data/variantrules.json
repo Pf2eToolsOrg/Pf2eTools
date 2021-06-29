@@ -19,6 +19,169 @@
 			]
 		},
 		{
+			"name": "Proficiency Without Level",
+			"source": "GMG",
+			"page": 198,
+			"type": "Proficiency Without Level",
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"blue": true,
+					"name": "Proficiency Without Level",
+					"source": "GMG",
+					"page": 198,
+					"entries": [
+						{
+							"type": "pf2-h1-flavor",
+							"entries": [
+								"This variant presents a change to the proficiency bonus system, scaling it differently for a style of game that’s outside the norm. This is a significant change to the system."
+							]
+						},
+						"The proficiency rank progression in the {@i Core Rulebook} is designed for heroic fantasy games where heroes rise from humble origins to world-shattering strength. For some games, this narrative arc doesn’t fit. Such games are about hedging bets in an uncertain and gritty world, in which even the world’s best fighter can’t guarantee a win against a large group of moderately skilled brigands. In games like these, your group might want to consider removing the character’s level from the proficiency bonus.",
+						"The initial implementation is fairly straightforward: the proficiency bonus just becomes +2 for trained, +4 for expert, +6 for master, and +8 for legendary. We recommend giving an untrained character a –2 proficiency modifier instead of a +0 proficiency bonus.",
+						"Additionally, for creatures, hazards, magic items, and so on, reduce each statistic that would include a proficiency bonus by the level of the creature or other rules element. These statistics are typically modifiers and DCs for attacks, ACs, saving throws, Perception, skills, and spells.",
+						"Finally, decrease the skill DCs of most tasks to account for the level being removed. You can just subtract the level from the DC tables on page 503 of the {@i Core Rulebook}, or you can reference {@table Simple Skill DCs (No Level)|GMG|Table 4–17: Simple Skill DCs (No Level)} for a set of DCs that’s easier to remember. The new DCs make it a little harder for high-level characters to succeed than it would be when using the default numbers from the Core Rulebook, in keeping with the theme mentioned earlier. Combat outcomes will tend to flatten out, with critical successes and critical failures being less likely across the game. This is particularly notable in spells, where you’re less likely to see the extreme effects of critical failures on saves.",
+						{
+							"name": "Simple Skill DCs (No Level)",
+							"id": "4-17",
+							"source": "GMG",
+							"page": 198,
+							"labelRowIdx": [
+								0
+							],
+							"colStyles": [
+								"text-center",
+								"text-center"
+							],
+							"rows": [
+								[
+									"Proficiency Rank",
+									"DC"
+								],
+								[
+									"Untrained",
+									"10"
+								],
+								[
+									"Trained",
+									"15"
+								],
+								[
+									"Expert",
+									"20"
+								],
+								[
+									"Master",
+									"25"
+								],
+								[
+									"Legendary",
+									"30"
+								]
+							],
+							"type": "table"
+						}
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Adjusting Encounters",
+					"entries": [
+						"Telling stories where a large group of low-level monsters can still be a significant threat to a high-level PC (and conversely, a single higher-level monster is not much of a threat to a group of PCs) requires some significant shifts in encounter building, including shifts in the PCs’ rewards.",
+						"Under the math in the {@i Core Rulebook}, two monsters of a certain level are roughly as challenging as a single monster 2 levels higher. However, with level removed from proficiency, this assumption is no longer true. The XP budget for creatures uses a different scale, as shown in {@table Creature XP (No Level)|GMG|Table 4–18: Creature XP (No Level)}. You’ll still use the same XP budget for a given threat level as shown on {@table Encounter Budget|CRB|Table 10–1: Encounter Budget} (80 XP for a moderate-threat encounter, 120 for a severe-threat encounter, and so on).",
+						{
+							"name": "Creature XP (No Level)",
+							"id": "4-18",
+							"source": "GMG",
+							"page": 198,
+							"labelRowIdx": [
+								0
+							],
+							"colStyles": [
+								"text-center",
+								"text-center"
+							],
+							"rows": [
+								[
+									"Creature's Level",
+									"XP"
+								],
+								[
+									"Party level – 7", 
+									"9"
+								], 
+								[
+									"Party level – 6", 
+									"12"
+								], 
+								[
+									"Party level – 5", 
+									"14"
+								], 
+								[
+									"Party level – 4", 
+									"18"
+								], 
+								[
+									"Party level – 3", 
+									"21"
+								], 
+								[
+									"Party level – 2", 
+									"26"
+								], 
+								[
+									"Party level – 1", 
+									"32"
+								], 
+								[
+									"Party level", 
+									"40"
+								], 
+								[
+									"Party level + 1", 
+									"48"
+								], 
+								[
+									"Party level + 2", 
+									"60"
+								], 
+								[
+									"Party level + 3", 
+									"72"
+								], 
+								[
+									"Party level + 4", 
+									"90"
+								], 
+								[
+									"Party level + 5", 
+									"108"
+								], 
+								[
+									"Party level + 6", 
+									"135"
+								], 
+								[
+									"Party level + 7", 
+									"160"
+								]
+							],
+							"type": "table"
+						},
+						"While the XP values in {@table Creature XP (No Level)|GMG|Table 4–18} work well in most cases, sometimes they might not account for the effects of creatures’ special abilities when facing a party of a drastically different level. For instance, a ghost mage could prove too much for 5th-level PCs with its incorporeality, flight, and high-level spells, even though it’s outnumbered."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Adjusting Treasure",
+					"entries": [
+						"Treasure and the cost of items in the Core Rulebook are designed to make it as easy as possible for you to build encounters without worrying about awarding too much or too little treasure based on whether you use creatures who carry items. However, using this variant, the PCs might defeat a creature 5 levels higher than they are, or even more! Too many encounters with higher-level foes can wind up giving the PCs more treasure than you expected, or vice-versa if they’re fighting weaker foes that put up more of a fight but still have poor treasure. You can nudge this in the right direction by making periodic adjustments if the PCs’ treasure drifts too far from expectations. Making it so they can’t easily sell or buy magic items will mean it’s harder for them to exploit treasure they gain. To sidestep the treasure economy entirely, you can use the {@variantrule Automatic Bonus Progression|GMG|automatic item bonus progression}."
+					]
+				}
+			]
+		},
+		{
 			"name": "Point Buy",
 			"source": "GMG",
 			"page": 182,
@@ -127,7 +290,7 @@
 							"source": "GMG",
 							"page": 182,
 							"entries": [
-								"When a character levels up, they gain Ability Points at each level, as shown on Table 4–2: Ability Points Gained. Unlike the Ability Points from character creation, a player can save these to buy a more expensive increase, and they can increase ability scores to a maximum of 22. When a player is ready to increase one or more ability scores, they spend the number of Ability Points listed on Table 4–3: Raising an Ability Score and increase the ability score accordingly. A player can increase a score more than once at a given time, but they must pay for each increase individually, such as going from 14 to 16 by spending 2 points to increase from 14 to 15, and then 3 points to increase from 15 to 16. For most games, it’s best to increase scores when leveling up, between game sessions, or during downtime.",
+								"When a character levels up, they gain Ability Points at each level, as shown on {@table Ability Points Gained|GMG|Table 4–2: Ability Points Gained}. Unlike the Ability Points from character creation, a player can save these to buy a more expensive increase, and they can increase ability scores to a maximum of 22. When a player is ready to increase one or more ability scores, they spend the number of Ability Points listed on {@table Raising an Ability Score|GMG|Table 4–3: Raising an Ability Score} and increase the ability score accordingly. A player can increase a score more than once at a given time, but they must pay for each increase individually, such as going from 14 to 16 by spending 2 points to increase from 14 to 15, and then 3 points to increase from 15 to 16. For most games, it’s best to increase scores when leveling up, between game sessions, or during downtime.",
 								"Apex items work as described in the Core Rulebook. They can increase an ability score to a maximum of 24."
 							]
 						},
@@ -627,7 +790,7 @@
 									"type": "pf2-h3",
 									"name": "Step 1: Family Background",
 									"entries": [
-										"The word family means something different to everyone. You might have a biological family, adopted family, stepfamily, or any other kind and combination you choose; family bonds come in all types. To determine the number of family members you grew up with as an active part of your life, roll 1d% on the following table. Use the medium family for most ancestries, small if you’re a {@ancestry human|crb|half-elf|half-elf|crb} or {@ancestry human|crb|half-orc|half-orc|crb}, and large if you’re a {@ancestry goblin} or {@ancestry halfling}. For ancestries other than those in the {@i Core Rulebook}, use the column that best suits the ancestry. It’s up to you whether these family members are parents, siblings, grandparents, or other close relatives.",
+										"The word family means something different to everyone. You might have a biological family, adopted family, stepfamily, or any other kind and combination you choose; family bonds come in all types. To determine the number of family members you grew up with as an active part of your life, roll {@dice d100|1d%} on the following table. Use the medium family for most ancestries, small if you’re a {@ancestry human|crb|half-elf|half-elf|crb} or {@ancestry human|crb|half-orc|half-orc|crb}, and large if you’re a {@ancestry goblin} or {@ancestry halfling}. For ancestries other than those in the {@i Core Rulebook}, use the column that best suits the ancestry. It’s up to you whether these family members are parents, siblings, grandparents, or other close relatives.",
 										{
 											"name": "Family Size",
 											"id": "4-5",
@@ -644,7 +807,7 @@
 											],
 											"rows": [
 												[
-													"d%",
+													"{@dice d100|d%}",
 													"Small Family",
 													"Medium Family",
 													"Large Family"
@@ -789,7 +952,7 @@
 											],
 											"rows": [
 												[
-													"1d20",
+													"{@dice 1d20}",
 													"Result"
 												],
 												[
@@ -864,7 +1027,7 @@
 											],
 											"rows": [
 												[
-													"1d20",
+													"{@dice 1d20}",
 													"Result"
 												],
 												[
@@ -873,79 +1036,79 @@
 												],
 												[
 													2,
-													"{@b Academy Trained} You attended an academy where you studied a number of topics and skills. Whether you were a studious pupil or a dropout, the academy was your home for a good portion of your formative years. Add the Additional Lore skill feat to your background options. If you select Additional Lore as your skill feat, instead of becoming trained in Lore, you become trained in your choice of Arcana, Occultism, or Society."
+													"{@b Academy Trained} You attended an academy where you studied a number of topics and skills. Whether you were a studious pupil or a dropout, the academy was your home for a good portion of your formative years. Add the {@feat Additional Lore} skill feat to your background options. If you select {@feat Additional Lore} as your skill feat, instead of becoming trained in {@skill Lore}, you become trained in your choice of {@skill Arcana}, {@skill Occultism}, or {@skill Society}."
 												],
 												[
 													3,
-													"{@b Attained a Magical Gift} When you were a child, you found, stole, or were given a magic item that gave you an extraordinary ability. Add the Arcane Sense skill feat to your background options."
+													"{@b Attained a Magical Gift} When you were a child, you found, stole, or were given a magic item that gave you an extraordinary ability. Add the {@feat Arcane Sense} skill feat to your background options."
 												],
 												[
 													4,
-													"{@b Betrayed} A friend or family member whom you trusted more than anyone else betrayed you. Add the Lie to Me skill feat to your background options."
+													"{@b Betrayed} A friend or family member whom you trusted more than anyone else betrayed you. Add the {@feat Lie to Me} skill feat to your background options."
 												],
 												[
 													5,
-													"{@b Bullied} In your early life, you were often picked on. The callousness of bullies sharpened your resolve to stand up for yourself and others. Add the Intimidating Glare skill feat to your background options."
+													"{@b Bullied} In your early life, you were often picked on. The callousness of bullies sharpened your resolve to stand up for yourself and others. Add the {@feat Intimidating Glare} skill feat to your background options."
 												],
 												[
 													6,
-													"{@b Captured by Giants} You were captured by marauding giants and fought your way free. Add the Titan Wrestler skill feat to your background options."
+													"{@b Captured by Giants} You were captured by marauding giants and fought your way free. Add the {@feat Titan Wrestler} skill feat to your background options."
 												],
 												[
 													7,
-													"{@b Claimed an Inheritance} You were bequeathed great wealth or property at an early age. You retained some of it; add a piece of common adventuring gear worth 15 gp or less to your background options. If you select it instead of a skill feat, you are trained in Society."
+													"{@b Claimed an Inheritance} You were bequeathed great wealth or property at an early age. You retained some of it; add a piece of common adventuring gear worth 15 gp or less to your background options. If you select it instead of a skill feat, you are trained in {@skill Society}."
 												],
 												[
 													8,
-													"{@b Died} You died or came so close that you walked the boundary between life and death. Add the Diehard feat to your background options. If you select it instead of a skill feat, you aren’t trained in a background skill."
+													"{@b Died} You died or came so close that you walked the boundary between life and death. Add the {@feat Diehard} feat to your background options. If you select it instead of a skill feat, you aren’t trained in a background skill."
 												],
 												[
 													9,
-													"{@b Fell In with a Bad Crowd} In your youth, you ran with a criminal element: a gang, thieves’ guild, or similar organization. Add the Experienced Smuggler skill feat to your background options."
+													"{@b Fell In with a Bad Crowd} In your youth, you ran with a criminal element: a gang, thieves’ guild, or similar organization. Add the {@feat Experienced Smuggler} skill feat to your background options."
 												],
 												[
 													10,
-													"{@b Had an Ordinary Childhood} Your childhood was fairly ordinary, with no major catastrophe—a stark contrast to most adventurers. Add the Assurance skill feat for a skill of your choice to your background options."
+													"{@b Had an Ordinary Childhood} Your childhood was fairly ordinary, with no major catastrophe—a stark contrast to most adventurers. Add the {@feat Assurance} skill feat for a skill of your choice to your background options."
 												],
 												[
 													11,
-													"{@b Had Your First Kill} You’ve had blood on your hands since your youth, when you first took the life of another. You still have the weapon you used for the deed; add a common weapon worth 15 gp or less to your background options. If you select this option instead of a skill feat, you are trained in Athletics."
+													"{@b Had Your First Kill} You’ve had blood on your hands since your youth, when you first took the life of another. You still have the weapon you used for the deed; add a common weapon worth 15 gp or less to your background options. If you select this option instead of a skill feat, you are trained in {@skill Athletics}."
 												],
 												[
 													12,
-													"{@b Kidnapped} You were kidnapped at some point in your childhood and had to escape, perhaps by pirates, slavers, a cult, or someone else. Add the Quick Squeeze skill feat to your background options."
+													"{@b Kidnapped} You were kidnapped at some point in your childhood and had to escape, perhaps by pirates, slavers, a cult, or someone else. Add the {@feat Quick Squeeze} skill feat to your background options."
 												],
 												[
 													13,
-													"{@b Lost in the Wilderness} Whether lured to the wilderness by a malevolent force or simply lost, you had to survive on your own for a while. Add the Survey Wildlife skill feat to your background options."
+													"{@b Lost in the Wilderness} Whether lured to the wilderness by a malevolent force or simply lost, you had to survive on your own for a while. Add the {@feat Survey Wildlife} skill feat to your background options."
 												],
 												[
 													14,
-													"{@b Met a Fantastic Creature} When you were a child, you made contact with a magical creature, such as a dragon, unicorn, genie, pixie, or similar creature. Add the Recognize Spell skill feat to your background options."
+													"{@b Met a Fantastic Creature} When you were a child, you made contact with a magical creature, such as a dragon, unicorn, genie, pixie, or similar creature. Add the {@feat Recognize Spell} skill feat to your background options."
 												],
 												[
 													15,
-													"{@b Raided} A horde of raiders attacked your settlement and killed and wounded several of your people. This could have been a band of highway robbers or a conquering army. You have a relic from those times; add an armor or shield worth 15 gp or less to your background options. If you select this option instead of a skill feat, you are trained in Medicine."
+													"{@b Raided} A horde of raiders attacked your settlement and killed and wounded several of your people. This could have been a band of highway robbers or a conquering army. You have a relic from those times; add an armor or shield worth 15 gp or less to your background options. If you select this option instead of a skill feat, you are trained in {@skill Medicine}."
 												],
 												[
 													16,
-													"{@b Robbed} Your family’s possessions were stolen, and you vowed to catch the next burglar in the act. Add the Snare Crafting skill feat to your background options."
+													"{@b Robbed} Your family’s possessions were stolen, and you vowed to catch the next burglar in the act. Add the {@feat Snare Crafting} skill feat to your background options."
 												],
 												[
 													17,
-													"{@b Survived a Disaster} You witnessed and survived a major disaster in your childhood years—such as a great fire, flood, earthquake, volcano, or storm—by relying on what was at hand. Add the Quick Repair skill feat to your background options."
+													"{@b Survived a Disaster} You witnessed and survived a major disaster in your childhood years—such as a great fire, flood, earthquake, volcano, or storm—by relying on what was at hand. Add the {@feat Quick Repair} skill feat to your background options."
 												],
 												[
 													18,
-													"{@b Trained by a Mentor} A mentor or patron took an interest in your development and volunteered to train or sponsor you. Add the Experienced Professional skill feat to your background options."
+													"{@b Trained by a Mentor} A mentor or patron took an interest in your development and volunteered to train or sponsor you. Add the {@feat Experienced Professional} skill feat to your background options."
 												],
 												[
 													19,
-													"{@b Witnessed War} You grew up against the backdrop of a major military conflict that affected much of your childhood world. Add the Battle Medicine skill feat to your background options."
+													"{@b Witnessed War} You grew up against the backdrop of a major military conflict that affected much of your childhood world. Add the {@feat Battle Medicine} skill feat to your background options."
 												],
 												[
 													20,
-													"{@b Won a Competition} You distinguished yourself at an early age when you won a competition. This might have been a martial contest of arms, a showing of apprentice magicians, high-stakes gambling, or something more mundane, like an eating contest. Add the Fascinating Performance skill feat to your background options."
+													"{@b Won a Competition} You distinguished yourself at an early age when you won a competition. This might have been a martial contest of arms, a showing of apprentice magicians, high-stakes gambling, or something more mundane, like an eating contest. Add the {@feat Fascinating Performance} skill feat to your background options."
 												]
 											],
 											"type": "table"
@@ -971,7 +1134,7 @@
 											],
 											"rows": [
 												[
-													"1d20",
+													"{@dice 1d20}",
 													"Result"
 												],
 												[
@@ -1079,7 +1242,7 @@
 											],
 											"rows": [
 												[
-													"1d12",
+													"{@dice 1d12}",
 													"Result"
 												],
 												[
@@ -1147,7 +1310,7 @@
 											],
 											"rows": [
 												[
-													"1d12",
+													"{@dice 1d12}",
 													"Result"
 												],
 												[
@@ -1328,12 +1491,12 @@
 							"name": "Building a Dual-Class Character",
 							"entries": [
 								"When building a dual-class character, the primary changes to the character creation process are fairly straightforward. Choose and implement your character’s ancestry and background as normal. Then, when you get to the step of choosing a class, select two classes and add everything from each class except Hit Points and starting skills: initial proficiencies, class features, class feats, extra skill feats and skill increases for rogues, and so on. As always, use the highest proficiency granted for a given statistic. For instance, if one class gave you expert proficiency in Will saves and the other gave you master proficiency in Will saves, you would be a master in Will saves.",
-								"Use only the higher Hit Points per level from the two classes. For starting skills, apply the skills automatically granted by each class, and then apply the larger number of additional skills. For instance, a cleric of Shelyn/ranger would gain Hit Points equal to 10 + their Constitution modifier per level, start with the trained proficiency rank in Nature and Survival from ranger and Religion and either Crafting or Performance from cleric, and then gain a number of additional skills of their choice equal to 4 + their Intelligence modifier, since the ranger provides the trained proficiency rank in more additional skills than the cleric does (this example doesn’t include any skills they gained from their background or other sources). This character would also have the deity, divine spellcasting, divine font, and doctrine class features from cleric plus the Hunt Prey, hunter’s edge, and ranger feat class features from ranger.",
+								"Use only the higher Hit Points per level from the two classes. For starting skills, apply the skills automatically granted by each class, and then apply the larger number of additional skills. For instance, a {@class cleric} of {@deity Shelyn}/{@class ranger} would gain Hit Points equal to 10 + their Constitution modifier per level, start with the trained proficiency rank in {@skill Nature} and {@skill Survival} from {@class ranger} and {@skill Religion} and either {@skill Crafting} or {@skill Performance} from {@skill cleric}, and then gain a number of additional skills of their choice equal to 4 + their Intelligence modifier, since the ranger provides the trained proficiency rank in more additional skills than the cleric does (this example doesn’t include any skills they gained from their background or other sources). This character would also have the {@classFeature deity|Cleric||1}, {@classFeature divine spellcasting|Cleric||1}, {@classFeature divine font|Cleric||1}, and {@classFeature doctrine|Cleric||1} class features from {@class cleric} plus the {@classFeature Hunt Prey|Ranger||1}, {@classFeature hunter's edge|Ranger||1}, and {@classFeature ranger feats|Ranger||1||ranger feat} class features from {@class ranger}.",
 								{
 									"type": "pf2-h4",
 									"name": "Spells",
 									"entries": [
-										"Dual-class spellcasters get full access to all the spells of any spellcasting classes they have. For instance, a sorcerer/wizard gets five cantrips in their spell repertoire from sorcerer, five prepared cantrips from wizard, three spontaneous 1st-level spell slots from the sorcerer (with three 1st-level spells in their repertoire), and three 1st-level prepared spell slots from wizard (or four, for a specialist). They keep these spells entirely separate and get the full benefits of both spellcasting class features, even if both classes use the same tradition.",
+										"Dual-class spellcasters get full access to all the spells of any spellcasting classes they have. For instance, a {@class sorcerer}/{@class wizard} gets five cantrips in their spell repertoire from {@class sorcerer}, five prepared cantrips from {@class wizard}, three spontaneous 1st-level spell slots from the sorcerer (with three 1st-level spells in their repertoire), and three 1st-level prepared spell slots from wizard (or four, for a specialist). They keep these spells entirely separate and get the full benefits of both spellcasting class features, even if both classes use the same tradition.",
 										"Classes with focus pools get all the Focus Points granted by all of them. These share one focus pool as normal, with the standard cap of 3 maximum Focus Points."
 									]
 								},
@@ -1342,7 +1505,7 @@
 									"name": "Character Advancement",
 									"entries": [
 										"A dual-class character gains the class feats and class features for both classes at each level as they advance, with the exception of ability boosts, general feats, skill feats, and skill increases—the character gets each of these benefits only once per level, since both classes would provide the same benefit. (A dual-class rogue/ranger still gets the extra skill feat and skill increase at levels where the other class doesn’t provide them.)",
-										"If a character gains the same proficiency rank in a statistic more than once, they still use only the highest rank. In the example above, when the cleric gets Alertness at 5th level, they wouldn’t change their Perception rank, since it was already expert due to the ranger’s initial proficiencies."
+										"If a character gains the same proficiency rank in a statistic more than once, they still use only the highest rank. In the example above, when the {@class cleric} gets {@classFeature Alertness|Cleric||5} at 5th level, they wouldn’t change their {@skill Perception} rank, since it was already expert due to the {@class ranger|crb|ranger’s} {@classFeature initial proficiencies|Ranger||1}."
 									]
 								}
 							]
@@ -1440,7 +1603,7 @@
 							"type": "pf2-h3",
 							"name": "Building a Simplified Ancestry Character",
 							"entries": [
-								"When choosing an ancestry for a simplified ancestry character, you gain the ancestry’s normal abilities at 1st level, choose a heritage, and gain the appropriate lore feat (Dwarven Lore for dwarves, for example) as your ancestry feat. Simplified ancestry characters never gain ancestry feats beyond that first lore feat. If you want to keep the power level of your game consistent, you can replace the ancestry feats gained at higher levels with general feats."
+								"When choosing an ancestry for a simplified ancestry character, you gain the ancestry’s normal abilities at 1st level, choose a heritage, and gain the appropriate lore feat ({@skill Lore|CRB|Dwarven Lore} for dwarves, for example) as your ancestry feat. Simplified ancestry characters never gain ancestry feats beyond that first lore feat. If you want to keep the power level of your game consistent, you can replace the ancestry feats gained at higher levels with general feats."
 							]
 						}
 					]
@@ -1495,7 +1658,7 @@
 							"type": "pf2-h3",
 							"name": "Special Class Features",
 							"entries": [
-								"Every character automatically gains the class features on Table 4–11: Automatic Bonus Progression.",
+								"Every character automatically gains the class features on {@table Automatic Bonus Progression|GMG|Table 4–11: Automatic Bonus Progression}.",
 								{
 									"name": "Automatic Bonus Progression",
 									"id": "4-11",
@@ -1928,7 +2091,7 @@
 							"type": "pf2-h3",
 							"name": "High-Quality Weapons and Armor",
 							"entries": [
-								"High-quality weapons and armor give the same benefits as weapon and armor potency runes ({@table High-Quality Weapons|GMG|Tables 4–12} and {@table High-Quality Armor|GMG|4–13}). To remove magic from weapons and armor, you can use the devastating attacks and saving throw potency entries from the automatic bonus progression variant, or you can have quality also provide the effects of striking and resilient runes, using {@table Devastating Weapons|GMG|Table 4–14} and {@table Resilient Armor|GMG|Table 4–15}. If you choose to still have magic weapons and armor, the effects don’t stack with quality."
+								"High-quality weapons and armor give the same benefits as weapon and armor potency runes ({@table High-Quality Weapons|GMG|Tables 4–12} and {@table High-Quality Armor|GMG|4–13}). To remove magic from weapons and armor, you can use the devastating attacks and saving throw potency entries from the {@variantrule Automatic Bonus Progression|GMG|automatic bonus progression} variant, or you can have quality also provide the effects of striking and resilient runes, using {@table Devastating Weapons|GMG|Table 4–14} and {@table Resilient Armor|GMG|Table 4–15}. If you choose to still have magic weapons and armor, the effects don’t stack with quality."
 							]
 						},
 						{
@@ -1980,6 +2143,361 @@
 							],
 							"type": "table"
 						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Skill Points",
+			"source": "GMG",
+			"page": 199,
+			"type": "Skill Points",
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"blue": true,
+					"name": "Skill Points",
+					"source": "GMG",
+					"page": 199,
+					"entries": [
+						{
+							"type": "pf2-h1-flavor",
+							"entries": [
+								"The default progression of skill proficiency ranks is simple and doesn’t require many mathematical calculations as a player assigns skills. However, some players prefer a more granular system with a greater ability to diversify their skills. This variant allows characters to assign their skill increases more flexibly, potentially having fewer skills at the highest possible rank in exchange for more skills at a lower rank."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Assigning Skill Points",
+					"entries": [
+						"At 1st level, a character using the Skill Points variant gains their initial skill proficiencies as described in the Core Rulebook. However, at every level beyond 1st, instead of gaining skill increases, the character gains a number of Skill Points, as indicated on {@table Skill Points by Level|GMG|Table 4–19: Skill Points by Level}. The character can spend these Skill Points to increase their proficiency rank in various skills, as shown on {@table Cost to Increase Rank|GMG|Table 4–20: Cost to Increase Rank}. A character must meet the minimum level indicated on the table to increase their rank, primarily to avoid having a player becoming unrealistically good at one skill early in their adventuring career while neglecting everything else. Characters can save up Skill Points between levels for a more expensive increase later on.",
+						{
+							"name": "Skill Points by Level",
+							"id": "4-19",
+							"source": "GMG",
+							"page": 199,
+							"labelRowIdx": [
+								0
+							],
+							"colStyles": [
+								"text-center",
+								"text-center"
+							],
+							"rows": [
+								[
+									"Level",
+									"Skill Points Gained"
+								],
+								[
+									"1",
+									"Initial proficiencies"
+								],
+								[
+									"2-5",
+									"1"
+								],
+								[
+									"6-13",
+									"2"
+								],
+								[
+									"14-20",
+									"4"
+								]
+							],
+							"type": "table"
+						},
+						{
+							"name": "Cost to Increase Rank",
+							"id": "4-20",
+							"source": "GMG",
+							"page": 199,
+							"labelRowIdx": [
+								0
+							],
+							"colStyles": [
+								"text-left",
+								"text-center",
+								"text-center"
+							],
+							"rows": [
+								[
+									"Rank",
+									"Minimum Level",
+									"Skill Point Cost"
+								],
+								[
+									"Untrained to trained",
+									"1",
+									"1"
+								],
+								[
+									"Trained to expert",
+									"3",
+									"2"
+								],
+								[
+									"Expert to master",
+									"7",
+									"4"
+								],
+								[
+									"Master to legendary",
+									"15",
+									"8"
+								]
+							],
+							"type": "table"
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Rogues",
+							"entries": [
+								"Because rogues get skill increases at every level in the standard rules, they also get more Skill Points. Rogues gain double the number of Skill Points listed on {@table Skill Points by Level|GMG|Table 4–19}."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Retraining",
+							"entries": [
+								"A character can retrain the proficiency ranks they gained using Skill Points much as they would retrain a skill increase under the normal rules. With a week of downtime, a character can reduce their proficiency rank in one skill by one step to get back the number of Skill Points spent to gain that increase. For example, reducing a master proficiency rank to expert would grant a character 4 Skill Points. The character can then reassign those points as they see fit or save them for later. Reducing proficiency ranks for multiple skills or reducing a single proficiency rank by multiple steps takes additional weeks of downtime."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Skill Points in Play",
+					"entries": [
+						"Players using Skill Points have more flexibility to build characters with a broader range of skills in which they’re trained or better than normal, and this variant encourages that flexibility by increasing the cost of specializing. For instance, a 19th-level fighter could use Skill Points to be a master in seven different skills, or to be legendary in three skills. While this makes the variance in skills slightly less predictable, it shouldn’t have a big enough effect on a group’s capabilities that you need to make any significant adjustments when you run the game."
+					]
+				}
+			]
+		},
+		{
+			"name": "Stamina",
+			"source": "GMG",
+			"page": 200,
+			"type": "Skill Points",
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"blue": true,
+					"name": "Stamina",
+					"source": "GMG",
+					"page": 200,
+					"entries": [
+						{
+							"type": "pf2-h1-flavor",
+							"entries": [
+								"In some fantasy stories, the heroes are able to avoid any serious injury until the situation gets dire, getting by with a graze or a flesh wound and needing nothing more than a quick rest to get back on their feet. If your group wants to tell tales like those, you can use the stamina variant to help make that happen."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"name": "Stamina's Impact",
+					"entries": [
+						"The main gameplay consequence of using these stamina rules is that a quick 10- or 20-minute rest can restore most groups to full or nearly full health via {@action Take a Breather|GMG|Taking a Breather} and {@action Treat Wounds|CRB|Treating Wounds} as necessary, allowing more encounters with shorter breaks in between. Additionally, charismatic or otherwise diplomatic characters gain fun and useful ways to bolster their allies.",
+						"Because spells that heal Hit Points don’t restore Stamina Points, it’s a little harder to heal up completely in the middle of a fight. This can mean that fights become deadly after characters have been beaten down, possibly causing retreats to be more frequent, but the retreats themselves are shorter. The focus of the game can stay consistently within encounters, with less managing of time and resources outside of battle."	
+					]
+				},
+				{
+					"type": "pf2-sidebar",
+					"name": "No-Limit Stamina",
+					"entries": [
+						"If you want a fast-paced, almost superheroic game, you can skip the Resolve Point component of this subsystem and simply make {@action Take a Breather|GMG|Taking a Breather} and {@action Rally|GMG} free. This gives the characters a lot of staying power, meaning that the group will typically keep adventuring until they run out of spells for the day, rather than having the additional pressure of running out of Resolve Points. If you use this approach, omit the Steel Your Resolve feat, as it’s too powerful if there’s no cost to use it! Alternatively, if you want to keep it, you can require a character to {@action Take a Breather|GMG} before they can {@feat Steel Your Resolve|GMG|Steel their Resolve} again."	
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Stamina Points",
+					"entries": [
+						"Stamina Points represent a character’s energy and readiness. They’re reduced by damage just like Hit Points, but a character always loses their Stamina Points first, and loses Hit Points only if they’re out of Stamina Points. If a character takes damage exceeding their remaining Stamina Points, the excess damage reduces their Hit Points. However, they lose any temporary Hit Points before losing Stamina Points.",
+						"Though Stamina Points and Hit Points function similarly when a character takes damage, a character recovers them differently. A {@spell heal} spell restores Hit Points, not Stamina Points, and the actions described below (like {@action Take a Breather|GMG}) restore only Stamina Points, not Hit Points. A character regains all their Stamina Points after a full night’s rest. Hit Points still determine whether a character remains conscious—a character at 0 HP is unconscious, no matter how many Stamina Points they have.",
+						"In addition to their ancestry Hit Points, a PC gains the number of Stamina Points and Hit Points indicated in the second and third columns of {@table Stamina and Hit Points by Class|GMG|Table 4–21} at 1st level. Both values increase by the same amount at each level thereafter. This replaces the Hit Points a character gains from their class in a standard game."
+					]
+				},
+				{
+					"name": "Stamina and Hit Points by Class",
+					"id": "4-20",
+					"source": "GMG",
+					"page": 200,
+					"labelRowIdx": [
+						0
+					],
+					"colStyles": [
+						"text-left",
+						"text-center",
+						"text-center",
+						"text-left"
+					],
+					"rows": [
+						[
+							"Normal Class HP",
+							"Class Stamina Points",
+							"Class Hit Points",
+							"Classes"
+						],
+						[
+							"6 + Con modifier",
+							"3 + Con modifier",
+							"3",
+							"{@class Sorcerer}, {@class wizard}"
+						],
+						[
+							"8 + Con modifier",
+							"4 + Con modifier",
+							"4",
+							"{@class Alchemist}, {@class bard}, {@class cleric}, {@class druid}, {@class rogue}"
+						],
+						[
+							"10 + Con modifier",
+							"5 + Con modifier",
+							"5",
+							"{@class Champion}, {@class fighter}, {@class monk}, {@class ranger}"
+						],
+						[
+							"12 + Con modifier",
+							"6 + Con modifier",
+							"6",
+							"{@class Barbarian}"
+						]
+					],
+					"type": "table"
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Resolve Points",
+					"entries": [
+						"In this variant, each PC also has a pool of Resolve Points, representing their intrinsic grit and luck. A character’s maximum Resolve Points is equal to their key ability modifier, and a character regains all their Resolve Points with a full night’s rest. In addition to spending Resolve Points to regain Stamina Points (as described under Stamina Actions), characters can spend Resolve Points in the following way.",
+						{
+							"type": "pf2-h3",
+							"name": "Stabilize",
+							"entries": [
+								"If a character is dying at the start of their turn, their player can spend 1 Resolve Point to stabilize at 0 HP, gaining or increasing the wounded condition as normal for stabilizing. At the start of the character’s next turn, they gain 1 HP and wake up (unless they started dying again). The character can act on that turn. Consider this an optional rule best suited for groups that have little access to healing. When using this rule, you might remove the ability for characters to use Hero Points to stabilize."
+							]
+						}
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Stamina Actions",
+					"entries": [
+						{
+							"type": "data",
+							"tag": "action",
+							"data": {
+								"source": "GMG",
+								"page": 200,
+								"name": "Take a Breather",
+								"traits": [
+									"Exploration"
+								],
+								"cost": "1 Resolve Point",
+								"entries": [
+									"You rest for 10 minutes and recover your stamina. After you complete this activity, you regain all your Stamina Points."
+								]
+							}
+						},
+						{
+							"type": "data",
+							"tag": "action",
+							"data": {
+								"source": "GMG",
+								"page": 201,
+								"name": "Rally",
+								"traits": [
+									"Auditory",
+									"Emotion",
+									"Exploration",
+									"Linguistic",
+									"Mental"
+								],
+								"prerequisites": "trained in {@skill Diplomacy}, {@skill Intimidation}, {@skill Performance}",
+								"entries": [
+									"You spend 1 minute encouraging your ally. Though this action typically has the auditory and linguistic traits, if you’re using the Performance skill, the GM might adjust the traits for this action to match the traits for your type of performance.",
+									"Attempt a DC 15 skill check. The GM might adjust this DC based on the circumstances, such as attempting to Rally an ally who just suffered a humiliating defeat."
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Stamina Feats",
+					"entries": [
+						{
+							"type": "data",
+							"tag": "feat",
+							"data": {
+								"name": "Encouraging Words",
+								"source": "GMG",
+								"page": 201,
+								"level": 2,
+								"featType": {
+									"class": false,
+									"general": true,
+									"ancestry": false,
+									"skill": true,
+									"archetype": false
+								},
+								"traits": [
+									"Auditory",
+									"General",
+									"Linguistic",
+									"Mental",
+									"Skill"
+								],
+								"prerequisites": "trained in {@skill Diplomacy}",
+								"requirements": "The target ally lost Stamina Points within the last round.",
+								"entries": [
+									"You give an ally within 30 feet a quick pep talk, helping them recover. Attempt a Diplomacy check. The DC is usually 15, though the GM might adjust it based on the circumstances. If you have expert proficiency in Diplomacy, you can instead attempt a DC 20 check to increase the Stamina Points recovered by 5; if you have master proficiency, you can attempt a DC 30 check to increase the Stamina Points by 15; if you have legendary proficiency, you can attempt a DC 40 check to increase the Stamina Points by 25. No matter the result, the ally is temporarily immune to Encouraging Words until they either Take a Breather or rest for the day.",
+									{
+										"type": "successDegree",
+										"entries": {
+											"Critical Success": "The ally recovers {@dice 2d8} Stamina Points.",
+											"Success": "The ally recovers {@dice 1d8} Stamina Points.",
+											"Critical Failure": "The ally takes {@damage 1d8} mental damage, but this can reduce only Stamina Points, never Hit Points."
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "data",
+							"tag": "feat",
+							"data": {
+								"name": "Steel Your Resolve",
+								"source": "GMG",
+								"page": 201,
+								"level": 3,
+								"featType": {
+									"class": false,
+									"general": true,
+									"ancestry": false,
+									"skill": false,
+									"archetype": false
+								},
+								"traits": [
+									"General"
+								],
+								"cost": "1 Resolve Point",
+								"entries": [
+									"Regain Stamina Points equal to half your maximum."
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"name": "Other Creatures",
+					"entries": [
+						"There’s no need to give Stamina Points to monsters that are expected to be encountered once and likely defeated. However, you might use Stamina Points for a recurring character, especially an NPC who fights alongside the PCs. Usually, it’s easiest to turn half the creature’s Hit Points into Stamina Points. While enemy healers still work as they’re intended to, players might be upset about the enemies’ ability to heal their allies to full Hit Points, while the PCs are left not being able to heal their allies’ Stamina Points. In this case, give more enemies Stamina Points to compensate."
 					]
 				}
 			]
