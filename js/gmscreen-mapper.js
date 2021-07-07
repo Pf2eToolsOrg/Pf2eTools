@@ -100,7 +100,7 @@ class DmMapper {
 
 class DmMapperRoot extends BaseComponent {
 	/**
-	 * @param board DM Screen board.
+	 * @param board GM Screen board.
 	 * @param $wrpPanel Panel wrapper element for us to populate.
 	 */
 	constructor (board, $wrpPanel) {

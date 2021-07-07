@@ -27,7 +27,7 @@ class TimeTrackerUtil {
 
 class TimeTrackerComponent extends BaseComponent {
 	/**
-	 * @param board DM Screen board.
+	 * @param board GM Screen board.
 	 * @param $wrpPanel Panel wrapper element for us to populate.
 	 * @param [opts] Options object.
 	 * @param [opts.isTemporary] If this object should not save state to the board.

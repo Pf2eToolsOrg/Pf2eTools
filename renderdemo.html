@@ -97,18 +97,13 @@
 		<div class="view-col" id="wrp-jsoninput">
 			<pre id="jsoninput" class="inputArea ace_editor"></pre>
 			<div class="flex-h-right">
-				<select class="form-control input-sm mr-2" id="demoSelectRenderer">
-					<option value="html">HTML</option>
-					<option value="md">Markdown</option>
-					<option value="cards">RPG Cards</option>
-				</select>
 				<button class="btn btn-default btn-sm mr-2" id="demoRender">Render</button>
 				<button class="btn btn-default btn-sm" id="demoReset">Reset</button>
 				<span id="message"></span>
 			</div>
 		</div>
 
-		<div id="wrp-output" class="view-col">
+		<div id="wrp-output" class="view-col" style="overflow: hidden;">
 			<div id="pagecontent" class="stats pf2-book-wrapper pf2-book">
 				<!-- populate with JS -->
 			</div>

@@ -1191,6 +1191,7 @@ function Renderer () {
 			entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${style}">`, suffix: `</p>`}));
 		});
 	};
+
 	this._renderQuote = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
 		const len = entry.entries.length;
@@ -1205,6 +1206,7 @@ function Renderer () {
 			textStack[0] += `</p>`;
 		}
 	};
+
 	this._renderStatblock = async function (entry, textStack, meta, options) {
 		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = UrlUtil.CAT_TO_PAGE[cat_id];
@@ -3707,7 +3709,7 @@ Renderer.creature = {
 			});
 	},
 
-	getLvlScaleTarget (win, $btnScaleLvl, initialLvl, cbRender, isCompact) {
+	getLvlScaleTarget (win, $btnScaleLvl, lastLvl, origLvl, cbRender, isCompact) {
 		const evtName = "click.cr-scaler";
 		let slider;
 		const $body = $(win.document.body);
@@ -3721,8 +3723,9 @@ Renderer.creature = {
 
 		const $wrp = $(`<div class="mon__cr_slider_wrp ${isCompact ? "mon__cr_slider_wrp--compact" : ""}"></div>`);
 
-		const cur = initialLvl;
-		if (!Parser.isValidCreatureLvl(initialLvl)) throw new Error(`Initial level ${initialLvl} was not valid!`);
+		const cur = lastLvl;
+		if (!Parser.isValidCreatureLvl(lastLvl)) throw new Error(`Initial level ${lastLvl} was not valid!`);
+		if (!Parser.isValidCreatureLvl(origLvl)) throw new Error(`Initial level ${origLvl} was not valid!`);
 
 		const comp = BaseComponent.fromObject({
 			min: -1,
@@ -3740,11 +3743,11 @@ Renderer.creature = {
 		const $wrpBtns = $(`<div class="flex"></div>`).appendTo($wrp);
 
 		$(`<button class="ui-slidr__btn cr-adjust--weak">Weak</button>`).off().click(() => {
-			const state = {min: -1, max: 25, cur: initialLvl - 1}
+			const state = {min: -1, max: 25, cur: origLvl - 1}
 			slider._comp._proxyAssignSimple("state", state)
 		}).appendTo($wrpBtns);
 		$(`<button class="ui-slidr__btn cr-adjust--elite">Elite</button>`).off().click(() => {
-			const state = {min: -1, max: 25, cur: initialLvl + 1}
+			const state = {min: -1, max: 25, cur: origLvl + 1}
 			slider._comp._proxyAssignSimple("state", state)
 		}).appendTo($wrpBtns);
 
@@ -4923,6 +4926,7 @@ Renderer.hover = {
 							win,
 							$btn,
 							lastLvl,
+							initialLvl,
 							async (targetLvl) => {
 								const original = await Renderer.hover.pCacheAndGet(page, source, hash);
 								if (targetLvl === initialLvl) {
@@ -5782,6 +5786,7 @@ Renderer.hover = {
 									UrlUtil.encodeForHash(nameMeta.name.toLowerCase()),
 								];
 								if (nameMeta.ixBook) hashParts.push(nameMeta.ixBook);
+								else hashParts.push(0);
 
 								const hash = hashParts.join(HASH_PART_SEP);
 
@@ -6291,11 +6296,9 @@ Renderer.hover = {
 	// endregion
 
 	getGenericCompactRenderedString (entry) {
-		const textStack = [""]
-		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"})
-		return `
-			${textStack.join("")}
-		`;
+		const textStack = [""];
+		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
+		return `${textStack.join("")}`;
 	},
 
 	_pageToRenderFn (page) {
@@ -6304,6 +6307,7 @@ Renderer.hover = {
 			case "hover":
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_QUICKREF:
+				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_CLASSES:
 				// FIXME: Classes rendering
 				return Renderer.hover.getGenericCompactRenderedString;

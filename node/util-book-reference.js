@@ -7,12 +7,12 @@ UtilBookReference = {
 			case "bookref-quick":
 				return [
 					"Character Creation",
-					"Equipment",
+					"Items & Equipment",
+					"Spells",
 					"Playing the Game",
-					"Combat",
-					"Adventuring",
+					"Game Mastering",
 				];
-			case "bookref-dmscreen":
+			case "bookref-gmscreen":
 				return [
 					"Running the Game",
 					"Combat",

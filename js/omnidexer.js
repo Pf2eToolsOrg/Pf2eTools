@@ -591,23 +591,28 @@ class IndexableFileQuickReference extends IndexableFile {
 	}
 
 	static getChapterNameMetas (it) {
-		const trackedNames = [];
-		const renderer = Renderer.get();
-		renderer.render(it);
-
+		const nameMetas = [];
 		const nameCounts = {};
-		trackedNames.forEach(meta => {
-			const lowName = meta.name.toLowerCase();
-			nameCounts[lowName] = nameCounts[lowName] || 0;
-			nameCounts[lowName]++;
-			meta.ixBook = nameCounts[lowName] - 1;
-		});
+		const walker = MiscUtil.getWalker({isDepthFirst: true});
+		walker.walk(it, {
+			object: (obj) => {
+				if (!obj.data || (obj.data.quickref == null && !obj.data.quickrefIndex)) return obj;
 
-		return trackedNames
-			.filter(it => {
-				if (!it.data) return false;
-				return it.data.quickref != null || it.data.quickrefIndex;
-			});
+				const meta = {};
+				const lowName = obj.name.toLowerCase();
+				nameCounts[lowName] = nameCounts[lowName] || 0;
+				nameCounts[lowName]++;
+				meta.ixBook = nameCounts[lowName] - 1;
+				meta.alias = obj.alias;
+				meta.name = obj.name;
+				meta.source = obj.source;
+				meta.page = obj.page;
+				meta.entry = obj;
+				nameMetas.push(meta);
+				return obj;
+			},
+		});
+		return nameMetas
 	}
 
 	pGetDeepIndex (indexer, primary, it) {
@@ -630,6 +635,7 @@ class IndexableFileQuickReference extends IndexableFile {
 			UrlUtil.encodeForHash(nameMeta.name.toLowerCase()),
 		];
 		if (nameMeta.ixBook) hashParts.push(nameMeta.ixBook);
+		else hashParts.push(0);
 
 		return {
 			n: alias || nameMeta.name,
@@ -761,6 +767,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileCurses(),
 	new IndexableFileItemCurses(),
 
+	new IndexableFileQuickReference(),
 	new IndexableFileVariantRules(),
 	new IndexableFileBooks(),
 	new IndexableFileDeities(),

@@ -109,6 +109,6 @@ class UtilSearchIndex {
 		return indexer.getIndex();
 	}
 }
-UtilSearchIndex.CORE_SOURCES = new Set([SRC_CRB, SRC_BST, SRC_APG]);
+UtilSearchIndex.CORE_SOURCES = new Set([SRC_CRB, SRC_APG, SRC_GMG, SRC_BST, SRC_BST2, SRC_BST3]);
 
 module.exports = {UtilSearchIndex};

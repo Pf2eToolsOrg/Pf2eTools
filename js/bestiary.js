@@ -439,7 +439,8 @@ class BestiaryPage extends ListPage {
 					const win = (evt.view || {}).window;
 					const creature = this._dataList[Hist.lastLoadedId];
 					const lastLvl = this._lastRendered.creature ? this._lastRendered.creature.level : creature.level;
-					Renderer.creature.getLvlScaleTarget(win, $btnScaleLvl, lastLvl, (targetLvl) => {
+					const origLvl = this._lastRendered.creature ? this._lastRendered.creature._originalLvl != null ? this._lastRendered.creature._originalLvl : this._lastRendered.creature.level : creature.level;
+					Renderer.creature.getLvlScaleTarget(win, $btnScaleLvl, lastLvl, origLvl, (targetLvl) => {
 						if (targetLvl === creature.level) this._renderStatblock(creature);
 						else Hist.setSubhash(VeCt.HASH_CR_SCALED, targetLvl);
 					});
