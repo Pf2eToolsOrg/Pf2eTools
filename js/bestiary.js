@@ -447,7 +447,7 @@ class BestiaryPage extends ListPage {
 				}).toggle(cr.level !== 100) : null;
 
 			const $btnResetScaleLvl = cr.level != null ? $(`
-			<button id="btn-scale-lvl" title="Reset CR Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
+			<button id="btn-scale-lvl" title="Reset Level Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-refresh"></span>
 			</button>`)
 				.click(() => Hist.setSubhash(VeCt.HASH_CR_SCALED, null))
