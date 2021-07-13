@@ -238,7 +238,7 @@ class Board {
 
 		// region rules
 		await (async () => {
-			const data = await DataUtil.loadJSON("data/generated/bookref-dmscreen-index.json");
+			const data = await DataUtil.loadJSON("data/generated/bookref-gmscreen-index.json");
 			this.availRules.ALL = elasticlunr(function () {
 				this.addField("b");
 				this.addField("s");
@@ -1003,8 +1003,9 @@ class Panel {
 
 			const $this = $(this);
 			const lastLvl = self.contentMeta.level != null ? self.contentMeta.level : creature.level ? creature.level : null;
+			const origLvl = creature._originalLvl != null ? creature._originalLvl : creature.level;
 
-			Renderer.creature.getLvlScaleTarget(win, $this, lastLvl, (targetLvl) => {
+			Renderer.creature.getLvlScaleTarget(win, $this, lastLvl, origLvl, (targetLvl) => {
 				const originalLvl = creature.level === targetLvl;
 
 				const doRender = (toRender) => {
@@ -3142,7 +3143,7 @@ class NoteBox {
 							if (/^([1-9]\d*)?d([1-9]\d*)(\s?[+-]\s?\d+)?$/i.exec(str)) {
 								await Renderer.dice.pRoll2(str.replace(`[[`, "").replace(`]]`, ""), {
 									isUser: false,
-									name: "DM Screen",
+									name: "GM Screen",
 								});
 							}
 						} else if (bracesAtPos === 1 && braces === 0) {

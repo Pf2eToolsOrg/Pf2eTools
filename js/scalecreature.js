@@ -541,9 +541,9 @@ const ScaleCreature = {
 		else creature.hp[0].hp += 30;
 
 		creature._displayName = `Elite ${creature.name}`;
-		creature.level += 1;
 		creature._isScaledLvl = creature.level;
 		creature._originalLvl = creature._originalLvl || creature.level;
+		creature.level += 1;
 		return creature;
 	},
 
@@ -625,9 +625,9 @@ const ScaleCreature = {
 		else creature.hp[0].hp -= 30;
 
 		creature._displayName = `Weak ${creature.name}`;
-		creature.level -= 1;
 		creature._isScaledLvl = creature.level;
 		creature._originalLvl = creature._originalLvl || creature.level;
+		creature.level -= 1;
 		return creature;
 	},
 

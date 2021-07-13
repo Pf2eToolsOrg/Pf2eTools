@@ -343,7 +343,7 @@ Renderer.dice = {
 			const $dispPanelTitle = $ele.closest(`.gm-screen-panel`).children(`.panel-control-title`);
 			if ($dispPanelTitle.length) return $dispPanelTitle.text().trim();
 			let name = document.title.replace("- Pf2eTools", "").trim();
-			return name === "DM Screen" ? "Dungeon Master" : name;
+			return name === "GM Screen" ? "Game Master" : name;
 		}
 
 		function _$getTdsFromTotal (total) {

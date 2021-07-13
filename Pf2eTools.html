@@ -132,7 +132,7 @@
 			text-decoration-color: #33a5a5;
 		}
 
-		.home__h-dm {
+		.home__h-gm {
 			text-decoration: underline;
 			text-decoration-color: darkviolet;
 		}
@@ -161,14 +161,14 @@
 			color: #33a5a5;
 		}
 
-		.home__btn-dm,
-		.home__btn-dm:hover,
-		.home__btn-dm:active,
-		.home__btn-dm:focus,
-		.night-mode .home__btn-dm,
-		.night-mode .home__btn-dm:hover,
-		.night-mode .home__btn-dm:active,
-		.night-mode .home__btn-dm:focus {
+		.home__btn-gm,
+		.home__btn-gm:hover,
+		.home__btn-gm:active,
+		.home__btn-gm:focus,
+		.night-mode .home__btn-gm,
+		.night-mode .home__btn-gm:hover,
+		.night-mode .home__btn-gm:active,
+		.night-mode .home__btn-gm:focus {
 			border-color: darkviolet;
 			color: darkviolet;
 		}
@@ -390,14 +390,14 @@
 		<div class="my-4 home__mobile-visible"></div>
 
 		<div class="flex flex-wrap relative home__wrp-buttons">
-			<div class="home__stripe-header home__h-dm"><div class="w-100 text-center">Game Masters</div></div>
+			<div class="home__stripe-header home__h-gm"><div class="w-100 text-center">Game Masters</div></div>
 
-			<a class="home__btn-page btn btn-default mr-3 home__btn-dm" href="bestiary.html" title="A searchable, filterable list of the more than 1,000 stat blocks in Pf2e.">
+			<a class="home__btn-page btn btn-default mr-3 home__btn-gm" href="bestiary.html" title="A searchable, filterable list of the more than 1,000 stat blocks in Pf2e.">
 				<div class="fal fa-dragon home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">Bestiary</h4>
 			</a>
 
-			<a class="home__btn-page btn btn-default home__btn-dm" href="gmscreen.html" title="A fully-customizable Game Master's screen, featuring an initiative tracker; a unit converter, embedded images, videos, and sites; and the majority of Pf2eTools' content.">
+			<a class="home__btn-page btn btn-default home__btn-gm" href="gmscreen.html" title="A fully-customizable Game Master's screen, featuring an initiative tracker; a unit converter, embedded images, videos, and sites; and the majority of Pf2eTools' content.">
 				<div class="fal fa-map home__icn-page"></div>
 				<h4 class="text-center home__lbl-page">GM Screen</h4>
 			</a>
@@ -430,9 +430,8 @@
 	<p class="text-center">
 		Version
 		<a id="version_number">?</a>
-		| <span style="text-decoration: red line-through;">&nbsp;&copy;&nbsp;</span><span id="current_year"></span>
+		| <a href="licenses.html">&nbsp;&copy;&nbsp;</a><span id="current_year"></span>
 		Pf2eTools
-		| <a href="privacy-policy.html">Privacy Policy</a>
 		<br>
 	</p>
 </footer>
@@ -454,19 +453,8 @@
 <script>
 	ExcludeUtil.pInitialise();
 
-	const $demoRoller = $(`#demo_roller`);
-	$demoRoller.html(Renderer.get().render(`{@dice ${$demoRoller.html()}}`));
-
 	$(`#current_year`).text((new Date).getFullYear());
-
 	$(`#version_number`).text(VERSION_NUMBER);
-
-	const $lnkB20 = $(`#betteR20_link`);
-	$lnkB20.attr("href", `${$lnkB20.attr("href")}?v=${VERSION_NUMBER}_${Date.now()}`);
-
-	window.__cmp2 = () => {
-		alert("This only works on a live version of the site!");
-	};
 </script>
 </body>
 </html>

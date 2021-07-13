@@ -875,7 +875,7 @@ const ListUtil = {
 		const $pnlCols = $(`<div class="flex" style="align-items: center;"/>`).appendTo($pnlControl);
 		Object.values(colTransforms).forEach((c, i) => {
 			const $wrpCb = $(`<label class="flex-${c.flex || 1} px-2 mr-2 no-wrap flex-inline-v-center"><span class="mr-2">${c.name}</span></label>`).appendTo($pnlCols);
-			const $cbToggle = $(`<input type="checkbox" data-name="${c.name}" checked>`)
+			const $cbToggle = $(`<input type="checkbox" data-name="${c.name}" ${c.unchecked ? "" : "checked"}>`)
 				.click(() => {
 					const toToggle = $modal.find(`.col_${i}`);
 					if ($cbToggle.prop("checked")) {
@@ -905,14 +905,14 @@ const ListUtil = {
 
 		if (typeof filter === "object" && filter.generator) filter = filter.generator();
 
-		let stack = `<div class="overflow-y-auto w-100 h-100 flex-col"><table class="table-striped stats stats--book stats--book-large" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
+		let stack = `<div class="overflow-y-auto w-100 h-100 flex-col"><table class="table-striped stats stats--book stats--book-large" style="width: 100%;"><thead><tr>${Object.values(colTransforms).map((c, i) => `<th class="col_${i} px-2" colspan="${c.flex || 1}" style="${c.unchecked ? "display: none;" : ""}">${c.name}</th>`).join("")}</tr></thead><tbody>`;
 		const listCopy = JSON.parse(JSON.stringify(dataList)).filter((it, i) => filter ? filter(i) : it);
 		if (sorter) listCopy.sort(sorter);
 		listCopy.forEach(it => {
 			stack += `<tr class="data-row">`;
 			stack += Object.keys(colTransforms).map((k, i) => {
 				const c = colTransforms[k];
-				return `<td class="col_${i} px-2" colspan="${c.flex || 1}">${c.transform === true ? it[k] : c.transform(k[0] === "_" ? it : it[k])}</td>`;
+				return `<td class="col_${i} px-2" colspan="${c.flex || 1}" style="${c.unchecked ? "display: none;" : ""}">${c.transform === true ? it[k] : c.transform(k[0] === "_" ? it : it[k])}</td>`;
 			}).join("");
 			stack += `</tr>`;
 		});

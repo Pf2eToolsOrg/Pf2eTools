@@ -31,16 +31,6 @@ async function initDemo (data, rendererType) {
 				$out.removeClass("whitespace-pre");
 				break;
 			}
-			case "md": {
-				renderer = RendererMarkdown.get();
-				$out.addClass("whitespace-pre");
-				break;
-			}
-			case "cards": {
-				renderer = RendererCard.get();
-				$out.addClass("whitespace-pre");
-				break;
-			}
 			default: throw new Error(`Unhandled renderer!`);
 		}
 	}
