@@ -4318,10 +4318,8 @@ Renderer.item = {
 				let varItem = MiscUtil.copy(genericItem)
 				varItem.name = this._getVariantName(v, genericItem.name)
 				varItem.level = v.level
-				if (v.source) {
-					varItem.source = v.source
-					varItem.otherSources = v.otherSources
-				}
+				if (v.source) varItem.source = v.source
+				varItem.otherSources = v.otherSources
 				if (v.page) varItem.page = v.page
 				varItem.price = v.price
 				varItem.bulk = v.bulk
