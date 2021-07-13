@@ -386,7 +386,8 @@
 				"archetype": true
 			},
 			"traits": [
-				"Archetype"
+				"Archetype",
+				"Mental"
 			],
 			"prerequisites": "expert in {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation}; Firebrand Braggart",
 			"entries": [
@@ -672,7 +673,7 @@
 			],
 			"entries": [
 				"Whether you are climbing a ship's rigging, a jungle tree, or a clock tower, you have an uncanny knack for finding footholds and handholds where larger creatures can't.",
-				"You gain a climb Speed of 10 feet. You can take the Legendary Climber feat even if you don't have the Quick {@action Climb} feat, provided you meet its other prerequisites."
+				"You gain a climb Speed of 10 feet."
 			]
 		},
 		{
@@ -968,7 +969,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Secret"
 			],
@@ -1325,7 +1325,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
@@ -1497,7 +1496,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Skill"
 			],
@@ -1745,6 +1743,27 @@
 			]
 		},
 		{
+			"name": "Eclectic Obsession",
+			"source": "LOCG",
+			"page": 33,
+			"level": 5,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": "Gnome",
+				"skill": false,
+				"archetype": false
+			},
+			"frequency": "once per day",
+			"prerequisites": "{@feat Gnome Obsession}",
+			"traits": [
+				"Gnome"
+			],
+			"entries": [
+				"Your desire for stimulation has led you from one pursuit to another and granted you a smattering of expertise with myriad crafts and professions. You reflect on snippets you’ve learned to temporarily become trained in one {@skill Lore} skill of your choice. This proficiency lasts for 10 minutes or until you critically fail a check with that skill. Since this training is temporary, you can’t use it as a prerequisite for a permanent character option like a feat or a skill increase."
+			]
+		},
+		{
 			"name": "Gnome Polyglot",
 			"source": "LOCG",
 			"page": 31,
@@ -1841,7 +1860,7 @@
 			],
 			"prerequisites": "{@feat Magaambyan Attendant Dedication|LOCG}, member of the Magaambya of conversant rank (page 101)",
 			"entries": [
-				"You devote much of your study to halcyon magic. You gain access to two common Halcyon cantrips and two common 1st-level halcyon spells (see halcyon spells on page 100). In addition to being able to cast your halcyon spells via your arcane or primal spell slots, you also gain a 1st-level halcyon spell slot. You can use your halcyon spell slots to spontaneously cast your halcyon spells."
+				"You devote much of your study to halcyon magic. You gain two common Halcyon cantrips and two common 1st-level halcyon spells (see Halcyon Spells on page 100). In addition to being able to cast your halcyon spells via your arcane or primal spell slots, you also gain a 1st-level halcyon spell slot. You can use your halcyon spell slots to spontaneously cast your halcyon spells."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the halcyon speaker archetype.",
 			"leadsTo": [
@@ -2265,7 +2284,7 @@
 				"Hobgoblin"
 			],
 			"entries": [
-				"You are trained with {@item composite longbows}, {@item composite shortbows}, {@item glaives}, {@item halberds}, {@item longbows}, {@item longspears}, {@item longswords}, {@item shortbows}, and {@item spears}.",
+				"You are trained with {@item composite longbows}, {@item composite shortbows}, {@item glaives}, {@item longbows}, {@item longswords}, and {@item shortbows}.",
 				"In addition, you gain access to all {@filter uncommon hobgoblin weapons|items|rarity=uncommon|ancestry & heritage=hobgoblin}. For the purpose of determining your proficiency, martial hobgoblin weapons are simple weapons and advanced hobgoblin weapons are martial weapons."
 			],
 			"leadsTo": [
@@ -2315,7 +2334,8 @@
 			},
 			"traits": [
 				"Uncommon",
-				"Fighter"
+				"Fighter",
+				"Stance"
 			],
 			"prerequisites": "{@action Attack of Opportunity}",
 			"entries": [
@@ -2368,7 +2388,7 @@
 			],
 			"prerequisites": "{@feat Halfling Luck}",
 			"entries": [
-				"Even other halflings consider you to be particularly lucky. You can use Halfling Luck once per hour, rather than once per day. If you have Guiding Luck, you can still use Halfling Luck when you fail a {@skill Perception} check or attack roll only once per day (though you can use it within the same hour that you used Halfling Luck), and if you have {@condition Helpful} Halfling, you can still use Halfling Luck on an ally instead of yourself only once per day."
+				"Even other halflings consider you to be particularly lucky. You can use {@feat Halfling Luck} once per hour, rather than once per day. If you have {@feat Guiding Luck}, you can still use {@feat Halfling Luck} when you fail a {@skill Perception} check or attack roll only once per day (though you can use it within the same hour that you used {@feat Halfling Luck}), and if you have {@feat Shared Luck|APG}, you can still use {@feat Halfling Luck} on an ally instead of yourself only once per day."
 			]
 		},
 		{
@@ -2482,7 +2502,7 @@
 			],
 			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG} (see above)",
 			"entries": [
-				"You can invoke the Crimson Oath to unleash blasts of ruby energy from your weapon. You gain the {@spell invoke the Crimson Oath|LOCG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs."
+				"You can invoke the Crimson Oath to unleash blasts of ruby energy from your weapon. You gain the {@spell invoke the Crimson Oath|LOCG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs. Your key spellcasting ability for these spells is Charisma."
 			]
 		},
 		{
@@ -2522,15 +2542,11 @@
 			],
 			"entries": [
 				"You make the most of your iruxi unarmed attacks. Whenever you score a critical hit with a claw or an unarmed attack you gained from a lizardfolk ancestry feat, you apply the unarmed attack's critical specialization effect."
-			],
-			"leadsTo": [
-				"Iruxi Unarmed Expertise|LOCG"
 			]
 		},
 		{
-			"name": "Iruxi Unarmed Expertise",
+			"name": "Primal Rampage",
 			"source": "LOCG",
-			"page": 59,
 			"level": 13,
 			"featType": {
 				"class": false,
@@ -2542,10 +2558,8 @@
 			"traits": [
 				"Lizardfolk"
 			],
-			"prerequisites": "{@feat Iruxi Unarmed Cunning|LOCG}",
 			"entries": [
-				"Your unarmed attacks blend tradition and training.",
-				"Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency in the claw and unarmed attacks you gained from lizardfolk ancestry feats."
+				"You tap into the unstoppable, primeval strength of your ancient kin. You gain {@spell freedom of movement} and {@spell stoneskin} as 4th-level primal innate spells that you can cast once per day. As a 3-action activity, you can {@action Cast a Spell} twice to cast both of these innate spells, as long as they are both still available for the day."
 			]
 		},
 		{
@@ -3338,7 +3352,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Skill"
 			],
@@ -3567,7 +3580,7 @@
 				"Leshy"
 			],
 			"entries": [
-				"Your body produces a nearly endless supply of hard seedpods. You gain a seedpod ranged unarmed attack that deals {@damage 1d4} bludgeoning damage; these Strikes have the {@trait manipulate} trait. On a critical hit, a seedpod bursts, issuing forth a tangle of vegetation that imposes a \u201310-foot circumstance penalty on the target's Speed for 1 round. Seedpods do not add critical specialization effects."
+				"Your body produces a nearly endless supply of hard seedpods. You gain a seedpod ranged unarmed attack with a range increment of 10 feet that deals {@damage 1d4} bludgeoning damage; these Strikes have the {@trait manipulate} trait. On a critical hit, a seedpod bursts, issuing forth a tangle of vegetation that imposes a \u201310-foot circumstance penalty on the target's Speed for 1 round. Seedpods do not add critical specialization effects."
 			],
 			"leadsTo": [
 				"Thorned Seedpod|LOAG"

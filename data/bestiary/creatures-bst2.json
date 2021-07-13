@@ -4609,6 +4609,9 @@
 				"Acrobatics": {
 					"default": 28
 				},
+				"Deception": {
+					"default": 25
+				},
 				"Intimidation": {
 					"default": 27
 				},
@@ -7470,6 +7473,11 @@
 						"unit": "double",
 						"entry": "{@as 2}"
 					},
+					"traits": [
+								"incapacitation",
+								"poison",
+								"mental"
+					],
 					"entries": [
 						"The basidirond releases a cloud of {@condition invisible} spores in a 20-foot emanation.",
 						"Each creature in the area must succeed at a DC 22 Fortitude save or experience powerful hallucinations as long as it remains in the cloud, plus an additional {@dice 1d4} rounds after leaving the area. A creature must attempt a new save each round it remains within the area. The cloud persists for 5 rounds unless dispersed before then by a strong wind. Each hallucinating creature rolls {@dice 1d6} each round to determine what it hallucinates that round.",
