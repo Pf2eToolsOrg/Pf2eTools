@@ -9,7 +9,8 @@
 			"traits": [
 				"Uncommon",
 				"Evocation",
-				"Magical"
+				"Magical",
+				"Invested"
 			],
 			"price": {
 				"coin": "gp",
@@ -21,47 +22,6 @@
 			"category": "Held",
 			"entries": [
 				"An archaic wayfinder functions as a compass and acts as a repository for one cantrip cast into it. To fill an archaic wayfinder, a spellcaster casts the chosen cantrip into the empty device, providing any necessary cost; the spell cannot be one that is normally cast as a free action or reaction. Activating an archaic wayfinder is the same as the casting for the relevant spell. Once it has been activated, it becomes empty again. An archaic wayfinder can hold an aeon stone and activate its resonant power. An archaic wayfinder counts against the limit of one wayfinder with a slotted resonant aeon stone."
-			],
-			"generic": false
-		},
-		{
-			"name": "Black Pearl Aeon Stone",
-			"source": "LOWG",
-			"page": 63,
-			"type": "Item",
-			"level": 12,
-			"traits": [
-				"Uncommon",
-				"Invested",
-				"Magical",
-				"Transmutation"
-			],
-			"usage": "worn",
-			"bulk": "\u2014",
-			"category": "Worn",
-			"entries": [
-				"This black pearl sparkles with light.",
-				{
-					"type": "ability",
-					"style": "compact",
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"components": [
-						"envision"
-					],
-					"frequency": null,
-					"trigger": "you are targeted by a {@trait mental} effect.",
-					"requirements": null,
-					"entries": [
-						"You receive a +4 status bonus to your saving throw against the triggering effect.",
-						"Whether or not your save is successful, the aeon stone attempts a counteract check at +30 to immediately reflect a copy of the effect back at the originator, targeting it using the creature's own relevant statistics but controlling the effect as if you had cast it.",
-						"Every time you activate this aeon stone, attempt a DC {@flatDC 5} flat check. On a failure, the stone shatters and loses its magical properties forever.",
-						"The resonant power allows you to cast {@spell sending} once per day."
-					]
-				}
 			],
 			"generic": false
 		},

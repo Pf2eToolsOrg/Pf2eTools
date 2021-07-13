@@ -4202,12 +4202,12 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${v.type}`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack[0] += `(; ${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))})`;
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
-			if (v.entries != null && v.entries.length) renderer.recursiveRender(`; ${v.entries}`, renderStack);
+			if (v.entries != null && v.entries.length) renderStack.push(`; ${renderer.render(v.entries.map(function (x) { return ` ${x}` }))}`);
 			if (v.craftReq != null) renderStack.push(`; <strong>Craft Requirements&nbsp;</strong>${renderer.render(v.craftReq)}`);
 			if (v.shieldStats != null) renderStack.push(`; The shield has Hardness ${v.shieldStats.hardness}, HP ${v.shieldStats.hp}, and BT ${v.shieldStats.bt}.`);
 			renderStack.push(`</p>`);
@@ -4318,6 +4318,11 @@ Renderer.item = {
 				let varItem = MiscUtil.copy(genericItem)
 				varItem.name = this._getVariantName(v, genericItem.name)
 				varItem.level = v.level
+				if (v.source) {
+					varItem.source = v.source
+					varItem.otherSources = v.otherSources
+				}
+				if (v.page) varItem.page = v.page
 				varItem.price = v.price
 				varItem.bulk = v.bulk
 				varItem.shieldStats = v.shieldStats
