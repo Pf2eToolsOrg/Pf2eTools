@@ -4325,6 +4325,7 @@ Renderer.item = {
 				varItem.bulk = v.bulk
 				varItem.shieldStats = v.shieldStats
 				varItem.craftReq = v.craftReq
+				if (v.traits) varItem.traits = genericItem.traits.concat(v.traits)
 				varItem.entries.push(...v.entries)
 				varItem.generic = "V"
 				delete varItem.variants
