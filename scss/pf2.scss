@@ -673,6 +673,7 @@
 	width: 50%;
 	max-width: 170px;
 	margin: 0.4em -1em 0.4em 1em;
+	font-family: 'good-pro', sans-serif;
 	font-size: 1em;
 
 	.pf2-title {
@@ -683,18 +684,26 @@
 		padding: 0.6em 0.82em 0;
 	}
 
+	.pf2-stat {
+		padding: 0 1em;
+		text-indent: 0;
+		text-align: revert;
+	}
+
+	.rd__list {
+		padding: 0 1em 0 calc(1em + 24px);
+	}
+
 	&__ {
 		&title {
 			font-size: 1.1em;
 			font-weight: 700;
 			margin: 0;
-			font-family: 'good-pro', sans-serif;
 			padding: 0 0.82em;
 		}
 
 		&text {
 			margin: 0;
-			font-family: 'good-pro', sans-serif;
 			font-size: 0.9em;
 			font-weight: 400;
 			padding: 0 1em;
@@ -729,6 +738,16 @@
 	@media only screen and (max-width: 220px) {
 		width: calc(100%);
 		max-width: none;
+	}
+}
+
+.pf2-book--large {
+	.pf2-sidebar {
+		max-width: 200px;
+
+		@media only screen and (max-width: 684px) {
+			max-width: 185px;
+		}
 	}
 }
 

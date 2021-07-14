@@ -9,8 +9,8 @@ class RenderFeats {
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
 			${renderStack.join("")}
-			${Renderer.feat.getSpecial(feat)}
-			${feat.addSections != null ? Renderer.generic.getRenderedSection(feat.addSections).join(Renderer.utils.getDividerDiv()) : ""}
+			${Renderer.generic.getSpecial(feat)}
+			${Renderer.generic.getAddSections(feat)}
 			${Renderer.feat.getLeadsTo(feat)}
 			${Renderer.utils.getPageP(feat)}
 		`;
