@@ -3694,7 +3694,7 @@ Renderer.creature = {
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(ability.frequency)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
 					${entryStack.join("")}
 					</span></p>
 					${renderedGenericAbility || ""}`;

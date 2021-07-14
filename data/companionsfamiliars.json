@@ -112,7 +112,7 @@
 					],
 					"frequency": "once per hour",
 					"entries": [
-						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  stupefied 2 and slowed 1 for 1d4 rounds; on a critical failure,  the duration is 1 minute."
+						"The faerie dragon breathes euphoric gas in a 10-foot cone. Each creature in the area must attempt a Fortitude save against your class DC or spell DC, whichever is higher. A creature that fails its save is {@condition stupefied} 2 and {@condition slowed} 1 for {@dice 1d4} rounds; on a critical failure, the duration is 1 minute."
 					]
 				}
 			],
@@ -121,7 +121,365 @@
 					"type": "pf2-h3",
 					"name": "Faerie Dragon",
 					"entries": [
-						"These tiny, mischievous dragons make natural allies for  benevolent or capricious characters."
+						"These tiny, mischievous dragons make natural allies for benevolent or capricious characters."
+					]
+				}
+			]
+		},
+		{
+			"name": "Aeon Wyrd",
+			"source": "LOPSG",
+			"page": 122,
+			"type": "Familiar",
+			"traits": [
+				"Construct"
+			],
+			"requires": 3,
+			"granted": [
+				"flier"
+			],
+			"abilities": [
+				{
+					"name": "Aeon Stone Reservoir",
+					"entries": [
+						"Your aeon wyrd can hold any {@item aeon stone|crb} as a powerfully resonant nucleus that holds it together. You gain the aeon stone's benefits without needing to use one of your investiture slots for the day, and you also gain the aeon stone's resonant power, without interfering with any {@item wayfinder} you invest."
+					]
+				},
+				{
+					"name": "Can't Walk",
+					"entries": [
+						"Your aeon wyrd has no land Speed."
+					]
+				},
+				{
+					"name": "Constructed",
+					"entries": [
+						"Your aeon wyrd is immune to {@condition persistent damage|crb|bleed}, {@trait death} effects, {@trait disease}, {@condition doomed}, {@condition drained}, {@condition fatigued}, {@trait healing}, {@trait necromancy}, {@trait nonlethal} attacks, {@condition paralyzed}, {@trait poison}, {@condition sickened}, and {@condition unconscious}. It can recover Hit Points only via the {@action Repair} action and other methods that fix items, not from any form of Hit Point healing. It's destroyed at 0 HP."
+					]
+				},
+				{
+					"name": "Crystalline",
+					"entries": [
+						"Your aeon wyrd's crystalline structure makes it vulnerable to {@trait sonic} attacks. It gains weakness to sonic damage equal to your level."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Aeon Wyrd",
+					"entries": [
+						"An aeon wyrd is a floating swarm of gemstones surrounding a larger stone. It grants the power of its internal aeon stone to its master."
+					]
+				}
+			]
+		},
+		{
+			"name": "Calligraphy Wyrm",
+			"source": "LOPSG",
+			"page": 122,
+			"type": "Familiar",
+			"traits": [
+				"Beast"
+			],
+			"requires": 6,
+			"granted": [
+				"darkvision",
+				"flier",
+				"manual dexterity",
+				"scent",
+				"skilled (arcana, society)",
+				"speech"
+			],
+			"abilities": [
+				{
+					"name": "Ink Spray",
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"type": "ability",
+					"frequency": "once per 10 minutes",
+					"entries": [
+						"The wyrm splatters ink in a 10-foot cone. Each creature in the area must succeed at a Reflex save or become covered in ink. Ink spray has the effects of {@spell glitterdust} except the creature isn't {@condition dazzled}, and it can remove its {@condition blindness} by spending a single action, which has the {@trait manipulate} trait, to wipe off the ink from their face."
+					]
+				},
+				{
+					"name": "Stylus Claws",
+					"entries": [
+						"Your calligraphy wyrm has stylus-shaped claws that it can fill with its natural ink, using its claw as a pen without having to purchase ink."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Calligraphy Wyrm",
+					"entries": [
+						"Calligraphy wyrms are curious dragons constantly in search of new lore and writing. They make natural allies for Pathfinders. While knowledgeable, calligraphy wyrms can also be know-it-alls. Their chirpy, high-pitched voices make this attitude humorous to some and insufferable to others."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dweomercat Cub",
+			"source": "LOPSG",
+			"page": 122,
+			"type": "Familiar",
+			"traits": [
+				"Beast"
+			],
+			"requires": 4,
+			"granted": [
+				"darkvision",
+				"scent",
+				"speech"
+			],
+			"abilities": [
+				{
+					"name": "Alter Dweomer",
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"traits": [
+						"Abjuration",
+						"Arcane"
+					],
+					"type": "ability",
+					"frequency": "once per 10 minutes",
+					"requirements": "The dweomercat cub was targeted by a spell or was within the area of a spell as it was cast since its last turn",
+					"entries": [
+						"The dweomercat cub gains an effect related to the school of the triggering spell. Other than the damage, the effect lasts for {@dice 1d4} rounds or until the dweomercat cub {@action Dismiss|CRB|Dismisses} the effect, whichever comes first.",
+						{
+							"type": "list",
+							"items": [
+								"{@b Abjuration} The cub gains a +1 status bonus to AC.",
+								"{@b Conjuration} A cloud of fog appears in a 5-foot burst centered on a corner of the cub's space. Anything in the cloud is concealed.",
+								"{@b Divination} The cub gains a +1 status bonus to skill checks.",
+								"{@b Enchantment} The cub gains a +1 status bonus to saves.",
+								"{@b Evocation} Magical feedback deals {@damage 1d6} force damage for every 2 levels you have to the triggering spellcaster (basic Reflex save using your class DC or spell DC, whichever is higher).",
+								"{@b Illusion} The cub becomes {@condition invisible}. This effect ends if the cub uses a hostile action, in addition to the normal end conditions.",
+								"{@b Necromancy} The cub gains temporary HP equal to your level.",
+								"{@b Transmutation} The cub gains a +1 status bonus to attack rolls."
+							]
+						}
+					]
+				},
+				{
+					"name": "Detect Magic",
+					"entries": [
+						"Your dweomercat cub can cast 1st-level {@spell detect magic} as an arcane innate spell."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Dweomercat Cub",
+					"entries": [
+						"Pathfinder agent Arianrhod Thriceborn, an adherent of the Eldest {@deity Magdh}, raised a litter of these intelligent mystical felines from the First World. Dweomercat cubs are curious and love exploring ley lines and traveling the world. At only 1 foot tall and weighing 15 pounds, dweomercat cubs are smaller than their egos and curiosity imply."
+					]
+				}
+			]
+		},
+		{
+			"name": "Dweomercat Cub",
+			"source": "LOPSG",
+			"page": 122,
+			"type": "Familiar",
+			"traits": [
+				"Beast"
+			],
+			"requires": 4,
+			"granted": [
+				"darkvision",
+				"scent",
+				"speech"
+			],
+			"abilities": [
+				{
+					"name": "Alter Dweomer",
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"traits": [
+						"Abjuration",
+						"Arcane"
+					],
+					"frequency": "once per 10 minutes",
+					"requirements": "The dweomercat cub was targeted by a spell or was within the area of a spell as it was cast since its last turn",
+					"entries": [
+						"The dweomercat cub gains an effect related to the school of the triggering spell. Other than the damage, the effect lasts for {@dice 1d4} rounds or until the dweomercat cub {@action Dismiss|CRB|Dismisses} the effect, whichever comes first.",
+						{
+							"type": "list",
+							"items": [
+								"{@b Abjuration} The cub gains a +1 status bonus to AC.",
+								"{@b Conjuration} A cloud of fog appears in a 5-foot burst centered on a corner of the cub's space. Anything in the cloud is concealed.",
+								"{@b Divination} The cub gains a +1 status bonus to skill checks.",
+								"{@b Enchantment} The cub gains a +1 status bonus to saves.",
+								"{@b Evocation} Magical feedback deals {@damage 1d6} force damage for every 2 levels you have to the triggering spellcaster (basic Reflex save using your class DC or spell DC, whichever is higher).",
+								"{@b Illusion} The cub becomes {@condition invisible}. This effect ends if the cub uses a hostile action, in addition to the normal end conditions.",
+								"{@b Necromancy} The cub gains temporary HP equal to your level.",
+								"{@b Transmutation} The cub gains a +1 status bonus to attack rolls."
+							]
+						}
+					]
+				},
+				{
+					"name": "Detect Magic",
+					"entries": [
+						"Your dweomercat cub can cast 1st-level {@spell detect magic} as an arcane innate spell."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Dweomercat Cub",
+					"entries": [
+						"Pathfinder agent Arianrhod Thriceborn, an adherent of the Eldest {@deity Magdh}, raised a litter of these intelligent mystical felines from the First World. Dweomercat cubs are curious and love exploring ley lines and traveling the world. At only 1 foot tall and weighing 15 pounds, dweomercat cubs are smaller than their egos and curiosity imply."
+					]
+				}
+			]
+		},
+		{
+			"name": "Imp",
+			"source": "APG",
+			"page": 147,
+			"type": "Familiar",
+			"traits": [
+				"LE",
+				"Devil",
+				"Fiend"
+			],
+			"alignment": "An imp must be lawful evil",
+			"requires": 8,
+			"granted": [
+				"darkvision",
+				"flier",
+				"manual dexterity",
+				"resistance (fire and poison)",
+				"skilled (deception)",
+				"speech",
+				"touch telepathy"
+			],
+			"abilities": [
+				{
+					"name": "Imp Invisibility",
+					"entries": [
+						"Once per hour, your imp familiar can cast 2nd-level {@spell invisibility} on itself as a divine innate spell."
+					]
+				},
+				{
+					"name": "Alter Dweomer",
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"traits": [
+						"Concentrate",
+						"Divine",
+						"Enchantment",
+						"Evil",
+						"Fortune"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"The imp offers a non-fiend within 15 feet a bargain, granting a boon of good luck if the creature accepts. The boon lasts for 1 hour once accepted. If the creature dies while the boon is in place, its soul travels to Hell, where it is bound for eternity and unable to be raised or resurrected except by {@spell wish} or similar magic. Once during the hour, the creature can roll an attack roll or saving throw twice and use the higher result."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Imp",
+					"entries": [
+						"Imp familiars pretend to be subservient in order to trick their masters into losing their souls to Hell."
+					]
+				}
+			]
+		},
+		{
+			"name": "Poppet",
+			"source": "LOPSG",
+			"page": 123,
+			"type": "Familiar",
+			"traits": [
+				"Construct"
+			],
+			"requires": 1,
+			"granted": [
+			],
+			"abilities": [
+				{
+					"name": "Constructed",
+					"entries": [
+						"Your poppet is immune to {@condition persistent damage|crb|bleed}, {@trait death} effects, {@trait disease}, {@condition doomed}, {@condition drained}, {@condition fatigued}, {@trait healing}, {@trait necromancy}, {@trait nonlethal} attacks, {@condition paralyzed}, {@trait poison}, {@condition sickened}, and {@condition unconscious}. It can recover Hit Points only via the {@action Repair} action and other methods that fix items, not from any form of Hit Point healing. It's destroyed at 0 HP."
+					]
+				},
+				{
+					"name": "Flammable",
+					"entries": [
+						"Your poppet's components make it particularly vulnerable to fire. It gains weakness to fire equal to your level. You can spend an additional familiar ability, either permanently or on a per-day basis, to reinforce the poppet's construction, removing this weakness."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Poppet",
+					"entries": [
+						"Endlessly modifiable, poppet familiars made of wicker and wood are among the most basic construct familiars available to Pathfinder agents across the globe."
+					]
+				}
+			]
+		},
+		{
+			"name": "Spellslime",
+			"source": "APG",
+			"page": 147,
+			"type": "Familiar",
+			"traits": [
+				"Ooze"
+			],
+			"requires": 4,
+			"granted": [
+				"climber",
+				"darkvision",
+				"tough"
+			],
+			"abilities": [
+				{
+					"name": "Magic Scent",
+					"entries": [
+						"Your spellslime familiar gains an imprecise sense with a range of 30 feet that enables it to smell magic of the same tradition as your own."
+					]
+				},
+				{
+					"name": "Ooze Defense",
+					"entries": [
+						"Your spellslime familiar is easy to hit, but it lacks weak points. It is immune to critical hits and precision damage, but its AC is only 10 + your level (instead of an AC equal to yours)."
+					]
+				},
+				{
+					"name": "Slime Rejuvenation",
+					"entries": [
+						"Your spellslime familiar gains the focused rejuvenation ability, but it recovers 2 Hit Points per level when you {@action Refocus} instead of 1."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Spellslime",
+					"entries": [
+						"These friendly, colorful oozes congeal from the essences left over from casting spells. They are extremely loyal to their masters. You can select a spellslime familiar only if you can cast spells using spell slots."
 					]
 				}
 			]
