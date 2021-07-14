@@ -1186,8 +1186,20 @@ class ClassesPage extends BaseComponent {
 			inactiveText: "Show Feats",
 		}).title("Toggle Feat View").addClass("mb-1");
 
-		$$`<div class="flex-v-center m-1 flex-wrap"><div class="btn-group mr-3 no-shrink flex-1">${$btnToggleFeats}</div>
-		<div class="btn-group no-shrink mb-1">${$btnToggleFeatures}${$btnToggleFluff}</div></divc>`.appendTo($wrp);
+		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1">Images</button>`).click(() => {
+			const {$modalInner, doClose} = UiUtil.getShowModal({
+				title: "Images are available in the Archives of Nethys.",
+			});
+			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
+			$$`${imageLinks}${$btnClose}`.appendTo($modalInner);
+		});
+
+		$$`<div class="flex-v-center m-1 flex-wrap">
+			<div class="mr-2 no-shrink">${$btnToggleFeats}</div>
+			${imageLinks.length ? $$`<div class="mr-2 no-shrink">${$btnShowImages}</div>` : ""}
+			<div class="btn-group no-shrink mb-1 ml-auto">${$btnToggleFeatures}${$btnToggleFluff}</div>
+		</divc>`.appendTo($wrp);
 	}
 
 	_render_renderSubclassButtons ($wrp) {

@@ -21104,7 +21104,22 @@
 			"dismiss": false,
 			"entries": [
 				"A spray of rainbow light beams cascades from your open hand. Each creature in the area must roll {@dice 1d8} on the table below to see which beam affects it, then attempt a saving throw of the indicated type. The table notes any additional traits that apply to each type of ray. If a creature is struck by multiple beams, it uses the same d20 result for all its saving throws. For all rays, a successful saving throw negates the effect for that creature.",
-				"{@dice 1d8} Color Save Effect (Traits) 1 Red Reflex 50 fire damage (fire) 2 Orange Reflex 60 acid damage (acid) 3 Yellow Reflex 70 electricity damage (electricity) 4 Green Fortitude 30 poison damage and {@condition enfeebled|CRB|enfeebled 1} for 1 minute (poison) 5 Blue Fortitude Affected as if by flesh to stone 6 Indigo Will {@condition Confused}, as the {@spell warp mind} spell (mental) 7 Violet Will {@condition Slowed|CRB|Slowed 1} for 1 minute; if a critical failure, sent to another plane, as plane shift (teleportation) 8 Potent \u2014 Affected by two beams\u2014roll beam twice, rerolling any duplicates or results of 8."
+				{
+					"type": "table",
+					"rollable": true,
+					"colSizes": [1,2,2,5],
+					"rows": [
+						["{@dice 1d8}","Color","Save","Effect (Traits)"],
+						["1","Red","Reflex","50 fire damage ({@trait fire})"],
+						["2","Orange", "Reflex", "60 acid damage ({@trait acid})"],
+						["3","Yellow","Reflex", "70 electricity damage ({@trait electricity})"],
+						["4", "Green", "Fortitude", "30 poison damage and {@condition enfeebled|CRB|enfeebled 1} for 1 minute ({@trait poison})"],
+						["5","Blue","Fortitude","Affected as if by {@spell flesh to stone}"],
+						["6","Indigo","Will","{@condition Confused}, as the {@spell warp mind} spell ({@trait mental})"],
+						["7","Violet","Will","{@condition Slowed|CRB|Slowed 1} for 1 minute; if a critical failure, sent to another plane, as {@spell plane shift} ({@trait teleportation})"],
+						["8","Potent beam","\u2014","Affected by two beams\u2014roll twice, rerolling any duplicates or results of 8."]
+					]
+				}
 			],
 			"heightened": {
 				"heightened": false,
@@ -30373,9 +30388,22 @@
 					"entries": {
 						"Critical Success": "The target is unaffected, can't be affected on subsequent rounds, and is temporarily immune for 1 minute.",
 						"Success": "The target is unaffected this round, but it can be affected on subsequent rounds.",
-						"Failure": "Roll {@dice 1d4} on the table below.",
-						"Critical Failure": "Roll {@dice 1d4+1} on the table below. Result Effect 1 The target is {@condition frightened|CRB|frightened 2}. 2 The target is {@condition confused} for 1 round. 3 The target is {@condition stupefied|CRB|stupefied 4} for 1 round. 4 The target is {@condition blinded} for 1 round. 5 The target is {@condition stunned} for 1 round and {@condition stupefied|CRB|stupefied 1} for an unlimited duration."
+						"Failure": "Roll {@dice 1d4|||onTable} on the table below.",
+						"Critical Failure": "Roll {@dice 1d4+1|||onTable} on the table below."
 					}
+				},
+				{
+					"type": "table",
+					"colSizes": [1, 4],
+					"rollable": true,
+					"rows": [
+						["Result", "Effect"],
+						["1", "The targe is {@condition frightened||frightened 2}."],
+						["2", "The targe is {@condition confused} for 1 round."],
+						["3", "The targe is {@condition stupefied||stupefied 4} for 1 round."],
+						["4", "The targe is {@condition blinded} for 1 round."],
+						["5", "The targe is {@condition stunned} for 1 round and {@condition stupefied||stupefied 1} for an unlimited duration."]
+					]
 				}
 			],
 			"heightened": {

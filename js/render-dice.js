@@ -322,16 +322,6 @@ Renderer.dice = {
 				return titleMaybe;
 			}
 
-			// try use stats table name row
-			titleMaybe = $(ele).closest(`table.stats`).children(`tbody`).first().children(`tr`).first().find(`.rnd-name .stats-name`).text();
-			if (titleMaybe) return titleMaybe.trim();
-
-			if (UrlUtil.getCurrentPage() === UrlUtil.PG_CHARACTERS) {
-				// try use mini-entity name
-				titleMaybe = ($(ele).closest(`.chr-entity__row`).find(".chr-entity__ipt-name").val() || "").trim();
-				if (titleMaybe) return titleMaybe;
-			}
-
 			return titleMaybe;
 		}
 
@@ -346,16 +336,22 @@ Renderer.dice = {
 			return name === "GM Screen" ? "Game Master" : name;
 		}
 
-		function _$getTdsFromTotal (total) {
-			const $table = $ele.closest(`table`);
-			const $tdRoll = $table.find(`td`).filter((i, e) => {
+		function _$getRowFromTotal (total) {
+			let $table = $ele;
+			while ($table.length) {
+				if ($table.hasClass("pf2-table")) break;
+				else if ($table.children(".pf2-table").length) {
+					$table = $table.children(".pf2-table").first();
+					break;
+				}
+				$table = $table.parent();
+			}
+			const $cells = $table.find(`.pf2-table__entry`).filter((i, e) => {
 				const $e = $(e);
-				if (!$e.closest(`table`).is($table)) return false;
+				if (!$e.closest(`.pf2-table`).is($table)) return false;
 				return total >= Number($e.data("roll-min")) && total <= Number($e.data("roll-max"));
 			});
-			if ($tdRoll.length && $tdRoll.nextAll().length) {
-				return $tdRoll.nextAll().get();
-			}
+			if ($cells.length) return $cells.get();
 			return null;
 		}
 
@@ -369,48 +365,14 @@ Renderer.dice = {
 		}
 
 		function fnGetMessageTable (total) {
-			const elesTd = _$getTdsFromTotal(total);
-			if (elesTd) {
-				const tableRow = elesTd.map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
+			const eles = _$getRowFromTotal(total);
+			if (eles) {
+				const tableRow = eles.map(ele => ele.innerHTML.trim()).filter(it => it).join(" | ");
 				const $row = $(`<span class="message">${tableRow}</span>`);
 				_rollInlineRollers($ele);
 				return $row.html();
 			}
 			return Renderer.dice._pRollerClick_getMsgBug(total);
-		}
-
-		function fnGetMessageGeneratorTable (ix, total) {
-			const elesTd = _$getTdsFromTotal(total);
-			if (elesTd) {
-				const $row = $(`<span class="message">${elesTd[ix].innerHTML.trim()}</span>`);
-				_rollInlineRollers($ele);
-				return $row.html();
-			}
-			return Renderer.dice._pRollerClick_getMsgBug(total);
-		}
-
-		async function pRollGeneratorTable () {
-			Renderer.dice.addElement(rolledBy, `<i>${rolledBy.label}:</i>`);
-
-			const out = [];
-			const numRolls = Number($parent.attr("data-rd-namegeneratorrolls"));
-			const $ths = $ele.closest(`table`).find(`th`);
-			for (let i = 0; i < numRolls; ++i) {
-				const cpyRolledBy = MiscUtil.copy(rolledBy);
-				cpyRolledBy.label = $($ths.get(i + 1)).text().trim();
-
-				const result = await Renderer.dice.pRollEntry(modRollMeta.entry, cpyRolledBy, {fnGetMessage: fnGetMessageGeneratorTable.bind(null, i), rollCount: modRollMeta.rollCount});
-				const elesTd = _$getTdsFromTotal(result);
-
-				if (!elesTd) {
-					out.push(`(no result)`);
-					continue;
-				}
-
-				out.push(elesTd[i].innerHTML.trim());
-			}
-
-			Renderer.dice.addElement(rolledBy, `= ${out.join(" ")}`);
 		}
 
 		const rolledBy = {
@@ -421,17 +383,11 @@ Renderer.dice = {
 		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
 		let $parent = $ele.parent();
 		while ($parent.length) {
-			if ($parent.is("th") || $parent.is("p") || $parent.is("table")) break;
+			if ($parent.hasClass("pf2-table")) break;
 			$parent = $parent.parent();
 		}
-
-		if ($parent.is("th")) {
-			const isRoller = $parent.attr("data-rd-isroller") === "true";
-			if (isRoller && $parent.attr("data-rd-namegeneratorrolls")) {
-				pRollGeneratorTable();
-			} else {
-				Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {fnGetMessage: fnGetMessageTable, rollCount: modRollMeta.rollCount});
-			}
+		if ($parent.is("div") || modRollMeta.entry.onTable) {
+			Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {fnGetMessage: fnGetMessageTable, rollCount: modRollMeta.rollCount});
 		} else Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {rollCount: modRollMeta.rollCount});
 	},
 
@@ -692,7 +648,7 @@ Renderer.dice = {
 					<li>Average; <span class="out-roll-item-code">avg(8d6)</span></li>
 				</ul>
 				Up and down arrow keys cycle input history.<br>
-				Anything before a colon is treated as a label (<span class="out-roll-item-code">Fireball: 8d6</span>)<br>
+				Anything before a colon is treated as a label (<span class="out-roll-item-code">Fireball: 6d6</span>)<br>
 Use <span class="out-roll-item-code">${PREF_MACRO} list</span> to list saved macros.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} add myName 1d2+3</span> to add (or update) a macro. Macro names should not contain spaces or hashes.<br>
 				Use <span class="out-roll-item-code">${PREF_MACRO} remove myName</span> to remove a macro.<br>

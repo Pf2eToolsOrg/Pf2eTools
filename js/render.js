@@ -548,11 +548,11 @@ function Renderer () {
 		for (let i = 0; i < len; ++i) this._recursiveRender(entry.tables[i], textStack, meta);
 	};
 
+	// TODO: Badly formatted rollable tables will ruin everything
 	this._renderTable = function (entry, textStack, meta, options) {
-		// TODO: implement rollable tables
 		const numCol = Math.max(...entry.rows.map(x => x.type === "multiRow" ? x.rows.map(y => y.length) : x.length).flat());
-		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol)
-		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`
+		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol);
+		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`;
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
 			if (entry.colStyles == null) entry.colStyles = Array(numCol).fill("");
 			entry.colStyles[0] += " no-border-left";
@@ -583,19 +583,20 @@ function Renderer () {
 		let rowParity = 0;
 		let idxSpan = 0;
 
-		const renderRow = function (renderer, row, idxRow, minButton) {
+		const renderRow = (row, idxRow, minButton) => {
 			const lenCol = row.length;
+			const dataStr = idxRow ? this._renderTable_getDataStr(row, entry.rollable) : "";
 			if (row.type === "multiRow") {
 				row.rows.forEach((r, i) => {
-					renderRow(renderer, r, idxRow, i === 0 ? minButton : "");
+					renderRow(r, idxRow, i === 0 ? minButton : "");
 					rowParity = (rowParity + 1) % 2;
 				});
 				rowParity = (rowParity + 1) % 2;
 			} else if (lenCol === numCol) {
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity);
-					textStack[0] += `<div class="${styles}"><span>`;
-					renderer._recursiveRender(row[idxCol], textStack, meta);
+					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, false, rowParity);
+					textStack[0] += `<div class="${styles}" ${idxCol ? dataStr : ""}><span>`;
+					this._recursiveRender(row[idxCol], textStack, meta);
 					textStack[0] += idxCol === lenCol - 1 ? minButton : "";
 					textStack[0] += `</span></div>`;
 				}
@@ -607,17 +608,17 @@ function Renderer () {
 			} else {
 				let last_end = 1;
 				for (let idxCol = 0; idxCol < lenCol; ++idxCol) {
-					let styles = renderer._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity);
+					let styles = this._renderTable_getStyles(entry, idxRow, idxCol, true, rowParity);
 					let span = entry.spans[idxSpan][idxCol];
 					if (last_end !== span[0]) {
-						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}"></div>`;
+						textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${span[0]}" ${idxCol ? dataStr : ""}></div>`;
 					}
-					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}"><span>${row[idxCol]}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
+					textStack[0] += `<div class="${styles}" style="grid-column:${span[0]}/${span[1]}" ${idxCol ? dataStr : ""}><span>${row[idxCol]}${span[1] === numCol + 1 ? minButton : ""}</span></div>`;
 					last_end = span[1];
 				}
 				if (last_end !== numCol + 1) {
-					let styles = renderer._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
-					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${numCol}"><span>${minButton}</span></div>`;
+					let styles = this._renderTable_getStyles(entry, idxRow, numCol, true, rowParity);
+					textStack[0] += `<div class="${styles}" style="grid-column:${last_end}/${numCol}" ${dataStr}><span>${minButton}</span></div>`;
 				}
 				if (labelRowIdx.includes(idxRow)) {
 					rowParity = 0;
@@ -631,7 +632,7 @@ function Renderer () {
 		for (let idxRow = 0; idxRow < lenRows; ++idxRow) {
 			const minButton = entry.minimizeTo && entry.minimizeTo[0] === idxRow ? this._renderTable_getMinimizeButton() : "";
 			const row = entry.rows[idxRow];
-			renderRow(this, row, idxRow, minButton);
+			renderRow(row, idxRow, minButton);
 		}
 
 		if (entry.footnotes != null) {
@@ -713,6 +714,47 @@ function Renderer () {
 		return `${row_styles} ${col_styles} ${cell_styles} ${type_styles} ${minTo}`
 	};
 
+	this._renderTable_getDataStr = function (row, roll) {
+		if (roll) {
+			let min;
+			let max;
+			const firstCell = String(row.type === "multiRow" ? row.rows[0][0] : row[0]).trim();
+			const mLowHigh = /^(\d+) or (lower|higher)$/i.exec(firstCell);
+			if (mLowHigh) {
+				if (mLowHigh[2].toLowerCase() === "lower") {
+					min = -Renderer.dice.POS_INFINITE;
+					max = Number(mLowHigh[1]);
+				} else {
+					min = Number(mLowHigh[1]);
+					max = Renderer.dice.POS_INFINITE;
+				}
+			} else {
+				// format: "95-00" or "12"
+				// u2012 = figure dash; u2013 = en-dash
+				const m = /^(\d+)([-\u2012\u2013](\d+))?$/.exec(firstCell);
+				if (m) {
+					if (m[1] && !m[2]) {
+						min = Number(m[1]);
+						max = Number(m[1]);
+					} else {
+						min = Number(m[1]);
+						max = Number(m[3]);
+					}
+				} else {
+					// format: "12+"
+					const m = /^(\d+)\+$/.exec(row[0]);
+					min = Number(m[1]);
+					max = Renderer.dice.POS_INFINITE;
+				}
+			}
+
+			min = min === 0 ? 100 : min;
+			max = max === 0 ? 100 : max;
+			return `data-roll-min="${min}" data-roll-max="${max}"`;
+		}
+		return ``;
+	};
+
 	this._getDataString = function (entry) {
 		let dataString = "";
 		if (entry.source) dataString += `data-source="${entry.source}"`;
@@ -792,14 +834,12 @@ function Renderer () {
 	}
 
 	this._renderAbility_full = function (entry, textStack, meta, options) {
-		const renderer = Renderer.get().setFirstSection(true);
-
 		textStack[0] += `<div class="pf2-stat pf2-book--stat">`;
 		textStack[0] += Renderer.utils.getNameDiv(entry, {activity: true, type: ""});
 		textStack[0] += Renderer.utils.getDividerDiv();
 		textStack[0] += Renderer.utils.getTraitsDiv(entry.traits || []);
 		textStack[0] += Renderer.ability.getSubHead(entry);
-		if (entry.entries) entry.entries.forEach(it => renderer._recursiveRender(it, textStack, meta, {pf2StatFix: true}));
+		textStack[0] += Renderer.generic.getRenderedEntries(entry);
 		textStack[0] += `</div>`;
 	}
 
@@ -818,6 +858,7 @@ function Renderer () {
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
 		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) entry.entries.forEach(e => renderer._recursiveRender(e, textStack, meta, {isAbility: true}));
+		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
 	}
 
@@ -1501,6 +1542,7 @@ function Renderer () {
 				const [rollText, displayText, name, ...others] = Renderer.splitTagByPipe(text);
 				if (displayText) fauxEntry.displayText = displayText;
 				if (name) fauxEntry.name = name;
+				if (others.includes("onTable")) fauxEntry.onTable = true;
 
 				switch (tag) {
 					case "@dice": {
@@ -3036,17 +3078,15 @@ Renderer.get = () => {
 
 Renderer.ability = {
 	getCompactRenderedString (it, opts) {
-		let renderStack = [""]
 		opts = opts || {};
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {pf2StatFix: true})
-		return `
-		${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
+
+		return `${Renderer.utils.getExcludedDiv(it, "ability", UrlUtil.PG_ABILITIES)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ABILITIES, activity: true, type: "", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
 		${Renderer.ability.getSubHead(it)}
-		${renderStack.join("")}
-		${Renderer.utils.getPageP(it)}`;
+		${Renderer.generic.getRenderedEntries(it)}
+		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 	getSubHead (it) {
 		const renderStack = [];
@@ -3071,15 +3111,13 @@ Renderer.ability = {
 Renderer.action = {
 	getCompactRenderedString (it, opts) {
 		opts = opts || {};
-		let renderStack = [""];
-		Renderer.get().setFirstSection(true).recursiveRender(it.entries, renderStack, {pf2StatFix: true})
-		return `
-		${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
+
+		return `${Renderer.utils.getExcludedDiv(it, "action", UrlUtil.PG_ACTIONS)}
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_ACTIONS, activity: true, type: "", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(it.traits || [])}
 		${Renderer.action.getSubHead(it)}
-		${renderStack.join("")}
+		${Renderer.generic.getRenderedEntries(it)}
 		${opts.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
 	getSubHead (it) {
@@ -3911,13 +3949,6 @@ Renderer.feat = {
 		return renderStack.join("");
 	},
 
-	getSpecial (feat) {
-		const renderer = Renderer.get()
-		if (feat.special != null) {
-			return `<p class="pf2-stat pf2-stat__text"><strong>Special&nbsp;</strong>${Renderer.get().render(feat.special)}</p>`
-		} else return ``
-	},
-
 	getLeadsTo (feat) {
 		const renderer = Renderer.get();
 		if (feat.leadsTo && feat.leadsTo.length) {
@@ -3927,22 +3958,14 @@ Renderer.feat = {
 
 	getCompactRenderedString (feat, opts) {
 		opts = opts || {};
-		const renderer = Renderer.get();
-		const renderStack = [];
 
-		renderStack.push(`
-			${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
+		return `${Renderer.utils.getExcludedDiv(feat, "feat", UrlUtil.PG_FEATS)}
 			${Renderer.utils.getNameDiv(feat, {page: UrlUtil.PG_FEATS, type: "FEAT", activity: true, ...opts})}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.utils.getTraitsDiv(feat.traits)}
 			${Renderer.feat.getSubHead(feat)}
-		`);
-		renderer.recursiveRender(feat.entries, renderStack, {pf2StatFix: true});
-		renderStack.push(Renderer.feat.getSpecial(feat));
-		if (feat.addSections) renderStack.push(Renderer.generic.getRenderedSection(feat.addSections).join(Renderer.utils.getDividerDiv()))
-		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(feat));
-
-		return renderStack.join("");
+			${Renderer.generic.getRenderedEntries(feat)}
+			${opts.noPage ? "" : Renderer.utils.getPageP(feat)}`;
 	},
 };
 
@@ -4204,7 +4227,7 @@ Renderer.item = {
 			renderStack.push(Renderer.utils.getDividerDiv());
 			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
-			if (v.traits != null && v.traits.length) renderStack[0] += `(; ${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))})`;
+			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
 			if (v.bulk != null) renderStack.push(`; <strong>Bulk&nbsp;</strong>${v.bulk}`);
 			if (v.entries != null && v.entries.length) renderStack.push(`; ${renderer.render(v.entries.map(function (x) { return ` ${x}` }))}`);
@@ -4472,7 +4495,7 @@ Renderer.skill = {
 Renderer.spell = {
 	getCompactRenderedString (sp, opts) {
 		opts = opts || {};
-		const renderer = Renderer.get();
+		const renderer = Renderer.get().setFirstSection(false);
 		const entryStack = [];
 		renderer.recursiveRender(sp.entries, entryStack, {pf2StatFix: true});
 
@@ -4718,6 +4741,29 @@ Renderer.generic = {
 				}).join("; ")}</p>`
 			} else return a.map(e => `<p class="pf2-stat__text">${renderer.render(e)}</p>`).join("")
 		}).join(""));
+	},
+
+	getRenderedEntries (it, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get();
+		const renderStack = [];
+		if (it.entries) renderer.recursiveRender(it.entries, renderStack, {pf2StatFix: true});
+
+		return `${renderStack.join("")}
+			${Renderer.generic.getSpecial(it, opts)}
+			${Renderer.generic.getAddSections(it, opts)}`;
+	},
+
+	getAddSections (it) {
+		if (it.addSections) return Renderer.generic.getRenderedSection(it.addSections).join(Renderer.utils.getDividerDiv());
+		else return "";
+	},
+
+	getSpecial (it) {
+		const renderer = Renderer.get();
+		if (it.special != null) {
+			return `<p class="pf2-stat pf2-stat__text"><strong>Special&nbsp;</strong>${renderer.render(it.special)}</p>`;
+		} else return "";
 	},
 };
 
@@ -6723,116 +6769,6 @@ Renderer._stripTagLayer = function (str) {
 		}).join("");
 	}
 	return str;
-};
-
-Renderer.getTableRollMode = function (table) {
-	if (!table.colLabels || table.colLabels.length < 2) return RollerUtil.ROLL_COL_NONE;
-
-	const rollColMode = RollerUtil.getColRollType(table.colLabels[0]);
-	if (!rollColMode) return RollerUtil.ROLL_COL_NONE;
-
-	// scan the first column to ensure all rollable
-	if (table.rows.some(it => {
-		try {
-			// u2012 = figure dash; u2013 = en-dash
-			return !/^\d+([-\u2012\u2013]\d+)?/.exec(it[0]);
-		} catch (e) {
-			return true;
-		}
-	})) return RollerUtil.ROLL_COL_NONE;
-
-	return rollColMode;
-};
-
-/**
- * This assumes validation has been done in advance.
- * @param row
- * @param [opts]
- * @param [opts.cbErr]
- * @param [opts.isForceInfiniteResults]
- * @param [opts.isFirstRow] Used it `isForceInfiniteResults` is specified.
- * @param [opts.isLastRow] Used it `isForceInfiniteResults` is specified.
- */
-Renderer.getRollableRow = function (row, opts) {
-	opts = opts || {};
-	row = MiscUtil.copy(row);
-	try {
-		const cleanRow = String(row[0]).trim();
-
-		// format: "20 or lower"; "99 or higher"
-		const mLowHigh = /^(\d+) or (lower|higher)$/i.exec(cleanRow)
-		if (mLowHigh) {
-			row[0] = {type: "cell", entry: cleanRow}; // Preseve the original text
-
-			if (mLowHigh[2].toLowerCase() === "lower") {
-				row[0].roll = {
-					min: -Renderer.dice.POS_INFINITE,
-					max: Number(mLowHigh[1]),
-				};
-			} else {
-				row[0].roll = {
-					min: Number(mLowHigh[1]),
-					max: Renderer.dice.POS_INFINITE,
-				};
-			}
-
-			return row;
-		}
-
-		// format: "95-00" or "12"
-		// u2012 = figure dash; u2013 = en-dash
-		const m = /^(\d+)([-\u2012\u2013](\d+))?$/.exec(cleanRow);
-		if (m) {
-			if (m[1] && !m[2]) {
-				row[0] = {
-					type: "cell",
-					roll: {
-						exact: Number(m[1]),
-					},
-				};
-				if (m[1][0] === "0") row[0].roll.pad = true;
-				Renderer.getRollableRow._handleInfiniteOpts(row, opts);
-			} else {
-				row[0] = {
-					type: "cell",
-					roll: {
-						min: Number(m[1]),
-						max: Number(m[3]),
-					},
-				};
-				if (m[1][0] === "0" || m[3][0] === "0") row[0].roll.pad = true;
-				Renderer.getRollableRow._handleInfiniteOpts(row, opts);
-			}
-		} else {
-			// format: "12+"
-			const m = /^(\d+)\+$/.exec(row[0]);
-			row[0] = {
-				type: "cell",
-				roll: {
-					min: Number(m[1]),
-					max: Renderer.dice.POS_INFINITE,
-				},
-			};
-		}
-	} catch (e) {
-		if (opts.cbErr) opts.cbErr(row[0], e);
-	}
-	return row;
-};
-Renderer.getRollableRow._handleInfiniteOpts = function (row, opts) {
-	if (!opts.isForceInfiniteResults) return;
-
-	const isExact = row[0].roll.exact != null;
-
-	if (opts.isFirstRow) {
-		if (!isExact) row[0].roll.displayMin = row[0].roll.min;
-		row[0].roll.min = -Renderer.dice.POS_INFINITE;
-	}
-
-	if (opts.isLastRow) {
-		if (!isExact) row[0].roll.displayMax = row[0].roll.max;
-		row[0].roll.max = Renderer.dice.POS_INFINITE;
-	}
 };
 
 Renderer.initLazyImageLoaders = function () {
