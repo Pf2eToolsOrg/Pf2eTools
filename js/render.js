@@ -1682,8 +1682,8 @@ function Renderer () {
 				const [displayText, footnoteText, optTitle] = Renderer.splitTagByPipe(text);
 				const hoverMeta = Renderer.hover.getMakePredefinedHover({
 					type: "entries",
-					name: optTitle ? optTitle.toTitleCase() : "Footnote",
-					entries: [footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean),
+					name: "Footnote",
+					entries: [footnoteText, optTitle ? `\u2014 {@note ${optTitle}}` : ""].filter(Boolean),
 				});
 				textStack[0] += `<span class="help" ${hoverMeta.html}>`;
 				this._recursiveRender(displayText, textStack, meta);

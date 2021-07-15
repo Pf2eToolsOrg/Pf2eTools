@@ -130,7 +130,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You perform first aid on an adjacent creature that is {@condition dying|CRB} or bleeding. If a creature is both {@condition dying|CRB} and bleeding, choose which ailment you're trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect.",
 				{
@@ -725,8 +725,8 @@
 			},
 			"entries": [
 				"You issue an order to an animal. Attempt a {@skill Nature} check against the animal's Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.",
-				"You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).",
-				"Most animals know the {@action Leap|CRB}, {@action Seek|CRB}, {@action Stand|CRB}, {@action Stride|CRB}, and {@action Strike|CRB} basic actions. If an animal knows an activity, such as a horse's Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity's number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to Stride three times or to Stride twice and then Strike.",
+				"You automatically fail if the animal is {@condition hostile} or {@condition unfriendly} to you. If the animal is {@condition helpful} to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like {@feat Ride}.",
+				"Most animals know the {@action Leap|CRB}, {@action Seek|CRB}, {@action Drop Prone}, {@action Stand|CRB}, {@action Stride|CRB}, and {@action Strike|CRB} basic actions. If an animal knows an activity, such as a horse's Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity's number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to {@action Stride} three times or to {@action Stride} twice and then {@action Strike}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1166,7 +1166,7 @@
 			"page": 56,
 			"activity": {
 				"number": 1,
-				"unit": "action",
+				"unit": "single",
 				"entry": "{@as 1}"
 			},
 			"traits": [
@@ -1758,9 +1758,9 @@
 					]
 				}
 			},
-			"requirements": "You have at least one free hand. Your target cannot be more than one size larger than you.",
+			"requirements": "You have at least one free hand or have your target {@condition grappled} or {@condition restrained}. Your target cannot be more than one size larger than you.",
 			"entries": [
-				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.",
+				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed or restrained.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1906,7 +1906,7 @@
 					]
 				}
 			},
-			"requirements": "You have a {@item alchemist's tools|CRB} (page 287).",
+			"requirements": "You have a {@item alchemist's tools|CRB}.",
 			"entries": [
 				"You can identify the nature of an alchemical item with 10 minutes of testing using {@item alchemist's tools|CRB}. If your attempt is interrupted in any way, you must start over.",
 				{
@@ -2710,7 +2710,7 @@
 			"page": 58,
 			"activity": {
 				"number": 1,
-				"unit": "action",
+				"unit": "single",
 				"entry": "{@as 1}"
 			},
 			"traits": [
@@ -3924,7 +3924,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You spend at least 8 hours caring for a diseased creature. Attempt a {@skill Medicine} check against the disease's DC. After you attempt to Treat a Disease for a creature, you can't try again until after that creature's next save against the disease.",
 				{
@@ -3957,7 +3957,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison's DC. After you attempt to Treat a Poison for a creature, you can't try again until after the next time that creature attempts a save against the poison.",
 				{
@@ -3992,7 +3992,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
 				"The {@skill Medicine} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you're an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you're a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you're legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
