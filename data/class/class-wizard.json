@@ -412,7 +412,7 @@
 					"page": 204,
 					"name": "Spellbook",
 					"entries": [
-						"Every arcane spell has a written version, usually recorded in a spellbook. You start with a spellbook worth 10 sp or less (as detailed on page 291), which you receive for free and must study to prepare your spells each day. The spellbook contains your choice of 10 {@filter arcane cantrips|spells|level=0|tradition=arcane|rarity=common} and five {@filter 1st-level arcane spells|spells|level=1|tradition=arcane|rarity=common}. You choose these from the common spells on the arcane spell list from this book or from other arcane spells you gain access to.",
+						"Every arcane spell has a written version, usually recorded in a spellbook. You start with a spellbook worth 10 sp or less (as detailed on page 291), which you receive for free and must study to prepare your spells each day. The spellbook contains your choice of 10 {@filter arcane cantrips|spells||level=0|tradition=arcane|rarity=common} and five {@filter 1st-level arcane spells|spells||level=1|tradition=arcane|rarity=common}. You choose these from the common spells on the arcane spell list from this book or from other arcane spells you gain access to.",
 						"Your spellbook's form and name are up to you. It might be a musty, leather-bound tome or an assortment of thin metal disks connected to a brass ring; its name might be {@i esoteric, like The Crimson Libram, or something more academic, like A Field Study in Practical Transmutation.}",
 						"Each time you gain a level, you add two more arcane spells to your spellbook, of any level of spell you can cast.",
 						"You can also use the {@skill Arcana} skill to add other spells that you find in your adventures, as described on page 241."
@@ -834,7 +834,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -845,7 +845,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every even-numbered level thereafter, you gain a {@filter wizard class feat|feats|type=class|classes=wizard|level=[1;2]}."
+				"At 2nd level and every even-numbered level thereafter, you gain a {@filter wizard class feat|feats||type=class|classes=wizard|level=[1;2]}."
 			]
 		},
 		{
@@ -856,7 +856,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats|type=general}. General feats are listed in Chapter 5."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. General feats are listed in Chapter 5."
 			]
 		},
 		{
@@ -890,7 +890,7 @@
 			"classSource": "CRB",
 			"level": 5,
 			"entries": [
-				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats|type=ancestry} at 5th level and every 4 levels thereafter.",
+				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats||type=ancestry} at 5th level and every 4 levels thereafter.",
 				"The list of ancestry feats available to you can be found in your ancestry's entry in Chapter 2."
 			]
 		},
@@ -1032,7 +1032,7 @@
 					"name": "Abjuration",
 					"type": "pf2-h4",
 					"entries": [
-						"As an abjurer, you master the art of protection, strengthening defenses, preventing attacks, and even turning magic against itself. You understand that an ounce of prevention is worth a pound of cure. You add one {@filter 1st-level abjuration spell|spells|tradition=arcane|school=a|level=1} (such as {@i {@spell feather fall}}) to your spellbook. You learn the {@spell protective ward} school spell."
+						"As an abjurer, you master the art of protection, strengthening defenses, preventing attacks, and even turning magic against itself. You understand that an ounce of prevention is worth a pound of cure. You add one {@filter 1st-level abjuration spell|spells||tradition=arcane|school=a|level=1} (such as {@i {@spell feather fall}}) to your spellbook. You learn the {@spell protective ward} school spell."
 					]
 				}
 			]
@@ -1051,7 +1051,7 @@
 					"type": "pf2-h4",
 					"name": "Conjuration",
 					"entries": [
-						"As a conjurer, you summon creatures and objects from places beyond, and use magic to transport to distant locales. You understand that the true key to victory is strength in numbers. You add one {@filter 1st-level conjuration spell|spells|tradition=arcane|school=c|level=1} (such as {@i {@spell summon animal}}) to your spellbook. You learn the {@spell augment summoning} school spell."
+						"As a conjurer, you summon creatures and objects from places beyond, and use magic to transport to distant locales. You understand that the true key to victory is strength in numbers. You add one {@filter 1st-level conjuration spell|spells||tradition=arcane|school=c|level=1} (such as {@i {@spell summon animal}}) to your spellbook. You learn the {@spell augment summoning} school spell."
 					]
 				}
 			]
@@ -1070,7 +1070,7 @@
 					"type": "pf2-h4",
 					"name": "Divination",
 					"entries": [
-						"As a diviner, you master remote viewing and prescience, learning information that can transform investigations, research, and battle strategies. You understand that knowledge is power. You add one {@filter 1st-level divination spell|spells|tradition=arcane|school=d|level=1} spell (such as {@i {@spell true strike}}) to your spellbook. You learn the {@spell diviner's sight} school spell."
+						"As a diviner, you master remote viewing and prescience, learning information that can transform investigations, research, and battle strategies. You understand that knowledge is power. You add one {@filter 1st-level divination spell|spells||tradition=arcane|school=d|level=1} spell (such as {@i {@spell true strike}}) to your spellbook. You learn the {@spell diviner's sight} school spell."
 					]
 				}
 			]
@@ -1089,7 +1089,7 @@
 					"type": "pf2-h4",
 					"name": "Enchantment",
 					"entries": [
-						"As an enchanter, you use magic to manipulate others' minds. You might use your abilities to subtly influence others or seize control over them. You understand that the mind surpasses matter. You add one {@filter 1st-level enchantment spell|spells|tradition=arcane|school=e|level=1} (such as {@i {@spell charm}}) to your spellbook. You learn the {@spell charming words} school spell."
+						"As an enchanter, you use magic to manipulate others' minds. You might use your abilities to subtly influence others or seize control over them. You understand that the mind surpasses matter. You add one {@filter 1st-level enchantment spell|spells||tradition=arcane|school=e|level=1} (such as {@i {@spell charm}}) to your spellbook. You learn the {@spell charming words} school spell."
 					]
 				}
 			]
@@ -1109,7 +1109,7 @@
 					"name": "Evocation",
 					"entries": [
 						"As an evoker, you revel in the raw power of magic, using it to create and destroy with ease.",
-						"You can call forth elements, forces, and energy to devastate your foes or to assist you in other ways. You understand that the most direct approach is the most elegant. You add one {@filter 1st-level evocation spell|spells|tradition=arcane|school=v|level=1} (such as {@i {@spell shocking grasp}}) to your spellbook. You learn the {@spell force bolt} school spell."
+						"You can call forth elements, forces, and energy to devastate your foes or to assist you in other ways. You understand that the most direct approach is the most elegant. You add one {@filter 1st-level evocation spell|spells||tradition=arcane|school=v|level=1} (such as {@i {@spell shocking grasp}}) to your spellbook. You learn the {@spell force bolt} school spell."
 					]
 				}
 			]
@@ -1128,7 +1128,7 @@
 					"type": "pf2-h4",
 					"name": "Illusion",
 					"entries": [
-						"As an illusionist, you use magic to create images, figments, and phantasms to baffle your enemies. You understand that perception is reality. You add one {@filter 1st-level illusion spell|spells|tradition=arcane|school=i|level=1} (such as {@i {@spell illusory object}}) to your spellbook. You learn the {@spell warped terrain} school spell."
+						"As an illusionist, you use magic to create images, figments, and phantasms to baffle your enemies. You understand that perception is reality. You add one {@filter 1st-level illusion spell|spells||tradition=arcane|school=i|level=1} (such as {@i {@spell illusory object}}) to your spellbook. You learn the {@spell warped terrain} school spell."
 					]
 				}
 			]
@@ -1147,7 +1147,7 @@
 					"type": "pf2-h4",
 					"name": "Necromancy",
 					"entries": [
-						"As a necromancer, you call upon the powers of life and death. While your school is often vilified for its association with raising the undead, you understand that control over life also means control over healing. You add one {@filter 1st-level necromancy spell|spells|tradition=arcane|school=n|level=1} (such as {@i {@spell grim tendrils}}) to your spellbook. You learn the {@spell call of the grave} school spell."
+						"As a necromancer, you call upon the powers of life and death. While your school is often vilified for its association with raising the undead, you understand that control over life also means control over healing. You add one {@filter 1st-level necromancy spell|spells||tradition=arcane|school=n|level=1} (such as {@i {@spell grim tendrils}}) to your spellbook. You learn the {@spell call of the grave} school spell."
 					]
 				}
 			]
@@ -1166,7 +1166,7 @@
 					"type": "pf2-h4",
 					"name": "Transmutation",
 					"entries": [
-						"As a transmuter, you alter the physical properties of things, transforming creatures, objects, the natural world, and even yourself at your whim. You understand that change is inevitable. You add one {@filter 1st-level transmutation spell|spells|tradition=arcane|school=t|level=1} (such as {@i {@spell magic weapon}}) to your spellbook. You learn the {@spell physical boost} school spell."
+						"As a transmuter, you alter the physical properties of things, transforming creatures, objects, the natural world, and even yourself at your whim. You understand that change is inevitable. You add one {@filter 1st-level transmutation spell|spells||tradition=arcane|school=t|level=1} (such as {@i {@spell magic weapon}}) to your spellbook. You learn the {@spell physical boost} school spell."
 					]
 				}
 			]
@@ -1185,7 +1185,7 @@
 					"type": "pf2-h2",
 					"name": "Universalist",
 					"entries": [
-						"Instead of specializing narrowly in an arcane school, you can become a universalist wizard\u2014by studying all the schools equally, you devote yourself to understanding the full breadth of the arcane arts. For each level of spell you can cast, you can use {@action Drain Bonded item} once per day to recall a spell of that level (instead of using it only once per day in total). You gain an extra {@filter wizard class feat|feats|type=class|classes=wizard|level=[1;1]}, and you add one {@filter 1st-level spell|spells|tradition=arcane|level=1} of your choice to your spellbook."
+						"Instead of specializing narrowly in an arcane school, you can become a universalist wizard\u2014by studying all the schools equally, you devote yourself to understanding the full breadth of the arcane arts. For each level of spell you can cast, you can use {@action Drain Bonded item} once per day to recall a spell of that level (instead of using it only once per day in total). You gain an extra {@filter wizard class feat|feats||type=class|classes=wizard|level=[1;1]}, and you add one {@filter 1st-level spell|spells||tradition=arcane|level=1} of your choice to your spellbook."
 					]
 				}
 			]
@@ -1225,7 +1225,7 @@
 					"name": "Metamagical Experimentation",
 					"entries": [
 						"You've realized that the practice known as metamagic is a holdover from a time long ago, when wizards had to work out their own spells and variations rather than rely on spells recorded by others and passed down over the years. This allows you efficient access to various metamagic effects.",
-						"You gain a {@filter 1st-level metamagic wizard feat|feats|general=metamagic|classes=wizard|level=[1;1]} as a bonus feat. Starting at 4th level, during your daily preparations, you can gain a metamagic wizard feat of your choice that has a level requirement of no more than half your level, which you can use until your next daily preparations."
+						"You gain a {@filter 1st-level metamagic wizard feat|feats||general=metamagic|classes=wizard|level=[1;1]} as a bonus feat. Starting at 4th level, during your daily preparations, you can gain a metamagic wizard feat of your choice that has a level requirement of no more than half your level, which you can use until your next daily preparations."
 					]
 				}
 			]

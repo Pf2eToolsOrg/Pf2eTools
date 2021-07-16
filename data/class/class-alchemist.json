@@ -311,7 +311,7 @@
 			"level": 1,
 			"entries": [
 				"You understand the complex interactions of natural and unnatural substances and can concoct alchemical items to meet your needs. You can do this using normal reagents and the {@action Craft} activity, or you can use special infused reagents that allow you to craft temporary items quickly and at no cost. Over time, you can create more and more alchemical items for free, and since each of,  them becomes more and more powerful, you advance in power dramatically, leaving behind those who don't understand your strange science.",
-				"You gain the {@feat Alchemical Crafting|CRB} feat, even if you don't meet that feat's prerequisites, and you gain the four {@filter common 1st-level alchemical formulas|items|general=alchemical|level=[1;1]|rarity=common|type=null} granted by that feat.  You can use this feat to create alchemical items as long as you have the items' formulas in your formula book.",
+				"You gain the {@feat Alchemical Crafting|CRB} feat, even if you don't meet that feat's prerequisites, and you gain the four {@filter common 1st-level alchemical formulas|items||general=alchemical|level=[1;1]|rarity=common|type=null} granted by that feat.  You can use this feat to create alchemical items as long as you have the items' formulas in your formula book.",
 				{
 					"type": "pf2-h4",
 					"page": 72,
@@ -349,8 +349,7 @@
 							"requirements": "You have the formula for the alchemical item you're creating, and you're either holding or wearing {@item alchemist's tools|CRB}.",
 							"activity": {
 								"number": 1,
-								"unit": "single",
-								"entry": "{@as 1}"
+								"unit": "action"
 							},
 							"entries": [
 								"You swiftly mix up a short-lived alchemical item to use at a moment's notice. You create a single alchemical item of your advanced alchemy level or lower that's in your formula book without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the start of your next turn."
@@ -368,7 +367,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard {@item formula book} worth 10 sp or less for free. The formula book contains the formulas for two {@filter common 1st-level alchemical items|items|general=alchemical|level=[1;1]|rarity=common|type=null} of your choice, in addition to those you gained from {@feat Alchemical Crafting} and your research field.",
+				"An alchemist keeps meticulous records of the formulas for every item they can create. You start with a standard {@item formula book} worth 10 sp or less for free. The formula book contains the formulas for two {@filter common 1st-level alchemical items|items||general=alchemical|level=[1;1]|rarity=common|type=null} of your choice, in addition to those you gained from {@feat Alchemical Crafting} and your research field.",
 				"Each time you gain a level, you can add the formulas for two common alchemical items to your formula book. These new formulas can be for any level of item you can create. You learn these formulas automatically, but it's also possible to find or buy additional formulas in settlements or from other alchemists, or to invent them with the {@feat Inventor} feat."
 			]
 		},
@@ -392,7 +391,7 @@
 			"classSource": "CRB",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level thereafter, you gain an {@filter alchemist class feat|feats|type=class|classes=alchemist|level=[1;1]}."
+				"At 1st level and every even-numbered level thereafter, you gain an {@filter alchemist class feat|feats||type=class|classes=alchemist|level=[1;1]}."
 			]
 		},
 		{
@@ -403,7 +402,7 @@
 			"classSource": "CRB",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill}. Skill feats can be found in Chapter 5 and have the skill trait. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -414,7 +413,7 @@
 			"classSource": "CRB",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats|type=general}. General feats are listed in Chapter 5."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}. General feats are listed in Chapter 5."
 			]
 		},
 		{
@@ -448,7 +447,7 @@
 			"classSource": "CRB",
 			"level": 5,
 			"entries": [
-				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats|type=ancestry} at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry's entry in Chapter 2."
+				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats||type=ancestry} at 5th level and every 4 levels thereafter. The list of ancestry feats available to you can be found in your ancestry's entry in Chapter 2."
 			]
 		},
 		{
@@ -665,7 +664,7 @@
 					"type": "pf2-h4",
 					"name": "Bomber",
 					"entries": [
-						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two {@filter 1st-level alchemical bombs|items|category=bomb|level=[1;1]|type=null} in your formula book, in addition to your other formulas.",
+						"You specialize in explosions and other violent alchemical reactions. You start with the formulas for two {@filter 1st-level alchemical bombs|items||category=bomb|level=[1;1]|type=null} in your formula book, in addition to your other formulas.",
 						"When throwing an alchemical bomb with the {@trait splash} trait, you can deal splash damage to only your primary target instead of the usual splash area."
 					]
 				}
@@ -967,7 +966,7 @@
 					"source": "CRB",
 					"page": 73,
 					"entries": [
-						"You focus on bizarre mutagenic transformations that sacrifice one aspect of a creature's physical or psychological being in order to strengthen another. You start with the formulas for two {@filter 1st-level mutagens|items|item=mutagen|level=[1;1]|type=null} in your formula book, in addition to your other formulas.",
+						"You focus on bizarre mutagenic transformations that sacrifice one aspect of a creature's physical or psychological being in order to strengthen another. You start with the formulas for two {@filter 1st-level mutagens|items||item=mutagen|level=[1;1]|type=null} in your formula book, in addition to your other formulas.",
 						{
 							"type": "ability",
 							"style": "full",
@@ -1133,7 +1132,7 @@
 					"type": "pf2-h4",
 					"name": "Toxicologist",
 					"entries": [
-						"You specialize in toxins and venoms of all types. You start with the formulas for two {@filter common 1st-level alchemical poisons|items|category=poison|level=[1;1]|rarity=common|type=null} in your formula book, in addition to your other formulas. You can apply an injury poison you're holding to a weapon you're wielding as a single action, rather than as a 2-action activity, and you can change the DCs of your infused poisons to your class DC if it's higher."
+						"You specialize in toxins and venoms of all types. You start with the formulas for two {@filter common 1st-level alchemical poisons|items||category=poison|level=[1;1]|rarity=common|type=null} in your formula book, in addition to your other formulas. You can apply an injury poison you're holding to a weapon you're wielding as a single action, rather than as a 2-action activity, and you can change the DCs of your infused poisons to your class DC if it's higher."
 					]
 				}
 			]
@@ -1183,7 +1182,7 @@
 							"type": "item",
 							"name": "Toxicologist",
 							"entries": [
-								"Choose two {@filter common 1st-level alchemical poisons|items|category=poison|level=[1;1]|rarity=common|type=null}."
+								"Choose two {@filter common 1st-level alchemical poisons|items||category=poison|level=[1;1]|rarity=common|type=null}."
 							]
 						}
 					]
@@ -1209,7 +1208,7 @@
 							"type": "item",
 							"name": "Toxicologist",
 							"entries": [
-								"Choose two {@filter common 5th-level or lower alchemical poisons|items|rarity=common|category=poison|level=[0;5]}."
+								"Choose two {@filter common 5th-level or lower alchemical poisons|items||rarity=common|category=poison|level=[0;5]}."
 							]
 						}
 					]
@@ -1261,7 +1260,7 @@
 							"type": "item",
 							"name": "Toxicologist",
 							"entries": [
-								"Choose two {@filter common 11th-level or lower alchemical poisons|items|rarity=common|category=poison|level=[0;11]}."
+								"Choose two {@filter common 11th-level or lower alchemical poisons|items||rarity=common|category=poison|level=[0;11]}."
 							]
 						}
 					]
