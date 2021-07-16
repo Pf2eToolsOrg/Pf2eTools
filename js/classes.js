@@ -1189,7 +1189,7 @@ class ClassesPage extends BaseComponent {
 		const imageLinks = ((this.activeClass.summary || {}).images || []).map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
 		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1">Images</button>`).click(() => {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
-				title: "Images are available in the Archives of Nethys.",
+				title: "Images are available.",
 			});
 			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
 			$$`${imageLinks}${$btnClose}`.appendTo($modalInner);
