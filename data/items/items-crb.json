@@ -1289,7 +1289,7 @@
 			"category": "Shield",
 			"group": "Shield",
 			"entries": [
-				"This wooden shield (Hardness 6, HP 24, BT 12) is carved with images of overlapping fletched arrows.",
+				"This remarkable wooden shield (Hardness 10, HP 60, BT 30) is carved with images of overlapping fletched arrows.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -1301,12 +1301,12 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": null,
+					"frequency": "once per minute",
 					"trigger": "A ranged weapon {@action Strike} targets a creature within 15 feet of you when you have this shield raised, and the attacker has not yet rolled their attack",
 					"requirements": null,
 					"entries": [
 						"The triggering {@action Strike} targets you instead of its normal target.",
-						"If it hits, you gain the effects of the Shield Block reaction."
+						"If it hits, you gain the effects of the {@action Shield Block} reaction."
 					]
 				}
 			],
@@ -1608,8 +1608,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1861,8 +1861,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is {@condition clumsy}.",
-				"Benefit You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
-				"Drawback You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
+				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
+				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -1970,8 +1970,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3774,8 +3774,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-				"Benefit You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
-				"Drawback You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
+				"{@b Benefit} You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
+				"{@b Drawback} You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
 			],
 			"generic": "G",
 			"variants": [
@@ -5161,7 +5161,7 @@
 				"amount": 450,
 				"note": null
 			},
-			"usage": "held in 2 hands",
+			"usage": "held in 1 hand",
 			"bulk": "L",
 			"activate": {
 				"activity": {
@@ -5222,6 +5222,7 @@
 				"amount": 320,
 				"note": null
 			},
+			"usage": "held in 2 hands",
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
@@ -5547,7 +5548,7 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"Made from a treated sliver of cold iron, this talisman allows you to counteract {@trait magical} effects. When you activate the dispelling sliver, it attempts to counteract a single spell active on the target, with the effects of an 8th-level {@spell dispel magic} spell.",
+				"Made from a treated sliver of cold iron, this talisman allows you to counteract {@trait magical} effects. When you activate the dispelling sliver, it attempts to counteract a single spell active on the target, with the effects of an 8th-level {@spell dispel magic} spell (counteract modifier +29).",
 				"If you activate the talisman on a successful Dispelling Slice, the talisman attempts to counteract all spells active on the target."
 			],
 			"generic": false
@@ -5605,6 +5606,44 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Grevious",
+			"source": "CRB",
+			"page": 584,
+			"type": "Rune",
+			"level": "9",
+			"traits": [
+				"Magical",
+				"Enchantment"
+			],
+			"usage": "etched onto a melee weapon",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"When your attack roll with this weapon is a critical hit and gains the critical specialization effect, you gain an additional benefit depending on the weapon group.",
+				{
+					"type": "list",
+					"style": "list-hang",
+					"items": [
+						"{@b Axe} You can damage a third creature, with the same restrictions.",
+						"{@b Bow} The {@skill Athletics} check to pull the missile free is DC 20.",
+						"{@b Brawling} The target takes a –4 circumstance penalty to its save.",
+						"{@b Club} You can knock the target up to 15 feet away.",
+						"{@b Dart} The base {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
+						"{@b Flail} You move the target 5 feet. You can’t move it away from you, but you can move it in another direction of your choice.",
+						"{@b Hammer} You can also knock the target 5 feet away from you.",
+						"{@b Knife} The target takes a –5-foot status penalty to its Speed while it has the {@condition persistent damage||persistent bleed damage}.",
+						"{@b Pick} The extra damage from the critical specialization effect increases to 4 per weapon damage die.",
+						"{@b Polearm} You can move the target up to 10 feet.",
+						"{@b Shield} You can knock the target up to 10 feet away.",
+						"{@b Sling} The target also takes a –10-foot status penalty to its Speed for 1 round if it fails the save.",
+						"{@b Spear} The {@condition clumsy} condition lasts for 2 rounds.",
+						"{@b Sword} The target is {@condition flat-footed} until the end of your next turn."
+					]
+				}
+			],
+			"generic": "G"
 		},
 		{
 			"name": "Doubling Rings",
@@ -7541,8 +7580,8 @@
 			"category": "Shield",
 			"group": "Shield",
 			"entries": [
-				"The religious symbol of Torag, the forge god\u2014an ornate hammer of dwarven construction\u2014adorns the face of this steel shield (Hardness 6, HP 24, BT 12). The shield is a religious symbol of Torag.",
-				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a Shield Block, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
+				"The religious symbol of Torag, the forge god—an ornate hammer of dwarven construction—adorns the face of this reinforced steel shield (Hardness 10, HP 24, BT 12). The shield is a religious symbol of Torag.",
+				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a {@action Shield Block}, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -7555,7 +7594,7 @@
 						"command (fire)"
 					],
 					"frequency": null,
-					"trigger": "You use the forge warden to Shield Block an adjacent creature's attack and the shield takes damage",
+					"trigger": "You use the forge warden to {@action Shield Block} an adjacent creature's attack and the shield takes damage",
 					"requirements": null,
 					"entries": [
 						"The attacking creature takes {@damage 2d6} fire damage."
@@ -7942,8 +7981,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8004,8 +8043,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8066,8 +8105,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8413,8 +8452,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8896,7 +8935,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You can soothe a willing, adjacent creature's wounds, restoring {@dice 2d6+7} Hit Points to that creature. This is a positive {@trait healing} effect. You can't harm undead with this healing."
+						"You can soothe a willing, living, adjacent creature, restoring {@dice 2d6+7} Hit Points to that creature. This is a {@trait positive} {@trait healing} effect. You can't harm undead with this healing."
 					]
 				}
 			],
@@ -9545,8 +9584,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10222,8 +10261,8 @@
 			"category": "Elixir",
 			"entries": [
 				"After you drink this mutagen, your body becomes thick and sturdy. You exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-				"Benefit You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
-				"Drawback You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
+				"{@b Benefit} You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
+				"{@b Drawback} You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -10468,8 +10507,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10736,6 +10775,7 @@
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"category": "Held",
+			"craftReq": "You must supply a casting of {@spell charm} of the appropriate level.",
 			"entries": [
 				"A maestro's instrument can be crafted in the form of any variety of handheld musical instrument. A maestro's instrument grants you a +1 item bonus to {@skill Performance} checks while playing music with the instrument.",
 				{
@@ -10753,7 +10793,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You can play the instrument to produce the effects of a {@spell charm} spell."
+						"You play the instrument, causing it to cast a DC 17 {@spell charm} spell."
 					]
 				}
 			],
@@ -10778,7 +10818,7 @@
 						"note": null
 					},
 					"entries": [
-						"The item bonus is +2, and the {@spell charm} spell is 4th level."
+						"The item bonus is +2, and the {@spell charm} spell is 4th level (DC 27)."
 					]
 				},
 				{
@@ -10791,7 +10831,7 @@
 					},
 					"craftReq": "You must supply a casting of charm of the appropriate level.",
 					"entries": [
-						"The item bonus is +3, and the {@spell charm} spell is 8th level."
+						"The item bonus is +3, and the {@spell charm} spell is 8th level (DC 38)."
 					]
 				}
 			]
@@ -11838,8 +11878,10 @@
 						"note": null
 					},
 					"bulk": "L",
-					"craftReq": "mithral worth at least 50 gp The shield has Hardness 3, HP 12, and BT 6.",
-					"entries": []
+					"craftReq": "mithral worth at least 50 gp",
+					"entries": [
+						"The shield has Hardness 3, HP 12, and BT 6."
+					]
 				},
 				{
 					"type": "standard-grade mithral shield",
@@ -11849,9 +11891,11 @@
 						"amount": 440,
 						"note": null
 					},
-					"bulk": "1",
-					"craftReq": "mithral worth at least 55 gp The shield has Hardness 5, HP 20, BT 10.",
-					"entries": []
+					"bulk": "L",
+					"craftReq": "mithral worth at least 55 gp",
+					"entries": [
+						"The shield has Hardness 5, HP 20, BT 10."
+					]
 				},
 				{
 					"type": "high-grade mithral buckler",
@@ -11862,8 +11906,10 @@
 						"note": null
 					},
 					"bulk": "L",
-					"craftReq": "mithral worth at least 4,000 gp The shield has Hardness 6, HP 24, and BT 12.",
-					"entries": []
+					"craftReq": "mithral worth at least 4,000 gp",
+					"entries": [
+						"The shield has Hardness 6, HP 24, and BT 12."
+					]
 				},
 				{
 					"type": "high-grade mithral shield",
@@ -11878,8 +11924,9 @@
 						"hp": 32,
 						"bt": 16
 					},
+					"craftReq": "{@action Craft} Bulk 1; Requirements at least 4,400 gp of mithral",
 					"entries": [
-						"{@action Craft} Bulk 1; Requirements at least 4,400 gp of mithral The shield has Hardness 8, HP 32, and BT 16."
+						"The shield has Hardness 8, HP 32, and BT 16."
 					]
 				}
 			]
@@ -13823,8 +13870,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13892,8 +13939,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features become thin and angular. You become swifter and nimbler, but your body also becomes fragile.",
-				"Benefit You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and ranged attack rolls, and you gain the listed status bonus to your Speed.",
-				"Drawback You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
+				"{@b Benefit} You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed.",
+				"{@b Drawback} You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -15341,9 +15388,9 @@
 			"category": "Elixir",
 			"entries": [
 				"You gain inner serenity, focused on fine details and steeled against mental assaults, but you find violence off-putting.",
-				"Benefit You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks.",
+				"{@b Benefit} You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks.",
 				"This bonus improves when you attempt Will saves against {@trait mental} effects.",
-				"Drawback You take a \u20131 penalty to attack rolls and save DCs of offensive spells, and a \u20131 penalty per damage die to all weapon, unarmed attack, and spell damage."
+				"{@b Drawback} You take a \u20131 penalty to attack rolls and save DCs of offensive spells, and a \u20131 penalty per damage die to all weapon, unarmed attack, and spell damage."
 			],
 			"generic": "G",
 			"variants": [
@@ -15455,7 +15502,7 @@
 			"variants": [
 				{
 					"type": "shadow",
-					"level": 3,
+					"level": 5,
 					"price": {
 						"coin": "gp",
 						"amount": 55,
@@ -15512,8 +15559,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16095,8 +16142,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features become striking and your voice becomes musical and commanding, though facts and figures become hazy for you and emotion clouds your ability to reason.",
-				"Benefit You gain an item bonus to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks. Your critical failures with any of these skill become failures instead.",
-				"Drawback You take a \u20132 item penalty to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures on checks to {@action Recall Knowledge} become critical failures."
+				"{@b Benefit} You gain an item bonus to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks. Your critical failures with any of these skill become failures instead.",
+				"{@b Drawback} You take a \u20132 item penalty to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures on checks to {@action Recall Knowledge} become critical failures."
 			],
 			"generic": "G",
 			"variants": [
@@ -16296,7 +16343,7 @@
 			"source": "CRB",
 			"page": 583,
 			"type": "Rune",
-			"level": "3+",
+			"level": "5+",
 			"traits": [
 				"Magical",
 				"Transmutation"
@@ -16311,7 +16358,7 @@
 			"variants": [
 				{
 					"type": "slick",
-					"level": 3,
+					"level": 5,
 					"price": {
 						"coin": "gp",
 						"amount": 45,
@@ -18300,7 +18347,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast a 6th-level {@spell light}ning bolt (DC 33)."
+						"You cast a 6th-level {@spell lightning bolt} (DC 33)."
 					]
 				},
 				{
@@ -18343,7 +18390,7 @@
 						"note": null
 					},
 					"entries": [
-						"This is a +3 greater striking greater shock rapier. When activating the sword to cast {@spell light}ning bolt, the spell is 8th level."
+						"This is a +3 greater striking greater shock rapier. When activating the sword to cast {@spell lightning bolt}, the spell is 8th level (DC 38)."
 					]
 				}
 			]
@@ -21005,8 +21052,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"unit": "double",
+					"entry": "{@as 2}"
 				},
 				"components": "Interact",
 				"requirements": null,

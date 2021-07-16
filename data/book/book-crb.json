@@ -5928,9 +5928,9 @@
 							"page": 273,
 							"name": "Broken",
 							"entries": [
-								"Broken is a condition that affects objects. An object is broken when damage has reduced its Hit Points below its Broken Threshold. A broken object can't be used for its normal function, nor does it grant bonuses\u2014with the exception of armor. Broken armor still grants its item bonus to AC, but it also imparts a status penalty to AC depending on its category: \u20131 for broken light armor, \u20132 for broken medium armor, or \u20133 for broken heavy armor.",
+								"Broken is a condition that affects objects. An object is broken when damage has reduced its Hit Points to equal or less than its Broken Threshold. A broken object can’t be used for its normal function, nor does it grant bonuses— with the exception of armor. Broken armor still grants its item bonus to AC, but it also imparts a status penalty to AC depending on its category: –1 for broken light armor, –2 for broken medium armor, or –3 for broken heavy armor.",
 								"A {@condition broken} item still imposes penalties and limitations normally incurred by carrying, holding, or wearing it. For example, broken armor would still impose its Dexterity modifier cap, check penalty, and so forth.",
-								"If an effect makes an item {@condition broken} automatically and the item has more HP than its Broken Threshold, that effect also reduces the item's current HP to the Broken Threshold."
+								"If an effect makes an item {@condition broken} automatically and the item has more HP than its Broken Threshold, that effect also reduces the item’s current HP to the Broken Threshold."
 							]
 						},
 						{
@@ -12997,6 +12997,14 @@
 						{
 							"type": "pf2-h3",
 							"page": 461,
+							"name": "Fast Healing and Regeneration",
+							"entries": [
+								"A creature with fast healing or regeneration regains the listed amount of Hit Points each round at the beginning of its turn. A creature with regeneration has additional benefits. Its dying condition can’t increase to a value that would kill it (this stops most creatures from going beyond dying 3) as long as its regeneration is active. If it takes damage of a type listed in the regeneration entry, its regeneration deactivates until the end of its next turn, including against the triggering damage."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"page": 461,
 							"name": "Items and Hit Points",
 							"entries": [
 								"Items have Hit Points like creatures, but the rules for damaging them are different (page 272). An item has a Hardness statistic that reduces damage the item takes by that amount. The item then takes any damage left over. If an item is reduced to 0 HP, it's destroyed. An item also has a Broken Threshold. If its HP are reduced to this amount or lower, it's broken, meaning it can't be used for its normal function and it doesn't grant bonuses. Damaging an unattended item usually requires attacking it directly, and can be difficult due to that item's Hardness and immunities. You usually can't attack an attended object (one on a creature's person)."
@@ -18142,7 +18150,7 @@
 							"page": 521,
 							"name": "Disabling a Hazard",
 							"entries": [
-								"The most versatile method for deactivating traps is the Disable a Device action of the Thievery skill, though most mechanical traps can also simply be smashed, and magical traps can usually be counteracted. Environmental hazards often can be overcome with Nature or Survival, and haunts can often be overcome with Occultism or Religion. The specific skill and DC required to disable a hazard are listed in the hazard's stat block. As with detecting a hazard, disabling a hazard might require a character to have a certain proficiency rank in the listed skill.",
+								"The most versatile method for deactivating traps is the Disable a Device action of the Thievery skill, though most mechanical traps can also simply be smashed, and magical traps can usually be counteracted. Environmental hazards often can be overcome with Nature or Survival, and haunts can often be overcome with Occultism or Religion. The specific skill and DC required to disable a hazard are listed in the hazard’s stat block. Like using Disable a Device, using these skills to disable a trap is a 2-action activity with the same degrees of success, though the activity might have different traits determined by the GM. As with detecting a hazard, disabling a hazard might require a character to have a certain proficiency rank in the listed skill.",
 								"A character must first detect a hazard (or have it pointed out to them) to try to deactivate it. They can attempt to deactivate a hazard whether or not it has already been triggered, though some hazards no longer pose a danger once their reactions have occurred, especially if there is no way for them to be reset.",
 								"For most hazards, a successful check for the listed skill against the DC in the stat block disables the hazard without triggering it. Any other means of deactivating the hazard are included in the hazard's stat block, as are any additional steps required to properly deactivate it.",
 								"A critical failure on any roll to disable a hazard triggers it, including a critical failure on a roll to counteract a magic hazard.",
@@ -18795,8 +18803,8 @@
 							"page": 535,
 							"name": "Craft Requirements",
 							"entries": [
-								"An item might require the crafter to provide specific raw materials, supply spells, have a certain alignment, or meet other special requirements to Craft it. These appear in the Craft Requirements entry of the stat block. Every item also has default requirements. The crafter must provide half the item's Price in raw materials (as explained in the Craft activity on page 244). In addition, creating alchemical items requires the Alchemical Crafting feat (page 258), creating magic items requires the Magical Crafting feat (page 263), and crafting snares requires the Snare Crafting feat (page 266). Finally, crafting higherlevel items requires greater proficiency in Crafting.",
-								"Unless stated otherwise, creating items of 9th level and higher requires you to have the master proficiency rank in Crafting, and items of 16th level and higher require legendary Crafting."
+								"An item might require the crafter to provide specific raw materials, supply spells, have a certain alignment, or meet other special requirements to Craft it. These appear in the Craft Requirements entry of the stat block. Every item also has default requirements, as listed in the Craft activity on page 244. In addition, creating alchemical items requires the Alchemical Crafting feat (page 258), creating magic items requires the Magical Crafting feat (page 263), and crafting snares requires the Snare Crafting feat (page 266). Finally, crafting higher-level items requires greater proficiency in Crafting. Unless stated otherwise, creating items of 9th level and higher requires you to have the master proficiency rank in Crafting, and items of 16th level and higher require legendary Crafting.",
+								"The GM might allow you to Craft a permanent item from a lower-level version of the same item as an upgrade. For example, you might upgrade a bag of holding from a type I to a type II bag, but you couldn’t upgrade a clear spindle aeon stone into an orange prism aeon stone. The cost for this upgrade is the full difference in Price between the items, and the Crafting check uses a DC for the item’s new level."
 							]
 						}
 					]
@@ -18835,8 +18843,8 @@
 									"page": 543,
 									"name": "Splash Trait",
 									"entries": [
-										"Most bombs also have the splash trait. When you use a thrown weapon with the splash trait, you don't add your Strength modifier to the damage roll. If an attack with a splash weapon fails, succeeds, or critically succeeds, all creatures within 5 feet of the target (including the target) take the listed splash damage. On a failure (but not a critical failure), the target of the attack still takes the splash damage. Add splash damage together with the initial damage against the target before applying the target's resistance or weakness. You don't multiply splash damage on a critical hit.",
-										"For example, if you threw a lesser acid flask and hit your target, that creature would take 1d6 persistent acid damage and 1 acid splash damage. All other creatures within 5 feet of it would take 1 acid splash damage. On a critical hit, the target would take 2d6 persistent acid damage, but the splash damage would still be 1. If you missed, the target would take 1 splash damage. If you critically failed, no one would take any damage."
+										"Most bombs also have the splash trait. When you use a thrown weapon with the splash trait, you don’t add your Strength modifier to the damage roll. If an attack with a splash weapon fails, succeeds, or critically succeeds, all creatures within 5 feet of the target (including the target) take the listed splash damage. On a critical failure, the bomb misses entirely, dealing no damage. Add splash damage together with the initial damage against the target before applying the target’s resistance or weakness. You don’t multiply splash damage on a critical hit.",
+										"For example, if you throw a lesser acid flask and hit your target, that creature takes 1 acid damage, 1d6 persistent acid damage, and 1 acid splash damage. All other creatures within 5 feet of it take 1 acid splash damage. On a critical hit, the target takes 2 acid damage and 2d6 persistent acid damage, but the splash damage is still 1. If you miss, the target and all creatures within 5 feet take only 1 splash damage. If you critically fail, no one takes any damage."
 									]
 								}
 							]
@@ -18860,9 +18868,8 @@
 									"page": 546,
 									"name": "Mutagens",
 									"entries": [
-										"These elixirs, indicated by the mutagen trait, temporarily transmogrify the subject's body and alter its mind. Typically, only alchemists have the expertise to craft mutagens, and some say they are the only ones reckless enough to use them.",
-										"A mutagen always conveys one or more beneficial effects (listed in the Benefit entry) paired with one or more detrimental effects (shown in the Drawback entry).",
-										"Mutagens are polymorph effects, meaning you can benefit from only one at a time (see page 301 for more information about the polymorph trait)."
+										"These elixirs, indicated by the mutagen trait, temporarily transmogrify the subject’s body and alter its mind. Typically, only alchemists have the expertise to craft mutagens, and some say they are the only ones reckless enough to use them.",
+										"A mutagen always conveys one or more beneficial effects (listed in the Benefit entry) and one or more detrimental effects (shown in the Drawback entry). Mutagens are polymorph effects (page 301), and a subsequent polymorph effect attempts to counteract an existing effect; the counteract check for a mutagen uses the item’s level and a modifier equal to that level’s DC – 10, as found on Table 10–5: DCs by Level (page 503)."
 									]
 								}
 							]
@@ -18882,11 +18889,10 @@
 									"name": "Method of Exposure",
 									"entries": [
 										"Each alchemical poison has one of the following traits, which define how a creature can be exposed to that poison.",
-										"{@b Contact:} A contact poison is activated by applying it to an item or directly onto a living creature's skin. The first creature to touch the affected item must attempt a saving throw against the poison; if the poison is applied directly, the creature must attempt a saving throw immediately when the poison touches its skin. Contact poisons are infeasible to apply to a creature via a weapon attack due to the logistics of delivering them without poisoning yourself.",
-										"Typically, the onset time of a contact poison is 1 minute.",
-										"{@b Ingested:} An ingested poison is activated by applying it to food or drink to be consumed by a living creature, or by placing it directly into a living creature's mouth. A creature attempts a saving throw against such a poison when it consumes the poison or the food or drink treated with the poison. The onset time of ingested poisons typically ranges anywhere from 1 minute to 1 day.",
-										"{@b Inhaled:} An inhaled poison is activated by unleashing it from its container. Once unleashed, the poison creates a cloud filling a 10-foot cube lasting for 1 minute or until a strong wind dissipates the cloud. Every creature entering this cloud is exposed to the poison and must attempt a saving throw against it; a creature aware of the poison before entering the cloud can use a single action to hold its breath and gain a +2 circumstance bonus to the saving throw for 1 round.",
-										"{@b Injury:} An injury poison is activated by applying it to a weapon, and it affects the target of the first Strike made using the poisoned weapon. If that Strike is a success and deals piercing or slashing damage, the target must attempt a saving throw against the poison. On a failed Strike, the target is unaffected, but the poison remains on the weapon and you can try again. On a critical failure, or if the Strike fails to deal slashing or piercing damage for some other reason, the poison is spent but the target is unaffected."
+										"{@indentFirst {@b Contact:} A contact poison is activated by applying it to an item or directly onto a living creature's skin. The first creature to touch the affected item must attempt a saving throw against the poison; if the poison is applied directly, the creature must attempt a saving throw immediately when the poison touches its skin. Contact poisons are infeasible to apply to a creature via a weapon attack due to the logistics of delivering them without poisoning yourself. Typically, the onset time of a contact poison is 1 minute.}",
+										"{@indentFirst {@b Ingested:} An ingested poison is activated by applying it to food or drink to be consumed by a living creature, or by placing it directly into a living creature's mouth. A creature attempts a saving throw against such a poison when it consumes the poison or the food or drink treated with the poison. The onset time of ingested poisons typically ranges anywhere from 1 minute to 1 day.}",
+										"{@indentFirst {@b Inhaled:} An inhaled poison is activated by unleashing it from its container. Once unleashed, the poison creates a cloud filling a 10-foot cube lasting for 1 minute or until a strong wind dissipates the cloud. Every creature entering this cloud is exposed to the poison and must attempt a saving throw against it; a creature aware of the poison before entering the cloud can use a single action to hold its breath and gain a +2 circumstance bonus to the saving throw for 1 round.}",
+										"{@indentFirst {@b Injury:} An injury poison is activated by applying it to a weapon or ammunition, and it affects the target of the first Strike made using the poisoned item. If that Strike is a success and deals piercing or slashing damage, the target must attempt a saving throw against the poison. On a failed Strike, the target is unaffected, but the poison remains on the weapon and you can try again. On a critical failure, or if the Strike fails to deal slashing or piercing damage for some other reason, the poison is spent but the target is unaffected.}"
 									]
 								}
 							]
@@ -19670,13 +19676,13 @@
 					"page": 592,
 					"name": "Staves",
 					"entries": [
-						"A magical staff is an indispensable accessory for an elite spellcaster. A staff is tied to one person during a preparation process, after which the preparer, and only the preparer, can harness the staff to cast a variety of spells throughout the day. The spells that can be cast from a staff are listed in bullet points organized by level under each version of the staff. Many staves can be found in multiple versions, with more powerful versions that contain more spells and can hold more charges\u2014such a staff always contains the spells of all lower-level versions, in addition to the spells listed in its own entry. All magical staves have the staff trait.",
+						"A magical staff is an indispensable accessory for an elite spellcaster. A staff is tied to one person during a preparation process, after which the preparer, and only the preparer, can harness the staff to cast a variety of spells throughout the day. The spells that can be cast from a staff are listed in bullet points organized by level under each version of the staff. Many staves can be found in multiple versions, with more powerful versions that contain more spells—such a staff always contains the spells of all lower-level versions, in addition to the spells listed in its own entry. All magical staves have the staff trait.",
 						{
 							"type": "pf2-h3",
 							"page": 592,
 							"name": "Casting Spells from a Staff",
 							"entries": [
-								"A staff gains charges when someone prepares it for the day. The person who prepared a staff can expend the charges to cast spells from it. You can Cast a Spell from a staff only if you have that spell on your spell list, are able to cast spells of the appropriate level, and expend a number of charges from the staff equal to the spell's level. Casting a Spell from a staff requires holding the staff (typically in one hand) and Activating the staff by Casting the Spell, which takes the spell's normal number of actions.",
+								"A staff gains charges when someone prepares it for the day. The person who prepared a staff can expend the charges to cast spells from it. You can Cast a Spell from a staff only if you have that spell on your spell list, are able to cast spells of the appropriate level, and expend a number of charges from the staff equal to the spell’s level. Casting a Spell from a staff requires holding the staff (typically in one hand) and Activating the staff by Casting the Spell, which takes the spell’s normal number of actions.",
 								"Use your spell attack roll and spell DC when Casting a Spell from a staff. The spell gains the appropriate trait for your magical tradition (arcane, divine, occult, or primal) and can be affected by any modifications you can normally make when casting spells, such as metamagic feats. You must provide any material components, cost, or focus required by the spell, or you fail to cast it.",
 								"Prepared spellcasters and spontaneous spellcasters each have a unique way of altering how their staves gain charges and the ways they can be used (see the Prepared Spellcasters and Spontaneous Spellcasters sections below).",
 								{
@@ -19684,7 +19690,7 @@
 									"page": 592,
 									"name": "Casting Cantrips from a Staff",
 									"entries": [
-										"If a staff contains a cantrip, you can cast that cantrip using the staff without expending any charges. The cantrip's level is heightened to the same level as cantrips you cast."
+										"If a staff contains a cantrip, you can cast that cantrip using the staff without expending any charges. The cantrip’s level is heightened to the same level as cantrips you cast."
 									]
 								}
 							]
@@ -19694,13 +19700,13 @@
 							"page": 592,
 							"name": "Preparing a Staff",
 							"entries": [
-								"During your daily preparations, you can prepare a staff to add charges to it for free. When you do so, that staff gains a number of charges equal to the highest level of spell you're able to cast. You don't need to expend any spells to add charges in this way. No one can prepare more than one staff per day, nor can a staff be prepared by more than one person per day. If the charges aren't used within 24 hours, they're lost, and preparing the staff anew removes any charges previously stored in it. You can prepare a staff only if you have at least one of the staff's spells on your spell list.",
+								"During your daily preparations, you can prepare a staff to add charges to it for free. When you do so, that staff gains a number of charges equal to the level of your highest-level spell slot. You don’t need to expend any spells to add charges in this way. No one can prepare more than one staff per day, nor can a staff be prepared by more than one person per day. If the charges aren’t used within 24 hours, they’re lost, and preparing the staff anew removes any charges previously stored in it. You can prepare a staff only if you have at least one of the staff’s spells on your spell list.",
 								{
 									"type": "pf2-h4",
 									"page": 592,
 									"name": "Prepared Spellcasters",
 									"entries": [
-										"A prepared spellcaster\u2014such as a cleric, druid, or wizard\u2014can place some of their own magic in a staff to increase its number of charges. When a prepared spellcaster prepares a staff, they can expend a spell slot to add a number of charges to the staff equal to the level of the spell. They can't expend more than one spell in this way each day. For example, if Ezren can cast 3rd-level spells and prepared a staff, the staff would gain 3 charges, but Ezren could increase this to 6 by expending one of his 3rd-level spells, 5 by expending a 2nd‑level spell, or 4 by expending a 1st-level spell."
+										"A prepared spellcaster—such as a cleric, druid, or wizard— can place some of their own magic in a staff to increase its number of charges. When a prepared spellcaster prepares a staff, they can expend a spell slot to add a number of charges to the staff equal to the level of the spell. They can’t expend more than one spell in this way each day. For example, if Ezren can cast 3rd-level spells and prepared a staff, the staff would gain 3 charges, but Ezren could increase this to 6 by expending one of his 3rd-level spells, 5 by expending a 2nd-level spell, or 4 by expending a 1st-level spell."
 									]
 								},
 								{
@@ -19708,7 +19714,7 @@
 									"page": 592,
 									"name": "Spontaneous Spellcasters",
 									"entries": [
-										"A spontaneous spellcaster, such as a bard or sorcerer, can reduce the number of charges it takes to Activate a staff by supplementing with their own energy. When a spontaneous spellcaster Activates a staff, they can expend 1 charge from the staff and one of their spell slots to cast a spell from the staff of the same level (or lower) as the expended spell slot. This doesn't change the number of actions it takes to cast the spell. For example, if Seoni can cast 3rd-level spells and prepared a staff, the staff would gain 3 charges. She could expend 1 charge and one of her 3rd-level spell slots to cast a 3rd-level spell from the staff, or 1 charge and one of her 2nd-level spell slots to cast a 2nd-level spell from the staff. She could still expend 3 charges from the staff to cast a 3rdlevel spell from it without using any of her own slots, just like any other spellcaster."
+										"A spontaneous spellcaster, such as a bard or sorcerer, can reduce the number of charges it takes to Activate a staff by supplementing with their own energy. When a spontaneous spellcaster Activates a staff, they can expend 1 charge from the staff and one of their spell slots to cast a spell from the staff of the same level (or lower) as the expended spell slot. This doesn’t change the number of actions it takes to cast the spell. For example, if Seoni can cast 3rd-level spells and prepared a staff, the staff would gain 3 charges. She could expend 1 charge and one of her 3rd-level spell slots to cast a 3rd-level spell from the staff, or 1 charge and one of her 2nd-level spell slots to cast a 2nd-level spell from the staff. She could still expend 3 charges from the staff to cast a 3rd-level spell from it without using any of her own slots, just like any other spellcaster"
 									]
 								}
 							]
@@ -19718,7 +19724,7 @@
 							"page": 592,
 							"name": "Attacking with a Staff",
 							"entries": [
-								"Staves are also staff weapons (page 280), included in their Price. They can be etched with runes as normal for a staff. This doesn't alter any of their spellcasting abilities."
+								"Staves are also staff weapons (page 280). They can be etched with fundamental runes but not property runes. This doesn’t alter any of their spellcasting abilities."
 							]
 						}
 					]
@@ -19779,7 +19785,7 @@
 									"page": 597,
 									"name": "Varying Statistics",
 									"entries": [
-										"Each type of wand has a Level and Price determined by the spell's level. The wand's rarity matches the spell's rarity. The item's traits also vary, based on the spell. A wand has any traits listed in its stat block (usually just magical and wand), plus any traits of the spell stored on it."
+										"Each type of wand has a Level and Price determined by the spell's level. The wand's rarity matches the spell's rarity. The item's traits also vary, based on the spell. A wand has any traits listed in its stat block (usually just magical and wand), plus any traits of the spell stored on it. A wand has the normal Hardness, BT, and HP of a thin item of its material (page 577)."
 									]
 								}
 							]
@@ -19885,7 +19891,7 @@
 							"page": 604,
 							"name": "Companion Items",
 							"entries": [
-								"You might want to acquire items that benefit an animal or beast that assists you. These items have the companion trait, meaning they function only for animal companions, familiars, and similar creatures. If it's unclear whether a creature can benefit from such an item, the GM decides.",
+								"You might want to acquire items that benefit an animal or beast that assists you. These items have the companion trait, meaning they function only for animal companions, familiars, and similar creatures. Normally these are the only items a companion can use. Other items can qualify, at the GM’s discretion, but an animal can never Activate an Item.",
 								{
 									"type": "pf2-h4",
 									"page": 604,
@@ -19997,21 +20003,22 @@
 							"name": "PERSISTENT DAMAGE RULES"
 						},
 						"The additional rules presented below apply to persistent damage in certain cases.",
+						"Persistent damage runs its course and automatically ends after a certain amount of time as fire burns out, blood clots, and the like. The GM determines when this occurs, but it usually takes 1 minute.",
 						{
 							"type": "pf2-title",
 							"name": "Assisted Recovery"
 						},
-						"You can take steps to help yourself recover from {@condition Persistent Damage|CRB|persistent damage}, or an ally can help you, allowing you to attempt an additional flat check before the end of your turn. This is usually an activity requiring 2 actions, and it must be something that would reasonably improve your chances (as determined by the GM). For example, you might try to smother a flame, wash off acid, or use Medicine to Administer First Aid to stanch bleeding. This allows you to attempt an extra flat check immediately.",
-						"The GM decides how your help works, using the following examples as guidelines.",
+						"You can take steps to help yourself recover from persistent damage, or an ally can help you, allowing you to attempt an additional flat check before the end of your turn. This is usually an activity requiring 2 actions, and it must be something that would reasonably improve your chances (as determined by the GM). For example, you might try to smother a flame or wash off acid. This allows you to attempt an extra flat check immediately, but only once per round.",
+						"The GM decides how your help works, using the following examples as guidelines when there’s not a specific action that applies.",
 						{
 							"type": "list",
 							"items": [
+								"The action to help might require a skill check or another roll to determine its effectiveness.",
 								"Reduce the DC of the flat check to 10 for a particularly appropriate type of help, such as dousing you in water to put out flames.",
 								"Automatically end the condition due to the type of help, such as healing that restores you to your maximum HP to end persistent bleed damage, or submerging yourself in a lake to end persistent fire damage.",
 								"Alter the number of actions required to help you if the means the helper uses are especially efficient or remarkably inefficient."
 							]
 						},
-						"{@condition Persistent Damage|CRB|Persistent damage} runs its course and automatically ends after a certain amount of time as fire burns out, blood clots, and the like. The GM determines when this occurs, but it usually takes 1 minute.",
 						{
 							"type": "pf2-title",
 							"name": "Immunities, Resistances, and Weaknesses"
