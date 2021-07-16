@@ -20,11 +20,6 @@ class PageFilterSpells extends PageFilter {
 	static getFltrSpellLevelStr (level) {
 		return level === 0 ? Parser.spLevelToFull(level) : `${Parser.spLevelToFull(level)} level`;
 	}
-
-	static getTblTimeStr (time) {
-		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
-			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
-	}
 	// endregion
 
 	constructor () {
@@ -84,19 +79,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._timeFilter = new Filter({
 			header: "Cast Time",
-			items: [
-				Parser.TM_A,
-				Parser.TM_AA,
-				Parser.TM_AAA,
-				Parser.TM_F,
-				Parser.TM_R,
-				Parser.TM_ROUND,
-				Parser.TM_MINS,
-				Parser.TM_HRS,
-				"Varies",
-			],
-			displayFn: Parser.timeUnitToFull,
-			itemSortFn: null,
+			itemSortFn: SortUtil.sortActivities,
 		});
 		this._durationFilter = new RangeFilter({
 			header: "Duration",
@@ -138,7 +121,7 @@ class PageFilterSpells extends PageFilter {
 				});
 			});
 		}).flat();
-		spell._fTimeType = [spell.cast["unit"]];
+		spell._fTime = Parser.timeToActivityType(spell.activity);
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = Parser.getFilterRange(spell);
@@ -171,6 +154,7 @@ class PageFilterSpells extends PageFilter {
 			this._subClassFilter.addItem(sc);
 		});
 		this._traitFilter.addItem(spell._fTraits);
+		if (spell._fTime != null) this._timeFilter.addItem(spell._fTime);
 		this._areaFilter.addItem(spell._areaTypes);
 		this._miscFilter.addItem(spell._fMisc);
 	}
@@ -208,7 +192,7 @@ class PageFilterSpells extends PageFilter {
 				s._fSubClasses,
 			],
 			s._fTraits,
-			s._fTimeType,
+			s._fTime,
 			s._fDurationType,
 			s._areaTypes,
 			s._fRange,

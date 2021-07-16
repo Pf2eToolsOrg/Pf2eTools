@@ -35,15 +35,7 @@ class PageFilterFeats extends PageFilter {
 		});
 		this._timeFilter = new Filter({
 			header: "Activity",
-			items: [
-				Parser.TM_A,
-				Parser.TM_AA,
-				Parser.TM_AAA,
-				Parser.TM_F,
-				Parser.TM_R,
-			],
-			displayFn: Parser.timeUnitToFull,
-			itemSortFn: null,
+			itemSortFn: SortUtil.sortActivities,
 		});
 	}
 
@@ -72,7 +64,7 @@ class PageFilterFeats extends PageFilter {
 		feat._slType = MiscUtil.copy(feat._fType);
 		if (feat._slType.includes("Skill") && feat._slType.includes("General")) feat._slType.splice(feat._slType.indexOf("General"), 1);
 		feat._slType = feat._slType.sort(SortUtil.ascSort).join(", ")
-		feat._fTime = feat.activity != null ? feat.activity.unit : "";
+		feat._fTime = Parser.timeToActivityType(feat.activity);
 		feat._fMisc = [];
 		if (feat.prerequisites != null) feat._fMisc.push("Has Prerequisites");
 		if (feat.trigger != null) feat._fMisc.push("Has Trigger");
@@ -93,6 +85,7 @@ class PageFilterFeats extends PageFilter {
 		if (typeof (feat.featType.archetype) !== "boolean") this._archetypeFilter.addItem(feat.featType.archetype);
 		if (typeof (feat.featType.class) !== "boolean") this._classFilter.addItem(feat.featType.class);
 		if (typeof (feat.featType.skill) !== "boolean") this._skillFilter.addItem(feat.featType.skill);
+		if (feat._fTime != null) this._timeFilter.addItem(feat._fTime);
 		this._sourceFilter.addItem(feat._fSources);
 	}
 
