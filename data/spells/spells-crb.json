@@ -970,14 +970,11 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You gain an angelic halo with an aura that increases allies' healing from the {@spell heal} spell. {@spell Heal} spells gain a +2 status bonus to Hit Points healed to your allies in the area."
+				"You gain an angelic halo with an aura that increases allies' healing from the {@spell heal} spell. Allies in your halo’s emanation who are healed by a {@spell heal} spell gain a status bonus to Hit Points regained equal to double the {@spell heal} spell’s level."
 			],
 			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The status bonus increases by 2."
-				},
+				"heightened": false,
+				"plus_x": null,
 				"x": null,
 				"no_x": null
 			}
@@ -3321,7 +3318,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 humanoid creature that could find you attractive",
+			"targets": "1 creature that could find you attractive",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
 			"duration": {
@@ -5844,7 +5841,7 @@
 			"dismiss": false,
 			"entries": [
 				"Seeing another pass from this world to the next invigorates you.",
-				"You gain temporary Hit Points equal to the triggering creature's level plus your Wisdom modifier. If the triggering creature was undead, double the number of temporary Hit Points you gain",
+				"You gain temporary Hit Points equal to the triggering creature's level plus your spellcasting ability modifier. If the triggering creature was undead, double the number of temporary Hit Points you gain",
 				"These last for the duration of the spell, and the spell ends if all the temporary Hit Points are depleted earlier."
 			],
 			"heightened": {
@@ -12642,8 +12639,8 @@
 			"school": "N",
 			"cast": {
 				"number": 1,
-				"unit": "hour",
-				"entry": "1 hour"
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"components": {
 				"F": false,
@@ -12659,26 +12656,26 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 freshly picked berry",
+			"targets": "1 ripe berry",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "10 minutes",
 				"duration": {
-					"number": 1,
-					"unit": "day"
+					"number": 10,
+					"unit": "minute"
 				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You imbue the target berry with the bounty of nature, allowing it to heal and sustain far beyond its normal capacity. A living creature that eats the berry with an {@action Interact} action gains as much nourishment as from a square meal for a typical human and regains {@dice 1d8+5} Hit Points. If it's not consumed during the duration, or if you cast {@spell goodberry} again, the berry withers away."
+				"You imbue the target berry with the bounty of nature, turning it into a goodberry that can heal and sustain far beyond its normal capacity. A creature can eat the goodberry with an {@action Interact} action to regain {@dice 1d6+4} Hit Points. A berry not consumed during the duration withers away. Every six goodberries consumed gives as much nourishment as one square meal for a typical human."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "You can target an additional berry."
+					"entry": "You can target an additional berry. A creature can consume any number of goodberries from the same casting with a single {@action Interact} action."
 				},
 				"x": null,
 				"no_x": null
@@ -13498,7 +13495,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Your words bless a creature with an enhanced connection to positive energy. When the target regains Hit Points from a healing spell, it regains 1 additional Hit Point.",
+				"Your words bless a creature with an enhanced connection to positive energy. When the target regains Hit Points from a healing spell, it regains 2 additional Hit Point.",
 				"The target regains additional Hit Points from healer's blessing only the first time it regains HP from a given healing spell, so a spell that heals the creature repeatedly over a duration would restore additional Hit Points only once."
 			],
 			"heightened": {
@@ -30693,7 +30690,112 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You summon an unseen servant (see the sidebar), which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop Sustaining the Spell. The unseen servant gains the summoned trait."
+				"You summon an {@creature unseen servant}, which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop {@action Sustain a Spell||Sustaining the Spell}. The {@creature unseen servant} gains the {@trait summoned} trait.",
+				{
+					"type": "pf2-brown-box",
+					"entries": [
+						{
+							"type": "data",
+							"tag": "creature",
+							"data": {
+								"source": "CRB",
+								"name": "Unseen Servant",
+								"page": 380,
+								"traits": [
+									"Mindless"
+								],				
+								"alignment": "N",
+								"size": "Medium",
+								"perception": {
+									"default": 0
+								},
+								"languages": {
+									"languages": [
+									],
+									"languageAbilities": [
+										"(understands its creator)"
+									]
+								},
+								"skills": {
+									"Stealth": {
+										"default": 8
+									}
+								},
+								"abilityMods": {
+									"Str": -4,
+									"Dex": 2,
+									"Con": 0,
+									"Int": -5,
+									"Wis": 0,
+									"Cha": 0
+								},
+								"abilitiesTop": [
+									{
+										"entries": [
+											"An unseen servant is {@condition invisible}, though it normally doesn’t {@action Sneak}, so it is usually only hidden."
+										],
+										"name": "Invisible"
+									}
+								],
+								"ac": {
+									"default": 13,
+									"abilities": null
+								},
+								"savingThrows": {
+									"Fort": {
+										"default": 0
+									},
+									"Ref": {
+										"default": 4
+									},
+									"Will": {
+										"default": 0
+									},
+									"abilities": null
+								},
+								"hp": [
+									{
+										"hp": 4,
+										"note": null,
+										"abilities": null
+									}
+								],
+								"immunities": {
+									"damage": [
+									],
+									"condition": [
+										"disease", 
+										"mental", 
+										"non-magical attacks",
+										"paralysis", 
+										"poison", 
+										"precision", 
+										"unconscious"
+									]
+								},
+								"resistances": [
+									{
+										"amount": 5,
+										"name": "all damage",
+										"note": "except force or ghosut touch"
+									}
+								],
+								"speed": {
+									"abilities": null,
+									"fly": 30
+								},
+								"abilitiesBot": [
+									{
+										"entries": [
+											"An unseen servant’s physical body is made of force. It can’t use {@trait attack} actions. It can move and use {@action Interact} actions to do things such as fetch objects, open unstuck or unlocked doors, hold chairs, and clean. It can’t pass through solid objects."
+										],
+										"name": "Force Body"
+									}
+								]
+							}
+						}
+					]
+				}
 			],
 			"heightened": {
 				"heightened": false,
@@ -31298,7 +31400,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"An illusion of horrific creatures fills the spell's area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage to each creature that's inside the burst when it's created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
+				"An illusion of horrific creatures fills the spell’s area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage (basic Will save) to each creature that’s inside the burst when it’s created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its Will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
 			],
 			"heightened": {
 				"heightened": true,
@@ -33223,6 +33325,8 @@
 			"focus": false,
 			"level": 6,
 			"traits": [
+				"Emotion",
+				"Mental",
 				"Enchantment"
 			],
 			"school": "E",

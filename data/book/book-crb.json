@@ -12084,7 +12084,7 @@
 							"page": 446,
 							"name": "Attack Rolls",
 							"entries": [
-								"When you use a Strike action or any other attack action, you attempt a check called an attack roll. Attack rolls take a variety of forms and are often highly variable based on the weapon you are using for the attack, but there are three main types: melee attack rolls, ranged attack rolls, and spell attack rolls. Spell attack rolls work a little bit differently, so they are explained separately on the next page.",
+								"When you use a {@action Strike} action or make a spell attack, you attempt a check called an attack roll. Attack rolls take a variety of forms and are often highly variable based on the weapon you are using for the attack, but there are three main types: melee attack rolls, ranged attack rolls, and spell attack rolls. Spell attack rolls work a little bit differently, so they are explained separately on the next page.",
 								"{@b Melee attack rolls} use Strength as their ability modifier by default. If you're using a weapon or attack with the finesse trait, then you can use your Dexterity modifier instead.",
 								{
 									"type": "pf2-inset",
@@ -12402,7 +12402,7 @@
 										"Spell (and similar effects) damage roll = damage die of the effect + bonuses + penalties"
 									]
 								},
-								"Once your damage die is rolled, and you've applied any modifiers, bonuses, and penalties, move on to Step 2. Though sometimes there are special considerations, described below.",
+								"If the combined penalties on an attack would reduce the damage to 0 or below, you still deal 1 damage.",
 								{
 									"type": "pf2-h4",
 									"page": 451,
@@ -12477,8 +12477,12 @@
 											"name": "Poison Damage"
 										},
 										"Venoms, toxins and the like can deal {@b poison damage}, which affects creatures by way of contact, ingestion, inhalation, or injury. In addition to coming from monster attacks, alchemical items, and spells, poison damage is often caused by ongoing afflictions, which follow special rules described on page 457.",
-										"Bleed Damage Another special type of physical damage is {@b bleed damage}. This is persistent damage that represents loss of blood.",
-										"As such, it has no effect on nonliving creatures or living creatures that don't need blood to live. Weaknesses and resistances to physical damage apply.",
+										{
+											"type": "pf2-title",
+											"name": "Bleed Damage"
+										},
+										"Another special type of physical damage is {@b bleed damage}. This is persistent damage that represents loss of blood.",
+										"As such, it has no effect on nonliving creatures or living creatures that don't need blood to live. Weaknesses and resistances to physical damage apply. Bleed damage ends automatically if you’re healed to your full Hit Points.",
 										{
 											"type": "pf2-title",
 											"name": "Precision Damage"
@@ -12525,7 +12529,7 @@
 									"name": "Weakness",
 									"entries": [
 										"If you have a weakness to a certain type of damage or damage from a certain source, that type of damage is extra effective against you. Whenever you would take that type of damage, increase the damage you take by the value of the weakness. For instance, if you are dealt 2d6 fire damage and have weakness 5 to fire, you take 2d6+5 fire damage.",
-										"If you have more than one weakness that would apply to the same instance of damage, use only the highest applicable weakness value. This usually happens only when a monster is weak to both a type of physical damage and the material a weapon is made of."
+										"If you have a weakness to something that doesn’t normally deal damage, such as water, you take damage equal to the weakness value when touched or affected by it. If more than one weakness would apply to the same instance of damage, use only the highest applicable weakness value. This usually happens only when a monster is weak to both a type of physical damage and a given material."
 									]
 								},
 								{
@@ -12551,7 +12555,8 @@
 									"page": 453,
 									"name": "Nonlethal Attacks",
 									"entries": [
-										"You can make a nonlethal attack in an effort to knock someone out instead of killing them (see Knocked Out and Dying on page 459). Weapons with the nonlethal trait (including fists) do this automatically. You take a \u20132 circumstance penalty to the attack roll when you make a nonlethal attack using a weapon that doesn't have the nonlethal trait. You also take this penalty when making a lethal attack using a nonlethal weapon."
+										"You can make a nonlethal attack in an effort to knock someone out instead of killing them (see Knocked Out and Dying on page 459). Weapons with the nonlethal trait (including fists) do this automatically. You take a –2 circumstance penalty to the attack roll when you make a nonlethal attack using a weapon that doesn’t have the nonlethal trait. You also take this penalty when making a lethal attack using a nonlethal weapon.",
+										"Spells and other effects with the nonlethal trait that reduce a creature to 0 Hit Points knock the creature out instead of killing them."
 									]
 								}
 							]
@@ -12694,8 +12699,7 @@
 									"page": 457,
 									"name": "Emanation",
 									"entries": [
-										"An emanation issues forth from each side of your space, extending out to a specified number of feet in all directions.",
-										"For instance, the {@spell bless} spell's emanation radiates 5 or more feet outward from the caster. Because the sides of a target's space are used as the starting point for the emanation, an emanation from a Large or larger creature affects a greater overall area than that of a Medium or smaller creature."
+										"An emanation issues forth from each side of your space, extending out to a specified number of feet in all directions. For instance, the {@spell bless} spell’s emanation radiates 5 or more feet outward from the caster. Because the sides of a creature’s space are the starting point for the emanation, an emanation from a Large or larger creature affects a greater overall area than that of a Medium or smaller creature. Unless the text states otherwise, the creature creating an emanation effect chooses whether the creature at its center is affected..pdf"
 									]
 								},
 								{
@@ -12859,7 +12863,7 @@
 								{
 									"type": "list",
 									"items": [
-										"You immediately move your initiative position to directly before the creature or effect that reduced you to 0 HP.",
+										"You immediately move your initiative position to directly before the turn in which you were reduced to 0 HP.",
 										"You gain the {@condition dying} 1 condition. If the effect that knocked you out was a critical success from the attacker or the result of your critical failure, you gain the {@condition dying} 2 condition instead. If you have the {@condition wounded} condition (page 460), increase your {@condition dying} value by an amount equal to your {@condition wounded} value. If the damage was dealt by a nonlethal attack or nonlethal effect, you don't gain the dying condition; you are instead unconscious with 0 Hit Points."
 									]
 								},
@@ -12962,7 +12966,7 @@
 							"page": 460,
 							"name": "Heroic Recovery",
 							"entries": [
-								"If you have at least 1 Hero Point (page 467), you can spend all of your remaining Hero Points at the start of your turn or when your dying value would increase in order to return to 1 Hit Point, no matter how close to death you are. You lose the dying condition and become conscious. You do not gain the wounded condition (or increase its value) when you perform a heroic recovery."
+								"If you have at least 1 Hero Point (page 467), you can spend all of your remaining Hero Points at the start of your turn or when your dying value would increase. You lose the dying condition entirely and stabilize with 0 Hit Points. You don’t gain the wounded condition or increase its value from losing the dying condition in this way, but if you already had that condition, you don’t lose it or decrease its value. You lose the dying condition and become conscious. You do not gain the wounded condition (or increase its value) when you perform a heroic recovery."
 							]
 						},
 						{

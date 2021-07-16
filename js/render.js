@@ -2828,7 +2828,7 @@ Renderer.utils = {
 		let source;
 		const traitsHtml = [];
 		for (let trait of traits.sort(SortUtil.sortTraits)) {
-			[trait, source] = trait.split("|");
+			[trait, source] = trait.split("|") || [];
 			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
 			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			source = source || "TRT";
@@ -3434,7 +3434,7 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.join(", "))
+			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
 			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
 				renderStack.push(cr.languages.languageAbilities.join(", "))
@@ -3681,7 +3681,7 @@ Renderer.creature = {
 
 	getCompactRenderedString (cr, opts) {
 		opts = opts || {};
-		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat((cr.traits || []).concat(cr.creatureType || []))
+		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment || []]).concat([cr.size]).concat((cr.traits || []).concat(cr.creatureType || []))
 
 		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts})}
