@@ -393,7 +393,7 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"At 1st level and every even-numbered level, you gain an {@filter investigator class feat|feats|type=class|classes=investigator|level=[1;1]}."
+				"At 1st level and every even-numbered level, you gain an {@filter investigator class feat|feats||type=class|classes=investigator|level=[1;1]}."
 			]
 		},
 		{
@@ -404,7 +404,7 @@
 			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats|type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -427,7 +427,7 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats|type=general}."
+				"At 3rd level and every 4 levels thereafter, you gain a {@filter general feat|feats||type=general}."
 			]
 		},
 		{
@@ -449,7 +449,7 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every odd-numbered level thereafter, you gain a {@filter skill feat|feats|type=skill|skills=Arcana;Medicine;Crafting;Deception;Diplomacy;Intimidation;Lore;Nature;Occultism;Performance;Religion;Society;Survival}. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
+				"At 3rd level and every odd-numbered level thereafter, you gain a {@filter skill feat|feats||type=skill|skills=Arcana;Medicine;Crafting;Deception;Diplomacy;Intimidation;Lore;Nature;Occultism;Performance;Religion;Society;Survival}. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
 			]
 		},
 		{
@@ -471,7 +471,7 @@
 			"classSource": "APG",
 			"level": 5,
 			"entries": [
-				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats|type=ancestry} at 5th level and every 4 levels thereafter."
+				"In addition to the ancestry feat you started with, you gain an {@filter ancestry feat|feats||type=ancestry} at 5th level and every 4 levels thereafter."
 			]
 		},
 		{
@@ -656,7 +656,7 @@
 					"name": "Alchemical Sciences",
 					"entries": [
 						"Your methodology emphasizes chemical and alchemical analysis, collecting information from unusual particles and fluids found on the scene. You possess enough alchemical know-how to whip up a few tinctures to help you with your cases.",
-						"You're trained in {@skill Crafting} and gain the {@feat Alchemical Crafting} skill feat. In addition, you gain a standard {@item formula book} for free and learn the formulas for two additional {@filter common 1st-level alchemical items|items|general=alchemical|level=[1;1]|rarity=common|category=elixir; tool}, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
+						"You're trained in {@skill Crafting} and gain the {@feat Alchemical Crafting} skill feat. In addition, you gain a standard {@item formula book} for free and learn the formulas for two additional {@filter common 1st-level alchemical items|items||general=alchemical|level=[1;1]|rarity=common|category=elixir; tool}, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
 						"During your daily preparations, you can create a number of versatile vials\u2014alchemical concoctions that can quickly be turned into elixirs and tools\u2014equal to your Intelligence modifier. You can use the {@action Quick Tincture|APG} action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
 						{
 							"type": "ability",
@@ -672,8 +672,7 @@
 							"requirements": "You know the formula for the alchemical item you're creating, you are holding or wearing {@item alchemist's tools|CRB}, and you have a free hand.",
 							"activity": {
 								"number": 1,
-								"unit": "single",
-								"entry": "{@as 1}"
+								"unit": "action"
 							},
 							"entries": [
 								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the end of the current turn."

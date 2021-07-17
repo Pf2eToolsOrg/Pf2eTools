@@ -157,7 +157,12 @@ class PageFilterBestiary extends PageFilter {
 
 	mutateForFilters (cr) {
 		cr._fSources = SourceFilter.getCompleteFilterSources(cr);
-		cr._fTraits = (cr.traits || []).concat([cr.size]).concat([cr.alignment]).concat(cr.creatureType || []).concat([cr.rarity]);
+		cr._fTraits = [];
+		if (cr.rarity != null && cr.rarity !== "Common") cr._fTraits.push(cr.rarity);
+		if (cr.alignment != null) cr._fTraits.push(cr.alignment);
+		if (cr.size != null) cr._fTraits.push(cr.size);
+		if (cr.traits != null && cr.traits.length) cr._fTraits.push(...cr.traits);
+		if (cr.creatureType != null) cr._fTraits.push(...cr.creatureType);
 		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
 			cr.senses.precise.forEach((s) => {

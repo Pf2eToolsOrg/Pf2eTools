@@ -9,33 +9,6 @@ class ActionsPage extends ListPage {
 		}
 	}
 
-	static getTblTimeStr (time) {
-		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
-			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
-	}
-
-	static getNormalisedTime (time) {
-		let multiplier = 1;
-		let offset = 0;
-		if (time == null) {
-			return 0
-		}
-		if (time === "Exploration") return 900000000;
-		if (time === "Downtime") return 900000001;
-		switch (time.unit) {
-			case Parser.TM_F: offset = 1; break;
-			case Parser.TM_R: offset = 2; break;
-			case Parser.TM_A: multiplier = 10; break;
-			case Parser.TM_AA: multiplier = 20; break;
-			case Parser.TM_AAA: multiplier = 30; break;
-			case Parser.TM_ROUND: multiplier = 60; break;
-			case Parser.TM_MINS: multiplier = 600; break;
-			case Parser.TM_HRS: multiplier = 36000; break;
-			case "Varies": multiplier = 100; break;
-		}
-		return (multiplier * time.number) + offset;
-	}
-
 	constructor () {
 		const pageFilter = new PageFilterActions();
 		super({
@@ -64,7 +37,7 @@ class ActionsPage extends ListPage {
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
 		let time;
-		if (it.activity) time = ActionsPage.getTblTimeStr(it.activity);
+		if (it.activity) time = Parser.timeToTableStr(it.activity);
 		else if (it.traits.includes("Exploration")) time = "Exploration";
 		else if (it.traits.includes("Downtime")) time = "Downtime";
 		else time = "\u2014"
@@ -83,7 +56,7 @@ class ActionsPage extends ListPage {
 				hash,
 				source,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity || time),
+				normalisedTime: Parser.getNormalisedTime(it.activity || time),
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -106,7 +79,7 @@ class ActionsPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 		let time;
-		if (it.activity) time = ActionsPage.getTblTimeStr(it.activity);
+		if (it.activity) time = Parser.timeToTableStr(it.activity);
 		else if (it.traits.includes("Exploration")) time = "Exploration";
 		else if (it.traits.includes("Downtime")) time = "Downtime";
 		else time = "\u2014"
@@ -126,7 +99,7 @@ class ActionsPage extends ListPage {
 			{
 				hash,
 				time,
-				normalisedTime: ActionsPage.getNormalisedTime(it.activity || time),
+				normalisedTime: Parser.getNormalisedTime(it.activity || time),
 			},
 		);
 		return listItem;

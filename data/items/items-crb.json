@@ -18,8 +18,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -195,7 +194,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Adamantine shields are particularly sturdy, and when used for a shield bash, they are adamantine weapons."
 			],
@@ -291,12 +289,6 @@
 			"name": "Aeon Stone",
 			"source": "CRB",
 			"page": 604,
-			"otherSources": {
-				"Expanded": [
-					"LOPSG|121",
-					"LOWG|63"
-				]
-			},
 			"type": "Item",
 			"level": "1+",
 			"traits": [
@@ -312,14 +304,13 @@
 				"Over millennia, these mysterious, intricately cut gemstones have been hoarded by mystics and fanatics hoping to discover their secrets. Despite their myriad forms and functions, these stones are purportedly all fragments of crystal tools used by otherworldly entities to construct the universe in primeval times.",
 				"When you invest one of these precisely shaped crystals, the stone orbits your head instead of being worn on your body.",
 				"You can stow an aeon stone with an {@action Interact} action, and an orbiting stone can be snatched out of the air with a successful {@action Disarm} action against you. A stowed or removed stone remains invested, but its effects are suppressed until you return it to orbit your head again.",
-				"There are various types of aeon stones, each with a different shape, color, and {@trait magical} effect. Each aeon stone also gains a resonant power when slotted into a special magical item called a {@item wayfinder|crb}."
+				"There are various types of aeon stones, each with a different shape, color, and {@trait magical} effect. Each aeon stone also gains a resonant power when slotted into a special magical item called a wayfinder (page 617)."
 			],
 			"generic": "G",
 			"variants": [
 				{
 					"type": "clear spindle",
 					"level": 7,
-					"specificName": "clear spindle aeon stone",
 					"price": {
 						"coin": "gp",
 						"amount": 325,
@@ -338,7 +329,6 @@
 						"amount": 9,
 						"note": null
 					},
-					"specificName": "dull gray aeon stone",
 					"entries": [
 						"A dull gray aeon stone has lost its special magical properties, sometimes as a result of overusing a tourmaline sphere or pale lavender ellipsoid aeon stone. It still orbits your head like any other aeon stone and can thus serve as a stylish, hands-free option for various spells that target an object, like continual flame.",
 						"Dull gray aeon stones have no resonant power."
@@ -352,23 +342,21 @@
 						"amount": 230,
 						"note": null
 					},
-					"specificName": "gold nodule aeon stone",
 					"entries": [
 						"When a gold nodule aeon stone is created, its creator chooses a language they know to store within the crystal. When you invest the stone, you gain the ability to understand, speak, and write that language.",
 						"The resonant power allows you to cast {@spell comprehend language} as an occult innate spell once per day."
 					]
 				},
 				{
-					"type": "lavender and green ellipsoid",
+					"type": "lavender and green\nellipsoid",
 					"level": 19,
 					"price": {
 						"coin": "gp",
 						"amount": 30000,
 						"note": null
 					},
-					"specificName": "lavender and green ellipsoid aeon stone",
 					"entries": [
-						"This functions as a {@item pale lavender ellipsoid aeon stone|CRB}, but it casts an 8th-level {@spell dispel magic} spell with a counteract modifier of +31.",
+						"This functions as a pale lavender ellipsoid aeon stone, but it casts an 8thlevel {@spell dispel magic} spell with a counteract modifier of +31.",
 						"The resonant power allows you to cast {@spell detect magic} and read aura as arcane innate spells at will."
 					]
 				},
@@ -380,10 +368,9 @@
 						"amount": 9750,
 						"note": null
 					},
-					"specificName": "orange prism aeon stone",
 					"entries": [
 						"An orange prism aeon stone must be activated to provide a benefit. The resonant power grants you a +2 item bonus to {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} checks\u2014whichever corresponds to the tradition of the last spell you enhanced with this aeon stone.",
-						"{@b Activate} {@as 1} envision; {@b Effect} If your next action is to {@action Cast a Spell}, that spell's level is 1 higher (maximum 10th level) for the purposes of counteracting and being counteracted."
+						"Activate {@as 1} envision; Effect If your next action is to {@action Cast a Spell}, that spell's level is 1 higher (maximum 10th level) for the purposes of counteracting and being counteracted."
 					]
 				},
 				{
@@ -394,11 +381,10 @@
 						"amount": 2200,
 						"note": null
 					},
-					"specificName": "pale lavender ellipsoid aeon stone",
 					"entries": [
 						"This aeon stone must be activated to provide a benefit. The resonant power allows you to cast the {@spell read aura} cantrip as an arcane innate spell.",
-						"{@b Activate} {@as R} envision; {@b Frequency} once per day; {@b Trigger} A spell targets you; {@b Effect} The stone casts a 6th-level {@spell dispel magic} spell in an attempt to counteract the triggering spell, with a counteract modifier of +22. This can be used only on spells that specifically target you\u2014not area spells that don't have targets. If it succeeds, it counteracts the spell for all targets if other creatures were targeted in addition to you.",
-						"Each time you activate this aeon stone, attempt a DC {@flatDC 5} flat check. On a failure, the stone permanently turns into a {@item dull gray aeon stone|crb}."
+						"Activate {@as R} envision; Frequency once per day; Trigger A spell targets you; Effect The stone casts a 6th-level {@spell dispel magic} spell in an attempt to counteract the triggering spell, with a counteract modifier of +22. This can be used only on spells that specifically target you\u2014not area spells that don't have targets. If it succeeds, it counteracts the spell for all targets if other creatures were targeted in addition to you.",
+						"Each time you activate this aeon stone, attempt a DC {@flatDC 5} flat check. On a failure, the stone permanently turns into a dull gray aeon stone."
 					]
 				},
 				{
@@ -409,7 +395,6 @@
 						"amount": 1900,
 						"note": null
 					},
-					"specificName": "pink rhomboid aeon stone",
 					"entries": [
 						"When you invest this stone, you gain 15 temporary Hit Points. If the stone's effects are suppressed, you lose any of the temporary Hit Points remaining until it returns. The temporary Hit Points refresh during your daily preparations; they do not refresh if you re-invest the stone, or invest another pink rhomboid aeon stone, before then.",
 						"The resonant power allows you to cast the {@spell stabilize} cantrip as a divine innate spell."
@@ -423,146 +408,9 @@
 						"amount": 350,
 						"note": null
 					},
-					"specificName": "tourmaline sphere aeon stone",
 					"entries": [
-						"When you would die from the {@condition dying} condition (typically at {@condition dying|CRB|dying 4}), this aeon stone automatically activates and reduces your {@condition dying} value to 1 less than would normally kill you (typically to {@condition dying|CRB|dying 3}). The stone then permanently turns into a {@item dull gray aeon stone|crb}. You can benefit from this ability only once per day, even if you have multiple such stones.",
+						"When you would die from the {@condition dying} condition (typically at {@condition dying|CRB|dying 4}), this aeon stone automatically activates and reduces your {@condition dying} value to 1 less than would normally kill you (typically to {@condition dying|CRB|dying 3}). The stone then permanently turns into a dull gray aeon stone. You can benefit from this ability only once per day, even if you have multiple such stones.",
 						"The resonant power allows you to cast 1st-level {@spell heal} as a divine innate spell once per day."
-					]
-				},
-				{
-					"type": "agate ellipsoid",
-					"level": 5,
-					"price": {
-						"coin": "gp",
-						"amount": 130,
-						"note": null
-					},
-					"specificName": "agate ellipsoid aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"This aeon stone allows you to cast 2nd-level {@spell augury} as a divine innate spell once per day.",
-						"Secrets of the Pathfinder Society Whether stored in the vaults of the Grand Lodge, {@condition hidden} in the minds of various agents, or lost to time from the {@skill Society}'s ancient past, the Pathfinder Society is rife with secrets. Some take the form of unusual magic items; others are spells or special techniques. Agents who discover and use these secrets gain an edge that can help them as they undertake {@skill Society} missions. All characters affiliated with the Pathfinder Society have access to the uncommon options in this section.",
-						"The resonant power causes the {@spell augury} spell from the aeon stone to always succeed at the DC {@flatDC 6} flat check to give an answer other than \"nothing.\""
-					]
-				},
-				{
-					"type": "azure briolette",
-					"level": 4,
-					"price": {
-						"coin": "gp",
-						"amount": 85,
-						"note": null
-					},
-					"specificName": "azure briolette aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"This aeon stone must be activated to provide a benefit.",
-						"{@b Activate} {@as R} envision; {@b Trigger} An enemy fails its save against a {@trait mental} spell you cast using one of your spell slots; {@b Effect} You gain temporary Hit Points equal to twice the spell's level until your next turn.",
-						"The resonant power grants a separate activation.",
-						"{@b Activate} {@as 2} command, {@action Interact}; {@b Frequency} once per day; {@b Effect} You gain the effect of a {@spell chill touch} arcane cantrip."
-					]
-				},
-				{
-					"type": "dusty rose prism",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"specificName": "dusty rose prism aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"This aeon stone allows you to cast the 1st-level {@spell shield} cantrip as an arcane innate spell, surrounding yourself in pink energy.",
-						"The resonant power increases the damage prevented by your aeon stone's {@spell shield} spell from 5 to 10."
-					]
-				},
-				{
-					"type": "pale orange rhomboid",
-					"level": 19,
-					"price": {
-						"coin": "gp",
-						"amount": 40000,
-						"note": null
-					},
-					"specificName": "pale orange rhomboid aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"The first time each day you die, your vital and spiritual essences mingle together and reside within this aeon stone.",
-						"You have a limited sense of how many life forces are currently within 30 feet of the stone, which you can potentially use to determine when it's safe to call on the stone's power. At any time within the next hour after your body died, you can spend 1 minute concentrating in order to return to your body.",
-						"As long as your body is still intact, you are no longer dead\u2014 you are restored to 1 HP with the {@condition doomed|CRB|doomed 3} and {@condition wounded|CRB|wounded 3} conditions. You can benefit from the effects of only one pale orange rhomboid aeon stone in a given day.",
-						"The resonant power allows you to wait more than an hour to return to your body with the aeon stone; as long as the wayfinder remains on the body, your body doesn't decay and you can return at any point."
-					]
-				},
-				{
-					"type": "pearlescent pyramid",
-					"level": 10,
-					"price": {
-						"coin": "gp",
-						"amount": 900,
-						"note": null
-					},
-					"specificName": "pearlescent pyramid aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"While invested, this aeon stone grants the benefit of the ghost touch property rune to your weapons and unarmed attacks.",
-						"The resonant power grants a special activation.",
-						"{@b Activate} {@as 1} envision; {@b Frequency} once per minute; {@b Effect} You gain the effects of see invisibility for 1 round."
-					]
-				},
-				{
-					"type": "pearly white spindle",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 60,
-						"note": null
-					},
-					"specificName": "pearly white spindle aeon stone",
-					"source": "LOPSG",
-					"page": 121,
-					"entries": [
-						"When you invest this aeon stone, it slowly starts healing your wounds, restoring 1 HP every minute.",
-						"The resonant power grants you resistance 1 to negative damage."
-					]
-				},
-				{
-					"type": "western star",
-					"level": 6,
-					"price": {
-						"coin": "gp",
-						"amount": 225,
-						"note": null
-					},
-					"specificName": "western star aeon stone",
-					"source": "LOPSG",
-					"page": 122,
-					"entries": [
-						"This aeon stone must be activated to provide a benefit.",
-						"{@b Activate} {@as 2} envision, {@action Interact}; {@b Effect} You activate the aeon stone to gain the effects of a 1st-level {@spell illusory disguise}.",
-						"The resonant power allows you to render all of your aeon stones and your wayfinder {@condition invisible} whenever you use the activation to gain the effects of illusory disguise."
-					]
-				},
-				{
-					"type": "black pearl",
-					"level": 12,
-					"price": {
-						"coin": "gp",
-						"amount": 2000,
-						"note": null
-					},
-					"specificName": "black pearl aeon stone",
-					"source": "LOWG",
-					"page": 63,
-					"entries": [
-						"This black pearl sparkles with light.",
-						"{@b Activate} {@as R} envision; {@b Trigger} you are targeted by a {@trait mental} effect. {@b Effect} You receive a +4 status bonus to your saving throw against the triggering effect. Whether or not your save is successful, the aeon stone attempts a counteract check at +30 to immediately reflect a copy of the effect back at the originator, targeting it using the creature's own relevant statistics but controlling the effect as if you had cast it. Every time you activate this aeon stone, attempt a DC {@flatDC 5} flat check. On a failure, the stone shatters and loses its magical properties forever.",
-						"The resonant power allows you to cast {@spell sending} once per day."
 					]
 				}
 			]
@@ -664,8 +512,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -750,8 +597,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -813,7 +659,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -913,8 +759,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -945,8 +790,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1075,8 +919,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1107,8 +950,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1287,9 +1129,8 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
-				"This remarkable wooden shield (Hardness 10, HP 60, BT 30) is carved with images of overlapping fletched arrows.",
+				"This wooden shield (Hardness 6, HP 24, BT 12) is carved with images of overlapping fletched arrows.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -1301,12 +1142,12 @@
 					"components": [
 						"Interact"
 					],
-					"frequency": "once per minute",
+					"frequency": null,
 					"trigger": "A ranged weapon {@action Strike} targets a creature within 15 feet of you when you have this shield raised, and the attacker has not yet rolled their attack",
 					"requirements": null,
 					"entries": [
 						"The triggering {@action Strike} targets you instead of its normal target.",
-						"If it hits, you gain the effects of the {@action Shield Block} reaction."
+						"If it hits, you gain the effects of the Shield Block reaction."
 					]
 				}
 			],
@@ -1334,8 +1175,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1498,9 +1338,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -1537,8 +1376,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1570,8 +1408,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1608,8 +1445,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1726,8 +1562,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -1770,8 +1605,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -1850,8 +1684,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1861,8 +1694,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is {@condition clumsy}.",
-				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
-				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
+				"Benefit You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
+				"Drawback You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -1969,9 +1802,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -2033,8 +1865,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -2118,8 +1949,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -2267,8 +2097,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -2437,8 +2266,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -2479,8 +2307,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -2513,8 +2340,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -2603,8 +2429,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -2752,8 +2577,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -2825,8 +2649,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -2888,8 +2711,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3015,9 +2837,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -3083,8 +2904,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3126,9 +2946,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -3209,8 +3028,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3247,9 +3065,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact (sonic)"
@@ -3294,8 +3111,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -3352,8 +3168,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3431,8 +3246,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -3519,9 +3333,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -3557,9 +3370,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"envision",
@@ -3642,9 +3454,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -3703,9 +3514,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -3763,8 +3573,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -3774,8 +3583,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your mind becomes clear and cognition flows freely, but physical matters seem ephemeral.",
-				"{@b Benefit} You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
-				"{@b Drawback} You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
+				"Benefit You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
+				"Drawback You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
 			],
 			"generic": "G",
 			"variants": [
@@ -3957,7 +3766,6 @@
 			"level": "2+",
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Cold iron shields don't typically have an additional effect, though when used for a shield bash, they are cold iron weapons."
 			],
@@ -4124,8 +3932,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -4168,8 +3975,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -4201,8 +4007,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -4368,7 +4173,7 @@
 					},
 					"entries": [
 						"The eyepiece grants a +2 item bonus and can be activated.",
-						"{@b Activate} 1 minute ({@action Interact}); {@b Frequency} once per day; {@b Effect} You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
+						"Activate 1 minute ({@action Interact}); Frequency once per day; Effect You calibrate the eyepiece to have it cast a 5th-level {@spell creation} spell over the course of 1 minute to construct a temporary item."
 					]
 				}
 			]
@@ -4552,8 +4357,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -4677,9 +4481,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -4721,8 +4524,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -4801,7 +4603,7 @@
 					},
 					"entries": [
 						"The bonus to {@skill Acrobatics} checks is +3, and the bonus to {@action Tumble Through} is +2. The boots can be activated.",
-						"{@b Activate} {@as 2} command; {@b Frequency} once per day; {@b Effect} The boots cast {@spell freedom of movement} on you."
+						"Activate {@as 2} command; Frequency once per day; Effect The boots cast {@spell freedom of movement} on you."
 					]
 				}
 			]
@@ -4822,8 +4624,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -4987,7 +4788,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Darkwood shields are 1 Bulk lighter than normal (or light Bulk if their normal Bulk is 1, with no effect on a shield that normally has light Bulk)."
 			],
@@ -5161,13 +4961,12 @@
 				"amount": 450,
 				"note": null
 			},
-			"usage": "held in 1 hand",
+			"usage": "held in 2 hands",
 			"bulk": "L",
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -5222,7 +5021,6 @@
 				"amount": 320,
 				"note": null
 			},
-			"usage": "held in 2 hands",
 			"bulk": "L",
 			"category": "Held",
 			"entries": [
@@ -5233,8 +5031,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -5252,8 +5049,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -5271,8 +5067,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -5316,9 +5111,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -5354,9 +5148,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -5422,8 +5215,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -5464,8 +5256,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Recall Knowledge"
@@ -5500,8 +5291,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -5548,7 +5338,7 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"Made from a treated sliver of cold iron, this talisman allows you to counteract {@trait magical} effects. When you activate the dispelling sliver, it attempts to counteract a single spell active on the target, with the effects of an 8th-level {@spell dispel magic} spell (counteract modifier +29).",
+				"Made from a treated sliver of cold iron, this talisman allows you to counteract {@trait magical} effects. When you activate the dispelling sliver, it attempts to counteract a single spell active on the target, with the effects of an 8th-level {@spell dispel magic} spell.",
 				"If you activate the talisman on a successful Dispelling Slice, the talisman attempts to counteract all spells active on the target."
 			],
 			"generic": false
@@ -5606,44 +5396,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "Grevious",
-			"source": "CRB",
-			"page": 584,
-			"type": "Rune",
-			"level": "9",
-			"traits": [
-				"Magical",
-				"Enchantment"
-			],
-			"usage": "etched onto a melee weapon",
-			"category": "Rune",
-			"appliesTo": "Weapon",
-			"entries": [
-				"When your attack roll with this weapon is a critical hit and gains the critical specialization effect, you gain an additional benefit depending on the weapon group.",
-				{
-					"type": "list",
-					"style": "list-hang",
-					"items": [
-						"{@b Axe} You can damage a third creature, with the same restrictions.",
-						"{@b Bow} The {@skill Athletics} check to pull the missile free is DC 20.",
-						"{@b Brawling} The target takes a –4 circumstance penalty to its save.",
-						"{@b Club} You can knock the target up to 15 feet away.",
-						"{@b Dart} The base {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
-						"{@b Flail} You move the target 5 feet. You can’t move it away from you, but you can move it in another direction of your choice.",
-						"{@b Hammer} You can also knock the target 5 feet away from you.",
-						"{@b Knife} The target takes a –5-foot status penalty to its Speed while it has the {@condition persistent damage||persistent bleed damage}.",
-						"{@b Pick} The extra damage from the critical specialization effect increases to 4 per weapon damage die.",
-						"{@b Polearm} You can move the target up to 10 feet.",
-						"{@b Shield} You can knock the target up to 10 feet away.",
-						"{@b Sling} The target also takes a –10-foot status penalty to its Speed for 1 round if it fails the save.",
-						"{@b Spear} The {@condition clumsy} condition lasts for 2 rounds.",
-						"{@b Sword} The target is {@condition flat-footed} until the end of your next turn."
-					]
-				}
-			],
-			"generic": "G"
 		},
 		{
 			"name": "Doubling Rings",
@@ -5712,8 +5464,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -5774,8 +5525,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "envision",
 				"requirements": "You're an expert in {@skill Athletics}.",
@@ -5805,8 +5555,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -5953,7 +5702,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Dragonhide shields are each immune to one damage type based on the type of dragon (see Dragonhide on page 579)."
 			],
@@ -6035,9 +5783,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -6071,7 +5818,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"A dragonslayer's shield is a steel shield covered with dragonhide from a certain type of dragon, which distinguishes each shield from the others. While raised, this steel shield (Hardness 8, HP 32, BT 16) grants its circumstance bonus to Reflex saves against area effects (as well as to AC, as normal)",
 				"While you hold the shield, it also grants you a +2 circumstance bonus to Will saves against a dragon's frightful presence ability. The shield has resistance 10 against the damage type corresponding to the type of dragon whose hide was used in its creation (see dragonhide on page 579); this applies after reducing the damage for Hardness, so when you use Shield Block, the dragonslayer's shield takes 18 less damage from attacks of that damage type. You can use Shield Block against attacks that deal damage of that type."
@@ -6190,8 +5936,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -6225,8 +5970,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -6279,8 +6023,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -6365,8 +6108,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": "You're an expert in {@skill Acrobatics}.",
@@ -6404,9 +6146,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -6443,9 +6184,8 @@
 			"bulk": "\u2014",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "command, Interact",
 				"requirements": null,
@@ -6476,8 +6216,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -6585,8 +6324,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -6749,8 +6487,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -6826,7 +6563,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"The rolled-up tent expands into a spacious yurt complete with a fire pit, 10 {@item bedroll|crb|bedrolls}, various cooking utensils, and basic food and water.",
+						"The rolled-up tent expands into a spacious yurt complete with a fire pit, 10 bedrolls, various cooking utensils, and basic food and water.",
 						"The yurt can house and feed you and up to nine other Medium creatures that eat roughly as much as a human does; they need not attempt a {@skill Survival} check to {@action Subsist} when you use the yurt. Fires and light inside the yurt do not extend illumination into the area surrounding the yurt, making it harder to spot from a distance.",
 						"A large loop of red cloth hangs from one wall. If this loop is pulled, which takes an {@action Interact} action, the entire yurt immediately folds back up into its deactivated form, ready for further travel."
 					]
@@ -6849,8 +6586,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -7049,9 +6785,8 @@
 			"bulk": "\u2014",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "Intimidating Strike",
 				"requirements": null,
@@ -7119,8 +6854,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -7273,8 +7007,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -7311,8 +7044,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "envision",
 				"requirements": "You're an expert in Will saves.",
@@ -7345,9 +7077,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -7383,7 +7114,7 @@
 					},
 					"entries": [
 						"This is a +3 greater striking greater flaming longsword. When you activate the sword to cast {@spell produce flame}, the spell is 9th level.",
-						"{@b Activate} {@as 1} command; {@b Frequency} once per day; {@b Effect} A 10-foot emanation of flame radiates from the greater flame tongue for 1 minute. All weapon and unarmed attacks by you and your allies within the area gain the effect of the flaming property rune."
+						"Activate {@as 1} command; Frequency once per day; Effect A 10-foot emanation of flame radiates from the greater flame tongue for 1 minute. All weapon and unarmed attacks by you and your allies within the area gain the effect of the flaming property rune."
 					]
 				}
 			]
@@ -7444,7 +7175,6 @@
 			"usage": "strapped to 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"A floating shield is usually carved with wing motifs. This buckler (Hardness 6, HP 24, BT 12) can protect you on its own.",
 				{
@@ -7452,8 +7182,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -7535,7 +7264,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"The edges of this elaborately engraved steel shield (Hardness 8, HP 32, BT 16) bear tiny glass tiles set in mosaic patterns.",
 				{
@@ -7543,8 +7271,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -7578,10 +7305,9 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
-				"The religious symbol of Torag, the forge god—an ornate hammer of dwarven construction—adorns the face of this reinforced steel shield (Hardness 10, HP 24, BT 12). The shield is a religious symbol of Torag.",
-				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a {@action Shield Block}, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
+				"The religious symbol of Torag, the forge god\u2014an ornate hammer of dwarven construction\u2014adorns the face of this steel shield (Hardness 6, HP 24, BT 12). The shield is a religious symbol of Torag.",
+				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a Shield Block, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -7594,7 +7320,7 @@
 						"command (fire)"
 					],
 					"frequency": null,
-					"trigger": "You use the forge warden to {@action Shield Block} an adjacent creature's attack and the shield takes damage",
+					"trigger": "You use the forge warden to Shield Block an adjacent creature's attack and the shield takes damage",
 					"requirements": null,
 					"entries": [
 						"The attacking creature takes {@damage 2d6} fire damage."
@@ -7714,9 +7440,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -7750,8 +7475,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -7980,9 +7704,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8042,9 +7765,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8104,9 +7826,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8170,8 +7891,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -8240,8 +7960,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -8295,8 +8014,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -8373,8 +8091,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -8451,9 +8168,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -8636,9 +8352,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -8838,7 +8553,7 @@
 					},
 					"entries": [
 						"This larger, fancier hat grants a +2 bonus and can be activated.",
-						"{@b Activate} {@as 3} {@action Cast a Spell}; {@b Frequency} once per day; {@b Effect} You cast a 4th-level arcane {@spell summon elemental} spell."
+						"Activate {@as 3} {@action Cast a Spell}; Frequency once per day; Effect You cast a 4th-level arcane {@spell summon elemental} spell."
 					]
 				}
 			]
@@ -8870,8 +8585,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -8925,8 +8639,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -8935,7 +8648,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You can soothe a willing, living, adjacent creature, restoring {@dice 2d6+7} Hit Points to that creature. This is a {@trait positive} {@trait healing} effect. You can't harm undead with this healing."
+						"You can soothe a willing, adjacent creature's wounds, restoring {@dice 2d6+7} Hit Points to that creature. This is a positive {@trait healing} effect. You can't harm undead with this healing."
 					]
 				}
 			],
@@ -8983,8 +8696,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -9081,8 +8793,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -9225,9 +8936,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -9253,8 +8963,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -9294,7 +9003,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -9358,8 +9067,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -9398,8 +9106,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -9408,16 +9115,15 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"When you activate the horn by blowing into it with destructive intent, you create a blast note targeting one creature within 30 feet. The blast deals {@damage 3d6} sonic damage. (DC 28 basic Fortitude save)."
+						"When you activate the horn by blowing into it with destructive intent, you create a blast note targeting one creature or object within 30 feet. The blast deals {@damage 3d6} sonic damage. (DC 28 basic Fortitude save)."
 					]
 				},
 				{
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -9465,9 +9171,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -9583,9 +9288,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -9649,8 +9353,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -9711,7 +9414,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"An indestructible shield is a high-grade adamantine shield (Hardness 13, HP 90) that can withstand just about any damage. It can be damaged only by a {@spell disintegrate} spell (roll damage as if against a creature that failed its save) or by an artifact tied to destruction, such as a sphere of annihilation."
 			],
@@ -9745,9 +9447,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -9785,8 +9486,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -9849,9 +9549,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "triple",
-						"entry": "{@as 3}"
+						"number": 3,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -9893,8 +9592,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -9957,8 +9655,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -9992,9 +9689,8 @@
 			"bulk": "\u2014",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "Knockdown",
 				"requirements": "You are an expert with the affixed weapon.",
@@ -10030,8 +9726,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Brutal Finish",
 				"requirements": null,
@@ -10068,8 +9763,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Certain Strike",
 				"requirements": "You are a master with the affixed weapon.",
@@ -10143,8 +9837,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "command",
 				"requirements": "You are a master with the affixed weapon.",
@@ -10216,9 +9909,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "command, Interact",
 				"requirements": null,
@@ -10227,7 +9919,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This item looks like a normal javelin carved with lightning-bolt motifs. If thrown without being activated, it wobbles in the air and fails to strike true. When you {@b Activate} the javelin, your command makes the carvings crackle with electricity. You then hurl the javelin. It shatters immediately after leaving your hand and unleashes its magic as a 4th-level {@spell light}ning bolt originating from your space. The bolt deals {@damage 5d12} electricity damage and has a Reflex save DC of 25."
+				"This item looks like a normal javelin carved with lightning-bolt motifs. If thrown without being activated, it wobbles in the air and fails to strike true. When you Activate the javelin, your command makes the carvings crackle with electricity. You then hurl the javelin. It shatters immediately after leaving your hand and unleashes its magic as a 4th-level {@spell light}ning bolt originating from your space. The bolt deals {@damage 5d12} electricity damage and has a Reflex save DC of 25."
 			],
 			"craftReq": "Supply a casting of lightning bolt (4th level).",
 			"generic": false
@@ -10250,8 +9942,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10261,8 +9952,8 @@
 			"category": "Elixir",
 			"entries": [
 				"After you drink this mutagen, your body becomes thick and sturdy. You exhibit a healthy glow, though you tend to be ponderous and unobservant.",
-				"{@b Benefit} You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
-				"{@b Drawback} You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
+				"Benefit You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
+				"Drawback You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -10363,8 +10054,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10444,8 +10134,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10506,9 +10195,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10574,8 +10262,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -10639,9 +10326,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -10674,7 +10360,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This steel shield (Hardness 6, HP 36, BT 18) is forged into the shape of a roaring lion's head.",
 				"The lion's head functions as +1 striking shield boss that can't be removed from the shield.",
@@ -10683,8 +10368,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Raise a Shield"
@@ -10775,16 +10459,14 @@
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"category": "Held",
-			"craftReq": "You must supply a casting of {@spell charm} of the appropriate level.",
 			"entries": [
 				"A maestro's instrument can be crafted in the form of any variety of handheld musical instrument. A maestro's instrument grants you a +1 item bonus to {@skill Performance} checks while playing music with the instrument.",
 				{
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -10793,7 +10475,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You play the instrument, causing it to cast a DC 17 {@spell charm} spell."
+						"You can play the instrument to produce the effects of a {@spell charm} spell."
 					]
 				}
 			],
@@ -10818,7 +10500,7 @@
 						"note": null
 					},
 					"entries": [
-						"The item bonus is +2, and the {@spell charm} spell is 4th level (DC 27)."
+						"The item bonus is +2, and the {@spell charm} spell is 4th level."
 					]
 				},
 				{
@@ -10831,7 +10513,7 @@
 					},
 					"craftReq": "You must supply a casting of charm of the appropriate level.",
 					"entries": [
-						"The item bonus is +3, and the {@spell charm} spell is 8th level (DC 38)."
+						"The item bonus is +3, and the {@spell charm} spell is 8th level."
 					]
 				}
 			]
@@ -10951,7 +10633,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -11217,9 +10899,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "triple",
-					"entry": "{@as 3}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -11304,8 +10985,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Treat Poison or 8 hours (Treat Disease)"
@@ -11370,9 +11050,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -11446,7 +11125,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -11613,7 +11292,7 @@
 					},
 					"entries": [
 						"The ring grants a +3 bonus and can be activated in an additional way.",
-						"{@b Activate} {@as 3} command; {@b Frequency} once per hour; {@b Effect} The ring casts sending to your specifications."
+						"Activate {@as 3} command; Frequency once per hour; Effect The ring casts sending to your specifications."
 					]
 				}
 			]
@@ -11640,8 +11319,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -11698,8 +11376,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -11863,7 +11540,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Mithral shields are 1 Bulk lighter than normal (or light Bulk if their normal Bulk is 1, with no effect on a shield that normally has light Bulk). When used for a shield bash, they are treated as silver weapons."
 			],
@@ -11878,10 +11554,8 @@
 						"note": null
 					},
 					"bulk": "L",
-					"craftReq": "mithral worth at least 50 gp",
-					"entries": [
-						"The shield has Hardness 3, HP 12, and BT 6."
-					]
+					"craftReq": "mithral worth at least 50 gp The shield has Hardness 3, HP 12, and BT 6.",
+					"entries": []
 				},
 				{
 					"type": "standard-grade mithral shield",
@@ -11891,11 +11565,9 @@
 						"amount": 440,
 						"note": null
 					},
-					"bulk": "L",
-					"craftReq": "mithral worth at least 55 gp",
-					"entries": [
-						"The shield has Hardness 5, HP 20, BT 10."
-					]
+					"bulk": "1",
+					"craftReq": "mithral worth at least 55 gp The shield has Hardness 5, HP 20, BT 10.",
+					"entries": []
 				},
 				{
 					"type": "high-grade mithral buckler",
@@ -11906,10 +11578,8 @@
 						"note": null
 					},
 					"bulk": "L",
-					"craftReq": "mithral worth at least 4,000 gp",
-					"entries": [
-						"The shield has Hardness 6, HP 24, and BT 12."
-					]
+					"craftReq": "mithral worth at least 4,000 gp The shield has Hardness 6, HP 24, and BT 12.",
+					"entries": []
 				},
 				{
 					"type": "high-grade mithral shield",
@@ -11924,9 +11594,8 @@
 						"hp": 32,
 						"bt": 16
 					},
-					"craftReq": "{@action Craft} Bulk 1; Requirements at least 4,400 gp of mithral",
 					"entries": [
-						"The shield has Hardness 8, HP 32, and BT 16."
+						"{@action Craft} Bulk 1; Requirements at least 4,400 gp of mithral The shield has Hardness 8, HP 32, and BT 16."
 					]
 				}
 			]
@@ -11994,8 +11663,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Climb",
 				"requirements": "You are trained in",
@@ -12035,8 +11703,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -12074,8 +11741,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "command",
 				"requirements": "You are a master in {@skill Perception}.",
@@ -12148,8 +11814,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -12272,8 +11937,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12308,8 +11972,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12370,8 +12033,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12435,8 +12097,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -12474,8 +12135,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12512,8 +12172,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12549,8 +12208,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12610,8 +12268,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12646,8 +12303,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12685,8 +12341,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -12874,7 +12529,6 @@
 			],
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Orichalcum shields' time-bending properties are particularly useful for keeping them intact. The first time each day an orichalcum shield would be destroyed, it is instead left with 1 Hit Point and the {@condition broken} condition."
 			],
@@ -12996,8 +12650,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13050,7 +12703,7 @@
 					},
 					"entries": [
 						"The pendant grants a +2 item bonus and can be activated.",
-						"{@b Activate} 10 minutes ({@action Cast a Spell}); {@b Frequency} once per day; {@b Effect} You cast a 4th-level {@spell dream message} spell."
+						"Activate 10 minutes ({@action Cast a Spell}); Frequency once per day; Effect You cast a 4th-level {@spell dream message} spell."
 					]
 				}
 			]
@@ -13074,8 +12727,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13113,8 +12765,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -13149,7 +12800,7 @@
 					},
 					"entries": [
 						"The mask grants a +2 bonus and can be activated.",
-						"{@b Activate} {@as R} envision (fortune); {@b Frequency} once per day; {@b Trigger} You fail a {@skill Performance} check that benefits from the mask's bonus; {@b Effect} You change the mask's character and reroll the {@skill Performance} check, using the second result."
+						"Activate {@as R} envision (fortune); Frequency once per day; Trigger You fail a {@skill Performance} check that benefits from the mask's bonus; Effect You change the mask's character and reroll the {@skill Performance} check, using the second result."
 					]
 				}
 			]
@@ -13174,8 +12825,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact or 1 or more days",
 				"requirements": null,
@@ -13218,8 +12868,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"envision"
@@ -13427,8 +13076,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13487,8 +13135,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13523,8 +13170,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13554,8 +13200,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13623,8 +13268,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13684,8 +13328,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13720,8 +13363,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13756,8 +13398,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13789,9 +13430,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -13807,9 +13447,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -13843,7 +13482,7 @@
 						"note": null
 					},
 					"entries": [
-						"The sprig grants a +2 bonus and can be activated in one additional way: {@b Activate} {@as 2} {@action Interact}; {@b Frequency} once per day; {@b Effect} You plant the primeval mistletoe into an area of natural earth or stone. Once planted, the plant immediately sprouts into an area of holly bushes that don't impede movement and that pulse with positive energy, replicating the effects of a {@spell field of life} spell. This lasts for up to 1 minute, as long as you continue to Sustain the Activation. When this magic ends, the holly bushes revert back into the original primeval mistletoe."
+						"The sprig grants a +2 bonus and can be activated in one additional way: Activate {@as 2} {@action Interact}; Frequency once per day; Effect You plant the primeval mistletoe into an area of natural earth or stone. Once planted, the plant immediately sprouts into an area of holly bushes that don't impede movement and that pulse with positive energy, replicating the effects of a {@spell field of life} spell. This lasts for up to 1 minute, as long as you continue to Sustain the Activation. When this magic ends, the holly bushes revert back into the original primeval mistletoe."
 					]
 				}
 			]
@@ -13869,9 +13508,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13928,8 +13566,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -13939,8 +13576,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features become thin and angular. You become swifter and nimbler, but your body also becomes fragile.",
-				"{@b Benefit} You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed.",
-				"{@b Drawback} You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
+				"Benefit You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and ranged attack rolls, and you gain the listed status bonus to your Speed.",
+				"Drawback You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -14013,7 +13650,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This high-grade silver buckler (Hardness 6, HP 24, BT 12) is polished to a mirrorlike sheen. The shield functions as a spellguard shield (see below) that can also reflect spells.",
 				{
@@ -14239,8 +13875,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -14336,9 +13971,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -14528,8 +14162,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"or more (Interact)"
@@ -14538,7 +14171,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to {@b Activate} this Item (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
+						"A ram-shaped blast of force slams into one foe that you can see within 60 feet. The number of actions you spend to Activate this Item (from 1 to 3) determines the intensity of the force. The blow deals {@damage 2d6} force damage per action spent and pushes the target 5 feet per action spent. The target must attempt a DC 22 Fortitude save.",
 						{
 							"type": "successDegree",
 							"entries": {
@@ -14677,8 +14310,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -14783,9 +14415,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -14826,13 +14457,12 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
-						"{@action Interact}"
+						"Interact"
 					],
 					"frequency": null,
 					"trigger": null,
@@ -14841,135 +14471,7 @@
 						"Choose a creature within 60 feet and roll d% on the table below to determine the rod's effect. If an entry lists only a spell name, the rod casts that spell at its lowest level. You make any decisions for a spell cast by the rod unless otherwise indicated, except that it must target the creature you chose, or the creature you chose must be the center of the spell's area, if it has an area but no targets. If the spell's range is less than 60 feet, increase the range to 60 feet.",
 						"Any spell DC required is DC 27, and any spell attack roll required is +17. If the rod casts a spell on you, you don't get a saving throw or other defense against it.",
 						"Once activated, the rod can't be activated again for {@dice 1d4} hours.",
-						{
-							"type": "table",
-							"id": "1-3",
-							"labelRowIdx": [
-								0
-							],
-							"colSizes": [
-								2,
-								6
-							],
-							"rows": [
-								[
-									"{@dice d100|D%}",
-									"Wondrous Effect"
-								],
-								[
-									"1\u20133",
-									"Leaves grow from the target; they last 24 hours"
-								],
-								[
-									"4\u20138",
-									"{@spell Darkness}"
-								],
-								[
-									"10\u201313",
-									"A stream of 600 large and colorful butterflies pours forth, fluttering in a 20-foot burst for 2 rounds; creatures are {@condition blinded} while in the cloud of butterflies"
-								],
-								[
-									"14\u201315",
-									"All the target’s weapons animate with the effects of the {@item dancing|crb|dancing rune}"
-								],
-								[
-									"16\u201325",
-									"{@spell Lightning bolt}"
-								],
-								[
-									"26\u201329",
-									"Grass grows in a 60-foot cone in front of the rod, or existing grass grows at 10 × normal rate"
-								],
-								[
-									"30",
-									"Target turns blue, green, or purple with an unlimited duration"
-								],
-								[
-									"31",
-									"Summon an {@creature elephant} (6th-level {@spell summon animal})"
-								],
-								[
-									"32\u201334",
-									"Heavy rain falls in a 60-foot radius around you for 1 round"
-								],
-								[
-									"35\u201338",
-									"{@spell Stinking cloud}"
-								],
-								[
-									"39",
-									"Summon an ineffective mouse (1st-level {@spell summon animal})"
-								],
-								[
-									"40\u201342",
-									"{@spell Vibrant pattern}, with a 1-round duration"
-								],
-								[
-									"43\u201344",
-									"The rod casts {@spell mirror image} on you"
-								],
-								[
-									"45\u201346",
-									"{@spell Gust of wind}"
-								],
-								[
-									"47\u201348",
-									"The non-living, unattended object closest to the target (up to 30 cubic feet in size) turns ethereal for an unlimited duration"
-								],
-								[
-									"49\u201353",
-									"{@spell Slow}"
-								],
-								[
-									"54",
-									"You turn blue, green, or purple with an unlimited duration"
-								],
-								[
-									"55\u201359",
-									"The rod casts {@spell pest form} on you, lasting {@dice 1d4} rounds"
-								],
-								[
-									"60\u201361",
-									"{@dice 1d4 * 10|1d4 × 10} gems, each worth 1 sp, shoot from the rod, dealing 1 piercing damage to each creature in a 15-foot cone"
-								],
-								[
-									"62",
-									"{@spell Sleep}, with a 100-foot burst"
-								],
-								[
-									"63\u201372",
-									"{@spell Fireball}"
-								],
-								[
-									"73\u201377",
-									"{@spell Mind reading}"
-								],
-								[
-									"78\u201380",
-									"Roll again; the target believes you created the effect of the second roll"
-								],
-								[
-									"81\u201384",
-									"{@spell Enlarge}"
-								],
-								[
-									"85\u201387",
-									"Target is coated in nectar, making it {@condition clumsy} 1 for 1 round"
-								],
-								[
-									"88\u201392",
-									"{@spell Faerie fire}"
-								],
-								[
-									"93\u201397",
-									"The rod casts {@spell invisibility} on you"
-								],
-								[
-									"98\u2013100",
-									"The rod casts {@spell shrink} on you, lasting 1 day"
-								]
-							]
-						}
+						"D% Wondrous Effect 1\u20133 Leaves grow from the target; they last 24 hours 4\u20138 Darkness 9 Summon a giant stag beetle (5th-level {@spell summon animal}; Pathfinder Bestiary 41) 10\u201313 A stream of 600 large and colorful butterflies pours forth, fluttering in a 20-foot burst for 2 rounds; creatures are {@condition blinded} while in the cloud of butterflies 14\u201315 All the target's weapons animate with the effects of the dancing rune 16 \u201325 Lightning bolt 26 \u201329 Grass grows in a 60-foot cone in front of the rod, or existing grass grows at 10 × normal rate 30 Target turns blue, green, or purple with an unlimited duration 31 Summon an elephant (6th-level {@spell summon animal}; Pathfinder Bestiary 154) 32\u201334 Heavy rain falls in a 60-foot radius around you for 1 round 35\u201338 Stinking cloud 39 Summon an ineffective mouse (1st-level {@spell summon animal}) 40\u201342 Vibrant pattern, with a 1-round duration 43\u201344 The rod casts mirror image on you 45\u201346 Gust of wind 47\u201348 The non-living, unattended object closest to the target (up to 30 cubic feet in size) turns ethereal for an unlimited duration 49\u201353 Slow 54 You turn blue, green, or purple with an unlimited duration 55\u201359 The rod casts pest form on you, lasting {@dice 1d4} rounds 60\u201361 {@dice 1d4} × 10 gems, each worth 1 sp, shoot from the rod, dealing 1 piercing damage to each creature in a 15-foot cone 62 Sleep, with a 100-foot burst 63\u201372 Fireball 73\u201377 Mind reading 78\u201380 Roll again; the target believes you created the effect of the second roll 81\u201384 Enlarge 85\u201387 Target is coated in nectar, making it {@condition clumsy|CRB|clumsy 1} for 1 round 88\u201392 Faerie fire 93\u201397 The rod casts invisibility on you 98\u2013100 The rod casts shrink on you, lasting 1 day."
 					]
 				}
 			],
@@ -15014,8 +14516,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15082,8 +14583,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15141,8 +14641,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15213,9 +14712,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "Cast a Spell",
 				"requirements": null,
@@ -15250,9 +14748,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "Cast a Spell",
 				"requirements": null,
@@ -15306,8 +14803,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15377,8 +14873,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15388,9 +14883,9 @@
 			"category": "Elixir",
 			"entries": [
 				"You gain inner serenity, focused on fine details and steeled against mental assaults, but you find violence off-putting.",
-				"{@b Benefit} You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks.",
+				"Benefit You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks.",
 				"This bonus improves when you attempt Will saves against {@trait mental} effects.",
-				"{@b Drawback} You take a \u20131 penalty to attack rolls and save DCs of offensive spells, and a \u20131 penalty per damage die to all weapon, unarmed attack, and spell damage."
+				"Drawback You take a \u20131 penalty to attack rolls and save DCs of offensive spells, and a \u20131 penalty per damage die to all weapon, unarmed attack, and spell damage."
 			],
 			"generic": "G",
 			"variants": [
@@ -15467,8 +14962,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15502,7 +14996,7 @@
 			"variants": [
 				{
 					"type": "shadow",
-					"level": 5,
+					"level": 3,
 					"price": {
 						"coin": "gp",
 						"amount": 55,
@@ -15558,9 +15052,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15660,8 +15153,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -15760,8 +15252,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -15950,7 +15441,6 @@
 			"level": "2+",
 			"usage": "varies by shield",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Silver shields don't typically have an additional effect, though when used for a shield bash, they are silver weapons."
 			],
@@ -16099,8 +15589,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16131,8 +15620,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16142,8 +15630,8 @@
 			"category": "Elixir",
 			"entries": [
 				"Your features become striking and your voice becomes musical and commanding, though facts and figures become hazy for you and emotion clouds your ability to reason.",
-				"{@b Benefit} You gain an item bonus to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks. Your critical failures with any of these skill become failures instead.",
-				"{@b Drawback} You take a \u20132 item penalty to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures on checks to {@action Recall Knowledge} become critical failures."
+				"Benefit You gain an item bonus to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks. Your critical failures with any of these skill become failures instead.",
+				"Drawback You take a \u20132 item penalty to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks. Choose one skill in which you are trained; for the duration, you become untrained in that skill. All your failures on checks to {@action Recall Knowledge} become critical failures."
 			],
 			"generic": "G",
 			"variants": [
@@ -16322,8 +15810,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16343,7 +15830,7 @@
 			"source": "CRB",
 			"page": 583,
 			"type": "Rune",
-			"level": "5+",
+			"level": "3+",
 			"traits": [
 				"Magical",
 				"Transmutation"
@@ -16358,7 +15845,7 @@
 			"variants": [
 				{
 					"type": "slick",
-					"level": 5,
+					"level": 3,
 					"price": {
 						"coin": "gp",
 						"amount": 45,
@@ -16419,8 +15906,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -16458,8 +15944,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16514,8 +15999,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16574,8 +16058,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16610,8 +16093,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": "You are an expert in {@skill Thievery}.",
@@ -16674,8 +16156,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -16693,8 +16174,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -16727,7 +16207,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"This shield bears eldritch glyphs to guard against magic. While you have this steel shield (Hardness 6, HP 24, BT 12) raised, you gain its circumstance bonus to saving throws against spells that target you (as well as to AC)."
 			],
@@ -16746,9 +16225,8 @@
 			],
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 2,
+					"unit": "action"
 				},
 				"components": "Cast a Spell",
 				"requirements": null,
@@ -16896,8 +16374,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -16977,7 +16454,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"Five jagged spines project from the surface of this steel shield (Hardness 6, HP 24, BT 12). The spines are +1 striking shield spikes. When you use the Shield Block reaction with this shield, the spines take the damage before the shield itself does. When the shield would take damage (after applying Hardness), one spine snaps off per 6 damage, reducing the damage by 6. The shield takes any remaining damage. When there are no spines left, the shield takes damage as normal.",
 				"When all the spines are gone, you lose the ability to attack with them until the spines regenerate the next day.",
@@ -16986,8 +16462,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -17023,7 +16498,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17118,7 +16593,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17213,7 +16688,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17308,7 +16783,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17406,7 +16881,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17502,7 +16977,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17596,7 +17071,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17717,8 +17192,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -17735,7 +17209,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17782,7 +17256,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17877,7 +17351,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -17926,7 +17400,7 @@
 							"type": "list",
 							"items": [
 								"{@bold 3rd} blindness, vampiric touch",
-								"{@bold 4th} grim tendrils, vampiric touch"
+								"{@bold 4th} grim tendrils, enervation"
 							]
 						}
 					]
@@ -17980,7 +17454,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -18037,7 +17511,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -18091,7 +17565,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -18217,8 +17691,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -18255,8 +17728,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -18290,8 +17762,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -18335,9 +17806,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -18347,7 +17817,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast a 6th-level {@spell lightning bolt} (DC 33)."
+						"You cast a 6th-level {@spell light}ning bolt (DC 33)."
 					]
 				},
 				{
@@ -18390,7 +17860,7 @@
 						"note": null
 					},
 					"entries": [
-						"This is a +3 greater striking greater shock rapier. When activating the sword to cast {@spell lightning bolt}, the spell is 8th level (DC 38)."
+						"This is a +3 greater striking greater shock rapier. When activating the sword to cast {@spell light}ning bolt, the spell is 8th level."
 					]
 				}
 			]
@@ -18518,7 +17988,6 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"category": "Shield",
-			"group": "Shield",
 			"entries": [
 				"With a superior design and excellent craftsmanship, this steel shield has higher Hardness than its non-magical counterparts, making it harder to break and destroy."
 			],
@@ -18649,8 +18118,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -18716,8 +18184,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -18807,8 +18274,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -18874,9 +18340,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"envision",
@@ -18953,8 +18418,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -19037,9 +18501,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -19147,8 +18610,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -19227,9 +18689,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact",
@@ -19305,8 +18766,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact (auditory)"
@@ -19343,8 +18803,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -19381,8 +18840,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -19429,8 +18887,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -19512,8 +18969,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Strike",
 				"requirements": null,
@@ -19584,9 +19040,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"Interact"
@@ -19647,7 +19102,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "Cast"
 					},
 					"components": [
@@ -19723,8 +19178,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "command",
 				"requirements": null,
@@ -19757,8 +19211,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "command",
 				"requirements": null,
@@ -19922,7 +19375,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20043,7 +19496,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20174,7 +19627,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20254,7 +19707,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20325,7 +19778,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20412,7 +19865,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "Varies",
+						"unit": "varies",
 						"entry": "(Cast"
 					},
 					"components": [
@@ -20567,16 +20020,15 @@
 			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
-				"This compact compass repurposes ancient technology to draw fantastic powers from the mysterious magical items called aeon stones. It serves as a badge of office for agents of the Pathfinder Society and as a status symbol among adventurers of any stripe. A wayfinder functions as a compass.",
-				"An indentation in the middle of the wayfinder can hold a single {@item aeon stone|Crb}. Placing an aeon stone in this indentation provides you all the benefits of having the aeon stone orbiting your head, but it protects the stone from being noticed or stolen as easily. You invest a wayfinder and the aeon stone within it simultaneously, and they count as only one item toward your investiture limit. An invested aeon stone slotted in a wayfinder also grants its resonant power.",
+				"This compact compass repurposes ancient technology to draw fantastic powers from the mysterious magical items called aeon stones. It serves as a badge of office for agents of the Pathfinder {@skill Society} and as a status symbol among adventurers of any stripe. A wayfinder functions as a compass.",
+				"An indentation in the middle of the wayfinder can hold a single aeon stone (page 604). Placing an aeon stone in this indentation provides you all the benefits of having the aeon stone orbiting your head, but it protects the stone from being noticed or stolen as easily. You invest a wayfinder and the aeon stone within it simultaneously, and they count as only one item toward your investiture limit. An invested aeon stone slotted in a wayfinder also grants its resonant power.",
 				"If you have more than one wayfinder with an invested aeon stone on your person at a given time, destructive interference from their resonance prevents you from gaining benefits from any of them. You can still benefit from additional aeon stones orbiting your head, just not in wayfinders.",
 				{
 					"type": "ability",
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
+						"unit": "action"
 					},
 					"components": [
 						"command"
@@ -20672,9 +20124,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "triple",
-						"entry": "{@as 3}"
+						"number": 3,
+						"unit": "action"
 					},
 					"components": [
 						"Interact",
@@ -20717,9 +20168,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -20751,8 +20201,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -20860,8 +20309,7 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "single",
-					"entry": "{@as 1}"
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -20920,9 +20368,8 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 1,
-						"unit": "double",
-						"entry": "{@as 2}"
+						"number": 2,
+						"unit": "action"
 					},
 					"components": [
 						"command",
@@ -21051,9 +20498,8 @@
 			"bulk": "L",
 			"activate": {
 				"activity": {
-					"number": 1,
-					"unit": "double",
-					"entry": "{@as 2}"
+					"number": 3,
+					"unit": "action"
 				},
 				"components": "Interact",
 				"requirements": null,

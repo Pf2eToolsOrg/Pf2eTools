@@ -846,7 +846,7 @@ function Renderer () {
 	this._renderAbility_compact = function (entry, textStack, meta, options) {
 		const renderer = Renderer.get();
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
-		if (entry.activity != null) renderer._recursiveRender(`${entry.activity.entry} `, textStack, meta);
+		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
 			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
 			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t}}`)).join(", ")}); ` : ""}`;
@@ -1619,9 +1619,9 @@ function Renderer () {
 
 			// LINKS ///////////////////////////////////////////////////////////////////////////////////////////
 			case "@filter": {
-				const [displayText, page, ...filters] = Renderer.splitTagByPipe(text);
+				const [displayText, page, namespace, ...filters] = Renderer.splitTagByPipe(text);
 
-				const filterSubhashMeta = Renderer.getFilterSubhashes(filters);
+				const filterSubhashMeta = Renderer.getFilterSubhashes(filters, namespace);
 
 				const fauxEntry = {
 					type: "link",
@@ -1682,8 +1682,8 @@ function Renderer () {
 				const [displayText, footnoteText, optTitle] = Renderer.splitTagByPipe(text);
 				const hoverMeta = Renderer.hover.getMakePredefinedHover({
 					type: "entries",
-					name: "Footnote",
-					entries: [footnoteText, optTitle ? `\u2014 {@note ${optTitle}}` : ""].filter(Boolean),
+					name: optTitle ? optTitle.toTitleCase() : "Footnote",
+					entries: [footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean),
 				});
 				textStack[0] += `<span class="help" ${hoverMeta.html}>`;
 				this._recursiveRender(displayText, textStack, meta);
@@ -2828,7 +2828,7 @@ Renderer.utils = {
 		let source;
 		const traitsHtml = [];
 		for (let trait of traits.sort(SortUtil.sortTraits)) {
-			[trait, source] = trait.split("|") || [];
+			[trait, source] = trait.split("|");
 			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
 			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			source = source || "TRT";
@@ -2882,7 +2882,7 @@ Renderer.utils = {
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
 		const level = opts.level != null ? `${opts.level}` : (!isNaN(Number(it.level)) || typeof it.level === "string") ? ` ${it.level}` : ""
-		const activity = opts.activity ? ` ${it.activity != null && it.activity.entry.includes("@as") ? Renderer.get().render(it.activity.entry) : ``}` : ``
+		const activity = opts.activity ? ` ${it.activity != null && Parser.timeToFullEntry(it.activity).includes("@as") ? Renderer.get().render(Parser.timeToFullEntry(it.activity)) : ``}` : ``
 		const $ele = $$`<div class="flex ${opts.isEmbedded ? "pf2-embedded-name" : ""}" ${dataPart}>
 			<p class="pf2-stat pf2-stat__name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
 			<p class="pf2-stat pf2-stat__name pf2-stat__name--level">${opts.$btnScaleLvl ? opts.$btnScaleLvl : ""}${opts.$btnResetScaleLvl ? opts.$btnResetScaleLvl : ""}${type}${level}${opts.isEmbedded ? ` ${Renderer.get()._renderData_getEmbeddedToggle()}` : ""}</p>
@@ -3356,7 +3356,6 @@ Renderer.companion = {
 		${Renderer.utils.getTraitsDiv(companion.traits)}
 		${companion.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${companion.access}</p>` : ""}
 		${(companion.traits && companion.traits.length) || companion.access ? Renderer.utils.getDividerDiv() : ""}
-		${companion.fluff ? `<p class="pf2-stat pf2-stat__section--wide">${renderer.render(companion.fluff)}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${companion.size}</p>
 		${Renderer.creature.getAttacks(companion)}
 		${Renderer.creature.getAbilityMods(companion.abilityMods)}
@@ -3434,7 +3433,7 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
+			renderStack.push(cr.languages.languages.join(", "))
 			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
 				renderStack.push(cr.languages.languageAbilities.join(", "))
@@ -3681,7 +3680,12 @@ Renderer.creature = {
 
 	getCompactRenderedString (cr, opts) {
 		opts = opts || {};
-		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment || []]).concat([cr.size]).concat((cr.traits || []).concat(cr.creatureType || []))
+		const traits = [];
+		if (cr.rarity !== "Common") traits.push(cr.rarity);
+		if (cr.alignment != null) traits.push(cr.alignment);
+		if (cr.size != null) traits.push(cr.size);
+		if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
+		if (cr.creatureType != null) traits.push(...cr.creatureType);
 
 		return $$`<div class="pf2-stat">${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, {page: UrlUtil.PG_BESTIARY, type: cr.type || "CREATURE", ...opts})}
@@ -3726,13 +3730,13 @@ Renderer.creature = {
 			renderedGenericAbility = Renderer.creature.getRenderedAbility(genericAbility, {generic: true});
 		}
 		return $$`<p class="pf2-stat pf2-stat__section ${buttonClass} ${options.generic ? "hidden" : ""}"><span><strong>${ability.generic || options.generic ? `${renderer.render(`{@ability ${ability.name}}`)}` : ability.name}</strong>
-					${ability.activity ? renderer.render(ability.activity.entry) : ""}
+					${ability.activity ? renderer.render(Parser.timeToFullEntry(ability.activity)) : ""}
 					${(ability.generic || options.generic) && !options.noButton ? Renderer.creature.getAbilityTextButton(buttonClass, options.generic) : ""}
 					${trts.length ? `(${trts.join(", ")}); ` : ""}
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(ability.frequency)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
 					${entryStack.join("")}
 					</span></p>
 					${renderedGenericAbility || ""}`;
@@ -3854,8 +3858,8 @@ Renderer.deity = {
 			${b.font ? `<p class="pf2-stat__section"><strong>Divine Font&nbsp;</strong>${renderer.render(b.font.map(f => `{@spell ${f}}`).join(" or "))}</p>` : ""}
 			${b.ability ? `<p class="pf2-stat__section"><strong>Divine Ability&nbsp;</strong>${renderer.render(b.ability.entry)}</p>` : ""}
 			${b.skill ? `<p class="pf2-stat__section"><strong>Divine Skill&nbsp;</strong>${renderer.render(b.skill.map(s => `{@skill ${s}}`).join(", "))}</p>` : ""}
-			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>` : ""}
-			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells|subclass=${it}}`).join(", "))}</p>` : ""}
+			${b.domains ? `<p class="pf2-stat__section"><strong>Domains&nbsp;</strong>${renderer.render(b.domains.map(it => `{@filter ${it}|spells||subclass=${it}}`).join(", "))}</p>` : ""}
+			${b.alternateDomains ? `<p class="pf2-stat__section"><strong>Alternate Domains&nbsp;</strong>${renderer.render(b.alternateDomains.map(it => `{@filter ${it}|spells||subclass=${it}}`).join(", "))}</p>` : ""}
 			${b.spells ? `<p class="pf2-stat__section"><strong>Cleric Spells&nbsp;</strong>${renderer.render(Renderer.deity.getClericSpells(b.spells))}</p>` : ""}
 			${b.weapon ? `<p class="pf2-stat__section"><strong>Favored Weapon&nbsp;</strong>${renderer.render(b.weapon.map(w => `{@item ${w}}`).join(" or "))}</p>` : ""}
 			${b.avatar ? `<p class="pf2-h3">Avatar</p>${b.avatar.preface ? `<p class="pf2-stat">${renderer.render(b.avatar.preface)}</p>` : ""}<p class="pf2-stat">${renderer.render(b.avatar.entry)}</p>` : ""}
@@ -3896,7 +3900,7 @@ Renderer.deity = {
 		const textStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
 			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
 		return textStack.join("");
@@ -4112,7 +4116,7 @@ Renderer.item = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">${tempStack.join("; ")}</p>`)
 		}
 		if (item.activate) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(item.activate.activity.entry)} `);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Activate&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(item.activate.activity))} `);
 			if (item.activate.components != null) {
 				renderStack.push(`${renderer.render(item.activate.components)}`);
 			}
@@ -4225,7 +4229,7 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${v.type}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
@@ -4341,14 +4345,10 @@ Renderer.item = {
 				let varItem = MiscUtil.copy(genericItem)
 				varItem.name = this._getVariantName(v, genericItem.name)
 				varItem.level = v.level
-				if (v.source) varItem.source = v.source
-				varItem.otherSources = v.otherSources
-				if (v.page) varItem.page = v.page
 				varItem.price = v.price
 				varItem.bulk = v.bulk
 				varItem.shieldStats = v.shieldStats
 				varItem.craftReq = v.craftReq
-				if (v.traits) varItem.traits = genericItem.traits.concat(v.traits)
 				varItem.entries.push(...v.entries)
 				varItem.generic = "V"
 				delete varItem.variants
@@ -4411,7 +4411,7 @@ Renderer.ritual = {
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(ritual.traits)}
 		<p class="pf2-stat pf2-stat__section">
-		${[`<strong>Cast&nbsp;</strong>${renderer.render(ritual.cast.entry)}`,
+		${[`<strong>Cast&nbsp;</strong>${renderer.render(Parser.timeToFullEntry(ritual.cast))}`,
 		`${ritual.cost ? `<strong>Cost&nbsp;</strong>${renderer.render(ritual.cost)}` : ""}`,
 		`${ritual.secondaryCasters ? `<strong>Secondary Casters&nbsp;</strong>${ritual.secondaryCasters.entry ? ritual.secondaryCasters.entry : ritual.secondaryCasters.number}${ritual.secondaryCasters.note ? `, ${ritual.secondaryCasters.note}` : ""}` : ""}`].filter(Boolean).join("; ")}
 		</p>
@@ -4532,7 +4532,7 @@ Renderer.spell = {
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]} </strong>${sp.subclass[k].join(", ")}</p>`) : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(sp.cast.entry)} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}
 		${stDurationParts.length ? `<p class="pf2-stat pf2-stat__section">${stDurationParts.join("; ")}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}`;
