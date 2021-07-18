@@ -97,8 +97,9 @@
 			"source": "LOCG",
 			"page": 94,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 12,
 			"featType": {
@@ -322,8 +323,9 @@
 			"source": "LOCG",
 			"page": 84,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 12,
 			"featType": {
@@ -346,8 +348,9 @@
 			"source": "LOCG",
 			"page": 95,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 12,
 			"featType": {
@@ -371,7 +374,8 @@
 			"page": 74,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 6,
 			"featType": {
@@ -382,7 +386,8 @@
 				"archetype": true
 			},
 			"traits": [
-				"Archetype"
+				"Archetype",
+				"Mental"
 			],
 			"prerequisites": "expert in {@skill Deception}, {@skill Diplomacy}, or {@skill Intimidation}; Firebrand Braggart",
 			"entries": [
@@ -580,8 +585,9 @@
 			"source": "LOCG",
 			"page": 20,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 1,
 			"featType": {
@@ -667,7 +673,7 @@
 			],
 			"entries": [
 				"Whether you are climbing a ship's rigging, a jungle tree, or a clock tower, you have an uncanny knack for finding footholds and handholds where larger creatures can't.",
-				"You gain a climb Speed of 10 feet. You can take the Legendary Climber feat even if you don't have the Quick {@action Climb} feat, provided you meet its other prerequisites."
+				"You gain a climb Speed of 10 feet."
 			]
 		},
 		{
@@ -695,8 +701,9 @@
 			"source": "LOCG",
 			"page": 74,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 6,
 			"featType": {
@@ -894,7 +901,8 @@
 			"page": 104,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 8,
 			"featType": {
@@ -949,7 +957,8 @@
 			"page": 112,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 12,
 			"featType": {
@@ -960,16 +969,15 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Secret"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"You attempt to {@action Recall Knowledge} about a creature, and the GM uses the same secret roll result against the creature's {@skill Deception} or {@skill Stealth} DC, giving you the information from a Battle Assessment (Pathfinder Core Rulebook 184). You might get a different degree of success on the {@action Recall Knowledge} check than what you get for the Battle Assessment. If you have the Battle Assessment feat, you gain the effects of Educated Assessment whenever you {@action Recall Knowledge} (such as with the Automatic Knowledge feat)",
-				"Pathfinder {@skill Society} Archetypes The following archetypes are uncommon, but are available to members of the Pathfinder {@skill Society} (see page 65 for more information)",
+				"Pathfinder Society Archetypes The following archetypes are uncommon, but are available to members of the Pathfinder Society (see page 65 for more information)",
 				"Qualifying characters with the Pathfinder agent archetype (Lost Omens World Guide 23) can select one of these dedication feats even if they have not gained three feats from the Pathfinder agent archetype, and each of these archetypes' feats fulfills the Pathfinder Agent Dedication's special requirement despite not being from the Pathfinder agent archetype.",
-				"Scrollmaster Members who align themselves with the Scrolls branch of the Pathfinder {@skill Society} are fervent seekers of lore, experts in esoterica, and masters of the wealth of knowledge at the {@skill Society}'s disposal. In addition to maintaining and researching the {@skill Society}'s massive collection of tomes and artifacts, these scholars are also eager to adventure in order to add to the Pathfinder's archives. They take tremendous pride in their ability to thoroughly observe, research, and catalog creatures and events. Members of the Scrolls value knowledge and preparation above strength and cunning, and they work to hone their intellectual skills. As a Scrollmaster, you are an elite member of this arm of the {@skill Society}."
+				"Scrollmaster Members who align themselves with the Scrolls branch of the Pathfinder Society are fervent seekers of lore, experts in esoterica, and masters of the wealth of knowledge at the {@skill Society}'s disposal. In addition to maintaining and researching the {@skill Society}'s massive collection of tomes and artifacts, these scholars are also eager to adventure in order to add to the Pathfinder's archives. They take tremendous pride in their ability to thoroughly observe, research, and catalog creatures and events. Members of the Scrolls value knowledge and preparation above strength and cunning, and they work to hone their intellectual skills. As a Scrollmaster, you are an elite member of this arm of the {@skill Society}."
 			]
 		},
 		{
@@ -1141,7 +1149,7 @@
 			],
 			"prerequisites": "master in {@skill Diplomacy}, {@feat Hobnobber}",
 			"entries": [
-				"You have a small group of admirers who tend to follow you around while you're in civilized settlements. Your admirers are {@condition helpful} to you, allowing you to make simple Requests of them such as purchasing basic equipment with your funds or finding a room at an inn. These admirers do not travel with you to places that are obviously dangerous, including most adventure locations, but they'll wait for you at the nearest settlement. Your admirers never use actions in encounter mode other than to retreat, and they abandon you if you intentionally bring them harm or at the GM's discretion. When you {@action Gather Information}, you can use your admirers to assist you, granting a +1 circumstance bonus to your {@skill Diplomacy} check and reducing the time it takes even further (typically to 30 minutes, rather than 1 hour with the Hobnobber feat alone). If you have the Sow Rumor feat, you can have your admirers assist you, with the same benefits as {@action Gather Information}."
+				"You have a small group of admirers who tend to follow you around while you're in civilized settlements. Your admirers are {@condition helpful} to you, allowing you to make simple {@action Request|CRB|Requests} of them such as purchasing basic equipment with your funds or finding a room at an inn. These admirers do not travel with you to places that are obviously dangerous, including most adventure locations, but they'll wait for you at the nearest settlement. Your admirers never use actions in encounter mode other than to retreat, and they abandon you if you intentionally bring them harm or at the GM's discretion. When you {@action Gather Information}, you can use your admirers to assist you, granting a +1 circumstance bonus to your {@skill Diplomacy} check and reducing the time it takes even further (typically to 30 minutes, rather than 1 hour with the {@feat Hobnobber|CRB} feat alone). If you have the Sow Rumor feat, you can have your admirers assist you, with the same benefits as {@action Gather Information}."
 			]
 		},
 		{
@@ -1150,7 +1158,8 @@
 			"page": 59,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 5,
 			"featType": {
@@ -1177,7 +1186,8 @@
 			"add_hash": "Champion",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 1,
 			"featType": {
@@ -1209,7 +1219,8 @@
 			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 1,
 			"featType": {
@@ -1241,7 +1252,8 @@
 			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 4,
 			"featType": {
@@ -1271,7 +1283,8 @@
 			"add_hash": "Champion",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 4,
 			"featType": {
@@ -1312,7 +1325,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype"
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
@@ -1394,7 +1406,8 @@
 			"page": 74,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 4,
 			"featType": {
@@ -1483,7 +1496,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Skill"
 			],
@@ -1498,7 +1510,8 @@
 			"page": 27,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 5,
 			"featType": {
@@ -1614,7 +1627,8 @@
 			"page": 39,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 9,
 			"featType": {
@@ -1729,6 +1743,27 @@
 			]
 		},
 		{
+			"name": "Eclectic Obsession",
+			"source": "LOCG",
+			"page": 33,
+			"level": 5,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": "Gnome",
+				"skill": false,
+				"archetype": false
+			},
+			"frequency": "once per day",
+			"prerequisites": "{@feat Gnome Obsession}",
+			"traits": [
+				"Gnome"
+			],
+			"entries": [
+				"Your desire for stimulation has led you from one pursuit to another and granted you a smattering of expertise with myriad crafts and professions. You reflect on snippets you’ve learned to temporarily become trained in one {@skill Lore} skill of your choice. This proficiency lasts for 10 minutes or until you critically fail a check with that skill. Since this training is temporary, you can’t use it as a prerequisite for a permanent character option like a feat or a skill increase."
+			]
+		},
+		{
 			"name": "Gnome Polyglot",
 			"source": "LOCG",
 			"page": 31,
@@ -1825,7 +1860,7 @@
 			],
 			"prerequisites": "{@feat Magaambyan Attendant Dedication|LOCG}, member of the Magaambya of conversant rank (page 101)",
 			"entries": [
-				"You devote much of your study to halcyon magic. You gain access to two common Halcyon cantrips and two common 1st-level halcyon spells (see halcyon spells on page 100). In addition to being able to cast your halcyon spells via your arcane or primal spell slots, you also gain a 1st-level halcyon spell slot. You can use your halcyon spell slots to spontaneously cast your halcyon spells."
+				"You devote much of your study to halcyon magic. You gain two common Halcyon cantrips and two common 1st-level halcyon spells (see Halcyon Spells on page 100). In addition to being able to cast your halcyon spells via your arcane or primal spell slots, you also gain a 1st-level halcyon spell slot. You can use your halcyon spell slots to spontaneously cast your halcyon spells."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the halcyon speaker archetype.",
 			"leadsTo": [
@@ -1980,7 +2015,8 @@
 			"page": 115,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 10,
 			"featType": {
@@ -2188,7 +2224,7 @@
 				"Hobgoblin"
 			],
 			"entries": [
-				"You've studied traditional hobgoblin exercises and fieldcraft, all of which have a militaristic bent. You become trained in {@skill Athletics} and {@skill Crafting}. For each of these skills in which you were already trained, you become trained in a skill of your choice. You also become trained in {@skill Lore|Hobgoblin Lore}."
+				"You've studied traditional hobgoblin exercises and fieldcraft, all of which have a militaristic bent. You become trained in {@skill Athletics} and {@skill Crafting}. For each of these skills in which you were already trained, you become trained in a skill of your choice. You also become trained in {@skill Lore||Hobgoblin Lore}."
 			]
 		},
 		{
@@ -2248,8 +2284,8 @@
 				"Hobgoblin"
 			],
 			"entries": [
-				"You are trained with {@item composite longbows}, {@item composite shortbows}, {@item glaives}, {@item halberds}, {@item longbows}, {@item longspears}, {@item longswords}, {@item shortbows}, and {@item spears}.",
-				"In addition, you gain access to all {@filter uncommon hobgoblin weapons|items||rarity=uncommon|ancestry & heritage=hobgoblin}. For the purpose of determining your proficiency, martial hobgoblin weapons are simple weapons and advanced hobgoblin weapons are martial weapons."
+				"You are trained with {@item composite longbows}, {@item composite shortbows}, {@item glaives}, {@item longbows}, {@item longswords}, and {@item shortbows}.",
+				"In addition, you gain access to all {@filter uncommon hobgoblin weapons|items|rarity=uncommon|ancestry & heritage=hobgoblin}. For the purpose of determining your proficiency, martial hobgoblin weapons are simple weapons and advanced hobgoblin weapons are martial weapons."
 			],
 			"leadsTo": [
 				"Hobgoblin Weapon Discipline|LOCG",
@@ -2283,7 +2319,8 @@
 			"add_hash": "Fighter",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 8,
 			"featType": {
@@ -2297,7 +2334,8 @@
 			},
 			"traits": [
 				"Uncommon",
-				"Fighter"
+				"Fighter",
+				"Stance"
 			],
 			"prerequisites": "{@action Attack of Opportunity}",
 			"entries": [
@@ -2311,7 +2349,8 @@
 			"add_hash": "Champion",
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 8,
 			"featType": {
@@ -2349,7 +2388,7 @@
 			],
 			"prerequisites": "{@feat Halfling Luck}",
 			"entries": [
-				"Even other halflings consider you to be particularly lucky. You can use Halfling Luck once per hour, rather than once per day. If you have Guiding Luck, you can still use Halfling Luck when you fail a {@skill Perception} check or attack roll only once per day (though you can use it within the same hour that you used Halfling Luck), and if you have {@condition Helpful} Halfling, you can still use Halfling Luck on an ally instead of yourself only once per day."
+				"Even other halflings consider you to be particularly lucky. You can use {@feat Halfling Luck} once per hour, rather than once per day. If you have {@feat Guiding Luck}, you can still use {@feat Halfling Luck} when you fail a {@skill Perception} check or attack roll only once per day (though you can use it within the same hour that you used {@feat Halfling Luck}), and if you have {@feat Shared Luck|APG}, you can still use {@feat Halfling Luck} on an ally instead of yourself only once per day."
 			]
 		},
 		{
@@ -2425,8 +2464,9 @@
 			"source": "LOCG",
 			"page": 32,
 			"activity": {
-				"number": 3,
-				"unit": "action"
+				"number": 1,
+				"unit": "triple",
+				"entry": "{@as 3}"
 			},
 			"level": 1,
 			"featType": {
@@ -2462,7 +2502,7 @@
 			],
 			"prerequisites": "{@feat Knight Reclaimant Dedication|LOCG} (see above)",
 			"entries": [
-				"You can invoke the Crimson Oath to unleash blasts of ruby energy from your weapon. You gain the {@spell invoke the Crimson Oath|LOCG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs."
+				"You can invoke the Crimson Oath to unleash blasts of ruby energy from your weapon. You gain the {@spell invoke the Crimson Oath|LOCG} focus spell. If you don't already have one, you gain a focus pool of 1 Focus Point, which you can regain using the {@action Refocus} activity to recite the Crimson Oath and meditate on its teachings; if you already have a focus pool, increase the number of Focus Points in your focus pool by 1. Your knight reclaimant focus spells are divine spells; when you gain this feat, you become trained in divine spell attacks and spell DCs. Your key spellcasting ability for these spells is Charisma."
 			]
 		},
 		{
@@ -2502,15 +2542,11 @@
 			],
 			"entries": [
 				"You make the most of your iruxi unarmed attacks. Whenever you score a critical hit with a claw or an unarmed attack you gained from a lizardfolk ancestry feat, you apply the unarmed attack's critical specialization effect."
-			],
-			"leadsTo": [
-				"Iruxi Unarmed Expertise|LOCG"
 			]
 		},
 		{
-			"name": "Iruxi Unarmed Expertise",
+			"name": "Primal Rampage",
 			"source": "LOCG",
-			"page": 59,
 			"level": 13,
 			"featType": {
 				"class": false,
@@ -2522,10 +2558,8 @@
 			"traits": [
 				"Lizardfolk"
 			],
-			"prerequisites": "{@feat Iruxi Unarmed Cunning|LOCG}",
 			"entries": [
-				"Your unarmed attacks blend tradition and training.",
-				"Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency in the claw and unarmed attacks you gained from lizardfolk ancestry feats."
+				"You tap into the unstoppable, primeval strength of your ancient kin. You gain {@spell freedom of movement} and {@spell stoneskin} as 4th-level primal innate spells that you can cast once per day. As a 3-action activity, you can {@action Cast a Spell} twice to cast both of these innate spells, as long as they are both still available for the day."
 			]
 		},
 		{
@@ -2711,7 +2745,8 @@
 			"page": 55,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 5,
 			"featType": {
@@ -2745,7 +2780,7 @@
 				"Leshy"
 			],
 			"entries": [
-				"You deeply understand your people's cultural traditions and innate strengths. You gain the trained proficiency rank in {@skill Nature} and {@skill Stealth}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Leshy Lore}."
+				"You deeply understand your people's cultural traditions and innate strengths. You gain the trained proficiency rank in {@skill Nature} and {@skill Stealth}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Leshy Lore}."
 			]
 		},
 		{
@@ -2838,7 +2873,7 @@
 				"Lizardfolk"
 			],
 			"entries": [
-				"You listened carefully to the tales passed down among your community. You gain the trained proficiency rank in {@skill Nature} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Iruxi Lore}."
+				"You listened carefully to the tales passed down among your community. You gain the trained proficiency rank in {@skill Nature} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Iruxi Lore}."
 			]
 		},
 		{
@@ -3219,8 +3254,9 @@
 			"source": "LOCG",
 			"page": 103,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 10,
 			"featType": {
@@ -3316,7 +3352,6 @@
 				"archetype": true
 			},
 			"traits": [
-				"Uncommon",
 				"Archetype",
 				"Skill"
 			],
@@ -3370,8 +3405,9 @@
 			"source": "LOCG",
 			"page": 55,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 5,
 			"featType": {
@@ -3446,7 +3482,8 @@
 			"page": 12,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 1,
 			"featType": {
@@ -3508,7 +3545,7 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "expert in any {@skill Lore} skill, member of the Pathfinder {@skill Society} affiliated with the School of Scrolls",
+			"prerequisites": "expert in any {@skill Lore} skill, member of the Pathfinder Society affiliated with the School of Scrolls",
 			"entries": [
 				"Your experience chronicling adventures and discoveries grants you heightened discernment and memory. For 24 hours after learning a prominent fact\u2014such as the name of an NPC you have met, the details of your mission briefing, and similar information\u2014you can recall it without attempting a check, though this doesn't allow you to automatically memorize long strings of numbers or text. You also gain a +2 circumstance bonus to checks to remember a detail that has come up before in the current adventure, even if it was more than 24 hours ago.",
 				"If you have the Thorough Reports feat (Lost Omens World Guide 23) and have expert proficiency in the skill you're using to {@action Recall Knowledge}, your circumstance bonus to {@action Recall Knowledge} about creatures from that feat increases to +4."
@@ -3543,7 +3580,7 @@
 				"Leshy"
 			],
 			"entries": [
-				"Your body produces a nearly endless supply of hard seedpods. You gain a seedpod ranged unarmed attack that deals {@damage 1d4} bludgeoning damage; these Strikes have the {@trait manipulate} trait. On a critical hit, a seedpod bursts, issuing forth a tangle of vegetation that imposes a \u201310-foot circumstance penalty on the target's Speed for 1 round. Seedpods do not add critical specialization effects."
+				"Your body produces a nearly endless supply of hard seedpods. You gain a seedpod ranged unarmed attack with a range increment of 10 feet that deals {@damage 1d4} bludgeoning damage; these Strikes have the {@trait manipulate} trait. On a critical hit, a seedpod bursts, issuing forth a tangle of vegetation that imposes a \u201310-foot circumstance penalty on the target's Speed for 1 round. Seedpods do not add critical specialization effects."
 			],
 			"leadsTo": [
 				"Thorned Seedpod|LOAG"
@@ -3965,7 +4002,7 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "Intelligence, Wisdom, or Charisma 14; ability to cast focus spells; member of the Pathfinder {@skill Society} affiliated with the School of Spells",
+			"prerequisites": "Intelligence, Wisdom, or Charisma 14; ability to cast focus spells; member of the Pathfinder Society affiliated with the School of Spells",
 			"entries": [
 				"As a Spellmaster, you are adept at identifying magic. You gain a +2 circumstance bonus when you {@action Identify Magic} with a skill in which you are trained or better. If you have the Wayfinder Resonance Tinkerer feat (Lost Omens World Guide 23), you can change the cantrip you chose for that feat each day during your daily preparations."
 			],
@@ -4047,7 +4084,7 @@
 			],
 			"access": "any surface dwarf ethnicity",
 			"entries": [
-				"Your interactions with other cultures on the surface have not only taught you about many other ancestries, but have also helped you realize the value of your own. You gain the trained proficiency rank in the {@skill Society} skill (or another skill of your choice if you were already trained in {@skill Society}), and you gain the {@skill Lore|Additional Lore} skill feat for the {@skill Lore} corresponding to your culture (for instance, {@skill Lore|Ouat Lore} or {@skill Lore|Pahmet Lore})."
+				"Your interactions with other cultures on the surface have not only taught you about many other ancestries, but have also helped you realize the value of your own. You gain the trained proficiency rank in the {@skill Society} skill (or another skill of your choice if you were already trained in {@skill Society}), and you gain the {@skill Lore||Additional Lore} skill feat for the {@skill Lore} corresponding to your culture (for instance, {@skill Lore||Ouat Lore} or {@skill Lore||Pahmet Lore})."
 			]
 		},
 		{
@@ -4159,7 +4196,8 @@
 			"page": 105,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 20,
 			"featType": {
@@ -4183,8 +4221,9 @@
 			"source": "LOCG",
 			"page": 38,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"level": 5,
 			"featType": {
@@ -4231,7 +4270,8 @@
 			"page": 102,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 6,
 			"featType": {
@@ -4349,7 +4389,8 @@
 			"page": 38,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 5,
 			"featType": {
@@ -4570,7 +4611,8 @@
 			"page": 103,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 10,
 			"featType": {
@@ -4599,7 +4641,8 @@
 			"page": 102,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"level": 6,
 			"featType": {

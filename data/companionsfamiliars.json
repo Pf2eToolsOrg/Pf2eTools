@@ -5,6 +5,7 @@
 			"source": "CRB",
 			"page": 215,
 			"type": "Companion",
+			"fluff": "Your companion is a badger, wolverine, or other big mustelid.",
 			"size": "Small",
 			"attacks": [
 				{
@@ -75,16 +76,7 @@
 					},
 					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
 				]
-			},
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Badger",
-					"entries": [
-						"Your companion is a badger, wolverine, or other big mustelid."
-					]
-				}
-			]
+			}
 		}
 	],
 	"familiar": [
@@ -109,8 +101,9 @@
 				{
 					"name": "Breath Weapon",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"traits": [
 						"arcane",

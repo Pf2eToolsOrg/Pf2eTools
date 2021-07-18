@@ -37,20 +37,19 @@
 							"entries": [
 								"Another tag that appears occasionally in the data is the @filter tag. This tag can be tricky to use, and generally relies on knowledge of the internals of each page. As such, use with caution, and if you're not sure about something, don't be afraid to drop by our {@link Discord|https://discord.gg/nGvRCDs} and ask questions.",
 								"The syntax for the @filter tag is as follows:",
-								"(open curly brace)@filter display text||page_without_file_extension|filter_namespace|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
+								"(open curly brace)@filter display text|page_without_file_extension|filter_name_1=filter_1_value_1;filter_1_value_2;...filter_1_value_n|...|filter_name_m=filter_m_value_1;filter_m_value_2;...(close curly brace)",
 								"The purpose of this tag is to open the given page, pre-filtered with the specified filtering options. There's one major caveat that makes this tricky to use for aspiring JSONtranauts\u2014the filter values use the {@i internal} version, as you'd find in the data. So, for example, ..|school=D|.. would filter spells to Divination school spells, as 'D' is the Divination identifier in the data. Trying to do e.g. ..|school=Divination|.. will not work.",
 								"The 'filter_name_X' here matches the literal text name of the filter, as displayed in the dropdown.",
-								"The 'filter_namespace' should be left blank for pages with only one filter box. Otherwise, try 'page.type', such as 'classes.feat' or 'ancestries.ancestries'.",
 								"Some examples of the tag in action:",
-								"{@filter Ancestries that have a boost to Intelligence|ancestries|ancestries.ancestries|Ability Boosts=Intelligence}",
-								"{@filter First or second level occult spells|spells||level=1;2|tradition=occult}",
-								"{@filter Beasts that are level 2 or lower|bestiary||level=[-1;1]|creature type=beast}",
-								"{@filter Creatures with a Strength modifier of +4 or more|bestiary||strength=[4;]}",
-								"{@filter Divination and Evocation spells|spells||school=D;V}",
-								"{@filter Simple melee weapons|items||weapon range=melee|Weapon/Armor Category=simple}",
-								"Meta-options can be set; inline for individual filters, and using 'fbmt' for filtering meta-options {@filter filter meta example|spells||level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
-								"Search can be set; {@filter view goblins|bestiary||search=goblin}",
-								"An exact starting entity; {@filter filter for beasts and show cat|bestiary||type=beast|hash=cat_mm} where 'hash' is the part after a '#' and before any commas which appears in the URL bar when viewing the entity.",
+								"{@filter Ancestries that have a boost to Intelligence|ancestries|Ability Boosts=Intelligence}",
+								"{@filter First or second level occult spells|spells|level=1;2|tradition=occult}",
+								"{@filter Beasts that are level 2 or lower|bestiary|level=[-1;1]|creature type=beast}",
+								"{@filter Creatures with a Strength modifier of +4 or more|bestiary|strength=[4;]}",
+								"{@filter Divination and Evocation spells|spells|school=D;V}",
+								"{@filter Simple melee weapons|items|weapon range=melee|Weapon/Armor Category=simple}",
+								"Meta-options can be set; inline for individual filters, and using 'fbmt' for filtering meta-options {@filter filter meta example|spells|level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
+								"Search can be set; {@filter view goblins|bestiary|search=goblin}",
+								"An exact starting entity; {@filter filter for beasts and show cat|bestiary|type=beast|hash=cat_mm} where 'hash' is the part after a '#' and before any commas which appears in the URL bar when viewing the entity.",
 								{
 									"type": "pf2-title",
 									"name": "Note"
@@ -576,8 +575,9 @@
 													"style": "compact",
 													"name": "Devastating Blast",
 													"activity": {
-														"number": 2,
-														"unit": "action"
+														"number": 1,
+														"unit": "double",
+														"entry": "{@as 2}"
 													},
 													"traits": [
 														"arcane",
@@ -591,8 +591,9 @@
 													"type": "ability",
 													"style": "compact",
 													"activity": {
-														"number": 2,
-														"unit": "action"
+														"number": 1,
+														"unit": "double",
+														"entry": "{@as 2}"
 													},
 													"components": [
 														"Interact"
@@ -676,8 +677,9 @@
 															"A roaring blast of fire appears at a spot you designate, dealing {@damage 6d6} fire damage."
 														],
 														"cast": {
-															"number": 2,
-															"unit": "action"
+															"number": 1,
+															"unit": "double",
+															"entry": "{@as 2}"
 														},
 														"requirements": null,
 														"trigger": null,

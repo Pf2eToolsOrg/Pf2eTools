@@ -1650,19 +1650,6 @@ UrlUtil = {
 			.title("Get Link to Filters (SHIFT adds List)")
 	},
 
-	bindLinkExportButtonMulti (filterBox, $btn) {
-		$btn = $btn || ListUtil.getOrTabRightButton(`btn-link-export`, `magnet`);
-		$btn.addClass("btn-copy-effect").off("click").on("click", async evt => {
-			const url = window.location.href.replace(/\.html.+/, ".html");
-			const [[mainHash, ..._], [featHash, ...__]] = Hist.getDoubleHashParts();
-			const filterBoxHashes = filterBox.getSubHashes({isAddSearchTerm: true});
-			const toCopy = `${url}#${[mainHash, ...filterBoxHashes].join(HASH_PART_SEP)}#${featHash}`;
-
-			await MiscUtil.pCopyTextToClipboard(toCopy);
-			JqueryUtil.showCopiedEffect($btn);
-		}).title("Get Link to Filters");
-	},
-
 	mini: {
 		compress (primitive) {
 			const type = typeof primitive;
@@ -2049,6 +2036,42 @@ SortUtil = {
 		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
+	/**
+	 * "Special Equipment" first, then alphabetical
+	 */
+	_MON_TRAIT_ORDER: [
+		"special equipment",
+		"shapechanger",
+	],
+	monTraitSort: (a, b) => {
+		if (a.sort != null && b.sort != null) return a.sort - b.sort;
+		if (a.sort != null && b.sort == null) return -1;
+		if (a.sort == null && b.sort != null) return 1;
+
+		if (!a.name && !b.name) return 0;
+		const aClean = a.name.toLowerCase().trim();
+		const bClean = b.name.toLowerCase().trim();
+
+		const isOnlyA = a.name.endsWith(" Only)");
+		const isOnlyB = b.name.endsWith(" Only)");
+		if (!isOnlyA && isOnlyB) return -1;
+		if (isOnlyA && !isOnlyB) return 1;
+
+		const ixA = SortUtil._MON_TRAIT_ORDER.indexOf(aClean);
+		const ixB = SortUtil._MON_TRAIT_ORDER.indexOf(bClean);
+		if (~ixA && ~ixB) return ixA - ixB;
+		else if (~ixA) return -1;
+		else if (~ixB) return 1;
+		else return SortUtil.ascSort(aClean, bClean);
+	},
+	monSkillSort: (a, b) => {
+		if (a === b) return 0;
+		if (a.item.toLowerCase().includes("lore") && b.item.toLowerCase().includes("lore")) return SortUtil.ascSort(a, b);
+		if (a.item.toLowerCase().includes("lore")) return 1;
+		if (b.item.toLowerCase().includes("lore")) return -1;
+		return SortUtil.ascSort(a, b);
+	},
+
 	_alignFirst: ["L", "C"],
 	_alignSecond: ["G", "E"],
 	alignmentSort: (a, b) => {
@@ -2058,10 +2081,6 @@ SortUtil = {
 		if (SortUtil._alignFirst.includes(b)) return 1;
 		if (SortUtil._alignSecond.includes(b)) return -1;
 		return 0;
-	},
-
-	sortActivities (a, b) {
-		return SortUtil.ascSort(Parser.activityTypeToNumber(a), Parser.activityTypeToNumber(b));
 	},
 
 	ascSortLvl (a, b) {
@@ -3533,8 +3552,8 @@ BrewUtil = {
 	homebrewMeta: null,
 	_lists: null,
 	_sourceCache: null,
-	_filterBoxes: null,
-	_sourceFilters: null,
+	_filterBox: null,
+	_sourceFilter: null,
 	_pHandleBrew: null,
 	_lockHandleBrewJson: null,
 
@@ -3543,9 +3562,7 @@ BrewUtil = {
 	 * @param [options.list] List.
 	 * @param [options.lists] Lists.
 	 * @param [options.filterBox] Filter box.
-	 * @param [options.filterBoxes] Filter boxes.
 	 * @param [options.sourceFilter] Source filter.
-	 * @param [options.sourceFilters] Source filters.
 	 * @param [options.pHandleBrew] Brew handling function.
 	 */
 	bind (options) {
@@ -3553,10 +3570,8 @@ BrewUtil = {
 		if (options.list) BrewUtil._lists = [options.list];
 		else if (options.lists) BrewUtil._lists = options.lists;
 		// provide ref to FilterBox and Filter instance
-		if (options.filterBox) BrewUtil._filterBoxes = [options.filterBox];
-		else if (options.filterBoxes) BrewUtil._filterBoxes = options.filterBoxes;
-		if (options.sourceFilter) BrewUtil._sourceFilters = [options.sourceFilter];
-		else if (options.sourceFilters) BrewUtil._sourceFilters = options.sourceFilters;
+		if (options.filterBox) BrewUtil._filterBox = options.filterBox;
+		if (options.sourceFilter) BrewUtil._sourceFilter = options.sourceFilter;
 		// allow external source for handleBrew
 		if (options.pHandleBrew !== undefined) this._pHandleBrew = options.pHandleBrew;
 	},
@@ -3975,11 +3990,11 @@ BrewUtil = {
 		BrewUtil._persistHomebrewDebounced();
 		BrewUtil.removeJsonSource(source);
 		// remove the source from the filters and re-render the filter box
-		if (BrewUtil._sourceFilters) BrewUtil._sourceFilters.forEach(sf => sf.removeItem(source));
-		if (BrewUtil._filterBoxes) BrewUtil._filterBoxes.forEach(fb => fb.render());
+		if (BrewUtil._sourceFilter) BrewUtil._sourceFilter.removeItem(source);
+		if (BrewUtil._filterBox) BrewUtil._filterBox.render();
 		await BrewUtil._pRenderBrewScreen_pRefreshBrewList($brewList);
 		window.location.hash = "";
-		if (BrewUtil._filterBoxes) BrewUtil._filterBoxes.forEach(fb => fb.fireChangeEvent());
+		if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 	},
 
 	async _pRenderBrewScreen_pRefreshBrewList ($brewList) {
@@ -4350,7 +4365,6 @@ BrewUtil = {
 			case "table":
 			case "tableGroup":
 			case "ancestry":
-			case "heritage":
 			case "versatileHeritage":
 			case "background":
 			case "class":
@@ -4473,7 +4487,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
@@ -4631,19 +4645,18 @@ BrewUtil = {
 
 		if (pFuncRefresh) await pFuncRefresh();
 
-		if (BrewUtil._filterBoxes && BrewUtil._sourceFilters) {
-			BrewUtil._filterBoxes.forEach((filterBox, idx) => {
-				const cur = filterBox.getValues();
-				if (cur.Source) {
-					const toSet = JSON.parse(JSON.stringify(cur.Source));
+		if (BrewUtil._filterBox && BrewUtil._sourceFilter) {
+			const cur = BrewUtil._filterBox.getValues();
+			if (cur.Source) {
+				const toSet = JSON.parse(JSON.stringify(cur.Source));
 
-					if (toSet._totals.yes || toSet._totals.no) {
-						sourcesToAdd.forEach(src => toSet[src.json] = 1);
-						filterBox.setFromValues({Source: toSet});
-					}
+				if (toSet._totals.yes || toSet._totals.no) {
+					if (page === UrlUtil.PG_CLASSES) toSet["Core"] = 1;
+					else sourcesToAdd.forEach(src => toSet[src.json] = 1);
+					BrewUtil._filterBox.setFromValues({Source: toSet});
 				}
-				filterBox.fireChangeEvent();
-			});
+			}
+			if (BrewUtil._filterBox) BrewUtil._filterBox.fireChangeEvent();
 		}
 	},
 

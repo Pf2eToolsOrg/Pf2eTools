@@ -1,12 +1,7 @@
 class RenderBestiary {
 	static $getRenderedCreature (cr, options) {
 		options = options || {};
-		const traits = [];
-		if (cr.rarity !== "Common") traits.push(cr.rarity);
-		if (cr.alignment != null) traits.push(cr.alignment);
-		if (cr.size != null) traits.push(cr.size);
-		if (cr.traits != null && cr.traits.length) traits.push(...cr.traits);
-		if (cr.creatureType != null) traits.push(...cr.creatureType);
+		const traits = (cr.rarity === "Common" ? [] : [cr.rarity]).concat([cr.alignment]).concat([cr.size]).concat((cr.traits || []).concat(cr.creatureType || []).sort());
 
 		return $$`${Renderer.utils.getExcludedDiv(cr, "creature", UrlUtil.PG_BESTIARY)}
 			${Renderer.utils.getNameDiv(cr, {type: cr.type || "CREATURE", page: UrlUtil.PG_BESTIARY, $btnResetScaleLvl: options.$btnResetScaleLvl, $btnScaleLvl: options.$btnScaleLvl, asJquery: true})}

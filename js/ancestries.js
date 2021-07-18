@@ -110,9 +110,9 @@ class AncestriesPage extends BaseComponent {
 		this._addFeatsData(feats);
 
 		BrewUtil.bind({
-			filterBoxes: [this.filterBox, this.featFilterBox],
-			sourceFilters: [this._pageFilter.sourceFilter, this._featFilter.sourceFilter],
-			lists: [this._list, this._listFeat],
+			filterBox: this.filterBox,
+			sourceFilter: this._pageFilter.sourceFilter,
+			list: this._list,
 			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
@@ -141,13 +141,14 @@ class AncestriesPage extends BaseComponent {
 		$btnLink.title("View this feat on the Feats page");
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._featDataList, null, null, UrlUtil.PG_FEATS);
+		UrlUtil.bindLinkExportButton(this.featFilterBox);
 
 		await this._pInitAndRunRender();
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#ancestrystats`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
 		this._initLinkGrabbers();
-		UrlUtil.bindLinkExportButtonMulti(this.filterBox, $(`#btn-link-export-anc`));
+		// FIXME: UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export-anc`));
 
 		Hist.initialLoad = false;
 
@@ -158,34 +159,31 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		const {ancestry: rawAncestryData, heritage: rawHeritageData, versatileHeritage: rawVeHeritageData, feat: rawFeatData} = homebrew;
-		const cpy = MiscUtil.copy({ancestry: rawAncestryData, heritage: rawHeritageData, versatileHeritage: rawVeHeritageData, feat: rawFeatData});
+		const {ancestry: rawAncestryData} = homebrew;
+		const cpy = MiscUtil.copy({ancestry: rawAncestryData});
 
-		const {isAddedAnyAncestry, isAddedAnyHeritage} = this._addData(cpy);
-		const isAddedAnyFeats = this._addFeatsData(cpy);
+		const {isAddedAnyAncestry, isAddedAnyVeHeritage} = this._addData(cpy);
 
-		if ((isAddedAnyFeats || isAddedAnyHeritage) && !Hist.initialLoad) await this._pDoRender();
+		if (isAddedAnyVeHeritage && !Hist.initialLoad) await this._pDoRender();
 	}
 
 	_addData (data) {
 		let isAddedAnyAncestry = false;
-		let isAddedAnyHeritage = false;
+		let isAddedAnyVeHeritage = false;
 
 		if (data.ancestry && data.ancestry.length) (isAddedAnyAncestry = true) && this._addData_addAncestryData(data.ancestry)
-		if (data.heritage && data.heritage.length) (isAddedAnyHeritage = true) && this._addData_addHeritageData(data.heritage)
-		if (data.versatileHeritage && data.versatileHeritage.length) (isAddedAnyHeritage = true) && this._addData_addVeHeritageData(data.versatileHeritage)
+		if (data.versatileHeritage && data.versatileHeritage.length) (isAddedAnyVeHeritage = true) && this._addData_addVeHeritageData(data.versatileHeritage)
 
-		if (isAddedAnyAncestry || isAddedAnyHeritage) {
+		if (isAddedAnyAncestry || isAddedAnyVeHeritage) {
 			this._list.update();
 			this.filterBox.render();
 			this._handleFilterChange(false);
 		}
 
-		return {isAddedAnyAncestry, isAddedAnyHeritage}
+		return {isAddedAnyAncestry, isAddedAnyVeHeritage}
 	}
 
 	_addFeatsData (feats) {
-		if (!(feats.feat && feats.feat.length)) return false;
 		feats.feat.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
 			this._featFilter.mutateAndAddToFilters(f, isExcluded)
@@ -202,8 +200,6 @@ class AncestriesPage extends BaseComponent {
 		this._listFeat.update();
 		this.featFilterBox.render();
 		this._handleFeatFilterChange();
-
-		return true;
 	}
 
 	_addData_addAncestryData (ancestries) {
@@ -238,39 +234,6 @@ class AncestriesPage extends BaseComponent {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](it), "ancestry", it.source);
 			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
 		}
-	}
-
-	_addData_addHeritageData (heritages) {
-		let isBlankSourceFilter;
-		if (!Hist.initialLoad) {
-			isBlankSourceFilter = !this._pageFilter.sourceFilter.getValues()._isActive;
-		}
-
-		heritages.forEach(h => {
-			const anc = this._dataList.find(c => c.name.toLowerCase() === h.ancestryName.toLowerCase() && c.source.toLowerCase() === (h.ancestrySource || SRC_CRB).toLowerCase());
-			if (!anc) {
-				JqueryUtil.doToast({
-					content: `Could not add heritage; could not find ancestry with name: ${anc.name} and source ${h.source || SRC_CRB}`,
-					type: "danger",
-				});
-				return;
-			}
-
-			// Avoid re-adding existing brew subclasses
-			const existingBrewH = h.uniqueId ? anc.heritage.find(it => it.uniqueId === h.uniqueId) : null;
-			if (existingBrewH) return;
-
-			const isExcludedAncestry = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](anc), "ancestry", anc.source);
-
-			anc.heritage.push(h);
-			// Don't bother checking subclass exclusion for individually-added subclasses, as they should be from homebrew
-			this._pageFilter.mutateAndAddToFilters(anc, isExcludedAncestry);
-			anc.heritage.sort(AncestriesPage._ascSortHeritages);
-		});
-
-		// If we load a homebrew source when we have no source filters active, the homebrew source will set itself high
-		//   and force itself as the only visible source. Fix it in post.
-		if (isBlankSourceFilter) this._pageFilter.sourceFilter.doSetPillsClear();
 	}
 
 	_addData_addVeHeritageData (heritages) {

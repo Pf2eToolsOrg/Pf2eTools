@@ -1,6 +1,11 @@
 "use strict";
 
 class RitualsPage extends ListPage {
+	static getTblTimeStr (time) {
+		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
+			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+	}
+
 	constructor () {
 		const pageFilter = new PageFilterRituals();
 		super({
@@ -20,7 +25,7 @@ class RitualsPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const time = Parser.timeToTableStr(it.cast);
+		const time = RitualsPage.getTblTimeStr(it.cast);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
@@ -60,7 +65,7 @@ class RitualsPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const time = Parser.timeToTableStr(it.cast);
+		const time = RitualsPage.getTblTimeStr(it.cast);
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">

@@ -19,7 +19,13 @@ class PageFilterRituals extends PageFilter {
 		this._traitFilter = new TraitsFilter({header: "Traits"});
 		this._timeFilter = new Filter({
 			header: "Cast Time",
-			itemSortFn: SortUtil.sortActivities,
+			items: [
+				Parser.TM_HRS,
+				Parser.TM_DAYS,
+				"Varies",
+			],
+			displayFn: Parser.timeUnitToFull,
+			itemSortFn: null,
 		});
 		this._secondaryCastersFilter = new RangeFilter({header: "Secondary Casters"});
 		this._primaryCheckFilter = new Filter({header: "Primary Checks"});
@@ -57,7 +63,7 @@ class PageFilterRituals extends PageFilter {
 
 		it._fTraits = it.traits.map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
-		it._fTime = Parser.timeToActivityType(it.cast);
+		it._fTimeType = [it.cast["unit"]];
 		it._fSndCasters = it.secondaryCasters ? it.secondaryCasters.number : 0;
 		it._fPmCheck = it.primaryCheck.skills || [];
 		it._fProf = (it.primaryCheck.prof || "Untrained").uppercaseFirst();
@@ -74,7 +80,7 @@ class PageFilterRituals extends PageFilter {
 
 		this._sourceFilter.addItem(it._fSources);
 		this._traitFilter.addItem(it._fTraits);
-		if (it._fTime != null) this._timeFilter.addItem(it._fTime);
+		this._timeFilter.addItem(it._fTimeType);
 		this._secondaryCastersFilter.addItem(it._fSndCasters);
 		this._primaryCheckFilter.addItem(it._fPmCheck);
 		this._profFilter.addItem(it._fProf);
@@ -104,7 +110,7 @@ class PageFilterRituals extends PageFilter {
 			it._fSources,
 			it.level,
 			it._fTraits,
-			it._fTime,
+			it._fTimeType,
 			it._fSndCasters,
 			[
 				it._fPmCheck,

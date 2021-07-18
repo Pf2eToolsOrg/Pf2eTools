@@ -606,6 +606,12 @@ Parser.weightValueToNumber = function (value) {
 	else throw new Error(`Badly formatted value ${value}`);
 };
 
+Parser.skillToExplanation = function (skillType) {
+	const fromBrew = MiscUtil.get(BrewUtil.homebrewMeta, "skills", skillType);
+	if (fromBrew) return fromBrew;
+	return Parser._parse_aToB(Parser.SKILL_JSON_TO_FULL, skillType);
+};
+
 Parser.skillProficienciesToFull = function (skillProficiencies) {
 	function renderSingle (skProf) {
 		const keys = Object.keys(skProf).sort(SortUtil.ascSortLower);
@@ -1568,59 +1574,54 @@ Parser.SKL_ABVS = [
 	SKL_ABV_CON,
 ];
 
-Parser.TM_A = "action";
-Parser.TM_AA = "two";
-Parser.TM_AAA = "three";
+Parser.TM_A = "single";
+Parser.TM_AA = "double";
+Parser.TM_AAA = "triple";
 Parser.TM_R = "reaction";
 Parser.TM_F = "free";
 Parser.TM_ROUND = "round";
 Parser.TM_MINS = "minute";
 Parser.TM_HRS = "hour";
 Parser.TM_DAYS = "day";
-Parser.TM_VARIES = "varies";
-Parser.TIME_ACTIONS = [Parser.TM_A, Parser.TM_R, Parser.TM_F];
+Parser.TIME_ACTIONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F]
+Parser.TIME_SINGLETONS = [Parser.TM_A, Parser.TM_AA, Parser.TM_AAA, Parser.TM_R, Parser.TM_F, Parser.TM_ROUND];
+Parser.TIME_TO_FULL = {
+	[Parser.TM_A]: "Single Action",
+	[Parser.TM_AA]: "Double Action",
+	[Parser.TM_AAA]: "Triple Action",
+	[Parser.TM_R]: "Reaction",
+	[Parser.TM_F]: "Free Action",
+	[Parser.TM_ROUND]: "Rounds",
+	[Parser.TM_MINS]: "Minutes",
+	[Parser.TM_HRS]: "Hours",
+	[Parser.TM_DAYS]: "Days",
+};
+Parser.timeUnitToFull = function (timeUnit) {
+	return Parser._parse_aToB(Parser.TIME_TO_FULL, timeUnit);
+};
 
-Parser.TM_TO_ACTIVITY = {};
-Parser.TM_TO_ACTIVITY[Parser.TM_F] = "Free Action";
-Parser.TM_TO_ACTIVITY[Parser.TM_R] = "Reaction";
-Parser.TM_TO_ACTIVITY[Parser.TM_A] = "Action";
-Parser.TM_TO_ACTIVITY[Parser.TM_AA] = "Two-Action";
-Parser.TM_TO_ACTIVITY[Parser.TM_AAA] = "Three-Action";
-Parser.TM_TO_ACTIVITY[Parser.TM_ROUND] = "Rounds";
-Parser.TM_TO_ACTIVITY[Parser.TM_VARIES] = "Varies";
-Parser.TM_TO_ACTIVITY[Parser.TM_MINS] = "Minutes";
-Parser.TM_TO_ACTIVITY[Parser.TM_HRS] = "Hours";
-Parser.TM_TO_ACTIVITY[Parser.TM_DAYS] = "Days";
+Parser.TIME_TO_ABV = {
+	[Parser.TM_A]: "A",
+	[Parser.TM_AA]: "AA",
+	[Parser.TM_AAA]: "AAA",
+	[Parser.TM_R]: "R",
+	[Parser.TM_F]: "F",
+	[Parser.TM_ROUND]: "rnd",
+	[Parser.TM_MINS]: "min",
+	[Parser.TM_HRS]: "hr",
+};
+Parser.timeUnitToAbv = function (timeUnit) {
+	return Parser._parse_aToB(Parser.TIME_TO_ABV, timeUnit);
+};
 
-Parser.ACTIVITY_TYPE_TO_IDX = Object.keys(Parser.TM_TO_ACTIVITY).map((a, ix) => ({[a]: ix})).reduce((a, b) => Object.assign(a, b), {});
-Parser.activityTypeToNumber = function (activity) {
-	return Parser._parse_aToB(Parser.ACTIVITY_TYPE_TO_IDX, activity, 900000000);
-}
-
-Parser.timeToActivityType = function (time) {
-	if (time == null) return null;
-	if (time.unit == null) return null;
-	switch (time.unit) {
-		case Parser.TM_VARIES:
-		case Parser.TM_DAYS:
-		case Parser.TM_HRS:
-		case Parser.TM_MINS:
-		case Parser.TM_ROUND:
-		case Parser.TM_R:
-		case Parser.TM_F:
-			return Parser.TM_TO_ACTIVITY[time.unit];
-		case Parser.TM_A: {
-			if (time.number === 1) return Parser.TM_TO_ACTIVITY[Parser.TM_A];
-			if (time.number === 2) return Parser.TM_TO_ACTIVITY[Parser.TM_AA];
-			if (time.number === 3) return Parser.TM_TO_ACTIVITY[Parser.TM_AAA];
-		}
-	}
+Parser.timeToShort = function (time, isHtml) {
+	if (!time) return "";
+	return (time.number === 1 && Parser.TIME_SINGLETONS.includes(time.unit))
+		? `${Parser.timeUnitToAbv(time.unit).uppercaseFirst()}${time.condition ? "*" : ""}`
+		: `${time.number} ${isHtml ? `<span class="ve-small">` : ""}${Parser.timeUnitToAbv(time.unit)}${isHtml ? `</span>` : ""}${time.condition ? "*" : ""}`;
 };
 
 Parser.getNormalisedTime = function (time) {
-	if (time == null) return 0;
-	if (time === "Exploration") return 900000000;
-	if (time === "Downtime") return 900000001;
 	let multiplier = 1;
 	let offset = 0;
 	switch (time.unit) {
@@ -1633,34 +1634,9 @@ Parser.getNormalisedTime = function (time) {
 		case Parser.TM_MINS: multiplier = 600; break;
 		case Parser.TM_HRS: multiplier = 36000; break;
 		case Parser.TM_DAYS: multiplier = 864000; break;
-		case Parser.TM_VARIES: multiplier = 100; break;
 	}
 	return (multiplier * time.number) + offset;
 };
-
-Parser.timeToFullEntry = function (time) {
-	if (time.entry != null) return time.entry;
-	if (Parser.TIME_ACTIONS.includes(time.unit)) {
-		if (time.number === 1 && time.unit === Parser.TM_F) return "{@as f}";
-		if (time.number === 1 && time.unit === Parser.TM_R) return "{@as r}";
-		if (time.number === 2 && time.unit === Parser.TM_A) return "{@as 2}";
-		if (time.number === 3 && time.unit === Parser.TM_A) return "{@as 3}";
-		return "{@as 1}";
-	}
-	return `${time.number} ${time.unit}${time.number >= 2 ? "s" : ""}`;
-}
-
-Parser.timeToTableStr = function (time) {
-	if (time.unit === "varies") return "Varies";
-	if (Parser.TIME_ACTIONS.includes(time.unit)) {
-		if (time.number === 1 && time.unit === Parser.TM_F) return "Free Action";
-		if (time.number === 1 && time.unit === Parser.TM_R) return "Reaction";
-		if (time.number === 2 && time.unit === Parser.TM_A) return "Two-Action";
-		if (time.number === 3 && time.unit === Parser.TM_A) return "Three-Action";
-		return "Action";
-	}
-	return `${time.number} ${time.unit.uppercaseFirst()}${time.number >= 2 ? "s" : ""}`;
-}
 
 Parser.INCHES_PER_FOOT = 12;
 Parser.FEET_PER_MILE = 5280;
@@ -1922,7 +1898,6 @@ SRC_LOGMWS = "LOGMWS";
 SRC_LOL = "LOL";
 SRC_LOPSG = "LOPSG";
 SRC_LOAG = "LOAG";
-SRC_LOME = "LOME";
 SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_APLLS = "APLLS";
@@ -1981,7 +1956,6 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOGMWS] = "Lost Omens: Gods & Magic Web Supplemen
 Parser.SOURCE_JSON_TO_FULL[SRC_LOL] = "Lost Omens: Legends";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOPSG] = "Lost Omens: Pathfinder Society Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOAG] = "Lost Omens: Ancestry Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_LOME] = "Lost Omens: The Mwangi Expanse";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOACLO] = "Lost Omens: Absalom, City of Lost Omens";
 Parser.SOURCE_JSON_TO_FULL[SRC_AAWS] = "Azarketi Ancestry Web Supplement";
 Parser.SOURCE_JSON_TO_FULL[SRC_APLLS] = "Adventure Path: Life's Long Shadows";
@@ -2004,7 +1978,6 @@ Parser.SOURCE_JSON_TO_ABV[SRC_LOGMWS] = "LOGMWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOL] = "LOL";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOPSG] = "LOPSG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOAG] = "LOAG";
-Parser.SOURCE_JSON_TO_ABV[SRC_LOME] = "LOME";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOACLO] = "LOACLO";
 Parser.SOURCE_JSON_TO_ABV[SRC_AAWS] = "AAWS";
 Parser.SOURCE_JSON_TO_ABV[SRC_APLLS] = "APLLS";
@@ -2029,7 +2002,6 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOPSG] = "2020-10-14";
 Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
-Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
 
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3?Pathfinder-Core-Rulebook";
@@ -2045,7 +2017,6 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd?Path
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih?Pathfinder-Advanced-Players-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x?Pathfinder-Lost-Omens-Pathfinder-Society-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pathfinder-Lost-Omens-Ancestry-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_LOME] = "https://paizo.com/products/btq026i4";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
 Parser.SOURCE_JSON_TO_STORE[SRC_APROG] = "https://paizo.com/products/btq026kj?Pathfinder-Adventure-Path-163-Ruins-of-Gauntlight";
@@ -2175,3 +2146,9 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"+": "positive",
 	"-": "negative",
 };
+// FIXME
+Parser.SKILL_JSON_TO_FULL = {}
+
+Parser.NUMBERS_ONES = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+Parser.NUMBERS_TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+Parser.NUMBERS_TEENS = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];

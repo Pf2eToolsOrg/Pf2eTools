@@ -30,7 +30,7 @@ class SpellsPage extends ListPage {
 		eleLi.className = `row ${isExcluded ? "row--blacklisted" : ""}`;
 
 		const source = Parser.sourceJsonToAbv(spell.source);
-		const time = Parser.timeToTableStr(spell.cast);
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 		const school = Parser.spSchoolAbvToFull(spell.school);
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
@@ -77,7 +77,7 @@ class SpellsPage extends ListPage {
 	getSublistItem (spell, pinId) {
 		const hash = UrlUtil.autoEncodeHash(spell);
 		const school = Parser.spSchoolAbvToShort(spell.school);
-		const time = Parser.timeToTableStr(spell.cast);
+		const time = PageFilterSpells.getTblTimeStr(spell.cast);
 
 		const $ele = $(`<li class="row">
 			<a href="#${UrlUtil.autoEncodeHash(spell)}" title="${spell.name}" class="lst--border">

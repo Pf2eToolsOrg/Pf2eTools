@@ -18,7 +18,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -58,8 +59,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"envision",
@@ -144,7 +146,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -201,7 +204,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -308,7 +312,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -364,7 +369,8 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "single",
+						"entry": "{@as 1}"
 					},
 					"components": [
 						"envision",
@@ -432,7 +438,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -487,8 +494,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"command",
@@ -506,8 +514,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"command",
@@ -525,8 +534,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"command",
@@ -567,7 +577,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -625,8 +636,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"{@action Interact}"
@@ -653,7 +665,7 @@
 					"trigger": null,
 					"requirements": "The prism has only one input stream, and a creature is encased in magic in the input stream",
 					"entries": [
-						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the last quality set by the prism's first activation. For instance, if you set the prism to \"good,\" one creature would have all the original creature's good aspects and the other would be the original creature's evil side. Unless you selected a physical quality, both new creatures look just like the original. The new creatures are usually 2 levels lower than the original, but if the original creature was strongly biased with respect to the quality you chose (for instance, if splitting out the good and evil side of a redeemer), the stronger creature is 1 level lower and the weaker creature is 3 or more levels lower. If calibrated correctly, this activation can also reverse the effect of the third activation."
+						"Over the course of the next hour, the creature in the input stream has its essences refracted through the prism, creating two cocoons of magic in the output streams that each contain a new creature. At the end of the process, the original creature is gone, and the two new creatures break free of their cocoons. Each creature is part of the original, separated from the rest based on the last quality set by the prism’s first activation. For instance, if you set the prism to “good,” one creature would have all the original creature’s good aspects and the other would be the original creature’s evil side. Unless you selected a physical quality, both new creatures look just like the original. The new creatures are usually 2 levels lower than the original, but if the original creature was strongly biased with respect to the quality you chose (for instance, if splitting out the good and evil side of a redeemer), the stronger creature is 1 level lower and the weaker creature is 3 or more levels lower. If calibrated correctly, this activation can also reverse the effect of the third activation."
 					]
 				},
 				{
@@ -702,7 +714,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -787,8 +800,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"Interact"
@@ -854,7 +868,7 @@
 			"communication": [
 				{
 					"name": "speech",
-					"notes": "{@language Common}, {@language Draconic}, and eight other {@filter common languages|languages||Rarity=Common}"
+					"notes": "{@language Common}, {@language Draconic}, and eight other {@filter common languages|languages|Rarity=Common}"
 				}
 			],
 			"skills": {
@@ -887,8 +901,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"command",
@@ -964,8 +979,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"command"
@@ -1082,7 +1098,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "varies",
+						"unit": "Varies",
 						"entry": "{@as 2} envision (emotion, enchantment, incapacitation,"
 					},
 					"components": [
@@ -1100,7 +1116,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "varies",
+						"unit": "Varies",
 						"entry": "{@as 3} command (emotion, enchantment,"
 					},
 					"components": [
@@ -1186,8 +1202,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"command"
@@ -1203,8 +1220,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 2,
-						"unit": "action"
+						"number": 1,
+						"unit": "double",
+						"entry": "{@as 2}"
 					},
 					"components": [
 						"envision",
@@ -1243,8 +1261,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"Interact"
@@ -1327,7 +1346,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1413,7 +1433,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1511,7 +1532,7 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "varies",
+						"unit": "Varies",
 						"entry": "envision;"
 					},
 					"components": [
@@ -1550,7 +1571,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,
@@ -1613,7 +1635,8 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "single",
+						"entry": "{@as 1}"
 					},
 					"components": [
 						"command"
@@ -1630,8 +1653,9 @@
 					"type": "ability",
 					"style": "compact",
 					"activity": {
-						"number": 3,
-						"unit": "action"
+						"number": 1,
+						"unit": "triple",
+						"entry": "{@as 3}"
 					},
 					"components": [
 						"Interact"
@@ -1685,7 +1709,7 @@
 			"communication": [
 				{
 					"name": "speech",
-					"notes": "{@language Common} and four other {@filter common languages|languages||Rarity=Common}"
+					"notes": "{@language Common} and four other {@filter common languages|languages|Rarity=Common}"
 				}
 			],
 			"skills": {
@@ -1712,7 +1736,8 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "single",
+						"entry": "{@as 1}"
 					},
 					"components": [
 						"command"
@@ -1729,7 +1754,8 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "single",
+						"entry": "{@as 1}"
 					},
 					"components": [
 						"command"
@@ -1783,7 +1809,8 @@
 					"style": "compact",
 					"activity": {
 						"number": 1,
-						"unit": "action"
+						"unit": "single",
+						"entry": "{@as 1}"
 					},
 					"components": [
 						"command"
@@ -1868,7 +1895,8 @@
 			"activate": {
 				"activity": {
 					"number": 1,
-					"unit": "action"
+					"unit": "single",
+					"entry": "{@as 1}"
 				},
 				"components": "Interact",
 				"requirements": null,

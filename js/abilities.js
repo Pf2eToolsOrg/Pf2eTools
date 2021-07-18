@@ -9,6 +9,31 @@ class AbilitiesPage extends ListPage {
 		}
 	}
 
+	static getTblTimeStr (time) {
+		return time.unit === `Varies` ? `Varies` : Parser.TIME_ACTIONS.includes(time.unit) ? `${Parser.TIME_TO_FULL[time.unit].uppercaseFirst()}`
+			: `${time.number} ${time.unit.uppercaseFirst()}${time.number > 1 ? "s" : ""}`;
+	}
+
+	static getNormalisedTime (time) {
+		let multiplier = 1;
+		let offset = 0;
+		if (time == null) {
+			return 0
+		}
+		switch (time.unit) {
+			case Parser.TM_F: offset = 1; break;
+			case Parser.TM_R: offset = 2; break;
+			case Parser.TM_A: multiplier = 10; break;
+			case Parser.TM_AA: multiplier = 20; break;
+			case Parser.TM_AAA: multiplier = 30; break;
+			case Parser.TM_ROUND: multiplier = 60; break;
+			case Parser.TM_MINS: multiplier = 600; break;
+			case Parser.TM_HRS: multiplier = 36000; break;
+			case "Varies": multiplier = 100; break;
+		}
+		return (multiplier * time.number) + offset;
+	}
+
 	constructor () {
 		const pageFilter = new PageFilterAbilities();
 		super({
@@ -36,7 +61,7 @@ class AbilitiesPage extends ListPage {
 
 		const source = Parser.sourceJsonToAbv(it.source);
 		const hash = UrlUtil.autoEncodeHash(it);
-		const time = it.activity ? Parser.timeToTableStr(it.activity) : "\u2014";
+		const time = it.activity ? AbilitiesPage.getTblTimeStr(it.activity) : "\u2014";
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
@@ -52,7 +77,7 @@ class AbilitiesPage extends ListPage {
 				hash,
 				source,
 				time,
-				normalisedTime: Parser.getNormalisedTime(it.activity),
+				normalisedTime: AbilitiesPage.getNormalisedTime(it.activity),
 			},
 			{
 				uniqueId: it.uniqueId ? it.uniqueId : anI,
@@ -75,7 +100,7 @@ class AbilitiesPage extends ListPage {
 	getSublistItem (it, pinId) {
 		const hash = UrlUtil.autoEncodeHash(it);
 
-		const time = it.activity ? Parser.timeToTableStr(it.activity) : "\u2014";
+		const time = it.activity ? AbilitiesPage.getTblTimeStr(it.activity) : "\u2014";
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
@@ -92,7 +117,7 @@ class AbilitiesPage extends ListPage {
 			{
 				hash,
 				time,
-				normalisedTime: Parser.getNormalisedTime(it.activity),
+				normalisedTime: AbilitiesPage.getNormalisedTime(it.activity),
 			},
 		);
 		return listItem;

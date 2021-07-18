@@ -106,9 +106,9 @@ class ClassesPage extends BaseComponent {
 		this._addFeatsData(feats);
 
 		BrewUtil.bind({
-			filterBoxes: [this.filterBox, this.featFilterBox],
-			sourceFilters: [this._pageFilter.sourceFilter, this._featFilter.sourceFilter],
-			lists: [this._list, this._listFeat],
+			filterBox: this.filterBox,
+			sourceFilter: this._pageFilter.sourceFilter,
+			list: this._list,
 			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
@@ -141,7 +141,7 @@ class ClassesPage extends BaseComponent {
 		$btnLink.title("View this feat on the Feats page");
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._featDataList, null, null, UrlUtil.PG_FEATS);
-		UrlUtil.bindLinkExportButtonMulti(this.filterBox, $(`#btn-link-export-cls`));
+		UrlUtil.bindLinkExportButton(this.featFilterBox);
 
 		await this._pInitAndRunRender();
 
@@ -158,8 +158,8 @@ class ClassesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		const {class: rawClassData, subclass: rawSubclassData, feat: rawFeatData} = homebrew;
-		const cpy = MiscUtil.copy({class: rawClassData, subclass: rawSubclassData, feat: rawFeatData});
+		const {class: rawClassData, subclass: rawSubclassData} = homebrew;
+		const cpy = MiscUtil.copy({class: rawClassData, subclass: rawSubclassData});
 		if (cpy.class) {
 			for (let i = 0; i < cpy.class.length; ++i) {
 				cpy.class[i] = await DataUtil.class.pGetDereferencedClassData(cpy.class[i])
@@ -172,9 +172,8 @@ class ClassesPage extends BaseComponent {
 		}
 
 		const {isAddedAnyClass, isAddedAnySubclass} = this._addData(cpy);
-		const isAddedFeats = this._addFeatsData(cpy);
 
-		if ((isAddedAnySubclass || isAddedFeats) && !Hist.initialLoad) await this._pDoRender(true);
+		if (isAddedAnySubclass && !Hist.initialLoad) await this._pDoRender();
 	}
 
 	_addData (data) {
@@ -194,7 +193,6 @@ class ClassesPage extends BaseComponent {
 	}
 
 	_addFeatsData (feats) {
-		if (!(feats.feat && feats.feat.length)) return false;
 		feats.feat.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
 			this._featFilter.mutateAndAddToFilters(f, isExcluded)
@@ -211,8 +209,6 @@ class ClassesPage extends BaseComponent {
 		this._listFeat.update();
 		this.featFilterBox.render();
 		this._handleFeatFilterChange();
-
-		return true;
 	}
 
 	_addData_addClassData (classes) {
@@ -255,10 +251,10 @@ class ClassesPage extends BaseComponent {
 		}
 
 		subclasses.forEach(sc => {
-			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_CRB).toLowerCase());
+			const cls = this._dataList.find(c => c.name.toLowerCase() === sc.className.toLowerCase() && c.source.toLowerCase() === (sc.classSource || SRC_PHB).toLowerCase());
 			if (!cls) {
 				JqueryUtil.doToast({
-					content: `Could not add subclass; could not find class with name: ${cls.name} and source ${sc.source || SRC_CRB}`,
+					content: `Could not add subclass; could not find class with name: ${cls.class} and source ${sc.source || SRC_CRB}`,
 					type: "danger",
 				});
 				return;

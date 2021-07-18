@@ -6,7 +6,7 @@
 			"page": 532,
 			"activity": {
 				"number": 1,
-				"unit": "varies",
+				"unit": "Varies",
 				"entry": "Varies"
 			},
 			"actionType": {
@@ -115,8 +115,9 @@
 			"source": "CRB",
 			"page": 248,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"traits": [
 				"Manipulate"
@@ -146,6 +147,49 @@
 						"Critical Failure": "If you were trying to stabilize, the creature's {@condition dying|CRB} value increases by 1. If you were trying to stop bleeding, it immediately takes an amount of damage equal to its {@condition persistent damage|CRB|persistent bleed damage}."
 					}
 				}
+			]
+		},
+		{
+			"name": "Take a Breather",
+			"source": "GMG",
+			"page": 200,
+			"traits": [
+				"Exploration"
+			],
+			"actionType": {
+				"variant": true
+			},
+			"cost": "1 Resolve Point",
+			"entries": [
+				"You rest for 10 minutes and recover your stamina. After you complete this activity, you regain all your Stamina Points."
+			]
+		},
+		{
+			"name": "Rally",
+			"source": "GMG",
+			"page": 201,
+			"actionType": {
+				"basic": false,
+				"variant": true,
+				"skill": {
+					"trained": [
+						"Diplomacy",
+						"Intimidation",
+						"Performance"
+					]
+				}
+			},
+			"traits": [
+				"Auditory",
+				"Emotion",
+				"Exploration",
+				"Linguistic",
+				"Mental"
+			],
+			"prerequisites": "trained in {@skill Diplomacy}, {@skill Intimidation}, {@skill Performance}",
+			"entries": [
+				"You spend 1 minute encouraging your ally. Though this action typically has the auditory and linguistic traits, if you’re using the Performance skill, the GM might adjust the traits for this action to match the traits for your type of performance.",
+				"Attempt a DC 15 skill check. The GM might adjust this DC based on the circumstances, such as attempting to Rally an ally who just suffered a humiliating defeat."
 			]
 		},
 		{
@@ -246,7 +290,8 @@
 			"page": 472,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -275,7 +320,8 @@
 			"page": 240,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -374,7 +420,8 @@
 			"page": 472,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -416,7 +463,7 @@
 			"page": 302,
 			"activity": {
 				"number": 1,
-				"unit": "varies",
+				"unit": "Varies",
 				"entry": "Varies"
 			},
 			"actionType": {
@@ -445,7 +492,8 @@
 			"page": 241,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -622,7 +670,8 @@
 			"page": 247,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Auditory",
@@ -659,7 +708,8 @@
 			"page": 249,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Auditory",
@@ -693,7 +743,8 @@
 			"page": 251,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Manipulate",
@@ -745,7 +796,8 @@
 			"page": 85,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Finisher",
@@ -851,7 +903,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -870,7 +923,8 @@
 			"page": 245,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Mental"
@@ -1033,7 +1087,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -1050,7 +1105,8 @@
 			"page": 247,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Auditory",
@@ -1136,8 +1192,9 @@
 			"source": "CRB",
 			"page": 253,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"traits": [
 				"Manipulate"
@@ -1170,7 +1227,8 @@
 			"page": 243,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -1202,7 +1260,8 @@
 			"page": 305,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate"
@@ -1243,7 +1302,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -1320,8 +1380,9 @@
 			"source": "LOCG",
 			"page": 19,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"traits": [],
 			"actionType": {
@@ -1343,7 +1404,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -1395,7 +1457,8 @@
 			"page": 246,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Mental"
@@ -1427,7 +1490,8 @@
 			"page": 156,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Flourish",
@@ -1448,7 +1512,8 @@
 			"page": 305,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -1484,7 +1549,8 @@
 			"page": 242,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -1678,7 +1744,8 @@
 			"page": 242,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -1711,7 +1778,8 @@
 			"page": 251,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Secret"
@@ -1743,8 +1811,9 @@
 			"source": "CRB",
 			"page": 242,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"actionType": {
 				"basic": true,
@@ -1782,7 +1851,8 @@
 			"page": 168,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate",
@@ -1891,19 +1961,19 @@
 									"Corresponding Skill"
 								],
 								[
-									"{@filter Arcane|spells||tradition=arcane}",
+									"{@filter Arcane|spells|tradition=arcane}",
 									"{@skill Arcana}"
 								],
 								[
-									"{@filter Divine|spells||tradition=divine}",
+									"{@filter Divine|spells|tradition=divine}",
 									"{@skill Religion}"
 								],
 								[
-									"{@filter Occult|spells||tradition=occult}",
+									"{@filter Occult|spells|tradition=occult}",
 									"{@skill Occultism}"
 								],
 								[
-									"{@filter Primal|spells||tradition=primal}",
+									"{@filter Primal|spells|tradition=primal}",
 									"{@skill Nature}"
 								]
 							]
@@ -1949,7 +2019,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Manipulate"
@@ -1967,7 +2038,7 @@
 			"page": 531,
 			"activity": {
 				"number": 1,
-				"unit": "varies",
+				"unit": "Varies",
 				"entry": "Varies"
 			},
 			"actionType": {
@@ -2084,7 +2155,8 @@
 			"page": 470,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -2196,8 +2268,9 @@
 			"source": "CRB",
 			"page": 242,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"actionType": {
 				"basic": true,
@@ -2314,7 +2387,8 @@
 			"page": 240,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -2434,7 +2508,8 @@
 			"page": 472,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -2477,7 +2552,8 @@
 			"page": 253,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Manipulate"
@@ -2507,7 +2583,8 @@
 			"page": 250,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate"
@@ -2577,8 +2654,9 @@
 			"source": "CRB",
 			"page": 253,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"traits": [
 				"Manipulate"
@@ -2610,7 +2688,8 @@
 			"page": 472,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Auditory",
@@ -2690,7 +2769,8 @@
 			"page": 72,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Alchemist",
@@ -2713,7 +2793,8 @@
 			"page": 57,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Investigator",
@@ -2739,7 +2820,8 @@
 			"page": 84,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Barbarian",
@@ -2772,7 +2854,8 @@
 			"page": 472,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -2783,40 +2866,13 @@
 			]
 		},
 		{
-			"name": "Rally",
-			"source": "GMG",
-			"page": 201,
-			"traits": [
-				"Auditory",
-				"Emotion",
-				"Exploration",
-				"Linguistic",
-				"Mental"
-			],
-			"actionType": {
-				"basic": false,
-				"variant": true,
-				"skill": {
-					"trained": [
-						"Diplomacy",
-						"Intimidation",
-						"Performance"
-					]
-				}
-			},
-			"prerequisites": "trained in {@skill Diplomacy}, {@skill Intimidation}, {@skill Performance}",
-			"entries": [
-				"You spend 1 minute encouraging your ally. Though this action typically has the auditory and linguistic traits, if you're using the Performance skill, the GM might adjust the traits for this action to match the traits for your type of performance.",
-				"Attempt a DC 15 skill check. The GM might adjust this DC based on the circumstances, such as attempting to Rally an ally who just suffered a humiliating defeat."
-			]
-		},
-		{
 			"name": "Ready",
 			"source": "CRB",
 			"page": 470,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"traits": [
 				"Concentrate"
@@ -2835,7 +2891,8 @@
 			"page": 239,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate",
@@ -3008,7 +3065,8 @@
 			"page": 247,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Auditory",
@@ -3159,7 +3217,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate",
@@ -3280,7 +3339,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate",
@@ -3308,7 +3368,8 @@
 			"page": 243,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -3349,7 +3410,8 @@
 			"page": 252,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move",
@@ -3438,7 +3500,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -3456,7 +3519,8 @@
 			"page": 253,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Manipulate"
@@ -3488,7 +3552,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -3508,7 +3573,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -3526,7 +3592,8 @@
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -3615,7 +3682,8 @@
 			"page": 304,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Concentrate"
@@ -3635,7 +3703,8 @@
 			"page": 534,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -3652,7 +3721,8 @@
 			"page": 243,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"
@@ -3723,7 +3793,8 @@
 			"page": 14,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Kobold",
@@ -3744,27 +3815,13 @@
 			]
 		},
 		{
-			"name": "Take a Breather",
-			"source": "GMG",
-			"page": 200,
-			"traits": [
-				"Exploration"
-			],
-			"actionType": {
-				"variant": true
-			},
-			"cost": "1 Resolve Point",
-			"entries": [
-				"You rest for 10 minutes and recover your stamina. After you complete this activity, you regain all your Stamina Points."
-			]
-		},
-		{
 			"name": "Take Cover",
 			"source": "CRB",
 			"page": 471,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"actionType": {
 				"basic": true
@@ -3779,8 +3836,9 @@
 			"source": "LOCG",
 			"page": 57,
 			"activity": {
-				"number": 2,
-				"unit": "action"
+				"number": 1,
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"actionType": {
 				"ancestry": [
@@ -3903,7 +3961,8 @@
 			"page": 248,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Manipulate"
@@ -3973,7 +4032,8 @@
 			"page": 243,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Attack"
@@ -4015,7 +4075,8 @@
 			"page": 240,
 			"activity": {
 				"number": 1,
-				"unit": "action"
+				"unit": "single",
+				"entry": "{@as 1}"
 			},
 			"traits": [
 				"Move"

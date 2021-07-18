@@ -91,25 +91,17 @@ class CompanionsFamiliarsPage extends ListPage {
 			const quickRules = await Renderer.utils.pGetQuickRules(it.__prop);
 			$pgContent.append(quickRules);
 		}
-		const buildFluffTab = () => {
-			$pgContent.append(Renderer.get().render(it.fluff));
-		}
 		const statsTab = Renderer.utils.tabButton(
 			"Statblock",
 			() => {},
 			buildStatsTab,
-		);
-		const fluffTab = Renderer.utils.tabButton(
-			"Fluff",
-			() => {},
-			buildFluffTab,
 		);
 		const infoTab = Renderer.utils.tabButton(
 			"Quick Rules",
 			() => {},
 			buildInfoTab,
 		);
-		Renderer.utils.bindTabButtons(statsTab, fluffTab, infoTab);
+		Renderer.utils.bindTabButtons(statsTab, infoTab);
 		ListUtil.updateSelected();
 	}
 

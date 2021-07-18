@@ -95,9 +95,9 @@ class ArchetypesPage extends BaseComponent {
 		this._addFeatsData(feats);
 
 		BrewUtil.bind({
-			filterBoxes: [this.filterBox, this.featFilterBox],
-			sourceFilters: [this._pageFilter.sourceFilter, this._featFilter.sourceFilter],
-			lists: [this._list, this._listFeat],
+			filterBox: this.filterBox,
+			sourceFilter: this._pageFilter.sourceFilter,
+			list: this._list,
 			pHandleBrew: this._pHandleBrew.bind(this),
 		});
 
@@ -179,12 +179,13 @@ class ArchetypesPage extends BaseComponent {
 		Renderer.hover.bindPopoutButton($btnPopFeats, this._featDataList, featPopoutHandlerGenerator, null, UrlUtil.PG_FEATS);
 		const $btnPop = ListUtil.getOrTabRightButton(`btn-popout`, `new-window`);
 		Renderer.hover.bindPopoutButton($btnPop, this._dataList, popoutHandlerGenerator);
+		UrlUtil.bindLinkExportButton(this.filterBox);
 
 		await this._pInitAndRunRender();
 
 		ExcludeUtil.checkShowAllExcluded(this._dataList, $(`#pagecontent`));
 		ExcludeUtil.checkShowAllExcluded(this._featDataList, $(`#featstats`));
-		UrlUtil.bindLinkExportButtonMulti(this.filterBox);
+		// UrlUtil.bindLinkExportButton(this.filterBox, $(`#btn-link-export`));
 
 		Hist.initialLoad = false;
 
@@ -195,13 +196,12 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	async _pHandleBrew (homebrew) {
-		const {archetype: rawArchetypeData, feat: rawFeatData} = homebrew;
-		const cpy = MiscUtil.copy({archetype: rawArchetypeData, feat: rawFeatData});
+		const {archetype: rawArchetypeData} = homebrew;
+		const cpy = MiscUtil.copy({archetype: rawArchetypeData});
 
 		const isAddedAnyArchetype = this._addData(cpy);
-		const isAddedAnyFeat = this._addFeatsData(cpy);
 
-		if ((isAddedAnyFeat || isAddedAnyArchetype) && !Hist.initialLoad) await this._pDoRender();
+		if (isAddedAnyArchetype && !Hist.initialLoad) await this._pDoRender();
 	}
 
 	_addData (data) {
@@ -219,7 +219,6 @@ class ArchetypesPage extends BaseComponent {
 	}
 
 	_addFeatsData (feats) {
-		if (!(feats.feat && feats.feat.length)) return false;
 		const arcFeats = feats.feat.filter(f => !!f.featType.archetype)
 		arcFeats.forEach(f => {
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_FEATS](f), "feat", f.source);
@@ -237,8 +236,6 @@ class ArchetypesPage extends BaseComponent {
 		this._listFeat.update();
 		this.featFilterBox.render();
 		this._handleFeatFilterChange();
-
-		return true;
 	}
 
 	_addData_addArchetypeData (archetypes) {

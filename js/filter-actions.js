@@ -7,7 +7,18 @@ class PageFilterActions extends PageFilter {
 		this._sourceFilter = new SourceFilter();
 		this._timeFilter = new Filter({
 			header: "Activity",
-			itemSortFn: SortUtil.sortActivities,
+			items: [
+				Parser.TM_A,
+				Parser.TM_AA,
+				Parser.TM_AAA,
+				Parser.TM_F,
+				Parser.TM_R,
+				Parser.TM_MINS,
+				Parser.TM_HRS,
+				"Varies",
+			],
+			displayFn: Parser.timeUnitToFull,
+			itemSortFn: null,
 		});
 		this._untrainedFilter = new Filter({header: "Untrained"});
 		this._trainedFilter = new Filter({header: "Trained"});
@@ -29,7 +40,7 @@ class PageFilterActions extends PageFilter {
 
 	mutateForFilters (it) {
 		it._fSources = SourceFilter.getCompleteFilterSources(it);
-		it._fTime = Parser.timeToActivityType(it.activity);
+		it._fTime = it.activity ? it.activity.unit : null;
 		it.actionType = it.actionType || {};
 		it._fType = Object.keys(it.actionType).filter(k => it.actionType[k]).map(k => Parser.actionTypeKeyToFull(k));
 		if (it.actionType.skill) it._fType.concat(Object.keys(it.actionType.skill).map(k => Parser.actionTypeKeyToFull(k)));
@@ -48,7 +59,6 @@ class PageFilterActions extends PageFilter {
 		if (isExcluded) return;
 
 		this._sourceFilter.addItem(it._fSources);
-		if (it._fTime != null) this._timeFilter.addItem(it._fTime);
 		this._traitFilter.addItem(it._fTraits);
 		if (it._fUntrained) this._untrainedFilter.addItem(it._fUntrained);
 		if (it._fTrained) this._trainedFilter.addItem(it._fTrained);
