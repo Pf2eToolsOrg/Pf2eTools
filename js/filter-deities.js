@@ -1,17 +1,6 @@
 "use strict";
 
 class PageFilterDeities extends PageFilter {
-	static unpackAlignment (g) {
-		g.alignment.sort(SortUtil.alignmentSort);
-		if (g.alignment.length === 2 && g.alignment.includes("N")) {
-			const out = [...g.alignment];
-			if (out[0] === "N") out[0] = "NX";
-			else out[1] = "NY";
-			return out;
-		}
-		return MiscUtil.copy(g.alignment);
-	}
-
 	constructor () {
 		super();
 		this._sourceFilter = new SourceFilter();
@@ -21,9 +10,8 @@ class PageFilterDeities extends PageFilter {
 		});
 		this._alignmentFilter = new Filter({
 			header: "Alignment",
-			items: ["L", "NX", "C", "G", "NY", "E", "N"],
-			displayFn: Parser.alignmentAbvToFull,
-			itemSortFn: null,
+			itemSortFn: SortUtil.alignmentSort,
+			displayFn: Parser.alignAbvToFull,
 		});
 		this._fontFilter = new Filter({header: "Divine Font", displayFn: StrUtil.toTitleCase});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
@@ -57,7 +45,6 @@ class PageFilterDeities extends PageFilter {
 
 	mutateForFilters (g) {
 		g._fSources = SourceFilter.getCompleteFilterSources(g);
-		g._fAlign = g.alignment ? PageFilterDeities.unpackAlignment(g) : [];
 		g._fSpells = Array(11).map(_ => []);
 		if (g.devoteeBenefits) {
 			if (g.devoteeBenefits.font) g._fFont = g.devoteeBenefits.font;
@@ -85,6 +72,7 @@ class PageFilterDeities extends PageFilter {
 		if (g._fFont) this._fontFilter.addItem(g._fFont);
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
+		if (g.alignment) this._alignmentFilter.addItem(g.alignment);
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
@@ -122,7 +110,7 @@ class PageFilterDeities extends PageFilter {
 		return this._filterBox.toDisplay(
 			values,
 			g._fSources,
-			g._fAlign,
+			g.alignment,
 			g.category,
 			[
 				g._fFont,

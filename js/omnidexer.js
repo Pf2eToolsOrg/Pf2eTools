@@ -160,6 +160,7 @@ class IndexableDirectory {
 	 * @param [opts.alternateIndexes]
 	 * @param [opts.isOnlyDeep]
 	 * @param [opts.pFnPreProcBrew] An un-bound function
+	 * @param [opts.hashBuilder]
 	 */
 	constructor (opts) {
 		this.category = opts.category;
@@ -174,6 +175,7 @@ class IndexableDirectory {
 		this.alternateIndexes = opts.alternateIndexes;
 		this.isOnlyDeep = opts.isOnlyDeep;
 		this.pFnPreProcBrew = opts.pFnPreProcBrew;
+		this.hashBuilder = opts.hashBuilder;
 	}
 
 	pGetDeepIndex () { return []; }
@@ -203,6 +205,47 @@ class IndexableDirectoryArchetypes extends IndexableDirectory {
 			listProp: "archetype",
 			baseUrl: "archetypes.html",
 			isHover: true,
+		});
+	}
+}
+
+class IndexableDirectoryHeritages extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_HERITAGE,
+			dir: "ancestries",
+			primary: "name",
+			source: "source",
+			listProp: "ancestry",
+			baseUrl: "ancestries.html",
+			isHover: false,
+			isOnlyDeep: true,
+		});
+	}
+
+	pGetDeepIndex (indexer, primary, it) {
+		if (!it.heritage) return [];
+		return it.heritage.map(h => ({
+			b: h.name,
+			n: `${h.name} (${primary.parentName})`,
+			s: indexer.getMetaId("s", h.source),
+			u: `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](it)}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`,
+			p: h.page,
+		}));
+	}
+}
+
+class IndexableDirectoryVeHeritages extends IndexableDirectory {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_HERITAGE,
+			dir: "ancestries",
+			primary: "name",
+			source: "source",
+			listProp: "versatileHeritage",
+			baseUrl: "ancestries.html",
+			isHover: false,
+			hashBuilder: (it) => `${HASH_BLANK}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: it})}`,
 		});
 	}
 }
@@ -331,14 +374,14 @@ class IndexableDirectorySubclass extends IndexableDirectory {
 		const subclasses = MiscUtil.copy(brew.subclass || []);
 		const sourceToClass = {};
 		subclasses.filter(sc => sc.className).forEach(sc => {
-			sc.classSource = sc.classSource || SRC_PHB;
+			sc.classSource = sc.classSource || SRC_CRB;
 			((sourceToClass[sc.classSource] = sourceToClass[sc.classSource] || {})[sc.className] = sourceToClass[sc.classSource][sc.className] || []).push(sc);
 		});
 
 		const out = [];
 		Object.entries(sourceToClass).forEach(([source, classToScList]) => {
 			Object.entries(classToScList).forEach(([className, scList]) => {
-				let cls = classData.class.find(it => it.name.toLowerCase() === className.toLowerCase() && (it.source || SRC_PHB).toLowerCase() === source.toLowerCase());
+				let cls = classData.class.find(it => it.name.toLowerCase() === className.toLowerCase() && (it.source || SRC_CRB).toLowerCase() === source.toLowerCase());
 				if (!cls && brew.class && brew.class.length) cls = brew.class.find(it => it.name.toLowerCase() === className.toLowerCase() && (it.source || SRC_PHB).toLowerCase() === source.toLowerCase());
 
 				if (cls) {
@@ -424,6 +467,8 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 
 Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 	new IndexableDirectoryAncestries(),
+	new IndexableDirectoryHeritages(),
+	new IndexableDirectoryVeHeritages(),
 	new IndexableDirectoryArchetypes(),
 	new IndexableDirectoryBestiary(),
 	new IndexableDirectoryBackgrounds(),
@@ -760,6 +805,18 @@ class IndexableFileFamiliars extends IndexableFile {
 	}
 }
 
+class IndexableFileRituals extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_RITUAL,
+			file: "rituals.json",
+			listProp: "ritual",
+			baseUrl: "rituals.html",
+			isHover: true,
+		});
+	}
+}
+
 Omnidexer.TO_INDEX = [
 	new IndexableFileBaseItems(),
 	new IndexableFileConditions(),
@@ -781,6 +838,7 @@ Omnidexer.TO_INDEX = [
 	new IndexableFileCompanions(),
 	new IndexableFileFamiliars(),
 	new IndexableFileAdventures(),
+	new IndexableFileRituals(),
 ];
 
 class IndexableSpecial {

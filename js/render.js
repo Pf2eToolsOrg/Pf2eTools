@@ -1310,8 +1310,10 @@ function Renderer () {
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
 		const renderFn = Renderer.hover._pageToRenderFn(page);
-		if (renderFn) textStack[0] += renderFn(entry.data, {isEmbedded: true, noPage: true});
-		else textStack[0] += `<div class=""></div>`;
+		if (renderFn) {
+			const rendered = renderFn(entry.data, {isEmbedded: true, noPage: true});
+			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+		} else textStack[0] += `<div class=""></div>`;
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1775,6 +1777,28 @@ function Renderer () {
 
 				break;
 			}
+			case "@quickref": {
+				const [displayText, source, ixChapter, section, ixSection, ...others] = Renderer.splitTagByPipe(text);
+				const hash = `bookref-quick${HASH_PART_SEP}${ixChapter}${HASH_PART_SEP}${UrlUtil.encodeForHash(section)}${HASH_PART_SEP}${ixSection || 0}`
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_QUICKREF,
+						hash,
+						hashPreEncoded: true,
+						hover: {
+							page: UrlUtil.PG_QUICKREF,
+							source: source || SRC_CRB,
+							hash,
+							hashPreEncoded: true,
+						},
+					},
+					text: displayText,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
 
 			case "@deity": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
@@ -1932,7 +1956,7 @@ function Renderer () {
 				};
 				switch (tag) {
 					case "@spell":
-						fauxEntry.href.path = "spells.html";
+						fauxEntry.href.path = UrlUtil.PG_SPELLS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_SPELLS,
 							source,
@@ -1940,7 +1964,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@ritual":
-						fauxEntry.href.path = "rituals.html";
+						fauxEntry.href.path = UrlUtil.PG_RITUALS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_RITUALS,
 							source,
@@ -1948,7 +1972,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@item":
-						fauxEntry.href.path = "items.html";
+						fauxEntry.href.path = UrlUtil.PG_ITEMS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ITEMS,
 							source,
@@ -1997,12 +2021,12 @@ function Renderer () {
 								{key: "flstmiscellaneous", value: "clear"},
 							];
 						}
-						fauxEntry.href.path = "classes.html";
+						fauxEntry.href.path = UrlUtil.PG_CLASSES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					}
 					case "@creature":
-						fauxEntry.href.path = "bestiary.html";
+						fauxEntry.href.path = UrlUtil.PG_BESTIARY;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_BESTIARY,
 							source,
@@ -2037,7 +2061,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@background":
-						fauxEntry.href.path = "backgrounds.html";
+						fauxEntry.href.path = UrlUtil.PG_BACKGROUNDS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_BACKGROUNDS,
 							source,
@@ -2082,7 +2106,15 @@ function Renderer () {
 						break;
 					case "@companion":
 					case "@familiar":
-						fauxEntry.href.path = "companionsfamiliars.html";
+						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@familiarAbility":
+						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
 							source,
@@ -2090,7 +2122,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@feat":
-						fauxEntry.href.path = "feats.html";
+						fauxEntry.href.path = UrlUtil.PG_FEATS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_FEATS,
 							source,
@@ -2098,7 +2130,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@hazard":
-						fauxEntry.href.path = "hazards.html";
+						fauxEntry.href.path = UrlUtil.PG_HAZARDS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_HAZARDS,
 							source,
@@ -2106,7 +2138,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@variantrule":
-						fauxEntry.href.path = "variantrules.html";
+						fauxEntry.href.path = UrlUtil.PG_VARIANTRULES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_VARIANTRULES,
 							source,
@@ -2114,7 +2146,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@table":
-						fauxEntry.href.path = "tables.html";
+						fauxEntry.href.path = UrlUtil.PG_TABLES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_TABLES,
 							source,
@@ -2272,11 +2304,13 @@ function Renderer () {
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
+	 * @param opts
 	 * @returns {string}
 	 */
-	this.render = function (entry) {
+	this.render = function (entry, opts) {
+		opts = opts || {};
 		const tempStack = [];
-		this.recursiveRender(entry, tempStack);
+		this.recursiveRender(entry, tempStack, opts);
 		return tempStack.join("");
 	};
 
@@ -3342,8 +3376,9 @@ Renderer.background = {
 
 Renderer.companionfamiliar = {
 	getRenderedString (it, opts) {
-		if (it.type === "Companion") return Renderer.companion.getRenderedString(it, opts);
-		if (it.type === "Familiar") return Renderer.familiar.getRenderedString(it, opts);
+		if (it.__prop === "familiarAbility") return Renderer.familiar.getRenderedFamiliarAbility(it, opts)
+		if (it.__prop === "companion") return Renderer.companion.getRenderedString(it, opts);
+		if (it.__prop === "familiar") return Renderer.familiar.getRenderedString(it, opts);
 	},
 };
 Renderer.companion = {
@@ -3377,10 +3412,17 @@ Renderer.familiar = {
 		${Renderer.utils.getTraitsDiv(familiar.traits)}
 		${familiar.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${familiar.alignment}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Required Number of Abilities&nbsp;</strong>${familiar.requires}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${familiar.granted.join(", ")}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${Renderer.get().render(familiar.granted.join(", "))}</p>
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
 		${Renderer.utils.getPageP(familiar)}`;
+	},
+
+	getRenderedFamiliarAbility (it, opts) {
+		// TODO:
+		return `${Renderer.utils.getNameDiv(it, {type: `${it.type} Ability`})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.generic.getRenderedEntries(it)}`;
 	},
 };
 
@@ -3711,11 +3753,7 @@ Renderer.creature = {
 
 	getRenderedAbility (ability, options) {
 		options = options || {};
-
 		const renderer = Renderer.get();
-		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
-
 		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
 
 		let trts = []
@@ -3737,7 +3775,7 @@ Renderer.creature = {
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
 					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
-					${entryStack.join("")}
+					${(ability.entries || []).map(it => renderer.render(it, {isAbility: true})).join(" ")}
 					</span></p>
 					${renderedGenericAbility || ""}`;
 	},
@@ -5731,7 +5769,7 @@ Renderer.hover = {
 			case UrlUtil.PG_SPELLS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/spells/`, "spell");
 			case UrlUtil.PG_RITUALS:
-				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/rituals/", "ritual");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rituals.json", "ritual");
 			case UrlUtil.PG_BESTIARY:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/bestiary/`, "creature");
 			case UrlUtil.PG_ITEMS: {
@@ -5771,7 +5809,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility"]);
 			case UrlUtil.PG_ANCESTRIES: {
 				// FIXME:
 				const loadKey = UrlUtil.PG_ANCESTRIES;
@@ -5814,6 +5852,7 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
 			case UrlUtil.PG_TRAITS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, "TRT", hash, {sourceOverride: "TRT", ...opts}, "traits.json", "trait");
+
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
 				const loadKey = UrlUtil.PG_QUICKREF;
@@ -5897,7 +5936,7 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			// enregion
+			// endregion
 
 			// region per-page fluff
 			case `fluff__${UrlUtil.PG_BESTIARY}`:
@@ -5959,6 +5998,7 @@ Renderer.hover = {
 
 		data[listProp].forEach(it => {
 			const itHash = (opts.fnGetHash || UrlUtil.URL_TO_HASH_BUILDER[page])(it);
+			it.__prop = listProp;
 			if (opts.fnMutateItem) opts.fnMutateItem(listProp, it);
 			const source = opts.sourceOverride || it.source;
 			Renderer.hover._addToCache(page, source, itHash, it);
@@ -6368,9 +6408,10 @@ Renderer.hover = {
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:
-				return (it) => Renderer.creature.getCompactRenderedString(it, {
+				return (it, opts) => Renderer.creature.getCompactRenderedString(it, {
 					showScaler: true,
 					isScaled: it._originalLvl != null,
+					...opts,
 				});
 			case UrlUtil.PG_ARCHETYPES:
 				return Renderer.archetype.getCompactRenderedString;
@@ -6687,6 +6728,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@pf2etools":
 					case "@adventure":
 					case "@book":
+					case "@quickref":
 					case "@filter":
 					case "@footnote":
 					case "@link":
@@ -6731,6 +6773,9 @@ Renderer._stripTagLayer = function (str) {
 					case "@ritual":
 					case "@settlement":
 					case "@deity":
+					case "@familiar":
+					case "@familiarAbility":
+					case "@companion":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];

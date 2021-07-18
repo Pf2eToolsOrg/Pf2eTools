@@ -40,11 +40,6 @@ class AncestriesPage extends BaseComponent {
 		this._ixFeatData = 0;
 		this._featDataList = [];
 		this._featFilter = new PageFilterFeats({
-			typeFilterHidden: true,
-			ancFilterHidden: true,
-			archFilterHidden: true,
-			classFilterHidden: true,
-			skillFilterHidden: true,
 			typeDeselFn: it => it === "Ancestry",
 		});
 		this.__featId = {_: 0};
@@ -1018,9 +1013,9 @@ class AncestriesPage extends BaseComponent {
 
 		// TODO: Option for Homebrew/Official filter?
 		const filterSets = [
-			{name: "View All", subHashes: ["flstother%20options:isshowveheritages=b1~isshowstdheritages=b1"], isClearSources: false},
-			{name: "Standard Heritages Only", subHashes: ["flstother%20options:isshowveheritages=b0~isshowstdheritages=b1"], isClearSources: false},
-			{name: "Versatile Heritages Only", subHashes: ["flstother%20options:isshowveheritages=b1~isshowstdheritages=b0"], isClearSources: false},
+			{name: "Select All", subHashes: ["flst.ancestries.ancestriesother%20options:isshowveheritages=b1~isshowstdheritages=b1"], isClearSources: false},
+			{name: "Standard Heritages Only", subHashes: ["flst.ancestries.ancestriesother%20options:isshowveheritages=b0~isshowstdheritages=b1"], isClearSources: false},
+			{name: "Versatile Heritages Only", subHashes: ["flst.ancestries.ancestriesother%20options:isshowveheritages=b1~isshowstdheritages=b0"], isClearSources: false},
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
@@ -1032,14 +1027,16 @@ class AncestriesPage extends BaseComponent {
 				const sourcePart = [...classifiedSources.official, ...classifiedSources.homebrew]
 					.map(src => `${src.toUrlified()}=0`)
 					.join(HASH_SUB_LIST_SEP);
-				cpySubHashes.push(`flstsource:${sourcePart}`)
+				cpySubHashes.push(`flst.ancestries.ancestriessource:${sourcePart}`)
 			}
 
 			this.filterBox.setFromSubHashes([
 				...boxSubhashes,
 				...cpySubHashes,
-				`flopsource:extend`,
+				`flop.ancestries.ancestriessource:extend`,
 			].filter(Boolean), true);
+			this._listHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
+			this._listVeHeritage.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true);
 			$selFilterPreset.val("-1");
 		};
 		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset mr-2 mb-1 flex-3"><option value="-1" disabled>Filter...</option></select>`)

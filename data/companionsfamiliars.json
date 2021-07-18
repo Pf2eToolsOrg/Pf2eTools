@@ -98,12 +98,12 @@
 			],
 			"requires": 6,
 			"granted": [
-				"amphibious",
-				"darkvision",
-				"flier",
-				"manual dexterity",
-				"speech",
-				"touch telepathy"
+				"{@familiarAbility amphibious}",
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility speech}",
+				"{@familiarAbility touch telepathy}"
 			],
 			"abilities": [
 				{
@@ -119,7 +119,7 @@
 					],
 					"frequency": "once per hour",
 					"entries": [
-						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  stupefied 2 and slowed 1 for 1d4 rounds; on a critical failure,  the duration is 1 minute."
+						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  {@condition stupefied||stupefied 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds; on a critical failure,  the duration is 1 minute."
 					]
 				}
 			],
@@ -131,6 +131,170 @@
 						"These tiny, mischievous dragons make natural allies for  benevolent or capricious characters."
 					]
 				}
+			]
+		}
+	],
+	"familiarAbility": [
+		{
+			"name": "Amphibious",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains a swim Speed of 25 feet (or Speed of 25 feet if it already has a swim Speed)."
+			]
+		},
+		{
+			"name": "Burrower",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains a burrow Speed of 5 feet, allowing it to dig Tiny holes."
+			]
+		},
+		{
+			"name": "Climber",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains a climb Speed of 25 feet."
+			]
+		},
+		{
+			"name": "Damage Avoidance",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"Choose one type of save. It takes no damage when it succeeds at that type of save; this doesn't prevent effects other than damage."
+			]
+		},
+		{
+			"name": "Darkvision",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains {@ability darkvision}."
+			]
+		},
+		{
+			"name": "Fast Movement",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"Increase one of the familiar's Speeds from 25 feet to 40 feet."
+			]
+		},
+		{
+			"name": "Flier",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains a fly Speed of 25 feet."
+			]
+		},
+		{
+			"name": "Kinspeech",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It can understand and speak with animals of the same species. To select this, your familiar must be an animal, it must have the speech ability, and you must be at least 6th level."
+			]
+		},
+		{
+			"name": "Lab Assistant",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It can use your Quick Alchemy action. You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
+			]
+		},
+		{
+			"name": "Manual Dexterity",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It can use up to two of its limbs as if they were hands to use manipulate actions."
+			]
+		},
+		{
+			"name": "Scent",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It gains scent (imprecise, 30 feet)."
+			]
+		},
+		{
+			"name": "Speech",
+			"source": "CRB",
+			"page": 218,
+			"type": "Familiar",
+			"entries": [
+				"It understands and speaks a language you know."
+			]
+		},
+		{
+			"name": "Cantrip Connection",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can’t otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
+			]
+		},
+		{
+			"name": "Extra Reagents",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"Your familiar grows extra infused reagents on or in its body. You gain an additional batch of infused reagents. You must have the infused reagents ability to select this ability."
+			]
+		},
+		{
+			"name": "Familiar Focus",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"Once per day, your familiar can use 2 actions with the concentrate trait to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
+			]
+		},
+		{
+			"name": "Lifelink",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"If your familiar would be reduced to 0 HP by damage, as a reaction with the concentrate trait, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
+			]
+		},
+		{
+			"name": "Spell Battery",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"You gain one additional spell slot at least 3 levels lower than your highest-level spell slot; you must be able to cast 4th-level spells using spell slots to select this master ability."
+			]
+		},
+		{
+			"name": "Spell Delivery",
+			"source": "CRB",
+			"page": 218,
+			"type": "Master",
+			"entries": [
+				"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
 			]
 		}
 	]

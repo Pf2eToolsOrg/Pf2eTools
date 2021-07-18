@@ -430,7 +430,7 @@ class FilterCheck {
 
 					const hasOpenRange = part.startsWith("[");
 					const hasCloseRange = part.startsWith("]");
-					if (hasOpenRange ||| hasCloseRange) {
+					if (hasOpenRange || hasCloseRange) {
 						if (!(hasOpenRange && hasCloseRange)) {
 							MSG.FilterCheck += `Malformed range expression in filter tag "${str}"`;
 						}

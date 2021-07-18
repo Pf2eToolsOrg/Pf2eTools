@@ -49,6 +49,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 				}
 			});
 		}
+		it._fGranted = (it.granted || []).map(a => Renderer._stripTagLayer(a));
 	}
 
 	addToFilters (it, isExcluded) {
@@ -62,7 +63,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 		this._speedFilter.addItem(it._fspeed);
 		this._speedTypeFilter.addItem(it._fspeedtypes);
 		if (it.requires) this._requiredFilter.addItem(it.requires);
-		if (it.granted) this._grantedFilter.addItem(it.granted);
+		this._grantedFilter.addItem(it._fGranted);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -99,7 +100,7 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 				it._fspeedtypes,
 			],
 			it.requires,
-			it.granted,
+			it._fGranted,
 			it._fMisc,
 		)
 	}

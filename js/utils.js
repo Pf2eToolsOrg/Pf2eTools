@@ -1943,6 +1943,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCHETYPE] = UrlUtil.PG_ARCHETYPES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
@@ -2049,15 +2050,13 @@ SortUtil = {
 		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
-	_alignFirst: ["L", "C"],
-	_alignSecond: ["G", "E"],
+	_alignSorted: ["ce", "ne", "le", "cn", "n", "ln", "cg", "ng", "lg", "any"],
 	alignmentSort: (a, b) => {
-		if (a === b) return 0;
-		if (SortUtil._alignFirst.includes(a)) return -1;
-		if (SortUtil._alignSecond.includes(a)) return 1;
-		if (SortUtil._alignFirst.includes(b)) return 1;
-		if (SortUtil._alignSecond.includes(b)) return -1;
-		return 0;
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+		return SortUtil.ascSort(SortUtil._alignSorted.indexOf(b.toLowerCase()), SortUtil._alignSorted.indexOf(a.toLowerCase()));
 	},
 
 	sortActivities (a, b) {

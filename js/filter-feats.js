@@ -13,7 +13,7 @@ class PageFilterFeats extends PageFilter {
 			max: 20,
 			isLabelled: true,
 		});
-		this._typeFilter = new Filter({header: "Type", isHiddenFilter: !!opts.typeFilterHidden, selFn: opts.typeDeselFn})
+		this._typeFilter = new Filter({header: "Type", selFn: opts.typeDeselFn})
 		this._traitsFilter = new TraitsFilter({
 			header: "Traits",
 			discardCategories: {
@@ -24,10 +24,10 @@ class PageFilterFeats extends PageFilter {
 				"Creature Type": true,
 			},
 		});
-		this._ancestryFilter = new Filter({header: "Ancestries", isHiddenFilter: !!opts.ancFilterHidden})
-		this._archetypeFilter = new Filter({header: "Archetypes", items: ["Archetype"], isHiddenFilter: !!opts.archFilterHidden})
-		this._classFilter = new Filter({header: "Classes", isHiddenFilter: !!opts.classFilterHidden})
-		this._skillFilter = new Filter({header: "Skills", isHiddenFilter: !!opts.skillFilterHidden})
+		this._ancestryFilter = new Filter({header: "Ancestries"})
+		this._archetypeFilter = new Filter({header: "Archetypes", items: ["Archetype"]})
+		this._classFilter = new Filter({header: "Classes"})
+		this._skillFilter = new Filter({header: "Skills"})
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
 			items: ["Has Trigger", "Has Frequency", "Has Prerequisites", "Has Requirements", "Has Cost", "Has Special", "Leads to...", "Variant"],

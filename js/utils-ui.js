@@ -1229,7 +1229,7 @@ class SearchWidget {
 			fnTransform: doc => {
 				const cpy = MiscUtil.copy(doc);
 				Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-				cpy.tag = `{@spell ${doc.n.toSpellCase()}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+				cpy.tag = `{@spell ${doc.n.toSpellCase()}${doc.s !== SRC_CRB ? `|${doc.s}` : ""}}`;
 				return cpy;
 			},
 		};
@@ -1271,7 +1271,7 @@ class SearchWidget {
 				fnTransform: doc => {
 					const cpy = MiscUtil.copy(doc);
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-					cpy.tag = `{@feat ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+					cpy.tag = `{@feat ${doc.n}${doc.s !== SRC_CRB ? `|${doc.s}` : ""}}`;
 					return cpy;
 				},
 			},
@@ -1289,7 +1289,7 @@ class SearchWidget {
 				fnTransform: doc => {
 					const cpy = MiscUtil.copy(doc);
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-					cpy.tag = `{@background ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+					cpy.tag = `{@background ${doc.n}${doc.s !== SRC_CRB ? `|${doc.s}` : ""}}`;
 					return cpy;
 				},
 			},
@@ -1312,7 +1312,7 @@ class SearchWidget {
 				fnTransform: doc => {
 					const cpy = MiscUtil.copy(doc);
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-					cpy.tag = `{@race ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+					cpy.tag = `{@race ${doc.n}${doc.s !== SRC_CRB ? `|${doc.s}` : ""}}`;
 					return cpy;
 				},
 			},
@@ -1330,7 +1330,7 @@ class SearchWidget {
 				fnTransform: doc => {
 					const cpy = MiscUtil.copy(doc);
 					Object.assign(cpy, SearchWidget.docToPageSourceHash(cpy));
-					cpy.tag = `{@optfeature ${doc.n}${doc.s !== SRC_PHB ? `|${doc.s}` : ""}}`;
+					cpy.tag = `{@optfeature ${doc.n}${doc.s !== SRC_CRB ? `|${doc.s}` : ""}}`;
 					return cpy;
 				},
 			},
