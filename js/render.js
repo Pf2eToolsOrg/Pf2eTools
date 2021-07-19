@@ -3581,26 +3581,28 @@ Renderer.creature = {
 
 	getAttacks (cr) {
 		let renderStack = [];
-		for (let attack of cr.attacks) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
-			renderStack.push(Renderer.get().render(`{@as 1} `))
-			renderStack.push(`${attack.name}`)
-			renderStack.push(`</span>`)
-			if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
-			renderStack.push(`<span>`)
-			if (attack.traits != null) {
-				let traits = []
-				attack.traits.forEach((t) => traits.push(`{@trait ${t}}`));
-				renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
-			}
-			renderStack.push(`, <strong>Damage&nbsp;</strong>`)
-			renderStack.push(Renderer.get().render(attack.damage))
+		if (cr.attacks) {
+			for (let attack of cr.attacks) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
+				renderStack.push(Renderer.get().render(`{@as 1} `))
+				renderStack.push(`${attack.name}`)
+				renderStack.push(`</span>`)
+				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
+				renderStack.push(`<span>`)
+				if (attack.traits != null) {
+					let traits = []
+					attack.traits.forEach((t) => traits.push(`{@trait ${t}}`));
+					renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
+				}
+				renderStack.push(`, <strong>Damage&nbsp;</strong>`)
+				renderStack.push(Renderer.get().render(attack.damage))
 
-			renderStack.push(`</span>`)
-			renderStack.push(`</p>`)
+				renderStack.push(`</span>`)
+				renderStack.push(`</p>`)
+			}
+			return renderStack.join("")
 		}
-		return renderStack.join("")
 	},
 
 	getSpellcasting (cr) {
@@ -3695,17 +3697,17 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
-			${cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
 			${Renderer.creature.getRituals(cr)}
-			${cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
 	},
 
