@@ -5773,7 +5773,7 @@ Renderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/backgrounds/", "background");
 			case UrlUtil.PG_ARCHETYPES:
-				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/archetypes/", "archetype");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "archetypes.json", ["archetype"]);
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
