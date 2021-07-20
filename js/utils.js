@@ -3104,16 +3104,6 @@ DataUtil = {
 		},
 	},
 
-	archetype: {
-		_pLoadingJson: null,
-		_pLoadingRawJson: null,
-		_loadedJson: null,
-		_loadedRawJson: null,
-		loadJSON: async function () {
-			return DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes.json`);
-		},
-	},
-
 	deity: {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,

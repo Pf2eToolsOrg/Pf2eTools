@@ -193,20 +193,6 @@ class IndexableDirectoryAncestries extends IndexableDirectory {
 	}
 }
 
-class IndexableDirectoryArchetypes extends IndexableDirectory {
-	constructor () {
-		super({
-			category: Parser.CAT_ID_ARCHETYPE,
-			dir: "archetypes",
-			primary: "name",
-			source: "source",
-			listProp: "archetype",
-			baseUrl: "archetypes.html",
-			isHover: true,
-		});
-	}
-}
-
 class IndexableDirectoryBackgrounds extends IndexableDirectory {
 	constructor () {
 		super({
@@ -424,7 +410,6 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 
 Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 	new IndexableDirectoryAncestries(),
-	new IndexableDirectoryArchetypes(),
 	new IndexableDirectoryBestiary(),
 	new IndexableDirectoryBackgrounds(),
 	new IndexableDirectoryFeats(),
@@ -486,6 +471,18 @@ class IndexableFileBaseItems extends IndexableFile {
 			file: "items/baseitems.json",
 			listProp: "baseitem",
 			baseUrl: "items.html",
+			isHover: true,
+		});
+	}
+}
+
+class IndexableFileArchetypes extends IndexableFile {
+	constructor () {
+		super({
+			category: Parser.CAT_ID_ARCHETYPE,
+			file: "archetypes.json",
+			listProp: "archetype",
+			baseUrl: "archetypes.html",
 			isHover: true,
 		});
 	}
@@ -761,6 +758,7 @@ class IndexableFileFamiliars extends IndexableFile {
 }
 
 Omnidexer.TO_INDEX = [
+	new IndexableFileArchetypes(),
 	new IndexableFileBaseItems(),
 	new IndexableFileConditions(),
 	new IndexableFileDiseases(),
