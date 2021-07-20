@@ -479,7 +479,7 @@ class IndexableFileBaseItems extends IndexableFile {
 class IndexableFileArchetypes extends IndexableFile {
 	constructor () {
 		super({
-			category: Parser.CAT_ID_ITEM,
+			category: Parser.CAT_ID_ARCHETYPE,
 			file: "archetypes.json",
 			listProp: "archetype",
 			baseUrl: "archetypes.html",
