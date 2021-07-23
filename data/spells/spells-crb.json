@@ -1680,6 +1680,7 @@
 			"name": "Avatar",
 			"source": "CRB",
 			"page": 318,
+			"hasBattleForm": true,
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
@@ -7797,17 +7798,23 @@
 						"Darkvision and imprecise scent 60 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher.",
-						"{@bold Breath Weapon} {@as 2} (arcane, evocation) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals. You also gain specific abilities based on the type of dragon you choose:",
-						"{@bold Black swim} Speed 60 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
-						"{@bold Blue burrow} Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Green swim} Speed 40 feet, ignores difficult terrain from non-magical foliage; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} poison; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
-						"Red ignore {@condition concealed} from smoke; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
-						"{@bold White climb} Speed 25 feet on ice only; Melee {@as 1} jaws, Damage {@damage 3d6} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; breath weapon 30‑foot cone, {@damage 10d6} cold.",
-						"{@bold Brass burrow} Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 3d8} piercing plus {@damage 2d4} fire; Melee {@as 1} claw (agile), {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} spikes (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
-						"{@bold Bronze swim} Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Copper climb} Speed 25 feet on stone only; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
-						"{@bold Gold swim} Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
-						"Silver walk on clouds; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10), Damage {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 8d8} cold."
+						"{@bold Breath Weapon} {@as 2} ({@trait arcane}, {@trait evocation}) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals."
+					]
+				},
+				"You also gain specific abilities based on the type of dragon you choose:",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Black} swim Speed 60 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
+						"{@bold Blue} burrow Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Green} swim Speed 40 feet, ignores difficult terrain from non-magical foliage; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} poison; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
+						"{@b Red} ignore {@condition concealed} from smoke; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
+						"{@bold White} climb Speed 25 feet on ice only; Melee {@as 1} jaws, Damage {@damage 3d6} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; breath weapon 30‑foot cone, {@damage 10d6} cold.",
+						"{@bold Brass} burrow Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 3d8} piercing plus {@damage 2d4} fire; Melee {@as 1} claw (agile), {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} spikes (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
+						"{@bold Bronze} swim Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Copper} climb Speed 25 feet on stone only; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
+						"{@bold Gold} swim Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
+						"{@b Silver} walk on clouds; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10), Damage {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 8d8} cold."
 					]
 				}
 			],
@@ -14613,7 +14620,7 @@
 						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; darkvision; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
 						"{@bold Mantis} Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
 						"{@bold Scorpion} Speed 40 feet; darkvision, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
-						"Spider darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
+						"{@bold Spider} darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
 					]
 				}
 			],
@@ -18344,6 +18351,7 @@
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
+			"hasBattleForm": true,
 			"traits": [
 				"Polymorph",
 				"Transmutation"
@@ -20557,6 +20565,7 @@
 			"source": "CRB",
 			"page": 359,
 			"type": "SPELL",
+			"hasBattleForm": true,
 			"focus": false,
 			"level": 10,
 			"traits": [
@@ -23232,6 +23241,7 @@
 					"unit": "minute"
 				}
 			},
+			"hasBattleForm": true,
 			"sustain": false,
 			"dismiss": true,
 			"entries": [

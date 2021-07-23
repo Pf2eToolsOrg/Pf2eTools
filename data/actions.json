@@ -4038,6 +4038,78 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Anadi Venom",
+			"source": "LOWE",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Anadi|LOWE"
+				],
+				"heritage": [
+					"Venomous Anadi|LOWE"
+				]
+			},
+			"frequency": "a number of times per day equal to your leve",
+			"entries": [
+				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
+			]
+		},
+		{
+			"name": "Toxic Skin",
+			"source": "LOWE",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Grippli",
+				"Poison"
+			],
+			"actionType": {
+				"ancestry": [
+					"Grippli|LOWE"
+				],
+				"heritage": [
+					"Poisonhide Grippli|LOWE"
+				]
+			},
+			"frequency": "once per hour",
+			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
+			"entries": [
+				"You exude a deadly toxin. The triggering creature takes {@damage 1d4} poison damage (basic Fortitude save using your class DC or spell DC, whichever is higher). At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d4}."
+			]
+		},
+		{
+			"name": "Call to Axis",
+			"source": "LOWE",
+			"page": 107,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Fortune"
+			],
+			"actionType": {
+				"ancestry": [
+					"Conrasu|LOWE"
+				],
+				"heritage": [
+					"Rite of Knowing|LOWE"
+				]
+			},
+			"frequency": "once per day",
+			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
+			"entries": [
+				"You call upon the knowledge of Axis to ensure the accuracy of your information. You roll a second time and use the higher result. If you roll a critical failure, you get a failure instead. If you roll a success, you get a critical success instead."
+			]
 		}
 	]
 }
