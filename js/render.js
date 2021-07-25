@@ -4384,7 +4384,7 @@ Renderer.language = {
 		const renderer = Renderer.get().setFirstSection(true);
 		const allEntries = [];
 		if (it.entries) allEntries.push(...it.entries);
-		if (!allEntries.length && !it.typicalSpeakers) allEntries.push("{@i No information available.}");
+		if (!allEntries.length) allEntries.push("{@i No entries available.}");
 		renderer.recursiveRender(allEntries, textStack, {pf2StatFix: true})
 
 		return `
@@ -4392,6 +4392,8 @@ Renderer.language = {
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_LANGUAGES, type: `${it.type ? `${it.type} ` : ""}language`, ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${it.typicalSpeakers ? `<p class="pf2-stat pf2-stat__section"><strong>Typical Speakers</strong> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</p>` : ""}
+		${it.regions ? `<p class="pf2-stat pf2-stat__section"><strong>Regions</strong> ${Renderer.get().render(it.regions.join(", "))}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}
 		${textStack.join("")}
 		${Renderer.utils.getPageP(it)}`;
 	},
