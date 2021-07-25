@@ -6,10 +6,10 @@
  *   - sanity-check code to ensure it has updated
  */
 
-importScripts("./js/sw-files.js");
+// importScripts("./js/sw-files.js");
 
 const cacheName = /* PF2ETOOLS_VERSION__OPEN */"0.0.1"/* PF2ETOOLS_VERSION__CLOSE */;
-const cacheableFilenames = new Set(filesToCache);
+// const cacheableFilenames = new Set(filesToCache);
 
 let isCacheRunning;
 
@@ -69,7 +69,7 @@ self.addEventListener("fetch", e => {
 	const url = e.request.url;
 	const path = getPath(url);
 
-	return; // TODO re-enable caching
+	/* TODO re-enable caching
 
 	if (!cacheableFilenames.has(path)) return;
 	const responseMeta = {};
@@ -80,7 +80,7 @@ self.addEventListener("fetch", e => {
 			// TODO if we grabbed the result from the cache, we could here asynchronously launch a hard fetch to update the cache? Currently is of no relevance, as the user can simply refresh to have the service worker realise it is outdated and flush everything.
 		}
 		return toReturn;
-	})());
+	})()); */
 });
 
 self.addEventListener("message", async evt => {
@@ -98,7 +98,7 @@ self.addEventListener("message", async evt => {
 				try {
 					await getOrCache(filesToCache[i]);
 				} catch (e) {
-					debugger
+					// debugger
 					return send({type: "download-error", message: ((e.stack || "").trim()) || e.name});
 				}
 				if (!isCacheRunning) return send({type: "download-cancelled"});
