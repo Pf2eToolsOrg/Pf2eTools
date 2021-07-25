@@ -5475,9 +5475,9 @@ Renderer.hover = {
 							</style>
 						</head><body class="rd__body-popout">
 						<div class="hwin hoverbox--popout hwin--popout"></div>
-						<script type="text/javascript" src="js/parser.js"></script>
-						<script type="text/javascript" src="js/utils.js"></script>
-						<script type="text/javascript" src="lib/jquery.js"></script>
+						<script src="js/parser.js"></script>
+						<script src="js/utils.js"></script>
+						<script src="lib/jquery.js"></script>
 						</body></html>
 					`);
 
