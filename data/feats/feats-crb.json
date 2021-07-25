@@ -603,7 +603,7 @@
 			"traits": [
 				"Fighter"
 			],
-			"trigger": "You use the Shield Block reaction, and the opponent that triggered Shield Block is adjacent to you and is your size or smaller.",
+			"trigger": "You use the {@action Shield Block} reaction, and the opponent that triggered {@action Shield Block} is adjacent to you and is your size or smaller.",
 			"entries": [
 				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically Shoving it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
 			],
@@ -6136,7 +6136,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Shield} The shield gains a +1 status bonus to its Hardness. (This causes it to reduce more damage with the Shield Block reaction.)",
+						"{@bold Shield} The shield gains a +1 status bonus to its Hardness. (This causes it to reduce more damage with the {@action Shield Block} reaction.)",
 						"{@bold Weapon} The wielder gains a +1 status bonus to damage rolls."
 					]
 				}
@@ -6168,7 +6168,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use Shield Block against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as fire).",
+						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use {@action Shield Block} against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as fire).",
 						"{@bold Weapon} Choose acid, cold, electricity, fire, or sonic"
 					]
 				},
@@ -8328,8 +8328,9 @@
 			"traits": [
 				"Champion"
 			],
+			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"Prerequisites Mercy."
+				"Your faith enhances your ability to remove conditions. When you use {@feat Mercy}, you can instead attempt to counteract the {@condition blinded}, {@condition deafened}, {@condition sickened}, or {@condition slowed} conditions."
 			]
 		},
 		{
@@ -9539,7 +9540,7 @@
 			],
 			"prerequisites": "{@feat Reflexive Shield}",
 			"entries": [
-				"Your shield can help save nearby allies. When you use Shield Block against damage resulting from a Reflex save, adjacent allies who would take damage due to Reflex saves against the same effect also benefit from the damage reduction."
+				"Your shield can help save nearby allies. When you use {@action Shield Block} against damage resulting from a Reflex save, adjacent allies who would take damage due to Reflex saves against the same effect also benefit from the damage reduction."
 			]
 		},
 		{
@@ -13851,7 +13852,7 @@
 				"Champion"
 			],
 			"entries": [
-				"You can block with your shield instinctively. At the start of each of your turns, you gain an additional reaction that you can use only to perform a Shield Block."
+				"You can block with your shield instinctively. At the start of each of your turns, you gain an additional reaction that you can use only to perform a {@action Shield Block}."
 			]
 		},
 		{
@@ -14134,9 +14135,9 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "shield block, {@feat Reactive Shield}",
+			"prerequisites": "{@action Shield Block}, {@feat Reactive Shield}",
 			"entries": [
-				"You can bring your shield into place with hardly a thought. At the start of each of your turns, you gain an additional reaction that you can use only to Shield Block."
+				"You can bring your shield into place with hardly a thought. At the start of each of your turns, you gain an additional reaction that you can use only to {@action Shield Block}."
 			]
 		},
 		{
@@ -14942,7 +14943,7 @@
 				"Fighter"
 			],
 			"entries": [
-				"You can use your shield to fend off the worst of area effects and other damage. When you Raise your Shield, you gain your shield's circumstance bonus to Reflex saves. If you have the Shield Block reaction, damage you take as a result of a Reflex save can trigger that reaction, even if the damage isn't physical damage."
+				"You can use your shield to fend off the worst of area effects and other damage. When you Raise your Shield, you gain your shield's circumstance bonus to Reflex saves. If you have the {@action Shield Block} reaction, damage you take as a result of a Reflex save can trigger that reaction, even if the damage isn't physical damage."
 			],
 			"leadsTo": [
 				"Improved Reflexive Shield"
@@ -15809,7 +15810,7 @@
 			"prerequisites": "{@feat Shield Warden}",
 			"entries": [
 				"You protect an ally with both your shield and your body.",
-				"Whenever you use the Shield Block reaction to prevent damage to an ally, you can evenly split the remaining damage after the Shield Block between the ally and yourself."
+				"Whenever you use the {@action Shield Block} reaction to prevent damage to an ally, you can evenly split the remaining damage after the {@action Shield Block} between the ally and yourself."
 			]
 		},
 		{
@@ -15834,9 +15835,9 @@
 				"Flourish"
 			],
 			"prerequisites": "champion's reaction, divine ally (shield), tenets of good, {@feat Shield Warden}",
-			"trigger": "A foe's attack against an ally matches the trigger for both your Shield Block reaction and your champion's reaction.",
+			"trigger": "A foe's attack against an ally matches the trigger for both your {@action Shield Block} reaction and your champion's reaction.",
 			"entries": [
-				"When you shield your ally against an attack, you call upon your power to protect your ally further. You use the Shield Block reaction to prevent damage to an ally and also use your champion's reaction against the foe that attacked your ally."
+				"When you shield your ally against an attack, you call upon your power to protect your ally further. You use the {@action Shield Block} reaction to prevent damage to an ally and also use your champion's reaction against the foe that attacked your ally."
 			]
 		},
 		{
@@ -15878,7 +15879,7 @@
 			"prerequisites": "divine ally (shield), tenets of good",
 			"entries": [
 				"You use your shield to protect your allies as well as yourself.",
-				"When you have a shield raised, you can use your Shield Block reaction when an attack is made against an ally adjacent to you. If you do, the shield prevents that ally from taking damage instead of preventing you from taking damage, following the normal rules for Shield Block."
+				"When you have a shield raised, you can use your {@action Shield Block} reaction when an attack is made against an ally adjacent to you. If you do, the shield prevents that ally from taking damage instead of preventing you from taking damage, following the normal rules for {@action Shield Block}."
 			]
 		},
 		{
@@ -15897,9 +15898,9 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "shield block",
+			"prerequisites": "{@action Shield Block}",
 			"entries": [
-				"You use your shield to protect your allies. When you have a shield raised, you can use your Shield Block reaction when an attack is made against an ally adjacent to you. If you do, the shield prevents that ally from taking damage instead of preventing you from taking damage, following the normal rules for Shield Block."
+				"You use your shield to protect your allies. When you have a shield raised, you can use your {@action Shield Block} reaction when an attack is made against an ally adjacent to you. If you do, the shield prevents that ally from taking damage instead of preventing you from taking damage, following the normal rules for {@action Shield Block}."
 			]
 		},
 		{
@@ -18923,8 +18924,9 @@
 			"traits": [
 				"Champion"
 			],
+			"prerequisites": "liberator cause",
 			"entries": [
-				"Prerequisites liberator cause."
+				"With a burst of divine liberation, your ally’s movement from your {@action Liberating Step} is unaffected by difficult terrain, greater difficult terrain, narrow surfaces, and uneven ground."
 			]
 		},
 		{
