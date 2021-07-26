@@ -2017,8 +2017,7 @@ function Renderer () {
 
 							fauxEntry.href.subhashes = [
 								{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
-								{key: "fltsource", value: "clear"},
-								{key: "flstmiscellaneous", value: "clear"},
+								{key: "flst.classes.classesmiscellaneous", value: "clear"},
 							];
 						}
 						fauxEntry.href.path = UrlUtil.PG_CLASSES;
@@ -2076,6 +2075,30 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@versatileHeritage": {
+						fauxEntry.href.hash = HASH_BLANK;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_ANCESTRIES,
+							source,
+						};
+						const ancStateOpts = {
+							heritage: {name, source},
+						};
+
+						const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getAncestriesPageStatePart(ancStateOpts));
+						fauxEntry.href.hover.subhashes = [{
+							key: "state",
+							value: subhashObj.state,
+							preEncoded: true,
+						}];
+						fauxEntry.href.subhashes = [
+							{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
+							{key: "flst.ancestries.ancestriesmiscellaneous", value: "clear"},
+						];
+						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					}
 					case "@ancestry":
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ANCESTRIES,
@@ -2094,14 +2117,18 @@ function Renderer () {
 							};
 
 							const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getAncestriesPageStatePart(ancStateOpts));
+							fauxEntry.href.hover.subhashes = [{
+								key: "state",
+								value: subhashObj.state,
+								preEncoded: true,
+							}];
 
 							fauxEntry.href.subhashes = [
 								{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
-								{key: "fltsource", value: "clear"},
-								{key: "flstmiscellaneous", value: "clear"},
+								{key: "flst.ancestries.ancestriesmiscellaneous", value: "clear"},
 							];
 						}
-						fauxEntry.href.path = "ancestries.html";
+						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@companion":
@@ -3290,12 +3317,17 @@ Renderer.affliction = {
 };
 
 Renderer.ancestry = {
-	getCompactRenderedString (anc, opts) {
+	getCompactRenderedString (it, opts) {
+		if (it.__prop === "ancestry") return Renderer.ancestry.getRenderedAncestry(it, opts);
+		if (it.__prop === "heritage") return Renderer.ancestry.getRenderedHeritage(it, opts);
+		if (it.__prop === "versatileHeritage") return Renderer.ancestry.getRenderedVersatileHeritage(it, opts);
+	},
+
+	getRenderedAncestry (anc, opts) {
 		// FIXME: This is now less bad
 		opts = opts || {};
-		const renderer = Renderer.get();
+		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		renderer.setFirstSection(true);
 		renderStack.push(`${Renderer.utils.getNameDiv(anc, {page: UrlUtil.PG_ANCESTRIES, type: "Ancestry", ...opts})}`)
 		renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		renderStack.push(`<div class="pf2-sidebar--compact">`)
@@ -3330,6 +3362,20 @@ Renderer.ancestry = {
 		renderStack.push(`</div>`)
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(anc));
 		return renderStack.join("");
+	},
+
+	getRenderedHeritage (her, opts) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		renderer.recursiveRender({type: "pf2-h3", name: her.name, entries: her.entries}, renderStack);
+		return `${renderStack.join("")}`;
+	},
+
+	getRenderedVersatileHeritage (vHer, opts) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		renderer.recursiveRender({type: "pf2-h2", name: vHer.name, entries: vHer.entries}, renderStack);
+		return `${renderStack.join("")}`;
 	},
 
 	pGetFluff (ancestry) {
@@ -4404,8 +4450,15 @@ Renderer.item = {
 		return Renderer.utils.pGetFluff({
 			entity: item,
 			fluffProp: "itemFluff",
-			fluffUrl: `data/fluff-items.json`,
+			fluffBaseUrl: `data/items/`,
 		});
+	},
+
+	getRenderedFluff (item) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (item.entries) item.entries.forEach(l => renderer.recursiveRender(l, textStack));
+		return textStack.join("");
 	},
 };
 
@@ -5810,28 +5863,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility"]);
-			case UrlUtil.PG_ANCESTRIES: {
-				// FIXME:
-				const loadKey = UrlUtil.PG_ANCESTRIES;
-
-				await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
-					page,
-					source,
-					hash,
-					loadKey,
-					async () => {
-						const brewData = await BrewUtil.pAddBrewData();
-						if (brewData.ancestry) Renderer.hover._pCacheAndGet_populate(page, {ancestry: brewData.ancestry}, "ancestry");
-						if (brewData.versatileHeritage) Renderer.hover._pCacheAndGet_populate(page, {versatileHeritage: brewData.versatileHeritage}, "versatileHeritage");
-
-						const data = await DataUtil.ancestry.loadJSON();
-						Renderer.hover._pCacheAndGet_populate(page, data, "ancestry");
-						Renderer.hover._pCacheAndGet_populate(page, data, "versatileHeritage");
-					},
-				);
-
-				return Renderer.hover._getFromCache(page, source, hash, opts);
-			}
+			case UrlUtil.PG_ANCESTRIES:
+				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
 			case UrlUtil.PG_HAZARDS:
@@ -6101,6 +6134,55 @@ Renderer.hover = {
 				await Renderer.hover._pCacheAndGet_pLoadSingleBrew(page, opts, listProps, itemModifier);
 				const data = await DataUtil[loader].loadJSON();
 				Renderer.hover._pCacheAndGet_handleSingleData(page, opts, data, listProps, itemModifier);
+			},
+		);
+
+		return Renderer.hover._getFromCache(page, source, hash, opts);
+	},
+
+	async _pCacheAndGet_pLoadAncestries (page, source, hash, opts) {
+		const loadKey = UrlUtil.PG_ANCESTRIES;
+
+		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
+			page,
+			source,
+			hash,
+			loadKey,
+			async () => {
+				const addToIndex = (anc) => {
+					anc = MiscUtil.copy(anc);
+					anc.__prop = "ancestry";
+					const ancHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](anc);
+					Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || SRC_CRB, ancHash, anc);
+
+					(anc.heritage || []).forEach(h => {
+						h = MiscUtil.copy(h);
+						h.__prop = "heritage"
+						const hHash = `${ancHash}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`;
+						Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || h.source || SRC_CRB, hHash, h);
+						Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, h.source || SRC_CRB, hHash, h);
+					});
+				};
+
+				const addHeritageToIndex = (h, prop) => {
+					h = MiscUtil.copy(h);
+					h.__prop = prop;
+					const anc = ancestryData.ancestry.find(it => it.name === h.ancestryName && it.source === (h.ancestrySource || SRC_CRB));
+					let ancHash = HASH_BLANK;
+					if (anc) ancHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](anc);
+
+					const hHash = `${ancHash}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`;
+					if (anc) Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || h.source || SRC_CRB, hHash, h);
+					Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, h.source || SRC_CRB, hHash, h);
+				};
+
+				const ancestryData = await DataUtil.ancestry.loadJSON();
+				const brewData = await BrewUtil.pAddBrewData();
+				(brewData.ancestry || []).forEach(a => addToIndex(a));
+				for (const h of (brewData.heritage || [])) addHeritageToIndex(h, "heritage");
+				for (const vh of (brewData.versatileHeritage || [])) addHeritageToIndex(vh, "versatileHeritage");
+				ancestryData.ancestry.forEach(a => addToIndex(a));
+				ancestryData.versatileHeritage.forEach(vh => addHeritageToIndex(vh, "versatileHeritage"));
 			},
 		);
 
@@ -6426,6 +6508,7 @@ Renderer.hover = {
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.companionfamiliar.getRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
+				// FIXME: heritage rendering
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
 				return Renderer.deity.getCompactRenderedString;
@@ -6762,6 +6845,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@language":
 					case "@object":
 					case "@ancestry":
+					case "@versatileHeritage":
 					case "@reward":
 					case "@spell":
 					case "@status":

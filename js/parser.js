@@ -1291,6 +1291,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"itemcurse": SRC_GMG,
 	"background": SRC_CRB,
 	"ancestry": SRC_CRB,
+	"versatileHeritage": SRC_APG,
 	"archetype": SRC_CRB,
 	"feat": SRC_CRB,
 	"trap": SRC_CRB,

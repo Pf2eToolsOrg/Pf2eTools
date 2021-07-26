@@ -182,6 +182,7 @@ class SpellsPage extends ListPage {
 		this._addSpells(homebrew.spell);
 		BrewUtil.bind({
 			list: this._list,
+			pHandleBrew: this._handleBrew.bind(this),
 		});
 		BrewUtil.makeBrewButton("manage-brew");
 		BrewUtil.bind({
@@ -189,6 +190,11 @@ class SpellsPage extends ListPage {
 			sourceFilter: this._pageFilter.sourceFilter,
 		});
 		await ListUtil.pLoadState();
+	}
+
+	_handleBrew (homebrew) {
+		this._addSpells(homebrew.spell);
+		return Promise.resolve();
 	}
 
 	async _pPageInit (loadedSources) {

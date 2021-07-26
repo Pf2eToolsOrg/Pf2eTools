@@ -1703,10 +1703,7 @@ UrlUtil = {
 			(cls.classFeatures || []).forEach((lvlFeatureList, ixLvl) => {
 				// class features
 				lvlFeatureList
-					// don't add "you gain a subclass feature" or ASI's
-					.filter(feature => !feature.gainSubclassFeature
-						&& feature.name !== "Ability Score Improvement"
-						&& feature.name !== "Proficiency Versatility")
+					.filter(feature => !feature.gainSubclassFeature)
 					.forEach((feature, ixFeature) => {
 						const name = Renderer.findName(feature);
 						if (!name) { // tolerate missing names in homebrew
@@ -1792,7 +1789,7 @@ UrlUtil = {
 	},
 
 	getStateKeyHeritage (h) {
-		return Parser.stringToSlug(`h ${h.name} ${Parser.sourceJsonToAbv(h.source)}`)
+		return Parser.stringToSlug(`h ${h.shortName || h.name} ${Parser.sourceJsonToAbv(h.source)}`)
 	},
 
 	/**
@@ -2988,9 +2985,6 @@ DataUtil = {
 		},
 
 		async pGetDereferencedClassData (cls) {
-			// Gracefully handle legacy class data
-			if (cls.classFeatures && cls.classFeatures.every(it => typeof it !== "string" && !it.classFeature)) return cls;
-
 			cls = MiscUtil.copy(cls);
 
 			const byLevel = {}; // Build a map of `level: [classFeature]`
@@ -3043,9 +3037,6 @@ DataUtil = {
 		},
 
 		async pGetDereferencedSubclassData (sc) {
-			// Gracefully handle legacy class data
-			if (sc.subclassFeatures && sc.subclassFeatures.every(it => typeof it !== "string" && !it.subclassFeature)) return sc;
-
 			sc = MiscUtil.copy(sc);
 
 			const byLevel = {}; // Build a map of `level: [subclassFeature]`

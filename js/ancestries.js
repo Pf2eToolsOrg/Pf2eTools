@@ -877,7 +877,7 @@ class AncestriesPage extends BaseComponent {
 		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
 		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);
-		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, ...anc.traits);
+		if (anc.traits) statSidebar.entries.push({type: "pf2-title", name: "Traits"}, ...anc.traits.map(t => `{@trait ${t}}`));
 		if (anc.feature) statSidebar.entries.push({type: "pf2-title", name: anc.feature.name}, ...anc.feature.entries);
 		if (anc.features) anc.features.forEach(f => statSidebar.entries.push({type: "pf2-title", name: f.name}, ...f.entries));
 		const ancestryName = {
@@ -1210,12 +1210,9 @@ class AncestriesPage extends BaseComponent {
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispName = $(`<div title="${h.name.toTitleCase()}; Source: ${h.source}"/>`);
+		const $dispName = $(`<div title="${h.name.toTitleCase()}; Source: ${h.source}">${h.shortName || h.name}</div>`);
 		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(h.source)}">(${Parser.sourceJsonToAbv(h.source)})</div>`);
-		const hkSourcesVisible = () => {
-			$dispName.text(h.name);
-			$dispSource.toggleClass("hidden", !this._state.isShowHSources);
-		};
+		const hkSourcesVisible = () => $dispSource.toggleClass("hidden", !this._state.isShowHSources);
 		this._addHookBase("isShowHSources", hkSourcesVisible);
 		MiscUtil.pDefer(hkSourcesVisible);
 
@@ -1244,6 +1241,7 @@ class AncestriesPage extends BaseComponent {
 			{
 				source: h.source,
 				versatile: !!h.versatile,
+				shortName: h.shortName,
 				stateKey,
 				mod,
 			},
