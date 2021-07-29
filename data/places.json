@@ -684,7 +684,7 @@
 					[
 						{
 							"name": "Population",
-							"entry": "1,240 (60% humans, 8% halflings, 7% half-elves, 6% elves, 5% dwarves, 5% gnomes, 3% half-orcs, 2% goblins, 4% other)"
+							"entry": "1,240 ({@dice 1,240*0.6|60%} humans, {@dice 1,240*0.08|8%} halflings, {@dice 1,240*0.07|7%} half-elves, {@dice 1,240*0.06|6%} elves, {@dice 1,240*0.05|5%} dwarves, {@dice 1,240*0.05|5%} gnomes, {@dice 1,240*0.03|3%} half-orcs, {@dice 1,240*0.02|2%} goblins, {@dice 1,240*0.04|4%} other)"
 						}
 					],
 					[
@@ -1238,6 +1238,164 @@
 						{
 							"name": "Kunari Mobo",
 							"entry": "({@trait N} female human merchant 8) Retired Free Captain that maintains a major pirate trade network"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Jaha",
+			"source": "LOME",
+			"page": 196,
+			"category": "Settlement",
+			"level": 5,
+			"traits": [
+				"LN",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Republic"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "7,105 ({@dice 7,105*0.7|70%} humans, {@dice 7,105*0.28|28%} iruxi, {@dice 7,105*0.02|2%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Iruxi}, {@language Lirgeni}, {@language Mwangi}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Desna}, {@deity Gozreh}, {@deity Uvuko}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "mysterious disappearances, undead"
+						}
+					],
+					[
+						{
+							"name": "Insular People",
+							"entry": "The Jahaxi people are wary of outsiders and slow to trust. This doubles the time it takes to {@action Gather Information} and increases the DC by 2."
+						}
+					],
+					[
+						{
+							"name": "Readers of Stars",
+							"entry": "Many Jahaxi people are skilled at divination. Including at least one of these individuals as a secondary caster of a divination ritual decreases the ritual’s DCs by 1."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Barashzi",
+							"entry": "({@trait NG} nonbinary lizardfolk astrologer 8) prominent social restorationist"
+						}
+					],
+					[
+						{
+							"name": "Iakanne Aarsani",
+							"entry": "({@trait LG} female human aristocrat 7) prominent sociopolitical leader"
+						}
+					],
+					[
+						{
+							"name": "Versenne",
+							"entry": "({@trait NG} female human diplomat 7) head ambassador of Jaha"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Kibwe",
+			"source": "LOME",
+			"page": 208,
+			"category": "Settlement",
+			"level": 6,
+			"traits": [
+				"N",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "representative council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "5,162 ({@dice 5,162*0.71|71%} humans [predominantly Zenj], {@dice 5,162*0.08|8%} elves, {@dice 5,162*0.05|5%} orcs, {@dice 5,162*0.05|5%} lizardfolk, {@dice 5,162*0.11|11%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Elven}, {@language Iruxi}, {@language Jotun}, {@language Kelish}, {@language Kibwani}, {@language Kobold}, {@language Mwangi}, {@language Ocatan}, {@language Taldane}, {@language Uwani}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Abadar}, {@deity Adanye}, {@deity Cayden Cailean}, {@deity Desna}, {@deity Droskar}, {@deity Gozreh}, {@deity Nethys}, {@deity Sekhmet}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Disgruntled ex-slavers, demons, magical curses and diseases"
+						}
+					],
+					[
+						{
+							"name": "Trade Hub",
+							"entry": "Items of up to 11th level can be found in Kibwe with diligent enough searching. Items higher than 6th level, when found, are for sale at 90% + {@dice 2d10}% of their normal price."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Abayone Munme",
+							"entry": "({@trait LG} female human politician 5) Council Representative for the Zenj Trading Alliance"
+						}
+					],
+					[
+						{
+							"name": "Clatriani Orridik",
+							"entry": "({@trait LE} male human merchant 7) Bloodman of Bekyar Block and former slave-trader"
+						}
+					],
+					[
+						{
+							"name": "Darvian Estabar",
+							"entry": "({@trait LN} male human aristocrat 5) Lord Magistrate of the East Mwangi Mining Company"
+						}
+					],
+					[
+						{
+							"name": "Kosa Et",
+							"entry": "({@trait N} agender elf weaver 6) Council Representative for Whitemarks"
 						}
 					]
 				]
