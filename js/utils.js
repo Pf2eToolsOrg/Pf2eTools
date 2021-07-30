@@ -842,6 +842,23 @@ MiscUtil = {
 		return JSON.parse(JSON.stringify(obj));
 	},
 
+	isObject (obj) {
+		return obj && typeof obj === "object" && !Array.isArray(obj);
+	},
+
+	merge (...objects) {
+		return objects.filter(it => MiscUtil.isObject(it)).reduce((acc, obj) => {
+			Object.keys(obj).forEach(key => {
+				const initVal = acc[key];
+				const newVal = obj[key];
+				if (Array.isArray(initVal) && Array.isArray(newVal)) acc[key] = initVal.concat(...newVal);
+				else if (MiscUtil.isObject(initVal) && MiscUtil.isObject(newVal)) acc[key] = MiscUtil.merge(initVal, newVal);
+				else acc[key] = newVal;
+			});
+			return acc;
+		}, {});
+	},
+
 	async pCopyTextToClipboard (text) {
 		function doCompatibilityCopy () {
 			const $iptTemp = $(`<textarea class="clp__wrp-temp"></textarea>`)
@@ -2680,7 +2697,9 @@ DataUtil = {
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
 					if (prop === "*") doMod(modInfos, "abilitiesTop", "abilitiesMid", "attacks", "abilitiesBot");
 					else if (prop === "_") doMod(modInfos);
-					else doMod(modInfos, prop);
+					else if (prop === "entriesMode") {
+						/* do nothing */
+					} else doMod(modInfos, prop);
 				});
 			}
 
@@ -2785,8 +2804,6 @@ DataUtil = {
 
 	item: {
 		_MERGE_REQUIRES_PRESERVE: {
-			page: true,
-			otherSources: true,
 		},
 		_mergeCache: {},
 		_loadedJson: null,
@@ -2801,14 +2818,46 @@ DataUtil = {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index.json`);
 				const files = ["baseitems.json", ...Object.values(index)];
 				const allData = await Promise.all(files.map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
+				const expanded = await Promise.all(allData.map(it => it.item || []).flat().map(it => DataUtil.item.expandVariants(it)));
 				DataUtil.item._loadedJson = {
-					item: allData.map(it => it.item || []).flat(),
+					item: expanded.flat(),
 					baseitem: allData.map(it => it.baseitem || []).flat(),
 				}
 			})();
 			await DataUtil.item._pLoadingJson;
 
 			return DataUtil.item._loadedJson;
+		},
+
+		async expandVariants (item) {
+			if (!item.variants) return [item];
+			const expanded = await Promise.all(item.variants.map(v => DataUtil.item._expandVariant(item, v)));
+			return [item, ...expanded];
+		},
+
+		async _expandVariant (generic, variant) {
+			variant = MiscUtil.copy(variant);
+			variant._copy = variant._copy || {};
+			variant._copy._mod = MiscUtil.merge(generic._vmod, variant._mod, variant._copy._mod);
+			const entriesMode = variant._copy._mod.entriesMode || "concat";
+			if (entriesMode === "concat") {
+				variant.entries = [...generic.entries, ...variant.entries];
+			} else if (entriesMode === "generic") {
+				variant.entries = [...generic.entries]
+			} else if (entriesMode === "variant") {
+				variant.entries = [...variant.entries]
+			}
+			if (!variant.name) {
+				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
+					variant.name = `${variant.type} ${generic.name}`.toTitleCase();
+				} else {
+					variant.name = variant.type.toTitleCase();
+				}
+			}
+			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
+			variant.generic = "V";
+			delete variant.variants;
+			return variant;
 		},
 	},
 
@@ -3274,7 +3323,6 @@ RollerUtil = {
 };
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
-RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
 RollerUtil._REGEX_ROLLABLE_COL_LABEL = /^(.*?\d)(\s*[-+/*^×÷]\s*)([a-zA-Z0-9 ]+)$/;
 RollerUtil.ROLL_COL_NONE = 0;
 RollerUtil.ROLL_COL_STANDARD = 1;

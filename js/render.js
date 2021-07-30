@@ -1488,12 +1488,6 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</i>`;
 				break;
-			case "@atk":
-				textStack[0] += `<i>${Renderer.attackTagToFull(text)}</i>`;
-				break;
-			case "@h":
-				textStack[0] += `<i>Hit:</i> `;
-				break;
 			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
 				const scrubbedColor = BrewUtil.getValidColor(color);
@@ -4393,53 +4387,13 @@ Renderer.item = {
 		}
 
 		const itemData = await DataUtil.item.loadJSON();
-		const itemList = await Renderer.item._pGetAndProcItems(itemData);
 		const baseItems = itemData.baseitem;
-		const allItems = [...itemList, ...baseItems];
+		const allItems = [...itemData.item, ...baseItems];
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
 		Renderer.item._unlockBuildList();
 		if (opts.fnCallback) return opts.fnCallback(allItems);
 		return allItems;
-	},
-
-	async _pGetAndProcItems (itemData) {
-		let items = []
-		itemData.item.forEach((it) => {
-			if (!it.generic) items.push(it)
-			else items.push(...Renderer.item._createVariants(it))
-		});
-		return items
-	},
-
-	_getVariantName (variant, genericName) {
-		let name = ""
-		if (!genericName.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(genericName.toLowerCase())) {
-			name = `${variant.type} ${genericName}`.toTitleCase()
-		} else {
-			name = variant.type.toTitleCase()
-		}
-		return name
-	},
-
-	_createVariants (genericItem) {
-		let items = [genericItem]
-		if (genericItem.variants) {
-			genericItem.variants.forEach((v) => {
-				let varItem = MiscUtil.copy(genericItem)
-				varItem.name = this._getVariantName(v, genericItem.name)
-				varItem.level = v.level
-				varItem.price = v.price
-				varItem.bulk = v.bulk
-				varItem.shieldStats = v.shieldStats
-				varItem.craftReq = v.craftReq
-				varItem.entries.push(...v.entries)
-				varItem.generic = "V"
-				delete varItem.variants
-				items.push(varItem)
-			});
-		}
-		return items
 	},
 
 	async getItemsFromHomebrew (homebrew) {
@@ -6756,14 +6710,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@sub":
 						return text;
 
-					case "@h":
-						return "Hit: ";
-
 					case "@dc":
 						return `DC ${text}`;
-
-					case "@atk":
-						return Renderer.attackTagToFull(text);
 
 					case "@as": {
 						// TODO
