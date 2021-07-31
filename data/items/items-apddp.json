@@ -1,0 +1,46 @@
+{
+    "item": [
+        {
+			"name": "Pacifying",
+			"source": "APDDP",
+			"page": 78,
+			"type": "Rune",
+			"level": "5",
+			"traits": [
+				"Uncommon",
+                "Enchantment",
+                "Magical"
+			],
+            "price": {
+                "coin": "gp",
+                "amount": 150,
+                "note": null
+            },
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"This rune turns weapons into instruments of peacemaking.",
+                {
+					"type": "ability",
+					"style": "compact",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command",
+						"mental"
+					],
+					"frequency": null,
+					"trigger": "You damage a creature with a pacifying weapon",
+					"requirements": null,
+					"entries": [
+						"The damaged creature must succeed at a DC 20 Will save or be pacified. A pacified creature takes a –2 penalty to attack rolls on any attacks that aren't {@trait nonlethal} for 1 minute, and the creature also experiences a clear psychic warning that they should stop dealing lethal damage."
+					]
+				}
+			],
+			"generic": false
+		}
+    ]
+}
