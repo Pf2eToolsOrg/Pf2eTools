@@ -3579,7 +3579,7 @@
 				"amount": 15,
 				"note": null
 			},
-			"ammunition": "bolt",
+			"ammunition": "bolts||bolt",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this bolt is wrapped with fine twine. When the bolt strikes a solid surface, the twine unwinds and enlarges into a 50-foot-long rope, securely fastened to the surface the bolt struck. The rope can be pulled free with an {@action Interact} action and a successful DC 20 {@skill Athletics} check."
@@ -4142,6 +4142,98 @@
 				}
 			],
 			"generic": false
+		},
+		{
+			"name": "Sling Bullets",
+			"source": "CRB",
+			"page": 282,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [],
+			"craftReq": null,
+			"generic": false,
+			"variants": null
+		},
+		{
+			"name": "Arrows",
+			"source": "CRB",
+			"page": 282,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [],
+			"craftReq": null,
+			"generic": false,
+			"variants": null
+		},
+		{
+			"name": "Bolts",
+			"source": "CRB",
+			"page": 281,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [],
+			"craftReq": null,
+			"generic": false,
+			"variants": null
+		},
+		{
+			"name": "Blowgun Darts",
+			"source": "CRB",
+			"page": 281,
+			"equipment": true,
+			"type": "Equipment",
+			"traits": [],
+			"price": {
+				"coin": "cp",
+				"amount": 5,
+				"note": "(price for 10)"
+			},
+			"bulk": null,
+			"shieldStats": null,
+			"activate": null,
+			"onset": null,
+			"ammunition": null,
+			"category": "Ammunition",
+			"entries": [],
+			"craftReq": null,
+			"generic": false,
+			"variants": null
 		},
 		{
 			"name": "Comprehension Elixir",
@@ -5453,7 +5545,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "bolt",
+			"ammunition": "bolts||bolt",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this bolt is scorched and blackened, and handling it coats your fingers with a fine black powder. When an activated disintegration bolt hits a target, it is subject to a {@spell disintegrate} spell requiring a DC 34 Fortitude save. As with the spell, a critical hit on the attack roll causes the target's saving throw outcome to be one degree worse."
@@ -5573,16 +5665,16 @@
 					"items": [
 						"{@b Axe} You can damage a third creature, with the same restrictions.",
 						"{@b Bow} The {@skill Athletics} check to pull the missile free is DC 20.",
-						"{@b Brawling} The target takes a –4 circumstance penalty to its save.",
+						"{@b Brawling} The target takes a \u20134 circumstance penalty to its save.",
 						"{@b Club} You can knock the target up to 15 feet away.",
 						"{@b Dart} The base {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
-						"{@b Flail} You move the target 5 feet. You can’t move it away from you, but you can move it in another direction of your choice.",
+						"{@b Flail} You move the target 5 feet. You can't move it away from you, but you can move it in another direction of your choice.",
 						"{@b Hammer} You can also knock the target 5 feet away from you.",
-						"{@b Knife} The target takes a –5-foot status penalty to its Speed while it has the {@condition persistent damage||persistent bleed damage}.",
+						"{@b Knife} The target takes a \u20135-foot status penalty to its Speed while it has the {@condition persistent damage||persistent bleed damage}.",
 						"{@b Pick} The extra damage from the critical specialization effect increases to 4 per weapon damage die.",
 						"{@b Polearm} You can move the target up to 10 feet.",
 						"{@b Shield} You can knock the target up to 10 feet away.",
-						"{@b Sling} The target also takes a –10-foot status penalty to its Speed for 1 round if it fails the save.",
+						"{@b Sling} The target also takes a \u201310-foot status penalty to its Speed for 1 round if it fails the save.",
 						"{@b Spear} The {@condition clumsy} condition lasts for 2 rounds.",
 						"{@b Sword} The target is {@condition flat-footed} until the end of your next turn."
 					]
@@ -7504,7 +7596,7 @@
 			"category": "Shield",
 			"group": "Shield",
 			"entries": [
-				"The religious symbol of Torag, the forge god—an ornate hammer of dwarven construction—adorns the face of this reinforced steel shield (Hardness 10, HP 24, BT 12). The shield is a religious symbol of Torag.",
+				"The religious symbol of Torag, the forge god\u2014an ornate hammer of dwarven construction\u2014adorns the face of this reinforced steel shield (Hardness 10, HP 24, BT 12). The shield is a religious symbol of Torag.",
 				"You and any adjacent allies have fire resistance 5 while you have the shield raised. When used for a {@action Shield Block}, the forge warden rings out like the hammer strike of a blacksmith, and the symbol glows as if lit by the fires of a furnace.",
 				{
 					"type": "ability",
@@ -12944,7 +13036,10 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow, bolt",
+			"ammunition": [
+				"arrows||arrow",
+				"bolts||bolt"
+			],
 			"category": "Ammunition",
 			"entries": [
 				"This ammunition has a slender shape and a viciously pointed tip. When you activate and shoot penetrating ammunition, the {@action Strike} takes the shape of a 60-foot line originating from you.",
@@ -14712,7 +14807,7 @@
 								],
 								[
 									"14\u201315",
-									"All the target’s weapons animate with the effects of the {@item dancing|crb|dancing rune}"
+									"All the target's weapons animate with the effects of the {@item dancing|crb|dancing rune}"
 								],
 								[
 									"16\u201325",
@@ -16158,7 +16253,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow",
+			"ammunition": "arrows||arrow",
 			"category": "Ammunition",
 			"entries": [
 				"Sleep arrows often have shafts of deep blue or black, and their fletching is exceptionally soft and downy. An activated sleep arrow deals no damage, but a living creature hit by it is subject to the effects of a {@spell sleep} spell (DC 17)."
@@ -18112,7 +18207,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow",
+			"ammunition": "arrows||arrow",
 			"category": "Ammunition",
 			"entries": [
 				"The head of this arrow is made from gleaming copper.",
@@ -19529,7 +19624,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow",
+			"ammunition": "arrows||arrow",
 			"category": "Ammunition",
 			"entries": [
 				"Leafy stalks protrude from the shaft of this rustic arrow. When an activated vine arrow hits a target, the arrow's shaft splits and grows, wrapping the target in vines. The target takes a \u201310-foot circumstance penalty to its Speeds for {@dice 2d4} rounds, or until it Escapes against a DC of 19. On a critical hit, the target is also {@condition immobilized} until it Escapes."
@@ -19562,7 +19657,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrow",
+			"ammunition": "arrows||arrow",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this arrow is covered in fine green scales, and its iron head comes to a pair of points almost like fangs. After an activated viper arrow hits a target, the arrow transforms into a viper (Pathfinder Bestiary 302). The target is affected by the viper's poison, as if it had been bitten. The viper then lands in an open space adjacent to the target.",

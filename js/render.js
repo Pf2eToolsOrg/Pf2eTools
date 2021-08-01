@@ -4149,8 +4149,8 @@ Renderer.item = {
 			if (item.ammunition || item.range || item.reload) {
 				renderStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
 				if (item.ammunition) {
-					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(`{@item ${item.ammunition}}`)}`);
-					if (item.range != null) renderStack.push("; ")
+					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(item.ammunition.isArray ? item.ammunition.map(t => `{@item ${t}}`).join(", ") : `{@item ${item.ammunition}}`)}`);
+					if (item.range != null || item.reload != null) renderStack.push("; ")
 				}
 				if (item.range != null) {
 					renderStack.push(`<strong>Range&nbsp;</strong>${renderer.render(`${item.range} ft.`)}`);
