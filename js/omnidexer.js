@@ -455,7 +455,6 @@ Omnidexer.TO_INDEX__FROM_INDEX_JSON = [
 	new IndexableDirectoryAncestries(),
 	new IndexableDirectoryHeritages(),
 	new IndexableDirectoryVeHeritages(),
-	new IndexableDirectoryArchetypes(),
 	new IndexableDirectoryBestiary(),
 	new IndexableDirectoryBackgrounds(),
 	new IndexableDirectoryFeats(),
