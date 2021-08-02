@@ -39,6 +39,7 @@ class Blacklist {
 		Blacklist._listId = 1;
 
 		const FILES = [
+			"archetypes.json",
 			"variantrules.json",
 			"tables.json",
 			"companionsfamiliars.json",
@@ -113,7 +114,6 @@ class Blacklist {
 		const promises = FILES.map(url => DataUtil.loadJSON(`data/${url}`));
 		promises.push(await DataUtil.ancestry.loadJSON());
 		promises.push(await DataUtil.background.loadJSON());
-		promises.push(await DataUtil.archetype.loadJSON());
 		promises.push(await DataUtil.feat.loadJSON());
 		promises.push(async () => ({item: await Renderer.items.pBuildList({isAddGroups: true})}));
 		promises.push(await DataUtil.ritual.loadJSON());

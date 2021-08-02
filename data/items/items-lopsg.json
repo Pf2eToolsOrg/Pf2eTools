@@ -1,126 +1,6 @@
 {
 	"item": [
 		{
-			"name": "Aeon Stone",
-			"source": "LOPSG",
-			"page": 121,
-			"type": "Item",
-			"level": "3+",
-			"traits": [
-				"Uncommon",
-				"Invested",
-				"Magical",
-				"Transmutation"
-			],
-			"usage": "worn",
-			"bulk": "\u2014",
-			"category": "Worn",
-			"entries": [
-				"Aeon stones are magic stones that orbit your head when invested and grant a resonant power when slotted in a wayfinder. See page 604 of the Core Rulebook for basic information on aeon stones."
-			],
-			"generic": "G",
-			"variants": [
-				{
-					"type": "agate ellipsoid",
-					"level": 5,
-					"price": {
-						"coin": "gp",
-						"amount": 130,
-						"note": null
-					},
-					"entries": [
-						"This aeon stone allows you to cast 2nd-level {@spell augury} as a divine innate spell once per day.",
-						"Secrets of the Pathfinder {@skill Society} Whether stored in the vaults of the Grand Lodge, {@condition hidden} in the minds of various agents, or lost to time from the {@skill Society}'s ancient past, the Pathfinder {@skill Society} is rife with secrets. Some take the form of unusual magic items; others are spells or special techniques. Agents who discover and use these secrets gain an edge that can help them as they undertake {@skill Society} missions. All characters affiliated with the Pathfinder {@skill Society} have access to the uncommon options in this section.",
-						"The resonant power causes the {@spell augury} spell from the aeon stone to always succeed at the DC {@flatDC 6} flat check to give an answer other than \"nothing.\""
-					]
-				},
-				{
-					"type": "azure briolette",
-					"level": 4,
-					"price": {
-						"coin": "gp",
-						"amount": 85,
-						"note": null
-					},
-					"entries": [
-						"This aeon stone must be activated to provide a benefit.",
-						"Activate {@as R} envision; Trigger An enemy fails its save against a mental spell you cast using one of your spell slots; Effect You gain temporary Hit Points equal to twice the spell's level until your next turn.",
-						"The resonant power grants a separate activation.",
-						"Activate {@as 2} command, {@action Interact}; Frequency once per day; Effect You gain the effect of a chill touch arcane cantrip."
-					]
-				},
-				{
-					"type": "dusty rose prism",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 50,
-						"note": null
-					},
-					"entries": [
-						"This aeon stone allows you to cast the 1st-level {@spell shield} cantrip as an arcane innate spell, surrounding yourself in pink energy.",
-						"The resonant power increases the damage prevented by your aeon stone's {@spell shield} spell from 5 to 10."
-					]
-				},
-				{
-					"type": "pale orange rhomboid",
-					"level": 19,
-					"price": {
-						"coin": "gp",
-						"amount": 40000,
-						"note": null
-					},
-					"entries": [
-						"The first time each day you die, your vital and spiritual essences mingle together and reside within this aeon stone.",
-						"You have a limited sense of how many life forces are currently within 30 feet of the stone, which you can potentially use to determine when it's safe to call on the stone's power. At any time within the next hour after your body died, you can spend 1 minute concentrating in order to return to your body.",
-						"As long as your body is still intact, you are no longer dead\u2014 you are restored to 1 HP with the {@condition doomed|CRB|doomed 3} and {@condition wounded|CRB|wounded 3} conditions. You can benefit from the effects of only one pale orange rhomboid aeon stone in a given day.",
-						"The resonant power allows you to wait more than an hour to return to your body with the aeon stone; as long as the wayfinder remains on the body, your body doesn't decay and you can return at any point."
-					]
-				},
-				{
-					"type": "pearlescent pyramid",
-					"level": 10,
-					"price": {
-						"coin": "gp",
-						"amount": 900,
-						"note": null
-					},
-					"entries": [
-						"While invested, this aeon stone grants the benefit of the ghost touch property rune to your weapons and unarmed attacks.",
-						"The resonant power grants a special activation.",
-						"Activate {@as 1} envision; Frequency once per minute; Effect You gain the effects of see invisibility for 1 round."
-					]
-				},
-				{
-					"type": "pearly white spindle",
-					"level": 3,
-					"price": {
-						"coin": "gp",
-						"amount": 60,
-						"note": null
-					},
-					"entries": [
-						"When you invest this aeon stone, it slowly starts healing your wounds, restoring 1 HP every minute.",
-						"The resonant power grants you resistance 1 to negative damage."
-					]
-				},
-				{
-					"type": "western star",
-					"level": 6,
-					"price": {
-						"coin": "gp",
-						"amount": 225,
-						"note": null
-					},
-					"entries": [
-						"This aeon stone must be activated to provide a benefit.",
-						"Activate {@as 2} envision, {@action Interact}; Effect You activate the aeon stone to gain the effects of a 1st-level {@spell illusory disguise}.",
-						"The resonant power allows you to render all of your aeon stones and your wayfinder {@condition invisible} whenever you use the activation to gain the effects of illusory disguise."
-					]
-				}
-			]
-		},
-		{
 			"name": "Alignment Ampoule",
 			"source": "LOPSG",
 			"page": 39,
@@ -569,7 +449,7 @@
 			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
-				"Pathfinder {@skill Society} researchers recently created elemental wayfinders with the assistance of the {@skill Society}'s elemental allies. In addition to the effects of a wayfinder (Core Rulebook 617), these wayfinders each grant the ability to cast a particular elemental spell once per day, and can assist Pathfinders in exploring areas associated with their element. Each has the trait associated with its element.",
+				"Pathfinder Society researchers recently created elemental wayfinders with the assistance of the Society's elemental allies. In addition to the effects of a {@item wayfinder}, these wayfinders each grant the ability to cast a particular elemental spell once per day, and can assist Pathfinders in exploring areas associated with their element. Each has the trait associated with its element.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -593,18 +473,24 @@
 				{
 					"type": "air",
 					"level": 9,
+					"traits": [
+						"Air"
+					],
 					"price": {
 						"coin": "gp",
 						"amount": 650,
 						"note": null
 					},
 					"entries": [
-						"The wayfinder can cast 4th-level {@spell light}ning bolt. Additionally, you can cast {@spell feather fall} as a primal innate spell once every 10 minutes."
+						"The wayfinder can cast 4th-level {@spell lightning bolt}. Additionally, you can cast {@spell feather fall} as a primal innate spell once every 10 minutes."
 					]
 				},
 				{
 					"type": "earth",
 					"level": 9,
+					"traits": [
+						"Earth"
+					],
 					"price": {
 						"coin": "gp",
 						"amount": 600,
@@ -617,6 +503,9 @@
 				{
 					"type": "fire",
 					"level": 9,
+					"traits": [
+						"Fire"
+					],
 					"price": {
 						"coin": "gp",
 						"amount": 700,
@@ -629,6 +518,9 @@
 				{
 					"type": "water",
 					"level": 10,
+					"traits": [
+						"Water"
+					],
 					"price": {
 						"coin": "gp",
 						"amount": 900,
@@ -1495,7 +1387,7 @@
 			"bulk": "\u2014",
 			"category": "Held",
 			"entries": [
-				"A typical Pathfinder writ of authenticity confirms the holder's status as a member of the Pathfinder {@skill Society} and their intended business. Most writs are pieces of fine parchment folded, bound with gold cord, and sealed with three wax seals. The top seal is always the Glyph of the Open Road and the middle one is the Envoy's Alliance open door emblem. The bottom seal uses the preparer's personal sigil. Inside, the text describes a specific instance of a legitimate business activity, with blanks for the Pathfinder to fill in and personalize the writ to the persons and activity desired. Presenting a writ of authenticity grants a +2 item bonus to Make a {@action Request} for the associated business, assuming the writ is legitimate and the viewer expects to work with the Pathfinder {@skill Society} for that activity."
+				"A typical Pathfinder writ of authenticity confirms the holder's status as a member of the Pathfinder Society and their intended business. Most writs are pieces of fine parchment folded, bound with gold cord, and sealed with three wax seals. The top seal is always the Glyph of the Open Road and the middle one is the Envoy's Alliance open door emblem. The bottom seal uses the preparer's personal sigil. Inside, the text describes a specific instance of a legitimate business activity, with blanks for the Pathfinder to fill in and personalize the writ to the persons and activity desired. Presenting a writ of authenticity grants a +2 item bonus to Make a {@action Request} for the associated business, assuming the writ is legitimate and the viewer expects to work with the Pathfinder Society for that activity."
 			],
 			"generic": false
 		}

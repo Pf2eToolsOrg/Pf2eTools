@@ -125,7 +125,6 @@
 			"focus": false,
 			"level": 5,
 			"traits": [
-				"Attack",
 				"Chaotic",
 				"Disease",
 				"Evil",
@@ -293,7 +292,7 @@
 					"amount": 120
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -350,7 +349,7 @@
 					"amount": 30
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -358,7 +357,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You splash a glob of acid that splatters creatures and objects alike. Make a spell attack. If you hit, you deal {@damage 1d6} acid damage plus 1 splash acid damage. On a critical success, the target also takes 1 {@condition persistent damage ||persistent acid damage}."
+				"You splash a glob of acid that splatters your target and nearby creatures. Make a spell attack. If you hit, you deal {@damage 1d6} acid damage plus 1 splash acid damage. On a critical success, the target also takes 1 {@condition persistent damage ||persistent acid damage}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -959,14 +958,11 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You gain an angelic halo with an aura that increases allies' healing from the {@spell heal} spell. {@spell Heal} spells gain a +2 status bonus to Hit Points healed to your allies in the area."
+				"You gain an angelic halo with an aura that increases allies' healing from the {@spell heal} spell. Allies in your halo's emanation who are healed by a {@spell heal} spell gain a status bonus to Hit Points regained equal to double the {@spell heal} spell's level."
 			],
 			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The status bonus increases by 2."
-				},
+				"heightened": false,
+				"plus_x": null,
 				"x": null,
 				"no_x": null
 			}
@@ -1144,7 +1140,7 @@
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
-				"entry": "until delivered",
+				"entry": "see text",
 				"duration": {
 					"number": 1,
 					"unit": "special"
@@ -1153,7 +1149,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You offer a gift of food, and an ordinary Tiny wild animal within range approaches to eat it. You imprint the image, direction, and distance of an obvious place or landmark well known to you within the animal. Optionally, you can attach a small object or note up to light Bulk to it. The animal does its best to reach the destination; if it makes it there, it waits nearby until the duration expires, allowing other nonhostile creatures to approach it and remove the attached object.",
+				"You offer a gift of food, and an ordinary Tiny wild animal within range approaches to eat it. You imprint the image, direction, and distance of an obvious place or landmark well known to you within the animal. Optionally, you can attach a small object or note up to light Bulk to it. The animal does its best to reach the destination; if it makes it there, it waits nearby until the duration expires, allowing other nonhostile creatures to approach it and remove the attached object. The spell ends after 24 hours or when a creature removes the attached object, whichever happens first.",
 				"If there are no Tiny wild animals in range, the spell is lost."
 			],
 			"heightened": {
@@ -1308,7 +1304,7 @@
 				"types": [
 					"Emanation"
 				],
-				"entry": "10-foot emanation"
+				"entry": "10-foot emanation which affects you"
 			},
 			"savingThrowBasic": false,
 			"duration": {
@@ -1566,7 +1562,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Your body fills with physical power and skill. You gain a +10- foot status bonus to Speed and a +2 status bonus to {@skill Athletics} checks. As a part of Casting this Spell, you can use a {@action Stride}, {@action Leap}, {@action Climb}, or {@action Swim} action. The spell's bonuses apply during that action."
+				"Your body fills with physical power and skill. You gain a +10- foot status bonus to Speed and a +2 status bonus to {@skill Athletics} checks. As a part of {@action Cast a Spell||Casting this Spell}, you can use a {@action Stride}, {@action Leap}, {@action Climb}, or {@action Swim} action. The spell's bonuses apply during that action."
 			],
 			"heightened": {
 				"heightened": false,
@@ -1684,6 +1680,7 @@
 			"name": "Avatar",
 			"source": "CRB",
 			"page": 318,
+			"hasBattleForm": true,
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
@@ -1931,7 +1928,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You send the target back to its home plane. The target must attempt a Will save. You can spend an extra action while Casting this Spell and add a material component to give the creature a \u20132 circumstance penalty to its save. The component must be a specially gathered object that is anathema to the creature, and not from a spell component pouch. This spell fails if you aren't on your home plane when you cast it.",
+				"You send the target back to its home plane. The target must attempt a Will save. You can spend an extra action while {@action Cast a Spell||Casting this Spell} and add a material component to give the creature a \u20132 circumstance penalty to its save. The component must be a specially gathered object that is anathema to the creature, and not from a spell component pouch. This spell fails if you aren't on your home plane when you cast it.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2652,7 +2649,7 @@
 			"dismiss": false,
 			"entries": [
 				"Your blessing revives a creature at the moment of its death.",
-				"You prevent the target from {@condition dying} and restore Hit Points to the target equal to {@dice 4d8} plus your spellcasting ability modifier. You can't use breath of life if the triggering effect was disintegrate or a {@trait death} effect."
+				"You prevent the target from {@condition dying} and restore Hit Points to the target equal to {@dice 4d8} plus your spellcasting ability modifier. You can't use breath of life if the triggering effect was {@spell disintegrate} or a {@trait death} effect."
 			],
 			"heightened": {
 				"heightened": false,
@@ -3217,7 +3214,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected and aware you tried to charm it.",
-						"Success": "The target is unaffected but thinks your spell was something harmless instead of charm, unless it identifies the spell (usually with {@action Identify Magic}).",
+						"Success": "The target is unaffected but thinks your spell was something harmless instead of charm, unless it identifies the spell (see Identifying Spells on page 305).",
 						"Failure": "The target's attitude becomes {@condition friendly} toward you. If it was {@condition friendly}, it becomes {@condition helpful}. It can't use {@condition hostile} actions against you.",
 						"Critical Failure": "The target's attitude becomes {@condition helpful} toward you, and it can't use {@condition hostile} actions against you."
 					}
@@ -3278,7 +3275,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 humanoid creature that could find you attractive",
+			"targets": "1 creature that could find you attractive",
 			"savingThrow": "Will",
 			"savingThrowBasic": false,
 			"duration": {
@@ -3297,7 +3294,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected and aware you tried to charm it.",
-						"Success": "The target is unaffected but thinks your spell was something harmless instead of charming touch, unless it identifies the spell (usually with {@action Identify Magic}).",
+						"Success": "The target is unaffected but thinks your spell was something harmless instead of charming touch, unless it identifies the spell (see Identifying Spells on page 305).",
 						"Failure": "The target's attitude becomes {@condition friendly} toward you. If it was {@condition friendly}, it becomes {@condition helpful}. It can't use {@condition hostile} actions against you.",
 						"Critical Failure": "The target is {@condition helpful} and can't use {@condition hostile} actions against you. You can {@action Dismiss} the spell. If you use {@condition hostile} actions against the target, the spell ends. After the spell ends, the target doesn't necessarily realize it was charmed unless its friendship with you or the actions you convinced it to take clash with its expectations, which could potentially allow you to convince the target to continue being your friend via mundane means."
 					}
@@ -3390,7 +3387,6 @@
 			"focus": false,
 			"level": 0,
 			"traits": [
-				"Attack",
 				"Cantrip",
 				"Necromancy",
 				"Negative"
@@ -3582,7 +3578,7 @@
 								"type": "list",
 								"style": "list-no-bullets",
 								"items": [
-									"5. {@b Blue} The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of flesh to stone. {@spell Magic missile} can counteract a blue chromatic wall.",
+									"5. {@b Blue} The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of {@spell flesh to stone}. {@spell Magic missile} can counteract a blue chromatic wall.",
 									"6. {@b Indigo} The wall stops {@trait divination} and {@trait mental} effects from passing through, and those passing through are subject to the effects of warp mind. {@spell Searing light} can counteract an indigo chromatic wall.",
 									"7. {@b Violet} The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed|CRB|slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of {@spell plane shift}. {@spell Dispel magic} can counteract a violet chromatic wall.",
 									"8. Reroll, and creatures that pass through the wall take a \u20132 circumstance penalty to their saves."
@@ -5615,7 +5611,6 @@
 			"focus": false,
 			"level": 2,
 			"traits": [
-				"Attack",
 				"Death",
 				"Necromancy"
 			],
@@ -5771,7 +5766,7 @@
 			"dismiss": false,
 			"entries": [
 				"Seeing another pass from this world to the next invigorates you.",
-				"You gain temporary Hit Points equal to the triggering creature's level plus your Wisdom modifier. If the triggering creature was undead, double the number of temporary Hit Points you gain",
+				"You gain temporary Hit Points equal to the triggering creature's level plus your spellcasting ability modifier. If the triggering creature was undead, double the number of temporary Hit Points you gain",
 				"These last for the duration of the spell, and the spell ends if all the temporary Hit Points are depleted earlier."
 			],
 			"heightened": {
@@ -6747,6 +6742,7 @@
 			"focus": false,
 			"level": 6,
 			"traits": [
+				"Attack",
 				"Evocation"
 			],
 			"school": "V",
@@ -6957,6 +6953,7 @@
 			"focus": false,
 			"level": 0,
 			"traits": [
+				"Cantrip",
 				"Necromancy",
 				"Positive"
 			],
@@ -7801,17 +7798,23 @@
 						"Darkvision and imprecise scent 60 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher.",
-						"{@bold Breath Weapon} {@as 2} (arcane, evocation) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals. You also gain specific abilities based on the type of dragon you choose:",
-						"{@bold Black swim} Speed 60 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
-						"{@bold Blue burrow} Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Green swim} Speed 40 feet, ignores difficult terrain from non-magical foliage; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} poison; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
-						"Red ignore {@condition concealed} from smoke; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
-						"{@bold White climb} Speed 25 feet on ice only; Melee {@as 1} jaws, Damage {@damage 3d6} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; breath weapon 30‑foot cone, {@damage 10d6} cold.",
-						"{@bold Brass burrow} Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 3d8} piercing plus {@damage 2d4} fire; Melee {@as 1} claw (agile), {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} spikes (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
-						"{@bold Bronze swim} Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
-						"{@bold Copper climb} Speed 25 feet on stone only; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
-						"{@bold Gold swim} Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
-						"Silver walk on clouds; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10), Damage {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 8d8} cold."
+						"{@bold Breath Weapon} {@as 2} ({@trait arcane}, {@trait evocation}) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals."
+					]
+				},
+				"You also gain specific abilities based on the type of dragon you choose:",
+				{
+					"type": "list",
+					"items": [
+						"{@bold Black} swim Speed 60 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 11d6} acid.",
+						"{@bold Blue} burrow Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Green} swim Speed 40 feet, ignores difficult terrain from non-magical foliage; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} poison; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 10d6} poison (Fortitude save instead of Reflex).",
+						"{@b Red} ignore {@condition concealed} from smoke; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 30-foot cone, {@damage 10d6} fire.",
+						"{@bold White} climb Speed 25 feet on ice only; Melee {@as 1} jaws, Damage {@damage 3d6} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; breath weapon 30‑foot cone, {@damage 10d6} cold.",
+						"{@bold Brass} burrow Speed 20 feet; Melee {@as 1} jaws, Damage {@damage 3d8} piercing plus {@damage 2d4} fire; Melee {@as 1} claw (agile), {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} spikes (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 60-foot line, {@damage 15d4} fire.",
+						"{@bold Bronze} swim Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d12} electricity; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} slashing; breath weapon 80-foot line, {@damage 6d12} electricity.",
+						"{@bold Copper} climb Speed 25 feet on stone only; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} acid; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} wing (reach 10 feet), Damage {@damage 3d8} bludgeoning; breath weapon 60-foot line, {@damage 10d6} acid.",
+						"{@bold Gold} swim Speed 40 feet; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} fire; Melee {@as 1} claw (agile), Damage {@damage 4d6} slashing; Melee {@as 1} tail (reach 10 feet), Damage {@damage 3d10} bludgeoning; Melee {@as 1} horns (reach 10 feet), Damage {@damage 3d8} piercing; breath weapon 30-foot cone, {@damage 6d10} fire.",
+						"{@b Silver} walk on clouds; Melee {@as 1} jaws, Damage {@damage 2d12} piercing plus {@damage 2d6} cold; Melee {@as 1} claw (agile), Damage {@damage 3d10} slashing; Melee {@as 1} tail (reach 10), Damage {@damage 3d10} bludgeoning; breath weapon 30-foot cone, {@damage 8d8} cold."
 					]
 				}
 			],
@@ -8571,7 +8574,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"A globe of freezing darkness explodes in the area, dealing {@damage 8d10} cold damage to creatures and objects in the area, plus {@dice 8d4} additional negative damage to living creatures. Creatures and objects in the area must attempt a Reflex save.",
+				"A globe of freezing darkness explodes in the area, dealing {@damage 8d10} cold damage to creatures in the area, plus {@dice 8d4} additional negative damage to living creatures. Creatures in the area must attempt a Reflex save.",
 				"If the globe overlaps with an area of magical light or affects a creature affected by magical light, eclipse burst attempts to counteract the {@trait light} effect.",
 				{
 					"type": "successDegree",
@@ -9393,7 +9396,7 @@
 					},
 					{
 						"level": 6,
-						"entry": "As level 4, but you can target up to 10 creatures."
+						"entry": "Choose either the 2nd-level or 4th-level version of this spell and apply its effects to 10 willing creatures."
 					}
 				],
 				"no_x": null
@@ -10714,7 +10717,7 @@
 					"amount": 60
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -11087,7 +11090,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, you can Sustain this Spell, leaving the sphere in its square or rolling it to another square within range and dealing {@damage 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
+				"You create a sphere of flame in a square within range. The sphere must be supported by a solid surface, such as a stone floor. The sphere deals {@damage 3d6} fire damage to each creature in the square where it first appears; each creature must attempt a basic Reflex save. On subsequent rounds, the first time you {@action Sustain a Spell||Sustain this Spell} each round, leaving the sphere in its square or rolling it to another square within range and dealing {@damage 3d6} fire damage; each creature in its square must attempt a basic Reflex save.",
 				"Creatures that succeed at their save take no damage (instead of half)."
 			],
 			"heightened": {
@@ -11202,7 +11205,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is {@condition slowed|CRB|slowed 1} for 1 round.",
-						"Failure": "The target is {@condition slowed|CRB|slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the {@condition slowed} condition from flesh to stone, the creature is {@condition petrified} permanently. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
+						"Failure": "The target is {@condition slowed|CRB|slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the slowed condition from flesh to stone, the creature is permanently non-magically {@condition petrified}. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
 						"Critical Failure": "As failure, but the target is initially {@condition slowed|CRB|slowed 2}."
 					}
 				}
@@ -11396,7 +11399,6 @@
 			"level": 1,
 			"traits": [
 				"Uncommon",
-				"Attack",
 				"Evocation",
 				"Force",
 				"Wizard"
@@ -11420,7 +11422,7 @@
 					"amount": 30
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -11929,7 +11931,6 @@
 			"focus": false,
 			"level": 2,
 			"traits": [
-				"Attack",
 				"Disease",
 				"Evil",
 				"Necromancy"
@@ -12359,7 +12360,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"You craft a trap by binding a {@condition hostile} spell into a symbol. While Casting this Spell, you also {@action Cast a Spell} of a lower spell level to store in the glyph. The stored spell must take 3 actions or fewer to cast, have a {@condition hostile} effect, and target one creature or have an area. You can set a password, a trigger, or both for the glyph. Any creature that moves, opens, or touches the target container or enters the target area that doesn't speak the password or that matches the trigger activates the glyph, releasing the harmful spell within.",
+				"You craft a trap by binding a {@condition hostile} spell into a symbol. While {@action Cast a Spell||Casting this Spell}, you also {@action Cast a Spell} of a lower spell level to store in the glyph. The stored spell must take 3 actions or fewer to cast, have a {@condition hostile} effect, and target one creature or have an area. You can set a password, a trigger, or both for the glyph. Any creature that moves, opens, or touches the target container or enters the target area that doesn't speak the password or that matches the trigger activates the glyph, releasing the harmful spell within.",
 				"Once a spell is stored in the glyph, the glyph gains all the traits of that spell. If the stored spell targets one or more creatures, it targets the creature that set off the glyph. If it has an area, that area is centered on the creature that set off the glyph. Glyph of warding's duration ends when the glyph is triggered. The glyph counts as a magical trap, using your spell DC for both the {@skill Perception} check to notice it and the {@skill Thievery} check to disable it; both checks require the creature attempting them to be trained in order to succeed.",
 				"You can {@action Dismiss} glyph of warding. The maximum number of glyphs of warding you can have active at a time is equal to your spellcasting ability modifier."
 			],
@@ -12378,7 +12379,6 @@
 			"focus": false,
 			"level": 1,
 			"traits": [
-				"Attack",
 				"Disease",
 				"Necromancy"
 			],
@@ -12476,8 +12476,8 @@
 			"school": "N",
 			"cast": {
 				"number": 1,
-				"unit": "hour",
-				"entry": "1 hour"
+				"unit": "double",
+				"entry": "{@as 2}"
 			},
 			"components": {
 				"F": false,
@@ -12493,26 +12493,26 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 freshly picked berry",
+			"targets": "1 ripe berry",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
-				"entry": "1 day",
+				"entry": "10 minutes",
 				"duration": {
-					"number": 1,
-					"unit": "day"
+					"number": 10,
+					"unit": "minute"
 				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You imbue the target berry with the bounty of nature, allowing it to heal and sustain far beyond its normal capacity. A living creature that eats the berry with an {@action Interact} action gains as much nourishment as from a square meal for a typical human and regains {@dice 1d8+5} Hit Points. If it's not consumed during the duration, or if you cast {@spell goodberry} again, the berry withers away."
+				"You imbue the target berry with the bounty of nature, turning it into a goodberry that can heal and sustain far beyond its normal capacity. A creature can eat the goodberry with an {@action Interact} action to regain {@dice 1d6+4} Hit Points. A berry not consumed during the duration withers away. Every six goodberries consumed gives as much nourishment as one square meal for a typical human."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "You can target an additional berry."
+					"entry": "You can target an additional berry. A creature can consume any number of goodberries from the same casting with a single {@action Interact} action."
 				},
 				"x": null,
 				"no_x": null
@@ -13078,10 +13078,10 @@
 			"dismiss": false,
 			"entries": [
 				"You channel negative energy to harm the living or heal the undead. If the target is a living creature, you deal {@damage 1d8} negative damage to it, and it gets a basic Fortitude save.",
-				"If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when Casting this Spell determines its targets, range, area, and other parameters.",
+				"If the target is a willing undead creature, you restore that amount of Hit Points. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
 				"{@as 1} (somatic) The spell has a range of touch.",
 				"{@as 2} (verbal, somatic) The spell has a range of 30 feet. If you're healing an undead creature, increase the Hit Points restored by 8.",
-				"{@as 3} (material, verbal, somatic) You disperse positive energy in a 30-foot emanation. This targets all living and undead creatures in the area."
+				"{@as 3} (material, verbal, somatic) You disperse negative energy in a 30-foot emanation. This targets all living and undead creatures in the area."
 			],
 			"heightened": {
 				"heightened": true,
@@ -13198,7 +13198,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You channel positive energy to heal the living or damage the undead. If the target is a willing living creature, you restore {@dice 1d8} Hit Points. If the target is undead, you deal that amount of positive damage to it, and it gets a basic Fortitude save. The number of actions you spend when Casting this Spell determines its targets, range, area, and other parameters.",
+				"You channel positive energy to heal the living or damage the undead. If the target is a willing living creature, you restore {@dice 1d8} Hit Points. If the target is undead, you deal that amount of positive damage to it, and it gets a basic Fortitude save. The number of actions you spend when {@action Cast a Spell||Casting this Spell} determines its targets, range, area, and other parameters.",
 				"{@as 1} (somatic) The spell has a range of touch.",
 				"{@as 2} (verbal, somatic) The spell has a range of 30 feet. If you're healing a living creature, increase the Hit Points restored by 8.",
 				"{@as 3} (material, somatic, verbal) You disperse positive energy in a 30-foot emanation. This targets all living and undead creatures in the burst."
@@ -13255,7 +13255,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You heal an animal's wounds, restoring {@dice 1d8} Hit Points to the target. The number of actions spent Casting this Spell determines its effect.",
+				"You heal an animal's wounds, restoring {@dice 1d8} Hit Points to the target. The number of actions spent {@action Cast a Spell||Casting this Spell} determines its effect.",
 				{
 					"type": "list",
 					"items": [
@@ -13323,7 +13323,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Your words bless a creature with an enhanced connection to positive energy. When the target regains Hit Points from a healing spell, it regains 1 additional Hit Point.",
+				"Your words bless a creature with an enhanced connection to positive energy. When the target regains Hit Points from a healing spell, it regains 2 additional Hit Point.",
 				"The target regains additional Hit Points from healer's blessing only the first time it regains HP from a given healing spell, so a spell that heals the creature repeatedly over a duration would restore additional Hit Points only once."
 			],
 			"heightened": {
@@ -13478,7 +13478,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 humanoid creature",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -14093,7 +14093,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 {@action Recall Knowledge} actions as part of Casting this Spell. For these actions, you can't use any special abilities, reactions, or free actions that trigger when you {@action Recall Knowledge}."
+				"You rapidly catalog and collate information relevant to your current situation. You can instantly use up to 6 {@action Recall Knowledge} actions as part of {@action Cast a Spell||Casting this Spell}. For these actions, you can't use any special abilities, reactions, or free actions that trigger when you {@action Recall Knowledge}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -14223,7 +14223,7 @@
 				"The image can't speak, but you can use your actions to speak through the creature, with the spell disguising your voice as appropriate. You might need to attempt a {@skill Deception} or {@skill Performance} check to mimic the creature, as determined by the GM. This is especially likely if you're trying to imitate a specific person and engage with someone that person knows.",
 				"In combat, the illusion can use 2 actions per turn, which it uses when you Sustain the Spell. It uses your spell attack roll for attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2013 10. It is substantial enough that it can flank other creatures. If the image is hit by an attack or fails a save, the spell ends.",
 				"The illusion can cause damage by making the target believe the illusion's attacks are real, but it cannot otherwise directly affect the physical world. If the illusory creature hits with a {@action Strike}, the target takes mental damage equal to {@dice 1d4} plus your spellcasting ability modifier. This is a {@trait mental} effect.",
-				"The illusion's Strikes are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt a {@skill Perception} check to disbelieve the spell as a free action. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
+				"The illusion's Strikes are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt an immediate {@skill Perception} check to disbelieve the spell. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
 				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion.",
 				"When a creature disbelieves the illusion, it recovers from half the damage it had taken from it (if any) and doesn't take any further damage from it."
 			],
@@ -14278,8 +14278,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"You create an illusion that causes you to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds), as yourself.",
-				"The disguise is typically good enough to hide your identity, but not to impersonate a specific individual. The spell doesn't change your voice, scent, or mannerisms. You can change the appearance of your clothing and worn items, such as making your armor look like a dress. Held items are unaffected, and any worn item you remove returns to its true appearance.",
+				"You create an illusion that causes you to appear as another creature of the same body shape, and with roughly similar height (within 6 inches) and weight (within 50 pounds), as yourself. The disguise is typically good enough to hide your identity, but not to impersonate a specific individual. The spell doesn't change your voice, scent, or mannerisms. You can change the appearance of your clothing and worn items, such as making your armor look like a dress. Held items are unaffected, and any worn item you remove returns to its true appearance.",
 				"Casting illusory disguise counts as setting up a disguise for the {@action Impersonate} use of {@skill Deception}; it ignores any circumstance penalties you might take for disguising yourself as a dissimilar creature, it gives you a +4 status bonus to {@skill Deception} checks to prevent others from seeing through your disguise, and you add your level even if you're untrained. You can {@action Dismiss} this spell."
 			],
 			"heightened": {
@@ -14288,7 +14287,7 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "The spell also disguises your voice and scent, and it gains the {@trait auditory} trait."
+						"entry": "The spell also disguises your voice and scent, and it gains the {@trait auditory} and {@trait olfactory} traits."
 					},
 					{
 						"level": 3,
@@ -14489,7 +14488,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"The ground within the area transforms into a mass of dangerous briars that assault and impede your foes. Each round when you Sustain the Spell, you can select one of the following effects to occur in the area.",
+				"The ground within the area transforms into a mass of dangerous briars that assault and impede your foes. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you can select one of the following effects to occur in the area.",
 				{
 					"type": "list",
 					"items": [
@@ -14554,7 +14553,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You crush the target by causing it to collapse in on itself, dealing 75 damage. Each time you Sustain the Spell, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with implosion. You can't target a creature that's incorporeal, gaseous, or liquid, or one that otherwise lacks a solid form."
+				"You crush the target by causing it to collapse in on itself, dealing 75 damage. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you must choose a new target to be subject to the same effect; the same creature can never be targeted more than once with a single casting of this spell. You also can't affect more than one creature per turn with implosion. You can't target a creature that's incorporeal, gaseous, or liquid, or one that otherwise lacks a solid form."
 			],
 			"heightened": {
 				"heightened": true,
@@ -14621,7 +14620,7 @@
 						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; darkvision; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
 						"{@bold Mantis} Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
 						"{@bold Scorpion} Speed 40 feet; darkvision, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
-						"Spider darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
+						"{@bold Spider} darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
 					]
 				}
 			],
@@ -15729,7 +15728,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 unattended, non-magical object of 1",
+			"targets": "1 object of 1 Bulk or less, either unattended or possessed by you or a willing ally",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -16579,7 +16578,7 @@
 			"dismiss": false,
 			"entries": [
 				"You alter the appearance of an item's magic aura. You can choose to have the target's aura appear as that of common magic item of twice magic aura's level or lower, or to have it register as being under the effects of a spell of your choice of magic aura's level or lower. If the target is magical, you can instead choose to have it appear as entirely non-magical.",
-				"A caster using detect magic or study aura of an equal or higher spell level can attempt to disbelieve the illusion from magic aura. Magic aura doesn't mask the aura of spells that are 9th level or higher or of items that are 19th level or higher."
+				"A caster using {@spell detect magic} or {@spell read aura} of an equal or higher spell level can attempt to disbelieve the illusion from magic aura. Magic aura doesn't mask the aura of spells that are 9th level or higher or of items that are 19th level or higher."
 			],
 			"heightened": {
 				"heightened": true,
@@ -16625,7 +16624,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 willing ally",
+			"targets": "1 willing creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -16638,7 +16637,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Choose one of the target's unarmed attacks that deal one damage die. You cause that unarmed attack to shine with primal energy. The unarmed attack becomes a +1 striking unarmed attack, gaining a +1 item bonus to attack rolls and increasing the number of damage dice to two."
+				"Choose one of the target's unarmed attacks. You cause that unarmed attack to shine with primal energy. The unarmed attack becomes a +1 striking unarmed attack, gaining a +1 item bonus to attack rolls and increasing the number of damage dice to two if it had only one."
 			],
 			"heightened": {
 				"heightened": false,
@@ -16793,7 +16792,7 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 non-magical weapon that is unattended or wielded by you or a willing ally",
+			"targets": "1 weapon that is unattended or wielded by you or a willing ally",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -17003,7 +17002,6 @@
 			"focus": false,
 			"level": 5,
 			"traits": [
-				"Attack",
 				"Curse",
 				"Necromancy"
 			],
@@ -18353,6 +18351,7 @@
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
+			"hasBattleForm": true,
 			"traits": [
 				"Polymorph",
 				"Transmutation"
@@ -18837,7 +18836,6 @@
 			"focus": false,
 			"level": 4,
 			"traits": [
-				"Attack",
 				"Curse",
 				"Enchantment",
 				"Mental",
@@ -19912,6 +19910,7 @@
 			"focus": false,
 			"level": 8,
 			"traits": [
+				"Attack",
 				"Cold",
 				"Evocation"
 			],
@@ -19938,7 +19937,7 @@
 					"amount": 120
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -19946,7 +19945,14 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You fire a blue-white ray of freezing air and swirling sleet from your finger that can chill your target to the bones. You must succeed at a spell attack roll to affect the target, which then takes {@damage 10d8} cold damage and is {@condition drained|CRB|drained 2}."
+				"You fire a blue-white ray of freezing air and swirling sleet from your finger that can chill your target to the bones. You must succeed at a spell attack roll to affect the target.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target takes double damage and is {@condition drained} 2.",
+						"Success": "The target takes full damage and is {@condition drained} 2."
+					}
+				}
 			],
 			"heightened": {
 				"heightened": true,
@@ -20559,6 +20565,7 @@
 			"source": "CRB",
 			"page": 359,
 			"type": "SPELL",
+			"hasBattleForm": true,
 			"focus": false,
 			"level": 10,
 			"traits": [
@@ -20824,7 +20831,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"A spray of rainbow light beams cascades from your open hand. Each creature in the area must roll {@dice 1d8|||onTable} on the table below to see which beam affects it, then attempt a saving throw of the indicated type. The table notes any additional traits that apply to each type of ray. If a creature is struck by multiple beams, it uses the same d20 result for all its saving throws. For all rays, a successful saving throw negates the effect for that creature.",
+				"A spray of rainbow light beams cascades from your open hand. Each creature in the area must roll {@dice 1d8} on the table below to see which beam affects it, then attempt a saving throw of the indicated type. The table notes any additional traits that apply to each type of ray. If a creature is struck by multiple beams, it uses the same d20 result for all its saving throws. For all rays, a successful saving throw negates the effect for that creature.",
 				{
 					"type": "table",
 					"rollable": true,
@@ -21644,7 +21651,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You replicate the attack of a deadly purple worm. You deal {@damage 6d6} piercing damage to the touched creature and afflict it with purple worm venom. The target must attempt a Fortitude save.",
+				"You replicate the attack of a deadly purple worm. You deal {@damage 3d6} piercing damage to the touched creature and afflict it with purple worm venom. The target must attempt a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -22233,7 +22240,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You snatch creatures from the jaws of death. You can spend 1 to 3 actions Casting this Spell, and you can target a number of creatures equal to the actions spent. Each target regains {@dice 3d6} Hit Points. If the target had the {@condition dying} condition, coming back from {@condition dying} due to this healing doesn't increase its {@condition wounded} condition."
+				"You snatch creatures from the jaws of death. You can spend 1 to 3 actions {@action Cast a Spell||Casting this Spell}, and you can target a number of creatures equal to the actions spent. Each target regains {@dice 3d6} Hit Points. If the target had the {@condition dying} condition, coming back from {@condition dying} due to this healing doesn't increase its {@condition wounded} condition."
 			],
 			"heightened": {
 				"heightened": true,
@@ -22293,8 +22300,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"An infusion of positive energy grants a creature continuous healing. The target temporarily gains regeneration 15, which restores 15 Hit Points to it at the start of each of its turns.",
-				"While it has regeneration, the target can't die from damage and its {@condition dying} value can't exceed 3, though if its {@condition wounded} value becomes 4 or higher, it stays {@condition unconscious} until its wounds are treated. If the target takes acid or fire damage, its regeneration deactivates until after the end of its next turn.",
+				"An infusion of positive energy grants a creature continuous healing. The target temporarily gains {@ability regeneration} 15, which restores 15 Hit Points to it at the start of each of its turns. While it has {@ability regeneration}, the target can't die from damage and its {@condition dying} condition can't increase to a value that would kill it (this stops most creatures from going beyond {@condition dying} 3), though if its {@condition wounded} value becomes 4 or higher, it stays {@condition unconscious} until its wounds are treated. If the target takes acid or fire damage, its regeneration deactivates until after the end of its next turn.",
 				"Each time the creature regains Hit Points from regeneration, it also regrows one damaged or ruined organ (if any). During the spell's duration, the creature can also reattach severed body parts by spending an {@action Interact} action to hold the body part to the area it was severed from."
 			],
 			"heightened": {
@@ -23235,6 +23241,7 @@
 					"unit": "minute"
 				}
 			},
+			"hasBattleForm": true,
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
@@ -23516,7 +23523,6 @@
 			"level": 1,
 			"traits": [
 				"Uncommon",
-				"Attack",
 				"Cleric",
 				"Enchantment",
 				"Mental",
@@ -24498,7 +24504,7 @@
 			"dismiss": false,
 			"entries": [
 				"You raise a magical shield of force. This counts as using the {@action Raise a Shield} action, giving you a +1 circumstance bonus to AC until the start of your next turn, but it doesn't require a hand to use.",
-				"While the spell is in effect, you can use the Shield Block reaction with your magic shield (see the sidebar). The shield has Hardness 5. After you use Shield Block, the spell ends and you can't cast it again for 10 minutes. Unlike a normal Shield Block, you can use the spell's reaction against the {@spell magic missile} spell.",
+				"While the spell is in effect, you can use the {@action Shield Block} reaction with your magic shield (see the sidebar). The shield has Hardness 5. After you use {@action Shield Block}, the spell ends and you can't cast it again for 10 minutes. Unlike a normal {@action Shield Block}, you can use the spell's reaction against the {@spell magic missile} spell.",
 				"Heightening the spell increases the shield's Hardness."
 			],
 			"heightened": {
@@ -25445,7 +25451,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
 						"Failure": "The creature takes full damage and is {@condition deafened} for 1 round.",
-						"Critical Failure": "The creature takes double damage and is {@condition deafened} and {@condition stunned|CRB|stunned 1} for 1 minute."
+						"Critical Failure": "The creature takes double damage, is {@condition deafened} for 1 minute, and is {@condition stunned} 1."
 					}
 				}
 			],
@@ -25850,7 +25856,6 @@
 			"focus": false,
 			"level": 1,
 			"traits": [
-				"Attack",
 				"Necromancy",
 				"Poison"
 			],
@@ -26171,7 +26176,6 @@
 			"focus": false,
 			"level": 5,
 			"traits": [
-				"Attack",
 				"Abjuration",
 				"Force"
 			],
@@ -26233,7 +26237,6 @@
 			"focus": false,
 			"level": 2,
 			"traits": [
-				"Attack",
 				"Evocation",
 				"Force"
 			],
@@ -26252,7 +26255,6 @@
 				"S": true,
 				"V": true
 			},
-			"requirements": "You have a deity.",
 			"range": {
 				"type": "point",
 				"entry": "120 feet",
@@ -26273,7 +26275,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"A weapon made of pure magical force materializes and attacks foes you designate within range. This weapon has a ghostly appearance and manifests as your deity's favored weapon.",
+				"A weapon made of pure magical force materializes and attacks foes you designate within range. This weapon has a ghostly appearance and manifests as a club, a dagger, or your deity's favored weapon.",
 				"When you cast the spell, the weapon appears next to a foe you choose within range and makes a {@action Strike} against it. Each time you Sustain the Spell, you can move the weapon to a new target within range (if needed) and {@action Strike} with it. The spiritual weapon uses and contributes to your multiple attack penalty.",
 				"The weapon's Strikes are melee spell attacks. Regardless of its appearance, the weapon deals force damage equal to {@dice 1d8} plus your spellcasting ability modifier. You can deal damage of the type normally dealt by the weapon instead of force damage (or any of the available damage types for a versatile weapon). No other statistics or traits of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual weapon is a weapon for purposes of triggers, resistances, and so forth.",
 				"The weapon doesn't take up space, grant flanking, or have any other attributes a creature would. The weapon can't make any attack other than its {@action Strike}, and feats or spells that affect weapons do not apply to it."
@@ -26345,7 +26347,7 @@
 			"dismiss": false,
 			"entries": [
 				"A deluge of colorful illusory paint, tools, or other symbols of art and artisanship drift down in the area. Roll {@dice 1d4} to determine the color of the illusion. Each creature in the area must attempt a Will save. A creature is unaffected on a success. On a failure or critical failure, the creature takes the results listed on the table relevant to the color.",
-				"{@dice 1d4} Color Failure Critical Failure 1 White {@condition Dazzled|CRB|Dazzled 1} round {@condition Dazzled|CRB|Dazzled 1} minute 2 Red {@condition Enfeebled|CRB|Enfeebled 1} for 1 round {@condition Enfeebled|CRB|Enfeebled 2} for 1 round 3 Yellow {@condition Frightened|CRB|Frightened 1} {@condition Frightened|CRB|Frightened 2} 4 Blue Sluggish 1 for 1 round Sluggish 2 for 1 round."
+				"{@dice 1d4} Color Failure Critical Failure 1 White {@condition Dazzled|CRB|Dazzled 1} round {@condition Dazzled|CRB|Dazzled 1} minute 2 Red {@condition Enfeebled|CRB|Enfeebled 1} for 1 round {@condition Enfeebled|CRB|Enfeebled 2} for 1 round 3 Yellow {@condition Frightened|CRB|Frightened 1} {@condition Frightened|CRB|Frightened 2} 4 Blue {@condition Clumsy} 1 for 1 round {@condition Clumsy} 2 for 1 round."
 			],
 			"heightened": {
 				"heightened": false,
@@ -26744,7 +26746,7 @@
 				"types": [
 					"Emanation"
 				],
-				"entry": "100-foot emanation"
+				"entry": "100-foot emanation which affects you"
 			},
 			"savingThrowBasic": false,
 			"duration": {
@@ -26758,7 +26760,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"The sky above you darkens in a matter of moments, swirling with ominous clouds punctuated by flashes of lighting. Each round when you Sustain the Spell, you can select one of the following effects to occur in the area.",
+				"The sky above you darkens in a matter of moments, swirling with ominous clouds punctuated by flashes of lighting. The first time you {@action Sustain a Spell||Sustain this Spell} each round, you can select one of the following effects to occur in the area.",
 				{
 					"type": "list",
 					"items": [
@@ -27749,7 +27751,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"A powerful globe of searing sunlight explodes in the area, dealing {@damage 8d10} fire damage to creatures and objects in the area, plus {@dice 8d10} additional positive damage to undead creatures. Each creature and object in the area must attempt a Reflex save.",
+				"A powerful globe of searing sunlight explodes in the area, dealing {@damage 8d10} fire damage to creatures in the area, plus {@dice 8d10} additional positive damage to undead creatures. Each creature in the area must attempt a Reflex save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -27890,11 +27892,12 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Dream of} Insight +1 status bonus to Intelligence-based skill checks",
-						"{@bold Dream of} Glamour +1 status bonus to Charisma-based skill checks",
-						"{@bold Dream of} Voyaging +5-foot status bonus to Speed If you Cast this Spell again, the effects of any previous sweet dream you cast end."
+						"{@bold Dream of Insight} +1 status bonus to Intelligence-based skill checks",
+						"{@bold Dream of Glamour} +1 status bonus to Charisma-based skill checks",
+						"{@bold Dream of Voyaging} +5-foot status bonus to Speed"
 					]
-				}
+				},
+				"If you {@action Cast a Spell||Cast this Spell} again, the effects of any previous sweet dream you cast end."
 			],
 			"heightened": {
 				"heightened": false,
@@ -28195,6 +28198,7 @@
 			"focus": false,
 			"level": 0,
 			"traits": [
+				"Attack",
 				"Cantrip",
 				"Conjuration",
 				"Plant"
@@ -28307,7 +28311,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310- foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach and makes a melee unarmed attack using your spell attack modifier. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature Escapes (against your spell DC), whichever comes first."
+				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310- foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach. Make a melee spell attack roll against the target. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature Escapes (against your spell DC), whichever comes first."
 			],
 			"heightened": {
 				"heightened": false,
@@ -28349,7 +28353,7 @@
 					"amount": 120
 				}
 			},
-			"targets": "1 object of up to 80 Bulk with no dimension longer than 20 feet",
+			"targets": "1 unattended object of up to 80 Bulk with no dimension longer than 20 feet",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -28466,7 +28470,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a ranged attack against the target. If you hit, you deal bludgeoning, piercing, or slashing damage\u2014as appropriate for the object you hurled\u2014equal to {@dice 1d6} plus your spellcasting ability modifier.",
+				"You hurl a loose, unattended object that is within range and that has 1 Bulk or less at the target. Make a spell attack roll against the target. If you hit, you deal bludgeoning, piercing, or slashing damage\u2014as appropriate for the object you hurled\u2014equal to {@dice 1d6} plus your spellcasting ability modifier.",
 				"No specific traits or magic properties of the hurled item affect the attack or the damage.",
 				{
 					"type": "successDegree",
@@ -28832,7 +28836,7 @@
 			"dismiss": false,
 			"entries": [
 				"You twist the forces of fate to make a moment dire or uneventful, with no in-between. The target gains a +1 status bonus to the triggering saving throw. If the saving throw's result is a success, it becomes a critical success. If it's a failure, it becomes a critical failure, and the critical failure can't be reduced by abilities that usually reduce critical failure, such as improved evasion.",
-				"If the triggering ability did not have both a critical success and critical failure condition, tempt fate fails, but you don't expend the Focus Point for Casting this Spell."
+				"If the triggering ability did not have both a critical success and critical failure condition, tempt fate fails, but you don't expend the Focus Point for {@action Cast a Spell||Casting this Spell}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -29282,7 +29286,6 @@
 			"level": 1,
 			"traits": [
 				"Uncommon",
-				"Attack",
 				"Cleric",
 				"Necromancy",
 				"Negative"
@@ -29342,7 +29345,7 @@
 			}
 		},
 		{
-			"name": "Touch Of Undeath",
+			"name": "Undeath's Blessing",
 			"source": "CRB",
 			"page": 405,
 			"type": "FOCUS",
@@ -29451,7 +29454,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You add power to your muscles, allowing you to swim or climb If you critically fail a save against fear, veil of confidence ends immediately, and you increase any {@condition frightened} condition you gain from the critical failure by 1 instead of decreasing it."
+				"You add power to your muscles, allowing you to swim or climb walls with ease. When you cast this spell, you gain either a climb Speed or a swim Speed. The Speed is equal to your land Speed."
 			],
 			"heightened": {
 				"heightened": false,
@@ -29837,7 +29840,7 @@
 					"amount": 60
 				}
 			},
-			"targets": "1 creature",
+			"targets": "4 creatures",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -29850,7 +29853,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You delve into the possible futures of the next few seconds to understand all the ways your target might avoid harm, then cast out a vision of that future to those around you. On the first attack roll made against the target during true target's duration, the attacker rolls twice and uses the better result. The attacker also ignores circumstance penalties to the attack roll and any flat check required due to the target being {@condition concealed} or {@condition hidden}."
+				"You delve into the possible futures of the next few seconds to understand all the ways your foe might avoid harm, then cast out a vision of that future to those around you. Designate a creature. The first time each target makes an attack roll against that creature during true target's duration, the attacker rolls twice and uses the better result. The attacker also ignores circumstance penalties to the attack roll and any flat check required due to the designated creature being {@condition concealed} or {@condition hidden}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -30035,7 +30038,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you cast the spell, and again each time you Sustain the Spell. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you Sustain the Spell.",
+				"Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you cast the spell, and again the first time you {@action Sustain a Spell||Sustain this Spell} each round. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you Sustain the Spell.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -30368,7 +30371,112 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You summon an unseen servant (see the sidebar), which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop Sustaining the Spell. The unseen servant gains the summoned trait."
+				"You summon an {@creature unseen servant|CRB}, which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop {@action Sustain a Spell||Sustaining the Spell}. The {@creature unseen servant} gains the {@trait summoned} trait.",
+				{
+					"type": "pf2-sample-box",
+					"entries": [
+						"Use this stat block for unseen servant.",
+						{
+							"type": "data",
+							"tag": "creature",
+							"data": {
+								"source": "CRB",
+								"name": "Unseen Servant",
+								"page": 380,
+								"level": -1,
+								"rarity": "Common",
+								"traits": [
+									"Mindless"
+								],
+								"size": "Medium",
+								"perception": {
+									"default": 0
+								},
+								"languages": {
+									"languages": [],
+									"languageAbilities": [
+										"(understands its creator)"
+									]
+								},
+								"skills": {
+									"Stealth": {
+										"default": 8
+									}
+								},
+								"abilityMods": {
+									"Str": -4,
+									"Dex": 2,
+									"Con": 0,
+									"Int": -5,
+									"Wis": 0,
+									"Cha": 0
+								},
+								"abilitiesTop": [
+									{
+										"entries": [
+											"An unseen servant is {@condition invisible}, though it normally doesn't {@action Sneak}, so it is usually only {@condition hidden}."
+										],
+										"name": "Invisible"
+									}
+								],
+								"ac": {
+									"default": 13,
+									"abilities": null
+								},
+								"savingThrows": {
+									"Fort": {
+										"default": 0
+									},
+									"Ref": {
+										"default": 4
+									},
+									"Will": {
+										"default": 0
+									},
+									"abilities": null
+								},
+								"hp": [
+									{
+										"hp": 4,
+										"note": null,
+										"abilities": null
+									}
+								],
+								"immunities": {
+									"damage": [],
+									"condition": [
+										"disease",
+										"mental",
+										"non-magical attacks",
+										"paralysis",
+										"poison",
+										"precision",
+										"unconscious"
+									]
+								},
+								"resistances": [
+									{
+										"amount": 5,
+										"name": "all damage",
+										"note": "except force or ghost touch"
+									}
+								],
+								"speed": {
+									"abilities": null,
+									"fly": 30
+								},
+								"abilitiesBot": [
+									{
+										"entries": [
+											"An unseen servant's physical body is made of force. It can't use {@trait attack} actions. It can move and use {@action Interact} actions to do things such as fetch objects, open unstuck or unlocked doors, hold chairs, and clean. It can't pass through solid objects."
+										],
+										"name": "Force Body"
+									}
+								]
+							}
+						}
+					]
+				}
 			],
 			"heightened": {
 				"heightened": false,
@@ -30661,7 +30769,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You surround yourself in a veil of confidence. You reduce your current {@condition frightened} condition by 1, and whenever you would become {@condition frightened} during the duration, reduce the amount by 1."
+				"You surround yourself in a veil of confidence. You reduce your current {@condition frightened} condition by 1, and whenever you would become {@condition frightened} during the duration, reduce the amount by 1. If you critically fail a save against fear, veil of confidence ends immediately, and you increase any {@condition frightened} condition you gain from the critical failure by 1 instead of decreasing it."
 			],
 			"heightened": {
 				"heightened": false,
@@ -30963,7 +31071,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"An illusion of horrific creatures fills the spell's area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage to each creature that's inside the burst when it's created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
+				"An illusion of horrific creatures fills the spell's area. The creatures look like Tiny swarming monsters with a specific appearance of your choice, such as Hellish flies or animated saw blades. The burst deals {@damage 8d8} mental damage (basic Will save) to each creature that's inside the burst when it's created, enters the burst, or starts its turn inside the burst. A creature that critically succeeds at its Will save can immediately attempt to disbelieve the illusion. A creature that tries to {@action Interact} with the monsters or observes one with a {@action Seek} action can attempt to disbelieve the illusion. Creatures that disbelieve the illusion take no damage from the illusion thereafter."
 			],
 			"heightened": {
 				"heightened": true,
@@ -32864,6 +32972,8 @@
 			"focus": false,
 			"level": 6,
 			"traits": [
+				"Emotion",
+				"Mental",
 				"Enchantment"
 			],
 			"school": "E",

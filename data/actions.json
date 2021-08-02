@@ -30,7 +30,7 @@
 			],
 			"info": [
 				"Some items produce their effects only when used properly in the moment. Others always offer the same benefits as their mundane counterparts when worn, but have magical abilities you can gain by further spending actions. Either case requires you to use the Activate an Item activity.",
-				"Activating an Item works much like Casting a Spell, in that the activity takes a variable number of actions and can have different components depending on how you Activate the Item. This information appears in the item's Activate entry.",
+				"Activating an Item works much like {@action Cast a Spell||Casting a Spell}, in that the activity takes a variable number of actions and can have different components depending on how you Activate the Item. This information appears in the item's Activate entry.",
 				"If an item is used up when activated, as is the case for consumable items, its Activate entry appears toward the top of the stat block. For permanent items with activated abilities, the Activate entry is a paragraph in the description.",
 				"Activations are not necessarily magical\u2014for instance, drinking an alchemical elixir isn't usually a magical effect.",
 				{
@@ -129,7 +129,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You perform first aid on an adjacent creature that is {@condition dying|CRB} or bleeding. If a creature is both {@condition dying|CRB} and bleeding, choose which ailment you're trying to treat before you roll. You can Administer First Aid again to attempt to remedy the other effect.",
 				{
@@ -423,7 +423,7 @@
 				"basic": true
 			},
 			"entries": [
-				"You cast a spell you have prepared or in your repertoire. Casting a Spell is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
+				"You cast a spell you have prepared or in your repertoire. {@action Cast a Spell||Casting a Spell} is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
 				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell's stat block\u2014for example, \"{@as R} verbal.\"",
 				"{@b Long Casting Times} Some spells take minutes or hours to cast. The Cast a Spell activity for these spells includes a mix of the listed spell components, but it's not necessary to break down which one you're providing at a given time. You can't use other actions or reactions while casting such a spell, though at the GM's discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can't cast them in an encounter. If combat breaks out while you're casting one, your spell is disrupted (see Disrupted and Lost Spells below).",
 				"{@b Activation Components} Each spell lists the spell components required to cast it after the action icons or text, such as \"{@as 3} material, somatic, verbal.\" The spell components, described in detail below, add traits and requirements to the Cast a Spell activity. If you can't provide the components, you fail to Cast the Spell.",
@@ -675,8 +675,8 @@
 			},
 			"entries": [
 				"You issue an order to an animal. Attempt a {@skill Nature} check against the animal's Will DC. The GM might adjust the DC if the animal has a good attitude toward you, you suggest a course of action it was predisposed toward, or you offer it a treat.",
-				"You automatically fail if the animal is hostile or unfriendly to you. If the animal is helpful to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like Ride (page 266).",
-				"Most animals know the {@action Leap|CRB}, {@action Seek|CRB}, {@action Stand|CRB}, {@action Stride|CRB}, and {@action Strike|CRB} basic actions. If an animal knows an activity, such as a horse's Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity's number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to Stride three times or to Stride twice and then Strike.",
+				"You automatically fail if the animal is {@condition hostile} or {@condition unfriendly} to you. If the animal is {@condition helpful} to you, increase your degree of success by one step. You might be able to Command an Animal more easily with a feat like {@feat Ride}.",
+				"Most animals know the {@action Leap|CRB}, {@action Seek|CRB}, {@action Drop Prone}, {@action Stand|CRB}, {@action Stride|CRB}, and {@action Strike|CRB} basic actions. If an animal knows an activity, such as a horse's Gallop, you can Command the Animal to perform the activity, but you must spend as many actions on Command an Animal as the activity's number of actions. You can also spend multiple actions to Command the Animal to perform that number of basic actions on its next turn; for instance, you could spend 3 actions to Command an Animal to {@action Stride} three times or to {@action Stride} twice and then {@action Strike}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -817,7 +817,7 @@
 					]
 				},
 				"You must spend 4 days at work, at which point you attempt a {@skill Crafting} check. The GM determines the DC to Craft the item based on its level, rarity, and other circumstances.",
-				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using Table 4 \u20132: Income Earned (page 236), based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
+				"If your attempt to create the item is successful, you expend the raw materials you supplied. You can pay the remaining portion of the item's Price in materials to complete the item immediately, or you can spend additional downtime days working on it. For each additional day you spend, reduce the value of the materials you need to expend to complete the item. This amount is determined using {@table Income Earned|CRB|Table 4\u20132: Income Earned}, based on your proficiency rank in Crafting and using your own level instead of a task level. After any of these downtime days, you can complete the item by spending the remaining portion of its Price in materials. If the downtime days you spend are interrupted, you can return to finish the item later, continuing where you left off. An example of Crafting appears in the sidebar.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1110,7 +1110,7 @@
 			"page": 56,
 			"activity": {
 				"number": 1,
-				"unit": "action",
+				"unit": "single",
 				"entry": "{@as 1}"
 			},
 			"traits": [
@@ -1267,7 +1267,7 @@
 			},
 			"entries": [
 				"You use one of your skills to make money during downtime. The GM assigns a task level representing the most lucrative job available. You can search for lower-level tasks, with the GM determining whether you find any. Sometimes you can attempt to find better work than the initial offerings, though this takes time and requires using the {@skill Diplomacy} skill to {@action Gather Information|CRB}, doing some research, or socializing.",
-				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task's level, and your proficiency rank (as listed on {@table Income Earned|CRB|Table 4 \u20132: Income Earned}).",
+				"When you take on a job, the GM secretly sets the DC of your skill check. After your first day of work, you roll to determine your earnings. You gain an amount of income based on your result, the task's level, and your proficiency rank (as listed on {@table Income Earned|CRB|Table 4\u20132: Income Earned}).",
 				"You can continue working at the task on subsequent days without needing to roll again. For each day you spend after the first, you earn the same amount as the first day, up until the task's completion. The GM determines how long you can work at the task. Most tasks last a week or two, though some can take months or even years.",
 				{
 					"type": "successDegree",
@@ -1691,9 +1691,9 @@
 					]
 				}
 			},
-			"requirements": "You have at least one free hand. Your target cannot be more than one size larger than you.",
+			"requirements": "You have at least one free hand or have your target {@condition grappled} or {@condition restrained}. Your target cannot be more than one size larger than you.",
 			"entries": [
-				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed.",
+				"You attempt to grab an opponent with your free hand. Attempt an {@skill Athletics} check against their Fortitude DC. You can also Grapple to keep your hold on a creature you already grabbed or restrained.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1836,7 +1836,7 @@
 					]
 				}
 			},
-			"requirements": "You have a {@item alchemist's tools|CRB} (page 287).",
+			"requirements": "You have a {@item alchemist's tools|CRB}.",
 			"entries": [
 				"You can identify the nature of an alchemical item with 10 minutes of testing using {@item alchemist's tools|CRB}. If your attempt is interrupted in any way, you must start over.",
 				{
@@ -2631,7 +2631,7 @@
 			"page": 58,
 			"activity": {
 				"number": 1,
-				"unit": "action",
+				"unit": "single",
 				"entry": "{@as 1}"
 			},
 			"traits": [
@@ -3052,10 +3052,28 @@
 				"Retraining usually requires you to spend time learning from a teacher, whether that entails physical training, studying at a library, or falling into shared magical trances. Your GM determines whether you can get proper training or whether something can be retrained at all. In some cases, you'll have to pay your instructor.",
 				"Some abilities can be difficult or impossible to retrain (for instance, a sorcerer can retrain their bloodline only in extraordinary circumstances).",
 				"When retraining, you generally can't make choices you couldn't make when you selected the original option. For instance, you can't exchange a 2nd-level skill feat for a 4th-level one, or for one that requires prerequisites you didn't meet at the time you took the original feat. If you don't remember whether you met the prerequisites at the time, ask your GM to make the call. If you cease to meet the prerequisites for an ability due to retraining, you can't use that ability. You might need to retrain several abilities in sequence in order to get all the abilities you want.",
-				"{@b Feats} You can spend a week of downtime retraining to swap out one of your feats. Remove the old feat and replace it with another of the same type. For example, you could swap a skill feat for another skill feat, but not for a wizard feat.",
-				"{@b Skills} You can spend a week of downtime retraining to swap out one of your skill increases. Reduce your proficiency rank in the skill losing its increase by one step and increase your proficiency rank in another skill by one step. The new proficiency rank has to be equal to or lower than the proficiency rank you traded away. For instance, if your bard is a master in Performance and Stealth, and an expert in Occultism, you could reduce the character's proficiency in Stealth to expert and become a master in Occultism, but you couldn't reassign that skill increase to become legendary in Performance. Keep track of your level when you reassign skill increases; the level at which your skill proficiencies changed can influence your ability to retrain feats with skill prerequisites.",
-				"You can also spend a week to retrain an initial trained skill you gained during character creation.",
-				"{@b Class Features} You can change a class feature that required a choice, making a different choice instead. This lets you change a druid order or a wizard school, for example. The GM will tell you how long this takes\u2014always at least a month."
+				{
+					"type": "pf2-h3",
+					"name": "Feats",
+					"entries": [
+						"You can spend a week of downtime retraining to swap out one of your feats. Remove the old feat and replace it with another of the same type. For example, you could swap a skill feat for another skill feat, but not for a wizard feat."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Skills",
+					"entries": [
+						"You can spend a week of downtime retraining to swap out one of your skill increases. Reduce your proficiency rank in the skill losing its increase by one step and increase your proficiency rank in another skill by one step. The new proficiency rank has to be equal to or lower than the proficiency rank you traded away. For instance, if your bard is a master in Performance and Stealth, and an expert in Occultism, you could reduce the character's proficiency in Stealth to expert and become a master in Occultism, but you couldn't reassign that skill increase to become legendary in Performance. Keep track of your level when you reassign skill increases; the level at which your skill proficiencies changed can influence your ability to retrain feats with skill prerequisites.",
+						"You can also spend a week to retrain an initial trained skill you gained during character creation."
+					]
+				},
+				{
+					"type": "pf2-h3",
+					"name": "Class Features",
+					"entries": [
+						"You can change a class feature that required a choice, making a different choice instead. Some, like changing a spell in your spell repertoire, take a week. The GM will tell you how long it takes to retrain larger choices like a druid order or a wizard school\u2014always at least a month."
+					]
+				}
 			],
 			"info": [
 				{
@@ -3866,7 +3884,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You spend at least 8 hours caring for a diseased creature. Attempt a {@skill Medicine} check against the disease's DC. After you attempt to Treat a Disease for a creature, you can't try again until after that creature's next save against the disease.",
 				{
@@ -3898,7 +3916,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You treat a patient to prevent the spread of poison. Attempt a {@skill Medicine} check against the poison's DC. After you attempt to Treat a Poison for a creature, you can't try again until after the next time that creature attempts a save against the poison.",
 				{
@@ -3933,7 +3951,7 @@
 					]
 				}
 			},
-			"requirements": "You have {@item healer's tools|CRB}.",
+			"requirements": "You are holding {@item healer's tools|CRB}, or you are wearing them and have a hand free.",
 			"entries": [
 				"You spend 10 minutes treating one injured living creature (targeting yourself, if you so choose). The target is then temporarily immune to Treat Wounds actions for 1 hour, but this interval overlaps with the time you spent treating (so a patient can be treated once per hour, not once per 70 minutes).",
 				"The {@skill Medicine} check DC is usually 15, though the GM might adjust it based on the circumstances, such as treating a patient outside in a storm, or treating magically cursed wounds. If you're an expert in Medicine, you can instead attempt a DC 20 check to increase the Hit Points regained by 10; if you're a master of Medicine, you can instead attempt a DC 30 check to increase the Hit Points regained by 30; and if you're legendary, you can instead attempt a DC 40 check to increase the Hit Points regained by 50. The damage dealt on a critical failure remains the same.",
@@ -4019,6 +4037,100 @@
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
 					}
 				}
+			]
+		},
+		{
+			"name": "Anadi Venom",
+			"source": "LOME",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": [
+					"Anadi|LOME"
+				],
+				"heritage": [
+					"Venomous Anadi|LOME"
+				]
+			},
+			"frequency": "a number of times per day equal to your leve",
+			"entries": [
+				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
+			]
+		},
+		{
+			"name": "Toxic Skin",
+			"source": "LOME",
+			"page": 119,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Grippli",
+				"Poison"
+			],
+			"actionType": {
+				"ancestry": [
+					"Grippli|LOME"
+				],
+				"heritage": [
+					"Poisonhide Grippli|LOME"
+				]
+			},
+			"frequency": "once per hour",
+			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
+			"entries": [
+				"You exude a deadly toxin. The triggering creature takes {@damage 1d4} poison damage (basic Fortitude save using your class DC or spell DC, whichever is higher). At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d4}."
+			]
+		},
+		{
+			"name": "Call to Axis",
+			"source": "LOME",
+			"page": 107,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Fortune"
+			],
+			"actionType": {
+				"ancestry": [
+					"Conrasu|LOME"
+				],
+				"heritage": [
+					"Rite of Knowing|LOME"
+				]
+			},
+			"frequency": "once per day",
+			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
+			"entries": [
+				"You call upon the knowledge of Axis to ensure the accuracy of your information. You roll a second time and use the higher result. If you roll a critical failure, you get a failure instead. If you roll a success, you get a critical success instead."
+			]
+		},
+		{
+			"name": "Barbed Quills",
+			"source": "LOME",
+			"page": 123,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"actionType": {
+				"ancestry": [
+					"Shisk|LOME"
+				],
+				"heritage": [
+					"Quillcoat Shisk|LOME"
+				]
+			},
+			"frequency": "once per day",
+			"trigger": "You are hit with an unarmed strike or a strike with a non-reach melee weapon.",
+			"entries": [
+				"You break off quills in your attacker's flesh. You deal {@damage 1d8} piercing damage to the triggering creature (basic Reflex save using your class DC or spell DC, whichever is higher.) On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your quills hook into its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@damage 1d8} and the persistent piercing damage increases by 1."
 			]
 		}
 	]

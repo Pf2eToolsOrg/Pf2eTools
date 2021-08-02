@@ -51,7 +51,7 @@ class ArchetypesPage extends BaseComponent {
 	async pOnLoad () {
 		await ExcludeUtil.pInitialise();
 		Omnisearch.addScrollTopFloat();
-		const data = await DataUtil.archetype.loadJSON();
+		const data = await DataUtil.loadJSON("data/archetypes.json");
 		const feats = await DataUtil.feat.loadJSON();
 		this._featLookUp = {};
 		feats.feat.forEach(feat => {

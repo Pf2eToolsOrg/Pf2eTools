@@ -1048,7 +1048,7 @@ class AncestriesPage extends BaseComponent {
 		filterSets.forEach((it, i) => $selFilterPreset.append(`<option value="${i}">${it.name}</option>`));
 		$selFilterPreset.val("-1");
 
-		const $btnReset = $(`<button class="btn btn-xs btn-default flex-1" title="Reset Selection"><span class="glyphicon glyphicon-refresh"/></button>`)
+		const $btnReset = $(`<button class="btn btn-xs btn-default flex-1" title="Reset Selection"><span class="glyphicon glyphicon-refresh"></span></button>`)
 			.click(() => {
 				this._proxyAssign("state", "_state", "__state", this.activeAncestryAllHeritages.mergeMap(h => ({[UrlUtil.getStateKeyHeritage(h)]: false})));
 			});

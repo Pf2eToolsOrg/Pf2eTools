@@ -3143,24 +3143,6 @@ DataUtil = {
 		},
 	},
 
-	archetype: {
-		_pLoadingJson: null,
-		_pLoadingRawJson: null,
-		_loadedJson: null,
-		_loadedRawJson: null,
-		async loadJSON () {
-			if (DataUtil.archetype._loadedJson) return DataUtil.archetype._loadedJson;
-			DataUtil.archetype._pLoadingJson = (async () => {
-				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/index.json`);
-				const allData = await Promise.all(Object.values(index).map(it => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/archetypes/${it}`)));
-				DataUtil.archetype._loadedJson = {archetype: allData.map(it => it.archetype || []).flat()};
-			})();
-			await DataUtil.archetype._pLoadingJson;
-
-			return DataUtil.archetype._loadedJson;
-		},
-	},
-
 	deity: {
 		_MERGE_REQUIRES_PRESERVE: {
 			page: true,

@@ -494,7 +494,7 @@ Parser.getClassSideBarEntries = function (cls) {
 	if (initProf.skills.e) initProf.skills.e.forEach(it => skillsEntries.push(`{@indentSubsequent Expert in ${it}}`));
 	if (initProf.skills.m) initProf.skills.m.forEach(it => skillsEntries.push(`{@indentSubsequent Master in ${it}}`));
 	if (initProf.skills.l) initProf.skills.l.forEach(it => skillsEntries.push(`{@indentSubsequent Legendary in ${it}}`));
-	if (initProf.skills.add) sideBar.entries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`);
+	if (initProf.skills.add) skillsEntries.push(`{@indentSubsequent Trained in a number of additional skills equal to ${initProf.skills.add} plus your Intelligence modifier}`);
 	out.push({name: "SKILLS", entries: skillsEntries});
 
 	const attacksEntries = [];

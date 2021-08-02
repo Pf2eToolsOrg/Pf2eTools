@@ -275,7 +275,7 @@
 			"dismiss": false,
 			"entries": [
 				"You send the target's mind and body into overdrive, forcing it to become restless and hyperactive.",
-				"During the duration, the target must {@action Stride} at least once each turn or take {@damage 2d8} mental damage that turn. The duration of this effect depends on the target's Will save.",
+				"During the duration, the target must {@action Stride}, {@action Fly}, or {@action Swim} at least once each turn or take {@damage 2d8} mental damage that turn. The duration of this effect depends on the target's Will save. The GM might decide to add additional move actions to the list for creatures who possess only a more unusual form of movement.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -337,7 +337,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"You implant a mental mine within your psyche that detonates against anyone attempting to manipulate your thoughts. You can use a single action, which has the {@trait concentrate} trait, to suppress the effects of the mine for 1 round to allow someone to safely use a {@trait mental} effect on you. You can {@action Dismiss} the spell.",
+				"You implant a mental mine within your psyche that detonates against anyone attempting to {@footnote manipulate your thoughts|The animus mine spell should only the deal the mental damage on magical mental effects that send their magic into your mind, not if a creature tries to do something mundane like talk to you.|{@link Lost Omens Gods & Magic Errata|https://paizo.com/pathfinder/faq}}. You can use a single action, which has the {@trait concentrate} trait, to suppress the effects of the mine for 1 round to allow someone to safely use a {@trait mental} effect on you. You can {@action Dismiss} the spell.",
 				"The first creature that uses a {@trait mental} effect against you triggers the animus mine, causing the spell to end. The animus mine deals {@damage 4d8} mental damage to the triggering creature, which must attempt a Will save.",
 				{
 					"type": "successDegree",
@@ -353,7 +353,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d8}. Spells"
+					"entry": "The damage increases by {@dice 2d8}."
 				},
 				"x": null,
 				"no_x": null
@@ -508,7 +508,8 @@
 				}
 			},
 			"targets": "1 creature",
-			"savingThrowBasic": false,
+			"savingThrow": "Will",
+			"savingThrowBasic": true,
 			"duration": {
 				"type": "timed",
 				"entry": "1 round",
@@ -668,6 +669,7 @@
 			"focus": true,
 			"level": 1,
 			"traits": [
+				"Attack",
 				"Electricity",
 				"Evocation"
 			],
@@ -2896,10 +2898,10 @@
 			"duration": {
 				"type": null
 			},
+			"targets": "you and the triggering ally",
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"otherwise have to save against the effect.",
 				"You shoulder some of your ally's pain. Both you and your ally use the outcome one degree of success better than the result of your ally's saving throw, even if the triggering effect usually affects only one target."
 			],
 			"heightened": {
@@ -3087,7 +3089,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You cause the surface to heave. The area becomes difficult terrain and any tracks in the area are destroyed by the churning ground. Creatures standing in the area take a \u20131 status penalty to {@skill Acrobatics} checks to {@action Balance} and {@action Tumble Through} and {@skill Athletics} checks to {@action High Jump} and {@action Long Jump}. When you Sustain the Spell, you can move the churning area up to 10 feet in any direction. Creatures {@condition immobilized} by the spell are carried along with the shifting sand in the same direction, if possible; this movement is forced movement (Pathfinder Core Rulebook 475). Creatures that enter or begin their turn standing in the shifting sand must attempt a Reflex save.",
+				"You cause the surface to heave. The area becomes difficult terrain and any tracks in the area are destroyed by the churning ground. Creatures standing in the area take a \u20131 status penalty to {@skill Acrobatics} checks to {@action Balance} and {@action Tumble Through} and {@skill Athletics} checks to {@action High Jump} and {@action Long Jump}. The first time each round you {@action Sustain a Spell|CRB|Sustain the Spell}, you can move the churning area up to 10 feet in any direction. Creatures {@condition immobilized} by the spell are carried along with the shifting sand in the same direction, if possible; this movement is forced movement (Pathfinder Core Rulebook 475). Creatures that enter or begin their turn standing in the shifting sand must attempt a Reflex save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3328,7 +3330,7 @@
 				}
 			},
 			"targets": "1 creature or up to 1 Bulk of objects",
-			"savingThrow": "Reflex",
+			"savingThrow": "Will",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": "timed",
@@ -3626,7 +3628,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You create a beacon in time, intending to return to it if things go wrong. You can cast {@spell time beacon|LOGM} on only your turn. Keep careful track of everything that happens this turn after you cast {@spell time beacon|LOGM}. At the end of your turn, you can choose to rewind time back to just after you cast {@spell time beacon|LOGM}, removing all effects of your turn since then. Curses, traps, and other harmful effects that happen during your turn might prevent you from returning to the beacon if they are powerful enough. If you suffered any harmful effects during your turn after casting time beacon, to return to your beacon, time beacon attempts a counteract check against each such effect. If it fails at any of these checks, you can't return."
+				"You create a beacon in time, intending to return to it if things go wrong. You can cast {@spell time beacon|LOGM} on only your turn. Keep careful track of everything that happens this turn after you cast {@spell time beacon|LOGM}. At the end of your turn, you can choose to rewind time back to just after you cast {@spell time beacon|LOGM}, removing all effects of your turn since then. Curses, traps, and other harmful effects that happen during your turn might prevent you from returning to the beacon if they are powerful enough. If you suffered any harmful effects during your turn after casting time beacon, to return to your beacon, time beacon attempts a counteract check against each such effect. If it fails at any of these checks, you can't return. After returning to the time beacon, the spell ends."
 			],
 			"heightened": {
 				"heightened": false,
@@ -3719,7 +3721,7 @@
 					"amount": 60
 				}
 			},
-			"targets": "1 creature or object",
+			"targets": "1 creature",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -3784,7 +3786,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Your touch rots organic material and decays objects. Make a melee spell attack roll. Your touch deals {@damage 1d12} negative damage plus {@damage 1d4} {@condition persistent damage ||persistent negative damage}. If a creature uses an item to block withering grasp, such as with the Shield Block reaction, the item is automatically affected, but the creature does not take damage (even if there is Domains damage left over after the shield's Hardness). Unlike normal negative damage, the negative damage from withering grasp damages objects, constructs, and the like by eroding them away.",
+				"Your touch rots organic material and decays objects. Make a melee spell attack roll. Your touch deals {@damage 1d12} negative damage plus {@damage 1d4} {@condition persistent damage ||persistent negative damage}. If a creature uses an item to block withering grasp, such as with the {@action Shield Block} reaction, the item is automatically affected, but the creature does not take damage (even if there is Domains damage left over after the shield's Hardness). Unlike normal negative damage, the negative damage from withering grasp damages objects, constructs, and the like by eroding them away.",
 				{
 					"type": "successDegree",
 					"entries": {

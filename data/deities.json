@@ -461,6 +461,12 @@
 			"alias": [
 				"The Ravenous King"
 			],
+			"hasLore": true,
+			"otherSources": {
+				"Expanded": [
+					"LOME|133"
+				]
+			},
 			"source": "LOGM",
 			"page": 124,
 			"alignment": [
@@ -724,7 +730,9 @@
 				"attack a creature without certainty of wrongdoing"
 			],
 			"followerAlignment": [
-				"LG"
+				"LG",
+				"NG",
+				"CG"
 			],
 			"devoteeBenefits": {
 				"font": [
@@ -1270,18 +1278,31 @@
 		},
 		{
 			"name": "Atheists and Free Agents",
-			"source": "LOGM",
-			"page": 101,
+			"alias": [
+				"Atheism"
+			],
+			"otherSources": {
+				"Expanded": [
+					"LOGM|101"
+				]
+			},
+			"source": "CRB",
+			"page": 440,
 			"alignment": [
 				"Any"
 			],
 			"category": "Philosophy",
-			"info": [],
+			"info": [
+				"While most concede that the gods exist, some do not view them as worthy of worship, and a few even deny their presence altogether."
+			],
 			"edicts": [
-				"none"
+				"pursue your own agenda with faith in your own ability to excel"
 			],
 			"anathema": [
-				"none"
+				"offer prayers to a deity"
+			],
+			"followerAlignment": [
+				"all"
 			],
 			"hasLore": true
 		},
@@ -3122,7 +3143,8 @@
 			"page": 438,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|20"
+					"LOGM|20",
+					"LOME|144"
 				]
 			},
 			"core": true,
@@ -4774,7 +4796,8 @@
 			"page": 438,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|26"
+					"LOGM|26",
+					"LOME|144"
 				]
 			},
 			"core": true,
@@ -4851,7 +4874,7 @@
 				"page": 27,
 				"boon": {
 					"Minor Blessing": [
-						"Gozreh grants their guidance while at sea. You are under the constant effects of {@spell know direction} and become trained in {@skill Lore|Sailing Lore} (or another {@skill Lore} skill if you are already trained in {@skill Lore|Sailing Lore})."
+						"Gozreh grants their guidance while at sea. You are under the constant effects of {@spell know direction} and become trained in {@skill Lore||Sailing Lore} (or another {@skill Lore} skill if you are already trained in {@skill Lore||Sailing Lore})."
 					],
 					"Moderate Blessing": [
 						"You gain the touch of the sea. You can breathe underwater and gain a swim Speed equal to your land Speed."
@@ -4957,13 +4980,21 @@
 		},
 		{
 			"name": "Green Faith",
-			"source": "LOGM",
-			"page": 96,
+			"otherSources": {
+				"Expanded": [
+					"LOGM|96",
+					"LOME|144"
+				]
+			},
+			"source": "CRB",
+			"page": 440,
 			"alignment": [
 				"N"
 			],
 			"category": "Philosophy",
-			"info": [],
+			"info": [
+				"The worshippers of the Green Faith count many druids among their number. They view nature as divine and draw strength from the knowledge of their place in the natural order."
+			],
 			"edicts": [
 				"guide civilization to grow in harmony with nature",
 				"live sustainably and according to natural cycles",
@@ -7181,7 +7212,8 @@
 			"page": 439,
 			"otherSources": {
 				"Expanded": [
-					"LOGM|32"
+					"LOGM|32",
+					"LOME|145"
 				]
 			},
 			"core": true,
@@ -9494,14 +9526,46 @@
 			]
 		},
 		{
+			"name": "Whispering Way",
+			"source": "CRB",
+			"page": 441,
+			"category": "Philosophy",
+			"info": [
+				"These cultists believe undeath is the truest form of existence, and life is meant to be spent in preparation for transition to a more glorious unlife after death."
+			],
+			"edicts": [
+				"seek methods to become undead (a lich if possible)",
+				"oppose those who seek to destroy undead",
+				"protect necromantic secrets",
+				"serve the Whispering Tyrant"
+			],
+			"anathema": [
+				"destroy necromantic texts (unless they reveal secrets of the Whispering Way)",
+				"teach others of the Whispering Way other than by whispering",
+				"use positive energy to harm undead"
+			],
+			"followerAlignment": [
+				"LE",
+				"NE",
+				"CE"
+			]
+		},
+		{
 			"name": "Prophecies of Kalistrade",
-			"source": "LOGM",
-			"page": 98,
+			"source": "CRB",
+			"otherSources": {
+				"Expanded": [
+					"LOGM|98"
+				]
+			},
+			"page": 440,
 			"alignment": [
 				"LN"
 			],
 			"category": "Philosophy",
-			"info": [],
+			"info": [
+				"The dream-records of an eccentric mystic teach that wealth can be achieved through a strict and abstemious code of behavior."
+			],
 			"edicts": [
 				"accumulate personal wealth",
 				"seek enlightenment through purity of self",
@@ -9515,9 +9579,9 @@
 				"give charity to others"
 			],
 			"followerAlignment": [
+				"LG",
 				"LN",
-				"LE",
-				"NE"
+				"LE"
 			],
 			"devoteeBenefits": {
 				"ability": {
@@ -9614,7 +9678,7 @@
 				"heal sickness and injuries"
 			],
 			"anathema": [
-				"deal lethal damage to another creature (unless as part of a necessary medical treatment)"
+				"deal lethal damage to another living creature (unless as part of a necessary medical treatment)"
 			],
 			"followerAlignment": [
 				"LG",
@@ -11260,7 +11324,7 @@
 					]
 				},
 				"weapon": [
-					"staff"
+					"bo staff"
 				]
 			}
 		},
@@ -12202,7 +12266,8 @@
 				],
 				"alternateDomains": [
 					"decay",
-					"swarm"
+					"swarm",
+					"plague"
 				],
 				"spells": {
 					"1": [
@@ -13459,6 +13524,206 @@
 					"pick"
 				]
 			}
+		},
+		{
+			"name": "Adanye",
+			"alias": [
+				"The Warmth of the Hearth"
+			],
+			"source": "LOME",
+			"page": 132,
+			"alignment": [
+				"LG"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"keep your counsel",
+				"follow your heart",
+				"appreciate a warm hearth",
+				"defend those who welcome you into their home"
+			],
+			"anathema": [
+				"force anyone into drudgery or mindless work",
+				"deny support to loved ones",
+				"surrender when escape is an option",
+				"destroy a place that has given you shelter"
+			],
+			"followerAlignment": [
+				"LG",
+				"LN",
+				"NG",
+				"CG"
+			],
+			"devoteeBenefits": {
+				"font": [
+					"heal"
+				],
+				"ability": {
+					"abilities": [
+						"Dex",
+						"Wis"
+					],
+					"entry": "Dexterity or Wisdom"
+				},
+				"skill": [
+					"Society"
+				],
+				"domains": [
+					"duty",
+					"family",
+					"protection",
+					"repose"
+				],
+				"alternateDomains": [
+					"confidence",
+					"fire"
+				],
+				"spells": {
+					"1": [
+						"feather fall"
+					],
+					"2": [
+						"misdirection"
+					],
+					"7": [
+						"magnificent mansion"
+					]
+				},
+				"weapon": [
+					"claw",
+					"kukri"
+				],
+				"avatar": {
+					"preface": "When casting the {@spell avatar} spell, a worshipper of Adanye gains the following additional abilities.",
+					"entry": "{@b Adanye} Speed 70 feet, climb speed 70 feet, immune to immobilized; {@b Melee} {@as 1} claw ({@trait agile}, {@trait finesse}, {@trait reach 15 feet}), {@b Damage} {@damage 6d10+6} slashing; {@b Ranged} {@as 1} hearth ember (range 120 feet), {@b Damage} {@damage 4d6+3} fire and {@damage 2d6} persistent fire"
+				}
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Ydersius",
+			"source": "Bst2",
+			"otherSources": {
+				"Expanded": [
+					"LOME|145"
+				]
+			},
+			"page": 237,
+			"alignment": [
+				"CE"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"seek to return Ydersius to life",
+				"fulfill your passions",
+				"conquer your foes with no mercy",
+				"achieve glory for serpentkind"
+			],
+			"anathema": [
+				"put the needs of others above those of serpentfolk",
+				"aid the spawn of Azlant"
+			],
+			"followerAlignment": [
+				"LE",
+				"NE",
+				"CE"
+			],
+			"devoteeBenefits": {
+				"font": [
+					"harm"
+				],
+				"ability": {
+					"abilities": [
+						"Dex",
+						"Wis"
+					],
+					"entry": "Dexterity or Wisdom"
+				},
+				"skill": [
+					"Deception"
+				],
+				"domains": [
+					"ambition",
+					"indulgence",
+					"might",
+					"zeal"
+				],
+				"spells": {
+					"1": [
+						"magic fang"
+					],
+					"5": [
+						"cloudkill"
+					],
+					"6": [
+						"purple worm sting"
+					]
+				},
+				"weapon": [
+					"dagger"
+				]
+			},
+			"hasLore": true
+		},
+		{
+			"name": "Kitmu",
+			"alias": [
+				"Mother of Fireflies"
+			],
+			"source": "LOME",
+			"page": 158,
+			"alignment": [
+				"CE"
+			],
+			"category": "Other Gods",
+			"edicts": [
+				"offer sacrifices to Kitumu",
+				"feed the hungers of nature with humanoid creatures"
+			],
+			"anathema": [
+				"step on a firefly",
+				"kill those marked by Kitumu"
+			],
+			"followerAlignment": [
+				"NE",
+				"CE"
+			],
+			"devoteeBenefits": {
+				"font": [
+					"harm"
+				],
+				"ability": {
+					"abilities": [
+						"Dex",
+						"Cha"
+					],
+					"entry": "Dexterity or Charisma"
+				},
+				"skill": [
+					"Nature"
+				],
+				"domains": [
+					"destruction",
+					"indulgence",
+					"nightmare",
+					"swarm"
+				],
+				"spells": {
+					"1": [
+						"sleep"
+					],
+					"2": [
+						"vomit swarm|APG"
+					],
+					"3": [
+						"insect form"
+					]
+				},
+				"weapon": [
+					"dagger"
+				]
+			},
+			"hasLore": true
 		}
 	]
 }

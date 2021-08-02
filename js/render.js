@@ -1678,8 +1678,8 @@ function Renderer () {
 				const [displayText, footnoteText, optTitle] = Renderer.splitTagByPipe(text);
 				const hoverMeta = Renderer.hover.getMakePredefinedHover({
 					type: "entries",
-					name: optTitle ? optTitle.toTitleCase() : "Footnote",
-					entries: [footnoteText, optTitle ? `{@note ${optTitle}}` : ""].filter(Boolean),
+					name: "Footnote",
+					entries: [footnoteText, optTitle ? `\u2014 {@note ${optTitle}}` : ""].filter(Boolean),
 				});
 				textStack[0] += `<span class="help" ${hoverMeta.html}>`;
 				this._recursiveRender(displayText, textStack, meta);
@@ -3515,7 +3515,7 @@ Renderer.creature = {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 			renderStack.push(`<span><strong>Languages&nbsp;</strong></span>`)
 			renderStack.push(`<span>`)
-			renderStack.push(cr.languages.languages.join(", "))
+			renderStack.push(cr.languages.languages.length !== 0 ? cr.languages.languages.join(", ") : "— ")
 			if (cr.languages.languageAbilities.length !== 0) {
 				if (cr.languages.languages.length !== 0) renderStack.push("; ")
 				renderStack.push(cr.languages.languageAbilities.join(", "))
@@ -3663,26 +3663,28 @@ Renderer.creature = {
 
 	getAttacks (cr) {
 		let renderStack = [];
-		for (let attack of cr.attacks) {
-			renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
-			renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
-			renderStack.push(Renderer.get().render(`{@as 1} `))
-			renderStack.push(`${attack.name}`)
-			renderStack.push(`</span>`)
-			if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
-			renderStack.push(`<span>`)
-			if (attack.traits != null) {
-				let traits = []
-				attack.traits.forEach((t) => traits.push(`{@trait ${t}}`));
-				renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
-			}
-			renderStack.push(`, <strong>Damage&nbsp;</strong>`)
-			renderStack.push(Renderer.get().render(attack.damage))
+		if (cr.attacks) {
+			for (let attack of cr.attacks) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
+				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
+				renderStack.push(Renderer.get().render(`{@as 1} `))
+				renderStack.push(`${attack.name}`)
+				renderStack.push(`</span>`)
+				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
+				renderStack.push(`<span>`)
+				if (attack.traits != null) {
+					let traits = []
+					attack.traits.forEach((t) => traits.push(`{@trait ${t}}`));
+					renderStack.push(Renderer.get().render(` (${traits.join(", ")})`))
+				}
+				renderStack.push(`, <strong>Damage&nbsp;</strong>`)
+				renderStack.push(Renderer.get().render(attack.damage))
 
-			renderStack.push(`</span>`)
-			renderStack.push(`</p>`)
+				renderStack.push(`</span>`)
+				renderStack.push(`</p>`)
+			}
+			return renderStack.join("")
 		}
-		return renderStack.join("")
 	},
 
 	getSpellcasting (cr) {
@@ -3777,17 +3779,17 @@ Renderer.creature = {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
-			${cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
 			${Renderer.creature.getRituals(cr)}
-			${cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true}))}
+			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${opts.noPage ? "" : Renderer.utils.getPageP(cr)}</div>`;
 	},
 
@@ -3978,7 +3980,8 @@ Renderer.deity = {
 		const textStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			// TODO: noreferrer
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
 			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
 		return textStack.join("");
@@ -4212,7 +4215,7 @@ Renderer.item = {
 		if (item.onset) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${item.price.amount} ${item.price.coin} ${item.price.note ? item.price.note : ""}</p>`);
 		}
-
+		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		// Weapon Line/s
 		if (item.ammunition || item.damage || item.hands || item.reload || item.range) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
@@ -4225,8 +4228,8 @@ Renderer.item = {
 			if (item.ammunition || item.range || item.reload) {
 				renderStack.push(`</p><p class="pf2-stat pf2-stat__section">`);
 				if (item.ammunition) {
-					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(`{@item ${item.ammunition}}`)}`);
-					if (item.range != null) renderStack.push("; ")
+					renderStack.push(`<strong>Ammunition&nbsp;</strong>${renderer.render(item.ammunition.isArray ? item.ammunition.map(t => `{@item ${t}}`).join(", ") : `{@item ${item.ammunition}}`)}`);
+					if (item.range != null || item.reload != null) renderStack.push("; ")
 				}
 				if (item.range != null) {
 					renderStack.push(`<strong>Range&nbsp;</strong>${renderer.render(`${item.range} ft.`)}`);
@@ -4307,7 +4310,8 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${v.type}`);
+			// FIXME:
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
@@ -4423,7 +4427,7 @@ Renderer.language = {
 		const renderer = Renderer.get().setFirstSection(true);
 		const allEntries = [];
 		if (it.entries) allEntries.push(...it.entries);
-		if (!allEntries.length && !it.typicalSpeakers) allEntries.push("{@i No information available.}");
+		if (!allEntries.length) allEntries.push("{@i No entries available.}");
 		renderer.recursiveRender(allEntries, textStack, {pf2StatFix: true})
 
 		return `
@@ -4431,6 +4435,8 @@ Renderer.language = {
 		${Renderer.utils.getNameDiv(it, {page: UrlUtil.PG_LANGUAGES, type: `${it.type ? `${it.type} ` : ""}language`, ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${it.typicalSpeakers ? `<p class="pf2-stat pf2-stat__section"><strong>Typical Speakers</strong> ${Renderer.get().render(it.typicalSpeakers.join(", "))}</p>` : ""}
+		${it.regions ? `<p class="pf2-stat pf2-stat__section"><strong>Regions</strong> ${Renderer.get().render(it.regions.join(", "))}</p>` : ""}
+		${Renderer.utils.getDividerDiv()}
 		${textStack.join("")}
 		${Renderer.utils.getPageP(it)}`;
 	},
@@ -5812,7 +5818,7 @@ Renderer.hover = {
 			case UrlUtil.PG_BACKGROUNDS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/backgrounds/", "background");
 			case UrlUtil.PG_ARCHETYPES:
-				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/archetypes/", "archetype");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "archetypes.json", ["archetype"]);
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:

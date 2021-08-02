@@ -1021,7 +1021,7 @@ class EncounterBuilder extends ProxyBase {
 				await pLoadActiveEncounter();
 			}
 		};
-		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Encounter"><span class="glyphicon glyphicon-refresh"/></button>`)
+		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Encounter"><span class="glyphicon glyphicon-refresh"></span></button>`)
 			.click(() => pDoReload());
 
 		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Load Encounter</button>`)

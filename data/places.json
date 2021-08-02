@@ -684,7 +684,7 @@
 					[
 						{
 							"name": "Population",
-							"entry": "1,240 (60% humans, 8% halflings, 7% half-elves, 6% elves, 5% dwarves, 5% gnomes, 3% half-orcs, 2% goblins, 4% other)"
+							"entry": "1,240 ({@dice 1,240*0.6|60%} humans, {@dice 1,240*0.08|8%} halflings, {@dice 1,240*0.07|7%} half-elves, {@dice 1,240*0.06|6%} elves, {@dice 1,240*0.05|5%} dwarves, {@dice 1,240*0.05|5%} gnomes, {@dice 1,240*0.03|3%} half-orcs, {@dice 1,240*0.02|2%} goblins, {@dice 1,240*0.04|4%} other)"
 						}
 					],
 					[
@@ -1160,6 +1160,681 @@
 					[
 						"A murky, distorted, and imperfect mirror of the Material Plane, the Shadow Plane overlaps the Material Plane and serves as a buffer or conduit between it and the Negative Energy Plane. The Shadow Plane exists in a state of perpetually dim half-light, the landscape containing similar features to the overlapping Material Plane, but in warped or twisted fashions. Cities on the Material Plane might exist on the Shadow Plane, sometimes in ruins and sometimes as terrible, frightening replicas. The darkness also holds points of beauty and relative safety, such as the great city of Shadow Absalom. The bleak doppelganger of Golarion's own Absalom hosts cross-planar trade facilitated by a permanent, one-way portal out of the gloom.",
 						"The Shadow Plane is populated by dark, altered versions of creatures from the Material Plane, many of them immigrants that have adapted to the shadow after being trapped in the realm for generations. The shadow natives known as kayals\u2014also known as fetchlings\u2014were originally humans before thousands of years of exposure to the Shadow Plane and breeding with strange beings forever altered them. Velstracs, who long ago fled from Hell, have since adopted the Shadow Plane as their home, spreading their horrific message of perfection through mutilation in service to their victim and patron, the god Zon-Kuthon. In contrast, d'ziriaks originated within the Shadow Plane itself, as have the fearsome umbral dragons ruling self-crafted fiefdoms within the shadows. Greatest of these is Argrinyxia, who rules over Shadow Absalom."
+					]
+				]
+			]
+		},
+		{
+			"name": "Bloodcove",
+			"source": "LOME",
+			"page": 184,
+			"category": "Settlement",
+			"level": 9,
+			"traits": [
+				"NE",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Grand Admiral (elected for life), Secret Syndicate"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "7,817 ({@dice 7,817*0.79|79%} humans, {@dice 7,817*0.05|5%} dwarves, {@dice 7,817*0.03|3%} elves, {@dice 7,817*0.79|3%} goblins, {@dice 7,817*0.1|10%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Dwarven}, {@language Elven}, {@language Gnomish}, {@language Goblin}, {@language Mwangi}, {@language Taldane}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Abadar}, {@deity Besmara|LOGM}, {@deity Erastil}, {@deity Gozreh}, {@deity Hei Feng|LOGM}, {@deity Norgorber}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Pirates, Aspis agents, turf wars, aquatic monsters"
+						}
+					],
+					[
+						{
+							"name": "Trade Connections",
+							"entry": "The pirates of Bloodcove use unique methods in acquiring items to sell. The city has items of up to level 15 available for purchase, but anything higher than level 9 must first be acquired outside of the city and thus requires waiting {@dice 3d6} days for the item."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Harthwik Barzoni",
+							"entry": "({@trait CN} male human corsair 13) Grand Admiral of Bloodcove, a mostly defanged city ruler"
+						}
+					],
+					[
+						{
+							"name": "Erwyn Harvacus",
+							"entry": "({@trait N} male human druid 9) Leader of a druid circle keeping the mangroves from swallowing Bloodcove"
+						}
+					],
+					[
+						{
+							"name": "Malika Fenn",
+							"entry": "({@trait NE} female human ranger 8) Head of Aspis operations in the city and disgruntled ex-Pathfinder"
+						}
+					],
+					[
+						{
+							"name": "Kunari Mobo",
+							"entry": "({@trait N} female human merchant 8) Retired Free Captain that maintains a major pirate trade network"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Jaha",
+			"source": "LOME",
+			"page": 196,
+			"category": "Settlement",
+			"level": 5,
+			"traits": [
+				"LN",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Republic"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "7,105 ({@dice 7,105*0.7|70%} humans, {@dice 7,105*0.28|28%} iruxi, {@dice 7,105*0.02|2%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Iruxi}, {@language Lirgeni}, {@language Mwangi}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Desna}, {@deity Gozreh}, {@deity Uvuko}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "mysterious disappearances, undead"
+						}
+					],
+					[
+						{
+							"name": "Insular People",
+							"entry": "The Jahaxi people are wary of outsiders and slow to trust. This doubles the time it takes to {@action Gather Information} and increases the DC by 2."
+						}
+					],
+					[
+						{
+							"name": "Readers of Stars",
+							"entry": "Many Jahaxi people are skilled at divination. Including at least one of these individuals as a secondary caster of a divination ritual decreases the ritual's DCs by 1."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Barashzi",
+							"entry": "({@trait NG} nonbinary lizardfolk astrologer 8) prominent social restorationist"
+						}
+					],
+					[
+						{
+							"name": "Iakanne Aarsani",
+							"entry": "({@trait LG} female human aristocrat 7) prominent sociopolitical leader"
+						}
+					],
+					[
+						{
+							"name": "Versenne",
+							"entry": "({@trait NG} female human diplomat 7) head ambassador of Jaha"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Kibwe",
+			"source": "LOME",
+			"page": 208,
+			"category": "Settlement",
+			"level": 6,
+			"traits": [
+				"N",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "representative council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "5,162 ({@dice 5,162*0.71|71%} humans [predominantly Zenj], {@dice 5,162*0.08|8%} elves, {@dice 5,162*0.05|5%} orcs, {@dice 5,162*0.05|5%} lizardfolk, {@dice 5,162*0.11|11%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Elven}, {@language Iruxi}, {@language Jotun}, {@language Kelish}, {@language Kibwani}, {@language Kobold}, {@language Mwangi}, {@language Ocatan}, {@language Taldane}, {@language Uwani}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Abadar}, {@deity Adanye}, {@deity Cayden Cailean}, {@deity Desna}, {@deity Droskar}, {@deity Gozreh}, {@deity Nethys}, {@deity Sekhmet}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Disgruntled ex-slavers, demons, magical curses and diseases"
+						}
+					],
+					[
+						{
+							"name": "Trade Hub",
+							"entry": "Items of up to 11th level can be found in Kibwe with diligent enough searching. Items higher than 6th level, when found, are for sale at 90% + {@dice 2d10}% of their normal price."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Abayone Munme",
+							"entry": "({@trait LG} female human politician 5) Council Representative for the Zenj Trading Alliance"
+						}
+					],
+					[
+						{
+							"name": "Clatriani Orridik",
+							"entry": "({@trait LE} male human merchant 7) Bloodman of Bekyar Block and former slave-trader"
+						}
+					],
+					[
+						{
+							"name": "Darvian Estabar",
+							"entry": "({@trait LN} male human aristocrat 5) Lord Magistrate of the East Mwangi Mining Company"
+						}
+					],
+					[
+						{
+							"name": "Kosa Et",
+							"entry": "({@trait N} agender elf weaver 6) Council Representative for Whitemarks"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Mzali",
+			"source": "LOME",
+			"page": 220,
+			"category": "Settlement",
+			"level": 8,
+			"traits": [
+				"LE",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Divine Theocracy"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "37,813 ({@dice 37,813*0.99|99%} humans, {@dice 37,813*0.01|1%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Mwangi}, {@language Mzunu}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Walkena}, {@deity Chohar}, {@deity Luhar}, {@deity Tlehar}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Bright Lions, karinas, undead, Walkena's servants"
+						}
+					],
+					[
+						{
+							"name": "Banned Outsiders",
+							"entry": "Walkena bans all non-native Mwangi individuals from the city. Such outsiders find fearful citizens unwilling to engage with them, imposing a \u20134 circumstance penalty to all {@skill Deception}, {@skill Diplomacy}, and {@skill Intimidation} checks. In addition, when you get a failure on such checks, you get a critical failure instead."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Nkiruka the Voice",
+							"entry": "({@trait N} female human diplomat 14) Prime Speaker of Walkena and arbiter of conflicts."
+						}
+					],
+					[
+						{
+							"name": "Themba Sufu the Shadow",
+							"entry": "({@trait LE} male human spy 15) Commander of Walkena's secret police force"
+						}
+					],
+					[
+						{
+							"name": "Worknesh the Golden Blade",
+							"entry": "({@trait LE} female human inquisitor 16) High-Inquisitor of Walkena and commander of Mzali's martial forces"
+						}
+					],
+					[
+						{
+							"name": "Zubari the Guiding Ray",
+							"entry": "({@trait LE} male human priest of Walkena 15) High priest of Walkena and overseer of day-to-day administration of Mzali"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Nantambu",
+			"source": "LOME",
+			"page": 232,
+			"category": "Settlement",
+			"level": 10,
+			"traits": [
+				"NG",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Democratic Council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "15,470 ({@dice 15,470*0.8|80%} humans, {@dice 15,470*0.04|4%} halflings, {@dice 15,470*0.03|3%} elves, {@dice 15,470*0.02|2%} amurruns, {@dice 15,470*0.02|2%} iruxi, {@dice 15,470*0.09|9%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Amurrun}, {@language Dwarven}, {@language Elven}, {@language Gnoll}, {@language Iruxi}, {@language Mwangi}, {@language Xanmba}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Adanye}, {@deity Gozreh}, {@deity Mazludeh}, {@deity Irez}, {@deity Nethys}, {@deity Shelyn}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Magical accidents"
+						}
+					],
+					[
+						{
+							"name": "Service of the Magaambya",
+							"entry": "Spellcasting services of up to 13th level can be found in Nantambu with ease. Acquiring higher-level services requires {@dice 1d4} weeks of work and usually requires an additional donation of 10% of the value to Nantambu."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Luchomo",
+							"entry": "({@trait LN} male human politician 5) Nantambu's Head of Council"
+						}
+					],
+					[
+						{
+							"name": "Ciko",
+							"entry": "({@trait NG} female human glassmaker 4) Council representative from the Glassmakers' Guild"
+						}
+					],
+					[
+						{
+							"name": "High Sun-Mage Oyamba",
+							"entry": "({@trait NG} male human wizard 13) Master of the Magaambya"
+						}
+					],
+					[
+						{
+							"name": "Ebele",
+							"entry": "({@trait N} female human restaurateur 6) Influential socialite"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Osibu",
+			"source": "LOME",
+			"page": 246,
+			"category": "Settlement",
+			"level": 9,
+			"traits": [
+				"N",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Democratic Council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "11,470 ({@dice 11,470*0.98|98%} humans, {@dice 11,470*0.02|2%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Arboreal}, {@language Elven}, {@language Halfling}, {@language Mwangi}, {@language Sylvan}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Green Faith}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "hostile jungle flora and fauna, the Nemesis Well"
+						}
+					],
+					[
+						{
+							"name": "Primal Connections",
+							"entry": "Osibu contains a large number of primal spellcasters, increasing the availability of magic items and services. Osibu offers magic items of up to 13th level and primal spellcasting services of up to 7th level."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Dimari-Diji",
+							"entry": "({@trait N} arboreal nature-speaker 25) Titanic and ancient arboreal guardian"
+						}
+					],
+					[
+						{
+							"name": "Umanja-jinga",
+							"entry": "({@trait LG} female halfling seer 15) Oracle of the Honored"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Senghor",
+			"source": "LOME",
+			"page": 254,
+			"category": "Settlement",
+			"level": 8,
+			"traits": [
+				"N",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Mercantile Council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "27,819 ({@dice 27,819*0.96|96%} humans, {@dice 27,819*0.02|2%} halflings, {@dice 27,819*0.01|1%} dwarves, {@dice 27,819*0.01|1%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Calda}, {@language Dwarven}, {@language Halfling}, {@language Mwangi}, {@language Taldane}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Balumbdar}, {@deity Brigh}, {@deity Desna}, {@deity Erastil}, {@deity Gozreh}, {@deity Pharasma}, {@deity Sarenrae}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "pirates, hurricanes, flooding, sea monsters"
+						}
+					],
+					[
+						{
+							"name": "Shipbuilder's Hub",
+							"entry": "Nautical vehicles of up to 13th level can be found for sale in Senghor with diligent searching. Vehicles higher than 8th level, when found, are for sale at 90% + {@dice 2d10|2d10%} of their normal price."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Isaara",
+							"entry": "({@trait LN} female human merchant 8) Major shipping facilitator"
+						}
+					],
+					[
+						{
+							"name": "Gyan Baako",
+							"entry": "({@trait N} male human brewer 5) Luxury goods merchant family patriarch"
+						}
+					],
+					[
+						{
+							"name": "Dini Okpara",
+							"entry": "({@trait LN} female human sorcerer 11) Magical merchant and scholar of antiquities"
+						}
+					],
+					[
+						{
+							"name": "Bosede Eku",
+							"entry": "({@trait NG} male dwarf trader 6) Prominent textile importer"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Usaro",
+			"source": "LOME",
+			"page": 266,
+			"category": "Settlement",
+			"level": 7,
+			"traits": [
+				"N",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Anarchy"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "9,640 ({@dice 9,640*0.78|78%} charau-ka, {@dice 9,640*0.12|12%} human, {@dice 9,640*0.1|10%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Abyssal}, {@language Draconic}, {@language Mwangi}, {@language Ocatan}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Anghazan}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Awakened apes, demons, charau-ka, religious cultists, orc and elf raiders"
+						}
+					],
+					[
+						{
+							"name": "Ravenous Domain",
+							"entry": "Anghazan's demonic power suffuses the city. Evil creatures that worship Anghazan gain the effects of {@spell protection} against good creatures and effects while in Usaro."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Shosenbe",
+							"entry": "({@trait NE} male human wizard 16) Leader of the Chosen"
+						}
+					]
+				]
+			]
+		},
+		{
+			"name": "Anthusis (Capital)",
+			"source": "LOME",
+			"page": 274,
+			"category": "Settlement",
+			"level": 8,
+			"traits": [
+				"NG",
+				"City"
+			],
+			"sections": [
+				[
+					[
+						{
+							"name": "Government",
+							"entry": "Representative council"
+						}
+					],
+					[
+						{
+							"name": "Population",
+							"entry": "10,548 ({@dice 10,548*0.82|82%} humans, {@dice 10,548*0.04|4%} halflings, {@dice 10,548*0.03|3%} elves, {@dice 10,548*0.02|2%} dwarves, {@dice 10,548*0.09|9%} other)"
+						}
+					],
+					[
+						{
+							"name": "Languages",
+							"entry": "{@language Dwarven}, {@language Elven}, {@language Halfling}, {@language Infernal}, {@language Iruxi}, {@language Mwangi}, {@language Taldane}"
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Religions",
+							"entry": "{@deity Abadar}, {@deity Gozreh}, {@deity Grandmother Spider}, {@deity Iomedae}, {@deity Kalekot}, {@deity Lubaiko}, {@deity Sarenrae}, {@deity Shelyn}"
+						}
+					],
+					[
+						{
+							"name": "Threats",
+							"entry": "Pirates, rogue foreign adventurers, secret diabolists, thieves"
+						}
+					],
+					[
+						{
+							"name": "Everyone Talks",
+							"entry": "The citizens of Anthusis have a strong national spirit and look out for each other, and even thieves and politicians will put their differences aside for an external threat. {@skill Deception} and {@skill Stealth} checks against residents of Anthusis take a \u20132 circumstance penalty in Anthusis, as the citizens share information with one another."
+						}
+					]
+				],
+				[
+					[
+						{
+							"name": "Gbemisola Mambi",
+							"entry": "({@trait NG} female human overseer 7) Representative of the organized farming unions"
+						}
+					],
+					[
+						{
+							"name": "Mandla Dube",
+							"entry": "({@trait NG} male human cleric of Sarenrae 7) Representative of Vidrian's religious interests"
+						}
+					],
+					[
+						{
+							"name": "Merredin",
+							"entry": "({@trait N} genderfluid halfling banker 12) Representative of Vidrian's united banking institutions"
+						}
 					]
 				]
 			]

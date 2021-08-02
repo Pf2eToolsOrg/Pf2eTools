@@ -32,6 +32,7 @@ class PageFilterAncestries extends PageFilter {
 		this._languageFilter = new Filter({header: "Languages", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
 		this._traitsFilter = new Filter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
+		this._rarityFilter = new Filter({header: "Rarity", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
 		this._optionsFilter = new OptionsFilter({
 			header: "Other Options",
 			defaultState: {
@@ -80,6 +81,7 @@ class PageFilterAncestries extends PageFilter {
 		this._sizeFilter.addItem(ancestry.size);
 		this._languageFilter.addItem(ancestry._flanguages);
 		this._traitsFilter.addItem(ancestry.traits);
+		this._rarityFilter.addItem(ancestry.rarity);
 		this._miscFilter.addItem(ancestry._fMisc);
 	}
 
@@ -94,6 +96,7 @@ class PageFilterAncestries extends PageFilter {
 			this._speedTypeFilter,
 			this._languageFilter,
 			this._traitsFilter,
+			this._rarityFilter,
 			this._miscFilter,
 			this._optionsFilter,
 		];
@@ -111,6 +114,7 @@ class PageFilterAncestries extends PageFilter {
 			a._fspeedtypes,
 			a._flanguages,
 			a.traits,
+			a.rarity,
 			a._fMisc,
 		)
 	}

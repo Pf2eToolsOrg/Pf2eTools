@@ -16,17 +16,17 @@ class RenderBestiary {
 			${Renderer.creature.getLanguages(cr)}
 			${Renderer.creature.getSkills(cr)}
 			${Renderer.creature.getAbilityMods(cr.abilityMods)}
-			${cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it))}
+			${cr.abilitiesTop != null ? cr.abilitiesTop.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.creature.getItems(cr)}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getDefenses(cr)}
-			${cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it))}
+			${cr.abilitiesMid != null ? cr.abilitiesMid.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.utils.getDividerDiv()}
 			${Renderer.creature.getSpeed(cr)}
 			${Renderer.creature.getAttacks(cr)}
 			${Renderer.creature.getSpellcasting(cr)}
 			${Renderer.creature.getRituals(cr)}
-			${cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it))}
+			${cr.abilitiesBot != null ? cr.abilitiesBot.map(it => Renderer.creature.getRenderedAbility(it, {noButton: true})) : ""}
 			${Renderer.utils.getPageP(cr)}`;
 	}
 }

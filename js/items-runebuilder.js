@@ -403,7 +403,7 @@ class RuneBuilder extends ProxyBase {
 				await pLoadActiveRuneItem();
 			}
 		};
-		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Item"><span class="glyphicon glyphicon-refresh"/></button>`)
+		this._$btnReload = $(`<button class="btn btn-default btn-xs mr-2" title="Reload Current Item"><span class="glyphicon glyphicon-refresh"></span></button>`)
 			.click(() => pDoReload());
 
 		this._$btnLoad = $(`<button class="btn btn-default btn-xs">Saved Items</button>`)
