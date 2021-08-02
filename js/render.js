@@ -3980,8 +3980,7 @@ Renderer.deity = {
 		const textStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			// TODO: noreferrer
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
 			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
 		return textStack.join("");
@@ -4310,7 +4309,7 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			// FIXME:
+			// FIXME: We should calculate the items name if we want to link to specific variants.
 			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))});`);

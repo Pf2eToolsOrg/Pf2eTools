@@ -2847,6 +2847,7 @@ DataUtil = {
 			} else if (entriesMode === "variant") {
 				variant.entries = [...variant.entries]
 			}
+			// FIXME:
 			if (!variant.name) {
 				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
 					variant.name = `${variant.type} ${generic.name}`.toTitleCase();
@@ -2854,8 +2855,9 @@ DataUtil = {
 					variant.name = variant.type.toTitleCase();
 				}
 			}
-			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
+			variant.type = generic.type || "Item";
 			variant.generic = "V";
+			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
 			delete variant.variants;
 			return variant;
 		},
