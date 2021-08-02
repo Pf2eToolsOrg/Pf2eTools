@@ -911,9 +911,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h1" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h1 rd__h${entry.blue ? " pf2-h1--blue" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
 							</p>`;
 		}
@@ -959,9 +960,10 @@ function Renderer () {
 		}
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
 							</p>`;
 		}
@@ -980,9 +982,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h3" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h3 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
 			if (entry.level) textStack[0] += `<span class="pf2-h3--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
 			textStack[0] += `</p>`;
@@ -1002,9 +1005,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h4" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
 			if (entry.level) textStack[0] += `<span class="pf2-h4--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
 			textStack[0] += `</p>`;
@@ -1025,7 +1029,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -1049,8 +1053,9 @@ function Renderer () {
 		textStack[0] += `<div class="pf2-sidebar ${(entry.style || []).join(" ")}" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
