@@ -1,6 +1,6 @@
 /*
 Renderer
- */
+*/
 
 @import 'vars';
 
@@ -59,6 +59,7 @@ $rgb-inset-border: #656565;
 			}
 		}
 
+		// FIXME:
 		&list {
 			margin-top: 5px;
 			margin-bottom: 10px;
@@ -225,6 +226,10 @@ $rgb-inset-border: #656565;
 		&list-no-bullets {
 			list-style: none;
 			padding: 0 1em;
+
+			> .rd__li {
+				margin-bottom: 0;
+			}
 		}
 
 		&list-name {

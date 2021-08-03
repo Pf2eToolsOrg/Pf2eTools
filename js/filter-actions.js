@@ -20,7 +20,7 @@ class PageFilterActions extends PageFilter {
 		});
 		this._typeFilter = new Filter({
 			header: "Type",
-			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic", "Skill"],
+			items: ["Ancestry", "Heritage", "Class", "Archetype", "Basic", "Skill", "Optional/Variant Action"],
 			selFn: (it) => it === "Basic",
 		});
 		this._traitFilter = new TraitsFilter({header: "Traits"});
@@ -41,7 +41,6 @@ class PageFilterActions extends PageFilter {
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fMisc = [];
-		if (it.actionType.variant === true) it._fMisc.push("Optional/Variant Action")
 	}
 
 	addToFilters (it, isExcluded) {

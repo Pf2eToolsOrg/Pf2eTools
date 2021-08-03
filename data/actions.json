@@ -4132,6 +4132,234 @@
 			"entries": [
 				"You break off quills in your attacker's flesh. You deal {@damage 1d8} piercing damage to the triggering creature (basic Reflex save using your class DC or spell DC, whichever is higher.) On a critical failure, the creature also takes {@damage 1d4} {@condition persistent damage||persistent bleed damage} as your quills hook into its flesh. At 3rd level, and every 2 levels thereafter, this damage increases by {@damage 1d8} and the persistent piercing damage increases by 1."
 			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Bribe Contact",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime",
+				"Secret"
+			],
+			"cost": "A bribe worth at least one-tenth of the Currency per Additional PC listed on {@table Party Treasure by Level||Table 10–9: Party Treasure by Level}. Doubling this amount grants a +2 circumstance bonus to the check.",
+			"requirements": "You’ve successfully {@action Gain Contact|GMG|Gained a Contact}.",
+			"entries": [
+				"You offer a bribe to your contact to help the heist in some way. Attempt a hard or very hard Deception or Diplomacy check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The contact accepts the bribe and you gain 1 EP.",
+						"Failure": "You believe you successfully Bribed your Contact and gained 1 EP, but in fact the contact informs the opposition of the attempted bribery, adding 1 AP to the infiltration. The GM can reveal that this Edge Point grants no benefit at any point during the infiltration, as befits the story.",
+						"Critical Failure": "As failure, but adding 2 AP to the infiltration."
+					}
+				}
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Forge Documents",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime",
+				"Secret"
+			],
+			"entries": [
+				"You prepare forgeries that might serve as convincing props. Attempt a hard or very hard Society check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You create convincing forgeries and gain 1 EP you can use only when presenting some form of paperwork.",
+						"Failure": "You create unconvincing documents. You gain 1 EP that (unknown to you) grants no benefit when used.",
+						"Critical Failure": "As a failure, but a PC who tries to use the Edge Point gets a critical failure, even if they use the Edge Point after rolling a failure."
+					}
+				}
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Gain Contact",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime"
+			],
+			"entries": [
+				"You try to make contact with an individual who can aid you in the infiltration. Attempt a normal, hard, or very hard DC Diplomacy or Society check, or a check using a Lore skill appropriate to your prospective contact.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You make contact and gain 1 EP.",
+						"Failure": "You fail to make contact.",
+						"Critical Failure": "You insult or spook the contact in some way. Future attempts take a –2 circumstance penalty."
+					}
+				}
+			],
+			"special": [
+				"Multiple critical failures might cause the contact to work against the PCs in some way, likely increasing the party’s Awareness Points."
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Gossip",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime",
+				"Secret"
+			],
+			"entries": [
+				"You seek out rumors about the infiltration’s target. Attempt a normal, hard, or very hard Diplomacy check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain inside information about the location or group you’re trying to infiltrate. This grants you a +2 circumstance bonus to future checks you attempt for preparation activities for this infiltration. If you share this information, those you share it with also gain this bonus.",
+						"Success": "You gain inside information about the place or group you’re attempting to infiltrate that aids your planning.",
+						"Failure": "You learn nothing.",
+						"Critical Failure": "You hear a few mistaken rumors and take a –2 circumstance penalty to your next check for a preparation activity. Word spreads around that you’re asking after that group or individual, increasing your Awareness Points by 1."
+					}
+				}
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Scout Location",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime",
+				"Secret"
+			],
+			"entries": [
+				"You spend time observing the place or group you wish to infiltrate. Attempt a normal, hard, or very hard DC Perception, Society or Stealth check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You make observations that provide 1 EP.",
+						"Failure": "You learn nothing particularly noteworthy.",
+						"Critical Failure": "You misjudge some aspect of what you observed, gaining 1 EP that results in a critical failure instead of a success when used, even if a PC uses the Edge Point after rolling a failure."
+					}
+				}
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 163,
+			"name": "Secure Disguises",
+			"actionType": {
+				"variant": true
+			},
+			"traits": [
+				"Downtime"
+			],
+			"entries": [
+				"You seek to procure or create disguises. Attempt a normal, hard, or very hard Crafting, Deception, Performance, or Society check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You procure or creates disguises, gaining 1 EP that can be used only to maintain a cover identity.",
+						"Failure": "Your efforts result in an unusable disguise."
+					}
+				}
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 167,
+			"actionType": {
+				"variant": true
+			},
+			"name": "Bullying Press",
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"traits": ["Flourish"],
+			"trigger": "You attempt a melee Strike against your opponent, but haven’t rolled yet.",
+			"requirements": "You’re in a duel, you’re trained in Intimidation, and you rolled an Intimidation check for initiative this round.",
+			"entries": [
+				"If you hit, your opponent becomes frightened 1. If your opponent is using Perception for initiative when this ability is used, they become frightened 2 instead."
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 167,
+			"actionType": {
+				"variant": true
+			},
+			"name": "Deceptive Sidestep",
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"traits": ["Misfortune"],
+			"trigger": "An opponent hits, but does not critically hit you, with a melee Strike.",
+			"requirements": "You’re in a duel, you’re trained in Deception, and you rolled a Deception check for initiative this round.",
+			"entries": [
+				"You draw your enemy in and pull away at the last moment. The triggering opponent must roll again and take the second result. If your opponent is using Intimidation for initiative when this ability is used, they also take a –2 circumstance penalty to the second attack roll."
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 167,
+			"actionType": {
+				"variant": true
+			},
+			"name": "Sense Weakness",
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"trigger": "You attempt a melee Strike against your opponent, but haven’t rolled yet.",
+			"requirements": "You’re in a duel, you’re trained in Perception, and you rolled a Perception check for initiative this round.",
+			"entries": [
+				"You pick a precise moment to attack, giving you an edge. Your opponent is flat-footed against the attack. If your opponent is using Deception for initiative when this ability is used, they are instead flat-footed until the start of their next turn."
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 167,
+			"actionType": {
+				"variant": true
+			},
+			"name": "Dueling Counter",
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"traits": ["Magical"],
+			"trigger": "Your opponent Casts a Spell from the same tradition as your tradition focus.",
+			"requirements": "You are in a duel and have a tradition focus.",
+			"entries": [
+				"Expend a prepared spell or spell slot. You then attempt to counteract the triggering spell with the expended spell."
+			]
+		},
+		{
+			"source": "GMG",
+			"page": 167,
+			"actionType": {
+				"variant": true
+			},
+			"name": "Change Tradition Focus",
+			"activity": {
+				"unit": "action",
+				"number": 1
+			},
+			"requirements": "You are in a duel and are trained in the skill for the tradition you’re changing your focus to (Arcana for arcane, Occultism for occult, Nature for primal, or Religion for divine).",
+			"entries": [
+				"You change your tradition focus to another magical tradition."
+			]
 		}
 	]
 }
