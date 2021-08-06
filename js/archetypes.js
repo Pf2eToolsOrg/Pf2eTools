@@ -21,11 +21,6 @@ class ArchetypesPage extends BaseComponent {
 		this._ixFeatData = 0;
 		this._featDataList = [];
 		this._featFilter = new PageFilterFeats({
-			typeFilterHidden: true,
-			ancFilterHidden: true,
-			archFilterHidden: true,
-			classFilterHidden: true,
-			skillFilterHidden: true,
 			typeDeselFn: it => it === "Archetype",
 		});
 		this.__featId = {_: 0};

@@ -724,7 +724,15 @@
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage ||persistent fire damage}, and 4 fire splash damage."
 					]
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "prependArr",
+					"items": [
+						"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air."
+					]
+				}
+			}
 		},
 		{
 			"name": "Aligned Oil",
@@ -884,7 +892,7 @@
 			]
 		},
 		{
-			"name": "Anklets Of Alacrity",
+			"name": "Anklets of Alacrity",
 			"source": "CRB",
 			"page": 603,
 			"type": "Item",
@@ -1166,7 +1174,7 @@
 			]
 		},
 		{
-			"name": "Armbands Of Athleticism",
+			"name": "Armbands of Athleticism",
 			"source": "CRB",
 			"page": 605,
 			"type": "Item",
@@ -1393,7 +1401,7 @@
 			"generic": false
 		},
 		{
-			"name": "Bag Of Holding",
+			"name": "Bag of Holding",
 			"source": "CRB",
 			"page": 572,
 			"type": "Item",
@@ -1414,6 +1422,7 @@
 			"generic": "G",
 			"variants": [
 				{
+					"name": "Bag of Holding (Type I)",
 					"type": "I",
 					"level": 4,
 					"price": {
@@ -1423,9 +1432,15 @@
 					},
 					"entries": [
 						"Capacity 25 Bulk."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": " The bag's extradimensional space can hold 25 Bulk."
+						}
+					}
 				},
 				{
+					"name": "Bag of Holding (Type II)",
 					"type": "II",
 					"level": 7,
 					"price": {
@@ -1435,9 +1450,15 @@
 					},
 					"entries": [
 						"Capacity 50 Bulk."
-					]
+					],
+					"_mod": {
+					"entries": {
+						"with": " The bag's extradimensional space can hold 50 Bulk."
+						}
+					}
 				},
 				{
+					"name": "Bag of Holding (Type III)",
 					"type": "III",
 					"level": 11,
 					"price": {
@@ -1447,9 +1468,15 @@
 					},
 					"entries": [
 						"Capacity 100 Bulk."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": " The bag's extradimensional space can hold 100 Bulk."
+						}
+					}
 				},
 				{
+					"name": "Bag of Holding (Type IV)",
 					"type": "IV",
 					"level": 13,
 					"price": {
@@ -1459,12 +1486,24 @@
 					},
 					"entries": [
 						"Capacity 150 Bulk."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": " The bag's extradimensional space can hold 150 Bulk."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": " The amount of Bulk the bag's extradimensional space can hold depends on its type\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
-			"name": "Barding Of The Zephyr",
+			"name": "Barding of the Zephyr",
 			"source": "CRB",
 			"page": 604,
 			"type": "Item",
@@ -1637,7 +1676,7 @@
 			"generic": false
 		},
 		{
-			"name": "Belt Of Giant Strength",
+			"name": "Belt of Giant Strength",
 			"source": "CRB",
 			"page": 603,
 			"type": "Item",
@@ -1688,7 +1727,7 @@
 			"generic": false
 		},
 		{
-			"name": "Belt Of Regeneration",
+			"name": "Belt of Regeneration",
 			"source": "CRB",
 			"page": 603,
 			"type": "Item",
@@ -1730,7 +1769,7 @@
 			"generic": false
 		},
 		{
-			"name": "Belt Of The Five Kings",
+			"name": "Belt of the Five Kings",
 			"source": "CRB",
 			"page": 606,
 			"type": "Item",
@@ -2289,7 +2328,7 @@
 			]
 		},
 		{
-			"name": "Boots Of Bounding",
+			"name": "Boots of Bounding",
 			"source": "CRB",
 			"page": 606,
 			"type": "Item",
@@ -2332,7 +2371,7 @@
 			]
 		},
 		{
-			"name": "Boots Of Elvenkind",
+			"name": "Boots of Elvenkind",
 			"source": "CRB",
 			"page": 606,
 			"type": "Item",
@@ -2393,7 +2432,7 @@
 			]
 		},
 		{
-			"name": "Boots Of Speed",
+			"name": "Boots of Speed",
 			"source": "CRB",
 			"page": 606,
 			"type": "Item",
@@ -2556,7 +2595,7 @@
 			]
 		},
 		{
-			"name": "Bracelet Of Dashing",
+			"name": "Bracelet of Dashing",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -2597,7 +2636,7 @@
 			"generic": false
 		},
 		{
-			"name": "Bracers Of Armor",
+			"name": "Bracers of Armor",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -2652,7 +2691,7 @@
 			]
 		},
 		{
-			"name": "Bracers Of Missile Deflection",
+			"name": "Bracers of Missile Deflection",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -2781,7 +2820,7 @@
 			]
 		},
 		{
-			"name": "Breastplate Of Command",
+			"name": "Breastplate of Command",
 			"source": "CRB",
 			"page": 557,
 			"type": "Item",
@@ -2939,7 +2978,7 @@
 			"generic": false
 		},
 		{
-			"name": "Brooch Of Shielding",
+			"name": "Brooch of Shielding",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -2965,7 +3004,7 @@
 			"generic": false
 		},
 		{
-			"name": "Broom Of Flying",
+			"name": "Broom of Flying",
 			"source": "CRB",
 			"page": 572,
 			"type": "Item",
@@ -3034,7 +3073,7 @@
 			"generic": false
 		},
 		{
-			"name": "Candle Of Truth",
+			"name": "Candle of Truth",
 			"source": "CRB",
 			"page": 570,
 			"type": "Item",
@@ -3073,7 +3112,7 @@
 			"generic": false
 		},
 		{
-			"name": "Cape Of The Mountebank",
+			"name": "Cape of the Mountebank",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -3116,7 +3155,7 @@
 			"generic": false
 		},
 		{
-			"name": "Cassock Of Devotion",
+			"name": "Cassock of Devotion",
 			"source": "CRB",
 			"page": 607,
 			"type": "Item",
@@ -3372,7 +3411,7 @@
 			]
 		},
 		{
-			"name": "Chime Of Opening",
+			"name": "Chime of Opening",
 			"source": "CRB",
 			"page": 572,
 			"type": "Item",
@@ -3414,7 +3453,7 @@
 			"generic": false
 		},
 		{
-			"name": "Choker Of Elocution",
+			"name": "Choker of Elocution",
 			"source": "CRB",
 			"page": 608,
 			"type": "Item",
@@ -3459,7 +3498,7 @@
 			]
 		},
 		{
-			"name": "Circlet Of Persuasion",
+			"name": "Circlet of Persuasion",
 			"source": "CRB",
 			"page": 603,
 			"type": "Item",
@@ -3587,7 +3626,7 @@
 			"generic": false
 		},
 		{
-			"name": "Cloak Of Elvenkind",
+			"name": "Cloak of Elvenkind",
 			"source": "CRB",
 			"page": 608,
 			"type": "Item",
@@ -3647,7 +3686,7 @@
 			]
 		},
 		{
-			"name": "Cloak Of The Bat",
+			"name": "Cloak of the Bat",
 			"source": "CRB",
 			"page": 608,
 			"type": "Item",
@@ -4058,7 +4097,7 @@
 			]
 		},
 		{
-			"name": "Collar Of Empathy",
+			"name": "Collar of Empathy",
 			"source": "CRB",
 			"page": 604,
 			"type": "Item",
@@ -4102,7 +4141,7 @@
 			"generic": false
 		},
 		{
-			"name": "Collar Of Inconspicuousness",
+			"name": "Collar of Inconspicuousness",
 			"source": "CRB",
 			"page": 604,
 			"type": "Item",
@@ -4642,7 +4681,7 @@
 			"generic": false
 		},
 		{
-			"name": "Dagger Of Venom",
+			"name": "Dagger of Venom",
 			"source": "CRB",
 			"page": 600,
 			"type": "Item",
@@ -5252,7 +5291,7 @@
 			"generic": false
 		},
 		{
-			"name": "Decanter Of Endless Water",
+			"name": "Decanter of Endless Water",
 			"source": "CRB",
 			"page": 573,
 			"type": "Item",
@@ -5436,7 +5475,7 @@
 			]
 		},
 		{
-			"name": "Diadem Of Intellect",
+			"name": "Diadem of Intellect",
 			"source": "CRB",
 			"page": 603,
 			"type": "Item",
@@ -6203,7 +6242,7 @@
 			"generic": false
 		},
 		{
-			"name": "Dust Of Appearance",
+			"name": "Dust of Appearance",
 			"source": "CRB",
 			"page": 570,
 			"type": "Item",
@@ -6237,7 +6276,7 @@
 			"generic": false
 		},
 		{
-			"name": "Dust Of Disappearance",
+			"name": "Dust of Disappearance",
 			"source": "CRB",
 			"page": 570,
 			"type": "Item",
@@ -6487,7 +6526,7 @@
 			"generic": false
 		},
 		{
-			"name": "Elixir Of Life",
+			"name": "Elixir of Life",
 			"source": "CRB",
 			"page": 548,
 			"type": "Item",
@@ -6591,7 +6630,7 @@
 			]
 		},
 		{
-			"name": "Elixir Of Rejuvenation",
+			"name": "Elixir of Rejuvenation",
 			"source": "CRB",
 			"page": 548,
 			"type": "Item",
@@ -6912,7 +6951,7 @@
 			]
 		},
 		{
-			"name": "Eye Of Apprehension",
+			"name": "Eye of Apprehension",
 			"source": "CRB",
 			"page": 566,
 			"type": "Item",
@@ -6948,7 +6987,7 @@
 			"generic": false
 		},
 		{
-			"name": "Eye Of Fortune",
+			"name": "Eye of Fortune",
 			"source": "CRB",
 			"page": 610,
 			"type": "Item",
@@ -6990,7 +7029,7 @@
 			"generic": false
 		},
 		{
-			"name": "Eyes Of The Eagle",
+			"name": "Eyes of the Eagle",
 			"source": "CRB",
 			"page": 610,
 			"type": "Item",
@@ -8222,7 +8261,7 @@
 			"generic": false
 		},
 		{
-			"name": "Gloves Of Storing",
+			"name": "Gloves of Storing",
 			"source": "CRB",
 			"page": 610,
 			"type": "Item",
@@ -8284,7 +8323,7 @@
 			"generic": false
 		},
 		{
-			"name": "Goggles Of Night",
+			"name": "Goggles of Night",
 			"source": "CRB",
 			"page": 610,
 			"type": "Item",
@@ -8356,7 +8395,7 @@
 			]
 		},
 		{
-			"name": "Gorget Of The Primal Roar",
+			"name": "Gorget of the Primal Roar",
 			"source": "CRB",
 			"page": 611,
 			"type": "Item",
@@ -8572,7 +8611,7 @@
 			"generic": false
 		},
 		{
-			"name": "Hail Of Arrows Snare",
+			"name": "Hail of Arrows Snare",
 			"source": "CRB",
 			"page": 590,
 			"type": "Snare",
@@ -8618,7 +8657,7 @@
 			"generic": false
 		},
 		{
-			"name": "Hand Of The Mage",
+			"name": "Hand of the Mage",
 			"source": "CRB",
 			"page": 611,
 			"type": "Item",
@@ -8660,7 +8699,7 @@
 			"generic": false
 		},
 		{
-			"name": "Handwraps Of Mighty Blows",
+			"name": "Handwraps of Mighty Blows",
 			"source": "CRB",
 			"page": 611,
 			"type": "Item",
@@ -8743,7 +8782,7 @@
 			]
 		},
 		{
-			"name": "Hat Of Disguise",
+			"name": "Hat of Disguise",
 			"source": "CRB",
 			"page": 611,
 			"type": "Item",
@@ -8805,7 +8844,7 @@
 			]
 		},
 		{
-			"name": "Hat Of The Magi",
+			"name": "Hat of the Magi",
 			"source": "CRB",
 			"page": 611,
 			"type": "Item",
@@ -8849,7 +8888,7 @@
 			]
 		},
 		{
-			"name": "Headband Of Inspired Wisdom",
+			"name": "Headband of Inspired Wisdom",
 			"source": "CRB",
 			"page": 604,
 			"type": "Item",
@@ -9372,7 +9411,7 @@
 			"generic": false
 		},
 		{
-			"name": "Horn Of Blasting",
+			"name": "Horn of Blasting",
 			"source": "CRB",
 			"page": 573,
 			"type": "Item",
@@ -9437,7 +9476,7 @@
 			"generic": false
 		},
 		{
-			"name": "Horn Of Fog",
+			"name": "Horn of Fog",
 			"source": "CRB",
 			"page": 573,
 			"type": "Item",
@@ -9478,7 +9517,7 @@
 			"generic": false
 		},
 		{
-			"name": "Horseshoes Of Speed",
+			"name": "Horseshoes of Speed",
 			"source": "CRB",
 			"page": 604,
 			"type": "Item",
@@ -10180,7 +10219,7 @@
 			"generic": false
 		},
 		{
-			"name": "Javelin Of Lightning",
+			"name": "Javelin of Lightning",
 			"source": "CRB",
 			"page": 571,
 			"type": "Item",
@@ -10360,7 +10399,7 @@
 			"generic": false
 		},
 		{
-			"name": "Knapsack Of Halflingkind",
+			"name": "Knapsack of Halflingkind",
 			"source": "CRB",
 			"page": 612,
 			"type": "Item",
@@ -11129,7 +11168,7 @@
 			]
 		},
 		{
-			"name": "Mail Of Luck",
+			"name": "Mail of Luck",
 			"source": "CRB",
 			"page": 558,
 			"type": "Item",
@@ -11318,7 +11357,7 @@
 			]
 		},
 		{
-			"name": "Mattock Of The Titans",
+			"name": "Mattock of the Titans",
 			"source": "CRB",
 			"page": 601,
 			"type": "Item",
@@ -12094,7 +12133,7 @@
 			"generic": false
 		},
 		{
-			"name": "Necklace Of Fireballs",
+			"name": "Necklace of Fireballs",
 			"source": "CRB",
 			"page": 613,
 			"type": "Item",
@@ -12217,7 +12256,7 @@
 			]
 		},
 		{
-			"name": "Nectar Of Purification",
+			"name": "Nectar of Purification",
 			"source": "CRB",
 			"page": 561,
 			"type": "Item",
@@ -12451,7 +12490,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Animation",
+			"name": "Oil of Animation",
 			"source": "CRB",
 			"page": 561,
 			"type": "Item",
@@ -12487,7 +12526,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Keen Edges",
+			"name": "Oil of Keen Edges",
 			"source": "CRB",
 			"page": 561,
 			"type": "Item",
@@ -12523,7 +12562,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Mending",
+			"name": "Oil of Mending",
 			"source": "CRB",
 			"page": 561,
 			"type": "Item",
@@ -12548,7 +12587,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Potency",
+			"name": "Oil of Potency",
 			"source": "CRB",
 			"page": 562,
 			"type": "Item",
@@ -12583,7 +12622,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Repulsion",
+			"name": "Oil of Repulsion",
 			"source": "CRB",
 			"page": 562,
 			"type": "Item",
@@ -12626,7 +12665,7 @@
 			"generic": false
 		},
 		{
-			"name": "Oil Of Weightlessness",
+			"name": "Oil of Weightlessness",
 			"source": "CRB",
 			"page": 562,
 			"type": "Item",
@@ -12967,7 +13006,7 @@
 			"generic": false
 		},
 		{
-			"name": "Pendant Of The Occult",
+			"name": "Pendant of the Occult",
 			"source": "CRB",
 			"page": 613,
 			"type": "Item",
@@ -13153,7 +13192,7 @@
 			"generic": false
 		},
 		{
-			"name": "Phylactery Of Faithfulness",
+			"name": "Phylactery of Faithfulness",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -13214,7 +13253,7 @@
 			]
 		},
 		{
-			"name": "Plate Armor Of The Deep",
+			"name": "Plate Armor of the Deep",
 			"source": "CRB",
 			"page": 558,
 			"type": "Item",
@@ -13365,7 +13404,7 @@
 			"generic": false
 		},
 		{
-			"name": "Potion Of Flying",
+			"name": "Potion of Flying",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13419,7 +13458,7 @@
 			]
 		},
 		{
-			"name": "Potion Of Leaping",
+			"name": "Potion of Leaping",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13454,7 +13493,7 @@
 			"generic": false
 		},
 		{
-			"name": "Potion Of Quickness",
+			"name": "Potion of Quickness",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13489,7 +13528,7 @@
 			"generic": false
 		},
 		{
-			"name": "Potion Of Resistance",
+			"name": "Potion of Resistance",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13557,7 +13596,7 @@
 			]
 		},
 		{
-			"name": "Potion Of Swimming",
+			"name": "Potion of Swimming",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13611,7 +13650,7 @@
 			]
 		},
 		{
-			"name": "Potion Of Tongues",
+			"name": "Potion of Tongues",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13647,7 +13686,7 @@
 			"generic": false
 		},
 		{
-			"name": "Potion Of Undetectability",
+			"name": "Potion of Undetectability",
 			"source": "CRB",
 			"page": 563,
 			"type": "Item",
@@ -13682,7 +13721,7 @@
 			"generic": false
 		},
 		{
-			"name": "Potion Of Water Breathing",
+			"name": "Potion of Water Breathing",
 			"source": "CRB",
 			"page": 564,
 			"type": "Item",
@@ -14110,7 +14149,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Climbing",
+			"name": "Ring of Climbing",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -14135,7 +14174,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Counterspells",
+			"name": "Ring of Counterspells",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -14197,7 +14236,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Energy Resistance",
+			"name": "Ring of Energy Resistance",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -14252,7 +14291,7 @@
 			]
 		},
 		{
-			"name": "Ring Of Lies",
+			"name": "Ring of Lies",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -14294,7 +14333,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Maniacal Devices",
+			"name": "Ring of Maniacal Devices",
 			"source": "CRB",
 			"page": 614,
 			"type": "Item",
@@ -14355,7 +14394,7 @@
 			]
 		},
 		{
-			"name": "Ring Of Spell Turning",
+			"name": "Ring of Spell Turning",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14398,7 +14437,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Sustenance",
+			"name": "Ring of Sustenance",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14423,7 +14462,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of Swimming",
+			"name": "Ring of Swimming",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14447,7 +14486,7 @@
 			"generic": false
 		},
 		{
-			"name": "Ring Of The Ram",
+			"name": "Ring of the Ram",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14517,7 +14556,7 @@
 			]
 		},
 		{
-			"name": "Ring Of Wizardry",
+			"name": "Ring of Wizardry",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14588,7 +14627,7 @@
 			]
 		},
 		{
-			"name": "Robe Of Eyes",
+			"name": "Robe of Eyes",
 			"source": "CRB",
 			"page": 615,
 			"type": "Item",
@@ -14633,7 +14672,7 @@
 			"generic": false
 		},
 		{
-			"name": "Robe Of The Archmagi",
+			"name": "Robe of the Archmagi",
 			"source": "CRB",
 			"page": 616,
 			"type": "Item",
@@ -14698,7 +14737,7 @@
 			]
 		},
 		{
-			"name": "Rod Of Negation",
+			"name": "Rod of Negation",
 			"source": "CRB",
 			"page": 574,
 			"type": "Item",
@@ -14738,7 +14777,7 @@
 			"generic": false
 		},
 		{
-			"name": "Rod Of Wonder",
+			"name": "Rod of Wonder",
 			"source": "CRB",
 			"page": 575,
 			"type": "Item",
@@ -15001,7 +15040,7 @@
 			]
 		},
 		{
-			"name": "Salve Of Antiparalysis",
+			"name": "Salve of Antiparalysis",
 			"source": "CRB",
 			"page": 562,
 			"type": "Item",
@@ -15056,7 +15095,7 @@
 			]
 		},
 		{
-			"name": "Salve Of Slipperiness",
+			"name": "Salve of Slipperiness",
 			"source": "CRB",
 			"page": 562,
 			"type": "Item",
@@ -15127,7 +15166,7 @@
 			"generic": false
 		},
 		{
-			"name": "Scroll Of Glitterdust",
+			"name": "Scroll of Glitterdust",
 			"source": "CRB",
 			"page": 565,
 			"type": "Item",
@@ -15163,7 +15202,7 @@
 			"generic": false
 		},
 		{
-			"name": "Scroll Of Illusory Disguise",
+			"name": "Scroll of Illusory Disguise",
 			"source": "CRB",
 			"page": 565,
 			"type": "Item",
@@ -15376,7 +15415,7 @@
 			]
 		},
 		{
-			"name": "Serum Of Sex Shift",
+			"name": "Serum of Sex Shift",
 			"source": "CRB",
 			"page": 564,
 			"type": "Item",
@@ -16317,7 +16356,7 @@
 			]
 		},
 		{
-			"name": "Slippers Of Spider Climbing",
+			"name": "Slippers of Spider Climbing",
 			"source": "CRB",
 			"page": 616,
 			"type": "Item",
@@ -16916,7 +16955,7 @@
 			"generic": false
 		},
 		{
-			"name": "Staff Of Abjuration",
+			"name": "Staff of Abjuration",
 			"source": "CRB",
 			"page": 593,
 			"type": "Item",
@@ -17011,7 +17050,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Conjuration",
+			"name": "Staff of Conjuration",
 			"source": "CRB",
 			"page": 593,
 			"type": "Item",
@@ -17106,7 +17145,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Divination",
+			"name": "Staff of Divination",
 			"source": "CRB",
 			"page": 593,
 			"type": "Item",
@@ -17201,7 +17240,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Enchantment",
+			"name": "Staff of Enchantment",
 			"source": "CRB",
 			"page": 593,
 			"type": "Item",
@@ -17299,7 +17338,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Evocation",
+			"name": "Staff of Evocation",
 			"source": "CRB",
 			"page": 593,
 			"type": "Item",
@@ -17394,7 +17433,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Fire",
+			"name": "Staff of Fire",
 			"source": "CRB",
 			"page": 594,
 			"type": "Item",
@@ -17489,7 +17528,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Healing",
+			"name": "Staff of Healing",
 			"source": "CRB",
 			"page": 594,
 			"type": "Item",
@@ -17605,7 +17644,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Illumination",
+			"name": "Staff of Illumination",
 			"source": "CRB",
 			"page": 594,
 			"type": "Item",
@@ -17673,7 +17712,7 @@
 			"generic": false
 		},
 		{
-			"name": "Staff Of Illusion",
+			"name": "Staff of Illusion",
 			"source": "CRB",
 			"page": 594,
 			"type": "Item",
@@ -17769,7 +17808,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Necromancy",
+			"name": "Staff of Necromancy",
 			"source": "CRB",
 			"page": 594,
 			"type": "Item",
@@ -17864,7 +17903,7 @@
 			]
 		},
 		{
-			"name": "Staff Of Power",
+			"name": "Staff of Power",
 			"source": "CRB",
 			"page": 595,
 			"type": "Item",
@@ -17922,7 +17961,7 @@
 			"generic": false
 		},
 		{
-			"name": "Staff Of The Magi",
+			"name": "Staff of the Magi",
 			"source": "CRB",
 			"page": 595,
 			"type": "Item",
@@ -17982,7 +18021,7 @@
 			"generic": false
 		},
 		{
-			"name": "Staff Of Transmutation",
+			"name": "Staff of Transmutation",
 			"source": "CRB",
 			"page": 595,
 			"type": "Item",
@@ -18691,7 +18730,7 @@
 			]
 		},
 		{
-			"name": "Tears Of Death",
+			"name": "Tears of Death",
 			"source": "CRB",
 			"page": 553,
 			"type": "Item",
@@ -18921,7 +18960,7 @@
 			]
 		},
 		{
-			"name": "Thurible Of Revelation",
+			"name": "Thurible of Revelation",
 			"source": "CRB",
 			"page": 575,
 			"type": "Item",
@@ -19795,7 +19834,7 @@
 			"generic": false
 		},
 		{
-			"name": "Wand Of Continuation",
+			"name": "Wand of Continuation",
 			"source": "CRB",
 			"page": 598,
 			"type": "Item",
@@ -19914,7 +19953,7 @@
 			]
 		},
 		{
-			"name": "Wand Of Heal",
+			"name": "Wand of Heal",
 			"source": "CRB",
 			"page": 597,
 			"type": "Item",
@@ -20045,7 +20084,7 @@
 			]
 		},
 		{
-			"name": "Wand Of Manifold Missiles",
+			"name": "Wand of Manifold Missiles",
 			"source": "CRB",
 			"page": 598,
 			"type": "Item",
@@ -20126,7 +20165,7 @@
 			]
 		},
 		{
-			"name": "Wand Of Slaying",
+			"name": "Wand of Slaying",
 			"source": "CRB",
 			"page": 598,
 			"type": "Item",
@@ -20196,7 +20235,7 @@
 			]
 		},
 		{
-			"name": "Wand Of Smoldering Fireballs",
+			"name": "Wand of Smoldering Fireballs",
 			"source": "CRB",
 			"page": 598,
 			"type": "Item",
@@ -20285,7 +20324,7 @@
 			]
 		},
 		{
-			"name": "Wand Of Widening",
+			"name": "Wand of Widening",
 			"source": "CRB",
 			"page": 598,
 			"type": "Item",
@@ -20537,7 +20576,7 @@
 			]
 		},
 		{
-			"name": "Whisper Of The First Lie",
+			"name": "Whisper of the First Lie",
 			"source": "CRB",
 			"page": 617,
 			"type": "Item",

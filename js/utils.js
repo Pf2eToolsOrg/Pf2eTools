@@ -842,6 +842,23 @@ MiscUtil = {
 		return JSON.parse(JSON.stringify(obj));
 	},
 
+	isObject (obj) {
+		return obj && typeof obj === "object" && !Array.isArray(obj);
+	},
+
+	merge (...objects) {
+		return objects.filter(it => MiscUtil.isObject(it)).reduce((acc, obj) => {
+			Object.keys(obj).forEach(key => {
+				const initVal = acc[key];
+				const newVal = obj[key];
+				if (Array.isArray(initVal) && Array.isArray(newVal)) acc[key] = initVal.concat(...newVal);
+				else if (MiscUtil.isObject(initVal) && MiscUtil.isObject(newVal)) acc[key] = MiscUtil.merge(initVal, newVal);
+				else acc[key] = newVal;
+			});
+			return acc;
+		}, {});
+	},
+
 	async pCopyTextToClipboard (text) {
 		function doCompatibilityCopy () {
 			const $iptTemp = $(`<textarea class="clp__wrp-temp"></textarea>`)
@@ -1703,10 +1720,7 @@ UrlUtil = {
 			(cls.classFeatures || []).forEach((lvlFeatureList, ixLvl) => {
 				// class features
 				lvlFeatureList
-					// don't add "you gain a subclass feature" or ASI's
-					.filter(feature => !feature.gainSubclassFeature
-						&& feature.name !== "Ability Score Improvement"
-						&& feature.name !== "Proficiency Versatility")
+					.filter(feature => !feature.gainSubclassFeature)
 					.forEach((feature, ixFeature) => {
 						const name = Renderer.findName(feature);
 						if (!name) { // tolerate missing names in homebrew
@@ -1792,7 +1806,7 @@ UrlUtil = {
 	},
 
 	getStateKeyHeritage (h) {
-		return Parser.stringToSlug(`h ${h.name} ${Parser.sourceJsonToAbv(h.source)}`)
+		return Parser.stringToSlug(`h ${h.shortName || h.name} ${Parser.sourceJsonToAbv(h.source)}`)
 	},
 
 	/**
@@ -1943,6 +1957,7 @@ UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_CONDITION] = UrlUtil.PG_CONDITIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_AFFLICTION] = UrlUtil.PG_AFFLICTIONS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_FEAT] = UrlUtil.PG_FEATS;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ANCESTRY] = UrlUtil.PG_ANCESTRIES;
+UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_HERITAGE] = UrlUtil.PG_ANCESTRIES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ARCHETYPE] = UrlUtil.PG_ARCHETYPES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_VARIANT_RULE] = UrlUtil.PG_VARIANTRULES;
 UrlUtil.CAT_TO_PAGE[Parser.CAT_ID_ADVENTURE] = UrlUtil.PG_ADVENTURE;
@@ -2049,15 +2064,13 @@ SortUtil = {
 		return SortUtil._listSort_compareBy(a, b, sortBy) || SortUtil.compareListNames(a, b);
 	},
 
-	_alignFirst: ["L", "C"],
-	_alignSecond: ["G", "E"],
+	_alignSorted: ["ce", "ne", "le", "cn", "n", "ln", "cg", "ng", "lg", "any"],
 	alignmentSort: (a, b) => {
-		if (a === b) return 0;
-		if (SortUtil._alignFirst.includes(a)) return -1;
-		if (SortUtil._alignSecond.includes(a)) return 1;
-		if (SortUtil._alignFirst.includes(b)) return 1;
-		if (SortUtil._alignSecond.includes(b)) return -1;
-		return 0;
+		if (typeof FilterItem !== "undefined") {
+			if (a instanceof FilterItem) a = a.item;
+			if (b instanceof FilterItem) b = b.item;
+		}
+		return SortUtil.ascSort(SortUtil._alignSorted.indexOf(b.toLowerCase()), SortUtil._alignSorted.indexOf(a.toLowerCase()));
 	},
 
 	sortActivities (a, b) {
@@ -2684,7 +2697,9 @@ DataUtil = {
 				Object.entries(copyMeta._mod).forEach(([prop, modInfos]) => {
 					if (prop === "*") doMod(modInfos, "abilitiesTop", "abilitiesMid", "attacks", "abilitiesBot");
 					else if (prop === "_") doMod(modInfos);
-					else doMod(modInfos, prop);
+					else if (prop === "entriesMode") {
+						/* do nothing */
+					} else doMod(modInfos, prop);
 				});
 			}
 
@@ -2789,8 +2804,6 @@ DataUtil = {
 
 	item: {
 		_MERGE_REQUIRES_PRESERVE: {
-			page: true,
-			otherSources: true,
 		},
 		_mergeCache: {},
 		_loadedJson: null,
@@ -2805,14 +2818,48 @@ DataUtil = {
 				const index = await DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/index.json`);
 				const files = ["baseitems.json", ...Object.values(index)];
 				const allData = await Promise.all(files.map(file => DataUtil.loadJSON(`${Renderer.get().baseUrl}data/items/${file}`)));
+				const expanded = await Promise.all(allData.map(it => it.item || []).flat().map(it => DataUtil.item.expandVariants(it)));
 				DataUtil.item._loadedJson = {
-					item: allData.map(it => it.item || []).flat(),
+					item: expanded.flat(),
 					baseitem: allData.map(it => it.baseitem || []).flat(),
 				}
 			})();
 			await DataUtil.item._pLoadingJson;
 
 			return DataUtil.item._loadedJson;
+		},
+
+		async expandVariants (item) {
+			if (!item.variants) return [item];
+			const expanded = await Promise.all(item.variants.map(v => DataUtil.item._expandVariant(item, v)));
+			return [item, ...expanded];
+		},
+
+		async _expandVariant (generic, variant) {
+			variant = MiscUtil.copy(variant);
+			variant._copy = variant._copy || {};
+			variant._copy._mod = MiscUtil.merge(generic._vmod, variant._mod, variant._copy._mod);
+			const entriesMode = variant._copy._mod.entriesMode || "concat";
+			if (entriesMode === "concat") {
+				variant.entries = [...generic.entries, ...variant.entries];
+			} else if (entriesMode === "generic") {
+				variant.entries = [...generic.entries]
+			} else if (entriesMode === "variant") {
+				variant.entries = [...variant.entries]
+			}
+			// FIXME:
+			if (!variant.name) {
+				if (!generic.name.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(generic.name.toLowerCase())) {
+					variant.name = `${variant.type} ${generic.name}`.toTitleCase();
+				} else {
+					variant.name = variant.type.toTitleCase();
+				}
+			}
+			variant.type = generic.type || "Item";
+			variant.generic = "V";
+			await DataUtil.generic._pApplyCopy(DataUtil.item, generic, variant, {});
+			delete variant.variants;
+			return variant;
 		},
 	},
 
@@ -2989,9 +3036,6 @@ DataUtil = {
 		},
 
 		async pGetDereferencedClassData (cls) {
-			// Gracefully handle legacy class data
-			if (cls.classFeatures && cls.classFeatures.every(it => typeof it !== "string" && !it.classFeature)) return cls;
-
 			cls = MiscUtil.copy(cls);
 
 			const byLevel = {}; // Build a map of `level: [classFeature]`
@@ -3044,9 +3088,6 @@ DataUtil = {
 		},
 
 		async pGetDereferencedSubclassData (sc) {
-			// Gracefully handle legacy class data
-			if (sc.subclassFeatures && sc.subclassFeatures.every(it => typeof it !== "string" && !it.subclassFeature)) return sc;
-
 			sc = MiscUtil.copy(sc);
 
 			const byLevel = {}; // Build a map of `level: [subclassFeature]`
@@ -3266,7 +3307,6 @@ RollerUtil = {
 };
 RollerUtil.DICE_REGEX = new RegExp(RollerUtil._DICE_REGEX_STR, "g");
 RollerUtil.REGEX_DAMAGE_DICE = /(\d+)( \((?:{@dice |{@damage ))([-+0-9d ]*)(}\) [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
-RollerUtil.REGEX_DAMAGE_FLAT = /(Hit: |{@h})([0-9]+)( [a-z]+( \([-a-zA-Z0-9 ]+\))?( or [a-z]+( \([-a-zA-Z0-9 ]+\))?)? damage)/gi;
 RollerUtil._REGEX_ROLLABLE_COL_LABEL = /^(.*?\d)(\s*[-+/*^×÷]\s*)([a-zA-Z0-9 ]+)$/;
 RollerUtil.ROLL_COL_NONE = 0;
 RollerUtil.ROLL_COL_STANDARD = 1;

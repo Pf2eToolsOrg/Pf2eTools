@@ -687,12 +687,6 @@ const ListUtil = {
 				"Send to GM Screen",
 				() => ListUtil._pDoSendSublistToDmScreen(),
 			),
-			ExtensionUtil.ACTIVE
-				? new ContextUtil.Action(
-					"Send to Foundry",
-					() => ListUtil._pDoSendSublistToFoundry(),
-				)
-				: undefined,
 			null,
 			new ContextUtil.Action(
 				"Download JSON Data",
@@ -712,30 +706,6 @@ const ListUtil = {
 			JqueryUtil.doToast(`Failed! ${VeCt.STR_SEE_CONSOLE}`);
 			setTimeout(() => { throw e; })
 		}
-	},
-
-	async _pDoSendSublistToFoundry () {
-		const list = ListUtil.getExportableSublist();
-		const len = list.items.length;
-
-		const page = UrlUtil.getCurrentPage();
-
-		for (const it of list.items) {
-			let toSend = await Renderer.hover.pCacheAndGetHash(page, it.h);
-
-			switch (page) {
-				case UrlUtil.PG_BESTIARY: {
-					const scaleTo = it.customHashId ? Parser.numberToCr(Number(it.customHashId.split("_").last())) : null;
-					if (scaleTo != null) {
-						toSend = await ScaleCreature.scale(toSend, scaleTo);
-					}
-				}
-			}
-
-			await ExtensionUtil._doSend("entity", {page, entity: toSend});
-		}
-
-		JqueryUtil.doToast(`Attepmted to send ${len} item${len === 1 ? "" : "s"} to Foundry.`);
 	},
 
 	async _handleGenericContextMenuClick_pDoMassPopout (evt, ele, selection) {

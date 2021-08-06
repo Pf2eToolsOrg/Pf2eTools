@@ -41,11 +41,6 @@ class ClassesPage extends BaseComponent {
 		this._ixFeatData = 0;
 		this._featDataList = [];
 		this._featFilter = new PageFilterFeats({
-			typeFilterHidden: true,
-			ancFilterHidden: true,
-			archFilterHidden: true,
-			classFilterHidden: true,
-			skillFilterHidden: true,
 			typeDeselFn: it => it === "Class",
 		});
 		this.__featId = {_: 0};
@@ -309,7 +304,7 @@ class ClassesPage extends BaseComponent {
 		names.push(...this._getActiveSubclasses().map(it => it.traits).filter(Boolean).flat())
 		names.push(this.activeClass.name);
 		Object.keys(this._featFilter._classFilter.getValues().Classes).forEach(key => {
-			if (!key.startsWith("_")) this._featFilter._classFilter.setValue(key, 2)
+			if (!key.startsWith("_")) this._featFilter._classFilter.setValue(key, 0)
 		});
 		names.forEach(name => {
 			this._featFilter._classFilter.setValue(name, 1)
@@ -1292,8 +1287,8 @@ class ClassesPage extends BaseComponent {
 
 		// TODO: Option for Homebrew/Official filter?
 		const filterSets = [
-			{name: "View Official", subHashes: [], isClearSources: false},
-			{name: "View All", subHashes: [], isClearSources: true},
+			{name: "Select Official", subHashes: [], isClearSources: false},
+			{name: "Select All", subHashes: [], isClearSources: true},
 		];
 		const setFilterSet = ix => {
 			const filterSet = filterSets[ix];
@@ -1305,14 +1300,15 @@ class ClassesPage extends BaseComponent {
 				const sourcePart = [...classifiedSources.official, ...classifiedSources.homebrew]
 					.map(src => `${src.toUrlified()}=0`)
 					.join(HASH_SUB_LIST_SEP);
-				cpySubHashes.push(`flstsource:${sourcePart}`)
+				cpySubHashes.push(`flst.classes.classessource:${sourcePart}`)
 			}
 
 			this.filterBox.setFromSubHashes([
 				...boxSubhashes,
 				...cpySubHashes,
-				`flopsource:extend`,
+				`flop.classes.classessource:extend`,
 			].filter(Boolean), true);
+			Object.values(this._listsSubclasses).forEach(list => list.visibleItems.filter(it => it.values.stateKey).forEach(it => this._state[it.values.stateKey] = true));
 			$selFilterPreset.val("-1");
 		};
 		const $selFilterPreset = $(`<select class="input-xs form-control cls-tabs__sel-preset mr-2 mb-1 flex-3"><option value="-1" disabled>Filter...</option></select>`)

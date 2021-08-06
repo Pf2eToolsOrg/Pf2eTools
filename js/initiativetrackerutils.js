@@ -1,7 +1,7 @@
 "use strict";
 class InitiativeTrackerUtil {
 	static getWoundLevel (pctHp) {
-		pctHp = Math.round(Math.max(Math.min(pctHp, 100), 0));
+		pctHp = Math.ceil(Math.max(Math.min(pctHp, 100), 0));
 		if (pctHp === 100) return 0; // healthy
 		if (pctHp > 50) return 1; // injured
 		if (pctHp > 0) return 2; // bloody
@@ -98,8 +98,8 @@ class InitiativeTrackerUtil {
 				$cond.on("mouseover", (evt) => {
 					if (evt.shiftKey) {
 						evt.shiftKey = false;
-						const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS]({name: cond.condName || cond.name, source: SRC_PHB});
-						Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_CONDITIONS, SRC_PHB, hash);
+						const hash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CONDITIONS]({name: cond.condName || cond.name, source: SRC_CRB});
+						Renderer.hover.pHandleLinkMouseOver(evt, ele, UrlUtil.PG_CONDITIONS, SRC_CRB, hash);
 					}
 				});
 				$cond.on("mousemove", (evt) => Renderer.hover.handleLinkMouseMove(evt, ele));

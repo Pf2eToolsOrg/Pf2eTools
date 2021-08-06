@@ -1315,8 +1315,10 @@ function Renderer () {
 		const catId = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = entry.page || UrlUtil.CAT_TO_PAGE[catId];
 		const renderFn = Renderer.hover._pageToRenderFn(page);
-		if (renderFn) textStack[0] += renderFn(entry.data, {isEmbedded: true, noPage: true});
-		else textStack[0] += `<div class=""></div>`;
+		if (renderFn) {
+			const rendered = renderFn(entry.data, {isEmbedded: true, noPage: true});
+			textStack[0] += typeof rendered === "object" ? rendered.html() : rendered;
+		} else textStack[0] += `<div class=""></div>`;
 		this._renderDataFooter(textStack);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
@@ -1490,12 +1492,6 @@ function Renderer () {
 				textStack[0] += `<i class="ve-muted">`;
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</i>`;
-				break;
-			case "@atk":
-				textStack[0] += `<i>${Renderer.attackTagToFull(text)}</i>`;
-				break;
-			case "@h":
-				textStack[0] += `<i>Hit:</i> `;
 				break;
 			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
@@ -1780,6 +1776,28 @@ function Renderer () {
 
 				break;
 			}
+			case "@quickref": {
+				const [displayText, source, ixChapter, section, ixSection, ...others] = Renderer.splitTagByPipe(text);
+				const hash = `bookref-quick${HASH_PART_SEP}${ixChapter}${HASH_PART_SEP}${UrlUtil.encodeForHash(section)}${HASH_PART_SEP}${ixSection || 0}`
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						path: UrlUtil.PG_QUICKREF,
+						hash,
+						hashPreEncoded: true,
+						hover: {
+							page: UrlUtil.PG_QUICKREF,
+							source: source || SRC_CRB,
+							hash,
+							hashPreEncoded: true,
+						},
+					},
+					text: displayText,
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
 
 			case "@deity": {
 				const [name, source, displayText, ...others] = Renderer.splitTagByPipe(text);
@@ -1937,7 +1955,7 @@ function Renderer () {
 				};
 				switch (tag) {
 					case "@spell":
-						fauxEntry.href.path = "spells.html";
+						fauxEntry.href.path = UrlUtil.PG_SPELLS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_SPELLS,
 							source,
@@ -1945,7 +1963,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@ritual":
-						fauxEntry.href.path = "rituals.html";
+						fauxEntry.href.path = UrlUtil.PG_RITUALS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_RITUALS,
 							source,
@@ -1953,7 +1971,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@item":
-						fauxEntry.href.path = "items.html";
+						fauxEntry.href.path = UrlUtil.PG_ITEMS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ITEMS,
 							source,
@@ -1998,16 +2016,15 @@ function Renderer () {
 
 							fauxEntry.href.subhashes = [
 								{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
-								{key: "fltsource", value: "clear"},
-								{key: "flstmiscellaneous", value: "clear"},
+								{key: "flst.classes.classesmiscellaneous", value: "clear"},
 							];
 						}
-						fauxEntry.href.path = "classes.html";
+						fauxEntry.href.path = UrlUtil.PG_CLASSES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					}
 					case "@creature":
-						fauxEntry.href.path = "bestiary.html";
+						fauxEntry.href.path = UrlUtil.PG_BESTIARY;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_BESTIARY,
 							source,
@@ -2042,7 +2059,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@background":
-						fauxEntry.href.path = "backgrounds.html";
+						fauxEntry.href.path = UrlUtil.PG_BACKGROUNDS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_BACKGROUNDS,
 							source,
@@ -2057,6 +2074,30 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@versatileHeritage": {
+						fauxEntry.href.hash = HASH_BLANK;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_ANCESTRIES,
+							source,
+						};
+						const ancStateOpts = {
+							heritage: {name, source},
+						};
+
+						const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getAncestriesPageStatePart(ancStateOpts));
+						fauxEntry.href.hover.subhashes = [{
+							key: "state",
+							value: subhashObj.state,
+							preEncoded: true,
+						}];
+						fauxEntry.href.subhashes = [
+							{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
+							{key: "flst.ancestries.ancestriesmiscellaneous", value: "clear"},
+						];
+						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					}
 					case "@ancestry":
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_ANCESTRIES,
@@ -2075,19 +2116,31 @@ function Renderer () {
 							};
 
 							const subhashObj = UrlUtil.unpackSubHash(UrlUtil.getAncestriesPageStatePart(ancStateOpts));
+							fauxEntry.href.hover.subhashes = [{
+								key: "state",
+								value: subhashObj.state,
+								preEncoded: true,
+							}];
 
 							fauxEntry.href.subhashes = [
 								{key: "state", value: subhashObj.state.join(HASH_SUB_LIST_SEP), preEncoded: true},
-								{key: "fltsource", value: "clear"},
-								{key: "flstmiscellaneous", value: "clear"},
+								{key: "flst.ancestries.ancestriesmiscellaneous", value: "clear"},
 							];
 						}
-						fauxEntry.href.path = "ancestries.html";
+						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@companion":
 					case "@familiar":
-						fauxEntry.href.path = "companionsfamiliars.html";
+						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
+						fauxEntry.href.hover = {
+							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
+							source,
+						};
+						this._recursiveRender(fauxEntry, textStack, meta);
+						break;
+					case "@familiarAbility":
+						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_COMPANIONS_FAMILIARS,
 							source,
@@ -2095,7 +2148,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@feat":
-						fauxEntry.href.path = "feats.html";
+						fauxEntry.href.path = UrlUtil.PG_FEATS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_FEATS,
 							source,
@@ -2103,7 +2156,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@hazard":
-						fauxEntry.href.path = "hazards.html";
+						fauxEntry.href.path = UrlUtil.PG_HAZARDS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_HAZARDS,
 							source,
@@ -2111,7 +2164,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@variantrule":
-						fauxEntry.href.path = "variantrules.html";
+						fauxEntry.href.path = UrlUtil.PG_VARIANTRULES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_VARIANTRULES,
 							source,
@@ -2119,7 +2172,7 @@ function Renderer () {
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@table":
-						fauxEntry.href.path = "tables.html";
+						fauxEntry.href.path = UrlUtil.PG_TABLES;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_TABLES,
 							source,
@@ -2277,11 +2330,13 @@ function Renderer () {
 	/**
 	 * Helper function to render an entity using this renderer
 	 * @param entry
+	 * @param opts
 	 * @returns {string}
 	 */
-	this.render = function (entry) {
+	this.render = function (entry, opts) {
+		opts = opts || {};
 		const tempStack = [];
-		this.recursiveRender(entry, tempStack);
+		this.recursiveRender(entry, tempStack, opts);
 		return tempStack.join("");
 	};
 
@@ -2833,7 +2888,7 @@ Renderer.utils = {
 		let source;
 		const traitsHtml = [];
 		for (let trait of traits.sort(SortUtil.sortTraits)) {
-			[trait, source] = trait.split("|") || [];
+			[trait, source] = trait.split("|");
 			const hash = BrewUtil.hasSourceJson(source) ? UrlUtil.encodeForHash([Parser.getTraitName(trait), source]) : UrlUtil.encodeForHash([Parser.getTraitName(trait)]);
 			const url = `${UrlUtil.PG_TRAITS}#${hash}`;
 			source = source || "TRT";
@@ -3261,12 +3316,17 @@ Renderer.affliction = {
 };
 
 Renderer.ancestry = {
-	getCompactRenderedString (anc, opts) {
+	getCompactRenderedString (it, opts) {
+		if (it.__prop === "ancestry") return Renderer.ancestry.getRenderedAncestry(it, opts);
+		if (it.__prop === "heritage") return Renderer.ancestry.getRenderedHeritage(it, opts);
+		if (it.__prop === "versatileHeritage") return Renderer.ancestry.getRenderedVersatileHeritage(it, opts);
+	},
+
+	getRenderedAncestry (anc, opts) {
 		// FIXME: This is now less bad
 		opts = opts || {};
-		const renderer = Renderer.get();
+		const renderer = Renderer.get().setFirstSection(true);
 		const renderStack = [];
-		renderer.setFirstSection(true);
 		renderStack.push(`${Renderer.utils.getNameDiv(anc, {page: UrlUtil.PG_ANCESTRIES, type: "Ancestry", ...opts})}`)
 		renderStack.push(`${Renderer.utils.getDividerDiv()}`)
 		renderStack.push(`<div class="pf2-sidebar--compact">`)
@@ -3301,6 +3361,20 @@ Renderer.ancestry = {
 		renderStack.push(`</div>`)
 		if (!opts.noPage) renderStack.push(Renderer.utils.getPageP(anc));
 		return renderStack.join("");
+	},
+
+	getRenderedHeritage (her, opts) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		renderer.recursiveRender({type: "pf2-h3", name: her.name, entries: her.entries}, renderStack);
+		return `${renderStack.join("")}`;
+	},
+
+	getRenderedVersatileHeritage (vHer, opts) {
+		const renderer = Renderer.get().setFirstSection(true);
+		const renderStack = [];
+		renderer.recursiveRender({type: "pf2-h2", name: vHer.name, entries: vHer.entries}, renderStack);
+		return `${renderStack.join("")}`;
 	},
 
 	pGetFluff (ancestry) {
@@ -3347,8 +3421,9 @@ Renderer.background = {
 
 Renderer.companionfamiliar = {
 	getRenderedString (it, opts) {
-		if (it.type === "Companion") return Renderer.companion.getRenderedString(it, opts);
-		if (it.type === "Familiar") return Renderer.familiar.getRenderedString(it, opts);
+		if (it.__prop === "familiarAbility") return Renderer.familiar.getRenderedFamiliarAbility(it, opts)
+		if (it.__prop === "companion") return Renderer.companion.getRenderedString(it, opts);
+		if (it.__prop === "familiar") return Renderer.familiar.getRenderedString(it, opts);
 	},
 };
 Renderer.companion = {
@@ -3382,10 +3457,17 @@ Renderer.familiar = {
 		${Renderer.utils.getTraitsDiv(familiar.traits)}
 		${familiar.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${familiar.alignment}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Required Number of Abilities&nbsp;</strong>${familiar.requires}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${familiar.granted.join(", ")}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${Renderer.get().render(familiar.granted.join(", "))}</p>
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
 		${Renderer.utils.getPageP(familiar)}`;
+	},
+
+	getRenderedFamiliarAbility (it, opts) {
+		// TODO:
+		return `${Renderer.utils.getNameDiv(it, {type: `${it.type} Ability`})}
+			${Renderer.utils.getDividerDiv()}
+			${Renderer.generic.getRenderedEntries(it)}`;
 	},
 };
 
@@ -3718,11 +3800,7 @@ Renderer.creature = {
 
 	getRenderedAbility (ability, options) {
 		options = options || {};
-
 		const renderer = Renderer.get();
-		const entryStack = [];
-		renderer.recursiveRender(ability.entries, entryStack, {isAbility: true});
-
 		const buttonClass = Parser.stringToSlug(`ab ${ability.name}`);
 
 		let trts = []
@@ -3743,8 +3821,8 @@ Renderer.creature = {
 					${ability.frequency ? `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(ability.frequency)}` : ""}
 					${ability.requirements ? `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(ability.requirements)}` : ""}
 					${ability.trigger ? `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(ability.trigger)}` : ""}
-					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect</strong>" : ""}
-					${entryStack.join("")}
+					${ability.frequency || ability.requirements || ability.trigger ? "<strong>Effect&nbsp;</strong>" : ""}
+					${(ability.entries || []).map(it => renderer.render(it, {isAbility: true})).join(" ")}
 					</span></p>
 					${renderedGenericAbility || ""}`;
 	},
@@ -3907,7 +3985,7 @@ Renderer.deity = {
 		const textStack = [""];
 		if (deity.images) {
 			const img = deity.images[0];
-			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
+			if (img.includes("2e.aonprd.com")) textStack.push(`<a target="_blank" rel="noopener noreferrer" title="Shift/Ctrl to open in a new window/tab." href="${img}">Images available on the Archives of Nethys.</a>`);
 			else textStack.push(`<p><img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="${img}" alt="No Image Found."></p>`);
 		}
 		return textStack.join("");
@@ -4236,6 +4314,7 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
+			// FIXME: We should calculate the items name if we want to link to specific variants.
 			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t}}`).join(", "))});`);
@@ -4316,57 +4395,13 @@ Renderer.item = {
 		}
 
 		const itemData = await DataUtil.item.loadJSON();
-		const itemList = await Renderer.item._pGetAndProcItems(itemData);
 		const baseItems = itemData.baseitem;
-		const allItems = [...itemList, ...baseItems];
+		const allItems = [...itemData.item, ...baseItems];
 		Renderer.item._builtLists[kBlacklist] = allItems;
 
 		Renderer.item._unlockBuildList();
 		if (opts.fnCallback) return opts.fnCallback(allItems);
 		return allItems;
-	},
-
-	async _pGetAndProcItems (itemData) {
-		let items = []
-		itemData.item.forEach((it) => {
-			if (!it.generic) items.push(it)
-			else items.push(...Renderer.item._createVariants(it))
-		});
-		return items
-	},
-
-	_getVariantName (variant, genericName) {
-		let name = ""
-		if (!genericName.toLowerCase().includes(variant.type.toLowerCase()) && !variant.type.toLowerCase().includes(genericName.toLowerCase())) {
-			name = `${variant.type} ${genericName}`.toTitleCase()
-		} else {
-			name = variant.type.toTitleCase()
-		}
-		return name
-	},
-
-	_createVariants (genericItem) {
-		let items = [genericItem]
-		if (genericItem.variants) {
-			genericItem.variants.forEach((v) => {
-				let varItem = MiscUtil.copy(genericItem)
-				varItem.name = this._getVariantName(v, genericItem.name)
-				varItem.level = v.level
-				if (v.source) varItem.source = v.source
-				varItem.otherSources = v.otherSources
-				if (v.page) varItem.page = v.page
-				varItem.price = v.price
-				varItem.bulk = v.bulk
-				varItem.shieldStats = v.shieldStats
-				varItem.craftReq = v.craftReq
-				if (v.traits) varItem.traits = genericItem.traits.concat(v.traits)
-				varItem.entries.push(...v.entries)
-				varItem.generic = "V"
-				delete varItem.variants
-				items.push(varItem)
-			});
-		}
-		return items
 	},
 
 	async getItemsFromHomebrew (homebrew) {
@@ -4377,8 +4412,15 @@ Renderer.item = {
 		return Renderer.utils.pGetFluff({
 			entity: item,
 			fluffProp: "itemFluff",
-			fluffUrl: `data/fluff-items.json`,
+			fluffBaseUrl: `data/items/`,
 		});
+	},
+
+	getRenderedFluff (item) {
+		const textStack = [""];
+		const renderer = Renderer.get().setFirstSection(true)
+		if (item.entries) item.entries.forEach(l => renderer.recursiveRender(l, textStack));
+		return textStack.join("");
 	},
 };
 
@@ -5482,9 +5524,9 @@ Renderer.hover = {
 							</style>
 						</head><body class="rd__body-popout">
 						<div class="hwin hoverbox--popout hwin--popout"></div>
-						<script src="js/parser.js"></script>
-						<script src="js/utils.js"></script>
-						<script src="lib/jquery.js"></script>
+						<script type="text/javascript" src="js/parser.js"></script>
+						<script type="text/javascript" src="js/utils.js"></script>
+						<script type="text/javascript" src="lib/jquery.js"></script>
 						</body></html>
 					`);
 
@@ -5744,7 +5786,7 @@ Renderer.hover = {
 			case UrlUtil.PG_SPELLS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/spells/`, "spell");
 			case UrlUtil.PG_RITUALS:
-				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/rituals/", "ritual");
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "rituals.json", "ritual");
 			case UrlUtil.PG_BESTIARY:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, `data/bestiary/`, "creature");
 			case UrlUtil.PG_ITEMS: {
@@ -5784,29 +5826,9 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar"]);
-			case UrlUtil.PG_ANCESTRIES: {
-				// FIXME:
-				const loadKey = UrlUtil.PG_ANCESTRIES;
-
-				await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
-					page,
-					source,
-					hash,
-					loadKey,
-					async () => {
-						const brewData = await BrewUtil.pAddBrewData();
-						if (brewData.ancestry) Renderer.hover._pCacheAndGet_populate(page, {ancestry: brewData.ancestry}, "ancestry");
-						if (brewData.versatileHeritage) Renderer.hover._pCacheAndGet_populate(page, {versatileHeritage: brewData.versatileHeritage}, "versatileHeritage");
-
-						const data = await DataUtil.ancestry.loadJSON();
-						Renderer.hover._pCacheAndGet_populate(page, data, "ancestry");
-						Renderer.hover._pCacheAndGet_populate(page, data, "versatileHeritage");
-					},
-				);
-
-				return Renderer.hover._getFromCache(page, source, hash, opts);
-			}
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility"]);
+			case UrlUtil.PG_ANCESTRIES:
+				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
 				return Renderer.hover._pCacheAndGet_pLoadCustom(page, source, hash, opts, "deities.json", "deity", null, "deity");
 			case UrlUtil.PG_HAZARDS:
@@ -5827,6 +5849,7 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
 			case UrlUtil.PG_TRAITS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, "TRT", hash, {sourceOverride: "TRT", ...opts}, "traits.json", "trait");
+
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {
 				const loadKey = UrlUtil.PG_QUICKREF;
@@ -5910,7 +5933,7 @@ Renderer.hover = {
 
 				return Renderer.hover._getFromCache(page, source, hash, opts);
 			}
-			// enregion
+			// endregion
 
 			// region per-page fluff
 			case `fluff__${UrlUtil.PG_BESTIARY}`:
@@ -5972,6 +5995,7 @@ Renderer.hover = {
 
 		data[listProp].forEach(it => {
 			const itHash = (opts.fnGetHash || UrlUtil.URL_TO_HASH_BUILDER[page])(it);
+			it.__prop = listProp;
 			if (opts.fnMutateItem) opts.fnMutateItem(listProp, it);
 			const source = opts.sourceOverride || it.source;
 			Renderer.hover._addToCache(page, source, itHash, it);
@@ -6074,6 +6098,55 @@ Renderer.hover = {
 				await Renderer.hover._pCacheAndGet_pLoadSingleBrew(page, opts, listProps, itemModifier);
 				const data = await DataUtil[loader].loadJSON();
 				Renderer.hover._pCacheAndGet_handleSingleData(page, opts, data, listProps, itemModifier);
+			},
+		);
+
+		return Renderer.hover._getFromCache(page, source, hash, opts);
+	},
+
+	async _pCacheAndGet_pLoadAncestries (page, source, hash, opts) {
+		const loadKey = UrlUtil.PG_ANCESTRIES;
+
+		await Renderer.hover._pCacheAndGet_pDoLoadWithLock(
+			page,
+			source,
+			hash,
+			loadKey,
+			async () => {
+				const addToIndex = (anc) => {
+					anc = MiscUtil.copy(anc);
+					anc.__prop = "ancestry";
+					const ancHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](anc);
+					Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || SRC_CRB, ancHash, anc);
+
+					(anc.heritage || []).forEach(h => {
+						h = MiscUtil.copy(h);
+						h.__prop = "heritage"
+						const hHash = `${ancHash}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`;
+						Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || h.source || SRC_CRB, hHash, h);
+						Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, h.source || SRC_CRB, hHash, h);
+					});
+				};
+
+				const addHeritageToIndex = (h, prop) => {
+					h = MiscUtil.copy(h);
+					h.__prop = prop;
+					const anc = ancestryData.ancestry.find(it => it.name === h.ancestryName && it.source === (h.ancestrySource || SRC_CRB));
+					let ancHash = HASH_BLANK;
+					if (anc) ancHash = UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ANCESTRIES](anc);
+
+					const hHash = `${ancHash}${HASH_PART_SEP}${UrlUtil.getAncestriesPageStatePart({heritage: h})}`;
+					if (anc) Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, anc.source || h.source || SRC_CRB, hHash, h);
+					Renderer.hover._addToCache(UrlUtil.PG_ANCESTRIES, h.source || SRC_CRB, hHash, h);
+				};
+
+				const ancestryData = await DataUtil.ancestry.loadJSON();
+				const brewData = await BrewUtil.pAddBrewData();
+				(brewData.ancestry || []).forEach(a => addToIndex(a));
+				for (const h of (brewData.heritage || [])) addHeritageToIndex(h, "heritage");
+				for (const vh of (brewData.versatileHeritage || [])) addHeritageToIndex(vh, "versatileHeritage");
+				ancestryData.ancestry.forEach(a => addToIndex(a));
+				ancestryData.versatileHeritage.forEach(vh => addHeritageToIndex(vh, "versatileHeritage"));
 			},
 		);
 
@@ -6381,9 +6454,10 @@ Renderer.hover = {
 			case UrlUtil.PG_ITEMS:
 				return Renderer.item.getCompactRenderedString;
 			case UrlUtil.PG_BESTIARY:
-				return (it) => Renderer.creature.getCompactRenderedString(it, {
+				return (it, opts) => Renderer.creature.getCompactRenderedString(it, {
 					showScaler: true,
 					isScaled: it._originalLvl != null,
+					...opts,
 				});
 			case UrlUtil.PG_ARCHETYPES:
 				return Renderer.archetype.getCompactRenderedString;
@@ -6398,6 +6472,7 @@ Renderer.hover = {
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
 				return Renderer.companionfamiliar.getRenderedString;
 			case UrlUtil.PG_ANCESTRIES:
+				// FIXME: heritage rendering
 				return Renderer.ancestry.getCompactRenderedString;
 			case UrlUtil.PG_DEITIES:
 				return Renderer.deity.getCompactRenderedString;
@@ -6645,14 +6720,8 @@ Renderer._stripTagLayer = function (str) {
 					case "@sub":
 						return text;
 
-					case "@h":
-						return "Hit: ";
-
 					case "@dc":
 						return `DC ${text}`;
-
-					case "@atk":
-						return Renderer.attackTagToFull(text);
 
 					case "@as": {
 						// TODO
@@ -6700,6 +6769,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@pf2etools":
 					case "@adventure":
 					case "@book":
+					case "@quickref":
 					case "@filter":
 					case "@footnote":
 					case "@link":
@@ -6733,6 +6803,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@language":
 					case "@object":
 					case "@ancestry":
+					case "@versatileHeritage":
 					case "@reward":
 					case "@spell":
 					case "@status":
@@ -6744,6 +6815,9 @@ Renderer._stripTagLayer = function (str) {
 					case "@ritual":
 					case "@settlement":
 					case "@deity":
+					case "@familiar":
+					case "@familiarAbility":
+					case "@companion":
 					case "@variantrule": {
 						const parts = Renderer.splitTagByPipe(text);
 						return parts.length >= 3 ? parts[2] : parts[0];

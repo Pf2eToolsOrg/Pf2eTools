@@ -1481,53 +1481,36 @@ class InitiativeTracker {
 InitiativeTracker._GET_STAT_COLUMN_HR = () => ({isHr: true});
 InitiativeTracker.STAT_COLUMNS = {
 	hr0: InitiativeTracker._GET_STAT_COLUMN_HR(),
-	hpFormula: {
-		name: "HP Formula",
-		get: mon => (mon.hp || {}).formula,
-	},
 	armorClass: {
 		name: "Armor Class",
 		abv: "AC",
-		get: mon => mon.ac[0] ? (mon.ac[0].ac || mon.ac[0]) : null,
+		get: cr => cr.ac ? cr.ac.default : null,
 	},
-	passivePerception: {
-		name: "Passive Perception",
-		abv: "PP",
-		get: mon => mon.passive,
+	perception: {
+		name: "Perception",
+		abv: "P",
+		get: cr => cr.perception ? cr.perception.default : null,
 	},
 	speed: {
 		name: "Speed",
 		abv: "SPD",
 		get: mon => Math.max(0, ...Object.values(mon.speed || {})
-			.map(it => it.number ? it.number : it)
 			.filter(it => typeof it === "number")),
 	},
 	spellDc: {
 		name: "Spell DC",
 		abv: "DC",
-		get: mon => Math.max(0, ...(mon.spellcasting || [])
-			.filter(it => it.headerEntries)
-			.map(it => {
-				return it.headerEntries.map(it => {
-					const found = [0];
-					it.replace(/DC (\d+)/g, (...m) => found.push(Number(m[1])));
-					return Math.max(...found);
-				}).filter(Boolean)
-			})),
-	},
-	legendaryActions: {
-		name: "Legendary Actions",
-		abv: "LA",
-		get: mon => mon.legendaryActions || mon.legendary ? 3 : null,
+		get: cr => Math.max(0, ...(cr.spellcasting || [])
+			.filter(it => it.DC).map(it => it.DC)),
 	},
 	hr1: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
-		Parser.ABIL_ABVS.forEach(it => {
+		["Fort", "Ref", "Will"].forEach(it => {
 			out[`${it}Save`] = {
 				name: `${Parser.attAbvToFull(it)} Save`,
 				abv: it.toUpperCase(),
-				get: mon => mon.save && mon.save[it] ? mon.save[it] : Parser.getAbilityModifier(mon[it]),
+				get: cr => cr.savingThrows[it].default,
 			};
 		});
 		return out;
@@ -1539,19 +1522,7 @@ InitiativeTracker.STAT_COLUMNS = {
 			out[`${it}Bonus`] = {
 				name: `${Parser.attAbvToFull(it)} Bonus`,
 				abv: it.toUpperCase(),
-				get: mon => Parser.getAbilityModifier(mon[it]),
-			};
-		});
-		return out;
-	})(),
-	hr3: InitiativeTracker._GET_STAT_COLUMN_HR(),
-	...(() => {
-		const out = {};
-		Parser.ABIL_ABVS.forEach(it => {
-			out[`${it}Score`] = {
-				name: `${Parser.attAbvToFull(it)} Score`,
-				abv: it.toUpperCase(),
-				get: mon => mon[it],
+				get: cr => cr.abilityMods[it.uppercaseFirst()],
 			};
 		});
 		return out;
@@ -1559,11 +1530,11 @@ InitiativeTracker.STAT_COLUMNS = {
 	hr4: InitiativeTracker._GET_STAT_COLUMN_HR(),
 	...(() => {
 		const out = {};
-		Object.keys(Parser.SKILL_TO_ATB_ABV).sort(SortUtil.ascSort).forEach(s => {
+		Object.keys(Parser.SKILL_TO_ATB_ABV).filter(it => it !== "lore").sort(SortUtil.ascSort).forEach(s => {
 			out[s.toCamelCase()] = {
 				name: s.toTitleCase(),
 				abv: Parser.skillToShort(s).toUpperCase(),
-				get: mon => mon.skill && mon.skill[s] ? mon.skill[s] : Parser.getAbilityModifier(mon[Parser.skillToAbilityAbv(s)]),
+				get: cr => cr.skills && cr.skills[s.uppercaseFirst()] ? cr.skills[s.uppercaseFirst()].default : cr.abilityMods[Parser.skillToAbilityAbv(s).uppercaseFirst()],
 			};
 		});
 		return out;

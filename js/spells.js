@@ -84,7 +84,7 @@ class SpellsPage extends ListPage {
 				<span class="bold col-6 pl-0">${spell.name}</span>
 				<span class="capitalise col-1-5 text-center">${Parser.spLevelToFull(spell.level)}</span>
 				<span class="col-2-9 text-center">${time}</span>
-				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAndSubschoolsAbvsToFull(spell.school, spell.subschools)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
+				<span class="capitalise col-1-6 sp__school_${spell.school} text-center" title="${Parser.spSchoolAbvToFull(spell.school)}" ${Parser.spSchoolAbvToStyle(spell.school)}>${school}</span>
 			</a>
 		</li>`).contextmenu(evt => ListUtil.openSubContextMenu(evt, listItem));
 
@@ -182,6 +182,7 @@ class SpellsPage extends ListPage {
 		this._addSpells(homebrew.spell);
 		BrewUtil.bind({
 			list: this._list,
+			pHandleBrew: this._handleBrew.bind(this),
 		});
 		BrewUtil.makeBrewButton("manage-brew");
 		BrewUtil.bind({
@@ -189,6 +190,11 @@ class SpellsPage extends ListPage {
 			sourceFilter: this._pageFilter.sourceFilter,
 		});
 		await ListUtil.pLoadState();
+	}
+
+	_handleBrew (homebrew) {
+		this._addSpells(homebrew.spell);
+		return Promise.resolve();
 	}
 
 	async _pPageInit (loadedSources) {

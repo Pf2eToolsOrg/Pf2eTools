@@ -163,14 +163,28 @@ class ItemsPage extends ListPage {
 		function buildStatsTab () {
 			$content.append(RenderItems.$getRenderedItem(item));
 		}
+		async function buildFluffTab () {
+			const pGetFluff = async () => {
+				const fluff = await Renderer.item.pGetFluff(item);
+				return fluff ? fluff.entries || [] : [];
+			}
+			$content.append(Renderer.item.getRenderedFluff({entries: await pGetFluff()}))
+		}
 
 		const statTab = Renderer.utils.tabButton(
 			"Item",
 			() => {},
 			buildStatsTab,
 		);
+		const fluffTab = Renderer.utils.tabButton(
+			"Info",
+			() => {},
+			buildFluffTab,
+		);
+		const tabs = [statTab];
+		if (item.hasFluff) tabs.push(fluffTab);
 
-		Renderer.utils.bindTabButtons(statTab);
+		Renderer.utils.bindTabButtons(...tabs);
 
 		ListUtil.updateSelected();
 	}

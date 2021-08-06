@@ -33,7 +33,7 @@ class PageFilterBestiary extends PageFilter {
 			},
 			filterOpts: {
 				"Alignment": {
-					displayFn: Parser.creatureAlignToFull,
+					displayFn: Parser.alignAbvToFull,
 					itemSortFn: SortUtil.ascSort,
 				},
 			},

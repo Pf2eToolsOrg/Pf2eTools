@@ -556,12 +556,6 @@ const RuneListUtil = {
 		itemIndexes.forEach(ix => this._updateAddSubtractButton(ix));
 	},
 
-	async pSaveList () {
-		await StorageUtil.pSetForPage("runelist")
-	},
-
-	async pDoLoadState () {},
-
 	openContextMenu (evt, listItem) {
 	},
 

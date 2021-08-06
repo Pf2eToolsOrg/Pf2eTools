@@ -14,10 +14,7 @@ class DmMapper {
 		const chosenDoc = await SearchWidget.pGetUserAdventureSearch({
 			// TODO(5EB-1) expand this filter as more maps are added
 			fnFilterResults: doc => {
-				if (Parser.SOURCE_JSON_TO_FULL[doc.s]) { // For official sources, only show WDMM
-					return doc.s === SRC_WDMM
-				}
-				return true; // Allow all homebrew through
+				return !Parser.SOURCE_JSON_TO_FULL[doc.s];
 			},
 		});
 
