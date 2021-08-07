@@ -2058,6 +2058,7 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@bg":
 					case "@background":
 						fauxEntry.href.path = UrlUtil.PG_BACKGROUNDS;
 						fauxEntry.href.hover = {
