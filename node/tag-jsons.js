@@ -30,6 +30,7 @@ class TagJsons {
 		await ItemTag.pInit();
 		ActionTag.init();
 		TraitTag.init();
+		DeityTag.init();
 	}
 
 	static teardown () {
@@ -82,6 +83,7 @@ class TagJsons {
 							obj = SkillTag.tryRun(obj);
 							obj = SpellTag.tryRun(obj);
 							obj = FeatTag.tryRun(obj);
+							obj = DeityTag.tryRun(obj);
 							// obj = ItemTag.tryRun(obj);
 
 							return obj;
@@ -331,6 +333,52 @@ class ActionTag {
 }
 ActionTag._ACTIONS = {};
 ActionTag._ACTIONS_REGEX = null;
+
+class DeityTag {
+	static init () {
+		const deityData = ut.readJson(`./data/deities.json`);
+		deityData.deity.forEach(a => {
+			DeityTag._DEITIES[a.name] = {name: a.name, source: a.source};
+			// FIXME: Leaving parts of the deities name untagged (such as {@deity Abadar}'s) is ugly. MrVauxs unfortunately cannot figure out how to add such cases to be tagged as well.
+		});
+		DeityTag._DEITIES_REGEX = new RegExp(`(${Object.keys(DeityTag._DEITIES).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "g");
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@deity"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(DeityTag._DEITIES_REGEX, (...m) => {
+			const meta = DeityTag._DEITIES[m[1]];
+			const pipes = [meta.name];
+			if (meta.source !== SRC_CRB) pipes.push(meta.source);
+			if (meta.source === SRC_CRB && meta.name !== m[1]) pipes.push("");
+			if (meta.name !== m[1]) pipes.push(m[1]);
+			return `{@deity ${pipes.join("|")}}`
+		})
+	}
+}
+DeityTag._DEITIES = {};
+DeityTag._DEITIES_REGEX = null;
 
 /**
  * Args:
