@@ -1064,13 +1064,59 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You shape energy into one incorporeal tiny dragon (or serpentine creature) that flits around you. The specific dragon is random; roll {@dice 1d6} on the table below for each dragon evoked to determine which type of dragon you create. While the spell persists, you can command one of your dragons to spit a missile of energy at a creature within 60 feet by using a single action, which has the {@trait concentrate} trait. This is a ranged {@action Strike} that uses your spell attack bonus and deals {@dice 1d6} damage plus your spellcasting ability modifier, with the damage type depending on the dragon. A dragon's breath {@action Strike} uses and contributes to your multiple attack penalty. Once a dragon has used its breath {@action Strike}, it winks out of existence; when you have no dragons remaining, the spell ends."
+				"You shape energy into one incorporeal tiny dragon (or serpentine creature) that flits around you. The specific dragon is random; roll {@dice 1d6} on the table below for each dragon evoked to determine which type of dragon you create. While the spell persists, you can command one of your dragons to spit a missile of energy at a creature within 60 feet by using a single action, which has the {@trait concentrate} trait. This is a ranged {@action Strike} that uses your spell attack bonus and deals {@dice 1d6} damage plus your spellcasting ability modifier, with the damage type depending on the dragon. A dragon's breath {@action Strike} uses and contributes to your multiple attack penalty. Once a dragon has used its breath {@action Strike}, it winks out of existence; when you have no dragons remaining, the spell ends.",
+				{
+					"type": "table",
+					"colSizes": [
+						1,
+						4,
+						4
+					],
+					"rollable": true,
+					"rows": [
+						[
+							"{@dice D6}",
+							"Dragon",
+							"Breath Strike Type"
+						],
+						[
+							"1",
+							"Copper or black",
+							"Acid"
+						],
+						[
+							"2",
+							"Silver or white",
+							"Cold"
+						],
+						[
+							"3",
+							"Bronze or blue",
+							"Electricity"
+						],
+						[
+							"4",
+							"Brass, gold, or red",
+							"Fire"
+						],
+						[
+							"5",
+							"Green",
+							"Poison"
+						],
+						[
+							"6",
+							"Your choice of dragon",
+							"As the dragon"
+						]
+					]
+				}
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "You shape 1 additional dragon, and the {@action Strike} damage increases by {@dice 1d6}. D6 Dragon Breath {@action Strike} Type 1 Copper or black Acid 2 Silver or white Cold 3 Bronze or blue Electricity 4 Brass, gold, or red Fire 5 Green Poison 6 Your choice of dragon As the dragon"
+					"entry": "You shape 1 additional dragon, and the {@action Strike} damage increases by {@dice 1d6}."
 				},
 				"x": null,
 				"no_x": null
@@ -1907,8 +1953,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"Glowing letters assemble in the air, providing a transcription of the target's speech in all languages you speak. For the spell's duration, any words spoken aloud by the target are spelled out in letters in front of them. When you Cast the Spell, you can choose whether these letters are visible to all creatures or only certain creatures you specify. Any words the target mouths silently are similarly spelled out, allowing the target to communicate silently or in areas where sound doesn't carry. This even allows the target to provide verbal casting components in such areas, but only if you choose to make the letters visible to all creatures. Furthermore, any of the target's auditory abilities can affect creatures even in areas where sound does not carry as long as you have made the glyphs visible to them and they have line of sight to the target; in this case, they gain the {@trait visual} trait. You can {@action Dismiss} the spell.",
-				"lightning You control electricity, thunder, and storms."
+				"Glowing letters assemble in the air, providing a transcription of the target's speech in all languages you speak. For the spell's duration, any words spoken aloud by the target are spelled out in letters in front of them. When you {@action Cast a Spell||Cast the Spell}, you can choose whether these letters are visible to all creatures or only certain creatures you specify. Any words the target mouths silently are similarly spelled out, allowing the target to communicate silently or in areas where sound doesn't carry. This even allows the target to provide verbal casting components in such areas, but only if you choose to make the letters visible to all creatures. Furthermore, any of the target's {@trait auditory} abilities can affect creatures even in areas where sound does not carry as long as you have made the glyphs visible to them and they have line of sight to the target; in this case, they gain the {@trait visual} trait. You can {@action Dismiss} the spell."
 			],
 			"heightened": {
 				"heightened": false,
@@ -2850,13 +2895,14 @@
 			"entries": [
 				"You channel the might of dragons into your voice, letting out a roar that engenders respect in dragonkind but that instills fear in most other creatures. The impressive roar grants you a +2 circumstance bonus to {@skill Diplomacy} checks for 10 minutes against dragons that were in the area at the time of casting.",
 				"All enemies within the area other than dragons must attempt a Will save; to these enemies, roar of the wyrm is a {@trait fear} effect.",
+				"Roar of the wyrm affects non-dragon creatures with deep ties to dragonkind (such as a barbarian with the draconic instinct, a sorcerer with the draconic bloodline, or a member of a culture that reveres dragons) as if they had the {@trait dragon} trait. The GM decides if a creature is aligned enough with dragonkind to be affected in this way. Champions, clerics, and other faithful employ a variety of holy (and unholy) instruments to demonstrate the majesty of their deity and triumphantly vanquish the foes of their faith.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
 						"Failure": "The creature is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The creature is {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round. Roar of the wyrm affects non-dragon creatures with deep ties to dragonkind (such as a barbarian with the draconic instinct, a sorcerer with the draconic bloodline, or a member of a culture that reveres dragons) as if they had the {@trait dragon} trait. The GM decides if a creature is aligned enough with dragonkind to be affected in this way. Champions, clerics, and other faithful employ a variety of holy (and unholy) instruments to demonstrate the majesty of their deity and triumphantly vanquish the foes of their faith."
+						"Critical Failure": "The creature is {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round."
 					}
 				}
 			],
