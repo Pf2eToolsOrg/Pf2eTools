@@ -31,6 +31,7 @@ class TagJsons {
 		ActionTag.init();
 		TraitTag.init();
 		DeityTag.init();
+		GroupTag.init();
 	}
 
 	static teardown () {
@@ -84,6 +85,7 @@ class TagJsons {
 							obj = SpellTag.tryRun(obj);
 							obj = FeatTag.tryRun(obj);
 							obj = DeityTag.tryRun(obj);
+							obj = GroupTag.tryRun(obj);
 							// obj = ItemTag.tryRun(obj);
 
 							return obj;
@@ -379,6 +381,47 @@ class DeityTag {
 }
 DeityTag._DEITIES = {};
 DeityTag._DEITIES_REGEX = null;
+
+class GroupTag {
+	static init () {
+		const groupData = ut.readJson(`./data/groups.json`);
+		groupData.group.forEach(a => {
+			GroupTag._GROUPS[a.name] = {name: a.name, source: a.source};
+		});
+		GroupTag._GROUPS_REGEX = new RegExp(`(${Object.keys(GroupTag._GROUPS).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "gi");
+	}
+
+	static tryRun (it) {
+		return TaggerUtils.WALKER.walk(
+			it,
+			{
+				string: (str) => {
+					const ptrStack = {_: ""};
+					TaggerUtils.walkerStringHandler(
+						["@group"],
+						ptrStack,
+						0,
+						0,
+						str,
+						{
+							fnTag: this._fnTag,
+						},
+					);
+					return ptrStack._;
+				},
+			},
+		);
+	}
+
+	static _fnTag (str) {
+		return str.replace(GroupTag._GROUPS_REGEX, (...m) => {
+			const groupMeta = GroupTag._GROUPS[m[1].toLowerCase()];
+			return `{@group ${m[1]}}`
+		})
+	}
+}
+GroupTag._GROUPS = {};
+GroupTag._GROUPS_REGEX = null;
 
 /**
  * Args:
