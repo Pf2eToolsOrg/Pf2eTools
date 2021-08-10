@@ -354,7 +354,17 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "Add the following options to the list you can choose from. • Fish Tail You gain a swim Speed equal to your land Speed. • Owl Eyes You gain darkvision. • Wings You gain a fly Speed equal to your land Speed."
+						"entry": [
+							"Add the following options to the list you can choose from.",
+							{
+								"type": "list",
+								"items": [
+									"{@b Fish Tail} You gain a swim Speed equal to your land Speed.",
+									"{@b Owl Eyes} You gain darkvision.",
+									"{@b Wings} You gain a fly Speed equal to your land Speed."
+								]
+							}
+						]
 					}
 				],
 				"no_x": null
@@ -4086,7 +4096,7 @@
 				"S": false,
 				"V": true
 			},
-			"trigger": "You attempt a check to Recall",
+			"trigger": "You attempt a check to {@action Recall Knowledge} about a creature, but you haven't rolled yet.",
 			"range": {
 				"type": null
 			},
@@ -4097,7 +4107,6 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Knowledge about a creature, but you haven't rolled yet.",
 				"You have a preternatural ability to remember details about your foes. Roll the triggering check twice and use the better result."
 			],
 			"heightened": {
@@ -8528,7 +8537,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage dealt to a living creature by {@dice 1d6} or increase the Hit Points regained by undead by 6. Monk"
+					"entry": "Increase the damage dealt to a living creature by {@dice 1d6} or increase the Hit Points regained by undead by 6."
 				},
 				"x": null,
 				"no_x": null
