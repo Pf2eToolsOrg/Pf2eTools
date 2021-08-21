@@ -921,9 +921,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h1" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h1 rd__h${entry.blue ? " pf2-h1--blue" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
 							</p>`;
 		}
@@ -969,9 +970,10 @@ function Renderer () {
 		}
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
 							</p>`;
 		}
@@ -990,9 +992,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h3" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h3 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
 			if (entry.level) textStack[0] += `<span class="pf2-h3--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
 			textStack[0] += `</p>`;
@@ -1012,9 +1015,10 @@ function Renderer () {
 		textStack[0] += `<${this.wrapperTag} class="pf2-wrp-h4" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
-							<span class="entry-title-inner">${entry.name}</span>
+							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
 			if (entry.level) textStack[0] += `<span class="pf2-h4--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
 			textStack[0] += `</p>`;
@@ -1035,7 +1039,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -1059,8 +1063,9 @@ function Renderer () {
 		textStack[0] += `<div class="pf2-sidebar ${(entry.style || []).join(" ")}" ${dataString}>`;
 
 		if (entry.name != null) {
+			const renderer = Renderer.get();
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${entry.name}</span></p>`;
+			textStack[0] += `<p class="pf2-sidebar__title" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
 		}
 		if (entry.entries) {
 			const len = entry.entries.length;
@@ -2066,6 +2071,7 @@ function Renderer () {
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@bg":
 					case "@background":
 						fauxEntry.href.path = UrlUtil.PG_BACKGROUNDS;
 						fauxEntry.href.hover = {
@@ -3233,6 +3239,10 @@ Renderer.action = {
 					if (it.actionType.heritage) renderStack.push(`; `)
 				}
 				if (it.actionType.heritage) renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
+				renderStack.push(`</p>`)
+			}
+			if (it.actionType.variantrule) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Variant Rule&nbsp;</strong>${renderer.render(`{@variantrule ${it.actionType.variantrule}}`)}`);
 				renderStack.push(`</p>`)
 			}
 		}
@@ -4594,9 +4604,9 @@ Renderer.spell = {
 		if (sp.requirements != null) castPart += `; <strong>Requirements&nbsp;</strong>${renderer.render(sp.requirements)}`;
 
 		const targetingParts = [];
-		if (sp.range && sp.range.type != null) targetingParts.push(`<strong>Range&nbsp;</strong>${sp.range.entry}`);
-		if (sp.area != null) targetingParts.push(`<strong>Area&nbsp;</strong>${sp.area.entry}`);
-		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${sp.targets}`);
+		if (sp.range && sp.range.type != null) targetingParts.push(`<strong>Range&nbsp;</strong>${renderer.render(sp.range.entry)}`);
+		if (sp.area != null) targetingParts.push(`<strong>Area&nbsp;</strong>${renderer.render(sp.area.entry)}`);
+		if (sp.targets != null) targetingParts.push(`<strong>Targets&nbsp;</strong>${renderer.render(sp.targets)}`);
 
 		const stDurationParts = [];
 		if (sp.savingThrow != null) stDurationParts.push(`<strong>Saving Throw&nbsp;</strong>${sp.savingThrowBasic ? "basic " : ""}${sp.savingThrow}`);

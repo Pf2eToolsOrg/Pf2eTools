@@ -7675,7 +7675,51 @@
 			"dismiss": false,
 			"entries": [
 				"You spew energy from your mouth, dealing {@dice 5d6} damage. The area, damage type, and save depend on the dragon type in your bloodline.",
-				"Dragon Type Area and Damage Type Saving Throw Black or copper 60-foot line of acid Reflex Blue or bronze 60-foot line of electricity Reflex Brass 60-foot line of fire Reflex Green 30-foot cone of poison Fortitude Gold or red 30-foot cone of fire Reflex Silver or white 30-foot cone of cold Reflex."
+				{
+					"type": "table",
+					"colSizes": [
+						3,
+						4,
+						2
+					],
+					"rows": [
+						[
+							"Dragon Type",
+							"Area and Damage Type",
+							"Saving Throw"
+						],
+						[
+							"Black or copper",
+							"60-foot line of acid",
+							"Reflex"
+						],
+						[
+							"Blue or bronze",
+							"60-foot line of electricity",
+							"Reflex"
+						],
+						[
+							"Brass",
+							"60-foot line of fire",
+							"Reflex"
+						],
+						[
+							"Green",
+							"30-foot cone of poison",
+							"Fortitude"
+						],
+						[
+							"Gold or red",
+							"30-foot cone of fire",
+							"Reflex"
+						],
+						[
+							"Silver or white",
+							"30-foot cone of cold",
+							"Reflex"
+						]
+					]
+				}
 			],
 			"heightened": {
 				"heightened": true,
@@ -8042,7 +8086,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"When you Cast this Spell, any targets\u2014including you\u2014can choose to immediately fall asleep. The spell ends for any creatures that don't choose to fall asleep. Sleepers join a shared dream, where they can communicate with one another as though they were in the same room. Individual targets leave this shared dream upon awakening, and if all the targets awaken, the spell ends."
+				"When you {@action Cast a Spell||Cast this Spell}, any targets\u2014including you\u2014can choose to immediately fall asleep. The spell ends for any creatures that don't choose to fall asleep. Sleepers join a shared dream, where they can communicate with one another as though they were in the same room. Individual targets leave this shared dream upon awakening, and if all the targets awaken, the spell ends."
 			],
 			"heightened": {
 				"heightened": false,
@@ -14806,8 +14850,6 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Focus Spells Some classes gain special spells that they cast using Focus Points instead of spell slots.",
-				"These focus spells are listed below, organized by class. The full rules for casting focus spells appear on page 300.",
 				"You inspire your allies to protect themselves more effectively.",
 				"You and all allies in the area gain a +1 status bonus to AC and saving throws, as well as resistance equal to half the spell's level to physical damage."
 			],
@@ -15515,7 +15557,7 @@
 				"S": true,
 				"V": false
 			},
-			"trigger": "You roll initiative and can see a creature, you succeed at an attack roll against a creature, or a creature fails a",
+			"trigger": "You roll initiative and can see a creature, you succeed at an attack roll against a creature, or a creature fails a saving throw against one of your spells.",
 			"range": {
 				"type": null
 			},
@@ -15526,7 +15568,6 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"saving throw against one of your spells.",
 				"Use a {@action Recall Knowledge} action, rolling the appropriate skill check to identify the triggering creature's abilities. You can roll your check twice and use the better result."
 			],
 			"heightened": {
@@ -16324,10 +16365,16 @@
 				"S": true,
 				"V": false
 			},
-			"trigger": "You or an ally within range attempts a skill check to",
+			"trigger": "You or an ally within range attempts a skill check to {@action Recall Knowledge}",
 			"range": {
-				"type": null
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
 			},
+			"targets": "you or the triggering ally",
 			"savingThrowBasic": false,
 			"duration": {
 				"type": null
@@ -16335,7 +16382,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"{@action Recall Knowledge} Range 30 feet; Targets you or the triggering ally You call upon your muse's deep mysteries, granting the target a greater ability to think and recall information. Roll the triggering {@action Recall Knowledge} skill check twice and use the better result."
+				"You call upon your muse's deep mysteries, granting the target a greater ability to think and recall information. Roll the triggering {@action Recall Knowledge} skill check twice and use the better result."
 			],
 			"heightened": {
 				"heightened": false,
@@ -20369,15 +20416,20 @@
 					"amount": 1
 				}
 			},
-			"targets": "1 metal weapon, up to 10 pieces of metal or metal-tipped ammunition, 1 suit of metal armor, or up to",
+			"targets": "1 metal weapon, up to 10 pieces of metal or metal-tipped ammunition, 1 suit of metal armor, or up to 1 bulk of metal material (such as coins) ",
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"1 bulk of metal material (such as coins) Duration 1 minute Your deity blesses base metals to transform them into precious materials. The target item transforms from its normal metal into cold iron, copper, gold, iron, silver, or steel (the details for these metals are found on pages 577\u2013579). An item transmuted in this way deals damage according to its new material. For example, a steel sword transmuted to cold iron would deal additional damage to a creature with a weakness to cold iron.",
+				"Your deity blesses base metals to transform them into precious materials. The target item transforms from its normal metal into {@item cold iron}, copper, gold, iron, silver, or steel (the details for these metals are found on pages 577\u2013579). An item transmuted in this way deals damage according to its new material. For example, a steel sword transmuted to {@item Cold Iron Weapon||cold iron} would deal additional damage to a creature with a weakness to cold iron.",
 				"This change is clearly magical and temporary, so the item's monetary value doesn't change; you couldn't transmute copper coins to gold and use those coins to purchase something or as a cost for a spell."
 			],
 			"heightened": {
@@ -20386,7 +20438,7 @@
 				"x": [
 					{
 						"level": 8,
-						"entry": "Add adamantine (page 578) and mithral (page 579) to the list of metals you can transform the item into."
+						"entry": "Add {@item adamantine} and {@item mithral} to the list of metals you can transform the item into."
 					}
 				],
 				"no_x": null
@@ -23285,7 +23337,7 @@
 			"dismiss": false,
 			"entries": [
 				"You ensure a secret remains safe from prying spies. Choose one piece of information that at least some of the targets know; you can target a creature only if it remains within range for the full minute during which you Cast the Spell. The spell grants those who know the piece of knowledge you have chosen a +4 status bonus to skill checks (typically {@skill Deception} checks) to conceal this knowledge and to saving throws against spells that specifically attempt to obtain this knowledge from them and effects that would force them to reveal it.",
-				"If you Cast this Spell again, any previous safeguard secret you had cast ends."
+				"If you {@action Cast a Spell||Cast this Spell} again, any previous safeguard secret you had cast ends."
 			],
 			"heightened": {
 				"heightened": false,
@@ -23513,7 +23565,7 @@
 				"S": false,
 				"V": true
 			},
-			"trigger": "You attempt a {@skill Perception} check to {@action Seek}, or you attempt a skill check to {@action Recall Knowledge} with a skill you're",
+			"trigger": "You attempt a {@skill Perception} check to {@action Seek}, or you attempt a skill check to {@action Recall Knowledge} with a skill you're trained in.",
 			"range": {
 				"type": null
 			},
@@ -23524,7 +23576,6 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"trained in.",
 				"Speaking a short prayer as you gather your thoughts, you're blessed to find that your deity gave you just the right bit of information for your situation. Roll the triggering check twice and use the better result."
 			],
 			"heightened": {
@@ -25282,7 +25333,7 @@
 			"dismiss": false,
 			"entries": [
 				"You attempt to calm the target by uttering soothing words in a calm and even tone. The target gains a +1 status bonus to Will saving throws. This bonus increases to +2 against {@trait emotion} effects.",
-				"In addition, when you Cast this Spell, you can attempt to counteract one {@trait emotion} effect on the target."
+				"In addition, when you {@action Cast a Spell||Cast this Spell}, you can attempt to counteract one {@trait emotion} effect on the target."
 			],
 			"heightened": {
 				"heightened": true,
@@ -25935,7 +25986,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"You form a spiritual link with another creature, allowing you to take in its pain. When you Cast this Spell and at the start of each of your turns, if the target is below maximum Hit Points, it regains 2 Hit Points (or the difference between its current and maximum Hit Points, if that's lower). You lose as many Hit Points as the target regained.",
+				"You form a spiritual link with another creature, allowing you to take in its pain. When you {@action Cast a Spell||Cast this Spell} and at the start of each of your turns, if the target is below maximum Hit Points, it regains 2 Hit Points (or the difference between its current and maximum Hit Points, if that's lower). You lose as many Hit Points as the target regained.",
 				"This is a spiritual transfer, so no effects apply that would increase the Hit Points the target regains or decrease the Hit Points you lose. This transfer also ignores any temporary Hit Points you or the target have. Since this effect doesn't involve positive or negative energy, spirit link works even if you or the target is undead. While the duration persists, you gain no benefit from regeneration or fast healing. You can {@action Dismiss} this spell, and if you're ever at 0 Hit Points, spirit link ends automatically."
 			],
 			"heightened": {
@@ -26248,7 +26299,48 @@
 			"dismiss": false,
 			"entries": [
 				"A deluge of colorful illusory paint, tools, or other symbols of art and artisanship drift down in the area. Roll {@dice 1d4} to determine the color of the illusion. Each creature in the area must attempt a Will save. A creature is unaffected on a success. On a failure or critical failure, the creature takes the results listed on the table relevant to the color.",
-				"{@dice 1d4} Color Failure Critical Failure 1 White {@condition Dazzled|CRB|Dazzled 1} round {@condition Dazzled|CRB|Dazzled 1} minute 2 Red {@condition Enfeebled|CRB|Enfeebled 1} for 1 round {@condition Enfeebled|CRB|Enfeebled 2} for 1 round 3 Yellow {@condition Frightened|CRB|Frightened 1} {@condition Frightened|CRB|Frightened 2} 4 Blue {@condition Clumsy} 1 for 1 round {@condition Clumsy} 2 for 1 round."
+				{
+					"type": "table",
+					"colSizes": [
+						1,
+						1,
+						3,
+						3
+					],
+					"rollable": true,
+					"rows": [
+						[
+							"{@dice 1d4}",
+							"Color",
+							"Failure",
+							"Critical Failure"
+						],
+						[
+							"1",
+							"White",
+							"{@condition Dazzled|CRB|Dazzled} 1 round",
+							"{@condition Dazzled|CRB|Dazzled} 1 minute"
+						],
+						[
+							"2",
+							"Red",
+							"{@condition Enfeebled|CRB|Enfeebled 1} for 1 round",
+							"{@condition Enfeebled|CRB|Enfeebled 2} for 1 round"
+						],
+						[
+							"3",
+							"Yellow",
+							"{@condition Frightened|CRB|Frightened 1}",
+							"{@condition Frightened|CRB|Frightened 2}"
+						],
+						[
+							"4",
+							"Blue",
+							"{@condition Clumsy} 1 for 1 round",
+							"{@condition Clumsy} 2 for 1 round"
+						]
+					]
+				}
 			],
 			"heightened": {
 				"heightened": false,
@@ -26734,7 +26826,7 @@
 			"dismiss": false,
 			"entries": [
 				"A massive storm cloud forms in the air in a 360-foot burst.",
-				"Beneath it, rain begins to fall, and gales impose a \u20134 circumstance penalty to physical ranged attacks and weapon ranged attacks, and the air in the area becomes greater difficult terrain for flying creatures. When you Cast this Spell and the first time each round you Sustain the Spell, you can choose one of the following storm effects. You can't choose the same effect twice in a row.",
+				"Beneath it, rain begins to fall, and gales impose a \u20134 circumstance penalty to physical ranged attacks and weapon ranged attacks, and the air in the area becomes greater difficult terrain for flying creatures. When you {@action Cast a Spell||Cast this Spell} and the first time each round you Sustain the Spell, you can choose one of the following storm effects. You can't choose the same effect twice in a row.",
 				{
 					"type": "list",
 					"items": [
@@ -27798,7 +27890,7 @@
 						"{@bold Dream of Voyaging} +5-foot status bonus to Speed"
 					]
 				},
-				"If you {@action Cast a Spell||Cast this Spell} again, the effects of any previous sweet dream you cast end."
+				"If you {@action Cast a Spell||{@action Cast a Spell||Cast this Spell}} again, the effects of any previous sweet dream you cast end."
 			],
 			"heightened": {
 				"heightened": false,
@@ -28008,7 +28100,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Affliction} The target immediately attempts its next saving throw against the affliction. You can grant the creature your choice of a +2 status bonus or a \u20132 status penalty to its saving throw against the affliction.",
-						"{@bold Persistent Poison} You can cause the target take the {@condition persistent damage ||persistent poison damage} immediately when you Cast this Spell (in addition to taking it at the end of its next turn). Whether or not you do so, the target attempts an additional flat check against the {@condition persistent damage ||persistent poison damage}. You can set the DC of that flat check to 5 or 20 instead of the normal DC."
+						"{@bold Persistent Poison} You can cause the target take the {@condition persistent damage ||persistent poison damage} immediately when you {@action Cast a Spell||Cast this Spell} (in addition to taking it at the end of its next turn). Whether or not you do so, the target attempts an additional flat check against the {@condition persistent damage ||persistent poison damage}. You can set the DC of that flat check to 5 or 20 instead of the normal DC."
 					]
 				}
 			],
@@ -31226,13 +31318,14 @@
 			"dismiss": false,
 			"entries": [
 				"You fill the creature's mind with a terrifying vision out of its nightmares. The target must attempt a Will save.",
+				"If the target is {@condition unconscious} when you {@action Cast a Spell||Cast this Spell} on it, it immediately wakes up before attempting its save, and if it fails its save, it gains the {@condition fleeing} condition for 1 round in addition to the effects noted above.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is {@condition frightened|CRB|frightened 1}.",
 						"Failure": "The target is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target is {@condition frightened|CRB|frightened 3}. If the target is {@condition unconscious} when you Cast this Spell on it, it immediately wakes up before attempting its save, and if it fails its save, it gains the {@condition fleeing} condition for 1 round in addition to the effects noted above."
+						"Critical Failure": "The target is {@condition frightened|CRB|frightened 3}."
 					}
 				}
 			],
@@ -31647,7 +31740,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You call upon the beyond to guide your route. When you Cast this Spell, choose a destination; you receive an inspired route to that destination, allowing you and allies who travel overland with you to reduce the movement penalty from difficult terrain by half for the duration, as long as you don't deviate from the inspired route. This doesn't have {@trait any} effect on movement during encounters. If you use this ability again before the duration is over, this effect ends and is replaced by that of the new route."
+				"You call upon the beyond to guide your route. When you {@action Cast a Spell||Cast this Spell}, choose a destination; you receive an inspired route to that destination, allowing you and allies who travel overland with you to reduce the movement penalty from difficult terrain by half for the duration, as long as you don't deviate from the inspired route. This doesn't have {@trait any} effect on movement during encounters. If you use this ability again before the duration is over, this effect ends and is replaced by that of the new route."
 			],
 			"heightened": {
 				"heightened": false,
@@ -31779,7 +31872,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "You can make the illusion appear in the air rather than on a surface, causing it to function as difficult terrain for flying creatures. Casting Rituals When you take charge of a ritual, you are its primary caster, and others assisting you are secondary casters. You can be a primary caster for a ritual even if you can't cast spells. You must know the ritual, and the ritual's spell level can be no higher than half your level rounded up. You must also have the required proficiency rank in the skill used for the ritual's primary check (see Checks below), and as the primary caster, you must attempt this skill check to determine the ritual's effects. The primary skill check determines the tradition. Rituals do not require spell slots to cast. You can heighten a ritual up to half your level rounded up, decided when the ritual is initiated. A ritual always takes at least 1 hour to perform, and often longer. While a ritual is a downtime activity, it's possible\u2014albeit risky\u2014to perform a ritual during exploration with enough uninterrupted time. A ritual's casting time is usually listed in days. Each day of casting requires 8 hours of participation in the ritual from all casters, with breaks during multiday rituals to allow rest. One caster can continue a multiday ritual, usually with some light chanting or meditation, while the other casters rest. All rituals require material, somatic, and verbal components throughout their casting time. Learning Rituals Learning a ritual does not count against any limits on spells in your spell repertoire or on any other normal spellcasting ability. Rituals are never common, though if you look hard, you can probably find someone who can perform an uncommon ritual for you. They may still be unwilling to teach it to you."
+						"entry": "You can make the illusion appear in the air rather than on a surface, causing it to function as difficult terrain for flying creatures."
 					}
 				],
 				"no_x": null

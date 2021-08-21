@@ -2794,8 +2794,9 @@
 				"Mental"
 			],
 			"actionType": {
-				"basic": false,
-				"variant": true,
+				"variantrule": [
+					"Inspiration|GMG"
+				],
 				"skill": {
 					"trained": [
 						"Diplomacy",
@@ -3751,7 +3752,9 @@
 				"Exploration"
 			],
 			"actionType": {
-				"variant": true
+				"variantrule": [
+					"Inspiration|GMG"
+				]
 			},
 			"cost": "1 Resolve Point",
 			"entries": [
@@ -4134,20 +4137,100 @@
 			]
 		},
 		{
+			"name": "Influence",
+			"source": "GMG",
+			"page": 151,
+			"traits": [
+				"Concentration",
+				"Linguistic"
+			],
+			"actionType": {
+				"variantrule": [
+					"Influence|GMG"
+				]
+			},
+			"entries": [
+				"You attempt to make a favorable impression on an NPC to convince the NPC to support your cause. Choose an NPC, and attempt a skill check to impress that NPC. The DC, and whether success is possible, depend on the NPC’s preferences (typically found in the NPC’s influence stat block).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 Influence Points with the chosen NPC.",
+						"Success": "You gain 1 Influence Point with the chosen NPC.",
+						"Failure": "You gain no Influence Points with the chosen NPC.",
+						"Critical Failure": "You lose 1 Influence Point with the chosen NPC."
+					}
+				}
+			]
+		},
+		{
+			"name": "Discover",
+			"source": "GMG",
+			"page": 151,
+			"traits": [
+				"Concentration",
+				"Secret"
+			],
+			"actionType": {
+				"variantrule": [
+					"Influence|GMG"
+				]
+			},
+			"entries": [
+				"You watch or study an NPC to learn more about that NPC’s preferences. Choose an NPC and attempt a Perception check or an appropriate skill check determined by the GM. The DC is typically found in the NPC’s influence stat block.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Choose two of the options detailed in Success below; you can choose the same option twice to learn two pieces of information from the same category.",
+						"Success": "Choose one of the following: You learn which skill that can Influence the NPC has the lowest DC (skipping any skills that you already know), one of the NPC’s personal biases, one of the NPC’s resistances, or one of the NPC’s weaknesses.",
+						"Failure": "You learn no information.",
+						"Critical Failure": "Choose a piece of information to learn about, as success, but the information is incorrect. For instance, you might think the NPC is susceptible to flattery when actually the NPC is resistant to flattery."
+					}
+				}
+			]
+		},
+		{
+			"name": "Research",
+			"source": "GMG",
+			"page": 154,
+			"traits": [
+				"Concentration",
+				"Exploration",
+				"Linguistic"
+			],
+			"actionType": {
+				"variantrule": [
+					"Research|GMG"
+				]
+			},
+			"entries": [
+				"You comb through information to learn more about the topic at hand. Choose your research topic, section of the library, or other division depending on the form of research, and attempt a skill check. The skills to use and the DC for the check depend on the choice you made.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 2 RP.",
+						"Success": "You gain 1 RP.",
+						"Critical Failure": "You make a false discovery and lose 1 RP."
+					}
+				}
+			]
+		},
+		{
+			"name": "Bribe Contact",
 			"source": "GMG",
 			"page": 163,
-			"name": "Bribe Contact",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime",
 				"Secret"
 			],
-			"cost": "A bribe worth at least one-tenth of the Currency per Additional PC listed on {@table Party Treasure by Level||Table 10–9: Party Treasure by Level}. Doubling this amount grants a +2 circumstance bonus to the check.",
-			"requirements": "You’ve successfully {@action Gain Contact|GMG|Gained a Contact}.",
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
+			"cost": "A bribe worth at least one-tenth of the Currency per Additional PC listed on {@table Party Treasure by Level|CRB|Table 10–9: Party Treasure by Level}. Doubling this amount grants a +2 circumstance bonus to the check.",
+			"requirements": "You’ve successfully {@action Gain Contact|GMG|Gained a Contact}",
 			"entries": [
-				"You offer a bribe to your contact to help the heist in some way. Attempt a hard or very hard Deception or Diplomacy check.",
+				"You offer a bribe to your contact to help the heist in some way. Attempt a hard or very hard {@skill Deception} or {@skill Diplomacy} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4159,18 +4242,20 @@
 			]
 		},
 		{
+			"name": "Forge Documents",
 			"source": "GMG",
 			"page": 163,
-			"name": "Forge Documents",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime",
 				"Secret"
 			],
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
 			"entries": [
-				"You prepare forgeries that might serve as convincing props. Attempt a hard or very hard Society check.",
+				"You prepare forgeries that might serve as convincing props. Attempt a hard or very hard {@skill Society} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4182,43 +4267,45 @@
 			]
 		},
 		{
+			"name": "Gain Contact",
 			"source": "GMG",
 			"page": 163,
-			"name": "Gain Contact",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime"
 			],
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
 			"entries": [
-				"You try to make contact with an individual who can aid you in the infiltration. Attempt a normal, hard, or very hard DC Diplomacy or Society check, or a check using a Lore skill appropriate to your prospective contact.",
+				"You try to make contact with an individual who can aid you in the infiltration. Attempt a normal, hard, or very hard DC {@skill Diplomacy} or {@skill Society} check, or a check using a {@skill Lore} skill appropriate to your prospective contact.",
 				{
 					"type": "successDegree",
 					"entries": {
 						"Success": "You make contact and gain 1 EP.",
 						"Failure": "You fail to make contact.",
-						"Critical Failure": "You insult or spook the contact in some way. Future attempts take a –2 circumstance penalty."
+						"Critical Failure": "You insult or spook the contact in some way. Future attempts take a –2 circumstance penalty.",
+						"Special": "Multiple critical failures might cause the contact to work against the PCs in some way, likely increasing the party’s Awareness Points."
 					}
 				}
-			],
-			"special": [
-				"Multiple critical failures might cause the contact to work against the PCs in some way, likely increasing the party’s Awareness Points."
 			]
 		},
 		{
+			"name": "Gossip",
 			"source": "GMG",
 			"page": 163,
-			"name": "Gossip",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime",
 				"Secret"
 			],
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
 			"entries": [
-				"You seek out rumors about the infiltration’s target. Attempt a normal, hard, or very hard Diplomacy check.",
+				"You seek out rumors about the infiltration’s target. Attempt a normal, hard, or very hard {@skill Diplomacy} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4231,18 +4318,20 @@
 			]
 		},
 		{
+			"name": "Scout Location",
 			"source": "GMG",
 			"page": 163,
-			"name": "Scout Location",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime",
 				"Secret"
 			],
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
 			"entries": [
-				"You spend time observing the place or group you wish to infiltrate. Attempt a normal, hard, or very hard DC Perception, Society or Stealth check.",
+				"You spend time observing the place or group you wish to infiltrate. Attempt a normal, hard, or very hard DC {@skill Perception}, {@skill Society} or {@skill Stealth} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4254,17 +4343,19 @@
 			]
 		},
 		{
+			"name": "Secure Disguises",
 			"source": "GMG",
 			"page": 163,
-			"name": "Secure Disguises",
-			"actionType": {
-				"variant": true
-			},
 			"traits": [
 				"Downtime"
 			],
+			"actionType": {
+				"variantrule": [
+					"Infiltration|GMG"
+				]
+			},
 			"entries": [
-				"You seek to procure or create disguises. Attempt a normal, hard, or very hard Crafting, Deception, Performance, or Society check.",
+				"You seek to procure or create disguises. Attempt a normal, hard, or very hard {@skill Crafting}, {@skill Deception}, {@skill Performance}, or {@skill Society} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4275,90 +4366,287 @@
 			]
 		},
 		{
-			"source": "GMG",
-			"page": 167,
-			"actionType": {
-				"variant": true
-			},
 			"name": "Bullying Press",
+			"source": "GMG",
+			"page": 167,
+			"traits": [
+				"Flourish"
+			],
 			"activity": {
+				"number": 1,
 				"unit": "reaction",
-				"number": 1
+				"entry": "{@as r}"
 			},
-			"traits": ["Flourish"],
-			"trigger": "You attempt a melee Strike against your opponent, but haven’t rolled yet.",
-			"requirements": "You’re in a duel, you’re trained in Intimidation, and you rolled an Intimidation check for initiative this round.",
+			"actionType": {
+				"variantrule": [
+					"Duels|GMG"
+				]
+			},
+			"trigger": "You attempt a melee {@action Strike} against your opponent, but haven’t rolled yet.",
+			"requirements": "You’re in a duel, you’re trained in {@skill Intimidation}, and you rolled an {@skill Intimidation} check for initiative this round.",
 			"entries": [
-				"If you hit, your opponent becomes frightened 1. If your opponent is using Perception for initiative when this ability is used, they become frightened 2 instead."
+				"If you hit, your opponent becomes {@condition frightened} 1. If your opponent is using {@skill Perception} for initiative when this ability is used, they become {@condition frightened} 2 instead."
 			]
 		},
 		{
-			"source": "GMG",
-			"page": 167,
-			"actionType": {
-				"variant": true
-			},
 			"name": "Deceptive Sidestep",
+			"source": "GMG",
+			"page": 167,
+			"traits": [
+				"Misfortune"
+			],
 			"activity": {
+				"number": 1,
 				"unit": "reaction",
-				"number": 1
+				"entry": "{@as r}"
 			},
-			"traits": ["Misfortune"],
-			"trigger": "An opponent hits, but does not critically hit you, with a melee Strike.",
-			"requirements": "You’re in a duel, you’re trained in Deception, and you rolled a Deception check for initiative this round.",
+			"actionType": {
+				"variantrule": [
+					"Duels|GMG"
+				]
+			},
+			"trigger": "An opponent hits, but does not critically hit you, with a melee {@strike Strike}.",
+			"requirements": "You’re in a duel, you’re trained in {@skill Deception}, and you rolled a {@skill Deception} check for initiative this round.",
 			"entries": [
-				"You draw your enemy in and pull away at the last moment. The triggering opponent must roll again and take the second result. If your opponent is using Intimidation for initiative when this ability is used, they also take a –2 circumstance penalty to the second attack roll."
+				"You draw your enemy in and pull away at the last moment. The triggering opponent must roll again and take the second result. If your opponent is using {@skill Intimidation} for initiative when this ability is used, they also take a –2 circumstance penalty to the second attack roll."
 			]
 		},
 		{
+			"name": "Sense Weakness",
 			"source": "GMG",
 			"page": 167,
 			"actionType": {
-				"variant": true
+				"variantrule": [
+					"Duels|GMG"
+				]
 			},
-			"name": "Sense Weakness",
 			"activity": {
+				"number": 1,
 				"unit": "reaction",
-				"number": 1
+				"entry": "{@as r}"
 			},
 			"trigger": "You attempt a melee Strike against your opponent, but haven’t rolled yet.",
-			"requirements": "You’re in a duel, you’re trained in Perception, and you rolled a Perception check for initiative this round.",
+			"requirements": "You’re in a duel, you’re trained in {@skill Perception}, and you rolled a {@skill Perception} check for initiative this round.",
 			"entries": [
-				"You pick a precise moment to attack, giving you an edge. Your opponent is flat-footed against the attack. If your opponent is using Deception for initiative when this ability is used, they are instead flat-footed until the start of their next turn."
+				"You pick a precise moment to attack, giving you an edge. Your opponent is {@condition flat-footed} against the attack. If your opponent is using {@skill Deception} for initiative when this ability is used, they are instead {@condition flat-footed} until the start of their next turn."
 			]
 		},
 		{
+			"name": "Dueling Counter",
 			"source": "GMG",
 			"page": 167,
 			"actionType": {
-				"variant": true
+				"variantrule": [
+					"Duels|GMG"
+				]
 			},
-			"name": "Dueling Counter",
+			"traits": [
+				"Magical"
+			],
 			"activity": {
+				"number": 1,
 				"unit": "reaction",
-				"number": 1
+				"entry": "{@as r}"
 			},
-			"traits": ["Magical"],
-			"trigger": "Your opponent Casts a Spell from the same tradition as your tradition focus.",
+			"trigger": "Your opponent {@action Cast a Spell||Casts a Spell} from the same tradition as your tradition focus.",
 			"requirements": "You are in a duel and have a tradition focus.",
 			"entries": [
 				"Expend a prepared spell or spell slot. You then attempt to counteract the triggering spell with the expended spell."
 			]
 		},
 		{
+			"name": "Change Tradition Focus",
 			"source": "GMG",
 			"page": 167,
 			"actionType": {
-				"variant": true
+				"variantrule": [
+					"Duels|GMG"
+				]
 			},
-			"name": "Change Tradition Focus",
+			"traits": [
+				"Magical"
+			],
 			"activity": {
-				"unit": "action",
-				"number": 1
+				"number": 1,
+				"unit": "action"
 			},
-			"requirements": "You are in a duel and are trained in the skill for the tradition you’re changing your focus to (Arcana for arcane, Occultism for occult, Nature for primal, or Religion for divine).",
+			"requirements": "You are in a duel and are trained in the skill for the tradition you’re changing your focus to ({@skill Arcana} for arcane, {@skill Occultism} for occult, {@skill Nature} for primal, or {@skill Religion} for divine).",
 			"entries": [
 				"You change your tradition focus to another magical tradition."
+			]
+		},
+		{
+			"name": "Travel",
+			"source": "GMG",
+			"page": 172,
+			"actionType": {
+				"variantrule": [
+					"Hexploration|GMG"
+				]
+			},
+			"traits": [
+				"Move"
+			],
+			"entries": [
+				"You progress toward moving into an adjacent hex. In open terrain, like a plain, using 1 Travel activity allows you to move from one hex to an adjacent hex. Traversing a hex with difficult terrain (such as a typical forest or desert) requires 2 Travel activities, and hexes of greater difficult terrain (such as a steep mountain or typical swamp) require 3 Travel activities to traverse. Traveling along a road uses a terrain type one step better than the surrounding terrain. For example, if you are traveling on a road over a mountain pass, the terrain is difficult terrain instead of greater difficult terrain.",
+				"The Travel activity assumes you are walking overland. If you are flying or traveling on water, most hexes are open terrain, though there are exceptions. Flying into storms or high winds count as difficult or greater difficult terrain. Traveling down a river is open terrain, but traveling upriver is difficult or greater difficult terrain."
+			]
+		},
+		{
+			"name": "Reconnoiter",
+			"source": "GMG",
+			"page": 173,
+			"actionType": {
+				"variantrule": [
+					"Hexploration|GMG"
+				]
+			},
+			"traits": [
+				"Concentration"
+			],
+			"entries": [
+				"You spend time surveying and exploring a specific area, getting the lay of the land and looking for unusual features and specific sites. Reconnoitering a single hex takes a number of hexploration activities equal to the number of Travel activities necessary to traverse the hex—1 for open terrain, 2 for difficult terrain, and 3 for greater difficult terrain. Traveling on roads doesn’t lessen the time required to Reconnoiter. Once the hex has been Reconnoitered, you can {@action Map the Area|GMG} to reduce your chance of getting lost in that hex. You automatically find any special feature that doesn’t require a check to find, and you attempt the appropriate checks to find hidden special features.",
+				"For instance, if you were looking for an obvious rock formation among some hills, you would spend 2 hexploration activities to Reconnoiter the hex, and you’d find the rock formation. But if you were looking for a hidden tengu monastery somewhere in some deep forests, after spending 2 activities to Reconnoiter the forest hex, you would have to succeed at a {@skill Perception} check as part of your Reconnoiter activity to find the monastery."
+			]
+		},
+		{
+			"name": "Map the Area",
+			"source": "GMG",
+			"page": 173,
+			"actionType": {
+				"variantrule": [
+					"Hexploration|GMG"
+				]
+			},
+			"traits": [
+				"Concentration"
+			],
+			"entries": [
+				"As long as your group has successfully Reconnoitered the hex, you can use this activity to create an accurate map of the hex with a successful Survival check (typically at a trained or expert DC). When you have an accurate map of the hex, the DC of any check to navigate that hex is reduced by 2."
+			]
+		},
+		{
+			"name": "Fortify Camp",
+			"source": "GMG",
+			"page": 173,
+			"actionType": {
+				"variantrule": [
+					"Hexploration|GMG"
+				]
+			},
+			"entries": [
+				"You can spend time fortifying your camp for defense with a successful {@skill Crafting} check (typically at a trained or expert DC). Anyone keeping watch or defending the camp gains a +2 circumstance bonus to initiative rolls and {@skill Perception} checks to {@action Seek} creatures attempting to sneak up on the camp."
+			]
+		},
+		{
+			"name": "Board",
+			"source": "GMG",
+			"page": 175,
+			"traits": [
+				"Move"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"variantrule": [
+					"Vehicles|GMG"
+				]
+			},
+			"requirements": "You are adjacent to a point of entry on the vehicle you are attempting to board.",
+			"entries": [
+				"You board a vehicle through an open top, a door, a portal, or a hatch; if you’re already on board, you can instead use this action to disembark into an empty space adjacent to the vehicle’s point of entry. Using this action while the vehicle is in motion is challenging, requiring a successful {@skill Acrobatics} or {@skill Athletics} check with a DC equal to the vehicle’s AC."
+			]
+		},
+		{
+			"name": "Drive",
+			"source": "GMG",
+			"page": 175,
+			"activity": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "(Varies)"
+			},
+			"traits": [
+				"Move"
+			],
+			"actionType": {
+				"variantrule": [
+					"Vehicles|GMG"
+				]
+			},
+			"requirements": "You are piloting a vehicle.",
+			"entries": [
+				"You pilot your vehicle to move. Decide how many actions you intend to spend before you begin Driving. The effects depend on the number of actions you spend. You can’t Drive through spaces occupied by creatures, even if they are allies.",
+				"{@as 1} Attempt a piloting check. On a success, the vehicle moves up to its Speed and can turn normally. On a failure, the vehicle moves its Speed in a straight line. On a critical failure, the vehicle moves its Speed in a straight line and becomes uncontrolled.",
+				"{@as 2} ({@trait reckless}) The vehicle moves up to twice its Speed in a straight line at the vehicle’s current heading.",
+				"{@as 3} ({@trait reckless}) You take a –5 penalty on your piloting check to maintain control of the vehicle. The vehicle moves up to three times its Speed in a straight line at the vehicle’s current heading."
+			]
+		},
+		{
+			"name": "Run Over",
+			"source": "GMG",
+			"page": 176,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Move",
+				"Reckless"
+			],
+			"actionType": {
+				"variantrule": [
+					"Vehicles|GMG"
+				]
+			},
+			"requirements": "You are piloting a vehicle.",
+			"entries": [
+				"You try to run over creatures with your vehicle, possibly also ramming one larger creature or object. If you maintain control of your vehicle, the vehicle moves up to twice its Speed in a straight line at the vehicle’s current heading. You attempt to run over any creatures in your path two sizes smaller than the vehicle or smaller, and you can attempt to ram one target creature or object in your path one size smaller than the vehicle or larger.",
+				"Each creature in your path, including a rammed target, takes the vehicle’s collision damage (basic Reflex save at vehicle’s collision DC). If the rammed target is a vehicle, its pilot can attempt a piloting check in place of this Reflex save, with the same results. If the target of your ram takes damage, you and your vehicle each take collision damage (no save) and your movement ends."
+			]
+		},
+		{
+			"name": "Stop",
+			"source": "GMG",
+			"page": 176,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Manipulate"
+			],
+			"actionType": {
+				"variantrule": [
+					"Vehicles|GMG"
+				]
+			},
+			"requirements": "You are piloting a vehicle in motion.",
+			"entries": [
+				"You bring the vehicle to a stop."
+			]
+		},
+		{
+			"name": "Take Control",
+			"source": "GMG",
+			"page": 176,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Manipulate"
+			],
+			"actionType": {
+				"variantrule": [
+					"Vehicles|GMG"
+				]
+			},
+			"requirements": "You are aboard the vehicle and adjacent to its controls.",
+			"entries": [
+				"You grab the reins, the wheel, or some other mechanism to control the vehicle. Attempt a piloting check; on a success, you become the vehicle’s pilot, or regain control of the vehicle if it was uncontrolled. Some vehicles have complicated controls that cause this action to become a multi-action activity."
 			]
 		}
 	]

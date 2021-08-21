@@ -3376,7 +3376,14 @@
 				"General"
 			],
 			"entries": [
-				"Actions with the reckless trait run the risk of the pilot losing control of a vehicle. When performing a reckless action, the pilot must first attempt an appropriate piloting check to keep control of the vehicle."
+				"Actions that have the reckless trait push the pilot and the vehicle beyond the normal parameters for safe operation, and the pilot risks losing control of the vehicle. When performing a reckless action, the pilot must first attempt an appropriate piloting check to keep control of the vehicle, with the following effects. Resolve this piloting check before resolving the action itself.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The action occurs as described.",
+						"Failure": "The vehicle moves its Speed in a straight line along its most recent heading, drifting up to 45 degrees at the GM’s discretion, and becomes uncontrolled."
+					}
+				}
 			]
 		},
 		{
