@@ -3219,6 +3219,10 @@ Renderer.action = {
 				if (it.actionType.heritage) renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
 				renderStack.push(`</p>`)
 			}
+			if (it.actionType.variantrule) {
+				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Variant Rule&nbsp;</strong>${renderer.render(`{@variantrule ${it.actionType.variantrule}}`)}`);
+				renderStack.push(`</p>`)
+			}
 		}
 		if (it.cost != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cost&nbsp;</strong>${renderer.render(it.cost)}</p>`);

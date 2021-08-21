@@ -41,7 +41,7 @@ class PageFilterActions extends PageFilter {
 		it._fTraits = (it.traits || []).map(t => Parser.getTraitName(t));
 		if (!it._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) it._fTraits.push("Common");
 		it._fMisc = [];
-		if (it.actionType.variant === true) it._fMisc.push("Optional/Variant Action")
+		if (it.actionType.variantrule) it._fMisc.push("Optional/Variant Action")
 	}
 
 	addToFilters (it, isExcluded) {

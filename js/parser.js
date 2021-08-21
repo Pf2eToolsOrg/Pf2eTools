@@ -1297,7 +1297,7 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"trap": SRC_CRB,
 	"hazard": SRC_CRB,
 	"deity": SRC_CRB,
-	"variantrule": SRC_CRB,
+	"variantrule": SRC_GMG,
 	"action": SRC_CRB,
 	"ability": SRC_BST,
 	"classFeature": SRC_CRB,

@@ -38,9 +38,10 @@ class ActionsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 		let time;
 		if (it.activity) time = Parser.timeToTableStr(it.activity);
-		else if (it.traits.includes("Exploration")) time = "Exploration";
-		else if (it.traits.includes("Downtime")) time = "Downtime";
-		else time = "\u2014"
+		else if (it.traits) {
+			if (it.traits.includes("Exploration")) time = "Exploration";
+			if (it.traits.includes("Downtime")) time = "Downtime";
+		} else time = "\u2014"
 
 		eleLi.innerHTML = `<a href="#${hash}" class="lst--border">
 			<span class="col-6 bold pl-0">${it.name}</span>
@@ -80,9 +81,10 @@ class ActionsPage extends ListPage {
 		const hash = UrlUtil.autoEncodeHash(it);
 		let time;
 		if (it.activity) time = Parser.timeToTableStr(it.activity);
-		else if (it.traits.includes("Exploration")) time = "Exploration";
-		else if (it.traits.includes("Downtime")) time = "Downtime";
-		else time = "\u2014"
+		else if (it.traits) {
+			if (it.traits.includes("Exploration")) time = "Exploration";
+			if (it.traits.includes("Downtime")) time = "Downtime";
+		} else time = "\u2014"
 
 		const $ele = $(`<li class="row">
 			<a href="#${hash}" class="lst--border">
