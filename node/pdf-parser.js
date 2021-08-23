@@ -44,6 +44,7 @@ class PdfConverter {
 	}
 
 	static _doMerge (newObj, oldObj) {
+		if (!oldObj) return newObj;
 		const newEntry = newObj.entries.filter(it => typeof it === "string").join(" ");
 		const oldEntry = oldObj.entries.filter(it => typeof it === "string").join(" ");
 		const oldEntryOther = (oldObj.entries.filter(it => typeof it === "object") || []).map(it => it.entries).flat().filter(it => typeof it === "string").join(" ");
@@ -52,7 +53,9 @@ class PdfConverter {
 			else if (typeof it === "string") return it;
 		}).flat().filter(it => typeof it === "string").join(" ");
 
-		if (newEntry.distance(oldEntry) < newEntry.length / 5) {
+		if (newEntry === "") {
+			return oldObj
+		} else if (newEntry.distance(oldEntry) < newEntry.length / 5) {
 			oldObj.otherSources = oldObj.otherSources || {};
 			oldObj.otherSources.Reprinted = oldObj.otherSources.Reprinted || [];
 			oldObj.otherSources.Reprinted.push(`${newObj.source}|${newObj.page}`);

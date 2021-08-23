@@ -5,6 +5,15 @@
 			"source": "CRB",
 			"page": 215,
 			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Badger",
+					"entries": [
+						"Your companion is a badger, wolverine, or other big mustelid."
+					]
+				}
+			],
 			"size": "Small",
 			"attacks": [
 				{
@@ -75,64 +84,10 @@
 					},
 					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
 				]
-			},
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Badger",
-					"entries": [
-						"Your companion is a badger, wolverine, or other big mustelid."
-					]
-				}
-			]
+			}
 		}
 	],
 	"familiar": [
-		{
-			"name": "Faerie Dragon",
-			"source": "APG",
-			"page": 147,
-			"type": "Familiar",
-			"traits": [
-				"Dragon"
-			],
-			"requires": 6,
-			"granted": [
-				"{@familiarAbility amphibious}",
-				"{@familiarAbility darkvision}",
-				"{@familiarAbility flier}",
-				"{@familiarAbility manual dexterity}",
-				"{@familiarAbility speech}",
-				"{@familiarAbility touch telepathy}"
-			],
-			"abilities": [
-				{
-					"name": "Breath Weapon",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"arcane",
-						"evocation",
-						"poison"
-					],
-					"frequency": "once per hour",
-					"entries": [
-						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  {@condition stupefied||stupefied 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds; on a critical failure,  the duration is 1 minute."
-					]
-				}
-			],
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Faerie Dragon",
-					"entries": [
-						"These tiny, mischievous dragons make natural allies for benevolent or capricious characters."
-					]
-				}
-			]
-		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -293,6 +248,51 @@
 			]
 		},
 		{
+			"name": "Faerie Dragon",
+			"source": "APG",
+			"page": 147,
+			"type": "Familiar",
+			"traits": [
+				"Dragon"
+			],
+			"requires": 6,
+			"granted": [
+				"{@familiarAbility amphibious}",
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility speech}",
+				"{@familiarAbility touch telepathy}"
+			],
+			"abilities": [
+				{
+					"name": "Breath Weapon",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"evocation",
+						"poison"
+					],
+					"frequency": "once per hour",
+					"entries": [
+						"The faerie dragon breathes euphoric  gas in a 10-foot cone. Each creature in the area must  attempt a Fortitude save against your class DC or spell  DC, whichever is higher. A creature that fails its save is  {@condition stupefied||stupefied 2} and {@condition slowed||slowed 1} for {@dice 1d4} rounds; on a critical failure,  the duration is 1 minute."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Faerie Dragon",
+					"entries": [
+						"These tiny, mischievous dragons make natural allies for benevolent or capricious characters."
+					]
+				}
+			]
+		},
+		{
 			"name": "Imp",
 			"source": "APG",
 			"page": 147,
@@ -302,7 +302,6 @@
 				"Devil",
 				"Fiend"
 			],
-			"alignment": "An imp must be lawful evil",
 			"requires": 8,
 			"granted": [
 				"darkvision",
@@ -348,7 +347,8 @@
 						"Imp familiars pretend to be subservient in order to trick their masters into losing their souls to Hell."
 					]
 				}
-			]
+			],
+			"alignment": "An imp must be lawful evil"
 		},
 		{
 			"name": "Poppet",
@@ -544,7 +544,7 @@
 			"page": 218,
 			"type": "Master",
 			"entries": [
-				"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can’t otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
+				"You can prepare an additional cantrip, or if you have a repertoire, instead designate a cantrip to add to your repertoire every time you select this ability; you can retrain it but can't otherwise change it. You must be able to prepare cantrips or add them to your repertoire to select this."
 			]
 		},
 		{

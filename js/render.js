@@ -332,6 +332,9 @@ function Renderer () {
 				case "tableGroup":
 					this._renderTableGroup(entry, textStack, meta, options);
 					break;
+				case "letter":
+					this._renderLetter(entry, textStack, meta, options);
+					break;
 				// pf2-statblock
 				case "affliction":
 					this._renderAffliction(entry, textStack, meta, options);
@@ -1040,7 +1043,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
+			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${this.render(entry.name)}</span></p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -1262,6 +1265,26 @@ function Renderer () {
 			textStack[0] += `${entry.by != null ? `${renderer.render(entry.by)}, ` : ""}${entry.from ? `<i>${renderer.render(entry.from)}</i>` : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
+	};
+
+	this._renderLetter = function (entry, textStack, meta, options) {
+		const dataString = this._getDataString(entry);
+		textStack[0] += `<div class="pf2-letter" ${dataString}>`;
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-letter__title">${entry.name}</p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: `<p class="pf2-letter__text">`,
+					suffix: "</p>",
+				});
+			}
+		}
+		textStack[0] += `</div>`;
 	};
 
 	this._renderStatblock = async function (entry, textStack, meta, options) {

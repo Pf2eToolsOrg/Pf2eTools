@@ -44,6 +44,7 @@ class NavBar {
 		addDivider(ulBooks);
 		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
 		addLi(ulBooks, "book.html", "Gamemastery Guide", {aHash: "GMG", date: "2020"});
+		addLi(ulBooks, "book.html", "Secrets of Magic", {aHash: "SoM", date: "2021"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "ancestries.html", "Ancestries");

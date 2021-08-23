@@ -1680,7 +1680,6 @@
 			"name": "Avatar",
 			"source": "CRB",
 			"page": 318,
-			"hasBattleForm": true,
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
@@ -1756,7 +1755,8 @@
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			}
+			},
+			"hasBattleForm": true
 		},
 		{
 			"name": "Baleful Polymorph",
@@ -18398,7 +18398,6 @@
 			"type": "SPELL",
 			"focus": false,
 			"level": 10,
-			"hasBattleForm": true,
 			"traits": [
 				"Polymorph",
 				"Transmutation"
@@ -18452,7 +18451,8 @@
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			}
+			},
+			"hasBattleForm": true
 		},
 		{
 			"name": "Nature's Bounty",
@@ -20518,7 +20518,6 @@
 			"source": "CRB",
 			"page": 359,
 			"type": "SPELL",
-			"hasBattleForm": true,
 			"focus": false,
 			"level": 10,
 			"traits": [
@@ -20579,7 +20578,8 @@
 				"plus_x": null,
 				"x": null,
 				"no_x": null
-			}
+			},
+			"hasBattleForm": true
 		},
 		{
 			"name": "Primal Phenomenon",
@@ -23194,7 +23194,6 @@
 					"unit": "minute"
 				}
 			},
-			"hasBattleForm": true,
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
@@ -23223,7 +23222,8 @@
 					}
 				],
 				"no_x": null
-			}
+			},
+			"hasBattleForm": true
 		},
 		{
 			"name": "Rope Trick",
@@ -29338,73 +29338,6 @@
 			}
 		},
 		{
-			"name": "Undeath's Blessing",
-			"source": "CRB",
-			"page": 405,
-			"type": "FOCUS",
-			"focus": true,
-			"level": 1,
-			"traits": [
-				"Uncommon",
-				"Necromancy",
-				"Negative",
-				"Sorcerer"
-			],
-			"school": "N",
-			"cast": {
-				"number": 1,
-				"unit": "action"
-			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": false
-			},
-			"range": {
-				"type": "point",
-				"entry": "touch",
-				"distance": {
-					"type": "touch",
-					"amount": 1
-				}
-			},
-			"targets": "1 living creature touched",
-			"savingThrow": "Will",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": "timed",
-				"entry": "1 minute",
-				"duration": {
-					"number": 1,
-					"unit": "minute"
-				}
-			},
-			"sustain": false,
-			"dismiss": false,
-			"entries": [
-				"You instill within a creature the touch of the grave. For the duration, {@spell harm} spells treat the creature as undead and {@spell heal} spells treat the creature as living. In addition, {@spell harm} spells gain a +2 status bonus to the Hit Points restored to the target.",
-				"If the target wishes to avoid the spell, it can attempt a Will save to reduce the effects.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The target is unaffected.",
-						"Success": "The target heals half as much from heal and takes half as much damage from harm for 1 round.",
-						"Failure": "Effects as described in the text."
-					}
-				}
-			],
-			"heightened": {
-				"heightened": true,
-				"plus_x": {
-					"level": 1,
-					"entry": "The status bonus to the Hit Points restored increases by 2."
-				},
-				"x": null,
-				"no_x": null
-			}
-		},
-		{
 			"name": "Traveler's Transit",
 			"source": "CRB",
 			"page": 398,
@@ -29919,6 +29852,73 @@
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Undeath's Blessing",
+			"source": "CRB",
+			"page": 405,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Necromancy",
+				"Negative",
+				"Sorcerer"
+			],
+			"school": "N",
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": false
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 living creature touched",
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You instill within a creature the touch of the grave. For the duration, {@spell harm} spells treat the creature as undead and {@spell heal} spells treat the creature as living. In addition, {@spell harm} spells gain a +2 status bonus to the Hit Points restored to the target.",
+				"If the target wishes to avoid the spell, it can attempt a Will save to reduce the effects.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unaffected.",
+						"Success": "The target heals half as much from heal and takes half as much damage from harm for 1 round.",
+						"Failure": "Effects as described in the text."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The status bonus to the Hit Points restored increases by 2."
+				},
 				"x": null,
 				"no_x": null
 			}
