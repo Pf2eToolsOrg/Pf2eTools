@@ -79,9 +79,9 @@
 					"page": 533,
 					"name": "Cast a Spell",
 					"entries": [
-						"If an item lists \"Cast a Spell\" after \"Activate,\" the activation requires you to use the Cast a Spell activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
+						"If an item lists \"Cast a Spell\" after \"Activate,\" the activation requires you to use the {@action Cast a Spell} activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
 						"If the item can be used for a specific spell, the action icon for that spell is provided. If it's an item like a staff, which can be used for many spells, the icon is omitted, and you must refer to each spell to determine which actions you must spend to Activate the Item to cast it.",
-						"In this case, Activate an Item gains all the traits from the relevant components of the Cast a Spell activity."
+						"In this case, Activate an Item gains all the traits from the relevant components of the {@action Cast a Spell} activity."
 					]
 				},
 				{
@@ -423,10 +423,10 @@
 				"basic": true
 			},
 			"entries": [
-				"You cast a spell you have prepared or in your repertoire. {@action Cast a Spell||Casting a Spell} is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
+				"You {@action Cast a Spell} you have prepared or in your repertoire. {@action Cast a Spell||Casting a Spell} is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
 				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell's stat block\u2014for example, \"{@as R} verbal.\"",
-				"{@b Long Casting Times} Some spells take minutes or hours to cast. The Cast a Spell activity for these spells includes a mix of the listed spell components, but it's not necessary to break down which one you're providing at a given time. You can't use other actions or reactions while casting such a spell, though at the GM's discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can't cast them in an encounter. If combat breaks out while you're casting one, your spell is disrupted (see Disrupted and Lost Spells below).",
-				"{@b Activation Components} Each spell lists the spell components required to cast it after the action icons or text, such as \"{@as 3} material, somatic, verbal.\" The spell components, described in detail below, add traits and requirements to the Cast a Spell activity. If you can't provide the components, you fail to Cast the Spell.",
+				"{@b Long Casting Times} Some spells take minutes or hours to cast. The {@action Cast a Spell} activity for these spells includes a mix of the listed spell components, but it's not necessary to break down which one you're providing at a given time. You can't use other actions or reactions while casting such a spell, though at the GM's discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can't cast them in an encounter. If combat breaks out while you're casting one, your spell is disrupted (see Disrupted and Lost Spells below).",
+				"{@b Activation Components} Each spell lists the spell components required to cast it after the action icons or text, such as \"{@as 3} material, somatic, verbal.\" The spell components, described in detail below, add traits and requirements to the {@action Cast a Spell} activity. If you can't provide the components, you fail to Cast the Spell.",
 				{
 					"type": "list",
 					"items": [
@@ -436,7 +436,7 @@
 						"Focus ({@trait manipulate})"
 					]
 				},
-				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the Cast a Spell activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
+				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the {@action Cast a Spell} activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
 			]
 		},
 		{
@@ -4647,6 +4647,61 @@
 			"requirements": "You are aboard the vehicle and adjacent to its controls.",
 			"entries": [
 				"You grab the reins, the wheel, or some other mechanism to control the vehicle. Attempt a piloting check; on a success, you become the vehicle’s pilot, or regain control of the vehicle if it was uncontrolled. Some vehicles have complicated controls that cause this action to become a multi-action activity."
+			]
+		},
+		{
+			"name": "Spellstrike",
+			"traits": [
+				"Magus"
+			],
+			"source": "SoM",
+			"page": 37,
+			"frequency": "until recharged (see below)",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"class": [
+					"Magus|SoM"
+				]
+			},
+			"entries": [
+				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don’t occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don’t apply the penalty until after you’ve completed the Spellstrike. The infusion of spell energy grants your Strike the arcane trait, making it magical.",
+				"After you use Spellstrike, you can’t do so again until you recharge your Spellstrike as a single action, which has the concentrate trait. You also recharge your Spellstrike when you cast a conflux spell (page 40) that takes at least 1 action to cast; casting a focus spell of another type doesn’t recharge your Spellstrike."
+			]
+		},
+		{
+			"name": "Arcane Cascade",
+			"traits": [
+				"Concentrate",
+				"Magus",
+				"Stance"
+			],
+			"source": "SoM",
+			"page": 37,
+			"requirements": "You used your most recent action to {@action Cast a Spell} or make a {@action Spellstrike|SoM}.",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"class": [
+					"Magus|SoM"
+				]
+			},
+			"entries": [
+				"You divert a portion of the spell’s magical power and keep it cycling through your body and weapon using specialized forms, breathing, or footwork. While you’re in the stance, your melee Strikes deal 1 extra damage. This damage increases to 2 if you have weapon specialization and 3 if you have greater weapon specialization. Any Strike that benefits from this damage gains the arcane trait, making it magical.",
+				"If your most recent spell before entering the stance was one that can deal damage, the damage from the stance is the same type that spell could deal (or one type of your choice if the spell could deal multiple types of damage). If the spell couldn’t deal damage, this stance’s bonus damage depends on the spell’s school.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Abjuration or Evocation} force",
+						"{@b Conjuration or Transmutation} same type as your weapon or unarmed attack",
+						"{@b Divination, Enchantment, or Illusion} mental",
+						"{@b Necromancy} negative"
+					]
+				}
 			]
 		}
 	]
