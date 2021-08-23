@@ -128,7 +128,7 @@ Parser.actionTypeKeyToFull = function (key) {
 		case "expert": return "Skill (Expert)"
 		case "master": return "Skill (Master)"
 		case "legendary": return "Skill (Legendary)"
-		case "variant": return "Optional/Variant Action"
+		case "variantrule": return "Optional/Variant Action"
 		default: return key.toTitleCase();
 	}
 }

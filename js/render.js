@@ -720,9 +720,10 @@ function Renderer () {
 			let min;
 			let max;
 			const firstCell = String(row.type === "multiRow" ? row.rows[0][0] : row[0]).trim();
-			const mLowHigh = /^(\d+) or (lower|higher)$/i.exec(firstCell);
+			// FIXME
+			const mLowHigh = /^(\d+)( or (?:lower|higher|less)$|(\+)$)/i.exec(firstCell);
 			if (mLowHigh) {
-				if (mLowHigh[2].toLowerCase() === "lower") {
+				if (mLowHigh[2].toLowerCase() === " or lower" || mLowHigh[2].toLowerCase() === " or less") {
 					min = -Renderer.dice.POS_INFINITE;
 					max = Number(mLowHigh[1]);
 				} else {
