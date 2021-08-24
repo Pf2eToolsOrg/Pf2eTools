@@ -1282,6 +1282,13 @@
 			"entries": [
 				"Emotions are powerful, and you can tap into that power to enhance your magic for a time. You learn to harness a particular emotional state under the right conditions, but be warned: emotions are volatile and destructive if left unchecked. The experience often leaves you reeling from the unhindered emotion, requiring a rest or distraction before tapping into it again.",
 				{
+					"type": "pf2-sidebar",
+					"name": "Emotional Focus",
+					"entries": [
+						"Some emotional states, such as love or hatred, require the caster to focus on a specific individual called their emotional focus. Your emotional focus can change over time with you choosing a new focus after an important part of your story is resolved. Work with your GM to determine when this change happens. An emotional focus doesn’t get a say in the matter; the cathartic spellcaster’s emotions determine the bond. However, making another PC your emotional focus could result in an uncomfortable social dynamic. You should check with that PC’s player in advance to see if such a link is acceptable."
+					]
+				},
+				{
 					"type": "pf2-h2",
 					"blue": true,
 					"name": "Emotional States",
@@ -1300,6 +1307,7 @@
 						},
 						{
 							"type": "pf2-h3",
+							"collapsible": true,
 							"name": "Anger",
 							"entries": [
 								"Your destructive wrath allows you to harm your foes but causes you pain in the process.",
@@ -1307,11 +1315,182 @@
 									"type": "text",
 									"style": "pf2-stat pf2-stat__section--wide",
 									"entries": [
-									"{@b Catharsis Trigger} An enemy deals damage to you. You can’t use this reaction if you’re {@condition fatigued}.",
-									"{@b Catharsis Activation} If you’re {@condition grabbed}, {@condition immobilized}, or {@condition restrained}, you can attempt to {@action Escape}. If you succeed, the creature or hazard imposing the condition on you (if applicable) takes force damage equal to your level.",
-									"{@b Emotional Fervor} When you {@action Cast a Spell} from your spell slots, if the spell deals damage and doesn’t have a duration, you gain a status bonus to that spell’s damage equal to the spell’s level. Spell: {@spell draw ire|SoM}",
-									"{@b Emotional Fallout} You become {@condition fatigued} until you Settle your Emotions.",
-									"{@b Focus Spell} {@spell athletic rush}"
+										"{@b Catharsis Trigger} An enemy deals damage to you. You can’t use this reaction if you’re {@condition fatigued}.",
+										"{@b Catharsis Activation} If you’re {@condition grabbed}, {@condition immobilized}, or {@condition restrained}, you can attempt to {@action Escape}. If you succeed, the creature or hazard imposing the condition on you (if applicable) takes force damage equal to your level.",
+										"{@b Emotional Fervor} When you {@action Cast a Spell} from your spell slots, if the spell deals damage and doesn’t have a duration, you gain a status bonus to that spell’s damage equal to the spell’s level. Spell: {@spell draw ire|SoM}",
+										"{@b Emotional Fallout} You become {@condition fatigued} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell athletic rush}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Awe",
+							"entries": [
+								"Your powerful sense of wonderment can be infectious and distracting.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You or an ally within 30 feet critically succeeds on an attack roll against an enemy’s AC or a skill check against one of an enemy’s DCs.",
+										"{@b Catharsis Activation} If you’re {@condition fascinated} or {@condition stupefied}, you can attempt an additional save to end the effect if it allowed a save.",
+										"{@b Emotional Fervor} When you cast a spell, choose one creature that was hit by your spell attack roll or that failed its saving throw, if any. That creature becomes {@condition fascinated} with you until the end of its next turn. It’s then temporarily immune to this fervor effect for 1 hour. Spell: {@spell glitterdust}",
+										"{@b Emotional Fallout} You become {@condition flat-footed} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell dazzling flash} (doesn’t require a religious symbol)"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Dedication",
+							"entries": [
+								"Your commitment protects those you are dedicated to but can lead to dependency. Your emotional focus is an individual creature you’re bound to (see Emotional Focus sidebar).",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} Your emotional focus takes damage from an enemy while within 30 feet of you.",
+										"{@b Catharsis Activation} Your emotional focus gains a number of temporary Hit Points equal to half your level rounded up. These temporary HP last for 1 minute.",
+										"{@b Emotional Fervor} Your spells that target your emotional focus gain the benefits of Reach Spell. When you cast a healing spell that affects your emotional focus, your emotional focus also gains temporary HP equal to the spell’s level in addition to the spell’s effects. These temporary HP last for 1 minute. Spell: {@spell spirit link}",
+										"{@b Emotional Fallout} Until you Settle your Emotions, you can’t Cast Spells unless you’re adjacent to your emotional focus.",
+										"{@b Focus Spell} {@spell protector’s sacrifice}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Fear",
+							"entries": [
+								"You let your fear fuel you, rather than consume you, but it burns your endurance.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} An enemy makes you {@condition frightened}.",
+										"{@b Catharsis Activation} Increase your {@condition frightened} value by 1, to a maximum of {@condition frightened} 4.",
+										"{@b Emotional Fervor} You don’t take the status penalty from the {@condition frightened} condition to your spell DCs or spell attack bonus. Instead, you gain a status bonus to spell attack rolls equal to the penalty you would’ve taken, and your foes take the same status penalty to their saving throws against your spells. Any other statistic takes the status penalty as normal. Spell: {@spell fear}",
+										"{@b Emotional Fallout} You are {@condition fleeing} for 2 rounds, running from the source of the {@condition frightened} condition that triggered your Catharsis. If that source is no longer present, you instead flee from the position where you were at the start of your emotional fallout.",
+										"{@b Focus Spell} {@spell waking nightmare}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Hatred",
+							"entries": [
+								"Your unabashed hatred consumes your soul and causes your foe to falter. Your emotional focus is an individual enemy you detest (see Emotional Focus sidebar).",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You start your first turn in an encounter against your emotional focus or one of their followers. If the encounter includes multiple eligible followers and doesn’t include your actual emotional focus, choose one of the followers to act as your emotional focus for this encounter (or until your actual emotional focus shows up).",
+										"{@b Catharsis Activation} You can {@action Step} or {@action Stride}. You must end this movement closer to your emotional focus.",
+										"{@b Emotional Fervor} Your emotional focus is {@condition flat-footed} to you and takes a –2 status penalty to saves against your spells. You’re {@condition flat-footed} to your emotional focus and take a –2 status penalty to saves against it. Spell: {@spell blood vendetta|APG}",
+										"{@b Emotional Fallout} You become {@condition stunned} 2.",
+										"{@b Focus Spell} {@spell cry of destruction}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Joy",
+							"entries": [
+								"Your unbridled enthusiasm and positive attitude can lead you to success, but you might expend more energy than you planned.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You critically succeed on an attack roll or save, or an enemy critically fails on a save against you.",
+										"{@b Catharsis Activation} Reduce the value of any {@condition frightened} or {@condition stupefied} condition you have by 1 and end any {@condition persistent damage||persistent mental damage} you have.",
+										"{@b Emotional Fervor} You gain a +1 status bonus to {@skill Performance} checks and to the spell attack rolls of {@trait emotion} spells, and enemies take a –1 status penalty to saves against your {@trait emotion} spells. Spell: {@spell hideous laughter}",
+										"{@b Emotional Fallout} You become {@condition fatigued} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell unimpeded stride}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Love",
+							"entries": [
+								"You’re joined by the bonds of love and nothing can break that, but love can distract you from other things in your life. Your emotional focus is someone you’re in love with; they aren’t required to love you back.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} Your emotional focus takes damage from an enemy while within 30 feet of you.",
+										"{@b Catharsis Activation} If either you or your emotional focus is {@condition confused} or {@condition controlled}, one of you can attempt a new saving throw against one confusing or controlling effect (if it allowed a save), ending the condition if the new save is a success. If both of you are eligible, your emotional focus gets the new save.",
+										"{@b Emotional Fervor} You gain a +1 status bonus to Will saves. If you cast a spell to benefit your emotional focus, this bonus increases to +3 until the start of your next turn. Spell: {@spell soothe}",
+										"{@b Emotional Fallout} You’re {@condition fascinated} with your emotional focus for 1 minute.",
+										"{@b Focus Spell} {@spell soothing words}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Misery",
+							"entries": [
+								"To suffer is to know you’re alive; to make your enemies suffer as greatly as you have eases your suffering.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You gain {@condition persistent damage} from a foe.",
+										"{@b Catharsis Activation} You gain a number of temporary Hit Points equal to your level. They last for 1 minute.",
+										"{@b Emotional Fervor} You can choose not to attempt a flat check to end {@condition persistent damage} you’re taking. When you cast a damaging spell, you can choose one creature that failed its save or that you hit with your spell attack roll. That target takes {@condition persistent damage} of the same type the spell dealt, of an amount equal to the highest amount of {@condition persistent damage} you currently have. You can’t choose a creature that’s already taking {@condition persistent damage}. Spell: {@spell phantom pain}",
+										"{@b Emotional Fallout} You take an untyped penalty to any damage you would deal with any spell you cast until you Settle your Emotions. The penalty is –1 per spell level.",
+										"{@b Focus Spell} {@spell savor the sting}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Pride",
+							"entries": [
+								"All is well as long as you appear well, but you get caught up in the moment and lose track of what’s important.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You critically fail on an attack roll or saving throw.",
+										"{@b Catharsis Activation} The critical failure becomes a failure.",
+										"{@b Emotional Fervor} Each time you cast an illusion spell, until the start of your next turn, any critical failure you roll on an attack roll or saving throw is a failure instead. Spell: {@spell color spray}",
+										"{@b Emotional Fallout} You momentarily lose track of what’s real, becoming {@condition confused} for 1 round. Spell: {@spell mirror image}",
+										"{@b Focus Spell} {@spell veil of confidence}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Remorse",
+							"entries": [
+								"You attempt to overcome your failings, but your guilt stays with you.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} An ally within 30 feet drops to 0 Hit Points.",
+										"{@b Catharsis Activation} You {@action Step} or {@action Stride}. You must end this movement closer to the triggering ally",
+										"{@b Emotional Fervor} Any spell you cast that restores Hit Points to the triggering ally gets a status bonus to the Hit Points healed equal to the spell’s level, or double the spell’s level if the ally is at 0 Hit Points. Spell: {@spell warrior’s regret|SoM}",
+										"{@b Emotional Fallout} Your emotional weight crushes you, leaving you {@condition stupefied} 2 until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell healer’s blessing}"
 									]
 								}
 							]
