@@ -4703,6 +4703,84 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Share Senses",
+			"traits": [
+				"Concentrate",
+				"Divination",
+				"Scrying",
+				"Summoner"
+			],
+			"source": "SoM",
+			"page": 53,
+			"requirements": "Your eidolon is manifested.",
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"entries": [
+				"You project your senses into your eidolon, allowing you to perceive through it. When you do, you lose all sensory information from your own body, but can sense through your eidolon’s body for up to 1 minute. You can {@action Dismiss} this effect."
+			],
+			"special": "This action has the trait matching your eidolon’s tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal}). Your eidolon can also use this ability. When it does, it projects its senses into your body."
+		},
+		{
+			"name": "Act Together",
+			"traits": [
+				"Summoner",
+				"Tandem"
+			],
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"source": "SoM",
+			"page": 53,
+			"frequency": "once per round",
+			"activity": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"entries": [
+				"You and your eidolon act as one. Either you or your eidolon takes an action or activity using the same number of actions as Act Together, and the other takes a single action.",
+				"For example, if you spent 2 actions to Act Together, you could cast {@spell burning hands} (2 actions) and your eidolon could {@action Strike} (1 action), or your eidolon could use its Breath Weapon (2 actions) and you could {@action Stride} (1 action).",
+				"This lets you each use separate exploration activities like {@action Avoid Notice} as you travel (Core Rulebook 496)."
+			]
+		},
+		{
+			"name": "Manifest Eidolon",
+			"traits": [
+				"Concentrate",
+				"Conjuration",
+				"Manipulate",
+				"Summoner",
+				"Teleportation"
+			],
+			"source": "SoM",
+			"page": 52,
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"activity": {
+				"number": 3,
+				"unit": "action",
+				"entry": "{@as 3}"
+			},
+			"entries": [
+				"Your eidolon appears in an open space adjacent to you, and can then take a single action. If your eidolon was already manifested, you unmanifest it instead.",
+				"The conduit that allows your eidolon to manifest is also a tether between you. Your eidolon must remain within 100 feet of you at all times and can’t willingly go beyond that limit. If forced beyond this distance, or if you are reduced to 0 Hit Points, your eidolon’s physical form dissolves: your eidolon unmanifests, and you need to use Manifest Eidolon to manifest it again."
+			],
+			"special": "This activity has the trait matching your eidolon’s tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
 		}
 	]
 }
