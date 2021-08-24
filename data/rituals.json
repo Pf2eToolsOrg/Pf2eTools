@@ -131,6 +131,76 @@
 			}
 		},
 		{
+			"name": "Asmodean Wager",
+			"source": "SoM",
+			"page": 147,
+			"level": 6,
+			"traits": [
+				"Rare",
+				"Divination",
+				"Linguistic"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"cost": "parchment, ink, and an item of value from each bettor worth at least 50 gp",
+			"secondaryCasters": {
+				"number": 1,
+				"note": "to 9"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Society}",
+				"skills": [
+					"{@skill Society}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "Until the wager's completion",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"entries": [
+				"You facilitate a magically binding agreement between yourself and one or more additional secondary casters, wherein each participant (hereafter referred to as the bettors) stakes something of value on the outcome of an event that has yet to be determined. The nature of the event is up to the bettors: a test of skill, a game of chance, or even something occurring in the distant future. While named for {@deity Asmodeus} and invented by those with a diabolical bent, the ritual has no particular connection to Hell and instead relies on the occult connections between the bettors. The stakes can be either of the following:",
+				{
+					"type": "list",
+					"items": [
+						"A promise or possession. The losers of the bet are placed under the effects of a 9th-level geas ritual to uphold the promise or turn over a single item they own, as stated at the time of the spell's casting. Once ownership has been transferred or the promise fulfilled, nothing prevents the bettors from trying to reclaim a former possession.",
+						"The bettors' life. As soon as the outcome has been decided, the losers die instantly with no saving throw; this is a {@trait death} effect. The next time the winner would die, they instead remain alive and {@condition unconscious} at 0 Hit Points with a {@condition dying} condition 1 lower than would kill them. Until this protection has been exhausted, the loser of the bet can't be returned to life through any means, even powerful magic such as wish. A creature already in possession of an additional life as a result of winning an Asmodean wager can't enter into a new wager with a life as collateral"
+					]
+				},
+				"If any participant knowingly and willingly makes any attempt to cheat at or avoid fulfilling the terms of the wager, the spell automatically determines them the loser and resolves accordingly. The spell doesn't function if any participant is acting against their will or being mentally {@condition controlled} or coerced by any means, or if any participant is immune to or otherwise unaffected by their wager (such as if a construct, undead, or other creature immune to {@trait death} effects tried to bet its life). At the GM's discretion, if it ever becomes permanently impossible for the bet's outcome to be determined, the spell ends without any further result.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "The ritual is successful.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The wording of the ritual is imperfect and subverts the bet, causing all bettors to be considered losers regardless of the actual result of the wager."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Astral Projection",
 			"source": "APG",
 			"page": 240,
@@ -322,6 +392,58 @@
 			}
 		},
 		{
+			"name": "Awaken Object",
+			"source": "SoM",
+			"page": 147,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "crushed gems and spices worth 250 gp",
+			"secondaryCasters": {
+				"number": 2
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} (expert) or {@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Crafting}, {@skill Arcana} or {@skill Occultism}",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Crafting}",
+					"{@skill Occultism}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"(whichever isn't used for the primary check) Target 1 non-magical inanimate object Duration unlimited You imbue a single Small or smaller object with rudimentary awareness and consciousness, and it gains mental ability modifiers depending on the results of the ritual. It gains the ability to see and hear, and the ability to understand (but not speak) a single language that you know. It's {@condition indifferent} to you and all living creatures. In all other respects, it's an ordinary object of its type. An awakened object that gains the {@condition broken} condition is rendered insensate until Repaired above its {@condition Broken} Threshold.",
+				"Magical objects and constructs can't be awakened, nor can most spell or magic item abilities be added to an awakened object later (the process to do so is much more complicated than a ritual and essentially creates an intelligent magic."
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Awaken Portal",
 			"source": "APRoG",
 			"page": 79,
@@ -396,6 +518,59 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Bathe In Blood",
+			"source": "SoM",
+			"page": 148,
+			"level": 8,
+			"traits": [
+				"Rare",
+				"Necromancy"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "alchemical herbs and components worth a total of 1,000 gp × the target's level",
+			"secondaryCasters": {
+				"number": 2
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Religion}, {@skill Society} Range 20 feet; Target 1 living creature of a level no greater than double the bathe in blood ritual's level This is an old ritual, illegal in nearly every corner of Golarion, but never quite exterminated. You bathe in the freshly spilled blood of your people, whose lives and years you steal in the process.",
+				"This ritual requires that you submerge yourself in a bath of alchemically treated blood, attended by silent servants.",
+				"The blood must come from the same ancestry as your own, and must have been spilled within the last 6 hours; a spell such as gentle repose can extend this time, but using such preserved blood applies a \u20134 circumstance penalty to the primary and secondary checks. If you're Medium, you require 30 gallons of blood to immerse yourself, and a typical Medium creature holds about 1-1/2 gallons of blood in its body. This ritual doesn't strictly require that the blood donors be killed and {@condition drained} dry, but the logistical challenges of gathering enough blood without murder are beyond all but the most well-resourced casters.",
+				"Each time you enact this ritual, regardless of its success or failure, you take a penalty to the primary check for all subsequent castings. This penalty starts at \u20131 and increases by \u20131 during each casting (so if you were casting this ritual on yourself for the fifth time, you would take a \u20134 penalty on your {@skill Occultism} check).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You emerge rejuvenated and revived. You become up to 40 years younger, returning to the prime of youth and life. If you're already at your desired age, your aging instead stops for the next 40 years. While remaining recognizably yourself, you also become preternaturally attractive, gaining a +1 circumstance bonus to {@action Make an Impression}.",
+						"Success": "You become 20 years younger or pause your aging for 20 years.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "You die. Casters killed this way frequently return as undead, often as ghosts or vampires."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
 		},
 		{
 			"name": "Blight",
@@ -686,6 +861,64 @@
 			},
 			"entries": [
 				"As {@ritual commune}, except you contact the primal spirits of nature, which know about animals, beasts, fey, plants, topography, and natural resources within a 3-mile radius of the ritual's location."
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Concealment's Curtain",
+			"source": "SoM",
+			"page": 148,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Curse",
+				"Divination",
+				"Mental"
+			],
+			"cast": {
+				"number": 6,
+				"unit": "day",
+				"entry": "6 days"
+			},
+			"cost": "an ornate mirror worth at least 100 gp, naturally occurring round fruit the size and number of the target's eyes, and the same amount of flawless silver needles worth at least 1 gp each",
+			"secondaryCasters": {
+				"number": 3
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism}",
+				"skills": [
+					"{@skill Occultism}"
+				]
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Arcana},",
+				"skills": [
+					"{@skill Arcana}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Deception}, {@skill Stealth} Range planetary; Target 1 living creature Duration 1 week At twilight for 5 days, you line the fruit in front of the mirror, chanting the name of the target, and envisioning its eyes in your mind. At exactly midnight on the last day, you drive the pins through the fruits, miming the action of methodically blinding the target to you and your companions. The target is immediately affected and can't visually detect any of the casters involved in the ritual\u2014provided that the ritual was successful, the target is unaware of the effects. Since the ritual affects the target's ability to see the casters, rather than make the casters {@condition invisible}, effects like true seeing are ineffective against concealment's curtain; instead, the target would need to remove the curse with effects like remove curse.",
+				"To perform this ritual, you must have been within 5 feet of the target at least once, close enough to get a good look at its eyes. The target is temporarily immune to further castings of concealment's curtain for 1 year.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is unable to visually detect the casters for the duration, and the target's detection spells don't detect the targets.",
+						"Success": "The target is unable to visually detect the casters for the duration, but it's detection spells function normally.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual backfires and all casters participating in it are {@condition blinded} for the next 24 hours."
+					}
+				}
 			],
 			"heightened": {
 				"heightened": false,
@@ -1113,6 +1346,288 @@
 			]
 		},
 		{
+			"name": "Dread Ambience",
+			"source": "SoM",
+			"page": 149,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Consecration",
+				"Emotion",
+				"Enchantment",
+				"Fear",
+				"Mental"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "day",
+				"entry": "2 days"
+			},
+			"cost": "candles, specialty salts, and rare herbs worth 80 gp total",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} or {@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Deception}",
+				"skills": [
+					"{@skill Deception}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Misc."
+				],
+				"entry": "1 square mile"
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "1 year",
+				"duration": {
+					"number": 1,
+					"unit": "year"
+				}
+			},
+			"entries": [
+				"In some places, it always feels like something is observing you, as if the very land doesn't want you there. {@condition Hostile} creatures skitter about in the underbrush. Tendrils of mist try to lead you stray. Even the scent of the place is unwelcoming. Sometimes, this eerie atmosphere is a natural occurrence. Other times, it's the result of the dread ambience ritual.",
+				"To create this unwelcoming, intimidating aura, you must prepare the area with salts and herbs, traveling the entire edge of the area throughout the casting.",
+				"After you complete your ritual, anyone who enters the area receives a status penalty to saving throws against {@trait fear} effects within the dread ambience.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The sense of dread is particularly powerful. Every creature in an area takes a \u20132 status penalty to saving throws against {@trait fear} effects.",
+						"Success": "The dread ambience succeeds. Every creature in the area takes a \u20131 status penalty to saving throws against {@trait fear} effects.",
+						"Failure": "The dread ambience fails.",
+						"Critical Failure": "The dread ambience fails, and the casters take a \u20131 status penalty to all Will saves for the next week."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 7,
+						"entry": "The dread ambience costs 750 gp and remains in place for 10 years."
+					},
+					{
+						"level": 9,
+						"entry": "The dread ambience costs 5,000 gp and remains in place for an unlimited duration."
+					}
+				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Elemental Sentinel",
+			"source": "SoM",
+			"page": 150,
+			"level": 1,
+			"traits": [
+				"Uncommon",
+				"Conjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "precious metals, rare incense, and herbs worth a total value of 15 gp per spell level",
+			"primaryCheck": {
+				"entry": "{@skill Arcana} (expert) or {@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"targets": "1 object",
+			"duration": {
+				"type": "timed",
+				"entry": "unlimited",
+				"duration": {
+					"number": 1,
+					"unit": "unlimited"
+				}
+			},
+			"entries": [
+				"You place a tiny elemental wisp within a single object, usually a mirror, statue, or other mundane-looking item, to serve as an alarm. Shattering or otherwise destroying the object frees the wisp and ends the ritual's effect even if the object is magically restored.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The elemental wisps inhabits the object and willingly serves you to the best of its ability. The wisp becomes aware of the target object's surroundings and can telepathically contact you with a range of 500 feet. It reports to you about intruders or other changes to the room in which it's located. You must tell the wisp what the criteria for the reports will be\u2014for instance, when anyone not openly wearing a certain symbol enters the room or when an item is removed. The wisp has a +5 {@skill Perception} modifier and observes the room using normal vision, normal hearing, and touch.",
+						"Success": "As critical success, but the range of the telepathy is 100 feet and the wisp's {@skill Perception} modifier is +3.",
+						"Failure": "You're unable to harness the spirit. The ritual fails.",
+						"Critical Failure": "The elemental wisp is trapped in the object as with a success, but it refuses or is somehow unable to help you. The elemental might have extremely low Intelligence or simply be spiteful. Regardless, the object's reports are always misleading."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 4,
+						"entry": "The range of the telepathic link increases, allowing the wisp to contact you anywhere on the same planet. Its {@skill Perception} modifier increases to +10, or +12 on a critical success."
+					},
+					{
+						"level": 6,
+						"entry": "As 4th level, except the wisp can see invisibility, and its {@skill Perception} modifier increases to +15, or +17 on a critical success."
+					}
+				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Empower Ley Line",
+			"source": "SoM",
+			"page": 216,
+			"level": 7,
+			"traits": [
+				"Rare",
+				"Evocation"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "magical foci worth a total value of 50 gp × the spell level × the target's level",
+			"secondaryCasters": {
+				"number": 6
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion},\nmatching the ley line's tradition (legendary)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Nature}",
+					"{@skill Occultism}",
+					"{@skill Religion}"
+				],
+				"prof": "legendary"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Lore|Ley Line Lore} or {@skill Occultism}",
+				"skills": [
+					"{@skill Lore}",
+					"{@skill Occultism}"
+				]
+			},
+			"range": {
+				"type": "point",
+				"entry": "10 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"targets": "1 ley line or ley line node up to double this ritual's level",
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"You draw upon surrounding magical energy to empower a ley line, enhancing both its {@trait positive} and {@trait negative} effects.",
+				"The duration of an empowered ley line's benefits increases: when you successfully Tap a Ley Line that's empowered, you gain its benefits until the end of your next turn on a success (1 minute on a critical success)",
+				"You take double the damage if you fail to Tap a Ley Line that's empowered and double the damage from the ley line's backlash effects (if any). If a backlash effect has a duration, that duration increases: a backlash effect that would ordinarily last until the end of your next turn now lasts for 1 minute, effects that last for 1 minute now last for 10 minutes, effects that last for 10 minutes now last for 1 hour, and effects that last for 1 hour now last for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You empower the ley line until the next turning of the season.",
+						"Success": "You empower the ley line for 1 week.",
+						"Failure": "You fail to empower the ley line.",
+						"Critical Failure": "All casters take damage and suffer the ley line's backlash as if they had critically failed to Tap the Ley Line. This damage and backlash is enhanced as if the ley line were successfully empowered, leading to increased damage and longer backlash effects."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Establish Nexus",
+			"source": "SoM",
+			"page": 217,
+			"level": 5,
+			"traits": [
+				"Rare",
+				"Consecration",
+				"Transmutation"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "magical foci worth 100 gp × the spell level × the node's level",
+			"secondaryCasters": {
+				"number": 2
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} based\non the ley line (master)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Nature}",
+					"{@skill Occultism}",
+					"{@skill Religion}"
+				],
+				"prof": "master"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Lore|Ley Line Lore}\nor {@skill Occultism}",
+				"skills": [
+					"{@skill Lore}",
+					"{@skill Occultism}"
+				]
+			},
+			"range": {
+				"type": "point",
+				"entry": "10 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"targets": "1 ley line node up to double establish nexus's level",
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"You focus the power of the node's intersecting ley lines into a powerful confluent point known as a ley line nexus.",
+				"The ley line nexus grows out from the node in a 20-foot radius. The ley line nexus is more open and available for access to creatures you designate. When Tapping the Ley Lines, these creatures get a degree of success one better than they rolled.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The ley line nexus is established. The nexus is particularly powerful, allowing it to continually refresh its magical energy; thus, the nexus lasts for up to 100 years, unless the ley lines shift.",
+						"Success": "The ley line nexus is established and lasts for a year and one day, unless the ley lines shift.",
+						"Failure": "You fail to establish the ley line nexus.",
+						"Critical Failure": "All casters take damage and suffer backlash effects as if they had critically failed to Tap every Ley Line in the node simultaneously, and they can't attempt to Tap those Ley Lines for a year and one day. Rarity: Rare GMs can use the pervasive magic rules found here to create worlds where magic flows freely (or to alter only parts of a setting to be especially high in magic; see page 222 for ideas on how to incorporate pervasive magic rules into the Lost Omens setting). Adding {@trait magical} traits to a campaign can enrich the setting and make it more memorable. Perhaps a cataclysmic, magical event turned part of the world into a barren wasteland\u2014those desolated plains might still hold enough residual magic to apply the pervasive magic rules. Creatures and characters in an area might all have the {@trait arcane} trait, or mountain lakes tied to the Elemental Plane of Water might infuse the nearby terrain and its inhabitants with primal magic. The constant efforts of secretive cults might cause occult power to leak into the sewers and tunnels beneath a bustling city. The GM must decide when first creating a campaign if it uses the pervasive magic rules. In pervasive magic campaigns, players choose their characters' associated magic trait and can select from the pervasive magic backgrounds and feats presented starting on page 219. Because pervasive magic represents a slight power increase overall, it's recommended that if some characters in the setting have access to pervasive magic, then all characters should to maintain balance."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Fantastic Façade",
 			"source": "APG",
 			"page": 240,
@@ -1245,6 +1760,58 @@
 			}
 		},
 		{
+			"name": "Garden Of Death",
+			"source": "SoM",
+			"page": 150,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Consecration",
+				"Necromancy",
+				"Plant",
+				"Poison"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "water infused with a dozen deadly toxins worth a total of 50 gp Secondary Casters 2",
+			"primaryCheck": {
+				"entry": "{@skill Nature} (expert)",
+				"skills": [
+					"{@skill Nature}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting}, {@skill Medicine} Area 40-foot-radius burst Duration 1 year Typically associated with the less {@condition friendly} fey or druids, this ritual calls all the poisonous, toxic, and venomous plants and animals of an area to congregate in a certain place, creating a beautiful but extravagantly deadly garden.",
+				"You and the secondary casters sprinkle the ground of the garden with water infused with various poisons and a few drops of your blood. Within the bounds of the ritual, the ecosystem attracts every possible poisonous plant or animal native to the environment, with nonpoisonous plants or animals growing only if there's no toxic counterpart. This deadly ecosystem flourishes, if at all possible (plants still need light and water, for instance), for a year and gradually disperses after this period. If this ritual is successfully cast on the grounds of an existing garden of death, it resets the duration and expands the garden's radius by 20 feet instead.",
+				"The maximum level of plants or animals called by the ritual is equal to its spell level, and the called plants and animals can use the ritual's spell DC instead of their own poison DC, whichever is higher. The garden's residents don't willingly use their poison on you or the secondary casters, but you don't otherwise control or command them.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "A poisonous garden forms, and you and the secondary casters gain a +2 circumstance bonus to {@skill Nature} or {@skill Crafting} checks to deal with the plants or animals, such as feeding them or harvesting poison from them.",
+						"Success": "As critical success, but without the circumstance bonus when interacting with the garden.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "You and the secondary casters are each bitten by the most poisonous creature found naturally in the environment."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Geas",
 			"source": "CRB",
 			"page": 412,
@@ -1321,6 +1888,39 @@
 						"entry": "As 5th level, but the geas lasts for a duration you choose (even unlimited) on an unwilling creature."
 					}
 				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Guardian's Aegis",
+			"source": "SoM",
+			"page": 150,
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Divination"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "rare oils worth 10 gp × the primary caster's level",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
 				"no_x": null
 			}
 		},
@@ -1447,6 +2047,61 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Ideal Mimicry",
+			"source": "SoM",
+			"page": 151,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Mental"
+			],
+			"cast": {
+				"number": 6,
+				"unit": "day",
+				"entry": "6 days"
+			},
+			"cost": "crafting materials worth at least 50 gp × the target's level; a lock of hair from the target, nail clippings from the target, or a vial of blood from the target",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting} Range see text; Target 1 sentient living creature Duration until used 10 times or until the target's body parts are removed from the doll You craft a doll with care and quiet meditation on the target, inserting the fingernails into the body, tying the lock of hair around the neck of the doll, or emptying the vial of blood into the stuffing and allowing it to be absorbed. You then stuff the doll and form it to mimic the shape of the target, creating clothing and accessories for the doll that are similar to commonly worn items. You must have been within 5 feet of the target at least once and gotten a good look at them to perform this ritual. You can cast the ritual and create the doll at any range from the target.",
+				"Once the doll is complete, you can {@action Interact} with the doll violently once per round to cause pain to the target as long as they're within 200 feet. This pain manifests as mental damage inflicted on the target, and it depends on how many of the three body part components (hair, nails, or blood) you included in the creation of the doll. After the first time you manipulate the doll, you can continue to do so until either the target moves beyond 200 feet or until you {@action Interact} with the doll to cause pain 10 times, whichever comes first. After either of those conditions is met, the doll falls apart into stuffing and dust.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The doll becomes connected to the target. Each {@action Interact} action causes {@damage 3d6} mental damage to the target for each of the three body part components (maximum {@dice 9d6} for all three components). The connection is more powerful than normal, increasing the number of times you can {@action Interact} to cause pain from 10 to 20.",
+						"Success": "As critical success, except you can only {@action Interact} the normal 10 times.",
+						"Failure": "The doll is just an ordinary doll.",
+						"Critical Failure": "Any {@action Interact} actions you take to cause pain to target instead cause {@dice 9d6} damage to the casters. The target is alerted to the attempt nonetheless, through a feeling of the connection being subverted."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 2,
+					"entry": "Increase the damage to the target by {@dice 1d6} per body part component, and the damage to the casters on a critical failure by {@dice 3d6}."
+				},
+				"x": null,
+				"no_x": null
+			}
 		},
 		{
 			"name": "Imprisonment",
@@ -1687,6 +2342,131 @@
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Mind Swap",
+			"source": "SoM",
+			"page": 151,
+			"level": 5,
+			"traits": [
+				"Rare",
+				"Mental",
+				"Necromancy",
+				"Possession"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "a pair of jeweled mirrors worth a total value of 50 gp × the level of the highest-level target",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Medicine} or {@skill Occultism} Range 10 feet; Targets 2 creatures of the same ancestry, of up to twice the level of mind swap Duration 1 week This ritual allows two subjects to exchange minds, fully inhabiting one another's bodies. The two targets can be chosen from you, the secondary caster, or unrelated third parties present throughout the ritual. Normally, both targets must be of the same ancestry for the minds to be fully compatible, but at the GM's discretion, for a much higher cost, the targets can be from different ancestries; this requires much more adjudication of ancestry feats and abilities. When both targets are of the same ancestry, muscle memory and the influence of their soul allow them to carry over all their mechanical abilities into each new body, except they use the other body's heritage (and lineage, if any). The GM might rule that similar physiological changes can't be overridden with a mind swap.",
+				"If a body dies, the mind and spirit controlling it dies instantly. When the spell ends, the minds and souls snap back to their original bodies. At this time, if the original body is dead, the mind and soul attempting to return to that body die as well.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Each target's mind and spirit possess the other's body and can control it normally. The mind swap is unusually smooth, and the targets gain a +4 circumstance bonus to {@skill Deception} checks to {@action Impersonate} each other.",
+						"Success": "Each target's mind and spirit possess the other's body and can control it normally.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual is scrambled, sending a welter of {@condition confused} memories into the target's minds. You and the secondary casters are {@condition stupefied|CRB|stupefied 2} for the next week."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 9,
+						"entry": "You can cast the ritual without a duration, leaving no magic to counteract. The effects are reversible only by another mind swap ritual or powerful magic like wish. This increases the cost of the ritual to 10,000 gp and is an evil act unless both targets are willing."
+					}
+				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Mystic Carriage",
+			"source": "SoM",
+			"page": 152,
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Conjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"cost": "toy carriage, horse statues, rare incense, and feathers worth 50 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} (Expert) or {@skill Occultism} (Expert)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				]
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Crafting} or {@skill Lore|Driving Lore}",
+				"skills": [
+					"{@skill Crafting}",
+					"{@skill Lore}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "1 week or until the named destination is reached, whichever comes first",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"entries": [
+				"This ritual allows you and the other casters to conjure a magical carriage that transports you to a destination of your choice. To summon the mystic carriage, you must be within 250 miles of your destination and spend 1 hour burning incense and feathers while chanting the name of the location you wish the carriage to take you to. When it arrives, the carriage is a Large vehicle that can fit 4 Medium or smaller passengers, as well as 100 Bulk. It has a Speed of 60 feet, AC of 14, Fortitude saving throw modifier of +8, Hardness 5, 100 Hit Points (BT 50), object immunities, and immunities to critical hits and precision damage.",
+				"Once loaded and boarded, the mystic carriage sets out at a Speed of 60 feet, heading unerringly towards its destination using whatever roads and trails are available.",
+				"If it's attacked, it continues going as long as nothing blocks its passage. If something blocks its way, living or otherwise, it will stop until the way is cleared, waiting to continue until all of its passengers are aboard once more.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You create a mystic carriage that lasts for 2 weeks, instead of 1 week. It can take you to up to two destinations, the first of which must be within 250 miles and the second of which must be within 250 miles of the first destination.",
+						"Success": "You create a mystic carriage as described above.",
+						"Failure": "You don't create a mystic carriage.",
+						"Critical Failure": "You don't create a mystic carriage, and you're attacked by a herd of four riding horses (Bestiary 209)."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The carriage's AC, Fortitude save, and Hardness increase by 2, its Hit Points increase by 20, and its {@condition Broken} Threshold increases by 10."
+				},
 				"x": null,
 				"no_x": null
 			}
@@ -1936,6 +2716,49 @@
 			}
 		},
 		{
+			"name": "Portrait Of Spite",
+			"source": "SoM",
+			"page": 153,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Curse",
+				"Necromancy"
+			],
+			"cast": {
+				"number": 7,
+				"unit": "day",
+				"entry": "7 days"
+			},
+			"cost": "splendid art supplies worth at least",
+			"primaryCheck": {},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"100 gp × the target's level, at least one pint of blood from the target; Secondary Casters 3 Primary Check {@skill Occultism} or {@skill Religion} (master); Secondary Checks {@skill Crafting}, {@skill Occultism} or {@skill Religion} (whichever isn't used for the primary check) Target 1 living creature Duration 1 year Using the blood, you compose a portrait of the target in perfect health. Once the portrait is complete, you recite your grievances against the target and enact on the portrait the punishments you wish to see them face, choosing from the {@condition clumsy}, {@condition enfeebled}, {@condition drained}, or {@condition stupefied} condition. The target must attempt a Will saving throw. You're only able to perform this ritual if you know the target's name and are able to see their face clearly in your mind's eye, and the secondary caster who performs the {@skill Crafting} check must be able to paint or draw the target from memory.",
+				"The target suffers the effects over the course of {@dice 1d6} hours, during which time the portrait transforms to reveal a caricature of the punishment you chose\u2014muscles atrophied into nothing for {@condition enfeebled}, pallid and sickly for {@condition drained}, and so on. The target is immediately aware that they're under the effects of a magical ailment. If the duration expires or the target removes the curse with a remove curse or similar effect, their portrait slowly returns back to its original form. Destroying the portrait also ends the effect immediately.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is either {@condition clumsy|CRB|clumsy 4}, {@condition drained|CRB|drained 4}, {@condition enfeebled|CRB|enfeebled 4}, or {@condition stupefied|CRB|stupefied 4}, depending on the punishment you chose. On a successful Will save, the condition value is 2, and the target is unaffected on a critical success.",
+						"Success": "The target is either {@condition clumsy|CRB|clumsy 2}, {@condition drained|CRB|drained 2}, {@condition enfeebled|CRB|enfeebled 2}, or {@condition stupefied|CRB|stupefied 2}, depending on the punishment you chose. On a successful Will save, the condition value is 1, and the target is unaffected on a critical success.",
+						"Failure": "The portrait doesn't change, and the ritual has no effect on the target.",
+						"Critical Failure": "The portrait turns into a sickening mimicry of your form and the forms of the secondary casters, and the blood of your target extracts itself from the canvas, dripping down and drying immediately to prevent you from reattempting the ritual. Over the course of the next {@dice 1d6} hours, you and the secondary casters experience the curse you had intended to place upon the target with the effects of a critical success."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Primal Call",
 			"source": "CRB",
 			"page": 415,
@@ -1992,6 +2815,55 @@
 			"heightened": {
 				"heightened": false,
 				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Purify Soul Path",
+			"source": "SoM",
+			"page": 234,
+			"level": 2,
+			"traits": [
+				"Uncommon",
+				"Abjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "rare incense and offering worth a total value of 10 gp × your level",
+			"primaryCheck": {
+				"entry": "{@skill Religion} (trained)",
+				"skills": [
+					"{@skill Religion}"
+				],
+				"prof": "trained"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"You delve inward, spending extensive time contemplating the purity of your own soul and the actions of your past. If you aren't truly penitent, the outcome is always a critical failure.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You reconcile your misdeeds with your soul path, removing your soulforged corruption. The corruption flaw from your armament no longer affects you. Before your reconciliation is complete, you must perform a special quest or other task in accord with your soul path. If completed during downtime, this task should take no less than 1 week. For 1 month, you receive divine insight just before performing an act that would be anathema to your soul path.",
+						"Success": "As critical success, but you gain no special insight regarding its subsequent actions.",
+						"Failure": "You don't reconcile and must continue to meditate and redress your misdeeds. Any future purify soul path rituals for the same misdeeds cost half as much and gain a +4 circumstance bonus to the primary check."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "Increase the maximum target level by 2 and the base cost by 10 gp. Upgrading, Reshaping, Restoring You might want to alter your soulbound armament by adding new runes, replacing its form with a new one, or creating a new armament after yours was destroyed. You decide whether you consider this new armament as the same armament of the same lineage or a brand-new creation with a totally different appearance and name. Upgrading your armament works like etching or transferring runes (Core Rulebook 580) or upgrading a permanent item from a lower-level version of the same item (Core Rulebook 534), whichever is appropriate to what you're doing. You or someone else can do the work, but you must leave the item manifested for the entire process. You can transfer runes off your armament as well, typically in anticipation of establishing your bond with a different item. Reshaping your armament allows you to change the base weapon, armor, or {@group shield} into another of the same type, turning half {@group plate} armor into full {@group plate}, changing a war{@group hammer} into a long{@group bow}, and so on. If all you do is change the form while keeping the same runes and other magical properties, you can do so by spending a day in meditation. This doesn't cost any gp or extra time unless the new form is higher than level 1, or unless the difference is so vast that the GM determines it might take additional time and cost. For example, turning explorer's clothing into full {@group plate} requires the same time, expense, and {@skill Crafting} check you'd need to {@action Craft} full {@group plate} since full {@group plate} is a level 2 item. Specific items can't be reshaped in this way unless the GM expressly allows it. You can't turn a flame tongue into a spiked {@group chain}, a breast{@group plate} of command into hide armor, or a sturdy {@group shield} into a darkwood {@group shield}. You can also use this day in meditation to rebind your soul to a different item in your possession. Typically, you keep the old item, its power removed, as a special keepsake or gift to a worthy successor, though attempting to disrespect the spirit of the bond by selling the item can have dire consequences. Since the essence power you chose represents the effects of the connection to your soul, the essence power typically doesn't change when you bind a new armament, though if your character's personality and connections change dramatically through the story, you and the GM might decide together to shift to a different essence power the next time you bind a new armament. If you rebind your soul to an armament that can't accommodate your current essence power, you will also need to change to a different essence power. You can recreate a destroyed soulforged armament, or bond to a new armament if your previous one was destroyed. (If it was destroyed by soulforged corruption, you must first successfully use purify soul path.) Recreating costs the same amount of time and money as creating the item from scratch. If you already have an item with which to form a new bond, it takes 1 day in meditation, as with reshaping an armament."
+				},
 				"x": null,
 				"no_x": null
 			}
@@ -2535,30 +3407,30 @@
 							{
 								"type": "affliction",
 								"stages": [
-										{
-											"stage": 1,
-											"entry": "carrier with no effect",
-											"duration": "1 month"
-										},
-										{
-											"stage": 2,
-											"entry": "{@condition fatigued}",
-											"duration": "1 week"
-										},
-										{
-											"stage": 3,
-											"entry": "{@condition fatigued} and {@condition drained} 1",
-											"duration": "1 day"
-										},
-										{
-											"stage": 4,
-											"entry": "{@condition fatigued} and {@condition drained} 3",
-											"duration": "1 day"
-										},
-										{
-											"stage": 5,
-											"entry": "death"
-										}
+									{
+										"stage": 1,
+										"entry": "carrier with no effect",
+										"duration": "1 month"
+									},
+									{
+										"stage": 2,
+										"entry": "{@condition fatigued}",
+										"duration": "1 week"
+									},
+									{
+										"stage": 3,
+										"entry": "{@condition fatigued} and {@condition drained} 1",
+										"duration": "1 day"
+									},
+									{
+										"stage": 4,
+										"entry": "{@condition fatigued} and {@condition drained} 3",
+										"duration": "1 day"
+									},
+									{
+										"stage": 5,
+										"entry": "death"
+									}
 								]
 							}
 						]
@@ -2573,6 +3445,59 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "The World's A Stage",
+			"source": "SoM",
+			"page": 153,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Fortune"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "costumes and a stage large enough to fit all casters",
+			"secondaryCasters": {
+				"number": 2,
+				"note": "to 12"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (expert)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting}, {@skill Performance} Duration 1 month This famous ritual is a sophisticated example of symbolic magic, binding fate and fortune to follow a prepared script. To conduct the ritual, you and the secondary casters must put on a long-form, multi-person, plot-based performance that's usually a play or opera, though more unusual performances have been known. You take the role of the director, while the secondary casters are either actors ({@skill Performance}) or significant backstage figures, such as set or costume designers ({@skill Crafting}). The casting time of the ritual includes both preparations and rehearsals of various sorts and the actual performance, which must be at least an hour long.",
+				"The performance presents current events and offers a particular vision on how they resolve, often in metaphorical or allegorical format (proposing the overthrow of a tyrant by referring to a different, legendary tyrant who was overthrown, or suggesting that a murderous secret might be uncovered by presenting an allegory of truth defeating murder). This performance must be presented to an audience of at least a hundred people, a majority of whom must both be connected, at least peripherally, to the events in question (the people of the tyrant's city, or the residents of the village where the murder occurred) and who must understand what the metaphor or allegory actually refers to. For the magic to spark, the performance must declare its purpose loudly and clearly to the parties most concerned. If a major antagonist featured in the performance is in the audience and the ritual is a success, you get a critical success instead.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Something sublime sparks between performance and audience, and destiny conspires to push events in the right direction. You and each secondary caster can reroll up to three skill checks at any point during the duration of the ritual after determining the results, as long as the skill check is connected to ensuring the topic of the performance comes true (to sneak past the tyrant's guards or find the murder weapon, for instance).",
+						"Success": "As critical success except the sparks of destiny are weaker, so each caster can reroll only a single skill check.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The performance is a dramatic and horrendous botch, and fate strikes out at the casters. You and each secondary caster are {@condition doomed|CRB|doomed 1} for the next month, and this condition can't be removed by anything less than a wish or similarly powerful magic. Creating a Magic Item As a crafter, creating a magic item is one of the most intensely personal projects you can undertake. While every serpentine wondrous figurine might more or less resemble a knotted snake carved out of jade, what type of snake is it? And what type of jade? Ten different figurines from ten different crafters could each show a distinct artistic mark, and experts can identify the handiwork of noteworthy crafters on sight. Similarly, items activated with commands typically each have unique utterances determined by the crafter. Before setting out to create a magic item, contem{@group plate} how your personality might inhabit and shape the item created. Investing a Magic Item The word \"preparation\" means different things to different wearers of invested magic items. To some, investing a diadem of intellect may involve sitting silently with it at the beginning of the day and feeling the magical energy course through it and themselves, but others may simply pull the headband out of their rucksack, wipe it off, and give it a glance to make sure the gems aren't cracked. Still others might refuse to ever take the headband off in the first place, even while washing up or sleeping. Any of these could work! The difference between these habits isn't a matter of respect or proper vs. improper technique, it simply reflects what investiture means to the person using the item. Activating a Magic Item You might activate a magic item flamboyantly, pragmatically, intensely, or off-handedly, but those choices are only external manifestations of how you activate the item. A deeper question is what the act of using a magic item feels like. Does the world seem to emit a deep thrum for an instant as a third eye gemstone sinks into your brow and manifests as a tattoo? Do you experience a counter-intuitive icy coolness when a blast from a potion of dragon's breath explodes from your mouth? A wizard might have a step-by-step instruction list that they mentally follow when they use a staff of power\u2014potentially out of habit or concerns for safety. Imagining how you interact with magic items, some of which possess world-altering power, can be a revealing window into how you view your place in the cosmos. Collected Notes In his 72 years as an amateur historian, Lambus of Magnimar amassed a collection of thousands of accounts of people's everyday encounters and experimentations with magic items from across Golarion. Excerpts from his impressive collection can be found throughout the Consumables and Permanent Items sections later in the chapter."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
 		},
 		{
 			"name": "Unseen Custodians",

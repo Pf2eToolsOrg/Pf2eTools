@@ -8,7 +8,7 @@ if (typeof module !== "undefined") {
 class TraitConverter extends ConverterBase {
 	constructor (source, textToConvert) {
 		super(source, textToConvert);
-		this.matches = [...this.source.txt.matchAll(/^([^\n]*?) \(trait\)(.*?)(?:\.|\s\d+)\n/gm)];
+		this.matches = [...this.source.txt.matchAll(/\n([^\n]*?) \(trait\)(.*?)(?:\.|\s\d+|–\d+)\n/gsm)];
 	}
 
 	convert (match) {
@@ -16,8 +16,14 @@ class TraitConverter extends ConverterBase {
 		this.trait.name = match[1].toTitleCase();
 		this.trait.source = this.source.name;
 		this.trait.page = this.getPageNumber();
-		this.trait.entries = this.cleanEntry(match[2]);
+		this.trait.entries = this._getCleanEntry(match);
 		return this.trait;
+	}
+
+	_getCleanEntry (match) {
+		if (!match || !match[2]) return [];
+		if (/[A-Z]{2,} \d+$/.test(match[2])) return [];
+		return ConverterUtils.cleanEntry(match[2]);
 	}
 }
 

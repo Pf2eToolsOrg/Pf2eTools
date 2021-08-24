@@ -43,6 +43,8 @@ class NavBar {
 		addLi(ulBooks, "books.html", "View All/Homebrew");
 		addDivider(ulBooks);
 		addLi(ulBooks, "book.html", "Core Rulebook", {aHash: "CRB", date: "2019"});
+		addLi(ulBooks, "book.html", "Gamemastery Guide", {aHash: "GMG", date: "2020"});
+		addLi(ulBooks, "book.html", "Secrets of Magic", {aHash: "SoM", date: "2021"});
 
 		const ulPlayers = addDropdown(navBar, "Player");
 		addLi(ulPlayers, "ancestries.html", "Ancestries");
@@ -320,7 +322,7 @@ class NavBar {
 
 		/**
 		 * Adds a new dropdown starting list to the navigation bar
-		 * @param {String} appendTo - Element to append this link to.
+		 * @param appendTo - Element to append this link to.
 		 * @param {String} text - Dropdown text.
 		 * @param {boolean} [isSide=false] - If this is a sideways dropdown.
 		 */

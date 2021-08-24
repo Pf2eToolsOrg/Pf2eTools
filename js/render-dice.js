@@ -381,12 +381,17 @@ Renderer.dice = {
 		};
 
 		const modRollMeta = Renderer.dice.getEventModifiedRollMeta(evtMock, entry);
-		let $parent = $ele.parent();
-		while ($parent.length) {
-			if ($parent.hasClass("pf2-table")) break;
-			$parent = $parent.parent();
+		const isRollOnTableCell = ($ele) => {
+			let $parent = $ele.parent();
+			let isLabel = false
+			while ($parent.length) {
+				if ($parent.hasClass("pf2-table__label")) isLabel = true;
+				if ($parent.hasClass("pf2-table--rollable")) return isLabel;
+				$parent = $parent.parent();
+			}
+			return false;
 		}
-		if ($parent.is("div") || modRollMeta.entry.onTable) {
+		if (isRollOnTableCell($ele) || modRollMeta.entry.onTable) {
 			Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {fnGetMessage: fnGetMessageTable, rollCount: modRollMeta.rollCount});
 		} else Renderer.dice.pRollEntry(modRollMeta.entry, rolledBy, {rollCount: modRollMeta.rollCount});
 	},

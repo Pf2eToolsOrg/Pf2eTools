@@ -125,6 +125,13 @@
 	src: local('font'), url('../fonts/SabonLTStd-Bold.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'Basing';
+	font-style: normal;
+	font-weight: 400;
+	src: local('font'), url('../fonts/Basing.ttf') format('truetype');
+}
+
 //endregion
 
 .pf2-book-wrapper {
@@ -137,6 +144,7 @@
 	overflow-x: hidden;
 }
 
+// FIXME: rd__list
 .pf2-book {
 	font-family: 'SabonLTStd', sans-serif;
 
@@ -147,7 +155,7 @@
 
 	&--stat {
 		font-size: 1em;
-		margin: 0.6em 0;
+		margin: 1em 0;
 
 		.rd__list li {
 			font-size: 1em;
@@ -1051,7 +1059,7 @@
 	position: relative;
 	left: 3%;
 	margin: 1.6em 0 0.6em;
-	padding: 0.6em;
+	padding: 0.6em 1.6em;
 	font-family: 'good-pro', sans-serif;
 	width: 94%;
 	min-width: 120px;
@@ -1064,8 +1072,7 @@
 			z-index: 2;
 			top: -0.36em;
 			left: 0;
-			padding-right: 1em;
-			padding-left: 1em;
+			padding: 0 0.3em;
 			display: block;
 			font-weight: bold;
 			font-size: 1.22em;
@@ -1074,7 +1081,7 @@
 		}
 
 		&text {
-			margin: 0 1em;
+			margin: 0;
 			text-indent: 0;
 			text-align: justify;
 			line-height: 1.2em;
@@ -1158,6 +1165,26 @@
 		text-align: center;
 		text-transform: uppercase;
 	}
+}
+
+.pf2-letter {
+	font-family: 'Basing', sans-serif;
+	color: #492706;
+	position: relative;
+	left: 3%;
+	margin: 1.6em 0 0.6em;
+	padding: 0.6em 1.6em;
+	width: 94%;
+	min-width: 120px;
+	border-radius: 2px;
+	font-size: 1.25em;
+	font-style: italic;
+	border-style: solid;
+	border-width: 30px;
+	border-image-source: url('../img/letter.png');
+	border-image-slice: 30 fill;
+	border-image-repeat: round;
+
 }
 
 .no-border-left {
@@ -1602,4 +1629,13 @@ $night-pf2-brown: #2e2c27;
 	.cls-sc-tabs__wrp::before {
 		border-color: #555;
 	}
+}
+
+// FIXME:
+.rd__list-decimal {
+	padding: 0 1em;
+}
+
+.rd__list-decimal li::marker {
+	font-weight: bold;
 }

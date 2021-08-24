@@ -317,6 +317,9 @@ function Renderer () {
 				case "entries":
 					this._renderEntries(entry, textStack, meta, options);
 					break;
+				case "text":
+					this._renderText(entry, textStack, meta, options);
+					break;
 				case "entriesOtherSource":
 					this._renderEntriesOtherSource(entry, textStack, meta, options);
 					break;
@@ -328,6 +331,9 @@ function Renderer () {
 					break;
 				case "tableGroup":
 					this._renderTableGroup(entry, textStack, meta, options);
+					break;
+				case "letter":
+					this._renderLetter(entry, textStack, meta, options);
 					break;
 				// pf2-statblock
 				case "affliction":
@@ -438,6 +444,10 @@ function Renderer () {
 		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, options));
 	};
 
+	this._renderText = function (entry, textStack, meta, options) {
+		entry.entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${entry.style || ""}">`, suffix: `</p>`}));
+	};
+
 	this._renderEntriesOtherSource = function (entry, textStack, meta, options) {
 		if (entry.entries && entry.entries.length) {
 			textStack[0] += `<hr class="hr-other-source">`;
@@ -533,26 +543,20 @@ function Renderer () {
 		return Renderer.utils.getMediaUrl(entry, "hrefThumbnail", "img");
 	};
 
-	this._renderList_getListCssClasses = function (entry, textStack, meta, options) {
-		const out = [`rd__list`];
-		if (entry.style || entry.columns) {
-			if (entry.style) out.push(...entry.style.split(" ").map(it => `rd__${it}`));
-			if (entry.columns) out.push(`columns-${entry.columns}`);
-		}
-		return out.join(" ");
-	};
-
-	// TODO
 	this._renderTableGroup = function (entry, textStack, meta, options) {
 		const len = entry.tables.length;
-		for (let i = 0; i < len; ++i) this._recursiveRender(entry.tables[i], textStack, meta);
+		for (let i = 0; i < len; ++i) {
+			const addStyles = `${i === 0 ? "" : "mt-0"} ${i === len - 1 ? "" : "mb-0"}`
+			this._renderTable(entry.tables[i], textStack, meta, {addStyles});
+		}
 	};
 
 	// TODO: Badly formatted rollable tables will ruin everything
+	// TODO: Autodetect rollable tables?
 	this._renderTable = function (entry, textStack, meta, options) {
 		const numCol = Math.max(...entry.rows.map(x => x.type === "multiRow" ? x.rows.map(y => y.length) : x.length).flat());
 		const gridTemplate = entry.colSizes ? entry.colSizes.map(x => `${String(x)}fr`).join(" ") : "1fr ".repeat(numCol);
-		textStack[0] += `<div class="${entry.style || "pf2-table"}${this._firstSection ? " mt-0" : ""}" style="grid-template-columns: ${gridTemplate}">`;
+		textStack[0] += `<div class="${entry.style || "pf2-table"} ${this._firstSection ? "mt-0" : ""} ${entry.rollable ? "pf2-table--rollable" : ""} ${options.addStyles || ""}" style="grid-template-columns: ${gridTemplate}">`;
 		if (entry.style && entry.style.includes("pf2-box__table--red")) {
 			if (entry.colStyles == null) entry.colStyles = Array(numCol).fill("");
 			entry.colStyles[0] += " no-border-left";
@@ -719,9 +723,10 @@ function Renderer () {
 			let min;
 			let max;
 			const firstCell = String(row.type === "multiRow" ? row.rows[0][0] : row[0]).trim();
-			const mLowHigh = /^(\d+) or (lower|higher)$/i.exec(firstCell);
+			// FIXME
+			const mLowHigh = /^(\d+)( or (?:lower|higher|less)$|(\+)$)/i.exec(firstCell);
 			if (mLowHigh) {
-				if (mLowHigh[2].toLowerCase() === "lower") {
+				if (mLowHigh[2].toLowerCase() === " or lower" || mLowHigh[2].toLowerCase() === " or less") {
 					min = -Renderer.dice.POS_INFINITE;
 					max = Number(mLowHigh[1]);
 				} else {
@@ -767,6 +772,16 @@ function Renderer () {
 		return dataString;
 	};
 
+	this._renderList_getListCssClasses = function (entry, textStack, meta, options) {
+		const out = [`rd__list`];
+		if (entry.style || entry.columns) {
+			if (entry.style) out.push(...entry.style.split(" ").map(it => it.startsWith("pf2") ? it : `rd__${it}`));
+			if (entry.columns) out.push(`columns-${entry.columns}`);
+		}
+		return out.join(" ");
+	};
+
+	// FIXME: list styles with sabon/good-ot fonts
 	this._renderList = function (entry, textStack, meta, options) {
 		if (entry.items) {
 			if (entry.name) textStack[0] += `<div class="rd__list-name">${entry.name}</div>`;
@@ -778,7 +793,7 @@ function Renderer () {
 				const item = entry.items[i];
 				// Special case for child lists -- avoid wrapping in LI tags to avoid double-bullet
 				if (item.type !== "list") {
-					const className = `${this._getStyleClass(item)}${item.type === "itemSpell" ? " rd__li-spell" : ""}`;
+					const className = `${this._getStyleClass(item)}`;
 					textStack[0] += `<li class="rd__li ${className}">`;
 				}
 				// If it's a raw string in a hanging list, wrap it in a div to allow for the correct styling
@@ -793,7 +808,7 @@ function Renderer () {
 
 	this._renderItem = function (entry, textStack, meta, options) {
 		this._renderPrefix(entry, textStack, meta, options);
-		textStack[0] += `<p><span class="${entry.style || "bold"} list-item-title">${this.render(entry.name)}</span> `;
+		textStack[0] += `<p class="m-0"><span class="${entry.style || "bold"} list-item-title">${this.render(entry.name)}</span> `;
 		if (entry.entry) this._recursiveRender(entry.entry, textStack, meta);
 		else if (entry.entries) {
 			const len = entry.entries.length;
@@ -804,12 +819,11 @@ function Renderer () {
 	};
 
 	this._renderLeveledEffect = function (entry, textStack, meta, options) {
-		const arr_effects = entry.entries;
-		arr_effects.forEach(x => {
-			textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${x["range_str"]}&nbsp;</strong>`;
-			this._recursiveRender(x["entry"], textStack, meta);
-			textStack[0] += `</p>`;
-		});
+		if (entry.entries) {
+			entry.entries.forEach(e => {
+				textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${e.range}&nbsp;</strong>${this.render(e.entry)}</p>`;
+			});
+		}
 	}
 
 	this._renderAttack = function (entry, textStack, meta, options) {
@@ -1029,7 +1043,7 @@ function Renderer () {
 
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${renderer.render(entry.name)}</span></p>`;
+			textStack[0] += `<p class="pf2-h5 rd__h ${this._firstSection ? "mt-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}><span class="entry-title-inner">${this.render(entry.name)}</span></p>`;
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -1044,7 +1058,7 @@ function Renderer () {
 	this._renderPf2Title = function (entry, textStack, meta, options) {
 		if (entry.name != null) {
 			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-title">${this.render(entry.name)}</p>`;
+			textStack[0] += `<p class="pf2-title ${entry.style || ""}">${this.render(entry.name)}</p>`;
 		}
 	};
 
@@ -1253,6 +1267,26 @@ function Renderer () {
 		}
 	};
 
+	this._renderLetter = function (entry, textStack, meta, options) {
+		const dataString = this._getDataString(entry);
+		textStack[0] += `<div class="pf2-letter" ${dataString}>`;
+
+		if (entry.name != null) {
+			this._handleTrackTitles(entry.name);
+			textStack[0] += `<p class="pf2-letter__title">${entry.name}</p>`;
+		}
+		if (entry.entries) {
+			const len = entry.entries.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.entries[i], textStack, meta, {
+					prefix: `<p class="pf2-letter__text">`,
+					suffix: "</p>",
+				});
+			}
+		}
+		textStack[0] += `</div>`;
+	};
+
 	this._renderStatblock = async function (entry, textStack, meta, options) {
 		const cat_id = Parser._parse_bToA(Parser.CAT_ID_TO_PROP, entry.tag);
 		const page = UrlUtil.CAT_TO_PAGE[cat_id];
@@ -1302,10 +1336,11 @@ function Renderer () {
 	};
 
 	this._renderDataGeneric = function (entry, textStack, meta, options) {
+		const isEmbedded = entry.style !== "book";
 		this._renderPrefix(entry, textStack, meta, options);
-		this._renderDataHeader(textStack);
-		textStack[0] += Renderer.generic.dataGetRenderedString(entry.dataGeneric, {isEmbedded: true, noPage: true});
-		this._renderDataFooter(textStack);
+		this._renderDataHeader(textStack, isEmbedded);
+		textStack[0] += Renderer.generic.dataGetRenderedString(entry.dataGeneric, {isEmbedded, noPage: true});
+		this._renderDataFooter(textStack, isEmbedded);
 		this._renderSuffix(entry, textStack, meta, options);
 	};
 
@@ -1330,12 +1365,14 @@ function Renderer () {
 					})(this)">[\u2013]</div>`
 	};
 
-	this._renderDataHeader = function (textStack) {
-		textStack[0] += `<div class="rd__b-data pf2-stat"><div class="pf2-wrp-stat m-0">`;
+	this._renderDataHeader = function (textStack, isEmbedded) {
+		if (isEmbedded)	textStack[0] += `<div class="rd__b-data"><div class="pf2-stat pf2-wrp-stat m-0">`;
+		else textStack[0] += `<div class="pf2-stat pf2-wrp-stat">`;
 	};
 
-	this._renderDataFooter = function (textStack) {
-		textStack[0] += `</div></div>`;
+	this._renderDataFooter = function (textStack, isEmbedded) {
+		if (isEmbedded) textStack[0] += `</div></div>`;
+		else textStack[0] += `</div>`;
 	};
 
 	this._renderGallery = function (entry, textStack, meta, options) {
@@ -2154,6 +2191,8 @@ function Renderer () {
 							page: UrlUtil.PG_FEATS,
 							source,
 						};
+						// FIXME: everything that has to do with add_hash is horrible and its making me do stuff like this
+						fauxEntry.text = displayText || name.replace(/ \(.+\)/, "");
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@hazard":
@@ -2344,11 +2383,14 @@ function Renderer () {
 	this.render_addTerm = function (entry, terminator = ";") {
 		const tempStack = [];
 		this.recursiveRender(entry, tempStack);
-		let str = tempStack.join("");
-		// checking for closing html tags
-		if (/[^<>\w\s](?:<\/[^<\s]+)*$/.test(str)) return str;
-		else return `${str}${terminator}`;
+		return this._addTerm(tempStack.join(""), terminator);
 	};
+
+	this._addTerm = function (str, terminator = ";") {
+		// checking for closing html tags
+		if (/[^<>\w\s](?:<\/[^<\s]+>)*$/.test(str)) return str;
+		else return `${str}${terminator}`;
+	}
 }
 
 Renderer.ENTRIES_WITH_ENUMERATED_TITLES = [
@@ -3151,7 +3193,11 @@ Renderer.ability = {
 	},
 	getSubHead (it) {
 		const renderStack = [];
-		const renderer = Renderer.get()
+		const renderer = Renderer.get();
+		// FIXME: Is this order right?
+		if (it.cost != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cost&nbsp;</strong>${renderer.render(it.cost)}</p>`);
+		}
 		if (it.prerequisites != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Prerequisites&nbsp;</strong>${renderer.render(it.prerequisites)}</p>`);
 		}
@@ -4794,12 +4840,15 @@ Renderer.generic = {
 	getRenderedSection (sections) {
 		const renderer = Renderer.get();
 		return sections.map(section => section.map(a => {
-			if (a.some(e => typeof e !== "string")) {
-				return `<p class="pf2-stat__section">${a.map(o => {
-					if (typeof o === "object") return `<strong>${o.name}&nbsp;</strong>${renderer.render(o.entry)}`;
+			if (a.some(e => typeof e !== "string" && e.type == null)) {
+				return `<p class="pf2-stat pf2-stat__section">${a.map(o => {
+					if (typeof o === "object" && o.type == null) return `<strong>${o.name} </strong>${renderer.render(o.entry)}`;
 					else return `${renderer.render(o)}`;
-				}).join("; ")}</p>`
-			} else return a.map(e => `<p class="pf2-stat__text">${renderer.render(e)}</p>`).join("")
+				}).map((rd, ix) => {
+					if (ix === a.length - 1) return rd;
+					return renderer._addTerm(rd);
+				}).join(" ")}</p>`
+			} else return a.map(e => `<p class="pf2-stat pf2-stat__text">${renderer.render(e)}</p>`).join("")
 		}).join(""));
 	},
 
@@ -4822,7 +4871,7 @@ Renderer.generic = {
 	getSpecial (it) {
 		const renderer = Renderer.get();
 		if (it.special != null) {
-			return `<p class="pf2-stat pf2-stat__text"><strong>Special&nbsp;</strong>${renderer.render(it.special)}</p>`;
+			return `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(it.special)}</p>`;
 		} else return "";
 	},
 };
@@ -5529,9 +5578,9 @@ Renderer.hover = {
 							</style>
 						</head><body class="rd__body-popout">
 						<div class="hwin hoverbox--popout hwin--popout"></div>
-						<script type="text/javascript" src="js/parser.js"></script>
-						<script type="text/javascript" src="js/utils.js"></script>
-						<script type="text/javascript" src="lib/jquery.js"></script>
+						<script src="js/parser.js"></script>
+						<script src="js/utils.js"></script>
+						<script src="lib/jquery.js"></script>
 						</body></html>
 					`);
 

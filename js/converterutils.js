@@ -20,6 +20,13 @@ class Source {
 				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
 				return crb;
 			}
+			case "SoM": {
+				const patEvenPage = new RegExp(/(\d+)\nIntroduction\nEssentials\nof Magic\nClasses\nSpells\nMagic Items\nBook of\nUnlimited\nMagic\nglossary\n& Index\nSecrets\nof\nMagic\n/);
+				const patOddPage = new RegExp(/\n(\d+)\n/);
+				const crb = new Source("SoM", patEvenPage, patOddPage);
+				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
+				return crb;
+			}
 			default: throw new Error(`Unknown source string ${str}.`);
 		}
 	}
@@ -28,7 +35,7 @@ class Source {
 class ConverterBase {
 	constructor (source, textToConvert) {
 		this.source = source;
-		this.source.txt = textToConvert;
+		this.source.txt = textToConvert.replace(/\r\n/g, "\n").replace(/\r/g, "");
 		this.converting = null;
 		this.matches = [];
 		this.converted = [];

@@ -128,6 +128,7 @@ Parser.actionTypeKeyToFull = function (key) {
 		case "expert": return "Skill (Expert)"
 		case "master": return "Skill (Master)"
 		case "legendary": return "Skill (Legendary)"
+		case "variantrule": return "Optional/Variant Action"
 		default: return key.toTitleCase();
 	}
 }
@@ -1109,6 +1110,7 @@ SRC_BST = "Bst";
 SRC_BST2 = "Bst2";
 SRC_BST3 = "Bst3";
 SRC_GMG = "GMG";
+SRC_SOM = "SoM";
 SRC_LOWG = "LOWG";
 SRC_LOCG = "LOCG";
 SRC_LOGM = "LOGM";
@@ -1168,6 +1170,7 @@ Parser.SOURCE_JSON_TO_FULL[SRC_GMG] = "Gamemastery Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST2] = "Bestiary 2";
 Parser.SOURCE_JSON_TO_FULL[SRC_APG] = "Advanced Player's Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_BST3] = "Bestiary 3";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOM] = "Secrets of Magic";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOWG] = "Lost Omens: World Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOCG] = "Lost Omens: Character Guide";
 Parser.SOURCE_JSON_TO_FULL[SRC_LOGM] = "Lost Omens: Gods & Magic";
@@ -1191,6 +1194,7 @@ Parser.SOURCE_JSON_TO_ABV[SRC_GMG] = "GMG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST2] = "Bst2";
 Parser.SOURCE_JSON_TO_ABV[SRC_APG] = "APG";
 Parser.SOURCE_JSON_TO_ABV[SRC_BST3] = "Bst3";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOM] = "SoM";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOWG] = "LOWG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOCG] = "LOCG";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOGM] = "LOGM";
@@ -1224,6 +1228,7 @@ Parser.SOURCE_JSON_TO_DATE[SRC_LOAG] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_AAWS] = "2021-02-24";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-03-31";
 Parser.SOURCE_JSON_TO_DATE[SRC_BST3] = "2021-07-07";
+Parser.SOURCE_JSON_TO_DATE[SRC_SOM] = "2021-08-25";
 
 Parser.SOURCE_JSON_TO_STORE = {};
 Parser.SOURCE_JSON_TO_STORE[SRC_CRB] = "https://paizo.com/products/btq01zp3?Pathfinder-Core-Rulebook";
@@ -1246,6 +1251,7 @@ Parser.SOURCE_JSON_TO_STORE[SRC_APROG] = "https://paizo.com/products/btq026kj?Pa
 Parser.SOURCE_JSON_TO_STORE[SRC_APSFU] = "https://paizo.com/products/btq022ci?Pathfinder-Adventure-Path-158-Sixty-Feet-Under";
 Parser.SOURCE_JSON_TO_STORE[SRC_APLOTBS] = "https://paizo.com/products/btq021by?Pathfinder-Adventure-Path-155-Lord-of-the-Black-Sands";
 Parser.SOURCE_JSON_TO_STORE[SRC_APSOTD] = "https://paizo.com/products/btq0216l?Pathfinder-Adventure-Path-154-Siege-of-the-Dinosaurs";
+Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy/discuss&page=9?Pathfinder-Secrets-of-Magic";
 
 Parser.SOURCES_ADVENTURES = new Set([SRC_APLLS]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
@@ -1259,6 +1265,7 @@ Parser.SOURCES_AVAILABLE_DOCS_BOOK = {};
 	SRC_BST2,
 	SRC_BST3,
 	SRC_GMG,
+	SRC_SOM,
 	SRC_LOCG,
 	SRC_LOGM,
 	SRC_LOAG,
