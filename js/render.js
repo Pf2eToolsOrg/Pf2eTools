@@ -3257,12 +3257,28 @@ Renderer.action = {
 			if (it.actionType.archetype) {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Archetype&nbsp;</strong>${renderer.render(`${it.actionType.archetype.map(a => `{@archetype ${a}}`).join(", ")}`)}</p>`);
 			}
-			if (it.actionType.ancestry || it.actionType.heritage) {
+			if (it.actionType.ancestry || it.actionType.heritage || it.actionType.versatileHeritage) {
+				// Honestly speaking, just bullshit that prepares the source strings to be actually easy to work with
+				ancestryName = it.actionType.ancestry ? it.actionType.ancestry.split(`|`)[0] : null
+				ancestrySource = it.actionType.ancestry ? it.actionType.ancestry.split(`|`)[1] || "" : ""
+				heritageName = it.actionType.heritage ? it.actionType.heritage.split(`|`)[0] : null
+				heritageSource = it.actionType.heritage ? it.actionType.heritage.split(`|`)[1] || "" : ""
+				versatileHeritageName = it.actionType.versatileHeritage ? it.actionType.versatileHeritage.split(`|`)[0] : null
+				versatileHeritageSource = it.actionType.versatileHeritage ? it.actionType.versatileHeritage.split(`|`)[1] || "" : ""
+
+				// The Actual Rendering Magic
 				if (it.actionType.ancestry) {
-					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}}`)}`);
-					if (it.actionType.heritage) renderStack.push(`; `)
+					renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Ancestry&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|`)}`);
+					if (it.actionType.heritage || it.actionType.versatileHeritage) renderStack.push(`; `)
 				}
-				if (it.actionType.heritage) renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${it.actionType.ancestry}|${it.actionType.heritage}|${it.actionType.heritage}}`)}`);
+				if (it.actionType.heritage) {
+					renderStack.push(`<strong>Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName}|${ancestrySource}|${heritageName}|${heritageName}|${heritageSource}|}`)}`);
+					if (it.actionType.versatileHeritage) renderStack.push(`; `)
+				}
+				if (it.actionType.versatileHeritage) {
+					if (!it.actionType.ancestry) renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
+					renderStack.push(`<strong>Versatile Heritage&nbsp;</strong>${renderer.render(`{@ancestry ${ancestryName ? `${ancestryName}|${ancestrySource}` : "Human|CRB"}|${versatileHeritageName}|${versatileHeritageName}|${versatileHeritageSource}|}`)}`);
+				}
 				renderStack.push(`</p>`)
 			}
 			if (it.actionType.variantrule) {
