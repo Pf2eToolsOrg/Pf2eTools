@@ -2030,6 +2030,7 @@ SortUtil = {
 		return SortUtil.ascSort(aNum, bNum);
 	},
 
+	// FIXME: I return 1, 10, 2, 3, 4 when it really should be 1, 2, 3, 4, 10
 	_ascSort: (a, b) => {
 		if (b === a) return 0;
 		return b < a ? 1 : -1;

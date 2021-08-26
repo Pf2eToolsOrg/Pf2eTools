@@ -2657,7 +2657,7 @@ Renderer.getEntryDiceDisplayText = function (entry) {
 Renderer.parseScaleDice = function (tag, text) {
 	// format: {@scaledice 2d6;3d6|2-8,9|1d6} (or @scaledamage)
 	const [baseRoll, progression, addPerProgress, renderMode] = Renderer.splitTagByPipe(text);
-	const progressionParse = MiscUtil.parseNumberRange(progression, 1, 9);
+	const progressionParse = MiscUtil.parseNumberRange(progression, 1, 10);
 	const baseLevel = Math.min(...progressionParse);
 	const options = {};
 	const isMultableDice = /^(\d+)d(\d+)$/i.exec(addPerProgress);
@@ -3485,7 +3485,7 @@ Renderer.companion = {
 		${Renderer.utils.getNameDiv(companion, {type: "Companion", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(companion.traits)}
-		${companion.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${companion.access}</p>` : ""}
+		${companion.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(companion.access)}</p>` : ""}
 		${(companion.traits && companion.traits.length) || companion.access ? Renderer.utils.getDividerDiv() : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${companion.size}</p>
 		${Renderer.creature.getAttacks(companion)}
