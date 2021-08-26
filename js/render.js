@@ -4846,7 +4846,7 @@ Renderer.generic = {
 		options = options || {};
 		const traits = it.traits || [];
 		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
-		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.category ? it.category : ""}`, "level": typeof it.level !== "number" ? it.level : undefined})}
+		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
 		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
