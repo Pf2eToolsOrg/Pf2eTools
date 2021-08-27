@@ -1190,7 +1190,7 @@ class ClassesPage extends BaseComponent {
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Images are available.",
 			});
-			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
+			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto mb-1" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
 			$$`${imageLinks}${$btnClose}`.appendTo($modalInner);
 		});
 

@@ -21,8 +21,6 @@ class ItemsPage extends ListPage {
 
 		this._itemId = 0;
 		this._runeItems = [];
-
-		this._printBookView = null;
 	}
 
 	getListItem (item, itI, isExcluded) {
@@ -192,7 +190,7 @@ class ItemsPage extends ListPage {
 	async pDoLoadSubHash (sub) {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
-		await this._printBookView.pHandleSub(sub);
+		await this._printView.pHandleSub(sub);
 
 		await runeBuilder.pHandleSubhash();
 	}
@@ -288,8 +286,8 @@ class ItemsPage extends ListPage {
 			$btnReset: $(`#reset`),
 		});
 
-		this._printBookView = new BookModeView({
-			hashKey: "bookview",
+		this._printView = new PrintModeView({
+			hashKey: "printview",
 			$openBtn: $(`#btn-printbook`),
 			noneVisibleMsg: "If you wish to view multiple items, please first make a list",
 			pageTitle: "Items Printer View",
@@ -303,7 +301,7 @@ class ItemsPage extends ListPage {
 				const stack = [];
 
 				const renderItem = (it) => {
-					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
 					stack.push(Renderer.item.getCompactRenderedString(it));
 					stack.push(`</div></div>`);
 				};

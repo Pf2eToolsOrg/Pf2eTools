@@ -2038,7 +2038,7 @@ tr.regionaleffect {
 }
 
 .stats .initial-message,
-.bkmv .initial-message {
+.prntv .initial-message {
 	font-size: 1.4em;
 }
 
@@ -2162,7 +2162,7 @@ ul.list li:hover {
 	}
 }
 
-.bkmv {
+.prntv {
 	position: fixed;
 	z-index: $z-bookmode;
 	top: 0;
@@ -2232,7 +2232,7 @@ ul.list li:hover {
 	}
 }
 
-.night-mode .bkmv {
+.night-mode .prntv {
 	&__ {
 		&wrp-item {
 			border-color: $rgb-border-grey--night;
@@ -2240,7 +2240,7 @@ ul.list li:hover {
 	}
 }
 
-.stats--bkmv {
+.stats--prntv {
 	padding: 0.3em;
 	font-size: 1em;
 	background: none;
@@ -3286,11 +3286,11 @@ ul.list.books > li > a > span.name:hover {
 		}
 	}
 
-	.bkmv {
+	.prntv {
 		background: #272727;
 	}
 
-	.bkmv__spacer-name {
+	.prntv__spacer-name {
 		background-color: #565656;
 	}
 
@@ -3787,7 +3787,7 @@ ul.list.books > li > a > span.name:hover {
 		background: lightgrey !important;
 	}
 
-	.cls-bkmv__wrp-tabs {
+	.cls-prntv__wrp-tabs {
 		display: none !important;
 	}
 	// endregion
@@ -3823,11 +3823,11 @@ ul.list.books > li > a > span.name:hover {
 	}
 	// endregion
 
-	.bkmv-active > *:not(.bkmv) {
+	.prntv-active > *:not(.prntv) {
 		display: none !important;
 	}
 
-	.bkmv-active .bkmv {
+	.prntv-active .prntv {
 		position: relative;
 		top: unset;
 		right: unset;
@@ -3866,7 +3866,7 @@ ul.list.books > li > a > span.name:hover {
 		}
 	}
 
-	.stats--bkmv {
+	.stats--prntv {
 		break-before: auto !important;
 		break-after: auto !important;
 		break-inside: avoid !important;

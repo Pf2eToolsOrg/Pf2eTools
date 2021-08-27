@@ -726,7 +726,8 @@ class AncestriesPage extends BaseComponent {
 			if (!topEle) {
 				hook();
 				return;
-			}			const offset = 1 - topEle.getBoundingClientRect().y;
+			}
+			const offset = 1 - topEle.getBoundingClientRect().y;
 			hook();
 			if (topEle.className.split(" ").includes("hidden")) {
 				// try to scroll to next element
@@ -808,6 +809,13 @@ class AncestriesPage extends BaseComponent {
 		this._addHookBase("isShowFeats", hkShowFeats);
 		MiscUtil.pDefer(hkShowFeats);
 
+		const hkDisplayImages = () => {
+			const {veHerUrls, ancUrls} = this._getImageUrls();
+			const $btnShowImages = $(`#btn-show-images`);
+			$btnShowImages.toggleClass("hidden", veHerUrls.length === 0 && ancUrls.length === 0);
+		}
+		this._addHook("ancestryId", "_", hkDisplayImages);
+
 		this.activeAncestryAllHeritages.forEach(h => {
 			const stateKey = UrlUtil.getStateKeyHeritage(h);
 			const hkDisplayHeritage = () => {
@@ -815,10 +823,12 @@ class AncestriesPage extends BaseComponent {
 				$(`[data-heritage-id="${stateKey}"]`).toggleClass("hidden", !isVisible);
 			};
 			this._addHookBase(stateKey, () => keepYScroll(hkDisplayHeritage));
+			this._addHookBase(stateKey, hkDisplayImages);
 			// Check/update main feature display here, as if there are no heritages active we can hide more
 			this._addHookBase(stateKey, () => keepYScroll(hkDisplayFeatures));
 			MiscUtil.pDefer(hkDisplayHeritage);
 		});
+		MiscUtil.pDefer(hkDisplayImages);
 		// endregion
 
 		this._handleFilterChange(false);
@@ -938,6 +948,12 @@ class AncestriesPage extends BaseComponent {
 		this._render_renderHeritageButtons($wrp);
 	}
 
+	_getImageUrls () {
+		const veHerUrls = this._veHeritagesDataList.filter(h => this._state[UrlUtil.getStateKeyHeritage(h)]).map(h => (h.summary || {}).images || []).flat();
+		const ancUrls = (this.activeAncestry.summary || {}).images || [];
+		return {veHerUrls, ancUrls};
+	}
+
 	_render_renderHeritagePrimaryControls ($wrp) {
 		const $btnToggleFeatures = ComponentUiUtil.$getBtnBool(this, "isHideFeatures", {
 			text: "Features",
@@ -953,18 +969,25 @@ class AncestriesPage extends BaseComponent {
 			inactiveText: "Show Feats",
 		}).title("Toggle Feat View").addClass("mb-1");
 
-		const imageLinks = ((this.activeAncestry.summary || {}).images || []).map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
-		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1">Images</button>`).click(() => {
+		const $btnShowImages = $(`<button class="btn btn-xs btn-default mb-1" id="btn-show-images">Images</button>`).click(() => {
+			const {veHerUrls, ancUrls} = this._getImageUrls();
+			const veHerLinks = veHerUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+			const ancLinks = ancUrls.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
+
 			const {$modalInner, doClose} = UiUtil.getShowModal({
 				title: "Images are available in the Archives of Nethys.",
 			});
-			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
-			$$`${imageLinks}${$btnClose}`.appendTo($modalInner);
+			const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto mb-1" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose());
+			$$`${ancLinks.length ? `<p class="mb-0">${this.activeAncestry.name} Images</p>` : ""}
+				${ancLinks}
+				${veHerLinks.length ? `<p class="mt-2 mb-0">Versatile Heritage Images</p>` : ""}
+				${veHerLinks}
+				${$btnClose}`.appendTo($modalInner);
 		});
 
 		$$`<div class="flex-v-center m-1 flex-wrap">
 			<div class="mr-2 no-shrink">${$btnToggleFeats}</div>
-			${imageLinks.length ? $$`<div class="mr-2 no-shrink">${$btnShowImages}</div>` : ""}
+			<div class="mr-2 no-shrink">${$btnShowImages}</div>
 			<div class="btn-group no-shrink mb-1 ml-auto">${$btnToggleFeatures}${$btnToggleFluff}</div>
 		</divc>`.appendTo($wrp);
 	}

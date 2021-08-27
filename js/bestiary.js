@@ -18,7 +18,7 @@ class BestiaryPage extends ListPage {
 
 		this._$totalCr = null;
 		this._lastRendered = {creature: null, isScaled: false};
-		this._printBookView = null;
+		this._printView = null;
 	}
 
 	getListItem (cr, mI) {
@@ -163,7 +163,7 @@ class BestiaryPage extends ListPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		await this._printBookView.pHandleSub(sub);
+		await this._printView.pHandleSub(sub);
 
 		const scaledHash = sub.find(it => it.startsWith(VeCt.HASH_CR_SCALED));
 		if (scaledHash) {
@@ -355,8 +355,8 @@ class BestiaryPage extends ListPage {
 		ListUtil.initGenericAddable();
 
 		// region print view
-		this._printBookView = new BookModeView({
-			hashKey: "bookview",
+		this._printView = new PrintModeView({
+			hashKey: "printview",
 			$openBtn: $(`#btn-printbook`),
 			noneVisibleMsg: "If you wish to view multiple creatures, please first make a list",
 			pageTitle: "Bestiary Printer View",
@@ -370,7 +370,7 @@ class BestiaryPage extends ListPage {
 				const stack = [];
 
 				const renderCreature = (cr) => {
-					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
 					stack.push(Renderer.creature.getCompactRenderedString(cr).html());
 					stack.push(`</div></div>`);
 				};

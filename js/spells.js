@@ -15,7 +15,7 @@ class SpellsPage extends ListPage {
 
 		this._addedHashes = new Set();
 
-		this._spellBookView = null;
+		this._printView = null;
 	}
 
 	getListItem (spell, spI) {
@@ -127,7 +127,7 @@ class SpellsPage extends ListPage {
 		sub = this._pageFilter.filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub, pPreloadSublistSources);
 
-		await this._spellBookView.pHandleSub(sub);
+		await this._printView.pHandleSub(sub);
 	}
 
 	async pOnLoad () {
@@ -228,8 +228,8 @@ class SpellsPage extends ListPage {
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);
 		ListUtil.initGenericPinnable();
 
-		this._spellBookView = new BookModeView({
-			hashKey: "bookview",
+		this._printView = new PrintModeView({
+			hashKey: "printview",
 			$openBtn: $(`#btn-spellbook`),
 			noneVisibleMsg: "If you wish to view multiple spells, please first make a list",
 			pageTitle: "Spells Book View",
@@ -238,7 +238,7 @@ class SpellsPage extends ListPage {
 					.sort((a, b) => SortUtil.ascSortLower(a.name, b.name));
 
 				const renderSpell = (stack, sp) => {
-					stack.push(`<div class="bkmv__wrp-item"><div class="pf2-stat stats stats--book stats--bkmv">`);
+					stack.push(`<div class="prntv__wrp-item"><div class="pf2-stat stats stats--book stats--prntv">`);
 					stack.push(Renderer.spell.getCompactRenderedString(sp));
 					stack.push(`</div></div>`);
 				};
@@ -268,7 +268,7 @@ class SpellsPage extends ListPage {
 					for (let i = 0; i < 11; ++i) {
 						const atLvl = toShow.filter(sp => sp.level === i);
 						if (atLvl.length) {
-							stack.push(`<div class="w-100 h-100 bkmv__no-breaks">`);
+							stack.push(`<div class="w-100 h-100 prntv__no-breaks">`);
 							stack.push(`<div class="pf2-h5 flex-v-center no-shrink">${Parser.spLevelToFullLevelText(i)}</div>`);
 							atLvl.forEach(sp => renderSpell(stack, sp));
 							stack.push(`</div>`);

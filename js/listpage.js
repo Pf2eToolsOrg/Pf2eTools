@@ -17,6 +17,7 @@ class ListPage {
 	 * @param opts.sublistOptions Other sublist options.
 	 * @param opts.dataProps JSON data propert(y/ies).
 	 * @param [opts.bookViewOptions] Book view options.
+	 * @param [opts.printViewOptions] Print view options.
 	 * @param [opts.tableViewOptions] Table view options.
 	 * @param [opts.hasAudio] True if the entities have pronunciation audio.
 	 */
@@ -32,6 +33,7 @@ class ListPage {
 		this._sublistOptions = opts.sublistOptions || {};
 		this._dataProps = opts.dataProps;
 		this._bookViewOptions = opts.bookViewOptions;
+		this._printViewOptions = opts.printViewOptions;
 		this._tableViewOptions = opts.tableViewOptions;
 
 		this._renderer = Renderer.get();
@@ -92,14 +94,29 @@ class ListPage {
 		RollerUtil.addListRollButton();
 		ListUtil.addListShowHide();
 
+		if (this._printViewOptions) {
+			this._printView = new PrintModeView({
+				hashKey: "printview",
+				$openBtn: this._printViewOptions.$btnOpen,
+				noneVisibleMsg: this._printViewOptions.noneVisibleMsg,
+				pageTitle: this._printViewOptions.pageTitle || "Printer View",
+				popTblGetNumShown: this._printViewOptions.popTblGetNumShown,
+				hasPrintColumns: this._printViewOptions.hasPrintColumns,
+			});
+		}
 		if (this._bookViewOptions) {
-			this._bookView = new BookModeView({
-				hashKey: "bookview",
-				$openBtn: this._bookViewOptions.$btnOpen,
-				noneVisibleMsg: this._bookViewOptions.noneVisibleMsg,
-				pageTitle: this._bookViewOptions.pageTitle || "Book View",
-				popTblGetNumShown: this._bookViewOptions.popTblGetNumShown,
-				hasPrintColumns: true,
+			const $openBtn = this._bookViewOptions.$btnOpen;
+			const fnPopulate = this._bookViewOptions.fnPopulate;
+			$openBtn.off("click").on("click", () => {
+				const {$modalInner, doClose} = UiUtil.getShowModal({
+					isUncappedHeight: true,
+					isHeight100: true,
+					isWidth100: true,
+					isUncappedWidth: true,
+				});
+				const $wrpContent = $(`<div class="pf2-book stats bkv__content-wrp my-4"></div>`).appendTo($modalInner)
+				fnPopulate($wrpContent);
+				const $btnClose = $(`<button class="btn btn-danger btn-sm mt-auto mb-1" style="width: fit-content; align-self: center;">Close</button>`).click(() => doClose()).appendTo($modalInner);
 			});
 		}
 

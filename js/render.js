@@ -332,8 +332,8 @@ function Renderer () {
 				case "tableGroup":
 					this._renderTableGroup(entry, textStack, meta, options);
 					break;
-				case "letter":
-					this._renderLetter(entry, textStack, meta, options);
+				case "paper":
+					this._renderPaper(entry, textStack, meta, options);
 					break;
 				// pf2-statblock
 				case "affliction":
@@ -1240,6 +1240,7 @@ function Renderer () {
 		textStack[0] += `</div>`;
 	};
 
+	// TODO: This is often used as a crutch
 	this._renderPf2Options = function (entry, textStack, meta, options) {
 		if (!entry.items || !entry.items.length) return;
 		if (!entry.skipSort) entry.items = entry.items.sort((a, b) => a.name && b.name ? SortUtil.ascSort(a.name, b.name) : a.name ? -1 : b.name ? 1 : 0);
@@ -1267,24 +1268,44 @@ function Renderer () {
 		}
 	};
 
-	this._renderLetter = function (entry, textStack, meta, options) {
+	this._renderPaper = function (entry, textStack, meta, options) {
 		const dataString = this._getDataString(entry);
-		textStack[0] += `<div class="pf2-letter" ${dataString}>`;
+		textStack[0] += `<div class="pf2-paper-wrp">`;
 
-		if (entry.name != null) {
-			this._handleTrackTitles(entry.name);
-			textStack[0] += `<p class="pf2-letter__title">${entry.name}</p>`;
+		if (entry.title != null) {
+			textStack[0] += `<p class="pf2-paper-title">${this.render(entry.title)}</p>`;
 		}
+
+		const styles = (entry.style || "").split(" ").map(s => `pf2-${s}`).join(" ");
+		textStack[0] += `<div class="pf2-paper ${styles}" ${dataString}>`;
+
+		// textStack[0] += `<div class="pf2-paper__header">`;
+		// textStack[0] += `</div>`;
+
+		textStack[0] += `<div class="pf2-paper__entries">`;
 		if (entry.entries) {
 			const len = entry.entries.length;
 			for (let i = 0; i < len; ++i) {
 				this._recursiveRender(entry.entries[i], textStack, meta, {
-					prefix: `<p class="pf2-letter__text">`,
+					prefix: `<p class="pf2-paper__text">`,
 					suffix: "</p>",
 				});
 			}
 		}
 		textStack[0] += `</div>`;
+
+		if (entry.footnotes) {
+			textStack[0] += `<div class="pf2-paper__footer">`;
+			const len = entry.footnotes.length;
+			for (let i = 0; i < len; ++i) {
+				this._recursiveRender(entry.footnotes[i], textStack, meta, {
+					prefix: `<p class="pf2-paper__text">`,
+					suffix: "</p>",
+				});
+			}
+			textStack[0] += `</div>`;
+		}
+		textStack[0] += `</div></div>`;
 	};
 
 	this._renderStatblock = async function (entry, textStack, meta, options) {
@@ -1539,6 +1560,11 @@ function Renderer () {
 				textStack[0] += `</span>`;
 				break;
 			}
+			case "@handwriting":
+				textStack[0] += `<span class="pf2-handwriting">`;
+				this._recursiveRender(text, textStack, meta);
+				textStack[0] += `</span>`;
+				break;
 			case "@highlight": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
 				const scrubbedColor = color ? BrewUtil.getValidColor(color) : null;
@@ -6759,6 +6785,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@bold":
 					case "@i":
 					case "@italic":
+					case "@handwriting":
 					case "@indent":
 					case "@indentFirst":
 					case "@indentSubsequent":

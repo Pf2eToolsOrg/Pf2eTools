@@ -132,6 +132,13 @@
 	src: local('font'), url('../fonts/Basing.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: 'Albertus';
+	font-style: normal;
+	font-weight: 400;
+	src: local('font'), url('../fonts/AlbertusMT.ttf') format('truetype');
+}
+
 //endregion
 
 .pf2-book-wrapper {
@@ -1167,24 +1174,76 @@
 	}
 }
 
-.pf2-letter {
-	font-family: 'Basing', sans-serif;
-	color: #492706;
+.pf2-paper-wrp {
+	display: flex;
+	flex-direction: column;
+}
+
+.pf2-paper {
 	position: relative;
+	color: black;
 	left: 3%;
-	margin: 1.6em 0 0.6em;
+	margin: 0.3em 0 0.6em;
 	padding: 0.6em 1.6em;
 	width: 94%;
 	min-width: 120px;
-	border-radius: 2px;
-	font-size: 1.25em;
-	font-style: italic;
 	border-style: solid;
 	border-width: 30px;
 	border-image-source: url('../img/letter.png');
 	border-image-slice: 30 fill;
 	border-image-repeat: round;
 
+	&__ {
+		&text {
+			margin: 0;
+		}
+
+		&header {
+			margin-bottom: 1em;
+		}
+
+		&footer {
+			font-size: 0.7em;
+			margin-top: 1em;
+
+			.pf2-paper__text {
+				padding-left: 1em;
+				text-indent: -1em;
+			}
+		}
+
+		&entries {
+			.pf2-paper__text + .pf2-paper__text {
+				text-indent: 1em;
+			}
+		}
+	}
+}
+
+.pf2-paper-title {
+	font-family: 'good-pro', sans-serif;
+	font-size: 1.1em;
+	position: relative;
+	left: 6%;
+	width: 88%;
+	margin: 1em 0 0;
+}
+
+.pf2-letter {
+	font-family: 'Basing', sans-serif;
+	color: #492706;
+	font-size: 1.18em;
+	font-style: italic;
+}
+
+.pf2-handwriting {
+	font-family: 'Basing', sans-serif;
+	font-size: 1.18em;
+	font-style: italic;
+}
+
+.pf2-research {
+	font-family: 'Albertus', sans-serif;
 }
 
 .no-border-left {
@@ -1401,6 +1460,11 @@
 	overflow: hidden;
 }
 
+.bkv__content-wrp {
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
 .cls-sc-tabs__wrp::before {
 	content: attr(data-sc-type);
 	width: 100%;
@@ -1613,6 +1677,10 @@ $night-pf2-brown: #2e2c27;
 		}
 	}
 
+	.pf2-paper {
+		filter: saturate(0.9) brightness(0.9);
+	}
+
 	.pf2-book-wrapper {
 		border-color: $night-pf2-red;
 	}
@@ -1632,10 +1700,11 @@ $night-pf2-brown: #2e2c27;
 }
 
 // FIXME:
-.rd__list-decimal {
+.rd__list-decimal--bold {
 	padding: 0 1em;
+	list-style: decimal;
 }
 
-.rd__list-decimal li::marker {
+.rd__list-decimal--bold li::marker {
 	font-weight: bold;
 }

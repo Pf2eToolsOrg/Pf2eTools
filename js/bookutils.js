@@ -856,6 +856,7 @@ const BookUtil = {
 				lastName = prevLastName;
 			}
 
+			// FIXME
 			if (obj.entries) {
 				obj.entries.forEach(e => BookUtil.search._searchEntriesForRecursive(chapterIndex, lastName, appendTo, term, cleanTerm, e, isPageMode))
 			} else if (obj.items) {

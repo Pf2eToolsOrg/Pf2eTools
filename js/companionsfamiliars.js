@@ -92,7 +92,7 @@ class CompanionsFamiliarsPage extends ListPage {
 			$pgContent.append(quickRules);
 		}
 		const buildFluffTab = () => {
-			$pgContent.append(Renderer.get().render(it.fluff));
+			$pgContent.append(`<div>${Renderer.get().render(it.fluff)}</div>`);
 		}
 		const statsTab = Renderer.utils.tabButton(
 			"Statblock",

@@ -4250,7 +4250,7 @@ BrewUtil = {
 			case UrlUtil.PG_BOOKS:
 				return ["book", "bookData"];
 			case UrlUtil.PG_ANCESTRIES:
-				return ["ancestry", "versatileHeritage"];
+				return ["ancestry", "versatileHeritage", "heritage"];
 			case UrlUtil.PG_BACKGROUNDS:
 				return ["background"];
 			case UrlUtil.PG_CLASSES:
@@ -5299,7 +5299,7 @@ Array.prototype.meanAbsoluteDeviation = Array.prototype.meanAbsoluteDeviation ||
  * @param [opts.hasPrintColumns] True if the overlay should contain a dropdown for adjusting print columns.
  * @constructor
  */
-function BookModeView (opts) {
+function PrintModeView (opts) {
 	opts = opts || {};
 	const {hashKey, $openBtn, noneVisibleMsg, pageTitle, popTblGetNumShown, isFlex, state, stateKey} = opts;
 
@@ -5339,7 +5339,7 @@ function BookModeView (opts) {
 	this._renderContent = async ($wrpContent, $dispName, $wrpControlsToPass) => {
 		this._$wrpRenderedContent = this._$wrpRenderedContent
 			? this._$wrpRenderedContent.empty()
-			: $$`<div class="bkmv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
+			: $$`<div class="prntv__scroller h-100 overflow-y-auto ${isFlex ? "flex" : ""}">${$wrpContent}</div>`.appendTo(this._$wrpBook);
 
 		const numShown = await this.popTblGetNumShown($wrpContent, $dispName, $wrpControlsToPass);
 
@@ -5353,7 +5353,7 @@ function BookModeView (opts) {
 				const $btnClose = $(`<button class="btn btn-default">Close</button>`)
 					.click(() => this._doHashTeardown());
 
-				this._$wrpNoneShown = $$`<div class="w-100 flex-col no-shrink bkmv__footer mb-3">
+				this._$wrpNoneShown = $$`<div class="w-100 flex-col no-shrink prntv__footer mb-3">
 					<div class="mb-2 flex-vh-center"><span class="initial-message">${this.noneVisibleMsg}</span></div>
 					<div class="flex-vh-center">${$btnClose}</div>
 				</div>`.appendTo(this._$wrpBook);
@@ -5368,19 +5368,19 @@ function BookModeView (opts) {
 		document.title = `${pageTitle} - Pf2eTools`;
 
 		this._$body = $(`body`);
-		this._$wrpBook = $(`<div class="bkmv"></div>`);
+		this._$wrpBook = $(`<div class="prntv"></div>`);
 
 		this._$body.css("overflow", "hidden");
-		this._$body.addClass("bkmv-active");
+		this._$body.addClass("prntv-active");
 
 		const $btnClose = $(`<span class="delete-icon glyphicon glyphicon-remove"></span>`)
 			.click(() => this._doHashTeardown());
 		const $dispName = $(`<div></div>`); // pass this to the content function to allow it to set a main header
-		$$`<div class="bkmv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
+		$$`<div class="prntv__spacer-name split-v-center no-shrink">${$dispName}${$btnClose}</div>`.appendTo(this._$wrpBook);
 
 		// region controls
 		// Optionally usable "controls" section at the top of the pane
-		const $wrpControls = $(`<div class="w-100 flex-col bkmv__wrp-controls"></div>`)
+		const $wrpControls = $(`<div class="w-100 flex-col prntv__wrp-controls"></div>`)
 			.appendTo(this._$wrpBook);
 
 		let $wrpControlsToPass = $wrpControls;
@@ -5388,12 +5388,12 @@ function BookModeView (opts) {
 			$wrpControls.addClass("px-2 mt-2");
 
 			const injectPrintCss = (cols) => {
-				$(`#bkmv__print-style`).remove();
-				$(`<style media="print" id="bkmv__print-style">.bkmv__wrp { column-count: ${cols}; }</style>`)
+				$(`#prntv__print-style`).remove();
+				$(`<style media="print" id="prntv__print-style">.prntv__wrp { column-count: ${cols}; }</style>`)
 					.appendTo($(document.body))
 			};
 
-			const lastColumns = StorageUtil.syncGetForPage(BookModeView._BOOK_VIEW_COLUMNS_K);
+			const lastColumns = StorageUtil.syncGetForPage(PrintModeView._PRINT_VIEW_COLUMNS_K);
 
 			const $selColumns = $(`<select class="form-control input-sm">
 				<option value="0">Two (book style)</option>
@@ -5404,7 +5404,7 @@ function BookModeView (opts) {
 					if (val === 0) injectPrintCss(2);
 					else injectPrintCss(1);
 
-					StorageUtil.syncSetForPage(BookModeView._BOOK_VIEW_COLUMNS_K, val);
+					StorageUtil.syncSetForPage(PrintModeView._PRINT_VIEW_COLUMNS_K, val);
 				});
 			if (lastColumns != null) $selColumns.val(lastColumns);
 			$selColumns.change();
@@ -5415,7 +5415,7 @@ function BookModeView (opts) {
 		}
 		// endregion
 
-		const $wrpContent = $(`<div class="bkmv__wrp p-2"></div>`);
+		const $wrpContent = $(`<div class="prntv__wrp p-2"></div>`);
 
 		await this._renderContent($wrpContent, $dispName, $wrpControlsToPass);
 
@@ -5428,7 +5428,7 @@ function BookModeView (opts) {
 	this.teardown = () => {
 		if (this.active) {
 			this._$body.css("overflow", "");
-			this._$body.removeClass("bkmv-active");
+			this._$body.removeClass("prntv-active");
 			this._$wrpBook.remove();
 			this.active = false;
 
@@ -5447,7 +5447,7 @@ function BookModeView (opts) {
 	};
 }
 
-BookModeView._BOOK_VIEW_COLUMNS_K = "bookViewColumns";
+PrintModeView._PRINT_VIEW_COLUMNS_K = "printViewColumns";
 
 // CONTENT EXCLUSION ===================================================================================================
 ExcludeUtil = {

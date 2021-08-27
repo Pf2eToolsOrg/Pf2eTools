@@ -13,6 +13,14 @@ class VariantRulesPage extends ListPage {
 			sublistClass: "subvariantrules",
 
 			dataProps: ["variantrule"],
+
+			bookViewOptions: {
+				$btnOpen: $(`#btn-bookview`),
+				fnPopulate: ($wrpContent) => {
+					const rule = this._dataList[Hist.lastLoadedId];
+					RenderVariantRules.$getRenderedVariantRule(rule).appendTo($wrpContent);
+				},
+			},
 		});
 	}
 
@@ -92,13 +100,13 @@ class VariantRulesPage extends ListPage {
 	}
 
 	async pDoLoadSubHash (sub) {
-		if (!sub.length) return;
-
+		await this._bookView.pHandleSub(sub);
 		sub = this._filterBox.setFromSubHashes(sub);
 		await ListUtil.pSetFromSubHashes(sub);
 
-		const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
-		if ($title.length) $title[0].scrollIntoView();
+		// TODO: Why?
+		// const $title = $(`.rd__h[data-title-index="${sub[0]}"]`);
+		// if ($title.length) $title[0].scrollIntoView();
 	}
 }
 
@@ -130,5 +138,5 @@ let variantRulesPage;
 window.addEventListener("load", async () => {
 	await Renderer.trait.preloadTraits();
 	variantRulesPage = new VariantRulesPage();
-	variantRulesPage.pOnLoad()
+	await variantRulesPage.pOnLoad()
 });
