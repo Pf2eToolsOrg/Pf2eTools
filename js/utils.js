@@ -3889,7 +3889,7 @@ BrewUtil = {
 					<span class="col-1-2 text-center">${it._brewCat}</span>
 					<span class="col-1-4 text-center">${timestampModified}</span>
 					<span class="col-1-4 text-center">${timestampAdded}</span>
-					<span class="col-1 manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
+					<span class="col-1 manbrew__source text-center"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
 				</div>
 			</li>`;
 
@@ -4251,7 +4251,7 @@ BrewUtil = {
 			case UrlUtil.PG_BOOKS:
 				return ["book", "bookData"];
 			case UrlUtil.PG_ANCESTRIES:
-				return ["ancestry", "versatileHeritage"];
+				return ["ancestry", "versatileHeritage", "heritage"];
 			case UrlUtil.PG_BACKGROUNDS:
 				return ["background"];
 			case UrlUtil.PG_CLASSES:
