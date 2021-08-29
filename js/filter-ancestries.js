@@ -29,10 +29,10 @@ class PageFilterAncestries extends PageFilter {
 			header: "Speed Types",
 			displayFn: (x) => x.uppercaseFirst(),
 		});
-		this._languageFilter = new Filter({header: "Languages", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
+		this._languageFilter = new Filter({header: "Languages", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
 		this._traitsFilter = new Filter({header: "Traits"});
 		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
-		this._rarityFilter = new Filter({header: "Rarity", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
+		this._rarityFilter = new Filter({header: "Rarity", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
 		this._optionsFilter = new OptionsFilter({
 			header: "Other Options",
 			defaultState: {

@@ -3491,6 +3491,15 @@ Renderer.companionfamiliar = {
 		if (it.__prop === "familiarAbility") return Renderer.familiar.getRenderedFamiliarAbility(it, opts)
 		if (it.__prop === "companion") return Renderer.companion.getRenderedString(it, opts);
 		if (it.__prop === "familiar") return Renderer.familiar.getRenderedString(it, opts);
+		if (it.__prop === "eidolon") return Renderer.eidolon.getRenderedString(it, opts);
+	},
+
+	getRenderedSenses (it) {
+		const renderer = Renderer.get();
+		if (!it.senses) return ""
+		return `<p class="pf2-stat pf2-stat__section"><strong>Senses&nbsp;</strong>${Object.entries(it.senses).map(([k, v]) => {
+			return v.map(s => `${renderer.render(s)}${k === "other" ? "" : ` (${k})`}`)
+		}).flat().join(", ")}</p>`
 	},
 };
 Renderer.companion = {
@@ -3508,6 +3517,7 @@ Renderer.companion = {
 		${Renderer.creature.getAbilityMods(companion.abilityMods)}
 		<p class="pf2-stat pf2-stat__section"><strong>Hit Points&nbsp;</strong>${companion.hp}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill}}`)}</p>
+		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
 		<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>
 		<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>
@@ -3537,6 +3547,32 @@ Renderer.familiar = {
 			${Renderer.generic.getRenderedEntries(it)}`;
 	},
 };
+Renderer.eidolon = {
+	getRenderedString (eidolon, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(false);
+		return $$`${Renderer.utils.getExcludedDiv(eidolon, "eidolon", UrlUtil.PG_COMPANIONS_FAMILIARS)}
+		${Renderer.utils.getNameDiv(eidolon, {type: "Eidolon", ...opts})}
+		${Renderer.utils.getDividerDiv()}
+		${Renderer.utils.getTraitsDiv(eidolon.traits)}
+		<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size)}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
+		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name}&nbsp;</strong>${Object.entries(s.abilityMods).map(([k, v]) => `<i>${k}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
+		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
+		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
+		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
+		${Renderer.creature.getSpeed(eidolon)}
+		${Renderer.utils.getDividerDiv()}
+		<p class="pf2-stat pf2-stat__section"><strong>Eidolon Abilities&nbsp;</strong>${eidolon.abilities.map(a => `<i>${a.type.toTitleCase()}</i> ${a.name}`).join("; ")}</p>
+		${eidolon.abilities.map(a => `${renderer.render({type: "pf2-h4", name: a.name, level: a.level, entries: a.entries})}`)}
+		${Renderer.utils.getPageP(eidolon)}`;
+	},
+
+};
 
 Renderer.condition = {
 	getCompactRenderedString (cond, opts) {
@@ -3559,6 +3595,7 @@ Renderer.condition = {
 
 Renderer.creature = {
 	getPerception (cr) {
+		// FIXME:
 		const perception = cr.perception;
 		const senses = cr.senses || {};
 		const renderer = Renderer.get();
@@ -3573,7 +3610,7 @@ Renderer.creature = {
 		let sensesString = sensesStack.join("");
 		if (sensesString !== "") {
 			renderStack.push("; ");
-			renderStack.push(sensesString);
+			renderStack.push(renderer.render(sensesString));
 		}
 		renderStack.push(`</p>`)
 
@@ -5919,6 +5956,8 @@ Renderer.hover = {
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "languages.json", "language");
 			case UrlUtil.PG_TRAITS:
 				return Renderer.hover._pCacheAndGet_pLoadSimple(page, "TRT", hash, {sourceOverride: "TRT", ...opts}, "traits.json", "trait");
+			case UrlUtil.PG_PLACES:
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "places.json", "place");
 
 			// region adventure/books/references
 			case UrlUtil.PG_QUICKREF: {

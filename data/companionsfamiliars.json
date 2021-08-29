@@ -43,11 +43,11 @@
 			"senses": {
 				"precise": [],
 				"imprecise": [
-					"scent 30 feet"
+					"{@ability scent} 30 feet"
 				],
 				"vague": [],
 				"other": [
-					"low-light vision"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
@@ -125,11 +125,11 @@
 			"senses": {
 				"precise": [],
 				"imprecise": [
-					"scent 30 feet"
+					"{@ability scent} 30 feet"
 				],
 				"vague": [],
 				"other": [
-					"darkvision"
+					"{@ability darkvision}"
 				]
 			},
 			"speed": {
@@ -899,6 +899,9 @@
 	"eidolon": [
 		{
 			"name": "Angel Eidolon",
+			"type": "Eidolon",
+			"source": "SoM",
+			"page": 59,
 			"fluff": [
 				{
 					"type": "pf2-h3",
@@ -908,15 +911,15 @@
 					]
 				}
 			],
-			"tradition": "Divine",
+			"tradition": "divine",
 			"traits": [
 				"Angel",
 				"Celestial",
 				"Eidolon"
 			],
 			"alignment": "must be good, usually neutral good",
-			"home": "{@place Nirvana} (if {@trait NG}), {@place Elysium} (if {@trait CG}), or {@place Heaven} (if {@trait LG})",
-			"size": "Medium or Small",
+			"home": "Nirvana (if {@trait NG}), {@place Elysium} (if {@trait CG}), or {@place Heaven} (if {@trait LG})",
+			"size": "{@trait Medium} or {@trait Small}",
 			"suggestedAttacks": [
 				"fist (bludgeoning), wing (bludgeoning), unarmed attacks shaped like a weapon"
 			],
@@ -961,17 +964,14 @@
 				"imprecise": [],
 				"vague": [],
 				"other": [
-					"darkvision"
+					"{@ability darkvision}"
 				]
 			},
 			"languages": [
 				"Celestial"
 			],
 			"speed": {
-				"abilities": null,
-				"walk": 25,
-				"burrow": null,
-				"climb": null
+				"walk": 25
 			},
 			"abilities": [
 				{
@@ -982,7 +982,7 @@
 					]
 				},
 				{
-					"name": "Traveler’s Aura",
+					"name": "Traveler's Aura",
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [

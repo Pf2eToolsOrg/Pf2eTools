@@ -12,7 +12,7 @@ class CompanionsFamiliarsPage extends ListPage {
 
 			sublistClass: "subcompanionsfamiliars",
 
-			dataProps: ["companion", "familiar"],
+			dataProps: ["companion", "familiar", "eidolon"],
 		});
 	}
 

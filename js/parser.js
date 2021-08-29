@@ -777,15 +777,6 @@ Parser.pageCategoryToProp = function (catId) {
 
 Parser.ABIL_ABVS = ["str", "dex", "con", "int", "wis", "cha"];
 
-/**
- * Build a pair of strings; one with all current subclasses, one with all legacy subclasses
- *
- * @param classes a spell.classes JSON item
- * @param subclassLookup Data loaded from `generated/gendata-subclass-lookup.json`. Of the form: `{PHB: {Barbarian: {PHB: {Berserker: "Path of the Berserker"}}}}`
- * @returns {*[]} A two-element array. First item is a string of all the current subclasses, second item a string of
- * all the legacy/superceded subclasses
- */
-
 Parser.bookOrdinalToAbv = (ordinal, preNoSuff) => {
 	if (ordinal === undefined) return "";
 	switch (ordinal.type) {
