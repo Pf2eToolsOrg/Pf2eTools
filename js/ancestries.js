@@ -1233,7 +1233,7 @@ class AncestriesPage extends BaseComponent {
 
 		if (this._state[stateKey] == null) this._state[stateKey] = false;
 
-		const $dispName = $(`<div title="${h.name.toTitleCase()}; Source: ${h.source}">${h.shortName || h.name}</div>`);
+		const $dispName = $(`<div title="${h.name.toTitleCase()}; Source: ${Parser.sourceJsonToAbv(h.source)}">${h.shortName || h.name}</div>`);
 		const $dispSource = $(`<div class="ml-1" title="${Parser.sourceJsonToFull(h.source)}">(${Parser.sourceJsonToAbv(h.source)})</div>`);
 		const hkSourcesVisible = () => $dispSource.toggleClass("hidden", !this._state.isShowHSources);
 		this._addHookBase("isShowHSources", hkSourcesVisible);
@@ -1277,7 +1277,7 @@ class AncestriesPage extends BaseComponent {
 	}
 
 	static getHeritageCssMod (anc, h) {
-		if (h.versatile) return "spicy";
+		if (h.versatile) return BrewUtil.hasSourceJson(h.source) ? "brew" : "spicy"
 		if (h.source !== anc.source) {
 			return BrewUtil.hasSourceJson(h.source)
 				? "brew"

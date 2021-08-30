@@ -79,9 +79,9 @@
 					"page": 533,
 					"name": "Cast a Spell",
 					"entries": [
-						"If an item lists \"Cast a Spell\" after \"Activate,\" the activation requires you to use the Cast a Spell activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
+						"If an item lists \"Cast a Spell\" after \"Activate,\" the activation requires you to use the {@action Cast a Spell} activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
 						"If the item can be used for a specific spell, the action icon for that spell is provided. If it's an item like a staff, which can be used for many spells, the icon is omitted, and you must refer to each spell to determine which actions you must spend to Activate the Item to cast it.",
-						"In this case, Activate an Item gains all the traits from the relevant components of the Cast a Spell activity."
+						"In this case, Activate an Item gains all the traits from the relevant components of the {@action Cast a Spell} activity."
 					]
 				},
 				{
@@ -200,14 +200,10 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": [
-					"Anadi|LOME"
-				],
-				"heritage": [
-					"Venomous Anadi|LOME"
-				]
+				"ancestry": "Anadi|LOME",
+				"heritage": "Venomous|LOME"
 			},
-			"frequency": "a number of times per day equal to your leve",
+			"frequency": "a number of times per day equal to your level",
 			"entries": [
 				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
 			]
@@ -371,12 +367,8 @@
 				"unit": "reaction"
 			},
 			"actionType": {
-				"ancestry": [
-					"Shisk|LOME"
-				],
-				"heritage": [
-					"Quillcoat Shisk|LOME"
-				]
+				"ancestry": "Shisk|LOME",
+				"heritage": "Quillcoat|LOME"
 			},
 			"frequency": "once per day",
 			"trigger": "You are hit with an unarmed strike or a strike with a non-reach melee weapon.",
@@ -512,12 +504,8 @@
 			},
 			"traits": [],
 			"actionType": {
-				"ancestry": [
-					"Dwarf"
-				],
-				"heritage": [
-					"Ancient-Blooded Dwarf"
-				]
+				"ancestry": "Dwarf",
+				"heritage": "Ancient-Blooded"
 			},
 			"trigger": "You attempt a saving throw against a {@trait magical} effect, but you haven't rolled yet.",
 			"entries": [
@@ -536,12 +524,8 @@
 				"Fortune"
 			],
 			"actionType": {
-				"ancestry": [
-					"Conrasu|LOME"
-				],
-				"heritage": [
-					"Rite of Knowing|LOME"
-				]
+				"ancestry": "Conrasu|LOME",
+				"heritage": "Rite of Knowing|LOME"
 			},
 			"frequency": "once per day",
 			"trigger": "You are about to attempt a check to {@action Recall Knowledge}.",
@@ -562,10 +546,10 @@
 				"basic": true
 			},
 			"entries": [
-				"You cast a spell you have prepared or in your repertoire. {@action Cast a Spell||Casting a Spell} is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
+				"You {@action Cast a Spell} you have prepared or in your repertoire. {@action Cast a Spell||Casting a Spell} is a special activity that takes a variable number of actions depending on the spell, as listed in each spell's stat block. As soon as the spellcasting actions are complete, the spell effect occurs.",
 				"Some spells are cast as a reaction or free action. In those cases, you Cast the Spell as a reaction or free action (as appropriate) instead of as an activity. Such cases will be noted in the spell's stat block\u2014for example, \"{@as R} verbal.\"",
-				"{@b Long Casting Times} Some spells take minutes or hours to cast. The Cast a Spell activity for these spells includes a mix of the listed spell components, but it's not necessary to break down which one you're providing at a given time. You can't use other actions or reactions while casting such a spell, though at the GM's discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can't cast them in an encounter. If combat breaks out while you're casting one, your spell is disrupted (see Disrupted and Lost Spells below).",
-				"{@b Activation Components} Each spell lists the spell components required to cast it after the action icons or text, such as \"{@as 3} material, somatic, verbal.\" The spell components, described in detail below, add traits and requirements to the Cast a Spell activity. If you can't provide the components, you fail to Cast the Spell.",
+				"{@b Long Casting Times} Some spells take minutes or hours to cast. The {@action Cast a Spell} activity for these spells includes a mix of the listed spell components, but it's not necessary to break down which one you're providing at a given time. You can't use other actions or reactions while casting such a spell, though at the GM's discretion, you might be able to speak a few sentences. As with other activities that take a long time, these spells have the {@trait exploration} trait, and you can't cast them in an encounter. If combat breaks out while you're casting one, your spell is disrupted (see Disrupted and Lost Spells below).",
+				"{@b Activation Components} Each spell lists the spell components required to cast it after the action icons or text, such as \"{@as 3} material, somatic, verbal.\" The spell components, described in detail below, add traits and requirements to the {@action Cast a Spell} activity. If you can't provide the components, you fail to Cast the Spell.",
 				{
 					"type": "list",
 					"items": [
@@ -575,7 +559,7 @@
 						"Focus ({@trait manipulate})"
 					]
 				},
-				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the Cast a Spell activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
+				"{@b Disrupted and Lost Spells} Some abilities and spells can disrupt a spell, causing it to have no effect and be lost. When you lose a spell, you've already expended the spell slot, spent the spell's costs and actions, and used the {@action Cast a Spell} activity. If a spell is disrupted during a Sustain a Spell action, the spell immediately ends. The full rules for disrupting actions appear here."
 			]
 		},
 		{
@@ -1393,7 +1377,7 @@
 				]
 			},
 			"entries": [
-				"You watch or study an NPC to learn more about that NPC's preferences. Choose an NPC and attempt a Perception check or an appropriate skill check determined by the GM. The DC is typically found in the NPC's influence stat block.",
+				"You watch or study an NPC to learn more about that NPC's preferences. Choose an NPC and attempt a {@skill Perception} check or an appropriate skill check determined by the GM. The DC is typically found in the NPC's influence stat block.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1582,12 +1566,8 @@
 			},
 			"traits": [],
 			"actionType": {
-				"ancestry": [
-					"Dwarf"
-				],
-				"heritage": [
-					"Elemental Heart Dwarf|LOCG"
-				]
+				"ancestry": "Dwarf",
+				"heritage": "Elemental Heart|LOCG"
 			},
 			"frequency": "once per day",
 			"entries": [
@@ -2376,12 +2356,8 @@
 			},
 			"traits": [],
 			"actionType": {
-				"ancestry": [
-					"Kitsune|LOAG"
-				],
-				"heritage": [
-					"Dark Fields Kitsune|LOAG"
-				]
+				"ancestry": "Kitsune|LOAG",
+				"heritage": "Dark Fields|LOAG"
 			},
 			"frequency": "once per hour",
 			"trigger": "A creature within 60 feet gains the {@condition frightened} condition.",
@@ -2400,12 +2376,8 @@
 			},
 			"traits": [],
 			"actionType": {
-				"ancestry": [
-					"Kitsune|LOAG"
-				],
-				"heritage": [
-					"Celestial Envoy Kitsune|LOAG"
-				]
+				"ancestry": "Kitsune|LOAG",
+				"heritage": "Celestial Envoy|LOAG"
 			},
 			"trigger": "You attempt a saving throw against a {@trait divine} effect, but you haven't rolled yet.",
 			"entries": [
@@ -4267,12 +4239,8 @@
 				"Poison"
 			],
 			"actionType": {
-				"ancestry": [
-					"Kobold|APG"
-				],
-				"heritage": [
-					"Venomtail Kobold|APG"
-				]
+				"ancestry": "Kobold|APG",
+				"heritage": "Venomtail|APG"
 			},
 			"frequency": "once per day",
 			"requirements": "You are wielding a piercing or slashing weapon.",
@@ -4343,15 +4311,33 @@
 				"unit": "action"
 			},
 			"actionType": {
-				"ancestry": [
-					"Lizardfolk|LOCG"
-				],
-				"heritage": [
-					"Frilled Lizardfolk|LOCG"
-				]
+				"ancestry": "Lizardfolk|LOCG",
+				"heritage": "Frilled|LOCG"
 			},
 			"entries": [
 				"You {@action Stride} to be adjacent to a foe and {@action Demoralize} that foe. If you succeed, the foe is {@condition frightened} 2 instead of {@condition frightened} 1."
+			]
+		},
+		{
+			"source": "LOAG",
+			"name": "Change Shape",
+			"traits": [
+				"Concentrate",
+				"Polymorph",
+				"Primal",
+				"Transmutation"
+			],
+			"actionType": {
+				"versatileHeritage": "Beastkin|LOAG"
+			},
+			"page": 79,
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"entries": [
+				"You change into your humanoid or hybrid shape. Each shape has a specific, persistent appearance, and most beastkin remain in their hybrid shapes by default. In hybrid shape, you appear as a mix between your ancestry and your inherent animal. While in hybrid shape, you gain a jaws unarmed Strike resembling the features of your inherent animal (fangs for bats, beaks for eagles, mandibles for wasps, and so on). Your jaws deal {@dice 1d4} piercing damage, have the {@trait agile}, {@trait finesse}, and {@trait unarmed} traits, and are in the brawling weapon group. In your humanoid shape, you retain the appearance of your original ancestry."
 			]
 		},
 		{
@@ -4367,12 +4353,8 @@
 				"Poison"
 			],
 			"actionType": {
-				"ancestry": [
-					"Grippli|LOME"
-				],
-				"heritage": [
-					"Poisonhide Grippli|LOME"
-				]
+				"ancestry": "Grippli|LOME",
+				"heritage": "Poisonhide|LOME"
 			},
 			"frequency": "once per hour",
 			"trigger": "A creature touches you, such as by Grappling you, successfully hitting you with an unarmed attack, or using a touch-range spell against you.",
@@ -4638,6 +4620,204 @@
 					"entries": {
 						"Success": "You move through the enemy's space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don't have enough Speed to move all the way through its space, you get the same effect as a failure.",
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
+					}
+				}
+			]
+		},
+		{
+			"name": "Spellstrike",
+			"traits": [
+				"Magus"
+			],
+			"source": "SoM",
+			"page": 37,
+			"frequency": "until recharged (see below)",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"class": [
+					"Magus|SoM"
+				]
+			},
+			"entries": [
+				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don’t occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don’t apply the penalty until after you’ve completed the Spellstrike. The infusion of spell energy grants your Strike the arcane trait, making it magical.",
+				"After you use Spellstrike, you can’t do so again until you recharge your Spellstrike as a single action, which has the concentrate trait. You also recharge your Spellstrike when you cast a conflux spell (page 40) that takes at least 1 action to cast; casting a focus spell of another type doesn’t recharge your Spellstrike."
+			]
+		},
+		{
+			"name": "Arcane Cascade",
+			"traits": [
+				"Concentrate",
+				"Magus",
+				"Stance"
+			],
+			"source": "SoM",
+			"page": 37,
+			"requirements": "You used your most recent action to {@action Cast a Spell} or make a {@action Spellstrike|SoM}.",
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"actionType": {
+				"class": [
+					"Magus|SoM"
+				]
+			},
+			"entries": [
+				"You divert a portion of the spell’s magical power and keep it cycling through your body and weapon using specialized forms, breathing, or footwork. While you’re in the stance, your melee Strikes deal 1 extra damage. This damage increases to 2 if you have weapon specialization and 3 if you have greater weapon specialization. Any Strike that benefits from this damage gains the arcane trait, making it magical.",
+				"If your most recent spell before entering the stance was one that can deal damage, the damage from the stance is the same type that spell could deal (or one type of your choice if the spell could deal multiple types of damage). If the spell couldn’t deal damage, this stance’s bonus damage depends on the spell’s school.",
+				{
+					"type": "list",
+					"items": [
+						"{@b Abjuration or Evocation} force",
+						"{@b Conjuration or Transmutation} same type as your weapon or unarmed attack",
+						"{@b Divination, Enchantment, or Illusion} mental",
+						"{@b Necromancy} negative"
+					]
+				}
+			]
+		},
+		{
+			"name": "Share Senses",
+			"traits": [
+				"Concentrate",
+				"Divination",
+				"Scrying",
+				"Summoner"
+			],
+			"source": "SoM",
+			"page": 53,
+			"requirements": "Your eidolon is manifested.",
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"entries": [
+				"You project your senses into your eidolon, allowing you to perceive through it. When you do, you lose all sensory information from your own body, but can sense through your eidolon’s body for up to 1 minute. You can {@action Dismiss} this effect."
+			],
+			"special": "This action has the trait matching your eidolon’s tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal}). Your eidolon can also use this ability. When it does, it projects its senses into your body."
+		},
+		{
+			"name": "Act Together",
+			"traits": [
+				"Summoner",
+				"Tandem"
+			],
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"source": "SoM",
+			"page": 53,
+			"frequency": "once per round",
+			"activity": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"entries": [
+				"You and your eidolon act as one. Either you or your eidolon takes an action or activity using the same number of actions as Act Together, and the other takes a single action.",
+				"For example, if you spent 2 actions to Act Together, you could cast {@spell burning hands} (2 actions) and your eidolon could {@action Strike} (1 action), or your eidolon could use its Breath Weapon (2 actions) and you could {@action Stride} (1 action).",
+				"This lets you each use separate exploration activities like {@action Avoid Notice} as you travel (Core Rulebook 496)."
+			]
+		},
+		{
+			"name": "Manifest Eidolon",
+			"traits": [
+				"Concentrate",
+				"Conjuration",
+				"Manipulate",
+				"Summoner",
+				"Teleportation"
+			],
+			"source": "SoM",
+			"page": 52,
+			"actionType": {
+				"class": [
+					"Summoner|SoM"
+				]
+			},
+			"activity": {
+				"number": 3,
+				"unit": "action",
+				"entry": "{@as 3}"
+			},
+			"entries": [
+				"Your eidolon appears in an open space adjacent to you, and can then take a single action. If your eidolon was already manifested, you unmanifest it instead.",
+				"The conduit that allows your eidolon to manifest is also a tether between you. Your eidolon must remain within 100 feet of you at all times and can’t willingly go beyond that limit. If forced beyond this distance, or if you are reduced to 0 Hit Points, your eidolon’s physical form dissolves: your eidolon unmanifests, and you need to use Manifest Eidolon to manifest it again."
+			],
+			"special": "This activity has the trait matching your eidolon’s tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
+		},
+		{
+			"name": "Tap Ley Line",
+			"source": "SoM",
+			"page": 215,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Concentrate"
+			],
+			"actionType": {
+				"basic": true,
+				"variantrule": [
+					"Ley Lines|SoM"
+				],
+				"skill": {
+					"trained": [
+						"Arcana",
+						"Nature",
+						"Occultism",
+						"Religion"
+					]
+				}
+			},
+			"entries": [
+				"You attempt to manipulate the magical essence of a ley line that you’re aware of within 30 feet. The GM determines the DC based on the hard DC for the ley line’s level.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain the ley line’s benefits until the end of your next turn.",
+						"Success": "You gain the ley line’s benefits until the end of your turn.",
+						"Failure": "You take mental damage equal to {@dice 1d6*#$prompt_number:min=1,title=Ley Line Level,default=1$#|1d6 × the ley line’s level}. You can’t Tap the Ley Line again for 1 hour.",
+						"Critical Failure": "As failure, and you’re subject to the ley line’s backlash effect. You can’t Tap the Ley Line again for 24 hours."
+					}
+				}
+			]
+		},
+		{
+			"name": "Learn Name",
+			"source": "SoM",
+			"page": 245,
+			"traits": [
+				"Rare",
+				"Downtime",
+				"Secret"
+			],
+			"actionType": {
+				"variantrule": [
+					"True Names|SoM"
+				]
+			},
+			"entries": [
+				"You spend a week trying to discover and learn a creature’s name. The exact form of your effort varies depending on the skill you use, the resources you have available, and other circumstances. Decide if you are searching for the name of a specific individual or for names in general. If you’re looking for the name of an individual, you must be able to clearly identify that individual; for example, “the general leading the invasion” is enough, but “the person who killed the duchess” isn’t, if you don’t know who killed the duchess. If you’re searching for names more generally, name one creature type.",
+				"The GM chooses a DC, typically based on the level of the creature in question. If you’re seeking names more generally, the DC is typically based on the level of the creature whose name the GM decides to provide, usually a creature from the chosen type of your level or lower. The GM might modify the DC of the task based on the resources you have available, or on using an unusually appropriate or inappropriate skill, or on other circumstances. Attempt a check with a skill that could be used to Recall Knowledge about the creature’s type. After attempting to Learn a Name, you typically can’t try to learn the name of the same individual again unless you gain access to a substantial new source of information, as determined by the GM.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You find one or more private names of the specific individual you chose, or the private name of a creature with the type you chose and a level equal to the task level. You also find hidden fragments of their true name and, at the GM’s discretion, you might find a clue leading to an adventure where you can learn the rest of the true name.",
+						"Success": "As critical success, except you find only one private name and don’t find hidden fragments of their true name.",
+						"Critical Failure": "If you were searching for the name of a specific individual, you find no new information and that individual becomes aware of your efforts. If you were searching for a general name of a specific type, you find a creature’s name or names likely to get you in trouble, possibly the names of a different type of creature entirely"
 					}
 				}
 			]

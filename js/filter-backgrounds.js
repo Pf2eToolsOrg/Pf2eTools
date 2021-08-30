@@ -4,8 +4,8 @@ class PageFilterBackgrounds extends PageFilter {
 	constructor () {
 		super();
 
-		this._skillFilter = new Filter({header: "Skill Proficiencies", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
-		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: (it) => Renderer._stripTagLayer(it).toTitleCase()});
+		this._skillFilter = new Filter({header: "Skill Proficiencies", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
+		this._loreFilter = new Filter({header: "Lore Proficiencies", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
 		this._boostFilter = new Filter({
 			header: "Ability Boosts",
 			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma", "Free"],

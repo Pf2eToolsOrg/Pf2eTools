@@ -163,19 +163,19 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.size != null) cr._fTraits.push(cr.size);
 		if (cr.traits != null && cr.traits.length) cr._fTraits.push(...cr.traits);
 		if (cr.creatureType != null) cr._fTraits.push(...cr.creatureType);
-		cr._fsenses = {precise: [], imprecise: [], vague: [], other: []}
+		cr._fSenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
 			cr.senses.precise.forEach((s) => {
-				cr._fsenses.precise.push(s.replace(/\s(?:\d|\().+/, ""));
+				cr._fSenses.precise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
 			});
 			cr.senses.imprecise.forEach((s) => {
-				cr._fsenses.imprecise.push(s.replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""));
+				cr._fSenses.imprecise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""));
 			});
 			cr.senses.vague.forEach((s) => {
-				cr._fsenses.vague.push(s.replace(/\s(?:\d|\().+/, ""));
+				cr._fSenses.vague.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
 			});
 			cr.senses.other.forEach((s) => {
-				cr._fsenses.other.push(s.replace(/\s(?:\d|\().+/, ""));
+				cr._fSenses.other.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
 			});
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
@@ -264,10 +264,10 @@ class PageFilterBestiary extends PageFilter {
 		this._charismaFilter.addItem(cr.abilityMods.Cha);
 
 		this._perceptionFilter.addItem(cr.perception.default)
-		this._preciseSenseFilter.addItem(cr._fsenses.precise);
-		this._impreciseSenseFilter.addItem(cr._fsenses.imprecise);
-		this._vagueSenseFilter.addItem(cr._fsenses.vague);
-		this._otherSenseFilter.addItem(cr._fsenses.other);
+		this._preciseSenseFilter.addItem(cr._fSenses.precise);
+		this._impreciseSenseFilter.addItem(cr._fSenses.imprecise);
+		this._vagueSenseFilter.addItem(cr._fSenses.vague);
+		this._otherSenseFilter.addItem(cr._fSenses.other);
 
 		this._languageFilter.addItem(cr._flanguages);
 		this._skillsFilter.addItem(cr._fskills)
@@ -313,10 +313,10 @@ class PageFilterBestiary extends PageFilter {
 			c._fTraits,
 			[
 				c.perception.default,
-				c._fsenses.precise,
-				c._fsenses.imprecise,
-				c._fsenses.vague,
-				c._fsenses.other,
+				c._fSenses.precise,
+				c._fSenses.imprecise,
+				c._fSenses.vague,
+				c._fSenses.other,
 			],
 			c._flanguages,
 			c._fskills,

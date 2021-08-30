@@ -1267,6 +1267,60 @@
 			]
 		},
 		{
+			"name": "Magus",
+			"source": "SoM",
+			"page": 75,
+			"entries": [
+				"You’ve mixed physical combat with spellcasting."
+			],
+			"extraFeats": [],
+			"miscTags": [
+				"Multiclass"
+			],
+			"benefits": [
+				"Bounded Spellcasting"
+			]
+		},
+		{
+			"name": "Summoner",
+			"source": "SoM",
+			"page": 76,
+			"entries": [
+				"You have a tenuous connection to an eidolon, a bodiless being that shares your life force, and with effort you can manifest the eidolon into the world.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Summoner Characters",
+					"entries": [
+						"The summoner archetype grants you an eidolon to join you in battle. It’s a particularly helpful multiclass for characters with weaker martial abilities.",
+						{
+							"type": "item",
+							"items": [
+								"{@class Alchemist} summoners can use their eidolons as lab assistants or even as the source of experiments. They are a good fit for construct or plant eidolons.",
+								"{@class Barbarian} summoners find themselves drawn to the fury of anger phantoms, the two fueled by the same inner instinct.",
+								"{@class Bard} summoners inspire their eidolons to greater heights with their bardic performances. They often team up with eidolons who pair well with their muse, such as a fey eidolon for a polymath muse or a phantom eidolon for a warrior muse.",
+								"{@class Champion} summoners get along best with divine eidolons matching the alignment associated with their cause—angel eidolons for the tenets of good, devil eidolons for a tyrant, and so on. This allows the champion and eidolon to have a unity in philosophy and purpose that other eidolon choices might lack.",
+								"{@class Cleric} summoners often find a connection to eidolons associated with their deity, such as a Sarenite cleric who chooses an angel eidolon. Clerics’ ability to heal and support allows them to keep their eidolon healthy.",
+								"{@class Druid} summoners find the life link with primal eidolons to be a religious experience. They are especially likely to bond with eidolons that match their order, such as plant eidolons for the leaf order or beast eidolons for the animal or wild order.",
+								"{@class Fighter} summoners use tactics and techniques with their eidolons to best foes. They can partner with eidolons of any kind, but they work especially well with eidolons who provide utilities that complement their fighting style.",
+								"{@class Monk} summoners often choose eidolons that are on their own path to enlightenment, to help enrich the monk’s journey. These might be divine eidolons, especially if the monk is religious or uses divine ki spells, but they also might be phantoms seeking to transcend their phantom existence to reach the afterlife.",
+								"{@class Ranger} summoners get along best with beast and plant eidolons, but they make a good team with other eidolons as well, especially when an archer ranger teams up with a melee eidolon.",
+								"{@class Rogue} summoners gain a partner in crime that can disappear when necessary, providing the eidolon with the ultimate getaway as long as no one expects it to carry back loot from a heist. Rogues work well with tricky eidolons, such as fey, and they get a lot of mileage out of sharing their skills with their eidolon. The Unfetter Eidolon feat can be especially useful if the rogue wants to establish a quick alibi far from the eidolon’s crimes.",
+								"{@class Sorcerer} summoners often choose eidolons that match closely to their bloodline, such as a psychopomp eidolon for the psychopomp bloodline. The eidolon might even be part of the story of how the sorcerer gained their bloodline.",
+								"{@class Wizard} summoners are especially appreciative of an eidolon to help them in combat, and they tend to favor arcane eidolons like dragon and construct eidolons."
+							]
+						}
+					]
+				}
+			],
+			"extraFeats": [],
+			"miscTags": [
+				"Multiclass"
+			],
+			"benefits": [
+				"Bounded Spellcasting"
+			]
+		},
+		{
 			"name": "Zephyr Guard",
 			"source": "APAST",
 			"page": 81,
@@ -1274,6 +1328,955 @@
 				"You are one of the Zephyr Guard, professional soldiers who protect Katapesh from military threats, economic sabotage, and elite thieves."
 			],
 			"extraFeats": []
+		},
+		{
+			"name": "Cathartic Mage",
+			"source": "SoM",
+			"page": 194,
+			"benefits": [
+				"Spellcasting"
+			],
+			"entries": [
+				"Emotions are powerful, and you can tap into that power to enhance your magic for a time. You learn to harness a particular emotional state under the right conditions, but be warned: emotions are volatile and destructive if left unchecked. The experience often leaves you reeling from the unhindered emotion, requiring a rest or distraction before tapping into it again.",
+				{
+					"type": "pf2-sidebar",
+					"name": "Emotional Focus",
+					"entries": [
+						"Some emotional states, such as love or hatred, require the caster to focus on a specific individual called their emotional focus. Your emotional focus can change over time with you choosing a new focus after an important part of your story is resolved. Work with your GM to determine when this change happens. An emotional focus doesn’t get a say in the matter; the cathartic spellcaster’s emotions determine the bond. However, making another PC your emotional focus could result in an uncomfortable social dynamic. You should check with that PC’s player in advance to see if such a link is acceptable."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"blue": true,
+					"name": "Emotional States",
+					"entries": [
+						"The following emotional states are used in the Cathartic Mage archetype. Each emotional state’s entry lists the following pieces of information.",
+						{
+							"type": "text",
+							"style": "pf2-stat pf2-stat__section--wide",
+							"entries": [
+								"{@b Catharsis Trigger} The event or conditions you must meet to take your Catharsis reaction.",
+								"{@b Catharsis Activation} The benefit when you use Catharsis.",
+								"{@b Emotional Fervor} Benefits you gain for 3 rounds after you use Catharsis. This entry also lists a spell you’re able to cast while in your emotional fervor. You must expend a spell slot to cast it. This slot most be of at least the spell’s level, and the spell is automatically heightened to the level of slot you expended.",
+								"{@b Emotional Fallout} The effect you experience when your emotional fervor ends.",
+								"{@b Focus Spell} The focus spell you gain if you select the Cathartic Focus Spell archetype feat."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Anger",
+							"entries": [
+								"Your destructive wrath allows you to harm your foes but causes you pain in the process.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} An enemy deals damage to you. You can’t use this reaction if you’re {@condition fatigued}.",
+										"{@b Catharsis Activation} If you’re {@condition grabbed}, {@condition immobilized}, or {@condition restrained}, you can attempt to {@action Escape}. If you succeed, the creature or hazard imposing the condition on you (if applicable) takes force damage equal to your level.",
+										"{@b Emotional Fervor} When you {@action Cast a Spell} from your spell slots, if the spell deals damage and doesn’t have a duration, you gain a status bonus to that spell’s damage equal to the spell’s level. Spell: {@spell draw ire|SoM}",
+										"{@b Emotional Fallout} You become {@condition fatigued} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell athletic rush}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Awe",
+							"entries": [
+								"Your powerful sense of wonderment can be infectious and distracting.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You or an ally within 30 feet critically succeeds on an attack roll against an enemy’s AC or a skill check against one of an enemy’s DCs.",
+										"{@b Catharsis Activation} If you’re {@condition fascinated} or {@condition stupefied}, you can attempt an additional save to end the effect if it allowed a save.",
+										"{@b Emotional Fervor} When you cast a spell, choose one creature that was hit by your spell attack roll or that failed its saving throw, if any. That creature becomes {@condition fascinated} with you until the end of its next turn. It’s then temporarily immune to this fervor effect for 1 hour. Spell: {@spell glitterdust}",
+										"{@b Emotional Fallout} You become {@condition flat-footed} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell dazzling flash} (doesn’t require a religious symbol)"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Dedication",
+							"entries": [
+								"Your commitment protects those you are dedicated to but can lead to dependency. Your emotional focus is an individual creature you’re bound to (see Emotional Focus sidebar).",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} Your emotional focus takes damage from an enemy while within 30 feet of you.",
+										"{@b Catharsis Activation} Your emotional focus gains a number of temporary Hit Points equal to half your level rounded up. These temporary HP last for 1 minute.",
+										"{@b Emotional Fervor} Your spells that target your emotional focus gain the benefits of Reach Spell. When you cast a healing spell that affects your emotional focus, your emotional focus also gains temporary HP equal to the spell’s level in addition to the spell’s effects. These temporary HP last for 1 minute. Spell: {@spell spirit link}",
+										"{@b Emotional Fallout} Until you Settle your Emotions, you can’t Cast Spells unless you’re adjacent to your emotional focus.",
+										"{@b Focus Spell} {@spell protector’s sacrifice}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Fear",
+							"entries": [
+								"You let your fear fuel you, rather than consume you, but it burns your endurance.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} An enemy makes you {@condition frightened}.",
+										"{@b Catharsis Activation} Increase your {@condition frightened} value by 1, to a maximum of {@condition frightened} 4.",
+										"{@b Emotional Fervor} You don’t take the status penalty from the {@condition frightened} condition to your spell DCs or spell attack bonus. Instead, you gain a status bonus to spell attack rolls equal to the penalty you would’ve taken, and your foes take the same status penalty to their saving throws against your spells. Any other statistic takes the status penalty as normal. Spell: {@spell fear}",
+										"{@b Emotional Fallout} You are {@condition fleeing} for 2 rounds, running from the source of the {@condition frightened} condition that triggered your Catharsis. If that source is no longer present, you instead flee from the position where you were at the start of your emotional fallout.",
+										"{@b Focus Spell} {@spell waking nightmare}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Hatred",
+							"entries": [
+								"Your unabashed hatred consumes your soul and causes your foe to falter. Your emotional focus is an individual enemy you detest (see Emotional Focus sidebar).",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You start your first turn in an encounter against your emotional focus or one of their followers. If the encounter includes multiple eligible followers and doesn’t include your actual emotional focus, choose one of the followers to act as your emotional focus for this encounter (or until your actual emotional focus shows up).",
+										"{@b Catharsis Activation} You can {@action Step} or {@action Stride}. You must end this movement closer to your emotional focus.",
+										"{@b Emotional Fervor} Your emotional focus is {@condition flat-footed} to you and takes a –2 status penalty to saves against your spells. You’re {@condition flat-footed} to your emotional focus and take a –2 status penalty to saves against it. Spell: {@spell blood vendetta|APG}",
+										"{@b Emotional Fallout} You become {@condition stunned} 2.",
+										"{@b Focus Spell} {@spell cry of destruction}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Joy",
+							"entries": [
+								"Your unbridled enthusiasm and positive attitude can lead you to success, but you might expend more energy than you planned.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You critically succeed on an attack roll or save, or an enemy critically fails on a save against you.",
+										"{@b Catharsis Activation} Reduce the value of any {@condition frightened} or {@condition stupefied} condition you have by 1 and end any {@condition persistent damage||persistent mental damage} you have.",
+										"{@b Emotional Fervor} You gain a +1 status bonus to {@skill Performance} checks and to the spell attack rolls of {@trait emotion} spells, and enemies take a –1 status penalty to saves against your {@trait emotion} spells. Spell: {@spell hideous laughter}",
+										"{@b Emotional Fallout} You become {@condition fatigued} until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell unimpeded stride}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Love",
+							"entries": [
+								"You’re joined by the bonds of love and nothing can break that, but love can distract you from other things in your life. Your emotional focus is someone you’re in love with; they aren’t required to love you back.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} Your emotional focus takes damage from an enemy while within 30 feet of you.",
+										"{@b Catharsis Activation} If either you or your emotional focus is {@condition confused} or {@condition controlled}, one of you can attempt a new saving throw against one confusing or controlling effect (if it allowed a save), ending the condition if the new save is a success. If both of you are eligible, your emotional focus gets the new save.",
+										"{@b Emotional Fervor} You gain a +1 status bonus to Will saves. If you cast a spell to benefit your emotional focus, this bonus increases to +3 until the start of your next turn. Spell: {@spell soothe}",
+										"{@b Emotional Fallout} You’re {@condition fascinated} with your emotional focus for 1 minute.",
+										"{@b Focus Spell} {@spell soothing words}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Misery",
+							"entries": [
+								"To suffer is to know you’re alive; to make your enemies suffer as greatly as you have eases your suffering.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You gain {@condition persistent damage} from a foe.",
+										"{@b Catharsis Activation} You gain a number of temporary Hit Points equal to your level. They last for 1 minute.",
+										"{@b Emotional Fervor} You can choose not to attempt a flat check to end {@condition persistent damage} you’re taking. When you cast a damaging spell, you can choose one creature that failed its save or that you hit with your spell attack roll. That target takes {@condition persistent damage} of the same type the spell dealt, of an amount equal to the highest amount of {@condition persistent damage} you currently have. You can’t choose a creature that’s already taking {@condition persistent damage}. Spell: {@spell phantom pain}",
+										"{@b Emotional Fallout} You take an untyped penalty to any damage you would deal with any spell you cast until you Settle your Emotions. The penalty is –1 per spell level.",
+										"{@b Focus Spell} {@spell savor the sting}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Pride",
+							"entries": [
+								"All is well as long as you appear well, but you get caught up in the moment and lose track of what’s important.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} You critically fail on an attack roll or saving throw.",
+										"{@b Catharsis Activation} The critical failure becomes a failure.",
+										"{@b Emotional Fervor} Each time you cast an illusion spell, until the start of your next turn, any critical failure you roll on an attack roll or saving throw is a failure instead. Spell: {@spell color spray}",
+										"{@b Emotional Fallout} You momentarily lose track of what’s real, becoming {@condition confused} for 1 round. Spell: {@spell mirror image}",
+										"{@b Focus Spell} {@spell veil of confidence}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Remorse",
+							"entries": [
+								"You attempt to overcome your failings, but your guilt stays with you.",
+								{
+									"type": "text",
+									"style": "pf2-stat pf2-stat__section--wide",
+									"entries": [
+										"{@b Catharsis Trigger} An ally within 30 feet drops to 0 Hit Points.",
+										"{@b Catharsis Activation} You {@action Step} or {@action Stride}. You must end this movement closer to the triggering ally",
+										"{@b Emotional Fervor} Any spell you cast that restores Hit Points to the triggering ally gets a status bonus to the Hit Points healed equal to the spell’s level, or double the spell’s level if the ally is at 0 Hit Points. Spell: {@spell warrior’s regret|SoM}",
+										"{@b Emotional Fallout} Your emotional weight crushes you, leaving you {@condition stupefied} 2 until you Settle your Emotions.",
+										"{@b Focus Spell} {@spell healer’s blessing}"
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Elementalist",
+			"source": "SoM",
+			"page": 206,
+			"entries": [
+				"You revere the four elements—air, earth, fire, and water—as the building blocks of creation and the source of all life. You believe that by balancing, mixing, and rearranging these four elements, magic is made. This belief has led you to eschew traditional magical theories and divisions, and you instead focus on harnessing, manipulating, and shaping the four elements. You cast spells drawn from multiple traditions and can use the four elements to alter and empower your spells, making them manifest and mixing them in unique ways. Most elementalists embrace the four elements equally as a mystical quaternity, and they strengthen their connection to one of these elements each day to protect themselves from harm. Others, notably sorcerer and wizard elementalists, feel a stronger connection to a singular element that they hone to great heights, utilizing the other three elements to support and augment their favored element.",
+				{
+					"type": "pf2-h3",
+					"name": "Elemental Magic",
+					"level": 1,
+					"entries": [
+						"You’re a spellcaster that’s specialized in harnessing the four elements. Though you might feel a stronger kinship for one element over the others, you’re capable of shaping all of them. Due to your specialization in elemental magic, you have a smaller, more focused spell list than other spellcasters, though your magic is drawn from multiple traditions. If you choose this class archetype, you must select the {@feat Elementalist Dedication|SoM} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must have a spellcasting class feature that chooses spells from the arcane or primal spell list.",
+						"{@b Elementalist Adjustments:} Replace your spell list with the elemental spell list (page 203). Your actual magical tradition is unchanged, but you choose your spells from the elemental list instead.",
+						"If you’re a sorcerer with the elemental bloodline, you can replace your initial bloodline spell with an initial elemental focus spell, and your advanced bloodline spell with an advanced elemental focus spell. The initial and advanced elemental focus spells you select must have the same trait as your elemental bloodline and come from the options starting on page 200.",
+						"{@b Druid Elementalist Adjustments:} If you’re a druid of the storm order, you can choose to replace your starting order spell, {@spell tempest surge}, with {@spell updraft|SoM}.",
+						"{@b Wizard Elementalist Adjustments:} If you’re a wizard with an arcane school, instead of specializing in a school of magic, you specialize in one of the four elements: air, earth, fire, or water. Any benefits your arcane school would grant you that are associated with a selected spell school, you instead apply to your selected element. For example, if you select air as your element, you can prepare only spells that have the air trait in your extra arcane school slots, you can prepare an extra air cantrip, and you add an extra air spell from the elemental spell list to your spellbook. Additionally, in place of your arcane school spell, you learn the initial elemental focus spell of your selected element from the elemental focus spells starting on page 200. In all other ways, your arcane school functions as written in the Core Rulebook. If you later select the Advanced School Spell wizard feat, instead of gaining the listed school spell, you gain the advanced elemental focus spell of your selected element from the advanced elemental focus spells starting on page 200."
+					]
+				}
+			],
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"4|Familiar (Sorcerer)|CRB",
+				"6|Enhanced Familiar (Sorcerer)|CRB",
+				"8|Current Spell|APG",
+				"8|Water Step|CRB"
+			]
+		},
+		{
+			"name": "Flexible Caster",
+			"source": "SoM",
+			"page": 209,
+			"entries": [
+				"You’ve learned how to cast spells flexibly, blending the best elements of spontaneous and prepared spellcasting at the cost of casting fewer spells each day.",
+				{
+					"type": "pf2-h3",
+					"name": "Flexible Spell Preparation",
+					"level": 1,
+					"entries": [
+						"This class feature alters your spellcasting class feature (such as Arcane Spellcasting for the wizard or Divine Spellcasting for the cleric). If you choose this class archetype, you must select {@feat Flexible Spellcaster Dedication|SoM} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must have a class, such as clerics, druids, witches, and wizards, that prepares spells in spell slots using the same number of prepared spells per day.",
+						"{@b Flexible Spellcaster Adjustments:} You learn spells as normal for your class (a wizard uses a spellbook, a witch teaches spells to their familiar, and so on), but change your spellcasting from your class as follows.",
+						{
+							"type": "list",
+							"items": [
+								"You can cast fewer spells each day. Your number of spell slots per day don’t advance from 2 to 3 spells at even levels (see Table 5—1).",
+								"Reduce the number of cantrips you gain from your class by 2. This archetype doesn’t change the way you prepare cantrips.",
+								"During your daily preparations, you prepare a spell collection rather than preparing spells into each spell slot individually. The number of spells in your spell collection each day equals the total number of spell slots you get each day from your class spells. Select these spells from the same source as normal, such as from a spellbook for a wizard.",
+								"You can cast any of the spells in your collection by using a spell slot of an appropriate level. For instance, if you were level 1 and had feather fall and magic missile in your spell collection, you could cast feather fall twice that day, magic missile twice, or each spell once.",
+								"Extra spell slots you gain that have additional restrictions, like the wizard’s specialist school spells or the cleric’s divine font spells, don’t change due to this archetype, nor do such spells count toward the number of spells you place in your spell collection. See the Restricted Spell Slots sidebar."
+							]
+						},
+						{
+							"type": "table",
+							"name": "Flexible Spellcaster Spells per Day",
+							"id": "5-1",
+							"spans": [
+								0,
+								1
+							],
+							"labelRowIdx": [
+								0
+							],
+							"minimizeTo": [
+								0
+							],
+							"colStyles": [
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center",
+								"text-center"
+							],
+							"footnotes": [
+								"* Your class most likely has a class feature that gives you a single 10th level spell slot that works a bit differently from other slots. If so, flexible spellcaster doesn’t change the way that spell works."
+							],
+							"rows": [
+								[
+									"Level",
+									"Cantrips",
+									"1st",
+									"2nd",
+									"3rd",
+									"4th",
+									"5th",
+									"6th",
+									"7th",
+									"8th",
+									"9th",
+									"10th",
+									"Collection"
+								],
+								[
+									1,
+									3,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									2
+								],
+								[
+									2,
+									4,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									2
+								],
+								[
+									2,
+									4,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									4
+								],
+								[
+									4,
+									5,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									4
+								],
+								[
+									5,
+									5,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									6
+								],
+								[
+									6,
+									5,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									6
+								],
+								[
+									7,
+									5,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									8
+								],
+								[
+									8,
+									5,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									8
+								],
+								[
+									9,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									10
+								],
+								[
+									10,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									10
+								],
+								[
+									11,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									12
+								],
+								[
+									12,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									12
+								],
+								[
+									12,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									14
+								],
+								[
+									14,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									"\u2014",
+									14
+								],
+								[
+									15,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									16
+								],
+								[
+									16,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									"\u2014",
+									16
+								],
+								[
+									17,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									18
+								],
+								[
+									18,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"\u2014",
+									18
+								],
+								[
+									19,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"*",
+									18
+								],
+								[
+									20,
+									5,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									2,
+									"*",
+									18
+								]
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"name": "Restricted Spell Slots",
+							"entries": [
+								"When applying this archetype to a class that grants additional spell slots with restrictions, such as the specialist wizard’s specialist school spells or the cleric’s divine bond, you still gain those additional slots, but they work as normal for your class, and they don’t add more spells to your spell collection. A healing font grants you additional spell slots to cast heal spells of the highest level you can cast, but doesn’t add heal to your spell collection. A harming font does the same for the harm spell. As a specialist wizard, you prepare one spell per level from your specialty school, which also aren’t added to your spell collection."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Heightening Spells",
+							"entries": [
+								"Once you gain 2nd-level spells, you can heighten any spell in your spell collection to any level you can cast, similar to a spontaneous spellcaster’s signature spells. The only restriction is that you must select at least one 1st-level spell for your collection each time you prepare, ensuring that you can use all your spell slots each day."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Adjucidating Class Feats and Features",
+							"entries": [
+								"Some of your class feats or features might rely on the fact that you prepare spells in spell slots. While some class feats might no longer work or be necessary with the flexible spellcaster archetype, in many cases you can make a simple replacement and continue using the class feat. The following class feats simply require replacing “a spell you have prepared” or “a prepared spell” for “a spell in your collection” or “a spell slot.” For example, in Counterspell, you’d replace “a spell you have prepared” in the trigger for “a spell in your collection” and “expend a prepared spell” for “expend a spell slot.” Similarly, in arcane bond, you’d replace “cast one spell you prepared today and already cast” with “cast one spell in your collection you’ve already cast today.”",
+								"The Counterspell and Leyline Conduit feats in the Core Rulebook need these substitutions, as does Form Retention from the Advanced Player’s Guide. Spell Mastery provides additional restricted spells, like divine font or specialist spells; you can take it, but it doesn’t add to your collection and works like normal prepared spells."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Disallowed Feats",
+							"entries": [
+								"The following feats from the Core Rulebook aren’t available for a flexible spellcaster: {@feat Call of the Wild}, {@feat Clever Counterspell}, {@feat Infinite Possibilities}, {@feat Reprepare Spell}, and {@feat Spell Combination}. The disallowed feats from the Advanced Player’s Guide are as follows: {@feat Elemental Summons|APG}, {@feat Miraculous Possibility|APG}, {@feat Rites of Convocation|APG}, and {@feat Rites of Transfiguration|APG}."
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"4|Familiar (Sorcerer)|CRB",
+				"6|Enhanced Familiar (Sorcerer)|CRB",
+				"8|Current Spell|APG",
+				"8|Water Step|CRB"
+			]
+		},
+		{
+			"name": "Geomancer",
+			"source": "SoM",
+			"page": 212,
+			"entries": [
+				"You know how to draw power from the land around you, no matter the terrain, by attuning your magic to match its mystical properties.",
+				"You might be a druid with an elemental focus (such as the flame, stone, or wave orders; page 198) or a naturalist with a touch of magic at your disposal. You could concentrate on a single type of terrain to wring every last drop of power from it or choose to wander the land to experience every type of terrain possible."
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Shadowcaster",
+			"source": "SoM",
+			"page": 226,
+			"entries": [
+				"The world is full of shadows, but each living creature possesses a form of inner light to ward against that ever-present darkness… all except shadowcasters. By trading away that piece of their spirit, shadowcasters have removed a limiter, allowing them to gain magical power rooted in the darkness; however, this trade also exposes them to otherworldly whispers from the realms of shadow."
+			],
+			"extraFeats": [
+				"4|Familiar (Sorcerer)|CRB",
+				"6|Enhanced Familiar (Sorcerer)|CRB",
+				"12|Shadow Magic|APG",
+				"14|Additional Shadow Magic|APG",
+				"14|Shadow Illusion|APG",
+				"16|Shadow Power|APG"
+			]
+		},
+		{
+			"name": "Runelord",
+			"source": "SoM",
+			"page": 240,
+			"entries": [
+				"You’ve learned arcane magic following the path of the runelords. You unlock secrets of a chosen school of magic while forsaking lesser schools. You learn the secrets of runic magic, the building blocks of magic. But be warned: you might succumb to sin in your pursuit of power.",
+				"You also learn to use polearms, the signature weapons of the runelords, and can acquire the secrets of the mighty, ancient magic items called {@item aeon stone||aeon stones}, embedding them into your skin.",
+				{
+					"type": "pf2-h3",
+					"name": "Runelord Specialization",
+					"level": 1,
+					"entries": [
+						"You draw untold power from runes, sometimes called sin magic. You associate with one of the seven vices, also known as the seven rewards of rule: envy (abjuration), gluttony (necromancy), greed (transmutation), lust (enchantment), pride (illusion), sloth (conjuration), and wrath (evocation). Studying these techniques often tempts you with the associated sin. While leaning into it could corrupt you, it might make you more powerful. If you choose this class archetype, you must select {@feat Runelord Dedication|SoM} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must be a wizard specializing in one of the seven schools other than divination.",
+						"{@b Runelord Adjustments:} In addition to the normal school spell for your chosen school of magic, you learn the initial rune spell associated with your school, with its school adjusted to your chosen school of magic if it wasn’t from that school already. The rune spells can be found on pages 238–239. Your pool of Focus Points increases to 2 Focus Points. At 8th level, you also learn the advanced rune spell associated with your school, also adjusting its school to match your chosen school of magic if it wasn’t already, and your pool of Focus Points increases to 3 Focus Points.",
+						"You can Refocus by indulging in your school’s sin in lieu of studying your spellbook. As you become more powerful, your indulgence grows. At 12th level, if you indulge in your sin to Refocus, if you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you Refocus instead of 1. At 18th level, if you indulge in your sin to Refocus, if you have spent at least 3 Focus Points since the last time you Refocused, you recover 3 Focus Points when you Refocus instead of 1.",
+						"You are trained in martial polearms. At 11th level, if you gain weapon expertise, you become an expert in martial polearms.",
+						"Finally, you lose the ability to prepare or cast any spell from your school’s prohibited schools. You remove all spells of those schools from your spell list, meaning you can’t even activate scrolls or wands of such spells."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"blue": true,
+					"name": "The Seven Schools",
+					"entries": [
+						"The following seven schools are considered proper specializations of Thassilonian rune magic. In this paradigm, the Thassilonians considered divination magic to be something every wizard should learn but that none need take the effort to master.",
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Abjuration [Envy]",
+							"entries": [
+								"Runelords of abjuration specialize in protective magic and in suppressing all other magic to glorify their own.",
+								"{@b Prohibited Schools} evocation, necromancy; {@b Rune Spells} initial: {@spell blind ambition}, advanced: {@spell competitive edge}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Conjuration [Sloth]",
+							"entries": [
+								"Runelords of conjuration use their magic to create what they need as they need it, and call forth servants to do their bidding.",
+								"{@b Prohibited Schools} evocation, illusion; {@b Rune Spells} initial: {@spell efficient apport|SoM}, advanced: {@spell swamp of sloth}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Enchantment [Lust]",
+							"entries": [
+								"Runelords of enchantment specialize in magic that compels and controls the minds of others, often to fulfill their own needs and desires.",
+								"{@b Prohibited Schools} necromancy, transmutation; {@b Rune Spells} initial: {@spell charming touch}, advanced: {@spell captivating adoration}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Evocation [Wrath]",
+							"entries": [
+								"Runelords of evocation channel raw destructive energies and direct them toward all who would oppose their will.",
+								"{@b Prohibited Schools} abjuration, conjuration; {@b Rune Spells} initial: {@spell weapon surge}, advanced: {@spell zeal for battle}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Illusion [Pride]",
+							"entries": [
+								"Runelords of illusion use magic to create the perfect appearance and fool others through trickery, deception, and misdirection.",
+								"{@b Prohibited Schools} conjuration, transmutation; {@b Rune Spells} initial: {@spell veil of confidence}, advanced: {@spell delusional pride}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Necromancy [Gluttony]",
+							"entries": [
+								"Runelords of necromancy tap into their constant hunger for more power and enhancing their longevity, potentially even unto undeath.",
+								"{@b Prohibited Schools} abjuration, enchantment; {@b Rune Spells} initial: {@spell overstuff}, advanced: {@spell take its course}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"collapsible": true,
+							"name": "Transmutation [Greed]",
+							"entries": [
+								"Runelords of transmutation not only transform objects to create value, but also transform and enhance their own power.",
+								"{@b Prohibited Schools} enchantment, illusion; {@b Rune Spells} initial: {@spell appearance of wealth}, advanced: {@spell precious metals}"
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"2|Tattoo Artist|SoM"
+			]
+		},
+		{
+			"name": "Wellspring Mage",
+			"source": "SoM",
+			"page": 248,
+			"entries": [
+				"The source of your magic buckles against your control, always pressing to be released.",
+				{
+					"type": "pf2-h3",
+					"name": "Wellspring Magic",
+					"level": 1,
+					"entries": [
+						"You regain magic power quickly, but it can be difficult for you to control. You must select {@feat Wellspring Mage Dedication|SoM} as your 2nd-level class feat.",
+						"{@b Prerequisites:} You must have a class that casts spells with a spell repertoire.",
+						"{@b Runelord Adjustments:} You learn spells as normal for your class, but change your spontaneous spellcasting in the following ways.",
+						"You can cast fewer spells each day unless you gain more spells thanks to your wellspring. Reduce your number of spell slots of each spell level by 1. Reduce the number of cantrips you gain from your class by 1.",
+						"A wellspring of magic fills you with power that’s not fully under your control. When you roll initiative for a non-trivial combat encounter, as well as in other high-stress situations of the GM’s choice, magic wells up within you. Attempt a DC {@flatDC 6} flat check.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "You temporarily recover an expended spell slot of any level of your choice. The temporary spell slot lasts for 1 minute, and if you don’t use it by then, you experience an immediate wellspring surge.",
+								"Success": "As critical success, except you randomly determine the level of spell slot from among your top three spell levels (or all your levels of spell slots if you have fewer than three). The slot lasts 3 rounds instead of 1 minute.",
+								"Failure": "You generate a wellspring surge, with a spell level chosen randomly among your top three levels of spell slots (or all your levels if you have fewer than three)."
+							}
+						},
+						"You can gain a temporary spell slot no more than twice per day. If you would gain a temporary spell slot for a level that has no expended spell slots, there’s no effect. If you use a temporary slot to cast a spell with a duration, the spell ends whenever you would have lost the slot if its duration hasn’t yet elapsed. If you roll for wellspring magic while you currently have a temporary spell slot, you automatically fail the flat check."
+					]
+				},
+				{
+					"type": "pf2-h2",
+					"blue": true,
+					"name": "Wellspring Surges",
+					"entries": [
+						"When your wellspring magic goes out of control, it becomes a wellspring surge. Typically, this happens when you fail the flat check from wellspring magic, but other wellspring mage feats have effects that sometimes cause you to generate a wellspring surge, or might even cause your foes to do so.",
+						"Roll {@dice 1d20} and use {@table Wellspring Surges|SoM|Table 5–2: Wellspring Surges} below to determine the surge’s effect. If the effect calls for a damage type, the GM chooses the type based on the types of spells you know or your current location. The wellspring surge uses your spell DC. You have no control over the way your wellspring surge manifests. You are the point of origin for your wellspring surges, and you are not excluded from their effects. If you force a foe to generate a surge, they are the origin point of that surge instead.",
+						"If your wellspring was granted by a being like a god or muse, the entity’s intentions might sometimes alter the results of wellspring surges, or move the point of origin for an area to any point within 30 feet if the GM determines this fits the situation. For example, instead of uncontrolled damage, the entity might choose to damage only creatures opposing its plan, even if they are your allies.",
+						"A wellspring surge always has the trait of your magical tradition, plus any traits that appear in parentheses at the end of the surge’s effects.",
+						{
+							"name": "Wellspring Surges",
+							"source": "SoM",
+							"type": "table",
+							"id": "5-2",
+							"rollable": true,
+							"labelRowIdx": [
+								0
+							],
+							"colSizes": [
+								1,
+								11
+							],
+							"rows": [
+								[
+									"{@dice d20}",
+									"Effect"
+								],
+								[
+									"1",
+									"{@b Energy Unleashed} ({@trait evocation}) Raw energy deals {@scaledice 2d6|1-10|2d6} damage per spell level of the surge (basic Reflex save) in a 10-foot burst."
+								],
+								[
+									"2",
+									"{@b Positive Energy Expulsion} ({@trait healing}, {@trait necromancy}, {@trait positive}) Positive energy explodes outward, healing living creatures for {@scaledice 1d8|1-10|1d8} Hit Points per spell level of the surge in a 20-foot burst. Undead creatures instead take the same amount of positive damage, with a basic Will save."
+								],
+								[
+									"3",
+									"{@b Mass Siphon} ({@trait transmutation}) Creatures and objects within a 30-foot emanation become nearly weightless until the end of your next turn. Nearly weightless creatures can {@action Climb} at their land Speed and can {@action Leap} as far upward as they could normally {@action Leap} horizontally."
+								],
+								[
+									"4",
+									"{@b Magical Nemesis} ({@trait conjuration}, {@trait teleportation}) A random creature connected to your magic (or inimical to it) appears within 60 feet. The creature should be of a level approximately equal to the level of an animal summoned by {@spell summon animal} of the spell level, although it can be of any type. The GM determines the specific creature. The creature is {@condition unfriendly} to you and friendly to your apparent enemies. After 1 minute, the creature can choose either to return where it came from or to remain. It is not {@trait summoned} or a {@trait minion}."
+								],
+								[
+									"5",
+									"{@b Monstrous Transformation} ({@trait mental}, {@trait morph}, {@trait transmutation}) Your head and arms transform into an exaggerated imitation of a creature connected to your magic for 1 minute. The GM determines the creature. You gain a status bonus to weapon and unarmed damage rolls equal to the spell level. At the start of each of your turns while you are transformed, you must succeed at a Will saving throw or be {@condition confused} until the start of your next turn. On a critical success, you can choose to end the effect entirely, also losing the status bonus."
+								],
+								[
+									"6",
+									"{@b Sudden Gale} ({@trait air}, {@trait evocation}) Weather in a 40-foot emanation is disturbed. Strong winds blow in a random direction for 1 minute. Each creature that starts its turn in the area must succeed at a Fortitude save or fall {@condition prone} (and be pushed 10 feet on a critical failure), and you must succeed at this save immediately after the surge. Any movement against the wind is difficult terrain, or greater difficult terrain while flying."
+								],
+								[
+									"7",
+									"{@b Tremor} ({@trait earth}, {@trait evocation}) The earth trembles in a 40-foot emanation. Each creature on a surface must immediately succeed at a Fortitude save or fall {@condition prone}. The surface then becomes difficult terrain for 1 minute."
+								],
+								[
+									"8",
+									"{@b Oppressive Voice} ({@trait divination}, {@trait mental}, {@trait nonlethal}) The voice of your muse, your deity, an ancestor, or another appropriate entity suddenly overwhelms your mind. You must attempt a Will saving throw. You take {@scaledice 1d4|1-10|1d4} mental damage per spell level with a basic Will save. On a failure, you’re also {@condition stunned} 1 ({@condition stunned} 2 on a critical failure)."
+								],
+								[
+									"9",
+									"{@b Trinket Squall} ({@trait illusion}) Visual illusions of objects related to your magic fall like rain throughout a 40-foot burst for 1 minute, giving concealment in the area. Creatures can attempt to disbelieve this illusion (Core Rulebook 298)."
+								],
+								[
+									"10",
+									"{@b Antimagic Eruption} ({@trait abjuration}) The surge attempts to counteract a random spell active on you and on each creature within a 10-foot burst."
+								],
+								[
+									"11",
+									"{@b Mental Broadcast} ({@trait detection}, {@trait divination}, {@trait mental}) For 1 minute, everyone within 30 feet of you can hear your surface thoughts."
+								],
+								[
+									"12",
+									"{@b Verdant Clutch} ({@trait conjuration}, {@trait plant}) Plants and vines grow from all surfaces within 20 feet, causing all creatures in the area to be {@condition immobilized} unless they succeed at a Reflex save. The {@action Escape} DC is equal to the spell DC."
+								],
+								[
+									"13",
+									"{@b Tinge of Terror} ({@trait emotion}, {@trait enchantment}, {@trait fear}, {@trait mental}) All creatures within 20 feet are affected by powerful fright. They attempt a Will save, becoming {@condition frightened} 1 on a failure or {@condition frightened} 2 on a critical failure."
+								],
+								[
+									"14",
+									"{@b Strike up the Band} ({@trait auditory}, {@trait illusion}) For 1 minute, you are followed by orchestral theme music tied to the emotional content of the actions you’re performing. This grants you a +2 status bonus to {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks, a –2 status penalty to {@skill Deception} checks, and makes certain uses of {@skill Stealth} virtually impossible. It might have other effects as the GM sees fit."
+								],
+								[
+									"15",
+									"{@b Life Sap} ({@trait necromancy}) The surge drains your life force and strength. You become {@condition drained} 1 and {@condition doomed} 1, and you are {@condition enfeebled} 2 for 1 minute."
+								],
+								[
+									"16",
+									"{@b Ablative Barrier} ({@trait abjuration}) Energy forms a protective barrier that ablates slowly as creatures in the area take damage. All creatures in a 40-foot burst gain resistance to all damage equal to double the surge’s spell level for up to 1 minute. Whenever a creature applies this resistance, the resistance for all affected creatures reduces by 1. The effect ends for all creatures when it reduces to 0."
+								],
+								[
+									"17",
+									"{@b Luminous Pests} ({@trait illusion}, {@trait visual}) Numerous tiny flying creatures formed of bright colorful light, such as bats or hummingbirds, emerge from you, flying in a 30-foot cone. You and all creatures in the cone must succeed at a Will save or be {@condition dazzled} for 1 minute, or {@condition blinded} for 1 round and then {@condition dazzled} for 1 minute on a critical failure."
+								],
+								[
+									"18",
+									"{@b Emotional Turmoil} ({@trait emotion}, {@trait enchantment}, {@trait mental}) A swirl of conflicting emotions overwhelm you from the surging magic. For 1 minute, attempt a DC {@flatDC 11} flat check at the start of each of your turns. On a success, you gain a +2 status bonus to all attack rolls, saving throws, and skill checks; on a failure, you take a –2 status penalty to them instead."
+								],
+								[
+									"19",
+									"{@b Sudden Downpour} ({@trait evocation}, {@trait water}) Water cascades from above, putting out non-magical fires in a 10-foot burst and attempting to counteract magical fires."
+								],
+								[
+									"20",
+									"{@b Spell Surge} You immediately cast any spell in your repertoire of the surge’s spell level or lower (or from your prepared spells or innate spells if you don’t have a repertoire but have been forced to generate a wellspring surge). You must choose a spell that takes 3 or fewer actions to cast."
+								]
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Class Archetype"
+			],
+			"extraFeats": [
+				"8|Energetic Resonance|APG",
+				"8|Spell Relay|APG",
+				"10|Surging Might|APG",
+				"16|Scintillating Spell|APG",
+				"18|Echoing Spell|APG"
+			]
 		}
 	]
 }

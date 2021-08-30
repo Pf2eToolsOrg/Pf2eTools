@@ -2030,6 +2030,7 @@ SortUtil = {
 		return SortUtil.ascSort(aNum, bNum);
 	},
 
+	// FIXME: I return 1, 10, 2, 3, 4 when it really should be 1, 2, 3, 4, 10
 	_ascSort: (a, b) => {
 		if (b === a) return 0;
 		return b < a ? 1 : -1;
@@ -3888,7 +3889,7 @@ BrewUtil = {
 					<span class="col-1-2 text-center">${it._brewCat}</span>
 					<span class="col-1-4 text-center">${timestampModified}</span>
 					<span class="col-1-4 text-center">${timestampAdded}</span>
-					<span class="col-1 manbrew__source text-center pr-0"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
+					<span class="col-1 manbrew__source text-center"><a href="${it.download_url}" target="_blank" rel="noopener noreferrer">View Raw</a></span>
 				</div>
 			</li>`;
 

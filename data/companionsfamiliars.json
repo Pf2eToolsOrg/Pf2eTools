@@ -43,17 +43,17 @@
 			"senses": {
 				"precise": [],
 				"imprecise": [
-					"scent 30 feet"
+					"{@ability scent} 30 feet"
 				],
 				"vague": [],
 				"other": [
-					"low-light vision"
+					"{@ability low-light vision}"
 				]
 			},
 			"speed": {
 				"abilities": null,
 				"walk": 25,
-				"burrow ": 10,
+				"burrow": 10,
 				"climb": 10
 			},
 			"support": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a Step action (unless it can Step through difficult terrain) until it moves from its current position.",
@@ -85,9 +85,132 @@
 					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
 				]
 			}
+		},
+		{
+			"name": "Shadow Hound",
+			"source": "SoM",
+			"page": 228,
+			"type": "Companion",
+			"size": "Small",
+			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shadow Hound",
+					"entries": [
+						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
+					]
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 1
+			},
+			"hp": 4,
+			"skill": "Intimidation",
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"{@ability scent} 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"support": "Your shadow hound shrouds your foes in shadow when you leave an opening. Until the start of your next turn, when you damage a creature with a {@action Strike} and that creature is within reach of your shadow hound, both you and your shadow hound become {@condition concealed} to the creature until the end of your next turn.",
+			"maneuver": {
+				"name": "Bay",
+				"source": "SoM",
+				"page": 228,
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"entries": [
+					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don’t require a language and don’t take any penalty due to not sharing a language."
+				]
+			}
 		}
 	],
 	"familiar": [
+		{
+			"name": "Shadow Familiar",
+			"source": "SoM",
+			"page": 229,
+			"type": "Familiar",
+			"traits": [
+				"Uncommon",
+				"Shadow"
+			],
+			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"requires": 7,
+			"granted": [
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility master's form|APG}",
+				"{@familiarAbility resistance|APG} (cold and negative)",
+				"{@familiarAbility shadow step|SoM}"
+			],
+			"abilities": [
+				{
+					"name": "Become Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Shadow",
+						"Transmutation"
+					],
+					"entries": [
+						"The shadow familiar transforms its body into barely tangible shadow. It gains resistance to all damage (except force) equal to half your level but can’t use any actions requiring a physical form. The familiar can also slip through gaps at least 2 inches wide, or 1 inch wide if it {@action Squeeze||Squeezes}. It can use this action again to return to its normal form.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
+					]
+				},
+				{
+					"name": "Slink in Shadows",
+					"entries": [
+						"The shadow familiar can {@action Hide} or end its {@action Sneak} in a creature’s or object’s shadow."
+					]
+				},
+				{
+					"name": "Steal Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Necromancy"
+					],
+					"frequency": "once per 10 minutes",
+					"entries": [
+						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
+					]
+				}
+			]
+		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -146,19 +269,19 @@
 			],
 			"requires": 6,
 			"granted": [
-				"darkvision",
-				"flier",
-				"manual dexterity",
-				"scent",
-				"skilled (arcana, society)",
-				"speech"
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility scent}",
+				"{@familiarAbility skilled|APG} ({@skill arcana}, {@skill society})",
+				"{@familiarAbility speech}"
 			],
 			"abilities": [
 				{
 					"name": "Ink Spray",
 					"activity": {
 						"number": 1,
-						"unit": "single",
+						"unit": "action",
 						"entry": "{@as 1}"
 					},
 					"type": "ability",
@@ -194,16 +317,16 @@
 			],
 			"requires": 4,
 			"granted": [
-				"darkvision",
-				"scent",
-				"speech"
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility scent}",
+				"{@familiarAbility speech}"
 			],
 			"abilities": [
 				{
 					"name": "Alter Dweomer",
 					"activity": {
 						"number": 1,
-						"unit": "single",
+						"unit": "action",
 						"entry": "{@as 1}"
 					},
 					"traits": [
@@ -262,7 +385,7 @@
 				"{@familiarAbility flier}",
 				"{@familiarAbility manual dexterity}",
 				"{@familiarAbility speech}",
-				"{@familiarAbility touch telepathy}"
+				"{@familiarAbility touch telepathy|APG}"
 			],
 			"abilities": [
 				{
@@ -304,13 +427,13 @@
 			],
 			"requires": 8,
 			"granted": [
-				"darkvision",
-				"flier",
-				"manual dexterity",
-				"resistance (fire and poison)",
-				"skilled (deception)",
-				"speech",
-				"touch telepathy"
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility flier}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility resistance|APG} (fire and poison)",
+				"{@familiarAbility skilled|APG} ({@skill deception})",
+				"{@familiarAbility speech}",
+				"{@familiarAbility touch telepathy|APG}"
 			],
 			"abilities": [
 				{
@@ -394,9 +517,9 @@
 			],
 			"requires": 4,
 			"granted": [
-				"climber",
-				"darkvision",
-				"tough"
+				"{@familiarAbility climber}",
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility tough|APG}"
 			],
 			"abilities": [
 				{
@@ -430,6 +553,186 @@
 		}
 	],
 	"familiarAbility": [
+		{
+			"name": "Share Senses",
+			"source": "APG",
+			"page": 147,
+			"type": "Master",
+			"entries": [
+				"Once every 10 minutes, you can use a single action with the concentrate trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can {@action Dismiss} this effect."
+			]
+		},
+		{
+			"name": "Innate Surge",
+			"source": "APG",
+			"page": 147,
+			"type": "Master",
+			"entries": [
+				"Once per day, you can draw upon your familiar's innate magic to replenish your own. You can cast one innate spell gained from an ancestry feat that you have already cast today. You must still Cast the Spell and meet the spell's other requirements."
+			]
+		},
+		{
+			"name": "Valet",
+			"source": "APG",
+			"page": 147,
+			"type": "Familiar",
+			"entries": [
+				"You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar Interact to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
+			]
+		},
+		{
+			"name": "Tough",
+			"source": "APG",
+			"page": 147,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar's maximum Hit Points increase by 2 per level."
+			]
+		},
+		{
+			"name": "Touch Telepathy",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can telepathically communicate with you via touch. If it also has the speech ability, it can telepathically communicate via touch with any creature if they share a language."
+			]
+		},
+		{
+			"name": "Toolbearer",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can carry a set of tools of up to light Bulk. So long as your familiar is adjacent to you, you can draw and replace the tools as part of the action that uses them as if you were wearing them. Your familiar must have the manual dexterity ability to select this."
+			]
+		},
+		{
+			"name": "Spellcasting",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Choose a spell in your repertoire or that you prepared today that is at least 5 levels lower than your highest-level spell slot. Your familiar can Cast that Spell once per day using your magical tradition, spell attack modifier, and spell DC. If the spell has a drawback that affects the caster, both you and your familiar are affected. You must be able to cast 6th-level spells using spell slots to select this ability."
+			]
+		},
+		{
+			"name": "Skilled",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Choose a skill other than {@skill Acrobatics} or {@skill Stealth}. Your familiar's modifier for that skill is equal to your level plus your key spellcasting ability modifier, rather than just your level. You can select this ability repeatedly, choosing a different skill each time."
+			]
+		},
+		{
+			"name": "Resistance",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Choose two of the following: acid, cold, electricity, fire, poison, or sonic. Your familiar gains resistance equal to half your level against the chosen damage types."
+			]
+		},
+		{
+			"name": "Poison Reservoir",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your homunculus familiar has a reservoir for poison, allowing it to apply an injury poison to an adjacent ally's exposed weapon with a single Interact action. You must supply the poison and instill it into this reservoir using two consecutive {@action Interact} actions. You must have a homunculus familiar to select this ability."
+			]
+		},
+		{
+			"name": "Plant Form",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your plant familiar can change shape as a single action, transforming into a Tiny plant of a type roughly similar to the familiar's nature. This otherwise uses the effects of tree shape. You must have a familiar with the {@trait plant} trait, such as a leshy, to select this ability."
+			]
+		},
+		{
+			"name": "Partner in Crime",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar is your criminal associate. Despite being a minion, your familiar gains 1 reaction at the start of its turns, which it can use only to {@action Aid} you on a {@skill Deception} or {@skill Thievery} skill check (it still has to prepare to help you as normal for the {@action Aid} reaction). It automatically succeeds at its check to {@action Aid} you with those skills or automatically critically succeeds if you're a master of the skill in question."
+			]
+		},
+		{
+			"name": "Master's Form",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar can change shape as a single action, transforming into a humanoid of your ancestry with the same age, gender, and build of its true form, though it always maintains a clearly unnatural remnant of its nature, such as a cat's eyes or a serpent's tongue. This form is always the same each time it uses this ability. This otherwise uses the effects of {@spell humanoid form}, except the change is purely cosmetic. It only appears humanoid and gains no new capabilities. Your familiar must have the {@familiarAbility manual dexterity} and {@familiarAbility speech} abilities to select this."
+			]
+		},
+		{
+			"name": "Independent",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"In an encounter, if you don't Command your familiar, it still gains 1 action each round. Typically, you still decide how it spends that action, but, the GM might determine that your familiar chooses its own tactics rather than performing your preferred action."
+			]
+		},
+		{
+			"name": "Focused Rejuvenation",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"When you {@action Refocus}, you generate magical energy that heals your familiar. Your familiar regains 1 Hit Point per level whenever you {@action Refocus}."
+			]
+		},
+		{
+			"name": "Accompanist",
+			"source": "APG",
+			"page": 146,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar helps you perform. Whenever you attempt a {@skill Performance} check, if your familiar is nearby and can act, it accompanies you with chirps, claps, or its own miniature instrument. This grants you a +1 circumstance bonus, or +2 if you're a master in {@skill Performance}."
+			]
+		},
+		{
+			"name": "Darkeater",
+			"source": "SoM",
+			"page": 229,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar naturally recovers in the shadows. After spending 10 consecutive minutes in an area of dim light or darkness, your familiar recovers a number of Hit Points equal to half your level."
+			]
+		},
+		{
+			"name": "Shadow Step",
+			"source": "SoM",
+			"page": 229,
+			"type": "Familiar",
+			"entries": [
+				"Your familiar gains the Shadow Step action. You must be at least 7th level to select this familiar ability for your familiar.",
+				{
+					"type": "ability",
+					"name": "Shadow Step",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The familiar is in dim light or darkness.",
+					"traits": [
+						"Conjuration",
+						"Shadow",
+						"Teleportation"
+					],
+					"entries": [
+						"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar’s line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
+					]
+				}
+			]
+		},
 		{
 			"name": "Amphibious",
 			"source": "CRB",
@@ -590,6 +893,111 @@
 			"type": "Master",
 			"entries": [
 				"If your familiar is in your space, you can cast a spell with a range of touch, transfer its power to your familiar, and command the familiar to deliver the spell. If you do, the familiar uses its 2 actions for the round to move to a target of your choice and touch that target. If it doesn't reach the target to touch it this turn, the spell has no effect."
+			]
+		}
+	],
+	"eidolon": [
+		{
+			"name": "Angel Eidolon",
+			"type": "Eidolon",
+			"source": "SoM",
+			"page": 59,
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Angel Eidolon",
+					"entries": [
+						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon’s link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it."
+					]
+				}
+			],
+			"tradition": "divine",
+			"traits": [
+				"Angel",
+				"Celestial",
+				"Eidolon"
+			],
+			"alignment": "must be good, usually neutral good",
+			"home": "Nirvana (if {@trait NG}), {@place Elysium} (if {@trait CG}), or {@place Heaven} (if {@trait LG})",
+			"size": "{@trait Medium} or {@trait Small}",
+			"suggestedAttacks": [
+				"fist (bludgeoning), wing (bludgeoning), unarmed attacks shaped like a weapon"
+			],
+			"stats": [
+				{
+					"name": "Angelic Avenger",
+					"abilityMods": {
+						"Str": 18,
+						"Dex": 14,
+						"Con": 16,
+						"Int": 8,
+						"Wis": 12,
+						"Cha": 10
+					},
+					"ac": {
+						"number": 2,
+						"dexCap": 3
+					}
+				},
+				{
+					"name": "Angelic Emissary",
+					"abilityMods": {
+						"Str": 12,
+						"Dex": 18,
+						"Con": 12,
+						"Int": 10,
+						"Wis": 12,
+						"Cha": 14
+					},
+					"ac": {
+						"number": 1,
+						"dexCap": 4
+					}
+				}
+			],
+			"skills": [
+				"Diplomacy",
+				"Religion"
+			],
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"languages": [
+				"Celestial"
+			],
+			"speed": {
+				"walk": 25
+			},
+			"abilities": [
+				{
+					"name": "Hallowed Strikes",
+					"type": "initial",
+					"entries": [
+						"Your eidolon’s attacks are hallowed by the celestial realms. Your eidolon’s unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual –2 circumstance penalty."
+					]
+				},
+				{
+					"name": "Traveler's Aura",
+					"type": "symbiosis",
+					"level": 7,
+					"entries": [
+						"Your eidolon emanates a powerful aura—resembling that of an astral deva—that protects creatures as they travel. The aura has the {@trait abjuration}, {@trait aura}, and {@trait divine} traits. Your eidolon and its allies within a 20-foot emanation are protected from severe heat and cold, and your eidolon is never {@condition flat-footed} to creatures inside the aura that are of a lower level than the eidolon.",
+						"When you gain the transcendence class feature, this evolves to the full benefits of an astral deva; your eidolon and allies in the aura are protected from environmental damage from any plane, including severe and extreme heat and cold as well as more unusual dangers."
+					]
+				},
+				{
+					"name": "Angelic Mercy",
+					"type": "transcendence",
+					"level": 17,
+					"entries": [
+						"Your eidolon’s angelic power allows them to assuage a variety of ailments, just like most other powerful angels. Your eidolon can cast {@spell remove curse}, {@spell remove disease}, {@spell remove fear}, and {@spell remove paralysis} once per day each as 9th-level divine innate spells."
+					]
+				}
 			]
 		}
 	]
