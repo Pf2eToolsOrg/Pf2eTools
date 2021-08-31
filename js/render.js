@@ -3581,9 +3581,9 @@ Renderer.eidolon = {
 		${Renderer.utils.getNameDiv(eidolon, {type: "Eidolon", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(eidolon.traits)}
-		<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>
+		${eidolon.tradition ? `<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>` : ""}
+		${eidolon.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>` : ""}
+		${eidolon.home ? `<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size)}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
