@@ -759,7 +759,7 @@
 			],
 			"entries": [
 				"Your elemental ancestor's legacy asserts itself as brackish water, like the seawater of the ocean. You gain the Salt Wound reaction.",
-				"Salt Wound {@as R} (undine) Frequency once per day; Trigger A creature that has blood and is not at its maximum Hit Points hits you with a melee {@action Strike}; Effect You channel salt and brine from your blood into the creature's wounds. The creature must attempt a Fortitude save using your class DC or spell DC, whichever is higher. On a failure, the creature takes {@damage 1d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened|CRB|sickened 1} by the pain. On a critical failure, it instead takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened|CRB|sickened 2}."
+				"Salt Wound {@as R} (undine) Frequency once per day; Trigger A creature that has blood and is not at its maximum Hit Points hits you with a melee {@action Strike}; Effect You channel salt and brine from your blood into the creature's wounds. The creature must attempt a Fortitude save using your class DC or spell DC, whichever is higher. On a failure, the creature takes {@damage 1d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 1} by the pain. On a critical failure, it instead takes {@damage 2d6} {@condition persistent damage ||persistent acid damage} and is {@condition sickened 2}."
 			]
 		},
 		{
@@ -2589,7 +2589,7 @@
 			"frequency": "once per day",
 			"entries": [
 				"You embrace your monstrous blood and make it your own, screaming out to the heavens and hells alike in rage, pain, and defiance. Reality buckles and twists under your sudden power\u2014each tiefling has a unique transformation, but it might include sulfurous flames, choruses of shrieks, or twisting, serpentine lightning. Every creature within 10 feet of you is {@condition deafened} and {@condition dazzled} for 1 round unless they succeed at a Fortitude save using your class DC or spell DC, whichever is higher. Your final form has the effects of divine vessel for a deity that shares an alignment with your fiendish lineage. Your final form resembles a creature from your fiendish lineage, and you remain in that form for 1 minute. While in your final form, you can cast {@spell chilling darkness}, fireball, and lightning bolt as 6th-level divine innate spells, once each per use of this feat.",
-				"When you emerge from your final form, you become {@condition drained|CRB|drained 3}. In addition, if you have this feat, you gain weakness 10 to good even when not in your final form, and you take good damage even if you aren't evil."
+				"When you emerge from your final form, you become {@condition drained 3}. In addition, if you have this feat, you gain weakness 10 to good even when not in your final form, and you take good damage even if you aren't evil."
 			],
 			"special": "At the GM's discretion, the specific elements of this feat can be adjusted to better fit the tiefling's lineage\u2014for example, a GM might decide that a particular beastbrood tiefling could cast a 6th-level {@spell phantasmal killer} instead of fireball."
 		},
@@ -2937,7 +2937,7 @@
 			"frequency": "once per day",
 			"trigger": "A creature you are aware of damages you with a melee {@action Strike}.",
 			"entries": [
-				"Your wound yawns open, appalling your attacker. The attacker must succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or become {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). It can't recover from the {@condition sickened} condition while it's adjacent to you."
+				"Your wound yawns open, appalling your attacker. The attacker must succeed at a Fortitude saving throw against your class DC or spell DC, whichever is higher, or become {@condition sickened 1} ({@condition sickened 2} on a critical failure). It can't recover from the {@condition sickened} condition while it's adjacent to you."
 			]
 		},
 		{
@@ -5580,7 +5580,7 @@
 			],
 			"entries": [
 				"Your ability to curl up into a tight ball comes in handy. You roll up into a ball and move up to four times your Speed in a straight line down an incline. If you reach the bottom of the incline or hit an obstacle during this first turn of movement, you stop rolling safely.",
-				"Otherwise, you automatically keep rolling at this Speed during subsequent turns until you hit the bottom of the incline or an obstacle ends this movement (which can happen in the middle of your turn). You're {@condition slowed|CRB|slowed 2} each turn after the first that you keep rolling, and if you hit an obstacle on a turn after the first, you and the obstacle both take {@damage 4d6} bludgeoning damage and you stop rolling."
+				"Otherwise, you automatically keep rolling at this Speed during subsequent turns until you hit the bottom of the incline or an obstacle ends this movement (which can happen in the middle of your turn). You're {@condition slowed 2} each turn after the first that you keep rolling, and if you hit an obstacle on a turn after the first, you and the obstacle both take {@damage 4d6} bludgeoning damage and you stop rolling."
 			]
 		},
 		{
@@ -7284,7 +7284,7 @@
 			],
 			"prerequisites": "{@feat Cel Rau|LOAG}, {@feat Straveika|APG}, {@feat Svetocher|APG}, or another lineage from a vampire with the Drink Blood ability",
 			"entries": [
-				"You retain not only your vampiric parent's taste for blood but their ability to gain vitality from it. You drink fresh blood from a living humanoid creature, gaining temporary Hit Points equal to the target's level that last for 10 minutes. The target must succeed at a Fortitude save against the higher of your class DC or spell DC or become {@condition drained|CRB|drained 1}. Regardless of the outcome of this save, the target is temporarily immune to your Taste Blood for 1 day; further uses of this ability against the target don't increase the {@condition drained} condition or grant you more temporary Hit Points.",
+				"You retain not only your vampiric parent's taste for blood but their ability to gain vitality from it. You drink fresh blood from a living humanoid creature, gaining temporary Hit Points equal to the target's level that last for 10 minutes. The target must succeed at a Fortitude save against the higher of your class DC or spell DC or become {@condition drained 1}. Regardless of the outcome of this save, the target is temporarily immune to your Taste Blood for 1 day; further uses of this ability against the target don't increase the {@condition drained} condition or grant you more temporary Hit Points.",
 				"To drink a creature's blood, either your last action must have been a fangs {@action Strike} that damaged the target, or the target must be {@condition restrained} or {@condition unconscious} and your last action must have been a {@action Strike} that dealt piercing or slashing damage to them.",
 				"If the target is willing, they don't need to be {@condition restrained} or {@condition unconscious} for the latter.",
 				"Draining the life force from an unwilling humanoid creature is a greater violation than just drinking their blood. Taste Blood has the {@trait evil} trait unless the target is willing or is an active foe in combat."
@@ -7307,7 +7307,7 @@
 			],
 			"prerequisites": "{@feat Evade Doom|LOAG}",
 			"entries": [
-				"When your character would die, you can attempt a DC {@flatDC 17} flat check. On a success, you're instead reduced to 0 HP and a {@condition dying} value 1 less than would normally kill you (typically {@condition dying|CRB|dying 3}). This doesn't change the result for any other creature affected."
+				"When your character would die, you can attempt a DC {@flatDC 17} flat check. On a success, you're instead reduced to 0 HP and a {@condition dying} value 1 less than would normally kill you (typically {@condition dying 3}). This doesn't change the result for any other creature affected."
 			]
 		},
 		{
@@ -8231,7 +8231,7 @@
 			],
 			"frequency": "once per day",
 			"entries": [
-				"You have been granted a sliver of the power of the yamaraj, the magistrates of the dead who agreed to allow duskwalkers to exist at all. You exhale a blast of icy wind and ravenous insects. This is a 30-foot cone that deals {@damage 14d6} slashing damage and {@damage 4d6} {@condition persistent damage ||persistent slashing damage} (basic Reflex save using your class DC or spell DC, whichever is higher). On a critical failure, targets also become {@condition sickened|CRB|sickened 2}."
+				"You have been granted a sliver of the power of the yamaraj, the magistrates of the dead who agreed to allow duskwalkers to exist at all. You exhale a blast of icy wind and ravenous insects. This is a 30-foot cone that deals {@damage 14d6} slashing damage and {@damage 4d6} {@condition persistent damage ||persistent slashing damage} (basic Reflex save using your class DC or spell DC, whichever is higher). On a critical failure, targets also become {@condition sickened 2}."
 			]
 		}
 	]

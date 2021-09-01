@@ -373,9 +373,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage and is {@condition doomed|CRB|doomed 1}.",
-						"Failure": "The creature takes full damage and is {@condition doomed|CRB|doomed 2}.",
-						"Critical Failure": "The creature takes double damage and is {@condition doomed|CRB|doomed 3}."
+						"Success": "The creature takes half damage and is {@condition doomed 1}.",
+						"Failure": "The creature takes full damage and is {@condition doomed 2}.",
+						"Critical Failure": "The creature takes double damage and is {@condition doomed 3}."
 					}
 				}
 			],
@@ -869,8 +869,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
-						"Failure": "The target takes full damage and is {@condition drained|CRB|drained 2}.",
-						"Critical Failure": "The target takes double damage and is {@condition drained|CRB|drained 3}."
+						"Failure": "The target takes full damage and is {@condition drained 2}.",
+						"Critical Failure": "The target takes double damage and is {@condition drained 3}."
 					}
 				}
 			],
@@ -1268,9 +1268,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 5d6} mental damage, is {@condition frightened|CRB|frightened 1}, and can't benefit from circumstance or status bonuses for 1 round.",
-						"Failure": "The target takes {@damage 10d6} mental damage, is {@condition frightened|CRB|frightened 3}, and can't benefit from circumstance or status bonuses for 1 week.",
-						"Critical Failure": "The target takes {@damage 20d6} mental damage and is {@condition frightened|CRB|frightened 4}. It can't benefit from circumstance or status bonuses until the curse is {@condition broken}. While the curse remains, the target's allies are also unable to benefit from circumstance or status bonuses while within 15 feet of it."
+						"Success": "The target takes {@damage 5d6} mental damage, is {@condition frightened 1}, and can't benefit from circumstance or status bonuses for 1 round.",
+						"Failure": "The target takes {@damage 10d6} mental damage, is {@condition frightened 3}, and can't benefit from circumstance or status bonuses for 1 week.",
+						"Critical Failure": "The target takes {@damage 20d6} mental damage and is {@condition frightened 4}. It can't benefit from circumstance or status bonuses until the curse is {@condition broken}. While the curse remains, the target's allies are also unable to benefit from circumstance or status bonuses while within 15 feet of it."
 					}
 				}
 			],
@@ -1376,8 +1376,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature falls into time. When it returns, it takes half damage.",
-						"Failure": "The creature falls into time. When it returns, it takes full damage and is {@condition sickened|CRB|sickened 1}.",
-						"Critical Failure": "The creature falls into time. When it returns, it takes double damage and is {@condition sickened|CRB|sickened 2}."
+						"Failure": "The creature falls into time. When it returns, it takes full damage and is {@condition sickened 1}.",
+						"Critical Failure": "The creature falls into time. When it returns, it takes double damage and is {@condition sickened 2}."
 					}
 				}
 			],
@@ -1551,7 +1551,7 @@
 				"1. Red 5 fire damage and 5 mental damage.",
 				"2. Orange 5 acid damage and 5 mental damage.",
 				"3. Yellow 5 electricity damage and 5 mental damage.",
-				"4. Green 5 poison damage and 5 mental damage, plus it's {@condition frightened|CRB|frightened 1}."
+				"4. Green 5 poison damage and 5 mental damage, plus it's {@condition frightened 1}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -1608,7 +1608,7 @@
 				"1. Red (fire) The ray deals 30 fire damage to the target.",
 				"2. Orange (acid) The ray deals 40 acid damage to the target.",
 				"3. Yellow (electricity) The ray deals 50 electricity damage to the target.",
-				"4. Green (poison) The ray deals 25 poison damage to the target, and the target must succeed at a Fortitude save or be {@condition enfeebled|CRB|enfeebled 1} for 1 minute ({@condition enfeebled|CRB|enfeebled 2} on a critical failure)."
+				"4. Green (poison) The ray deals 25 poison damage to the target, and the target must succeed at a Fortitude save or be {@condition enfeebled 1} for 1 minute ({@condition enfeebled 2} on a critical failure)."
 			],
 			"heightened": {
 				"heightened": true,
@@ -1616,7 +1616,7 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "The damage for red, orange, yellow, and green each increase by 10. Roll {@dice 1d8} to determine the ray's color, using the results for 1\u20134 above and the results for 5\u20138 below. 5. Blue The ray has the effect of the {@spell flesh to stone} spell. On a critical hit, the target is {@condition clumsy|CRB|clumsy 1} as long as it's {@condition slowed} by the flesh to stone effect. 6. Indigo (emotion, incapacitation, mental) The ray has the effect of the {@spell confusion} spell. On a critical hit, it has the effect of warp mind instead. 7. Violet The target is {@condition slowed} for 1 minute. It must also succeed at a Will save or be teleported 120 feet directly away from you (if there isn't room for it to appear there, it appears in the nearest open space); this is a {@trait teleportation} effect. 8. Intense Color The target is {@condition dazzled} until the end of your next turn, or {@condition blinded} if your attack roll was a critical hit. Roll again and add the effects of another color (rerolling results of 8)."
+						"entry": "The damage for red, orange, yellow, and green each increase by 10. Roll {@dice 1d8} to determine the ray's color, using the results for 1\u20134 above and the results for 5\u20138 below. 5. Blue The ray has the effect of the {@spell flesh to stone} spell. On a critical hit, the target is {@condition clumsy 1} as long as it's {@condition slowed} by the flesh to stone effect. 6. Indigo (emotion, incapacitation, mental) The ray has the effect of the {@spell confusion} spell. On a critical hit, it has the effect of warp mind instead. 7. Violet The target is {@condition slowed} for 1 minute. It must also succeed at a Will save or be teleported 120 feet directly away from you (if there isn't room for it to appear there, it appears in the nearest open space); this is a {@trait teleportation} effect. 8. Intense Color The target is {@condition dazzled} until the end of your next turn, or {@condition blinded} if your attack roll was a critical hit. Roll again and add the effects of another color (rerolling results of 8)."
 					}
 				],
 				"no_x": null
@@ -2098,7 +2098,7 @@
 						"Darkvision.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +25, and you use the listed damage. The melee attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example), and the ranged attacks are Dexterity based. If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +25, unless your own is higher. You also gain specific abilities based on the stellar body:",
-						"{@bold Moon} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; Ranged {@as 1} moonbeam (range 90 feet), Damage {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied|CRB|stupefied 2} for 1 round.",
+						"{@bold Moon} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; Ranged {@as 1} moonbeam (range 90 feet), Damage {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied 2} for 1 round.",
 						"{@bold Sun} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; Ranged {@as 1} sunbeam (range 90 feet), Damage {@damage 1d6+10} fire plus {@damage 1d6} {@condition persistent damage ||persistent fire}; on a critical hit with either {@action Strike}, the target is {@condition dazzled} for 1 round."
 					]
 				}
@@ -2364,9 +2364,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition fatigued} and {@condition enfeebled|CRB|enfeebled 1} for 1 round.",
-						"Failure": "The target is {@condition fatigued} and {@condition enfeebled|CRB|enfeebled 1} for the duration.",
-						"Critical Failure": "The target is {@condition fatigued} and {@condition enfeebled|CRB|enfeebled 2} for the duration. The {@condition fatigued} condition doesn't end when the spell's duration does (but can still be removed with a night's rest or by similar means)."
+						"Success": "The target is {@condition fatigued} and {@condition enfeebled 1} for 1 round.",
+						"Failure": "The target is {@condition fatigued} and {@condition enfeebled 1} for the duration.",
+						"Critical Failure": "The target is {@condition fatigued} and {@condition enfeebled 2} for the duration. The {@condition fatigued} condition doesn't end when the spell's duration does (but can still be removed with a night's rest or by similar means)."
 					}
 				}
 			],
@@ -3503,7 +3503,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You envenom your companion or eidolon's attacks, which drip with highly toxic venom for the spell's duration. The first time each round the target hits a creature with an unarmed {@action Strike} that deals piercing or slashing damage, that {@action Strike} deals an additional {@damage 1d8} poison damage. A creature that is damaged by this poison must attempt a Fortitude save. On a failure, it's also {@condition clumsy|CRB|clumsy 1} for 1 round.",
+				"You envenom your companion or eidolon's attacks, which drip with highly toxic venom for the spell's duration. The first time each round the target hits a creature with an unarmed {@action Strike} that deals piercing or slashing damage, that {@action Strike} deals an additional {@damage 1d8} poison damage. A creature that is damaged by this poison must attempt a Fortitude save. On a failure, it's also {@condition clumsy 1} for 1 round.",
 				"This spell can't target familiars."
 			],
 			"heightened": {
@@ -5140,9 +5140,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is unaffected for 1 round. On the second round, it becomes {@condition flat-footed}. Finally, on the third round, it becomes {@condition frightened|CRB|frightened 1}. At the end of the third round, it takes half damage.",
-						"Failure": "The creature is immediately {@condition flat-footed}. On the second round, it becomes {@condition frightened|CRB|frightened 2}. Finally, on the third round, it also becomes {@condition stunned|CRB|stunned 1}. At the end of the third round, the creature takes full damage.",
-						"Critical Failure": "The creature is immediately {@condition flat-footed} and {@condition frightened|CRB|frightened 3}. On the second round, it becomes {@condition stunned|CRB|stunned 1}. Finally, on the third round, it also becomes {@condition paralyzed}. At the end of the third round, the creature takes double damage."
+						"Success": "The creature is unaffected for 1 round. On the second round, it becomes {@condition flat-footed}. Finally, on the third round, it becomes {@condition frightened 1}. At the end of the third round, it takes half damage.",
+						"Failure": "The creature is immediately {@condition flat-footed}. On the second round, it becomes {@condition frightened 2}. Finally, on the third round, it also becomes {@condition stunned 1}. At the end of the third round, the creature takes full damage.",
+						"Critical Failure": "The creature is immediately {@condition flat-footed} and {@condition frightened 3}. On the second round, it becomes {@condition stunned 1}. Finally, on the third round, it also becomes {@condition paralyzed}. At the end of the third round, the creature takes double damage."
 					}
 				}
 			],
@@ -5687,7 +5687,7 @@
 			"entries": [
 				"Ragged apparitions of the dead rise to stalk the living.",
 				"They deal {@damage 2d4} mental damage and {@damage 2d4} negative damage to each living creature in the area, with a basic Will save.",
-				"Additionally, creatures that critically fail the save are {@condition frightened|CRB|frightened 2} and are {@condition fleeing} for 1 round.",
+				"Additionally, creatures that critically fail the save are {@condition frightened 2} and are {@condition fleeing} for 1 round.",
 				"On subsequent rounds, the first time you Sustain the Spell each round, you can move the area up to 30 feet within the range of the spell. Living creatures in the new area must attempt saves with the same effects as above, except that critically failing doesn't make them flee."
 			],
 			"heightened": {
@@ -6251,7 +6251,7 @@
 			"dismiss": false,
 			"entries": [
 				"You adjust your magnetic polarity, causing metal objects to jump and shudder away from you. Attacks made with metal objects against you take a \u20131 status penalty, and the squares adjacent to you are difficult terrain for creatures wearing metal armor. For creatures made entirely of metal, the penalty to their attack rolls is \u20132 and the squares adjacent to you are greater difficult terrain.",
-				"While this spell is active, you require an additional {@action Interact} action before using a metal object (including to {@action Strike} with a metal weapon), and if you're wearing metal armor, you're {@condition slowed|CRB|slowed 1}."
+				"While this spell is active, you require an additional {@action Interact} action before using a metal object (including to {@action Strike} with a metal weapon), and if you're wearing metal armor, you're {@condition slowed 1}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -6370,7 +6370,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Enlarging Eruption} You erupt in lava, which clings to you and hardens, causing your body to swell and burst until you grow to size Large. You're {@condition clumsy|CRB|clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a +2 status bonus to melee damage. You can't choose this option if you're already Large or larger.",
+						"{@bold Enlarging Eruption} You erupt in lava, which clings to you and hardens, causing your body to swell and burst until you grow to size Large. You're {@condition clumsy 1}. Your reach increases by 5 feet (or by 10 feet if you started out Tiny), and you gain a +2 status bonus to melee damage. You can't choose this option if you're already Large or larger.",
 						"{@bold Fiery Grasp} Your hands swell and grow with lava. You gain a lava fist unarmed attack in the {@group brawling} weapon group. Your lava fists deal {@damage 1d8} bludgeoning damage as their base damage, plus an additional {@damage 2d6} fire damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage}.",
 						"{@bold Heart of Fire} Your body's temperature becomes so hot that any creature that touches you, or that hits you with a melee unarmed attack or non-reach melee weapon attack, takes {@damage 2d6} fire damage.",
 						"{@bold Warming Flames} Flames flicker around you, warming away the cold while protecting you from the heat. You gain resistance 5 to cold and fire."
@@ -6488,8 +6488,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The creature is unaffected.",
-						"Failure": "The creature is {@condition frightened|CRB|frightened 2}, and you gain a +2 status bonus to your saving throw or other defense against the triggering {@trait mental} effect.",
-						"Critical Failure": "The creature is {@condition frightened|CRB|frightened 2}, and you're unaffected by the triggering {@trait mental} effect."
+						"Failure": "The creature is {@condition frightened 2}, and you gain a +2 status bonus to your saving throw or other defense against the triggering {@trait mental} effect.",
+						"Critical Failure": "The creature is {@condition frightened 2}, and you're unaffected by the triggering {@trait mental} effect."
 					}
 				}
 			],
@@ -6550,7 +6550,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You completely surround a Large or smaller creature in a shimmering ring of illusory mirrors that follows it as it moves, even when the creature moves outside the range of the spell. These mirrors reflect the target, though if the target has no reflection, like a vampire, it's unaffected by mirror malefactors. As long as the target is surrounded by mirrors, it's {@condition frightened|CRB|frightened 1}, and it can't reduce its {@condition frightened} value.",
+				"You completely surround a Large or smaller creature in a shimmering ring of illusory mirrors that follows it as it moves, even when the creature moves outside the range of the spell. These mirrors reflect the target, though if the target has no reflection, like a vampire, it's unaffected by mirror malefactors. As long as the target is surrounded by mirrors, it's {@condition frightened 1}, and it can't reduce its {@condition frightened} value.",
 				"When you Cast the Spell, the reflections leap from the mirrors and attack the target, dealing {@damage 7d8} mental damage with a basic Will save. On subsequent turns, this effect repeats the first time you Sustain the spell that turn. If the target succeeds at any Will save it attempts against mirror malefactors, the illusory mirrors shatter and the spell ends."
 			],
 			"heightened": {
@@ -6919,10 +6919,10 @@
 			"entries": [
 				"You necrotize part of a creature's body, harming it and debilitating it as its body putrefies, mimicking the natural process of decay. The target takes {@damage 12d6} negative damage and one of the following debilitations; roll {@dice 1d4} to randomly determine which. The effects depend on its Fortitude save.",
 				"1. Bones The target's bones necrotize and become spongy and weak, giving it weakness 3 to bludgeoning damage.",
-				"2. Joints The target's joints necrotize, making its movements ungainly and {@condition clumsy}. It becomes {@condition clumsy|CRB|clumsy 1}.",
+				"2. Joints The target's joints necrotize, making its movements ungainly and {@condition clumsy}. It becomes {@condition clumsy 1}.",
 				"3. Legs The target's legs necrotize, as well as any other limbs associated with forms of movement, making it harder for the creature to move. The target takes a \u201310-foot status penalty to its Speeds.",
 				"4. Muscles The target's muscles necrotize, rotting away.",
-				"The target becomes {@condition enfeebled|CRB|enfeebled 1}.",
+				"The target becomes {@condition enfeebled 1}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -7293,7 +7293,7 @@
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +14, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +14, unless your own is higher. You also gain specific abilities based on the ooze:",
 						"{@bold Black Pudding} Speed 15 feet, climb 15 feet; Melee {@as 1} pseudopod, Damage {@damage 2d6+5} bludgeoning and {@damage 1d8} acid.",
-						"{@bold Gelatinous Cube} Speed 15 feet; Melee {@as 1} cube face, Damage {@damage 1d6+5} acid; a creature hit by your cube face {@action Strike} must succeed at a Fortitude save against your spell DC or be {@condition stunned|CRB|stunned 1} (or {@condition paralyzed} for 1 round on a critical failure); this save has the {@trait incapacitation} trait.",
+						"{@bold Gelatinous Cube} Speed 15 feet; Melee {@as 1} cube face, Damage {@damage 1d6+5} acid; a creature hit by your cube face {@action Strike} must succeed at a Fortitude save against your spell DC or be {@condition stunned 1} (or {@condition paralyzed} for 1 round on a critical failure); this save has the {@trait incapacitation} trait.",
 						"{@bold Gray Ooze} Speed 15 feet, climb 15 feet, swim 15 feet; Melee {@as 1} pseudopod, Damage {@damage 1d6+5} bludgeoning and {@damage 1d6} acid, and you can spend an action after a hit to Grab the target.",
 						"{@bold Ochre Jelly} Speed 15 feet, climb 10 feet; resistance 5 to electricity; Melee {@as 1} pseudopod, Damage {@damage 1d8+5} bludgeoning and {@damage 1d8} acid, and you can spend an action after a hit to Grab the target."
 					]
@@ -7431,8 +7431,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
-						"Failure": "The target takes full damage, is {@condition sickened|CRB|sickened 1}, and is {@condition deafened} for 1 round.",
-						"Critical Failure": "The target takes double damage, is {@condition sickened|CRB|sickened 2}, and is {@condition deafened} for 1 minute."
+						"Failure": "The target takes full damage, is {@condition sickened 1}, and is {@condition deafened} for 1 round.",
+						"Critical Failure": "The target takes double damage, is {@condition sickened 2}, and is {@condition deafened} for 1 minute."
 					}
 				}
 			],
@@ -7502,7 +7502,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Deathly Assault} (negative) The poltergeist focuses on one creature in the area and flies through that creature's space, dealing {@damage 4d10} negative damage (basic Fortitude save).",
-						"{@bold Frighten} (emotion, fear, mental) The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Creatures in the area must attempt a Will save, becoming {@condition frightened|CRB|frightened 2} on a failure.",
+						"{@bold Frighten} (emotion, fear, mental) The poltergeist becomes visible, appearing as a skeletal, ghostlike humanoid. Creatures in the area must attempt a Will save, becoming {@condition frightened 2} on a failure.",
 						"{@bold Telekinetic Storm} (force) The poltergeist hurls debris and quasi-real objects around in the area. All creatures in the area take {@damage 4d8} force damage (basic Reflex save)."
 					]
 				}
@@ -8955,7 +8955,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You supernaturally rip the spirit from a living creature's body, dooming the target to pain and death. The target takes {@damage 5d6} negative damage, depending on its basic Fortitude save, and is {@condition drained|CRB|drained 1} if it fails its save. The spell's effect is based on how many actions you spend when Casting the Spell.",
+				"You supernaturally rip the spirit from a living creature's body, dooming the target to pain and death. The target takes {@damage 5d6} negative damage, depending on its basic Fortitude save, and is {@condition drained 1} if it fails its save. The spell's effect is based on how many actions you spend when Casting the Spell.",
 				"{@as 1} (somatic) The spell targets one living creature in range.",
 				"{@as 2} (somatic, verbal) The spell targets one living creature in range and the damage is {@damage 10d6} negative instead of {@dice 5d6}.",
 				"{@as 3} (material, somatic, verbal) The spell targets all living creatures in a 30-foot emanation."
@@ -9079,7 +9079,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target becomes mildly distracted by your display and applauds while it isn't fully occupied. It can't use reactions.",
-						"Failure": "The target applauds you so vigorously that it can't use reactions and is {@condition slowed|CRB|slowed 1}. The applause is so involved that it has the {@trait manipulate} trait. This triggers reactions based on the {@trait manipulate} trait at the start of the target's turn.",
+						"Failure": "The target applauds you so vigorously that it can't use reactions and is {@condition slowed 1}. The applause is so involved that it has the {@trait manipulate} trait. This triggers reactions based on the {@trait manipulate} trait at the start of the target's turn.",
 						"Critical Failure": "As failure, plus the target is so distracted by its vigorous applauding of you that it's {@condition fascinated} with you."
 					}
 				}
@@ -9410,8 +9410,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature is distracted by its amusement and takes a \u20131 status penalty on {@skill Perception} checks and Will saves for 1 round.",
-						"Failure": "The creature is overcome by its amusement and is {@condition stupefied|CRB|stupefied 1} for 1 round.",
-						"Critical Failure": "The creature is lost in its amusement and is {@condition stupefied|CRB|stupefied 2} for 1 round and {@condition stunned|CRB|stunned 1}."
+						"Failure": "The creature is overcome by its amusement and is {@condition stupefied 1} for 1 round.",
+						"Critical Failure": "The creature is lost in its amusement and is {@condition stupefied 2} for 1 round and {@condition stunned 1}."
 					}
 				}
 			],
@@ -9594,7 +9594,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You create dozens of semi-real copies of yourself that swarm across the battlefield and fight your enemies. You are virtually indistinguishable from your clones, allowing you to {@action Hide} and {@action Sneak} among them. An enemy that's in the area when the spell is cast or that ends its turn in the area takes {@damage 3d10} mental damage and {@damage 3d10} bludgeoning damage, and is possibly inflicted with a condition, depending on the result of its Will save. When you Cast the Spell, you choose a condition your shadows impose on a failed save: {@condition clumsy|CRB|clumsy 2}, {@condition enfeebled|CRB|enfeebled 2}, {@condition flat-footed}, or {@condition slowed|CRB|slowed 1}.",
+				"You create dozens of semi-real copies of yourself that swarm across the battlefield and fight your enemies. You are virtually indistinguishable from your clones, allowing you to {@action Hide} and {@action Sneak} among them. An enemy that's in the area when the spell is cast or that ends its turn in the area takes {@damage 3d10} mental damage and {@damage 3d10} bludgeoning damage, and is possibly inflicted with a condition, depending on the result of its Will save. When you Cast the Spell, you choose a condition your shadows impose on a failed save: {@condition clumsy 2}, {@condition enfeebled 2}, {@condition flat-footed}, or {@condition slowed 1}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -10474,7 +10474,7 @@
 				"You briefly call forth the spirit of a legendary wizard from ages long past, which manifests as an immense humanoid figure (typically an elf or a human). The archmage occupies the space of a Large creature and has a Speed of 60 feet.",
 				"Arrive (evocation, force) Archmage's Amplification The archmage arrives in a fierce burst of magical force, automatically dealing {@damage 3d4+3} force damage to up to 5 creatures it chooses within 100 feet of it. Like magic missiles, this can be blocked by the {@spell shield} spell.",
 				"The archmage also feeds magical power into some spells. Beneficial spells last longer due to the archmage's influence. When the remaining duration of a beneficial spell affecting you or one of your allies would decrease (usually at the start of the caster's turn), it doesn't decrease if the subject of the spell is within 100 feet of the archmage. This applies only if the spell's maximum duration was 3 rounds or longer.",
-				"Depart (abjuration) Archmage's Rebuke The archmage drains the magic from your foes. Each of your enemies within 100 feet of the archmage must attempt a Will save. On a failure, the creature is {@condition stupefied|CRB|stupefied 2} for 1 round, and if it's currently benefiting from any spells of a lower level than summon archmage, the archmage can choose any one of them and end the spell."
+				"Depart (abjuration) Archmage's Rebuke The archmage drains the magic from your foes. Each of your enemies within 100 feet of the archmage must attempt a Will save. On a failure, the creature is {@condition stupefied 2} for 1 round, and if it's currently benefiting from any spells of a lower level than summon archmage, the archmage can choose any one of them and end the spell."
 			],
 			"heightened": {
 				"heightened": false,
@@ -10720,10 +10720,10 @@
 					"type": "list",
 					"items": [
 						"{@bold Agmazar the Star Titan} Speed 100 feet, climb 50 feet; Arrive (necromancy, negative) Channel Void Each foe in a 100-foot emanation takes {@damage 16d8} negative energy damage with a basic Fortitude save; Depart (transmutation) Gravitic Repulsion Each foe in a 50-foot emanation is pushed 100 feet away unless it succeeds at a Fortitude save.",
-						"{@bold Agyra, the Forever Storm} Speed 80 feet, fly 200 feet; Arrive (electricity, evocation) Breath of a Thousand Storms Agyra shoots two 1,200-foot lines of electricity, one from each of her heads. The lines can't overlap. Each creature along one of the lines takes {@damage 6d12} electricity damage with a basic Reflex save. On a failure, the creature is also {@condition slowed|CRB|slowed 1} for 1 round (or for 1 minute on a critical failure); Depart (evocation, sonic) Thunderous Blast Each creature within a 100-foot emanation takes {@damage 6d10} sonic damage with a basic Reflex save, and is also knocked {@condition prone} on a failed save.",
+						"{@bold Agyra, the Forever Storm} Speed 80 feet, fly 200 feet; Arrive (electricity, evocation) Breath of a Thousand Storms Agyra shoots two 1,200-foot lines of electricity, one from each of her heads. The lines can't overlap. Each creature along one of the lines takes {@damage 6d12} electricity damage with a basic Reflex save. On a failure, the creature is also {@condition slowed 1} for 1 round (or for 1 minute on a critical failure); Depart (evocation, sonic) Thunderous Blast Each creature within a 100-foot emanation takes {@damage 6d10} sonic damage with a basic Reflex save, and is also knocked {@condition prone} on a failed save.",
 						"{@bold Bezravnis, the Inferno Below} Speed 100 feet, burrow 100 feet; Arrive (earth, evocation) {@action Burrow} from the Earth's Heart Bezravnis explodes from the ground where it was summoned, causing all creatures in a 50-foot emanation to take {@damage 8d12} bludgeoning damage with a basic Reflex save. This potentially collapses structures with the collapse effect of the {@spell earthquake} spell, except there is no chance of falling into a fissure; Depart Web Hurricane Bezravnis departs with a hurricane of webbing. All creatures within a 50-foot emanation must succeed at a Reflex save or take a \u201320-foot circumstance penalty to its Speeds until it Escapes (or is {@condition immobilized} until it escapes on a critical failure). The {@action Escape} DC is your spell DC.",
-						"{@bold Mogaru, the Final King} Speed 100 feet, swim 100 feet; Arrive (auditory, enchantment, mental) Trance of the King's Melody Mogaru manifests with a burst of the song that summoned him, requiring all foes within 60 feet who can hear him to attempt a Will save, leaving them {@condition stunned|CRB|stunned 3} on a failure; Depart (evocation, fire) Volcanic Breath Mogaru unleashes his scorching breath in a 120-foot cone. Each creature in the area takes {@damage 10d6} fire damage with a basic Reflex save. On a failure, it also takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}.",
-						"{@bold Vorgozen, the Shapeless Feeder} Speed 50 feet, climb 50 feet, swim 100 feet; Arrive (necromancy) Pollute Magic Vorgozen's foul presence pollutes magic around her. Each of your enemies within a 60-foot emanation that are under the effects of a spell must attempt a Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 2}. Any of your enemies that Casts a Spell within 60 feet of Vorgozen must attempt a Fortitude save with the same effects unless it's already {@condition sickened}; Depart (acid, evocation) Beam of Purest Vitriol Each creature in a 1,200-foot line takes {@damage 10d6} acid damage and {@damage 10d6} bludgeoning damage with a basic Fortitude save.",
+						"{@bold Mogaru, the Final King} Speed 100 feet, swim 100 feet; Arrive (auditory, enchantment, mental) Trance of the King's Melody Mogaru manifests with a burst of the song that summoned him, requiring all foes within 60 feet who can hear him to attempt a Will save, leaving them {@condition stunned 3} on a failure; Depart (evocation, fire) Volcanic Breath Mogaru unleashes his scorching breath in a 120-foot cone. Each creature in the area takes {@damage 10d6} fire damage with a basic Reflex save. On a failure, it also takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}.",
+						"{@bold Vorgozen, the Shapeless Feeder} Speed 50 feet, climb 50 feet, swim 100 feet; Arrive (necromancy) Pollute Magic Vorgozen's foul presence pollutes magic around her. Each of your enemies within a 60-foot emanation that are under the effects of a spell must attempt a Fortitude save. On a failure, the creature is {@condition sickened 2}. Any of your enemies that Casts a Spell within 60 feet of Vorgozen must attempt a Fortitude save with the same effects unless it's already {@condition sickened}; Depart (acid, evocation) Beam of Purest Vitriol Each creature in a 1,200-foot line takes {@damage 10d6} acid damage and {@damage 10d6} bludgeoning damage with a basic Fortitude save.",
 						"{@bold Yarthoon, the Moon Grub} Speed 60 feet, burrow 100 feet, fly 100 feet, swim 100 feet; Arrive (cold, evocation) Algid Beam Barrage Yarthoon fires countless beams, targeting each of your enemies within 200 feet of it. The beams deal {@damage 10d6} cold damage with a basic Reflex save; Depart (cold, conjuration, water) Frostbite Mist Chilling mist surges out in a 100‑foot burst centered on Yarthoon and remains for 1 minute. This mist has the effects of obscuring mist, plus any creature within the area at the end of its turn take {@damage 5d6} cold damage with a basic Fortitude save."
 					]
 				}
@@ -11105,9 +11105,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The creature is {@condition frightened|CRB|frightened 3}.",
-						"Critical Failure": "The creature is {@condition frightened|CRB|frightened 3}. It's also {@condition fleeing} for 1 round or until it's no longer {@condition frightened}, whichever comes first."
+						"Success": "The creature is {@condition frightened 1}.",
+						"Failure": "The creature is {@condition frightened 3}.",
+						"Critical Failure": "The creature is {@condition frightened 3}. It's also {@condition fleeing} for 1 round or until it's no longer {@condition frightened}, whichever comes first."
 					}
 				}
 			],
@@ -11282,7 +11282,7 @@
 			"dismiss": false,
 			"entries": [
 				"You shroud the target in a powerful predatory aura and amplify its vocalizations. It gains a +1 status bonus to {@skill Intimidation} checks. Once during this spell's duration, it can take the Thundering Roar action.",
-				"Thundering Roar {@as 1} (auditory, concentrate, emotion, enchantment, fear, flourish, mental, sonic) The target unleashes a powerful vocalization. Each enemy in a 10- foot emanation takes {@damage 4d8} sonic damage with a basic Will save against your spell DC. A creature that fails its Will save is also {@condition frightened|CRB|frightened 1}."
+				"Thundering Roar {@as 1} (auditory, concentrate, emotion, enchantment, fear, flourish, mental, sonic) The target unleashes a powerful vocalization. Each enemy in a 10- foot emanation takes {@damage 4d8} sonic damage with a basic Will save against your spell DC. A creature that fails its Will save is also {@condition frightened 1}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -11379,7 +11379,7 @@
 				"You leap forward a few seconds in time, appearing across the battlefield in the blink of an eye. You gain 2 actions, each of which must be used to {@action Leap}, {@action Stand}, {@action Step}, or {@action Stride}.",
 				"If you have an appropriate Speed, you can add {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} to this list.",
 				"While you take these actions, time pauses. All other creatures are completely unaware of your actions, can't speak, and can't use any actions that would be triggered by your movement. While you're taking these actions, you can't take any other actions, including any that would be triggered by the move actions. Once the actions are complete, time starts again, and to onlookers, you seem to have suddenly teleported across the distance you traveled.",
-				"Leaping forward through time is disorienting, so if you use time jump again within 1 minute of using the spell, you become {@condition stupefied|CRB|stupefied 4} for 1 minute."
+				"Leaping forward through time is disorienting, so if you use time jump again within 1 minute of using the spell, you become {@condition stupefied 4} for 1 minute."
 			],
 			"heightened": {
 				"heightened": false,
@@ -11492,9 +11492,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The targets are unaffected.",
-						"Success": "The foe is {@condition slowed|CRB|slowed 1} for 1 round, and the other target is unaffected.",
-						"Failure": "The foe is {@condition slowed|CRB|slowed 1} for 3 rounds and the other target is {@condition quickened} for 1 round. It can use the extra action to {@action Step}, {@action Stride}, or {@action Strike}.",
-						"Critical Failure": "The foe is {@condition slowed|CRB|slowed 1} for 3 minutes and the other target is {@condition quickened} for 1 minute. It can use the extra action to {@action Step}, {@action Stride}, or {@action Strike}."
+						"Success": "The foe is {@condition slowed 1} for 1 round, and the other target is unaffected.",
+						"Failure": "The foe is {@condition slowed 1} for 3 rounds and the other target is {@condition quickened} for 1 round. It can use the extra action to {@action Step}, {@action Stride}, or {@action Strike}.",
+						"Critical Failure": "The foe is {@condition slowed 1} for 3 minutes and the other target is {@condition quickened} for 1 minute. It can use the extra action to {@action Step}, {@action Stride}, or {@action Strike}."
 					}
 				}
 			],
@@ -11775,9 +11775,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition frightened|CRB|frightened 2}.",
-						"Failure": "The target is {@condition frightened|CRB|frightened 3}. It can't reduce its {@condition frightened} value below 1 for 1 minute.",
-						"Critical Failure": "The target is so afraid, it might instantly die. It must succeed at a Fortitude save or die; this saving throw has the {@trait incapacitation} trait. If it succeeds at its save, the target is {@condition frightened|CRB|frightened 4} and can't reduce its {@condition frightened} value below 1 for 1 minute."
+						"Success": "The target is {@condition frightened 2}.",
+						"Failure": "The target is {@condition frightened 3}. It can't reduce its {@condition frightened} value below 1 for 1 minute.",
+						"Critical Failure": "The target is so afraid, it might instantly die. It must succeed at a Fortitude save or die; this saving throw has the {@trait incapacitation} trait. If it succeeds at its save, the target is {@condition frightened 4} and can't reduce its {@condition frightened} value below 1 for 1 minute."
 					}
 				}
 			],

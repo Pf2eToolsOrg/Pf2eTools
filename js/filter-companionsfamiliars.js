@@ -90,18 +90,10 @@ class PageFilterCompanionsFamiliars extends PageFilter {
 		}
 		it._fSenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (it.senses) {
-			it.senses.precise.forEach((s) => {
-				it._fSenses.precise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
-			it.senses.imprecise.forEach((s) => {
-				it._fSenses.imprecise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""));
-			});
-			it.senses.vague.forEach((s) => {
-				it._fSenses.vague.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
-			it.senses.other.forEach((s) => {
-				it._fSenses.other.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
+			it._fSenses.precise.push(...(it.senses.precise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
+			it._fSenses.imprecise.push(...(it.senses.imprecise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, "")));
+			it._fSenses.vague.push(...(it.senses.vague || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
+			it._fSenses.other.push(...(it.senses.other || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
 		}
 	}
 

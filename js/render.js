@@ -909,7 +909,7 @@ function Renderer () {
 			for (let stage of entry.stages) {
 				textStack[0] += ` <strong class="no-wrap">Stage ${stage.stage}&nbsp;</strong>`;
 				this._recursiveRender(stage.entry, textStack, meta);
-				if (stage.duration != null) textStack[0] += ` (${stage.duration});`;
+				if (stage.duration != null) textStack[0] += ` (${renderer.render(stage.duration)});`;
 			}
 		}
 		if (entry.entries) {
@@ -929,8 +929,9 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h1 rd__h${entry.blue ? " pf2-h1--blue" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
 							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
-							</p>`;
+							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
+			if (entry.collapsible) textStack[0] += `<span class="pf2-h1--collapse">${entry.collapsible ? this._getCollapsibleToggle({minus: "-"}) : ""}</span>`;
+			textStack[0] += `</p>`
 		}
 		this._firstSection = false;
 		if (entry.entries) {
@@ -978,8 +979,9 @@ function Renderer () {
 			this._handleTrackTitles(entry.name);
 			textStack[0] += `<p class="pf2-h2 rd__h" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
 							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
-							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}
-							</p>`;
+							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
+			if (entry.collapsible) textStack[0] += `<span class="pf2-h2--collapse">${entry.collapsible ? this._getCollapsibleToggle({minus: "-", parents: 3}) : ""}</span>`;
+			textStack[0] += `</p>`
 		}
 		textStack[0] += `</div>`
 		if (entry.entries) {
@@ -1001,7 +1003,7 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-h3 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
 							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
-			if (entry.level) textStack[0] += `<span class="pf2-h3--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
+			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h3--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({minus: "\u2013"}) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
 		this._firstSection = false;
@@ -1024,7 +1026,7 @@ function Renderer () {
 			textStack[0] += `<p class="pf2-h4 rd__h ${this._firstSection ? "p-0" : ""}" data-title-index="${this._headerIndex++}" ${this._getEnumeratedTitleRel(entry.name)}>
 							<span class="entry-title-inner">${renderer.render(entry.name)}</span>
 							${entry.source ? `<span class="pf2-h--source">${Parser.sourceJsonToFull(entry.source)}${entry.page != null ? `, p. ${entry.page}` : ""}</span>` : ""}`;
-			if (entry.level) textStack[0] += `<span class="pf2-h4--lvl">${Parser.getOrdinalForm(entry.level)}</span>`;
+			if (entry.level || entry.collapsible) textStack[0] += `<span class="pf2-h4--lvl">${entry.level ? Parser.getOrdinalForm(entry.level) : ""}${entry.collapsible ? this._getCollapsibleToggle({minus: "\u2013"}) : ""}</span>`;
 			textStack[0] += `</p>`;
 		}
 		this._firstSection = false;
@@ -1053,6 +1055,13 @@ function Renderer () {
 			}
 		}
 		textStack[0] += `</${this.wrapperTag}>`;
+	};
+
+	this._getCollapsibleToggle = function (opts) {
+		return `<span class="no-select" onclick="((ele) => {
+			$(ele).text($(ele).text().includes('+') ? ' [${opts.minus}]' : ' [+]');
+			$(ele).parent().parent()${opts.parents === 3 ? ".parent()" : ""}.siblings().toggle();
+		})(this)">[${opts.minus}]</span>`
 	};
 
 	this._renderPf2Title = function (entry, textStack, meta, options) {
@@ -2004,6 +2013,27 @@ function Renderer () {
 				this._recursiveRender(fauxEntry, textStack, meta);
 				break;
 			}
+
+			case "@condition": {
+				const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
+				const hash = `${name.replace(/\s\d+$/, "")}${HASH_LIST_SEP}${source}`;
+
+				const fauxEntry = {
+					type: "link",
+					href: {
+						type: "internal",
+						hash,
+						path: UrlUtil.PG_CONDITIONS,
+						hover: {
+							page: UrlUtil.PG_CONDITIONS,
+							source,
+						},
+					},
+					text: (displayText || name),
+				};
+				this._recursiveRender(fauxEntry, textStack, meta);
+				break;
+			}
 			default: {
 				const {name, source, displayText, others} = DataUtil.generic.unpackUid(text, tag);
 				const hash = `${name}${HASH_LIST_SEP}${source}`;
@@ -2109,14 +2139,6 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_AFFLICTIONS;
 						fauxEntry.href.hover = {
 							page: UrlUtil.PG_AFFLICTIONS,
-							source,
-						};
-						this._recursiveRender(fauxEntry, textStack, meta);
-						break;
-					case "@condition":
-						fauxEntry.href.path = UrlUtil.PG_CONDITIONS;
-						fauxEntry.href.hover = {
-							page: UrlUtil.PG_CONDITIONS,
 							source,
 						};
 						this._recursiveRender(fauxEntry, textStack, meta);
@@ -3554,13 +3576,15 @@ Renderer.companion = {
 Renderer.familiar = {
 	getRenderedString (familiar, opts) {
 		opts = opts || {};
+		const renderer = Renderer.get();
 		return $$`${Renderer.utils.getExcludedDiv(familiar, "familiar", UrlUtil.PG_COMPANIONS_FAMILIARS)}
 		${Renderer.utils.getNameDiv(familiar, {type: "Familiar", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(familiar.traits)}
+		${familiar.access ? `<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(familiar.access)}</p>` : ""}
 		${familiar.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${familiar.alignment}</p>` : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Required Number of Abilities&nbsp;</strong>${familiar.requires}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${Renderer.get().render(familiar.granted.join(", "))}</p>
+		<p class="pf2-stat pf2-stat__section"><strong>Granted Abilities&nbsp;</strong>${renderer.render(familiar.granted.join(", "))}</p>
 		${Renderer.utils.getDividerDiv()}
 		${familiar.abilities.map(a => Renderer.creature.getRenderedAbility(a))}
 		${Renderer.utils.getPageP(familiar)}`;
@@ -4301,7 +4325,8 @@ Renderer.hazard = {
 Renderer.item = {
 	getSubHead (item) {
 		const renderStack = [];
-		const renderer = Renderer.get()
+		const renderer = Renderer.get();
+		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		if (item.price) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Price&nbsp;</strong>${Parser.priceToFull(item.price)}</p>`);
 
 		if (item.usage != null || item.bulk != null) {
@@ -4716,6 +4741,7 @@ Renderer.spell = {
 		if (sp.duration && sp.duration.type != null) stDurationParts.push(`<strong>Duration&nbsp;</strong>${sp.duration.entry}`);
 
 		return `${sp.traditions ? `<p class="pf2-stat pf2-stat__section"><strong>Traditions </strong>${sp.traditions.join(", ").toLowerCase()}</p>` : ""}
+		${sp.spellLists ? `<p class="pf2-stat pf2-stat__section"><strong>Spell Lists </strong>${sp.spellLists.join(", ").toLowerCase()}</p>` : ""}
 		${sp.subclass ? Object.keys(sp.subclass).map(k => `<p class="pf2-stat pf2-stat__section"><strong>${k.split("|")[1]} </strong>${sp.subclass[k].join(", ")}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Cast </strong>${renderer.render(Parser.timeToFullEntry(sp.cast))} ${!Parser.TIME_ACTIONS.includes(sp.cast.unit) && components.length ? `(${components.join(", ")})` : components.join(", ")}${castPart}</p>
 		${targetingParts.length ? `<p class="pf2-stat pf2-stat__section">${targetingParts.join("; ")}</p>` : ""}

@@ -1235,14 +1235,14 @@ Parser.SOURCE_JSON_TO_STORE[SRC_LOL] = "https://paizo.com/products/btq023gd?Path
 Parser.SOURCE_JSON_TO_STORE[SRC_APG] = "https://paizo.com/products/btq023ih?Pathfinder-Advanced-Players-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOPSG] = "https://paizo.com/products/btq0250x?Pathfinder-Lost-Omens-Pathfinder-Society-Guide";
 Parser.SOURCE_JSON_TO_STORE[SRC_LOAG] = "https://paizo.com/products/btq026k5?Pathfinder-Lost-Omens-Ancestry-Guide";
-Parser.SOURCE_JSON_TO_STORE[SRC_LOME] = "https://paizo.com/products/btq026i4";
+Parser.SOURCE_JSON_TO_STORE[SRC_LOME] = "https://paizo.com/products/btq026i4?Pathfinder-Lost-Omens-Mwangi-Expanse";
 Parser.SOURCE_JSON_TO_STORE[SRC_AAWS] = "https://paizo-images.s3-us-west-2.amazonaws.com/image/download/Azarketi+Ancestry.pdf";
 Parser.SOURCE_JSON_TO_STORE[SRC_BST3] = "https://paizo.com/products/btq027mn?Pathfinder-Bestiary-3";
 Parser.SOURCE_JSON_TO_STORE[SRC_APROG] = "https://paizo.com/products/btq026kj?Pathfinder-Adventure-Path-163-Ruins-of-Gauntlight";
 Parser.SOURCE_JSON_TO_STORE[SRC_APSFU] = "https://paizo.com/products/btq022ci?Pathfinder-Adventure-Path-158-Sixty-Feet-Under";
 Parser.SOURCE_JSON_TO_STORE[SRC_APLOTBS] = "https://paizo.com/products/btq021by?Pathfinder-Adventure-Path-155-Lord-of-the-Black-Sands";
 Parser.SOURCE_JSON_TO_STORE[SRC_APSOTD] = "https://paizo.com/products/btq0216l?Pathfinder-Adventure-Path-154-Siege-of-the-Dinosaurs";
-Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy/discuss&page=9?Pathfinder-Secrets-of-Magic";
+Parser.SOURCE_JSON_TO_STORE[SRC_SOM] = "https://paizo.com/products/btq027uy?Pathfinder-Secrets-of-Magic";
 
 Parser.SOURCES_ADVENTURES = new Set([SRC_APLLS]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));

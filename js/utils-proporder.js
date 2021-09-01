@@ -106,6 +106,7 @@ PropOrder._TABLE = [
 	"page",
 	"otherSources",
 
+	"rollable",
 	"style",
 	"minimizeTo",
 	"labelRowIdx",
@@ -163,6 +164,7 @@ PropOrder._VE_HERITAGE = [
 
 	"entries",
 	"info",
+	"summary",
 ];
 PropOrder._BACKGROUND = [
 	"name",
@@ -206,6 +208,7 @@ PropOrder._ARCHETYPE = [
 
 	"entries",
 	"extraFeats",
+	"benefits",
 	"miscTags",
 ];
 PropOrder._FEAT = [
@@ -239,6 +242,7 @@ PropOrder._COMPANION = [
 
 	"type",
 	"fluff",
+	"access",
 	"size",
 	"attacks",
 	new PropOrder._ObjectKey("abilityMods", {
@@ -266,6 +270,7 @@ PropOrder._FAMILIAR = [
 
 	"type",
 	"traits",
+	"access",
 	"requires",
 	"granted",
 	"abilities",
@@ -303,6 +308,7 @@ PropOrder._ACTION = [
 	"requirements",
 
 	"entries",
+	"special",
 
 	"info",
 ];
@@ -407,6 +413,7 @@ PropOrder._ITEM = [
 
 	"traits",
 
+	"access",
 	"price",
 	"usage",
 	"bulk",
@@ -442,6 +449,7 @@ PropOrder._ITEM = [
 
 	"generic",
 	"variants",
+	"_vmod",
 ];
 PropOrder._SPELL = [
 	"name",

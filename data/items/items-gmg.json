@@ -27,11 +27,50 @@
 			},
 			"category": "Poison",
 			"entries": [
-				"Alcohol is a common substance available in stunning variety.",
-				"The Price of a dose of alcohol depends on the specific beverage.",
-				"You can't recover from the {@condition sickened} condition from alcohol while affected.",
+				"Alcohol is a common substance available in stunning variety. The Price of a dose of alcohol depends on the specific beverage. You can't recover from the {@condition sickened} condition from alcohol while affected.",
 				"If you fail a saving throw against alcohol other than initial saves, the affliction's stage doesn't increase; the only way to increase the stage of alcohol's affliction is to consume more alcohol.",
-				"Saving Throw DC 12 Fortitude; Onset 10 minutes; Stage 1 +1 item bonus to saving throws against {@trait fear} effects (10 minutes); Stage 2 {@condition flat‑footed}, +1 item bonus to saving throws against {@trait fear} effects (10 minutes); Stage 3 {@condition clumsy|CRB|clumsy 1}, {@condition flat‑footed}, {@condition stupefied|CRB|stupefied 2} (10 minutes); Stage 4 {@condition clumsy|CRB|clumsy 2} and {@condition sickened|CRB|sickened 2} (10 minutes); Stage 5 {@condition clumsy|CRB|clumsy 2}, {@condition sickened|CRB|sickened 2}, and {@condition stupefied|CRB|stupefied 2} (10 minutes); Stage 6 {@condition unconscious} (8 hours); Stage 7 death."
+				{
+					"type": "affliction",
+					"DC": 12,
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "+1 item bonus to saving throws against {@trait fear} effects",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition flat‑footed}, +1 item bonus to saving throws against {@trait fear} effects",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition clumsy 1}, {@condition flat‑footed}, {@condition stupefied 2}",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 4,
+							"entry": "{@condition clumsy 2} and {@condition sickened 2}",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 5,
+							"entry": "{@condition clumsy 2}, {@condition sickened 2}, and {@condition stupefied 2}",
+							"duration": "10 minutes"
+						},
+						{
+							"stage": 6,
+							"entry": "{@condition unconscious}",
+							"duration": "8 hours"
+						},
+						{
+							"stage": 7,
+							"entry": "death"
+						}
+					]
+				}
 			],
 			"generic": false
 		},
@@ -53,7 +92,7 @@
 			"category": "Artifact",
 			"entries": [
 				"The blade of this +4 major striking keen returning speed dwarven waraxe is carved with an intricate design depicting countless generations of great dwarven warriors and leaders.",
-				"The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@skill Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain greater darkvision (Core Rulebook 465) while holding the axe. If you are not a dwarf, you are {@condition stupefied|CRB|stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained|CRB|drained 4} and {@condition enfeebled|CRB|enfeebled 4} while holding it.",
+				"The axe has the thrown 30 feet weapon trait, in addition to the normal weapon traits for a dwarven waraxe. Strikes with the axe deal an additional {@dice 1d6} damage to orcs. While the axe is in your possession, you gain a +4 item bonus when {@skill Crafting} armor, jewelry, metalworking, stonemasonry, snares, traps, and weapons. If you are a dwarf, you gain greater darkvision (Core Rulebook 465) while holding the axe. If you are not a dwarf, you are {@condition stupefied 4} while holding the axe, and if you are an orc, you are also {@condition drained 4} and {@condition enfeebled 4} while holding it.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -165,12 +204,12 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition drained|CRB|drained 1}, +1 item bonus to weapon and unarmed attack rolls, {@skill Acrobatics} checks, and {@skill Athletics} checks",
+							"entry": "{@condition drained 1}, +1 item bonus to weapon and unarmed attack rolls, {@skill Acrobatics} checks, and {@skill Athletics} checks",
 							"duration": "10 minutes"
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition slowed|CRB|slowed 1}",
+							"entry": "{@condition slowed 1}",
 							"duration": "1 hour"
 						}
 					]
@@ -227,7 +266,7 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition stupefied|CRB|stupefied 1}",
+							"entry": "{@condition stupefied 1}",
 							"duration": "1 hour"
 						},
 						{
@@ -329,7 +368,7 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition stupefied|CRB|stupefied 1}",
+							"entry": "{@condition stupefied 1}",
 							"duration": "1 minute"
 						},
 						{
@@ -453,7 +492,7 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition stupefied|CRB|stupefied 2}",
+							"entry": "{@condition stupefied 2}",
 							"duration": "1 minute"
 						},
 						{
@@ -593,12 +632,12 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition drained|CRB|drained 2}",
+							"entry": "{@condition drained 2}",
 							"duration": "1 hour"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition stupefied|CRB|stupefied 4}",
+							"entry": "{@condition stupefied 4}",
 							"duration": "1 hour"
 						}
 					]
@@ -733,12 +772,12 @@
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition fatigued} and {@condition stupefied|CRB|stupefied 1}",
+							"entry": "{@condition fatigued} and {@condition stupefied 1}",
 							"duration": "1 hour"
 						},
 						{
 							"stage": 4,
-							"entry": "{@condition fatigued}, {@condition frightened|CRB|frightened 2}, {@condition stupefied|CRB|stupefied 2}",
+							"entry": "{@condition fatigued}, {@condition frightened 2}, {@condition stupefied 2}",
 							"duration": "1 hour"
 						}
 					]
@@ -1348,17 +1387,17 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition stupefied|CRB|stupefied 1} and a +2 item bonus to saves versus {@trait fear} effects",
+							"entry": "{@condition stupefied 1} and a +2 item bonus to saves versus {@trait fear} effects",
 							"duration": "1 minute"
 						},
 						{
 							"stage": 2,
-							"entry": "1 temporary Hit Point per level , +2 item bonus to saves versus {@trait fear} effects, {@condition clumsy|CRB|clumsy 1}, and {@condition stupefied|CRB|stupefied 1}",
+							"entry": "1 temporary Hit Point per level , +2 item bonus to saves versus {@trait fear} effects, {@condition clumsy 1}, and {@condition stupefied 1}",
 							"duration": "first time you reach this stage only"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition clumsy|CRB|clumsy 2} and {@condition stupefied|CRB|stupefied 2}",
+							"entry": "{@condition clumsy 2} and {@condition stupefied 2}",
 							"duration": "1 hour"
 						}
 					]
@@ -1434,7 +1473,7 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition stupefied|CRB|stupefied 2} and +2 item bonus to Reflex saves and Dexterity‑based skill checks",
+							"entry": "{@condition stupefied 2} and +2 item bonus to Reflex saves and Dexterity‑based skill checks",
 							"duration": "1 hour"
 						},
 						{
@@ -1444,7 +1483,7 @@
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition drained|CRB|drained 2} and {@condition fatigued}",
+							"entry": "{@condition drained 2} and {@condition fatigued}",
 							"duration": "1 hour"
 						}
 					]
@@ -1577,7 +1616,7 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition clumsy|CRB|clumsy 2}",
+							"entry": "{@condition clumsy 2}",
 							"duration": "1 hour"
 						},
 						{
@@ -1607,7 +1646,7 @@
 			"entries": [
 				"Legends claim that some long‑forgotten god stole the original bundle of shots of the First Vault from Abadar's repository.",
 				"Since then, individual pieces have turned up throughout the multiverse. When you pick up a shot of the First Vault, it immediately reshapes itself to function with any ranged weapon and establishes you as its owner until another creature picks it up. As its owner, you can use the shot's single‑action activation after shooting it.",
-				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy|CRB|clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage ||persistent bleed damage} to the creature with the embedded fragment.",
+				"Instead of rolling weapon damage dice, a shot of the First Vault deals 25 damage plus any bonuses or additional damage as if 25 were the result of the weapon's damage dice; the damage type matches that normally dealt by the weapon. Upon damaging a creature, the shot of the First Vault shatters, and the fragments ricochet to hit any other enemies within 30 feet, making attack rolls with the same attack bonus. The shattered fragments remain lodged in the creatures they damage; the creatures are {@condition clumsy 2} while the fragments remain in place. A total of 3 actions, which have the {@trait manipulate} trait, are required to remove the fragments from yourself or an adjacent creature; alternatively, a single action and a successful DC 30 {@skill Medicine} check can be used. A critical failure on this {@skill Medicine} check deals 10 {@condition persistent damage ||persistent bleed damage} to the creature with the embedded fragment.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -1894,7 +1933,7 @@
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition drained|CRB|drained 1}",
+							"entry": "{@condition drained 1}",
 							"duration": "1 hour"
 						}
 					]

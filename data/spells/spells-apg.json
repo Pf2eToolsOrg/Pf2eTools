@@ -105,9 +105,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half damage and becomes {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The target takes full damage and becomes {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target takes double damage and becomes {@condition frightened|CRB|frightened 3}."
+						"Success": "The target takes half damage and becomes {@condition frightened 1}.",
+						"Failure": "The target takes full damage and becomes {@condition frightened 2}.",
+						"Critical Failure": "The target takes double damage and becomes {@condition frightened 3}."
 					}
 				}
 			],
@@ -284,8 +284,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
-						"Failure": "The target is {@condition frightened|CRB|frightened 1} and takes full damage.",
-						"Critical Failure": "The target is {@condition frightened|CRB|frightened 2} and takes double damage."
+						"Failure": "The target is {@condition frightened 1} and takes full damage.",
+						"Critical Failure": "The target is {@condition frightened 2} and takes double damage."
 					}
 				}
 			],
@@ -881,8 +881,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target's body gains minor bestial features. Its insides churn as they partially transform, causing it to be {@condition clumsy|CRB|clumsy 1} for 1 round. When it recovers from the {@condition clumsy} condition, its features revert to normal and the spell ends.",
-						"Failure": "The target transforms into a bestial form for 1 hour. The target becomes {@condition clumsy|CRB|clumsy 1} and gains weakness 1 to silver. It gains a claw, hoof, horn, or jaws {@action Strike} (your choice) that uses the target's unarmed {@action Strike} statistics except that the damage type changes to bludgeoning, piercing, or slashing, as appropriate. Whenever the target attempts to use any manipulate action, it must succeed at a DC {@flatDC 5} flat check or the action is lost.",
+						"Success": "The target's body gains minor bestial features. Its insides churn as they partially transform, causing it to be {@condition clumsy 1} for 1 round. When it recovers from the {@condition clumsy} condition, its features revert to normal and the spell ends.",
+						"Failure": "The target transforms into a bestial form for 1 hour. The target becomes {@condition clumsy 1} and gains weakness 1 to silver. It gains a claw, hoof, horn, or jaws {@action Strike} (your choice) that uses the target's unarmed {@action Strike} statistics except that the damage type changes to bludgeoning, piercing, or slashing, as appropriate. Whenever the target attempts to use any manipulate action, it must succeed at a DC {@flatDC 5} flat check or the action is lost.",
 						"Critical Failure": "As failure, but the duration is unlimited."
 					}
 				}
@@ -1206,8 +1206,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half the {@condition persistent damage ||persistent fire damage}.",
-						"Failure": "The target becomes {@condition frightened|CRB|frightened 1} and takes the full {@condition persistent damage ||persistent fire damage}.",
-						"Critical Failure": "The target becomes {@condition frightened|CRB|frightened 2} and takes double the {@condition persistent damage ||persistent fire damage}."
+						"Failure": "The target becomes {@condition frightened 1} and takes the full {@condition persistent damage ||persistent fire damage}.",
+						"Critical Failure": "The target becomes {@condition frightened 2} and takes double the {@condition persistent damage ||persistent fire damage}."
 					}
 				}
 			],
@@ -1648,7 +1648,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1} as it wrestles with the urge.",
+						"Success": "The target is {@condition stunned 1} as it wrestles with the urge.",
 						"Failure": "On its next turn, before it does anything else, the target must present the nearest creature with an item in its possession; the target chooses which item to give, and if the only item it has is one that it's currently using to defend itself, such as a weapon during a combat encounter, it can choose to be {@condition stunned} for 1 round instead of giving up the item. This might require the target to {@action Interact} to retrieve an item or move to reach the nearest creature, and handing the item to the target always requires an {@action Interact} action.",
 						"Critical Failure": "As failure, except the duration is 4 rounds, and the target must repeat the effects of failure on each of its turns. At the end of each of its turns, the target can attempt a new Will save to reduce the remaining duration by 1 round, ending it entirely on a critical success."
 					}
@@ -1777,9 +1777,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition enfeebled|CRB|enfeebled 2} for 1 round.",
-						"Failure": "The target is {@condition enfeebled|CRB|enfeebled 2} for 1 minute and {@condition drained|CRB|drained 1}. The target is also filled with listlessness and ennui. For 1 round, if the target tries to use a move action, it must succeed at a Will save against your spell DC or the action is lost; this effect has the {@trait mental} and {@trait emotion} traits.",
-						"Critical Failure": "As failure, but the creature is permanently {@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 2} (although magic such as restoration can reduce or remove these conditions)."
+						"Success": "The target is {@condition enfeebled 2} for 1 round.",
+						"Failure": "The target is {@condition enfeebled 2} for 1 minute and {@condition drained 1}. The target is also filled with listlessness and ennui. For 1 round, if the target tries to use a move action, it must succeed at a Will save against your spell DC or the action is lost; this effect has the {@trait mental} and {@trait emotion} traits.",
+						"Critical Failure": "As failure, but the creature is permanently {@condition enfeebled 2} and {@condition drained 2} (although magic such as restoration can reduce or remove these conditions)."
 					}
 				}
 			],
@@ -1847,7 +1847,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1} as it fights off your commands.",
+						"Success": "The target is {@condition stunned 1} as it fights off your commands.",
 						"Failure": "The target becomes {@condition controlled} by you and follows your orders. It (or the creature previously controlling it) can attempt a new Will save at the end of each of its turns, and the spell ends on a success. If you issue an obviously self-destructive order, the target doesn't act until you issue a new order.",
 						"Critical Failure": "As failure, but the target (or the creature previously controlling it) receives a new save only if you give it a new order that is against its nature."
 					}
@@ -2270,8 +2270,37 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is afflicted with the curse of death at stage 1, and the stage of the curse can't increase beyond stage 1.",
 						"Failure": "The target is afflicted with the curse of death at stage 1.",
-						"Critical Failure": "The target is afflicted with the curse of death at stage 2. Curse of Death (curse) This curse ends immediately when the spell ends; Stage 1 {@damage 4d6} negative damage and {@condition fatigued} (1 round); Stage 2 {@damage 8d6} negative damage and {@condition fatigued} (1 round); Stage 3 {@damage 12d6} negative damage and {@condition fatigued} (1 round); Stage 4 death"
+						"Critical Failure": "The target is afflicted with the curse of death at stage 2."
 					}
+				},
+				{
+					"name": "Curse of Death",
+					"type": "affliction",
+					"traits": [
+						"curse"
+					],
+					"note": "This curse ends immediately when the spell ends",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} negative damage and {@condition fatigued}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 8d6} negative damage and {@condition fatigued}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 12d6} negative damage and {@condition fatigued}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 4,
+							"entry": "death"
+						}
+					]
 				}
 			],
 			"heightened": {
@@ -2340,7 +2369,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Object} If the object is attended, its bearer can attempt a Fortitude save. If the bearer fails or the object is unattended, the object immediately takes {@dice 4d6} damage (applying Hardness normally) and the item is cursed with an unlimited duration. Until the curse ends, the item becomes shoddy and can't be Repaired, and the curse attempts to counteract any spell that would restore the object's Hit Points. Remove curse can target an item affected by this spell.",
-						"{@bold Construct} The construct takes {@dice 4d6} damage (basic Fortitude save). On a failure, for 1 hour the construct is {@condition clumsy|CRB|clumsy 1}, is {@condition enfeebled|CRB|enfeebled 1}, and can't be Repaired, and the curse attempts to counteract any spell that would restore the construct's Hit Points. On a critical failure, these effects have an unlimited duration.",
+						"{@bold Construct} The construct takes {@dice 4d6} damage (basic Fortitude save). On a failure, for 1 hour the construct is {@condition clumsy 1}, is {@condition enfeebled 1}, and can't be Repaired, and the curse attempts to counteract any spell that would restore the construct's Hit Points. On a critical failure, these effects have an unlimited duration.",
 						"{@bold Living Creature} The living creature must attempt a Fortitude save. Ageless creatures are immune."
 					]
 				},
@@ -2348,7 +2377,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The living creature is unaffected.",
-						"Success": "The living creature briefly ages, becoming {@condition clumsy|CRB|clumsy 1} and {@condition enfeebled|CRB|enfeebled 1} for 1 round.",
+						"Success": "The living creature briefly ages, becoming {@condition clumsy 1} and {@condition enfeebled 1} for 1 round.",
 						"Failure": "As success, with a duration of 1 hour.",
 						"Critical Failure": "As success, with an unlimited duration."
 					}
@@ -2460,7 +2489,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You reveal a glimpse of the impossible conflicts between the divine anathema behind your curse, forcing you to reckon with another's conflicts as well. You and the target each take {@damage 9d6} mental damage with a basic Will save, and the target is {@condition stunned|CRB|stunned 1} if it critically fails its save. You get a degree of success one better than you rolled for your saving throw."
+				"You reveal a glimpse of the impossible conflicts between the divine anathema behind your curse, forcing you to reckon with another's conflicts as well. You and the target each take {@damage 9d6} mental damage with a basic Will save, and the target is {@condition stunned 1} if it critically fails its save. You get a degree of success one better than you rolled for your saving throw."
 			],
 			"heightened": {
 				"heightened": true,
@@ -2816,8 +2845,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes 1 damage of the type of weakness you chose (thus triggering the creature's weakness), or loses its resistance until the end of your next turn if you chose a resistance.",
-						"Failure": "As success, and the creature becomes {@condition frightened|CRB|frightened 1} from the revelation of its dread secret.",
-						"Critical Failure": "As failure, except the creature is {@condition frightened|CRB|frightened 3}."
+						"Failure": "As success, and the creature becomes {@condition frightened 1} from the revelation of its dread secret.",
+						"Critical Failure": "As failure, except the creature is {@condition frightened 3}."
 					}
 				}
 			],
@@ -2947,7 +2976,7 @@
 			"dismiss": false,
 			"entries": [
 				"You loop a thought process in the target's mind, forcing it to repeat the same actions over again. The target must attempt a Will save. If the target fails, whatever actions the target uses on its next turn, it must repeat on its following turn. The actions must be repeated in the same order and as close to the same specifics as possible. For example, if the target makes an attack, it must repeat the attack against the same creature, if possible, and if the target moves, it must move the same distance and direction, if possible, on its next turn.",
-				"If the target can't repeat an action, such as {@action Cast a Spell||Casting a Spell} that has been exhausted or needing to target a creature that has died, it can act as it chooses for that action but becomes {@condition stupefied|CRB|stupefied 1} until the end of its turn."
+				"If the target can't repeat an action, such as {@action Cast a Spell||Casting a Spell} that has been exhausted or needing to target a creature that has died, it can act as it chooses for that action but becomes {@condition stupefied 1} until the end of its turn."
 			],
 			"heightened": {
 				"heightened": false,
@@ -3063,8 +3092,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes {@damage 2d8} {@condition persistent damage ||persistent negative damage}.",
-						"Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained|CRB|drained 1}.",
-						"Critical Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained|CRB|drained 2} and {@condition doomed|CRB|doomed 1}."
+						"Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained 1}.",
+						"Critical Failure": "The creature takes {@damage 4d8} {@condition persistent damage ||persistent negative damage} and becomes {@condition drained 2} and {@condition doomed 1}."
 					}
 				}
 			],
@@ -3224,7 +3253,7 @@
 			"dismiss": false,
 			"entries": [
 				"You bind a part of your essence to your surroundings, creating a warded area that grants you power within it, but drains you outside of it. While within the area, you can make nature's wrath Strikes by commanding plants, wind, rocks, and other natural features to attack enemies. These are melee Strikes that use your spell attack modifier, can target any creature within the ward, and deal bludgeoning, piercing, or slashing damage equal to {@dice 2d8} plus your spellcasting ability modifier.",
-				"Upon Casting the Spell, you can immediately make a single nature's wrath {@action Strike}. You are {@condition quickened} while inside the ward, and can use the additional action only to make nature's wrath Strikes. You are {@condition slowed|CRB|slowed 1} while outside the area."
+				"Upon Casting the Spell, you can immediately make a single nature's wrath {@action Strike}. You are {@condition quickened} while inside the ward, and can use the additional action only to make nature's wrath Strikes. You are {@condition slowed 1} while outside the area."
 			],
 			"heightened": {
 				"heightened": true,
@@ -3293,8 +3322,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "The target is {@condition frightened|CRB|frightened 1}.",
-						"Critical Failure": "The target is {@condition frightened|CRB|frightened 2}."
+						"Failure": "The target is {@condition frightened 1}.",
+						"Critical Failure": "The target is {@condition frightened 2}."
 					}
 				}
 			],
@@ -3818,8 +3847,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The creature is unaffected.",
-						"Failure": "The creature is {@condition sickened|CRB|sickened 1}.",
-						"Critical Failure": "The character is {@condition sickened|CRB|sickened 2}."
+						"Failure": "The creature is {@condition sickened 1}.",
+						"Critical Failure": "The character is {@condition sickened 2}."
 					}
 				}
 			],
@@ -3941,8 +3970,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target disbelieves the illusion and is unaffected.",
-						"Success": "For 1 round, the target is {@condition stupefied|CRB|stupefied 2} and takes a \u20132 status penalty to any checks it makes to determine the effects of reactions.",
-						"Failure": "For 1 minute, the target is {@condition stupefied|CRB|stupefied 2} and can't use reactions.",
+						"Success": "For 1 round, the target is {@condition stupefied 2} and takes a \u20132 status penalty to any checks it makes to determine the effects of reactions.",
+						"Failure": "For 1 minute, the target is {@condition stupefied 2} and can't use reactions.",
 						"Critical Failure": "As failure, and all spaces are difficult terrain for the target."
 					}
 				}
@@ -5434,8 +5463,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target is {@condition slowed|CRB|slowed 2} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the {@condition slowed} condition from medusa's wrath, it is {@condition petrified} permanently. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
-						"Success": "As critical success, but the target is initially {@condition slowed|CRB|slowed 1}."
+						"Critical Success": "The target is {@condition slowed 2} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the {@condition slowed} condition from medusa's wrath, it is {@condition petrified} permanently. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
+						"Success": "As critical success, but the target is initially {@condition slowed 1}."
 					}
 				}
 			],
@@ -5617,7 +5646,7 @@
 			"dismiss": false,
 			"entries": [
 				"You emit a cloud of toxic smoke that temporarily obscures you from sight. Each creature except you in the area when you Cast the Spell takes {@damage 1d6} poison damage (basic Fortitude save)",
-				"A creature that critically fails the saving throw also becomes {@condition sickened|CRB|sickened 1}. All creatures in the area become {@condition concealed}, and all creatures outside the smoke become {@condition concealed} to creatures within it. This smoke can be dispersed by a strong wind."
+				"A creature that critically fails the saving throw also becomes {@condition sickened 1}. All creatures in the area become {@condition concealed}, and all creatures outside the smoke become {@condition concealed} to creatures within it. This smoke can be dispersed by a strong wind."
 			],
 			"heightened": {
 				"heightened": true,
@@ -6411,7 +6440,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You call forth a ghostly lantern that guides the living toward death and the undead toward true death. It sheds bright light in the spell's area, and dim light to twice that area. Though the lantern is insubstantial, you must keep a hand free to hold it or the spell ends (though using the hand for somatic spell components doesn't end the spell). Living creatures and undead in the area when you Cast the Spell, or that enter the area later, must attempt Fortitude saves. Living creatures that fail their Fortitude saves gain only half the normal benefit from {@trait healing} effects while within the area. Undead targets that fail their Fortitude saves become {@condition enfeebled|CRB|enfeebled 1} while within the area. Once a creature attempts a save against reaper's lantern, it uses the same outcome if it leaves the area and enters it again.",
+				"You call forth a ghostly lantern that guides the living toward death and the undead toward true death. It sheds bright light in the spell's area, and dim light to twice that area. Though the lantern is insubstantial, you must keep a hand free to hold it or the spell ends (though using the hand for somatic spell components doesn't end the spell). Living creatures and undead in the area when you Cast the Spell, or that enter the area later, must attempt Fortitude saves. Living creatures that fail their Fortitude saves gain only half the normal benefit from {@trait healing} effects while within the area. Undead targets that fail their Fortitude saves become {@condition enfeebled 1} while within the area. Once a creature attempts a save against reaper's lantern, it uses the same outcome if it leaves the area and enters it again.",
 				"Once per turn, starting on the turn after you cast {@spell reaper's lantern|APG}, you can use a single action, which has the {@trait concentrate} trait, to increase the emanation's radius by 5 feet. When you do so, you force creatures in the area that haven't yet attempted a save against reaper's lantern to attempt one."
 			],
 			"heightened": {
@@ -6712,7 +6741,7 @@
 					"entries": {
 						"Success": "The affected sound from the creature isn't altered.",
 						"Failure": "The affected sound from the creature is altered in the way you determine.",
-						"Critical Failure": "The affected sound from the creature is altered and the target becomes {@condition stupefied|CRB|stupefied 2} for 1 minute as it struggles with the disorienting effects of its altered sound."
+						"Critical Failure": "The affected sound from the creature is altered and the target becomes {@condition stupefied 2} for 1 minute as it struggles with the disorienting effects of its altered sound."
 					}
 				}
 			],
@@ -7072,9 +7101,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes half damage and is {@condition enfeebled|CRB|enfeebled 1} for 1 round.",
-						"Failure": "The creature takes full damage and is {@condition enfeebled|CRB|enfeebled 2} for 1 round.",
-						"Critical Failure": "The creature takes double damage and is {@condition stunned|CRB|stunned 1}, {@condition enfeebled|CRB|enfeebled 2} for 1 round, and {@condition immobilized} for 1 round or until it Escapes, whichever comes first."
+						"Success": "The creature takes half damage and is {@condition enfeebled 1} for 1 round.",
+						"Failure": "The creature takes full damage and is {@condition enfeebled 2} for 1 round.",
+						"Critical Failure": "The creature takes double damage and is {@condition stunned 1}, {@condition enfeebled 2} for 1 round, and {@condition immobilized} for 1 round or until it Escapes, whichever comes first."
 					}
 				}
 			],
@@ -7487,8 +7516,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and becomes {@condition drained|CRB|drained 1}.",
-						"Critical Failure": "The creature takes double damage and becomes {@condition drained|CRB|drained 2}."
+						"Failure": "The creature takes full damage and becomes {@condition drained 1}.",
+						"Critical Failure": "The creature takes double damage and becomes {@condition drained 2}."
 					}
 				}
 			],
@@ -7798,9 +7827,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition enfeebled|CRB|enfeebled 1} for 1 round.",
-						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled|CRB|enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, when you Sustain the Spell, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
-						"Critical Failure": "As failure, but the target is {@condition enfeebled|CRB|enfeebled 2}."
+						"Success": "The target is {@condition enfeebled 1} for 1 round.",
+						"Failure": "The target takes {@damage 3d4} negative damage and is {@condition enfeebled 1} for the spell's duration as you tear its shadow away, collecting it in your hand. On subsequent rounds, when you Sustain the Spell, you can throttle the shadow to deal {@damage 3d4} negative damage to the target (basic Fortitude save). Until the spell ends, the target doesn't cast a shadow.",
+						"Critical Failure": "As failure, but the target is {@condition enfeebled 2}."
 					}
 				}
 			],
@@ -8835,7 +8864,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You belch forth a swarm of magical vermin. You evoke and shape the creatures from your own imagination, allowing you to change the appearance of the creatures (typically a mix of centipedes, roaches, wasps, and worms), but this doesn't change the effect of the spell. The vermin swarm over anyone in the area, their bites and stings dealing {@damage 2d8} piercing damage (basic Reflex save). A creature that fails its saving throw also becomes {@condition sickened|CRB|sickened 1}. Once the spell ends, the swarm disappears."
+				"You belch forth a swarm of magical vermin. You evoke and shape the creatures from your own imagination, allowing you to change the appearance of the creatures (typically a mix of centipedes, roaches, wasps, and worms), but this doesn't change the effect of the spell. The vermin swarm over anyone in the area, their bites and stings dealing {@damage 2d8} piercing damage (basic Reflex save). A creature that fails its saving throw also becomes {@condition sickened 1}. Once the spell ends, the swarm disappears."
 			],
 			"heightened": {
 				"heightened": true,
@@ -9036,8 +9065,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "When the target attempts an attack roll or skill check that would harm you, it takes a \u20132 status penalty to its roll.",
-						"Failure": "As success, but the target also becomes {@condition sickened|CRB|sickened 1} each time it damages you.",
-						"Critical Failure": "As success, but the target also becomes {@condition sickened|CRB|sickened 2} each time it damages you."
+						"Failure": "As success, but the target also becomes {@condition sickened 1} each time it damages you.",
+						"Critical Failure": "As success, but the target also becomes {@condition sickened 2} each time it damages you."
 					}
 				}
 			],

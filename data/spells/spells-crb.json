@@ -54,7 +54,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "The target is {@condition stupefied|CRB|stupefied 2}.",
+						"Failure": "The target is {@condition stupefied 2}.",
 						"Critical Failure": "The target is {@condition confused}."
 					}
 				}
@@ -186,7 +186,7 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition drained|CRB|drained 1}",
+							"entry": "{@condition drained 1}",
 							"duration": "1 day"
 						},
 						{
@@ -849,7 +849,7 @@
 			"entries": [
 				"You punish a creature that transgresses against your deity, drawing upon the anguish you feel upon seeing one of your deity's anathema committed.",
 				"You can cast this spell only when a creature actively commits a unique act of anathema. For example, if creating undead were anathema to your deity, you could use anathematic reprisal on a necromancer who had just created undead in front of you, but not on an undead creature just for existing.",
-				"You deal {@damage 4d6} mental damage to the target, but a basic Will save can reduce this damage. If it fails, it is also {@condition stupefied|CRB|stupefied 1} for 1 round. The creature is then temporarily immune for 1 minute."
+				"You deal {@damage 4d6} mental damage to the target, but a basic Will save can reduce this damage. If it fails, it is also {@condition stupefied 1} for 1 round. The creature is then temporarily immune for 1 minute."
 			],
 			"heightened": {
 				"heightened": true,
@@ -1812,7 +1812,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target's body gains minor features of the harmless animal. Its insides churn as they partially transform, causing it to be {@condition sickened|CRB|sickened 1}. When it recovers from the {@condition sickened} condition, its features revert to normal.",
+						"Success": "The target's body gains minor features of the harmless animal. Its insides churn as they partially transform, causing it to be {@condition sickened 1}. When it recovers from the {@condition sickened} condition, its features revert to normal.",
 						"Failure": "The target transforms for 1 minute but keeps its mind. If it spends all its actions on its turn concentrating on its original form, it can attempt a Will save to end the effect immediately.",
 						"Critical Failure": "The target is transformed into the chosen harmless animal, body and mind, for an unlimited duration."
 					}
@@ -1932,7 +1932,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target resists being banished and you are {@condition stunned|CRB|stunned 1}.",
+						"Critical Success": "The target resists being banished and you are {@condition stunned 1}.",
 						"Success": "The target resists being banished.",
 						"Failure": "The target is banished.",
 						"Critical Failure": "The target is banished and can't return by any means to the plane it's banished from for 1 week."
@@ -2758,8 +2758,8 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target becomes {@condition sickened|CRB|sickened 2} and {@condition slowed|CRB|slowed 1} as long as it's {@condition sickened}.",
-						"Success": "The target becomes {@condition sickened|CRB|sickened 1}.",
+						"Critical Success": "The target becomes {@condition sickened 2} and {@condition slowed 1} as long as it's {@condition sickened}.",
+						"Success": "The target becomes {@condition sickened 1}.",
 						"Failure": "The target is unaffected."
 					}
 				}
@@ -3368,7 +3368,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes a \u20131 circumstance penalty to attack rolls and damage rolls against you.",
 						"Failure": "The target can't use {@condition hostile} actions against you.",
-						"Critical Failure": "The target is {@condition stunned|CRB|stunned 1} and can't use {@condition hostile} actions against you."
+						"Critical Failure": "The target is {@condition stunned 1} and can't use {@condition hostile} actions against you."
 					}
 				}
 			],
@@ -3428,7 +3428,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Living Creature} The spell deals negative damage equal to {@dice 1d4} plus your spellcasting modifier. The target attempts a basic Fortitude save, but is also {@condition enfeebled|CRB|enfeebled 1} for 1 round on a critical failure.",
+						"{@bold Living Creature} The spell deals negative damage equal to {@dice 1d4} plus your spellcasting modifier. The target attempts a basic Fortitude save, but is also {@condition enfeebled 1} for 1 round on a critical failure.",
 						"{@bold Undead Creature} The target is {@condition flat-footed} for 1 round on a failed Fortitude save. On a critical failure, the target is also {@condition fleeing} for 1 round unless it succeeds at a Will save."
 					]
 				}
@@ -3562,7 +3562,7 @@
 						"{@b Red} The wall destroys ranged weapon ammunition (such as arrows and crossbow bolts) that would pass through, and it deals 20 fire damage to anyone passing through, with a basic Reflex save. {@spell Cone of cold} can counteract a red chromatic wall.",
 						"{@b Orange} The wall destroys thrown weapons that would pass through, and it deals 25 acid damage to anyone passing through, with a basic Reflex save. {@spell Gust of wind} can counteract an orange chromatic wall.",
 						"{@b Yellow} The wall stops acid, cold, electricity, fire, force, negative, {@trait positive}, and {@trait sonic} effects from passing through, and it deals 30 electricity damage to anyone passing through, with a basic Reflex save. {@spell Disintegrate} can counteract a yellow chromatic wall.",
-						"{@b Green} The wall stops toxins, gases, and breath weapons from passing through. It deals 10 poison damage to anyone passing through and makes them {@condition enfeebled|CRB|enfeebled 1} for 1 minute. A basic Fortitude save reduces the damage and negates the {@condition enfeebled} condition on a success. {@spell Passwall} can counteract a green chromatic wall."
+						"{@b Green} The wall stops toxins, gases, and breath weapons from passing through. It deals 10 poison damage to anyone passing through and makes them {@condition enfeebled 1} for 1 minute. A basic Fortitude save reduces the damage and negates the {@condition enfeebled} condition on a success. {@spell Passwall} can counteract a green chromatic wall."
 					]
 				}
 			],
@@ -3580,7 +3580,7 @@
 								"items": [
 									"5. {@b Blue} The wall stops auditory, petrification, and {@trait visual} effects from passing through, and creatures passing through are subject to the effects of {@spell flesh to stone}. {@spell Magic missile} can counteract a blue chromatic wall.",
 									"6. {@b Indigo} The wall stops {@trait divination} and {@trait mental} effects from passing through, and those passing through are subject to the effects of warp mind. {@spell Searing light} can counteract an indigo chromatic wall.",
-									"7. {@b Violet} The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed|CRB|slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of {@spell plane shift}. {@spell Dispel magic} can counteract a violet chromatic wall.",
+									"7. {@b Violet} The wall prevents spells from targeting the other side (area effects still cross as normal). Creatures passing through must succeed at a Will save or they are {@condition slowed 1} for 1 minute; on a critical failure, the creature is instead sent to another plane, with the effect of {@spell plane shift}. {@spell Dispel magic} can counteract a violet chromatic wall.",
 									"8. Reroll, and creatures that pass through the wall take a \u20132 circumstance penalty to their saves."
 								]
 							}
@@ -4077,7 +4077,7 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature is {@condition dazzled} for 1 round.",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 1}, {@condition blinded} for 1 round, and {@condition dazzled} for 1 minute.",
+						"Failure": "The creature is {@condition stunned 1}, {@condition blinded} for 1 round, and {@condition dazzled} for 1 minute.",
 						"Critical Failure": "The creature is {@condition stunned} for 1 round and {@condition blinded} for 1 minute."
 					}
 				}
@@ -4457,7 +4457,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target babbles incoherently and is {@condition stunned|CRB|stunned 1}.",
+						"Success": "The target babbles incoherently and is {@condition stunned 1}.",
 						"Failure": "The target is {@condition confused} for 1 minute. It can attempt a new save at the end of each of its turns to end the confusion.",
 						"Critical Failure": "The target is {@condition confused} for 1 minute, with no save to end early."
 					}
@@ -4934,8 +4934,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
-						"Failure": "The target takes full damage; if the target can cast divine spells, it's {@condition stupefied|CRB|stupefied 1} for 1 round.",
-						"Critical Failure": "The target takes double damage, is {@condition stupefied|CRB|stupefied 1} for 1 round, and can't cast divine spells for 1 round. To many deities, casting this spell on a follower of your own deity without significant cause is anathema."
+						"Failure": "The target takes full damage; if the target can cast divine spells, it's {@condition stupefied 1} for 1 round.",
+						"Critical Failure": "The target takes double damage, is {@condition stupefied 1} for 1 round, and can't cast divine spells for 1 round. To many deities, casting this spell on a follower of your own deity without significant cause is anathema."
 					}
 				}
 			],
@@ -5075,9 +5075,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "For 1 round, the creature can't use reactions and must attempt another save at the start of its turn; on a failure, it is {@condition slowed|CRB|slowed 1} for that turn as it sobs uncontrollably.",
-						"Failure": "As success, but the {@condition slowed|CRB|slowed 1} duration is 1 minute.",
-						"Critical Failure": "As failure, and the creature is automatically {@condition slowed|CRB|slowed 1} for 1 minute."
+						"Success": "For 1 round, the creature can't use reactions and must attempt another save at the start of its turn; on a failure, it is {@condition slowed 1} for that turn as it sobs uncontrollably.",
+						"Failure": "As success, but the {@condition slowed 1} duration is 1 minute.",
+						"Critical Failure": "As failure, and the creature is automatically {@condition slowed 1} for 1 minute."
 					}
 				}
 			],
@@ -5459,7 +5459,7 @@
 			"dismiss": false,
 			"entries": [
 				"You cloud the target's mind and daze it with a mental jolt.",
-				"The jolt deals mental damage equal to your spellcasting ability modifier; the target must attempt a basic Will save. If the target critically fails the save, it is also {@condition stunned|CRB|stunned 1}."
+				"The jolt deals mental damage equal to your spellcasting ability modifier; the target must attempt a basic Will save. If the target critically fails the save, it is also {@condition stunned 1}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -6562,7 +6562,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Foes within the area are {@condition frightened|CRB|frightened 1}. They can't reduce their {@condition frightened} value below 1 while they remain in the area."
+				"Foes within the area are {@condition frightened 1}. They can't reduce their {@condition frightened} value below 1 while they remain in the area."
 			],
 			"heightened": {
 				"heightened": false,
@@ -6989,7 +6989,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You lance the target with energy. You deal {@damage 1d6} positive damage plus your spellcasting ability modifier. The target must attempt a basic Fortitude save. If the creature critically fails the save, it is also {@condition enfeebled|CRB|enfeebled 1} for 1 round."
+				"You lance the target with energy. You deal {@damage 1d6} positive damage plus your spellcasting ability modifier. The target must attempt a basic Fortitude save. If the creature critically fails the save, it is also {@condition enfeebled 1} for 1 round."
 			],
 			"heightened": {
 				"heightened": true,
@@ -7182,8 +7182,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and is {@condition enfeebled|CRB|enfeebled 2} for 1 minute.",
-						"Critical Failure": "The creature takes double damage and is {@condition enfeebled|CRB|enfeebled 2} for 1 minute. On your home plane, a creature that critically fails is banished with the effect of a failed banishment save. A 10th-level creature or lower must attempt a Will save. On a failure, it's {@condition paralyzed} for 1 minute; on a critical failure, it dies."
+						"Failure": "The creature takes full damage and is {@condition enfeebled 2} for 1 minute.",
+						"Critical Failure": "The creature takes double damage and is {@condition enfeebled 2} for 1 minute. On your home plane, a creature that critically fails is banished with the effect of a failed banishment save. A 10th-level creature or lower must attempt a Will save. On a failure, it's {@condition paralyzed} for 1 minute; on a critical failure, it dies."
 					}
 				}
 			],
@@ -7421,8 +7421,8 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
-						"Failure": "The creature takes full damage and is {@condition sickened|CRB|sickened 1}.",
-						"Critical Failure": "The creature takes full damage and is {@condition sickened|CRB|sickened 2}; while it is {@condition sickened}, it is also {@condition slowed|CRB|slowed 1}."
+						"Failure": "The creature takes full damage and is {@condition sickened 1}.",
+						"Critical Failure": "The creature takes full damage and is {@condition sickened 2}; while it is {@condition sickened}, it is also {@condition slowed 1}."
 					}
 				}
 			],
@@ -7548,7 +7548,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1} as it fights off your commands.",
+						"Success": "The target is {@condition stunned 1} as it fights off your commands.",
 						"Failure": "The target follows your orders but can attempt a Will save at the end of each of its turns. On a success, the spell ends.",
 						"Critical Failure": "As a failure, but the target receives a new save only if you give it a new order that is against its nature, such as killing its allies."
 					}
@@ -8028,7 +8028,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You emit an aura of terror. Foes in the area are {@condition frightened|CRB|frightened 1} and unable to reduce the condition."
+				"You emit an aura of terror. Foes in the area are {@condition frightened 1} and unable to reduce the condition."
 			],
 			"heightened": {
 				"heightened": false,
@@ -9428,7 +9428,7 @@
 			"dismiss": false,
 			"entries": [
 				"Bolstered by magical power, the target grows to size Large.",
-				"Its equipment grows with it but returns to natural size if removed. The creature is {@condition clumsy|CRB|clumsy 1}. Its reach increases by 5 feet (or by 10 feet if it started out Tiny), and it gains a +2 status bonus to melee damage. This spell has no effect on a Large or larger creature."
+				"Its equipment grows with it but returns to natural size if removed. The creature is {@condition clumsy 1}. Its reach increases by 5 feet (or by 10 feet if it started out Tiny), and it gains a +2 status bonus to melee damage. This spell has no effect on a Large or larger creature."
 			],
 			"heightened": {
 				"heightened": true,
@@ -10156,7 +10156,7 @@
 					"style": "list-no-bullets",
 					"items": [
 						"{@b 16th or Lower} The target dies instantly.",
-						"{@b 17th} If the target has 50 Hit Points or fewer, it dies instantly; otherwise, it drops to 0 Hit Points and becomes {@condition dying|CRB|dying 1}.",
+						"{@b 17th} If the target has 50 Hit Points or fewer, it dies instantly; otherwise, it drops to 0 Hit Points and becomes {@condition dying 1}.",
 						"{@b 18th or Higher} The target takes 50 damage. If this brings it to 0 Hit Points, it dies instantly."
 					]
 				}
@@ -10225,9 +10225,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The target is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target is {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round."
+						"Success": "The target is {@condition frightened 1}.",
+						"Failure": "The target is {@condition frightened 2}.",
+						"Critical Failure": "The target is {@condition frightened 3} and {@condition fleeing} for 1 round."
 					}
 				}
 			],
@@ -10355,8 +10355,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stupefied|CRB|stupefied 2} for 1 round.",
-						"Failure": "The target is {@condition stupefied|CRB|stupefied 4} with an unlimited duration.",
+						"Success": "The target is {@condition stupefied 2} for 1 round.",
+						"Failure": "The target is {@condition stupefied 4} with an unlimited duration.",
 						"Critical Failure": "The target's intellect is permanently reduced below that of an animal, and it treats its Charisma, Intelligence, and Wisdom modifiers as \u20135. It loses all class abilities that require mental faculties, including all spellcasting. If the target is a PC, they become an NPC under the GM's control."
 					}
 				}
@@ -11248,9 +11248,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition slowed|CRB|slowed 1} for 1 round.",
-						"Failure": "The target is {@condition slowed|CRB|slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the slowed condition from flesh to stone, the creature is permanently non-magically {@condition petrified}. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
-						"Critical Failure": "As failure, but the target is initially {@condition slowed|CRB|slowed 2}."
+						"Success": "The target is {@condition slowed 1} for 1 round.",
+						"Failure": "The target is {@condition slowed 1} and must attempt a Fortitude save at the end of each of its turns; this ongoing save has the {@trait incapacitation} trait. On a failed save, the {@condition slowed} condition increases by 1 (or 2 on a critical failure). A successful save reduces the {@condition slowed} condition by 1. When a creature is unable to act due to the slowed condition from flesh to stone, the creature is permanently non-magically {@condition petrified}. The spell ends if the creature is {@condition petrified} or the {@condition slowed} condition is removed.",
+						"Critical Failure": "As failure, but the target is initially {@condition slowed 2}."
 					}
 				}
 			],
@@ -12463,7 +12463,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition sickened|CRB|sickened 1}.",
+						"Success": "The target is {@condition sickened 1}.",
 						"Failure": "The target is afflicted with goblin pox at stage 1.",
 						"Critical Failure": "The target is afflicted with goblin pox at stage 2."
 					}
@@ -12481,17 +12481,17 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@condition sickened|CRB|sickened 1}",
+							"entry": "{@condition sickened 1}",
 							"duration": "1 round"
 						},
 						{
 							"stage": 2,
-							"entry": "{@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1}",
+							"entry": "{@condition sickened 1} and {@condition slowed 1}",
 							"duration": "1 round"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition sickened|CRB|sickened 1} and the creature can't reduce its {@condition sickened} value below 1",
+							"entry": "{@condition sickened 1} and the creature can't reduce its {@condition sickened} value below 1",
 							"duration": "1 day"
 						}
 					]
@@ -13608,7 +13608,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is plagued with uncontrollable laugher. It can't use reactions.",
-						"Failure": "The target is {@condition slowed|CRB|slowed 1} and can't use reactions.",
+						"Failure": "The target is {@condition slowed 1} and can't use reactions.",
 						"Critical Failure": "The target falls {@condition prone} and can't use actions or reactions for 1 round. It then suffers the failure effects."
 					}
 				}
@@ -13786,8 +13786,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The foe is unaffected.",
-						"Failure": "The foe is {@condition frightened|CRB|frightened 1}.",
-						"Critical Failure": "The foe is {@condition frightened|CRB|frightened 2}."
+						"Failure": "The foe is {@condition frightened 1}.",
+						"Critical Failure": "The foe is {@condition frightened 2}."
 					}
 				}
 			],
@@ -13797,7 +13797,7 @@
 				"x": [
 					{
 						"level": 5,
-						"entry": "Foes in the area are {@condition frightened|CRB|frightened 1} on a success, {@condition frightened|CRB|frightened 2} on a failure, and {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round on a critical failure. They are still unaffected on a critical success."
+						"entry": "Foes in the area are {@condition frightened 1} on a success, {@condition frightened 2} on a failure, and {@condition frightened 3} and {@condition fleeing} for 1 round on a critical failure. They are still unaffected on a critical success."
 					}
 				],
 				"no_x": null
@@ -13849,7 +13849,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You mime creating an {@condition invisible|CRB|invisible 10}-foot-by-10-foot stretch of wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's level, and HP equal to quadruple the spell's level."
+				"You mime creating an {@condition invisible 10}-foot-by-10-foot stretch of wall adjacent to you and within your reach. The wall is solid to those creatures that don't disbelieve it, even incorporeal creatures. You and your allies can voluntarily believe the wall exists to continue to treat it as solid, for instance to climb onto it. A creature that disbelieves the illusion is temporarily immune to your house of imaginary walls for 1 minute. The wall doesn't block creatures that didn't see your visual performance, nor does it block objects. The wall has AC 10, Hardness equal to double the spell's level, and HP equal to quadruple the spell's level."
 			],
 			"heightened": {
 				"heightened": false,
@@ -15952,8 +15952,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target can't use reactions.",
-						"Failure": "The target can't use reactions and is {@condition slowed|CRB|slowed 1}.",
-						"Critical Failure": "The target can't use reactions and is {@condition slowed|CRB|slowed 2}."
+						"Failure": "The target can't use reactions and is {@condition slowed 1}.",
+						"Critical Failure": "The target can't use reactions and is {@condition slowed 2}."
 					}
 				}
 			],
@@ -16018,7 +16018,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The first time the target uses an action that deals damage to at least one good creature, the target takes {@damage 3d6} good damage.",
 						"Failure": "Each time the target uses an action that deals damage to at least one good creature, the target takes {@damage 3d6} good damage.",
-						"Critical Failure": "The target is {@condition enfeebled|CRB|enfeebled 2}. Each time it uses an action that deals damage to at least one good creature, the target takes {@damage 3d6} good damage."
+						"Critical Failure": "The target is {@condition enfeebled 2}. Each time it uses an action that deals damage to at least one good creature, the target takes {@damage 3d6} good damage."
 					}
 				}
 			],
@@ -17090,9 +17090,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target becomes {@condition sickened|CRB|sickened 1}. Reducing its {@condition sickened} condition to 0 ends the curse.",
-						"Failure": "The target becomes {@condition sickened|CRB|sickened 1} and can't reduce its {@condition sickened} condition below 1 while the curse remains. The curse can be lifted by remove curse or similar magic. Whenever the target is {@condition sickened} and on the water at least a mile from shore, it is also {@condition slowed|CRB|slowed 1}.",
-						"Critical Failure": "As failure, but the target becomes {@condition sickened|CRB|sickened 2}."
+						"Success": "The target becomes {@condition sickened 1}. Reducing its {@condition sickened} condition to 0 ends the curse.",
+						"Failure": "The target becomes {@condition sickened 1} and can't reduce its {@condition sickened} condition below 1 while the curse remains. The curse can be lifted by remove curse or similar magic. Whenever the target is {@condition sickened} and on the water at least a mile from shore, it is also {@condition slowed 1}.",
+						"Critical Failure": "As failure, but the target becomes {@condition sickened 2}."
 					}
 				}
 			],
@@ -17161,8 +17161,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The creature is unaffected.",
-						"Failure": "The creature becomes {@condition frightened|CRB|frightened 2} before using its action.",
-						"Critical Failure": "The creature becomes {@condition frightened|CRB|frightened 2}, and its action fails and is wasted."
+						"Failure": "The creature becomes {@condition frightened 2} before using its action.",
+						"Critical Failure": "The creature becomes {@condition frightened 2}, and its action fails and is wasted."
 					}
 				}
 			],
@@ -18441,7 +18441,7 @@
 						"Darkvision.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
-						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; Melee {@as 1} vines (reach 30 feet, versatile P), Damage {@damage 6d8+12} bludgeoning; Ranged {@as 1} thorns (range 100 feet), Damage {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy|CRB|clumsy 1} for 1 round ({@condition clumsy|CRB|clumsy 2} on a critical failure).",
+						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; Melee {@as 1} vines (reach 30 feet, versatile P), Damage {@damage 6d8+12} bludgeoning; Ranged {@as 1} thorns (range 100 feet), Damage {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
 						"{@bold Kaiju} Speed 50 feet; resistance 5 to physical damage; Melee {@as 1} jaws (reach 30 feet), Damage {@damage 6d10+10} piercing; Melee {@as 1} claws (agile, reach 30 feet), Damage {@damage 6d8+8} slashing; Melee {@as 1} foot (agile, reach 15 feet), Damage {@damage 6d6+10} bludgeoning; Unstoppable You are immune to being {@condition immobilized} and ignore difficult terrain and greater difficult terrain; Trample {@as 3} You move up to double your Speed and move through the spaces of Huge or smaller creatures, trampling each creature whose space you enter. A trampled creature takes foot damage with a basic Reflex save against your spell DC."
 					]
 				}
@@ -18745,7 +18745,7 @@
 						"Critical Success": "The target suffers no adverse effects and is temporarily immune for 1 week.",
 						"Success": "The target experiences the nightmares but suffers no adverse effects other than unpleasant memories.",
 						"Failure": "The target experiences the nightmares and awakens {@condition fatigued}.",
-						"Critical Failure": "The target experiences the nightmares, awakens {@condition fatigued}, and is {@condition drained|CRB|drained 2} until it is no longer {@condition fatigued}."
+						"Critical Failure": "The target experiences the nightmares, awakens {@condition fatigued}, and is {@condition drained 2} until it is no longer {@condition fatigued}."
 					}
 				}
 			],
@@ -18989,9 +18989,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition sickened|CRB|sickened 1}, but if it spends an action to end the condition, it succeeds automatically.",
-						"Failure": "The target is {@condition sickened|CRB|sickened 1}.",
-						"Critical Failure": "The target is {@condition sickened|CRB|sickened 2}. A target {@condition sickened} by this spell takes a \u201310-foot status penalty to its Speed until it's no longer {@condition sickened}."
+						"Success": "The target is {@condition sickened 1}, but if it spends an action to end the condition, it succeeds automatically.",
+						"Failure": "The target is {@condition sickened 1}.",
+						"Critical Failure": "The target is {@condition sickened 2}. A target {@condition sickened} by this spell takes a \u201310-foot status penalty to its Speed until it's no longer {@condition sickened}."
 					}
 				}
 			],
@@ -19126,7 +19126,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1}.",
+						"Success": "The target is {@condition stunned 1}.",
 						"Failure": "The target is {@condition paralyzed} for 1 round.",
 						"Critical Failure": "The target is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
 					}
@@ -19614,9 +19614,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes {@damage 4d6} mental damage and is {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The target takes {@damage 8d6} mental damage and is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target is so afraid it might die. It must attempt a Fortitude save; if the target fails, it dies. On a successful Fortitude save, the target takes {@damage 12d6} mental damage, is {@condition fleeing} until the end of its next turn, and is {@condition frightened|CRB|frightened 4}. This effect has the {@trait incapacitation} trait."
+						"Success": "The target takes {@damage 4d6} mental damage and is {@condition frightened 1}.",
+						"Failure": "The target takes {@damage 8d6} mental damage and is {@condition frightened 2}.",
+						"Critical Failure": "The target is so afraid it might die. It must attempt a Fortitude save; if the target fails, it dies. On a successful Fortitude save, the target takes {@damage 12d6} mental damage, is {@condition fleeing} until the end of its next turn, and is {@condition frightened 4}. This effect has the {@trait incapacitation} trait."
 					}
 				}
 			],
@@ -19684,8 +19684,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes full initial damage but no {@condition persistent damage}, and the spell ends immediately.",
-						"Failure": "The target takes full initial and {@condition persistent damage}, and the target is {@condition sickened|CRB|sickened 1}. If the target recovers from being {@condition sickened}, the {@condition persistent damage} ends and the spell ends.",
-						"Critical Failure": "As failure, but the target is {@condition sickened|CRB|sickened 2}."
+						"Failure": "The target takes full initial and {@condition persistent damage}, and the target is {@condition sickened 1}. If the target recovers from being {@condition sickened}, the {@condition persistent damage} ends and the spell ends.",
+						"Critical Failure": "As failure, but the target is {@condition sickened 2}."
 					}
 				}
 			],
@@ -20281,7 +20281,7 @@
 							"range": "14th or Lower"
 						},
 						{
-							"entry": "If the target has 50 Hit Points or fewer, it dies instantly;\notherwise, it drops to 0 Hit Points and becomes {@condition dying|CRB|dying 1}, or\nincreases its {@condition dying} condition by 1 if it's already {@condition dying}.",
+							"entry": "If the target has 50 Hit Points or fewer, it dies instantly;\notherwise, it drops to 0 Hit Points and becomes {@condition dying 1}, or\nincreases its {@condition dying} condition by 1 if it's already {@condition dying}.",
 							"range": "15th"
 						},
 						{
@@ -20364,7 +20364,7 @@
 							"range": "14th\u201315th"
 						},
 						{
-							"entry": "The target is {@condition stunned|CRB|stunned 1}.",
+							"entry": "The target is {@condition stunned 1}.",
 							"range": "16th or Higher"
 						}
 					]
@@ -20823,7 +20823,7 @@
 							"4",
 							"Green",
 							"Fortitude",
-							"30 poison damage and {@condition enfeebled|CRB|enfeebled 1} for 1 minute ({@trait poison})"
+							"30 poison damage and {@condition enfeebled 1} for 1 minute ({@trait poison})"
 						],
 						[
 							"5",
@@ -20841,7 +20841,7 @@
 							"7",
 							"Violet",
 							"Will",
-							"{@condition Slowed|CRB|Slowed 1} for 1 minute; if a critical failure, sent to another plane, as {@spell plane shift} ({@trait teleportation})"
+							"{@condition Slowed 1} for 1 minute; if a critical failure, sent to another plane, as {@spell plane shift} ({@trait teleportation})"
 						],
 						[
 							"8",
@@ -21627,17 +21627,17 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@damage 3d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"entry": "{@damage 3d6} poison damage and {@condition enfeebled 2}",
 							"duration": "1 round"
 						},
 						{
 							"stage": 2,
-							"entry": "{@damage 4d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"entry": "{@damage 4d6} poison damage and {@condition enfeebled 2}",
 							"duration": "1 round"
 						},
 						{
 							"stage": 3,
-							"entry": "{@damage 6d6} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"entry": "{@damage 6d6} poison damage and {@condition enfeebled 2}",
 							"duration": "1 round"
 						}
 					]
@@ -21759,8 +21759,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target survives, the spell ends, and the target is then temporarily immune for 24 hours.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1} and takes 40 damage, the spell ends, and the target is then temporarily immune for 24 hours.",
-						"Failure": "The target is {@condition stunned|CRB|stunned 3} and takes 80 damage. The spell's duration continues, but the target is then temporarily immune for 24 hours against being killed by quivering palm.",
+						"Success": "The target is {@condition stunned 1} and takes 40 damage, the spell ends, and the target is then temporarily immune for 24 hours.",
+						"Failure": "The target is {@condition stunned 3} and takes 80 damage. The spell's duration continues, but the target is then temporarily immune for 24 hours against being killed by quivering palm.",
 						"Critical Failure": "The target dies. If you cast {@spell quivering palm} again, the effects of any quivering palm you had previously cast end."
 					}
 				}
@@ -21820,7 +21820,7 @@
 			"dismiss": false,
 			"entries": [
 				"You attempt to call forth the dead creature's soul, requiring the creature's body to be present and relatively intact. The creature must have died within the past 3 days. If Pharasma has decided that the creature's time has come (at the GM's discretion), or if the creature doesn't wish to return to life, this spell automatically fails, but the diamonds aren't consumed in the casting.",
-				"If the spell is successful, the creature returns to life with 1 Hit Point, no spells prepared or spell slots available, no points in any pools or any other daily resources, and still with any long-term debilitations of the old body. The time spent in the Boneyard leaves the target temporarily debilitated, making it {@condition clumsy|CRB|clumsy 2}, {@condition drained|CRB|drained 2}, and {@condition enfeebled|CRB|enfeebled 2} for 1 week; these conditions can't be removed or reduced by any means until the week has passed.",
+				"If the spell is successful, the creature returns to life with 1 Hit Point, no spells prepared or spell slots available, no points in any pools or any other daily resources, and still with any long-term debilitations of the old body. The time spent in the Boneyard leaves the target temporarily debilitated, making it {@condition clumsy 2}, {@condition drained 2}, and {@condition enfeebled 2} for 1 week; these conditions can't be removed or reduced by any means until the week has passed.",
 				"The creature is also permanently changed by its time in the afterlife, such as a slight personality shift, a streak of white in the hair, or a strange new birthmark."
 			],
 			"heightened": {
@@ -21901,9 +21901,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target becomes {@condition enfeebled|CRB|enfeebled 1}.",
-						"Failure": "The target becomes {@condition enfeebled|CRB|enfeebled 2}.",
-						"Critical Failure": "The target becomes {@condition enfeebled|CRB|enfeebled 3}."
+						"Success": "The target becomes {@condition enfeebled 1}.",
+						"Failure": "The target becomes {@condition enfeebled 2}.",
+						"Critical Failure": "The target becomes {@condition enfeebled 3}."
 					}
 				}
 			],
@@ -25079,9 +25079,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition slowed|CRB|slowed 1} for 1 round.",
-						"Failure": "The target is {@condition slowed|CRB|slowed 1} for 1 minute.",
-						"Critical Failure": "The target is {@condition slowed|CRB|slowed 2} for 1 minute."
+						"Success": "The target is {@condition slowed 1} for 1 round.",
+						"Failure": "The target is {@condition slowed 1} for 1 minute.",
+						"Critical Failure": "The target is {@condition slowed 2} for 1 minute."
 					}
 				}
 			],
@@ -25866,12 +25866,12 @@
 					"stages": [
 						{
 							"stage": 1,
-							"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 1}",
+							"entry": "{@damage 1d4} poison damage and {@condition enfeebled 1}",
 							"duration": "1 round"
 						},
 						{
 							"stage": 2,
-							"entry": "{@damage 1d4} poison damage and {@condition enfeebled|CRB|enfeebled 2}",
+							"entry": "{@damage 1d4} poison damage and {@condition enfeebled 2}",
 							"duration": "1 round"
 						}
 					]
@@ -26107,9 +26107,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} for 1 round.",
-						"Failure": "The target is {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} for 1 minute and {@condition enfeebled|CRB|enfeebled 1} and {@condition stupefied|CRB|stupefied 1} permanently.",
-						"Critical Failure": "The target is {@condition enfeebled|CRB|enfeebled 3} and {@condition stupefied|CRB|stupefied 3} for 1 minute and {@condition enfeebled|CRB|enfeebled 2} and {@condition stupefied|CRB|stupefied 2} permanently."
+						"Success": "The target is {@condition enfeebled 2} and {@condition stupefied 2} for 1 round.",
+						"Failure": "The target is {@condition enfeebled 2} and {@condition stupefied 2} for 1 minute and {@condition enfeebled 1} and {@condition stupefied 1} permanently.",
+						"Critical Failure": "The target is {@condition enfeebled 3} and {@condition stupefied 3} for 1 minute and {@condition enfeebled 2} and {@condition stupefied 2} permanently."
 					}
 				}
 			],
@@ -26324,14 +26324,14 @@
 						[
 							"2",
 							"Red",
-							"{@condition Enfeebled|CRB|Enfeebled 1} for 1 round",
-							"{@condition Enfeebled|CRB|Enfeebled 2} for 1 round"
+							"{@condition Enfeebled 1} for 1 round",
+							"{@condition Enfeebled 2} for 1 round"
 						],
 						[
 							"3",
 							"Yellow",
-							"{@condition Frightened|CRB|Frightened 1}",
-							"{@condition Frightened|CRB|Frightened 2}"
+							"{@condition Frightened 1}",
+							"{@condition Frightened 2}"
 						],
 						[
 							"4",
@@ -26522,9 +26522,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition sickened|CRB|sickened 1}.",
-						"Failure": "The creature is {@condition sickened|CRB|sickened 1} and {@condition slowed|CRB|slowed 1} while in the cloud.",
-						"Critical Failure": "The creature is {@condition sickened|CRB|sickened 2} and {@condition slowed|CRB|slowed 1} until it leaves the cloud."
+						"Success": "The creature is {@condition sickened 1}.",
+						"Failure": "The creature is {@condition sickened 1} and {@condition slowed 1} while in the cloud.",
+						"Critical Failure": "The creature is {@condition sickened 2} and {@condition slowed 1} until it leaves the cloud."
 					}
 				}
 			],
@@ -27957,8 +27957,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
+						"Success": "The creature is {@condition stunned 1}.",
+						"Failure": "The creature is {@condition stunned 2}.",
 						"Critical Failure": "The creature is {@condition stunned} for 1 round."
 					}
 				}
@@ -28023,7 +28023,7 @@
 					"items": [
 						"Due to the distraction, the target must succeed at a DC {@flatDC 5} flat check each time it uses a concentrate action, or the action fails and is wasted.",
 						"The target's difficulty processing visual input makes all creatures and objects {@condition concealed} from it.",
-						"The creature has trouble moving, making it {@condition clumsy|CRB|clumsy 3} and giving it a \u201310-foot status penalty to its Speeds."
+						"The creature has trouble moving, making it {@condition clumsy 3} and giving it a \u201310-foot status penalty to its Speeds."
 					]
 				},
 				{
@@ -28032,7 +28032,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target is affected for 1 round.",
 						"Failure": "The target is affected for 1 minute.",
-						"Critical Failure": "As failure, and the target is {@condition stunned|CRB|stunned 2} as it attempts to process the sensory shifts."
+						"Critical Failure": "As failure, and the target is {@condition stunned 2} as it attempts to process the sensory shifts."
 					}
 				}
 			],
@@ -28769,7 +28769,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy|CRB|clumsy 2} for 1 round and takes 1 {@condition persistent damage ||persistent electricity damage}."
+				"You surround a foe in a swirling storm of violent winds, roiling clouds, and crackling lightning. The storm deals {@damage 1d12} electricity damage. The target must attempt a basic Reflex save. On a failure, the target also is {@condition clumsy 2} for 1 round and takes 1 {@condition persistent damage ||persistent electricity damage}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -29121,8 +29121,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "The target is {@condition stupefied|CRB|stupefied 2}.",
-						"Critical Failure": "The target is {@condition stupefied|CRB|stupefied 4}."
+						"Failure": "The target is {@condition stupefied 2}.",
+						"Critical Failure": "The target is {@condition stupefied 4}."
 					}
 				}
 			],
@@ -29189,9 +29189,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stupefied|CRB|stupefied 1} until the end of your current turn.",
-						"Failure": "The target is {@condition stupefied|CRB|stupefied 1} until the end of your next turn.",
-						"Critical Failure": "The target is {@condition stupefied|CRB|stupefied 1} for 1 minute."
+						"Success": "The target is {@condition stupefied 1} until the end of your current turn.",
+						"Failure": "The target is {@condition stupefied 1} until the end of your next turn.",
+						"Critical Failure": "The target is {@condition stupefied 1} for 1 minute."
 					}
 				}
 			],
@@ -31178,7 +31178,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"The ground opens up, spraying a column of lava high into the air in a vertical cylinder, dealing {@damage 14d6} fire damage to creatures in the area. The lava rapidly cools and encases creatures in the area. A creature encased in rock is {@condition clumsy|CRB|clumsy 1} and takes a \u201310‑foot status penalty to its Speeds. All normal terrain is difficult terrain to a flying creature, and such creatures immediately descend 20 feet the moment they're encased, but they don't take damage from this fall. A creature encased in rock can attempt to {@action Escape} against your spell DC to end the effect. Otherwise, the creature remains encased until it takes a total of 50 damage, freeing it from the rock.",
+				"The ground opens up, spraying a column of lava high into the air in a vertical cylinder, dealing {@damage 14d6} fire damage to creatures in the area. The lava rapidly cools and encases creatures in the area. A creature encased in rock is {@condition clumsy 1} and takes a \u201310‑foot status penalty to its Speeds. All normal terrain is difficult terrain to a flying creature, and such creatures immediately descend 20 feet the moment they're encased, but they don't take damage from this fall. A creature encased in rock can attempt to {@action Escape} against your spell DC to end the effect. Otherwise, the creature remains encased until it takes a total of 50 damage, freeing it from the rock.",
 				"Additionally, creatures in the area and those within 5 feet of the lava column automatically take {@damage 3d6} fire damage from the intense heat, regardless of the results of their saving throws.",
 				{
 					"type": "successDegree",
@@ -31253,7 +31253,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes full damage.",
 						"Failure": "The target takes full damage and is {@condition drained} {@dice 1d4}.",
-						"Critical Failure": "The target takes double damage and is {@condition drained|CRB|drained 4}."
+						"Critical Failure": "The target takes double damage and is {@condition drained 4}."
 					}
 				}
 			],
@@ -31323,9 +31323,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The target is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target is {@condition frightened|CRB|frightened 3}."
+						"Success": "The target is {@condition frightened 1}.",
+						"Failure": "The target is {@condition frightened 2}.",
+						"Critical Failure": "The target is {@condition frightened 3}."
 					}
 				}
 			],
@@ -32316,9 +32316,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target takes half damage and is {@condition frightened|CRB|frightened 1}.",
-						"Failure": "The target takes full damage and is {@condition frightened|CRB|frightened 2}.",
-						"Critical Failure": "The target is so afraid, it might instantly die. It must attempt a Fortitude saving throw. If the target succeeds, it takes double damage and is {@condition frightened|CRB|frightened 2}, and it's also {@condition fleeing} until the end of its next turn unless it critically succeeded. If it fails, it is reduced to 0 Hit Points and dies."
+						"Success": "The target takes half damage and is {@condition frightened 1}.",
+						"Failure": "The target takes full damage and is {@condition frightened 2}.",
+						"Critical Failure": "The target is so afraid, it might instantly die. It must attempt a Fortitude saving throw. If the target succeeds, it takes double damage and is {@condition frightened 2}, and it's also {@condition fleeing} until the end of its next turn unless it critically succeeded. If it fails, it is reduced to 0 Hit Points and dies."
 					}
 				}
 			],
@@ -32882,8 +32882,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition stunned|CRB|stunned 1}.",
-						"Failure": "On the target's next turn, it's {@condition stunned|CRB|stunned 1} and you partially control it, causing it to take a single action of your choice. If it has actions left, it can act normally.",
+						"Success": "The target is {@condition stunned 1}.",
+						"Failure": "On the target's next turn, it's {@condition stunned 1} and you partially control it, causing it to take a single action of your choice. If it has actions left, it can act normally.",
 						"Critical Failure": "The target is {@condition controlled} for 1 round."
 					}
 				}

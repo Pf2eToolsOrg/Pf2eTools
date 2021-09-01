@@ -41,11 +41,9 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
-				"precise": [],
 				"imprecise": [
 					"{@ability scent} 30 feet"
 				],
-				"vague": [],
 				"other": [
 					"{@ability low-light vision}"
 				]
@@ -91,8 +89,17 @@
 			"source": "SoM",
 			"page": 228,
 			"type": "Companion",
-			"size": "Small",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shadow Hound",
+					"entries": [
+						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
+					]
+				}
+			],
 			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"size": "Small",
 			"attacks": [
 				{
 					"range": "Melee",
@@ -101,15 +108,6 @@
 						"finesse"
 					],
 					"damage": "{@dice 1d8} piercing"
-				}
-			],
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Shadow Hound",
-					"entries": [
-						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
-					]
 				}
 			],
 			"abilityMods": {
@@ -123,11 +121,9 @@
 			"hp": 4,
 			"skill": "Intimidation",
 			"senses": {
-				"precise": [],
 				"imprecise": [
 					"{@ability scent} 30 feet"
 				],
-				"vague": [],
 				"other": [
 					"{@ability darkvision}"
 				]
@@ -146,71 +142,12 @@
 					"unit": "action"
 				},
 				"entries": [
-					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don’t require a language and don’t take any penalty due to not sharing a language."
+					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don't require a language and don't take any penalty due to not sharing a language."
 				]
 			}
 		}
 	],
 	"familiar": [
-		{
-			"name": "Shadow Familiar",
-			"source": "SoM",
-			"page": 229,
-			"type": "Familiar",
-			"traits": [
-				"Uncommon",
-				"Shadow"
-			],
-			"access": "You're a {@archetype Shadowcaster|SoM}.",
-			"requires": 7,
-			"granted": [
-				"{@familiarAbility darkvision}",
-				"{@familiarAbility manual dexterity}",
-				"{@familiarAbility master's form|APG}",
-				"{@familiarAbility resistance|APG} (cold and negative)",
-				"{@familiarAbility shadow step|SoM}"
-			],
-			"abilities": [
-				{
-					"name": "Become Shadow",
-					"activity": {
-						"entry": "{@as 1}",
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Shadow",
-						"Transmutation"
-					],
-					"entries": [
-						"The shadow familiar transforms its body into barely tangible shadow. It gains resistance to all damage (except force) equal to half your level but can’t use any actions requiring a physical form. The familiar can also slip through gaps at least 2 inches wide, or 1 inch wide if it {@action Squeeze||Squeezes}. It can use this action again to return to its normal form.",
-						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
-					]
-				},
-				{
-					"name": "Slink in Shadows",
-					"entries": [
-						"The shadow familiar can {@action Hide} or end its {@action Sneak} in a creature’s or object’s shadow."
-					]
-				},
-				{
-					"name": "Steal Shadow",
-					"activity": {
-						"entry": "{@as 1}",
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Necromancy"
-					],
-					"frequency": "once per 10 minutes",
-					"entries": [
-						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
-						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
-					]
-				}
-			]
-		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -508,6 +445,65 @@
 			]
 		},
 		{
+			"name": "Shadow Familiar",
+			"source": "SoM",
+			"page": 229,
+			"type": "Familiar",
+			"traits": [
+				"Uncommon",
+				"Shadow"
+			],
+			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"requires": 7,
+			"granted": [
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility master's form|APG}",
+				"{@familiarAbility resistance|APG} (cold and negative)",
+				"{@familiarAbility shadow step|SoM}"
+			],
+			"abilities": [
+				{
+					"name": "Become Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Shadow",
+						"Transmutation"
+					],
+					"entries": [
+						"The shadow familiar transforms its body into barely tangible shadow. It gains resistance to all damage (except force) equal to half your level but can't use any actions requiring a physical form. The familiar can also slip through gaps at least 2 inches wide, or 1 inch wide if it {@action Squeeze||Squeezes}. It can use this action again to return to its normal form.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
+					]
+				},
+				{
+					"name": "Slink in Shadows",
+					"entries": [
+						"The shadow familiar can {@action Hide} or end its {@action Sneak} in a creature's or object's shadow."
+					]
+				},
+				{
+					"name": "Steal Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Necromancy"
+					],
+					"frequency": "once per 10 minutes",
+					"entries": [
+						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
+					]
+				}
+			]
+		},
+		{
 			"name": "Spellslime",
 			"source": "APG",
 			"page": 147,
@@ -728,7 +724,7 @@
 						"Teleportation"
 					],
 					"entries": [
-						"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar’s line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
+						"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar's line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
 					]
 				}
 			]
@@ -907,7 +903,7 @@
 					"type": "pf2-h3",
 					"name": "Angel Eidolon",
 					"entries": [
-						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon’s link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it."
+						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon's link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it."
 					]
 				}
 			],
@@ -960,9 +956,6 @@
 				"Religion"
 			],
 			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
 				"other": [
 					"{@ability darkvision}"
 				]
@@ -978,7 +971,7 @@
 					"name": "Hallowed Strikes",
 					"type": "initial",
 					"entries": [
-						"Your eidolon’s attacks are hallowed by the celestial realms. Your eidolon’s unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual –2 circumstance penalty."
+						"Your eidolon's attacks are hallowed by the celestial realms. Your eidolon's unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual \u20132 circumstance penalty."
 					]
 				},
 				{
@@ -986,7 +979,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon emanates a powerful aura—resembling that of an astral deva—that protects creatures as they travel. The aura has the {@trait abjuration}, {@trait aura}, and {@trait divine} traits. Your eidolon and its allies within a 20-foot emanation are protected from severe heat and cold, and your eidolon is never {@condition flat-footed} to creatures inside the aura that are of a lower level than the eidolon.",
+						"Your eidolon emanates a powerful aura\u2014resembling that of an astral deva\u2014that protects creatures as they travel. The aura has the {@trait abjuration}, {@trait aura}, and {@trait divine} traits. Your eidolon and its allies within a 20-foot emanation are protected from severe heat and cold, and your eidolon is never {@condition flat-footed} to creatures inside the aura that are of a lower level than the eidolon.",
 						"When you gain the transcendence class feature, this evolves to the full benefits of an astral deva; your eidolon and allies in the aura are protected from environmental damage from any plane, including severe and extreme heat and cold as well as more unusual dangers."
 					]
 				},
@@ -995,7 +988,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon’s angelic power allows them to assuage a variety of ailments, just like most other powerful angels. Your eidolon can cast {@spell remove curse}, {@spell remove disease}, {@spell remove fear}, and {@spell remove paralysis} once per day each as 9th-level divine innate spells."
+						"Your eidolon's angelic power allows them to assuage a variety of ailments, just like most other powerful angels. Your eidolon can cast {@spell remove curse}, {@spell remove disease}, {@spell remove fear}, and {@spell remove paralysis} once per day each as 9th-level divine innate spells."
 					]
 				}
 			]
