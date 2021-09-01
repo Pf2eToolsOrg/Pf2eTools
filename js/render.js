@@ -3221,6 +3221,9 @@ Renderer.ability = {
 		const renderStack = [];
 		const renderer = Renderer.get();
 		// FIXME: Is this order right?
+		if (it.aspect != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Aspect&nbsp;</strong>${renderer.render(it.aspect)}</p>`);
+		}
 		if (it.cost != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cost&nbsp;</strong>${renderer.render(it.cost)}</p>`);
 		}
@@ -4909,9 +4912,11 @@ Renderer.generic = {
 		options = options || {};
 		const traits = it.traits || [];
 		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
-		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
+		return `
+		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
+		${Renderer.ability.getSubHead(it)}
 		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
 		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},
