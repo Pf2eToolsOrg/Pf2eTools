@@ -26,7 +26,6 @@
 			"entries": [
 				{
 					"type": "pf2-h1",
-					
 					"name": "Proficiency Without Level",
 					"source": "GMG",
 					"page": 198,
@@ -988,7 +987,7 @@
 												],
 												[
 													"17-18",
-													"{@b Religious Community} You were raised in a community of religious scholars, such as the town around an abbey, a remote elven forest shrine, or a dwarven temple-city. Add {@skill lore|Crb|Art Lore}, {@skill lore|Crb|Scribing Lore}, Lore about a deity that was the focus or enemy of your community (such as {@skill lore|crb|Pharasma Lore}), and {@skill Lore} about a plane (other than the Material Plane) where that deity resides to your background options."
+													"{@b Religious Community} You were raised in a community of religious scholars, such as the town around an abbey, a remote elven forest shrine, or a dwarven temple-city. Add {@skill lore|Crb|Art Lore}, {@skill lore|Crb|Scribing Lore}, Lore about a deity that was the focus or enemy of your community (such as {@skill lore|crb|Pharasma Lore}), and {@skill Lore} about a plane (other than the {@place Material Plane}) where that deity resides to your background options."
 												],
 												[
 													"19+",
@@ -6401,28 +6400,328 @@
 									"type": "pf2-h3",
 									"name": "Arcane Adjustments",
 									"entries": [
-										"The creature gains the {@trait arcane} trait and can cast a single innate spell from the arcane spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics."
+										"The creature gains the {@trait arcane} trait and can cast a single innate spell from the arcane spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics.",
+										{
+											"source": "SoM",
+											"page": 220,
+											"labelRowIdx": [
+												0
+											],
+											"colStyles": [
+												"text-left",
+												"text-left",
+												"text-left"
+											],
+											"rows": [
+												[
+													"Creature Level",
+													"Spell Level (Statistics)",
+													"Suggested Spells"
+												],
+												[
+													"–1 to 2",
+													"Cantrip (DC 15, attack +7)",
+													"{@spell Daze}, {@spell detect magic}, {@spell shield}, {@spell telekinetic projectile}"
+												],
+												[
+													"3 to 4",
+													"1st (DC 18, attack +10)",
+													"{@spell Charm}, {@spell fleet step}, {@spell grim tendrils}, {@spell magic missile}, {@spell sleep}"
+												],
+												[
+													"5 to 6",
+													"2nd (DC 21, attack +13)",
+													"{@spell Blur}, {@spell invisibility}, {@spell mirror image}, {@spell see invisibility}, {@spell spider climb}"
+												],
+												[
+													"7 to 8",
+													"3rd (DC 23, attack +15)",
+													"{@spell Blindness}, {@spell fireball}, {@spell haste}, {@spell hypnotic pattern}, {@spell lightning bolt}, {@spell wall of wind}"
+												],
+												[
+													"9 to 10",
+													"4th (DC 26, attack +18)",
+													"{@spell Blink}, {@spell confusion}, {@spell fire shield}, {@spell freedom of movement}, {@spell wall of fire}"
+												],
+												[
+													"11 to 12",
+													"5th (DC 29, attack +21)",
+													"{@spell Cloak of colors}, {@spell cloudkill}, {@spell cone of cold}, {@spell tongues}"
+												],
+												[
+													"13 to 14",
+													"6th (DC 31, attack +23)",
+													"{@spell Chain lightning}, {@spell spellwrack}, {@spell true seeing}"
+												],
+												[
+													"15 to 16",
+													"7th (DC 34, attack +26)",
+													"{@spell Fiery body}, {@spell prismatic spray}, {@spell true target}"
+												],
+												[
+													"17 to 18",
+													"8th (DC 35, attack +27)",
+													"{@spell Disappearance}, {@spell horrid wilting}, {@spell maze}"
+												],
+												[
+													"19 to 20",
+													"9th (DC 38, attack +30)",
+													"{@spell Meteor swarm}, {@spell prismatic sphere}"
+												],
+												[
+													"21 or higher",
+													"10th (DC 42, attack +34)",
+													"{@spell Time stop}, {@spell wish}"
+												]
+											],
+											"type": "table"
+										}
 									]
 								},
 								{
 									"type": "pf2-h3",
 									"name": "Divine Adjustments",
 									"entries": [
-										"The creature gains the {@trait divine} trait and can cast a single innate spell from the divine spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics."
+										"The creature gains the {@trait divine} trait and can cast a single innate spell from the divine spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics.",
+										{
+											"source": "SoM",
+											"page": 220,
+											"labelRowIdx": [
+												0
+											],
+											"colStyles": [
+												"text-left",
+												"text-left",
+												"text-left"
+											],
+											"rows": [
+												[
+													"Creature Level",
+													"Spell Level (Statistics)",
+													"Suggested Spells"
+												],
+												[
+													"–1 to 2",
+													"Cantrip (DC 15, attack +7)",
+													"{@spell Detect magic}, {@spell divine lance}, {@spell guidance}, {@spell light}"
+												],
+												[
+													"3 to 4",
+													"1st (DC 18, attack +10)",
+													"{@spell Bane}, {@spell bless}, {@spell heal}, {@spell sanctuary}"
+												],
+												[
+													"5 to 6",
+													"2nd (DC 21, attack +13)",
+													"{@spell Death knell}, {@spell restoration}, {@spell silence}, {@spell spiritual weapon}"
+												],
+												[
+													"7 to 8",
+													"3rd (DC 23, attack +15)",
+													"{@spell Chilling darkness}, {@spell heroism}, {@spell sanctified ground}, {@spell searing light}"
+												],
+												[
+													"9 to 10",
+													"4th (DC 26, attack +18)",
+													"{@spell Divine wrath}, {@spell spell immunity}"
+												],
+												[
+													"11 to 12",
+													"5th (DC 29, attack +21)",
+													"{@spell Abyssal plague}, {@spell flame strike}, {@spell sending}, {@spell spiritual guardian}"
+												],
+												[
+													"13 to 14",
+													"6th (DC 31, attack +23)",
+													"{@spell Blade barrier}, {@spell righteous might}"
+												],
+												[
+													"15 to 16",
+													"7th (DC 34, attack +26)",
+													"{@spell Eclipse burst}, {@spell energy aegis}, {@spell sunburst}"
+												],
+												[
+													"17 to 18",
+													"8th (DC 35, attack +27)",
+													"{@spell Divine aura}, {@spell spiritual epidemic}"
+												],
+												[
+													"19 to 20",
+													"9th (DC 38, attack +30)",
+													"{@spell Overwhelming presence}, {@spell wail of the banshee}"
+												],
+												[
+													"21 or higher",
+													"10th (DC 42, attack +34)",
+													"{@spell Miracle}, {@spell revival}"
+												]
+											],
+											"type": "table"
+										}
 									]
 								},
 								{
 									"type": "pf2-h3",
 									"name": "Occult Adjustments",
 									"entries": [
-										"The creature gains the {@trait occult} trait and can cast a single innate spell from the occult spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics."
+										"The creature gains the {@trait occult} trait and can cast a single innate spell from the occult spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics.",
+										{
+											"source": "SoM",
+											"page": 220,
+											"labelRowIdx": [
+												0
+											],
+											"colStyles": [
+												"text-left",
+												"text-left",
+												"text-left"
+											],
+											"rows": [
+												[
+													"Creature Level",
+													"Spell Level (Statistics)",
+													"Suggested Spells"
+												],
+												[
+													"–1 to 2",
+													"Cantrip (DC 15, attack +7)",
+													"{@spell Chill touch}, {@spell guidance}, {@spell ghost sound}, {@spell shield}"
+												],
+												[
+													"3 to 4",
+													"1st (DC 18, attack +10)",
+													"{@spell Bane}, {@spell charm}, {@spell fear}, {@spell grim tendrils}, {@spell ray of enfeeblement}"
+												],
+												[
+													"5 to 6",
+													"2nd (DC 21, attack +13)",
+													"{@spell Darkness}, {@spell false life}, {@spell paranoia}"
+												],
+												[
+													"7 to 8",
+													"3rd (DC 23, attack +15)",
+													"{@spell Enthrall}, {@spell haste}, {@spell slow}"
+												],
+												[
+													"9 to 10",
+													"4th (DC 26, attack +18)",
+													"{@spell Confusion}, {@spell phantasmal killer}, {@spell suggestion}"
+												],
+												[
+													"11 to 12",
+													"5th (DC 29, attack +21)",
+													"{@spell Abyssal plague}, {@spell black tentacles}, {@spell crushing despair}"
+												],
+												[
+													"13 to 14",
+													"6th (DC 31, attack +23)",
+													"{@spell Feeblemind}, {@spell repulsion}, {@spell spirit blast}"
+												],
+												[
+													"15 to 16",
+													"7th (DC 34, attack +26)",
+													"{@spell Mask of terror}, {@spell visions of danger}, {@spell warp mind}"
+												],
+												[
+													"17 to 18",
+													"8th (DC 35, attack +27)",
+													"{@spell Maze}, {@spell mind}, {@spell spirit song}, {@spell uncontrollable dance}"
+												],
+												[
+													"19 to 20",
+													"9th (DC 38, attack +30)",
+													"{@spell Telepathic demand}, {@spell unfathomable song}"
+												],
+												[
+													"21 or higher",
+													"10th (DC 42, attack +34)",
+													"{@spell Alter reality}, {@spell fabricated truth}"
+												]
+											],
+											"type": "table"
+										}
 									]
 								},
 								{
 									"type": "pf2-h3",
 									"name": "Primal Adjustments",
 									"entries": [
-										"The creature gains the {@trait primal} trait and can cast a single innate spell from the primal spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics."
+										"The creature gains the {@trait primal} trait and can cast a single innate spell from the primal spell list once per day. Use the creature’s level (see the table below) to determine the spell’s level. Use the spell DC and spell attack roll on the table if the creature does not already have those statistics.",
+										{
+											"source": "SoM",
+											"page": 220,
+											"labelRowIdx": [
+												0
+											],
+											"colStyles": [
+												"text-left",
+												"text-left",
+												"text-left"
+											],
+											"rows": [
+												[
+													"Creature Level",
+													"Spell Level (Statistics)",
+													"Suggested Spells"
+												],
+												[
+													"–1 to 2",
+													"Cantrip (DC 15, attack +7)",
+													"{@spell Electric arc}, {@spell produce flame}"
+												],
+												[
+													"3 to 4",
+													"1st (DC 18, attack +10)",
+													"{@spell Heal}, {@spell jump}, {@spell magic fang}, {@spell pass without trace}"
+												],
+												[
+													"5 to 6",
+													"2nd (DC 21, attack +13)",
+													"{@spell Barkskin}, {@spell enlarge}, {@spell resist energy}, {@spell shatter}"
+												],
+												[
+													"7 to 8",
+													"3rd (DC 23, attack +15)",
+													"{@spell Blindness}, {@spell slow}, {@spell stinking cloud}"
+												],
+												[
+													"9 to 10",
+													"4th (DC 26, attack +18)",
+													"{@spell Air walk}, {@spell freedom of movement}, {@spell solid fog}"
+												],
+												[
+													"11 to 12",
+													"5th (DC 29, attack +21)",
+													"{@spell Cloudkill}, {@spell elemental form}, {@spell wall of ice}"
+												],
+												[
+													"13 to 14",
+													"6th (DC 31, attack +23)",
+													"{@spell Baleful polymorph}, {@spell field of life}, {@spell tangling creepers}"
+												],
+												[
+													"15 to 16",
+													"7th (DC 34, attack +26)",
+													"{@spell Eclipse burst}, {@spell regenerate}, {@spell sunburst}, {volcanic eruption}"
+												],
+												[
+													"17 to 18",
+													"8th (DC 35, attack +27)",
+													"{@spell Earthquake}, {@spell horrid wilting}, {@spell punishing winds}"
+												],
+												[
+													"19 to 20",
+													"9th (DC 38, attack +30)",
+													"{@spell Nature’s enmity}, {@spell storm of vengeance}"
+												],
+												[
+													"21 or higher",
+													"10th (DC 42, attack +34)",
+													"{@spell Cataclysm}, {@spell primal phenomenon}"
+												]
+											],
+											"type": "table"
+										}
 									]
 								}
 							]
@@ -6594,6 +6893,169 @@
 									"entries": [
 										"Many small areas of the Shining Kingdoms contain portals to the First World, and therefore might have the characteristic touch of primal magic common to such areas.",
 										"{@b Darkmoon Vale:} The area’s affinity for evocation magic might make even innocuous creatures capable of dangerous magical bursts."
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shadow Magic",
+			"source": "SoM",
+			"page": 224,
+			"type": "Shadow Magic",
+			"rarity": "Uncommon",
+			"entries": [
+				{
+					"type": "pf2-h1",
+					"name": "Shadow Magic",
+					"source": "SoM",
+					"page": 224,
+					"entries": [
+						{
+							"type": "pf2-h1-flavor",
+							"entries": [
+								"While most types of magic are additive, arising from gaining knowledge or abilities, shadow magic is different—to touch the shadow, a spellcaster must surrender the piece of their spirit that normally keeps the darkness out. This process permanently removes the spellcaster’s ability to cast spells of light and warmth but compensates them with an unmatched facility for manipulating the energies of darkness and shadow."
+							]
+						},
+						"{@b Rarity:} {@trait Uncommon}",
+						"This section has options for both spellcasters who use shadow magic and for companions that dwell in the dark.",
+						"{@b {@archetype Shadowcaster|SoM|Shadowcasters}} sacrifice the magic of light to bind themselves to the darkness. Information about shadowcasters in the Inner Sea region can be found on this page and the {@archetype shadowcaster|SoM|archetype}.",
+						"{@b Shadow companions and familiars} can accompany shadowcasters or can join anyone else as shadowy compatriots. These creatures might follow one who’s already traveling the path of shadow or might be strange ambassadors to someone of a more conventional stripe. {@archetype Shadowdancer|APG|Shadowdancers} with companions typically choose these creatures of shadow.",
+						{
+							"type": "pf2-h2",
+							"name": "Shadowcaster Origins",
+							"entries": [
+								"Shadowcasters can come from any tradition of magic, though divine or occult casters are the most likely to attempt to master the power of shadow. Their magic is most entwined with the spirit, and thus they’re most easily able to understand and accept the sacrifice necessary to become a shadowcaster. Primal practitioners are rarer, often finding the power of shadow antithetical to their goals and beliefs. Arcane spellcasters are slightly more likely to use shadow magic, but it isn’t uncommon for wizards to question the value of the trade, unwilling to give up the ability to manipulate the powers of light in exchange for increased facility with shadow and darkness."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Cheliax",
+							"entries": [
+								"While the city of Westcrown, former capital of the empire of Cheliax, managed to remove the plague of shadow beasts that haunted the streets every night, years of connection to the shadows due to a powerful artifact brought many in the area into contact with shadowy entities. Out of those who heard the whispers, some chose to accept the bargains in exchange for power. This phenomenon has led to a rising generation with abnormally high numbers of self-taught shadowcasters, each acting as individuals with no underlying infrastructure."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Crown of the World",
+							"entries": [
+								"Not all shadowcasters turn their power toward evil ends. The energies of the {@place Shadow Plane} often corrupt mortals, draining them of empathy and emotion while tempting them to commit despicable acts in pursuit of ever greater power. However, some manage to resist the call of corruption, walking the twilit area between light and darkness. In the Crown of the World, some Erutaki tribes and villages count shadowcasters, known as aushtrok, among their elders. The aushtrok are valued for their ability to hear the whispers of dangerous spirits and dark powers, drawing insights that can warn them of impending doom and creeping dangers that would go unnoticed by those who rely on the light to see."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Geb",
+							"entries": [
+								"Shadowcasters are particularly common in the nation of Geb, where mortals toil under the rule of an aristocracy comprised of liches, ghouls, vampires, and other types of intelligent undead. Shadow magic holds particular appeal to such beings, allowing them to shroud their bodies in protective darkness that shields them from the sun’s burning light. The magic not only protects the undead, but also frees them from the predictability of a solar schedule, allowing them to surprise unsuspecting mortals who mistakenly believe that the day can provide them a period of reprieve from their predaceous overseers."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Mwangi Expanse",
+							"entries": [
+								"For generations, the orcs of the Mwangi Expanse have protected themselves from the constant threats of demons left unbound by ancient civilizations and great beasts that stalk the jungle. Most work together with neighboring communities and engage in diplomacy, some are just as likely to attack first. While these families shun destructive types of magic, having witnessed firsthand the kind of devastation a single wizard with more power than sense can unleash upon the world, they’ve developed certain techniques and rituals that allow them to fight for their place in the Expanse on equal footing. Chief among these techniques is a ritual for gaining power that uses the blood of shadow demons to grant their deathly stealth and cold violence. These shade walkers are feared not just for the sudden and devastating violence they unleash, but for their ability to immediately appear and disappear before and after such acts, leaving only the ruined corpses of their enemies as evidence."
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"name": "Sources of Shadow",
+							"entries": [
+								"Throughout Golarion there are an unsettling variety of beings who can initiate a chosen acolyte into the secrets of shadow. In the land of Nidal, many Kuthite priests are gifted with the secrets of shadow magic by the priesthood of Zon-Kuthon, or in some instances through dreams and visions imparted directly by Zon-Kuthon or one of his extraplanar servitors. In Tian Xia, wayangs are an ancestry of small, supernatural humanoids born of shadow who often find that the secrets of shadow magic reveal themselves readily instead of hiding as they do from most other mortals. In the western continent of Arcadia, it is said that the norns who dwell in the Forest of Trials are of a more sinister bent than their kin, using the power of shadow to test the Ulfen kings who seek to pass through their woods on the way to Valenhall."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Nidal",
+							"entries": [
+								"Perhaps the most notorious shadowcasters in Golarion are the disciples of the Midnight Lord, Zon-Kuthon. The twisted god’s servitors use the lure of shadow magic to attract new members to their priesthood and corrupt them with dark power, as those who surrender the piece of their spirit necessary to learn shadow magic also lose their defenses against the lure of Zon-Kuthon’s promises. Through rituals of pain in temples where no light is allowed to shine, acolytes are tortured, mutilated, and indoctrinated before being rewarded by having their bodies infused with energy drawn from the {@place Shadow Plane}. This energy changes the very nature of their power forevermore. The most powerful of those who survive these rituals with some semblance of their personality intact join Nidal’s Umbral Court, overseeing the nation that serves as the seat of Zon-Kuthon’s power on Golarion."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Sarkoris",
+							"entries": [
+								"In the Sarkoris Scar, native Sarkorians and foreign crusaders alike have long fought the encroaching hordes of demons pouring forth from the Worldwound. With the Worldwound now closed, those same reclaimers have begun to discover that they weren’t the only ones fighting the demonic invasion: more than just the powers of good and forces of nature aided the struggle. Clans of native Sarkorians led by shadowcasting summoners and grim eidolons have emerged from their hidden strongholds. They bring stories that speak of generations spent hiding in caverns and sunless dells as they fought the demons with guerrilla tactics before covering hasty retreats with illusions and misdirection."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "The Shadow Plane",
+							"entries": [
+								"Regardless of their place of origin, a spellcaster might take their power directly from the {@place Shadow Plane}. This dimension resembles the {@place Material Plane}, but with nothing but the faintest ambient light, its source unclear. The structures and geography of the Shadow Plane match those of the {@place Material Plane} in broad strokes, though altered and twisted in subtle ways. Many of the fauna of the {@place Material Plane} have dark echoes on the {@place Shadow Plane}. These creatures sometimes follow at the heels of those visiting the {@place Shadow Plane}, becoming shadow companions even if a visitor leaves the plane. Some theologians believe that the mysterious veiled goddess Sivanah was born of the {@place Shadow Plane}. Shadowcasters sometimes reach out to her as a friendlier patron than Zon-Kuthon, and those in service to Sivanah actively campaign against the abuses of the Midnight Lord’s servants. These shadowcasters must still make the same sacrifice as others, but they tend to view the diminishment of their soul as granting them the ability to see past one of reality’s veils, a veil that blinds most people even as it protects them from what they can’t see."
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Ustalav",
+							"entries": [
+								"Mist-shrouded Ustalav is home to many forms of dark and brooding magic, especially in the blighted wasteland of Virlych and the forlorn county of Ulcazar. When the sun sets, vampires and other nocturnal creatures emerge from the twilight. Both these creatures and those who hunt them have cause to seek shadow magic, either to stave off the light or to become one with the darkness.",
+								"Many family lines became bound to shadow after an ancestor leveraged a part of their spirit to pay a debt. Nobles bound to shadow magic often socialize with other families in the same situation, which often leads to marriages. Subsequent generations then have an even greater shadow connection, granting more power but taking an even greater toll—and so on down through the generations."
+							]
+						},
+						{
+							"type": "pf2-h2",
+							"name": "Shadow Companions",
+							"entries": [
+								"Spellcasters aren’t the sole purveyors of shadow magic. Some adventurers are guided on their path by companions with an inherent connection to shadow, whether or not the adventurer is a shadowcaster. Adventurers who would wield shadow should follow the guidance of such beings. {@archetype Shadowcaster|SoM|Shadowcasters}, as well as others who might stumble across this knowledge, have access to the shadow hound animal companion and the shade specialization option.",
+								"{@note The {@companion Shadow Hound|SoM} statblock can be found on the {@Pf2eTools Companions & Familiars|companionsfamiliars.html} page.}",
+								{
+									"type": "pf2-h3",
+									"name": "Shade Specialization",
+									"entries": [
+										"The shade specialization is an alternative to the specialization benefits included on page 217 of the Core Rulebook, such as ambusher or tracker, that draws an animal companion closer to shadow. This specialization is {@trait uncommon}, though you gain access to it if you’re a {@archetype shadowcaster}.",
+										{
+											"type": "pf2-h4",
+											"name": "Shade",
+											"entries": [
+												"Your companion’s physical form is made, in whole or in part, of shadow. It gains {@ability darkvision}, resistance 5 to all damage except force, and in areas of dim light or darkness, it can Step 10 feet instead of 5 feet. Its proficiency rank in unarmored defense increases to expert, or master if it’s nimble."
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-sidebar",
+							"name": "Stalking the Shadows",
+							"entries": [
+								"The Verduran Forest is a site of regular conflict. Loggers and hunters from Andoran and Taldor have spent generations at odds with the fey and druids who seek to protect the forest against overharvesting and deforestation. To help combat this encroachment, some druids and rangers have turned to darker forces, developing rituals that draw magic from the Shadow Plane and infuse it into woodland animals. These “shadow animals” develop deadly powers and mutations that make them especially effective at the hit-and-run tactics favored among the Verduran’s guardians.",
+								"Some druid elders worry that this process has introduced a corruption far more dangerous than any mortal woodcutter. More moderate and conciliatory members note that while the deadly shadow beasts strike fear into the hearts of would-be loggers, they also make finding a healthy balance difficult. These moderates would prefer for loggers to be allowed to harvest in smaller amounts that actually help prevent overgrowth and forest fires, but the woodcutters fear to leave the safety of their work groups and encampments for any parley with the druids while shadow animals might haunt the woods."
+							]
+						},
+						{
+							"type": "pf2-h2",
+							"name": "Shadow Familiars",
+							"entries": [
+								"Familiars bind themselves to mortals in a symbiotic relationship. Shadowcaster witches are among the most likely to obtain a familiar with the power of shadow, particularly those with the night patron. Others likely to take on shadow familiars include shadow bloodline sorcerers and darkness domain clerics.",
+								"{@note The {@familiar Shadow Familiar|SoM} statblock can be found on the {@Pf2eTools Companions & Familiars|companionsfamiliars.html} page.}"
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Familiar Abilities",
+							"entries": [
+								"Shadow familiars use these additional familiar abilities. A shadowcaster, however, can select these abilities for any kind of familiar.",
+								"{@b {@familiarAbility Darkeater|SoM}:} Your familiar naturally recovers in the shadows. After spending 10 consecutive minutes in an area of dim light or darkness, your familiar recovers a number of Hit Points equal to half your level.",
+								"{@b {@familiarAbility Shadow Step|SoM}:} Your familiar gains the Shadow Step action. You must be at least 7th level to select this familiar ability for your familiar.",
+								{
+									"type": "ability",
+									"name": "Shadow Step",
+									"activity": {
+										"entry": "{@as 1}",
+										"number": 1,
+										"unit": "action"
+									},
+									"requirements": "The familiar is in dim light or darkness.",
+									"traits": [
+										"Conjuration",
+										"Shadow",
+										"Teleportation"
+									],
+									"entries": [
+										"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar’s line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
 									]
 								}
 							]
