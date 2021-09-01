@@ -902,7 +902,11 @@ function Renderer () {
 		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
 		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}. `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
-		if (entry.DC != null) textStack[0] += `<strong>Saving Throw&nbsp;</strong>DC ${entry.DC} ${entry.savingThrow}. `;
+		if (entry.DC != null || entry.savingThrow != null) {
+			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
+			if (entry.DC != null) textStack[0] += `DC ${entry.DC}`
+			textStack[0] += `${renderer.render(entry.savingThrow)}.`
+		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
 		if (entry.stages) {
