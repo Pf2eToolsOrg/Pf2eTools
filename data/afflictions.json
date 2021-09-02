@@ -1,42 +1,6 @@
 {
 	"disease": [
 		{
-			"name": "Soulforged Corruption",
-			"source": "SoM",
-			"page": 234,
-			"type": "Curse",
-			"traits": [
-				"Curse",
-				"Divine",
-				"Enchantment"
-			],
-			"entries": [
-				"A successful remove curse spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
-				{
-					"type": "affliction",
-					"level": "your level",
-					"savingThrow": "Will save against a {@table DC Adjustments||very hard} {@table DCs by Level||DC of the curse’s level}",
-					"stages": [
-						{
-							"stage": 1,
-							"entry": "You suffer the effects of your armament’s corruption flaw. If you try to manifest the armament’s essence form, you must attempt a DC {@flatDC 5} flat check. If you fail, only the normal form manifests, and you can’t try to manifest that armament’s essence form again that day",
-							"duration": "1 day"
-						},
-						{
-							"stage": 2,
-							"entry": "You suffer the effects of your armament’s corruption flaw, and any attempt to activate the armament’s essence form fails",
-							"duration": "1 day"
-						},
-						{
-							"stage": 3,
-							"entry": "You permanently destroy your soulforged armament. You can’t have a new soulforged armament until you remove the curse entirely with the {@ritual purify soul path|SoM} ritual",
-							"duration": "1 day"
-						}
-					]
-				}
-			]
-		},
-		{
 			"name": "Blinding Sickness",
 			"source": "GMG",
 			"page": 119,
@@ -489,6 +453,42 @@
 						{
 							"stage": 3,
 							"entry": "{@condition drained|| drained 3} and {@condition stupefied|| stupefied 3}",
+							"duration": "1 day"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Soulforged Corruption",
+			"source": "SoM",
+			"page": 234,
+			"type": "Curse",
+			"traits": [
+				"Curse",
+				"Divine",
+				"Enchantment"
+			],
+			"entries": [
+				"A successful remove curse spell, rather than ending this curse, reduces its stage by 1 (to a minimum of stage 1).",
+				{
+					"type": "affliction",
+					"level": "your level",
+					"savingThrow": "Will save against a {@table DC Adjustments||very hard} {@table DCs by Level||DC of the curse's level}",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "You suffer the effects of your armament's corruption flaw. If you try to manifest the armament's essence form, you must attempt a DC {@flatDC 5} flat check. If you fail, only the normal form manifests, and you can't try to manifest that armament's essence form again that day",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "You suffer the effects of your armament's corruption flaw, and any attempt to activate the armament's essence form fails",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "You permanently destroy your soulforged armament. You can't have a new soulforged armament until you remove the curse entirely with the {@ritual purify soul path|SoM} ritual",
 							"duration": "1 day"
 						}
 					]
