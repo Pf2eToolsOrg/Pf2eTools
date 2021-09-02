@@ -902,7 +902,11 @@ function Renderer () {
 		if (traits.length) textStack[0] += `(${renderer.render(traits.join(", "))}); `;
 		if (entry.level != null) textStack[0] += `<strong>Level&nbsp;</strong>${entry.level}. `;
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
-		if (entry.DC != null) textStack[0] += `<strong>Saving Throw&nbsp;</strong>DC ${entry.DC} ${entry.savingThrow}. `;
+		if (entry.DC != null || entry.savingThrow != null) {
+			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
+			if (entry.DC != null) textStack[0] += `DC ${entry.DC}`
+			textStack[0] += `${renderer.render(entry.savingThrow)}.`
+		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
 		if (entry.stages) {
@@ -3243,6 +3247,9 @@ Renderer.ability = {
 		const renderStack = [];
 		const renderer = Renderer.get();
 		// FIXME: Is this order right?
+		if (it.aspect != null) {
+			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Aspect&nbsp;</strong>${renderer.render(it.aspect)}</p>`);
+		}
 		if (it.cost != null) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Cost&nbsp;</strong>${renderer.render(it.cost)}</p>`);
 		}
@@ -3605,9 +3612,9 @@ Renderer.eidolon = {
 		${Renderer.utils.getNameDiv(eidolon, {type: "Eidolon", ...opts})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(eidolon.traits)}
-		<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>
-		<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>
+		${eidolon.tradition ? `<p class="pf2-stat pf2-stat__section"><strong>Tradition&nbsp;</strong>${renderer.render(eidolon.tradition)}</p>` : ""}
+		${eidolon.alignment ? `<p class="pf2-stat pf2-stat__section"><strong>Alignment&nbsp;</strong>${renderer.render(eidolon.alignment)}</p>` : ""}
+		${eidolon.home ? `<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size)}</p>
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
@@ -4935,9 +4942,11 @@ Renderer.generic = {
 		options = options || {};
 		const traits = it.traits || [];
 		const renderedSections = Renderer.generic.getRenderedSection(it.sections);
-		return `${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
+		return `
+		${Renderer.utils.getNameDiv(it, {"isEmbedded": options.isEmbedded, "type": `${it.type ? it.type : ""} `, "level": typeof it.level !== "number" ? it.level : undefined})}
 		${Renderer.utils.getDividerDiv()}
 		${Renderer.utils.getTraitsDiv(traits)}
+		${Renderer.ability.getSubHead(it)}
 		${renderedSections.join(`${Renderer.utils.getDividerDiv()}`)}
 		${options.noPage ? "" : Renderer.utils.getPageP(it)}`;
 	},

@@ -37,7 +37,7 @@
 			],
 			"prerequisites": "{@feat Basic Martial Magic|SoM}",
 			"entries": [
-				"You gain one magus feat. For the purpose of meeting its prerequisites, your magus level is equal to half your character level."
+				"You gain one {@filter magus|feats||classes=magus} feat. For the purpose of meeting its prerequisites, your magus level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another magus feat."
 		},
@@ -58,7 +58,7 @@
 			],
 			"prerequisites": "{@feat Basic Synergy|SoM}",
 			"entries": [
-				"You gain one summoner feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level."
+				"You gain one {@filter summoner|feats||classes=summoner} feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level."
 			],
 			"special": "You can select this feat more than once. Each time you select it, you gain another summoner feat."
 		},
@@ -92,7 +92,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -256,7 +256,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -281,7 +281,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -351,7 +351,7 @@
 			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
-				"You gain a 1st- or 2nd-level magus feat of your choice."
+				"You gain a {@filter 1st- or 2nd-level magus|feats||classes=magus|level=[1;2]} of your choice."
 			]
 		},
 		{
@@ -414,8 +414,7 @@
 			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
-				"You gain a 1st- or 2nd-level summoner feat of your choice.",
-				"Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic."
+				"You gain a 1st- or 2nd-level {@filter summoner|feats||classes=summoner} feat of your choice."
 			]
 		},
 		{
@@ -899,7 +898,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1000,7 +999,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -1190,7 +1189,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype",
@@ -1657,7 +1656,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -1940,7 +1939,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wellspring Mage"
 			},
 			"traits": [
 				"Abjuration",
@@ -2552,7 +2551,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -2677,7 +2676,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype",
@@ -2753,7 +2752,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Soulforger"
 			},
 			"traits": [
 				"Archetype"
@@ -2824,7 +2823,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Uncommon",
@@ -3065,7 +3064,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype",
@@ -3132,7 +3131,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -3152,7 +3151,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -3172,7 +3171,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype"
@@ -3194,14 +3193,14 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "ability to cast spells from spell slots,",
+			"prerequisites": "ability to cast spells from spell slots, {@feat Shadowcaster Dedication|SoM}",
 			"entries": [
-				"Shadowcaster Dedication Your own shadow speaks to you, providing knowledge of spells and a reservoir of magical power. Your shadow reservoir contains a single spell of each spell level at least 2 levels lower than the highest-level spell you can cast from your spell slots. This spell must come from your spell list, you must have access to it, and it must require a spell attack roll or a saving throw. These spells don't need to be prepared and aren't in your repertoire.",
+				"Your own shadow speaks to you, providing knowledge of spells and a reservoir of magical power. Your shadow reservoir contains a single spell of each spell level at least 2 levels lower than the highest-level spell you can cast from your spell slots. This spell must come from your spell list, you must have access to it, and it must require a spell attack roll or a saving throw. These spells don't need to be prepared and aren't in your repertoire.",
 				"Regardless of the way in which you cast spells, you can spontaneously cast a spell from your shadow reservoir by using one of your spell slots of the same level. If you're a prepared spellcaster, you lose the spell you prepared in that slot.",
 				"Spells cast from your shadow reservoir gain the {@trait shadow} trait, and affected creatures might be able to disbelieve them. If the spell requires an attack roll, use the higher of the target's AC or their Will DC. If the spell requires a saving throw, the target uses their Will saving throw or the spell's normal saving throw, whichever is higher. Each time a creature fails its saving throw against a spell cast from your reservoir, you gain a small tattoo inked on your flesh out of pure shadowstuff.",
 				"If you have more than one source of spells you can cast with spell slots, such as if you're a spellcaster with a multiclass archetype, choose one source of spells for your shadow reservoir."
@@ -3221,7 +3220,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype",
@@ -3244,7 +3243,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype"
@@ -3309,7 +3308,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -3382,7 +3381,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -3479,7 +3478,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Runelord"
 			},
 			"traits": [
 				"Archetype"
@@ -3518,7 +3517,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Soulforger"
 			},
 			"traits": [
 				"Archetype"
@@ -3546,7 +3545,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Soulforger"
 			},
 			"traits": [
 				"Archetype",
@@ -3892,8 +3891,8 @@
 			],
 			"prerequisites": "Charisma 14",
 			"entries": [
-				"You've formed a bond with an eidolon, an entity that manifests in a physical body only through its link to your life force. Your bond may be tenuous, but that doesn't make your connection any less special. You gain an eidolon (page 52) as well as the Manifest Eidolon activity.",
-				"Due to your tenuous link, you can't gain or use tandem actions. Because you don't have Act Together, only you or your eidolon can perform an exploration activity at one time, so for instance you couldn't both be Searching or Investigating.",
+				"You've formed a bond with an eidolon, an entity that manifests in a physical body only through its link to your life force. Your bond may be tenuous, but that doesn't make your connection any less special. You gain an {@filter eidolon|companionsfamiliars||Type=Eidolon} as well as the {@action Manifest Eidolon|SoM} activity.",
+				"Due to your tenuous link, you can't gain or use {@trait tandem} actions. Because you don't have {@action Act Together}, only you or your eidolon can perform an {@trait exploration} activity at one time, so for instance you couldn't both be {@action Search||Searching} or {@action Investigate||Investigating}.",
 				"Your eidolon is trained in unarmed attacks and unarmored defense, and shares your proficiency rank for {@skill Perception}, saving throws, and skill checks. Choose an eidolon type. You become trained in your eidolon's listed skills. For each of those skills that you are already trained in, you become trained in a different skill of your choice.",
 				"Your eidolon's initial ability scores are reduced. It starts with a 16 in any ability score listed at 18 for its eidolon array. It otherwise gains the statistics listed for an eidolon of that type.",
 				"At 5th level, the eidolon's ability score that was reduced to 16 increases to 18, before applying ability boosts. At levels 5, 10, 15, and 20, your eidolon also gets four ability boosts, which follow the same rules as yours."
@@ -4063,7 +4062,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Geomancer"
 			},
 			"traits": [
 				"Archetype"
@@ -4203,7 +4202,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Shadowcaster"
 			},
 			"traits": [
 				"Archetype"
@@ -4229,7 +4228,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You can allow your eidolon to travel far from your side. You learn the unfetter eidolon link spell (page 145). Increase the number of Focus Points in your focus pool by 1."
+				"You can allow your eidolon to travel far from your side. You learn the {@spell unfetter eidolon|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -4246,7 +4245,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wellspring Mage"
 			},
 			"traits": [
 				"Archetype"
@@ -4356,7 +4355,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Wellspring Mage"
 			},
 			"traits": [
 				"Archetype",
@@ -4364,7 +4363,7 @@
 			],
 			"prerequisites": "{@feat Wellspring Mage Dedication|SoM}",
 			"entries": [
-				"When you generate a wellspring surge, roll twice on Table 5\u20132 (page 250) and take the result of your choice. This doesn't apply when you cause another creature to generate a wellspring surge."
+				"When you generate a wellspring surge, roll twice on {@table Wellspring Surges|SoM|Table 5\u20132} and take the result of your choice. This doesn't apply when you cause another creature to generate a wellspring surge."
 			]
 		},
 		{
