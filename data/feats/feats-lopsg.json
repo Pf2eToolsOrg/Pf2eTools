@@ -15,7 +15,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -36,14 +36,14 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "Swordmaster",
+			"prerequisites": "{@feat Swordmaster Dedication|LOCG}; trained in light, medium, or heavy armor",
 			"entries": [
-				"Dedication; trained in light, medium, or heavy armor You've spent time training in your armor alongside other agents from the Swords. Your proficiency rank for light, medium, and heavy armor increases to expert for whichever of those you already had the trained proficiency rank in."
+				"You've spent time training in your armor alongside other agents from the Swords. Your proficiency rank for light, medium, and heavy armor increases to expert for whichever of those you already had the trained proficiency rank in."
 			]
 		},
 		{
@@ -56,7 +56,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -77,7 +77,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -127,7 +127,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -152,7 +152,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -175,15 +175,15 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype",
 				"Skill"
 			],
-			"prerequisites": "expert in {@skill Crafting}, Pathfinder Agent",
+			"prerequisites": "expert in {@skill Crafting}, {@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
-				"Dedication You're renowned for your ability to recover important items, whether they're from a long-abandoned temple or a thieves' den, and sometimes that requires creating a stand-in. You can spend 1 minute to assemble a facsimile of an object of no more than 1 Bulk that you can see from available materials. The facsimile has the same shape and Bulk as the replaced object and can pass as the object if not examined.",
+				"You're renowned for your ability to recover important items, whether they're from a long-abandoned temple or a thieves' den, and sometimes that requires creating a stand-in. You can spend 1 minute to assemble a facsimile of an object of no more than 1 Bulk that you can see from available materials. The facsimile has the same shape and Bulk as the replaced object and can pass as the object if not examined.",
 				"A creature familiar with the original who examines the object automatically realizes that it is a fake. A creature not familiar with the original can still tell it was a hastily jury-rigged stand-in of some kind, but they might not know the object was supposed to be something else."
 			]
 		},
@@ -201,16 +201,16 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype",
 				"Concentrate",
 				"Skill"
 			],
-			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, trained in",
+			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}, trained in {@skill Survival}",
 			"entries": [
-				"{@skill Survival} You've trained yourself to maintain a strong sense of direction at all times, even when you can't use a compass or see the sky above. You immediately intuit which direction is north (assuming the concept of north exists at your current location)."
+				"You've trained yourself to maintain a strong sense of direction at all times, even when you can't use a compass or see the sky above. You immediately intuit which direction is north (assuming the concept of north exists at your current location)."
 			]
 		},
 		{
@@ -223,12 +223,12 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@skill Lore} Seeker",
+			"prerequisites": "{@feat Lore Seeker|LOCG}",
 			"entries": [
 				"You've mastered useful spells that let you find {@condition hidden} truths others might miss, and a preferred spell comes naturally to you. When you gain this feat, choose one of the innate spells granted by the {@skill Lore} Seeker feat: comprehend language, restore senses, or see invisibility. You can cast this spell three times per day instead of once per day.",
 				"When you cast any of the spells granted by {@skill Lore} Seeker as innate spells, they gain additional effects. When you cast {@spell comprehend language}, the spell is heightened to 4th level. When you cast {@spell restore senses},the spell is heightened to half your level, rounded up. When you cast {@spell see invisibility}, for the duration of the spell you can use an action, which has the {@trait concentrate} trait, to see {@condition invisible} creatures normally (instead of seeing them as translucent shapes that are {@condition concealed} to you) until the end of your next turn."
@@ -248,7 +248,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -275,7 +275,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype",
@@ -302,7 +302,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -328,7 +328,7 @@
 				"skill": [
 					"Medicine"
 				],
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -352,7 +352,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -407,7 +407,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -526,7 +526,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -548,7 +548,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -580,7 +580,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -611,7 +611,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -634,7 +634,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -657,7 +657,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -705,7 +705,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -726,7 +726,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -773,15 +773,15 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype",
 				"Skill"
 			],
-			"prerequisites": "master in a skill with the {@action Recall Knowledge} action,",
+			"prerequisites": "master in a skill with the {@action Recall Knowledge} action, {@feat Scrollmaster Dedication|LOCG}",
 			"entries": [
-				"Scrollmaster Dedication You've mastered the art of deceiving others about your area of study. When you gain this feat, choose one skill with the {@action Recall Knowledge} action in which you have attained master proficiency. You can attempt to deceive others about the truth of facts and knowledge related to that skill\u2014such as by pretending to know something that you don't, planting false information, or the like\u2014using the {@action Lie} action of the {@skill Deception} skill. When you {@action Lie} in this way, attempt your skill check using the skill you selected when you gained this feat instead of {@skill Deception}, applying all bonuses or penalties related from the selected skill to the check. While it's easier to convince someone who knows nothing about your chosen false information, on a critical success, you can even convince someone who has heard something contradictory, unless they have reason to be certain from direct experience. For instance, you might say, \"I know you may have heard to use silver weapons against vampires, but that's a misconception based on conflating them with werewolves. According to all credible scholars, cold iron will do the trick.\" Once a creature realizes you've used masterful obfuscation to {@action Lie} to them, either from a failed check or due to later discovering the falsehood, you can't use this feat against them again, as it relies on blind trust in your superior knowledge. However, you can still {@action Lie} to them normally."
+				"You've mastered the art of deceiving others about your area of study. When you gain this feat, choose one skill with the {@action Recall Knowledge} action in which you have attained master proficiency. You can attempt to deceive others about the truth of facts and knowledge related to that skill\u2014such as by pretending to know something that you don't, planting false information, or the like\u2014using the {@action Lie} action of the {@skill Deception} skill. When you {@action Lie} in this way, attempt your skill check using the skill you selected when you gained this feat instead of {@skill Deception}, applying all bonuses or penalties related from the selected skill to the check. While it's easier to convince someone who knows nothing about your chosen false information, on a critical success, you can even convince someone who has heard something contradictory, unless they have reason to be certain from direct experience. For instance, you might say, \"I know you may have heard to use silver weapons against vampires, but that's a misconception based on conflating them with werewolves. According to all credible scholars, cold iron will do the trick.\" Once a creature realizes you've used masterful obfuscation to {@action Lie} to them, either from a failed check or due to later discovering the falsehood, you can't use this feat against them again, as it relies on blind trust in your superior knowledge. However, you can still {@action Lie} to them normally."
 			]
 		},
 		{
@@ -798,7 +798,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -820,7 +820,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -840,7 +840,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -860,7 +860,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -884,7 +884,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -908,7 +908,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -962,7 +962,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -988,7 +988,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -1011,7 +1011,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1036,7 +1036,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -1058,7 +1058,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1080,7 +1080,7 @@
 				"skill": [
 					"Survival"
 				],
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype",
@@ -1108,7 +1108,7 @@
 				"skill": [
 					"Medicine"
 				],
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype",
@@ -1143,7 +1143,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1165,7 +1165,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1185,7 +1185,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -1206,7 +1206,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1257,7 +1257,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -1278,7 +1278,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Swordmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1299,7 +1299,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1324,7 +1324,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Scrollmaster"
 			},
 			"traits": [
 				"Archetype"
@@ -1353,7 +1353,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -1374,7 +1374,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
@@ -1394,7 +1394,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pathfinder Agent"
 			},
 			"traits": [
 				"Archetype"
