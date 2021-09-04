@@ -22,19 +22,20 @@ class PageFilterItems extends PageFilter {
 
 	static _priceCategory (value) {
 		if (typeof value !== "number") return "0 gp";
-		if (value < 5 * 100) return "0 gp";
-		else if (value < 10 * 100) return "5 gp";
-		else if (value < 50 * 100) return "10 gp";
-		else if (value < 100 * 100) return "50 gp";
-		else if (value < 500 * 100) return "100 gp";
-		else if (value < 750 * 100) return "500 gp";
-		else if (value < 1000 * 100) return "750 gp";
-		else if (value < 2500 * 100) return "1,000 gp";
-		else if (value < 5000 * 100) return "2,500 gp";
-		else if (value < 10000 * 100) return "5,000 gp";
-		else if (value < 25000 * 100) return "10,000 gp";
-		else if (value < 50000 * 100) return "25,000 gp";
-		else if (value < 100000 * 100) return "50,000 gp";
+		if (value === 0) return "0 gp";
+		else if (value <= 5 * 100) return "5 gp";
+		else if (value <= 10 * 100) return "10 gp";
+		else if (value <= 50 * 100) return "50 gp";
+		else if (value <= 100 * 100) return "100 gp";
+		else if (value <= 500 * 100) return "500 gp";
+		else if (value <= 750 * 100) return "750 gp";
+		else if (value <= 1000 * 100) return "1,000 gp";
+		else if (value <= 2500 * 100) return "2,500 gp";
+		else if (value <= 5000 * 100) return "5,000 gp";
+		else if (value <= 10000 * 100) return "10,000 gp";
+		else if (value <= 25000 * 100) return "25,000 gp";
+		else if (value <= 50000 * 100) return "50,000 gp";
+		else if (value <= 100000 * 100) return "100,000 gp";
 		else return "100,000+ gp";
 	}
 
@@ -88,7 +89,7 @@ class PageFilterItems extends PageFilter {
 		this._priceFilter = new RangeFilter({
 			header: "Price",
 			isLabelled: true,
-			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000+ gp"],
+			labels: ["0 gp", "5 gp", "10 gp", "50 gp", "100 gp", "250 gp", "500 gp", "750 gp", "1,000 gp", "2,500 gp", "5,000 gp", "10,000 gp", "25,000 gp", "50,000 gp", "100,000 gp", "100,000+ gp"],
 			labelSortFn: null,
 		});
 		this._bulkFilter = new RangeFilter({header: "Bulk"});
