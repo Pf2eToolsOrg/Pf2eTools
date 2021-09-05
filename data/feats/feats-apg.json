@@ -2233,8 +2233,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You aren't otherwise affected.",
-						"Success": "You are {@condition drained|CRB|drained 2} and can't reduce or remove this condition until your next preparations.",
-						"Failure": "You are {@condition drained|CRB|drained 4} and can't reduce or remove this condition until your next preparations.",
+						"Success": "You are {@condition drained 2} and can't reduce or remove this condition until your next preparations.",
+						"Failure": "You are {@condition drained 4} and can't reduce or remove this condition until your next preparations.",
 						"Critical Failure": "You die."
 					}
 				}
@@ -2780,7 +2780,7 @@
 			"prerequisites": "{@feat Marshal Dedication|APG}",
 			"frequency": "once per minute",
 			"entries": [
-				"You call out a quick cadence, guiding your allies into a more efficient rhythm. Each willing ally within your marshal's aura is {@condition quickened} until the end of their next turn, and they can use the extra action only to {@action Stride}. At the end of each ally's turn, if they used the extra action, they then become {@condition slowed|CRB|slowed 1} until the end of their following turn."
+				"You call out a quick cadence, guiding your allies into a more efficient rhythm. Each willing ally within your marshal's aura is {@condition quickened} until the end of their next turn, and they can use the extra action only to {@action Stride}. At the end of each ally's turn, if they used the extra action, they then become {@condition slowed 1} until the end of their following turn."
 			],
 			"leadsTo": [
 				"Tactical Cadence|APG"
@@ -2860,7 +2860,7 @@
 				{
 					"type": "list",
 					"items": [
-						"Choose a creature within 30 feet that can see you to become {@condition frightened|CRB|frightened 1}. This effect has the emotion, fear, {@trait mental}, and {@trait visual} traits."
+						"Choose a creature within 30 feet that can see you to become {@condition frightened 1}. This effect has the emotion, fear, {@trait mental}, and {@trait visual} traits."
 					]
 				}
 			]
@@ -3213,7 +3213,7 @@
 			"requirements": "You have pledged your service to a specific organization or ideal (see Cavalier Pledges sidebar).",
 			"entries": [
 				"You fly the banner of your pledge from your mount, raising your allies' spirits. You and all allies within 30 feet gain a +1 circumstance bonus to Will saves and DCs against {@trait fear} effects.",
-				"If your banner is destroyed or removed, allies within 30 feet become {@condition frightened|CRB|frightened 1}."
+				"If your banner is destroyed or removed, allies within 30 feet become {@condition frightened 1}."
 			]
 		},
 		{
@@ -3476,7 +3476,7 @@
 			"trigger": "You take damage that would reduce you to 0 Hit Points.",
 			"entries": [
 				"Somehow you always escape the reaper by a hair's breadth.",
-				"You avoid being knocked out or killed and remain at 1 Hit Point, but you become {@condition doomed|CRB|doomed 1} (or increase your {@condition doomed} value by 1 if you were already {@condition doomed}). You can't reduce or ignore the {@condition doomed} condition from Cheating Death. The {@condition doomed} condition from Cheating Death lasts for 10 minutes, though this doesn't affect the duration of any other {@condition doomed} condition you have."
+				"You avoid being knocked out or killed and remain at 1 Hit Point, but you become {@condition doomed 1} (or increase your {@condition doomed} value by 1 if you were already {@condition doomed}). You can't reduce or ignore the {@condition doomed} condition from Cheating Death. The {@condition doomed} condition from Cheating Death lasts for 10 minutes, though this doesn't affect the duration of any other {@condition doomed} condition you have."
 			]
 		},
 		{
@@ -4405,7 +4405,7 @@
 			],
 			"prerequisites": "devotion spell (touch of corruption)",
 			"entries": [
-				"The harm you deal with your corrupting touch saps the strength from your enemy's body. If your next action is to cast {@spell touch of corruption|APG} on a living creature, the target is also {@condition enfeebled|CRB|enfeebled 1} for 1 minute if it fails its save ({@condition enfeebled|CRB|enfeebled 2} if it critically fails)."
+				"The harm you deal with your corrupting touch saps the strength from your enemy's body. If your next action is to cast {@spell touch of corruption|APG} on a living creature, the target is also {@condition enfeebled 1} for 1 minute if it fails its save ({@condition enfeebled 2} if it critically fails)."
 			],
 			"leadsTo": [
 				"Greater Cruelty|APG"
@@ -4561,9 +4561,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
-						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}."
+						"Success": "The creature is {@condition stunned 1}.",
+						"Failure": "The creature is {@condition stunned 2}.",
+						"Critical Failure": "The creature is {@condition stunned 3}."
 					}
 				}
 			]
@@ -5255,10 +5255,10 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target becomes {@condition confused} for 1 round and {@condition frightened|CRB|frightened 1}.",
-						"Success": "The target becomes {@condition frightened|CRB|frightened 1}.",
+						"Critical Success": "The target becomes {@condition confused} for 1 round and {@condition frightened 1}.",
+						"Success": "The target becomes {@condition frightened 1}.",
 						"Failure": "The target is unaffected.",
-						"Critical Failure": "You get overly caught up in your own words and become {@condition frightened|CRB|frightened 1}."
+						"Critical Failure": "You get overly caught up in your own words and become {@condition frightened 1}."
 					}
 				}
 			]
@@ -5788,7 +5788,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "Your marshal's aura increases to a 20-foot emanation, and it grants you and allies a status bonus to damage rolls equal to the number of weapon damage dice of the unarmed attack or weapon you are wielding that has the most weapon damage dice. When you or an ally in the aura critically hits an enemy with a {@action Strike}, that enemy is {@condition frightened|CRB|frightened 1}.",
+						"Critical Success": "Your marshal's aura increases to a 20-foot emanation, and it grants you and allies a status bonus to damage rolls equal to the number of weapon damage dice of the unarmed attack or weapon you are wielding that has the most weapon damage dice. When you or an ally in the aura critically hits an enemy with a {@action Strike}, that enemy is {@condition frightened 1}.",
 						"Success": "As critical success, but your aura's size doesn't increase.",
 						"Failure": "You fail to enter the stance.",
 						"Critical Failure": "You fail to enter the stance and can't take this action again for 1 minute."
@@ -6478,7 +6478,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Debilitation} The target is {@condition stupefied|CRB|stupefied 1}.",
+						"{@bold Debilitation} The target is {@condition stupefied 1}.",
 						"{@bold Debilitation} The target can't {@action Step}."
 					]
 				}
@@ -6694,7 +6694,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
 				"With a single whisper carried on the wind, you enchant your ammunition to make a foe more vulnerable to your attacks.",
-				"Make a bow {@action Strike}. On a hit, the target takes an additional {@damage 2d6} mental damage. On a critical hit, the target also becomes {@condition stunned|CRB|stunned 1}. The mental damage increases to {@dice 3d6} if your bow has a greater striking rune, or to {@dice 4d6} if your bow has a major striking rune."
+				"Make a bow {@action Strike}. On a hit, the target takes an additional {@damage 2d6} mental damage. On a critical hit, the target also becomes {@condition stunned 1}. The mental damage increases to {@dice 3d6} if your bow has a greater striking rune, or to {@dice 4d6} if your bow has a major striking rune."
 			]
 		},
 		{
@@ -8869,7 +8869,7 @@
 			],
 			"prerequisites": "{@feat Cruelty|APG}",
 			"entries": [
-				"The extent of the corruption within you does more than simply sap your foes' strength, it devastates their minds and reflexes. When you use Cruelty, choose whether you want to make the creature {@condition enfeebled} as normal, to make it {@condition clumsy|CRB|clumsy 1} on a failed save ({@condition clumsy|CRB|clumsy 2} on a critical failure), or to make it {@condition stupefied|CRB|stupefied 1} on a failed save ({@condition stupefied|CRB|stupefied 2} on a critical failure)."
+				"The extent of the corruption within you does more than simply sap your foes' strength, it devastates their minds and reflexes. When you use Cruelty, choose whether you want to make the creature {@condition enfeebled} as normal, to make it {@condition clumsy 1} on a failed save ({@condition clumsy 2} on a critical failure), or to make it {@condition stupefied 1} on a failed save ({@condition stupefied 2} on a critical failure)."
 			]
 		},
 		{
@@ -9138,7 +9138,7 @@
 			"prerequisites": "tenets of evil, champion's reaction that grants extra damage with your {@action Strike|CRB|Strikes}",
 			"requirements": "Your {@action Strike|CRB|Strikes} currently deal extra damage from your champion's reaction.",
 			"entries": [
-				"Make a {@action Strike} against the creature that triggered your champion's reaction. If you hit, the target takes double the extra damage from your reaction and must succeed at a Fortitude save against your class DC or be {@condition drained|CRB|drained 1}.",
+				"Make a {@action Strike} against the creature that triggered your champion's reaction. If you hit, the target takes double the extra damage from your reaction and must succeed at a Fortitude save against your class DC or be {@condition drained 1}.",
 				"Regardless of the result, the creature is temporarily immune to your Gruesome {@action Strike} for 24 hours."
 			]
 		},
@@ -13170,7 +13170,7 @@
 				"Fighter"
 			],
 			"entries": [
-				"You throw your weight into a powerful attack that leaves you vulnerable. Make a melee {@action Strike}. This counts as three attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you get a critical hit. If you roll a critical hit, your attack also gains the deadly d12 trait. Whether or not you hit, you become {@condition stunned|CRB|stunned 1} and are {@condition flat-footed} until the start of your next turn."
+				"You throw your weight into a powerful attack that leaves you vulnerable. Make a melee {@action Strike}. This counts as three attacks when calculating your multiple attack penalty. If this {@action Strike} hits, you get a critical hit. If you roll a critical hit, your attack also gains the deadly d12 trait. Whether or not you hit, you become {@condition stunned 1} and are {@condition flat-footed} until the start of your next turn."
 			]
 		},
 		{
@@ -15516,7 +15516,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}, legendary in {@skill Medicine}",
 			"requirements": "You are holding healer's tools or are wearing them and have a hand free.",
 			"entries": [
-				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of raise dead, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded|CRB|wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
+				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of raise dead, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
 			]
 		},
 		{
@@ -17091,8 +17091,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "The target is dazed and can barely vocalize. It's {@condition stunned|CRB|stunned 1} and its speech is raspy and hard to understand. It must succeed at a DC {@flatDC 11} flat check to use linguistic actions or supply verbal spellcasting components until the end of its next turn.",
-						"Critical Failure": "As failure, but the creature is {@condition stunned|CRB|stunned 3} instead of {@condition stunned|CRB|stunned 1}."
+						"Failure": "The target is dazed and can barely vocalize. It's {@condition stunned 1} and its speech is raspy and hard to understand. It must succeed at a DC {@flatDC 11} flat check to use linguistic actions or supply verbal spellcasting components until the end of its next turn.",
+						"Critical Failure": "As failure, but the creature is {@condition stunned 3} instead of {@condition stunned 1}."
 					}
 				}
 			]
@@ -18044,7 +18044,7 @@
 			"requirements": "You are completely {@condition unnoticed} by the target creature.",
 			"entries": [
 				"You can startle foes who are unaware of your presence.",
-				"Make a {@action Strike} against your target. That creature is {@condition flat-footed} against this {@action Strike}, as normal. If your {@action Strike} hits, the target remains {@condition flat-footed} for the rest of your turn and is {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical hit)."
+				"Make a {@action Strike} against your target. That creature is {@condition flat-footed} against this {@action Strike}, as normal. If your {@action Strike} hits, the target remains {@condition flat-footed} for the rest of your turn and is {@condition frightened 1} ({@condition frightened 2} on a critical hit)."
 			]
 		},
 		{
@@ -18498,7 +18498,7 @@
 			"prerequisites": "{@feat Startling Appearance|LOAG}",
 			"entries": [
 				"Your sudden appearance leaves your foe unable to respond.",
-				"When you use Startling Appearance, if your foe's level is equal to or lower than yours, they are also {@condition stunned|CRB|stunned 1} on a hit, or {@condition stunned|CRB|stunned 2} on a critical hit."
+				"When you use Startling Appearance, if your foe's level is equal to or lower than yours, they are also {@condition stunned 1} on a hit, or {@condition stunned 2} on a critical hit."
 			]
 		},
 		{
@@ -18528,8 +18528,8 @@
 					"entries": {
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target can't use reactions until its next turn.",
-						"Failure": "The target is {@condition stunned|CRB|stunned 1}.",
-						"Critical Failure": "The target is {@condition stunned|CRB|stunned 3}."
+						"Failure": "The target is {@condition stunned 1}.",
+						"Critical Failure": "The target is {@condition stunned 3}."
 					}
 				}
 			]
@@ -19076,7 +19076,7 @@
 			],
 			"prerequisites": "{@feat Cadence Call|APG}",
 			"entries": [
-				"Your remarkable breath control and concise instructions allow you to coordinate your allies more effectively. When you grant allies the {@condition quickened} condition using Cadence Call, they can use the extra action to either {@action Stride} or {@action Strike}, and they aren't {@condition slowed|CRB|slowed 1} on their following turn if they use the extra action."
+				"Your remarkable breath control and concise instructions allow you to coordinate your allies more effectively. When you grant allies the {@condition quickened} condition using Cadence Call, they can use the extra action to either {@action Stride} or {@action Strike}, and they aren't {@condition slowed 1} on their following turn if they use the extra action."
 			]
 		},
 		{
@@ -19253,8 +19253,8 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Arm} (or another limb used for attacks, such as a tentacle) The target is {@condition enfeebled|CRB|enfeebled 2}. On a critical hit, it is also {@condition enfeebled|CRB|enfeebled 1} for 1 minute.",
-						"{@bold Head} The target is {@condition stupefied|CRB|stupefied 2}. On a critical hit, it is also {@condition stupefied|CRB|stupefied 1} for 1 minute.",
+						"{@bold Arm} (or another limb used for attacks, such as a tentacle) The target is {@condition enfeebled 2}. On a critical hit, it is also {@condition enfeebled 1} for 1 minute.",
+						"{@bold Head} The target is {@condition stupefied 2}. On a critical hit, it is also {@condition stupefied 1} for 1 minute.",
 						"{@bold Legs} The target takes a \u201310-foot status penalty to its Speeds. On a critical hit, it also takes a \u20135-foot status penalty to its Speeds for 1 minute."
 					]
 				}
@@ -20067,7 +20067,7 @@
 			"prerequisites": "Twin {@action Feint}",
 			"requirements": "You are wielding two melee weapons, each in a different hand.",
 			"entries": [
-				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin {@action Feint}, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied|CRB|stupefied 1} until the end of your next turn."
+				"Your movements with two weapons are so swift and disorienting that they befuddle your opponent. When using Twin {@action Feint}, if both your {@action Strike|CRB|Strikes} deal damage to a targeted creature, the target must succeed at a Will saving throw against your class DC or become {@condition stupefied 1} until the end of your next turn."
 			]
 		},
 		{
@@ -20425,7 +20425,7 @@
 			],
 			"entries": [
 				"You have become a brutal, unstoppable force of nature, able to shrug off mortal wounds with ease. You gain resistance equal to 3 + your Constitution modifier to all damage, and your resistance from {@action Rage|CRB|raging} increases to 8 + your Constitution modifier.",
-				"In addition, if you are reduced to 0 Hit Points while {@action Rage|CRB|raging}, you can end your rage as a reaction to stay at 1 Hit Point. If you do, you become {@condition wounded|CRB|wounded 2} (or increase your {@condition wounded} condition by 2 if you are already {@condition wounded})."
+				"In addition, if you are reduced to 0 Hit Points while {@action Rage|CRB|raging}, you can end your rage as a reaction to stay at 1 Hit Point. If you do, you become {@condition wounded 2} (or increase your {@condition wounded} condition by 2 if you are already {@condition wounded})."
 			]
 		},
 		{

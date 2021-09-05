@@ -2566,7 +2566,7 @@
 			],
 			"prerequisites": "ruffian racket",
 			"entries": [
-				"The brutality of your critical hits shakes your foes' confidence. Whenever your {@action Strike} is a critical hit and deals damage, the target is {@condition frightened|CRB|frightened 1}."
+				"The brutality of your critical hits shakes your foes' confidence. Whenever your {@action Strike} is a critical hit and deals damage, the target is {@condition frightened 1}."
 			]
 		},
 		{
@@ -4043,8 +4043,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target is {@condition slowed|CRB|slowed 1} until the end of your next turn.",
-						"Failure": "The target is {@condition slowed|CRB|slowed 2} until the end of your next turn.",
+						"Success": "The target is {@condition slowed 1} until the end of your next turn.",
+						"Failure": "The target is {@condition slowed 2} until the end of your next turn.",
 						"Critical Failure": "The target is {@condition paralyzed} until the end of your next turn."
 					}
 				}
@@ -4267,7 +4267,7 @@
 				"Flourish"
 			],
 			"entries": [
-				"Aiming for a weak point, you impede your foe with a precise shot. Make a ranged weapon {@action Strike}. If it hits and deals damage, the target is {@condition slowed|CRB|slowed 1} until the end of its next turn."
+				"Aiming for a weak point, you impede your foe with a precise shot. Make a ranged weapon {@action Strike}. If it hits and deals damage, the target is {@condition slowed 1} until the end of its next turn."
 			]
 		},
 		{
@@ -4568,7 +4568,7 @@
 				"General"
 			],
 			"entries": [
-				"It takes more to kill you than most. You die from the {@condition dying} condition at {@condition dying|CRB|dying 5}, rather than {@condition dying|CRB|dying 4}."
+				"It takes more to kill you than most. You die from the {@condition dying} condition at {@condition dying 5}, rather than {@condition dying 4}."
 			],
 			"leadsTo": [
 				"Numb To Death|LOGM"
@@ -4734,7 +4734,7 @@
 				"Negative"
 			],
 			"entries": [
-				"Make an unarmed {@action Strike}. If it deals damage to a living creature, you block that creature's inner life force. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage} and is {@condition enfeebled|CRB|enfeebled 1} until the {@condition persistent damage} ends. If you're 18th level or higher, this deals {@damage 3d6} {@condition persistent damage ||persistent negative damage} instead."
+				"Make an unarmed {@action Strike}. If it deals damage to a living creature, you block that creature's inner life force. The creature takes {@damage 2d6} {@condition persistent damage ||persistent negative damage} and is {@condition enfeebled 1} until the {@condition persistent damage} ends. If you're 18th level or higher, this deals {@damage 3d6} {@condition persistent damage ||persistent negative damage} instead."
 			]
 		},
 		{
@@ -5271,7 +5271,7 @@
 			"prerequisites": "{@feat Dragon Stance}",
 			"requirements": "You are in Dragon Stance.",
 			"entries": [
-				"You bellow, instilling fear in your enemies. Enemies within a 15-foot emanation must succeed at a Will save against your {@skill Intimidation} DC or be {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). When a creature {@condition frightened} by the roar begins its turn adjacent to you, it can't reduce its {@condition frightened} value below 1 on that turn. Your first attack that hits a {@condition frightened} creature after you roar and before the end of your next turn gains a +4 circumstance bonus to damage.",
+				"You bellow, instilling fear in your enemies. Enemies within a 15-foot emanation must succeed at a Will save against your {@skill Intimidation} DC or be {@condition frightened 1} ({@condition frightened 2} on a critical failure). When a creature {@condition frightened} by the roar begins its turn adjacent to you, it can't reduce its {@condition frightened} value below 1 on that turn. Your first attack that hits a {@condition frightened} creature after you roar and before the end of your next turn gains a +4 circumstance bonus to damage.",
 				"After you use Dragon Roar, you can't use it again for {@dice 1d4} rounds.",
 				"Its effects end immediately if you leave Dragon Stance. Creatures in the area of your roar are then temporarily immune for 1 minute."
 			]
@@ -7857,7 +7857,7 @@
 			"prerequisites": "giant instinct",
 			"requirements": "You are Medium or smaller.",
 			"entries": [
-				"You grow to incredible size. You become Large, increasing your reach by 5 feet and gaining the {@condition clumsy|CRB|clumsy 1} condition (page 618) until you stop raging. Your equipment grows with you."
+				"You grow to incredible size. You become Large, increasing your reach by 5 feet and gaining the {@condition clumsy 1} condition (page 618) until you stop raging. Your equipment grows with you."
 			],
 			"leadsTo": [
 				"Titan's Stature"
@@ -8247,7 +8247,7 @@
 			],
 			"prerequisites": "{@feat Debilitating Bomb}",
 			"entries": [
-				"You have learned enhanced techniques and alchemical secrets that allow you to expand the range of effects you can impose with your bombs. When you use Debilitating Bomb, add the following to the list you can choose from: {@condition clumsy|CRB|clumsy 1}, {@condition enfeebled|CRB|enfeebled 1}, {@condition stupefied|CRB|stupefied 1}, or \u201310-foot status penalty to Speeds."
+				"You have learned enhanced techniques and alchemical secrets that allow you to expand the range of effects you can impose with your bombs. When you use Debilitating Bomb, add the following to the list you can choose from: {@condition clumsy 1}, {@condition enfeebled 1}, {@condition stupefied 1}, or \u201310-foot status penalty to Speeds."
 			],
 			"leadsTo": [
 				"True Debilitating Bomb"
@@ -10014,7 +10014,7 @@
 			],
 			"prerequisites": "divine ally (blade), tenets of good",
 			"entries": [
-				"Divine energy fills your weapon. Whenever you critically hit a foe with {@feat Blade of Justice} or a {@action Retributive Strike}, your attack adds an extra damage die, and the target is {@condition slowed|CRB|slowed 1} on its next turn."
+				"Divine energy fills your weapon. Whenever you critically hit a foe with {@feat Blade of Justice} or a {@action Retributive Strike}, your attack adds an extra damage die, and the target is {@condition slowed 1} on its next turn."
 			]
 		},
 		{
@@ -10114,7 +10114,7 @@
 				"Mental"
 			],
 			"entries": [
-				"Your blow not only wounds creatures but also shatters their confidence. Make a melee {@action Strike}. If you hit and deal damage, the target is {@condition frightened|CRB|frightened 1}, or {@condition frightened|CRB|frightened 2} on a critical hit."
+				"Your blow not only wounds creatures but also shatters their confidence. Make a melee {@action Strike}. If you hit and deal damage, the target is {@condition frightened 1}, or {@condition frightened 2} on a critical hit."
 			]
 		},
 		{
@@ -10522,7 +10522,7 @@
 			],
 			"prerequisites": "redeemer cause",
 			"entries": [
-				"When you cast doubt upon your foes, the effect lasts longer than usual. After being {@condition enfeebled|CRB|enfeebled 2} by your {@action Glimpse of Redemption}, the foe is {@condition enfeebled|CRB|enfeebled 1} for 1 minute. If you have Weight of Guilt, after being {@condition stupefied|CRB|stupefied 2} by your {@action Glimpse of Redemption}, the foe is {@condition stupefied|CRB|stupefied 1} for 1 minute or until the flat check from {@condition stupefied} causes it to lose a spell, whichever comes first."
+				"When you cast doubt upon your foes, the effect lasts longer than usual. After being {@condition enfeebled 2} by your {@action Glimpse of Redemption}, the foe is {@condition enfeebled 1} for 1 minute. If you have Weight of Guilt, after being {@condition stupefied 2} by your {@action Glimpse of Redemption}, the foe is {@condition stupefied 1} for 1 minute or until the flat check from {@condition stupefied} causes it to lose a spell, whichever comes first."
 			]
 		},
 		{
@@ -11850,7 +11850,7 @@
 			"frequency": "once every 10 minutes",
 			"entries": [
 				"Your alchemical mastery can resuscitate the recently slain.",
-				"You can administer a true elixir of life to a creature who has been dead for no more than 2 rounds. When you do, that creature is immediately returned to life with 1 Hit Point and becomes {@condition wounded|CRB|wounded 1}."
+				"You can administer a true elixir of life to a creature who has been dead for no more than 2 rounds. When you do, that creature is immediately returned to life with 1 Hit Point and becomes {@condition wounded 1}."
 			]
 		},
 		{
@@ -15324,9 +15324,9 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target must succeed at a Fortitude save against your {@skill Intimidation} DC or die. If the target succeeds at its save, it becomes {@condition frightened|CRB|frightened 2} and is {@condition fleeing} for 1 round; it suffers no effect on a critical success.",
-						"Success": "The target becomes {@condition frightened|CRB|frightened 2}.",
-						"Failure": "The target becomes {@condition frightened|CRB|frightened 1}.",
+						"Critical Success": "The target must succeed at a Fortitude save against your {@skill Intimidation} DC or die. If the target succeeds at its save, it becomes {@condition frightened 2} and is {@condition fleeing} for 1 round; it suffers no effect on a critical success.",
+						"Success": "The target becomes {@condition frightened 2}.",
+						"Failure": "The target becomes {@condition frightened 1}.",
 						"Critical Failure": "The target is unaffected."
 					}
 				}
@@ -16214,7 +16214,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target falls {@condition unconscious} for 1 minute, though it remains standing and doesn't drop what it holds.",
-						"Success": "The target is {@condition clumsy|CRB|clumsy 1} until the end of its next turn."
+						"Success": "The target is {@condition clumsy 1} until the end of its next turn."
 					}
 				}
 			]
@@ -16761,7 +16761,7 @@
 			],
 			"prerequisites": "spirit instinct",
 			"entries": [
-				"You call forth an ephemeral apparition, typically the ghost of an ancestor or a nature spirit, which takes the form of a wisp. The spirit wisp makes a melee wisp rush unarmed attack against an enemy within 120 feet of you. The wisp's attack modifier is equal to your proficiency bonus for martial weapons plus your Strength modifier plus a +2 item bonus, and it applies the same circumstance and status bonuses and penalties that you have. On a hit, the wisp deals damage equal to {@dice 4d8} plus your Constitution modifier. The damage is your choice of negative or positive damage; don't apply your {@action Rage} damage or your weapon specialization damage, but circumstance and status bonuses and penalties that would also affect the wisp's damage apply. If your wisp's {@action Strike} is a critical hit, the target becomes {@condition frightened|CRB|frightened 1}. This attack uses and counts toward your multiple attack penalty as if you were the one attacking."
+				"You call forth an ephemeral apparition, typically the ghost of an ancestor or a nature spirit, which takes the form of a wisp. The spirit wisp makes a melee wisp rush unarmed attack against an enemy within 120 feet of you. The wisp's attack modifier is equal to your proficiency bonus for martial weapons plus your Strength modifier plus a +2 item bonus, and it applies the same circumstance and status bonuses and penalties that you have. On a hit, the wisp deals damage equal to {@dice 4d8} plus your Constitution modifier. The damage is your choice of negative or positive damage; don't apply your {@action Rage} damage or your weapon specialization damage, but circumstance and status bonuses and penalties that would also affect the wisp's damage apply. If your wisp's {@action Strike} is a critical hit, the target becomes {@condition frightened 1}. This attack uses and counts toward your multiple attack penalty as if you were the one attacking."
 			]
 		},
 		{
@@ -17266,7 +17266,7 @@
 			],
 			"prerequisites": "{@action Flurry of Blows}",
 			"entries": [
-				"The focused power of your flurry threatens to overwhelm your opponent. When you target the same creature with two Strikes from your {@action Flurry of Blows}, you can try to stun the creature. If either {@action Strike} hits and deals damage, the target must succeed at a Fortitude save against your class DC or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure). This is an {@trait incapacitation} effect."
+				"The focused power of your flurry threatens to overwhelm your opponent. When you target the same creature with two Strikes from your {@action Flurry of Blows}, you can try to stun the creature. If either {@action Strike} hits and deals damage, the target must succeed at a Fortitude save against your class DC or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). This is an {@trait incapacitation} effect."
 			],
 			"leadsTo": [
 				"Triangle Shot|APG"
@@ -18086,7 +18086,7 @@
 			"prerequisites": "giant instinct, {@feat Giant's Stature}",
 			"entries": [
 				"You grow to even greater size. When using Giant's Stature, you can instead become Huge (increasing your reach by 10 feet if you were Medium or smaller) while you are raging.",
-				"You have the {@condition clumsy|CRB|clumsy 1} condition (page 618) as long as you are Huge."
+				"You have the {@condition clumsy 1} condition (page 618) as long as you are Huge."
 			]
 		},
 		{
@@ -18350,7 +18350,7 @@
 			],
 			"prerequisites": "{@feat Greater Debilitating Bomb}",
 			"entries": [
-				"Ever inventive, you have discovered increasingly devastating ways for your bombs to impede and hamper your foes. When you use Debilitating Bomb, add the following to the list of effects you can choose from: {@condition enfeebled|CRB|enfeebled 2}, {@condition stupefied|CRB|stupefied 2}, or a \u201315-foot status penalty to Speeds. If you instead apply one of the effects listed in Debilitating Bomb, the target avoids the effect only if the result of its saving throw is a critical success."
+				"Ever inventive, you have discovered increasingly devastating ways for your bombs to impede and hamper your foes. When you use Debilitating Bomb, add the following to the list of effects you can choose from: {@condition enfeebled 2}, {@condition stupefied 2}, or a \u201315-foot status penalty to Speeds. If you instead apply one of the effects listed in Debilitating Bomb, the target avoids the effect only if the result of its saving throw is a critical success."
 			]
 		},
 		{
@@ -18699,7 +18699,7 @@
 			],
 			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"Your mercy transcends the bounds of life and death. When you use Mercy, you can cast {@spell lay on hands} on a creature that died since your last turn to return it to life. The target returns to life with 1 hit point and becomes {@condition wounded|CRB|wounded 1}. You can't use Ultimate Mercy if the triggering effect was disintegrate or a {@trait death} effect."
+				"Your mercy transcends the bounds of life and death. When you use Mercy, you can cast {@spell lay on hands} on a creature that died since your last turn to return it to life. The target returns to life with 1 hit point and becomes {@condition wounded 1}. You can't use Ultimate Mercy if the triggering effect was disintegrate or a {@trait death} effect."
 			]
 		},
 		{
@@ -19290,7 +19290,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Debilitation} The target gains weakness 5 to your choice of bludgeoning, piercing, or slashing damage.",
-						"{@bold Debilitation} The target becomes {@condition clumsy|CRB|clumsy 1}."
+						"{@bold Debilitation} The target becomes {@condition clumsy 1}."
 					]
 				}
 			]
@@ -19317,7 +19317,7 @@
 				"Rage"
 			],
 			"entries": [
-				"You make a vicious attack that maims your enemy. Make a melee {@action Strike}. If the {@action Strike} hits and deals damage, the target is {@condition drained|CRB|drained 1}, or {@condition drained|CRB|drained 2} on a critical success."
+				"You make a vicious attack that maims your enemy. Make a melee {@action Strike}. If the {@action Strike} hits and deals damage, the target is {@condition drained 1}, or {@condition drained 2} on a critical success."
 			]
 		},
 		{
@@ -19649,7 +19649,7 @@
 			],
 			"prerequisites": "redeemer cause",
 			"entries": [
-				"Guilt clouds the minds of those who ignore your {@action Glimpse of Redemption}. Instead of making the triggering creature {@condition enfeebled|CRB|enfeebled 2}, you can make it {@condition stupefied|CRB|stupefied 2} for the same duration."
+				"Guilt clouds the minds of those who ignore your {@action Glimpse of Redemption}. Instead of making the triggering creature {@condition enfeebled 2}, you can make it {@condition stupefied 2} for the same duration."
 			]
 		},
 		{

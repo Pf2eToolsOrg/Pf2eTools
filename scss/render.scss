@@ -232,6 +232,17 @@ $rgb-inset-border: #656565;
 			}
 		}
 
+		&list-no-bullets-indent {
+			list-style: none;
+			padding: 0 0 0 1em;
+
+			> .rd__li {
+				margin-bottom: 0;
+				text-indent: -1em;
+				padding-left: 1em;
+			}
+		}
+
 		&list-name {
 			margin: 0;
 			font-weight: bold;

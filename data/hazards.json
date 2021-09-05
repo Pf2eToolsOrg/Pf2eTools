@@ -140,7 +140,7 @@
 					],
 					"trigger": "A creature moves within 10 feet of the haunted object.",
 					"entries": [
-						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened|CRB|frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened|CRB|frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
+						"The haunt takes control of the triggering creature, forcing it to attack itself. The creature must attempt a DC 29 Will save. Critical Success The target is unaffected. Success The target makes a {@action Strike} against itself and automatically hits; the target also becomes {@condition frightened 1}. Failure The target makes a {@action Strike} against itself and automatically scores a critical hit; the target also becomes {@condition frightened 2}. Critical Failure The target attempts a Fortitude save. If the target succeeds, it is subject to the effects of a failure instead. If the target fails, it is reduced to 0 Hit Points and dies."
 					],
 					"type": "ability",
 					"style": "compact",
@@ -996,17 +996,17 @@
 							"stages": [
 								{
 									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition clumsy|CRB|clumsy 1}",
+									"entry": "{@damage 1d6} poison damage and {@condition clumsy 1}",
 									"duration": "1 round"
 								},
 								{
 									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition clumsy|CRB|clumsy 2}",
+									"entry": "{@damage 2d6} poison damage and {@condition clumsy 2}",
 									"duration": "1 round"
 								},
 								{
 									"stage": 3,
-									"entry": "{@damage 3d6} poison damage and {@condition clumsy|CRB|clumsy 3}",
+									"entry": "{@damage 3d6} poison damage and {@condition clumsy 3}",
 									"duration": "1 round"
 								}
 							]
@@ -1114,17 +1114,17 @@
 							"stages": [
 								{
 									"stage": 1,
-									"entry": "{@damage 1d6} poison damage and {@condition drained|CRB|drained 1}",
+									"entry": "{@damage 1d6} poison damage and {@condition drained 1}",
 									"duration": "1 hour"
 								},
 								{
 									"stage": 2,
-									"entry": "{@damage 2d6} poison damage and {@condition drained|CRB|drained 2}",
+									"entry": "{@damage 2d6} poison damage and {@condition drained 2}",
 									"duration": "1 hour"
 								},
 								{
 									"stage": 3,
-									"entry": "{@damage 3d6} poison damage and {@condition drained|CRB|drained 2}",
+									"entry": "{@damage 3d6} poison damage and {@condition drained 2}",
 									"duration": "1 hour"
 								}
 							]
@@ -1943,17 +1943,17 @@
 							"stages": [
 								{
 									"stage": 1,
-									"entry": "{@damage 1d8} poison damage and {@condition drained|CRB|drained 1}",
+									"entry": "{@damage 1d8} poison damage and {@condition drained 1}",
 									"duration": "1 round"
 								},
 								{
 									"stage": 2,
-									"entry": "{@damage 2d8} poison damage and {@condition drained|CRB|drained 2}",
+									"entry": "{@damage 2d8} poison damage and {@condition drained 2}",
 									"duration": "1 round"
 								},
 								{
 									"stage": 3,
-									"entry": "{@damage 3d8} poison damage and {@condition drained|CRB|drained 3}",
+									"entry": "{@damage 3d8} poison damage and {@condition drained 3}",
 									"duration": "1 round"
 								}
 							]

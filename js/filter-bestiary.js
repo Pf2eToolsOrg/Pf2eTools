@@ -165,18 +165,10 @@ class PageFilterBestiary extends PageFilter {
 		if (cr.creatureType != null) cr._fTraits.push(...cr.creatureType);
 		cr._fSenses = {precise: [], imprecise: [], vague: [], other: []}
 		if (cr.senses) {
-			cr.senses.precise.forEach((s) => {
-				cr._fSenses.precise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
-			cr.senses.imprecise.forEach((s) => {
-				cr._fSenses.imprecise.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, ""));
-			});
-			cr.senses.vague.forEach((s) => {
-				cr._fSenses.vague.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
-			cr.senses.other.forEach((s) => {
-				cr._fSenses.other.push(Renderer.stripTags(s).replace(/\s(?:\d|\().+/, ""));
-			});
+			cr._fSenses.precise.push(...(cr.senses.precise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
+			cr._fSenses.imprecise.push(...(cr.senses.imprecise || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "").replace(/within.+/, "")));
+			cr._fSenses.vague.push(...(cr.senses.vague || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
+			cr._fSenses.other.push(...(cr.senses.other || []).map(s => Renderer.stripTags(s).replace(/\s(?:\d|\().+/, "")));
 		}
 		cr._flanguages = cr.languages == null ? [] : cr.languages.languages || [];
 		cr._flanguages = cr._flanguages.map(l => l.replace(/\s(?:\().+/, "")).filter(l => !l.includes(" "));

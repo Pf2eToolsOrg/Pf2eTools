@@ -34,7 +34,7 @@ class PageFilterSpells extends PageFilter {
 			displayFn: PageFilterSpells.getFltrSpellLevelStr,
 		});
 		this._traditionFilter = new Filter({
-			header: "Tradition",
+			header: "Tradition & Spell List",
 			items: [...Parser.TRADITIONS],
 			itemSortFn: null,
 		});
@@ -107,7 +107,7 @@ class PageFilterSpells extends PageFilter {
 
 		// used for filtering
 		spell._fSources = SourceFilter.getCompleteFilterSources(spell);
-		spell._fTraditions = spell.traditions ? spell.traditions : [];
+		spell._fTraditions = (spell.traditions || []).concat(spell.spellLists || []);
 		spell._fFocus = spell.focus ? ["Focus Spell"] : ["Spell"];
 		spell._fTraits = spell.traits.map(t => Parser.getTraitName(t));
 		if (!spell._fTraits.map(t => Renderer.trait.isTraitInCategory(t, "Rarity")).some(Boolean)) spell._fTraits.push("Common");
@@ -147,6 +147,7 @@ class PageFilterSpells extends PageFilter {
 		this._schoolFilter.addItem(spell.school);
 		this._sourceFilter.addItem(spell._fSources);
 		this._traditionFilter.addItem(spell._fTraditions);
+		if (spell.spellLists) this._traditionFilter.addItem(spell.spellLists)
 		this._focusFilter.addItem(spell._fFocus);
 		this._classFilter.addItem(spell._fClasses);
 		spell._fSubClasses.forEach(sc => {

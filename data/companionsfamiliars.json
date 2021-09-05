@@ -41,11 +41,9 @@
 			"hp": 8,
 			"skill": "Survival",
 			"senses": {
-				"precise": [],
 				"imprecise": [
 					"{@ability scent} 30 feet"
 				],
-				"vague": [],
 				"other": [
 					"{@ability low-light vision}"
 				]
@@ -91,8 +89,17 @@
 			"source": "SoM",
 			"page": 228,
 			"type": "Companion",
-			"size": "Small",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shadow Hound",
+					"entries": [
+						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
+					]
+				}
+			],
 			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"size": "Small",
 			"attacks": [
 				{
 					"range": "Melee",
@@ -101,15 +108,6 @@
 						"finesse"
 					],
 					"damage": "{@dice 1d8} piercing"
-				}
-			],
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Shadow Hound",
-					"entries": [
-						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
-					]
 				}
 			],
 			"abilityMods": {
@@ -123,11 +121,9 @@
 			"hp": 4,
 			"skill": "Intimidation",
 			"senses": {
-				"precise": [],
 				"imprecise": [
 					"{@ability scent} 30 feet"
 				],
-				"vague": [],
 				"other": [
 					"{@ability darkvision}"
 				]
@@ -146,81 +142,12 @@
 					"unit": "action"
 				},
 				"entries": [
-					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don’t require a language and don’t take any penalty due to not sharing a language."
+					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don't require a language and don't take any penalty due to not sharing a language."
 				]
 			}
 		}
 	],
 	"familiar": [
-		{
-			"name": "Shadow Familiar",
-			"source": "SoM",
-			"page": 229,
-			"type": "Familiar",
-			"traits": [
-				"Uncommon",
-				"Shadow"
-			],
-			"fluff": [
-				{
-					"type": "pf2-h3",
-					"name": "Shadow Familiar",
-					"entries": [
-						"Some spellcasters and ritualists don’t just summon and bind a familiar, but instead transform their own shadow into a familiar. These casters can be identified by their lack of a shadow regardless of the level of light in the area and by the strange muted appearance of any article of clothing or jewelry they wear. Occasionally mistaken for vampires or other undead by the cautious or superstitious, these spellcasters nonetheless find the trade worth it in exchange for the unique abilities their shadow familiar can possess.",
-						"Shadow familiars are a type of specific familiar (Advanced Player’s Guide 147). While all shadowcasters have access to these familiars, there are other paths to learn the proper magic to obtain a shadow familiar."
-					]
-				}
-			],
-			"access": "You're a {@archetype Shadowcaster|SoM}.",
-			"requires": 7,
-			"granted": [
-				"{@familiarAbility darkvision}",
-				"{@familiarAbility manual dexterity}",
-				"{@familiarAbility master's form|APG}",
-				"{@familiarAbility resistance|APG} (cold and negative)",
-				"{@familiarAbility shadow step|SoM}"
-			],
-			"abilities": [
-				{
-					"name": "Become Shadow",
-					"activity": {
-						"entry": "{@as 1}",
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Shadow",
-						"Transmutation"
-					],
-					"entries": [
-						"The shadow familiar transforms its body into barely tangible shadow. It gains resistance to all damage (except force) equal to half your level but can’t use any actions requiring a physical form. The familiar can also slip through gaps at least 2 inches wide, or 1 inch wide if it {@action Squeeze||Squeezes}. It can use this action again to return to its normal form.",
-						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
-					]
-				},
-				{
-					"name": "Slink in Shadows",
-					"entries": [
-						"The shadow familiar can {@action Hide} or end its {@action Sneak} in a creature’s or object’s shadow."
-					]
-				},
-				{
-					"name": "Steal Shadow",
-					"activity": {
-						"entry": "{@as 1}",
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Necromancy"
-					],
-					"frequency": "once per 10 minutes",
-					"entries": [
-						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
-						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
-					]
-				}
-			]
-		},
 		{
 			"name": "Aeon Wyrd",
 			"source": "LOPSG",
@@ -518,6 +445,75 @@
 			]
 		},
 		{
+			"name": "Shadow Familiar",
+			"source": "SoM",
+			"page": 229,
+			"type": "Familiar",
+			"traits": [
+				"Uncommon",
+				"Shadow"
+			],
+			"access": "You're a {@archetype Shadowcaster|SoM}.",
+			"requires": 7,
+			"granted": [
+				"{@familiarAbility darkvision}",
+				"{@familiarAbility manual dexterity}",
+				"{@familiarAbility master's form|APG}",
+				"{@familiarAbility resistance|APG} (cold and negative)",
+				"{@familiarAbility shadow step|SoM}"
+			],
+			"abilities": [
+				{
+					"name": "Become Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Shadow",
+						"Transmutation"
+					],
+					"entries": [
+						"The shadow familiar transforms its body into barely tangible shadow. It gains resistance to all damage (except force) equal to half your level but can't use any actions requiring a physical form. The familiar can also slip through gaps at least 2 inches wide, or 1 inch wide if it {@action Squeeze||Squeezes}. It can use this action again to return to its normal form.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
+					]
+				},
+				{
+					"name": "Slink in Shadows",
+					"entries": [
+						"The shadow familiar can {@action Hide} or end its {@action Sneak} in a creature's or object's shadow."
+					]
+				},
+				{
+					"name": "Steal Shadow",
+					"activity": {
+						"entry": "{@as 1}",
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Necromancy"
+					],
+					"frequency": "once per 10 minutes",
+					"entries": [
+						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
+						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
+					]
+				}
+			],
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shadow Familiar",
+					"entries": [
+						"Some spellcasters and ritualists don't just summon and bind a familiar, but instead transform their own shadow into a familiar. These casters can be identified by their lack of a shadow regardless of the level of light in the area and by the strange muted appearance of any article of clothing or jewelry they wear. Occasionally mistaken for vampires or other undead by the cautious or superstitious, these spellcasters nonetheless find the trade worth it in exchange for the unique abilities their shadow familiar can possess.",
+						"Shadow familiars are a type of specific familiar (Advanced Player's Guide 147). While all shadowcasters have access to these familiars, there are other paths to learn the proper magic to obtain a shadow familiar."
+					]
+				}
+			]
+		},
+		{
 			"name": "Spellslime",
 			"source": "APG",
 			"page": 147,
@@ -738,7 +734,7 @@
 						"Teleportation"
 					],
 					"entries": [
-						"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar’s line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren’t a spellcaster."
+						"The familiar teleports itself up to 30 feet. The destination must be in dim light or darkness and must be within your familiar's line of sight and line of effect. This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
 					]
 				}
 			]
@@ -917,7 +913,7 @@
 					"type": "pf2-h3",
 					"name": "Angel Eidolon",
 					"entries": [
-						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon’s link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it."
+						"Your eidolon is a celestial messenger, a member of the angelic host with a unique link to you, allowing them to carry a special message to the mortal world at your side. Most angel eidolons are roughly humanoid in form, with feathered wings, glowing eyes, halos, or similar angelic features. However, some take the form of smaller angelic servitors like the winged helmet cassisian angel instead. The two of you are destined for an important role in the plans of the celestial realms. Though a true angel, your angel eidolon's link to you as a mortal prevents them from casting the {@ritual angelic messenger|bst} ritual, even if they somehow learn it."
 					]
 				}
 			],
@@ -970,9 +966,6 @@
 				"Religion"
 			],
 			"senses": {
-				"precise": [],
-				"imprecise": [],
-				"vague": [],
 				"other": [
 					"{@ability darkvision}"
 				]
@@ -988,7 +981,7 @@
 					"name": "Hallowed Strikes",
 					"type": "initial",
 					"entries": [
-						"Your eidolon’s attacks are hallowed by the celestial realms. Your eidolon’s unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual –2 circumstance penalty."
+						"Your eidolon's attacks are hallowed by the celestial realms. Your eidolon's unarmed {@action Strike||Strikes} deal an extra 1 good damage; as usual, this extra damage harms only evil creatures or those with a weakness to good damage. Additionally, your eidolon can make {@trait nonlethal} attacks with its unarmed attacks without taking the usual \u20132 circumstance penalty."
 					]
 				},
 				{
@@ -996,7 +989,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon emanates a powerful aura—resembling that of an astral deva—that protects creatures as they travel. The aura has the {@trait abjuration}, {@trait aura}, and {@trait divine} traits. Your eidolon and its allies within a 20-foot emanation are protected from severe heat and cold, and your eidolon is never {@condition flat-footed} to creatures inside the aura that are of a lower level than the eidolon.",
+						"Your eidolon emanates a powerful aura\u2014resembling that of an astral deva\u2014that protects creatures as they travel. The aura has the {@trait abjuration}, {@trait aura}, and {@trait divine} traits. Your eidolon and its allies within a 20-foot emanation are protected from severe heat and cold, and your eidolon is never {@condition flat-footed} to creatures inside the aura that are of a lower level than the eidolon.",
 						"When you gain the transcendence class feature, this evolves to the full benefits of an astral deva; your eidolon and allies in the aura are protected from environmental damage from any plane, including severe and extreme heat and cold as well as more unusual dangers."
 					]
 				},
@@ -1005,7 +998,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon’s angelic power allows them to assuage a variety of ailments, just like most other powerful angels. Your eidolon can cast {@spell remove curse}, {@spell remove disease}, {@spell remove fear}, and {@spell remove paralysis} once per day each as 9th-level divine innate spells."
+						"Your eidolon's angelic power allows them to assuage a variety of ailments, just like most other powerful angels. Your eidolon can cast {@spell remove curse}, {@spell remove disease}, {@spell remove fear}, and {@spell remove paralysis} once per day each as 9th-level divine innate spells."
 					]
 				}
 			]
@@ -1105,7 +1098,7 @@
 							],
 							"entries": [
 								"Your eidolon channels its anger into a furious attack. It makes a melee {@action Strike}. This counts as two attacks when calculating your multiple attack penalty. If this {@action Strike} hits, your eidolon deals an extra die of weapon damage and gains a +1 circumstance bonus to the damage roll.",
-								"If you’re at least 10th level, increase this to two extra dice with a +2 circumstance bonus, and if you’re at least 18th level, increase it to three extra dice with a +3 circumstance bonus."
+								"If you're at least 10th level, increase this to two extra dice with a +2 circumstance bonus, and if you're at least 18th level, increase it to three extra dice with a +3 circumstance bonus."
 							],
 							"type": "ability",
 							"style": "full",
@@ -1132,7 +1125,7 @@
 								"Mental"
 							],
 							"entries": [
-								"Your eidolon’s fury boils over into a reckless, outof-control frenzy. While frenzied, your eidolon is affected by {@spell boost eidolon} and gains temporary Hit Points equal to your level, but it takes a –2 penalty to AC. Your eidolon can’t voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which it’s {@condition fatigued} for 1 minute and can’t start another frenzy for 1 minute."
+								"Your eidolon's fury boils over into a reckless, outof-control frenzy. While frenzied, your eidolon is affected by {@spell boost eidolon} and gains temporary Hit Points equal to your level, but it takes a \u20132 penalty to AC. Your eidolon can't voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which it's {@condition fatigued} for 1 minute and can't start another frenzy for 1 minute."
 							],
 							"type": "ability",
 							"style": "full",
@@ -1145,7 +1138,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon exudes wrath in an aura around it, rousing the ire of nearby creatures and causing their defenses to crack as they seethe with rage. Your eidolon gains a 20-foot anger aura, which has the {@trait aura}, {@trait emotion}, {@trait enchantment}, {@trait mental}, and {@trait occult} traits. The resistances of any creature in the aura, including you, your allies, your enemies, and your eidolon, are reduced by an amount equal to 3 + your eidolon’s Constitution modifier. Your eidolon can hold in its rage by spending a single action, which has the {@trait concentrate} trait. This reduces the aura’s effect to affect only your eidolon. It can take this action again to reinstate the full effect of its aura. Creatures in a barbarian {@action Rage}, Seething Frenzy, or similar ability that allows them to channel their anger aren’t affected by the anger aura."
+						"Your eidolon exudes wrath in an aura around it, rousing the ire of nearby creatures and causing their defenses to crack as they seethe with rage. Your eidolon gains a 20-foot anger aura, which has the {@trait aura}, {@trait emotion}, {@trait enchantment}, {@trait mental}, and {@trait occult} traits. The resistances of any creature in the aura, including you, your allies, your enemies, and your eidolon, are reduced by an amount equal to 3 + your eidolon's Constitution modifier. Your eidolon can hold in its rage by spending a single action, which has the {@trait concentrate} trait. This reduces the aura's effect to affect only your eidolon. It can take this action again to reinstate the full effect of its aura. Creatures in a barbarian {@action Rage}, Seething Frenzy, or similar ability that allows them to channel their anger aren't affected by the anger aura."
 					]
 				}
 			]
@@ -1157,7 +1150,7 @@
 					"type": "pf2-h3",
 					"name": "Beast Eidolon",
 					"entries": [
-						"Your eidolon is a manifestation of the life force of nature in the form of a powerful magical beast that often has animal features, possibly even several from different species. You might have learned the way to connect with the world’s life force via a specific philosophy or practice, such as the beliefs of the god callers of Sarkoris, or formed a bond on your own. Regardless, your link to your eidolon allows you both to grow in power and influence to keep your home safe from those who would despoil it."
+						"Your eidolon is a manifestation of the life force of nature in the form of a powerful magical beast that often has animal features, possibly even several from different species. You might have learned the way to connect with the world's life force via a specific philosophy or practice, such as the beliefs of the god callers of Sarkoris, or formed a bond on your own. Regardless, your link to your eidolon allows you both to grow in power and influence to keep your home safe from those who would despoil it."
 					]
 				}
 			],
@@ -1232,7 +1225,7 @@
 					"name": "Beast's Charge",
 					"type": "initial",
 					"entries": [
-						"Your eidolon can make a ferocious charge or pounce on foes, allowing it to quickly engage. It gains the Beast’s Charge activity",
+						"Your eidolon can make a ferocious charge or pounce on foes, allowing it to quickly engage. It gains the Beast's Charge activity",
 						{
 							"activity": {
 								"number": 2,
@@ -1268,7 +1261,7 @@
 								"Eidolon"
 							],
 							"entries": [
-								"Your eidolon unleashes a primal roar or other such terrifying noise that fits your eidolon’s form. Your eidolon attempts {@skill Intimidation} checks to {@action Demoralize} each enemy that can hear the roar; these {@action Demoralize} attempts don’t take any penalty for not sharing a language."
+								"Your eidolon unleashes a primal roar or other such terrifying noise that fits your eidolon's form. Your eidolon attempts {@skill Intimidation} checks to {@action Demoralize} each enemy that can hear the roar; these {@action Demoralize} attempts don't take any penalty for not sharing a language."
 							],
 							"type": "ability",
 							"style": "full",
@@ -1292,7 +1285,7 @@
 								"Eidolon"
 							],
 							"entries": [
-								"Your eidolon lashes out in all directions. It makes a melee unarmed {@action Strike} against up to four enemies within reach. It can choose different unarmed attacks for each enemy. Each attack counts toward your multiple attack penalty, but you don’t increase your penalty until the eidolon has made all its attacks."
+								"Your eidolon lashes out in all directions. It makes a melee unarmed {@action Strike} against up to four enemies within reach. It can choose different unarmed attacks for each enemy. Each attack counts toward your multiple attack penalty, but you don't increase your penalty until the eidolon has made all its attacks."
 							],
 							"type": "ability",
 							"style": "full",
@@ -1309,7 +1302,7 @@
 					"type": "pf2-h3",
 					"name": "Construct Eidolon",
 					"entries": [
-						"Your eidolon is a mental construct based on an astral thoughtform and given physical presence and life by its connection to you, its shape limited only by your imagination. Your eidolon’s appearance and physical form vary based on your shared vision for its construction, from clockworks to stuffed dolls and everything between, and it’s not uncommon for that appearance to change greatly as your construct gains evolutions. Because it arises from an astral entity, your construct is no mindless servitor, but a fully thinking being with its own ideas, goals, and even emotions. These entities are extremely diverse; while many construct eidolons come from a powerful symbiotic connection with astral denizens, just as many arise from the forgotten memories of ancient empires and craftworks drifting across the Silver Sea of the Astral Plane."
+						"Your eidolon is a mental construct based on an astral thoughtform and given physical presence and life by its connection to you, its shape limited only by your imagination. Your eidolon's appearance and physical form vary based on your shared vision for its construction, from clockworks to stuffed dolls and everything between, and it's not uncommon for that appearance to change greatly as your construct gains evolutions. Because it arises from an astral entity, your construct is no mindless servitor, but a fully thinking being with its own ideas, goals, and even emotions. These entities are extremely diverse; while many construct eidolons come from a powerful symbiotic connection with astral denizens, just as many arise from the forgotten memories of ancient empires and craftworks drifting across the Silver Sea of the Astral Plane."
 					]
 				}
 			],
@@ -1385,7 +1378,7 @@
 					"name": "Construct Heart",
 					"type": "initial",
 					"entries": [
-						"Your construct eidolon has a link directly to your life force, which renders it a living creature and therefore susceptible to many ailments that bother only the living, though it does possess some resistances to these effects. It doesn’t have a construct’s normal immunities, but does gain a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, {@trait necromancy}, and {@trait poison} effects, as well as effects causing the {@condition fatigued} or {@condition sickened} conditions. Additionally, its astral essence bleeds off slowly, and it only needs to succeed at a DC {@flatDC 10} flat check to remove persistent bleed damage (or DC {@flatDC 5} after receiving particularly effective aid)."
+						"Your construct eidolon has a link directly to your life force, which renders it a living creature and therefore susceptible to many ailments that bother only the living, though it does possess some resistances to these effects. It doesn't have a construct's normal immunities, but does gain a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, {@trait necromancy}, and {@trait poison} effects, as well as effects causing the {@condition fatigued} or {@condition sickened} conditions. Additionally, its astral essence bleeds off slowly, and it only needs to succeed at a DC {@flatDC 10} flat check to remove persistent bleed damage (or DC {@flatDC 5} after receiving particularly effective aid)."
 					]
 				},
 				{
@@ -1393,7 +1386,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your construct eidolon is particularly easy to reconfigure, gaining an additional evolution that suits both of your whims. Choose one additional evolution feat of 6th level or lower. Your eidolon gains that feat. You can Retrain this feat for any other evolution feat of 6th level or lower with only a single day of downtime if you succeed at a {@skill Crafting} check, with a {@table DCs by Level||standard DC of your eidolon’s level}. If you fail, you can try again on a later day. Many summoners choose {@feat Eidolon’s Wrath|SoM} for this ability."
+						"Your construct eidolon is particularly easy to reconfigure, gaining an additional evolution that suits both of your whims. Choose one additional evolution feat of 6th level or lower. Your eidolon gains that feat. You can Retrain this feat for any other evolution feat of 6th level or lower with only a single day of downtime if you succeed at a {@skill Crafting} check, with a {@table DCs by Level||standard DC of your eidolon's level}. If you fail, you can try again on a later day. Many summoners choose {@feat Eidolon's Wrath|SoM} for this ability."
 					]
 				},
 				{
@@ -1413,7 +1406,7 @@
 					"type": "pf2-h3",
 					"name": "Construct Eidolon",
 					"entries": [
-						"Your eidolon is a demon, born of mortal sin congealed amid the chaos and evil of the Abyss, using its link to you to spread chaos at your side. Choose an associated sin for your demon. Demon eidolons have appearances as varied as the infinite Abyss. While demons are inherently untrustworthy, your demon eidolon has reached an accord with you and generally keeps it, though that doesn’t mean your eidolon isn’t actively working to bring your life deeper into its associated sin. Though a true demon, your demon eidolon’s link to you as a mortal prevents them from casting the {@ritual abyssal pact|Bst} ritual, even if they somehow learn it.",
+						"Your eidolon is a demon, born of mortal sin congealed amid the chaos and evil of the Abyss, using its link to you to spread chaos at your side. Choose an associated sin for your demon. Demon eidolons have appearances as varied as the infinite Abyss. While demons are inherently untrustworthy, your demon eidolon has reached an accord with you and generally keeps it, though that doesn't mean your eidolon isn't actively working to bring your life deeper into its associated sin. Though a true demon, your demon eidolon's link to you as a mortal prevents them from casting the {@ritual abyssal pact|Bst} ritual, even if they somehow learn it.",
 						{
 							"type": "pf2-sidebar",
 							"name": "Embodiments of Sin",
@@ -1497,7 +1490,7 @@
 					"name": "Demonic Strikes",
 					"type": "initial",
 					"entries": [
-						"Your eidolon’s attacks are corrupted by the Abyss and imbued with pure evil and shifting chaos. All your eidolon’s unarmed {@action Strike||Strikes} deal an extra 1 evil damage; as usual, this extra damage harms only good creatures or those with a weakness to evil damage. Additionally, choose one of your eidolon’s unarmed attacks that deals physical damage; it gains the {@trait versatile} trait for a different type of physical damage you choose."
+						"Your eidolon's attacks are corrupted by the Abyss and imbued with pure evil and shifting chaos. All your eidolon's unarmed {@action Strike||Strikes} deal an extra 1 evil damage; as usual, this extra damage harms only good creatures or those with a weakness to evil damage. Additionally, choose one of your eidolon's unarmed attacks that deals physical damage; it gains the {@trait versatile} trait for a different type of physical damage you choose."
 					]
 				},
 				{
@@ -1517,14 +1510,14 @@
 							"style": "full",
 							"name": "Visions of Sin",
 							"entries": [
-								"Your eidolon summons images of its sin into the mind of a target creature within 30 feet, tormenting and confusing the target. The target must attempt a Will save against your spell DC with the following effects. The effects last until the end of your next turn, but your eidolon can use a single action, which has the {@trait concentrate} trait, to extend the effects until the end of your next turn (like {@action Sustain a Spell||Sustaining a Spell}), to a maximum duration of 1 minute. If the target is evil, it takes a –2 circumstance penalty to its save. Regardless of whether it succeeds, the target becomes temporarily immune for 1 day.",
+								"Your eidolon summons images of its sin into the mind of a target creature within 30 feet, tormenting and confusing the target. The target must attempt a Will save against your spell DC with the following effects. The effects last until the end of your next turn, but your eidolon can use a single action, which has the {@trait concentrate} trait, to extend the effects until the end of your next turn (like {@action Sustain a Spell||Sustaining a Spell}), to a maximum duration of 1 minute. If the target is evil, it takes a \u20132 circumstance penalty to its save. Regardless of whether it succeeds, the target becomes temporarily immune for 1 day.",
 								{
 									"type": "successDegree",
 									"entries": {
 										"Critical Success": "The target is unaffected.",
-										"Success": "The target can’t use reactions.",
-										"Failure": "The target is {@condition slowed} 1 and can’t use reactions.",
-										"Critical Failure": "As failure, and the target is also {@condition confused} for 1 round. The confusion can’t be extended, but the other effects can."
+										"Success": "The target can't use reactions.",
+										"Failure": "The target is {@condition slowed} 1 and can't use reactions.",
+										"Critical Failure": "As failure, and the target is also {@condition confused} for 1 round. The confusion can't be extended, but the other effects can."
 									}
 								}
 							],
@@ -1542,7 +1535,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your demon utters indescribable words writhing with its associated sin. It can cast an evil {@spell divine decree} once per day as a 9th-level spell. You are unaffected by this decree, even if you aren’t evil. At 19th level, this becomes a 10th-level divine decree instead."
+						"Your demon utters indescribable words writhing with its associated sin. It can cast an evil {@spell divine decree} once per day as a 9th-level spell. You are unaffected by this decree, even if you aren't evil. At 19th level, this becomes a 10th-level divine decree instead."
 					]
 				}
 			]
@@ -1554,7 +1547,7 @@
 					"type": "pf2-h3",
 					"name": "Devotion Phantom Eidolon",
 					"entries": [
-						"Your eidolon is a lost soul, unable to escape the mortal world due to a strong sense of duty, an undying devotion, or a need to complete an important task. Most phantom eidolons are humanoid with a spectral or ectoplasmic appearance, though some take far stranger forms. Your link with your eidolon prevents them from succumbing to corruption and undeath, and together, you will grow in strength and fulfill your phantom’s devotion."
+						"Your eidolon is a lost soul, unable to escape the mortal world due to a strong sense of duty, an undying devotion, or a need to complete an important task. Most phantom eidolons are humanoid with a spectral or ectoplasmic appearance, though some take far stranger forms. Your link with your eidolon prevents them from succumbing to corruption and undeath, and together, you will grow in strength and fulfill your phantom's devotion."
 					]
 				}
 			],
@@ -1641,7 +1634,7 @@
 							],
 							"name": "Dutiful Retaliation",
 							"entries": [
-								"Your eidolon instinctively flashes with ectoplasmic energy, allowing them to strike back against an enemy who dares to harm you. Your eidolon makes a melee unarmed {@action Strike} against the triggering enemy, even if that enemy isn’t within your eidolon’s reach."
+								"Your eidolon instinctively flashes with ectoplasmic energy, allowing them to strike back against an enemy who dares to harm you. Your eidolon makes a melee unarmed {@action Strike} against the triggering enemy, even if that enemy isn't within your eidolon's reach."
 							],
 							"activity": {
 								"entry": "{@as R}",
@@ -1658,7 +1651,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon’s dedication makes it extremely challenging for your foes to bend its mind. Your eidolon gains a +2 circumstance bonus to saving throws against {@trait mental} effects, and if they roll a success against such an effect, they get a critical success instead. If you have the shared resolve class feature and your eidolon rolls a critical failure against a mental effect, they get a failure instead."
+						"Your eidolon's dedication makes it extremely challenging for your foes to bend its mind. Your eidolon gains a +2 circumstance bonus to saving throws against {@trait mental} effects, and if they roll a success against such an effect, they get a critical success instead. If you have the shared resolve class feature and your eidolon rolls a critical failure against a mental effect, they get a failure instead."
 					]
 				},
 				{
@@ -1666,7 +1659,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"After fighting at your side for so long, your eidolon has become as devoted to protecting you and your allies as it is to its original cause. It gains a 20-foot devotion aura, which has the {@trait abjuration}, {@trait aura}, and {@trait occult} traits. Whenever one of your eidolon’s allies within the aura takes damage, you can reduce the damage by your eidolon’s Constitution modifier. You lose a number of Hit Points equal to half the amount by which the eidolon reduced the damage, rounded down. If the damage was lower than the Constitution modifier, base the damage you take on the actual amount of damage prevented."
+						"After fighting at your side for so long, your eidolon has become as devoted to protecting you and your allies as it is to its original cause. It gains a 20-foot devotion aura, which has the {@trait abjuration}, {@trait aura}, and {@trait occult} traits. Whenever one of your eidolon's allies within the aura takes damage, you can reduce the damage by your eidolon's Constitution modifier. You lose a number of Hit Points equal to half the amount by which the eidolon reduced the damage, rounded down. If the damage was lower than the Constitution modifier, base the damage you take on the actual amount of damage prevented."
 					]
 				}
 			]
@@ -1765,7 +1758,7 @@
 							],
 							"name": "Breath Weapon",
 							"entries": [
-								"Your eidolon exhales a blast of destructive energy. Your eidolon deals {@damage 1d6} damage to all creatures in the area, with a basic Reflex save against your spell DC. The area and damage type of the Breath Weapon are chosen when the eidolon gains this ability. Your eidolon then can’t use their Breath Weapon again for the next {@dice 1d4} rounds.",
+								"Your eidolon exhales a blast of destructive energy. Your eidolon deals {@damage 1d6} damage to all creatures in the area, with a basic Reflex save against your spell DC. The area and damage type of the Breath Weapon are chosen when the eidolon gains this ability. Your eidolon then can't use their Breath Weapon again for the next {@dice 1d4} rounds.",
 								"At 3rd level and every 2 levels thereafter, the damage increases by {@damage 1d6}."
 							],
 							"activity": {
@@ -1801,11 +1794,11 @@
 					]
 				},
 				{
-					"name": "Wyrm’s Breath",
+					"name": "Wyrm's Breath",
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon can draw upon the power of wyrms to enhance the eidolon’s Breath Weapon. Your eidolon gains the Wyrm’s Breath free action.",
+						"Your eidolon can draw upon the power of wyrms to enhance the eidolon's Breath Weapon. Your eidolon gains the Wyrm's Breath free action.",
 						{
 							"type": "ability",
 							"style": "full",
@@ -1813,9 +1806,9 @@
 								"Concentrate",
 								"Eidolon"
 							],
-							"name": "Wyrm’s Breath",
+							"name": "Wyrm's Breath",
 							"entries": [
-								"Your eidolon gathers the power of the mightiest wyrms to make its magical breath even more spectacular. If your eidolon’s next action is to use Breath Weapon, both the number of damage dice and area of the Breath Weapon are doubled."
+								"Your eidolon gathers the power of the mightiest wyrms to make its magical breath even more spectacular. If your eidolon's next action is to use Breath Weapon, both the number of damage dice and area of the Breath Weapon are doubled."
 							],
 							"activity": {
 								"entry": "{@as F}",
@@ -1834,7 +1827,7 @@
 					"type": "pf2-h3",
 					"name": "Fey Eidolon",
 					"entries": [
-						"Your eidolon is a fey, a capricious being of the mysterious First World. Many fey appear similar to mortal humanoids with unusual features such as pointed ears, wings, or bodies composed of natural elements, but the full variety of fey is endless, and many others appear completely inhuman. Fey from the First World never truly die, instead forming a new creature. Fey eidolons usually come about when a summoner helps stabilize a difficult reformation. This means your fey eidolon likely lived a different life just before meeting you and might remember fragments of its old memories. Together, you might have to unravel a memory from your eidolon’s past life among the fey."
+						"Your eidolon is a fey, a capricious being of the mysterious First World. Many fey appear similar to mortal humanoids with unusual features such as pointed ears, wings, or bodies composed of natural elements, but the full variety of fey is endless, and many others appear completely inhuman. Fey from the First World never truly die, instead forming a new creature. Fey eidolons usually come about when a summoner helps stabilize a difficult reformation. This means your fey eidolon likely lived a different life just before meeting you and might remember fragments of its old memories. Together, you might have to unravel a memory from your eidolon's past life among the fey."
 					]
 				}
 			],
@@ -1909,8 +1902,8 @@
 					"name": "Gift Spells",
 					"type": "initial",
 					"entries": [
-						"Your eidolon expands your primal magic with enchantment and illusion magic, allowing both of you to wield the power of fey charm and glamour. When you add spells to your repertoire, you can choose from the primal list as well as from enchantment and illusion spells that appear on the arcane spell list. As usual for when you add spells of a different tradition to your spell list, you’re still a primal spellcaster, so all of your spells are primal spells.",
-						"Your eidolon gains the {@feat Magical Understudy|SoM} summoner feat, despite not meeting the prerequisite level, and it can choose fey gift cantrips in addition to primal cantrips. As usual for a feat you are granted by name, you can’t retrain {@feat Magical Understudy|SoM} into another feat."
+						"Your eidolon expands your primal magic with enchantment and illusion magic, allowing both of you to wield the power of fey charm and glamour. When you add spells to your repertoire, you can choose from the primal list as well as from enchantment and illusion spells that appear on the arcane spell list. As usual for when you add spells of a different tradition to your spell list, you're still a primal spellcaster, so all of your spells are primal spells.",
+						"Your eidolon gains the {@feat Magical Understudy|SoM} summoner feat, despite not meeting the prerequisite level, and it can choose fey gift cantrips in addition to primal cantrips. As usual for a feat you are granted by name, you can't retrain {@feat Magical Understudy|SoM} into another feat."
 					]
 				},
 				{
@@ -1918,11 +1911,11 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon’s fey magic becomes more powerful and mischievous. Your eidolon gains the {@feat Magical Adept|SoM} feat, despite not meeting the prerequisite level, and can choose from fey gift spells in addition to primal spells."
+						"Your eidolon's fey magic becomes more powerful and mischievous. Your eidolon gains the {@feat Magical Adept|SoM} feat, despite not meeting the prerequisite level, and can choose from fey gift spells in addition to primal spells."
 					]
 				},
 				{
-					"name": "Wyrm’s Breath",
+					"name": "Wyrm's Breath",
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
@@ -1938,7 +1931,7 @@
 					"type": "pf2-h3",
 					"name": "Plant Eidolon",
 					"entries": [
-						"Your eidolon is an intelligent plant, formed from the same disembodied fragments of nature’s life energy that become leshys. Plant eidolons tend to be curious and adaptable, with temperaments based on the parts of mortal culture they feel affinity toward. Despite coming from the same source, plant eidolons don’t always look like leshys. Plant eidolons have forms that vary greatly and can look like almost any kind of plant creature in existence. Some even resemble plant creatures so strange they are impossible to identify."
+						"Your eidolon is an intelligent plant, formed from the same disembodied fragments of nature's life energy that become leshys. Plant eidolons tend to be curious and adaptable, with temperaments based on the parts of mortal culture they feel affinity toward. Despite coming from the same source, plant eidolons don't always look like leshys. Plant eidolons have forms that vary greatly and can look like almost any kind of plant creature in existence. Some even resemble plant creatures so strange they are impossible to identify."
 					]
 				}
 			],
@@ -2037,7 +2030,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon’s vines and branches lengthen even more. All your eidolon’s melee unarmed attacks gain the {@trait reach} trait."
+						"Your eidolon's vines and branches lengthen even more. All your eidolon's melee unarmed attacks gain the {@trait reach} trait."
 					]
 				},
 				{
@@ -2059,13 +2052,13 @@
 								"Eidolon"
 							],
 							"entries": [
-								"Your eidolon extends its roots underground to entangle and possibly damage all foes nearby. All enemies within your eidolon’s reach take damage of the same type and amount as your eidolon’s most damaging {@action Strike}, depending on their Reflex saves. Any ongoing effects of the save last until the enemy either {@action Escape||Escapes} or leaves your eidolon’s reach. After using Field of Roots, your eidolon is {@condition immobilized} until it takes a single action, which has the {@trait manipulate} trait, to detach from the ground; this also ends any remaining effects on enemies from Field of Roots.",
+								"Your eidolon extends its roots underground to entangle and possibly damage all foes nearby. All enemies within your eidolon's reach take damage of the same type and amount as your eidolon's most damaging {@action Strike}, depending on their Reflex saves. Any ongoing effects of the save last until the enemy either {@action Escape||Escapes} or leaves your eidolon's reach. After using Field of Roots, your eidolon is {@condition immobilized} until it takes a single action, which has the {@trait manipulate} trait, to detach from the ground; this also ends any remaining effects on enemies from Field of Roots.",
 								{
 									"type": "successDegree",
 									"entries": {
 										"Critical Success": "The enemy is unaffected.",
-										"Success": "The enemy takes no damage, but takes a –10 foot circumstance penalty to its Speeds.",
-										"Failure": "The enemy takes half damage, takes a –10-foot circumstance penalty to its Speeds, and, at the end of each of its turns, takes half damage again.",
+										"Success": "The enemy takes no damage, but takes a \u201310 foot circumstance penalty to its Speeds.",
+										"Failure": "The enemy takes half damage, takes a \u201310-foot circumstance penalty to its Speeds, and, at the end of each of its turns, takes half damage again.",
 										"Critical Failure": "The enemy is {@condition immobilized}, takes full damage, and, at the end of each of its turns, takes full damage again."
 									}
 								}
@@ -2159,7 +2152,7 @@
 					"name": "Spirit Touch",
 					"type": "initial",
 					"entries": [
-						"Your eidolon’s attacks possess a psychopomp’s ability to harm the living and the dead. Your eidolon’s unarmed {@action Strike||Strikes} affect {@trait incorporeal} creatures as though etched with a {@item ghost touch} property rune and deal an extra 1 negative damage to living creatures and an extra 1 positive damage to undead."
+						"Your eidolon's attacks possess a psychopomp's ability to harm the living and the dead. Your eidolon's unarmed {@action Strike||Strikes} affect {@trait incorporeal} creatures as though etched with a {@item ghost touch} property rune and deal an extra 1 negative damage to living creatures and an extra 1 positive damage to undead."
 					]
 				},
 				{
@@ -2175,9 +2168,9 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon is particularly capable when it comes to handling bodiless spirits and putting undead to their final rest. Your eidolon can see {@trait incorporeal} creatures inside of solid objects and can attack them with {@action Strike||Strikes} without penalty; an {@trait incorporeal} creature in a solid object that takes damage from your eidolon’s {@action Strike} is expelled from the object to the nearest available space, moving closer to your eidolon if possible.",
+						"Your eidolon is particularly capable when it comes to handling bodiless spirits and putting undead to their final rest. Your eidolon can see {@trait incorporeal} creatures inside of solid objects and can attack them with {@action Strike||Strikes} without penalty; an {@trait incorporeal} creature in a solid object that takes damage from your eidolon's {@action Strike} is expelled from the object to the nearest available space, moving closer to your eidolon if possible.",
 						"Additionally, your eidolon can target or affect a creature projecting its consciousness (such as via {@spell project image}) or possessing another creature, even if its body is elsewhere, though your eidolon must know about the possession or projection and choose to do so.",
-						"Finally, the spirit of an undead destroyed by your eidolon’s {@action Strike||Strikes} is sent directly to the Boneyard for judgment; an undead with an ability to avoid such a fate automatically, such as a ghost’s rejuvenation, can attempt a counteract check against your spell DC to return via that ability as normal. In that case, it uses its Will save modifier as its counteract modifier."
+						"Finally, the spirit of an undead destroyed by your eidolon's {@action Strike||Strikes} is sent directly to the Boneyard for judgment; an undead with an ability to avoid such a fate automatically, such as a ghost's rejuvenation, can attempt a counteract check against your spell DC to return via that ability as normal. In that case, it uses its Will save modifier as its counteract modifier."
 					]
 				}
 			]
