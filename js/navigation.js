@@ -126,6 +126,19 @@ class NavBar {
 		addButton(
 			ulSettings,
 			{
+				html: scaleCreature.isProfNoLvl() === true ? "Creature Proficiency with Level" : "Creature Proficiency without Level",
+				click: (evt) => {
+					evt.preventDefault();
+					scaleCreature.toggleProfNoLvl();
+				},
+				className: "profNoLvlToggle",
+				title: "This feature is experimental.",
+			},
+		);
+		addDivider(ulSettings);
+		addButton(
+			ulSettings,
+			{
 				html: "Save State to File",
 				click: async (evt) => {
 					evt.preventDefault();

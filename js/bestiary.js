@@ -80,7 +80,7 @@ class BestiaryPage extends ListPage {
 	}
 
 	async pGetSublistItem (crRaw, pinId, addCount, data = {}) {
-		const cr = await (data.scaled ? ScaleCreature.scale(crRaw, data.scaled) : crRaw);
+		const cr = await (data.scaled ? scaleCreature.scale(crRaw, data.scaled) : crRaw);
 		const subHash = data.scaled ? `${HASH_PART_SEP}${VeCt.HASH_CR_SCALED}${HASH_SUB_KV_SEP}${data.scaled}` : "";
 
 		const name = cr._displayName || cr.name;
@@ -170,7 +170,7 @@ class BestiaryPage extends ListPage {
 			const scaleTo = Number(UrlUtil.unpackSubHash(scaledHash)[VeCt.HASH_CR_SCALED][0]);
 			const cr = this._dataList[Hist.lastLoadedId];
 			if (Parser.isValidCreatureLvl(scaleTo) && scaleTo !== this._lastRendered.creature.level) {
-				ScaleCreature.scale(cr, scaleTo).then(scaled => this._renderStatblock(scaled, true));
+				scaleCreature.scale(cr, scaleTo).then(scaled => this._renderStatblock(scaled, true));
 			}
 		}
 
@@ -326,7 +326,7 @@ class BestiaryPage extends ListPage {
 			listClass: "subcreatures",
 			fnSort: PageFilterBestiary.sortCreatures,
 			onUpdate: this._onSublistChange.bind(this),
-			customHashHandler: (cr, uid) => ScaleCreature.scale(cr, Number(uid.split("_").last())),
+			customHashHandler: (cr, uid) => scaleCreature.scale(cr, Number(uid.split("_").last())),
 			customHashUnpacker: getUnpackedCustomHashId,
 		});
 		SortUtil.initBtnSortHandlers($("#sublistsort"), this._subList);

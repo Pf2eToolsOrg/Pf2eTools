@@ -1030,7 +1030,7 @@ class Panel {
 				if (originalLvl) {
 					doRender(creature)
 				} else {
-					ScaleCreature.scale(creature, targetLvl).then(toRender => doRender(toRender))
+					scaleCreature.scale(creature, targetLvl).then(toRender => doRender(toRender))
 				}
 			}, true);
 		});
@@ -1058,7 +1058,7 @@ class Panel {
 			source,
 			hash,
 		).then(it => {
-			ScaleCreature.scale(it, targetLvl).then(initialRender => {
+			scaleCreature.scale(it, targetLvl).then(initialRender => {
 				const $contentInner = $(`<div class="panel-content-wrapper-inner"/>`);
 				const $contentStats = $(`<table class="stats"/>`).appendTo($contentInner);
 				$contentStats.append(Renderer.creature.getCompactRenderedString(initialRender, {showScaler: true, isScaled: true}));

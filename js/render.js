@@ -3929,6 +3929,7 @@ Renderer.creature = {
 	},
 
 	getCompactRenderedString (cr, opts) {
+		cr = scaleCreature.applyVarRules(cr);
 		opts = opts || {};
 		const traits = [];
 		if (cr.rarity !== "Common") traits.push(cr.rarity);
@@ -4050,6 +4051,22 @@ Renderer.creature = {
 		});
 
 		$btnScaleLvl.after($wrp);
+	},
+
+	$getBtnScaleLvl (cr) {
+		const $btnScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Scale Creature By Level (Highly Experimental)" class="mon__btn-scale-lvl btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-signal"/>
+			</button>`) : null;
+		return $btnScaleLvl.off("click");
+	},
+
+	$getBtnResetScaleLvl (cr) {
+		const $btnResetScaleLvl = cr.level != null ? $(`
+			<button id="btn-scale-lvl" title="Reset Level Scaling" class="mon__btn-scale-lvl btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-refresh"></span>
+			</button>`) : null;
+		return $btnResetScaleLvl.off("click");
 	},
 
 	async pGetFluff (creature) {
@@ -5128,7 +5145,7 @@ Renderer.hover = {
 			switch (type) {
 				case VeCt.HASH_CR_SCALED: {
 					const baseMon = await Renderer.hover.pCacheAndGet(page, source, hash);
-					toRender = await ScaleCreature.scale(baseMon, Number(data));
+					toRender = await scaleCreature.scale(baseMon, Number(data));
 					break;
 				}
 				case VeCt.HASH_ITEM_RUNES: {
@@ -5207,7 +5224,7 @@ Renderer.hover = {
 									sourceData.type = "stats";
 									delete sourceData.level;
 								} else {
-									toRender = await ScaleCreature.scale(toRender, targetLvl);
+									toRender = await scaleCreature.scale(toRender, targetLvl);
 									sourceData.type = "statsCreatureScaled";
 									sourceData.level = targetLvl;
 								}

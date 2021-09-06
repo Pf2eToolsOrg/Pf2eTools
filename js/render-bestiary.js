@@ -1,5 +1,6 @@
 class RenderBestiary {
 	static $getRenderedCreature (cr, options) {
+		cr = scaleCreature.applyVarRules(cr);
 		options = options || {};
 		const traits = [];
 		if (cr.rarity !== "Common") traits.push(cr.rarity);

@@ -5696,7 +5696,7 @@ ExtensionUtil = {
 			if (extensionData) {
 				switch (page) {
 					case UrlUtil.PG_BESTIARY: {
-						toSend = await ScaleCreature.scale(toSend, Number(extensionData));
+						toSend = await scaleCreature.scale(toSend, Number(extensionData));
 					}
 				}
 			}

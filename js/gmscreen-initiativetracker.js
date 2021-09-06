@@ -1400,7 +1400,7 @@ class InitiativeTracker {
 						Renderer.hover.pCacheAndGet(UrlUtil.PG_BESTIARY, source, hash)
 							.then(mon => {
 								if (scaling != null) {
-									ScaleCreature.scale(mon, scaling).then(scaled => {
+									scaleCreature.scale(mon, scaling).then(scaled => {
 										resolve({
 											count,
 											creature: scaled,
