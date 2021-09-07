@@ -644,13 +644,17 @@ class ScaleCreature {
 	_intervalTransform (x, I0, I1) {
 		const [a0, b0] = I0;
 		const [a1, b1] = I1;
-		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1)
+		if (a0 === b0) return a0;
+		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1);
 	}
 
+	// FIXME: This code is unreadable
 	_scaleValue (lvlIn, toLvl, value, map) {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
 		let I1;
+		// x < value for all x in map[toLvl]
 		if (idx[1] === -1) I1 = [map[toLvl][idx[0]], map[toLvl][idx[0]] + I0[1] - I0[0]];
+		// x >= value for all x in map[toLvl]
 		else if (idx[0] === -1) I1 = [Math.max(1, map[toLvl][idx[1]] - I0[1] + I0[0]), map[toLvl][idx[1]]];
 		else I1 = [map[toLvl][idx[0]], map[toLvl][idx[1]]];
 		return this._intervalTransform(value, I0, I1)
