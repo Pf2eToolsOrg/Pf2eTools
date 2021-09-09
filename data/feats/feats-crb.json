@@ -40,9 +40,9 @@
 				"When you {@action Rage}, your sense of smell improves. You gain imprecise {@ability scent} with a range of 30 feet."
 			],
 			"leadsTo": [
-				"Supernatural Senses|APG",
+				"Instinctive Strike|APG",
 				"Nocturnal Sense|APG",
-				"Instinctive Strike|APG"
+				"Supernatural Senses|APG"
 			]
 		},
 		{
@@ -65,9 +65,9 @@
 			],
 			"leadsTo": [
 				"Acute Scent",
-				"Supernatural Senses|APG",
+				"Instinctive Strike|APG",
 				"Nocturnal Sense|APG",
-				"Instinctive Strike|APG"
+				"Supernatural Senses|APG"
 			]
 		},
 		{
@@ -608,8 +608,8 @@
 				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically Shoving it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
 			],
 			"leadsTo": [
-				"Powerful Shove",
-				"Flinging Shove"
+				"Flinging Shove",
+				"Powerful Shove"
 			]
 		},
 		{
@@ -721,9 +721,9 @@
 			"leadsTo": [
 				"Basic Concoction",
 				"Advanced Concoction",
-				"Quick Alchemy",
 				"Expert Alchemy",
-				"Master Alchemy"
+				"Master Alchemy",
+				"Quick Alchemy"
 			]
 		},
 		{
@@ -1068,6 +1068,9 @@
 			"prerequisites": "trained in {@skill Arcana}",
 			"entries": [
 				"Your study of magic allows you to instinctively sense its presence. You can cast 1st-level {@spell detect magic} at will as an arcane innate spell. If you're a master in {@skill Arcana}, the spell is heightened to 3rd level; if you're legendary, it is heightened to 4th level."
+			],
+			"leadsTo": [
+				"Eye Of The Arclords|LOWG"
 			]
 		},
 		{
@@ -1505,9 +1508,9 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the bard archetype.",
 			"leadsTo": [
 				"Basic Bard Spellcasting",
-				"Occult Breadth",
 				"Expert Bard Spellcasting",
 				"Master Bard Spellcasting",
+				"Occult Breadth",
 				"Basic Muse's Whispers",
 				"Advanced Muse's Whispers",
 				"Counter Perform",
@@ -1575,6 +1578,9 @@
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level wizard|feats||classes=wizard|level=[1;2]} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Arcana"
 			]
 		},
 		{
@@ -1597,9 +1603,9 @@
 				"You gain the basic spellcasting benefits (page 219). Each time you gain a spell slot of a new level from the bard archetype, add a common occult spell or another spell you learned or discovered to your repertoire, of the appropriate spell level."
 			],
 			"leadsTo": [
-				"Occult Breadth",
 				"Expert Bard Spellcasting",
-				"Master Bard Spellcasting"
+				"Master Bard Spellcasting",
+				"Occult Breadth"
 			]
 		},
 		{
@@ -1759,9 +1765,9 @@
 				"You gain the basic spellcasting benefits (page 219)."
 			],
 			"leadsTo": [
-				"Primal Breadth",
 				"Expert Druid Spellcasting",
-				"Master Druid Spellcasting"
+				"Master Druid Spellcasting",
+				"Primal Breadth"
 			]
 		},
 		{
@@ -2058,6 +2064,9 @@
 			"requirements": "You are holding or wearing {@item healer's tools}.",
 			"entries": [
 				"You can patch up yourself or an adjacent ally, even in combat. Attempt a {@skill Medicine} check with the same DC as for {@action Treat Wounds}, and restore a corresponding amount of Hit Points; this does not remove the {@condition wounded} condition. As with {@action Treat Wounds}, you can attempt checks against higher DCs if you have the minimum proficiency rank. The target is then temporarily immune to your Battle {@skill Medicine} for 1 day."
+			],
+			"leadsTo": [
+				"Paragon Battle Medicine|LOL"
 			]
 		},
 		{
@@ -2701,6 +2710,9 @@
 			],
 			"entries": [
 				"You recognize the chittering of ground creatures as its own peculiar language. You can ask questions of, receive answers from, and use the {@skill Diplomacy} skill with animals that have a burrow Speed, such as badgers, ground squirrels, moles, and prairie dogs. The GM determines which animals count for this ability."
+			],
+			"leadsTo": [
+				"Animal Elocutionist"
 			]
 		},
 		{
@@ -2765,8 +2777,8 @@
 				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Sneak} even if you're {@condition observed}."
 			],
 			"leadsTo": [
-				"Stealthy Companion",
-				"Shadow Hunter"
+				"Shadow Hunter",
+				"Stealthy Companion"
 			]
 		},
 		{
@@ -3074,10 +3086,10 @@
 				"Basic Devotion",
 				"Advanced Devotion",
 				"Champion Resiliency",
-				"Healing Touch",
 				"Champion's Reaction",
+				"Diverse Armor Expert",
 				"Divine Ally",
-				"Diverse Armor Expert"
+				"Healing Touch"
 			]
 		},
 		{
@@ -3703,6 +3715,9 @@
 			"prerequisites": "expert in {@skill Society}, {@feat Courtly Graces}",
 			"entries": [
 				"You have social connections you can leverage to trade favors or meet important people. When you're in an area with connections (typically a settlement where you've spent downtime building connections, or possibly another area in the same nation), you can attempt a {@skill Society} check to arrange a meeting with an important political figure or ask for a favor in exchange for a later favor of your contact's choice. The GM decides the DC based on the difficulty of the favor and the figure's prominence."
+			],
+			"leadsTo": [
+				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -3839,7 +3854,10 @@
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
 			],
-			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, natural, or occult)."
+			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, natural, or occult).",
+			"leadsTo": [
+				"Reflect Spell (Sorcerer)"
+			]
 		},
 		{
 			"name": "Counterspell",
@@ -3868,6 +3886,10 @@
 			"entries": [
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
+			],
+			"leadsTo": [
+				"Clever Counterspell",
+				"Reflect Spell (Wizard)"
 			]
 		},
 		{
@@ -3893,7 +3915,8 @@
 				"You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics. You can use {@skill Society} to {@action Make an Impression} on a noble, as well as with."
 			],
 			"leadsTo": [
-				"Connections"
+				"Connections",
+				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -5419,6 +5442,9 @@
 			"prerequisites": "dragon instinct",
 			"entries": [
 				"You sprout dragon wings from your back of the same color as your chosen dragon. While you are raging, you gain a fly Speed equal to your land Speed. If you are flying when your rage ends, you start to fall but the transformation only completes at the last moment, so you take no damage from the fall and land standing up."
+			],
+			"leadsTo": [
+				"Dragon Transformation"
 			]
 		},
 		{
@@ -5489,9 +5515,9 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the druid archetype.",
 			"leadsTo": [
 				"Basic Druid Spellcasting",
-				"Primal Breadth",
 				"Expert Druid Spellcasting",
 				"Master Druid Spellcasting",
+				"Primal Breadth",
 				"Basic Wilding",
 				"Advanced Wilding",
 				"Order Spell"
@@ -5620,8 +5646,8 @@
 				"You riposte against your flailing enemy. Make a melee {@action Strike} against or attempt to {@action Disarm} the triggering creature."
 			],
 			"leadsTo": [
-				"Improved Dueling Riposte",
-				"Guiding Riposte"
+				"Guiding Riposte",
+				"Improved Dueling Riposte"
 			]
 		},
 		{
@@ -6142,8 +6168,8 @@
 				}
 			],
 			"leadsTo": [
-				"Emblazon Energy",
-				"Emblazon Antimagic"
+				"Emblazon Antimagic",
+				"Emblazon Energy"
 			]
 		},
 		{
@@ -7363,9 +7389,9 @@
 			"leadsTo": [
 				"Basic Maneuver",
 				"Advanced Maneuver",
+				"Diverse Weapon Expert",
 				"Fighter Resiliency",
-				"Opportunist",
-				"Diverse Weapon Expert"
+				"Opportunist"
 			]
 		},
 		{
@@ -7969,8 +7995,8 @@
 				"In addition, you gain access to {@item kukri||kukris} and all {@filter uncommon gnome weapons|items|rarity=uncommon|ancestry & heritage=gnome}. For the purpose of determining your proficiency, martial gnome weapons are simple weapons and advanced gnome weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Gnome Weapon Innovator",
-				"Gnome Weapon Expertise"
+				"Gnome Weapon Expertise",
+				"Gnome Weapon Innovator"
 			]
 		},
 		{
@@ -8120,8 +8146,8 @@
 				"For the purpose of determining your proficiency, martial goblin weapons are simple weapons and advanced goblin weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Goblin Weapon Frenzy",
-				"Goblin Weapon Expertise"
+				"Goblin Weapon Expertise",
+				"Goblin Weapon Frenzy"
 			]
 		},
 		{
@@ -8609,8 +8635,8 @@
 			"leadsTo": [
 				"Guiding Luck",
 				"Halfling Ingenuity|LOCG",
-				"Shared Luck|LOCG",
-				"Incredible Luck|LOCG"
+				"Incredible Luck|LOCG",
+				"Shared Luck|LOCG"
 			]
 		},
 		{
@@ -9675,7 +9701,7 @@
 				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
 			],
 			"leadsTo": [
-				"Specialized Companion (Ranger)||Specialised Companion"
+				"Specialized Companion (Ranger)"
 			]
 		},
 		{
@@ -11722,10 +11748,11 @@
 			],
 			"leadsTo": [
 				"Affliction Mercy",
+				"Greater Mercy",
 				"Ultimate Mercy",
-				"Invigorating Mercy|APG",
+				"Blessed Spell|APG",
 				"Elucidating Mercy|APG",
-				"Blessed Spell|APG"
+				"Invigorating Mercy|APG"
 			]
 		},
 		{
@@ -11994,9 +12021,9 @@
 			],
 			"leadsTo": [
 				"Ancestral Weaponry|APG",
-				"Shooting Stars Stance|APG",
 				"Peafowl Stance|APG",
 				"Peafowl Strut|APG",
+				"Shooting Stars Stance|APG",
 				"Whirling Blade Stance|APG"
 			]
 		},
@@ -12025,8 +12052,8 @@
 			"leadsTo": [
 				"Basic Kata",
 				"Advanced Kata",
-				"Monk Resiliency",
 				"Monk Moves",
+				"Monk Resiliency",
 				"Monk's Flurry",
 				"Perfection's Path"
 			]
@@ -12112,9 +12139,9 @@
 				"When you critically succeed at identifying your hunted prey with {@action Recall Knowledge}, you note a weakness in the creature's defenses. You and allies you tell gain a +1 circumstance bonus to your next attack roll against that prey. You can give bonuses from Monster Hunter only once per day against a particular creature."
 			],
 			"leadsTo": [
-				"Monster Warden",
 				"Master Monster Hunter",
-				"Legendary Monster Hunter"
+				"Legendary Monster Hunter",
+				"Monster Warden"
 			]
 		},
 		{
@@ -12720,9 +12747,9 @@
 			],
 			"leadsTo": [
 				"Incredible Ferocity",
-				"Undying Ferocity|APG",
 				"Ferocious Beasts|APG",
 				"Rampaging Ferocity|APG",
+				"Undying Ferocity|APG",
 				"Defy Death|LOAG"
 			]
 		},
@@ -14511,8 +14538,8 @@
 			"leadsTo": [
 				"Basic Hunter's Trick",
 				"Advanced Hunter's Trick",
-				"Ranger Resiliency",
-				"Master Spotter"
+				"Master Spotter",
+				"Ranger Resiliency"
 			]
 		},
 		{
@@ -15171,10 +15198,10 @@
 			"leadsTo": [
 				"Basic Trickery",
 				"Advanced Trickery",
-				"Sneak Attacker",
+				"Evasiveness",
 				"Skill Mastery",
-				"Uncanny Dodge",
-				"Evasiveness"
+				"Sneak Attacker",
+				"Uncanny Dodge"
 			]
 		},
 		{
@@ -15780,16 +15807,16 @@
 			],
 			"leadsTo": [
 				"Bastion Dedication|APG",
+				"Destructive Block|APG",
 				"Disarming Block|APG",
 				"Nimble Shield Hand|APG",
-				"Destructive Block|APG",
 				"Shield Salvation|APG",
 				"Lastwall Sentry Dedication|LOWG",
 				"Eye Of Ozem|LOWG",
-				"Necromantic Resistance|LOWG",
-				"Necromantic Tenacity|LOWG",
 				"Grave Sense|LOWG",
 				"Lastwall Warden|LOWG",
+				"Necromantic Resistance|LOWG",
+				"Necromantic Tenacity|LOWG",
 				"Rescuer's Press|LOL",
 				"Aegis Of Arnisant|LOCG",
 				"Vigil's Walls Rise Anew!|LOL",
@@ -16404,9 +16431,9 @@
 				"Each day during your daily preparations, you can prepare four snares from your formula book for quick deployment; if they normally take 1 minute to {@action Craft}, you can {@action Craft} them with 3 {@action Interact} actions. The number of snares increases to six if you have master proficiency in {@skill Crafting} and eight if you have legendary proficiency in {@skill Crafting}. Snares prepared in this way don't cost you any resources to {@action Craft}."
 			],
 			"leadsTo": [
-				"Quick Snares",
-				"Powerful Snares",
 				"Lightning Snares",
+				"Powerful Snares",
+				"Quick Snares",
 				"Ubiquitous Snares",
 				"Impossible Snares|APG"
 			]
@@ -16521,13 +16548,13 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the sorcerer archetype.",
 			"leadsTo": [
+				"Basic Blood Potency",
+				"Advanced Blood Potency",
+				"Basic Bloodline Spell",
 				"Basic Sorcerer Spellcasting",
 				"Bloodline Breadth",
 				"Expert Sorcerer Spellcasting",
-				"Master Sorcerer Spellcasting",
-				"Basic Blood Potency",
-				"Advanced Blood Potency",
-				"Basic Bloodline Spell"
+				"Master Sorcerer Spellcasting"
 			]
 		},
 		{
@@ -16666,6 +16693,9 @@
 						"*You must have the {@feat Alchemical Crafting} skill feat to {@action Craft} {@filter alchemical items|items||item=alchemical}"
 					]
 				}
+			],
+			"leadsTo": [
+				"Impeccable Crafting"
 			]
 		},
 		{
@@ -17203,6 +17233,7 @@
 			],
 			"leadsTo": [
 				"Criminal Connections|APG",
+				"Quick Contacts|APG",
 				"Underground Network|APG"
 			]
 		},
@@ -18472,7 +18503,7 @@
 				"You use your two weapons to parry attacks. You gain a +1 circumstance bonus to AC until the start of your next turn, or a +2 circumstance bonus if either weapon has the {@trait parry} trait. You lose this circumstance bonus if you no longer meet this feat's requirement."
 			],
 			"leadsTo": [
-				"Twinned Defense (Fighter)|CRB|Twinned Defense"
+				"Twinned Defense (Fighter)"
 			]
 		},
 		{
@@ -19415,6 +19446,9 @@
 				"You can use your momentum from a jump to propel yourself off a wall. If you're adjacent to a wall at the end of a jump (whether performing a {@action High Jump}, {@action Long Jump}, or {@action Leap}), you don't fall as long as your next action is another jump.",
 				"Furthermore, since your previous jump gives you momentum, you can use {@action High Jump} or {@action Long Jump} as a single action, but you don't get to {@action Stride} as part of the activity.",
 				"You can use Wall Jump only once in a turn, unless you're legendary in {@skill Athletics}, in which case you can use Wall Jump as many times as you can use consecutive jump actions in that turn."
+			],
+			"leadsTo": [
+				"Ricocheting Leap|LOME"
 			]
 		},
 		{
@@ -19876,18 +19910,18 @@
 				"You are one with the wild, always changing and adapting to meet any challenge. You gain the wild shape order spell, which lets you transform into a variety of forms that you can expand with druid feats."
 			],
 			"leadsTo": [
+				"Elemental Shape",
+				"Reactive Transformation|APG",
+				"Ferocious Shape",
 				"Form Control",
 				"Perfect Form Control",
-				"Thousand Faces",
 				"Insect Shape",
-				"Ferocious Shape",
+				"Monstrosity Shape",
+				"Plant Shape",
 				"Soaring Shape",
 				"Dragon Shape",
 				"True Shapeshifter",
-				"Reactive Transformation|APG",
-				"Elemental Shape",
-				"Plant Shape",
-				"Monstrosity Shape"
+				"Thousand Faces"
 			]
 		},
 		{
@@ -20037,6 +20071,7 @@
 			"leadsTo": [
 				"Arcane School Spell",
 				"Basic Arcana",
+				"Advanced Arcana",
 				"Basic Wizard Spellcasting",
 				"Arcane Breadth",
 				"Expert Wizard Spellcasting",

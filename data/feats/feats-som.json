@@ -60,7 +60,10 @@
 			"entries": [
 				"You gain one {@filter summoner|feats||classes=summoner} feat. For the purpose of meeting its prerequisites, your summoner level is equal to half your character level."
 			],
-			"special": "You can select this feat more than once. Each time you select it, you gain another summoner feat."
+			"special": "You can select this feat more than once. Each time you select it, you gain another summoner feat.",
+			"leadsTo": [
+				"Signature Synergy|SoM"
+			]
 		},
 		{
 			"name": "Advanced Weaponry",
@@ -311,6 +314,10 @@
 			"prerequisites": "{@feat Cathartic Mage Dedication|SoM}",
 			"entries": [
 				"You gain the basic spellcasting benefits. Each time you gain a spell slot of a new level from this archetype, add a spell of that spell level from your chosen tradition to your repertoire\u2014either a common spell or another spell you've learned or discovered."
+			],
+			"leadsTo": [
+				"Expert Cathartic Spellcasting|SoM",
+				"Master Cathartic Spellcasting|SoM"
 			]
 		},
 		{
@@ -331,6 +338,10 @@
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
 				"You gain the basic bounded spellcasting benefits (page 74)."
+			],
+			"leadsTo": [
+				"Expert Magus Spellcasting|SoM",
+				"Master Magus Spellcasting|SoM"
 			]
 		},
 		{
@@ -351,6 +362,9 @@
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level magus|feats||classes=magus|level=[1;2]} of your choice."
+			],
+			"leadsTo": [
+				"Advanced Martial Magic|SoM"
 			]
 		},
 		{
@@ -372,6 +386,10 @@
 			"prerequisites": "{@feat Cantrip Casting|SoM}",
 			"entries": [
 				"You increase your ability to cast spells. You gain the basic spellcasting benefits granted by spellcasting archetypes, gaining a spell repertoire. Each time you gain a spell slot of a new level from the basic, expert, and master spellcasting benefits from pervasive magic feats, add a spell of the appropriate spell level to your repertoire: a common spell of the magical tradition matching your trait, or another spell of that tradition that you have learned or discovered."
+			],
+			"leadsTo": [
+				"Expert Spellcasting|SoM",
+				"Master Spellcasting|SoM"
 			]
 		},
 		{
@@ -394,6 +412,10 @@
 				"You gain the basic bounded spellcasting benefits (page 74)",
 				"You gain the {@action Cast a Spell} activity. Your key spellcasting ability for summoner archetype spells is Charisma, and they are summoner spells of your eidolon's tradition.",
 				"You become trained in spell attack rolls and spell DCs of that tradition. You gain a spell repertoire and two cantrips. Each time you gain a spell slot of a new level from the summoner archetype, add a spell of that level or lower to your repertoire. Each time you lose spell slots of a particular level, remove those spells from your repertoire."
+			],
+			"leadsTo": [
+				"Expert Summoner Spellcasting|SoM",
+				"Master Summoner Spellcasting|SoM"
 			]
 		},
 		{
@@ -414,6 +436,10 @@
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
 				"You gain a 1st- or 2nd-level {@filter summoner|feats||classes=summoner} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Synergy|SoM",
+				"Signature Synergy|SoM"
 			]
 		},
 		{
@@ -488,6 +514,9 @@
 			],
 			"entries": [
 				"Your eidolon inflicts bleeding wounds on a telling blow. If your eidolon critically hits with a melee unarmed {@action Strike} that deals slashing or piercing, its target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. Your eidolon gains an item bonus to this bleed damage equal to the unarmed attack's item bonus to attack rolls. This is a critical specialization effect."
+			],
+			"leadsTo": [
+				"Blood Frenzy|SoM"
 			]
 		},
 		{
@@ -574,6 +603,11 @@
 			],
 			"entries": [
 				"You increase your ability to cast simple spells. You gain two additional cantrips from the tradition matching your trait."
+			],
+			"leadsTo": [
+				"Basic Spellcasting|SoM",
+				"Expert Spellcasting|SoM",
+				"Master Spellcasting|SoM"
 			]
 		},
 		{
@@ -715,7 +749,15 @@
 				"{@b Catharsis} {@as R} ({@trait concentrate}, {@trait emotion}, {@trait mental}) {@b Trigger} determined by your catharsis emotion; {@b Effect} You gain the catharsis activation effects listed for your catharsis emotion. You gain that emotion's emotional fervor benefits for 3 rounds. When your emotional fervor ends, you suffer the listed emotional fallout. After using Catharsis, you can't use it again until you use the Settle Emotions activity.",
 				"{@b Settle Emotions} ({@trait concentrate}, {@trait emotion}, {@trait mental}) You spend 10 minutes using techniques you've developed to calm your emotions and bring them back under control. This allows you to access your Catharsis again."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the cathartic mage archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the cathartic mage archetype.",
+			"leadsTo": [
+				"Basic Cathartic Spellcasting|SoM",
+				"Expert Cathartic Spellcasting|SoM",
+				"Master Cathartic Spellcasting|SoM",
+				"Cathartic Focus Spell|SoM",
+				"Infectious Emotions|SoM",
+				"Work Yourself Up|SoM"
+			]
 		},
 		{
 			"name": "Conflux Focus",
@@ -735,6 +777,9 @@
 			"prerequisites": "conflux spells",
 			"entries": [
 				"You imagine how you'll weave magic and combat into future battles, improving your focus. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
+			],
+			"leadsTo": [
+				"Conflux Wellspring|SoM"
 			]
 		},
 		{
@@ -1173,7 +1218,16 @@
 			"entries": [
 				"Each day when you make your daily preparations, you can attune yourself to one element of your choice: air, earth, fire, or water. You gain resistance equal to half your level (minimum 1 resistance) against damage dealt by effects with your attuned {@trait elemental} trait. This attunement lasts until you next make your daily preparations."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the elementalist archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the elementalist archetype.",
+			"leadsTo": [
+				"Burning Spell|SoM",
+				"Dousing Spell|SoM",
+				"Elemental Familiar|SoM",
+				"Metabolize Element|SoM",
+				"Redirect Elements|SoM",
+				"Rockslide Spell|SoM",
+				"Wind-tossed Spell|SoM"
+			]
 		},
 		{
 			"name": "Embed Aeon Stone",
@@ -1198,6 +1252,9 @@
 			"entries": [
 				"You discover the secrets to embedding aeon stones into your flesh. You spend 1 day attuning to an aeon stone and physically embedding it in your skin. While the stone is embedded this way, you gain the benefits of the aeon stone as if it were orbiting above your head, but it protects the stone from being noticed or stolen as easily. Aeon stones in your flesh must be invested to function, as usual.",
 				"You can also use this activity to safely remove an embedded aeon stone in 1 day. Someone without this feat can attempt to surgically remove it safely by spending 1 day and succeeding at a DC 30 {@skill Medicine} check, or hastily by simply ripping it from a corpse."
+			],
+			"leadsTo": [
+				"Aeon Resonance|SoM"
 			]
 		},
 		{
@@ -1244,6 +1301,10 @@
 			],
 			"entries": [
 				"Your eidolon's heart beats with energy. Choose an energy damage type other than force. One of its unarmed attacks changes its damage type to the chosen type, and it gains resistance to that type equal to half your level (minimum 1)."
+			],
+			"leadsTo": [
+				"Dual Energy Heart|SoM",
+				"Energy Resistance|SoM"
 			]
 		},
 		{
@@ -1393,6 +1454,9 @@
 			"prerequisites": "{@feat Basic Cathartic Spellcasting|SoM}",
 			"entries": [
 				"You gain the expert spellcasting benefits."
+			],
+			"leadsTo": [
+				"Master Cathartic Spellcasting|SoM"
 			]
 		},
 		{
@@ -1433,6 +1497,9 @@
 			"prerequisites": "{@feat Basic Magus Spellcasting|SoM}, master in {@skill Arcana}",
 			"entries": [
 				"You gain the expert bounded spellcasting benefits (page 74)."
+			],
+			"leadsTo": [
+				"Master Magus Spellcasting|SoM"
 			]
 		},
 		{
@@ -1454,6 +1521,9 @@
 			"prerequisites": "{@feat Basic Spellcasting|SoM}",
 			"entries": [
 				"You gain the expert spellcasting archetype benefits."
+			],
+			"leadsTo": [
+				"Master Spellcasting|SoM"
 			]
 		},
 		{
@@ -1474,6 +1544,9 @@
 			"prerequisites": "{@feat Basic Summoner Spellcasting|SoM}, master in the skill associated with your eidolon's tradition",
 			"entries": [
 				"You gain the expert bounded spellcasting benefits (page 74)."
+			],
+			"leadsTo": [
+				"Master Summoner Spellcasting|SoM"
 			]
 		},
 		{
@@ -1512,6 +1585,9 @@
 			],
 			"entries": [
 				"You make a pact with a creature that helps you with your martial endeavors and assists your spellcasting. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}."
+			],
+			"leadsTo": [
+				"Elemental Familiar|SoM"
 			]
 		},
 		{
@@ -1727,7 +1803,18 @@
 				},
 				"For 1 round, you gain darkvision as well as imprecise tremorsense out to 15 feet."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the geomancer archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the geomancer archetype.",
+			"leadsTo": [
+				"Attuned Stride|SoM",
+				"Attunement Shift|SoM",
+				"Draw From The Land|SoM",
+				"Quickened Attunement|SoM",
+				"Read The Land|SoM",
+				"Rough Terrain Stance|SoM",
+				"Shifting Terrain|SoM",
+				"Shared Attunement|SoM",
+				"Terrain Shield|SoM"
+			]
 		},
 		{
 			"name": "Glider Form",
@@ -1753,6 +1840,9 @@
 			],
 			"entries": [
 				"Your eidolon evolves wings, a buoyant body, or some other means to control descent. It glides slowly toward the ground, 5 feet down and up to 25 feet forward through the air. As long as it spends at least 1 action gliding each round and has not yet reached the ground, it remains in the air at the end of your turn."
+			],
+			"leadsTo": [
+				"Airborne Form|SoM"
 			]
 		},
 		{
@@ -1839,6 +1929,9 @@
 			],
 			"entries": [
 				"Your eidolon grows substantially. Your eidolon becomes Large, instead of its previous size, and its reach increases to 10 feet. This doesn't change any of its other statistics."
+			],
+			"leadsTo": [
+				"Towering Size|SoM"
 			]
 		},
 		{
@@ -2026,6 +2119,9 @@
 			"prerequisites": "link spells",
 			"entries": [
 				"Your focus recovers faster. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
+			],
+			"leadsTo": [
+				"Link Wellspring|SoM"
 			]
 		},
 		{
@@ -2117,6 +2213,9 @@
 			"entries": [
 				"Your eidolon gains more magic. Choose one 2nd-level spell and one 1st-level spell of your eidolon's tradition.",
 				"Your eidolon can cast them each once per day as innate spells. At every even level after you take this feat, your eidolon can swap one of these innate spells for a new innate spell that's 2 or more levels lower than your highest-level spell slot."
+			],
+			"leadsTo": [
+				"Magical Master|SoM"
 			]
 		},
 		{
@@ -2158,6 +2257,11 @@
 			],
 			"entries": [
 				"Your eidolon evolves to cast spells. It gains the {@action Cast a Spell} activity and learns two cantrips of its tradition, which it can cast as innate spells."
+			],
+			"leadsTo": [
+				"Magical Adept|SoM",
+				"Magical Master|SoM",
+				"Share Eidolon Magic|SoM"
 			]
 		},
 		{
@@ -2182,7 +2286,16 @@
 				"You cast spells like a magus, gaining a spellbook with four common arcane cantrips of your choice. You gain the {@action Cast a Spell} activity. You can prepare two cantrips each day from your spellbook. Each time you gain a spell slot of a new level from the magus archetype, add a spell of that level or lower to your spellbook. You're trained in arcane spell attack rolls and spell DCs. Your key spellcasting ability for magus archetype spells is Intelligence, and they are arcane magus spells. You become trained in {@skill Arcana}; if you were already trained in {@skill Arcana}, you instead become trained in a skill of your choice.",
 				"You become trained in simple weapons."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the magus archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the magus archetype.",
+			"leadsTo": [
+				"Basic Magus Spellcasting|SoM",
+				"Expert Magus Spellcasting|SoM",
+				"Master Magus Spellcasting|SoM",
+				"Basic Martial Magic|SoM",
+				"Advanced Martial Magic|SoM",
+				"Hybrid Study Spell|SoM",
+				"Spellstriker|SoM"
+			]
 		},
 		{
 			"name": "Magus's Analysis",
@@ -2286,6 +2399,9 @@
 			],
 			"entries": [
 				"During daily preparations, you can designate one of your spell slots to become two summoning slots of the same spell level, from which you can cast only {@filter summoning|spells||Miscellaneous=Summoning} or {@filter incarnate|spells||General=Incarnate} spells."
+			],
+			"leadsTo": [
+				"Legendary Summoner|SoM"
 			]
 		},
 		{
@@ -2878,7 +2994,11 @@
 				"They are in the {@group brawling} group and have the agile, disarm, finesse, nonlethal, trip, {@trait unarmed}, and {@trait water} traits.",
 				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Disarm}, {@action Swim}, or {@action Trip}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being Disarmed and Tripped."
 			],
-			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible."
+			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
+			"leadsTo": [
+				"Rippling Spin|SoM",
+				"Wave Spiral|SoM"
+			]
 		},
 		{
 			"name": "Reinforce Eidolon",
@@ -3065,6 +3185,9 @@
 			"entries": [
 				"You enter a stance that makes it difficult to move around you. Each square adjacent to you becomes difficult terrain that matches the terrain attunement you gained (rime forms in an arctic terrain, momentary undergrowth shoots up in a forest terrain, and so on). You ignore this difficult terrain.",
 				"This stance ends if you move into a different type of terrain."
+			],
+			"leadsTo": [
+				"Shifting Terrain|SoM"
 			]
 		},
 		{
@@ -3089,7 +3212,16 @@
 			"entries": [
 				"Your rune magic increases, and you practice with your school's associated weapon. You gain an additional cantrip of your chosen arcane school, and each time you gain a level (including this level), you add an additional spell from your chosen arcane school to your spellbook, with the same restrictions as the two spells you normally add."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the runelord archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the runelord archetype.",
+			"leadsTo": [
+				"Embed Aeon Stone|SoM",
+				"Aeon Resonance|SoM",
+				"Fused Polearm|SoM",
+				"Polearm Tricks|SoM",
+				"School Counterspell|SoM",
+				"School Spell Redirection|SoM",
+				"Sin Reservoir|SoM"
+			]
 		},
 		{
 			"name": "Runic Impression",
@@ -3194,6 +3326,9 @@
 				"Regardless of the way in which you cast spells, you can spontaneously cast a spell from your shadow reservoir by using one of your spell slots of the same level. If you're a prepared spellcaster, you lose the spell you prepared in that slot.",
 				"Spells cast from your shadow reservoir gain the {@trait shadow} trait, and affected creatures might be able to disbelieve them. If the spell requires an attack roll, use the higher of the target's AC or their Will DC. If the spell requires a saving throw, the target uses their Will saving throw or the spell's normal saving throw, whichever is higher. Each time a creature fails its saving throw against a spell cast from your reservoir, you gain a small tattoo inked on your flesh out of pure shadowstuff.",
 				"If you have more than one source of spells you can cast with spell slots, such as if you're a spellcaster with a multiclass archetype, choose one source of spells for your shadow reservoir."
+			],
+			"leadsTo": [
+				"Secrets Of Shadow|SoM"
 			]
 		},
 		{
@@ -3266,7 +3401,15 @@
 				"You've sacrificed a piece of your spirit, allowing the powers of shadow into your being and changing the nature of your magic. You can no longer cast spells that have the {@trait light} trait; if an ability, such as a class feature or ancestry feat, would automatically grant you a {@spell light} spell, such as the Domain Initiate feat granting you the {@spell dazzling flash} spell, you don't gain that spell.",
 				"You gain the {@spell cloak of shadow} domain spell. It costs 1 Focus Point to cast a focus spell. This feat grants a focus pool of 1 Focus Point that you can recover using the {@action Refocus} activity (Core Rulebook 300). You can {@action Refocus} by meditating to siphon power from the Shadow Plane and refill your focus pool. Your domain spells from the shadowcaster archetype are of the same tradition as the spells you used to meet the shadowcaster archetype's prerequisites."
 			],
-			"special": "You can't select another dedication feat until you've gained two other feats from the shadowcaster archetype."
+			"special": "You can't select another dedication feat until you've gained two other feats from the shadowcaster archetype.",
+			"leadsTo": [
+				"Disciple Of Shade|SoM",
+				"Shadow Reservoir|SoM",
+				"Secrets Of Shadow|SoM",
+				"Shadow Spell|SoM",
+				"Shadow Spells|SoM",
+				"Unending Emptiness|SoM"
+			]
 		},
 		{
 			"name": "Share Eidolon Magic",
@@ -3436,6 +3579,9 @@
 			],
 			"entries": [
 				"Your eidolon can shrink to fit into small spaces. Your eidolon reduces in size, to a minimum of size Small. It can use this action again while shrunk to return to its normal size."
+			],
+			"leadsTo": [
+				"Miniaturize|SoM"
 			]
 		},
 		{
@@ -3573,7 +3719,12 @@
 				"Once per day when you use this ability, you can manifest the armament's essence form. You gain the armament's essence power until it's Dismissed.",
 				"After 1 minute, the essence form armament is automatically Dismissed."
 			],
-			"special": "You can't select another dedication feat before gaining two other feats from this archetype."
+			"special": "You can't select another dedication feat before gaining two other feats from this archetype.",
+			"leadsTo": [
+				"Rapid Manifestation|SoM",
+				"Soul Arsenal|SoM",
+				"Soul Flare|SoM"
+			]
 		},
 		{
 			"name": "Spell Parry",
@@ -3597,6 +3748,9 @@
 			"requirements": "You have one or more hands free.",
 			"entries": [
 				"You infuse magical power into your body or armaments to parry both physical and magical assaults. You raise your guard, gaining a +1 circumstance bonus to AC and to saving throws against spells that target you until the start of your next turn, as long as you continue to meet the requirements."
+			],
+			"leadsTo": [
+				"Preternatural Parry|SoM"
 			]
 		},
 		{
@@ -3817,7 +3971,11 @@
 				"You enter a stance of fast, fiery movements. You can make flashing spark attacks that deal {@damage 1d8} slashing damage. They are in the {@group brawling} group and have the forceful, nonlethal, {@trait sweep}, and {@trait unarmed} traits. If you have access to the flashing sparks' critical specialization effect, you can take an alternate effect instead: if your critical {@action Strike} dealt damage, the target takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}.",
 				"While in Stoked Flame Stance, you gain a +5-foot status bonus to your Speed. If you have incredible movement, increase the benefit from incredible movement to a +15-foot status bonus plus 5 feet for every 4 levels beyond 3rd."
 			],
-			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible."
+			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
+			"leadsTo": [
+				"Blazing Streak|SoM",
+				"Inner Fire|SoM"
+			]
 		},
 		{
 			"name": "Striker's Scroll",
@@ -3886,7 +4044,17 @@
 				"Your eidolon's initial ability scores are reduced. It starts with a 16 in any ability score listed at 18 for its eidolon array. It otherwise gains the statistics listed for an eidolon of that type.",
 				"At 5th level, the eidolon's ability score that was reduced to 16 increases to 18, before applying ability boosts. At levels 5, 10, 15, and 20, your eidolon also gets four ability boosts, which follow the same rules as yours."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the summoner archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the summoner archetype.",
+			"leadsTo": [
+				"Basic Summoner Spellcasting|SoM",
+				"Expert Summoner Spellcasting|SoM",
+				"Master Summoner Spellcasting|SoM",
+				"Basic Synergy|SoM",
+				"Advanced Synergy|SoM",
+				"Signature Synergy|SoM",
+				"Expert Combat Eidolon|SoM",
+				"Initial Eidolon Ability|SoM"
+			]
 		},
 		{
 			"name": "Summoner's Call",
@@ -4377,7 +4545,12 @@
 			"entries": [
 				"There's no longer a limit on how many temporary spell slots you can gain per day from wellspring magic."
 			],
-			"special": "You can't select another dedication feat until you gain two other feats from the wellspring mage archetype."
+			"special": "You can't select another dedication feat until you gain two other feats from the wellspring mage archetype.",
+			"leadsTo": [
+				"Interfering Surge|SoM",
+				"Urgent Upwelling|SoM",
+				"Wellspring Control|SoM"
+			]
 		},
 		{
 			"name": "Whirlwind Spell",
