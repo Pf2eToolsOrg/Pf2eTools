@@ -79,7 +79,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon's attack evolves. Choose one of your eidolon's starting melee unarmed attacks. It gains one of the following traits, chosen when you gain the feat: disarm, grapple, nonlethal, shove, trip, or versatile bludgeoning, piercing, or slashing."
+				"Your eidolon's attack evolves. Choose one of your eidolon's starting melee unarmed attacks. It gains one of the following traits, chosen when you gain the feat: {@trait disarm}, {@trait grapple}, {@trait nonlethal}, {@trait shove}, {@trait trip}, or {@trait versatile} bludgeoning, piercing, or slashing."
 			]
 		},
 		{
@@ -161,7 +161,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon adapts to life on land and underwater. It gains the {@trait amphibious} trait, allowing it to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing unarmed Strikes underwater. It gains a swim Speed equal to its land Speed or 25 feet, whichever is less; or if it is normally aquatic, it gains a land Speed equal to its swim Speed or 25 feet, whichever is less."
+				"Your eidolon adapts to life on land and underwater. It gains the {@trait amphibious} trait, allowing it to breathe in water and air and to avoid the normal \u20132 penalty for making bludgeoning and slashing unarmed {@action Strike||Strikes} underwater. It gains a swim Speed equal to its land Speed or 25 feet, whichever is less; or if it is normally aquatic, it gains a land Speed equal to its swim Speed or 25 feet, whichever is less."
 			]
 		},
 		{
@@ -439,8 +439,8 @@
 			"prerequisites": "{@feat Stoked Flame Stance|SoM}",
 			"requirements": "You're in Stoked Flame Stance.",
 			"entries": [
-				"{@action Stride} twice, making Strikes against up to four different creatures within reach at any point during your movement.",
-				"Flashing sparks Strikes made during Blazing Streak deal fire damage instead of slashing."
+				"{@action Stride} twice, making {@action Strike||Strikes} against up to four different creatures within reach at any point during your movement.",
+				"Flashing sparks {@action Strike||Strikes} made during Blazing Streak deal fire damage instead of slashing."
 			]
 		},
 		{
@@ -467,7 +467,7 @@
 			"prerequisites": "{@feat Bloodletting Claws|SoM}",
 			"requirements": "Your eidolon's last action dealt bleed damage to a living creature.",
 			"entries": [
-				"Your eidolon flies into a frenzy. It gains the benefits of boost eidolon and gains temporary HP equal to your level, but takes a \u20132 penalty to AC. It can't voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which your eidolon is {@condition fatigued} for 1 minute and can't start another frenzy for 1 minute."
+				"Your eidolon flies into a frenzy. It gains the benefits of {@spell boost eidolon|SoM} and gains temporary HP equal to your level, but takes a \u20132 penalty to AC. It can't voluntarily end the frenzy or start another frenzy while in the frenzy. The frenzy lasts for 1 minute, after which your eidolon is {@condition fatigued} for 1 minute and can't start another frenzy for 1 minute."
 			]
 		},
 		{
@@ -487,7 +487,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon inflicts bleeding wounds on a telling blow. If your eidolon critically hits with a melee unarmed {@action Strike} that deals slashing or piercing Sample Summoner Angelic Vessel Your eidolon is a being from the angelic hosts."
+				"Your eidolon inflicts bleeding wounds on a telling blow. If your eidolon critically hits with a melee unarmed {@action Strike} that deals slashing or piercing, its target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}. Your eidolon gains an item bonus to this bleed damage equal to the unarmed attack's item bonus to attack rolls. This is a critical specialization effect."
 			]
 		},
 		{
@@ -507,7 +507,7 @@
 			],
 			"entries": [
 				"Augmenting your eidolon extends to creatures you summon.",
-				"When you cast boost eidolon, in addition to your eidolon, it also targets your summoned creatures within 60 feet."
+				"When you cast {@spell boost eidolon|SoM}, in addition to your eidolon, it also targets your summoned creatures within 60 feet."
 			]
 		},
 		{
@@ -1118,7 +1118,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon gains the eidolon's wrath focus spell (page 144), which it casts, instead of you. You determine the damage type when you gain the feat: acid, cold, electricity, fire, negative, positive, or sonic. If your eidolon is a celestial, fiend, or monitor with an alignment other than true neutral, you can choose a damage type in its alignment. Increase the number of Focus Points in your focus pool by 1. As normal, your eidolon shares your Focus Points."
+				"Your eidolon gains the {@spell eidolon's wrath|SoM} focus spell, which it casts, instead of you. You determine the damage type when you gain the feat: acid, cold, electricity, fire, negative, positive, or sonic. If your eidolon is a celestial, fiend, or monitor with an alignment other than true neutral, you can choose a damage type in its alignment. Increase the number of Focus Points in your focus pool by 1. As normal, your eidolon shares your Focus Points."
 			]
 		},
 		{
@@ -1264,7 +1264,7 @@
 			],
 			"prerequisites": "{@feat Energy Heart|SoM}",
 			"entries": [
-				"Your eidolon has stronger resistance. Its resistance from Energy Heart and Dual Energy Heart increase to your level."
+				"Your eidolon has stronger resistance. Its resistance from {@feat Energy Heart|SoM} and {@feat Dual Energy Heart|SoM} increase to your level."
 			]
 		},
 		{
@@ -1303,7 +1303,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your link with your eidolon is so intense that you continuously reinforce its abilities. You are permanently {@condition quickened}; you can use your extra action only to cast boost eidolon or reinforce eidolon. While in exploration mode, you can declare that you are also continually casting boost eidolon or reinforce eidolon even while using a different exploration activity. If you do, even before your first turn in a combat encounter, that cantrip is active as if you had cast it on your previous turn."
+				"Your link with your eidolon is so intense that you continuously reinforce its abilities. You are permanently {@condition quickened}; you can use your extra action only to cast {@spell boost eidolon|SoM} or {@spell reinforce eidolon|SoM}. While in exploration mode, you can declare that you are also continually casting {@spell boost eidolon|SoM} or {@spell reinforce eidolon|SoM} even while using a different exploration activity. If you do, even before your first turn in a combat encounter, that cantrip is active as if you had cast it on your previous turn."
 			]
 		},
 		{
@@ -1343,7 +1343,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon evolves more acute senses. Your eidolon gains low-light vision and darkvision, as well as scent as an imprecise sense with a range of 30 feet."
+				"Your eidolon evolves more acute senses. Your eidolon gains {@ability low-light vision} and {@ability darkvision}, as well as {@ability scent} as an imprecise sense with a range of 30 feet."
 			]
 		},
 		{
@@ -1492,7 +1492,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You can increase the duration of your eidolon's boosts. You learn the extend boost link spell. Increase the number of Focus Points in your focus pool by 1."
+				"You can increase the duration of your eidolon's boosts. You learn the {@spell extend boost|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -1621,7 +1621,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You've learned how to transmogrify your eidolon to suit the circumstances of the day. Each day, choose one evolution feat of 6th level or lower during your daily preparations. Your eidolon gains that feat until your next daily preparations."
+				"You've learned how to transmogrify your eidolon to suit the circumstances of the day. Each day, choose one {@filter evolution feat of 6th level or lower|feats||level=[0;6]|General=Evolution} during your daily preparations. Your eidolon gains that feat until your next daily preparations."
 			]
 		},
 		{
@@ -1772,7 +1772,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon grabs enemies. Choose one of the eidolon's unarmed attacks with the {@trait grapple} trait. It gains the Grab action (Bestiary 343) on that unarmed attack."
+				"Your eidolon grabs enemies. Choose one of the eidolon's unarmed attacks with the {@trait grapple} trait. It gains the {@ability Grab} action on that unarmed attack."
 			]
 		},
 		{
@@ -1986,7 +1986,7 @@
 			],
 			"prerequisites": "{@feat Master Summoner|SoM}",
 			"entries": [
-				"Your ability to summon extends past your other spellcasting. When you sacrifice a 9th-level spell slot to gain two summoning slots using Master Summoner, you can use those slots to cast summoning spells heightened to 10th level. You can't use these spell slots for any purpose other than casting the summoning spells, and you don't count as having 10th-level spell slots for other abilities or rules."
+				"Your ability to summon extends past your other spellcasting. When you sacrifice a 9th-level spell slot to gain two summoning slots using {@feat Master Summoner|SoM}, you can use those slots to cast {@filter summoning spells|spells||Miscellaneous=Summoning|Level=!9} heightened to 10th level. You can't use these spell slots for any purpose other than casting the {@filter summoning spells|spells||Miscellaneous=Summoning|Level=1;2;3;4;5;6;7;8;9}, and you don't count as having 10th-level spell slots for other abilities or rules."
 			]
 		},
 		{
@@ -2005,7 +2005,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You learn the lifelink surge link spell (page 145). Increase the number of Focus Points in your focus pool by 1."
+				"You learn the {@spell lifelink surge|SoM} link spell. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -2285,7 +2285,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"During daily preparations, you can designate one of your spell slots to become two summoning slots of the same spell level, from which you can cast only summoning or incarnate spells."
+				"During daily preparations, you can designate one of your spell slots to become two summoning slots of the same spell level, from which you can cast only {@filter summoning|spells||Miscellaneous=Summoning} or {@filter incarnate|spells||General=Incarnate} spells."
 			]
 		},
 		{
@@ -2305,7 +2305,7 @@
 			],
 			"prerequisites": "{@feat Expert Summoner Spellcasting|SoM}, legendary in the skill associated with your eidolon's tradition",
 			"entries": [
-				"You gain the master bounded spellcasting benefits (page 74)."
+				"You gain the master bounded spellcasting benefits."
 			]
 		},
 		{
@@ -2328,7 +2328,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your physical form can combine with that of your eidolon, granting benefits but limiting your capabilities. You {@action Manifest Eidolon|SoM|Manifest your Eidolon}, but instead of summoning it into an adjacent open space, you become it. While Manifested in this way, you use its statistics, and you can't act except to direct it to use {@action Manifest Eidolon|SoM|Manifest an Eidolon} to unmanifest it. Since you can't act, you can't {@action Cast a Spell||Cast Spells}, activate or benefit from magic items that normally benefit you and not your eidolon, perform actions that have the tandem trait, or use other abilities that require you, and not the eidolon, to act. Your can't be separately targeted while you are melded into it. When you reach 0 HP, your eidolon unmanifests, leaving your body behind, {@condition unconscious} and {@condition dying}."
+				"Your physical form can combine with that of your eidolon, granting benefits but limiting your capabilities. You {@action Manifest Eidolon|SoM|Manifest your Eidolon}, but instead of summoning it into an adjacent open space, you become it. While Manifested in this way, you use its statistics, and you can't act except to direct it to use {@action Manifest Eidolon|SoM|Manifest an Eidolon} to unmanifest it. Since you can't act, you can't {@action Cast a Spell||Cast Spells}, activate or benefit from magic items that normally benefit you and not your eidolon, perform actions that have the {@trait tandem} trait, or use other abilities that require you, and not the eidolon, to act. Your can't be separately targeted while you are melded into it. When you reach 0 HP, your eidolon unmanifests, leaving your body behind, {@condition unconscious} and {@condition dying}."
 			]
 		},
 		{
@@ -2352,7 +2352,7 @@
 				"Evolution",
 				"Summoner"
 			],
-			"requirements": "Your eidolon hit the same enemy with two consecutive Strikes with its secondary attack this turn and dealt slashing damage with both.",
+			"requirements": "Your eidolon hit the same enemy with two consecutive {@action Strike||Strikes} with its secondary attack this turn and dealt slashing damage with both.",
 			"entries": [
 				"Your eidolon rends its foes. It automatically deals the damage from its secondary attack to the enemy."
 			]
@@ -2429,7 +2429,7 @@
 			],
 			"prerequisites": "{@feat Shrink Down|SoM}",
 			"entries": [
-				"Your eidolon can shrink even further. When using Shrink Down, your eidolon can reduce its size to Tiny."
+				"Your eidolon can shrink even further. When using {@feat Shrink Down|SoM}, your eidolon can reduce its size to Tiny."
 			]
 		},
 		{
@@ -2475,7 +2475,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"If the next action you take is to Manifest your Eidolon as a three-action activity, or to Cast a three-action summoning Spell, the creature appears in an explosion.",
+				"If the next action you take is to {@action Manifest Eidolon|SoM|Manifest your Eidolon} as a three-action activity, or to Cast a three-action summoning Spell, the creature appears in an explosion.",
 				"All creatures in a 10-foot emanation around the creature you summoned or manifested take {@damage 1d4} fire damage per spell level for a summoning spell, or {@dice 1d4} damage per 2 levels for Manifesting your Eidolon. If the creature you summoned or manifested has the acid, cold, electricity, fire, {@trait sonic}, or {@trait water} trait, the damage is that type instead (or cold damage for the {@trait water} trait). If the creature has more than one of these traits, you choose which damage type to deal."
 			]
 		},
@@ -2528,7 +2528,7 @@
 			],
 			"prerequisites": "your eidolon is a phantom",
 			"entries": [
-				"Your eidolon phases out of reality slightly, gaining resistance to all damage (except force and negative) equal to half your level. It's not incorporeal, but it can't use Strikes or actions that require a fully physical form, such as {@action Grapple}, {@action Shove}, or {@action Trip}. Your eidolon can return to its normal form with a single action, which has the {@trait concentrate} trait."
+				"Your eidolon phases out of reality slightly, gaining resistance to all damage (except force and negative) equal to half your level. It's not incorporeal, but it can't use {@action Strike||Strikes} or actions that require a fully physical form, such as {@action Grapple}, {@action Shove}, or {@action Trip}. Your eidolon can return to its normal form with a single action, which has the {@trait concentrate} trait."
 			]
 		},
 		{
@@ -2601,7 +2601,7 @@
 			"entries": [
 				"The power of your bond can protect you and your eidolon from harm. If you and your eidolon would take different amounts of damage from the area effect, you take the lower amount of damage instead of the greater amount of damage."
 			],
-			"special": "This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
+			"special": "This feat has the trait matching your eidolon's tradition ({@trait arcane}, {@trait divine}, {@trait occult}, or {@trait primal})."
 		},
 		{
 			"name": "Purifying Spell",
@@ -2649,7 +2649,7 @@
 			],
 			"entries": [
 				"Your eidolon has an attack that pushes away enemies.",
-				"Choose one of the eidolon's unarmed attacks with the {@trait shove} trait. It gains the Push action (Bestiary 343) for that attack."
+				"Choose one of the eidolon's unarmed attacks with the {@trait shove} trait. It gains the {@ability Push} action for that attack."
 			]
 		},
 		{
@@ -2800,7 +2800,7 @@
 			"trigger": "Your eidolon would take damage.",
 			"entries": [
 				"You abruptly dismiss your eidolon to reduce the damage it takes, though this makes summoning it again more difficult.",
-				"Reduce the triggering damage to your eidolon by double your level, and your eidolon unmanifests. You can't Manifest your Eidolon again until after the end of your next turn."
+				"Reduce the triggering damage to your eidolon by double your level, and your eidolon unmanifests. You can't {@action Manifest Eidolon|SoM|Manifest your Eidolon} again until after the end of your next turn."
 			]
 		},
 		{
@@ -3285,7 +3285,7 @@
 			],
 			"prerequisites": "{@feat Magical Understudy|SoM}",
 			"entries": [
-				"Your eidolon shares innate spells with you. You can cast the innate spells your eidolon gained from Magical Understudy, Magical Adept, and Magical Master. You and your eidolon share the same daily uses of these innate spells."
+				"Your eidolon shares innate spells with you. You can cast the innate spells your eidolon gained from {@feat Magical Understudy|SoM}, {@feat Magical Adept|SoM}, and {@feat Magical Master|SoM}. You and your eidolon share the same daily uses of these innate spells."
 			]
 		},
 		{
@@ -3494,7 +3494,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon gains a 1st-level skill feat and a 2nd-level or lower skill feat. At 7th level, your eidolon gains an additional skill feat, of 7th level or lower."
+				"Your eidolon gains a {@filter 1st-level skill feat|feats||type=Skill|level=[1;1]} and a {@filter 2nd-level or lower skill feat|feats||type=Skill|level=[0;2]}. At 7th level, your eidolon gains an additional skill feat, of {@filter 7th level or lower|feats||type=Skill|level=[0;7]}."
 			]
 		},
 		{
@@ -3621,9 +3621,9 @@
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"requirements": "Your {@action Spellstrike|SoM} is charged.",
 			"entries": [
-				"You attack in an arc and enact your spell against everyone you hit. Make a {@action Spellstrike|SoM}, but roll separate Strikes to attack two creatures, each of whom must be within your melee reach and adjacent to each other. If your spell could affect two or more targets, your spell affects whichever foes you hit, not just the first target; otherwise, choose one target to affect with the spell. A Spell Swipe counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after you make both attacks.",
-				"If you're using a weapon that has the {@trait sweep} trait, its circumstance bonus applies against both targets. You can use this activity with only melee Strikes, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability.",
-				"If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in Expansive {@action Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both Strikes are critical failures."
+				"You attack in an arc and enact your spell against everyone you hit. Make a {@action Spellstrike|SoM}, but roll separate {@action Strike||Strikes} to attack two creatures, each of whom must be within your melee reach and adjacent to each other. If your spell could affect two or more targets, your spell affects whichever foes you hit, not just the first target; otherwise, choose one target to affect with the spell. A Spell Swipe counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after you make both attacks.",
+				"If you're using a weapon that has the {@trait sweep} trait, its circumstance bonus applies against both targets. You can use this activity with only melee {@action Strike||Strikes}, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability.",
+				"If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in Expansive {@action Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both {@action Strike||Strikes} are critical failures."
 			]
 		},
 		{
@@ -3787,7 +3787,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon changes to make it particularly effective as your mount. While you ride it, you get your full number of actions each round instead of reducing them to 2. This applies only when you ride your eidolon, not when anyone else does (see the Riding Sapient Creatures sidebar on page 71). Your eidolon still must be at least one size category larger than you to ride it. Since you work together to move, your eidolon's move actions while you're mounted gain the tandem trait."
+				"Your eidolon changes to make it particularly effective as your mount. While you ride it, you get your full number of actions each round instead of reducing them to 2. This applies only when you ride your eidolon, not when anyone else does (see the Riding Sapient Creatures sidebar on page 71). Your eidolon still must be at least one size category larger than you to ride it. Since you work together to move, your eidolon's move actions while you're mounted gain the {@trait tandem} trait."
 			]
 		},
 		{
@@ -4107,7 +4107,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon Strides up to double its Speed and can move through the spaces of creatures at least one size smaller, Trampling each creature whose space it enters. It can attempt to Trample the same creature only once in a single Trample. It deals bludgeoning damage equal to the damage of its secondary attack against these creatures, which can attempt a basic Reflex save against your spell DC."
+				"Your eidolon {@action Stride||Strides} up to double its Speed and can move through the spaces of creatures at least one size smaller, Trampling each creature whose space it enters. It can attempt to Trample the same creature only once in a single Trample. It deals bludgeoning damage equal to the damage of its secondary attack against these creatures, which can attempt a basic Reflex save against your spell DC."
 			]
 		},
 		{
@@ -4154,7 +4154,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You transmogrify your eidolon each day. During your daily preparations, you can swap out any number of your evolution feats, each for a different evolution feat of an appropriate level for which you meet the prerequisites.",
+				"You transmogrify your eidolon each day. During your daily preparations, you can swap out any number of your {@filter evolution feats|feats||General=Evolution}, each for a different evolution feat of an appropriate level for which you meet the prerequisites.",
 				"These swaps last until your next daily preparations."
 			]
 		},
@@ -4176,8 +4176,8 @@
 				"Transmutation"
 			],
 			"entries": [
-				"You can transform to match your eidolon. When you Manifest your Eidolon, you can call upon its powers to transform yourself into a duplicate until it unmanifests.",
-				"You can't use this if you Manifest your Eidolon in an unusual way, such as Meld into Eidolon. While using Twin Eidolon, you use your eidolon's statistics other than your mental ability modifiers, including its evolutions. You can't cast spells (except spells your eidolon could cast), Activate or otherwise benefit from magic items that normally benefit you and not your eidolon, or use other actions it can't perform. Any of its spells you cast with limited uses count against your eidolon's uses. You can Manifest your Eidolon again to end this effect."
+				"You can transform to match your eidolon. When you {@action Manifest Eidolon|SoM|Manifest your Eidolon}, you can call upon its powers to transform yourself into a duplicate until it unmanifests.",
+				"You can't use this if you {@action Manifest Eidolon|SoM|Manifest your Eidolon} in an unusual way, such as {@feat Meld into Eidolon|SoM}. While using Twin Eidolon, you use your eidolon's statistics other than your mental ability modifiers, including its evolutions. You can't cast spells (except spells your eidolon could cast), Activate or otherwise benefit from magic items that normally benefit you and not your eidolon, or use other actions it can't perform. Any of its spells you cast with limited uses count against your eidolon's uses. You can {@action Manifest Eidolon|SoM|Manifest your Eidolon} again to end this effect."
 			],
 			"special": "This feat has the trait matching your eidolon's tradition (arcane, divine, occult, or primal)."
 		},
@@ -4283,7 +4283,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"Your eidolon gains tremorsense as an imprecise sense with a range of 30 feet. If aquatic, it gains wavesense as an imprecise sense with a range of 30 feet instead. If amphibious, it gains both."
+				"Your eidolon gains {@ability tremorsense} as an imprecise sense with a range of 30 feet. If aquatic, it gains {@ability wavesense} as an imprecise sense with a range of 30 feet instead. If amphibious, it gains both."
 			]
 		},
 		{
@@ -4331,7 +4331,7 @@
 			],
 			"entries": [
 				"Your eidolon knocks enemies down. Choose one of the eidolon's unarmed attacks with the {@trait trip} trait.",
-				"It gains the Knockdown action (Bestiary 343) for that attack."
+				"It gains the {@ability Knockdown} action for that attack."
 			]
 		},
 		{
@@ -4403,7 +4403,7 @@
 			"entries": [
 				"You combine the might of a multitarget spell with a whirling flurry of attacks. You use {@action Spellstrike|SoM}, making a melee {@action Strike} against each enemy within your reach instead of against one enemy. If your spell can affect multiple targets, your spell affects all foes you hit, not just the first target, up to the spell's normal maximum targets. If you {@action Strike} more foes than the spell could target, choose which foes are affected by the spell. Each attack counts toward your multiple attack penalty but doesn't increase your penalty until you've made all your attacks.",
 				"If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in {@feat Expansive Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, each creature you critically fail to {@action Strike} is unaffected by the spell, but the spell isn't lost completely from a single critical failure.",
-				"You can use this activity with only melee Strikes, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability."
+				"You can use this activity with only melee {@action Strike||Strikes}, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability."
 			]
 		},
 		{
