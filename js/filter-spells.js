@@ -96,7 +96,7 @@ class PageFilterSpells extends PageFilter {
 		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Battle Form", "Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoned"],
+			items: ["Has Battle Form", "Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoning"],
 		});
 	}
 
