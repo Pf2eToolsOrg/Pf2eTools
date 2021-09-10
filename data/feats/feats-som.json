@@ -17,7 +17,7 @@
 			],
 			"prerequisites": "flame order, stone order, storm order, or wave order",
 			"entries": [
-				"Your connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain combustion (page 200); if you're a member of the stone order, you gain stone lance (page 201); if you're a member of the storm order, you gain powerful inhalation (page 201); if you're a member of the wave order, you gain pulverizing cascade (page 201). Increase the number of Focus Points in your focus pool by 1."
+				"Your connection to one of the great elemental aspects of nature deepens, allowing you further control over its powers. You gain the advanced order spell associated with your order: if you're a member of the flame order, you gain {@spell combustion|SoM}; if you're a member of the stone order, you gain {@spell stone lance|SoM}; if you're a member of the storm order, you gain powerful {@spell inhalation|SoM}; if you're a member of the wave order, you gain {@spell pulverizing cascade|SoM}. Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
 		{
@@ -337,7 +337,7 @@
 			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
-				"You gain the basic bounded spellcasting benefits (page 74)."
+				"You gain the basic bounded spellcasting benefits."
 			],
 			"leadsTo": [
 				"Expert Magus Spellcasting|SoM",
@@ -361,7 +361,7 @@
 			],
 			"prerequisites": "{@feat Magus Dedication|SoM}",
 			"entries": [
-				"You gain a {@filter 1st- or 2nd-level magus|feats||classes=magus|level=[1;2]} of your choice."
+				"You gain a {@filter 1st- or 2nd-level magus|feats||classes=magus|level=[1;2]} feat of your choice."
 			],
 			"leadsTo": [
 				"Advanced Martial Magic|SoM"
@@ -409,7 +409,7 @@
 			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
-				"You gain the basic bounded spellcasting benefits (page 74)",
+				"You gain the basic bounded spellcasting benefits.",
 				"You gain the {@action Cast a Spell} activity. Your key spellcasting ability for summoner archetype spells is Charisma, and they are summoner spells of your eidolon's tradition.",
 				"You become trained in spell attack rolls and spell DCs of that tradition. You gain a spell repertoire and two cantrips. Each time you gain a spell slot of a new level from the summoner archetype, add a spell of that level or lower to your repertoire. Each time you lose spell slots of a particular level, remove those spells from your repertoire."
 			],
@@ -435,7 +435,7 @@
 			],
 			"prerequisites": "{@feat Summoner Dedication|SoM}",
 			"entries": [
-				"You gain a 1st- or 2nd-level {@filter summoner|feats||classes=summoner} feat of your choice."
+				"You gain a {@filter 1st- or 2nd-level summoner|feats||classes=summoner|level=[1;2]} feat of your choice."
 			],
 			"leadsTo": [
 				"Advanced Synergy|SoM",
@@ -741,7 +741,7 @@
 			],
 			"prerequisites": "Cha 14 or ability to cast spells from spell slots",
 			"entries": [
-				"You've learned to harness a particular emotion and mix it into your magic. Choose an emotion from the Emotional States section (page 196) to be your catharsis emotion.",
+				"You've learned to harness a particular emotion and mix it into your magic. Choose an emotion from the Emotional States section to be your catharsis emotion.",
 				"If you don't already cast spells from spell slots, you learn to cast spontaneous spells and gain the {@action Cast a Spell} activity.",
 				"You gain a spell repertoire with one cantrip of your choice, from a spell list of your choice. You choose this cantrip from the common spells on your chosen spell list or from other spells to which you have access on that list. You're trained in spell attack rolls and spell DCs for that tradition. Your key spellcasting ability for these spells is Charisma.",
 				"If you can already cast spells from spell slots, you learn one additional cantrip from your spellcasting tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
@@ -1496,7 +1496,7 @@
 			],
 			"prerequisites": "{@feat Basic Magus Spellcasting|SoM}, master in {@skill Arcana}",
 			"entries": [
-				"You gain the expert bounded spellcasting benefits (page 74)."
+				"You gain the expert bounded spellcasting benefits."
 			],
 			"leadsTo": [
 				"Master Magus Spellcasting|SoM"
@@ -1543,7 +1543,7 @@
 			],
 			"prerequisites": "{@feat Basic Summoner Spellcasting|SoM}, master in the skill associated with your eidolon's tradition",
 			"entries": [
-				"You gain the expert bounded spellcasting benefits (page 74)."
+				"You gain the expert bounded spellcasting benefits."
 			],
 			"leadsTo": [
 				"Master Summoner Spellcasting|SoM"
@@ -2743,8 +2743,7 @@
 			],
 			"prerequisites": "wave order",
 			"entries": [
-				"You purify the water within a creature's body to cleanse them of illness. If the next action you use is to cast {@spell heal} targeting a single living creature, you can attempt to counteract a disease or poison affecting the target, in addition to the other benefits of heal. If you do, heal gains the {@trait water} trait.",
-				"Focus Spells These elemental focus spells are available to druids of the flame, stone, and wave orders and to characters with the elementalist class archetype (page 206)."
+				"You purify the water within a creature's body to cleanse them of illness. If the next action you use is to cast {@spell heal} targeting a single living creature, you can attempt to counteract a disease or poison affecting the target, in addition to the other benefits of heal. If you do, heal gains the {@trait water} trait."
 			]
 		},
 		{
@@ -3016,7 +3015,7 @@
 				"Summoner"
 			],
 			"entries": [
-				"You buffer your eidolon. You gain the reinforce eidolon link cantrip (page 145)."
+				"You buffer your eidolon. You gain the {@spell reinforce eidolon|SoM} link cantrip."
 			]
 		},
 		{
@@ -3713,7 +3712,7 @@
 			],
 			"prerequisites": "Wis 14 or ability to cast divine spells",
 			"entries": [
-				"You can manifest the power of your spirit in combat to realize your motivations. You manifest an armor, {@group shield}, or weapon as a soulforged armament (page 232). Choose one essence power for the armament (below). Changing an essence power requires 1 week of retraining, and you can't retrain it while you have soulforged corruption.",
+				"You can manifest the power of your spirit in combat to realize your motivations. You manifest an armor, shield, or weapon as a soulforged armament (page 232). Choose one essence power for the armament (below). Changing an essence power requires 1 week of retraining, and you can't retrain it while you have soulforged corruption.",
 				"You can Manifest Soulforged Armament to summon your armaments in combat.",
 				"Manifest Soulforged Armament {@as 1} (concentrate, conjuration, divine, extradimensional) Requirements If summoning a weapon or {@group shield}, you have the hands free to wield it; if summoning armor, you aren't wearing any armor; Effect You immediately wield or wear the soulforged armament bound to you. The soulforged armament remains manifested until you {@action Dismiss} this effect.",
 				"Once per day when you use this ability, you can manifest the armament's essence form. You gain the armament's essence power until it's Dismissed.",
