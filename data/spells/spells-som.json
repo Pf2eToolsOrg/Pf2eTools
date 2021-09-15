@@ -47,7 +47,7 @@
 					"items": [
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"13 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +18, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +20, unless your own modifier is higher. You also gain specific abilities based on the type of aberration you choose:",
 						"{@bold Chuul} Speed 30 feet, swim 25 feet; Melee {@as 1} claw (reach 10 feet), Damage {@damage 2d8+8} bludgeoning, and you can spend an action after a hit to Grab the target.",
@@ -113,7 +113,7 @@
 					"items": [
 						"AC = 22 + your level. Ignore your armor check's penalty and Speed reduction.",
 						"40 temporary Hit Points and weakness 10 to evil damage.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose. You're trained with them. Your attack modifier is +25, and you use the listed damage. Melee attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example), and ranged attacks are Dexterity based. If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +25, unless your own modifier is higher. You also gain specific abilities based on the type of angel you choose:",
 						"{@bold Balisse} Speed 30 feet, fly 40 feet; {@skill Perception} modifier of +26 to detect lies and illusions unless your own modifier is higher; Melee {@as 1} scimitar (forceful, sweep), Damage {@damage 2d6+12} slashing plus {@damage 1d6} fire and {@damage 1d6} good.",
@@ -501,7 +501,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You entwine magic with your voice, causing your taunts and jibes to physically harm your enemies. You can attack with your words once when you finish Casting the Spell, and can repeat the attack once on each of your subsequent turns by taking a single action, which has the attack, {@trait concentrate}, and {@trait linguistic} traits. After your third attack total, the spell ends.",
+				"You entwine magic with your voice, causing your taunts and jibes to physically harm your enemies. You can attack with your words once when you finish {@action Cast a Spell||Casting the Spell}, and can repeat the attack once on each of your subsequent turns by taking a single action, which has the attack, {@trait concentrate}, and {@trait linguistic} traits. After your third attack total, the spell ends.",
 				"When you attack with biting words, make a ranged spell attack roll against a creature within 30 feet, dealing {@damage 2d6} sonic damage if you hit (or double damage on a critical hit)."
 			],
 			"heightened": {
@@ -683,7 +683,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Channeling forth the power to persevere in the face of adversity, you grant the target the means to deny danger and avoid dire harm. Choose one saving throw: Fortitude, Reflex, or Will. The target gets a +4 status bonus to that saving throw for 1 round. The potency and number of targets of this blessing depend on how many actions you spend when Casting the Spell.",
+				"Channeling forth the power to persevere in the face of adversity, you grant the target the means to deny danger and avoid dire harm. Choose one saving throw: Fortitude, Reflex, or Will. The target gets a +4 status bonus to that saving throw for 1 round. The potency and number of targets of this blessing depend on how many actions you spend when {@action Cast a Spell||Casting the Spell}.",
 				"{@as 1} (somatic) The spell targets you or one willing ally within range.",
 				"{@as 2} (verbal) The spell targets you or one willing ally within range. If you choose Fortitude, the target gains resistance 15 to poison. If you choose Reflex, the target gains a +15-foot status bonus to its Speeds. If you choose Will, the target gains resistance 15 to mental damage.",
 				"{@as 3} (verbal) The spell targets you and all willing allies within 30 feet."
@@ -1080,7 +1080,7 @@
 					},
 					{
 						"level": 3,
-						"entry": "The duration increases to last until your next daily preparations. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+						"entry": "The duration increases to last until your next daily preparations. "
 					}
 				],
 				"no_x": null
@@ -2116,7 +2116,7 @@
 					"items": [
 						"AC = 21 + your level. Ignore your armor check's penalty and Speed reduction.",
 						"20 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +25, and you use the listed damage. The melee attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example), and the ranged attacks are Dexterity based. If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +25, unless your own is higher. You also gain specific abilities based on the stellar body:",
 						"{@bold Moon} Speed 30 feet, fly 50 feet; Melee {@as 1} fist (agile, reach 10 feet), Damage {@damage 2d4+10} bludgeoning plus {@damage 1d6} fire; Ranged {@as 1} moonbeam (range 90 feet), Damage {@damage 2d4+10} fire; this form's fire damage is silver for resistances, weaknesses, and the like; on a critical hit with either {@action Strike}, the target is {@condition stupefied 2} for 1 round.",
@@ -2251,7 +2251,7 @@
 						"15 temporary Hit Points and weakness 5 to good.",
 						"A +2 status bonus to all saving throws against {@trait death} effects.",
 						"Resistance 10 to poison.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +21, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of Daemon you choose:",
 						"{@bold Ceustodaemon} Speed 25 feet; Melee {@as 1} jaws (reach 10 feet), Damage {@damage 2d10+10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile, reach 10 feet), Damage {@damage 2d6} slashing plus {@damage 1d6} evil; any successful jaws or claw {@action Strike} deals an additional {@dice 1d6} damage, and you take the same amount of damage.",
@@ -2319,9 +2319,9 @@
 			"dismiss": false,
 			"entries": [
 				"Shadows pour forth from your eyes, creating a field of darkness that prevents light from emanating within the area. Light doesn't enter the area; any non-magical light sources, such as a torches or lanterns, don't emanate any light while inside the area, even if their light radius would extend beyond the darkness. The spell similarly suppresses magical light of the spell's level or lower.",
-				"Light can't pass through, so creatures in the area can't see outside. Even creatures with darkvision (but not greater darkvision) can barely see through the darkness; any creatures seen through the darkness are {@condition concealed} to them. Creatures with greater darkvision can see through the darkness normally.",
+				"Light can't pass through, so creatures in the area can't see outside. Even creatures with {@ability darkvision} (but not {@ability greater darkvision}) can barely see through the darkness; any creatures seen through the darkness are {@condition concealed} to them. Creatures with {@ability greater darkvision} can see through the darkness normally.",
 				"Creatures who move into the field or start their turn within the field have some of the life and light sucked out of them, taking {@damage 2d6} bludgeoning damage and {@damage 2d6} negative damage, with a basic Fortitude save.",
-				"When you cast this spell, choose up to four allies in the area to spare from darklight's effects. Until the spell ends, they're immune to damage from {@spell darklight|SoM} spells and can see through darklight (but not other darkness) as though they had greater darkvision."
+				"When you cast this spell, choose up to four allies in the area to spare from darklight's effects. Until the spell ends, they're immune to damage from {@spell darklight|SoM} spells and can see through darklight (but not other darkness) as though they had {@ability greater darkvision}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -2515,7 +2515,7 @@
 					"items": [
 						"AC = 20 + your level. Ignore your armor check's penalty and Speed reduction.",
 						"30 temporary Hit Points, weakness 5 to cold iron, and weakness 5 to good.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +22, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of demon you choose:",
 						"{@bold Babau} Speed 25 feet; Melee {@as 1} long{@group spear} (reach 10 feet), Damage {@damage 2d8+10} piercing plus {@damage 1d6} evil; Melee {@as 1} jaws, Damage {@damage 2d10} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 2d4} slashing plus {@damage 1d6} evil; all Strikes deal {@dice 2d6} additional precision damage to flatfooted creatures.",
@@ -2584,7 +2584,7 @@
 						"AC = 22 + your level. Ignore your armor check's penalty and Speed reduction.",
 						"5 temporary Hit Points, resistance 5 to physical damage (except silver), and weakness 5 to good.",
 						"Resistance 10 to fire.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you use. You're trained with them. Your attack modifier is +20, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your attack modifier is higher for the given unarmed attack or weapon, you can use it instead.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher. You also gain specific abilities based on the type of devil you choose:",
 						"{@bold Barbazu} Speed 35 feet; Melee {@as 1} glaive (deadly d8, forceful, reach 10 feet), Damage {@damage 2d8+10} slashing plus {@damage 1d6} evil and {@damage 1d6} {@condition persistent damage ||persistent bleed}; Melee {@as 1} beard, Damage {@damage 3d8} piercing plus {@damage 1d6} evil; Melee {@as 1} claw (agile), Damage {@damage 3d6} slashing plus {@damage 1d6} evil.",
@@ -3144,7 +3144,7 @@
 					"items": [
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Dexterity based if you choose an air or fire elemental, or Strength based if you choose an earth or water elemental. (This distinction doesn't change the statistics, but matters for the {@condition enfeebled} and {@condition clumsy} conditions, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Acrobatics} modifier of +36 for air or fire elemental or {@skill Athletics} modifier of +36 for earth or water elemental, unless your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air Elemental fly} Speed 80 feet; High Winds (air, aura) 30 feet. Air within the emanation is difficult terrain for flying creatures that don't have the {@trait air} trait; Swiftness Your movement doesn't trigger reactions; Melee {@as 1} gust (reach 25 feet), Damage {@damage 3d12+11} bludgeoning plus Push 10 feet; Ranged {@as 1} lightning lash (range increment 80 feet), Damage {@damage 3d12+4} electricity.",
@@ -3271,7 +3271,7 @@
 				"{@as 2} (somatic, verbal) The spell is a 30-foot cone.",
 				"{@as 3} (material, somatic, verbal) The spell is a 30-foot cone.",
 				"On a failed saving throw, creatures are pushed 5 feet away from you, and on a critical failure they are pushed 10 feet away and are knocked {@condition prone}.",
-				"Two Rounds If you spend 3 actions Casting the Spell, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, the spell is as 3 actions, but the area is a 60-foot cone, and for 1 round, the elements linger in the cone, racing off into the distance and making approaching you difficult, with the effects of gust of wind."
+				"Two Rounds If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, the spell is as 3 actions, but the area is a 60-foot cone, and for 1 round, the elements linger in the cone, racing off into the distance and making approaching you difficult, with the effects of gust of wind."
 			],
 			"heightened": {
 				"heightened": true,
@@ -3607,8 +3607,8 @@
 				{
 					"type": "list",
 					"items": [
-						"Your eidolon gains low-light vision and darkvision.",
-						"Your eidolon gains scent as an imprecise sense up to 30 feet.",
+						"Your eidolon gains {@ability low-light vision} and {@ability darkvision}.",
+						"Your eidolon gains {@ability scent} as an imprecise sense up to 30 feet.",
 						"Your eidolon can breathe underwater and gains a swim Speed equal to its land Speed or 30 feet,"
 					]
 				}
@@ -5065,7 +5065,7 @@
 				"You gather magical energy into your palm, forming a concentrated ball of electricity that crackles and rumbles like impossibly distant thunder. Make a ranged spell attack roll against your target's AC. On a success, you deal {@damage 3d6} electricity damage. On a critical success, the target takes double damage and is {@condition dazzled} for 1 round. The number of actions you spend when Casting this Spell determines the range and other parameters.",
 				"{@as 2} (somatic, verbal) This spell has a range of 30 feet.",
 				"{@as 3} (material, somatic, verbal) This spell has a range of 60 feet and deals half damage on a failure (but not a critical failure) as the electricity lashes out and jolts the target.",
-				"Two Rounds If you spend 3 actions Casting the Spell, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, after attacking the target, whether you hit or miss, the ball of lightning explodes, dealing {@damage 2d6} electricity damage to all other creatures in a 10‑foot emanation around the target (basic Reflex save)",
+				"Two Rounds If you spend 3 actions {@action Cast a Spell||Casting the Spell}, you can avoid finishing the spell and spend another 3 actions on your next turn to empower the spell even further. If you do, after attacking the target, whether you hit or miss, the ball of lightning explodes, dealing {@damage 2d6} electricity damage to all other creatures in a 10‑foot emanation around the target (basic Reflex save)",
 				"Additionally, you spark with electricity for 1 minute, dealing 1 electricity damage to creatures that Grab you or that hit you with an unarmed {@action Strike} or a non-reach melee weapon."
 			],
 			"heightened": {
@@ -5219,7 +5219,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+					"entry": "The damage increases by {@dice 2d6}. "
 				},
 				"x": null,
 				"no_x": null
@@ -6996,11 +6996,16 @@
 			"dismiss": false,
 			"entries": [
 				"You necrotize part of a creature's body, harming it and debilitating it as its body putrefies, mimicking the natural process of decay. The target takes {@damage 12d6} negative damage and one of the following debilitations; roll {@dice 1d4} to randomly determine which. The effects depend on its Fortitude save.",
-				"1. Bones The target's bones necrotize and become spongy and weak, giving it weakness 3 to bludgeoning damage.",
-				"2. Joints The target's joints necrotize, making its movements ungainly and {@condition clumsy}. It becomes {@condition clumsy 1}.",
-				"3. Legs The target's legs necrotize, as well as any other limbs associated with forms of movement, making it harder for the creature to move. The target takes a \u201310-foot status penalty to its Speeds.",
-				"4. Muscles The target's muscles necrotize, rotting away.",
-				"The target becomes {@condition enfeebled 1}.",
+				{
+					"type": "list",
+					"style": "list-decimal",
+					"items": [
+						"{@b Bones} The target's bones necrotize and become spongy and weak, giving it weakness 3 to bludgeoning damage.",
+						"{@b Joints} The target's joints necrotize, making its movements ungainly and {@condition clumsy}. It becomes {@condition clumsy 1}.",
+						"{@b Legs} The target's legs necrotize, as well as any other limbs associated with forms of movement, making it harder for the creature to move. The target takes a \u201310-foot status penalty to its Speeds.",
+						"{@b Muscles} The target's muscles necrotize, rotting away. The target becomes {@condition enfeebled 1}."		
+					]
+				},
 				{
 					"type": "successDegree",
 					"entries": {
@@ -7521,7 +7526,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by {@dice 2d6}. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+					"entry": "The damage increases by {@dice 2d6}. "
 				},
 				"x": null,
 				"no_x": null
@@ -8586,10 +8591,10 @@
 						"{@bold Aquatic} The target gains a swim Speed equal to its land Speed. If it already had a swim Speed, it gains a +10‑foot status bonus to its swim Speed.",
 						"{@bold Arctic} The target isn't affected by severe or extreme cold, and when it rolls a success on an {@skill Acrobatics} check to {@action Balance} on ice and snow, it gets a critical success instead.",
 						"{@bold Desert} The target isn't affected by severe or extreme heat, and when it rolls a success on an {@skill Acrobatics} check to {@action Balance} on sand, it gets a critical success instead.",
-						"{@bold Forest} The target gains scent as an imprecise sense with a range of 30 feet.",
+						"{@bold Forest} The target gains {@ability scent} as an imprecise sense with a range of 30 feet.",
 						"{@bold Mountain} The target isn't {@condition flat-footed} when Climbing, and when it rolls a success on an {@skill Acrobatics} check to {@action Balance} on rubble, it gets a critical success instead.",
 						"{@bold Plains} The target gains a +10-foot status bonus to its land Speed.",
-						"{@bold Underground} The target gains darkvision."
+						"{@bold Underground} The target gains {@ability darkvision}."
 					]
 				}
 			],
@@ -8642,10 +8647,10 @@
 			"dismiss": false,
 			"entries": [
 				"5 feet wide Duration 1 hour You place a ward upon the door that triggers when a creature attempts to open, unlock, or destroy the door.",
-				"When that happens, the door transforms into a mimic (Bestiary 236) that can't move and is {@condition hostile} to all creatures. When Casting the Spell, you designate yourself and up to 10 other creatures of your choice; these creatures don't trigger the ward, and the mimic is {@condition helpful} to them instead of {@condition hostile}. No effect can move the mimic unless it's also capable of moving the entire door. Once the door transforms into a mimic, it attacks creatures in its reach for up to 1 minute, and then the spell ends. If the mimic is killed before that time, the spell ends and the door returns to its normal form.",
+				"When that happens, the door transforms into a mimic (Bestiary 236) that can't move and is {@condition hostile} to all creatures. When {@action Cast a Spell||Casting the Spell}, you designate yourself and up to 10 other creatures of your choice; these creatures don't trigger the ward, and the mimic is {@condition helpful} to them instead of {@condition hostile}. No effect can move the mimic unless it's also capable of moving the entire door. Once the door transforms into a mimic, it attacks creatures in its reach for up to 1 minute, and then the spell ends. If the mimic is killed before that time, the spell ends and the door returns to its normal form.",
 				"While turned into a mimic, the door can't be opened, unlocked, or bypassed\u2014not even by the designated creatures. It's a creature, not a door, during that time.",
 				"When the spell ends, the door returns to the state it was in before the ward was triggered.",
-				"Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic."
+				"."
 			],
 			"heightened": {
 				"heightened": false,
@@ -9045,7 +9050,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You supernaturally rip the spirit from a living creature's body, dooming the target to pain and death. The target takes {@damage 5d6} negative damage, depending on its basic Fortitude save, and is {@condition drained 1} if it fails its save. The spell's effect is based on how many actions you spend when Casting the Spell.",
+				"You supernaturally rip the spirit from a living creature's body, dooming the target to pain and death. The target takes {@damage 5d6} negative damage, depending on its basic Fortitude save, and is {@condition drained 1} if it fails its save. The spell's effect is based on how many actions you spend when {@action Cast a Spell||Casting the Spell}.",
 				"{@as 1} (somatic) The spell targets one living creature in range.",
 				"{@as 2} (somatic, verbal) The spell targets one living creature in range and the damage is {@damage 10d6} negative instead of {@dice 5d6}.",
 				"{@as 3} (material, somatic, verbal) The spell targets all living creatures in a 30-foot emanation."
@@ -9250,7 +9255,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "The damage increases by {@dice 1d6}. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+					"entry": "The damage increases by {@dice 1d6}. "
 				},
 				"x": null,
 				"no_x": null
@@ -9566,7 +9571,7 @@
 			"dismiss": false,
 			"entries": [
 				"You fire a ray of heat and flame. Make a spell attack roll against a single creature. On a hit, the target takes {@damage 2d6} fire damage, and on a critical hit, the target takes double damage.",
-				"For each additional action you use when Casting the Spell, you can fire an additional ray at a different target, to a maximum of three rays targeting three different targets for 3 actions. These attacks each increase your multiple attack penalty, but you don't increase your multiple attack penalty until after you make all the spell attack rolls for scorching ray. If you spend 2 or more actions Casting the Spell, the damage increases to {@damage 4d6} fire damage on a hit, and it still deals double damage on a critical hit."
+				"For each additional action you use when {@action Cast a Spell||Casting the Spell}, you can fire an additional ray at a different target, to a maximum of three rays targeting three different targets for 3 actions. These attacks each increase your multiple attack penalty, but you don't increase your multiple attack penalty until after you make all the spell attack rolls for scorching ray. If you spend 2 or more actions {@action Cast a Spell||Casting the Spell}, the damage increases to {@damage 4d6} fire damage on a hit, and it still deals double damage on a critical hit."
 			],
 			"heightened": {
 				"heightened": true,
@@ -9765,7 +9770,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "The damage increases by {@dice 1d8}. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+					"entry": "The damage increases by {@dice 1d8}. "
 				},
 				"x": null,
 				"no_x": null
@@ -10909,7 +10914,7 @@
 					},
 					{
 						"level": 4,
-						"entry": "Level 3. You can summon a great white shark or tiger. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+						"entry": "Level 3. You can summon a great white shark or tiger. "
 					}
 				],
 				"no_x": null
@@ -12014,7 +12019,7 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "The duration increases to 1 hour. Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic"
+						"entry": "The duration increases to 1 hour. "
 					}
 				],
 				"no_x": null
@@ -12378,7 +12383,7 @@
 				"This improves how well the recipients can perceive anything the sharing creature is looking at. For instance, if a creature is {@condition undetected} to a recipient but {@condition observed} by the sharing creature, the creature becomes {@condition observed} by the recipient as well. Typically, the creature is seen as a glowing outline superimposed on its position. This might allow the recipient to target a creature it couldn't otherwise; however, cover and line of effect still might prevent or impede targeting and attacks. This can only improve the recipient's vision, not reduce it; for example, if an enemy was {@condition undetected} by the sharing creature and {@condition observed} by a recipient, the recipient would still clearly observe the enemy.",
 				"Once the vision sharing stops, the benefit ends. Whether a creature is {@condition hidden} or {@condition undetected} is still based on the last information a target had before the vision sharing ended.",
 				"For example, that means if a creature is behind a wall but hasn't moved, it's still {@condition hidden} rather than {@condition undetected} by a recipient that witnessed its current position.",
-				"Introduction Essentials of Magic Classes Spells Magic Items Book of Unlimited Magic glossary & Index Secrets of Magic."
+				"."
 			],
 			"heightened": {
 				"heightened": false,

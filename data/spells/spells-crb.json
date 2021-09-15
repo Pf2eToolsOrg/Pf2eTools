@@ -436,7 +436,7 @@
 						"{@skill Acrobatics} modifier of +16, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Bat} Speed 20 feet, fly Speed 30 feet; precise echolocation 40 feet; Melee {@as 1} fangs, Damage {@damage 2d8} piercing; Melee {@as 1} wing (agile), Damage {@damage 2d6} bludgeoning.",
 						"{@bold Bird} Speed 10 feet, fly Speed 50 feet; Melee {@as 1} beak, Damage {@damage 2d8} piercing; Melee {@as 1} talon (agile), Damage {@damage 1d10} slashing.",
-						"{@bold Pterosaur} Speed 10 feet, fly Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} beak, Damage {@damage 3d6} piercing.",
+						"{@bold Pterosaur} Speed 10 feet, fly Speed 40 feet; imprecise {@ability scent} 30 feet; Melee {@as 1} beak, Damage {@damage 3d6} piercing.",
 						"{@bold Wasp} Speed 20 feet, fly Speed 40 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d6} {@condition persistent damage ||persistent poison}."
 					]
 				}
@@ -1073,7 +1073,7 @@
 					"items": [
 						"AC = 16 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"5 temporary Hit Points.",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +9, and your damage bonus is +1. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack bonus is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +9, unless your own modifier is higher. You also gain specific abilities based on the type of animal you choose:",
 						"{@bold Ape} Speed 25 feet, climb Speed 20 feet; Melee {@as 1} fist, Damage {@damage 2d6} bludgeoning.",
@@ -1730,7 +1730,7 @@
 					"items": [
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to your deity's battle form, which are the only attacks you can use. You're trained with them. Your attack modifier is +33, and you use the listed damage. Melee attacks are Strength based (for the purposes of the {@condition enfeebled} condition, for example) unless they have the {@trait finesse} trait, and all ranged attacks are Dexterity based. Attacks that deal positive or negative damage don't heal creatures.",
 						"{@skill Athletics} modifier of +35, unless your own is higher. You also gain the specific abilities listed for your deity below:",
 						"{@bold Abadar} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Ranged {@as 1} crossbow (range increment 120 feet, reload 1), Damage {@damage 6d10+3} piercing.",
@@ -5291,9 +5291,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target's darkvision or low-light vision is suppressed for 1 round.",
+						"Success": "The target's {@ability darkvision} or low-light vision is suppressed for 1 round.",
 						"Failure": "As success, but the duration is 1 minute.",
-						"Critical Failure": "As success, but the duration is 1 minute, and the target is also {@condition blinded} for the duration. It can attempt a new save at the end of each of its turns. If it succeeds, it's no longer {@condition blinded}, but its darkvision or low-light vision remains suppressed."
+						"Critical Failure": "As success, but the duration is 1 minute, and the target is also {@condition blinded} for the duration. It can attempt a new save at the end of each of its turns. If it succeeds, it's no longer {@condition blinded}, but its {@ability darkvision} or {@ability low-light vision} remains suppressed."
 					}
 				}
 			],
@@ -5367,7 +5367,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "Even creatures with darkvision (but not greater darkvision) can barely see through the darkness. They treat targets seen through the darkness as {@condition concealed}."
+						"entry": "Even creatures with {@ability darkvision} (but not {@ability greater darkvision}) can barely see through the darkness. They treat targets seen through the darkness as {@condition concealed}."
 					}
 				],
 				"no_x": null
@@ -5419,7 +5419,7 @@
 			"dismiss": false,
 			"entries": [
 				"You grant yourself supernatural sight in areas of darkness.",
-				"You gain darkvision."
+				"You gain {@ability darkvision}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -6520,7 +6520,7 @@
 					"items": [
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"15 temporary Hit Points.",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ankylosaurus} Speed 25 feet; Melee {@as 1} tail (backswing, reach 10 feet), Damage {@damage 2d6} bludgeoning; Melee {@as 1} foot, Damage {@damage 2d6} bludgeoning.",
@@ -7390,7 +7390,7 @@
 						"A fly Speed equal to your Speed.",
 						"Weakness 10 to the alignment opposite the one you chose.",
 						"A +1 status bonus to saves against spells.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"Your unarmed attacks and weapons deal 1 additional damage of the chosen alignment type.",
 						"One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@dice 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@damage 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@damage 2d8} slashing damage and has the {@trait agile} and {@trait finesse} traits."
 					]
@@ -7878,7 +7878,7 @@
 						"10 temporary Hit Points.",
 						"Speed 40 feet, fly Speed 100 feet.",
 						"Resistance 10 against the damage type of your breath weapon (see below).",
-						"Darkvision and imprecise scent 60 feet.",
+						"{@ability Darkvision} and imprecise {@ability scent} 60 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher.",
 						"{@bold Breath Weapon} {@as 2} ({@trait arcane}, {@trait evocation}) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals."
@@ -8850,7 +8850,7 @@
 					"items": [
 						"AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"10 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air or fire) or Strength based (earth or water). If your corresponding unarmed attack modifier is higher, you can use it instead.",
 						"{@bold Acrobatics} (air or fire) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air fly} Speed 80 feet, movement doesn't trigger reactions; Melee {@as 1} gust, Damage {@damage 1d4} bludgeoning.",
@@ -9965,7 +9965,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You sprinkle magical dust in the spell's area, making those within easier to trick. Each creature in the area must attempt a Will save. For each additional action you use Casting the Spell, the burst's radius increases by 5 feet.",
+				"You sprinkle magical dust in the spell's area, making those within easier to trick. Each creature in the area must attempt a Will save. For each additional action you use {@action Cast a Spell||Casting the Spell}, the burst's radius increases by 5 feet.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -14018,7 +14018,7 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "You gain darkvision or low-light vision if the form you assume has that ability."
+						"entry": "You gain {@ability darkvision} or {@ability low-light vision} if the form you assume has that ability."
 					},
 					{
 						"level": 5,
@@ -14445,11 +14445,11 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "The spell also disguises your voice and scent, and it gains the {@trait auditory} and {@trait olfactory} traits."
+						"entry": "The spell also disguises your voice and {@ability scent}, and it gains the {@trait auditory} and {@trait olfactory} traits."
 					},
 					{
 						"level": 3,
-						"entry": "You can appear as any creature of the same size, even a specific individual. You must have seen an individual to take on their appearance. The spell also disguises your voice and scent, and it gains the {@trait auditory} trait."
+						"entry": "You can appear as any creature of the same size, even a specific individual. You must have seen an individual to take on their appearance. The spell also disguises your voice and {@ability scent}, and it gains the {@trait auditory} trait."
 					}
 				],
 				"no_x": null
@@ -14775,10 +14775,10 @@
 						"{@skill Athletics} modifier of +13, unless your own is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ant} Speed 30 feet, climb Speed 30 feet; Melee {@as 1} mandibles, Damage {@damage 2d6} bludgeoning.",
 						"{@bold Beetle} Speed 25 feet; Melee {@as 1} mandibles, Damage {@damage 2d10} bludgeoning.",
-						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; darkvision; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
-						"{@bold Mantis} Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
-						"{@bold Scorpion} Speed 40 feet; darkvision, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
-						"{@bold Spider} darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
+						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
+						"{@bold Mantis} Speed 40 feet; imprecise {@ability scent} 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
+						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
+						"{@bold Spider} {@ability darkvision}; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
 					]
 				}
 			],
@@ -16862,7 +16862,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@damage 1d4+1} force damage. For each additional action you use when Casting the Spell, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
+				"You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@damage 1d4+1} force damage. For each additional action you use when {@action Cast a Spell||Casting the Spell}, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
 			],
 			"heightened": {
 				"heightened": true,
@@ -18323,7 +18323,7 @@
 					"items": [
 						"AC = 20 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"20 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
 						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; Melee {@as 1} beak (reach 15 feet), Damage {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}; Melee {@as 1} talon (agile, reach 15 feet), Damage {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
@@ -18582,7 +18582,7 @@
 					"items": [
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
 						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; Melee {@as 1} vines (reach 30 feet, versatile P), Damage {@damage 6d8+12} bludgeoning; Ranged {@as 1} thorns (range 100 feet), Damage {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
@@ -18768,7 +18768,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"The target loses its odor, preventing creatures from passively noticing its presence via smell alone, even if the creatures have precise or imprecise scent. A creature attempting a {@skill Perception} check to {@action Seek} with scent and other senses might notice the lack of natural scent. If the target has any abilities that result from its smell, such as an overpowering scent, those abilities are also negated."
+				"The target loses its odor, preventing creatures from passively noticing its presence via smell alone, even if the creatures have precise or imprecise {@ability scent}. A creature attempting a {@skill Perception} check to {@action Seek} with {@ability scent} and other senses might notice the lack of natural {@ability scent}. If the target has any abilities that result from its smell, such as an overpowering {@ability scent}, those abilities are also negated."
 			],
 			"heightened": {
 				"heightened": true,
@@ -19635,7 +19635,7 @@
 						"AC = 15 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"Speed 10 feet.",
 						"Weakness 5 to physical damage. (If you take physical damage in this form, you take 5 additional damage.)",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"{@bold Acrobatics and} {@skill Stealth} modifiers of +10, unless your own modifier is higher; {@skill Athletics} modifier \u20134."
 					]
 				}
@@ -20825,7 +20825,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You enhance a summoned creature with the power of the elements. If your next action is to cast either summon animal or summon plant or fungus, choose air, earth, fire, or water, and the creature you summon gains the corresponding abilities.",
+				"You enhance a summoned creature with the power of the elements. If your next action is to cast either {@spell summon animal} or summon plant or fungus, choose air, earth, fire, or water, and the creature you summon gains the corresponding abilities.",
 				{
 					"type": "list",
 					"items": [
@@ -22954,7 +22954,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You conjure a towering mansion up to four stories tall and up to 300 feet on a side. While Casting the Spell, you hold an image of the mansion and its desired appearance in your mind. The mansion can contain as many or as few rooms as you desire, and it is decorated as you imagine it. You can imagine a purpose for each room of the mansion, and the proper accouterments appear within. Any furniture or other mundane fixtures function normally for anyone inside the mansion, but they cease to exist if taken beyond its walls. No fixture created with this spell can create {@trait magical} effects, but magical devices brought into the mansion function normally.",
+				"You conjure a towering mansion up to four stories tall and up to 300 feet on a side. While {@action Cast a Spell||Casting the Spell}, you hold an image of the mansion and its desired appearance in your mind. The mansion can contain as many or as few rooms as you desire, and it is decorated as you imagine it. You can imagine a purpose for each room of the mansion, and the proper accouterments appear within. Any furniture or other mundane fixtures function normally for anyone inside the mansion, but they cease to exist if taken beyond its walls. No fixture created with this spell can create {@trait magical} effects, but magical devices brought into the mansion function normally.",
 				"Your mansion contains the same types and quantities of foodstuffs and servants as created by the {@spell magnificent mansion} spell.",
 				"Each of the mansion's exterior doorways and windows are protected by {@spell alarm} spells. You choose whether each alarm is audible or mental as you Cast the Spell, and each has a different sound (for an audible alarm) or sensation (for a mental one), allowing you to instantly determine which portal has been used."
 			],
@@ -23028,7 +23028,7 @@
 					},
 					{
 						"level": 6,
-						"entry": "As the 4th-level {@spell restoration}, but you can reduce a permanent {@condition doomed} condition if you add a spellcasting action and a material component while Casting the Spell, during which you provide 100 gp worth of diamond dust as a cost."
+						"entry": "As the 4th-level {@spell restoration}, but you can reduce a permanent {@condition doomed} condition if you add a spellcasting action and a material component while {@action Cast a Spell||Casting the Spell}, during which you provide 100 gp worth of diamond dust as a cost."
 					}
 				],
 				"no_x": null
@@ -23377,7 +23377,7 @@
 						"10 temporary Hit Points.",
 						"Speed 40 feet.",
 						"Resistance 3 against physical damage.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"A special attack with a righteous armament version of your favored weapon, which is the only attack you can use. Your attack modifier with the special weapon is +21, and your damage bonus is +8 (or +6 for a ranged attack). If your attack modifier with your deity's favored weapon is higher, you can use it instead. You deal three of your weapon's normal damage dice, or three damage dice of one size larger if your weapon is a simple weapon with a d4 or d6 damage die. The weapon has one of the following properties that matches your deity's alignment: anarchic, axiomatic, holy, unholy. If your deity is true neutral, you instead deal an extra {@damage 1d6} precision damage.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher."
 					]
@@ -24762,9 +24762,9 @@
 					"items": [
 						"You gain a 20-foot status bonus to your Speed.",
 						"You gain a climb or swim Speed equal to half your Speed.",
-						"You gain darkvision.",
+						"You gain {@ability darkvision}.",
 						"You gain a pair of claws. These are agile finesse unarmed attacks that deal {@damage 1d8} slashing damage.",
-						"You gain scent 60 feet (imprecise)."
+						"You gain {@ability scent} 60 feet (imprecise)."
 					]
 				}
 			],
@@ -27307,7 +27307,7 @@
 			}
 		},
 		{
-			"name": "Summon Animal",
+			"name": "{@spell summon animal}",
 			"source": "CRB",
 			"summoning": true,
 			"page": 375,
@@ -27444,14 +27444,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a celestial to fight on your behalf. This works like summon animal, except you summon a common creature that has the {@trait celestial} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
+				"You conjure a celestial to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait celestial} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27500,14 +27500,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a construct to fight for you. This works like summon animal, except you summon a common creature that has the {@trait construct} trait and whose level is \u20131."
+				"You conjure a construct to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait construct} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27556,14 +27556,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a dragon to fight for you. This works like summon animal, except you summon a common creature that has the {@trait dragon} trait and whose level is 5 or lower."
+				"You conjure a dragon to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait dragon} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27616,14 +27616,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an elemental to fight for you. This works like summon animal, except you summon a common creature that has the {@trait elemental} trait and whose level is 1 or lower."
+				"You conjure an elemental to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait elemental} trait and whose level is 1 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27672,14 +27672,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an aberration to fight for you. This works like summon animal, except you summon a common creature that has the {@trait aberration} trait and whose level is 5 or lower."
+				"You conjure an aberration to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait aberration} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27729,14 +27729,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fey to fight for you. This works like summon animal, except you summon a common creature that has the {@trait fey} trait and whose level is \u20131."
+				"You conjure a fey to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fey} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27785,14 +27785,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fiend to fight on your behalf. This works like summon animal, except you summon a common creature that has the {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
+				"You conjure a fiend to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27844,14 +27844,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a giant to fight for you. This works like summon animal (page 375), except you summon a common creature that has the {@trait giant} trait and whose level is 5 or lower."
+				"You conjure a giant to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait giant} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -27900,14 +27900,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a plant or fungus to fight for you. This works like summon animal (page 375), except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is \u20131."
+				"You conjure a plant or fungus to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -30751,7 +30751,7 @@
 					"type": "list",
 					"items": [
 						"You gain resistance 10 to precision damage and resistance 10 to extra damage from critical hits. If the resistance is greater than the extra damage, it reduces the extra damage to 0 but doesn't reduce the attack's normal damage.",
-						"You gain darkvision.",
+						"You gain {@ability darkvision}.",
 						"Acid oozes from your skin. Any creature that hits you with an unarmed attack or with a non-reach melee weapon takes {@damage 2d6} acid damage."
 					]
 				}

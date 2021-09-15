@@ -959,7 +959,7 @@
 									"page": 21,
 									"name": "CHARACTER SHEET",
 									"entries": [
-										"Write your character's ancestry and heritage in the appropriate space at the top of your character sheet's first page. Adjust your ability scores, adding 2 to an ability score if you gained an ability boost from your ancestry, and subtracting 2 from an ability score if you gained an ability flaw from your ancestry. Note the number of Hit Points your character gains from their ancestry\u2014you'll add more to this number later. Finally, in the appropriate spaces, record your character's size, Speed, and languages. If your character's ancestry provides them with special abilities, write them in the appropriate spaces, such as darkvision in the Senses"
+										"Write your character's ancestry and heritage in the appropriate space at the top of your character sheet's first page. Adjust your ability scores, adding 2 to an ability score if you gained an ability boost from your ancestry, and subtracting 2 from an ability score if you gained an ability flaw from your ancestry. Note the number of Hit Points your character gains from their ancestry\u2014you'll add more to this number later. Finally, in the appropriate spaces, record your character's size, Speed, and languages. If your character's ancestry provides them with special abilities, write them in the appropriate spaces, such as {@ability darkvision} in the Senses"
 									]
 								}
 							],
@@ -1267,7 +1267,7 @@
 							"page": 30,
 							"name": "Step 3",
 							"entries": [
-								"Adam looks up the dwarf entry in Chapter 2. He records the ability boosts to his Constitution and Wisdom scores (bringing both up to 12). He also applies the ability flaw to his Charisma, dropping it to 8. For his free ability boost, he chooses Dexterity to boost his defenses, raising it to 12 as well. He also records the 10 Hit Points the ancestry gives him. Next, he returns to his character sheet to record the size, Speed, language, and darkvision ability he gets from being a dwarf. Finally, he decides on a heritage, writing \"rock dwarf\" next to dwarf, and he picks an ancestry feat, deciding on Rock Runner, to show his character's strong connection to stone."
+								"Adam looks up the dwarf entry in Chapter 2. He records the ability boosts to his Constitution and Wisdom scores (bringing both up to 12). He also applies the ability flaw to his Charisma, dropping it to 8. For his free ability boost, he chooses Dexterity to boost his defenses, raising it to 12 as well. He also records the 10 Hit Points the ancestry gives him. Next, he returns to his character sheet to record the size, Speed, language, and {@ability darkvision} ability he gets from being a dwarf. Finally, he decides on a heritage, writing \"rock dwarf\" next to dwarf, and he picks an ancestry feat, deciding on Rock Runner, to show his character's strong connection to stone."
 							]
 						},
 						{
@@ -2197,7 +2197,7 @@
 									"page": 218,
 									"name": "Senses",
 									"entries": [
-										"Your familiar has low-light vision and can gain additional senses from familiar abilities. It can communicate empathically with you as long as it's within 1 mile of you, sharing emotions. It doesn't understand or speak languages normally, but it can gain speech from a familiar ability."
+										"Your familiar has {@ability low-light vision} and can gain additional senses from familiar abilities. It can communicate empathically with you as long as it's within 1 mile of you, sharing emotions. It doesn't understand or speak languages normally, but it can gain speech from a familiar ability."
 									]
 								},
 								{
@@ -2291,7 +2291,7 @@
 										{
 											"name": "Scent",
 											"entries": [
-												"It gains scent (imprecise, 30 feet)."
+												"It gains {@ability scent} (imprecise, 30 feet)."
 											]
 										},
 										{
@@ -2423,7 +2423,7 @@
 												"{@class Fighter} alchemists can use their alchemy to gain additional options in situations where their usual tactics don't work.",
 												"{@class Ranger} alchemists focus on alchemy and snares, getting extra use out of their {@skill Crafting} skill and supplying bombs for the bomb snare.",
 												"{@class Rogue} alchemists can combine a rogue's poison feats with free daily poisons, and bombs present an interesting way to sneak attack with various types of energy damage.",
-												"Spellcaster alchemists often use their alchemical items to take pressure off their repertoire or prepared spells. For instance, a wizard alchemist who can brew up {@item darkvision elixir (generic)|CRB|darkvision elixirs} to grant darkvision can prepare another spell instead of {@spell darkvision}."
+												"Spellcaster alchemists often use their alchemical items to take pressure off their repertoire or prepared spells. For instance, a wizard alchemist who can brew up {@item {@ability darkvision} elixir (generic)|CRB|{@ability darkvision} elixirs} to grant {@ability darkvision} can prepare another spell instead of {@spell darkvision}."
 											]
 										}
 									]
@@ -10340,7 +10340,7 @@
 									"name": "Summoned"
 								},
 								"A creature called by a conjuration spell or effect gains the summoned trait. A summoned creature can't summon other creatures, create things of value, or cast spells that require a cost. It has the minion trait. If it tries to cast a spell of equal or higher level than the spell that summoned it, the spell fails and the summon spell ends. Otherwise, it uses the standard abilities for a creature of its kind. It generally attacks your enemies to the best of its abilities. If you can communicate with it, you can attempt to command it, but the GM determines the degree to which it follows your commands.",
-								"Immediately when you finish Casting the Spell, the summoned creature uses its 2 actions for that turn.",
+								"Immediately when you finish {@action Cast a Spell||Casting the Spell}, the summoned creature uses its 2 actions for that turn.",
 								"Summoned creatures can be banished by various spells and effects. They are automatically banished if reduced to 0 Hit Points or if the spell that called them ends.",
 								{
 									"type": "pf2-title",
@@ -10444,7 +10444,7 @@
 									"name": "Focus",
 									"entries": [
 										"A focus is an object that funnels the magical energy of the spell. The spell gains the manipulate trait and requires you to either have a free hand to retrieve the focus listed in the spell or already be holding the focus in your hand.",
-										"As part of Casting the Spell, you retrieve the focus (if necessary), manipulate it, and can stow it again if you so choose.",
+										"As part of {@action Cast a Spell||Casting the Spell}, you retrieve the focus (if necessary), manipulate it, and can stow it again if you so choose.",
 										"Foci tend to be expensive, and you need to acquire them in advance to Cast the Spell."
 									]
 								},
@@ -12726,7 +12726,7 @@
 							"page": 457,
 							"name": "Line of Sight",
 							"entries": [
-								"Some effects require you to have line of sight to your target. As long as you can precisely sense the area (as described in Perception on page 464) and it is not blocked by a solid barrier (as described in Cover on pages 476\u2013477), you have line of sight. An area of darkness prevents line of sight if you don't have darkvision, but portcullises and other obstacles that aren't totally solid do not. If you're unsure whether a barrier is solid enough to block line of sight, usually a 1-foot-square gap is enough to maintain line of sight, though the GM makes the final call."
+								"Some effects require you to have line of sight to your target. As long as you can precisely sense the area (as described in Perception on page 464) and it is not blocked by a solid barrier (as described in Cover on pages 476\u2013477), you have line of sight. An area of darkness prevents line of sight if you don't have {@ability darkvision}, but portcullises and other obstacles that aren't totally solid do not. If you're unsure whether a barrier is solid enough to block line of sight, usually a 1-foot-square gap is enough to maintain line of sight, though the GM makes the final call."
 							]
 						}
 					],
@@ -13255,7 +13255,7 @@
 									"page": 464,
 									"name": "Dim Light",
 									"entries": [
-										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has darkvision or low-light vision (see Special Senses on page 465), or a precise sense other than vision."
+										"Areas in shadow or lit by weak light sources are in dim light. Creatures and objects in dim light have the {@condition concealed} condition, unless the seeker has {@ability darkvision} or {@ability low-light vision} (see Special Senses on page 465), or a precise sense other than vision."
 									]
 								},
 								{
@@ -13263,7 +13263,7 @@
 									"page": 464,
 									"name": "Darkness",
 									"entries": [
-										"A creature or object within darkness is hidden or undetected unless the seeker has darkvision or a precise sense other than vision (Special Senses are on page 465). A creature without darkvision or another means of perceiving in darkness has the blinded condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you dazzled for a short time, as determined by the GM."
+										"A creature or object within darkness is hidden or undetected unless the seeker has {@ability darkvision} or a precise sense other than vision (Special Senses are on page 465). A creature without {@ability darkvision} or another means of perceiving in darkness has the blinded condition while in darkness, though it might be able to see illuminated areas beyond the darkness. If a creature can see into an illuminated area, it can observe creatures within that illuminated area normally. After being in darkness, sudden exposure to bright light might make you dazzled for a short time, as determined by the GM."
 									]
 								}
 							]
@@ -13273,7 +13273,7 @@
 							"page": 464,
 							"name": "Senses",
 							"entries": [
-								"The ways a creature can use Perception depend on what senses it has. The primary concepts you need to know for understanding senses are precise senses, imprecise senses, and the three states of detection a target can be in: observed, hidden, or undetected. Vision, hearing, and scent are three prominent senses, but they don't have the same degree of acuity.",
+								"The ways a creature can use {@skill Perception} depend on what senses it has. The primary concepts you need to know for understanding senses are precise senses, imprecise senses, and the three states of detection a target can be in: observed, hidden, or undetected. Vision, hearing, and scent are three prominent senses, but they don't have the same degree of acuity.",
 								{
 									"type": "pf2-h4",
 									"page": 464,
@@ -13297,7 +13297,7 @@
 									"entries": [
 										"A character also has many vague senses\u2014ones that can alert you that something is there but aren't useful for zeroing in on it to determine exactly what it is. The most useful of these for a typical character is the sense of smell. At best, a vague sense can be used to detect the presence of an unnoticed creature, making it undetected. Even then, the vague sense isn't sufficient to make the creature hidden or observed.",
 										"When one creature might detect another, the GM almost always uses the most precise sense available.",
-										"Pathfinder's rules assume that a given creature has vision as its only precise sense and hearing as its only imprecise sense. Some characters and creatures, however, have precise or imprecise senses that don't match this assumption. For instance, a character with poor vision might treat that sense as imprecise, an animal with the scent ability can use its sense of smell as an imprecise sense, and a creature with echolocation or a similar ability can use hearing as a precise sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
+										"Pathfinder's rules assume that a given creature has vision as its only precise sense and hearing as its only imprecise sense. Some characters and creatures, however, have precise or imprecise senses that don't match this assumption. For instance, a character with poor vision might treat that sense as imprecise, an animal with the {@ability scent} ability can use its sense of smell as an imprecise sense, and a creature with echolocation or a similar ability can use hearing as a precise sense. Such senses are often given special names and appear as \"echolocation (precise),\" \"scent (imprecise) 30 feet,\" or the like."
 									]
 								}
 							]
@@ -13314,7 +13314,7 @@
 									"page": 465,
 									"name": "Darkvision and Greater Darkvision",
 									"entries": [
-										"A creature with darkvision or greater darkvision can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness} spell, block normal darkvision. A creature with greater darkvision, however, can see through even these forms of magical darkness."
+										"A creature with {@ability darkvision} or {@ability greater darkvision} can see perfectly well in areas of darkness and dim light, though such vision is in black and white only. Some forms of magical darkness, such as a 4th-level {@spell darkness} spell, block normal {@ability darkvision}. A creature with {@ability greater darkvision}, however, can see through even these forms of magical darkness."
 									]
 								},
 								{
@@ -13322,7 +13322,7 @@
 									"page": 465,
 									"name": "Low-Light Vision",
 									"entries": [
-										"A creature with low-light vision can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
+										"A creature with {@ability low-light vision} can see in dim light as though it were bright light, so it ignores the {@condition concealed} condition due to dim light."
 									]
 								},
 								{
@@ -13331,7 +13331,7 @@
 									"name": "Scent",
 									"entries": [
 										"Scent involves sensing creatures or objects by smell, and is usually a vague sense. The range is listed in the ability, and it functions only if the creature or object being detected emits an aroma (for instance, incorporeal creatures usually do not exude an aroma).",
-										"If a creature emits a heavy aroma or is upwind, the GM can double or even triple the range of scent abilities used to detect that creature, and the GM can reduce the range if a creature is downwind."
+										"If a creature emits a heavy aroma or is upwind, the GM can double or even triple the range of {@ability scent} abilities used to detect that creature, and the GM can reduce the range if a creature is downwind."
 									]
 								},
 								{
@@ -19011,7 +19011,7 @@
 									"name": "{@action Cast a Spell||Casting a Spell} from a Scroll",
 									"entries": [
 										"{@action Cast a Spell||Casting a Spell} from a scroll requires holding the scroll in one hand and activating it with a Cast a Spell activity using the normal number of actions for that spell.",
-										"To Cast a Spell from a scroll, the spell must appear on your spell list. Because you're the one Casting the Spell, use your spell attack roll and spell DC. The spell also gains the appropriate trait for your tradition (arcane, divine, occult, or primal).",
+										"To Cast a Spell from a scroll, the spell must appear on your spell list. Because you're the one {@action Cast a Spell||Casting the Spell}, use your spell attack roll and spell DC. The spell also gains the appropriate trait for your tradition (arcane, divine, occult, or primal).",
 										"Any physical material components and costs are provided when a scroll is created, so you don't need to provide them when {@action Cast a Spell||Casting a Spell} from a scroll. You must replace any required material component for that spell with a somatic component. If the spell requires a focus, you must have that focus to Cast the Spell from a scroll."
 									]
 								},
@@ -19684,7 +19684,7 @@
 							"page": 592,
 							"name": "Casting Spells from a Staff",
 							"entries": [
-								"A staff gains charges when someone prepares it for the day. The person who prepared a staff can expend the charges to cast spells from it. You can Cast a Spell from a staff only if you have that spell on your spell list, are able to cast spells of the appropriate level, and expend a number of charges from the staff equal to the spell's level. {@action Cast a Spell||Casting a Spell} from a staff requires holding the staff (typically in one hand) and Activating the staff by Casting the Spell, which takes the spell's normal number of actions.",
+								"A staff gains charges when someone prepares it for the day. The person who prepared a staff can expend the charges to cast spells from it. You can Cast a Spell from a staff only if you have that spell on your spell list, are able to cast spells of the appropriate level, and expend a number of charges from the staff equal to the spell's level. {@action Cast a Spell||Casting a Spell} from a staff requires holding the staff (typically in one hand) and Activating the staff by {@action Cast a Spell||Casting the Spell}, which takes the spell's normal number of actions.",
 								"Use your spell attack roll and spell DC when {@action Cast a Spell||Casting a Spell} from a staff. The spell gains the appropriate trait for your magical tradition (arcane, divine, occult, or primal) and can be affected by any modifications you can normally make when casting spells, such as metamagic feats. You must provide any material components, cost, or focus required by the spell, or you fail to cast it.",
 								"Prepared spellcasters and spontaneous spellcasters each have a unique way of altering how their staves gain charges and the ways they can be used (see the Prepared Spellcasters and Spontaneous Spellcasters sections below).",
 								{
