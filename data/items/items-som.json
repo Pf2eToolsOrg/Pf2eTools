@@ -1285,7 +1285,8 @@
 			"entries": [
 				"An extending rune allows you to extend your weapon to impossible lengths.",
 				{
-					"type": "activation",
+					"type": "ability",
+					"style": "compact",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1296,7 +1297,8 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"effect": true,
+					"entries": [
 						"You extend your weapon for an instant, giving you an impossible reach. You {@action Strike} with the weapon, and you have reach 60 feet for the {@action Strike}."
 					]
 				}
@@ -3557,7 +3559,7 @@
 			"bulk": "1",
 			"category": "no category found",
 			"entries": [
-				"This four-person tent provides several benefits for those who rest within. The climate inside the tent is comfortable and allows creatures inside it to withstand most {@condition hostile} weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater can still damage or destroy the tent. Mundane pests such as solitary ordinary insects avoid the tent, though swarms and giant insects can attack the tent as normal. Once you pitch the tent, only you can easily move it; any other creatures must succeed at a DC 20 {@skill Athletics} check to do so. Finally, the tent automatically camouflages with its surroundings, requiring a Searching creature to succeed at a DC 22 {@skill Perception} check to notice it.",
+				"This four-person tent provides several benefits for those who rest within. The climate inside the tent is comfortable and allows creatures inside it to withstand most {@condition hostile} weather conditions, but incredible heat or cold, powerful storms, and winds of hurricane force or greater can still damage or destroy the tent. Mundane pests such as solitary ordinary insects avoid the tent, though swarms and giant insects can attack the tent as normal. Once you pitch the tent, only you can easily move it; any other creatures must succeed at a DC 20 {@skill Athletics} check to do so. Finally, the tent automatically camouflages with its surroundings, requiring a {@action Search||Searching} creature to succeed at a DC 22 {@skill Perception} check to notice it.",
 				"Magrithar's Magical Compendium, p.284 After hours of contemplating the seemingly mundane robe at the bottom of the chamber surrounded by traps and guardians, I decided the reward was worth the risk. For a moment, nothing happened after I shrugged on the robe, but as a hundred shifting, monstrous eyes began to open along the robe and within my mind, I saw true, and what I saw was not what the defenses were keeping out, but what they were keeping in."
 			],
 			"generic": false,

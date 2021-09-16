@@ -870,7 +870,7 @@ function Renderer () {
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(entry.frequency)} `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.effect === true ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) entry.entries.forEach(e => renderer._recursiveRender(e, textStack, meta, {isAbility: true}));
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
@@ -905,7 +905,7 @@ function Renderer () {
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
 			if (entry.DC != null) textStack[0] += `DC ${entry.DC}`
-			textStack[0] += `${renderer.render(entry.savingThrow)}.`
+			textStack[0] += ` ${renderer.render(entry.savingThrow)}.`
 		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
@@ -2223,6 +2223,7 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@eidolon":
 					case "@companion":
 					case "@familiar":
 						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
@@ -5007,6 +5008,7 @@ Renderer.hover = {
 		"ancestry": UrlUtil.PG_ANCESTRIES,
 		"companion": UrlUtil.PG_COMPANIONS_FAMILIARS,
 		"familiar": UrlUtil.PG_COMPANIONS_FAMILIARS,
+		"eidolon": UrlUtil.PG_COMPANIONS_FAMILIARS,
 		"feat": UrlUtil.PG_FEATS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
@@ -5998,7 +6000,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility", "eidolon"]);
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
@@ -6607,6 +6609,8 @@ Renderer.hover = {
 
 	getGenericCompactRenderedString (entry) {
 		const textStack = [""];
+		// FIXME: I am pretty sure this isn't the way this should be done (?)
+		textStack[0] += `<p class="pf2-h3 entry-title-inner">${entry.name}</p>`;
 		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
 		return `${textStack.join("")}`;
 	},
@@ -6990,6 +6994,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@ritual":
 					case "@settlement":
 					case "@deity":
+					case "@eidolon":
 					case "@familiar":
 					case "@familiarAbility":
 					case "@companion":

@@ -1312,9 +1312,10 @@ Parser.TAG_TO_DEFAULT_SOURCE = {
 	"group": SRC_CRB,
 	"domain": SRC_CRB,
 	"skill": SRC_CRB,
-	"familiar": SRC_CRB,
+	"familiar": SRC_APG,
 	"familiarAbility": SRC_CRB,
 	"companion": SRC_CRB,
+	"eidolon": SRC_SOM,
 };
 Parser.getTagSource = function (tag, source) {
 	if (source && source.trim()) return source;
