@@ -94,7 +94,7 @@
 					"type": "pf2-h3",
 					"name": "Shadow Hound",
 					"entries": [
-						"Your companion is a canine creature related to the Shadow Plane denizens known as shadow mastiffs."
+						"Your companion is a canine creature related to the {@plane Shadow Plane} denizens known as shadow mastiffs."
 					]
 				}
 			],
@@ -143,6 +143,1383 @@
 				},
 				"entries": [
 					"The shadow hound releases an eerie bay, attempting to {@action Demoralize} each foe in a 20-foot emanation. These {@action Demoralize} attempts don't require a language and don't take any penalty due to not sharing a language."
+				]
+			}
+		},
+		{
+			"name": "Ape",
+			"source": "APG",
+			"page": 144,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Ape",
+					"entries": [
+						"Your companion is an ape or other primate."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"damage": "{@dice 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Intimidation",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"burrow": null,
+				"climb": 25
+			},
+			"support": "Your ape threatens your foes with menacing growls. Until the start of your next turn, if you hit and deal damage to a creature in your ape's reach, the creature becomes {@condition frightened} 1.",
+			"maneuver": {
+				"name": "Frightning Display",
+				"source": "APG",
+				"page": 144,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"Your ape makes a loud and frightening display, throwing a foe off balance. The ape attempts to {@action Demoralize} the target creature; this display gains the {@trait visual} trait and doesn't require language. While {@condition frightened} by this ability, the target is {@condition flat-footed} to your ape."
+				]
+			}
+		},
+		{
+			"name": "Arboreal Sapling",
+			"source": "APG",
+			"traits": [
+				"Uncommon"
+			],
+			"page": 144,
+			"type": "Companion",
+			"access": "You are a member of the {@class druid||leaf order|leaf}.",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Arboreal Sapling",
+					"entries": [
+						"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the plant trait instead of the animal trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid||animal order druids|animal} who are also members of the {@class druid||leaf order|leaf}."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"damage": "{@dice 1d8} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "Your arboreal sapling plants roots around your foe, impeding its movement. Until the start of your next turn, if you hit and deal damage to a creature in your arboreal sapling's reach, the first square the creature moves into after taking that damage is difficult terrain.",
+			"maneuver": {
+				"name": "Throw Rock",
+				"source": "APG",
+				"page": 144,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The arboreal sapling Interacts to pick up a rock within reach or retrieve a stowed rock, then throws it with a ranged rock {@action Strike} that deals a base of {@damage 1d6} bludgeoning damage with a range increment of 30 feet."
+				]
+			}
+		},
+		{
+			"name": "Bat",
+			"source": "APG",
+			"page": 144,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Bat",
+					"entries": [
+						"Your companion is a particularly large bat, such as a {@creature giant bat}."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@dice 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"echolocation 20 feet (the bat can use hearing as a precise sense within this range)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 15,
+				"fly": 30,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "Your bat flaps around your foes' arms and faces, getting in the way of their attacks. Until the start of your next turn, creatures in your bat's reach that you damage with {@action Strike||Strikes} take a –1 circumstance penalty to their attack rolls.",
+			"maneuver": {
+				"name": "Wing Thrash",
+				"source": "APG",
+				"page": 144,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The bat thrashes wildly with its wings, making wing {@action Strike||Strikes} against up to three adjacent foes. Each attack counts toward the bat's multiple attack penalty, but the penalty only increases after all the attacks have been made."
+				]
+			}
+		},
+		{
+			"name": "Bear",
+			"source": "CRB",
+			"page": 215,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Bear",
+					"entries": [
+						"Your companion is a black, grizzly, polar, or other type of bear."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@dice 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Intimidation",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"fly": null,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "Your bear mauls your enemies when you create an opening. Until the start of your next turn, each time you hit a creature in the bear’s reach with a {@action Strike}, the creature takes {@damage 1d8} slashing damage from the bear. If your bear is nimble or savage, the slashing damage increases to {@damage 2d8}.",
+			"maneuver": {
+				"name": "Bear Hug",
+				"source": "CRB",
+				"page": 215,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"requirements": "The bear’s last action was a successful claw {@action Strike}.",
+				"entries": [
+					"The bear makes another claw {@action Strike} against the same target. If this {@action Strike} hits, the target is also {@condition grabbed}, as if the bear had successfully {@action Grapple||Grappled} the target."
+				]
+			}
+		},
+		{
+			"name": "Bird",
+			"source": "CRB",
+			"page": 215,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Bird",
+					"entries": [
+						"Your companion is a bird of prey, such as an eagle, hawk, or owl."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} finesse"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@dice 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 4,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"fly": 60,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "The bird pecks at your foes’ eyes when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature that your bird threatens also deal {@damage 1d4} {@condition persistent damage||persistent bleed damage}, and the target is {@condition dazzled} until it removes the bleed damage. If your bird is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d4}.",
+			"maneuver": {
+				"name": "Flyby Attack",
+				"source": "CRB",
+				"page": 215,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The bird {@action Fly||Flies} and makes a talon {@action Strike} at any point along the way."
+				]
+			}
+		},
+		{
+			"name": "Boar",
+			"source": "APG",
+			"page": 144,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Boar",
+					"entries": [
+						"Your companion is a boar or pig."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tusk",
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"burrow": null,
+				"climb": null
+			},
+			"support": "Your boar gores your foes. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your boar's reach also deal {@damage 1d6} {@condition persistent damage||persistent bleed damage}. If your boar is nimble or savage, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Boar Charge",
+				"source": "APG",
+				"page": 144,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The boar {@action Stride||Strides} twice in a straight line and then makes a tusk {@action Strike}. As long as it moved at least 20 feet, it gains a +2 circumstance bonus to its attack roll."
+				]
+			}
+		},
+		{
+			"name": "Cat",
+			"source": "CRB",
+			"page": 215,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Cat",
+					"entries": [
+						"Your companion is a big cat, such as a leopard or tiger."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@dice 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 4,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"burrow": null,
+				"climb": null
+			},
+			"special": "Your cat deals {@damage 1d4} extra precision damage against {@condition flat-footed} targets.",
+			"support": "Your cat throws your enemies off-balance when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that deal damage to a creature within your cat's reach make the target {@condition flat-footed} until the end of your next turn.",
+			"maneuver": {
+				"name": "Cat Pounce",
+				"source": "CRB",
+				"page": 215,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The cat {@action Stride||Strides} and then {@action Strike||Strikes}. If it was {@condition undetected} at the start of its Cat Pounce, it remains {@condition undetected} until after the attack."
+				]
+			}
+		},
+		{
+			"name": "Camel",
+			"source": "APAST",
+			"page": 80,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Camel",
+					"entries": [
+						"Your companion is a camel or llama."
+					]
+				}
+			],
+			"size": "Medium or Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"burrow": null,
+				"climb": null
+			},
+			"special": "mount; your camel ignores the harmful effects of mild, severe, and extreme cold or heat, selected when you gain the companion.",
+			"support": "The camel makes a ranged attack to spit a long string of saliva at a foe within 10 feet. On a hit, the foe is {@condition dazzled} for 1 round.",
+			"maneuver": {
+				"name": "Sand Stride",
+				"source": "APAST",
+				"page": 80,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"traits": [
+					"move"
+				],
+				"entries": [
+					"The camel {@action Stride||Strides} twice with a +5-foot circumstance bonus to Speed, ignoring difficult terrain caused by rubble, sand, and uneven ground made of earth and stone."
+				]
+			}
+		},
+		{
+			"name": "Cave Gecko",
+			"source": "APSotD",
+			"page": 73,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Cave Gecko",
+					"entries": [
+						"Your companion is a sticky-footed lizard like a gecko or anole."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"burrow": null,
+				"climb": 25
+			},
+			"support": "Your cave gecko helps you stay afoot, leaning into you and propping you up as you maneuver your opponent. Until the end of your next turn, as long as you are adjacent to your cave gecko, if you attempt to {@action Disarm}, {@action Shove}, or {@action Trip} an opponent and roll a critical failure, you get a failure instead.",
+			"maneuver": {
+				"name": "Tongue Pull",
+				"source": "APSotD",
+				"page": 73,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"traits": [
+					"attack"
+				],
+				"entries": [
+					"The cave gecko snaps out its tongue, attempting to pull a foe within 10 feet toward it. The gecko attempts an {@skill Athletics} check against the foe's Fortitude DC. On a success, the cave gecko pulls the foe next to it. This movement is forced movement. On a critical success, the foe is also {@condition grabbed} until the beginning of your next turn."
+				]
+			}
+		},
+		{
+			"name": "Cave Pterosaur",
+			"source": "APSotD",
+			"page": 74,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Cave Pterosaur",
+					"entries": [
+						"Your companion is a flying prehistoric creature, such as a dimorphodon or pterodactyl, that has adapted to life in the cavern vaults beneath the ground."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "beak",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@dice 1d4} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 4,
+			"skill": "Thievery",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"burrow": null,
+				"fly": 60
+			},
+			"support": "Your pterosaur expands its wings and makes distracting flapping motions. Any creature that would gain lesser cover from the pterosaur gains standard cover instead.",
+			"maneuver": {
+				"name": "Pterosaur Swoop",
+				"source": "APSotD",
+				"page": 74,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The pterosaur {@action Fly||Flies} up to its Speed and makes one beak {@action Strike} at any point during that movement."
+				]
+			}
+		},
+		{
+			"name": "Crocodile",
+			"source": "APG",
+			"page": 145,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Crocodile",
+					"entries": [
+						"Your companion is a crocodile or a similar crocodilian reptile, such as an alligator or caiman."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"burrow": null,
+				"swim": 25
+			},
+			"special": "The crocodile can hold its breath for about 2 hours.",
+			"support": "Your crocodile clamps its jaws on your foe, refusing to let go. Until the start of your next turn, if your {@action Strike} damages a creature in your crocodile's reach, your crocodile can latch onto the creature. While thus attached, the crocodile can move along with the target whenever the target moves until the end of your next turn. Your crocodile can latch onto only one creature in this way, and it must release the creature to make a jaws {@action Strike}. If the target is smaller than the crocodile, it takes a –10-foot circumstance penalty to its Speeds and can't {@action Fly} while the crocodile is latched on.",
+			"maneuver": {
+				"name": "Death Roll",
+				"source": "APG",
+				"page": 145,
+				"requirements": "The crocodile has a creature {@condition grabbed}.",
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The crocodile tucks its legs and rolls rapidly, twisting its victim. It makes a jaws {@action Strike} with a +2 circumstance bonus to the attack roll against the {@condition grabbed} creature. If it hits, it also knocks the creature {@condition prone}. If it misses, it releases the creature."
+				]
+			}
+		},
+		{
+			"name": "Dromaeosaur",
+			"source": "CRB",
+			"page": 216,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Dromaeosaur",
+					"entries": [
+						"Your companion is a dromaeosaur (also called a raptor), such as a velociraptor or deinonychus."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"damage": "{@dice 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 50,
+				"burrow": null,
+				"swim": null
+			},
+			"support": "Your raptor constantly darts into flanking position. Until the start of your next turn, it counts as being in its space or an empty space of your choice within 10 feet when determining whether you and your companion are flanking; you can choose a different space for each of your attacks.",
+			"maneuver": {
+				"name": "Darting Attack",
+				"source": "CRB",
+				"page": 216,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The raptor {@action Step||Steps} up to 10 feet and then {@action Strike||Strikes}, or {@action Strike||Strikes} and then {@action Step||Steps} up to 10 feet."
+				]
+			}
+		},
+		{
+			"name": "Horse",
+			"source": "CRB",
+			"page": 216,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Horse",
+					"entries": [
+						"Your companion is a horse, pony, or similar equine."
+					]
+				}
+			],
+			"size": "Medium or Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@dice 1d6} bludgeoning"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"burrow": null,
+				"swim": null
+			},
+			"special": "mount",
+			"support": "Your horse adds momentum to your charge. Until the start of your next turn, if you moved at least 10 feet on the action before your attack, add a circumstance bonus to damage to that attack equal to twice the number of damage dice. If your weapon already has the {@trait jousting} weapon trait, increase the trait’s damage bonus by 2 per die instead.",
+			"maneuver": {
+				"name": "Gallop",
+				"source": "CRB",
+				"page": 216,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"traits": [
+					"move"
+				],
+				"entries": [
+					"The horse {@action Stride||Strides} twice at a +10-foot circumstance bonus to Speed."
+				]
+			}
+		},
+		{
+			"name": "Hyena",
+			"source": "AoA5",
+			"page": 80,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Hyena",
+					"entries": [
+						"Your companion is a hyena."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Intimidation",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"burrow": null,
+				"swim": null
+			},
+			"special": "mount",
+			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena’s reach with a Strike, the creature becomes {@condition frightened} 1.",
+			"maneuver": {
+				"name": "Gnaw",
+				"source": "AoA5",
+				"page": 80,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"requirements": "The animal companion's last action was a successful jaws {@action Strike}",
+				"entries": [
+					"The Strike’s target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a –10-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a specialized animal companion, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
+				]
+			}
+		},
+		{
+			"name": "Monitor Lizard",
+			"source": "EC4",
+			"page": 73,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Monitor Lizard",
+					"entries": [
+						"Your companion is a stocky-limbed lizard with a long, almost serpentine body."
+					]
+				}
+			],
+			"size": "Medium",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 8,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"{@ability low-light vision}",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"burrow": null,
+				"swim": null
+			},
+			"special": "mount",
+			"support": "The monitor lizard distracts an adjacent opponent with snapping jaws and rapid movements. Until the start of your next turn, if your {@action Strike} damages a foe, any time the foe attempts an action with the manipulate trait until the end of your next turn, it must attempt a DC {@flatDC 5} flat check. On a failure, the action is disrupted.",
+			"maneuver": {
+				"name": "Lurching Rush",
+				"source": "EC4",
+				"page": 73,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The monitor lizard {@action Stride||Strides} and then makes a jaws {@action Strike}. If it moved at least 20 feet away from its starting position, it gains a +2 circumstance bonus to this attack roll."
+				]
+			}
+		},
+		{
+			"name": "Riding Drake",
+			"traits": [
+				"Uncommon"
+			],
+			"source": "APG",
+			"page": 145,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Riding Drake",
+					"entries": [
+						"Your companion is a swift, flightless drake with limited intelligence, less vicious than most drakes but fiercely loyal to you. A riding drake has the {@trait dragon} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion."
+					]
+				}
+			],
+			"size": "Large",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"damage": "{@dice 1d6} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 1,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 2
+			},
+			"hp": 8,
+			"skill": "Intimidation",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 45,
+				"burrow": null,
+				"swim": null
+			},
+			"special": "mount",
+			"support": 	"Your drake snorts fire in your foes' faces. Until the start of your next turn, each time you {@action Strike} while riding the drake and hit a creature in the drake's reach, the creature takes {@damage 1d4} fire damage from the drake. If your drake is nimble or savage, the fire damage increases to {@damage 2d4}.",
+			"maneuver": {
+				"name": "Breath Weapon",
+				"source": "APG",
+				"page": 145,
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"frequency": "once per hour",
+				"entries": [
+					"The riding drake breathes a 30-foot cone of fire, dealing {@damage 1d6 + floor((#$prompt_number:min=2,title=Character Level,default=2$#)/2)d6|1d6} fire damage for every 2 levels the drake has to all creatures in the area (basic Reflex save). This uses a trained DC using the drake's Constitution modifier or an expert DC if the drake is specialized."
+				]
+			}
+		},
+		{
+			"name": "Scorpion",
+			"source": "APG",
+			"page": 145,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Scorpion",
+					"entries": [
+						"Your companion is one of the various species of giant scorpion."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "stinger",
+					"damage": "{@dice 1d6} piercing plus poison"
+				},
+				{
+					"range": "Melee",
+					"name": "pincer",
+					"traits": [
+						"agile"
+					],
+					"damage": "{@dice 1d6} slashing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"{@ability darkvision}"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"burrow": null,
+				"swim": null
+			},
+			"special": "The scorpion's stinger attack deals an additional {@damage 1d4} poison damage or {@damage 2d4} poison damage if the scorpion is a specialized companion.",
+			"support": 	"Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your scorpion's reach also deal {@damage 1d6} persistent poison damage. If your scorpion is nimble or savage, the persistent poison damage increases to {@damage 2d6}.",
+			"maneuver": {
+				"name": "Grab and Sting",
+				"source": "APG",
+				"page": 145,
+				"activity": {
+					"number": 2,
+					"unit": "action",
+					"entry": "{@as 2}"
+				},
+				"entries": [
+					"The scorpion holds its foe in place with its pincers in order to sting it. It makes a pincer {@action Strike}. If the {@action Strike} hits, the target creature automatically becomes {@action grab||grabbed} by the scorpion, which then makes a stinger {@action Strike} against it. The {@condition grabbed} condition lasts until the end of your next turn."
+				]
+			}
+		},
+		{
+			"name": "Shark",
+			"source": "APG",
+			"page": 145,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Shark",
+					"entries": [
+						"Your companion is a shark of any kind, such as a hammerhead, great white, or jigsaw shark."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"blood scent",
+					"{@ability scent} (imprecise, 60 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": null,
+				"burrow": null,
+				"swim": 40
+			},
+			"special": "The shark has the aquatic trait. Its blood scent enables it to smell blood in the water from up to 1 mile away.",
+			"support": 	"When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a Strike and deal slashing or piercing damage, the creature takes {@damage 1d8} slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to {@damage 2d8}.",
+			"maneuver": {
+				"name": "Shred",
+				"source": "APG",
+				"page": 145,
+				"requirements": "The shark hit with a jaws {@action Strike} on its most recent action this turn.",
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The shark viciously rips into the wound, dealing additional damage. The target of the shark's {@action Strike} takes {@damage 1d8} slashing damage ({@damage 2d8} for a mature shark or {@damage 3d8} for a specialized companion)."
+				]
+			}
+		},
+		{
+			"name": "Snake",
+			"source": "CRB",
+			"page": 216,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Snake",
+					"entries": [
+						"Your companion is a constrictor snake, such as a boa or python."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Stealth",
+			"senses": {
+				"other": [
+					"low-light vision",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb": 20,
+				"swim": 20
+			},
+			"support": 	"Your snake holds your enemies with its coils, interfering with reactions. Until the start of your next turn, any creature your snake threatens can’t use reactions triggered by your actions unless its level is higher than yours.",
+			"maneuver": {
+				"name": "Constrict",
+				"source": "CRB",
+				"page": 216,
+				"requirements": "The snake has a smaller creature {@condition grabbed}.",
+				"activity": {
+					"number": 1,
+					"unit": "action",
+					"entry": "{@as 1}"
+				},
+				"entries": [
+					"The snake deals 12 bludgeoning damage to the {@condition grabbed} creature; the creature must attempt a basic Fortitude save. If the snake is a specialized animal companion, increase this damage to 20."
+				]
+			}
+		},
+		{
+			"name": "Vulture",
+			"source": "AoA5",
+			"page": 80,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Vulture",
+					"entries": [
+						"Your companion is a vulture, condor, or other large scavenging bird."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 2,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"low-light vision",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"fly": 45,
+				"swim": null
+			},
+			"support": "The vulture retches and vomits onto a foe within 10 feet. Until the start of your next turn, if you hit and deal damage to the target, the target must succeed at a Fortitude save or become {@condition sickened} 1 ({@condition sickened} 2 on a critical failure). The DC of the Fortitude save is 12 (or 14, if the vulture is a specialized animal companion) + your level + the vulture’s Constitution modifier.",
+			"special": 	"Your vulture gains a +1 status bonus to all saves against disease, and if it rolls a success on a save against a disease, the result is a critical success instead.",
+			"maneuver": {
+				"name": "Feast on the Fallen",
+				"source": "AoA5",
+				"page": 80,
+				"frequency": "once per hour",
+				"activity": {
+					"number": 1,
+					"unit": "reaction",
+					"entry": "{@as R}"
+				},
+				"trigger": "A creature adjacent to the vulture is reduced to 0 Hit Points",
+				"entries": [
+					"The vulture consumes a piece of the defeated foe, regaining 18 Hit Points. If the vulture is a specialized animal companion, increase the Hit Points regained to 30."
+				]
+			}
+		},
+		{
+			"name": "Wolf",
+			"source": "CRB",
+			"page": 216,
+			"type": "Companion",
+			"fluff": [
+				{
+					"type": "pf2-h3",
+					"name": "Wolf",
+					"entries": [
+						"Your companion is a wolf or other canine creature, such as a dog."
+					]
+				}
+			],
+			"size": "Small",
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"traits": [
+						"finesse"
+					],
+					"damage": "{@dice 1d8} piercing"
+				}
+			],
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"hp": 6,
+			"skill": "Survival",
+			"senses": {
+				"other": [
+					"low-light vision",
+					"{@ability scent} (imprecise, 30 feet)"
+				]
+			},
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"fly": null,
+				"swim": null
+			},
+			"support": "Your wolf tears tendons with each opening. Until the start of your next turn, your {@action Strike||Strikes} that damage creatures your wolf threatens give the target a –5-foot status penalty to its Speeds for 1 minute (–10 on a critical success).",
+			"maneuver": {
+				"name": "Knockdown",
+				"source": "CRB",
+				"page": 216,
+				"activity": {
+					"number": 1,
+					"unit": "reaction",
+					"entry": "{@as R}"
+				},
+				"requirements": "The animal companion’s last action was a successful jaws {@action Strike}.",
+				"entries": [
+					"The wolf automatically knocks the target of its jaws {@action Strike} {@condition prone}."
 				]
 			}
 		}
