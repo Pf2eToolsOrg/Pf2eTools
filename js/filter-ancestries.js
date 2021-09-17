@@ -62,9 +62,9 @@ class PageFilterAncestries extends PageFilter {
 		ancestry._fSources = SourceFilter.getCompleteFilterSources(ancestry);
 		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20);
 		ancestry._fMisc = [];
-		if (ancestry.feature) {
-			if (ancestry.feature.name === "Low-Light Vision") ancestry._fMisc.push("Has Low-Light Vision")
-			if (ancestry.feature.name === "Darkvision") ancestry._fMisc.push("Has Darkvision")
+		if (ancestry.features) {
+			if (ancestry.features.filter(e => e.name === "Low-Light Vision").length > 0) ancestry._fMisc.push("Has Low-Light Vision")
+			if (ancestry.features.filter(e => e.name === "Darkvision").length > 0) ancestry._fMisc.push("Has Darkvision")
 		}
 		ancestry._fspeedtypes = []
 		ancestry._fspeed = 0
