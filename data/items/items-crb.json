@@ -8477,16 +8477,21 @@
 			"generic": false
 		},
 		{
-			"name": "Grevious",
+			"name": "Grievous",
 			"source": "CRB",
 			"page": 584,
 			"type": "Rune",
-			"level": "9",
+			"level": 9,
 			"traits": [
-				"Magical",
-				"Enchantment"
+				"Enchantment",
+				"Magical"
 			],
-			"usage": "etched onto a melee weapon",
+			"price": {
+				"coin": "gp",
+				"amount": 700,
+				"note": null
+			},
+			"usage": "etched onto a weapon",
 			"category": "Rune",
 			"appliesTo": "Weapon",
 			"entries": [
@@ -8511,45 +8516,7 @@
 						"{@b Sword} The target is {@condition flat-footed} until the end of your next turn."
 					]
 				}
-			],
-			"generic": "G"
-		},
-		{
-			"name": "Grievous",
-			"source": "CRB",
-			"page": 584,
-			"type": "Rune",
-			"level": 9,
-			"traits": [
-				"Enchantment",
-				"Magical"
-			],
-			"price": {
-				"coin": "gp",
-				"amount": 700,
-				"note": null
-			},
-			"usage": "etched onto a weapon",
-			"category": "Rune",
-			"appliesTo": "Weapon",
-			"entries": [
-				"When your attack roll with this weapon is a critical hit and gains the critical specialization effect, you gain an additional benefit depending on the weapon group.",
-				"Axe You can damage a third creature, with the same restrictions.",
-				"Bow The {@skill Athletics} check to pull the missile free is DC 20.",
-				"Brawling The target takes a \u20134 circumstance penalty to its save.",
-				"Club You can knock the target up to 15 feet away.",
-				"Dart The base {@condition persistent damage ||persistent bleed damage} increases to {@dice 2d6}.",
-				"Flail You move the target 5 feet. You can't move it away from you, but you can move it in another direction of your choice.",
-				"Hammer You can also knock the target 5 feet away from you.",
-				"Knife The target takes a \u20135-foot status penalty to its Speed while it has the {@condition persistent damage ||persistent bleed damage}.",
-				"Pick The extra damage from the critical specialization effect increases to 4 per weapon damage die.",
-				"Polearm You can move the target up to 10 feet.",
-				"Shield You can knock the target up to 10 feet away.",
-				"Sling The target also takes a \u201310-foot status penalty to its Speed for 1 round if it fails the save.",
-				"Spear The {@condition enfeebled} condition lasts for 2 rounds.",
-				"Sword The target is {@condition flat-footed} until the end of your next turn."
-			],
-			"generic": false
+			]
 		},
 		{
 			"name": "Grim Trophy",
@@ -9207,7 +9174,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You regain HP equal to double the evil creature's level. This is a good, positive, {@trait healing} effect."
+						"You regain HP equal to double the evil creature's level. This is a {@trait good}, {@trait positive}, {@trait healing} effect."
 					]
 				}
 			],
@@ -14664,7 +14631,7 @@
 					"requirements": null,
 					"entries": [
 						"You pluck an eye from the robe and toss it into the air, where it turns {@condition invisible} and floats to a destination you choose, with the same effect as a 5th-level {@spell prying eye} spell.",
-						"You can Sustain the Activation just as you would be able to Sustain the Spell."
+						"You can Sustain the Activation just as you would be able to {@action Sustain a Spell||Sustain the Spell}."
 					]
 				}
 			],
@@ -15188,7 +15155,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Cast a Spell",
+				"components": "{@action Cast a Spell}",
 				"requirements": null,
 				"frequency": null,
 				"trigger": null
@@ -15224,7 +15191,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Cast a Spell",
+				"components": "{@action Cast a Spell}",
 				"requirements": null,
 				"frequency": null,
 				"trigger": null
@@ -16726,7 +16693,7 @@
 					"number": 2,
 					"unit": "action"
 				},
-				"components": "Cast a Spell",
+				"components": "{@action Cast a Spell}",
 				"requirements": null,
 				"frequency": null,
 				"trigger": null
