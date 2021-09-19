@@ -91,7 +91,16 @@
 					10,
 					15,
 					20
-				]
+				],
+				"stylishTricks": {
+					"name": "Stylish Tricks",
+					"entry": "{@filter stylish trick|feats||type=skill;!archetype|level=[0;${level}]|skills=Acrobatics}",
+					"levels": [
+						3,
+						7,
+						15
+					]
+				}
 			},
 			"classFeatures": [
 				"Ancestry and Background|Swashbuckler|APG|1",
@@ -380,7 +389,7 @@
 			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype}. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -464,7 +473,7 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level, 7th level, and 15th level, you gain a {@filter skill feat|feats||type=skill}. This feat must be for {@skill Acrobatics} or the trained skill from your swashbuckler's style."
+				"At 3rd level, 7th level, and 15th level, you gain a {@filter skill feat|feats||type=skill;!archetype}. This feat must be for {@skill Acrobatics} or the trained skill from your swashbuckler's style."
 			]
 		},
 		{

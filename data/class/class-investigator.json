@@ -99,7 +99,22 @@
 					10,
 					15,
 					20
-				]
+				],
+				"skillfullLessons": {
+					"name": "Skillfull Lessons",
+					"entry": "{@filter skillful lesson|feats||type=skill;!archetype|level=[0;${level}]|skills=Arcana;Medicine;Crafting;Deception;Diplomacy;Intimidation;Lore;Nature;Occultism;Performance;Religion;Society;Survival}",
+					"levels": [
+						3,
+						5,
+						7,
+						9,
+						11,
+						13,
+						15,
+						17,
+						19
+					]
+				}
 			},
 			"classFeatures": [
 				"Ancestry and Background|Investigator|APG|1",
@@ -404,7 +419,7 @@
 			"classSource": "APG",
 			"level": 2,
 			"entries": [
-				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill}. You must be trained or better in the corresponding skill to select a skill feat."
+				"At 2nd level and every 2 levels thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype}. You must be trained or better in the corresponding skill to select a skill feat."
 			]
 		},
 		{
@@ -449,7 +464,7 @@
 			"classSource": "APG",
 			"level": 3,
 			"entries": [
-				"At 3rd level and every odd-numbered level thereafter, you gain a {@filter skill feat|feats||type=skill|skills=Arcana;Medicine;Crafting;Deception;Diplomacy;Intimidation;Lore;Nature;Occultism;Performance;Religion;Society;Survival}. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
+				"At 3rd level and every odd-numbered level thereafter, you gain a {@filter skill feat|feats||type=skill;!archetype|skills=Arcana;Medicine;Crafting;Deception;Diplomacy;Intimidation;Lore;Nature;Occultism;Performance;Religion;Society;Survival}. This feat must be for an Intelligence-, Wisdom-, or Charisma-based skill, or for the skill you gained from your methodology."
 			]
 		},
 		{
