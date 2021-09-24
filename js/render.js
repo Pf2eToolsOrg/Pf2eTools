@@ -3751,6 +3751,7 @@ Renderer.creature = {
 
 	getDefenses (cr) {
 		let renderStack = [];
+		const renderer = Renderer.get();
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 		const ac = cr.ac
 		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.default}${Renderer.utils.getNotes(ac, {exclude: ["default", "abilities"]})}`)
@@ -3801,7 +3802,7 @@ Renderer.creature = {
 				if (typeof (x) === "string") {
 					rs.push(x)
 				} else {
-					rs.push(`${x.name} ${x.amount}${x.note ? ` ${x.note}` : ``}`)
+					rs.push(`${x.name} ${x.amount}${x.note ? ` ${renderer.render(x.note)}` : ``}`)
 				}
 			}
 			renderStack.push(rs.join(", "))
