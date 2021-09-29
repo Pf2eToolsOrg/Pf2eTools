@@ -23,7 +23,7 @@
 			"entries": [
 				"This waterskin coruscates with holy energy, causing it to slowly fill itself with special blessed water unique to the item. After using any of the activations, the waterskin is empty, but slowly refills itself. It becomes full enough to use again at the next dawn.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -35,12 +35,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You throw the anointed waterskin up to 60 feet. The water explodes out of it, with the effects of holy cascade."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -51,12 +51,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The anointed waterskin is full",
-					"effect": [
+					"entries": [
 						"You drink the water within the waterskin, granting you the effects of bless. As normal with the spell, you can increase the radius with a single action with the {@trait concentrate} trait."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -69,7 +69,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The anointed waterskin is full",
-					"effect": [
+					"entries": [
 						"You decant the water, creating up to 10 vials of holy water. You must provide the vials."
 					]
 				}
@@ -127,7 +127,7 @@
 				"This strange contraption slides over your eyes, supernaturally sharpening your mind. While peering through it, you can feel some entity whispering to you, telling all sorts of things about the subject of your gaze. You gain a +3 item bonus to {@skill Occultism} (though some entities might grant a bonus to a different skill, as determined by your GM). In addition, when you employ an exploration tactic other than Investigating, you also gain the benefits of Investigating unless you choose not to.",
 				"When you invest the spectacles, you either increase your Intelligence score by 2 or increase it to 18, whichever would give you the higher score. This gives you additional trained skills and languages, as normal for increasing your Intelligence score. You must select skills and languages the first time you invest the item, and whenever you invest the same archivist's gaze, you get the same skills and languages you chose the first time.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -139,7 +139,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Pushing the glasses up your nose and asking the entity for help, you cause the spectacles to cast either true seeing or a 3rd-level {@spell comprehend language} on you. Because the entity tied to the spectacles chooses which one, the GM picks whichever spell is most immediately useful in your current situation (and chooses the most useful language each time the item casts comprehend language). The spell lasts for 1 minute."
 					]
 				}
@@ -168,7 +168,7 @@
 			"entries": [
 				"This imperious +1 striking mace has a glowing orb in the shape of an eye set in its flanged head. When you succeed at a check to {@action Recall Knowledge} about a creature after you've dealt it damage with the auspicious scepter, you learn one of its resistances in addition to any other information.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -180,7 +180,7 @@
 					"frequency": null,
 					"trigger": "You Cast a divination",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The next attack by a creature who was targeted by the triggering divination spell bypasses an amount of resistance equal to the spell's level. If the triggering spell targeted an enemy, this benefit instead applies to the next attack against that enemy, regardless of who makes it.",
 						"This benefit is lost if it isn't used by the end of your next turn. If more than one type of resistance would apply against the attack, the attack bypasses only one\u2014whichever would result in the highest amount of damage getting through, as determined by the GM."
 					]
@@ -256,7 +256,7 @@
 			"entries": [
 				"This grimoire fancifully illustrates the spells you inscribe within it with illuminated drawings of creatures that have never existed, the pictures changing to depict new ones from time to time.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -268,7 +268,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You're under the effect of a polymorph spell you prepared from this grimoire that offers a choice of multiple forms",
-					"effect": [
+					"entries": [
 						"You transform into a different form allowed by the polymorph by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
 					]
 				}
@@ -348,7 +348,7 @@
 			"entries": [
 				"This +2 greater striking shifting short{@group sword} is formed of rapidly vibrating air and magical energy, though it uses the same statistics as iron. The wooden hilt is adorned with four gems, representing the energies of acid, cold, fire, and electricity, that sparkle in sequence at random intervals.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -359,13 +359,13 @@
 					"frequency": "once per round",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You draw magical energy from one of the gems. Roll {@dice 1d4}.",
 						"Until the start of your next turn, the weapon gains the corresponding rune: 1\u2014corrosive, 2\u2014flaming, 3\u2014frost, or 4\u2014shock."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -377,7 +377,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "The blade has an energy rune from the first activation",
-					"effect": [
+					"entries": [
 						"You call upon the energy stored in the blade to explode outward. The blade of four energies casts a 5th-level spell that depends on the active rune: acid arrow for corrosive, fireball for flaming, cone of cold for frost, or lightning bolt for shock."
 					]
 				}
@@ -430,7 +430,7 @@
 			"entries": [
 				"The common saying, \"Where there is progress in the field of magic, there is always someone who uses it to set things on fire,\" is engraved in gold on the cover of this red spellbook.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -441,7 +441,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next action is to cast an evocation spell dealing fire damage that you prepared from this grimoire, you superheat the flames, allowing the spell to ignore up to 10 resistance to fire of creatures affected by the spell."
 					]
 				}
@@ -466,7 +466,7 @@
 				"This rune causes a weapon to transform into pure, brilliant energy. The weapon deals an additional {@damage 1d4} fire damage on a successful {@action Strike}, as well as {@damage 1d4} good damage to fiends and {@damage 1d4} positive damage to undead.",
 				"On a critical hit, the target must succeed at a DC 29 Fortitude save or be {@condition blinded} for 1 round.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -477,7 +477,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You plunge your weapon into darkness to return the light. Attempt a counteract check with a counteract level of 5 and a +19 counteract modifier to end a magical {@trait darkness} effect whose area is within reach of the weapon."
 					]
 				}
@@ -530,7 +530,7 @@
 			"entries": [
 				"This well-crafted wooden {@group shield} (Hardness 5, HP 30, BT 15) is covered in numerous seed pods with long spurs. You can {@action Strike} with these burrs as though they were +1 striking {@group shield} spikes.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -541,7 +541,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "Your previous action was a successful {@action Strike} with the burrs",
-					"effect": [
+					"entries": [
 						"One of the burrs catches on the {@action Strike}'s target, inflicting {@damage 1d10} {@condition persistent damage ||persistent bleed damage}."
 					]
 				}
@@ -565,7 +565,7 @@
 			"entries": [
 				"With an aerodynamic cutting edge and a curved handle, this +2 striking battle {@group axe} is perfectly suited to whirling motions, and in fact seems like it wants to whirl free from your grip. A {@action Strike} with this {@group axe} that benefits from the {@trait sweep} trait's circumstance bonus on attack rolls also gains a +2 circumstance bonus to the damage roll.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -577,7 +577,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hurl the {@group axe}, which spins at great speed as it flies to a distant point and returns to you, leaving a trail of carnage. Each creature in a 120-foot line must succeed at a DC 28 basic Reflex save or take damage equal to the weapon's melee damage, including your Strength modifier."
 					]
 				}
@@ -638,7 +638,7 @@
 				"In an effort to spread the knowledge of magic as widely as possible, worshippers of {@deity Nethys} discovered a way to bind cantrips into cards accessible even to non-spellcasters.",
 				"The deck contains thick parchment cards, each roughly half the size of a playing card. In precise, no-nonsense script, each card simply states the name of its cantrip, color-coded based on its school.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -650,7 +650,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You envision your desired cantrip, causing its card to rise to the top of the deck, and draw the card. The deck casts that cantrip as a 1st-level spell, with a DC of 15 and a spell attack modifier of +5. The card crumbles into dust as the cantrip takes effect. The activation takes the same number of actions as the cantrip you chose takes to cast."
 					]
 				}
@@ -752,7 +752,7 @@
 			"entries": [
 				"This finely crafted, seemingly mundane parchment is useful for writing sensitive documents. When words are written on this parchment, they instantly scramble into unrecognizable script, requiring a DC 20 check to {@action Decipher Writing}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -763,12 +763,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The scrambled words align into the originally written script. Identifying the parchment reveals that it can be activated with a command, but a critical success to {@action Identify Magic} is needed to learn the command word."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -779,7 +779,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You light the parchment on fire, burning the words off while leaving the parchment unharmed and ready to bear more text."
 					]
 				}
@@ -839,7 +839,7 @@
 			"entries": [
 				"A female figure peers through her blindfold from the cover of this stately tome.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -850,7 +850,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "Your last action was to cast a divination spell prepared from this grimoire",
-					"effect": [
+					"entries": [
 						"The grimoire offers you a glimpse into the truth of things. {@action Seek} or {@action Recall Knowledge}."
 					]
 				}
@@ -906,7 +906,7 @@
 				"When you invest this collar for your eidolon, it changes its appearance to match the eidolon's form, possibly into a different sort of neckpiece such as a choker, and it glows brightly with the symbol you and your eidolon share.",
 				"While your eidolon wears a collar of the eternal bond, the collar bolsters their connection to you, allowing them to move up to 150 feet from you before unmanifesting instead of 100 feet. The eidolon can also Activate the collar to move even further.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -917,7 +917,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Your eidolon focuses their will on the collar, allowing the collar to maintain the connection between you at any distance. For the next 5 minutes, you and your eidolon can move any distance from each other without your eidolon unmanifesting. When the duration ends, if your eidolon is more than 150 feet from you, they immediately unmanifest."
 					]
 				}
@@ -946,7 +946,7 @@
 			"entries": [
 				"A ring of magical crystals encircles the base of this +1 striking great{@group club}, allowing it to absorb and store magical energy.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -957,12 +957,12 @@
 					"frequency": null,
 					"trigger": "You {@action Cast a Spell} from a spell slot, and the spell has the acid, cold, electricity, {@trait fire}, or {@trait sonic} trait",
 					"requirements": "The {@group club} has no charges",
-					"effect": [
+					"entries": [
 						"You mentally align the {@group club}'s crystals to reverberate with energy from the spell. It gains a number of charges equal to the level of the spell slot, and the charges are attuned to the damage type matching the spell's trait. If the spell has more than one eligible trait, choose one when the charges are stored."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -975,7 +975,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The {@group club} has at least 1 charge",
-					"effect": [
+					"entries": [
 						"You flip the {@group club} around to blast a cone of energy from its base. Each creature in a 15-foot cone takes {@dice 1d6} damage per charge stored in the {@group club}, with a basic Reflex save against your spell DC or DC 19, whichever is greater. The damage type is the same type the charges were attuned to. The {@group club} loses all of its charges."
 					]
 				}
@@ -1051,7 +1051,7 @@
 			"entries": [
 				"This set of 34 parchment cards usually comes in a velvet bag or simple {@group leather} wrap. Each card depicts a different creature, monster, or other being that, when the deck is activated, immediately appears as a believable, life-size illusion. You can look at the card's artwork, but no {@trait magical} effect takes place until you Activate the deck, shuffling and drawing randomly.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1063,7 +1063,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You draw a card, chosen randomly from the remaining cards in the deck, and throw it to the ground to create an illusion of the creature depicted. The image is an illusory creature, except it has a range of only 30 feet from where the card was thrown and the illusion lasts until destroyed or until anyone moves or damages the card. The creature takes its actions once on your turn if you're within 60 feet of the card and Sustain the Activation. The illusion ends if you don't Sustain it, or if you activate a new card from the deck."
 					]
 				}
@@ -1472,7 +1472,7 @@
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -1484,7 +1484,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell gale blast|SoM} (page 108)."
 					]
 				}
@@ -1556,7 +1556,7 @@
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -1568,7 +1568,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell produce flame}."
 					]
 				}
@@ -1636,7 +1636,7 @@
 			"entries": [
 				"This is a metal drinking flask, 4 inches in diameter and 10 inches tall. Its screw top is covered by four simple metal cups that nest together.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -1648,7 +1648,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If you share drinks from a flask of fellowship as part of your {@action Make an Impression} action, the drink that pours from the flask happens to be exactly what the target of your efforts would most like to have a dram or two of\u2014wine, spirits, hot ginger tea, or ice cold water with lemon, for example. You gain a +1 item bonus on your {@skill Diplomacy} check.",
 						"The GM can disallow the flask's use if it doesn't make sense in the moment for you to pull out a flask and start pouring, if drinks are inappropriate for the occasion, or if your target is absolutely not interested in sharing a drink with you. Drinks from the flask of fellowship are entirely social; they won't intoxicate anyone, nor alleviate serious thirst."
 					]
@@ -1707,7 +1707,7 @@
 			"entries": [
 				"Burnt fulu ashes float in this liquid, lending a distinctive red color and imparting it with a variety of purifying effects. Unlike many fulu items, fu water must be created using divine magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1718,12 +1718,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"This potion functions as a bottle of holy water. Like holy water, you throw it as a {@action Strike}. It's a simple thrown weapon with a range increment of 20 feet. Unlike an alchemical {@group bomb}, it doesn't add the {@trait manipulate} trait to the attack made with it."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1734,7 +1734,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You drink the fu water to counteract ailments within yourself. Attempt a counteract check with a +9 counteract modifier and a counteract level of 3 against one effect that imposes the {@condition confused}, {@condition fascinated}, {@condition frightened}, or {@condition stupefied} condition. You are then {@condition sickened 1}."
 					]
 				}
@@ -1763,7 +1763,7 @@
 				"This pamphlet-sized book records the various symbols seen on fulu and also contains some ready-made magic on a special page that restores itself every day at sunrise.",
 				"Using the compendium as a reference grants a +2 item bonus to any skill checks to determine a fulu's function or authenticity.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1774,7 +1774,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You rip a page from the fulu compendium and cast it in a wide arc; as it flies in that arc, it multiplies into a storm of fulus. All undead creatures in a 30-foot emanation are affected by a spirit-sealing fulu with a save DC of 25."
 					]
 				}
@@ -2035,7 +2035,7 @@
 			"entries": [
 				"These wire-rim glasses with large, circular lenses were invented for the sole purpose of avoiding awkward confrontations at social gatherings. They grant you a +1 item bonus to {@skill Diplomacy}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2046,7 +2046,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You stare at another creature and instantly remember their name if you've met and exchanged names. The glasses rely on your latent memories, so if the creature is disguising their identity, the glasses don't penetrate the disguise.",
 						"If a doppelganger was disguised as an innkeeper you met, the glasses would give you the innkeeper's name, and if a noble you met before was in disguise as a masked vigilante, the glasses wouldn't reveal their name."
 					]
@@ -2077,7 +2077,7 @@
 			"entries": [
 				"The blade of this +2 striking returning dagger shines the color of twilight, with a triangular lattice design on the hilt. A thin string of darkness connects your shadow to that of the blade, even once it leaves your hand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2089,7 +2089,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You make a thrown {@action Strike} with the gloaming shard at a target within 60 feet. Whether you hit or miss, rather than returning to you, the blade pulls you down into your own shadow and along the connecting thread.",
 						"You instantly teleport to a space adjacent to the target of your {@action Strike}, as dimension door, and then catch the dagger in your hand."
 					]
@@ -2166,7 +2166,7 @@
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -2178,7 +2178,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell chill touch}."
 					]
 				}
@@ -2247,7 +2247,7 @@
 			"entries": [
 				"This +1 striking returning star{@group knife} is made of dark blue metal overlaid with smoky flecks of fused quartz. When you Cast an evocation Spell, your next attack this turn with this star{@group knife} reduces the target's cover, changing greater cover to standard cover or ignoring standard and lesser cover.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -2258,7 +2258,7 @@
 					"frequency": "once per 10 minutes",
 					"trigger": "You successfully {@action Strike} a creature with a thrown {@action Strike} with guiding star",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Soft light outlines the target. At the beginning of your next turn, the guiding star's blades detach and form into darts of starlight, flying up to 40 feet and striking the target unerringly, collectively dealing 4 piercing damage and 1 good damage before re-forming. The piercing damage increases to 6 with a greater striking rune and 8 with a major striking rune."
 					]
 				}
@@ -2287,7 +2287,7 @@
 			"entries": [
 				"This pointy, brimmed hat made up of a rain{@group bow} patchwork of various materials seems to sit just a little lopsided on your head, no matter how you adjust it. You gain a +2 item bonus to checks to {@action Earn Income}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -2299,7 +2299,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You tear off a patch of {@group cloth} to manifest it into a copy of yourself, dressed in the color and fabric of the patch. The copy follows your specific instructions and performs a single, straightforward task for up to 30 minutes. It takes the copy three times as long to complete the task as it would you, meaning it can perform a task that would take you a maximum of 10 minutes. It doesn't react quickly enough to be of any use during an encounter, and it can't use your spells or other special abilities\u2014just basic actions and skill actions.",
 						"The copy disappears and returns to the hat as a piece of {@group cloth} when the given task has been completed, or when you {@action Dismiss} the activation."
 					]
@@ -2388,7 +2388,7 @@
 			"entries": [
 				"The handles of this +1 striking scythe are made from a dull, gray wood of bone-like consistency, and when you slice with it, a fluttering gust of hundreds of moths' wingbeats fills the air. If you're a devotee of {@deity Urgathoa}, you can use this scythe as a divine focus, and with every {@action Strike}, it exudes a pallid cloud of powdery dust.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -2401,7 +2401,7 @@
 					"frequency": "once per round",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You deal {@damage 1d10} negative damage to yourself. If your next action is to {@action Strike} with the scythe or to {@action Cast a Spell} with the {@trait disease} or {@trait negative} trait, that {@action Strike} or spell deals additional negative damage equal to the damage you took (after any reductions or increases from immunity, resistances, weaknesses)."
 					]
 				}
@@ -2474,7 +2474,7 @@
 			"entries": [
 				"This worn and stained manual emits a chill when opened.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2485,7 +2485,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next action is to cast a harmful necromancy spell that you prepared from this grimoire and that allows a saving throw, you warp and twist negative energy into the spell to cause intense pain. If the target fails its saving throw against the spell, it becomes {@condition sickened 1} by the pain."
 					]
 				}
@@ -2514,7 +2514,7 @@
 				"This +2 resilient invisibility {@group chain} shirt is itself {@condition invisible}. Other creatures can't see it at all, allowing you to wear it surreptitiously. Additionally, the armor's {@condition invisible} composition is quieter and more comfortable than a normal {@group chain} shirt.",
 				"It loses the {@trait noisy} trait and gains the {@trait comfort} trait.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2525,7 +2525,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You {@action Stride} and turn partially {@condition invisible}, becoming {@condition concealed} until the end of your next turn or until you use a {@condition hostile} action, whichever comes first. As normal, you can use the concealment from this activation to {@action Hide}."
 					]
 				}
@@ -2556,7 +2556,7 @@
 				"This small, ceramic jar is full, holding approximately a quarter gallon of sand.",
 				"When poured out, the jar immediately begins to conjure more sand. It is said, however improbably, that this jar is responsible for creating at least one desert in the world.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2568,12 +2568,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause sand to pour out of the jar at a rate of 1 gallon per round. This doesn't end until the cap is placed back on the jar."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2585,7 +2585,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You quickly pour sand over an adjacent square, making it difficult terrain. You can't use either of the jar's activations for 1 minute."
 					]
 				}
@@ -2643,7 +2643,7 @@
 			"entries": [
 				"Moss and winding vines give this gnarled staff of wild wood a vibrant green tinge. You created this staff to aid you in speaking to the plants you met on your adventure and beseeching them to come to your aid.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -2655,7 +2655,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						{
 							"type": "list",
@@ -2764,7 +2764,7 @@
 				"When you place it against your face, it melds to the shape of your head. The material is breathable and light, and does not obscure vision. You gain a +2 item bonus to {@skill Deception}, {@skill Diplomacy}, {@skill Intimidation}, and {@skill Performance} checks while wearing the mask.",
 				"When you invest the mask, you either increase your Charisma score by 2 or increase it to 18, whichever would give you a higher score.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -2775,7 +2775,7 @@
 					"frequency": null,
 					"trigger": "You attempt a",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain a +4 status bonus to the triggering check. This ability has no effect if you're under the effects of a disguise that hides the mask of allure. Depending on the skill used, the mirrored silver transforms into one of the following appearances.",
 						{
 							"type": "list",
@@ -2854,7 +2854,7 @@
 				"This deep red cloak fits lightly about your shoulders, and the edges perpetually twitch slightly, as though caught in a breeze. The {@group cloth} feels smoother than silk, rippling and swaying like liquid when in motion. You feel a lively energy infusing your arms and legs. You gain a +3 item bonus to {@skill Acrobatics} and {@skill Stealth}, and a +2 circumstance bonus to AC against attacks from reactions triggered by your movement.",
 				"When you invest the cloak, you either increase your Dexterity score by 2 or increase it to 18, whichever would give you a higher score.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -2865,7 +2865,7 @@
 					"frequency": "once per hour",
 					"trigger": "An enemy misses you with a melee {@action Strike}",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You slip around the attacking creature with ease. You {@action Step}, without moving away from the triggering enemy, and then make a melee {@action Strike} against the triggering enemy if it's within reach. If you do make a {@action Strike}, the target attempts a DC 38 {@skill Perception} check before you roll.",
 						{
 							"type": "successDegree",
@@ -2903,7 +2903,7 @@
 			"entries": [
 				"This +1 striking frost katana is always cool to the touch, nearly uncomfortably so. Unadorned and with no tsuba, its honed blade is carved from a single tusk of dragon-turtle ivory and wrapped in strips of winter wolf hide. Strikes with the katana gain a +2 status bonus to damage rolls against creatures that have a status penalty to their Speed or are {@condition slowed}. The status bonus increases to +3 if the weapon has a greater striking rune and +4 for major striking.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -2916,7 +2916,7 @@
 					"frequency": "once per 1 minute",
 					"trigger": "Your spell deals cold damage to a creature",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Choose one creature dealt cold damage by the spell. It takes a \u20135-foot status penalty to its Speeds for 1 round."
 					]
 				}
@@ -3025,7 +3025,7 @@
 				"You can easily expand and contract the {@group chain} of this +2 greater striking extending (page 184) war {@group flail}.",
 				"It magically grows new links when extended and loses them when contracted.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -3036,12 +3036,12 @@
 					"frequency": null,
 					"trigger": "You successfully {@action Strike} with the {@group flail} while activating its extending rune",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The head of the {@group flail} wraps around the target of the triggering {@action Strike} and drags it in your direction. The target must succeed at a DC 31 Fortitude save or be pulled adjacent to you. A creature pulled in is then {@condition grabbed} by the {@group flail} until the end of your next turn unless you move, your target Escapes (DC 31), or you use the {@group flail}."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -3052,7 +3052,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You extend the {@group flail}'s {@group chain}, then wrap it across itself and strike two links together.",
 						"This severs a usable 60-foot loop of {@group chain} from the {@group flail}, which instantly returns to its normal length. If you use this activation again, any previous {@group chain} you created with it disappears after 1 round. As with most obviously magical and temporary constructs, the {@group chain} cannot be sold."
 					]
@@ -3121,7 +3121,7 @@
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3133,7 +3133,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell spout|SoM} (page 130)."
 					]
 				}
@@ -3450,7 +3450,7 @@
 				"Keep track of how much damage the armor prevents from enemy attacks, as the armor absorbs that damage.",
 				"After 1 minute, the absorbed damage disperses harmlessly and resets to 0. Only damage caused by foes or hazards powers the armor, not damage you take from yourself, allies, or the environment.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3461,7 +3461,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "Your armor has absorbed at least 30 damage",
-					"effect": [
+					"entries": [
 						"The absorbed energy explodes from your armor in a pulse of force. Creatures in a 30-foot emanation take {@damage 10d6} force damage with a DC 43 basic Fortitude save. On a failure, they're pushed 10 feet away from you, and on a critical failure, they're pushed 20 feet away from you and fall {@condition prone}. The armor's absorbed damage resets to 0."
 					]
 				}
@@ -3672,7 +3672,7 @@
 			"entries": [
 				"Each specialist's ring is dedicated to a single school of magic, and the ring is covered in symbols and glyphs related to that school according to the creator's arcane studies. A specialist's ring has the trait corresponding to its school of magic. You gain a +2 item bonus to {@skill Arcana} checks, and a +1 circumstance bonus to recognize {@trait magical} effects and items of the specific school of magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -3683,7 +3683,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain 1 Focus Point, which you can use only to cast a wizard school spell of the corresponding school. If not used by the end of your turn, this Focus Point is lost."
 					]
 				}
@@ -3716,7 +3716,7 @@
 				"While wearing the lash, you gain a +3 item bonus to {@skill Religion}.",
 				"When you invest the belt, you either increase your Wisdom score by 2 or to 18, whichever would give you a higher score.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3728,7 +3728,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You touch one of the jewels affixed to the sage's lash and speak a command word. Depending on the jewel, a different effect is produced that affects you and all living creatures in a 30-foot emanation. After the effect occurs, all four jewels disappear from the lash, reappearing at the next dawn.",
 						{
 							"type": "list",
@@ -3767,7 +3767,7 @@
 			"entries": [
 				"This obsidian ring allows you to partially warp your spells through the Shadow Plane, allowing them to strike directly at a target's body.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -3778,7 +3778,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next action is to {@action Cast a Spell} that requires a spell attack roll against Armor Class, choose Fortitude DC or Reflex DC.",
 						"You make your spell attack roll against that defense instead of AC. If the spell has multiple targets, the choice of DC applies to all of them."
 					]
@@ -3856,7 +3856,7 @@
 			"entries": [
 				"Rather than a normal bowstring, this +2 greater striking thundering {@group composite} short{@group bow} has a string made of animal gut, much like a musical instrument's. When you shoot the {@group bow}, it releases a soft musical note\u2014sonorous if your aim is true and discordant if your shot goes off-target.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3868,7 +3868,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You sing, hum, or whistle a note, and your {@group bow} provides appropriate accompaniment. Make a {@action Strike} with the {@group bow}. If it hits, the {@group bow} generates a {@trait magical} effect determined by the note you sung, which has the traits indicated in parentheses. This affects every creature in a 10-foot emanation from the creature you hit. As normal for an emanation, you choose whether the creature you hit is affected.",
 						{
 							"type": "list",
@@ -3924,7 +3924,7 @@
 			"entries": [
 				"This +1 striking thundering light mace has twin tips, perfectly spaced to resonate when striking foes.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3936,7 +3936,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You tap the tuning mace against a nearby surface to cast 4th-level {@spell sound burst} with a DC of 25."
 					]
 				}
@@ -4017,7 +4017,7 @@
 			"entries": [
 				"This +1 striking flaming scimitar is always warm to the touch, nearly unbearably so. Lines of crackling flame radiate from carnelians affixed to its curved and blackened blade, and its pommel ends in a brilliant tassel of phoenix feathers. While you have a status bonus to at least one of your Speeds, your Strikes with this scimitar that deal fire damage gain a +2 status bonus to their fire damage. The status bonus increases to +3 if the weapon has a greater striking rune and +4 for major striking.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4029,7 +4029,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain a +10-foot status bonus to your Speed until the end of your next turn."
 					]
 				}
@@ -4058,7 +4058,7 @@
 			"entries": [
 				"When opening the book, whispers can be heard on the wind, or laughter rings in the distance.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -4069,7 +4069,7 @@
 					"frequency": "once per day",
 					"trigger": "You cast an enchantment spell prepared from this grimoire that has no effect because all targets critically succeeded on their saving throws",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You quickly divert the failed enchantment energy into yourself to retain your favored spell in place of another. You lose another spell you prepared of an equal or higher level to the triggering enchantment spell but retain the ability to cast the enchantment spell again."
 					]
 				}
@@ -4143,7 +4143,7 @@
 			"entries": [
 				"Moss and winding vines give this gnarled staff of wild wood a vibrant green tinge. You created this staff to aid you in speaking to the plants you met on your adventure and beseeching them to come to your aid.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4155,7 +4155,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
 				}
@@ -4238,7 +4238,7 @@
 			"entries": [
 				"This crooked staff is made from twisting acacia wood and has a sphere of rough sandstone embedded in the top, to channel the magic of the desert. When wielding this staff in deserts, you gain a +1 circumstance bonus to {@skill Survival} checks to {@action Subsist}, {@action Track}, and {@action Cover Tracks}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4250,7 +4250,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from the staff's list."
 					]
 				}
@@ -4353,7 +4353,7 @@
 			"entries": [
 				"This magically reinforced wooden {@group shield} (Hardness 6, HP 36, BT 18 ) normally has a blank face. It can absorb a staff and transform between a {@group shield} and staff. When you prepare a staff, you can hold it up to the {@group shield}, at which point the items will merge, and the {@group shield}'s face becomes an image corresponding to the type of magic, such as a skull for a staff of necromancy.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4364,7 +4364,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You change the staff-storing {@group shield} from its {@group shield} form into the stored staff, which has an image of the {@group shield} on it, or change it from the stored staff back into a {@group shield}."
 					]
 				}
@@ -4453,7 +4453,7 @@
 			"entries": [
 				"When you invest this medallion for your eidolon, it changes shape to appear as a tiny bejeweled facsimile of the eidolon, magically attached just over your eidolon's heart. While your eidolon wears the medallion, they gain a +2 item bonus to {@skill Athletics} checks to {@action Shove} or {@action Trip}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4464,7 +4464,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Parchment scrap recovered from the embers of Salford's School of Conjury... furthermore any student caught practicing conjuration magic outside of class time will be subject to discipline. Professor Rouwan has since caught and released all of the weasels from within their office, but the accursed bag itself has yet to be located..",
 						"Your eidolon Concentrates on the medallion and their connection to you, allowing them to momentarily manifest into a stampede of dozens of copies of themself. The stampede rampages out in every direction, swerving around your allies while trampling any foe on the ground in an emanation around your eidolon with a radius equal to your eidolon's Speed.",
 						"Each of these foes takes {@damage 8d6} bludgeoning damage, with a DC 29 basic Reflex save. On a critical failure, the foe is also knocked {@condition prone}. After dealing damage, the stampede of eidolons vanishes as quickly as it appeared."
@@ -4608,7 +4608,7 @@
 				"This green spellbook with gold trim contains a cautionary story about a boy who was eaten by a wolf after he previously lied about wolf attacks.",
 				"When opened, the engravings on the front seem to move in a loop, enacting this story.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -4619,7 +4619,7 @@
 					"frequency": "once per day",
 					"trigger": "A creature succeeds, but doesn't critically succeed, at a {@skill Perception} check to disbelieve an illusion spell you prepared from this grimoire",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You quickly tell a fib to try to smooth over the inconsistencies in your illusion. Attempt a {@skill Deception} check against the triggering creature's {@skill Perception} DC. If you succeed, the creature doesn't disbelieve the illusion."
 					]
 				}
@@ -4648,7 +4648,7 @@
 			"entries": [
 				"Classic summoning circles are engraved into the batons of this massive papyrus scroll.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -4659,7 +4659,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next action is to cast a conjuration spell prepared from this spellbook that summons one or more creatures, you infuse one of the summoned creatures with the spell's energies, causing it to arrive with 10 temporary Hit Points that last for up to 1 minute."
 					]
 				}
@@ -4691,7 +4691,7 @@
 				"This collection of lacquered rice paper scrolls mounted on flexible bamboo contains a wealth of calligraphic essays and paintings on the art of war, specifically focused on the use of various weapons in warfare and how to tactically deploy warriors using those weapons to the best possible advantage. Consulting the thesis grants a +2 item bonus to {@skill Lore||Warfare Lore} checks. Like most scholarly compendiums, this usage requires holding the thesis in one hand.",
 				"The thesis also serves as an extradimensional armory for weapons and ammunition. The thesis has a capacity of 5 Bulk, and only weapons and ammunition can be stored within it. You and others can {@action Interact} with the thesis to store or retrieve a weapon or piece of ammunition in it, like a mundane container.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4702,7 +4702,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The thousand-blade thesis dramatically unfurls, and the weapons contained within it spring forth and array themselves impressively in the air, floating within easy reach. For 1 minute, you can use a free action to {@action Interact} to draw one of the floating weapons. Others can attempt to nab them out of the air, but to do so they must critically succeed at a {@action Disarm} check. You can't place weapons back into the thesis until the minute elapses."
 					]
 				}
@@ -4804,7 +4804,7 @@
 				"These bronze gauntlets each have a small red gem embedded in the wrist. You gain a +3 item bonus to {@skill Athletics} checks and a +1 circumstance bonus to {@skill Athletics} checks to {@action Grapple}. If you successfully {@action Grapple} an enemy that's at least one size category larger than you, the gauntlets dig into it, dealing bludgeoning damage equal to your Strength modifier, plus an additional {@dice 2d6} on a critical success.",
 				"When you invest the gloves, you either increase your Strength score by 2 or increase it to 18, whichever would give you a higher score.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4815,7 +4815,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "You have two hands free",
-					"effect": [
+					"entries": [
 						"You clap the gauntlets together with a thunderous crack that deals {@damage 6d10} sonic damage in a 30-foot emanation. Each creature in the area must attempt a DC 35 Fortitude save.",
 						{
 							"type": "successDegree",
@@ -4928,7 +4928,7 @@
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4940,7 +4940,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell scatter scree|SoM} (page."
 					]
 				}
@@ -5109,7 +5109,7 @@
 			"entries": [
 				"This grimoire takes the form of a series of baked clay tablets. Any text inked upon it turns swiftly into carved depressions.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5120,7 +5120,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next action is to cast a beneficial abjuration spell on yourself or a single ally, you use the tablets' power to infuse the warding with additional abjurations and attempt to remove a harmful effect.",
 						"Your spell attempts to counteract a harmful spell effect of your choice on the target. This isn't without risks, however. If your attempt fails to remove the harmful effect, the warding energy is consumed by the unyielding malediction, and you lose the abjuration spell's normal effects."
 					]
@@ -5147,7 +5147,7 @@
 			"entries": [
 				"Many cultures of Golarion have a tattoo to turn away harm; as such, warding tattoos often resemble whichever dangers are most common to the culture, such as a wild beast or a whirlpool in the high seas of the Shackles.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -5158,7 +5158,7 @@
 					"frequency": "once per day",
 					"trigger": "An enemy, hazard, or the environment makes an attack against your AC, requires you to attempt a saving throw, or causes you to take damage automatically",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Until the end of the current turn, against the triggering effect, you gain a +1 status bonus to AC and saving throws and gain resistance 2 to damage."
 					]
 				}

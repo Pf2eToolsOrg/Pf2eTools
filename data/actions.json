@@ -174,6 +174,25 @@
 			]
 		},
 		{
+			"name": "Affix a Fulu",
+			"source": "SoM",
+			"page": 158,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You affix a {@filter fulu|items||General=Fulu} to an armor, weapon, shield, creature, or structure that's beside or in the same square as you. A creature can remove a fulu from itself or an unattended object in its reach with a single action."
+			]
+		},
+		{
 			"name": "Affix a Talisman",
 			"source": "CRB",
 			"page": 565,
@@ -2542,17 +2561,17 @@
 			},
 			"requirements": "You have a spellcasting class feature, and the spell you want to learn is on your magical tradition's spell list.",
 			"entries": [
-				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric} with the bard multiclass archetype, you couldn't use {@skill Religion} to add an occult spell to your bardic spell repertoire.",
+				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric} with the {@archetype bard||bard multiclass archetype}, you couldn't use {@skill Religion} to add an occult spell to your bardic spell repertoire.",
 				"To learn the spell, you must do the following:",
 				{
 					"type": "list",
 					"items": [
 						"Spend 1 hour per level of the spell, during which you must remain in conversation with a person who knows the spell or have the magical writing in your possession.",
 						"Have materials with the Price indicated in {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}.",
-						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}). Uncommon or rare spells have higher DCs; full guidelines for the GM appear on page 503."
+						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}). {@trait Uncommon} or {@trait rare} spells have {@table DC Adjustments|CRB|higher DCs}; full guidelines for the GM appear on page 503."
 					]
 				},
-				"If you have a spellbook, Learning a Spell lets you add the spell to your spellbook; if you prepare spells from a list, it's added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
+				"If you have a {@item spellbook}, Learning a Spell lets you add the spell to your {@item spellbook}; if you prepare spells from a list, it's added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
 				{
 					"type": "successDegree",
 					"entries": {
