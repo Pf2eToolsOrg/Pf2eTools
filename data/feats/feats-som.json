@@ -290,7 +290,7 @@
 			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}",
 			"frequency": "once per 10 minutes",
-			"requirements": "Your previous action was to cast a spell with the air, cold, earth, fire, {@trait plant}, or {@trait water} trait.",
+			"requirements": "Your previous action was to cast a spell with the {@trait air}, {@trait cold}, {@trait earth}, {@trait fire}, {@trait plant}, or {@trait water} trait",
 			"entries": [
 				"The magic of your spell floods into you, overriding your connection to the land around you. You alter your terrain attunement to a terrain that matches a trait of the spell you just cast. You thereby gain your terrain attunement benefit when you cast further spells with the same descriptor, instead of using the terrain you're actually in. For instance, if you cast {@spell tanglefoot}, your terrain attunement switches to your choice of forest or swamp, and your terrain attunement applies when you cast another plant spell.",
 				"Your terrain attunement reverts to that of the terrain you're in 1 minute after you use Attunement Shift."
@@ -1736,7 +1736,7 @@
 				"Archetype"
 			],
 			"prerequisites": "{@feat Runelord Dedication|SoM}",
-			"requirements": "Your arcane bonded item is a {@group polearm}.",
+			"requirements": "Your arcane bonded item is a polearm.",
 			"entries": [
 				"During your daily preparations, you can magically fuse your arcane bonded weapon and a magical staff together into one item, with the staff making up the haft of the weapon. You prepare the staff at the same time you do this, and you can do this only with a staff you're able to prepare. This fusion lasts until the next time you make your daily preparations.",
 				"While the two are fused, the weapon's haft takes on aesthetic aspects of the staff."
@@ -1783,25 +1783,24 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "trained in {@skill Nature}; ability to cast spells from spell slots; at least one spell with the air, cold, earth, fire, {@trait plant}, or {@trait water} trait",
+			"prerequisites": "trained in {@skill Nature}; ability to cast spells from spell slots; at least one spell with the {@trait air}, {@trait cold}, {@trait earth}, {@trait fire}, {@trait plant}, or {@trait water} trait",
 			"entries": [
 				"You feel a deep connection to the world no matter where you are, a phenomenon known as \"terrain attunement.\" When you expend a spell slot to cast a spell with a trait that corresponds to the type of terrain you are currently in (as listed below), you gain the terrain attunement effect for that type of terrain. The GM might determine an attunement applies as long as it's prevalent enough around you. For instance, you might be in aquatic terrain on a riverbank or on a boat. Similarly, one place might count as multiple types of terrain, such as a mountain in the far north being both arctic and mountain. In this case, you choose only one terrain attunement effect, even if the spell has traits that would apply to each terrain type.",
 				"Certain terrain attunements affect your enemies instead of you. If they do, when you cast the spell you apply the listed effect to all enemies who are either adjacent to you, in the area of the spell, or targeted by the spell. These enemies receive the listed saving throw against your spell DC to attempt to avoid the effect.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Aquatic} (water) You ride the currents of water. If you're in the water, you gain a swim Speed equal to your land Speed. If you're on a surface, temporary waves of water follow your movements, allowing you to use your swim Speed\u2014if you have one\u2014as your land Speed.",
-						"{@bold Arctic} (cold) Arctic rime covers your foes' bodies. Enemies must attempt a Fortitude save. They take a \u20135-foot status penalty to their Speeds for 2 rounds (\u201310-foot on a critical failure).",
-						"{@bold Desert} (fire) The scorching heat of the desert dehydrates your foes. Enemies must attempt a Fortitude save. On a failure, they're {@condition fatigued} until they drink water or another potable liquid.",
-						"{@bold Forest} (plant) Branches and vines reach out to get in your foes' way. Enemies must attempt a Reflex save. On a failure, they become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
-						"{@bold Mountain} (earth) The rugged endurance of the mountain protects you from harm. You gain resistance to physical damage (except adamantine) equal to the spell level for 1 round.",
-						"{@bold Plains} (plant) The growing fields and pulsing vitality of the plains provide you vigor. You gain temporary Hit Points equal to the spell level for 1 round.",
-						"{@bold Sky} (air) A gust of wind carries you aloft. You can {@action Fly} up to 10 feet. If you're in the air at the end of the turn and don't have a fly Speed, you fall.",
-						"{@bold Swamp} (plant) Your magic draws in noxious swamp gas to fumigate your foes. Affected foes take {@condition persistent damage ||persistent poison damage} equal to half the spell's level (minimum 1 damage) with a basic Fortitude save.",
-						"{@bold Underground} (earth) The endless darkness of the cavern depths opens up its secrets to your senses"
+						"{@bold Aquatic} ({@trait water}) You ride the currents of water. If you're in the water, you gain a swim Speed equal to your land Speed. If you're on a surface, temporary waves of water follow your movements, allowing you to use your swim Speed\u2014if you have one\u2014as your land Speed.",
+						"{@bold Arctic} ({@trait cold}) Arctic rime covers your foes' bodies. Enemies must attempt a Fortitude save. They take a \u20135-foot status penalty to their Speeds for 2 rounds (\u201310-foot on a critical failure).",
+						"{@bold Desert} ({@trait fire}) The scorching heat of the desert dehydrates your foes. Enemies must attempt a Fortitude save. On a failure, they're {@condition fatigued} until they drink water or another potable liquid.",
+						"{@bold Forest} ({@trait plant}) Branches and vines reach out to get in your foes' way. Enemies must attempt a Reflex save. On a failure, they become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
+						"{@bold Mountain} ({@trait earth}) The rugged endurance of the mountain protects you from harm. You gain resistance to physical damage (except adamantine) equal to the spell level for 1 round.",
+						"{@bold Plains} ({@trait plant}) The growing fields and pulsing vitality of the plains provide you vigor. You gain temporary Hit Points equal to the spell level for 1 round.",
+						"{@bold Sky} ({@trait air}) A gust of wind carries you aloft. You can {@action Fly} up to 10 feet. If you're in the air at the end of the turn and don't have a fly Speed, you fall.",
+						"{@bold Swamp} ({@trait plant}) Your magic draws in noxious swamp gas to fumigate your foes. Affected foes take {@condition persistent damage ||persistent poison damage} equal to half the spell's level (minimum 1 damage) with a basic Fortitude save.",
+						"{@bold Underground} ({@trait earth}) The endless darkness of the cavern depths opens up its secrets to your senses. For 1 round, you gain {@ability darkvision} as well as imprecise {@ability tremorsense} out to 15 feet."
 					]
-				},
-				"For 1 round, you gain {@ability darkvision} as well as imprecise tremorsense out to 15 feet."
+				}
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the geomancer archetype.",
 			"leadsTo": [
@@ -2790,7 +2789,7 @@
 			],
 			"prerequisites": "{@feat Geomancer Dedication|SoM}, legendary in {@skill Nature}",
 			"frequency": "once per day",
-			"requirements": "Your previous action was Attunement Shift.",
+			"requirements": "Your previous action was {@feat Attunement Shift|SoM}.",
 			"entries": [
 				"If your next action is to cast a spell that would grant your terrain attunement bonus, reduce the number of actions to cast it by 1 (to a minimum of 1 action)."
 			],
@@ -2990,7 +2989,7 @@
 			"requirements": "You're unarmored.",
 			"entries": [
 				"You enter a stance of fluid grace as small amounts of water flow with your movements and attacks. You can make flowing wave attacks that deal {@damage 1d6} bludgeoning damage.",
-				"They are in the {@group brawling} group and have the agile, disarm, finesse, nonlethal, trip, {@trait unarmed}, and {@trait water} traits.",
+				"They are in the {@group brawling} group and have the {@trait agile}, {@trait disarm}, {@trait finesse}, {@trait nonlethal}, {@trait trip}, {@trait unarmed}, and {@trait water} traits.",
 				"While in Reflective Ripple Stance, you gain a +1 circumstance bonus to {@skill Athletics} checks to {@action Disarm}, {@action Swim}, or {@action Trip}, and you gain a +2 circumstance bonus to your Reflex DC to avoid being Disarmed and Tripped."
 			],
 			"special": "This feat gains your choice of either the {@trait divine} or {@trait occult} trait, matching your ki spell tradition if possible.",
@@ -4246,7 +4245,7 @@
 			"trigger": "A {@action Strike} would damage you.",
 			"requirements": "You gained a terrain attunement benefit since the start of your most recent turn and that attunement matches the terrain you're in.",
 			"entries": [
-				"You're so attuned to the land that it rises up to protect you from a potentially fatal blow in a seeming coincidence. For instance, a branch suddenly falls from a nearby tree to take the brunt of a {@group sword} swing or a surprising change of current disrupts an enemy's attack. You gain resistance to physical damage equal to double your level against the triggering {@action Strike}."
+				"You're so attuned to the land that it rises up to protect you from a potentially fatal blow in a seeming coincidence. For instance, a branch suddenly falls from a nearby tree to take the brunt of a sword swing or a surprising change of current disrupts an enemy's attack. You gain resistance to physical damage equal to double your level against the triggering {@action Strike}."
 			]
 		},
 		{

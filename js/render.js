@@ -863,9 +863,10 @@ function Renderer () {
 		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
 			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
-			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t}}`)).join(", ")}); ` : ""}`;
+			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}`;
 		} else {
-			if (entry.components || entry.traits) textStack[0] += renderer.render(`(${[entry.components || [], (entry.traits || []).map(t => renderer.render(`{@trait ${t}}`))].map(it => it.join(", ")).filter(Boolean).join("; ")}); `);
+			if (entry.components) textStack[0] += renderer.render(`${entry.components.join(", ")} `);
+			if (entry.traits) textStack[0] += renderer.render(`(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `);
 		}
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(entry.frequency)} `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;

@@ -333,7 +333,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|rarity=uncommon} as if they were martial weapons in the {@group bow} weapon group."
+				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|rarity=uncommon} as if they were martial weapons in the bow weapon group."
 			]
 		},
 		{
@@ -1090,7 +1090,7 @@
 				"Dedication"
 			],
 			"entries": [
-				"You become trained in all simple and martial weapons in the {@group bow} weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the bow weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
+				"You become trained in all simple and martial weapons in the bow weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the bow weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the archer archetype.",
 			"leadsTo": [
@@ -1716,8 +1716,7 @@
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered.",
-				"Eldritch Archer While many archers see their craft as an art form as much as a means of battle, a small number of archers seek to perfect their skills through magic, and you."
+				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered."
 			],
 			"leadsTo": [
 				"Expert Eldritch Archer Spellcasting|APG",
@@ -3549,7 +3548,7 @@
 			],
 			"prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the {@group brawling} weapon group.",
+				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the brawling weapon group.",
 				"If you're a draconic sorcerer, when you cast {@spell dragon claws}, increase the spell's slashing damage die from {@damage d4} to {@damage d6} and increase the resistance to 10 at 1st level, 15 at 5th level, and 20 at 9th level."
 			]
 		},
@@ -6455,7 +6454,19 @@
 				"If you don't already cast spells from spell slots, you learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from a spell list of your choice. You choose this cantrip from the common spells on your chosen spell list or from other spells to which you have access on that list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for that tradition. Your key spellcasting ability for these spells is Charisma.",
 				"If you already cast spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Eldritch Shot.",
-				"Eldritch Shot {@as 3} Requirements You are wielding a bow; Effect You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the bow you're wielding. Make a {@action Strike} with that bow. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed both attacks."
+				{
+					"type": "ability",
+					"name": "Eldritch Shot",
+					"activity": {
+						"entry": "{@as 3}",
+						"number": 3,
+						"unit": "action"
+					},
+					"requirements": "You are wielding a bow",
+					"entries": [
+						"You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the bow you're wielding. Make a {@action Strike} with that bow. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed both attacks."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the eldritch archer archetype.",
 			"leadsTo": [
@@ -9635,9 +9646,9 @@
 				{
 					"type": "list",
 					"items": [
-						"{@b Axe} {@group axe} or {@group pick}",
-						"{@b Shield} {@group hammer} or {@group shield}",
-						"{@b Torch} {@group bomb} or {@group knife}"
+						"{@b Axe} axe or pick",
+						"{@b Shield} hammer or shield",
+						"{@b Torch} bomb or knife"
 					]
 				}
 			]
@@ -19416,7 +19427,7 @@
 				"Tengu"
 			],
 			"entries": [
-				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the {@group sword} group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
+				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the sword group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
 				"You also gain access to all {@filter uncommon tengu weapons|items||rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
 			],
 			"leadsTo": [
