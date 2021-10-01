@@ -999,7 +999,7 @@
 			"prerequisites": "{@class Magus|SoM|laughing shadow|laughing shadow|SoM} hybrid study, {@action Spellstrike|SoM}",
 			"requirements": "You're in {@action Arcane Cascade|SoM} stance and have a hand free.",
 			"entries": [
-				"You weave distracting magic with one hand to enhance your {@action Spellstrike|SoM}. Make a {@action Spellstrike|SoM} and {@action Feint} against the target of your {@action Strike}. Do this immediately before making the {@action Strike}, but after choosing your target. The {@action Feint} gains the arcane, {@trait illusion}, and {@trait visual} traits, and it always has the basic effects of a {@action Feint}, rather than applying any adjustments or alternate effects from other feats or abilities."
+				"You weave distracting magic with one hand to enhance your {@action Spellstrike|SoM}. Make a {@action Spellstrike|SoM} and {@action Feint} against the target of your {@action Strike}. Do this immediately before making the {@action Strike}, but after choosing your target. The {@action Feint} gains the {@trait arcane}, {@trait illusion}, and {@trait visual} traits, and it always has the basic effects of a {@action Feint}, rather than applying any adjustments or alternate effects from other feats or abilities."
 			]
 		},
 		{
@@ -1278,7 +1278,7 @@
 			],
 			"prerequisites": "{@class Magus|SoM|sparkling targe|sparkling targe|SoM} hybrid study",
 			"trigger": "An enemy hits you with a melee {@action Strike} or a melee spell attack roll, or you fail a save against an enemy's spell.",
-			"requirements": "You are wielding a {@group shield} or have the {@spell shield} spell prepared.",
+			"requirements": "You are wielding a shield or have the {@spell shield} spell prepared.",
 			"entries": [
 				"You immediately {@action Raise a Shield} or cast {@spell shield}. The circumstance bonus applies to your defenses when determining the outcome of the triggering attack or spell."
 			]
@@ -2190,7 +2190,7 @@
 				"Magus"
 			],
 			"entries": [
-				"You have a literal sixth sense for ambient magic in your vicinity. You can sense the presence of magic auras as though you were always using a 1st-level {@spell detect magic} spell. This detects magic in your field of vision only. When you {@action Seek}, you gain the benefits of a 3rd-level {@spell detect magic} spell on things you see (in addition to the normal benefits of Seeking). You can turn this sense off and on with a free action at the start or the end of your turn."
+				"You have a literal sixth sense for ambient magic in your vicinity. You can sense the presence of magic auras as though you were always using a 1st-level {@spell detect magic} spell. This detects magic in your field of vision only. When you {@action Seek}, you gain the benefits of a 3rd-level {@spell detect magic} spell on things you see (in addition to the normal benefits of {@action Seek||Seeking}). You can turn this sense off and on with a free action at the start or the end of your turn."
 			]
 		},
 		{
@@ -2819,7 +2819,7 @@
 			"entries": [
 				"You raise up the book you're holding and flip it open to defend yourself and expedite your studies. The book remains raised until the start of your next turn.",
 				"While you have a book raised, you gain a +2 circumstance bonus to AC and a +1 circumstance bonus to {@action Recall Knowledge} to identify creatures using a skill related to the subject of the book ({@skill Arcana} if you're using your spellbook). This bonus is in addition to any item bonus the book normally gives to the check.",
-				"If you have {@feat Shield Block}, you can use the tome for that feat (Hardness 3, HP 12, BT 6) as though it were a {@group shield}. Whenever you use an ability that allows you to {@action Raise a Shield}, such as {@feat Emergency Targe|SoM}, you can {@feat Raise a Tome|SoM} instead, changing any requirements that normally require a {@group shield} to apply to your book."
+				"If you have {@feat Shield Block}, you can use the tome for that feat (Hardness 3, HP 12, BT 6) as though it were a shield. Whenever you use an ability that allows you to {@action Raise a Shield}, such as {@feat Emergency Targe|SoM}, you can {@feat Raise a Tome|SoM} instead, changing any requirements that normally require a shield to apply to your book."
 			]
 		},
 		{
@@ -3495,8 +3495,8 @@
 			],
 			"prerequisites": "{@feat Raise a Tome|SoM}",
 			"entries": [
-				"During your daily preparations, you can magically fuse a {@group shield} into your favorite book, where it appears as an elaborate bookmark. While the two are fused, the book shares the Hardness, Hit Points, and Broken Threshold of the shield, and it can be used to {@feat Shield Block} if you have that reaction, with a requirement of \"You have Raised the Tome\" instead of the usual requirements.",
-				"You can switch the fused item's form from a book to a {@group shield} with a book-shaped motif as a single action, which has the {@trait concentrate} trait. When the item is in book form, you can read the book and {@feat Raise a Tome|SoM|Raise the Tome}, and when it's in {@group shield} form, you can {@action Raise a Shield||Raise the Shield}, {@action Activate an Item||Activate it}, and gain any other benefits or effects the {@group shield} normally has (such as a {@feat Spellguard Shield||spellguard shield's} bonus to saving throws against magic). The fusion lasts until your next daily preparations."
+				"During your daily preparations, you can magically fuse a shield into your favorite book, where it appears as an elaborate bookmark. While the two are fused, the book shares the Hardness, Hit Points, and Broken Threshold of the shield, and it can be used to {@feat Shield Block} if you have that reaction, with a requirement of \"You have Raised the Tome\" instead of the usual requirements.",
+				"You can switch the fused item's form from a book to a shield with a book-shaped motif as a single action, which has the {@trait concentrate} trait. When the item is in book form, you can read the book and {@feat Raise a Tome|SoM|Raise the Tome}, and when it's in shield form, you can {@action Raise a Shield||Raise the Shield}, {@action Activate an Item||Activate it}, and gain any other benefits or effects the shield normally has (such as a {@feat Spellguard Shield||spellguard shield's} bonus to saving throws against magic). The fusion lasts until your next daily preparations."
 			]
 		},
 		{
@@ -3687,10 +3687,10 @@
 				"Concentrate"
 			],
 			"prerequisites": "{@feat Soulforger Dedication|SoM}",
-			"trigger": "An attack you made with a soulforged weapon or {@group shield} misses a creature, or a creature hits you with an attack while you're either wearing manifested soulforged armor or have your soulforged {@group shield} raised.",
+			"trigger": "An attack you made with a soulforged weapon or shield misses a creature, or a creature hits you with an attack while you're either wearing manifested soulforged armor or have your soulforged shield raised.",
 			"requirements": "Your soulforged armament is manifested.",
 			"entries": [
-				"You strive to change the outcome with sheer zeal. You gain a +1 status bonus to your attack roll if making an attack or to your AC if you were hit. This can change the outcome of the roll. If this bonus turns your missed attack into a hit or the hit against you into a miss, attempt a DC {@flatDC 5} flat check. If you fail, your soulforged armament is Dismissed\u2014your weapon if you attacked or your armor or {@group shield} if you were defending."
+				"You strive to change the outcome with sheer zeal. You gain a +1 status bonus to your attack roll if making an attack or to your AC if you were hit. This can change the outcome of the roll. If this bonus turns your missed attack into a hit or the hit against you into a miss, attempt a DC {@flatDC 5} flat check. If you fail, your soulforged armament is Dismissed\u2014your weapon if you attacked or your armor or shield if you were defending."
 			]
 		},
 		{
@@ -3714,9 +3714,27 @@
 			"entries": [
 				"You can manifest the power of your spirit in combat to realize your motivations. You manifest an armor, shield, or weapon as a soulforged armament (page 232). Choose one essence power for the armament (below). Changing an essence power requires 1 week of retraining, and you can't retrain it while you have soulforged corruption.",
 				"You can Manifest Soulforged Armament to summon your armaments in combat.",
-				"Manifest Soulforged Armament {@as 1} (concentrate, conjuration, divine, extradimensional) Requirements If summoning a weapon or {@group shield}, you have the hands free to wield it; if summoning armor, you aren't wearing any armor; Effect You immediately wield or wear the soulforged armament bound to you. The soulforged armament remains manifested until you {@action Dismiss} this effect.",
-				"Once per day when you use this ability, you can manifest the armament's essence form. You gain the armament's essence power until it's Dismissed.",
-				"After 1 minute, the essence form armament is automatically Dismissed."
+				{
+					"type": "ability",
+					"name": "Manifest Soulforged Armament",
+					"traits": [
+						"concentrate",
+						"conjuration",
+						"divine",
+						"extradimensional"
+					],
+					"activity": {
+						"number": 1,
+						"unit": "action",
+						"entry": "{@as 1}"
+					},
+					"requirements": "If summoning a weapon or shield, you have the hands free to wield it; if summoning armor, you aren't wearing any armor",
+					"entries": [
+						"You immediately wield or wear the soulforged armament bound to you. The soulforged armament remains manifested until you {@action Dismiss} this effect.",
+						"Once per day when you use this ability, you can manifest the armament's essence form. You gain the armament's essence power until it's Dismissed.",
+						"After 1 minute, the essence form armament is automatically Dismissed."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat before gaining two other feats from this archetype.",
 			"leadsTo": [
@@ -3776,7 +3794,7 @@
 			"entries": [
 				"You attack in an arc and enact your spell against everyone you hit. Make a {@action Spellstrike|SoM}, but roll separate {@action Strike||Strikes} to attack two creatures, each of whom must be within your melee reach and adjacent to each other. If your spell could affect two or more targets, your spell affects whichever foes you hit, not just the first target; otherwise, choose one target to affect with the spell. A Spell Swipe counts as two attacks for your multiple attack penalty, but the penalty doesn't increase until after you make both attacks.",
 				"If you're using a weapon that has the {@trait sweep} trait, its circumstance bonus applies against both targets. You can use this activity with only melee {@action Strike||Strikes}, even if you have the {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study or a similar ability.",
-				"If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in Expansive {@action Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use Expansive {@action Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both {@action Strike||Strikes} are critical failures."
+				"If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with an area spell, apply the area as described in Expansive {@action Spellstrike|SoM}, choosing one of the creatures you {@action Strike} to determine the area and whether the spell fails due to a critically failed {@action Strike}. If you use {@feat Expansive Spellstrike|SoM} to {@action Spellstrike|SoM} with a targeted spell, the spell is lost completely only if both {@action Strike||Strikes} are critical failures."
 			]
 		},
 		{
@@ -3861,7 +3879,7 @@
 			"prerequisites": "{@action Spellstrike|SoM}",
 			"entries": [
 				"You've honed one spell as your favored combat technique, and you've practiced it enough that you no longer need to prepare it to cast it. Choose a spell in your spellbook that you could use with {@action Spellstrike|SoM} and that has a level no higher than the highest-level magus spell slot you have.",
-				"You can Cast this Spell without having it prepared ahead of time by expending a spell slot of a sufficient level to cast your chosen spell. You can change this spell whenever you add new spells to your spellbook, or by studying your spellbook for 1 hour."
+				"You can {@action Cast a Spell||Cast this Spell} without having it prepared ahead of time by expending a spell slot of a sufficient level to cast your chosen spell. You can change this spell whenever you add new spells to your spellbook, or by studying your spellbook for 1 hour."
 			]
 		},
 		{
@@ -3881,7 +3899,7 @@
 			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|starlit span|starlit span|SoM} hybrid study",
 			"entries": [
-				"Starlight shines in your sight, enhancing your perception and range. When you make a ranged {@action Strike} while in {@action Arcane Cascade|SoM} stance, you lower the DC of your flat check to target a creature that's {@condition concealed} or {@condition hidden} from you. The DC is reduced to 3 instead of 5 against a {@condition concealed} creature and to 9 instead of 11 against a {@condition hidden} one. When you cast {@spell shooting star|SoM} and target a hidden creature, you don't have to attempt the flat check for targeting a {@condition hidden} creature with a ranged {@action Strike}."
+				"Starlight shines in your sight, enhancing your perception and range. When you make a ranged {@action Strike} while in {@action Arcane Cascade|SoM} stance, you lower the DC of your flat check to target a creature that's {@condition concealed} or {@condition hidden} from you. The DC is reduced to {@flatDC 3} instead of 5 against a {@condition concealed} creature and to {@flatDC 9} instead of 11 against a {@condition hidden} one. When you cast {@spell shooting star|SoM} and target a hidden creature, you don't have to attempt the flat check for targeting a {@condition hidden} creature with a ranged {@action Strike}."
 			]
 		},
 		{
@@ -4014,8 +4032,8 @@
 			],
 			"prerequisites": "{@action Arcane Cascade|SoM}, {@class Magus|SoM|twisting tree|twisting tree|SoM} hybrid study",
 			"entries": [
-				"You've studied the staff extensively to learn the {@condition hidden} capabilities of your chosen weapon. When you critically succeed at an attack roll using a staff, you apply the critical specialization effect of the {@group club} group. While you're in {@action Arcane Cascade|SoM} stance, your staff gains the {@trait deadly d6} trait, with the damage from the deadly die being the same damage type as the extra damage from {@action Arcane Cascade|SoM}.",
-				"In addition, you can place property runes into a magic staff you prepare, even though a magic staff can't typically hold property runes. You must first inscribe the property runes into your spellbook, using the same process as transferring a rune (Core Rulebook 580). The rune takes the form of a specialized diagram in your spellbook, occupying one page. You can't inscribe runes that can't be placed on a non-magical staff, nor can you inscribe the shifting rune. When you prepare a staff, you can impart any number of property runes from your spellbook into the staff, up to the limit imposed by the staff's weapon potency rune."
+				"You've studied the staff extensively to learn the hidden capabilities of your chosen weapon. When you critically succeed at an attack roll using a staff, you apply the critical specialization effect of the {@group club} group. While you're in {@action Arcane Cascade|SoM} stance, your staff gains the {@trait deadly d6} trait, with the damage from the deadly die being the same damage type as the extra damage from {@action Arcane Cascade|SoM}.",
+				"In addition, you can place property runes into a magic staff you prepare, even though a magic staff can't typically hold property runes. You must first inscribe the property runes into your spellbook, using the same process as transferring a rune (Core Rulebook 580). The rune takes the form of a specialized diagram in your spellbook, occupying one page. You can't inscribe runes that can't be placed on a non-magical staff, nor can you inscribe the {@item shifting} rune. When you prepare a staff, you can impart any number of property runes from your spellbook into the staff, up to the limit imposed by the staff's {@item weapon potency} rune."
 			]
 		},
 		{
