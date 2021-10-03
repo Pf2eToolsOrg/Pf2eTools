@@ -629,7 +629,7 @@
 			],
 			"entries": [
 				"Your graceful moves with agile weapons are beyond compare.",
-				"Your multiple attack penalty with agile weapons and agile unarmed attacks becomes \u20133 for your second attack and \u20136 for subsequent attacks (rather than \u20134 and \u20138)."
+				"Your multiple attack penalty with {@trait agile} weapons and {@trait agile} unarmed attacks becomes \u20133 for your second attack and \u20136 for subsequent attacks (rather than \u20134 and \u20138)."
 			]
 		},
 		{
@@ -2536,7 +2536,7 @@
 				"Monk"
 			],
 			"entries": [
-				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the brawling group and weapons in the brawling group. If you have Monastic Weaponry, you also gain the critical specialization effects of all monk weapons in which you are trained."
+				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the {@group brawling} group and weapons in the {@group brawling} group. If you have Monastic Weaponry, you also gain the critical specialization effects of all monk weapons in which you are trained."
 			]
 		},
 		{
@@ -4011,7 +4011,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a crane, holding your arms in an imitation of a crane's wings and using flowing, defensive motions. You gain a +1 circumstance bonus to AC, but the only Strikes you can make are crane wing attacks. These deal {@damage 1d6} bludgeoning damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a crane, holding your arms in an imitation of a crane's wings and using flowing, defensive motions. You gain a +1 circumstance bonus to AC, but the only Strikes you can make are crane wing attacks. These deal {@damage 1d6} bludgeoning damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Crane Stance, reduce the DC for {@action High Jump} and {@action Long Jump} by 5, and when you {@action Leap}, you can move an additional 5 feet horizontally or 2 feet vertically."
 			],
 			"leadsTo": [
@@ -5345,7 +5345,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a dragon and make powerful leg strikes like a lashing dragon's tail. You can make dragon tail attacks that deal {@damage 1d10} bludgeoning damage. They are in the brawling group and have the backswing, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a dragon and make powerful leg strikes like a lashing dragon's tail. You can make dragon tail attacks that deal {@damage 1d10} bludgeoning damage. They are in the {@group brawling} group and have the backswing, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Dragon Stance, you can ignore the first square of difficult terrain while {@action Stride||Striding}."
 			],
 			"leadsTo": [
@@ -5467,6 +5467,9 @@
 			"entries": [
 				"You've sworn to slay evil dragons. Add the following tenet to your code after the others: \"You must slay evil dragons you encounter as long as you have a reasonable chance of success.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an evil dragon, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an evil dragon is 7 + your level. If you use {@action Liberating Step} triggered by an evil dragon, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider evil dragons to be legitimate authorities, even in nations they rule."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -7361,6 +7364,9 @@
 				"You've sworn an oath to banish the corruption of fiends to the dark planes they call home.",
 				"Add the following tenet to your champion's code after the other tenets: \"You must banish or slay fiends you come across as long as you have a reasonable chance of success; in the incredibly unlikely event you find a good fiend, you don't have to banish or kill it.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against a fiend, or a +6 circumstance bonus if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from a fiend is 7 + your level. If you use {@action Liberating Step} triggered by a fiend, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider fiends to be legitimate authorities, even in nations ruled by fiends."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -8192,7 +8198,7 @@
 			],
 			"prerequisites": "{@feat Double Slice}",
 			"entries": [
-				"With the right positioning, your off-hand weapon can strike like a scorpion's stinger. While you are in this stance, if you make your second {@action Strike} from Double Slice with an agile weapon, Double Slice counts as one attack when calculating your multiple attack penalty."
+				"With the right positioning, your off-hand weapon can strike like a scorpion's stinger. While you are in this stance, if you make your second {@action Strike} from Double Slice with an {@trait agile} weapon, Double Slice counts as one attack when calculating your multiple attack penalty."
 			]
 		},
 		{
@@ -10228,7 +10234,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of impenetrable iron, refusing to yield to any blow. You can make iron sweep unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the nonlethal, parry, {@trait sweep}, and {@trait unarmed} traits.",
+				"You enter the stance of impenetrable iron, refusing to yield to any blow. You can make iron sweep unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the nonlethal, parry, {@trait sweep}, and {@trait unarmed} traits.",
 				"While in Ironblood Stance, you gain resistance 2 to all damage. The resistance increases to 3 at 12th level, to 4 at 16th level, and to 5 at 20th level."
 			],
 			"leadsTo": [
@@ -12251,7 +12257,7 @@
 			],
 			"requirements": "You are unarmored and touching the ground.",
 			"entries": [
-				"You enter the stance of an implacable mountain\u2014a technique first discovered by dwarven monks\u2014allowing you to strike with the weight of an avalanche. The only Strikes you can make are falling stone unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the forceful, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of an implacable mountain\u2014a technique first discovered by dwarven monks\u2014allowing you to strike with the weight of an avalanche. The only Strikes you can make are falling stone unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the forceful, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Mountain Stance, you gain a +4 status bonus to AC and a +2 circumstance bonus to any defenses against being Shoved or Tripped. However, you have a Dexterity modifier cap to your AC of +0, meaning you don't add your Dexterity to your AC, and your Speeds are all reduced by 5 feet."
 			],
 			"leadsTo": [
@@ -15981,6 +15987,9 @@
 			"entries": [
 				"You've sworn an oath to put the undead to rest. Add the following tenet to your champion's code after the other tenets: \"You must end the existence of undead you encounter as long as you have a reasonable chance of success; in the unlikely event you find a good undead, you can try to work out a more peaceful way to help it recover from its undead state rather than destroying it in combat, such as helping it complete its unfinished business and find peace.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an undead, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an undead is 7 + your level. If you use {@action Liberating Step} triggered by an undead, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider undead to be legitimate authorities, even in nations ruled by undead."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -17762,7 +17771,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You extend your arms like gnarled branches to interfere with your foes' movements. You can make lashing branch unarmed attacks. These deal {@damage 1d8} slashing damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You extend your arms like gnarled branches to interfere with your foes' movements. You can make lashing branch unarmed attacks. These deal {@damage 1d8} slashing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While you're in Tangled Forest Stance and can act, every enemy in your reach that tries to move away from you must succeed at a Reflex save, {@skill Acrobatics} check, or {@skill Athletics} check against your class DC or be {@condition immobilized} for that action. If you prefer, you can allow the enemy to move."
 			],
 			"leadsTo": [
@@ -18009,7 +18018,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a tiger and can make tiger claw attacks. These deal {@damage 1d8} slashing damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits. On a critical success with your tiger claws, if you deal damage, the target takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}.",
+				"You enter the stance of a tiger and can make tiger claw attacks. These deal {@damage 1d8} slashing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits. On a critical success with your tiger claws, if you deal damage, the target takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}.",
 				"As long as your Speed is at least 20 feet while in Tiger Stance, you can {@action Step} 10 feet."
 			],
 			"leadsTo": [
@@ -19141,6 +19150,9 @@
 			"prerequisites": "paladin cause",
 			"entries": [
 				"You've sworn an oath to hunt down wicked evildoers and bring them to judgment. Add the following tenet to your code after the others: \"You must hunt down and exterminate evil creatures that have committed heinous atrocities as long as you have a reasonable chance of success and aren't engaged in a mission that would prevent your doing so.\" You can use lay on hands to damage a creature you witness harming an innocent or a good ally as if it were undead; in this case, lay on hands deals good damage instead of positive damage and gains the {@trait good} trait. This good damage can affect non-evil creatures. This doesn't prevent you from healing such a creature with lay on hands; you choose whether to heal or harm."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -20172,7 +20184,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a wolf, low to the ground with your hands held like fanged teeth. You can make wolf jaw unarmed attacks. These deal {@damage 1d8} piercing damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a wolf, low to the ground with your hands held like fanged teeth. You can make wolf jaw unarmed attacks. These deal {@damage 1d8} piercing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait backstabber}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"If you're flanking a target while in Wolf Stance, your wolf jaw unarmed attacks also gain the {@trait trip} trait."
 			],
 			"leadsTo": [

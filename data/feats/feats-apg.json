@@ -841,7 +841,7 @@
 			"traits": [
 				"Monk"
 			],
-			"prerequisites": "{@feat Monastic Weaponry}, a {@filter feat|feats||search=weapon familiarity} granting access to all weapons with an ancestry trait (such as {@ancestry elf} or {@ancestry orc|APG})",
+			"prerequisites": "{@feat Monastic Weaponry}, a {@filter feat granting access to all weapons with an ancestry trait|feats||search=weapon familiarity} (such as {@feat elven weapon familiarity|crb|elf} or {@feat orc weapon familiarity|APG|orc})",
 			"entries": [
 				"You blend monastic techniques with the ancestral fighting styles of your people. Choose an ancestry for which you have access to all weapons with that trait. For you, melee weapons with that ancestry trait and either the {@trait agile} or {@trait finesse} trait gain the {@trait monk} trait."
 			]
@@ -3664,7 +3664,7 @@
 			],
 			"prerequisites": "ki spells",
 			"entries": [
-				"You learn a mystical stance that transforms your ki into sticky smoke that shrouds your limbs, clinging to everything you touch. You gain the clinging shadows stance ki spell (page 229). Increase the number of Focus Points in your focus pool by 1. While entering the stance uses a ki spell, the shadow grasp attacks it grants are not, so you can use them as often as you like while in the stance."
+				"You learn a mystical stance that transforms your ki into sticky smoke that shrouds your limbs, clinging to everything you touch. You gain the {@spell clinging shadows stance|APG} ki spell. Increase the number of Focus Points in your focus pool by 1. While entering the stance uses a ki spell, the shadow grasp attacks it grants are not, so you can use them as often as you like while in the stance."
 			]
 		},
 		{
@@ -3739,7 +3739,7 @@
 			],
 			"entries": [
 				"You enter a tight stance, coiled up like a lashing cobra with your hands poised as venomous fangs. While in this stance, the only {@action Strike|CRB|Strikes} you can make are cobra fang unarmed attacks.",
-				"These deal {@damage 1d4} poison damage; are in the brawling group; and have the agile, deadly d10, finesse, nonlethal, {@trait poison}, and {@trait unarmed} traits.",
+				"These deal {@damage 1d4} poison damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait deadly d10}, {@trait finesse}, {@trait nonlethal}, {@trait poison}, and {@trait unarmed} traits.",
 				"While in Cobra Stance, you gain a +1 circumstance bonus to Fortitude saves and your Fortitude DC, and you gain poison resistance equal to half your level."
 			],
 			"leadsTo": [
@@ -6524,7 +6524,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals {@damage 1d6} slashing damage. Your nails are in the brawling group and have the {@trait agile} and {@trait unarmed} traits.",
+				"Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals {@damage 1d6} slashing damage. Your nails are in the {@group brawling} group and have the {@trait agile} and {@trait unarmed} traits.",
 				"You can etch your nails with runes with the same cost and restrictions as for etching runes onto {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}; runes etched onto your nails apply to nails unarmed attacks with both hands but not to other unarmed attacks.",
 				"You can deliver hexes through your nails. When you successfully cast a non-cantrip hex that requires 2 actions or more to cast and that doesn't require a spell attack roll, if your target is within your reach, as part of the spellcasting activity you can make a nails {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
 			]
@@ -7030,7 +7030,8 @@
 				"You don't consider evil aberrations to be legitimate authorities, even in nations they rule."
 			],
 			"leadsTo": [
-				"Aura Of Preservation|APG"
+				"Aura Of Preservation|APG",
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -7642,7 +7643,7 @@
 				"Dhampir"
 			],
 			"entries": [
-				"Your incisors have grown into true fangs: long, sharp, and well-suited to drawing blood. You gain a fangs unarmed attack that deals {@damage 1d6} piercing damage. Your fangs are in the brawling group and have the {@trait grapple} and {@trait unarmed} traits."
+				"Your incisors have grown into true fangs: long, sharp, and well-suited to drawing blood. You gain a fangs unarmed attack that deals {@damage 1d6} piercing damage. Your fangs are in the {@group brawling} group and have the {@trait grapple} and {@trait unarmed} traits."
 			]
 		},
 		{
@@ -8441,7 +8442,7 @@
 				"Tiefling"
 			],
 			"entries": [
-				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the brawling group and has the listed damage die and traits.",
+				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the {@group brawling} group and has the listed damage die and traits.",
 				"Claw {@damage 1d4} slashing (agile, finesse, unarmed, versatile piercing) Hoof {@damage 1d6} bludgeoning (finesse, unarmed) Jaws {@damage 1d6} piercing (finesse, unarmed) Tail {@damage 1d4} bludgeoning (agile, finesse, unarmed)"
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat, nor can you change the type of attack you gained."
@@ -8764,7 +8765,7 @@
 			],
 			"entries": [
 				"You lower yourself to the ground and take an imposing, knuckle-walking stance. While in this stance, the only {@action Strike|CRB|Strikes} you can make are gorilla slam unarmed attacks.",
-				"These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the backswing, forceful, grapple, {@trait nonlethal}, and {@trait unarmed} traits. While you are in Gorilla Stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, and if you roll a success on an {@skill Athletics} check to {@action Climb}, you get a critical success instead."
+				"These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the {@trait backswing}, {@trait forceful}, {@trait grapple}, {@trait nonlethal}, and {@trait unarmed} traits. While you are in Gorilla Stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, and if you roll a success on an {@skill Athletics} check to {@action Climb}, you get a critical success instead."
 			],
 			"leadsTo": [
 				"Gorilla Pound|APG"
@@ -9212,7 +9213,7 @@
 			],
 			"entries": [
 				"When you came of age, your fingernails grew long and sharp.",
-				"You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the brawling group and have the agile, {@trait finesse}, and {@trait unarmed} traits."
+				"You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the {@group brawling} group and have the agile, {@trait finesse}, and {@trait unarmed} traits."
 			],
 			"special": "Hag claws can develop at any point in a changeling's life, allowing you to select this feat anytime you would gain an ancestry feat, but once you've selected it, you can't retrain out of it."
 		},
@@ -11242,6 +11243,9 @@
 			"prerequisites": "tenets of evil",
 			"entries": [
 				"You've sworn to rid the world of the self-righteousness of celestial beings. Add the following tenet to your code, after the other tenets. \"You must banish or slay celestials you encounter as long as you have a reasonable chance of success; in the incredibly unlikely event you find an evil celestial, you don't have to banish or kill it.\" When you use your champion's reaction against a celestial, the extra damage you deal with {@action Strike|CRB|Strikes} increases by 1 (or by 2 at 9th level and by 3 at 16th level)."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -11332,7 +11336,7 @@
 				"Witch"
 			],
 			"entries": [
-				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the brawling group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
+				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the {@group brawling} group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
 			]
 		},
 		{
@@ -12258,11 +12262,11 @@
 				"Monk",
 				"Stance"
 			],
-			"requirements": "You are unarmored and wielding a longbow, shortbow, or a bow with the {@trait monk} trait.",
+			"requirements": "You are unarmored and wielding a {@item longbow}, {@item shortbow}, or a bow with the {@trait monk} trait.",
 			"entries": [
-				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using longbows, shortbows, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
+				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using {@item longbow||longbows}, {@item shortbow||shortbows}, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
 			],
-			"special": "When you select this feat, you become trained in the longbow, shortbow, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master.",
+			"special": "When you select this feat, you become trained in the {@trait longbow}, {@trait shortbow}, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master.",
 			"leadsTo": [
 				"Focused Shot|APG",
 				"Return Fire|APG",
@@ -16749,7 +16753,7 @@
 			"prerequisites": "ki spells",
 			"requirements": "You are in Clinging Shadows Initiate.",
 			"entries": [
-				"You launch a wave of shadowy ki outward from your body, damaging your opponents and potentially binding them in place. You gain the shadow's web ki spell (page 229)",
+				"You launch a wave of shadowy ki outward from your body, damaging your opponents and potentially binding them in place. You gain the {@spell shadow's web|APG} ki spell.",
 				"Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
@@ -17038,7 +17042,7 @@
 			],
 			"prerequisites": "{@feat Monastic Weaponry}",
 			"entries": [
-				"You enter a stance that lets you throw shuriken with lightning speed. While in this stance, you can use your monk feats or monk abilities that normally require unarmed attacks with shuriken instead."
+				"You enter a stance that lets you throw shuriken with lightning speed. While in this stance, you can use your monk feats or monk abilities that normally require unarmed attacks with {@item shuriken} instead."
 			]
 		},
 		{
@@ -17276,7 +17280,7 @@
 				"Lineage"
 			],
 			"entries": [
-				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the brawling group, have the {@trait unarmed} and {@trait grapple} traits, and are cold iron."
+				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the {@group brawling} group, have the {@trait unarmed} and {@trait grapple} traits, and are cold iron."
 			]
 		},
 		{
@@ -18525,7 +18529,7 @@
 			],
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only {@action Strike|CRB|Strikes} you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
+				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only {@action Strike|CRB|Strikes} you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait backstabber}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
 			],
 			"leadsTo": [
 				"Stumbling Feint|APG"
@@ -20097,7 +20101,7 @@
 				"Orc"
 			],
 			"entries": [
-				"You have particularly long, jagged tusks perfect for tearing meat from bone. You gain a tusks unarmed attack that deals {@damage 1d6} piercing damage. Your tusks are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits."
+				"You have particularly long, jagged tusks perfect for tearing meat from bone. You gain a tusks unarmed attack that deals {@damage 1d6} piercing damage. Your tusks are in the {@group brawling} group and have the {@trait finesse} and {@trait unarmed} traits."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain into this feat. You can retrain out of this feat only through drastic measures such as breaking or filing your tusks."
 		},
@@ -20587,7 +20591,7 @@
 				"Ratfolk"
 			],
 			"entries": [
-				"You've let your incisors grow long enough to serve as formidable weapons. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits. Unlike most creatures, you can file down your teeth and regrow them later on, enabling you to select this feat at any level, and to retrain into and out of this feat."
+				"You've let your incisors grow long enough to serve as formidable weapons. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the {@group brawling} group and have the {@trait finesse} and {@trait unarmed} traits. Unlike most creatures, you can file down your teeth and regrow them later on, enabling you to select this feat at any level, and to retrain into and out of this feat."
 			],
 			"leadsTo": [
 				"Gnaw|LOAG"
