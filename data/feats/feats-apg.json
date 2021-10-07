@@ -5443,7 +5443,7 @@
 			],
 			"prerequisites": "{@feat Medic Dedication|APG}",
 			"entries": [
-				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: Battle {@skill Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or Treat a Condition (if you have it; see below)."
+				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: {@feat Battle Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or Treat a Condition (if you have it; see below)."
 			]
 		},
 		{
@@ -8852,7 +8852,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"Your expertise with your weapons and commitment to taking out your targets lends you magical power. You gain the gravity weapon warden spell (page 234) and a focus pool of 1 Focus Point."
+				"Your expertise with your weapons and commitment to taking out your targets lends you magical power. You gain the {@spell gravity weapon|APG} warden spell and a focus pool of 1 Focus Point."
 			]
 		},
 		{
@@ -8957,7 +8957,7 @@
 			],
 			"prerequisites": "{@feat Magical Edification|APG}",
 			"entries": [
-				"You've continued to expand your compendium of tools to compile knowledge. You can cast {@spell comprehend language}, mindlink, and secret page as innate occult spells, each once per day. When you cast {@spell secret page}, it is automatically heightened to the same spell level as your cantrips from Magical Edification."
+				"You've continued to expand your compendium of tools to compile knowledge. You can cast {@spell comprehend language}, {@spell mindlink}, and {@spell secret page} as innate occult spells, each once per day. When you cast {@spell secret page}, it is automatically heightened to the same spell level as your cantrips from {@feat Magical Edification|APG}."
 			]
 		},
 		{
@@ -11615,7 +11615,7 @@
 			],
 			"prerequisites": "{@feat Loremaster Dedication|APG}",
 			"entries": [
-				"You've learned those tidbits of magic that are most conducive to furthering your acquisition and transmission of knowledge. You gain guidance, message, and sigil as innate occult cantrips."
+				"You've learned those tidbits of magic that are most conducive to furthering your acquisition and transmission of knowledge. You gain {@spell guidance}, {@spell message}, and {@spell sigil} as innate occult cantrips."
 			],
 			"leadsTo": [
 				"Greater Magical Edification|APG"
@@ -12029,9 +12029,9 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "trained in {@skill Medicine}, Battle {@skill Medicine}",
+			"prerequisites": "trained in {@skill Medicine}, {@feat Battle Medicine}",
 			"entries": [
-				"You become an expert in {@skill Medicine}. When you succeed with Battle {@skill Medicine} or {@action Treat Wounds}, the target regains 5 additional HP at DC 20, 10 HP at DC 30, or 15 HP at DC 40. Once per day, you can use Battle {@skill Medicine} on a creature that's temporarily immune. If you're a master in {@skill Medicine}, you can do so once per hour."
+				"You become an expert in {@skill Medicine}. When you succeed with {@feat Battle Medicine} or {@action Treat Wounds}, the target regains 5 additional HP at DC 20, 10 HP at DC 30, or 15 HP at DC 40. Once per day, you can use {@feat Battle Medicine} on a creature that's temporarily immune. If you're a master in {@skill Medicine}, you can do so once per hour."
 			],
 			"special": "You can't select another dedication feat until you gain two other feats from the medic archetype.",
 			"leadsTo": [
@@ -15564,7 +15564,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}, legendary in {@skill Medicine}",
 			"requirements": "You are holding healer's tools or are wearing them and have a hand free.",
 			"entries": [
-				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of raise dead, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
+				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of {@ritual raise dead}, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
 			]
 		},
 		{
@@ -20354,7 +20354,7 @@
 			],
 			"prerequisites": "trained in {@skill Stealth}",
 			"entries": [
-				"You capitalize on the distraction provided by an ally. You {@action Sneak} up to a foe adjacent to one of your allies. You can roll against."
+				"You capitalize on the distraction provided by an ally. You {@action Sneak} up to a foe adjacent to one of your allies. You can roll against the foe you're {@action Sneak||Sneaking} up on, even if it's currently {@condition observed||observing} you, as though you were {@condition hidden}. You take a –2 penalty on your {@skill Stealth} check. If your {@skill Stealth} check against the chosen foe succeeds, you can make a melee {@action Strike} against that foe at the end of your {@action Sneak}."
 			]
 		},
 		{

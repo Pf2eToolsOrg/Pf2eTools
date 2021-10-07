@@ -2093,7 +2093,7 @@ function Renderer () {
 									source: subclassSource
 										// Subclass state uses the abbreviated form of the source for URL shortness
 										? Parser.sourceJsonToAbv(subclassSource.trim())
-										: SRC_CRB,
+										: source || SRC_CRB,
 								},
 							};
 
@@ -2205,7 +2205,7 @@ function Renderer () {
 									name: heritageName.trim(),
 									source: heritageSource
 										? Parser.sourceJsonToAbv(heritageSource.trim())
-										: SRC_CRB,
+										: source || SRC_CRB,
 								},
 							};
 
