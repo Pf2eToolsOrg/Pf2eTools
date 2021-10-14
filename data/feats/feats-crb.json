@@ -605,7 +605,7 @@
 			],
 			"trigger": "You use the {@action Shield Block} reaction, and the opponent that triggered {@action Shield Block} is adjacent to you and is your size or smaller.",
 			"entries": [
-				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically Shoving it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
+				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically {@action Shove||Shoving} it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
 			],
 			"leadsTo": [
 				"Flinging Shove",
@@ -2655,7 +2655,7 @@
 			"activity": {
 				"number": 1,
 				"unit": "varies",
-				"entry": "[{@as 1} n-action]"
+				"entry": "{@as 1}"
 			},
 			"level": 2,
 			"featType": {
@@ -2671,7 +2671,9 @@
 			],
 			"requirements": "You are wielding a two-handed melee weapon.",
 			"entries": [
-				"Throwing your weight behind your attack, you hit your."
+				"Throwing your weight behind your attack, you hit your opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn’t trigger reactions.",
+				"This {@action Strike} has the following failure effect.",
+				"{@b Failure} The target becomes flat-footed until the end of your current turn."
 			]
 		},
 		{
@@ -3026,7 +3028,7 @@
 			"prerequisites": "divine ally (steed), tenets of good",
 			"entries": [
 				"Your steed gains incredible celestial powers granted by your deity. It gains {@ability darkvision}, its maximum Hit Points increase by 40, and it gains weakness 10 to evil damage.",
-				"Additionally, it grows wings appropriate to a servitor of your deity (such as metallic wings for an archon), granting it a fly Speed equal to its Speed. It gains the {@trait celestial} trait and the trait appropriate to the type of servitor it has become (archon, angel, or azata, for example)."
+				"Additionally, it grows wings appropriate to a servitor of your deity (such as metallic wings for an archon), granting it a fly Speed equal to its Speed. It gains the {@trait celestial} trait and the trait appropriate to the type of servitor it has become ({@trait archon}, {@trait angel}, or {@trait azata}, for example)."
 			]
 		},
 		{
@@ -3854,7 +3856,7 @@
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
 			],
-			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, natural, or occult).",
+			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait natural}, or {@trait occult}).",
 			"leadsTo": [
 				"Reflect Spell (Sorcerer)"
 			]
@@ -3882,7 +3884,7 @@
 				"Arcane",
 				"Wizard"
 			],
-			"trigger": "A creature Casts a Spell that you have prepared.",
+			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
@@ -6197,12 +6199,12 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use {@action Shield Block} against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as fire).",
+						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use {@action Shield Block} against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as {@trait fire}).",
 						"{@bold Weapon} Choose acid, cold, electricity, fire, or sonic"
 					]
 				},
 				"The weapon deals an extra {@dice 1d4} damage of that type.",
-				"Increase this extra damage to {@dice 1d6} if you have a domain spell with a trait matching that type (such as fire)."
+				"Increase this extra damage to {@dice 1d6} if you have a domain spell with a trait matching that type (such as {@trait fire})."
 			]
 		},
 		{
@@ -7277,7 +7279,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"Your bestial mutagen brings out the beast lurking within you, granting you especially sharp claws and teeth as well as a ferocious appearance. Whenever you're affected by a bestial mutagen, you gain the mutagen's item bonus to your {@skill Intimidation} checks. In addition, your claws and jaws are increasingly vicious, and they gain the deadly d10 trait.",
+				"Your bestial mutagen brings out the beast lurking within you, granting you especially sharp claws and teeth as well as a ferocious appearance. Whenever you're affected by a bestial mutagen, you gain the mutagen's item bonus to your {@skill Intimidation} checks. In addition, your claws and jaws are increasingly vicious, and they gain the {@trait deadly d10} trait.",
 				"Finally, you can increase the mutagen's penalty to AC from \u20131 to \u20132 and, in exchange, increase the damage die size of your claws and jaws by one step."
 			]
 		},
@@ -7496,7 +7498,7 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "{@feat Aggressive Block} or Brutish {@action Shove}",
+			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
 				"Increase the distance you {@action Shove} your opponent with Aggressive Block or {@feat Brutish Shove} to 10 feet on a success or 20 feet on a critical success. When you use Aggressive Block, you can choose whether the target is {@condition flat-footed} or {@action Shove|CRB|Shoved}.",
 				"When you make a {@feat Brutish Shove}, you also {@action Shove} the target 5 feet on a failure."
@@ -11156,7 +11158,7 @@
 			"requirements": "You are wielding a melee weapon.",
 			"entries": [
 				"Extending your body to its limits, you attack an enemy that would normally be beyond your reach. Make a {@action Strike} with a melee weapon, increasing your reach by 5 feet for that {@action Strike}.",
-				"If the weapon has the disarm, {@trait shove}, or {@trait trip} trait, you can use the corresponding action instead of a {@action Strike}."
+				"If the weapon has the {@trait disarm}, {@trait shove}, or {@trait trip} trait, you can use the corresponding action instead of a {@action Strike}."
 			],
 			"leadsTo": [
 				"Lunging Stance"
@@ -12610,7 +12612,7 @@
 			],
 			"trigger": "A foe within reach attempts to move away from you.",
 			"entries": [
-				"You keep pace with a retreating foe. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use No {@action Escape} to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
+				"You keep pace with a retreating foe. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use No Escape to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -13616,7 +13618,7 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "{@feat Aggressive Block} or Brutish {@action Shove}",
+			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
 				"You can push larger foes around with your attack. You can use Aggressive Block or Brutish {@action Shove} against a creature up to two sizes larger than you.",
 				"When a creature you {@action Shove} has to stop moving because it would hit an object, it takes damage equal to your Strength modifier (minimum 1). This happens regardless of how you Shoved the creature."
@@ -17359,7 +17361,7 @@
 				"Open"
 			],
 			"entries": [
-				"With a quick sprint, you dash up to your foe and swing. {@action Stride} twice. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Sudden Charge while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"With a quick sprint, you dash up to your foe and swing. {@action Stride} twice. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Sudden Charge while {@action Burrow||Burrowing}, {@action Climb||Climbing}, {@action Fly||Flying}, or {@action Swim||Swimming} instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -17476,8 +17478,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"The elven magic in your blood manifests as a force you can use to become more appealing or alluring. You can cast 1st‑level {@spell charm} as an arcane innate spell once per day.",
-				"Half-Orc Ancestry Feats The following feats are available to half-orcs. Some of these feats are common to people with orc blood, and have the {@trait orc} trait, while others are specific to half‑orcs and have the half‑orc trait."
+				"The elven magic in your blood manifests as a force you can use to become more appealing or alluring. You can cast 1st‑level {@spell charm} as an arcane innate spell once per day."
 			]
 		},
 		{
@@ -18882,7 +18883,7 @@
 				"Human"
 			],
 			"entries": [
-				"You've familiarized yourself with a particular weapon, potentially from another ancestry or culture. Choose an uncommon simple or martial weapon with a trait corresponding to an ancestry (such as dwarf, goblin, or orc) or that is common in another culture. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a simple weapon.",
+				"You've familiarized yourself with a particular weapon, potentially from another ancestry or culture. Choose an uncommon simple or martial weapon with a trait corresponding to an ancestry (such as {@trait dwarf}, {@trait goblin}, or {@trait orc}) or that is common in another culture. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a simple weapon.",
 				"If you are trained in all martial weapons, you can choose an uncommon advanced weapon with such a trait. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a martial weapon."
 			],
 			"leadsTo": [
@@ -20159,7 +20160,7 @@
 			"prerequisites": "{@feat Wolf Stance}",
 			"requirements": "You are in Wolf Stance.",
 			"entries": [
-				"You rip your enemy off their feet. Make a wolf jaw {@action Strike}. Your wolf jaw gains the fatal d12 trait for this {@action Strike}, and if the attack succeeds, you knock the target {@condition prone}."
+				"You rip your enemy off their feet. Make a wolf jaw {@action Strike}. Your wolf jaw gains the {@trait fatal d12} trait for this {@action Strike}, and if the attack succeeds, you knock the target {@condition prone}."
 			]
 		},
 		{

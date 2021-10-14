@@ -1288,7 +1288,7 @@
 			"prerequisites": "Alchemical {@skill Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
 			"entries": [
 				"You've trained to assassinate your foes, and you do so with tenacity and precision. You gain the Mark for Death activity.",
-				"Mark for Death {@as 3} Requirements You can see and hear the creature you intend to mark; Effect You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your agile and finesse weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
+				"Mark for Death {@as 3} Requirements You can see and hear the creature you intend to mark; Effect You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
 				"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the assassin archetype.",
@@ -3548,7 +3548,7 @@
 			],
 			"prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the brawling weapon group.",
+				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are {@trait agile}, {@trait finesse} unarmed attacks that deal {@damage 1d6} slashing damage and are in the {@group brawling} weapon group.",
 				"If you're a draconic sorcerer, when you cast {@spell dragon claws}, increase the spell's slashing damage die from {@damage d4} to {@damage d6} and increase the resistance to 10 at 1st level, 15 at 5th level, and 20 at 9th level."
 			]
 		},
@@ -4140,9 +4140,9 @@
 				"Abjuration",
 				"Witch"
 			],
-			"trigger": "A creature Casts a Spell that you have prepared.",
+			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
-				"When a foe Casts a Spell and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of."
+				"When a foe {@action Cast a Spell||Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of."
 			],
 			"leadsTo": [
 				"Reflect Spell (Witch)|APG"
@@ -4589,7 +4589,7 @@
 				"Swashbuckler"
 			],
 			"entries": [
-				"Your graceful attacks are especially powerful. When you score a critical hit with an agile or finesse melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an agile or finesse melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly d8 trait instead."
+				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly d8 trait instead."
 			]
 		},
 		{
@@ -8150,7 +8150,7 @@
 			],
 			"prerequisites": "precise strike",
 			"entries": [
-				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an agile or finesse weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
+				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an {@trait agile} or {@trait finesse} weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
 			]
 		},
 		{
@@ -17771,7 +17771,7 @@
 				"Concentrate",
 				"Sorcerer"
 			],
-			"trigger": "An ally Casts a Spell and you are within that spell's range.",
+			"trigger": "An ally {@action Cast a Spell||Casts a Spell} and you are within that spell's range.",
 			"entries": [
 				"You open the power in your blood to your ally's spellcasting, using your magic to boost their range. Your ally can use you as the point of origin for their spell, calculating range and cover from your space instead of their own."
 			]

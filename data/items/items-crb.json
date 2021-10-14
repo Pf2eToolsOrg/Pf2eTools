@@ -21020,7 +21020,7 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This item is the starter kit for an adventurer, containing the essential items for exploration and survival. The Bulk value is for the entire pack together, but see the descriptions of individual items as necessary. The pack contains the following items: a {@item backpack}, a {@item bedroll}, 10 pieces of {@item chalk}, {@item flint and steel}, 50 feet of {@item rope}, 2 weeks' {@item rations}, {@item soap}, 5 {@item torches}, and a {@item waterskin}."
+				"This item is the starter kit for an adventurer, containing the essential items for exploration and survival. The Bulk value is for the entire pack together, but see the descriptions of individual items as necessary. The pack contains the following items: a {@item backpack}, a {@item bedroll}, {@item chalk (10)||10 pieces of chalk}, {@item flint and steel}, {@item rope (50 feet)||50 feet of rope}, 2 weeks' {@item Rations (1 week)||rations}, {@item soap}, 5 {@item torch||torches}, and a {@item waterskin}."
 			]
 		},
 		{
@@ -21097,7 +21097,7 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"You need these tools to create items from raw materials with the {@action Craft} skill. Sterling artisan's tools give you a +1 item bonus to the check. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools. If you wear your artisan's tools, you can draw and replace them as part of the action that uses them."
+				"You need these tools to create items from raw materials with the {@action Craft} skill. Different sets are needed for different work, as determined by the GM; for example, blacksmith's tools differ from woodworker's tools. If you wear your artisan's tools, you can draw and replace them as part of the action that uses them."
 			],
 			"generic": "G",
 			"variants": [
@@ -21120,7 +21120,9 @@
 						"amount": 50,
 						"note": null
 					},
-					"entries": []
+					"entries": [
+						"Sterling artisan's tools give you a +1 item bonus to the check."
+					]
 				}
 			]
 		},
@@ -21155,7 +21157,7 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This book contains the formulas (page 293) for Crafting the common items in this chapter. "
+				"This book contains the formulas (page 293) for Crafting the common items in this chapter."
 			]
 		},
 		{
@@ -21193,8 +21195,15 @@
 			]
 		},
 		{
-			"name": "Candle",
+			"name": "Candle (10)",
 			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": "for price of 10"
+			},
+			"hands": 1,
+			"bulk": null,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21203,8 +21212,49 @@
 			]
 		},
 		{
+			"name": "Chain (10 feet)",
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 4,
+				"note": "for price of 10 feet"
+			},
+			"hands": 2,
+			"bulk": 1,
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+				""
+			]
+		},
+		{
+			"name": "Chalk (10)",
+			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": "for price of 10"
+			},
+			"hands": 1,
+			"bulk": null,
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+				""
+			]
+		},
+		{
 			"name": "Chest",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 6,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21215,11 +21265,44 @@
 		{
 			"name": "Climbing Kit",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're Climbing, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC 5 flat check whenever you critically fail to prevent a fall. You gain a +1 item bonus to Athletics checks to Climb while using an extreme climbing kit. A single kit has only enough materials for one climber; each climber needs their own kit. If you wear your climbing kit, you can access it as part of a Climb action. "
+				"This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're {@action Climb||Climbing}, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC {@flatDC 5} flat check whenever you critically fail to prevent a fall. A single kit has only enough materials for one climber; each climber needs their own kit. If you wear your climbing kit, you can access it as part of a {@action Climb} action."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Climbing Kit",
+					"specificName": "Climbing Kit",
+					"price": {
+						"coin": "sp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Extreme",
+					"specificName": "Extreme Climbing Kit",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"entries": [
+						"You gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} while using an extreme climbing kit."
+					]
+				}
 			]
 		},
 		{
@@ -21235,21 +21318,103 @@
 		{
 			"name": "Compass",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": null,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"A compass helps you Sense Direction or navigate, provided you're in a location with uniform magnetic fields. Without a compass, you take a \u20132 item penalty to these checks (similar to using a shoddy item). A lensatic compass gives you a +1 item bonus to these checks. "
+				"A compass helps you {@action Sense Direction} or navigate, provided you're in a location with uniform magnetic fields. Without a compass, you take a \u20132 item penalty to these checks (similar to using a shoddy item)."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Compass",
+					"specificName": "Compass",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Lensatic",
+					"specificName": "Lensatic Compass",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"A lensatic compass gives you a +1 item bonus to these checks."
+					]
+				}
 			]
 		},
 		{
 			"name": "Crowbar",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"When Forcing Open an object that doesn't have an easy grip, a crowbar makes it easier to gain the necessary leverage. Without a crowbar, prying something open takes a \u20132 item penalty to the Athletics check to Force Open. A levered crowbar grants you a +1 item bonus to Athletics checks to Force Open anything that can be pried open. "
+				"When {@action Force Open||Forcing Open} an object that doesn't have an easy grip, a crowbar makes it easier to gain the necessary leverage. Without a crowbar, prying something open takes a \u20132 item penalty to the {@skill Athletics} check to {@action Force Open}."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Crowbar",
+					"specificName": "Crowbar",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Levered",
+					"specificName": "Levered Crowbar",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"A levered crowbar grants you a +1 item bonus to {@skill Athletics} checks to {@action Force Open} anything that can be pried open."
+					]
+				}
+			]
+		},
+		{
+			"name": "Cookware",
+			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 2,
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
 			]
 		},
 		{
@@ -21257,24 +21422,139 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"price": {
+				"coin": "gp",
+				"amount": 2,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": "L",
 			"source": "CRB",
 			"entries": [
-				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to Impersonate someone using the Deception skill. An elite disguise kit adds a +1 item bonus to relevant checks. If you've crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it. "
+				"This small wooden box contains cosmetics, false facial hair, spirit gum, and a few simple wigs. You usually need a disguise kit to set up a disguise in order to {@action Impersonate} someone using the {@skill Deception} skill. If you've crafted a large number of disguises, you can replenish your cosmetics supply with {@item replacement cosmetics} suitable for the type of your disguise kit. You can draw and replace a worn disguise kit as part of the action that uses it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Disguise Kit",
+					"specificName": "Disguise Kit",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Elite",
+					"specificName": "Elite Disguise Kit",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"entries": [
+						"An elite disguise kit adds a +1 item bonus to relevant checks."
+					]
+				}
+			]
+		},
+		{
+			"name": "Replacement Cosmetics",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": null,
+			"bulk": null,
+			"source": "CRB",
+			"entries": [
+				"If you've crafted a large number of disguises, you can replenish your cosmetics supply with replacement cosmetics suitable for the type of your {@item disguise kit}."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Replacement Cosmetics",
+					"specificName": "Replacement Cosmetics",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Elite Replacement Cosmetics",
+					"specificName": "Elite Replacement Cosmetics",
+					"level": 3,
+					"price": {
+						"coin": "sp",
+						"amount": 5,
+						"note": null
+					},
+					"entries": [
+					]
+				}
 			]
 		},
 		{
 			"name": "Fishing Tackle",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 8,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This kit include a collapsible fishing pole, fishhooks, line, lures, and a fishing net. Professional fishing tackle grants a +1 item bonus to checks to fish. "
+				"This kit include a collapsible fishing pole, fishhooks, line, lures, and a fishing net."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Fishing Tackle",
+					"specificName": "Fishing Tackle",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Professional Fishing Tackle",
+					"specificName": "Professional Fishing Tackle",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"entries": [
+						"Professional fishing tackle grants a +1 item bonus to checks to fish."
+					]
+				}
 			]
 		},
 		{
 			"name": "Flint and Steel",
 			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 5,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": null,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21283,18 +21563,47 @@
 			]
 		},
 		{
-			"name": "Formula Book",
+			"name": "Formula Book (blank)",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; alchemists typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them. "
+				"A formula book holds the formulas necessary to make items other than the common equipment from this chapter; {@class alchemist||alchemists} typically get one for free. Each formula book can hold the formulas for up to 100 different items. Formulas can also appear on parchment sheets, tablets, and almost any other medium; there's no need for you to copy them into a specific book as long as you can keep them on hand to reference them. "
 			]
+		},
+		{
+			"name": "Hammer",
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": "L",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": []
 		},
 		{
 			"name": "Grappling Hook",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21305,18 +21614,84 @@
 		{
 			"name": "Healer's Tools",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 5,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This kit of bandages, herbs, and suturing tools is necessary for Medicine checks to Administer First Aid, Treat Disease, Treat Poison, or Treat Wounds. Expanded healer's tools provide a +1 item bonus to such checks. If you wear your healer's tools, you can draw and replace them as part of the action that uses them. "
+				"This kit of bandages, herbs, and suturing tools is necessary for {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}. If you wear your healer's tools, you can draw and replace them as part of the action that uses them. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Healer's Tools",
+					"specificName": "Healer's Tools",
+					"entries": []
+				},
+				{
+					"type": "Expanded Healer's Tools",
+					"specificName": "Expanded Healer's Tools",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"entries": [
+						"Expanded healer's tools provide a +1 item bonus to such checks."
+					]
+				}
 			]
+		},
+		{
+			"name": "Hourglass",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": "L",
+			"source": "CRB",
+			"entries": []
 		},
 		{
 			"name": "Holly and Mistletoe",
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"price": {
+				"coin": null,
+				"amount": 0,
+				"note": null
+			},
+			"hands": 1,
+			"source": "CRB",
+			"entries": [
+				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
+			]
+		},
+		{
+			"name": "Ladder (10-foot)",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"price": {
+				"coin": "cp",
+				"amount": 3,
+				"note": null
+			},
+			"hands": 2,
+			"bulk": 3,
 			"source": "CRB",
 			"entries": [
 				"Plants of supernatural significance provide a primal focus for primal spellcasters, such as druids, when using certain abilities and casting some spells. A bundle of holly and mistletoe must be held in one hand to use it. Other primal foci exist for druids focused on other aspects of nature. "
@@ -21329,7 +21704,36 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"A lantern sheds bright light and requires 1 pint of oil to function for 6 hours. A bull's‑eye lantern emits its light in a 60‑foot cone (and dim light in the next 60 feet). A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an Interact action. "
+				"A lantern sheds bright light and requires 1 pint of {@item oil (1 pint)||oil} to function for 6 hours."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Bull's Eye",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"bulk": 1,
+					"hands": 1,
+					"entries": [
+						"A bull's‑eye lantern emits its light in a 60‑foot cone (and dim light in the next 60 feet)."
+					]
+				},
+				{
+					"type": "Hooded",
+					"price": {
+						"coin": "sp",
+						"amount": 7,
+						"note": null
+					},
+					"bulk": "L",
+					"hands": 1,
+					"entries": [
+						"A hooded lantern sheds light in a 30‑foot radius (and dim light in the next 30 feet) and is equipped with shutters, which you can close to block the light. Closing or opening the shutters takes an {@action Interact} action."
+					]
+				}
 			]
 		},
 		{
@@ -21337,9 +21741,68 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"hands": 2,
 			"source": "CRB",
 			"entries": [
-				"Picking a poor lock requires two successful DC 15 Thievery checks, a simple lock requires three successful DC 20 Thievery checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40. "
+				"Picking a poor lock requires two successful DC 15 {@skill Thievery} checks, a simple lock requires three successful DC 20 {@skill Thievery} checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Poor",
+					"price": {
+						"coin": "sp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 0,
+					"entries": [
+					]
+				},
+				{
+					"type": "Simple",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 1,
+					"entries": [
+					]
+				},
+				{
+					"type": "Average",
+					"price": {
+						"coin": "gp",
+						"amount": 15,
+						"note": null
+					},
+					"level": 3,
+					"entries": [
+					]
+				},
+				{
+					"type": "Good",
+					"price": {
+						"coin": "gp",
+						"amount": 200,
+						"note": null
+					},
+					"level": 9,
+					"entries": [
+					]
+				},
+				{
+					"type": "Superior",
+					"price": {
+						"coin": "gp",
+						"amount": 4500,
+						"note": null
+					},
+					"level": 17,
+					"entries": [
+					]
+				}
 			]
 		},
 		{
@@ -21347,9 +21810,16 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"level": 3,
+			"price": {
+				"coin": "gp",
+				"amount": 40,
+				"note": null
+			},
+			"hands": 1,
 			"source": "CRB",
 			"entries": [
-				"This quality handheld lens gives you a +1 item bonus to Perception checks to notice minute details of documents, fabric, and the like. "
+				"This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like. "
 			]
 		},
 		{
@@ -21357,14 +21827,80 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"hands": 2,
 			"source": "CRB",
 			"entries": [
-				"You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
+				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Poor",
+					"price": {
+						"coin": "sp",
+						"amount": 2,
+						"note": null
+					},
+					"level": 0,
+					"entries": [
+					]
+				},
+				{
+					"type": "Simple",
+					"price": {
+						"coin": "gp",
+						"amount": 3,
+						"note": null
+					},
+					"level": 1,
+					"entries": [
+					]
+				},
+				{
+					"type": "Average",
+					"price": {
+						"coin": "gp",
+						"amount": 20,
+						"note": null
+					},
+					"level": 3,
+					"entries": [
+					]
+				},
+				{
+					"type": "Good",
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"level": 9,
+					"entries": [
+					]
+				},
+				{
+					"type": "Superior",
+					"price": {
+						"coin": "gp",
+						"amount": 5000,
+						"note": null
+					},
+					"level": 17,
+					"entries": [
+					]
+				}
 			]
 		},
 		{
 			"name": "Material Component Pouch",
 			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 5,
+				"note": null
+			},
+			"hands": 1,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21377,14 +21913,114 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"hands": 2,
 			"source": "CRB",
 			"entries": [
-				"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played. A virtuoso instrument gives a +1 item bonus to Performance checks using that instrument. "
+				"Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while being played."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Handheld",
+					"price": {
+						"coin": "sp",
+						"amount": 8,
+						"note": null
+					},
+					"bulk": 1,
+					"entries": [
+					]
+				},
+				{
+					"type": "Virtuoso Handheld",
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"bulk": 1,
+					"level": 3,
+					"entries": [
+						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
+					]
+				},
+				{
+					"type": "Heavy",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"bulk": 16,
+					"entries": [
+					]
+				},
+				{
+					"type": "Virtuoso Heavy",
+					"price": {
+						"coin": "gp",
+						"amount": 100,
+						"note": null
+					},
+					"level": 3,
+					"bulk": 16,
+					"entries": [
+						"A virtuoso instrument gives a +1 item bonus to {@skill Performance} checks using that instrument."
+					]
+				}
 			]
 		},
 		{
-			"name": "Oil",
+			"name": "Merchant's Scale",
 			"type": "Item",
+			"hands": 2,
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"bulk": "L",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
+			"name": "Mug",
+			"type": "Item",
+			"hands": 1,
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
+			"name": "Mirror",
+			"type": "Item",
+			"hands": 1,
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
+			"name": "Oil (1 pint)",
+			"type": "Item",
+			"hands": 2,
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21395,6 +22031,11 @@
 		{
 			"name": "Piton",
 			"type": "Item",
+			"hands": 1,
+			"price": {
+				"amount": 1,
+				"coin": "cp"
+			},
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21403,18 +22044,66 @@
 			]
 		},
 		{
+			"name": "Rations (1 week)",
+			"type": "Item",
+			"hands": 1,
+			"bulk": "L",
+			"price": {
+				"amount": 4,
+				"coin": "sp",
+				"note": "for one week's worth"
+			},
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
 			"name": "Religious Symbol",
 			"type": "Item",
+			"bulk": "L",
+			"hands": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
 				"This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Wooden",
+					"price": {
+						"coin": "sp",
+						"amount": 1,
+						"note": null
+					},
+					"entries": [
+					]
+				},
+				{
+					"type": "Silver",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": [
+					]
+				}
 			]
 		},
 		{
 			"name": "Religious Text",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21427,14 +22116,64 @@
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
+			"hands": 2,
+			"bulk": 1,
 			"source": "CRB",
 			"entries": [
-				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to Repair items using the Crafting skill. A superb repair kit gives you a +1 item bonus to the check. You can draw and replace a worn repair kit as part of the action that uses it. "
+				"A repair kit allows you to perform simple repairs while traveling. It contains a portable anvil, tongs, woodworking tools, a whetstone, and oils for conditioning leather and wood. You can use a repair kit to {@action Repair} items using the {@skill Crafting} skill. You can draw and replace a worn repair kit as part of the action that uses it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Repair Kit",
+					"price": {
+						"coin": "gp",
+						"amount": 2,
+						"note": null
+					},
+					"entries": [
+					]
+				},
+				{
+					"type": "Superb",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 25,
+						"note": null
+					},
+					"entries": [
+						"A superb repair kit gives you a +1 item bonus to the check."
+					]
+				}
 			]
 		},
 		{
-			"name": "Sack",
+			"name": "Rope (50 feet)",
 			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "sp",
+				"note": "for 50 feet"
+			},
+			"hands": 2,
+			"bulk": "L",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
+			"name": "Sack (5)",
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "cp",
+				"note": "for price of 5"
+			},
+			"hands": 1,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21445,6 +22184,12 @@
 		{
 			"name": "Saddlebags",
 			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "sp"
+			},
+			"hands": 2,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21454,37 +22199,125 @@
 		},
 		{
 			"name": "Scholarly Journal",
+			"level": 3,
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
+			"hands": 1,
+			"bulk": "L",
+			"traits": [
+				"Uncommon"
+			],
 			"entries": [
-				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to Recall Knowledge about the subject, you gain a +1 item bonus to the check. A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city. The GM determines what scholarly journals are available in any location. "
+				"Scholarly journals are uncommon. Each scholarly journal is a folio on a very specific topic, such as vampires or the history of a single town or neighborhood of a city. If you spend 1 minute referencing an academic journal before attempting a skill check to {@action Recall Knowledge} about the subject, you gain a +1 item bonus to the check. The GM determines what scholarly journals are available in any location. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Scholarly Journal",
+					"price": {
+						"coin": "gp",
+						"amount": 6,
+						"note": null
+					},
+					"entries": [
+					]
+				},
+				{
+					"type": "Scholarly Journal Compendium",
+					"level": 3,
+					"hands": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 30,
+						"note": null
+					},
+					"entries": [
+						"A compendium of journals costs five times as much as a single journal and requires both hands to use; each compendium contains several journals and grants its bonus on a broader topic, such as all undead or a whole city."
+					]
+				}
 			]
 		},
 		{
 			"name": "Signal Whistle",
 			"type": "Item",
+			"price": {
+				"amount": 8,
+				"coin": "cp"
+			},
+			"hands": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain. "
+				"When sounded, a signal whistle can be heard clearly up to half a mile away across open terrain."
 			]
 		},
 		{
 			"name": "Snare Kit",
 			"type": "Item",
+			"price": {
+				"amount": 5,
+				"coin": "gp"
+			},
+			"hands": 2,
+			"bulk": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This kit contains tools and materials for creating snares. A snare kit allows you to Craft snares using the Crafting skill. A specialist snare kit gives you a +1 item bonus to the check. You can draw and replace a worn snare kit as part of the action to use it. "
+				"This kit contains tools and materials for creating snares. A snare kit allows you to {@action Craft} snares using the {@skill Crafting} skill. You can draw and replace a worn snare kit as part of the action to use it. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Snare Kit",
+					"price": {
+						"coin": "gp",
+						"amount": 6,
+						"note": null
+					},
+					"entries": [
+					]
+				},
+				{
+					"type": "Specialist",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 55,
+						"note": null
+					},
+					"entries": [
+						"A specialist snare kit gives you a +1 item bonus to the check."
+					]
+				}
 			]
 		},
 		{
-			"name": "Spellbook",
+			"name": "Soap",
 			"type": "Item",
+			"price": {
+				"amount": 2,
+				"coin": "cp"
+			},
+			"hands": 1,
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+			]
+		},
+		{
+			"name": "Spellbook (blank)",
+			"type": "Item",
+			"price": {
+				"amount": 1,
+				"coin": "gp"
+			},
+			"hands": 1,
+			"bulk": "L",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21494,27 +22327,91 @@
 		},
 		{
 			"name": "Spyglass",
+			"price": {
+				"amount": 20,
+				"coin": "gp"
+			},
+			"hands": 2,
+			"bulk": "L",
 			"type": "Item",
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"A typical spyglass lets you see eight times farther than normal. A fine spyglass adds a +1 item bonus to Perception checks to notice details at a distance. "
+				"A typical spyglass lets you see eight times farther than normal."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Spyglass",
+					"entries": [
+					]
+				},
+				{
+					"type": "Fine",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 80,
+						"note": null
+					},
+					"entries": [
+						"A fine spyglass adds a +1 item bonus to {@skill Perception} checks to notice details at a distance."
+					]
+				}
 			]
 		},
 		{
 			"name": "Survey Map",
 			"type": "Item",
+			"level": 3,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
+			"bulk": "L",
+			"hands": 1,
 			"entries": [
-				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to Survival checks and any skill checks to Recall Knowledge, provided the checks are related to the location detailed on the map. Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. The GM determines what maps are available in any location. "
+				"Maps are uncommon. Most maps you can find are simple and functional. A survey map details a single location in excellent detail. One of these maps gives you a +1 item bonus to {@skill Survival} checks and any skill checks to {@action Recall Knowledge}, provided the checks are related to the location detailed on the map. The GM determines what maps are available in any location. "
+			],
+			"traits": [
+				"Uncommon"
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Survey Map",
+					"price": {
+						"coin": "gp",
+						"amount": 10,
+						"note": null
+					},
+					"entries": [
+					]
+				},
+				{
+					"type": "Survey Map Atlas",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"hands": 2,
+					"entries": [
+						"Maps sometimes come in atlases, containing a number of maps of the same quality, often on similar topics. An atlas costs five times as much as a single map and requires both hands to use. "
+					]
+				}
 			]
 		},
 		{
 			"name": "Tack",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 4,
+				"note": null
+			},
+			"bulk": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21525,21 +22422,137 @@
 		{
 			"name": "Ten-Foot Pole",
 			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": 1,
+			"hands": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"When wielding this long pole, you can use Seek to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon. "
+				"When wielding this long pole, you can use {@action Seek} to search a square up to 10 feet away. The pole is not sturdy enough to use as a weapon. "
+			]
+		},
+		{
+			"name": "Replacement Picks",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"hands": null,
+			"bulk": null,
+			"source": "CRB",
+			"entries": [
+				"If your {@item thieves' tools (generic)||thieves' tools} are broken, you can repair them by replacing the lock picks with replacement picks appropriate to your tools; this doesn't require using the {@action Repair} action."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Replacement Picks",
+					"price": {
+						"coin": "sp",
+						"amount": 3,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "Infiltrator",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 3,
+						"note": null
+					},
+					"entries": [
+					]
+				}
+			]
+		},
+		{
+			"name": "Tent",
+			"type": "Item",
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [],
+			"hands": 2,
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Pup",	
+					"price": {
+						"coin": "sp",
+						"amount": 8,
+						"note": null
+					},
+					"bulk": "L",
+					"entries": [
+					]
+				},
+				{
+					"type": "Four-person",
+					"price": {
+						"coin": "gp",
+						"amount": 5,
+						"note": null
+					},
+					"bulk": 1,
+					"entries": [
+					]
+				},
+				{
+					"type": "Pavilion",
+					"level": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 40,
+						"note": null
+					},
+					"bulk": 12,
+					"entries": [
+					]
+				}
 			]
 		},
 		{
 			"name": "Thieves' Tools",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 3,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"You need thieves' tools to Pick Locks or Disable Devices (of some types) using the Thievery skill. Infiltrator thieves' tools add a +1 item bonus to checks to Pick Locks and Disable Devices. If your thieves' tools are broken, you can repair them by replacing the lock picks with replacement picks appropriate to your tools; this doesn't require using the Repair action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+				"You need thieves' tools to {@action Pick a Lock||Pick Locks} or {@action Disable a Device||Disable Devices} (of some types) using the {@skill Thievery} skill. If your thieves' tools are broken, you can repair them by replacing the lock picks with {@item replacement picks} appropriate to your tools; this doesn't require using the {@action Repair} action. If you wear your thieves' tools, you can draw and replace them as part of the action that uses them. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Thieves' Tools",
+					"entries": [
+					]
+				},
+				{
+					"type": "Infiltrator",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 50,
+						"note": null
+					},
+					"hands": 2,
+					"entries": [
+						"Infiltrator thieves' tools add a +1 item bonus to checks to {@action Pick a Lock||Pick Locks} and {@action Disable a Device||Disable Devices}."
+					]
+				}
 			]
 		},
 		{
@@ -21549,7 +22562,34 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing 1d4 damage for a short tool or 1d6 for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed. "
+				"This entry is a catchall for basic hand tools that don't have a specific adventuring purpose. A hoe, shovel, or sledgehammer is a long tool, and a hand drill, ice hook, or trowel is a short tool. A tool can usually be used as an improvised weapon, dealing {@damage 1d4} damage for a short tool or {@damage 1d6} for a long tool. The GM determines the damage type that's appropriate or adjusts the damage if needed. "
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "Long",
+					"price": {
+						"coin": "gp",
+						"amount": 1,
+						"note": null
+					},
+					"bulk": 1,
+					"hands": 2,
+					"entries": [
+					]
+				},
+				{
+					"type": "Short",
+					"price": {
+						"coin": "sp",
+						"amount": 4,
+						"note": null
+					},
+					"bulk": "L",
+					"hands": "1 or 2",
+					"entries": [
+					]
+				}
 			]
 		},
 		{
@@ -21558,6 +22598,13 @@
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
+			"price": {
+				"coin": "cp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
 			"entries": [
 				"A torch sheds bright light in a 20‑foot radius (and dim light to the next 20 feet) for 1 hour. It can be used as an improvised weapon that deals 1d4 bludgeoning damage plus 1 fire damage. "
 			]
@@ -21565,6 +22612,13 @@
 		{
 			"name": "Waterskin",
 			"type": "Item",
+			"price": {
+				"coin": "cp",
+				"amount": 5,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 1,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
@@ -21575,11 +22629,33 @@
 		{
 			"name": "Writing Set",
 			"type": "Item",
+			"price": {
+				"coin": "gp",
+				"amount": 1,
+				"note": null
+			},
+			"bulk": "L",
+			"hands": 2,
 			"category": "Adventuring Gear",
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with extra ink and paper."
+				"Using a writing set, you can draft correspondence and scribe scrolls. A set includes stationery, including a variety of paper and parchment, as well as ink, a quill or inkpen, sealing wax, and a simple seal. If you've written a large amount, you can refill your kit with {@item extra ink and paper}."
+			]
+		},
+		{
+			"name": "Extra Ink and Paper",
+			"type": "Item",
+			"price": {
+				"coin": "sp",
+				"amount": 1,
+				"note": null
+			},
+			"category": "Adventuring Gear",
+			"equipment": true,
+			"source": "CRB",
+			"entries": [
+				"Using a {@item writing set}, you can draft correspondence and scribe scrolls. If you've written a large amount, you can refill your kit with extra ink and paper."
 			]
 		}
 	]
