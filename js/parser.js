@@ -1592,6 +1592,7 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"I": "poison",
 	"L": "lawful",
 	"M": "mental",
+	"Mod": "modular",
 	"N": "sonic",
 	"O": "force",
 	"P": "piercing",
