@@ -3580,8 +3580,8 @@ Renderer.companion = {
 		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
 		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
-		<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>
-		<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>
+		${companion.support ? `<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>` : ""}
+		${companion.maneuver ? `<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>` : ""}
 		${Renderer.action.getCompactRenderedString(companion.maneuver, {noPage: true})}
 		${Renderer.utils.getPageP(companion)}`;
 	},
@@ -3842,7 +3842,7 @@ Renderer.creature = {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
 				renderStack.push(Renderer.get().render(`{@as 1} `))
-				renderStack.push(`${attack.name}`)
+				if (attack.name) renderStack.push(`${attack.name}`)
 				renderStack.push(`</span>`)
 				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
 				renderStack.push(`<span>`)

@@ -7,7 +7,7 @@
 			"entries": [
 				"You were enrolled at a prestigious magical academy, but you've since dropped out. Maybe there was a momentous incident, maybe you had to return to other responsibilities, or perhaps it was just too much for you. Whatever the case, your exit from the academy has shaped your life as much as your entrance and led you to a life of adventure.",
 				"Choose two ability boosts. One must be to Intelligence or Charisma, and one is a free ability boost.",
-				"You're trained in {@skill Arcana} and {@skill Lore|Academia Lore}. You gain the {@feat Dubious Knowledge} skill feat."
+				"You're trained in {@skill Arcana} and {@skill Lore||Academia Lore}. You gain the {@feat Dubious Knowledge} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -48,7 +48,7 @@
 			"entries": [
 				"Astrologers look to the stars for signs and portents, using their positions to chart courses for those living beneath them. As the celestial spheres move, so does fate itself. You studied the stars and learned to divine your path based on their guidance. Whether the stars directly called you to a life of adventure or you use the stars to guide your wanderlust, you're living out the stars' guidance in a life of adventure.",
 				"Choose two ability boosts. One must be to Intelligence or Wisdom, and one is a free ability boost.",
-				"You're trained in {@skill Occultism} and {@skill Lore|Astrology Lore}. You gain the {@feat Oddity Identification} skill feat."
+				"You're trained in {@skill Occultism} and {@skill Lore||Astrology Lore}. You gain the {@feat Oddity Identification} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -73,8 +73,26 @@
 			"entries": [
 				"Your birth has fulfilled a prediction, and people close to you are counting on you to do great things. There's intense pressure on you to be up to the task, and the fickle nature of prophecy complicates your path.",
 				"Choose two ability boosts. One must be to Strength or Charisma, and one is a free ability boost.",
-				"Decide with your GM the basics of the prophecy in which you're meant to play a major part. You're trained in one skill related to the prophecy, and the {@skill Lore|Fortune-Telling Lore} skill. You gain the Prophecy's Pawn free action.",
-				"Prophecy's Pawn {@as F} (abjuration, divine, fortune) Trigger You fail a saving throw, attack roll, or skill check; Effect."
+				"Decide with your GM the basics of the prophecy in which you're meant to play a major part. You're trained in one skill related to the prophecy, and the {@skill Lore||Fortune-Telling Lore} skill. You gain the Prophecy's Pawn free action.",
+				{
+					"type": "ability",
+					"name": "Prophecy's Pawn",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"abjuration",
+						 "divine",
+						 "fortune"
+					],
+					"trigger": "You fail a saving throw, attack roll, or skill check",
+					"entries": [
+						"You twist the prophecy in your favor, which will have consequences later. Reroll the failed check. You must use the result of the second roll.",
+						"For 24 hours afterward, the GM can force you to reroll a successful saving throw, attack roll, or skill check as fate balances the scale.",
+						"This is a {@trait misfortune} effect. You can't use prophecy's pawn again until the GM uses this option or 24 hours pass, whichever comes first."
+					]
+				}
 			],
 			"boosts": [
 				"Strength",
@@ -93,7 +111,7 @@
 				"You've come into contact with a disembodied being of magical essence known as an eidolon.",
 				"You might have forged a powerful conduit with that eidolon, allowing you to manifest it as a summoner, but it's much more likely that you lost contact over time, though not before learning a few half-remembered secrets. If you lost contact, you might have become an adventurer to try to reach the eidolon again, or to be sure that you're rid of it forever.",
 				"Choose two ability boosts. One must be to Constitution or Charisma, and one is a free ability boost.",
-				"You're trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}, and a {@skill Lore} skill for the creature associated with your contacted eidolon (such as {@skill Lore|Angel Lore} or {@skill Lore|Dragon Lore}). You gain the {@feat Dubious Knowledge} skill feat."
+				"You're trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}, and a {@skill Lore} skill for the creature associated with your contacted eidolon (such as {@skill Lore||Angel Lore} or {@skill Lore||Dragon Lore}). You gain the {@feat Dubious Knowledge} skill feat."
 			],
 			"boosts": [
 				"Constitution",
@@ -142,8 +160,8 @@
 				"There are people in this world who possess the ability to pierce the veil between the world of the living and the world of the dead, allowing them to communicate with spirits. You... are not one of them. But you know enough about the occult, as well as cold reading tricks and various practices from local religions, to scam your way into people's coinpurses. Unlike a through-and-through charlatan, there's some real occult methodology behind your flimflam, but that's likely cold comfort to the people you swindle.",
 				"Whether you decided to take a more righteous path, were caught and pledged to make it right, or still slip in a few \"séances\" between adventures, you've taken to an adventuring lifestyle as you move from place to place.",
 				"Choose two ability boosts. One must be to Intelligence or Charisma, and one is a free ability boost.",
-				"You're trained in {@skill Occultism} and {@skill Lore|Fortune-Telling Lore}.",
-				"You gain the {@feat Deceptive Worship|APG} skill feat (Advanced Player's Guide 204)."
+				"You're trained in {@skill Occultism} and {@skill Lore||Fortune-Telling Lore}.",
+				"You gain the {@feat Deceptive Worship|APG} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -169,8 +187,26 @@
 				"You've sought out a powerful genie and requested their blessing, hoping to increase your fortune. Your wish was vague, but fortune and the genie favored you with a more powerful effect than an ordinary wish, granting you bits of wish-twisted luck throughout the rest of your life.",
 				"Meanwhile, other genies of the same kind recognize you as one blessed by one of their most powerful nobles, and might treat you with greater respect or envy.",
 				"Choose two ability boosts. One must be to Charisma, and one is a free ability boost.",
-				"You're trained in the {@skill Diplomacy} skill and the {@skill Lore|Genie Lore} skill. You gain the Wish for Luck free action.",
-				"Wish for Luck {@as F} (arcane, auditory, divination, fortune) Frequency once per day; Trigger You are about to roll an attack roll, saving throw, or skill check; Effect You wish aloud for success. Roll the check twice and take the higher result."
+				"You're trained in the {@skill Diplomacy} skill and the {@skill Lore||Genie Lore} skill. You gain the Wish for Luck free action.",
+				{
+					"type": "ability",
+					"name": "Wish for Luck",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"arcane",
+						"auditory",
+						"divination",
+						"fortune"
+					],
+					"frequency": "once per day",
+					"trigger": "You are about to roll an attack roll, saving throw, or skill check",
+					"entries": [
+						"You wish aloud for success. Roll the check twice and take the higher result."
+					]
+				}
 			],
 			"boosts": [
 				"Charisma",
@@ -194,17 +230,16 @@
 				"At some point in your life, powerful people performed magical experiments on you that changed you permanently.",
 				"You may have signed up for this voluntarily, but it may have been against your will. You still bear the marks, as well as the abilities.",
 				"You gain one ability boost. It must be to Constitution.",
-				"You're trained in {@skill Occultism} and the {@skill Lore|Academia Lore} skill.",
+				"You're trained in {@skill Occultism} and the {@skill Lore||Academia Lore} skill.",
 				"You gain one special ability as a result of the magical experimentation. Work with the GM to select an appropriate ability from the following list or to come up with another special ability.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Enhanced Senses} You gain {@ability low-light vision} (or {@ability darkvision} if you already had {@ability low-light vision}) and an imprecise sense with a range of 30 feet, such as {@ability scent}, thoughtsense, tremorsense, or wavesense.",
+						"{@bold Enhanced Senses} You gain {@ability low-light vision} (or {@ability darkvision} if you already had {@ability low-light vision}) and an imprecise sense with a range of 30 feet, such as {@ability scent}, {@ability thoughtsense}, {@ability tremorsense}, or {@ability wavesense}.",
 						"{@bold Resistant Skin} The experiments rendered your skin tougher and resilient to a particular type of damage. You gain resistance equal to half your level (minimum resistance 1) against two of the following types of energy damage, one chosen by you and the other chosen by the GM: acid, cold, electricity, fire, or sonic.",
-						"{@bold Touch Telepathy} The experiments to your body allowed you to link minds via touch. You gain telepathy with creatures as long as you are in physical contact"
+						"{@bold Touch Telepathy} The experiments to your body allowed you to link minds via touch. You gain telepathy with creatures as long as you are in physical contact. This allows you to communicate mentally with any creatures you're in physical contact with, as long as you both share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."
 					]
-				},
-				"This allows you to communicate mentally with any creatures you're in physical contact with, as long as you both share a language. This doesn't give any special access to their thoughts, and communicates no more information than normal speech would."
+				}
 			],
 			"boosts": [
 				"Constitution"
@@ -223,7 +258,7 @@
 			"entries": [
 				"Selling magic items isn't like being an ordinary merchant. The wares you buy and sell are expensive, making each sale rare and lucrative. You've developed knowledge of expert handiwork to ensure you don't fall for a scam, since buying a single counterfeit item can lead to bankruptcy. Whether you went out of business and had to find alternative employment, or took up adventuring to acquire new merchandise, you've taken to adventuring yourself.",
 				"Choose two ability boosts. One must be to Intelligence or Wisdom, and one is a free ability boost.",
-				"You're trained in {@skill Crafting} and {@skill Lore|Mercantile Lore}. You gain the Crafter's Appraisal skill feat (Advanced Player's Guide 204)."
+				"You're trained in {@skill Crafting} and {@skill Lore||Mercantile Lore}. You gain the {@feat Crafter's Appraisal|APG} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -245,7 +280,7 @@
 			"entries": [
 				"You don't understand folks who claim that magical talent is some sort of burden or great responsibility; you've always used your magic to cause trouble and to escape the consequences. Whether becoming an adventurer is your attempt to make amends or just a new way to make some mischief, you're excited to see where it takes you, and you still delight in using your skills to get out of trouble.",
 				"Choose two ability boosts. One must be to Intelligence or Dexterity, and one is a free ability boost.",
-				"You're trained in {@skill Arcana} and {@skill Lore|Underworld Lore}. You gain the {@feat Trick Magic Item} skill feat."
+				"You're trained in {@skill Arcana} and {@skill Lore||Underworld Lore}. You gain the {@feat Trick Magic Item} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -267,7 +302,7 @@
 			"entries": [
 				"Ever since you were young, you've been almost supernaturally skilled in a particular type of music. The people around you were sure you'd grow up to perform at royal courts or to become a world-famous composer, but you've chosen a life of adventure instead. You might have given up on those dreams to find your own meaning, or you might find that adventuring allows you to experience unfiltered emotions and exploits that you can translate into a wondrous symphony some day.",
 				"Choose two ability boosts. One must be to Dexterity or Charisma, and one is a free ability boost.",
-				"You're trained in {@skill Performance} and {@skill Lore|Music Lore}. You gain the {@feat Virtuosic Performer} skill feat."
+				"You're trained in {@skill Performance} and {@skill Lore||Music Lore}. You gain the {@feat Virtuosic Performer} skill feat."
 			],
 			"boosts": [
 				"Dexterity",
@@ -316,7 +351,7 @@
 			"entries": [
 				"Hours spent reading numerous compendiums dedicated to various occult topics honed your knowledge of these more obscure magical arts. You might have taken to adventuring to finance your acquisition of rare tomes, to explore occult mysteries that can't be found in the pages of a book, or perhaps to put your skills to the test.",
 				"Choose two ability boosts. One must be to Intelligence or Wisdom, and one is a free ability boost.",
-				"You're trained in the {@skill Occultism} skill and the {@skill Lore|Academia Lore} skill. You gain the {@feat Schooled in Secrets|APG} skill feat (Advanced Player's Guide 208)."
+				"You're trained in the {@skill Occultism} skill and the {@skill Lore||Academia Lore} skill. You gain the {@feat Schooled in Secrets|APG} skill feat."
 			],
 			"boosts": [
 				"Intelligence",
@@ -338,7 +373,7 @@
 			"entries": [
 				"You've always had a green thumb, allowing you to care for plants that others found too difficult to grow and tend with a skill that borders on the magical. As you travel, you encounter all sorts of new plants and plant creatures, allowing you to expand your horizons and deepen your understanding of flora.",
 				"Choose two ability boosts. One must be to Wisdom or Charisma, and one is a free ability boost.",
-				"You're trained in {@skill Nature} and {@skill Lore|Plant Lore}. You gain the Natural {@skill Medicine} skill feat."
+				"You're trained in {@skill Nature} and {@skill Lore||Plant Lore}. You gain the Natural {@skill Medicine} skill feat."
 			],
 			"boosts": [
 				"Wisdom",
@@ -363,7 +398,7 @@
 			"entries": [
 				"You have long been gifted with the ability to see and speak with the departed. This could have manifested at your birth or when a chance encounter linked you inextricably to the spirits of the dead. Their constant presence might feel like a curse, or it might provide you with welcome companionship.",
 				"You gain one ability boost. It must be to Constitution or Wisdom.",
-				"You're trained in {@skill Religion} and {@skill Lore|Undead Lore}. You gain the effects of the {@spell spirit sense|APG} spell (Advanced Player's Guide 225) at all times."
+				"You're trained in {@skill Religion} and {@skill Lore||Undead Lore}. You gain the effects of the {@spell spirit sense|APG} spell at all times."
 			],
 			"boosts": [
 				"Constitution",
@@ -384,10 +419,10 @@
 				"Rare"
 			],
 			"entries": [
-				"During a sea voyage, you washed overboard, ingested sea water, and drowned. Merfolk, kelpies, sea serpents, or another magical denizen of the sea pulled your {@condition unconscious} body from the briny depths. Having spent so much time underwater, your lungs were filled with salt water. To restore your ability to breathe, they exhaled into your lungs and shared the ability to breathe underwater in the process. You came back with the ability to breathe water, as well as a newfound knowledge of your time beneath the waves.",
+				"During a sea voyage, you washed overboard, ingested sea water, and drowned. Merfolk, kelpies, sea serpents, or another magical denizen of the sea pulled your unconscious body from the briny depths. Having spent so much time underwater, your lungs were filled with salt water. To restore your ability to breathe, they exhaled into your lungs and shared the ability to breathe underwater in the process. You came back with the ability to breathe water, as well as a newfound knowledge of your time beneath the waves.",
 				"You gain one ability boost. It must be to Strength, Constitution, or Charisma.",
-				"You're trained in the {@skill Athletics} skill and the {@skill Lore|Ocean Lore} skill. You have the ability to breathe underwater.",
-				"Special You can choose to lose the ability to breathe air when you take this background, making you only able to breathe underwater. If you do, you gain a second ability boost, which is a free ability boost."
+				"You're trained in the {@skill Athletics} skill and the {@skill Lore||Ocean Lore} skill. You have the ability to breathe underwater.",
+				"{@b Special} You can choose to lose the ability to breathe air when you take this background, making you only able to breathe underwater. If you do, you gain a second ability boost, which is a free ability boost."
 			],
 			"boosts": [
 				"Strength",
@@ -407,8 +442,9 @@
 			"source": "SoM",
 			"page": 29,
 			"entries": [
-				"Forget the church orthodoxy and the stuffy cloisters\u2014 spreading the word of your god to the people is your calling. You've preached on the street corners and in public houses, to wanderers on the road and to captives in the stocks. Adventuring can take you across the world. What vocation could better serve to take your holy words to fresh ears? Choose two ability boosts. One must be to Wisdom or Charisma, and one is a free ability boost.",
-				"You're trained in the {@skill Religion} skill and the {@skill Lore} skill for your patron deity. You gain the {@feat Dubious Knowledge} skill feat (Advanced Player's Guide 208)."
+				"Forget the church orthodoxy and the stuffy cloisters\u2014 spreading the word of your god to the people is your calling. You've preached on the street corners and in public houses, to wanderers on the road and to captives in the stocks. Adventuring can take you across the world. What vocation could better serve to take your holy words to fresh ears?",
+				"Choose two ability boosts. One must be to Wisdom or Charisma, and one is a free ability boost.",
+				"You're trained in the {@skill Religion} skill and the {@skill Lore} skill for your patron deity. You gain the {@feat Dubious Knowledge} skill feat."
 			],
 			"boosts": [
 				"Wisdom",
@@ -430,9 +466,7 @@
 			"entries": [
 				"You are currently enrolled at a school of magic, where you're learning the fundamentals of your magical tradition. Whether your adventuring occurs during breaks between semesters, as part of a work study program, or even within the halls of the academy itself, you'll have to learn to juggle your dual life.",
 				"Choose two ability boosts. One must be to Intelligence or Wisdom, and one is a free ability boost.",
-				"You're trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}, as well as {@skill Lore|Academia Lore}. You gain the {@feat Recognize Spell} skill feat.",
-				"These rare backgrounds can give a player a significantly different roleplaying experience by setting their character up with a history or legacy beyond the norm.",
-				"Whether a character with the chosen one background has been prophesied to achieve a goal that's part of the main plot of the campaign or a side quest just for them, the character is situated in a special position within the narrative. Your character's background is an intrinsic part of where they come from and not something they earn during the game. Rare backgrounds should be chosen only after a discussion between the GM and the other players as to whether one would apply for a particular character in your group's game."
+				"You're trained in your choice of {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}, as well as {@skill Lore||Academia Lore}. You gain the {@feat Recognize Spell} skill feat."
 			],
 			"boosts": [
 				"Intelligence",

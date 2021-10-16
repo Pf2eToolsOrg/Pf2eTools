@@ -19,7 +19,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				},
 				{
 					"range": "Melee",
@@ -27,7 +27,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@dice 1d6} slashing"
+					"damage": "{@damage 1d6} slashing"
 				}
 			],
 			"abilityMods": {
@@ -54,7 +54,7 @@
 				"burrow": 10,
 				"climb": 10
 			},
-			"support": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a Step action (unless it can Step through difficult terrain) until it moves from its current position.",
+			"support": "Your badger digs around your foe's position, interfering with its footing. Until the start of your next turn, if you hit and deal damage to a creature your badger threatens, the target can't use a {@action Step} action (unless it can {@action Step} through difficult terrain) until it moves from its current position.",
 			"maneuver": {
 				"name": "Badger Rage",
 				"source": "CRB",
@@ -69,15 +69,15 @@
 					"Emotion",
 					"Mental"
 				],
-				"requirements": "The badger isn't fatigued or raging.",
+				"requirements": "The badger isn't {@condition fatigued} or raging.",
 				"entries": [
-					"The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls unconscious, whichever comes first. It can't voluntarily stop raging. While raging, the badger is affected in the following ways.",
+					"The badger enters a state of pure rage that lasts for 1 minute, until there are no enemies it can perceive, or until it falls {@condition unconscious}, whichever comes first. It can't voluntarily stop raging. While raging, the badger is affected in the following ways.",
 					{
 						"type": "list",
 						"items": [
 							"It deals 4 additional damage with its bite attacks and 2 additional damage with its claw attacks.",
 							"It takes a \u20131 penalty to AC",
-							"It can't use actions that have the concentrate trait unless they also have the rage trait. The animal companion can Seek even while raging."
+							"It can't use actions that have the {@trait concentrate} trait unless they also have the {@trait rage} trait. The animal companion can {@action Seek} even while raging."
 						]
 					},
 					"After it has stopped raging, it can't use Badger Rage again for 1 minute."
@@ -107,7 +107,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -165,7 +165,7 @@
 				{
 					"range": "Melee",
 					"name": "fist",
-					"damage": "{@dice 1d8} bludgeoning"
+					"damage": "{@damage 1d8} bludgeoning"
 				}
 			],
 			"abilityMods": {
@@ -218,7 +218,7 @@
 					"type": "pf2-h3",
 					"name": "Arboreal Sapling",
 					"entries": [
-						"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the plant trait instead of the animal trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid||animal order druids|animal} who are also members of the {@class druid||leaf order|leaf}."
+						"Your companion is a walking tree, a cousin of the great arboreal wardens and regents. An arboreal sapling has the {@trait plant} trait instead of the {@trait animal} trait, but it otherwise functions normally as an animal companion. They are typically only selected by {@class druid||animal order druids|animal} who are also members of the {@class druid||leaf order|leaf}."
 					]
 				}
 			],
@@ -227,7 +227,7 @@
 				{
 					"range": "Melee",
 					"name": "branch",
-					"damage": "{@dice 1d8} bludgeoning"
+					"damage": "{@damage 1d8} bludgeoning"
 				}
 			],
 			"abilityMods": {
@@ -288,7 +288,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				},
 				{
 					"range": "Melee",
@@ -297,7 +297,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@dice 1d4} slashing"
+					"damage": "{@damage 1d4} slashing"
 				}
 			],
 			"abilityMods": {
@@ -357,7 +357,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				},
 				{
 					"range": "Melee",
@@ -365,7 +365,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@dice 1d6} slashing"
+					"damage": "{@damage 1d6} slashing"
 				}
 			],
 			"abilityMods": {
@@ -438,7 +438,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@dice 1d4} slashing"
+					"damage": "{@damage 1d4} slashing"
 				}
 			],
 			"abilityMods": {
@@ -497,7 +497,7 @@
 				{
 					"range": "Melee",
 					"name": "tusk",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -559,7 +559,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				},
 				{
 					"range": "Melee",
@@ -568,7 +568,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@dice 1d4} slashing"
+					"damage": "{@damage 1d4} slashing"
 				}
 			],
 			"abilityMods": {
@@ -628,7 +628,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				}
 			],
 			"abilityMods": {
@@ -694,7 +694,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				}
 			],
 			"abilityMods": {
@@ -759,7 +759,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				},
 				{
 					"range": "Melee",
@@ -768,7 +768,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@dice 1d4} slashing"
+					"damage": "{@damage 1d4} slashing"
 				}
 			],
 			"abilityMods": {
@@ -826,7 +826,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				},
 				{
 					"range": "Melee",
@@ -834,7 +834,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d6} bludgeoning"
+					"damage": "{@damage 1d6} bludgeoning"
 				}
 			],
 			"abilityMods": {
@@ -897,7 +897,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				},
 				{
 					"range": "Melee",
@@ -906,7 +906,7 @@
 						"agile",
 						"finesse"
 					],
-					"damage": "{@dice 1d6} slashing"
+					"damage": "{@damage 1d6} slashing"
 				}
 			],
 			"abilityMods": {
@@ -968,7 +968,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@dice 1d6} bludgeoning"
+					"damage": "{@damage 1d6} bludgeoning"
 				}
 			],
 			"abilityMods": {
@@ -1034,7 +1034,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1060,7 +1060,7 @@
 				"swim": null
 			},
 			"special": "mount",
-			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena's reach with a Strike, the creature becomes {@condition frightened} 1.",
+			"support": "The hyena mockingly yowls at your enemies and bites at them when you create an opening. Until the start of your next turn, each time you hit a creature in the hyena's reach with a {@action Strike}, the creature becomes {@condition frightened} 1.",
 			"maneuver": {
 				"name": "Gnaw",
 				"source": "AoA5",
@@ -1072,7 +1072,7 @@
 				},
 				"requirements": "The animal companion's last action was a successful jaws {@action Strike}",
 				"entries": [
-					"The Strike's target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u201310-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a specialized animal companion, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
+					"The {@action Strike}'s target takes {@damage 1d6} {@condition persistent damage||persistent bleed damage} and takes a \u201310-foot status penalty to its Speed until it removes the bleed damage. If the hyena is a specialized animal companion, the {@condition persistent damage||persistent bleed damage} increases to {@damage 2d6}."
 				]
 			}
 		},
@@ -1095,7 +1095,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1121,7 +1121,7 @@
 				"swim": null
 			},
 			"special": "mount",
-			"support": "The monitor lizard distracts an adjacent opponent with snapping jaws and rapid movements. Until the start of your next turn, if your {@action Strike} damages a foe, any time the foe attempts an action with the manipulate trait until the end of your next turn, it must attempt a DC {@flatDC 5} flat check. On a failure, the action is disrupted.",
+			"support": "The monitor lizard distracts an adjacent opponent with snapping jaws and rapid movements. Until the start of your next turn, if your {@action Strike} damages a foe, any time the foe attempts an action with the {@trait manipulate} trait until the end of your next turn, it must attempt a DC {@flatDC 5} flat check. On a failure, the action is disrupted.",
 			"maneuver": {
 				"name": "Lurching Rush",
 				"source": "EC4",
@@ -1158,12 +1158,12 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				},
 				{
 					"range": "Melee",
 					"name": "tail",
-					"damage": "{@dice 1d6} piercing"
+					"damage": "{@damage 1d6} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1223,7 +1223,7 @@
 				{
 					"range": "Melee",
 					"name": "stinger",
-					"damage": "{@dice 1d6} piercing plus poison"
+					"damage": "{@damage 1d6} piercing plus poison"
 				},
 				{
 					"range": "Melee",
@@ -1231,7 +1231,7 @@
 					"traits": [
 						"agile"
 					],
-					"damage": "{@dice 1d6} slashing"
+					"damage": "{@damage 1d6} slashing"
 				}
 			],
 			"abilityMods": {
@@ -1256,7 +1256,7 @@
 				"swim": null
 			},
 			"special": "The scorpion's stinger attack deals an additional {@damage 1d4} poison damage or {@damage 2d4} poison damage if the scorpion is a specialized companion.",
-			"support": "Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your scorpion's reach also deal {@damage 1d6} persistent poison damage. If your scorpion is nimble or savage, the persistent poison damage increases to {@damage 2d6}.",
+			"support": "Your scorpion drips poison from its stinger when you create an opening. Until the start of your next turn, your {@action Strike||Strikes} that damage a creature in your scorpion's reach also deal {@damage 1d6} {@condition persistent damage ||persistent poison damage}. If your scorpion is nimble or savage, the {@condition persistent damage ||persistent poison damage} increases to {@damage 2d6}.",
 			"maneuver": {
 				"name": "Grab and Sting",
 				"source": "APG",
@@ -1290,7 +1290,7 @@
 				{
 					"range": "Melee",
 					"name": "jaws",
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1315,8 +1315,8 @@
 				"burrow": null,
 				"swim": 40
 			},
-			"special": "The shark has the aquatic trait. Its blood scent enables it to smell blood in the water from up to 1 mile away.",
-			"support": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a Strike and deal slashing or piercing damage, the creature takes {@damage 1d8} slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to {@damage 2d8}.",
+			"special": "The shark has the {@trait aquatic} trait. Its blood scent enables it to smell blood in the water from up to 1 mile away.",
+			"support": "When your shark senses blood, it tears into your enemies. Until the start of your next turn, each time you hit a creature in the shark's reach with a {@action Strike} and deal slashing or piercing damage, the creature takes {@damage 1d8} slashing damage from the shark. If your shark is nimble or savage, the slashing damage increases to {@damage 2d8}.",
 			"maneuver": {
 				"name": "Shred",
 				"source": "APG",
@@ -1354,7 +1354,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1417,7 +1417,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1482,7 +1482,7 @@
 					"traits": [
 						"finesse"
 					],
-					"damage": "{@dice 1d8} piercing"
+					"damage": "{@damage 1d8} piercing"
 				}
 			],
 			"abilityMods": {
@@ -1656,11 +1656,11 @@
 							"type": "list",
 							"items": [
 								"{@b Abjuration} The cub gains a +1 status bonus to AC.",
-								"{@b Conjuration} A cloud of fog appears in a 5-foot burst centered on a corner of the cub's space. Anything in the cloud is concealed.",
+								"{@b Conjuration} A cloud of fog appears in a 5-foot burst centered on a corner of the cub's space. Anything in the cloud is {@condition concealed}.",
 								"{@b Divination} The cub gains a +1 status bonus to skill checks.",
 								"{@b Enchantment} The cub gains a +1 status bonus to saves.",
 								"{@b Evocation} Magical feedback deals {@damage 1d6} force damage for every 2 levels you have to the triggering spellcaster (basic Reflex save using your class DC or spell DC, whichever is higher).",
-								"{@b Illusion} The cub becomes {@condition invisible}. This effect ends if the cub uses a hostile action, in addition to the normal end conditions.",
+								"{@b Illusion} The cub becomes {@condition invisible}. This effect ends if the cub uses a {@condition hostile} action, in addition to the normal end conditions.",
 								"{@b Necromancy} The cub gains temporary HP equal to your level.",
 								"{@b Transmutation} The cub gains a +1 status bonus to attack rolls."
 							]
@@ -1874,7 +1874,7 @@
 					],
 					"frequency": "once per 10 minutes",
 					"entries": [
-						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. Any effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
+						"The shadow familiar makes a melee attack with an attack roll modifier equal to your spell attack roll modifier. If the {@action Strike} is successful, the target is {@condition enfeebled} 1 and its shadow disappears. After 24 hours, the {@condition enfeebled} condition ends, and they regain their shadow once more. {@trait Any} effect that reduces or removes the {@condition enfeebled} condition restores their shadow as well.",
 						"This action has the trait matching your tradition of magic, or {@trait occult} if you aren't a spellcaster."
 					]
 				}
@@ -1929,7 +1929,7 @@
 					"type": "pf2-h3",
 					"name": "Spellslime",
 					"entries": [
-						"These friendly, colorful oozes congeal from the essences left over from casting spells. They are extremely loyal to their masters. You can select a spellslime familiar only if you can cast spells using spell slots."
+						"These {@condition friendly}, colorful oozes congeal from the essences left over from casting spells. They are extremely loyal to their masters. You can select a spellslime familiar only if you can cast spells using spell slots."
 					]
 				}
 			]
@@ -1942,7 +1942,7 @@
 			"page": 147,
 			"type": "Master",
 			"entries": [
-				"Once every 10 minutes, you can use a single action with the concentrate trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can {@action Dismiss} this effect."
+				"Once every 10 minutes, you can use a single action with the {@trait concentrate} trait to project your senses into your familiar. When you do, you lose all sensory information from your own body, but can sense through your familiar's body for up to 1 minute. You can {@action Dismiss} this effect."
 			]
 		},
 		{
@@ -1960,7 +1960,7 @@
 			"page": 147,
 			"type": "Familiar",
 			"entries": [
-				"You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar Interact to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
+				"You can command your familiar to deliver you items more efficiently. Your familiar doesn't use its 2 actions immediately upon your command. Instead, up to twice before the end of your turn, you can have your familiar {@action Interact} to retrieve an item of light or negligible Bulk you are wearing and place it into one of your free hands. The familiar can't use this ability to retrieve stowed items. If the familiar has a different number of actions, it can retrieve one item for each action it has when commanded this way."
 			]
 		},
 		{
@@ -2023,7 +2023,7 @@
 			"page": 146,
 			"type": "Familiar",
 			"entries": [
-				"Your homunculus familiar has a reservoir for poison, allowing it to apply an injury poison to an adjacent ally's exposed weapon with a single Interact action. You must supply the poison and instill it into this reservoir using two consecutive {@action Interact} actions. You must have a homunculus familiar to select this ability."
+				"Your homunculus familiar has a reservoir for poison, allowing it to apply an injury poison to an adjacent ally's exposed weapon with a single {@action Interact} action. You must supply the poison and instill it into this reservoir using two consecutive {@action Interact} actions. You must have a homunculus familiar to select this ability."
 			]
 		},
 		{
@@ -2095,7 +2095,7 @@
 			"page": 229,
 			"type": "Familiar",
 			"entries": [
-				"Your familiar gains the Shadow Step action. You must be at least 7th level to select this familiar ability for your familiar.",
+				"Your familiar gains the Shadow {@action Step} action. You must be at least 7th level to select this familiar ability for your familiar.",
 				{
 					"type": "ability",
 					"name": "Shadow Step",
@@ -2194,7 +2194,7 @@
 			"page": 218,
 			"type": "Familiar",
 			"entries": [
-				"It can use your Quick Alchemy action. You must have Quick Alchemy, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
+				"It can use your {@action Quick Alchemy} action. You must have {@action Quick Alchemy}, and your familiar must be in your space. This has the same cost and requirement as if you used it. It must have the manual dexterity ability to select this."
 			]
 		},
 		{
@@ -2248,7 +2248,7 @@
 			"page": 218,
 			"type": "Master",
 			"entries": [
-				"Once per day, your familiar can use 2 actions with the concentrate trait to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
+				"Once per day, your familiar can use 2 actions with the {@trait concentrate} trait to regain 1 Focus Point, up to your usual maximum You must have a focus pool to select this."
 			]
 		},
 		{
@@ -2257,7 +2257,7 @@
 			"page": 218,
 			"type": "Master",
 			"entries": [
-				"If your familiar would be reduced to 0 HP by damage, as a reaction with the concentrate trait, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
+				"If your familiar would be reduced to 0 HP by damage, as a reaction with the {@trait concentrate} trait, you can take the damage. If you do, you take all the damage and your familiar takes none. However, if special effects when a hit damages your familiar (such as snake venom) still apply to your familiar."
 			]
 		},
 		{
@@ -2339,8 +2339,8 @@
 				}
 			],
 			"skills": [
-				"Diplomacy",
-				"Religion"
+				"{@skill Diplomacy}",
+				"{@skill Religion}"
 			],
 			"senses": {
 				"other": [
@@ -2438,8 +2438,8 @@
 				}
 			],
 			"skills": [
-				"Intimidation",
-				"Occultism"
+				"{@skill Intimidation}",
+				"{@skill Occultism}"
 			],
 			"senses": {
 				"precise": [],
@@ -2463,7 +2463,7 @@
 					"name": "Furious Strike",
 					"type": "initial",
 					"entries": [
-						"Your eidolon can infuse an attack with unmitigated rage. It gains the Furious Strike activity.",
+						"Your eidolon can infuse an attack with unmitigated rage. It gains the Furious {@action Strike} activity.",
 						{
 							"activity": {
 								"number": 2,
@@ -2515,7 +2515,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your eidolon exudes wrath in an aura around it, rousing the ire of nearby creatures and causing their defenses to crack as they seethe with rage. Your eidolon gains a 20-foot anger aura, which has the {@trait aura}, {@trait emotion}, {@trait enchantment}, {@trait mental}, and {@trait occult} traits. The resistances of any creature in the aura, including you, your allies, your enemies, and your eidolon, are reduced by an amount equal to 3 + your eidolon's Constitution modifier. Your eidolon can hold in its rage by spending a single action, which has the {@trait concentrate} trait. This reduces the aura's effect to affect only your eidolon. It can take this action again to reinstate the full effect of its aura. Creatures in a barbarian {@action Rage}, Seething Frenzy, or similar ability that allows them to channel their anger aren't affected by the anger aura."
+						"Your eidolon exudes wrath in an aura around it, rousing the ire of nearby creatures and causing their defenses to crack as they seethe with rage. Your eidolon gains a 20-foot anger aura, which has the {@trait aura}, {@trait emotion}, {@trait enchantment}, {@trait mental}, and {@trait occult} traits. The resistances of any creature in the aura, including you, your allies, your enemies, and your eidolon, are reduced by an amount equal to 3 + your eidolon's Constitution modifier. Your eidolon can hold in its rage by spending a single action, which has the {@trait concentrate} trait. This reduces the aura's effect to affect only your eidolon. It can take this action again to reinstate the full effect of its aura. Creatures in a barbarian Rage, Seething Frenzy, or similar ability that allows them to channel their anger aren't affected by the anger aura."
 					]
 				}
 			]
@@ -2577,8 +2577,8 @@
 				}
 			],
 			"skills": [
-				"Intimidation",
-				"Nature"
+				"{@skill Intimidation}",
+				"{@skill Nature}"
 			],
 			"senses": {
 				"precise": [],
@@ -2730,8 +2730,8 @@
 				}
 			],
 			"skills": [
-				"Arcana",
-				"Crafting"
+				"{@skill Arcana}",
+				"{@skill Crafting}"
 			],
 			"senses": {
 				"precise": [],
@@ -2755,7 +2755,7 @@
 					"name": "Construct Heart",
 					"type": "initial",
 					"entries": [
-						"Your construct eidolon has a link directly to your life force, which renders it a living creature and therefore susceptible to many ailments that bother only the living, though it does possess some resistances to these effects. It doesn't have a construct's normal immunities, but does gain a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, {@trait necromancy}, and {@trait poison} effects, as well as effects causing the {@condition fatigued} or {@condition sickened} conditions. Additionally, its astral essence bleeds off slowly, and it only needs to succeed at a DC {@flatDC 10} flat check to remove persistent bleed damage (or DC {@flatDC 5} after receiving particularly effective aid)."
+						"Your construct eidolon has a link directly to your life force, which renders it a living creature and therefore susceptible to many ailments that bother only the living, though it does possess some resistances to these effects. It doesn't have a construct's normal immunities, but does gain a +2 circumstance bonus to saving throws against {@trait death} effects, {@trait disease}, {@trait necromancy}, and {@trait poison} effects, as well as effects causing the {@condition fatigued} or {@condition sickened} conditions. Additionally, its astral essence bleeds off slowly, and it only needs to succeed at a DC {@flatDC 10} flat check to remove {@condition persistent damage ||persistent bleed damage} (or DC {@flatDC 5} after receiving particularly effective aid)."
 					]
 				},
 				{
@@ -2842,8 +2842,8 @@
 				}
 			],
 			"skills": [
-				"Intimidation",
-				"Religion"
+				"{@skill Intimidation}",
+				"{@skill Religion}"
 			],
 			"senses": {
 				"precise": [],
@@ -2912,7 +2912,7 @@
 					"type": "transcendence",
 					"level": 17,
 					"entries": [
-						"Your demon utters indescribable words writhing with its associated sin. It can cast an evil {@spell divine decree} once per day as a 9th-level spell. You are unaffected by this decree, even if you aren't evil. At 19th level, this becomes a 10th-level divine decree instead."
+						"Your demon utters indescribable words writhing with its associated sin. It can cast an evil {@spell divine decree} once per day as a 9th-level spell. You are unaffected by this decree, even if you aren't evil. At 19th level, this becomes a 10th-level {@spell divine decree} instead."
 					]
 				}
 			]
@@ -2975,8 +2975,8 @@
 				}
 			],
 			"skills": [
-				"Medicine",
-				"Occultism"
+				"{@skill Medicine}",
+				"{@skill Occultism}"
 			],
 			"senses": {
 				"precise": [],
@@ -3028,7 +3028,7 @@
 					"type": "symbiosis",
 					"level": 7,
 					"entries": [
-						"Your eidolon's dedication makes it extremely challenging for your foes to bend its mind. Your eidolon gains a +2 circumstance bonus to saving throws against {@trait mental} effects, and if they roll a success against such an effect, they get a critical success instead. If you have the shared resolve class feature and your eidolon rolls a critical failure against a mental effect, they get a failure instead."
+						"Your eidolon's dedication makes it extremely challenging for your foes to bend its mind. Your eidolon gains a +2 circumstance bonus to saving throws against {@trait mental} effects, and if they roll a success against such an effect, they get a critical success instead. If you have the shared resolve class feature and your eidolon rolls a critical failure against a {@trait mental} effect, they get a failure instead."
 					]
 				},
 				{
@@ -3099,8 +3099,8 @@
 				}
 			],
 			"skills": [
-				"Arcana",
-				"Intimidation"
+				"{@skill Arcana}",
+				"{@skill Intimidation}"
 			],
 			"senses": {
 				"precise": [],
@@ -3254,8 +3254,8 @@
 				}
 			],
 			"skills": [
-				"Deception",
-				"Nature"
+				"{@skill Deception}",
+				"{@skill Nature}"
 			],
 			"senses": {
 				"precise": [],
@@ -3358,8 +3358,8 @@
 				}
 			],
 			"skills": [
-				"Nature",
-				"Survival"
+				"{@skill Nature}",
+				"{@skill Survival}"
 			],
 			"senses": {
 				"precise": [],
@@ -3383,7 +3383,7 @@
 					"name": "Tendril Strike",
 					"type": "initial",
 					"entries": [
-						"Your eidolon can stretch out vines and roots, attacking foes outside its reach. It gains the Tendril Strike action.",
+						"Your eidolon can stretch out vines and roots, attacking foes outside its reach. It gains the Tendril {@action Strike} action.",
 						{
 							"type": "ability",
 							"style": "full",
@@ -3504,8 +3504,8 @@
 				}
 			],
 			"skills": [
-				"Intimidation",
-				"Religion"
+				"{@skill Intimidation}",
+				"{@skill Religion}"
 			],
 			"senses": {
 				"precise": [],
