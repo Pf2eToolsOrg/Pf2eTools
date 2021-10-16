@@ -182,12 +182,12 @@
 					"page": 16,
 					"name": "Class Features",
 					"entries": [
-						"You gain these abilities as an inventor. Abilities gained at higher levels list the level at which you gain them next to the features’ names."
+						"You gain these abilities as an inventor. Abilities gained at higher levels list the level at which you gain them next to the features' names."
 					]
 				}
 			],
 			"flavor": [
-				"Any tinkerer can follow a diagram to make a device, but you invent the impossible! Every strange contraption you dream up is a unique experiment pushing the edge of possibility, a mysterious machine that seems to work for only you. You’re always on the verge of the next great breakthrough, and every trial and tribulation is another opportunity to test and tune. If you can dream it, you can build it."
+				"Any tinkerer can follow a diagram to make a device, but you invent the impossible! Every strange contraption you dream up is a unique experiment pushing the edge of possibility, a mysterious machine that seems to work for only you. You're always on the verge of the next great breakthrough, and every trial and tribulation is another opportunity to test and tune. If you can dream it, you can build it."
 			],
 			"fluff": [
 				{
@@ -195,7 +195,7 @@
 					"page": 15,
 					"name": "During combat Encounters...",
 					"entries": [
-						"You rely on your inventions as much as possible, testing their functionalities under a variety of conditions. You don’t set out to achieve anything as banal as simply winning a fight; you seek to collect valuable data that can be used to improve your creations!"
+						"You rely on your inventions as much as possible, testing their functionalities under a variety of conditions. You don't set out to achieve anything as banal as simply winning a fight; you seek to collect valuable data that can be used to improve your creations!"
 					]
 				},
 				{
@@ -203,7 +203,7 @@
 					"page": 15,
 					"name": "During social encounters...",
 					"entries": [
-						"You provide useful context when discussing a variety of academic topics, particularly when speaking about those subjects related to crafting and invention. You might often look for opportunities to acquire patronage to fund some of your more expensive or unorthodox experiments. After all, the materials needed to assemble your inventions don’t pay for themselves!"
+						"You provide useful context when discussing a variety of academic topics, particularly when speaking about those subjects related to crafting and invention. You might often look for opportunities to acquire patronage to fund some of your more expensive or unorthodox experiments. After all, the materials needed to assemble your inventions don't pay for themselves!"
 					]
 				},
 				{
@@ -219,7 +219,7 @@
 					"page": 15,
 					"name": "In downtime...",
 					"entries": [
-						"You brainstorm new designs, bringing them to fruition through careful crafting and meticulous attention to detail. You might also modify previous inventions to adjust for data you’ve collected in the field. You might work as a local smith or tinker where your skills are needed, or you might keep a workshop on the edge of town where the clank and clatter of your experiments attracts less attention."
+						"You brainstorm new designs, bringing them to fruition through careful crafting and meticulous attention to detail. You might also modify previous inventions to adjust for data you've collected in the field. You might work as a local smith or tinker where your skills are needed, or you might keep a workshop on the edge of town where the clank and clatter of your experiments attracts less attention."
 					]
 				},
 				{
@@ -246,7 +246,7 @@
 							"type": "list",
 							"items": [
 								"Marvel at your inventions and the variety of unbelievable wonder they can bring.",
-								"Believe that you’re a genius whose work is beyond understanding.",
+								"Believe that you're a genius whose work is beyond understanding.",
 								"Worry that your inventions might backfire or explode."
 							]
 						}
@@ -294,7 +294,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You have a bevy of smaller devices of your own invention, from muscle stimulants to concussive pistons. When it’s necessary, you can throw them into overdrive to assist you in combat.",
+				"You have a bevy of smaller devices of your own invention, from muscle stimulants to concussive pistons. When it's necessary, you can throw them into overdrive to assist you in combat.",
 				{
 					"type": "ability",
 					"style": "full",
@@ -310,7 +310,9 @@
 						"Manipulate"
 					],
 					"actionType": {
-						"class": ["Inventor|G&G"]
+						"class": [
+							"Inventor|G&G"
+						]
 					},
 					"frequency": "once per round",
 					"entries": [
@@ -318,14 +320,14 @@
 						{
 							"type": "successDegree",
 							"entries": {
-								"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can’t use Overdrive for 1 minute.",
+								"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can't use Overdrive for 1 minute.",
 								"Success": "Your gizmos go into overdrive, adding power to your attacks. As critical success, except the additional damage is equal to half your Intelligence modifier.",
 								"Failure": "You make a miscalculation and nothing happens.",
-								"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can’t use Overdrive again for 1 minute as your gizmos cool down and reset."
+								"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can't use Overdrive again for 1 minute as your gizmos cool down and reset."
 							}
 						}
 					],
-					"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can’t extend your Overdrive’s duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
+					"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can't extend your Overdrive's duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
 				}
 			]
 		},
@@ -339,7 +341,7 @@
 			"type": "Innovation",
 			"subclasses": "Innovation",
 			"entries": [
-				"While you’re always creating inventions, there’s one that represents your preeminent work, the one that you hope—with refinement—might change the world. Choose one of the below innovations. Your innovation’s level is equal to your level. If your innovation is destroyed, you can spend 1 day of downtime and attempt a {@skill Crafting} check with a high DC for your level; on a success, you rebuild it. An innovation only works due to your constant maintenance and tinkering, and therefore has no market Price.",
+				"While you're always creating inventions, there's one that represents your preeminent work, the one that you hope\u2014with refinement\u2014might change the world. Choose one of the below innovations. Your innovation's level is equal to your level. If your innovation is destroyed, you can spend 1 day of downtime and attempt a {@skill Crafting} check with a high DC for your level; on a success, you rebuild it. An innovation only works due to your constant maintenance and tinkering, and therefore has no market Price.",
 				"The innovations you can choose from in this book are as follows."
 			]
 		},
@@ -370,11 +372,13 @@
 						"Manipulate"
 					],
 					"actionType": {
-						"class": ["Inventor|G&G"]
+						"class": [
+							"Inventor|G&G"
+						]
 					},
 					"entries": [
-						"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you’re wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
-						"At 3rd level, and every level thereafter, increase your explosion’s damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
+						"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you're wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
+						"At 3rd level, and every level thereafter, increase your explosion's damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
 						"If you have the breakthrough innovation class feature, you can choose either a 5-foot or 10-foot emanation for the area when you use Explode; if you have the revolutionary innovation class feature, you can choose a 5-foot, 10-foot, or 15-foot emanation."
 					]
 				}
@@ -388,7 +392,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You are constantly inventing, and your skill at crafting is unimpeachable. You gain the {@feat Inventor} skill feat, even if you don’t meet its prerequisites."
+				"You are constantly inventing, and your skill at crafting is unimpeachable. You gain the {@feat Inventor} skill feat, even if you don't meet its prerequisites."
 			]
 		},
 		{
@@ -432,7 +436,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve increased your skill in crafting, and you can put your devices into a more powerful state of overdrive. You become an expert in {@skill Crafting}, and on a successful use of {@action Overdrive|G&G}, you increase the additional damage by 1."
+				"You've increased your skill in crafting, and you can put your devices into a more powerful state of overdrive. You become an expert in {@skill Crafting}, and on a successful use of {@action Overdrive|G&G}, you increase the additional damage by 1."
 			]
 		},
 		{
@@ -454,7 +458,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve become an expert in all crafts and are always adjusting your inventions. You can attempt to change the modifications on your innovation by spending 1 day of downtime tinkering with it and attempting a Crafting check, with a high DC for your level. On a success, you can change one modification you’ve chosen for your innovation to a different modification of the same kind (initial, breakthrough, or revolutionary).",
+				"You've become an expert in all crafts and are always adjusting your inventions. You can attempt to change the modifications on your innovation by spending 1 day of downtime tinkering with it and attempting a Crafting check, with a high DC for your level. On a success, you can change one modification you've chosen for your innovation to a different modification of the same kind (initial, breakthrough, or revolutionary).",
 				"If you have any modification feats, on a successful check you can choose to instead retrain a modification feat to a different modification feat. The new feat has to meet the standard restrictions for retraining."
 			]
 		},
@@ -466,8 +470,8 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"At 3rd level and every 2 levels thereafter, you gain a skill increase. You can use this increase to either become trained in one skill you’re untrained in, or become an expert in one skill in which you’re already trained.",
-				"At 7th level, you can use skill increases to become a master in a skill in which you’re already an expert, and at 15th level, you can use them to become legendary in a skill in which you’re already a master."
+				"At 3rd level and every 2 levels thereafter, you gain a skill increase. You can use this increase to either become trained in one skill you're untrained in, or become an expert in one skill in which you're already trained.",
+				"At 7th level, you can use skill increases to become a master in a skill in which you're already an expert, and at 15th level, you can use them to become legendary in a skill in which you're already a master."
 			]
 		},
 		{
@@ -478,7 +482,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"At 5th level and every 5 levels thereafter, you boost four different ability scores. You can use these ability boosts to increase your ability scores above 18. Boosting an ability score increases it by 1 if it’s already 18 or above, or by 2 if it starts out below 18."
+				"At 5th level and every 5 levels thereafter, you boost four different ability scores. You can use these ability boosts to increase your ability scores above 18. Boosting an ability score increases it by 1 if it's already 18 or above, or by 2 if it starts out below 18."
 			]
 		},
 		{
@@ -514,7 +518,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve made a breakthrough in your field of study and discovered a powerful new way to enhance your innovation. Choose a breakthrough modification of your innovation’s type to apply to your innovation. You can choose an initial modification of your innovation’s type instead if you prefer."
+				"You've made a breakthrough in your field of study and discovered a powerful new way to enhance your innovation. Choose a breakthrough modification of your innovation's type to apply to your innovation. You can choose an initial modification of your innovation's type instead if you prefer."
 			]
 		},
 		{
@@ -547,7 +551,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve learned how to inflict greater injuries with the weapons you know best. You deal 2 additional damage with weapons and unarmed attacks in which you are an expert. This damage increases to 3 if you’re a master, and 4 if you’re legendary."
+				"You've learned how to inflict greater injuries with the weapons you know best. You deal 2 additional damage with weapons and unarmed attacks in which you are an expert. This damage increases to 3 if you're a master, and 4 if you're legendary."
 			]
 		},
 		{
@@ -558,7 +562,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"Through innovation and experimentation, you’ve made your inventions more effective and reliable. Your proficiency rank for your inventor class DC increases to expert."
+				"Through innovation and experimentation, you've made your inventions more effective and reliable. Your proficiency rank for your inventor class DC increases to expert."
 			]
 		},
 		{
@@ -569,7 +573,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve made additions to your innovation to upgrade your offensive capabilities. Your improvements make any Strikes that rely on your innovation deal an additional 1d6 damage, with a type determined by the boost you choose. If your innovation is armor, the boost applies to your melee unarmed Strikes and to your melee Strikes with one weapon you choose during daily preparations; if your innovation is a construct, the boost applies to your construct companion’s Strikes; and if your innovation is a weapon, the boost applies to your Strikes with your innovation. You can spend downtime to switch to a different boost in the same way as switching your modification. Choose one of the following boosts, with the damage type in parentheses.",
+				"You've made additions to your innovation to upgrade your offensive capabilities. Your improvements make any Strikes that rely on your innovation deal an additional 1d6 damage, with a type determined by the boost you choose. If your innovation is armor, the boost applies to your melee unarmed Strikes and to your melee Strikes with one weapon you choose during daily preparations; if your innovation is a construct, the boost applies to your construct companion's Strikes; and if your innovation is a weapon, the boost applies to your Strikes with your innovation. You can spend downtime to switch to a different boost in the same way as switching your modification. Choose one of the following boosts, with the damage type in parentheses.",
 				{
 					"type": "list",
 					"items": [
@@ -634,7 +638,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve learned to better defend yourself against attacks. Your proficiency ranks for light armor, medium armor, and unarmored defense increase to expert.",
+				"You've learned to better defend yourself against attacks. Your proficiency ranks for light armor, medium armor, and unarmored defense increase to expert.",
 				"If you have a medium or heavy armor innovation, you gain access to the critical specialization effect with your armor innovation."
 			]
 		},
@@ -646,7 +650,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You’ve steeled your mind with resolve. Your proficiency rank for Will saves increases to master. When you roll a success on a Will save, you get a critical success instead."
+				"You've steeled your mind with resolve. Your proficiency rank for Will saves increases to master. When you roll a success on a Will save, you get a critical success instead."
 			]
 		},
 		{
@@ -668,7 +672,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"When it comes to crafting and tinkering, you’ve become incredibly adept at changing your modifications to adjust your innovation’s functionality. When you spend downtime to reconfigure your innovation and succeed at your Crafting check, you can swap any number of modifications, swap your offensive boost, or retrain any number of modification feats, rather than one. You still must swap a modification only with one of the same type (initial, breakthrough, or revolutionary)."
+				"When it comes to crafting and tinkering, you've become incredibly adept at changing your modifications to adjust your innovation's functionality. When you spend downtime to reconfigure your innovation and succeed at your Crafting check, you can swap any number of modifications, swap your offensive boost, or retrain any number of modification feats, rather than one. You still must swap a modification only with one of the same type (initial, breakthrough, or revolutionary)."
 			]
 		},
 		{
@@ -690,7 +694,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"Your damage from weapon specialization increases to 4 with weapons and unarmed attacks in which you’re an expert, 6 if you’re a master, and 8 if you’re legendary."
+				"Your damage from weapon specialization increases to 4 with weapons and unarmed attacks in which you're an expert, 6 if you're a master, and 8 if you're legendary."
 			]
 		},
 		{
@@ -714,7 +718,7 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"You are an unparalleled genius and have discovered a technique that will revolutionize your chosen field—or at least for the time being, your innovation! Choose a revolutionary modification to apply to your innovation. You can also choose an initial or breakthrough modification of the same type instead, if you prefer."
+				"You are an unparalleled genius and have discovered a technique that will revolutionize your chosen field\u2014or at least for the time being, your innovation! Choose a revolutionary modification to apply to your innovation. You can also choose an initial or breakthrough modification of the same type instead, if you prefer."
 			]
 		},
 		{
@@ -747,8 +751,8 @@
 			"className": "Inventor",
 			"classSource": "G&G",
 			"entries": [
-				"Your ability to adjust your innovation has reached impossible heights, and you can use these skills to make major adjustments in your spare time. During your daily preparations, you automatically fix your innovation if it’s destroyed or broken, and you can change to a different innovation (armor, construct, weapon, or other type you have access to) and change your modifications and offensive boost.",
-				"If you have any feats that had your previous innovation as a prerequisite, you can’t use them until you retrain the feats as normal. However, it takes you only 1 day of downtime to retrain such a feat into a feat that has your new innovation as a prerequisite, instead of 1 week."
+				"Your ability to adjust your innovation has reached impossible heights, and you can use these skills to make major adjustments in your spare time. During your daily preparations, you automatically fix your innovation if it's destroyed or broken, and you can change to a different innovation (armor, construct, weapon, or other type you have access to) and change your modifications and offensive boost.",
+				"If you have any feats that had your previous innovation as a prerequisite, you can't use them until you retrain the feats as normal. However, it takes you only 1 day of downtime to retrain such a feat into a feat that has your new innovation as a prerequisite, instead of 1 week."
 			]
 		},
 		{
@@ -778,7 +782,7 @@
 					"name": "Armor",
 					"type": "pf2-h4",
 					"entries": [
-						"Your innovation is a cutting-edge suit of medium armor with a variety of attached gizmos and devices. Choose one of the sets of statistics on Table 2–2: Innovation Armor Statistics for your innovation armor (or choose another set of innovation armor statistics to which you have access).",
+						"Your innovation is a cutting-edge suit of medium armor with a variety of attached gizmos and devices. Choose one of the sets of statistics on Table 2\u20132: Innovation Armor Statistics for your innovation armor (or choose another set of innovation armor statistics to which you have access).",
 						{
 							"name": "Innovation Armor Statistics",
 							"id": "2-2",
@@ -871,14 +875,14 @@
 									"type": "item",
 									"name": "Muscular Exoskeleton ({@item Power Suit|g&g} Only):",
 									"entries": [
-										"Your armor supports your muscles with a carefully crafted exoskeleton. When you send your armor into overdrive, the exoskeleton supplements your feats of athletics as well. When under the effects of {@action Overdrive|G&G}, you gain a +1 circumstance bonus to {@skill Athletics} checks; if you’re a master in {@skill Crafting}, this increases to a +2 circumstance bonus."
+										"Your armor supports your muscles with a carefully crafted exoskeleton. When you send your armor into overdrive, the exoskeleton supplements your feats of athletics as well. When under the effects of {@action Overdrive|G&G}, you gain a +1 circumstance bonus to {@skill Athletics} checks; if you're a master in {@skill Crafting}, this increases to a +2 circumstance bonus."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Otherworldly Protection:",
 									"entries": [
-										"Just because you use science doesn’t mean you can’t build your armor with carefully chosen materials and gizmos designed to protect against otherworldly attacks. You gain resistance equal to 3 + half your level to negative damage, or to positive damage if you have negative healing (such as if you’re a dhampir). You gain the same amount of resistance to any types of alignment damage—good, evil, chaotic, lawful—that can damage you (note that creatures don’t take a given type of alignment damage unless they are of the opposing alignment; for instance, you can take evil damage only if you are good in alignment)."
+										"Just because you use science doesn't mean you can't build your armor with carefully chosen materials and gizmos designed to protect against otherworldly attacks. You gain resistance equal to 3 + half your level to negative damage, or to positive damage if you have negative healing (such as if you're a dhampir). You gain the same amount of resistance to any types of alignment damage\u2014good, evil, chaotic, lawful\u2014that can damage you (note that creatures don't take a given type of alignment damage unless they are of the opposing alignment; for instance, you can take evil damage only if you are good in alignment)."
 									]
 								},
 								{
@@ -899,7 +903,7 @@
 									"type": "item",
 									"name": "Subtle Dampeners ({@item Subterfuge Suit|G&G} Only):",
 									"entries": [
-										"You’ve designed your armor to help you blend in and dampen noise slightly. When you send your armor into overdrive, the dampeners increase their effect, improving your Stealth. When under the effects of {@action Overdrive|G&G}, you gain a +1 circumstance bonus to {@skill Stealth} checks. If you’re a master in {@skill Crafting}, this increases to a +2 circumstance bonus."
+										"You've designed your armor to help you blend in and dampen noise slightly. When you send your armor into overdrive, the dampeners increase their effect, improving your Stealth. When under the effects of {@action Overdrive|G&G}, you gain a +1 circumstance bonus to {@skill Stealth} checks. If you're a master in {@skill Crafting}, this increases to a +2 circumstance bonus."
 									]
 								}
 							]
@@ -922,9 +926,9 @@
 					"name": "Construct",
 					"type": "pf2-h4",
 					"entries": [
-						"Your innovation is a mechanical creature, such as a clockwork construct made of cogs and gears. It’s a prototype construct companion (page 32), and you can adjust most of its base statistics by taking feats at higher levels, such as Advanced Companion. If you use the {@action Overdrive|G&G} action, your construct gains the same {@action Overdrive|G&G} benefits you do, and it also takes the same amount of fire damage on a critical failure.",
+						"Your innovation is a mechanical creature, such as a clockwork construct made of cogs and gears. It's a prototype construct companion (page 32), and you can adjust most of its base statistics by taking feats at higher levels, such as Advanced Companion. If you use the {@action Overdrive|G&G} action, your construct gains the same {@action Overdrive|G&G} benefits you do, and it also takes the same amount of fire damage on a critical failure.",
 						"You know how to spend additional time directing, controlling, or programming your construct innovation for a more complex plan of action. You can spend 2 actions to Command instead of 1 when commanding your construct companion; your construct companion can then use an additional action (normally 3 actions, rather than 2).",
-						"Choose one initial construct modification to apply to your innovation, either from the following or from other initial construct modifications to which you have access. These modifications alter the construct’s abilities or form.",
+						"Choose one initial construct modification to apply to your innovation, either from the following or from other initial construct modifications to which you have access. These modifications alter the construct's abilities or form.",
 						{
 							"type": "list",
 							"collapsible": true,
@@ -933,7 +937,7 @@
 									"type": "item",
 									"name": "Accelerated Mobility:",
 									"entries": [
-										"Actuated legs, efficient gears in the wheels or treads, or add-on boosters make your construct faster. Your innovation’s Speed increases to 40 feet."
+										"Actuated legs, efficient gears in the wheels or treads, or add-on boosters make your construct faster. Your innovation's Speed increases to 40 feet."
 									]
 								},
 								{
@@ -954,7 +958,7 @@
 									"type": "item",
 									"name": "Manual Dexterity:",
 									"entries": [
-										"Your construct innovation has articulated hands or similar appendages with significant manual dexterity. It can perform {@trait manipulate} actions with up to two of its limbs. As normal for a companion, it still can’t wield weapons or held items that don’t have the {@trait companion} trait, and it can’t {@action Activate an Item||activate items}."
+										"Your construct innovation has articulated hands or similar appendages with significant manual dexterity. It can perform {@trait manipulate} actions with up to two of its limbs. As normal for a companion, it still can't wield weapons or held items that don't have the {@trait companion} trait, and it can't {@action Activate an Item||activate items}."
 									]
 								},
 								{
@@ -975,7 +979,7 @@
 									"type": "item",
 									"name": "Wonder Gears:",
 									"entries": [
-										"You map specialized skills into your construct’s crude intelligence. Your innovation becomes trained in {@skill Intimidation}, {@skill Stealth}, and {@skill Survival}."
+										"You map specialized skills into your construct's crude intelligence. Your innovation becomes trained in {@skill Intimidation}, {@skill Stealth}, and {@skill Survival}."
 									]
 								}
 							]
@@ -1014,28 +1018,28 @@
 									"type": "item",
 									"name": "Complex Simplicity (Simple Weapon Only):",
 									"entries": [
-										"Increase your innovation’s weapon damage die by one step ({@damage d4} to {@damage d6}, {@damage d6} to {@damage d8}, {@damage d8} to {@damage d10}, {@damage d10} to {@damage d12}). In addition, it gains one of the following traits of your choice: {@trait versatile B}, {@trait versatile P}, or {@trait versatile S}."
+										"Increase your innovation's weapon damage die by one step ({@damage d4} to {@damage d6}, {@damage d6} to {@damage d8}, {@damage d8} to {@damage d10}, {@damage d10} to {@damage d12}). In addition, it gains one of the following traits of your choice: {@trait versatile B}, {@trait versatile P}, or {@trait versatile S}."
 									]
 								},
 								{
 									"type": "item",
-									"name": "Dynamic Weighting (One-handed Melee Weapon Only; Can’t Have the {@trait Agile}, {@trait Attached}, or {@trait Free-hand} Trait):",
+									"name": "Dynamic Weighting (One-handed Melee Weapon Only; Can't Have the {@trait Agile}, {@trait Attached}, or {@trait Free-hand} Trait):",
 									"entries": [
-										"Your weapon’s modified weight distribution can increase power in exchange for taking more hands to wield. Your innovation gains the {@trait two-hand} trait, with a damage die one size higher than the weapon’s normal weapon damage die size (for instance, a {@item longsword} would gain the {@trait two-hand d10} trait). Your innovation also gains the {@trait versatile B} trait."
+										"Your weapon's modified weight distribution can increase power in exchange for taking more hands to wield. Your innovation gains the {@trait two-hand} trait, with a damage die one size higher than the weapon's normal weapon damage die size (for instance, a {@item longsword} would gain the {@trait two-hand d10} trait). Your innovation also gains the {@trait versatile B} trait."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Entangling Form (Melee Only):",
 									"entries": [
-										"You’ve altered your weapon to including tangling wires or straps, or to have a flexible construction. Your innovation gains the {@trait grapple} and {@trait trip} traits."
+										"You've altered your weapon to including tangling wires or straps, or to have a flexible construction. Your innovation gains the {@trait grapple} and {@trait trip} traits."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Hampering Spikes (Melee Only):",
 									"entries": [
-										"You’ve added long, snagging spikes to your weapon, which you can use to impede your foes’ movement. Your innovation gains the {@trait hampering} and {@trait versatile P} traits."
+										"You've added long, snagging spikes to your weapon, which you can use to impede your foes' movement. Your innovation gains the {@trait hampering} and {@trait versatile P} traits."
 									]
 								},
 								{
@@ -1049,7 +1053,7 @@
 									"type": "item",
 									"name": "Modular Head:",
 									"entries": [
-										"You’ve constructed a multi-purpose, adjustable striking surface for your weapon, or you’ve made special ammunition you can swiftly alter. Your innovation gains the {@trait modular} trait for bludgeoning, piercing, and slashing. When you {@action Interact} to use the {@trait modular} trait, you can also choose to give the weapon the {@trait nonlethal} trait if it doesn’t currently have it, or to remove that trait if it’s currently {@trait nonlethal}."
+										"You've constructed a multi-purpose, adjustable striking surface for your weapon, or you've made special ammunition you can swiftly alter. Your innovation gains the {@trait modular} trait for bludgeoning, piercing, and slashing. When you {@action Interact} to use the {@trait modular} trait, you can also choose to give the weapon the {@trait nonlethal} trait if it doesn't currently have it, or to remove that trait if it's currently {@trait nonlethal}."
 									]
 								},
 								{
@@ -1070,7 +1074,7 @@
 									"type": "item",
 									"name": "Segmented Frame:",
 									"entries": [
-										"Hinges, clamps, and telescoping parts make your innovation collapsible and adjustable. It gains the {@trait modular} trait for bludgeoning, piercing, and slashing. You can {@action Interact} to collapse the item down to light Bulk or to return it to your normal form. When it’s collapsed to light Bulk, it has the {@trait concealable} trait, which grants you a +2 circumstance bonus to {@skill Stealth} checks and DCs to hide or {@action Conceal an Object||conceal the weapon.}. "
+										"Hinges, clamps, and telescoping parts make your innovation collapsible and adjustable. It gains the {@trait modular} trait for bludgeoning, piercing, and slashing. You can {@action Interact} to collapse the item down to light Bulk or to return it to your normal form. When it's collapsed to light Bulk, it has the {@trait concealable} trait, which grants you a +2 circumstance bonus to {@skill Stealth} checks and DCs to hide or {@action Conceal an Object||conceal the weapon.}. "
 									]
 								}
 							]
@@ -1100,14 +1104,14 @@
 									"type": "item",
 									"name": "Antimagic Plating:",
 									"entries": [
-										"Whether you used some clever adaptation of the magic-negating skymetal known as noqual or created magical protections of your own design, you’ve strengthened your armor against magic. While wearing the armor, you gain a +1 circumstance bonus to all saving throws against spells and to AC against spells. Against spells that target the armor directly (like {@spell heat metal|APG}), you instead gain a +4 circumstance bonus to all saving throws and to AC."
+										"Whether you used some clever adaptation of the magic-negating skymetal known as noqual or created magical protections of your own design, you've strengthened your armor against magic. While wearing the armor, you gain a +1 circumstance bonus to all saving throws against spells and to AC against spells. Against spells that target the armor directly (like {@spell heat metal|APG}), you instead gain a +4 circumstance bonus to all saving throws and to AC."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Camouflage Pigmentation ({@item Subterfuge Suit|G&G} Only):",
 									"entries": [
-										"You’ve modified your armor’s exterior to let you blend into your surroundings with ease, as long as you stay still. While wearing your armor, you can {@action Hide} even without cover or concealment, as the pigmentation shifts to match your surroundings."
+										"You've modified your armor's exterior to let you blend into your surroundings with ease, as long as you stay still. While wearing your armor, you can {@action Hide} even without cover or concealment, as the pigmentation shifts to match your surroundings."
 									]
 								},
 								{
@@ -1121,35 +1125,35 @@
 									"type": "item",
 									"name": "Enhanced Resistance:",
 									"entries": [
-										"You’ve improved upon your initial modification’s ability to resist damage. The resistance from your initial armor modification adds your full level, instead of half your level (for instance, phlogistonic regulator’s resistance would increase to your level). If you have more than one initial modification that gives resistance, choose which one this applies to."
+										"You've improved upon your initial modification's ability to resist damage. The resistance from your initial armor modification adds your full level, instead of half your level (for instance, phlogistonic regulator's resistance would increase to your level). If you have more than one initial modification that gives resistance, choose which one this applies to."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Heavy Construction ({@item Power Suit|G&G} Only):",
 									"entries": [
-										"You’ve expanded your innovation into a heavy bulwark, and your groundbreaking design ensures you don’t take any of the drawbacks for such heavy defenses. Your innovation becomes heavy armor, and your proficiency in your innovation armor (but no other heavy armor) advances to be equal to your proficiency in medium armor. If your Strength score is at least 16, you remove the Speed penalty entirely instead of reducing it to –5 feet. The armor’s adjusted statistics are: {@i AC Bonus} +5; {@i Dex Cap} +1; {@i Check Penalty} –2; {@i Speed Penalty} –10 feet; {@i Strength} 16; {@i Bulk} 3; {@i Group} {@group composite}; {@i Armor Traits} {@trait bulwark}}. {@note You can see the improved version of the armor {@item Heavy Power Suit|G&G|here}.}"
+										"You've expanded your innovation into a heavy bulwark, and your groundbreaking design ensures you don't take any of the drawbacks for such heavy defenses. Your innovation becomes heavy armor, and your proficiency in your innovation armor (but no other heavy armor) advances to be equal to your proficiency in medium armor. If your Strength score is at least 16, you remove the Speed penalty entirely instead of reducing it to \u20135 feet. The armor's adjusted statistics are: {@i AC Bonus} +5; {@i Dex Cap} +1; {@i Check Penalty} \u20132; {@i Speed Penalty} \u201310 feet; {@i Strength} 16; {@i Bulk} 3; {@i Group} {@group composite}; {@i Armor Traits} {@trait bulwark}}. {@note You can see the improved version of the armor {@item Heavy Power Suit|G&G|here}.}"
 									]
 								},
 								{
 									"type": "item",
 									"name": "Hyper Boosters:",
 									"entries": [
-										"You’ve improved your speed boosters’ power through a breakthrough that significantly increases the energy flow without risking exploding. You gain a +10-foot status bonus to your Speed, which increases to a +20-foot status bonus when you’re in {@action Overdrive}. If you’re legendary in {@skill Crafting}, it instead increases to a +30-foot status bonus when you’re in {@action Overdrive}. You must have the speed boosters modification to select this modification."
+										"You've improved your speed boosters' power through a breakthrough that significantly increases the energy flow without risking exploding. You gain a +10-foot status bonus to your Speed, which increases to a +20-foot status bonus when you're in {@action Overdrive}. If you're legendary in {@skill Crafting}, it instead increases to a +30-foot status bonus when you're in {@action Overdrive}. You must have the speed boosters modification to select this modification."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Layered Mesh:",
 									"entries": [
-										"You’ve woven an incredibly powerful network of interlocking mesh around your armor, which catches piercing attacks and diffuses them. While wearing your armor, you gain resistance to piercing damage equal to half your level."
+										"You've woven an incredibly powerful network of interlocking mesh around your armor, which catches piercing attacks and diffuses them. While wearing your armor, you gain resistance to piercing damage equal to half your level."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Tensile Absorption:",
 									"entries": [
-										"You’ve enhanced the tensile capabilities of your armor, enabling it to bend with bludgeoning attacks. While wearing your armor, you gain resistance to bludgeoning damage equal to half your level."
+										"You've enhanced the tensile capabilities of your armor, enabling it to bend with bludgeoning attacks. While wearing your armor, you gain resistance to bludgeoning damage equal to half your level."
 									]
 								}
 							]
@@ -1179,14 +1183,14 @@
 									"type": "item",
 									"name": "Advanced Weaponry:",
 									"entries": [
-										"You’ve powered up your construct’s weaponry. Choose one of your construct’s unarmed attacks to gain your choice of one initial weapon modification, chosen from the list of {@subclassFeature Innovation|Inventor|G&G|weapon|G&G|1|G&G|initial weapon modifications} or from other initial weapon modifications to which you have access. The unarmed attack must meet any requirements for the chosen traits (such as being a melee attack for entangling form), and since it’s an unarmed attack, it can never meet certain requirements, such as being a simple weapon for complex simplicity."
+										"You've powered up your construct's weaponry. Choose one of your construct's unarmed attacks to gain your choice of one initial weapon modification, chosen from the list of {@subclassFeature Innovation|Inventor|G&G|weapon|G&G|1|G&G|initial weapon modifications} or from other initial weapon modifications to which you have access. The unarmed attack must meet any requirements for the chosen traits (such as being a melee attack for entangling form), and since it's an unarmed attack, it can never meet certain requirements, such as being a simple weapon for complex simplicity."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Antimagic Construction:",
 									"entries": [
-										"Whether you used some clever adaptation of the magic-negating skymetal known as noqual or created magical protections entirely of your own devising, you’ve made your innovation highly resilient to spells. Your construct innovation gains a +2 circumstance bonus to all saving throws and AC against spells."
+										"Whether you used some clever adaptation of the magic-negating skymetal known as noqual or created magical protections entirely of your own devising, you've made your innovation highly resilient to spells. Your construct innovation gains a +2 circumstance bonus to all saving throws and AC against spells."
 									]
 								},
 								{
@@ -1214,7 +1218,7 @@
 									"type": "item",
 									"name": "Turret Configuration:",
 									"entries": [
-										"Your innovation can transform from a mobile construct to a stationary turret. Your construct companion can transform as a single action, which has the {@trait manipulate} trait, turning into a turret in its space (or transforming back from a turret into its normal configuration). While it’s a turret, your innovation is {@condition immobilized}, but the damage die from its projectile launcher increases to {@damage 1d6} and the range increment increases to 60 feet. You must have the projectile launcher modification to select this modification."
+										"Your innovation can transform from a mobile construct to a stationary turret. Your construct companion can transform as a single action, which has the {@trait manipulate} trait, turning into a turret in its space (or transforming back from a turret into its normal configuration). While it's a turret, your innovation is {@condition immobilized}, but the damage die from its projectile launcher increases to {@damage 1d6} and the range increment increases to 60 feet. You must have the projectile launcher modification to select this modification."
 									]
 								}
 							]
@@ -1263,7 +1267,7 @@
 								},
 								{
 									"type": "item",
-									"name": "Integrated Gauntlet (One-Handed Weapon Only; Can’t Have the {@trait Two-Hand} Trait):",
+									"name": "Integrated Gauntlet (One-Handed Weapon Only; Can't Have the {@trait Two-Hand} Trait):",
 									"entries": [
 										"Combining your weapon with a gauntlet, you make it so you can quickly switch between attacking with your weapon and tinkering using your hands. Your innovation gains the {@trait free-hand} trait."
 									]
@@ -1272,14 +1276,14 @@
 									"type": "item",
 									"name": "Manifold Alloy:",
 									"entries": [
-										"You’ve devised several alloys that contain useful properties of various metals, and you replace a number of parts of your weapon or its ammunition with pieces from these alloys. Your weapon innovation is cold iron and silver. This means you deal more damage to a variety of supernatural creatures, such as demons, devils, and fey."
+										"You've devised several alloys that contain useful properties of various metals, and you replace a number of parts of your weapon or its ammunition with pieces from these alloys. Your weapon innovation is cold iron and silver. This means you deal more damage to a variety of supernatural creatures, such as demons, devils, and fey."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Rope Shot (Ranged Only):",
 									"entries": [
-										"Your weapon can shoot projectiles that split into simple ropes or nets around your foes’ legs to trip your targets, and you can climb using the grappling hooks built into the weapon. Your weapon innovation gains the {@trait climbing} and {@trait ranged trip} traits."
+										"Your weapon can shoot projectiles that split into simple ropes or nets around your foes' legs to trip your targets, and you can climb using the grappling hooks built into the weapon. Your weapon innovation gains the {@trait climbing} and {@trait ranged trip} traits."
 									]
 								},
 								{
@@ -1323,28 +1327,28 @@
 									"type": "item",
 									"name": "Energy Barrier:",
 									"entries": [
-										"Your armor’s defenses ablate any kind of energy coming your way. While wearing your armor, you gain resistance to all energy damage (acid, cold, electricity, fire, force, negative, positive, and sonic damage) equal to 2 + half your level. You must have the harmonic oscillator, metallic reactance, or phlogistonic regulator modification to select this modification."
+										"Your armor's defenses ablate any kind of energy coming your way. While wearing your armor, you gain resistance to all energy damage (acid, cold, electricity, fire, force, negative, positive, and sonic damage) equal to 2 + half your level. You must have the harmonic oscillator, metallic reactance, or phlogistonic regulator modification to select this modification."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Incredible Resistance:",
 									"entries": [
-										"You’ve improved upon your breakthrough modification’s ability to resist damage. Choose one of the following breakthrough modifications your innovation has: dense plating, layered mesh, or tensile absorption. Increase the resistance you gain from that modification to be equal to your level, instead of half your level."
+										"You've improved upon your breakthrough modification's ability to resist damage. Choose one of the following breakthrough modifications your innovation has: dense plating, layered mesh, or tensile absorption. Increase the resistance you gain from that modification to be equal to your level, instead of half your level."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Multisensory Mask (Subterfuge Suit Only):",
 									"entries": [
-										"You’ve built a multisensory mask over your armor that protects you by distorting your figure from all senses, leaving behind only a hazy image, muffled sounds, and so forth. While wearing the armor, you gain {@condition concealed||concealment} against all creatures, even if they are using a nonvisual precise sense, such as a bat’s echolocation. As normal for effects that leave your location obvious, you can’t use this {@condition concealed||concealment} to {@action Hide} or {@action Sneak}. If you use a {@condition hostile} action, the {@condition concealed||concealment} ends until you restore the mask as a single action, which has the {@trait manipulate} trait."
+										"You've built a multisensory mask over your armor that protects you by distorting your figure from all senses, leaving behind only a hazy image, muffled sounds, and so forth. While wearing the armor, you gain {@condition concealed||concealment} against all creatures, even if they are using a nonvisual precise sense, such as a bat's echolocation. As normal for effects that leave your location obvious, you can't use this {@condition concealed||concealment} to {@action Hide} or {@action Sneak}. If you use a {@condition hostile} action, the {@condition concealed||concealment} ends until you restore the mask as a single action, which has the {@trait manipulate} trait."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Perfect Fortification ({@item Power Suit|G&G} Only):",
 									"entries": [
-										"You’ve outfitted your armor with such heavy fortifications that deadly attacks often lose their edge. Each time you’re critically hit while wearing the armor, attempt a DC {@flatDC 13} flat check. On a success, it becomes a normal hit. This isn’t cumulative with fortification runes or other abilities that reduce critical hits with a flat check. Additionally, you gain resistance 2 + half your level against precision damage."
+										"You've outfitted your armor with such heavy fortifications that deadly attacks often lose their edge. Each time you're critically hit while wearing the armor, attempt a DC {@flatDC 13} flat check. On a success, it becomes a normal hit. This isn't cumulative with fortification runes or other abilities that reduce critical hits with a flat check. Additionally, you gain resistance 2 + half your level against precision damage."
 									]
 								},
 								{
@@ -1358,7 +1362,7 @@
 									"type": "item",
 									"name": "Rune Capacity:",
 									"entries": [
-										"Whether you’ve done some dabbling in orichalcum alloys or found another engineering solution, you’ve built your innovation in such a way that it can hold an additional property rune. Your innovation can have one more property rune than a normal item of its kind (to a maximum of four property runes with a {@item +3 armor potency||+3 potency} armor)."
+										"Whether you've done some dabbling in orichalcum alloys or found another engineering solution, you've built your innovation in such a way that it can hold an additional property rune. Your innovation can have one more property rune than a normal item of its kind (to a maximum of four property runes with a {@item +3 armor potency||+3 potency} armor)."
 									]
 								}
 							]
@@ -1395,7 +1399,7 @@
 									"type": "item",
 									"name": "Miracle Gears:",
 									"entries": [
-										"As you perfect your innovation’s cortex, it becomes much more intelligent. Its Intelligence modifier increases by 2, and it learns a language of your choice from among the languages you know. Your construct gains the ability to use actions that require greater Intelligence, like {@action Coerce} and {@action Decipher Writing}. Finally, your construct becomes legendary in two Intelligence- or Charisma-based skills of your choice. You must have the marvelous gears modification to select this modification."
+										"As you perfect your innovation's cortex, it becomes much more intelligent. Its Intelligence modifier increases by 2, and it learns a language of your choice from among the languages you know. Your construct gains the ability to use actions that require greater Intelligence, like {@action Coerce} and {@action Decipher Writing}. Finally, your construct becomes legendary in two Intelligence- or Charisma-based skills of your choice. You must have the marvelous gears modification to select this modification."
 									]
 								},
 								{
@@ -1409,14 +1413,14 @@
 									"type": "item",
 									"name": "Runic Keystone:",
 									"entries": [
-										"You’ve incorporated a device similar to a runestone into your innovation, allowing it to hold a property rune, even though it isn’t a weapon or suit of armor. An armor property rune affects your innovation itself if it would affect the wearer of the armor. A weapon property rune grants whatever properties it would normally grant to a weapon to your innovation’s unarmed attacks, following all the requirements as normal (for instance, a vorpal rune would only apply to slashing melee unarmed attacks); if the rune affects only ranged attacks, it has no effect unless your innovation has a built-in ranged attack (from the projectile launcher initial modification, for example). If the rune would affect the physical shape or appearance of the weapon or armor itself, like {@item glamered}, the rune has no effect when etched into your construct."
+										"You've incorporated a device similar to a runestone into your innovation, allowing it to hold a property rune, even though it isn't a weapon or suit of armor. An armor property rune affects your innovation itself if it would affect the wearer of the armor. A weapon property rune grants whatever properties it would normally grant to a weapon to your innovation's unarmed attacks, following all the requirements as normal (for instance, a vorpal rune would only apply to slashing melee unarmed attacks); if the rune affects only ranged attacks, it has no effect unless your innovation has a built-in ranged attack (from the projectile launcher initial modification, for example). If the rune would affect the physical shape or appearance of the weapon or armor itself, like {@item glamered}, the rune has no effect when etched into your construct."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Wall Configuration:",
 									"entries": [
-										"Your innovation can transform from a mobile construct to a stationary battlefield emplacement. It can unfold as a 2-action activity that has the {@trait manipulate} trait, changing from its usual form into a thin, straight wall of metal and gears up to 10 feet tall and 30 feet long. The wall must extend through your innovation’s original space. While your construct is a wall, it can’t take any actions except to use the same activity to transform back, and it can’t defend itself easily, making it {@condition flat-footed} and giving it an additional –2 status penalty to its AC. The wall blocks line of sight and effect unless your innovation has half its maximum HP or fewer, at which point holes in the wall allow creatures to see through and attack with cover, and Tiny creatures to slip through."
+										"Your innovation can transform from a mobile construct to a stationary battlefield emplacement. It can unfold as a 2-action activity that has the {@trait manipulate} trait, changing from its usual form into a thin, straight wall of metal and gears up to 10 feet tall and 30 feet long. The wall must extend through your innovation's original space. While your construct is a wall, it can't take any actions except to use the same activity to transform back, and it can't defend itself easily, making it {@condition flat-footed} and giving it an additional \u20132 status penalty to its AC. The wall blocks line of sight and effect unless your innovation has half its maximum HP or fewer, at which point holes in the wall allow creatures to see through and attack with cover, and Tiny creatures to slip through."
 									]
 								}
 							]
@@ -1453,28 +1457,28 @@
 									"type": "item",
 									"name": "Deadly Strike:",
 									"entries": [
-										"Through precise calculation, you’ve found the perfect shape for your weapon to deal extreme damage on a well-placed strike. Your innovation gains the {@trait deadly d8} trait. If your innovation was already deadly, it increases its {@trait deadly} die to {@damage d12} instead of gaining deadly {@damage d8}."
+										"Through precise calculation, you've found the perfect shape for your weapon to deal extreme damage on a well-placed strike. Your innovation gains the {@trait deadly d8} trait. If your innovation was already deadly, it increases its {@trait deadly} die to {@damage d12} instead of gaining deadly {@damage d8}."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Enhanced Damage:",
 									"entries": [
-										"You’ve made your innovation more powerful than other weapons of its kind. Increase your innovation’s weapon damage die by one step ({@damage d4} to {@damage d6}, {@damage d6} to {@damage d8}, {@damage d8} to {@damage d10}, {@damage d10} to {@damage d12}). As normal, you can’t increase your die by more than one size, so this modification isn’t cumulative with complex simplicity."
+										"You've made your innovation more powerful than other weapons of its kind. Increase your innovation's weapon damage die by one step ({@damage d4} to {@damage d6}, {@damage d6} to {@damage d8}, {@damage d8} to {@damage d10}, {@damage d10} to {@damage d12}). As normal, you can't increase your die by more than one size, so this modification isn't cumulative with complex simplicity."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Extensible Weapon (Melee only):",
 									"entries": [
-										"You’ve found a way to construct your weapon so that it can extend while leaving its balance unchanged. Your innovation gains the {@trait reach} trait. If the weapon already had the {@trait reach} trait, it increases your reach by an additional 10 feet, instead of the usual additional 5 feet."
+										"You've found a way to construct your weapon so that it can extend while leaving its balance unchanged. Your innovation gains the {@trait reach} trait. If the weapon already had the {@trait reach} trait, it increases your reach by an additional 10 feet, instead of the usual additional 5 feet."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Impossible Alloy:",
 									"entries": [
-										"Other inventors claim it’s not even technically possible, but you’ve managed to create several metal alloys that seem to work for only you. These alloys can damage opponents vulnerable to any one of the seven skymetals. Your innovation is treated as all seven skymetals (abysium, adamantine, djezet, inubrix, noqual, orichalcum, and siccatite). This means you deal more damage to a variety of creatures, though you don’t apply any of the other special effects for weapons made of those skymetals."
+										"Other inventors claim it's not even technically possible, but you've managed to create several metal alloys that seem to work for only you. These alloys can damage opponents vulnerable to any one of the seven skymetals. Your innovation is treated as all seven skymetals (abysium, adamantine, djezet, inubrix, noqual, orichalcum, and siccatite). This means you deal more damage to a variety of creatures, though you don't apply any of the other special effects for weapons made of those skymetals."
 									]
 								},
 								{
@@ -1488,14 +1492,14 @@
 									"type": "item",
 									"name": "Omnirange Stabilizers (Ranged only):",
 									"entries": [
-										"You’ve modified your innovation to be dangerous and effective at any range. If your innovation had the {@trait volley} trait, remove the {@trait volley} trait. Otherwise, increase your innovation’s range increment by 50 feet or an amount equal to the weapon’s base range increment, whichever is more."
+										"You've modified your innovation to be dangerous and effective at any range. If your innovation had the {@trait volley} trait, remove the {@trait volley} trait. Otherwise, increase your innovation's range increment by 50 feet or an amount equal to the weapon's base range increment, whichever is more."
 									]
 								},
 								{
 									"type": "item",
 									"name": "Rune Capacity:",
 									"entries": [
-										"Whether you’ve dabbled with orichalcum or found another engineering solution, you’ve built your innovation in such a way that it can hold an additional property rune. Your innovation can have one more property rune than a normal item of its kind (to a maximum of four property runes with a {@item +3 weapon potency||+3 potency} weapon)."
+										"Whether you've dabbled with orichalcum or found another engineering solution, you've built your innovation in such a way that it can hold an additional property rune. Your innovation can have one more property rune than a normal item of its kind (to a maximum of four property runes with a {@item +3 weapon potency||+3 potency} weapon)."
 									]
 								}
 							]
