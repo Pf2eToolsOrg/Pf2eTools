@@ -203,8 +203,8 @@
 				"Contortionist|APG",
 				"Dodge Away|APG",
 				"Graceful Leaper|APG",
-				"Tumbling Strike|APG",
-				"Tumbling Opportunist|APG"
+				"Tumbling Opportunist|APG",
+				"Tumbling Strike|APG"
 			]
 		},
 		{
@@ -333,7 +333,7 @@
 			],
 			"prerequisites": "{@feat Archer Dedication|APG}",
 			"entries": [
-				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|rarity=uncommon} as if they were martial weapons in the {@group bow} weapon group."
+				"Through constant practice and the crucible of experience, you increase your skill with advanced bows. You gain proficiency with {@filter all advanced bows|items||group=bow|rarity=uncommon} as if they were martial weapons in the bow weapon group."
 			]
 		},
 		{
@@ -841,7 +841,7 @@
 			"traits": [
 				"Monk"
 			],
-			"prerequisites": "{@feat Monastic Weaponry}, a {@filter feat|feats||search=weapon familiarity} granting access to all weapons with an ancestry trait (such as {@ancestry elf} or {@ancestry orc|APG})",
+			"prerequisites": "{@feat Monastic Weaponry}, a {@filter feat granting access to all weapons with an ancestry trait|feats||search=weapon familiarity} (such as {@feat elven weapon familiarity|crb|elf} or {@feat orc weapon familiarity|APG|orc})",
 			"entries": [
 				"You blend monastic techniques with the ancestral fighting styles of your people. Choose an ancestry for which you have access to all weapons with that trait. For you, melee weapons with that ancestry trait and either the {@trait agile} or {@trait finesse} trait gain the {@trait monk} trait."
 			]
@@ -951,7 +951,7 @@
 				"By putting composition to paper, you can create a source of stirring words or song that others can read and understand.",
 				"You spend 10 minutes and 1 Focus Point to transpose a composition spell on a special scroll that you or another creature can later activate. This composition spell must take a single action to cast. If the chosen composition spell requires a {@skill Performance} check as part of the casting, the GM rolls this check as a secret check when you annotate your score. If you have inspire heroics or lingering performance and the chosen composition spell allows, you can also use one of those spells to modify the annotated composition, with the GM rolling the secret {@skill Performance} check. If you do, you spend an additional Focus Point, even if the secret check fails.",
 				"Any creature that can read the language you used when annotating your composition can Activate the Item by spending a single action, which has the {@trait concentrate} trait.",
-				"This produces the effects of the composition as though the activating creature had Cast the Spell.",
+				"This produces the effects of the composition as though the activating creature had {@action Cast a Spell||Cast the Spell}.",
 				"A composition you create this way loses its power the next time you make your daily preparations. While the composition is in your possession, you can render it inert using a single action that has the {@trait concentrate} trait. You can't regain the Focus Points you spent to create the annotated composition until it is activated or loses its magic."
 			]
 		},
@@ -1043,11 +1043,11 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the archaeologist archetype.",
 			"leadsTo": [
-				"Magical Scholastics|APG",
+				"Archaeologist's Luck|APG",
 				"Greater Magical Scholastics|APG",
-				"Settlement Scholastics|APG",
+				"Magical Scholastics|APG",
 				"Scholastic Identification|APG",
-				"Archaeologist's Luck|APG"
+				"Settlement Scholastics|APG"
 			]
 		},
 		{
@@ -1090,14 +1090,14 @@
 				"Dedication"
 			],
 			"entries": [
-				"You become trained in all simple and martial weapons in the {@group bow} weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the bow weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
+				"You become trained in all simple and martial weapons in the bow weapon group. Whenever you gain a class feature that grants you expert or greater proficiency in certain weapons, you also gain that proficiency rank in all simple and martial weapons in the bow weapon group. If you are at least an expert in the bow you are using, you gain access to the critical specialization effect with that bow."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the archer archetype.",
 			"leadsTo": [
-				"Quick Shot|APG",
 				"Advanced Bow Training|APG",
+				"Archer's Aim|APG",
 				"Crossbow Terror|APG",
-				"Archer's Aim|APG"
+				"Quick Shot|APG"
 			]
 		},
 		{
@@ -1288,15 +1288,15 @@
 			"prerequisites": "Alchemical {@skill Crafting}; trained in {@skill Crafting}, {@skill Deception}, and {@skill Stealth}",
 			"entries": [
 				"You've trained to assassinate your foes, and you do so with tenacity and precision. You gain the Mark for Death activity.",
-				"Mark for Death {@as 3} Requirements You can see and hear the creature you intend to mark; Effect You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your agile and finesse weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
+				"Mark for Death {@as 3} Requirements You can see and hear the creature you intend to mark; Effect You designate a single creature as your mark. This lasts until the mark dies or you use Mark for Death again. You gain a +2 circumstance bonus to {@skill Perception} checks to {@action Seek} your mark and on {@skill Deception} checks to {@action Feint} against your mark. Your {@trait agile} and {@trait finesse} weapons and unarmed attacks gain the backstabber and deadly d6 weapon traits when you're attacking your mark.",
 				"If the weapon or unarmed attack already has the {@trait deadly} trait, increase the size of the deadly damage die by one step instead of giving it deadly d6."
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the assassin archetype.",
 			"leadsTo": [
-				"Expert Backstabber|APG",
-				"Surprise Attack|APG",
 				"Angel Of Death|APG",
-				"Assassinate|APG"
+				"Assassinate|APG",
+				"Expert Backstabber|APG",
+				"Surprise Attack|APG"
 			]
 		},
 		{
@@ -1716,8 +1716,7 @@
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered.",
-				"Eldritch Archer While many archers see their craft as an art form as much as a means of battle, a small number of archers seek to perfect their skills through magic, and you."
+				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered."
 			],
 			"leadsTo": [
 				"Expert Eldritch Archer Spellcasting|APG",
@@ -1809,9 +1808,9 @@
 				"You gain the basic spellcasting benefits (page 150). When you gain a spell slot of a new level from the oracle archetype, add a common divine spell or another divine spell you have learned or discovered to your repertoire, of that spell level."
 			],
 			"leadsTo": [
-				"Mysterious Breadth|APG",
 				"Expert Oracle Spellcasting|APG",
-				"Master Oracle Spellcasting|APG"
+				"Master Oracle Spellcasting|APG",
+				"Mysterious Breadth|APG"
 			]
 		},
 		{
@@ -1861,9 +1860,9 @@
 				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from the witch archetype, add two common spells of that level to your familiar."
 			],
 			"leadsTo": [
-				"Patron's Breadth|APG",
 				"Expert Witch Spellcasting|APG",
-				"Master Wizard Spellcasting|APG"
+				"Master Witch Spellcasting|APG",
+				"Patron's Breadth|APG"
 			]
 		},
 		{
@@ -1912,9 +1911,9 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the bastion archetype.",
 			"leadsTo": [
+				"Destructive Block|APG",
 				"Disarming Block|APG",
 				"Nimble Shield Hand|APG",
-				"Destructive Block|APG",
 				"Shield Salvation|APG"
 			]
 		},
@@ -2013,14 +2012,14 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the beastmaster archetype.",
 			"leadsTo": [
 				"Additional Companion|APG",
+				"Beastmaster Bond|APG",
+				"Beastmaster's Call|APG",
+				"Beastmaster's Trance|APG",
 				"Heal Animal|APG",
 				"Mature Beastmaster Companion|APG",
 				"Incredible Beastmaster Companion|APG",
 				"Specialized Beastmaster Companion|APG",
-				"Lead The Pack|APG",
-				"Beastmaster's Trance|APG",
-				"Beastmaster Bond|APG",
-				"Beastmaster's Call|APG"
+				"Lead The Pack|APG"
 			]
 		},
 		{
@@ -2332,9 +2331,9 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the blessed one archetype.",
 			"leadsTo": [
+				"Blessed Denial|APG",
 				"Blessed Sacrifice|APG",
-				"Blessed Spell|APG",
-				"Blessed Denial|APG"
+				"Blessed Spell|APG"
 			]
 		},
 		{
@@ -2421,7 +2420,7 @@
 				"Sorcerer"
 			],
 			"entries": [
-				"You can bypass the need for incantations and gestures by drawing energy directly from your blood, causing you to visibly glow the color of your blood and crackle with magical energy. When you {@action Cast a Spell}, you can replace all verbal, material, or somatic spellcasting components with a blood component. To use a blood component, you lose Hit Points equal to twice the spell's level as the energy in your blood is depleted, and you can't decrease the Hit Points lost in any way. As usual for altering components, this has no effect on the number of actions required to Cast the Spell, and your {@action Cast a Spell} activity gains the {@trait concentrate} trait but not the {@trait manipulate} trait. You can't use blood components to replace any required part of a spell's cost."
+				"You can bypass the need for incantations and gestures by drawing energy directly from your blood, causing you to visibly glow the color of your blood and crackle with magical energy. When you {@action Cast a Spell}, you can replace all verbal, material, or somatic spellcasting components with a blood component. To use a blood component, you lose Hit Points equal to twice the spell's level as the energy in your blood is depleted, and you can't decrease the Hit Points lost in any way. As usual for altering components, this has no effect on the number of actions required to {@action Cast a Spell||Cast the Spell}, and your {@action Cast a Spell} activity gains the {@trait concentrate} trait but not the {@trait manipulate} trait. You can't use blood components to replace any required part of a spell's cost."
 			]
 		},
 		{
@@ -2461,7 +2460,7 @@
 			],
 			"prerequisites": "a bloodline based on a specific type of creature",
 			"entries": [
-				"You permanently mutate to become more like the creatures of your bloodline. You gain the appropriate trait or traits for those types of creatures (aberration for aberrant, angel and celestial for angelic, psychopomp and monitor for psychopomp, and so on). You gain low-light vision or darkvision, if one is appropriate for creatures with those traits. Choose one of the following.",
+				"You permanently mutate to become more like the creatures of your bloodline. You gain the appropriate trait or traits for those types of creatures (aberration for aberrant, angel and celestial for angelic, psychopomp and monitor for psychopomp, and so on). You gain {@ability low-light vision} or {@ability darkvision}, if one is appropriate for creatures with those traits. Choose one of the following.",
 				{
 					"type": "list",
 					"items": [
@@ -2993,8 +2992,8 @@
 			],
 			"leadsTo": [
 				"Expanded Luck|APG",
-				"Shared Luck|APG",
 				"Reliable Luck|APG",
+				"Shared Luck|APG",
 				"Lucky Break|LOAG",
 				"Sense For Trouble|LOAG"
 			]
@@ -3087,8 +3086,8 @@
 				"You favor weapons that you can use with quick, darting slashes like a cat's claws. You are trained with the {@item hatchet}, {@item kama}, {@item kukri}, {@item scimitar}, and {@item sickle}. In addition, you gain access to {@item kama}, {@item kukri|crb|kukris}, and all {@filter uncommon catfolk weapons|items||rarity=uncommon|ancestry & heritage=catfolk}. For you, martial catfolk weapons are simple weapons and advanced catfolk weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Catfolk Weapon Rake|APG",
-				"Catfolk Weapon Expertise|APG"
+				"Catfolk Weapon Expertise|APG",
+				"Catfolk Weapon Rake|APG"
 			]
 		},
 		{
@@ -3131,8 +3130,8 @@
 				"You can brew a great deal of magic within your cauldron. When you {@action Craft} a batch of oils or potions, you can make up to six in a batch instead of the usual four per batch."
 			],
 			"leadsTo": [
-				"Witch's Bottle|APG",
-				"Temporary Potions|APG"
+				"Temporary Potions|APG",
+				"Witch's Bottle|APG"
 			]
 		},
 		{
@@ -3179,15 +3178,17 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the cavalier archetype. This restriction is waived if you have pledged to the organization associated with the other dedication feat. For example, if you are pledged to a Hellknight order, you could take Hellknight dedication feats without needing to gain other feats from the cavalier archetype first.",
 			"leadsTo": [
-				"Quick Mount|APG",
-				"Defend Mount|APG",
-				"Mounted Shield|APG",
 				"Cavalier's Banner|APG",
 				"Cavalier's Charge|APG",
+				"Defend Mount|APG",
 				"Impressive Mount|APG",
+				"Incredible Mount|APG",
+				"Specialized Mount|APG",
+				"Legendary Rider|APG",
+				"Mounted Shield|APG",
+				"Quick Mount|APG",
 				"Trampling Charge|APG",
-				"Unseat|APG",
-				"Legendary Rider|APG"
+				"Unseat|APG"
 			]
 		},
 		{
@@ -3271,9 +3272,9 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the celebrity archetype.",
 			"leadsTo": [
-				"Never Tire|APG",
+				"Command Attention|APG",
 				"Mesmerizing Gaze|APG",
-				"Command Attention|APG"
+				"Never Tire|APG"
 			]
 		},
 		{
@@ -3293,7 +3294,7 @@
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
-				"You can see through darkness. You gain darkvision."
+				"You can see through darkness. You gain {@ability darkvision}."
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -3402,7 +3403,7 @@
 				"Aasimar"
 			],
 			"entries": [
-				"You can call forth a holy word from the celestial realms to punish your foes. Once per day, you can cast {@spell divine decree} as a 7th-level divine innate spell. You must choose good for the spell's alignment, and you can Cast the Spell regardless of whether you worship a deity or what their alignment is."
+				"You can call forth a holy word from the celestial realms to punish your foes. Once per day, you can cast {@spell divine decree} as a 7th-level divine innate spell. You must choose good for the spell's alignment, and you can {@action Cast a Spell||Cast the Spell} regardless of whether you worship a deity or what their alignment is."
 			]
 		},
 		{
@@ -3498,8 +3499,8 @@
 				"Your cheeks are stretchy, and you can store up to four items of light Bulk or less in these cheek pouches. None of these items can have a dimension longer than 1 foot. As long as you have at least one item in your cheek pouches, your speech is noticeably difficult to understand. Placing an item in your cheek pouch or retrieving one is an {@action Interact} action. You can empty your mouth with a single action, causing everything you had stored in your cheek pouches to fall to the ground in your square."
 			],
 			"leadsTo": [
-				"Quick Stow|APG",
-				"Big Mouth|APG"
+				"Big Mouth|APG",
+				"Quick Stow|APG"
 			]
 		},
 		{
@@ -3547,7 +3548,7 @@
 			],
 			"prerequisites": "{@feat Dragon Disciple Dedication|APG}",
 			"entries": [
-				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are agile, finesse unarmed attacks that deal {@damage 1d6} slashing damage and are in the {@group brawling} weapon group.",
+				"Your fingernails grow into razor-sharp claws, and scales speckle your fingers, hands, and wrists. Your claws are {@trait agile}, {@trait finesse} unarmed attacks that deal {@damage 1d6} slashing damage and are in the {@group brawling} weapon group.",
 				"If you're a draconic sorcerer, when you cast {@spell dragon claws}, increase the spell's slashing damage die from {@damage d4} to {@damage d6} and increase the resistance to 10 at 1st level, 15 at 5th level, and 20 at 9th level."
 			]
 		},
@@ -3663,7 +3664,7 @@
 			],
 			"prerequisites": "ki spells",
 			"entries": [
-				"You learn a mystical stance that transforms your ki into sticky smoke that shrouds your limbs, clinging to everything you touch. You gain the clinging shadows stance ki spell (page 229). Increase the number of Focus Points in your focus pool by 1. While entering the stance uses a ki spell, the shadow grasp attacks it grants are not, so you can use them as often as you like while in the stance."
+				"You learn a mystical stance that transforms your ki into sticky smoke that shrouds your limbs, clinging to everything you touch. You gain the {@spell clinging shadows stance|APG} ki spell. Increase the number of Focus Points in your focus pool by 1. While entering the stance uses a ki spell, the shadow grasp attacks it grants are not, so you can use them as often as you like while in the stance."
 			]
 		},
 		{
@@ -3738,7 +3739,7 @@
 			],
 			"entries": [
 				"You enter a tight stance, coiled up like a lashing cobra with your hands poised as venomous fangs. While in this stance, the only {@action Strike|CRB|Strikes} you can make are cobra fang unarmed attacks.",
-				"These deal {@damage 1d4} poison damage; are in the brawling group; and have the agile, deadly d10, finesse, nonlethal, {@trait poison}, and {@trait unarmed} traits.",
+				"These deal {@damage 1d4} poison damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait deadly d10}, {@trait finesse}, {@trait nonlethal}, {@trait poison}, and {@trait unarmed} traits.",
 				"While in Cobra Stance, you gain a +1 circumstance bonus to Fortitude saves and your Fortitude DC, and you gain poison resistance equal to half your level."
 			],
 			"leadsTo": [
@@ -3873,10 +3874,8 @@
 				"Witch"
 			],
 			"entries": [
-				"You can hide your magical gestures and incantations within."
-			],
-			"leadsTo": [
-				"Silent Spell"
+				"You can hide your magical gestures and incantations within your speech and movement in an attempt to conceal the fact that you are Casting a Spell. If the next action you use is to {@action Cast a Spell}, attempt a {@skill Stealth} check against one or more observers’ {@skill Perception} DCs; if the spell has verbal components, you must also attempt a {@skill Deception} check against the observers’ {@skill Perception} DC. If you succeed at your check (or checks) against an observer’s DC, that observer doesn’t notice you’re {@action Cast a Spell||Casting a Spell}, even though material, somatic, and verbal components are usually noticeable and spells normally have sensory manifestations that would make spellcasting obvious to those nearby.",
+				"This ability hides only the spell’s spellcasting actions and manifestations, not its effects, so an observer might still see a ray streak out from you or see you vanish into thin air."
 			]
 		},
 		{
@@ -4139,9 +4138,9 @@
 				"Abjuration",
 				"Witch"
 			],
-			"trigger": "A creature Casts a Spell that you have prepared.",
+			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
-				"When a foe Casts a Spell and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of."
+				"When a foe {@action Cast a Spell||Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of."
 			],
 			"leadsTo": [
 				"Reflect Spell (Witch)|APG"
@@ -4204,8 +4203,8 @@
 				"With a mighty shout, you can stir an ally to attack. If your next action is to cast the {@spell inspire courage} composition cantrip, one ally who gains a status bonus from the spell can immediately use a reaction to make a melee {@action Strike}."
 			],
 			"leadsTo": [
-				"Shared Assault|APG",
-				"Courageous Onslaught|APG"
+				"Courageous Onslaught|APG",
+				"Shared Assault|APG"
 			]
 		},
 		{
@@ -4310,6 +4309,9 @@
 			"entries": [
 				"You have dealings with a variety of unsavory characters, which you can leverage to trade favors or meet powerful people. When you're in an area where you have connections (typically a settlement where you've spent downtime building connections or possibly another area in the same nation), you can attempt a {@skill Society} check to arrange a meeting with an important criminal, such as a thieves' guild leader, or ask for a favor in exchange for a later favor of your contact's choice.",
 				"The GM decides the DC based on the difficulty of the favor and the figure's prominence."
+			],
+			"leadsTo": [
+				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -4530,6 +4532,7 @@
 			"special": "You can't select another Dedication feat until you have gained two other feats from the dandy archetype.",
 			"leadsTo": [
 				"Distracting Flattery|APG",
+				"Fabricated Connections|APG",
 				"Gossip Lore|APG",
 				"Party Crasher|APG"
 			]
@@ -4584,11 +4587,11 @@
 				"Swashbuckler"
 			],
 			"entries": [
-				"Your graceful attacks are especially powerful. When you score a critical hit with an agile or finesse melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an agile or finesse melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly d8 trait instead."
+				"Your graceful attacks are especially powerful. When you score a critical hit with an {@trait agile} or {@trait finesse} melee weapon that has the {@trait deadly} trait, you double the number of dice from that trait. When you wield an {@trait agile} or {@trait finesse} melee weapon that doesn't have the {@trait deadly} trait, it gains the deadly d8 trait instead."
 			]
 		},
 		{
-			"name": "Deadly {@action Strike|CRB|Strikes}",
+			"name": "Deadly Strikes",
 			"source": "APG",
 			"page": 131,
 			"level": 20,
@@ -4760,7 +4763,7 @@
 			],
 			"prerequisites": "darkvision",
 			"entries": [
-				"Using ancient dwarven methods developed to fight enemies wielding magical darkness, you've honed your darkvision and sworn not to use such magic yourself. You gain greater darkvision, enabling you to see through magical darkness even if it normally hampers darkvision (such as the darkness created by a 4th-level {@spell darkness} spell). You can't cast spells with the {@trait darkness} trait, use item activations with the {@trait darkness} trait, or use any other ability with the {@trait darkness} trait."
+				"Using ancient dwarven methods developed to fight enemies wielding magical darkness, you've honed your {@ability darkvision} and sworn not to use such magic yourself. You gain {@ability darkvision||greater darkvision}, enabling you to see through magical darkness even if it normally hampers {@ability darkvision} (such as the darkness created by a 4th-level {@spell darkness} spell). You can't cast spells with the {@trait darkness} trait, use item activations with the {@trait darkness} trait, or use any other ability with the {@trait darkness} trait."
 			]
 		},
 		{
@@ -5282,7 +5285,7 @@
 			"entries": [
 				"You have broadened your understanding of the divine and can tap into the wonders of a different mystery. Select one revelation spell from a mystery other than your own. You can choose only an initial revelation spell or an advanced revelation spell.",
 				"When you cast this revelation spell, you gain the effects of the minor curse from that mystery in addition to the normal {@trait curse} effects you gain from casting a revelation spell. This additional minor {@trait curse} effect remains until your next daily preparations. Any ability that lets you cast a revelation spell without increasing the severity of your curse also prevents you from gaining this additional {@trait curse} effect.",
-				"You can't cast your chosen revelation spell if any of the following conditions are true: its mystery's {@trait curse} effects directly conflict with or negate the effects of your own mystery's curse, the curse would have no effect on you (for example, removing an ability from your original mystery that you lack), or either of these criteria would be met once you finish Casting the Spell."
+				"You can't cast your chosen revelation spell if any of the following conditions are true: its mystery's {@trait curse} effects directly conflict with or negate the effects of your own mystery's curse, the curse would have no effect on you (for example, removing an ability from your original mystery that you lack), or either of these criteria would be met once you finish {@action Cast a Spell||Casting the Spell}."
 			]
 		},
 		{
@@ -5438,7 +5441,7 @@
 			],
 			"prerequisites": "{@feat Medic Dedication|APG}",
 			"entries": [
-				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: Battle {@skill Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or Treat a Condition (if you have it; see below)."
+				"You move to provide immediate care to those who need it. {@action Stride}, then use one of the following: {@feat Battle Medicine} or {@action Treat Poison}. You can spend a second action to instead {@action Stride} and then {@action Administer First Aid} or Treat a Condition (if you have it; see below)."
 			]
 		},
 		{
@@ -5709,13 +5712,14 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the dragon disciple archetype. If you later take the {@archetype sorcerer|crb|sorcerer archetype}, you must choose the {@class Sorcerer|CRB|draconic bloodline|draconic}.",
 			"leadsTo": [
-				"Claws Of The Dragon|APG",
-				"Draconic Scent|APG",
-				"Scales Of The Dragon|APG",
 				"Breath Of The Dragon|APG",
-				"Wings Of The Dragon|APG",
+				"Claws Of The Dragon|APG",
+				"Disciple's Breath|APG",
+				"Draconic Scent|APG",
+				"Dragon Arcana|APG",
+				"Scales Of The Dragon|APG",
 				"Shape Of The Dragon|APG",
-				"Disciple's Breath|APG"
+				"Wings Of The Dragon|APG"
 			]
 		},
 		{
@@ -5952,7 +5956,13 @@
 			"entries": [
 				"You're exceptional in your use of two weapons. You gain the {@feat Double Slice} fighter feat. This serves as Double Slice for the purpose of meeting prerequisites."
 			],
-			"special": "You can't select another dedication feat until you gain two other feats from the dual-weapon warrior archetype."
+			"special": "You can't select another dedication feat until you gain two other feats from the dual-weapon warrior archetype.",
+			"leadsTo": [
+				"Dual Thrower|APG",
+				"Dual-Weapon Blitz|APG",
+				"Dual-Weapon Reload|APG",
+				"Flensing Slice|APG"
+			]
 		},
 		{
 			"name": "Dueling Dance",
@@ -6004,10 +6014,10 @@
 				"You can parry attacks against you with your weapon. You gain a +2 circumstance bonus to AC until the start of your next turn as long as you continue to meet the requirements."
 			],
 			"leadsTo": [
-				"Dueling Riposte",
-				"Improved Dueling Riposte",
-				"Guiding Riposte",
 				"Dueling Dance",
+				"Dueling Riposte",
+				"Guiding Riposte",
+				"Improved Dueling Riposte",
 				"Dueling Dance|APG",
 				"Selfless Parry|APG"
 			]
@@ -6291,7 +6301,7 @@
 				"Sorcerer"
 			],
 			"entries": [
-				"You time the components of your spell with exacting precision, setting up a resonance that duplicates the spell's effects. If your next action is to {@action Cast a Spell} of 4th level or lower that has no duration, the spell's energy reverberates and echoes. You can Cast the Spell a second time before the end of your next turn without expending a spell slot."
+				"You time the components of your spell with exacting precision, setting up a resonance that duplicates the spell's effects. If your next action is to {@action Cast a Spell} of 4th level or lower that has no duration, the spell's energy reverberates and echoes. You can {@action Cast a Spell||Cast the Spell} a second time before the end of your next turn without expending a spell slot."
 			]
 		},
 		{
@@ -6442,19 +6452,31 @@
 				"If you don't already cast spells from spell slots, you learn to cast spontaneous spells and gain the {@action Cast a Spell} activity. You gain a spell repertoire with one cantrip of your choice, from a spell list of your choice. You choose this cantrip from the common spells on your chosen spell list or from other spells to which you have access on that list. This cantrip must require a spell attack roll. You're trained in spell attack rolls and spell DCs for that tradition. Your key spellcasting ability for these spells is Charisma.",
 				"If you already cast spells from spell slots, you learn one additional cantrip from that tradition. If you're a prepared caster, you can prepare this spell in addition to your usual cantrips per day; if you're a spontaneous caster, you add this cantrip to your spell repertoire.",
 				"You also gain Eldritch Shot.",
-				"Eldritch Shot {@as 3} Requirements You are wielding a bow; Effect You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the bow you're wielding. Make a {@action Strike} with that bow. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed both attacks."
+				{
+					"type": "ability",
+					"name": "Eldritch Shot",
+					"activity": {
+						"entry": "{@as 3}",
+						"number": 3,
+						"unit": "action"
+					},
+					"requirements": "You are wielding a bow",
+					"entries": [
+						"You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell do not occur immediately but are imbued into the bow you're wielding. Make a {@action Strike} with that bow. Your spell flies with the ammunition, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed both attacks."
+					]
+				}
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the eldritch archer archetype.",
 			"leadsTo": [
+				"Arrow Of Death|APG",
 				"Basic Eldritch Archer Spellcasting|APG",
 				"Expert Eldritch Archer Spellcasting|APG",
 				"Master Eldritch Archer Spellcasting|APG",
 				"Enchanting Arrow|APG",
 				"Magic Arrow|APG",
-				"Precious Arrow|APG",
-				"Seeker Arrow|APG",
 				"Phase Arrow|APG",
-				"Arrow Of Death|APG"
+				"Precious Arrow|APG",
+				"Seeker Arrow|APG"
 			]
 		},
 		{
@@ -6500,8 +6522,8 @@
 				"Witch"
 			],
 			"entries": [
-				"Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals {@damage 1d6} slashing damage. Your nails are in the brawling group and have the {@trait agile} and {@trait unarmed} traits.",
-				"You can etch your nails with runes with the same cost and restrictions as for etching runes onto handwraps of mighty blows; runes etched onto your nails apply to nails unarmed attacks with both hands but not to other unarmed attacks.",
+				"Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals {@damage 1d6} slashing damage. Your nails are in the {@group brawling} group and have the {@trait agile} and {@trait unarmed} traits.",
+				"You can etch your nails with runes with the same cost and restrictions as for etching runes onto {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}; runes etched onto your nails apply to nails unarmed attacks with both hands but not to other unarmed attacks.",
 				"You can deliver hexes through your nails. When you successfully cast a non-cantrip hex that requires 2 actions or more to cast and that doesn't require a spell attack roll, if your target is within your reach, as part of the spellcasting activity you can make a nails {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
 			]
 		},
@@ -6694,7 +6716,7 @@
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
 				"With a single whisper carried on the wind, you enchant your ammunition to make a foe more vulnerable to your attacks.",
-				"Make a bow {@action Strike}. On a hit, the target takes an additional {@damage 2d6} mental damage. On a critical hit, the target also becomes {@condition stunned 1}. The mental damage increases to {@dice 3d6} if your bow has a greater striking rune, or to {@dice 4d6} if your bow has a major striking rune."
+				"Make a bow {@action Strike}. On a hit, the target takes an additional {@damage 2d6} mental damage. On a critical hit, the target also becomes {@condition stunned 1}. The mental damage increases to {@dice 3d6} if your bow has a {@item greater striking} rune, or to {@dice 4d6} if your bow has a {@item major striking} rune."
 			]
 		},
 		{
@@ -6880,10 +6902,7 @@
 			"entries": [
 				"You infuse your familiar with additional magical energy. You can select four familiar or master abilities each day instead of two."
 			],
-			"special": "Add the bonus familiar abilities you gain for being a witch to this amount.",
-			"leadsTo": [
-				"Incredible Familiar (Witch)|APG"
-			]
+			"special": "Add the bonus familiar abilities you gain for being a witch to this amount."
 		},
 		{
 			"name": "Enigma's Knowledge",
@@ -7009,7 +7028,8 @@
 				"You don't consider evil aberrations to be legitimate authorities, even in nations they rule."
 			],
 			"leadsTo": [
-				"Aura Of Preservation|APG"
+				"Aura Of Preservation|APG",
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -7315,7 +7335,7 @@
 				"You gain the expert spellcasting benefits (page 150)."
 			],
 			"leadsTo": [
-				"Master Wizard Spellcasting|APG"
+				"Master Witch Spellcasting|APG"
 			]
 		},
 		{
@@ -7429,7 +7449,7 @@
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
-				"You can see in the darkness as easily as a true vampire. You gain darkvision."
+				"You can see in the darkness as easily as a true vampire. You gain {@ability darkvision}."
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -7519,9 +7539,15 @@
 				"Dedication"
 			],
 			"entries": [
-				"You have forged a mystical bond with a creature. This might have involved complex rituals and invocations, such as meditating under the moon until something crept out of the forest. Or maybe you just did each other a good turn, such as rescuing the beast from a trap or a foe, and then being rescued in turn. Whatever the details, you are now comrades until the end. You gain a familiar (Core Rulebook 198). If you already have a familiar, you gain the {@feat Enhanced Familiar (Wizard)|CRB|Enhanced Familiar} feat."
+				"You have forged a mystical bond with a creature. This might have involved complex rituals and invocations, such as meditating under the moon until something crept out of the forest. Or maybe you just did each other a good turn, such as rescuing the beast from a trap or a foe, and then being rescued in turn. Whatever the details, you are now comrades until the end. You gain a {@filter familiar|companionsfamiliars||Type=Familiar} (Core Rulebook 198). If you already have a familiar, you gain the {@feat Enhanced Familiar (Wizard)|CRB|Enhanced Familiar} feat."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the familiar master archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the familiar master archetype.",
+			"leadsTo": [
+				"Familiar Conduit|APG",
+				"Familiar Mascot|APG",
+				"Improved Familiar|APG",
+				"Mutable Familiar|APG"
+			]
 		},
 		{
 			"name": "Familiar's Eyes",
@@ -7615,7 +7641,7 @@
 				"Dhampir"
 			],
 			"entries": [
-				"Your incisors have grown into true fangs: long, sharp, and well-suited to drawing blood. You gain a fangs unarmed attack that deals {@damage 1d6} piercing damage. Your fangs are in the brawling group and have the {@trait grapple} and {@trait unarmed} traits."
+				"Your incisors have grown into true fangs: long, sharp, and well-suited to drawing blood. You gain a fangs unarmed attack that deals {@damage 1d6} piercing damage. Your fangs are in the {@group brawling} group and have the {@trait grapple} and {@trait unarmed} traits."
 			]
 		},
 		{
@@ -7714,7 +7740,7 @@
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
-				"You can see in the darkness as easily as a fiend. You gain darkvision."
+				"You can see in the darkness as easily as a fiend. You gain {@ability darkvision}."
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -7736,7 +7762,7 @@
 			],
 			"prerequisites": "tenets of evil",
 			"entries": [
-				"Your features reshape into those of a type of fiend who serves your deity; for example, as a demon you might have putrid scales, twisted horns, and red eyes. You gain a fly Speed equal to your Speed. You gain darkvision if you don't already have it, and you gain the {@trait fiend} trait and the trait appropriate to the type of servitor you've become (such as daemon, demon, or devil)."
+				"Your features reshape into those of a type of fiend who serves your deity; for example, as a demon you might have putrid scales, twisted horns, and red eyes. You gain a fly Speed equal to your Speed. You gain {@ability darkvision} if you don't already have it, and you gain the {@trait fiend} trait and the trait appropriate to the type of servitor you've become (such as daemon, demon, or devil)."
 			]
 		},
 		{
@@ -7777,7 +7803,7 @@
 			],
 			"prerequisites": "divine ally (steed), tenets of evil",
 			"entries": [
-				"Your steed ally manifests a suite of powerful and sinister gifts granted to it by your deity. It gains darkvision, its maximum Hit Points increase by 40, and it gains weakness 10 to good damage.",
+				"Your steed ally manifests a suite of powerful and sinister gifts granted to it by your deity. It gains {@ability darkvision}, its maximum Hit Points increase by 40, and it gains weakness 10 to good damage.",
 				"Additionally, it grows wings appropriate for a servitor of your deity (such as bat wings for a devil), granting it a fly Speed equal to its Speed. It gains the {@trait fiend} trait and the trait appropriate to the type of servitor it has become (such as daemon, demon, or devil)."
 			]
 		},
@@ -7867,7 +7893,7 @@
 				"Tiefling"
 			],
 			"entries": [
-				"You can call forth a blasphemous word from the fiendish realms to punish your foes. Once per day, you can cast {@spell divine decree} as a 7th-level divine innate spell. You must choose evil for the spell, and you can Cast the Spell regardless of whether you have a deity or what their alignment is."
+				"You can call forth a blasphemous word from the fiendish realms to punish your foes. Once per day, you can cast {@spell divine decree} as a 7th-level divine innate spell. You must choose evil for the spell, and you can {@action Cast a Spell||Cast the Spell} regardless of whether you have a deity or what their alignment is."
 			]
 		},
 		{
@@ -8122,7 +8148,7 @@
 			],
 			"prerequisites": "precise strike",
 			"entries": [
-				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an agile or finesse weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
+				"You've learned to apply your flashy techniques to thrown weapons as easily as melee attacks. When you have panache, you apply your precise strike damage on ranged {@action Strike|CRB|Strikes} you make with a thrown weapon within that weapon's first range increment. The thrown weapon must be an {@trait agile} or {@trait finesse} weapon. This also allows you to make a thrown weapon ranged {@action Strike} for {@action Confident Finisher|APG} and any other finisher that includes a {@action Strike} that can benefit from your precise strike."
 			]
 		},
 		{
@@ -8414,7 +8440,7 @@
 				"Tiefling"
 			],
 			"entries": [
-				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the brawling group and has the listed damage die and traits.",
+				"Part of your body has an obvious, fiendish appearance. Your hands end in razor-sharp claws, you have hooves instead of feet, sharp teeth fill your mouth, or a whipping tail extends from your spine. You gain your choice of one of the following unarmed attacks. The attack is in the {@group brawling} group and has the listed damage die and traits.",
 				"Claw {@damage 1d4} slashing (agile, finesse, unarmed, versatile piercing) Hoof {@damage 1d6} bludgeoning (finesse, unarmed) Jaws {@damage 1d6} piercing (finesse, unarmed) Tail {@damage 1d4} bludgeoning (agile, finesse, unarmed)"
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat, nor can you change the type of attack you gained."
@@ -8600,9 +8626,9 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the gladiator archetype.",
 			"leadsTo": [
 				"Fancy Moves|APG",
+				"Performative Weapons Training|APG",
 				"Play To The Crowd|APG",
-				"Stage Fighting|APG",
-				"Performative Weapons Training|APG"
+				"Stage Fighting|APG"
 			]
 		},
 		{
@@ -8737,7 +8763,7 @@
 			],
 			"entries": [
 				"You lower yourself to the ground and take an imposing, knuckle-walking stance. While in this stance, the only {@action Strike|CRB|Strikes} you can make are gorilla slam unarmed attacks.",
-				"These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the backswing, forceful, grapple, {@trait nonlethal}, and {@trait unarmed} traits. While you are in Gorilla Stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, and if you roll a success on an {@skill Athletics} check to {@action Climb}, you get a critical success instead."
+				"These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the {@trait backswing}, {@trait forceful}, {@trait grapple}, {@trait nonlethal}, and {@trait unarmed} traits. While you are in Gorilla Stance, you gain a +2 circumstance bonus to {@skill Athletics} checks to {@action Climb}, and if you roll a success on an {@skill Athletics} check to {@action Climb}, you get a critical success instead."
 			],
 			"leadsTo": [
 				"Gorilla Pound|APG"
@@ -8804,7 +8830,7 @@
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
-				"You can see in the darkness as easily as a psychopomp. You gain darkvision."
+				"You can see in the darkness as easily as a psychopomp. You gain {@ability darkvision}."
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -8824,7 +8850,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"Your expertise with your weapons and commitment to taking out your targets lends you magical power. You gain the gravity weapon warden spell (page 234) and a focus pool of 1 Focus Point."
+				"Your expertise with your weapons and commitment to taking out your targets lends you magical power. You gain the {@spell gravity weapon|APG} warden spell and a focus pool of 1 Focus Point."
 			]
 		},
 		{
@@ -8929,7 +8955,7 @@
 			],
 			"prerequisites": "{@feat Magical Edification|APG}",
 			"entries": [
-				"You've continued to expand your compendium of tools to compile knowledge. You can cast {@spell comprehend language}, mindlink, and secret page as innate occult spells, each once per day. When you cast {@spell secret page}, it is automatically heightened to the same spell level as your cantrips from Magical Edification."
+				"You've continued to expand your compendium of tools to compile knowledge. You can cast {@spell comprehend language}, {@spell mindlink}, and {@spell secret page} as innate occult spells, each once per day. When you cast {@spell secret page}, it is automatically heightened to the same spell level as your cantrips from {@feat Magical Edification|APG}."
 			]
 		},
 		{
@@ -9185,7 +9211,7 @@
 			],
 			"entries": [
 				"When you came of age, your fingernails grew long and sharp.",
-				"You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the brawling group and have the agile, {@trait finesse}, and {@trait unarmed} traits."
+				"You gain a claw unarmed attack that deals {@damage 1d4} slashing damage. Your claws are in the {@group brawling} group and have the agile, {@trait finesse}, and {@trait unarmed} traits."
 			],
 			"special": "Hag claws can develop at any point in a changeling's life, allowing you to select this feat anytime you would gain an ancestry feat, but once you've selected it, you can't retrain out of it."
 		},
@@ -9226,7 +9252,7 @@
 				"Changeling"
 			],
 			"entries": [
-				"You've nurtured the supernatural abilities gifted by your hag mother, particularly your sight. You gain darkvision."
+				"You've nurtured the supernatural abilities gifted by your hag mother, particularly your sight. You gain {@ability darkvision}."
 			]
 		},
 		{
@@ -9437,10 +9463,10 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the herbalist archetype.",
 			"leadsTo": [
-				"Fresh Ingredients|APG",
-				"Poultice Preparation|APG",
 				"Endemic Herbs|APG",
-				"Expert Herbalism|APG"
+				"Expert Herbalism|APG",
+				"Fresh Ingredients|APG",
+				"Poultice Preparation|APG"
 			]
 		},
 		{
@@ -9619,9 +9645,9 @@
 				{
 					"type": "list",
 					"items": [
-						"{@b Axe} {@group axe} or {@group pick}",
-						"{@b Shield} {@group hammer} or {@group shield}",
-						"{@b Torch} {@group bomb} or {@group knife}"
+						"{@b Axe} axe or pick",
+						"{@b Shield} hammer or shield",
+						"{@b Torch} bomb or knife"
 					]
 				}
 			]
@@ -9692,9 +9718,10 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the horizon walker archetype.",
 			"leadsTo": [
-				"Sure Foot|APG",
-				"Perpetual Scout|APG",
+				"Acclimatization|APG",
 				"Magical Adaptation|APG",
+				"Perpetual Scout|APG",
+				"Sure Foot|APG",
 				"Wild Strider|APG"
 			]
 		},
@@ -9960,6 +9987,10 @@
 			"prerequisites": "{@feat Cavalier Dedication|APG}",
 			"entries": [
 				"You've trained your mount to become a powerful force on the battlefield. The mount you gained through the Cavalier Dedication feat becomes a mature animal companion, granting it additional capabilities. During an encounter, even if you don't use the {@action Command an Animal} action, your animal companion can still use 1 action on your turn to {@action Stride} or {@action Strike}."
+			],
+			"leadsTo": [
+				"Incredible Mount|APG",
+				"Specialized Mount|APG"
 			]
 		},
 		{
@@ -10204,6 +10235,9 @@
 			"prerequisites": "{@feat Impressive Mount|APG}",
 			"entries": [
 				"Under your care and training, your mount has realized its innate potential. The mount you gained through the Cavalier Dedication feat becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion."
+			],
+			"leadsTo": [
+				"Specialized Mount|APG"
 			]
 		},
 		{
@@ -10485,8 +10519,8 @@
 				"Advanced Deduction|APG",
 				"Investigator's Stratagem|APG",
 				"Keen Recollection|APG",
-				"Skill Mastery|APG",
-				"Master Spotter|APG"
+				"Master Spotter|APG",
+				"Skill Mastery|APG"
 			]
 		},
 		{
@@ -11207,6 +11241,9 @@
 			"prerequisites": "tenets of evil",
 			"entries": [
 				"You've sworn to rid the world of the self-righteousness of celestial beings. Add the following tenet to your code, after the other tenets. \"You must banish or slay celestials you encounter as long as you have a reasonable chance of success; in the incredibly unlikely event you find an evil celestial, you don't have to banish or kill it.\" When you use your champion's reaction against a celestial, the extra damage you deal with {@action Strike|CRB|Strikes} increases by 1 (or by 2 at 9th level and by 3 at 16th level)."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -11231,11 +11268,12 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the linguist archetype.",
 			"leadsTo": [
+				"Analyze Idiolect|APG",
+				"Crude Communication|APG",
 				"Multilingual Cipher|APG",
 				"Phonetic Training|APG",
-				"Spot Translate|APG",
 				"Read Shibboleths|APG",
-				"Crude Communication|APG"
+				"Spot Translate|APG"
 			]
 		},
 		{
@@ -11296,7 +11334,7 @@
 				"Witch"
 			],
 			"entries": [
-				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the brawling group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
+				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the {@group brawling} group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
 			]
 		},
 		{
@@ -11316,7 +11354,7 @@
 			],
 			"prerequisites": "trained in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}",
 			"entries": [
-				"During your daily preparations, you can gain the assistance of an allied prepared spellcaster to prepare one spell for the day. The spell can be up to 3rd level. Your ally must be able to prepare and cast it, and the spell must have a Targets entry or an area. Your ally loses a spell slot of the corresponding spell level, and you gain the ability to cast the prepared spell once that day. When you Cast the Spell, use your class DC for any saving throws required by the spell, and your class DC \u2013 10 as a spell attack roll modifier."
+				"During your daily preparations, you can gain the assistance of an allied prepared spellcaster to prepare one spell for the day. The spell can be up to 3rd level. Your ally must be able to prepare and cast it, and the spell must have a Targets entry or an area. Your ally loses a spell slot of the corresponding spell level, and you gain the ability to cast the prepared spell once that day. When you {@action Cast a Spell||Cast the Spell}, use your class DC for any saving throws required by the spell, and your class DC \u2013 10 as a spell attack roll modifier."
 			],
 			"leadsTo": [
 				"Steal Spell|APG"
@@ -11370,7 +11408,13 @@
 				"You've compiled a vast repository of information that touches on nearly every subject. You are trained in {@skill Lore||Loremaster Lore}, a special {@skill Lore} skill that can be used only to {@action Recall Knowledge}, but on any topic. If you have legendary proficiency in a skill used to {@action Decipher Writing}, you gain expert proficiency in {@skill Lore||Loremaster Lore}, but you can't increase your proficiency rank in {@skill Lore||Loremaster Lore} by any other means. You can take feats in the loremaster's additional feats entry even if you don't meet the enigma muse prerequisite.",
 				"If you have the {@skill Lore||Bardic Lore} class feat (Core Rulebook 99), you gain a +1 circumstance bonus to skill checks with {@skill Lore||Bardic Lore}."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the loremaster archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the loremaster archetype.",
+			"leadsTo": [
+				"Magical Edification|APG",
+				"Greater Magical Edification|APG",
+				"Orthographic Mastery|APG",
+				"Quick Study|APG"
+			]
 		},
 		{
 			"name": "Loud Singer",
@@ -11569,7 +11613,7 @@
 			],
 			"prerequisites": "{@feat Loremaster Dedication|APG}",
 			"entries": [
-				"You've learned those tidbits of magic that are most conducive to furthering your acquisition and transmission of knowledge. You gain guidance, message, and sigil as innate occult cantrips."
+				"You've learned those tidbits of magic that are most conducive to furthering your acquisition and transmission of knowledge. You gain {@spell guidance}, {@spell message}, and {@spell sigil} as innate occult cantrips."
 			],
 			"leadsTo": [
 				"Greater Magical Edification|APG"
@@ -11706,17 +11750,18 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the marshal archetype.",
 			"leadsTo": [
-				"Dread Marshal Stance|APG",
-				"Inspiring Marshal Stance|APG",
-				"Snap Out Of It!|APG",
-				"Steel Yourself!|APG",
+				"Back To Back|APG",
 				"Cadence Call|APG",
 				"Tactical Cadence|APG",
-				"Rallying Charge|APG",
-				"Back To Back|APG",
-				"To Battle!|APG",
 				"Coordinated Charge|APG",
-				"Target Of Opportunity|APG"
+				"Dread Marshal Stance|APG",
+				"Inspiring Marshal Stance|APG",
+				"Rallying Charge|APG",
+				"Snap Out Of It!|APG",
+				"Steel Yourself!|APG",
+				"Target Of Opportunity|APG",
+				"To Battle!|APG",
+				"Topple Foe|APG"
 			]
 		},
 		{
@@ -11960,10 +12005,10 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the mauler archetype.",
 			"leadsTo": [
+				"Avalanche Strike|APG",
 				"Clear The Way|APG",
-				"Shoving Sweep|APG",
 				"Hammer Quake|APG",
-				"Avalanche Strike|APG"
+				"Shoving Sweep|APG"
 			]
 		},
 		{
@@ -11982,16 +12027,16 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "trained in {@skill Medicine}, Battle {@skill Medicine}",
+			"prerequisites": "trained in {@skill Medicine}, {@feat Battle Medicine}",
 			"entries": [
-				"You become an expert in {@skill Medicine}. When you succeed with Battle {@skill Medicine} or {@action Treat Wounds}, the target regains 5 additional HP at DC 20, 10 HP at DC 30, or 15 HP at DC 40. Once per day, you can use Battle {@skill Medicine} on a creature that's temporarily immune. If you're a master in {@skill Medicine}, you can do so once per hour."
+				"You become an expert in {@skill Medicine}. When you succeed with {@feat Battle Medicine} or {@action Treat Wounds}, the target regains 5 additional HP at DC 20, 10 HP at DC 30, or 15 HP at DC 40. Once per day, you can use {@feat Battle Medicine} on a creature that's temporarily immune. If you're a master in {@skill Medicine}, you can do so once per hour."
 			],
 			"special": "You can't select another dedication feat until you gain two other feats from the medic archetype.",
 			"leadsTo": [
 				"Doctor's Visitation|APG",
+				"Resuscitate|APG",
 				"Treat Condition|APG",
-				"Holistic Care|APG",
-				"Resuscitate|APG"
+				"Holistic Care|APG"
 			]
 		},
 		{
@@ -12215,14 +12260,14 @@
 				"Monk",
 				"Stance"
 			],
-			"requirements": "You are unarmored and wielding a longbow, shortbow, or a bow with the {@trait monk} trait.",
+			"requirements": "You are unarmored and wielding a {@item longbow}, {@item shortbow}, or a bow with the {@trait monk} trait.",
 			"entries": [
-				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using longbows, shortbows, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
+				"You enter a specialized stance for a unique martial art centered around the use of a bow. While in this stance, the only {@action Strike|CRB|Strikes} you can make are those using {@item longbow||longbows}, {@item shortbow||shortbows}, or bows with the {@trait monk} trait. You can use {@action Flurry of Blows} with these bows. You can use your other monk feats or monk abilities that normally require unarmed attacks with these bows when attacking within half the first range increment (normally 50 feet for a longbow and 30 feet for a shortbow), so long as the feat or ability doesn't require a single, specific {@action Strike}."
 			],
-			"special": "When you select this feat, you become trained in the longbow, shortbow, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master.",
+			"special": "When you select this feat, you become trained in the {@trait longbow}, {@trait shortbow}, and any simple and martial bows with the {@trait monk} trait. If you gain the expert strikes class feature, your proficiency rank for these weapons increases to expert, and if you gain the master strikes class feature, your proficiency rank for these weapons increases to master.",
 			"leadsTo": [
-				"Return Fire|APG",
 				"Focused Shot|APG",
+				"Return Fire|APG",
 				"Triangle Shot|APG"
 			]
 		},
@@ -12353,7 +12398,7 @@
 			],
 			"prerequisites": "{@feat Familiar Master Dedication|APG}",
 			"entries": [
-				"Your familiar's supernatural spirit has outgrown its corporeal body. You can conduct a special 10-minute activity to reselect certain familiar abilities, switching one or more of the following abilities for other abilities on this list: amphibious, burrower, climber, darkvision, fast movement, manual dexterity, resistance (page 146), and scent. You can reselect only familiar abilities you would normally be able to reselect each day, not required familiar abilities for your familiar. You can't remove an ability that is required for another ability your familiar has (for instance, you can't remove manual dexterity if the familiar has lab assistant)."
+				"Your familiar's supernatural spirit has outgrown its corporeal body. You can conduct a special 10-minute activity to reselect certain familiar abilities, switching one or more of the following abilities for other abilities on this list: {@familiarAbility amphibious}, {@familiarAbility burrower}, {@familiarAbility climber}, {@familiarAbility darkvision}, {@familiarAbility fast movement}, {@familiarAbility manual dexterity}, {@familiarAbility resistance|APG}, and {@familiarAbility scent}. You can reselect only familiar abilities you would normally be able to reselect each day, not required familiar abilities for your familiar. You can't remove an ability that is required for another ability your familiar has (for instance, you can't remove {@familiarAbility manual dexterity} if the familiar has {@familiarAbility lab assistant})."
 			]
 		},
 		{
@@ -12915,9 +12960,9 @@
 				"Basic Mysteries|APG",
 				"Advanced Mysteries|APG",
 				"Basic Oracle Spellcasting|APG",
-				"Mysterious Breadth|APG",
 				"Expert Oracle Spellcasting|APG",
 				"Master Oracle Spellcasting|APG",
+				"Mysterious Breadth|APG",
 				"First Revelation|APG"
 			]
 		},
@@ -13714,7 +13759,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"One of your parents has a human life span and another an elven life span, with your own somewhere between. As a result, you have an unusual perspective on time, which you've learned to manifest to aid yourself in moments of stress. You gain {@spell haste} as a 3rd-level arcane innate spell, though you can target only yourself. You can Cast this Spell once per day.",
+				"One of your parents has a human life span and another an elven life span, with your own somewhere between. As a result, you have an unusual perspective on time, which you've learned to manifest to aid yourself in moments of stress. You gain {@spell haste} as a 3rd-level arcane innate spell, though you can target only yourself. You can {@action Cast a Spell||Cast this Spell} once per day.",
 				"The following common backgrounds supplement those found in the Core Rulebook and are available to any character during character creation. Some of these backgrounds grant skill feats from Chapter 4 of this book."
 			]
 		},
@@ -13786,6 +13831,7 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the pirate archetype.",
 			"leadsTo": [
 				"Pirate Weapon Training|APG",
+				"Rope Runner|APG",
 				"Walk The Plank|APG"
 			]
 		},
@@ -13985,10 +14031,10 @@
 			],
 			"special": "You can't select another dedication feat until you have gained at least two other feats from the poisoner archetype.",
 			"leadsTo": [
-				"Poisoner's Twist|APG",
+				"Acquired Tolerance|APG",
 				"Expert Poisoner|APG",
 				"Poison Coat|APG",
-				"Acquired Tolerance|APG"
+				"Poisoner's Twist|APG"
 			]
 		},
 		{
@@ -14822,7 +14868,7 @@
 			],
 			"entries": [
 				"You have a pet rat that has become magically bonded to you.",
-				"You gain a familiar using the rules on page 217 of the Core Rulebook, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
+				"You gain a {@filter familiar|companionsfamiliars||Type=Familiar} using the rules on page 217 of the Core Rulebook, and this familiar must be a rat. It still gets the benefits of familiar abilities, but its base form remains a rat."
 			]
 		},
 		{
@@ -15516,7 +15562,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}, legendary in {@skill Medicine}",
 			"requirements": "You are holding healer's tools or are wearing them and have a hand free.",
 			"entries": [
-				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of raise dead, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
+				"You can use {@skill Medicine} to resuscitate the dead. Attempt a DC 40 {@skill Medicine} check to revive a dead creature that has been dead for no more than 3 rounds. If you succeed, the target returns to life with the effects of {@ritual raise dead}, except it still has the {@condition wounded} condition it had before {@condition dying}, increased by 1 (or {@condition wounded 1} if it wasn't {@condition wounded} before {@condition dying}). Whether you succeed or fail, the target is temporarily immune to Resuscitate for 1 day."
 			]
 		},
 		{
@@ -15728,7 +15774,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your patron grants you the power to summon other creatures to aid you. Choose one summon spell (such as summon animal, summon construct, and so forth) that appears on the spell list of your spellcasting tradition. You can spend 10 minutes in communion with your familiar to replace one spell you've prepared in one of your witch spell slots with the spell you chose, heightened to the same level. The spell you replaced must be of at least the summon spell's minimum spell level."
+				"Your patron grants you the power to summon other creatures to aid you. Choose one summon spell (such as {@spell summon animal}, summon construct, and so forth) that appears on the spell list of your spellcasting tradition. You can spend 10 minutes in communion with your familiar to replace one spell you've prepared in one of your witch spell slots with the spell you chose, heightened to the same level. The spell you replaced must be of at least the summon spell's minimum spell level."
 			]
 		},
 		{
@@ -15795,11 +15841,11 @@
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the ritualist archetype. If you retrain out of this feat, you lose the rituals learned from it.",
 			"leadsTo": [
+				"Efficient Rituals|APG",
+				"Speedy Rituals|APG",
 				"Flexible Ritualist|APG",
 				"Assured Ritualist|APG",
-				"Resourceful Ritualist|APG",
-				"Efficient Rituals|APG",
-				"Speedy Rituals|APG"
+				"Resourceful Ritualist|APG"
 			]
 		},
 		{
@@ -16161,7 +16207,14 @@
 			"entries": [
 				"You are a highly skilled scout, capable of providing your allies a timely warning of any danger. You gain the {@action Scout}'s Warning ranger feat (Core Rulebook 172). When you're using the {@action Scout} exploration activity, you grant your allies a +2 circumstance bonus to their initiative rolls instead of a +1 circumstance bonus."
 			],
-			"special": "You can't select another dedication feat until you have gained two other feats from the scout archetype."
+			"special": "You can't select another dedication feat until you have gained two other feats from the scout archetype.",
+			"leadsTo": [
+				"Fleeting Shadow|APG",
+				"Scout's Charge|APG",
+				"Scout's Pounce|APG",
+				"Scout's Speed|APG",
+				"Terrain Scout|APG"
+			]
 		},
 		{
 			"name": "Scout's Charge",
@@ -16290,9 +16343,9 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the scrounger archetype.",
 			"leadsTo": [
-				"Reverse Engineering|APG",
+				"Expert Disassembly|APG",
 				"High-quality Scrounger|APG",
-				"Expert Disassembly|APG"
+				"Reverse Engineering|APG"
 			]
 		},
 		{
@@ -16337,7 +16390,7 @@
 				"Wizard"
 			],
 			"entries": [
-				"When your target proves resilient to your magical deceptions, you can try them again on someone else. When you cast an enchantment spell that targets one creature and that creature critically succeeds at its Will save, you can Cast the Spell again before the end of your next turn on a different creature without expending an additional spell slot. The second casting doesn't grant you any benefits that you would normally gain for {@action Cast a Spell||Casting a Spell} from a spell slot."
+				"When your target proves resilient to your magical deceptions, you can try them again on someone else. When you cast an enchantment spell that targets one creature and that creature critically succeeds at its Will save, you can {@action Cast a Spell||Cast the Spell} again before the end of your next turn on a different creature without expending an additional spell slot. The second casting doesn't grant you any benefits that you would normally gain for {@action Cast a Spell||Casting a Spell} from a spell slot."
 			]
 		},
 		{
@@ -16499,10 +16552,10 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the sentinel archetype.",
 			"leadsTo": [
-				"Steel Skin|APG",
 				"Armor Specialist|APG",
 				"Armored Rebuff|APG",
-				"Mighty Bulwark|APG"
+				"Mighty Bulwark|APG",
+				"Steel Skin|APG"
 			]
 		},
 		{
@@ -16698,7 +16751,7 @@
 			"prerequisites": "ki spells",
 			"requirements": "You are in Clinging Shadows Initiate.",
 			"entries": [
-				"You launch a wave of shadowy ki outward from your body, damaging your opponents and potentially binding them in place. You gain the shadow's web ki spell (page 229)",
+				"You launch a wave of shadowy ki outward from your body, damaging your opponents and potentially binding them in place. You gain the {@spell shadow's web|APG} ki spell.",
 				"Increase the number of Focus Points in your focus pool by 1."
 			]
 		},
@@ -16720,16 +16773,16 @@
 			],
 			"prerequisites": "master in {@skill Stealth}, expert in {@skill Performance}",
 			"entries": [
-				"You dedicate yourself to the shadows. Your coloring becomes gray and gloomy, your senses adjust to the darkness, and you can sneak through darkness with ease. You gain greater darkvision. You also gain a +2 circumstance bonus to {@skill Stealth} checks when you are within dim light or darkness."
+				"You dedicate yourself to the shadows. Your coloring becomes gray and gloomy, your senses adjust to the darkness, and you can sneak through darkness with ease. You gain {@ability darkvision||greater darkvision}. You also gain a +2 circumstance bonus to {@skill Stealth} checks when you are within dim light or darkness."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the shadowdancer archetype.",
 			"leadsTo": [
-				"Shadow Master|APG",
-				"Shadow Sneak Attack|APG",
 				"Shadow Magic|APG",
 				"Additional Shadow Magic|APG",
 				"Shadow Illusion|APG",
-				"Shadow Power|APG"
+				"Shadow Power|APG",
+				"Shadow Master|APG",
+				"Shadow Sneak Attack|APG"
 			]
 		},
 		{
@@ -16987,7 +17040,7 @@
 			],
 			"prerequisites": "{@feat Monastic Weaponry}",
 			"entries": [
-				"You enter a stance that lets you throw shuriken with lightning speed. While in this stance, you can use your monk feats or monk abilities that normally require unarmed attacks with shuriken instead."
+				"You enter a stance that lets you throw shuriken with lightning speed. While in this stance, you can use your monk feats or monk abilities that normally require unarmed attacks with {@item shuriken} instead."
 			]
 		},
 		{
@@ -17225,7 +17278,7 @@
 				"Lineage"
 			],
 			"entries": [
-				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the brawling group, have the {@trait unarmed} and {@trait grapple} traits, and are cold iron."
+				"Your mother was an annis hag, known for physical prowess, and you have one violet or steel-gray eye. You have thick, sturdy claws made of cold iron that grow naturally from your body. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage. Your claws are in the {@group brawling} group, have the {@trait unarmed} and {@trait grapple} traits, and are cold iron."
 			]
 		},
 		{
@@ -17388,9 +17441,10 @@
 			],
 			"special": "The feat counts as Snare Specialist for the purpose of feat prerequisites. If you also have the {@feat Snare Specialist} ranger feat, the quick snares from both feats are cumulative. You can't select another dedication feat until you have gained two other feats from the snarecrafter archetype.",
 			"leadsTo": [
-				"Surprise Snare|APG",
+				"Giant Snare|APG",
+				"Plentiful Snares|APG",
 				"Remote Trigger|APG",
-				"Giant Snare|APG"
+				"Surprise Snare|APG"
 			]
 		},
 		{
@@ -17715,7 +17769,7 @@
 				"Concentrate",
 				"Sorcerer"
 			],
-			"trigger": "An ally Casts a Spell and you are within that spell's range.",
+			"trigger": "An ally {@action Cast a Spell||Casts a Spell} and you are within that spell's range.",
 			"entries": [
 				"You open the power in your blood to your ally's spellcasting, using your magic to boost their range. Your ally can use you as the point of origin for their spell, calculating range and cover from your space instead of their own."
 			]
@@ -17781,11 +17835,11 @@
 				"Duskwalker"
 			],
 			"entries": [
-				"You are attuned to the minute sounds and sensations of restless spirits. Even if you aren't Searching, you can attempt a check to find haunts that normally require you to be Searching. You still need to meet any other requirements to find the haunt."
+				"You are attuned to the minute sounds and sensations of restless spirits. Even if you aren't {@action Search||Searching}, you can attempt a check to find haunts that normally require you to be {@action Search||Searching}. You still need to meet any other requirements to find the haunt."
 			]
 		},
 		{
-			"name": "Spirit {@action Strike|CRB|Strikes}",
+			"name": "Spirit Strikes",
 			"source": "APG",
 			"page": 38,
 			"level": 9,
@@ -17850,8 +17904,8 @@
 				"Oracle"
 			],
 			"entries": [
-				"You have a vague connection to the Ethereal Plane that enables you to notice spirits. While you're exploring but not Searching, the GM rolls a secret check for you to find haunts that usually require Searching, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence such as celestials, fiends, and monitors.",
-				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while Searching, while Seeking, and on the automatic secret check you gain while exploring even if you aren't Searching. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
+				"You have a vague connection to the Ethereal Plane that enables you to notice spirits. While you're exploring but not {@action Search||Searching}, the GM rolls a secret check for you to find haunts that usually require {@action Search||Searching}, as well as spirits, creatures on the Ethereal Plane, and beings made entirely of spiritual essence such as celestials, fiends, and monitors.",
+				"You can also potentially notice ethereal creatures and spirits inside solid objects, provided they are within 30 feet of you. This applies while {@action Search||Searching}, while Seeking, and on the automatic secret check you gain while exploring even if you aren't {@action Search||Searching}. You can still notice spirits only on a successful check, and you can't see them if they're more than 5 feet inside an object.",
 				"When you notice a creature with your Spiritual Sense, you also learn its location, making it {@condition hidden} to you if it had been {@condition undetected}."
 			]
 		},
@@ -18132,7 +18186,7 @@
 			"prerequisites": "{@feat Legendary Thief}, {@feat Loaner Spell|APG}",
 			"entries": [
 				"When you use Legendary Thief to steal the impossible, you can steal a prepared spell or spontaneous spell from a foe.",
-				"The spell is randomly selected from the highest-level spells the foe knows that have a target or area, to a maximum of 8th-level spells; the target loses the appropriate spell slot as if they had cast it themself. You can Cast the Spell once within the next {@dice 1d4} rounds, after which the fleeting magic fades; this otherwise works the same as casting a Loaner Spell."
+				"The spell is randomly selected from the highest-level spells the foe knows that have a target or area, to a maximum of 8th-level spells; the target loses the appropriate spell slot as if they had cast it themself. You can {@action Cast a Spell||Cast the Spell} once within the next {@dice 1d4} rounds, after which the fleeting magic fades; this otherwise works the same as casting a Loaner Spell."
 			]
 		},
 		{
@@ -18473,7 +18527,7 @@
 			],
 			"prerequisites": "trained in {@skill Deception}",
 			"entries": [
-				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only {@action Strike|CRB|Strikes} you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
+				"You enter a seemingly unfocused stance that mimics the movements of the inebriated\u2014bobbing, weaving, leaving false openings, and distracting your enemies from your true movements. While in this stance, you gain a +1 circumstance bonus to {@skill Deception} checks to {@action Feint}. The only {@action Strike|CRB|Strikes} you can make are stumbling swing unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait backstabber}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits. If an enemy hits you with a melee {@action Strike} while in this stance, it becomes {@condition flat-footed} against the next stumbling swing {@action Strike} you make against it before the end of your next turn."
 			],
 			"leadsTo": [
 				"Stumbling Feint|APG"
@@ -18682,9 +18736,9 @@
 				"Barbarian",
 				"Rage"
 			],
-			"prerequisites": "{@feat Acute Scent} or precise or imprecise scent",
+			"prerequisites": "{@feat Acute Scent} or precise or imprecise {@ability scent}",
 			"entries": [
-				"Your scent is preternaturally sharp, and you can always rely on your sense of smell to help guide you when your vision is compromised. When you target a {@condition concealed} or {@condition hidden} opponent while you are {@action Rage|CRB|raging}, you reduce the DC of the flat check to 3 for a {@condition concealed} target or to 9 for a {@condition hidden} one."
+				"Your {@ability scent} is preternaturally sharp, and you can always rely on your sense of smell to help guide you when your vision is compromised. When you target a {@condition concealed} or {@condition hidden} opponent while you are {@action Rage|CRB|raging}, you reduce the DC of the flat check to 3 for a {@condition concealed} target or to 9 for a {@condition hidden} one."
 			]
 		},
 		{
@@ -18949,10 +19003,10 @@
 			"leadsTo": [
 				"Basic Flair|APG",
 				"Advanced Flair|APG",
+				"Evasiveness|APG",
 				"Finishing Precision|APG",
 				"Swashbuckler's Riposte|APG",
-				"Swashbuckler's Speed|APG",
-				"Evasiveness|APG"
+				"Swashbuckler's Speed|APG"
 			]
 		},
 		{
@@ -19148,8 +19202,8 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the talisman dabbler archetype.",
 			"leadsTo": [
-				"Quick Fix|APG",
 				"Deeper Dabbler|APG",
+				"Quick Fix|APG",
 				"Talismanic Sage|APG"
 			]
 		},
@@ -19375,14 +19429,14 @@
 				"Tengu"
 			],
 			"entries": [
-				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the {@group sword} group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
+				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the sword group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
 				"You also gain access to all {@filter uncommon tengu weapons|items||rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Tengu Weapon Study|APG",
 				"Eclectic Sword Training|APG",
 				"Eclectic Sword Mastery|LOAG",
-				"Tengu Weapon Expertise|APG"
+				"Tengu Weapon Expertise|APG",
+				"Tengu Weapon Study|APG"
 			]
 		},
 		{
@@ -19492,7 +19546,7 @@
 			],
 			"prerequisites": "expert in {@skill Intimidation}",
 			"entries": [
-				"The spells of those you have Demoralized are less effective on you. If you succeed in Demoralizing a creature, for the next 24 hours you gain a +1 circumstance bonus to saving throws against that creature's spells."
+				"The spells of those you have {@action Demoralize||Demoralized} are less effective on you. If you succeed in Demoralizing a creature, for the next 24 hours you gain a +1 circumstance bonus to saving throws against that creature's spells."
 			]
 		},
 		{
@@ -19575,7 +19629,7 @@
 			"prerequisites": "expert in {@skill Perception}",
 			"entries": [
 				"You take your time searching to ensure you find everything.",
-				"When Searching, you can take twice as long to search.",
+				"When {@action Search||Searching}, you can take twice as long to search.",
 				"Normally this means you {@action Search} at up to one quarter of your Speed, to a maximum of 150 feet per minute to check everything, or 75 feet per minute to check everything before you walk into it. If you do, you gain a +2 circumstance bonus to your {@skill Perception} checks to {@action Seek}."
 			]
 		},
@@ -19759,7 +19813,7 @@
 				"Investigator"
 			],
 			"entries": [
-				"You have an intuitive sense that alerts you to the dangers and presence of traps. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps, to AC against attacks made by traps, and to saves against traps. Even if you aren't Searching, you get a check to find traps that normally require you to be Searching. You still need to meet any other requirements to find the trap.",
+				"You have an intuitive sense that alerts you to the dangers and presence of traps. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps, to AC against attacks made by traps, and to saves against traps. Even if you aren't {@action Search||Searching}, you get a check to find traps that normally require you to be {@action Search||Searching}. You still need to meet any other requirements to find the trap.",
 				"You can disable traps that require a proficiency rank of master in {@skill Thievery}. If you have master proficiency in {@skill Thievery}, you can disable traps that require a proficiency rank of legendary instead, and your circumstance bonuses against traps increase to +2."
 			]
 		},
@@ -20045,7 +20099,7 @@
 				"Orc"
 			],
 			"entries": [
-				"You have particularly long, jagged tusks perfect for tearing meat from bone. You gain a tusks unarmed attack that deals {@damage 1d6} piercing damage. Your tusks are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits."
+				"You have particularly long, jagged tusks perfect for tearing meat from bone. You gain a tusks unarmed attack that deals {@damage 1d6} piercing damage. Your tusks are in the {@group brawling} group and have the {@trait finesse} and {@trait unarmed} traits."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain into this feat. You can retrain out of this feat only through drastic measures such as breaking or filing your tusks."
 		},
@@ -20093,9 +20147,6 @@
 			"requirements": "You wield two melee weapons, one in each hand.",
 			"entries": [
 				"You use your weapons to parry. You gain a +1 circumstance bonus to AC until the start of your next turn, or a +2 circumstance bonus if either weapon has the {@trait parry} trait. You lose this circumstance bonus if you no longer meet this feat's requirement."
-			],
-			"leadsTo": [
-				"Twinned Defense|APG"
 			]
 		},
 		{
@@ -20301,7 +20352,7 @@
 			],
 			"prerequisites": "trained in {@skill Stealth}",
 			"entries": [
-				"You capitalize on the distraction provided by an ally. You {@action Sneak} up to a foe adjacent to one of your allies. You can roll against."
+				"You capitalize on the distraction provided by an ally. You {@action Sneak} up to a foe adjacent to one of your allies. You can roll against the foe you're {@action Sneak||Sneaking} up on, even if it's currently {@condition observed||observing} you, as though you were {@condition hidden}. You take a \u20132 penalty on your {@skill Stealth} check. If your {@skill Stealth} check against the chosen foe succeeds, you can make a melee {@action Strike} against that foe at the end of your {@action Sneak}."
 			]
 		},
 		{
@@ -20538,7 +20589,7 @@
 				"Ratfolk"
 			],
 			"entries": [
-				"You've let your incisors grow long enough to serve as formidable weapons. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the brawling group and have the {@trait finesse} and {@trait unarmed} traits. Unlike most creatures, you can file down your teeth and regrow them later on, enabling you to select this feat at any level, and to retrain into and out of this feat."
+				"You've let your incisors grow long enough to serve as formidable weapons. You gain a jaws unarmed attack that deals {@damage 1d6} piercing damage. Your jaws are in the {@group brawling} group and have the {@trait finesse} and {@trait unarmed} traits. Unlike most creatures, you can file down your teeth and regrow them later on, enabling you to select this feat at any level, and to retrain into and out of this feat."
 			],
 			"leadsTo": [
 				"Gnaw|LOAG"
@@ -20593,11 +20644,12 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the vigilante archetype.",
 			"leadsTo": [
+				"Many Guises|APG",
+				"Quick Change|APG",
 				"Safe House|APG",
 				"Social Purview|APG",
 				"Startling Appearance|APG",
-				"Quick Change|APG",
-				"Many Guises|APG"
+				"Subjective Truth|APG"
 			]
 		},
 		{
@@ -20650,9 +20702,9 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the viking archetype.",
 			"leadsTo": [
 				"Hurling Charge|APG",
+				"Second Shield|APG",
 				"Viking Weapon Familiarity|APG",
-				"Viking Weapon Specialist|APG",
-				"Second Shield|APG"
+				"Viking Weapon Specialist|APG"
 			]
 		},
 		{
@@ -21018,11 +21070,11 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the weapon improviser archetype.",
 			"leadsTo": [
-				"Improvised Pummel|APG",
-				"Surprise Strike|APG",
 				"Improvised Critical|APG",
+				"Improvised Pummel|APG",
+				"Shattering Strike|APG",
 				"Makeshift Strike|APG",
-				"Shattering Strike|APG"
+				"Surprise Strike|APG"
 			]
 		},
 		{
@@ -21254,14 +21306,14 @@
 			],
 			"prerequisites": "Intelligence 14",
 			"entries": [
-				"You cast spells like a witch. Choose a patron; you gain a familiar with two common cantrips of your choice from your chosen patron's tradition, but aside from the tradition, you don't gain any other effects the patron would usually grant. Your familiar has one less familiar ability than normal. You gain the {@action Cast a Spell} activity. You can prepare one cantrip each day from your familiar. You're trained in spell attack rolls and spell DCs from your patron's tradition. Your key spellcasting ability for witch archetype spells is Intelligence, and they are witch spells of your patron's tradition. You become trained in the skill associated with the patron's tradition; if you were already trained in it, you instead become trained in a skill of your choice."
+				"You cast spells like a witch. Choose a patron; You gain a {@filter familiar|companionsfamiliars||Type=Familiar} with two common cantrips of your choice from your chosen patron's tradition, but aside from the tradition, you don't gain any other effects the patron would usually grant. Your familiar has one less familiar ability than normal. You gain the {@action Cast a Spell} activity. You can prepare one cantrip each day from your familiar. You're trained in spell attack rolls and spell DCs from your patron's tradition. Your key spellcasting ability for witch archetype spells is Intelligence, and they are witch spells of your patron's tradition. You become trained in the skill associated with the patron's tradition; if you were already trained in it, you instead become trained in a skill of your choice."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the witch archetype.",
 			"leadsTo": [
 				"Basic Witch Spellcasting|APG",
-				"Patron's Breadth|APG",
 				"Expert Witch Spellcasting|APG",
-				"Master Wizard Spellcasting|APG",
+				"Master Witch Spellcasting|APG",
+				"Patron's Breadth|APG",
 				"Basic Witchcraft|APG",
 				"Advanced Witchcraft|APG"
 			]

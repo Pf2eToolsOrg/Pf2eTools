@@ -31,6 +31,7 @@ class PageFilterAncestries extends PageFilter {
 		});
 		this._languageFilter = new Filter({header: "Languages", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
 		this._traitsFilter = new Filter({header: "Traits"});
+		this._fAbilities = new Filter({header: "Abilities", itemSortFn: null});
 		this._miscFilter = new Filter({header: "Miscellaneous", itemSortFn: null});
 		this._rarityFilter = new Filter({header: "Rarity", displayFn: (it) => Renderer.stripTags(it).toTitleCase()});
 		this._optionsFilter = new OptionsFilter({
@@ -61,10 +62,13 @@ class PageFilterAncestries extends PageFilter {
 	mutateForFilters (ancestry, opts) {
 		ancestry._fSources = SourceFilter.getCompleteFilterSources(ancestry);
 		ancestry._flanguages = ancestry.languages.filter(it => it.length < 20);
-		ancestry._fMisc = [];
-		if (ancestry.feature) {
-			if (ancestry.feature.name === "Low-Light Vision") ancestry._fMisc.push("Has Low-Light Vision")
-			if (ancestry.feature.name === "Darkvision") ancestry._fMisc.push("Has Darkvision")
+		ancestry._fAbilities = []
+		const unarmedAttacks = new RegExp("Bite|Beak|Fangs|Claws", "g")
+		if (ancestry.features) {
+			ancestry.features.forEach(function (obj) {
+				if (unarmedAttacks.test(obj.name)) { ancestry._fAbilities.push("Unarmed Attack") }
+				ancestry._fAbilities.push(obj.name)
+			});
 		}
 		ancestry._fspeedtypes = []
 		ancestry._fspeed = 0
@@ -83,6 +87,7 @@ class PageFilterAncestries extends PageFilter {
 		this._traitsFilter.addItem(ancestry.traits);
 		this._rarityFilter.addItem(ancestry.rarity);
 		this._miscFilter.addItem(ancestry._fMisc);
+		this._fAbilities.addItem(ancestry._fAbilities);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -98,6 +103,7 @@ class PageFilterAncestries extends PageFilter {
 			this._traitsFilter,
 			this._rarityFilter,
 			this._miscFilter,
+			this._fAbilities,
 			this._optionsFilter,
 		];
 	}
@@ -116,6 +122,7 @@ class PageFilterAncestries extends PageFilter {
 			a.traits,
 			a.rarity,
 			a._fMisc,
+			a._fAbilities,
 		)
 	}
 }

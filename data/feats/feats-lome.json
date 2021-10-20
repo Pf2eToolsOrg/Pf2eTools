@@ -61,7 +61,7 @@
 				"Anadi"
 			],
 			"entries": [
-				"You've learned how to provide for your community, be it through hard-earned sustenance or useful crafts. You gain the trained proficiency rank in {@skill Crafting} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you become trained in a skill of your choice. You also become trained in {@skill Lore|Anadi Lore}."
+				"You've learned how to provide for your community, be it through hard-earned sustenance or useful crafts. You gain the trained proficiency rank in {@skill Crafting} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you become trained in a skill of your choice. You also become trained in {@skill Lore||Anadi Lore}."
 			]
 		},
 		{
@@ -100,7 +100,7 @@
 			],
 			"prerequisites": "ability to cast the {@spell detect magic} cantrip",
 			"entries": [
-				"You've trained yourself to constantly be on the lookout for {@trait magical} effects, even when focusing on looking out for other things. When you are Searching, you also gain the benefits of Detect Magic unless you choose not to. See page 479 of the Core Rulebook for more information about exploration activities."
+				"You've trained yourself to constantly be on the lookout for {@trait magical} effects, even when focusing on looking out for other things. When you are {@action Search||Searching}, you also gain the benefits of Detect Magic unless you choose not to. See page 479 of the Core Rulebook for more information about exploration activities."
 			]
 		},
 		{
@@ -401,7 +401,7 @@
 				"Conrasu"
 			],
 			"entries": [
-				"You have learned about your history and your people from shapers. You gain the trained proficiency rank in {@skill Crafting} and {@skill Occultism}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Conrasu Lore}."
+				"You have learned about your history and your people from shapers. You gain the trained proficiency rank in {@skill Crafting} and {@skill Occultism}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Conrasu Lore}."
 			]
 		},
 		{
@@ -753,7 +753,7 @@
 				"Gnoll"
 			],
 			"entries": [
-				"You paid attention to your senior hunters to learn their tricks. You gain the trained proficiency rank in {@skill Stealth} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Gnoll Lore}."
+				"You paid attention to your senior hunters to learn their tricks. You gain the trained proficiency rank in {@skill Stealth} and {@skill Survival}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Gnoll Lore}."
 			]
 		},
 		{
@@ -793,6 +793,10 @@
 			],
 			"entries": [
 				"You were taught to be a hunter and a raider. You are trained with flails, khopeshes, mambeles (Pathfinder Lost Omens Gods & Magic 120), spears, and war flails."
+			],
+			"leadsTo": [
+				"Gnoll Weapon Practicality|LOME",
+				"Gnoll Weapon Expertise|LOME"
 			]
 		},
 		{
@@ -813,6 +817,9 @@
 			"prerequisites": "{@feat Gnoll Weapon Familiarity|LOME}",
 			"entries": [
 				"Whenever you critically hit using flails, khopeshes, mambeles, spears, and war flails, you apply the weapon's critical specialization effect."
+			],
+			"leadsTo": [
+				"Gnoll Weapon Expertise|LOME"
 			]
 		},
 		{
@@ -851,7 +858,7 @@
 			],
 			"entries": [
 				"You lived an insulated life focused on avoiding danger. You gain the trained proficiency rank in {@skill Stealth} and {@skill Survival}.",
-				"If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Goloma Lore}."
+				"If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Goloma Lore}."
 			]
 		},
 		{
@@ -915,7 +922,7 @@
 				"Grippli"
 			],
 			"entries": [
-				"You are well versed in grippli culture and tactics. You gain the trained proficiency in {@skill Nature} and {@skill Stealth}. If you would automatically become trained in one of those skills, you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Grippli Lore}."
+				"You are well versed in grippli culture and tactics. You gain the trained proficiency in {@skill Nature} and {@skill Stealth}. If you would automatically become trained in one of those skills, you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Grippli Lore}."
 			]
 		},
 		{
@@ -956,6 +963,10 @@
 			"entries": [
 				"You've trained with weapons ideally suited to marshes and dense forests. You are trained with blowguns, hatchets, scythes, shortbows, and composite shortbows.",
 				"You also gain access to all uncommon grippli weapons. For the purpose of determining your proficiency, martial grippli weapons are simple weapons, and advanced grippli weapons are martial weapons."
+			],
+			"leadsTo": [
+				"Grippli Weapon Expertise|LOME",
+				"Grippli Weapon Innovator|LOME"
 			]
 		},
 		{
@@ -1156,7 +1167,7 @@
 				"Grippli"
 			],
 			"entries": [
-				"You tend to do most of your hunting and work at night and have adapted to the requirements of nocturnal life. You gain darkvision, allowing you to see in darkness and dim light just as well as you can in bright light. However, in darkness, you see in black and white only."
+				"You tend to do most of your hunting and work at night and have adapted to the requirements of nocturnal life. You gain {@ability darkvision}, allowing you to see in darkness and dim light just as well as you can in bright light. However, in darkness, you see in black and white only."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -1223,6 +1234,9 @@
 			],
 			"entries": [
 				"You were taught how to hunt as part of a pack. You gain a +2 circumstance bonus to checks to {@action Aid}, and your allies gain a +2 circumstance bonus to checks to {@action Aid} you."
+			],
+			"leadsTo": [
+				"Pack Stalker|LOME"
 			]
 		},
 		{
@@ -1263,7 +1277,7 @@
 			"prerequisites": "low-light vision",
 			"entries": [
 				"Your eyes have adapted to see in all circumstances, even without the assistance of light.",
-				"You gain darkvision, allowing you to see in darkness and dim light just as well as you can in bright light. However, in darkness you see in black and white only."
+				"You gain {@ability darkvision}, allowing you to see in darkness and dim light just as well as you can in bright light. However, in darkness you see in black and white only."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -1473,7 +1487,7 @@
 				"Gnoll"
 			],
 			"entries": [
-				"Your large black nose isn't just for show. You gain imprecise scent with a range of 30 feet."
+				"Your large black nose isn't just for show. You gain imprecise {@ability scent} with a range of 30 feet."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -1493,7 +1507,7 @@
 				"Shisk"
 			],
 			"entries": [
-				"You hoard knowledge like a dragon hoards gold. You gain the trained proficiency rank in three {@skill Lore} skills of your choice. You also become trained in {@skill Lore|Shisk Lore}."
+				"You hoard knowledge like a dragon hoards gold. You gain the trained proficiency rank in three {@skill Lore} skills of your choice. You also become trained in {@skill Lore||Shisk Lore}."
 			]
 		},
 		{
@@ -1551,6 +1565,9 @@
 			],
 			"entries": [
 				"The quills on your arms are particularly sharp and sturdy. You gain a quills unarmed attack that deals {@damage 1d6} piercing damage. Your quills are in the knife weapon group and have the {@trait finesse} and {@trait unarmed} traits."
+			],
+			"leadsTo": [
+				"Piercing Quills|LOME"
 			]
 		},
 		{
@@ -1610,6 +1627,9 @@
 			],
 			"entries": [
 				"You've taken an interest in anadi arcane traditions. Choose one cantrip from the arcane spell list. You can cast this spell as an arcane innate spell at will. A cantrip is heightened to a spell level equal to half your level rounded up."
+			],
+			"leadsTo": [
+				"Studious Adept|LOME"
 			]
 		},
 		{
@@ -1700,6 +1720,9 @@
 			],
 			"entries": [
 				"You use your many eyes to look in all directions at once, making you extremely observant for a short period of time. You gain all-around vision until the start of your next turn. This lets you see in all directions and prevents you from being flanked."
+			],
+			"leadsTo": [
+				"Constant Gaze|LOME"
 			]
 		},
 		{

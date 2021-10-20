@@ -40,9 +40,9 @@
 				"When you {@action Rage}, your sense of smell improves. You gain imprecise {@ability scent} with a range of 30 feet."
 			],
 			"leadsTo": [
-				"Supernatural Senses|APG",
+				"Instinctive Strike|APG",
 				"Nocturnal Sense|APG",
-				"Instinctive Strike|APG"
+				"Supernatural Senses|APG"
 			]
 		},
 		{
@@ -65,9 +65,9 @@
 			],
 			"leadsTo": [
 				"Acute Scent",
-				"Supernatural Senses|APG",
+				"Instinctive Strike|APG",
 				"Nocturnal Sense|APG",
-				"Instinctive Strike|APG"
+				"Supernatural Senses|APG"
 			]
 		},
 		{
@@ -605,11 +605,11 @@
 			],
 			"trigger": "You use the {@action Shield Block} reaction, and the opponent that triggered {@action Shield Block} is adjacent to you and is your size or smaller.",
 			"entries": [
-				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically Shoving it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
+				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically {@action Shove||Shoving} it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
 			],
 			"leadsTo": [
-				"Powerful Shove",
-				"Flinging Shove"
+				"Flinging Shove",
+				"Powerful Shove"
 			]
 		},
 		{
@@ -629,7 +629,7 @@
 			],
 			"entries": [
 				"Your graceful moves with agile weapons are beyond compare.",
-				"Your multiple attack penalty with agile weapons and agile unarmed attacks becomes \u20133 for your second attack and \u20136 for subsequent attacks (rather than \u20134 and \u20138)."
+				"Your multiple attack penalty with {@trait agile} weapons and {@trait agile} unarmed attacks becomes \u20133 for your second attack and \u20136 for subsequent attacks (rather than \u20134 and \u20138)."
 			]
 		},
 		{
@@ -721,9 +721,9 @@
 			"leadsTo": [
 				"Basic Concoction",
 				"Advanced Concoction",
-				"Quick Alchemy",
 				"Expert Alchemy",
-				"Master Alchemy"
+				"Master Alchemy",
+				"Quick Alchemy"
 			]
 		},
 		{
@@ -857,7 +857,7 @@
 				"Gnome"
 			],
 			"entries": [
-				"You build a rapport with an animal, which becomes magically bonded to you. You gain a familiar using the rules on page 217. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
+				"You build a rapport with an animal, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar} using the rules on page 217. The type of animal is up to you, but most gnomes choose animals with a burrow Speed."
 			]
 		},
 		{
@@ -1068,6 +1068,9 @@
 			"prerequisites": "trained in {@skill Arcana}",
 			"entries": [
 				"Your study of magic allows you to instinctively sense its presence. You can cast 1st-level {@spell detect magic} at will as an arcane innate spell. If you're a master in {@skill Arcana}, the spell is heightened to 3rd level; if you're legendary, it is heightened to 4th level."
+			],
+			"leadsTo": [
+				"Eye Of The Arclords|LOWG"
 			]
 		},
 		{
@@ -1505,9 +1508,9 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the bard archetype.",
 			"leadsTo": [
 				"Basic Bard Spellcasting",
-				"Occult Breadth",
 				"Expert Bard Spellcasting",
 				"Master Bard Spellcasting",
+				"Occult Breadth",
 				"Basic Muse's Whispers",
 				"Advanced Muse's Whispers",
 				"Counter Perform",
@@ -1554,7 +1557,7 @@
 			],
 			"prerequisites": "trained in {@skill Diplomacy}",
 			"entries": [
-				"You can {@action Earn Income} (page 236) using {@skill Diplomacy}, spending your days hunting for bargains and reselling at a profit. You can also spend time specifically sniffing out a great bargain on an item; this works as if you were using {@action Earn Income} with {@skill Diplomacy}, except instead of gaining money, you purchase the item at a discount equal to the money you would have gained, gaining the item for free if your earned income equals or exceeds its cost. Finally, if you select Bargain Hunter during character creation at 1st level, you start play with an additional 2 gp."
+				"You can {@action Earn Income} using {@skill Diplomacy}, spending your days hunting for bargains and reselling at a profit. You can also spend time specifically sniffing out a great bargain on an item; this works as if you were using {@action Earn Income} with {@skill Diplomacy}, except instead of gaining money, you purchase the item at a discount equal to the money you would have gained, gaining the item for free if your earned income equals or exceeds its cost. Finally, if you select Bargain Hunter during character creation at 1st level, you start play with an additional 2 gp."
 			]
 		},
 		{
@@ -1575,6 +1578,9 @@
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
 				"You gain a {@filter 1st- or 2nd-level wizard|feats||classes=wizard|level=[1;2]} feat of your choice."
+			],
+			"leadsTo": [
+				"Advanced Arcana"
 			]
 		},
 		{
@@ -1597,9 +1603,9 @@
 				"You gain the basic spellcasting benefits (page 219). Each time you gain a spell slot of a new level from the bard archetype, add a common occult spell or another spell you learned or discovered to your repertoire, of the appropriate spell level."
 			],
 			"leadsTo": [
-				"Occult Breadth",
 				"Expert Bard Spellcasting",
-				"Master Bard Spellcasting"
+				"Master Bard Spellcasting",
+				"Occult Breadth"
 			]
 		},
 		{
@@ -1759,9 +1765,9 @@
 				"You gain the basic spellcasting benefits (page 219)."
 			],
 			"leadsTo": [
-				"Primal Breadth",
 				"Expert Druid Spellcasting",
-				"Master Druid Spellcasting"
+				"Master Druid Spellcasting",
+				"Primal Breadth"
 			]
 		},
 		{
@@ -2057,7 +2063,10 @@
 			"prerequisites": "trained in {@skill Medicine}",
 			"requirements": "You are holding or wearing {@item healer's tools}.",
 			"entries": [
-				"You can patch up yourself or an adjacent ally, even in combat. Attempt a {@skill Medicine} check with the same DC as for {@action Treat Wounds}, and restore a corresponding amount of Hit Points; this does not remove the {@condition wounded} condition. As with {@action Treat Wounds}, you can attempt checks against higher DCs if you have the minimum proficiency rank. The target is then temporarily immune to your Battle {@skill Medicine} for 1 day."
+				"You can patch up yourself or an adjacent ally, even in combat. Attempt a {@skill Medicine} check with the same DC as for {@action Treat Wounds}, and restore a corresponding amount of Hit Points; this does not remove the {@condition wounded} condition. As with {@action Treat Wounds}, you can attempt checks against higher DCs if you have the minimum proficiency rank. The target is then temporarily immune to your {@feat Battle Medicine} for 1 day."
+			],
+			"leadsTo": [
+				"Paragon Battle Medicine|LOL"
 			]
 		},
 		{
@@ -2464,7 +2473,7 @@
 			"prerequisites": "arcane bond",
 			"entries": [
 				"Your connection to your bonded item increases your focus pool.",
-				"If you have spent at least 2 Focus Points since the last time."
+				"If you have spent at least 2 Focus Points since the last time you {@action Refocus||Refocused} and your bonded item is in your possession, you recover 2 Focus Points when you Refocus instead of 1."
 			]
 		},
 		{
@@ -2527,7 +2536,7 @@
 				"Monk"
 			],
 			"entries": [
-				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the brawling group and weapons in the brawling group. If you have Monastic Weaponry, you also gain the critical specialization effects of all monk weapons in which you are trained."
+				"You know how to make the most of your attacks when fighting hand-to-hand. You gain access to the critical specialization effects of unarmed strikes in the {@group brawling} group and weapons in the {@group brawling} group. If you have Monastic Weaponry, you also gain the critical specialization effects of all monk weapons in which you are trained."
 			]
 		},
 		{
@@ -2646,7 +2655,7 @@
 			"activity": {
 				"number": 1,
 				"unit": "varies",
-				"entry": "[{@as 1} n-action]"
+				"entry": "{@as 1}"
 			},
 			"level": 2,
 			"featType": {
@@ -2662,7 +2671,9 @@
 			],
 			"requirements": "You are wielding a two-handed melee weapon.",
 			"entries": [
-				"Throwing your weight behind your attack, you hit your."
+				"Throwing your weight behind your attack, you hit your opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn't trigger reactions.",
+				"This {@action Strike} has the following failure effect.",
+				"{@b Failure} The target becomes flat-footed until the end of your current turn."
 			]
 		},
 		{
@@ -2701,6 +2712,9 @@
 			],
 			"entries": [
 				"You recognize the chittering of ground creatures as its own peculiar language. You can ask questions of, receive answers from, and use the {@skill Diplomacy} skill with animals that have a burrow Speed, such as badgers, ground squirrels, moles, and prairie dogs. The GM determines which animals count for this ability."
+			],
+			"leadsTo": [
+				"Animal Elocutionist"
 			]
 		},
 		{
@@ -2742,7 +2756,7 @@
 				"Druid"
 			],
 			"entries": [
-				"You call upon the creatures of nature to come to your aid. You can spend 10 minutes in concert with nature to replace one of the spells you've prepared in one of your druid spell slots with a summon animal or summon plants and fungi spell of the same level."
+				"You call upon the creatures of nature to come to your aid. You can spend 10 minutes in concert with nature to replace one of the spells you've prepared in one of your druid spell slots with a {@spell summon animal} or summon plants and fungi spell of the same level."
 			]
 		},
 		{
@@ -2765,8 +2779,8 @@
 				"You alter your appearance to blend in to the wilderness. In natural terrain, you can {@action Sneak} even if you're {@condition observed}."
 			],
 			"leadsTo": [
-				"Stealthy Companion",
-				"Shadow Hunter"
+				"Shadow Hunter",
+				"Stealthy Companion"
 			]
 		},
 		{
@@ -2993,7 +3007,7 @@
 			],
 			"prerequisites": "tenets of good",
 			"entries": [
-				"You take on a celestial countenance, appearing like a type of celestial who serves your deity; for example, as an angel, you would gain a {@feat halo|APG} and feathery wings. You gain a fly Speed equal to your Speed. You gain darkvision if you don't already have it, and you gain the {@trait celestial} trait and the trait appropriate to the type of servitor you've become (archon, angel, or azata, for example)."
+				"You take on a celestial countenance, appearing like a type of celestial who serves your deity; for example, as an angel, you would gain a {@feat halo|APG} and feathery wings. You gain a fly Speed equal to your Speed. You gain {@ability darkvision} if you don't already have it, and you gain the {@trait celestial} trait and the trait appropriate to the type of servitor you've become (archon, angel, or azata, for example)."
 			]
 		},
 		{
@@ -3013,8 +3027,8 @@
 			],
 			"prerequisites": "divine ally (steed), tenets of good",
 			"entries": [
-				"Your steed gains incredible celestial powers granted by your deity. It gains darkvision, its maximum Hit Points increase by 40, and it gains weakness 10 to evil damage.",
-				"Additionally, it grows wings appropriate to a servitor of your deity (such as metallic wings for an archon), granting it a fly Speed equal to its Speed. It gains the {@trait celestial} trait and the trait appropriate to the type of servitor it has become (archon, angel, or azata, for example)."
+				"Your steed gains incredible celestial powers granted by your deity. It gains {@ability darkvision}, its maximum Hit Points increase by 40, and it gains weakness 10 to evil damage.",
+				"Additionally, it grows wings appropriate to a servitor of your deity (such as metallic wings for an archon), granting it a fly Speed equal to its Speed. It gains the {@trait celestial} trait and the trait appropriate to the type of servitor it has become ({@trait archon}, {@trait angel}, or {@trait azata}, for example)."
 			]
 		},
 		{
@@ -3074,10 +3088,10 @@
 				"Basic Devotion",
 				"Advanced Devotion",
 				"Champion Resiliency",
-				"Healing Touch",
 				"Champion's Reaction",
+				"Diverse Armor Expert",
 				"Divine Ally",
-				"Diverse Armor Expert"
+				"Healing Touch"
 			]
 		},
 		{
@@ -3520,7 +3534,7 @@
 			"trigger": "You use {@action Quick Alchemy} to craft an alchemical item that has the {@trait elixir} trait and is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
 				"You've discovered how to mix two elixirs into a single hybrid concoction. You can spend 2 additional batches of infused reagents to add a second elixir to the one you're crafting.",
-				"The second elixir must also be at least 2 levels lower than your advanced alchemy level, and the combination elixir is an alchemical item two levels higher than the higher of the two elixirs' levels. When this combination elixir is consumed, both the constituent elixirs take effect. For example, you can combine two elixirs of life to create a combined elixir that heals twice the normal amount, or you can combine a lesser darkvision elixir with a lesser eagle-eye elixir to both gain darkvision and find secret doors."
+				"The second elixir must also be at least 2 levels lower than your advanced alchemy level, and the combination elixir is an alchemical item two levels higher than the higher of the two elixirs' levels. When this combination elixir is consumed, both the constituent elixirs take effect. For example, you can combine two elixirs of life to create a combined elixir that heals twice the normal amount, or you can combine a lesser {@ability darkvision} elixir with a lesser eagle-eye elixir to both gain {@ability darkvision} and find secret doors."
 			]
 		},
 		{
@@ -3656,6 +3670,9 @@
 			"entries": [
 				"Hiding your gestures and incantations within other speech and movement, you attempt to conceal the fact that you are {@action Cast a Spell||Casting a Spell}. If the next action you use is to {@action Cast a Spell}, attempt a {@skill Stealth} check against one or more observers' {@skill Perception} DCs; if the spell has verbal components, you must also attempt a {@skill Deception} check against the observers' {@skill Perception} DC. If you succeed at your check (or checks) against an observer's DC, that observer doesn't notice you're casting a spell, even though material, somatic, and verbal components are usually noticeable and spells normally have sensory manifestations that would make spellcasting obvious to those nearby.",
 				"This ability hides only the spell's spellcasting actions and manifestations, not its effects, so an observer might still see a ray streak out from you or see you vanish into thin air."
+			],
+			"leadsTo": [
+				"Silent Spell"
 			]
 		},
 		{
@@ -3703,6 +3720,9 @@
 			"prerequisites": "expert in {@skill Society}, {@feat Courtly Graces}",
 			"entries": [
 				"You have social connections you can leverage to trade favors or meet important people. When you're in an area with connections (typically a settlement where you've spent downtime building connections, or possibly another area in the same nation), you can attempt a {@skill Society} check to arrange a meeting with an important political figure or ask for a favor in exchange for a later favor of your contact's choice. The GM decides the DC based on the difficulty of the favor and the figure's prominence."
+			],
+			"leadsTo": [
+				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -3839,7 +3859,10 @@
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
 			],
-			"special": "This feat has the trait corresponding to the tradition of spells you cast (arcane, divine, natural, or occult)."
+			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait natural}, or {@trait occult}).",
+			"leadsTo": [
+				"Reflect Spell (Sorcerer)"
+			]
 		},
 		{
 			"name": "Counterspell",
@@ -3864,10 +3887,14 @@
 				"Arcane",
 				"Wizard"
 			],
-			"trigger": "A creature Casts a Spell that you have prepared.",
+			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
 				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
+			],
+			"leadsTo": [
+				"Clever Counterspell",
+				"Reflect Spell (Wizard)"
 			]
 		},
 		{
@@ -3890,10 +3917,11 @@
 			],
 			"prerequisites": "trained in {@skill Society}",
 			"entries": [
-				"You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics. You can use {@skill Society} to {@action Make an Impression} on a noble, as well as with."
+				"You were raised among the nobility or have learned proper etiquette and bearing, allowing you to present yourself as a noble and play games of influence and politics. You can use {@skill Society} to {@action Make an Impression} on a noble, as well as with {@action Impersonate} to pretend to be a noble if you aren't one. If you want to impersonate a specific noble, you still need to use {@skill Deception} to {@action Impersonate} normally, and to {@action Lie} when necessary."
 			],
 			"leadsTo": [
-				"Connections"
+				"Connections",
+				"Quick Contacts|APG"
 			]
 		},
 		{
@@ -3988,7 +4016,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a crane, holding your arms in an imitation of a crane's wings and using flowing, defensive motions. You gain a +1 circumstance bonus to AC, but the only Strikes you can make are crane wing attacks. These deal {@damage 1d6} bludgeoning damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a crane, holding your arms in an imitation of a crane's wings and using flowing, defensive motions. You gain a +1 circumstance bonus to AC, but the only Strikes you can make are crane wing attacks. These deal {@damage 1d6} bludgeoning damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Crane Stance, reduce the DC for {@action High Jump} and {@action Long Jump} by 5, and when you {@action Leap}, you can move an additional 5 feet horizontally or 2 feet vertically."
 			],
 			"leadsTo": [
@@ -5322,7 +5350,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a dragon and make powerful leg strikes like a lashing dragon's tail. You can make dragon tail attacks that deal {@damage 1d10} bludgeoning damage. They are in the brawling group and have the backswing, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a dragon and make powerful leg strikes like a lashing dragon's tail. You can make dragon tail attacks that deal {@damage 1d10} bludgeoning damage. They are in the {@group brawling} group and have the backswing, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Dragon Stance, you can ignore the first square of difficult terrain while {@action Stride||Striding}."
 			],
 			"leadsTo": [
@@ -5419,6 +5447,9 @@
 			"prerequisites": "dragon instinct",
 			"entries": [
 				"You sprout dragon wings from your back of the same color as your chosen dragon. While you are raging, you gain a fly Speed equal to your land Speed. If you are flying when your rage ends, you start to fall but the transformation only completes at the last moment, so you take no damage from the fall and land standing up."
+			],
+			"leadsTo": [
+				"Dragon Transformation"
 			]
 		},
 		{
@@ -5441,6 +5472,9 @@
 			"entries": [
 				"You've sworn to slay evil dragons. Add the following tenet to your code after the others: \"You must slay evil dragons you encounter as long as you have a reasonable chance of success.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an evil dragon, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an evil dragon is 7 + your level. If you use {@action Liberating Step} triggered by an evil dragon, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider evil dragons to be legitimate authorities, even in nations they rule."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -5489,9 +5523,9 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the druid archetype.",
 			"leadsTo": [
 				"Basic Druid Spellcasting",
-				"Primal Breadth",
 				"Expert Druid Spellcasting",
 				"Master Druid Spellcasting",
+				"Primal Breadth",
 				"Basic Wilding",
 				"Advanced Wilding",
 				"Order Spell"
@@ -5620,8 +5654,8 @@
 				"You riposte against your flailing enemy. Make a melee {@action Strike} against or attempt to {@action Disarm} the triggering creature."
 			],
 			"leadsTo": [
-				"Improved Dueling Riposte",
-				"Guiding Riposte"
+				"Guiding Riposte",
+				"Improved Dueling Riposte"
 			]
 		},
 		{
@@ -5976,7 +6010,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"Your elven blood runs particularly strong, granting you features far more elven than those of a typical half-elf. You may also have been raised among elves, steeped in your elven ancestors' heritage. You gain the benefits of the elf heritage of your elven parent or ancestors. You typically can't select a heritage that depends on or improves an elven feature you don't have. For example, you couldn't gain the cavern elf's darkvision ability if you didn't have low-light vision. In these cases, at the GM's discretion, you might gain a different benefit."
+				"Your elven blood runs particularly strong, granting you features far more elven than those of a typical half-elf. You may also have been raised among elves, steeped in your elven ancestors' heritage. You gain the benefits of the elf heritage of your elven parent or ancestors. You typically can't select a heritage that depends on or improves an elven feature you don't have. For example, you couldn't gain the cavern elf's {@ability darkvision} ability if you didn't have {@ability low-light vision}. In these cases, at the GM's discretion, you might gain a different benefit."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -6142,8 +6176,8 @@
 				}
 			],
 			"leadsTo": [
-				"Emblazon Energy",
-				"Emblazon Antimagic"
+				"Emblazon Antimagic",
+				"Emblazon Energy"
 			]
 		},
 		{
@@ -6168,12 +6202,12 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use {@action Shield Block} against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as fire).",
+						"{@bold Shield} Choose acid, cold, electricity, fire, or sonic. The wielder gain the shield's circumstance bonus to saving throws against that damage type and can use {@action Shield Block} against damage of that type. The shield also gains resistance to that damage type equal to half your level if you have a domain spell with a trait matching that type (such as {@trait fire}).",
 						"{@bold Weapon} Choose acid, cold, electricity, fire, or sonic"
 					]
 				},
 				"The weapon deals an extra {@dice 1d4} damage of that type.",
-				"Increase this extra damage to {@dice 1d6} if you have a domain spell with a trait matching that type (such as fire)."
+				"Increase this extra damage to {@dice 1d6} if you have a domain spell with a trait matching that type (such as {@trait fire})."
 			]
 		},
 		{
@@ -6560,7 +6594,7 @@
 			],
 			"prerequisites": "master in {@skill Perception}",
 			"entries": [
-				"You have a system that lets you search at great speed, finding details and secrets twice as quickly as others can. When Searching, you take half as long as usual to {@action Search} a given area. This means that while exploring, you double the Speed you can move while ensuring you've Searched an area before walking into it (up to half your Speed). If you're legendary in {@skill Perception}, you instead {@action Search} areas four times as quickly."
+				"You have a system that lets you search at great speed, finding details and secrets twice as quickly as others can. When {@action Search||Searching}, you take half as long as usual to {@action Search} a given area. This means that while exploring, you double the Speed you can move while ensuring you've Searched an area before walking into it (up to half your Speed). If you're legendary in {@skill Perception}, you instead {@action Search} areas four times as quickly."
 			]
 		},
 		{
@@ -6887,7 +6921,7 @@
 				"Sorcerer"
 			],
 			"entries": [
-				"An animal serves you and assists your spellcasting. You gain a familiar (rules for familiars are found on page 217)."
+				"An animal serves you and assists your spellcasting. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}."
 			]
 		},
 		{
@@ -6907,7 +6941,7 @@
 				"Wizard"
 			],
 			"entries": [
-				"You make a pact with creature that serves you and assists your spellcasting. You gain a familiar (page 217)."
+				"You make a pact with creature that serves you and assists your spellcasting. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}."
 			]
 		},
 		{
@@ -7120,7 +7154,7 @@
 			],
 			"entries": [
 				"You have studied a specific terrain to overcome its challenges. Choose aquatic, arctic, desert, forest, mountain, plains, sky, swamp, or underground as your favored terrain. When in that terrain, you can ignore the effects of non-magical difficult terrain.",
-				"If you have the wild st{@feat ride} class feature, you gain a second benefit while in your favored terrain, depending on your choice.",
+				"If you have the wild stride class feature, you gain a second benefit while in your favored terrain, depending on your choice.",
 				{
 					"type": "list",
 					"items": [
@@ -7129,10 +7163,10 @@
 						"{@bold Desert} You need to eat and drink only one-tenth as much as usual, you aren't affected by severe or extreme heat, and you can walk along sand at full Speed without needing to {@action Balance}.",
 						"{@bold Forest, Mountain, or Underground} You gain a climb Speed equal to your Speed. If you already had a climb Speed, you gain a +10-foot status bonus to your climb Speed.",
 						"{@bold Plains} You gain a +10-foot status bonus to your land Speed.",
-						"{@bold Sky} You gain a +10-foot status bonus to your fly Speed, if you have one"
+						"{@bold Sky} You gain a +10-foot status bonus to your fly Speed, if you have one",
+						"{@bold Swamp} You can move across bogs at full Speed, even if they are deep enough to be greater difficult terrain or to normally require you to {@action Swim}."
 					]
-				},
-				"Swamp You can move across bogs at full Speed, even if they are deep enough to be greater difficult terrain or to normally require you to {@action Swim}."
+				}
 			],
 			"leadsTo": [
 				"Terrain Master"
@@ -7248,7 +7282,7 @@
 				"Alchemist"
 			],
 			"entries": [
-				"Your bestial mutagen brings out the beast lurking within you, granting you especially sharp claws and teeth as well as a ferocious appearance. Whenever you're affected by a bestial mutagen, you gain the mutagen's item bonus to your {@skill Intimidation} checks. In addition, your claws and jaws are increasingly vicious, and they gain the deadly d10 trait.",
+				"Your bestial mutagen brings out the beast lurking within you, granting you especially sharp claws and teeth as well as a ferocious appearance. Whenever you're affected by a bestial mutagen, you gain the mutagen's item bonus to your {@skill Intimidation} checks. In addition, your claws and jaws are increasingly vicious, and they gain the {@trait deadly d10} trait.",
 				"Finally, you can increase the mutagen's penalty to AC from \u20131 to \u20132 and, in exchange, increase the damage die size of your claws and jaws by one step."
 			]
 		},
@@ -7335,6 +7369,9 @@
 				"You've sworn an oath to banish the corruption of fiends to the dark planes they call home.",
 				"Add the following tenet to your champion's code after the other tenets: \"You must banish or slay fiends you come across as long as you have a reasonable chance of success; in the incredibly unlikely event you find a good fiend, you don't have to banish or kill it.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against a fiend, or a +6 circumstance bonus if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from a fiend is 7 + your level. If you use {@action Liberating Step} triggered by a fiend, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider fiends to be legitimate authorities, even in nations ruled by fiends."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -7363,9 +7400,9 @@
 			"leadsTo": [
 				"Basic Maneuver",
 				"Advanced Maneuver",
+				"Diverse Weapon Expert",
 				"Fighter Resiliency",
-				"Opportunist",
-				"Diverse Weapon Expert"
+				"Opportunist"
 			]
 		},
 		{
@@ -7464,7 +7501,7 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "{@feat Aggressive Block} or Brutish {@action Shove}",
+			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
 				"Increase the distance you {@action Shove} your opponent with Aggressive Block or {@feat Brutish Shove} to 10 feet on a success or 20 feet on a critical success. When you use Aggressive Block, you can choose whether the target is {@condition flat-footed} or {@action Shove|CRB|Shoved}.",
 				"When you make a {@feat Brutish Shove}, you also {@action Shove} the target 5 feet on a failure."
@@ -7969,8 +8006,8 @@
 				"In addition, you gain access to {@item kukri||kukris} and all {@filter uncommon gnome weapons|items|rarity=uncommon|ancestry & heritage=gnome}. For the purpose of determining your proficiency, martial gnome weapons are simple weapons and advanced gnome weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Gnome Weapon Innovator",
-				"Gnome Weapon Expertise"
+				"Gnome Weapon Expertise",
+				"Gnome Weapon Innovator"
 			]
 		},
 		{
@@ -8120,8 +8157,8 @@
 				"For the purpose of determining your proficiency, martial goblin weapons are simple weapons and advanced goblin weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Goblin Weapon Frenzy",
-				"Goblin Weapon Expertise"
+				"Goblin Weapon Expertise",
+				"Goblin Weapon Frenzy"
 			]
 		},
 		{
@@ -8166,7 +8203,7 @@
 			],
 			"prerequisites": "{@feat Double Slice}",
 			"entries": [
-				"With the right positioning, your off-hand weapon can strike like a scorpion's stinger. While you are in this stance, if you make your second {@action Strike} from Double Slice with an agile weapon, Double Slice counts as one attack when calculating your multiple attack penalty."
+				"With the right positioning, your off-hand weapon can strike like a scorpion's stinger. While you are in this stance, if you make your second {@action Strike} from Double Slice with an {@trait agile} weapon, Double Slice counts as one attack when calculating your multiple attack penalty."
 			]
 		},
 		{
@@ -8609,8 +8646,8 @@
 			"leadsTo": [
 				"Guiding Luck",
 				"Halfling Ingenuity|LOCG",
-				"Shared Luck|LOCG",
-				"Incredible Luck|LOCG"
+				"Incredible Luck|LOCG",
+				"Shared Luck|LOCG"
 			]
 		},
 		{
@@ -8781,7 +8818,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"You have an intuitive ability to sense hazards. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps and hazards, to AC against their attacks, and to saves against their effects. You can find hazards that would normally require you to {@action Search} even if you aren't Searching."
+				"You have an intuitive ability to sense hazards. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps and hazards, to AC against their attacks, and to saves against their effects. You can find hazards that would normally require you to {@action Search} even if you aren't {@action Search||Searching}."
 			]
 		},
 		{
@@ -9675,7 +9712,7 @@
 				"Your animal companion continues to grow and develop. It becomes a nimble or savage animal companion (your choice), gaining additional capabilities determined by the type of companion (page 214)."
 			],
 			"leadsTo": [
-				"Specialized Companion (Ranger)||Specialised Companion"
+				"Specialized Companion (Ranger)"
 			]
 		},
 		{
@@ -10202,7 +10239,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of impenetrable iron, refusing to yield to any blow. You can make iron sweep unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the nonlethal, parry, {@trait sweep}, and {@trait unarmed} traits.",
+				"You enter the stance of impenetrable iron, refusing to yield to any blow. You can make iron sweep unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the nonlethal, parry, {@trait sweep}, and {@trait unarmed} traits.",
 				"While in Ironblood Stance, you gain resistance 2 to all damage. The resistance increases to 3 at 12th level, to 4 at 16th level, and to 5 at 20th level."
 			],
 			"leadsTo": [
@@ -11124,7 +11161,7 @@
 			"requirements": "You are wielding a melee weapon.",
 			"entries": [
 				"Extending your body to its limits, you attack an enemy that would normally be beyond your reach. Make a {@action Strike} with a melee weapon, increasing your reach by 5 feet for that {@action Strike}.",
-				"If the weapon has the disarm, {@trait shove}, or {@trait trip} trait, you can use the corresponding action instead of a {@action Strike}."
+				"If the weapon has the {@trait disarm}, {@trait shove}, or {@trait trip} trait, you can use the corresponding action instead of a {@action Strike}."
 			],
 			"leadsTo": [
 				"Lunging Stance"
@@ -11722,10 +11759,11 @@
 			],
 			"leadsTo": [
 				"Affliction Mercy",
+				"Greater Mercy",
 				"Ultimate Mercy",
-				"Invigorating Mercy|APG",
+				"Blessed Spell|APG",
 				"Elucidating Mercy|APG",
-				"Blessed Spell|APG"
+				"Invigorating Mercy|APG"
 			]
 		},
 		{
@@ -11994,9 +12032,9 @@
 			],
 			"leadsTo": [
 				"Ancestral Weaponry|APG",
-				"Shooting Stars Stance|APG",
 				"Peafowl Stance|APG",
 				"Peafowl Strut|APG",
+				"Shooting Stars Stance|APG",
 				"Whirling Blade Stance|APG"
 			]
 		},
@@ -12025,8 +12063,8 @@
 			"leadsTo": [
 				"Basic Kata",
 				"Advanced Kata",
-				"Monk Resiliency",
 				"Monk Moves",
+				"Monk Resiliency",
 				"Monk's Flurry",
 				"Perfection's Path"
 			]
@@ -12112,9 +12150,9 @@
 				"When you critically succeed at identifying your hunted prey with {@action Recall Knowledge}, you note a weakness in the creature's defenses. You and allies you tell gain a +1 circumstance bonus to your next attack roll against that prey. You can give bonuses from Monster Hunter only once per day against a particular creature."
 			],
 			"leadsTo": [
-				"Monster Warden",
 				"Master Monster Hunter",
-				"Legendary Monster Hunter"
+				"Legendary Monster Hunter",
+				"Monster Warden"
 			]
 		},
 		{
@@ -12224,7 +12262,7 @@
 			],
 			"requirements": "You are unarmored and touching the ground.",
 			"entries": [
-				"You enter the stance of an implacable mountain\u2014a technique first discovered by dwarven monks\u2014allowing you to strike with the weight of an avalanche. The only Strikes you can make are falling stone unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the brawling group; and have the forceful, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of an implacable mountain\u2014a technique first discovered by dwarven monks\u2014allowing you to strike with the weight of an avalanche. The only Strikes you can make are falling stone unarmed attacks. These deal {@damage 1d8} bludgeoning damage; are in the {@group brawling} group; and have the forceful, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While in Mountain Stance, you gain a +4 status bonus to AC and a +2 circumstance bonus to any defenses against being Shoved or Tripped. However, you have a Dexterity modifier cap to your AC of +0, meaning you don't add your Dexterity to your AC, and your Speeds are all reduced by 5 feet."
 			],
 			"leadsTo": [
@@ -12577,7 +12615,7 @@
 			],
 			"trigger": "A foe within reach attempts to move away from you.",
 			"entries": [
-				"You keep pace with a retreating foe. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use No {@action Escape} to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
+				"You keep pace with a retreating foe. {@action Stride} up to your Speed, following the foe and keeping it in reach throughout its movement until it stops moving or you've moved your full Speed. You can use No Escape to {@action Burrow}, {@action Climb}, {@action Fly}, or {@action Swim} instead of {@action Stride} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -12720,9 +12758,9 @@
 			],
 			"leadsTo": [
 				"Incredible Ferocity",
-				"Undying Ferocity|APG",
 				"Ferocious Beasts|APG",
 				"Rampaging Ferocity|APG",
+				"Undying Ferocity|APG",
 				"Defy Death|LOAG"
 			]
 		},
@@ -13583,7 +13621,7 @@
 			"traits": [
 				"Fighter"
 			],
-			"prerequisites": "{@feat Aggressive Block} or Brutish {@action Shove}",
+			"prerequisites": "{@feat Aggressive Block} or {@feat Brutish Shove}",
 			"entries": [
 				"You can push larger foes around with your attack. You can use Aggressive Block or Brutish {@action Shove} against a creature up to two sizes larger than you.",
 				"When a creature you {@action Shove} has to stop moving because it would hit an object, it takes damage equal to your Strength modifier (minimum 1). This happens regardless of how you Shoved the creature."
@@ -14318,7 +14356,7 @@
 			],
 			"frequency": "once per day",
 			"entries": [
-				"In a mentally strenuous process, you modify your casting of a spell to take less time. If your next action is to cast a wizard cantrip or a wizard spell that is at least 2 levels lower."
+				"In a mentally strenuous process, you modify your casting of a spell to take less time. If your next action is to cast a wizard cantrip or a wizard spell that is at least 2 levels lower than the highest level sorcerer spell you can cast, reduce the number of actions to cast it by 1 (minimum 1 action)."
 			]
 		},
 		{
@@ -14511,8 +14549,8 @@
 			"leadsTo": [
 				"Basic Hunter's Trick",
 				"Advanced Hunter's Trick",
-				"Ranger Resiliency",
-				"Master Spotter"
+				"Master Spotter",
+				"Ranger Resiliency"
 			]
 		},
 		{
@@ -14749,7 +14787,7 @@
 			"activity": {
 				"number": 1,
 				"unit": "varies",
-				"entry": "[{@as R}"
+				"entry": "{@as R}"
 			},
 			"level": 4,
 			"featType": {
@@ -15171,10 +15209,10 @@
 			"leadsTo": [
 				"Basic Trickery",
 				"Advanced Trickery",
-				"Sneak Attacker",
+				"Evasiveness",
 				"Skill Mastery",
-				"Uncanny Dodge",
-				"Evasiveness"
+				"Sneak Attacker",
+				"Uncanny Dodge"
 			]
 		},
 		{
@@ -15780,16 +15818,16 @@
 			],
 			"leadsTo": [
 				"Bastion Dedication|APG",
+				"Destructive Block|APG",
 				"Disarming Block|APG",
 				"Nimble Shield Hand|APG",
-				"Destructive Block|APG",
 				"Shield Salvation|APG",
 				"Lastwall Sentry Dedication|LOWG",
 				"Eye Of Ozem|LOWG",
-				"Necromantic Resistance|LOWG",
-				"Necromantic Tenacity|LOWG",
 				"Grave Sense|LOWG",
 				"Lastwall Warden|LOWG",
+				"Necromantic Resistance|LOWG",
+				"Necromantic Tenacity|LOWG",
 				"Rescuer's Press|LOL",
 				"Aegis Of Arnisant|LOCG",
 				"Vigil's Walls Rise Anew!|LOL",
@@ -15954,6 +15992,9 @@
 			"entries": [
 				"You've sworn an oath to put the undead to rest. Add the following tenet to your champion's code after the other tenets: \"You must end the existence of undead you encounter as long as you have a reasonable chance of success; in the unlikely event you find a good undead, you can try to work out a more peaceful way to help it recover from its undead state rather than destroying it in combat, such as helping it complete its unfinished business and find peace.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an undead, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an undead is 7 + your level. If you use {@action Liberating Step} triggered by an undead, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider undead to be legitimate authorities, even in nations ruled by undead."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -16068,10 +16109,10 @@
 				"Metamagic",
 				"Wizard"
 			],
-			"prerequisites": "{@feat Conceal Spell|APG}",
+			"prerequisites": "{@feat Conceal Spell}",
 			"entries": [
 				"You've learned how to cast many of your spells without speaking the words of power you would normally need to provide. If the next action you use is {@action Cast a Spell||Casting a Spell} that has a verbal component and at least one other component, you can remove the verbal component. This makes the spell quieter and allows you to cast it in areas where sound can't carry. However, the spell still has visual manifestations, so this doesn't make the spell any less obvious to someone who sees you casting it.",
-				"When you use Silent Spell, you can choose to gain the benefits of Conceal Spell, and you don't need to attempt a {@skill Deception} check because the spell has no verbal components."
+				"When you use Silent Spell, you can choose to gain the benefits of {@feat Conceal Spell}, and you don't need to attempt a {@skill Deception} check because the spell has no verbal components."
 			]
 		},
 		{
@@ -16404,9 +16445,9 @@
 				"Each day during your daily preparations, you can prepare four snares from your formula book for quick deployment; if they normally take 1 minute to {@action Craft}, you can {@action Craft} them with 3 {@action Interact} actions. The number of snares increases to six if you have master proficiency in {@skill Crafting} and eight if you have legendary proficiency in {@skill Crafting}. Snares prepared in this way don't cost you any resources to {@action Craft}."
 			],
 			"leadsTo": [
-				"Quick Snares",
-				"Powerful Snares",
 				"Lightning Snares",
+				"Powerful Snares",
+				"Quick Snares",
 				"Ubiquitous Snares",
 				"Impossible Snares|APG"
 			]
@@ -16521,13 +16562,13 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the sorcerer archetype.",
 			"leadsTo": [
+				"Basic Blood Potency",
+				"Advanced Blood Potency",
+				"Basic Bloodline Spell",
 				"Basic Sorcerer Spellcasting",
 				"Bloodline Breadth",
 				"Expert Sorcerer Spellcasting",
-				"Master Sorcerer Spellcasting",
-				"Basic Blood Potency",
-				"Advanced Blood Potency",
-				"Basic Bloodline Spell"
+				"Master Sorcerer Spellcasting"
 			]
 		},
 		{
@@ -16666,6 +16707,9 @@
 						"*You must have the {@feat Alchemical Crafting} skill feat to {@action Craft} {@filter alchemical items|items||item=alchemical}"
 					]
 				}
+			],
+			"leadsTo": [
+				"Impeccable Crafting"
 			]
 		},
 		{
@@ -16731,7 +16775,7 @@
 				"Wizard"
 			],
 			"entries": [
-				"You've learned to alter choices you make when casting spells on yourself. After casting a spell on only yourself that offers several choices of effect (such as resist energy, spell immunity, or a polymorph spell that offers several potential forms), you can alter the choice you made when Casting the Spell (for instance, choosing a different type of damage for resist energy)",
+				"You've learned to alter choices you make when casting spells on yourself. After casting a spell on only yourself that offers several choices of effect (such as resist energy, spell immunity, or a polymorph spell that offers several potential forms), you can alter the choice you made when {@action Cast a Spell||Casting the Spell} (for instance, choosing a different type of damage for resist energy)",
 				"However, your tinkering weakens the spell's integrity, reducing its remaining duration by half.",
 				"You can't use this feat if the benefits of the spell have already been used up or if the effects of the first choice would persist in any way after switching (for instance, if one of the choices was to create a consumable item you already used, or to heal you), or if the feat would create an effect more powerful than that offered by the base spell. The GM is the final arbiter of what Spell Tinker can be applied to."
 			]
@@ -17203,6 +17247,7 @@
 			],
 			"leadsTo": [
 				"Criminal Connections|APG",
+				"Quick Contacts|APG",
 				"Underground Network|APG"
 			]
 		},
@@ -17319,7 +17364,7 @@
 				"Open"
 			],
 			"entries": [
-				"With a quick sprint, you dash up to your foe and swing. {@action Stride} twice. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Sudden Charge while Burrowing, Climbing, Flying, or Swimming instead of {@action Stride||Striding} if you have the corresponding movement type."
+				"With a quick sprint, you dash up to your foe and swing. {@action Stride} twice. If you end your movement within melee reach of at least one enemy, you can make a melee {@action Strike} against that enemy. You can use Sudden Charge while {@action Burrow||Burrowing}, {@action Climb||Climbing}, {@action Fly||Flying}, or {@action Swim||Swimming} instead of {@action Stride||Striding} if you have the corresponding movement type."
 			]
 		},
 		{
@@ -17436,8 +17481,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"The elven magic in your blood manifests as a force you can use to become more appealing or alluring. You can cast 1st‑level {@spell charm} as an arcane innate spell once per day.",
-				"Half-Orc Ancestry Feats The following feats are available to half-orcs. Some of these feats are common to people with orc blood, and have the {@trait orc} trait, while others are specific to half‑orcs and have the half‑orc trait."
+				"The elven magic in your blood manifests as a force you can use to become more appealing or alluring. You can cast 1st‑level {@spell charm} as an arcane innate spell once per day."
 			]
 		},
 		{
@@ -17731,7 +17775,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You extend your arms like gnarled branches to interfere with your foes' movements. You can make lashing branch unarmed attacks. These deal {@damage 1d8} slashing damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You extend your arms like gnarled branches to interfere with your foes' movements. You can make lashing branch unarmed attacks. These deal {@damage 1d8} slashing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"While you're in Tangled Forest Stance and can act, every enemy in your reach that tries to move away from you must succeed at a Reflex save, {@skill Acrobatics} check, or {@skill Athletics} check against your class DC or be {@condition immobilized} for that action. If you prefer, you can allow the enemy to move."
 			],
 			"leadsTo": [
@@ -17829,7 +17873,7 @@
 			],
 			"prerequisites": "trained in {@skill Stealth}",
 			"entries": [
-				"Select one type of difficult terrain from the following list: rubble, snow, or underbrush. While {@condition undetected} by all non-allies in that type of terrain, you can {@action Sneak} without attempting a {@skill Stealth} check as long as you move no more than 5 feet and do not move within 10 feet of an enemy at any point during your movement. This also allows you to automatically approach creatures to within 15 feet while {@action Avoid Notice||Avoiding Notice} during exploration as long as they aren't actively Searching or on guard."
+				"Select one type of difficult terrain from the following list: rubble, snow, or underbrush. While {@condition undetected} by all non-allies in that type of terrain, you can {@action Sneak} without attempting a {@skill Stealth} check as long as you move no more than 5 feet and do not move within 10 feet of an enemy at any point during your movement. This also allows you to automatically approach creatures to within 15 feet while {@action Avoid Notice||Avoiding Notice} during exploration as long as they aren't actively {@action Search||Searching} or on guard."
 			],
 			"special": "You can select this feat multiple times. Each time, choose a different type of terrain."
 		},
@@ -17978,7 +18022,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a tiger and can make tiger claw attacks. These deal {@damage 1d8} slashing damage; are in the brawling group; and have the agile, finesse, {@trait nonlethal}, and {@trait unarmed} traits. On a critical success with your tiger claws, if you deal damage, the target takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}.",
+				"You enter the stance of a tiger and can make tiger claw attacks. These deal {@damage 1d8} slashing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits. On a critical success with your tiger claws, if you deal damage, the target takes {@damage 1d4} {@condition persistent damage ||persistent bleed damage}.",
 				"As long as your Speed is at least 20 feet while in Tiger Stance, you can {@action Step} 10 feet."
 			],
 			"leadsTo": [
@@ -18197,7 +18241,7 @@
 				"Rogue"
 			],
 			"entries": [
-				"You have an intuitive sense that alerts you to the dangers and presence of traps. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps, to AC against attacks made by traps, and to saves against traps. Even if you aren't Searching, you get a check to find traps that normally require you to be Searching. You still need to meet any other requirements to find the trap.",
+				"You have an intuitive sense that alerts you to the dangers and presence of traps. You gain a +1 circumstance bonus to {@skill Perception} checks to find traps, to AC against attacks made by traps, and to saves against traps. Even if you aren't {@action Search||Searching}, you get a check to find traps that normally require you to be {@action Search||Searching}. You still need to meet any other requirements to find the trap.",
 				"You can disable traps that require a proficiency rank of master in {@skill Thievery}. If you have master proficiency in {@skill Thievery}, you can disable traps that require a proficiency rank of legendary instead, and your circumstance bonuses against traps increase to +2."
 			]
 		},
@@ -18472,7 +18516,7 @@
 				"You use your two weapons to parry attacks. You gain a +1 circumstance bonus to AC until the start of your next turn, or a +2 circumstance bonus if either weapon has the {@trait parry} trait. You lose this circumstance bonus if you no longer meet this feat's requirement."
 			],
 			"leadsTo": [
-				"Twinned Defense (Fighter)|CRB|Twinned Defense"
+				"Twinned Defense (Fighter)"
 			]
 		},
 		{
@@ -18842,7 +18886,7 @@
 				"Human"
 			],
 			"entries": [
-				"You've familiarized yourself with a particular weapon, potentially from another ancestry or culture. Choose an uncommon simple or martial weapon with a trait corresponding to an ancestry (such as dwarf, goblin, or orc) or that is common in another culture. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a simple weapon.",
+				"You've familiarized yourself with a particular weapon, potentially from another ancestry or culture. Choose an uncommon simple or martial weapon with a trait corresponding to an ancestry (such as {@trait dwarf}, {@trait goblin}, or {@trait orc}) or that is common in another culture. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a simple weapon.",
 				"If you are trained in all martial weapons, you can choose an uncommon advanced weapon with such a trait. You gain access to that weapon, and for the purpose of determining your proficiency, that weapon is a martial weapon."
 			],
 			"leadsTo": [
@@ -19110,6 +19154,9 @@
 			"prerequisites": "paladin cause",
 			"entries": [
 				"You've sworn an oath to hunt down wicked evildoers and bring them to judgment. Add the following tenet to your code after the others: \"You must hunt down and exterminate evil creatures that have committed heinous atrocities as long as you have a reasonable chance of success and aren't engaged in a mission that would prevent your doing so.\" You can use lay on hands to damage a creature you witness harming an innocent or a good ally as if it were undead; in this case, lay on hands deals good damage instead of positive damage and gains the {@trait good} trait. This good damage can affect non-evil creatures. This doesn't prevent you from healing such a creature with lay on hands; you choose whether to heal or harm."
+			],
+			"leadsTo": [
+				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -19367,7 +19414,54 @@
 			"prerequisites": "trained in {@skill Performance}",
 			"entries": [
 				"You have exceptional talent with one type of performance. You gain a +1 circumstance bonus when making a certain type of performance. If you are a master in {@skill Performance}, this bonus increases to +2. Select one of the following specialties and apply the bonus when attempting {@skill Performance} checks of that type. If it's unclear whether the specialty applies, the GM decides.",
-				"Specialty Examples Acting Drama, pantomime, puppetry Comedy Buffoonery, joke telling, limericks Dance Ballet, huara, jig, macru Keyboards Harpsichord, organ, piano Oratory Epic, ode, poetry, storytelling Percussion Chimes, drum, gong, xylophone Singing Ballad, chant, melody, rhyming Strings Fiddle, harp, lute, viol Winds Bagpipe, flute, recorder, trumpet."
+				{
+					"type": "table",
+					"labelRowIdx": [
+						0
+					],
+					"rows": [
+						[
+							"Specialty",
+							"Examples"
+						],
+						[
+							"Acting",
+							"Drama, pantomime, puppetry"
+						],
+						[
+							"Comedy",
+							"Buffoonery, joke telling, limericks"
+						],
+						[
+							"Dance",
+							"Ballet, huara, jig, macru"
+						],
+						[
+							"Keyboards",
+							"Harpsichord, organ, piano"
+						],
+						[
+							"Oratory",
+							"Epic, ode, poetry, storytelling"
+						],
+						[
+							"Percussion",
+							"Chimes, drum, gong, xylophone"
+						],
+						[
+							"Singing",
+							"Ballad, chant, melody, rhyming"
+						],
+						[
+							"Strings",
+							"Fiddle, harp, lute, viol"
+						],
+						[
+							"Winds",
+							"Bagpipe, flute, recorder, trumpet"
+						]
+					]
+				}
 			],
 			"leadsTo": [
 				"Legendary Performer"
@@ -19415,6 +19509,9 @@
 				"You can use your momentum from a jump to propel yourself off a wall. If you're adjacent to a wall at the end of a jump (whether performing a {@action High Jump}, {@action Long Jump}, or {@action Leap}), you don't fall as long as your next action is another jump.",
 				"Furthermore, since your previous jump gives you momentum, you can use {@action High Jump} or {@action Long Jump} as a single action, but you don't get to {@action Stride} as part of the activity.",
 				"You can use Wall Jump only once in a turn, unless you're legendary in {@skill Athletics}, in which case you can use Wall Jump as many times as you can use consecutive jump actions in that turn."
+			],
+			"leadsTo": [
+				"Ricocheting Leap|LOME"
 			]
 		},
 		{
@@ -19876,18 +19973,18 @@
 				"You are one with the wild, always changing and adapting to meet any challenge. You gain the wild shape order spell, which lets you transform into a variety of forms that you can expand with druid feats."
 			],
 			"leadsTo": [
+				"Elemental Shape",
+				"Reactive Transformation|APG",
+				"Ferocious Shape",
 				"Form Control",
 				"Perfect Form Control",
-				"Thousand Faces",
 				"Insect Shape",
-				"Ferocious Shape",
+				"Monstrosity Shape",
+				"Plant Shape",
 				"Soaring Shape",
 				"Dragon Shape",
 				"True Shapeshifter",
-				"Reactive Transformation|APG",
-				"Elemental Shape",
-				"Plant Shape",
-				"Monstrosity Shape"
+				"Thousand Faces"
 			]
 		},
 		{
@@ -20037,6 +20134,7 @@
 			"leadsTo": [
 				"Arcane School Spell",
 				"Basic Arcana",
+				"Advanced Arcana",
 				"Basic Wizard Spellcasting",
 				"Arcane Breadth",
 				"Expert Wizard Spellcasting",
@@ -20065,7 +20163,7 @@
 			"prerequisites": "{@feat Wolf Stance}",
 			"requirements": "You are in Wolf Stance.",
 			"entries": [
-				"You rip your enemy off their feet. Make a wolf jaw {@action Strike}. Your wolf jaw gains the fatal d12 trait for this {@action Strike}, and if the attack succeeds, you knock the target {@condition prone}."
+				"You rip your enemy off their feet. Make a wolf jaw {@action Strike}. Your wolf jaw gains the {@trait fatal d12} trait for this {@action Strike}, and if the attack succeeds, you knock the target {@condition prone}."
 			]
 		},
 		{
@@ -20090,7 +20188,7 @@
 			],
 			"requirements": "You are unarmored.",
 			"entries": [
-				"You enter the stance of a wolf, low to the ground with your hands held like fanged teeth. You can make wolf jaw unarmed attacks. These deal {@damage 1d8} piercing damage; are in the brawling group; and have the agile, backstabber, finesse, {@trait nonlethal}, and {@trait unarmed} traits.",
+				"You enter the stance of a wolf, low to the ground with your hands held like fanged teeth. You can make wolf jaw unarmed attacks. These deal {@damage 1d8} piercing damage; are in the {@group brawling} group; and have the {@trait agile}, {@trait backstabber}, {@trait finesse}, {@trait nonlethal}, and {@trait unarmed} traits.",
 				"If you're flanking a target while in Wolf Stance, your wolf jaw unarmed attacks also gain the {@trait trip} trait."
 			],
 			"leadsTo": [

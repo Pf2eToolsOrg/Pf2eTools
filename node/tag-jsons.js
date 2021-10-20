@@ -85,7 +85,7 @@ class TagJsons {
 							obj = SpellTag.tryRun(obj);
 							obj = FeatTag.tryRun(obj);
 							obj = DeityTag.tryRun(obj);
-							obj = GroupTag.tryRun(obj);
+							// obj = GroupTag.tryRun(obj);
 							// obj = ItemTag.tryRun(obj);
 
 							return obj;
@@ -381,6 +381,8 @@ class DeityTag {
 }
 DeityTag._DEITIES = {};
 DeityTag._DEITIES_REGEX = null;
+
+// FIXME: This tags literally everything. Change it to tag only when the word "group" is mentioned around it, such as "brawling weapon group"
 
 class GroupTag {
 	static init () {

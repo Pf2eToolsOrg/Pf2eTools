@@ -343,7 +343,7 @@
 				"Beastkin"
 			],
 			"entries": [
-				"You gain one of the following senses available to your inherent animal: darkvision, low-light vision, or scent (imprecise) 30 feet. You must have low-light vision before you can gain darkvision with this feat. If your inherent animal doesn't typically have a specific type of sense, you can't gain that sense with this feat."
+				"You gain one of the following senses available to your inherent animal: {@ability darkvision}, {@ability low-light vision}, or {@ability scent} (imprecise) 30 feet. You must have {@ability low-light vision} before you can gain {@ability darkvision} with this feat. If your inherent animal doesn't typically have a specific type of sense, you can't gain that sense with this feat."
 			],
 			"special": "You can select this feat multiple times, choosing a different sense each time."
 		},
@@ -506,9 +506,9 @@
 				"Undine"
 			],
 			"entries": [
-				"As your connection to water grows, you can see more easily in places with less light, such as the depths of the ocean. You gain low-light vision, or you gain darkvision if your ancestry already has low-light vision."
+				"As your connection to water grows, you can see more easily in places with less light, such as the depths of the ocean. You gain {@ability low-light vision}, or you gain {@ability darkvision} if your ancestry already has {@ability low-light vision}."
 			],
-			"special": "If your ancestry has neither low-light vision nor darkvision, you can take this ancestry feat a second time to gain darkvision. You can't retrain out of this feat."
+			"special": "If your ancestry has neither {@ability low-light vision} nor {@ability darkvision}, you can take this ancestry feat a second time to gain {@ability darkvision}. You can't retrain out of this feat."
 		},
 		{
 			"name": "Arise, Ye Worthy!",
@@ -1008,7 +1008,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "The target takes a \u201310-foot status penalty to its Speed and is {@condition flat-footed}, both for 1 round. witches APG and wizards are even secrets of magic, and sprite oracles APG",
+						"Critical Success": "The target takes a \u201310-foot status penalty to its Speed and is {@condition flat-footed}, both for 1 round.",
 						"Success": "The target takes a \u20135-foot status penalty to its Speed for 1 round.",
 						"Critical Failure": "The target is temporarily immune for 1 hour."
 					}
@@ -1389,7 +1389,7 @@
 			],
 			"entries": [
 				"The smallest of fey have ridden corgis as mounts since time immemorial, leading to a pattern on corgis' backs called a \"faerie saddle.\" You have formed a magical connection with a corgi that can serve as your mount. Your corgi familiar is Small rather than Tiny, and it's appropriate for use as your mount, unlike most familiars.",
-				"It has the scent ability, which counts against your limit for familiar and master abilities as normal. Furthermore, it can never gain a familiar ability that grants it any Speeds other than a land Speed. If you're a pixie, you can't ride a corgi due to your Size, but you can take this feat to gain a corgi familiar."
+				"It has the {@ability scent} ability, which counts against your limit for familiar and master abilities as normal. Furthermore, it can never gain a familiar ability that grants it any Speeds other than a land Speed. If you're a pixie, you can't ride a corgi due to your Size, but you can take this feat to gain a corgi familiar."
 			]
 		},
 		{
@@ -1590,7 +1590,7 @@
 				"Fleshwarp"
 			],
 			"entries": [
-				"Your vision is suited for night or the underground. You gain darkvision."
+				"Your vision is suited for night or the underground. You gain {@ability darkvision}."
 			]
 		},
 		{
@@ -1963,8 +1963,8 @@
 				"Until the end of your next turn, your Strikes deal an additional {@dice 1d6} damage of the indicated type and have the trait corresponding to the element: electricity for air, bludgeoning for earth, fire for fire, or cold for water."
 			],
 			"leadsTo": [
-				"Tetraelemental Assault|LOAG",
-				"Continuous Assault|LOAG"
+				"Continuous Assault|LOAG",
+				"Tetraelemental Assault|LOAG"
 			]
 		},
 		{
@@ -2043,7 +2043,7 @@
 			],
 			"prerequisites": "low-light vision",
 			"entries": [
-				"You can see in the darkness as easily as an elemental. You gain darkvision."
+				"You can see in the darkness as easily as an elemental. You gain {@ability darkvision}."
 			],
 			"special": "You can select this feat only at 1st level, and you can't retrain into or out of this feat."
 		},
@@ -2136,9 +2136,9 @@
 				"Ifrit"
 			],
 			"entries": [
-				"Your eyes blaze with inner flame. You gain low-light vision, or you gain darkvision if your ancestry already has low-light vision."
+				"Your eyes blaze with inner flame. You gain {@ability low-light vision}, or you gain {@ability darkvision} if your ancestry already has {@ability low-light vision}."
 			],
-			"special": "If your ancestry has neither low-light vision nor darkvision, you can take this ancestry feat a second time to gain darkvision. You can't retrain out of this feat."
+			"special": "If your ancestry has neither {@ability low-light vision} nor {@ability darkvision}, you can take this ancestry feat a second time to gain {@ability darkvision}. You can't retrain out of this feat."
 		},
 		{
 			"name": "Emberkin",
@@ -2160,8 +2160,8 @@
 				"A peri's roaring spirit burns in your soul. Peris engage in constant struggle to right the wrongs of their fallen forebears, and that struggle has been passed on to you. You have a direct impulse to right wrongs and better the world. You gain a +1 circumstance bonus to saving throws against {@trait fire} effects, and your perception is unaffected by non-magical flames, fog and smoke."
 			],
 			"leadsTo": [
-				"Peri Magic|LOAG",
-				"Flame Jump|LOAG"
+				"Flame Jump|LOAG",
+				"Peri Magic|LOAG"
 			]
 		},
 		{
@@ -2230,7 +2230,7 @@
 			"traits": [
 				"Aasimar"
 			],
-			"prerequisites": "{@feat Lawbringer|APG} APG",
+			"prerequisites": "{@feat Lawbringer|APG}",
 			"entries": [
 				"You never fail to strike down the ever-expanding reaches of chaos. All your weapon and unarmed Strikes deal 1 additional lawful damage and have the {@trait lawful} and {@trait magical} traits."
 			]
@@ -2483,7 +2483,7 @@
 				"Fetchling"
 			],
 			"entries": [
-				"You've learned obscure lessons about your fellow fetchlings. You're trained in {@skill Occultism} and {@skill Stealth}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Shadow Plane Lore}."
+				"You've learned obscure lessons about your fellow fetchlings. You're trained in {@skill Occultism} and {@skill Stealth}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Shadow Plane Lore}."
 			]
 		},
 		{
@@ -2502,7 +2502,7 @@
 				"Sprite"
 			],
 			"entries": [
-				"You've learned the cantrips sprites have used since time immemorial. You gain dancing lights and ghost sound as primal innate cantrips. If you have the grig heritage, you also gain detect magic, and if you have the draxie heritage, you gain prestidigitation."
+				"You've learned the cantrips sprites have used since time immemorial. You gain {@spell dancing lights} and {@spell ghost sound} as primal innate cantrips. If you have the {@ancestry sprite|loag|grig|grig|loag} heritage, you also gain {@spell detect magic}, and if you have the {@ancestry sprite|loag|draxie|draxie|loag} heritage, you gain {@spell prestidigitation}."
 			]
 		},
 		{
@@ -2850,7 +2850,7 @@
 				"Kitsune"
 			],
 			"entries": [
-				"A crack of your tail sparks wisps of blue energy. Choose either electricity or fire when you gain this feat. You gain a foxfire ranged unarmed attack with a maximum range of 20 feet. The attack deals {@dice 1d4} damage of the chosen type (no ability modifier is added to the damage roll). Your foxfire attack is in the sling weapon group. Like other unarmed attacks, you can improve this attack with handwraps of mighty blows."
+				"A crack of your tail sparks wisps of blue energy. Choose either electricity or fire when you gain this feat. You gain a foxfire ranged unarmed attack with a maximum range of 20 feet. The attack deals {@dice 1d4} damage of the chosen type (no ability modifier is added to the damage roll). Your foxfire attack is in the sling weapon group. Like other unarmed attacks, you can improve this attack with {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}."
 			],
 			"special": "If you are a frozen wind kitsune, your foxfire deals cold damage instead of electricity or fire."
 		},
@@ -2910,9 +2910,9 @@
 				"Ganzi"
 			],
 			"entries": [
-				"You have unusual sensory abilities passed down from your chaotic forebears. You gain low-light vision. If you already have low-light vision, you gain darkvision instead."
+				"You have unusual sensory abilities passed down from your chaotic forebears. You gain {@ability low-light vision}. If you already have {@ability low-light vision}, you gain {@ability darkvision} instead."
 			],
-			"special": "You can select this feat a second time to gain darkvision in addition to low-light vision."
+			"special": "You can select this feat a second time to gain {@ability darkvision} in addition to {@ability low-light vision}."
 		},
 		{
 			"name": "Gaping Flesh",
@@ -3060,8 +3060,8 @@
 				"You've trained with weapons used by your genie ancestors. You are trained with falchions, ranseurs, scimitars, and tridents. In addition, you gain access to all uncommon geniekin weapons. For the purpose of determining your proficiency, martial geniekin weapons are simple weapons and advanced geniekin weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Genie Weapon Flourish|LOAG",
-				"Genie Weapon Expertise|LOAG"
+				"Genie Weapon Expertise|LOAG",
+				"Genie Weapon Flourish|LOAG"
 			]
 		},
 		{
@@ -3346,7 +3346,7 @@
 			"traits": [
 				"Aasimar"
 			],
-			"prerequisites": "{@feat Halo|APG}APG",
+			"prerequisites": "{@feat Halo|APG}",
 			"trigger": "You or allies within 30 feet recover Hit Points while your halo is active.",
 			"entries": [
 				"Your halo can enhance positive energy. Creatures who have recovered Hit Points from a positive {@trait healing} effect recover an additional {@dice 1d6} Hit Points. Creatures who benefit from this power become temporarily immune to its effect for the next 10 minutes."
@@ -3566,8 +3566,8 @@
 				"Your wild, unique features betray your agathion birthright. Serene celestials from the plane of Nirvana, agathions seek the peaceful path, ensuring a better world for all to coexist. Your halcyon demeanor leads you to search for peaceful resolution to conflict. You gain the trained proficiency rank in {@skill Nature}. If you would automatically become trained in {@skill Nature} (from your background or class, for example), you instead become trained in a skill of your choice. You know the Sylvan language and gain the Natural {@skill Medicine} skill feat."
 			],
 			"leadsTo": [
-				"Tranquil Sanctuary|LOAG",
-				"Agathion Magic|LOAG"
+				"Agathion Magic|LOAG",
+				"Tranquil Sanctuary|LOAG"
 			]
 		},
 		{
@@ -3848,7 +3848,7 @@
 				"Evocation",
 				"Primal"
 			],
-			"prerequisites": "{@feat Brine May|APG} APG, {@feat Snow May|LOAG}, {@feat Veil May|LOAG}, or {@feat Virga May|LOAG}",
+			"prerequisites": "{@feat Brine May|APG}, {@feat Snow May|LOAG}, {@feat Veil May|LOAG}, or {@feat Virga May|LOAG}",
 			"frequency": "once per day",
 			"entries": [
 				"You summon an aura of shimmering heat, flurrying snow, crashing waves, or swirling wind and lightning. For 1 minute, you gain concealment against creatures more than 5 feet away, and any creature that ends its turn within 5 feet of you suffers {@dice 1d12} damage (basic Reflex save using your class DC or spell DC, whichever is higher). At 13th and 17th level, this damage increases by {@dice 1d12}. A veil may changeling deals fire damage, a snow may changeling deals cold damage, a brine may changeling deals bludgeoning damage and the effect gains the {@trait water} trait, and a virga may changeling deals electricity damage."
@@ -4057,7 +4057,7 @@
 			],
 			"prerequisites": "{@feat Kitsune Spell Mysteries|LOAG}",
 			"entries": [
-				"Your tails show your magical mastery. During your daily preparations, choose confusion, death ward, or illusory scene. You can Cast this Spell as a 5th-level divine innate spell once that day. You become an expert in divine spell DCs and divine spell attack rolls."
+				"Your tails show your magical mastery. During your daily preparations, choose confusion, death ward, or illusory scene. You can {@action Cast a Spell||Cast this Spell} as a 5th-level divine innate spell once that day. You become an expert in divine spell DCs and divine spell attack rolls."
 			]
 		},
 		{
@@ -4141,8 +4141,8 @@
 				"You've trained with weapons ideal for subterranean efficiency. You are trained with the crossbow, greatpick, light pick, pick, and spear. You also gain access to all uncommon kobold weapons. For the purpose of determining your proficiency, martial kobold weapons are simple weapons, and advanced kobold weapons are martial weapons."
 			],
 			"leadsTo": [
-				"Kobold Weapon Innovator|LOAG",
-				"Kobold Weapon Expertise|LOAG"
+				"Kobold Weapon Expertise|LOAG",
+				"Kobold Weapon Innovator|LOAG"
 			]
 		},
 		{
@@ -4203,7 +4203,7 @@
 				"Lineage"
 			],
 			"entries": [
-				"Your elemental lineage manifests as magma and molten rock, and you can focus the magma into your hand to attack your foes. You gain a magma spike unarmed attack, which requires a free hand to use. This is an agile, finesse, unarmed attack in the brawling weapon group that deals {@damage 1d4} piercing damage, as well as 1 additional fire damage. Instead of the normal critical specialization effect, the target takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}; you gain a bonus on this {@condition persistent damage} equal to your item bonus to attack rolls on unarmed attacks."
+				"Your elemental lineage manifests as magma and molten rock, and you can focus the magma into your hand to attack your foes. You gain a magma spike unarmed attack, which requires a free hand to use. This is an {@trait agile}, {@trait finesse}, {@trait unarmed} attack in the {@group brawling} weapon group that deals {@damage 1d4} piercing damage, as well as 1 additional fire damage. Instead of the normal critical specialization effect, the target takes {@damage 1d6} {@condition persistent damage ||persistent fire damage}; you gain a bonus on this {@condition persistent damage} equal to your item bonus to attack rolls on unarmed attacks."
 			]
 		},
 		{
@@ -4222,7 +4222,7 @@
 				"Aphorite"
 			],
 			"entries": [
-				"You've solved a tiny stepping stone in your self-discovery, awakening new depths in your sight. You gain darkvision."
+				"You've solved a tiny stepping stone in your self-discovery, awakening new depths in your sight. You gain {@ability darkvision}."
 			]
 		},
 		{
@@ -4328,7 +4328,7 @@
 			"traits": [
 				"Catfolk"
 			],
-			"prerequisites": "{@feat Cat's Luck|APG} APG",
+			"prerequisites": "{@feat Cat's Luck|APG}",
 			"entries": [
 				"You catch yourself as you make a mistake. You can trigger Cat's Luck when you fail or critically fail on an {@skill Athletics} or {@skill Acrobatics} skill check, in addition to its normal trigger. When you do, you reroll the triggering skill check and use the better result. This still counts against Cat's Luck's frequency, as normal."
 			]
@@ -4417,7 +4417,7 @@
 				"Azarketi"
 			],
 			"entries": [
-				"You've befriended a sea creature, which becomes magically bonded to you. You gain a familiar. The type of creature is up to you, but one of its abilities must always be a swim Speed or the amphibious familiar ability."
+				"You've befriended a sea creature, which becomes magically bonded to you. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}. The type of creature is up to you, but one of its abilities must always be a swim Speed or the amphibious familiar ability."
 			]
 		},
 		{
@@ -4491,7 +4491,7 @@
 			"trigger": "You succeed at a {@action Demoralize} check.",
 			"requirements": "You're wearing your warmask.",
 			"entries": [
-				"Your mask has grown into a manifestation of your pain, which you can release. The creature you successfully Demoralized takes {@damage 2d6} mental damage, or {@damage 4d6} mental damage if you're legendary in {@skill Intimidation}.",
+				"Your mask has grown into a manifestation of your pain, which you can release. The creature you successfully {@action Demoralize||Demoralized} takes {@damage 2d6} mental damage, or {@damage 4d6} mental damage if you're legendary in {@skill Intimidation}.",
 				"The target is then temporarily immune to additional damage from Mask of Pain for 24 hours."
 			]
 		},
@@ -4807,9 +4807,9 @@
 				"You gain a +2 status bonus to the triggering skill check. In addition, your circuitry glows, lighting a 10-foot emanation with dim light for 1 round."
 			],
 			"leadsTo": [
-				"Protective Subroutine|LOAG",
+				"Consistent Surge|LOAG",
 				"Offensive Subroutine|LOAG",
-				"Consistent Surge|LOAG"
+				"Protective Subroutine|LOAG"
 			]
 		},
 		{
@@ -4847,7 +4847,7 @@
 				"Android"
 			],
 			"entries": [
-				"The nanites in your ocular processors have adapted to darkness, enhancing your ability to see in the dark. You gain darkvision."
+				"The nanites in your ocular processors have adapted to darkness, enhancing your ability to see in the dark. You gain {@ability darkvision}."
 			]
 		},
 		{
@@ -5045,10 +5045,10 @@
 				}
 			],
 			"leadsTo": [
-				"Mask Of Power|LOAG",
-				"Mask Of Rejection|LOAG",
+				"Mask Of Fear|LOAG",
 				"Mask Of Pain|LOAG",
-				"Mask Of Fear|LOAG"
+				"Mask Of Power|LOAG",
+				"Mask Of Rejection|LOAG"
 			]
 		},
 		{
@@ -5146,7 +5146,7 @@
 			],
 			"prerequisites": "longsnout rat heritage (Advanced Player's Guide 21)",
 			"entries": [
-				"You can sniff out the pungent tang of disease. When you detect a creature by scent, you can also detect if that creature is suffering from a disease at a non-carrier state. If the disease is particularly subtle, you might need to attempt a {@skill Perception} check against the disease's DC (subject to the GM's discretion)."
+				"You can sniff out the pungent tang of disease. When you detect a creature by {@ability scent}, you can also detect if that creature is suffering from a disease at a non-carrier state. If the disease is particularly subtle, you might need to attempt a {@skill Perception} check against the disease's DC (subject to the GM's discretion)."
 			]
 		},
 		{
@@ -5169,8 +5169,8 @@
 				"Your blood soars with the power of the magnificent garuda, proud and stoic avian warriors. You only take half the normal damage from falling and gain a +2 circumstance bonus to saving throws against effects with the {@trait air} trait."
 			],
 			"leadsTo": [
-				"Garuda's Squall|LOAG",
-				"Garuda Magic|LOAG"
+				"Garuda Magic|LOAG",
+				"Garuda's Squall|LOAG"
 			]
 		},
 		{
@@ -5712,7 +5712,7 @@
 			],
 			"entries": [
 				"To you, crocodilians, giant lizards, and dinosaurs are loyal steeds, not monsters.",
-				"You gain the Ride feat, even if you don't meet the prerequisites. You gain a +1 circumstance bonus to {@skill Nature} checks to Handle an Animal as long as the animal is a reptile, dinosaur, or even a non-sapient dragon."
+				"You gain the {@feat Ride} feat, even if you don't meet the prerequisites. You gain a +1 circumstance bonus to {@skill Nature} checks to Handle an Animal as long as the animal is a reptile, dinosaur, or even a non-sapient dragon."
 			]
 		},
 		{
@@ -6007,7 +6007,7 @@
 			"traits": [
 				"Catfolk"
 			],
-			"prerequisites": "{@feat Cat's Luck|APG} APG",
+			"prerequisites": "{@feat Cat's Luck|APG}",
 			"entries": [
 				"You can tell when something's off. You can trigger Cat's Luck after you roll initiative, in addition to its normal trigger, to reroll your Initiative and take the higher of the two results. This still counts against Cat's Luck's frequency, as normal."
 			]
@@ -6086,7 +6086,7 @@
 			],
 			"frequency": "once per hour",
 			"entries": [
-				"You draw on your connection with the Shadow Plane to see through all but the deepest darkness. You gain greater darkvision for 1 minute."
+				"You draw on your connection with the Shadow Plane to see through all but the deepest darkness. You gain {@ability darkvision||greater darkvision} for 1 minute."
 			]
 		},
 		{
@@ -6788,7 +6788,7 @@
 				"Sprite"
 			],
 			"entries": [
-				"You can fling a portion of your magic at foes. You gain a ranged unarmed attack in the sling weapon group with a maximum range of 20 feet that deals {@dice 1d4} damage. (No ability modifier is added to the damage roll.) The damage type and name of the unarmed attack depends on your heritage, described below; most sprite heritages not presented in this book also use luminous spark. Like other unarmed attacks, you can improve this attack with handwraps of mighty blows.",
+				"You can fling a portion of your magic at foes. You gain a ranged unarmed attack in the sling weapon group with a maximum range of 20 feet that deals {@dice 1d4} damage. (No ability modifier is added to the damage roll.) The damage type and name of the unarmed attack depends on your heritage, described below; most sprite heritages not presented in this book also use luminous spark. Like other unarmed attacks, you can improve this attack with {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}.",
 				"Draxie euphoric spark (mental) Firefly Sprite luminous spark (fire) Grig dissonant note (sonic) Melixie sting shot (poison) Nyktera ultrasonic pulse (sonic) Pixie pixie dust (mental)"
 			]
 		},
@@ -6827,7 +6827,7 @@
 				"Kitsune"
 			],
 			"entries": [
-				"Your magic has crystallized into a spherical stone. You gain a familiar, except it's a star orb: a Tiny stone of light Bulk. The familiar has no Speeds and must select a Speed familiar ability before it can move, animating in a way appropriate to the chosen Speed and using the statistics of a normal familiar for that day; when it‘s an immobile stone, it can't select any familiar or master abilities that require it to move. It always has the innate surge master ability (Advanced Player's Guide 147)."
+				"Your magic has crystallized into a spherical stone. You gain a {@filter familiar|companionsfamiliars||Type=Familiar}, except it's a star orb: a Tiny stone of light Bulk. The familiar has no Speeds and must select a Speed familiar ability before it can move, animating in a way appropriate to the chosen Speed and using the statistics of a normal familiar for that day; when it‘s an immobile stone, it can't select any familiar or master abilities that require it to move. It always has the innate surge master ability (Advanced Player's Guide 147)."
 			],
 			"leadsTo": [
 				"Killing Stone|LOAG"
@@ -7585,7 +7585,7 @@
 				"Uncommon",
 				"Aasimar"
 			],
-			"prerequisites": "{@feat Angelkin|APG} APG",
+			"prerequisites": "{@feat Angelkin|APG}",
 			"entries": [
 				"It is paramount that you are understood and you understand others; language need not impede your message. You can cast {@spell tongues} as a 5th-level divine innate spell once per day on yourself only. You gain a +1 status bonus to {@skill Diplomacy} checks for the duration of the spell when speaking to creatures with whom you already shared a language before casting."
 			]
@@ -8185,7 +8185,7 @@
 			"traits": [
 				"Catfolk"
 			],
-			"prerequisites": "winter catfolk heritage APG",
+			"prerequisites": "{@ancestry catfolk|apg|winter catfolk|winter} heritage",
 			"entries": [
 				"Your eyes are keen and accustomed to winter conditions. You ignore concealment caused by ice and snow."
 			]

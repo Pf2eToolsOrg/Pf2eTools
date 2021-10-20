@@ -883,7 +883,7 @@ class AncestriesPage extends BaseComponent {
 				...Parser.speedToFullMap(anc.speed),
 			],
 		};
-		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, anc.rarity);
+		if (anc.rarity) statSidebar.entries.unshift({type: "pf2-title", name: "Rarity"}, `{@trait ${anc.rarity}}`);
 		if (anc.boosts) statSidebar.entries.push({type: "pf2-title", name: "Ability Boosts"}, ...anc.boosts);
 		if (anc.flaw) statSidebar.entries.push({type: "pf2-title", name: "Ability Flaw"}, ...anc.flaw);
 		if (anc.languages) statSidebar.entries.push({type: "pf2-title", name: "Languages"}, ...anc.languages);

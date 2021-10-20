@@ -53,8 +53,8 @@
 				"Aldori Parry|LOWG",
 				"Aldori Riposte|LOWG",
 				"Duelist's Edge|LOWG",
-				"Unnerving Prowess|LOWG",
-				"Saving Slash|LOWG"
+				"Saving Slash|LOWG",
+				"Unnerving Prowess|LOWG"
 			]
 		},
 		{
@@ -220,7 +220,7 @@
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
 				"You've explored enough dusty tombs and {@condition hidden} vaults to gain a sixth sense about traps, and you sometimes notice them even when you're not trying to.",
-				"Even if you aren't Searching in exploration mode, you get a check to find traps that normally require you to {@action Search} for them. You still need to meet any other requirements to find the trap."
+				"Even if you aren't {@action Search||Searching} in exploration mode, you get a check to find traps that normally require you to {@action Search} for them. You still need to meet any other requirements to find the trap."
 			]
 		},
 		{
@@ -416,7 +416,7 @@
 			"frequency": "once per day",
 			"access": "You are a member of the Arclords of Nex.",
 			"entries": [
-				"You open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, and you can close it before then with a single action with the {@trait concentrate} trait. It can remain open for 2 minutes if you're a master in {@skill Arcana}, or 5 minutes if you're legendary. While the eye is open, you gain the following benefits: you gain the effects of the detect magic arcane innate spell from your Arcane Sense at the start of each of your turns without needing to cast the spell; you gain darkvision; you gain a +2 status bonus to {@skill Perception} checks to {@action Seek} {@condition undetected} and {@condition hidden} creatures and to your {@skill Perception} DC against {@action Hide} and {@action Sneak}. After your third eye closes, you are {@condition dazzled} for an amount of time equal to how long you had it open."
+				"You open an incandescent third eye upon your forehead. The eye can remain open for 1 minute, and you can close it before then with a single action with the {@trait concentrate} trait. It can remain open for 2 minutes if you're a master in {@skill Arcana}, or 5 minutes if you're legendary. While the eye is open, you gain the following benefits: you gain the effects of the detect magic arcane innate spell from your Arcane Sense at the start of each of your turns without needing to cast the spell; you gain {@ability darkvision}; you gain a +2 status bonus to {@skill Perception} checks to {@action Seek} {@condition undetected} and {@condition hidden} creatures and to your {@skill Perception} DC against {@action Hide} and {@action Sneak}. After your third eye closes, you are {@condition dazzled} for an amount of time equal to how long you had it open."
 			]
 		},
 		{
@@ -481,7 +481,7 @@
 				"General",
 				"Skill"
 			],
-			"prerequisites": "Battle {@skill Medicine}, can't have a patron deity",
+			"prerequisites": "{@feat Battle Medicine}, can't have a patron deity",
 			"entries": [
 				"You recover an additional 5 Hit Points from a successful attempt to Treat your Wounds or use Battle {@skill Medicine} on you. After you or an ally use Battle {@skill Medicine} on you, you become temporarily immune to that Battle {@skill Medicine} for only 1 hour, instead of 1 day.",
 				"Thuvia When most people think of Thuvia, they think of the sun orchid elixir: the legendary potion capable of reversing the effects of aging. Discovered thousands of years ago by Artokus Kirran, the draught is derived from the famed flower that grows only in the harshest reaches of Thuvia's desert, though its exact formula is known only to the immortal alchemist himself. A child of the chaos that followed the collapse of Ancient Osirion, Artokus met with local leaders."
@@ -557,20 +557,21 @@
 			"special": "You can't select another dedication feat except dedication feats for higher positions within the Hellknights until you have gained two other feats from the Hellknight armiger archetype.",
 			"leadsTo": [
 				"Ardent Armiger|LOWG",
+				"Armiger's Mobility|LOWG",
 				"Diabolic Certitude|LOWG",
 				"Mortification|LOWG",
-				"Order Training|LOCG",
 				"Advanced Order Training|LOCG",
-				"Hellknight Order Cross-training|LOCG",
 				"Hellknight Dedication|LOCG",
-				"Sense Chaos|LOCG",
 				"Blade Of Law|LOCG",
 				"Hell's Armaments|LOCG",
+				"Hellknight Order Cross-training|LOCG",
+				"Sense Chaos|LOCG",
 				"Hellknight Signifer Dedication|LOCG",
-				"Masked Casting|LOCG",
 				"Gaze Of Veracity|LOCG",
+				"Masked Casting|LOCG",
+				"Signifer Armor Expertise|LOCG",
 				"Signifer's Sight|LOCG",
-				"Signifer Armor Expertise|LOCG"
+				"Order Training|LOCG"
 			]
 		},
 		{
@@ -616,10 +617,10 @@
 				"Activate {@as 2} (envision), or a different activation if otherwise specified; Frequency a number of times each day equal to the number of class feats you have from the Living Monolith archetype; Effect You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later Living Monolith feat."
 			],
 			"leadsTo": [
-				"Stone Blood|LOWG",
-				"Fortified Flesh|LOWG",
 				"Attunement To Stone|LOWG",
+				"Fortified Flesh|LOWG",
 				"Judgment Of The Monolith|LOWG",
+				"Stone Blood|LOWG",
 				"Stone Communion|LOWG"
 			]
 		},
@@ -648,10 +649,10 @@
 			"special": "You can't select another dedication feat until you have gained two other feats from the Lastwall sentry archetype.",
 			"leadsTo": [
 				"Eye Of Ozem|LOWG",
-				"Necromantic Resistance|LOWG",
-				"Necromantic Tenacity|LOWG",
 				"Grave Sense|LOWG",
 				"Lastwall Warden|LOWG",
+				"Necromantic Resistance|LOWG",
+				"Necromantic Tenacity|LOWG",
 				"Rescuer's Press|LOL"
 			]
 		},
@@ -700,10 +701,10 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Lion Blade archetype.",
 			"leadsTo": [
-				"Lost In The Crowd|LOWG",
 				"Expeditious Advance|LOWG",
-				"Spy's Countermeasures|LOWG",
-				"Flicker|LOWG"
+				"Flicker|LOWG",
+				"Lost In The Crowd|LOWG",
+				"Spy's Countermeasures|LOWG"
 			]
 		},
 		{
@@ -725,15 +726,15 @@
 			],
 			"prerequisites": "{@language Ancient Osirion|LOWG|Ancient Osiriani} and {@language Sphinx|Be1} languages, trained in {@skill Crafting}; Access You are from the Golden Road region.",
 			"entries": [
-				"You've begun to inscribe a magical stone called a ka stone that you will some day tie to your soul. You gain knowledge of {@language Ancient Osirion|LOWG} and a connection to your nascent ka stone. If you fail a recovery check while {@condition dying}, your {@condition dying} condition does not increase; if you critically fail, your {@condition dying} condition increases by only 1. You become trained in {@skill Lore|Ancient Osirion Lore}, or expert if you were already trained."
+				"You've begun to inscribe a magical stone called a ka stone that you will some day tie to your soul. You gain knowledge of {@language Ancient Osirion|LOWG} and a connection to your nascent ka stone. If you fail a recovery check while {@condition dying}, your {@condition dying} condition does not increase; if you critically fail, your {@condition dying} condition increases by only 1. You become trained in {@skill Lore||Ancient Osirion Lore}, or expert if you were already trained."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the living monolith archetype.",
 			"leadsTo": [
 				"Ka Stone Ritual|LOWG",
-				"Stone Blood|LOWG",
-				"Fortified Flesh|LOWG",
 				"Attunement To Stone|LOWG",
+				"Fortified Flesh|LOWG",
 				"Judgment Of The Monolith|LOWG",
+				"Stone Blood|LOWG",
 				"Stone Communion|LOWG"
 			]
 		},
@@ -817,7 +818,7 @@
 			"prerequisites": "ability to cast focus spells",
 			"access": "You are from the Mwangi Expanse.",
 			"entries": [
-				"You have taken up a nameless mask and sworn the oath of the magic warriors. You become trained in your choice of {@skill Arcana} or {@skill Nature} and in {@skill Lore|Magic Warrior Lore}; if you were already trained in the skill, you become an expert instead.",
+				"You have taken up a nameless mask and sworn the oath of the magic warriors. You become trained in your choice of {@skill Arcana} or {@skill Nature} and in {@skill Lore||Magic Warrior Lore}; if you were already trained in the skill, you become an expert instead.",
 				"You hide your identity behind a mask representing an animal of your choice, corresponding to one of the general animal types in the {@spell animal form} spell. You gain a +1 circumstance bonus to saves against {@trait divination} effects, though sometimes refusing to remove your mask can cause issues in areas that don't respect or understand the magic warrior tradition.",
 				"Once you take this feat, if another creature ever learns your true face or name, you lose your abilities from this archetype.",
 				"Close allies who knew of your decision to take the mask before your dedication don't break this taboo unless they tell someone else. To regain your abilities, you must discard your mask and obtain a new one of a different animal, then retrain Magic Warrior Dedication into a new Magic Warrior Dedication with your new mask. Your focus spells from the magic warrior archetype are the same tradition as your other spells (choose one if you have spells from multiple traditions)."
@@ -983,21 +984,22 @@
 				"Discerning Strike|LOPSG",
 				"Wayfinder Resonance Tinkerer|LOWG",
 				"Wayfinder Resonance Infiltrator|LOPSG",
+				"Educated Assessment|LOCG",
+				"Everyone Duck!|LOCG",
 				"Forced Entry|LOCG",
 				"Recognize Threat|LOCG",
-				"Everyone Duck!|LOCG",
-				"Educated Assessment|LOCG",
+				"Archaeologist's Warning|LOPSG",
+				"Craft Facsimile|LOPSG",
 				"Dead Reckoning|LOPSG",
+				"Diverse Recognition|LOPSG",
+				"Eidetic Memorization|LOPSG",
 				"Environmental Explorer|LOPSG",
 				"Observant Explorer|LOPSG",
 				"Remember Your Training|LOPSG",
-				"Spiritual Explorer|LOPSG",
-				"Watch And Learn|LOPSG",
-				"Archaeologist's Warning|LOPSG",
-				"Diverse Recognition|LOPSG",
 				"Snap Out Of It!|LOPSG",
-				"Eidetic Memorization|LOPSG",
+				"Spiritual Explorer|LOPSG",
 				"Swap Investment|LOPSG",
+				"Watch And Learn|LOPSG",
 				"Westyr's Wayfinder Repository|LOPSG"
 			]
 		},
@@ -1101,9 +1103,9 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the runescarred archetype.",
 			"leadsTo": [
+				"Living Rune|LOWG",
 				"Spell Runes|LOWG",
 				"Greater Spell Runes|LOWG",
-				"Living Rune|LOWG",
 				"Warding Rune|LOWG"
 			]
 		},

@@ -5,6 +5,7 @@
 	"license": "MIT",
 	"description": "A site dedicated to making playing games with your friends as easy as possible.",
 	"scripts": {
+		"serve:dev": "http-server -c-1 --cors",
 		"version-bump": "npm version -m \"chore(version): bump\"",
 		"gen-all": "node node/generate-all.js",
 		"clean-jsons": "node node/clean-jsons.js",
@@ -25,8 +26,7 @@
 		"build:sw": "node node/generate-service-worker.js",
 		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw",
 		"preversion": "npm test",
-		"version": "node node/version-bump.js",
-		"serve:dev": "http-server -c-1 --cors"
+		"version": "node node/version-bump.js"
 	},
 	"repository": {
 		"type": "git",

@@ -1011,12 +1011,16 @@ class ClassesPage extends BaseComponent {
 		for (let i = 0; i < 20; i++) {
 			if (!cls.classFeatures[i]) cls.classFeatures[i] = []
 		}
+		const renderer = Renderer.get()
 		const metasTblRows = cls.classFeatures.map((lvlFeatures, ixLvl) => {
 			const lvlFeaturesFilt = lvlFeatures
 				.filter(it => it.name && it.type !== "inset"); // don't add inset entry names to class table
 			if (this._pageFilter.isClassNaturallyDisplayed(this.filterBox.getValues(), cls)) {
+				// for each cls.advancement, check
 				Object.keys(cls.advancement).forEach(key => {
-					if (cls.advancement[key].slice(1).includes(ixLvl + 1)) {
+					// is it an array, in which case go through the default cases
+					// or is it an object, in which case push it's entry
+					if (Array.isArray(cls.advancement[key]) && cls.advancement[key].slice(1).includes(ixLvl + 1)) {
 						switch (key) {
 							case "classFeats": {
 								lvlFeaturesFilt.push({
@@ -1073,6 +1077,13 @@ class ClassesPage extends BaseComponent {
 								break;
 							}
 						}
+					} else if (MiscUtil.isObject(cls.advancement[key]) && cls.advancement[key].levels.slice(1).includes(ixLvl + 1)) {
+						lvlFeaturesFilt.push({
+							name: cls.advancement[key].name,
+							source: cls.source,
+							$lnk: $(`${renderer.render(cls.advancement[key].entry.replace(`\${level}`, `${ixLvl + 1}`))}`),
+							preCalc: true,
+						});
 					}
 				});
 			}

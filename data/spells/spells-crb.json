@@ -436,7 +436,7 @@
 						"{@skill Acrobatics} modifier of +16, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Bat} Speed 20 feet, fly Speed 30 feet; precise echolocation 40 feet; Melee {@as 1} fangs, Damage {@damage 2d8} piercing; Melee {@as 1} wing (agile), Damage {@damage 2d6} bludgeoning.",
 						"{@bold Bird} Speed 10 feet, fly Speed 50 feet; Melee {@as 1} beak, Damage {@damage 2d8} piercing; Melee {@as 1} talon (agile), Damage {@damage 1d10} slashing.",
-						"{@bold Pterosaur} Speed 10 feet, fly Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} beak, Damage {@damage 3d6} piercing.",
+						"{@bold Pterosaur} Speed 10 feet, fly Speed 40 feet; imprecise {@ability scent} 30 feet; Melee {@as 1} beak, Damage {@damage 3d6} piercing.",
 						"{@bold Wasp} Speed 20 feet, fly Speed 40 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d6} {@condition persistent damage ||persistent poison}."
 					]
 				}
@@ -1073,7 +1073,7 @@
 					"items": [
 						"AC = 16 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"5 temporary Hit Points.",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +9, and your damage bonus is +1. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack bonus is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +9, unless your own modifier is higher. You also gain specific abilities based on the type of animal you choose:",
 						"{@bold Ape} Speed 25 feet, climb Speed 20 feet; Melee {@as 1} fist, Damage {@damage 2d6} bludgeoning.",
@@ -1389,7 +1389,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You create a brief vision of immense wealth filling the spell's area. Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically disbelieves the illusion, and disbelieving the illusion ends any {@condition fascinated} condition imposed by the spell. As long as you Sustain the Spell, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated}.",
+				"You create a brief vision of immense wealth filling the spell's area. Each creature within 20 feet of the area that could be enticed by material wealth must attempt a Will saving throw. A creature that enters the area automatically disbelieves the illusion, and disbelieving the illusion ends any {@condition fascinated} condition imposed by the spell. As long as you {@action Sustain a Spell||Sustain the Spell}, other creatures react to the treasure like they would any other illusion, but they are not at risk of becoming {@condition fascinated}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1568,7 +1568,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Your body fills with physical power and skill. You gain a +10- foot status bonus to Speed and a +2 status bonus to {@skill Athletics} checks. As a part of {@action Cast a Spell||Casting this Spell}, you can use a {@action Stride}, {@action Leap}, {@action Climb}, or {@action Swim} action. The spell's bonuses apply during that action."
+				"Your body fills with physical power and skill. You gain a +10-foot status bonus to Speed and a +2 status bonus to {@skill Athletics} checks. As a part of {@action Cast a Spell||Casting this Spell}, you can use a {@action Stride}, {@action Leap}, {@action Climb}, or {@action Swim} action. The spell's bonuses apply during that action."
 			],
 			"heightened": {
 				"heightened": false,
@@ -1730,7 +1730,7 @@
 					"items": [
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to your deity's battle form, which are the only attacks you can use. You're trained with them. Your attack modifier is +33, and you use the listed damage. Melee attacks are Strength based (for the purposes of the {@condition enfeebled} condition, for example) unless they have the {@trait finesse} trait, and all ranged attacks are Dexterity based. Attacks that deal positive or negative damage don't heal creatures.",
 						"{@skill Athletics} modifier of +35, unless your own is higher. You also gain the specific abilities listed for your deity below:",
 						"{@bold Abadar} Speed 50 feet, burrow Speed 30 feet, immune to {@condition immobilized}; Ranged {@as 1} crossbow (range increment 120 feet, reload 1), Damage {@damage 6d10+3} piercing.",
@@ -2545,7 +2545,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You blink quickly between the Material Plane and the Ethereal Plane. You gain resistance 5 to all damage (except force). You can Sustain the Spell to vanish and reappear 10 feet away in a random direction determined by the GM; the movement doesn't trigger reactions. At the end of your turn, you vanish and reappear as above."
+				"You blink quickly between the Material Plane and the Ethereal Plane. You gain resistance 5 to all damage (except force). You can {@action Sustain a Spell||Sustain the Spell} to vanish and reappear 10 feet away in a random direction determined by the GM; the movement doesn't trigger reactions. At the end of your turn, you vanish and reappear as above."
 			],
 			"heightened": {
 				"heightened": true,
@@ -5226,7 +5226,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You create up to four floating lights, no two of which are more than 10 feet apart. Each sheds light like a torch. When you Sustain the Spell, you can move any number of lights up to 60 feet. Each light must remain within 120 feet of you and within 10 feet of all others, or it winks out."
+				"You create up to four floating lights, no two of which are more than 10 feet apart. Each sheds light like a torch. When you {@action Sustain a Spell||Sustain the Spell}, you can move any number of lights up to 60 feet. Each light must remain within 120 feet of you and within 10 feet of all others, or it winks out."
 			],
 			"heightened": {
 				"heightened": false,
@@ -5291,9 +5291,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The target is unaffected.",
-						"Success": "The target's darkvision or low-light vision is suppressed for 1 round.",
+						"Success": "The target's {@ability darkvision} or low-light vision is suppressed for 1 round.",
 						"Failure": "As success, but the duration is 1 minute.",
-						"Critical Failure": "As success, but the duration is 1 minute, and the target is also {@condition blinded} for the duration. It can attempt a new save at the end of each of its turns. If it succeeds, it's no longer {@condition blinded}, but its darkvision or low-light vision remains suppressed."
+						"Critical Failure": "As success, but the duration is 1 minute, and the target is also {@condition blinded} for the duration. It can attempt a new save at the end of each of its turns. If it succeeds, it's no longer {@condition blinded}, but its {@ability darkvision} or {@ability low-light vision} remains suppressed."
 					}
 				}
 			],
@@ -5367,7 +5367,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "Even creatures with darkvision (but not greater darkvision) can barely see through the darkness. They treat targets seen through the darkness as {@condition concealed}."
+						"entry": "Even creatures with {@ability darkvision} (but not {@ability darkvision||greater darkvision}) can barely see through the darkness. They treat targets seen through the darkness as {@condition concealed}."
 					}
 				],
 				"no_x": null
@@ -5419,7 +5419,7 @@
 			"dismiss": false,
 			"entries": [
 				"You grant yourself supernatural sight in areas of darkness.",
-				"You gain darkvision."
+				"You gain {@ability darkvision}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -6053,7 +6053,7 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "You learn the school of magic for the highestlevel effect within range that the spell detects. If multiple effects are equally strong, the GM determines which you learn."
+						"entry": "You learn the school of magic for the highest-level effect within range that the spell detects. If multiple effects are equally strong, the GM determines which you learn."
 					},
 					{
 						"level": 4,
@@ -6520,7 +6520,7 @@
 					"items": [
 						"AC = 18 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"15 temporary Hit Points.",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +16, and your damage bonus is +9. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +18, unless your own modifier is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ankylosaurus} Speed 25 feet; Melee {@as 1} tail (backswing, reach 10 feet), Damage {@damage 2d6} bludgeoning; Melee {@as 1} foot, Damage {@damage 2d6} bludgeoning.",
@@ -7153,7 +7153,7 @@
 				"Divine power wards the targets, granting each a +1 status bonus to AC and saves while in the area.",
 				"Choose an alignment your deity has (chaotic, evil, good, or lawful). You can't cast this spell if you don't have a deity or your deity is true neutral. This spell gains the trait of the alignment you chose. The bonuses granted by the spell increase to +2 against attacks by\u2014and effects created by\u2014creatures with an alignment opposite to the spell (lawful if you chose chaotic, evil if you chose good). These bonuses increase to +4 against effects created by such creatures that attempt to impose the {@condition controlled} condition on a target of your divine aura, as well as against attacks made by creatures summoned by anything opposite in alignment to your divine aura.",
 				"When a creature of opposite alignment hits a target with a melee attack, the creature must succeed at a Will save or be {@condition blinded} for 1 minute. It's then temporarily immune for 1 minute.",
-				"The first time you Sustain the Spell each round, the divine aura's radius grows 10 feet."
+				"The first time you {@action Sustain a Spell||Sustain the Spell} each round, the divine aura's radius grows 10 feet."
 			],
 			"heightened": {
 				"heightened": false,
@@ -7390,7 +7390,7 @@
 						"A fly Speed equal to your Speed.",
 						"Weakness 10 to the alignment opposite the one you chose.",
 						"A +1 status bonus to saves against spells.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"Your unarmed attacks and weapons deal 1 additional damage of the chosen alignment type.",
 						"One or more unarmed melee attacks. If you chose good or lawful, your fist attacks deal {@dice 2d8} damage. If you chose chaotic, you gain a bite unarmed attack that deals {@damage 2d10} piercing damage. If you chose evil, you gain a claws unarmed attack that deals {@damage 2d8} slashing damage and has the {@trait agile} and {@trait finesse} traits."
 					]
@@ -7878,7 +7878,7 @@
 						"10 temporary Hit Points.",
 						"Speed 40 feet, fly Speed 100 feet.",
 						"Resistance 10 against the damage type of your breath weapon (see below).",
-						"Darkvision and imprecise scent 60 feet.",
+						"{@ability Darkvision} and imprecise {@ability scent} 60 feet.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +22, and your damage bonus is +6. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead. See below for more on these attacks.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher.",
 						"{@bold Breath Weapon} {@as 2} ({@trait arcane}, {@trait evocation}) The shape, damage, and damage type of your breath weapon depend on your specific dragon form (see below). A creature in the area attempts a basic save against your spell DC. This is a Reflex save unless stated otherwise in the special ability description for your specific dragon form. Once activated, your breath weapon can't be used again for {@dice 1d4} rounds. Your breath weapon has the trait corresponding to the type of damage it deals."
@@ -8436,7 +8436,7 @@
 			"entries": [
 				"You try to create a temporary duplicate of an enemy to fight on your behalf. The target can attempt a Fortitude save to disrupt the spell. The duplicate appears in an unoccupied space adjacent to the target and has the target's attack modifier, AC, saving throw modifiers, {@skill Perception}, and skill modifiers, but it has only 70 Hit Points and lacks the target's special abilities, including immunities, resistances, and weaknesses. It has no magic items except weapon potency runes.",
 				"The duplicate gains the minion trait, and it can only {@action Stride} and {@action Strike}. Its Strikes deal the target's normal damage but don't apply added effects, since it doesn't have special abilities. The spell automatically ends if the duplicate's Hit Points drop to 0.",
-				"The duplicate attacks your enemies to the best of its abilities. You can also try to give it additional instructions; when you Sustain the Spell, you can also Command a Minion as part of your action, but the GM determines whether the duplicate follows your command.",
+				"The duplicate attacks your enemies to the best of its abilities. You can also try to give it additional instructions; when you {@action Sustain a Spell||Sustain the Spell}, you can also Command a Minion as part of your action, but the GM determines whether the duplicate follows your command.",
 				"The duplicate is unstable, so each turn after it takes its actions, it loses {@dice 4d6} Hit Points. It's not a living creature, and it can never regain its lost Hit Points in any way.",
 				{
 					"type": "successDegree",
@@ -8850,7 +8850,7 @@
 					"items": [
 						"AC = 19 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"10 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +18, and your damage bonus is +9. These are Dexterity based (air or fire) or Strength based (earth or water). If your corresponding unarmed attack modifier is higher, you can use it instead.",
 						"{@bold Acrobatics} (air or fire) or {@skill Athletics} (earth or water) modifier of +20; ignore this change if your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
 						"{@bold Air fly} Speed 80 feet, movement doesn't trigger reactions; Melee {@as 1} gust, Damage {@damage 1d4} bludgeoning.",
@@ -9610,7 +9610,7 @@
 			"dismiss": false,
 			"entries": [
 				"Your words fascinate your targets. You speak or sing without interruption throughout the casting and duration. Targets who notice your speech or song might give their undivided attention; each target must attempt a Will save. The GM might grant a circumstance bonus (to a maximum of +4) if the target is of an opposing religion, ancestry, or political leaning, or is otherwise unlikely to agree with what you're saying.",
-				"Each creature that comes within range has to attempt a save when you Sustain the Spell. If you're speaking, enthrall gains the {@trait linguistic} trait.",
+				"Each creature that comes within range has to attempt a save when you {@action Sustain a Spell||Sustain the Spell}. If you're speaking, enthrall gains the {@trait linguistic} trait.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -9965,7 +9965,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You sprinkle magical dust in the spell's area, making those within easier to trick. Each creature in the area must attempt a Will save. For each additional action you use Casting the Spell, the burst's radius increases by 5 feet.",
+				"You sprinkle magical dust in the spell's area, making those within easier to trick. Each creature in the area must attempt a Will save. For each additional action you use {@action Cast a Spell||Casting the Spell}, the burst's radius increases by 5 feet.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -10155,7 +10155,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You create a false image that fools any attempts to scry on an area. Any {@spell scrying} spell sees, hears, smells, and otherwise detects whatever you wish within the area, rather than what is actually in the area. You can Sustain the Spell each round to change the illusion as you desire, including playing out a complex scene. If the {@spell scrying} spell is of a higher level than false vision, the scryer can attempt a {@skill Perception} check to disbelieve the illusion, though even if they're successful, they can't learn what's truly going on in the area."
+				"You create a false image that fools any attempts to scry on an area. Any {@spell scrying} spell sees, hears, smells, and otherwise detects whatever you wish within the area, rather than what is actually in the area. You can {@action Sustain a Spell||Sustain the Spell} each round to change the illusion as you desire, including playing out a complex scene. If the {@spell scrying} spell is of a higher level than false vision, the scryer can attempt a {@skill Perception} check to disbelieve the illusion, though even if they're successful, they can't learn what's truly going on in the area."
 			],
 			"heightened": {
 				"heightened": false,
@@ -14018,7 +14018,7 @@
 				"x": [
 					{
 						"level": 3,
-						"entry": "You gain darkvision or low-light vision if the form you assume has that ability."
+						"entry": "You gain {@ability darkvision} or {@ability low-light vision} if the form you assume has that ability."
 					},
 					{
 						"level": 5,
@@ -14379,7 +14379,7 @@
 			"entries": [
 				"You create an illusory image of a Large or smaller creature. It generates the appropriate sounds, smells, and feels believable to the touch. If you and the image are ever farther than 500 feet apart, the spell ends.",
 				"The image can't speak, but you can use your actions to speak through the creature, with the spell disguising your voice as appropriate. You might need to attempt a {@skill Deception} or {@skill Performance} check to mimic the creature, as determined by the GM. This is especially likely if you're trying to imitate a specific person and engage with someone that person knows.",
-				"In combat, the illusion can use 2 actions per turn, which it uses when you Sustain the Spell. It uses your spell attack roll for attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2013 10. It is substantial enough that it can flank other creatures. If the image is hit by an attack or fails a save, the spell ends.",
+				"In combat, the illusion can use 2 actions per turn, which it uses when you {@action Sustain a Spell||Sustain the Spell}. It uses your spell attack roll for attack rolls and your spell DC for its AC. Its saving throw modifiers are equal to your spell DC \u2013 10. It is substantial enough that it can flank other creatures. If the image is hit by an attack or fails a save, the spell ends.",
 				"The illusion can cause damage by making the target believe the illusion's attacks are real, but it cannot otherwise directly affect the physical world. If the illusory creature hits with a {@action Strike}, the target takes mental damage equal to {@dice 1d4} plus your spellcasting ability modifier. This is a {@trait mental} effect.",
 				"The illusion's Strikes are nonlethal. If the damage doesn't correspond to the image of the monster\u2014for example, if an illusory Large dragon deals only 5 damage\u2014the GM might allow the target to attempt an immediate {@skill Perception} check to disbelieve the spell. Any relevant resistances and weaknesses apply if the target thinks they do, as judged by the GM. For example, if the illusion wields a warhammer and attacks a creature resistant to bludgeoning damage, the creature would take less mental damage. However, illusory damage does not deactivate regeneration or trigger other effects that require a certain damage type. The GM should track illusory damage dealt by the illusion.",
 				"Any creature that touches the image or uses the {@action Seek} action to examine it can attempt to disbelieve your illusion.",
@@ -14445,11 +14445,11 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "The spell also disguises your voice and scent, and it gains the {@trait auditory} and {@trait olfactory} traits."
+						"entry": "The spell also disguises your voice and {@ability scent}, and it gains the {@trait auditory} and {@trait olfactory} traits."
 					},
 					{
 						"level": 3,
-						"entry": "You can appear as any creature of the same size, even a specific individual. You must have seen an individual to take on their appearance. The spell also disguises your voice and scent, and it gains the {@trait auditory} trait."
+						"entry": "You can appear as any creature of the same size, even a specific individual. You must have seen an individual to take on their appearance. The spell also disguises your voice and {@ability scent}, and it gains the {@trait auditory} trait."
 					}
 				],
 				"no_x": null
@@ -14775,10 +14775,10 @@
 						"{@skill Athletics} modifier of +13, unless your own is higher. You also gain specific abilities based on the form you choose:",
 						"{@bold Ant} Speed 30 feet, climb Speed 30 feet; Melee {@as 1} mandibles, Damage {@damage 2d6} bludgeoning.",
 						"{@bold Beetle} Speed 25 feet; Melee {@as 1} mandibles, Damage {@damage 2d10} bludgeoning.",
-						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; darkvision; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
-						"{@bold Mantis} Speed 40 feet; imprecise scent 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
-						"{@bold Scorpion} Speed 40 feet; darkvision, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
-						"{@bold Spider} darkvision; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
+						"{@bold Centipede} Speed 25 feet, climb Speed 25 feet; {@ability darkvision}; Melee {@as 1} mandibles, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}.",
+						"{@bold Mantis} Speed 40 feet; imprecise {@ability scent} 30 feet; Melee {@as 1} foreleg, Damage {@damage 2d8} bludgeoning.",
+						"{@bold Scorpion} Speed 40 feet; {@ability darkvision}, imprecise tremorsense 60 feet; Melee {@as 1} stinger, Damage {@damage 1d8} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} pincer (agile), Damage {@damage 1d6} bludgeoning.",
+						"{@bold Spider} {@ability darkvision}; Melee {@as 1} fangs, Damage {@damage 1d6} piercing plus {@damage 1d4} {@condition persistent damage ||persistent poison}; Melee {@as 1} Speed 25 feet, climb Speed 25 feet; Ranged {@as 1} web (range increment 20 feet), Damage entangles the target for 1 round."
 					]
 				}
 			],
@@ -15892,12 +15892,17 @@
 			"targets": "1 object of 1 Bulk or less, either unattended or possessed by you or a willing ally",
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "until the next time you make your daily preparations",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Bulk or less Duration until the next time you make your daily preparations The object glows, casting bright light in a 20-foot radius (and dim light for the next 20 feet) like a torch. If you cast this spell again on a second object, the {@spell light} spell on the first object ends."
+				"The object glows, casting bright light in a 20-foot radius (and dim light for the next 20 feet) like a torch. If you cast this spell again on a second object, the {@spell light} spell on the first object ends."
 			],
 			"heightened": {
 				"heightened": true,
@@ -16680,7 +16685,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You create a single magical hand, either {@condition invisible} or ghostlike, that grasps the target object and moves it slowly up to 20 feet. Because you're levitating the object, you can move it in any direction. When you Sustain the Spell, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls."
+				"You create a single magical hand, either {@condition invisible} or ghostlike, that grasps the target object and moves it slowly up to 20 feet. Because you're levitating the object, you can move it in any direction. When you {@action Sustain a Spell||Sustain the Spell}, you can move the object an additional 20 feet. If the object is in the air when the spell ends, the object falls."
 			],
 			"heightened": {
 				"heightened": true,
@@ -16862,7 +16867,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@damage 1d4+1} force damage. For each additional action you use when Casting the Spell, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
+				"You send a dart of force streaking toward a creature that you can see. It automatically hits and deals {@damage 1d4+1} force damage. For each additional action you use when {@action Cast a Spell||Casting the Spell}, increase the number of missiles you shoot by one, to a maximum of three missiles for 3 actions. You choose the target for each missile individually. If you shoot more than one missile at the same target, combine the damage before applying bonuses or penalties to damage, resistances, weaknesses, and so forth."
 			],
 			"heightened": {
 				"heightened": true,
@@ -17809,7 +17814,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The target is unaffected.",
-						"Failure": "Each round of the spell's duration, you can Sustain the Spell to ask a different question and attempt to uncover the answer. For each question, the target can attempt a {@skill Deception} check against your spell DC; if the target succeeds, you don't learn the answer, and on a critical success, the target gives you a false answer that you believe is truthful Once you've asked the target a given question, asking it again, even with a separate casting of mind probe, produces the same result.",
+						"Failure": "Each round of the spell's duration, you can {@action Sustain a Spell||Sustain the Spell} to ask a different question and attempt to uncover the answer. For each question, the target can attempt a {@skill Deception} check against your spell DC; if the target succeeds, you don't learn the answer, and on a critical success, the target gives you a false answer that you believe is truthful Once you've asked the target a given question, asking it again, even with a separate casting of mind probe, produces the same result.",
 						"Critical Failure": "As failure, and the target takes a \u20134 circumstance penalty to {@skill Deception} checks against your questions."
 					}
 				}
@@ -17878,7 +17883,7 @@
 						"Critical Success": "The target perceives vague surface thoughts from you when you Cast the Spell.",
 						"Success": "You find out whether the target's Intelligence modifier is higher than, equal to, or lower than yours.",
 						"Failure": "You perceive vague surface thoughts from the target when you Cast the Spell, and you find out whether its Intelligence modifier is higher than, equal to, or lower than yours.",
-						"Critical Failure": "As failure, and for the duration of the spell, you can Sustain the Spell to detect the target's surface thoughts again. The target doesn't receive any additional saves."
+						"Critical Failure": "As failure, and for the duration of the spell, you can {@action Sustain a Spell||Sustain the Spell} to detect the target's surface thoughts again. The target doesn't receive any additional saves."
 					}
 				}
 			],
@@ -18142,7 +18147,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You turn yourself {@condition invisible} and create an illusory duplicate of yourself. When you Sustain the Spell, you can mentally dictate a course of action for your duplicate to follow that round. Your duplicate acts as though it had your full number of actions, though it can't actually affect anything in the environment.",
+				"You turn yourself {@condition invisible} and create an illusory duplicate of yourself. When you {@action Sustain a Spell||Sustain the Spell}, you can mentally dictate a course of action for your duplicate to follow that round. Your duplicate acts as though it had your full number of actions, though it can't actually affect anything in the environment.",
 				"Both the duplicate and your invisibility persist for the spell's duration. Performing a {@condition hostile} action doesn't end mislead's invisibility, just like a 4th-level {@spell invisibility} spell. A creature that determines the duplicate is an illusion doesn't necessarily know you're {@condition invisible}, and one that can see your {@condition invisible} form doesn't necessarily know your duplicate is an illusion.",
 				"If you {@action Cast a Spell}, attack, or otherwise interact with another creature, as a part of that action you can attempt a {@skill Deception} check against observers' {@skill Perception} DCs to convince them your duplicate used that action. This doesn't fool anyone who's aware your duplicate is an illusion, nor does it work if the attack obviously couldn't have come from the duplicate. For instance, if you fired a ray, you could make it look like it came from the duplicate as long as the duplicate was positioned appropriately, but if you attacked with a sword and your duplicate was across the room from the target, your {@skill Deception} check would automatically fail."
 			],
@@ -18207,7 +18212,7 @@
 					"entries": {
 						"Critical Success": "The target is unaffected and realizes you tried to alter its memory.",
 						"Success": "The target is unaffected but thinks your spell was something harmless instead of modify memory, unless it identifies the spell.",
-						"Failure": "During the first 5 minutes of the spell's duration, you can Sustain the Spell to modify a memory once each round. When you do, you imagine up to 6 seconds of memory to modify, to a maximum of 5 continuous minutes of memory. Any memories you've altered remain changed as long as the spell is active. If the target moves out of range before the 5 minutes is up, you can't alter any further memories."
+						"Failure": "During the first 5 minutes of the spell's duration, you can {@action Sustain a Spell||Sustain the Spell} to modify a memory once each round. When you do, you imagine up to 6 seconds of memory to modify, to a maximum of 5 continuous minutes of memory. Any memories you've altered remain changed as long as the spell is active. If the target moves out of range before the 5 minutes is up, you can't alter any further memories."
 					}
 				}
 			],
@@ -18323,7 +18328,7 @@
 					"items": [
 						"AC = 20 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"20 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more unarmed melee attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +28, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +30, unless your own modifier is higher. You also gain specific abilities based on the type of monster you choose:",
 						"{@bold Phoenix} Speed 30 feet, fly Speed 90 feet; Melee {@as 1} beak (reach 15 feet), Damage {@damage 2d6+12} piercing plus {@damage 2d4} fire and {@damage 2d4} {@condition persistent damage ||persistent fire}; Melee {@as 1} talon (agile, reach 15 feet), Damage {@damage 2d8+12} slashing; Shroud of Flame (aura, evocation, fire, primal) 20 feet. You gain an aura of fire that extends out from you. A creature that enters or ends its turn within the aura takes {@damage 2d6} fire damage. A creature can take this damage only once per turn. You can use a single action, which has the {@trait concentrate} trait, to activate or deactivate this aura.",
@@ -18582,7 +18587,7 @@
 					"items": [
 						"AC = 25 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"30 temporary Hit Points.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Strength based (for the purpose of the {@condition enfeebled} condition, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Athletics} modifier of +36, unless your own modifier is higher. You also gain specific abilities based on the type of incarnation you choose:",
 						"{@bold Green Man} Speed 40 feet, climb Speed 40 feet; Melee {@as 1} vines (reach 30 feet, versatile P), Damage {@damage 6d8+12} bludgeoning; Ranged {@as 1} thorns (range 100 feet), Damage {@damage 6d6+6} piercing; Green Caress (aura, primal, transmutation) 60 feet. Enemies other than plants must succeed at a Fortitude save against your spell DC or become {@condition clumsy 1} for 1 round ({@condition clumsy 2} on a critical failure).",
@@ -18768,7 +18773,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"The target loses its odor, preventing creatures from passively noticing its presence via smell alone, even if the creatures have precise or imprecise scent. A creature attempting a {@skill Perception} check to {@action Seek} with scent and other senses might notice the lack of natural scent. If the target has any abilities that result from its smell, such as an overpowering scent, those abilities are also negated."
+				"The target loses its odor, preventing creatures from passively noticing its presence via smell alone, even if the creatures have precise or imprecise {@ability scent}. A creature attempting a {@skill Perception} check to {@action Seek} with {@ability scent} and other senses might notice the lack of natural {@ability scent}. If the target has any abilities that result from its smell, such as an overpowering {@ability scent}, those abilities are also negated."
 			],
 			"heightened": {
 				"heightened": true,
@@ -19635,7 +19640,7 @@
 						"AC = 15 + your level. Ignore your armor's check penalty and Speed reduction.",
 						"Speed 10 feet.",
 						"Weakness 5 to physical damage. (If you take physical damage in this form, you take 5 additional damage.)",
-						"Low-light vision and imprecise scent 30 feet.",
+						"{@ability Low-light vision} and imprecise {@ability scent} 30 feet.",
 						"{@bold Acrobatics and} {@skill Stealth} modifiers of +10, unless your own modifier is higher; {@skill Athletics} modifier \u20134."
 					]
 				}
@@ -20649,7 +20654,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"The simplest magic does your bidding. You can perform simple {@trait magical} effects for as long as you Sustain the Spell. Each time you Sustain the Spell, you can choose one of four options.",
+				"The simplest magic does your bidding. You can perform simple {@trait magical} effects for as long as you {@action Sustain a Spell||Sustain the Spell}. Each time you {@action Sustain a Spell||Sustain the Spell}, you can choose one of four options.",
 				{
 					"type": "list",
 					"items": [
@@ -20660,7 +20665,7 @@
 					]
 				},
 				"You can affect an object of 1 Bulk with 10 rounds of concentration, and a larger object a 1 minute per Bulk.",
-				"Prestidigitation can't deal damage or cause adverse conditions. Any actual change to an object (beyond what is noted above) persists only as long as you Sustain the Spell."
+				"Prestidigitation can't deal damage or cause adverse conditions. Any actual change to an object (beyond what is noted above) persists only as long as you {@action Sustain a Spell||Sustain the Spell}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -20825,7 +20830,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You enhance a summoned creature with the power of the elements. If your next action is to cast either summon animal or summon plant or fungus, choose air, earth, fire, or water, and the creature you summon gains the corresponding abilities.",
+				"You enhance a summoned creature with the power of the elements. If your next action is to cast either {@spell summon animal} or summon plant or fungus, choose air, earth, fire, or water, and the creature you summon gains the corresponding abilities.",
 				{
 					"type": "list",
 					"items": [
@@ -21248,7 +21253,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 2,
-					"entry": "The maximum duration you can Sustain the Spell increases to 10 minutes."
+					"entry": "The maximum duration you can {@action Sustain a Spell||Sustain the Spell} increases to 10 minutes."
 				},
 				"x": null,
 				"no_x": null
@@ -21356,7 +21361,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You emanate a shimmering aura of protective magic. You and any allies in the area gain a +1 status bonus to AC. Each time you Sustain the Spell, the emanation's radius increases by 5 feet, to a maximum of 30 feet."
+				"You emanate a shimmering aura of protective magic. You and any allies in the area gain a +1 status bonus to AC. Each time you {@action Sustain a Spell||Sustain the Spell}, the emanation's radius increases by 5 feet, to a maximum of 30 feet."
 			],
 			"heightened": {
 				"heightened": false,
@@ -21533,7 +21538,7 @@
 			"dismiss": false,
 			"entries": [
 				"You create an {@condition invisible}, floating eye, 1 inch in diameter, at a location you can see within 500 feet. It sees in all directions with your normal visual senses and continuously transmits what it sees to you.",
-				"The first time you Sustain the Spell each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt {@action Seek} actions through the eye if you want to attempt {@skill Perception} checks with it. Any damage dealt to the eye destroys it and ends the spell."
+				"The first time you {@action Sustain a Spell||Sustain the Spell} each round, you can either move the eye up to 30 feet, seeing only things in front of the eye, or move it up to 10 feet, seeing everything in all directions around it. There is no limit to how far from you the eye can move, but the spell ends immediately if you and the eye ever cease to be on the same plane of existence. You can attempt {@action Seek} actions through the eye if you want to attempt {@skill Perception} checks with it. Any damage dealt to the eye destroys it and ends the spell."
 			],
 			"heightened": {
 				"heightened": false,
@@ -22954,7 +22959,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You conjure a towering mansion up to four stories tall and up to 300 feet on a side. While Casting the Spell, you hold an image of the mansion and its desired appearance in your mind. The mansion can contain as many or as few rooms as you desire, and it is decorated as you imagine it. You can imagine a purpose for each room of the mansion, and the proper accouterments appear within. Any furniture or other mundane fixtures function normally for anyone inside the mansion, but they cease to exist if taken beyond its walls. No fixture created with this spell can create {@trait magical} effects, but magical devices brought into the mansion function normally.",
+				"You conjure a towering mansion up to four stories tall and up to 300 feet on a side. While {@action Cast a Spell||Casting the Spell}, you hold an image of the mansion and its desired appearance in your mind. The mansion can contain as many or as few rooms as you desire, and it is decorated as you imagine it. You can imagine a purpose for each room of the mansion, and the proper accouterments appear within. Any furniture or other mundane fixtures function normally for anyone inside the mansion, but they cease to exist if taken beyond its walls. No fixture created with this spell can create {@trait magical} effects, but magical devices brought into the mansion function normally.",
 				"Your mansion contains the same types and quantities of foodstuffs and servants as created by the {@spell magnificent mansion} spell.",
 				"Each of the mansion's exterior doorways and windows are protected by {@spell alarm} spells. You choose whether each alarm is audible or mental as you Cast the Spell, and each has a different sound (for an audible alarm) or sensation (for a mental one), allowing you to instantly determine which portal has been used."
 			],
@@ -23028,7 +23033,7 @@
 					},
 					{
 						"level": 6,
-						"entry": "As the 4th-level {@spell restoration}, but you can reduce a permanent {@condition doomed} condition if you add a spellcasting action and a material component while Casting the Spell, during which you provide 100 gp worth of diamond dust as a cost."
+						"entry": "As the 4th-level {@spell restoration}, but you can reduce a permanent {@condition doomed} condition if you add a spellcasting action and a material component while {@action Cast a Spell||Casting the Spell}, during which you provide 100 gp worth of diamond dust as a cost."
 					}
 				],
 				"no_x": null
@@ -23377,7 +23382,7 @@
 						"10 temporary Hit Points.",
 						"Speed 40 feet.",
 						"Resistance 3 against physical damage.",
-						"Darkvision.",
+						"{@ability Darkvision}.",
 						"A special attack with a righteous armament version of your favored weapon, which is the only attack you can use. Your attack modifier with the special weapon is +21, and your damage bonus is +8 (or +6 for a ranged attack). If your attack modifier with your deity's favored weapon is higher, you can use it instead. You deal three of your weapon's normal damage dice, or three damage dice of one size larger if your weapon is a simple weapon with a d4 or d6 damage die. The weapon has one of the following properties that matches your deity's alignment: anarchic, axiomatic, holy, unholy. If your deity is true neutral, you instead deal an extra {@damage 1d6} precision damage.",
 						"{@skill Athletics} modifier of +23, unless your own modifier is higher."
 					]
@@ -24762,9 +24767,9 @@
 					"items": [
 						"You gain a 20-foot status bonus to your Speed.",
 						"You gain a climb or swim Speed equal to half your Speed.",
-						"You gain darkvision.",
+						"You gain {@ability darkvision}.",
 						"You gain a pair of claws. These are agile finesse unarmed attacks that deal {@damage 1d8} slashing damage.",
-						"You gain scent 60 feet (imprecise)."
+						"You gain {@ability scent} 60 feet (imprecise)."
 					]
 				}
 			],
@@ -25130,7 +25135,7 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "The spell effect emanates from the touched creature, silencing all sound in or passing through a 10- foot radius and preventing any {@trait auditory} and {@trait sonic} effects in the affected area. While within the radius, creatures are subject to the same effects as the target. Depending upon the position of the effect, a creature might notice the lack of sound reaching it (blocking off the noise coming from a party, for example)."
+						"entry": "The spell effect emanates from the touched creature, silencing all sound in or passing through a 10-foot radius and preventing any {@trait auditory} and {@trait sonic} effects in the affected area. While within the radius, creatures are subject to the same effects as the target. Depending upon the position of the effect, a creature might notice the lack of sound reaching it (blocking off the noise coming from a party, for example)."
 					}
 				],
 				"no_x": null
@@ -26356,7 +26361,7 @@
 			"dismiss": false,
 			"entries": [
 				"A Medium guardian made of magical force appears and attacks foes you designate within range. The spiritual guardian is translucent and appears to be holding your deity's favored weapon.",
-				"When you Cast the Spell, the spiritual guardian appears in an unoccupied space next to a foe of your choice within range and makes a {@action Strike} against it. Each time you Sustain the Spell, you can move the spiritual guardian to an unoccupied space next to a target within range (if necessary) and make a {@action Strike} with it. The guardian uses and contributes to your multiple attack penalty. Alternatively, when you Sustain the Spell, you can have the guardian move adjacent to an ally and protect that ally. If you do, each time the ally would take damage, the guardian takes the first 10 damage instead of your ally. It continues to do so until you move the guardian to attack an enemy or defend a different ally, or until the guardian is destroyed (it has 50 Hit Points and can't recover Hit Points by any means). The guardian can't usually take damage except when protecting an ally, though disintegrate automatically destroys it if it hits the spiritual guardian's AC of 25.",
+				"When you Cast the Spell, the spiritual guardian appears in an unoccupied space next to a foe of your choice within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the spiritual guardian to an unoccupied space next to a target within range (if necessary) and make a {@action Strike} with it. The guardian uses and contributes to your multiple attack penalty. Alternatively, when you {@action Sustain a Spell||Sustain the Spell}, you can have the guardian move adjacent to an ally and protect that ally. If you do, each time the ally would take damage, the guardian takes the first 10 damage instead of your ally. It continues to do so until you move the guardian to attack an enemy or defend a different ally, or until the guardian is destroyed (it has 50 Hit Points and can't recover Hit Points by any means). The guardian can't usually take damage except when protecting an ally, though disintegrate automatically destroys it if it hits the spiritual guardian's AC of 25.",
 				"The guardian's Strikes are melee spell attacks. Regardless of the appearance of the guardian's weapon, the guardian deals force damage equal to {@dice 2d8} plus your spellcasting ability modifier, but you can deal damage of the type normally dealt by the weapon it holds instead of force damage. No other traits or statistics of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual guardian's weapon is a weapon for the purposes of triggers, resistances, and so forth.",
 				"The guardian takes up space and allies can use it when flanking, but it doesn't have any other attributes a creature would normally have aside from Hit Points, and creatures can move through its space without hindrance. The guardian can't make any attack other than its {@action Strike}, and feats or spells that affect weapons or enhance allies do not apply to the guardian."
 			],
@@ -26417,7 +26422,7 @@
 			"dismiss": false,
 			"entries": [
 				"A weapon made of pure magical force materializes and attacks foes you designate within range. This weapon has a ghostly appearance and manifests as a club, a dagger, or your deity's favored weapon.",
-				"When you cast the spell, the weapon appears next to a foe you choose within range and makes a {@action Strike} against it. Each time you Sustain the Spell, you can move the weapon to a new target within range (if needed) and {@action Strike} with it. The spiritual weapon uses and contributes to your multiple attack penalty.",
+				"When you cast the spell, the weapon appears next to a foe you choose within range and makes a {@action Strike} against it. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the weapon to a new target within range (if needed) and {@action Strike} with it. The spiritual weapon uses and contributes to your multiple attack penalty.",
 				"The weapon's Strikes are melee spell attacks. Regardless of its appearance, the weapon deals force damage equal to {@dice 1d8} plus your spellcasting ability modifier. You can deal damage of the type normally dealt by the weapon instead of force damage (or any of the available damage types for a versatile weapon). No other statistics or traits of the weapon apply, and even a ranged weapon attacks adjacent creatures only. Despite making a spell attack, the spiritual weapon is a weapon for purposes of triggers, resistances, and so forth.",
 				"The weapon doesn't take up space, grant flanking, or have any other attributes a creature would. The weapon can't make any attack other than its {@action Strike}, and feats or spells that affect weapons do not apply to it."
 			],
@@ -27027,7 +27032,7 @@
 			"dismiss": false,
 			"entries": [
 				"A massive storm cloud forms in the air in a 360-foot burst.",
-				"Beneath it, rain begins to fall, and gales impose a \u20134 circumstance penalty to physical ranged attacks and weapon ranged attacks, and the air in the area becomes greater difficult terrain for flying creatures. When you {@action Cast a Spell||Cast this Spell} and the first time each round you Sustain the Spell, you can choose one of the following storm effects. You can't choose the same effect twice in a row.",
+				"Beneath it, rain begins to fall, and gales impose a \u20134 circumstance penalty to physical ranged attacks and weapon ranged attacks, and the air in the area becomes greater difficult terrain for flying creatures. When you {@action Cast a Spell||Cast this Spell} and the first time each round you {@action Sustain a Spell||Sustain the Spell}, you can choose one of the following storm effects. You can't choose the same effect twice in a row.",
 				{
 					"type": "list",
 					"items": [
@@ -27307,8 +27312,9 @@
 			}
 		},
 		{
-			"name": "Summon Animal",
+			"name": "Summon animal",
 			"source": "CRB",
+			"summoning": true,
 			"page": 375,
 			"type": "SPELL",
 			"focus": false,
@@ -27401,6 +27407,7 @@
 		{
 			"name": "Summon Celestial",
 			"source": "CRB",
+			"summoning": true,
 			"page": 375,
 			"type": "SPELL",
 			"focus": false,
@@ -27442,20 +27449,21 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a celestial to fight on your behalf. This works like summon animal, except you summon a common creature that has the {@trait celestial} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
+				"You conjure a celestial to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait celestial} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Construct",
 			"source": "CRB",
+			"summoning": true,
 			"page": 375,
 			"type": "SPELL",
 			"focus": false,
@@ -27497,20 +27505,21 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a construct to fight for you. This works like summon animal, except you summon a common creature that has the {@trait construct} trait and whose level is \u20131."
+				"You conjure a construct to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait construct} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Dragon",
 			"source": "CRB",
+			"summoning": true,
 			"page": 375,
 			"type": "SPELL",
 			"focus": false,
@@ -27552,20 +27561,21 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a dragon to fight for you. This works like summon animal, except you summon a common creature that has the {@trait dragon} trait and whose level is 5 or lower."
+				"You conjure a dragon to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait dragon} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Elemental",
 			"source": "CRB",
+			"summoning": true,
 			"page": 375,
 			"type": "SPELL",
 			"spellLists": [
@@ -27611,19 +27621,20 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an elemental to fight for you. This works like summon animal, except you summon a common creature that has the {@trait elemental} trait and whose level is 1 or lower."
+				"You conjure an elemental to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait elemental} trait and whose level is 1 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Entity",
+			"summoning": true,
 			"source": "CRB",
 			"page": 375,
 			"type": "SPELL",
@@ -27666,19 +27677,20 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an aberration to fight for you. This works like summon animal, except you summon a common creature that has the {@trait aberration} trait and whose level is 5 or lower."
+				"You conjure an aberration to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait aberration} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Fey",
+			"summoning": true,
 			"source": "CRB",
 			"page": 375,
 			"type": "SPELL",
@@ -27722,19 +27734,20 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fey to fight for you. This works like summon animal, except you summon a common creature that has the {@trait fey} trait and whose level is \u20131."
+				"You conjure a fey to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fey} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Fiend",
+			"summoning": true,
 			"source": "CRB",
 			"page": 375,
 			"type": "SPELL",
@@ -27777,19 +27790,20 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fiend to fight on your behalf. This works like summon animal, except you summon a common creature that has the {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
+				"You conjure a fiend to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Giant",
+			"summoning": true,
 			"source": "CRB",
 			"page": 376,
 			"type": "SPELL",
@@ -27835,20 +27849,21 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a giant to fight for you. This works like summon animal (page 375), except you summon a common creature that has the {@trait giant} trait and whose level is 5 or lower."
+				"You conjure a giant to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait giant} trait and whose level is 5 or lower."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
 		{
 			"name": "Summon Plant Or Fungus",
 			"source": "CRB",
+			"summoning": true,
 			"page": 376,
 			"type": "SPELL",
 			"focus": false,
@@ -27890,14 +27905,14 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a plant or fungus to fight for you. This works like summon animal (page 375), except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is \u20131."
+				"You conjure a plant or fungus to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is \u20131."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
 				"x": null,
 				"no_x": {
-					"entry": "As summon animal."
+					"entry": "As {@spell summon animal}."
 				}
 			}
 		},
@@ -28100,7 +28115,7 @@
 						"{@bold Dream of Voyaging} +5-foot status bonus to Speed"
 					]
 				},
-				"If you {@action Cast a Spell||{@action Cast a Spell||Cast this Spell}} again, the effects of any previous sweet dream you cast end."
+				"If you {@action Cast a Spell||Cast this Spell} again, the effects of any previous sweet dream you cast end."
 			],
 			"heightened": {
 				"heightened": false,
@@ -28514,7 +28529,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310- foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach. Make a melee spell attack roll against the target. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature Escapes (against your spell DC), whichever comes first."
+				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310-foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach. Make a melee spell attack roll against the target. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature Escapes (against your spell DC), whichever comes first."
 			],
 			"heightened": {
 				"heightened": false,
@@ -28569,7 +28584,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You move the target up to 20 feet, potentially suspending it in midair. When you Sustain the Spell, you can do so again, or you can choose a different eligible target to move."
+				"You move the target up to 20 feet, potentially suspending it in midair. When you {@action Sustain a Spell||Sustain the Spell}, you can do so again, or you can choose a different eligible target to move."
 			],
 			"heightened": {
 				"heightened": false,
@@ -30247,7 +30262,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you cast the spell, and again the first time you {@action Sustain a Spell||Sustain this Spell} each round. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you Sustain the Spell.",
+				"Fleeting notes of a strange and unnatural song fill the air, overtaking the mind. Each target must attempt a Will save when you cast the spell, and again the first time you {@action Sustain a Spell||Sustain this Spell} each round. A creature needs to attempt only one save against the song each round, and you have to keep the same targets when you {@action Sustain a Spell||Sustain the Spell}.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -30583,9 +30598,10 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You summon an {@creature unseen servant|CRB}, which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop {@action Sustain a Spell||Sustaining the Spell}. The {@creature unseen servant} gains the {@trait summoned} trait.",
+				"You summon an {@creature unseen servant|CRB}, which you can command as part of Sustaining the Spell. It serves you until its Hit Points are reduced to 0, at which point the spell ends, or until you stop {@action Sustain a Spell||Sustaining the Spell}. The {@creature unseen servant|crb} gains the {@trait summoned} trait.",
 				{
 					"type": "pf2-sample-box",
+					"name": "",
 					"entries": [
 						"Use this stat block for unseen servant.",
 						{
@@ -30670,7 +30686,7 @@
 									{
 										"amount": 5,
 										"name": "all damage",
-										"note": "except force or ghost touch"
+										"note": "except force or {@item ghost touch}"
 									}
 								],
 								"speed": {
@@ -30741,7 +30757,7 @@
 					"type": "list",
 					"items": [
 						"You gain resistance 10 to precision damage and resistance 10 to extra damage from critical hits. If the resistance is greater than the extra damage, it reduces the extra damage to 0 but doesn't reduce the attack's normal damage.",
-						"You gain darkvision.",
+						"You gain {@ability darkvision}.",
 						"Acid oozes from your skin. Any creature that hits you with an unarmed attack or with a non-reach melee weapon takes {@damage 2d6} acid damage."
 					]
 				}

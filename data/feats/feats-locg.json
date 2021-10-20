@@ -719,8 +719,8 @@
 				"You attempt a death-defying maneuver to distract your enemies. Select one foe within reach and attempt either an {@skill Acrobatics} or {@skill Athletics} check against your target's Reflex DC. If you succeed, you can {@action Stride} up to half your Speed (or up to your full Speed if you critically succeed) without triggering reactions from the target due to your movement, and the target is {@condition flat-footed} against the next melee attack you attempt against it before the end of your turn."
 			],
 			"leadsTo": [
-				"Daring Flourish|LOCG",
-				"Daredevil's Gambit|LOCG"
+				"Daredevil's Gambit|LOCG",
+				"Daring Flourish|LOCG"
 			]
 		},
 		{
@@ -760,7 +760,7 @@
 			],
 			"prerequisites": "{@feat Gloomseer|LOCG}",
 			"entries": [
-				"Zon-Kuthon smiles upon you\u2014even if you curse his name\u2014granting you pitch-black eyes that allow you to see in shadows and darkness. You gain darkvision."
+				"Zon-Kuthon smiles upon you\u2014even if you curse his name\u2014granting you pitch-black eyes that allow you to see in shadows and darkness. You gain {@ability darkvision}."
 			]
 		},
 		{
@@ -868,7 +868,7 @@
 			"traits": [
 				"Human"
 			],
-			"prerequisites": "Dragon Spit (page 12)",
+			"prerequisites": "{@feat Dragon Spit|LOCG}",
 			"entries": [
 				"The blood of the Dragon Kings runs strong in your veins. Your draconic heritage is clearly visible, with hair that is almost entirely crimson, azure, or the like, and that shines like a dragon's scales. You can cast the dragon breath sorcerer bloodline spell (Pathfinder Core Rulebook 403) as an innate arcane spell once per day, but you can use only the dragon breath that is associated with your heritage and that matches the energy type of your Dragon Spit feat. At 12th level and every 3 levels thereafter, the spell is heightened by an additional spell level."
 			]
@@ -890,7 +890,7 @@
 			],
 			"prerequisites": "Tian-Dan ethnicity",
 			"entries": [
-				"Many Tian-Dan claim to have dragon blood in their veins, and in your case, this is true\u2014you can spit energy, and you might have an especially visible sign of your draconic heritage. Choose one of the following cantrips: acid splash, electric arc, produce flame, or ray of frost. You can cast this spell as an innate arcane spell at will, and when you cast it, the spell's energy emerges from your mouth."
+				"Many Tian-Dan claim to have dragon blood in their veins, and in your case, this is true\u2014you can spit energy, and you might have an especially visible sign of your draconic heritage. Choose one of the following cantrips: {@spell acid splash}, {@spell electric arc}, {@spell produce flame}, or {@spell ray of frost}. You can cast this spell as an innate arcane spell at will, and when you cast it, the spell's energy emerges from your mouth."
 			]
 		},
 		{
@@ -918,9 +918,9 @@
 				"If your next action is to {@action Cast a Spell} from your spell slots, you gain a benefit. If the spell is arcane, you can attempt a skill check to {@action Recall Knowledge} with a +1 status bonus to the check after casting the spell, or a +2 status bonus if the spell is 7th level or higher. If the spell is primal, you gain a number of temporary Hit Points equal to the spell's level for 1 round. If the spell is a halcyon spell, you gain both benefits."
 			],
 			"leadsTo": [
-				"Shared Synergy|LOCG",
 				"Fulminating Synergy|LOCG",
-				"Synergistic Spell|LOCG"
+				"Synergistic Spell|LOCG",
+				"Shared Synergy|LOCG"
 			]
 		},
 		{
@@ -1221,7 +1221,7 @@
 				"You brace your shield with both hands, enhancing its potential for both offense and defense. When in this stance, you wield the shield with both hands. When wielding a shield this way, increase the weapon damage die of the shield's boss or spikes by one step, and increase the shield's Hardness by 2 when using the {@action Shield Block} reaction."
 			],
 			"leadsTo": [
-				"Everstand Strike (Champion)|LOCG|Everstand Strike"
+				"Everstand Strike (Champion)|LOCG"
 			]
 		},
 		{
@@ -1440,10 +1440,12 @@
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the Firebrand Braggart archetype.",
 			"leadsTo": [
-				"Daring Act|LOCG",
-				"Daring Flourish|LOCG",
-				"Daredevil's Gambit|LOCG",
+				"Boaster's Challenge|LOCG",
+				"Demanding Challenge|LOCG",
 				"Bravo's Determination|LOCG",
+				"Daring Act|LOCG",
+				"Daredevil's Gambit|LOCG",
+				"Daring Flourish|LOCG",
 				"Great Boaster|LOCG"
 			]
 		},
@@ -1742,7 +1744,7 @@
 			],
 			"prerequisites": "Nidalese ethnicity",
 			"entries": [
-				"Gloom holds few terrors for you, and the pall of darkness over Nidal has made you comfortable in dim light. You gain low-light vision."
+				"Gloom holds few terrors for you, and the pall of darkness over Nidal has made you comfortable in dim light. You gain {@ability low-light vision}."
 			],
 			"leadsTo": [
 				"Darkseer|LOCG"
@@ -1836,7 +1838,10 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": "Magaambyan Attendant"
+				"archetype": [
+					"Magaambyan Attendant",
+					"Halcyon Speaker"
+				]
 			},
 			"traits": [
 				"Uncommon",
@@ -1850,15 +1855,15 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the halcyon speaker archetype.",
 			"leadsTo": [
 				"Dualistic Synergy|LOCG",
-				"Shared Synergy|LOCG",
 				"Fulminating Synergy|LOCG",
 				"Synergistic Spell|LOCG",
-				"Persistent Creation|LOCG",
-				"Charged Creation|LOCG",
+				"Shared Synergy|LOCG",
 				"Halcyon Spellcasting Initiate|LOCG",
 				"Flexible Halcyon Spellcasting|LOCG",
 				"Halcyon Spellcasting Adept|LOCG",
-				"Halcyon Spellcasting Sage|LOCG"
+				"Halcyon Spellcasting Sage|LOCG",
+				"Persistent Creation|LOCG",
+				"Charged Creation|LOCG"
 			]
 		},
 		{
@@ -1973,6 +1978,9 @@
 			"requirements": null,
 			"entries": [
 				"Your tail is much stronger than most, and you can lash out with it with the strength of a whip. You gain a tail unarmed attack that deals {@damage 1d6} bludgeoning damage."
+			],
+			"leadsTo": [
+				"Tail Spin|LOCG"
 			]
 		},
 		{
@@ -2096,10 +2104,10 @@
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Hellknight or Hellknight armiger archetypes.",
 			"leadsTo": [
 				"Advanced Order Training|LOCG",
-				"Hellknight Order Cross-training|LOCG",
-				"Sense Chaos|LOCG",
 				"Blade Of Law|LOCG",
-				"Hell's Armaments|LOCG"
+				"Hell's Armaments|LOCG",
+				"Hellknight Order Cross-training|LOCG",
+				"Sense Chaos|LOCG"
 			]
 		},
 		{
@@ -2153,11 +2161,12 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Hellknight signifer or Hellknight armiger archetypes.",
 			"leadsTo": [
+				"Advanced Order Training|LOCG",
+				"Gaze Of Veracity|LOCG",
 				"Hellknight Order Cross-training|LOCG",
 				"Masked Casting|LOCG",
-				"Gaze Of Veracity|LOCG",
-				"Signifer's Sight|LOCG",
-				"Signifer Armor Expertise|LOCG"
+				"Signifer Armor Expertise|LOCG",
+				"Signifer's Sight|LOCG"
 			]
 		},
 		{
@@ -2624,10 +2633,10 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Knight Reclaimant archetype.",
 			"leadsTo": [
-				"Invoke The Crimson Oath|LOCG",
-				"Survivor Of Desolation|LOCG",
-				"Reaper Of Repose|LOCG",
 				"Blade Of The Crimson Oath|LOCG",
+				"Invoke The Crimson Oath|LOCG",
+				"Reaper Of Repose|LOCG",
+				"Survivor Of Desolation|LOCG",
 				"Shall Not Falter, Shall Not Rout|LOL"
 			]
 		},
@@ -2654,11 +2663,10 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Knight Vigilant archetype.",
 			"leadsTo": [
-				"Unshakable Idealism|LOCG",
-				"Endure Death's Touch|LOCG",
 				"Aegis Of Arnisant|LOCG",
+				"Endure Death's Touch|LOCG",
 				"Knight In Shining Armor|LOCG",
-				"Vigil's Walls Rise Anew!|LOL"
+				"Unshakable Idealism|LOCG"
 			]
 		},
 		{
@@ -2864,6 +2872,9 @@
 			"entries": [
 				"You see what others don't, and you've developed magical tricks to find {@condition hidden} truth.",
 				"You can cast {@spell comprehend language}, restore senses, and see invisibility as innate spells, each once per day. If you could already cast spells, these spells are of the same tradition. Otherwise, they are arcane spells, you use Intelligence as your spellcasting ability, and you become trained in spell attack rolls and spell DCs for arcane spells."
+			],
+			"leadsTo": [
+				"Determined Lore Seeker|LOPSG"
 			]
 		},
 		{
@@ -2911,29 +2922,29 @@
 			],
 			"special": "You cannot select another dedication feat other than Halcyon Speaker Dedication until you have gained two other feats from the Magaambyan Attendant or halcyon speaker archetype.",
 			"leadsTo": [
+				"Cascade Bearers Flexibility|LOCG",
+				"Cascade Bearers Spellcasting|LOCG",
+				"Emerald Boughs Accustomation|LOCG",
+				"Emerald Boughs Hideaway|LOCG",
+				"Halcyon Speaker Dedication|LOCG",
+				"Dualistic Synergy|LOCG",
+				"Fulminating Synergy|LOCG",
+				"Synergistic Spell|LOCG",
+				"Shared Synergy|LOCG",
+				"Halcyon Spellcasting Initiate|LOCG",
+				"Flexible Halcyon Spellcasting|LOCG",
+				"Halcyon Spellcasting Adept|LOCG",
+				"Halcyon Spellcasting Sage|LOCG",
+				"Persistent Creation|LOCG",
+				"Charged Creation|LOCG",
 				"Mask Familiar|LOCG",
 				"Adaptive Mask Familiar|LOCG",
-				"Cascade Bearers Flexibility|LOCG",
-				"Emerald Boughs Accustomation|LOCG",
+				"Rain-scribe Mobility|LOCG",
 				"Rain-scribe Sustenance|LOCG",
 				"Tempest-sun Redirection|LOCG",
 				"Uzunjati Storytelling|LOCG",
 				"Uzunjati Recollection|LOCG",
-				"Janatimo's Lessons|LOL",
-				"Cascade Bearers Spellcasting|LOCG",
-				"Emerald Boughs Hideaway|LOCG",
-				"Rain-scribe Mobility|LOCG",
-				"Halcyon Speaker Dedication|LOCG",
-				"Dualistic Synergy|LOCG",
-				"Shared Synergy|LOCG",
-				"Fulminating Synergy|LOCG",
-				"Synergistic Spell|LOCG",
-				"Persistent Creation|LOCG",
-				"Charged Creation|LOCG",
-				"Halcyon Spellcasting Initiate|LOCG",
-				"Flexible Halcyon Spellcasting|LOCG",
-				"Halcyon Spellcasting Adept|LOCG",
-				"Halcyon Spellcasting Sage|LOCG"
+				"Janatimo's Lessons|LOL"
 			]
 		},
 		{
@@ -3536,15 +3547,17 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Scrollmaster archetype.",
 			"leadsTo": [
-				"Lore Seeker|LOCG",
-				"Unravel Mysteries|LOCG",
 				"Font Of Knowledge|LOCG",
+				"Lore Seeker|LOCG",
+				"Determined Lore Seeker|LOPSG",
+				"Unravel Mysteries|LOCG",
+				"Bestiary Scholar|LOPSG",
+				"Cautious Delver|LOPSG",
 				"Foolproof Instructions|LOPSG",
 				"Innate Magic Intuition|LOPSG",
 				"Magic Finder|LOPSG",
+				"Masterful Obfuscation|LOPSG",
 				"Transcribe Moment|LOPSG",
-				"Bestiary Scholar|LOPSG",
-				"Cautious Delver|LOPSG",
 				"Ward Mind|LOPSG"
 			]
 		},
@@ -3872,7 +3885,7 @@
 			],
 			"prerequisites": "{@feat Hellknight Signifer Dedication|LOCG}",
 			"entries": [
-				"The magic flowing through your signifer's mask allows you to see in the dark, and the mask dampens the distraction caused by sudden flashes of bright light. While wearing your signifer's mask, you gain darkvision. Additionally, if you are {@condition dazzled} while wearing your signifer's mask and the target is {@condition concealed} only because you are {@condition dazzled}, you reduce the flat check DC to target that creature from 5 to 3."
+				"The magic flowing through your signifer's mask allows you to see in the dark, and the mask dampens the distraction caused by sudden flashes of bright light. While wearing your signifer's mask, you gain {@ability darkvision}. Additionally, if you are {@condition dazzled} while wearing your signifer's mask and the target is {@condition concealed} only because you are {@condition dazzled}, you reduce the flat check DC to target that creature from 5 to 3."
 			]
 		},
 		{
@@ -3992,19 +4005,19 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Spellmaster archetype.",
 			"leadsTo": [
-				"Surreptitious Spellcaster|LOCG",
-				"Ward Casting|LOCG",
-				"Spellmaster's Resilience|LOCG",
-				"Spellmaster's Tenacity|LOPSG",
 				"Absorb Spell|LOCG",
 				"Retain Absorbed Spell|LOPSG",
+				"Spellmaster's Resilience|LOCG",
+				"Spellmaster's Tenacity|LOPSG",
+				"Surreptitious Spellcaster|LOCG",
+				"Ward Casting|LOCG",
+				"Communal Sustain|LOPSG",
 				"Familiar Form|LOPSG",
 				"Glyph Expert|LOPSG",
-				"Recover Spell|LOPSG",
-				"Spellmaster's Ward|LOPSG",
-				"Communal Sustain|LOPSG",
 				"Master's Counterspell|LOPSG",
-				"Mobile Magical Combat|LOPSG"
+				"Mobile Magical Combat|LOPSG",
+				"Recover Spell|LOPSG",
+				"Spellmaster's Ward|LOPSG"
 			]
 		},
 		{
@@ -4154,24 +4167,25 @@
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the Swordmaster archetype.",
 			"leadsTo": [
+				"Death's Door|LOCG",
 				"Harrying Strike|LOCG",
 				"Shoulder Catastrophe|LOCG",
 				"Stave Off Catastrophe|LOPSG",
-				"Death's Door|LOCG",
+				"Armored Exercise|LOPSG",
+				"Armored Rest|LOPSG",
+				"Emergency Medical Assistance|LOPSG",
+				"Focus Ally|LOPSG",
+				"Forceful Shot|LOPSG",
 				"Improvised Crafting|LOPSG",
+				"Martial Exercise|LOPSG",
 				"Physical Training|LOPSG",
+				"Practiced Defender|LOPSG",
 				"Protect Ally|LOPSG",
 				"Quick Stow|LOPSG",
-				"Reflexive Grip|LOPSG",
-				"Armored Rest|LOPSG",
-				"Martial Exercise|LOPSG",
-				"Practiced Defender|LOPSG",
-				"Emergency Medical Assistance|LOPSG",
 				"Recollect Studies|LOPSG",
+				"Reflexive Grip|LOPSG",
 				"Rugged Survivalist|LOPSG",
-				"Tense Negotiator|LOPSG",
-				"Forceful Shot|LOPSG",
-				"Focus Ally|LOPSG"
+				"Tense Negotiator|LOPSG"
 			]
 		},
 		{
@@ -4513,7 +4527,7 @@
 				"Leshy"
 			],
 			"entries": [
-				"Your spirit has endured many challenges over its long existence, and you are certain you can overcome whatever hardships life throws your way. You."
+				"Your spirit has endured many challenges over its long existence, and you are certain you can overcome whatever hardships life throws your way. You gain a +1 circumstance bonus to saves against {@trait emotion} effects. If you roll a success on a saving throw against an {@trait emotion} effect, you get a critical success instead."
 			]
 		},
 		{

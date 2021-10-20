@@ -2,7 +2,7 @@
 	"feat": [
 		{
 			"name": "Accursed Clay Fist",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 74,
 			"level": 10,
 			"featType": {
@@ -16,7 +16,7 @@
 				"Archetype",
 				"Curse"
 			],
-			"prerequisites": "{@feat Golem Grafter Dedication|APLLS}, expert in unarmed attacks",
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}, expert in unarmed attacks",
 			"entries": [
 				"You have replaced one of your forearms with one made of clay and infused with cursed arcane magic. When you make an unarmed {@action Strike} with your clay fist and hit, your target takes a \u20132 status penalty to saving throws against {@trait curse} effects for 1 hour."
 			],
@@ -24,7 +24,7 @@
 		},
 		{
 			"name": "Axe Climber",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 75,
 			"level": 4,
 			"featType": {
@@ -37,14 +37,14 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|APLLS}",
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
 			"entries": [
 				"When you are climbing a wooden surface and have a {@item hatchet} or {@item battle axe} in each hand, you have a climb Speed equal to half your normal Speed. You must still have both legs available to climb and can't use either of the axes in combat while climbing. This feat can also be used to climb a surface of ice if you have a {@item light pick} in each hand."
 			]
 		},
 		{
 			"name": "Axe Thrower",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 75,
 			"level": 6,
 			"featType": {
@@ -57,7 +57,7 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|APLLS}",
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
 			"requirements": "You and an adjacent creature are both on a narrow surface or uneven ground and the other creature is {@condition flat-footed}.",
 			"entries": [
 				"You have mastered the weight and balance of a variety of axes and can lob them with ease. Any one-handed axe weapon you wield has the {@trait thrown} trait with a range of 10 feet. For axes that already have the {@trait thrown} trait, the range increases by 10 feet. When you critically succeed at an attack roll with a {@trait thrown} axe weapon, you apply the {@group axe|crb|axe's critical specialization effect}."
@@ -65,7 +65,7 @@
 		},
 		{
 			"name": "Golem Grafter Dedication",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 74,
 			"level": 8,
 			"featType": {
@@ -84,11 +84,17 @@
 			"entries": [
 				"Your flesh has been specially treated with the same arcane and alchemical processes used to toughen the skin of flesh golems. Increase your maximum Hit Points by an amount equal to your level. You gain resistance to physical damage (except {@item adamantine|CRB}) equal to your number of class feats from the golem grafter archetype."
 			],
-			"special": "You cannot select another dedication feat until you have gained two other feats from the golem grafter archetype."
+			"special": "You cannot select another dedication feat until you have gained two other feats from the golem grafter archetype.",
+			"leadsTo": [
+				"Accursed Clay Fist|EC3",
+				"Iron Lung|EC3",
+				"Legs of Stone|EC3",
+				"Quicken Heartbeat|EC3"
+			]
 		},
 		{
 			"name": "Iron Lung",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 74,
 			"level": 14,
 			"featType": {
@@ -101,7 +107,7 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Golem Grafter Dedication|APLLS}",
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
 			"entries": [
 				"Your lungs are infused with the resilience of iron. Treat the result of your save against an inhaled poison as one degree of success better than you rolled. Additionally, you gain the following ability.",
 				{
@@ -126,7 +132,7 @@
 		},
 		{
 			"name": "Legs of Stone",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 74,
 			"level": 12,
 			"featType": {
@@ -140,14 +146,14 @@
 				"Archetype",
 				"Prestige"
 			],
-			"prerequisites": "{@feat Golem Grafter Dedication|APLLS}",
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
 			"entries": [
 				"You gain a +2 status bonus to your Fortitude and Reflex DCs against attempts to {@action Shove} or {@action Trip} you. You can {@action Shove} creatures even if you don't have a hand free. When you successfully {@action Shove} a foe, you can {@action Stride} away from your opponent (instead of toward it), but you must move the same distance in the opposite direction from where you {@action Shove|CRB|Shoved} it."
 			]
 		},
 		{
 			"name": "Log Roll",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 75,
 			"activity": {
 				"entry": "{@as 1}",
@@ -165,7 +171,7 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|APLLS}",
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
 			"requirements": "You and an adjacent creature are both on a narrow surface or uneven ground and the other creature is {@condition flat-footed}.",
 			"entries": [
 				"You shuffle your feet to dislodge the surface beneath you or otherwise cause your opponent to become unsteady. Attempt an {@skill Acrobatics} check against the adjacent creature's Reflex saving throw DC. On a success, the creature falls. On a critical failure, you fall."
@@ -173,7 +179,7 @@
 		},
 		{
 			"name": "Quicken Heartbeat",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 74,
 			"activity": {
 				"number": 1,
@@ -192,7 +198,7 @@
 				"Archetype",
 				"Prestige"
 			],
-			"prerequisites": "{@feat Golem Grafter Dedication|APLLS}",
+			"prerequisites": "{@feat Golem Grafter Dedication|EC3}",
 			"frequency": "once per turn",
 			"entries": [
 				"You've replaced your heart with one made of animated quicksilver and living adamantine. You reduce your {@condition slowed} condition by 1. Alternatively, if you are not {@condition slowed}, you are {@condition quickened} 1 during your next turn, and can use your extra action to {@action Stride} or {@action Strike}."
@@ -200,7 +206,7 @@
 		},
 		{
 			"name": "Turpin Rowe Lumerjack Dedication",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 75,
 			"level": 2,
 			"featType": {
@@ -224,7 +230,7 @@
 		},
 		{
 			"name": "Widen the Gap",
-			"source": "APLLS",
+			"source": "EC3",
 			"page": 75,
 			"level": 10,
 			"featType": {
@@ -237,7 +243,7 @@
 			"traits": [
 				"Archetype"
 			],
-			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|APLLS}",
+			"prerequisites": "{@feat Turpin Rowe Lumberjack Dedication|EC3}",
 			"entries": [
 				"Once you have penetrated a foe's defenses, you can home in on the same spot to exploit your opponent's wound and deal some serious damage. The second time you hit and deal damage with a melee axe {@action Strike} to the same opponent or object during your turn, you ignore half of the opponent's or object's Hardness, if any. If you hit and deal damage with a melee axe {@action Strike} to the same opponent or object a third or fourth time during your turn, you ignore all of its Hardness, if any."
 			]

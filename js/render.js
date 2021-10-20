@@ -863,14 +863,15 @@ function Renderer () {
 		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
 			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
-			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t}}`)).join(", ")}); ` : ""}`;
+			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}`;
 		} else {
-			if (entry.components || entry.traits) textStack[0] += renderer.render(`(${[entry.components || [], (entry.traits || []).map(t => renderer.render(`{@trait ${t}}`))].map(it => it.join(", ")).filter(Boolean).join("; ")}); `);
+			if (entry.components) textStack[0] += renderer.render(`${entry.components.join(", ")} `);
+			if (entry.traits) textStack[0] += renderer.render(`(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); `);
 		}
 		if (entry.frequency != null) textStack[0] += `<strong>Frequency&nbsp;</strong>${renderer.render_addTerm(entry.frequency)} `;
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
-		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger ? "<strong>Effect&nbsp;</strong>" : ""}`;
+		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.effect === true ? "<strong>Effect&nbsp;</strong>" : ""}`;
 		if (entry.entries) entry.entries.forEach(e => renderer._recursiveRender(e, textStack, meta, {isAbility: true}));
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
@@ -905,7 +906,7 @@ function Renderer () {
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
 			if (entry.DC != null) textStack[0] += `DC ${entry.DC}`
-			textStack[0] += `${renderer.render(entry.savingThrow)}.`
+			textStack[0] += ` ${renderer.render(entry.savingThrow)}.`
 		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
@@ -1564,6 +1565,9 @@ function Renderer () {
 				this._recursiveRender(text, textStack, meta);
 				textStack[0] += `</i>`;
 				break;
+			case "@divider":
+				textStack[0] += `<div class="pf2-stat pf2-stat__line"></div>`
+				break;
 			case "@color": {
 				const [toDisplay, color] = Renderer.splitTagByPipe(text);
 				const scrubbedColor = BrewUtil.getValidColor(color);
@@ -2089,7 +2093,7 @@ function Renderer () {
 									source: subclassSource
 										// Subclass state uses the abbreviated form of the source for URL shortness
 										? Parser.sourceJsonToAbv(subclassSource.trim())
-										: SRC_CRB,
+										: source || SRC_CRB,
 								},
 							};
 
@@ -2201,7 +2205,7 @@ function Renderer () {
 									name: heritageName.trim(),
 									source: heritageSource
 										? Parser.sourceJsonToAbv(heritageSource.trim())
-										: SRC_CRB,
+										: source || SRC_CRB,
 								},
 							};
 
@@ -2220,6 +2224,7 @@ function Renderer () {
 						fauxEntry.href.path = UrlUtil.PG_ANCESTRIES;
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
+					case "@eidolon":
 					case "@companion":
 					case "@familiar":
 						fauxEntry.href.path = UrlUtil.PG_COMPANIONS_FAMILIARS;
@@ -3574,8 +3579,9 @@ Renderer.companion = {
 		<p class="pf2-stat pf2-stat__section"><strong>Skill&nbsp;</strong>${renderer.render(`{@skill ${companion.skill}}`)}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(companion)}
 		${Renderer.creature.getSpeed(companion)}
-		<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>
-		<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>
+		${companion.special ? `<p class="pf2-stat pf2-stat__section"><strong>Special&nbsp;</strong>${renderer.render(companion.special)}</p>` : ""}
+		${companion.support ? `<p class="pf2-stat pf2-stat__section"><strong>Support Benefit&nbsp;</strong>${renderer.render(companion.support)}</p>` : ""}
+		${companion.maneuver ? `<p class="pf2-stat pf2-stat__section mb-4"><strong>Advanced Maneuver&nbsp;</strong>${companion.maneuver.name}</p>` : ""}
 		${Renderer.action.getCompactRenderedString(companion.maneuver, {noPage: true})}
 		${Renderer.utils.getPageP(companion)}`;
 	},
@@ -3617,8 +3623,9 @@ Renderer.eidolon = {
 		${eidolon.home ? `<p class="pf2-stat pf2-stat__section"><strong>Home Plane&nbsp;</strong>${renderer.render(eidolon.home)}</p>` : ""}
 		${Renderer.utils.getDividerDiv()}
 		<p class="pf2-stat pf2-stat__section"><strong>Size&nbsp;</strong>${renderer.render(eidolon.size)}</p>
+		${eidolon.extraStats ? eidolon.extraStats.map(es => `<p class="pf2-stat pf2-stat__section"><strong>${es.name}&nbsp;</strong>${renderer.render(es.entries)}</p>`) : ""}
 		<p class="pf2-stat pf2-stat__section"><strong>Suggested Attacks&nbsp;</strong>${renderer.render(eidolon.suggestedAttacks)}</p>
-		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name}&nbsp;</strong>${Object.entries(s.abilityMods).map(([k, v]) => `<i>${k}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
+		${eidolon.stats.map(s => `<p class="pf2-stat pf2-stat__section"><strong>${s.name || ""}&nbsp;</strong>${Object.entries(s.abilityMods).map(([k, v]) => `<i>${k}</i> ${v}`).join(", ")}; ${Parser.numToBonus(s.ac.number)} AC (${Parser.numToBonus(s.ac.dexCap)} Dex Cap)</p>`)}
 		<p class="pf2-stat pf2-stat__section"><strong>Skills&nbsp;</strong>${renderer.render(eidolon.skills.map(s => `{@skill ${s}}`).join(", "))}</p>
 		${Renderer.companionfamiliar.getRenderedSenses(eidolon)}
 		<p class="pf2-stat pf2-stat__section"><strong>Language&nbsp;</strong>${renderer.render(eidolon.languages.map(l => `{@language ${l}}`).join(", "))}</p>
@@ -3745,6 +3752,7 @@ Renderer.creature = {
 
 	getDefenses (cr) {
 		let renderStack = [];
+		const renderer = Renderer.get();
 		renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 		const ac = cr.ac
 		renderStack.push(`<span><strong>AC&nbsp;</strong>${ac.default}${Renderer.utils.getNotes(ac, {exclude: ["default", "abilities"]})}`)
@@ -3795,7 +3803,7 @@ Renderer.creature = {
 				if (typeof (x) === "string") {
 					rs.push(x)
 				} else {
-					rs.push(`${x.name} ${x.amount}${x.note ? ` ${x.note}` : ``}`)
+					rs.push(`${x.name} ${x.amount}${x.note ? ` ${renderer.render(x.note)}` : ``}`)
 				}
 			}
 			renderStack.push(rs.join(", "))
@@ -3834,7 +3842,7 @@ Renderer.creature = {
 				renderStack.push(`<p class="pf2-stat pf2-stat__section">`)
 				renderStack.push(`<span><strong>${attack.range}&nbsp;</strong>`)
 				renderStack.push(Renderer.get().render(`{@as 1} `))
-				renderStack.push(`${attack.name}`)
+				if (attack.name) renderStack.push(`${attack.name}`)
 				renderStack.push(`</span>`)
 				if (attack.attack != null) renderStack.push(Renderer.get().render(` {@hit ${attack.attack}||${attack.name.uppercaseFirst()} `))
 				renderStack.push(`<span>`)
@@ -5020,6 +5028,7 @@ Renderer.hover = {
 		"ancestry": UrlUtil.PG_ANCESTRIES,
 		"companion": UrlUtil.PG_COMPANIONS_FAMILIARS,
 		"familiar": UrlUtil.PG_COMPANIONS_FAMILIARS,
+		"eidolon": UrlUtil.PG_COMPANIONS_FAMILIARS,
 		"feat": UrlUtil.PG_FEATS,
 		"hazard": UrlUtil.PG_HAZARDS,
 		"deity": UrlUtil.PG_DEITIES,
@@ -6011,7 +6020,7 @@ Renderer.hover = {
 			case UrlUtil.PG_FEATS:
 				return Renderer.hover._pCacheAndGet_pLoadWithIndex(page, source, hash, opts, "data/feats/", "feat");
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility"]);
+				return Renderer.hover._pCacheAndGet_pLoadSimple(page, source, hash, opts, "companionsfamiliars.json", ["companion", "familiar", "familiarAbility", "eidolon"]);
 			case UrlUtil.PG_ANCESTRIES:
 				return Renderer.hover._pCacheAndGet_pLoadAncestries(page, source, hash, opts);
 			case UrlUtil.PG_DEITIES:
@@ -6620,6 +6629,8 @@ Renderer.hover = {
 
 	getGenericCompactRenderedString (entry) {
 		const textStack = [""];
+		// FIXME: I am pretty sure this isn't the way this should be done (?)
+		textStack[0] += `<p class="pf2-h3 entry-title-inner">${entry.name}</p>`;
 		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
 		return `${textStack.join("")}`;
 	},
@@ -7003,6 +7014,7 @@ Renderer._stripTagLayer = function (str) {
 					case "@ritual":
 					case "@settlement":
 					case "@deity":
+					case "@eidolon":
 					case "@familiar":
 					case "@familiarAbility":
 					case "@companion":

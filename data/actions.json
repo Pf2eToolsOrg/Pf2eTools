@@ -104,7 +104,7 @@
 					"page": 533,
 					"name": "Cast a Spell",
 					"entries": [
-						"If an item lists \"Cast a Spell\" after \"Activate,\" the activation requires you to use the {@action Cast a Spell} activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
+						"If an item lists \"{@action Cast a Spell}\" after \"Activate,\" the activation requires you to use the {@action Cast a Spell} activity (described on page 302) to Activate the Item. This happens when the item replicates a spell. You must have a spellcasting class feature to Activate an Item with this activation component.",
 						"If the item can be used for a specific spell, the action icon for that spell is provided. If it's an item like a staff, which can be used for many spells, the icon is omitted, and you must refer to each spell to determine which actions you must spend to Activate the Item to cast it.",
 						"In this case, Activate an Item gains all the traits from the relevant components of the {@action Cast a Spell} activity."
 					]
@@ -174,6 +174,25 @@
 			]
 		},
 		{
+			"name": "Affix a Fulu",
+			"source": "SoM",
+			"page": 158,
+			"traits": [
+				"Manipulate"
+			],
+			"activity": {
+				"number": 1,
+				"unit": "action",
+				"entry": "{@as 1}"
+			},
+			"actionType": {
+				"basic": true
+			},
+			"entries": [
+				"You affix a {@filter fulu|items||General=Fulu} to an armor, weapon, shield, creature, or structure that's beside or in the same square as you. A creature can remove a fulu from itself or an unattended object in its reach with a single action."
+			]
+		},
+		{
 			"name": "Affix a Talisman",
 			"source": "CRB",
 			"page": 565,
@@ -231,6 +250,475 @@
 			"frequency": "a number of times per day equal to your level",
 			"entries": [
 				"You envenom your fangs. If the next fangs {@action Strike} you make before the end of your turn hits and deals damage, the {@action Strike} deals an additional {@damage 1d6} poison damage. On a critical failure, the poison is wasted as normal. At 12th level, this poison damage increases to {@damage 2d6}."
+			]
+		},
+		{
+			"name": "Reloading Strike",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"requirements": "You're wielding a firearm or crossbow in one hand, and your other hand either wields a one-handed melee weapon or is empty.",
+			"entries": [
+				"You make a melee attack and then reload your gun in one fluid movement. {@action Strike} an opponent within reach with your one-handed melee weapon (or, if your other hand is empty, with an unarmed attack), and then {@action Interact} to reload. You don't need a free hand to reload in this way."
+			]
+		},
+		{
+			"name": "Into the Fray",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You know trouble can lurk around every corner, and your hands never stray far from your holsters. You can {@action Interact} to draw a one-handed ranged weapon and can then {@action Interact} to draw a one-handed melee weapon. As your first action on your first turn, you can {@action Stride} as a free action toward an enemy you can perceive. If you can't perceive any enemies or can't end your movement closer to one, you can't use this {@action Stride}."
+			]
+		},
+		{
+			"name": "Covered Reload",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"You duck into a safe position or minimize your profile while reloading to make your next attack. Either {@action Take Cover} or attempt to {@action Hide}, then {@action Interact} to reload. As normal, you must meet the requirements to {@action Take Cover} or {@action Hide}; you must be {@condition prone}, benefiting from cover, or near a feature that allows you to {@action Take Cover}, and you need to be benefiting from cover or {@condition concealed} to a creature to {@action Hide} from that creature."
+			]
+		},
+		{
+			"name": "One Shot, One Kill",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"Your first shot is the deadliest. {@action Interact} to draw a firearm or crossbow. On your first turn, your first {@action Strike} with that weapon deals an additional {@damage 1d6} precision damage. This precision damage increases to {@damage 2d6} at 9th level and {@damage 3d6} at 15th level."
+			]
+		},
+		{
+			"name": "Vital Shot",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
+			]
+		},
+		{
+			"name": "Ghost Shot",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Flourish"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"Make a firearm or crossbow {@action Strike}. If you're {@condition hidden} from or {@condition undetected} by the target, the {@action Strike} adds the additional precision damage from {@action One Shot, One Kill}; if you would already receive that additional damage on the {@action Strike}, the effects aren't cumulative. If you were {@condition undetected} or {@condition unnoticed} by any creatures, you're now {@condition hidden} from them instead, as the origin of the attack is clear."
+			]
+		},
+		{
+			"name": "Ten Paces",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You react to trouble with lightning speed, positioning yourself just right. You gain a +2 circumstance bonus to your initiative roll, and you can {@action Interact} to draw a one-handed firearm or one-handed crossbow. As your first action on your first turn, you can {@action Step} up to 10 feet as a free action."
+			]
+		},
+		{
+			"name": "Raconteur's Reload",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"entries": [
+				"Your rapid or forceful words draw the enemy's attention away from your hands long enough to chamber another bullet. {@action Interact} to reload and then attempt a {@skill Deception} check to {@action Create a Diversion} or an {@skill Intimidation} check to {@action Demoralize}."
+			]
+		},
+		{
+			"name": "Pistolero's Retort",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"requirements": "You're wielding a one-handed firearm or one-handed crossbow.",
+			"trigger": "A foe within the first range increment of the onehanded firearm or one-handed crossbow you're wielding critically fails an attack roll against you.",
+			"entries": [
+				"You punish your foe's failure with a shot. Make a {@action Strike} against the triggering foe with a one-handed firearm or one-handed crossbow."
+			]
+		},
+		{
+			"name": "Grim Swagger",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Auditory",
+				"Emotion",
+				"Fear",
+				"Mental",
+				"Linguistic"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"requirements": "You have a one-handed firearm or one-handed crossbow visibly worn or wielded.",
+			"entries": [
+				"You attempt to clear the room by promising a grim fate to anyone who doesn't do what you say, and quickly. Attempt a Deception or Intimidation check against the Will DCs of each creature within 30 feet, except for your allies. Regardless of whether you succeed or fail, each subject is temporarily immune to your Grim Swagger for 10 minutes.",
+				"For example, if you attempt a Deception check, you lie and boast about your prowess or the large group of friends on their way to back you up. If you attempt an Intimidation check, you promise everyone in the room that you're going to be the last thing they see.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature becomes {@condition frightened 3}. If it's lower level than you, it's also {@condition fleeing} for 1 round.",
+						"Success": "The creature becomes {@condition frightened 2}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Explode",
+			"source": "G&G",
+			"page": 19,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"Fire",
+				"Unstable",
+				"Inventor",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Inventor|G&G"
+				]
+			},
+			"entries": [
+				"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you're wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
+				"At 3rd level, and every level thereafter, increase your explosion's damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
+				"If you have the breakthrough innovation class feature, you can choose either a 5-foot or 10-foot emanation for the area when you use Explode; if you have the revolutionary innovation class feature, you can choose a 5-foot, 10-foot, or 15-foot emanation."
+			]
+		},
+		{
+			"name": "Clear a Path",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a two-handed firearm or two-handed crossbow.",
+			"entries": [
+				"You push outward with your weapon to clear some space before quickly reloading a fresh round. You make an {@skill Athletics} check to {@action Shove} an opponent within your reach using your weapon, then {@action Interact} to reload. For this {@action Shove}, you don't need a free hand, and you add the weapon's item bonus on attack rolls (if any) to the {@skill Athletics} check. If your last action was a ranged {@action Strike} with the weapon, use the same multiple attack penalty as that {@action Strike} for the {@action Shove}; the {@action Shove} still counts toward your multiple attack penalty on further attacks as normal."
+			]
+		},
+		{
+			"name": "Overdrive",
+			"source": "G&G",
+			"page": 16,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Inventor",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Inventor|G&G"
+				]
+			},
+			"frequency": "once per round",
+			"entries": [
+				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can't use Overdrive for 1 minute.",
+						"Success": "Your gizmos go into overdrive, adding power to your attacks. As critical success, except the additional damage is equal to half your Intelligence modifier.",
+						"Failure": "You make a miscalculation and nothing happens.",
+						"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can't use Overdrive again for 1 minute as your gizmos cool down and reset."
+					}
+				}
+			],
+			"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can't extend your Overdrive's duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
+		},
+		{
+			"name": "Siegebreaker",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Flourish"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a firearm that has the kickback or scatter trait, or a two-handed crossbow.",
+			"entries": [
+				"With unbelievable force, you charge and smash your weapon into a target before digging in your heels and pulling the trigger. {@action Leap} or {@action Stride}, then make a {@action Strike} with the required firearm or crossbow against an adjacent target. This Strike deals an additional {@damage 3d8} bludgeoning damage and ignores 10 points of the target's Hardness (if any), or of their shield's Hardness if the target uses {@action Shield Block}.",
+				"After the {@action Strike}, you become {@condition immobilized} and position the required weapon defensively, gaining a +1 circumstance bonus to AC, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait. Both effects last until the start of your next turn. If a force would move you while you're {@condition immobilized} in this way, it must succeed at an appropriate check against your class DC."
+			]
+		},
+		{
+			"name": "Spinning Crush",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a loaded firearm or loaded crossbow.",
+			"entries": [
+				"You go into a vicious spin, smashing your weapon into those nearby and increasing your momentum by firing. All creatures adjacent to you take {@damage 1d6} bludgeoning damage plus your Strength modifier; this increases to {@damage 2d6} if your firearm has a {@item striking} rune, {@damage 3d6} if it has a {@item greater striking} rune, and {@damage 4d6} if it has a {@item major striking} rune. This ability does not apply other effects that increase damage with your firearm {@action Strike||Strikes} such as weapon specialization. Creatures affected by this attack must attempt a basic Reflex save. A creature that fails its save is also pushed 5 feet directly away from you."
+			]
+		},
+		{
+			"name": "Living Fortification",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You can posture defensively with firearms or crossbows, acting like a walking tower. {@action Interact} to draw a firearm or crossbow. You then position that weapon defensively, gaining a +1 circumstance bonus to AC until the start of your first turn, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait."
+			]
+		},
+		{
+			"name": "Finish the Job",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"requirements": "On your last action, you failed (but didn't critically fail) a Strike with a firearm or crossbow you're holding in one hand, and your other hand is either wielding a melee weapon or empty.",
+			"entries": [
+				"Your last attack failed, but it set you up for another. Make a {@action Strike} with your other hand, using a one-handed melee weapon or unarmed attack. This {@action Strike} uses the same multiple attack penalty as the {@action Strike} that failed on the last action. Afterward, increase your multiple attack penalty normally."
+			]
+		},
+		{
+			"name": "Drifter's Wake",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"entries": [
+				"You drift across the battlefield, striking down foes as you go. You {@action Stride}, and you can {@action Strike} up to three times at any points during your movement. Each attack must target a different enemy and must be made with a one-handed firearm, crossbow, melee weapon, or unarmed attack. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you've made all your attacks. Your movement doesn't trigger reactions."
+			]
+		},
+		{
+			"name": "Automaton Aim",
+			"source": "G&G",
+			"page": 39,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": "Automaton|G&G",
+				"heritage": "Sharpshooter Automaton|G&G"
+			},
+			"entries": [
+				"You steady your body and observe the events of the battlefield to maximize the range of your next shot. You reduce the penalty for firing into your weapon's second range increment from \u20132 to 0 for the next ranged attack you make this turn. You can use this action a second time in the same turn to reduce the penalty from firing into your weapon's third range increment from \u20134 to 0 for the next ranged attack you make this turn."
 			]
 		},
 		{
@@ -301,13 +789,7 @@
 			},
 			"actionType": {
 				"class": [
-					"Fighter",
-					"Champion",
-					"Barbarian",
-					"Swashbuckler|APG"
-				],
-				"archetype": [
-					"Marshal|APG"
+					"Fighter"
 				]
 			},
 			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using.",
@@ -2177,7 +2659,7 @@
 				}
 			},
 			"entries": [
-				"You Stride, then make a vertical Leap and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn't Stride at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				"You Stride, then make a vertical {@action Leap} and attempt a DC 30 {@skill Athletics} check to increase the height of your jump. If you didn't {@action Stride} at least 10 feet, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2530,8 +3012,8 @@
 				"basic": true
 			},
 			"entries": [
-				"You take a careful, short jump. You can Leap up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your Leap ends (meaning you can typically clear a 5-foot gap, or a 10-foot gap if your Speed is 30 feet or more).",
-				"If you Leap vertically, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface.",
+				"You take a careful, short jump. You can {@action Leap} up to 10 feet horizontally if your Speed is at least 15 feet, or up to 15 feet horizontally if your Speed is at least 30 feet. You land in the space where your {@action Leap} ends (meaning you can typically clear a 5-foot gap, or a 10-foot gap if your Speed is 30 feet or more).",
+				"If you {@action Leap} vertically, you can move up to 3 feet vertically and 5 feet horizontally onto an elevated surface.",
 				"Jumping a greater distance requires using the {@skill Athletics} skill."
 			]
 		},
@@ -2548,17 +3030,17 @@
 			},
 			"requirements": "You have a spellcasting class feature, and the spell you want to learn is on your magical tradition's spell list.",
 			"entries": [
-				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric} with the bard multiclass archetype, you couldn't use {@skill Religion} to add an occult spell to your bardic spell repertoire.",
+				"You can gain access to a new spell of your tradition from someone who knows that spell or from magical writing like a spellbook or scroll. If you can cast spells of multiple traditions, you can Learn a Spell of any of those traditions, but you must use the corresponding skill to do so. For example, if you were a {@class cleric} with the {@archetype bard||bard multiclass archetype}, you couldn't use {@skill Religion} to add an occult spell to your bardic spell repertoire.",
 				"To learn the spell, you must do the following:",
 				{
 					"type": "list",
 					"items": [
 						"Spend 1 hour per level of the spell, during which you must remain in conversation with a person who knows the spell or have the magical writing in your possession.",
 						"Have materials with the Price indicated in {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}.",
-						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}). Uncommon or rare spells have higher DCs; full guidelines for the GM appear on page 503."
+						"Attempt a skill check for the skill corresponding to your tradition (DC determined by the GM, often close to the DC on {@table Learning a Spell|CRB|Table 4-3: Learning a Spell}). {@trait Uncommon} or {@trait rare} spells have {@table DC Adjustments|CRB|higher DCs}; full guidelines for the GM appear on page 503."
 					]
 				},
-				"If you have a spellbook, Learning a Spell lets you add the spell to your spellbook; if you prepare spells from a list, it's added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
+				"If you have a {@item spellbook}, Learning a Spell lets you add the spell to your {@item spellbook}; if you prepare spells from a list, it's added to your list; if you have a spell repertoire, you can select it when you add or swap spells.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2648,7 +3130,7 @@
 			},
 			"entries": [
 				"You try to fool someone with an untruth. Doing so takes at least 1 round, or longer if the lie is elaborate. You roll a single {@skill Deception} check and compare it against the {@skill Perception} DC of every creature you are trying to fool. The GM might give them a circumstance bonus based on the situation and the nature of the lie you are trying to tell. Elaborate or highly unbelievable lies are much harder to get a creature to believe than simpler and more believable lies, and some lies are so big that it's impossible to get anyone to believe them.",
-				"At the GM's discretion, if a creature initially believes your lie, it might attempt a {@skill Perception} check later to Sense Motive against your Deception DC to realize it's a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
+				"At the GM's discretion, if a creature initially believes your lie, it might attempt a {@skill Perception} check later to Sense Motive against your {@skill Deception} DC to realize it's a lie. This usually happens if the creature discovers enough evidence to counter your statements.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -2675,8 +3157,8 @@
 				}
 			},
 			"entries": [
-				"You {@action Stride|CRB}, then make a horizontal {@action Leap|CRB} and attempt an {@skill Athletics} check to increase the length of your jump. The DC of the {@skill Athletics} check is equal to the total distance in feet you're attempting to move during your Leap (so you'd need to succeed at a DC 20 check to {@action Leap|CRB} 20 feet). You can't {@action Leap|CRB} farther than your Speed.",
-				"If you didn't Stride at least 10 feet, or if you attempt to jump in a different direction than your {@action Stride|CRB}, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
+				"You {@action Stride|CRB}, then make a horizontal {@action Leap|CRB} and attempt an {@skill Athletics} check to increase the length of your jump. The DC of the {@skill Athletics} check is equal to the total distance in feet you're attempting to move during your {@action Leap} (so you'd need to succeed at a DC 20 check to {@action Leap|CRB} 20 feet). You can't {@action Leap|CRB} farther than your Speed.",
+				"If you didn't {@action Stride} at least 10 feet, or if you attempt to jump in a different direction than your {@action Stride|CRB}, you automatically fail your check. This DC might be increased or decreased due to the situation, as determined by the GM.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3745,7 +4227,7 @@
 				"basic": true
 			},
 			"entries": [
-				"You {@action Seek|CRB} meticulously for hidden doors, concealed hazards, and so on. You can usually make an educated guess as to which locations are best to check and move at half speed, but if you want to be thorough and guarantee you checked everything, you need to travel at a Speed of no more than 300 feet per minute, or 150 feet per minute to ensure you check everything before you walk into it. You can always move more slowly while Searching to cover the area more thoroughly, and the Expeditious Search feat increases these maximum Speeds. If you come across a secret door, item, or hazard while Searching, the GM will attempt a free secret check to Seek to see if you notice the hidden object or hazard. In locations with many objects to search, you have to stop and spend significantly longer to search thoroughly."
+				"You {@action Seek|CRB} meticulously for hidden doors, concealed hazards, and so on. You can usually make an educated guess as to which locations are best to check and move at half speed, but if you want to be thorough and guarantee you checked everything, you need to travel at a Speed of no more than 300 feet per minute, or 150 feet per minute to ensure you check everything before you walk into it. You can always move more slowly while {@action Search||Searching} to cover the area more thoroughly, and the Expeditious Search feat increases these maximum Speeds. If you come across a secret door, item, or hazard while {@action Search||Searching}, the GM will attempt a free secret check to Seek to see if you notice the hidden object or hazard. In locations with many objects to search, you have to stop and spend significantly longer to search thoroughly."
 			]
 		},
 		{
@@ -3908,7 +4390,7 @@
 				"basic": true
 			},
 			"entries": [
-				"You try to tell whether a creature's behavior is abnormal. Choose one creature, and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret {@skill Perception} check for you and compares the result to the Deception DC of the creature, the DC of a spell affecting the creature's mental state, or another appropriate DC determined by the GM. You typically can't try to Sense the Motive of the same creature again until the situation changes significantly.",
+				"You try to tell whether a creature's behavior is abnormal. Choose one creature, and assess it for odd body language, signs of nervousness, and other indicators that it might be trying to deceive someone. The GM attempts a single secret {@skill Perception} check for you and compares the result to the {@skill Deception} DC of the creature, the DC of a spell affecting the creature's mental state, or another appropriate DC determined by the GM. You typically can't try to Sense the Motive of the same creature again until the situation changes significantly.",
 				{
 					"type": "successDegree",
 					"entries": {

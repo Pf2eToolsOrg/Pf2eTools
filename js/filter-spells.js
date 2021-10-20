@@ -58,6 +58,25 @@ class PageFilterSpells extends PageFilter {
 			items: ["Focus", "Material", "Somatic", "Verbal", "Cost"],
 			itemSortFn: null,
 		});
+		this._areaFilter = new Filter({
+			header: "Area Types",
+		});
+		this._timeFilter = new Filter({
+			header: "Cast Time",
+			itemSortFn: SortUtil.sortActivities,
+		});
+		this._durationFilter = new RangeFilter({
+			header: "Duration",
+			isLabelled: true,
+			labelSortFn: null,
+			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"],
+		});
+		this._rangeFilter = new RangeFilter({
+			header: "Range",
+			isLabelled: true,
+			labelSortFn: null,
+			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"],
+		});
 		this._savingThrowFilter = new Filter({
 			header: "Saving Throw",
 			items: ["Basic", "Fortitude", "Reflex", "Will"],
@@ -74,29 +93,9 @@ class PageFilterSpells extends PageFilter {
 			displayFn: Parser.spSchoolAbvToFull,
 			itemSortFn: (a, b) => SortUtil.ascSortLower(Parser.spSchoolAbvToFull(a.item), Parser.spSchoolAbvToFull(b.item)),
 		});
-		this._areaFilter = new Filter({
-			header: "Area Types",
-		});
-		this._timeFilter = new Filter({
-			header: "Cast Time",
-			itemSortFn: SortUtil.sortActivities,
-		});
-		this._durationFilter = new RangeFilter({
-			header: "Duration",
-			isLabelled: true,
-			labelSortFn: null,
-			labels: ["Instant", "1 Round", "1 Minute", "10 Minutes", "1 Hour", "8 Hours", "24+ Hours", "Unlimited", "Special"],
-		});
-
-		this._rangeFilter = new RangeFilter({
-			header: "Range",
-			isLabelled: true,
-			labelSortFn: null,
-			labels: ["Touch", "5 feet", "10 feet", "25 feet", "50 feet", "100 feet", "500 feet", "1 mile", "Planetary", "Unlimited", "Varies"],
-		});
 		this._miscFilter = new Filter({
 			header: "Miscellaneous",
-			items: ["Has Battle Form", "Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained"],
+			items: ["Has Battle Form", "Has Requirements", "Has Trigger", "Can be Heightened", "Can be Dismissed", "Sustained", "Summoning"],
 		});
 	}
 
@@ -121,7 +120,7 @@ class PageFilterSpells extends PageFilter {
 				});
 			});
 		}).flat();
-		spell._fTime = Parser.timeToActivityType(spell.activity);
+		spell._fTime = Parser.timeToActivityType(spell.cast);
 		spell._fDurationType = Parser.getFilterDuration(spell);
 		spell._areaTypes = spell.area ? spell.area.types : [];
 		spell._fRange = Parser.getFilterRange(spell);
@@ -138,6 +137,7 @@ class PageFilterSpells extends PageFilter {
 		if (spell.sustain) spell._fMisc.push("Sustained");
 		if (spell.dismiss) spell._fMisc.push("Can be Dismissed");
 		if (spell.hasBattleForm) spell._fMisc.push("Has Battle Form");
+		if (spell.summoning) spell._fMisc.push("Summoning");
 	}
 
 	addToFilters (spell, isExcluded) {
@@ -167,13 +167,13 @@ class PageFilterSpells extends PageFilter {
 			this._traditionFilter,
 			this._schoolFilter,
 			this._componentsFilter,
-			this._savingThrowFilter,
-			this._multiFocusFilter,
-			this._traitFilter,
 			this._timeFilter,
 			this._durationFilter,
 			this._areaFilter,
 			this._rangeFilter,
+			this._savingThrowFilter,
+			this._multiFocusFilter,
+			this._traitFilter,
 			this._miscFilter,
 		];
 	}
@@ -186,6 +186,10 @@ class PageFilterSpells extends PageFilter {
 			s._fTraditions,
 			s.school,
 			s._fComponents,
+			s._fTime,
+			s._fDurationType,
+			s._areaTypes,
+			s._fRange,
 			s._fSavingThrow,
 			[
 				s._fFocus,
@@ -193,10 +197,6 @@ class PageFilterSpells extends PageFilter {
 				s._fSubClasses,
 			],
 			s._fTraits,
-			s._fTime,
-			s._fDurationType,
-			s._areaTypes,
-			s._fRange,
 			s._fMisc,
 		)
 	}
