@@ -1,0 +1,551 @@
+/*
+Renderer
+*/
+
+@import 'vars';
+
+$rgb-inset-border: #656565;
+
+@mixin rd__h--large() {
+	color: $rgb-name-red;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@keyframes rd__spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.rd {
+	&__ {
+		&b {
+			p {
+				margin-bottom: 5px;
+			}
+		}
+
+		&b--0,
+		&b--1,
+		&b--2,
+		&b--3,
+		&b--4 {
+			margin-bottom: 5px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			> *:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&hr {
+			border-color: #aaa6;
+			margin: 17px 0 5px;
+
+			&--section {
+				margin: 30px 0 5px;
+			}
+		}
+
+		// FIXME:
+		&list {
+			margin-top: 5px;
+			margin-bottom: 10px;
+			padding-left: 24px;
+			text-indent: 0;
+
+			// FIXME(future) alternately, `&:has(+ .rd__list) { margin-bottom: 0; }` when browser support exists for :has
+			+ .rd__list {
+				margin-top: -5px;
+			}
+
+			> .rd__list {
+				margin-bottom: 0;
+			}
+		}
+
+		&li {
+			margin-bottom: 5px;
+		}
+
+		&compact-stats {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: flex-start;
+			align-content: flex-start;
+		}
+
+		&title-link {
+			opacity: 0.3;
+			font-size: 14px;
+			font-weight: normal;
+
+			&--inset {
+				font-size: 12px;
+			}
+		}
+
+		&wrp-image {
+			margin: 5px auto 0;
+			text-align: center;
+		}
+
+		&image {
+			max-width: 100%;
+			max-height: 60vh;
+			cursor: zoom-in;
+		}
+
+		&wrp-map {
+			max-width: 33%;
+			margin: 0 auto;
+		}
+
+		&wrp-gallery {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: flex-end;
+		}
+
+		&wrp-gallery-image {
+			padding: 0 10px 10px;
+			max-width: 33%;
+		}
+
+		&quote {
+			&-line {
+				&--last {
+					margin-bottom: 5px;
+				}
+			}
+
+			&-by {
+				width: 100%;
+				text-align: right;
+				display: block;
+			}
+		}
+
+		&p-cont-indent {
+			display: block;
+			text-indent: 1em;
+		}
+
+		&tab-indent {
+			width: 1em;
+			display: inline-block;
+		}
+
+		&image-title {
+			width: 100%;
+			text-align: center;
+			font-style: italic;
+			margin-top: 3px;
+		}
+
+		&image-title-inner {
+			border-bottom: 1px solid $rgb-border-grey;
+			display: inline;
+		}
+
+		&image-btn-viewer {
+			font-style: initial;
+		}
+
+		// Thicker scrollbars for viewer
+		&scroller-viewer {
+			scrollbar-width: auto;
+
+			&::-webkit-scrollbar {
+				width: 15px;
+				height: 15px;
+			}
+		}
+
+		&prerequisite {
+			font-style: italic;
+			display: block;
+		}
+
+		&li-spell {
+			margin: 0;
+		}
+
+		&list-hang-notitle {
+			text-indent: -1.1em;
+			margin-left: 1.1em;
+			padding: 0;
+			list-style: none;
+
+			> .rd__li {
+				margin-bottom: 3px;
+
+				> * {
+					margin: 0 0 3px;
+				}
+
+				// fixme?
+				> ul {
+					text-indent: 0;
+				}
+			}
+		}
+
+		&list-hang {
+			list-style: none;
+
+			// Firefox workaround; list bullets are pseudo-elements "::marker"
+			> li > *:not(::marker) {
+				text-indent: -1.1em;
+				margin-left: 1.1em;
+			}
+		}
+
+		&list-decimal {
+			list-style: decimal;
+		}
+
+		&list-lower-roman {
+			list-style: lower-roman;
+		}
+
+		&list-no-bullets {
+			list-style: none;
+			padding: 0 1em;
+
+			> .rd__li {
+				margin-bottom: 0;
+			}
+		}
+
+		&list-no-bullets-indent {
+			list-style: none;
+			padding: 0 0 0 1em;
+
+			> .rd__li {
+				margin-bottom: 0;
+				text-indent: -1em;
+				padding-left: 1em;
+			}
+		}
+
+		&list-name {
+			margin: 0;
+			font-weight: bold;
+		}
+
+		// section headers
+		// statsBlockSectionHead
+		&h--0 {
+			@include rd__h--large();
+
+			font-size: 1.8em;
+		}
+
+		// underline headers
+		// statsBlockHead
+		&h--1 {
+			@include rd__h--large();
+
+			font-size: 1.5em;
+			border-bottom: 1px solid $rgb-name-red;
+			margin: 0 0 0.2em;
+		}
+
+		// basic headers
+		// statsBlockSubHead
+		&h--2 {
+			@include rd__h--large();
+
+			font-size: 1.4em;
+		}
+
+		// inset headers
+		// statsBlockInset and statsBlockInsetReadaloud
+		&h--2-inset {
+			font-variant: small-caps;
+			font-weight: bolder;
+			font-size: 1.1em;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&h--2-flow-block {
+			display: block;
+			font-variant: small-caps;
+			font-weight: bolder;
+			font-size: 1.1em;
+			text-align: center;
+		}
+
+		// inline headers
+		// statsInlineHead
+		&h--3 {
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		// sub-inline headers (only seen in creature variant)
+		// statsInlineHeadSubVariant
+		&h--4 {
+			font-style: italic;
+		}
+
+		&b--3 > p,
+		&b--4 > p {
+			text-indent: 0.7em;
+			margin-bottom: 0;
+
+			&:first-of-type {
+				display: inline;
+			}
+		}
+
+		&b-inset > p {
+			text-indent: 0.7em;
+			margin-bottom: 0;
+		}
+
+		&b-inset {
+			margin: 7px 15px;
+			padding: 5px 10px;
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			border: 1px solid $rgb-inset-border;
+			border-top: 2px solid $rgb-inset-border;
+			border-bottom: 2px solid $rgb-inset-border;
+			background-color: #e9ecda;
+
+			> *:last-of-type {
+				margin-bottom: 0;
+			}
+
+			&--readaloud {
+				box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+				border: 1px solid $rgb-inset-border;
+				border-left: 2px solid $rgb-inset-border;
+				border-right: 2px solid $rgb-inset-border;
+				background-color: #eef0f3;
+			}
+
+			&-inner {
+				margin-top: 10px;
+			}
+		}
+
+		&b-data {
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			background-color: rgba(156, 150, 120, 0.1);
+			margin: 0.3em;
+			padding: 0.3em;
+			clear: both;
+		}
+
+		&data-embed {
+			&-header {
+				cursor: pointer;
+				font-family: 'Andada', serif;
+				font-variant: small-caps;
+				text-transform: uppercase;
+				font-weight: bold;
+
+				&:hover {
+					background: rgba(100, 100, 100, 0.08);
+				}
+			}
+
+			&-toggle {
+				margin-left: 0.3em;
+				font-weight: 700;
+			}
+		}
+
+		&wrp-loadbrew--ready {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+
+		&loadbrew-icon {
+			text-indent: 0;
+			margin-left: 2px;
+			transition-property: transform;
+			transition-duration: 1s;
+
+			&--active {
+				animation-name: rd__spin;
+				animation-duration: 1.2s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+		}
+
+		&comic {
+			font-family: 'Blambot Casual', sans-serif;
+			color: #1942be;
+
+			&--h1 {
+				font-size: 140%;
+				font-variant: small-caps;
+			}
+
+			&--h2 {
+				font-size: 130%;
+			}
+
+			&--h3 {
+				font-size: 120%;
+			}
+
+			&--h4 {
+				font-size: 110%;
+			}
+
+			&--note {
+				opacity: 0.7;
+			}
+
+			&-img-speaker {
+				margin-top: -20px;
+				margin-bottom: -20px;
+
+				&--left {
+					float: left;
+					margin-right: 0;
+					margin-left: -20px;
+				}
+
+				&--right {
+					float: right;
+					margin-right: -20px;
+					margin-left: 0;
+				}
+
+				&::after {
+					content: '';
+					clear: both;
+					display: block;
+				}
+			}
+		}
+
+		&img {
+			&-small {
+				max-width: 25vw;
+				max-height: 25vh;
+			}
+
+			&-cover {
+				max-width: 100%;
+				max-height: 100vh;
+			}
+		}
+
+		&s-v-flow {
+			height: 15px;
+			width: 0;
+			border-left: 1px solid $rgb-inset-border;
+			border-right: 1px solid $rgb-inset-border;
+			margin: 0 auto;
+		}
+
+		&b-flow {
+			margin: 0 15px;
+			padding: 5px 10px;
+			box-shadow: 0 0 4px 0 rgb(152, 142, 124);
+			border: 1px solid $rgb-inset-border;
+			border-top: 2px solid $rgb-inset-border;
+			border-bottom: 2px solid $rgb-inset-border;
+			background-color: #ece4da;
+
+			> *:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+
+		&stats-name-page {
+			font-family: 'Convergence', Arial, sans-serif;
+			font-size: 12px;
+			color: $rgb-off-black;
+			font-weight: 100;
+		}
+
+		&pre-wrap {
+			white-space: pre-wrap;
+		}
+
+		&highlight {
+			background-color: $rgb-bg-highlight;
+		}
+	}
+
+	&-item__ {
+		&type-rarity-attunement {
+			font-style: italic;
+			color: black;
+		}
+	}
+
+	&-spell__ {
+		&level-school-ritual {
+			font-style: italic;
+			color: black;
+		}
+	}
+}
+
+// Entries embedded in tables
+td > .rd__b:last-child {
+	margin-bottom: 0;
+}
+
+// region Source colors
+.subclass-feature {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-subclass;
+		border-bottom-color: $rgb-subclass;
+	}
+}
+
+.spicy-sauce {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-subclass-ua;
+		border-bottom-color: $rgb-subclass-ua;
+	}
+}
+
+.spicy-sauce:not(.subclass-feature):not(.subclass-feature--sub) {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-class-ua;
+		border-bottom-color: $rgb-class-ua;
+	}
+}
+
+.refreshing-brew {
+	.rd__h--0,
+	.rd__h--1,
+	.rd__h--2 {
+		color: $rgb-class-brew;
+		border-bottom-color: $rgb-class-brew;
+	}
+}
+// endregion

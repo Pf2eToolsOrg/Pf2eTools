@@ -1,0 +1,101 @@
+{
+	"item": [
+		{
+			"name": "Ancestral Echoing",
+			"source": "AoA4",
+			"page": 75,
+			"type": "Rune",
+			"level": "15",
+			"traits": [
+				"Rare",
+				"Dwarf",
+				"Evocation",
+				"Magical",
+				"Saggorak"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 9500,
+				"note": null
+			},
+			"usage": "etched onto a weapon",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"The wisdom of this weapon's past owners flows into your mind, amplifying your own abilities with the weapon. Your proficiency rank with this weapon is one step higher than normal, to a maximum of the highest proficiency rank you have in any weapon. For instance, if you had master proficieny with martial weapons and expert proficiency with advanced weapons, you would have master proficiency with advanced weapon that had this rune.",
+				"In addition, while wielding the ancestral echoing weapon, you have expert proficiency in one {@skill Lore} skill relevant to one or more of the weapon's previous owners. This is typically {@skill Lore||Dwarven Lore} but is ultimately determined by the GM depending on the weapon's history."
+			],
+			"generic": false
+		},
+		{
+			"name": "Bloodbane",
+			"source": "AoA4",
+			"page": 75,
+			"type": "Rune",
+			"level": "8+",
+			"traits": [
+				"Uncommon",
+				"Dwarf",
+				"Evocation",
+				"Magical"
+			],
+			"usage": "etched onto a {@item clan dagger}",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"A bloodbane clan dagger is especially vicious against the ancestral enemies of the clan. When you damage an appropriate type of creature with the weapon, that creature takes 1 {@condition persistent damage||persistent bleed damage}. The type of creature depends on the clan that made the dagger, but is typically drow, duergar, giant, or orc.",
+				"In addition, whenever you inflict persistent bleed damage with a bloodbane weapon (whether from its innate ability or in some other way), the weapon leaves ragged wounds. The bleeding creature must succeed at a DC 25 Fortitude save or become {@condition sickened} 1. The creature is then temporarily immune for 1 hour."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "bloodbane",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 475,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater bloodbane",
+					"level": 13,
+					"price": {
+						"coin": "gp",
+						"amount": 2800,
+						"note": null
+					},
+					"entries": [
+						"The weapon deals {@damage 1d4} bleed damage to creatures designated as the clan's enemy, and the DC of the Fortitude save to avoid becoming {@condition sickened} is 30."
+					]
+				}
+			]
+		},
+		{
+			"name": "Kin-Warding",
+			"source": "AoA4",
+			"page": 75,
+			"type": "Rune",
+			"level": "3",
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Dwarf",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 52,
+				"note": null
+			},
+			"usage": "etched onto a {@item clan dagger}",
+			"category": "Rune",
+			"appliesTo": "Weapon",
+			"entries": [
+				"A kin-warding {@item clan dagger} can deflect attacks aimed at your allies. When you use the weapon's {@trait parry} trait, you can point the clan dagger at an adjacent ally instead of defending yourself, creating a shield of runes around them. The runic barrier grants your ally the weapon's circumstance bonus to AC, but you do not gain the bonus yourself."
+			],
+			"generic": false
+		}
+	]
+}

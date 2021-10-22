@@ -1,0 +1,62 @@
+#listcontainer > ul > li {
+	max-height: initial;
+}
+
+ul.list li:hover {
+	background: inherit;
+}
+
+ul.list li:active {
+	color: inherit;
+}
+
+ul.list a:hover {
+	background: lightgrey;
+}
+
+ul {
+	margin-left: 0;
+	padding-left: 0;
+}
+
+ul.list li {
+	max-height: none;
+}
+
+.lst__item-group-header {
+	user-select: none;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 3px 0 1px;
+}
+
+ul.encounters > li {
+	border-bottom: 0;
+	margin-bottom: 5px;
+}
+
+ul.encounters > li > ul > li:last-child {
+	border-bottom: 0;
+}
+
+#listcontainer {
+	flex: 3;
+}
+
+#tablecontainer {
+	flex: 7;
+	display: flex;
+	flex-direction: column;
+}
+
+#contentwrapper {
+	overflow-y: auto;
+}
+
+.search-box {
+	margin-bottom: 5px;
+}
+
+.rolltable {
+	display: flex;
+}

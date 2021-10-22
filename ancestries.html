@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<title>Ancestries - Pf2eTools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/classes.css">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+	<!-- Chrome Web App Icons -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="application-name" content="Pf2eTools">
+	<meta name="theme-color" content="#5E0000">
+
+	<!-- Windows Start Menu tiles -->
+	<meta name="msapplication-config" content="browserconfig.xml"/>
+	<meta name="msapplication-TileColor" content="#5E0000">
+
+	<!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<meta name="apple-mobile-web-app-title" content="Pf2eTools">
+
+	<!-- macOS Safari Pinned Tab and Touch Bar -->
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5E0000">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script src="js/styleswitch.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/browsercheck.js"></script>
+	<style>
+		@media only screen and (max-width: 886px) {
+			.mobile__flex-col {
+				display: flex !important;
+				flex-direction: column !important;
+			}
+
+			.ancestries {
+				width: 100% !important;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container max-w-100">
+		<h1 class="page__title">Ancestries</h1>
+		<p class="page__subtitle">Search by name on the left, click ancestry name to display on the right.</p>
+	</div>
+</header>
+<nav class="container page__nav" id="navigation">
+	<ul class="nav page__nav-inner" id="navbar"></ul>
+</nav>
+
+<!--FIXME: remove w-90, should be more sophisticated to accommodate for smaller screen sizes -->
+<main class="container w-90 h-100 ancestries">
+	<div class="row flex mobile__flex-col mt-2">
+		<div class="col-ml-3" id="listcontainer">
+			<div class="night__shadow-big">
+				<div class="lst__form-top" id="filter-search-group">
+					<div class="w-100 relative">
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+					</div>
+					<button class="btn btn-default px-2" id="reset"><span class="glyphicon glyphicon-refresh"></span>
+					</button>
+				</div>
+				<div id="filtertools" class="input-group input-group--bottom flex no-shrink">
+					<button class="col-8 sort btn btn-default btn-xs" data-sort="name">Name <span
+						class="caret_wrp"></span></button>
+					<button class="sort btn btn-default btn-xs ve-grow" data-sort="source">Source <span
+						class="caret_wrp"></span></button>
+				</div>
+
+				<ul class="list list--stats ancestries cls__list"></ul>
+			</div>
+
+			<p class="text-center">
+				<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
+				<button class="btn btn-default btn-xs" id="btn-link-export-anc"><span class="glyphicon glyphicon-magnet"></span></button>
+			</p>
+			<div id="heritagetabs" class="w-100 my-2 cls-tabs__wrp"></div>
+		</div>
+		<div class="col-ml-9" id="ancestrystats-wrp">
+			<div class="wrp-stats-table mb-4">
+				<div class="stats pf2-book pf2-book--large" id="ancestrystats"></div>
+			</div>
+		</div>
+		<div class="col-ml-9 feat-view hidden">
+			<div class="col-6" id="featlistcontainer">
+				<div class="night__shadow-big">
+					<div class="lst__form-top" id="feat-filter-search-group">
+						<div class="w-100 relative">
+							<input type="search" id="feat-lst__search" autocomplete="off" autocapitalize="off"
+								   spellcheck="false" class="search form-control lst__search lst__search--no-border-h">
+							<div id="feat-lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+								class="glyphicon glyphicon-search"></span></div>
+							<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+						</div>
+						<button class="btn btn-default px-2" id="feat-reset"><span
+							class="glyphicon glyphicon-refresh"></span></button>
+					</div>
+					<div id="feat-filtertools" class="input-group input-group--bottom flex no-shrink">
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span
+							class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="level">Lvl. <span
+							class="caret_wrp"></span></button>
+						<button class="col-4 sort btn btn-default btn-xs" data-sort="prerequisites">Prerequisites <span
+							class="caret_wrp"></span></button>
+						<button class="col-1-5 sort btn btn-default btn-xs" data-sort="source">S. <span
+							class="caret_wrp"></span></button>
+					</div>
+					<!--FIXME: Get this list to behave-->
+					<ul class="list list--stats feats" style="max-height: 78vh;"></ul>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="wrp-stat-tab" id="stat-tabs"><div id="tabs-right"></div></div>
+				<div class="wrp-stats-table">
+					<div class="stats pf2-stat" id="featstats"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<!--PF2ETOOLS_SCRIPT_ANCHOR-->
+
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<script src="lib/jquery-ui-slider-pip.js"></script>
+<script src="js/parser.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/utils-list.js"></script>
+<script src="js/utils-ui.js"></script>
+<script src="lib/localforage.js"></script>
+<script src="js/omnidexer.js"></script>
+<script src="js/omnisearch.js"></script>
+<script src="js/filter.js"></script>
+<script src="js/hist.js"></script>
+<script src="js/render.js"></script>
+<script src="js/render-dice.js"></script>
+<script src="js/render-feats.js"></script>
+<script src="js/scalecreature.js"></script>
+<script src="js/listpage.js"></script>
+<script src="js/filter-ancestries.js"></script>
+<script src="js/filter-feats.js"></script>
+<script src="js/ancestries.js"></script>
+<script src="js/list2.js"></script>
+<script src="lib/elasticlunr.js"></script>
+</body>
+
+</html>

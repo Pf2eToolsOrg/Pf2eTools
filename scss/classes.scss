@@ -1,0 +1,758 @@
+@import 'vars';
+
+// region class
+.cls__ {
+	&list {
+		max-height: 400px;
+	}
+
+	&squash_header {
+		overflow: hidden;
+		max-height: 32px;
+		display: block;
+	}
+
+	&btn-toggle-sidebar {
+		cursor: pointer;
+		font-size: initial;
+		color: black;
+	}
+
+	// region buttons
+	&btn-cf {
+		&--active {
+			color: white;
+			background: $rgb-name-red;
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-name-red, $pct-darken-active);
+			}
+		}
+	}
+
+	&btn-sc {
+		&--reprinted {
+			color: #777;
+		}
+
+		&--active-fresh {
+			color: white;
+			background: $rgb-subclass;
+			border-color: darken($rgb-subclass, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass, $pct-darken-active);
+				border-color: darken($rgb-subclass, $pct-darken-border--active);
+			}
+		}
+
+		&--active-reprinted {
+			color: white;
+			background: $rgb-subclass--stale;
+			border-color: darken($rgb-subclass--stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass--stale, $pct-darken-active);
+				border-color: darken($rgb-subclass--stale, $pct-darken-border--active);
+			}
+		}
+
+		&--active-spicy {
+			color: white;
+			background: $rgb-subclass-ua;
+			border-color: darken($rgb-subclass-ua, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua, $pct-darken-border--active);
+			}
+		}
+
+		&--active-stale {
+			color: white;
+			background: $rgb-subclass-ua--stale;
+			border-color: darken($rgb-subclass-ua--stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua--stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua--stale, $pct-darken-border--active);
+			}
+		}
+
+		&--active-brew {
+			color: white;
+			background: $rgb-class-brew;
+			border-color: darken($rgb-class-brew, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-class-brew, $pct-darken-active);
+				border-color: darken($rgb-class-brew, $pct-darken-border--active);
+			}
+		}
+	}
+	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant;
+			border-bottom-color: $rgb-class-variant;
+		}
+	}
+}
+
+.night-mode .cls__ {
+	&btn-toggle-sidebar {
+		color: #bbb;
+	}
+
+	// region buttons
+	&btn-cf {
+		&--active {
+			color: $rgb-off-black;
+			background: $rgb-name-red--night;
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: $rgb-off-black;
+				background: darken($rgb-name-red--night, $pct-darken-active);
+			}
+		}
+	}
+
+	&btn-sc {
+		&--reprinted {
+			color: #888;
+		}
+
+		&--active-fresh {
+			color: white;
+			background: $rgb-subclass--night;
+			border-color: darken($rgb-subclass--night, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass--night, $pct-darken-active);
+				border-color: darken($rgb-subclass--night, $pct-darken-border--active);
+			}
+		}
+
+		&--active-reprinted {
+			color: white;
+			background: $rgb-subclass--night-stale;
+			border-color: darken($rgb-subclass--night-stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass--night-stale, $pct-darken-active);
+				border-color: darken($rgb-subclass--night-stale, $pct-darken-border--active);
+			}
+		}
+
+		&--active-spicy {
+			color: white;
+			background: $rgb-subclass-ua--night;
+			border-color: darken($rgb-subclass-ua--night, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua--night, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua--night, $pct-darken-border--active);
+			}
+		}
+
+		&--active-stale {
+			color: white;
+			background: $rgb-subclass-ua--night-stale;
+			border-color: darken($rgb-subclass-ua--night-stale, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-subclass-ua--night-stale, $pct-darken-active);
+				border-color: darken($rgb-subclass-ua--night-stale, $pct-darken-border--active);
+			}
+		}
+
+		&--active-brew {
+			color: white;
+			background: $rgb-class-brew--night;
+			border-color: darken($rgb-class-brew--night, $pct-darken-border);
+
+			&:active,
+			&:focus,
+			&:hover,
+			&:active:focus,
+			&:active:hover {
+				color: white;
+				background: darken($rgb-class-brew--night, $pct-darken-active);
+				border-color: darken($rgb-class-brew--night, $pct-darken-border--active);
+			}
+		}
+	}
+	// endregion
+
+	&variant-feature:not(.subclass-feature):not(.subclass-feature--sub) {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-class-variant--night;
+			border-bottom-color: $rgb-class-variant--night;
+		}
+	}
+}
+// endregion
+
+// region class table
+.cls-tbl {
+	font-size: 0.8em;
+	background: #fdf1dc;
+
+	> tbody > tr > th {
+		color: black;
+		padding: 1px 0.2em;
+	}
+
+	&__ {
+		&disp-name {
+			font-size: 1.8em;
+			font-family: 'Andada', serif;
+			font-variant: small-caps;
+			font-weight: 500;
+			padding-left: 0.2em;
+			color: black;
+		}
+
+		&col-group {
+			text-align: center;
+
+			&::after {
+				position: relative;
+				bottom: 0;
+				left: 0;
+				margin: 0 auto;
+				padding: 0;
+				display: block;
+				content: '';
+				height: 1px;
+				width: 96%;
+				border-bottom: 1px solid black;
+			}
+		}
+
+		&col-level {
+			text-align: center;
+			width: 1.5em;
+		}
+
+		&col-prof-bonus {
+			text-align: center;
+			width: 1.5em;
+			padding: 1px 0.5em;
+		}
+
+		&col-generic-center {
+			text-align: center;
+			min-width: 1em;
+			max-width: 3.2em;
+		}
+
+		&stripe-odd:nth-child(odd) {
+			background: lightgrey;
+		}
+	}
+}
+
+.night-mode {
+	.cls-tbl {
+		background: $rgb-bg--night;
+
+		> tbody > tr > th {
+			color: $rgb-font--night;
+		}
+
+		&__ {
+			&disp-name {
+				color: $rgb-font--night;
+			}
+
+			&col-group::after {
+				border-color: $rgb-border-grey--night;
+			}
+
+			&stripe-odd:nth-child(odd) {
+				background: $rgb-stripe-grey;
+			}
+		}
+	}
+}
+// endregion
+
+// region sidebar
+.cls-side__ {
+	&name {
+		font-size: 1.8em;
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		font-weight: 500;
+	}
+
+	&btn-toggle {
+		cursor: pointer;
+		font-size: initial;
+		font-weight: initial;
+		color: black;
+	}
+
+	&section {
+		font-size: 0.8em;
+		padding: 4px 7px;
+	}
+
+	&section-head {
+		font-family: serif;
+		font-weight: 500;
+		font-size: 1.5em;
+		margin-top: 4px;
+		margin-bottom: 0;
+	}
+}
+
+.night-mode {
+	.cls-side__ {
+		&btn-toggle {
+			color: $rgb-font--night;
+		}
+	}
+}
+// endregion
+
+// region subclass tabs
+.cls-tabs__ {
+	&wrp {
+		align-items: baseline;
+		position: sticky;
+		top: 7px;
+
+		@media (max-width: $width-screen-md) {
+			flex-direction: column !important;
+		}
+	}
+
+	&sc-not-shown {
+		font-size: 10px;
+	}
+
+	&sel-preset {
+		width: 80px;
+	}
+}
+// endregion
+
+// region main text
+.cls-main__ {
+	&sc-feature {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-subclass;
+			border-bottom-color: $rgb-subclass;
+		}
+
+		&--reprinted {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass--stale;
+				border-bottom-color: $rgb-subclass--stale;
+			}
+		}
+
+		&--spicy {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua;
+				border-bottom-color: $rgb-subclass-ua;
+			}
+		}
+
+		&--stale {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua--stale;
+				border-bottom-color: $rgb-subclass-ua--stale;
+			}
+		}
+
+		&--brew {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-class-brew;
+				border-bottom-color: $rgb-class-brew;
+			}
+		}
+	}
+
+	&msg-no-content {
+		height: 40px;
+		color: $rgb-name-red;
+		font-family: 'Andada', serif;
+		font-variant: small-caps;
+		font-weight: 500;
+		line-height: 2.3em;
+		text-align: center;
+		font-size: 1.8em;
+	}
+
+	&linked-titles {
+		@extend %linked-titles-base;
+
+		> * > .rd__h .entry-title-inner {
+			@extend %linked-titles-base-inner;
+		}
+	}
+}
+
+.night-mode .cls-main__ {
+	&sc-feature {
+		.rd__h--0,
+		.rd__h--1,
+		.rd__h--2 {
+			color: $rgb-subclass--night;
+			border-bottom-color: $rgb-subclass--night;
+		}
+
+		&--reprinted {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass--night-stale;
+				border-bottom-color: $rgb-subclass--night-stale;
+			}
+		}
+
+		&--spicy {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua--night;
+				border-bottom-color: $rgb-subclass-ua--night;
+			}
+		}
+
+		&--stale {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-subclass-ua--night-stale;
+				border-bottom-color: $rgb-subclass-ua--night-stale;
+			}
+		}
+
+		&--brew {
+			.rd__h--0,
+			.rd__h--1,
+			.rd__h--2 {
+				color: $rgb-class-brew--night;
+				border-bottom-color: $rgb-class-brew--night;
+			}
+		}
+	}
+
+	&msg-no-content {
+		color: $rgb-name-red--night;
+	}
+}
+// endregion
+
+// region comparison view
+.cls-comp__wrp-features {
+	width: 400px;
+	max-width: calc(100vw - #{2 * $spacer});
+}
+// endregion
+
+// region class book view
+.cls-prntv__ {
+	&wrp-tabs {
+		background-color: #eee;
+		border-bottom: 1px solid $rgb-border-grey;
+	}
+
+	&btn-tab {
+		font-size: 0.8em;
+		margin-top: 2px;
+		padding: 2px 6px;
+		cursor: pointer;
+		user-select: none;
+		border-right: 1px solid $rgb-border-grey;
+		border-left: 1px solid $rgb-border-grey;
+		border-top: 1px solid $rgb-border-grey;
+		border-top-right-radius: 4px;
+		border-top-left-radius: 4px;
+	}
+
+	// region TODO are these used?
+	&btn-tab.active {
+		background: $rgb-active-blue;
+		color: white;
+	}
+
+	&btn-tab.active {
+		border-color: darken($rgb-active-blue, $pct-darken-border);
+	}
+
+	&btn-tab.active.spicy-sauce {
+		background: $rgb-subclass-ua;
+		color: white;
+	}
+
+	&btn-tab.active.spicy-sauce {
+		border-color: darken($rgb-subclass-ua, $pct-darken-border);
+	}
+
+	&btn-tab.active.refreshing-brew {
+		background: $rgb-class-brew;
+		color: white;
+	}
+
+	&btn-tab.active.refreshing-brew {
+		border-color: darken($rgb-class-brew, $pct-darken-border);
+	}
+	// endregion
+}
+
+.night-mode .cls-prntv__ {
+	&wrp-tabs {
+		background-color: #222;
+		border-color: $rgb-border-grey--night;
+	}
+
+	&btn-tab {
+		border-color: $rgb-border-grey--night;
+	}
+}
+// endregion
+
+// region outline
+.cls-nav {
+	width: 100%;
+	position: sticky;
+	top: 15px;
+	overflow-y: hidden;
+	margin-top: 15px;
+	max-height: calc(100vh - 30px);
+	padding-right: 9px;
+	padding-left: 9px;
+	font-family: 'Andada', serif;
+	font-variant: small-caps;
+	font-weight: 500;
+
+	&:hover {
+		overflow-y: scroll;
+		padding-right: 0;
+	}
+
+	&__ {
+		&head {
+			color: #00000020;
+
+			&--active,
+			&:hover {
+				color: inherit;
+			}
+		}
+
+		&disp-toggle {
+			&::after {
+				content: ' [+]';
+				font-weight: initial;
+			}
+
+			&--active::after {
+				content: '[\2012]';
+				font-weight: initial;
+			}
+		}
+
+		&head-inner {
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+		&hr {
+			margin: 2px;
+		}
+
+		&item {
+			@include overflow-dots();
+
+			cursor: pointer;
+			user-select: none;
+			max-height: 20px;
+			color: $rgb-name-red;
+
+			&:hover {
+				background: lightgrey;
+			}
+
+			&:active {
+				color: #e0e0e0;
+			}
+
+			&--sc-fresh {
+				color: $rgb-subclass;
+			}
+
+			&--sc-reprinted {
+				color: $rgb-subclass--stale;
+			}
+
+			&--sc-spicy {
+				color: $rgb-subclass-ua;
+			}
+
+			&--sc-stale {
+				color: $rgb-subclass-ua--stale;
+			}
+
+			&--sc-brew {
+				color: $rgb-class-brew;
+			}
+
+			// region
+			// This takes precedence over others. Ideally, there should be a colour for "subclass variant feature," but
+			//   since those are so rare (e.g. Ranger's "Primal Companion"), this shall suffice. Additionally, this
+			//   matches the CSS rules of the renderer the closest. If we adjust this, we would have to then adjust
+			//   those.
+			&--spicy {
+				color: $rgb-class-ua;
+			}
+
+			&--variant-feature {
+				color: $rgb-class-variant;
+			}
+			// endregion
+
+			// Section name
+			&--depth-0 {
+				font-weight: bold;
+				font-size: 110%;
+			}
+
+			&--depth-2 {
+				padding-left: 10px;
+
+				&::before {
+					content: '\2022  ';
+				}
+			}
+		}
+	}
+}
+
+.night-mode .cls-nav__ {
+	&head {
+		color: #bbbbbb40;
+
+		&--active,
+		&:hover {
+			color: $rgb-font--night;
+		}
+	}
+
+	&item {
+		color: $rgb-name-red--night;
+
+		&:hover {
+			background: $rgb-off-black;
+		}
+
+		&:active {
+			color: white;
+		}
+
+		&--sc-fresh {
+			color: $rgb-subclass--night;
+		}
+
+		&--sc-reprinted {
+			color: $rgb-subclass--night-stale;
+		}
+
+		&--sc-spicy {
+			color: $rgb-subclass-ua--night;
+		}
+
+		&--sc-stale {
+			color: $rgb-subclass-ua--night-stale;
+		}
+
+		&--sc-brew {
+			color: $rgb-class-brew--night;
+		}
+
+		// region (See day mode comments above)
+		&--spicy {
+			color: $rgb-class-ua--night;
+		}
+
+		&--variant-feature {
+			color: $rgb-class-variant--night;
+		}
+		// endregion
+	}
+}
+// endregion

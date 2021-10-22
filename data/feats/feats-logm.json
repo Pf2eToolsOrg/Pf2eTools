@@ -1,0 +1,389 @@
+{
+	"feat": [
+		{
+			"name": "Battle Prayer",
+			"source": "LOGM",
+			"page": 104,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Religion"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"Divine",
+				"General",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Religion}, you follow a deity",
+			"entries": [
+				"Calling out to your deity, you recite scripture to harm a foe.",
+				"When you select this feat, choose chaos, evil, good, or law. Your choice must match one of your deity's alignment components.",
+				"This action has the trait corresponding to the chosen alignment.",
+				"Attempt a {@skill Religion} check against the Will DC of a foe within 30 feet. The foe is then temporarily immune to Battle Prayers from your deity for 1 day.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You deal {@dice 2d6} damage of the chosen alignment type, or {@dice 6d6} damage if you have legendary proficiency in {@skill Religion}.",
+						"Success": "You deal {@dice 1d6} damage of the chosen alignment type, or {@dice 3d6} damage if you have legendary proficiency in {@skill Religion}.",
+						"Failure": "There is no effect.",
+						"Critical Failure": "The backlash of your foe's will against your prayer prevents you from using Battle Prayer again for 10 minutes."
+					}
+				}
+			]
+		},
+		{
+			"name": "Bless Tonic",
+			"source": "LOGM",
+			"page": 104,
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Crafting"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Positive",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Crafting}, deity who grants heal divine font",
+			"entries": [
+				"You channel positive energy into restoratives that ward against harm. When you {@action Craft} an alchemical item that restores Hit Points (rather than create it with advanced alchemy, {@action Quick Alchemy}, or another means), it becomes a blessed alchemical item and gains the {@trait positive} trait. For example, an elixir of life would become a blessed elixir of life. When a creature regains Hit Points using a blessed alchemical item, the overflowing energy grants them negative resistance 5 for 1 round, or negative resistance 10 if you are legendary in {@skill Crafting}."
+			]
+		},
+		{
+			"name": "Bless Toxin",
+			"source": "LOGM",
+			"page": 104,
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Crafting"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Negative",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Crafting}, deity who grants harm divine font",
+			"entries": [
+				"You pour negative energy into toxins you create to further debilitate your targets. When you {@action Craft} an alchemical poison (rather than create it with advanced alchemy, {@action Quick Alchemy}, or another means), it becomes a blessed alchemical poison and gains the {@trait negative} trait. When a creature is afflicted with a blessed alchemical poison, for 1 round, any Hit Points it would regain from a {@trait positive} effect are reduced by 5, or by 10 if you are legendary in {@skill Crafting}."
+			]
+		},
+		{
+			"name": "Blessed Blood",
+			"source": "LOGM",
+			"page": 104,
+			"level": 1,
+			"featType": {
+				"class": "Sorcerer",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Sorcerer"
+			],
+			"prerequisites": "bloodline that grants divine spells, you follow a deity",
+			"entries": [
+				"Your deity's blessings manifest in your blood-borne power.",
+				"Add up to three of your deity's spells (spells your deity grants to clerics) to your spell list. They are not automatically added to your repertoire, but you can select them just as you would spells normally on the divine spell list."
+			]
+		},
+		{
+			"name": "Charlatan",
+			"source": "LOGM",
+			"page": 104,
+			"level": 1,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Deception"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Skill"
+			],
+			"prerequisites": "trained in {@skill Deception}",
+			"entries": [
+				"You've learned to mimic the abilities of spellcasters by studying their flourishes and words. When you activate a magic item to generate a spell effect, attempt a {@skill Deception} check. If you succeed against an onlooker's {@skill Perception} DC, to that onlooker, you appear to Cast that Spell instead. Onlookers who successfully Recognize the Spell realize you used a magic item, though those who later successfully Identify the Magic still can't determine that the source of the effect was a magic item."
+			]
+		},
+		{
+			"name": "Environmental Grace",
+			"source": "LOGM",
+			"page": 105,
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Survival"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Survival}; deity who grants the cold, fire, nature, or travel domain",
+			"entries": [
+				"You rapidly adapt to environments through a combination of skill, meditation, and divine grace. After spending an hour in an environment of severe cold or colder, you are protected from the effects of severe cold until you leave that environment. After spending an hour in an environment of severe heat or hotter, you are protected from the effects of severe heat until you leave that environment."
+			]
+		},
+		{
+			"name": "Evangelize",
+			"source": "LOGM",
+			"page": 105,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Diplomacy"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"Auditory",
+				"General",
+				"Linguistic",
+				"Mental",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Diplomacy}, you follow a deity or philosophy",
+			"entries": [
+				"You point out a detail that incontrovertibly supports your faith, causing a listener's mind to whirl. Attempt a {@skill Diplomacy} check and compare the result to the Will DC of a single target that can hear you and understands your language; that target is then temporarily immune to Evangelize with respect to your deity or philosophy for 1 day. A creature that already agrees with you is unaffected, and at the GM's discretion, a target that genuinely changes its perspective to support your faith as a result of the argument is also otherwise unaffected.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is {@condition stupefied 2} for 1 round.",
+						"Success": "The target is {@condition stupefied 1} for 1 round.",
+						"Failure": "The target is unaffected."
+					}
+				}
+			]
+		},
+		{
+			"name": "Expanded Domain Initiate",
+			"source": "LOGM",
+			"page": 8,
+			"level": 4,
+			"featType": {
+				"class": "Cleric",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Cleric"
+			],
+			"prerequisites": "{@feat Domain Initiate}",
+			"entries": [
+				"You have long venerated one of your deity's lesser-known aspects. Select one domain from your deity's alternate domains. You gain access to that domain and an initial domain spell for that domain."
+			]
+		},
+		{
+			"name": "Mortal Healing",
+			"source": "LOGM",
+			"page": 105,
+			"level": 2,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": true,
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Skill"
+			],
+			"prerequisites": "{@feat Godless Healing|LOWG} (Pathfinder Lost Omens World Guide 56), you follow the Laws of Mortality",
+			"entries": [
+				"You grant greater healing when the gods don't interfere.",
+				"When you roll a success to {@action Treat Wounds} for a creature that hasn't regained Hit Points from divine magic in the past 24 hours, you get a critical success on your check instead and restore the corresponding amount of Hit Points."
+			]
+		},
+		{
+			"name": "Numb To Death",
+			"source": "LOGM",
+			"page": 105,
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"General"
+			],
+			"prerequisites": "{@feat Diehard}, you have died at least once",
+			"frequency": "once per day",
+			"entries": [
+				"Your past has left you numb to death's call. The first time each day that you regain Hit Points while you are {@condition dying}, you regain additional Hit Points equal to your level, and you neither gain the {@condition wounded} condition nor increase the value of this condition."
+			]
+		},
+		{
+			"name": "Sacred Defense",
+			"source": "LOGM",
+			"page": 105,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Religion"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"Divine",
+				"General",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Religion}, you follow a deity",
+			"frequency": "once per hour",
+			"entries": [
+				"You call upon your deity to grant you their protective blessing. Attempt a DC 30 {@skill Religion} check. If you have legendary proficiency in {@skill Religion}, you can instead attempt a DC 40 {@skill Religion} check to increase the temporary Hit Points you gain on a successful check to 15 (25 on a critical success).",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain 10 temporary Hit Points. You lose any remaining temporary Hit Points after 1 minute.",
+						"Success": "You gain 5 temporary Hit Points. You lose any remaining temporary Hit Points after 1 minute.",
+						"Critical Failure": "Your deity withholds their blessing. You cannot attempt to call to your deity again for 1 day."
+					}
+				}
+			]
+		},
+		{
+			"name": "Sacred Ki",
+			"source": "LOGM",
+			"page": 105,
+			"level": 4,
+			"featType": {
+				"class": "Monk",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Monk"
+			],
+			"prerequisites": "Ki {@action Strike}, you follow a deity",
+			"entries": [
+				"The power of your faith suffuses your ki. When you select this feat, choose chaos, evil, good, or law. Your choice must match one of your deity's alignment components.",
+				"When you cast the {@spell ki strike} focus spell and damage a creature whose alignment is opposite your chosen alignment, you can choose for the ki strike damage to be of the chosen type. Additionally, you can substitute the damage from ki blast (or other ki spells that deal force damage, at the GM's discretion) with damage of your chosen alignment."
+			]
+		},
+		{
+			"name": "Sanctify Water",
+			"source": "LOGM",
+			"page": 105,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 7,
+			"featType": {
+				"class": false,
+				"general": true,
+				"ancestry": false,
+				"skill": [
+					"Religion"
+				],
+				"archetype": false
+			},
+			"traits": [
+				"General",
+				"Skill"
+			],
+			"prerequisites": "master in {@skill Religion}, good or evil deity",
+			"entries": [
+				"You imbue water with your deity's blessing. Choose a container of water on your person that is of light Bulk. For 1 round, if you or an ally throw this container at a foe, it has the damaging effects of holy water (if you follow a good deity) or unholy water (if you follow an evil deity). The water's transient power doesn't make it gain any value, allow it to be used to supply the cost for a spell or ritual, and so on. If you have legendary proficiency in {@skill Religion}, you can sanctify three containers held by you or allies within your reach instead of one."
+			]
+		},
+		{
+			"name": "Splinter Faith",
+			"source": "LOGM",
+			"page": 8,
+			"level": 1,
+			"featType": {
+				"class": [
+					"Champion",
+					"Cleric"
+				],
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Champion",
+				"Cleric"
+			],
+			"entries": [
+				"Your faith in your deity is represented in an extremely unusual way that some might call heretical. When you select this feat, you should detail the fundamental tenets of your splinter faith, though it shouldn't affect the deity's edicts or anathema. Choose four domains. These domains must be chosen from among your deity's domains, your deity's alternate domains, and up to one domain that isn't on either list and isn't anathematic to your deity. Any domain spell you cast from a domain that isn't on either of your deity's lists is always heightened to 1 level lower than usual for a focus spell. For the purpose of abilities that depend on your deity's domains, the four domains you chose are your deity's domains, and any of your deity's domains you didn't choose are now among your deity's alternate domains."
+			],
+			"special": "Unless you take this feat at 1st level, changing the way you relate to your deity requires retraining, as described in the Changing Faith section below. If you take this feat and previously benefited from {@trait any} effect that requires a domain your splinter faith doesn't include, such as a domain spell from Domain Initiate, you lose that effect."
+		},
+		{
+			"name": "Syncretism",
+			"source": "LOGM",
+			"page": 105,
+			"level": 1,
+			"featType": {
+				"class": "Cleric",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Cleric"
+			],
+			"prerequisites": "you follow a deity",
+			"entries": [
+				"You have come to see the overlap between two deities' teachings. Choose a second deity. You must meet their alignment requirements, and you are subject to their edicts and anathema. If you are a cloistered cleric, select one of that deity's domains, gaining the benefits of the Expanded Domain Initiate feat (page 8) with that domain. If you are a warpriest, you gain the favored weapon of that deity as a second favored weapon, and it gains the benefits of feats and abilities you have that affect your deity's favored weapon, such as Deadly Simplicity. If you have a different doctrine than cloistered cleric or warpriest, either apply whichever of the above options is most appropriate for your doctrine, or, at the GM's discretion, add a benefit from the second deity more closely tied to your doctrine."
+			]
+		}
+	]
+}

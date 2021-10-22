@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<title>Bestiary - Pf2eTools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+	<!-- Chrome Web App Icons -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="application-name" content="Pf2eTools">
+	<meta name="theme-color" content="#5E0000">
+
+	<!-- Windows Start Menu tiles -->
+	<meta name="msapplication-config" content="browserconfig.xml"/>
+	<meta name="msapplication-TileColor" content="#5E0000">
+
+	<!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<meta name="apple-mobile-web-app-title" content="Pf2eTools">
+
+	<!-- macOS Safari Pinned Tab and Touch Bar -->
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5E0000">
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script src="js/styleswitch.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/browsercheck.js"></script>
+
+	<style>
+		img.token {
+			font-size: 1.6em;
+			right: 0.4em;
+		}
+
+		.ecgen_active .row--bestiary_sublist {
+			cursor: default;
+		}
+
+		.ecgen_active .row--bestiary_sublist:hover {
+			background: initial;
+		}
+
+		.ecgen__players_head_advanced {
+			display: none;
+			align-items: center;
+			border-bottom: 1px solid #ccc;
+			margin-bottom: 2px;
+			padding-bottom: 3px;
+			font-variant: small-caps;
+		}
+
+		.night-mode .ecgen__players_head_advanced {
+			border-color: #555;
+		}
+
+		.ecgen__group_lhs--advanced {
+			overflow-x: auto;
+		}
+
+		.ecgen__group_lhs--advanced .ecgen__players_head_simple {
+			display: none !important;
+		}
+
+		.ecgen__group_lhs--advanced .ecgen__players_head_advanced {
+			display: inline-flex;
+		}
+
+		.ecgen__del_players_filler {
+			width: 16px;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_advanced_flex {
+			align-items: center;
+		}
+
+		.ecgen__player_advanced__name,
+		.ecgen__player_advanced__name_head {
+			width: 100px;
+		}
+
+		.ecgen__player_advanced_extra_foot {
+			display: flex;
+			align-items: baseline;
+			justify-content: center;
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_advanced__level {
+			text-align: right;
+		}
+
+		.ecgen__player_advanced_narrow {
+			width: 40px;
+		}
+
+		.ecgen__wrp_add_players {
+			display: flex;
+		}
+
+		.ecgen__wrp_add_players_btn_wrp {
+			width: calc(140px + 0.5rem);
+			flex-shrink: 0;
+			flex-grow: 0;
+		}
+
+		.ecgen__player_head_tall {
+			height: 22px;
+		}
+
+		.ecgen__advanced_help {
+			display: none;
+		}
+
+		#listofsaves {
+			height: initial;
+		}
+	</style>
+</head>
+
+<body>
+<div class="viewport-wrapper">
+	<header class="hidden-xs hidden-sm page__header">
+		<div class="container">
+
+			<h1 class="page__title">Bestiary</h1>
+			<p class="page__subtitle">Search by name on the left, click creature name to display on the right.</p>
+		</div>
+	</header>
+	<nav class="container page__nav" id="navigation">
+		<ul class="nav page__nav-inner" id="navbar"></ul>
+	</nav>
+
+	<div class="view-col-group h-100 mh-0">
+		<div class="container view-col-wrapper">
+			<div class="view-col" id="listcontainer">
+				<div class="lst__form-top" id="filter-search-group">
+					<div class="w-100 relative">
+						<input type="search" id="lst__search" autocomplete="off" autocapitalize="off" spellcheck="false"
+							   class="search form-control lst__search lst__search--no-border-h">
+						<div id="lst__search-glass" class="lst__wrp-search-glass no-events flex-vh-center"><span
+							class="glyphicon glyphicon-search"></span></div>
+						<div class="lst__wrp-search-visible no-events flex-vh-center"></div>
+					</div>
+					<button class="btn btn-xs btn-default" title="Reset Selection" id="reset"><span class="glyphicon glyphicon-refresh"></span></button>
+				</div>
+
+				<div id="filtertools" class="sortlabel input-group input-group--bottom flex no-shrink">
+					<button class="col-4-2 sort btn btn-default btn-xs" data-sort="name">Name<span class="caret_wrp"></span></button>
+					<button class="col-4-1 sort btn btn-default btn-xs" data-sort="type">Type<span class="caret_wrp"></span></button>
+					<button class="col-1-7 sort btn btn-default btn-xs" data-sort="level">Level<span class="caret_wrp"></span></button>
+					<button class="col-2 sort btn btn-default btn-xs ve-grow" data-sort="source">Source<span class="caret_wrp"></span></button>
+				</div>
+
+				<ul class="list list--stats creatures">
+					<!-- populate with JS -->
+				</ul>
+			</div>
+
+			<div id="contentwrapper" class="view-col">
+				<div class="ecgen__visible mb-3">
+					<div class="row">
+						<div class="flex-h-right">
+							<div class="btn-group mr-3">
+								<button class="btn btn-primary ecgen_rng" data-mode="moderate" style="min-width: 135px;"
+										title="Randomly generate a Moderate-threat encounter">Random Moderate
+								</button>
+								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_rng">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li class="ecgen_rng_trivial" title="Randomly generate a Trivial-threat encounter"><a href="#">Random Trivial</a></li>
+									<li class="ecgen_rng_low" title="Randomly generate a Low-threat encounter"><a href="#">Random Low</a></li>
+									<li class="ecgen_rng_moderate" title="Randomly generate a Moderate-threat encounter"><a href="#">Random Moderate</a></li>
+									<li class="ecgen_rng_severe" title="Randomly generate a Severe-threat encounter"><a href="#">Random Severe</a></li>
+									<li class="ecgen_rng_extreme" title="Randomly generate an Extreme-threat encounter"><a href="#">Random Extreme</a></li>
+								</ul>
+							</div>
+
+							<div class="btn-group">
+								<button class="btn btn-primary ecgen_adj" data-mode="moderate" style="min-width: 135px;"
+										title="djust the current encounter difficulty to a Moderate-threat encounter">Adjust to Moderate
+								</button>
+								<button class="btn btn-primary dropdown-toggle" id="ecgen_dropdown_adj">
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li class="ecgen_adj_trivial" title="Adjust the current encounter difficulty to a Trivial-threat encounter"><a href="#">Adjust to Trivial</a></li>
+									<li class="ecgen_adj_low" title="Adjust the current encounter difficulty to a Low-threat encounter"><a href="#">Adjust to Low</a></li>
+									<li class="ecgen_adj_moderate" title="Adjust the current encounter difficulty to a Moderate-threat encounter"><a href="#">Adjust to Moderate</a></li>
+									<li class="ecgen_adj_severe" title="Adjust the current encounter difficulty to a Severe-threat encounter"><a href="#">Adjust to Severe</a></li>
+									<li class="ecgen_adj_extreme" title="Adjust the current encounter difficulty to an Extreme-threat encounter"><a href="#">Adjust to Extreme</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ecgen__visible mb-4" id="ecgen__wrp-save-controls"></div>
+
+				<div id="sublistcontainer" class="sublist sublist--resizable">
+					<div id="sublistsort" class="sortlabel btn-group sublist__wrp-cols">
+						<button class="col-5 sort btn btn-default btn-xs" data-sort="name">Name <span class="caret_wrp"></span></button>
+						<button class="col-3-8 sort btn btn-default btn-xs ecgen__hidden" data-sort="type">Type <span class="caret_wrp"></span></button>
+						<button class="col-3-8 sort btn btn-default btn-xs ecgen__visible" disabled>&nbsp;</button>
+						<button class="col-1-2 sort btn btn-default btn-xs" data-sort="level">Level <span class="caret_wrp"></span></button>
+						<button class="col-2 sort btn btn-default btn-xs" data-sort="count">Number <span class="caret_wrp"></span></button>
+					</div>
+					<ul class="list subcreatures">
+						<!-- populate with JS -->
+					</ul>
+					<div class="row ecgen__hidden ve-small">
+						<span class="col-6 text-right pr-2">Total:</span>
+						<span class="col-6 no-wrap pl-0" id="totalcr"></span>
+					</div>
+				</div>
+
+				<div id="stat-tabs" class="wrp-stat-tab ecgen__hidden">
+					<div id="tabs-right"></div>
+				</div>
+
+				<div id="float-token" class="ecgen__hidden relative"></div>
+
+				<div id="wrp-pagecontent" class="wrp-stats-table ecgen__hidden">
+					<div id="pagecontent" class="stats pf2-stat monster">
+						<div class="border"></div>
+						<div class="initial-message">Loading...</div>
+						<div class="border"></div>
+					</div>
+				</div>
+
+				<div class="text-center wrp-footer-buttons ecgen__hidden">
+					<button class="btn btn-success btn-xs" id="btn-encounterbuild">Encounter Builder</button>
+					<button class="btn btn-default btn-xs" id="btn-printbook">Printer View</button>
+					<button class="btn btn-xs btn-info" id="manage-brew">Manage Homebrew</button>
+				</div>
+
+				<div class="ecgen__visible--flex-col ecgen__wrp pb-1 px-2">
+					<h3 class="mt-1 m-2">Group Info</h3>
+					<div class="flex">
+						<!-- LHS -->
+						<div class="w-70 ecgen__group_lhs">
+							<div class="flex ecgen__players_head_simple">
+								<div class="w-20">Players:</div>
+								<div class="w-20">Level:</div>
+							</div>
+
+							<div class="ecgen__players_head_advanced">
+								<div class="ecgen__player_advanced__name_head mr-1 ecgen__player_head_tall">Name</div>
+								<div class="ecgen__player_advanced_narrow text-center mr-1 ecgen__player_head_tall">
+									Level
+								</div>
+								<button class="btn btn-primary btn-xs ecgen__advanced_add_col"
+										onclick="encounterBuilder.addAdvancedColumn()" title="Add Column">
+									<span class="glyphicon glyphicon-list-alt"></span>
+								</button>
+							</div>
+
+
+							<div class="ecgen__wrp_add_players mb-1">
+								<div class="ecgen__wrp_add_players_btn_wrp">
+									<button class="btn btn-primary btn-xs ecgen__add_players">
+										<span class="glyphicon glyphicon-plus"></span> Add Another Level
+									</button>
+								</div>
+							</div>
+
+							<label class="flex-v-center">
+								<div class="mr-2">Advanced Mode</div>
+								<input type="checkbox" class="ecgen__players_advanced">
+							</label>
+
+							<div class="row ecgen__advanced_help">
+								<div class="w-100">
+									<i>Additional columns will be imported into the GM Screen.</i>
+								</div>
+							</div>
+						</div>
+
+						<!-- RHS -->
+						<div class="w-30 text-right">
+							<div class="ecgen__trivial">Trivial: ? XP</div>
+							<div class="ecgen__low">Low: ? XP</div>
+							<div class="ecgen__moderate">Moderate: ? XP</div>
+							<div class="ecgen__severe">Severe: ? XP</div>
+							<div class="ecgen__extreme">Extreme: ? XP</div>
+						</div>
+					</div>
+
+					<hr class="ecgen__req_creatures hr-1">
+
+					<div class="ecgen__req_creatures">
+						<p class="ecgen__overlevel"><i>WARNING: Encounter includes over-leveled creatures.</i></p>
+						<div class="flex h3">
+							<span class="ecgen__rating">Difficulty: ?</span>
+							<span class="ecgen__xp_total" style="font-size: 0.66em; margin-left: auto !important;">Encounter XP: ?</span>
+						</div>
+					</div>
+
+					<hr class="hr-1">
+					<div class="flex-v-center mb-2">
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_url">Save to URL</button>
+						<div class="btn-group flex-v-center mr-2">
+							<button class="btn btn-primary btn-xs ecgen__sv_file">Save to File</button>
+							<button class="btn btn-primary btn-xs ecgen__ld_file">Load from File</button>
+						</div>
+						<button class="btn btn-primary btn-xs mr-2 ecgen__sv_text">Copy as Text</button>
+						<button class="btn btn-danger btn-xs ecgen__reset">Reset</button>
+					</div>
+
+					<div class="flex">
+						<button class="btn btn-default btn-xs ecgen__visible" id="btn-encounterstatblock">Back to
+							Statblocks
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>    <!--PF2ETOOLS_SCRIPT_ANCHOR-->
+
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<script src="lib/jquery-ui-slider-pip.js"></script>
+<script src="js/parser.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/utils-list.js"></script>
+<script src="js/utils-ui.js"></script>
+<script src="lib/localforage.js"></script>
+<script src="js/omnidexer.js"></script>
+<script src="js/omnisearch.js"></script>
+<script src="js/hist.js"></script>
+<script src="js/multisource.js"></script>
+<script src="js/filter.js"></script>
+<script src="js/render.js"></script>
+<script src="js/render-dice.js"></script>
+<script src="js/render-bestiary.js"></script>
+<script src="js/scalecreature.js"></script>
+<script src="js/filter-bestiary.js"></script>
+<script src="js/listpage.js"></script>
+<script src="js/bestiary.js"></script>
+<script src="js/bestiary-encounterbuilder.js"></script>
+<script src="js/list2.js"></script>
+<script src="lib/elasticlunr.js"></script>
+</body>
+</html>

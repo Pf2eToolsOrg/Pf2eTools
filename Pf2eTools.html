@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="A suite of tools for Pathfinder&nbsp;2nd&nbsp;Edition players and Game&nbsp;Masters.">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<title>Pf2eTools</title>
+
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/fontawesome.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-slider-pips.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/svg+xml" href="favicon.svg?v=1.115">
+	<link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+	<link rel="icon" type="image/png" sizes="144x144" href="favicon-144x144.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+	<link rel="icon" type="image/png" sizes="48x48" href="favicon-48x48.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+
+	<!-- Chrome Web App Icons -->
+	<link rel="manifest" href="manifest.webmanifest">
+	<meta name="application-name" content="Pf2eTools">
+	<meta name="theme-color" content="#5E0000">
+
+	<!-- Windows Start Menu tiles -->
+	<meta name="msapplication-config" content="browserconfig.xml"/>
+	<meta name="msapplication-TileColor" content="#5E0000">
+
+	<!-- Apple Touch Icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+	<link rel="apple-touch-icon" sizes="360x360" href="apple-touch-icon-360x360.png">
+	<link rel="apple-touch-icon" sizes="167x167" href="apple-touch-icon-167x167.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+	<meta name="apple-mobile-web-app-title" content="Pf2eTools">
+
+	<!-- macOS Safari Pinned Tab and Touch Bar -->
+	<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5E0000">
+
+
+	<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js");</script>
+
+	<script src="js/styleswitch.js"></script>
+	<script src="js/navigation.js"></script>
+	<script src="js/browsercheck.js"></script>
+
+	<style>
+		table.home-table {
+			padding: 0 10px 10px;
+		}
+
+		table.home-table td {
+			vertical-align: top;
+			padding: 0 5px;
+			width: 50%;
+		}
+
+		#don-wrapper {
+			position: relative;
+			margin-bottom: 7px;
+			padding: 5px 15px;
+		}
+
+		.home__btn-page {
+			border-width: 2px;
+			width: 134px;
+			height: 110px;
+			text-align: center;
+			flex-shrink: 0;
+			padding: 6px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			border-radius: 0;
+		}
+
+		@media only screen and (max-width: 1200px) {
+			.home__btn-page {
+				width: 113px;
+			}
+		}
+
+		.home__btn-page,
+		.home__btn-page:hover,
+		.home__btn-page:active,
+		.home__btn-page:focus {
+			color: #444;
+		}
+
+		.night-mode .home__btn-page,
+		.night-mode .home__btn-page:hover,
+		.night-mode .home__btn-page:active,
+		.night-mode .home__btn-page:focus {
+			color: inherit;
+		}
+
+		.home__icn-page {
+			font-size: 50px;
+			height: 50px;
+			width: 65px;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		.home__lbl-page {
+			height: 34px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 0;
+			font-size: 17px;
+			color: #333;
+		}
+
+		.home__h-player {
+			text-decoration: underline;
+			text-decoration-color: dodgerblue;
+		}
+
+		.home__h-rule {
+			text-decoration: underline;
+			text-decoration-color: #33a5a5;
+		}
+
+		.home__h-gm {
+			text-decoration: underline;
+			text-decoration-color: darkviolet;
+		}
+
+		.home__btn-player,
+		.home__btn-player:hover,
+		.home__btn-player:active,
+		.home__btn-player:focus,
+		.night-mode .home__btn-player,
+		.night-mode .home__btn-player:hover,
+		.night-mode .home__btn-player:active,
+		.night-mode .home__btn-player:focus {
+			border-color: dodgerblue;
+			color: dodgerblue;
+		}
+
+		.home__btn-rule,
+		.home__btn-rule:hover,
+		.home__btn-rule:active,
+		.home__btn-rule:focus,
+		.night-mode .home__btn-rule,
+		.night-mode .home__btn-rule:hover,
+		.night-mode .home__btn-rule:active,
+		.night-mode .home__btn-rule:focus {
+			border-color: #33a5a5;
+			color: #33a5a5;
+		}
+
+		.home__btn-gm,
+		.home__btn-gm:hover,
+		.home__btn-gm:active,
+		.home__btn-gm:focus,
+		.night-mode .home__btn-gm,
+		.night-mode .home__btn-gm:hover,
+		.night-mode .home__btn-gm:active,
+		.night-mode .home__btn-gm:focus {
+			border-color: darkviolet;
+			color: darkviolet;
+		}
+
+		.home__stripe {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding-top: 55px;
+		}
+
+		.home__stripe-header {
+			font-size: 32px;
+			font-weight: bold;
+			position: absolute;
+			top: -50px;
+			left: 0;
+			right: 0;
+		}
+
+		.home__split {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.home__split-spaced {
+			margin-right: 80px;
+		}
+
+		.home__split-spaced--gutter {
+			margin-right: 10px;
+		}
+
+		.home__wrp-buttons {
+			justify-content: center;
+		}
+
+		.home__mobile-visible {
+			display: none;
+		}
+
+		.home__narrow-visible {
+			display: none;
+		}
+
+		@media (max-width: 991px) {
+			.home__split {
+				flex-direction: column;
+			}
+
+			.home__split > * {
+				margin-bottom: 45px;
+			}
+
+			.home__split-spaced {
+				margin-right: 0;
+				margin-bottom: 15px;
+			}
+
+			.home__split-spaced--no-header {
+				margin-bottom: 0;
+			}
+
+			.home__stripe-header {
+				right: 0;
+				left: 0;
+				top: -40px;
+			}
+
+			.home__mobile-visible {
+				display: block;
+			}
+
+			.home__icn-page {
+				font-size: 50px;
+				height: 50px;
+			}
+
+			.home__btn-page {
+				height: 114px;
+				margin: 5px !important;
+			}
+
+			.home__mobile-hidden {
+				display: none !important;
+			}
+		}
+
+		@media (max-width: 507px) {
+			.home__narrow-visible {
+				display: block !important;
+			}
+
+			.home__narrow-hidden {
+				display: none !important;
+			}
+
+			.home__split-spaced--no-header {
+				margin-bottom: 15px;
+			}
+		}
+	</style>
+</head>
+<body>
+<header class="hidden-xs hidden-sm page__header">
+	<div class="container">
+
+		<h1 class="page__title page__title--home">Pf2e<span>Tools</span></h1>
+		<p class="page__subtitle">A suite of tools for 2nd Edition Pathfinder players and Game Masters.</p>
+	</div>
+</header>
+
+<nav class="container page__nav" id="navigation">
+	<ul class="nav page__nav-inner" id="navbar">
+	</ul>
+</nav>
+
+<div class="container">
+	<!--	<div class="alert alert-warning"><p><strong>Note:</strong> this is an unofficial/personal mirror, and is not-->
+	<!--		guaranteed to be up-to-date. It is not supported by the Pf2eTools team. Use at your own risk. Unless you have no-->
+	<!--		other alternative, please use the main site at <a class="alert-link" href="#" target="_blank">Main Link</a>.-->
+	<!--	</p></div>-->
+</div>
+
+<div class="home__stripe">
+	<div class="home__split relative">
+		<div class="home__stripe-header text-right home__h-player"><div class="w-100 text-center mobile__text-center">Players</div></div>
+		<div class="flex flex-wrap relative home__split-spaced home__split-spaced--gutter home__split-spaced--no-header home__wrp-buttons">
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="ancestries.html">
+				<div class="fal fa-users home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Ancestries</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="backgrounds.html">
+				<div class="fal fa-portrait home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Backgrounds</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="classes.html" title="Quickly browse the official classes, and their associated subclasses.">
+				<div class="fal fa-hat-wizard home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Classes</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__btn-player" href="archetypes.html" title="">
+				<div class="fal fa-hood-cloak home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Archetypes</h4>
+			</a>
+
+			<!-- mobile only -->
+			<a class="home__btn-page btn btn-default home__narrow-visible home__btn-player" href="feats.html">
+				<div class="fal fa-award home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Feats</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__narrow-visible home__btn-player" href="items.html">
+				<div class="fal fa-helmet-battle home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Items</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__narrow-visible home__btn-player" href="spells.html">
+				<div class="fal fa-book-spells home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Spells</h4>
+			</a>
+
+		</div>
+
+		<div class="flex flex-wrap home__wrp-buttons home__narrow-hidden">
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="feats.html">
+				<div class="fal fa-award home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Feats</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-player" href="items.html">
+				<div class="fal fa-helmet-battle home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Items</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__btn-player" href="spells.html">
+				<div class="fal fa-book-spells home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Spells</h4>
+			</a>
+		</div>
+	</div>
+
+	<div class="my-4 home__mobile-hidden home__narrow-hidden"></div>
+	<div class="my-4 home__mobile-hidden home__narrow-visible"></div>
+	<div class="my-4 home__mobile-hidden"></div>
+
+	<div class="home__split">
+		<div class="flex flex-wrap relative home__split-spaced home__split-spaced--gutter home__wrp-buttons">
+			<div class="home__stripe-header home__h-rule"><div class="w-100 text-center mobile__text-center">Rules</div></div>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="books.html" title="All the official sources published by Paizo.">
+				<div class="fal fa-books home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Books</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="quickreference.html" title="A searchable selection of commonly used rules and tables.">
+				<div class="fal fa-info-square home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Quick<br>Reference</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="actions.html" title="A searchable, filterable list of actions and activities you can take.">
+				<div class="fal fa-fist-raised home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Actions</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-rule" href="conditions.html" title="A searchable, filterable list of the conditions found in the Core Rulebook.">
+				<div class="fal fa-skull-crossbones home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Conditions</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__btn-rule" href="traits.html" title="A searchable, filterable list of all traits used in the various statblocks of Pf2e.">
+				<div class="fal fa-tags home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Traits</h4>
+			</a>
+		</div>
+
+		<div class="my-4 home__mobile-visible"></div>
+
+		<div class="flex flex-wrap relative home__wrp-buttons">
+			<div class="home__stripe-header home__h-gm"><div class="w-100 text-center">Game Masters</div></div>
+
+			<a class="home__btn-page btn btn-default mr-3 home__btn-gm" href="bestiary.html" title="A searchable, filterable list of the more than 1,000 stat blocks in Pf2e.">
+				<div class="fal fa-dragon home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">Bestiary</h4>
+			</a>
+
+			<a class="home__btn-page btn btn-default home__btn-gm" href="gmscreen.html" title="A fully-customizable Game Master's screen, featuring an initiative tracker; a unit converter, embedded images, videos, and sites; and the majority of Pf2eTools' content.">
+				<div class="fal fa-map home__icn-page"></div>
+				<h4 class="text-center home__lbl-page">GM Screen</h4>
+			</a>
+		</div>
+	</div>
+
+	<div class="my-4"></div>
+
+	<hr class="no-shrink w-100 my-0">
+</div>
+
+<main class="container">
+	<div class="w-100">
+		<h3>Use Discord?</h3>
+		<p>Join our <a href="https://discord.gg/2hzNxErtVu" target="_blank" rel="noopener noreferrer">server</a> for
+				announcements, updates, and feature voting.</p>
+
+		<h3>FAQ</h3>
+		<p><b>Can I contribute?</b> A copy of the source is available on <a
+			href="https://github.com/Pf2eTools/Pf2eTools.github.io" rel="noopener noreferrer">GitHub</a>.</p>
+		<p><b>Browser and device support?</b> The latest desktop versions of Chrome and Firefox.</p>
+		<p><b>Where's my stuff?</b> There's no account system. Everything is stored in cookies. If you wipe those, or
+			close your incognito window, it's gone forever. You can download your data for safekeeping via the Settings
+			menu.</p>
+		<p><b>Anything else I should know?</b> Hold <kbd>SHIFT</kbd> when hovering to lock a window in place.
+			Everything has tooltips. You will forever be a GM.</p>
+	</div>
+</main>
+<footer class="container">
+	<p class="text-center">
+		Version
+		<a href="changelog.html" id="version_number">?</a>
+		| <a href="licenses.html">&nbsp;&copy;&nbsp;</a><span id="current_year"></span>
+		Pf2eTools
+		<br>
+	</p>
+</footer>
+<!--PF2ETOOLS_SCRIPT_ANCHOR-->
+
+<script src="js/parser.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/utils-ui.js"></script>
+<script src="lib/localforage.js"></script>
+<script src="js/omnidexer.js"></script>
+<script src="js/omnisearch.js"></script>
+<script src="js/render.js"></script>
+<script src="js/render-dice.js"></script>
+<script src="js/scalecreature.js"></script>
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<script src="lib/jquery-ui-slider-pip.js"></script>
+<script src="lib/elasticlunr.js"></script>
+<script>
+	ExcludeUtil.pInitialise();
+
+	$(`#current_year`).text((new Date).getFullYear());
+	$(`#version_number`).text(VERSION_NUMBER);
+</script>
+</body>
+</html>

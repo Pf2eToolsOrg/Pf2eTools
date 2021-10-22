@@ -1,0 +1,277 @@
+/*
+Shared UI components
+ */
+
+@import 'vars';
+
+/* region Misc/Shared */
+.ui__ {
+	&ipt-color {
+		&::-webkit-color-swatch {
+			border: 0;
+		}
+	}
+}
+/* endregion */
+
+/* region Source overlay */
+.night-mode .ui-source__ {
+	&divider {
+		background: $rgb-border-grey--night;
+	}
+}
+/* endregion */
+
+/* region Modals */
+.night-mode .ui-modal__ {
+	&header {
+		&--border {
+			border-color: $rgb-border-grey--trans-night;
+		}
+	}
+
+	&footer {
+		border-color: $rgb-border-grey--trans-night;
+	}
+
+	&overlay-blind {
+		background-color: $rgb-bg--night;
+	}
+
+	&row-sep {
+		border-color: $rgb-border-grey--night;
+	}
+
+	&inner--mode-fullscreen {
+		box-shadow: none;
+	}
+}
+/* endregion */
+
+/* region Search */
+.night-mode .ui-search__ {
+	&row {
+		border-color: $rgb-border-grey--night;
+
+		&:hover {
+			background: $rgb-off-black;
+		}
+	}
+
+	&ipt-search-sub-wrp {
+		border-color: $rgb-border-grey--night;
+	}
+}
+/* endregion */
+
+/* region Tabs */
+.night-mode .ui-tab__ {
+	&btn-tab-head {
+		&--active {
+			background-color: $rgb-btn-default-active--night;
+		}
+	}
+
+	&wrp-tab-body {
+		&--background {
+			background: $rgb-bg--night;
+		}
+	}
+
+	&wrp-tab-heads--border {
+		border-color: $rgb-border-grey--night;
+		border-width: 2px;
+	}
+}
+/* endregion */
+
+/* region Proficiency */
+.night-mode .ui-prof__ {
+	&btn-cycle {
+		border-color: $rgb-border-grey--night;
+
+		&:active {
+			@include shadow-active--night();
+		}
+
+		&[data-state='0'] {
+			background: $rgb-bg--night;
+		}
+
+		&[data-state='1'] {
+			background: $rgb-border-grey--night;
+			border-color: lighten($rgb-border-grey--night, 10%);
+		}
+
+		&[data-state='2'] {
+			background: $rgb-border-grey--night;
+			border-color: lighten($rgb-border-grey--night, 10%);
+
+			&::before {
+				color: $rgb-bg--night;
+			}
+		}
+
+		&[data-state='3'] {
+			background: repeating-linear-gradient(135deg, $rgb-bg--night, $rgb-bg--night 10px, $rgb-border-grey--night 10px, $rgb-border-grey--night 20px);
+			border-color: lighten($rgb-border-grey--night, 10%);
+		}
+	}
+}
+/* endregion */
+
+/* region Direction picker */
+.night-mode .ui-dir__ {
+	&face {
+		background: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+	}
+
+	&arm {
+		background: $rgb-font--night;
+		box-shadow: none;
+	}
+}
+/* endregion */
+
+/* region Hover tips */
+.night-mode .ui-tip__ {
+	&child {
+		border-color: $rgb-border-grey--night;
+		background: $rgb-bg--night;
+	}
+}
+/* endregion */
+
+/* region Context menu */
+.night-mode .ui-ctx {
+	&__wrp {
+		background: $rgb-bg--night;
+		border: 1px solid $rgb-border-grey--trans-night;
+		border-top-color: $rgb-border-grey--night;
+	}
+
+	&__divider {
+		background: $rgb-border-grey--night;
+	}
+
+	&__row {
+		&:hover {
+			background: $rgb-bg--alt-night;
+			color: white;
+		}
+
+		&.disabled,
+		&.disabled:hover {
+			background: $rgb-bg--night;
+			color: $rgb-font--night;
+		}
+	}
+}
+/* endregion */
+
+/* region Picker */
+.night-mode .ui-pick {
+	&__ {
+		&disp-text {
+			border-color: $rgb-border-grey--night;
+		}
+	}
+}
+/* endregion */
+
+/* region Decorated inputs */
+.night-mode .ui-ideco__ {
+	&btn-ticker {
+		background: $rgb-border-grey--night;
+		color: white;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:active:focus {
+			box-shadow: none;
+			outline: none;
+		}
+
+		&:hover {
+			background: darken($rgb-border-grey--night, $pct-darken-hover);
+			color: white;
+		}
+
+		&:active,
+		&:focus,
+		&:active:focus {
+			background: darken($rgb-border-grey--night, $pct-darken-active);
+			color: white;
+		}
+	}
+}
+/* endregion */
+
+/* region Select2 */
+.night-mode .ui-sel2__ {
+	&ipt-search {
+		background: transparent;
+	}
+
+	&wrp-options {
+		background-color: $rgb-bg--night;
+		border-color: $rgb-border-grey--night;
+	}
+
+	&disp-option {
+		&.active,
+		&:focus,
+		&:hover {
+			background: $rgb-bg--alt-night;
+		}
+
+		&:focus.active,
+		&:hover.active {
+			background: lighten($rgb-bg--alt-night, $pct-darken-active);
+		}
+	}
+}
+/* endregion */
+
+/* region Range Slider */
+.night-mode .ui-slidr {
+	&__ {
+		&thumb {
+			background: $rgb-border-grey--trans;
+			border-color: $rgb-font--night;
+
+			&--hover,
+			&:hover {
+				background: lighten($rgb-border-grey--trans, 10%);
+				border-color: $rgb-font--night;
+			}
+		}
+
+		&track-outer {
+			border-color: $rgb-border-grey--night;
+		}
+
+		&track-inner {
+			background: $rgb-border-grey--trans-night;
+		}
+
+		&disp-value {
+			&--visible {
+				border-color: $rgb-border-grey--night;
+				background: $rgb-bg--night;
+			}
+		}
+
+		&pip {
+			background: $rgb-font--night;
+		}
+
+		&btn {
+			border-color: $rgb-border-grey--night;
+			background: $rgb-bg--night;
+		}
+	}
+}
+/* endregion */
