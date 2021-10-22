@@ -26,6 +26,8 @@
 		"build:sw": "node node/generate-service-worker.js",
 		"build": "npm run clean-jsons && npm run gen-all && npm run build:css && npm run build:sw",
 		"preversion": "npm test",
+		"predeploy": "bash build/deploy-prep-prod.sh",
+		"deploy": "gh-pages -d build",
 		"version": "node node/version-bump.js"
 	},
 	"repository": {
@@ -51,7 +53,7 @@
 	"bugs": {
 		"url": "https://github.com/Pf2eTools/Pf2eTools.github.io/issues"
 	},
-	"homepage": "https://github.com/Pf2eTools/Pf2eTools.github.io#readme",
+	"homepage": "https://github.com/Pf2eTools/Pf2eTools.github.io/Pf2eTools.html",
 	"main": ".eslintrc.js",
 	"directories": {
 		"lib": "lib",
