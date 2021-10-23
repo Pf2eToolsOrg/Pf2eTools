@@ -3143,7 +3143,7 @@
 			"sustain": false,
 			"dismiss": true,
 			"entries": [
-				"Drawing upon the deepest wells of magic in an elemental plane, you transform into a spectacular elemental. You can choose between an air elemental, earth elemental, fire elemental, or water elemental. Your battle form is Gargantuan, and you must have enough space to expand into or the spell is lost. While in this form, you gain the {@trait elemental} trait and the trait for the element you choose.",
+				"Drawing upon the deepest wells of magic in an elemental plane, you transform into a spectacular elemental. You can choose between an air elemental, earth elemental, fire elemental, or water elemental. Your battle form is {@trait Gargantuan}, and you must have enough space to expand into or the spell is lost. While in this form, you gain the {@trait elemental} trait and the trait for the element you choose.",
 				"You can {@action Dismiss} the spell.",
 				"You gain the following statistics and abilities regardless of which battle form you choose:",
 				{
@@ -4285,7 +4285,7 @@
 					},
 					{
 						"level": 9,
-						"entry": "The hand has AC 35 and 90 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Crush, Grasp, Punch, or Swat. • Crush If the hand doesn't have a target {@condition grabbed}, it Flies to an enemy of your choice within range and attempts to {@action Strike} that enemy with deadly crushing force. The hand's Strikes are melee spell attacks that deal {@damage 6d8} force damage. The hand's Strikes don't take or contribute to your multiple attack penalty. On a successful {@action Strike}, the target is {@condition grabbed} by the hand until the end of your next turn, unless the hand moves or the target successfully Escapes against your spell DC. However, if the hand has a target {@condition grabbed} when it uses Crush, it instead Constricts the target, dealing {@damage 6d8} force damage with a basic Fortitude save."
+						"entry": "The hand has AC 35 and 90 Hit Points, and it is Large. When you {@action Cast a Spell||Cast this Spell}, you can choose to replace the hand's Manipulate or Attack option with Crush, Grasp, Punch, or Swat. • Crush If the hand doesn't have a target {@condition grabbed}, it Flies to an enemy of your choice within range and attempts to {@action Strike} that enemy with deadly crushing force. The hand's Strikes are melee spell attacks that deal {@damage 6d8} force damage. The hand's Strikes don't take or contribute to your multiple attack penalty. On a successful {@action Strike}, the target is {@condition grabbed} by the hand until the end of your next turn, unless the hand moves or the target successfully {@action Escape||Escapes} against your spell DC. However, if the hand has a target {@condition grabbed} when it uses Crush, it instead Constricts the target, dealing {@damage 6d8} force damage with a basic Fortitude save."
 					}
 				],
 				"no_x": null
@@ -7400,15 +7400,15 @@
 				"x": [
 					{
 						"level": 4,
-						"entry": "Your battle form is Large, and your attacks have 10-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 30 temporary HP; resistance 7 to acid, piercing, and slashing; attack modifier +16; damage bonus +9; and {@skill Athletics} +16. Your motion sense has a range of 40 feet."
+						"entry": "Your battle form is {@trait Large}, and your attacks have 10-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 30 temporary HP; resistance 7 to acid, piercing, and slashing; attack modifier +16; damage bonus +9; and {@skill Athletics} +16. Your motion sense has a range of 40 feet."
 					},
 					{
 						"level": 5,
-						"entry": "Your battle form is Huge, and your attacks have 15-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 40 temporary HP; resistance 10 to acid, piercing, and slashing; attack modifier +18; damage bonus +6 and double damage dice; and {@skill Athletics} +20. Your motion sense has a range of 60 feet."
+						"entry": "Your battle form is {@trait Huge}, and your attacks have 15-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 40 temporary HP; resistance 10 to acid, piercing, and slashing; attack modifier +18; damage bonus +6 and double damage dice; and {@skill Athletics} +20. Your motion sense has a range of 60 feet."
 					},
 					{
 						"level": 8,
-						"entry": "Your battle form is Gargantuan (20-footby- 20-foot space), and your attacks have 20-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 60 temporary HP; resistance 12 to acid, piercing, and slashing; attack modifier +28; damage bonus +13 and double damage dice; and {@skill Athletics} +29. Your motion sense has a range of 60 feet."
+						"entry": "Your battle form is {@trait Gargantuan} (20-foot by 20-foot space), and your attacks have 20-foot reach. You must have enough space to expand into or the spell is lost. You instead gain 60 temporary HP; resistance 12 to acid, piercing, and slashing; attack modifier +28; damage bonus +13 and double damage dice; and {@skill Athletics} +29. Your motion sense has a range of 60 feet."
 					}
 				],
 				"no_x": null
@@ -10397,13 +10397,13 @@
 			"dismiss": false,
 			"entries": [
 				"You conjure a jagged lance of stone and then launch it at a foe. Make a spell attack roll against the target.",
-				"On a hit, you deal {@damage 6d6} piercing damage and the lance impales the creature, giving it a \u201310-foot circumstance penalty to its Speeds unless it Escapes. On a critical hit, if the creature is on the ground, the lance also embeds into the ground and immobilizes the creature until it Escapes. A creature that Escapes after being impaled takes 3 {@condition persistent damage ||persistent bleed damage}. When the spell ends, the lance crumbles into dirt, freeing the target if it hasn't Escaped."
+				"On a hit, you deal {@damage 6d6} piercing damage and the lance impales the creature, giving it a \u201310-foot circumstance penalty to its Speeds unless it {@action Escape||Escapes}. On a critical hit, if the creature is on the ground, the lance also embeds into the ground and immobilizes the creature until it {@action Escape||Escapes}. A creature that {@action Escape||Escapes} after being impaled takes 3 {@condition persistent damage ||persistent bleed damage}. When the spell ends, the lance crumbles into dirt, freeing the target if it hasn't Escaped."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "Increase the damage by {@dice 2d6} and the {@condition persistent damage ||persistent bleed damage} for Escapes by 1."
+					"entry": "Increase the damage by {@dice 2d6} and the {@condition persistent damage ||persistent bleed damage} for {@action Escape||Escapes} by 1."
 				},
 				"x": null,
 				"no_x": null
@@ -10519,7 +10519,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a chaotic celestial, monitor, or fiend to fight on your behalf. You summon a common chaotic creature that has the celestial, {@trait monitor}, or {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of creatures, even if their alignments match. Heightening the spell increases the maximum level of creature you can summon."
+				"You conjure a {@trait chaotic} {@trait celestial}, {@trait monitor}, or {@trait fiend} to fight on your behalf. You summon a common chaotic creature that has the {@trait celestial}, {@trait monitor}, or {@trait fiend} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of creatures, even if their alignments match. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
 				"heightened": true,
@@ -10527,23 +10527,23 @@
 				"x": [
 					{
 						"level": 6,
-						"entry": "Level 7."
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 7,
-						"entry": "Level 9."
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 8,
-						"entry": "Level 11."
+						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 9,
-						"entry": "Level 13."
+						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 10,
-						"entry": "Level 15."
+						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					}
 				],
 				"no_x": null
@@ -10596,9 +10596,9 @@
 			"dismiss": false,
 			"entries": [
 				"You briefly call forth the spirit of a legendary wizard from ages long past, which manifests as an immense humanoid figure (typically an elf or a human). The archmage occupies the space of a Large creature and has a Speed of 60 feet.",
-				"Arrive (evocation, force) Archmage's Amplification The archmage arrives in a fierce burst of magical force, automatically dealing {@damage 3d4+3} force damage to up to 5 creatures it chooses within 100 feet of it. Like magic missiles, this can be blocked by the {@spell shield} spell.",
+				"{@b Arrive} ({@trait evocation}, {@trait force}) {@i Archmage's Amplification} The archmage arrives in a fierce burst of magical force, automatically dealing {@damage 3d4+3} force damage to up to 5 creatures it chooses within 100 feet of it. Like magic missiles, this can be blocked by the {@spell shield} spell.",
 				"The archmage also feeds magical power into some spells. Beneficial spells last longer due to the archmage's influence. When the remaining duration of a beneficial spell affecting you or one of your allies would decrease (usually at the start of the caster's turn), it doesn't decrease if the subject of the spell is within 100 feet of the archmage. This applies only if the spell's maximum duration was 3 rounds or longer.",
-				"Depart (abjuration) Archmage's Rebuke The archmage drains the magic from your foes. Each of your enemies within 100 feet of the archmage must attempt a Will save. On a failure, the creature is {@condition stupefied 2} for 1 round, and if it's currently benefiting from any spells of a lower level than summon archmage, the archmage can choose any one of them and end the spell."
+				"{@b Depart} ({@trait abjuration}) {@i Archmage's Rebuke} The archmage drains the magic from your foes. Each of your enemies within 100 feet of the archmage must attempt a Will save. On a failure, the creature is {@condition stupefied 2} for 1 round, and if it's currently benefiting from any spells of a lower level than summon archmage, the archmage can choose any one of them and end the spell."
 			],
 			"heightened": {
 				"heightened": false,
@@ -10652,15 +10652,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a lawful celestial, monitor, or fiend to fight on your behalf. You summon a common lawful creature that has the celestial, {@trait monitor}, or {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of creatures, even if their alignments match. Heightening the spell increases the maximum level of creature you can summon."
+				"You conjure a {@trait lawful} {@trait celestial}, {@trait monitor}, or {@trait fiend} to fight on your behalf. You summon a common lawful creature that has the {@trait celestial}, {@trait monitor}, or {@trait fiend} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=monitor;celestial;fiend|Alignment=LE;LG;LN}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of creatures, even if their alignments match. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As summon anarch."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -10714,20 +10733,36 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Lawful} Good: Arrive (enchantment, good, lawful) Aura of Retribution While within 100 feet of the herald, you and your allies gain the champion's {@action Retributive Strike} reaction (Core Rulebook 107); Depart Holy Smite The herald casts 5th-level {@spell divine wrath} (choosing good) in a 100-foot emanation.",
-						"{@bold Neutral} Good: Arrive (enchantment, good) Aura of Redemption While within 100 feet of the herald, you and your allies gain the champion's {@action Glimpse of Redemption} reaction (Core Rulebook 107); Depart Merciful Healing The herald casts the 3-action version of 5th-level {@spell heal} with a radius of 100 feet. This spell targets only you and your allies.",
-						"{@bold Chaotic} Good: Arrive (chaotic, enchantment, good) Aura of Liberation While within 100 feet of the herald, you and your allies gain the champion's {@action Liberating Step} reaction (Core Rulebook 107); Depart Radiating Freedom The herald affects you and all your allies within 100 feet with freedom of movement. The duration is reduced to 3 rounds.",
-						"{@bold Lawful} Neutral: Arrive (abjuration, lawful) Defy Chaos You and each ally within 100 feet of the herald gain resistance 20 against chaotic damage while the herald is present; Depart Order's Wrath The herald casts 5th-level {@spell divine wrath} (choosing lawful) in a 100-foot emanation.",
-						"Neutral: Arrive (transmutation) Quickening Ripple You and each ally within 100 feet of the herald are {@condition quickened} while the herald is present, and can use the additional action to {@action Step}, {@action Stride}, or {@action Strike}; Depart Sapping Beam The herald casts 6th-level {@spell enervation|APG} (Advanced Player's Guide 218) in a 100‑foot line.",
-						"{@bold Chaotic} Neutral: Arrive (abjuration, chaotic) Defy Law You and each ally within 100 feet of the herald gain resistance 20 against lawful damage while the herald is present; Depart Chaos Hammer The herald casts 5th-level {@spell divine wrath} (choosing chaotic) in a 100-foot emanation.",
-						"{@bold Lawful} Evil: Arrive Aura of Iron While within 100 feet of the herald, you and your allies gain the champion's {@action Iron Command|APG} reaction (Advanced Player's Guide 117); Depart Unholy Blight The herald casts 5th-level {@spell divine wrath} (choosing evil) in a 100‑foot emanation.",
-						"{@bold Neutral} Evil: Arrive Aura of Selfishness While within 100 feet of the herald, you and your allies gain the champion's {@action Selfish Shield|APG} reaction (Advanced Player's Guide 117); Depart Infinite Despair The herald casts 5th-level {@spell crushing despair} in a 100-foot cone.",
-						"{@bold Chaotic} Evil: Arrive Aura of Vengeance While within 100 feet of the herald, you and your allies gain the champion's {@action Destructive Vengeance|APG} reaction (Advanced Player's Guide 117); Depart Weapon Hurricane The herald casts 5th-level {@spell weapon storm} in a 100-foot cone, using d12 for the die size.",
-						"Neutral: Arcanotheign ({@deity Nethys}), Personification of Fury ({@deity Gozreh}), Steward of the Skein ({@deity Pharasma})",
-						"{@bold Chaotic} Neutral: The First Blade ({@deity Gorum}), the Menotherian ({@deity Calistria})",
-						"{@bold Lawful} Evil: Basileus ({@deity Asmodeus}), the Prince in Chains ({@deity Zon-Kuthon})",
-						"{@bold Neutral} Evil: Mother's Maw ({@deity Urgathoa}), the Stabbing Beast ({@deity Norgorber})",
-						"{@bold Chaotic} Evil: Tarrasque ({@deity Rovagug}), Yethazmari ({@deity Lamashtu})"
+						"{@bold Lawful Good: Arrive} ({@trait enchantment}, {@trait good}, {@trait lawful}) {@i Aura of Retribution} While within 100 feet of the herald, you and your allies gain the champion's {@action Retributive Strike} reaction; {@b Depart} {@i Holy Smite} The herald casts 5th-level {@spell divine wrath} (choosing good) in a 100-foot emanation.",
+						"{@bold Neutral Good: Arrive} ({@trait enchantment}, {@trait good}) {@i Aura of Redemption} While within 100 feet of the herald, you and your allies gain the champion's {@action Glimpse of Redemption} reaction; {@b Depart} {@i Merciful Healing} The herald casts the 3-action version of 5th-level {@spell heal} with a radius of 100 feet. This spell targets only you and your allies.",
+						"{@bold Chaotic Good: Arrive} ({@trait chaotic}, {@trait enchantment}, {@trait good}) {@i Aura of Liberation} While within 100 feet of the herald, you and your allies gain the champion's {@action Liberating Step} reaction; {@b Depart} {@i Radiating Freedom} The herald affects you and all your allies within 100 feet with {@spell freedom of movement}. The duration is reduced to 3 rounds.",
+						"{@bold Lawful Neutral: Arrive} ({@trait abjuration}, {@trait lawful}) {@i Defy Chaos} You and each ally within 100 feet of the herald gain resistance 20 against chaotic damage while the herald is present; {@b Depart} {@i Order's Wrath} The herald casts 5th-level {@spell divine wrath} (choosing lawful) in a 100-foot emanation.",
+						"{@bold Neutral: Arrive} ({@trait transmutation}) {@i Quickening Ripple} You and each ally within 100 feet of the herald are {@condition quickened} while the herald is present, and can use the additional action to {@action Step}, {@action Stride}, or {@action Strike}; {@b Depart} {@i Sapping Beam} The herald casts 6th-level {@spell enervation|APG} in a 100‑foot line.",
+						"{@bold Chaotic Neutral: Arrive} ({@trait abjuration}, {@trait chaotic}) {@i Defy Law} You and each ally within 100 feet of the herald gain resistance 20 against lawful damage while the herald is present; {@b Depart} {@i Chaos Hammer} The herald casts 5th-level {@spell divine wrath} (choosing chaotic) in a 100-foot emanation.",
+						"{@bold Lawful Evil: Arrive} {@i Aura of Iron} While within 100 feet of the herald, you and your allies gain the champion's {@action Iron Command|APG} reaction; {@b Depart} {@i Unholy Blight} The herald casts 5th-level {@spell divine wrath} (choosing evil) in a 100‑foot emanation.",
+						"{@bold Neutral Evil: Arrive} {@i Aura of Selfishness} While within 100 feet of the herald, you and your allies gain the champion's {@action Selfish Shield|APG} reaction; {@b Depart} {@i Infinite Despair} The herald casts 5th-level {@spell crushing despair} in a 100-foot cone.",
+						"{@bold Chaotic Evil: Arrive} {@i Aura of Vengeance} While within 100 feet of the herald, you and your allies gain the champion's {@action Destructive Vengeance|APG} reaction; {@b Depart} {@i Weapon Hurricane} The herald casts 5th-level {@spell weapon storm} in a 100-foot cone, using {@damage d12} for the die size."
+					]
+				},
+				{
+					"type": "pf2-sample-box",
+					"name": "Herald Examples",
+					"entries": [
+						"Each of the many deities of Golarion have their own herald; these are just a few of the most prominent.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Lawful Good:} The Grand Defender ({@deity Torag}), the Grim White Stag ({@deity Erastil}), Hand of the Inheritor ({@deity Iomedae})",
+								"{@bold Neutral Good:} The Spirit of Adoration ({@deity Shelyn}), Sunlord Thalachos ({@deity Sarenrae})",
+								"{@bold Chaotic Good:} Night Monarch ({@deity Desna}), Thais ({@deity Cayden Cailean})",
+								"{@bold Lawful Neutral:} Lawgiver ({@deity Abadar}), The Old Man ({@deity Irori})",
+								"{@bold Neutral:} Arcanotheign ({@deity Nethys}), Personification of Fury ({@deity Gozreh}), Steward of the Skein ({@deity Pharasma})",
+								"{@bold Chaotic Neutral:} The First Blade ({@deity Gorum}), the Menotherian ({@deity Calistria})",
+								"{@bold Lawful Evil:} Basileus ({@deity Asmodeus}), the Prince in Chains ({@deity Zon-Kuthon})",
+								"{@bold Neutral Evil:} Mother's Maw ({@deity Urgathoa}), the Stabbing Beast ({@deity Norgorber})",
+								"{@bold Chaotic Evil:} Tarrasque ({@deity Rovagug}), Yethazmari ({@deity Lamashtu})"
+							]
+						}
 					]
 				}
 			],
@@ -10784,9 +10819,9 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You momentarily summon an army of powerful dragons that unleash annihilating blasts as they descend upon your location. These dragons act as one and collectively occupy the space of a Gargantuan creature. They have a fly Speed of 100 feet. When you {@action Cast a Spell||Cast this Spell}, choose whether it summons chromatic or metallic dragons.",
-				"Arrive (evocation) Energy Annihilation The draconic legion breathes out two blasts of energy: a 120-foot line and a 60-foot cone that can't overlap. Each creature in either of the areas takes {@dice 10d8} damage (basic Reflex save). The dragons choose the damage type of each breath weapon, depending on the category of dragons summoned. Chromatic dragons can choose cold, fire, or poison for the cone and acid or electricity for the line; metallic dragons can choose cold or fire for the cone and acid, electricity, or fire for the line.",
-				"Depart Draconic Whirlwind The draconic legion strikes with fury, dealing {@damage 9d8} slashing damage (basic Reflex save) to all enemy creatures in its location or within 20 feet."
+				"You momentarily summon an army of powerful dragons that unleash annihilating blasts as they descend upon your location. These dragons act as one and collectively occupy the space of a {@trait Gargantuan} creature. They have a fly Speed of 100 feet. When you {@action Cast a Spell||Cast this Spell}, choose whether it summons chromatic or metallic dragons.",
+				"{@b Arrive} ({@trait evocation}) {@i Energy Annihilation} The draconic legion breathes out two blasts of energy: a 120-foot line and a 60-foot cone that can't overlap. Each creature in either of the areas takes {@dice 10d8} damage (basic Reflex save). The dragons choose the damage type of each breath weapon, depending on the category of dragons summoned. Chromatic dragons can choose cold, fire, or poison for the cone and acid or electricity for the line; metallic dragons can choose cold or fire for the cone and acid, electricity, or fire for the line.",
+				"{@b Depart} {@i Draconic Whirlwind} The draconic legion strikes with fury, dealing {@damage 9d8} slashing damage (basic Reflex save) to all enemy creatures in its location or within 20 feet."
 			],
 			"heightened": {
 				"heightened": false,
@@ -10843,16 +10878,16 @@
 			"dismiss": false,
 			"entries": [
 				"You briefly conjure a kaiju, a massive, rampaging monster with a unique name and legendary reputation.",
-				"It rises from its secluded lair to annihilate your foes. The summoned kaiju occupies the space of a Gargantuan creature. When you {@action Cast a Spell||Cast this Spell}, choose one of the kaiju below to summon.",
+				"It rises from its secluded lair to annihilate your foes. The summoned kaiju occupies the space of a {@trait Gargantuan} creature. When you {@action Cast a Spell||Cast this Spell}, choose one of the kaiju below to summon.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Agmazar the Star Titan} Speed 100 feet, climb 50 feet; Arrive (necromancy, negative) Channel Void Each foe in a 100-foot emanation takes {@damage 16d8} negative energy damage with a basic Fortitude save; Depart (transmutation) Gravitic Repulsion Each foe in a 50-foot emanation is pushed 100 feet away unless it succeeds at a Fortitude save.",
-						"{@bold Agyra, the Forever Storm} Speed 80 feet, fly 200 feet; Arrive (electricity, evocation) Breath of a Thousand Storms Agyra shoots two 1,200-foot lines of electricity, one from each of her heads. The lines can't overlap. Each creature along one of the lines takes {@damage 6d12} electricity damage with a basic Reflex save. On a failure, the creature is also {@condition slowed 1} for 1 round (or for 1 minute on a critical failure); Depart (evocation, sonic) Thunderous Blast Each creature within a 100-foot emanation takes {@damage 6d10} sonic damage with a basic Reflex save, and is also knocked {@condition prone} on a failed save.",
-						"{@bold Bezravnis, the Inferno Below} Speed 100 feet, burrow 100 feet; Arrive (earth, evocation) {@action Burrow} from the Earth's Heart Bezravnis explodes from the ground where it was summoned, causing all creatures in a 50-foot emanation to take {@damage 8d12} bludgeoning damage with a basic Reflex save. This potentially collapses structures with the collapse effect of the {@spell earthquake} spell, except there is no chance of falling into a fissure; Depart Web Hurricane Bezravnis departs with a hurricane of webbing. All creatures within a 50-foot emanation must succeed at a Reflex save or take a \u201320-foot circumstance penalty to its Speeds until it Escapes (or is {@condition immobilized} until it escapes on a critical failure). The {@action Escape} DC is your spell DC.",
-						"{@bold Mogaru, the Final King} Speed 100 feet, swim 100 feet; Arrive (auditory, enchantment, mental) Trance of the King's Melody Mogaru manifests with a burst of the song that summoned him, requiring all foes within 60 feet who can hear him to attempt a Will save, leaving them {@condition stunned 3} on a failure; Depart (evocation, fire) Volcanic Breath Mogaru unleashes his scorching breath in a 120-foot cone. Each creature in the area takes {@damage 10d6} fire damage with a basic Reflex save. On a failure, it also takes {@damage 4d6} {@condition persistent damage ||persistent fire damage}.",
-						"{@bold Vorgozen, the Shapeless Feeder} Speed 50 feet, climb 50 feet, swim 100 feet; Arrive (necromancy) Pollute Magic Vorgozen's foul presence pollutes magic around her. Each of your enemies within a 60-foot emanation that are under the effects of a spell must attempt a Fortitude save. On a failure, the creature is {@condition sickened 2}. Any of your enemies that {@action Cast a Spell||Casts a Spell} within 60 feet of Vorgozen must attempt a Fortitude save with the same effects unless it's already {@condition sickened}; Depart (acid, evocation) Beam of Purest Vitriol Each creature in a 1,200-foot line takes {@damage 10d6} acid damage and {@damage 10d6} bludgeoning damage with a basic Fortitude save.",
-						"{@bold Yarthoon, the Moon Grub} Speed 60 feet, burrow 100 feet, fly 100 feet, swim 100 feet; Arrive (cold, evocation) Algid Beam Barrage Yarthoon fires countless beams, targeting each of your enemies within 200 feet of it. The beams deal {@damage 10d6} cold damage with a basic Reflex save; Depart (cold, conjuration, water) Frostbite Mist Chilling mist surges out in a 100‑foot burst centered on Yarthoon and remains for 1 minute. This mist has the effects of obscuring mist, plus any creature within the area at the end of its turn take {@damage 5d6} cold damage with a basic Fortitude save."
+						"{@bold Agmazar the Star Titan} Speed 100 feet, climb 50 feet; {@b Arrive} ({@trait necromancy}, {@trait negative}) {@i Channel Void} Each foe in a 100-foot emanation takes {@damage 16d8} negative energy damage with a basic Fortitude save; {@b Depart} (transmutation) Gravitic Repulsion Each foe in a 50-foot emanation is pushed 100 feet away unless it succeeds at a Fortitude save.",
+						"{@bold Agyra, the Forever Storm} Speed 80 feet, fly 200 feet; {@b Arrive} ({@trait electricity}, {@trait evocation}) {@i Breath of a Thousand Storms} Agyra shoots two 1,200-foot lines of electricity, one from each of her heads. The lines can't overlap. Each creature along one of the lines takes {@damage 6d12} electricity damage with a basic Reflex save. On a failure, the creature is also {@condition slowed 1} for 1 round (or for 1 minute on a critical failure); {@b Depart} ({@trait evocation}, {@trait sonic}) {@i Thunderous Blast} Each creature within a 100-foot emanation takes {@damage 6d10} sonic damage with a basic Reflex save, and is also knocked {@condition prone} on a failed save.",
+						"{@bold Bezravnis, the Inferno Below} Speed 100 feet, burrow 100 feet; {@b Arrive} ({@trait earth}, {@trait evocation}) {@i Burrow from the Earth's Heart} Bezravnis explodes from the ground where it was summoned, causing all creatures in a 50-foot emanation to take {@damage 8d12} bludgeoning damage with a basic Reflex save. This potentially collapses structures with the collapse effect of the {@spell earthquake} spell, except there is no chance of falling into a fissure; {@b Depart} {@i Web Hurricane} Bezravnis departs with a hurricane of webbing. All creatures within a 50-foot emanation must succeed at a Reflex save or take a \u201320-foot circumstance penalty to its Speeds until it {@action Escape||Escapes} (or is {@condition immobilized} until it escapes on a critical failure). The {@action Escape} DC is your spell DC.",
+						"{@bold Mogaru, the Final King} Speed 100 feet, swim 100 feet; {@b Arrive} ({@trait auditory}, {@trait enchantment}, {@trait mental}) {@i Trance of the King's Melody} Mogaru manifests with a burst of the song that summoned him, requiring all foes within 60 feet who can hear him to attempt a Will save, leaving them {@condition stunned 3} on a failure; {@b Depart} ({@trait evocation}, {@trait fire}) {@i Volcanic Breath} Mogaru unleashes his scorching breath in a 120-foot cone. Each creature in the area takes {@damage 10d6} fire damage with a basic Reflex save. On a failure, it also takes {@damage 4d6} {@condition persistent damage||persistent fire damage}.",
+						"{@bold Vorgozen, the Shapeless Feeder} Speed 50 feet, climb 50 feet, swim 100 feet; {@b Arrive} ({@trait necromancy}) {@i Pollute Magic} Vorgozen's foul presence pollutes magic around her. Each of your enemies within a 60-foot emanation that are under the effects of a spell must attempt a Fortitude save. On a failure, the creature is {@condition sickened 2}. Any of your enemies that {@action Cast a Spell||Casts a Spell} within 60 feet of Vorgozen must attempt a Fortitude save with the same effects unless it's already {@condition sickened}; {@b Depart} ({@trait acid}, {@trait evocation}) {@i Beam of Purest Vitriol} Each creature in a 1,200-foot line takes {@damage 10d6} acid damage and {@damage 10d6} bludgeoning damage with a basic Fortitude save.",
+						"{@bold Yarthoon, the Moon Grub} Speed 60 feet, burrow 100 feet, fly 100 feet, swim 100 feet; {@b Arrive} ({@trait cold}, {@trait evocation}) {@i Algid Beam Barrage} Yarthoon fires countless beams, targeting each of your enemies within 200 feet of it. The beams deal {@damage 10d6} cold damage with a basic Reflex save; {@b Depart} ({@trait cold}, {@trait conjuration}, {@trait water}) {@i Frostbite Mist} Chilling mist surges out in a 100‑foot burst centered on Yarthoon and remains for 1 minute. This mist has the effects of {@spell obscuring mist}, plus any creature within the area at the end of its turn take {@damage 5d6} cold damage with a basic Fortitude save."
 					]
 				}
 			],
@@ -10909,9 +10944,9 @@
 			"dismiss": false,
 			"entries": [
 				"While deities jealously guard their most powerful servants from the summoning spells of those who aren't steeped in the faith, this spell allows you to conjure an inhabitant of the Outer Sphere with or without the deity's permission.",
-				"You summon a celestial, monitor, or fiend whose level is \u20131 to fight on your behalf. Alternatively, you can choose a magical animal from the Outer Sphere as your lesser servitor. This animal is your choice of an eagle, guard dog, or raven (Bestiary 2 221). It gains the alignment matching your deity (or you, if you don't have a deity) and has the following trait depending on the alignment it gained: celestial for lawful, monitor for neutral, or fiend for evil.",
-				"You can't summon a creature if it is opposed to your deity's alignment on either axis (or opposed to your alignment if you don't follow a deity). For example, if you deity is lawful good, you can't summon a chaotic or evil creature. The GM might determine that deities restrict specific types of creatures even if their alignments aren't diametrically opposed. For example, {@deity Pharasma} would restrict the summoning of sahkils.",
-				"Heightening the spell increases the maximum level of creature you can summon and might add additional animal servitors, which otherwise work like the eagle, guard dog, and raven."
+				"You summon a {@trait celestial}, {@trait monitor}, or {@trait fiend} whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=monitor;fiend;celestial} to fight on your behalf. Alternatively, you can choose a magical animal from the Outer Sphere as your lesser servitor. This animal is your choice of an {@creature eagle}, {@creature guard dog}, or {@creature raven|Bst2}. It gains the alignment matching your deity (or you, if you don't have a deity) and has the following trait depending on the alignment it gained: {@trait celestial} for {@trait lawful}, {@trait monitor} for {@trait neutral}, or {@trait fiend} for {@trait evil}.",
+				"You can't summon a creature if it is opposed to your deity's alignment on either axis (or opposed to your alignment if you don't follow a deity). For example, if you deity is {@trait lawful} {@trait good}, you can't summon a {@trait chaotic} or {@trait evil} creature. The GM might determine that deities restrict specific types of creatures even if their alignments aren't diametrically opposed. For example, {@deity Pharasma} would restrict the summoning of sahkils.",
+				"Heightening the spell increases the maximum level of creature you can summon and might add additional animal servitors, which otherwise work like the {@creature eagle}, {@creature guard dog}, and {@creature raven|Bst2}."
 			],
 			"heightened": {
 				"heightened": true,
@@ -10919,15 +10954,15 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "Level 1."
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=monitor;fiend;celestial}."
 					},
 					{
 						"level": 3,
-						"entry": "Level 2. You can summon a black bear (Bestiary 2 36), giant bat, or leopard."
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=monitor;fiend;celestial}. You can summon a {@creature black bear|Bst2}, {@creature giant bat}, or {@creature leopard}."
 					},
 					{
 						"level": 4,
-						"entry": "Level 3. You can summon a great white shark or tiger. "
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=monitor;fiend;celestial}. You can summon a {@creature great white shark} or {@creature tiger}."
 					}
 				],
 				"no_x": null
@@ -11229,7 +11264,7 @@
 			"dismiss": false,
 			"entries": [
 				"You channel the forces of undeath to briefly call forth an amalgam of the vengeful dead slain by your enemies and allies alike. This amalgam manifests as a large tornado of insubstantial, howling faces. It occupies the space of a Huge creature and has a Speed of 60 feet.",
-				"Arrive (negative) Vortex of Death Each enemy creature within a 60-foot emanation must attempt a Fortitude save with the following effects.",
+				"{@b Arrive} (negative) Vortex of Death Each enemy creature within a 60-foot emanation must attempt a Fortitude save with the following effects.",
 				{
 					"type": "successDegree",
 					"entries": {

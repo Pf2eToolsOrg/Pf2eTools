@@ -12713,7 +12713,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage.",
 						"Failure": "The creature takes full damage and a \u201310-foot circumstance penalty to its Speeds for 1 round.",
-						"Critical Failure": "The creature takes double damage and is {@condition immobilized} for 1 round or until it Escapes."
+						"Critical Failure": "The creature takes double damage and is {@condition immobilized} for 1 round or until it {@action Escape||Escapes}."
 					}
 				}
 			],
@@ -14650,12 +14650,12 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Ensnare} The briars clump around your foes, attempting to hold them in place. A foe within the area (or flying at most 20 feet above the area) must attempt a Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to all Speeds for 1 round, and on a critical failure, it is {@condition immobilized} for 1 round unless it Escapes.",
+						"{@bold Ensnare} The briars clump around your foes, attempting to hold them in place. A foe within the area (or flying at most 20 feet above the area) must attempt a Reflex save. On a failure, it takes a \u201310-foot circumstance penalty to all Speeds for 1 round, and on a critical failure, it is {@condition immobilized} for 1 round unless it {@action Escape||Escapes}.",
 						"{@bold Impede} The briars twist and writhe, making the entire area difficult terrain.",
 						"{@bold Wall} A wall of thorns appears in the area, lasting for 1 round. The wall is greater difficult terrain instead of difficult terrain"
 					]
 				},
-				"In addition, once per round you can direct the briars to impale any target in the area (or flying up to 20 feet above the area) that you can see by using a single action, which has the {@trait concentrate} and {@trait manipulate} traits. Make a spell attack roll. On a success, the target takes {@damage 10d6} piercing damage and takes a \u201310-foot circumstance penalty to all Speeds for 1 round; on a critical success, the target is {@condition immobilized} for 1 round unless it Escapes."
+				"In addition, once per round you can direct the briars to impale any target in the area (or flying up to 20 feet above the area) that you can see by using a single action, which has the {@trait concentrate} and {@trait manipulate} traits. Make a spell attack roll. On a success, the target takes {@damage 10d6} piercing damage and takes a \u201310-foot circumstance penalty to all Speeds for 1 round; on a critical success, the target is {@condition immobilized} for 1 round unless it {@action Escape||Escapes}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -27357,7 +27357,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an animal to fight for you. You summon a common creature that has the {@trait animal} trait and whose level is \u20131.",
+				"You conjure an animal to fight for you. You summon a common creature that has the {@trait animal} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=Animal}.",
 				"Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
@@ -27366,39 +27366,39 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "Level 1."
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=Animal}."
 					},
 					{
 						"level": 3,
-						"entry": "Level 2."
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=Animal}."
 					},
 					{
 						"level": 4,
-						"entry": "Level 3."
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=Animal}."
 					},
 					{
 						"level": 5,
-						"entry": "Level 5."
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Creature Type=Animal}."
 					},
 					{
 						"level": 6,
-						"entry": "Level 7."
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Animal}."
 					},
 					{
 						"level": 7,
-						"entry": "Level 9."
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Animal}."
 					},
 					{
 						"level": 8,
-						"entry": "Level 11."
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Animal}"
 					},
 					{
 						"level": 9,
-						"entry": "Level 13."
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Animal}"
 					},
 					{
 						"level": 10,
-						"entry": "Level 15."
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Animal}"
 					}
 				],
 				"no_x": null
@@ -27449,15 +27449,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a celestial to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait celestial} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
+				"You conjure a celestial to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait celestial} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=Celestial}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of celestials, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Celestial}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Celestial}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Celestial}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Celestial}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Celestial}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27505,15 +27524,50 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a construct to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait construct} trait and whose level is \u20131."
+				"You conjure a construct to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait construct} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=Construct}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 2,
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=Construct}."
+					},
+					{
+						"level": 3,
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=Construct}."
+					},
+					{
+						"level": 4,
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=Construct}."
+					},
+					{
+						"level": 5,
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Creature Type=Construct}."
+					},
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Construct}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Construct}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Construct}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Construct}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Construct}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27561,15 +27615,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a dragon to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait dragon} trait and whose level is 5 or lower."
+				"You conjure a dragon to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait dragon} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=Dragon}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Dragon}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Dragon}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Dragon}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Dragon}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Dragon}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27621,15 +27694,46 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an elemental to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait elemental} trait and whose level is 1 or lower."
+				"You conjure an elemental to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait elemental} trait and whose level is {@filter 1 or lower|bestiary||Level=[-1;1]|Creature Type=Elemental}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 3,
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=Elemental}."
+					},
+					{
+						"level": 4,
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=Elemental}."
+					},
+					{
+						"level": 5,
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Creature Type=Elemental}."
+					},
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Elemental}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Elemental}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Elemental}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Elemental}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Elemental}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27677,15 +27781,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure an aberration to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait aberration} trait and whose level is 5 or lower."
+				"You conjure an aberration to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait aberration} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=aberration}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=aberration}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=aberration}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=aberration}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=aberration}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=aberration}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27734,15 +27857,50 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fey to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fey} trait and whose level is \u20131."
+				"You conjure a fey to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fey} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=Fey}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 2,
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=Fey}."
+					},
+					{
+						"level": 3,
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=Fey}."
+					},
+					{
+						"level": 4,
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=Fey}."
+					},
+					{
+						"level": 5,
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Creature Type=Fey}."
+					},
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Fey}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Fey}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Fey}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Fey}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Fey}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27790,15 +27948,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a fiend to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fiend} trait and whose level is 5 or lower. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
+				"You conjure a fiend to fight on your behalf. This works like {@spell summon animal}, except you summon a common creature that has the {@trait fiend} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=fiend}. You can't summon a creature unless its alignment is one of your deity's preferred alignments (or, if you don't have a deity, is within one step of your alignment). At the GM's discretion, some deities might restrict specific types of fiends, even if their alignments match."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=fiend}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=fiend}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=fiend}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=fiend}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=fiend}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27849,15 +28026,34 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a giant to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait giant} trait and whose level is 5 or lower."
+				"You conjure a giant to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait giant} trait and whose level is {@filter 5 or lower|bestiary||Level=[-1;5]|Creature Type=giant}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=giant}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=giant}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=giant}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=giant}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=giant}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -27905,15 +28101,50 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You conjure a plant or fungus to fight for you. This works like {@spell summon animal} (page 375), except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is \u20131."
+				"You conjure a plant or fungus to fight for you. This works like {@spell summon animal}, except you summon a common creature that has the {@trait plant} or {@trait fungus} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=Plant;Fungus}."
 			],
 			"heightened": {
 				"heightened": true,
 				"plus_x": null,
-				"x": null,
-				"no_x": {
-					"entry": "As {@spell summon animal}."
-				}
+				"x": [
+					{
+						"level": 2,
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 3,
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 4,
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 5,
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 6,
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 7,
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Creature Type=Plant;Fungus}."
+					},
+					{
+						"level": 8,
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Plant;Fungus}"
+					},
+					{
+						"level": 9,
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Plant;Fungus}"
+					},
+					{
+						"level": 10,
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Plant;Fungus}"
+					}
+				],
+				"no_x": null
 			}
 		},
 		{
@@ -28529,7 +28760,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310-foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach. Make a melee spell attack roll against the target. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature Escapes (against your spell DC), whichever comes first."
+				"Dense, twitching creepers sprout from every surface and fill any bodies of water in the area. Any creature moving on the land, or Climbing or Swimming within the creepers, takes a \u201310-foot circumstance penalty to its Speeds while in the area. Once per round, you can make a vine lash out from any square within the expanse of creepers by using a single action, which has the {@trait concentrate} trait. This vine has a 15-foot reach. Make a melee spell attack roll against the target. If the attack succeeds, the vine pulls the target into the creepers and makes it {@condition immobilized} for 1 round or until the creature {@action Escape||Escapes} (against your spell DC), whichever comes first."
 			],
 			"heightened": {
 				"heightened": false,
