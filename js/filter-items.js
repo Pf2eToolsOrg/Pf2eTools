@@ -79,7 +79,10 @@ class PageFilterItems extends PageFilter {
 			displayFnMini: (it) => `${it} hand${Number(it) === 1 ? "" : "s"}`,
 		});
 		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter]})
-		this._groupFilter = new Filter({header: "Group"});
+		this._groupFilter = new Filter({
+			header: "Group",
+			displayFn: (it) => it.split("|")[0],
+		});
 		this._traitFilter = new TraitsFilter({
 			header: "Traits",
 			discardCategories: {
