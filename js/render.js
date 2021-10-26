@@ -4592,7 +4592,9 @@ Renderer.item = {
 	},
 
 	async getItemsFromHomebrew (homebrew) {
-		return [...(homebrew.baseitem || []), ...(homebrew.item || [])];
+		const items = [...(homebrew.baseitem || []), ...(homebrew.item || [])];
+		const expanded = await Promise.all(items.map(it => DataUtil.item.expandVariants(it)));
+		return expanded.flat();
 	},
 
 	pGetFluff (item) {
