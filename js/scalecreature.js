@@ -783,10 +783,11 @@ class ScaleCreature {
 		creature.spellcasting.forEach(sc => {
 			if (sc.DC) sc.DC = this._scaleValue(lvlIn, toLvl, sc.DC, this._LvlSpellDC) + opts.flatAddProf;
 			if (sc.attack) sc.attack = this._scaleValue(lvlIn, toLvl, sc.attack, this._LvlSpellAtkBonus) + opts.flatAddProf;
+			if (!this._spells) return;
 			if (sc.type === "Prepared" || sc.type === "Spontaneous") {
 				const countPreperations = (lvl) => sc.entry[lvl].spells.map(it => Number(it.amount) || 1).reduce((a, b) => a + b, 0);
-				const highestSpell = Object.keys(sc.entry).map(it => Number(it)).filter(Number).sort(SortUtil.ascSort).reverse()[0];
-				const bonusSpells = Math.max(highestSpell != null ? sc.entry[highestSpell].slots || countPreperations(highestSpell) - this._LvlSpellsPerLvl[lvlIn][highestSpell] : 0, 0);
+				const highestSpell = Object.keys(sc.entry).map(it => Number(it)).filter(Number).sort(SortUtil.ascSort).last();
+				const bonusSpells = Math.max(highestSpell != null ? (sc.entry[highestSpell].slots || countPreperations(highestSpell)) - this._LvlSpellsPerLvl[lvlIn][highestSpell] : 0, 0);
 				if (lvlIn > toLvl) {
 					for (let i = 10; i > Math.ceil(toLvl / 2); i--) {
 						delete sc.entry[i];
