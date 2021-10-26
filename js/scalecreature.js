@@ -648,7 +648,7 @@ class ScaleCreature {
 		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1);
 	}
 
-	// FIXME: This code is unreadable
+	// FIXME: This code is unreadable and might create undesired results
 	_scaleValue (lvlIn, toLvl, value, map) {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
 		let I1;
@@ -750,17 +750,15 @@ class ScaleCreature {
 	}
 
 	_adjustResistancesWeaknesses (creature, lvlIn, toLvl, opts) {
-		const I0 = this._LvlResistanceWeakness[lvlIn].reverse();
-		const I1 = this._LvlResistanceWeakness[toLvl].reverse();
 		if (creature.resistances) {
 			creature.resistances.forEach(r => {
-				if (r.amount) r.amount = this._intervalTransform(r.amount, I0, I1);
+				if (r.amount) r.amount = this._scaleValue(lvlIn, toLvl, r.amount, this._LvlResistanceWeakness);
 			});
 		}
 
 		if (creature.weaknesses) {
 			creature.weaknesses.forEach(w => {
-				if (w.amount) w.amount = this._intervalTransform(w.amount, I0, I1);
+				if (w.amount) w.amount = this._scaleValue(lvlIn, toLvl, w.amount, this._LvlResistanceWeakness);
 			});
 		}
 	}
