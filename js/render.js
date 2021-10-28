@@ -3638,6 +3638,16 @@ Renderer.eidolon = {
 
 };
 
+Renderer.class = {
+	getCompactRenderedString (cls, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h1", name: cls.name, entries: cls.entries.map(e => ({type: "pf2-h3", ...e}))}
+
+		return renderer.render(fakeEntry, opts)
+	},
+};
+
 Renderer.condition = {
 	getCompactRenderedString (cond, opts) {
 		opts = opts || {};
@@ -6631,10 +6641,10 @@ Renderer.hover = {
 
 	getGenericCompactRenderedString (entry) {
 		const textStack = [""];
-		// FIXME: I am pretty sure this isn't the way this should be done (?)
-		textStack[0] += `<p class="pf2-h3 entry-title-inner">${entry.name}</p>`;
-		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
-		return `${textStack.join("")}`;
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h3", name: entry.name, entries: entry.entries};
+		renderer.recursiveRender(fakeEntry, textStack);
+		return textStack.join("");
 	},
 
 	_pageToRenderFn (page) {
@@ -6645,8 +6655,7 @@ Renderer.hover = {
 			case UrlUtil.PG_QUICKREF:
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_CLASSES:
-				// FIXME: Classes rendering
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
 			case UrlUtil.PG_RITUALS:
@@ -6695,10 +6704,10 @@ Renderer.hover = {
 			// region props
 			case "classfeature":
 			case "classFeature":
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedString;
 			case "subclassfeature":
 			case "subclassFeature":
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedString;
 			case "domain": return Renderer.domain.getCompactRenderedString;
 			case "group": return Renderer.group.getCompactRenderedString;
 			case "skill": return Renderer.skill.getCompactRenderedString;

@@ -2986,7 +2986,6 @@ DataUtil = {
 		unpackUidClassFeature (uid, opts) {
 			opts = opts || {};
 			if (opts.isLower) uid = uid.toLowerCase();
-			// FIXME: uid.split is not a function, error in the {@class } tag
 			let [name, className, classSource, level, source, displayText] = uid.split("|").map(it => it.trim());
 			classSource = classSource || (opts.isLower ? SRC_CRB.toLowerCase() : SRC_CRB);
 			source = source || classSource;
@@ -3038,6 +3037,8 @@ DataUtil = {
 		},
 
 		async pGetDereferencedClassData (cls) {
+			if (cls.classFeatures && cls.classFeatures.every(it => typeof it !== "string" && !it.classFeature)) return cls;
+
 			cls = MiscUtil.copy(cls);
 
 			const byLevel = {}; // Build a map of `level: [classFeature]`
@@ -3090,6 +3091,8 @@ DataUtil = {
 		},
 
 		async pGetDereferencedSubclassData (sc) {
+			if (sc.subclassFeatures && sc.subclassFeatures.every(it => typeof it !== "string" && !it.subclassFeature)) return sc;
+
 			sc = MiscUtil.copy(sc);
 
 			const byLevel = {}; // Build a map of `level: [subclassFeature]`
