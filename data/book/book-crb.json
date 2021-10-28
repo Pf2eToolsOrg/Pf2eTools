@@ -8855,7 +8855,7 @@
 								"Deployed caltrops can be salvaged and reused if no creatures took damage from them. Otherwise, enough caltrops are ruined that they can't be salvaged.",
 								"{@b Candle:} A lit candle sheds dim light in a 10-foot radius.",
 								"{@b Chest:} A wooden chest can hold up to 8 Bulk of items.",
-								"{@b Climbing Kit:} This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're Climbing, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC 5 flat check whenever you critically fail to prevent a fall. You gain a +1 item bonus to Athletics checks to Climb while using an extreme climbing kit. A single kit has only enough materials for one climber; each climber needs their own kit.",
+								"{@b Climbing Kit:} This satchel includes 50 feet of rope, pulleys, a dozen pitons, a hammer, a grappling hook, and one set of crampons. Climbing kits allow you to attach yourself to the wall you're Climbing, moving half as quickly as usual (minimum 5 feet) but letting you attempt a DC {@flatDC 5} flat check whenever you critically fail to prevent a fall. You gain a +1 item bonus to Athletics checks to Climb while using an extreme climbing kit. A single kit has only enough materials for one climber; each climber needs their own kit.",
 								"{@b Clothing:} Ordinary clothing is functional with basic tailoring, such as peasant garb, monk's robes, or work clothes.",
 								"Explorer's clothing is sturdy enough that it can be reinforced to protect you, even though it isn't a suit of armor. It comes in many forms, though the most common sorts look like clerical vestments, monk's garments, or wizard's robes, as members of all three classes are likely to avoid wearing armor. For more information on explorer's clothing, see pages 275 \u2013276.",
 								"Fine clothing, suitable for a noble or royal, is made with expensive fabrics, precious metals, and intricate patterns.",
@@ -8880,12 +8880,12 @@
 								"Closing or opening the shutters takes an Interact action.",
 								"{@b Lock:} Picking a poor lock requires two successful DC 15 Thievery checks, a simple lock requires three successful DC 20 Thievery checks, an average lock requires four successes at DC 25, a good lock requires five successes at DC 30, and a superior lock six successes at DC 40.",
 								"{@b Magnifying Glass:} This quality handheld lens gives you a +1 item bonus to {@skill Perception} checks to notice minute details of documents, fabric, and the like.",
-								"{@b Manacles:} You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42.",
+								"{@b Manacles:} You can manacle someone who is willing or otherwise at your mercy as an exploration activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two-legged creature with its legs bound takes a \u201315-foot circumstance penalty to its Speeds, and a two-handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42.",
 								"{@b Material Component Pouch:} This pouch contains material components for those spells that require them.",
 								"Though the components are used up over time, you can refill spent components during your daily preparations.",
 								"{@b Musical Instrument:} Handheld instruments include bagpipes, a small set of chimes, small drums, fiddles and viols, flutes and recorders, small harps, lutes, trumpets, and similarly sized instruments. The GM might rule that an especially large handheld instrument (like a tuba) has greater Bulk. Heavy instruments such as large drums, a full set of chimes, and keyboard instruments are less portable and generally need to be stationary while played.",
 								"A virtuoso instrument gives a +1 item bonus to Performance checks using that instrument.",
-								"{@b Oil:} You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5-foot square you target. You must succeed at a DC 10 flat check for the oil to ignite successfully when it hits.",
+								"{@b Oil:} You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5-foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits.",
 								"If the oil ignites, the target takes {@dice 1d6} fire damage.",
 								"{@b Piton:} These small spikes can be used as anchors to make climbing easier. To affix a piton, you must hold it in one hand and use a hammer to drive it in with your other hand. You can attach a rope to the hammered piton so that you don't fall all the way to the ground on a critical failure while Climbing.",
 								"{@b Religious Symbol:} This piece of wood or silver is emblazoned with an image representing a deity. Some divine spellcasters, such as clerics, can use a religious symbol of their deity as a divine focus to use certain abilities and cast some spells. A religious symbol must be held in one hand to use it.",
@@ -11949,7 +11949,7 @@
 									"type": "pf2-title",
 									"name": "Specific Overrides General"
 								},
-								"A core principle of Pathfinder is that specific rules override general ones. If two rules conflict, the more specific one takes precedence. If there's still ambiguity, the GM determines which rule to use. For example, the rules state that when attacking a concealed creature, you must attempt a DC 5 flat check to determine if you hit. Flat checks don't benefit from modifiers, bonuses, or penalties, but an ability that's specifically designed to overcome concealment might override and alter this. If a rule doesn't specify otherwise, default to the general rules presented in this chapter. While some special rules may also state the normal rules to provide context, you should always default to the normal rules even if effects don't specifically say to.",
+								"A core principle of Pathfinder is that specific rules override general ones. If two rules conflict, the more specific one takes precedence. If there's still ambiguity, the GM determines which rule to use. For example, the rules state that when attacking a concealed creature, you must attempt a DC {@flatDC 5} flat check to determine if you hit. Flat checks don't benefit from modifiers, bonuses, or penalties, but an ability that's specifically designed to overcome concealment might override and alter this. If a rule doesn't specify otherwise, default to the general rules presented in this chapter. While some special rules may also state the normal rules to provide context, you should always default to the normal rules even if effects don't specifically say to.",
 								{
 									"type": "pf2-title",
 									"name": "Rounding"
@@ -12410,7 +12410,7 @@
 									"page": 451,
 									"name": "Persistent Damage",
 									"entries": [
-										"Persistent damage is a condition that causes damage to recur beyond the original effect. Unlike with normal damage, when you are subject to persistent damage, you don't take it right away. Instead, you take the specified damage at the end of your turns, after which you attempt a DC 15 flat check to see if you recover from the persistent damage.",
+										"Persistent damage is a condition that causes damage to recur beyond the original effect. Unlike with normal damage, when you are subject to persistent damage, you don't take it right away. Instead, you take the specified damage at the end of your turns, after which you attempt a DC {@flatDC 15} flat check to see if you recover from the persistent damage.",
 										"See the Conditions Appendix on pages 618\u2013623 for the complete rules regarding the persistent damage condition."
 									]
 								},
@@ -13375,7 +13375,7 @@
 									"name": "Hidden",
 									"entries": [
 										"A creature that's hidden is only barely perceptible. You know what space a hidden creature occupies, but little else. Perhaps the creature just moved behind cover and successfully used the Hide action. Your target might be in a deep fogbank or behind a waterfall, where you can see some movement but can't determine an exact location. Maybe you've been {@condition blinded} or the creature is under the effects of {@spell invisibility}, but you used the {@action Seek} basic action to determine its general location based on hearing alone. Regardless of the specifics, you're flat-footed to a hidden creature.",
-										"When targeting a {@condition hidden} creature, before you roll to determine your effect, you must attempt a DC 11 flat check. If you fail, you don't affect the creature, though the actions you used are still expended\u2014as well as any spell slots, costs, and other resources. You remain flat-footed to the creature, whether you successfully target it or not."
+										"When targeting a {@condition hidden} creature, before you roll to determine your effect, you must attempt a DC {@flatDC 11} flat check. If you fail, you don't affect the creature, though the actions you used are still expended\u2014as well as any spell slots, costs, and other resources. You remain flat-footed to the creature, whether you successfully target it or not."
 									]
 								},
 								{
@@ -13415,7 +13415,7 @@
 							"name": "Concealed",
 							"entries": [
 								"This condition protects a creature if it's in mist, within dim light, or amid something else that obscures sight but does not provide a physical barrier to effects. An effect or type of terrain that describes an area of concealment makes all creatures within it concealed.",
-								"When you target a creature that's {@condition concealed} from you, you must attempt a DC 5 flat check before you roll to determine your effect. If you fail, you don't affect the target. the {@condition concealed} condition doesn't change which of the main categories of detection apply to the creature. A creature in a light fog bank is still observed even though it's concealed."
+								"When you target a creature that's {@condition concealed} from you, you must attempt a DC {@flatDC 5} flat check before you roll to determine your effect. If you fail, you don't affect the target. the {@condition concealed} condition doesn't change which of the main categories of detection apply to the creature. A creature in a light fog bank is still observed even though it's concealed."
 							]
 						},
 						{
@@ -14438,7 +14438,7 @@
 									"type": "pf2-title",
 									"name": "Deafness or Being Hard of Hearing"
 								},
-								"A deaf character can't detect anything using hearing, critically fails {@skill Perception} checks that require hearing, and is immune to auditory effects. They have enough practice to supply verbal components for casting spells and command components for activating magic items, but if they perform an action they're not accustomed to that involves auditory elements, they must succeed at a DC 5 flat check or the action is lost. It's best to give them the Sign Language feat for free, and you might give them Read Lips as well (page 266 and 265). You might give one or more other characters in the group Sign Language for free as well.",
+								"A deaf character can't detect anything using hearing, critically fails {@skill Perception} checks that require hearing, and is immune to auditory effects. They have enough practice to supply verbal components for casting spells and command components for activating magic items, but if they perform an action they're not accustomed to that involves auditory elements, they must succeed at a DC {@flatDC 5} flat check or the action is lost. It's best to give them the Sign Language feat for free, and you might give them Read Lips as well (page 266 and 265). You might give one or more other characters in the group Sign Language for free as well.",
 								"A hard-of-hearing character might take a \u20132 to \u20134 penalty to {@skill Perception} checks that are hearing-based. Corrective devices for hearing are less common than spectacles are in a typical Pathfinder world.",
 								{
 									"type": "pf2-title",
@@ -19737,7 +19737,7 @@
 							"page": 596,
 							"name": "THE STRUCTURE TRAIT",
 							"entries": [
-								"An item with the structure trait creates a magical building or other structure when activated. The item must be activated on a plot of land free of other structures. The structure adapts to the natural terrain, adopting the structural requirements for being built there. The structure adjusts around small features such as ponds or spires of rock, but it can't be created on water or other nonsolid surfaces. If activated on snow, sand dunes, or other soft surfaces with a solid surface underneath, the structure's foundation (if any) reaches the solid ground. If an item with this trait is activated on a solid but unstable surface, such as a swamp or an area plagued by tremors, roll a DC 3 flat check each day; on a failure, the structure begins to sink or collapse.",
+								"An item with the structure trait creates a magical building or other structure when activated. The item must be activated on a plot of land free of other structures. The structure adapts to the natural terrain, adopting the structural requirements for being built there. The structure adjusts around small features such as ponds or spires of rock, but it can't be created on water or other nonsolid surfaces. If activated on snow, sand dunes, or other soft surfaces with a solid surface underneath, the structure's foundation (if any) reaches the solid ground. If an item with this trait is activated on a solid but unstable surface, such as a swamp or an area plagued by tremors, roll a DC {@flatDC 3} flat check each day; on a failure, the structure begins to sink or collapse.",
 								"The structure doesn't harm creatures within the area when it appears, and it can't be created within a crowd or in a densely populated area. Any creature inadvertently caught inside the structure when the item is activated ends up unharmed inside the complete structure and always has a clear path of escape. A creature inside the structure when the activation ends isn't harmed, and it lands harmlessly on the ground if it was on an upper level of the structure."
 							]
 						}
@@ -19764,7 +19764,7 @@
 									"page": 597,
 									"name": "Overcharging a Wand",
 									"entries": [
-										"After the spell is cast from the wand for the day, you can attempt to cast it one more time\u2014overcharging the wand at the risk of destroying it. {@action Cast a Spell||Cast the Spell} again, then roll a DC 10 flat check. On a success, the wand is broken.",
+										"After the spell is cast from the wand for the day, you can attempt to cast it one more time\u2014overcharging the wand at the risk of destroying it. {@action Cast a Spell||Cast the Spell} again, then roll a DC {@flatDC 10} flat check. On a success, the wand is broken.",
 										"On a failure, the wand is destroyed. If anyone tries to overcharge a wand when it's already been overcharged that day, the wand is automatically destroyed (even if it had been repaired) and no spell is cast."
 									]
 								}
