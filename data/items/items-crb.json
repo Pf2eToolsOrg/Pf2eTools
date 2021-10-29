@@ -1314,7 +1314,7 @@
 			"generic": false
 		},
 		{
-			"name": "Arrows",
+			"name": "Arrow",
 			"source": "CRB",
 			"page": 282,
 			"equipment": true,
@@ -1331,7 +1331,9 @@
 			"onset": null,
 			"ammunition": null,
 			"category": "Ammunition",
-			"entries": [],
+			"entries": [
+				"These projectiles are the ammunition for bows. The shaft of an arrow is made of wood. It is stabilized in flight by fletching at one end and bears a metal head on the other."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
@@ -2263,7 +2265,7 @@
 			"generic": false
 		},
 		{
-			"name": "Blowgun Darts",
+			"name": "Blowgun Dart",
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
@@ -2280,13 +2282,15 @@
 			"onset": null,
 			"ammunition": null,
 			"category": "Ammunition",
-			"entries": [],
+			"entries": [
+				"These thin, light darts are typically made of hardwood and stabilized with fletching of down or fur. They are often hollow so they can be used to deliver poison."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
 		{
-			"name": "Bolts",
+			"name": "Bolt",
 			"source": "CRB",
 			"page": 281,
 			"equipment": true,
@@ -2303,7 +2307,9 @@
 			"onset": null,
 			"ammunition": null,
 			"category": "Ammunition",
-			"entries": [],
+			"entries": [
+				"Shorter than traditional arrows but similar in construction, bolts are the ammunition used by crossbows."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
@@ -3687,7 +3693,7 @@
 				"amount": 15,
 				"note": null
 			},
-			"ammunition": "bolts||bolt",
+			"ammunition": "bolt",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this bolt is wrapped with fine twine. When the bolt strikes a solid surface, the twine unwinds and enlarges into a 50-foot-long rope, securely fastened to the surface the bolt struck. The rope can be pulled free with an {@action Interact} action and a successful DC 20 {@skill Athletics} check."
@@ -5288,7 +5294,7 @@
 			"category": "Held",
 			"entries": [
 				"This item looks like an ordinary glass flask full of water.",
-				"The stopper can't be removed unless you speak one of the item's three command words, each of which causes water to pour forth in a different way. Pulling the stopper straight out creates fresh water, and rotating it as you pull creates salt water. {@trait Any} effect of the decanter lasts until the decanter is plugged (with its own stopper, a finger, or the like).",
+				"The stopper can't be removed unless you speak one of the item's three command words, each of which causes water to pour forth in a different way. Pulling the stopper straight out creates fresh water, and rotating it as you pull creates salt water. Any effect of the decanter lasts until the decanter is plugged (with its own stopper, a finger, or the like).",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -5561,7 +5567,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "bolts||bolt",
+			"ammunition": "bolt",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this bolt is scorched and blackened, and handling it coats your fingers with a fine black powder. When an activated disintegration bolt hits a target, it is subject to a {@spell disintegrate} spell requiring a DC 34 Fortitude save. As with the spell, a critical hit on the attack roll causes the target's saving throw outcome to be one degree worse."
@@ -8407,9 +8413,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20135-foot status penalty to its Speed for 1 minute or until it Escapes (DC 26).",
-						"Failure": "The creature is {@condition immobilized} for 1 round, then takes a \u20135-foot status penalty to its Speed for 1 minute. Both effects end early if it Escapes (DC 26)",
-						"Critical Failure": "The creature is {@condition immobilized} for 1 minute or until it Escapes (DC 26)."
+						"Success": "The creature takes a \u20135-foot status penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 26).",
+						"Failure": "The creature is {@condition immobilized} for 1 round, then takes a \u20135-foot status penalty to its Speed for 1 minute. Both effects end early if it {@action Escape||Escapes} (DC 26)",
+						"Critical Failure": "The creature is {@condition immobilized} for 1 minute or until it {@action Escape||Escapes} (DC 26)."
 					}
 				}
 			],
@@ -9130,7 +9136,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20135-foot status penalty to its Speed for 1 minute or until it Escapes (DC 18).",
+						"Success": "The creature takes a \u20135-foot status penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 18).",
 						"Failure": "As success, but the penalty is \u201310 feet.",
 						"Critical Failure": "As success, but the penalty is \u201320 feet."
 					}
@@ -13042,8 +13048,8 @@
 				"trigger": null
 			},
 			"ammunition": [
-				"arrows||arrow",
-				"bolts||bolt"
+				"arrow",
+				"bolt"
 			],
 			"category": "Ammunition",
 			"entries": [
@@ -16258,7 +16264,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrows||arrow",
+			"ammunition": "arrow",
 			"category": "Ammunition",
 			"entries": [
 				"Sleep arrows often have shafts of deep blue or black, and their fletching is exceptionally soft and downy. An activated sleep arrow deals no damage, but a living creature hit by it is subject to the effects of a {@spell sleep} spell (DC 17)."
@@ -18235,7 +18241,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrows||arrow",
+			"ammunition": "arrow",
 			"category": "Ammunition",
 			"entries": [
 				"The head of this arrow is made from gleaming copper.",
@@ -18664,7 +18670,7 @@
 				"When you hit a creature with a tanglefoot bag, that creature takes a status penalty to its Speeds for 1 minute.",
 				"Many types of tanglefoot bag also grant an item bonus on attack rolls.",
 				"On a critical hit, a creature in contact with a solid surface becomes stuck to the surface and {@condition immobilized} for 1 round, and a creature flying via wings has its wings tangled, causing it to fall safely to the ground and become unable to {@action Fly} again for 1 round. Tanglefoot bags are not effective when used on a creature that is in water.",
-				"The target can end {@trait any} effects by Escaping or spending a total of 3 {@action Interact} actions to carefully remove the sticky substances. These {@action Interact} actions don't have to be consecutive, and other creatures can provide the actions as well."
+				"The target can end any effects by Escaping or spending a total of 3 {@action Interact} actions to carefully remove the sticky substances. These {@action Interact} actions don't have to be consecutive, and other creatures can provide the actions as well."
 			],
 			"generic": "G",
 			"variants": [
@@ -19652,10 +19658,10 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrows||arrow",
+			"ammunition": "arrow",
 			"category": "Ammunition",
 			"entries": [
-				"Leafy stalks protrude from the shaft of this rustic arrow. When an activated vine arrow hits a target, the arrow's shaft splits and grows, wrapping the target in vines. The target takes a \u201310-foot circumstance penalty to its Speeds for {@dice 2d4} rounds, or until it Escapes against a DC of 19. On a critical hit, the target is also {@condition immobilized} until it Escapes."
+				"Leafy stalks protrude from the shaft of this rustic arrow. When an activated vine arrow hits a target, the arrow's shaft splits and grows, wrapping the target in vines. The target takes a \u201310-foot circumstance penalty to its Speeds for {@dice 2d4} rounds, or until it {@action Escape||Escapes} against a DC of 19. On a critical hit, the target is also {@condition immobilized} until it {@action Escape||Escapes}."
 			],
 			"generic": false
 		},
@@ -19685,7 +19691,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "arrows||arrow",
+			"ammunition": "arrow",
 			"category": "Ammunition",
 			"entries": [
 				"The shaft of this arrow is covered in fine green scales, and its iron head comes to a pair of points almost like fangs. After an activated viper arrow hits a target, the arrow transforms into a viper (Pathfinder Bestiary 302). The target is affected by the viper's poison, as if it had been bitten. The viper then lands in an open space adjacent to the target.",
@@ -19722,7 +19728,7 @@
 				"components": "envision",
 				"requirements": null,
 				"frequency": null,
-				"trigger": "A creature within your reach uses a manipulate or move action, makes a ranged attack, or leaves a square during a move action it's using"
+				"trigger": "A creature within your reach uses a {@trait manipulate} or {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using"
 			},
 			"category": "Talisman",
 			"entries": [
@@ -21823,7 +21829,7 @@
 			"hands": 2,
 			"source": "CRB",
 			"entries": [
-				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC 5 flat check any time it uses a manipulate action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
+				"You can manacle someone who is willing or otherwise at your mercy as an {@trait exploration} activity taking 10\u201330 seconds depending on the creature's size and how many manacles you apply. A two‑legged creature with its legs bound takes a \u201315‑foot circumstance penalty to its Speeds, and a two‑handed creature with its wrists bound has to succeed at a DC {@flatDC 5} flat check any time it uses a {@trait manipulate} action or else that action fails. This DC may be higher depending on how tightly the manacles constrain the hands. A creature bound to a stationary object is immobilized. For creatures with more or fewer limbs, the GM determines what effect manacles have, if any. Freeing a creature from poor manacles requires two successful DC 17 Thievery checks, simple manacles requires three successes at DC 22, average manacles require four successes at DC 27, good manacles require five successes at DC 32, and superior manacles require six successes at DC 42. "
 			],
 			"generic": "G",
 			"variants": [
@@ -22008,7 +22014,7 @@
 			"equipment": true,
 			"source": "CRB",
 			"entries": [
-				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5‑foot square you target. You must succeed at a DC 10 flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage. "
+				"You can use oil to fuel lanterns, but you can also set a pint of oil aflame and throw it. You must first spend an Interact action preparing the oil, then throw it with another action as a ranged attack. If you hit, it splatters on the creature or in a single 5‑foot square you target. You must succeed at a DC {@flatDC 10} flat check for the oil to ignite successfully when it hits. If the oil ignites, the target takes 1d6 fire damage. "
 			]
 		},
 		{

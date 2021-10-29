@@ -31,7 +31,7 @@
 			"source": "CRB",
 			"page": 618,
 			"entries": [
-				"While you are concealed from a creature, such as in a thick fog, you are difficult for that creature to see. You can still be {@condition observed}, but you're tougher to target. A creature that you're concealed from must succeed at a DC 5 flat check when targeting you with an attack, spell, or other effect. Area effects aren't subject to this flat check. If the check fails, the attack, spell, or effect doesn't affect you."
+				"While you are concealed from a creature, such as in a thick fog, you are difficult for that creature to see. You can still be {@condition observed}, but you're tougher to target. A creature that you're concealed from must succeed at a DC {@flatDC 5} flat check when targeting you with an attack, spell, or other effect. Area effects aren't subject to this flat check. If the check fails, the attack, spell, or effect doesn't affect you."
 			]
 		},
 		{
@@ -41,7 +41,7 @@
 			"entries": [
 				"You don't have your wits about you, and you attack wildly. You are {@condition flat-footed}, you don't treat anyone as your ally (though they might still treat you as theirs), and you can't {@action Delay}, {@action Ready}, or use reactions.",
 				"You use all your actions to {@action Strike} or cast offensive cantrips, though the GM can have you use other actions to facilitate attack, such as draw a weapon, move so that a target is in reach, and so forth. Your targets are determined randomly by the GM. If you have no other viable targets, you target yourself, automatically hitting but not scoring a critical hit. If it's impossible for you to attack or cast spells, you babble incoherently, wasting your actions.",
-				"Each time you take damage from an attack or spell, you can attempt a DC 11 flat check to recover from your confusion and end the condition."
+				"Each time you take damage from an attack or spell, you can attempt a DC {@flatDC 11} flat check to recover from your confusion and end the condition."
 			]
 		},
 		{
@@ -65,7 +65,7 @@
 			"source": "CRB",
 			"page": 619,
 			"entries": [
-				"You can't hear. You automatically critically fail {@skill Perception} checks that require you to be able to hear. You take a \u20132 status penalty to {@skill Perception} checks for initiative and checks that involve sound but also rely on other senses. If you perform an action with the {@trait auditory} trait, you must succeed at a DC 5 flat check or the action is lost; attempt the check after spending the action but before any effects are applied. You are immune to {@trait auditory} effects."
+				"You can't hear. You automatically critically fail {@skill Perception} checks that require you to be able to hear. You take a \u20132 status penalty to {@skill Perception} checks for initiative and checks that involve sound but also rely on other senses. If you perform an action with the {@trait auditory} trait, you must succeed at a DC {@flatDC 5} flat check or the action is lost; attempt the check after spending the action but before any effects are applied. You are immune to {@trait auditory} effects."
 			]
 		},
 		{
@@ -165,7 +165,7 @@
 			"source": "CRB",
 			"page": 620,
 			"entries": [
-				"You're held in place by another creature, giving you the {@condition flat-footed} and {@condition immobilized} conditions. If you attempt a {@trait manipulate} action while grabbed, you must succeed at a DC 5 flat check or it is lost; roll the check after spending the action, but before any effects are applied."
+				"You're held in place by another creature, giving you the {@condition flat-footed} and {@condition immobilized} conditions. If you attempt a {@trait manipulate} action while grabbed, you must succeed at a DC {@flatDC 5} flat check or it is lost; roll the check after spending the action, but before any effects are applied."
 			]
 		},
 		{
@@ -181,7 +181,7 @@
 			"source": "CRB",
 			"page": 620,
 			"entries": [
-				"While you're hidden from a creature, that creature knows the space you're in but can't tell precisely where you are. You typically become hidden by using {@skill Stealth} to {@action Hide}. When {@action Seek|CRB|Seeking} a creature using only imprecise senses, it remains {@condition hidden}, rather than {@condition observed}. A creature you're {@condition hidden} from is {@condition flat-footed} to you, and it must succeed at a DC 11 flat check when targeting you with an attack, spell, or other effect or it fails affect you. Area effects aren't subject to this flat check.",
+				"While you're hidden from a creature, that creature knows the space you're in but can't tell precisely where you are. You typically become hidden by using {@skill Stealth} to {@action Hide}. When {@action Seek|CRB|Seeking} a creature using only imprecise senses, it remains {@condition hidden}, rather than {@condition observed}. A creature you're {@condition hidden} from is {@condition flat-footed} to you, and it must succeed at a DC {@flatDC 11} flat check when targeting you with an attack, spell, or other effect or it fails affect you. Area effects aren't subject to this flat check.",
 				"A creature might be able to use the {@action Seek} action  to try to observe you, as described on page 471."
 			]
 		},
@@ -238,7 +238,7 @@
 			"source": "CRB",
 			"page": 621,
 			"entries": [
-				"Persistent damage comes from effects like acid, being on fire, or many other situations. It appears as \"X persistent [type] damage,\" where \"X\" is the amount of damage dealt and \"[type]\" is the damage type. Instead of taking persistent damage immediately, you take it at the end of each of your turns as long as you have the condition, rolling any damage dice anew each time. After you take persistent damage, roll a DC 15 flat check to see if you recover from the persistent damage. If you succeed, the condition ends."
+				"Persistent damage comes from effects like acid, being on fire, or many other situations. It appears as \"X persistent [type] damage,\" where \"X\" is the amount of damage dealt and \"[type]\" is the damage type. Instead of taking persistent damage immediately, you take it at the end of each of your turns as long as you have the condition, rolling any damage dice anew each time. After you take persistent damage, roll a DC {@flatDC 15} flat check to see if you recover from the persistent damage. If you succeed, the condition ends."
 			]
 		},
 		{
@@ -335,7 +335,7 @@
 			"page": 623,
 			"entries": [
 				"When you are undetected by a creature, that creature cannot see you at all, has no idea what space you occupy, and can't target you, though you still can be affected by abilities that target an area. When you're undetected by a creature, that creature is {@condition flat-footed} to you.",
-				"A creature you're undetected by can guess which square you're in to try targeting you. It must pick a square and attempt an attack. This works like targeting a {@condition hidden} creature (requiring a DC 11 flat check, as described on page 466), but the flat check and attack roll are rolled in secret by the GM, who doesn't reveal whether the attack missed due to failing the flat check, failing the attack roll, or choosing the wrong square.",
+				"A creature you're undetected by can guess which square you're in to try targeting you. It must pick a square and attempt an attack. This works like targeting a {@condition hidden} creature (requiring a DC {@flatDC 11} flat check, as described on page 466), but the flat check and attack roll are rolled in secret by the GM, who doesn't reveal whether the attack missed due to failing the flat check, failing the attack roll, or choosing the wrong square.",
 				"A creature can use the {@action Seek} action to try to find you, as described on page 471."
 			]
 		},
