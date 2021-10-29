@@ -3646,6 +3646,14 @@ Renderer.class = {
 
 		return renderer.render(fakeEntry, opts)
 	},
+
+	getCompactRenderedClassFeature (clsFeature, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h3", name: clsFeature.name, entries: clsFeature.entries}
+
+		return renderer.render(fakeEntry, opts)
+	},
 };
 
 Renderer.condition = {
@@ -6704,10 +6712,10 @@ Renderer.hover = {
 			// region props
 			case "classfeature":
 			case "classFeature":
-				return Renderer.class.getCompactRenderedString;
+				return Renderer.class.getCompactRenderedClassFeature;
 			case "subclassfeature":
 			case "subclassFeature":
-				return Renderer.class.getCompactRenderedString;
+				return Renderer.class.getCompactRenderedClassFeature;
 			case "domain": return Renderer.domain.getCompactRenderedString;
 			case "group": return Renderer.group.getCompactRenderedString;
 			case "skill": return Renderer.skill.getCompactRenderedString;
