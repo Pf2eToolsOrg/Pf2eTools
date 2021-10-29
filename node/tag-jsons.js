@@ -85,7 +85,7 @@ class TagJsons {
 							obj = SpellTag.tryRun(obj);
 							obj = FeatTag.tryRun(obj);
 							obj = DeityTag.tryRun(obj);
-							// obj = GroupTag.tryRun(obj);
+							obj = GroupTag.tryRun(obj);
 							// obj = ItemTag.tryRun(obj);
 
 							return obj;
@@ -382,15 +382,13 @@ class DeityTag {
 DeityTag._DEITIES = {};
 DeityTag._DEITIES_REGEX = null;
 
-// FIXME: This tags literally everything. Change it to tag only when the word "group" is mentioned around it, such as "brawling weapon group"
-
 class GroupTag {
 	static init () {
 		const groupData = ut.readJson(`./data/groups.json`);
 		groupData.group.forEach(a => {
 			GroupTag._GROUPS[a.name] = {name: a.name, source: a.source};
 		});
-		GroupTag._GROUPS_REGEX = new RegExp(`(${Object.keys(GroupTag._GROUPS).map(it => it.escapeRegexp()).join("|")})(?![a-z])`, "gi");
+		GroupTag._GROUPS_REGEX = new RegExp(`(${Object.keys(GroupTag._GROUPS).map(it => it.escapeRegexp()).join("|")})(?![a-z])(weapon|armor|) group`, "gi");
 	}
 
 	static tryRun (it) {
