@@ -830,7 +830,7 @@ class ScaleCreature {
 							while (countPreperations(i) < preps) {
 								addSpell(i);
 							}
-							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition=${sc.tradition}|level=${i}}`;
+							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition & spell list=${sc.tradition}|level=${i}}`;
 						}
 					} else if (sc.type === "Spontaneous") {
 						for (let i = highestSpell; i <= Math.min(10, Math.ceil(toLvl / 2)); i++) {
@@ -839,7 +839,7 @@ class ScaleCreature {
 							while (sc.entry[i].spells.length < sc.entry[i].slots - 1) {
 								addSpell(i);
 							}
-							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition=${sc.tradition}|level=${i}}`;
+							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition & spell list=${sc.tradition}|level=${i}}`;
 						}
 					}
 				}
