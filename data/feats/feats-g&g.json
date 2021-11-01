@@ -494,7 +494,7 @@
 				"archetype": false
 			},
 			"entries": [
-				"You've found a way to use a hodgepodge combination of devices to enhance your visual abilities in every situation. You gain darkvision and low-light vision, and you can see {@condition invisible} creatures and objects as translucent shapes, though these shapes are indistinct enough to be {@condition concealed} to you.",
+				"You've found a way to use a hodgepodge combination of devices to enhance your visual abilities in every situation. You gain {@ability darkvision} and {@ability low-light vision}, and you can see {@condition invisible} creatures and objects as translucent shapes, though these shapes are indistinct enough to be {@condition concealed} to you.",
 				"If an effect would give you the {@condition blinded} condition, the effect must attempt a counteract check against your class DC, with your counteract level equaling half your level, rounded up. On a failed counteract check, you aren't {@condition blinded}\u2014your various devices are able to compensate."
 			],
 			"page": 27
@@ -1163,8 +1163,7 @@
 			},
 			"entries": [
 				"You can deliver silent messages. You gain touch telepathy, allowing you to communicate silently and mentally with any creature you're touching, as long as you share a language.",
-				"Enhancement You can send your messages even further.",
-				"Your telepathy gains a range of 10 feet, but you still have to share a language with your target."
+				"{@b Enhancement} You can send your messages even further. Your telepathy gains a range of 10 feet, but you still have to share a language with your target."
 			],
 			"page": 40
 		},
@@ -1182,10 +1181,10 @@
 				"skill": false,
 				"archetype": false
 			},
-			"prerequisites": "low-light vision",
+			"prerequisites": "{@ability low-light vision}",
 			"entries": [
-				"Your eye has been magically enhanced to pierce darkness. You gain darkvision.",
-				"Enhancement Your eye can see {@condition invisible} creatures in brief spurts. You can cast {@spell see invisibility} as an arcane innate spell once per hour."
+				"Your eye has been magically enhanced to pierce darkness. You gain {@ability darkvision}.",
+				"{@b Enhancement} Your eye can see {@condition invisible} creatures in brief spurts. You can cast {@spell see invisibility} as an arcane innate spell once per hour."
 			],
 			"page": 40
 		},
@@ -1204,8 +1203,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You have come to better understand the process that made your body and the magic that powers it. You gain the trained proficiency rank in {@skill Arcana} and {@skill Crafting}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore|Automaton Lore}.",
-				"Enhancement Your gain greater understanding. Increase your proficiency rank in either {@skill Arcana} or {@skill Crafting}, as well as {@skill Lore|Automaton Lore}, to expert. If you were already an expert in the chosen skill, increase your rank to master instead."
+				"You have come to better understand the process that made your body and the magic that powers it. You gain the trained proficiency rank in {@skill Arcana} and {@skill Crafting}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Automaton Lore}.",
+				"{@b Enhancement} Your gain greater understanding. Increase your proficiency rank in either {@skill Arcana} or {@skill Crafting}, as well as {@skill Lore||Automaton Lore}, to expert. If you were already an expert in the chosen skill, increase your rank to master instead."
 			],
 			"page": 40
 		},
@@ -1225,7 +1224,7 @@
 			},
 			"entries": [
 				"You can channel your core's power through the magical gem that serves as your eye. You gain an energy beam ranged unarmed attack that deals {@damage 1d4} fire damage. The energy beam has a range increment of 20 feet. On a critical hit, the target takes {@condition persistent damage ||persistent fire damage} equal to the number of weapon damage dice. Your eye beam does not add critical specialization effects.",
-				"Enhancement You channel greater power. Increase the damage die of your energy beam by one step, from {@dice 1d4} to {@dice 1d6}."
+				"{@b Enhancement} You channel greater power. Increase the damage die of your energy beam by one step, from {@dice 1d4} to {@dice 1d6}."
 			],
 			"page": 40
 		},
@@ -1287,9 +1286,7 @@
 			"entries": [
 				"Your mechanical body houses a weapon or shield that you can quickly draw and stow, leaving you prepared for combat at all times.",
 				"You can use a 1-minute activity, which has the {@trait manipulate} trait, to integrate a single, one-handed weapon or shield into one of your arms. You can draw or stow this item as an {@action Interact} action. Creatures don't automatically see this integrated item when it's stowed and must actively {@action Seek} in order to find it. They take a \u20132 circumstance penalty to any checks to do so. While you are wielding the item, it can't be Disarmed and you can't drop or {@action Release} it; you must {@action Interact} to store the weapon and free that hand. A creature determined to retrieve the item can do so, but it requires either 1 minute to remove it or extreme violence to your arm\u2014such as physically removing portions of the limb. You can only have one integrated armament at a time, though you can use the 1-minute activity to replace the item or swap the arm in which it's stored.",
-				"Enhancement Your body has more space for integration.",
-				"You can now either integrate two one-handed weapons, a one-handed weapon and a shield, or a single two-handed weapon which is split across both arms. You can use a single {@action Interact} action to draw or store both integrated armaments.",
-				"When you draw a single weapon, you can choose to hold it with either one hand or both hands."
+				"{@b Enhancement} Your body has more space for integration. You can now either integrate two one-handed weapons, a one-handed weapon and a shield, or a single two-handed weapon which is split across both arms. You can use a single {@action Interact} action to draw or store both integrated armaments. When you draw a single weapon, you can choose to hold it with either one hand or both hands."
 			],
 			"page": 41
 		},
@@ -1310,7 +1307,7 @@
 			"entries": [
 				"Your animating magic provides some defense. Choose one of the following energy damage types: cold, electricity, or sonic.",
 				"You gain resistance 5 to that damage type.",
-				"Enhancement You tap deeper into your animating magic, and your resistances improve. Choose one of the following benefits: you gain resistance 5 to the remaining two damage types from the above list, or your chosen resistance increases to a value equal to 1 + half your level."
+				"{@b Enhancement} You tap deeper into your animating magic, and your resistances improve. Choose one of the following benefits: you gain resistance 5 to the remaining two damage types from the above list, or your chosen resistance increases to a value equal to 1 + half your level."
 			],
 			"page": 41
 		},
@@ -1330,8 +1327,8 @@
 			},
 			"prerequisites": "hunter automaton",
 			"entries": [
-				"You have developed magical techniques to aid you with stalking your prey. You can cast {@spell blur} and invisibility each once per day as 2nd-level arcane innate spells.",
-				"Enhancement Your camouflage is more potent. Your {@spell blur} spell now lasts 10 minutes and when you cast {@spell invisibility}, you can choose to gain the effects of the 4th-level version of the spell. In addition, you can now cast {@spell blur} and invisibility each twice per day."
+				"You have developed magical techniques to aid you with stalking your prey. You can cast {@spell blur} and {@spell invisibility} each once per day as 2nd-level arcane innate spells.",
+				"{@b Enhancement} Your camouflage is more potent. Your {@spell blur} spell now lasts 10 minutes and when you cast {@spell invisibility}, you can choose to gain the effects of the 4th-level version of the spell. In addition, you can now cast {@spell blur} and {@spell invisibility} each twice per day."
 			],
 			"page": 41
 		},
@@ -1354,8 +1351,7 @@
 			"frequency": "once per day",
 			"entries": [
 				"You redirect energy from your core to ports on your back or feet, allowing you to fly for a short time. You can maintain this redirected energy for 5 minutes. You gain a fly Speed equal to your Speed while redirecting the energy.",
-				"Enhancement You can maintain your flight for longer.",
-				"You can redirect your energy at all times, allowing you to fly whenever you want, rather than just once per day for 5 minutes."
+				"{@b Enhancement} You can maintain your flight for longer. You can redirect your energy at all times, allowing you to fly whenever you want, rather than just once per day for 5 minutes."
 			],
 			"activity": {
 				"number": 2,
@@ -1380,7 +1376,17 @@
 			"prerequisites": "warrior automaton",
 			"requirements": "You have a creature {@condition grabbed} or {@condition restrained}.",
 			"entries": [
-				"You channel magical power from your core into your arm, empowering your attack as you attempt to slam your foe into the ground. Attempt an {@skill Athletics} check against the foe's Fortitude DC. You take a \u20132 circumstance penalty to your check if the target is one size larger than you and a \u20134 circumstance penalty if it's larger than that. You gain a +2 circumstance bonus to your check if the target is one size smaller than you and a +4 circumstance bonus if it's smaller than that."
+				"You channel magical power from your core into your arm, empowering your attack as you attempt to slam your foe into the ground. Attempt an {@skill Athletics} check against the foe's Fortitude DC. You take a \u20132 circumstance penalty to your check if the target is one size larger than you and a \u20134 circumstance penalty if it's larger than that. You gain a +2 circumstance bonus to your check if the target is one size smaller than you and a +4 circumstance bonus if it's smaller than that.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You slam the foe down and the magical energy overwhelms it. The creature is knocked {@condition prone}, becomes {@condition dazzled} for 1 round, and takes damage equal to {@damage 2d6} plus your Strength modifier. The foe is no longer {@condition grabbed} or {@condition restrained} by you.",
+						"Success": "You slam the foe down. The creature is knocked {@condition prone} and takes damage equal to your Strength modifier. The foe is no longer {@condition grabbed} or {@condition restrained} by you.",
+						"Failure": "You are unable to slam the creature, but your hold on the creature remains.",
+						"Critical Failure": "The creature breaks free and is no longer {@condition grabbed} or {@condition restrained} by you."
+					}
+				},
+				"{@b Enhancement} Your arms better channel your core's power. You no longer take penalties for attempting to slam larger foes. Your foe takes damage equal to {@damage 2d6} plus your Strength modifier on a success (or double that on a critical success)."
 			],
 			"activity": {
 				"number": 2,
@@ -1405,7 +1411,7 @@
 			"prerequisites": "mage automaton",
 			"entries": [
 				"Your core allows you to draw more power from it. Select one 1st-level arcane spell and one 2nd-level or lower arcane spell, to which you have access. You can cast your chosen spells as arcane innate spells each once per day.",
-				"Enhancement Your attunement grows stronger. Select one 5th-level or lower arcane spell and one 6th-level or lower arcane spell, to which you have access. You can cast them as arcane innate spells each once per day, in addition to the original spells."
+				"{@b Enhancement} Your attunement grows stronger. Select one 5th-level or lower arcane spell and one 6th-level or lower arcane spell, to which you have access. You can cast them as arcane innate spells each once per day, in addition to the original spells."
 			],
 			"page": 42
 		},
@@ -1426,7 +1432,7 @@
 			"entries": [
 				"You've focused on enhancing yourself and have received an improvement to one of your existing abilities. You gain the enhancement benefits of one of your 1st- or 5th-level automaton ancestry feats.",
 				"You are also capable of reconfiguring your augmentations to meet your needs. You can spend one week of downtime to change the enhancement you gain with this feat.",
-				"Enhancement You gain the enhancement benefits of another 1st- or 5th-level automaton ancestry feat. Also, your reconfigurations take less time. You only need to spend 1 day of downtime to change any of your enhancements. If you have multiple enhancements, changing each one requires a separate day."
+				"{@b Enhancement} You gain the enhancement benefits of another 1st- or 5th-level automaton ancestry feat. Also, your reconfigurations take less time. You only need to spend 1 day of downtime to change any of your enhancements. If you have multiple enhancements, changing each one requires a separate day."
 			],
 			"page": 42
 		},
@@ -1448,7 +1454,7 @@
 			"frequency": "once per day",
 			"entries": [
 				"Throughout the day, your body produces powerful projectiles within your chassis. You fire them all at once in either a 30-foot cone or a 10-foot emanation. Foes in the area take {@damage 6d6} piercing damage. This increases to {@dice 7d6} at 12th level, {@dice 8d6} at 15th level, and {@dice 9d6} at 18th level.",
-				"Enhancement The projectiles regenerate quicker, they are much more powerful, and you can refine the metallic content to harm certain creatures. You can use Rain of Bolts once per hour instead of once per day. The damage increases to {@dice 12d6} and each time you use the action, you can choose adamantine, cold iron, or silver. The damage from Rain of Bolts is treated as the metal you chose. At 20th level, the damage increases to {@dice 13d6}."
+				"{@b Enhancement} The projectiles regenerate quicker, they are much more powerful, and you can refine the metallic content to harm certain creatures. You can use Rain of Bolts once per hour instead of once per day. The damage increases to {@dice 12d6} and each time you use the action, you can choose adamantine, cold iron, or silver. The damage from Rain of Bolts is treated as the metal you chose. At 20th level, the damage increases to {@dice 13d6}."
 			],
 			"activity": {
 				"number": 2,
@@ -1472,7 +1478,7 @@
 			},
 			"entries": [
 				"You've modified your body to allow you to augment your movement. You gain either a climb Speed of 20 feet or a swim Speed of 20 feet, your choice.",
-				"Enhancement Your body allows for even further forms of movement. You can either select the option from this feat you haven't chosen yet (climb Speed or swim Speed), or you can increase your land Speed by 5 feet and increase the Speed you chose from this feat increase to be equal to your adjusted land Speed."
+				"{@b Enhancement} Your body allows for even further forms of movement. You can either select the option from this feat you haven't chosen yet (climb Speed or swim Speed), or you can increase your land Speed by 5 feet and increase the Speed you chose from this feat increase to be equal to your adjusted land Speed."
 			],
 			"page": 42
 		},
@@ -1491,7 +1497,8 @@
 				"archetype": false
 			},
 			"entries": [
-				"You've attuned your core to allow you to phase in and out of."
+				"You've attuned your core to allow you to phase in and out of the {@place Astral Plane}, allowing you to teleport periodically. You can cast {@spell dimension door} once per hour as a 4th-level innate arcane spell.",
+				"{@b Enhancement} Your attunement allows you to teleport in a series of quick jumps rather than in one big leap. You can expend your hourly use of {@spell dimension door} as a free action when you begin your turn. If you do, your {@action Stride||Strides} are augmented until the end of your turn, allowing you to instantly teleport to any point you could reach with your Speed instead of traversing normally to the location. While augmented, your {@action Stride||Strides} gain the {@trait conjuration} and {@trait teleportation} traits. Your augmented {@action Stride||Strides} don't trigger reactions that can be triggered by {@trait move} actions or upon leaving or entering a square, unless those reactions trigger on teleportation."
 			],
 			"page": 42
 		},
@@ -1514,7 +1521,7 @@
 			"entries": [
 				"Your soul taps into your core's power to push against the grasp of death and allow you to recover consciousness.",
 				"You're restored to 1 Hit Point, lose the {@condition dying} and {@condition unconscious} conditions, and can act normally on this turn. You gain or increase the {@condition wounded} condition as normal when losing the {@condition dying} condition in this way.",
-				"Enhancement Your soul can draw even more power from your core, granting you additional benefits. When you use Core Rejuvenation, you also gain a number of temporary Hit Points equal to three times your level. These Hit Points remain for 1 minute."
+				"{@b Enhancement} Your soul can draw even more power from your core, granting you additional benefits. When you use Core Rejuvenation, you also gain a number of temporary Hit Points equal to three times your level. These Hit Points remain for 1 minute."
 			],
 			"activity": {
 				"number": 1,
@@ -1539,7 +1546,7 @@
 			"prerequisites": "Medium or Small size",
 			"entries": [
 				"You've empowered your core to support a larger body, granting you size and additional reach. You gain the effects of enlarge constantly.",
-				"Enhancement Your core's empowerment has stabilized, allowing for greater support. You are no longer {@condition clumsy} due to the effects of enlarge."
+				"{@b Enhancement} Your core's empowerment has stabilized, allowing for greater support. You are no longer {@condition clumsy} due to the effects of enlarge."
 			],
 			"page": 43
 		},
@@ -2267,8 +2274,8 @@
 			},
 			"entries": [
 				"You are equally at home piloting any vehicle, adapting yourself instantly to varied controls, movements, and handling.",
-				"Whenever piloting a vehicle requires a {@skill Lore|Piloting Lore} or {@skill Lore|Sailing Lore} check, you can use your {@skill Lore|Driving Lore} proficiency instead.",
-				"You can use Dexterity in place of Intelligence when attempting piloting checks with {@skill Lore|Driving Lore}. You become an expert in {@skill Lore|Driving Lore}. At 7th level, you become a master in {@skill Lore|Driving Lore}, and at 15th level, you become legendary in {@skill Lore|Driving Lore}."
+				"Whenever piloting a vehicle requires a {@skill Lore||Piloting Lore} or {@skill Lore||Sailing Lore} check, you can use your {@skill Lore||Driving Lore} proficiency instead.",
+				"You can use Dexterity in place of Intelligence when attempting piloting checks with {@skill Lore||Driving Lore}. You become an expert in {@skill Lore||Driving Lore}. At 7th level, you become a master in {@skill Lore||Driving Lore}, and at 15th level, you become legendary in {@skill Lore||Driving Lore}."
 			],
 			"special": "You cannot select another dedication feat until you have gained two other feats from the trick driver archetype.",
 			"page": 55
@@ -2292,7 +2299,7 @@
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"entries": [
 				"You can optimize your vehicle's performance, coaxing extra speed and choosing paths to avoid slowdowns.",
-				"When calculating your travel speed for the day while piloting a vehicle, you can attempt a {@skill Lore|Driving Lore} check to increase your vehicle's travel speed. The DC is determined by the GM but is typically based on the vehicle's piloting DC or a difficulty based on the environment, whichever is harder. On a success, increase your vehicle's travel speed by half. This has no effect on your vehicle's movement in encounters."
+				"When calculating your travel speed for the day while piloting a vehicle, you can attempt a {@skill Lore||Driving Lore} check to increase your vehicle's travel speed. The DC is determined by the GM but is typically based on the vehicle's piloting DC or a difficulty based on the environment, whichever is harder. On a success, increase your vehicle's travel speed by half. This has no effect on your vehicle's movement in encounters."
 			],
 			"page": 55
 		},
@@ -2311,7 +2318,7 @@
 				"skill": false,
 				"archetype": true
 			},
-			"prerequisites": "{@feat Trick Driver Dedication|G&G}, expert in {@skill Lore|Driving Lore}",
+			"prerequisites": "{@feat Trick Driver Dedication|G&G}, expert in {@skill Lore||Driving Lore}",
 			"requirements": "You are adjacent to a vehicle's point of entry.",
 			"entries": [
 				"Diving into a moving vehicle and seizing the controls is nothing new for you. You {@action Board|GMG} and {@action Take Control|GMG} of the adjacent vehicle."
@@ -2368,7 +2375,7 @@
 				],
 				"archetype": true
 			},
-			"prerequisites": "{@feat Trick Driver Dedication|G&G}, master in {@skill Lore|Driving Lore}",
+			"prerequisites": "{@feat Trick Driver Dedication|G&G}, master in {@skill Lore||Driving Lore}",
 			"entries": [
 				"You can push your vehicle's performance beyond the limits envisioned by its makers. Whenever you succeed at a piloting check, the vehicle you are piloting gains a +5-foot circumstance bonus to all its Speeds until the end of your turn. If you critically succeed, this bonus increases to +10 feet."
 			],
@@ -4715,7 +4722,7 @@
 				"archetype": true
 			},
 			"entries": [
-				"You know how to set explosives to cause the maximum possible damage to buildings and other structures. You become trained in {@skill Lore|Engineering Lore} or become an expert in it if you were already trained. You gain the Set Explosives action.",
+				"You know how to set explosives to cause the maximum possible damage to buildings and other structures. You become trained in {@skill Lore||Engineering Lore} or become an expert in it if you were already trained. You gain the Set Explosives action.",
 				"Set Explosives {@as 2} (concentrate) Requirements You have 1 or 2 bombs in hand; Effect You attach the bombs to an inanimate object within your reach, such as a door, wall, or column, and rig them to detonate at a set time. The bombs explode at a specific time you determine (such as after your next action or at the start of your next turn, to a maximum of 1 minute), dealing their damage and splash damage to the inanimate object. Combine this damage for the purpose of resistances and weaknesses, and this damage ignores an amount of the object's Hardness equal to your level. Any creatures adjacent to the hazard take the bombs' splash damage, also combined for the purpose of resistances and weaknesses. As a reminder, since you didn't throw the bombs, Calculated Splash and similar effects don't apply. Making sure your timing is correct requires concentration, so you can't Set Explosives again while you're waiting for a previously set bomb to detonate."
 			],
 			"special": "You can't select another dedication feat until you've gained two other feats from the demolitionist archetype.",
@@ -4757,7 +4764,7 @@
 			},
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}, master in",
 			"entries": [
-				"{@skill Lore|Engineering Lore} You know exactly how to make a memorable entrance... by detonating a bomb to produce a devastating explosion, of course! You Set Explosives on a door, window, container, or heavy gate. When the explosives detonate, you can attempt an {@skill Lore|Engineering Lore} check to {@action Force Open} the target. If a bomb would add an item bonus to attack rolls, add that item bonus to your {@skill Lore|Engineering Lore} check. Since you're blasting your way in, you can't avoid breaking the object or structure. If you roll a critical success, you get a success instead."
+				"{@skill Lore||Engineering Lore} You know exactly how to make a memorable entrance... by detonating a bomb to produce a devastating explosion, of course! You Set Explosives on a door, window, container, or heavy gate. When the explosives detonate, you can attempt an {@skill Lore||Engineering Lore} check to {@action Force Open} the target. If a bomb would add an item bonus to attack rolls, add that item bonus to your {@skill Lore||Engineering Lore} check. Since you're blasting your way in, you can't avoid breaking the object or structure. If you roll a critical success, you get a success instead."
 			],
 			"activity": {
 				"number": 2,
@@ -4863,7 +4870,7 @@
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
 				"This display emits a cascade of loud bangs or glittering trails. While you initially designed the display to captivate your audience's attention, it turns out to have a surprisingly effective use in combat, suppressing {@trait auditory} or {@trait visual} effects behind your magnificent display. You gain the Coughing Dragon fireworks display.",
-				"Coughing Dragon {@as 2} Cost 2 batches of infused reagents; Effect Choose either {@trait auditory} or {@trait visual} effects. The display gains that trait, and you attempt to counteract one or more effects within 60 feet that have this trait. On a success, the effect is suppressed until the start of your next turn, rather than ending entirely. Use your {@skill Lore|Fireworks Lore} modifier as your counteract modifier, and your counteract level is equal to half your advanced alchemy level (rounded up). A coughing dragon costs 2 batches of infused reagents rather than 1, but you can increase the cost to 3 batches and spend an additional action to create an even bigger coughing dragon display that attempts to counteract both {@trait auditory} and {@trait visual} effects at the same time."
+				"Coughing Dragon {@as 2} Cost 2 batches of infused reagents; Effect Choose either {@trait auditory} or {@trait visual} effects. The display gains that trait, and you attempt to counteract one or more effects within 60 feet that have this trait. On a success, the effect is suppressed until the start of your next turn, rather than ending entirely. Use your {@skill Lore||Fireworks Lore} modifier as your counteract modifier, and your counteract level is equal to half your advanced alchemy level (rounded up). A coughing dragon costs 2 batches of infused reagents rather than 1, but you can increase the cost to 3 batches and spend an additional action to create an even bigger coughing dragon display that attempts to counteract both {@trait auditory} and {@trait visual} effects at the same time."
 			],
 			"page": 135
 		},
@@ -5762,7 +5769,7 @@
 			},
 			"access": "You are from Dongun Hold or Alkenstar.",
 			"entries": [
-				"You're knowledgeable in trades that are important to your people's survival and commercial interests. Pick two of the following {@skill Lore} skills: {@skill Lore|Engineering Lore}, {@skill Lore|Explosive Lore}, or {@skill Lore|Firearm Lore}. At 2nd level, you gain expert proficiency in these {@skill Lore} skills; at 7th level, you gain master proficiency in these {@skill Lore} skills; and at 15th level, you gain legendary proficiency in them."
+				"You're knowledgeable in trades that are important to your people's survival and commercial interests. Pick two of the following {@skill Lore} skills: {@skill Lore||Engineering Lore}, {@skill Lore||Explosive Lore}, or {@skill Lore||Firearm Lore}. At 2nd level, you gain expert proficiency in these {@skill Lore} skills; at 7th level, you gain master proficiency in these {@skill Lore} skills; and at 15th level, you gain legendary proficiency in them."
 			],
 			"page": 200
 		},

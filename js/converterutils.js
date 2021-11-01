@@ -284,7 +284,7 @@ class SkillTag {
 
 	static _fnTag (str) {
 		return str.replace(SkillTag._LORE_REGEX, (...m) => {
-			return `{@skill Lore${m[1] ? `|${m[0]}` : ""}}`;
+			return `{@skill Lore${m[1] ? `||${m[0]}` : ""}}`;
 		}).replace(SkillTag._SKILLS_REGEX, `{@skill $&}`)
 	}
 }
