@@ -122,19 +122,20 @@ class NavBar {
 				title: "This feature is unsupported. Expect bugs.",
 			},
 		);
-		addDivider(ulSettings);
-		addButton(
-			ulSettings,
-			{
-				html: scaleCreature.isProfNoLvl() === true ? "Creature Proficiency with Level" : "Creature Proficiency without Level",
-				click: (evt) => {
-					evt.preventDefault();
-					scaleCreature.toggleProfNoLvl();
-				},
-				className: "profNoLvlToggle",
-				title: "This feature is experimental.",
-			},
-		);
+		// Re-enable this setting whenever
+		// addDivider(ulSettings);
+		// addButton(
+		// 	ulSettings,
+		// 	{
+		// 		html: scaleCreature.isProfNoLvl() === true ? "Proficiency with Level" : "Proficiency without Level",
+		// 		click: (evt) => {
+		// 			evt.preventDefault();
+		// 			scaleCreature.toggleProfNoLvl();
+		// 		},
+		// 		className: "profNoLvlToggle",
+		// 		title: "This feature is experimental.",
+		// 	},
+		// );
 		addDivider(ulSettings);
 		addButton(
 			ulSettings,

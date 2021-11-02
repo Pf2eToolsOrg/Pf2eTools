@@ -416,7 +416,7 @@ class ScaleCreature {
 		this._rng = null;
 
 		this._isProfNoLvl = ScaleCreature.storage.getItem(ScaleCreature._STORAGE_PROF_NO_LVL) === "true";
-		this._setButtonText(this._isProfNoLvl);
+		this._toggleProfNoLvl_updateButtonClass();
 	}
 
 	_initRng (cr, toLvl) {
@@ -915,8 +915,8 @@ class ScaleCreature {
 	toggleProfNoLvl () {
 		const profNoLvl = !this.isProfNoLvl();
 		this._isProfNoLvl = profNoLvl;
-		this._setButtonText(profNoLvl);
 		ScaleCreature.storage.setItem(ScaleCreature._STORAGE_PROF_NO_LVL, profNoLvl);
+		this._toggleProfNoLvl_updateButtonClass();
 
 		// FIXME: hacky solution
 		if (UrlUtil.getCurrentPage() === UrlUtil.PG_BESTIARY) {
@@ -928,12 +928,12 @@ class ScaleCreature {
 		}
 	}
 
-	isProfNoLvl () {
-		return this._isProfNoLvl;
+	_toggleProfNoLvl_updateButtonClass () {
+		$(`.btn-profnolvl`).toggleClass("active", this._isProfNoLvl);
 	}
 
-	_setButtonText (profNoLvl) {
-		[...document.getElementsByClassName("profNoLvlToggle")].forEach(ele => ele.innerHTML = `${profNoLvl ? "Creature Proficiency with Level" : "Creature Proficiency without Level"}`);
+	isProfNoLvl () {
+		return this._isProfNoLvl;
 	}
 }
 

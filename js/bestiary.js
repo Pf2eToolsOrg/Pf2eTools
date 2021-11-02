@@ -190,6 +190,9 @@ class BestiaryPage extends ListPage {
 		encounterBuilder = new EncounterBuilder();
 		encounterBuilder.initUi();
 		await ExcludeUtil.pInitialise();
+		$(`.btn-profnolvl`).on("click", () => {
+			scaleCreature.toggleProfNoLvl();
+		});
 		// TODO: Homebrew functionality
 		const creatureAbilities = await DataUtil.loadJSON("data/abilities.json");
 		Renderer.hover._pCacheAndGet_populate(UrlUtil.PG_ABILITIES, creatureAbilities, "ability");
