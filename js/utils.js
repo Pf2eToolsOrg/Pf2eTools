@@ -4265,7 +4265,7 @@ BrewUtil = {
 			case UrlUtil.PG_FEATS:
 				return ["feat"];
 			case UrlUtil.PG_COMPANIONS_FAMILIARS:
-				return ["companion", "familiar"];
+				return ["companion", "familiar", "eidolon"];
 			case UrlUtil.PG_ADVENTURES:
 				return ["adventure", "adventureData"];
 			case UrlUtil.PG_HAZARDS:
@@ -4387,6 +4387,7 @@ BrewUtil = {
 			case "feat":
 			case "companion":
 			case "familiar":
+			case "eidolon":
 			case "hazard":
 			case "action":
 			case "creature":
@@ -4500,7 +4501,7 @@ BrewUtil = {
 		obj.uniqueId = CryptUtil.md5(JSON.stringify(obj));
 	},
 
-	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
+	_STORABLE: ["variantrule", "table", "tableGroup", "book", "bookData", "ancestry", "heritage", "versatileHeritage", "background", "class", "subclass", "classFeature", "subclassFeature", "archetype", "feat", "companion", "familiar", "eidolon", "adventure", "adventureData", "hazard", "action", "creature", "condition", "item", "baseitem", "spell", "disease", "curse", "itemcurse", "ability", "deity", "language", "place", "ritual", "vehicle", "trait", "group", "domain", "skill"],
 	async pDoHandleBrewJson (json, page, pFuncRefresh) {
 		page = BrewUtil._PAGE || page;
 		await BrewUtil._lockHandleBrewJson.pLock();
