@@ -559,12 +559,12 @@
 						},
 						{
 							"stage": 2,
-							"entry": "coughing requires you to succeed at a DC 5 flat check to {@action Cast a Spell} with a verbal component or {@action Activate an Item} with a command component",
+							"entry": "coughing requires you to succeed at a DC {@flatDC 5} flat check to {@action Cast a Spell} with a verbal component or {@action Activate an Item} with a command component",
 							"duration": "1 week"
 						},
 						{
 							"stage": 3,
-							"entry": "{@condition fatigued}, can't recover from the fatigued condition, and coughing requires a successful DC 15 flat check to {@action Cast a Spell} with a verbal component or {@action Activate an Item} with a command component",
+							"entry": "{@condition fatigued}, can't recover from the fatigued condition, and coughing requires a successful DC {@flatDC 15} flat check to {@action Cast a Spell} with a verbal component or {@action Activate an Item} with a command component",
 							"duration": "1 week"
 						},
 						{
@@ -697,7 +697,7 @@
 					"DC": "equal to a high spell DC for a monster of its level (page 65);",
 					"savingThrow": "Will",
 					"entries": [
-						"You are hounded by undead creatures of the same level as the curse. Every night, you must attempt a DC 15 flat check. On a failure, an incorporeal undead manifests to hassle and harry you throughout the night, retreating before it can take much damage and often preventing you from gaining a full night's rest. Whenever you enter a graveyard or other area where bodies are buried, you must succeed at the same flat check or a body animates as a corporeal undead (typically a skeleton or zombie) to attack you.",
+						"You are hounded by undead creatures of the same level as the curse. Every night, you must attempt a DC {@flatDC 15} flat check. On a failure, an incorporeal undead manifests to hassle and harry you throughout the night, retreating before it can take much damage and often preventing you from gaining a full night's rest. Whenever you enter a graveyard or other area where bodies are buried, you must succeed at the same flat check or a body animates as a corporeal undead (typically a skeleton or zombie) to attack you.",
 						"These undead are temporary and exist only to harry you; if you take control of the undead, move on, or otherwise avoid their attacks, incorporeal undead discorporate and corporeal undead collapse into ordinary corpses. The curse can be removed by returning the stolen items to their resting place."
 					]
 				}

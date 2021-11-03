@@ -27,6 +27,18 @@ class Source {
 				crb.patTraits = new RegExp(/\n([A-Z 0-9-]+)\n([A-Z ]+\n)?/);
 				return crb;
 			}
+			case "G&G": {
+				const patEvenPage = new RegExp(/\n(\d+)\nIntroduction\nGears\nCharacters\nGears\nEquipment\nGuns\nCharacters\nGuns\nEquipment\nThe Rotating\nGear\nGlossary\nAnd Index\nGuns &\nGEARS/);
+				const patOddPage = new RegExp(/\n(\d+)\n/);
+				const gg = new Source("G&G", patEvenPage, patOddPage);
+				return gg;
+			}
+			case "LOTGB": {
+				const patEvenPage = new RegExp(/\nGRAND\nBAZAAR\nINTRODUCTION.*?\n(\d+)\n/s);
+				const patOddPage = new RegExp(/\n(\d+)\n/);
+				const lotgb = new Source("LOTGB", patEvenPage, patOddPage);
+				return lotgb;
+			}
 			default: throw new Error(`Unknown source string ${str}.`);
 		}
 	}
@@ -284,7 +296,7 @@ class SkillTag {
 
 	static _fnTag (str) {
 		return str.replace(SkillTag._LORE_REGEX, (...m) => {
-			return `{@skill Lore${m[1] ? `|${m[0]}` : ""}}`;
+			return `{@skill Lore${m[1] ? `||${m[0]}` : ""}}`;
 		}).replace(SkillTag._SKILLS_REGEX, `{@skill $&}`)
 	}
 }

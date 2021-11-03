@@ -698,7 +698,7 @@
 			"classSource": "APG",
 			"level": 1,
 			"entries": [
-				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn two {@filter 1st-level spells|spells||tradition=divine|rarity=common|level=1} and five {@filter cantrips|spells||tradition=divine|rarity=common|level=0} of your choice. You choose these from the common spells from the divine spell list, or from other divine spells to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level.",
+				"The collection of spells you can cast is called your spell repertoire. At 1st level, you learn two {@filter 1st-level spells|spells||tradition & spell list=divine|rarity=common|level=1} and five {@filter cantrips|spells||tradition & spell list=divine|rarity=common|level=0} of your choice. You choose these from the common spells from the divine spell list, or from other divine spells to which you have access. You can cast any spell in your spell repertoire by using a spell slot of an appropriate spell level.",
 				"You add to this spell repertoire as you increase in level. Each time you get a spell slot (see Table 2\u20133), you add a spell of the same level to your spell repertoire. At 2nd level, you select another 1st-level spell; at 3rd level, you select two 2nd-level spells, and so on. When you add spells, you might add a higher-level version of a spell you already have, so you can cast a heightened version of that spell.",
 				"Though you gain them at the same rate, your spell slots and the spells in your spell repertoire are separate. If a feat or other ability adds a spell to your spell repertoire, it wouldn't give you another spell slot, and vice versa.",
 				{
@@ -981,7 +981,7 @@
 			"classSource": "APG",
 			"level": 19,
 			"entries": [
-				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two {@filter 10th-level divine spells|spells||level=10|tradition=divine|rarity=common} to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don't gain more 10th-level spells as you level up, unlike other spell slots, and you can't use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence} feat to gain a second slot."
+				"You now fully grasp the nature of the divine power behind your mystery, allowing you to work magic akin to miracles. Add two {@filter 10th-level divine spells|spells||level=10|tradition & spell list=divine|rarity=common} to your repertoire. You gain a single 10th-level spell slot you can use to cast one of those two spells using oracle spellcasting. You don't gain more 10th-level spells as you level up, unlike other spell slots, and you can't use 10th-level slots with abilities that give you more spell slots or that let you cast spells without expending spell slots. You can take the {@feat Oracular Providence} feat to gain a second slot."
 			]
 		}
 	],
@@ -1052,7 +1052,7 @@
 					"name": "Curse of Ancestral Meddling",
 					"entries": [
 						"The ancestral spirits you commune with haunt you and meddle with your belongings and actions, either out of a well-intentioned (but ultimately detrimental) attempt to assist you, as punishment for your audacity in circumventing the traditional means of achieving divine power, for their own amusement, or a mixture of the above. Your hair, clothing, and belongings constantly shift and stir, seemingly of their own volition.",
-						"{@b Minor Curse} One of your ancestors becomes predominant in their meddling. The first time you gain this effect each day, roll {@dice 1d4} on Table 2\u20134: Ancestral Influence on page 75 to determine which type of ancestor becomes predominant. This predominant ancestor guides you to use their preferred type of action. When you try to use one of the types of actions listed for the other ancestors, you must succeed at a DC 4 flat check. On a failure, you spend the action but gain no effect (though you don't lose the spell if you were {@action Cast a Spell|CRB|Casting a Spell}). If your action would take 1 minute or longer, it's long enough that you can overcome the meddling, and you don't need to attempt a flat check.",
+						"{@b Minor Curse} One of your ancestors becomes predominant in their meddling. The first time you gain this effect each day, roll {@dice 1d4} on Table 2\u20134: Ancestral Influence on page 75 to determine which type of ancestor becomes predominant. This predominant ancestor guides you to use their preferred type of action. When you try to use one of the types of actions listed for the other ancestors, you must succeed at a DC {@flatDC 4} flat check. On a failure, you spend the action but gain no effect (though you don't lose the spell if you were {@action Cast a Spell|CRB|Casting a Spell}). If your action would take 1 minute or longer, it's long enough that you can overcome the meddling, and you don't need to attempt a flat check.",
 						"During combat or another tense, round-by-round encounter, other ancestors wrestle for control of your actions. When you roll initiative, and then at the end of each of your turns during the encounter, roll {@dice 1d4} and change your predominant ancestor appropriately. Once the encounter ends, you return to the influence of the ancestor you first rolled for the day.",
 						"{@b Moderate Curse} The flat check DC to use other actions is 6, and you get the moderate curse benefit listed for your predominant ancestor in Table 2\u20134.",
 						{
@@ -1693,7 +1693,7 @@
 					"page": 74,
 					"name": "Lore",
 					"entries": [
-						"The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can't speak, use {@trait linguistic} effects, or otherwise communicate with your allies. If you {@action Cast a Spell} with a verbal component, you must succeed at a DC 5 flat check or the spell is lost. You gain a +4 status bonus on saving throws against {@trait linguistic} effects."
+						"The massive flow of information clouding your mind overwhelms your ability to communicate with others. You can understand all languages, but you can't speak, use {@trait linguistic} effects, or otherwise communicate with your allies. If you {@action Cast a Spell} with a verbal component, you must succeed at a DC {@flatDC 5} flat check or the spell is lost. You gain a +4 status bonus on saving throws against {@trait linguistic} effects."
 					]
 				}
 			]

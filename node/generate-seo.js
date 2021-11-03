@@ -60,7 +60,7 @@ const toGenerate = [
 			const fileData = Object.entries(index)
 				.map(([source, filename]) => ({source: source, json: rd(`data/bestiary/${filename}`)}));
 			// Filter to prevent duplicates from "otherSources" copies
-			return fileData.map(it => MiscUtil.copy(it.json.monster.filter(mon => mon.source === it.source))).reduce((a, b) => a.concat(b))
+			return fileData.map(it => MiscUtil.copy(it.json.creature.filter(mon => mon.source === it.source))).reduce((a, b) => a.concat(b))
 		},
 		style: 2,
 	},

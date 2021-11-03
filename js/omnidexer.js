@@ -96,7 +96,7 @@ class Omnidexer {
 			if ((options.isNoFilter || (!arbiter.include && !(arbiter.filter && arbiter.filter(it))) || (!arbiter.filter && (!arbiter.include || arbiter.include(it)))) && !arbiter.isOnlyDeep) index.push(toAdd);
 
 			const primary = {it: it, ix: i, parentName: name};
-			const deepItems = await arbiter.pGetDeepIndex(this, primary, it);
+			const deepItems = await arbiter.pGetDeepIndex(this, primary, it, json);
 			deepItems.forEach(item => {
 				const toAdd = getToAdd(it, item);
 				if (!arbiter.filter || !arbiter.filter(it)) index.push(toAdd);
@@ -402,9 +402,18 @@ class IndexableDirectoryClassFeature extends IndexableDirectory {
 		});
 	}
 
-	async pGetDeepIndex (indexer, primary, it) {
-		// TODO(Future) this could pull in the class data to get an accurate feature index; default to 0 for now
-		const ixFeature = 0;
+	async pGetDeepIndex (indexer, primary, it, clsJson) {
+		const validClasses = clsJson.class.filter(c => c.source === it.classSource && c.name === it.className);
+		const cls = validClasses.length ? validClasses[0] : null;
+		let ixFeature = -1;
+		if (MiscUtil.isObject(cls)) {
+			const featuresLvl = cls.classFeatures.map(f => typeof f === "string" ? f : f.classFeature)
+				.map(f => DataUtil.class.unpackUidClassFeature(f))
+				.filter(f => f.level === it.level).map(f => f.name);
+			ixFeature = featuresLvl.indexOf(it.name);
+		}
+		ixFeature = ixFeature === -1 ? 0 : ixFeature;
+
 		const classPageHash = `${UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_CLASSES]({name: it.className, source: it.classSource})}${HASH_PART_SEP}${UrlUtil.getClassesPageStatePart({feature: {ixLevel: it.level - 1, ixFeature}})}`;
 		return [
 			{
@@ -432,8 +441,18 @@ class IndexableDirectorySubclassFeature extends IndexableDirectory {
 		});
 	}
 
-	async pGetDeepIndex (indexer, primary, it) {
-		const ixFeature = 0;
+	async pGetDeepIndex (indexer, primary, it, clsJson) {
+		const validClasses = clsJson.class.filter(c => c.source === it.classSource && c.name === it.className);
+		const cls = validClasses.length ? validClasses[0] : null;
+		let ixFeature = -1;
+		if (MiscUtil.isObject(cls)) {
+			const featuresLvl = cls.classFeatures.map(f => typeof f === "string" ? f : f.classFeature)
+				.map(f => DataUtil.class.unpackUidClassFeature(f))
+				.filter(f => f.level === it.level).map(f => f.name);
+			ixFeature = featuresLvl.indexOf(it.name);
+		}
+		ixFeature = ixFeature === -1 ? 0 : ixFeature;
+
 		const pageStateOpts = {
 			subclass: {shortName: it.subclassShortName, source: it.source},
 			feature: {ixLevel: it.level - 1, ixFeature},

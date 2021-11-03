@@ -8,7 +8,7 @@ if (typeof module !== "undefined") {
 class TraitConverter extends ConverterBase {
 	constructor (source, textToConvert) {
 		super(source, textToConvert);
-		this.matches = [...this.source.txt.matchAll(/\n([^\n]*?) \(trait\)(.*?)(?:\.|\s\d+|–\d+)\n/gsm)];
+		this.matches = [...this.source.txt.matchAll(/^([^\n]*?) \([a-z ]*?trait\)(.*?)(?:\.|\s\d+|–\d+)\n/gsm)];
 	}
 
 	convert (match) {

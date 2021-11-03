@@ -70,14 +70,14 @@
 								"The 'filter_namespace' should be left blank for pages with only one filter box. Otherwise, try 'page.type', such as 'classes.feat' or 'ancestries.ancestries'.",
 								"Some examples of the tag in action:",
 								"{@filter Ancestries that have a boost to Intelligence|ancestries|ancestries.ancestries|Ability Boosts=Intelligence}",
-								"{@filter First or second level occult spells|spells||level=1;2|tradition=occult}",
+								"{@filter First or second level occult spells|spells||level=1;2|tradition & spell list=occult}",
 								"{@filter Beasts that are level 2 or lower|bestiary||level=[-1;1]|creature type=beast}",
 								"{@filter Creatures with a Strength modifier of +4 or more|bestiary||strength=[4;]}",
 								"{@filter Divination and Evocation spells|spells||school=D;V}",
 								"{@filter Simple melee weapons|items||weapon range=melee|Weapon/Armor Category=simple}",
 								"Meta-options can be set; inline for individual filters, and using 'fbmt' for filtering meta-options {@filter filter meta example|spells||level=1;2=sor~sand~b1|fbmt=sor|fbmh=source}",
 								"Search can be set; {@filter view goblins|bestiary||search=goblin}",
-								"An exact starting entity; {@filter filter for beasts and show cat|bestiary||type=beast|hash=cat_mm} where 'hash' is the part after a '#' and before any commas which appears in the URL bar when viewing the entity.",
+								"An exact starting entity; {@filter filter for beasts and show catfolk pouncer|bestiary||creature type=beast|hash=catfolk%20pouncer_bst} where 'hash' is the part after a '#' and before any commas which appears in the URL bar when viewing the entity.",
 								{
 									"type": "pf2-title",
 									"name": "Note"

@@ -872,7 +872,7 @@ function Renderer () {
 		if (entry.requirements != null) textStack[0] += `<strong>Requirements&nbsp;</strong>${renderer.render_addTerm(entry.requirements)} `;
 		if (entry.trigger != null) textStack[0] += `<strong>Trigger&nbsp;</strong>${renderer.render_addTerm(entry.trigger)} `;
 		textStack[0] += `${entry.frequency || entry.requirements || entry.trigger || entry.effect === true ? "<strong>Effect&nbsp;</strong>" : ""}`;
-		if (entry.entries) entry.entries.forEach(e => renderer._recursiveRender(e, textStack, meta, {isAbility: true}));
+		if (entry.entries) textStack[0] += entry.entries.map(e => renderer.render(e, {isAbility: true})).join(" ");
 		if (entry.special != null) textStack[0] += ` <strong>Special&nbsp;</strong>${renderer.render(entry.special)}`;
 		textStack[0] += `</p>`
 	}
@@ -3638,6 +3638,24 @@ Renderer.eidolon = {
 
 };
 
+Renderer.class = {
+	getCompactRenderedString (cls, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h1", name: cls.name, entries: cls.entries.map(e => ({type: "pf2-h3", ...e}))}
+
+		return renderer.render(fakeEntry, opts)
+	},
+
+	getCompactRenderedClassFeature (clsFeature, opts) {
+		opts = opts || {};
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h3", name: clsFeature.name, entries: clsFeature.entries}
+
+		return renderer.render(fakeEntry, opts)
+	},
+};
+
 Renderer.condition = {
 	getCompactRenderedString (cond, opts) {
 		opts = opts || {};
@@ -4501,8 +4519,8 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			// FIXME: We should calculate the items name if we want to link to specific variants.
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : v.type)}`);
+			// FIXME: Optimize this hellish mess
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
@@ -4592,7 +4610,9 @@ Renderer.item = {
 	},
 
 	async getItemsFromHomebrew (homebrew) {
-		return [...(homebrew.baseitem || []), ...(homebrew.item || [])];
+		const items = [...(homebrew.baseitem || []), ...(homebrew.item || [])];
+		const expanded = await Promise.all(items.map(it => DataUtil.item.expandVariants(it)));
+		return expanded.flat();
 	},
 
 	pGetFluff (item) {
@@ -6629,10 +6649,10 @@ Renderer.hover = {
 
 	getGenericCompactRenderedString (entry) {
 		const textStack = [""];
-		// FIXME: I am pretty sure this isn't the way this should be done (?)
-		textStack[0] += `<p class="pf2-h3 entry-title-inner">${entry.name}</p>`;
-		Renderer.get().setFirstSection(true).recursiveRender(entry, textStack, {prefix: "<p class=\"pf2-p\">", suffix: "</p>"});
-		return `${textStack.join("")}`;
+		const renderer = Renderer.get().setFirstSection(true);
+		const fakeEntry = {type: "pf2-h3", name: entry.name, entries: entry.entries};
+		renderer.recursiveRender(fakeEntry, textStack);
+		return textStack.join("");
 	},
 
 	_pageToRenderFn (page) {
@@ -6643,8 +6663,7 @@ Renderer.hover = {
 			case UrlUtil.PG_QUICKREF:
 				return Renderer.hover.getGenericCompactRenderedString;
 			case UrlUtil.PG_CLASSES:
-				// FIXME: Classes rendering
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedString;
 			case UrlUtil.PG_SPELLS:
 				return Renderer.spell.getCompactRenderedString;
 			case UrlUtil.PG_RITUALS:
@@ -6693,10 +6712,10 @@ Renderer.hover = {
 			// region props
 			case "classfeature":
 			case "classFeature":
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedClassFeature;
 			case "subclassfeature":
 			case "subclassFeature":
-				return Renderer.hover.getGenericCompactRenderedString;
+				return Renderer.class.getCompactRenderedClassFeature;
 			case "domain": return Renderer.domain.getCompactRenderedString;
 			case "group": return Renderer.group.getCompactRenderedString;
 			case "skill": return Renderer.skill.getCompactRenderedString;

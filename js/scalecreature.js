@@ -416,7 +416,7 @@ class ScaleCreature {
 		this._rng = null;
 
 		this._isProfNoLvl = ScaleCreature.storage.getItem(ScaleCreature._STORAGE_PROF_NO_LVL) === "true";
-		this._setButtonText(this._isProfNoLvl);
+		this._toggleProfNoLvl_updateButtonClass();
 	}
 
 	_initRng (cr, toLvl) {
@@ -648,7 +648,7 @@ class ScaleCreature {
 		return Math.round((x - a0) * ((b1 - a1) / (b0 - a0)) + a1);
 	}
 
-	// FIXME: This code is unreadable
+	// FIXME: This code is unreadable and might create undesired results
 	_scaleValue (lvlIn, toLvl, value, map) {
 		const {I: I0, idx} = this._getIntervalAndIdx(lvlIn, map, value);
 		let I1;
@@ -750,17 +750,15 @@ class ScaleCreature {
 	}
 
 	_adjustResistancesWeaknesses (creature, lvlIn, toLvl, opts) {
-		const I0 = this._LvlResistanceWeakness[lvlIn].reverse();
-		const I1 = this._LvlResistanceWeakness[toLvl].reverse();
 		if (creature.resistances) {
 			creature.resistances.forEach(r => {
-				if (r.amount) r.amount = this._intervalTransform(r.amount, I0, I1);
+				if (r.amount) r.amount = this._scaleValue(lvlIn, toLvl, r.amount, this._LvlResistanceWeakness);
 			});
 		}
 
 		if (creature.weaknesses) {
 			creature.weaknesses.forEach(w => {
-				if (w.amount) w.amount = this._intervalTransform(w.amount, I0, I1);
+				if (w.amount) w.amount = this._scaleValue(lvlIn, toLvl, w.amount, this._LvlResistanceWeakness);
 			});
 		}
 	}
@@ -785,10 +783,11 @@ class ScaleCreature {
 		creature.spellcasting.forEach(sc => {
 			if (sc.DC) sc.DC = this._scaleValue(lvlIn, toLvl, sc.DC, this._LvlSpellDC) + opts.flatAddProf;
 			if (sc.attack) sc.attack = this._scaleValue(lvlIn, toLvl, sc.attack, this._LvlSpellAtkBonus) + opts.flatAddProf;
+			if (!this._spells) return;
 			if (sc.type === "Prepared" || sc.type === "Spontaneous") {
 				const countPreperations = (lvl) => sc.entry[lvl].spells.map(it => Number(it.amount) || 1).reduce((a, b) => a + b, 0);
-				const highestSpell = Object.keys(sc.entry).map(it => Number(it)).filter(Number).sort(SortUtil.ascSort).reverse()[0];
-				const bonusSpells = Math.max(highestSpell != null ? sc.entry[highestSpell].slots || countPreperations(highestSpell) - this._LvlSpellsPerLvl[lvlIn][highestSpell] : 0, 0);
+				const highestSpell = Object.keys(sc.entry).map(it => Number(it)).filter(Number).sort(SortUtil.ascSort).last();
+				const bonusSpells = Math.max(highestSpell != null ? (sc.entry[highestSpell].slots || countPreperations(highestSpell)) - this._LvlSpellsPerLvl[lvlIn][highestSpell] : 0, 0);
 				if (lvlIn > toLvl) {
 					for (let i = 10; i > Math.ceil(toLvl / 2); i--) {
 						delete sc.entry[i];
@@ -831,7 +830,7 @@ class ScaleCreature {
 							while (countPreperations(i) < preps) {
 								addSpell(i);
 							}
-							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition=${sc.tradition}|level=${i}}`;
+							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition & spell list=${sc.tradition}|level=${i}}`;
 						}
 					} else if (sc.type === "Spontaneous") {
 						for (let i = highestSpell; i <= Math.min(10, Math.ceil(toLvl / 2)); i++) {
@@ -840,7 +839,7 @@ class ScaleCreature {
 							while (sc.entry[i].spells.length < sc.entry[i].slots - 1) {
 								addSpell(i);
 							}
-							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition=${sc.tradition}|level=${i}}`;
+							sc.entry[i].spells.last().notes = `or other {@filter ${sc.tradition.toLowerCase()} ${Parser.getOrdinalForm(i)} level spells|spells||source=CRB|tradition & spell list=${sc.tradition}|level=${i}}`;
 						}
 					}
 				}
@@ -916,8 +915,8 @@ class ScaleCreature {
 	toggleProfNoLvl () {
 		const profNoLvl = !this.isProfNoLvl();
 		this._isProfNoLvl = profNoLvl;
-		this._setButtonText(profNoLvl);
 		ScaleCreature.storage.setItem(ScaleCreature._STORAGE_PROF_NO_LVL, profNoLvl);
+		this._toggleProfNoLvl_updateButtonClass();
 
 		// FIXME: hacky solution
 		if (UrlUtil.getCurrentPage() === UrlUtil.PG_BESTIARY) {
@@ -929,12 +928,12 @@ class ScaleCreature {
 		}
 	}
 
-	isProfNoLvl () {
-		return this._isProfNoLvl;
+	_toggleProfNoLvl_updateButtonClass () {
+		$(`.btn-profnolvl`).toggleClass("active", this._isProfNoLvl);
 	}
 
-	_setButtonText (profNoLvl) {
-		[...document.getElementsByClassName("profNoLvlToggle")].forEach(ele => ele.innerHTML = `${profNoLvl ? "Creature Proficiency with Level" : "Creature Proficiency without Level"}`);
+	isProfNoLvl () {
+		return this._isProfNoLvl;
 	}
 }
 

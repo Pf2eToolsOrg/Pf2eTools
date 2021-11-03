@@ -69,8 +69,8 @@ class PageFilterItems extends PageFilter {
 			header: "Category",
 		});
 		this._subCategoryFilter = new Filter({
-			header: "Weapon/Armor Category",
-			itemSortFn: SortUtil.sortItemSubCategory,
+			header: "Subcategory",
+			nests: {},
 		});
 		this._damageDiceFilter = new Filter({header: "Damage", itemSortFn: SortUtil.sortDice})
 		this._damageTypeFilter = new Filter({header: "Damage Type", displayFn: (it) => Parser.dmgTypeToFull(it).toTitleCase()})
@@ -79,7 +79,10 @@ class PageFilterItems extends PageFilter {
 			displayFnMini: (it) => `${it} hand${Number(it) === 1 ? "" : "s"}`,
 		});
 		this._damageFilter = new MultiFilter({header: "Weapon Damage", filters: [this._damageDiceFilter, this._damageTypeFilter, this._handsFilter]})
-		this._groupFilter = new Filter({header: "Group"});
+		this._groupFilter = new Filter({
+			header: "Group",
+			displayFn: (it) => it.split("|")[0],
+		});
 		this._traitFilter = new TraitsFilter({
 			header: "Traits",
 			discardCategories: {
@@ -130,6 +133,10 @@ class PageFilterItems extends PageFilter {
 				}
 			}
 		}
+		item._fSubCategory = item.subCategory ? new FilterItem({
+			item: item.subCategory,
+			nest: item.category,
+		}) : null;
 		item._fType = [];
 		item.equipment ? item._fType.push("Equipment") : item._fType.push("Treasure");
 		if (item.generic === "G") item._fType.push("Generic Variant");
@@ -154,7 +161,10 @@ class PageFilterItems extends PageFilter {
 		this._traitFilter.addItem(item._fTraits)
 		this._priceFilter.addItem(item._fPrice);
 		this._bulkFilter.addItem(item._fBulk);
-		if (item.subCategory) this._subCategoryFilter.addItem(item.subCategory);
+		if (item._fSubCategory) {
+			this._subCategoryFilter.addNest(item.category, {isHidden: true})
+			this._subCategoryFilter.addItem(item._fSubCategory);
+		}
 		if (item.group) this._groupFilter.addItem(item.group);
 		if (item._fDamageType) this._damageTypeFilter.addItem(item._fDamageType);
 		if (item.damageType) this._damageTypeFilter.addItem(item.damageType);
@@ -175,6 +185,7 @@ class PageFilterItems extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._levelFilter,
+			this._typeFilter,
 			this._categoryFilter,
 			this._subCategoryFilter,
 			this._damageFilter,
@@ -182,7 +193,6 @@ class PageFilterItems extends PageFilter {
 			this._rangeFilter,
 			this._traitFilter,
 			this._priceFilter,
-			this._typeFilter,
 			this._miscFilter,
 			this._bulkFilter,
 			this._shieldStatsFilter,
@@ -195,8 +205,9 @@ class PageFilterItems extends PageFilter {
 			values,
 			it._fSources,
 			it._fLvl,
+			it._fType,
 			it.category,
-			it.subCategory,
+			it._fSubCategory,
 			[
 				it.damage,
 				it._fDamageType || it.damageType,
@@ -206,7 +217,6 @@ class PageFilterItems extends PageFilter {
 			it._fWeaponRange,
 			it._fTraits,
 			it._fPrice,
-			it._fType,
 			it._fMisc,
 			it._fBulk,
 			[

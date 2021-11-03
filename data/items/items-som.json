@@ -3144,7 +3144,7 @@
 					"trigger": "You successfully {@action Strike} with the flail while activating its {@item extending|SoM} rune",
 					"requirements": null,
 					"entries": [
-						"The head of the flail wraps around the target of the triggering {@action Strike} and drags it in your direction. The target must succeed at a DC 31 Fortitude save or be pulled adjacent to you. A creature pulled in is then {@condition grabbed} by the flail until the end of your next turn unless you move, your target Escapes (DC 31), or you use the flail."
+						"The head of the flail wraps around the target of the triggering {@action Strike} and drags it in your direction. The target must succeed at a DC 31 Fortitude save or be pulled adjacent to you. A creature pulled in is then {@condition grabbed} by the flail until the end of your next turn unless you move, your target {@action Escape||Escapes} (DC 31), or you use the flail."
 					]
 				},
 				{
@@ -3791,7 +3791,7 @@
 			},
 			"usage": "tattooed on the body",
 			"bulk": "\u2014",
-			"category": "no category found",
+			"category": "Tattoo",
 			"entries": [
 				"This jagged glyph, one of the {@variantrule Thassilonian Rune Magic|SoM|Thassilonian runes of sin}, reacts to magic of a particular school (there's no rune for divination, as it was considered lesser within sin magic)",
 				"When you {@action Cast a Spell} of the school matching the sin, you gain resistance 5 to damage from spells until the start of your next turn. This resistance is increased to 7 against spells of the matching school. This tattoo has the school trait matching the rune: abjuration for envy, necromancy for gluttony, transmutation for greed, enchantment for lust, illusion for pride, conjuration for sloth, and evocation for wrath."
@@ -5339,12 +5339,15 @@
 						"note": null
 					},
 					"entries": [
-						"In addition to the normal triggers, you can activate the tattoo when you enter an environment where you can't breathe. When you activate the tattoo, it casts air bubble on you, in addition to the other effects."
+						"In addition to the normal triggers, you can activate the tattoo when you enter an environment where you can't breathe. When you activate the tattoo, it casts {@spell air bubble} on you, in addition to the other effects."
 					]
 				},
 				{
-					"type": "fiend warding tattoo (uncommon)",
+					"type": "fiend warding tattoo",
 					"level": 7,
+					"traits": [
+						"uncommon"
+					],
 					"price": {
 						"coin": "gp",
 						"amount": 300,

@@ -733,7 +733,7 @@
 			"level": 1,
 			"entries": [
 				"If your familiar dies, your patron replaces it during your next daily preparations. The new familiar might be a duplicate or reincarnation of your former familiar or a new entity altogether, but it knows the same spells your former familiar knew regardless. Your familiar's death doesn't affect any spells you have already prepared.",
-				"Hexes are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the Refocus activity to commune with your familiar. Focus spells are automatically heightened to half your level rounded up.",
+				"Hexes are a type of focus spell. It costs 1 Focus Point to cast a focus spell, and you start with a focus pool of 1 Focus Point. You refill your focus pool during your daily preparations, and you can regain 1 Focus Point by spending 10 minutes using the {@action Refocus} activity to commune with your familiar. Focus spells are automatically heightened to half your level rounded up.",
 				"Focus spells don't require spell slots, and you can't cast them using spell slots. Certain feats can give you more focus spells and increase the size of your focus pool, though your focus pool can never hold more than 3 Focus Points. The full rules for focus spells appear on page 300 of the Core Rulebook.",
 				"You learn the {@spell phase familiar|APG} hex, which you can cast as a reaction to protect your familiar from harm. You learn most other hexes from witch lessons.",
 				{
@@ -950,7 +950,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter occult|spells||tradition=occult}"
+							"entry": "{@filter occult|spells||tradition & spell list=occult}"
 						},
 						{
 							"type": "item",
@@ -995,7 +995,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter occult|spells||tradition=occult}"
+							"entry": "{@filter occult|spells||tradition & spell list=occult}"
 						},
 						{
 							"type": "item",
@@ -1040,7 +1040,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter occult|spells||tradition=occult}"
+							"entry": "{@filter occult|spells||tradition & spell list=occult}"
 						},
 						{
 							"type": "item",
@@ -1085,7 +1085,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter divine|spells||tradition=divine}"
+							"entry": "{@filter divine|spells||tradition & spell list=divine}"
 						},
 						{
 							"type": "item",
@@ -1130,7 +1130,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter occult|spells||tradition=occult}"
+							"entry": "{@filter occult|spells||tradition & spell list=occult}"
 						},
 						{
 							"type": "item",
@@ -1175,7 +1175,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter arcane|spells||tradition=arcana}"
+							"entry": "{@filter arcane|spells||tradition & spell list=arcana}"
 						},
 						{
 							"type": "item",
@@ -1220,7 +1220,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter primal|spells||tradition=primal}"
+							"entry": "{@filter primal|spells||tradition & spell list=primal}"
 						},
 						{
 							"type": "item",
@@ -1265,7 +1265,7 @@
 						{
 							"type": "item",
 							"name": "Spell List",
-							"entry": "{@filter  primal|spells||tradition= primal}"
+							"entry": "{@filter  primal|spells||tradition & spell list= primal}"
 						},
 						{
 							"type": "item",

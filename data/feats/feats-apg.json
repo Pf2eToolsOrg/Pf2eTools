@@ -3083,7 +3083,7 @@
 				"Catfolk"
 			],
 			"entries": [
-				"You favor weapons that you can use with quick, darting slashes like a cat's claws. You are trained with the {@item hatchet}, {@item kama}, {@item kukri}, {@item scimitar}, and {@item sickle}. In addition, you gain access to {@item kama}, {@item kukri|crb|kukris}, and all {@filter uncommon catfolk weapons|items||rarity=uncommon|ancestry & heritage=catfolk}. For you, martial catfolk weapons are simple weapons and advanced catfolk weapons are martial weapons."
+				"You favor weapons that you can use with quick, darting slashes like a cat's claws. You are trained with the {@item hatchet}, {@item kama}, {@item kukri}, {@item scimitar}, and {@item sickle}. In addition, you gain access to {@item kama}, {@item kukri|crb|kukris}, and all {@filter uncommon catfolk weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=catfolk}. For you, martial catfolk weapons are simple weapons and advanced catfolk weapons are martial weapons."
 			],
 			"leadsTo": [
 				"Catfolk Weapon Expertise|APG",
@@ -3643,7 +3643,7 @@
 			],
 			"requirements": "Your last action was a successful {@action Strike}.",
 			"entries": [
-				"You hang onto a foe to harry them into submission. If your target moves while you're hanging onto it, you can choose to move with the target. The target is released if you choose not to move with it, at the start of your next turn, or if the target Escapes. Attempts to {@action Escape} from a Cling follow the rules for {@action Escape}, but use your {@skill Acrobatics} DC and end the Cling instead of the conditions normally ended by the {@action Escape} action."
+				"You hang onto a foe to harry them into submission. If your target moves while you're hanging onto it, you can choose to move with the target. The target is released if you choose not to move with it, at the start of your next turn, or if the target {@action Escape||Escapes}. Attempts to {@action Escape} from a Cling follow the rules for {@action Escape}, but use your {@skill Acrobatics} DC and end the Cling instead of the conditions normally ended by the {@action Escape} action."
 			],
 			"special": "You can use this action without a free hand if your preceding {@action Strike} was made with your jaws or a similar unarmed attack you could use to hang on. The GM determines which unarmed attacks apply. Hanging on in this way prevents you from using that unarmed attack."
 		},
@@ -4940,7 +4940,7 @@
 				"Rage"
 			],
 			"entries": [
-				"Nothing can keep you from your enemy. {@action Stride} twice. During this movement you ignore difficult terrain, greater difficult terrain, and {@trait any} effects that would impose a penalty to Speed. You can attempt an {@skill Athletics} check instead of an {@skill Acrobatics} check to {@action Balance} when moving across narrow surfaces or uneven ground, using the same DC. This doesn't prevent you from being harmed by hazardous terrain. You can increase the number of actions this activity takes to 3 to {@action Stride} three times instead."
+				"Nothing can keep you from your enemy. {@action Stride} twice. During this movement you ignore difficult terrain, greater difficult terrain, and any effects that would impose a penalty to Speed. You can attempt an {@skill Athletics} check instead of an {@skill Acrobatics} check to {@action Balance} when moving across narrow surfaces or uneven ground, using the same DC. This doesn't prevent you from being harmed by hazardous terrain. You can increase the number of actions this activity takes to 3 to {@action Stride} three times instead."
 			]
 		},
 		{
@@ -6524,7 +6524,7 @@
 			"entries": [
 				"Your nails are supernaturally long and sharp. You gain a nails unarmed attack that deals {@damage 1d6} slashing damage. Your nails are in the {@group brawling} group and have the {@trait agile} and {@trait unarmed} traits.",
 				"You can etch your nails with runes with the same cost and restrictions as for etching runes onto {@item handwraps of mighty blows (generic)|CRB|handwraps of mighty blows}; runes etched onto your nails apply to nails unarmed attacks with both hands but not to other unarmed attacks.",
-				"You can deliver hexes through your nails. When you successfully cast a non-cantrip hex that requires 2 actions or more to cast and that doesn't require a spell attack roll, if your target is within your reach, as part of the spellcasting activity you can make a nails {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
+				"You can deliver hexes through your nails. When you successfully cast a non-cantrip hex that requires 2 actions or more to cast and that doesn't require a spell attack roll, if your target is within your reach, as part of the spellcasting activity you can make a nails {@action Strike} against the foe before applying any effects of the hex. If this {@action Strike} misses, the hex has no effect."
 			]
 		},
 		{
@@ -7378,7 +7378,7 @@
 			"traits": [
 				"Goblin"
 			],
-			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable goblin} heritage",
+			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable} heritage",
 			"entries": [
 				"Your rubbery physique makes it easier for you to wedge yourself into tight spaces and more difficult for your enemies to dislodge you. You become trained in {@skill Acrobatics}. If you would automatically become trained in {@skill Acrobatics} (from your background or class, for example), you instead become trained in a skill of your choice. If you roll a success to {@action Squeeze}, you get a critical success instead. While you're {@action Squeeze|CRB|Squeezing}, you gain a +4 circumstance bonus to your Fortitude or Reflex DCs against attempts to {@action Shove} you or otherwise move you from your space."
 			]
@@ -9511,7 +9511,7 @@
 				"Witch"
 			],
 			"entries": [
-				"Your patron's teachings have allowed you to achieve a deeper focus. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
+				"Your patron's teachings have allowed you to achieve a deeper focus. If you have spent at least 2 Focus Points since the last time you {@action Refocus||Refocused}, you recover 2 Focus Points when you {@action Refocus} instead of 1."
 			],
 			"leadsTo": [
 				"Hex Wellspring|APG"
@@ -9553,7 +9553,7 @@
 			],
 			"prerequisites": "{@feat Hex Focus|APG}",
 			"entries": [
-				"Focus flows from your patron each time you commune with your familiar. You can recover 3 Focus Points when you {@action Refocus} instead of 1 if you have spent at least 3 Focus Points since the last time you Refocused."
+				"Focus flows from your patron each time you commune with your familiar. You can recover 3 Focus Points when you {@action Refocus} instead of 1 if you have spent at least 3 Focus Points since the last time you {@action Refocus||Refocused}."
 			]
 		},
 		{
@@ -19430,7 +19430,7 @@
 			],
 			"entries": [
 				"You've trained with a blade and other tengu weapons ever since you hatched. You gain access to {@item khakkara|APG|khakkaras}. Additionally, choose two weapons from the sword group. You can choose from among all {@filter common martial swords|items||rarity=common|group=sword|weapon/armor category=martial}, plus the {@item katana}, {@item temple sword}, and {@item wakizashi|APG}. For the purpose of determining your proficiency, that weapon is a simple weapon, and if the weapon isn't common, you gain access to it. If you are trained in all martial weapons, you add common advanced swords to the swords you can choose from.",
-				"You also gain access to all {@filter uncommon tengu weapons|items||rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
+				"You also gain access to all {@filter uncommon tengu weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=tengu}. For the purpose of determining your proficiency, martial tengu weapons are simple weapons, and advanced tengu weapons are martial weapons."
 			],
 			"leadsTo": [
 				"Eclectic Sword Training|APG",
@@ -19483,7 +19483,7 @@
 				"Transmutation"
 			],
 			"entries": [
-				"You capture transformative fragments of magic and slam them into the ground, creating a shock wave that alters your surroundings. If your next action is to Cast a non-cantrip transmutation Spell, either each space adjacent to you becomes difficult terrain, or each space adjacent to you is no longer difficult terrain. This doesn't have {@trait any} effect on greater difficult terrain and doesn't remove the damaging effects of hazardous terrain."
+				"You capture transformative fragments of magic and slam them into the ground, creating a shock wave that alters your surroundings. If your next action is to Cast a non-cantrip transmutation Spell, either each space adjacent to you becomes difficult terrain, or each space adjacent to you is no longer difficult terrain. This doesn't have any effect on greater difficult terrain and doesn't remove the damaging effects of hazardous terrain."
 			]
 		},
 		{
@@ -20914,7 +20914,7 @@
 			],
 			"prerequisites": "warden spells",
 			"entries": [
-				"Your connection with your surroundings grows deeper as you focus. If you have spent at least 2 Focus Points since the last time you Refocused, you recover 2 Focus Points when you {@action Refocus} instead of 1."
+				"Your connection with your surroundings grows deeper as you focus. If you have spent at least 2 Focus Points since the last time you {@action Refocus||Refocused}, you recover 2 Focus Points when you {@action Refocus} instead of 1."
 			]
 		},
 		{
@@ -20934,7 +20934,7 @@
 			],
 			"prerequisites": "warden's focus",
 			"entries": [
-				"You command unparalleled focus when you commune with the world around you. If you have spent at least 3 Focus Points since the last time you Refocused, you recover 3 Focus Points when you {@action Refocus} instead of 1."
+				"You command unparalleled focus when you commune with the world around you. If you have spent at least 3 Focus Points since the last time you {@action Refocus||Refocused}, you recover 3 Focus Points when you {@action Refocus} instead of 1."
 			]
 		},
 		{

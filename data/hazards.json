@@ -779,7 +779,7 @@
 			],
 			"routine": [
 				"(4 actions) The trap loses 1 action per disabled channel each turn. On each action, a different channel spews lava, dealing {@damage 4d6} fire damage to each creature within 10 feet of the channel (DC 27 basic Reflex save), and increasing the depth of the lava in the room by 1 foot (4 feet per round if all the channels are active)",
-				"A creature that starts its turn in lava takes {@damage 8d6} fire damage and is {@condition immobilized} until it Escapes the hardening lava (DC 27)",
+				"A creature that starts its turn in lava takes {@damage 8d6} fire damage and is {@condition immobilized} until it {@action Escape||Escapes} the hardening lava (DC 27)",
 				"The creature might suffocate if covered in lava (page 478). Lava from the previous round hardens fully at the start of the trap's turn, effectively raising the floor of the room. Once the room is full of lava, the trap stops taking actions, but creatures in the room remain stuck until the floor opens and the trap resets."
 			],
 			"reset": [
@@ -1935,11 +1935,11 @@
 								"inhaled",
 								"poison"
 							],
-							"note": " Any {@condition drained} condition\nfrom the spores persists after the poison's duration ends",
+							"note": " Any {@condition drained} condition from the spores persists after the poison's duration ends",
 							"DC": "26",
 							"savingThrow": "Fortitude",
 							"onset": null,
-							"maxDuration": "6\nrounds",
+							"maxDuration": "6 rounds",
 							"stages": [
 								{
 									"stage": 1,
@@ -1965,6 +1965,217 @@
 			],
 			"routine": null,
 			"reset": null
+		},
+		{
+			"name": "Steam Vents",
+			"source": "G&G",
+			"page": 81,
+			"level": 4,
+			"traits": [
+				"Uncommon",
+				"Mechanical",
+				"Steam",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 22,
+				"minProf": "trained"
+			},
+			"description": [
+				"Large pressurized pipes connected to a trip wire are rigged to release a blast of steam on trespassers."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 22 (trained) to disconnect the trip wire or {@skill Crafting} DC 24 (expert) to carefully reduce the pressure and prevent the blast"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 20
+				},
+				"savingThrows": {
+					"fort": 12,
+					"ref": 12,
+					"will": null
+				},
+				"hardness": {
+					"default": 12
+				},
+				"hp": {
+					"default": 48
+				},
+				"bt": {
+					"default": 24
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"trigger": "The trip wire is pulled or severed, typically because a creature walked through the square with the trip wire",
+					"entries": [
+						"Steam erupts from the pipes, dealing {@damage 3d6} bludgeoning damage and {@damage 3d6} fire damage (DC 24 basic Reflex save) to all creatures within 15 feet. Creatures that critically fail their save are knocked prone."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Steam Blast"
+				}
+			],
+			"routine": null,
+			"reset": null
+		},
+		{
+			"name": "Instant Privacy Fence",
+			"source": "G&G",
+			"page": 81,
+			"level": 8,
+			"traits": [
+				"Rare",
+				"Electricity",
+				"Mechanical",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 30,
+				"minProf": "expert"
+			},
+			"description": [
+				"stretch of fence is electrified by a hidden Stasian coil."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Thievery} DC 28 (expert) to carefully disconnect the coil from the fence or {@skill Crafting} DC 30 (master) to jury-rig a grounding device to nullify the shock"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 25
+				},
+				"savingThrows": {
+					"fort": 20,
+					"ref": 14,
+					"will": null
+				},
+				"hardness": {
+					"default": 15
+				},
+				"hp": {
+					"default": 60
+				},
+				"bt": {
+					"default": 30
+				},
+				"immunities": [
+					"object immunities"
+				]
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"trigger": "A creature touches the fence directly or with a tool or weapon",
+					"entries": [
+						"The fence deals {@damage 7d12} electricity damage to the triggering creature (DC 26 basic Reflex save)."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Shock"
+				}
+			],
+			"routine": null,
+			"reset": [
+				"The trap deactivates and resets after 1 minute."
+			]
+		},
+		{
+			"name": "Malevolant Mannequins",
+			"source": "G&G",
+			"page": 81,
+			"level": 14,
+			"traits": [
+				"Uncommon",
+				"Clockwork",
+				"Complex",
+				"Haunt",
+				"Mechanical"
+			],
+			"stealth": {
+				"bonus": 27
+			},
+			"description": [
+				"A host of violent spirits possess three clockwork mannequins, and each lashes out at any creatures that dare walk near"
+			],
+			"disable": {
+				"entries": [
+					"DC 37 {@skill Thievery} (master) to jam a mannequin's clockwork mechanisms or {@skill Religion} DC 35 (expert) twice to exorcise a spirit from a mannequin."
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 35
+				},
+				"savingThrows": {
+					"fort": 26,
+					"ref": 28,
+					"will": null
+				},
+				"hardness": {
+					"default": 10
+				},
+				"hp": {
+					"default": 70
+				},
+				"bt": {
+					"default": 35
+				},
+				"notes": "per mannequin",
+				"immunities": [
+					"critical hits",
+					"object immunities",
+					"precision damage"
+				],
+				"weaknesses": [
+					"electricity 20"
+				]
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction",
+						"entry": "{@as R}"
+					},
+					"trigger": "A creature comes within 30 feet of a mannequin",
+					"entries": [
+						"The mannequins all lurch towards the triggering creature, {@action Stride||Striding} up to 50 feet, then roll initiative."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Awaken"
+				}
+			],
+			"routine": [
+				"(9 actions) Each of the mannequins uses three of the haunt's actions on each turn, and the haunt loses three actions each turn for every disabled or destroyed mannequin. Each mannequin uses its first action to {@action Stride} up to 50 feet and its remaining two actions to make clockwork fist Strikes. Each has its own separate multiple attack penalty.",
+				{
+					"type": "attack",
+					"range": "Melee",
+					"name": "clockwork first",
+					"attack": 29,
+					"damage": "{@damage 2d10+18} bludgeoning"
+				}
+			],
+			"reset": [
+				"The haunt deactivates after it has no target creatures and resets, usually over the course of 1 round, as the mannequins move to their original positions. If a mannequin is more than 150 feet from its original position, the haunt takes longer to reset, as the mannequin moves back 150 feet each round."
+			]
 		}
 	]
 }

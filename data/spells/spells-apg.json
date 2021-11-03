@@ -417,7 +417,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the {@trait undead} trait and whose level is \u20131; this creature gains the summoned trait. Heightening the spell increases the maximum level of creature you can summon."
+				"Your magic dredges up a corpse or skeleton and fills it with necromantic life, and you force the dead to fight at your command. You summon a common creature that has the {@trait undead} trait and whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=Undead}; this creature gains the {@trait summoned} trait. Heightening the spell increases the maximum level of creature you can summon."
 			],
 			"heightened": {
 				"heightened": true,
@@ -425,39 +425,39 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "Level 1."
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 3,
-						"entry": "Level 2."
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 4,
-						"entry": "Level 3."
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 5,
-						"entry": "Level 5."
+						"entry": "{@filter Level 5|bestiary||Level=[-1;5]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 6,
-						"entry": "Level 7."
+						"entry": "{@filter Level 7|bestiary||Level=[-1;7]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 7,
-						"entry": "Level 9."
+						"entry": "{@filter Level 9|bestiary||Level=[-1;9]|Rarity=Common|Creature Type=Undead}."
 					},
 					{
 						"level": 8,
-						"entry": "Level 11."
+						"entry": "{@filter Level 11.|bestiary||Level=[-1;11]|Creature Type=Undead}"
 					},
 					{
 						"level": 9,
-						"entry": "Level 13."
+						"entry": "{@filter Level 13.|bestiary||Level=[-1;13]|Creature Type=Undead}"
 					},
 					{
 						"level": 10,
-						"entry": "Level 15."
+						"entry": "{@filter Level 15.|bestiary||Level=[-1;15]|Creature Type=Undead}"
 					}
 				],
 				"no_x": null
@@ -513,7 +513,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Bind} (attack) The rope attempts to partially bind a creature. Attempt a spell attack roll against the target's Reflex DC. If you succeed, the target takes a \u201310-foot circumstance penalty to its Speed (\u201320-foot on a critical success). This ends if the target Escapes against your spell DC or breaks the rope. (A standard adventuring rope has Hardness 2, HP 8, and a {@condition Broken} Threshold of 4.)",
+						"{@bold Bind} (attack) The rope attempts to partially bind a creature. Attempt a spell attack roll against the target's Reflex DC. If you succeed, the target takes a \u201310-foot circumstance penalty to its Speed (\u201320-foot on a critical success). This ends if the target {@action Escape||Escapes} against your spell DC or breaks the rope. (A standard adventuring rope has Hardness 2, HP 8, and a {@condition Broken} Threshold of 4.)",
 						"{@bold Coil} The rope forms a tidy, coiled stack.",
 						"{@bold Crawl} The rope inches along the ground like a snake, moving one of its ends 10 feet. The rope must move along a surface, but that surface doesn't need to be horizontal.",
 						"{@bold Knot} The rope ties a sturdy knot in itself.",
@@ -2041,7 +2041,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature sinks partially into the shadow, taking half damage and a \u20135-foot circumstance penalty to its Speeds for as long it remains in the area.",
 						"Failure": "As success, but the creature takes full damage and a \u201310-foot circumstance penalty.",
-						"Critical Failure": "The creature is absorbed into the shadows, where it can be seen below the surface; it takes double damage and is {@condition immobilized} for 1 round or until it Escapes."
+						"Critical Failure": "The creature is absorbed into the shadows, where it can be seen below the surface; it takes double damage and is {@condition immobilized} for 1 round or until it {@action Escape||Escapes}."
 					}
 				}
 			],
@@ -4629,7 +4629,7 @@
 			"dismiss": false,
 			"entries": [
 				"You can't be affected by anything unless you choose to be.",
-				"For the duration of the spell, you are immune to {@trait any} effect or damage that would harm you, excluding effects caused by artifacts, deific power, and similarly powerful sources. You can still be affected by anything you're willing to have affect you."
+				"For the duration of the spell, you are immune to any effect or damage that would harm you, excluding effects caused by artifacts, deific power, and similarly powerful sources. You can still be affected by anything you're willing to have affect you."
 			],
 			"heightened": {
 				"heightened": false,
@@ -7140,7 +7140,7 @@
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature takes half damage and is {@condition enfeebled 1} for 1 round.",
 						"Failure": "The creature takes full damage and is {@condition enfeebled 2} for 1 round.",
-						"Critical Failure": "The creature takes double damage and is {@condition stunned 1}, {@condition enfeebled 2} for 1 round, and {@condition immobilized} for 1 round or until it Escapes, whichever comes first."
+						"Critical Failure": "The creature takes double damage and is {@condition stunned 1}, {@condition enfeebled 2} for 1 round, and {@condition immobilized} for 1 round or until it {@action Escape||Escapes}, whichever comes first."
 					}
 				}
 			],
@@ -8676,8 +8676,8 @@
 					"entries": {
 						"Critical Success": "The creature escapes the mud and is atop the stone, unaffected.",
 						"Success": "The creature climbs out of the mud as it turns to rock and is {@condition prone} atop the stone.",
-						"Failure": "The creature is partially stuck in the mud and is {@condition grabbed} for 1 round or until it Escapes, whichever comes first.",
-						"Critical Failure": "The creature is entirely stuck. It is {@condition restrained} for 1 round or until it Escapes, whichever comes first."
+						"Failure": "The creature is partially stuck in the mud and is {@condition grabbed} for 1 round or until it {@action Escape||Escapes}, whichever comes first.",
+						"Critical Failure": "The creature is entirely stuck. It is {@condition restrained} for 1 round or until it {@action Escape||Escapes}, whichever comes first."
 					}
 				}
 			],
@@ -8742,7 +8742,7 @@
 						"Critical Success": "The target is unaffected.",
 						"Success": "The target takes half damage.",
 						"Failure": "The target is briefly trapped within the vampiric maiden. The target takes full damage and is {@condition immobilized} by the iron maiden for 1 round or until it uses an {@action Interact} action to extricate itself, whichever comes first.",
-						"Critical Failure": "The target takes double damage and is {@condition immobilized} by the vampiric maiden for 1 round or until it Escapes (the DC is your spell DC), whichever comes first."
+						"Critical Failure": "The target takes double damage and is {@condition immobilized} by the vampiric maiden for 1 round or until it {@action Escape||Escapes} (the DC is your spell DC), whichever comes first."
 					}
 				}
 			],
@@ -8970,7 +8970,7 @@
 				{
 					"type": "list",
 					"items": [
-						"{@bold Mouths} The wall has countless toothy mouths along its surface. The mouths {@action Strike} any creature that ends its turn within 5 feet of the wall, using your spell attack roll for these Strikes and dealing piercing damage equal to {@dice 1d6} + your spellcasting ability modifier. The mouths are capable of consuming potions; since the wall is alive, it can recover Hit Points from a potion of healing, but it can't benefit from {@trait any} effect that would give it the ability to move. Otherwise, the GM determines which potions can affect the wall.",
+						"{@bold Mouths} The wall has countless toothy mouths along its surface. The mouths {@action Strike} any creature that ends its turn within 5 feet of the wall, using your spell attack roll for these Strikes and dealing piercing damage equal to {@dice 1d6} + your spellcasting ability modifier. The mouths are capable of consuming potions; since the wall is alive, it can recover Hit Points from a potion of healing, but it can't benefit from any effect that would give it the ability to move. Otherwise, the GM determines which potions can affect the wall.",
 						"{@bold Eyes} The wall sprouts hundreds of unblinking eyes. You can see through these eyes, gaining a +2 circumstance bonus to visual {@skill Perception} checks within the wall's line of sight. You can also use the eyes for determining line of sight for ranged attacks and spells, but you don't have line of effect through the wall.",
 						"{@bold Arms} The wall is a mass of grasping arms. Any creature that ends its turn within 5 feet of the wall must attempt a Reflex save."
 					]
@@ -8979,8 +8979,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The creature is unaffected.",
-						"Failure": "The creature is {@condition grabbed} by the wall for 1 round or until it Escapes against your spell DC, whichever comes first.",
-						"Critical Failure": "The creature is {@condition restrained} by the wall for 1 round or until it Escapes against your spell DC, whichever comes first."
+						"Failure": "The creature is {@condition grabbed} by the wall for 1 round or until it {@action Escape||Escapes} against your spell DC, whichever comes first.",
+						"Critical Failure": "The creature is {@condition restrained} by the wall for 1 round or until it {@action Escape||Escapes} against your spell DC, whichever comes first."
 					}
 				}
 			],

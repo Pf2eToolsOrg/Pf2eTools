@@ -27,12 +27,12 @@ class PdfConverter {
 		}
 	}
 
-	static doMerge (json, path) {
-		const mergeWith = ut.readJson(path);
+	static doMerge (json, mergePath) {
+		const mergeWith = ut.readJson(mergePath);
 		Object.keys(json).forEach(key => {
 			mergeWith[key] = mergeWith[key] || [];
 			json[key].forEach(obj => {
-				if (mergeWith[key].filter(it => it.name === obj.name)) {
+				if (mergeWith[key].filter(it => it.name === obj.name).length) {
 					let oldIdx = mergeWith[key].map(it => it.name === obj.name).indexOf(true);
 					mergeWith[key][oldIdx] = PdfConverter._doMerge(obj, mergeWith[key][oldIdx]);
 				} else {
