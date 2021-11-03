@@ -4519,8 +4519,8 @@ Renderer.item = {
 		const renderer = Renderer.get()
 		item.variants.forEach((v) => {
 			renderStack.push(Renderer.utils.getDividerDiv());
-			// FIXME: We should calculate the items name if we want to link to specific variants.
-			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(v.specificName ? `{@item ${v.specificName}|${v.source ? v.source : item.source}|${v.type}}` : `{@item ${v.type}|${v.source ? v.source : item.source}}`)}`);
+			// FIXME: Optimize this hellish mess
+			renderStack.push(`<p class="pf2-stat pf2-stat__section--wide"><strong>Type&nbsp;</strong>${renderer.render(`{@item ${v.type.toLowerCase().includes(item.name.toLowerCase()) ? `${v.type}` : `${v.name ? v.name : `${v.type} ${item.name}`}`}|${v.source ? v.source : item.source}|${v.type}}`)}`);
 			if (v.level != null) renderStack.push(`; <strong>Level&nbsp;</strong>${v.level}`);
 			if (v.traits != null && v.traits.length) renderStack.push(` (${renderer.render(v.traits.map(t => `{@trait ${t.toLowerCase()}}`).join(", "))});`);
 			if (v.price != null) renderStack.push(`; <strong>Price&nbsp;</strong>${Parser.priceToFull(v.price)}`);
