@@ -2510,6 +2510,7 @@ DataUtil = {
 				const handlers = {
 					// TODO(Future) may need to have this handle replaces inside _some_ tags
 					string: (str) => {
+						if (modInfo.replaceTags) return str.replace(re, modInfo.with);
 						const split = Renderer.splitByTags(str);
 						const len = split.length;
 						for (let i = 0; i < len; ++i) {
@@ -3979,7 +3980,8 @@ BrewUtil = {
 		const cpy = MiscUtil.copy(BrewUtil.homebrew);
 		BrewUtil._STORABLE.forEach(prop => {
 			(cpy[prop] || []).forEach(ent => {
-				Object.keys(ent).filter(k => k.startsWith("_")).forEach(k => delete ent[k]);
+				// FIXME: This breaks item _vmod
+				// Object.keys(ent).filter(k => k.startsWith("_")).forEach(k => delete ent[k]);
 			});
 		});
 		await StorageUtil.pSet(VeCt.STORAGE_HOMEBREW, cpy);
