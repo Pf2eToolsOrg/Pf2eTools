@@ -428,7 +428,7 @@ class BestiaryPage extends ListPage {
 	_renderStatblock (cr, isScaled) {
 		this._lastRendered.creature = cr;
 		this._lastRendered.isScaled = isScaled;
-		const renderer = Renderer.get().setFirstSection(true);
+		Renderer.get().setFirstSection(true);
 
 		const $content = $("#pagecontent").empty();
 
@@ -469,19 +469,8 @@ class BestiaryPage extends ListPage {
 			}
 			const fluffEntries = await pGetFluff();
 			const renderStack = [];
-			renderer.recursiveRender(fluffEntries, renderStack);
+			Renderer.get().recursiveRender(fluffEntries, renderStack);
 			$content.append(renderStack.join(""));
-		}
-
-		const buildImageTab = async () => {
-			const pGetImages = async () => {
-				const creature = this._dataList[Hist.lastLoadedId];
-				const fluff = await Renderer.creature.pGetFluff(creature);
-				return fluff ? fluff.images || [] : [];
-			}
-			const fluffImages = await pGetImages();
-			const renderedUrls = fluffImages.map(l => `<a href="${l}" target="_blank" rel="noopener noreferrer">${l}</a>`);
-			$content.append(`${renderer.render({type: "pf2-h3", name: cr.name})}${renderedUrls}`);
 		}
 
 		// reset tabs
@@ -497,14 +486,7 @@ class BestiaryPage extends ListPage {
 			() => {},
 			buildFluffTab,
 		);
-		const imageTab = Renderer.utils.tabButton(
-			"Images",
-			() => {},
-			buildImageTab,
-		);
-		const tabs = [statTab, fluffTab];
-		if (cr.hasImages) tabs.push(imageTab);
-		Renderer.utils.bindTabButtons(...tabs);
+		Renderer.utils.bindTabButtons(statTab, fluffTab);
 	}
 
 	_getSearchCache (entity) {
