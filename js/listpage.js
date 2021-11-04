@@ -20,6 +20,7 @@ class ListPage {
 	 * @param [opts.printViewOptions] Print view options.
 	 * @param [opts.tableViewOptions] Table view options.
 	 * @param [opts.hasAudio] True if the entities have pronunciation audio.
+	 * @param [opts.previewRenderFn] Function to render entities to be previewed in-line as part of the list.
 	 */
 	constructor (opts) {
 		this._dataSource = opts.dataSource;
@@ -35,6 +36,7 @@ class ListPage {
 		this._bookViewOptions = opts.bookViewOptions;
 		this._printViewOptions = opts.printViewOptions;
 		this._tableViewOptions = opts.tableViewOptions;
+		this._previewRenderFn = opts.previewRenderFn;
 
 		this._renderer = Renderer.get();
 		this._list = null;
@@ -51,6 +53,7 @@ class ListPage {
 
 		this._list = ListUtil.initList({
 			$wrpList: $(`ul.list.${this._listClass}`),
+			isPreviewable: this._previewRenderFn != null,
 			syntax: this._listSyntax,
 			...this._listOptions,
 		});
@@ -153,7 +156,9 @@ class ListPage {
 		for (; this._ixData < len; this._ixData++) {
 			const it = this._dataList[this._ixData];
 			const isExcluded = ExcludeUtil.isExcluded(UrlUtil.autoEncodeHash(it), it.__prop, it.source);
-			this._list.addItem(this.getListItem(it, this._ixData, isExcluded));
+			const listItem = this.getListItem(it, this._ixData, isExcluded);
+			if (this._previewRenderFn != null) this._doBindPreview(listItem);
+			this._list.addItem(listItem);
 		}
 
 		this._list.update();
@@ -183,6 +188,33 @@ class ListPage {
 				this._tableViewOptions.sorter,
 			);
 		}
+	}
+
+	/** Requires a "[+]" button as the first list column, and the item to contain a second hidden display element. */
+	_doBindPreview (listItem) {
+		const btnToggleExpand = listItem.ele.firstElementChild.firstElementChild;
+		const dispExpandedOuter = listItem.ele.lastElementChild;
+		const dispExpandedInner = dispExpandedOuter.lastElementChild;
+
+		dispExpandedOuter.addEventListener("click", evt => {
+			evt.stopPropagation();
+		});
+
+		btnToggleExpand.addEventListener("click", evt => {
+			evt.stopPropagation();
+			evt.preventDefault();
+
+			dispExpandedOuter.classList.toggle("ve-hidden");
+
+			const isExpand = btnToggleExpand.innerHTML === `[+]`;
+			if (isExpand) {
+				btnToggleExpand.innerHTML = `[\u2012]`;
+				$$`${this._previewRenderFn(this._dataList[listItem.ix])}`.appendTo(dispExpandedInner);
+			} else {
+				btnToggleExpand.innerHTML = `[+]`;
+				dispExpandedInner.innerHTML = "";
+			}
+		});
 	}
 
 	get _listSyntax () {
