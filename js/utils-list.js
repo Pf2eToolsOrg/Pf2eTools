@@ -4,11 +4,14 @@ const ListUtil = {
 	SUB_HASH_PREFIX: "sublistselected",
 
 	_firstInit: true,
+	_isPreviewable: false,
 	initList (listOpts, searchIds) {
 		searchIds = searchIds || {input: "#lst__search", glass: "#lst__search-glass", reset: "#reset"}
 		const $iptSearch = $(searchIds.input);
 		const $wrpList = $(`ul.list.${listOpts.listClass}`);
 		const list = new List({$iptSearch, $wrpList, ...listOpts});
+
+		if (listOpts.isPreviewable) ListUtil._isPreviewable = true;
 
 		const helpText = [];
 
@@ -43,7 +46,7 @@ const ListUtil = {
 		if (ListUtil._firstInit) {
 			ListUtil._firstInit = false;
 			const $headDesc = $(`.page__subtitle`);
-			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows.`);
+			$headDesc.html(`${$headDesc.html()} Press J/K to navigate rows${ListUtil._isPreviewable ? `, M to expand` : ""}.`);
 			ListUtil._initList_bindWindowHandlers();
 		}
 
@@ -130,6 +133,10 @@ const ListUtil = {
 						}
 					}
 				}
+			} else if (ListUtil._isPreviewable && e.key === "m") {
+				if (EventUtil.isInInput(e)) return;
+				const it = Hist.getSelectedListElementWithLocation();
+				$(it.item.ele.firstElementChild.firstElementChild).click();
 			}
 		});
 	},

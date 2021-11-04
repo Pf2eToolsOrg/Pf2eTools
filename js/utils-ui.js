@@ -72,6 +72,27 @@ class ProxyBase {
 		});
 	}
 
+	_getDeepProxy (hookProp, toProxy) {
+		const handler = {
+			get: (object, prop) => {
+				if (prop === "__isProxy") return true;
+				const value = object[prop];
+				if (value === undefined) return;
+				if (value === null) return null;
+				if (typeof value === "object" && !value.__isProxy) object[prop] = new Proxy(value, handler);
+				return object[prop];
+			},
+			set: (object, prop, value) => {
+				if (object[prop] === value) return true;
+				object[prop] = value;
+				if (this.__hooksAll[hookProp]) this.__hooksAll[hookProp].forEach(hook => hook(prop, null));
+				if (this.__hooks[hookProp] && this.__hooks[hookProp][prop]) this.__hooks[hookProp][prop].forEach(hook => hook(prop, null));
+				return true;
+			},
+		}
+		return new Proxy(toProxy, handler)
+	}
+
 	/**
 	 * Register a hook versus a root property on the state object. **INTERNAL CHANGES TO CHILD OBJECTS ON THE STATE
 	 *   OBJECT ARE NOT TRACKED**.
@@ -675,55 +696,165 @@ class ListUiUtil {
 			});
 		});
 	}
+
+	static bindPreviewButton (renderFn, allData, item, btnShowHidePreview) {
+		btnShowHidePreview.addEventListener("click", evt => {
+			const entity = allData[item.ix];
+
+			const elePreviewWrp = this.getOrAddListItemPreviewLazy(item);
+
+			this.handleClickBtnShowHideListPreview(evt, renderFn, entity, btnShowHidePreview, elePreviewWrp);
+		});
+	}
+
+	static handleClickBtnShowHideListPreview (evt, renderFn, entity, btnShowHidePreview, elePreviewWrp) {
+		evt.stopPropagation();
+
+		const nxtText = btnShowHidePreview.innerHTML.trim() === this.HTML_GLYPHICON_EXPAND ? this.HTML_GLYPHICON_CONTRACT : this.HTML_GLYPHICON_EXPAND;
+
+		elePreviewWrp.classList.toggle("ve-hidden", nxtText === this.HTML_GLYPHICON_EXPAND);
+		btnShowHidePreview.innerHTML = nxtText;
+
+		const elePreviewWrpInner = elePreviewWrp.lastElementChild;
+
+		if (elePreviewWrpInner.innerHTML) return;
+
+		elePreviewWrpInner.addEventListener("click", evt => { evt.stopPropagation(); });
+		$(elePreviewWrpInner).empty();
+		$$`<div class="pf2-stat stats">${renderFn(entity)}</div>`.appendTo(elePreviewWrpInner);
+	}
+
+	static getOrAddListItemPreviewLazy (item) {
+		// We lazily add the preview UI, to mitigate rendering performance issues
+		let elePreviewWrp;
+		if (item.ele.children.length === 1) {
+			elePreviewWrp = e_({
+				tag: "div",
+				clazz: "ve-hidden flex",
+				children: [
+					e_({tag: "div", clazz: "col-0-5"}),
+					e_({tag: "div", clazz: "col-11-5 ui-list__wrp-preview py-2 pr-2"}),
+				],
+			}).appendTo(item.ele);
+		} else elePreviewWrp = item.ele.lastElementChild;
+		return elePreviewWrp;
+	}
 }
+ListUiUtil.HTML_GLYPHICON_EXPAND = `[+]`;
+ListUiUtil.HTML_GLYPHICON_CONTRACT = `[\u2012]`;
 
 class TabUiUtil {
 	static decorate (obj) {
 		obj.__tabMetas = {};
 
+		obj._resetTabs = function (tabGroup) {
+			tabGroup = tabGroup || "_default";
+			(obj.__tabMetas[tabGroup] || [])
+				.filter(Boolean)
+				.forEach(tab => tab.fnCleanup());
+			obj.__tabMetas[tabGroup] = [];
+		};
+
+		obj._setActiveTab = function (tab, tabGroup) {
+			tabGroup = tabGroup || "_default";
+			const activeProp = `activeTab__${tabGroup}`;
+
+			const tabMeta = obj.__tabMetas[tabGroup];
+
+			const ix = tabMeta.indexOf(tab);
+			if (~ix) {
+				const _proxyProp = `_${tab.proxyProp}`;
+				obj[_proxyProp][activeProp] = ix;
+			}
+		};
+
+		obj._hasPrevTab = function (proxyProp, tabGroup) { return obj.__hasTab(proxyProp, tabGroup, -1); };
+		obj._hasNextTab = function (proxyProp, tabGroup) { return obj.__hasTab(proxyProp, tabGroup, 1); };
+
+		obj.__hasTab = function (proxyProp, tabGroup, offset) {
+			tabGroup = tabGroup || "_default";
+			const activeProp = `activeTab__${tabGroup}`;
+			const _proxyProp = `_${proxyProp}`;
+			const ixActive = obj[_proxyProp][activeProp];
+			return !!(obj.__tabMetas[tabGroup] && obj.__tabMetas[tabGroup][ixActive + offset]);
+		};
+
+		obj._doSwitchToPrevTab = function (proxyProp, tabGroup) { return obj.__doSwitchToTab(proxyProp, tabGroup, -1); };
+		obj._doSwitchToNextTab = function (proxyProp, tabGroup) { return obj.__doSwitchToTab(proxyProp, tabGroup, 1); };
+
+		obj.__doSwitchToTab = function (proxyProp, tabGroup, offset) {
+			if (!obj.__hasTab(proxyProp, tabGroup, offset)) return;
+			tabGroup = tabGroup || "_default";
+			const activeProp = `activeTab__${tabGroup}`;
+			const _proxyProp = `_${proxyProp}`;
+			obj[_proxyProp][activeProp] = obj[_proxyProp][activeProp] + offset;
+		};
+
+		/**
+		 * @param proxyProp
+		 * @param hk
+		 * @param [opts]
+		 * @param [opts.tabGroup]
+		 */
+		obj._addHookActiveTab = function (proxyProp, hk, opts) {
+			opts = opts || {};
+
+			const tabGroup = opts.tabGroup || "_default";
+			const activeProp = `activeTab__${tabGroup}`;
+
+			this._addHook(proxyProp, activeProp, hk);
+		};
+
 		/**
 		 * @param ix The tabs ordinal index.
 		 * @param name The name to display on the tab.
-		 * @param opts Options object.
-		 * @param opts.tabGroup User-defined string identifying which group of tabs this belongs to.
-		 * @param opts.stateObj The state object in which this tab should track/set its active status. Usually a proxy.
+		 * @param proxyProp E.g. "state", "meta", ...
+		 * @param [opts] Options object.
+		 * @param [opts.tabGroup] User-defined string identifying which group of tabs this belongs to.
 		 * @param [opts.hasBorder] True if the tab should compensate for having a top border; i.e. pad itself.
 		 * @param [opts.hasBackground] True if the tab should have a flat-color background.
 		 * @param [opts.cbTabChange] Callback function to call on tab change.
+		 * @param [opts.btnCss]
 		 */
-		obj._getTab = function (ix, name, opts) {
-			opts.tabGroup = opts.tabGroup || "_default";
+		obj._getTab = function (ix, name, proxyProp, opts) {
+			const tabGroup = opts.tabGroup || "_default";
 
-			const activeProp = `activeTab__${opts.tabGroup}`;
+			const activeProp = `activeTab__${tabGroup}`;
 
-			if (!obj.__tabMetas[opts.tabGroup]) obj.__tabMetas[opts.tabGroup] = [];
-			const tabMeta = obj.__tabMetas[opts.tabGroup];
-			opts.stateObj[activeProp] = opts.stateObj[activeProp] || 0;
+			const _proxyProp = `_${proxyProp}`;
+			const __proxyProp = `__${proxyProp}`;
+			obj[__proxyProp][activeProp] = obj[__proxyProp][activeProp] || 0;
 
-			const isActive = opts.stateObj[activeProp] === ix;
+			const $btnTab = $(`<button class="btn btn-default ui-tab__btn-tab-head ${opts.btnCss ? opts.btnCss : ""}">${name}</button>`)
+				.click(() => obj[_proxyProp][activeProp] = ix);
 
-			const $btnTab = $(`<button class="btn btn-default ui-tab__btn-tab-head ${isActive ? "ui-tab__btn-tab-head--active" : ""}">${name}</button>`)
-				.click(() => {
-					const prevTab = tabMeta[opts.stateObj[activeProp]];
-					prevTab.$btnTab.removeClass("ui-tab__btn-tab-head--active");
-					prevTab.$wrpTab.toggleClass("ve-hidden", true);
+			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ve-hidden ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""} ${opts.hasBackground ? "ui-tab__wrp-tab-body--background" : ""}"></div>`);
 
-					opts.stateObj[activeProp] = ix;
-					$btnTab.addClass("ui-tab__btn-tab-head--active");
-					$wrpTab.toggleClass("ve-hidden", false);
-					if (opts.cbTabChange) opts.cbTabChange();
-				});
+			const hkActiveTab = (prop, ixActive, prevIxActive) => {
+				$btnTab.toggleClass("ui-tab__btn-tab-head--active", ixActive === ix);
+				$wrpTab.toggleVe(ixActive === ix);
 
-			const $wrpTab = $(`<div class="ui-tab__wrp-tab-body ${isActive ? "" : "ve-hidden"} ${opts.hasBorder ? "ui-tab__wrp-tab-body--border" : ""} ${opts.hasBackground ? "ui-tab__wrp-tab-body--background" : ""}"></div>`);
+				if (opts.cbTabChange) {
+					// If we were the tab switched away from, run the on-change callback (ensuring it only gets called once)
+					if (prevIxActive === ix && ixActive !== ix) opts.cbTabChange();
+				}
+			};
+			obj._addHook(proxyProp, activeProp, hkActiveTab);
+			hkActiveTab(activeProp, obj[_proxyProp][activeProp]);
 
-			const out = {ix, $btnTab, $wrpTab};
-			tabMeta[ix] = out;
-			return out;
-		};
+			const tab = {
+				ix,
+				$btnTab,
+				$wrpTab,
+				proxyProp,
+				fnCleanup: () => {
+					obj._removeHook(proxyProp, activeProp, hkActiveTab);
+				},
+			};
 
-		obj._resetTabs = function (tabGroup) {
-			tabGroup = tabGroup || "_default";
-			obj.__tabMetas[tabGroup] = [];
+			(obj.__tabMetas[tabGroup] = obj.__tabMetas[tabGroup] || [])[ix] = tab;
+
+			return tab;
 		};
 	}
 }
