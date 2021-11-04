@@ -27,7 +27,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage ||persistent acid damage}, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
+				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage||persistent acid damage}, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -40,8 +40,14 @@
 						"note": null
 					},
 					"entries": [
-						"It deals {@damage 1d6} {@condition persistent damage ||persistent acid damage} and 1 acid splash damage."
-					]
+						"It deals {@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -52,8 +58,14 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage ||persistent acid damage} and 2 acid splash damage."
-					]
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -64,8 +76,14 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage ||persistent acid damage} and 3 acid splash damage."
-					]
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage. You gain a +2 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -76,10 +94,23 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage ||persistent acid damage} and 4 acid splash damage."
-					]
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage. You gain a +3 item bonus to attack rolls."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed {@condition persistent damage\\|\\|persistent acid damage}, and the listed acid splash damage\\. Many types grant an item bonus to attack rolls\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Adamantine",
@@ -672,7 +703,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage ||persistent fire damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage||persistent fire damage}, and splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -685,7 +716,7 @@
 						"note": null
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage ||persistent fire damage}, and 1 fire splash damage."
+						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage||persistent fire damage}, and 1 fire splash damage."
 					]
 				},
 				{
@@ -697,7 +728,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage ||persistent fire damage}, and 2 fire splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage||persistent fire damage}, and 2 fire splash damage."
 					]
 				},
 				{
@@ -709,7 +740,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage ||persistent fire damage}, and 3 fire splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage||persistent fire damage}, and 3 fire splash damage."
 					]
 				},
 				{
@@ -721,7 +752,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage ||persistent fire damage}, and 4 fire splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage||persistent fire damage}, and 4 fire splash damage."
 					]
 				}
 			],
@@ -1244,7 +1275,12 @@
 						"note": null
 					},
 					"craftReq": "You are an expert in {@skill Crafting}.",
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 1. The armor can be etched with one property rune."
+						}
+					}
 				},
 				{
 					"type": "+2 armor potency",
@@ -1254,8 +1290,15 @@
 						"amount": 1060,
 						"note": null
 					},
-					"craftReq": "You are a master in {@skill Crafting}. Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes.",
-					"entries": []
+					"craftReq": "You are a master in {@skill Crafting}.",
+					"entries": [
+						"Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes."
+						}
+					}
 				},
 				{
 					"type": "+3 armor potency",
@@ -1265,10 +1308,24 @@
 						"amount": 20560,
 						"note": null
 					},
-					"craftReq": "You are legendary in {@skill Crafting}. Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes.",
-					"entries": []
+					"craftReq": "You are legendary in {@skill Crafting}.",
+					"entries": [
+						"Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Increase the armor's item bonus to AC by 1. The armor can be etched with one property rune\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Arrow-catching Shield",
@@ -2139,7 +2196,7 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"When a creature enters the square, spines covered in numerous jagged thorns protrude out to stab it, dealing {@damage 8d8} piercing damage and {@damage 2d8} {@condition persistent damage ||persistent bleed damage}. The creature must attempt a DC 31 basic Reflex saving throw. After the initial trigger, the spines retract and protrude again repeatedly for 1 minute, forcing any creature that enters the space or ends its turn in the space to attempt a Reflex save against the spines' damage."
+				"When a creature enters the square, spines covered in numerous jagged thorns protrude out to stab it, dealing {@damage 8d8} piercing damage and {@damage 2d8} {@condition persistent damage||persistent bleed damage}. The creature must attempt a DC 31 basic Reflex saving throw. After the initial trigger, the spines retract and protrude again repeatedly for 1 minute, forcing any creature that enters the space or ends its turn in the space to attempt a Reflex save against the spines' damage."
 			],
 			"generic": false
 		},
@@ -2224,7 +2281,7 @@
 			"bulk": "L",
 			"category": "Weapon",
 			"entries": [
-				"This +1 striking kukri has a crimson blade that shimmers eerily in bright light. On a critical hit, the kukri deals {@damage 1d8} {@condition persistent damage ||persistent bleed damage}. If the target didn't already have {@condition persistent damage ||persistent bleed damage} when you scored the critical hit, you also gain {@dice 1d8} temporary Hit Points."
+				"This +1 striking kukri has a crimson blade that shimmers eerily in bright light. On a critical hit, the kukri deals {@damage 1d8} {@condition persistent damage||persistent bleed damage}. If the target didn't already have {@condition persistent damage||persistent bleed damage} when you scored the critical hit, you also gain {@dice 1d8} temporary Hit Points."
 			],
 			"generic": false
 		},
@@ -2260,7 +2317,7 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This long, hollow proboscis is harvested from the notorious bloodseeker beast and drips a trickle of blood. When you activate the beak, you deal an extra {@damage 1d4} precision damage on your damage roll. If you deal sneak attack damage to the creature, you also deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+				"This long, hollow proboscis is harvested from the notorious bloodseeker beast and drips a trickle of blood. When you activate the beak, you deal an extra {@damage 1d4} precision damage on your damage roll. If you deal sneak attack damage to the creature, you also deal {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 			],
 			"generic": false
 		},
@@ -6891,7 +6948,24 @@
 					},
 					"entries": [
 						"The damage is {@dice 10d6} and the save DC is 30."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "6d6",
+								"replaceTags": true,
+								"with": "10d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "DC 25",
+								"replaceTags": true,
+								"with": "DC 30"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -7405,7 +7479,7 @@
 			"category": "Rune",
 			"appliesTo": "Weapon",
 			"entries": [
-				"This weapon is empowered by flickering flame. The weapon deals an additional {@damage 1d6} fire damage on a successful {@action Strike}, plus {@damage 1d10} {@condition persistent damage ||persistent fire damage} on a critical hit."
+				"This weapon is empowered by flickering flame. The weapon deals an additional {@damage 1d6} fire damage on a successful {@action Strike}, plus {@damage 1d10} {@condition persistent damage||persistent fire damage} on a critical hit."
 			],
 			"generic": "G",
 			"variants": [
@@ -7428,7 +7502,7 @@
 						"note": null
 					},
 					"entries": [
-						"Increase the {@condition persistent damage} on a critical hit to {@dice 2d10}. Fire damage dealt by this weapon (including the {@condition persistent damage ||persistent fire damage}) ignores the target's fire resistance."
+						"Increase the {@condition persistent damage} on a critical hit to {@dice 2d10}. Fire damage dealt by this weapon (including the {@condition persistent damage||persistent fire damage}) ignores the target's fire resistance."
 					]
 				}
 			]
@@ -12099,8 +12173,8 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This black strand of leather is tied to look like a peace knot when the weapon is stowed, but it doesn't hamper drawing the weapon. When you activate the knot, the creature you damaged takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
-				"If you have the Twist the Knife feat, the talisman instead deals {@condition persistent damage ||persistent bleed damage} equal to your sneak attack damage."
+				"This black strand of leather is tied to look like a peace knot when the weapon is stowed, but it doesn't hamper drawing the weapon. When you activate the knot, the creature you damaged takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
+				"If you have the Twist the Knife feat, the talisman instead deals {@condition persistent damage||persistent bleed damage} equal to your sneak attack damage."
 			],
 			"generic": false
 		},
@@ -13054,7 +13128,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"This ammunition has a slender shape and a viciously pointed tip. When you activate and shoot penetrating ammunition, the {@action Strike} takes the shape of a 60-foot line originating from you.",
-				"Roll one attack roll and compare the result to the AC of each target in the line. The ammunition ignores up to 10 of a target's resistance, and it can penetrate walls up to 1 foot thick with Hardness 10 or less. Each target that takes damage from this ammunition also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
+				"Roll one attack roll and compare the result to the AC of each target in the line. The ammunition ignores up to 10 of a target's resistance, and it can penetrate walls up to 1 foot thick with Hardness 10 or less. Each target that takes damage from this ammunition also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
 				"If your attack roll result is a natural 20, you improve your degree of success only against the first target in the line, but you can still score a critical hit on other targets if your result exceeds their AC by 10 or more. If you have access to your bow's critical specialization effect, penetrating ammunition applies that effect only against a target in the last square of the line."
 			],
 			"generic": false
@@ -19413,7 +19487,7 @@
 					"trigger": "You critically succeed at an attack roll against a good creature with the weapon",
 					"requirements": null,
 					"entries": [
-						"The target takes {@condition persistent damage ||persistent bleed damage} equal to {@dice 1d8} per weapon damage die of the etched weapon."
+						"The target takes {@condition persistent damage||persistent bleed damage} equal to {@dice 1d8} per weapon damage die of the etched weapon."
 					]
 				}
 			],
@@ -20261,7 +20335,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast {@spell fireball} of the indicated level. Each creature that fails its save takes {@condition persistent damage ||persistent fire damage}."
+						"You cast {@spell fireball} of the indicated level. Each creature that fails its save takes {@condition persistent damage||persistent fire damage}."
 					]
 				}
 			],
@@ -20544,7 +20618,12 @@
 						"note": null
 					},
 					"craftReq": "You are an expert in {@skill Crafting}.",
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "+1 item bonus, and the weapon can be etched with one property rune."
+						}
+					}
 				},
 				{
 					"type": "+2 weapon potency",
@@ -20554,8 +20633,15 @@
 						"amount": 935,
 						"note": null
 					},
-					"craftReq": "You are a master in {@skill Crafting}. The item bonus to attack rolls is +2, and the weapon can be etched with two property runes.",
-					"entries": []
+					"craftReq": "You are a master in {@skill Crafting}.",
+					"entries": [
+						"The item bonus to attack rolls is +2, and the weapon can be etched with two property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "+2 item bonus, and the weapon can be etched with two property runes."
+						}
+					}
 				},
 				{
 					"type": "+3 weapon potency",
@@ -20565,10 +20651,24 @@
 						"amount": 8935,
 						"note": null
 					},
-					"craftReq": "You are legendary in {@skill Crafting}. The item bonus to attack rolls is +3, and the weapon can be etched with three property runes.",
-					"entries": []
+					"craftReq": "You are legendary in {@skill Crafting}.",
+					"entries": [
+						"The item bonus to attack rolls is +3, and the weapon can be etched with three property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "+3 item bonus, and the weapon can be etched with three property runes."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1 item bonus, and the weapon can be etched with one property rune\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Whisper of the First Lie",
@@ -20947,7 +21047,7 @@
 			"appliesTo": "Weapon",
 			"entries": [
 				"Weapons with wounding runes are said to thirst for blood.",
-				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage ||persistent bleed damage}."
+				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage||persistent bleed damage}."
 			],
 			"generic": false
 		},

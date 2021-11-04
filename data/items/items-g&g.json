@@ -6505,13 +6505,13 @@
 			"ammunition": null,
 			"category": "Ammunition",
 			"entries": [
-                "Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-            ],
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Earplugs",
 			"source": "G&G",
 			"page": 178,
@@ -6527,41 +6527,41 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature’s ears with a single {@action Interact} action using one hand. They take a –2 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
-            ],
+				"These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature's ears with a single {@action Interact} action using one hand. They take a \u20132 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
-			"name": "Camouflage suit",
+		{
+			"name": "Camouflage Suit",
 			"source": "G&G",
 			"page": 178,
 			"equipment": true,
 			"type": "Equipment",
 			"traits": [
-                "Uncommon"
-            ],
+				"Uncommon"
+			],
 			"price": {
 				"coin": "gp",
 				"amount": 10
 			},
-            "level": 3,
+			"level": 3,
 			"bulk": "L",
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "This lightweight mesh fits easily over light armor. The suit is designed to incorporate local flora and ground clutter into the mesh to help you blend in seamlessly with the environment. Due to the abrasive nature of the materials used, this item is unsuitable for use by unarmored characters. You can prepare the suit for use within your current environment by using an exploration activity that takes at least 10 minutes, but sometimes longer if the materials are hard to find or the environment is unusual enough to warrant additional difficulty in preparing camouflage that can blend with it consistently.",
-                "A suit prepared in this manner grants you a +1 item bonus to {@skill Stealth} checks while you attempt to {@action Hide} or {@action Sneak} in the specific environment it has been prepared for.",
-                "The suit remains usable in this manner until you rest for the night, though it doesn’t grant the benefit whenever you aren’t in the appropriate environment. The GM might rule that some environments are unusual enough that you can’t create a camouflage suit appropriate for the environment."
-            ],
+				"This lightweight mesh fits easily over light armor. The suit is designed to incorporate local flora and ground clutter into the mesh to help you blend in seamlessly with the environment. Due to the abrasive nature of the materials used, this item is unsuitable for use by unarmored characters. You can prepare the suit for use within your current environment by using an exploration activity that takes at least 10 minutes, but sometimes longer if the materials are hard to find or the environment is unusual enough to warrant additional difficulty in preparing camouflage that can blend with it consistently.",
+				"A suit prepared in this manner grants you a +1 item bonus to {@skill Stealth} checks while you attempt to {@action Hide} or {@action Sneak} in the specific environment it has been prepared for.",
+				"The suit remains usable in this manner until you rest for the night, though it doesn't grant the benefit whenever you aren't in the appropriate environment. The GM might rule that some environments are unusual enough that you can't create a camouflage suit appropriate for the environment."
+			],
 			"craftReq": null,
 			"generic": "G",
 			"variants": [
@@ -6573,8 +6573,7 @@
 						"amount": 10,
 						"note": null
 					},
-					"entries": [
-					]
+					"entries": []
 				},
 				{
 					"type": "Superb Camouflage Suit",
@@ -6585,18 +6584,25 @@
 						"note": null
 					},
 					"entries": [
-                        "A superb camouflage suit is fashioned from especially well-blended materials and gives you a +2 item bonus to the check instead of a +1 item bonus."
-					]
+						"A superb camouflage suit is fashioned from especially well-blended materials and gives you a +2 item bonus to the check instead of a +1 item bonus."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "A suit prepared in this manner grants you a \\+1 item bonus",
+							"with": "A suit prepared in this manner grants you a +2 item bonus"
+						}
+					}
 				}
 			]
 		},
-        {
+		{
 			"name": "Concealed Holster",
 			"source": "G&G",
 			"page": 178,
 			"equipment": true,
 			"type": "Equipment",
-            "level": 3,
+			"level": 3,
 			"traits": [],
 			"price": {
 				"coin": "gp",
@@ -6607,16 +6613,16 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
-            ],
+				"This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Firearm Cleaning Kit",
 			"source": "G&G",
 			"page": 178,
@@ -6632,16 +6638,16 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 2,
+			"hands": 2,
 			"category": "Gear",
 			"entries": [
-                "This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can’t perform the necessary tasks during your daily preparations to ensure that your firearm isn’t at risk of misfiring under normal use conditions."
-            ],
+				"This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can't perform the necessary tasks during your daily preparations to ensure that your firearm isn't at risk of misfiring under normal use conditions."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Practice Targets",
 			"source": "G&G",
 			"page": 178,
@@ -6651,7 +6657,7 @@
 			"price": {
 				"coin": "sp",
 				"amount": 2,
-                "note": "(price for 10)"
+				"note": "(price for 10)"
 			},
 			"bulk": "L",
 			"shieldStats": null,
@@ -6660,13 +6666,13 @@
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger’s progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
-            ],
+				"While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger's progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Silencer",
 			"source": "G&G",
 			"page": 178,
@@ -6684,14 +6690,14 @@
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons’ explosive sound when fired. Without a silencer, a firearm’s shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can’t be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
-            ],
-            "hands": 1,
+				"One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons' explosive sound when fired. Without a silencer, a firearm's shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can't be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
+			],
+			"hands": 1,
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Tripod",
 			"source": "G&G",
 			"page": 178,
@@ -6703,20 +6709,20 @@
 				"amount": 2
 			},
 			"bulk": 1,
-            "hands": 2,
+			"hands": 2,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don’t take the –2 penalty for firing a {@trait kickback} weapon, even if your Strength isn’t high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you’re {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn’t automatically make you {@condition observed}, so long as you don’t set up or remove the tripod when it’s in a spot where creatures can see the tripod itself."
-            ],
+				"Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don't take the \u20132 penalty for firing a {@trait kickback} weapon, even if your Strength isn't high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you're {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn't automatically make you {@condition observed}, so long as you don't set up or remove the tripod when it's in a spot where creatures can see the tripod itself."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Waterproof Firearm Carrying Case",
 			"source": "G&G",
 			"page": 178,
@@ -6728,15 +6734,15 @@
 				"amount": 2
 			},
 			"bulk": "L",
-            "hands": 2,
+			"hands": 2,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
-            ],
+				"This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
