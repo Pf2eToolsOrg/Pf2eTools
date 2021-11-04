@@ -4324,7 +4324,11 @@ Renderer.hazard = {
 			} else if (def.hp != null) {
 				sectionTwo.push(Object.keys(def.hp)
 					.map(k => `<strong>${k === "default" ? "" : `${k} `}HP&nbsp;</strong>${def.hp[k]}${def.bt && def.bt[k] != null ? `, (BT ${def.bt[k]})` : ""}`).join("; "));
-			} else throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
+			} else if (def.hp == null && def.hardness != null) {
+				throw new Error("What? Hardness but no HP?") // TODO: ...Maybe?
+			} else {
+				sectionTwo.push("")
+			}
 			if (def.immunities) sectionTwo.push(`<strong>Immunities&nbsp;</strong>${def.immunities.join(", ")}`);
 			if (def.weaknesses) sectionTwo.push(`<strong>Weaknesses&nbsp;</strong>${def.weaknesses.join(", ")}`);
 			if (def.resistances) sectionTwo.push(`<strong>Resistances&nbsp;</strong>${def.resistances.join(", ")}`);

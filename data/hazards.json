@@ -1,6 +1,120 @@
 {
 	"hazard": [
 		{
+			"name": "Web Lurker Noose",
+			"source": "Bst",
+			"page": 325,
+			"level": 3,
+			"traits": [
+				"Mechanical",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 22
+			},
+			"description": [
+				"Discreet webbing at throat level snags a creature that walks into it."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} (trained) or {@skill Thievery} (expert) DC 18 to rearrange the webbing"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 18
+				},
+				"savingThrows": {
+					"fort": 11,
+					"ref": 5,
+					"will": null
+				}
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A creature steps into the square with the web tripwire.",
+					"entries": [
+						"The web lurker noose makes a noose {@action Strike} against the triggering creature."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Web Noose"
+				},
+				{
+					"type": "attack",
+					"range": "Melee",
+					"name": "noose",
+					"attack": 13,
+					"traits": null,
+					"effects": [
+						"deadly d10"
+					],
+					"damage": "{@damage 3d6} bludgeoning and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 22). The target takes {@damage 1d6} bludgeoning damage at the end of each of its turns as long as it’s caught in the noose.",
+					"types": [
+						"bludgeoning"
+					],
+					"noMAP": false
+				}
+			],
+			"routine": null,
+			"reset": null
+		},
+		{
+			"name": "Web Lurker Deadfall",
+			"source": "Bst",
+			"page": 325,
+			"level": 3,
+			"traits": [
+				"Mechanical",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 23
+			},
+			"description": [
+				"A web tripwire lets loose a bundle of boulders that fall on all targets within a 10-foot square."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} (trained) or {@skill Thievery} (expert) DC 20 to rearrange the webbing"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 19
+				},
+				"savingThrows": {
+					"fort": 9,
+					"ref": 9,
+					"will": null
+				}
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps into the square with the web tripwire.",
+					"entries": [
+						"All creatures in the trap’s 10-foot square take {@damage 2d6} bludgeoning damage (DC 20 basic Reflex save)."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Deadfall"
+				}
+			],
+			"routine": null,
+			"reset": null
+		},
+		{
 			"name": "Armageddon Orb",
 			"source": "CRB",
 			"page": 526,
