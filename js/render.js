@@ -862,7 +862,7 @@ function Renderer () {
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
 		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
-			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
+			textStack[0] += `${entry.components != null ? `(${renderer.render(entry.components.join(", "))})${entry.traits != null ? " " : "; "}` : ""}`;
 			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}`;
 		} else {
 			if (entry.components) textStack[0] += renderer.render(`${entry.components.join(", ")} `);
@@ -905,8 +905,8 @@ function Renderer () {
 		if (entry.note != null) textStack[0] += `${this.render(entry.note)} `;
 		if (entry.DC != null || entry.savingThrow != null) {
 			textStack[0] += `<strong>Saving Throw&nbsp;</strong>`
-			if (entry.DC != null) textStack[0] += `DC ${entry.DC}`
-			textStack[0] += ` ${renderer.render(entry.savingThrow)}.`
+			if (entry.DC != null) textStack[0] += `DC ${entry.DC} `
+			textStack[0] += `${renderer.render(entry.savingThrow)}.`
 		}
 		if (entry.onset != null) textStack[0] += ` <strong>Onset</strong> ${entry.onset}`;
 		if (entry.maxDuration != null) textStack[0] += ` <strong>Maximum Duration</strong> ${entry.maxDuration}`;
@@ -1262,7 +1262,7 @@ function Renderer () {
 		entry.items.forEach(it => {
 			const entries = MiscUtil.copy(it.entries);
 			const style = entry.style ? entry.style : "pf2-book__option";
-			textStack[0] += `<p class="${style}">${it.name ? `<strong>${renderer.render(it.name)}:&nbsp;</strong>` : ""}${renderer.render(entries.shift())}</p>`;
+			textStack[0] += `<p class="${style}">${it.name ? `<strong>${renderer.render(it.name)}${entry.noColon ? "" : ":"}&nbsp;</strong>` : ""}${renderer.render(entries.shift())}</p>`;
 			entries.forEach(e => this._recursiveRender(e, textStack, meta, {prefix: `<p class="${style}">`, suffix: `</p>`}));
 		});
 	};
