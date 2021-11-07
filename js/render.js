@@ -862,7 +862,7 @@ function Renderer () {
 		textStack[0] += `<p class="pf2-stat pf2-stat__section"><strong>${entry.name != null ? entry.name : "Activate"}&nbsp;</strong>`
 		if (entry.activity != null) textStack[0] += `${renderer.render(Parser.timeToFullEntry(entry.activity))} `;
 		if (entry.activity != null && Parser.TIME_ACTIONS.includes(entry.activity.unit)) {
-			textStack[0] += `${entry.components != null ? `(${renderer.render(entry.components.join(", "))})${entry.traits != null ? " " : "; "}` : ""}`;
+			textStack[0] += `${entry.components != null ? `${renderer.render(entry.components.join(", "))}${entry.traits != null ? " " : "; "}` : ""}`;
 			textStack[0] += `${entry.traits != null && entry.traits.length ? `(${entry.traits.map(t => renderer.render(`{@trait ${t.toLowerCase()}}`)).join(", ")}); ` : ""}`;
 		} else {
 			if (entry.components) textStack[0] += renderer.render(`${entry.components.join(", ")} `);

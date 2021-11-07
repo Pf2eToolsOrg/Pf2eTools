@@ -2226,7 +2226,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You drive the coil into a living creature that has 0 HP while attaching the other end to yourself, in order to damage their heart and possibly siphon their life force. The galvanic mortal coil casts death knell on the creature (DC 27)."
 					]
 				},
@@ -2243,7 +2243,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You implant the coil into a corpse. The coil casts talking corpse on the body."
 					]
 				}
@@ -2405,7 +2405,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You apply the violet ray to an adjacent creature and attempt to counteract the {@condition blinded}, {@condition clumsy}, {@condition confused}, {@condition deafened}, {@condition drained}, {@condition enfeebled}, {@condition sickened}, or {@condition stupefied} condition with a counteract level of 6 and a counteract modifier of +22, using the source of the condition to determine the condition's counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns after 1 minute. Each use of this ability can only counteract a single condition.",
 						"Shockguard Coil Violet Ray."
 					]
@@ -2523,7 +2523,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Transform the clockwork disguise into any one current preset configuration of the user's choice."
 					]
 				}
@@ -2572,7 +2572,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The diving suit shoots out a water jet that causes you to {@action Swim} 25 feet in a straight line. The distance of this movement is unaffected by your swim Speed, if you have one, or the armor's Speed penalty.",
 						"However, difficult terrain, such as the difficult terrain for moving up or down or moving against a current, still slows this movement.",
 						"Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
@@ -2741,7 +2741,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The holy steam ball is filled with evaporated holy water and incense smoke",
-					"effect": [
+					"entries": [
 						"You release the stored steam and smoke to grant yourself its protections. Each use of the holy steam ball lasts for 1 hour and gives you a +2 item bonus to Will saving throws against {@trait possession} effects from fiends and undead and effects from fiends and undead that cause the {@condition controlled} condition."
 					]
 				}
@@ -2930,7 +2930,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You turn the steamflight pack on or off."
 					]
 				}
@@ -3013,8 +3013,13 @@
 			"source": "G&G",
 			"name": "Basic Chair",
 			"level": 0,
+			"otherSources": {
+				"Expanded": [
+					"LOTGB|70"
+				]
+			},
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -3032,8 +3037,13 @@
 			"source": "G&G",
 			"name": "Traveler's Chair",
 			"level": 1,
+			"otherSources": {
+				"Expanded": [
+					"LOTGB|70"
+				]
+			},
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -3053,7 +3063,7 @@
 			"name": "Frog Chair",
 			"level": 8,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Uncommon",
 				"Clockwork",
@@ -3081,7 +3091,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You activate the wheelchair's springs to make hopping leaps.",
 						"For 1 minute, whenever you {@action Leap} with the wheelchair, you can jump 30 feet in any direction without touching the ground. You must land on a space of solid ground within 30 feet of you, or else you fall after using your next action."
 					]
@@ -3098,7 +3108,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You activate the wheelchair's tongue to grab a nearby object and bring it to you. {@action Interact} to pick up an unattended object within 15 feet and bring it to your empty hand. If you don't have a hand to take the object, it falls in your space instead."
 					]
 				}
@@ -3110,7 +3120,7 @@
 			"name": "Spider Chair",
 			"level": 12,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Uncommon",
 				"Clockwork",
@@ -3138,7 +3148,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The chair shoots a web line at a solid wall, floor, or ceiling up to 60 feet away and then pulls itself and you to that location."
 					]
 				},
@@ -3154,7 +3164,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause the chair to launch an enormous web to hinder your foes, with the effects of a 4th-level {@spell web} spell."
 					]
 				}
@@ -3166,7 +3176,7 @@
 			"name": "Storm Chair",
 			"level": 14,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Rare",
 				"Electricity",
@@ -3196,7 +3206,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You create a ball of electricity around the chair, surrounding it in a damaging aura of electricity and using electromagnetism to briefly levitate. For 1 minute, you gain a fly Speed equal to your Speed and adjacent creatures that hit you with a melee attack, as well as creatures that touch or hit you with an unarmed attack, take {@damage 2d6} electricity damage each time. As normal, this applies to creatures who choose to touch you, not when you touch or attack another creature."
 					]
 				},
@@ -3214,7 +3224,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You release the majority of the stored up energy from your storm chair, devastating foes in a chain of electricity. This has the effects of chain lightning with a DC of 31."
 					]
 				}
@@ -3253,7 +3263,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fire the breath blaster, dealing {@dice 4d6} damage of the appropriate type in the appropriate area.",
 						"Creatures in the area must attempt a DC 24 basic Reflex save (or Fortitude save if the damage is poison)."
 					]
@@ -3358,7 +3368,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Make a ranged {@action Strike}. On a hit, the creature becomes covered in a mass of flesh that continues to grow on the target for a brief time. The creature becomes {@condition slowed|CRB|slowed 1} for 1 round, after which the growth withers and falls off."
 					]
 				}
@@ -3401,7 +3411,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Frequency once per hour Effect A beam of coiling energy leaps from the petrification cannon at a target within 60 feet. The target must attempt a Fortitude save against DC 34 with the effects of flesh to stone."
 					]
 				}
@@ -3439,7 +3449,7 @@
 					"frequency": "once per hour Effect The screech shooter unleashes a frightening wail.",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Frequency once per hour Effect The screech shooter unleashes a frightening wail. All creatures in a 30-foot emanation from you must attempt a DC 25 Will save.",
 						{
 							"type": "successDegree",
@@ -3524,7 +3534,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fire a mass of webbing at a square within 30 feet. That square becomes covered in webbing for 1 minute. A square covered with the webbing from a spider gun can be cleared by a single attack or effect that deals at least 5 slashing damage or 1 fire damage. A square has AC 5, and it automatically fails its saving throws. The first time each turn a creature in the webbing begins to use a move action or enters the webbing during a move action, it must attempt an {@skill Athletics} check or Reflex save against DC 20. On a success, it moves normally through the webbing and clears away the webbing from any squares it enters this turn. On a failure, it treats squares of webbing as difficult terrain this turn, and on a critical failure, it's {@condition immobilized} for 1 round or until it Escapes (DC 20) or destroys the webbing."
 					]
 				}
@@ -3603,7 +3613,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The spike launcher is loaded",
-					"effect": [
+					"entries": [
 						"The spike launcher fires a volley of smaller spikes in a 10-foot burst centered anywhere within its range.",
 						"Make a {@action Strike} with the spike launcher against each creature in the area. On a success, the spike causes the creature to take a \u20135-foot status penalty to their Speed.",
 						"On a critical success, the creature becomes {@condition immobilized} instead. In either case, the creature, or an adjacent creature, can use an {@action Interact} action to remove the spike and end the penalty or {@condition immobilized} condition."
@@ -3643,7 +3653,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause one of the tentacles forming the weapon's five barrels to stretch out and attempt to pull and grab a creature within 15 feet. The tentacle attempts to {@action Grapple} with a +13 bonus. It can attempt to {@action Grapple} any creature, regardless of size. On a success, the tentacle pulls the creature up to 10 feet directly towards you, until it's in a square adjacent to you."
 					]
 				},
@@ -3659,7 +3669,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The tentacle cannon has a creature {@condition grabbed}",
-					"effect": [
+					"entries": [
 						"You continue to keep the tentacle cannon's hold on one creature it has {@condition grabbed}.",
 						"Attempt another check to {@action Grapple} the creature with a +13 bonus."
 					]
@@ -3676,7 +3686,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The cannon fires a spray of ink in a 15-foot cone. Creatures in the area must attempt a DC 23 Reflex save. On a failure, the creature is covered in ink and becomes {@condition blinded} for 1 round and {@condition dazzled} for 1 minute or until it removes the ink. On a critical failure, the creature becomes {@condition blinded} and {@condition dazzled}; both conditions last for 1 minute or until it removes the ink. The creature, or an adjacent creature, can use an {@action Interact} action to remove the ink from its eyes to remove the {@condition blinded} and {@condition dazzled} conditions."
 					]
 				}
@@ -3814,7 +3824,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Make up to four Strikes with the liar's gun. Each of the four Strikes must be against a different target within a 20-foot cone. You apply and increasing your multiple attack penalty for the four Strikes only after resolving all attacks. If the weapon misfires on any of these attacks, wait to apply the misfire until you resolve all of the attacks."
 					]
 				}
@@ -3857,7 +3867,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The arboreal haunting the blunderbuss attempts to regrow itself into a new physical body by sprouting from the bodies of all the creatures that the firearm recently harmed. You and all creatures within 60 feet damaged by arboreal's revenge within the last minute must attempt a DC 20 Fortitude saving throw. On a failure, they take a \u201310-foot circumstance penalty to their Speeds as roots rapidly sprout from their wounds, which lasts until they {@action Escape} (DC 20)."
 					]
 				},
@@ -3874,7 +3884,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell barkskin} from the blunderbuss as a 2ndlevel primal spell. However, the weakness to fire imposed by barkskin is cumulative with the weakness to fire imposed by this weapon's curse, for a total of weakness 8 to fire."
 					]
 				}
@@ -3971,7 +3981,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The animate dreamer has a stored spell.",
-					"effect": [
+					"entries": [
 						"The animate dreamer casts its stored spell at a target that meets the requirements. This empties the spell from the weapon and allows a spell to be cast into it again. The animate dreamer has a spell attack roll of +25 and a spell DC of 33 with the stored spell."
 					]
 				},
@@ -3987,7 +3997,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The animate dreamer focuses on a single unattended inanimate object in an area it can see and exerts its will over the object, temporarily levitating it around. The animate dreamer casts {@spell mage hand} as a 5th-level occult spell."
 					]
 				},
@@ -4003,7 +4013,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The animate dreamer attempts to achieve its goal of occupying a body of its own and casts {@spell possession} as a 7th-level spell with a spell DC of 33. The weapon still functions as a +2 greater striking spell-storing scattergun while this effect is active but loses all other special abilities until the spell expires and the animate dreamer's intellect returns to it."
 					]
 				}
@@ -4089,7 +4099,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The sunken pistol curses and insults a creature it can see, attempting an {@skill Intimidation} check to {@action Demoralize} that creature."
 					]
 				},
@@ -4105,7 +4115,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The sunken pistol casts water breathing on you as a 3rd-level arcane spell. The sunken pistol can {@action Dismiss} this spell, so be sure to keep the gun happy if you're relying on its good graces to breathe!"
 					]
 				}
@@ -4145,7 +4155,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call upon Hyldarf's power to gain the magic of a linnorm for a brief time. For 1 minute, you gain the effects of fly, freedom of movement, and true seeing as well as fire resistance 20."
 					]
 				},
@@ -4161,7 +4171,7 @@
 					"frequency": "Once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You soak your shot in the fluid of the fang, imbuing it with Hyldarf's venom. The next {@action Strike} you make with Hydalf's Fang before the end of your next turn delivers the venom to the target.",
 						"Hyldarf's Venom (fire, injury, poison) Saving Throw DC 34; Maximum Duration 3 rounds; Stage 1 {@damage 3d6} fire damage and {@condition sickened|CRB|sickened 1}; Stage 2 {@damage 6d6} fire damage and {@condition sickened|CRB|sickened 2}."
 					]
@@ -4204,7 +4214,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You focus the solar energy housed in the ruby to release a gout of solar flame instead of a bullet. Make a {@action Strike} with the iris of the sky. All damage from this {@action Strike} is fire damage and the target takes an additional {@damage 1d6} fire damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage}."
 					]
 				},
@@ -4221,7 +4231,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You make a wish into the iris of the sky, yearning for it to strike true, and then fire. {@action Strike} against a foe with the iris, rolling the attack roll twice and taking the better result. If the attack is a failure, you take 5 {@condition persistent damage ||persistent fire damage}."
 					]
 				}
@@ -4257,7 +4267,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "the mountebank's passage isn't loaded",
-					"effect": [
+					"entries": [
 						"You pull the soapstone trigger. Choose a vertical surface within 120 feet. A beam of white energy crackles to the vertical surface and creates a white portal on that surface. Any creature who moves through the white portal comes out through the mountebank's passage's black portal, if one exists on the same plane. Using this activation causes any previous white portal to disappear, even if you don't create a new portal; otherwise, the portal lasts until your next daily preparations."
 					]
 				},
@@ -4273,7 +4283,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "the mountebank's passage isn't loaded",
-					"effect": [
+					"entries": [
 						"You pull the onyx trigger.",
 						"Choose a vertical surface within 120 feet. A beam of black energy crackles to the vertical surface and creates a black portal on that surface. Any creature who moves through the black portal comes out through the mountebank's passage's white portal, if one exists on the same plane.",
 						"Using this activation causes any previous black portal to disappear; even if you don't create a new portal; otherwise, the portal lasts until your next daily preparations."
@@ -4314,7 +4324,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "There's at least one soul stored in the reaper's grasp",
-					"effect": [
+					"entries": [
 						"You channel the necromantic energy of a soul stored in the weapon into your next attack, increasing the attack's destructive power. Choose a soul stored in the weapon. The next {@action Strike} you make with the reaper's grasp before the end of your turn deals an additional negative damage equal to twice the level of the creature whose soul you chose.",
 						"Using this ability releases the chosen soul, and a skull on the mosaic fades away."
 					]
@@ -4331,7 +4341,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "There's at least one soul stored in the reaper's grasp",
-					"effect": [
+					"entries": [
 						"You channel the necromantic energy of a soul stored in the weapon into a mantle around you, protecting you from harm. Choose a soul stored in the weapon. You gain temporary Hit Points equal to three times the level of the creature whose soul you chose, which last until the end of your next turn. Using this ability releases the chosen soul, and a skull on the mosaic fades away."
 					]
 				}
@@ -4370,7 +4380,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You will the Rowan Rifle to change the energy it fires from the white-hot energy of summer that glows like a star to the shivering chill of winter, the crackling electricity of the storm, or even the sonic vibrations of a roar. The Rowan Rifle's damage type changes from its current damage type to cold, electricity, fire, or sonic. On the next sunrise, the Rowan Rifle returns to dealing fire damage."
 					]
 				},
@@ -4387,7 +4397,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Rowan Rifle fires a 60-foot line of liquid djezet that wraps around all creatures in the affected area before hardening, which impedes them with metallic vines unless the affected creature succeeds at a DC 35 Reflex save. A creature who fails the save takes a \u201315-foot circumstance penalty to their Speeds, and a creature who critically fails is {@condition immobilized}. A creature who succeeds at a DC 35 {@action Escape} check ends this effect. Otherwise, the djezet vines last for 10 minutes before crumbling away."
 					]
 				},
@@ -4405,7 +4415,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold aloft the Rowan Rifle and step into a tree in Briarbough, and you tree stride to another tree in Briarbough."
 					]
 				}
@@ -4447,7 +4457,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You capitalize on the fears your firearm engenders, terrifying your foes. Make a ranged {@action Strike} with this firearm against a target. If you successfully deal damage to your target, the target is also affected by a 4th-level {@spell phantasmal killer} with a spell DC of 28. While phantasmal killer typically takes the shape of the target's worst fear, this effect always appears to the target in the form of a majestic and ferocious tiger.",
 						"Pistol of Wonder Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
 					]
@@ -4491,7 +4501,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Choose a creature within 60 feet and roll a percentile die on the table below to determine the pistol's effect. If an entry lists a spell, the pistol Casts that Spell at the indicated level (or at its lowest level, if no level is listed). You make any decisions for a spell cast by the pistol unless otherwise indicated, except that it must only target the creature you chose, or the creature you chose must be the center of the spell's area, if it has an area but no targets. The only exception to the limitation on targeting is if the effect specifically states it targets you. If the spell's range is less than 60 feet, increase the range to 60 feet.",
 						"Any spell DC required is DC 29, and any spell attack roll required is +21. If the pistol casts a spell on you, you don't get a saving throw or any other defense against it. Once activated, the pistol can't be activated again for {@dice 1d4} hours.",
 						"d% Wondrous Effect 1\u20132 The pistol casts phantom steed (4th level) to produce a pale horse adjacent to you; only you can ride it.",
@@ -5419,7 +5429,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You empower one of the attuned weapons in the bandolier, granting it the runes etched onto the gunner's bandolier and removing the runes from any previously drawn weapon. Then, you {@action Interact} to draw the weapon."
 					]
 				},
@@ -5435,7 +5445,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"All weapons that were attuned to the bandolier when you invested it, not including any weapons you're currently wielding, return to the bandolier, and one of the returned weapons is automatically reloaded."
 					]
 				}
@@ -5477,7 +5487,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Up to two firearms currently holstered in the immaculate holsters are instantly cleaned and oiled, protecting them from accidental misfires (though not misfires caused as a result of using a feat or ability). The holstered weapons are also reloaded with non-magical 0-level ammunition appropriate to a weapon of their type; if a firearm has multiple chambers, such as a slide pistol, each empty chamber is loaded. Immaculate holsters can't reload the cartridge of a repeating weapon."
 					]
 				}
@@ -5514,7 +5524,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You draw a card from the bandolier and {@action Interact} to load the card into a gun or crossbow you're wielding that requires 1 action to reload. The drawn card immediately transforms into magical ammunition with a type depending on the drawn card's suit, and a new copy of that card returns to the deck, ready to be drawn again.",
 						"When the card transforms into ammunition, it transforms into a firearm round or crossbow bolt appropriate for the weapon you chose to reload, even if magical ammunition of the drawn variety would normally be limited to ammunition of a different type (such as a storm arrow normally only being available in arrow form). Either draw a card from the Harrow deck or roll {@dice 1d6} to determine the suit of the card.",
 						"The result determines the type of magical ammunition the card becomes, as per the table below. Magical ammunition created this way lasts 10 minutes or until you fire it, whichever comes first."
@@ -5595,7 +5605,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The next {@action Strike} you make this round with the gun to which the scope is attached has its scatter radius increased by 5 feet."
 					]
 				}
@@ -5654,7 +5664,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"While gazing through the scope, you zoom in on your targets to make it easier to hit them at a distance. You increase the range increment of the weapon to which the scope is attached by 5 feet until the beginning of your next turn or until you're no longer wielding the weapon, whichever comes first."
 					]
 				}
@@ -5732,7 +5742,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next {@action Strike} from the weapon to which the scope is attached hits a creature, the sound of the impact transforms into light, causing the creature to glow until the end of your next turn. A visible creature can't be {@condition concealed} while they glow. If a creature is {@condition invisible}, they're {@condition concealed} while glowing, rather than being {@condition undetected}. Because the effect requires a solid impact, incorporeal creatures are unaffected unless the bullet can deal force damage or has the effects of the ghost touch property rune."
 					]
 				}
@@ -5772,7 +5782,7 @@
 					"frequency": "Once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"For the next 10 minutes, you can see things through the scope as they actually are. The GM rolls a secret counteract check with a +20 counteract modifier and a counteract level of 7 against any illusion or transmutation in the area, but only for the purpose of determining whether you see through it, not to end the spell or effect. For instance, if the check succeeds against a polymorph spell, you can see the creature's true form, but you don't end the spell."
 					]
 				}
@@ -5835,7 +5845,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you Activate the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
 					]
 				}
