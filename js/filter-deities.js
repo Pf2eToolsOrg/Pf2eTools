@@ -13,6 +13,11 @@ class PageFilterDeities extends PageFilter {
 			itemSortFn: SortUtil.alignmentSort,
 			displayFn: Parser.alignAbvToFull,
 		});
+		this._followerAlignmentFilter = new Filter({
+			header: "Follower Alignment",
+			itemSortFn: SortUtil.alignmentSort,
+			displayFn: Parser.alignAbvToFull,
+		});
 		this._fontFilter = new Filter({header: "Divine Font", displayFn: StrUtil.toTitleCase});
 		this._skillFilter = new Filter({header: "Divine Skill", displayFn: StrUtil.toTitleCase});
 		this._weaponFilter = new Filter({header: "Favored Weapon", displayFn: StrUtil.toTitleCase});
@@ -73,6 +78,7 @@ class PageFilterDeities extends PageFilter {
 		if (g._fSkill) this._skillFilter.addItem(g._fSkill);
 		if (g._fWeapon) this._weaponFilter.addItem(g._fWeapon);
 		if (g.alignment) this._alignmentFilter.addItem(g.alignment);
+		if (g.followerAlignment) this._followerAlignmentFilter.addItem(g.followerAlignment);
 		this._domainFilter.addItem(g._fDomains);
 		this._categoryFilter.addItem(g.category);
 		this._miscFilter.addItem(g._fMisc);
@@ -99,6 +105,7 @@ class PageFilterDeities extends PageFilter {
 		opts.filters = [
 			this._sourceFilter,
 			this._alignmentFilter,
+			this._followerAlignmentFilter,
 			this._categoryFilter,
 			this._benefitsFilter,
 			this._spellFilter,
@@ -111,6 +118,7 @@ class PageFilterDeities extends PageFilter {
 			values,
 			g._fSources,
 			g.alignment,
+			g.followerAlignment,
 			g.category,
 			[
 				g._fFont,

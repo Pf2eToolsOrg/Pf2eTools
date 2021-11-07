@@ -663,6 +663,8 @@ Parser.alignAbvToFull = function (align) {
 			return "Neutral Evil";
 		case "ce":
 			return "Chaotic Evil";
+		case "all":
+			return "All";
 		default:
 			return "\u2014";
 	}
