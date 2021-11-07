@@ -4428,7 +4428,6 @@ Renderer.item = {
 		if (item.onset) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Onset&nbsp;</strong>${item.price.amount} ${item.price.coin} ${item.price.note ? item.price.note : ""}</p>`);
 		}
-		if (item.access) renderStack.push(`<p class="pf2-stat pf2-stat__section"><strong>Access&nbsp;</strong>${renderer.render(item.access)}</p>`);
 		// Weapon Line/s
 		if (item.ammunition || item.damage || item.hands || item.reload || item.range) {
 			renderStack.push(`<p class="pf2-stat pf2-stat__section">`);
