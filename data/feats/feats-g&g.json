@@ -5402,8 +5402,26 @@
 			},
 			"prerequisites": "way of the spellshot",
 			"entries": [
-				"You've steeped yourself in magic and gunplay to the extent that you can conjure bullets from thin air, using a rudimentary knowledge of arcane theory to create a temporary piece of ammunition. You gain the Conjure Bullet action."
+				"You've steeped yourself in magic and gunplay to the extent that you can conjure bullets from thin air, using a rudimentary knowledge of arcane theory to create a temporary piece of ammunition. You gain the Conjure Bullet action.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Conjure Bullet",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Conjuration",
+						"Magical"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"You conjure an ordinary level-0 bolt or bullet out of thin air and then immediately Interact to load it into your weapon. If the bolt or bullet isn’t fired before the end of your turn, the effect is wasted."
+					]
+				}
 			],
+			"special": "You can’t select another dedication feat other than Beast Gunner Dedication until you’ve gained two other feats from the {@archetype spellshot|G&G} or {@archetype beast gunner|G&G} archetypes.",
 			"page": 140
 		},
 		{
@@ -5503,11 +5521,7 @@
 			"prerequisites": "{@feat Spellshot Dedication|G&G}, master in {@skill Arcana}",
 			"requirements": "You're wielding a loaded magical firearm or crossbow.",
 			"entries": [
-				"You infuse your entire being into a single shot, merging your body into the blast and enabling you to travel the same path as your bolt or bullet. {@action Strike} a creature with the required weapon. On a success, if the target was within 120 feet, you and all your gear are teleported to an open space of your choice within 10 feet of the target.",
-				"Unexpected Sharpshooter \"Oh would you look at that, there's a bunch of bullet holes around here... so that's what all the ruckus was about! Six... seven... eight of you, huh? Oh, but did you notice the northern finch over there in that tree a minute ago? Its nest is up there, but I think all those gunshots startled it. You think you could quiet down so maybe it'll come back?\" \u2013Viri, gnome ornithologist, just before a series of strange accidents mysteriously took down a hardened bandit squad of eight former Alkenstar veterans.",
-				"Some people say you must be the luckiest soul in all of Golarion to still be alive and kicking after all the dangers you've seen. Others say that, given the circumstances and the number of foes who you've defeated seemingly by accident, that there's no way you can really be as incompetent as you seem. These critics claim there has to be some kind of angle, some racket you're running.",
-				"Either way, you sure don't look or act dangerous, except possibly to yourself.",
-				"Somehow, despite your apparent clumsiness, professed confusion, and known propensity to incite calamity, you find yourself standing after every battle. The same can't often be said for your enemies. Funny how that works out, isn't it? Additional Feats: 4th Hit the Dirt! (page 111); Risky Reload (page 112); 10th Trick Shot (page 116)"
+				"You infuse your entire being into a single shot, merging your body into the blast and enabling you to travel the same path as your bolt or bullet. {@action Strike} a creature with the required weapon. On a success, if the target was within 120 feet, you and all your gear are teleported to an open space of your choice within 10 feet of the target."
 			],
 			"activity": {
 				"number": 2,
