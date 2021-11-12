@@ -1653,3 +1653,26 @@ Parser.levelToDC = function (level, spell, difficulty) {
 
 	return DC
 };
+
+Parser.creatureToSkill = function (type) {
+	switch (type.toLowerCase()) {
+		case "aberration": return "{@skill Occultism}";
+		case "animal": return "{@skill Nature}";
+		case "astral": return "{@skill Occultism}";
+		case "beast": return "{@skill Arcana}, {@skill Nature}";
+		case "celestial": return "{@skill Religion}";
+		case "construct": return "{@skill Arcana}, {@skill Crafting}";
+		case "dragon": return "{@skill Arcana}";
+		case "elemental": return "{@skill Arcana}, {@skill Nature}";
+		case "ethereal": return "{@skill Occultism}";
+		case "fey": return "{@skill Nature}";
+		case "fiend": return "{@skill Religion}";
+		case "fungus": return "{@skill Nature}";
+		case "humanoid": return "{@skill Society}";
+		case "monitor": return "{@skill Religion}";
+		case "ooze": return "{@skill Occultism}";
+		case "spirit": return "{@skill Occultism}";
+		case "plant": return "{@skill Nature}";
+		case "undead": return "{@skill Religion}";
+	}
+};
