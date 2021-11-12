@@ -1613,36 +1613,14 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 
 Parser.levelToDC = function (level, spell, difficulty) {
 	let DC = 0
-	// FIXME: replace the below switch with an actual formula because I just couldn't figure one out
-	// if (level > 0 && level <= 10) {
-	// 	DC = formula
-	// } else {
-	// 	throw new Error(`Invalid level (accepting ranges only from 1 to 10)`);
-	// }
-	if (spell) {
-		switch (Number(level)) {
-			case 1:	DC = 15; break;
-			case 2: DC = 18; break;
-			case 3: DC = 20; break;
-			case 4: DC = 23; break;
-			case 5: DC = 26; break;
-			case 6: DC = 28; break;
-			case 7: DC = 31; break;
-			case 8: DC = 34; break;
-			case 9: DC = 36; break;
-			case 10: DC = 39; break;
-			default: throw new Error(`Invalid level (accepting ranges only from 1 to 10)`);
-		}
+	if (spell) level = (level * 2) - 1
+	if (level >= 0 && level < 21) {
+		DC = 14 + Number(level) + Math.floor(level / 3)
+	} else if (level >= 21 && level < 26) {
+		DC = 40 + Number((level - 20) * 2)
 	} else {
-		if (level < 21) {
-			DC = 14 + Number(level) + Math.floor(level / 3)
-		} else if (level >= 21 && level < 26) {
-			DC = 40 + Number((level - 20) * 2)
-		} else {
-			throw new Error(`Invalid level (accepting ranges only from 0 to 25)`);
-		}
+		throw new Error(`Invalid level (0 to 25 or 1 to 10 for spells)`);
 	}
-
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
 	if (difficulty) {
 		switch (Parser.rarityToNumber(difficulty)) {
