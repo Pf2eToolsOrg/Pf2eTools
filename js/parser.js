@@ -1576,13 +1576,15 @@ Parser.getTraitName = function (trait) {
 }
 
 Parser.rarityToNumber = function (r) {
-	switch (r.toLowerCase()) {
-		case "common": return 0;
-		case "uncommon": return 1;
-		case "rare": return 2;
-		case "unique": return 3;
-		default: return 69;
-	}
+	if (isNaN(r)) {
+		switch (r.toLowerCase()) {
+			case "common": return 0;
+			case "uncommon": return 1;
+			case "rare": return 2;
+			case "unique": return 3;
+			default: return 69;
+		}
+	} else return r
 }
 
 Parser.dmgTypeToFull = function (dmg) {
@@ -1642,31 +1644,33 @@ Parser.levelToDC = function (level, spell, difficulty) {
 	}
 
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
-	switch (difficulty) {
-		// Incredibly Easy
-		case -3:
-			DC = DC - 10;
-			break;
-		// Very Easy
-		case -2:
-			DC = DC - 5
-			break;
-		// Easy
-		case -1:
-			DC = DC - 2
-			break;
-		// Hard (Uncommon)
-		case 1:
-			DC = DC + 2
-			break;
-		// Very Hard (Rare)
-		case 2:
-			DC = DC + 5
-			break;
-		// Incredibly Hard (Unique)
-		case 3:
-			DC = DC + 10
-			break;
+	if (difficulty) {
+		switch (Parser.rarityToNumber(difficulty)) {
+			// Incredibly Easy
+			case -3:
+				DC = DC - 10;
+				break;
+			// Very Easy
+			case -2:
+				DC = DC - 5
+				break;
+			// Easy
+			case -1:
+				DC = DC - 2
+				break;
+			// Hard (Uncommon)
+			case 1:
+				DC = DC + 2
+				break;
+			// Very Hard (Rare)
+			case 2:
+				DC = DC + 5
+				break;
+			// Incredibly Hard (Unique)
+			case 3:
+				DC = DC + 10
+				break;
+		}
 	}
 
 	return DC
