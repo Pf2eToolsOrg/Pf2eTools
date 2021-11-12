@@ -164,8 +164,8 @@
 			"category": "Elixir",
 			"entries": [
 				"This gummy liquid disproportionately lengthens your legs, causing you to grow but making your movement awkward. The effect is very noticeable unless your clothes can adequately conceal it.",
-				"Benefit You gain an item bonus to {@skill Athletics} checks and you gain the listed status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.",
-				"Drawback You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
+				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and you gain the listed status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.",
+				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -179,7 +179,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +2, the bonus to Speed is +10 feet, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+10 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 1 minute."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -191,7 +212,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +3, the bonus to Speed is +15 feet, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+15 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 10 minutes."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -203,7 +245,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +4, the bonus to Speed is +20 feet, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+20 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 1 hour."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},

@@ -762,7 +762,8 @@
 					"items": [
 						"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air."
 					]
-				}
+				},
+				"entriesMode": "variant"
 			}
 		},
 		{
@@ -1003,7 +1004,15 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +2 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -1015,7 +1024,15 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +3 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -1027,7 +1044,15 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +4 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -1039,7 +1064,23 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, and when you drink the antidote, you can immediately attempt a saving throw against one poison of 14th level or lower affecting you. If you succeed, the poison is neutralized."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"When you drink the antidote, you can immediately attempt a saving throw against one poison of 14th level or lower affecting you. If you succeed, the poison is neutralized."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -1164,7 +1205,17 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -1176,7 +1227,17 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -1188,7 +1249,17 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -1200,7 +1271,23 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, and when you drink the antiplague, you can immediately attempt a saving throw against one disease of 14th level or lower affecting you. If you succeed, you are cured of the disease."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"When you drink the antiplague, you can immediately attempt a saving throw against one disease of 14th level or lower affecting you. If you succeed, you are cured of the disease."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -1909,8 +1996,8 @@
 			"category": "Worn",
 			"entries": [
 				"This bearskin includes the head and bared teeth of the mighty creature from which it was taken. When worn, the cloak drapes over your head and around your shoulders, imbuing you with a bear's ferocity. If you have the {@action Rage} action, while raging you grow jaws that deal {@damage 1d10} piercing damage and claws that deal {@damage 1d6} slashing damage and have the {@trait agile} trait.",
-				"This transformation is a {@trait morph} effect, and both the jaws and claws are unarmed attacks in the brawling weapon group. You gain the benefits of a +1 weapon potency rune and a striking rune with these attacks (gaining a +1 item bonus to attack rolls and increasing the weapon damage dice by one)",
-				"If you have an animal instinct (see the barbarian on page 82) and the bestial rage instinct ability, instead of gaining these unarmed attacks, your unarmed attacks from the bestial rage instinct ability gain the benefits of a +2 weapon potency rune and a greater striking rune (granting a +2 item bonus to attack rolls and increasing the weapon damage dice by two)."
+				"This transformation is a {@trait morph} effect, and both the jaws and claws are unarmed attacks in the {@group brawling} weapon group. You gain the benefits of a {@item +1 weapon potency} rune and a {@item striking} rune with these attacks (gaining a +1 item bonus to attack rolls and increasing the weapon damage dice by one).",
+				"If you have an {@class barbarian||animal instinct|animal} and the bestial rage instinct ability, instead of gaining these unarmed attacks, your unarmed attacks from the bestial rage instinct ability gain the benefits of a {@item +2 weapon potency} rune and a {@item greater striking} rune (granting a +2 item bonus to attack rolls and increasing the weapon damage dice by two)."
 			],
 			"generic": "G",
 			"variants": [
@@ -1932,12 +2019,53 @@
 						"amount": 40000,
 						"note": null
 					},
-					"craftReq": "You are a barbarian with the animal instinct.",
 					"entries": [
-						"You gain the benefits of a +2 weapon potency rune and a greater striking rune, or a +3 weapon potency rune and a major striking rune if you have an animal instinct and the bestial rage instinct ability."
-					]
+						"You gain the benefits of a {@item +2 weapon potency} rune and a {@item greater striking} rune, or a {@item +3 weapon potency} rune and a {@item major striking} rune if you have an {@class barbarian||animal instinct|animal} and the bestial rage instinct ability."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+3",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+1",
+								"with": "+2",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "a {@item greater striking}",
+								"with": "a {@item major striking}",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "a {@item striking}",
+								"with": "a {@item greater striking}",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "two",
+								"with": "three",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "one",
+								"with": "two",
+								"replaceTags": true
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
-			]
+			],
+			"craftReq": "You are a barbarian with the {@class barbarian||animal instinct|animal}."
 		},
 		{
 			"name": "Bestial Mutagen",
@@ -1966,7 +2094,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is {@condition clumsy}.",
+				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
 				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
 				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
@@ -1982,7 +2110,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus, your claw deals {@damage 1d4} slashing damage, your jaws deal {@damage 1d6} piercing damage, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +1 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d4} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d6} piercing damage. The duration is 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1994,7 +2128,13 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus, your claw deals {@damage 1d6} slashing damage, your jaws deal {@damage 1d8} piercing damage, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +2 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d8} piercing damage. The duration is 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2006,7 +2146,13 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus, your claw deals {@damage 1d8} slashing damage, your jaws deal {@damage 1d10} piercing damage, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +3 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d8} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d10} piercing damage. The duration is 1 hour."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -2018,9 +2164,22 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, your claw deals {@damage 1d8} slashing damage, your jaws deal {@damage 1d10} piercing damage, and the duration is 1 hour. You gain weapon specialization with the claws and jaws, or greater weapon specialization, if you already have weapon specialization with these unarmed attacks."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +4 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d8} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d10} piercing damage. You also gain {@classFeature weapon specialization|Fighter||7} with the claws and jaws, or {@classFeature greater weapon specialization|Fighter||15}, if you already have weapon specialization with these unarmed attacks. The duration is 1 hour."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack."
+				}
+			}
 		},
 		{
 			"name": "Biting Snare",
@@ -2429,7 +2588,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"This tincture lets you pinpoint your foes. For the next 5 minutes, your alchemical bomb Strikes reduce the circumstance bonus to AC your targets gain from cover."
+				"This tincture lets you pinpoint your foes. For the next 5 minutes, your alchemical bomb {@action Strike||Strikes} reduce the circumstance bonus to AC your targets gain from cover."
 			],
 			"generic": "G",
 			"variants": [
@@ -2443,7 +2602,12 @@
 					},
 					"entries": [
 						"Reduce your targets' circumstance bonus by 1."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "your targets gain from cover by 1"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2455,9 +2619,21 @@
 					},
 					"entries": [
 						"Reduce your targets' circumstance bonus by 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "your targets gain from cover by 2"
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "your targets gain from cover"
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Boots of Bounding",
@@ -2686,7 +2862,13 @@
 					},
 					"entries": [
 						"It deals {@damage 1d6} electricity damage and 1 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 1d6} electricity damage and 1 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2698,7 +2880,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2710,7 +2898,13 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +2 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -2722,9 +2916,22 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +3 item bonus to attack rolls."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
+				}
+			}
 		},
 		{
 			"name": "Bracelet of Dashing",
@@ -2942,7 +3149,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain an item bonus to Will saves, which is greater when attempting Will saves against fear."
+				"This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain an item bonus to Will saves, which is greater when attempting Will saves against {@trait fear}."
 			],
 			"generic": "G",
 			"variants": [
@@ -2955,8 +3162,14 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +1, or +2 against fear."
-					]
+						"The bonus on Will saves is +1, or +2 against {@trait fear}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +1 item bonus to Will saves, or +2 when attempting Will saves against {@trait fear}."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2967,8 +3180,14 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +2, or +3 against fear."
-					]
+						"The bonus on Will saves is +2, or +3 against {@trait fear}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +2 item bonus to Will saves, or +3 when attempting Will saves against {@trait fear}."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2979,10 +3198,23 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +3, or +4 against fear. If you roll a success on a save against fear, you get a critical success instead."
-					]
+						"The bonus on Will saves is +3, or +4 against {@trait fear}. If you roll a success on a save against fear, you get a critical success instead."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +3 item bonus to Will saves, or +4 when attempting Will saves against {@trait fear}. If you roll a success on a save against {@trait fear}, you get a critical success instead."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "an item bonus to Will saves, which is greater when attempting Will saves against {@trait fear}."
+				}
+			}
 		},
 		{
 			"name": "Breastplate of Command",
