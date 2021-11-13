@@ -3041,11 +3041,16 @@ Renderer.utils = {
 			dataPart = `data-page="${opts.page}" data-source="${it.source.escapeQuotes()}" data-hash="${hash.escapeQuotes()}"`;
 		}
 		const type = opts.type != null ? opts.type : it.type || ""
+		const DC = opts.level != null ? Number(opts.level) : Number(it.level)
 		const level = opts.level != null ? `${opts.level}` : (!isNaN(Number(it.level)) || typeof it.level === "string") ? ` ${it.level}` : ""
 		const activity = opts.activity ? ` ${it.activity != null && Parser.timeToFullEntry(it.activity).includes("@as") ? Renderer.get().render(Parser.timeToFullEntry(it.activity)) : ``}` : ``
+		// replace ${type}${level} with <span title="Identification DC ${Parser.levelToDC(DC, type)} Arcana">${type}${level}</span>
+		// once you figure out what is wrong with the span bleeding over to traits
 		const $ele = $$`<div class="flex ${opts.isEmbedded ? "pf2-embedded-name" : ""}" ${dataPart}>
 			<p class="pf2-stat pf2-stat__name"><span class="stats-name copyable" onmousedown="event.preventDefault()" onclick="Renderer.utils._pHandleNameClick(this)">${opts.prefix || ""}${it._displayName || it.name}${opts.suffix || ""}</span>${activity}</p>
-			<p class="pf2-stat pf2-stat__name pf2-stat__name--level">${opts.$btnScaleLvl ? opts.$btnScaleLvl : ""}${opts.$btnResetScaleLvl ? opts.$btnResetScaleLvl : ""}${type}${level}${opts.isEmbedded ? ` ${Renderer.get()._renderData_getEmbeddedToggle()}` : ""}</p>
+			<p class="pf2-stat pf2-stat__name pf2-stat__name--level">${opts.$btnScaleLvl ? opts.$btnScaleLvl : ""}${opts.$btnResetScaleLvl ? opts.$btnResetScaleLvl : ""}
+			<span title="Identification DC ${Parser.levelToDC(DC, type, it.traits)} ${Renderer.stripTags(Parser.typeToSkill(it.creatureType || it.traditions || it.traits || it.type || ""))}">${type}${level}</span>
+			${opts.isEmbedded ? ` ${Renderer.get()._renderData_getEmbeddedToggle()}` : ""}</p>
 		</div>`;
 		if (opts.asJquery) return $ele;
 		else return $ele[0].outerHTML;
