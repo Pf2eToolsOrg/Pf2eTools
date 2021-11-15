@@ -5417,7 +5417,7 @@
 									"type": "pf2-title",
 									"name": "BUILDING GHOSTS"
 								},
-								"Note that the ghost mage is built from the ground up, rather than by applying the ghost rules to a onceliving creature, so its numbers don’t exactly match the values listed above. This is usually the better way to go if you have the time, as it allows you to hand-craft a ghost for the situation."
+								"Note that the ghost mage is built from the ground up, rather than by applying the ghost rules to a onceliving creature, so its numbers don't exactly match the values listed above. This is usually the better way to go if you have the time, as it allows you to hand-craft a ghost for the situation."
 							]
 						},
 						"When some mortals die through tragic circumstances or without closure, they can linger on in the world. These anguished souls haunt a locale significant to them in life, constantly trying to right their perceived wrong or wrongdoings.",
@@ -5425,14 +5425,14 @@
 							"type": "pf2-h3",
 							"name": "Creating a Ghost",
 							"entries": [
-								"While it’s best to create custom ghosts to fill an adventure’s specific needs, you can also use the following guidelines to turn existing living creatures into ghosts.",
-								"First, increase the creature’s level by 2 and change its statistics as follows.",
+								"While it's best to create custom ghosts to fill an adventure's specific needs, you can also use the following guidelines to turn existing living creatures into ghosts.",
+								"First, increase the creature's level by 2 and change its statistics as follows.",
 								{
 									"type": "list",
 									"items": [
 										"Increase AC, saves, Perception, DCs, and skill modifiers by 2. Increase the most appropriate melee attack modifier by 4 to become ghostly hand (described below), and other attack modifiers by 2.",
-										"A ghost has a Strength modifier of –5 and a Constitution modifier of +0.",
-										"Do not modify the ghost’s Hit Points due to its new level."
+										"A ghost has a Strength modifier of \u20135 and a Constitution modifier of +0.",
+										"Do not modify the ghost's Hit Points due to its new level."
 									]
 								},
 								{
@@ -5466,7 +5466,7 @@
 													"type": "item",
 													"name": "Rejuvenation",
 													"entries": [
-														"({@trait divine}, {@trait necromancy}) When a ghost is destroyed, it re-forms after {@dice 2d4} days within the location it’s bound to, fully healed. A ghost can be permanently destroyed only if someone determines the reason for its existence and sets right whatever prevents the spirit from resting."
+														"({@trait divine}, {@trait necromancy}) When a ghost is destroyed, it re-forms after {@dice 2d4} days within the location it's bound to, fully healed. A ghost can be permanently destroyed only if someone determines the reason for its existence and sets right whatever prevents the spirit from resting."
 													]
 												},
 												{
@@ -5505,7 +5505,7 @@
 									"type": "pf2-h4",
 									"name": "Special Abilities",
 									"entries": [
-										"Select one or two of the following abilities, or potentially three if the ghost is 9th level or higher. These abilities should relate to the ghost’s death or its history. You can also create new abilities or adapt those from monsters or classes to fit the theme. For DCs, use 2 + the DC of the {@table DCs by Level||ghost’s level}.",
+										"Select one or two of the following abilities, or potentially three if the ghost is 9th level or higher. These abilities should relate to the ghost's death or its history. You can also create new abilities or adapt those from monsters or classes to fit the theme. For DCs, use 2 + the DC of the {@table DCs by Level||ghost's level}.",
 										{
 											"type": "pf2-options",
 											"skipSort": true,
@@ -5559,14 +5559,19 @@
 															"style": "compact",
 															"page": 166,
 															"traits": [
-																"auditory", "divine", "emotion", "enchantment", "fear", "mental"
+																"auditory",
+																"divine",
+																"emotion",
+																"enchantment",
+																"fear",
+																"mental"
 															],
 															"activity": {
 																"number": 2,
 																"unit": "action"
 															},
 															"entries": [
-																"The ghost laments its fate, forcing each living creature within 30 feet to attempt a Will save. On a failure, a creature becomes {@condition frightened 2} (or {@condition frightened 3} on a critical failure). On a success, a creature is temporarily immune to this ghost’s frightful moan for 1 minute."
+																"The ghost laments its fate, forcing each living creature within 30 feet to attempt a Will save. On a failure, a creature becomes {@condition frightened 2} (or {@condition frightened 3} on a critical failure). On a success, a creature is temporarily immune to this ghost's frightful moan for 1 minute."
 															]
 														}
 													]
@@ -5585,7 +5590,7 @@
 																"unit": "action"
 															},
 															"entries": [
-																"The ghost possesses an object of size Large or smaller within 20 feet, making it an animated object (pages 20–21). This animated object’s level can be no higher than the ghost’s level – 2. If the target object is being held by a creature, the bearer can attempt a Will save to prevent the possession. This possession ends when the object is destroyed or the ghost leaves it. At this point, the ghost reappears in the object’s square and can’t Inhabit an Object again for {@dice 1d4} rounds."
+																"The ghost possesses an object of size Large or smaller within 20 feet, making it an animated object (pages 20\u201321). This animated object's level can be no higher than the ghost's level \u2013 2. If the target object is being held by a creature, the bearer can attempt a Will save to prevent the possession. This possession ends when the object is destroyed or the ghost leaves it. At this point, the ghost reappears in the object's square and can't Inhabit an Object again for {@dice 1d4} rounds."
 															]
 														}
 													]
@@ -5604,7 +5609,7 @@
 																"unit": "action"
 															},
 															"entries": [
-																"The ghost attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell, except since the ghost doesn’t have a physical body, it is unaffected by that restriction of the spell."
+																"The ghost attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell, except since the ghost doesn't have a physical body, it is unaffected by that restriction of the spell."
 															]
 														}
 													]
@@ -5623,7 +5628,8 @@
 																"unit": "action"
 															},
 															"traits": [
-																"divine", "evocation"
+																"divine",
+																"evocation"
 															],
 															"entries": [
 																"The ghost cries out in pain and anguish as small objects and debris fly about in a 30-foot emanation. Creatures in this area take {@damage 1d6} bludgeoning damage + {@damage 1d6} per 2 levels, subject to a basic Reflex save."
@@ -5701,7 +5707,7 @@
 					"entries": {
 						"mode": "appendArr",
 						"items": [
-								{
+							{
 								"type": "pf2-h3",
 								"name": "Ghoul",
 								"entries": [
@@ -5726,7 +5732,7 @@
 							"type": "pf2-sidebar",
 							"name": "THE FIRST GHOULS",
 							"entries": [
-								"Legend holds that the first humanoid (an elf, as it so happened) to feed upon the flesh of his brother rose as a ghoul after death, in time embracing his new life and ascending to great power as a demon lord of ghouls, graves, and secrets kept by the dead. That ghouls of humanoids warp and twist to take vaguely elven features, and that elves themselves are immune to ghoul paralysis, are unusual side effects of this ancient source, yet today, ghouls are as likely to worship other vile gods—or simply eschew faith entirely—as they are to honor the first of their kind.",
+								"Legend holds that the first humanoid (an elf, as it so happened) to feed upon the flesh of his brother rose as a ghoul after death, in time embracing his new life and ascending to great power as a demon lord of ghouls, graves, and secrets kept by the dead. That ghouls of humanoids warp and twist to take vaguely elven features, and that elves themselves are immune to ghoul paralysis, are unusual side effects of this ancient source, yet today, ghouls are as likely to worship other vile gods\u2014or simply eschew faith entirely\u2014as they are to honor the first of their kind.",
 								{
 									"type": "pf2-title",
 									"name": "GHOULISH SOCIETY"
@@ -5739,8 +5745,8 @@
 							"type": "pf2-h3",
 							"name": "Creating Ghouls",
 							"entries": [
-								"You can turn a living creature into a ghoul by completing the following steps. When creating a ghast, double these numerical adjustments. The monsters in this section are built from the ground up, so their numbers don’t match these guidelines exactly. Custom-building ghouls is recommended if you have time, using the special abilities listed here but creating the other statistics to match what you want the ghoul to be.",
-								"First, increase the creature’s level by 1 and change its statistics as follows.",
+								"You can turn a living creature into a ghoul by completing the following steps. When creating a ghast, double these numerical adjustments. The monsters in this section are built from the ground up, so their numbers don't match these guidelines exactly. Custom-building ghouls is recommended if you have time, using the special abilities listed here but creating the other statistics to match what you want the ghoul to be.",
+								"First, increase the creature's level by 1 and change its statistics as follows.",
 								{
 									"type": "list",
 									"items": [
@@ -5752,7 +5758,7 @@
 									"type": "pf2-h4",
 									"name": "Ghoul Abilities",
 									"entries": [
-										"A ghoul gains the {@trait undead} and {@trait ghoul} traits, and it usually becomes {@trait evil}. If the base creature has any abilities that come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as {@trait human} and {@trait humanoid}. You might also need to adjust abilities that conflict with the theme of a ghoul. All ghouls gain the following abilities. The save DC for all abilities uses the DC of the {@table DCs by Level||ghoul’s level}.",
+										"A ghoul gains the {@trait undead} and {@trait ghoul} traits, and it usually becomes {@trait evil}. If the base creature has any abilities that come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as {@trait human} and {@trait humanoid}. You might also need to adjust abilities that conflict with the theme of a ghoul. All ghouls gain the following abilities. The save DC for all abilities uses the DC of the {@table DCs by Level||ghoul's level}.",
 										{
 											"type": "pf2-options",
 											"skipSort": true,
@@ -5786,7 +5792,7 @@
 													"type": "item",
 													"name": "Jaws",
 													"entries": [
-														"If the creature had a mouth, it gains a jaws {@action Strike} (an {@trait unarmed} attack that deals slashing damage plus ghoul fever and {@condition paralysis}). The damage amount should be the same as the creature’s non-agile attacks."
+														"If the creature had a mouth, it gains a jaws {@action Strike} (an {@trait unarmed} attack that deals slashing damage plus ghoul fever and {@condition paralysis}). The damage amount should be the same as the creature's non-agile attacks."
 													]
 												},
 												{
@@ -5820,7 +5826,7 @@
 													"type": "item",
 													"name": "Paralysis",
 													"entries": [
-														"({@trait incapacitation}, {@trait occult}, {@trait necromancy}) Any living, non-elf creature hit by a ghoul’s attack must succeed at a Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
+														"({@trait incapacitation}, {@trait occult}, {@trait necromancy}) Any living, non-elf creature hit by a ghoul's attack must succeed at a Fortitude save or become {@condition paralyzed}. It can attempt a new save at the end of each of its turns, and the DC cumulatively decreases by 1 on each such save."
 													]
 												},
 												{
@@ -5838,7 +5844,7 @@
 																"move"
 															],
 															"entries": [
-																"The ghoul jumps up to half its Speed. This movement doesn’t trigger reactions."
+																"The ghoul jumps up to half its Speed. This movement doesn't trigger reactions."
 															]
 														}
 													]
@@ -5861,7 +5867,7 @@
 													"type": "item",
 													"name": "Stench",
 													"entries": [
-														"({@trait aura}, {@trait olfactory}) 10 feet A creature entering the aura or starting its turn in the aura must succeed at a Fortitude save (use a DC based on the {@table DCs by Level||monster's level}) or become {@condition sickened 1} (plus {@condition slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a –2 circumstance penalty to saves against {@trait disease} and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
+														"({@trait aura}, {@trait olfactory}) 10 feet A creature entering the aura or starting its turn in the aura must succeed at a Fortitude save (use a DC based on the {@table DCs by Level||monster's level}) or become {@condition sickened 1} (plus {@condition slowed 1} as long as it's {@condition sickened} on a critical failure). While within the aura, the creature takes a \u20132 circumstance penalty to saves against {@trait disease} and to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune for 1 minute."
 													]
 												},
 												{
@@ -7511,23 +7517,23 @@
 									"type": "pf2-title",
 									"name": "UNIQUE LICHDOM"
 								},
-								"The exact ritual, ingredients for deadly concoctions, and magical conditions required to become a lich are unique and different for every living creature. Understanding a spellcaster’s path to lichdom can help, but is no guarantee of success for others.",
+								"The exact ritual, ingredients for deadly concoctions, and magical conditions required to become a lich are unique and different for every living creature. Understanding a spellcaster's path to lichdom can help, but is no guarantee of success for others.",
 								{
 									"type": "pf2-title",
 									"name": "ASSOCIATED MONSTERS"
 								},
-								"Undead minions are very common companions for a lich or demilich. Liches prefer mindless undead, that do what they’re told and don’t interrupt the lich’s studies with useless conversation. Liches with a knack for crafting are also fond of surrounding themselves with construct servitors and guardians, such as golems."
+								"Undead minions are very common companions for a lich or demilich. Liches prefer mindless undead, that do what they're told and don't interrupt the lich's studies with useless conversation. Liches with a knack for crafting are also fond of surrounding themselves with construct servitors and guardians, such as golems."
 							]
 						},
-						"To gain more time to complete their goals, some desperate spellcasters pursue immortality by embracing undeath. After long years of research and the creation of a special container called a phylactery, a spellcaster takes the final step by imbibing a deadly concoction or casting dreadful incantations that transform them into a lich. While most undertake this drastic plan to continue their work or fulfill some long-term plan, others become liches because they fear death or to fulfill some malevolent purpose, such as long-sworn revenge. Regardless, the result is permanent and carries with it the potential to alter history—both that of those who transform themselves and of the countless mortals that will inevitably suffer as a result of a lich’s new power.",
-						"After its metamorphosis, a lich often finds some quiet place to dwell, typically protected by a variety of guardians and traps, for two primary purposes. First, a lich requires solitude in order to plan its elaborate schemes, and second, few mortals (if any) deign to interact with these legendarily corrupt necromancers. One reason begets the other, as the self-imposed isolation of a lich often drives the lich insane, further solidifying its separation from civilization. The longer a lich lives, the more meticulous a planner it becomes, secreting itself within a labyrinth of deadly puzzles, misdirection, and monsters. A lich’s servants and guardians are absolutely loyal, either due to their nature (such as constructs or other undead) or as a result of compulsion using powerful magic. Many liches go mad, in time, and the nature of a lich’s lair is a good indicator of the undead’s current mental state.",
+						"To gain more time to complete their goals, some desperate spellcasters pursue immortality by embracing undeath. After long years of research and the creation of a special container called a phylactery, a spellcaster takes the final step by imbibing a deadly concoction or casting dreadful incantations that transform them into a lich. While most undertake this drastic plan to continue their work or fulfill some long-term plan, others become liches because they fear death or to fulfill some malevolent purpose, such as long-sworn revenge. Regardless, the result is permanent and carries with it the potential to alter history\u2014both that of those who transform themselves and of the countless mortals that will inevitably suffer as a result of a lich's new power.",
+						"After its metamorphosis, a lich often finds some quiet place to dwell, typically protected by a variety of guardians and traps, for two primary purposes. First, a lich requires solitude in order to plan its elaborate schemes, and second, few mortals (if any) deign to interact with these legendarily corrupt necromancers. One reason begets the other, as the self-imposed isolation of a lich often drives the lich insane, further solidifying its separation from civilization. The longer a lich lives, the more meticulous a planner it becomes, secreting itself within a labyrinth of deadly puzzles, misdirection, and monsters. A lich's servants and guardians are absolutely loyal, either due to their nature (such as constructs or other undead) or as a result of compulsion using powerful magic. Many liches go mad, in time, and the nature of a lich's lair is a good indicator of the undead's current mental state.",
 						"For all the protections it arrays around itself, a lich will go to greater lengths to guard its phylactery, as it knows that the destruction of this magical container spells doom for the lich. A lich is notoriously difficult to bargain with, though the threat of damaging its phylactery is a sure way to gain the upper hand in such a negotiation.",
 						{
 							"type": "pf2-h3",
 							"name": "Creating a Lich",
 							"entries": [
 								"A lich can be any type of spellcaster, as long as it has the ability to perform a ritual of undeath as the primary caster (which can usually be performed only by a spellcaster capable of casting 6th-level spells). To create a lich, follow these steps.",
-								"Increase the spellcaster’s level by 1 and change its statistics as follows.",
+								"Increase the spellcaster's level by 1 and change its statistics as follows.",
 								{
 									"type": "list",
 									"items": [
@@ -7610,7 +7616,7 @@
 															},
 															"frequency": "once per day",
 															"entries": [
-																"The lich taps into its phylactery’s power to cast any arcane spell up to the highest level the lich can cast, even if the spell being cast is not one of the lich’s prepared spells. The lich’s phylactery doesn’t need to be present for the lich to use this ability."
+																"The lich taps into its phylactery's power to cast any arcane spell up to the highest level the lich can cast, even if the spell being cast is not one of the lich's prepared spells. The lich's phylactery doesn't need to be present for the lich to use this ability."
 															]
 														}
 													]
@@ -7619,7 +7625,7 @@
 													"type": "item",
 													"name": "Paralyzing Touch",
 													"entries": [
-														"({@trait arcane}, {@trait curse}, {@trait incapacitation}, {@trait necromancy}) A creature damaged by the lich’s hand {@action Strike} must succeed at a Fortitude save against the lich’s spell DC – 4. The creature becomes {@condition paralyzed} for 1 round on a failure. On a critical failure, the creature is {@condition paralyzed} permanently, falls {@condition prone}, and seems dead. A DC 25 {@skill Medicine} check reveals the victim is alive."
+														"({@trait arcane}, {@trait curse}, {@trait incapacitation}, {@trait necromancy}) A creature damaged by the lich's hand {@action Strike} must succeed at a Fortitude save against the lich's spell DC \u2013 4. The creature becomes {@condition paralyzed} for 1 round on a failure. On a critical failure, the creature is {@condition paralyzed} permanently, falls {@condition prone}, and seems dead. A DC 25 {@skill Medicine} check reveals the victim is alive."
 													]
 												}
 											]
@@ -7640,14 +7646,14 @@
 													"type": "item",
 													"name": "Blasphemous Utterances",
 													"entries": [
-														"({@trait arcane}, {@trait aura}, {@trait enchantment}, {@trait mental}) 10 feet. The lich is accompanied by a constant echo of blasphemous murmurs and tainted whispers. A creature in the aura takes a –2 circumstance penalty to saves against mental effects and can’t take actions that have the {@trait concentrate} trait unless they succeed at a DC {@flatDC 10} flat check. Failing this check wastes the action."
+														"({@trait arcane}, {@trait aura}, {@trait enchantment}, {@trait mental}) 10 feet. The lich is accompanied by a constant echo of blasphemous murmurs and tainted whispers. A creature in the aura takes a \u20132 circumstance penalty to saves against mental effects and can't take actions that have the {@trait concentrate} trait unless they succeed at a DC {@flatDC 10} flat check. Failing this check wastes the action."
 													]
 												},
 												{
 													"type": "item",
 													"name": "Cold Beyond Cold",
 													"entries": [
-														"The lich’s hand {@action Strike} deals cold damage instead of negative, and instead of being {@condition paralyzed}, the target is {@condition slowed 2}. A successful Fortitude save reduces this to {@condition slowed 1} (or negates it on a critical success)."
+														"The lich's hand {@action Strike} deals cold damage instead of negative, and instead of being {@condition paralyzed}, the target is {@condition slowed 2}. A successful Fortitude save reduces this to {@condition slowed 1} (or negates it on a critical success)."
 													]
 												},
 												{
@@ -7679,7 +7685,7 @@
 													"type": "item",
 													"name": "Void Shroud",
 													"entries": [
-														"({@trait aura}, {@trait death}, {@trait necromancy}) 30 feet. The lich is surrounded by an aura of death, drawing forth souls to be consumed by the lich’s constant hunger. Living creatures in the emanation take a –2 status penalty to saves against {@trait fear} and {@trait death} effects. In addition, any creature that starts its turn in the area gains the {@condition doomed 1} condition unless it succeeds at a Will save against the lich’s spell DC – 4."
+														"({@trait aura}, {@trait death}, {@trait necromancy}) 30 feet. The lich is surrounded by an aura of death, drawing forth souls to be consumed by the lich's constant hunger. Living creatures in the emanation take a \u20132 status penalty to saves against {@trait fear} and {@trait death} effects. In addition, any creature that starts its turn in the area gains the {@condition doomed 1} condition unless it succeeds at a Will save against the lich's spell DC \u2013 4."
 													]
 												}
 											]
@@ -9876,24 +9882,24 @@
 							"type": "pf2-sidebar",
 							"name": "Born of Sin",
 							"entries": [
-								"Unable to procreate themselves, sinspawn retreated from the world for many centuries following the collapse of the runelords’ empire, but in recent years they have emerged from ancient dungeons, strange magical pools, and other forgotten ruins. In certain cases, incredibly powerful artifacts crafted by the runelords known as runewells can siphon off fragments of sinful memories and emotions related to the runewells’ associated sins from the souls of people dying nearby, fueling the spontaneous creation of new sinspawn. When enough sinful energies have been gathered within a runewell, it vomits forth a fully grown sinspawn with no prior loyalty to a long-lost runelord. All sinspawn inherently understand the runewells’ role in the propagation of their kind, and they often establish small villages near awakened runewells, hunting down sentient beings they can use to propagate their communities."
+								"Unable to procreate themselves, sinspawn retreated from the world for many centuries following the collapse of the runelords' empire, but in recent years they have emerged from ancient dungeons, strange magical pools, and other forgotten ruins. In certain cases, incredibly powerful artifacts crafted by the runelords known as runewells can siphon off fragments of sinful memories and emotions related to the runewells' associated sins from the souls of people dying nearby, fueling the spontaneous creation of new sinspawn. When enough sinful energies have been gathered within a runewell, it vomits forth a fully grown sinspawn with no prior loyalty to a long-lost runelord. All sinspawn inherently understand the runewells' role in the propagation of their kind, and they often establish small villages near awakened runewells, hunting down sentient beings they can use to propagate their communities."
 							]
 						},
-						"Sinspawn were created by one of seven ancient wizards known collectively as runelords—each of whom embraced and embodied one of seven sins. The first sinspawn was created by the Runelord of Wrath, utilizing techniques that have since gone on to influence fleshwarping practices (see fleshwarp on page 158). It wasn’t long before the technique used to create sinspawn fell into the hands of the other runelords, and while each tried their own hand at crafting variants of their own design, today sinspawn of wrath remain the most numerous and notorious of their kind.",
-						"Bearing only a vague resemblance to the humanoids from whose flesh they were formed, sinspawn generally appear horrifically emaciated and have unnaturally long arms and digitigrade legs, each with a trio of stubby, taloned digits. Veins bulge across sinspawn’s bodies in sanguine patterns that suspiciously resemble twisted runes, and their flesh is pale and hairless. Their heads are elongated, bearing only slits for a nose, red eyes, and disturbing lower jaws that split in half at the chin, revealing pedipalps that end in tiny, three-fingered hands and framing a long, lolling tongue.",
-						"Sinspawn stand 6-1/2 feet tall and typically weigh as much as an emaciated human of their size. They behave in a manner consistent with their associated sin and have physical characteristics that hint at these qualities. For example, greedspawn’s veins appear to run with gold while envyspawn appear even more wasted than the rest of their kin.",
+						"Sinspawn were created by one of seven ancient wizards known collectively as runelords\u2014each of whom embraced and embodied one of seven sins. The first sinspawn was created by the Runelord of Wrath, utilizing techniques that have since gone on to influence fleshwarping practices (see fleshwarp on page 158). It wasn't long before the technique used to create sinspawn fell into the hands of the other runelords, and while each tried their own hand at crafting variants of their own design, today sinspawn of wrath remain the most numerous and notorious of their kind.",
+						"Bearing only a vague resemblance to the humanoids from whose flesh they were formed, sinspawn generally appear horrifically emaciated and have unnaturally long arms and digitigrade legs, each with a trio of stubby, taloned digits. Veins bulge across sinspawn's bodies in sanguine patterns that suspiciously resemble twisted runes, and their flesh is pale and hairless. Their heads are elongated, bearing only slits for a nose, red eyes, and disturbing lower jaws that split in half at the chin, revealing pedipalps that end in tiny, three-fingered hands and framing a long, lolling tongue.",
+						"Sinspawn stand 6-1/2 feet tall and typically weigh as much as an emaciated human of their size. They behave in a manner consistent with their associated sin and have physical characteristics that hint at these qualities. For example, greedspawn's veins appear to run with gold while envyspawn appear even more wasted than the rest of their kin.",
 						{
 							"type": "pf2-sidebar",
 							"name": "SINSPAWN LOCATION",
 							"entries": [
-								"Sinspawn are found in regions where sources for their creation remain buried in ancient ruins—in Golarion, this currently limits them to the frontier lands of Varisia. But as they spread, so to does the potential knowledge of crafting more of them, and fleshwarpers around the world are hoping to someday soon craft new sinspawn of their own."
+								"Sinspawn are found in regions where sources for their creation remain buried in ancient ruins\u2014in Golarion, this currently limits them to the frontier lands of Varisia. But as they spread, so to does the potential knowledge of crafting more of them, and fleshwarpers around the world are hoping to someday soon craft new sinspawn of their own."
 							]
 						},
 						{
 							"type": "pf2-h3",
 							"name": "Sinspawn Sins",
 							"entries": [
-								"When a sinspawn is created, it becomes associated with one of the seven sins: envoy, gluttony, greed, lust, pride, sloth, or wrath. A sinspawn’s sin is determined by the {@i runewell} that spawned it or by its creator’s preferred sin, and cannot be changed. Each sin grants sinspawn associated with it additional benefits and abilities beyond those described by the sinspawn stat block, as detailed below.",
+								"When a sinspawn is created, it becomes associated with one of the seven sins: envoy, gluttony, greed, lust, pride, sloth, or wrath. A sinspawn's sin is determined by the {@i runewell} that spawned it or by its creator's preferred sin, and cannot be changed. Each sin grants sinspawn associated with it additional benefits and abilities beyond those described by the sinspawn stat block, as detailed below.",
 								{
 									"type": "pf2-h4",
 									"name": "Envyspawn",
@@ -9910,8 +9916,7 @@
 											],
 											"damage": "{@dice 1d10+4} piercing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against an envyspawn’s sinful bite are {@condition enfeebled 2} for 1 minute."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against an envyspawn's sinful bite are {@condition enfeebled 2} for 1 minute."
 									]
 								},
 								{
@@ -9930,8 +9935,7 @@
 											],
 											"damage": "{@dice 1d10+4} piercing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a gluttonyspawn’s sinful bite are {@condition drained 1}."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against a gluttonyspawn's sinful bite are {@condition drained 1}."
 									]
 								},
 								{
@@ -9951,8 +9955,7 @@
 											],
 											"damage": "{@dice 1d8+4} slashing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a greedspawn’s sinful bite are {@condition clumsy 2} for 1 minute."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against a greedspawn's sinful bite are {@condition clumsy 2} for 1 minute."
 									]
 								},
 								{
@@ -9971,8 +9974,7 @@
 											],
 											"damage": "{@dice 1d10+4} slashing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a lustspawn’s sinful bite are {@condition stupefied 2} for 1 minute."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against a lustspawn's sinful bite are {@condition stupefied 2} for 1 minute."
 									]
 								},
 								{
@@ -9990,15 +9992,14 @@
 											],
 											"damage": "{@dice 1d12+4} bludgeoning"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a pridespawn’s sinful bite are {@condition clumsy 1} and {@condition enfeebled 1} for 1 minute."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against a pridespawn's sinful bite are {@condition clumsy 1} and {@condition enfeebled 1} for 1 minute."
 									]
 								},
 								{
 									"type": "pf2-h4",
 									"name": "Slothspawn",
 									"entries": [
-										"A slothspawn has {@skill Society} +6 and usually carries a {@item longspear}. Thick rolls of excess skin drape the slothspawn’s hunched frame.",
+										"A slothspawn has {@skill Society} +6 and usually carries a {@item longspear}. Thick rolls of excess skin drape the slothspawn's hunched frame.",
 										{
 											"type": "attack",
 											"range": "Melee",
@@ -10009,8 +10010,7 @@
 											],
 											"damage": "{@dice 1d8+4} piercing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a slothspawn’s sinful bite take a –10-foot status penalty to their Speeds for 1 minute."
-
+										"{@b Sinful Bite} Creatures that critically fail their saves against a slothspawn's sinful bite take a \u201310-foot status penalty to their Speeds for 1 minute."
 									]
 								},
 								{
@@ -10029,7 +10029,7 @@
 											],
 											"damage": "{@dice 1d10+4} piercing"
 										},
-										"{@b Sinful Bite} Creatures that critically fail their saves against a wrathspawn’s sinful bite are {@condition drained 1} as well as {@condition enfeebled 1} for 1 minute."
+										"{@b Sinful Bite} Creatures that critically fail their saves against a wrathspawn's sinful bite are {@condition drained 1} as well as {@condition enfeebled 1} for 1 minute."
 									]
 								}
 							]
@@ -10529,11 +10529,11 @@
 							"type": "pf2-sidebar",
 							"name": "Jinx Eaters",
 							"entries": [
-								"In the pirate-controlled archipelago of the Shackles, tengus occupy a unique social niche, since many pirates believe that a tengu’s presence on board a ship wards off bad luck. Known as “jinx eaters,” these tengu are treated as mascots by their pirate crews. Jinx eaters don’t mind this treatment, however, since it allows them to escape much of the drudgery associated with working on a ship. When a tengu is sailing with pirates afraid of ill fortune, the claim that “hunger leads to bad luck” secures comfort and respect for the jinx eater more effectively than any bribe."
+								"In the pirate-controlled archipelago of the Shackles, tengus occupy a unique social niche, since many pirates believe that a tengu's presence on board a ship wards off bad luck. Known as \"jinx eaters,\" these tengu are treated as mascots by their pirate crews. Jinx eaters don't mind this treatment, however, since it allows them to escape much of the drudgery associated with working on a ship. When a tengu is sailing with pirates afraid of ill fortune, the claim that \"hunger leads to bad luck\" secures comfort and respect for the jinx eater more effectively than any bribe."
 							]
 						},
-						"Crow-like humanoids, tengus are a canny and clever people who can be found across all of Golarion. Tengus are used to being minorities and facing suspicion wherever they travel, so by necessity many possess a knack for languages as well as for blades. They live on the fringes of society and tend to flock toward less-than-legal occupations, earning them their reputation for being streetwise and unscrupulous—a label that, in turn, perpetuates the tengus’ oppressive cycle of discrimination and illegitimate work.",
-						"Although humanoid, tengus have very distinct, birdlike features, and many would say that they resemble crows more than they do humans. They have strong, thick beaks, as well as sharp talons at the ends of their arms and legs. Most of a tengu’s body is covered in small feathers that range in color from dark brown and midnight blue to glossy black, with lighter colors being rare but not unheard of. Like many avian creatures, tengus have hollow bones, making them much lighter than other humanoids of their size, although few tengus possess the wings necessary to fly naturally. A tengu’s speech might be punctuated by quick clucks or throaty cawing, and many tengus practice conversation diligently to rid themselves of these involuntary ticks. Ruffling of the feathers and compulsive, jerky movements of the neck are other trademark habits. Tengus reproduce by laying eggs: the average tengu egg is about 11 inches in diameter and 16 inches tall and takes 4 months to hatch.",
+						"Crow-like humanoids, tengus are a canny and clever people who can be found across all of Golarion. Tengus are used to being minorities and facing suspicion wherever they travel, so by necessity many possess a knack for languages as well as for blades. They live on the fringes of society and tend to flock toward less-than-legal occupations, earning them their reputation for being streetwise and unscrupulous\u2014a label that, in turn, perpetuates the tengus' oppressive cycle of discrimination and illegitimate work.",
+						"Although humanoid, tengus have very distinct, birdlike features, and many would say that they resemble crows more than they do humans. They have strong, thick beaks, as well as sharp talons at the ends of their arms and legs. Most of a tengu's body is covered in small feathers that range in color from dark brown and midnight blue to glossy black, with lighter colors being rare but not unheard of. Like many avian creatures, tengus have hollow bones, making them much lighter than other humanoids of their size, although few tengus possess the wings necessary to fly naturally. A tengu's speech might be punctuated by quick clucks or throaty cawing, and many tengus practice conversation diligently to rid themselves of these involuntary ticks. Ruffling of the feathers and compulsive, jerky movements of the neck are other trademark habits. Tengus reproduce by laying eggs: the average tengu egg is about 11 inches in diameter and 16 inches tall and takes 4 months to hatch.",
 						"Tengus are a people in diaspora and are almost always found within larger kingdoms and communities of other races. Perhaps because they are more visually distinctive than most other humanoid races, tengus tend to be distrusted and persecuted more often than, for example, elves or dwarves. As a result, tengus tend to gather in close-knit social groups composed of other outcasts and people of uncommon ancestry. Few true tengu communities exist, and those that do are often exiled to ghettos and other forgotten city quarters. From an early age, tengus learn that the world is not a friendly place and that they must look out for themselves."
 					]
 				}
@@ -10731,17 +10731,17 @@
 							"type": "pf2-sidebar",
 							"name": "Building Vampires",
 							"entries": [
-								"Because vampires can inflict their nature upon any creature whose blood they drink, practically any living monster can become one of these undead horrors. When you need to create a vampire for your game, you can do so in two ways. In most cases, it’s more effective to build the vampire from the ground up, using the standard rules for monster creation (this is how the vampire count, vampire spawn, and vampire mastermind presented on these pages were built). Or you can use the guidelines presented under Creating a Vampire to turn an existing creature (or even a player character!) into a vampire, adjusting the monster as you see fit. In either case, specific vampire abilities like coffin restoration, Mist Escape, and Drink Blood work the same.",
+								"Because vampires can inflict their nature upon any creature whose blood they drink, practically any living monster can become one of these undead horrors. When you need to create a vampire for your game, you can do so in two ways. In most cases, it's more effective to build the vampire from the ground up, using the standard rules for monster creation (this is how the vampire count, vampire spawn, and vampire mastermind presented on these pages were built). Or you can use the guidelines presented under Creating a Vampire to turn an existing creature (or even a player character!) into a vampire, adjusting the monster as you see fit. In either case, specific vampire abilities like coffin restoration, Mist Escape, and Drink Blood work the same.",
 								{
 									"type": "pf2-title",
 									"name": "Vampires and Dhampir"
 								},
-								"The most common and traditional vampires, as presented here, are known also as the “moroi.” They are prevalent in Golarion in the mist-shrouded counties of Ustalav and found in small numbers in almost every nation of the Inner Sea. Other types of vampires include the withered nosferatu, the hopping jiang shi, and the psychic vetala—these vampires share many of the basic traits with moroi but possess new abilities of their own. Dhampir (page 95) can be born of any of these vampire races, though moroi-born dhampir known as svetochers are the most common, especially in the Inner Sea region.",
+								"The most common and traditional vampires, as presented here, are known also as the \"moroi.\" They are prevalent in Golarion in the mist-shrouded counties of Ustalav and found in small numbers in almost every nation of the Inner Sea. Other types of vampires include the withered nosferatu, the hopping jiang shi, and the psychic vetala\u2014these vampires share many of the basic traits with moroi but possess new abilities of their own. Dhampir (page 95) can be born of any of these vampire races, though moroi-born dhampir known as svetochers are the most common, especially in the Inner Sea region.",
 								{
 									"type": "pf2-title",
 									"name": "SPAWN LOCATIONS"
 								},
-								"Vampire spawn live wherever their masters demand. When free of any master, they tend to roam in packs through slums or other urban areas that wouldn’t notice a few people going missing.",
+								"Vampire spawn live wherever their masters demand. When free of any master, they tend to roam in packs through slums or other urban areas that wouldn't notice a few people going missing.",
 								{
 									"type": "pf2-title",
 									"name": "NON-EVIL VAMPIRES"
@@ -10755,13 +10755,13 @@
 							"name": "Creating a Vampire",
 							"entries": [
 								"You can turn an existing living creature into a vampire using the following steps.",
-								"Increase the creature’s level by 1 and change its statistics as follows.",
+								"Increase the creature's level by 1 and change its statistics as follows.",
 								{
 									"type": "list",
 									"items": [
 										"It gains the {@trait undead} and {@trait vampire} traits, and usually becomes {@trait evil}.",
 										"Increase AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
-										"Increase damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon’s breath weapon), increase the damage by 2 instead.",
+										"Increase damage with {@action Strike||Strikes} and other offensive abilities by 1. If an ability can be used only a small number of times (such as a dragon's breath weapon), increase the damage by 2 instead.",
 										"Reduce HP by the amount listed on the table.",
 										"The vampire gains {@ability fast healing} and resistance to physical damage (except silver) as indicated in the table. These abilities are the reason the vampire has less HP."
 									]
@@ -10809,7 +10809,7 @@
 									"name": "Basic Vampire Abilities",
 									"collapsible": true,
 									"entries": [
-										"All vampires gain the following abilities. If the base creature has any abilities that specifically come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the vampire’s theme.",
+										"All vampires gain the following abilities. If the base creature has any abilities that specifically come from it being a living creature, it loses them. It also loses any traits that represented its life as a living creature, such as human and humanoid. You might also need to adjust abilities that conflict with the vampire's theme.",
 										{
 											"type": "pf2-options",
 											"skipSort": true,
@@ -10831,7 +10831,7 @@
 													"type": "item",
 													"name": "Coffin Restoration",
 													"entries": [
-														"({@trait divine}, {@trait necromancy}, {@trait negative}) Unlike other undead, a vampire isn’t destroyed at 0 HP. Instead, it falls unconscious. If its body rests in its coffin for 1 hour, the vampire gains 1 HP, after which its fast healing begins to function normally."
+														"({@trait divine}, {@trait necromancy}, {@trait negative}) Unlike other undead, a vampire isn't destroyed at 0 HP. Instead, it falls unconscious. If its body rests in its coffin for 1 hour, the vampire gains 1 HP, after which its fast healing begins to function normally."
 													]
 												},
 												{
@@ -10842,10 +10842,10 @@
 														{
 															"type": "list",
 															"items": [
-																"{@b Compulsions} Vampires are creatures of strange and unknowable compulsions. A typical vampire can’t voluntarily cross running water unless it is transported while it hides within its coffin, nor can it enter a private dwelling unless invited in by someone with the authority to do so. At your discretion, vampires might have different compulsions—a pirate vampire might not be able to set foot on solid ground without being invited, for example. The vampire can still be forced to do these things and might be able to overcome its compulsion just as it does its revulsion (see below).",
-																"{@b Revulsion} A vampire can’t voluntarily come within 10 feet of brandished garlic or a brandished religious symbol of a non-evil deity. To brandish garlic or a religious symbol, a creature must {@action Interact} to do so for 1 round (similar to {@action Raise a Shield||Raising a Shield}). If the vampire involuntarily comes within 10 feet of an object of its revulsion, it gains the {@condition fleeing} condition, running from the object of its revulsion until it ends an action beyond 10 feet. After 1 round of being exposed to the subject of its revulsion, a vampire can attempt a DC 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, it overcomes its revulsions for {@dice 1d6} rounds (or 1 hour on a critical success).",
-																"{@b Stake} A wooden stake driven through a vampire’s heart drops the vampire to 0 HP and prevents it from healing above 0 HP, even in its coffin. Staking a vampire requires three actions and works only if the vampire is {@condition unconscious}. If the stake is removed, the vampire can heal above 0 HP again, and if it’s in its coffin the 1-hour rest period begins once the stake is removed. If the vampire’s head is severed and anointed with holy water while the stake is in place, the vampire is destroyed.",
-																"{@b Sunlight} If exposed to direct sunlight, a vampire immediately becomes {@condition slowed 1}. The slowed value increases by 1 each time the vampire ends its turn in sunlight. If the vampire loses all its actions in this way, it is destroyed. Due to their supernatural aversion to light, vampires don’t cast shadows or show a reflection in mirrors."
+																"{@b Compulsions} Vampires are creatures of strange and unknowable compulsions. A typical vampire can't voluntarily cross running water unless it is transported while it hides within its coffin, nor can it enter a private dwelling unless invited in by someone with the authority to do so. At your discretion, vampires might have different compulsions\u2014a pirate vampire might not be able to set foot on solid ground without being invited, for example. The vampire can still be forced to do these things and might be able to overcome its compulsion just as it does its revulsion (see below).",
+																"{@b Revulsion} A vampire can't voluntarily come within 10 feet of brandished garlic or a brandished religious symbol of a non-evil deity. To brandish garlic or a religious symbol, a creature must {@action Interact} to do so for 1 round (similar to {@action Raise a Shield||Raising a Shield}). If the vampire involuntarily comes within 10 feet of an object of its revulsion, it gains the {@condition fleeing} condition, running from the object of its revulsion until it ends an action beyond 10 feet. After 1 round of being exposed to the subject of its revulsion, a vampire can attempt a DC 25 Will save as a single action, which has the {@trait concentrate} trait. On a success, it overcomes its revulsions for {@dice 1d6} rounds (or 1 hour on a critical success).",
+																"{@b Stake} A wooden stake driven through a vampire's heart drops the vampire to 0 HP and prevents it from healing above 0 HP, even in its coffin. Staking a vampire requires three actions and works only if the vampire is {@condition unconscious}. If the stake is removed, the vampire can heal above 0 HP again, and if it's in its coffin the 1-hour rest period begins once the stake is removed. If the vampire's head is severed and anointed with holy water while the stake is in place, the vampire is destroyed.",
+																"{@b Sunlight} If exposed to direct sunlight, a vampire immediately becomes {@condition slowed 1}. The slowed value increases by 1 each time the vampire ends its turn in sunlight. If the vampire loses all its actions in this way, it is destroyed. Due to their supernatural aversion to light, vampires don't cast shadows or show a reflection in mirrors."
 															]
 														}
 													]
@@ -10872,14 +10872,15 @@
 																"number": 1,
 																"unit": "action"
 															},
-															"requirement": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vampire’s reach.",
+															"requirement": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within the vampire's reach.",
 															"entries": [
-																"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim’s Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained 1} and the vampire regains HP equal to 10% of its maximum HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that’s already drained doesn’t restore any HP to the vampire but increases the victim’s {@condition drained||drain} value by 1. A vampire can also consume blood that’s been emptied into a vessel for sustenance, but it gains no HP from doing so."
+																"The vampire sinks its fangs into that creature to drink its blood. This requires an {@skill Athletics} check against the victim's Fortitude DC if the victim is {@condition grabbed} and is automatic for any of the other conditions. The victim is {@condition drained 1} and the vampire regains HP equal to 10% of its maximum HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already drained doesn't restore any HP to the vampire but increases the victim's {@condition drained||drain} value by 1. A vampire can also consume blood that's been emptied into a vessel for sustenance, but it gains no HP from doing so."
 															],
 															"type": "ability",
 															"style": "compact",
 															"traits": [
-																"divine", "necromancy"
+																"divine",
+																"necromancy"
 															],
 															"name": "Drink Blood"
 														}
@@ -10889,7 +10890,7 @@
 													"type": "item",
 													"name": "Grab",
 													"entries": [
-														"The creature’s claw attacks (or equivalent {@trait unarmed} attacks) gain {@ability Grab}."
+														"The creature's claw attacks (or equivalent {@trait unarmed} attacks) gain {@ability Grab}."
 													]
 												}
 											]
@@ -10901,7 +10902,7 @@
 									"name": "True Vampire Abilities",
 									"collapsible": true,
 									"entries": [
-										"Powerful vampires that can create and control vampires from their victims gain additional vampire abilities, as detailed below. A creature below level 5 is not a significant enough creature to become a true vampire—you should instead simply make such a creature into a regular vampire spawn, or rebuild the creature so that it’s at least level 5 before becoming a true vampire.",
+										"Powerful vampires that can create and control vampires from their victims gain additional vampire abilities, as detailed below. A creature below level 5 is not a significant enough creature to become a true vampire\u2014you should instead simply make such a creature into a regular vampire spawn, or rebuild the creature so that it's at least level 5 before becoming a true vampire.",
 										{
 											"type": "pf2-options",
 											"skipSort": true,
@@ -10918,14 +10919,14 @@
 													"type": "item",
 													"name": "Create Spawn",
 													"entries": [
-														"({@trait divine}, {@trait downtime}, {@trait necromancy}) If a creature dies after being reduced to 0 HP by Drink Blood, the vampire can turn this victim into a vampire by donating some of its own blood to the victim and burying the victim in earth for 3 nights. If the new vampire is lower level than its creator, it is under the creator’s control. If a vampire controls too many spawn at once (as determined by the GM), strong-willed spawn can free themselves by succeeding at a Will saving throw against the vampire’s Will DC."
+														"({@trait divine}, {@trait downtime}, {@trait necromancy}) If a creature dies after being reduced to 0 HP by Drink Blood, the vampire can turn this victim into a vampire by donating some of its own blood to the victim and burying the victim in earth for 3 nights. If the new vampire is lower level than its creator, it is under the creator's control. If a vampire controls too many spawn at once (as determined by the GM), strong-willed spawn can free themselves by succeeding at a Will saving throw against the vampire's Will DC."
 													]
 												},
 												{
 													"type": "item",
 													"name": "Coffin Restoration",
 													"entries": [
-														"({@trait divine}, {@trait necromancy}, {@trait negative}) Unlike other undead, a vampire isn’t destroyed at 0 HP. Instead, it falls unconscious. If its body rests in its coffin for 1 hour, the vampire gains 1 HP, after which its fast healing begins to function normally."
+														"({@trait divine}, {@trait necromancy}, {@trait negative}) Unlike other undead, a vampire isn't destroyed at 0 HP. Instead, it falls unconscious. If its body rests in its coffin for 1 hour, the vampire gains 1 HP, after which its fast healing begins to function normally."
 													]
 												},
 												{
@@ -10938,7 +10939,7 @@
 															},
 															"trigger": "The vampire is reduced to 0 HP.",
 															"entries": [
-																"The vampire uses Turn to Mist. It can take move actions to move toward its coffin even though it’s at 0 HP. While at 0 HP in this form, the vampire is unaffected by further damage. It automatically returns to its corporeal form, unconscious, if it reaches its coffin or after 2 hours, whichever comes first."
+																"The vampire uses Turn to Mist. It can take move actions to move toward its coffin even though it's at 0 HP. While at 0 HP in this form, the vampire is unaffected by further damage. It automatically returns to its corporeal form, unconscious, if it reaches its coffin or after 2 hours, whichever comes first."
 															],
 															"type": "ability",
 															"style": "compact",
@@ -10964,7 +10965,7 @@
 																			"type": "item",
 																			"name": "Bat",
 																			"entries": [
-																				"The vampire changes into a {@creature bat swarm|bst} or {@creature giant bat|bst}. It gains {@ability echolocation} 40 feet, a land Speed of 20 feet and a fly Speed of 30 feet, and a fangs {@action Strike} with the same attack bonus as its highest melee attack. These fangs deal the same amount of damage as the vampire’s claws, but deal piercing damage rather than slashing damage."
+																				"The vampire changes into a {@creature bat swarm|bst} or {@creature giant bat|bst}. It gains {@ability echolocation} 40 feet, a land Speed of 20 feet and a fly Speed of 30 feet, and a fangs {@action Strike} with the same attack bonus as its highest melee attack. These fangs deal the same amount of damage as the vampire's claws, but deal piercing damage rather than slashing damage."
 																			]
 																		}
 																	]
@@ -10973,7 +10974,10 @@
 															"type": "ability",
 															"style": "compact",
 															"traits": [
-																"concentrate", "divine", "polymorph", "transmutation"
+																"concentrate",
+																"divine",
+																"polymorph",
+																"transmutation"
 															],
 															"name": "Change Shape"
 														}
@@ -10983,7 +10987,7 @@
 													"type": "item",
 													"name": "Children of the Night",
 													"entries": [
-														"({@trait divine}, {@trait enchantment}, {@trait mental}) The vampire’s presence brings forth creatures of the night to do the master’s bidding. These typically include rat swarms, bat swarms, and wolves, but can include other creatures. The vampire can give telepathic orders to these creatures as long as they are within 100 feet, but they can’t communicate back."
+														"({@trait divine}, {@trait enchantment}, {@trait mental}) The vampire's presence brings forth creatures of the night to do the master's bidding. These typically include rat swarms, bat swarms, and wolves, but can include other creatures. The vampire can give telepathic orders to these creatures as long as they are within 100 feet, but they can't communicate back."
 													]
 												},
 												{
@@ -10995,12 +10999,16 @@
 																"unit": "action"
 															},
 															"entries": [
-																"The vampire can cast {@spell dominate} at will as a divine innate spell. Casting it requires staring into the target’s eyes, giving the spell the {@trait visual} trait. The save DC uses the DC of the {@table DCs by Level||vampire’s level}, and a creature that succeeds is temporarily immune to that vampire’s Dominate for 24 hours. Fully destroying the vampire ends the domination, but merely reducing the vampire to 0 HP is insufficient to break the spell."
+																"The vampire can cast {@spell dominate} at will as a divine innate spell. Casting it requires staring into the target's eyes, giving the spell the {@trait visual} trait. The save DC uses the DC of the {@table DCs by Level||vampire's level}, and a creature that succeeds is temporarily immune to that vampire's Dominate for 24 hours. Fully destroying the vampire ends the domination, but merely reducing the vampire to 0 HP is insufficient to break the spell."
 															],
 															"type": "ability",
 															"style": "compact",
 															"traits": [
-																"divine", "enchantment", "incapacitation", "mental", "visual"
+																"divine",
+																"enchantment",
+																"incapacitation",
+																"mental",
+																"visual"
 															],
 															"name": "Dominate"
 														}
@@ -11027,7 +11035,9 @@
 															"type": "ability",
 															"style": "compact",
 															"traits": [
-																"concentrate", "divine", "transmutation"
+																"concentrate",
+																"divine",
+																"transmutation"
 															],
 															"name": "Turn to Mist"
 														}
@@ -11465,22 +11475,22 @@
 							"type": "pf2-sidebar",
 							"name": "Building Werecreatures",
 							"entries": [
-								"The curse of the werecreature comes in myriad forms and can affect any humanoid, allowing you to make a wide variety of werecreatures for your adventures. When you need to create a werecreature for your game, you can do so in one of two ways. You can simply build the werecreature from the ground up, using the standard rules for monster creation (this is how the werebear, wererat, and werewolf presented on these pages were built). Or you can use the guidelines presented under “Creating Werecreatures” to turn an existing creature (or even a player character!) into a werecreature. In either case, specific werecreature abilities like Change Shape, curse of the werecreature, and moon frenzy work the same.",
+								"The curse of the werecreature comes in myriad forms and can affect any humanoid, allowing you to make a wide variety of werecreatures for your adventures. When you need to create a werecreature for your game, you can do so in one of two ways. You can simply build the werecreature from the ground up, using the standard rules for monster creation (this is how the werebear, wererat, and werewolf presented on these pages were built). Or you can use the guidelines presented under \"Creating Werecreatures\" to turn an existing creature (or even a player character!) into a werecreature. In either case, specific werecreature abilities like Change Shape, curse of the werecreature, and moon frenzy work the same.",
 								{
 									"type": "pf2-title",
 									"name": "RETAINING HUMANITY"
 								},
-								"The curse of the werecreature comes in myriad forms and can affect any humanoid, allowing you to make a wide variety of werecreatures for your adventures. When you need to create a werecreature for your game, you can do so in one of two ways. You can simply build the werecreature from the ground up, using the standard rules for monster creation (this is how the werebear, wererat, and werewolf presented on these pages were built). Or you can use the guidelines presented under “Creating Werecreatures” to turn an existing creature (or even a player character!) into a werecreature. In either case, specific werecreature abilities like Change Shape, curse of the werecreature, and moon frenzy work the same.",
+								"The curse of the werecreature comes in myriad forms and can affect any humanoid, allowing you to make a wide variety of werecreatures for your adventures. When you need to create a werecreature for your game, you can do so in one of two ways. You can simply build the werecreature from the ground up, using the standard rules for monster creation (this is how the werebear, wererat, and werewolf presented on these pages were built). Or you can use the guidelines presented under \"Creating Werecreatures\" to turn an existing creature (or even a player character!) into a werecreature. In either case, specific werecreature abilities like Change Shape, curse of the werecreature, and moon frenzy work the same.",
 								{
 									"type": "pf2-title",
 									"name": "WOLFSBANE"
 								},
-								"{@item Wolfsbane} is a poisonous plant that can cure the curse of the werecreature. It’s effective only if consumed before the creature transforms for the first time. If the creature survives wolfsbane’s effects without using magic to aid in surviving, the creature can attempt a new saving throw against the curse of the werecreature. On a success, the creature is cured.",
+								"{@item Wolfsbane} is a poisonous plant that can cure the curse of the werecreature. It's effective only if consumed before the creature transforms for the first time. If the creature survives wolfsbane's effects without using magic to aid in surviving, the creature can attempt a new saving throw against the curse of the werecreature. On a success, the creature is cured.",
 								{
 									"type": "pf2-title",
 									"name": "OTHER WERECREATURES"
 								},
-								"In theory, any animal could form the basis for a new type of werecreature, provided the animal in question is at least omnivorous— herbivorous werecreatures are all but unheard of. Werecreatures that rise from insects, arachnids, and similar invertebrate animals are particularly unsettling, though much rarer than werecreatures of vertebrate animals."
+								"In theory, any animal could form the basis for a new type of werecreature, provided the animal in question is at least omnivorous\u2014 herbivorous werecreatures are all but unheard of. Werecreatures that rise from insects, arachnids, and similar invertebrate animals are particularly unsettling, though much rarer than werecreatures of vertebrate animals."
 							]
 						},
 						"Werecreatures are humanoids doomed to transform into animals and animalhumanoid hybrids under the light of the full moon. These shapechanging creatures are the result of an ancient primal curse that they can, in turn, transmit through their own bites. Their ability to lurk unseen in the wilds as well as among people, combined with the contagiousness of their condition, makes werecreatures a perennial cause of panicked suspicion.",
@@ -11488,9 +11498,9 @@
 							"type": "pf2-h3",
 							"name": "Afflicted and True Werecreatures",
 							"entries": [
-								"Werecreatures come in two types: those afflicted with the curse and those born with it (“true werecreatures”).",
+								"Werecreatures come in two types: those afflicted with the curse and those born with it (\"true werecreatures\").",
 								"One can be born a true werecreature to any werecreature parent. A true werecreature is always a werecreature and retains the same memories and most of the same statistics in all forms. A true werecreature also has full control over its shapechanging except during the full moon, when the transformation is irresistible. There is no known way to break the curse on a true werecreature.",
-								"Affected werewolves received their curse from the bite of another werecreature (which could’ve been an afflicted or true werecreature). An afflicted werecreature may be unaware of its curse because it retains no memories of its transformations, gets no benefit from being a werecreature when not transformed, and has no conscious control over its transformation. An afflicted werecreature’s curse can be removed like any other."
+								"Affected werewolves received their curse from the bite of another werecreature (which could've been an afflicted or true werecreature). An afflicted werecreature may be unaware of its curse because it retains no memories of its transformations, gets no benefit from being a werecreature when not transformed, and has no conscious control over its transformation. An afflicted werecreature's curse can be removed like any other."
 							]
 						},
 						{
@@ -11498,7 +11508,7 @@
 							"name": "Creating Werecreatures",
 							"entries": [
 								"You can turn an existing, living humanoid into a werecreature by completing the following steps. (These changes reflect a werecreature in its hybrid form.)",
-								"Increase the creature’s level by 1 and change its statistics as follows.",
+								"Increase the creature's level by 1 and change its statistics as follows.",
 								{
 									"type": "list",
 									"items": [
@@ -11506,7 +11516,7 @@
 										"Increase its size by one category if the animal is a larger size than the base humanoid.",
 										"Increase its AC, attack bonuses, DCs, saving throws, and skill modifiers by 1.",
 										"Increase its damage with {@action Strike||Strikes} and other offensive abilities by 1. If the werecreature is limited in how often it can use an ability (such as a breath weapon), increase the damage by 2 instead.",
-										"Increase its HP by the amount shown on the table. This HP increase is more than typical in order to compensate for the creature’s weakness to silver.",
+										"Increase its HP by the amount shown on the table. This HP increase is more than typical in order to compensate for the creature's weakness to silver.",
 										"The creature gains weakness to silver as shown on the table."
 									]
 								},
@@ -11598,10 +11608,13 @@
 																"unit": "action"
 															},
 															"traits": [
-																"concentrate", "polymorph", "primal", "transmutation"
+																"concentrate",
+																"polymorph",
+																"primal",
+																"transmutation"
 															],
 															"entries": [
-																"The werecreature changes into its humanoid, hybrid, or animal shape. Each shape has a specific, persistent appearance. A true werecreature’s natural form is its hybrid shape. In humanoid shape, the werecreature uses its original humanoid size, loses its jaws and claws {@action Strike||Strikes}, and gains a melee fist {@action Strike} that deals bludgeoning damage equal to the slashing damage dealt by its claw. In animal shape, its Speed and size change to that of the animal, it gains any special Strike effects of the animal that it didn’t already have (such as {@ability Grab}), and it loses its weapon {@action Strike||Strikes}."
+																"The werecreature changes into its humanoid, hybrid, or animal shape. Each shape has a specific, persistent appearance. A true werecreature's natural form is its hybrid shape. In humanoid shape, the werecreature uses its original humanoid size, loses its jaws and claws {@action Strike||Strikes}, and gains a melee fist {@action Strike} that deals bludgeoning damage equal to the slashing damage dealt by its claw. In animal shape, its Speed and size change to that of the animal, it gains any special Strike effects of the animal that it didn't already have (such as {@ability Grab}), and it loses its weapon {@action Strike||Strikes}."
 															]
 														}
 													]
@@ -11609,7 +11622,7 @@
 												{
 													"type": "item",
 													"entries": [
-														"{@b {@curse Curse of the Werecreature|bst}} ({@trait curse}, {@trait necromancy}, {@trait primal}) This curse affects only humanoids. {@b Saving Throw} Fortitude DC is the standard DC for the {@table DCs by Level||werecreature’s new level – 1}. On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM’s control and goes on a rampage for half the night before falling {@condition unconscious} until dawn."
+														"{@b {@curse Curse of the Werecreature|bst}} ({@trait curse}, {@trait necromancy}, {@trait primal}) This curse affects only humanoids. {@b Saving Throw} Fortitude DC is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}. On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn."
 													]
 												}
 											]
@@ -11982,7 +11995,7 @@
 								"Zombies are often created using unwholesome necromantic rituals. Among the living dead, zombies are most often used as fodder, wearing down defenses and consuming resources before more powerful undead arrive to deal the killing blow. Zombies cannot speak or really even think for themselves, but they can be commanded by other allied undead and powerful necromancers."
 							]
 						},
-						"A zombie’s only desire is to consume the living. Unthinking and ever-shambling harbingers of death, zombies stop only when they’re destroyed.",
+						"A zombie's only desire is to consume the living. Unthinking and ever-shambling harbingers of death, zombies stop only when they're destroyed.",
 						{
 							"type": "pf2-h3",
 							"name": "Zombie Abilities",
@@ -12014,7 +12027,7 @@
 														"manipulate"
 													],
 													"entries": [
-														"If the zombie is adjacent to a helpless or {@condition unconscious} creature, or a deceased creature that died in the past hour, the zombie can feast upon its flesh to heal itself. This restores an amount of Hit Points equal to the zombie’s level. If the creature is alive, the zombie deals damage equal to its jaws, fist, or claw damage."
+														"If the zombie is adjacent to a helpless or {@condition unconscious} creature, or a deceased creature that died in the past hour, the zombie can feast upon its flesh to heal itself. This restores an amount of Hit Points equal to the zombie's level. If the creature is alive, the zombie deals damage equal to its jaws, fist, or claw damage."
 													]
 												}
 											]
@@ -12022,7 +12035,7 @@
 										{
 											"type": "item",
 											"entries": [
-												"{@b Plague-Ridden} ({@trait disease}, {@trait necromancy}) The zombie carries a plague that can create more of its own kind. This functions as the plague zombie’s zombie rot, except at stage 5, the victim rises as another of the zombie’s type, rather than a plague zombie."
+												"{@b Plague-Ridden} ({@trait disease}, {@trait necromancy}) The zombie carries a plague that can create more of its own kind. This functions as the plague zombie's zombie rot, except at stage 5, the victim rises as another of the zombie's type, rather than a plague zombie."
 											]
 										},
 										{
@@ -12034,7 +12047,7 @@
 										{
 											"type": "item",
 											"entries": [
-												"{@b Unkillable} This zombie is nigh unkillable. The zombie loses its weakness to slashing and gains resistance against all damage equal to its level (minimum 3), and it gains weakness equal to twice its level (minimum 6) to critical hits. Increase the zombie’s level by 1 if you give it this ability."
+												"{@b Unkillable} This zombie is nigh unkillable. The zombie loses its weakness to slashing and gains resistance against all damage equal to its level (minimum 3), and it gains weakness equal to twice its level (minimum 6) to critical hits. Increase the zombie's level by 1 if you give it this ability."
 											]
 										}
 									]
@@ -12113,7 +12126,7 @@
 									"type": "pf2-title",
 									"name": "UNLIFE WITHOUT FLESH"
 								},
-								"The necromantic energies that infuse animated undead skeletons give them the ability to see without eyes and move without muscles. Despite being mindless, skeletons’ instinct to evil comes from their corrupt vital essence, perverting negative energy for creation rather than destruction."
+								"The necromantic energies that infuse animated undead skeletons give them the ability to see without eyes and move without muscles. Despite being mindless, skeletons' instinct to evil comes from their corrupt vital essence, perverting negative energy for creation rather than destruction."
 							]
 						},
 						"Made from bones held together by foul necromancy, skeletons are among the most common types of undead, found haunting old dungeons and forgotten cemeteries.",
@@ -12173,7 +12186,10 @@
 														"unit": "action"
 													},
 													"traits": [
-														"auditory", "emotion", "fear", "mental"
+														"auditory",
+														"emotion",
+														"fear",
+														"mental"
 													],
 													"entries": [
 														"The skeleton removes its skull and throws it, making a jaws attack with a range of 20 feet. It then attempts to {@action Demoralize} each foe within 10 feet of the target. The head bounces, rolls, or even flies back, returning to the skeleton at the start of its next turn. The skeleton is {@condition blinded||blind} until then."
@@ -13462,7 +13478,8 @@
 						},
 						"Genie nobles with titles unique to their kind (as detailed in each sidebar) rule genie society. Genie nobles are generally at least 5 levels higher than a typical example of their kind. In addition to the increased statistics afforded by their higher levels, genie nobles gain additional spells. But the most wondrous (and notorious) of a genie noble's powers is their ability to grant wishes. Any genie noble (save for jann, who lack this power) can grant a mortal or undead creature up to three wishes within a year's time. Many unscrupulous creatures compel genie nobles to serve them, tricking them or entrapping them with magic. However, once a genie noble grants a third wish to a single creature, they are freed from service to that creature forever."
 					]
-				}]
+				}
+			]
 		},
 		{
 			"name": "Giant",
@@ -13670,7 +13687,6 @@
 			"name": "Hell Hound Type",
 			"source": "Bst",
 			"entries": [
-
 				{
 					"type": "pf2-h2",
 					"name": "Hell Hound",
@@ -13684,7 +13700,6 @@
 							]
 						},
 						"Hell hounds are fiendish, extraplanar canines hailing from the pit that can hunt down quarry and breathe supernatural gouts of flame. They are temperamental and quick to aggressive behavior."
-
 					]
 				}
 			]
@@ -13733,7 +13748,6 @@
 							]
 						},
 						"Horses serve as mounts and beasts of burden in many societies. They are loyal and typically gentle creatures, and they are invaluable to those looking to travel long distances. Smaller folk, like gnomes and halflings, often utilize ponies as mounts, while horses are the favored steeds for humans and other Medium humanoids. Most horses that the average humanoid encounters are domesticated, though large herds of these powerful animals can be found in the wild."
-
 					]
 				}
 			]
@@ -13784,7 +13798,6 @@
 						"Kobolds are diligent and hardworking creatures, though they often turn these virtues toward selfish ends. While some kobolds live in communal collectives that maintain neutral relations with the creatures around them, they can be easily swayed into serving malevolent powers or megalomaniac leaders. This is in part due to kobolds' innate pragmatism, as they would rather concede to servitude than risk being killed, but it is also in part due to a reverence for the power that kobolds generally lack. Dragons in particular are viewed with a deferential awe, and kobolds eagerly offer their services to such mighty and glorious creatures when they can. While kobolds may scheme against other leaders, especially those that control them via subjugation, dragons are usually viewed with adoration, no matter how brutal they might be to their kobold minions."
 					]
 				}
-
 			]
 		},
 		{
@@ -13835,7 +13848,6 @@
 							]
 						},
 						"Leshys are intelligent plant creatures that guard areas of primeval wilderness or earthly power. Originally created by powerful fey, they manifest when a skilled practitioner of primal magic\u2014typically a druid\u2014combines a nature spirit with a body carefully grown from local vegetation. The rites and materials required to create a leshy vary depending on the type of leshy. They are typically given life in an area of great natural significance, such as an arboreal's grove, a druidic circle, a fairy ring, or a great natural wonder."
-
 					]
 				}
 			]
@@ -14122,7 +14134,6 @@
 							]
 						},
 						"Slimes, molds, and other oozes can be found in dank dungeons and shadowed forests. While not necessarily evil, some grow to enormous sizes and have insatiable appetites."
-
 					]
 				}
 			]
@@ -14151,7 +14162,6 @@
 						"Orcs are violent, monstrous humanoids that live by the rule that might makes right. They amass in brutal warbands both large and small, decimating and robbing those unlucky enough to cross their path. Countless small settlements, outposts, and forts have fallen at the hands of orc raiders, whose fecundity and sheer destructiveness leave an indelible mark on the lands they conquer. Survivors of orc invasions are as likely to be fed to the orcs' war beasts as they are to be taken as slaves. Unspeakable atrocities await any outsiders brought back to orc encampments, and to many, death is a far more preferable outcome compared to capture by orcs.",
 						"Physically, orcs tower over most humanoids and look practically custom-made for violence with their rough flesh, sturdy bone, and iron-hard muscle. For all their tough looks, however, orcs are far from invincible. They lack the discipline to conduct large-scale campaigns, for one thing, and they typically lose their heads in the heat of battle. Even their skin scars easily\u2014though this is a source of pride to the orc people, since scars signify strength and experience in battle. To orcs, the crisscross of old wounds are a much a badge of pride and honor as any beheaded foe or claimed trophy.",
 						"Orcs are a people of violent passions in all that they do, not just war. Bonds of blood are especially strong among orcs, and lineage is important. The strongest orc bands are typically made up of brothers and sisters in more than arms; orcs fight harder when they are protecting their own kinsfolk, and orc warriors will fight tirelessly to avenge fallen family members. This emphasis on bloodlines is not an altruistic one, however, and is in fact a double-edged sword. Orcs whose families have been killed find themselves at the bottom of the clan's totem pole, and even a famous chieftain can become powerless overnight if their brethren aren't there to back them up."
-
 					]
 				}
 			]
@@ -14351,7 +14361,6 @@
 			"name": "Scorpion",
 			"source": "Bst",
 			"entries": [
-
 				{
 					"type": "pf2-h2",
 					"name": "Scorpion",
@@ -14366,7 +14375,8 @@
 						},
 						"Chitinous scourges of deserts, forests, savannas, and badlands, scorpions are deadly arachnids with powerful pincers and a painful sting. Scorpions can be found in nearly every climate, where they hunt their prey with a mixture of patient stealth and raw strength. Most scorpions live in underground burrows, either as lone hunters or part of a larger colony. These arachnids are so feared and dangerous that in many cultures, they are treated as deities or dualistic symbols of both death and protection from said death."
 					]
-				}]
+				}
+			]
 		},
 		{
 			"name": "Sea Devil",
@@ -14393,7 +14403,8 @@
 						"Far from mindless monstrosities, sea devils are terribly intelligent, with a cunning limited only by their strict adherence to hierarchy. They call themselves \"sahuagin\" but have wholly embraced their enemies' name for their kind as their own. Their cultural militancy enables sea devils to act in concert to perform grand acts of sabotage, marauding, and pillaging, and only the strongest (and most conniving) members of the tribe make it to the top of the social ladder. For all their discipline, however, sea devils are widely known to snap into murderous frenzies at the scent of blood. Even the best-laid plans can fall apart when a sea devil breaks ranks to revel in the spilled blood of their victims, an indulgence that can quickly cause a chain reaction of bloodthirsty ecstasy throughout an entire raiding party. For this reason, sea devils typically capture landborne quarry using nets and ropes, dragging them to the depths of the sea before making even a single incision.",
 						"Among sea devil society, individuals are rewarded based on their performance during hunts and shore excursions, with rebels and outliers quickly culled from the ranks. Every pup is given a fair chance, however, and even the lowest-born sea devil can strive for the rank of commander, general, or perhaps even king or queen. Sea devils in positions of leadership tend to be among the largest, most violent, and most calculating of their kind, and fully realized sea devils are skilled warriors capable of capturing entire villages on their own. The most powerful sea devils are mighty kings and queens who coordinate the activity of lesser sea devils across territories spanning leagues, foiling attempts at their positions via manufactured blood feuds and wars against their numerous enemies ashore and underwater."
 					]
-				}]
+				}
+			]
 		},
 		{
 			"name": "Shadow",
