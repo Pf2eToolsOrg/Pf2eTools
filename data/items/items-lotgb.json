@@ -434,7 +434,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast {@spell spiritual weapon} of the indicated level. When you critically hit, you apply the weapon's critical specialization effect. In addition, you can etch one of the following property runes onto the wand: corrosive, flaming, frost, shock, thundering, or their respective greater versions. The spiritual weapon's Strikes gain the effects of this rune."
+						"You cast {@spell spiritual weapon} of the indicated level. When you critically hit, you apply the weapon's critical specialization effect. In addition, you can etch one of the following property runes onto the wand: {@item corrosive}, {@item flaming}, {@item frost}, {@item shock}, {@item thundering}, or their respective greater versions. The spiritual weapon's {@action Strike||Strikes} gain the effects of this rune."
 					]
 				}
 			],
@@ -480,7 +480,7 @@
 					"entries": []
 				}
 			],
-			"craftReq": "Supply a casting of spiritual weapon of the appropriate level. Bellwether Lodge's sturdy wooden halls and red-shingled roof form a ring around a large central yard where customers and suppliers gather to talk shop and test an impressive range of monster-hunting gear. Adjacent to the store, students practice sparring, archery, and wrestling in an open field; the sharp twang of bowstrings, the clash of practice weapons, and the students' laughing shouts all carry into the halls of the lodge. Some students assist in managing the store, seeking both the pay and the opportunity to talk with adventurers.",
+			"craftReq": "Supply a casting of {@spell spiritual weapon} of the appropriate level.",
 			"page": 11
 		},
 		{
@@ -510,7 +510,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"A big rock bullet is a sling bullet made of heavy granite, but each piece of ammunition feels much more dense than it appears. When activated, a big rock bullet transforms into a giant rock just before hitting the target. The target takes {@dice 4d6} additional bludgeoning damage on a successful hit. Even on a failed attack roll (but not a critical failure), the target takes {@damage 2d6} bludgeoning damage. Creatures with the Catch Rock reaction can use it against a big rock bullet."
+				"A big rock bullet is a sling bullet made of heavy granite, but each piece of ammunition feels much more dense than it appears. When activated, a big rock bullet transforms into a giant rock just before hitting the target. The target takes {@damage 4d6} additional bludgeoning damage on a successful hit. Even on a failed attack roll (but not a critical failure), the target takes {@damage 2d6} bludgeoning damage. Creatures with the {@ability Catch Rock} reaction can use it against a big rock bullet."
 			],
 			"variants": [
 				{
@@ -532,8 +532,25 @@
 						"note": null
 					},
 					"entries": [
-						"The bullet deals {@dice 8d6} additional bludgeoning damage, or {@dice 4d6} on a failure."
-					]
+						"The bullet deals {@damage 8d6} additional bludgeoning damage, or {@damage 4d6} on a failure."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "8d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "2d6",
+								"with": "4d6"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major big rock bullet",
@@ -544,8 +561,25 @@
 						"note": null
 					},
 					"entries": [
-						"The bullet deals {@dice 12d6} additional bludgeoning damage, or {@dice 6d6} on a failure."
-					]
+						"The bullet deals {@damage 12d6} additional bludgeoning damage, or {@damage 6d6} on a failure."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "12d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 2d6}",
+								"with": "{@damage 6d6}"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 14
@@ -645,8 +679,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20131 status penalty to attack rolls for 1 round or until it Escapes (DC 18).",
-						"Failure": "The creature takes a \u20132 status penalty to attack rolls for 1 minute or until it Escapes (DC 18).",
+						"Success": "The creature takes a \u20131 status penalty to attack rolls for 1 round or until it {@action Escape||Escapes} (DC 18).",
+						"Failure": "The creature takes a \u20132 status penalty to attack rolls for 1 minute or until it {@action Escape||Escapes} (DC 18).",
 						"Critical Failure": "As failure, but the creature drops any metallic items it's holding."
 					}
 				}
@@ -803,9 +837,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20135-foot circumstance penalty to its Speed for 1 minute or until it Escapes (DC 27).",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 2}, and it takes a \u201310-foot circumstance penalty to its Speed for 1 minute or until it Escapes (DC 27).",
-						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and it's {@condition immobilized} for 1 minute or until it Escapes (DC 27)."
+						"Success": "The creature takes a \u20135-foot circumstance penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 27).",
+						"Failure": "The creature is {@condition stunned|CRB|stunned 2}, and it takes a \u201310-foot circumstance penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 27).",
+						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and it's {@condition immobilized} for 1 minute or until it {@action Escape||Escapes} (DC 27)."
 					}
 				}
 			],
@@ -880,6 +914,13 @@
 				"A thick, sulfurous, irritating gas fills this golden-yellow flask.",
 				"A sulfur bomb deals the listed damage. On a hit, the target takes a \u20131 status penalty to {@skill Perception} checks and attack rolls until the end of its next turn, or becomes {@condition sickened|CRB|sickened 1} on a critical hit. Creatures hit with this bomb are temporarily immune to the effects of the bomb for 1 minute."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A sulfur bomb deals the listed damage."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -891,7 +932,12 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -903,7 +949,12 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -915,7 +966,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -926,11 +982,13 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage.",
-						"Locals say the only way to find Catfish Salvage and its optimistic inventor is to keep one's eyes focused upward.",
-						"From blocks away, visitors to the Grand Bazaar see Tattletail's steel spires towering over the other pavilions.",
-						"And many who visit the bazaar have mistaken the store for an art exhibit, a garden of pillars holding a dizzying array of inventions hanging off hooks and ladders like fruit growing from a mechanical orchard. Commonly derided as the \"clockwork jungle,\" visitors can usually find the shop's owner suspended far off the ground, improving one of his towers, testing sensitive equipment, or just eating lunch away from the hustle and bustle of the busy streets below. The open-air pavilion tends to attract a handful of pedestrians looking for a shortcut from one avenue to the next, who often regret their decision after being ambushed by the enthusiastic salesman hanging overhead."
-					]
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+						}
+					}
 				}
 			],
 			"page": 15
@@ -988,7 +1046,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"The contraption called cold comfort is a watertight pouch filled with a handful of small, heavy, silvery pellets. When emptied into an adjacent body of water, the pellets freeze the water's surface almost instantly, creating an ice block in a 10-foot square to a depth of 1 foot. Any creatures inside this space must attempt a DC 23 Reflex save. On a failure, the creature takes {@damage 2d6} cold damage and is {@condition immobilized} for 1 minute or until it Escapes (DC 20) or the ice is {@condition broken}. The entire ice block has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. The ice is strong enough to support one Large creature or up to four Medium or Small creatures. Traversing the slippery ice requires a successful DC 20 {@skill Acrobatics} check to {@action Balance}."
+				"The contraption called cold comfort is a watertight pouch filled with a handful of small, heavy, silvery pellets. When emptied into an adjacent body of water, the pellets freeze the water's surface almost instantly, creating an ice block in a 10-foot square to a depth of 1 foot. Any creatures inside this space must attempt a DC 23 Reflex save. On a failure, the creature takes {@damage 2d6} cold damage and is {@condition immobilized} for 1 minute or until it {@action Escape||Escapes} (DC 20) or the ice is {@condition broken}. The entire ice block has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. The ice is strong enough to support one {@trait Large} creature or up to four {@trait Medium} or {@trait Small} creatures. Traversing the slippery ice requires a successful DC 20 {@skill Acrobatics} check to {@action Balance}."
 			],
 			"variants": [
 				{
@@ -1001,7 +1059,15 @@
 					},
 					"entries": [
 						"Ice created by the pellets lasts for 1 hour or until {@condition broken}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "depth of 1 foot.",
+							"with": "depth of 1 foot which lasts for 1 hour or until {@condition broken}."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -1012,8 +1078,47 @@
 						"note": null
 					},
 					"entries": [
-						"The area increases to a 20-foot square, the save DC increases to 34, the cold damage increases to {@dice 4d6} and the {@action Escape} DC increases to 31. Ice created by the pellets lasts for 3 hours or until {@condition broken}. The block of ice is strong enough to support one Huge creature, up to 2 Large creatures, or up to 8 Medium or Small creatures."
-					]
+						"The area increases to a 20-foot square, the save DC increases to 34, the cold damage increases to {@dice 4d6} and the {@action Escape} DC increases to 31. Ice created by the pellets lasts for 3 hours or until {@condition broken}. The block of ice is strong enough to support one {@trait Huge} creature, up to 2 {@trait Large} creatures, or up to 8 {@trait Medium} or {@trait Small} creatures."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "10-foot",
+								"with": "20-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "DC 23",
+								"with": "DC 34"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "2d6",
+								"with": "4d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "DC 20",
+								"with": "DC 31"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "depth of 1 foot.",
+								"with": "depth of 1 foot which lasts for 3 hours or until {@condition broken}."
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "The ice is strong enough to support one {@trait Large} creature or up to four {@trait Medium} or {@trait Small} creatures.",
+								"with": "The block of ice is strong enough to support one {@trait Huge} creature, up to 2 {@trait Large} creatures, or up to 8 {@trait Medium} or {@trait Small} creatures."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 18
@@ -1129,6 +1234,14 @@
 			"entries": [
 				"Your bones, muscles, and organs become vastly softer and more pliable. You can fit into and through small or narrow spaces as though you were smaller than your normal size, and you gain an item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You can fit into and through small or narrow spaces as though you were smaller than your normal size, and you gain an item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1139,8 +1252,13 @@
 						"note": null
 					},
 					"entries": [
-						"You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum Small). The bonus to your DCs is +2, and the duration is 1 minute."
-					]
+						"You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum {@trait Small}). The bonus to your DCs is +2, and the duration is 1 minute."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum {@trait Small}), and you gain a +2 item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you. The duration is 1 minute."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1151,8 +1269,13 @@
 						"note": null
 					},
 					"entries": [
-						"You can fit into and through small or narrow spaces as though you were 2 sizes smaller than your normal size (minimum Tiny). The bonus to your DCs is +3, and the duration is 10 minutes."
-					]
+						"You can fit into and through small or narrow spaces as though you were 2 sizes smaller than your normal size (minimum {@trait Tiny}). The bonus to your DCs is +3, and the duration is 10 minutes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You can fit into and through small or narrow spaces as though you were 2 size smaller than your normal size (minimum {@trait Tiny}), and you gain a +3 item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you. The duration is 10 minutes."
+						}
+					}
 				}
 			],
 			"page": 19
@@ -1389,7 +1512,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This small bronze cylinder is about the size of a potion bottle. When you activate the launcher, it fires an unattached net requiring only a single hand, and at a greater distance. As normal, you make a ranged attack roll against a Medium or smaller creature, but you can target a creature up to 60 feet away, instead of only 20 feet away. The net trap otherwise functions as an unattached net (Pathfinder Advanced Player's Guide 249)."
+				"This small bronze cylinder is about the size of a potion bottle. When you activate the launcher, it fires an unattached net requiring only a single hand, and at a greater distance. As normal, you make a ranged attack roll against a {@trait Medium} or smaller creature, but you can target a creature up to 60 feet away, instead of only 20 feet away. The net trap otherwise functions as an unattached net (Pathfinder Advanced Player's Guide 249)."
 			],
 			"page": 23
 		},
@@ -1530,7 +1653,7 @@
 				"note": null
 			},
 			"entries": [
-				"Small flecks of mica, sand, and ground glass are packed into a spring-loaded canister that can be rigged to a trip wire or {@condition hidden} in a container. The first creature to enter the square or open the container must attempt a DC 20 Reflex save as the area is showered with bright, glittering dust that sticks to skin, fur, and clothing.",
+				"{@trait Small} flecks of mica, sand, and ground glass are packed into a spring-loaded canister that can be rigged to a trip wire or {@condition hidden} in a container. The first creature to enter the square or open the container must attempt a DC 20 Reflex save as the area is showered with bright, glittering dust that sticks to skin, fur, and clothing.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1642,7 +1765,7 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature is dealt a glancing blow by the rocket and becomes {@condition flat-footed} until the start of its next turn.",
-						"Failure": "The rocket's coating of tar and resin sticks to the creature, and it can't be shaken loose. The creature becomes {@condition flat-footed} for 1 round, and {@condition clumsy|CRB|clumsy 1} for 1 minute or until it Escapes (DC 20).",
+						"Failure": "The rocket's coating of tar and resin sticks to the creature, and it can't be shaken loose. The creature becomes {@condition flat-footed} for 1 round, and {@condition clumsy|CRB|clumsy 1} for 1 minute or until it {@action Escape||Escapes} (DC 20).",
 						"Critical Failure": "As failure, but the creature takes a direct hit. It takes {@damage 2d6} bludgeoning damage and is pushed 10 feet in the direction the rocket faces."
 					}
 				}
@@ -1721,7 +1844,24 @@
 					},
 					"entries": [
 						"The {@condition persistent damage ||persistent poison damage} increases to {@dice 2d4}, and the resistance increases to 5."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "1d4",
+								"with": "2d4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "3",
+								"with": "5"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major toadskin salve",
@@ -1733,7 +1873,30 @@
 					},
 					"entries": [
 						"The {@condition persistent damage ||persistent poison damage} increases to {@dice 3d4}, the resistance increases to 8, and the duration increases to up to 1 hour if you don't use the reaction."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "1d4",
+								"with": "3d4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "3 to",
+								"with": "8 to"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "10 minutes",
+								"with": "1 hour"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 27
@@ -1771,6 +1934,13 @@
 			"entries": [
 				"This flask contains a fine red powder made from toxic berries. A vexing vapor bomb deals the listed mental damage and mental splash damage. On a hit, the target must succeed at a DC {@flatDC 5} flat check before taking actions with the {@trait concentrate} trait. This lasts until the end of its next turn (1 minute on a critical hit)."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed mental damage and mental splash damage."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1782,7 +1952,12 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d6} mental damage and 1 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 1d6} mental damage and 1 mental splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1794,7 +1969,12 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 2d6} mental damage and 2 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1806,7 +1986,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 3d6} mental damage and 3 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1818,7 +2003,12 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 4d6} mental damage and 4 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				}
 			],
 			"page": 27
@@ -2146,7 +2336,15 @@
 					},
 					"entries": [
 						"When you teleport, you can take along up to two willing adjacent creatures. These creatures must each arrive in unoccupied squares adjacent to the transposition ammunition; if there's not enough space for both of them, you choose which one is teleported."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "If this would carry along any other creature (even one in an extradimensional space), the activation fails.",
+							"with": "When you teleport, you can take along up to two willing adjacent creatures. These creatures must each arrive in unoccupied squares adjacent to the transposition ammunition; if there's not enough space for both of them, you choose which one is teleported."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 31
@@ -2827,7 +3025,7 @@
 						"note": null
 					},
 					"entries": [
-						"The activation makes you grow to size Huge, if you choose, with the effects of 4th-level {@spell enlarge}. Either way, the damage die of your foot unarmed attack increases from {@dice 1d4} to {@dice 1d8}, and you can use Trample as many times as you want during the activation."
+						"The activation makes you grow to size {@trait Huge}, if you choose, with the effects of 4th-level {@spell enlarge}. Either way, the damage die of your foot unarmed attack increases from {@dice 1d4} to {@dice 1d8}, and you can use Trample as many times as you want during the activation."
 					]
 				}
 			],
@@ -3230,7 +3428,15 @@
 					},
 					"entries": [
 						"The item bonus increases to +3."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "\\+2",
+							"with": "+3"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3274,7 +3480,16 @@
 					},
 					"entries": [
 						"The pudding has a +6 counteract modifier."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "the listed",
+							"with": "a +6"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -3286,7 +3501,22 @@
 					},
 					"entries": [
 						"The pudding has a +9 counteract modifier. You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +2 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +9"
+							},
+							{
+								"mode": "appendArr",
+								"items": ["You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +2 item bonus to the {@skill Intimidation} check."]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -3298,7 +3528,22 @@
 					},
 					"entries": [
 						"The pudding has a +20 counteract modifier. You become {@condition quickened} as per the 5th-level version, except you gain a +3 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +20"
+							},
+							{
+								"mode": "appendArr",
+								"items": ["You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +3 item bonus to the {@skill Intimidation} check."]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -3310,7 +3555,22 @@
 					},
 					"entries": [
 						"The pudding has a +31 counteract modifier. You become {@condition quickened} as per the 5th-level version, except the effect lasts for 2 rounds and you gain a +4 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +31"
+							},
+							{
+								"mode": "appendArr",
+								"items": ["You also become {@condition quickened} for 2 rounds. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +4 item bonus to the {@skill Intimidation} check."]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3364,7 +3624,15 @@
 					},
 					"entries": [
 						"You gain resistance 10 to fire and cold for 5 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5 to fire and cold for 1 minute.",
+							"with": "10 to fire and cold for 5 minutes."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major fire and iceberg",
@@ -3376,7 +3644,15 @@
 					},
 					"entries": [
 						"You gain resistance 15 to fire and cold for 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5 to fire and cold for 1 minute.",
+							"with": "15 to fire and cold for 10 minutes."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3430,7 +3706,22 @@
 					},
 					"entries": [
 						"The item bonus is +3 and the effect lasts 30 minutes."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+3"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 minutes",
+								"with": "30 minutes"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major impossible cake",
@@ -3442,7 +3733,22 @@
 					},
 					"entries": [
 						"The item bonus is +4 and the effect lasts 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 minutes",
+								"with": "1 hour"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3476,6 +3782,29 @@
 			"entries": [
 				"These savory breaded snacks stuffed with cheese, peppers, and \"secret ingredients\" of draconic or demonic origin are often offered alongside a challenge\u2014complete a full portion and get a free drink. For 1 hour after consuming follypops, your stomach gurgles and rumbles with magical potential.",
 				"During this time, you can unleash magic in the area up to three times as a single action, which has the {@trait concentrate} trait, with an area and damage determined by the type of pop; the third time you use this magic, the effects of your follypops end. All creatures within the area must attempt a DC 27 basic saving throw each time you unleash magic, as noted by the type of pop."
+			],
+			"variants": [
+				{
+					"type": "hotpops",
+					"name": "Follypops (Hotpops)",
+					"entries": [
+						"You begin to sweat profusely after consuming the serving. When you unleash magic, you breathe out a blast of fire in a 15-foot cone. Creatures in the cone take {@damage 4d6} fire damage with the first blast, {@damage 2d6} fire damage with the second blast, and {@damage 1d6} fire damage with the final blast. The creatures must attempt a basic Reflex save for each blast."
+					]
+				},
+				{
+					"type": "rotters",
+					"name": "Follypops (Rotters)",
+					"entries": [
+						"Your breath smells of rotting garbage after you consume the serving. When you unleash magic, you exhale a noxious breath in a 15-foot cone. Creatures in the cone take {@damage 4d6} poison damage with the first breath, {@damage 2d6} poison damage with the second breath, and {@damage 1d6} poison damage with the final breath. The creatures must attempt a basic Fortitude save for each breath."
+					]
+				},
+				{
+					"type": "sizzlers",
+					"name": "Follypops (Sizzlers)",
+					"entries": [
+						"Your skin crawls and your hair stands on end after consuming the serving. When you unleash magic, you release a bolt of lightning from your hand that travels in a 30-foot line. The first bolt deals {@damage 2d12} electricity damage, the second {@damage 1d12} electricity damage, and the third {@damage 1d6} electricity damage. The targeted creatures must attempt a basic Reflex save for each bolt."
+					]
+				}
 			],
 			"page": 47
 		},
@@ -4069,7 +4398,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You touch the collar and your companion splits into a swarm of hundreds of identical Tiny versions of itself for 1 minute. Its space becomes Large, it gains the weaknesses and resistances of a spider swarm (Bestiary 306), and the {@trait swarm} trait, though it doesn't gain swarm mind, as it's {@condition controlled} by a single mind. Its unarmed attacks are replaced with a single-action swarming attack that deals {@dice 1d8} damage of the type normally inflicted by the companion's unarmed attacks to any foe in its space, with a DC 23 basic Reflex save. While in swarm form, your companion can take the Support action but can't perform its advanced maneuver. Its other statistics don't change. If the companion is reduced to 0 Hit Points while in swarm form, the companion immediately recombines into its original form in an available space, in addition to the usual effects of being reduced to 0 Hit Points."
+						"You touch the collar and your companion splits into a swarm of hundreds of identical Tiny versions of itself for 1 minute. Its space becomes {@trait Large}, it gains the weaknesses and resistances of a spider swarm (Bestiary 306), and the {@trait swarm} trait, though it doesn't gain swarm mind, as it's {@condition controlled} by a single mind. Its unarmed attacks are replaced with a single-action swarming attack that deals {@dice 1d8} damage of the type normally inflicted by the companion's unarmed attacks to any foe in its space, with a DC 23 basic Reflex save. While in swarm form, your companion can take the Support action but can't perform its advanced maneuver. Its other statistics don't change. If the companion is reduced to 0 Hit Points while in swarm form, the companion immediately recombines into its original form in an available space, in addition to the usual effects of being reduced to 0 Hit Points."
 					]
 				}
 			],
@@ -7170,6 +7499,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade abysium buckler",
+"name": "Standard‑Grade Abysium Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -7194,6 +7524,7 @@
 				},
 				{
 					"type": "high‑grade abysium buckler",
+"name": "High‑Grade Abysium Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7421,6 +7752,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade djezet buckler",
+"name": "Standard‑Grade Djezet Buckler",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -7445,6 +7777,7 @@
 				},
 				{
 					"type": "high‑grade djezet buckler",
+"name": "High‑Grade Djezet Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7634,6 +7967,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade inubrix buckler",
+"name": "Standard‑Grade Inubrix Buckler",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -7658,6 +7992,7 @@
 				},
 				{
 					"type": "high‑grade inubrix buckler",
+"name": "High‑Grade Inubrix Buckler",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -7850,6 +8185,7 @@
 			"variants": [
 				{
 					"type": "high‑grade noqual buckler",
+"name": "High‑Grade Noqual Buckler",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -8042,6 +8378,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade siccatite buckler",
+"name": "Standard‑Grade Siccatite Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -8066,6 +8403,7 @@
 				},
 				{
 					"type": "high‑grade siccatite buckler",
+"name": "High‑Grade Siccatite Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -8127,7 +8465,7 @@
 						"amount": 15000,
 						"note": "+ 1,500 gp per Bulk"
 					},
-					"craftReq": "at least 7,500 gp of siccatite + 750 gp per Bulk \"Sure, you could get it for cheaper down the way. Just remember that you get what you pay for.\" The Unscathed Blade is a large, sturdy shop with its own living quarters in an attached tower. Its chimney constantly billows plumes of dark smoke. Small windows illuminate the shop's front room, allowing the sun to glint off the assorted fine weaponry. The wooden front door is propped open during business hours, and warm air billows out from the shop. The double doors in the back, leading to the narrow alley behind the building, are always thrown wide open whenever the smith, Abiah (N agender human ex‑gladiator) is forging weapons. From the alley, one can feel the heated air emanating from the shop and hear the clanging sounds of Abiah hammering new weapons and armor.",
+					"craftReq": "at least 7,500 gp of siccatite + 750 gp per Bulk \"Sure, you could get it for cheaper down the way. Just remember that you get what you pay for.\" The Unscathed Blade is a large, sturdy shop with its own living quarters in an attached tower. Its chimney constantly billows plumes of dark smoke. {@trait Small} windows illuminate the shop's front room, allowing the sun to glint off the assorted fine weaponry. The wooden front door is propped open during business hours, and warm air billows out from the shop. The double doors in the back, leading to the narrow alley behind the building, are always thrown wide open whenever the smith, Abiah (N agender human ex‑gladiator) is forging weapons. From the alley, one can feel the heated air emanating from the shop and hear the clanging sounds of Abiah hammering new weapons and armor.",
 					"entries": []
 				}
 			],
@@ -8275,7 +8613,7 @@
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"entries": [
-				"This +2 greater striking shock greatsword has a broad, flat blade that can support the weight of a Medium-sized or smaller wielder. Magic allows the weapon to soar through the air, carrying its wielder along with it.",
+				"This +2 greater striking shock greatsword has a broad, flat blade that can support the weight of a {@trait Medium}-sized or smaller wielder. Magic allows the weapon to soar through the air, carrying its wielder along with it.",
 				{
 					"type": "ability",
 					"activity": {
@@ -8371,7 +8709,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You transform into a Small or Medium animal that wields the fanged weapon in its jaws; the animal matches the animal you are most closely associated with (a lizardfolk would turn into a lizard, a kitsune into a fox, a deer instinct barbarian into a deer, etc.) or a wolf if no specific animal is applicable. While in this form, you can attack with the fanged weapon even though you don't have any hands. However, you can attack only with the fanged weapon and you don't have hands or the ability to hold items. For effects dependent on how many hands you are using to hold the item, such as the {@trait two-hand} trait, you are holding the weapon in two hands. You can {@action Dismiss} this effect, and it ends automatically if you drop the fanged weapon (whether or not of your own volition)."
+						"You transform into a {@trait Small} or {@trait Medium} animal that wields the fanged weapon in its jaws; the animal matches the animal you are most closely associated with (a lizardfolk would turn into a lizard, a kitsune into a fox, a deer instinct barbarian into a deer, etc.) or a wolf if no specific animal is applicable. While in this form, you can attack with the fanged weapon even though you don't have any hands. However, you can attack only with the fanged weapon and you don't have hands or the ability to hold items. For effects dependent on how many hands you are using to hold the item, such as the {@trait two-hand} trait, you are holding the weapon in two hands. You can {@action Dismiss} this effect, and it ends automatically if you drop the fanged weapon (whether or not of your own volition)."
 					]
 				}
 			],

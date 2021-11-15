@@ -131,6 +131,13 @@
 				}
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "For the listed time, the object takes constant damage; if the object has a Hardness, then the dust gradually reduces the object's Hardness instead."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "deteriorating dust",
@@ -142,7 +149,12 @@
 					},
 					"entries": [
 						"The affected object takes 1 damage per 3 hours (8 damage per day) and its Hardness is reduced by 1 per hour. The effect lasts for 3 days."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The affected object takes 1 damage per 3 hours (8 damage per day); if the object has a Hardness, then the dust gradually reduces the object's Hardness instead by 1 per hour. The effect lasts for 3 days."
+						}
+					}
 				},
 				{
 					"type": "extended deteriorating dust",
@@ -154,7 +166,12 @@
 					},
 					"entries": [
 						"The affected object takes 1 damage per 3 hours (8 damage per day) and its Hardness is reduced by 1 per hour. The effect lasts for 1 week."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The affected object takes 1 damage per 3 hours (8 damage per day); if the object has a Hardness, then the dust gradually reduces the object's Hardness instead by 1 per hour. The effect lasts for 1 week."
+						}
+					}
 				},
 				{
 					"type": "caustic deteriorating dust",
@@ -166,7 +183,12 @@
 					},
 					"entries": [
 						"The affected object takes 1 damage per hour (24 damage per day) and its Hardness is reduced by 1 per hour. The effect lasts for 3 days."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The affected object takes 1 damage per hour (8 damage per day); if the object has a Hardness, then the dust gradually reduces the object's Hardness instead by 1 per hour. The effect lasts for 3 days."
+						}
+					}
 				}
 			]
 		},

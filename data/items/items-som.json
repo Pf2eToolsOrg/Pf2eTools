@@ -262,14 +262,17 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (polymorph",
-						"transmutation)"
+						"envision"
+					],
+					"traits": [
+						"polymorph",
+						"transmutation"
 					],
 					"frequency": null,
 					"trigger": null,
-					"requirements": "You're under the effect of a polymorph spell you prepared from this grimoire that offers a choice of multiple forms",
+					"requirements": "You're under the effect of a {@trait polymorph} spell you prepared from this grimoire that offers a choice of multiple forms",
 					"entries": [
-						"You transform into a different form allowed by the polymorph by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
+						"You transform into a different form allowed by the {@trait polymorph} by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
 					]
 				}
 			],
@@ -327,7 +330,15 @@
 					},
 					"entries": [
 						"The escape DC is 30."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "DC 20",
+							"with": "DC 30"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true
@@ -1015,7 +1026,7 @@
 						"note": null
 					},
 					"entries": [
-						"The rosary can be used with a spiritual weapon of 4th level or below."
+						"The rosary can be used with a {@spell spiritual weapon} of 4th level or below."
 					]
 				},
 				{
@@ -1027,7 +1038,7 @@
 						"note": null
 					},
 					"entries": [
-						"The rosary can be used with a spiritual weapon of any spell level."
+						"The rosary can be used with a {@spell spiritual weapon} of any spell level."
 					]
 				}
 			],
@@ -1431,9 +1442,16 @@
 			"bulk": "L",
 			"category": "Consumable",
 			"entries": [
-				"These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a {@spell fireball} spell produces clinging flames that deal {@condition persistent damage ||persistent fire damage} to all who fail the saving throw against the effect (doubling on a critical failure)."
+				"These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a {@spell fireball} spell produces clinging flames that deal {@condition persistent damage||persistent fire damage} to all who fail the saving throw against the effect (doubling on a critical failure)."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "that deal"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "firestarter pellets",
@@ -1444,8 +1462,13 @@
 						"note": null
 					},
 					"entries": [
-						"The {@condition persistent damage} is {@dice 1d6}."
-					]
+						"The {@condition persistent damage} is {@damage 1d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 1d6}"
+						}
+					}
 				},
 				{
 					"type": "greater firestarter pellets",
@@ -1456,15 +1479,30 @@
 						"note": null
 					},
 					"entries": [
-						"The {@condition persistent damage} is {@dice 2d6}."
-					]
+						"The {@condition persistent damage} is {@damage 2d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 2d6}"
+						}
+					}
 				},
 				{
 					"type": "major firestarter pellets",
 					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 1200,
+						"note": null
+					},
 					"entries": [
-						"gpThe {@condition persistent damage} is {@dice 3d6}."
-					]
+						"The {@condition persistent damage} is {@damage 3d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 3d6}"
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -2413,6 +2451,13 @@
 				"An astringent aroma from rare succulent plants wafts off these soothing cloth patches. Adding this material component to a {@spell heal} spell bestows additional temporary Hit Points to one target healed by the spell. These temporary Hit Points last for 1 minute."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "bestows additional temporary Hit Points"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -2424,7 +2469,12 @@
 					},
 					"entries": [
 						"The spell grants 5 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 5 temporary Hit Points"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2436,7 +2486,12 @@
 					},
 					"entries": [
 						"The spell grants 10 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 10 temporary Hit Points"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2448,7 +2503,12 @@
 					},
 					"entries": [
 						"The spell grants 15 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 15 temporary Hit Points"
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -3059,7 +3119,7 @@
 						"note": null
 					},
 					"entries": [
-						"The incense can be used with a wall of fire of 6th level or below."
+						"The incense can be used with a {@spell wall of fire} of 6th level or below."
 					]
 				},
 				{
@@ -3071,7 +3131,7 @@
 						"note": null
 					},
 					"entries": [
-						"The incense can be used with a wall of fire of any spell level."
+						"The incense can be used with a {@spell wall of fire} of any spell level."
 					]
 				}
 			],
@@ -3510,6 +3570,13 @@
 				"This aromatic potion is brewed from the white flowers and black roots of the magical herb moly. When you drink this potion, it immediately attempts to counteract all {@condition hostile} {@trait transmutation} effects affecting you. For the next hour, you gain an item bonus against {@trait transmutation} effects, which is greater against {@trait polymorph} effects. If you roll a success against a {@trait polymorph} effect during that time, you get a critical success instead."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "For the next hour, you gain an item bonus against {@trait transmutation} effects, which is greater against {@trait polymorph} effects."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "potion of stable form",
@@ -3520,8 +3587,14 @@
 						"note": null
 					},
 					"entries": [
-						"The counteract level is 5, and the counteract check modifier is +17. The item bonus is +2, or +3 vs. polymorph."
-					]
+						"The counteract level is 5, and the counteract check modifier is +17. The item bonus is +2, or +3 vs. {@trait polymorph}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The counteract level is 5, and the counteract check modifier is +17. For the next hour, you gain a +2 item bonus against {@trait transmutation} effects, or +3 against {@trait polymorph} effects."
+						}
+					}
 				},
 				{
 					"type": "greater potion of stable form",
@@ -3532,8 +3605,14 @@
 						"note": null
 					},
 					"entries": [
-						"The counteract level is 8, and the counteract check modifier is +25. The item bonus is +3, or +4 vs. polymorph."
-					]
+						"The counteract level is 8, and the counteract check modifier is +25. The item bonus is +3, or +4 vs. {@trait polymorph}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The counteract level is 8, and the counteract check modifier is +25. For the next hour, you gain a +3 item bonus against {@trait transmutation} effects, or +4 against {@trait polymorph} effects."
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -3741,8 +3820,8 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This triangular prism showing swirling black patterns inside constantly moves around on your armor, no matter where you affix it. As part of the process of Affixing this Talisman, you attune it to a single item of 1 Bulk or less. When you activate this talisman, the attuned item immediately teleports into your hand.",
-				"The retrieval prism can't retrieve an item that's not on your plane, including one that's in an extradimensional space like a bag of holding. If you haven't expended the talisman, you can attune it to a different item by Affixing the Talisman again."
+				"This triangular prism showing swirling black patterns inside constantly moves around on your armor, no matter where you affix it. As part of the process of {@action Affix a Talisman||Affixing the Talisman}, you attune it to a single item of 1 Bulk or less. When you activate this talisman, the attuned item immediately teleports into your hand.",
+				"The retrieval prism can't retrieve an item that's not on your plane, including one that's in an extradimensional space like a bag of holding. If you haven't expended the talisman, you can attune it to a different item by {@action Affix a Talisman||Affixing the Talisman} again."
 			],
 			"generic": "G",
 			"variants": [
@@ -3765,8 +3844,7 @@
 						"note": null
 					},
 					"entries": [
-						"You don't need to attune the prism.",
-						"It can retrieve any item in your possession of 1 Bulk or less, chosen when you activate the prism."
+						"You don't need to attune the prism. It can retrieve any item in your possession of 1 Bulk or less, chosen when you activate the prism."
 					]
 				}
 			],
@@ -4266,7 +4344,15 @@
 					},
 					"entries": [
 						"The DC is 17."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "Will save",
+							"with": "DC 17 Will save"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater spirit-sealing fulu",
@@ -4277,8 +4363,22 @@
 						"note": null
 					},
 					"entries": [
-						"The DC is 27. On a critical failure, the undead is {@condition paralyzed}."
-					]
+						"The DC is 27. On a critical failure, the undead is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "Will save",
+								"with": "DC 27 Will save"
+							},
+							{
+								"mode": "appendArr",
+								"items": ["On a critical failure, the undead is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true
@@ -4887,7 +4987,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon, but the nimbus only lasts 1 round, rather than the full minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 round, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -4899,7 +5007,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -4911,7 +5027,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 2d4} electricity damage, or {@damage 2d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 2d4} electricity damage, or {@damage 2d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -4923,7 +5047,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 3d4} electricity damage, or {@damage 3d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 3d4} electricity damage, or {@damage 3d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true

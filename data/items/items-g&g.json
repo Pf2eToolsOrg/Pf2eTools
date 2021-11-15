@@ -368,6 +368,13 @@
 				"Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement.",
 				"The process of attaching the plating takes 10 minutes and grants the wearer of the armor the listed temporary Hit Points for the stated duration or until lost. Removing the plating early destroys it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed temporary Hit Points for the stated duration"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -379,7 +386,12 @@
 					},
 					"entries": [
 						"The wearer gains 5 temporary Hit Points that last for 1 minute or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5 temporary Hit Points that last for 1 minute"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -391,7 +403,12 @@
 					},
 					"entries": [
 						"The wearer gains 10 temporary Hit Points that last for 10 minutes or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 temporary Hit Points that last for 10 minutes"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -403,7 +420,12 @@
 					},
 					"entries": [
 						"The wearer gains 20 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "20 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -415,7 +437,12 @@
 					},
 					"entries": [
 						"The wearer gains 30 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "30 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "true",
@@ -427,7 +454,12 @@
 					},
 					"entries": [
 						"The wearer gains 40 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "40 temporary Hit Points that last for 1 hour"
+						}
+					}
 				}
 			],
 			"page": 66
@@ -451,6 +483,13 @@
 				"Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes.",
 				"When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield temporary Hit Points that last for the stated duration or until lost. Removing the plating early destroys it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "temporary Hit Points that last for the stated duration"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -462,7 +501,12 @@
 					},
 					"entries": [
 						"The shield gains 5 temporary Hit Points that last for 1 minute or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5 temporary Hit Points that last for 1 minute"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -474,7 +518,12 @@
 					},
 					"entries": [
 						"The shield gains 10 temporary Hit Points that last for 10 minutes or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 temporary Hit Points that last for 10 minutes"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -486,7 +535,12 @@
 					},
 					"entries": [
 						"The shield gains 20 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "20 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -498,7 +552,12 @@
 					},
 					"entries": [
 						"The shield gains 30 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "30 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "true",
@@ -510,7 +569,12 @@
 					},
 					"entries": [
 						"The shield gains 40 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "40 temporary Hit Points that last for 1 hour"
+						}
+					}
 				}
 			],
 			"page": 67
@@ -541,7 +605,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. Higher-level versions increase the distance of your {@action High Jump} or {@action Long Jump}."
+				"These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you {@action Activate an Item||Activate} the blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. Higher-level versions increase the distance of your {@action High Jump} or {@action Long Jump}."
 			],
 			"variants": [
 				{
@@ -552,7 +616,15 @@
 						"amount": 3,
 						"note": null
 					},
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": ""
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -563,8 +635,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
-					]
+						"When you {@action Activate an Item||Activate} the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the moderate blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -575,8 +656,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
-					]
+						"When you {@action Activate an Item||Activate} the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the greater blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -587,8 +677,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot {@action Fly} speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
-					]
+						"When you {@action Activate an Item||Activate} the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot Fly speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the major blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot Fly speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 67
@@ -668,8 +767,7 @@
 						"note": null
 					},
 					"entries": [
-						"The effect lasts for 1 minute.",
-						"Blast Boots."
+						"The effect lasts for 1 minute."
 					]
 				},
 				{
@@ -739,7 +837,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision for 10 minutes."
+						"When activated, you gain {@ability low-light vision} for 10 minutes."
 					]
 				},
 				{
@@ -751,7 +849,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision and darkvision for 10 minutes."
+						"When activated, you gain {@ability low-light vision} and {@ability darkvision} for 10 minutes."
 					]
 				},
 				{
@@ -763,7 +861,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision, darkvision, and the effects of see invisibility for 10 minutes."
+						"When activated, you gain {@ability low-light vision}, {@ability darkvision}, and the effects of {@spell see invisibility} for 10 minutes."
 					]
 				}
 			],
@@ -796,7 +894,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a burst with a radius depending on the type, making the affected area difficult terrain for 1 minute; , at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals cold splash damage depending on the type to creatures in the area on activation. Creatures attempting to move through the affected area can attempt an {@skill Acrobatics} check with a DC depending on the type to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one or more creatures of the listed size."
+				"When you {@action Activate an Item||Activate} a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a burst with a radius depending on the type, making the affected area difficult terrain for 1 minute; , at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals cold splash damage depending on the type to creatures in the area on activation. Creatures attempting to move through the affected area can attempt an {@skill Acrobatics} check with a DC depending on the type to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one or more creatures of the listed size."
 			],
 			"variants": [
 				{
@@ -809,7 +907,36 @@
 					},
 					"entries": [
 						"The area is a 5-foot burst, the {@skill Acrobatics} DC is 17, and the cold splash damage is 1. The floating ice can support one creature up to Medium size."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "5-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 17 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 1 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one creature up to Medium size"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -821,7 +948,36 @@
 					},
 					"entries": [
 						"The area is a 10-foot burst, the {@skill Acrobatics} DC is 21, and the cold splash damage is 3. The floating ice can support one Large creature or two Medium or smaller creatures."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "10-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 21 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 3 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one Large creature or two Medium or smaller creatures"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -833,7 +989,36 @@
 					},
 					"entries": [
 						"The area is a 15-foot burst, the {@skill Acrobatics} DC is 30, and the cold splash damage is 5. The floating ice can support one Huge creature, two Large creatures, or four Medium or smaller creatures."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "15-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 30 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 5 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one Huge creature, two Large creatures, or four Medium or smaller creatures"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -844,8 +1029,37 @@
 						"note": null
 					},
 					"entries": [
-						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold splash damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a mu spore."
-					]
+						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold splash damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "20-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 39 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 8 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size.",
+								"with": "one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 68
@@ -881,7 +1095,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This rare gadget uses Stasian technology to grant someone a burst of activity, though its use can be painful. The electromuscular stimulator must be carefully attached to you, requiring 1 minute to do so. You can attach an electromuscular stimulator to yourself. When you Activate an attached electromuscular stimulator, roll a {@skill Crafting} check, using the {@skill Crafting} modifier of the creature who attached the stimulator to you, with a DC equal to the standard DC for your level. The effects of the activation depend on the result of the {@skill Crafting} check.",
+				"This rare gadget uses Stasian technology to grant someone a burst of activity, though its use can be painful. The electromuscular stimulator must be carefully attached to you, requiring 1 minute to do so. You can attach an electromuscular stimulator to yourself. When you {@action Activate an Item||Activate} an attached electromuscular stimulator, roll a {@skill Crafting} check, using the {@skill Crafting} modifier of the creature who attached the stimulator to you, with a DC equal to the standard DC for your level. The effects of the activation depend on the result of the {@skill Crafting} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -920,8 +1134,16 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within the listed range, with the listed counteract modifier and counteract level."
+				"An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within the listed range, with the listed counteract modifier and counteract level."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "Upon activation, attempt to counteract an active \\{@trait divine\\} or \\{@trait occult\\} spell within the listed range, with the listed counteract modifier and counteract level."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -933,7 +1155,12 @@
 					},
 					"entries": [
 						"The range is 30 feet, the counteract modifier is +7, and the counteract level is 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 30 feet, with a +7 counteract modifier and counteract level of 2."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -945,7 +1172,12 @@
 					},
 					"entries": [
 						"The range is 40 feet, the counteract modifier is +13, and the counteract level is 4."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 40 feet, with a +13 counteract modifier and counteract level of 4."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -957,7 +1189,12 @@
 					},
 					"entries": [
 						"The range is 60 feet, the counteract modifier is +18, and the counteract level is 6."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 60 feet, with a +18 counteract modifier and counteract level of 6."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -969,7 +1206,12 @@
 					},
 					"entries": [
 						"The range is 90 feet, the counteract modifier is +24, and the counteract level is 8."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 90 feet, with a +24 counteract modifier and counteract level of 8."
+						}
+					}
 				}
 			],
 			"page": 68
@@ -1000,10 +1242,17 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use {@skill Stealth} to {@action Conceal an Object} before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.",
+				"When you {@action Activate an Item||Activate} an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use {@skill Stealth} to {@action Conceal an Object} before you {@action Activate an Item||Activate} the mine. If you don't {@action Conceal an Object||Conceal} the mine, its position is obvious at a glance.",
 				"Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located.",
 				"Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the listed fire damage to any creatures in a 5-foot emanation with a basic Reflex save."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "dealing the listed fire damage to any creatures in a 5-foot emanation with a basic Reflex save"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1015,7 +1264,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 2d6} fire damage, and the Reflex DC is 15."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 2d6} fire damage to any creatures in a 5-foot emanation with a DC 15 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1027,7 +1281,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 6d6} fire damage, and the Reflex DC is 20."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 6d6} fire damage to any creatures in a 5-foot emanation with a DC 20 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1039,7 +1298,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 12d6} fire damage, and the Reflex DC is 29."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 12d6} fire damage to any creatures in a 5-foot emanation with a DC 29 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1051,7 +1315,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 18d6} fire damage in a 10-foot emanation, and the Reflex DC is 38."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 18d6} fire damage to any creatures in a 10-foot emanation with a DC 38 basic Reflex save"
+						}
+					}
 				}
 			],
 			"page": 69
@@ -1082,8 +1351,16 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
+				"Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you {@action Activate an Item||Activate} a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be \\{@condition dazzled\\} until they are no longer adjacent to it."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1092,6 +1369,11 @@
 						"coin": "gp",
 						"amount": 4,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
+						}
 					},
 					"entries": []
 				},
@@ -1102,6 +1384,11 @@
 						"coin": "gp",
 						"amount": 35,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 60-foot radius and dim light in the next 60 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 10-foot radius of the beacon must succeed at a DC 20 Fortitude save or be {@condition dazzled} until they are no longer within 10 feet of it."
+						}
 					},
 					"entries": [
 						"The beacon shines bright light in a 60-foot radius and dim light in the next 60 feet. Creatures within a 10-foot radius of the beacon must succeed at a DC 20 Fortitude save or be {@condition dazzled} until they are no longer within 10 feet of it."
@@ -1115,6 +1402,11 @@
 						"amount": 180,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 100-foot radius and dim light in the next 100 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 20-foot radius of the beacon must succeed at a DC 27 Fortitude save or be {@condition dazzled} until they are no longer within 20 feet of it. Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
+						}
+					},
 					"entries": [
 						"The beacon shines bright light in a 100-foot radius and dim light in the next 100 feet. Creatures within a 20-foot radius of the beacon must succeed at a DC 27 Fortitude save or be {@condition dazzled} until they are no longer within 20 feet of it.",
 						"Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
@@ -1127,6 +1419,11 @@
 						"coin": "gp",
 						"amount": 1500,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 180-foot radius and dim light in the next 180 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 30-foot radius of the beacon must succeed at a DC 35 Fortitude save or be {@condition dazzled} until they are no longer within 30 feet of it. Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
+						}
 					},
 					"entries": [
 						"The beacon shines bright light in a 180-foot radius and dim light in the next 180 feet. Creatures within a 30-foot radius of the beacon must succeed at a DC 35 Fortitude save or be {@condition dazzled} until they are no longer within 30 feet of it.",
@@ -1169,8 +1466,8 @@
 			"bulk": "L",
 			"entries": [
 				"Gadget skates are metal devices that come in pairs and strap onto existing footwear (or a creature's feet)",
-				"When you Activate gadget skates, clockwork gears reveal small wheels that propel you along the ground, moving you up to twice your Speed. During this movement, you must succeed at a DC 20 {@skill Acrobatics} check to turn up to 90 degrees, and you can't turn more than once or more than 90 degrees. During the activation and after the activation is complete, you can't {@action Stride}, {@action Step}, or otherwise move on the ground until the end of your next turn. However, you can use this movement instead of a {@action Stride} to perform a {@action High Jump} or {@action Long Jump} just after the activation ends, in the direction of your last movement using the gadget skates.",
-				"You can Sustain the Activation of your gadget skates for up to 1 minute. Starting on the turn after you Activate the gadget skates, the first time you Sustain the Activation each turn, you gain the effects of the activation again: you move up to twice your Speed in the same direction as your last movement with the gadget skates, and the restrictions continue to apply until you choose to cease Sustaining the Activation or you reach the maximum duration. Once the effect ends, the skates fall away and you can move normally."
+				"When you {@action Activate an Item||Activate} gadget skates, clockwork gears reveal small wheels that propel you along the ground, moving you up to twice your Speed. During this movement, you must succeed at a DC 20 {@skill Acrobatics} check to turn up to 90 degrees, and you can't turn more than once or more than 90 degrees. During the activation and after the activation is complete, you can't {@action Stride}, {@action Step}, or otherwise move on the ground until the end of your next turn. However, you can use this movement instead of a {@action Stride} to perform a {@action High Jump} or {@action Long Jump} just after the activation ends, in the direction of your last movement using the gadget skates.",
+				"You can Sustain the Activation of your gadget skates for up to 1 minute. Starting on the turn after you {@action Activate an Item||Activate} the gadget skates, the first time you Sustain the Activation each turn, you gain the effects of the activation again: you move up to twice your Speed in the same direction as your last movement with the gadget skates, and the restrictions continue to apply until you choose to cease Sustaining the Activation or you reach the maximum duration. Once the effect ends, the skates fall away and you can move normally."
 			],
 			"page": 70
 		},
@@ -1247,8 +1544,15 @@
 			"usage": "worn over armor and clothes",
 			"bulk": "L",
 			"entries": [
-				"While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute. While you're surrounded in foam, you are {@condition immobilized} and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an {@action Escape} DC of 15; a creature can also remove it by spending three {@action Interact} actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points."
+				"While you're wearing an impact foam chassis wrapped around your body, it {@action Activate an Item||Activates} automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute. While you're surrounded in foam, you are {@condition immobilized} and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an {@action Escape} DC of 15; a creature can also remove it by spending three {@action Interact} actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1260,7 +1564,12 @@
 					},
 					"entries": [
 						"A lesser impact foam chassis prevents up to 20 falling damage and has 20 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The lesser impact foam decreases the falling damage by up to 20 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 20 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1272,7 +1581,12 @@
 					},
 					"entries": [
 						"A moderate impact foam chassis prevents up to 50 falling damage and has 40 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The moderate impact foam decreases the falling damage by up to 50 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 40 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1284,7 +1598,12 @@
 					},
 					"entries": [
 						"A greater impact foam chassis prevents up to 100 falling damage and has 100 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The greater impact foam decreases the falling damage by up to 100 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 100 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1296,7 +1615,12 @@
 					},
 					"entries": [
 						"A major impact foam chassis prevents up to 200 falling damage and has 200 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The moderate impact foam decreases the falling damage by up to 200 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 200 Hit Points."
+						}
+					}
 				}
 			],
 			"page": 70
@@ -1365,7 +1689,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This magnetized suit is strapped to your body over your armor or clothes. When you Activate it, you must choose whether to set it to attract or repel.",
+				"This magnetized suit is strapped to your body over your armor or clothes. When you {@action Activate an Item||Activate} it, you must choose whether to set it to attract or repel.",
 				"While set to attract, you take a \u20131 item penalty to your AC against attacks made by metal weapons, while creatures within a 5-foot emanation other than you gain a +1 item bonus to their AC. If set to repel, you gain a +1 item bonus to AC against attacks made with metal weapons. While attracting metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} metal objects and {@action Grapple} metal creatures and a \u20131 item penalty to {@skill Athletics} checks to {@action Shove} metal creatures. While repelling metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Shove} metal creatures, but you take a \u20131 item penalty to {@action Climb} metal objects and {@action Grapple} metal creatures."
 			],
 			"variants": [
@@ -1389,7 +1713,22 @@
 					},
 					"entries": [
 						"The area that gains an AC bonus when attracting is a 10-foot emanation, and the item bonuses and penalties increase from 1 to 2."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "5-foot",
+								"with": "10-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "1 ",
+								"with": "2 "
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major magnetic suit",
@@ -1401,7 +1740,22 @@
 					},
 					"entries": [
 						"The area that gains an AC bonus when attracting is a 20-foot emanation, and the item bonuses and penalties increase from 1 to 3."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "5-foot",
+								"with": "20-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "1 ",
+								"with": "3 "
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 71
@@ -1432,8 +1786,16 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within the listed range, with the listed counteract modifier and counteract level."
+				"A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active {@trait arcane} or {@trait primal} spell within the listed range, with the listed counteract modifier and counteract level."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "Attempt to counteract an active \\{@trait arcane\\} or \\{@trait primal\\} spell within the listed range, with the listed counteract modifier and counteract level."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1445,7 +1807,12 @@
 					},
 					"entries": [
 						"The range is 30 feet, the counteract modifier is +7, and the counteract level is 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+								"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 30 feet, with a +7 counteract modifier and counteract level of 2."
+							}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1457,7 +1824,12 @@
 					},
 					"entries": [
 						"The range is 40 feet, the counteract modifier is +13, and the counteract level is 4."
-					]
+					],
+					"_mod": {
+						"entries": {
+								"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 40 feet, with a +13 counteract modifier and counteract level of 4."
+							}
+					}
 				},
 				{
 					"type": "greater",
@@ -1469,7 +1841,12 @@
 					},
 					"entries": [
 						"The range is 60 feet, the counteract modifier is +18, and the counteract level is 6."
-					]
+					],
+					"_mod": {
+						"entries": {
+								"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 60 feet, with a +18 counteract modifier and counteract level of 6."
+							}
+					}
 				},
 				{
 					"type": "major",
@@ -1481,7 +1858,12 @@
 					},
 					"entries": [
 						"The range is 90 feet, the counteract modifier is +24, and the counteract level is 8."
-					]
+					],
+					"_mod": {
+						"entries": {
+								"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 90 feet, with a +24 counteract modifier and counteract level of 8."
+							}
+					}
 				}
 			],
 			"page": 71
@@ -1512,7 +1894,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate a smoke fan, it creates a cloud of colored smoke. The smoke fills a 5-foot radius. The creator chooses the smoke's color when creating the smoke fan. Creatures within the smoke's area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dissipated by a strong wind."
+				"When you {@action Activate an Item||Activate} a smoke fan, it creates a cloud of colored smoke. The smoke fills a 5-foot radius. The creator chooses the smoke's color when creating the smoke fan. Creatures within the smoke's area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dissipated by a strong wind."
 			],
 			"variants": [
 				{
@@ -1535,7 +1917,14 @@
 					},
 					"entries": [
 						"The smoke's radius is 20 feet, and the creator can choose for the smoke to be a mixture of colors."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5-foot radius. The creator chooses the smoke's color when creating the smoke fan.",
+							"with": "20-foot radius. The creator can choose for the smoke to be a mixture of colors when creating the smoke fan."
+						}
+					}
 				}
 			],
 			"page": 71
@@ -4603,9 +4992,17 @@
 			"entries": [
 				"These bullets are formed from a liquefied high-grade precious metal and enchanted to unlock that metal's true potential. Each version has a different special effect."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Each version has a different special effect.",
+					"with": ""
+				}
+			},
 			"variants": [
 				{
 					"type": "awakened adamantine shot",
+					"name": "Awakened Adamantine Shot",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -4618,6 +5015,7 @@
 				},
 				{
 					"type": "awakened cold iron shot",
+					"name": "Awakened Cold Iron Shot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4630,6 +5028,7 @@
 				},
 				{
 					"type": "awakened silver shot",
+					"name": "Awakened Silver Shot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4818,6 +5217,13 @@
 			"entries": [
 				"This ammunition includes a small reservoir of a tacky red substance that coats the ammunition when you activate it. The substance makes a creature bleed more freely. For 1 minute after you deal damage to a creature with an activated exsanguinating ammunition that creature gains the listed weakness to {@condition persistent damage ||persistent bleed damage}. In addition, the DC of any flat checks to end {@condition persistent damage ||persistent bleed damage} increases from 15 to 17 (from 10 to 12 when receiving particularly effective assistance) for the duration."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed weakness"
+				}
+			},
 			"variants": [
 				{
 					"type": "exsanguinating ammunition",
@@ -4829,7 +5235,12 @@
 					},
 					"entries": [
 						"The target gains weakness 1 to {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 1"
+						}
+					}
 				},
 				{
 					"type": "greater exsanguinating ammunition",
@@ -4841,7 +5252,12 @@
 					},
 					"entries": [
 						"The target gains weakness 3 to {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 3"
+						}
+					}
 				},
 				{
 					"type": "major exsanguinating ammunition",
@@ -4853,7 +5269,12 @@
 					},
 					"entries": [
 						"The target gains weakness 5 {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 5"
+						}
+					}
 				}
 			],
 			"page": 170
@@ -4955,6 +5376,13 @@
 				"frequency": null,
 				"trigger": null
 			},
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "fire damage"
+				}
+			},
 			"entries": [
 				"This craggy stone ammunition is warm to the touch. When you fire an activated meteor shot, it explodes into a small swarm of meteors as it reaches its target, scorching nearby creatures and littering the ground with rubble. In addition to the weapon's normal damage, the meteor shot deals fire damage and the ground in the area becomes difficult terrain.",
 				"In addition, the {@action Strike} gains the following critical failure effect.",
@@ -4974,6 +5402,11 @@
 						"amount": 70,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 3d6} fire damage in a 5-foot emanation around the target (DC 23 basic Reflex save)"
+						}
+					},
 					"entries": [
 						"The ammunition deals {@damage 3d6} fire damage in a 5-foot emanation around the target (DC 23 basic Reflex save)."
 					]
@@ -4986,6 +5419,11 @@
 						"amount": 400,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 6d6} fire damage in a 10-foot emanation around the target (DC 29 basic Reflex save)"
+						}
+					},
 					"entries": [
 						"The ammunition deals {@damage 6d6} fire damage in a 10-foot emanation around the target (DC 29 basic Reflex save)."
 					]
@@ -4997,6 +5435,11 @@
 						"coin": "gp",
 						"amount": 3000,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 9d6} fire damage in a 20-foot emanation around the target (DC 37 basic Reflex save)"
+						}
 					},
 					"entries": [
 						"The ammunition deals {@damage 9d6} fire damage in a 20-foot emanation around the target (DC 37 basic Reflex save)."
@@ -5066,7 +5509,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the scatter trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."
+				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the {@trait scatter} trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."
 			],
 			"variants": [
 				{
@@ -5563,7 +6006,7 @@
 		},
 		{
 			"source": "G&G",
-			"name": "Darkvision Scope",
+			"name": "{@ability darkvision} Scope",
 			"level": "5+",
 			"type": "Item",
 			"category": "no category found",
@@ -5849,7 +6292,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you Activate the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
+						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you {@action Activate an Item||Activate} the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
 					]
 				}
 			],
@@ -6262,7 +6705,15 @@
 					},
 					"entries": [
 						"When you activate a greater indomitable keepsake, you reduce the damage from a firearm critical hit by 20 instead of reducing it by 10."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "10",
+							"with": "20"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major indomitable keepsake",
@@ -6274,7 +6725,15 @@
 					},
 					"entries": [
 						"When you activate a major indomitable keepsake, you reduce the damage from a firearm critical hit by 30 instead of reducing it by 10."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "10",
+							"with": "30"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 185

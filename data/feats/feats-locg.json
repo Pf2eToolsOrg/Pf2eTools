@@ -222,7 +222,7 @@
 			],
 			"access": "Varisian ethnicity or New Thassilon nationality",
 			"entries": [
-				"You have tattoos on your body corresponding to one of the ancient Thassilonian schools of magic. Choose one of the following schools of magic: abjuration (shield), conjuration (tanglefoot), enchantment (daze), evocation (electric arc), illusion (ghost sound), necromancy (chill touch), or transmutation (sigil). You can cast the associated cantrip (listed in parentheses) as an innate arcane spell at will."
+				"You have tattoos on your body corresponding to one of the ancient Thassilonian schools of magic. Choose one of the following schools of magic: {@trait abjuration} ({@spell shield}), {@trait conjuration} ({@spell tanglefoot}), {@trait enchantment} ({@spell daze}), {@trait evocation} ({@spell electric arc}), {@trait illusion} ({@spell ghost sound}), {@trait necromancy} ({@spell chill touch}), or {@trait transmutation} ({@spell sigil}). You can cast the associated cantrip (listed in parentheses) as an innate arcane spell at will."
 			],
 			"leadsTo": [
 				"Ornate Tattoo|LOCG",
@@ -3244,7 +3244,60 @@
 			"access": "Shoanti ethnicity",
 			"entries": [
 				"You grew up among the Shoanti tribes, with the spirits watching over you, and they offer you guidance. You gain the trained proficiency rank in the skill listed for your quah (or another skill of your choice, if you're already trained in that skill). You gain the {@feat Assurance} skill feat in that skill, as the spirits' help guides your actions.",
-				"Lyrune-Quah {@skill Religion} Shadde-Quah {@skill Athletics} Shriikirri-Quah {@skill Nature} Shundar-Quah {@skill Diplomacy} Sklar-Quah {@skill Intimidation} Skoan-Quah {@skill Medicine} Tamiir-Quah {@skill Acrobatics}."
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Lyrune-Quah",
+							"entries": [
+								"{@skill Religion}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shadde-Quah",
+							"entries": [
+								"{@skill Athletics}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shriikirri-Quah",
+							"entries": [
+								"{@skill Nature}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shundar-Quah",
+							"entries": [
+								"{@skill Diplomacy}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Sklar-Quah",
+							"entries": [
+								"{@skill Intimidation}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Skoan-Quah",
+							"entries": [
+								"{@skill Medicine}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Tamiir-Quah",
+							"entries": [
+								"{@skill Acrobatics}"
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3468,7 +3521,7 @@
 			"entries": [
 				"Your elven lineage is subtle enough that you look barely different from other humans, and you've learned to use that to your advantage. You gain the trained proficiency rank in {@skill Deception} (or another skill of your choice, if you were already trained in {@skill Deception})",
 				"You gain a +4 circumstance bonus to {@action Impersonate} checks to pretend you aren't a halfelf.",
-				"Observers are never granted circumstance bonuses to {@skill Perception} checks due to you Impersonating a full-blooded human, and you never take circumstance penalties due to you Impersonating a full-blooded human."
+				"Observers are never granted circumstance bonuses to {@skill Perception} checks due to you {@action Impersonate||Impersonating} a full-blooded human, and you never take circumstance penalties due to you Impersonating a full-blooded human."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -3904,8 +3957,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"You're extremely extroverted, and you often spend your time carousing or otherwise socializing. You are trained in {@skill Diplomacy} (or another skill of your choice if you were already trained in {@skill Diplomacy}), and you gain the {@feat Hobnobber} skill feat.",
-				"Half-Orc Ancestry Feats The following ancestry feats are available to half-orcs, in addition to human and orc ancestry feats."
+				"You're extremely extroverted, and you often spend your time carousing or otherwise socializing. You are trained in {@skill Diplomacy} (or another skill of your choice if you were already trained in {@skill Diplomacy}), and you gain the {@feat Hobnobber} skill feat."
 			]
 		},
 		{

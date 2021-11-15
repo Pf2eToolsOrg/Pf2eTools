@@ -1693,6 +1693,7 @@ Parser.typeToSkill = function (type) {
 			case "primal": skill.add("{@skill Nature}"); break;
 			case "magical": skill.add("{@skill Arcana}"); skill.add("{@skill Religion}"); skill.add("{@skill Occultism}"); skill.add("{@skill Nature}"); break;
 			// Items
+			case "alchemical":
 			case "item": skill.add("{@skill Crafting}"); break;
 			default: break;
 		}

@@ -1324,19 +1324,23 @@
 				"S": true,
 				"V": false
 			},
-			"requirements": "You're benefiting from",
+			"requirements": "You're benefiting from {@action Arcane Cascade}.",
 			"range": {
 				"type": null
 			},
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "until the {@action Arcane Cascade} stance ends",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Arcane Cascade.",
-				"Duration until the Arcane Cascade stance ends You quickly adjust your Arcane Cascade to offer magical protection. You gain resistance 5 against damage from spells. As normal, using Arcane Cascade again means you've ended the stance, and the spell ends."
+				"You quickly adjust your Arcane Cascade to offer magical protection. You gain resistance 5 against damage from spells. As normal, using Arcane Cascade again means you've ended the stance, and the spell ends."
 			],
 			"heightened": {
 				"heightened": true,
