@@ -2519,6 +2519,10 @@ DataUtil = {
 						}
 						return split.join("");
 					},
+					object: (obj) => {
+						// TODO: Maybe we need to go deeper
+						return obj;
+					},
 				};
 
 				// Handle any pure strings, e.g. `"legendaryHeader"`
@@ -2527,8 +2531,14 @@ DataUtil = {
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
 
+				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				copyTo[prop].forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
+					if (typesToReplaceIn.includes(it.type)) {
+						Object.keys(it).forEach(key => {
+							it[key] = DataUtil.generic._walker_replaceTxt.walk(it[key], handlers)
+						});
+					}
 					if (it.headerEntries) it.headerEntries = DataUtil.generic._walker_replaceTxt.walk(it.headerEntries, handlers);
 					if (it.footerEntries) it.footerEntries = DataUtil.generic._walker_replaceTxt.walk(it.footerEntries, handlers);
 				});
