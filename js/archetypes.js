@@ -250,12 +250,12 @@ class ArchetypesPage extends BaseComponent {
 					const mutateExtraFeat = (feat) => {
 						feat.level = Number(lvl);
 						feat.featType.archetype = typeof feat.featType.archetype === "object" ? feat.featType.archetype : [];
-						feat.featType.archetype.push(arc.name)
+						feat.featType.archetype.push(arc.name);
 						feat._fType = ["Archetype"];
 						feat.addSections = feat.addSections || [];
 						feat.addSections.push([[`{@note This version of {@feat ${feat.name}${feat.add_hash ? ` (${feat.add_hash})` : ""}|${source}|${feat.name}} is intended for use with the ${arc.name} Archetype. Its level has been changed accordingly.}`]]);
 						this._featFilter.mutateForFilters(feat);
-						if (feat.add_hash) feat.add_hash = feat.featType.archetype
+						feat.add_hash = arc.name;
 						return feat
 					}
 					const lookUp = MiscUtil.get(this._featLookUp, hash);
@@ -306,7 +306,7 @@ class ArchetypesPage extends BaseComponent {
 		let names = [];
 		names.push(this.activeArchetype.name);
 		Object.keys(this._featFilter._archetypeFilter.getValues().Archetypes).forEach(key => {
-			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 2);
+			if (!key.startsWith("_")) this._featFilter._archetypeFilter.setValue(key, 0);
 		});
 		names.forEach(name => { this._featFilter._archetypeFilter.setValue(name, 1) });
 		this._handleFeatFilterChange();
