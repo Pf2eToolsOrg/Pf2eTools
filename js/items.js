@@ -347,13 +347,13 @@ class ItemsPage extends ListPage {
 		$(`.side-label--mundane`).click(() => {
 			const filterValues = this._pageFilter.filterBox.getValues();
 			const curValue = MiscUtil.get(filterValues, "Type", "Equipment");
-			this._pageFilter.filterBox.setFromValues({Type: {Equipment: curValue === 1 ? 0 : 1}});
+			this._pageFilter.filterBox.setFromValues({Type: MiscUtil.merge(filterValues.Type, {Equipment: curValue === 1 ? 0 : 1})});
 			this.handleFilterChange();
 		});
 		$(`.side-label--magic`).click(() => {
 			const filterValues = this._pageFilter.filterBox.getValues();
 			const curValue = MiscUtil.get(filterValues, "Type", "Treasure");
-			this._pageFilter.filterBox.setFromValues({Type: {Treasure: curValue === 1 ? 0 : 1}});
+			this._pageFilter.filterBox.setFromValues({Type: MiscUtil.merge(filterValues.Type, {Treasure: curValue === 1 ? 0 : 1})});
 			this.handleFilterChange();
 		});
 		const $outVisibleResults = $(`.lst__wrp-search-visible`);
