@@ -3,6 +3,7 @@
 		{
 			"name": "Blinded",
 			"source": "CRB",
+			"group": "Senses",
 			"page": 618,
 			"entries": [
 				"You can't see. All normal terrain is difficult terrain to you. You can't detect anything using vision. You automatically critically fail {@skill Perception} checks that require you to be able to see, and if vision is your only precise sense, you take a \u20134 status penalty to {@skill Perception} checks. You are immune to visual effects. Blinded overrides {@condition dazzled}."
@@ -21,6 +22,7 @@
 		{
 			"name": "Clumsy",
 			"source": "CRB",
+			"group": "Lowered Abilities",
 			"page": 618,
 			"entries": [
 				"Your movements become clumsy and inexact. Clumsy always includes a value. You take a status penalty equal to the condition value to Dexterity-based checks and DCs, including AC, Reflex saves, ranged attack rolls, and skill checks using {@skill Acrobatics}, {@skill Stealth}, and {@skill Thievery}."
@@ -29,6 +31,7 @@
 		{
 			"name": "Concealed",
 			"source": "CRB",
+			"group": "Senses",
 			"page": 618,
 			"entries": [
 				"While you are concealed from a creature, such as in a thick fog, you are difficult for that creature to see. You can still be {@condition observed}, but you're tougher to target. A creature that you're concealed from must succeed at a DC {@flatDC 5} flat check when targeting you with an attack, spell, or other effect. Area effects aren't subject to this flat check. If the check fails, the attack, spell, or effect doesn't affect you."
@@ -37,6 +40,7 @@
 		{
 			"name": "Confused",
 			"source": "CRB",
+			"group": "Lowered Abilities",
 			"page": 618,
 			"entries": [
 				"You don't have your wits about you, and you attack wildly. You are {@condition flat-footed}, you don't treat anyone as your ally (though they might still treat you as theirs), and you can't {@action Delay}, {@action Ready}, or use reactions.",
@@ -55,6 +59,7 @@
 		{
 			"name": "Dazzled",
 			"source": "CRB",
+			"group": "Senses",
 			"page": 619,
 			"entries": [
 				"Your eyes are overstimulated. If vision is your only precise sense, all creatures and objects are {@condition concealed} from you."
@@ -63,6 +68,7 @@
 		{
 			"name": "Deafened",
 			"source": "CRB",
+			"group": "Senses",
 			"page": 619,
 			"entries": [
 				"You can't hear. You automatically critically fail {@skill Perception} checks that require you to be able to hear. You take a \u20132 status penalty to {@skill Perception} checks for initiative and checks that involve sound but also rely on other senses. If you perform an action with the {@trait auditory} trait, you must succeed at a DC {@flatDC 5} flat check or the action is lost; attempt the check after spending the action but before any effects are applied. You are immune to {@trait auditory} effects."
@@ -71,6 +77,7 @@
 		{
 			"name": "Doomed",
 			"source": "CRB",
+			"group": "Death and Dying",
 			"page": 619,
 			"entries": [
 				"A powerful force has gripped your soul, calling you closer to death. Doomed always includes a value. The dying value at which you die is reduced by your doomed value. If your maximum dying value is reduced to 0, you instantly die. When you die, you're no longer doomed.",
@@ -80,6 +87,7 @@
 		{
 			"name": "Drained",
 			"source": "CRB",
+			"group": "Lowered Abilities",
 			"page": 619,
 			"entries": [
 				"When a creature successfully drains you of blood or life force, you become less healthy. Drained always includes a value. You take a status penalty equal to your drained value on Constitution-based checks, such as Fortitude saves. You also lose a number of Hit Points equal to your level (minimum 1) times the drained value, and your maximum Hit Points are reduced by the same amount. For example, if you're hit by an effect that inflicts drained 3 and you're a 3rd-level character, you lose 9 Hit Points and reduce your maximum Hit Points by 9. Losing these Hit Points doesn't count as taking damage.",
@@ -90,6 +98,7 @@
 			"name": "Dying",
 			"source": "CRB",
 			"page": 619,
+			"group": "Death and Dying",
 			"entries": [
 				"You are bleeding out or otherwise at death's door. While you have this condition, you are {@condition unconscious}. Dying always includes a value, and if it ever reaches dying 4, you die. If you're dying, you must attempt a recovery check (page 459) at the start of your turn each round to determine whether you get better or worse. Your dying condition increases by 1 if you take damage while dying, or by 2 if you take damage from an enemy's critical hit or a critical failure on your save.",
 				"If you lose the dying condition by succeeding at a recovery check and are still at 0 Hit Points, you remain {@condition unconscious}, but you can wake up as described in that condition. You lose the dying condition automatically and wake up if you ever have 1 Hit Point or more. Any time you lose the dying condition, you gain the wounded 1 condition, or increase your wounded condition value by 1 if you already have that condition."
@@ -106,6 +115,7 @@
 		{
 			"name": "Enfeebled",
 			"source": "CRB",
+			"group": "Lowered Abilities",
 			"page": 619,
 			"entries": [
 				"You're physically weakened. Enfeebled always includes a value. When you are enfeebled, you take a status penalty equal to the condition value to Strength-based rolls and DCs, including Strength-based melee attack rolls, Strength-based damage rolls, and {@skill Athletics} checks."
@@ -147,6 +157,7 @@
 		{
 			"name": "Friendly",
 			"source": "CRB",
+			"group": "Attitudes",
 			"page": 620,
 			"entries": [
 				"This condition reflects a creature's disposition toward a particular character, and only supernatural effects (like a spell) can impose these conditions on player characters. A creature that is friendly to a character likes that character. The character can attempt to make a {@action Request} of a friendly creature, and the friendly creature is likely to agree to a simple and safe request that doesn't cost it much to fulfill. If the character or one of their allies uses hostile actions against the creature, the creature gains a worse attitude condition depending on the severity of the hostile action, as determined by the GM."
@@ -171,6 +182,7 @@
 		{
 			"name": "Helpful",
 			"source": "CRB",
+			"group": "Attitudes",
 			"page": 620,
 			"entries": [
 				"This condition reflects a creature's disposition toward a particular character, and only supernatural effects (like a spell) can impose these conditions on player characters. A creature that is helpful to a character wishes to actively aid that character. It will accept reasonable Requests from that character, as long as such requests aren't at the expense of the helpful creature's goals or quality of life. If the character or one of their allies uses a hostile action against the creature, the creature gains a worse attitude condition depending on the severity of the hostile action, as determined by the GM."
@@ -179,6 +191,7 @@
 		{
 			"name": "Hidden",
 			"source": "CRB",
+			"group": "Degrees of Detection",
 			"page": 620,
 			"entries": [
 				"While you're hidden from a creature, that creature knows the space you're in but can't tell precisely where you are. You typically become hidden by using {@skill Stealth} to {@action Hide}. When {@action Seek|CRB|Seeking} a creature using only imprecise senses, it remains {@condition hidden}, rather than {@condition observed}. A creature you're {@condition hidden} from is {@condition flat-footed} to you, and it must succeed at a DC {@flatDC 11} flat check when targeting you with an attack, spell, or other effect or it fails affect you. Area effects aren't subject to this flat check.",
@@ -188,6 +201,7 @@
 		{
 			"name": "Hostile",
 			"source": "CRB",
+			"group": "Attitudes",
 			"page": 620,
 			"entries": [
 				"This condition reflects a creature's disposition toward a particular character, and only supernatural effects (like a spell) can impose these conditions on player characters. A creature that is hostile to a character actively seeks to harm that character. It doesn't necessarily attack, but it won't accept Requests from the character."
@@ -196,6 +210,7 @@
 		{
 			"name": "Immobilized",
 			"source": "CRB",
+			"group": "Degrees of Detection",
 			"page": 620,
 			"entries": [
 				"You can't use any action with the {@trait move} trait. If you're immobilized by something holding you in place and an external force would move you out of your space, the force must succeed at a check against either the DC of the effect holding you in place or the relevant defense (usually Fortitude DC) of the monster holding you in place."
@@ -204,6 +219,7 @@
 		{
 			"name": "Indifferent",
 			"source": "CRB",
+			"group": "Attitudes",
 			"page": 620,
 			"entries": [
 				"This condition reflects a creature's disposition toward a particular character, and only supernatural effects (like a spell) can impose these conditions on player characters. A creature that is indifferent to a character doesn't really care one way or the other about that character. Assume a creature's attitude to a given character is indifferent unless specified otherwise."
@@ -212,6 +228,7 @@
 		{
 			"name": "Invisible",
 			"source": "CRB",
+			"group": "Senses",
 			"page": 620,
 			"entries": [
 				"While invisible, you can't be seen. You're {@condition undetected} to everyone. Creatures can {@action Seek} to attempt to detect you; if a creature succeeds at its {@skill Perception} check against your {@skill Stealth} DC, you become {@condition hidden} to that creature until you {@action Sneak} to become {@condition undetected} again. If you become invisible while someone can already see you, you start out {@condition hidden} to the observer (instead of {@condition undetected}) until you successfully {@action Sneak}. You can't become {@condition observed} while invisible except via special abilities or magic."
@@ -220,6 +237,7 @@
 		{
 			"name": "Observed",
 			"source": "CRB",
+			"group": "Degrees of Detection",
 			"page": 621,
 			"entries": [
 				"Anything in plain view is observed by you. If a creature takes measures to avoid detection, such as by using {@skill Stealth} to {@action Hide}, it can become {@condition hidden} or {@condition undetected} instead of observed. If you have another precise sense instead of or in addition to sight, you might be able to observe a creature or object using that sense instead. You can observe a creature only with precise senses. When {@action Seeking} a creature using only imprecise senses, it remains {@condition hidden}, rather than observed."
@@ -238,7 +256,40 @@
 			"source": "CRB",
 			"page": 621,
 			"entries": [
-				"Persistent damage comes from effects like acid, being on fire, or many other situations. It appears as \"X persistent [type] damage,\" where \"X\" is the amount of damage dealt and \"[type]\" is the damage type. Instead of taking persistent damage immediately, you take it at the end of each of your turns as long as you have the condition, rolling any damage dice anew each time. After you take persistent damage, roll a DC {@flatDC 15} flat check to see if you recover from the persistent damage. If you succeed, the condition ends."
+				"Persistent damage comes from effects like acid, being on fire, or many other situations. It appears as \"X persistent [type] damage,\" where \"X\" is the amount of damage dealt and \"[type]\" is the damage type. Instead of taking persistent damage immediately, you take it at the end of each of your turns as long as you have the condition, rolling any damage dice anew each time. After you take persistent damage, roll a DC {@flatDC 15} flat check to see if you recover from the persistent damage. If you succeed, the condition ends.",
+				{
+					"type": "pf2-brown-box",
+					"name": "PERSISTENT DAMAGE RULES",
+					"entries": [
+						"The additional rules presented below apply to persistent damage in certain cases.",
+						"Persistent damage runs its course and automatically ends after a certain amount of time as fire burns out, blood clots, and the like. The GM determines when this occurs, but it usually takes 1 minute.",
+						{
+							"type": "pf2-title",
+							"name": "Assisted Recovery"
+						},
+						"You can take steps to help yourself recover from persistent damage, or an ally can help you, allowing you to attempt an additional flat check before the end of your turn. This is usually an activity requiring 2 actions, and it must be something that would reasonably improve your chances (as determined by the GM). For example, you might try to smother a flame or wash off acid. This allows you to attempt an extra flat check immediately, but only once per round.",
+						"The GM decides how your help works, using the following examples as guidelines when there's not a specific action that applies.",
+						{
+							"type": "list",
+							"items": [
+								"The action to help might require a skill check or another roll to determine its effectiveness.",
+								"Reduce the DC of the flat check to 10 for a particularly appropriate type of help, such as dousing you in water to put out flames.",
+								"Automatically end the condition due to the type of help, such as healing that restores you to your maximum HP to end persistent bleed damage, or submerging yourself in a lake to end persistent fire damage.",
+								"Alter the number of actions required to help you if the means the helper uses are especially efficient or remarkably inefficient."
+							]
+						},
+						{
+							"type": "pf2-title",
+							"name": "Immunities, Resistances, and Weaknesses"
+						},
+						"Immunities, resistances, and weaknesses all apply to {@condition Persistent Damage|CRB|persistent damage}. If an effect deals initial damage in addition to {@condition Persistent Damage|CRB|persistent damage}, apply immunities, resistances, and weaknesses separately to the initial damage and to the {@condition Persistent Damage|CRB|persistent damage}. Usually, if an effect negates the initial damage, it also negates the {@condition Persistent Damage|CRB|persistent damage}, such as with a slashing weapon that also deals {@condition Persistent Damage|CRB|persistent bleed damage} because it cut you. The GM might rule otherwise in some situations.",
+						{
+							"type": "pf2-title",
+							"name": "Multiple Persistent Damage Conditions"
+						},
+						"You can be simultaneously affected by multiple persistent damage conditions so long as they have different damage types. If you would gain more than one {@condition Persistent Damage|CRB|persistent damage} condition with the same damage type, the higher amount of damage overrides the lower amount. The damage you take from {@condition Persistent Damage|CRB|persistent damage} occurs all at once, so if something triggers when you take damage, it triggers only once; for example, if you're {@condition dying} with several types of {@condition Persistent Damage|CRB|persistent damage}, the {@condition Persistent Damage|CRB|persistent damage} increases your {@condition dying} condition only once."
+					]
+				}
 			]
 		},
 		{
@@ -303,6 +354,7 @@
 		{
 			"name": "Stupefied",
 			"source": "CRB",
+			"group": "Lowered Abilities",
 			"page": 622,
 			"entries": [
 				"Your thoughts and instincts are clouded. Stupefied always includes a value. You take a status penalty equal to this value on Intelligence-, Wisdom-, and Charisma-based checks and DCs, including Will saving throws, spell attack rolls, spell DCs, and skill checks that use these ability scores. Any time you attempt to {@action Cast a Spell} while stupefied, the spell is disrupted unless you succeed at a flat check with a DC equal to 5 + your stupefied value."
@@ -311,6 +363,7 @@
 		{
 			"name": "Unconscious",
 			"source": "CRB",
+			"group": "Death and Dying",
 			"page": 622,
 			"entries": [
 				"You're sleeping, or you've been knocked out. You can't act. You take a \u20134 status penalty to AC, Perception, and Reflex saves, and you have the {@condition blinded} and {@condition flat-footed} conditions. When you gain this condition, you fall prone and drop items you are wielding or holding unless the effect states otherwise or the GM determines you're in a position in which you wouldn't.",
@@ -332,6 +385,7 @@
 		{
 			"name": "Undetected",
 			"source": "CRB",
+			"group": "Degrees of Detection",
 			"page": 623,
 			"entries": [
 				"When you are undetected by a creature, that creature cannot see you at all, has no idea what space you occupy, and can't target you, though you still can be affected by abilities that target an area. When you're undetected by a creature, that creature is {@condition flat-footed} to you.",
@@ -342,6 +396,7 @@
 		{
 			"name": "Unfriendly",
 			"source": "CRB",
+			"group": "Attitudes",
 			"page": 623,
 			"entries": [
 				"This condition reflects a creature's disposition toward a particular character, and only supernatural effects (like a spell) can impose these conditions on player characters. A creature that is unfriendly to a character dislikes and specifically distrusts that character. The unfriendly creature won't accept Requests from the character."
@@ -351,6 +406,7 @@
 			"name": "Unnoticed",
 			"source": "CRB",
 			"page": 623,
+			"group": "Degrees of Detection",
 			"entries": [
 				"If you are unnoticed by a creature, that creature has no idea you are present at all. When you're unnoticed, you're also {@condition undetected} by the creature. This condition matters for abilities that can be used only against targets totally unaware of your presence."
 			]
@@ -358,6 +414,7 @@
 		{
 			"name": "Wounded",
 			"source": "CRB",
+			"group": "Death and Dying",
 			"page": 623,
 			"entries": [
 				"You have been seriously injured. If you lose the {@condition dying} condition and do not already have the wounded condition, you become wounded 1. If you already have the wounded condition when you lose the dying condition, your wounded condition value increases by 1. If you gain the {@condition dying} condition while wounded, increase your {@condition dying} condition value by your wounded value.",
