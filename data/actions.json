@@ -37,7 +37,7 @@
 			"actionType": {
 				"basic": true
 			},
-			"requirements": "You can Activate an Item with the invested trait only if it's invested by you. If the item requires you to Interact with it, you must be wielding it (if it's a held item) or touching it with a free hand (if it's another type of item).",
+			"requirements": "You can Activate an Item with the {@trait invested} trait only if it's invested by you. If the item requires you to {@action Interact} with it, you must be wielding it (if it's a held item) or touching it with a free hand (if it's another type of item).",
 			"entries": [
 				"You call forth the effect of an item by properly activating it. This is a special activity that takes a variable number of actions, as listed in the item's stat block.",
 				"Some items can be activated as a reaction or free action. In this case, you Activate the Item as a reaction or free action (as appropriate) instead of as an activity. Such cases are noted in the item's Activate entry in its stat block\u2014for example, \"{@b Activate} {@as R} command.\"",
@@ -48,7 +48,7 @@
 					"items": [
 						"Command ({@trait auditory}, {@trait concentrate})",
 						"Envision ({@trait concentrate})",
-						"Interact ({@trait manipulate})",
+						"{@action Interact} ({@trait manipulate})",
 						"{@action Cast a Spell|CRB}"
 					]
 				}
@@ -3906,7 +3906,7 @@
 			],
 			"actionType": {
 				"variantrule": [
-					"Inspiration|GMG"
+					"Stamina|GMG"
 				]
 			},
 			"prerequisites": "trained in {@skill Diplomacy}, {@skill Intimidation}, {@skill Performance}",
