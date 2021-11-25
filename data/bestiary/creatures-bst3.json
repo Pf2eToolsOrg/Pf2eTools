@@ -22,7 +22,7 @@
 			"senses": {
 				"other": [
 					"darkvision",
-					"lifesense 60 feet (page 305)",
+					"{@ability lifesense} 60 feet",
 					"sense apostate"
 				]
 			},
@@ -94,7 +94,7 @@
 					"hp": 75,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -260,7 +260,7 @@
 					"Draconic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -460,7 +460,7 @@
 					"Utopian"
 				],
 				"languageAbilities": [
-					"telepathy 120 feet (page 306)"
+					"{@ability telepathy} 120 feet"
 				]
 			},
 			"skills": {
@@ -542,7 +542,7 @@
 					},
 					"trigger": "The adachros takes 25 or more bludgeoning, piercing, or slashing damage",
 					"entries": [
-						"The attack breaks off part of the adachros's body. This fragment reshapes and animates into an ioton (page 92) with the minion trait under the adachros's control. The ioton sycophant can't move more than 120 feet from the adachros and crumbles after 1 minute. If the adachros gives it no other commands, the ioton sycophant spends its turn praising the adachros and affirming the adachros's infallibility; this grants the adachros {@dice 4d6} temporary Hit Points that last for as long as the ioton sycophant exists, and a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks for 1 round."
+						"The attack breaks off part of the adachros's body. This fragment reshapes and animates into an {@creature ioton} with the {@trait minion} trait under the adachros's control. The ioton sycophant can't move more than 120 feet from the adachros and crumbles after 1 minute. If the adachros gives it no other commands, the ioton sycophant spends its turn praising the adachros and affirming the adachros's infallibility; this grants the adachros {@dice 4d6} temporary Hit Points that last for as long as the ioton sycophant exists, and a +1 status bonus to attack rolls, {@skill Perception} checks, saving throws, and skill checks for 1 round."
 					],
 					"name": "Splinter Sycophant"
 				}
@@ -691,7 +691,7 @@
 					"Infernal"
 				],
 				"languageAbilities": [
-					"telepathy 30 feet (page 306)"
+					"{@ability telepathy} 30 feet"
 				]
 			},
 			"skills": {
@@ -722,7 +722,7 @@
 			"abilitiesTop": [],
 			"ac": {
 				"default": 25,
-				"abilities": "all-around vision (page 304)"
+				"abilities": "{@ability all-around vision}"
 			},
 			"savingThrows": {
 				"Fort": {
@@ -1240,9 +1240,9 @@
 						"reach 25 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+13} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d8+13} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -1359,7 +1359,7 @@
 						"page 305"
 					],
 					"entries": [
-						"Melee tail +29 (magical, reach 25 feet), Damage {@damage 3d8+13} bludgeoning plus Grab (page 305) Primal Innate Spells DC 34; 4th entangle, tree shape Primal Prepared Spells DC 29, attack +22; 4th gaseous form, hallucinatory terrain, solid fog; 3rd animal vision, stinking cloud, wall of thorns; 2nd animal messenger, darkness, water breathing; 1st create water, goblin pox, pest form; Cantrips (4th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 29; plant growth Primal Prepared Spells DC 34, dragon, plus 6th baleful polymorph, purple worm sting, tangling creepers; 5th cloudkill, moon frenzy, tree stride; Cantrips (6th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 34; commune with nature Primal Prepared Spells DC 41, plus 9th implosion, nature's enmity; 8th horrid wilting, polar ray, punishing winds; 7th eclipse burst, prismatic spray, true target; Cantrips (9th) acid splash, detect magic, guidance, read aura, tanglefoot (see forest shape); Cantrips (4th) know direction; Constant (1st) pass without trace (forest terrain only)"
+						"Melee tail +29 (magical, reach 25 feet), Damage {@damage 3d8+13} bludgeoning plus {@ability Grab} Primal Innate Spells DC 34; 4th entangle, tree shape Primal Prepared Spells DC 29, attack +22; 4th gaseous form, hallucinatory terrain, solid fog; 3rd animal vision, stinking cloud, wall of thorns; 2nd animal messenger, darkness, water breathing; 1st create water, goblin pox, pest form; Cantrips (4th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 29; plant growth Primal Prepared Spells DC 34, dragon, plus 6th baleful polymorph, purple worm sting, tangling creepers; 5th cloudkill, moon frenzy, tree stride; Cantrips (6th) acid splash, detect magic, guidance, read aura, tanglefoot; Rituals DC 34; commune with nature Primal Prepared Spells DC 41, plus 9th implosion, nature's enmity; 8th horrid wilting, polar ray, punishing winds; 7th eclipse burst, prismatic spray, true target; Cantrips (9th) acid splash, detect magic, guidance, read aura, tanglefoot (see forest shape); Cantrips (4th) know direction; Constant (1st) pass without trace (forest terrain only)"
 					],
 					"name": "Grab",
 					"generic": true
@@ -1410,7 +1410,7 @@
 					],
 					"frequency": "once per day",
 					"entries": [
-						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting difficult terrain, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
+						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
 					],
 					"name": "Draining Blight"
 				},
@@ -1433,7 +1433,7 @@
 				},
 				{
 					"entries": [
-						"The forest dragon ignores difficult terrain and greater difficult terrain from non-magical foliage."
+						"The forest dragon ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from non-magical foliage."
 					],
 					"name": "Woodland Stride"
 				}
@@ -1583,7 +1583,7 @@
 						"water"
 					],
 					"entries": [
-						"40 feet. Water in the aura that's also in the same body of water as the dragon is difficult terrain for Swimming creatures which don't have the {@trait water} trait."
+						"40 feet. Water in the aura that's also in the same body of water as the dragon is {@quickref difficult terrain||3|terrain} for Swimming creatures which don't have the {@trait water} trait."
 					],
 					"name": "Vortex"
 				},
@@ -1643,9 +1643,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+12} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d8+12} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -1659,9 +1659,9 @@
 						"reach 25 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+12} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d8+12} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -1935,9 +1935,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+13} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d8+13} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -1951,9 +1951,9 @@
 						"reach 25 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+13} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d8+13} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -2241,9 +2241,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+14} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d10+14} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -2257,9 +2257,9 @@
 						"reach 25 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+14} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d10+14} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -2596,9 +2596,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+13} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+13} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -2643,7 +2643,7 @@
 						"page 305"
 					],
 					"entries": [
-						"Melee tail +24 (magical, reach 20 feet), Damage {@damage 2d8+13} bludgeoning plus Grab (page 305) Arcane Innate Spells DC 30, attack +24; 4th continual flame, wall of fire; Cantrips (4th) detect magic."
+						"Melee tail +24 (magical, reach 20 feet), Damage {@damage 2d8+13} bludgeoning plus {@ability Grab} Arcane Innate Spells DC 30, attack +24; 4th continual flame, wall of fire; Cantrips (4th) detect magic."
 					],
 					"name": "Grab",
 					"generic": true
@@ -2748,7 +2748,7 @@
 					"Daemonic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -3671,9 +3671,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 4d8+17} slashing plus Grab (page 305)",
+					"damage": "{@damage 4d8+17} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -3687,9 +3687,9 @@
 						"reach 30 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 4d8+17} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 4d8+17} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -3801,7 +3801,7 @@
 					],
 					"frequency": "once per day",
 					"entries_as_xyz": [
-						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting difficult terrain, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
+						"The dragon draws moisture from the living creatures surrounding them, using the energy to heal their own wounds. Each living creature in a 30-foot emanation takes {@damage 7d10} negative damage (DC 34 basic Fortitude save). Creatures made entirely of water and plant creatures use the outcome one degree of success worse than they rolled. The dragon regains Hit Points equal to half of the highest damage a single creature takes from this effect. In addition, all non-creature plant life in the area withers and dies, eliminating non-magical undergrowth and any resulting {@quickref difficult terrain||3|terrain}, cover, and concealment. Water is also consumed in the same way, typically lowering any standing body of water fully within the area by 1 foot."
 					]
 				},
 				{
@@ -3835,7 +3835,7 @@
 				},
 				{
 					"entries": [
-						"The forest dragon ignores difficult terrain and greater difficult terrain from non-magical foliage."
+						"The forest dragon ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from non-magical foliage."
 					],
 					"name": "Woodland Stride"
 				}
@@ -3986,7 +3986,7 @@
 						"water"
 					],
 					"entries": [
-						"40 feet. Water in the aura that's also in the same body of water as the dragon is difficult terrain for Swimming creatures which don't have the {@trait water} trait."
+						"40 feet. Water in the aura that's also in the same body of water as the dragon is {@quickref difficult terrain||3|terrain} for Swimming creatures which don't have the {@trait water} trait."
 					],
 					"name": "Vortex"
 				},
@@ -4046,9 +4046,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+16} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d10+16} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -4062,9 +4062,9 @@
 						"reach 25 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+16} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d10+16} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -4367,9 +4367,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+16} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d10+16} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -4383,9 +4383,9 @@
 						"reach 30 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+16} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d10+16} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -4714,9 +4714,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 4d8+18} slashing plus Grab (page 305)",
+					"damage": "{@damage 4d8+18} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -4730,9 +4730,9 @@
 						"reach 30 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 4d8+18} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 4d8+18} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -5709,7 +5709,7 @@
 					"hp": 30,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -5949,9 +5949,9 @@
 						"reach 30 feet"
 					],
 					"effects": [
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 3d12+17} bludgeoning plus Improved Grab (page 305)",
+					"damage": "{@damage 3d12+17} bludgeoning plus Improved {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -6431,9 +6431,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d12+11} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d12+11} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -6825,7 +6825,7 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Improved Knockdown (page 305)"
+						"{@ability Improved Knockdown}"
 					],
 					"damage": "{@damage 3d10+10} bludgeoning plus Improved Knockdown (page 305)",
 					"types": [
@@ -7981,7 +7981,7 @@
 					"hp": 200,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -8639,9 +8639,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+7} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+7} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -9328,7 +9328,7 @@
 					"universal language"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -10869,7 +10869,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"The camel Strides twice. It has a +5-foot circumstance bonus to its Speed during these Strides, ignoring difficult terrain caused by rubble, sand, and uneven ground made of earth and stone.",
+						"The camel Strides twice. It has a +5-foot circumstance bonus to its Speed during these Strides, ignoring {@quickref difficult terrain||3|terrain} caused by rubble, sand, and uneven ground made of earth and stone.",
 						"troop's Hellknight plate (Pathfinder."
 					],
 					"name": "Sand Stride"
@@ -11867,9 +11867,9 @@
 					"attack": 21,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d12+9} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d12+9} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -12150,13 +12150,13 @@
 				},
 				{
 					"entries": [
-						"Whenever the city guards {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a Gargantuan creature moving; for instance, if any square of the guards enters difficult terrain, the extra movement cost applies to all the guards."
+						"Whenever the city guards {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a Gargantuan creature moving; for instance, if any square of the guards enters {@quickref difficult terrain||3|terrain}, the extra movement cost applies to all the guards."
 					],
 					"name": "Troop Movement"
 				},
 				{
 					"entries": [
-						"City guards ignore difficult terrain (but not greater difficult terrain) caused by crowds or from movement through narrow spaces such as alleyways.",
+						"City guards ignore {@quickref difficult terrain||3|terrain} (but not {@quickref greater difficult terrain||3|terrain}) caused by crowds or from movement through narrow spaces such as alleyways.",
 						"text on clockwork design\u2014Glorious."
 					],
 					"name": "Urban Chasers"
@@ -12235,7 +12235,7 @@
 					"hp": 120,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -12973,9 +12973,9 @@
 						"unarmed"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d8+9} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d8+9} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -13195,7 +13195,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"The cobbleswarm's space is difficult terrain."
+						"The cobbleswarm's space is {@quickref difficult terrain||3|terrain}."
 					],
 					"name": "Clutching Cobbles"
 				},
@@ -13387,9 +13387,9 @@
 					"attack": 6,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d6+2} slashing plus Grab (page 305)",
+					"damage": "{@damage 1d6+2} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -13847,7 +13847,7 @@
 					"hp": 50,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -14417,7 +14417,7 @@
 					"Celestial"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -14513,7 +14513,7 @@
 					],
 					"name": "Impossible Stature",
 					"entries_as_xyz": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
 					]
 				},
 				{
@@ -15105,7 +15105,7 @@
 				},
 				{
 					"entries": [
-						"Desert giants have adapted to the loose sands of the desert and can move across them with ease. Desert giants ignore non-magical difficult terrain and uneven ground caused by sand."
+						"Desert giants have adapted to the loose sands of the desert and can move across them with ease. Desert giants ignore non-magical {@quickref difficult terrain||3|terrain} and uneven ground caused by sand."
 					],
 					"name": "Sandwalking"
 				},
@@ -15256,9 +15256,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+7} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+7} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -15273,9 +15273,9 @@
 						"two-hand d8"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d4+7} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d4+7} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -16031,7 +16031,7 @@
 				"languages": [],
 				"languageAbilities": [
 					"tongues",
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -16489,7 +16489,7 @@
 					"Abyssal"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -17064,7 +17064,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -17114,7 +17114,7 @@
 					"hp": 175,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -18005,7 +18005,7 @@
 					"hp": 450,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -18225,7 +18225,7 @@
 						"unit": "action"
 					},
 					"entries": [
-						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}."
 					],
 					"name": "Phase Lurch",
 					"traits": [
@@ -18233,7 +18233,7 @@
 						"move"
 					],
 					"requirements": "The wyrmwraith is in their ectoplasmic form",
-					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.296"
+					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}.' in Wyrmwraith, p.296"
 				}
 			],
 			"inflicts": {
@@ -18285,7 +18285,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -18363,7 +18363,7 @@
 						"mental"
 					],
 					"entries": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
 					],
 					"name": "Impossible Stature"
 				}
@@ -18795,9 +18795,9 @@
 						"versatile P"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d8} slashing plus {@damage 1d4} evil and Grab (page 305)",
+					"damage": "{@damage 1d8} slashing plus {@damage 1d4} evil and {@ability Grab}",
 					"types": [
 						"evil",
 						"slashing"
@@ -18990,7 +18990,7 @@
 					"hp": 150,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -19350,7 +19350,7 @@
 						"magical"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 2d8+6} bludgeoning or positive plus Knockdown (page 305)",
 					"types": [
@@ -19576,7 +19576,7 @@
 					},
 					"requirements": "The fading fox is in natural surroundings",
 					"entries": [
-						"The fading fox Steps, then Hides, then Sneaks. It can take this {@action Step} into natural difficult terrain and can {@action Hide} in this way even if it is being {@condition observed}."
+						"The fading fox Steps, then Hides, then Sneaks. It can take this {@action Step} into natural {@quickref difficult terrain||3|terrain} and can {@action Hide} in this way even if it is being {@condition observed}."
 					],
 					"name": "Vanish into the Wilds"
 				}
@@ -19734,9 +19734,9 @@
 						"magical"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d6+9} force plus Grab (page 305)",
+					"damage": "{@damage 3d6+9} force plus {@ability Grab}",
 					"types": [
 						"force"
 					]
@@ -19785,7 +19785,7 @@
 				},
 				{
 					"entries": [
-						"{@action Stride}, the feathered bear ignores difficult terrain and greater difficult terrain, and they can move across air as easily as solid ground. If the feathered bear doesn't end their movement on solid ground, they fall as soon as the {@action Strike} is completed."
+						"{@action Stride}, the feathered bear ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}, and they can move across air as easily as solid ground. If the feathered bear doesn't end their movement on solid ground, they fall as soon as the {@action Strike} is completed."
 					],
 					"name": "During the"
 				},
@@ -19893,7 +19893,7 @@
 					"hp": 160,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -20082,7 +20082,7 @@
 					"hp": 24,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -20714,7 +20714,7 @@
 					"hp": 100,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)",
+						"{@ability negative healing}",
 						"rejuvenation"
 					]
 				}
@@ -21981,7 +21981,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"The gathlain ignores difficult terrain from non-magical foliage."
+						"The gathlain ignores {@quickref difficult terrain||3|terrain} from non-magical foliage."
 					],
 					"name": "Hide and Seek"
 				},
@@ -22516,9 +22516,9 @@
 					"attack": 15,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+8} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d8+8} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -22717,9 +22717,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d4+4} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d4+4} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -22841,9 +22841,9 @@
 					"attack": 13,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d6+7} bludgeoning damage plus Grab (page 305)",
+					"damage": "{@damage 1d6+7} bludgeoning damage plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -23134,9 +23134,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d6+4} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d6+4} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -23565,9 +23565,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d8+12} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 3d8+12} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -23716,7 +23716,7 @@
 				},
 				{
 					"entries": [
-						"A girtablilu ignores natural difficult terrain in the desert."
+						"A girtablilu ignores natural {@quickref difficult terrain||3|terrain} in the desert."
 					],
 					"name": "Desert Stride"
 				},
@@ -23880,9 +23880,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+9} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+9} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -23917,7 +23917,7 @@
 				},
 				{
 					"entries": [
-						"A girtablilu ignores natural difficult terrain in the desert."
+						"A girtablilu ignores natural {@quickref difficult terrain||3|terrain} in the desert."
 					],
 					"name": "Desert Stride"
 				},
@@ -24004,7 +24004,7 @@
 					"Jyoti"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -24325,10 +24325,10 @@
 					"attack": 15,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)",
+						"{@ability Grab}",
 						"nauseating slap"
 					],
-					"damage": "{@damage 2d8+6} bludgeoning plus Grab (page 305) and nauseating slap",
+					"damage": "{@damage 2d8+6} bludgeoning plus {@ability Grab} and nauseating slap",
 					"types": [
 						"bludgeoning"
 					]
@@ -24589,9 +24589,9 @@
 					],
 					"effects": [
 						"absorb magic",
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 4d10+27} bludgeoning plus absorb magic and Improved Grab (page 305)",
+					"damage": "{@damage 4d10+27} bludgeoning plus absorb magic and Improved {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -24967,7 +24967,7 @@
 					"Grioth"
 				],
 				"languageAbilities": [
-					"telepathy 30 feet (page 306)"
+					"{@ability telepathy} 30 feet"
 				]
 			},
 			"skills": {
@@ -25320,7 +25320,7 @@
 					"Grioth"
 				],
 				"languageAbilities": [
-					"telepathy 30 feet (page 306)"
+					"{@ability telepathy} 30 feet"
 				]
 			},
 			"skills": {
@@ -25592,7 +25592,7 @@
 					"hp": 110,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -25667,7 +25667,7 @@
 						"transmutation"
 					],
 					"entries": [
-						"The guecubu stomps, and the ground breaks and ripples in a 30-foot emanation, erupting in razor-sharp, crisscrossing spikes of rock that deal {@damage 3d8} piercing damage to creatures in the area (DC 26 basic Reflex save). The area becomes difficult terrain and hazardous terrain, with each square dealing 3 piercing damage to a creature that moves through it. A guecubu is immune to these effects. Ground under the effects of a consecrate ritual or a {@spell circle of protection} spell tuned against evil or chaos can't be affected by this ability."
+						"The guecubu stomps, and the ground breaks and ripples in a 30-foot emanation, erupting in razor-sharp, crisscrossing spikes of rock that deal {@damage 3d8} piercing damage to creatures in the area (DC 26 basic Reflex save). The area becomes {@quickref difficult terrain||3|terrain} and hazardous terrain, with each square dealing 3 piercing damage to a creature that moves through it. A guecubu is immune to these effects. Ground under the effects of a consecrate ritual or a {@spell circle of protection} spell tuned against evil or chaos can't be affected by this ability."
 					],
 					"name": "Break Ground"
 				},
@@ -25808,7 +25808,7 @@
 					"hp": 120,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -25840,7 +25840,7 @@
 						"shove"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 1d12+8} bludgeoning plus Knockdown (page 305)",
 					"types": [
@@ -26577,7 +26577,7 @@
 					"hp": 60,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -26830,9 +26830,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 3d10+17} cold plus Improved Grab (page 305)",
+					"damage": "{@damage 3d10+17} cold plus Improved {@ability Grab}",
 					"types": [
 						"cold"
 					]
@@ -26942,7 +26942,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -27536,13 +27536,13 @@
 				},
 				{
 					"entries": [
-						"While moving on land, the Hellknight cavalry brigade ignores the effects of non-magical difficult terrain."
+						"While moving on land, the Hellknight cavalry brigade ignores the effects of non-magical {@quickref difficult terrain||3|terrain}."
 					],
 					"name": "Trailblazing Stride"
 				},
 				{
 					"entries": [
-						"Whenever the cavalry brigade Strides, the brigade first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves. This works just like a Gargantuan creature moving; for instance, if any square of the brigade enters difficult terrain, the extra movement cost applies to the whole brigade."
+						"Whenever the cavalry brigade Strides, the brigade first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves. This works just like a Gargantuan creature moving; for instance, if any square of the brigade enters {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole brigade."
 					],
 					"name": "Troop Movement"
 				}
@@ -27841,7 +27841,7 @@
 					"hp": 30,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -29222,7 +29222,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -29508,7 +29508,7 @@
 					"Aquan"
 				],
 				"languageAbilities": [
-					"telepathy 30 feet (page 306)"
+					"{@ability telepathy} 30 feet"
 				]
 			},
 			"skills": {
@@ -29568,9 +29568,9 @@
 					"attack": 8,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d4+4} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d4+4} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -29924,9 +29924,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d8+2} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d8+2} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -29997,7 +29997,7 @@
 					"Infernal"
 				],
 				"languageAbilities": [
-					"telepathy 80 feet (page 306)"
+					"{@ability telepathy} 80 feet"
 				]
 			},
 			"skills": {
@@ -30946,9 +30946,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d6+9} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d6+9} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -31117,7 +31117,7 @@
 						"entry": "{@as R}"
 					},
 					"entries": [
-						"If the triggering creature is subject to an effect with the {@trait fear} trait, the kimenhul can make two claw Strikes against the creature instead of one {@action Strike} (page 304)."
+						"If the triggering creature is subject to an effect with the {@trait fear} trait, the kimenhul can make two claw {@action Strike||Strikes} against the creature instead of one {@action Strike}."
 					],
 					"name": "Attack of Opportunity",
 					"generic": true
@@ -31154,9 +31154,9 @@
 						"reach 15 feet"
 					],
 					"effects": [
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 4d8+18} slashing plus {@damage 3d6} evil and Improved Grab (page 305)",
+					"damage": "{@damage 4d8+18} slashing plus {@damage 3d6} evil and Improved {@ability Grab}",
 					"types": [
 						"evil",
 						"slashing"
@@ -31671,9 +31671,9 @@
 					"attack": 20,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d10+9} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d10+9} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -32021,7 +32021,7 @@
 				],
 				"languageAbilities": [
 					"speak with plants",
-					"telepathy 50 feet (page 306)"
+					"{@ability telepathy} 50 feet"
 				]
 			},
 			"skills": {
@@ -32540,9 +32540,9 @@
 					],
 					"effects": [
 						"boat breaker",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d12+13} piercing plus boat breaker and Grab (page 305)",
+					"damage": "{@damage 2d12+13} piercing plus boat breaker and {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -33007,9 +33007,9 @@
 						"trip"
 					],
 					"effects": [
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 3d8+18} slashing plus Improved Grab (page 305)",
+					"damage": "{@damage 3d8+18} slashing plus Improved {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -33172,7 +33172,7 @@
 					"entries": [
 						"A creature that starts their turn Captured in Krampus's basket must attempt a DC 44 Fortitude save or be regressed back to their childhood. The target shrinks one size. In addition, all of the target's proficiencies of expert and better are reduced to trained, which might restrict the use of certain feats.",
 						"The effect persists for 24 hours, after which the target regains their normal size and their proficiencies return to normal. A creature currently under the effects of regression can't be further affected by this ability.",
-						"Snowstep Krampus ignores difficult terrain and greater difficult terrain caused by snow and ice, and he leaves no tracks when moving through areas of snow or ice."
+						"Snowstep Krampus ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} caused by snow and ice, and he leaves no tracks when moving through areas of snow or ice."
 					],
 					"name": "Regression"
 				}
@@ -33694,9 +33694,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+5} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d8+5} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -34774,7 +34774,7 @@
 					"hp": 180,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -34956,7 +34956,7 @@
 					"Infernal"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -34984,7 +34984,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A levaloch ignores the effects of non-magical difficult terrain. They take no damage from caltrops or from damaging terrain that deals physical, acid, or cold damage. A levaloch can move through liquids up to 5 feet deep at their full Speed."
+						"A levaloch ignores the effects of non-magical {@quickref difficult terrain||3|terrain}. They take no damage from caltrops or from damaging terrain that deals physical, acid, or cold damage. A levaloch can move through liquids up to 5 feet deep at their full Speed."
 					],
 					"name": "Hellstrider"
 				}
@@ -35226,7 +35226,7 @@
 					"hp": 165,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -35520,7 +35520,7 @@
 				},
 				{
 					"entries": [
-						"The locathah hunter ignores difficult terrain caused by aquatic terrain features."
+						"The locathah hunter ignores {@quickref difficult terrain||3|terrain} caused by aquatic terrain features."
 					],
 					"name": "Smooth Swimmer"
 				}
@@ -35849,7 +35849,7 @@
 					"hp": 60,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -36899,7 +36899,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A weasel treats any tight space it can barely fit its head in or wider as difficult terrain and doesn't need to {@action Squeeze} to move through it."
+						"A weasel treats any tight space it can barely fit its head in or wider as {@quickref difficult terrain||3|terrain} and doesn't need to {@action Squeeze} to move through it."
 					],
 					"name": "Lithe"
 				}
@@ -36941,9 +36941,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d12+5} piercing plus Grab (page 305)",
+					"damage": "{@damage 1d12+5} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -37079,7 +37079,7 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 2d8+8} slashing plus Knockdown (page 305)",
 					"types": [
@@ -37657,9 +37657,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d6+4} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d6+4} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -38384,7 +38384,7 @@
 					"Draconic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -38468,9 +38468,9 @@
 					],
 					"effects": [
 						"mix couatl venom",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d10+9} piercing plus mix couatl venom and Grab (page 305)",
+					"damage": "{@damage 2d10+9} piercing plus mix couatl venom and {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -38745,9 +38745,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Improved Grab (page 305)"
+						"Improved {@ability Grab}"
 					],
-					"damage": "{@damage 2d12+13} piercing plus Improved Grab (page 305)",
+					"damage": "{@damage 2d12+13} piercing plus Improved {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -38858,7 +38858,7 @@
 				},
 				{
 					"entries": [
-						"A mobogo ignores difficult terrain caused by swamp terrain features."
+						"A mobogo ignores {@quickref difficult terrain||3|terrain} caused by swamp terrain features."
 					],
 					"name": "Swamp Stride"
 				},
@@ -39364,7 +39364,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A moon hag adds plane shift, scrying, and spirit blast to her coven's spells (page 304)."
+						"A moon hag adds {@spell plane shift}, {@spell scrying}, and {@spell spirit blast} to her {@ability coven}'s spells."
 					],
 					"name": "Coven",
 					"generic": true
@@ -39925,7 +39925,7 @@
 					"Infernal"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -41019,7 +41019,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -41079,7 +41079,7 @@
 					"hp": 255,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)",
+						"{@ability negative healing}",
 						"rejuvenation"
 					]
 				}
@@ -41378,9 +41378,9 @@
 					],
 					"effects": [
 						"{@dice 2d6+7}",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@dice 2d6+7} plus Grab (page 305)",
+					"damage": "{@dice 2d6+7} plus {@ability Grab}",
 					"types": []
 				},
 				{
@@ -41646,7 +41646,7 @@
 					],
 					"entries": [
 						"{@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move.",
-						"This works just like a Gargantuan creature moving; for instance, if any of the nightmarchers' squares enter difficult terrain, the extra movement cost applies to the whole group."
+						"This works just like a Gargantuan creature moving; for instance, if any of the nightmarchers' squares enter {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole group."
 					],
 					"name": "Troop Movement Whenever the"
 				}
@@ -41695,7 +41695,7 @@
 					"Infernal"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -41827,7 +41827,7 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Improved Knockdown (page 305)"
+						"{@ability Improved Knockdown}"
 					],
 					"damage": "{@damage 3d6+14} bludgeoning plus {@damage 2d6} evil plus Improved Knockdown (page 305)",
 					"types": [
@@ -41997,7 +41997,7 @@
 					"Necril"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -42051,7 +42051,7 @@
 					"note": null,
 					"abilities": [
 						"fast healing 10 (page 305)",
-						"negative healing (page 305)",
+						"{@ability negative healing}",
 						"plagued coffin"
 					]
 				}
@@ -42244,7 +42244,7 @@
 					"Necril"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -42298,7 +42298,7 @@
 					"note": null,
 					"abilities": [
 						"fast healing 15 (page 305)",
-						"negative healing (page 305)",
+						"{@ability negative healing}",
 						"plagued"
 					]
 				}
@@ -42570,7 +42570,7 @@
 					"Requian"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -43132,7 +43132,7 @@
 					"Draconic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -43239,9 +43239,9 @@
 					"attack": 25,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d6+13} bludgeoning plus {@damage 2d6} acid and {@damage 1d6} evil and Grab (page 305)",
+					"damage": "{@damage 2d6+13} bludgeoning plus {@damage 2d6} acid and {@damage 1d6} evil and {@ability Grab}",
 					"types": [
 						"acid",
 						"bludgeoning",
@@ -44611,7 +44611,7 @@
 					"Daemonic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -45285,9 +45285,9 @@
 						"magical"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+9} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+9} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -45300,7 +45300,7 @@
 						"magical"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 2d12+9} piercing plus Knockdown (page 305)",
 					"types": [
@@ -45668,7 +45668,7 @@
 					"Sylvan"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -45947,7 +45947,7 @@
 			"languages": {
 				"languages": [],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -46926,9 +46926,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 3d10+15} slashing plus Grab (page 305)",
+					"damage": "{@damage 3d10+15} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -48411,7 +48411,7 @@
 				{
 					"entries": [
 						"Whenever the troop Strides, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to their Speed.",
-						"This works just like a Gargantuan creature moving; for instance, if any square of the troop enters difficult terrain, the extra movement cost applies to the whole troop."
+						"This works just like a Gargantuan creature moving; for instance, if any square of the troop enters {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole troop."
 					],
 					"name": "Troop Movement"
 				},
@@ -48732,7 +48732,7 @@
 					"Aklo"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -49017,7 +49017,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"Rams ignore difficult terrain caused by narrow ledges."
+						"Rams ignore {@quickref difficult terrain||3|terrain} caused by narrow ledges."
 					],
 					"name": "Nimble Stride"
 				},
@@ -49540,7 +49540,7 @@
 				},
 				{
 					"entries": [
-						"Rosethorn ram ignores difficult terrain caused by narrow ledges and icy terrain, and reduces the effects it suffers from cold environments by one step."
+						"Rosethorn ram ignores {@quickref difficult terrain||3|terrain} caused by narrow ledges and icy terrain, and reduces the effects it suffers from cold environments by one step."
 					],
 					"name": "Mountain Stride The"
 				},
@@ -49681,9 +49681,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+4} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+4} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -50127,7 +50127,7 @@
 				},
 				{
 					"entries": [
-						"The sasquatch ignores difficult terrain in forests."
+						"The sasquatch ignores {@quickref difficult terrain||3|terrain} in forests."
 					],
 					"name": "Forest Stride"
 				},
@@ -50667,7 +50667,7 @@
 					"hp": 145,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -50852,7 +50852,7 @@
 					"Daemonic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -51792,7 +51792,7 @@
 				},
 				{
 					"entries": [
-						"The shambler troop is less organized than most troops. It can move into other creatures' spaces, and other creatures can move into its spaces. Its spaces are difficult terrain to other creatures."
+						"The shambler troop is less organized than most troops. It can move into other creatures' spaces, and other creatures can move into its spaces. Its spaces are {@quickref difficult terrain||3|terrain} to other creatures."
 					],
 					"name": "Grave Tide"
 				},
@@ -51809,7 +51809,7 @@
 				},
 				{
 					"entries": [
-						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by \u201320-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the troop enters difficult terrain, the extra movement cost applies to the whole troop."
+						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by \u201320-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square of the troop enters {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole troop."
 					],
 					"name": "Troop Movement"
 				}
@@ -52454,7 +52454,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 30 feet (page 306)"
+					"{@ability telepathy} 30 feet"
 				]
 			},
 			"skills": {
@@ -52554,9 +52554,9 @@
 						"magical"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d4+7} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d4+7} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -52569,7 +52569,7 @@
 						"magical"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 2d8+7} piercing plus Knockdown (page 305)",
 					"types": [
@@ -52662,7 +52662,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -53230,7 +53230,7 @@
 				},
 				{
 					"entries": [
-						"Whenever the skeleton infantry {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a Gargantuan creature moving; for instance, if any square of the infantry enter difficult terrain, the extra movement cost applies to all the guards."
+						"Whenever the skeleton infantry {@action Stride}, they first Form Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then move up to their Speed. This works just like a Gargantuan creature moving; for instance, if any square of the infantry enter {@quickref difficult terrain||3|terrain}, the extra movement cost applies to all the guards."
 					],
 					"name": "Troop Movement"
 				}
@@ -53938,7 +53938,7 @@
 					"hp": 190,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -54164,9 +54164,9 @@
 						"magical"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+12} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+12} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -54180,7 +54180,7 @@
 						"magical"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 2d12+12} piercing plus Knockdown (page 305)",
 					"types": [
@@ -54443,9 +54443,9 @@
 					"attack": 15,
 					"traits": null,
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+4} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+4} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -55052,7 +55052,7 @@
 					"Celestial"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -55151,7 +55151,7 @@
 					"attack": 14,
 					"traits": null,
 					"effects": [],
-					"damage": "{@damage 2d6+7} bludgeoning plus Grab (page 305) • Ranged {@as 1} stone ball +13 (range increment 30 feet), Damage {@damage 2d4+7} bludgeoning",
+					"damage": "{@damage 2d6+7} bludgeoning plus {@ability Grab} • Ranged {@as 1} stone ball +13 (range increment 30 feet), Damage {@damage 2d4+7} bludgeoning",
 					"types": [
 						"bludgeoning"
 					]
@@ -55216,7 +55216,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Melee} {@as 1} jaws +14, Damage {@damage 2d6+7} bludgeoning plus Grab (page 305)",
+								"{@bold Melee} {@as 1} jaws +14, Damage {@damage 2d6+7} bludgeoning plus {@ability Grab}",
 								"{@bold Ranged} {@as 1} stone ball +13 (range increment 30 feet), Damage {@damage 2d4+7} bludgeoning"
 							]
 						}
@@ -55227,7 +55227,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Melee} {@as 1} jaws +10 (agile), Damage {@damage 1d6+5} bludgeoning plus Grab (page 305)"
+								"{@bold Melee} {@as 1} jaws +10 (agile), Damage {@damage 1d6+5} bludgeoning plus {@ability Grab}"
 							]
 						}
 					]
@@ -55285,7 +55285,7 @@
 					"Celestial"
 				],
 				"languageAbilities": [
-					"telepathy 60 feet (page 306)"
+					"{@ability telepathy} 60 feet"
 				]
 			},
 			"skills": {
@@ -55383,9 +55383,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d6+5} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d6+5} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -55426,7 +55426,7 @@
 						{
 							"type": "list",
 							"items": [
-								"{@bold Melee} {@as 1} jaws +10 (agile), Damage {@damage 1d6+5} bludgeoning plus Grab (page 305)"
+								"{@bold Melee} {@as 1} jaws +10 (agile), Damage {@damage 1d6+5} bludgeoning plus {@ability Grab}"
 							]
 						}
 					],
@@ -55649,7 +55649,7 @@
 				},
 				{
 					"entries": [
-						"A storm hag is unaffected by strong winds, natural or magical. Windy conditions are not difficult terrain for her."
+						"A storm hag is unaffected by strong winds, natural or magical. Windy conditions are not {@quickref difficult terrain||3|terrain} for her."
 					],
 					"name": "Wind Mastery"
 				}
@@ -55785,9 +55785,9 @@
 						"magical"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d6+6} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 1d6+6} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -55800,7 +55800,7 @@
 						"magical"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 1d10+6} piercing plus Knockdown (page 305)",
 					"types": [
@@ -56104,7 +56104,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"The sturzstromer's space is greater difficult terrain."
+						"The sturzstromer's space is {@quickref greater difficult terrain||3|terrain}."
 					],
 					"name": "Clutching Stones"
 				},
@@ -56325,7 +56325,7 @@
 					"hp": 125,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -57203,7 +57203,7 @@
 				},
 				{
 					"entries": [
-						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters difficult terrain, the extra movement cost applies to the whole troop."
+						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters {@quickref difficult terrain||3|terrain}, the extra movement cost applies to the whole troop."
 					],
 					"name": "Troop Movement"
 				}
@@ -57468,7 +57468,7 @@
 						"agile"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 1d6+4} piercing plus Knockdown (page 305)",
 					"types": [
@@ -57706,7 +57706,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -57785,7 +57785,7 @@
 					],
 					"name": "Impossible Stature",
 					"entries_as_xyz": [
-						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over difficult terrain (greater difficult terrain on a critical failure) for 1 round."
+						"100 feet. Titans warp perception and distance around them to seem even larger and more imposing. A creature that enters or begins its turn within the emanation must succeed at a DC 44 Will save or its movement toward the titan is movement over {@quickref difficult terrain||3|terrain} ({@quickref greater difficult terrain||3|terrain} on a critical failure) for 1 round."
 					]
 				},
 				{
@@ -58208,7 +58208,7 @@
 				{
 					"entries": [
 						"A creature can provoke a waterlogged tiddalik (see Drink Abundance below) into laughing and releasing its stored water with a successful DC 25 check to {@action Perform} a joke or funny story. The tiddalik also disgorges its water automatically if it dies while waterlogged, or can voluntarily Deluge as a three-action activity that has the {@trait concentrate} trait.",
-						"The mass of stored water swamps a 10-foot emanation, dealing {@damage 8d6} bludgeoning damage to creatures in the area (DC 25 basic Reflex save) and making the area difficult terrain for 1 day. The tiddalik can't use its spit {@action Strike} or Expel Wave until it next Drinks in Abundance."
+						"The mass of stored water swamps a 10-foot emanation, dealing {@damage 8d6} bludgeoning damage to creatures in the area (DC 25 basic Reflex save) and making the area {@quickref difficult terrain||3|terrain} for 1 day. The tiddalik can't use its spit {@action Strike} or Expel Wave until it next Drinks in Abundance."
 					],
 					"name": "Deluge"
 				}
@@ -58228,9 +58228,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d10+9} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d10+9} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -58420,7 +58420,7 @@
 						"range increment 30 feet"
 					],
 					"effects": [
-						"Knockdown (page 305)"
+						"{@ability Knockdown}"
 					],
 					"damage": "{@damage 3d8+11} bludgeoning plus Knockdown (page 305)",
 					"types": [
@@ -58499,7 +58499,7 @@
 					],
 					"requirements": "The tidehawk is Flying",
 					"entries": [
-						"The tidehawk Flies up to its Speed, diving below the surface of deep water (such as a sea or ocean), causing a surging wave that deals {@damage 6d6} bludgeoning damage (DC 32 basic Reflex save) to each creature within a 60-foot emanation of where the tidehawk entered the water. The area becomes difficult terrain until the start of the tidehawk's next turn while the water surges and runs off."
+						"The tidehawk Flies up to its Speed, diving below the surface of deep water (such as a sea or ocean), causing a surging wave that deals {@damage 6d6} bludgeoning damage (DC 32 basic Reflex save) to each creature within a 60-foot emanation of where the tidehawk entered the water. The area becomes {@quickref difficult terrain||3|terrain} until the start of the tidehawk's next turn while the water surges and runs off."
 					],
 					"name": "Typhoon Dive"
 				}
@@ -58818,7 +58818,7 @@
 				},
 				{
 					"entries": [
-						"The tolokand recovers from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds and ignores difficult terrain and greater difficult terrain."
+						"The tolokand recovers from the {@condition paralyzed}, {@condition slowed}, and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds and ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}."
 					],
 					"name": "Inexorable"
 				},
@@ -59037,7 +59037,7 @@
 					"hp": 255,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -59820,7 +59820,7 @@
 					"hp": 45,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -59894,7 +59894,7 @@
 				},
 				{
 					"entries": [
-						"A trailgaunt ignores the effects of difficult terrain and greater difficult terrain."
+						"A trailgaunt ignores the effects of {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain}."
 					],
 					"name": "Sure Stride"
 				}
@@ -60491,9 +60491,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+5} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+5} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -60778,7 +60778,7 @@
 					"hp": 140,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -60809,9 +60809,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d12+9} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d12+9} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -60950,7 +60950,7 @@
 					"note": null,
 					"abilities": [
 						"fast healing 15 (page 305)",
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -62221,7 +62221,7 @@
 			"abilitiesMid": [
 				{
 					"entries": [
-						"When a vine leshy dies, a burst of primal energy explodes from its body, restoring {@dice 1d4} Hit Points to each plant creature in a 30-foot emanation. This area fills with tangling vines, becoming difficult terrain. If the terrain is not a viable environment for the vines, they wither after 24 hours."
+						"When a vine leshy dies, a burst of primal energy explodes from its body, restoring {@dice 1d4} Hit Points to each plant creature in a 30-foot emanation. This area fills with tangling vines, becoming {@quickref difficult terrain||3|terrain}. If the terrain is not a viable environment for the vines, they wither after 24 hours."
 					],
 					"name": "Verdant Burst"
 				}
@@ -63307,7 +63307,7 @@
 			"abilitiesTop": [
 				{
 					"entries": [
-						"A weasel treats any tight space it can barely fit its head in or wider as difficult terrain and doesn't need to {@action Squeeze} to move through it."
+						"A weasel treats any tight space it can barely fit its head in or wider as {@quickref difficult terrain||3|terrain} and doesn't need to {@action Squeeze} to move through it."
 					],
 					"name": "Lithe"
 				}
@@ -63350,9 +63350,9 @@
 						"finesse"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d4+2} piercing plus Grab (page 305)",
+					"damage": "{@damage 1d4+2} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -63739,9 +63739,9 @@
 					"traits": null,
 					"effects": [
 						"curse of the werecrocodile",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 1d10+4} piercing plus curse of the werecrocodile and Grab (page 305)",
+					"damage": "{@damage 1d10+4} piercing plus curse of the werecrocodile and {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -63911,7 +63911,7 @@
 					"Requian"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -64320,7 +64320,7 @@
 				},
 				{
 					"entries": [
-						"A winter hag can {@action Climb} at the listed Speed, but only on ice. She ignores difficult terrain from ice and snow, and she doesn't risk falling when crossing ice."
+						"A winter hag can {@action Climb} at the listed Speed, but only on ice. She ignores {@quickref difficult terrain||3|terrain} from ice and snow, and she doesn't risk falling when crossing ice."
 					],
 					"name": "Ice Climb"
 				}
@@ -64594,7 +64594,7 @@
 			"abilitiesBot": [
 				{
 					"entries": [
-						"A wolliped isn't impeded by difficult terrain caused by snow or ice, nor does it need to attempt {@skill Acrobatics} checks to keep from falling on slippery ice."
+						"A wolliped isn't impeded by {@quickref difficult terrain||3|terrain} caused by snow or ice, nor does it need to attempt {@skill Acrobatics} checks to keep from falling on slippery ice."
 					],
 					"name": "Ice Stride"
 				},
@@ -64717,7 +64717,7 @@
 					"hp": 280,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -64958,10 +64958,10 @@
 					],
 					"requirements": "The wyrmwraith is in their ectoplasmic form",
 					"entries": [
-						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}."
 					],
 					"name": "Phase Lurch",
-					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.296"
+					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though they were incorporeal. They must begin and end their movement outside of any physical obstacles, and passing through solid material is {@quickref difficult terrain||3|terrain}.' in Wyrmwraith, p.296"
 				}
 			],
 			"inflicts": {
@@ -65164,7 +65164,7 @@
 					"Requian"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -65465,7 +65465,7 @@
 					"Draconic"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {
@@ -65564,9 +65564,9 @@
 					],
 					"effects": [
 						"xiuh couatl venom",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d10+10} piercing plus {@damage 2d8} fire, xiuh couatl venom, and Grab (page 305)",
+					"damage": "{@damage 2d10+10} piercing plus {@damage 2d8} fire, xiuh couatl venom, and {@ability Grab}",
 					"types": [
 						"fire",
 						"piercing"
@@ -66121,9 +66121,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+12} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+12} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -66136,9 +66136,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+12} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+12} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -66237,7 +66237,7 @@
 				},
 				{
 					"entries": [
-						"The forest dragon ignores difficult terrain and greater difficult terrain from non-magical foliage."
+						"The forest dragon ignores {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} from non-magical foliage."
 					],
 					"name": "Woodland Stride"
 				}
@@ -66434,9 +66434,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+11} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+11} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -66449,9 +66449,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+11} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+11} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -66785,9 +66785,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+12} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+12} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -66800,9 +66800,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+12} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+12} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -67153,9 +67153,9 @@
 						"agile"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+13} slashing plus Grab (page 305)",
+					"damage": "{@damage 2d8+13} slashing plus {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -67168,9 +67168,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+13} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+13} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -67445,9 +67445,9 @@
 					],
 					"effects": [
 						"adamantine claws",
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+8} slashing plus adamantine claws and Grab (page 305)",
+					"damage": "{@damage 2d8+8} slashing plus adamantine claws and {@ability Grab}",
 					"types": [
 						"slashing"
 					]
@@ -67460,9 +67460,9 @@
 						"reach 20 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+8} bludgeoning plus Grab (page 305)",
+					"damage": "{@damage 2d8+8} bludgeoning plus {@ability Grab}",
 					"types": [
 						"bludgeoning"
 					]
@@ -67765,9 +67765,9 @@
 						"reach 10 feet"
 					],
 					"effects": [
-						"Grab (page 305)"
+						"{@ability Grab}"
 					],
-					"damage": "{@damage 2d8+11} piercing plus Grab (page 305)",
+					"damage": "{@damage 2d8+11} piercing plus {@ability Grab}",
 					"types": [
 						"piercing"
 					]
@@ -67898,7 +67898,7 @@
 					"hp": 210,
 					"note": null,
 					"abilities": [
-						"negative healing (page 305)"
+						"{@ability negative healing}"
 					]
 				}
 			],
@@ -68020,7 +68020,7 @@
 					"Common"
 				],
 				"languageAbilities": [
-					"telepathy 100 feet (page 306)"
+					"{@ability telepathy} 100 feet"
 				]
 			},
 			"skills": {

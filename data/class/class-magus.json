@@ -729,7 +729,7 @@
 			"classSource": "SoM",
 			"level": 1,
 			"entries": [
-				"You've learned the fundamental magus technique that lets you combine magical and physical attacks together. You gain the {@action Spellstrike} activity.",
+				"You've learned the fundamental magus technique that lets you combine magical and physical attacks together. You gain the {@action Spellstrike|SoM} activity.",
 				{
 					"type": "ability",
 					"style": "full",
@@ -745,8 +745,8 @@
 						"unit": "action"
 					},
 					"entries": [
-						"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee {@action Strike} with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the {@action Strike} and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it magical.",
-						"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a conflux spell (page 40) that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
+						"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it {@trait magical}.",
+						"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Classes=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
 					]
 				},
 				{
@@ -754,7 +754,7 @@
 					"name": "Spellstrike Specifics",
 					"entries": [
 						"Though the base {@action Spellstrike|SoM} rules cover most spells, various modifications apply to more complicated spells when loaded into your fist, blade, or other attack.",
-						"{@b One Target:} The spell targets only the target of your Strike, even if it normally allows more targets. Some feats let you affect more creatures.",
+						"{@b One Target:} The spell targets only the target of your {@action Strike}, even if it normally allows more targets. Some feats let you affect more creatures.",
 						"{@b Reach:} The coupled spell affects the target using the reach of the weapon or unarmed attack you make your {@action Spellstrike|SoM} with. For instance, {@spell shocking grasp} would affect a creature beyond the reach of your hand if you used a weapon with reach, and {@spell ray of frost} would affect only a creature in your weapon's reach, even though the spell's range is longer.",
 						"{@b Ancillary Effects:} Your spell still has any non-targeted effects that might affect creatures other than the target, as well as any ongoing effects starting from the moment you hit with the {@action Strike}. For example, {@spell acid splash} would still deal its splash damage to creatures other than the target and tanglefoot's circumstance penalty would last for its normal duration. The spell takes effect after the {@action Strike} deals damage; if the {@action Strike} has other special effects, the GM determines whether they happen before or after the spell.",
 						"{@b Multiple Defenses:} Any additional rolls after the initial spell attack still happen normally, such as the Fortitude save attempted by the target of a disintegrate spell. Similarly, a spell that allows you to attack with it again on subsequent rounds would only combine a {@action Strike} with its initial attack roll, not with any later ones.",
@@ -1058,6 +1058,7 @@
 			"entries": [
 				{
 					"name": "Inexorable Iron",
+					"source": "SoM",
 					"type": "pf2-h4",
 					"entries": [
 						"Once you begin along a path, nothing can stop you from reaching its end. You transform the mass of a greataxe, greatsword, or polearm into an unstoppable force to augment your own striking power or keep you standing on the battlefield.",
@@ -1079,6 +1080,7 @@
 			"entries": [
 				{
 					"name": "Laughing Shadow",
+					"source": "SoM",
 					"type": "pf2-h4",
 					"entries": [
 						"Magic is freeing, a means to your ends, and you can use it to go where you want, do as you please, and avoid the consequences. You are a laughing shadow of spell and blade, always one step ahead of your foes, always with a trick up your sleeve.",
@@ -1100,6 +1102,7 @@
 			"entries": [
 				{
 					"name": "Sparkling Targe",
+					"source": "SoM",
 					"type": "pf2-h4",
 					"entries": [
 						"You've studied the applications of magic, training yourself to perform not just offensive maneuvers but defensive tactics as well. When magic flows through you, your shield can block impossible things, even a dragon's breath or a magic missile.",
@@ -1122,6 +1125,7 @@
 			"entries": [
 				{
 					"name": "Starlit Span",
+					"source": "SoM",
 					"type": "pf2-h4",
 					"entries": [
 						"With magic, the sky's the limit, and you can't be bound by the confines of physical proximity. Your power reaches as far as your senses can perceive, transcending the space between you and your target even with spells that normally require direct physical contact.",
@@ -1143,6 +1147,7 @@
 			"entries": [
 				{
 					"name": "Twisting Tree",
+					"source": "SoM",
 					"type": "pf2-h4",
 					"entries": [
 						"The staff is perhaps one of the simplest of weapons, but this simplicity belies its elegance and versatility. To you, a staff is casting implement and martial weapon alike\u2014the foundation of a fighting style.",

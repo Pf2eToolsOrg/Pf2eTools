@@ -161,7 +161,7 @@
 					"type": "list",
 					"items": [
 						"{@b Stabilize} Attempt a {@skill Medicine} check on a creature that has 0 Hit Points and the {@condition dying|CRB} condition. The DC is equal to 5 + that creature's recovery roll DC (typically 15 + its dying value).",
-						"{@b Stop Bleeding} Attempt a {@skill Medicine} check on a creature that is taking {@condition persistent damage|CRB|persistent bleed damage} (page 452), giving them a chance to make another flat check to remove the {@condition persistent damage|CRB}. The DC is usually the DC of the effect that caused the bleed."
+						"{@b Stop Bleeding} Attempt a {@skill Medicine} check on a creature that is taking {@condition persistent damage|CRB|persistent bleed damage}, giving them a chance to make another flat check to remove the {@condition persistent damage|CRB}. The DC is usually the DC of the effect that caused the bleed."
 					]
 				},
 				{
@@ -971,7 +971,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "You move up to your Speed.",
-						"Success": "You move up to your Speed, treating it as difficult terrain (every 5 feet costs 10 feet of movement).",
+						"Success": "You move up to your Speed, treating it as {@quickref difficult terrain||3|terrain} (every 5 feet costs 10 feet of movement).",
 						"Failure": "You must remain stationary to keep your balance (wasting the action) or you fall. If you fall, your turn ends.",
 						"Critical Failure": "You fall and your turn ends."
 					}
@@ -1674,14 +1674,24 @@
 					"type": "pf2-sample-box",
 					"name": "Consumables and Ammunition",
 					"entries": [
-						"You can Craft items with the consumable trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also Craft non-magical ammunition in batches, using the quantity listed in Table 6\u20138: Ranged Weapons (typically 10)."
+						"You can Craft items with the consumable trait in batches, making up to four of the same item at once with a single check. This requires you to include the raw materials for all the items in the batch at the start, and you must complete the batch all at once. You also {@action Craft} non-magical ammunition in batches, using the quantity listed in {@table Ranged Weapons||Table 6\u20138: Ranged Weapons} (typically 10)."
 					]
 				},
 				{
 					"type": "pf2-sample-box",
 					"name": "Getting Formulas",
 					"entries": [
-						"You can gain access to the formulas for all common items in Chapter 6: Equipment by purchasing a basic crafter's book (page 287). See the rules on page 293 for information on how to acquire other formulas."
+						"You can gain access to the formulas for all common items in Chapter 6: Equipment by purchasing a {@item basic crafter's book}. See the rules on page 293 for information on how to acquire other formulas."
+					]
+				},
+				{
+					"type": "pf2-brown-box",
+					"name": "Crafting Example",
+					"entries": [
+						"Ezren is a 5th-level wizard and an expert in {@skill Crafting}. He has a {@skill Crafting} modifier of +13 and the {@feat Magical Crafting} feat. With 2 weeks of downtime ahead of him, he decides to craft a {@item striking} rune, a 4th-level item. The GM secretly chooses a DC of 19.",
+						"The item has a Price of 65 gp, so Ezren prepares 32 gp, 5 sp worth of raw materials. He has another 32 gp, 5 sp worth of raw materials on hand. After spending 4 days building and incanting spells, he rolls a 12 on his {@skill Crafting} check, for a result of 25. That's a success! At this point, Ezren can spend the additional 32 gp, 5 sp worth of materials to complete the item immediately for 65 gp.",
+						"However, Ezren has 10 more days on his hands, so he decides to spend additional time to complete the item.",
+						"Because he's a 5th-level character and an expert at {@skill Crafting}, he reduces the amount he has to pay by 1 gp for each day spent. After spending 10 days working, he reduces the cost to complete the item from 65 gp to 55 gp. He spends the remaining portion of its Price in materials, completes the {@item striking} rune, and goes out on his next adventure. (He could have stayed home to keep working on the striking rune, eventually reducing the item's total Price to just the half he paid up front, but adventuring is far more lucrative!) If Ezren's {@skill Crafting} check result were a 29 or higher, he'd have gotten a critical success. In that case, he'd reduce the remaining amount by 2 gp per day, lowering the amount needed to complete the item after 10 additional days of work to 45 gp."
 					]
 				}
 			]
@@ -1730,7 +1740,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "You become hidden to each creature whose {@skill Perception} DC is less than or equal to your result. (The {@condition hidden|CRB} condition allows you to {@action Sneak|CRB} away, as described on page 252.) This lasts until the end of your turn or until you do anything except {@action Step|CRB} or use the {@action Hide|CRB} or the {@action Sneak|CRB} action of the {@skill Stealth} skill (pages 251 and 252). If you {@action Strike|CRB} a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise.",
+						"Success": "You become hidden to each creature whose {@skill Perception} DC is less than or equal to your result. (The {@condition hidden|CRB} condition allows you to {@action Sneak|CRB} away, as described on page 252.) This lasts until the end of your turn or until you do anything except {@action Step|CRB} or use the {@action Hide|CRB} or the {@action Sneak|CRB} action of the {@skill Stealth} skill. If you {@action Strike|CRB} a creature, the creature remains {@condition flat-footed|CRB} against that attack, and you then become {@condition observed|CRB}. If you do anything else, you become {@condition observed|CRB} just before you act unless the GM determines otherwise.",
 						"Failure": "You don't divert the attention of any creatures whose {@skill Perception} DC exceeds your result, and those creatures are aware you were trying to trick them."
 					}
 				}
@@ -2014,7 +2024,7 @@
 					]
 				}
 			},
-			"requirements": "Some devices require you to use {@item thieves' tools|CRB} (page 291) when disabling them.",
+			"requirements": "Some devices require you to use {@item thieves' tools|CRB} when disabling them.",
 			"entries": [
 				"This action allows you to disarm a trap or another complex device. Often, a device requires numerous successes before becoming disabled, depending on its construction and complexity. Thieves' tools are helpful and sometimes even required to Disable a Device, as determined by the GM, and sometimes a device requires a higher proficiency rank in Thievery to disable it.",
 				"Your {@skill Thievery} check result determines how much progress you make.",
@@ -2392,7 +2402,7 @@
 			},
 			"requirements": "You have a fly Speed.",
 			"entries": [
-				"You move through the air up to your fly Speed. Moving upward (straight up or diagonally) uses the rules for moving through difficult terrain. You can move straight down 10 feet for every 5 feet of movement you spend. If you Fly to the ground, you don't take falling damage. You can use an action to Fly 0 feet to hover in place. If you're airborne at the end of your turn and didn't use a Fly action this round, you fall."
+				"You move through the air up to your fly Speed. Moving upward (straight up or diagonally) uses the rules for moving through {@quickref difficult terrain||3|terrain}. You can move straight down 10 feet for every 5 feet of movement you spend. If you Fly to the ground, you don't take falling damage. You can use an action to Fly 0 feet to hover in place. If you're airborne at the end of your turn and didn't use a Fly action this round, you fall."
 			]
 		},
 		{
@@ -4029,7 +4039,7 @@
 				]
 			},
 			"entries": [
-				"You spend time surveying and exploring a specific area, getting the lay of the land and looking for unusual features and specific sites. Reconnoitering a single hex takes a number of hexploration activities equal to the number of Travel activities necessary to traverse the hex\u20141 for open terrain, 2 for difficult terrain, and 3 for greater difficult terrain. Traveling on roads doesn't lessen the time required to Reconnoiter. Once the hex has been Reconnoitered, you can {@action Map the Area|GMG} to reduce your chance of getting lost in that hex. You automatically find any special feature that doesn't require a check to find, and you attempt the appropriate checks to find hidden special features.",
+				"You spend time surveying and exploring a specific area, getting the lay of the land and looking for unusual features and specific sites. Reconnoitering a single hex takes a number of hexploration activities equal to the number of Travel activities necessary to traverse the hex\u20141 for open terrain, 2 for {@quickref difficult terrain||3|terrain}, and 3 for {@quickref greater difficult terrain||3|terrain}. Traveling on roads doesn't lessen the time required to Reconnoiter. Once the hex has been Reconnoitered, you can {@action Map the Area|GMG} to reduce your chance of getting lost in that hex. You automatically find any special feature that doesn't require a check to find, and you attempt the appropriate checks to find hidden special features.",
 				"For instance, if you were looking for an obvious rock formation among some hills, you would spend 2 hexploration activities to Reconnoiter the hex, and you'd find the rock formation. But if you were looking for a hidden tengu monastery somewhere in some deep forests, after spending 2 activities to Reconnoiter the forest hex, you would have to succeed at a {@skill Perception} check as part of your Reconnoiter activity to find the monastery."
 			]
 		},
@@ -4097,7 +4107,7 @@
 			},
 			"requirements": "You have a {@item repair kit|CRB}.",
 			"entries": [
-				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the {@item repair kit|CRB}with both hands. The GM sets the DC, but it's usually about the same DC to Repair a given item as it is to {@skill Craft} it in the first place. You can't Repair a destroyed item.",
+				"You spend 10 minutes attempting to fix a damaged item, placing the item on a stable surface and using the {@item repair kit|CRB} with both hands. The GM sets the DC, but it's usually about the same DC to Repair a given item as it is to {@skill Craft} it in the first place. You can't Repair a destroyed item.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4663,8 +4673,24 @@
 			},
 			"frequency": "until recharged (see below)",
 			"entries": [
-				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your Strike the arcane trait, making it magical.",
-				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the concentrate trait. You also recharge your Spellstrike when you cast a conflux spell (page 40) that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
+				"You channel a spell into a punch or sword thrust to deliver a combined attack. You {@action Cast a Spell} that takes 1 or 2 actions to cast and requires a spell attack roll. The effects of the spell don't occur immediately but are imbued into your attack instead. Make a melee Strike with a weapon or unarmed attack. Your spell is coupled with your attack, using your attack roll result to determine the effects of both the Strike and the spell. This counts as two attacks for your multiple attack penalty, but you don't apply the penalty until after you've completed the Spellstrike. The infusion of spell energy grants your {@action Strike} the {@trait arcane} trait, making it {@trait magical}.",
+				"After you use Spellstrike, you can't do so again until you recharge your Spellstrike as a single action, which has the {@trait concentrate} trait. You also recharge your Spellstrike when you cast a {@filter conflux spell|spells||Classes=Magus} that takes at least 1 action to cast; casting a focus spell of another type doesn't recharge your Spellstrike."
+			],
+			"info": [
+				{
+					"type": "pf2-h4",
+					"name": "Spellstrike Specifics",
+					"entries": [
+						"Though the base {@action Spellstrike|SoM} rules cover most spells, various modifications apply to more complicated spells when loaded into your fist, blade, or other attack.",
+						"{@b One Target:} The spell targets only the target of your {@action Strike}, even if it normally allows more targets. Some feats let you affect more creatures.",
+						"{@b Reach:} The coupled spell affects the target using the reach of the weapon or unarmed attack you make your {@action Spellstrike|SoM} with. For instance, {@spell shocking grasp} would affect a creature beyond the reach of your hand if you used a weapon with reach, and {@spell ray of frost} would affect only a creature in your weapon's reach, even though the spell's range is longer.",
+						"{@b Ancillary Effects:} Your spell still has any non-targeted effects that might affect creatures other than the target, as well as any ongoing effects starting from the moment you hit with the {@action Strike}. For example, {@spell acid splash} would still deal its splash damage to creatures other than the target and tanglefoot's circumstance penalty would last for its normal duration. The spell takes effect after the {@action Strike} deals damage; if the {@action Strike} has other special effects, the GM determines whether they happen before or after the spell.",
+						"{@b Multiple Defenses:} Any additional rolls after the initial spell attack still happen normally, such as the Fortitude save attempted by the target of a disintegrate spell. Similarly, a spell that allows you to attack with it again on subsequent rounds would only combine a {@action Strike} with its initial attack roll, not with any later ones.",
+						"{@b Invalid or Immune Target:} If the target you hit wouldn't be a valid target for the spell, the spell is still expended but doesn't affect the target. If the target is immune to your attack but not the spell, it can still be affected by the spell.",
+						"{@b Variable Actions:} Some spells have different effects based on the number of actions you spend to cast them. You choose whether to use the effects of the 1-&nbsp;or&nbsp;2-action version of the spell when you use {@action Spellstrike|SoM}. A spell has to take exactly 1 or 2 actions; you can't use {@action Spellstrike|SoM} with a spell that takes a free action, reaction, or 3 or more actions.",
+						"{@b Metamagic:} You typically can't use metamagic with {@action Spellstrike|SoM} because metamagic requires the next action you take to be {@action Cast a Spell}, and {@action Spellstrike|SoM} is a combined activity that doesn't qualify."
+					]
+				}
 			]
 		},
 		{
@@ -4684,7 +4710,7 @@
 				}
 			},
 			"entries": [
-				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are difficult terrain (page 475) that you can move through more quickly and without a check.",
+				"You contort yourself to squeeze through a space so small you can barely fit through. This action is for exceptionally small spaces; many tight spaces are {@quickref difficult terrain||3|terrain} that you can move through more quickly and without a check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4786,7 +4812,7 @@
 			"requirements": "Your Speed is at least 10 feet.",
 			"entries": [
 				"You carefully move 5 feet. Unlike most types of movement, Stepping doesn't trigger reactions, such as Attacks of Opportunity, that can be triggered by move actions or upon leaving or entering a square.",
-				"You can't Step into difficult terrain, and you can't Step using a Speed other than your land Speed."
+				"You can't Step into {@quickref difficult terrain||3|terrain}, and you can't Step using a Speed other than your land Speed."
 			]
 		},
 		{
@@ -5259,8 +5285,8 @@
 				]
 			},
 			"entries": [
-				"You progress toward moving into an adjacent hex. In open terrain, like a plain, using 1 Travel activity allows you to move from one hex to an adjacent hex. Traversing a hex with difficult terrain (such as a typical forest or desert) requires 2 Travel activities, and hexes of greater difficult terrain (such as a steep mountain or typical swamp) require 3 Travel activities to traverse. Traveling along a road uses a terrain type one step better than the surrounding terrain. For example, if you are traveling on a road over a mountain pass, the terrain is difficult terrain instead of greater difficult terrain.",
-				"The Travel activity assumes you are walking overland. If you are flying or traveling on water, most hexes are open terrain, though there are exceptions. Flying into storms or high winds count as difficult or greater difficult terrain. Traveling down a river is open terrain, but traveling upriver is difficult or greater difficult terrain."
+				"You progress toward moving into an adjacent hex. In open terrain, like a plain, using 1 Travel activity allows you to move from one hex to an adjacent hex. Traversing a hex with {@quickref difficult terrain||3|terrain} (such as a typical forest or desert) requires 2 Travel activities, and hexes of {@quickref greater difficult terrain||3|terrain} (such as a steep mountain or typical swamp) require 3 Travel activities to traverse. Traveling along a road uses a terrain type one step better than the surrounding terrain. For example, if you are traveling on a road over a mountain pass, the terrain is {@quickref difficult terrain||3|terrain} instead of {@quickref greater difficult terrain||3|terrain}.",
+				"The Travel activity assumes you are walking overland. If you are flying or traveling on water, most hexes are open terrain, though there are exceptions. Flying into storms or high winds count as difficult or {@quickref greater difficult terrain||3|terrain}. Traveling down a river is open terrain, but traveling upriver is difficult or {@quickref greater difficult terrain||3|terrain}."
 			]
 		},
 		{
@@ -5433,7 +5459,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Success": "You move through the enemy's space, treating the squares in its space as difficult terrain (every 5 feet costs 10 feet of movement). If you don't have enough Speed to move all the way through its space, you get the same effect as a failure.",
+						"Success": "You move through the enemy's space, treating the squares in its space as {@quickref difficult terrain||3|terrain} (every 5 feet costs 10 feet of movement). If you don't have enough Speed to move all the way through its space, you get the same effect as a failure.",
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
 					}
 				}

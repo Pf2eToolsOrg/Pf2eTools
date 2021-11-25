@@ -1201,7 +1201,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"Juxtaposition ammunition quivers with anticipation, as if the projectile wishes to constantly be in motion. When an activated juxtaposition ammunition hits a creature, it doesn't deal the {@action Strike}'s normal damage. Instead, the target must succeed at a DC 28 Will save or be teleported to a safe, unoccupied square of your choice within 60 feet of its original position and within the weapon's first range increment. On a critical failure, the target is also {@condition sickened|CRB|sickened 1} from the gut-wrenching sensation of sudden movement. Any relocation from the juxtaposition ammunition is forced movement."
+				"Juxtaposition ammunition quivers with anticipation, as if the projectile wishes to constantly be in motion. When an activated juxtaposition ammunition hits a creature, it doesn't deal the {@action Strike}'s normal damage. Instead, the target must succeed at a DC 28 Will save or be teleported to a safe, unoccupied square of your choice within 60 feet of its original position and within the weapon's first range increment. On a critical failure, the target is also {@condition sickened|CRB|sickened 1} from the gut-wrenching sensation of sudden movement. Any relocation from the juxtaposition ammunition is {@quickref forced movement||3|forced movement}."
 			],
 			"page": 19
 		},
@@ -2466,7 +2466,7 @@
 						"note": null
 					},
 					"entries": [
-						"The damage of your polar wind increases to {@dice 12d6}, the range increases to 60 feet, and you can choose to increase the radius to 15 or 20 feet. While exposed to incredible cold, you only take minor cold damage every hour, instead of moderate cold damage every minute. You ignore the uneven ground and difficult terrain caused by ice and the difficult terrain caused by snow (reducing greater difficult terrain from ice or snow to normal difficult terrain)."
+						"The damage of your polar wind increases to {@dice 12d6}, the range increases to 60 feet, and you can choose to increase the radius to 15 or 20 feet. While exposed to incredible cold, you only take minor cold damage every hour, instead of moderate cold damage every minute. You ignore the uneven ground and {@quickref difficult terrain||3|terrain} caused by ice and the {@quickref difficult terrain||3|terrain} caused by snow (reducing {@quickref greater difficult terrain||3|terrain} from ice or snow to normal {@quickref difficult terrain||3|terrain})."
 					]
 				}
 			],
@@ -2518,7 +2518,7 @@
 			"usage": "tattoo",
 			"bulk": "\u2014",
 			"entries": [
-				"This tattoo is a series of six concentric circles that show up as a soft yellow on any skin tone. The marks carry in them a protective force that bolsters your body and soul. The first time each day that someone attempts to Treat your Wounds and rolls a critical failure, they get a failure instead.",
+				"This tattoo is a series of six concentric circles that show up as a soft yellow on any skin tone. The marks carry in them a protective force that bolsters your body and soul. The first time each day that someone attempts to {@action Treat Wounds||Treat your Wounds} and rolls a critical failure, they get a failure instead.",
 				{
 					"type": "ability",
 					"activity": {
@@ -2556,7 +2556,7 @@
 						"note": null
 					},
 					"entries": [
-						"Any time someone rolls a critical failure to Treat your Wounds, they get a failure instead. The glow has the effects of a 4th-level {@spell light} spell, and you regain {@dice 2d8} Hit Points per round."
+						"Any time someone rolls a critical failure to {@action Treat Wounds||Treat your Wounds}, they get a failure instead. The glow has the effects of a 4th-level {@spell light} spell, and you regain {@dice 2d8} Hit Points per round."
 					]
 				}
 			],
@@ -2984,7 +2984,7 @@
 			"usage": "worn",
 			"bulk": "1",
 			"entries": [
-				"The tough, scaled leather of these heavy boots comes from a mighty dinosaur, granting you the steadiness of a lumbering beast. Any time an action or effect would cause you to make a forced movement, roll a DC {@flatDC 17} flat check. On a success, the forced movement fails to affect you.",
+				"The tough, scaled leather of these heavy boots comes from a mighty dinosaur, granting you the steadiness of a lumbering beast. Any time an action or effect would cause you to make a {@quickref forced movement||3|forced movement}, roll a DC {@flatDC 17} flat check. On a success, the {@quickref forced movement||3|forced movement} fails to affect you.",
 				{
 					"type": "ability",
 					"activity": {
@@ -3234,7 +3234,7 @@
 				"note": null
 			},
 			"entries": [
-				"You weave plant matter among loose stones in an area with trees or a ceiling overhead. When a creature enters the square, the snare's square and each adjacent square becomes difficult terrain, and the triggering creature must attempt a DC 19 Reflex saving throw.",
+				"You weave plant matter among loose stones in an area with trees or a ceiling overhead. When a creature enters the square, the snare's square and each adjacent square becomes {@quickref difficult terrain||3|terrain}, and the triggering creature must attempt a DC 19 Reflex saving throw.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -4096,7 +4096,7 @@
 					"trigger": null,
 					"requirements": "The mirror robe was last activated to draw attention toward you, or you haven't used the mirror robe today",
 					"entries": [
-						"The mirror robe Creates a Diversion for you with a +9 {@skill Deception} modifier."
+						"The mirror robe {@action Create a Diversion||Creates a Diversion} for you with a +9 {@skill Deception} modifier."
 					]
 				},
 				{
@@ -4221,14 +4221,14 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
 					"entries": [
 						"You enter a brief trance in which you envision yourself entering a large dressing room. You maneuver through the endless dressing-room mindscape and search for whatever articles of clothing, accessories, and other garments you desire.",
-						"After the activation, you gain the effects of illusory disguise, except that it only causes you to appear to be wearing the exact outfit you selected within the mindscape. The illusion also disguises the wardrobe stone to match your outfit and not appear out of place, such as by appearing to be a glove or bracelet, though it continues to occupy your hand while you're under the effects of illusory disguise.",
+						"After the activation, you gain the effects of {@spell illusory disguise}, except that it only causes you to appear to be wearing the exact outfit you selected within the mindscape. The illusion also disguises the wardrobe stone to match your outfit and not appear out of place, such as by appearing to be a glove or bracelet, though it continues to occupy your hand while you're under the effects of illusory disguise.",
 						"You can actively {@action Dismiss} the Spell, but the effects are also dismissed immediately when you're no longer holding the wardrobe stone."
 					]
 				}
@@ -4253,8 +4253,25 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to a specific {@skill Lore} skill associated with your outfit, such as {@skill Lore|Carpentry Lore} when wearing a carpenter's outfit or {@skill Lore|Cooking Lore} when wearing a chef's outfit.",
-						"Activate (1 minute) envision, {@action Interact}; Frequency once per day; Effect You cast {@spell prying eye}."
+						"You gain a +2 item bonus to a specific {@skill Lore} skill associated with your outfit, such as {@skill Lore||Carpentry Lore} when wearing a carpenter's outfit or {@skill Lore||Cooking Lore} when wearing a chef's outfit.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 1,
+								"unit": "minute",
+								"entry": "(1 minute)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"You cast {@spell prying eye}."
+							]
+						}
 					]
 				},
 				{
@@ -4267,8 +4284,42 @@
 					},
 					"entries": [
 						"You gain +3 item bonus to {@skill Perception} checks involving sight and a +3 item bonus to a specific {@skill Lore} skill associated with your outfit.",
-						"Activate (1 minute) envision, {@action Interact}; Effect You cast {@spell prying eye}.",
-						"Activate (10 minutes) envision, {@action Interact}; Effect The wardrobe stone splits open and permanently transforms into a specific type of magical robe of your choosing. It can transform into any 20th-level or lower magical robe to which you have access, except for items that can't normally be Crafted, such as artifacts. This process is irreversible."
+						{
+							"type": "ability",
+							"activity": {
+								"number": 1,
+								"unit": "minute",
+								"entry": "(1 minute)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"You cast {@spell prying eye}."
+							]
+						},
+						{
+							"type": "ability",
+							"activity": {
+								"number": 10,
+								"unit": "minute",
+								"entry": "(10 minutes)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"The wardrobe stone splits open and permanently transforms into a specific type of magical robe of your choosing. It can transform into any 20th-level or lower magical robe to which you have access, except for items that can't normally be {@action Craft||Crafted}, such as artifacts. This process is irreversible."
+							]
+						}
 					]
 				}
 			],
@@ -4597,7 +4648,7 @@
 						"note": null
 					},
 					"entries": [
-						"These dice are weighted on one side to ensure they always land with the desired number facing up. Loaded dice grant you a +1 item bonus to {@skill Lore|Games Lore} checks to gamble with the dice. You can determine a die is loaded while handling it with a successful secret DC 20 {@skill Perception} check. Determining dice are loaded without handling the dice is more difficult, especially since smart cheaters switch loaded dice in and out so they don't suspiciously roll the same number over and over. In this case, an observer must succeed at a secret {@skill Perception} check against the roller's {@skill Lore|Games Lore} or {@skill Thievery} DC to notice the switches or the patterns."
+						"These dice are weighted on one side to ensure they always land with the desired number facing up. Loaded dice grant you a +1 item bonus to {@skill Lore||Games Lore} checks to gamble with the dice. You can determine a die is loaded while handling it with a successful secret DC 20 {@skill Perception} check. Determining dice are loaded without handling the dice is more difficult, especially since smart cheaters switch loaded dice in and out so they don't suspiciously roll the same number over and over. In this case, an observer must succeed at a secret {@skill Perception} check against the roller's {@skill Lore||Games Lore} or {@skill Thievery} DC to notice the switches or the patterns."
 					]
 				}
 			],
@@ -4742,7 +4793,7 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"entries": [
-				"A puzzle box features moving parts, locking mechanisms, and other components designed to confound the user. Solving a puzzle box typically requires three successful {@skill Lore|Games Lore} or {@skill Thievery} checks to Open a Lock, though puzzle boxes come in countless configurations and themes, and the GM can determine which skills are appropriate."
+				"A puzzle box features moving parts, locking mechanisms, and other components designed to confound the user. Solving a puzzle box typically requires three successful {@skill Lore||Games Lore} or {@skill Thievery} checks to Open a Lock, though puzzle boxes come in countless configurations and themes, and the GM can determine which skills are appropriate."
 			],
 			"variants": [
 				{
@@ -5795,7 +5846,7 @@
 					"requirements": null,
 					"entries": [
 						"The target must succeed at a DC 20 Reflex save or be moved 5 feet in a direction you choose.",
-						"This is forced movement."
+						"This is {@quickref forced movement||3|forced movement}."
 					]
 				}
 			],
@@ -8946,7 +8997,7 @@
 					},
 					"entries": [
 						"You siphon your fleshgem's power, and the earth around you erupts in crystal stalagmites.",
-						"Activate {@as 1} to {@as 2} command; Frequency once per day; Requirements You are standing on the ground; Effect The ground around you erupts in a 10-foot burst of knee-high crystal shards that remain for 1 round, or 1 minute if you spent two actions. To all creatures other than you, the area is difficult terrain as well as hazardous terrain. Creatures that move through a space containing crystal shards take 2 piercing damage."
+						"Activate {@as 1} to {@as 2} command; Frequency once per day; Requirements You are standing on the ground; Effect The ground around you erupts in a 10-foot burst of knee-high crystal shards that remain for 1 round, or 1 minute if you spent two actions. To all creatures other than you, the area is {@quickref difficult terrain||3|terrain} as well as hazardous terrain. Creatures that move through a space containing crystal shards take 2 piercing damage."
 					]
 				}
 			],
