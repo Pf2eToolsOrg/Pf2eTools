@@ -170,7 +170,7 @@
 			],
 			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
 			"entries": [
-				"You become attuned to the stone around you. When in contact with a stone surface, you gain tremorsense (imprecise) 5 feet along that surface, and you can activate your ka stone to cast {@spell meld into stone}."
+				"You become attuned to the stone around you. When in contact with a stone surface, you gain {@ability tremorsense} (imprecise) 5 feet along that surface, and you can activate your ka stone to cast {@spell meld into stone}."
 			]
 		},
 		{
@@ -460,7 +460,7 @@
 			],
 			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
 			"entries": [
-				"Your flesh takes on the hardness of stone. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the Living Monolith archetype."
+				"Your flesh takes on the hardness of stone. You gain resistance to physical damage (except adamantine) equal to your number of class feats from the {@archetype Living Monolith|LOWG} archetype."
 			]
 		},
 		{
@@ -591,7 +591,7 @@
 			],
 			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
 			"entries": [
-				"You can use the oaths bound in your ka stone to compel the truth from the living and the dead. You can activate your ka stone to target a single living creature, causing that creature to experience the effects of being in a zone of truth. You can also activate it with a 10-minute activation (envision) to cast {@spell talking corpse}."
+				"You can use the oaths bound in your ka stone to compel the truth from the living and the dead. You can activate your ka stone to target a single living creature, causing that creature to experience the effects of being in a {@spell zone of truth}. You can also activate it with a 10-minute activation (envision) to cast {@spell talking corpse}."
 			]
 		},
 		{
@@ -614,7 +614,21 @@
 			"entries": [
 				"You inscribe your true name on your ka stone, as well as oaths to gods and pharaohs, and embed it in your forehead in a special ritual with a sphinx or with a living monolith who already has this feat. The ka stone is an invested magic item that you automatically invest each day. It can't be removed without your permission, nor can it be dispelled, and you can never lose investiture in the ka stone. Its Bulk is negligible.",
 				"The ka stone grants you a +1 item bonus to saves against {@trait death} effects and {@trait negative} effects, which increases to +2 at 8th level, +3 at 14th level, and +4 at 20th level.",
-				"Activate {@as 2} (envision), or a different activation if otherwise specified; Frequency a number of times each day equal to the number of class feats you have from the Living Monolith archetype; Effect You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later Living Monolith feat."
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"(envision)",
+						"or a different activation if otherwise specified"
+					],
+					"frequency": "a number of times each day equal to the number of class feats you have from the {@archetype Living Monolith|LOWG} archetype",
+					"entries": [
+						"You cast {@spell enlarge} on yourself or use one of the other activated abilities granted by a later {@archetype Living Monolith|LOWG} feat."
+					]
+				}
 			],
 			"leadsTo": [
 				"Attunement To Stone|LOWG",
@@ -1217,7 +1231,7 @@
 			],
 			"prerequisites": "{@feat Ka Stone Ritual|LOWG}",
 			"entries": [
-				"You gain a unique communion with the earth and stones. You learn the Terran language and you can Activate your ka stone with a 10-minute activation (envision) to cast {@spell stone tell}."
+				"You gain a unique communion with the earth and stones. You learn the {@language Terran} language and you can {@action Activate an Item||Activate} your ka stone with a 10-minute activation (envision) to cast {@spell stone tell}."
 			]
 		},
 		{
@@ -1331,7 +1345,7 @@
 			],
 			"prerequisites": "{@feat Pathfinder Agent Dedication|LOWG}",
 			"entries": [
-				"You can use the unusual resonance of your wayfinder to grant it additional effects. Choose one cantrip from the {@filter arcane|spells|tradition & spell list=arcane|rarity=common|level=0}, {@filter divine|spells|tradition & spell list=divine|rarity=common|level=0}, {@filter occult|spells|tradition & spell list=occult|rarity=common|level=0}, or {@filter primal|spells|tradition & spell list=primal|rarity=common|level=0} list. You can activate your wayfinder to cast that cantrip at will. As normal, this cantrip is heightened to a spell level equal to half your level rounded up. Additionally, you can {@action Activate an Item|Crb|Activate} your wayfinder with a {@as 1} (envision) activation to transform it into a nondescript pin or brooch to hide your affiliation with the Pathfinder Society. This transformation lasts for 1 hour."
+				"You can use the unusual resonance of your wayfinder to grant it additional effects. Choose one cantrip from the {@filter arcane|spells|tradition & spell list=arcane|rarity=common|level=0}, {@filter divine|spells|tradition & spell list=divine|rarity=common|level=0}, {@filter occult|spells|tradition & spell list=occult|rarity=common|level=0}, or {@filter primal|spells|tradition & spell list=primal|rarity=common|level=0} list. You can activate your wayfinder to cast that cantrip at will. As normal, this cantrip is heightened to a spell level equal to half your level rounded up. Additionally, you can {@action Activate an Item||Activate} your wayfinder with a {@as 1} (envision) activation to transform it into a nondescript pin or brooch to hide your affiliation with the Pathfinder Society. This transformation lasts for 1 hour."
 			],
 			"leadsTo": [
 				"Wayfinder Resonance Infiltrator|LOPSG"
