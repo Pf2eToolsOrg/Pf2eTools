@@ -2282,6 +2282,7 @@ function Renderer () {
 							page: UrlUtil.PG_ACTIONS,
 							source,
 						};
+						fauxEntry.text = displayText || name.replace(/ \(.+\)/, "");
 						this._recursiveRender(fauxEntry, textStack, meta);
 						break;
 					case "@ability":
