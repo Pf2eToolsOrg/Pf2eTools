@@ -24,6 +24,10 @@ jobs:
     - name: Build prod
       continue-on-error: true
       uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
     - run: sh ./build/deploy-prep-prod.sh
 
     - name: Commit files
