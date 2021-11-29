@@ -27,8 +27,8 @@ jobs:
         cache: 'npm'
       continue-on-error: true
     - run: |
-      npm ci
-      npm run build
+        npm ci
+        npm run build
 
     - name: Build (Shell)
       continue-on-error: true
