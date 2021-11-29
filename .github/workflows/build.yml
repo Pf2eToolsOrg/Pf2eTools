@@ -7,13 +7,14 @@ on:
     branches: [ master ]
 
 jobs:
-  index:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [15.x]
 
+    continue-on-error: true
     steps:
     - uses: actions/checkout@v2
       with:
@@ -25,13 +26,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      continue-on-error: true
     - run: |
         npm ci
         npm run build
 
     - name: Build (Shell)
-      continue-on-error: true
       uses: actions/setup-node@v2
     - run: sh ./build/deploy-prep-prod.sh
 
