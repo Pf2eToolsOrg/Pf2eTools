@@ -24,7 +24,9 @@ jobs:
 
     - name: Build prod
       continue-on-error: true
-      run: sh ./build/deploy-prep-prod.sh
+      run: |
+      chmod +x ./build/deploy-prep-prod.sh
+      ./build/deploy-prep-prod.sh
 
     - name: Commit files
       continue-on-error: true
