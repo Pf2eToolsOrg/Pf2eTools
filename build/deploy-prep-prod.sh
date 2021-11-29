@@ -19,8 +19,9 @@ echo "Optimizing the header."
 npm run minify:js -- js/styleswitch.js --output js/styleswitch.js
 npm run minify:js -- js/navigation.js --output js/navigation.js
 npm run minify:js -- js/browsercheck.js --output js/browsercheck.js
-cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
-rm js/styleswitch.js js/navigation.js
+# FIXME: Find a way to fix Syntax error: "(" unexpected
+# cat js/styleswitch.js <(echo ";") js/navigation.js <(echo ";") js/browsercheck.js > js/header.js
+# rm js/styleswitch.js js/navigation.js
 
 # Replace the files with the minified version we made above
 find . -maxdepth 1 -type f -name '*.html' -print0 |

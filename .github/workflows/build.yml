@@ -20,19 +20,11 @@ jobs:
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-
-    - name: Build npm
-      continue-on-error: true
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
     - run: npm ci
 
     - name: Build prod
       continue-on-error: true
-      uses: pkg-src/github-action-git-bash@v1.1
-    - run: sh ./build/deploy-prep-prod.sh
+      run: sh ./build/deploy-prep-prod.sh
 
     - name: Commit files
       continue-on-error: true
