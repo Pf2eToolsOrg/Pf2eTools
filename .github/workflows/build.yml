@@ -21,13 +21,14 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
     - name: Build (npm)
-      continue-on-error: true
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build
+      continue-on-error: true
+    - run: |
+      npm ci
+      npm run build
 
     - name: Build (Shell)
       continue-on-error: true
