@@ -27,12 +27,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      run: npm ci
+    - run: npm ci
 
     - name: Build prod
       continue-on-error: true
       uses: pkg-src/github-action-git-bash@v1.1
-      run: sh ./build/deploy-prep-prod.sh
+    - run: ./build/deploy-prep-prod.sh
 
     - name: Commit files
       continue-on-error: true
