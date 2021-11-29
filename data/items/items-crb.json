@@ -27,7 +27,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage ||persistent acid damage}, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
+				"This flask filled with corrosive acid deals 1 acid damage, the listed {@condition persistent damage||persistent acid damage}, and the listed acid splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -40,8 +40,14 @@
 						"note": null
 					},
 					"entries": [
-						"It deals {@damage 1d6} {@condition persistent damage ||persistent acid damage} and 1 acid splash damage."
-					]
+						"It deals {@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 1d6} {@condition persistent damage||persistent acid damage} and 1 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -52,8 +58,14 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage ||persistent acid damage} and 2 acid splash damage."
-					]
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 2d6} {@condition persistent damage||persistent acid damage} and 2 acid splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -64,8 +76,14 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage ||persistent acid damage} and 3 acid splash damage."
-					]
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 3d6} {@condition persistent damage||persistent acid damage} and 3 acid splash damage. You gain a +2 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -76,10 +94,23 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage ||persistent acid damage} and 4 acid splash damage."
-					]
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 4d6} {@condition persistent damage||persistent acid damage} and 4 acid splash damage. You gain a +3 item bonus to attack rolls."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed {@condition persistent damage\\|\\|persistent acid damage}, and the listed acid splash damage\\. Many types grant an item bonus to attack rolls\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Adamantine",
@@ -202,6 +233,7 @@
 			"variants": [
 				{
 					"type": "standard-grade adamantine buckler",
+					"name": "Standard-Grade Adamantine Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -221,6 +253,7 @@
 				},
 				{
 					"type": "high-grade adamantine buckler",
+					"name": "High-Grade Adamantine Buckler",
 					"level": 16,
 					"shieldStats": {
 						"hardness": 11,
@@ -318,7 +351,7 @@
 				{
 					"type": "clear spindle",
 					"level": 7,
-					"name": "clear spindle aeon stone",
+					"name": "Clear Spindle Aeon Stone",
 					"price": {
 						"coin": "gp",
 						"amount": 325,
@@ -337,7 +370,7 @@
 						"amount": 9,
 						"note": null
 					},
-					"name": "dull gray aeon stone",
+					"name": "Dull Gray Aeon Stone",
 					"entries": [
 						"A dull gray aeon stone has lost its special magical properties, sometimes as a result of overusing a tourmaline sphere or pale lavender ellipsoid aeon stone. It still orbits your head like any other aeon stone and can thus serve as a stylish, hands-free option for various spells that target an object, like continual flame.",
 						"Dull gray aeon stones have no resonant power."
@@ -351,7 +384,7 @@
 						"amount": 230,
 						"note": null
 					},
-					"name": "gold nodule aeon stone",
+					"name": "Gold Nodule Aeon Stone",
 					"entries": [
 						"When a gold nodule aeon stone is created, its creator chooses a language they know to store within the crystal. When you invest the stone, you gain the ability to understand, speak, and write that language.",
 						"The resonant power allows you to cast {@spell comprehend language} as an occult innate spell once per day."
@@ -365,7 +398,7 @@
 						"amount": 30000,
 						"note": null
 					},
-					"name": "lavender and green ellipsoid aeon stone",
+					"name": "Lavender And Green Ellipsoid Aeon Stone",
 					"entries": [
 						"This functions as a {@item pale lavender ellipsoid aeon stone|CRB}, but it casts an 8th-level {@spell dispel magic} spell with a counteract modifier of +31.",
 						"The resonant power allows you to cast {@spell detect magic} and read aura as arcane innate spells at will."
@@ -379,7 +412,7 @@
 						"amount": 9750,
 						"note": null
 					},
-					"name": "orange prism aeon stone",
+					"name": "Orange Prism Aeon Stone",
 					"entries": [
 						"An orange prism aeon stone must be activated to provide a benefit. The resonant power grants you a +2 item bonus to {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} checks\u2014whichever corresponds to the tradition of the last spell you enhanced with this aeon stone.",
 						"{@b Activate} {@as 1} envision; {@b Effect} If your next action is to {@action Cast a Spell}, that spell's level is 1 higher (maximum 10th level) for the purposes of counteracting and being counteracted."
@@ -393,7 +426,7 @@
 						"amount": 2200,
 						"note": null
 					},
-					"name": "pale lavender ellipsoid aeon stone",
+					"name": "Pale Lavender Ellipsoid Aeon Stone",
 					"entries": [
 						"This aeon stone must be activated to provide a benefit. The resonant power allows you to cast the {@spell read aura} cantrip as an arcane innate spell.",
 						"{@b Activate} {@as R} envision; {@b Frequency} once per day; {@b Trigger} A spell targets you; {@b Effect} The stone casts a 6th-level {@spell dispel magic} spell in an attempt to counteract the triggering spell, with a counteract modifier of +22. This can be used only on spells that specifically target you\u2014not area spells that don't have targets. If it succeeds, it counteracts the spell for all targets if other creatures were targeted in addition to you.",
@@ -408,7 +441,7 @@
 						"amount": 1900,
 						"note": null
 					},
-					"name": "pink rhomboid aeon stone",
+					"name": "Pink Rhomboid Aeon Stone",
 					"entries": [
 						"When you invest this stone, you gain 15 temporary Hit Points. If the stone's effects are suppressed, you lose any of the temporary Hit Points remaining until it returns. The temporary Hit Points refresh during your daily preparations; they do not refresh if you re-invest the stone, or invest another pink rhomboid aeon stone, before then.",
 						"The resonant power allows you to cast the {@spell stabilize} cantrip as a divine innate spell."
@@ -422,7 +455,7 @@
 						"amount": 350,
 						"note": null
 					},
-					"name": "tourmaline sphere aeon stone",
+					"name": "Tourmaline Sphere Aeon Stone",
 					"entries": [
 						"When you would die from the {@condition dying} condition (typically at {@condition dying 4}), this aeon stone automatically activates and reduces your {@condition dying} value to 1 less than would normally kill you (typically to {@condition dying 3}). The stone then permanently turns into a {@item dull gray aeon stone|crb}. You can benefit from this ability only once per day, even if you have multiple such stones.",
 						"The resonant power allows you to cast 1st-level {@spell heal} as a divine innate spell once per day."
@@ -436,7 +469,7 @@
 						"amount": 130,
 						"note": null
 					},
-					"name": "agate ellipsoid aeon stone",
+					"name": "Agate Ellipsoid Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -453,7 +486,7 @@
 						"amount": 85,
 						"note": null
 					},
-					"name": "azure briolette aeon stone",
+					"name": "Azure Briolette Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -471,7 +504,7 @@
 						"amount": 50,
 						"note": null
 					},
-					"name": "dusty rose prism aeon stone",
+					"name": "Dusty Rose Prism Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -487,7 +520,7 @@
 						"amount": 40000,
 						"note": null
 					},
-					"name": "pale orange rhomboid aeon stone",
+					"name": "Pale Orange Rhomboid Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -505,7 +538,7 @@
 						"amount": 900,
 						"note": null
 					},
-					"name": "pearlescent pyramid aeon stone",
+					"name": "Pearlescent Pyramid Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -522,7 +555,7 @@
 						"amount": 60,
 						"note": null
 					},
-					"name": "pearly white spindle aeon stone",
+					"name": "Pearly White Spindle Aeon Stone",
 					"source": "LOPSG",
 					"page": 121,
 					"entries": [
@@ -538,7 +571,7 @@
 						"amount": 225,
 						"note": null
 					},
-					"name": "western star aeon stone",
+					"name": "Western Star Aeon Stone",
 					"source": "LOPSG",
 					"page": 122,
 					"entries": [
@@ -555,7 +588,7 @@
 						"amount": 2000,
 						"note": null
 					},
-					"name": "black pearl aeon stone",
+					"name": "Black Pearl Aeon Stone",
 					"source": "LOWG",
 					"page": 63,
 					"entries": [
@@ -672,7 +705,7 @@
 			},
 			"category": "Bomb",
 			"entries": [
-				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage ||persistent fire damage}, and splash damage. Many types grant an item bonus to attack rolls."
+				"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air. Alchemist's fire deals the listed fire damage, {@condition persistent damage||persistent fire damage}, and splash damage. Many types grant an item bonus to attack rolls."
 			],
 			"generic": "G",
 			"variants": [
@@ -685,7 +718,7 @@
 						"note": null
 					},
 					"entries": [
-						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage ||persistent fire damage}, and 1 fire splash damage."
+						"The bomb deals {@damage 1d8} fire damage, 1 {@condition persistent damage||persistent fire damage}, and 1 fire splash damage."
 					]
 				},
 				{
@@ -697,7 +730,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage ||persistent fire damage}, and 2 fire splash damage."
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d8} fire damage, 2 {@condition persistent damage||persistent fire damage}, and 2 fire splash damage."
 					]
 				},
 				{
@@ -709,7 +742,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage ||persistent fire damage}, and 3 fire splash damage."
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d8} fire damage, 3 {@condition persistent damage||persistent fire damage}, and 3 fire splash damage."
 					]
 				},
 				{
@@ -721,7 +754,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage ||persistent fire damage}, and 4 fire splash damage."
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d8} fire damage, 4 {@condition persistent damage||persistent fire damage}, and 4 fire splash damage."
 					]
 				}
 			],
@@ -731,7 +764,8 @@
 					"items": [
 						"Alchemist's fire is a combination of volatile liquids that ignite when exposed to air."
 					]
-				}
+				},
+				"entriesMode": "variant"
 			}
 		},
 		{
@@ -972,7 +1006,15 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +2 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -984,7 +1026,15 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +3 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -996,7 +1046,15 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "an item bonus",
+							"with": "a +4 item bonus"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -1008,7 +1066,23 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, and when you drink the antidote, you can immediately attempt a saving throw against one poison of 14th level or lower affecting you. If you succeed, the poison is neutralized."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"When you drink the antidote, you can immediately attempt a saving throw against one poison of 14th level or lower affecting you. If you succeed, the poison is neutralized."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -1133,7 +1207,17 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -1145,7 +1229,17 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -1157,7 +1251,17 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -1169,7 +1273,23 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, and when you drink the antiplague, you can immediately attempt a saving throw against one disease of 14th level or lower affecting you. If you succeed, you are cured of the disease."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"When you drink the antiplague, you can immediately attempt a saving throw against one disease of 14th level or lower affecting you. If you succeed, you are cured of the disease."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -1244,7 +1364,12 @@
 						"note": null
 					},
 					"craftReq": "You are an expert in {@skill Crafting}.",
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 1. The armor can be etched with one property rune."
+						}
+					}
 				},
 				{
 					"type": "+2 armor potency",
@@ -1254,8 +1379,15 @@
 						"amount": 1060,
 						"note": null
 					},
-					"craftReq": "You are a master in {@skill Crafting}. Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes.",
-					"entries": []
+					"craftReq": "You are a master in {@skill Crafting}.",
+					"entries": [
+						"Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 2, and the armor can be etched with two property runes."
+						}
+					}
 				},
 				{
 					"type": "+3 armor potency",
@@ -1265,10 +1397,24 @@
 						"amount": 20560,
 						"note": null
 					},
-					"craftReq": "You are legendary in {@skill Crafting}. Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes.",
-					"entries": []
+					"craftReq": "You are legendary in {@skill Crafting}.",
+					"entries": [
+						"Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "Increase the armor's item bonus to AC by 3, and the armor can be etched with three property runes."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Increase the armor's item bonus to AC by 1. The armor can be etched with one property rune\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Arrow-catching Shield",
@@ -1852,8 +1998,8 @@
 			"category": "Worn",
 			"entries": [
 				"This bearskin includes the head and bared teeth of the mighty creature from which it was taken. When worn, the cloak drapes over your head and around your shoulders, imbuing you with a bear's ferocity. If you have the {@action Rage} action, while raging you grow jaws that deal {@damage 1d10} piercing damage and claws that deal {@damage 1d6} slashing damage and have the {@trait agile} trait.",
-				"This transformation is a {@trait morph} effect, and both the jaws and claws are unarmed attacks in the brawling weapon group. You gain the benefits of a +1 weapon potency rune and a striking rune with these attacks (gaining a +1 item bonus to attack rolls and increasing the weapon damage dice by one)",
-				"If you have an animal instinct (see the barbarian on page 82) and the bestial rage instinct ability, instead of gaining these unarmed attacks, your unarmed attacks from the bestial rage instinct ability gain the benefits of a +2 weapon potency rune and a greater striking rune (granting a +2 item bonus to attack rolls and increasing the weapon damage dice by two)."
+				"This transformation is a {@trait morph} effect, and both the jaws and claws are unarmed attacks in the {@group brawling} weapon group. You gain the benefits of a {@item +1 weapon potency} rune and a {@item striking} rune with these attacks (gaining a +1 item bonus to attack rolls and increasing the weapon damage dice by one).",
+				"If you have an {@class barbarian||animal instinct|animal} and the bestial rage instinct ability, instead of gaining these unarmed attacks, your unarmed attacks from the bestial rage instinct ability gain the benefits of a {@item +2 weapon potency} rune and a {@item greater striking} rune (granting a +2 item bonus to attack rolls and increasing the weapon damage dice by two)."
 			],
 			"generic": "G",
 			"variants": [
@@ -1875,12 +2021,53 @@
 						"amount": 40000,
 						"note": null
 					},
-					"craftReq": "You are a barbarian with the animal instinct.",
 					"entries": [
-						"You gain the benefits of a +2 weapon potency rune and a greater striking rune, or a +3 weapon potency rune and a major striking rune if you have an animal instinct and the bestial rage instinct ability."
-					]
+						"You gain the benefits of a {@item +2 weapon potency} rune and a {@item greater striking} rune, or a {@item +3 weapon potency} rune and a {@item major striking} rune if you have an {@class barbarian||animal instinct|animal} and the bestial rage instinct ability."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+3",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+1",
+								"with": "+2",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "a {@item greater striking}",
+								"with": "a {@item major striking}",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "a {@item striking}",
+								"with": "a {@item greater striking}",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "two",
+								"with": "three",
+								"replaceTags": true
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "one",
+								"with": "two",
+								"replaceTags": true
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
-			]
+			],
+			"craftReq": "You are a barbarian with the {@class barbarian||animal instinct|animal}."
 		},
 		{
 			"name": "Bestial Mutagen",
@@ -1909,7 +2096,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is {@condition clumsy}.",
+				"Your features transform into something bestial and you take on muscle mass, but your lumbering form is clumsy.",
 				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack.",
 				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
@@ -1925,7 +2112,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus, your claw deals {@damage 1d4} slashing damage, your jaws deal {@damage 1d6} piercing damage, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +1 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d4} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d6} piercing damage. The duration is 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1937,7 +2130,13 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus, your claw deals {@damage 1d6} slashing damage, your jaws deal {@damage 1d8} piercing damage, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +2 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d6} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d8} piercing damage. The duration is 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1949,7 +2148,13 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus, your claw deals {@damage 1d8} slashing damage, your jaws deal {@damage 1d10} piercing damage, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +3 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d8} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d10} piercing damage. The duration is 1 hour."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1961,9 +2166,22 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus, your claw deals {@damage 1d8} slashing damage, your jaws deal {@damage 1d10} piercing damage, and the duration is 1 hour. You gain weapon specialization with the claws and jaws, or greater weapon specialization, if you already have weapon specialization with these unarmed attacks."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "You gain a +4 item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack that deals {@damage 1d8} slashing damage and has the {@trait agile} trait and a jaws unarmed attack that deals {@damage 1d10} piercing damage. You also gain {@classFeature weapon specialization|Fighter||7} with the claws and jaws, or {@classFeature greater weapon specialization|Fighter||15}, if you already have weapon specialization with these unarmed attacks. The duration is 1 hour."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain an item bonus to {@skill Athletics} checks and unarmed attack rolls. You gain a claw unarmed attack with the {@trait agile} trait and a jaws unarmed attack."
+				}
+			}
 		},
 		{
 			"name": "Biting Snare",
@@ -2139,7 +2357,7 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"When a creature enters the square, spines covered in numerous jagged thorns protrude out to stab it, dealing {@damage 8d8} piercing damage and {@damage 2d8} {@condition persistent damage ||persistent bleed damage}. The creature must attempt a DC 31 basic Reflex saving throw. After the initial trigger, the spines retract and protrude again repeatedly for 1 minute, forcing any creature that enters the space or ends its turn in the space to attempt a Reflex save against the spines' damage."
+				"When a creature enters the square, spines covered in numerous jagged thorns protrude out to stab it, dealing {@damage 8d8} piercing damage and {@damage 2d8} {@condition persistent damage||persistent bleed damage}. The creature must attempt a DC 31 basic Reflex saving throw. After the initial trigger, the spines retract and protrude again repeatedly for 1 minute, forcing any creature that enters the space or ends its turn in the space to attempt a Reflex save against the spines' damage."
 			],
 			"generic": false
 		},
@@ -2224,7 +2442,7 @@
 			"bulk": "L",
 			"category": "Weapon",
 			"entries": [
-				"This +1 striking kukri has a crimson blade that shimmers eerily in bright light. On a critical hit, the kukri deals {@damage 1d8} {@condition persistent damage ||persistent bleed damage}. If the target didn't already have {@condition persistent damage ||persistent bleed damage} when you scored the critical hit, you also gain {@dice 1d8} temporary Hit Points."
+				"This +1 striking kukri has a crimson blade that shimmers eerily in bright light. On a critical hit, the kukri deals {@damage 1d8} {@condition persistent damage||persistent bleed damage}. If the target didn't already have {@condition persistent damage||persistent bleed damage} when you scored the critical hit, you also gain {@dice 1d8} temporary Hit Points."
 			],
 			"generic": false
 		},
@@ -2260,7 +2478,7 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This long, hollow proboscis is harvested from the notorious bloodseeker beast and drips a trickle of blood. When you activate the beak, you deal an extra {@damage 1d4} precision damage on your damage roll. If you deal sneak attack damage to the creature, you also deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+				"This long, hollow proboscis is harvested from the notorious bloodseeker beast and drips a trickle of blood. When you activate the beak, you deal an extra {@damage 1d4} precision damage on your damage roll. If you deal sneak attack damage to the creature, you also deal {@damage 1d4} {@condition persistent damage||persistent bleed damage}."
 			],
 			"generic": false
 		},
@@ -2372,7 +2590,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"This tincture lets you pinpoint your foes. For the next 5 minutes, your alchemical bomb Strikes reduce the circumstance bonus to AC your targets gain from cover."
+				"This tincture lets you pinpoint your foes. For the next 5 minutes, your alchemical bomb {@action Strike||Strikes} reduce the circumstance bonus to AC your targets gain from cover."
 			],
 			"generic": "G",
 			"variants": [
@@ -2386,7 +2604,12 @@
 					},
 					"entries": [
 						"Reduce your targets' circumstance bonus by 1."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "your targets gain from cover by 1"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2398,9 +2621,21 @@
 					},
 					"entries": [
 						"Reduce your targets' circumstance bonus by 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "your targets gain from cover by 2"
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "your targets gain from cover"
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Boots of Bounding",
@@ -2476,7 +2711,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"Until the end of your turn, you ignore difficult terrain when moving on the ground. If you're wearing a cloak of elvenkind, you also gain a +5-foot status bonus to your land Speed until the end of your turn."
+						"Until the end of your turn, you ignore {@quickref difficult terrain||3|terrain} when moving on the ground. If you're wearing a cloak of elvenkind, you also gain a +5-foot status bonus to your land Speed until the end of your turn."
 					]
 				}
 			],
@@ -2629,7 +2864,13 @@
 					},
 					"entries": [
 						"It deals {@damage 1d6} electricity damage and 1 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 1d6} electricity damage and 1 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2641,7 +2882,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 2d6} electricity damage and 2 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2653,7 +2900,13 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 3d6} electricity damage and 3 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +2 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -2665,9 +2918,22 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The bomb deals {@damage 4d6} electricity damage and 4 electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. You gain a +3 item bonus to attack rolls."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Bottled lightning deals the listed electricity damage and electricity splash damage. On a hit, the target becomes {@condition flat-footed} until the start of your next turn. Many types grant an item bonus to attack rolls."
+				}
+			}
 		},
 		{
 			"name": "Bracelet of Dashing",
@@ -2731,16 +2997,23 @@
 			"variants": [
 				{
 					"type": "I",
+					"name": "Bracers of Armor (Type I)",
 					"level": 8,
 					"price": {
 						"coin": "gp",
 						"amount": 450,
 						"note": null
 					},
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "+1"
+						}
+					}
 				},
 				{
 					"type": "II",
+					"name": "Bracers of Armor (Type II)",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -2749,11 +3022,17 @@
 					},
 					"entries": [
 						"The item bonus to AC and saves is +2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+2"
+						}
+					}
 				},
 				{
 					"type": "III",
 					"level": 20,
+					"name": "Bracers of Armor (Type III)",
 					"price": {
 						"coin": "gp",
 						"amount": 60000,
@@ -2761,9 +3040,21 @@
 					},
 					"entries": [
 						"The item bonus to AC and saves is +3."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+3"
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1"
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Bracers of Missile Deflection",
@@ -2822,7 +3113,15 @@
 					},
 					"entries": [
 						"You can activate the bracers once every 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "once per day",
+							"with": "once every 10 minutes"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -2852,7 +3151,7 @@
 			},
 			"category": "Elixir",
 			"entries": [
-				"This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain an item bonus to Will saves, which is greater when attempting Will saves against fear."
+				"This flask of foaming beer grants courage. For the next hour after drinking this elixir, you gain an item bonus to Will saves, which is greater when attempting Will saves against {@trait fear}."
 			],
 			"generic": "G",
 			"variants": [
@@ -2865,8 +3164,14 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +1, or +2 against fear."
-					]
+						"The bonus on Will saves is +1, or +2 against {@trait fear}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +1 item bonus to Will saves, or +2 when attempting Will saves against {@trait fear}."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2877,8 +3182,14 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +2, or +3 against fear."
-					]
+						"The bonus on Will saves is +2, or +3 against {@trait fear}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +2 item bonus to Will saves, or +3 when attempting Will saves against {@trait fear}."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2889,10 +3200,23 @@
 						"note": null
 					},
 					"entries": [
-						"The bonus on Will saves is +3, or +4 against fear. If you roll a success on a save against fear, you get a critical success instead."
-					]
+						"The bonus on Will saves is +3, or +4 against {@trait fear}. If you roll a success on a save against fear, you get a critical success instead."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "a +3 item bonus to Will saves, or +4 when attempting Will saves against {@trait fear}. If you roll a success on a save against {@trait fear}, you get a critical success instead."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "an item bonus to Will saves, which is greater when attempting Will saves against {@trait fear}."
+				}
+			}
 		},
 		{
 			"name": "Breastplate of Command",
@@ -3445,6 +3769,13 @@
 			"entries": [
 				"Enzymatic compounds in this elixir strengthen and excite the muscles in your legs. You gain a status bonus to your Speed for the listed duration."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "You gain a status bonus to your Speed for the listed duration."
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -3457,7 +3788,12 @@
 					},
 					"entries": [
 						"The bonus is +5 feet, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +5 status bonus to your Speed for 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -3469,7 +3805,12 @@
 					},
 					"entries": [
 						"The bonus is +10 feet, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +10 status bonus to your Speed for 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -3481,7 +3822,12 @@
 					},
 					"entries": [
 						"The bonus is +10 feet, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +10 status bonus to your Speed for 1 hour."
+						}
+					}
 				}
 			]
 		},
@@ -3852,6 +4198,14 @@
 				"{@b Benefit} You gain an item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge}. Your critical failures on {@action Recall Knowledge} checks become failures instead.",
 				"{@b Drawback} You take a \u20132 penalty to weapon and unarmed attack rolls, {@skill Athletics} checks, and {@skill Acrobatics} checks. You can carry 2 less Bulk than normal before becoming {@condition encumbered}, and the maximum Bulk you can carry is reduced by 4."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You gain an item bonus to \\{@skill Arcana\\}, \\{@skill Crafting\\}, \\{@skill Lore\\}, \\{@skill Occultism\\}, and \\{@skill Society\\} checks and all checks to \\{@action Recall Knowledge\\}."
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -3864,7 +4218,12 @@
 					},
 					"entries": [
 						"The bonus is +1, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +1 item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge} for 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -3876,7 +4235,12 @@
 					},
 					"entries": [
 						"The bonus is +2, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +2 item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge} for 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -3888,7 +4252,12 @@
 					},
 					"entries": [
 						"The bonus is +3, and the duration is 1 hour. You become trained in one Intelligence-based skill, chosen at creation."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +3 item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge} for 1 hour. You become trained in one Intelligence-based skill, chosen at creation."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -3900,7 +4269,12 @@
 					},
 					"entries": [
 						"The bonus is +4, and the duration is 1 hour. You become trained in one skill, chosen at creation."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +4 item bonus to {@skill Arcana}, {@skill Crafting}, {@skill Lore}, {@skill Occultism}, and {@skill Society} checks and all checks to {@action Recall Knowledge} for 1 hour. You become trained in one skill, chosen at creation."
+						}
+					}
 				}
 			]
 		},
@@ -4040,6 +4414,7 @@
 			"variants": [
 				{
 					"type": "low-grade cold iron buckler",
+					"name": "Low-Grade Cold Iron Buckler",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -4074,6 +4449,7 @@
 				},
 				{
 					"type": "standard-grade cold iron buckler",
+					"name": "Standard-Grade Cold Iron Buckler",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -4098,6 +4474,7 @@
 				},
 				{
 					"type": "high-grade cold iron buckler",
+					"name": "High-Grade Cold Iron Buckler",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -4285,6 +4662,13 @@
 			"entries": [
 				"This bitter draught opens your mind to the potential of the written word. For the listed duration after drinking this elixir, you can understand any words you read, so long as they are written in a common language. This elixir doesn't automatically allow you to understand codes or extremely esoteric passages\u2014you still need to attempt a skill check to {@action Decipher Writing}."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -4297,7 +4681,12 @@
 					},
 					"entries": [
 						"The duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "1 minute"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -4309,7 +4698,12 @@
 					},
 					"entries": [
 						"The duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 minutes"
+						}
+					}
 				}
 			]
 		},
@@ -4902,6 +5296,13 @@
 			"entries": [
 				"After you drink this elixir, your sight becomes sharper in darkness. You gain {@ability darkvision} for the listed duration."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -4914,7 +5315,12 @@
 					},
 					"entries": [
 						"The duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 minutes"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -4926,7 +5332,12 @@
 					},
 					"entries": [
 						"The duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "1 hour"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -4938,7 +5349,12 @@
 					},
 					"entries": [
 						"The duration is 24 hours."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "24 hours"
+						}
+					}
 				}
 			]
 		},
@@ -5063,6 +5479,7 @@
 			"variants": [
 				{
 					"type": "standard-grade darkwood buckler",
+					"name": "Standard-Grade Darkwood Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -5099,6 +5516,7 @@
 				},
 				{
 					"type": "high-grade darkwood buckler",
+					"name": "High-Grade Darkwood Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -5861,7 +6279,24 @@
 					},
 					"entries": [
 						"The damage is {@dice 6d6} and the save DC is 29."
-					]
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "6d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "23",
+								"with": "29"
+							}
+						]
+					}
 				},
 				{
 					"type": "wyrm",
@@ -5872,9 +6307,25 @@
 						"note": null
 					},
 					"entries": [
-						"The damage is {@dice 10d6} and the save DC is 37.",
-						"Dragon."
-					]
+						"The damage is {@dice 10d6} and the save DC is 37."
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "10d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "23",
+								"with": "37"
+							}
+						]
+					}
 				}
 			]
 		},
@@ -5979,6 +6430,7 @@
 			"variants": [
 				{
 					"type": "standard-grade dragonhide buckler",
+					"name": "Standard-Grade Dragonhide Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -6003,6 +6455,7 @@
 				},
 				{
 					"type": "high-grade dragonhide buckler",
+					"name": "High-Grade Dragonhide Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -6305,6 +6758,14 @@
 			"entries": [
 				"After you drink this elixir, you notice subtle visual details. For the next hour, you gain an item bonus to {@skill Perception} checks that is greater when attempting to find secret doors and traps."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "For the next hour, you gain an item bonus to {@skill Perception} checks that is greater when attempting to find secret doors and traps."
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -6314,6 +6775,11 @@
 						"coin": "gp",
 						"amount": 4,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "For the next hour, you gain a +1 item bonus to {@skill Perception} checks, or +2 when attempting to find secret doors and traps."
+						}
 					},
 					"entries": [
 						"The bonus is +1, or +2 to find secret doors and traps."
@@ -6327,6 +6793,11 @@
 						"amount": 27,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "For the next hour, you gain a +2 item bonus to {@skill Perception} checks, or +3 when attempting to find secret doors and traps."
+						}
+					},
 					"entries": [
 						"The bonus is +2, or +3 to find secret doors and traps."
 					]
@@ -6339,6 +6810,11 @@
 						"amount": 200,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "For the next hour, you gain a +3 item bonus to {@skill Perception} checks, or +4 when attempting to find secret doors and traps."
+						}
+					},
 					"entries": [
 						"The bonus is +3, or +4 to find secret doors and traps."
 					]
@@ -6350,6 +6826,11 @@
 						"coin": "gp",
 						"amount": 2000,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "For the next hour, you gain a +3 item bonus to {@skill Perception} checks, or +4 when attempting to find secret doors and traps. Each time you pass within 10 feet of a secret door or trap, the GM automatically rolls a secret check for you to find it."
+						}
 					},
 					"entries": [
 						"The bonus is +3, or +4 to find secret doors and traps. Each time you pass within 10 feet of a secret door or trap, the GM automatically rolls a secret check for you to find it."
@@ -6498,6 +6979,13 @@
 			"entries": [
 				"Elixirs of life accelerate the body's natural healing processes and immune system. Upon drinking this elixir, you regain the listed number of Hit Points and gain an item bonus to saving throws against diseases and poisons for 10 minutes."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed number of Hit Points and gain an item bonus"
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -6510,7 +6998,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 1d6} Hit Points, and the bonus is +1."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 1d6} Hit Points and gain a +1 item bonus"
+						}
+					}
 				},
 				{
 					"type": "lesser",
@@ -6522,7 +7015,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 3d6+6} Hit Points and the bonus is +1."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 3d6+6} Hit Points and gain a +1 item bonus"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -6534,7 +7032,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 5d6+12} Hit Points, and the bonus is +2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 5d6+12} Hit Points and gain a +2 item bonus"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -6546,7 +7049,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 7d6+18} Hit Points, and the bonus is +2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 7d6+18} Hit Points and gain a +2 item bonus"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -6558,7 +7066,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 8d6+21} Hit Points, and the bonus is +3."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 8d6+21} Hit Points and gain a +3 item bonus"
+						}
+					}
 				},
 				{
 					"type": "true",
@@ -6570,7 +7083,12 @@
 					},
 					"entries": [
 						"The elixir restores {@dice 10d6+27} Hit Points, and the bonus is +4."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 10d6+27} Hit Points and gain a +4 item bonus"
+						}
+					}
 				}
 			]
 		},
@@ -6891,7 +7409,24 @@
 					},
 					"entries": [
 						"The damage is {@dice 10d6} and the save DC is 30."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "6d6",
+								"replaceTags": true,
+								"with": "10d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "DC 25",
+								"replaceTags": true,
+								"with": "DC 30"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -7105,7 +7640,7 @@
 			"entries": [
 				"You are an expert in {@skill Acrobatics}.",
 				"This stone, usually shaped as a cabochon, is a small chunk of amber with a bit of feather or a flying insect caught within it.",
-				"When you activate the stone, you ignore the effects of any difficult terrain and greater difficult terrain you move through until the end of your turn."
+				"When you activate the stone, you ignore the effects of any {@quickref difficult terrain||3|terrain} and {@quickref greater difficult terrain||3|terrain} you move through until the end of your turn."
 			],
 			"generic": false
 		},
@@ -7134,7 +7669,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"Each feather token appears to be a simple feather from some exotic bird. The feather's shaft, dipped in gold, bears a single arcane rune. Activating a feather token causes it to transform into another object, which then can be used as normal for that object. Each feather can be activated only once, with most of them permanently becoming the item in their description."
+				"Each feather token appears to be a simple feather from some exotic bird. The feather's shaft, dipped in gold, bears a single arcane rune. {@action Activate an Item||Activating} a feather token causes it to transform into another object, which then can be used as normal for that object. Each feather can be activated only once, with most of them permanently becoming the item in their description."
 			],
 			"generic": "G",
 			"variants": [
@@ -7405,7 +7940,7 @@
 			"category": "Rune",
 			"appliesTo": "Weapon",
 			"entries": [
-				"This weapon is empowered by flickering flame. The weapon deals an additional {@damage 1d6} fire damage on a successful {@action Strike}, plus {@damage 1d10} {@condition persistent damage ||persistent fire damage} on a critical hit."
+				"This weapon is empowered by flickering flame. The weapon deals an additional {@damage 1d6} fire damage on a successful {@action Strike}, plus {@damage 1d10} {@condition persistent damage||persistent fire damage} on a critical hit."
 			],
 			"generic": "G",
 			"variants": [
@@ -7428,7 +7963,7 @@
 						"note": null
 					},
 					"entries": [
-						"Increase the {@condition persistent damage} on a critical hit to {@dice 2d10}. Fire damage dealt by this weapon (including the {@condition persistent damage ||persistent fire damage}) ignores the target's fire resistance."
+						"Increase the {@condition persistent damage} on a critical hit to {@dice 2d10}. Fire damage dealt by this weapon (including the {@condition persistent damage||persistent fire damage}) ignores the target's fire resistance."
 					]
 				}
 			]
@@ -7760,6 +8295,13 @@
 			"entries": [
 				"The liquid reagents in this vial rapidly absorb heat when exposed to air. A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A frost vial deals the listed cold damage and cold splash damage. On a hit, the target takes a status penalty to its Speeds until the end of its next turn. Many types of frost vial also grant an item bonus to attack rolls."
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -7769,6 +8311,11 @@
 						"coin": "gp",
 						"amount": 3,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "A lesser frost vial deals {@damage 1d6} cold damage and 1 cold splash damage. On a hit, the target takes a \u20135-foot status penalty to its Speeds until the end of its next turn."
+						}
 					},
 					"entries": [
 						"The bomb deals {@damage 1d6} cold damage and 1 cold splash damage, and the target takes a \u20135-foot penalty."
@@ -7782,6 +8329,11 @@
 						"amount": 10,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "A moderate frost vial deals {@damage 2d6} cold damage and 2 cold splash damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +1 item bonus to attack rolls."
+						}
+					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls, the bomb deals {@damage 2d6} cold damage and 2 cold splash damage, and the target takes a \u201310-foot penalty."
 					]
@@ -7794,6 +8346,11 @@
 						"amount": 250,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "A greater frost vial deals {@damage 3d6} cold damage and 3 cold splash damage. On a hit, the target takes a \u201310-foot status penalty to its Speeds until the end of its next turn. You gain a +2 item bonus to attack rolls."
+						}
+					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls, the bomb deals {@damage 3d6} cold damage and 3 cold splash damage, and the target takes a \u201310-foot penalty."
 					]
@@ -7805,6 +8362,11 @@
 						"coin": "gp",
 						"amount": 2500,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "A major frost vial deals {@damage 4d6} cold damage and 4 cold splash damage. On a hit, the target takes a \u201315-foot status penalty to its Speeds until the end of its next turn. You gain a +3 item bonus to attack rolls."
+						}
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls, the bomb deals {@damage 4d6} cold damage and 4 cold splash damage, and the target takes a \u201315-foot penalty."
@@ -8602,7 +9164,7 @@
 			},
 			"category": "Snare",
 			"entries": [
-				"You arrange brambles, wires, sticky goo, or other materials to interfere with a creature's movement. The square with this snare, as well as three adjacent squares (to form a 10-foot-by-10-foot area), become difficult terrain when the first creature enters the snare's square. The difficult terrain affects the creature's movement right away, including its movement into the triggering square, and it lasts for {@dice 1d4} rounds after the snare is triggered. A creature can use an {@action Interact} action to clear the difficult terrain out of a single square early."
+				"You arrange brambles, wires, sticky goo, or other materials to interfere with a creature's movement. The square with this snare, as well as three adjacent squares (to form a 10-foot-by-10-foot area), become {@quickref difficult terrain||3|terrain} when the first creature enters the snare's square. The {@quickref difficult terrain||3|terrain} affects the creature's movement right away, including its movement into the triggering square, and it lasts for {@dice 1d4} rounds after the snare is triggered. A creature can use an {@action Interact} action to clear the {@quickref difficult terrain||3|terrain} out of a single square early."
 			],
 			"generic": false
 		},
@@ -8986,6 +9548,13 @@
 			"entries": [
 				"A healing potion is a vial of a ruby-red liquid that imparts a tingling sensation as the drinker's wounds heal rapidly. When you drink a healing potion, you regain the listed number of Hit Points."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed number of"
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -8998,7 +9567,12 @@
 					},
 					"entries": [
 						"The potion restores {@dice 1d8} Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 1d8}"
+						}
+					}
 				},
 				{
 					"type": "lesser",
@@ -9010,7 +9584,12 @@
 					},
 					"entries": [
 						"The potion restores {@dice 2d8+5} Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 2d8+5}"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -9022,7 +9601,12 @@
 					},
 					"entries": [
 						"The potion restores {@dice 3d8+10} Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 3d8+10}"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -9034,7 +9618,12 @@
 					},
 					"entries": [
 						"The potion restores {@dice 6d8+20} Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 6d8+20}"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -9046,7 +9635,12 @@
 					},
 					"entries": [
 						"The potion restores {@dice 8d8+30} Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@dice 8d8+30}"
+						}
+					}
 				}
 			]
 		},
@@ -10164,7 +10758,7 @@
 			"category": "Talisman",
 			"entries": [
 				"You are trained in {@skill Acrobatics}.",
-				"A thumb-sized feline carved of rare stone, the jade cat is typically worn as a pendant upon a suit of armor. For 1 minute after you activate the cat, you treat all falls as 20 feet shorter, you are not {@condition flat-footed} when you {@action Balance}, and narrow surfaces and uneven ground are not difficult terrain for you."
+				"A thumb-sized feline carved of rare stone, the jade cat is typically worn as a pendant upon a suit of armor. For 1 minute after you activate the cat, you treat all falls as 20 feet shorter, you are not {@condition flat-footed} when you {@action Balance}, and narrow surfaces and uneven ground are not {@quickref difficult terrain||3|terrain} for you."
 			],
 			"generic": false
 		},
@@ -10235,6 +10829,13 @@
 				"{@b Benefit} You gain an item bonus to Fortitude saves and the listed number of temporary Hit Points. Whenever you are at maximum Hit Points for at least 1 full minute, you regain the temporary Hit Points.",
 				"{@b Drawback} You take a \u20132 penalty to Will saves, {@skill Perception} checks, and initiative rolls."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "an item bonus to Fortitude saves and the listed number of temporary Hit Points."
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -10247,7 +10848,12 @@
 					},
 					"entries": [
 						"The bonus is +1, you gain 5 temporary Hit Points, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+1 item bonus to Fortitude saves and 5 temporary Hit Points for 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -10259,7 +10865,12 @@
 					},
 					"entries": [
 						"The bonus is +2, you gain 10 temporary Hit Points, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+2 item bonus to Fortitude saves and 10 temporary Hit Points for 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -10271,7 +10882,12 @@
 					},
 					"entries": [
 						"The bonus is +3, you gain 30 temporary Hit Points, and the duration is 1 hour. When you roll a success on a Fortitude save, you get a critical success instead."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+3 item bonus to Fortitude saves and 30 temporary Hit Points for 1 hour. When you roll a success on a Fortitude save, you get a critical success instead."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -10283,7 +10899,12 @@
 					},
 					"entries": [
 						"The bonus is +4, you gain 45 temporary Hit Points, and the duration is 1 hour. When you roll a success on a Fortitude save, you get a critical success instead, and your critical failures on Fortitude saves become failures instead."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+4 item bonus to Fortitude saves and 45 temporary Hit Points for 1 hour. When you roll a success on a Fortitude save, you get a critical success instead, and your critical failures on Fortitude saves become failures instead."
+						}
+					}
 				}
 			]
 		},
@@ -11692,6 +12313,13 @@
 				"A faint mist emanates from your skin, making you {@condition concealed} for the listed duration. As usual being {@condition concealed} when your position is still obvious, you can't use this concealment to {@action Hide} or {@action Sneak}."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration"
+				}
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -11703,7 +12331,12 @@
 					},
 					"entries": [
 						"The duration is 3 rounds."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "3 rounds"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -11715,7 +12348,12 @@
 					},
 					"entries": [
 						"The duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "1 minute"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -11727,7 +12365,12 @@
 					},
 					"entries": [
 						"The duration is 5 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5 minutes"
+						}
+					}
 				}
 			]
 		},
@@ -11852,6 +12495,7 @@
 			"variants": [
 				{
 					"type": "standard-grade mithral buckler",
+					"name": "Standard-Grade Mithral Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -11880,6 +12524,7 @@
 				},
 				{
 					"type": "high-grade mithral buckler",
+					"name": "High-Grade Mithral Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -12099,8 +12744,8 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This black strand of leather is tied to look like a peace knot when the weapon is stowed, but it doesn't hamper drawing the weapon. When you activate the knot, the creature you damaged takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
-				"If you have the Twist the Knife feat, the talisman instead deals {@condition persistent damage ||persistent bleed damage} equal to your sneak attack damage."
+				"This black strand of leather is tied to look like a peace knot when the weapon is stowed, but it doesn't hamper drawing the weapon. When you activate the knot, the creature you damaged takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
+				"If you have the Twist the Knife feat, the talisman instead deals {@condition persistent damage||persistent bleed damage} equal to your sneak attack damage."
 			],
 			"generic": false
 		},
@@ -12135,7 +12780,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You detach a sphere from the necklace, causing it to glow with orange light. After you activate a sphere, if you or anyone else hurls it (an {@action Interact} action with the ranged trait), it detonates as a fireball where it lands. Your toss can place the center of the fireball anywhere within 70 feet, though at the GM's discretion you might need to make an attack roll if the throw is unusually challenging. If no one hurls the sphere by the start of your next turn, it turns into a non-magical red bead."
+						"You detach a sphere from the necklace, causing it to glow with orange light. After you activate a sphere, if you or anyone else hurls it (an {@action Interact} action with the ranged trait), it detonates as a fireball where it lands. Your toss can place the center of the {@spell fireball} anywhere within 70 feet, though at the GM's discretion you might need to make an attack roll if the throw is unusually challenging. If no one hurls the sphere by the start of your next turn, it turns into a non-magical red bead."
 					]
 				}
 			],
@@ -12143,6 +12788,7 @@
 			"variants": [
 				{
 					"type": "I",
+					"name": "Necklace of Fireballs (Type I)",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -12151,11 +12797,17 @@
 					},
 					"entries": [
 						"One {@dice 6d6}, two {@dice 4d6} (DC 21)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 6d6} and two {@dice 4d6} beads with a DC 21 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "II",
 					"level": 7,
+					"name": "Necklace of Fireballs (Type II)",
 					"price": {
 						"coin": "gp",
 						"amount": 115,
@@ -12163,11 +12815,17 @@
 					},
 					"entries": [
 						"One {@dice 8d6}, one {@dice 6d6}, two {@dice 4d6} (DC 25)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 8d6}, one {@dice 6d6} and two {@dice 4d6} beads with a DC 25 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "III",
 					"level": 9,
+					"name": "Necklace of Fireballs (Type III)",
 					"price": {
 						"coin": "gp",
 						"amount": 300,
@@ -12175,11 +12833,17 @@
 					},
 					"entries": [
 						"One {@dice 10d6}, two {@dice 8d6}, two {@dice 6d6} (DC 27)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 10d6}, two {@dice 8d6} and two {@dice 6d6} beads with a DC 27 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "IV",
 					"level": 11,
+					"name": "Necklace of Fireballs (Type IV)",
 					"price": {
 						"coin": "gp",
 						"amount": 700,
@@ -12187,11 +12851,17 @@
 					},
 					"entries": [
 						"One {@dice 12d6}, two {@dice 10d6}, three {@dice 8d6} (DC 30)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 12d6}, two {@dice 10d6} and three {@dice 8d6} beads with a DC 30 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "V",
 					"level": 13,
+					"name": "Necklace of Fireballs (Type V)",
 					"price": {
 						"coin": "gp",
 						"amount": 1600,
@@ -12199,11 +12869,17 @@
 					},
 					"entries": [
 						"One {@dice 14d6}, two {@dice 12d6}, four {@dice 10d6} (DC 32)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 14d6}, two {@dice 12d6} and four {@dice 10d6} beads with a DC 32 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "VI",
 					"level": 15,
+					"name": "Necklace of Fireballs (Type VI)",
 					"price": {
 						"coin": "gp",
 						"amount": 4200,
@@ -12211,11 +12887,17 @@
 					},
 					"entries": [
 						"One {@dice 16d6}, three {@dice 14d6}, four {@dice 12d6} (DC 36)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 16d6}, three {@dice 14d6} and four {@dice 12d6} beads with a DC 36 basic Reflex save."
+						}
+					}
 				},
 				{
 					"type": "VII",
 					"level": 17,
+					"name": "Necklace of Fireballs (Type VII)",
 					"price": {
 						"coin": "gp",
 						"amount": 9600,
@@ -12223,9 +12905,21 @@
 					},
 					"entries": [
 						"One {@dice 18d6}, three {@dice 16d6}, five {@dice 14d6} (DC 39)"
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "This necklace has one {@dice 18d6}, three {@dice 16d6} and five {@dice 14d6} beads with a DC 39 basic Reflex save."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Numerous varieties of the necklace of fireballs exist. Each has a different basic Reflex save DC and includes a combination of spheres dealing different amounts of damage, as listed for each type below."
+				}
+			}
 		},
 		{
 			"name": "Nectar of Purification",
@@ -12686,7 +13380,22 @@
 					},
 					"entries": [
 						"This oil can affect an item of 2 Bulk or less and lasts 8 hours."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "1 Bulk",
+								"with": "2 Bulk"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "1 hour",
+								"with": "8 hours"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -12849,6 +13558,7 @@
 			"variants": [
 				{
 					"type": "high-grade orichalcum buckler",
+					"name": "High-Grade Orichalcum Buckler",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -13054,7 +13764,7 @@
 			"category": "Ammunition",
 			"entries": [
 				"This ammunition has a slender shape and a viciously pointed tip. When you activate and shoot penetrating ammunition, the {@action Strike} takes the shape of a 60-foot line originating from you.",
-				"Roll one attack roll and compare the result to the AC of each target in the line. The ammunition ignores up to 10 of a target's resistance, and it can penetrate walls up to 1 foot thick with Hardness 10 or less. Each target that takes damage from this ammunition also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
+				"Roll one attack roll and compare the result to the AC of each target in the line. The ammunition ignores up to 10 of a target's resistance, and it can penetrate walls up to 1 foot thick with Hardness 10 or less. Each target that takes damage from this ammunition also takes {@damage 1d6} {@condition persistent damage||persistent bleed damage}.",
 				"If your attack roll result is a natural 20, you improve your degree of success only against the first target in the line, but you can still score a critical hit on other targets if your result exceeds their AC by 10 or more. If you have access to your bow's critical specialization effect, penetrating ammunition applies that effect only against a target in the last square of the line."
 			],
 			"generic": false
@@ -13425,7 +14135,15 @@
 					},
 					"entries": [
 						"The fly Speed lasts for 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "1 minute",
+							"with": "1 hour"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -13528,6 +14246,13 @@
 				"Drinking this thick, fortifying potion grants resistance against a single damage type for 1 hour. Each potion of resistance is created to defend against acid, cold, electricity, fire, or sonic damage (and is called a lesser potion of fire resistance or the like)."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "resistance against"
+				}
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -13539,7 +14264,12 @@
 					},
 					"entries": [
 						"You gain resistance 5 to the appropriate energy type."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "resistance 5 against"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -13551,7 +14281,12 @@
 					},
 					"entries": [
 						"You gain resistance 10 to the appropriate energy type."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "resistance 10 against"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -13563,7 +14298,12 @@
 					},
 					"entries": [
 						"You gain resistance 15 to the appropriate energy type."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "resistance 15 against"
+						}
+					}
 				}
 			]
 		},
@@ -13617,7 +14357,15 @@
 					},
 					"entries": [
 						"The swim Speed lasts for 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "10 minutes",
+							"with": "1 hour"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -13895,6 +14643,14 @@
 				"{@b Benefit} You gain an item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed.",
 				"{@b Drawback} You take damage equal to twice your level; you can't recover Hit Points lost in this way by any means while the mutagen lasts. You take a \u20132 penalty to Fortitude saves."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You gain an item bonus to \\{@skill Acrobatics\\} checks, \\{@skill Stealth\\} checks, \\{@skill Thievery\\} checks, Reflex saves, and Dexterity-based attack rolls, and you gain the listed status bonus to your Speed."
+				},
+				"entriesMode": "generic"
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -13907,7 +14663,12 @@
 					},
 					"entries": [
 						"The bonus to rolls is +1, the bonus to Speed is +5 feet, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +1 item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +5 foot bonus to your Speed. The duration is 1 minute."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -13919,7 +14680,12 @@
 					},
 					"entries": [
 						"The bonus to rolls is +2, the bonus to Speed is +10 feet, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +2 item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +10 foot bonus to your Speed. The duration is 10 minutes."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -13931,7 +14697,12 @@
 					},
 					"entries": [
 						"The bonus to rolls is +3, the bonus to Speed is +15 feet, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +3 item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +15 foot bonus to your Speed. The duration is 1 hour."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -13943,7 +14714,12 @@
 					},
 					"entries": [
 						"The bonus to rolls is +4, the bonus to Speed is +20 feet, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +4 item bonus to {@skill Acrobatics} checks, {@skill Stealth} checks, {@skill Thievery} checks, Reflex saves, and Dexterity-based attack rolls, and you gain a +20 foot bonus to your Speed. The duration is 1 hour."
+						}
+					}
 				}
 			]
 		},
@@ -14360,7 +15136,7 @@
 						"note": null
 					},
 					"entries": [
-						"The ring grants a +3 bonus. Activating it creates an 8th-level {@spell glyph of warding} containing your choice of either prismatic spray or 7th-level {@spell fireball}."
+						"The ring grants a +3 bonus. {@action Activate an Item||Activating} it creates an 8th-level {@spell glyph of warding} containing your choice of either prismatic spray or 7th-level {@spell fireball}."
 					]
 				}
 			]
@@ -14551,16 +15327,24 @@
 			"variants": [
 				{
 					"type": "I",
+					"name": "Ring of Wizardry (Type I)",
 					"level": 7,
 					"price": {
 						"coin": "gp",
 						"amount": 360,
 						"note": null
 					},
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "+1 item bonus to {@skill Arcana} checks and have two additional 1st-level arcane spell slots each day."
+						}
+					}
 				},
 				{
 					"type": "II",
+					"name": "Ring of Wizardry (Type II)",
 					"level": 10,
 					"price": {
 						"coin": "gp",
@@ -14569,10 +15353,17 @@
 					},
 					"entries": [
 						"The bonus is +2, and the ring grants two 2nd-level spell slots and one 1st-level spell slot."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "+2 item bonus to {@skill Arcana} checks and have additional two 2nd-level arcane spell slots and one 1st-level arcane spell slot each day."
+						}
+					}
 				},
 				{
 					"type": "III",
+					"name": "Ring of Wizardry (Type III)",
 					"level": 12,
 					"price": {
 						"coin": "gp",
@@ -14581,10 +15372,17 @@
 					},
 					"entries": [
 						"The bonus is +2, and the ring grants two 3rd-level spell slots and one 2nd-level spell slot."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "+2 item bonus to {@skill Arcana} checks and have additional two 3rd-level arcane spell slots and one 2nd-level arcane spell slot each day."
+						}
+					}
 				},
 				{
 					"type": "IV",
+					"name": "Ring of Wizardry (Type IV)",
 					"level": 14,
 					"price": {
 						"coin": "gp",
@@ -14594,9 +15392,22 @@
 					"craftReq": "You have a spellcasting class feature with the arcane tradition.",
 					"entries": [
 						"The bonus is +2, and the ring grants two 4th-level spell slots and one 3rd-level spell slot."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "+2 item bonus to {@skill Arcana} checks and have additional two 4th-level arcane spell slots and one 3rd-level arcane spell slot each day."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1 item bonus to \\{@skill Arcana\\} checks and have two additional 1st-level arcane spell slots each day."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Robe of Eyes",
@@ -15061,8 +15872,17 @@
 						"note": null
 					},
 					"entries": [
-						"A greater salve of antiparalysis can potentially remove petrification. The creature recovers as if it were the target of both a 6th-level {@spell remove paralysis} spell and a {@spell stone to flesh} spell."
-					]
+						"A greater salve of antiparalysis can potentially remove {@condition Petrified||petrification}. The creature recovers as if it were the target of both a 6th-level {@spell remove paralysis} spell and a {@spell stone to flesh} spell."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "prependArr",
+							"items": [
+								"Applying this filmy salve to a creature helps it overcome magical paralysis."
+							]
+						},
+						"entriesMode": "variant"
+					}
 				}
 			]
 		},
@@ -15261,6 +16081,13 @@
 				"This briny concoction alters the skin on your hands and feet.",
 				"The spaces between your fingers and toes become webbed, granting you a swim Speed of 20 feet for the listed duration."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed duration."
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -15270,6 +16097,11 @@
 						"coin": "gp",
 						"amount": 22,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "10 minutes."
+						}
 					},
 					"entries": [
 						"The duration is 10 minutes."
@@ -15283,6 +16115,11 @@
 						"amount": 300,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "1 hour, and you can breathe underwater."
+						}
+					},
 					"entries": [
 						"The duration is 1 hour, and you can breathe underwater."
 					]
@@ -15294,6 +16131,11 @@
 						"coin": "gp",
 						"amount": 920,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "24 hours, and you can breathe underwater."
+						}
 					},
 					"entries": [
 						"The duration is 24 hours, and you can breathe underwater."
@@ -15329,8 +16171,7 @@
 			"category": "Elixir",
 			"entries": [
 				"You gain inner serenity, focused on fine details and steeled against mental assaults, but you find violence off-putting.",
-				"{@b Benefit} You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks.",
-				"This bonus improves when you attempt Will saves against {@trait mental} effects.",
+				"{@b Benefit} You gain an item bonus to Will saves and {@skill Perception}, {@skill Medicine}, {@skill Nature}, {@skill Religion}, and {@skill Survival} checks. This bonus improves when you attempt Will saves against {@trait mental} effects.",
 				"{@b Drawback} You take a \u20131 penalty to attack rolls and save DCs of offensive spells, and a \u20131 penalty per damage die to all weapon, unarmed attack, and spell damage."
 			],
 			"generic": "G",
@@ -15345,7 +16186,27 @@
 					},
 					"entries": [
 						"The bonus is +1, or +2 vs. mental, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +1 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "improves when",
+								"with": "improves to +2 when"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "effects\\.",
+								"with": "effects. The duration is 1 minute."
+							}
+						]
+					}
 				},
 				{
 					"type": "moderate",
@@ -15357,7 +16218,27 @@
 					},
 					"entries": [
 						"The bonus is +2, or +3 vs. mental, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "improves when",
+								"with": "improves to +3 when"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "effects\\.",
+								"with": "effects. The duration is 10 minutes."
+							}
+						]
+					}
 				},
 				{
 					"type": "greater",
@@ -15370,7 +16251,27 @@
 					"entries": [
 						"The bonus is +3, or +4 vs. mental, and the duration is 1 hour.",
 						"When you roll a success on a Will save against a {@trait mental} effect, you get a critical success instead."
-					]
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "improves when",
+								"with": "improves to +4 when"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "effects\\.",
+								"with": "effects. When you roll a success on a Will save against a {@trait mental} effect, you get a critical success instead. The duration is 1 hour."
+							}
+						]
+					}
 				},
 				{
 					"type": "major",
@@ -15382,7 +16283,28 @@
 					},
 					"entries": [
 						"The bonus is +4, and the duration is 1 hour. When you roll a success on a Will save against a {@trait mental} effect, you get a critical success instead, and your critical failures on Will saves against {@trait mental} effects become failures instead."
-					]
+					],
+					"_mod": {
+						"entriesMode": "generic",
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "effects\\.",
+								"with": "effects. When you roll a success on a Will save against a {@trait mental} effect, you get a critical success instead, and your critical failures on Will saves against {@trait mental} effects become failures instead. The duration is 1 hour."
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "This bonus improves when you attempt Will saves against {@trait mental} effects.",
+								"with": ""
+							}
+						]
+					}
 				}
 			]
 		},
@@ -15725,6 +16647,7 @@
 				{
 					"type": "greater",
 					"level": 8,
+					"onset": "",
 					"price": {
 						"coin": "gp",
 						"amount": 90,
@@ -15732,7 +16655,32 @@
 					},
 					"entries": [
 						"This potion has no onset, lasts for 1 hour, and grants the effects of a 4th-level {@spell shrink} spell. In addition, you gain a +2 item bonus to {@skill Stealth} checks while shrunken."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "10 minutes",
+								"with": "1 hour"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "effects of the",
+								"with": "effects of a 4th-level"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "After the onset, y",
+								"with": "Y"
+							},
+							{
+								"mode": "appendStr",
+								"str": "In addition, you gain a +2 item bonus to {@skill Stealth} checks while shrunken.",
+								"joiner": " "
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -15895,6 +16843,7 @@
 			"variants": [
 				{
 					"type": "low-grade silver buckler",
+					"name": "Low-Grade Silver Buckler",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -15919,6 +16868,7 @@
 				},
 				{
 					"type": "standard-grade silver buckler",
+					"name": "Standard-Grade Silver Buckler",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -15943,6 +16893,7 @@
 				},
 				{
 					"type": "high-grade silver buckler",
+					"name": "High-Grade Silver Buckler",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -16092,7 +17043,22 @@
 					},
 					"entries": [
 						"The bonus is +1, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +1 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "instead.",
+								"with": "instead. The duration is 1 minute."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -16104,7 +17070,22 @@
 					},
 					"entries": [
 						"The bonus is +2, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "instead.",
+								"with": "instead. The duration is 10 minutes."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -16116,7 +17097,22 @@
 					},
 					"entries": [
 						"The bonus is +3, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "instead.",
+								"with": "instead. The duration is 1 hour."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -16128,7 +17124,22 @@
 					},
 					"entries": [
 						"The bonus is +4, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "instead.",
+								"with": "instead. The duration is 1 hour."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -16345,7 +17356,9 @@
 			"onset": null,
 			"ammunition": null,
 			"category": "Ammunition",
-			"entries": [],
+			"entries": [
+				"These are small metal balls, typically either iron or lead, designed to be used as ammunition in {@item sling||slings}."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
@@ -16480,6 +17493,13 @@
 			"entries": [
 				"With a sharp twist of this item, you instantly create a screen of thick, opaque smoke in a burst centered on one corner of your space. All creatures within that area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dispersed by a strong wind."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "in a burst"
+				}
+			},
 			"generic": "G",
 			"variants": [
 				{
@@ -16489,6 +17509,11 @@
 						"coin": "gp",
 						"amount": 3,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "in a 5-foot burst"
+						}
 					},
 					"entries": [
 						"The radius of the burst is 5 feet."
@@ -16501,6 +17526,11 @@
 						"coin": "gp",
 						"amount": 53,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "in a 20-foot burst"
+						}
 					},
 					"entries": [
 						"The radius of the burst is 20 feet."
@@ -16715,6 +17745,7 @@
 			"variants": [
 				{
 					"type": "I",
+					"name": "Spellstrike Ammunition (Type I)",
 					"level": 3,
 					"price": {
 						"coin": "gp",
@@ -16723,10 +17754,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 1st."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (1st-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "II",
+					"name": "Spellstrike Ammunition (Type II)",
 					"level": 5,
 					"price": {
 						"coin": "gp",
@@ -16735,10 +17782,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 2nd."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (2nd-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "III",
+					"name": "Spellstrike Ammunition (Type III)",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -16747,10 +17810,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 3rd."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (3rd-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "IV",
+					"name": "Spellstrike Ammunition (Type IV)",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -16759,10 +17838,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 4th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (4th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "V",
+					"name": "Spellstrike Ammunition (Type V)",
 					"level": 11,
 					"price": {
 						"coin": "gp",
@@ -16771,10 +17866,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 5th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (5th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "VI",
+					"name": "Spellstrike Ammunition (Type VI)",
 					"level": 13,
 					"price": {
 						"coin": "gp",
@@ -16783,10 +17894,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 6th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (6th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "VII",
+					"name": "Spellstrike Ammunition (Type VII)",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -16795,10 +17922,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 7th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (7th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "VIII",
+					"name": "Spellstrike Ammunition (Type VIII)",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -16807,10 +17950,26 @@
 					},
 					"entries": [
 						"Maximum Spell Level 8th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (8th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "IX",
+					"name": "Spellstrike Ammunition (Type IX)",
 					"level": 19,
 					"price": {
 						"coin": "gp",
@@ -16819,7 +17978,22 @@
 					},
 					"entries": [
 						"Maximum Spell Level 9th."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "The spell must be of a spell level the ammunition can hold",
+								"with": "The spell must be of a spell level the ammunition can hold (9th-level or lower)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "The maximum level of spell the ammunition can hold determines its item level and Price.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -18170,7 +19344,7 @@
 				"frequency": null,
 				"trigger": null
 			},
-			"ammunition": "sling bullet",
+			"ammunition": "sling bullets",
 			"category": "Ammunition",
 			"entries": [
 				"This sling bullet looks like a {@condition petrified} serpent's eye. A creature hit by an activated stone bullet is subject to the effects of a 6th-level {@spell flesh to stone} spell (DC 34)."
@@ -18670,7 +19844,7 @@
 				"When you hit a creature with a tanglefoot bag, that creature takes a status penalty to its Speeds for 1 minute.",
 				"Many types of tanglefoot bag also grant an item bonus on attack rolls.",
 				"On a critical hit, a creature in contact with a solid surface becomes stuck to the surface and {@condition immobilized} for 1 round, and a creature flying via wings has its wings tangled, causing it to fall safely to the ground and become unable to {@action Fly} again for 1 round. Tanglefoot bags are not effective when used on a creature that is in water.",
-				"The target can end any effects by Escaping or spending a total of 3 {@action Interact} actions to carefully remove the sticky substances. These {@action Interact} actions don't have to be consecutive, and other creatures can provide the actions as well."
+				"The target can end any effects by {@action Escape||Escaping} or spending a total of 3 {@action Interact} actions to carefully remove the sticky substances. These {@action Interact} actions don't have to be consecutive, and other creatures can provide the actions as well."
 			],
 			"generic": "G",
 			"variants": [
@@ -18684,7 +19858,28 @@
 					},
 					"entries": [
 						"The target takes a \u201310-foot penalty, and the {@action Escape} DC is 17."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "a status penalty",
+								"with": "a \u201310-foot penalty"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\{@action Escape\\|\\|Escaping\\}",
+								"with": "{@action Escape||Escaping} ({@action Escape} DC 17)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of tanglefoot bag also grant an item bonus on attack rolls.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -18696,7 +19891,28 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls, the target takes a \u201315-foot penalty, and the {@action Escape} DC is 19."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "a status penalty",
+								"with": "a \u201315-foot penalty"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\{@action Escape\\|\\|Escaping\\}",
+								"with": "{@action Escape||Escaping} ({@action Escape} DC 19)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of tanglefoot bag also grant an item bonus on attack rolls.",
+								"with": "You gain a +1 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -18708,7 +19924,28 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls, the target takes a \u201315-foot penalty, and the {@action Escape} DC is 28."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "a status penalty",
+								"with": "a \u201315-foot penalty"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\{@action Escape\\|\\|Escaping\\}",
+								"with": "{@action Escape||Escaping} ({@action Escape} DC 28)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of tanglefoot bag also grant an item bonus on attack rolls.",
+								"with": "You gain a +2 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -18720,7 +19957,28 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls, the target takes a \u201320-foot penalty, and the {@action Escape} DC is 37."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "a status penalty",
+								"with": "a \u201320-foot penalty"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "\\{@action Escape\\|\\|Escaping\\}",
+								"with": "{@action Escape||Escaping} ({@action Escape} DC 37)"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of tanglefoot bag also grant an item bonus on attack rolls.",
+								"with": "You gain a +3 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -18914,7 +20172,27 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d4} sonic damage and 1 sonic splash damage, and the DC is 17."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed sonic damage and sonic splash damage",
+								"with": "{@damage 1d4} sonic damage and 1 sonic splash damage"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Fortitude saving throw",
+								"with": "DC 17 Fortitude saving throw"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of thunderstone grant an item bonus to attack rolls.",
+								"with": ""
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -18926,7 +20204,27 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} sonic damage and 2 sonic splash damage, and the DC is 20."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed sonic damage and sonic splash damage",
+								"with": "{@damage 2d4} sonic damage and 2 sonic splash damage"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Fortitude saving throw",
+								"with": "DC 20 Fortitude saving throw"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of thunderstone grant an item bonus to attack rolls.",
+								"with": "You gain a +1 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -18938,7 +20236,27 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} sonic damage and 3 sonic splash damage, and the DC is 28."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed sonic damage and sonic splash damage",
+								"with": "{@damage 3d4} sonic damage and 3 sonic splash damage"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Fortitude saving throw",
+								"with": "DC 28 Fortitude saving throw"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of thunderstone grant an item bonus to attack rolls.",
+								"with": "You gain a +2 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -18950,7 +20268,27 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} sonic damage and 4 sonic splash damage, and the DC is 36."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed sonic damage and sonic splash damage",
+								"with": "{@damage 4d4} sonic damage and 4 sonic splash damage"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Fortitude saving throw",
+								"with": "DC 36 Fortitude saving throw"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "Many types of thunderstone grant an item bonus to attack rolls.",
+								"with": "You gain a +3 item bonus to attack rolls."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -19413,7 +20751,7 @@
 					"trigger": "You critically succeed at an attack roll against a good creature with the weapon",
 					"requirements": null,
 					"entries": [
-						"The target takes {@condition persistent damage ||persistent bleed damage} equal to {@dice 1d8} per weapon damage die of the etched weapon."
+						"The target takes {@condition persistent damage||persistent bleed damage} equal to {@dice 1d8} per weapon damage die of the etched weapon."
 					]
 				}
 			],
@@ -19804,7 +21142,7 @@
 			"entries": [
 				"This leather rucksack has icons burned into it, and every time it's taken to a plane it hasn't been to before, a new icon representing that plane scorches into the surface. The pack grants you a +3 bonus to {@skill Survival} checks.",
 				"It also enables you to see the magical traces of creatures' passage, allowing you to {@action Track} a creature that has teleported. The GM sets the DC of this check, usually using the level and DC of the teleportation spell. This lets you find the location of the creature's destination, and you can use that destination when casting teleport or activating the pack, even though you don't know what it looks like.",
-				"The pack contains an extradimensional space with the same properties as a type II bag of holding. This space contains the contents of a climber's kit. If any components of that kit are removed and not returned, they return to the pack at dawn each day.",
+				"The pack contains an extradimensional space with the same properties as a {@item bag of holding (type II)||type II bag of holding}. This space contains the contents of a climber's kit. If any components of that kit are removed and not returned, they return to the pack at dawn each day.",
 				{
 					"type": "ability",
 					"style": "compact",
@@ -19862,7 +21200,7 @@
 					]
 				}
 			],
-			"craftReq": "Supply a casting of a spell of the appropriate level. The spell must have a casting time of [oneaction] or {@as 2} and a duration no less than 10 minutes and no greater than 1 hour.",
+			"craftReq": "Supply a casting of a spell of the appropriate level. The spell must have a casting time of {@as 1} or {@as 2} and a duration no less than 10 minutes and no greater than 1 hour.",
 			"generic": "G",
 			"variants": [
 				{
@@ -20249,19 +21587,14 @@
 				{
 					"type": "ability",
 					"style": "compact",
-					"activity": {
-						"number": 1,
-						"unit": "varies",
-						"entry": "(Cast"
-					},
 					"components": [
-						"a Spell)"
+						"Cast a Spell"
 					],
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You cast {@spell fireball} of the indicated level. Each creature that fails its save takes {@condition persistent damage ||persistent fire damage}."
+						"You cast {@spell fireball} of the indicated level. Each creature that fails its save takes {@condition persistent damage||persistent fire damage}."
 					]
 				}
 			],
@@ -20277,8 +21610,14 @@
 						"note": null
 					},
 					"entries": [
-						"{@condition persistent damage} {@dice 1d6}."
-					]
+						"{@condition persistent damage} {@damage 1d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 1d6} {@condition persistent damage||persistent fire damage}"
+						}
+					}
 				},
 				{
 					"type": "5th-level spell",
@@ -20289,8 +21628,14 @@
 						"note": null
 					},
 					"entries": [
-						"{@condition persistent damage} {@dice 2d6}."
-					]
+						"{@condition persistent damage} {@damage 2d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 2d6} {@condition persistent damage||persistent fire damage}"
+						}
+					}
 				},
 				{
 					"type": "7th-level spell",
@@ -20301,8 +21646,14 @@
 						"note": null
 					},
 					"entries": [
-						"{@condition persistent damage} {@dice 3d6}."
-					]
+						"{@condition persistent damage} {@damage 3d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 3d6} {@condition persistent damage||persistent fire damage}"
+						}
+					}
 				},
 				{
 					"type": "9th-level spell",
@@ -20313,10 +21664,23 @@
 						"note": null
 					},
 					"entries": [
-						"{@condition persistent damage} {@dice 4d6}."
-					]
+						"{@condition persistent damage} {@damage 4d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "{@damage 4d6} {@condition persistent damage||persistent fire damage}"
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "{@condition persistent damage\\|\\|persistent fire damage}"
+				}
+			}
 		},
 		{
 			"name": "Wand of Widening",
@@ -20544,7 +21908,12 @@
 						"note": null
 					},
 					"craftReq": "You are an expert in {@skill Crafting}.",
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "+1 item bonus, and the weapon can be etched with one property rune."
+						}
+					}
 				},
 				{
 					"type": "+2 weapon potency",
@@ -20554,8 +21923,15 @@
 						"amount": 935,
 						"note": null
 					},
-					"craftReq": "You are a master in {@skill Crafting}. The item bonus to attack rolls is +2, and the weapon can be etched with two property runes.",
-					"entries": []
+					"craftReq": "You are a master in {@skill Crafting}.",
+					"entries": [
+						"The item bonus to attack rolls is +2, and the weapon can be etched with two property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "+2 item bonus, and the weapon can be etched with two property runes."
+						}
+					}
 				},
 				{
 					"type": "+3 weapon potency",
@@ -20565,10 +21941,24 @@
 						"amount": 8935,
 						"note": null
 					},
-					"craftReq": "You are legendary in {@skill Crafting}. The item bonus to attack rolls is +3, and the weapon can be etched with three property runes.",
-					"entries": []
+					"craftReq": "You are legendary in {@skill Crafting}.",
+					"entries": [
+						"The item bonus to attack rolls is +3, and the weapon can be etched with three property runes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "+3 item bonus, and the weapon can be etched with three property runes."
+						}
+					}
 				}
-			]
+			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1 item bonus, and the weapon can be etched with one property rune\\."
+				},
+				"entriesMode": "generic"
+			}
 		},
 		{
 			"name": "Whisper of the First Lie",
@@ -20947,7 +22337,7 @@
 			"appliesTo": "Weapon",
 			"entries": [
 				"Weapons with wounding runes are said to thirst for blood.",
-				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage ||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage ||persistent bleed damage}."
+				"When you hit a creature with a wounding weapon, you deal an extra {@damage 1d6} {@condition persistent damage||persistent bleed damage}. On a critical hit, it instead deals {@damage 1d12} {@condition persistent damage||persistent bleed damage}."
 			],
 			"generic": false
 		},

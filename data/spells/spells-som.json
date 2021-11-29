@@ -308,7 +308,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You summon a tumultuous cloud of ash and smoke. The cloud is difficult terrain for flying creatures, and creatures in the cloud can't detect anything using their sense of smell. Creatures that start their turn within the cloud take {@damage 2d4} fire damage as their lungs fill with the hot, acrid smoke, with a Fortitude save.",
+				"You summon a tumultuous cloud of ash and smoke. The cloud is {@quickref difficult terrain||3|terrain} for flying creatures, and creatures in the cloud can't detect anything using their sense of smell. Creatures that start their turn within the cloud take {@damage 2d4} fire damage as their lungs fill with the hot, acrid smoke, with a Fortitude save.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1324,19 +1324,23 @@
 				"S": true,
 				"V": false
 			},
-			"requirements": "You're benefiting from",
+			"requirements": "You're benefiting from {@action Arcane Cascade|SoM}.",
 			"range": {
 				"type": null
 			},
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "until the {@action Arcane Cascade|SoM} stance ends",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Arcane Cascade.",
-				"Duration until the Arcane Cascade stance ends You quickly adjust your Arcane Cascade to offer magical protection. You gain resistance 5 against damage from spells. As normal, using Arcane Cascade again means you've ended the stance, and the spell ends."
+				"You quickly adjust your Arcane Cascade to offer magical protection. You gain resistance 5 against damage from spells. As normal, using Arcane Cascade again means you've ended the stance, and the spell ends."
 			],
 			"heightened": {
 				"heightened": true,
@@ -2006,7 +2010,7 @@
 			"entries": [
 				"Razor sharp coral growths erupt from the ground, transforming the landscape into a dangerous coral reef.",
 				"You can create a third nonoverlapping burst if the centers of all three bursts are underwater. Creatures in the area when the spell is cast take {@damage 6d6} piercing damage and must attempt a basic Reflex save. A creature that critically fails its saving throw also takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage}.",
-				"The area becomes difficult terrain and hazardous terrain.",
+				"The area becomes {@quickref difficult terrain||3|terrain} and hazardous terrain.",
 				"A creature that moves through the area takes 3 piercing damage for every square of that area it moves into."
 			],
 			"heightened": {
@@ -3154,10 +3158,10 @@
 						"{@ability Darkvision}.",
 						"One or more attacks specific to the battle form you choose, which are the only attacks you can use. You're trained with them. Your attack modifier is +34, and you use the listed damage. These attacks are Dexterity based if you choose an air or fire elemental, or Strength based if you choose an earth or water elemental. (This distinction doesn't change the statistics, but matters for the {@condition enfeebled} and {@condition clumsy} conditions, for example). If your unarmed attack modifier is higher, you can use it instead.",
 						"{@skill Acrobatics} modifier of +36 for air or fire elemental or {@skill Athletics} modifier of +36 for earth or water elemental, unless your own modifier is higher. You also gain specific abilities based on the type of elemental you choose:",
-						"{@bold Air Elemental fly} Speed 80 feet; High Winds (air, aura) 30 feet. Air within the emanation is difficult terrain for flying creatures that don't have the {@trait air} trait; Swiftness Your movement doesn't trigger reactions; Melee {@as 1} gust (reach 25 feet), Damage {@damage 3d12+11} bludgeoning plus Push 10 feet; Ranged {@as 1} lightning lash (range increment 80 feet), Damage {@damage 3d12+4} electricity.",
-						"{@bold Earth} Elemental 30 feet, burrow 20 feet; resistance 5 to physical; Spike Stones (aura, earth) 30 feet. The area is difficult terrain and hazardous terrain. A creature without the {@trait earth} trait that moves on the ground in the area takes 5 piercing damage for every square of that area it moves into; Rocky Toughness You gain 40 temporary Hit Points when you choose this form instead of 30; Melee {@as 1} fist (reach 25 feet), Damage {@damage 3d12+15} bludgeoning; Ranged {@as 1} rock (range increment 40 feet), Damage {@damage 4d8+6} bludgeoning.",
+						"{@bold Air Elemental fly} Speed 80 feet; High Winds (air, aura) 30 feet. Air within the emanation is {@quickref difficult terrain||3|terrain} for flying creatures that don't have the {@trait air} trait; Swiftness Your movement doesn't trigger reactions; Melee {@as 1} gust (reach 25 feet), Damage {@damage 3d12+11} bludgeoning plus Push 10 feet; Ranged {@as 1} lightning lash (range increment 80 feet), Damage {@damage 3d12+4} electricity.",
+						"{@bold Earth} Elemental 30 feet, burrow 20 feet; resistance 5 to physical; Spike Stones (aura, earth) 30 feet. The area is {@quickref difficult terrain||3|terrain} and hazardous terrain. A creature without the {@trait earth} trait that moves on the ground in the area takes 5 piercing damage for every square of that area it moves into; Rocky Toughness You gain 40 temporary Hit Points when you choose this form instead of 30; Melee {@as 1} fist (reach 25 feet), Damage {@damage 3d12+15} bludgeoning; Ranged {@as 1} rock (range increment 40 feet), Damage {@damage 4d8+6} bludgeoning.",
 						"{@bold Fire} Elemental 50 feet; immunity to fire; weakness to cold 10; Intense Heat (aura, fire) 30 feet. A creature that enters the aura or starts its turn in the aura takes {@damage 5d6} fire damage with a basic Reflex save against your spell DC. A creature can take damage from the aura only once per round; Melee {@as 1} tendril (reach 25 feet), Damage {@damage 3d10+12} fire plus {@damage 2d6} {@condition persistent damage ||persistent fire}; Ranged {@as 1} fire mote (range increment 60 feet), Damage {@damage 4d8+6} bludgeoning.",
-						"{@bold Water} Elemental 40 feet, swim 80 feet; resistance 10 to fire; Vortex (aura, water) 30 feet. Water within the aura that is part of the same body of water you occupy is difficult terrain for Swimming creatures that don't have the {@trait water} trait; Melee {@as 1} wave (reach 25 feet), Damage {@damage 3d12+18} bludgeoning plus Push or Pull 10 feet; Ranged {@as 1} water spout (range increment 60 feet), Damage {@damage 4d8+6} bludgeoning."
+						"{@bold Water} Elemental 40 feet, swim 80 feet; resistance 10 to fire; Vortex (aura, water) 30 feet. Water within the aura that is part of the same body of water you occupy is {@quickref difficult terrain||3|terrain} for Swimming creatures that don't have the {@trait water} trait; Melee {@as 1} wave (reach 25 feet), Damage {@damage 3d12+18} bludgeoning plus Push or Pull 10 feet; Ranged {@as 1} water spout (range increment 60 feet), Damage {@damage 4d8+6} bludgeoning."
 					]
 				}
 			],
@@ -3421,7 +3425,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Air} The target gains a +30-foot status bonus to its land Speed and gains a fly Speed equal to its land Speed without the status bonus.",
-						"{@bold Earth} While on the ground, the target gets a +2 status bonus to Fortitude and Reflex saves against effects that would {@action Shove} or {@action Trip} it, and to saves against effects that would attempt to knock it {@condition prone}. In addition, the ground adjacent to the target is difficult terrain, and the difficult terrain moves with the target, though the target ignores this difficult terrain with its own movement.",
+						"{@bold Earth} While on the ground, the target gets a +2 status bonus to Fortitude and Reflex saves against effects that would {@action Shove} or {@action Trip} it, and to saves against effects that would attempt to knock it {@condition prone}. In addition, the ground adjacent to the target is {@quickref difficult terrain||3|terrain}, and the {@quickref difficult terrain||3|terrain} moves with the target, though the target ignores this {@quickref difficult terrain||3|terrain} with its own movement.",
 						"{@bold Fire} The target's melee unarmed Strikes and melee weapon Strikes deal {@damage 1d6} {@condition persistent damage ||persistent fire damage} on a hit.",
 						"{@bold Water} The target takes on a watery sheen, gaining resistance 5 to fire and a swim Speed equal to its land Speed."
 					]
@@ -3968,7 +3972,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"You combine a blazing inferno and air currents into a fiery vortex. You can {@action Cast a Spell||Cast this Spell} only if you are outside or the ceiling is 40 feet or higher. All squares in the vortex are difficult terrain for flying creatures.",
+				"You combine a blazing inferno and air currents into a fiery vortex. You can {@action Cast a Spell||Cast this Spell} only if you are outside or the ceiling is 40 feet or higher. All squares in the vortex are {@quickref difficult terrain||3|terrain} for flying creatures.",
 				"All creatures in the area take {@damage 3d4} bludgeoning damage and {@damage 3d6} fire damage as gusts of fiery wind buffet them, with a basic Reflex save. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the whirlwind up to 20 feet in a straight line. Each creature the whirlwind moves through takes the damage with a basic Reflex save. A creature can take damage from a flame vortex only once per round."
 			],
 			"heightened": {
@@ -4677,71 +4681,6 @@
 			}
 		},
 		{
-			"name": "Gravity Well",
-			"source": "SoM",
-			"page": 109,
-			"type": "SPELL",
-			"focus": false,
-			"level": 3,
-			"traits": [
-				"Evocation"
-			],
-			"school": "V",
-			"traditions": [
-				"Arcane",
-				"Occult"
-			],
-			"cast": {
-				"number": 2,
-				"unit": "action"
-			},
-			"components": {
-				"F": false,
-				"M": false,
-				"S": true,
-				"V": true
-			},
-			"range": {
-				"type": "point",
-				"entry": "120 feet",
-				"distance": {
-					"type": "feet",
-					"amount": 120
-				}
-			},
-			"area": {
-				"types": [
-					"Burst"
-				],
-				"entry": "30-foot-radius burst"
-			},
-			"savingThrow": "Reflex",
-			"savingThrowBasic": false,
-			"duration": {
-				"type": null
-			},
-			"sustain": false,
-			"dismiss": false,
-			"entries": [
-				"You create a sphere of altered gravity. All creatures and unsecured objects in the area move toward the center, depending on their Reflex saving throws. This follows the rules for forced movement (Core Rulebook 475). If there isn't enough space near the center of the sphere, creatures and objects nearer to the center move first, and others move as far as they can without being blocked, up to the distance set by their saving throw outcomes.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature moves 5 feet toward the center.",
-						"Failure": "The creature moves 15 feet toward the center.",
-						"Critical Failure": "The creature moves 30 feet toward the center."
-					}
-				}
-			],
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
-			}
-		},
-		{
 			"name": "Guiding Star",
 			"source": "SoM",
 			"page": 109,
@@ -5335,7 +5274,7 @@
 			"dismiss": false,
 			"entries": [
 				"You inflict your targets with a crushing doubt about everyone and everything around them. For the duration, each target is unwilling to receive any effects that require a willing target (in case the effect was secretly an attack), refuse to ingest anything (in case the substances have been replaced with poisons and cursed duplicates), doesn't treat anyone as an ally (in case its friends were replaced by an impostor), and doesn't believe anything it's told (in case of lies, though this doesn't mean the creature automatically believes the opposite either). It doesn't even fully trust its own ability to {@action Recall Knowledge}, as it becomes convinced it most likely remembered false information, as from a critical failure on a check to {@action Recall Knowledge}.",
-				"Finally, the creature takes {@damage 6d6} mental damage at the end of each of its turns (with no save) unless it spent at least 1 action that turn Seeking or otherwise interacting with its surroundings in an attempt to disbelieve the illusions that it feels are obviously surrounding it.",
+				"Finally, the creature takes {@damage 6d6} mental damage at the end of each of its turns (with no save) unless it spent at least 1 action that turn {@action Seek||Seeking} or otherwise {@action Interact||Interacting} with its surroundings in an attempt to disbelieve the illusions that it feels are obviously surrounding it.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -6056,7 +5995,7 @@
 					"type": "successDegree",
 					"entries": {
 						"Success": "The creature is unaffected.",
-						"Failure": "The creature treats all squares as difficult terrain for its {@action Stride}.",
+						"Failure": "The creature treats all squares as {@quickref difficult terrain||3|terrain} for its {@action Stride}.",
 						"Critical Failure": "As failure, except that you determine where the target moves during the {@action Stride}, though you can't move it into hazardous terrain or to a place it can't stand."
 					}
 				}
@@ -6327,7 +6266,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You adjust your magnetic polarity, causing metal objects to jump and shudder away from you. Attacks made with metal objects against you take a \u20131 status penalty, and the squares adjacent to you are difficult terrain for creatures wearing metal armor. For creatures made entirely of metal, the penalty to their attack rolls is \u20132 and the squares adjacent to you are greater difficult terrain.",
+				"You adjust your magnetic polarity, causing metal objects to jump and shudder away from you. Attacks made with metal objects against you take a \u20131 status penalty, and the squares adjacent to you are {@quickref difficult terrain||3|terrain} for creatures wearing metal armor. For creatures made entirely of metal, the penalty to their attack rolls is \u20132 and the squares adjacent to you are {@quickref greater difficult terrain||3|terrain}.",
 				"While this spell is active, you require an additional {@action Interact} action before using a metal object (including to {@action Strike} with a metal weapon), and if you're wearing metal armor, you're {@condition slowed 1}."
 			],
 			"heightened": {
@@ -6391,7 +6330,7 @@
 					"items": [
 						"{@bold Chilling Ice} The ice around your body thickens, melting off to protect you from heat while inuring you from the cold. You gain resistance 10 to cold.",
 						"{@bold Heart of Ice} Your body temperature plummets to blistering cold. Any creature that touches you, or that hits you with a melee unarmed attack or non‑reach melee weapon attack, takes {@damage 2d6} cold damage.",
-						"{@bold Ice Glide} Ice trails from your feet for an instant as you move, allowing you to skate rapidly along the ice. You don't need to {@action Balance} on ice, and you ignore difficult terrain caused by ice or snow. While moving along a smooth surface, you gain a +20-foot status bonus to your land Speed.",
+						"{@bold Ice Glide} Ice trails from your feet for an instant as you move, allowing you to skate rapidly along the ice. You don't need to {@action Balance} on ice, and you ignore {@quickref difficult terrain||3|terrain} caused by ice or snow. While moving along a smooth surface, you gain a +20-foot status bonus to your land Speed.",
 						"{@bold Icy Claws} Your hands morph into vicious, piercing claws of ice useful for attacking or climbing. As long as you have both hands free, you gain a climb Speed equal to your land Speed. You gain a claw unarmed attack with the {@trait agile} and {@trait finesse} traits, in the brawling weapon group. Your claw attack deals {@damage 1d6} piercing damage as its base damage, plus an additional {@damage 2d6} cold damage."
 					]
 				}
@@ -6760,7 +6699,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"Thick, clinging mud covers the ground, 1 foot deep. The mud is difficult terrain."
+				"Thick, clinging mud covers the ground, 1 foot deep. The mud is {@quickref difficult terrain||3|terrain}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -6883,7 +6822,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"The plant life within the area begins to writhe and lash out against your enemies as you call upon nature to impede your foes. To your enemies, the area becomes difficult terrain, and areas that were naturally difficult terrain due to plants become greater difficult terrain as well as hazardous terrain, dealing 6 poison damage to an enemy each time it enters an affected square."
+				"The plant life within the area begins to writhe and lash out against your enemies as you call upon nature to impede your foes. To your enemies, the area becomes {@quickref difficult terrain||3|terrain}, and areas that were naturally {@quickref difficult terrain||3|terrain} due to plants become {@quickref greater difficult terrain||3|terrain} as well as hazardous terrain, dealing 6 poison damage to an enemy each time it enters an affected square."
 			],
 			"heightened": {
 				"heightened": true,
@@ -7256,7 +7195,7 @@
 						"You immediately become aware of the surrounding terrain features, and you gain tremorsense as an imprecise sense with a range of 200 feet.",
 						"You can make terrain vengeance Strikes by commanding plants, rocks, and other natural features to attack your foes. These are melee Strikes that use your spell attack roll, can target any creature within 60 feet of you, and deal {@damage 5d12} bludgeoning, piercing, or slashing damage. You choose the damage type each time you make a terrain vengeance {@action Strike}.",
 						"By spending a single action, which has the {@trait concentrate} trait, you can increase or decrease the environmental temperature changing it to either one step warmer than normal, one step colder than normal, or the normal temperature.",
-						"As a 2-action activity that has the {@trait concentrate} trait, you can create or remove difficult terrain caused by natural terrain in a 20-foot burst within 200 feet"
+						"As a 2-action activity that has the {@trait concentrate} trait, you can create or remove {@quickref difficult terrain||3|terrain} caused by natural terrain in a 20-foot burst within 200 feet"
 					]
 				},
 				"All of your alterations to the land end when the spell ends.",
@@ -7323,8 +7262,8 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You shroud an area in illusory dreamstuff, making the ground look and feel like a deep mire or quicksand. Ground in the area is difficult terrain.",
-				"Each creature in the area when the spell is cast, or that enters the area, must attempt a Will save. On a failure, it believes it's being pulled down by the earth, taking a \u201310‑foot circumstance penalty to its Speeds. On a critical failure, it's also {@condition immobilized}. In addition to the normal actions to {@action Escape}, at the end of an affected creature's turn, it can attempt a Will save, removing the effects on a success. On a critical success at any Will save made against oneiric mire, the creature fully disbelieves the illusion and no longer needs to make Will saves to risk a Speed penalty or being {@condition immobilized}, though the area is still difficult terrain."
+				"You shroud an area in illusory dreamstuff, making the ground look and feel like a deep mire or quicksand. Ground in the area is {@quickref difficult terrain||3|terrain}.",
+				"Each creature in the area when the spell is cast, or that enters the area, must attempt a Will save. On a failure, it believes it's being pulled down by the earth, taking a \u201310‑foot circumstance penalty to its Speeds. On a critical failure, it's also {@condition immobilized}. In addition to the normal actions to {@action Escape}, at the end of an affected creature's turn, it can attempt a Will save, removing the effects on a success. On a critical success at any Will save made against oneiric mire, the creature fully disbelieves the illusion and no longer needs to make Will saves to risk a Speed penalty or being {@condition immobilized}, though the area is still {@quickref difficult terrain||3|terrain}."
 			],
 			"heightened": {
 				"heightened": false,
@@ -7794,7 +7733,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"A tightly packed crowd of humanoids appropriate to the area appear, facing you and agreeing loudly with anything you say. A creature that touches a member of the crowd or makes a {@action Seek} action to examine the crowd can attempt to disbelieve your illusion. The crowd is difficult terrain for anyone who hasn't disbelieved the illusion.",
+				"A tightly packed crowd of humanoids appropriate to the area appear, facing you and agreeing loudly with anything you say. A creature that touches a member of the crowd or makes a {@action Seek} action to examine the crowd can attempt to disbelieve your illusion. The crowd is {@quickref difficult terrain||3|terrain} for anyone who hasn't disbelieved the illusion.",
 				"When you spend 1 or more actions to cast a composition spell (Core Rulebook 386) or to perform an activity that includes a {@skill Performance} check, you can also Sustain this Spell as part of that action."
 			],
 			"heightened": {
@@ -8647,19 +8586,22 @@
 					"amount": 30
 				}
 			},
-			"targets": "1 door no more than 10 feet tall and",
+			"targets": "1 door no more than 10 feet tall and 5 feet wide",
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "1 hour",
+				"duration": {
+					"number": 1,
+					"unit": "hour"
+				}
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"5 feet wide Duration 1 hour You place a ward upon the door that triggers when a creature attempts to open, unlock, or destroy the door.",
-				"When that happens, the door transforms into a mimic (Bestiary 236) that can't move and is {@condition hostile} to all creatures. When {@action Cast a Spell||Casting the Spell}, you designate yourself and up to 10 other creatures of your choice; these creatures don't trigger the ward, and the mimic is {@condition helpful} to them instead of {@condition hostile}. No effect can move the mimic unless it's also capable of moving the entire door. Once the door transforms into a mimic, it attacks creatures in its reach for up to 1 minute, and then the spell ends. If the mimic is killed before that time, the spell ends and the door returns to its normal form.",
-				"While turned into a mimic, the door can't be opened, unlocked, or bypassed\u2014not even by the designated creatures. It's a creature, not a door, during that time.",
-				"When the spell ends, the door returns to the state it was in before the ward was triggered.",
-				"."
+				"You place a ward upon the door that triggers when a creature attempts to open, unlock, or destroy the door.",
+				"When that happens, the door transforms into a {@creature mimic} that can't move and is {@condition hostile} to all creatures. When {@action Cast a Spell||Casting the Spell}, you designate yourself and up to 10 other creatures of your choice; these creatures don't trigger the ward, and the mimic is {@condition helpful} to them instead of {@condition hostile}. No effect can move the mimic unless it's also capable of moving the entire door. Once the door transforms into a mimic, it attacks creatures in its reach for up to 1 minute, and then the spell ends. If the mimic is killed before that time, the spell ends and the door returns to its normal form.",
+				"While turned into a mimic, the door can't be opened, unlocked, or bypassed\u2014not even by the designated creatures. It's a creature, not a door, during that time. When the spell ends, the door returns to the state it was in before the ward was triggered."
 			],
 			"heightened": {
 				"heightened": false,
@@ -8871,16 +8813,17 @@
 					"amount": 60
 				}
 			},
-			"targets": "1 willing or {@condition unconscious} creature of",
+			"targets": "1 willing or {@condition unconscious} creature of 8th level or lower",
 			"savingThrowBasic": false,
 			"duration": {
-				"type": null
+				"type": "timed",
+				"entry": "sustained"
 			},
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"8th level or lower Duration sustained You create an illusory magical double that physically looks and behaves very similarly to the target. This double is limited to moving, Interacting, speaking short sentences, and other similar basic tasks. It is unable to cast spells, attack, or use any complex skills.",
-				"The illusory duplicate is your minion. You can issue new commands to the double as part of {@action Sustain a Spell||Sustaining the Spell}.",
+				"You create an illusory magical double that physically looks and behaves very similarly to the target. This double is limited to moving, {@action Interact||Interacting}, speaking short sentences, and other similar basic tasks. It is unable to cast spells, attack, or use any complex skills.",
+				"The illusory duplicate is your {@trait minion}. You can issue new commands to the double as part of {@action Sustain a Spell||Sustaining the Spell}.",
 				"You can command the duplicate telepathically as long as the spell lasts, provided it's within 1 mile of you. You can switch between using your own senses and the duplicate's senses with a single action, which has the {@trait concentrate} trait.",
 				"The illusory duplicate has the same statistics as the original creature, except it doesn't have any of the original's item bonuses, and it has one quarter of the original's Hit Points.",
 				"If the double's Hit Points are reduced to 0, the spell ends."
@@ -9117,7 +9060,7 @@
 			"dismiss": false,
 			"entries": [
 				"You create a wave of water that you ride, banking around obstacles and surfing to higher ground. You move up to 35 feet, raising yourself up to 5 feet above the ground.",
-				"(You can avoid many types of difficult terrain in this way.) You must end your movement on an unoccupied space where you have solid footing. This movement isn't a {@action Stride}, but you measure the distance in a similar way, and it still triggers reactions caused by movement. You can't transport anyone else with you."
+				"(You can avoid many types of {@quickref difficult terrain||3|terrain} in this way.) You must end your movement on an unoccupied space where you have solid footing. This movement isn't a {@action Stride}, but you measure the distance in a similar way, and it still triggers reactions caused by movement. You can't transport anyone else with you."
 			],
 			"heightened": {
 				"heightened": true,
@@ -9256,7 +9199,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"Misshapen skeletal forms erupt from a solid surface, such as a stone floor, and fill the burst. The area they fill is difficult terrain. Their grasping claws deal {@damage 2d6} slashing damage to creatures on the ground in the area when the skeletons first appear (basic Reflex save)",
+				"Misshapen skeletal forms erupt from a solid surface, such as a stone floor, and fill the burst. The area they fill is {@quickref difficult terrain||3|terrain}. Their grasping claws deal {@damage 2d6} slashing damage to creatures on the ground in the area when the skeletons first appear (basic Reflex save)",
 				"On subsequent rounds, the first time you {@action Sustain a Spell||Sustain the Spell} each round, you can move the area of skeletons up to 20 feet within the range of the spell and deal {@damage 2d6} slashing damage (basic Reflex save) to each creature in their new area.",
 				"Damaging or destroying the skeletons is irrelevant, as new bones pull forth from the ground to repair and replace any that are obliterated."
 			],
@@ -9376,16 +9319,16 @@
 			"savingThrowBasic": true,
 			"duration": {
 				"type": "timed",
-				"entry": "sustained up to",
+				"entry": "sustained up to 1 minute",
 				"duration": {
 					"number": 1,
-					"unit": "special"
+					"unit": "minute"
 				}
 			},
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"1 minute You unleash a cloud of foul, blood-sucking fog that drains the vitality from the living to bolster your own. Each living creature in the area when you {@action Cast a Spell||Cast the Spell}, aside from you, takes {@damage 6d6} negative damage with a basic Fortitude save. Creatures in the area are {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it.",
+				"You unleash a cloud of foul, blood-sucking fog that drains the vitality from the living to bolster your own. Each living creature in the area when you {@action Cast a Spell||Cast the Spell}, aside from you, takes {@damage 6d6} negative damage with a basic Fortitude save. Creatures in the area are {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it.",
 				"The first time each round you Sustain this Spell on subsequent turns, living creatures in the area take an additional {@damage 2d6} negative damage with another basic Fortitude save. You also gain temporary Hit Points equal to half the damage a single creature took when you Sustained the spell this turn; calculate these temporary Hit Points using the creature that took the most damage. You lose any remaining temporary Hit Points after 1 minute."
 			],
 			"heightened": {
@@ -9455,7 +9398,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"You evoke a jumble of rocks in the area. The scattering rocks deal bludgeoning damage equal to {@dice 1d4} plus your spellcasting ability modifier to creatures in the area, with a basic Reflex save. The ground in the area becomes difficult terrain for the duration. A creature can {@action Interact} to clear a square of this scree.",
+				"You evoke a jumble of rocks in the area. The scattering rocks deal bludgeoning damage equal to {@dice 1d4} plus your spellcasting ability modifier to creatures in the area, with a basic Reflex save. The ground in the area becomes {@quickref difficult terrain||3|terrain} for the duration. A creature can {@action Interact} to clear a square of this scree.",
 				"If you cast this spell again, any previous scatter scree you have cast ends."
 			],
 			"heightened": {
@@ -9641,7 +9584,7 @@
 			"dismiss": false,
 			"entries": [
 				"You store a sound in a seashell to use as you will: the last words of a loved one, a dragon's mighty roar, the compromising conversation between two powerful diplomats, or even more strange and secret. As part of Casting this Spell, you must present an unbroken seashell. When you {@action Cast a Spell||Cast the Spell}, magic swirls around the triggering creature, copying the sounds they make, as well as any background noise, for the next minute and storing them in the seashell.",
-				"You or another creature can then play the sound back from the seashell during the spell's duration by Interacting with the seashell, but once the sounds have been played back, the seashell shatters and the spell ends.",
+				"You or another creature can then play the sound back from the seashell during the spell's duration by {@action Interact||Interacting} with the seashell, but once the sounds have been played back, the seashell shatters and the spell ends.",
 				"As normal for spells with a duration until your next daily preparations, you can choose to continue expending the spell slot to prolong the duration of an existing seashell of stolen sound for another day. While the spell faithfully copies the sounds around the target, it doesn't reproduce any special {@trait auditory} or {@trait sonic} effects of the sound."
 			],
 			"heightened": {
@@ -9887,7 +9830,7 @@
 			"sustain": false,
 			"dismiss": false,
 			"entries": [
-				"As you attack a foe, warding magic transforms your momentum into action and lifts your shield. Make a melee {@action Strike}. You can then either Raise your Shield if you're wielding one or cast {@spell shield} if you have the spell."
+				"As you attack a foe, warding magic transforms your momentum into action and lifts your shield. Make a melee {@action Strike}. You can then either {@action Raise a Shield||Raise your Shield} if you're wielding one or cast {@spell shield} if you have the spell."
 			],
 			"heightened": {
 				"heightened": false,
@@ -10535,15 +10478,15 @@
 					},
 					{
 						"level": 8,
-						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
+						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 9,
-						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
+						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					},
 					{
 						"level": 10,
-						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
+						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=CE;CG;CN}."
 					}
 				],
 				"no_x": null
@@ -10668,15 +10611,15 @@
 					},
 					{
 						"level": 8,
-						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+						"entry": "{@filter Level 11|bestiary||Level=[-1;11]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
 					},
 					{
 						"level": 9,
-						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+						"entry": "{@filter Level 13|bestiary||Level=[-1;13]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
 					},
 					{
 						"level": 10,
-						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
+						"entry": "{@filter Level 15|bestiary||Level=[-1;15]|Rarity=Common|Creature Type=monitor;fiend;celestial|Alignment=LE;LG;LN}."
 					}
 				],
 				"no_x": null
@@ -10944,7 +10887,7 @@
 			"dismiss": false,
 			"entries": [
 				"While deities jealously guard their most powerful servants from the summoning spells of those who aren't steeped in the faith, this spell allows you to conjure an inhabitant of the Outer Sphere with or without the deity's permission.",
-				"You summon a {@trait celestial}, {@trait monitor}, or {@trait fiend} whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Creature Type=monitor;fiend;celestial} to fight on your behalf. Alternatively, you can choose a magical animal from the Outer Sphere as your lesser servitor. This animal is your choice of an {@creature eagle}, {@creature guard dog}, or {@creature raven|Bst2}. It gains the alignment matching your deity (or you, if you don't have a deity) and has the following trait depending on the alignment it gained: {@trait celestial} for {@trait lawful}, {@trait monitor} for {@trait neutral}, or {@trait fiend} for {@trait evil}.",
+				"You summon a {@trait celestial}, {@trait monitor}, or {@trait fiend} whose level is {@filter \u20131|bestiary||Level=[-1;-1]|Rarity=Common|Creature Type=monitor;fiend;celestial} to fight on your behalf. Alternatively, you can choose a magical animal from the Outer Sphere as your lesser servitor. This animal is your choice of an {@creature eagle}, {@creature guard dog}, or {@creature raven|Bst2}. It gains the alignment matching your deity (or you, if you don't have a deity) and has the following trait depending on the alignment it gained: {@trait celestial} for {@trait lawful}, {@trait monitor} for {@trait neutral}, or {@trait fiend} for {@trait evil}.",
 				"You can't summon a creature if it is opposed to your deity's alignment on either axis (or opposed to your alignment if you don't follow a deity). For example, if you deity is {@trait lawful} {@trait good}, you can't summon a {@trait chaotic} or {@trait evil} creature. The GM might determine that deities restrict specific types of creatures even if their alignments aren't diametrically opposed. For example, {@deity Pharasma} would restrict the summoning of sahkils.",
 				"Heightening the spell increases the maximum level of creature you can summon and might add additional animal servitors, which otherwise work like the {@creature eagle}, {@creature guard dog}, and {@creature raven|Bst2}."
 			],
@@ -10954,15 +10897,15 @@
 				"x": [
 					{
 						"level": 2,
-						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Creature Type=monitor;fiend;celestial}."
+						"entry": "{@filter Level 1|bestiary||Level=[-1;1]|Rarity=Common|Creature Type=monitor;fiend;celestial}."
 					},
 					{
 						"level": 3,
-						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Creature Type=monitor;fiend;celestial}. You can summon a {@creature black bear|Bst2}, {@creature giant bat}, or {@creature leopard}."
+						"entry": "{@filter Level 2|bestiary||Level=[-1;2]|Rarity=Common|Creature Type=monitor;fiend;celestial}. You can summon a {@creature black bear|Bst2}, {@creature giant bat}, or {@creature leopard}."
 					},
 					{
 						"level": 4,
-						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Creature Type=monitor;fiend;celestial}. You can summon a {@creature great white shark} or {@creature tiger}."
+						"entry": "{@filter Level 3|bestiary||Level=[-1;3]|Rarity=Common|Creature Type=monitor;fiend;celestial}. You can summon a {@creature great white shark} or {@creature tiger}."
 					}
 				],
 				"no_x": null
@@ -11502,7 +11445,7 @@
 				"heightened": true,
 				"plus_x": {
 					"level": 1,
-					"entry": "The damage increases by 1. Summoner Summoners can gain the following link spells. Boost eidolon and reinforce eidolon are link cantrips and don't cost a Focus Point to cast."
+					"entry": "The damage increases by 1."
 				},
 				"x": null,
 				"no_x": null
@@ -12055,7 +11998,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Low Gravity} You can jump double the normal distance when you {@action Long Jump} or {@action Leap}, though still to a maximum of your Speed. When you {@action High Jump}, you can use the calculation for a {@action Long Jump} but don't double the distance. Rather than the normal calculation for falling damage, when you fall, you take no damage for the first 10 feet and then take bludgeoning damage equal to a quarter of the remaining distance you fell. Abilities that adjust how much falling damage you take still apply.",
-						"{@bold High Gravity} You become {@condition encumbered}. You gain a +2 status bonus to your saving throws and DCs to resist forced movement and attempts to knock you {@condition prone}. You reduce the distance forced movement moves you by half or 10 feet, whichever is more"
+						"{@bold High Gravity} You become {@condition encumbered}. You gain a +2 status bonus to your saving throws and DCs to resist {@quickref forced movement||3|forced movement} and attempts to knock you {@condition prone}. You reduce the distance {@quickref forced movement||3|forced movement} moves you by half or 10 feet, whichever is more"
 					]
 				},
 				"You can only jump half as high and far. Rather than the normal calculation for falling damage, you take bludgeoning damage equal to the distance you fall.",
@@ -12495,7 +12438,7 @@
 			"sustain": true,
 			"dismiss": false,
 			"entries": [
-				"Powerful winds coalesce into a devastating tornado. You can {@action Cast a Spell||Cast this Spell} only if you are outside or the ceiling is 80 feet or higher. All squares in the whirlwind are difficult terrain.",
+				"Powerful winds coalesce into a devastating tornado. You can {@action Cast a Spell||Cast this Spell} only if you are outside or the ceiling is 80 feet or higher. All squares in the whirlwind are {@quickref difficult terrain||3|terrain}.",
 				"All creatures in the area take {@damage 5d10} bludgeoning damage as powerful winds and debris buffet them, with a Reflex save. Each time you {@action Sustain a Spell||Sustain the Spell}, you can move the whirlwind up to 30 feet in a straight line. Each creature the whirlwind moves through takes the damage, also with a Reflex save. A creature can be affected by a whirlwind only once per round.",
 				{
 					"type": "successDegree",

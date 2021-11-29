@@ -11,10 +11,16 @@ class PageFilterBackgrounds extends PageFilter {
 			items: ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma", "Free"],
 			itemSortFn: null,
 		});
+		this._abilityFilter = new Filter({
+			header: "Miscellaneous",
+			items: ["Gives Ability"],
+		});
 	}
 
 	mutateForFilters (bg) {
 		bg._fSources = SourceFilter.getCompleteFilterSources(bg);
+		bg._fAbility = [];
+		if (bg.ability === true) bg._fAbility.push("Gives Ability");
 	}
 
 	addToFilters (bg, isExcluded) {
@@ -24,6 +30,7 @@ class PageFilterBackgrounds extends PageFilter {
 		this._skillFilter.addItem(bg.skills);
 		this._loreFilter.addItem(bg.lore);
 		this._boostFilter.addItem(bg.boosts);
+		this._abilityFilter.addItem(bg._fAbility);
 	}
 
 	async _pPopulateBoxOptions (opts) {
@@ -32,6 +39,7 @@ class PageFilterBackgrounds extends PageFilter {
 			this._boostFilter,
 			this._skillFilter,
 			this._loreFilter,
+			this._abilityFilter,
 		];
 	}
 
@@ -42,6 +50,7 @@ class PageFilterBackgrounds extends PageFilter {
 			bg.boosts,
 			bg.skills,
 			bg.lore,
+			bg._fAbility,
 		)
 	}
 }

@@ -1,6 +1,120 @@
 {
 	"hazard": [
 		{
+			"name": "Web Lurker Noose",
+			"source": "Bst",
+			"page": 325,
+			"level": 3,
+			"traits": [
+				"Mechanical",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 22
+			},
+			"description": [
+				"Discreet webbing at throat level snags a creature that walks into it."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} (trained) or {@skill Thievery} (expert) DC 18 to rearrange the webbing"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 18
+				},
+				"savingThrows": {
+					"fort": 11,
+					"ref": 5,
+					"will": null
+				}
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"attack"
+					],
+					"trigger": "A creature steps into the square with the web tripwire.",
+					"entries": [
+						"The web lurker noose makes a noose {@action Strike} against the triggering creature."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Web Noose"
+				},
+				{
+					"type": "attack",
+					"range": "Melee",
+					"name": "noose",
+					"attack": 13,
+					"traits": null,
+					"effects": [
+						"deadly d10"
+					],
+					"damage": "{@damage 3d6} bludgeoning and the target is {@condition grabbed} and pulled off the ground ({@action Escape} DC 22). The target takes {@damage 1d6} bludgeoning damage at the end of each of its turns as long as it's caught in the noose.",
+					"types": [
+						"bludgeoning"
+					],
+					"noMAP": false
+				}
+			],
+			"routine": null,
+			"reset": null
+		},
+		{
+			"name": "Web Lurker Deadfall",
+			"source": "Bst",
+			"page": 325,
+			"level": 3,
+			"traits": [
+				"Mechanical",
+				"Trap"
+			],
+			"stealth": {
+				"dc": 23
+			},
+			"description": [
+				"A web tripwire lets loose a bundle of boulders that fall on all targets within a 10-foot square."
+			],
+			"disable": {
+				"entries": [
+					"{@skill Survival} (trained) or {@skill Thievery} (expert) DC 20 to rearrange the webbing"
+				]
+			},
+			"defenses": {
+				"ac": {
+					"default": 19
+				},
+				"savingThrows": {
+					"fort": 9,
+					"ref": 9,
+					"will": null
+				}
+			},
+			"actions": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature steps into the square with the web tripwire.",
+					"entries": [
+						"All creatures in the trap's 10-foot square take {@damage 2d6} bludgeoning damage (DC 20 basic Reflex save)."
+					],
+					"type": "ability",
+					"style": "compact",
+					"name": "Deadfall"
+				}
+			],
+			"routine": null,
+			"reset": null
+		},
+		{
 			"name": "Armageddon Orb",
 			"source": "CRB",
 			"page": 526,
@@ -200,7 +314,7 @@
 					},
 					"trigger": "A creature walks onto the trapdoor.",
 					"entries": [
-						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge} to avoid falling (page 472). The DC to {@action Climb} the walls or {@action Grab an Edge} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge} again every 6 seconds. If the creature succeeds, it can start to {@action Climb} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
+						"The triggering creature falls in and continues to fall, potentially forever. That creature can try to {@action Grab an Edge} to avoid {@quickref falling||3|falling}. The DC to {@action Climb} the walls or {@action Grab an Edge} is 26. The pit contains many handholds, so the falling creature can try to {@action Grab an Edge} again every 6 seconds. If the creature succeeds, it can start to {@action Climb} out from that point (though it might be a very long climb, depending on how far the creature fell). Since the creature falls endlessly, it can rest and even prepare spells while falling, though items dropped while falling are usually lost forever."
 					],
 					"type": "ability",
 					"style": "compact",
@@ -328,7 +442,7 @@
 					},
 					"trigger": "A creature walks onto the trapdoor.",
 					"entries": [
-						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge} to avoid falling (page 472). The trapdoor then slams shut, and the hazard rolls initiative."
+						"The triggering creature falls in and takes damage from the fall, reduced by 5 feet for falling into the water (typically 12 bludgeoning damage). A creature can {@action Grab an Edge} to avoid {@quickref falling||3|falling}. The trapdoor then slams shut, and the hazard rolls initiative."
 					],
 					"type": "ability",
 					"style": "compact",
@@ -337,7 +451,7 @@
 			],
 			"routine": [
 				"(4 actions) The trap loses 1 action each turn for each disabled water spout. On each of the trap's actions, a spout pours water, increasing the depth of the water by 5 feet.",
-				"Once the pit is full of water, the pit stops using actions, but creatures in the pit begin drowning (page 478)."
+				"Once the pit is full of water, the pit stops using actions, but creatures in the pit begin {@quickref drowning||3|drowning and suffocating}."
 			],
 			"reset": [
 				"The trap can be reset if the door is manually reengaged and the water tanks refilled; it can be reset without draining the pit, but doing so renders it less effective."
@@ -1221,7 +1335,7 @@
 				}
 			],
 			"routine": [
-				"(1 action) On its initiative, the quicksand pulls down each creature within it. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature. that was submerged up to its neck is pulled under and has to hold its breath to avoid suffocation (page 478).",
+				"(1 action) On its initiative, the quicksand pulls down each creature within it. A creature that was submerged up to its waist becomes submerged up to its neck, and a creature. that was submerged up to its neck is pulled under and has to hold its breath to avoid {@quickref suffocation||3|drowning and suffocating}.",
 				"A creature in the quicksand can attempt a DC 20 {@skill Athletics} check to {@action Swim} to either raise itself by one step if it's submerged to its neck or worse, or to move 5 feet if it's submerged only up to its waist. On a critical failure, the creature is pulled down one step. A creature that Swims out of the quicksand escapes the hazard and is {@condition prone} in a space adjacent to the quicksand patch. Other creatures can {@action Aid} the creature, typically by using a rope or similar aid, or attempt to pull the creature out with their own DC 20 {@skill Athletics} check, with the same results as if the creature attempted the check."
 			],
 			"reset": [

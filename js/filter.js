@@ -73,6 +73,8 @@ class ModalFilter {
 	 * @param opts.pageFilter
 	 * @param [opts.namespace]
 	 * @param [opts.allData]
+	 * @param [opts.isRadio]
+	 * @param [opts.previewRenderFn]
 	 */
 	constructor (opts) {
 		this._modalTitle = opts.modalTitle;
@@ -81,6 +83,7 @@ class ModalFilter {
 		this._namespace = opts.namespace;
 		this._allData = opts.allData || null;
 		this._isRadio = !!opts.isRadio;
+		this._previewRenderFn = opts.previewRenderFn;
 
 		this._list = null;
 		this._filterCache = null;
@@ -134,6 +137,7 @@ class ModalFilter {
 			$iptSearch,
 			$wrpList,
 			fnSort: this._fnSort,
+			isPreviewable: this._previewRenderFn != null,
 		});
 
 		if (!opts.isBuildUi && !this._isRadio) ListUiUtil.bindSelectAllCheckbox($cbSelAll, this._list);

@@ -196,7 +196,7 @@
 			],
 			"prerequisites": "trained in {@skill Acrobatics}",
 			"entries": [
-				"You become an expert in {@skill Acrobatics}. At 7th level, you become a master in {@skill Acrobatics}, and at 15th level, you become legendary in {@skill Acrobatics}. Whenever you critically succeed at an {@skill Acrobatics} check to {@action Tumble Through} an enemy's space, you don't treat the enemy's space as difficult terrain."
+				"You become an expert in {@skill Acrobatics}. At 7th level, you become a master in {@skill Acrobatics}, and at 15th level, you become legendary in {@skill Acrobatics}. Whenever you critically succeed at an {@skill Acrobatics} check to {@action Tumble Through} an enemy's space, you don't treat the enemy's space as {@quickref difficult terrain||3|terrain}."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the acrobat archetype.",
 			"leadsTo": [
@@ -1906,8 +1906,8 @@
 			],
 			"prerequisites": "{@feat Shield Block}",
 			"entries": [
-				"You are particularly skilled at using a shield in combat. You gain the {@feat Reactive Shield} fighter feat (Core Rulebook 145)",
-				"This fulfills any prerequisites requiring Reactive Shield as normal."
+				"You are particularly skilled at using a shield in combat. You gain the {@feat Reactive Shield} fighter feat.",
+				"This fulfills any prerequisites requiring {@feat Reactive Shield} as normal."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the bastion archetype.",
 			"leadsTo": [
@@ -4257,10 +4257,10 @@
 				"Concentrate"
 			],
 			"prerequisites": "warrior muse",
-			"trigger": "A creature within your reach uses an {@trait auditory} effect, manipulate action, or move action; makes a ranged attack; or leaves a square during its move action.",
-			"requirements": "You are affected by inspire courage.",
+			"trigger": "A creature within your reach uses an {@trait auditory} effect, {@trait manipulate} action, or {@trait move} action; makes a ranged attack; or leaves a square during its {@trait move} action.",
+			"requirements": "You are affected by {@spell inspire courage}.",
 			"entries": [
-				"You bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the action is disrupted."
+				"You bellow a ferocious call to arms, inspiring yourself to lash out at a foe. Make a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a {@trait manipulate} action, the action is disrupted."
 			]
 		},
 		{
@@ -4940,7 +4940,7 @@
 				"Rage"
 			],
 			"entries": [
-				"Nothing can keep you from your enemy. {@action Stride} twice. During this movement you ignore difficult terrain, greater difficult terrain, and any effects that would impose a penalty to Speed. You can attempt an {@skill Athletics} check instead of an {@skill Acrobatics} check to {@action Balance} when moving across narrow surfaces or uneven ground, using the same DC. This doesn't prevent you from being harmed by hazardous terrain. You can increase the number of actions this activity takes to 3 to {@action Stride} three times instead."
+				"Nothing can keep you from your enemy. {@action Stride} twice. During this movement you ignore {@quickref difficult terrain||3|terrain}, {@quickref greater difficult terrain||3|terrain}, and any effects that would impose a penalty to Speed. You can attempt an {@skill Athletics} check instead of an {@skill Acrobatics} check to {@action Balance} when moving across narrow surfaces or uneven ground, using the same DC. This doesn't prevent you from being harmed by hazardous terrain. You can increase the number of actions this activity takes to 3 to {@action Stride} three times instead."
 			]
 		},
 		{
@@ -6169,7 +6169,7 @@
 			],
 			"entries": [
 				"Elves are often skeptical of their half-elven kin, and you are experienced at telling stories of your accomplishments to gain their respect. You are trained in {@skill Performance}. If you would automatically become trained in {@skill Performance} (from your background or class, for example), you instead become trained in a skill of your choice.",
-				"You gain the Impressive {@skill Performance} feat (Core Rulebook 262)",
+				"You gain the {@feat Impressive Performance} feat.",
 				"When you attempt a {@skill Performance} check to {@action Make an Impression} on an elf, if you roll a critical failure, you get a failure instead."
 			]
 		},
@@ -6456,7 +6456,6 @@
 					"type": "ability",
 					"name": "Eldritch Shot",
 					"activity": {
-						"entry": "{@as 3}",
 						"number": 3,
 						"unit": "action"
 					},
@@ -9714,7 +9713,7 @@
 			],
 			"prerequisites": "trained in {@skill Survival}",
 			"entries": [
-				"You've mastered travel within a specific type of terrain. You gain the Favored Terrain feat (Core Rulebook 171). When in your favored terrain, you gain a +10-foot circumstance bonus to your travel Speed. When other creatures {@action Follow the Expert} with you as a guide in your favored terrain, they gain both the ability to ignore non-magical difficult terrain for the purpose of their travel Speed and the bonus to travel Speed."
+				"You've mastered travel within a specific type of terrain. You gain the Favored Terrain feat (Core Rulebook 171). When in your favored terrain, you gain a +10-foot circumstance bonus to your travel Speed. When other creatures {@action Follow the Expert} with you as a guide in your favored terrain, they gain both the ability to ignore non-magical {@quickref difficult terrain||3|terrain} for the purpose of their travel Speed and the bonus to travel Speed."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the horizon walker archetype.",
 			"leadsTo": [
@@ -9966,7 +9965,7 @@
 			],
 			"trigger": "You fall at least 10 feet and land on a solid surface.",
 			"entries": [
-				"You slam into the ground, shattering it around you. Treat the fall as 10 feet shorter. You land on your feet. All adjacent spaces become difficult terrain, and creatures in those spaces when you land take 5 bludgeoning damage as the debris hits them and are {@condition flat-footed} until the start of their next turn."
+				"You slam into the ground, shattering it around you. Treat the fall as 10 feet shorter. You land on your feet. All adjacent spaces become {@quickref difficult terrain||3|terrain}, and creatures in those spaces when you land take 5 bludgeoning damage as the debris hits them and are {@condition flat-footed} until the start of their next turn."
 			]
 		},
 		{
@@ -11012,7 +11011,7 @@
 				{
 					"type": "successDegree",
 					"entries": {
-						"Critical Success": "Your foe is swept up in your dance. You both move up to 10 feet in the same direction, remaining adjacent to one another. Your movement doesn't trigger reactions from the target (and the target's movement doesn't trigger reactions because it's forced movement).",
+						"Critical Success": "Your foe is swept up in your dance. You both move up to 10 feet in the same direction, remaining adjacent to one another. Your movement doesn't trigger reactions from the target (and the target's movement doesn't trigger reactions because it's {@quickref forced movement||3|forced movement}).",
 						"Success": "As critical success, but you both move only 5 feet.",
 						"Failure": "The foe doesn't follow your steps. You can move 5 feet if you choose, but this movement triggers reactions normally.",
 						"Critical Failure": "You stumble, falling {@condition prone} in your space."
@@ -11040,8 +11039,8 @@
 			],
 			"prerequisites": "legendary in {@skill Survival}",
 			"entries": [
-				"You know the wilderness so well that you can help your party travel through it with ease. When you are setting the path for your party through wilderness terrain, your party gains a +10-foot circumstance bonus to its Speed for the purpose of calculating the party's travel speed, your party's travel speed doesn't decrease in difficult terrain, and greater difficult terrain halves your party's travel speed instead of reducing it to a third.",
-				"This doesn't increase your party's Speed during an encounter or allow your party to ignore difficult terrain during an encounter."
+				"You know the wilderness so well that you can help your party travel through it with ease. When you are setting the path for your party through wilderness terrain, your party gains a +10-foot circumstance bonus to its Speed for the purpose of calculating the party's travel speed, your party's travel speed doesn't decrease in {@quickref difficult terrain||3|terrain}, and {@quickref greater difficult terrain||3|terrain} halves your party's travel speed instead of reducing it to a third.",
+				"This doesn't increase your party's Speed during an encounter or allow your party to ignore {@quickref difficult terrain||3|terrain} during an encounter."
 			]
 		},
 		{
@@ -11218,7 +11217,7 @@
 			],
 			"entries": [
 				"You can balance on your toes to step carefully over obstructions.",
-				"You {@action Stride} and then {@action Step}, or {@action Step} and then {@action Stride}, ignoring difficult terrain during this movement."
+				"You {@action Stride} and then {@action Step}, or {@action Step} and then {@action Stride}, ignoring {@quickref difficult terrain||3|terrain} during this movement."
 			]
 		},
 		{
@@ -13825,7 +13824,7 @@
 			],
 			"prerequisites": "trained in {@skill Intimidation}",
 			"entries": [
-				"As a pirate, you sail the seas in search of enemy ships to plunder. You become trained in {@skill Lore||Sailing Lore}, or become an expert in it if you were already trained. You ignore the effects of difficult terrain or uneven ground caused by a ship's movement. Additionally, you gain the Boarding Assault action.",
+				"As a pirate, you sail the seas in search of enemy ships to plunder. You become trained in {@skill Lore||Sailing Lore}, or become an expert in it if you were already trained. You ignore the effects of {@quickref difficult terrain||3|terrain} or uneven ground caused by a ship's movement. Additionally, you gain the Boarding Assault action.",
 				"Boarding Assault {@as 2} (flourish) Either {@action Stride} twice or attempt an {@skill Acrobatics} check (DC determined by the GM, but usually DC 20) to swing on a rope up to twice your Speed. If you boarded or disembarked from a boat or similar vehicle during this movement, you can make a melee {@action Strike} that deals one additional weapon damage die."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the pirate archetype.",
@@ -17371,7 +17370,7 @@
 			"traits": [
 				"Kobold"
 			],
-			"prerequisites": "expert in {@skill Crafting}, Snare {@skill Crafting}",
+			"prerequisites": "expert in {@skill Crafting}, {@feat Snare Crafting}",
 			"entries": [
 				"Your expertise makes your snares more powerful, and you can place them quickly and efficiently. Each day during your daily preparations, you can prepare three snares from your formula book for quick deployment; if the snare normally takes 1 minute to {@action Craft}, you can {@action Craft} it with 3 {@action Interact} actions. Snares prepared in this way don't cost you any resources to {@action Craft}. The number of snares you can prepare this way increases to four if you are a master in {@skill Crafting}, and to five if you are legendary.",
 				"When you {@action Craft} and deploy a snare that deals damage, any creature that critically fails its saving throw against the snare's initial effect and takes damage becomes {@condition flat-footed} until the end of its next turn."
@@ -17392,7 +17391,7 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "Snare {@skill Crafting}, warden spells",
+			"prerequisites": "{@feat Snare Crafting}, warden spells",
 			"entries": [
 				"You can magically move your snares around. You gain the snare hopping warden spell (page 235). Increase the number of Focus Points in your focus pool by 1."
 			]
@@ -17416,7 +17415,7 @@
 			"entries": [
 				"You are adept at the time-honored kobold art of trap making.",
 				"You gain the trained proficiency in {@skill Crafting}. If you were already trained in {@skill Crafting}, you instead become trained in a skill of your choice. You gain access to all uncommon kobold snares.",
-				"You gain the Snare {@skill Crafting} feat, though when choosing your formulas for that feat, you can also choose from uncommon kobold snares, as well as common snares."
+				"You gain the {@feat Snare Crafting} feat, though when choosing your formulas for that feat, you can also choose from uncommon kobold snares, as well as common snares."
 			]
 		},
 		{
@@ -17435,7 +17434,7 @@
 				"Archetype",
 				"Dedication"
 			],
-			"prerequisites": "trained in {@skill Crafting}, Snare {@skill Crafting}",
+			"prerequisites": "trained in {@skill Crafting}, {@feat Snare Crafting}",
 			"entries": [
 				"You've learned to create a limited number of snares at no cost. Each day during your daily preparations, you can prepare four snares from your formula book for quick deployment; if they normally take 1 minute to {@action Craft}, you can {@action Craft} them with 3 {@action Interact} actions. The number of snares increases to six if you're a master in {@skill Crafting} and eight if you're legendary. Snares prepared in this way don't cost you any resources to {@action Craft}."
 			],
@@ -19483,7 +19482,7 @@
 				"Transmutation"
 			],
 			"entries": [
-				"You capture transformative fragments of magic and slam them into the ground, creating a shock wave that alters your surroundings. If your next action is to Cast a non-cantrip transmutation Spell, either each space adjacent to you becomes difficult terrain, or each space adjacent to you is no longer difficult terrain. This doesn't have any effect on greater difficult terrain and doesn't remove the damaging effects of hazardous terrain."
+				"You capture transformative fragments of magic and slam them into the ground, creating a shock wave that alters your surroundings. If your next action is to Cast a non-cantrip transmutation Spell, either each space adjacent to you becomes {@quickref difficult terrain||3|terrain}, or each space adjacent to you is no longer {@quickref difficult terrain||3|terrain}. This doesn't have any effect on {@quickref greater difficult terrain||3|terrain} and doesn't remove the damaging effects of hazardous terrain."
 			]
 		},
 		{
@@ -20697,7 +20696,7 @@
 			"prerequisites": "trained in {@skill Athletics}",
 			"entries": [
 				"Vikings spend long periods of time at sea, only to leap from their boats at a moment's notice, charge through the surf, and take their enemies by storm. You're trained in {@skill Lore||Sailing Lore}.",
-				"When moving through water using your land Speed, you ignore difficult terrain resulting from shallow water, such as in bogs or on beaches. In addition, if you roll a success for your {@skill Athletics} check to {@action Swim}, you get a critical success instead."
+				"When moving through water using your land Speed, you ignore {@quickref difficult terrain||3|terrain} resulting from shallow water, such as in bogs or on beaches. In addition, if you roll a success for your {@skill Athletics} check to {@action Swim}, you get a critical success instead."
 			],
 			"special": "You can't select another dedication feat until you have gained two other feats from the viking archetype.",
 			"leadsTo": [
@@ -21264,7 +21263,7 @@
 			],
 			"prerequisites": "{@feat Horizon Walker Dedication|APG}",
 			"entries": [
-				"Natural obstacles pose no obstacle to you. You gain the ranger's wild st{@feat ride} class feature. This allows you to ignore the effects of all non-magical difficult terrain, treat greater difficult terrain as merely difficult terrain, and gives you an additional benefit from Favored Terrain based on the terrain."
+				"Natural obstacles pose no obstacle to you. You gain the ranger's wild st{@feat ride} class feature. This allows you to ignore the effects of all non-magical {@quickref difficult terrain||3|terrain}, treat {@quickref greater difficult terrain||3|terrain} as merely {@quickref difficult terrain||3|terrain}, and gives you an additional benefit from Favored Terrain based on the terrain."
 			]
 		},
 		{

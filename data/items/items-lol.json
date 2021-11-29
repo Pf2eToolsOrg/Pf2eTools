@@ -28,6 +28,13 @@
 				"When you use a dose of addiction suppressant, it suppresses the effects of that addiction for 1 day, as if you had taken an actual dose of the drug, but without any of the drug's effects, and it doesn't increase the addiction DC. You also gain an item bonus against the ongoing save against the drug's addiction depending on the type of addiction suppressant."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "an item bonus against the ongoing save against the drug's addiction depending on the type of addiction suppressant"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -39,7 +46,12 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "a +1 item bonus against the ongoing save against the drug's addiction"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -51,7 +63,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "a +2 item bonus against the ongoing save against the drug's addiction"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -63,7 +80,12 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "a +3 item bonus against the ongoing save against the drug's addiction"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -75,7 +97,12 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "a +4 item bonus against the ongoing save against the drug's addiction"
+						}
+					}
 				}
 			]
 		},
@@ -164,8 +191,8 @@
 			"category": "Elixir",
 			"entries": [
 				"This gummy liquid disproportionately lengthens your legs, causing you to grow but making your movement awkward. The effect is very noticeable unless your clothes can adequately conceal it.",
-				"Benefit You gain an item bonus to {@skill Athletics} checks and you gain the listed status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.",
-				"Drawback You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
+				"{@b Benefit} You gain an item bonus to {@skill Athletics} checks and you gain the listed status bonus to your Speed. In addition, you grow one size larger, but your larger size does not have any additional effects beyond the potential change in space.",
+				"{@b Drawback} You take a \u20131 penalty to AC and a \u20132 penalty to Reflex saves."
 			],
 			"generic": "G",
 			"variants": [
@@ -179,7 +206,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +2, the bonus to Speed is +10 feet, and the duration is 1 minute."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +2 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+10 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 1 minute."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -191,7 +239,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +3, the bonus to Speed is +15 feet, and the duration is 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +3 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+15 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 10 minutes."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -203,7 +272,28 @@
 					},
 					"entries": [
 						"The bonus to {@skill Athletics} is +4, the bonus to Speed is +20 feet, and the duration is 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "an item bonus",
+								"with": "a +4 item bonus"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "the listed",
+								"with": "+20 feet"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"The duration is 1 hour."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			]
 		},
@@ -293,7 +383,7 @@
 						"note": null
 					},
 					"entries": [
-						"You gain the effects of 7th-level {@spell neutralize poison}, regenerate, {@spell remove curse} and {@spell remove disease} spells. The peach has a counteract modifier of +27."
+						"You gain the effects of 7th-level {@spell neutralize poison}, {@spell regenerate}, {@spell remove curse} and {@spell remove disease} spells. The peach has a counteract modifier of +27."
 					]
 				},
 				{
@@ -1034,8 +1124,7 @@
 			"ammunition": "arrow",
 			"category": "Consumable",
 			"entries": [
-				"The metal of these arrows is said to have come from a star that ventured too close to Golarion and was shot down by a moonlit archer. When you activate and shoot a starshot arrow, you take no range penalties against any target that you can personally detect.",
-				"There must be a line of effect between you and the target."
+				"The metal of these arrows is said to have come from a star that ventured too close to Golarion and was shot down by a moonlit archer. When you activate and shoot a starshot arrow, you take no range penalties against any target that you can personally detect. There must be a line of effect between you and the target."
 			],
 			"generic": "G",
 			"variants": [
@@ -1129,7 +1218,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This quilt is defined by its green lily-pad pattern, which is rare in Bellflower communications. The quilt is 10 feet square and infused with a reagent that activates when the quilt is laid out across soil or earth. One round after you lay out the quilt, the ground beneath it becomes soft and muddy, creating difficult terrain in the area where the quilt was. You can leave the quilt to maintain the difficult terrain indefinitely, but the affected ground begins to dry once you remove the quilt with an {@action Interact} action. The ground dries over the span of 1 hour, after which the ground returns to normal terrain.",
+				"This quilt is defined by its green lily-pad pattern, which is rare in Bellflower communications. The quilt is 10 feet square and infused with a reagent that activates when the quilt is laid out across soil or earth. One round after you lay out the quilt, the ground beneath it becomes soft and muddy, creating {@quickref difficult terrain||3|terrain} in the area where the quilt was. You can leave the quilt to maintain the {@quickref difficult terrain||3|terrain} indefinitely, but the affected ground begins to dry once you remove the quilt with an {@action Interact} action. The ground dries over the span of 1 hour, after which the ground returns to normal terrain.",
 				"Placing the quilt on the ground uses up its infused reagents, and it becomes an ordinary quilt once removed from the ground."
 			],
 			"generic": false

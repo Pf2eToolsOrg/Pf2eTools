@@ -16,9 +16,17 @@
 			"bulk": "L",
 			"category": "Bomb",
 			"entries": [
-				"This glass sphere is divided into four quarters, each of which contains a different material aligned with good, evil, chaos, or law, such as shavings from a holy relic or dried flowers that grew near a planar rift to the Abyss. When an alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals the listed damage, which matches the creature's highest weakness. This damage is always based on the weaknesses of the initial target of the attack. If a creature has multiple eligible weaknesses, randomly determine the damage type. An alignment ampoule has no effect against creatures that don't have a weakness to the ampoule's associated alignment types."
+				"This glass sphere is divided into four quarters, each of which contains a different material aligned with good, evil, chaos, or law, such as shavings from a holy relic or dried flowers that grew near a planar rift to the Abyss. When an alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals the listed damage, which matches the creature's highest weakness. This damage is always based on the weaknesses of the initial target of the attack.",
+				"If a creature has multiple eligible weaknesses, randomly determine the damage type. An alignment ampoule has no effect against creatures that don't have a weakness to the ampoule's associated alignment types."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "When an alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals the listed damage"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -30,7 +38,12 @@
 					},
 					"entries": [
 						"The ampoule deals 1 damage and 1 splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "When lesser alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals 1 damage and 1 splash damage"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -41,8 +54,13 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +1 item bonus to attack rolls. The bomb deals {@dice 1d4} damage and 2 splash damage."
-					]
+						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 1d4} damage and 2 splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +1 item bonus to attack rolls. When moderate alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals {@damage 1d4} damage and 2 splash damage"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -53,8 +71,13 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to attack rolls. The bomb deals {@dice 2d4} damage and 3 splash damage."
-					]
+						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 2d4} damage and 3 splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +2 item bonus to attack rolls. When greater alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals {@damage 2d4} damage and 3 splash damage"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -65,8 +88,13 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@dice 3d4} damage and 4 splash damage."
-					]
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 3d4} damage and 4 splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +3 item bonus to attack rolls. When major alignment ampoule strikes a creature with a weakness to good, evil, chaos, or law, it deals {@damage 3d4} damage and 4 splash damage"
+						}
+					}
 				}
 			]
 		},
@@ -816,6 +844,13 @@
 				"This sphere contains small fragments of thunderstones within a colloidal suspension of a precious metal. When you twist the sphere, it creates an opaque mist in a burst centered on one corner of your space. Creatures within that area are {@condition concealed}, and all other creatures are {@condition concealed} to them. Any creature with a weakness to the precious metal that starts its turn in the mist takes damage equal to its weakness. The mist lasts for 1 minute or until dispersed by a strong wind. Most metalmist spheres are filled with silver or cold iron, but more expensive versions containing other ingredients might exist."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "burst"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -827,7 +862,12 @@
 					},
 					"entries": [
 						"The radius of the burst is 5 feet."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5-foot burst"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -839,7 +879,12 @@
 					},
 					"entries": [
 						"The radius of the burst is 10 feet."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10-foot burst"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -851,7 +896,12 @@
 					},
 					"entries": [
 						"The radius of the burst is 15 feet."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "15-foot burst"
+						}
+					}
 				}
 			]
 		},
@@ -1115,7 +1165,7 @@
 			"bulk": "\u2013",
 			"category": "Worn",
 			"entries": [
-				"These magically enhanced snowshoes are practically a necessity when traversing the gelid tundra and snow-drenched taiga of the Saga Lands. The snowshoes of the long trek allow their wearer to walk across ice and snow with the same surety as dry earth, ignoring the uneven ground and difficult terrain caused by ice and the difficult terrain caused by snow (reducing greater difficult terrain from ice or snow to ordinary difficult terrain). In addition, a character wearing snowshoes of the long trek gains a +5-foot status bonus to their Speed while moving across snow or ice and is never at risk of breaking through naturally-occurring loose or soft snow."
+				"These magically enhanced snowshoes are practically a necessity when traversing the gelid tundra and snow-drenched taiga of the Saga Lands. The snowshoes of the long trek allow their wearer to walk across ice and snow with the same surety as dry earth, ignoring the uneven ground and {@quickref difficult terrain||3|terrain} caused by ice and the {@quickref difficult terrain||3|terrain} caused by snow (reducing {@quickref greater difficult terrain||3|terrain} from ice or snow to ordinary {@quickref difficult terrain||3|terrain}). In addition, a character wearing snowshoes of the long trek gains a +5-foot status bonus to their Speed while moving across snow or ice and is never at risk of breaking through naturally-occurring loose or soft snow."
 			],
 			"generic": false
 		},
@@ -1297,6 +1347,13 @@
 				}
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Once applied to your skin, the repellent grants you an item bonus to Fortitude saving throws against poisons for 4 hours. In addition, any arthropods \\(insects, spiders, scorpions, crabs, and similar invertebrate animals\\) must attempt a Will save when attempting to attack you"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1308,7 +1365,13 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus and the save DC is 17."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "Once applied to your skin, the repellent grants you a +1 item bonus to Fortitude saving throws against poisons for 4 hours. In addition, any arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals) must attempt a DC 17 Will save when attempting to attack you"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1320,7 +1383,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus and the save DC is 24."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Once applied to your skin, the repellent grants you a +2 item bonus to Fortitude saving throws against poisons for 4 hours. In addition, any arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals) must attempt a DC 24 Will save when attempting to attack you"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1332,7 +1400,12 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus and the save DC is 29."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Once applied to your skin, the repellent grants you a +3 item bonus to Fortitude saving throws against poisons for 4 hours. In addition, any arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals) must attempt a DC 29 Will save when attempting to attack you"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1344,7 +1417,12 @@
 					},
 					"entries": [
 						"You gain a +4 item bonus and the save DC is 35."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Once applied to your skin, the repellent grants you a +4 item bonus to Fortitude saving throws against poisons for 4 hours. In addition, any arthropods (insects, spiders, scorpions, crabs, and similar invertebrate animals) must attempt a DC 35 Will save when attempting to attack you"
+						}
+					}
 				}
 			]
 		},

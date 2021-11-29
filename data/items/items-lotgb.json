@@ -50,7 +50,7 @@
 			"entries": [
 				"These symbols fortify your body's grasp on your soul, keeping it tethered when death approaches.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -61,7 +61,7 @@
 					"frequency": "once per day",
 					"trigger": "You gain the {@condition doomed} or {@condition wounded} condition",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You reduce the value of the triggering condition by 1."
 					]
 				}
@@ -92,7 +92,7 @@
 			"entries": [
 				"A spiked glove is attached to the front of this buckler (Hardness 6, HP 24, BT 12), functioning as +1 striking shield spikes. Perforations and slits line the defensive side, shining bright light through them when the item's magic is activated.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -103,7 +103,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You activate the shield's inner light. Attempt a melee {@action Strike} with the duelist's beacon. On a hit, the target must succeed at a DC 22 Fortitude save or be {@condition blinded} for 1 round. On a critical hit, the target uses the result one degree of success worse than it rolled for its Fortitude save."
 					]
 				}
@@ -159,7 +159,7 @@
 			"entries": [
 				"A weapon with this rune can absorb energy damage to empower it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -170,7 +170,7 @@
 					"frequency": null,
 					"trigger": "You take acid, cold, electricity, fire, or sonic damage",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The weapon becomes imbued with the triggering energy type. It deals an additional {@dice 1d8} damage of the triggering type until the end of your next turn. As normal, if you use this reaction again during the duration, the damage doesn't combine; instead, change the {@dice 1d8} damage to the new triggering type of damage and change the duration to the end of your next turn."
 					]
 				}
@@ -200,7 +200,7 @@
 			"entries": [
 				"This brown leather satchel is made from a heavily oiled and rustic leather. The satchel is large enough to hold up to 1 Bulk worth of items.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -213,12 +213,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Documents inside the haversack become magically disguised as documents of a similar type but with misleading information. Anyone inspecting a document notices the disguise with a successful DC 20 {@skill Perception} check, but determining the actual text requires a successful DC 20 {@skill Society} check to {@action Decipher Writing}. This lasts until you use this activation again, which ends the effect for all previously disguised documents; until you use the second activation to end the effect for a single document; or until a document in the haversack remains outside the haversack for at least 1 hour, ending the effect for that document."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -229,7 +229,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You revert one of the documents back to its original state."
 					]
 				}
@@ -260,7 +260,7 @@
 			"entries": [
 				"The cuirass of this +1 deathless (see above) resilient leather armor, stitched to resemble an Osiriani scarab beetle, feels strangely chitinous. You gain resistance 5 to negative damage.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -272,7 +272,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast a 1st-level {@spell pest form}. You can only become a scarab beetle."
 					]
 				}
@@ -338,7 +338,7 @@
 			"entries": [
 				"This oddly fuzzy buckler (Hardness 10, HP 60, BT 30) resembles the abdomen of a spider. Its defensive side is covered in fine hairs, and two small spinnerets protrude from the bottom of its rim. The spinnerets serve as +2 greater striking shield spikes.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -349,7 +349,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You animate the silkspinner's shield. Eight spider legs sprout from the shield's rim, granting you a climb Speed of 25 feet until the end of your next turn. Additionally, the spinnerets animate and produce silk for 1 minute.",
 						"Successful shield bash Strikes made with the silkspinner's shield during this time entangle the target in silk. The target takes a \u201310-foot circumstance penalty to its Speeds for 1 round. If your {@action Strike} was a critical hit, the target becomes {@condition immobilized} for 1 round instead. Regardless, the target can attempt to {@action Escape} (DC 30) to end the effect early."
 					]
@@ -421,7 +421,7 @@
 			"entries": [
 				"This wand juts from an ornate hilt like a short, wooden dagger blade.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -433,8 +433,8 @@
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You cast {@spell spiritual weapon} of the indicated level. When you critically hit, you apply the weapon's critical specialization effect. In addition, you can etch one of the following property runes onto the wand: corrosive, flaming, frost, shock, thundering, or their respective greater versions. The spiritual weapon's Strikes gain the effects of this rune."
+					"entries": [
+						"You cast {@spell spiritual weapon} of the indicated level. When you critically hit, you apply the weapon's critical specialization effect. In addition, you can etch one of the following property runes onto the wand: {@item corrosive}, {@item flaming}, {@item frost}, {@item shock}, {@item thundering}, or their respective greater versions. The spiritual weapon's {@action Strike||Strikes} gain the effects of this rune."
 					]
 				}
 			],
@@ -480,7 +480,7 @@
 					"entries": []
 				}
 			],
-			"craftReq": "Supply a casting of spiritual weapon of the appropriate level. Bellwether Lodge's sturdy wooden halls and red-shingled roof form a ring around a large central yard where customers and suppliers gather to talk shop and test an impressive range of monster-hunting gear. Adjacent to the store, students practice sparring, archery, and wrestling in an open field; the sharp twang of bowstrings, the clash of practice weapons, and the students' laughing shouts all carry into the halls of the lodge. Some students assist in managing the store, seeking both the pay and the opportunity to talk with adventurers.",
+			"craftReq": "Supply a casting of {@spell spiritual weapon} of the appropriate level.",
 			"page": 11
 		},
 		{
@@ -510,7 +510,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"A big rock bullet is a sling bullet made of heavy granite, but each piece of ammunition feels much more dense than it appears. When activated, a big rock bullet transforms into a giant rock just before hitting the target. The target takes {@dice 4d6} additional bludgeoning damage on a successful hit. Even on a failed attack roll (but not a critical failure), the target takes {@damage 2d6} bludgeoning damage. Creatures with the Catch Rock reaction can use it against a big rock bullet."
+				"A big rock bullet is a sling bullet made of heavy granite, but each piece of ammunition feels much more dense than it appears. When activated, a big rock bullet transforms into a giant rock just before hitting the target. The target takes {@damage 4d6} additional bludgeoning damage on a successful hit. Even on a failed attack roll (but not a critical failure), the target takes {@damage 2d6} bludgeoning damage. Creatures with the {@ability Catch Rock} reaction can use it against a big rock bullet."
 			],
 			"variants": [
 				{
@@ -532,8 +532,25 @@
 						"note": null
 					},
 					"entries": [
-						"The bullet deals {@dice 8d6} additional bludgeoning damage, or {@dice 4d6} on a failure."
-					]
+						"The bullet deals {@damage 8d6} additional bludgeoning damage, or {@damage 4d6} on a failure."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "8d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "2d6",
+								"with": "4d6"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major big rock bullet",
@@ -544,8 +561,25 @@
 						"note": null
 					},
 					"entries": [
-						"The bullet deals {@dice 12d6} additional bludgeoning damage, or {@dice 6d6} on a failure."
-					]
+						"The bullet deals {@damage 12d6} additional bludgeoning damage, or {@damage 6d6} on a failure."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "4d6",
+								"with": "12d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "{@damage 2d6}",
+								"with": "{@damage 6d6}"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 14
@@ -645,8 +679,8 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20131 status penalty to attack rolls for 1 round or until it Escapes (DC 18).",
-						"Failure": "The creature takes a \u20132 status penalty to attack rolls for 1 minute or until it Escapes (DC 18).",
+						"Success": "The creature takes a \u20131 status penalty to attack rolls for 1 round or until it {@action Escape||Escapes} (DC 18).",
+						"Failure": "The creature takes a \u20132 status penalty to attack rolls for 1 minute or until it {@action Escape||Escapes} (DC 18).",
 						"Critical Failure": "As failure, but the creature drops any metallic items it's holding."
 					}
 				}
@@ -803,9 +837,9 @@
 					"type": "successDegree",
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
-						"Success": "The creature takes a \u20135-foot circumstance penalty to its Speed for 1 minute or until it Escapes (DC 27).",
-						"Failure": "The creature is {@condition stunned|CRB|stunned 2}, and it takes a \u201310-foot circumstance penalty to its Speed for 1 minute or until it Escapes (DC 27).",
-						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and it's {@condition immobilized} for 1 minute or until it Escapes (DC 27)."
+						"Success": "The creature takes a \u20135-foot circumstance penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 27).",
+						"Failure": "The creature is {@condition stunned|CRB|stunned 2}, and it takes a \u201310-foot circumstance penalty to its Speed for 1 minute or until it {@action Escape||Escapes} (DC 27).",
+						"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}, and it's {@condition immobilized} for 1 minute or until it {@action Escape||Escapes} (DC 27)."
 					}
 				}
 			],
@@ -880,6 +914,13 @@
 				"A thick, sulfurous, irritating gas fills this golden-yellow flask.",
 				"A sulfur bomb deals the listed damage. On a hit, the target takes a \u20131 status penalty to {@skill Perception} checks and attack rolls until the end of its next turn, or becomes {@condition sickened|CRB|sickened 1} on a critical hit. Creatures hit with this bomb are temporarily immune to the effects of the bomb for 1 minute."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "A sulfur bomb deals the listed damage."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -891,7 +932,12 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The bomb deals {@damage 1d4} acid damage and 1 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -903,7 +949,12 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d4} acid damage and 2 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -915,7 +966,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d4} acid damage and 3 acid splash damage."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -926,11 +982,13 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage.",
-						"Locals say the only way to find Catfish Salvage and its optimistic inventor is to keep one's eyes focused upward.",
-						"From blocks away, visitors to the Grand Bazaar see Tattletail's steel spires towering over the other pavilions.",
-						"And many who visit the bazaar have mistaken the store for an art exhibit, a garden of pillars holding a dizzying array of inventions hanging off hooks and ladders like fruit growing from a mechanical orchard. Commonly derided as the \"clockwork jungle,\" visitors can usually find the shop's owner suspended far off the ground, improving one of his towers, testing sensitive equipment, or just eating lunch away from the hustle and bustle of the busy streets below. The open-air pavilion tends to attract a handful of pedestrians looking for a shortcut from one avenue to the next, who often regret their decision after being ambushed by the enthusiastic salesman hanging overhead."
-					]
+						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d4} acid damage and 4 acid splash damage."
+						}
+					}
 				}
 			],
 			"page": 15
@@ -988,7 +1046,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"The contraption called cold comfort is a watertight pouch filled with a handful of small, heavy, silvery pellets. When emptied into an adjacent body of water, the pellets freeze the water's surface almost instantly, creating an ice block in a 10-foot square to a depth of 1 foot. Any creatures inside this space must attempt a DC 23 Reflex save. On a failure, the creature takes {@damage 2d6} cold damage and is {@condition immobilized} for 1 minute or until it Escapes (DC 20) or the ice is {@condition broken}. The entire ice block has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. The ice is strong enough to support one Large creature or up to four Medium or Small creatures. Traversing the slippery ice requires a successful DC 20 {@skill Acrobatics} check to {@action Balance}."
+				"The contraption called cold comfort is a watertight pouch filled with a handful of small, heavy, silvery pellets. When emptied into an adjacent body of water, the pellets freeze the water's surface almost instantly, creating an ice block in a 10-foot square to a depth of 1 foot. Any creatures inside this space must attempt a DC 23 Reflex save. On a failure, the creature takes {@damage 2d6} cold damage and is {@condition immobilized} for 1 minute or until it {@action Escape||Escapes} (DC 20) or the ice is {@condition broken}. The entire ice block has AC 10, Hardness 10, and 40 Hit Points, and it's immune to critical hits, cold damage, and precision damage. The ice is strong enough to support one {@trait Large} creature or up to four {@trait Medium} or {@trait Small} creatures. Traversing the slippery ice requires a successful DC 20 {@skill Acrobatics} check to {@action Balance}."
 			],
 			"variants": [
 				{
@@ -1001,7 +1059,15 @@
 					},
 					"entries": [
 						"Ice created by the pellets lasts for 1 hour or until {@condition broken}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "depth of 1 foot.",
+							"with": "depth of 1 foot which lasts for 1 hour or until {@condition broken}."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -1012,8 +1078,47 @@
 						"note": null
 					},
 					"entries": [
-						"The area increases to a 20-foot square, the save DC increases to 34, the cold damage increases to {@dice 4d6} and the {@action Escape} DC increases to 31. Ice created by the pellets lasts for 3 hours or until {@condition broken}. The block of ice is strong enough to support one Huge creature, up to 2 Large creatures, or up to 8 Medium or Small creatures."
-					]
+						"The area increases to a 20-foot square, the save DC increases to 34, the cold damage increases to {@dice 4d6} and the {@action Escape} DC increases to 31. Ice created by the pellets lasts for 3 hours or until {@condition broken}. The block of ice is strong enough to support one {@trait Huge} creature, up to 2 {@trait Large} creatures, or up to 8 {@trait Medium} or {@trait Small} creatures."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "10-foot",
+								"with": "20-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "DC 23",
+								"with": "DC 34"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "2d6",
+								"with": "4d6"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "DC 20",
+								"with": "DC 31"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "depth of 1 foot.",
+								"with": "depth of 1 foot which lasts for 3 hours or until {@condition broken}."
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "The ice is strong enough to support one {@trait Large} creature or up to four {@trait Medium} or {@trait Small} creatures.",
+								"with": "The block of ice is strong enough to support one {@trait Huge} creature, up to 2 {@trait Large} creatures, or up to 8 {@trait Medium} or {@trait Small} creatures."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 18
@@ -1096,7 +1201,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"Juxtaposition ammunition quivers with anticipation, as if the projectile wishes to constantly be in motion. When an activated juxtaposition ammunition hits a creature, it doesn't deal the {@action Strike}'s normal damage. Instead, the target must succeed at a DC 28 Will save or be teleported to a safe, unoccupied square of your choice within 60 feet of its original position and within the weapon's first range increment. On a critical failure, the target is also {@condition sickened|CRB|sickened 1} from the gut-wrenching sensation of sudden movement. Any relocation from the juxtaposition ammunition is forced movement."
+				"Juxtaposition ammunition quivers with anticipation, as if the projectile wishes to constantly be in motion. When an activated juxtaposition ammunition hits a creature, it doesn't deal the {@action Strike}'s normal damage. Instead, the target must succeed at a DC 28 Will save or be teleported to a safe, unoccupied square of your choice within 60 feet of its original position and within the weapon's first range increment. On a critical failure, the target is also {@condition sickened|CRB|sickened 1} from the gut-wrenching sensation of sudden movement. Any relocation from the juxtaposition ammunition is {@quickref forced movement||3|forced movement}."
 			],
 			"page": 19
 		},
@@ -1129,6 +1234,14 @@
 			"entries": [
 				"Your bones, muscles, and organs become vastly softer and more pliable. You can fit into and through small or narrow spaces as though you were smaller than your normal size, and you gain an item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "You can fit into and through small or narrow spaces as though you were smaller than your normal size, and you gain an item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1139,8 +1252,13 @@
 						"note": null
 					},
 					"entries": [
-						"You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum Small). The bonus to your DCs is +2, and the duration is 1 minute."
-					]
+						"You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum {@trait Small}). The bonus to your DCs is +2, and the duration is 1 minute."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You can fit into and through small or narrow spaces as though you were 1 size smaller than your normal size (minimum {@trait Small}), and you gain a +2 item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you. The duration is 1 minute."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1151,8 +1269,13 @@
 						"note": null
 					},
 					"entries": [
-						"You can fit into and through small or narrow spaces as though you were 2 sizes smaller than your normal size (minimum Tiny). The bonus to your DCs is +3, and the duration is 10 minutes."
-					]
+						"You can fit into and through small or narrow spaces as though you were 2 sizes smaller than your normal size (minimum {@trait Tiny}). The bonus to your DCs is +3, and the duration is 10 minutes."
+					],
+					"_mod": {
+						"entries": {
+							"with": "You can fit into and through small or narrow spaces as though you were 2 size smaller than your normal size (minimum {@trait Tiny}), and you gain a +3 item bonus to your Fortitude and Reflex DCs against attempts to {@action Grapple}, {@action Shove}, or {@action Trip} you. The duration is 10 minutes."
+						}
+					}
 				}
 			],
 			"page": 19
@@ -1213,7 +1336,7 @@
 			"entries": [
 				"A wizard's tower is a tiny gaming piece carved into the form of a stone tower.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -1227,7 +1350,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The gaming piece transforms into a fully furnished stone tower 80 feet high and 30 feet in diameter. The tower is topped by a peaked wooden roof, with a wooden door on the second floor accessed by wooden stairs on the tower's exterior. A spiral staircase in the center of the tower connects its 6 floors. The bottom floor is empty, ideal for storage, and the second floor is a great hall for audiences and guests. The third and fourth floors are divided into servants quarters and guest rooms, while the top two floors feature luxurious personal chambers and an alchemy lab. You can revert the tower back to its original state by climbing to the top floor and using an action to speak a command word.",
 						"At first glance, the Clockwork Caravan has no obvious leader. The wagons and the lifelike clockwork creatures all travel seemingly without guidance or direction. But if one watches the caravan for several days (and a few mysterious figures have), they'll notice a man dressed in a blue-colored duster occasionally hopping out from the hollowed-out carapace of one of his clockwork creatures and checking the area. In a matter of minutes, he'll adjust direction and disappear, and the caravan's on its way again."
 					]
@@ -1389,7 +1512,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This small bronze cylinder is about the size of a potion bottle. When you activate the launcher, it fires an unattached net requiring only a single hand, and at a greater distance. As normal, you make a ranged attack roll against a Medium or smaller creature, but you can target a creature up to 60 feet away, instead of only 20 feet away. The net trap otherwise functions as an unattached net (Pathfinder Advanced Player's Guide 249)."
+				"This small bronze cylinder is about the size of a potion bottle. When you activate the launcher, it fires an unattached net requiring only a single hand, and at a greater distance. As normal, you make a ranged attack roll against a {@trait Medium} or smaller creature, but you can target a creature up to 60 feet away, instead of only 20 feet away. The net trap otherwise functions as an unattached net (Pathfinder Advanced Player's Guide 249)."
 			],
 			"page": 23
 		},
@@ -1451,7 +1574,7 @@
 			"entries": [
 				"This thick silver coin is deeply worn on one side, creating a shallow dip.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -1462,7 +1585,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You rub your thumb along the grooved side and become filled with a sense of comfort and safety. You reduce your {@condition frightened} condition by 1."
 					]
 				}
@@ -1530,7 +1653,7 @@
 				"note": null
 			},
 			"entries": [
-				"Small flecks of mica, sand, and ground glass are packed into a spring-loaded canister that can be rigged to a trip wire or {@condition hidden} in a container. The first creature to enter the square or open the container must attempt a DC 20 Reflex save as the area is showered with bright, glittering dust that sticks to skin, fur, and clothing.",
+				"{@trait Small} flecks of mica, sand, and ground glass are packed into a spring-loaded canister that can be rigged to a trip wire or {@condition hidden} in a container. The first creature to enter the square or open the container must attempt a DC 20 Reflex save as the area is showered with bright, glittering dust that sticks to skin, fur, and clothing.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -1592,7 +1715,7 @@
 			"entries": [
 				"A portable gaming hall resembles a miniature roulette wheel, except it's marked with indecipherable runes, not numbers.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -1606,7 +1729,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The wheel grows into a circular room 30 feet in diameter, with a door on one side. Six chairs surround a circular table, 10 feet in diameter. The underside of the table contains retractable drawers full of dice, harrow cards, game pieces, and other gambling accouterments. A gallon of ale or a similar drink with a spigot near the bottom hangs on the door, replenishing to a full gallon each day; you can also bring in your own drinks if you require more than the gaming hall provides.",
 						"You can flip the central table over as a 3-action activity, which has the {@trait manipulate} trait, to revert the gaming hall to its original form.",
 						"Dracori's Sensory Wares."
@@ -1642,7 +1765,7 @@
 					"entries": {
 						"Critical Success": "The creature is unaffected.",
 						"Success": "The creature is dealt a glancing blow by the rocket and becomes {@condition flat-footed} until the start of its next turn.",
-						"Failure": "The rocket's coating of tar and resin sticks to the creature, and it can't be shaken loose. The creature becomes {@condition flat-footed} for 1 round, and {@condition clumsy|CRB|clumsy 1} for 1 minute or until it Escapes (DC 20).",
+						"Failure": "The rocket's coating of tar and resin sticks to the creature, and it can't be shaken loose. The creature becomes {@condition flat-footed} for 1 round, and {@condition clumsy|CRB|clumsy 1} for 1 minute or until it {@action Escape||Escapes} (DC 20).",
 						"Critical Failure": "As failure, but the creature takes a direct hit. It takes {@damage 2d6} bludgeoning damage and is pushed 10 feet in the direction the rocket faces."
 					}
 				}
@@ -1668,7 +1791,7 @@
 			"entries": [
 				"This thick, oily salve reacts with the air to exude a toxic mucus when applied to skin. Once it's applied, you can activate the salve in one of the two ways detailed below. After either reaction has been used, the remaining mucus loses its reactive properties and falls away as the effect ends. You can only have one dose applied at a time. If you don't use either reaction, after 10 minutes, the mucus flakes away and the effect ends.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -1679,12 +1802,12 @@
 					"frequency": null,
 					"trigger": "You hit a creature with a melee",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fling mucus on the creature, dealing {@damage 1d4} {@condition persistent damage ||persistent poison damage}."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -1695,7 +1818,7 @@
 					"frequency": null,
 					"trigger": "You are hit with a melee attack that deals physical damage",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The mucus dulls the blow, granting you resistance 3 to physical damage against the triggering attack."
 					]
 				}
@@ -1721,7 +1844,24 @@
 					},
 					"entries": [
 						"The {@condition persistent damage ||persistent poison damage} increases to {@dice 2d4}, and the resistance increases to 5."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "1d4",
+								"with": "2d4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "3",
+								"with": "5"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major toadskin salve",
@@ -1733,7 +1873,30 @@
 					},
 					"entries": [
 						"The {@condition persistent damage ||persistent poison damage} increases to {@dice 3d4}, the resistance increases to 8, and the duration increases to up to 1 hour if you don't use the reaction."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "1d4",
+								"with": "3d4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "3 to",
+								"with": "8 to"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "10 minutes",
+								"with": "1 hour"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 27
@@ -1771,6 +1934,13 @@
 			"entries": [
 				"This flask contains a fine red powder made from toxic berries. A vexing vapor bomb deals the listed mental damage and mental splash damage. On a hit, the target must succeed at a DC {@flatDC 5} flat check before taking actions with the {@trait concentrate} trait. This lasts until the end of its next turn (1 minute on a critical hit)."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed mental damage and mental splash damage."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1782,7 +1952,12 @@
 					},
 					"entries": [
 						"The bomb deals {@damage 1d6} mental damage and 1 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 1d6} mental damage and 1 mental splash damage."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1794,7 +1969,12 @@
 					},
 					"entries": [
 						"You gain a +1 item bonus to attack rolls. The bomb deals {@damage 2d6} mental damage and 2 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 2d6} mental damage and 2 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1806,7 +1986,12 @@
 					},
 					"entries": [
 						"You gain a +2 item bonus to attack rolls. The bomb deals {@damage 3d6} mental damage and 3 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 3d6} mental damage and 3 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1818,7 +2003,12 @@
 					},
 					"entries": [
 						"You gain a +3 item bonus to attack rolls. The bomb deals {@damage 4d6} mental damage and 4 mental splash damage."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "{@damage 4d6} mental damage and 4 mental splash damage. You gain a +1 item bonus to attack rolls."
+						}
+					}
 				}
 			],
 			"page": 27
@@ -1874,7 +2064,7 @@
 			"entries": [
 				"This tower shield (Hardness 9, HP 54, BT 27) was developed by followers of {@deity Ketephys|LOGM}, the elven god of the hunt. It's distinct for having a central ridge, and for being made from only wood and hide. {@deity Ketephys|LOGM}'s religious symbol, a hawk rising over a silver crescent, is painted on the hide stretched across the front of the shield. Each amaranthine pavise is blessed by Ketephysian priests to aid in liberating Tanglebriar and defeating the nascent demon lord {@deity Treerazer|Bst}. While you have the shield raised, you gain a +2 circumstance bonus to saving throws against the innate spells and special abilities of demons. When your allies have cover from the amaranthine pavise, the circumstance bonus they gain from cover to Reflex saves against area effects also applies to Fortitude and Will saves against demons' area effects.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1885,7 +2075,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"{@deity Ketephys|LOGM}'s wrath descends upon your foes. The shield casts good divine wrath with a DC of 27."
 					]
 				}
@@ -1917,7 +2107,7 @@
 				"This heavy drum is engraved along the sides with images of centaurs in fierce combat. The drum grants you a +3 item bonus on {@skill Performance} checks you make using the drum.",
 				"Additionally, it imparts the rhythms of two songs upon your mind as soon as you touch it. One is a fast marching cadence; the other is a frenetic ritual dance. Each song has a different activation.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1928,12 +2118,12 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Dozens of spectral centaurs burst from the drum and stampede in a 60-foot cone. The stampede deals {@damage 7d10} force damage (DC 43 basic Reflex save)."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -1944,7 +2134,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The drum casts a DC 43 {@spell earthquake} spell."
 					]
 				}
@@ -1975,7 +2165,7 @@
 			"entries": [
 				"A private workshop is a model building about the size of a music box that resembles a smithy, tannery, alchemy lab, or other crafting facility.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -1989,7 +2179,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The model workshop transforms into a full-sized square workshop of the represented type. The walls are 15 feet wide and the ceiling is 10 feet high. The workshop is stocked with mundane tools and can be used to {@action Craft} items appropriate to the workshop with a +1 item bonus, but you must supply any raw materials.",
 						"You can pull on a cord hanging from the workshop's ceiling as an {@action Interact} action to revert the private workshop to its model form."
 					]
@@ -2020,7 +2210,7 @@
 			"entries": [
 				"This massive tower shield (Hardness 10, HP 60, BT 30) is painted a cool cyan green and is decorated with an image of Absalom's mother-sphinx emerging from a cresting wave.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2031,7 +2221,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You transform the shield into a 1-foot-thick, 10-foot-by-10-foot stone rampart topped with a battlement and adorned with the flags of Absalom. If any part of the rampart would pass through any creatures or objects, the activation fails.",
 						"At the center of each 5-foot length of the rampart is an arrow slit. The rampart has AC 10, Hardness 15, and 30 Hit Points. The rampart is immune to critical hits and precision damage. Attacks that would destroy the rampart cause it to instead revert back to its shield form and drop to the ground in an open space below the rampart. When this happens, the shield loses 30 Hit Points. You can {@action Dismiss} the activation, causing the wall to revert back to its shield form. The shield then returns secured to your arm if you are adjacent to the rampart, or drops to the ground in an open space if you're not adjacent to the rampart. If neither destroyed nor Dismissed, the rampart reverts back to a shield automatically after 1 hour."
 					]
@@ -2146,7 +2336,15 @@
 					},
 					"entries": [
 						"When you teleport, you can take along up to two willing adjacent creatures. These creatures must each arrive in unoccupied squares adjacent to the transposition ammunition; if there's not enough space for both of them, you choose which one is teleported."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "If this would carry along any other creature (even one in an extradimensional space), the activation fails.",
+							"with": "When you teleport, you can take along up to two willing adjacent creatures. These creatures must each arrive in unoccupied squares adjacent to the transposition ammunition; if there's not enough space for both of them, you choose which one is teleported."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 31
@@ -2176,7 +2374,7 @@
 			"entries": [
 				"The blade of this +2 greater striking wounding scythe is sharp enough to produce a whistling sound when swung through the air. The shaft is made of ebony wood with a sickly shine to it, much like the shine of infected wounds and contaminated water.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -2187,12 +2385,12 @@
 					"frequency": null,
 					"trigger": "An enemy critically succeeds at an attempt to {@action Disarm} you",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"As the scythe leaves your hand, it drinks the triggering creature's blood. The creature must succeed at a DC 30 Fortitude save or become {@condition drained|CRB|drained 2} ({@condition drained|CRB|drained 3} on a critical failure). If the triggering creature becomes {@condition drained}, you gain temporary Hit Points equal to the triggering creature's level. You lose any remaining temporary Hit Points after 1 minute."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -2203,7 +2401,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The scythe drains life essence from your opponent into you. You gain a number of temporary Hit Points equal to half the slashing damage the scythe dealt to the foe. You lose any remaining temporary Hit Points after 1 minute.",
 						"On paper, this shop is owned and operated by Roswine Yarindam (NG female dwarf witch), but most shoppers know that the driving force behind the operation is Cabbage, her tabby cat familiar. The pair traveled from Highhelm throughout Avistan and Garund on many adventures, before deciding to retire to Absalom and take in familiars whose partners have since died or are nowhere to be found. Cabbage knew that Roswine would quickly become tied up in the day-to-day activities of caring for older familiars and proposed opening a storefront to mitigate the cost of care. She agreed, and the pair settled down in the bazaar about three years ago, slowly becoming a regular, welcome presence for locals."
 					]
@@ -2232,7 +2430,7 @@
 			"entries": [
 				"This tattoo takes the shape of the face of a roaring polar bear with piercing, ice-blue eyes. You don't take damage from extreme cold or severe cold (Core Rulebook 518).",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2243,7 +2441,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call forth a blast of polar wind in a 10-foot burst within a range of 30 feet that deals {@damage 7d6} cold damage. All creatures in the area must attempt a DC 27 basic Fortitude save."
 					]
 				}
@@ -2268,7 +2466,7 @@
 						"note": null
 					},
 					"entries": [
-						"The damage of your polar wind increases to {@dice 12d6}, the range increases to 60 feet, and you can choose to increase the radius to 15 or 20 feet. While exposed to incredible cold, you only take minor cold damage every hour, instead of moderate cold damage every minute. You ignore the uneven ground and difficult terrain caused by ice and the difficult terrain caused by snow (reducing greater difficult terrain from ice or snow to normal difficult terrain)."
+						"The damage of your polar wind increases to {@dice 12d6}, the range increases to 60 feet, and you can choose to increase the radius to 15 or 20 feet. While exposed to incredible cold, you only take minor cold damage every hour, instead of moderate cold damage every minute. You ignore the uneven ground and {@quickref difficult terrain||3|terrain} caused by ice and the {@quickref difficult terrain||3|terrain} caused by snow (reducing {@quickref greater difficult terrain||3|terrain} from ice or snow to normal {@quickref difficult terrain||3|terrain})."
 					]
 				}
 			],
@@ -2320,9 +2518,9 @@
 			"usage": "tattoo",
 			"bulk": "\u2014",
 			"entries": [
-				"This tattoo is a series of six concentric circles that show up as a soft yellow on any skin tone. The marks carry in them a protective force that bolsters your body and soul. The first time each day that someone attempts to Treat your Wounds and rolls a critical failure, they get a failure instead.",
+				"This tattoo is a series of six concentric circles that show up as a soft yellow on any skin tone. The marks carry in them a protective force that bolsters your body and soul. The first time each day that someone attempts to {@action Treat Wounds||Treat your Wounds} and rolls a critical failure, they get a failure instead.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2333,7 +2531,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"For 5 rounds, your entire body begins to glow, with the effects of a 1st-level {@spell light} spell. At the end of each of your turns during this time, you regain {@dice 1d4} Hit Points."
 					]
 				}
@@ -2358,7 +2556,7 @@
 						"note": null
 					},
 					"entries": [
-						"Any time someone rolls a critical failure to Treat your Wounds, they get a failure instead. The glow has the effects of a 4th-level {@spell light} spell, and you regain {@dice 2d8} Hit Points per round."
+						"Any time someone rolls a critical failure to {@action Treat Wounds||Treat your Wounds}, they get a failure instead. The glow has the effects of a 4th-level {@spell light} spell, and you regain {@dice 2d8} Hit Points per round."
 					]
 				}
 			],
@@ -2389,7 +2587,7 @@
 			"entries": [
 				"This subtle pattern of complex dots, sunbursts, and lines is difficult to make out, as it's a near match for the wearer's skin tone. Serving as a barrier facing inward, this tattoo prevents ostentatious expressions of spells that are internal to you, making them easier to hide.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2402,7 +2600,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If the next action you use is to {@action Cast a Spell} of 2nd level or lower that affects or targets only you, you can hide that you're casting it.",
 						"This has the same effect as the Conceal Spell feat (Core Rulebook 210)."
 					]
@@ -2433,7 +2631,7 @@
 			"entries": [
 				"This steel shield (Hardness 16, HP 96, BT 48) is painted a mottled crimson, and it always glistens as if wet. Its crest is composed of eight appendages that curl around each other, resembling the swirling tentacles of a giant kraken. Two ferocious eyes sit in its center, gleaming with an inner light.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2444,7 +2642,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You unleash the kraken's wrath. You Raise the Shield. The shield's appendages briefly extend to impossible length as they wriggle and lash out at your foes, dealing {@damage 10d10} bludgeoning damage to all enemies in a 30-foot cone (DC 41 basic Reflex save). The shield remains animated for 1 minute, during which you can use it to {@action Grapple} a creature within 10 feet of you without needing a free hand. When you use the shield to {@action Grapple}, you gain a +3 item bonus to your {@skill Athletics} check.",
 						"Kraken's Ink Wares."
 					]
@@ -2471,7 +2669,7 @@
 			"entries": [
 				"This bull's-eye lantern is wrapped in decrepit leather skin. It constantly emits light in a 60-foot cone (and dim light in the next 60 feet). You can close or open internal shutters with an {@action Interact} action to block or reveal the light.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2482,7 +2680,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You slide in a magical lens that causes the lantern to emit a pale green light and then aim the lantern. All creatures in the lantern's 60-foot cone of bright light (but not those in the dim light), must attempt a DC 23 Fortitude save. On a failure, a creature becomes {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). The light then reverts to normal as the lens slides out of place."
 					]
 				}
@@ -2612,7 +2810,7 @@
 			"entries": [
 				"A stone circle appears to be a thumb-sized rectangular gray stone until activated.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -2625,7 +2823,7 @@
 					"frequency": "once per week",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"When the circle is stood on the ground and activated, the stone grows into a massive stone pillar 13 feet high, 7 feet across, and weighing 25 tons. Identical pillars rise up from the ground marking a circle 100 feet across, with capstones connecting the pillars. There must be enough space to deploy the circle or it won't activate. During the activation, you align the stone circle to face a single astronomical feature, such as the sun, the moon, or a constellation. You can revert the stone circle back to its original state by using an {@action Interact} action to push over the original stone pillar. Once you do, the rest of the stone circle collapses in a dramatic fashion, the stones falling, cracking, and disintegrating into dust. If you don't begin a ritual inside of the stone circle within 1 day of its activation, it reverts back to its original state.",
 						"When you cast a ritual of 5th level or lower within the stone circle, the first failure on a secondary check is improved by one degree of success (a critical failure becomes a failure and a failure becomes a success). Once you complete a ritual within the stone circle, regardless of the result, the stones collapse and it reverts back to its original form."
 					]
@@ -2706,7 +2904,7 @@
 			"entries": [
 				"The magic in this rune sings in time with your attacks and coaxes you into finishing your opponent. When you critically hit a target that's taking {@condition persistent damage ||persistent bleed damage}, your target becomes {@condition drained|CRB|drained 1}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -2717,7 +2915,7 @@
 					"frequency": null,
 					"trigger": "You reduce a creature to 0",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain a number of temporary Hit Points equal to twice the creature's level.",
 						"These Hit Points remain for 1 minute."
 					]
@@ -2786,9 +2984,9 @@
 			"usage": "worn",
 			"bulk": "1",
 			"entries": [
-				"The tough, scaled leather of these heavy boots comes from a mighty dinosaur, granting you the steadiness of a lumbering beast. Any time an action or effect would cause you to make a forced movement, roll a DC {@flatDC 17} flat check. On a success, the forced movement fails to affect you.",
+				"The tough, scaled leather of these heavy boots comes from a mighty dinosaur, granting you the steadiness of a lumbering beast. Any time an action or effect would cause you to make a {@quickref forced movement||3|forced movement}, roll a DC {@flatDC 17} flat check. On a success, the {@quickref forced movement||3|forced movement} fails to affect you.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2801,7 +2999,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You grow, gaining the effects of enlarge for 1 minute. During that time, you gain dinosaur features; your legs and feet transform into a dinosaur's.",
 						"You gain a foot unarmed attack that has the same statistics as your fist unarmed attack, except its damage die is increased from {@dice 1d4} to {@dice 1d6}. Once during the duration, you can use the Trample 3-action activity (Bestiary 344) to Trample creatures one size smaller than you or smaller. This deals an amount of damage to each creature equal to that of your foot unarmed attack (including any extra weapon damage dice, bonuses, or additional damage as normal), with a DC 27 basic Reflex save. You can {@action Dismiss} the activation."
 					]
@@ -2827,7 +3025,7 @@
 						"note": null
 					},
 					"entries": [
-						"The activation makes you grow to size Huge, if you choose, with the effects of 4th-level {@spell enlarge}. Either way, the damage die of your foot unarmed attack increases from {@dice 1d4} to {@dice 1d8}, and you can use Trample as many times as you want during the activation."
+						"The activation makes you grow to size {@trait Huge}, if you choose, with the effects of 4th-level {@spell enlarge}. Either way, the damage die of your foot unarmed attack increases from {@dice 1d4} to {@dice 1d8}, and you can use Trample as many times as you want during the activation."
 					]
 				}
 			],
@@ -2856,7 +3054,7 @@
 			"entries": [
 				"The shield's blue enameled face is cool to the touch, and displays the moon's current phase at night. When you lay your head on the reverse side of this steel shield (Hardness 6, HP 36, BT 18), it becomes as pliant and supportive as the best pillows. If you complete a period of rest using the pillow shield, you can choose to transfer your recovery to the shield. Instead of recovering a number of Hit Points after resting (Core Rulebook 480), the shield is restored an equal number of Hit Points instead.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2868,7 +3066,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The shield creates an area of vigilance. It casts alarm centered on itself; you decide whether it creates a mental alarm or an audible alarm. The alarm goes off at the end of the spell's duration or when triggered as normal, whichever comes first."
 					]
 				}
@@ -2947,7 +3145,7 @@
 			"entries": [
 				"This light shirt is made of thin fabric embroidered with arrangements of winged feet.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2958,7 +3156,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Your feet feel lighter, allowing you to move with greater speed.",
 						"You {@action Stride} twice and gain a +10-foot item bonus to your Speed during those {@action Stride} actions."
 					]
@@ -3036,7 +3234,7 @@
 				"note": null
 			},
 			"entries": [
-				"You weave plant matter among loose stones in an area with trees or a ceiling overhead. When a creature enters the square, the snare's square and each adjacent square becomes difficult terrain, and the triggering creature must attempt a DC 19 Reflex saving throw.",
+				"You weave plant matter among loose stones in an area with trees or a ceiling overhead. When a creature enters the square, the snare's square and each adjacent square becomes {@quickref difficult terrain||3|terrain}, and the triggering creature must attempt a DC 19 Reflex saving throw.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -3073,7 +3271,7 @@
 			"entries": [
 				"In bright light, this dark cloak shimmers with patches of color that shift and move even when the cloth is still. In dim light or darkness, the cloak seems to blend into your surroundings and grants you a +3 item bonus to {@skill Stealth} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3085,13 +3283,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You and objects you wear or carry fall into your shadow, becoming a twodimensional silhouette. In this form you aren't incorporeal, but you also don't have a solid form and don't occupy your space, allowing other creatures to pass through or end their turn there. You gain resistance 20 to all damage except force damage, damage from effects with the {@trait light} trait, and damage from Strikes with the ghost touch property rune. This increases to resistance 40 against nonmagical damage. Other creatures can't attempt Strength-based skill checks against you.",
 						"Your land and climb Speeds both become 40 feet. You can't use actions except {@action Climb}, {@action Step}, or {@action Stride} actions using the granted Speeds or an {@action Interact} activation to return to your normal form. If your current space doesn't have sufficient room for you to return to your normal form, you return to your normal form in the nearest open space."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -3102,7 +3300,7 @@
 					"frequency": "once per day",
 					"trigger": "You take damage",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fold the cloak over yourself and vanish into your shadow for a moment, gaining the benefits of the first activation until the end of the current creature's turn. The damage resistance applies to the triggering damage."
 					]
 				}
@@ -3230,7 +3428,15 @@
 					},
 					"entries": [
 						"The item bonus increases to +3."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "\\+2",
+							"with": "+3"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3274,7 +3480,16 @@
 					},
 					"entries": [
 						"The pudding has a +6 counteract modifier."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "the listed",
+							"with": "a +6"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -3286,7 +3501,24 @@
 					},
 					"entries": [
 						"The pudding has a +9 counteract modifier. You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +2 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +9"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +2 item bonus to the {@skill Intimidation} check."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -3298,7 +3530,24 @@
 					},
 					"entries": [
 						"The pudding has a +20 counteract modifier. You become {@condition quickened} as per the 5th-level version, except you gain a +3 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +20"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"You also become {@condition quickened} for 1 round. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +3 item bonus to the {@skill Intimidation} check."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -3310,7 +3559,24 @@
 					},
 					"entries": [
 						"The pudding has a +31 counteract modifier. You become {@condition quickened} as per the 5th-level version, except the effect lasts for 2 rounds and you gain a +4 item bonus to the {@skill Intimidation} check."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "the listed",
+								"with": "a +31"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"You also become {@condition quickened} for 2 rounds. While taking the additional action from being {@condition quickened}, you scream, as a result of both the flavor and the mandrake paste's properties. You can use the additional action to {@action Step}, {@action Stride}, {@action Strike}, or {@action Demoralize}. If you choose to {@action Demoralize}, you gain a +4 item bonus to the {@skill Intimidation} check."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3364,7 +3630,15 @@
 					},
 					"entries": [
 						"You gain resistance 10 to fire and cold for 5 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5 to fire and cold for 1 minute.",
+							"with": "10 to fire and cold for 5 minutes."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major fire and iceberg",
@@ -3376,7 +3650,15 @@
 					},
 					"entries": [
 						"You gain resistance 15 to fire and cold for 10 minutes."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5 to fire and cold for 1 minute.",
+							"with": "15 to fire and cold for 10 minutes."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3430,7 +3712,22 @@
 					},
 					"entries": [
 						"The item bonus is +3 and the effect lasts 30 minutes."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+3"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 minutes",
+								"with": "30 minutes"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major impossible cake",
@@ -3442,7 +3739,22 @@
 					},
 					"entries": [
 						"The item bonus is +4 and the effect lasts 1 hour."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "\\+2",
+								"with": "+4"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "10 minutes",
+								"with": "1 hour"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 46
@@ -3476,6 +3788,29 @@
 			"entries": [
 				"These savory breaded snacks stuffed with cheese, peppers, and \"secret ingredients\" of draconic or demonic origin are often offered alongside a challenge\u2014complete a full portion and get a free drink. For 1 hour after consuming follypops, your stomach gurgles and rumbles with magical potential.",
 				"During this time, you can unleash magic in the area up to three times as a single action, which has the {@trait concentrate} trait, with an area and damage determined by the type of pop; the third time you use this magic, the effects of your follypops end. All creatures within the area must attempt a DC 27 basic saving throw each time you unleash magic, as noted by the type of pop."
+			],
+			"variants": [
+				{
+					"type": "hotpops",
+					"name": "Follypops (Hotpops)",
+					"entries": [
+						"You begin to sweat profusely after consuming the serving. When you unleash magic, you breathe out a blast of fire in a 15-foot cone. Creatures in the cone take {@damage 4d6} fire damage with the first blast, {@damage 2d6} fire damage with the second blast, and {@damage 1d6} fire damage with the final blast. The creatures must attempt a basic Reflex save for each blast."
+					]
+				},
+				{
+					"type": "rotters",
+					"name": "Follypops (Rotters)",
+					"entries": [
+						"Your breath smells of rotting garbage after you consume the serving. When you unleash magic, you exhale a noxious breath in a 15-foot cone. Creatures in the cone take {@damage 4d6} poison damage with the first breath, {@damage 2d6} poison damage with the second breath, and {@damage 1d6} poison damage with the final breath. The creatures must attempt a basic Fortitude save for each breath."
+					]
+				},
+				{
+					"type": "sizzlers",
+					"name": "Follypops (Sizzlers)",
+					"entries": [
+						"Your skin crawls and your hair stands on end after consuming the serving. When you unleash magic, you release a bolt of lightning from your hand that travels in a 30-foot line. The first bolt deals {@damage 2d12} electricity damage, the second {@damage 1d12} electricity damage, and the third {@damage 1d6} electricity damage. The targeted creatures must attempt a basic Reflex save for each bolt."
+					]
+				}
 			],
 			"page": 47
 		},
@@ -3549,7 +3884,7 @@
 			"entries": [
 				"Frying mudwings\u2014the remains of magical winged creatures found in blighted swamps\u2014is a delicate balance. Cooked for too long and they lose their potency; cooked too briefly and the toxins in their system could end up harming whoever eats them. When you consume a perfectly cooked tapas, you grow two sets of mudwings that grant you a fly Speed of 30 feet or your Speed, whichever is lower, for 10 minutes. You can also use the following Activation.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -3560,7 +3895,7 @@
 					"frequency": null,
 					"trigger": "You would take damage from a physical attack",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You intercept the attack with a pair of your wings. You gain resistance 15 against physical damage for the triggering attack only, shattering one set of your wings in the process. The first time you use this Activation, your fly Speed becomes 15 feet, or half your Speed, whichever is lower, for the duration. After the second time, your mudwings are shattered entirely, ending the effect.",
 						"\"Beauty can be a cage, and the flesh can be a prison. The purpose of our art is not the obfuscation of truth, but its revelation.\" This boutique is seamlessly constructed from polished white stone, with nearly every inch covered in sprawling, lifelike reliefs of blooming ivy, berry-laden branches, and small animals such as songbirds, foxes, and hares.",
 						"The shop's interior, which smells brightly of fresh fir tips and petrichor, is a marriage between opulence and austerity. Marble floors the color of freshly fallen snow and plaster bas-reliefs depicting birch trees frame arched entryways and extend upwards, supporting the vaulted ceilings."
@@ -3594,7 +3929,7 @@
 				"This robe is made from dweomerweave, a magical fabric created by spinning minor illusions into the threads of ether spider silk. Dweomerweave is naturally hazy and translucent.",
 				"It can take on the illusory appearances of other fabrics and garments, and dweomerweave robes are coveted by adventurers who want to travel light without compromising on fashion.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -3606,7 +3941,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain the effects of a 1st-level {@spell illusory disguise} except that the illusion only alters the appearance of the dweomerweave robe, changing it into another garment with an appearance of your choice. The spell persists until the next activation. You can {@action Dismiss} the activation."
 					]
 				}
@@ -3632,7 +3967,7 @@
 			"entries": [
 				"This brightly colored linen robe is covered in delicate embroidery depicting creatures and natural phenomena suiting its aligned energy, such as a living thunderclap, pools of acid, roaring flames, or dancing marids.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3644,7 +3979,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You speak a command word, and the embroidered threads in the robe glow vividly. The benefit you receive from the energy robe depends on its type."
 					]
 				}
@@ -3749,7 +4084,7 @@
 			"entries": [
 				"Thousands of small, reflective, mirrored glass shards have been carefully stitched down this long silk duster.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3760,12 +4095,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The mirror robe was last activated to draw attention toward you, or you haven't used the mirror robe today",
-					"effect": [
-						"The mirror robe Creates a Diversion for you with a +9 {@skill Deception} modifier."
+					"entries": [
+						"The mirror robe {@action Create a Diversion||Creates a Diversion} for you with a +9 {@skill Deception} modifier."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3776,7 +4111,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The mirror robe was last activated to divert attention away from you and you are {@condition hidden} or {@condition undetected} by at least one foe",
-					"effect": [
+					"entries": [
 						"You draw attention toward yourself. Choose one foe to which you were {@condition hidden} or {@condition undetected}. You reveal yourself to all, becoming {@condition observed}. The foe you chose diverts its attention to you, becoming {@condition flat-footed} to your allies until the beginning of your next turn. If you are {@condition invisible} or otherwise can't become {@condition observed}, you can't use this activation."
 					]
 				}
@@ -3878,7 +4213,7 @@
 			"entries": [
 				"This large stone eye is the size of a fist and decorated with elaborate carvings of robes and other garments.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -3886,14 +4221,14 @@
 					},
 					"components": [
 						"envision",
-						"Interact"
+						"{@action Interact}"
 					],
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You enter a brief trance in which you envision yourself entering a large dressing room. You maneuver through the endless dressing-room mindscape and search for whatever articles of clothing, accessories, and other garments you desire.",
-						"After the activation, you gain the effects of illusory disguise, except that it only causes you to appear to be wearing the exact outfit you selected within the mindscape. The illusion also disguises the wardrobe stone to match your outfit and not appear out of place, such as by appearing to be a glove or bracelet, though it continues to occupy your hand while you're under the effects of illusory disguise.",
+						"After the activation, you gain the effects of {@spell illusory disguise}, except that it only causes you to appear to be wearing the exact outfit you selected within the mindscape. The illusion also disguises the wardrobe stone to match your outfit and not appear out of place, such as by appearing to be a glove or bracelet, though it continues to occupy your hand while you're under the effects of illusory disguise.",
 						"You can actively {@action Dismiss} the Spell, but the effects are also dismissed immediately when you're no longer holding the wardrobe stone."
 					]
 				}
@@ -3918,8 +4253,25 @@
 						"note": null
 					},
 					"entries": [
-						"You gain a +2 item bonus to a specific {@skill Lore} skill associated with your outfit, such as {@skill Lore|Carpentry Lore} when wearing a carpenter's outfit or {@skill Lore|Cooking Lore} when wearing a chef's outfit.",
-						"Activate (1 minute) envision, {@action Interact}; Frequency once per day; Effect You cast {@spell prying eye}."
+						"You gain a +2 item bonus to a specific {@skill Lore} skill associated with your outfit, such as {@skill Lore||Carpentry Lore} when wearing a carpenter's outfit or {@skill Lore||Cooking Lore} when wearing a chef's outfit.",
+						{
+							"type": "ability",
+							"activity": {
+								"number": 1,
+								"unit": "minute",
+								"entry": "(1 minute)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"You cast {@spell prying eye}."
+							]
+						}
 					]
 				},
 				{
@@ -3932,8 +4284,42 @@
 					},
 					"entries": [
 						"You gain +3 item bonus to {@skill Perception} checks involving sight and a +3 item bonus to a specific {@skill Lore} skill associated with your outfit.",
-						"Activate (1 minute) envision, {@action Interact}; Effect You cast {@spell prying eye}.",
-						"Activate (10 minutes) envision, {@action Interact}; Effect The wardrobe stone splits open and permanently transforms into a specific type of magical robe of your choosing. It can transform into any 20th-level or lower magical robe to which you have access, except for items that can't normally be Crafted, such as artifacts. This process is irreversible."
+						{
+							"type": "ability",
+							"activity": {
+								"number": 1,
+								"unit": "minute",
+								"entry": "(1 minute)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"You cast {@spell prying eye}."
+							]
+						},
+						{
+							"type": "ability",
+							"activity": {
+								"number": 10,
+								"unit": "minute",
+								"entry": "(10 minutes)"
+							},
+							"components": [
+								"envision",
+								"{@action Interact}"
+							],
+							"frequency": "once per day",
+							"trigger": null,
+							"requirements": null,
+							"entries": [
+								"The wardrobe stone splits open and permanently transforms into a specific type of magical robe of your choosing. It can transform into any 20th-level or lower magical robe to which you have access, except for items that can't normally be {@action Craft||Crafted}, such as artifacts. This process is irreversible."
+							]
+						}
 					]
 				}
 			],
@@ -3995,7 +4381,7 @@
 			"entries": [
 				"This soapstone statuette resembles an unidentified lump with a vaguely animal shape, worn on a band or cord around the companion's neck. When your companion invests the item, the statuette changes to appear as a miniature carved soapstone version of the companion.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4007,12 +4393,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You touch your companion, merging it into the statuette and ending the activation with the statuette in your hand (or on the ground in your space if you don't have a hand free). While in statuette form, your companion has the {@condition petrified} condition, and its size is Tiny."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4024,7 +4410,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "Your companion is in statuette form",
-					"effect": [
+					"entries": [
 						"You call forth your companion from the statuette, causing it to unmerge and appear in an unoccupied space adjacent to you."
 					]
 				}
@@ -4056,7 +4442,7 @@
 			"entries": [
 				"This sturdy leather collar is imprinted with tessellated animal shapes. When invested, the animal shapes change to match that of your companion.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4068,8 +4454,8 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You touch the collar and your companion splits into a swarm of hundreds of identical Tiny versions of itself for 1 minute. Its space becomes Large, it gains the weaknesses and resistances of a spider swarm (Bestiary 306), and the {@trait swarm} trait, though it doesn't gain swarm mind, as it's {@condition controlled} by a single mind. Its unarmed attacks are replaced with a single-action swarming attack that deals {@dice 1d8} damage of the type normally inflicted by the companion's unarmed attacks to any foe in its space, with a DC 23 basic Reflex save. While in swarm form, your companion can take the Support action but can't perform its advanced maneuver. Its other statistics don't change. If the companion is reduced to 0 Hit Points while in swarm form, the companion immediately recombines into its original form in an available space, in addition to the usual effects of being reduced to 0 Hit Points."
+					"entries": [
+						"You touch the collar and your companion splits into a swarm of hundreds of identical Tiny versions of itself for 1 minute. Its space becomes {@trait Large}, it gains the weaknesses and resistances of a spider swarm (Bestiary 306), and the {@trait swarm} trait, though it doesn't gain swarm mind, as it's {@condition controlled} by a single mind. Its unarmed attacks are replaced with a single-action swarming attack that deals {@dice 1d8} damage of the type normally inflicted by the companion's unarmed attacks to any foe in its space, with a DC 23 basic Reflex save. While in swarm form, your companion can take the Support action but can't perform its advanced maneuver. Its other statistics don't change. If the companion is reduced to 0 Hit Points while in swarm form, the companion immediately recombines into its original form in an available space, in addition to the usual effects of being reduced to 0 Hit Points."
 					]
 				}
 			],
@@ -4100,7 +4486,7 @@
 			"entries": [
 				"This light barding is covered in wavelike patterns. The barding adjusts to fit your animal companion regardless of its shape.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4111,7 +4497,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You trace a finger along the wave patterns on the barding, granting your companion a swim Speed of 30 feet for 10 minutes. If your companion already had a swim Speed, it gains a +10-foot item bonus to its swim Speed for 10 minutes instead. Even if the companion doesn't have the mount special ability, it can still {@action Swim} while being ridden.",
 						"\"Share a giggle, make a friend!\" Merrygleam is a combination toy shop, joke shop, and empyreal shrine run by a fun-loving Arcadian goblin and her siblings\u2014a clever coral capuchin and a prank-pulling living doll."
 					]
@@ -4262,7 +4648,7 @@
 						"note": null
 					},
 					"entries": [
-						"These dice are weighted on one side to ensure they always land with the desired number facing up. Loaded dice grant you a +1 item bonus to {@skill Lore|Games Lore} checks to gamble with the dice. You can determine a die is loaded while handling it with a successful secret DC 20 {@skill Perception} check. Determining dice are loaded without handling the dice is more difficult, especially since smart cheaters switch loaded dice in and out so they don't suspiciously roll the same number over and over. In this case, an observer must succeed at a secret {@skill Perception} check against the roller's {@skill Lore|Games Lore} or {@skill Thievery} DC to notice the switches or the patterns."
+						"These dice are weighted on one side to ensure they always land with the desired number facing up. Loaded dice grant you a +1 item bonus to {@skill Lore||Games Lore} checks to gamble with the dice. You can determine a die is loaded while handling it with a successful secret DC 20 {@skill Perception} check. Determining dice are loaded without handling the dice is more difficult, especially since smart cheaters switch loaded dice in and out so they don't suspiciously roll the same number over and over. In this case, an observer must succeed at a secret {@skill Perception} check against the roller's {@skill Lore||Games Lore} or {@skill Thievery} DC to notice the switches or the patterns."
 					]
 				}
 			],
@@ -4407,7 +4793,7 @@
 			"usage": "held in 1 hand",
 			"bulk": "L",
 			"entries": [
-				"A puzzle box features moving parts, locking mechanisms, and other components designed to confound the user. Solving a puzzle box typically requires three successful {@skill Lore|Games Lore} or {@skill Thievery} checks to Open a Lock, though puzzle boxes come in countless configurations and themes, and the GM can determine which skills are appropriate."
+				"A puzzle box features moving parts, locking mechanisms, and other components designed to confound the user. Solving a puzzle box typically requires three successful {@skill Lore||Games Lore} or {@skill Thievery} checks to Open a Lock, though puzzle boxes come in countless configurations and themes, and the GM can determine which skills are appropriate."
 			],
 			"variants": [
 				{
@@ -4702,7 +5088,7 @@
 			"entries": [
 				"These hearing aids work like magical hearing aids, but they're designed with a more potent and focused magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -4713,7 +5099,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "Your hearing aids are currently on",
-					"effect": [
+					"entries": [
 						"You mentally increase the input of your hearing aids. You gain a +1 item bonus to all hearing-based {@skill Perception} checks for 10 minutes."
 					]
 				}
@@ -4848,48 +5234,10 @@
 		},
 		{
 			"source": "LOTGB",
-			"name": "Basic Chair",
-			"level": 0,
-			"type": "Item",
-			"category": "no category found",
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "sp",
-				"amount": 5,
-				"note": null
-			},
-			"bulk": "2",
-			"entries": [
-				"This common wheelchair is ideal for everyday use but isn't designed for strenuous activity. Basic chairs are most common among non-adventurers."
-			],
-			"page": 70
-		},
-		{
-			"source": "LOTGB",
-			"name": "Traveler's Chair",
-			"level": 1,
-			"type": "Item",
-			"category": "no category found",
-			"consumable": false,
-			"generic": false,
-			"price": {
-				"coin": "gp",
-				"amount": 5,
-				"note": null
-			},
-			"bulk": "3",
-			"entries": [
-				"This wheelchair is tailored for frequent adventures and travels. The design is sleek and fashionable to provide excellent comfort and support. A traveler's chair has small mechanisms, either made from interlocking wood pieces, clockwork, or other devices, that allow the chair to traverse up or down stairs without any additional difficulty (moving up stairs is still difficult terrain, just like for other characters), and move through other common adventuring terrain without any additional difficulty, such as ladders and uneven ground."
-			],
-			"page": 70
-		},
-		{
-			"source": "LOTGB",
 			"name": "Maestro's Chair",
 			"level": 7,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Enchantment",
 				"Magical"
@@ -4905,7 +5253,7 @@
 			"entries": [
 				"A maestro's chair is a traveler's chair with the impulse control upgrade (see below) and a small pipe organ installed into the frame. You can use the maestro's chair to make {@skill Performance} checks in the same manner that you could use any mundane instrument, using both of your hands. When you make a {@skill Performance} check using your chair, you gain a +1 item bonus to the check.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4916,7 +5264,7 @@
 					"frequency": "once per 10 minutes",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You use your chair to {@action Stride} up to your chair's speed. If you have a composition cantrip that is currently active, you Sustain it as a free action."
 					]
 				}
@@ -4928,7 +5276,7 @@
 			"name": "Minotaur Chair",
 			"level": 9,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Evocation",
 				"Magical"
@@ -4944,7 +5292,7 @@
 			"entries": [
 				"A minotaur chair is a traveler's chair with chair storage, impulse control (see below), and +1 striking wounding wheel spikes (page 72). The wheel spikes can have runes upgraded, transferred, or added as normal. The chair magically stores the kinetic energy from movement throughout the day, allowing you to expend it to make a powerful rushing charge.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4955,7 +5303,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You rush forward with the wheelchair in a powerful charge, bowling through foes who stand in the way. {@action Stride} in a straight line, moving through enemies' spaces and making an attack with the wheel spikes against every foe in the line. If the foe is {@condition prone}, the following effects apply: the attack gains a +1 circumstance bonus to damage per weapon damage die, and the wounding rune deals {@damage 1d12} {@condition persistent damage ||persistent bleed damage} on a hit (or {@damage 3d6} {@condition persistent damage ||persistent bleed damage} on a critical hit)",
 						"Wheelchair uPgraDes A wheelchair can have upgrades added to its frame to improves its capabilities. The cost includes the installation of the upgrade."
 					]
@@ -4968,7 +5316,7 @@
 			"name": "Amphibious Chair",
 			"level": 9,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"traits": [
 				"Magical",
 				"Transmutation"
@@ -4990,7 +5338,7 @@
 			"name": "Chair Storage",
 			"level": 0,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -5008,7 +5356,7 @@
 			"name": "Impulse Control",
 			"level": 1,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"traits": [
 				"Divination",
 				"Magical"
@@ -5031,7 +5379,7 @@
 			"name": "Reinforced Wheels",
 			"level": 0,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -5049,7 +5397,7 @@
 			"name": "Wheel Blades",
 			"level": 0,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -5068,7 +5416,7 @@
 			"name": "Wheel Spikes",
 			"level": 0,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair Upgrade",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -5101,7 +5449,7 @@
 			"entries": [
 				"These thick bull or ram horns fuse into the armrests of your legchair companion, giving it more aggressive options. Your animal companion can only invest this item if it is a legchair.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5112,7 +5460,7 @@
 					"frequency": "once per minute;",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Frequency once per minute;"
 					]
 				}
@@ -5137,7 +5485,7 @@
 			"entries": [
 				"These prosthetic feet and legs, created by dwarven alchemists and spellcasters together, are engraved with simple but effective evocation symbols on the ball and heel, empowering you to leap to great heights and blast foes with your feet.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5148,12 +5496,12 @@
 					"frequency": "once per 10 minutes",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You blast off from the ground, using the force to leap through the air. The blast feet cast {@spell jump} on you."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -5165,7 +5513,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You blast from your feet, dealing {@damage 4d6} force damage to all creatures in a 15-foot cone, with a basic Reflex save."
 					]
 				}
@@ -5215,7 +5563,7 @@
 				"This prosthetic eye was designed by elven crafters but comes in a range of appearances for different ancestries.",
 				"While wearing the eye, you gain a +1 item bonus to visual {@skill Perception} checks.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -5227,7 +5575,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You focus on the eye to see the unseen. The eye casts see invisibility on you."
 					]
 				}
@@ -5280,7 +5628,7 @@
 			"entries": [
 				"The flat iron bar of an immovable rod has been worked into the core frame of this prosthetic arm, a small button discreetly placed at the heel of the hand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5291,7 +5639,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You curl your fingers inward to press the button on the heel of your hand, anchoring your prosthetic arm in place. Your arm no longer moves, defying gravity if necessary. You can still move the fingers of this hand and your elbow, shoulder, and rest of your body while the magic is in effect, but you can't move your wrist. If you press the button again, the rod inside your arm is deactivated, ending the magic that anchors it in place. While anchored, the arm can be moved only if 8,000 pounds of pressure is placed upon it or if a creature succeeds at a DC 40 {@skill Athletics} check to {@action Force Open} your arm. A creature can notice the button {@condition hidden} in the hand of the prosthesis with a successful DC 25 {@skill Perception} check to {@action Seek}."
 					]
 				}
@@ -5321,7 +5669,7 @@
 			"entries": [
 				"This prosthetic arm is imbued with transmutation magic that can transform it into a weapon.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -5333,12 +5681,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You are holding a one-handed weapon",
-					"effect": [
+					"entries": [
 						"The prosthesis engulfs the weapon and absorbs it entirely. The weapon is unavailable until you use this Activation to release it from the prosthesis. The prosthesis can hold up to two items at a time."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -5349,7 +5697,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The prosthesis reshapes into the form of a weapon it has absorbed. The prosthesis has all of the statistics of the weapon, including the effects of any etched runes. The prosthesis remains in this weapon's form until you use this Activation again to revert it back to a prosthesis.",
 						"Parts of Reclaimed Paradise look more like an upscale spa resort than a vehicle scrapyard. A 14‑foot‑tall white stone wall lines the large yard's perimeter.",
 						"Within, smiling employees wearing matching overall jumpsuits help customers locate parts throughout the yard. Silencing spells are cast when moving heavily damaged vehicles to mitigate noise pollution, and each piece of equipment is treated with the care and attention it deserves."
@@ -5376,7 +5724,7 @@
 			"entries": [
 				"This simple carved box can fold or unfold into a boat when activated.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -5388,7 +5736,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The folding boat can take two shapes. The first is a wooden box that's 12 inches long, 6 inches wide, and 4 inches high; it weighs 1 Bulk and can store up to 1 Bulk of items. The other form is a rowboat (Gamemastery Guide 179). If the chosen form can't fit in the space, it takes the largest shape that does fit. You can activate the boat again to revert it to its original shape.",
 						"If the boat is occupied, the item can't be activated. Much like a magical structure (Core Rulebook 596), a folding boat can't harm creatures when it unfolds and creatures within it are set aside harmlessly when it folds.",
 						"Any items that were stored inside the box appear in the boat or ship. Items stored on the boat or ship form that are too large to fit inside the box form are ejected from the vehicle and appear on the ground adjacent to the box.",
@@ -5485,7 +5833,7 @@
 			"entries": [
 				"Hauling weapons are adept at moving creatures around the battlefield after a successful attack.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -5496,9 +5844,9 @@
 					"frequency": "once per hour",
 					"trigger": "You succeed at an attack roll to {@action Strike} with a weapon with the hauling rune",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The target must succeed at a DC 20 Reflex save or be moved 5 feet in a direction you choose.",
-						"This is forced movement."
+						"This is {@quickref forced movement||3|forced movement}."
 					]
 				}
 			],
@@ -5577,7 +5925,7 @@
 			"entries": [
 				"A memory palace is an elaborate magical structure that safely stores memories for easy access. It appears to be a miniature Taldan villa small enough to fit in the palm of a human hand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -5590,7 +5938,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The miniature grows into a building connected to the Astral Plane for 1 hour. The memory palace has a 30-foot-square central courtyard surrounded by 12 10-foot-square chambers. Arranged within these chambers are various items referred to as the palace's nodes\u2014statues, tapestries, fountains, and other works of art are common, but a node can take other forms at the GM's discretion. As a 10-minute activity, you can imprint one extended memory onto a node: the contents of a specific simple book, for example, or the events of a recent adventure. When you do, the node changes its shape and appearance to visually represent the memory you have imprinted onto it. If the node was already imprinted with a memory, the old one can be overwritten to repurpose the node.",
 						"Memories you have imprinted on a node can be mentally accessed at any time by a creature holding the memory palace in its miniature form, regardless of who imprinted them. This grants a +2 item bonus to {@action Recall Knowledge} checks relating to details specifically occurring within the memory. What exactly qualifies is up to the GM's discretion, but a node shouldn't grant the benefits for most uses of a given skill. For example, a node dedicated to a book about trees found in the Mwangi Expanse would help with {@action Recall Knowledge} checks for such trees, but it wouldn't grant the benefits for all {@skill Nature} checks to {@action Recall Knowledge}.",
 						"A memory palace node can also store the text from a spellbook or magical tome, but these memories aren't a substitute for having the book in your possession. A wizard can't prepare spells from a memory palace, though they could use it as source material to try to {@action Learn a Spell}.",
@@ -5692,7 +6040,7 @@
 			"entries": [
 				"This red maple wand carved into a tongue of flame feels warm in your hand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -5704,7 +6052,7 @@
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell faerie fire}. For the duration of the spell, you can use the limning flames as a source for your magic. Creatures affected by your faerie fire must succeed at a Will save against your spell DC or take a \u20132 status penalty to their Will saves against enchantment and illusions spells as long as they are affected by faerie fire.",
 						"You can cast an enchantment or illusion spell on such a creature up to a distance twice the spell's normal range. If the spell has a range of touch, or doesn't have a range, it is unaffected by the increase in range from the faerie fire."
 					]
@@ -5826,7 +6174,7 @@
 			"entries": [
 				"This thin, multicolored scarf shifts between hues in almost dizzying patterns.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -5839,7 +6187,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You {@action Stride}. All creatures within 10 feet of you when you started the {@action Stride} must attempt a DC 24 Will save. On a failure, a creature becomes {@condition fascinated} and must spend at least one of its actions on its next turn to move toward you. A {@condition fascinated} creature can attempt another Will save if you move more than 30 feet away from them, and as normal, acting {@condition hostile} to a creature or its allies breaks fascination automatically. Creatures that critically failed their save don't receive further saves if you move more than 30 feet away, and acting {@condition hostile} to such a creature's allies allows them to attempt another save, rather than automatically ending the fascination. You can Sustain the Activation for up to 1 minute."
 					]
 				}
@@ -5909,7 +6257,7 @@
 				"Rose gold and copper rings in this +2 resilient chain shirt form a vague bird shape. The jingling links tinkle musically, almost like birdsong. While you wear the armor, effects with the {@trait auditory} trait must first counteract the harmonic hauberk or they have no effect on you.",
 				"The harmonic hauberk attempts to counteract {@spell silence} spells cast on you and 4th‑level or higher heightened {@spell silence} spells the first time the armor enters their area (counteract level 4, counteract modifier +20). After failing to counteract a {@spell silence} spell, the armor can't attempt to counteract the same spell again, even if you leave and enter the spell's area multiple times.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5920,7 +6268,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain 1 Focus Point and immediately use the Focus Point to cast {@spell lingering composition} (Core Rulebook 387), using your {@skill Performance} check to determine the effects of the spell, followed by the {@spell inspire defense} composition cantrip (Core Rulebook 386). You can use this activation to cast those spells even if you don't have the Lingering Composition or Inspire Defense feats."
 					]
 				}
@@ -5975,7 +6323,7 @@
 			"entries": [
 				"This item appears to be a miniature stone replica of an aristocratic home or a simple castle.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -5989,7 +6337,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You place the figurine on the ground, and a harmonious note rings out as it grows into a spacious, elegant ballroom. The ballroom is 60 feet long, 45 feet wide, and features a ceiling that rises to a height of 20 feet. Elegant double doors on either end of the ballroom allow entry.",
 						"Inside, the ballroom is fully stocked with tables and chairs along both sides. A feasting table in the center of each seating area provides enough food and drink for up to 36 guests, and a cadre of unseen servants tend to guests' basic needs.",
 						"While inside, you can utter a command word to call forth music, which echoes through the ballroom. Repeating the command word can alter the dynamics of the music, such as the musical style or tempo, or stop the music entirely. A second command word produces a set of masked, illusory dancers that immediately take to the floor and begin dancing to the current music. When there's no music, the illusory guests chatter among themselves in a Resplendent Rose Wares."
@@ -6022,7 +6370,7 @@
 			"entries": [
 				"With its standard‑grade mithral polished to a mirrorlike sheen, this +2 resilient glamered mithral breastplate features the religious symbols of the goddesses of the Prismatic Ray pantheon\u2014{@deity Desna}, {@deity Sarenrae}, and {@deity Shelyn}\u2014surrounded by a rainbow‑colored set of gems.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -6034,7 +6382,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You surround yourself in a coruscating field of red, orange, yellow, green, blue, indigo, and violet light for 1 minute. Each color has a different effect, based on the effects of a 7th‑level {@spell chromatic wall} spell, and you apply the effects of each color once before it disappears from your field of light, which can happen in the following two ways.",
 						"First, the field attempts a counteract check (counteract level 7, counteract modifier +27) against {@trait any} effect that would be blocked by a chromatic wall of any of the colors still surrounding you in your field of light. Succeed or fail, that color then disappears from your field of light.",
 						"Second, any creature that touches you or damages you with an unarmed attack or non‑reach melee weapon is affected by a random remaining color from your field. As normal, this doesn't affect creatures you choose to touch.",
@@ -6070,7 +6418,7 @@
 			"entries": [
 				"This +1 striking disrupting spiked chain comes in a rich, green color with rose petals painted on the handle in varying shades of red and pink. The chain seems to banish nearby shadows.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -6081,12 +6429,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You hold the chain out before you, and the weapon glows as bright as a torch. You can suppress this light by Activating the weapon again."
+					"entries": [
+						"You hold the chain out before you, and the weapon glows as bright as a torch. You can suppress this light by {@action Activate an Item||Activating} the weapon again."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -6097,7 +6445,7 @@
 					"frequency": "once per day",
 					"trigger": "You critically succeed at a {@action Strike} against a fiend or undead",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The weapon unleashes its light in an attempt to destroy the target. The vine of roses casts a 3rd‑level {@spell searing light} spell with the triggering creature as the target. In place of a spell attack roll, make a weapon attack roll with the vine of roses using the same multiple attack penalty as the triggering {@action Strike}."
 					]
 				}
@@ -6124,7 +6472,7 @@
 			"entries": [
 				"A forked, lightning‑like crack runs down the length of this ornate stone wand, which rumbles slightly with the peals of distant thunder.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -6136,7 +6484,7 @@
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell sound burst} of the indicated level. After you Cast the Spell, at the start of each of your turns, the sound echoes in the same area as if you had cast it again, though it deals one fewer d10. This effect lasts until the damage is reduced to below {@dice 2d10}. The echoes don't affect structures or other items."
 					]
 				}
@@ -6228,7 +6576,7 @@
 			"entries": [
 				"With this rune, you can instantly retrieve an item in your possession without digging around looking for it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -6239,7 +6587,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The item teleports to a free hand."
 					]
 				}
@@ -6263,7 +6611,7 @@
 			"entries": [
 				"This rune depicts a specific type of dragon, resizing after application to fit the surface of the item.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -6274,7 +6622,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You're receiving a bonus to AC from your dragon's breath cape or shield",
-					"effect": [
+					"entries": [
 						"If your next action is to {@action Cast a Spell} with an area of effect that deals the same type of damage as the depicted dragon's breath weapon, the spell gains the effects of the Widen Spell feat (Core Rulebook 210). The rune can only affect spells of a specific level or lower, determined by the type of rune."
 					]
 				}
@@ -6391,7 +6739,7 @@
 			"entries": [
 				"These runes always come in pairs and can be applied to a garment's pockets to be activated.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -6402,7 +6750,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Items in the pockets (up to 10 negligible Bulk items or 1 light Bulk item per pocket) trade places via teleportation."
 					]
 				}
@@ -6536,7 +6884,7 @@
 			"entries": [
 				"This item creates a small cushion of air that catches you when you fall. You treat falls as 10 feet shorter.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -6547,7 +6895,7 @@
 					"frequency": "once per day",
 					"trigger": "You begin to fall",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You gain the effects of feather fall for 1 minute or until you stop falling, whichever comes first."
 					]
 				}
@@ -6576,7 +6924,7 @@
 			"entries": [
 				"A spell-bastion rune creates a reservoir of eldritch energy within the shield. A spellcaster can spend 1 minute to {@action Cast a Spell} of 3rd level or lower into the shield. The spell must take 2 actions or fewer to cast and must be able to target a creature other than the caster. The spell has no immediate effect\u2014it's instead stored for later. When you invest a spell-bastion shield, you immediately know the name and level of the stored spell. A spell-bastion shield found as treasure has a 50% chance of having a spell of the GM's choice stored in it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -6587,12 +6935,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "Your spell-bastion shield is storing a spell, and you have your shield raised",
-					"effect": [
+					"entries": [
 						"You prepare to unleash the stored spell on any foe that hits you until your next turn."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -6603,12 +6951,12 @@
 					"frequency": null,
 					"trigger": "You use the Shield Block reaction against a foe that the stored spell can target",
 					"requirements": "You have a spell stored in your spell-bastion shield, and you've activated the shield since your last turn in preparation for unleashing the spell",
-					"effect": [
+					"entries": [
 						"You unleash the stored spell, which uses the target of the triggering attack as the target of the spell. This empties the spell from the shield and allows a spell to be cast into it again."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -6619,7 +6967,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You harmlessly expend the stored spell. This frees the shield to have a new spell cast into it."
 					]
 				}
@@ -7162,31 +7510,29 @@
 				"This faintly glowing powder rapidly induces the symptoms of abysium poisoning.",
 				{
 					"type": "affliction",
-					"entries": {
-						"name": null,
-						"traits": [],
-						"DC": "27",
-						"savingThrow": "Fortitude",
-						"onset": "1 minute",
-						"maxDuration": "6 minutes",
-						"stages": [
-							{
-								"stage": 1,
-								"entry": "{@damage 8d6} poison damage and {@condition sickened|CRB|sickened 1}",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 2,
-								"entry": "{@damage 9d6} poison damage and {@condition sickened|CRB|sickened 2}",
-								"duration": "1 minute"
-							},
-							{
-								"stage": 3,
-								"entry": "{@damage 10d6} poison damage and {@condition sickened|CRB|sickened 3}",
-								"duration": "1 minute"
-							}
-						]
-					}
+					"name": null,
+					"traits": [],
+					"DC": "27",
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 8d6} poison damage and {@condition sickened|CRB|sickened 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 9d6} poison damage and {@condition sickened|CRB|sickened 2}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 10d6} poison damage and {@condition sickened|CRB|sickened 3}",
+							"duration": "1 minute"
+						}
+					]
 				}
 			],
 			"craftReq": "abysium worth at least 75 gp.",
@@ -7210,6 +7556,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade abysium buckler",
+					"name": "Standard‑Grade Abysium Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -7234,6 +7581,7 @@
 				},
 				{
 					"type": "high‑grade abysium buckler",
+					"name": "High‑Grade Abysium Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7461,6 +7809,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade djezet buckler",
+					"name": "Standard‑Grade Djezet Buckler",
 					"level": 9,
 					"price": {
 						"coin": "gp",
@@ -7485,6 +7834,7 @@
 				},
 				{
 					"type": "high‑grade djezet buckler",
+					"name": "High‑Grade Djezet Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -7674,6 +8024,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade inubrix buckler",
+					"name": "Standard‑Grade Inubrix Buckler",
 					"level": 7,
 					"price": {
 						"coin": "gp",
@@ -7698,6 +8049,7 @@
 				},
 				{
 					"type": "high‑grade inubrix buckler",
+					"name": "High‑Grade Inubrix Buckler",
 					"level": 15,
 					"price": {
 						"coin": "gp",
@@ -7890,6 +8242,7 @@
 			"variants": [
 				{
 					"type": "high‑grade noqual buckler",
+					"name": "High‑Grade Noqual Buckler",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -8082,6 +8435,7 @@
 			"variants": [
 				{
 					"type": "standard‑grade siccatite buckler",
+					"name": "Standard‑Grade Siccatite Buckler",
 					"level": 8,
 					"price": {
 						"coin": "gp",
@@ -8106,6 +8460,7 @@
 				},
 				{
 					"type": "high‑grade siccatite buckler",
+					"name": "High‑Grade Siccatite Buckler",
 					"level": 16,
 					"price": {
 						"coin": "gp",
@@ -8167,7 +8522,7 @@
 						"amount": 15000,
 						"note": "+ 1,500 gp per Bulk"
 					},
-					"craftReq": "at least 7,500 gp of siccatite + 750 gp per Bulk \"Sure, you could get it for cheaper down the way. Just remember that you get what you pay for.\" The Unscathed Blade is a large, sturdy shop with its own living quarters in an attached tower. Its chimney constantly billows plumes of dark smoke. Small windows illuminate the shop's front room, allowing the sun to glint off the assorted fine weaponry. The wooden front door is propped open during business hours, and warm air billows out from the shop. The double doors in the back, leading to the narrow alley behind the building, are always thrown wide open whenever the smith, Abiah (N agender human ex‑gladiator) is forging weapons. From the alley, one can feel the heated air emanating from the shop and hear the clanging sounds of Abiah hammering new weapons and armor.",
+					"craftReq": "at least 7,500 gp of siccatite + 750 gp per Bulk \"Sure, you could get it for cheaper down the way. Just remember that you get what you pay for.\" The Unscathed Blade is a large, sturdy shop with its own living quarters in an attached tower. Its chimney constantly billows plumes of dark smoke. {@trait Small} windows illuminate the shop's front room, allowing the sun to glint off the assorted fine weaponry. The wooden front door is propped open during business hours, and warm air billows out from the shop. The double doors in the back, leading to the narrow alley behind the building, are always thrown wide open whenever the smith, Abiah (N agender human ex‑gladiator) is forging weapons. From the alley, one can feel the heated air emanating from the shop and hear the clanging sounds of Abiah hammering new weapons and armor.",
 					"entries": []
 				}
 			],
@@ -8315,9 +8670,9 @@
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"entries": [
-				"This +2 greater striking shock greatsword has a broad, flat blade that can support the weight of a Medium-sized or smaller wielder. Magic allows the weapon to soar through the air, carrying its wielder along with it.",
+				"This +2 greater striking shock greatsword has a broad, flat blade that can support the weight of a {@trait Medium}-sized or smaller wielder. Magic allows the weapon to soar through the air, carrying its wielder along with it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -8328,12 +8683,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You leap upon your sword as it soars through the air for up to 10 minutes. You gain a fly Speed of 25 feet or your land Speed, whichever is slower, but you can't {@action Strike} with your weapon except via the weapon's other activation (see below). You can {@action Dismiss} the activation, and it ends automatically if you cease holding the weapon with at least one hand."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -8344,7 +8699,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You are riding on your weapon",
-					"effect": [
+					"entries": [
 						"You ride your weapon into a foe, attacking it as you fly past. You {@action Fly}, making a melee {@action Strike} with the weapon once at any point during your movement."
 					]
 				}
@@ -8394,21 +8749,24 @@
 			"entries": [
 				"When etched with this rune, a weapon's hilt or haft becomes engraved with grooves that match the imprints of a wolf's teeth. By putting a fanged weapon in your mouth, you can transform into an animal.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
 					},
 					"components": [
-						"Interact (magical",
+						"Interact"
+					],
+					"traits": [
+						"magical",
 						"polymorph",
-						"transmutation)"
+						"transmutation"
 					],
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You transform into a Small or Medium animal that wields the fanged weapon in its jaws; the animal matches the animal you are most closely associated with (a lizardfolk would turn into a lizard, a kitsune into a fox, a deer instinct barbarian into a deer, etc.) or a wolf if no specific animal is applicable. While in this form, you can attack with the fanged weapon even though you don't have any hands. However, you can attack only with the fanged weapon and you don't have hands or the ability to hold items. For effects dependent on how many hands you are using to hold the item, such as the {@trait two-hand} trait, you are holding the weapon in two hands. You can {@action Dismiss} this effect, and it ends automatically if you drop the fanged weapon (whether or not of your own volition)."
+					"entries": [
+						"You transform into a {@trait Small} or {@trait Medium} animal that wields the fanged weapon in its jaws; the animal matches the animal you are most closely associated with (a lizardfolk would turn into a lizard, a kitsune into a fox, a deer instinct barbarian into a deer, etc.) or a wolf if no specific animal is applicable. While in this form, you can attack with the fanged weapon even though you don't have any hands. However, you can attack only with the fanged weapon and you don't have hands or the ability to hold items. For effects dependent on how many hands you are using to hold the item, such as the {@trait two-hand} trait, you are holding the weapon in two hands. You can {@action Dismiss} this effect, and it ends automatically if you drop the fanged weapon (whether or not of your own volition)."
 					]
 				}
 			],
@@ -8469,7 +8827,7 @@
 			"entries": [
 				"This finely cut garnet brooch fills your mind with vigor and occasional bursts of mental clarity. While wearing the brooch, you gain a +1 item bonus to checks to {@action Recall Knowledge} with {@skill Lore} skills.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -8480,7 +8838,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You think hard on a topic and receive a sudden inspiration. You attempt to {@action Recall Knowledge} using {@skill Lore}.",
 						"On this check, you roll twice and take the higher result."
 					]
@@ -8543,7 +8901,7 @@
 			"entries": [
 				"A wreath of flames dances around the rim of this golden crown. You gain resistance 5 to fire.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -8554,7 +8912,7 @@
 					"frequency": "once per day",
 					"trigger": "You take fire damage",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You absorb some of the flame that would harm you. Increase your fire resistance from the crown from 5 to 15. Just after taking any remaining fire damage, you regain a number of Hit Points equal to 15 or the fire damage dealt by the triggering attack before damage resistance, whichever is less."
 					]
 				}
@@ -8639,7 +8997,7 @@
 					},
 					"entries": [
 						"You siphon your fleshgem's power, and the earth around you erupts in crystal stalagmites.",
-						"Activate {@as 1} to {@as 2} command; Frequency once per day; Requirements You are standing on the ground; Effect The ground around you erupts in a 10-foot burst of knee-high crystal shards that remain for 1 round, or 1 minute if you spent two actions. To all creatures other than you, the area is difficult terrain as well as hazardous terrain. Creatures that move through a space containing crystal shards take 2 piercing damage."
+						"Activate {@as 1} to {@as 2} command; Frequency once per day; Requirements You are standing on the ground; Effect The ground around you erupts in a 10-foot burst of knee-high crystal shards that remain for 1 round, or 1 minute if you spent two actions. To all creatures other than you, the area is {@quickref difficult terrain||3|terrain} as well as hazardous terrain. Creatures that move through a space containing crystal shards take 2 piercing damage."
 					]
 				}
 			],
@@ -8668,7 +9026,7 @@
 			"entries": [
 				"This +1 striking returning dagger has an elaborate, gemmed handle and can be worn strapped to the inside of a wrist or tucked within a decorative bodice. Despite the name, which stems from the dagger's historical basis in Oppara as a lady's favor, this dagger is common among wielders of all genders and has become quite fashionable in Absalom of late, with most nobles who carry them matching their evening finery to the gems on the hilt.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -8680,12 +9038,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You offer this weapon as a romantic or platonic favor to an ally. You and the ally become linked for 1 day. During this time, you each benefit from the effects of status, using each other as the targets."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -8696,7 +9054,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call forth the blade. The lady's knife instantly teleports to your hand. The attempt to recall the knife fails if you are more than 1 mile away from the knife's current location. Your linked ally can use the same Activation to recall the knife once per day as well."
 					]
 				}
@@ -8727,7 +9085,7 @@
 				"These well-aged wooden magnifying glasses are engraved with a variety of runes. Each is imbued with a specific language.",
 				"When you use a magnifying glass to examine writing of its imbued language, it translates the writing into a language Urban Garden Wares you understand. For example, an elf who speaks only Elven using a magnifying glass of elucidation imbued with Dwarven would see Dwarven writing as Elven when {@condition observed} through the magnifying glass. The magnifying glass only provides direct translations and doesn't automatically allow you to understand codes or extremely esoteric passages\u2014you still need to attempt a skill check to {@action Decipher Writing}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -8739,8 +9097,8 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You scan up to two pages of writing with the magnifying glass of elucidation, imbuing the magnifying glass with the information you scanned. You can use a separate 3-action activity to have the magnifying glass reproduce the imbued information onto blank paper exactly as it appeared when you Activated the magnifying glass. The reproduction is a direct copy of the pages but doesn't imbue the reproduction with any {@trait magical} effects or other special effects. As such, you can copy the writing of a scroll, for example, but it will only be mundane writing and not have any {@trait magical} effect. The magnifying glass can only hold one instance of information at a given time; Activating the magnifying glass a second time or reproducing the information clears out the magnifying glass's information."
+					"entries": [
+						"You scan up to two pages of writing with the magnifying glass of elucidation, imbuing the magnifying glass with the information you scanned. You can use a separate 3-action activity to have the magnifying glass reproduce the imbued information onto blank paper exactly as it appeared when you Activated the magnifying glass. The reproduction is a direct copy of the pages but doesn't imbue the reproduction with any {@trait magical} effects or other special effects. As such, you can copy the writing of a scroll, for example, but it will only be mundane writing and not have any {@trait magical} effect. The magnifying glass can only hold one instance of information at a given time; {@action Activate an Item||Activating} the magnifying glass a second time or reproducing the information clears out the magnifying glass's information."
 					]
 				}
 			],
@@ -8794,7 +9152,7 @@
 			"entries": [
 				"The carved night hag's hand at the end of this sandalwood staff clutches a rough gem. The staff of the Dreamlands makes it easier to navigate and survive in the Dreamlands and recognize its denizens. When wielding the staff, you gain a +1 circumstance bonus to {@skill Survival} checks while in the Dreamlands and to checks to {@action Recall Knowledge} about creatures with the {@trait dream} trait.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -8806,7 +9164,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list."
 					]
 				}

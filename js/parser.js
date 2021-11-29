@@ -16,7 +16,6 @@ Parser._parse_bToA = function (abMap, b) {
 	}
 	return b;
 };
-
 Parser.numberToText = function (number) {
 	if (number == null) throw new TypeError(`undefined or null object passed to parser`);
 	if (Math.abs(number) >= 100) return `${number}`;
@@ -663,6 +662,8 @@ Parser.alignAbvToFull = function (align) {
 			return "Neutral Evil";
 		case "ce":
 			return "Chaotic Evil";
+		case "all":
+			return "All";
 		default:
 			return "\u2014";
 	}
@@ -1574,13 +1575,15 @@ Parser.getTraitName = function (trait) {
 }
 
 Parser.rarityToNumber = function (r) {
-	switch (r.toLowerCase()) {
-		case "common": return 0;
-		case "uncommon": return 1;
-		case "rare": return 2;
-		case "unique": return 3;
-		default: return 69;
-	}
+	if (isNaN(r)) {
+		switch (r.toLowerCase()) {
+			case "common": return 0;
+			case "uncommon": return 1;
+			case "rare": return 2;
+			case "unique": return 3;
+			default: return 69;
+		}
+	} else return r
 }
 
 Parser.dmgTypeToFull = function (dmg) {
@@ -1605,4 +1608,95 @@ Parser.DMGTYPE_JSON_TO_FULL = {
 	"S": "slashing",
 	"+": "positive",
 	"-": "negative",
+};
+
+Parser.levelToDC = function (level, spell, difficulty) {
+	if (isNaN(level)) return "?"
+	let DC = 0
+	if (spell.toLowerCase() === "focus" || spell.toLowerCase() === "spell" || spell === true) level = (level * 2) - 1
+	if (level >= 0 && level < 21) {
+		DC = 14 + Number(level) + Math.floor(level / 3)
+	} else if (level >= 21 && level < 26) {
+		DC = 40 + Number((level - 20) * 2)
+	} else {
+		throw new Error(`Invalid level (0 to 25 or 1 to 10 for spells)`);
+	}
+	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
+	if (difficulty) {
+		if (typeof difficulty === "string" || difficulty instanceof String) { difficulty = difficulty.split() }
+		for (let i = 0; i < difficulty.length; i++) {
+			let typeNum = difficulty[i];
+			switch (Parser.rarityToNumber(typeNum)) {
+				// Incredibly Easy
+				case -3:
+					DC = DC - 10;
+					break;
+				// Very Easy
+				case -2:
+					DC = DC - 5
+					break;
+				// Easy
+				case -1:
+					DC = DC - 2
+					break;
+				// Hard (Uncommon)
+				case 1:
+					DC = DC + 2
+					break;
+				// Very Hard (Rare)
+				case 2:
+					DC = DC + 5
+					break;
+				// Incredibly Hard (Unique)
+				case 3:
+					DC = DC + 10
+					break;
+				default: break;
+			}
+		}
+	}
+
+	return DC
+};
+
+Parser.typeToSkill = function (type) {
+	if (typeof type === "string" || type instanceof String) { type = type.split() }
+
+	let skill = new Set();
+
+	for (let i = 0; i < type.length; i++) {
+		let typeNum = type[i];
+		switch (typeNum.toLowerCase()) {
+			// Creature Types
+			case "aberration": skill.add("{@skill Occultism}"); break;
+			case "animal": skill.add("{@skill Nature}"); break;
+			case "astral": skill.add("{@skill Occultism}"); break;
+			case "beast": skill.add("{@skill Arcana}"); skill.add("{@skill Nature}"); break;
+			case "celestial": skill.add("{@skill Religion}"); break;
+			case "construct": skill.add("{@skill Arcana}"); skill.add("{@skill Crafting}"); break;
+			case "dragon": skill.add("{@skill Arcana}"); break;
+			case "elemental": skill.add("{@skill Arcana}"); skill.add("{@skill Nature}"); break;
+			case "ethereal": skill.add("{@skill Occultism}"); break;
+			case "fey": skill.add("{@skill Nature}"); break;
+			case "fiend": skill.add("{@skill Religion}"); break;
+			case "fungus": skill.add("{@skill Nature}"); break;
+			case "humanoid": skill.add("{@skill Society}"); break;
+			case "monitor": skill.add("{@skill Religion}"); break;
+			case "ooze": skill.add("{@skill Occultism}"); break;
+			case "spirit": skill.add("{@skill Occultism}"); break;
+			case "plant": skill.add("{@skill Nature}"); break;
+			case "undead": skill.add("{@skill Religion}"); break;
+			// Spellcasting Traditions
+			case "arcane": skill.add("{@skill Arcana}"); break;
+			case "divine": skill.add("{@skill Religion}"); break;
+			case "occult": skill.add("{@skill Occultism}"); break;
+			case "primal": skill.add("{@skill Nature}"); break;
+			case "magical": skill.add("{@skill Arcana}"); skill.add("{@skill Religion}"); skill.add("{@skill Occultism}"); skill.add("{@skill Nature}"); break;
+			// Items
+			case "alchemical":
+			case "item": skill.add("{@skill Crafting}"); break;
+			default: break;
+		}
+	}
+	return [...skill].join(" or ")
 };

@@ -222,7 +222,7 @@
 			],
 			"access": "Varisian ethnicity or New Thassilon nationality",
 			"entries": [
-				"You have tattoos on your body corresponding to one of the ancient Thassilonian schools of magic. Choose one of the following schools of magic: abjuration (shield), conjuration (tanglefoot), enchantment (daze), evocation (electric arc), illusion (ghost sound), necromancy (chill touch), or transmutation (sigil). You can cast the associated cantrip (listed in parentheses) as an innate arcane spell at will."
+				"You have tattoos on your body corresponding to one of the ancient Thassilonian schools of magic. Choose one of the following schools of magic: {@trait abjuration} ({@spell shield}), {@trait conjuration} ({@spell tanglefoot}), {@trait enchantment} ({@spell daze}), {@trait evocation} ({@spell electric arc}), {@trait illusion} ({@spell ghost sound}), {@trait necromancy} ({@spell chill touch}), or {@trait transmutation} ({@spell sigil}). You can cast the associated cantrip (listed in parentheses) as an innate arcane spell at will."
 			],
 			"leadsTo": [
 				"Ornate Tattoo|LOCG",
@@ -623,7 +623,7 @@
 				"Halfling"
 			],
 			"entries": [
-				"You know how to take advantage of foes thrown off-balance by unstable flooring, loose cobblestones, or similar impediments. While in an outdoor urban environment, you can {@action Step} into difficult terrain and enemies in difficult terrain are {@condition flat-footed} to you."
+				"You know how to take advantage of foes thrown off-balance by unstable flooring, loose cobblestones, or similar impediments. While in an outdoor urban environment, you can {@action Step} into {@quickref difficult terrain||3|terrain} and enemies in {@quickref difficult terrain||3|terrain} are {@condition flat-footed} to you."
 			]
 		},
 		{
@@ -1626,7 +1626,7 @@
 			"cost": null,
 			"requirements": null,
 			"entries": [
-				"You have grown more comfortable with your penchant for supernatural disappearance. The flat check DC of your Fortuitous Shift feat decreases to 11, and you are no longer {@condition dazzled} if you succeed."
+				"You have grown more comfortable with your penchant for supernatural disappearance. The flat check DC of your Fortuitous Shift feat decreases to {@flatDC 11}, and you are no longer {@condition dazzled} if you succeed."
 			],
 			"special": null
 		},
@@ -2478,7 +2478,7 @@
 			],
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
-				"You can jury-rig your weapons to perform in unexpected ways. When you use this ability, add one of the following weapon traits to a melee weapon you wield: deadly d6, disarm, nonlethal, shove, trip, versatile B, versatile P, or versatile S. You cannot add a trait that the weapon already has. The weapon retains this trait until you a successfully hit and deal damage with the weapon. The weapon retains this trait only while you wield it, and you can have only one weapon modified in this way at any time.",
+				"You can jury-rig your weapons to perform in unexpected ways. When you use this ability, add one of the following weapon traits to a melee weapon you wield: {@trait deadly d6}, {@trait disarm}, {@trait nonlethal}, {@trait shove}, {@trait trip}, {@trait versatile B}, {@trait versatile P}, or {@trait versatile S}. You cannot add a trait that the weapon already has. The weapon retains this trait until you a successfully hit and deal damage with the weapon. The weapon retains this trait only while you wield it, and you can have only one weapon modified in this way at any time.",
 				"If you have expert proficiency in {@skill Crafting}, you can use this feat as a 2-action activity. If you have legendary proficiency in {@skill Crafting}, you can apply two weapon traits from the list when using this feat."
 			]
 		},
@@ -2964,7 +2964,7 @@
 			],
 			"prerequisites": "You have a swim Speed.",
 			"entries": [
-				"You are adept at moving through marshy terrain. When you use the {@action Step} action, you can ignore difficult terrain caused by flooding, swamps, or quicksand. In addition, when you use the {@skill Acrobatics} skill to {@action Balance} on narrow surfaces or uneven marshy ground, you aren't {@condition flat-footed}, and if you roll a success on the {@skill Acrobatics} check, you get a critical success instead."
+				"You are adept at moving through marshy terrain. When you use the {@action Step} action, you can ignore {@quickref difficult terrain||3|terrain} caused by flooding, swamps, or quicksand. In addition, when you use the {@skill Acrobatics} skill to {@action Balance} on narrow surfaces or uneven marshy ground, you aren't {@condition flat-footed}, and if you roll a success on the {@skill Acrobatics} check, you get a critical success instead."
 			]
 		},
 		{
@@ -3034,7 +3034,7 @@
 			],
 			"prerequisites": "{@feat Illusion Sense}",
 			"entries": [
-				"By drawing upon the First World's magic, you can siphon a portion of that malleable world to create a convincing illusion. Once per day, you can cast {@spell illusory disguise}, item facade, or ventriloquism. At 7th level, the spell is heightened to 2nd level, and every 2 levels thereafter, the spell is heightened an additional spell level."
+				"By drawing upon the First World's magic, you can siphon a portion of that malleable world to create a convincing illusion. Once per day, you can cast {@spell illusory disguise}, {@spell item facade}, or {@spell ventriloquism}. At 7th level, the spell is heightened to 2nd level, and every 2 levels thereafter, the spell is heightened an additional spell level."
 			]
 		},
 		{
@@ -3053,7 +3053,7 @@
 				"Gnome"
 			],
 			"entries": [
-				"Entertainment comes naturally to you. You become trained in {@skill Performance} and gain one 1st-level {@skill Performance} skill feat."
+				"Entertainment comes naturally to you. You become trained in {@skill Performance} and gain one {@filter 1st-level Performance|feats||Skills=Performance|Type=Skill;!Archetype|Level=[1;1]} skill feat."
 			]
 		},
 		{
@@ -3244,7 +3244,60 @@
 			"access": "Shoanti ethnicity",
 			"entries": [
 				"You grew up among the Shoanti tribes, with the spirits watching over you, and they offer you guidance. You gain the trained proficiency rank in the skill listed for your quah (or another skill of your choice, if you're already trained in that skill). You gain the {@feat Assurance} skill feat in that skill, as the spirits' help guides your actions.",
-				"Lyrune-Quah {@skill Religion} Shadde-Quah {@skill Athletics} Shriikirri-Quah {@skill Nature} Shundar-Quah {@skill Diplomacy} Sklar-Quah {@skill Intimidation} Skoan-Quah {@skill Medicine} Tamiir-Quah {@skill Acrobatics}."
+				{
+					"type": "pf2-options",
+					"items": [
+						{
+							"type": "item",
+							"name": "Lyrune-Quah",
+							"entries": [
+								"{@skill Religion}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shadde-Quah",
+							"entries": [
+								"{@skill Athletics}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shriikirri-Quah",
+							"entries": [
+								"{@skill Nature}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Shundar-Quah",
+							"entries": [
+								"{@skill Diplomacy}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Sklar-Quah",
+							"entries": [
+								"{@skill Intimidation}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Skoan-Quah",
+							"entries": [
+								"{@skill Medicine}"
+							]
+						},
+						{
+							"type": "item",
+							"name": "Tamiir-Quah",
+							"entries": [
+								"{@skill Acrobatics}"
+							]
+						}
+					]
+				}
 			]
 		},
 		{
@@ -3268,7 +3321,7 @@
 			],
 			"prerequisites": "{@feat Magaambyan Attendant Dedication|LOCG}, Rain-Scribes affiliation",
 			"entries": [
-				"You surround yourself in a mantle of Rain-Scribe magic and {@action Stride} twice; difficult terrain does not reduce your Speed, even if the difficult terrain has been manipulated by magic. Your magic clears the difficult terrain in each square you entered; until your next turn, those squares aren't difficult terrain for any creature walking through them (or are normal difficult terrain if they were previously greater difficult terrain)."
+				"You surround yourself in a mantle of Rain-Scribe magic and {@action Stride} twice; {@quickref difficult terrain||3|terrain} does not reduce your Speed, even if the {@quickref difficult terrain||3|terrain} has been manipulated by magic. Your magic clears the {@quickref difficult terrain||3|terrain} in each square you entered; until your next turn, those squares aren't {@quickref difficult terrain||3|terrain} for any creature walking through them (or are normal {@quickref difficult terrain||3|terrain} if they were previously {@quickref greater difficult terrain||3|terrain})."
 			]
 		},
 		{
@@ -3447,7 +3500,7 @@
 			"prerequisites": "{@ancestry goblin|crb|unbreakable goblin|unbreakable} heritage, {@feat Bouncy Goblin|LOCG}",
 			"trigger": "A foe hits you with a melee weapon or unarmed attack.",
 			"entries": [
-				"When you take a big hit, your foe bounces you around like a rubber ball, but you escape the worst of the blow. Your foe can move you any distance of its choice up to 30 feet in a direction of its choice (this is not forced movement, and it triggers reactions as normal). You fall {@condition prone} and are {@condition stunned 1}. Attempt a DC {@flatDC 6} flat check. On a success, you take minimum damage from the attack, and on a critical success, if the attack was a critical hit, you don't take double damage from the critical hit."
+				"When you take a big hit, your foe bounces you around like a rubber ball, but you escape the worst of the blow. Your foe can move you any distance of its choice up to 30 feet in a direction of its choice (this is not {@quickref forced movement||3|forced movement}, and it triggers reactions as normal). You fall {@condition prone} and are {@condition stunned 1}. Attempt a DC {@flatDC 6} flat check. On a success, you take minimum damage from the attack, and on a critical success, if the attack was a critical hit, you don't take double damage from the critical hit."
 			]
 		},
 		{
@@ -3468,7 +3521,7 @@
 			"entries": [
 				"Your elven lineage is subtle enough that you look barely different from other humans, and you've learned to use that to your advantage. You gain the trained proficiency rank in {@skill Deception} (or another skill of your choice, if you were already trained in {@skill Deception})",
 				"You gain a +4 circumstance bonus to {@action Impersonate} checks to pretend you aren't a halfelf.",
-				"Observers are never granted circumstance bonuses to {@skill Perception} checks due to you Impersonating a full-blooded human, and you never take circumstance penalties due to you Impersonating a full-blooded human."
+				"Observers are never granted circumstance bonuses to {@skill Perception} checks due to you {@action Impersonate||Impersonating} a full-blooded human, and you never take circumstance penalties due to you Impersonating a full-blooded human."
 			],
 			"special": "You can take this feat only at 1st level, and you can't retrain out of this feat or into this feat."
 		},
@@ -3904,8 +3957,7 @@
 				"Half-elf"
 			],
 			"entries": [
-				"You're extremely extroverted, and you often spend your time carousing or otherwise socializing. You are trained in {@skill Diplomacy} (or another skill of your choice if you were already trained in {@skill Diplomacy}), and you gain the {@feat Hobnobber} skill feat.",
-				"Half-Orc Ancestry Feats The following ancestry feats are available to half-orcs, in addition to human and orc ancestry feats."
+				"You're extremely extroverted, and you often spend your time carousing or otherwise socializing. You are trained in {@skill Diplomacy} (or another skill of your choice if you were already trained in {@skill Diplomacy}), and you gain the {@feat Hobnobber} skill feat."
 			]
 		},
 		{
@@ -4328,7 +4380,7 @@
 			],
 			"entries": [
 				"You can take advantage of the terrain to bypass foes' defenses.",
-				"Non-lizardfolk creatures in difficult terrain are {@condition flat‑footed} to you. If you have a swim Speed, non-lizardfolk creatures that are in water and lack a swim Speed are also {@condition flat-footed} to you."
+				"Non-lizardfolk creatures in {@quickref difficult terrain||3|terrain} are {@condition flat‑footed} to you. If you have a swim Speed, non-lizardfolk creatures that are in water and lack a swim Speed are also {@condition flat-footed} to you."
 			]
 		},
 		{

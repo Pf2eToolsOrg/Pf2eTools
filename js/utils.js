@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.0.1"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.0.2"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -1889,7 +1889,7 @@ UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_BOOK] = (it) => UrlUtil.encodeForHash(it.
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_DEITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_HAZARDS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TABLES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
-UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
+UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ACTIONS] = (it) => UrlUtil.encodeForHash([it.add_hash ? `${it.name} (${it.add_hash})` : it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_ABILITIES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_LANGUAGES] = (it) => UrlUtil.encodeForHash([it.name, it.source]);
 UrlUtil.URL_TO_HASH_BUILDER[UrlUtil.PG_TRAITS] = (it) => UrlUtil.encodeForHash(BrewUtil.hasSourceJson(it.source) ? [it.name, it.source] : [it.name]);
@@ -2510,6 +2510,7 @@ DataUtil = {
 				const handlers = {
 					// TODO(Future) may need to have this handle replaces inside _some_ tags
 					string: (str) => {
+						if (modInfo.replaceTags) return str.replace(re, modInfo.with);
 						const split = Renderer.splitByTags(str);
 						const len = split.length;
 						for (let i = 0; i < len; ++i) {
@@ -2517,6 +2518,10 @@ DataUtil = {
 							split[i] = split[i].replace(re, modInfo.with);
 						}
 						return split.join("");
+					},
+					object: (obj) => {
+						// TODO: Maybe we need to go deeper
+						return obj;
 					},
 				};
 
@@ -2526,8 +2531,14 @@ DataUtil = {
 					return DataUtil.generic._walker_replaceTxt.walk(it, handlers);
 				});
 
+				const typesToReplaceIn = ["successDegree", "ability", "affliction", "lvlEffect"];
 				copyTo[prop].forEach(it => {
 					if (it.entries) it.entries = DataUtil.generic._walker_replaceTxt.walk(it.entries, handlers);
+					if (typesToReplaceIn.includes(it.type)) {
+						Object.keys(it).forEach(key => {
+							it[key] = DataUtil.generic._walker_replaceTxt.walk(it[key], handlers)
+						});
+					}
 					if (it.headerEntries) it.headerEntries = DataUtil.generic._walker_replaceTxt.walk(it.headerEntries, handlers);
 					if (it.footerEntries) it.footerEntries = DataUtil.generic._walker_replaceTxt.walk(it.footerEntries, handlers);
 				});
@@ -2842,11 +2853,11 @@ DataUtil = {
 			variant._copy._mod = MiscUtil.merge(generic._vmod, variant._mod, variant._copy._mod);
 			const entriesMode = variant._copy._mod.entriesMode || "concat";
 			if (entriesMode === "concat") {
-				variant.entries = [...generic.entries, ...variant.entries];
+				variant.entries = MiscUtil.copy([...generic.entries, ...variant.entries]);
 			} else if (entriesMode === "generic") {
-				variant.entries = [...generic.entries]
+				variant.entries = MiscUtil.copy([...generic.entries]);
 			} else if (entriesMode === "variant") {
-				variant.entries = [...variant.entries]
+				variant.entries = MiscUtil.copy([...variant.entries]);
 			}
 			// FIXME:
 			if (!variant.name) {
@@ -3979,7 +3990,8 @@ BrewUtil = {
 		const cpy = MiscUtil.copy(BrewUtil.homebrew);
 		BrewUtil._STORABLE.forEach(prop => {
 			(cpy[prop] || []).forEach(ent => {
-				Object.keys(ent).filter(k => k.startsWith("_")).forEach(k => delete ent[k]);
+				// FIXME: This breaks item _vmod
+				// Object.keys(ent).filter(k => k.startsWith("_")).forEach(k => delete ent[k]);
 			});
 		});
 		await StorageUtil.pSet(VeCt.STORAGE_HOMEBREW, cpy);

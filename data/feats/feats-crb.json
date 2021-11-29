@@ -605,7 +605,7 @@
 			],
 			"trigger": "You use the {@feat Shield Block} reaction, and the opponent that triggered {@feat Shield Block} is adjacent to you and is your size or smaller.",
 			"entries": [
-				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically {@action Shove||Shoving} it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of difficult terrain, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
+				"You push back as you block the attack, knocking your foe away or off balance. You use your shield to push the triggering creature, either automatically {@action Shove||Shoving} it 5 feet or causing it to become {@condition flat-footed} until the start of your next turn. The triggering creature chooses whether to be moved or become {@condition flat-footed}. If it chooses to be moved, you choose the direction. If the {@action Shove} would cause it to hit a solid object, enter a square of {@quickref difficult terrain||3|terrain}, or enter another creature's space, it must become {@condition flat-footed} instead of being moved."
 			],
 			"leadsTo": [
 				"Flinging Shove",
@@ -2673,7 +2673,7 @@
 			"entries": [
 				"Throwing your weight behind your attack, you hit your opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn't trigger reactions.",
 				"This {@action Strike} has the following failure effect.",
-				"{@b Failure} The target becomes flat-footed until the end of your current turn."
+				"{@b Failure} The target becomes {@condition flat-footed} until the end of your current turn."
 			]
 		},
 		{
@@ -5087,7 +5087,7 @@
 			],
 			"requirements": "You are wielding a shield.",
 			"entries": [
-				"You use your shield to harry your enemies, preventing them from stepping away from or around you. All spaces adjacent to you are difficult terrain for your enemies."
+				"You use your shield to harry your enemies, preventing them from stepping away from or around you. All spaces adjacent to you are {@quickref difficult terrain||3|terrain} for your enemies."
 			]
 		},
 		{
@@ -5351,7 +5351,7 @@
 			"requirements": "You are unarmored.",
 			"entries": [
 				"You enter the stance of a dragon and make powerful leg strikes like a lashing dragon's tail. You can make dragon tail attacks that deal {@damage 1d10} bludgeoning damage. They are in the {@group brawling} group and have the backswing, {@trait nonlethal}, and {@trait unarmed} traits.",
-				"While in Dragon Stance, you can ignore the first square of difficult terrain while {@action Stride||Striding}."
+				"While in Dragon Stance, you can ignore the first square of {@quickref difficult terrain||3|terrain} while {@action Stride||Striding}."
 			],
 			"leadsTo": [
 				"Dragon Roar"
@@ -6112,7 +6112,7 @@
 				"Elf"
 			],
 			"entries": [
-				"You favor bows and other elegant weapons. You are trained with {@item longbows}, {@item composite longbows}, {@item longswords}, {@item rapiers}, {@item shortbows}, and {@item composite shortbows}.",
+				"You favor bows and other elegant weapons. You are trained with {@item longbow||longbows}, {@item composite longbow||composite longbows}, {@item longsword||longswords}, {@item rapier||rapiers}, {@item shortbow||shortbows}, and {@item composite shortbow||composite shortbows}.",
 				"In addition, you gain access to all {@filter uncommon elf weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=elf}.",
 				"For the purpose of determining your proficiency, martial elf weapons are simple weapons and advanced elf weapons are martial weapons."
 			],
@@ -7153,7 +7153,7 @@
 				"Ranger"
 			],
 			"entries": [
-				"You have studied a specific terrain to overcome its challenges. Choose aquatic, arctic, desert, forest, mountain, plains, sky, swamp, or underground as your favored terrain. When in that terrain, you can ignore the effects of non-magical difficult terrain.",
+				"You have studied a specific terrain to overcome its challenges. Choose aquatic, arctic, desert, forest, mountain, plains, sky, swamp, or underground as your favored terrain. When in that terrain, you can ignore the effects of non-magical {@quickref difficult terrain||3|terrain}.",
 				"If you have the wild stride class feature, you gain a second benefit while in your favored terrain, depending on your choice.",
 				{
 					"type": "list",
@@ -7164,7 +7164,7 @@
 						"{@bold Forest, Mountain, or Underground} You gain a climb Speed equal to your Speed. If you already had a climb Speed, you gain a +10-foot status bonus to your climb Speed.",
 						"{@bold Plains} You gain a +10-foot status bonus to your land Speed.",
 						"{@bold Sky} You gain a +10-foot status bonus to your fly Speed, if you have one",
-						"{@bold Swamp} You can move across bogs at full Speed, even if they are deep enough to be greater difficult terrain or to normally require you to {@action Swim}."
+						"{@bold Swamp} You can move across bogs at full Speed, even if they are deep enough to be {@quickref greater difficult terrain||3|terrain} or to normally require you to {@action Swim}."
 					]
 				}
 			],
@@ -7209,7 +7209,7 @@
 			],
 			"prerequisites": "Dexterity 14",
 			"entries": [
-				"You step carefully and quickly. You can {@action Step} into difficult terrain."
+				"You step carefully and quickly. You can {@action Step} into {@quickref difficult terrain||3|terrain}."
 			]
 		},
 		{
@@ -7442,7 +7442,7 @@
 			],
 			"prerequisites": "at least one primal innate spell",
 			"entries": [
-				"Over time your fey magic has grown stronger. You gain faerie fire and invisibility as 2nd-level primal innate spells. You can cast each of these primal innate spells once per day."
+				"Over time your fey magic has grown stronger. You gain {@spell faerie fire} and {@spell invisibility} as 2nd-level primal innate spells. You can cast each of these primal innate spells once per day."
 			]
 		},
 		{
@@ -8548,7 +8548,7 @@
 			"requirements": "You are wielding only a single one-handed melee weapon and have your other hand or hands free.",
 			"entries": [
 				"Using your weapon as a lever, you force your opponent to end up right where you want them. Make a {@action Strike} with the required weapon. If the {@action Strike} hits, you can move the target up to 10 feet into a space in your reach.",
-				"You can move the target through your space during this movement. This follows the forced movement rules found on page 475. Your {@action Strike} gains the following failure effect.",
+				"You can move the target through your space during this movement. This follows the {@quickref forced movement||3|forced movement} rules found on page 475. Your {@action Strike} gains the following failure effect.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -8594,7 +8594,7 @@
 			],
 			"prerequisites": "{@feat Dueling Riposte}",
 			"entries": [
-				"By shifting your weight and angling your weapon, you guide your opponent to a more favorable position. When you use Dueling Riposte to {@action Strike} and you hit, you can move the target up to 10 feet into a space in your reach. This follows the forced movement rules found on page 475."
+				"By shifting your weight and angling your weapon, you guide your opponent to a more favorable position. When you use Dueling Riposte to {@action Strike} and you hit, you can move the target up to 10 feet into a space in your reach. This follows the {@quickref forced movement||3|forced movement} rules found on page 475."
 			]
 		},
 		{
@@ -10966,7 +10966,7 @@
 				"Rogue"
 			],
 			"entries": [
-				"You aren't bothered by tricky footing. When you {@action Stride} or {@action Step}, you can ignore difficult terrain."
+				"You aren't bothered by tricky footing. When you {@action Stride} or {@action Step}, you can ignore {@quickref difficult terrain||3|terrain}."
 			]
 		},
 		{
@@ -13509,7 +13509,7 @@
 			"requirements": "You are wielding a two-handed melee weapon and your target is within your reach.",
 			"entries": [
 				"With punishing blows, you force your opponent into position.",
-				"Make a {@action Strike} with the required weapon. If you hit, you move the target 5 feet into a space in your reach. This follows the forced movement rules found on page 475."
+				"Make a {@action Strike} with the required weapon. If you hit, you move the target 5 feet into a space in your reach. This follows the {@quickref forced movement||3|forced movement} rules found on page 475."
 			]
 		},
 		{
@@ -14107,9 +14107,9 @@
 				"General",
 				"Skill"
 			],
-			"prerequisites": "master in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion};",
+			"prerequisites": "master in {@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion}; {@feat Recognize Spell}",
 			"entries": [
-				"Recognize Spell You Recognize Spells swiftly. Once per round, you can Recognize a Spell using a skill in which you're a master as a free action."
+				"You Recognize Spells swiftly. Once per round, you can Recognize a Spell using a skill in which you're a master as a free action."
 			]
 		},
 		{
@@ -14480,7 +14480,7 @@
 				"Barbarian"
 			],
 			"entries": [
-				"Your fury fills your foes with fear. While you are raging, your {@action Demoralize} and Scare to Death actions (from the {@skill Intimidation} skill and an {@skill Intimidation} skill feat, respectively) gain the {@trait rage} trait, allowing you to use them while raging. As soon as you meet the prerequisites for the skill feats Intimidating Glare and Scare to Death, you gain these feats."
+				"Your fury fills your foes with fear. While you are raging, your {@action Demoralize} and {@feat Scare to Death} actions (from the {@skill Intimidation} skill and an {@skill Intimidation} skill feat, respectively) gain the {@trait rage} trait, allowing you to use them while raging. As soon as you meet the prerequisites for the skill feats {@feat Intimidating Glare} and {@feat Scare to Death}, you gain these feats."
 			]
 		},
 		{
@@ -15157,7 +15157,7 @@
 			"prerequisites": "expert in {@skill Medicine}",
 			"entries": [
 				"You learned folk medicine to help recover from diseases and poison, and using it diligently has made you especially resilient.",
-				"When you Treat a Disease or a Poison, or someone else uses one of these actions on you, increase the circumstance bonus granted on a success to +4, and if the result of the patient's saving throw is a success, the patient gets a critical success."
+				"When you {@action Treat Disease||Treat a Disease} or a {@action Treat Poison||Poison}, or someone else uses one of these actions on you, increase the circumstance bonus granted on a success to +4, and if the result of the patient's saving throw is a success, the patient gets a critical success."
 			]
 		},
 		{
@@ -15176,7 +15176,7 @@
 				"Dwarf"
 			],
 			"entries": [
-				"Your innate connection to stone makes you adept at moving across uneven surfaces. You can ignore difficult terrain caused by rubble and uneven ground made of stone and earth.",
+				"Your innate connection to stone makes you adept at moving across uneven surfaces. You can ignore {@quickref difficult terrain||3|terrain} caused by rubble and uneven ground made of stone and earth.",
 				"In addition, when you use the {@skill Acrobatics} skill to {@action Balance} on narrow surfaces or uneven ground made of stone or earth, you aren't {@condition flat-footed}, and when you roll a success at one of these {@skill Acrobatics} checks, you get a critical success instead."
 			],
 			"leadsTo": [
@@ -16438,7 +16438,7 @@
 			"traits": [
 				"Ranger"
 			],
-			"prerequisites": "expert in {@skill Crafting}, Snare {@skill Crafting}",
+			"prerequisites": "expert in {@skill Crafting}, {@feat Snare Crafting}",
 			"entries": [
 				"You specialize in creating quick traps to obstruct your enemies on the battlefield. If your proficiency rank in {@skill Crafting} is expert, you gain the formulas for three common or uncommon snares (page 589). If your rank is master, you gain 6. If your rank is legendary, you gain 9.",
 				"Each day during your daily preparations, you can prepare four snares from your formula book for quick deployment; if they normally take 1 minute to {@action Craft}, you can {@action Craft} them with 3 {@action Interact} actions. The number of snares increases to six if you have master proficiency in {@skill Crafting} and eight if you have legendary proficiency in {@skill Crafting}. Snares prepared in this way don't cost you any resources to {@action Craft}."
@@ -17219,7 +17219,7 @@
 			"trigger": "An opponent adjacent to you critically hits you with a melee weapon or melee unarmed attack.",
 			"requirements": "You have at least 1 available Focus Point.",
 			"entries": [
-				"You lash out, directing a burst of storming fury toward a creature that has harmed you. You cast {@spell tempest surge} on the triggering opponent and push that creature, moving it 5 feet away from you if it fails its Reflex save, or 10 feet if it critically fails. This movement is forced movement."
+				"You lash out, directing a burst of storming fury toward a creature that has harmed you. You cast {@spell tempest surge} on the triggering opponent and push that creature, moving it 5 feet away from you if it fails its Reflex save, or 10 feet if it critically fails. This movement is {@quickref forced movement||3|forced movement}."
 			]
 		},
 		{
@@ -17749,7 +17749,7 @@
 			"prerequisites": "{@feat Tangled Forest Stance}",
 			"requirements": "You are in Tangled Forest Stance.",
 			"entries": [
-				"You reposition foes with raking attacks. Make a lashing branch {@action Strike}. If you hit and deal damage, you force the target to move 5 feet into a space within your reach. This follows the forced movement rules found on page 475."
+				"You reposition foes with raking attacks. Make a lashing branch {@action Strike}. If you hit and deal damage, you force the target to move 5 feet into a space within your reach. This follows the {@quickref forced movement||3|forced movement} rules found on page 475."
 			]
 		},
 		{
@@ -17872,7 +17872,7 @@
 			],
 			"prerequisites": "trained in {@skill Stealth}",
 			"entries": [
-				"Select one type of difficult terrain from the following list: rubble, snow, or underbrush. While {@condition undetected} by all non-allies in that type of terrain, you can {@action Sneak} without attempting a {@skill Stealth} check as long as you move no more than 5 feet and do not move within 10 feet of an enemy at any point during your movement. This also allows you to automatically approach creatures to within 15 feet while {@action Avoid Notice||Avoiding Notice} during exploration as long as they aren't actively {@action Search||Searching} or on guard."
+				"Select one type of {@quickref difficult terrain||3|terrain} from the following list: rubble, snow, or underbrush. While {@condition undetected} by all non-allies in that type of terrain, you can {@action Sneak} without attempting a {@skill Stealth} check as long as you move no more than 5 feet and do not move within 10 feet of an enemy at any point during your movement. This also allows you to automatically approach creatures to within 15 feet while {@action Avoid Notice||Avoiding Notice} during exploration as long as they aren't actively {@action Search||Searching} or on guard."
 			],
 			"special": "You can select this feat multiple times. Each time, choose a different type of terrain."
 		},
@@ -18762,7 +18762,7 @@
 			],
 			"prerequisites": "wild stride",
 			"entries": [
-				"You are so skilled at navigating the wild, your movement is completely unaffected by terrain. You ignore the effects of all difficult terrain, greater difficult terrain, and hazardous terrain, and you don't trigger traps and hazards that are triggered by moving into an area (such as trip wires and pressure plates), unless you want to."
+				"You are so skilled at navigating the wild, your movement is completely unaffected by terrain. You ignore the effects of all {@quickref difficult terrain||3|terrain}, {@quickref greater difficult terrain||3|terrain}, and hazardous terrain, and you don't trigger traps and hazards that are triggered by moving into an area (such as trip wires and pressure plates), unless you want to."
 			]
 		},
 		{
@@ -18974,7 +18974,7 @@
 			],
 			"prerequisites": "liberator cause",
 			"entries": [
-				"With a burst of divine liberation, your ally's movement from your {@action Liberating Step} is unaffected by difficult terrain, greater difficult terrain, narrow surfaces, and uneven ground."
+				"With a burst of divine liberation, your ally's movement from your {@action Liberating Step} is unaffected by {@quickref difficult terrain||3|terrain}, {@quickref greater difficult terrain||3|terrain}, narrow surfaces, and uneven ground."
 			]
 		},
 		{
@@ -20211,7 +20211,7 @@
 			],
 			"prerequisites": "leaf order",
 			"entries": [
-				"You can always find a path, almost as if foliage parted before you. You ignore any difficult terrain caused by plants, such as bushes, vines, and undergrowth. Even plants manipulated by magic don't impede your progress."
+				"You can always find a path, almost as if foliage parted before you. You ignore any {@quickref difficult terrain||3|terrain} caused by plants, such as bushes, vines, and undergrowth. Even plants manipulated by magic don't impede your progress."
 			]
 		},
 		{

@@ -244,7 +244,7 @@
 			},
 			"prerequisites": "expert in {@skill Crafting}",
 			"entries": [
-				"You are incredibly skilled at reverse engineering items to learn their formulas, or disassembling them just to disable them. You gain a +2 circumstance bonus to {@skill Crafting} checks to reverse engineer a formula from an item. If you get a."
+				"You are incredibly skilled at reverse engineering items to learn their formulas, or disassembling them just to disable them. You gain a +2 circumstance bonus to {@skill Crafting} checks to reverse engineer a formula from an item. If you get a critical success on your {@skill Crafting} check, you can opt to both create the formula and reassemble the original item at the same time, leaving you with the formula and the item instead of the formula and raw materials equal to half the item's value. Furthermore, you can use {@skill Crafting} instead of {@skill Thievery} to {@action Disable a Device} or {@action Pick a Lock}."
 			],
 			"page": 25
 		},
@@ -1637,7 +1637,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
 			"prerequisites": "Intelligence 14",
 			"entries": [
@@ -1658,9 +1658,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
-			"prerequisites": "{@feat Inventor} Dedication",
+			"prerequisites": "{@feat Inventor Dedication|G&G}",
 			"entries": [
 				"You gain a 1st- or 2nd-level inventor feat of your choice."
 			],
@@ -1678,9 +1678,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
-			"prerequisites": "{@feat Inventor} Dedication",
+			"prerequisites": "{@feat Inventor Dedication|G&G}",
 			"entries": [
 				"Your skill at crafting is unparalleled. You become an expert in {@skill Crafting}. At 7th level you become a master in {@skill Crafting}, and at 15th level, you become legendary in {@skill Crafting} and you become an expert in your inventor class DC."
 			],
@@ -1698,7 +1698,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
 			"prerequisites": "{@feat Basic Breakthrough|G&G}",
 			"entries": [
@@ -1719,9 +1719,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
-			"prerequisites": "{@feat Inventor} Dedication",
+			"prerequisites": "{@feat Inventor Dedication|G&G}",
 			"entries": [
 				"Your innovation can explode on command. You gain the {@action Explode|G&G} action (page 19)."
 			],
@@ -1739,9 +1739,9 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Inventor"
 			},
-			"prerequisites": "{@feat Inventor} Dedication",
+			"prerequisites": "{@feat Inventor Dedication|G&G}",
 			"entries": [
 				"You've learned to modify your innovation in order to enhance its capabilities beyond what an ordinary piece of equipment can accomplish. You gain a basic modification of your choice for your innovation (page 16). Your innovation must meet any requirements for the modification you choose, as normal.",
 				"Overwatch With a stalwart mind and sharp eyes, you observe the battlefield as though you and your allies are pieces on a chessboard. By predicting dangers and hazards and offering your insights to your comrades, you win battles through keen observation and teamwork. Whenever there's a threat or opening, you're the first to point it out, and you're ready to help your allies directly when necessary.",
@@ -1764,7 +1764,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "expert in {@skill Perception}",
 			"entries": [
@@ -1786,7 +1786,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}",
 			"entries": [
@@ -1806,7 +1806,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}",
 			"trigger": "An ally within your overwatch field fails in their attempt to {@action Arrest a Fall}, {@action Balance}, Grab a Ledge, or",
@@ -1834,7 +1834,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}",
 			"entries": [
@@ -1855,7 +1855,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, master in {@skill Perception}",
 			"entries": [
@@ -1875,7 +1875,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, master in {@skill Perception}",
 			"frequency": "once per minute",
@@ -1901,7 +1901,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, expert in {@skill Perception}",
 			"entries": [
@@ -1921,7 +1921,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, master in {@skill Perception}",
 			"entries": [
@@ -1941,7 +1941,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Overwatch"
 			},
 			"prerequisites": "{@feat Overwatch Dedication|G&G}, master in {@skill Perception}",
 			"trigger": "You make a successful ranged attack against an opponent who is within your overwatch field, and who is within reach of one or more of your allies who is also within your overwatch field.",
@@ -1969,7 +1969,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"entries": [
 				"You obtain a sterling dynamo prosthetic, which allows you to replace or augment a limb, or even add a simple new non‑prehensile limb, such as a tail. While your sterling dynamo prosthetic can replace a missing prehensile limb, such as an arm, choosing to add a new limb can never increases your character's number of hands or prehensile limbs beyond two, even in combination with other abilities or effects.",
@@ -1996,7 +1996,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"entries": [
@@ -2018,7 +2018,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"entries": [
@@ -2044,7 +2044,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"access": "You are from Ustalav.",
@@ -2072,7 +2072,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"access": "You are from Arcadia.",
 			"entries": [
@@ -2097,7 +2097,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"access": "You are an automaton or are otherwise from the ancient Jistka Imperium.",
@@ -2118,7 +2118,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sterling Dynamo"
 			},
 			"prerequisites": "{@feat Sterling Dynamo Dedication|G&G}",
 			"entries": [
@@ -2140,7 +2140,10 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": [
+					"Trapsmith",
+					"Snarecrafter"
+				]
 			},
 			"prerequisites": "{@feat Snarecrafter Dedication|APG} or {@feat Snare Specialist} ranger class feat",
 			"entries": [
@@ -2164,7 +2167,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Trapsmith"
 			},
 			"prerequisites": "{@feat Trapsmith Dedication|G&G}, expert in {@skill Crafting}",
 			"entries": [
@@ -2187,7 +2190,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Trapsmith"
 			},
 			"prerequisites": "{@feat Trapsmith Dedication|G&G}, master in {@skill Crafting}",
 			"entries": [
@@ -2207,7 +2210,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trapsmith"
 			},
 			"prerequisites": "{@feat Trapsmith Dedication|G&G}",
 			"entries": [
@@ -2227,7 +2230,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trapsmith"
 			},
 			"prerequisites": "{@feat Trapsmith Dedication|G&G}",
 			"entries": [
@@ -2247,7 +2250,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trapsmith"
 			},
 			"prerequisites": "{@feat Trapsmith Dedication|G&G}",
 			"entries": [
@@ -2270,7 +2273,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"entries": [
 				"You are equally at home piloting any vehicle, adapting yourself instantly to varied controls, movements, and handling.",
@@ -2294,7 +2297,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"entries": [
@@ -2316,7 +2319,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}, expert in {@skill Lore||Driving Lore}",
 			"requirements": "You are adjacent to a vehicle's point of entry.",
@@ -2344,7 +2347,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": true,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"requirements": "You are piloting a vehicle.",
@@ -2373,7 +2376,7 @@
 				"skill": [
 					"Lore"
 				],
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}, master in {@skill Lore||Driving Lore}",
 			"entries": [
@@ -2393,7 +2396,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"requirements": "You are piloting a vehicle.",
@@ -2416,7 +2419,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Trick Driver"
 			},
 			"prerequisites": "{@feat Trick Driver Dedication|G&G}",
 			"requirements": "You are piloting a vehicle.",
@@ -2444,7 +2447,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "Intelligence 14, trained in {@skill Crafting}",
 			"entries": [
@@ -2469,7 +2472,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}, expert in {@skill Crafting}",
 			"entries": [
@@ -2490,7 +2493,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}",
 			"entries": [
@@ -2510,7 +2513,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}",
 			"entries": [
@@ -2540,7 +2543,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}, master in {@skill Crafting}",
 			"entries": [
@@ -2560,7 +2563,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}",
 			"entries": [
@@ -2582,7 +2585,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Vehicle Mechanic"
 			},
 			"prerequisites": "{@feat Vehicle Mechanic Dedication|G&G}",
 			"entries": [
@@ -4150,7 +4153,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": false
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "Dexterity 14",
 			"entries": [
@@ -4172,7 +4175,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}",
 			"entries": [
@@ -4192,7 +4195,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Basic Shooting|G&G}",
 			"entries": [
@@ -4213,7 +4216,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}",
 			"entries": [
@@ -4233,7 +4236,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}",
 			"entries": [
@@ -4253,7 +4256,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}, expert in {@skill Perception}",
 			"entries": [
@@ -4273,7 +4276,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Gunslinger"
 			},
 			"prerequisites": "{@feat Gunslinger Dedication|G&G}, expert in any kind of weapon or unarmed attack",
 			"entries": [
@@ -4299,7 +4302,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"prerequisites": "trained in martial weapons",
 			"entries": [
@@ -4323,7 +4326,7 @@
 				"skill": [
 					"Crafting"
 				],
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
@@ -4345,7 +4348,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"entries": [
 				"Typically, a siege weapon is meant to be run by a crew with a very specific minimum number of members designed to ensure that your crew can account for every possible variable and necessity in loading, aiming, and firing the weapon.",
@@ -4365,7 +4368,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"entries": [
 				"By loading special ammunition in a particular way, you can make your siege weapons do all manner of tricks that other siege engineers can barely even imagine. If you personally contribute an additional Load action to the siege weapon's loading, above the minimum, you can change a burst into a line twice as long as the size of the burst, or vice versa (so a 10-foot burst turns into a 20-foot line, or a 20-foot line turns into a 10-foot burst)."
@@ -4384,7 +4387,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"prerequisites": "expert in {@skill Crafting}",
 			"entries": [
@@ -4408,7 +4411,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"entries": [
 				"There are generally few things as ill-advised as being shot out of a cannon or launched by a trebuchet, but people use the tactic every so often in a desperate situation. While it's more humane to use this strategy with mindless constructs or undead, occasionally an exceedingly foolhardy adventurer demands the opportunity to try it. Loading a creature requires two additional Load actions, which you must conduct personally. The creature must be willing, {@condition unconscious}, or {@condition restrained} throughout the process, and the siege weapon must be physically capable of firing the creature in question, based on their size and shape. Typically, that means ballistas don't qualify, for example\u2014nor do auto-catapults which require specifically-sized balls\u2014but normal catapults and onagers work just fine. When you Launch the weapon, if the weapon usually targets an area, you target a single 5-foot square instead. The siege weapon deals its normal damage to its target, or to the modified area, and to the creature fired."
@@ -4427,7 +4430,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Artillerist"
 			},
 			"entries": [
 				"What you don't know about artillery isn't worth knowing and your mastery allows you to perform an impossible number of actions as part of a siege weapon's crew. You're permanently {@condition quickened}. You can only use the extra action to Aim or Launch a siege weapon."
@@ -4449,7 +4452,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "expert with at least one type of firearm, trained in {@skill Arcana} or {@skill Crafting}, you own a beast gun and have slain the type of creature associated with your beast gun in a fair hunt (see above)",
 			"entries": [
@@ -4474,7 +4477,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "{@feat Beast Gunner Dedication|G&G}",
 			"entries": [
@@ -4496,7 +4499,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "{@feat Beast Gunner Dedication|G&G}",
 			"frequency": "once per minute",
@@ -4522,7 +4525,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "{@feat Basic Beast Gunner Spellcasting|G&G}",
 			"entries": [
@@ -4544,7 +4547,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "{@feat Beast Gunner Dedication|G&G}",
 			"frequency": "once per day",
@@ -4570,7 +4573,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Beast Gunner"
 			},
 			"prerequisites": "{@feat Expert Beast Gunner Spellcasting|G&G}",
 			"entries": [
@@ -4592,7 +4595,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Bullet Dancer"
 			},
 			"prerequisites": "expert in unarmored defense and trained in simple weapons",
 			"requirements": "You're unarmored and wielding a simple firearm, bayonet, or reinforced stock",
@@ -4616,7 +4619,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Bullet Dancer"
 			},
 			"prerequisites": "Bullet Dancer Stance",
 			"requirements": "You're wielding a firearm with an attached bayonet or reinforced stock.",
@@ -4638,7 +4641,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Bullet Dancer"
 			},
 			"prerequisites": "{@feat Black Powder Boost|G&G}",
 			"requirements": "You're wielding a loaded firearm.",
@@ -4664,7 +4667,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Bullet Dancer"
 			},
 			"prerequisites": "{@feat Bullet Dancer Burn|G&G}",
 			"requirements": "You're in Bullet Dancer",
@@ -4690,7 +4693,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Bullet Dancer"
 			},
 			"prerequisites": "{@feat Bullet Dancer Dedication|G&G},",
 			"requirements": "You're wielding a simple firearm.",
@@ -4719,7 +4722,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Demolitionist"
 			},
 			"entries": [
 				"You know how to set explosives to cause the maximum possible damage to buildings and other structures. You become trained in {@skill Lore||Engineering Lore} or become an expert in it if you were already trained. You gain the Set Explosives action.",
@@ -4740,7 +4743,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Demolitionist"
 			},
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}",
 			"entries": [
@@ -4760,7 +4763,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Demolitionist"
 			},
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}, master in",
 			"entries": [
@@ -4784,7 +4787,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Demolitionist"
 			},
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}; {@feat Calculated Splash},",
 			"entries": [
@@ -4804,7 +4807,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Demolitionist"
 			},
 			"prerequisites": "{@feat Demolitionist Dedication|G&G}",
 			"trigger": "A creature moves into the bombs' splash area.",
@@ -4837,7 +4840,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "trained in {@skill Crafting}",
 			"cost": "1 or more batches of infused reagents",
@@ -4865,7 +4868,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
@@ -4886,7 +4889,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}, expert in",
 			"entries": [
@@ -4906,7 +4909,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
@@ -4927,7 +4930,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
@@ -4958,7 +4961,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Firework Technician"
 			},
 			"prerequisites": "{@feat Firework Technician Dedication|G&G}",
 			"entries": [
@@ -4989,7 +4992,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "trained in at least one type of one-handed firearm, trained in {@skill Deception}, trained in {@skill Performance}",
 			"entries": [
@@ -5012,7 +5015,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"requirements": "You're wielding a loaded one-handed firearm.",
@@ -5045,7 +5048,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"entries": [
@@ -5069,7 +5072,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"requirements": "You're wielding a loaded firearm.",
@@ -5101,7 +5104,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"entries": [
@@ -5123,7 +5126,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"requirements": "You're wielding a loaded firearm.",
@@ -5148,7 +5151,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Pistol Phenom"
 			},
 			"prerequisites": "{@feat Pistol Phenom Dedication|G&G}",
 			"requirements": "You're wielding a loaded one-handed firearm and a one-handed melee weapon.",
@@ -5183,7 +5186,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "trained in at least one type of weapon in the bow or firearm groups, trained in {@skill Stealth}",
 			"entries": [
@@ -5208,7 +5211,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5229,7 +5232,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"trigger": "Your spotter critically succeeds at a {@action Strike} against a creature, and that creature is within your ranged weapon's first range increment.",
@@ -5255,7 +5258,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5281,7 +5284,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5305,7 +5308,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5326,7 +5329,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"trigger": "You or your spotter misses with a {@action Strike} against a creature, and the creature is within the other's melee reach or first range increment.",
@@ -5353,7 +5356,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5373,7 +5376,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Sniping Duo"
 			},
 			"prerequisites": "{@feat Sniping Duo Dedication|G&G}",
 			"entries": [
@@ -5395,12 +5398,30 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellshot"
 			},
 			"prerequisites": "way of the spellshot",
 			"entries": [
-				"You've steeped yourself in magic and gunplay to the extent that you can conjure bullets from thin air, using a rudimentary knowledge of arcane theory to create a temporary piece of ammunition. You gain the Conjure Bullet action."
+				"You've steeped yourself in magic and gunplay to the extent that you can conjure bullets from thin air, using a rudimentary knowledge of arcane theory to create a temporary piece of ammunition. You gain the Conjure Bullet action.",
+				{
+					"type": "ability",
+					"style": "compact",
+					"name": "Conjure Bullet",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"Conjuration",
+						"Magical"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"You conjure an ordinary level-0 bolt or bullet out of thin air and then immediately Interact to load it into your weapon. If the bolt or bullet isn't fired before the end of your turn, the effect is wasted."
+					]
+				}
 			],
+			"special": "You can't select another dedication feat other than Beast Gunner Dedication until you've gained two other feats from the {@archetype spellshot|G&G} or {@archetype beast gunner|G&G} archetypes.",
 			"page": 140
 		},
 		{
@@ -5417,7 +5438,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellshot"
 			},
 			"prerequisites": "{@feat Spellshot Dedication|G&G}",
 			"frequency": "once per round.",
@@ -5445,7 +5466,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellshot"
 			},
 			"prerequisites": "{@feat Spellshot Dedication|G&G}",
 			"entries": [
@@ -5468,7 +5489,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellshot"
 			},
 			"prerequisites": "{@feat Spellshot Dedication|G&G}",
 			"frequency": "once per day",
@@ -5495,16 +5516,12 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Spellshot"
 			},
 			"prerequisites": "{@feat Spellshot Dedication|G&G}, master in {@skill Arcana}",
 			"requirements": "You're wielding a loaded magical firearm or crossbow.",
 			"entries": [
-				"You infuse your entire being into a single shot, merging your body into the blast and enabling you to travel the same path as your bolt or bullet. {@action Strike} a creature with the required weapon. On a success, if the target was within 120 feet, you and all your gear are teleported to an open space of your choice within 10 feet of the target.",
-				"Unexpected Sharpshooter \"Oh would you look at that, there's a bunch of bullet holes around here... so that's what all the ruckus was about! Six... seven... eight of you, huh? Oh, but did you notice the northern finch over there in that tree a minute ago? Its nest is up there, but I think all those gunshots startled it. You think you could quiet down so maybe it'll come back?\" \u2013Viri, gnome ornithologist, just before a series of strange accidents mysteriously took down a hardened bandit squad of eight former Alkenstar veterans.",
-				"Some people say you must be the luckiest soul in all of Golarion to still be alive and kicking after all the dangers you've seen. Others say that, given the circumstances and the number of foes who you've defeated seemingly by accident, that there's no way you can really be as incompetent as you seem. These critics claim there has to be some kind of angle, some racket you're running.",
-				"Either way, you sure don't look or act dangerous, except possibly to yourself.",
-				"Somehow, despite your apparent clumsiness, professed confusion, and known propensity to incite calamity, you find yourself standing after every battle. The same can't often be said for your enemies. Funny how that works out, isn't it? Additional Feats: 4th Hit the Dirt! (page 111); Risky Reload (page 112); 10th Trick Shot (page 116)"
+				"You infuse your entire being into a single shot, merging your body into the blast and enabling you to travel the same path as your bolt or bullet. {@action Strike} a creature with the required weapon. On a success, if the target was within 120 feet, you and all your gear are teleported to an open space of your choice within 10 feet of the target."
 			],
 			"activity": {
 				"number": 2,
@@ -5526,7 +5543,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"frequency": "once per day",
 			"entries": [
@@ -5549,7 +5566,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"frequency": "once per day",
@@ -5575,11 +5592,11 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
-			"prerequisites": "Unexpected",
+			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"entries": [
-				"Sharpshooter Dedication Despite the devastation your weapons tend to inflict upon their targets or the destruction you might unleash upon an area, your foes still manage to walk away at the end of a fight\u2014at least sometimes. You can choose to add the {@trait nonlethal} trait to your ranged weapons, making the choice of whether to add the trait or not just before each {@action Strike}."
+				"Despite the devastation your weapons tend to inflict upon their targets or the destruction you might unleash upon an area, your foes still manage to walk away at the end of a fight\u2014at least sometimes. You can choose to add the {@trait nonlethal} trait to your ranged weapons, making the choice of whether to add the trait or not just before each {@action Strike}."
 			],
 			"page": 142
 		},
@@ -5598,9 +5615,9 @@
 				"skill": [
 					"Deception"
 				],
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
-			"prerequisites": "master in {@skill Deception}, Unexpected Sharpshooter",
+			"prerequisites": "master in {@skill Deception}, {@feat Unexpected Sharpshooter Dedication|G&G}",
 			"frequency": "once per round",
 			"requirements": "Either you used Accidental Shot and hit your opponent with the {@action Strike} this turn, or you used Lucky",
 			"entries": [
@@ -5626,7 +5643,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"entries": [
@@ -5646,7 +5663,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"entries": [
@@ -5666,7 +5683,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"prerequisites": "trained in {@skill Deception}, Unexpected Sharpshooter",
 			"frequency": "once per hour",
@@ -5693,7 +5710,7 @@
 				"general": false,
 				"ancestry": false,
 				"skill": false,
-				"archetype": true
+				"archetype": "Unexpected Sharpshooter"
 			},
 			"prerequisites": "{@feat Unexpected Sharpshooter Dedication|G&G}",
 			"frequency": "once per 10 minutes",

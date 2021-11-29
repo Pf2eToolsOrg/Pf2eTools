@@ -384,6 +384,7 @@ class AncestriesPage extends BaseComponent {
 			}
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
+			// FIXME: Happens with homebrew as their source is not auto-loaded
 			$(`#featstats`).empty().append(AncestriesPage._render_$getNoContent());
 			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "danger"})
 		}

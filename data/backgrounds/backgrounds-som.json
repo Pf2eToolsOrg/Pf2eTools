@@ -99,6 +99,7 @@
 				"Charisma",
 				"Free"
 			],
+			"ability": true,
 			"lore": [
 				"Fortune-Telling"
 			]
@@ -183,6 +184,7 @@
 			"traits": [
 				"Rare"
 			],
+			"ability": true,
 			"entries": [
 				"You've sought out a powerful genie and requested their blessing, hoping to increase your fortune. Your wish was vague, but fortune and the genie favored you with a more powerful effect than an ordinary wish, granting you bits of wish-twisted luck throughout the rest of your life.",
 				"Meanwhile, other genies of the same kind recognize you as one blessed by one of their most powerful nobles, and might treat you with greater respect or envy.",
@@ -455,7 +457,7 @@
 				"{@skill Religion}"
 			],
 			"lore": [
-				"the"
+				"Deity"
 			],
 			"feat": "Dubious Knowledge"
 		},
@@ -518,11 +520,28 @@
 			"traits": [
 				"Rare"
 			],
+			"ability": true,
 			"entries": [
 				"You come from a different time. Whether by your own doing or a terrible accident, powerful magic has resulted in you coming to this time from the future or from the past, but you are unable to return. You might be from New Thassilon, an entire nation of time travelers.",
 				"Choose two ability boosts. One must be to Dexterity or Intelligence, and one is a free ability boost.",
 				"You are trained in three {@skill Lore} skills of your choice that represent your knowledge from your old time. You gain the Bend Time reaction.",
-				"Bend Time {@as F} (occult, transmutation) Frequency once per day; Trigger Your turn begins; Effect You are {@condition quickened} this turn. You can use your extra action to {@action Stride}."
+				{
+					"type": "ability",
+					"name": "Bend Time",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"occult",
+						"transmutation"
+					],
+					"frequency": "once per day",
+					"trigger": "Your turn begins",
+					"entries": [
+						"You are {@condition quickened} this turn. You can use your extra action to {@action Stride}."
+					]
+				}
 			],
 			"boosts": [
 				"Dexterity",
@@ -530,7 +549,7 @@
 				"Free"
 			],
 			"lore": [
-				"three"
+				"Any"
 			]
 		}
 	]

@@ -1,6 +1,98 @@
 {
 	"disease": [
 		{
+			"name": "Ghast Fever",
+			"source": "Bst",
+			"page": 169,
+			"type": "Disease",
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effect",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 3d8} negative damage and regains half as many Hit Points from all healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "as stage 2",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 3d8} negative damage and gains no benefit from healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "as stage 4",
+							"duration": "1 day"
+						},
+						{
+							"stage": 6,
+							"entry": "dead, and rises as a {@creature ghast|Bst} the next midnight"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ghoul Fever",
+			"source": "Bst",
+			"page": 168,
+			"type": "Disease",
+			"traits": [
+				"Disease"
+			],
+			"entries": [
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "carrier with no ill effect",
+							"duration": "1 day"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 2d6} negative damage and regains half as many Hit Points from all healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 3,
+							"entry": "as stage 2",
+							"duration": "1 day"
+						},
+						{
+							"stage": 4,
+							"entry": "{@damage 2d6} negative damage and gains no benefit from healing",
+							"duration": "1 day"
+						},
+						{
+							"stage": 5,
+							"entry": "as stage 4",
+							"duration": "1 day"
+						},
+						{
+							"stage": 6,
+							"entry": "dead, and rises as a {@creature ghoul|bst} the next midnight"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Blinding Sickness",
 			"source": "GMG",
 			"page": 119,
@@ -583,6 +675,27 @@
 	],
 	"curse": [
 		{
+			"name": "Curse of the Werecreature",
+			"source": "Bst",
+			"page": 329,
+			"type": "Curse",
+			"traits": [
+				"Curse",
+				"Necromancy",
+				"Primal"
+			],
+			"entries": [
+				"This curse affects only humanoids.",
+				{
+					"type": "affliction",
+					"savingThrow": "Fortitude DC is the standard DC for the {@table DCs by Level||werecreature's new level \u2013 1}",
+					"entries": [
+						"On each full moon, the cursed creature must succeed at another Fortitude save or turn into the same kind of {@filter werecreature|bestiary||creature=werecreature} until dawn. The creature is under the GM's control and goes on a rampage for half the night before falling {@condition unconscious} until dawn."
+					]
+				}
+			]
+		},
+		{
 			"name": "Coward's Roots",
 			"source": "GMG",
 			"page": 116,
@@ -694,7 +807,7 @@
 				"A grave curse punishes you for stealing from a tomb or other resting place.",
 				{
 					"type": "affliction",
-					"DC": "equal to a high spell DC for a monster of its level (page 65);",
+					"DC": "equal to a {@table DC Adjustments||high} {@table DCs by level||spell DC for a monster of its level};",
 					"savingThrow": "Will",
 					"entries": [
 						"You are hounded by undead creatures of the same level as the curse. Every night, you must attempt a DC {@flatDC 15} flat check. On a failure, an incorporeal undead manifests to hassle and harry you throughout the night, retreating before it can take much damage and often preventing you from gaining a full night's rest. Whenever you enter a graveyard or other area where bodies are buried, you must succeed at the same flat check or a body animates as a corporeal undead (typically a skeleton or zombie) to attack you.",

@@ -262,14 +262,17 @@
 						"unit": "action"
 					},
 					"components": [
-						"envision (polymorph",
-						"transmutation)"
+						"envision"
+					],
+					"traits": [
+						"polymorph",
+						"transmutation"
 					],
 					"frequency": null,
 					"trigger": null,
-					"requirements": "You're under the effect of a polymorph spell you prepared from this grimoire that offers a choice of multiple forms",
+					"requirements": "You're under the effect of a {@trait polymorph} spell you prepared from this grimoire that offers a choice of multiple forms",
 					"entries": [
-						"You transform into a different form allowed by the polymorph by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
+						"You transform into a different form allowed by the {@trait polymorph} by bending and molding the spell's energy. This reduces the spell's remaining duration by half."
 					]
 				}
 			],
@@ -327,7 +330,15 @@
 					},
 					"entries": [
 						"The escape DC is 30."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "DC 20",
+							"with": "DC 30"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true
@@ -1015,7 +1026,7 @@
 						"note": null
 					},
 					"entries": [
-						"The rosary can be used with a spiritual weapon of 4th level or below."
+						"The rosary can be used with a {@spell spiritual weapon} of 4th level or below."
 					]
 				},
 				{
@@ -1027,7 +1038,7 @@
 						"note": null
 					},
 					"entries": [
-						"The rosary can be used with a spiritual weapon of any spell level."
+						"The rosary can be used with a {@spell spiritual weapon} of any spell level."
 					]
 				}
 			],
@@ -1431,9 +1442,16 @@
 			"bulk": "L",
 			"category": "Consumable",
 			"entries": [
-				"These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a {@spell fireball} spell produces clinging flames that deal {@condition persistent damage ||persistent fire damage} to all who fail the saving throw against the effect (doubling on a critical failure)."
+				"These compacted pellets of bat guano, sulfur, and magical accelerants have long been a staple for spellcasters on the battlefield. Adding a firestarter pellet to a {@spell fireball} spell produces clinging flames that deal {@condition persistent damage||persistent fire damage} to all who fail the saving throw against the effect (doubling on a critical failure)."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "that deal"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "firestarter pellets",
@@ -1444,8 +1462,13 @@
 						"note": null
 					},
 					"entries": [
-						"The {@condition persistent damage} is {@dice 1d6}."
-					]
+						"The {@condition persistent damage} is {@damage 1d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 1d6}"
+						}
+					}
 				},
 				{
 					"type": "greater firestarter pellets",
@@ -1456,15 +1479,30 @@
 						"note": null
 					},
 					"entries": [
-						"The {@condition persistent damage} is {@dice 2d6}."
-					]
+						"The {@condition persistent damage} is {@damage 2d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 2d6}"
+						}
+					}
 				},
 				{
 					"type": "major firestarter pellets",
 					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 1200,
+						"note": null
+					},
 					"entries": [
-						"gpThe {@condition persistent damage} is {@dice 3d6}."
-					]
+						"The {@condition persistent damage} is {@damage 3d6}."
+					],
+					"_mod": {
+						"entries": {
+							"replace": "that deal {@damage 3d6}"
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -1485,12 +1523,12 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"Identical feathers radiate from the center of this spellheart, held in place by woven straw. The spell attack roll of any spell cast by Activating this item is +8, and the spell DC is 18.",
+				"Identical feathers radiate from the center of this spellheart, held in place by woven straw. The spell attack roll of any spell cast by {@action Activate an Item||Activating} this item is +8, and the spell DC is 18.",
 				{
 					"type": "list",
 					"items": [
 						"{@bold Armor} You gain a +1 item bonus to {@skill Acrobatics} checks and resistance 2 to falling damage.",
-						"{@bold Weapon} After you cast an air spell by Activating the wreath, you can {@action Fly} 5 feet as a single action, or you can {@action Fly} 10 feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
+						"{@bold Weapon} After you cast an air spell by {@action Activate an Item||Activating} the wreath, you can {@action Fly} 5 feet as a single action, or you can {@action Fly} 10 feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
 					]
 				},
 				{
@@ -1591,12 +1629,12 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"A sheen of red crosses the surface of this star-shaped goldstone medallion when the light hits it. The affixed armor or weapon is warm to the touch. The spell attack roll of any spell cast by Activating this item is +7, and the spell DC is 17.",
+				"A sheen of red crosses the surface of this star-shaped goldstone medallion when the light hits it. The affixed armor or weapon is warm to the touch. The spell attack roll of any spell cast by {@action Activate an Item||Activating} this item is +7, and the spell DC is 17.",
 				{
 					"type": "list",
 					"items": [
 						"{@bold Armor} You gain resistance 2 to fire.",
-						"{@bold Weapon} After you cast a fire spell by Activating the star, your Strikes with the weapon deal an additional {@damage 1d4} fire damage until the end of your next turn."
+						"{@bold Weapon} After you cast a fire spell by {@action Activate an Item||Activating} the star, your Strikes with the weapon deal an additional {@damage 1d4} fire damage until the end of your next turn."
 					]
 				},
 				{
@@ -1997,7 +2035,7 @@
 			"bulk": "\u2014",
 			"category": "Consumable",
 			"entries": [
-				"Duration 1 hour This fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when Activating the fulus: animal, beast, celestial, fey, fiend, humanoid, monitor, plant, or undead. Those within the fulus' circle upon activation (including the fulus themselves) gain the effect of invisibility sphere, but only against creatures with the chosen trait. If any of the fulus are moved or destroyed after activation, the effect ends."
+				"Duration 1 hour This fulu comes in four pieces, one placed in each cardinal direction. Choose one of the following traits when {@action Activate an Item||Activating} the fulus: animal, beast, celestial, fey, fiend, humanoid, monitor, plant, or undead. Those within the fulus' circle upon activation (including the fulus themselves) gain the effect of invisibility sphere, but only against creatures with the chosen trait. If any of the fulus are moved or destroyed after activation, the effect ends."
 			],
 			"generic": false,
 			"consumable": true
@@ -2222,12 +2260,12 @@
 			"bulk": "\u2014",
 			"category": "Spellheart",
 			"entries": [
-				"One bulb of this tiny hourglass contains black sand, the other white. After even a few grains pass from one side to the other, it reverses its flow to keep the two sides in equilibrium. The spell DC of any spell cast by Activating this item is 17.",
+				"One bulb of this tiny hourglass contains black sand, the other white. After even a few grains pass from one side to the other, it reverses its flow to keep the two sides in equilibrium. The spell DC of any spell cast by {@action Activate an Item||Activating} this item is 17.",
 				{
 					"type": "list",
 					"items": [
 						"{@bold Armor} You gain resistance 2 to negative.",
-						"{@bold Weapon} After you cast a necromancy spell by Activating the sandglass, your Strikes with the weapon deal an additional {@damage 1d4} negative damage until the end of your next turn."
+						"{@bold Weapon} After you cast a necromancy spell by {@action Activate an Item||Activating} the sandglass, your Strikes with the weapon deal an additional {@damage 1d4} negative damage until the end of your next turn."
 					]
 				},
 				{
@@ -2413,6 +2451,13 @@
 				"An astringent aroma from rare succulent plants wafts off these soothing cloth patches. Adding this material component to a {@spell heal} spell bestows additional temporary Hit Points to one target healed by the spell. These temporary Hit Points last for 1 minute."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "bestows additional temporary Hit Points"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -2424,7 +2469,12 @@
 					},
 					"entries": [
 						"The spell grants 5 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 5 temporary Hit Points"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -2436,7 +2486,12 @@
 					},
 					"entries": [
 						"The spell grants 10 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 10 temporary Hit Points"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -2448,7 +2503,12 @@
 					},
 					"entries": [
 						"The spell grants 15 temporary Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "grants 15 temporary Hit Points"
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -2673,7 +2733,7 @@
 					"trigger": null,
 					"requirements": null,
 					"entries": [
-						"You quickly pour sand over an adjacent square, making it difficult terrain. You can't use either of the jar's activations for 1 minute."
+						"You quickly pour sand over an adjacent square, making it {@quickref difficult terrain||3|terrain}. You can't use either of the jar's activations for 1 minute."
 					]
 				}
 			],
@@ -3059,7 +3119,7 @@
 						"note": null
 					},
 					"entries": [
-						"The incense can be used with a wall of fire of 6th level or below."
+						"The incense can be used with a {@spell wall of fire} of 6th level or below."
 					]
 				},
 				{
@@ -3071,7 +3131,7 @@
 						"note": null
 					},
 					"entries": [
-						"The incense can be used with a wall of fire of any spell level."
+						"The incense can be used with a {@spell wall of fire} of any spell level."
 					]
 				}
 			],
@@ -3219,12 +3279,12 @@
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
 			"entries": [
-				"Intense blue water magically holds its shape\u2014a perfect sphere. The spell DC of any spell cast by Activating this item is 17.",
+				"Intense blue water magically holds its shape\u2014a perfect sphere. The spell DC of any spell cast by {@action Activate an Item||Activating} this item is 17.",
 				{
 					"type": "list",
 					"items": [
 						"{@bold Armor} You gain resistance 2 to {@trait water} effects and attacks by water creatures.",
-						"{@bold Weapon} After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces, treating each square in their spaces as difficult terrain. You can't move through creatures that have the {@trait water} trait in this way."
+						"{@bold Weapon} After you cast a water spell by {@action Activate an Item||Activating} the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces, treating each square in their spaces as {@quickref difficult terrain||3|terrain}. You can't move through creatures that have the {@trait water} trait in this way."
 					]
 				},
 				{
@@ -3261,7 +3321,7 @@
 						"note": null
 					},
 					"entries": [
-						"Resistance when affixed to armor is 5, enemies' spaces aren't difficult terrain when mistlike, and spell DC is 24.",
+						"Resistance when affixed to armor is 5, enemies' spaces aren't {@quickref difficult terrain||3|terrain} when mistlike, and spell DC is 24.",
 						{
 							"type": "ability",
 							"components": [
@@ -3283,7 +3343,7 @@
 						"note": null
 					},
 					"entries": [
-						"Resistance when affixed to armor is 10, enemies' spaces aren't difficult terrain when mistlike, and the spell DC is 29.",
+						"Resistance when affixed to armor is 10, enemies' spaces aren't {@quickref difficult terrain||3|terrain} when mistlike, and the spell DC is 29.",
 						{
 							"type": "ability",
 							"components": [
@@ -3510,6 +3570,13 @@
 				"This aromatic potion is brewed from the white flowers and black roots of the magical herb moly. When you drink this potion, it immediately attempts to counteract all {@condition hostile} {@trait transmutation} effects affecting you. For the next hour, you gain an item bonus against {@trait transmutation} effects, which is greater against {@trait polymorph} effects. If you roll a success against a {@trait polymorph} effect during that time, you get a critical success instead."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "For the next hour, you gain an item bonus against {@trait transmutation} effects, which is greater against {@trait polymorph} effects."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "potion of stable form",
@@ -3520,8 +3587,14 @@
 						"note": null
 					},
 					"entries": [
-						"The counteract level is 5, and the counteract check modifier is +17. The item bonus is +2, or +3 vs. polymorph."
-					]
+						"The counteract level is 5, and the counteract check modifier is +17. The item bonus is +2, or +3 vs. {@trait polymorph}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The counteract level is 5, and the counteract check modifier is +17. For the next hour, you gain a +2 item bonus against {@trait transmutation} effects, or +3 against {@trait polymorph} effects."
+						}
+					}
 				},
 				{
 					"type": "greater potion of stable form",
@@ -3532,8 +3605,14 @@
 						"note": null
 					},
 					"entries": [
-						"The counteract level is 8, and the counteract check modifier is +25. The item bonus is +3, or +4 vs. polymorph."
-					]
+						"The counteract level is 8, and the counteract check modifier is +25. The item bonus is +3, or +4 vs. {@trait polymorph}."
+					],
+					"_mod": {
+						"entries": {
+							"replaceTags": true,
+							"with": "The counteract level is 8, and the counteract check modifier is +25. For the next hour, you gain a +3 item bonus against {@trait transmutation} effects, or +4 against {@trait polymorph} effects."
+						}
+					}
 				}
 			],
 			"consumable": true
@@ -3741,8 +3820,8 @@
 			},
 			"category": "Talisman",
 			"entries": [
-				"This triangular prism showing swirling black patterns inside constantly moves around on your armor, no matter where you affix it. As part of the process of Affixing this Talisman, you attune it to a single item of 1 Bulk or less. When you activate this talisman, the attuned item immediately teleports into your hand.",
-				"The retrieval prism can't retrieve an item that's not on your plane, including one that's in an extradimensional space like a bag of holding. If you haven't expended the talisman, you can attune it to a different item by Affixing the Talisman again."
+				"This triangular prism showing swirling black patterns inside constantly moves around on your armor, no matter where you affix it. As part of the process of {@action Affix a Talisman||Affixing the Talisman}, you attune it to a single item of 1 Bulk or less. When you activate this talisman, the attuned item immediately teleports into your hand.",
+				"The retrieval prism can't retrieve an item that's not on your plane, including one that's in an extradimensional space like a bag of holding. If you haven't expended the talisman, you can attune it to a different item by {@action Affix a Talisman||Affixing the Talisman} again."
 			],
 			"generic": "G",
 			"variants": [
@@ -3765,8 +3844,7 @@
 						"note": null
 					},
 					"entries": [
-						"You don't need to attune the prism.",
-						"It can retrieve any item in your possession of 1 Bulk or less, chosen when you activate the prism."
+						"You don't need to attune the prism. It can retrieve any item in your possession of 1 Bulk or less, chosen when you activate the prism."
 					]
 				}
 			],
@@ -4266,7 +4344,15 @@
 					},
 					"entries": [
 						"The DC is 17."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "Will save",
+							"with": "DC 17 Will save"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater spirit-sealing fulu",
@@ -4277,8 +4363,24 @@
 						"note": null
 					},
 					"entries": [
-						"The DC is 27. On a critical failure, the undead is {@condition paralyzed}."
-					]
+						"The DC is 27. On a critical failure, the undead is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "Will save",
+								"with": "DC 27 Will save"
+							},
+							{
+								"mode": "appendArr",
+								"items": [
+									"On a critical failure, the undead is {@condition paralyzed} for 4 rounds. At the end of each of its turns, it can attempt a new Will save to reduce the remaining duration by 1 round, or end it entirely on a critical success."
+								]
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true
@@ -4313,7 +4415,7 @@
 					]
 				}
 			],
-			"craftReq": "Supply one casting of all listed levels of all listed spells. Items with the {@trait catalyst} trait are consumable material spell components that alter or magnify specific spells. Activating a catalyst is part of {@action Cast a Spell||Casting the Spell}. The catalyst might increase the number of actions required to {@action Cast a Spell||Cast the Spell}, as indicated in the catalyst's Activate entry. Additionally, the spell gains material components if it didn't have them already or adds the catalyst to its existing components. Because the catalyst becomes part of the material components, you can draw the catalyst as part of {@action Cast a Spell||Casting the Spell}.",
+			"craftReq": "Supply one casting of all listed levels of all listed spells. Items with the {@trait catalyst} trait are consumable material spell components that alter or magnify specific spells. {@action Activate an Item||Activating} a catalyst is part of {@action Cast a Spell||Casting the Spell}. The catalyst might increase the number of actions required to {@action Cast a Spell||Cast the Spell}, as indicated in the catalyst's Activate entry. Additionally, the spell gains material components if it didn't have them already or adds the catalyst to its existing components. Because the catalyst becomes part of the material components, you can draw the catalyst as part of {@action Cast a Spell||Casting the Spell}.",
 			"generic": "G",
 			"variants": [
 				{
@@ -4691,7 +4793,7 @@
 			},
 			"category": "Consumable",
 			"entries": [
-				"This unassuming paper tag is inscribed with magical symbols. When you activate the fulu, it vanishes in a wisp of cloud, and you gain resistance 15 to cold, electricity, and sonic damage until the end of your next turn. For that duration, you ignore difficult terrain from wind and weather, and you can't be forcibly moved or teleported unless the effect counteracts the fulu (DC 40). These protections apply against the triggering effect."
+				"This unassuming paper tag is inscribed with magical symbols. When you activate the fulu, it vanishes in a wisp of cloud, and you gain resistance 15 to cold, electricity, and sonic damage until the end of your next turn. For that duration, you ignore {@quickref difficult terrain||3|terrain} from wind and weather, and you can't be forcibly moved or teleported unless the effect counteracts the fulu (DC 40). These protections apply against the triggering effect."
 			],
 			"generic": false,
 			"consumable": true
@@ -4887,7 +4989,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon, but the nimbus only lasts 1 round, rather than the full minute."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 round, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -4899,7 +5009,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 1d4} electricity damage, or {@damage 1d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -4911,7 +5029,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 2d4} electricity damage, or {@damage 2d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 2d4} electricity damage, or {@damage 2d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -4923,7 +5049,15 @@
 					},
 					"entries": [
 						"The nimbus deals {@damage 3d4} electricity damage, or {@damage 3d6} electricity damage if the creature is using a metal weapon."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes the listed electricity damage.",
+							"with": "For 1 minute, any creature that touches you or that hits you with a melee unarmed attack or non-reach melee weapon attack takes {@damage 3d4} electricity damage, or {@damage 3d6} electricity damage if the creature is using a metal weapon."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"consumable": true
@@ -5067,12 +5201,12 @@
 			"usage": "affixed to armor or a weapon",
 			"category": "Spellheart",
 			"entries": [
-				"The crystal chamber within this split geode is divided into three lobes of equal size. The spell DC of any spell cast by Activating this item is 17.",
+				"The crystal chamber within this split geode is divided into three lobes of equal size. The spell DC of any spell cast by {@action Activate an Item||Activating} this item is 17.",
 				{
 					"type": "list",
 					"items": [
-						"{@bold Armor} After you cast an earth spell by Activating the geode, you gain resistance 1 to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
-						"{@bold Weapon} After you cast an earth spell by Activating the geode, your Strikes with the weapon deal an additional {@damage 1d4} bludgeoning damage until the end of your next turn."
+						"{@bold Armor} After you cast an earth spell by {@action Activate an Item||Activating} the geode, you gain resistance 1 to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
+						"{@bold Weapon} After you cast an earth spell by {@action Activate an Item||Activating} the geode, your Strikes with the weapon deal an additional {@damage 1d4} bludgeoning damage until the end of your next turn."
 					]
 				},
 				{

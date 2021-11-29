@@ -368,6 +368,13 @@
 				"Ablative armor plating is additional plating, combined with springs, clever clockwork, and improvised padding, to absorb damage by knocking the additional pieces free. The pieces slowly come apart on their own with time and movement.",
 				"The process of attaching the plating takes 10 minutes and grants the wearer of the armor the listed temporary Hit Points for the stated duration or until lost. Removing the plating early destroys it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed temporary Hit Points for the stated duration"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -379,7 +386,12 @@
 					},
 					"entries": [
 						"The wearer gains 5 temporary Hit Points that last for 1 minute or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5 temporary Hit Points that last for 1 minute"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -391,7 +403,12 @@
 					},
 					"entries": [
 						"The wearer gains 10 temporary Hit Points that last for 10 minutes or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 temporary Hit Points that last for 10 minutes"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -403,7 +420,12 @@
 					},
 					"entries": [
 						"The wearer gains 20 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "20 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -415,7 +437,12 @@
 					},
 					"entries": [
 						"The wearer gains 30 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "30 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "true",
@@ -427,7 +454,12 @@
 					},
 					"entries": [
 						"The wearer gains 40 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "40 temporary Hit Points that last for 1 hour"
+						}
+					}
 				}
 			],
 			"page": 66
@@ -451,6 +483,13 @@
 				"Ablative shield plating is an amalgam device that provides a layer of additional protection for a shield. Ablative shield plating is cobbled together from parts of other shields, wires, scraps, and bits of detritus, adding mass to a shield. The process of attaching ablative shield plating takes 10 minutes, and you can't attach ablative shield plating to a shield that has any other attached item, such as a shield boss or shield spikes.",
 				"When the shield is damaged, this additional material crumples, breaks, and falls apart, absorbing some of the energy of the blow. Otherwise, the additional material slowly crumbles over time. Applying the plating grants the shield temporary Hit Points that last for the stated duration or until lost. Removing the plating early destroys it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "temporary Hit Points that last for the stated duration"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -462,7 +501,12 @@
 					},
 					"entries": [
 						"The shield gains 5 temporary Hit Points that last for 1 minute or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "5 temporary Hit Points that last for 1 minute"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -474,7 +518,12 @@
 					},
 					"entries": [
 						"The shield gains 10 temporary Hit Points that last for 10 minutes or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "10 temporary Hit Points that last for 10 minutes"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -486,7 +535,12 @@
 					},
 					"entries": [
 						"The shield gains 20 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "20 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -498,7 +552,12 @@
 					},
 					"entries": [
 						"The shield gains 30 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "30 temporary Hit Points that last for 1 hour"
+						}
+					}
 				},
 				{
 					"type": "true",
@@ -510,7 +569,12 @@
 					},
 					"entries": [
 						"The shield gains 40 temporary Hit Points that last for 1 hour or until lost."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "40 temporary Hit Points that last for 1 hour"
+						}
+					}
 				}
 			],
 			"page": 67
@@ -541,7 +605,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you Activate the blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. Higher-level versions increase the distance of your {@action High Jump} or {@action Long Jump}."
+				"These sets of rockets come in pairs and strap onto existing footwear (or a creature's feet). Inserting them and aligning them properly takes 1 minute. When you {@action Activate an Item||Activate} the blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. Higher-level versions increase the distance of your {@action High Jump} or {@action Long Jump}."
 			],
 			"variants": [
 				{
@@ -552,7 +616,15 @@
 						"amount": 3,
 						"note": null
 					},
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": ""
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -563,8 +635,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
-					]
+						"When you {@action Activate an Item||Activate} the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the moderate blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the moderate blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 30 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 45 feet."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -575,8 +656,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
-					]
+						"When you {@action Activate an Item||Activate} the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the greater blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the greater blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 50 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 75 feet. Additionally, for 1 minute, the greater blast boots continue to boost your jumps. Every time you {@action Leap} during the duration, you can move 30 feet in any direction, or your normal {@action Leap} distance, whichever is further."
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -587,8 +677,17 @@
 						"note": null
 					},
 					"entries": [
-						"When you Activate the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you Activate them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot {@action Fly} speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
-					]
+						"When you {@action Activate an Item||Activate} the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot Fly speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replaceTags": true,
+							"replace": "When you \\{@action Activate an Item\\|\\|Activate\\} the blast boots, you can \\{@action High Jump\\} or \\{@action Long Jump\\}, without the need to \\{@action Stride\\} first. Higher-level versions increase the distance of your \\{@action High Jump\\} or \\{@action Long Jump\\}.",
+							"with": "When you {@action Activate an Item||Activate} the major blast boots, you can {@action High Jump} or {@action Long Jump}, without the need to {@action Stride} first. When you {@action Activate an Item||Activate} the major blast boots to {@action High Jump}, you can increase the vertical distance of your {@action High Jump} by up to 80 feet. When you {@action Activate an Item||Activate} them to {@action Long Jump}, you can increase the horizontal distance of your {@action Long Jump} by up to 120 feet. Additionally, for 1 minute, the major blast boots remain active, allowing you to clumsily fly through the air for the duration. You gain a 30-foot Fly speed for the duration, but any time you {@action Fly}, you are {@condition clumsy|CRB|clumsy 1} until the start of your next turn."
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 67
@@ -668,8 +767,7 @@
 						"note": null
 					},
 					"entries": [
-						"The effect lasts for 1 minute.",
-						"Blast Boots."
+						"The effect lasts for 1 minute."
 					]
 				},
 				{
@@ -739,7 +837,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision for 10 minutes."
+						"When activated, you gain {@ability low-light vision} for 10 minutes."
 					]
 				},
 				{
@@ -751,7 +849,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision and darkvision for 10 minutes."
+						"When activated, you gain {@ability low-light vision} and {@ability darkvision} for 10 minutes."
 					]
 				},
 				{
@@ -763,7 +861,7 @@
 						"note": null
 					},
 					"entries": [
-						"When activated, you gain low-light vision, darkvision, and the effects of see invisibility for 10 minutes."
+						"When activated, you gain {@ability low-light vision}, {@ability darkvision}, and the effects of {@spell see invisibility} for 10 minutes."
 					]
 				}
 			],
@@ -796,7 +894,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a burst with a radius depending on the type, making the affected area difficult terrain for 1 minute; , at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the difficult terrain is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals cold splash damage depending on the type to creatures in the area on activation. Creatures attempting to move through the affected area can attempt an {@skill Acrobatics} check with a DC depending on the type to ignore the difficult terrain and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one or more creatures of the listed size."
+				"When you {@action Activate an Item||Activate} a cryomister, you can either place it in an adjacent square or toss it up to 20 feet away. Once you've done so, the metallic device instantly disperses a heavy mist, settling quickly on nearby flat surfaces and forming a sheet of ice. The cryomister creates a burst with a radius depending on the type, making the affected area {@quickref difficult terrain||3|terrain} for 1 minute; , at the GM's discretion, however, this duration might be reduced in unusually hot conditions or increased in unusually cold ones. If an affected square takes fire damage, the {@quickref difficult terrain||3|terrain} is removed. Though not designed as a weapon, the cryomister's rapidly cooling mist deals cold splash damage depending on the type to creatures in the area on activation. Creatures attempting to move through the affected area can attempt an {@skill Acrobatics} check with a DC depending on the type to ignore the {@quickref difficult terrain||3|terrain} and move at their normal Speed. Throwing the cryomister onto the surface of a liquid creates a floating piece of ice for the same duration, capable of supporting one or more creatures of the listed size."
 			],
 			"variants": [
 				{
@@ -809,7 +907,36 @@
 					},
 					"entries": [
 						"The area is a 5-foot burst, the {@skill Acrobatics} DC is 17, and the cold splash damage is 1. The floating ice can support one creature up to Medium size."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "5-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 17 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 1 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one creature up to Medium size"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "moderate",
@@ -821,7 +948,36 @@
 					},
 					"entries": [
 						"The area is a 10-foot burst, the {@skill Acrobatics} DC is 21, and the cold splash damage is 3. The floating ice can support one Large creature or two Medium or smaller creatures."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "10-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 21 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 3 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one Large creature or two Medium or smaller creatures"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "greater",
@@ -833,7 +989,36 @@
 					},
 					"entries": [
 						"The area is a 15-foot burst, the {@skill Acrobatics} DC is 30, and the cold splash damage is 5. The floating ice can support one Huge creature, two Large creatures, or four Medium or smaller creatures."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "15-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 30 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 5 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size",
+								"with": "one Huge creature, two Large creatures, or four Medium or smaller creatures"
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major",
@@ -844,8 +1029,37 @@
 						"note": null
 					},
 					"entries": [
-						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold splash damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a mu spore."
-					]
+						"The area is a 20-foot burst, the {@skill Acrobatics} DC is 39, and the cold splash damage is 8. The floating ice can support one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "burst with a radius depending on the type",
+								"with": "20-foot burst"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "an \\{@skill Acrobatics\\} check with a DC depending on the type",
+								"with": "a DC 39 {@skill Acrobatics}"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "deals cold splash",
+								"with": "deals 8 cold splash"
+							},
+							{
+								"mode": "replaceTxt",
+								"replaceTags": true,
+								"replace": "one or more creatures of the listed size.",
+								"with": "one Gargantuan creature, two Huge creatures, four Large creatures, or eight Medium or smaller creatures. The ice can't support Gargantuan creatures larger than a 20-by-20-foot space, such as a {@creature mu spore}."
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 68
@@ -881,7 +1095,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This rare gadget uses Stasian technology to grant someone a burst of activity, though its use can be painful. The electromuscular stimulator must be carefully attached to you, requiring 1 minute to do so. You can attach an electromuscular stimulator to yourself. When you Activate an attached electromuscular stimulator, roll a {@skill Crafting} check, using the {@skill Crafting} modifier of the creature who attached the stimulator to you, with a DC equal to the standard DC for your level. The effects of the activation depend on the result of the {@skill Crafting} check.",
+				"This rare gadget uses Stasian technology to grant someone a burst of activity, though its use can be painful. The electromuscular stimulator must be carefully attached to you, requiring 1 minute to do so. You can attach an electromuscular stimulator to yourself. When you {@action Activate an Item||Activate} an attached electromuscular stimulator, roll a {@skill Crafting} check, using the {@skill Crafting} modifier of the creature who attached the stimulator to you, with a DC equal to the standard DC for your level. The effects of the activation depend on the result of the {@skill Crafting} check.",
 				{
 					"type": "successDegree",
 					"entries": {
@@ -920,8 +1134,16 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active divine or occult spell within the listed range, with the listed counteract modifier and counteract level."
+				"An etheric essence disruptor emits bursts of discordant ethereal energy through a process based upon Stasian etheric-spirit singers, though without the need for a Stasian coil. Etheric essence disruptors attempt to break down the workings of a spell that manipulates spiritual essence. Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within the listed range, with the listed counteract modifier and counteract level."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "Upon activation, attempt to counteract an active \\{@trait divine\\} or \\{@trait occult\\} spell within the listed range, with the listed counteract modifier and counteract level."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -933,7 +1155,12 @@
 					},
 					"entries": [
 						"The range is 30 feet, the counteract modifier is +7, and the counteract level is 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 30 feet, with a +7 counteract modifier and counteract level of 2."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -945,7 +1172,12 @@
 					},
 					"entries": [
 						"The range is 40 feet, the counteract modifier is +13, and the counteract level is 4."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 40 feet, with a +13 counteract modifier and counteract level of 4."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -957,7 +1189,12 @@
 					},
 					"entries": [
 						"The range is 60 feet, the counteract modifier is +18, and the counteract level is 6."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 60 feet, with a +18 counteract modifier and counteract level of 6."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -969,7 +1206,12 @@
 					},
 					"entries": [
 						"The range is 90 feet, the counteract modifier is +24, and the counteract level is 8."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Upon activation, attempt to counteract an active {@trait divine} or {@trait occult} spell within 90 feet, with a +24 counteract modifier and counteract level of 8."
+						}
+					}
 				}
 			],
 			"page": 68
@@ -1000,10 +1242,17 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use {@skill Stealth} to {@action Conceal an Object} before you Activate the mine. If you don't Conceal the mine, its position is obvious at a glance.",
+				"When you {@action Activate an Item||Activate} an explosive mine, you place it on the ground in a square within your reach, priming it to explode when a creature steps on that square. If you have time in advance to prepare, you can place the mine on the ground before activating it, and you or an ally can try to use {@skill Stealth} to {@action Conceal an Object} before you {@action Activate an Item||Activate} the mine. If you don't {@action Conceal an Object||Conceal} the mine, its position is obvious at a glance.",
 				"Once activated, the mine is primed to explode when enough pressure is placed on the square where it's located.",
 				"Typically, this occurs when a Small or larger creature moves onto the square, though it could happen if a creature intentionally places pressure on the square from a distance to safely trigger the mine. Once triggered, the mine explodes, dealing the listed fire damage to any creatures in a 5-foot emanation with a basic Reflex save."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "dealing the listed fire damage to any creatures in a 5-foot emanation with a basic Reflex save"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1015,7 +1264,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 2d6} fire damage, and the Reflex DC is 15."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 2d6} fire damage to any creatures in a 5-foot emanation with a DC 15 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1027,7 +1281,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 6d6} fire damage, and the Reflex DC is 20."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 6d6} fire damage to any creatures in a 5-foot emanation with a DC 20 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1039,7 +1298,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 12d6} fire damage, and the Reflex DC is 29."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 12d6} fire damage to any creatures in a 5-foot emanation with a DC 29 basic Reflex save"
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1051,7 +1315,12 @@
 					},
 					"entries": [
 						"The mine deals {@damage 18d6} fire damage in a 10-foot emanation, and the Reflex DC is 38."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "dealing {@damage 18d6} fire damage to any creatures in a 10-foot emanation with a DC 38 basic Reflex save"
+						}
+					}
 				}
 			],
 			"page": 69
@@ -1082,8 +1351,16 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you Activate a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
+				"Flare beacons create an incredibly bright light for a brief period of time. They are often used to signal others to the beacon's location, to coordinate assaults, to request rescue, or for other similar reasons. Higher-level beacons have a radius so large that they can be seen from miles away at night. When you {@action Activate an Item||Activate} a flare beacon, you can either place it on the ground in a space within your reach or toss it up to 60 feet straight up. The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be \\{@condition dazzled\\} until they are no longer adjacent to it."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1092,6 +1369,11 @@
 						"coin": "gp",
 						"amount": 4,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 20-foot radius and dim light in the next 20 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures adjacent to a flare beacon must succeed at a DC 15 Fortitude save or be {@condition dazzled} until they are no longer adjacent to it."
+						}
 					},
 					"entries": []
 				},
@@ -1102,6 +1384,11 @@
 						"coin": "gp",
 						"amount": 35,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 60-foot radius and dim light in the next 60 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 10-foot radius of the beacon must succeed at a DC 20 Fortitude save or be {@condition dazzled} until they are no longer within 10 feet of it."
+						}
 					},
 					"entries": [
 						"The beacon shines bright light in a 60-foot radius and dim light in the next 60 feet. Creatures within a 10-foot radius of the beacon must succeed at a DC 20 Fortitude save or be {@condition dazzled} until they are no longer within 10 feet of it."
@@ -1115,6 +1402,11 @@
 						"amount": 180,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 100-foot radius and dim light in the next 100 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 20-foot radius of the beacon must succeed at a DC 27 Fortitude save or be {@condition dazzled} until they are no longer within 20 feet of it. Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
+						}
+					},
 					"entries": [
 						"The beacon shines bright light in a 100-foot radius and dim light in the next 100 feet. Creatures within a 20-foot radius of the beacon must succeed at a DC 27 Fortitude save or be {@condition dazzled} until they are no longer within 20 feet of it.",
 						"Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
@@ -1127,6 +1419,11 @@
 						"coin": "gp",
 						"amount": 1500,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "The beacon then sparks into being, casting bright light in a 180-foot radius and dim light in the next 180 feet for 1 minute. A flare beacon in the air falls at a rate of 10 feet per round. Creatures within a 30-foot radius of the beacon must succeed at a DC 35 Fortitude save or be {@condition dazzled} until they are no longer within 30 feet of it. Additionally, on a critical failure, they are also {@condition blinded} for 1 round."
+						}
 					},
 					"entries": [
 						"The beacon shines bright light in a 180-foot radius and dim light in the next 180 feet. Creatures within a 30-foot radius of the beacon must succeed at a DC 35 Fortitude save or be {@condition dazzled} until they are no longer within 30 feet of it.",
@@ -1169,8 +1466,8 @@
 			"bulk": "L",
 			"entries": [
 				"Gadget skates are metal devices that come in pairs and strap onto existing footwear (or a creature's feet)",
-				"When you Activate gadget skates, clockwork gears reveal small wheels that propel you along the ground, moving you up to twice your Speed. During this movement, you must succeed at a DC 20 {@skill Acrobatics} check to turn up to 90 degrees, and you can't turn more than once or more than 90 degrees. During the activation and after the activation is complete, you can't {@action Stride}, {@action Step}, or otherwise move on the ground until the end of your next turn. However, you can use this movement instead of a {@action Stride} to perform a {@action High Jump} or {@action Long Jump} just after the activation ends, in the direction of your last movement using the gadget skates.",
-				"You can Sustain the Activation of your gadget skates for up to 1 minute. Starting on the turn after you Activate the gadget skates, the first time you Sustain the Activation each turn, you gain the effects of the activation again: you move up to twice your Speed in the same direction as your last movement with the gadget skates, and the restrictions continue to apply until you choose to cease Sustaining the Activation or you reach the maximum duration. Once the effect ends, the skates fall away and you can move normally."
+				"When you {@action Activate an Item||Activate} gadget skates, clockwork gears reveal small wheels that propel you along the ground, moving you up to twice your Speed. During this movement, you must succeed at a DC 20 {@skill Acrobatics} check to turn up to 90 degrees, and you can't turn more than once or more than 90 degrees. During the activation and after the activation is complete, you can't {@action Stride}, {@action Step}, or otherwise move on the ground until the end of your next turn. However, you can use this movement instead of a {@action Stride} to perform a {@action High Jump} or {@action Long Jump} just after the activation ends, in the direction of your last movement using the gadget skates.",
+				"You can Sustain the Activation of your gadget skates for up to 1 minute. Starting on the turn after you {@action Activate an Item||Activate} the gadget skates, the first time you Sustain the Activation each turn, you gain the effects of the activation again: you move up to twice your Speed in the same direction as your last movement with the gadget skates, and the restrictions continue to apply until you choose to cease Sustaining the Activation or you reach the maximum duration. Once the effect ends, the skates fall away and you can move normally."
 			],
 			"page": 70
 		},
@@ -1247,8 +1544,15 @@
 			"usage": "worn over armor and clothes",
 			"bulk": "L",
 			"entries": [
-				"While you're wearing an impact foam chassis wrapped around your body, it Activates automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute. While you're surrounded in foam, you are {@condition immobilized} and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an {@action Escape} DC of 15; a creature can also remove it by spending three {@action Interact} actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points."
+				"While you're wearing an impact foam chassis wrapped around your body, it {@action Activate an Item||Activates} automatically whenever you fall at least 10 feet, causing a layer of soft, flexible impact foam to expand beneath and around you to cushion the fall. The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced. If this is enough to destroy the foam, it disperses immediately. However, if the foam has any Hit Points remaining, it remains surrounding you for up to 1 minute. While you're surrounded in foam, you are {@condition immobilized} and have standard cover against other creatures, and other creatures have standard cover against you. The foam has an {@action Escape} DC of 15; a creature can also remove it by spending three {@action Interact} actions. You or others can also attack the foam (the foam has an AC of 12), which disperses if reduced to 0 Hit Points."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "The impact foam decreases the falling damage by up to the listed amount, taking damage equal to the amount of falling damage the foam reduced."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1260,7 +1564,12 @@
 					},
 					"entries": [
 						"A lesser impact foam chassis prevents up to 20 falling damage and has 20 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The lesser impact foam decreases the falling damage by up to 20 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 20 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1272,7 +1581,12 @@
 					},
 					"entries": [
 						"A moderate impact foam chassis prevents up to 50 falling damage and has 40 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The moderate impact foam decreases the falling damage by up to 50 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 40 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1284,7 +1598,12 @@
 					},
 					"entries": [
 						"A greater impact foam chassis prevents up to 100 falling damage and has 100 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The greater impact foam decreases the falling damage by up to 100 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 100 Hit Points."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1296,7 +1615,12 @@
 					},
 					"entries": [
 						"A major impact foam chassis prevents up to 200 falling damage and has 200 Hit Points."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "The moderate impact foam decreases the falling damage by up to 200 falling damage, taking damage equal to the amount of falling damage the foam reduced. The foam has 200 Hit Points."
+						}
+					}
 				}
 			],
 			"page": 70
@@ -1365,7 +1689,7 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"This magnetized suit is strapped to your body over your armor or clothes. When you Activate it, you must choose whether to set it to attract or repel.",
+				"This magnetized suit is strapped to your body over your armor or clothes. When you {@action Activate an Item||Activate} it, you must choose whether to set it to attract or repel.",
 				"While set to attract, you take a \u20131 item penalty to your AC against attacks made by metal weapons, while creatures within a 5-foot emanation other than you gain a +1 item bonus to their AC. If set to repel, you gain a +1 item bonus to AC against attacks made with metal weapons. While attracting metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Climb} metal objects and {@action Grapple} metal creatures and a \u20131 item penalty to {@skill Athletics} checks to {@action Shove} metal creatures. While repelling metal, you gain a +1 item bonus to {@skill Athletics} checks to {@action Shove} metal creatures, but you take a \u20131 item penalty to {@action Climb} metal objects and {@action Grapple} metal creatures."
 			],
 			"variants": [
@@ -1389,7 +1713,22 @@
 					},
 					"entries": [
 						"The area that gains an AC bonus when attracting is a 10-foot emanation, and the item bonuses and penalties increase from 1 to 2."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "5-foot",
+								"with": "10-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "1 ",
+								"with": "2 "
+							}
+						],
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major magnetic suit",
@@ -1401,7 +1740,22 @@
 					},
 					"entries": [
 						"The area that gains an AC bonus when attracting is a 20-foot emanation, and the item bonuses and penalties increase from 1 to 3."
-					]
+					],
+					"_mod": {
+						"entries": [
+							{
+								"mode": "replaceTxt",
+								"replace": "5-foot",
+								"with": "20-foot"
+							},
+							{
+								"mode": "replaceTxt",
+								"replace": "1 ",
+								"with": "3 "
+							}
+						],
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 71
@@ -1432,8 +1786,16 @@
 			},
 			"bulk": "1",
 			"entries": [
-				"A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active arcane or primal spell within the listed range, with the listed counteract modifier and counteract level."
+				"A material essence disruptor emits bursts of disordered energy to break down the structure of a spell that manipulates material essence. Attempt to counteract an active {@trait arcane} or {@trait primal} spell within the listed range, with the listed counteract modifier and counteract level."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replaceTags": true,
+					"replace": "Attempt to counteract an active \\{@trait arcane\\} or \\{@trait primal\\} spell within the listed range, with the listed counteract modifier and counteract level."
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "lesser",
@@ -1445,7 +1807,12 @@
 					},
 					"entries": [
 						"The range is 30 feet, the counteract modifier is +7, and the counteract level is 2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 30 feet, with a +7 counteract modifier and counteract level of 2."
+						}
+					}
 				},
 				{
 					"type": "moderate",
@@ -1457,7 +1824,12 @@
 					},
 					"entries": [
 						"The range is 40 feet, the counteract modifier is +13, and the counteract level is 4."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 40 feet, with a +13 counteract modifier and counteract level of 4."
+						}
+					}
 				},
 				{
 					"type": "greater",
@@ -1469,7 +1841,12 @@
 					},
 					"entries": [
 						"The range is 60 feet, the counteract modifier is +18, and the counteract level is 6."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 60 feet, with a +18 counteract modifier and counteract level of 6."
+						}
+					}
 				},
 				{
 					"type": "major",
@@ -1481,7 +1858,12 @@
 					},
 					"entries": [
 						"The range is 90 feet, the counteract modifier is +24, and the counteract level is 8."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "Attempt to counteract an active {@trait arcane} or {@trait primal} spell within 90 feet, with a +24 counteract modifier and counteract level of 8."
+						}
+					}
 				}
 			],
 			"page": 71
@@ -1512,7 +1894,7 @@
 			},
 			"bulk": "L",
 			"entries": [
-				"When you Activate a smoke fan, it creates a cloud of colored smoke. The smoke fills a 5-foot radius. The creator chooses the smoke's color when creating the smoke fan. Creatures within the smoke's area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dissipated by a strong wind."
+				"When you {@action Activate an Item||Activate} a smoke fan, it creates a cloud of colored smoke. The smoke fills a 5-foot radius. The creator chooses the smoke's color when creating the smoke fan. Creatures within the smoke's area are {@condition concealed}, and all other creatures are {@condition concealed} to them. The smoke lasts for 1 minute or until dissipated by a strong wind."
 			],
 			"variants": [
 				{
@@ -1535,7 +1917,14 @@
 					},
 					"entries": [
 						"The smoke's radius is 20 feet, and the creator can choose for the smoke to be a mixture of colors."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "5-foot radius. The creator chooses the smoke's color when creating the smoke fan.",
+							"with": "20-foot radius. The creator can choose for the smoke to be a mixture of colors when creating the smoke fan."
+						}
+					}
 				}
 			],
 			"page": 71
@@ -2215,7 +2604,7 @@
 			"entries": [
 				"This porous steel coil wraps around a shard of onyx, supplementing the closely guarded science of galvaspheres with the magic of necromancy. When embedded in a body comprised of flesh, the blood and other fluids catalyze electrical pulses within the coil, activating the necromantic energies. In living creatures, this causes a dangerous surge that can damage the heart. In corpses, however, this can create a limited window of reanimation, with access to the corpse's final memories. Galvanic mortal coils are even rarer than other galvaspheres, and thought by most to be merely hypothetical.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2226,12 +2615,12 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You drive the coil into a living creature that has 0 HP while attaching the other end to yourself, in order to damage their heart and possibly siphon their life force. The galvanic mortal coil casts death knell on the creature (DC 27)."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -2243,7 +2632,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You implant the coil into a corpse. The coil casts talking corpse on the body."
 					]
 				}
@@ -2394,7 +2783,7 @@
 				"Physicians claim it anything from headaches to heartburn, or nausea to deafness, all with an easy and painless treatment.",
 				"The device is a glass vacuum with an insulated handle connected to a small Stasian coil. When powered, the glass tube fills with purple light and becomes warm to the touch. Pressing the tube to one's body is said to increase blood flow, eliminate toxins, and many other beneficial effects. A violet ray functions as a set of healer's tools and provides a +2 item bonus to {@skill Medicine} checks to {@action Administer First Aid}, {@action Treat Disease}, {@action Treat Poison}, or {@action Treat Wounds}.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -2405,7 +2794,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You apply the violet ray to an adjacent creature and attempt to counteract the {@condition blinded}, {@condition clumsy}, {@condition confused}, {@condition deafened}, {@condition drained}, {@condition enfeebled}, {@condition sickened}, or {@condition stupefied} condition with a counteract level of 6 and a counteract modifier of +22, using the source of the condition to determine the condition's counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns after 1 minute. Each use of this ability can only counteract a single condition.",
 						"Shockguard Coil Violet Ray."
 					]
@@ -2512,7 +2901,7 @@
 				"Giving a clockwork disguise a new preset configuration requires 20 minutes of work. The clockwork disguise can have a maximum of three preset configurations at a time, and it can only mimic light and medium armor suits made of metal.",
 				"The clockwork disguise is light armor and has the following stats, regardless of which type of armor it mimics: AC Bonus +2; Dex Cap +3; Check Penalty \u20131; Strength 12; Group plate.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2523,7 +2912,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Transform the clockwork disguise into any one current preset configuration of the user's choice."
 					]
 				}
@@ -2561,7 +2950,7 @@
 				"This air supply can be refilled by spending one hour in an area with air, and you can rewind the clockwork in a process that takes 10 minutes to complete.",
 				"The diving suit is a suit of medium armor, and it has the following stats: AC Bonus +4; Dex Cap +1; Check Penalty \u20134; Speed Penalty \u201315 ft; Strength 18.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2572,9 +2961,9 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The diving suit shoots out a water jet that causes you to {@action Swim} 25 feet in a straight line. The distance of this movement is unaffected by your swim Speed, if you have one, or the armor's Speed penalty.",
-						"However, difficult terrain, such as the difficult terrain for moving up or down or moving against a current, still slows this movement.",
+						"However, {@quickref difficult terrain||3|terrain}, such as the {@quickref difficult terrain||3|terrain} for moving up or down or moving against a current, still slows this movement.",
 						"Introduction Gears Gears Equipment Gunslingers and Shootists Guns and Black Powder Equipment Guns and Gears on Golarion Glossary and Index Guns &"
 					]
 				}
@@ -2730,7 +3119,7 @@
 				"When the holy steam ball was first introduced in Mendev fifty years ago, few trusted it's efficacy. The nation had seen many charlatans peddle so-called \"anti-demon\" products, and most thought this was no different. Only when soldiers of the Mendevian Crusades used the ball and personally testified to its effectiveness did suspicion gave way to enthusiastic use. Nobody remembers who first invented the holy steam ball; they're likely lost to history because most initially thought it was a scam. After receiving endorsement from the Mendevian Crusade, a team of alchemists and inventors were able to determine the vapor's exact composition and mass produce them. The holy steam ball's highly specialized purpose kept it from widespread use outside of the nations that once bordered the Worldwound. Yet with the return of the Whispering Tyrant in the past few years, the growing undead threat presents a new opportunity for more citizens to use holy steam balls for protection against the mind control powers of vampires and other undead.",
 				"After using a holy steam ball, you must refill it before the next use in a process that takes five minutes to complete.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -2741,7 +3130,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The holy steam ball is filled with evaporated holy water and incense smoke",
-					"effect": [
+					"entries": [
 						"You release the stored steam and smoke to grant yourself its protections. Each use of the holy steam ball lasts for 1 hour and gives you a +2 item bonus to Will saving throws against {@trait possession} effects from fiends and undead and effects from fiends and undead that cause the {@condition controlled} condition."
 					]
 				}
@@ -2919,7 +3308,7 @@
 				"The steamflight pack allows its user to fly without using magic or wings. Each steamflight pack looks like a large brass backpack with two large nozzles mounted on the sides pointing downward. It also features metal arms reaching around the front that terminate in handles with activation buttons on them. When the user holds down an activation button, a complex series of mechanisms pumps water from the large tank in the backpack and releases it through the nozzles as powerful jets of steam, enabling the user to fly short distances. Tilting the handle adjusts the nozzles' angles, allowing the user to control the direction of their flight.",
 				"When active, the steamflight pack gives the user a fly Speed of 20 feet. It carries enough water for 20 minutes of operation and can be refilled in five minutes with a supply of normal water and a funnel.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -2930,7 +3319,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You turn the steamflight pack on or off."
 					]
 				}
@@ -3013,8 +3402,13 @@
 			"source": "G&G",
 			"name": "Basic Chair",
 			"level": 0,
+			"otherSources": {
+				"Expanded": [
+					"LOTGB|70"
+				]
+			},
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -3032,8 +3426,13 @@
 			"source": "G&G",
 			"name": "Traveler's Chair",
 			"level": 1,
+			"otherSources": {
+				"Expanded": [
+					"LOTGB|70"
+				]
+			},
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"consumable": false,
 			"generic": false,
 			"price": {
@@ -3043,7 +3442,7 @@
 			},
 			"bulk": "3",
 			"entries": [
-				"This wheelchair is tailored for adventures and travels. The design is sleek and fashionable to provide excellent comfort and support. A traveler's chair has small mechanisms, either made from interlocking wood pieces, clockwork, or other devices, that allow the chair to traverse up or down stairs without any additional difficulty (moving up stairs is still difficult terrain, just like for other characters), and move through other such environments that adventurers and travelers encounter without any additional difficulty, such as ladders and uneven ground.",
+				"This wheelchair is tailored for adventures and travels. The design is sleek and fashionable to provide excellent comfort and support. A traveler's chair has small mechanisms, either made from interlocking wood pieces, clockwork, or other devices, that allow the chair to traverse up or down stairs without any additional difficulty (moving up stairs is still {@quickref difficult terrain||3|terrain}, just like for other characters), and move through other such environments that adventurers and travelers encounter without any additional difficulty, such as ladders and uneven ground.",
 				"Magical Wheelchairs The following wheelchairs use technology and magic for incredible effects, in addition to the basic benefits granted from the base wheelchair (typically a traveler's chair)."
 			],
 			"page": 91
@@ -3053,7 +3452,7 @@
 			"name": "Frog Chair",
 			"level": 8,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Uncommon",
 				"Clockwork",
@@ -3070,7 +3469,7 @@
 			"entries": [
 				"This clockwork traveler's chair is shaped like a wheeled frog, with springs attached to the bottom and an extensible tongue on the front.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3081,13 +3480,13 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You activate the wheelchair's springs to make hopping leaps.",
 						"For 1 minute, whenever you {@action Leap} with the wheelchair, you can jump 30 feet in any direction without touching the ground. You must land on a space of solid ground within 30 feet of you, or else you fall after using your next action."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3098,7 +3497,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You activate the wheelchair's tongue to grab a nearby object and bring it to you. {@action Interact} to pick up an unattended object within 15 feet and bring it to your empty hand. If you don't have a hand to take the object, it falls in your space instead."
 					]
 				}
@@ -3110,7 +3509,7 @@
 			"name": "Spider Chair",
 			"level": 12,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Uncommon",
 				"Clockwork",
@@ -3127,7 +3526,7 @@
 			"entries": [
 				"This clockwork traveler's chair has spinnerets and spider legs that allow it to roll up walls, fire web lines to pull you to a location, and obstruct foes with webs. While using the chair, you gain a climb Speed equal to your Speed.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3138,12 +3537,12 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The chair shoots a web line at a solid wall, floor, or ceiling up to 60 feet away and then pulls itself and you to that location."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -3154,7 +3553,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause the chair to launch an enormous web to hinder your foes, with the effects of a 4th-level {@spell web} spell."
 					]
 				}
@@ -3166,7 +3565,7 @@
 			"name": "Storm Chair",
 			"level": 14,
 			"type": "Item",
-			"category": "no category found",
+			"category": "Wheelchair",
 			"traits": [
 				"Rare",
 				"Electricity",
@@ -3183,7 +3582,7 @@
 			"entries": [
 				"This traveler's chair uses magic and Stasian technology, storing up power in its Stasian coils to arc lightning through your foes and grant brief spurts of flight.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3196,12 +3595,12 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You create a ball of electricity around the chair, surrounding it in a damaging aura of electricity and using electromagnetism to briefly levitate. For 1 minute, you gain a fly Speed equal to your Speed and adjacent creatures that hit you with a melee attack, as well as creatures that touch or hit you with an unarmed attack, take {@damage 2d6} electricity damage each time. As normal, this applies to creatures who choose to touch you, not when you touch or attack another creature."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3214,7 +3613,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You release the majority of the stored up energy from your storm chair, devastating foes in a chain of electricity. This has the effects of chain lightning with a DC of 31."
 					]
 				}
@@ -3241,7 +3640,7 @@
 				"A breath blaster's Strikes deal either acid, cold, electricity, fire, or poison damage, depending on the dragon type or other creature from which it was made, though it can otherwise be used like a normal blunderbuss. A breath blaster also can be activated to fire a line of energy in a 30-foot line or 15-foot cone, chosen when it's created and typically corresponding to the shape of the breath weapon used by the type of dragon or creature from which the breath blaster was created.",
 				"In theory, the foundational techniques required to create a breath blaster would allow for other damage types, but such breath blasters would require the trachea from the correct dragon or creature type and additional creation techniques, making such a breath blaster rare rather than uncommon.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3253,7 +3652,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fire the breath blaster, dealing {@dice 4d6} damage of the appropriate type in the appropriate area.",
 						"Creatures in the area must attempt a DC 24 basic Reflex save (or Fortitude save if the damage is poison)."
 					]
@@ -3346,7 +3745,7 @@
 			"entries": [
 				"A growth gun is a +1 striking hand cannon made from the regenerative flesh of a hydra, troll, or other similar creature. It has an attached flesh sac that slowly replenishes one shot each round and can be loaded like a normal round of ammunition. It fires regenerating gobbets of flesh, bone, or teeth, determined by the damage type selected for its {@trait modular} trait. A growth gun can be fired underwater, though it's still limited by the selected damage type as normal.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3358,7 +3757,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Make a ranged {@action Strike}. On a hit, the creature becomes covered in a mass of flesh that continues to grow on the target for a brief time. The creature becomes {@condition slowed|CRB|slowed 1} for 1 round, after which the growth withers and falls off."
 					]
 				}
@@ -3389,7 +3788,7 @@
 			"entries": [
 				"Built from the taxidermic body of a basilisk, a petrification cannon functions as a +2 greater striking double-barreled musket. A petrification cannon can be activated to fire a beam of energy that transforms flesh into stone.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3401,7 +3800,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Frequency once per hour Effect A beam of coiling energy leaps from the petrification cannon at a target within 60 feet. The target must attempt a Fortitude save against DC 34 with the effects of flesh to stone."
 					]
 				}
@@ -3427,7 +3826,7 @@
 			"entries": [
 				"Built from the larynx of an owlbear, terror shrike, or similar animal that possesses a frightening screech or similar special ability, a screech shooter is a special +1 striking harmona gun designed to fire terrifying blasts of sound. A screech shooter deals sonic damage but can otherwise be used like a normal harmona gun.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -3439,7 +3838,7 @@
 					"frequency": "once per hour Effect The screech shooter unleashes a frightening wail.",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Frequency once per hour Effect The screech shooter unleashes a frightening wail. All creatures in a 30-foot emanation from you must attempt a DC 25 Will save.",
 						{
 							"type": "successDegree",
@@ -3512,7 +3911,7 @@
 				"A spider gun does not add critical specialization effects.",
 				"The gun can be activated to fire webbing that hampers other creatures.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3524,8 +3923,8 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You fire a mass of webbing at a square within 30 feet. That square becomes covered in webbing for 1 minute. A square covered with the webbing from a spider gun can be cleared by a single attack or effect that deals at least 5 slashing damage or 1 fire damage. A square has AC 5, and it automatically fails its saving throws. The first time each turn a creature in the webbing begins to use a move action or enters the webbing during a move action, it must attempt an {@skill Athletics} check or Reflex save against DC 20. On a success, it moves normally through the webbing and clears away the webbing from any squares it enters this turn. On a failure, it treats squares of webbing as difficult terrain this turn, and on a critical failure, it's {@condition immobilized} for 1 round or until it Escapes (DC 20) or destroys the webbing."
+					"entries": [
+						"You fire a mass of webbing at a square within 30 feet. That square becomes covered in webbing for 1 minute. A square covered with the webbing from a spider gun can be cleared by a single attack or effect that deals at least 5 slashing damage or 1 fire damage. A square has AC 5, and it automatically fails its saving throws. The first time each turn a creature in the webbing begins to use a move action or enters the webbing during a move action, it must attempt an {@skill Athletics} check or Reflex save against DC 20. On a success, it moves normally through the webbing and clears away the webbing from any squares it enters this turn. On a failure, it treats squares of webbing as {@quickref difficult terrain||3|terrain} this turn, and on a critical failure, it's {@condition immobilized} for 1 round or until it Escapes (DC 20) or destroys the webbing."
 					]
 				}
 			],
@@ -3591,7 +3990,7 @@
 			"entries": [
 				"Built from the spiked tail of a manticore, a spike launcher is designed to launch large, spear-like projectiles. A spike launcher is a +1 striking weapon. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the backstabber, fatal aim d12, and kickback traits with a range increment of 120 feet and reload 2. It uses the critical specialization of the bow weapon group, rather than the firearm critical specialization.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -3603,7 +4002,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The spike launcher is loaded",
-					"effect": [
+					"entries": [
 						"The spike launcher fires a volley of smaller spikes in a 10-foot burst centered anywhere within its range.",
 						"Make a {@action Strike} with the spike launcher against each creature in the area. On a success, the spike causes the creature to take a \u20135-foot status penalty to their Speed.",
 						"On a critical success, the creature becomes {@condition immobilized} instead. In either case, the creature, or an adjacent creature, can use an {@action Interact} action to remove the spike and end the penalty or {@condition immobilized} condition."
@@ -3631,7 +4030,7 @@
 			"entries": [
 				"A tentacle cannon is a +1 striking weapon, built using components from squids, krakens, and sometimes even stranger tentacled creatures like alghollthu. It's a distinct type of martial firearm that deals {@damage 1d8} piercing damage. It has the capacity 5, concussive, and fatal d12 traits, a range increment of 30 feet, and reload 2. The weapon itself resembles a five-barreled handheld cannon with each barrel made from a hollowed out tentacle.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3643,12 +4042,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cause one of the tentacles forming the weapon's five barrels to stretch out and attempt to pull and grab a creature within 15 feet. The tentacle attempts to {@action Grapple} with a +13 bonus. It can attempt to {@action Grapple} any creature, regardless of size. On a success, the tentacle pulls the creature up to 10 feet directly towards you, until it's in a square adjacent to you."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -3659,13 +4058,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The tentacle cannon has a creature {@condition grabbed}",
-					"effect": [
+					"entries": [
 						"You continue to keep the tentacle cannon's hold on one creature it has {@condition grabbed}.",
 						"Attempt another check to {@action Grapple} the creature with a +13 bonus."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3676,7 +4075,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The cannon fires a spray of ink in a 15-foot cone. Creatures in the area must attempt a DC 23 Reflex save. On a failure, the creature is covered in ink and becomes {@condition blinded} for 1 round and {@condition dazzled} for 1 minute or until it removes the ink. On a critical failure, the creature becomes {@condition blinded} and {@condition dazzled}; both conditions last for 1 minute or until it removes the ink. The creature, or an adjacent creature, can use an {@action Interact} action to remove the ink from its eyes to remove the {@condition blinded} and {@condition dazzled} conditions."
 					]
 				}
@@ -3803,7 +4202,7 @@
 			"entries": [
 				"This dubious weapon gets its name from the fact that it's typically crafted with multiple false barrels so that it's more difficult for enemies to predict the weapon's angle of fire from the four working barrels. Most of the time, this gun functions as a +1 striking pepperbox with capacity 4 instead of capacity 3, albeit one with a complicated loading mechanism involving rotating the barrels. In a pinch though, all four of the real barrels can be fired simultaneously.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3814,7 +4213,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Make up to four Strikes with the liar's gun. Each of the four Strikes must be against a different target within a 20-foot cone. You apply and increasing your multiple attack penalty for the four Strikes only after resolving all attacks. If the weapon misfires on any of these attacks, wait to apply the misfire until you resolve all of the attacks."
 					]
 				}
@@ -3846,7 +4245,7 @@
 				"The arboreal haunting the firearm can use the following two effects whenever it wants, often using them at random.",
 				"You can coax it into performing them each intentionally once per day, with the following activations.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -3857,12 +4256,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The arboreal haunting the blunderbuss attempts to regrow itself into a new physical body by sprouting from the bodies of all the creatures that the firearm recently harmed. You and all creatures within 60 feet damaged by arboreal's revenge within the last minute must attempt a DC 20 Fortitude saving throw. On a failure, they take a \u201310-foot circumstance penalty to their Speeds as roots rapidly sprout from their wounds, which lasts until they {@action Escape} (DC 20)."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3874,7 +4273,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell barkskin} from the blunderbuss as a 2ndlevel primal spell. However, the weakness to fire imposed by barkskin is cumulative with the weakness to fire imposed by this weapon's curse, for a total of weakness 8 to fire."
 					]
 				}
@@ -3960,7 +4359,7 @@
 				"30 feet Communication telepathy (Common, and six other common languages) Skills {@skill Arcana} +30, {@skill Deception} +27, {@skill Diplomacy} +27, {@skill Occultism} +30 Int +6, Wis +4, Cha +4 Will +26 The gunsmith that created this marvelous +2 greater striking spell-storing scattergun poured so much love and care into its creation that the weapon gained a spark of sentience. However, at first it was completely incapable of expressing itself. This led a seething frustration to grow within the weapon, as it yearned desperately to respond to Animate Dreamer the same love and affection that created it. Through decades of effort, it gained the ability to communicate empathically, then telepathically. Now, the weapon is capable of exerting its influence over other inanimate objects. Despite the weapon's progress, years of feeling helpless have given the animate dreamer a singular goal: to obtain and occupy a body of its own.",
 				"An animate dreamer is cunning, intelligent, and patient. It urges you to create a body for it and is willing to go to any lengths to see its goals come to fruition, including coercion, deception, and violence. An animate dreamer desires a permanent body but isn't picky about the body's form or the methods it has to use in order to gain it. Therefore, an animate dreamer is just as happy in a living body stolen from an innocent as it would be in an artificially constructed body, or even an undead corpse. If you refuse to work towards creating or obtaining a body for the animate dreamer, it will likely use its possession ability to try and take control of you and use your body to find a permanent replacement for itself.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -3971,12 +4370,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The animate dreamer has a stored spell.",
-					"effect": [
+					"entries": [
 						"The animate dreamer casts its stored spell at a target that meets the requirements. This empties the spell from the weapon and allows a spell to be cast into it again. The animate dreamer has a spell attack roll of +25 and a spell DC of 33 with the stored spell."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -3987,12 +4386,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The animate dreamer focuses on a single unattended inanimate object in an area it can see and exerts its will over the object, temporarily levitating it around. The animate dreamer casts {@spell mage hand} as a 5th-level occult spell."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -4003,7 +4402,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The animate dreamer attempts to achieve its goal of occupying a body of its own and casts {@spell possession} as a 7th-level spell with a spell DC of 33. The weapon still functions as a +2 greater striking spell-storing scattergun while this effect is active but loses all other special abilities until the spell expires and the animate dreamer's intellect returns to it."
 					]
 				}
@@ -4052,7 +4451,7 @@
 			"usage": "held in 2 hands",
 			"bulk": "1",
 			"entries": [
-				"30 feet Communication speech (Common, Dwarven, Kelish, Osiriani) Skills {@skill Diplomacy} +23, {@skill Intimidation} +23, {@skill Lore|Alkenstar Lore} +25, {@skill Lore|Firearm Lore} +25, {@skill Society} +21 Int +2, Wis +5, Cha +4 Will +26."
+				"30 feet Communication speech (Common, Dwarven, Kelish, Osiriani) Skills {@skill Diplomacy} +23, {@skill Intimidation} +23, {@skill Lore||Alkenstar Lore} +25, {@skill Lore||Firearm Lore} +25, {@skill Society} +21 Int +2, Wis +5, Cha +4 Will +26."
 			],
 			"page": 162
 		},
@@ -4074,11 +4473,11 @@
 			"usage": "held in 1 hand",
 			"bulk": "1",
 			"entries": [
-				"30 feet Communication speech (Common) Skills {@skill Intimidation} +19, {@skill Lore|Navigation Lore} +14, {@skill Lore|Sailing Lore} +14 Int +0, Wis +2, Cha +4 Will +16 Integrated Firearms A sunken pistol is imbued with the unfulfilled desires and insatiable greed of its previous wielder, a notorious pirate drowned at sea. Once a beautiful and artistically wrought weapon, a sunken pistol is coated in a fine layer of dried salt and encrusted with barnacles. Each shot fired from this +1 striking dragon mouth pistol is now coated in a layer of salty ectoplasm and has the effects of a ghost touch rune. You can shoot the sunken pistol underwater, even when using black powder ammunition.",
+				"30 feet Communication speech (Common) Skills {@skill Intimidation} +19, {@skill Lore||Navigation Lore} +14, {@skill Lore||Sailing Lore} +14 Int +0, Wis +2, Cha +4 Will +16 Integrated Firearms A sunken pistol is imbued with the unfulfilled desires and insatiable greed of its previous wielder, a notorious pirate drowned at sea. Once a beautiful and artistically wrought weapon, a sunken pistol is coated in a fine layer of dried salt and encrusted with barnacles. Each shot fired from this +1 striking dragon mouth pistol is now coated in a layer of salty ectoplasm and has the effects of a ghost touch rune. You can shoot the sunken pistol underwater, even when using black powder ammunition.",
 				"A sunken pistol urges you to amass a horde of treasure even a dragon would be proud of. The methods used to acquire these riches matter not to the greedy pirate pistol, so long as you amass and hoard excessive wealth. Above all else, a sunken pistol desires the return of its own treasure, which might rest in the wreck of its sunken ship's hold or be {@condition hidden} on a dangerous island.",
 				"In pursuit of treasure, a sunken pistol offers nautical and navigation advice to you, though it refuses such aid during less lucrative ventures. If you prove a profitable partner, the sunken pistol aids you in combat by Demoralizing your opponents (see the first Activation below). If you prove charitable or unwilling to retrieve its treasure, the sunken pistol turns its ire on you, Demoralizing you during combat until you relent. If you repeatedly refuse the sunken pistol, it would be wise to not accept water breathing from it, as it might attempt to drown you to allow a more suitable wielder to acquire it from your corpse. The sunken pistol can use the following activations.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4089,12 +4488,12 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The sunken pistol curses and insults a creature it can see, attempting an {@skill Intimidation} check to {@action Demoralize} that creature."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -4105,7 +4504,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The sunken pistol casts water breathing on you as a 3rd-level arcane spell. The sunken pistol can {@action Dismiss} this spell, so be sure to keep the gun happy if you're relying on its good graces to breathe!"
 					]
 				}
@@ -4133,7 +4532,7 @@
 				"This +2 greater striking hand cannon is carved and crafted from a single large fang, worn with age and cracked with red lines. The tip of the fang has been filed down, but still leaks black fluid occasionally. It was fashioned from the tooth of the tor linnorm Hyldarf by a half-Ulfen gunsmith from Tian Xia who sought the title of linnorm king. Though the smith failed to slay the linnorm, he did claim the mighty dragon's tooth and fashion it into a magic firearm that still drips warm venom. Hyldarf survived the encounter with her attacker and slew the gunsmith years later, though by then the smith had already bequeathed the weapon to his chosen heir and it was far out of her grasp. The linnorm still searches for her missing tooth, portending potential doom for the weapon's owner.",
 				"The weapon deals an additional {@damage 2d6} fire damage on a successful {@action Strike}, plus {@damage 3d10} {@condition persistent damage ||persistent fire damage} on a critical hit. Fire damage dealt by this weapon (including {@condition persistent damage ||persistent fire damage} and damage from Hyldarf's Venom) ignores the target's fire resistance.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -4145,12 +4544,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You call upon Hyldarf's power to gain the magic of a linnorm for a brief time. For 1 minute, you gain the effects of fly, freedom of movement, and true seeing as well as fire resistance 20."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4161,7 +4560,7 @@
 					"frequency": "Once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You soak your shot in the fluid of the fang, imbuing it with Hyldarf's venom. The next {@action Strike} you make with Hydalf's Fang before the end of your next turn delivers the venom to the target.",
 						"Hyldarf's Venom (fire, injury, poison) Saving Throw DC 34; Maximum Duration 3 rounds; Stage 1 {@damage 3d6} fire damage and {@condition sickened|CRB|sickened 1}; Stage 2 {@damage 6d6} fire damage and {@condition sickened|CRB|sickened 2}."
 					]
@@ -4193,7 +4592,7 @@
 				"This +1 striking jezail is built from white hot metal and has a ruby fused into the palm wood stock. When the iris of the sky misfires, you take 5 {@condition persistent damage ||persistent fire damage}.",
 				"The first firearm of this type came as the result of a gunslinger who entreated an efreeti, wishing for the might of the desert sun. The weapon constantly glows and burns with a brilliant intensity. The firearm has since belonged to an extensive string of users and been replicated several times, though each wielder of the weapon, whether the original or one of its copies, has eventually ended up as a charred husk, slain by fire in battle or unusual accidents that no one could quite explain except, perhaps, the efreet.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4204,12 +4603,12 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You focus the solar energy housed in the ruby to release a gout of solar flame instead of a bullet. Make a {@action Strike} with the iris of the sky. All damage from this {@action Strike} is fire damage and the target takes an additional {@damage 1d6} fire damage and {@damage 1d6} {@condition persistent damage ||persistent fire damage}."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4221,7 +4620,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You make a wish into the iris of the sky, yearning for it to strike true, and then fire. {@action Strike} against a foe with the iris, rolling the attack roll twice and taking the better result. If the attack is a failure, you take 5 {@condition persistent damage ||persistent fire damage}."
 					]
 				}
@@ -4246,7 +4645,7 @@
 			"entries": [
 				"This +2 greater striking flintlock pistol has the odd construction of possessing two triggers, one of soapstone and one of onyx, clearly separated with individual trigger guards. Originally created by a student at Blythir College in Alkenstar, the mountebank's passage has the ability to create temporary linked portals on existing surfaces. The weapon disappeared shortly after its invention, but rumors have circulated that it now belongs to a group of thieves who use it to commit impossible robberies.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4257,12 +4656,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "the mountebank's passage isn't loaded",
-					"effect": [
+					"entries": [
 						"You pull the soapstone trigger. Choose a vertical surface within 120 feet. A beam of white energy crackles to the vertical surface and creates a white portal on that surface. Any creature who moves through the white portal comes out through the mountebank's passage's black portal, if one exists on the same plane. Using this activation causes any previous white portal to disappear, even if you don't create a new portal; otherwise, the portal lasts until your next daily preparations."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4273,7 +4672,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "the mountebank's passage isn't loaded",
-					"effect": [
+					"entries": [
 						"You pull the onyx trigger.",
 						"Choose a vertical surface within 120 feet. A beam of black energy crackles to the vertical surface and creates a black portal on that surface. Any creature who moves through the black portal comes out through the mountebank's passage's white portal, if one exists on the same plane.",
 						"Using this activation causes any previous black portal to disappear; even if you don't create a new portal; otherwise, the portal lasts until your next daily preparations."
@@ -4303,7 +4702,7 @@
 				"Whenever the reaper's grasp kills a sapient living or undead creature, a portion of that creature's soul is drawn inexorably into the weapon, and another skull is added to the mosaic as if scrawled by an {@condition invisible} hand, to a maximum of 10 souls. Creatures whose souls are protected by outside forces, such as a lich's soul cage, are immune to this effect, though the process, while painful, does not prevent the soul from going to the afterlife or being resurrected.",
 				"Keep track of the level of each creature whose souls are stored in the reaper's grasp.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4314,13 +4713,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "There's at least one soul stored in the reaper's grasp",
-					"effect": [
+					"entries": [
 						"You channel the necromantic energy of a soul stored in the weapon into your next attack, increasing the attack's destructive power. Choose a soul stored in the weapon. The next {@action Strike} you make with the reaper's grasp before the end of your turn deals an additional negative damage equal to twice the level of the creature whose soul you chose.",
 						"Using this ability releases the chosen soul, and a skull on the mosaic fades away."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4331,7 +4730,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "There's at least one soul stored in the reaper's grasp",
-					"effect": [
+					"entries": [
 						"You channel the necromantic energy of a soul stored in the weapon into a mantle around you, protecting you from harm. Choose a soul stored in the weapon. You gain temporary Hit Points equal to three times the level of the creature whose soul you chose, which last until the end of your next turn. Using this ability releases the chosen soul, and a skull on the mosaic fades away."
 					]
 				}
@@ -4359,7 +4758,7 @@
 				"One of the legendary star guns, Arcadia's greatest treasures, the Rowan Rifle is a +2 greater fearsome speed greater striking (Advanced Player's Guide 260) advanced firearm with a range of increment of 300 feet. It deals {@damage 1d8} fire damage and has the backstabber, concussive, and fatal d12 traits.",
 				"As a star gun, the Rowan Rifle runs on magic, and doesn't use ammunition or black powder. As a weapon forged to protect the fey peoples of Arcadia, the Rowan Rifle's enchantments prevent it from ever causing harm to a creature with the {@trait fey} trait; any attempt to shoot a fey with it results in an automatic misfire. This legendary star gun is as much a badge of office as a weapon, as it denotes dominion over all Briarbough. If the Rowan Rifle's wielder is fey, or if they were specifically given the Rowan Rifle by a fey creature who recognized them as a worthy champion, they can use the following activations.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -4370,12 +4769,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You will the Rowan Rifle to change the energy it fires from the white-hot energy of summer that glows like a star to the shivering chill of winter, the crackling electricity of the storm, or even the sonic vibrations of a roar. The Rowan Rifle's damage type changes from its current damage type to cold, electricity, fire, or sonic. On the next sunrise, the Rowan Rifle returns to dealing fire damage."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4387,12 +4786,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Rowan Rifle fires a 60-foot line of liquid djezet that wraps around all creatures in the affected area before hardening, which impedes them with metallic vines unless the affected creature succeeds at a DC 35 Reflex save. A creature who fails the save takes a \u201315-foot circumstance penalty to their Speeds, and a creature who critically fails is {@condition immobilized}. A creature who succeeds at a DC 35 {@action Escape} check ends this effect. Otherwise, the djezet vines last for 10 minutes before crumbling away."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -4405,7 +4804,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold aloft the Rowan Rifle and step into a tree in Briarbough, and you tree stride to another tree in Briarbough."
 					]
 				}
@@ -4436,7 +4835,7 @@
 				"This +2 striking fearsome dueling pistol (Advanced Player's Guide 260) is made from fine tigerwood, with the head of a tiger as the muzzle. Beneath the tiger head is a claw shaped bayonet. One of a set of four guns crafted as a gift to a Zenj family for delivery of rare healing and diseaseabating herbs during an outbreak of a deadly disease in the Grand Duchy of Alkenstar, these firearms are now passed down to those who have done brave acts in service to the Zenj people. The flintlock sparks thrown by this weapon take the shape of pouncing tigers and the firearm's report sounds like a tiger's growl. Clever wielders use the firearm's report to panic their prey into mistakes and then pounce for the kill.",
 				"This firearm's bullets deal slashing damage instead of piercing and add an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage} on a critical hit. This {@condition persistent damage ||persistent bleed damage} causes tiger‑claw-shaped wounds to appear on the target.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4447,7 +4846,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You capitalize on the fears your firearm engenders, terrifying your foes. Make a ranged {@action Strike} with this firearm against a target. If you successfully deal damage to your target, the target is also affected by a 4th-level {@spell phantasmal killer} with a spell DC of 28. While phantasmal killer typically takes the shape of the target's worst fear, this effect always appears to the target in the form of a majestic and ferocious tiger.",
 						"Pistol of Wonder Introduction Gears Characters Gears Equipment Guns Characters Guns Equipment The Rotating Gear Glossary And Index Guns &"
 					]
@@ -4479,7 +4878,7 @@
 			"entries": [
 				"This +2 greater striking flintlock pistol bears strange, jagged markings of erratic design and has an oddly squishy grip. It can be activated to produce a variety of unusual effects.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -4491,7 +4890,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Choose a creature within 60 feet and roll a percentile die on the table below to determine the pistol's effect. If an entry lists a spell, the pistol Casts that Spell at the indicated level (or at its lowest level, if no level is listed). You make any decisions for a spell cast by the pistol unless otherwise indicated, except that it must only target the creature you chose, or the creature you chose must be the center of the spell's area, if it has an area but no targets. The only exception to the limitation on targeting is if the effect specifically states it targets you. If the spell's range is less than 60 feet, increase the range to 60 feet.",
 						"Any spell DC required is DC 29, and any spell attack roll required is +21. If the pistol casts a spell on you, you don't get a saving throw or any other defense against it. Once activated, the pistol can't be activated again for {@dice 1d4} hours.",
 						"d% Wondrous Effect 1\u20132 The pistol casts phantom steed (4th level) to produce a pale horse adjacent to you; only you can ride it.",
@@ -4593,9 +4992,17 @@
 			"entries": [
 				"These bullets are formed from a liquefied high-grade precious metal and enchanted to unlock that metal's true potential. Each version has a different special effect."
 			],
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "Each version has a different special effect.",
+					"with": ""
+				}
+			},
 			"variants": [
 				{
 					"type": "awakened adamantine shot",
+					"name": "Awakened Adamantine Shot",
 					"level": 18,
 					"price": {
 						"coin": "gp",
@@ -4608,6 +5015,7 @@
 				},
 				{
 					"type": "awakened cold iron shot",
+					"name": "Awakened Cold Iron Shot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4620,6 +5028,7 @@
 				},
 				{
 					"type": "awakened silver shot",
+					"name": "Awakened Silver Shot",
 					"level": 17,
 					"price": {
 						"coin": "gp",
@@ -4664,6 +5073,7 @@
 			"variants": [
 				{
 					"type": "dose or round",
+					"name": "Dose or Round of Black Powder",
 					"level": 0,
 					"entries": [
 						"The smallest unit of black powder that still has a simple use, a dose can be a simple package paper parcel around black powder or it can be packaged with a metal bullet or pellet to be used as ammunition. When ignited with a fuse or exposed to direct flame, a dose of black powder explodes. This isn't powerful enough to deal damage but makes a loud sound and could trigger further explosions. A fuse for a dose can be created with a few twists of paper and causes the dose to explode the round after it's lit."
@@ -4671,6 +5081,7 @@
 				},
 				{
 					"type": "horn",
+					"name": "Horn of Black Powder",
 					"level": 2,
 					"price": {
 						"coin": "gp",
@@ -4683,6 +5094,7 @@
 				},
 				{
 					"type": "keg",
+					"name": "Keg of Black Powder",
 					"level": 6,
 					"price": {
 						"coin": "gp",
@@ -4805,6 +5217,13 @@
 			"entries": [
 				"This ammunition includes a small reservoir of a tacky red substance that coats the ammunition when you activate it. The substance makes a creature bleed more freely. For 1 minute after you deal damage to a creature with an activated exsanguinating ammunition that creature gains the listed weakness to {@condition persistent damage ||persistent bleed damage}. In addition, the DC of any flat checks to end {@condition persistent damage ||persistent bleed damage} increases from 15 to 17 (from 10 to 12 when receiving particularly effective assistance) for the duration."
 			],
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "the listed weakness"
+				}
+			},
 			"variants": [
 				{
 					"type": "exsanguinating ammunition",
@@ -4816,7 +5235,12 @@
 					},
 					"entries": [
 						"The target gains weakness 1 to {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 1"
+						}
+					}
 				},
 				{
 					"type": "greater exsanguinating ammunition",
@@ -4828,7 +5252,12 @@
 					},
 					"entries": [
 						"The target gains weakness 3 to {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 3"
+						}
+					}
 				},
 				{
 					"type": "major exsanguinating ammunition",
@@ -4840,7 +5269,12 @@
 					},
 					"entries": [
 						"The target gains weakness 5 {@condition persistent damage ||persistent bleed damage}."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "weakness 5"
+						}
+					}
 				}
 			],
 			"page": 170
@@ -4942,8 +5376,15 @@
 				"frequency": null,
 				"trigger": null
 			},
+			"_vmod": {
+				"entriesMode": "generic",
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "fire damage"
+				}
+			},
 			"entries": [
-				"This craggy stone ammunition is warm to the touch. When you fire an activated meteor shot, it explodes into a small swarm of meteors as it reaches its target, scorching nearby creatures and littering the ground with rubble. In addition to the weapon's normal damage, the meteor shot deals fire damage and the ground in the area becomes difficult terrain.",
+				"This craggy stone ammunition is warm to the touch. When you fire an activated meteor shot, it explodes into a small swarm of meteors as it reaches its target, scorching nearby creatures and littering the ground with rubble. In addition to the weapon's normal damage, the meteor shot deals fire damage and the ground in the area becomes {@quickref difficult terrain||3|terrain}.",
 				"In addition, the {@action Strike} gains the following critical failure effect.",
 				{
 					"type": "successDegree",
@@ -4961,6 +5402,11 @@
 						"amount": 70,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 3d6} fire damage in a 5-foot emanation around the target (DC 23 basic Reflex save)"
+						}
+					},
 					"entries": [
 						"The ammunition deals {@damage 3d6} fire damage in a 5-foot emanation around the target (DC 23 basic Reflex save)."
 					]
@@ -4973,6 +5419,11 @@
 						"amount": 400,
 						"note": null
 					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 6d6} fire damage in a 10-foot emanation around the target (DC 29 basic Reflex save)"
+						}
+					},
 					"entries": [
 						"The ammunition deals {@damage 6d6} fire damage in a 10-foot emanation around the target (DC 29 basic Reflex save)."
 					]
@@ -4984,6 +5435,11 @@
 						"coin": "gp",
 						"amount": 3000,
 						"note": null
+					},
+					"_mod": {
+						"entries": {
+							"with": "{@damage 9d6} fire damage in a 20-foot emanation around the target (DC 37 basic Reflex save)"
+						}
 					},
 					"entries": [
 						"The ammunition deals {@damage 9d6} fire damage in a 20-foot emanation around the target (DC 37 basic Reflex save)."
@@ -5053,7 +5509,7 @@
 				"trigger": null
 			},
 			"entries": [
-				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the scatter trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."
+				"A series of small stone discs pressed into a single round make up this ammunition. When you fire an activated stepping stone shot, whether you hit or miss your target, the shot creates a series of supports in a line that creatures can walk on as if solid ground. The line can ascend or descend at a 45-degree angle. The discs support any amount of weight, but don't otherwise pose any sort of obstacle; creatures and attacks can move through them if they wish. They crumble to dust if anything attempts to move or otherwise manipulate them. A creature can use a two-action activity, which has the {@trait manipulate} trait, to {@action Stride} up to its speed on the stones while causing them to crumble behind it. This ammunition does not work in firearms with the {@trait scatter} trait. The maximum length of the line depends on the type of ammunition. However, the line also can't extend beyond the maximum distance for a {@action Strike} from your firearm (usually six times the firearm's range increment)."
 			],
 			"variants": [
 				{
@@ -5408,7 +5864,7 @@
 			"entries": [
 				"This incredibly spacious bandolier can hold up to 4 onehanded crossbows or firearms that take no more than 1 action to completely reload (typically meaning that weapons with the capacity or repeating traits won't fit in the bandolier's holsters). A gunner's bandolier can be etched with runes as though it were a ranged weapon. When you invest the gunner's bandolier, you can attune it to each of the 4 weapons holstered in it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5419,12 +5875,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You empower one of the attuned weapons in the bandolier, granting it the runes etched onto the gunner's bandolier and removing the runes from any previously drawn weapon. Then, you {@action Interact} to draw the weapon."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -5435,7 +5891,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"All weapons that were attuned to the bandolier when you invested it, not including any weapons you're currently wielding, return to the bandolier, and one of the returned weapons is automatically reloaded."
 					]
 				}
@@ -5466,7 +5922,7 @@
 			"entries": [
 				"This pristine leather belt is made of treated and polished black leather with silver fittings; it features a pair of matching leather holsters that can each fit a one-handed firearm or hand crossbow.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -5477,7 +5933,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Up to two firearms currently holstered in the immaculate holsters are instantly cleaned and oiled, protecting them from accidental misfires (though not misfires caused as a result of using a feat or ability). The holstered weapons are also reloaded with non-magical 0-level ammunition appropriate to a weapon of their type; if a firearm has multiple chambers, such as a slide pistol, each empty chamber is loaded. Immaculate holsters can't reload the cartridge of a repeating weapon."
 					]
 				}
@@ -5503,7 +5959,7 @@
 			"entries": [
 				"This beige bandolier has a rectangular holster, which allows it to contain a standard-sized Harrow deck, and red pockets embroidered with goldwork in a strange but appealing mixture of Alkenstar and Varisian motifs.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5514,7 +5970,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You draw a card from the bandolier and {@action Interact} to load the card into a gun or crossbow you're wielding that requires 1 action to reload. The drawn card immediately transforms into magical ammunition with a type depending on the drawn card's suit, and a new copy of that card returns to the deck, ready to be drawn again.",
 						"When the card transforms into ammunition, it transforms into a firearm round or crossbow bolt appropriate for the weapon you chose to reload, even if magical ammunition of the drawn variety would normally be limited to ammunition of a different type (such as a storm arrow normally only being available in arrow form). Either draw a card from the Harrow deck or roll {@dice 1d6} to determine the suit of the card.",
 						"The result determines the type of magical ammunition the card becomes, as per the table below. Magical ammunition created this way lasts 10 minutes or until you fire it, whichever comes first."
@@ -5550,7 +6006,7 @@
 		},
 		{
 			"source": "G&G",
-			"name": "Darkvision Scope",
+			"name": "{@ability darkvision} Scope",
 			"level": "5+",
 			"type": "Item",
 			"category": "no category found",
@@ -5584,7 +6040,7 @@
 			"entries": [
 				"More of a field projector than a scope, this small cylinder of magnetite has been enchanted to spread and accelerate the shrapnel of a scatter weapon further than the weapon's natural capabilities. Furthermore, some of the floating magnetite inside the scope's structure can help you when attempting to determine the your allies' locations. The magnetite scope grants you a +2 item bonus to {@skill Survival} checks to {@action Sense Direction} when using the scope to assist you in navigating. This scope can only be attached to firearms with the scatter trait.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5595,7 +6051,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The next {@action Strike} you make this round with the gun to which the scope is attached has its scatter radius increased by 5 feet."
 					]
 				}
@@ -5643,7 +6099,7 @@
 			"entries": [
 				"These scopes use magically enhanced lenses to extend the range of your weapon and help spot distant foes. The scope grants you a +1 item bonus to visual {@skill Perception} checks to {@action Seek} creatures through the scope.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5654,7 +6110,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"While gazing through the scope, you zoom in on your targets to make it easier to hit them at a distance. You increase the range increment of the weapon to which the scope is attached by 5 feet until the beginning of your next turn or until you're no longer wielding the weapon, whichever comes first."
 					]
 				}
@@ -5719,7 +6175,7 @@
 			"entries": [
 				"The dwarven gunsmiths of Dongun Hold originally created these scopes to help them clear out vermin in underground areas. This scope captures the sound that echoes off a creature hit by the firearm and transforms it into light, illuminating the target for all to see.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5732,7 +6188,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"If your next {@action Strike} from the weapon to which the scope is attached hits a creature, the sound of the impact transforms into light, causing the creature to glow until the end of your next turn. A visible creature can't be {@condition concealed} while they glow. If a creature is {@condition invisible}, they're {@condition concealed} while glowing, rather than being {@condition undetected}. Because the effect requires a solid impact, incorporeal creatures are unaffected unless the bullet can deal force damage or has the effects of the ghost touch property rune."
 					]
 				}
@@ -5761,7 +6217,7 @@
 			"entries": [
 				"The scope of truth is a bit bigger than most to accommodate larger lenses, which have been magically prepared with tiny shards from crystal balls to reveal the truth. The scope grants you a +2 item bonus to {@skill Perception} checks made to {@action Seek} in areas you can see through the scope.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -5772,7 +6228,7 @@
 					"frequency": "Once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"For the next 10 minutes, you can see things through the scope as they actually are. The GM rolls a secret counteract check with a +20 counteract modifier and a counteract level of 7 against any illusion or transmutation in the area, but only for the purpose of determining whether you see through it, not to end the spell or effect. For instance, if the check succeeds against a polymorph spell, you can see the creature's true form, but you don't end the spell."
 					]
 				}
@@ -5824,7 +6280,7 @@
 			"entries": [
 				"This copper tripod with an immovable rod at its core is a perfect example of engineering ingenuity applied to magic items, adapting the eccentric power of an immovable rod for the pragmatic use of stabilizing weapons without the need for solid ground on which to stabilize them. In addition to extraplanar and aquatic environments, these devices have seen use by flying and climbing snipers who would otherwise have no way to mitigate their weapons' fierce kickback.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -5835,8 +6291,8 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
-						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you Activate the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
+					"entries": [
+						"You deploy the tripod and press a button to lock it into place via the immovable rod, allowing you to deploy the tripod in midair, underwater, or anywhere else where you don't have a solid horizontal surface available. If you {@action Activate an Item||Activate} the tripod by pushing the button again, you release and retrieve the tripod. While anchored, the tripod can be moved only if 8,000 pounds of pressure are applied to it or if a creature uses {@skill Athletics} to {@action Force Open} the tripod with a DC of 40 (though most intelligent creatures can just push the button to release the tripod)."
 					]
 				}
 			],
@@ -6249,7 +6705,15 @@
 					},
 					"entries": [
 						"When you activate a greater indomitable keepsake, you reduce the damage from a firearm critical hit by 20 instead of reducing it by 10."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "10",
+							"with": "20"
+						},
+						"entriesMode": "generic"
+					}
 				},
 				{
 					"type": "major indomitable keepsake",
@@ -6261,7 +6725,15 @@
 					},
 					"entries": [
 						"When you activate a major indomitable keepsake, you reduce the damage from a firearm critical hit by 30 instead of reducing it by 10."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "10",
+							"with": "30"
+						},
+						"entriesMode": "generic"
+					}
 				}
 			],
 			"page": 185
@@ -6505,13 +6977,13 @@
 			"ammunition": null,
 			"category": "Ammunition",
 			"entries": [
-                "Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
-            ],
+				"Firearms require ammunition consisting of a projectile and black powder. A round of ammo can vary in its composition but is typically either a prepackaged paper cartridge, including wadding, bullet, and black powder, or loose shot packed in manually. Some weapons, like hand cannons and blunderbusses, can fire other materials, but their ammunition has the same Price due to the cost of the black powder. Because making rounds of firearm ammunition requires creating black powder, you need the {@feat Alchemical Crafting} skill feat to make them. Firearm rounds are a valid option for magical ammunition, just like arrows or bolts. Crafting magical firearm ammunition requires you to be able to craft both alchemical and magical items."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Earplugs",
 			"source": "G&G",
 			"page": 178,
@@ -6527,41 +6999,41 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature’s ears with a single {@action Interact} action using one hand. They take a –2 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
-            ],
+				"These small pieces of cloth and stuffing have been crafted to dramatically muffle sound and easily slide into and out of the ear canals of humanoid creatures. You can insert or remove earplugs from your ears or a willing creature's ears with a single {@action Interact} action using one hand. They take a \u20132 circumstance penalty to all {@trait auditory} {@skill Perception} checks but also gain a +2 circumstance bonus to saving throws against {@trait auditory} effects."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
-			"name": "Camouflage suit",
+		{
+			"name": "Camouflage Suit",
 			"source": "G&G",
 			"page": 178,
 			"equipment": true,
 			"type": "Equipment",
 			"traits": [
-                "Uncommon"
-            ],
+				"Uncommon"
+			],
 			"price": {
 				"coin": "gp",
 				"amount": 10
 			},
-            "level": 3,
+			"level": 3,
 			"bulk": "L",
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "This lightweight mesh fits easily over light armor. The suit is designed to incorporate local flora and ground clutter into the mesh to help you blend in seamlessly with the environment. Due to the abrasive nature of the materials used, this item is unsuitable for use by unarmored characters. You can prepare the suit for use within your current environment by using an exploration activity that takes at least 10 minutes, but sometimes longer if the materials are hard to find or the environment is unusual enough to warrant additional difficulty in preparing camouflage that can blend with it consistently.",
-                "A suit prepared in this manner grants you a +1 item bonus to {@skill Stealth} checks while you attempt to {@action Hide} or {@action Sneak} in the specific environment it has been prepared for.",
-                "The suit remains usable in this manner until you rest for the night, though it doesn’t grant the benefit whenever you aren’t in the appropriate environment. The GM might rule that some environments are unusual enough that you can’t create a camouflage suit appropriate for the environment."
-            ],
+				"This lightweight mesh fits easily over light armor. The suit is designed to incorporate local flora and ground clutter into the mesh to help you blend in seamlessly with the environment. Due to the abrasive nature of the materials used, this item is unsuitable for use by unarmored characters. You can prepare the suit for use within your current environment by using an exploration activity that takes at least 10 minutes, but sometimes longer if the materials are hard to find or the environment is unusual enough to warrant additional difficulty in preparing camouflage that can blend with it consistently.",
+				"A suit prepared in this manner grants you a +1 item bonus to {@skill Stealth} checks while you attempt to {@action Hide} or {@action Sneak} in the specific environment it has been prepared for.",
+				"The suit remains usable in this manner until you rest for the night, though it doesn't grant the benefit whenever you aren't in the appropriate environment. The GM might rule that some environments are unusual enough that you can't create a camouflage suit appropriate for the environment."
+			],
 			"craftReq": null,
 			"generic": "G",
 			"variants": [
@@ -6573,8 +7045,7 @@
 						"amount": 10,
 						"note": null
 					},
-					"entries": [
-					]
+					"entries": []
 				},
 				{
 					"type": "Superb Camouflage Suit",
@@ -6585,18 +7056,25 @@
 						"note": null
 					},
 					"entries": [
-                        "A superb camouflage suit is fashioned from especially well-blended materials and gives you a +2 item bonus to the check instead of a +1 item bonus."
-					]
+						"A superb camouflage suit is fashioned from especially well-blended materials and gives you a +2 item bonus to the check instead of a +1 item bonus."
+					],
+					"_mod": {
+						"entries": {
+							"mode": "replaceTxt",
+							"replace": "A suit prepared in this manner grants you a \\+1 item bonus",
+							"with": "A suit prepared in this manner grants you a +2 item bonus"
+						}
+					}
 				}
 			]
 		},
-        {
+		{
 			"name": "Concealed Holster",
 			"source": "G&G",
 			"page": 178,
 			"equipment": true,
 			"type": "Equipment",
-            "level": 3,
+			"level": 3,
 			"traits": [],
 			"price": {
 				"coin": "gp",
@@ -6607,16 +7085,16 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 1,
+			"hands": 1,
 			"category": "Gear",
 			"entries": [
-                "This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
-            ],
+				"This leather holster is crafted to better hide small firearms from view. Only firearms designed for use in one hand are small enough to disguise with this holster. You gain a +1 item bonus to {@skill Stealth} checks and DCs to hide or conceal a {@filter firearm|items||Hands=1|Group=Firearm} or {@item hand crossbow} in this holster."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Firearm Cleaning Kit",
 			"source": "G&G",
 			"page": 178,
@@ -6632,16 +7110,16 @@
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
-            "hands": 2,
+			"hands": 2,
 			"category": "Gear",
 			"entries": [
-                "This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can’t perform the necessary tasks during your daily preparations to ensure that your firearm isn’t at risk of misfiring under normal use conditions."
-            ],
+				"This kit contains cleaning cloth, oil, small steel brushes, and other minor tools necessary for proper cleaning and maintenance of a firearm. Without a firearm cleaning kit, you can't perform the necessary tasks during your daily preparations to ensure that your firearm isn't at risk of misfiring under normal use conditions."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Practice Targets",
 			"source": "G&G",
 			"page": 178,
@@ -6651,7 +7129,7 @@
 			"price": {
 				"coin": "sp",
 				"amount": 2,
-                "note": "(price for 10)"
+				"note": "(price for 10)"
 			},
 			"bulk": "L",
 			"shieldStats": null,
@@ -6660,13 +7138,13 @@
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger’s progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
-            ],
+				"While gunslingers have many methods for practicing their aim, these sturdy paper targets are excellent for tracking a gunslinger's progress over time, keeping score of how close they came to hitting the most vital spots. These targets are also used in situations where more detailed accuracy must be recorded, such as firearm competitions. Practice targets can appear in many shapes and sizes and usually come in packs of 10 held in protective cases made of heavy cloth or light leather."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Silencer",
 			"source": "G&G",
 			"page": 178,
@@ -6684,14 +7162,14 @@
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons’ explosive sound when fired. Without a silencer, a firearm’s shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can’t be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
-            ],
-            "hands": 1,
+				"One of the more prolifically used devices developed in the infamous Alkenstar Gunworks, these small firearm components are capable of muffling most of the weapons' explosive sound when fired. Without a silencer, a firearm's shot makes a loud and distinctive bang, which can easily be heard through doors and thin walls, but firearms equipped with silencers only make a quiet noise when fired. Due to engineering constraints, a silencer can't be attached to any firearm with the {@trait scatter} trait. Attaching a silencer to a firearm takes 1 minute, and the silencer is consumed the first time a shot is fired through it."
+			],
+			"hands": 1,
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Tripod",
 			"source": "G&G",
 			"page": 178,
@@ -6703,20 +7181,20 @@
 				"amount": 2
 			},
 			"bulk": 1,
-            "hands": 2,
+			"hands": 2,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don’t take the –2 penalty for firing a {@trait kickback} weapon, even if your Strength isn’t high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you’re {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn’t automatically make you {@condition observed}, so long as you don’t set up or remove the tripod when it’s in a spot where creatures can see the tripod itself."
-            ],
+				"Tripods are designed for use with kickback weapons, as a way for gunslingers with lower strength to accurately use these more powerful weapons by sacrificing mobility instead. They can be set up and attached to a firearm with a single {@action Interact} action using one hand, setting the tripod in your square. While this sturdy piece of engineering is in use, you don't take the \u20132 penalty for firing a {@trait kickback} weapon, even if your Strength isn't high enough to avoid the penalty. However, you must retrieve the tripod with a single {@action Interact} action before you can move the firearm to a different position. Normally, when you're {@condition hidden} or {@condition undetected}, you become {@condition observed} if you do anything except {@action Hide}, {@action Sneak}, or {@action Step}. However, deploying or retrieving a tripod with an {@action Interact} action doesn't automatically make you {@condition observed}, so long as you don't set up or remove the tripod when it's in a spot where creatures can see the tripod itself."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
 		},
-        {
+		{
 			"name": "Waterproof Firearm Carrying Case",
 			"source": "G&G",
 			"page": 178,
@@ -6728,15 +7206,15 @@
 				"amount": 2
 			},
 			"bulk": "L",
-            "hands": 2,
+			"hands": 2,
 			"shieldStats": null,
 			"activate": null,
 			"onset": null,
 			"ammunition": null,
 			"category": "Gear",
 			"entries": [
-                "This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
-            ],
+				"This buttoned, leather case protects a firearm and up to 6 rounds of ammunition from being damaged by water or other environmental effects."
+			],
 			"craftReq": null,
 			"generic": false,
 			"variants": null
