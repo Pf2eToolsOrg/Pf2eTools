@@ -32,7 +32,7 @@ jobs:
     - name: Build prod
       continue-on-error: true
       uses: pkg-src/github-action-git-bash@v1.1
-    - run: ./build/deploy-prep-prod.sh
+    - run: sh ./build/deploy-prep-prod.sh
 
     - name: Commit files
       continue-on-error: true
