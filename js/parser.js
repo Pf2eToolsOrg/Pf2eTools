@@ -1619,7 +1619,7 @@ Parser.levelToDC = function (level, spell, difficulty) {
 	} else if (level >= 21 && level < 26) {
 		DC = 40 + Number((level - 20) * 2)
 	} else {
-		throw new Error(`Invalid level (0 to 25 or 1 to 10 for spells)`);
+		throw new Error(`Invalid level (-1 to 25 or 1 to 10 for spells)`);
 	}
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
 	if (difficulty) {
