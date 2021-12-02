@@ -1614,7 +1614,7 @@ Parser.levelToDC = function (level, spell, difficulty) {
 	if (isNaN(level)) return "?"
 	let DC = 0
 	if (spell.toLowerCase() === "focus" || spell.toLowerCase() === "spell" || spell === true) level = (level * 2) - 1
-	if (level >= 0 && level < 21) {
+	if (level >= -1 && level < 21) {
 		DC = 14 + Number(level) + Math.floor(level / 3)
 	} else if (level >= 21 && level < 26) {
 		DC = 40 + Number((level - 20) * 2)
