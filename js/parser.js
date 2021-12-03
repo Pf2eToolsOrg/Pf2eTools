@@ -1614,12 +1614,10 @@ Parser.levelToDC = function (level, spell, difficulty) {
 	if (isNaN(level)) return "?"
 	let DC = 0
 	if (spell.toLowerCase() === "focus" || spell.toLowerCase() === "spell" || spell === true) level = (level * 2) - 1
-	if (level >= -1 && level < 21) {
+	if (level < 21) {
 		DC = 14 + Number(level) + Math.floor(level / 3)
-	} else if (level >= 21 && level < 26) {
-		DC = 40 + Number((level - 20) * 2)
 	} else {
-		throw new Error(`Invalid level (-1 to 25 or 1 to 10 for spells)`);
+		DC = 40 + Number((level - 20) * 2)
 	}
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
 	if (difficulty) {
@@ -1656,7 +1654,7 @@ Parser.levelToDC = function (level, spell, difficulty) {
 		}
 	}
 
-	return DC
+	return `${DC}${level < 0 || level > 25 ? `*` : ""}`
 };
 
 Parser.typeToSkill = function (type) {
