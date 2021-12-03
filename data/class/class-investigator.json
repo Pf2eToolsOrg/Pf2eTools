@@ -314,43 +314,16 @@
 			"entries": [
 				"As an investigator, you think of your adventures as cases waiting to be solved. You gain one activity and one reaction you can use to investigate cases: {@action Pursue a Lead|APG} and {@action Clue In|APG}.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Pursue a Lead",
-					"source": "APG",
-					"page": 56,
-					"traits": [
-						"Concentrate",
-						"Exploration",
-						"Investigator"
-					],
-					"frequency": "once per 10 minutes",
-					"entries": [
-						"You spend 1 minute examining the details of one potential clue, designating the subject related to that clue as the target of your active investigation. This subject is typically a single creature, item, or small location (such as a room or corridor), but the GM might allow a different scope for your investigation. You don't need to know the identity, purpose, or nature of the subject, but you do need to be aware of its existence. For instance, finding a footprint is enough to investigate the creature that left it, and seeing a hasty sketch of an item or location can be enough to start your investigation of that subject.",
-						"Whenever you attempt a {@skill Perception} or skill check to investigate a designated subject, you gain a +1 circumstance bonus to the check. The exact checks this applies to depend on the actions you use to investigate and are determined by the GM, but checks to investigate are typically {@skill Perception} checks or skill checks that use Intelligence, Wisdom, or Charisma.",
-						"You can maintain two active investigations at a time. If you Pursue another Lead after that, the subject must be different from any of your current investigations (or rather, they must be different as far as you know), and you give up on a current subject of your choice. Once you've given up pursuit of a subject, you can't Pursue that Lead again until after the next time you make your daily preparations."
-					]
+					"source": "APG"
 				},
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Clue In",
-					"source": "APG",
-					"page": 56,
-					"traits": [
-						"Concentrate",
-						"Investigator"
-					],
-					"frequency": "once per 10 minutes",
-					"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as r}"
-					},
-					"entries": [
-						"You share information with the triggering creature. They gain a circumstance bonus to their check equal to your circumstance bonus to checks investigating your subject from {@action Pursue a Lead|APG}. The GM can add any relevant traits to this reaction depending on the situation, such as {@trait auditory} and {@trait linguistic} if you're conveying information verbally."
-					]
+					"source": "APG"
 				}
 			]
 		},
@@ -364,28 +337,10 @@
 			"entries": [
 				"You can play out a battle in your head, using brains rather than brawn to execute an attack.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Devise a Stratagem",
-					"source": "APG",
-					"page": 56,
-					"traits": [
-						"Concentrate",
-						"Fortune",
-						"Investigator"
-					],
-					"frequency": "once per round",
-					"trigger": "Another creature attempts a check to investigate a lead you're pursuing.",
-					"activity": {
-						"number": 1,
-						"unit": "single",
-						"entry": "{@as 1}"
-					},
-					"entries": [
-						"You assess a foe's weaknesses in combat and use them to formulate a plan of attack against your enemy. Choose a creature you can see and roll a {@dice d20}. If you {@action Strike} the chosen creature later this round, you must use the result of the roll you made to {@action Devise a Stratagem|APG} for your {@action Strike}'s attack roll instead of rolling. You make this substitution only for the first {@action Strike} you make against the creature this round, not any subsequent attacks.",
-						"When you make this substitution, you can also add your Intelligence modifier to your attack roll instead of your Strength or Dexterity modifier, provided your {@action Strike} uses an {@trait agile} or {@trait finesse} melee weapon, an {@trait agile} or {@trait finesse} unarmed attack, a ranged weapon (which must be {@trait agile} or {@trait finesse} if it's a melee weapon with the {@trait thrown} trait), or a {@item sap}.",
-						"If you're aware that the creature you choose is the subject of a lead you're pursuing, you can use this ability as a free action."
-					]
+					"source": "APG"
 				}
 			]
 		},
@@ -674,24 +629,10 @@
 						"You're trained in {@skill Crafting} and gain the {@feat Alchemical Crafting} skill feat. In addition, you gain a standard {@item formula book} for free and learn the formulas for two additional {@filter common 1st-level alchemical items|items||general=alchemical|level=[1;1]|rarity=common|category=elixir; tool}, which must be elixirs or tools. Each time you gain a level, you learn the formula for one common alchemical elixir or alchemical tool of any level of item you can create.",
 						"During your daily preparations, you can create a number of versatile vials\u2014alchemical concoctions that can quickly be turned into elixirs and tools\u2014equal to your Intelligence modifier. You can use the {@action Quick Tincture|APG} action to turn one of these vials into an elixir or alchemical tool for which you know the formula.",
 						{
-							"type": "ability",
-							"style": "full",
+							"type": "statblock",
+							"tag": "action",
 							"name": "Quick Tincture",
-							"source": "APG",
-							"page": 57,
-							"traits": [
-								"Investigator",
-								"Manipulate"
-							],
-							"cost": "1 versatile vial",
-							"requirements": "You know the formula for the alchemical item you're creating, you are holding or wearing {@item alchemist's tools|CRB}, and you have a free hand.",
-							"activity": {
-								"number": 1,
-								"unit": "action"
-							},
-							"entries": [
-								"You quickly brew up a short-lived tincture. You create a single alchemical elixir or tool of your level or lower without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the end of the current turn."
-							]
+							"source": "APG"
 						}
 					]
 				}
@@ -714,24 +655,10 @@
 						"Everything comes down to data. Calculating statistics, running numbers, and using inductive reasoning allows you to determine the most likely outcome of any scenario, and anything out of place draws your keen attention.",
 						"You are trained in one Intelligence-based skill of your choice. You gain the {@feat That's Odd|APG} investigator feat, and you gain the {@action Expeditious Inspection|APG} free action.",
 						{
-							"type": "ability",
-							"style": "full",
+							"type": "statblock",
+							"tag": "action",
 							"name": "Expeditious Inspection",
-							"source": "APG",
-							"page": 57,
-							"traits": [
-								"Investigator",
-								"Manipulate"
-							],
-							"frequency": "once per 10 minutes",
-							"activity": {
-								"number": 1,
-								"unit": "free",
-								"entry": "{@as F}"
-							},
-							"entries": [
-								"You observe and assess your surroundings with great speed. You {@action Recall Knowledge}, {@action Seek}, or {@action Sense Motive}."
-							]
+							"source": "APG"
 						}
 					]
 				}
@@ -774,34 +701,10 @@
 						"People can't help but trust you, whether through your inherent likableness or your firm insistence on sticking to the truth. You have a way about you that gets others talking, and you've developed interrogative techniques to help you get to the truth of your investigations.",
 						"You are trained in {@skill Diplomacy}. You gain the {@feat No Cause for Alarm} skill feat. You can also {@action Pursue a Lead|APG} over the course of a conversation rather than spending dedicated time looking into the lead, provided the conversation lasts 1 minute or longer. For example, while trying to {@action Make an Impression}, you could pursue the creature you're conversing with as a lead, and you could {@action Pursue a Lead|APG} about an object while someone is telling you information about that object. You also gain the {@action Pointed Question} action.",
 						{
-							"type": "ability",
-							"style": "full",
+							"type": "statblock",
+							"tag": "action",
 							"name": "Pointed Question",
-							"traits": [
-								"Auditory",
-								"Concentrate",
-								"Investigator",
-								"Linguistic",
-								"Mental"
-							],
-							"frequency": "once per 10 minutes",
-							"activity": {
-								"number": 1,
-								"unit": "single",
-								"entry": "{@as 1}"
-							},
-							"entries": [
-								"You ask a question that charms or needles someone in just the right way. Ask a question of a non-allied creature that you can see and have been conversing with. Attempt a {@skill Diplomacy} check against the creature's Will DC. The creature is then temporarily immune for 1 hour.",
-								{
-									"type": "successDegree",
-									"entries": {
-										"Critical Success": "The target must directly answer your question. It doesn't have to answer truthfully, but you gain a +4 circumstance bonus to your {@skill Perception} DC if the creature attempts to {@action Lie} to you.",
-										"Success": "As critical success, but the circumstance bonus is +2.",
-										"Failure": "The target can refuse to answer you as normal.",
-										"Critical Failure": "The target can refuse to answer you as normal, and its attitude toward you decreases by one step due to your aggravating attention."
-									}
-								}
-							]
+							"source": "APG"
 						}
 					]
 				}

@@ -345,28 +345,10 @@
 			"entries": [
 				"You gain an elegant finishing attack you can make when you have panache. The {@trait finisher} trait is described on page 87. You gain the {@action Confident Finisher|APG} action.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Confident Finisher",
-					"traits": [
-						"Finisher",
-						"Swashbuckler"
-					],
-					"source": "APG",
-					"page": 85,
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"You make an incredibly graceful attack, piercing your foe's defenses. Make a {@action Strike} with a weapon or unarmed attack that would apply your precise strike damage, with the following failure effect.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Failure": "You deal half your precise strike damage to the target. This damage type is that of the weapon or unarmed attack you used for the {@action Strike}."
-							}
-						}
-					]
+					"source": "APG"
 				}
 			]
 		},
@@ -424,21 +406,10 @@
 			"entries": [
 				"You turn the tables on foes who fumble, capitalizing immediately on their mistake. You gain the {@action Opportune Riposte|APG} reaction.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Opportune Riposte",
-					"traits": [
-						"Swashbuckler"
-					],
-					"trigger": "A foe within your reach critically fails a {@action Strike} against you.",
-					"activity": {
-						"number": 1,
-						"unit": "reaction",
-						"entry": "{@as R}"
-					},
-					"entries": [
-						"You take advantage of an opening from your enemy's fumbled attack. You either make a melee {@action Strike} against the triggering foe or attempt to {@action Disarm} it of the weapon it used for the {@action Strike}."
-					]
+					"source": "APG"
 				}
 			]
 		},
