@@ -388,7 +388,7 @@ class ArchetypesPage extends BaseComponent {
 		} else {
 			// This should never occur (failed loads should pick the first list item), but attempt to handle it semi-gracefully
 			$(`#featstats`).empty().append($(`<div class="pf2-h1-flavor text-center">Select a feat from the list to view it here</div>`));
-			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "error"})
+			JqueryUtil.doToast({content: "Could not find the feat to load!", type: "danger"})
 		}
 	}
 
