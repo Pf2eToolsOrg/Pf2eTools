@@ -1,0 +1,3984 @@
+{
+	"creature": [
+		{
+			"source": "EC2",
+			"name": "Aives The Smoke Dragon",
+			"level": 4,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Tiefling"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 10
+				},
+				"Athletics": {
+					"default": 8
+				},
+				"Deception": {
+					"default": 8
+				},
+				"Performance": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 10
+				},
+				"Thievery": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 0,
+				"Int": 1,
+				"Wis": 0,
+				"Cha": 2
+			},
+			"items": [
+				"dagger (4),leather armor",
+				"thieves' tools"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+8, {@skill Stealth} +10, {@skill Thievery} +12 Str +2, Dex +4, Con +0, Int +1, Wis +0, Cha +2 Items dagger (4),leather armor, thieves' tools."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 9
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 56,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": []
+			},
+			"abilitiesMid": [
+				{
+					"entries": [
+						"On the first round of combat, if Aives rolled {@skill Deception} or {@skill Stealth} for initiative, creatures that haven't acted are {@condition flat‑footed} to him."
+					],
+					"name": "Surprise Attack"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Aives draws a weapon with an {@action Interact} action, then Strikes with the weapon he just drew."
+					],
+					"name": "Quick Draw"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"poison"
+					],
+					"entries": [
+						"Aives breathes out a cloud of poisonous smoke that he can make curl around him or cling to his weapons. Until the cloud dissipates at the start of his next turn, Aives is {@condition concealed}, his Strikes deal an extra {@damage 1d8} poison damage, and targets of his Strikes must succeed at a DC 22 Fortitude save or become {@condition sickened|CRB|sickened 1}."
+					],
+					"name": "Smoke Exhalation"
+				},
+				{
+					"traits": [
+						"precision"
+					],
+					"entries": [
+						"Aives deals an extra {@damage 1d6} precision damage to {@condition flat‑footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"attacks": [],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 18,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "darkness"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"poison",
+					"precision"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 16,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Delamar Gianvin",
+			"level": 6,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 14
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 15
+				},
+				"Deception": {
+					"default": 14
+				},
+				"Diplomacy": {
+					"default": 14
+				},
+				"Society": {
+					"default": 12
+				},
+				"Stealth": {
+					"default": 17
+				},
+				"Thievery": {
+					"default": 15
+				},
+				"Circus Lore": {
+					"default": 10
+				},
+				"Criminal Lore": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 5,
+				"Con": 0,
+				"Int": 2,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"items": [
+				"hand crossbow (10 bolts)",
+				"leather armor",
+				"+1 rapier"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+14, {@skill Diplomacy} +14, {@skill Society} +12, {@skill Stealth} +17,"
+					],
+					"name": "Deception"
+				},
+				{
+					"entries": [
+						"+15 Str +1, Dex +5, Con +0, Int +2, Wis +2, Cha +4 Items hand crossbow (10 bolts), leather armor, +1 rapier."
+					],
+					"name": "Thievery"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 90,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Delamar isn't {@condition flat‑footed} to creatures of 6th level or lower that are {@condition hidden}, {@condition undetected}, flanking, or using surprise attack."
+					],
+					"name": "Deny Advantage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within Delamar's melee reach is hit by a melee attack from one of his allies",
+					"entries": [
+						"Delamar makes a {@action Strike} against the triggering creature with a \u20132 penalty to the attack roll. He can't deal sneak attack damage on this {@action Strike}. After this {@action Strike}, Delamar can {@action Stride} without triggering reactions."
+					],
+					"name": "Nimble Opportunist"
+				},
+				{
+					"entries": [
+						"On the first round of combat, if Delamar rolled {@skill Deception} or {@skill Stealth} for initiative, creatures that haven't acted are {@condition flat‑footed} to him."
+					],
+					"name": "Surprise Attack"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Delamar draws a weapon with an {@action Interact} action, then Strikes with the weapon he just drew."
+					],
+					"name": "Quick Draw"
+				},
+				{
+					"entries": [
+						"Delamar deals an extra {@damage 2d6} precision damage to {@condition flat‑footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"precision"
+				],
+				"condition": []
+			},
+			"page": 16,
+			"misc": []
+		},
+		{
+			"source": "EC2",
+			"name": "Ruanna Nyamma",
+			"level": 4,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low‑light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Deception": {
+					"default": 11
+				},
+				"Diplomacy": {
+					"default": 11
+				},
+				"Occultism": {
+					"default": 6
+				},
+				"Performance": {
+					"default": 14
+				},
+				"Society": {
+					"default": 6
+				},
+				"Stealth": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 0,
+				"Int": 0,
+				"Wis": 1,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+6, {@skill Performance} +14, {@skill Society} +6, {@skill Stealth} +11 Str +1, Dex +3, Con +0, Int +0, Wis +1, Cha +4 Items kukri, leather armor, persona mask, shortbow (20 arrows)"
+					],
+					"name": "Occultism"
+				}
+			],
+			"ac": {
+				"default": 20,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 11
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 66,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Ruanna attempts to {@action Feint} using {@skill Performance} rather than {@skill Deception}. On a success, the target is {@condition flat‑footed} to any melee attack, not just."
+					],
+					"name": "Elaborate Feint"
+				},
+				{
+					"entries": [
+						"Ruanna then Strides."
+					],
+					"name": "Ruanna's."
+				}
+			],
+			"attacks": [],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 19,
+					"attack": 12,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "soothe"
+								},
+								{
+									"name": "true strike"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "silence"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": []
+			},
+			"page": 17,
+			"misc": []
+		},
+		{
+			"source": "EC2",
+			"name": "Gluttondark Babau",
+			"level": 7,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Fiend"
+			],
+			"traits": [
+				"Demon"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"see invisibility"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Celestial",
+					"Draconic"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 14
+				},
+				"Athletics": {
+					"default": 15
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Religion": {
+					"default": 12
+				},
+				"Stealth": {
+					"default": 18
+				},
+				"Thievery": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 4,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"items": [
+				"+1 longspear"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+12, {@skill Stealth} +18, {@skill Thievery} +16 Str +4, Dex +4, Con +4, Int +2, Wis +3, Cha +2 Items +1 longspear."
+					],
+					"name": "Religion"
+				}
+			],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"acid"
+				],
+				"condition": []
+			},
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "cold iron"
+				},
+				{
+					"amount": 5,
+					"name": "good"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Babaus revel in the gore of a well‑timed attack, and when brutal wounds are restored, they recoil in pain. When a creature heals from damage that the babau dealt on their last turn with Grievous {@action Strike}, sneak attack, or a critical hit, the demon takes {@damage 4d6} mental damage. The babau can take this mental damage only once per round."
+					],
+					"name": "Mercy Vulnerability"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within the babau's reach successfully hits the babau with a {@action Strike}",
+					"entries": [
+						"The babau excretes a gout of acidic, bloodlike slime against the attacker and its weapon. The attacker must attempt a DC 26 Reflex save. Critical Success The attacker avoids the reactive slime. Success The attacker takes {@damage 1d6} acid damage. Failure The attacker takes {@damage 2d6} acid damage. Critical Failure As failure, except the weapon used."
+					],
+					"name": "Reactive Slime"
+				},
+				{
+					"entries": [
+						"{@action Strike} the babau automatically becomes {@condition broken} unless the weapon is made of a material that is immune to acid."
+					],
+					"name": "to"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"The babau makes an attack with the intent of creating a particularly horrific and gory wound. It make a melee {@action Strike}. This counts as two attacks when calculating their multiple attack penalty.",
+						"If this {@action Strike} hits, the babau deals an additional {@dice 1d6} damage and the creature struck is {@condition sickened|CRB|sickened 2} for 1 round; this {@condition sickened} condition cannot be removed by retching."
+					],
+					"name": "Grievous Strike"
+				},
+				{
+					"entries": [
+						"A babau deals an additional {@damage 1d6} precision damage to {@condition flat‑footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"attacks": [],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 26,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "darkness"
+								},
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						},
+						"constant": {
+							"5": {
+								"spells": [
+									{
+										"name": "see"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Divine",
+					"DC": 26,
+					"rituals": [
+						{
+							"name": "Abyssal pact"
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"mental",
+					"precision"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 23,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Yaashka",
+			"level": 5,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Xulgath"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 9
+				},
+				"Athletics": {
+					"default": 13
+				},
+				"Intimidation": {
+					"default": 11
+				},
+				"Religion": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 10
+				},
+				"Survival": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 1,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 4,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+10, {@skill Survival} +11 Str +4, Dex +1, Con +2, Int +0, Wis +4, Cha +2 Items religious symbol of {@deity Zevgavizeb|EC3}, +1 striking spiked gauntlet."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 8
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 80,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. A creature entering the aura must attempt a DC 22 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135‑foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stench for 1 minute."
+					],
+					"name": "Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The target must succeed at a DC 22 Fortitude save or become {@condition frightened|CRB|frightened 2} ({@condition frightened|CRB|frightened 4} on a critical failure). The target is {@condition enfeebled|CRB|enfeebled 1} for as long as it is {@condition frightened}."
+					],
+					"name": "Demonic Condemnation"
+				}
+			],
+			"attacks": [],
+			"spellcasting": [
+				{
+					"name": "Divine Prepared",
+					"type": "Prepared",
+					"tradition": "Divine",
+					"DC": 24,
+					"attack": 16,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "command",
+									"amount": 2
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "death knell"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "spiritual weapon",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "harm"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition frightened}",
+					"{@condition sickened}"
+				]
+			},
+			"page": 26,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Zunkri",
+			"level": 7,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Xulgath"
+			],
+			"perception": {
+				"default": 12
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 15
+				},
+				"Arcana": {
+					"default": 12
+				},
+				"Athletics": {
+					"default": 13
+				},
+				"Intimidation": {
+					"default": 17
+				},
+				"Society": {
+					"default": 9
+				},
+				"Survival": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 2,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 1,
+				"Cha": 5
+			},
+			"items": [
+				"+1 light mace"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 23,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 12
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 115,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. A creature entering the aura must attempt a DC 25 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135‑foot status penalty to its Speeds for 1 round. While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stench for 1 minute."
+					],
+					"name": "Stench"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature Casts a Spell the xulgath mage has in her repertoire",
+					"entries": [
+						"The xulgath mage expends one of her spell slots to counter the triggering creature's casting of the spell in her repertoire. The xulgath mage loses the spell slot as if she had cast the triggering spell and attempts to counteract the triggering spell."
+					],
+					"name": "Counterspell"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"3 Focus Points, DC 26; 4th ancestral memories (Core Rulebook 402), extend spell (Core Rulebook 404)"
+					],
+					"name": "Bloodline Spells"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 27,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Celestial Menagerie Bruiser",
+			"level": 8,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 14
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 17,
+					"to Shove": 20
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 13
+				},
+				"Survival": {
+					"default": 12
+				},
+				"Thievery": {
+					"default": 13
+				},
+				"Circus Lore": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 1,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 0,
+				"Cha": 2
+			},
+			"items": [
+				"chain shirt",
+				"dagger",
+				"face mask",
+				"+1 striking greatclub"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16, {@skill Stealth} +13, {@skill Survival} +12, {@skill Thievery} +13 Str +5, Dex +1, Con +2, Int +0, Wis +0, Cha +2 Items chain shirt, dagger, face mask, +1 striking greatclub."
+					],
+					"name": "Intimidation"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 15
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature hits the bruiser with a melee {@action Strike}",
+					"entries": [
+						"The bruiser attempts to {@action Shove} the creature. On a success or a critical success, the target is also knocked {@condition prone}. The bruiser can't {@action Stride} after a target it successfully Shoves in this way."
+					],
+					"name": "Opportunistic Brawler"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": "once per turn",
+					"entries": [
+						"Requirements The bruiser must target a creature they Shoved since the end of the bruiser's last turn; The bruiser attempts."
+					],
+					"name": "Terrifying Sneer"
+				},
+				{
+					"entries": [
+						"{@action Demoralize} the target. If the bruiser rolls a success, they gets a critical success instead."
+					],
+					"name": "to"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition prone}"
+				]
+			},
+			"page": 47,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Evora Yarket",
+			"level": 7,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human",
+				"Orc"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low‑light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Hallit",
+					"Orc"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 19
+				},
+				"Intimidation": {
+					"default": 10
+				},
+				"Nature": {
+					"default": 13
+				},
+				"Performance": {
+					"default": 10
+				},
+				"Survival": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 0,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": -1
+			},
+			"items": [
+				"bullhook (page 73)"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+13, {@skill Performance} +10, {@skill Survival} +13 Str +5, Dex +0, Con +3, Int +1, Wis +2, Cha \u20131 Items bullhook (page 73)"
+					],
+					"name": "Nature"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 115,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Evora would be reduced to 0 Hit Points but not immediately killed",
+					"frequency": "once per day;",
+					"entries": [
+						"Evora avoids being knocked out and remains at 1 Hit Point, and her {@condition wounded} condition increases by 1."
+					],
+					"name": "Orc Ferocity"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within Evora's reach uses a move action or leaves a square during a move action it's using",
+					"entries": [
+						"Evora makes a melee {@action Strike} against the triggering creature. If this attack is a critical hit and the trigger was a move action, she disrupts that action."
+					],
+					"name": "Stand Still"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish"
+					],
+					"entries": [
+						"Evora makes two unarmed Strikes. If both hit the same creature, combine their damage and apply resistances and weaknesses only once. She applies her multiple attack penalty to the Strikes normally. As it has the {@trait flourish} trait, Evora can use {@action Flurry of Blows} only once per turn."
+					],
+					"name": "Flurry of Blows"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"requirements": "Evora is unarmored and touching the ground",
+					"entries": [
+						"Evora enters the stance of an implacable mountain until she is knocked out or the encounter ends. She gains a +4 status bonus to."
+					],
+					"name": "Mountain Stance"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition wounded}"
+				]
+			},
+			"page": 52,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Darricus Stallit",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 17
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"sharp eyes"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 17
+				},
+				"Deception": {
+					"default": 14
+				},
+				"Diplomacy": {
+					"default": 16
+				},
+				"Intimidation": {
+					"default": 16
+				},
+				"Society": {
+					"default": 14
+				},
+				"Criminal Lore": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 1,
+				"Con": 0,
+				"Int": 1,
+				"Wis": 3,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16, {@skill Intimidation} +16, {@skill Society} +14 Str +5, Dex +1, Con +0, Int +1, Wis +3, Cha +4 Items +1 striking bastard sword, composite shortbow (10 arrows), constable's badge, half plate, steel shield (Hardness 3, HP 20, BT 10)"
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"Darricus doesn't need to succeed at a flat check to target {@condition concealed} creatures, and he is not {@condition flat‑footed} to creatures that are {@condition hidden} from him."
+					],
+					"name": "Sharp Eyes"
+				}
+			],
+			"ac": {
+				"default": 28,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 15
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 122,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Darricus makes a melee {@action Strike} that counts as two attacks when calculating his multiple attack penalty. If this strike hits, it deals an extra die of weapon damage."
+					],
+					"name": "Power Attack"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Darricus makes a melee {@action Strike} and compares the attack roll result to the AC of up to two foes, each of whom must be within his melee reach and adjacent to each other. He rolls damage only once and applies it to each creature he hit. This {@action Strike} counts as two attacks for calculating his multiple attack penalty."
+					],
+					"name": "Swipe"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": []
+			},
+			"page": 57,
+			"misc": []
+		},
+		{
+			"source": "EC2",
+			"name": "Bogey",
+			"level": 3,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Small",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 10
+				},
+				"Deception": {
+					"default": 10
+				},
+				"Intimidation": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -2,
+				"Wis": 1,
+				"Cha": 3
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 20,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 7
+				},
+				"Ref": {
+					"default": 12
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 35,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"fear"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"necromancy",
+						"occult"
+					],
+					"requirements": "The bogey has killed a creature within the last round and is adjacent to the creature",
+					"entries": [
+						"The bogey consumes the creature's soul. The soul is utterly destroyed\u2014nothing short of wish or a similar effect can restore it to life, and only after the bogey has been slain. The bogey regains Hit Points equal to double the level of the consumed creature. After devouring three souls within a year, the bogey transforms into a bugaboo."
+					],
+					"name": "Devour Soul"
+				},
+				{
+					"entries": [
+						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to the bogey."
+					],
+					"name": "Surprise Attack"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 10,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+3} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 18,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear",
+									"amount": 2
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"page": 78,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Bugaboo",
+			"level": 6,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 15
+				},
+				"Deception": {
+					"default": 14
+				},
+				"Intimidation": {
+					"default": 14
+				},
+				"Stealth": {
+					"default": 15
+				},
+				"Thievery": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 5,
+				"Con": 3,
+				"Int": -1,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+13 Str +4, Dex +5, Con +3, Int \u20131, Wis +2, Cha +4."
+					],
+					"name": "Thievery"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"fear"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": [
+					"mobility"
+				],
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"necromancy",
+						"occult"
+					],
+					"entries": [
+						"The bogey consumes the creature's soul. The soul is utterly destroyed\u2014nothing short of wish or a similar effect can restore it to life, and only after the bogey has been slain. The bogey regains Hit Points equal to double the level of the consumed creature. After devouring three souls within a year, the bogey transforms into a bugaboo."
+					],
+					"name": "Devour Soul",
+					"requirements": "The bogey has killed a creature within the last round and is adjacent to the creature"
+				},
+				{
+					"entries": [
+						"When the bugaboo uses a {@action Stride} action to move half their Speed or less, that movement does not trigger reactions."
+					],
+					"name": "Mobility"
+				},
+				{
+					"entries": [
+						"The bugaboo deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures.",
+						"Striking Fear (emotion, fear, mental) If a bugaboo scores a critical hit with a claw {@action Strike}, the target must attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The target is {@condition frightened|CRB|frightened 2}.",
+								"Critical Failure": "The target is {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round."
+							}
+						}
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"entries": [
+						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to the bogey."
+					],
+					"name": "Surprise Attack"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [
+						"striking fear"
+					],
+					"damage": "{@damage 2d8+6} slashing plus striking fear",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 22,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "knock"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "paralyze"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition frightened}"
+				]
+			},
+			"page": 78,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Bogeyman",
+			"level": 10,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 19
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 23
+				},
+				"Athletics": {
+					"default": 19
+				},
+				"Deception": {
+					"default": 22
+				},
+				"Intimidation": {
+					"default": 22
+				},
+				"Society": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 23
+				},
+				"Thievery": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 7,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+23, {@skill Thievery} +21 Str +5, Dex +7, Con +4, Int +0, Wis +3, Cha +6."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 23
+				},
+				"Will": {
+					"default": 19
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 175,
+					"note": null,
+					"abilities": [
+						"fast healing 10"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"fear"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"illusion",
+						"mental",
+						"visual"
+					],
+					"entries": [
+						"60 feet. A bogeyman's aura of terror manifests as a shifting haze of images that reflect the viewers' deepest fears. Whenever a creature ends its turn within the aura, it must succeed at a DC 28 Will save or become {@condition frightened|CRB|frightened 1}. A creature's {@condition frightened} condition (including from striking fear) does not reduce as long as the creature remains in the aura. If the creature succeeds at its saving throw, it becomes temporarily immune to the aura for 24 hours."
+					],
+					"name": "Deepest Fear"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"mobility"
+				],
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"necromancy",
+						"occult"
+					],
+					"entries": [
+						"The bogey consumes the creature's soul. The soul is utterly destroyed\u2014nothing short of wish or a similar effect can restore it to life, and only after the bogey has been slain. The bogey regains Hit Points equal to double the level of the consumed creature. After devouring three souls within a year, the bogey transforms into a bugaboo."
+					],
+					"name": "Devour Soul",
+					"requirements": "The bogey has killed a creature within the last round and is adjacent to the creature"
+				},
+				{
+					"entries": [
+						"When the bugaboo uses a {@action Stride} action to move half their Speed or less, that movement does not trigger reactions."
+					],
+					"name": "Mobility"
+				},
+				{
+					"entries": [
+						"The bugaboo deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures.",
+						"Striking Fear (emotion, fear, mental) If a bugaboo scores a critical hit with a claw {@action Strike}, the target must attempt a DC 24 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The target is {@condition frightened|CRB|frightened 2}.",
+								"Critical Failure": "The target is {@condition frightened|CRB|frightened 3} and {@condition fleeing} for 1 round."
+							}
+						}
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"entries": [
+						"On the first round of combat, creatures that haven't acted yet are {@condition flat-footed} to the bogey."
+					],
+					"name": "Surprise Attack"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [
+						"striking fear"
+					],
+					"damage": "{@damage 2d12+9} slashing plus striking fear",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 27,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "knock",
+									"amount": "at will"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "mind reading"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "gaseous form"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "nightmare"
+								},
+								{
+									"name": "phantasmal killer"
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition frightened}"
+				]
+			},
+			"page": 79,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Iridescent Elephant",
+			"level": 7,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Huge",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 0,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 9
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 110,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"An iridescent animal emits phosphorescent bright light in a 15-foot aura.",
+						"The animal can suppress this display until the end of its next turn as a single action, which has the {@trait concentrate} trait. The color of the light is determined by the iridescent animal's creator."
+					],
+					"name": "Glowing Bones"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"visual"
+					],
+					"entries": [
+						"When the iridescent elephant stomps its foot, a bright, disorienting burst of light pulses through its leg. Each creatures adjacent to the iridescent elephant when it makes a foot {@action Strike} (regardless of whether or not it hit) must succeed at a DC 24 Will save or be {@condition flat-footed} until the beginning of the elephant's next turn."
+					],
+					"name": "Color Splash"
+				},
+				{
+					"entries": [
+						"A Medium or smaller creature hit by the elephant's trunk is {@condition grabbed}. If the elephant moves, it can bring the {@condition grabbed} creature along with it."
+					],
+					"name": "Grabbing Trunk"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Large or smaller, foot, DC 22."
+					],
+					"name": "Trample",
+					"generic": true
+				},
+				{
+					"traits": [
+						"light",
+						"visual"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"The iridescent elephant blasts a beam of light from its trunk in a 30-foot line. Each creature in the area must attempt a DC 22 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition dazzled} for 1 round. Failure The creature is {@condition blinded} for 1 minute. Critical Failure The creature is {@condition blinded} permanently."
+					],
+					"name": "Trunk Beam"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "tusk",
+					"attack": 14,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "trunk",
+					"attack": 16,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [
+						"grabbing trunk"
+					],
+					"damage": "grabbing trunk",
+					"types": []
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 14,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [
+						"color splash"
+					],
+					"damage": "{@damage 2d10+7} bludgeoning plus color splash",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition dazzled}",
+					"{@condition flat-footed}",
+					"{@condition grabbed}"
+				]
+			},
+			"page": 80,
+			"misc": [
+				"MA",
+				"RC",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Muse Phantom",
+			"level": 5,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Spirit",
+				"Undead"
+			],
+			"traits": [
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 10
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Deception": {
+					"default": 14
+				},
+				"Diplomacy": {
+					"default": 14
+				},
+				"Occultism": {
+					"default": 13
+				},
+				"Performance": {
+					"default": 16
+				},
+				"Theater Lore": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+13, {@skill Lore||Theater Lore} +11 Str \u20135, Dex +4, Con +2, Int +0, Wis +3, Cha +5."
+					],
+					"name": "Occultism"
+				},
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"mental",
+						"occult"
+					],
+					"entries": [
+						"30 feet. The muse phantom inspires a supernatural emotional response\u2014either comedy or drama. Each creature that begins its turn in the aura must attempt a DC 20 Will save; on a failure, the creature is affected as long as it remains within the aura. If the muse phantom is emitting a comedic aura, affected creatures become {@condition clumsy|CRB|clumsy 1}; if it is emitting a dramatic aura, affected creatures instead become {@condition stupefied|CRB|stupefied 1}.",
+						"The muse phantom can change its aura from comedic to dramatic or viceversa, or cease or activate this aura, by spending a single action, which has the {@trait concentrate} trait. A creature possessed by a muse phantom is immune to this aura."
+					],
+					"name": "Thespian Aura"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 50,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"paralyzed"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 5,
+					"name": "all damage"
+				},
+				{
+					"name": "ghost touch"
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"fly ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"mental",
+						"occult"
+					],
+					"requirements": "The muse phantom's thespian aura is active",
+					"entries": [
+						"The muse ceases its thespian aura and deals {@damage 4d8} mental damage to creatures in a 30-foot burst, including the creature it is possessing, if any (DC 22 basic Will save). Creatures that fail their Will saves are {@condition fascinated} by the muse phantom for 1 minute. The muse phantom can't use Grand Finale again for {@dice 1d4} rounds."
+					],
+					"name": "Grand Finale"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The phantom muse attempts to possess an adjacent corporeal creature. This has the same effect as the {@spell possession} spell (DC 20), except the duration is {@dice 1d4} hours, and since the phantom muse doesn't have a physical body, it is unaffected by that restriction of the spell. If the target is at least trained in {@skill Performance}, the DC of this ability is 24."
+					],
+					"name": "Muse Possession"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "phantom hand",
+					"attack": 13,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+5} negative",
+					"types": [
+						"negative"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "resonating note",
+					"attack": 15,
+					"traits": [
+						"magical",
+						"range 60 feet",
+						"sonic"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+5} sonic",
+					"types": [
+						"sonic"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 22,
+					"attack": 14,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "mindlink"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "hideous laughter"
+								},
+								{
+									"name": "invisibility",
+									"notes": [
+										"at will; self only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"mental",
+					"negative",
+					"sonic"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition fascinated}"
+				]
+			},
+			"page": 81,
+			"misc": [
+				"MA",
+				"RA",
+				"AD",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Chimpanzee Visitant",
+			"level": 3,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Small",
+			"creatureType": [
+				"Animal",
+				"Undead"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"lifesense 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 3,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": -1
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 18,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 55,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"paralyzed"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "positive"
+				},
+				{
+					"name": "whip vulnerability"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"enchantment",
+						"mental"
+					],
+					"entries": [
+						"20 feet, DC 16. See previous page.",
+						"HP 55, negative healing; Immunities {@trait death} effects, disease, {@condition paralyzed}, poison, {@condition unconscious}; Weaknesses positive 5, whip vulnerability."
+					],
+					"name": "Vengeful Presence"
+				},
+				{
+					"entries": [
+						"A chimpanzee visitant takes 5 additional damage from whips."
+					],
+					"name": "Whip Vulnerability"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The visitant gains a +2 circumstance bonus to damage rolls against a creature it has {@condition grabbed}."
+					],
+					"name": "Mauler"
+				},
+				{
+					"traits": [
+						"disease"
+					],
+					"entries": [
+						"Visitants can be carriers of diseases, even if they are immune to their effects. Saving Throw DC 16 Fortitude. Stage 1 {@condition sickened|CRB|sickened 1} (1 day); Stage 2 {@condition sickened|CRB|sickened 2} (1 day); Stage 3 confusion (1 day); Stage 4 dead."
+					],
+					"name": "Rabies"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition grabbed}",
+					"{@condition paralyzed}",
+					"{@condition sickened}"
+				]
+			},
+			"page": 83,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Lion Visitant",
+			"level": 5,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Large",
+			"creatureType": [
+				"Animal",
+				"Undead"
+			],
+			"perception": {
+				"default": 13
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"lifesense 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 13
+				},
+				"Athletics": {
+					"default": 13
+				},
+				"Stealth": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 4,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"entries": [
+						"A lion visitant takes 7 additional damage from whips."
+					],
+					"name": "Whip Vulnerability"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The visitant deals an extra {@dice 1d4} damage to any creature that's within reach of at least two of the visitant's allies."
+					],
+					"name": "Pack Attack"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The visitant Strides and makes a {@action Strike} at the end of that movement. If the visitant began this action {@condition hidden}, it remains {@condition hidden} until after the ability's {@action Strike}."
+					],
+					"name": "Pounce"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"See page 82."
+					],
+					"name": "Roar"
+				},
+				{
+					"entries": [
+						"The visitant deals an extra {@damage 1d8} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 15,
+					"traits": null,
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+8} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 15,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"page": 83,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Xulgath Spinesnapper",
+			"level": 5,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Large",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Xulgath"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Undercommon"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 15
+				},
+				"Intimidation": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 1,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"items": [
+				"maul"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 9
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"olfactory"
+					],
+					"entries": [
+						"30 feet. A creature that enters the aura must attempt a DC 21 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 1}, and on a critical failure, the creature also takes a \u20135-foot status penalty to its Speeds for 1 round.",
+						"While within the aura, the creature takes a \u20132 circumstance penalty to saves to recover from the {@condition sickened} condition. A creature that succeeds at its save is temporarily immune to all xulgaths' stench for 1 minute."
+					],
+					"name": "Stench"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"entries": [],
+					"name": "Grab",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The spinesnapper makes a claw or weapon {@action Strike}. If it hits, in addition to dealing damage, the creature must attempt a DC 22 Fortitude saving throw, with the following effects.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and the spinesnapper is {@condition flat-footed} until the start of its next turn.",
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is pushed 10 feet.",
+								"Critical Failure": "The target is pushed 10 feet and knocked {@condition prone}."
+							}
+						}
+					],
+					"name": "Brutal Blow"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The spinesnapper has a creature {@condition grabbed} or {@condition restrained}",
+					"frequency": "once per round;",
+					"entries": [
+						"The spinesnapper slams the creature against a nearby surface. The target and the surface struck each take {@damage 4d6} bludgeoning damage, and the target must succeed at a DC 22 Fortitude save or become {@condition slowed|CRB|slowed 1} for 1 round, or {@condition stunned} for 1 round on a critical failure."
+					],
+					"name": "Choke Slam"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "maul",
+					"attack": 15,
+					"traits": [
+						"shove"
+					],
+					"effects": [],
+					"damage": "{@damage 1d12+10} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 15,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 15,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+8} slashing plus",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition grabbed}",
+					"{@condition prone}",
+					"{@condition sickened}",
+					"{@condition slowed}"
+				]
+			},
+			"page": 84,
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Zuipnyrn",
+			"level": 3,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Aberration"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"greater darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Stealth": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 3,
+				"Int": -2,
+				"Wis": 2,
+				"Cha": 5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 20,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 10
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 35,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 3,
+					"name": "bludgeoning"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"occult",
+						"visual"
+					],
+					"entries": [
+						"30 feet. When a creature ends its turn in the aura, it must attempt a DC 22 Will save. On a failure, it becomes {@condition fascinated} with the zuipnyrn for 1 minute. Once the fascination ends, the creature is temporarily immune to this ability for 1 hour. The zuipnyrn can deactivate or activate this aura by using a single action, which has the {@trait concentrate} trait."
+					],
+					"name": "Alluring Aspect"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb ": 10
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"occult",
+						"visual"
+					],
+					"entries": [
+						"The zuipnyrn attempts to charm a creature within 30 feet that is currently {@condition fascinated} by the zuipnyrn. The target must attempt a DC 22 Will save. Whether it succeeds or fails the save, the target is temporarily immune for 1 hour.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and is no longer {@condition fascinated}.",
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature is {@condition helpful} toward the zuipnyrn for 1 hour.",
+								"Critical Failure": "The creature is {@condition helpful} toward the zuipnyrn for 1 day and will actively attempt to defend the zuipnyrn and even risk its life for it."
+							}
+						}
+					],
+					"name": "Beguiling Gaze"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"occult",
+						"visual"
+					],
+					"entries": [
+						"The zuipnyrn's eye produces a bright flash of light. Each creature in a 30-foot cone must attempt a DC 22 Fortitude save. The zuipnyrn can't use Blinding Flare again for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition dazzled} for 1 round.",
+								"Failure": "The creature is {@condition blinded} for 1 round and {@condition dazzled} for 1 minute.",
+								"Critical Failure": "The creature is {@condition blinded} for 1 minute."
+							}
+						}
+					],
+					"name": "Blinding Flare"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "eye stalk",
+					"attack": 8,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+2} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition blinded}",
+					"{@condition dazzled}",
+					"{@condition fascinated}"
+				]
+			},
+			"page": 85,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Andera Paldreen",
+			"level": 10,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 21
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven",
+					"Halfling"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 19,
+					"to Disarm": 22
+				},
+				"Diplomacy": {
+					"default": 22
+				},
+				"Intimidation": {
+					"default": 21
+				},
+				"Society": {
+					"default": 19
+				},
+				"Underworld Lore": {
+					"default": 19
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 0,
+				"Con": 5,
+				"Int": 3,
+				"Wis": 5,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+19, {@skill Diplomacy} +22,"
+					],
+					"name": "Criminal Lore"
+				},
+				{
+					"entries": [
+						"+21, {@skill Society} +19, {@skill Survival} +17, {@skill Lore||Underworld Lore} +19 Str +3, Dex +0, Con +5, Int +3, Wis +5,"
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"+5 Items breastplate, chief constable's badge (as diplomat's badge), +1 striking falchion,"
+					],
+					"name": "Cha"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 21
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 21
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 175,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Andera can use."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Opportunity when a creature within her reach uses a concentrate action, in addition to its normal trigger.",
+						"If her attack hits, and the trigger was a concentrate or manipulate action, she disrupts that action (rather than disruption on only a critical hit)."
+					],
+					"name": "Attack of"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						". Andera makes an {@skill Intimidation} check and compares it to the Will DC of each creature she chooses within 30 feet. Regardless of her result, the targets are temporarily immune for 10 minutes.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is {@condition paralyzed} for 1 minute and becomes {@condition frightened|CRB|frightened 2}.",
+								"Success": "The target takes a \u201310-foot penalty to all its Speeds for 1 minute and becomes {@condition frightened|CRB|frightened 1}."
+							}
+						}
+					],
+					"name": "Call to Halt"
+				},
+				{
+					"entries": [
+						"Andera treats all {@skill Perception} checks made to {@action Sense Motive} as one degree of success better than the result of her check."
+					],
+					"name": "Shrewd Eye"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "+1 striking falchion",
+					"attack": 22,
+					"traits": [
+						"forceful",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+7} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition frightened}",
+					"{@condition paralyzed}"
+				]
+			},
+			"page": 87,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Mistress Dusklight",
+			"level": 11,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Catfolk"
+			],
+			"perception": {
+				"default": 19
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Amurrun",
+					"Celestial",
+					"Common",
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 21
+				},
+				"Arcana": {
+					"default": 19
+				},
+				"Diplomacy": {
+					"default": 22
+				},
+				"Intimidation": {
+					"default": 24
+				},
+				"Occultism": {
+					"default": 19
+				},
+				"Performance": {
+					"default": 26
+				},
+				"Society": {
+					"default": 19
+				},
+				"Stealth": {
+					"default": 21
+				},
+				"Thievery": {
+					"default": 21
+				},
+				"Circus Lore": {
+					"default": 19
+				}
+			},
+			"abilityMods": {
+				"Str": 0,
+				"Dex": 5,
+				"Con": 1,
+				"Int": 3,
+				"Wis": 2,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+26, {@skill Society} +19, {@skill Stealth} +21, {@skill Thievery} +21 Str +0, Dex +5, Con +1, Int +3, Wis +2, Cha +7 Items daggers (3), religious symbol of Aroden, religious symbol of {@deity Zevgavizeb|EC3}, studded leather, wand of magic mouth, wand of ray of enfeeblement, whip of compliance (page 75)"
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 23
+				},
+				"Will": {
+					"default": 20
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"frequency": "once per day",
+					"entries": [
+						"Trigger."
+					],
+					"name": "Cat's Luck"
+				},
+				{
+					"entries": [
+						"Dusklight fails or critically fails a Reflex saving throw; Mistress Dusklight rerolls the saving throw and takes the better result."
+					],
+					"name": "Mistress"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"enchantment",
+						"emotion",
+						"occult",
+						"visual"
+					],
+					"entries": [
+						"Mistress Dusklight shoots a captivating look at one creature within 60 feet, who must be {@condition stupefied}. Until the end of its next turn, the creature is {@condition fascinated} by Mistress Dusklight and can't use {@condition hostile} actions toward her. The victim is then temporarily immune for 10 minutes."
+					],
+					"name": "Beguile the Addled"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"curse",
+						"enchantment",
+						"occult",
+						"mental",
+						"misfortune"
+					],
+					"requirements": "Mistress Dusklight must have fewer than 98 Hit Points",
+					"frequency": "once per round;",
+					"entries": [
+						"Mistress Dusklight spews a hatefully uttered curse at one creature within 30 feet that she can see. If the target fails a DC 32 Will save, whenever it attempts an attack roll or saving throw, it must roll twice and use the lower result. The target is then temporarily immune for 24 hours. The curse persists until it is removed or the target succeeds a later saving throw against it. The victim can attempt a new DC 32 Will save once per hour to end the curse."
+					],
+					"name": "Black Cat Curse"
+				},
+				{
+					"entries": [
+						"If a reaction would disrupt Mistress Dusklight's spellcasting, she attempts a DC {@flatDC 15} flat check.",
+						"On a success, the action isn't disrupted."
+					],
+					"name": "Steady Spellcasting"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "whip of compliance",
+					"attack": 23,
+					"traits": [
+						"finesse",
+						"reach 10 feet",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+12} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 30,
+					"attack": 24,
+					"entry": {
+						"0": {
+							"level": 6,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "mindlink"
+								},
+								{
+									"name": "magic aura"
+								},
+								{
+									"name": "unseen servant"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "hideous laughter"
+								},
+								{
+									"name": "spectral hand"
+								},
+								{
+									"name": "touch of idiocy"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "comprehend language"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "magic missile"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "soothe"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "cloak of colors"
+								},
+								{
+									"name": "command"
+								},
+								{
+									"name": "crushing despair"
+								}
+							]
+						},
+						"6": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "paranoia"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition stupefied}"
+				]
+			},
+			"page": 89,
+			"misc": [
+				"MA",
+				"RC",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "EC2",
+			"name": "Ulthadar",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"creatureType": [
+				"Spirit",
+				"Undead"
+			],
+			"traits": [
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 20
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Azlanti",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 16
+				},
+				"Diplomacy": {
+					"default": 15
+				},
+				"Religion": {
+					"default": 18
+				},
+				"Society": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 15
+				},
+				"Aroden Lore": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 3,
+				"Con": 0,
+				"Int": 4,
+				"Wis": 6,
+				"Cha": 3
+			},
+			"items": [
+				"moonstone diadem (page 74)"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18, {@skill Society} +16, {@skill Stealth} +15 Str \u20135, Dex +3, Con +0, Int +4, Wis +6, Cha +3 Items moonstone diadem (page 74)"
+					],
+					"name": "Religion"
+				},
+				{
+					"entries": [
+						"Bound Ulthadar can't leave Moonstone Hall."
+					],
+					"name": "Site"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 19
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": [
+						"negative healing",
+						"rejuvenation"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 5,
+					"name": "all damage"
+				},
+				{
+					"name": "ghost touch"
+				},
+				{
+					"name": "or"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"divine",
+						"enchantment",
+						"mental"
+					],
+					"entries": [
+						"30 feet. Creatures entering the aura or starting their turn in the aura must succeed at a DC 26 Will save or be {@condition stupefied|CRB|stupefied 1} for 1 minute. On a critical failure, the creature is also {@condition stunned|CRB|stunned 3}. As a reflection of Ulthadar's emotional state, this aura is active when Ulthadar is agitated or angry and is suppressed when he is calm."
+					],
+					"name": "Existential Agony"
+				},
+				{
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"Ulthadar can't move on to the afterlife until."
+					],
+					"name": "Rejuvenation"
+				},
+				{
+					"entries": [
+						"Hall is restored to a position of prominence within Escadar and staffed with new priests."
+					],
+					"name": "Moonstone"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"fly ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Ulthadar attempts to drain a living creature's life force. He makes a ghostly hand {@action Strike} but deals no damage on a hit. Instead, the target is {@condition drained|CRB|drained 1} for 1 day and Ulthadar regains 4 Hit Points."
+					],
+					"name": "Draining Touch"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition drained}",
+					"{@condition stupefied}"
+				]
+			},
+			"page": 91,
+			"misc": [
+				"CC"
+			]
+		}
+	]
+}

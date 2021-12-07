@@ -1,0 +1,167 @@
+{
+	"spell": [
+		{
+			"source": "FRP3",
+			"name": "Rejuvenating Flames",
+			"level": 1,
+			"school": "N",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Fire",
+				"Healing",
+				"Necromancy",
+				"Sorcerer"
+			],
+			"entries": [
+				"You create a gout of flame that both heals and burns. You restore {@dice 1d4} HP to all allies in the area, and those allies gain a +1 status bonus to Fortitude saves for 1 minute. Enemies in the area take {@damage 1d4} fire damage with a basic Reflex save."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Cone"
+				],
+				"entry": "15-foot cone"
+			},
+			"duration": {
+				"type": null
+			},
+			"savingThrow": "Reflex",
+			"savingThrowBasic": true,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "You restore an additional {@dice 1d4} HP to your allies and deal an additional {@damage 1d4} fire damage to enemies."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		},
+		{
+			"source": "FRP3",
+			"name": "Shroud Of Flame",
+			"level": 3,
+			"school": "V",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Fire",
+				"Sorcerer"
+			],
+			"entries": [
+				"You encircle yourself in an aura of protective flames.",
+				"Each creature that hits you with an unarmed attack, Grapples you, or otherwise touches you takes 3 fire damage. When you Cast the Spell and the first time you sustain it each round, each creature in the area takes {@damage 3d6} fire damage (basic Reflex save)."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "10-foot emanation"
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "The damage caused by touching you increases by 1, and the fire damage when you Cast the Spell or sustain it increases by {@dice 1d6}."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": true,
+			"page": 74
+		},
+		{
+			"source": "FRP3",
+			"name": "Cleansing Flames",
+			"level": 5,
+			"school": "N",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Fire",
+				"Healing",
+				"Necromancy",
+				"Sorcerer"
+			],
+			"entries": [
+				"You wrap the target in purifying flames. You can attempt to counteract a single poison or non-curse effect imparting the {@condition clumsy}, {@condition dazzled}, {@condition enfeebled}, {@condition fatigued}, {@condition frightened}, {@condition paralyzed}, {@condition sickened}, or {@condition stupefied} condition.",
+				"The target can choose to empower the flames with their life force, becoming {@condition drained|CRB|drained 1} (or increasing their {@condition drained} value by 1, if already under the condition) to grant you a +1 circumstance bonus to your counteract check."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature",
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		}
+	]
+}

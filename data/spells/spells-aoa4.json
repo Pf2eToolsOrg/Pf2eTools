@@ -1,0 +1,165 @@
+{
+	"spell": [
+		{
+			"source": "AoA4",
+			"name": "Practice Makes Perfect",
+			"level": 1,
+			"subclass": {
+				"Cleric|Domain": [
+					"toil"
+				]
+			},
+			"school": "D",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": false
+			},
+			"traits": [
+				"Uncommon",
+				"Cleric",
+				"Divination"
+			],
+			"entries": [
+				"The target gains a +2 status bonus to the triggering check, or a +3 bonus if the target has master or better proficiency in the skill. This bonus can change the outcome of the target's check."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"trigger": "You or an ally within range fails a skill check for a skill in which you or they are trained.",
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 63
+		},
+		{
+			"source": "AoA4",
+			"name": "Tireless Worker",
+			"level": 4,
+			"subclass": {
+				"Cleric|Domain": [
+					"toil"
+				]
+			},
+			"school": "N",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Healing",
+				"Necromancy"
+			],
+			"entries": [
+				"You suppress your choice of one of the following conditions that's affecting the target: {@condition clumsy}, {@condition encumbered}, {@condition enfeebled}, or {@condition fatigued}. If you don't remove the effect that caused the condition, the condition returns after the spell's duration expires."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 creature",
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": true,
+			"page": 63
+		},
+		{
+			"source": "AoA4",
+			"name": "Electrified Crystal Ward",
+			"level": 3,
+			"school": "V",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": false
+			},
+			"traits": [
+				"Rare",
+				"Electricity",
+				"Evocation"
+			],
+			"entries": [
+				"You create an electric latch rune hazard (Core Rulebook 523) on the target, creating a special crystalline lock on the object. You can also substitute your spell DC for any of the hazard's listed DCs. You can have only one such hazard active at a time, and if you cast this spell while a previous electric latch rune is active, the older hazard discharges harmlessly."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 hinge or latch",
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 2,
+					"entry": "The hazard's damage increases by {@dice 1d12}."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 75
+		}
+	]
+}

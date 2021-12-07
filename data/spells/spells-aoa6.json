@@ -1,0 +1,134 @@
+{
+	"spell": [
+		{
+			"source": "AoA6",
+			"name": "Apex Companion",
+			"level": 10,
+			"school": "T",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Druid",
+				"Polymorph",
+				"Transmutation"
+			],
+			"entries": [
+				"You focus on the energies of all members of your animal companion's species, transforming your animal companion into its apex battle form. Your animal companion gains the following statistics and abilities while in its apex form.",
+				{
+					"type": "list",
+					"items": [
+						"Your animal companion becomes Huge and its attacks have 15-foot reach. It must have enough space to expand into or the spell is lost.",
+						"30 temporary Hit Points.",
+						"Darkvision.",
+						"Your animal companion's attack's damage dice increase by one step, and its attack gains the deadly d12 trait.",
+						"+10-foot status bonus to its Speeds.",
+						"Ignores difficult terrain and greater difficult terrain."
+					]
+				}
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "1 animal companion in your service",
+			"duration": {
+				"type": "timed",
+				"entry": "1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 77
+		},
+		{
+			"source": "AoA6",
+			"name": "Song Of The Fallen",
+			"level": 10,
+			"school": "N",
+			"type": "FOCUS",
+			"focus": true,
+			"components": {
+				"F": true,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Bard",
+				"Composition",
+				"Necromancy"
+			],
+			"entries": [
+				"You chant a dirge or an elegy that either rouses the dead to action or reminds undead that they should lay to rest.",
+				"If you target dead creatures, the bodies animate and can continue acting as if they were alive. A creature animated in this way has 60 temporary Hit Points. The animated creatures are {@condition slowed|CRB|slowed 1} but can otherwise act normally. Creatures animated with this spell die again once the spell ends.",
+				"If you target undead creatures, each undead must attempt a basic Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The undead takes {@damage 5d6} positive damage.",
+						"Success": "The undead takes {@damage 10d6} positive damage and is {@condition slowed|CRB|slowed 1} for 1 round.",
+						"Failure": "The undead takes 100 positive damage and is {@condition slowed|CRB|slowed 1} for 1 minute.",
+						"Critical Failure": "The undead is destroyed."
+					}
+				}
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"targets": "up to 4 dead creatures or up to 4 undead creatures",
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": true,
+			"page": 77
+		}
+	]
+}

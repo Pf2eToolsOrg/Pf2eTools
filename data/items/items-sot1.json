@@ -1,0 +1,521 @@
+{
+	"item": [
+		{
+			"source": "SoT1",
+			"name": "Goz Mask",
+			"level": "2+",
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"Originally designed by a fanatical sect of Gozren priests, goz masks were designed to help navigate the area around the Eye of Abendego. The masks couldn't contend with the might of the storm, but they remain in use by people all around the Mwangi Expanse. These masks are typically made of wood and crafted to sport round, exaggerated features.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You ignore concealment caused by fog, smoke, and other obscuring vapors for 1 minute."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "goz mask",
+					"level": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 30,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater goz mask",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 240,
+						"note": null
+					},
+					"entries": [
+						"The effect lasts for 10 minutes."
+					]
+				},
+				{
+					"type": "major goz mask",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 1900,
+						"note": null
+					},
+					"entries": [
+						"The major goz mask gives you darkvision and allows you to ignore all concealment from any {@trait environmental} effects for 1 hour."
+					]
+				}
+			],
+			"page": 73
+		},
+		{
+			"source": "SoT1",
+			"name": "Herd Mask",
+			"level": 6,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Invested",
+				"Magical",
+				"Teleportation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 210,
+				"note": null
+			},
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"All herd masks are linked to at least one other herd mask and are usually sold in sets of multiple masks. Linked herd masks look similar to one another, with only the slightest of differences to tell them apart.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You swap locations with another creature wearing a linked herd mask within 100 feet. If you and the creature you swapped with are disguised as each other, other creatures gain an immediate {@skill Perception} check against the lower of your or the other wearer's {@skill Deception} DCs to {@action Impersonate} each other. On a failure, they don't realize the swap occurred."
+					]
+				}
+			],
+			"craftReq": "Supply a casting of dimension door. You can link a herd mask you create to another herd mask in your possession when you finish crafting it, which causes it to be linked to the chosen mask as well as all other herd masks that are also linked to the chosen mask.",
+			"page": 73
+		},
+		{
+			"source": "SoT1",
+			"name": "Mask Of The Cursed Eye",
+			"level": 8,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 475,
+				"note": null
+			},
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"These masks are always decorated with at least one wide, staring eye.",
+				"The first time each day a creature on your plane that you can't perceive targets you with a divination spell, the creature must attempt a DC 24 Will save. This effect is automatic and does not require you to Activate the item.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is unaffected. You know you've been targeted with a divination spell, but the mask gives you no additional information.",
+						"Failure": "The creature is {@condition sickened|CRB|sickened 1} and {@condition dazzled} for 1 minute. You know you've been targeted with a divination spell, but the mask gives you no additional information.",
+						"Critical Failure": "The creature is {@condition sickened|CRB|sickened 2} and {@condition dazzled} for 10 minutes, and the spell is disrupted. You gain a brief mental glimpse of the triggering creature and learn its approximate distance and direction."
+					}
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Mask Of Mercy",
+			"level": 4,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Fortune",
+				"Invested",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 100,
+				"note": null
+			},
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"This porcelain or alabaster mask portrays an angelic visage of kindness and mercy.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision (fortune)"
+					],
+					"frequency": "once per day",
+					"trigger": "You are about to roll a variable number of Hit Points you restore from an action with the {@trait healing} trait",
+					"requirements": null,
+					"effect": [
+						"Roll twice to determine the number of Hit Points you restore and take the higher result."
+					]
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Psychopomp Mask",
+			"level": 1,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 5,
+				"note": null
+			},
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"These minor magic items are painted to resemble your face, or some metaphorical depiction thereof, to encourage the ushers of death to take the mask in your place. If you begin your turn with a {@condition dying} value of 3 or greater, instead of making your recovery check, you lose the {@condition dying} condition but remain {@condition unconscious} at 0 Hit Points. The mask then cracks in half and is destroyed. The psychopomps won't be so easily fooled again\u2014you are temporarily immune to the effects of any psychopomp mask for 1 year."
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Rhinoceros Mask",
+			"level": "4+",
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"Covered with thick armor and bearing a thicker horn, this face mask grants you increased momentum. If you {@action Stride} at least 10 feet, your next melee {@action Strike} before the end of your turn ignores the Hardness of objects with a Hardness of 5 or less. If the object has more than Hardness 5, the mask grants no benefit."
+			],
+			"variants": [
+				{
+					"type": "rhinoceros mask",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 90,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater rhinoceros mask",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 425,
+						"note": null
+					},
+					"entries": [
+						"Your melee Strikes ignore the Hardness of objects with a Hardness of 10 or less."
+					]
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Shapespeak Mask",
+			"level": 4,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 80,
+				"note": null
+			},
+			"usage": "worn mask",
+			"bulk": "\u2014",
+			"entries": [
+				"This simple wooden mask is carved into the shape of an animal, usually tailored to a species of beast that the user favors. While wearing this mask, you can speak even when polymorphed into an animal. The shapespeak mask does not otherwise remove any limitations, such as the inability to cast spells when transformed."
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Skittering Mask",
+			"level": "2+",
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "worn mask",
+			"bulk": "1",
+			"entries": [
+				"This carved wooden full-head mask sports several holes along each side of the face. The first time each day that you begin your turn {@condition unconscious} and within 25 feet of an enemy, metallic insect legs emerge from the holes in the mask and {@action Step} 5 feet away from the nearest enemy, dragging your body along with the mask. If more than one enemy is equidistant, the mask Steps away from one of them at random. The mask possesses no special senses and does not react to {@condition hidden} or {@condition undetected} enemies, nor can it distinguish that a creature not acting openly {@condition hostile} is an enemy."
+			],
+			"variants": [
+				{
+					"type": "skittering mask",
+					"level": 2,
+					"price": {
+						"coin": "gp",
+						"amount": 30,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater skittering mask",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 500,
+						"note": null
+					},
+					"entries": [
+						"The mask Steps 15 feet instead of 5 feet, and for 1 minute, each time you begin your turn {@condition unconscious} and within 25 feet of an enemy, the mask Steps 15 feet away from the nearest enemy again. An ally can signal the mask with a single action, which has the {@trait auditory} and {@trait concentrate} traits. If the mask hears the signal, it attempts to move you towards that ally when it Steps away from the nearest enemy."
+					]
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "SoT1",
+			"name": "Tlil Mask",
+			"level": "5+",
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Invested",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "worn mask",
+			"bulk": "L",
+			"entries": [
+				"Colorful, beaded tlil masks are most commonly found on the distant continent of Arcadia, but trade between the two regions means that they can be found in the Mwangi Expanse as curiosities. These masks usually bear floral patterns and attune your senses to plants of all varieties.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"Your vision up to 60 feet sees through small amounts of living plant matter as though it were transparent.",
+						"While this effect is active, creatures can't be {@condition concealed} from you due to living plants, such as small trees, vines, and grass. This also prevents them from Hiding or Sneaking past you using only living plants for concealment or cover. Other than the inability to use the cover to {@action Hide} or {@action Sneak}, this ability doesn't prevent plants from providing cover to creatures or blocking line of effect. It also doesn't allow you to see through dead plant matter, such as the wooden walls of a building, or thick plant matter, such as the walls of a dungeon built entirely inside an enormous living tree.",
+						"The effect lasts for 1 minute."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "tlil mask",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 30,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater tlil mask",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 240,
+						"note": null
+					},
+					"entries": [
+						"The effect lasts for 10 minutes."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "SoT1",
+			"name": "Forgetful Ink",
+			"level": 6,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Contact",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 32,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"Used to write secret messages, a single dose of forgetful ink is enough to pen a page of text, often with flourishes extending to the page's edges. Anyone handling the page is exposed to the poison. This includes casual reading, unless the reader specifically takes precautions not to physically touch it. Unlike other poisons, forgetful ink retains its potency for one year, regardless of the number of victims exposed.",
+				"Saving Throw DC 20 Fortitude (secret); Onset 1 minute; Stage 1 The reader forgets the contents of the writing, recalling it as blank or as inconsequential text."
+			],
+			"page": 75
+		},
+		{
+			"source": "SoT1",
+			"name": "Rhythm Bone",
+			"level": 1,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Auditory",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"This small, enchanted bone (most often a jaw) is usually capped with metal at its ends. It's activated by striking it against a hard surface.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"The bone begins recording the next 1 minute of ambient sounds (including speech) that require a DC 15 or lower {@skill Perception} check to hear.",
+						"The bone's recording doesn't copy magical {@trait auditory} effects, such as those of spellcasting, a harpy's song, or a banshee's wail. Once the rhythm bone has been activated in this way, it retains the recorded sound for the rest of its existence and can't be activated this way again."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"The bone replays its recorded sounds."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "rhythm bone",
+					"level": 1,
+					"price": {
+						"coin": "gp",
+						"amount": 8,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "greater rhythm bone",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 64,
+						"note": null
+					},
+					"craftReq": "Supply a casting of ghost sound.",
+					"entries": [
+						"The magical bone records the next 10 minutes of ambient sounds that require a DC 20 or lower {@skill Perception} check to hear."
+					]
+				}
+			],
+			"page": 76
+		}
+	]
+}

@@ -1,0 +1,875 @@
+{
+	"item": [
+		{
+			"source": "AoE4",
+			"name": "Daylight Vapor",
+			"level": 13,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Inhaled",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 500,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This heavier-than-air mist emits a soft glow. While this poison lasts, it causes its victims to shine from within with agonizing, brilliant radiance. This effect has the {@trait light} trait (although the poison itself doesn't, so only the {@trait light} effect can be counteracted by {@trait darkness} effects). The {@condition sickened} condition from daylight vapor can't be removed while the poison lasts, and when the victim enters an area of magical darkness, the poison attempts to counteract the darkness with a counteract modifier of +21. If the poison fails, it can't attempt to counteract the same darkness again.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "31",
+					"savingThrow": "Fortitude",
+					"onset": "1 round",
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 4d6} poison damage and {@condition sickened|CRB|sickened 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} poison damage and {@condition sickened|CRB|sickened 2}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@dice 10d6} damage and {@condition sickened|CRB|sickened 3}",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of sunburst.",
+			"page": 77
+		},
+		{
+			"source": "AoE4",
+			"name": "Death Knell Powder",
+			"level": 14,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Injury",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 625,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This poison is made from toxic spores of death knell mushrooms, which are reduced to a gray powder and suffused with necromantic energy. If you're reduced to 0 Hit Points while under the effect of death knell powder, you must succeed at a DC 34 Will save or die (this is a {@trait death} effect). If you die, a random creature adjacent to you is bolstered by your departing life force and gains 20 temporary HP and a +1 status bonus to attack and damage rolls for 10 minutes.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "34",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 7d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 9d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 12d6} poison damage",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of death knell.",
+			"page": 77
+		},
+		{
+			"source": "AoE4",
+			"name": "Fearweed",
+			"level": 10,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Contact",
+				"Divine",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"Cultivated by mashing and fermenting toxic weeds found in lonely graveyards, fearweed is a greenish paste magically infused with psychic horror. The {@condition frightened} condition from fearweed can't be removed while the poison lasts.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "30",
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 7d6} poison damage and {@condition frightened|CRB|frightened 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 8d6} poison damage and {@condition frightened|CRB|frightened 2}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 9d6} poison damage and {@condition frightened|CRB|frightened 3}",
+							"duration": "1 minute"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of 4th-level {@spell fear}.",
+			"page": 77
+		},
+		{
+			"source": "AoE4",
+			"name": "Hunger Oil",
+			"level": 11,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Contact",
+				"Divine",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 235,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"Rendered from the fat of corporeal undead creatures and infused with ghoulish magic, this yellowish oil causes its victims to experience stabbing hunger pangs that only living flesh can abate. If you eat at least a mouthful of humanoid flesh, you ignore the {@condition enfeebled} condition from hunger oil for 1 minute. While under the effect of hunger oil, you regain only half as many Hit Points from {@trait healing} effects unless you've eaten at least a mouthful of humanoid flesh in the last minute.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "30",
+					"savingThrow": "Fortitude",
+					"onset": "1\nminute",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition enfeebled|CRB|enfeebled 2}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition enfeebled|CRB|enfeebled 3}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition enfeebled|CRB|enfeebled 4}",
+							"duration": "{@dice 1d4} minutes"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of ghoulish cravings.",
+			"page": 78
+		},
+		{
+			"source": "AoE4",
+			"name": "Liar's Demise",
+			"level": 14,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Contact",
+				"Divine",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 650,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This thick orange cream quickly seeps into skin. In addition to causing painful swelling in the brain, liar's demise compels the victim to speak only the truth. While under the effect of liar's demise, you take the listed poison damage and mental damage for any time you voluntarily and knowingly tell a lie, due to the poison's increased blood pressure to your brain.",
+				"You take this damage once per round, even if you lie several times in rapid succession. You're aware of this effect and can choose to not answer or give only evasive, technically truthful, answers; this is a {@trait mental} effect.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "34",
+					"savingThrow": "Fortitude",
+					"onset": "1\nminute",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition stupefied|CRB|stupefied 1}, {@damage 3d6} poison damage and {@damage 3d6} mental damage for lying",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition stupefied|CRB|stupefied 2}, {@damage 4d6} poison damage and {@damage 4d6} mental damage for lying",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition stupefied|CRB|stupefied 3}, {@damage 5d6} poison damage and {@damage 5d6} mental damage for lying, and the damage becomes a {@trait death} effect.",
+							"duration": null
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of zone of truth.",
+			"page": 78
+		},
+		{
+			"source": "AoE4",
+			"name": "Lifeblight Residue",
+			"level": 15,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Injury",
+				"Poison",
+				"Virulent"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 1100,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This black slime is carefully culled from coffins and sarcophagi used by the undead, and is then distilled and combined with necromantic energy, creating a dangerous sludge that leeches life force as aggressively as it rots flesh.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "35",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "6 rounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 5d6} negative damage and {@damage 3d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} negative damage and {@damage 4d6} poison damage",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 7d6} negative damage and {@damage 5d6} poison damage",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of 8th-level {@spell harm}.",
+			"page": 78
+		},
+		{
+			"source": "AoE4",
+			"name": "Repulsion Resin",
+			"level": 16,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Ingested",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 1650,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This clear, tasteless tar causes the victim to emit waves of harmful mental energy that repel other creatures.",
+				"Desperate users might consume this poison to keep enemies at bay despite the poison's debilitating effects. While you're {@condition stupefied} from this poison, a creature that starts its turn within 10 feet of you or approaches within 10 feet of you must attempt a DC 35 Will saving throw. On a failure, the creature can't voluntarily move closer to you; this is a {@trait mental} effect. Once the approaching creature has attempted to save, it uses the same result for all saves from that dose of repulsion resin.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "38",
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 12d6} mental damage and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 16d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 20d6} poison damage and {@condition stupefied|CRB|stupefied 2}",
+							"duration": "1 minute"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of repulsion.",
+			"page": 78
+		},
+		{
+			"source": "AoE4",
+			"name": "Sight-theft Grit",
+			"level": 9,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Ingested",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 115,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This blackish grit seems to absorb light and resembles particularly dark flakes of black pepper. Infused with the {@spell blindness} spell, sight-theft grit causes the victim's sight to dim and then depart altogether. The {@condition blinded} condition from this poison lasts for an additional 24 hours once the poison has run its course.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "28",
+					"savingThrow": "Fortitude",
+					"onset": "10 minutes",
+					"maxDuration": "14 hours",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@condition dazzled} and a \u20132 status penalty to visual {@skill Perception} checks",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 2,
+							"entry": "{@condition dazzled} and a \u20134 status penalty to visual {@skill Perception} checks",
+							"duration": "1 hour"
+						},
+						{
+							"stage": 3,
+							"entry": "{@condition blinded}",
+							"duration": "{@dice 2d6} hours"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of blindness.",
+			"page": 78
+		},
+		{
+			"source": "AoE4",
+			"name": "Spectral Nightshade",
+			"level": 13,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Ingested",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 450,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"Belladonna cultivated in planes hazardous to living visitors, such as the Shadow Plane or the Boneyard, grow with a strange, skeletal look to their branches. The leaves and berries of these extraplanar plants are partly incorporeal and significantly more toxic than belladonna grown on the Material Plane. When imbued with spirit-twisting magic, spectral nightshade quickly drains away the victim's vitality and makes colors painfully bright and bewildering. Spectral nightshade doesn't affect creatures that have no spirit; if a possessing spirit inhabits a body that takes poison damage from spectral nightshade, the possessor takes an equal amount of force damage, even if the possessor can't be affected directly by poisons.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "33",
+					"savingThrow": "Fortitude",
+					"onset": "1 minute",
+					"maxDuration": "6 minutes",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 10d6} poison damage and {@condition dazzled}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 13d6} poison damage and {@condition drained|CRB|drained 1}",
+							"duration": "1 minute"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 15d6} poison damage, {@condition confused}, and {@condition drained|CRB|drained 2}",
+							"duration": "1 minute"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of spirit blast.",
+			"page": 79
+		},
+		{
+			"source": "AoE4",
+			"name": "Spell-eating Pitch",
+			"level": 12,
+			"type": "Item",
+			"category": "Poison",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divine",
+				"Injury",
+				"Poison"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 325,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"activate": {
+				"activity": {
+					"number": 2,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This gummy resin contains sparkling motes of magical energy that dramatically impair your cognitive functions and dispel spells as you cast them. Spell energy manifests but then sputters out, as though {@condition drained} away by the sparkling motes. While you're {@condition stupefied} by this poison, the DC of flat checks to avoid disruption from the {@condition stupefied} condition when you {@action Cast a Spell} is 5 + twice the {@condition stupefied} value, rather than 5 + the {@condition stupefied} value.",
+				{
+					"type": "affliction",
+					"name": null,
+					"traits": [],
+					"DC": "31",
+					"savingThrow": "Fortitude",
+					"onset": null,
+					"maxDuration": "6\nrounds",
+					"stages": [
+						{
+							"stage": 1,
+							"entry": "{@damage 5d6} poison damage and {@condition stupefied|CRB|stupefied 1}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 2,
+							"entry": "{@damage 6d6} poison damage and {@condition stupefied|CRB|stupefied 3}",
+							"duration": "1 round"
+						},
+						{
+							"stage": 3,
+							"entry": "{@damage 7d6} poison damage and {@condition stupefied|CRB|stupefied 4}",
+							"duration": "1 round"
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of 6th-level {@spell dispel magic}.",
+			"page": 79
+		},
+		{
+			"source": "AoE4",
+			"name": "Blade Of The Rabbit Prince",
+			"level": 15,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Rare",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 6250,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This +2 greater striking dancing shortsword has a golden handguard resembling a bird with outstretched wings. The sword's blade is {@condition broken} halfway up its length, but this doesn't impair the sword's function.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You attempt to {@action Trip} or {@action Disarm} an opponent using {@skill Thievery} instead of {@skill Athletics}, and you add the blade of the Rabbit Prince's item bonus to the check. You do not need to have a hand free if you're wielding the blade of the Rabbit Prince, and your target can be up to two sizes larger than you."
+					]
+				}
+			],
+			"craftReq": "You must craft the blade in the Harrowed Realm.",
+			"page": 79
+		},
+		{
+			"source": "AoE4",
+			"name": "Hardened Harrow Deck",
+			"level": 14,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Rare",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 4350,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"The harrow is a traditional fortunetelling deck used by Varisian soothsayers. The hardened harrow deck is a magical version of the deck with cards made of thin metallic plates adorned with all the imagery common in standard harrow decks, but with more angular designs. You can hurl cards from the hardened harrow deck as +2 greater striking darts with the deadly d10 trait. A card used as a weapon isn't destroyed and can be recovered with 1 minute of searching if it can't be recalled back to the deck (see the deck's Activate entry on page 80)",
+				"However, if even a single card is missing from the deck, the deck can't be used to perform a traditional harrow reading.",
+				"As long as you carry more than half the cards in the hardened harrow deck, when you roll a success on a saving throw against a {@trait fear} effect, you get a critical success instead; if you already have an ability that would make a successful saving throw against a {@trait fear} effect a critical success, you instead gain a +1 circumstance bonus to saving throws against {@trait fear} effects.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"All cards from the hardened harrow deck within 60 feet that you can see fly back into the deck."
+					]
+				}
+			],
+			"page": 79
+		},
+		{
+			"source": "AoE4",
+			"name": "Poisoner's Staff",
+			"level": "4+",
+			"type": "Item",
+			"category": "Staff",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Magical",
+				"Necromancy",
+				"Staff"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This gnarled staff is covered with thorns and coated with a glistening lacquer that acts as a minor irritant.",
+				"While holding the staff, you aren't affected by its coating or thorns, and you reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage}.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "Cast"
+					},
+					"components": [
+						"a Spell"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You expend a number of charges from the staff to cast a spell from its list."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "poisoner's staff",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 90,
+						"note": null
+					},
+					"entries": [
+						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 13.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Cantrip} guidance",
+								"{@bold 1st} detect poison, spider sting"
+							]
+						}
+					]
+				},
+				{
+					"type": "greater poisoner's staff",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 450,
+						"note": null
+					},
+					"entries": [
+						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 10.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold 2nd} enhance victuals, imp sting (see below)",
+								"{@bold 3rd} neutralize poison, stinking cloud"
+							]
+						}
+					]
+				},
+				{
+					"type": "major poisoner's staff",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 4000,
+						"note": null
+					},
+					"entries": [
+						"You reduce the DC of your flat checks to overcome {@condition persistent damage ||persistent poison damage} from 15 to 5.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold 4th} swarming wasp stings (page 81)",
+								"{@bold 5th} cloudkill",
+								"{@bold 6th} purple worm sting"
+							]
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of all listed levels of all listed spells.",
+			"page": 80
+		},
+		{
+			"source": "AoE4",
+			"name": "Whisper Briolette",
+			"level": 7,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divination",
+				"Magical",
+				"Mental",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 55,
+				"note": null
+			},
+			"usage": "affixed to armor or to an outfit if a character has no",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "envision",
+				"requirements": "You are an expert in",
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"{@skill Stealth}.",
+				"This teardrop-shaped gemstone has triangular facets and looks suitable for fancy attire, although close inspection shows that it's hollow. When it's activated, you can instantly impart up to 1 minute of speech (roughly 150 words) telepathically to any creatures you choose within 100 feet. You can impart this instantaneous telepathic message to creatures that you perceive and creatures {@condition hidden} to you, but you can't do so to {@condition undetected} creatures.",
+				"Once used, the whisper briolette becomes unusable and subtly vanishes within the next few minutes, rather than crumbling to dust."
+			],
+			"page": 80
+		}
+	]
+}

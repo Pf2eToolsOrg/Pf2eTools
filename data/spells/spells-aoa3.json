@@ -1,0 +1,438 @@
+{
+	"spell": [
+		{
+			"source": "AoA3",
+			"name": "Exchange Image",
+			"level": 1,
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"school": "I",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Illusion",
+				"Visual"
+			],
+			"entries": [
+				"To mislead pursuers, the Lacunafex developed the means to swap visages. You trade appearances with the target, with the effects depending on the result of the target's Will saving throw. Willing and {@condition unconscious} targets automatically critically fail this saving throw.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "No effect.",
+						"Success": "You take on the target's appearance, and they take yours. This has the same effects as a 1st-level {@spell illusory disguise} spell, except that the target can't {@action Dismiss} the disguise. The duration is 1 minute or until Dismissed.",
+						"Failure": "As success, but the duration is 1 hour or until Dismissed.",
+						"Critical Failure": "As success, but the duration is 24 hours."
+					}
+				}
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"requirements": "You have the {@trait humanoid} trait.",
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "you and 1 other humanoid",
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": true,
+			"sustain": false,
+			"page": 73
+		},
+		{
+			"source": "AoA3",
+			"name": "Forgotten Lines",
+			"level": 4,
+			"traditions": [
+				"Arcane",
+				"Divine",
+				"Occult"
+			],
+			"school": "D",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Rare",
+				"Divination"
+			],
+			"entries": [
+				"Members of the Lacunafex and other allies use this spell to restore material that Thrune agents have redacted from historical or otherwise valuable texts. You learn one piece of information that was removed from the target text after its creation. You can instead learn one piece of information from a text that had been destroyed, but you must have a fragment of the text, such as a piece of the cover, a page, or even a clasp or metal fittings."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 text or remnants thereof",
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 6,
+						"entry": "The spell reconstructs all missing information regarding a specific topic of your choice."
+					},
+					{
+						"level": 9,
+						"entry": "The spell also reveals information the writer self-censored and didn't commit to paper."
+					}
+				],
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 73
+		},
+		{
+			"source": "AoA3",
+			"name": "Imprint Message",
+			"level": 1,
+			"traditions": [
+				"Occult"
+			],
+			"school": "D",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Divination"
+			],
+			"entries": [
+				"You project psychic vibrations onto the target object, imprinting it with a short message or emotional theme of your design. This imprinted sensation is revealed to anyone casting object reading (see below) on the target object, replacing any emotional events the item was present for.",
+				"If the object is in the area of a {@spell retrocognition} spell, the imprinted messages appear as major events in the timeline, but they don't interfere with any other visions.",
+				"If the object is targeted with read aura of a higher spell level than imprint message, the caster learns that the object has been modified. When you Cast this Spell, any prior vibrations placed in an object by previous castings of imprint message fade."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 object",
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		},
+		{
+			"source": "AoA3",
+			"name": "Join Pasts",
+			"level": 0,
+			"traditions": [
+				"Occult"
+			],
+			"school": "D",
+			"type": "CANTRIP",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": false
+			},
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Mental"
+			],
+			"entries": [
+				"With touches to the targets' foreheads, you bring them into mental communion. The targets can share thoughts and experiences, but not words. When one target attempts to {@action Recall Knowledge}, the other can {@action Aid} the first target's skill check, using any {@skill Lore} skill (even if that {@skill Lore} wouldn't normally apply) without having made any preparations to {@action Aid}."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "2 willing creatures",
+			"duration": {
+				"type": "timed",
+				"entry": "1 round",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 1,
+					"entry": "You can touch one additional target to include them in the spell's effects. Multiple targets can attempt checks to {@action Aid} the target who is attempting to {@action Recall Knowledge}."
+				},
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		},
+		{
+			"source": "AoA3",
+			"name": "Object Reading",
+			"level": 1,
+			"traditions": [
+				"Occult"
+			],
+			"school": "D",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Divination"
+			],
+			"entries": [
+				"You place a hand on an object to learn a piece of information about an emotional event that occurred involving the object within the past week, determined by the GM. If you cast {@spell object reading|APG} on the same item multiple times, you can either concentrate on a single event to gain additional pieces of information about that event, or you can gain a piece of information about another emotional event in the applicable time frame."
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 object",
+			"duration": {
+				"type": null
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 2,
+						"entry": "You can learn about an event that occurred within the last month"
+					},
+					{
+						"level": 4,
+						"entry": "You can learn about an event that occurred within the last year."
+					},
+					{
+						"level": 6,
+						"entry": "You can learn about an event that occurred within the last decade."
+					},
+					{
+						"level": 8,
+						"entry": "You can learn about an event that occurred within the last century."
+					},
+					{
+						"level": 9,
+						"entry": "You can learn about an event that occurred within the entirety of the object's history."
+					}
+				],
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		},
+		{
+			"source": "AoA3",
+			"name": "Spiritual Anamnesis",
+			"level": 4,
+			"traditions": [
+				"Divine",
+				"Occult"
+			],
+			"school": "N",
+			"type": "SPELL",
+			"focus": false,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"traits": [
+				"Uncommon",
+				"Mental",
+				"Necromancy"
+			],
+			"entries": [
+				"Memories of a past life that seem incredibly real (and may even be) overwhelm the target's mind. This is especially disorienting for undead and creatures that have lived a previous life (such as celestials, fiends, monitors, and many other extraplanar creatures); if such creatures roll a critical success on their save, they get a success instead, and if they roll a failure, they get a critical failure instead.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature is unaffected.",
+						"Success": "The creature is {@condition slowed|CRB|slowed 1} for 1 round.",
+						"Failure": "The target is {@condition slowed|CRB|slowed 1} for 1 minute and babbles about the visions, possibly providing information about what they saw.",
+						"Critical Failure": "As failure, but the target is also {@condition stunned|CRB|stunned 3}."
+					}
+				}
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"range": {
+				"type": "point",
+				"entry": "60 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 60
+				}
+			},
+			"targets": "1 creature",
+			"duration": {
+				"type": "timed",
+				"entry": "varies",
+				"duration": {
+					"number": 1,
+					"unit": "special"
+				}
+			},
+			"savingThrow": "Will",
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		},
+		{
+			"source": "AoA3",
+			"name": "Silver's Refrain",
+			"level": 0,
+			"school": "A",
+			"type": "CANTRIP",
+			"focus": true,
+			"components": {
+				"F": false,
+				"M": false,
+				"S": false,
+				"V": true
+			},
+			"traits": [
+				"Rare",
+				"Abjuration",
+				"Bard",
+				"Cantrip",
+				"Composition"
+			],
+			"entries": [
+				"The \"Song of Silver\" was an enchanted song used by the Silver Ravens to battle diabolic forces. You pull from select verses to temporarily replicate some of the legendary song's benefits, albeit on a much smaller scale.",
+				"Weapon and unarmed attacks by allies in the area are treated as silver. In addition, this spell automatically attempts to counteract any dimension door cast by a devil within the area or cast by a devil attempting to enter the area using dimension door. If a devil attempts to enter the area using dimension door and the spell is counteracted, the devil remains where it started."
+			],
+			"cast": {
+				"number": 1,
+				"unit": "action"
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "60-foot emanation"
+			},
+			"duration": {
+				"type": "timed",
+				"entry": "1 round",
+				"duration": {
+					"number": 1,
+					"unit": "round"
+				}
+			},
+			"savingThrowBasic": false,
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			},
+			"dismiss": false,
+			"sustain": false,
+			"page": 74
+		}
+	]
+}

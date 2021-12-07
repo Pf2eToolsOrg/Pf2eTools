@@ -1,0 +1,673 @@
+{
+	"item": [
+		{
+			"source": "EC2",
+			"name": "Acrobat's Staff",
+			"level": 6,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Fortune",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 235,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"bulk": "2",
+			"entries": [
+				"This +1 striking bo staff is particularly long, making it useful as a balancing pole. While you wield it, the acrobat's staff releases chalk dust to make your grip more secure, granting you a +1 circumstance bonus to your Reflex DC against checks to {@action Disarm} you of it.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": null,
+					"trigger": "You fail or critically fail an",
+					"requirements": null,
+					"effect": [
+						"Reroll the {@skill Acrobatics} check and take the better result."
+					]
+				}
+			],
+			"page": 73
+		},
+		{
+			"source": "EC2",
+			"name": "Beckoning Cat Amulet",
+			"level": 5,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Divination",
+				"Fortune",
+				"Magical",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 26,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": "envision",
+				"requirements": null,
+				"frequency": null,
+				"trigger": "You use a feat or ability to reroll a failed or critically failed Reflex saving throw"
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"(such as Cat's Luck or Halfling Luck)",
+				"This clay figurine resembles a white cat with a paw outstretched. When it's activated, any allies within 10 feet who also just failed or critically failed a Reflex saving throw from the same source (such as a {@spell fireball} spell) can also reroll their saving throw and use the better result."
+			],
+			"page": 73
+		},
+		{
+			"source": "EC2",
+			"name": "Bullhook",
+			"level": "3+",
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"A bullhook is a stout rod about 4 feet long with a blunt hook on the end. Too dull to be useful as a weapon, a bullhook is instead used to direct animals in training or in performing their tasks. A bullhook grants you an item bonus to {@skill Nature} checks to {@action Command an Animal} while you are holding it.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You wave the bullhook to produce the effects of a {@spell command} spell. This spell loses the {@trait linguistic} trait and can target only animals."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "standard",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 55,
+						"note": null
+					},
+					"entries": [
+						"The item bonus is +2, the {@spell command} spell is 1st level, and the DC is 18."
+					]
+				},
+				{
+					"type": "greater",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 1900,
+						"note": null
+					},
+					"craftReq": "Supply a casting of command of the appropriate level.",
+					"entries": [
+						"The item bonus is +2, the {@spell command} spell is 5th level, and the DC is 30."
+					]
+				}
+			],
+			"page": 73
+		},
+		{
+			"source": "EC2",
+			"name": "Grail Of Twisted Desires",
+			"level": 10,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Unique",
+				"Conjuration",
+				"Illusion",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 850,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"This timeworn chalice is constructed of dull tin. It has an unassuming appearance save for the gold, silver, and ebony rings that encircle its rim.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "three times per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"The chalice fills with one of three different wines of your choosing, as described below. The wine looks, tastes, and smells the same regardless of which type you choose, and detect magic has no effect on the liquid beyond indicating that it is magical.",
+						{
+							"type": "list",
+							"items": [
+								"Ordinary wine.",
+								"Wine that, when imbibed, casts a 2nd-level {@spell restoration} spell on the drinker.",
+								"Wine that, when imbibed, casts a 4th-level {@spell nightmare} spell on the drinker"
+							]
+						},
+						"If you aren't chaotic, the first time each day you activate the chalice, there is a one-in-six chance that the liquid you conjure is a different type (the GM should roll {@dice 1d6} as a secret roll) instead. The second and third times you activate the chalice in the same day, the odds of this happening increase to two-in-six or three-insix, respectively. If you are chaotic, the chalice always works as intended."
+					]
+				}
+			],
+			"page": 73
+		},
+		{
+			"source": "EC2",
+			"name": "Inspiring Spotlight",
+			"level": 9,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Light",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 650,
+				"note": null
+			},
+			"usage": "held in 2 hands",
+			"bulk": "3",
+			"entries": [
+				"An inspiring spotlight is a bulky contraption consisting of a drum-shaped metal housing around several reflective metal plates. Two handles on either side, each with a small button, allow you to aim the spotlight outward from your body.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per hour",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"When you push the left-hand button, the inspiring spotlight emits a beam of bright magical light in a 120-foot line that hangs in the air and remains in place even if you move the spotlight. If the line passes through an area of magical darkness or targets a creature affected by magical darkness, the inspiring spotlight attempts to counteract the darkness. Creatures within the line gain a +1 item bonus to saving throws and Charisma-based skill checks. In addition, creatures in the line who are {@condition frightened} reduce the value of their {@condition frightened} condition by 1 at the beginning of each turn they start in the area of the line. The beam remains in place for 1 minute or until you push the righthand button with another {@action Interact} action to extinguish the light."
+					]
+				}
+			],
+			"page": 73
+		},
+		{
+			"source": "EC2",
+			"name": "Invisible Net",
+			"level": 7,
+			"type": "Item",
+			"category": "Consumable",
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Consumable",
+				"Magical"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 60,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"You activate this folded lace handkerchief by spreading it out on the ground, where it grows to cover a 30-footby- 30-foot square area. Pale and diaphanous, the spread handkerchief is exceptionally difficult to see from more than 30 feet away and evaporates entirely after 1 minute. Any creature that falls on the net doesn't take falling damage."
+			],
+			"page": 74
+		},
+		{
+			"source": "EC2",
+			"name": "Marvelous Calliope",
+			"level": 4,
+			"type": "Item",
+			"category": "Structure",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Magical",
+				"Structure"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 100,
+				"note": null
+			},
+			"bulk": "L (when not activated)",
+			"entries": [
+				"This large slide whistle appears to be made of fine brass, the sides of which are engraved with musical notes and dancing clowns.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "minute",
+						"entry": "1 minute"
+					},
+					"components": [
+						"(command",
+						"envision",
+						"Interact)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You blow a tune upon the slide whistle, causing the whistle to expand. The whistle sprouts from one into several, and then creates a large wooden frame and keyboard.",
+						"By the time the unfolding is complete, the whistle fully transforms into a calliope, a wagon-sized contraption consisting of several steam whistles played like an organ. The calliope is heavy and anchored in place.",
+						"You have a +1 item bonus to {@skill Performance} checks to play the calliope. The calliope has a tendency to produce music for a few seconds after you cease playing it, adding a jaunty and overlong conclusion to your music.",
+						"If you use an {@action Interact} action to pull the small metal ring on the underside of the marvelous calliope, the calliope collapses back down into a slide whistle."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per hour",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You play the calliope, causing it to cast {@spell charm} on one of the listeners."
+					]
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "EC2",
+			"name": "Moonstone Diadem",
+			"level": 8,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Rare",
+				"Divination",
+				"Invested",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 500,
+				"note": null
+			},
+			"usage": "worn circlet",
+			"bulk": "L",
+			"entries": [
+				"This delicate and elegant diadem is woven of intricate silver wires set with three tear-shaped pearlescent moonstones. You gain a +1 item bonus to {@skill Religion} checks.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"focus"
+					],
+					"frequency": "once per hour",
+					"trigger": null,
+					"requirements": "You are within 10 feet of a moonstone pool",
+					"effect": [
+						"You peer into the moonstone pool and gain access to all the visual history recorded within the receptacle by concentrating on the specific subject you wish to see. Conversely, you can choose to deposit your own memories into the pool by concentrating for 1 hour on the information you wish to impart."
+					]
+				}
+			],
+			"page": 74
+		},
+		{
+			"source": "EC2",
+			"name": "Ringmaster's Staff",
+			"level": "6+",
+			"type": "Item",
+			"category": "Staff",
+			"traits": [
+				"Uncommon",
+				"Illusion",
+				"Magical",
+				"Staff"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This highly polished black wooden staff resembles an aristocrat's oversized walking cane, complete with a silver head shaped like a large circus animal such as a horse or elephant. Ringmasters or announcers use ringmaster's staves to draw attention from their audiences or to salvage acts that fall flat mid-performance. While wielding a ringmaster's staff, your normal voice can be clearly heard by all creatures within 300 feet regardless of intervening barriers or ambient noise, although your voice can't penetrate magical silence and you can't use this to extend an {@trait auditory} or {@trait sonic} effect through barriers that would otherwise block it.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "Cast"
+					},
+					"components": [
+						"a Spell"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You expend a number of charges from the staff to cast a spell from its list."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "ringmaster's staff",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 230,
+						"note": null
+					},
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"Cantrips dancing lights",
+								"{@bold 1st} feather fall, floating disk",
+								"{@bold 2nd} glitterdust, illusory creature, obscuring mist"
+							]
+						}
+					]
+				},
+				{
+					"type": "greater ringmaster's staff",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 1800,
+						"note": null
+					},
+					"entries": [
+						{
+							"type": "list",
+							"items": [
+								"{@bold 3rd} enthrall, pyrotechnics (page 77)",
+								"{@bold 4th} freedom of movement, summon animal",
+								"{@bold 5th} cloak of colors, command"
+							]
+						}
+					]
+				}
+			],
+			"craftReq": "Supply one casting of all listed levels of all listed spells.",
+			"page": 74
+		},
+		{
+			"source": "EC2",
+			"name": "Saints' Balm",
+			"level": 7,
+			"type": "Item",
+			"category": "Oil",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Healing",
+				"Magical",
+				"Necromancy",
+				"Oil"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 70,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"This luminescent paste is made from the powdered bones of a long-forgotten saint, mixed with herbs and blessed by a priest. It typically comes in a tightly sealed, palmsized dish etched with holy symbols. Applying saints' balm to yourself or a creature within reach restores {@dice 3d8+10} Hit Points to the creature to which it's applied."
+			],
+			"page": 75
+		},
+		{
+			"source": "EC2",
+			"name": "Spangled Rider's Suit",
+			"level": 9,
+			"type": "Item",
+			"category": "Armor",
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Invested",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 700,
+				"note": null
+			},
+			"usage": "worn armor",
+			"bulk": "1",
+			"entries": [
+				"This +1 resilient studded leather armor is adorned with colorful sequins that sparkle in even the faintest light. While wearing the spangled rider's suit, you gain a +2 item bonus to {@action Command an Animal} you are riding. Any animal you ride automatically knows the Drop {@condition Prone} and {@action Step} basic actions, in addition to any other basic actions it knows (normally only {@action Leap}, {@action Seek}, {@action Stand}, {@action Stride}, and {@action Strike}).",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"(move)"
+					],
+					"frequency": null,
+					"trigger": "You take damage while mounted or your mount Drops {@condition Prone}",
+					"requirements": null,
+					"effect": [
+						"You dismount, moving off your mount into a space adjacent to it."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "EC2",
+			"name": "Stole Of Civility",
+			"level": 9,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Invested",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 700,
+				"note": null
+			},
+			"usage": "worn cloak",
+			"bulk": "L",
+			"entries": [
+				"Woven from swaths of rich brocade silk and embroidered with ancient Azlanti script in golden thread, this stole imparts a noble appearance to even the homeliest of individuals when draped over the shoulders. While wearing a stole of civility, you receive a +2 item bonus to {@skill Diplomacy} checks to {@action Make an Impression} with humans or Make a {@action Request} of humans, and a +2 item bonus to {@skill Intimidation} checks against humans. The stole also grants you full understanding of the Azlanti language.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You gain 10 temporary Hit Points, which last for 10 minutes."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "EC2",
+			"name": "Whip Of Compliance",
+			"level": 9,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 3000,
+				"note": null
+			},
+			"usage": "held, 1 hand",
+			"bulk": "1",
+			"entries": [
+				"The handle of this braided leather +1 striking whip is made from the hairs of a variety of rare and mythical animals. When used against an animal, the whip of compliance can potentially force the target to follow your commands.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"Until the end of your current turn, any animals you {@action Strike} with the whip must attempt a DC 25 Will save.",
+						"On a failed or critically failed saving throw, the whip casts a 4th-level {@spell suggestion} spell on the animal with a base duration of 1 round, and the spell loses the {@trait linguistic} trait. The course of action must still fulfill suggestion's requirements. If you can cast spells, you can expend one of your spells of 4th level or higher as a part of activating the whip; if you do so, the suggestions this turn have their normal base duration."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "EC2",
+			"name": "Wondrous Figurines",
+			"level": "5+",
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"The magical statuettes known as wondrous figurines are described on page 576 of the Pathfinder Core Rulebook.",
+				"The following additional figurines are less common versions sometimes found in the pockets of menagerie owners who often find themselves in need of a quick act or diversion."
+			],
+			"variants": [
+				{
+					"type": "candy constrictor",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 140,
+						"note": null
+					},
+					"entries": [
+						"Although appearing as a multicolored piece of stick candy, this figurine bears a narrow snake head at one end and is as durable as stone. When activated, it becomes a rainbowstriped ball python (Pathfinder Bestiary 302) except it lacks the {@skill Stealth} skill. The snake can be used once per day, and it can remain in snake form for up to 20 minutes."
+					]
+				},
+				{
+					"type": "rubber bear",
+					"level": 7,
+					"price": {
+						"coin": "gp",
+						"amount": 350,
+						"note": null
+					},
+					"entries": [
+						"This small, stretchable statuette depicts a bear wearing a tutu and a fez and balancing on a ball slightly larger than its head. When activated, it becomes a grizzly bear (Pathfinder Bestiary 40) with similar attire. The bear remains balanced upon its rubber ball, and is therefore ungainly: it cannot {@action Climb} or {@action Swim}, has a \u201310- foot circumstance penalty to its Speed, and is always {@condition flat-footed}. If the bear leaves its ball, such as if it is repositioned with forced movement or knocked {@condition prone}, it immediately reverts to statuette form. The bear can be used once per day, and it can remain in bear form for up to 1 hour."
+					]
+				}
+			],
+			"page": 75
+		}
+	]
+}

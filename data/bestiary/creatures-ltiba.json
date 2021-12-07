@@ -1,0 +1,128 @@
+{
+	"creature": [
+		{
+			"source": "LTiBA",
+			"name": "Princess Sunset",
+			"level": 2,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Construct"
+			],
+			"traits": [
+				"Mindless"
+			],
+			"perception": {
+				"default": 6
+			},
+			"skills": {
+				"Athletics": {
+					"default": 9
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 0,
+				"Con": 4,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": -5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 17,
+				"when broken": 13,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 5
+				},
+				"Will": {
+					"default": 3
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 20,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"bleed"
+				],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"hardness": 5,
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Like normal objects, an animated rocking horse has Hardness. This Hardness reduces any damage it takes by an amount equal to the Hardness. Once the animated rocking horse is reduced to less than half its."
+					],
+					"name": "Construct Armor"
+				},
+				{
+					"entries": [
+						"Points, or immediately upon being damaged by a critical hit, its construct armor breaks and its."
+					],
+					"name": "Hit"
+				},
+				{
+					"entries": [
+						"Class is reduced to 13."
+					],
+					"name": "Armor"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Small or smaller, headbutt, DC 14."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "headbutt",
+					"attack": 8,
+					"traits": null,
+					"effects": [
+						"{@damage 1d8+2} Bludgeoning"
+					],
+					"damage": "{@damage 1d8+2} Bludgeoning",
+					"types": []
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": []
+			},
+			"page": 5,
+			"misc": [
+				"MA"
+			]
+		}
+	]
+}

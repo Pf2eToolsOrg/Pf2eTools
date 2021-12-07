@@ -1,0 +1,515 @@
+{
+	"item": [
+		{
+			"source": "SoT2",
+			"name": "Bag Of Cats",
+			"level": 8,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 500,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This beautiful leather bag is lined in soft fur and purrs quietly when pet.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You shake the bag to produce a single cat. You cast a 3rd-level {@spell summon animal} to produce a leopard (Bestiary 52)."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You pull the bag over your head and it covers you completely. You then exit the bag in the form of a large cat.",
+						"You gain the effects of 3rd-level {@spell animal form} but must use the cat battle form."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "SoT2",
+			"name": "Crown Of The Companion",
+			"level": 6,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Healing",
+				"Invested",
+				"Magical",
+				"Necromancy",
+				"Positive"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 250,
+				"note": null
+			},
+			"usage": "worn crown",
+			"bulk": "L",
+			"entries": [
+				"Stories tell of a forgotten king who once loved his subjects so much he was willing to give his own life energy for them. Whether true or not, this majestic wooden crown bears elaborate carvings depicting that tale. It's ringed with images of the same kingly figure giving more and more of himself to a throng of needy subjects. While wearing it, you gain a +1 item bonus to {@skill Diplomacy} checks.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You bow to an ally within 30 feet, creating a magical bond between the two of you. You cast {@spell shield} other targeting the ally. The link remains even if you move more than 30 feet away from them. At the end of the spell's duration, your ally recovers {@dice 4d8} Hit Points and you recover half of what they recover."
+					]
+				}
+			],
+			"page": 75
+		},
+		{
+			"source": "SoT2",
+			"name": "Fulminating Spear",
+			"level": 7,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Fire",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 360,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This +1 striking returning spear is warm to the touch. The head of the spear is crafted from gold with ivory inlay and has a ruby set into the shaft. You can make the spear glow like a torch or suppress its light by using an action, which has the {@trait concentrate} trait.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You touch the ruby and hurl the spear at a square within 40 feet. When the spear lands, it detonates, dealing {@damage 6d6} fire damage (DC 23 basic Reflex save) to all creatures in a 10-foot emanation. It then flies back to your hand."
+					]
+				}
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Habu's Cudgel",
+			"level": 8,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Unique",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 415,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"Long associated with a notorious crime boss in Nantambu, this stout +1 striking fearsomeAPG club is studded with vicious-looking knobs of obsidian and wrapped in cloth for a better grip.",
+				"It emits a ghastly groan when swung.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You gesture at a square within 40 feet with Habu's Cudgel. The club causes a frightful wail to unleash from that square and casts fear (DC 24 Will save) targeting the creature in that square and all adjacent creatures."
+					]
+				}
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Leopard's Armor",
+			"level": 9,
+			"type": "Item",
+			"category": "Armor",
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 700,
+				"note": null
+			},
+			"usage": "worn armor",
+			"bulk": "2",
+			"entries": [
+				"Made of cobalt-colored steel rings that flow down the entire length of the garment, this +1 resilient chain mail includes an armored face covering. The armor is said to be based on the same armor once worn by Azure Leopard, one of Old-Mage Jatembe's magic warriors.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You call upon the ferocity and grace of the leopard. The armor's rings flatten out to become a solid piece of flexible armor. You gain a +2 item bonus to {@skill Stealth} checks and {@skill Intimidation} checks to {@action Demoralize}, but take a \u20132 penalty to {@skill Diplomacy} and {@skill Society} checks.",
+						"This lasts for 1 hour, but you can Activate the armor again to revert it back to its original form."
+					]
+				}
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Rhino Hide Brooch",
+			"level": 5,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Consumable",
+				"Magical",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 28,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": "envision",
+				"requirements": null,
+				"frequency": null,
+				"trigger": "You would take physical damage."
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"This thick brooch is carved from a single piece of rhino hide. It's lacquered and covered in a thin layer of silver dust. When activated, the talisman grants you resistance 5 to physical damage until the end of the current creature's turn. This resistance applies to the triggering attack."
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Singing Muse",
+			"level": 6,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Consumable",
+				"Magical",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 250,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "reaction"
+				},
+				"components": "envision",
+				"requirements": null,
+				"frequency": null,
+				"trigger": "You attempt a"
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"{@skill Performance} check.",
+				"This small figurine is carved from a single piece of silvery, spiky stone and resembles a beautiful dryad pouring water into a small pool. When you activate the muse, you are momentarily enlightened with inspiration that bolsters your performance. If you roll a success on your triggering check, you get a critical success instead."
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Spellender",
+			"level": 9,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 600,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"This knife is a +1 striking returning dagger with a wide blade and thick wooden handle. A prayer for protection from evil magic is carved into the handle in tiny script, running around the handle in a spiral. The grooves of the carved prayer provide a good grip on the knife and make it easy to catch when it returns to your hand.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"The dagger casts a 4th-level {@spell dispel magic} targeting the most powerful spell effect affecting the creature you critically hit. The counteract check is +15."
+					]
+				}
+			],
+			"page": 76
+		},
+		{
+			"source": "SoT2",
+			"name": "Warcaller's Chime",
+			"level": "4+",
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"The Nantambu Chime-Ringers created these magical chimes to aid in their defense of their city. Each chime is made from elaborately carved wood depicting the nature of a given chime's power.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You ring the chime, unleashing its magic. The specifics of each chime, as well as the activation's frequency (if any), appear in its entry below."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "warcaller's chime of blasting",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"entries": [
+						"This chime features carvings of destructive runes.",
+						"When activated, it creates the effects of a 3rd-level {@spell sound burst} centered on you (DC 20 Fortitude save). Instead of the spell's normal range, it has a 5-foot emanation. In addition, creatures that critically fail their save are knocked {@condition prone} by the chime's effect. You can use this chime once per day."
+					]
+				},
+				{
+					"type": "warcaller's chime of destruction",
+					"level": 4,
+					"price": {
+						"coin": "gp",
+						"amount": 100,
+						"note": null
+					},
+					"entries": [
+						"A series of shattered mountains are carved into this chime. When activated, you touch the chime against an unattended object, casting shatter upon the object, ignoring the object's Hardness if it's 6 or lower. You can use this chime once per day."
+					]
+				},
+				{
+					"type": "warcaller's chime of dread",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 1000,
+						"note": null
+					},
+					"entries": [
+						"This chime's carvings depict skulls and other grim icons.",
+						"When activated, it creates an aura of fear in a 5-foot emanation for 1 round. Creatures in the aura must attempt a DC 27 Will save. On a failure, they become {@condition frightened|CRB|frightened 1} ({@condition frightened|CRB|frightened 2} on a critical failure). Affected creatures can't reduce their {@condition frightened} condition below {@condition frightened|CRB|frightened 1} while the chime is ringing. You can Sustain the Activation to sustain the aura, up to a total of 5 rounds. This chime can be used only once per day, whether or not you Sustain the aura."
+					]
+				},
+				{
+					"type": "warcaller's chime of refuge",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 500,
+						"note": null
+					},
+					"entries": [
+						"This chime's carvings depict a series of warding runes that evoke feelings of serene protection. When activated, you touch the chime to yourself or a willing creature. The target gains the effects of sanctuary (DC 20 Will save)",
+						"You can use this chime up to five times per day, but each use must target a different creature."
+					]
+				},
+				{
+					"type": "warcaller's chime of resistance",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 160,
+						"note": null
+					},
+					"entries": [
+						"This chime features several elemental runes in its carvings. When activated, it creates a defensive aura in a 5-foot emanation. As you activate the chime, choose acid, cold, electricity, fire, or sonic. You and creatures in the aura gain resistance 5 against the damage type you chose. This aura remains active for 10 minutes. This chime can be used once per week."
+					]
+				},
+				{
+					"type": "warcaller's chime of restoration",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 2000,
+						"note": null
+					},
+					"entries": [
+						"This chime's carvings depict blooming flowers. When activated, it creates a small aura of healing in a 5-foot emanation. Creatures in the aura gain fast healing 15. This aura remains active for 3 rounds. This chime can be used once per week."
+					]
+				}
+			],
+			"page": 77
+		},
+		{
+			"source": "SoT2",
+			"name": "Wondrous Figurines",
+			"level": "8+",
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Magical"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"The magical statuettes known as wondrous figurines are described on page 576 of the Pathfinder Core Rulebook.",
+				"The following additional figurines are uncommon versions sometimes found among the magical creations of the Magaambya or for sale in the streets of Nantambu."
+			],
+			"variants": [
+				{
+					"type": "bismuth leopards",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 495,
+						"note": null
+					},
+					"entries": [
+						"This exquisitely crafted statuette is carved into the form of twin panthers climbing a tree. When activated, it transforms into a pair of beautiful leopards (Pathfinder Bestiary 52) that are carved out of bismuth and flash hypnotically as they move. Creatures that come within 5 feet of a bismuth leopard or that end their turn within 5 feet of a bismuth leopard become {@condition dazzled} for 1 round unless they succeed at a DC 24 Will save. A creature that comes within 5 feet of both leopards or ends its turn within 5 feet of both leopards need only attempt one saving throw each time.",
+						"The leopards can be called on only once per day, and they remain in their leopard form for up to 10 minutes. If either of the leopards is slain, that leopard can't be summoned again until 1 week has passed, but this doesn't prevent you from summoning the other leopard."
+					]
+				},
+				{
+					"type": "ruby hippopotamus",
+					"level": 9,
+					"price": {
+						"coin": "gp",
+						"amount": 700,
+						"note": null
+					},
+					"entries": [
+						"This roughly hewn ruby figurine shimmers with a deep red hue and is carved into the likeness of an ornery hippopotamus. When activated, it transforms into an enraged hippopotamus (Pathfinder Bestiary 2 144) that sees everything within 30 feet of its activation area as its territory. It will relentlessly and ferociously attack anyone within this area except you, but it ignores your commands in favor of defending its area. The hippopotamus is active for 1 minute before reverting to its statue shape, satisfied that it has punished all possible interlopers into its territory. The figurine can be used only once per day."
+					]
+				}
+			],
+			"page": 77
+		}
+	]
+}

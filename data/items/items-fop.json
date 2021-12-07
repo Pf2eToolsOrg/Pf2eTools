@@ -1,0 +1,386 @@
+{
+	"item": [
+		{
+			"source": "FoP",
+			"name": "Alchemical Crossbow",
+			"level": 0,
+			"type": "Item",
+			"category": "no category found",
+			"traits": [
+				"Uncommon",
+				"Alchemical"
+			],
+			"consumable": false,
+			"generic": false,
+			"entries": [
+				"This crossbow can deliver alchemically infused bolts. The strange weapon has a metal bracket mounted on the side of the stock near the lath. As an action, you can load a single lesser alchemical bomb into the bracket; this bomb must be one that deals energy damage (such as an acid flask, alchemist's fire, bottled lightning, frost vial, or thunderstone). The next three attacks made with the crossbow deal {@dice 1d6} damage of the bomb's damage type in addition to the crossbow's normal damage. If the second and third attacks are not all made within 1 minute of the first attack, the bomb's energy is wasted. These attacks never deal splash damage or other special effects of the bomb and are not modified by any abilities that add to or modify a bomb's effect. The addition of the bracket serves to unbalance the weapon, reducing its range to 30 feet.",
+				"It otherwise functions as a crossbow (when determining damage, reload, and so on). Creatures use their crossbow proficiency when using the alchemical crossbow. The alchemical crossbow costs 25 gp."
+			],
+			"page": 56
+		},
+		{
+			"source": "FoP",
+			"name": "Energy Mutagen",
+			"level": "1+",
+			"type": "Item",
+			"category": "Elixir",
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Elixir",
+				"Mutagen",
+				"Polymorph"
+			],
+			"consumable": true,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"When created, this mutagen is attuned to your choice of one of four energy types: acid, cold, electricity, or fire.",
+				"When consumed, the mutagen suffuses your body with energy that spills out of you whenever you attack. At higher levels, it can even grant you the ability to unleash the energy in {@condition controlled} bursts.",
+				"Benefit You gain resistance to the attuned energy type. Whenever you score a hit with a melee weapon, add the listed amount of damage of the attuned energy type.",
+				"Drawback You gain weakness 5 to the other three energy types."
+			],
+			"variants": [
+				{
+					"type": "lesser",
+					"level": 1,
+					"price": {
+						"coin": "gp",
+						"amount": 4,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 5, add 1 point of damage on a hit with a melee weapon, and the duration is 1 minute."
+					]
+				},
+				{
+					"type": "moderate",
+					"level": 3,
+					"price": {
+						"coin": "gp",
+						"amount": 12,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 10, add {@dice 1d4} damage on a hit with a melee weapon, and the duration is 10 minutes."
+					]
+				},
+				{
+					"type": "greater",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 300,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 15, add {@dice 1d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 2d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 25 basic Reflex save)."
+					]
+				},
+				{
+					"type": "major",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 3000,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 20, add {@dice 2d6} damage on a hit with a melee weapon, and the duration is 1 hour. In addition, you can end the benefits of this mutagen to unleash a 30-foot cone of energy that deals {@dice 3d6} damage of the attuned type for every full 10 minutes of duration remaining (DC 32 basic Reflex save)."
+					]
+				}
+			],
+			"page": 56
+		},
+		{
+			"source": "FoP",
+			"name": "Stone Body Mutagen",
+			"level": "5+",
+			"type": "Item",
+			"category": "Elixir",
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Elixir",
+				"Mutagen",
+				"Polymorph"
+			],
+			"consumable": true,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This mutagen calcifies your body making it as hard as stone.",
+				"Benefit You gain resistance to physical damage (except bludgeoning) equal to the listed amount.",
+				"Drawback Your Speeds are reduced by 10 feet (minimum 5 feet) and you take a \u20132 penalty to Reflex saves."
+			],
+			"variants": [
+				{
+					"type": "lesser",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 22,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 5 to physical damage (except bludgeoning) and the duration is 10 minutes."
+					]
+				},
+				{
+					"type": "moderate",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 300,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 5 to physical damage (except bludgeoning) and the duration is 1 hour."
+					]
+				},
+				{
+					"type": "greater",
+					"level": 15,
+					"price": {
+						"coin": "gp",
+						"amount": 920,
+						"note": null
+					},
+					"entries": [
+						"You gain resistance 10 to physical damage (except bludgeoning) and the duration is 1 hour."
+					]
+				}
+			],
+			"page": 56
+		},
+		{
+			"source": "FoP",
+			"name": "Bort's Blessing",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Rare",
+				"Divination",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"This ornate copper band has a small ruby set in the center, flanked by a pair of dwarven runes. The wearer of this ring gains the ability to understand, read, and speak one common language of their choice, selected each morning as part of their daily preparations. In addition, the wearer receives a +1 item bonus to {@skill Diplomacy} checks to {@action Make an Impression}."
+			],
+			"page": 58
+		},
+		{
+			"source": "FoP",
+			"name": "Merchant's Guile",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Enchantment",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"The band of this ring is made from bluecolored iron and has two sharp, decorative protrusions on each side of the red-stone inlay. It feels quite heavy and reliable.",
+				"Wearing this ring grants you a +2 item bonus to {@skill Deception} and {@skill Diplomacy} checks, but only if the associated checks involve haggling or bargaining over a purchase or trade.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"(envision",
+						"interact)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You can determine if an item is magical simply by handling it. You detect no other indication of its power, only whether or not it is magical, granting the effects of a 1st-level {@spell detect magic} spell that affects only the object."
+					]
+				}
+			],
+			"page": 58
+		},
+		{
+			"source": "FoP",
+			"name": "Ring Of Minor Arcana",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Arcane",
+				"Evocation",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"This rose-gold ring is adorned in the center by a somewhat ominous-looking horned skull.",
+				"This ring gives you the power to cast the following innate arcane cantrips any number of times each day: detect magic, mage hand, and prestidigitation. Each is cast as a 1st-level spell.",
+				"If you are an arcane spellcaster, these can instead be heightened to the level of your cantrips."
+			],
+			"page": 58
+		},
+		{
+			"source": "FoP",
+			"name": "Ring Of The Weary Traveler",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Transmutation",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"This fanciful golden ring has an ornate band cast with delicate, swirling decorations and is inlaid with three bright-green emeralds. While wearing this ring, you gain a +10-foot item bonus to your Speed, but only when determining your overland movement per hour.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"(envision",
+						"interact)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You refresh yourself from fatigue. For 10 minutes, you can ignore the penalties from the {@condition fatigued} condition. This does not remove the condition, it merely suppresses the penalties and drawbacks of having the condition. If something would cause you to become {@condition fatigued} again while the ring's power is in effect, the suppression ends, and you immediately take the penalties again."
+					]
+				}
+			],
+			"page": 58
+		},
+		{
+			"source": "FoP",
+			"name": "Stalwart's Ring",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Necromancy",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"This fairly simple ring has no gemstone inlaid, but the band is cast to resembled a fanged wolf's head. Once per day, during your daily preparations, you can meditate on this ring to grant yourself 5 temporary Hit Points.",
+				"These last until your next daily preparation, as long as you are wearing the ring."
+			],
+			"page": 58
+		},
+		{
+			"source": "FoP",
+			"name": "Warrior's Training Ring",
+			"level": 5,
+			"type": "Item",
+			"category": "Worn",
+			"traits": [
+				"Uncommon",
+				"Divination",
+				"Invested"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 160,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"entries": [
+				"This ring is utilitarian in design\u2014indicating its martial use. Its band is decorated only with a simple, sharp-edged sculpture on the band's center. While wearing this ring, you add your level to your attack rolls with all weapons with which you are untrained.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"(envision)"
+					],
+					"frequency": "once per day",
+					"trigger": "You make an attack with a weapon in which you're untrained",
+					"requirements": null,
+					"effect": [
+						"You gain a +2 circumstance bonus to the attack roll. If you are an expert in any weapon, you instead gain a +4 circumstance bonus to the attack roll."
+					]
+				}
+			],
+			"page": 58
+		}
+	]
+}

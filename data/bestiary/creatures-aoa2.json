@@ -1,0 +1,5015 @@
+{
+	"creature": [
+		{
+			"source": "AoA2",
+			"name": "Ekujae Guardian",
+			"level": 2,
+			"rarity": "Common",
+			"alignment": "CG",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Elf"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Elven",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 7
+				},
+				"Athletics": {
+					"default": 7
+				},
+				"Nature": {
+					"default": 6
+				},
+				"Stealth": {
+					"default": 7
+				},
+				"Survival": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 3,
+				"Con": 0,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+6 Str +3, Dex +3, Con +0, Int +1, Wis +2, Cha +0 Items black adder venom (6), cold iron dagger, silver dagger, longbow (20 arrows), studded leather."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 6
+				},
+				"Ref": {
+					"default": 9
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 26,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The Ekujae guardian makes two Strikes against the same target, one with each of their daggers. The guardian combines the damage of any attacks that hit and applies precision damage, resistance, and weaknesses only once. Both attacks count toward the guardian's multiple attack penalty, but the penalty increases only after both attacks.",
+						"Primal Innate Spells DC 16; Cantrips (1st) dancing lights, detect magic, disrupt undead, tanglefoot."
+					],
+					"name": "Double Slice"
+				},
+				{
+					"traits": [
+						"precision"
+					],
+					"entries": [
+						"{@dice 1d6}."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Ekujae guardian ignores difficult terrain from plants."
+					],
+					"name": "Woodland Stride The"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "cold iron or silver dagger",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "longbow",
+					"attack": 11,
+					"traits": [
+						"deadly d10",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"effects": [
+						"black adder venom"
+					],
+					"damage": "{@damage 1d8} piercing plus black adder venom",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "cold iron or silver dagger",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 16,
+					"entry": {
+						"0": {
+							"level": 1,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "disrupt undead"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 11,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Jahsi",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "NG",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Elf"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 14
+				},
+				"Diplomacy": {
+					"default": 17
+				},
+				"Religion": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 3
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 28,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "An enemy damages one of Jahsi's allies within 15 feet of him.",
+					"entries": [
+						"The foe must choose one: The ally is unharmed by the triggering damage, or the ally gains resistance 10 against the triggering damage, and the enemy is {@condition enfeebled|CRB|enfeebled 2} until the end of its next turn."
+					],
+					"name": "Glimpse of Redemption"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Jahsi rolls a success on a Will save against an enemy's effect.",
+					"entries": [
+						"Jahsi gets a critical success instead."
+					],
+					"name": "Divine Providence"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Ekujae guardian."
+					],
+					"name": "Woodland Stride As"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "disrupting cold iron dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+7} piercing plus {@damage 1d6} positive to undead",
+					"types": [
+						"piercing",
+						"positive"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "silver dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "longbow",
+					"attack": 19,
+					"traits": [
+						"deadly d10",
+						"magical",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "disrupting cold iron dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+7} piercing plus {@damage 1d6} positive to undead",
+					"types": [
+						"piercing",
+						"positive"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "silver dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+7} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Champion Devotion",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 25,
+					"entry": {
+						"4": {
+							"fp": "(2 Focus Points)",
+							"spells": [
+								{
+									"name": "lay on hands"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 24,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "disrupt undead"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition enfeebled}"
+				]
+			},
+			"page": 11,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Racharak",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid",
+				"Dragon"
+			],
+			"traits": [
+				"Charau-ka",
+				"Fire"
+			],
+			"perception": {
+				"default": 16
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 12
+				},
+				"Athletics": {
+					"default": 18
+				},
+				"Crafting": {
+					"default": 10
+				},
+				"Religion": {
+					"default": 14
+				},
+				"Stealth": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 3,
+				"Con": 5,
+				"Int": 0,
+				"Wis": 4,
+				"Cha": 1
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 19
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within reach of Racharak's tail uses a move action or leaves a square during a move action it's using.",
+					"entries": [
+						"Racharak makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, she disrupts the creature's action."
+					],
+					"name": "Tail Swipe"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"climb ": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation",
+						"fire"
+					],
+					"entries": [
+						"Racharak breathes flames that deals {@damage 9d6} fire damage to all creatures in a 30-foot cone (DC 26 basic Reflex save)",
+						"She can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Racharak makes two claw Strikes and one bite {@action Strike} in any order."
+					],
+					"name": "Draconic Frenzy"
+				},
+				{
+					"entries": [
+						"As charau-ka warrior (page 84)."
+					],
+					"name": "Shrieking Frenzy"
+				},
+				{
+					"entries": [
+						"As charau-ka warrior (page 84)."
+					],
+					"name": "Thrown Weapon Mastery"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+9} piercing plus {@damage 2d4} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+9} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 20,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+9} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "thrown rock",
+					"attack": 17,
+					"traits": [
+						"deadly 1d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+9} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 34,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA",
+				"AD"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Gerhard Pendergrast",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 19
+			},
+			"languages": {
+				"languages": [
+					"Azlanti",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Deception": {
+					"default": 18
+				},
+				"Diplomacy": {
+					"default": 12
+				},
+				"Intimidation": {
+					"default": 18
+				},
+				"Nature": {
+					"default": 16
+				},
+				"Performance": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 18
+				},
+				"Azlanti Lore": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 5,
+				"Int": 0,
+				"Wis": -1,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+14, {@skill Intimidation} +18, {@skill Nature} +16,"
+					],
+					"name": "Engineering Lore"
+				},
+				{
+					"entries": [
+						"+16, {@skill Survival} +18 Str +3, Dex +4, Con +5, Int +0, Wis \u20131, Cha +6 Items bag of holding type I (containing three kegs of black powder he intends to use at area A10, or empty if the PCs already confronted him at A10; see that area for more details), shoddy blunderbuss, daggers (10), grapeshot (10), gunpowder (10), +1 leather armor, monocle, tindertwigs (5), +1 striking whip."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 11
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within 10 feet of Gerhard uses an action with the {@trait move} trait to leave a square.",
+					"entries": [
+						"Gerhard attempts to {@action Trip} the triggering creature. On a success, the creature also takes damage as if Gerhard hit with his whip {@action Strike}, and if the creature was flying, it falls 30 feet."
+					],
+					"name": "Whiplash"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A creature struck by Gerhard's punch must succeed at a DC 23 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure)."
+					],
+					"name": "Manly Left Hook"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Gerhard fires an explosive shot from his blunderbuss that deals {@damage 4d6} bludgeoning damage plus {@damage 2d10} fire damage to all creatures in a 30- foot cone (DC 26 basic Reflex)",
+						"When firing the blunderbuss, Gerhard must succeed at a DC 20 {@skill Crafting} or {@skill Lore||Engineering Lore} check or the weapon explodes, damaging him for the same amount as the creatures in the cone and destroying itself. If someone other than Gerhard uses the weapon, they must critically succeed at the check. A successful DC 22 {@skill Crafting} check is enough to confirm the weapon's unstable nature if someone examines it beforehand.",
+						"Reloading the blunderbuss takes 3 {@action Interact} actions: adding 1 dose of gunpowder, adding 1 grapeshot canister, and packing the contents."
+					],
+					"name": "Shoddy Blunderbuss"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"move"
+					],
+					"requirements": "Gerhard is in a jungle, dense forest, or an area with numerous overhead beams.",
+					"entries": [
+						"Gerhard uses his whip to lash upward to wrap around an overhanging tree branch; he then swings up to 30 feet in a straight line, and must end the movement on solid ground or fall."
+					],
+					"name": "Whip Swing"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "whip",
+					"attack": 19,
+					"traits": [
+						"disarm",
+						"finesse",
+						"nonlethal",
+						"magical",
+						"reach 10 feet",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist (agile, finesse)",
+					"attack": 18,
+					"traits": null,
+					"effects": [
+						"manly left hook"
+					],
+					"damage": "{@damage 1d4+6} bludgeoning plus manly left hook",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+6} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition stunned}"
+				]
+			},
+			"page": 37,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Hezle",
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Kobold"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 18
+				},
+				"Crafting": {
+					"default": 16
+				},
+				"Nature": {
+					"default": 12
+				},
+				"Stealth": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 12
+				},
+				"Mining Lore": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": -1,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 6,
+				"Wis": 2,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16, {@skill Survival} +12 Str \u20131, Dex +4, Con +2, Int +6, Wis +2, Cha +3 Items greater antidote, +1 crossbow (16 regular bolts and 4 wyvern poisoned bolts), +1 dagger, moderate healing potions (2), infused reagents (5), leather armor, greater staff of fire."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 122,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"alchemical",
+						"fire",
+						"interact"
+					],
+					"entries": [
+						"Cost 1 batch of infused reagents. Hezle quickly cobbles together an explosive bomb and lobs it up to 30 feet. All creatures in a 5-foot burst take {@damage 5d6} fire damage (DC 26 basic Reflex save)."
+					],
+					"name": "Kobold Explosives"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "Hezle must be adjacent to at least one enemy.",
+					"entries": [
+						"Cost 1 batch of infused reagents. Hezle throws a mix of special powders centered on a corner of her space, creating a plume of smoke filling a 5-foot burst until the end of her turn that causes her to be {@condition hidden}. She then immediately Sneaks, but must end her movement in a space that's not adjacent to any enemies. All creatures other than Hezle in the smoke cloud must attempt a DC 26 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition sickened|CRB|sickened 1}. Failure The creature is {@condition sickened|CRB|sickened 2}. Critical Failure The creature is {@condition sickened|CRB|sickened 3} and {@condition stunned|CRB|stunned 1}."
+					],
+					"name": "Smoky Retreat"
+				},
+				{
+					"traits": [
+						"precision"
+					],
+					"entries": [
+						"{@dice 2d6}."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Although Hezle does not cast spells, her obsession with fire and long hours of practice allow her to cast spells from her staff of fire as if she had the spells on her spell list and could cast them. She still must expend charges from the staff normally; when she prepares the staff each morning, she is capable of placing 4 charges in the staff."
+					],
+					"name": "Staff Mastery"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+2} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "staff of fire",
+					"attack": 13,
+					"traits": [
+						"magical",
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@dice 1d4}\u20131 bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "crossbow",
+					"attack": 20,
+					"traits": [
+						"magical",
+						"range increment 120 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} piercing (plus wyvern poison on first four shots)",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"fire",
+					"piercing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 50,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"AD",
+				"AC",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Charau-ka Dragon Priest",
+			"level": 6,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid",
+				"Dragon"
+			],
+			"traits": [
+				"Fire",
+				"Charau-ka",
+				"Ncommon",
+				"U"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 12
+				},
+				"Athletics": {
+					"default": 13
+				},
+				"Intimidation": {
+					"default": 15
+				},
+				"Religion": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 3,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 5,
+				"Cha": 3
+			},
+			"items": [
+				"leather armor",
+				"+1 striking longsword"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+15, {@skill Survival} +13 Str +4, Dex +3, Con +2, Int +0, Wis +5, Cha +3 Items leather armor, +1 striking longsword."
+					],
+					"name": "Religion"
+				}
+			],
+			"ac": {
+				"default": 23,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 12
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 90,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within reach of the priest's tail uses a move action or leaves a square during a move action it's using.",
+					"entries": [
+						"The priest makes a tail {@action Strike} at the creature with a \u20132 penalty. If it hits, it disrupts the creature's action."
+					],
+					"name": "Twisting Tail"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation",
+						"fire"
+					],
+					"entries": [
+						"The priest breathes fire that deals {@damage 7d6} fire damage in a 30-foot cone (DC 23 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"entries": [
+						"As charau-ka warrior (page 84)."
+					],
+					"name": "Shrieking Frenzy"
+				},
+				{
+					"entries": [
+						"As charau-ka warrior (page 84)."
+					],
+					"name": "Thrown Weapon Mastery"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation",
+						"fire"
+					],
+					"entries": [
+						"Requirement The priest is standing on the ground. The priest slams his fists into the ground, causing fire to erupt from the earth. Each non-worshipper of {@deity Dahak|LOGM} standing on the ground in a 15-foot emanation must succeed at a DC 25 Reflex save or fall {@condition prone} and take {@damage 1d6} bludgeoning damage and {@damage 2d6} fire damage."
+					],
+					"name": "Volcanic Eruption"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword (magical, versatile P)",
+					"attack": 17,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "bite",
+					"attack": 16,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d10+6} piercing plus {@damage 1d6} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 16,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 1d10+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 16,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "thrown rock",
+					"attack": 15,
+					"traits": [
+						"deadly d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+6} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Prepared",
+					"type": "Prepared",
+					"tradition": "Divine",
+					"DC": 25,
+					"attack": 17,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "burning hands",
+									"amount": 2
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "flaming sphere"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition prone}"
+				]
+			},
+			"page": 59,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA",
+				"AD",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Belmazog",
+			"level": 9,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid",
+				"Dragon"
+			],
+			"traits": [
+				"Boggard",
+				"Amphibious",
+				"Acid"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Boggard",
+					"Common",
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 16
+				},
+				"Athletics": {
+					"default": 18
+				},
+				"Deception": {
+					"default": 19
+				},
+				"Intimidation": {
+					"default": 21
+				},
+				"Performance": {
+					"default": 17
+				},
+				"Religion": {
+					"default": 18
+				},
+				"Society": {
+					"default": 12
+				},
+				"Survival": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 3,
+				"Con": 3,
+				"Int": -1,
+				"Wis": 3,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+21, {@skill Performance} +17, {@skill Religion} +18,"
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"+12, {@skill Survival} +14 Str +5, Dex +3, Con +3, Int \u20131, Wis +3, Cha +6."
+					],
+					"name": "Society"
+				}
+			],
+			"ac": {
+				"default": 28,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 18
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 145,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"swim ": 40
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"acid"
+					],
+					"entries": [
+						"Belmazog spews a gout of acid that deals {@damage 10d6} acid damage in a 30-foot cone (DC 28 basic Reflex save)",
+						"Belmazog can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"auditory",
+						"mental"
+					],
+					"entries": [
+						"As boggard swampseer (Pathfinder Bestiary 45)."
+					],
+					"name": "Drowning Drone"
+				},
+				{
+					"entries": [
+						"This rare and highly specialized ritual, taught to Belmazog by the Scarlet Triad, allowed her to use the fossilized remains of {@deity Dahak|LOGM} to erect powerful defenses in the region in the form of dragon pillars, but the resources and time required to perform the ritual again are not available to Belmazog during the course of this adventure. As a result, and since there is no way for the PCs to learn or benefit from the ritual, further information beyond the repercussions detailed in the adventure itself are not presented here."
+					],
+					"name": "Nul-Acrumi Vazghul Ritual"
+				},
+				{
+					"entries": [
+						"As boggard scout (Pathfinder Bestiary 44)."
+					],
+					"name": "Swamp Stride"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"As boggard scout (Pathfinder Bestiary 44) except DC 28."
+					],
+					"name": "Terrifying Croak"
+				},
+				{
+					"entries": [
+						"As boggard scout (Pathfinder Bestiary 44), except AC 25 and 8 HP."
+					],
+					"name": "Tongue Grab"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+11} piercing plus {@damage 1d12} acid",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+11} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tongue",
+					"attack": 20,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [
+						"tongue grab"
+					],
+					"damage": "{@damage 2d6+11} acid plus tongue grab",
+					"types": [
+						"acid"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Prepared",
+					"type": "Prepared",
+					"tradition": "Divine",
+					"DC": 27,
+					"attack": 19,
+					"entry": {
+						"0": {
+							"level": 5,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "ray of enfeeblement"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "burning hands",
+									"amount": 2
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "summon monster"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "harm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 77,
+			"misc": [
+				"MA",
+				"RC",
+				"AD"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Nketiah",
+			"level": 6,
+			"rarity": "Unique",
+			"alignment": "CG",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"perception": {
+				"default": 12
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Celestial",
+					"Charau-ka",
+					"Common",
+					"Draconic",
+					"Elven,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 9,
+					"to Climb": 13
+				},
+				"Deception": {
+					"default": 12
+				},
+				"Diplomacy": {
+					"default": 13
+				},
+				"Nature": {
+					"default": 10
+				},
+				"Occultism": {
+					"default": 11
+				},
+				"Performance": {
+					"default": 14
+				},
+				"Society": {
+					"default": 15
+				},
+				"Survival": {
+					"default": 10
+				},
+				"Ekujae Lore": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 0,
+				"Int": 3,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Skills {@skill Arcana} +11, {@skill Athletics} +9 (+13 to {@action Climb}), {@skill Deception} +12,"
+					],
+					"name": "Mwangi, Sylvan"
+				},
+				{
+					"entries": [
+						"+13, {@skill Lore||Ekujae Lore} +15, {@skill Nature} +10, {@skill Occultism} +11,"
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"+14, {@skill Society} +15, {@skill Survival} +10 Str +1, Dex +3, Con +0, Int +3, Wis +2, Cha +4 Items black adder venom (2), +1 striking longbow (20 arrows), studded leather, verdant staff."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 23,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 12
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 74,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"climb ": 20
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"primal"
+					],
+					"entries": [
+						"This magical limb functions in all ways as Nketiah's original arm. The arm can extend a vine to attack in melee, and using the arm, Nketiah has a climb Speed of 20 feet and Climbs as if she had master proficiency in {@skill Athletics}. Finally, the arm's primal magic allows her to use the spells from her verdant staff as if she had all of those spells on her spell list."
+					],
+					"name": "Arborean Arm"
+				},
+				{
+					"entries": [
+						"Elf Nketiah can move at half her Speed on a successful {@action Climb} check and at full Speed on a critical success. She can always {@action Take Cover} within forest terrain to gain cover, even if she's not next to a wall or obstacle."
+					],
+					"name": "Woodland"
+				},
+				{
+					"entries": [
+						"{@action Stride} Nketiah ignores difficult terrain caused by plants."
+					],
+					"name": "Woodland"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "vine lash",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "verdant staff",
+					"attack": 13,
+					"traits": [
+						"magical",
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "longbow",
+					"attack": 16,
+					"traits": [
+						"deadly d10",
+						"magical",
+						"range increment 100 feet",
+						"reload 0",
+						"volley 30 feet"
+					],
+					"effects": [
+						"black adder venom"
+					],
+					"damage": "{@damage 2d8+3} piercing plus black adder venom",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 24,
+					"attack": 14,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "illusory disguise"
+								},
+								{
+									"name": "illusory object"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "hideous laughter"
+								},
+								{
+									"name": "restore senses"
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "circle of protection"
+								},
+								{
+									"name": "heroism"
+								},
+								{
+									"name": "mind reading"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Bard Composition",
+					"type": "Focus",
+					"tradition": null,
+					"DC": 24,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "inspire competence",
+									"notes": [
+										"Pathfinder Core Rulebook 386"
+									]
+								},
+								{
+									"name": "inspire courage",
+									"notes": [
+										"Pathfinder Core Rulebook 386"
+									]
+								}
+							]
+						},
+						"3": {
+							"fp": "(2 Focus Points)",
+							"spells": [
+								{
+									"name": "counter"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 24,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "disrupt undead"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 79,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Asanbosam",
+			"level": 6,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Large",
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 17
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 14
+				},
+				"Athletics": {
+					"default": 16
+				},
+				"Intimidation": {
+					"default": 15
+				},
+				"Stealth": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 4,
+				"Con": 2,
+				"Int": -3,
+				"Wis": 1,
+				"Cha": -2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 35,
+				"climb ": 20
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "A {@condition grabbed}, {@condition paralyzed}, {@condition restrained}, {@condition unconscious}, or willing creature is within reach of the asanbosam's jaws.",
+					"entries": [
+						"The asanbosam sinks its teeth into the creature to drink its blood. If the victim is {@condition grabbed}, this is automatic; otherwise, the asanbosam must succeed at an {@skill Athletics} check against the victim's Fortitude DC. The victim becomes {@condition drained|CRB|drained 1} and the asanbosam regains 10 HP, gaining any excess HP as temporary Hit Points. Drinking Blood from a creature that's already {@condition drained} increases the victim's {@condition drained} value by 1, but doesn't restore any HP to the asanbosam. A victim's {@condition drained} condition decreases by 1 each week. A blood transfusion, which requires a successful DC 20 {@skill Medicine} check and a blood donor or sufficient blood, reduces the {@condition drained} value by 1 after 10 minutes."
+					],
+					"name": "Drink Blood"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "cold iron jaws",
+					"attack": 17,
+					"traits": [
+						"deadly 1d8"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+7} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"page": 80,
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Bida",
+			"level": 8,
+			"rarity": "Uncommon",
+			"alignment": "LE",
+			"size": "Huge",
+			"creatureType": [
+				"Dragon"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Deception": {
+					"default": 20
+				},
+				"Diplomacy": {
+					"default": 18
+				},
+				"Intimidation": {
+					"default": 18
+				},
+				"Society": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 2,
+				"Con": 3,
+				"Int": 4,
+				"Wis": 3,
+				"Cha": 6
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 15
+				},
+				"Will": {
+					"default": 18
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"climb ": 20,
+				"fly ": 60
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 1d6+6} bludgeoning, DC 26."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A bida can {@action Strike} with its tail even while Grabbing creatures with it. The bida can have up to eight Medium or smaller creatures {@condition grabbed} with its tail at a time; it can also grab Large creatures, but they count as four Medium creatures for this purpose."
+					],
+					"name": "Eight Coils"
+				},
+				{
+					"traits": [
+						"arcane",
+						"illusion"
+					],
+					"entries": [
+						"By concentrating for 4 hours, the bida hides a small settlement. This is a 5thlevel {@spell hallucinatory terrain} spell, except the area is a 500-foot burst and creatures are {@condition invisible} while inside structures in the area. The bida can conceal only one settlement at a time, and must concentrate on the effect for 10 minutes at the beginning of each day to maintain the illusion."
+					],
+					"name": "Mask Settlement"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d12+9} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 20,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 2d6+9} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 26,
+					"entry": {
+						"2": {
+							"spells": [
+								{
+									"name": "humanoid form"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "nondetection"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"page": 81,
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Biloko Warrior",
+			"level": 1,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Small",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 7
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Mwangi",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 7
+				},
+				"Crafting": {
+					"default": 7
+				},
+				"Nature": {
+					"default": 5
+				},
+				"Stealth": {
+					"default": 6
+				},
+				"Survival": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 2,
+				"Con": -1,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 1
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 16,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 4
+				},
+				"Ref": {
+					"default": 7
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 19,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Shield Block",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+					],
+					"name": "Inspired Feast"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 8,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d8+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 8,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d6+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 7,
+					"traits": [
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 17,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 82,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Biloko Veteran",
+			"level": 4,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Small",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Mwangi",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 10
+				},
+				"Crafting": {
+					"default": 10
+				},
+				"Intimidation": {
+					"default": 12
+				},
+				"Nature": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 13
+				},
+				"Survival": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 0,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"items": [
+				"longspear",
+				"shortbow (20 arrows)"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+11 Str +4, Dex +4, Con +0, Int +0, Wis +3, Cha +2 Items longspear, shortbow (20 arrows)"
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 11
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 58,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+					],
+					"name": "Inspired Feast"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The veteran makes a melee {@action Strike} and compares the attack roll result."
+					],
+					"name": "Swipe"
+				},
+				{
+					"entries": [
+						"AC of up to two foes, each of whom must be within their melee reach and adjacent to each other. Roll damage only once and apply it to each creature hit."
+					],
+					"name": "to the"
+				},
+				{
+					"entries": [
+						"Swipe counts as two attacks for the veteran's multiple attack penalty."
+					],
+					"name": "A"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "longspear",
+					"attack": 14,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "shortbow",
+					"attack": 14,
+					"traits": [
+						"deadly d10",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 21,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 83,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Eloko",
+			"level": 7,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Small",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Mwangi",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 18
+				},
+				"Crafting": {
+					"default": 13
+				},
+				"Deception": {
+					"default": 15
+				},
+				"Nature": {
+					"default": 13
+				},
+				"Stealth": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 5,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 4,
+				"Cha": 1
+			},
+			"items": [
+				"blowgun (10 poisoned darts)",
+				"+1 dagger"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+13 Str +6, Dex +5, Con +1, Int +0, Wis +4, Cha +1 Items blowgun (10 poisoned darts), +1 dagger."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 12
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 115,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"If a biloko feasts on a human corpse for 1 minute or more, they gain a +1 status bonus to attack rolls and a +2 status bonus to damage rolls for 1 hour."
+					],
+					"name": "Inspired Feast"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"polymorph",
+						"primal",
+						"transmutation"
+					],
+					"entries": [
+						"The eloko is affected by a 4th-level {@spell enlarge} spell. This lasts for 1 minute, and the eloko can {@action Dismiss} the Spell."
+					],
+					"name": "Size Alteration"
+				},
+				{
+					"traits": [
+						"precision"
+					],
+					"entries": [
+						"The eloko deals {@dice 2d6} extra precision damage to flatfooted creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 17,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "blowgun",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"nonlethal",
+						"range increment 20 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "1 piercing plus {@damage 2d4} {@condition persistent damage ||persistent poison}",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+8} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 22,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"poison"
+				],
+				"condition": []
+			},
+			"page": 83,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Charau-ka Warrior",
+			"level": 1,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Charau-ka"
+			],
+			"perception": {
+				"default": 6
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 6
+				},
+				"Religion": {
+					"default": 4
+				},
+				"Stealth": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -1,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 18,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 7
+				},
+				"Ref": {
+					"default": 8
+				},
+				"Will": {
+					"default": 4
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 18,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"primal",
+						"transmutation"
+					],
+					"frequency": "once per hour",
+					"entries": [
+						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+					],
+					"name": "Shrieking Frenzy"
+				},
+				{
+					"entries": [
+						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+					],
+					"name": "Thrown Weapon Mastery"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hatchet",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"nonlethal"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "hatchet",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"deadly d6",
+						"sweep",
+						"thrown 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"deadly d6",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "thrown debris",
+					"attack": 8,
+					"traits": [
+						"deadly d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 84,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Charau-ka Acolyte Of Angazhan",
+			"level": 3,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Charau-ka"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 7
+				},
+				"Intimidation": {
+					"default": 7
+				},
+				"Nature": {
+					"default": 9
+				},
+				"Religion": {
+					"default": 11
+				},
+				"Stealth": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 2,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 4,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 7
+				},
+				"Will": {
+					"default": 11
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 45,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"primal",
+						"transmutation"
+					],
+					"entries": [
+						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+					],
+					"name": "Shrieking Frenzy",
+					"frequency": "once per hour"
+				},
+				{
+					"entries": [
+						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+					],
+					"name": "Thrown Weapon Mastery"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 11,
+					"traits": [
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"nonlethal"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 11,
+					"traits": [
+						"deadly d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "thrown debris",
+					"attack": 11,
+					"traits": [
+						"deadly d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Prepared",
+					"type": "Prepared",
+					"tradition": "Divine",
+					"DC": 21,
+					"attack": 11,
+					"entry": {
+						"0": {
+							"level": 2,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "fear"
+								},
+								{
+									"name": "heal"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "entangle"
+								},
+								{
+									"name": "sound burst"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 85,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Charau-ka Butcher",
+			"level": 6,
+			"rarity": "Common",
+			"alignment": "CE",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Charau-ka"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 15
+				},
+				"Intimidation": {
+					"default": 14
+				},
+				"Religion": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 3,
+				"Con": 3,
+				"Int": 0,
+				"Wis": 1,
+				"Cha": 2
+			},
+			"items": [
+				"hide armor",
+				"+1 striking trident"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 23,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"trigger": "The charau-ka butcher deals bleed damage to a creature.",
+					"entries": [
+						"The charau-ka licks blood from its weapon, becoming furious. It regains 5 HP and gains a +1 status bonus to attack rolls until the end of its turn."
+					],
+					"name": "Blood Fury"
+				},
+				{
+					"entries": [
+						"While the charau-ka butcher is raging, its melee Strikes deal {@damage 1d4} {@condition persistent damage ||persistent bleed damage}."
+					],
+					"name": "Mauler"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"As the barbarian class ability; AC 22, +9 HP, +2 melee damage."
+					],
+					"name": "Rage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"primal",
+						"transmutation"
+					],
+					"entries": [
+						"Trigger The charau-ka's turn begins. ; The charau-ka is {@condition quickened} until the end of its turn, and can use the extra action to {@action Stride} or {@action Strike}. While in the frenzy, the charau-ka can't speak and automatically critically fails {@skill Stealth} checks, due to its loud wailing."
+					],
+					"name": "Shrieking Frenzy",
+					"frequency": "once per hour"
+				},
+				{
+					"entries": [
+						"Any weapon a charau-ka throws gains the deadly d6 weapon trait. Furthermore, when a charau-ka throws an improvised weapon, it does not take the \u20132 penalty for doing so, nor does it take a penalty for using a thrown improvised weapon with the {@trait nonlethal} trait to make a lethal attack."
+					],
+					"name": "Thrown Weapon Mastery"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "trident",
+					"attack": 20,
+					"traits": [
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 19,
+					"traits": [
+						"agile",
+						"nonlethal"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "trident",
+					"attack": 18,
+					"traits": [
+						"deadly d6",
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "thrown debris",
+					"attack": 17,
+					"traits": [
+						"deadly d6",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 85,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Grippli Scout",
+			"level": 1,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Grippli"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Grippli"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 7
+				},
+				"Athletics": {
+					"default": 4
+				},
+				"Nature": {
+					"default": 6
+				},
+				"Stealth": {
+					"default": 7,
+					"in forests": 9
+				},
+				"Survival": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": -1
+			},
+			"items": [
+				"dart (5)",
+				"leather armor",
+				"net",
+				"sickle"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 18,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 7
+				},
+				"Ref": {
+					"default": 9
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 20,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 20
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The grippli is wielding a net in two hands.",
+					"entries": [
+						"The grippli makes a ranged {@action Strike} (with a +9 modifier) against a Medium or smaller creature within 20 feet. On a hit, the target is {@condition flat-footed} and takes a \u201310-foot circumstance penalty to its Speeds. On a critical hit, the creature is {@condition restrained} instead. The DC to {@action Escape} the net is 16. A creature adjacent to the target can {@action Interact} with the net to remove it."
+					],
+					"name": "Hurl Net"
+				},
+				{
+					"entries": [
+						"A grippli ignores difficult terrain in forests and jungles."
+					],
+					"name": "Jungle Stride"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "sickle",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"finesse",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dart",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"page": 86,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Grippli Archer",
+			"level": 3,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Grippli"
+			],
+			"perception": {
+				"default": 10
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Grippli"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 9
+				},
+				"Athletics": {
+					"default": 6
+				},
+				"Nature": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 11,
+					"in forests": 13
+				},
+				"Survival": {
+					"default": 8
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": -1
+			},
+			"items": [
+				"leather armor",
+				"shortbow (30 arrows)",
+				"shortsword"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 20,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 44,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 20
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The grippli archer makes three ranged Strikes with their shortbow, all against a single target. Combine the damage of any Strikes that hit for the purpose of resistances and weaknesses."
+					],
+					"name": "Hail of Arrows"
+				},
+				{
+					"entries": [
+						"A grippli ignores difficult terrain in forests and jungles."
+					],
+					"name": "Jungle Stride"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "shortbow",
+					"attack": 11,
+					"traits": [
+						"deadly 1d10",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 87,
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Grippli Greenspeaker",
+			"level": 5,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Grippli"
+			],
+			"perception": {
+				"default": 13
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Grippli"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 9
+				},
+				"Diplomacy": {
+					"default": 10
+				},
+				"Medicine": {
+					"default": 11
+				},
+				"Nature": {
+					"default": 14
+				},
+				"Religion": {
+					"default": 11
+				},
+				"Stealth": {
+					"default": 11
+				},
+				"Survival": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 4,
+				"Cha": 0
+			},
+			"items": [
+				"dart (4)",
+				"staff"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+11, {@skill Stealth} +11, {@skill Survival} +11 Str +2, Dex +4, Con +1, Int +1, Wis +4, Cha +0."
+					],
+					"name": "Religion"
+				},
+				{
+					"entries": [
+						"The greenspeaker can use {@skill Diplomacy} to {@action Make an Impression} on and make very simple Requests of plants and fungi.",
+						"Items dart (4), staff."
+					],
+					"name": "Green Empathy"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 10
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 71,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 20
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A grippli ignores difficult terrain in forests and jungles."
+					],
+					"name": "Jungle Stride"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 11,
+					"traits": [
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dart",
+					"attack": 13,
+					"traits": [
+						"agile",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Prepared",
+					"type": "Prepared",
+					"tradition": "Primal",
+					"DC": 23,
+					"attack": 13,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "know direction"
+								},
+								{
+									"name": "produce flame"
+								},
+								{
+									"name": "tanglefoot"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "jump"
+								},
+								{
+									"name": "pass without trace"
+								},
+								{
+									"name": "shillelagh"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "barkskin"
+								},
+								{
+									"name": "entangle"
+								},
+								{
+									"name": "speak with animals"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "animal form"
+								},
+								{
+									"name": "summon plants and fungi"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 87,
+			"misc": [
+				"MA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Kishi",
+			"level": 8,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				},
+				"Deception": {
+					"default": 20
+				},
+				"Diplomacy": {
+					"default": 19
+				},
+				"Society": {
+					"default": 15
+				},
+				"Stealth": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+15, {@skill Stealth} +18 Str +6, Dex +4, Con +1, Int +1, Wis +2, Cha +5."
+					],
+					"name": "Society"
+				}
+			],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 138,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 10,
+					"name": "piercing"
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 1d10+9} piercing, DC 26 ({@condition grabbed} by jaws only)"
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"entries": [
+						"The kishi switches between showing its attractive human face and its snarling hyena face. A kishi can use its innate spell and its {@skill Deception} and {@skill Diplomacy} skills only when its human face is showing, and it can use its jaws {@action Strike} only when its hyena face is showing."
+					],
+					"name": "Head Spin"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The kishi Strides twice. If it ends its movement within melee reach of at least one enemy, it can make a melee {@action Strike} against that enemy."
+					],
+					"name": "Sudden Charge"
+				},
+				{
+					"entries": [
+						"A creature {@condition grabbed} in the kishi's jaws can't speak, including providing verbal components for spells. In addition, the creature takes a \u20132 circumstance penalty to {@action Escape}."
+					],
+					"name": "Vice-Like Jaws"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 20,
+					"traits": null,
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d10+9} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 20,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+9} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 27,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"page": 88,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Living Sap",
+			"level": 6,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Ooze"
+			],
+			"traits": [
+				"Mindless"
+			],
+			"perception": {
+				"default": 7
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"motion sense 60 feet",
+					"no vision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 17
+				},
+				"Stealth": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": -3,
+				"Con": 4,
+				"Int": -5,
+				"Wis": -5,
+				"Cha": -5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Living sap can sense nearby motion through vibration and air movement."
+					],
+					"name": "Motion Sense"
+				}
+			],
+			"ac": {
+				"default": 13,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 7
+				},
+				"Will": {
+					"default": 5
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 175,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"mental"
+				],
+				"condition": [
+					"critical hits"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "cold"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"A creature that Strikes a living sap with a melee weapon must succeed at a DC 24 Reflex save or be disarmed of that weapon. If the creature critically fails, the weapon ends up in the living sap's space. A creature that hits a living sap with an unarmed attack must succeed at a DC 24 Reflex save or become {@condition grabbed} by the living sap until the end of its next turn."
+					],
+					"name": "Adhesive Body"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"climb ": 10
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"DC 22, {@damage 2d6} acid, {@action Escape} DC 24, Rupture 10."
+					],
+					"name": "Engulf",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A creature hit by a living sap's pseudopod {@action Strike} must succeed at a DC 24 Reflex save or become {@condition grabbed} until the end of the living sap's next turn."
+					],
+					"name": "Entangling Residue"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 17,
+					"traits": null,
+					"effects": [
+						"entangling residue"
+					],
+					"damage": "{@damage 2d8+8} bludgeoning plus entangling residue",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"page": 89,
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Mokele-mbembe",
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Huge",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Survival": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 4,
+				"Con": 6,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 21
+				},
+				"Ref": {
+					"default": 15
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 172,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"swim ": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Large or smaller, foot, DC 28."
+					],
+					"name": "Trample",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"sonic"
+					],
+					"entries": [
+						"The mokele-mbembe cracks its tail, creating a sonic boom in a 5-foot burst centered on a corner within reach of its tail {@action Strike}. Each creature in the burst's area must attempt a DC 28 Fortitude save. Mokele-mbembes are immune.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition stunned|CRB|stunned 1}.",
+								"Failure": "The creature is {@condition stunned|CRB|stunned 2}.",
+								"Critical Failure": "The creature is {@condition stunned|CRB|stunned 3}."
+							}
+						}
+					],
+					"name": "Whip Tail"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 22,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d12+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 22,
+					"traits": [
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 22,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+10} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition stunned}"
+				]
+			},
+			"page": 90,
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA2",
+			"name": "Sabosan",
+			"level": 5,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 10
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"echolocation 20 feet",
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Mwangi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 16
+				},
+				"Athletics": {
+					"default": 11
+				},
+				"Stealth": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 5,
+				"Con": 2,
+				"Int": -1,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"items": [
+				"spear"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 78,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The sabosan has a creature {@condition grabbed}.",
+					"entries": [
+						"The sabosan drains blood from the creature. The creature must succeed at a DC 23 Fortitude save or become {@condition drained|CRB|drained 1}. The sabosan gains a number of temporary Hit Points equal to the number of Hit Points lost by the creature."
+					],
+					"name": "Drain Blood"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory"
+					],
+					"entries": [
+						"The sabosan emits a deafening cry in a 30-foot cone.",
+						"Non-sabosan creatures in this area must each succeed at a DC 23 Fortitude save or be {@condition deafened} for 1 minute."
+					],
+					"name": "Fell Shriek"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The sabosan Strides up to double its Speed and then makes a claw {@action Strike}. If the sabosan moved at least 20 feet, it deals an additional {@dice 1d6} damage on a hit."
+					],
+					"name": "Powerful Charge"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+4} piercing plus 1 {@condition persistent damage ||persistent bleed}",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+4} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 13,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 14,
+					"traits": [
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition deafened}",
+					"{@condition drained}",
+					"{@condition grabbed}"
+				]
+			},
+			"page": 91,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		}
+	]
+}

@@ -1,0 +1,250 @@
+{
+	"feat": [
+		{
+			"source": "SoT2",
+			"name": "Folklorist Dedication",
+			"level": 2,
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "trained in {@skill Performance}",
+			"entries": [
+				"You are a master archivist and entertainer, capable of pulling wisdom from the tales you tell and weaving your allies and enemies into a powerful narrative. You gain the Spin Tale action.",
+				"Spin Tale {@as 1} (auditory, linguistic) Frequency once every 10 minutes; Effect You tell a story, designating one of your allies (but not yourself) as the hero of the story, and one enemy as the villain; both must be within 60 feet. The hero gains a +1 status bonus to attack rolls and saving throws against the villain until the start of your next turn. If you Spin a Tale on your next turn, the story continues for another round, for a maximum of 10 rounds. While the tale continues, minor, crude illusions spring into being in your space; these are arcane {@trait illusion} effects that have no mechanical impact other than illustrating your tale."
+			],
+			"special": "You can't select another dedication feat until you've gained two other feats from the folklorist archetype.",
+			"page": 78
+		},
+		{
+			"source": "SoT2",
+			"name": "Folktales Lore",
+			"level": 4,
+			"traits": [
+				"Archetype"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Folklorist Dedication",
+			"entries": [
+				"You can pull bits of wisdom from any tale. You become trained in {@skill Lore||Folktales Lore}, a special {@skill Lore} skill that can be used only to {@action Recall Knowledge}, but on any topic. If you fail a check to {@action Recall Knowledge} with {@skill Lore||Folktales Lore}, you get the effects of the {@feat Dubious Knowledge} skill feat.",
+				"If you are legendary in the {@skill Performance} skill, you gain expert proficiency in {@skill Lore||Folktales Lore}, but you can't increase your proficiency rank in {@skill Lore||Folktales Lore} by any other means."
+			],
+			"page": 78
+		},
+		{
+			"source": "SoT2",
+			"name": "Narrative Conduit",
+			"level": 6,
+			"traits": [
+				"Archetype",
+				"Auditory",
+				"Linguistic",
+				"Magical"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Folklorist Dedication",
+			"entries": [
+				"You act as a conduit for your companions just as your stories are a conduit between teller and listener. When you Spin a Tale and the hero of your tale Casts a Spell against the villain, you warp the world, allowing the hero to calculate range and cover to the villain from your space instead of their own if they prefer. The hero must choose to calculate both range and cover from the same space; they can't use one space for range and the other for cover."
+			],
+			"page": 78
+		},
+		{
+			"source": "SoT2",
+			"name": "Rule Of Three",
+			"level": 8,
+			"traits": [
+				"Archetype",
+				"Auditory",
+				"Linguistic",
+				"Magical"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Folklorist Dedication",
+			"trigger": "The villain of the tale you've spun makes an attack roll with a given weapon or unarmed attack, uses a particular special ability (such as a Breath Weapon), or",
+			"requirements": "You have Spun a Tale.",
+			"entries": [
+				"Casts a Spell against the hero, and they used that same attack, special ability, or spell against the hero on the previous turn.",
+				"Heroes learn from their previous failures, often succeeding on the third attempt. You narrate a tale of the hero's success, granting them a +2 circumstance bonus to their AC or saving throw against the triggering effect. If the villain has used the same effect against the hero on both of their last two turns, and you used Rule of Three on that effect last turn as well, the bonus increases to +4."
+			],
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"page": 78
+		},
+		{
+			"source": "SoT2",
+			"name": "Communal Tale",
+			"level": 10,
+			"traits": [
+				"Archetype"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Folklorist Dedication",
+			"entries": [
+				"Stories are an experience meant to be shared as a group. When you Spin a Tale, you can designate up to six non-minion allies as the heroes of your story. Each hero, once during the tale, can continue the story in your stead by spending an action to Spin the Tale; if they do, the story continues for another round, as if you had Spun the Tale at the start of your turn. This could allow the story to continue for up to 6 additional rounds, if all possible allies Spin the Tale, though you can continue to Spin the Tale on your own as normal."
+			],
+			"page": 78
+		},
+		{
+			"source": "SoT2",
+			"name": "Nantambu Chime-ringer Dedication",
+			"level": 2,
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "trained in {@skill Performance} and {@skill Society}",
+			"entries": [
+				"You've studied the basics of harmony and resonance in magic, exemplified by the ringing of chimes. You gain a single arcane or occult cantrip of your choice, heightened to a spell level equal to half your level, rounded up. If you weren't already, you become trained in that tradition's spell DCs and spell attack rolls, with Intelligence as your spellcasting ability if you choose arcane or Charisma as your spellcasting ability if you choose occult. Regardless of your choice, you also either become trained in {@skill Arcana} or {@skill Occultism}, or an expert in one of these skills if you are already trained in both."
+			],
+			"special": "You can't select another dedication feat until you have gained two other feats from the Nantambu Chime-Ringer archetype.",
+			"page": 79
+		},
+		{
+			"source": "SoT2",
+			"name": "Fleet Tempo",
+			"level": 4,
+			"traits": [
+				"Archetype",
+				"Auditory",
+				"Transmutation"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"frequency": "once per hour",
+			"entries": [
+				"To rush after a criminal or reach someone in need, you ring a sprightly tone. You and all allies within 30 feet gain a +10-foot status bonus to all Speeds for 1 minute."
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"page": 79
+		},
+		{
+			"source": "SoT2",
+			"name": "Deny The Songs Of War",
+			"level": 10,
+			"traits": [
+				"Archetype"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"entries": [
+				"To keep the peace, you disrupt those who seek to break it.",
+				"You can cast {@spell deafness} and 4th-level {@spell silence} once per day each as innate spells. The tradition of these spells is the one you chose for the Nantambu Chime-Ringer Dedication feat."
+			],
+			"page": 79
+		},
+		{
+			"source": "SoT2",
+			"name": "Sing To The Steel",
+			"level": 12,
+			"traits": [
+				"Archetype",
+				"Auditory",
+				"Evocation"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"frequency": "once per hour",
+			"entries": [
+				"You strike magical tones that can turn the tide of combat.",
+				"You and your allies within 30 feet gain the effects of one of the following runes until the end of your next turn: corrosive, disrupting, flaming, frost, ghost touch, shock, or thundering. The effects apply to a single weapon the creature is holding or one of the creature's unarmed attacks.",
+				"You choose the rune and the effect applies to all creatures.",
+				"You can use an action, which has the {@trait concentrate} trait, to extend the duration of the rune for 1 additional round up to a maximum of 1 minute. If this would give a weapon or unarmed attack more property runes than its normal maximum, an existing property rune (as the creature chooses) is suppressed until the spell ends."
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"page": 79
+		},
+		{
+			"source": "SoT2",
+			"name": "Song Of Grace And Speed",
+			"level": 16,
+			"traits": [
+				"Archetype",
+				"Auditory",
+				"Transmutation"
+			],
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"prerequisites": "Nantambu Chime-Ringer Dedication",
+			"frequency": "once per day",
+			"entries": [
+				"You instill great swiftness into your allies. You and all allies within 30 feet become {@condition quickened} for 1 minute and can use the additional action to {@action Strike}, {@action Stride}, or {@action Step}."
+			],
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"page": 79
+		}
+	]
+}

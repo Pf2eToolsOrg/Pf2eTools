@@ -1,0 +1,6247 @@
+{
+	"creature": [
+		{
+			"source": "AoA6",
+			"name": "Animated Dragonstorm",
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Huge",
+			"creatureType": [
+				"Construct"
+			],
+			"traits": [
+				"Mindless"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 7,
+				"Con": 9,
+				"Int": -5,
+				"Wis": 5,
+				"Cha": -5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 30
+				},
+				"Will": {
+					"default": 27
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 255,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"bleed"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"doomed"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 20,
+					"name": "good"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "acid"
+				},
+				{
+					"amount": 15,
+					"name": "cold"
+				},
+				{
+					"amount": 15,
+					"name": "electricity"
+				},
+				{
+					"amount": 15,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"The animated dragonstorm can be targeted by disjunction and dispel magic. If targeted by such a spell of 9th level or higher, the construct loses its resistance to acid, cold, electricity, fire, and physical damage and is {@condition slowed|CRB|slowed 1} for {@dice 1d4} rounds."
+					],
+					"name": "Vulnerable to Dispelling"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine"
+					],
+					"entries": [
+						"The animated dragonstorm directs a 30-foot cone of dragonstorm energy. This deals {@damage 3d8} acid, {@damage 3d8} cold, {@damage 3d8} electricity, {@damage 3d8} fire, and {@damage 3d8} poison damage to creatures in the cone (DC 40 basic Reflex save). The animated dragonstorm can't use Channel Dragonstorm again for {@dice 1d4} rounds."
+					],
+					"name": "Channel Dragonstorm"
+				},
+				{
+					"entries": [
+						"The animated dragonstorm's attacks ignore the Hardness of objects with Hardness 20 or less."
+					],
+					"name": "Destructive Strikes"
+				},
+				{
+					"entries": [
+						"On a critical hit, the animated dragonstorm's fist bursts with dragonstorm energy.",
+						"The target takes {@damage 1d6} acid, {@damage 1d6} cold, {@damage 1d6} electricity, {@damage 1d6} fire, and {@damage 1d6} poison damage."
+					],
+					"name": "Dragonstorm Strike"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 35,
+					"traits": [
+						"deadly 3d12",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [
+						"dragonstorm strike"
+					],
+					"damage": "{@damage 5d10+12} bludgeoning plus dragonstorm strike",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"page": 10,
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Dragonstorm Fire Giant",
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Huge",
+			"creatureType": [
+				"Humanoid",
+				"Giant"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Auran",
+					"Common",
+					"Draconic",
+					"Jotun"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 31
+				},
+				"Athletics": {
+					"default": 35
+				},
+				"Intimidation": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 6,
+				"Con": 7,
+				"Int": 3,
+				"Wis": 5,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 27
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 400,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": []
+			},
+			"weaknesses": [
+				{
+					"amount": 20,
+					"name": "good"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 20,
+					"name": "acid"
+				},
+				{
+					"amount": 20,
+					"name": "electricity"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Catch Rock",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"4th"
+					],
+					"entries": [
+						"freedom of movement."
+					],
+					"name": "Constant"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"The dragonstorm fire giant raises one hand to the sky, channeling dragonstorm energy into the blade held in the other. The giant makes a greatsword {@action Strike} with a \u20132 circumstance penalty against each creature within its reach. It makes only one attack roll and compares the result against each creature's AC. This {@action Strike} deals an additional {@damage 1d8} acid, {@damage 1d8} cold, {@damage 1d8} electricity, {@damage 1d8} fire, and {@damage 1d8} poison damage and counts as two attacks for the giant's multiple attack penalty."
+					],
+					"name": "Dragonstorm Blade"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [],
+					"name": "Throw Rock",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "greatsword",
+					"attack": 35,
+					"traits": [
+						"magical",
+						"reach 15 feet",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 3d12+20} slashing plus {@damage 1d6} electricity",
+					"types": [
+						"electricity",
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "rock",
+					"attack": 35,
+					"traits": [
+						"range increment 120 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+12} bludgeoning plus {@damage 1d6} electricity",
+					"types": [
+						"bludgeoning",
+						"electricity"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 40,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "levitate",
+									"amount": "at will"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"bludgeoning",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 14,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Lesser Manifestation Of Dahak",
+			"level": 22,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Dragon"
+			],
+			"traits": [
+				"Fire"
+			],
+			"perception": {
+				"default": 39
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"smoke vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Common",
+					"Draconic",
+					"Elven"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 37
+				},
+				"Arcana": {
+					"default": 42
+				},
+				"Athletics": {
+					"default": 42
+				},
+				"Deception": {
+					"default": 42
+				},
+				"Diplomacy": {
+					"default": 37
+				},
+				"Intimidation": {
+					"default": 45
+				},
+				"Stealth": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 5,
+				"Con": 9,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+42, {@skill Diplomacy} +37, {@skill Intimidation} +45,"
+					],
+					"name": "Deception"
+				},
+				{
+					"entries": [
+						"+35 Str +10, Dex +5, Con +9, Int +5, Wis +6, Cha +7."
+					],
+					"name": "Stealth"
+				},
+				{
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Smoke Vision",
+					"entries_as_xyz": "Ability not found: 'Smoke Vision As young red dragon.' in Lesser Manifestation Of {@deity Dahak|LOGM}, p.16"
+				}
+			],
+			"ac": {
+				"default": 50,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 39
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 500,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"divine evocation",
+						"fire"
+					],
+					"entries": [
+						"10 feet, {@damage 6d6} fire damage (DC 42 basic Reflex save)"
+					],
+					"name": "Dragon Heat"
+				},
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"90 feet, DC 42."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Jaws only."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"trigger": "A creature within 100 feet casts an acid, cold, fire, electricity, or poison spell, or such a spell otherwise comes into effect from a source within 100 feet",
+					"entries": [
+						"The manifestation makes all the choices to determine the targets, destination, or other effects of the spell, as though it were the caster."
+					],
+					"name": "Redirect Energy"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"fly ": 240
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"{@deity Dahak|LOGM}'s manifestation breathes a blast of dragonstorm energy that deals {@damage 5d6} acid, {@damage 5d6} cold, {@damage 5d6} electricity, {@damage 5d6} fire, and {@damage 5d6} poison damage in a 60-foot cone (DC 46 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Draconic Frenzy",
+					"entries_as_xyz": "Ability not found: 'Draconic Frenzy As young red dragon.' in Lesser Manifestation Of {@deity Dahak|LOGM}, p.16"
+				},
+				{
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Draconic Momentum",
+					"entries_as_xyz": "Ability not found: 'Draconic Momentum As young red dragon.' in Lesser Manifestation Of {@deity Dahak|LOGM}, p.16"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"divine",
+						"transmutation"
+					],
+					"entries": [
+						"The manifestation attempts to take control of a magical acid, cold, electricity, fire, or poison spell within 100 feet. If it succeeds at a counteract check (counteract level 10, counteract modifier +36), the original caster loses control of the spell, control is transferred to the manifestation, and the manifestation counts as having."
+					],
+					"name": "Manipulate Energy"
+				},
+				{
+					"entries": [
+						"Spell with this action (if applicable). The manifestation can end the spell instead of taking control, if it chooses."
+					],
+					"name": "Sustained the"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 42,
+					"traits": [
+						"fire",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+22} piercing plus {@damage 3d6} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 42,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+22} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 40,
+					"traits": [
+						"magical",
+						"reach 25 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+17} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"attack": 40,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+17} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 46,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "read aura"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "suggestion",
+									"amount": 3
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 16,
+			"misc": [
+				"MA",
+				"RC",
+				"AD"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Rinnarv Bontimar",
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"perception": {
+				"default": 32
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Elven"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 32
+				},
+				"Athletics": {
+					"default": 38
+				},
+				"Occultism": {
+					"default": 34
+				},
+				"Religion": {
+					"default": 38
+				},
+				"Hermea Lore": {
+					"default": 32
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 7,
+				"Con": 8,
+				"Int": 3,
+				"Wis": 4,
+				"Cha": 10
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 400,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Rinnarv can use {@action Attack of Opportunity} when a creature within his reach uses a concentrate action, in addition to its normal trigger.",
+						"He can disrupt triggering concentrate actions, and he disrupts actions on any hit, not just a critical hit."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"3 Focus Points, DC 42; 10th angelic halo, angelic wings, celestial brand."
+					],
+					"name": "Bloodline Spells"
+				},
+				{
+					"entries": [
+						"Rinnarv casts one of his bloodline spells or a spell from his list of granted spells, he creates an aura that protects himself or one of the targets of the spell. The aura grants a +1 status bonus to saving throws for 1 round."
+					],
+					"name": "Blood Magic When"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "Rinnarv begins to {@action Cast a Spell} that targets at least 1 creature",
+					"frequency": "once per round;",
+					"entries": [
+						"Rinnarv channels his spell through his blade. He makes a {@action Strike} with his blade against a target within reach. If the {@action Strike} is successful, the target is automatically subject to the spell. If the spell required an attack roll, the target is hit. If the spell required a saving throw, the target takes a \u20134 status penalty to its saving throw instead. If the spell could target multiple creatures, it targets only the creature Rinnarv hit with his {@action Strike}."
+					],
+					"name": "Spell Strike"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "elven curve blade",
+					"attack": 38,
+					"traits": [
+						"finesse",
+						"forceful",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+24} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Divine",
+					"DC": 42,
+					"attack": 38,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "light*"
+								},
+								{
+									"name": "message"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "stabilize"
+								}
+							]
+						},
+						"1": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "bane"
+								},
+								{
+									"name": "bless"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "protection"
+								}
+							]
+						},
+						"2": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "darkvision"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "spiritual weapon*"
+								}
+							]
+						},
+						"3": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "circle of protection"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "heroism"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "searing light*"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "dimensional anchor"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "freedom of movement"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spell immunity"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"5": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "breath of life"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "drop dead"
+								},
+								{
+									"name": "flame strike*"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spiritual guardian"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"6": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blade barrier*"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "field of life"
+								},
+								{
+									"name": "repulsion"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spiritual guardian"
+								},
+								{
+									"name": "true seeing"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"7": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blade barrier*"
+								},
+								{
+									"name": "dimensional lock"
+								},
+								{
+									"name": "divine decree*"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "regenerate"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spiritual guardian"
+								},
+								{
+									"name": "sunburst"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"8": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blade barrier*"
+								},
+								{
+									"name": "discern location"
+								},
+								{
+									"name": "divine aura*"
+								},
+								{
+									"name": "divine inspiration"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "moment of renewal"
+								},
+								{
+									"name": "regenerate"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spiritual guardian"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"9": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "blade barrier*"
+								},
+								{
+									"name": "divine wrath*"
+								},
+								{
+									"name": "foresight*"
+								},
+								{
+									"name": "heal*"
+								},
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "resist energy"
+								},
+								{
+									"name": "spiritual guardian"
+								},
+								{
+									"name": "telepathic demand"
+								},
+								{
+									"name": "vampiric touch"
+								},
+								{
+									"name": "weapon of judgement"
+								}
+							]
+						},
+						"10": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "miracle"
+								},
+								{
+									"name": "revival"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 24,
+			"misc": [
+				"MA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Promise Guard",
+			"level": 17,
+			"rarity": "Rare",
+			"alignment": "LN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 29
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 33
+				},
+				"Diplomacy": {
+					"default": 30
+				},
+				"Intimidation": {
+					"default": 33
+				},
+				"Society": {
+					"default": 30
+				},
+				"Survival": {
+					"default": 28
+				},
+				"Hermea Lore": {
+					"default": 33
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 2,
+				"Con": 9,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+33, {@skill Society} +30, {@skill Survival} +28 Str +8, Dex +2, Con +9, Int +2, Wis +3, Cha +2 Items +2 greater striking longsword, +2 greater resilient full plate, greater sturdy shield (Hardness 15, HP 120, BT 60), +2 striking composite shortbow (20 arrows), potion of flying."
+					],
+					"name": "Intimidation"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"with shield raised": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 29
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 330,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Promise guard always has their shield raised as if they had used the {@action Raise a Shield} action, as long as they meet that action's requirements."
+					],
+					"name": "Promise Guard Stance A"
+				},
+				{
+					"entries": [
+						"Promise guard can use their."
+					],
+					"name": "Shield Warden A"
+				},
+				{
+					"entries": [
+						"Block reaction to prevent damage to an adjacent ally."
+					],
+					"name": "Shield"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"A Promise guard can use."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Opportunity when a creature within their reach uses a concentrate action, in addition to its normal trigger. They can disrupt triggering concentrate actions, and they disrupt actions on any hit, not just a critical hit."
+					],
+					"name": "Attack of"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Shield Block",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The Promise guard makes a {@action Strike} with their longsword, then attempts to push the target back. If the {@action Strike} hits, the target is {@condition flat-footed} until the start of the guard's next turn, and the guard can automatically {@action Shove} the target, with the same benefits as the {@action Shove} action (including the critical success effect if the {@action Strike} was a critical hit). If the guard moves to follow the target, this movement doesn't trigger reactions. In addition, if the target has to stop moving because it would hit an object, it takes damage equal to the guard's Strength modifier."
+					],
+					"name": "Shield Shove"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The Promise guard Strides up to double their Speed. If the guard ends their movement within melee reach of at least one enemy, they can make a melee {@action Strike} against that enemy."
+					],
+					"name": "Sudden Charge"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 38,
+					"traits": [
+						"magical",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 7d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "composite shortbow",
+					"attack": 36,
+					"traits": [
+						"deadly 3d10",
+						"magical",
+						"propulsive",
+						"range increment 60 feet",
+						"reload 0"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+8} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"page": 29,
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Ingnovim Tluss",
+			"level": 19,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 33
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 36
+				},
+				"Crafting": {
+					"default": 39
+				},
+				"Deception": {
+					"default": 32
+				},
+				"Intimidation": {
+					"default": 32
+				},
+				"Medicine": {
+					"default": 38
+				},
+				"Society": {
+					"default": 36
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 6,
+				"Con": 9,
+				"Int": 10,
+				"Wis": 5,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+32, {@skill Medicine} +38, {@skill Society} +36 Str +8, Dex +6, Con +9, Int +10, Wis +5, Cha +2 Items alchemist's tools, +2 greater resilient chain shirt, +2 greater striking dagger, formula book (contains formulas for all common alchemical items of 19th level or lower), syringe filled with unstable mutagen (4)"
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"Ingnovim carries 4 major acid flasks, 4 major alchemist's fire, 2 infused major bestial mutagens, 4 major bottled lightnings, 4 major frost vials, 2 infused major juggernaut mutagens, and 4 true elixirs of life.",
+						"These items last for 24 hours or until the next time he makes his daily preparations."
+					],
+					"name": "Infused Items"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 35
+				},
+				"Ref": {
+					"default": 29
+				},
+				"Will": {
+					"default": 32
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 350,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"alchemical",
+						"mutagen",
+						"polymorph"
+					],
+					"trigger": "Ingnovim damages a creature with a syringe {@action Strike}",
+					"entries": [
+						"The creature injected with unstable mutagen must attempt a DC 41 Fortitude save to resist the injection. Critical Success The target is unaffected. Success The target is {@condition sickened|CRB|sickened 2}. Failure The target's body shifts and mutates, growing difficult to control; the target is {@condition clumsy|CRB|clumsy 2} and {@condition enfeebled|CRB|enfeebled 2} for 24 hours. Critical Failure The target's body completely distorts into a shuddering blob of warped flesh that is incapable of action; the target is {@condition paralyzed}. Every 24 hours, the target may attempt a new saving throw against this effect; on a critical success, the paralysis ends."
+					],
+					"name": "Inject Unstable Mutagen"
+				},
+				{
+					"entries": [
+						"Ingnovim's body has adapted to the constant use of his mutagens. He does not suffer the drawback of any bestial mutagens but is still affected normally by other mutagens."
+					],
+					"name": "Mutagenic Adaptation"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Ingnovim draws an alchemical bomb with an {@action Interact} action and throws it as a ranged {@action Strike}."
+					],
+					"name": "Quick Bomber"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 29,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 4d4+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "syringe",
+					"attack": 34,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "bomb",
+					"attack": 36,
+					"traits": [
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [
+						"varies by bomb"
+					],
+					"damage": "varies by bomb",
+					"types": []
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 39,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Ingnovim's Assistant",
+			"level": 17,
+			"rarity": "Rare",
+			"alignment": "LN",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 29
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 33
+				},
+				"Intimidation": {
+					"default": 33
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 2,
+				"Con": 9,
+				"Int": -4,
+				"Wis": 3,
+				"Cha": -4
+			},
+			"items": [
+				"+2 greater resilient full plate",
+				"+2 greater striking longsword"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 29
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 330,
+					"note": null,
+					"abilities": [
+						"fast healing 20"
+					]
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"alchemical",
+						"poison"
+					],
+					"entries": [
+						"When one of Ingnovim's assistants dies, it bursts open in a foul-sounding and smelling explosion of toxic viscera and poisonous vapors.",
+						"All creatures within a 20-foot burst must attempt a DC 38 Fortitude save to resist this blast of poison.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition sickened|CRB|sickened 2}.",
+								"Failure": "The creature takes {@damage 7d8} poison damage.",
+								"Critical Failure": "The creature takes {@damage 14d8} poison damage and {@damage 2d8} {@condition persistent damage ||persistent poison damage}. HP 330, fast healing 20; Immunities poison"
+							}
+						}
+					],
+					"name": "Death Throes"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "longsword",
+					"attack": 33,
+					"traits": [
+						"magical",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 7d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"poison",
+					"slashing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"page": 40,
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Hermean Mutant",
+			"level": 19,
+			"rarity": "Rare",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Aberration"
+			],
+			"traits": [
+				"Mutant"
+			],
+			"perception": {
+				"default": 35
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 37
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 0,
+				"Con": 9,
+				"Int": -3,
+				"Wis": 3,
+				"Cha": -4
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 28
+				},
+				"Will": {
+					"default": 27
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 380,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 4d8+10} bludgeoning, DC 41."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The mutant's various hands stretch and reach out in an attempt to grab nearby creatures.",
+						"The mutant attempts an {@skill Athletics} check to {@action Grapple} all creatures within 10 feet. The mutant's multiple attack penalty doesn't increase until it has made all the {@skill Athletics} checks that are part of its Grasping Hands. Creatures that are {@condition grabbed} are pulled to a space adjacent to the mutant. This is forced movement."
+					],
+					"name": "Grasping Hands"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 36,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 6d8+10} bludgeoning plus Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"page": 40,
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Candlaron's Echo",
+			"level": 21,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Spirit"
+			],
+			"traits": [
+				"Ghost",
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 35
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic",
+					"Elven",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 40
+				},
+				"Diplomacy": {
+					"default": 36
+				},
+				"Occultism": {
+					"default": 40
+				},
+				"Stealth": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 10,
+				"Con": 0,
+				"Int": 10,
+				"Wis": 7,
+				"Cha": 8
+			},
+			"abilitiesTop": [
+				{
+					"entries": [],
+					"name": "Site Bound"
+				}
+			],
+			"ac": {
+				"default": 46,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 36
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 315,
+					"note": null,
+					"abilities": [
+						"negative healing",
+						"rejuvenation"
+					]
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "all damage"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"Candlaron's echo rejuvenates so long as {@deity Dahak|LOGM}'s manifestation lives."
+					],
+					"name": "Rejuvenation"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"fly ": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"divine",
+						"emotion",
+						"enchantment",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"DC 44."
+					],
+					"name": "Frightful Moan"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"{@damage 12d6} bludgeoning, DC 44."
+					],
+					"name": "Telekinetic Assault"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "ghostly hand",
+					"attack": 39,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 8d8+8} negative",
+					"types": [
+						"negative"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 44,
+					"attack": 39,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "mage hand"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read magic"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "grease"
+								},
+								{
+									"name": "ray of enfeeblement",
+									"amount": 2
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "blur"
+								},
+								{
+									"name": "telekinetic maneuver",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "resilient sphere"
+								},
+								{
+									"name": "suggestion",
+									"amount": 2
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "cone of cold"
+								},
+								{
+									"name": "crushing despair"
+								},
+								{
+									"name": "hallucination"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "chain lighting",
+									"amount": 2
+								},
+								{
+									"name": "mislead"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "duplicate foe"
+								},
+								{
+									"name": "prismatic spray"
+								},
+								{
+									"name": "reverse gravity"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "maze"
+								},
+								{
+									"name": "power word stun"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "disjunction"
+								},
+								{
+									"name": "telepathic demand"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "wish"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"negative"
+				],
+				"condition": []
+			},
+			"page": 56,
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Ilgreth",
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 39
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Common",
+					"Draconic",
+					"Dwarven",
+					"Ignan,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 35
+				},
+				"Athletics": {
+					"default": 28
+				},
+				"Deception": {
+					"default": 34
+				},
+				"Intimidation": {
+					"default": 32
+				},
+				"Occultism": {
+					"default": 35
+				},
+				"Religion": {
+					"default": 28
+				},
+				"Plane of Fire Lore": {
+					"default": 39
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 5,
+				"Con": 5,
+				"Int": 10,
+				"Wis": 5,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Skills {@skill Arcana} +35, {@skill Athletics} +28, {@skill Deception} +34,"
+					],
+					"name": "Infernal, Undercommon"
+				},
+				{
+					"entries": [
+						"+32, Plane of {@skill Lore||Fire Lore} +39, {@skill Occultism} +35,"
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"+28, Str +3, Dex +5, Con +5, Int +10, Wis +5, Cha +6 Items +3 major striking dagger, major staff of fire (arcane focus)"
+					],
+					"name": "Religion"
+				}
+			],
+			"ac": {
+				"default": 28,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 19
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 350,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"requirements": "Ilgreth hasn't acted yet on this turn",
+					"frequency": "once per day;",
+					"entries": [
+						"Ilgreth can cast one prepared spell he has already cast today without spending a spell slot. He must still."
+					],
+					"name": "Drain Bonded Item"
+				},
+				{
+					"entries": [
+						"Spell and meet the spell's other requirements."
+					],
+					"name": "Cast the"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"If Ilgreth's next action is to {@action Cast a Spell}, the spell ignores 20 resistance to acid, cold, electricity, fire, or sonic damage."
+					],
+					"name": "Overwhelming Energy"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"finesse",
+						"magic",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 4d4+14} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"type": "Prepared",
+					"tradition": "Arcane",
+					"DC": 44,
+					"attack": 36,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "shocking grasp"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "acid arrow"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "obscuring mist"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "acid arrow"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "invisibility sphere"
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "blink"
+								},
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "fly"
+								},
+								{
+									"name": "wall of fire"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "cone of cold"
+								},
+								{
+									"name": "dispel magic",
+									"amount": 2
+								},
+								{
+									"name": "fireball"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "chain lighting",
+									"amount": 2
+								},
+								{
+									"name": "disintegrate"
+								},
+								{
+									"name": "dominate"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "energy aegis"
+								},
+								{
+									"name": "fireball"
+								},
+								{
+									"name": "prismatic spray"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "earthquake"
+								},
+								{
+									"name": "maze"
+								},
+								{
+									"name": "polar ray",
+									"amount": 2
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "fireball",
+									"amount": 3
+								},
+								{
+									"name": "meteor swarm"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "cataclysm",
+									"amount": 2
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Arcane",
+					"DC": 44,
+					"rituals": [
+						{
+							"name": "imprisonment"
+						},
+						{
+							"name": "inveigle"
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 57,
+			"misc": [
+				"MA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Manifestation Of Dahak",
+			"level": 24,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Dragon"
+			],
+			"traits": [
+				"Fire",
+				"Cold",
+				"Poison",
+				"Acid",
+				"Electricity"
+			],
+			"perception": {
+				"default": 46
+			},
+			"senses": {
+				"precise": [
+					"scent 120 feet"
+				],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"smoke vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Celestial",
+					"Common",
+					"Draconic",
+					"Elven,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 38
+				},
+				"Arcana": {
+					"default": 45
+				},
+				"Athletics": {
+					"default": 45
+				},
+				"Diplomacy": {
+					"default": 38
+				},
+				"Intimidation": {
+					"default": 48
+				},
+				"Occultism": {
+					"default": 40
+				},
+				"Religion": {
+					"default": 40
+				},
+				"Society": {
+					"default": 38
+				},
+				"Dragon Lore": {
+					"default": 48
+				}
+			},
+			"abilityMods": {
+				"Str": 12,
+				"Dex": 8,
+				"Con": 10,
+				"Int": 8,
+				"Wis": 8,
+				"Cha": 9
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Sylvan; telepathy 200 feet Skills {@skill Acrobatics} +38, {@skill Arcana} +45, {@skill Athletics} +45, {@skill Deception} +45, {@skill Diplomacy} +38, {@skill Lore||Dragon Lore} +48, {@skill Intimidation} +48,"
+					],
+					"name": "Infernal, Jotun, Orcish,"
+				},
+				{
+					"entries": [
+						"+40, {@skill Religion} +40, {@skill Society} +38 Str +12, Dex +8, Con +10, Int +8, Wis +8, Cha +9."
+					],
+					"name": "Occultism"
+				},
+				{
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Smoke Vision",
+					"entries_as_xyz": "Ability not found: 'Smoke Vision As young red dragon.' in Manifestation Of {@deity Dahak|LOGM}, p.63"
+				}
+			],
+			"ac": {
+				"default": 52,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 42
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 38
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 600,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 26,
+					"name": "acid"
+				},
+				{
+					"amount": 26,
+					"name": "cold"
+				},
+				{
+					"amount": 26,
+					"name": "electricity"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"10 feet, {@dice 10d6} damage split evenly between acid, cold electricity, fire, and poison (DC 45 basic Reflex save)"
+					],
+					"name": "Dragonstorm Aura"
+				},
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"120 feet, DC 45."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"{@deity Dahak|LOGM}'s manifestation can't physically exit the."
+					],
+					"name": "Imprisoned"
+				},
+				{
+					"entries": [
+						"Fen until conditions are right, as described."
+					],
+					"name": "Adamantine"
+				},
+				{
+					"entries": [
+						"Escapes on page 65. Planar travel effects do not allow it to escape, nor can they banish it from the."
+					],
+					"name": "in Dahak"
+				},
+				{
+					"entries": [],
+					"name": "Adamantine Fen."
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Jaws only."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"trigger": "A creature within 100 feet casts an acid, cold, fire, electricity, or poison spell, or such a spell otherwise comes into effect from a source within 100 feet.",
+					"entries": [
+						"The manifestation."
+					],
+					"name": "Redirect Energy"
+				},
+				{
+					"entries": [
+						"{@deity Dahak|LOGM} makes all the choices to determine the targets, destination, or other effects of the spell, as though it were the caster."
+					],
+					"name": "of"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"fly ": 200
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@dice 2d10+10} plus {@damage 2d6} fire."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Draconic Frenzy",
+					"entries_as_xyz": "Ability not found: 'Draconic Frenzy As young red dragon.' in Manifestation Of {@deity Dahak|LOGM}, p.63"
+				},
+				{
+					"entries": [
+						"As young red dragon."
+					],
+					"name": "Draconic Momentum",
+					"entries_as_xyz": "Ability not found: 'Draconic Momentum As young red dragon.' in Manifestation Of {@deity Dahak|LOGM}, p.63"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"The manifestation of {@deity Dahak|LOGM} breathes a blast of dragonstorm energy that deals {@damage 5d6} acid, {@damage 5d6} cold, {@damage 5d6} electricity, {@damage 5d6} fire, and {@damage 5d6} poison damage in a 60-foot cone (DC 48 basic Reflex save). It can't use Dragonstorm Breath again for {@dice 1d4} rounds."
+					],
+					"name": "Dragonstorm Breath"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation"
+					],
+					"entries": [
+						"The manifestation of {@deity Dahak|LOGM} breathes a blast of energy that deals {@dice 12d12} damage in a 90-foot line (DC 44 basic Reflex save). The type of damage this Breath Weapon deals can be acid, cold, electricity, fire, or poison, as chosen by the manifestation when it attacks. The manifestation can't use its focused Breath Weapon again for 2 rounds, and the next time it uses its Breath Weapon, it must deal a different type of damage than the previous usage."
+					],
+					"name": "Focused Breath Weapon"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 44,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 8d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 44,
+					"traits": [
+						"fire",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 5d10+10} piercing plus {@damage 4d6} fire and Improved Grab",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 43,
+					"traits": [
+						"magical",
+						"reach 25 feet"
+					],
+					"effects": [
+						"Improved Push"
+					],
+					"damage": "{@damage 6d10+12} slashing plus Improved Push",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wing",
+					"attack": 43,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 8d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Prepared",
+					"type": "Prepared",
+					"tradition": "Divine",
+					"DC": 48,
+					"attack": 44,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "divine lance"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "ray of enfeeblement",
+									"amount": 2
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "see invisibility"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "chilling darkness"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "divine wrath"
+								},
+								{
+									"name": "heal",
+									"amount": 2
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "Abyssal plague"
+								},
+								{
+									"name": "drop dead"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "blade barrier",
+									"amount": 2
+								},
+								{
+									"name": "spirit blast"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "finger of death"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "harm"
+								},
+								{
+									"name": "heal"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "telepathic demand"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "miracle"
+								}
+							]
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 63,
+			"misc": [
+				"MA",
+				"RC",
+				"AD"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Aiudara Wraith",
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Astral",
+				"Undead"
+			],
+			"traits": [
+				"Wraith",
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"lifesense 60 feet"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Arcana": {
+					"default": 31
+				},
+				"Stealth": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 9,
+				"Con": 5,
+				"Int": 0,
+				"Wis": 7,
+				"Cha": 8
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 37
+				},
+				"Will": {
+					"default": 33
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 300,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "all damage"
+				},
+				{
+					"name": "ghost touch"
+				},
+				{
+					"name": "or"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"teleportation"
+					],
+					"entries": [
+						"Trigger A creature within 60 feet uses a {@trait teleportation} effect; The aiudara wraith teleports with the creature, arriving in an empty space of its choice adjacent to the triggering creature's destination. If the triggering effect targets multiple creatures, the aiudara wraith chooses which creature it arrives beside."
+					],
+					"name": "Teleportation Attachment"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"instantaneous movement"
+				],
+				"fly ": 60
+			},
+			"abilitiesBot": [
+				{
+					"traits": [
+						"arcane",
+						"conjuration",
+						"teleportation"
+					],
+					"entries": [
+						"The aiudara wraith's touch displaces creatures and flings them through space. The creature must attempt a DC 40 Fortitude save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and becomes temporarily immune to dimensional shunt for 1 minute.",
+								"Success": "The creature is pushed 5 feet in a random direction.",
+								"Failure": "The creature is teleported 20 feet in a direction of the aiudara wraith's choice.",
+								"Critical Failure": "As failure, but the creature is also {@condition stunned|CRB|stunned 2}."
+							}
+						}
+					],
+					"name": "Dimensional Shunt"
+				},
+				{
+					"traits": [
+						"arcane",
+						"necromancy"
+					],
+					"entries": [
+						"When an aiudara wraith damages a living creature with its spectral hand {@action Strike}, the aiudara wraith gains 18 temporary Hit Points and the target must succeed at a DC 40 Fortitude save or become {@condition drained|CRB|drained 1} and {@condition stupefied|CRB|stupefied 1} as long as it is {@condition drained}. Further damage dealt by the aiudara wraith's spectral hand Strikes increases the value of the {@condition drained} and {@condition stupefied} conditions by 1 each on a failed save, to a maximum of 10 for both."
+					],
+					"name": "Drain Life"
+				},
+				{
+					"traits": [
+						"arcane",
+						"conjuration",
+						"teleportation"
+					],
+					"entries": [
+						"An aiudara wraith moves by means of localized teleportation. An aiudara wraith's {@action Stride} does not have the {@trait move} trait. When an aiudara wraith Strides, it reaches its destination within the range of its Speed immediately."
+					],
+					"name": "Instantaneous Movement"
+				}
+			],
+			"attacks": [],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition drained}",
+					"{@condition stunned}"
+				]
+			},
+			"page": 78,
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Dragonshard Guardian",
+			"level": 22,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"default": 39
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"true seeing"
+				]
+			},
+			"skills": {
+				"Arcana": {
+					"default": 30
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 8,
+				"Con": 9,
+				"Int": -5,
+				"Wis": 7,
+				"Cha": -5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 48,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 39
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 33
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 430,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"bleed"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 24,
+					"name": "sonic"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 24,
+					"name": "fire"
+				},
+				{
+					"amount": 24,
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"90 feet, DC 42."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcane",
+						"fire"
+					],
+					"trigger": "The dragonshard guardian takes cold, fire, electricity, or sonic damage from a non\u2013dragonshard guardian source",
+					"entries": [
+						"The dragonshard guardian's body absorbs the energy entirely, preventing the damage from harming the construct. Its body reverberates and transforms the absorbed energy before projecting it outward in a 60-foot burst. Each creature within the burst takes an amount of fire damage equal to the amount of energy damage absorbed by the triggering attack, including any damage resisted by the guardian's resistances and additional damage from its weakness (DC 45 basic Reflex save). This fire damage doesn't harm objects or constructs."
+					],
+					"name": "Reverberating Revenge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The construct breathes in one of two ways, then can't use Breath Weapon again for {@dice 1d4} rounds.",
+						{
+							"type": "list",
+							"items": [
+								"{@bold Flame} (arcane, evocation, fire) A blast of flame deals {@damage 15d10} fire damage to all creatures in a 60-foot cone (DC 45 basic Reflex save). This fire damage does not harm objects or constructs.",
+								"{@bold Weakening Gas} (arcane, necromancy) A cloud of gold-flecked gas forces each creature in a 60-foot cone to attempt a DC 45 Fortitude save; the effect lasts 1 minute."
+							]
+						},
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition enfeebled|CRB|enfeebled 2}.",
+								"Failure": "The creature is {@condition enfeebled|CRB|enfeebled 5}.",
+								"Critical Failure": "The creature is {@condition enfeebled|CRB|enfeebled 8}."
+							}
+						}
+					],
+					"name": "Breath Weapon"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 41,
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d10+8} piercing plus {@damage 2d10} {@condition persistent damage ||persistent bleed}",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 41,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 9d6+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition enfeebled}"
+				]
+			},
+			"page": 79,
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Tarrasque",
+			"level": 25,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 48
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 120 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 47
+				},
+				"Athletics": {
+					"default": 50
+				}
+			},
+			"abilityMods": {
+				"Str": 12,
+				"Dex": 9,
+				"Con": 12,
+				"Int": -3,
+				"Wis": 9,
+				"Cha": 7
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 54,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 47
+				},
+				"Ref": {
+					"default": 37
+				},
+				"Will": {
+					"default": 39
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 540,
+					"note": null,
+					"abilities": [
+						"regeneration 50"
+					]
+				}
+			],
+			"resistances": [
+				{
+					"amount": 25,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"300 feet, DC 39 Inexorable Tarrasque recovers from the {@condition slowed} and {@condition stunned} conditions at the end of its turn. It's also immune to penalties to its Speeds, and it ignores difficult terrain and greater difficult terrain.",
+						"Reactive Tarrasque gains 3 reactions each round. It can still use only one reaction per trigger."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Reflect {@as R} Trigger Tarrasque's carapace deflects an effect. The effect is redirected back at its source."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 50,
+				"swim ": 50
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Tarrasque makes a jaws {@action Strike}, two claw Strikes, two horn Strikes, and one tail {@action Strike} in any order."
+					],
+					"name": "Destructive Frenzy"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Tarrasque Grabs a creature with its jaws",
+					"entries": [
+						"Tarrasque uses Swallow Whole."
+					],
+					"name": "Fast Swallow"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Tarrasque flings spines in a 120-foot cone, dealing {@damage 3d10+20} piercing damage to each creature in the area (DC 53 basic Reflex save)",
+						"Tarrasque can't use Spine Volley again for {@dice 1d4} rounds."
+					],
+					"name": "Spine Volley"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Huge, {@damage 10d6+12} bludgeoning plus {@damage 10d6} acid, Rupture 50."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Huge or smaller, claw, DC 49. When Tarrasque Tramples, it can {@action Stride} up to triple its Speed."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 45,
+					"traits": [
+						"chaotic",
+						"evil",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 5d12+20} piercing plus Improved Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 45,
+					"traits": [
+						"agile",
+						"chaotic",
+						"evil",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 5d10+20} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 45,
+					"traits": [
+						"chaotic",
+						"evil",
+						"magical",
+						"reach 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d12+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 45,
+					"traits": [
+						"chaotic",
+						"evil",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+20} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spine",
+					"attack": 45,
+					"traits": [
+						"brutal",
+						"chaotic",
+						"evil",
+						"magical",
+						"range increment 120 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+20} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"page": 80,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Xotani",
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Beast"
+			],
+			"traits": [
+				"Fire"
+			],
+			"perception": {
+				"default": 39
+			},
+			"senses": {
+				"precise": [
+					"blindsight 120 feet"
+				],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 41
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 8,
+				"Con": 9,
+				"Int": -4,
+				"Wis": 7,
+				"Cha": 6
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 48,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 385,
+					"note": null,
+					"abilities": [
+						"regeneration 25"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"clumsy",
+					"disease",
+					"drained",
+					"enfeebled"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 22,
+					"name": "electricity"
+				},
+				{
+					"amount": 22,
+					"name": "physical"
+				},
+				{
+					"amount": 22,
+					"name": "sonic"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"300 feet, DC 39."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Xotani's light blindness is caused by only sunlight.",
+						"Reactive Xotani gains 3 reactions each round. It can still use only one reaction per trigger."
+					],
+					"name": "Light Blindness",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"fire"
+					],
+					"trigger": "Xotani is damaged",
+					"entries": [
+						"Xotani's wound erupts with magma in a 30-foot cone, dealing {@damage 6d8} fire damage and {@damage 6d8} {@condition persistent damage ||persistent fire damage} (DC 42 basic Reflex save)."
+					],
+					"name": "Firebleed"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"burrow ": 40,
+				"climb ": 60
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Xotani makes three lava bomb Strikes. These Strikes can be made against the same creature or different creatures, as long as all targets are within 40 feet of each other."
+					],
+					"name": "Bomb Barrage"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"evocation",
+						"fire"
+					],
+					"entries": [
+						"Xotani breathes a blast of flame that deals {@damage 18d6} fire damage plus {@damage 4d6} {@condition persistent damage ||persistent fire damage} to all creatures in a 70-foot cone (DC 42 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Huge, {@damage 8d6+8} bludgeoning plus {@damage 12d6} fire, Rupture 35."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Huge or smaller, claw, DC 42. When Xotani Tramples, it can {@action Stride} up to triple its Speed."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 38,
+					"traits": [
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 5d10+8} piercing plus {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 38,
+					"traits": [
+						"agile",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 5d8+8} slashing plus {@damage 2d8} {@condition persistent damage ||persistent fire}",
+					"types": [
+						"persistent",
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "lava bomb",
+					"attack": 38,
+					"traits": [
+						"range increment 80 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+8} bludgeoning plus {@damage 2d10} {@condition persistent damage ||persistent fire}",
+					"types": [
+						"bludgeoning",
+						"persistent"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"page": 81,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"AD"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Tzitzimitl",
+			"level": 19,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Undead"
+			],
+			"traits": [
+				"Electricity"
+			],
+			"perception": {
+				"default": 32
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"true seeing"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Aklo",
+					"Celestial",
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 33
+				},
+				"Arcana": {
+					"default": 37
+				},
+				"Athletics": {
+					"default": 33
+				},
+				"Nature": {
+					"default": 37
+				},
+				"Occultism": {
+					"default": 37
+				},
+				"Religion": {
+					"default": 40
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 8,
+				"Con": 6,
+				"Int": 5,
+				"Wis": 7,
+				"Cha": 8
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+40 Str +10, Dex +8, Con +6, Int +5, Wis +7, Cha +8."
+					],
+					"name": "Religion"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 29
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 35
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 390,
+					"note": null,
+					"abilities": [
+						"fast healing 15",
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"cold"
+				],
+				"condition": [
+					"death"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 15,
+					"name": "good"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "cold"
+				},
+				{
+					"amount": 15,
+					"name": "fire"
+				},
+				{
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"negative"
+					],
+					"trigger": "A creature uses an ability or spell with the {@trait positive} trait within 120 feet of the tzitzimitl",
+					"entries": [
+						"The tzitzimitl inverts the energy used in the triggering ability or spell, causing it to lose the {@trait positive} trait and gain the {@trait negative} trait, and changing all instances of positive energy or healing in the ability's description to negative energy."
+					],
+					"name": "Light to Dark"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 50,
+				"fly ": 60
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"When a tzitzimitl's claw {@action Strike} deals damages to a living creature, the tzitzimitl gains 20 temporary Hit Points, and the target must succeed at a DC 41 Fortitude save or become {@condition drained|CRB|drained 2}.",
+						"Further damage dealt by a tzitzimitl's claw {@action Strike} increases the value of the {@condition drained} condition by 2 on a failed save, to a maximum of {@condition drained|CRB|drained 10}."
+					],
+					"name": "Drain Life"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"cold",
+						"occult"
+					],
+					"requirements": "The tzitzimitl is within 120 feet of an active {@spell darkness} spell",
+					"entries": [
+						"The tzitzimitl drains the heat and warmth from the {@spell darkness} spell, and each creature within the spell's area must attempt a DC 41 Fortitude save. Critical Success The creature takes {@damage 4d8} cold damage. Success The creature takes {@damage 8d8} cold damage and is {@condition slowed|CRB|slowed 1} for 1 round. Failure The creature takes {@damage 16d8} cold damage and is {@condition slowed|CRB|slowed 1} for 1 minute. Critical Failure The creature takes {@damage 16d8} cold damage, is {@condition slowed|CRB|slowed 2} for 1 minute, and is {@condition doomed|CRB|doomed 1}."
+					],
+					"name": "Eclipse"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 34,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"drain life"
+					],
+					"damage": "{@damage 6d8+10} slashing plus {@damage 3d8} electricity and drain life",
+					"types": [
+						"electricity",
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "eye beam",
+					"attack": 34,
+					"traits": [
+						"range 100 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 10d6} electricity plus {@damage 10d6} force",
+					"types": [
+						"electricity",
+						"force"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 38,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "detect magic"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "haste",
+									"amount": 3
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "darkness",
+									"amount": 3
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "Abyssal plague"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "eclipse burst"
+								},
+								{
+									"name": "teleport",
+									"amount": 3
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "teleport"
+								},
+								{
+									"name": "wail of the banshee"
+								}
+							]
+						},
+						"constant": {
+							"6": {
+								"spells": [
+									{
+										"name": "true seeing"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Occult",
+					"DC": 38,
+					"rituals": [
+						{
+							"name": "create undead ",
+							"level": 9
+						},
+						{
+							"name": "imprisonment ",
+							"level": 9
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"cold",
+					"electricity",
+					"slashing"
+				],
+				"condition": [
+					"{@condition drained}",
+					"{@condition slowed}"
+				]
+			},
+			"page": 82,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Vazgorlu",
+			"level": 20,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Large",
+			"creatureType": [
+				"Aberration",
+				"Astral"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Aklo",
+					"Celestial",
+					"Daemonic",
+					"Infernal",
+					"Protean",
+					"Requian",
+					"Utopian"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 38
+				},
+				"Deception": {
+					"default": 38
+				},
+				"Stealth": {
+					"default": 34
+				},
+				"Thievery": {
+					"default": 32
+				},
+				"Portal Lore": {
+					"default": 41
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 7,
+				"Con": 6,
+				"Int": 7,
+				"Wis": 8,
+				"Cha": 5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 36
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 380,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"acid"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "cold"
+				},
+				{
+					"amount": 10,
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"arcana",
+						"teleportation"
+					],
+					"trigger": "A creature targets the vazgorlu with a {@action Strike}",
+					"entries": [
+						"The vazgorlu chooses a different creature within 60 feet and attempts to swap places with that creature using dimension door in the instant before the {@action Strike}. The target must attempt a DC 39 Will save. Critical Success The target resists the teleportation, and the vazgorlu can't use {@condition Hostile} Juxtaposition for {@dice 1d4} rounds. Success The target resists the teleportation. Failure The target and the vazgorlu instantly swap places, and the triggering {@action Strike} is resolved against the target instead. Critical Failure As failure, but the target is transported to the vazgorlu's demiplane after resolving the triggering {@action Strike} against it."
+					],
+					"name": "Hostile Juxtaposition",
+					"entries_as_xyz": "Ability not found: '{@condition Hostile} Juxtaposition As failure, but the target is transported to the vazgorlu's demiplane after resolving the triggering {@action Strike} against it.' in Vazgorlu, p.83"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"climb ": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A creature hit by a vazgorlu's web {@action Strike} is {@condition immobilized} and stuck to the nearest surface until it Escapes (DC 42). As long as it remains {@condition immobilized} by the web, the web attempts to counteract {@trait any} effect that would move the webbed creature to another plane, with a counteract level of 10 and using the vazgorlu's {@skill Arcana} skill to attempt the counteract check."
+					],
+					"name": "Dimensional Tether"
+				},
+				{
+					"entries": [
+						"A vazgorlu maintains a 30-foot-diameter demiplane."
+					],
+					"name": "Demiplane Lair"
+				},
+				{
+					"entries": [
+						"Gravity in this demiplane pulls out from the center, so that creatures can walk upon the inner surface. A vazgorlu's demiplane lair lacks a built-in point of exit, and if the vazgorlu fails to visit the demiplane during a 24-hour period, the demiplane collapses\u2014 all objects and creatures within are then returned to their original locations in the multiverse before they entered the demiplane. A vazgorlu can create a replacement demiplane lair with 24 hours of concentration."
+					],
+					"name": "in the Astral Plane."
+				},
+				{
+					"entries": [
+						"A vazgorlu can spend 10 minutes in contact with a magical portal to redirect it, causing the portal to instead lead to its demiplane lair.",
+						"To do so, the vazgorlu must succeed at a {@skill Lore||Portal Lore} check (the DC is either equal to the caster's spell DC for a portal created by a spell, or set by the portal's level, as listed on Table 10\u20135 on page 503 of the Core Rulebook; if the portal in question has no level listed, assume it's a 20th-level portal)."
+					],
+					"name": "Redirect Portal"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 38,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+8} piercing plus {@damage 3d10} acid",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "web",
+					"attack": 38,
+					"traits": [
+						"range increment 60 feet"
+					],
+					"effects": [
+						"dimensional tether"
+					],
+					"damage": "{@damage 6d6+8} acid plus dimensional tether",
+					"types": [
+						"acid"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 35,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door",
+									"amount": "at will"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"notes": [
+										"to and from the vazgorlu's demiplane only"
+									]
+								},
+								{
+									"name": "teleport",
+									"amount": 3
+								}
+							]
+						},
+						"constant": {
+							"4": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"acid",
+					"piercing"
+				],
+				"condition": [
+					"{@condition immobilized}"
+				]
+			},
+			"page": 83,
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Wyrmwraith",
+			"level": 17,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Dragon",
+				"Undead"
+			],
+			"traits": [
+				"Wraith",
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 29
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"lifesense 120 feet"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 30
+				},
+				"Arcana": {
+					"default": 30
+				},
+				"Intimidation": {
+					"default": 33
+				},
+				"Religion": {
+					"default": 33
+				},
+				"Stealth": {
+					"default": 33
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 9,
+				"Con": 0,
+				"Int": 7,
+				"Wis": 7,
+				"Cha": 9
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 39,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 29
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 32
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 280,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"paralyzed"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 20,
+					"name": "all"
+				},
+				{
+					"name": "ghost touch"
+				},
+				{
+					"name": "or"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"90 feet, DC 33."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A wyrmwraith in sunlight is {@condition clumsy|CRB|clumsy 2} and {@condition stunned|CRB|stunned 2}."
+					],
+					"name": "Sunlight Powerlessness"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"conjuration"
+					],
+					"trigger": "The wyrmwraith succeeds at a saving throw to resist positive damage, but still takes damage from that effect",
+					"entries": [
+						"The wyrmwraith transfers all positive damage from the effect to a single undead creature of its choice that it controls within 120 feet."
+					],
+					"name": "Positive Energy Transfer"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 50,
+				"fly ": 80
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"necromancy",
+						"negative"
+					],
+					"entries": [
+						"The wyrmwraith unleashes a burst of negative energy that deals {@damage 18d6} negative damage to all creatures in a 60-foot cone (DC 38 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"entries": [
+						"A wyrmwraith's claws rend divine magic.",
+						"Whenever a wyrmwraith hits a creature with one of its spectral claws, the wyrmwraith can attempt a {@skill Religion} check to counteract an ongoing divine spell effect (of spell level 8th or lower) on the creature."
+					],
+					"name": "Divine Dispelling"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The wyrmwraith makes two claw Strikes and one jaws {@action Strike} in any order."
+					],
+					"name": "Draconic Frenzy"
+				},
+				{
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"When a wyrmwraith deals damage to a living creature with a spectral jaws or spectral claw {@action Strike}, the wyrmwraith gains 18 temporary Hit Points, and the creature must succeed at a DC 38 Fortitude save or become {@condition drained|CRB|drained 2}. Further damage dealt by the wyrmwraith's spectral jaws or spectral claws Strikes increases the value of the {@condition drained} condition by 2 on a failed save, to a maximum of {@condition drained|CRB|drained 8}."
+					],
+					"name": "Drain Life"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"A wyrmwraith can push through the ectoplasmic veil to temporarily assume a physical form made of ectoplasm.",
+						"The wyrmwraith loses the {@trait incorporeal} trait for {@dice 1d4} rounds, though it can return to its incorporeal form as a free action before then. Once this ability ends, the wyrmwraith can't use this ability again for {@dice 1d4} rounds. While in ectoplasmic form, the wyrmwraith's AC increases to 43 and it gains 100 temporary Hit."
+					],
+					"name": "Ectoplasmic Form"
+				},
+				{
+					"entries": [
+						"It loses its immunity to non-magical attacks and precision damage, as well as its resistance to all damage. Its claw and jaws Strikes deal slashing and piercing damage, respectively, instead of negative damage."
+					],
+					"name": "Points."
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"move"
+					],
+					"requirements": "The wyrmwraith is in ectoplasmic form",
+					"entries": [
+						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+					],
+					"name": "Phase Lurch",
+					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.84"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spectral jaws",
+					"attack": 33,
+					"traits": [
+						"reach 20 feet"
+					],
+					"effects": [
+						"drain life"
+					],
+					"damage": "{@damage 7d8+8} negative plus drain life",
+					"types": [
+						"negative"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spectral claw",
+					"attack": 33,
+					"traits": [
+						"agile",
+						"reach 15 feet"
+					],
+					"effects": [
+						"divine dispelling",
+						"drain life"
+					],
+					"damage": "{@damage 7d6+8} negative plus divine dispelling and drain life",
+					"types": [
+						"negative"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 35,
+					"attack": 33,
+					"entry": {
+						"3": {
+							"spells": [
+								{
+									"name": "bind undead",
+									"amount": "at will"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "charm",
+									"amount": 3
+								},
+								{
+									"name": "darkness"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "vampiric exsanguination"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "divine wrath",
+									"amount": 3
+								},
+								{
+									"name": "finger of death"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "charm",
+									"notes": [
+										"undead targets only"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Divine",
+					"DC": 35,
+					"rituals": [
+						{
+							"name": "create undead ",
+							"level": 8
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"negative"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition drained}"
+				]
+			},
+			"page": 84,
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Elder Wyrmwraith",
+			"level": 23,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Dragon",
+				"Undead"
+			],
+			"traits": [
+				"Wraith",
+				"Incorporeal"
+			],
+			"perception": {
+				"default": 40
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"lifesense 120 feet"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 38
+				},
+				"Arcana": {
+					"default": 38
+				},
+				"Intimidation": {
+					"default": 43
+				},
+				"Religion": {
+					"default": 43
+				},
+				"Stealth": {
+					"default": 43
+				}
+			},
+			"abilityMods": {
+				"Str": -5,
+				"Dex": 11,
+				"Con": 0,
+				"Int": 9,
+				"Wis": 9,
+				"Cha": 11
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 49,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 38
+				},
+				"Will": {
+					"default": 42
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 450,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"as wyrmwraith"
+				]
+			},
+			"resistances": [
+				{
+					"amount": 25,
+					"name": "all"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"90 feet, DC 46."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A wyrmwraith in sunlight is {@condition clumsy|CRB|clumsy 2} and {@condition stunned|CRB|stunned 2}."
+					],
+					"name": "Sunlight Powerlessness"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"The wyrmwraith transfers all positive damage from the effect to a single undead creature of its choice that it controls within 120 feet."
+					],
+					"name": "Positive Energy Transfer",
+					"traits": [
+						"divine",
+						"conjuration"
+					],
+					"trigger": "The wyrmwraith succeeds at a saving throw to resist positive damage, but still takes damage from that effect"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 50,
+				"fly ": 100
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As wyrmwraith, but a 90-foot cone, DC 46, and the wrymwraith's breath deals {@damage 24d6} negative damage."
+					],
+					"name": "Breath Weapon",
+					"traits": [
+						"divine",
+						"necromancy",
+						"negative"
+					],
+					"entries_as_xyz": [
+						"The wyrmwraith unleashes a burst of negative energy that deals {@damage 18d6} negative damage to all creatures in a 60-foot cone (DC 38 basic Reflex save). It can't use Breath Weapon again for {@dice 1d4} rounds."
+					]
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"death",
+						"necromancy"
+					],
+					"entries": [
+						"The elder wyrmwraith inhales sharply, sucking in the souls of nearby creatures. Each creature in a 60-foot cone must attempt a DC 46 Will save. The elder wyrmwraith can't."
+					],
+					"name": "Consume Souls"
+				},
+				{
+					"entries": [
+						"Souls again for {@dice 1d4} rounds.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature gains {@condition doomed|CRB|doomed 1}.",
+								"Failure": "The creature gains {@condition doomed|CRB|doomed 2} and takes 100 negative damage.",
+								"Critical Failure": "The creature is slain. As long as the wyrmwraith still exists, the slain creature cannot be returned to life through any means."
+							}
+						}
+					],
+					"name": "Consume"
+				},
+				{
+					"entries": [
+						"A wyrmwraith's claws rend divine magic.",
+						"Whenever a wyrmwraith hits a creature with one of its spectral claws, the wyrmwraith can attempt a {@skill Religion} check to counteract an ongoing divine spell effect (of spell level 8th or lower) on the creature."
+					],
+					"name": "Divine Dispelling",
+					"traits": [
+						"abjuration",
+						"divine"
+					]
+				},
+				{
+					"entries": [
+						"As wyrmwraith, but 24 temporary Hit Points, DC 46, and a maximum of {@condition drained|CRB|drained 14}."
+					],
+					"name": "Drain Life",
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries_as_xyz": [
+						"When a wyrmwraith deals damage to a living creature with a spectral jaws or spectral claw {@action Strike}, the wyrmwraith gains 18 temporary Hit Points, and the creature must succeed at a DC 38 Fortitude save or become {@condition drained|CRB|drained 2}. Further damage dealt by the wyrmwraith's spectral jaws or spectral claws Strikes increases the value of the {@condition drained} condition by 2 on a failed save, to a maximum of {@condition drained|CRB|drained 8}."
+					]
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The wyrmwraith makes two claw Strikes and one jaws {@action Strike} in any order."
+					],
+					"name": "Draconic Frenzy"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"As wyrmwraith, except AC 52 and 125 temporary Hit Points."
+					],
+					"name": "Ectoplasmic Form"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain."
+					],
+					"name": "Phase Lurch",
+					"traits": [
+						"divine",
+						"move"
+					],
+					"requirements": "The wyrmwraith is in ectoplasmic form",
+					"entries_as_xyz": "Ability not found: 'Phase Lurch As the {@action Stride} action, but the wyrmwraith can pass through walls or material obstacles as though it were incorporeal. It must begin and end its movement outside of any physical obstacles, and passing through solid material is difficult terrain.' in Wyrmwraith, p.84"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spectral jaws",
+					"attack": 42,
+					"traits": [
+						"reach 20 feet"
+					],
+					"effects": [
+						"drain life"
+					],
+					"damage": "{@damage 9d8+8} negative plus drain life",
+					"types": [
+						"negative"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spectral claw",
+					"attack": 42,
+					"traits": [
+						"agile",
+						"reach 15 feet"
+					],
+					"effects": [
+						"divine dispelling",
+						"drain life"
+					],
+					"damage": "{@damage 9d6+8} negative plus divine dispelling and drain life",
+					"types": [
+						"negative"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 46,
+					"attack": 42,
+					"entry": {
+						"10": {
+							"spells": [
+								{
+									"name": "miracle"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Divine",
+					"DC": 46,
+					"rituals": [
+						{
+							"name": "create undead ",
+							"level": 10
+						},
+						{
+							"name": "imprisonment ",
+							"level": 10
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"negative"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition doomed}",
+					"{@condition drained}"
+				]
+			},
+			"page": 85,
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Emaliza Zandivar",
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 36
+			},
+			"languages": {
+				"languages": [
+					"Abyssal",
+					"Common",
+					"Draconic,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 32
+				},
+				"Arcana": {
+					"default": 41
+				},
+				"Deception": {
+					"default": 38
+				},
+				"Intimidation": {
+					"default": 38
+				},
+				"Occultism": {
+					"default": 34
+				},
+				"Society": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 8,
+				"Con": 5,
+				"Int": 10,
+				"Wis": 5,
+				"Cha": 6
+			},
+			"items": [
+				"anklets of alacrity",
+				"Flawed Orb of Gold"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [],
+					"name": "Dwarven, Kelish, Osiriani, Ignan, Infernal,"
+				},
+				{
+					"entries": [
+						"Skills {@skill Acrobatics} +32, {@skill Arcana} +41, {@skill Deception} +38,"
+					],
+					"name": "Undercommon"
+				},
+				{
+					"entries": [
+						"+32, {@skill Intimidation} +38, {@skill Lore||Hermea Lore} +38, {@skill Occultism} +34, {@skill Society} +34 Str +2, Dex +8, Con +5, Int +10, Wis +5, Cha +6 Items anklets of alacrity, Flawed Orb of Gold Dragonkind, ring of spell turning (arcane focus), +3 major striking staff, winged boots."
+					],
+					"name": "Dragon Lore"
+				}
+			],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 36
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 375,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Emaliza is attacked",
+					"entries": [
+						"A 5th-level {@spell dimension door} spell is cast on Emaliza; she uses this to escape an attack that she fears would incapacitate or kill her."
+					],
+					"name": "Contingency"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 30
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"requirements": "Emaliza hasn't acted yet on this turn",
+					"frequency": "once per day;",
+					"entries": [
+						"Emaliza can cast one prepared spell she has already cast today without spending a spell slot. She must still Cast the Spell and meet the spell's other requirements."
+					],
+					"name": "Drain Bonded Item"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"Trigger."
+					],
+					"name": "Warded Casting"
+				},
+				{
+					"entries": [
+						"Casts a Spell; Emaliza's magic creates a small defensive aura around her. She gains 20 temporary Hit Points and resistance 20 to either acid, cold, electricity, or fire damage. The defensive aura remains until the beginning of her next turn."
+					],
+					"name": "Emaliza"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "staff",
+					"attack": 31,
+					"traits": [
+						"magical",
+						"two-hand d8"
+					],
+					"effects": [],
+					"damage": "{@damage 8d4+8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"type": "Prepared",
+					"tradition": "Arcane",
+					"DC": 45,
+					"attack": 36,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura"
+								},
+								{
+									"name": "shield *This spell has been cast already."
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "command"
+								},
+								{
+									"name": "fear"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "resist energy"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "nondetection"
+								},
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "slow"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "blink"
+								},
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "freedom of movement"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "chromatic wall"
+								},
+								{
+									"name": "dimension door*"
+								},
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "wall of stone"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate"
+								},
+								{
+									"name": "repulsion"
+								},
+								{
+									"name": "spellwrack"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "energy aegis"
+								},
+								{
+									"name": "mask of terror"
+								},
+								{
+									"name": "power word blind"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "contingency*"
+								},
+								{
+									"name": "horrid wilting"
+								},
+								{
+									"name": "mage armor*"
+								},
+								{
+									"name": "uncontrollable dance"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "disjunction"
+								},
+								{
+									"name": "implosion"
+								},
+								{
+									"name": "massacre"
+								},
+								{
+									"name": "prismatic sphere"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "remake"
+								},
+								{
+									"name": "time stop"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Arcane",
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "freedom"
+						},
+						{
+							"name": "legend lore"
+						},
+						{
+							"name": "planar binding"
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": []
+			},
+			"page": 87,
+			"misc": [
+				"MA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Inizra Arumelo",
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "LG",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"traits": [
+				"Human"
+			],
+			"perception": {
+				"default": 36
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 32
+				},
+				"Athletics": {
+					"default": 38
+				},
+				"Diplomacy": {
+					"default": 38
+				},
+				"Medicine": {
+					"default": 34
+				},
+				"Society": {
+					"default": 38
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 1,
+				"Con": 5,
+				"Int": 3,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+41, {@skill Medicine} +34, {@skill Society} +38 Str +7, Dex +1, Con +5, Int +3, Wis +2, Cha +4 Items +3 greater resilient full plate, potion of flying (4), +3 major striking returning spear, supreme sturdy shield (Hardness 20, HP 160, BT 80)"
+					],
+					"name": "Hermea Lore"
+				}
+			],
+			"ac": {
+				"default": 46,
+				"with shield raised": 48,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 31
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 375,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Inizra gains a reaction at the start of each enemy's turn that she can use only during that turn."
+					],
+					"name": "Boundless Reprisals"
+				},
+				{
+					"entries": [
+						"Inizra always has her shield raised as if she had used the {@action Raise a Shield} action, as long as she meets that action's requirements."
+					],
+					"name": "Paragon's Guard Stance"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Inizra can use {@action Attack of Opportunity} when a creature within her reach uses a concentrate action, in addition to its normal trigger.",
+						"She can disrupt triggering concentrate actions, and she disrupts actions on any hit, not just a critical hit."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"See page 151 of the Core Rulebook."
+					],
+					"name": "Mirror Shield"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Shield Block",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Inizra is permanently {@condition quickened|CRB|quickened 1}. She can use her extra action only to {@action Strike}."
+					],
+					"name": "Weapon Supremacy"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 38,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 6d6+20} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 38,
+					"traits": [
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d6+8} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"page": 89,
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"source": "AoA6",
+			"name": "Mengkare",
+			"level": 23,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Dragon"
+			],
+			"traits": [
+				"Fire"
+			],
+			"perception": {
+				"default": 40
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 120 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Dwarven",
+					"Elven",
+					"Gnomish,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 32
+				},
+				"Arcana": {
+					"default": 38
+				},
+				"Athletics": {
+					"default": 36
+				},
+				"Diplomacy": {
+					"default": 43
+				},
+				"Intimidation": {
+					"default": 43
+				},
+				"Medicine": {
+					"default": 36
+				},
+				"Nature": {
+					"default": 32
+				},
+				"Occultism": {
+					"default": 38
+				},
+				"Society": {
+					"default": 43
+				}
+			},
+			"abilityMods": {
+				"Str": 11,
+				"Dex": 5,
+				"Con": 9,
+				"Int": 8,
+				"Wis": 7,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Skills {@skill Acrobatics} +32, {@skill Arcana} +38, {@skill Athletics} +36,"
+					],
+					"name": "Infernal, Sylvan, Utopian"
+				},
+				{
+					"entries": [
+						"+43, {@skill Intimidation} +43, {@skill Medicine} +36,"
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"+32, {@skill Occultism} +38, {@skill Society} +43 Str +11, Dex +5, Con +9, Int +8, Wis +7, Cha +7."
+					],
+					"name": "Nature"
+				}
+			],
+			"ac": {
+				"default": 50,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 37
+				},
+				"Ref": {
+					"default": 34
+				},
+				"Will": {
+					"default": 42
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 575,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 25,
+					"name": "cold"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"90 feet, DC 43."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Reaction Mengkare gains 2 reactions at the start of his turn each round."
+					],
+					"name": "Extra"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Jaws only."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Mengkare fails a saving throw against a spell.",
+					"entries": [
+						"Dispel magic (7th level) attempts to counteract the triggering spell."
+					],
+					"name": "Contingency"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"As adult gold dragon."
+					],
+					"name": "Golden Luck",
+					"entries_as_xyz": "Ability not found: 'Golden Luck As adult gold dragon.' in Mengkare, p.90"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"fly ": 200,
+				"swim ": 60
+			},
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As a young gold dragon, but an 80-foot cone, DC 46. Mengkare's flame deals {@damage 24d6} fire damage, and his weakening gas causes {@condition enfeebled|CRB|enfeebled 4} ({@condition enfeebled|CRB|enfeebled 5} on a critical failure)."
+					],
+					"name": "Breath Weapon",
+					"entries_as_xyz": "Ability not found: 'Breath Weapon As a young gold dragon, but an 80-foot cone, DC 46. Mengkare's flame deals {@damage 24d6} fire damage, and his weakening gas causes {@condition enfeebled|CRB|enfeebled 4} ({@condition enfeebled|CRB|enfeebled 5} on a critical failure).' in Mengkare, p.90"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"arcane",
+						"concentrate",
+						"polymorph",
+						"transmutation"
+					],
+					"entries": [
+						"Mengkare assumes a Medium humanoid form, posing as the human wizard Lamond Breachton."
+					],
+					"name": "Change Shape",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As young gold dragon."
+					],
+					"name": "Draconic Frenzy",
+					"entries_as_xyz": "Ability not found: 'Draconic Frenzy As young gold dragon.' in Mengkare, p.90"
+				},
+				{
+					"entries": [
+						"As young gold dragon."
+					],
+					"name": "Draconic Momentum",
+					"entries_as_xyz": "Ability not found: 'Draconic Momentum As young gold dragon.' in Mengkare, p.90"
+				},
+				{
+					"entries": [
+						"When Mengkare uses Breath Weapon, he can expel an explosive orb of flame instead of a cone. When he does, he fires the orb at the corner of a square within 60 feet.",
+						"The orb immediately detonates and deals {@damage 24d6} fire damage (DC 48 basic Reflex save) to all creatures within a 30-foot burst.",
+						"Creatures that critically fail their save catch on fire and take {@damage 4d6} {@condition persistent damage ||persistent fire damage}."
+					],
+					"name": "Explosive Breath"
+				}
+			],
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 42,
+					"traits": [
+						"fire",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d12+11} piercing plus {@damage 4d6} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 42,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d10+11} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 40,
+					"traits": [
+						"magical",
+						"reach 25 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d10+11} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "horns",
+					"attack": 40,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 5d12+11} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 45,
+					"attack": 42,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "forbidding word"
+								},
+								{
+									"name": "prestidigitation"
+								},
+								{
+									"name": "read aura *This spell has been cast already."
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "charm"
+								},
+								{
+									"name": "magic missile"
+								},
+								{
+									"name": "unseen servant"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "comprehend language"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "water breathing"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "dream message"
+								},
+								{
+									"name": "locate"
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "creation"
+								},
+								{
+									"name": "dimension door"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "chromatic wall"
+								},
+								{
+									"name": "mind probe"
+								},
+								{
+									"name": "sending"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "dominate"
+								},
+								{
+									"name": "true seeing"
+								},
+								{
+									"name": "wall of force"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "dimensional lock"
+								},
+								{
+									"name": "dispel magic*"
+								},
+								{
+									"name": "plane shift"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "dream council"
+								},
+								{
+									"name": "maze"
+								},
+								{
+									"name": "power word stun"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "disjunction"
+								},
+								{
+									"name": "meteor swarm"
+								},
+								{
+									"name": "telepathic demand"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "contingency*"
+								},
+								{
+									"name": "wish"
+								}
+							]
+						}
+					}
+				}
+			],
+			"rituals": [
+				{
+					"tradition": "Arcane",
+					"DC": 45,
+					"rituals": [
+						{
+							"name": "animate object"
+						},
+						{
+							"name": "Anima Invocation"
+						},
+						{
+							"name": "geas"
+						},
+						{
+							"name": "imprisonment"
+						},
+						{
+							"name": "inveigle"
+						},
+						{
+							"name": "legend lore"
+						},
+						{
+							"name": "resurrect"
+						}
+					]
+				}
+			],
+			"isNpc": false,
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition enfeebled}"
+				]
+			},
+			"page": 90,
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"AC",
+				"CC"
+			]
+		}
+	]
+}

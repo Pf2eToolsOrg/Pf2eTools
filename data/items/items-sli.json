@@ -1,0 +1,500 @@
+{
+	"item": [
+		{
+			"source": "Sli",
+			"name": "Flaying Knife",
+			"level": 8,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 480,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This long, thin +1 striking wounding dagger has a smooth edge on one side and a serrated edge on the other. Its {@condition persistent damage ||persistent bleed damage} comes from slicing away long strips of the target's flesh, and it deals {@damage 1d8} {@condition persistent damage ||persistent bleed damage} on a hit instead of {@dice 1d6}. A creature takes a \u20132 status penalty to saving throws against diseases for as long as it has {@condition persistent damage ||persistent bleed damage} from this knife."
+			],
+			"page": 60
+		},
+		{
+			"source": "Sli",
+			"name": "Gluttonous Spear",
+			"level": 6,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Necromancy"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 250,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"The head of this +1 striking returning spear is wrapped in greasy hide, and its head resembles a thick, clawed finger.",
+				"On a critical hit, the target is {@condition enfeebled|CRB|enfeebled 1} for 1 minute, and you gain {@dice 1d8} temporary Hit Points that last for 1 minute."
+			],
+			"page": 60
+		},
+		{
+			"source": "Sli",
+			"name": "Oily Button",
+			"level": 5,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Consumable",
+				"Magical",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 30,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": "envision",
+				"requirements": "You are an expert in",
+				"frequency": null,
+				"trigger": "You succeed at an {@skill Athletics} check to {@action Disarm}"
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"{@skill Athletics}.",
+				"A thin sheen of slick oil covers this gaudy button. When you activate the oily button, your attempts to {@action Disarm} your opponent of an item before the start of the opponent's next turn gain a +4 circumstance bonus instead of +2, and the \u20132 circumstance penalty to attacks with the item or other checks requiring a firm grasp on the item lasts until the end of its next turn or until it uses an {@action Interact} action to adjust its grip."
+			],
+			"page": 60
+		},
+		{
+			"source": "Sli",
+			"name": "Putrescent Glob",
+			"level": 7,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Consumable",
+				"Magical",
+				"Talisman"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 65,
+				"note": null
+			},
+			"usage": "affixed to a weapon",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": "envision",
+				"requirements": "You are an expert with the affixed weapon.",
+				"frequency": null,
+				"trigger": "You damage a creature that is {@condition sickened|CRB|sickened 1} with a {@action Strike} using the affixed weapon"
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"This repulsive, hairy glob dangles from the end of your weapon. When you activate the putrescent glob, the creature you damaged must succeed at a DC 23 Fortitude save or its {@condition sickened} condition increases to {@condition sickened|CRB|sickened 2}, and it can't reduce its {@condition sickened} condition until the end of its next turn. On a critical failure, it's also {@condition slowed|CRB|slowed 1} until the end of its next turn."
+			],
+			"page": 61
+		},
+		{
+			"source": "Sli",
+			"name": "Sixfingers Elixir",
+			"level": "5+",
+			"type": "Item",
+			"category": "Elixir",
+			"traits": [
+				"Uncommon",
+				"Alchemical",
+				"Consumable",
+				"Elixir",
+				"Polymorph"
+			],
+			"consumable": true,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "action"
+				},
+				"components": "Interact",
+				"requirements": null,
+				"frequency": null,
+				"trigger": null
+			},
+			"bulk": "L",
+			"entries": [
+				"This gritty, spicy fluid causes you to grow a sixth finger on each hand and gives you a spiderlike grip.",
+				"You gain a +2 item bonus to your Reflex DC to keep from being Disarmed and a climb Speed of 20 feet for the listed duration."
+			],
+			"variants": [
+				{
+					"type": "lesser",
+					"level": 5,
+					"price": {
+						"coin": "gp",
+						"amount": 25,
+						"note": null
+					},
+					"entries": [
+						"The duration is 10 minutes."
+					]
+				},
+				{
+					"type": "moderate",
+					"level": 11,
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"entries": [
+						"The duration is 1 hour."
+					]
+				},
+				{
+					"type": "greater",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 2500,
+						"note": null
+					},
+					"entries": [
+						"The duration is 8 hours."
+					]
+				}
+			],
+			"page": 61
+		},
+		{
+			"source": "Sli",
+			"name": "Slime Whip",
+			"level": 7,
+			"type": "Item",
+			"category": "Held",
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Transmutation"
+			],
+			"consumable": false,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 360,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"entries": [
+				"This thick, greasy +1 striking shifting whip is made from a slimy pseudopod. You don't take the usual \u20132 circumstance penalty to your attack rolls when using the slime whip to make a lethal attack. The whip's form can be changed just like any weapon with the shifting rune, but it reverts to its original form as soon as it isn't wielded. When in its whip form, you can use the following action.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": "once per hour",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"For 1 round, the slime whip deals acid damage rather than slashing damage. If the attack deals {@condition persistent damage}, the {@condition persistent damage} is also acid damage instead of its usual type."
+					]
+				}
+			],
+			"page": 61
+		},
+		{
+			"source": "Sli",
+			"name": "Slippery Ribbon",
+			"level": 1,
+			"type": "Item",
+			"category": "Talisman",
+			"traits": [
+				"Uncommon",
+				"Consumable",
+				"Magical",
+				"Talisman",
+				"Transmutation"
+			],
+			"consumable": true,
+			"generic": false,
+			"price": {
+				"coin": "gp",
+				"amount": 12,
+				"note": null
+			},
+			"usage": "affixed to armor",
+			"activate": {
+				"activity": {
+					"number": 1,
+					"unit": "free"
+				},
+				"components": "envision",
+				"requirements": null,
+				"frequency": null,
+				"trigger": "You succeed at an"
+			},
+			"bulk": "\u2014",
+			"entries": [
+				"{@skill Acrobatics} check to {@action Tumble Through}, but you don't have enough Speed to move all the way through the enemy's space; Requirements You are an expert in {@skill Acrobatics}.",
+				"This ribbon is constantly greasy to the touch and stains the armor it's affixed to. When you activate the slippery ribbon, your Speed increases by an amount necessary for you to move all the way through the enemy's space."
+			],
+			"page": 61
+		},
+		{
+			"source": "Sli",
+			"name": "Wand Of Noisome Acid",
+			"level": "6+",
+			"type": "Item",
+			"category": "Wand",
+			"traits": [
+				"Uncommon",
+				"Acid",
+				"Evocation",
+				"Magical",
+				"Wand"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"This greasy stick emits a stomach-churning scent when held in a hand.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "Cast"
+					},
+					"components": [
+						"a Spell"
+					],
+					"frequency": "once per day, plus overcharge",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You cast {@spell acid arrow} of the indicated level. A creature that takes acid damage from this spell must succeed at a Fortitude save against your spell DC or become {@condition sickened|CRB|sickened 1}."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "2nd-level spell",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "4th-level spell",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 1000,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "6th-level spell",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 4500,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "8th-level spell",
+					"level": 18,
+					"price": {
+						"coin": "gp",
+						"amount": 24000,
+						"note": null
+					},
+					"entries": []
+				}
+			],
+			"craftReq": "Supply a casting of acid arrow of the appropriate level.",
+			"page": 61
+		},
+		{
+			"source": "Sli",
+			"name": "Wand Of Teeming Ghosts",
+			"level": "6+",
+			"type": "Item",
+			"category": "Wand",
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Necromancy",
+				"Wand"
+			],
+			"consumable": false,
+			"generic": "G",
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"entries": [
+				"This pale wooden wand is carved to resemble a thigh bone with metal caps at each end. Ghostly tendrils seem to swirl around it every so often.",
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "Cast"
+					},
+					"components": [
+						"a Spell"
+					],
+					"frequency": "once per day, plus overcharge",
+					"trigger": null,
+					"requirements": null,
+					"effect": [
+						"You cast {@spell false life} of the indicated level. During the duration of the spell, wisps that resemble spirits flit around you as long as you have any temporary Hit Points from false life, and you can use the following action."
+					]
+				},
+				{
+					"type": "activation",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": null,
+					"trigger": "You successfully impart the {@condition frightened|CRB|frightened 1} condition to a creature",
+					"requirements": null,
+					"effect": [
+						"You end false life and increase the creature's {@condition frightened} condition value to 2."
+					]
+				}
+			],
+			"variants": [
+				{
+					"type": "2nd-level spell",
+					"level": 6,
+					"price": {
+						"coin": "gp",
+						"amount": 250,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "3rd-level spell",
+					"level": 8,
+					"price": {
+						"coin": "gp",
+						"amount": 500,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "4th-level spell",
+					"level": 10,
+					"price": {
+						"coin": "gp",
+						"amount": 1000,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "5th-level spell",
+					"level": 12,
+					"price": {
+						"coin": "gp",
+						"amount": 2000,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "6th-level spell",
+					"level": 14,
+					"price": {
+						"coin": "gp",
+						"amount": 4500,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "7th-level spell",
+					"level": 16,
+					"price": {
+						"coin": "gp",
+						"amount": 10000,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "8th-level spell",
+					"level": 18,
+					"price": {
+						"coin": "gp",
+						"amount": 24000,
+						"note": null
+					},
+					"entries": []
+				},
+				{
+					"type": "9th-level spell",
+					"level": 20,
+					"price": {
+						"coin": "gp",
+						"amount": 70000,
+						"note": null
+					},
+					"entries": []
+				}
+			],
+			"craftReq": "Supply a casting of false life of the appropriate level.",
+			"page": 61
+		}
+	]
+}
