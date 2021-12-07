@@ -338,8 +338,10 @@ SourceUtil = {
 
 	getFilterGroup (source) {
 		if (source instanceof FilterItem) source = source.item;
-		if (BrewUtil.hasSourceJson(source)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source));
+		if (BrewUtil.hasSourceJson(source)) return 3;
+		if (SourceUtil.isAdventure(source)) return 1;
+		if (SourceUtil.isNonstandardSource(source)) return 2;
+		if (!SourceUtil.isNonstandardSource(source)) return 0;
 	},
 
 	getAdventureBookSourceHref (source, page) {
