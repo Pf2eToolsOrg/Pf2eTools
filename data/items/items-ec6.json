@@ -56,7 +56,7 @@
 			"entries": [
 				"This coin-sized gemstone can be used on its own but must be included in the construction of a hearth in order to fully activate its magic.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "day",
@@ -68,12 +68,12 @@
 					"frequency": "4 times per year",
 					"trigger": null,
 					"requirements": "You have Legendary proficiency in",
-					"effect": [
+					"entries": [
 						"You craft a magical weapon or armor of up to 20th level. You must attempt a {@skill Crafting} check as usual to create the item, but you need supply only raw materials worth a quarter of the item's Price, and you need not pay the remaining portion of the item's Price or spend additional downtime days working on it. While Aroden's Hearthstone is active, the stars in the sky, including Golarion's sun, appear to glow brighter within a 100-mile radius of the hearthstone."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -85,7 +85,7 @@
 					"frequency": "once per month",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Aroden's Hearthstone draws in heat from the world itself, causing the ambient temperature within 100 miles to drop below 0°F.",
 						"Within 1 mile of the Hearthstone, the temperature drops to \u2013200°F, rivaling the frigid cold of outer space and dealing {@damage 4d6} cold damage each round to every creature in the area. This effect lasts 1 minute, during which time the nearest moon (probably Golarion's) appears an eerie blue color to any observers within 100 miles of the hearthstone. At the end of 1 minute, the hearthstone emits a blast of concentrated heat that deals {@damage 25d6} fire damage to creatures and objects within 150 feet.",
 						"Destruction Using Aroden's Hearthstone to craft a cursed item results in a failed creation and causes the gemstone to split into five equal-sized but magically impotent pieces. Over the course of a year, four of theses pieces crumble to dust, while the fifth expands to the size of the original artifact and bears its powers anew. To destroy Aroden's Hearthstone, each of the separated pieces must be plunged into one of the five stars that compose the cosmic constellation known as the Follower."
@@ -152,7 +152,7 @@
 				"Activate {@as 1}, {@as 2}, or {@as 3} ({@action Interact}) You swing Hunter's Dawn and launch a magically conjured javelin at a target within 60 feet, making a ranged {@action Strike}. The javelin has the statistics of a javelin but gains the magical properties of Hunter's Dawn and disappears immediately after hitting or missing its target. On a successful hit, you deal damage ({@damage 3d6} piercing, due to the atlatl's greater striking rune, plus your Strength modifier); in addition, a gazelle leaps from the hit target to one or more targets within 20 feet of the first, dealing {@damage 2d6} piercing damage plus your Strength modifier.",
 				"The number of additional targets hit in this way is equal to the number of actions you spend to activate this ability (one additional target if you used one action, two additional targets for two actions, and so forth).",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -164,12 +164,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The target is marked. Once per day, you can cast a 5th-level {@spell locate} spell on the marked target, regardless of its distance from you or your ability to cast spells. This effect persists until it is dispelled (counterspell DC 46), the creature dies, or a new target is marked."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -180,7 +180,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You shave a curl of wood from Hunter's Dawn and create a roaring fire within 15 feet. You can choose one of the following shapes for the fire to take: a 10-foot square, a 20-foot line, or a 15-foot cone. Each creature in the affected squares take {@damage 6d6} fire damage (DC 46 basic Reflex save)",
 						"Destruction Hunter's Dawn can be destroyed only by placing it on the funeral pyre of a dead god."
 					]
@@ -238,7 +238,7 @@
 				"While wielding the Kortos Diamond, you gain a +2 item bonus on saving throws against {@trait mental} effects. You can never harm yourself with the Kortos Diamond, even if {@condition confused}.",
 				"If you ever travel farther than 100 miles from the Isle of Kortos while in possession of the Kortos Diamond, the sword becomes impossibly heavy; you are {@condition encumbered} as long as you carry the sword and remain outside of this area. If you relinquish the Kortos Diamond while away from Kortos, the sword gradually makes its way back to the isle over the course of a year.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -249,13 +249,13 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You attempt a melee {@action Strike} with the Kortos Diamond against a creature within reach. On a hit, you deal damage as normal and the target's mind is inflicted with a powerful disruptive energy.",
 						"When the creature attempts to {@action Cast a Spell}, it must attempt a DC 44 Will save; on a failure, the spell fails and both the spell and the actions spent to cast it are lost. This effect lasts for up to 1 minute."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -266,12 +266,12 @@
 					"frequency": "once per round",
 					"trigger": "You damage an aberration with the Kortos",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You deal an additional {@damage 2d8} force damage to the struck creature."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -283,7 +283,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold the Kortos Diamond aloft and proclaim your might in a booming voice. You cast {@spell overwhelming presence} (DC 42)",
 						"Destruction A deity who ascended to divinity via the Test of the Starstone can damage and destroy the Kortos Diamond as if it were not an artifact."
 					]
@@ -318,7 +318,7 @@
 				"Each time dawn occurs, you regain the ability to make your daily preparations as if you had rested for 8 hours.",
 				"Daily preparations still take about an hour, as normal.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -330,7 +330,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "You aren't {@condition fatigued}",
-					"effect": [
+					"entries": [
 						"You open the locket to unleash the dreams it has kept at bay. You become {@condition fatigued} and cast one of the following spells at 9th level (DC 41): {@spell hallucination}, {@spell sleep}, or {@spell weird}."
 					]
 				}
@@ -396,7 +396,7 @@
 				"Piereta is very particular about who she permits to wield her. She agrees to work with you if you are a follower of {@deity Iomedae}, or if you are lawful good or neutral good and worship a different good deity. Otherwise, you must convince Piereta of the rightness of your cause. If Piereta doesn't want you to wield her, once per minute she can attempt to force you to put her down (DC 42 Will save to resist this command). Even if you succeed at this saving throw, Piereta refuses to apply any of her fundamental or property runes and gives you a \u20132 penalty on attack rolls with Piereta or any other weapon until you drop her.",
 				"Piereta can use the following activations.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -408,12 +408,12 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Piereta makes a {@action Retributive Strike} (Core Rulebook 107), resolved as though you had used the ability, including any benefits from champion feats you have."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -425,7 +425,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"Piereta casts a 9th-level {@spell field of life}."
 					]
 				}
@@ -455,7 +455,7 @@
 			"entries": [
 				"By twisting and twirling this ordinary-looking leather ribbon, you can temporarily bend a rift in space.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -469,13 +469,13 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The ribbon spins and swirls, creating a circular loop in the air through which you can spy on a creature on another plane. This has the effects of a {@spell scrying} spell (DC 40) against the creature but functions more as a mundane \u2014albeit interplanar\u2014window; a similar loop appears before the target, and for the duration, both sides can clearly see and hear each other through the created portal, but nothing can pass through. You can Sustain the Activation to gain the effects of Sustaining the Spell.",
 						"This activation has the {@trait scrying} trait."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -486,7 +486,7 @@
 					"frequency": "once per round",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You extend the ribbon to brush against a foe up to 60 feet away. If that creature fails a DC 42 Reflex save, you exchange positions with the target and all of that creature's allies are {@condition flat-footed} to you until the end of your turn. This activation has the {@trait teleportation} trait."
 					]
 				}
@@ -517,7 +517,7 @@
 			"entries": [
 				"This high-grade orichalcum shield (Hardness 16, HP 64, and BT 32) bears a +3 major striking shield boss that cannot be removed. It gleams brightly in any light, drawing attention at all times. When you Raise this Shield, ephemeral reflections of it appear in front of each of your allies within 30 feet, granting them its +2 circumstance bonus to AC for as long as they are within 30 feet of you and your shield is raised.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -528,7 +528,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You heft the shield and thrust it forward, causing ephemeral reflections of the shield to surround you and then rush outward in a 90-foot line or 60-foot cone (your choice). Make a shield bash {@action Strike} against each enemy within the area, except that the damage dealt is force damage. Each target you hit is moved 10 feet away from you (each target you critically hit is also knocked {@condition prone}). This is forced movement. These shield bashes count against your multiple attack penalty, but the penalty doesn't increase until after you have made all these attacks."
 					]
 				}
@@ -559,7 +559,7 @@
 			"entries": [
 				"This adamantine staff is fitted with mithral plates resembling battlements on a castle. Lesser cover, cover, and greater cover don't grant any bonus against your spell attacks or to saving throws against your spells that you cast from the staff.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -571,7 +571,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from its list.",
 						"Cantrips shield, telekinetic projectile 1st gust of wind, longstrider 2nd obscuring mist, web 3rd fireball, wall of wind 4th hallucinatory terrain, solid fog, wall of fire 5th cloudkill, wall of stone 6th fireball, wall of force 7th magnificent mansion, prismatic spray 8th earthquake, scintillating pattern 9th meteor swarm."
 					]
