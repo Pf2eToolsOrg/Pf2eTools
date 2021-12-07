@@ -22,7 +22,7 @@
 			"entries": [
 				"The tip of this +2 greater striking spear is large and wickedly barbed, and the haft is inlaid with fine silver lines that run the length of the weapon. Wielded by specially trained xulgath cavalry, anchor spears are used to prevent the escape of gogiteths or other monsters capable of climbing or burrowing.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -33,12 +33,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The anchor spear extends into a +2 greater striking longspear or back to its original form as a +2 greater striking spear."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -49,7 +49,7 @@
 					"frequency": "once per 10 minutes",
 					"trigger": "You damage a creature using the anchor spear",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The spear embeds itself into the creature, and the spear's haft splits along the silver lines to become a series of hooks attached to a thin but strong cable. As long as the anchor spear remains embedded in the creature, any time the creature burrows or climbs, it treats normal terrain as difficult terrain and difficult terrain as greater difficult terrain. The creature can spend an {@action Interact} action to attempt a DC 32 {@skill Athletics} check to remove the spearhead.",
 						{
 							"type": "successDegree",
@@ -115,7 +115,7 @@
 			"entries": [
 				"Developed by urdefhans for their skaveling mounts but quickly copied by other races' cavalry, this leather saddle is made from cave worm hide and is designed to fit a variety of flying steeds. In addition to a seat for the rider, the bomber's saddle has a bomb compartment situated underneath the mount. The compartment can hold up to six alchemical bombs of light or negligible Bulk.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -126,12 +126,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You drop a single item from the saddle's compartment, which falls to the ground below. If the item is a bomb, make a ranged {@action Strike} with it."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -142,7 +142,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "The saddle's compartment is loaded with two to six bombs",
-					"effect": [
+					"entries": [
 						"You drop the saddle's entire payload, scattering the bombs below. Make a single ranged {@action Strike} against an AC of 10. The AC increases by 1 for every 5 feet above the target area you are. On a failure, the bombs fly away wildly and deal no damage. On a successful attack roll, the bombs fall and shatter, starting in the target area and moving in a line of 5-foot spaces up to 30 feet long for six bombs, one bomb per space. The bombs don't directly hit any creatures; instead, creatures take splash damage from the bombs as usual, but combine the splash damage from multiple overlapping bombs together before applying weaknesses or resistances.",
 						"Apply {@trait any} effects normally applied to splash damage when throwing a bomb (such as the effects of the Calculated Splash feat)."
 					]
@@ -277,7 +277,7 @@
 			"entries": [
 				"These wicked-looking spiked metal wheels fit around the ankles and jingle when the wearer walks, imposing a \u20131 item penalty on {@skill Stealth} checks. If used as a weapon, they are treated as a spiked gauntlet.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -288,7 +288,7 @@
 					"frequency": "once per 10 minutes",
 					"trigger": null,
 					"requirements": "You are riding a mount",
-					"effect": [
+					"entries": [
 						"You kick both spurs into your mount's flank. Your mount takes {@damage 2d6} {@condition persistent damage ||persistent bleed damage} and gains the {@condition quickened} condition for 1 minute or until the {@condition persistent damage ||persistent bleed damage} ends, whichever comes first. It can use the extra action only to {@action Stride}."
 					]
 				}
@@ -321,7 +321,7 @@
 				"Life's Last Breath is said to have been forged centuries ago for an unknown urdefhan general and has since fallen into the hands of countless other powerful urdefhan warlords.",
 				"Life's Last Breath is a +3 greater striking unholy wounding rhoka sword with the following special abilities.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -332,12 +332,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast a 9th-level {@spell paralyze} spell on the target."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -348,7 +348,7 @@
 					"frequency": "once per 10 minutes",
 					"trigger": "You successfully {@action Strike} a creature with Life's",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The target must succeed at a DC 38 Fortitude save or take {@damage 4d6} negative damage; you gain an equal amount of temporary Hit Points that last 1 minute.",
 						{
 							"type": "successDegree",
@@ -382,7 +382,7 @@
 			"entries": [
 				"This rough metal staff is pitted and sandblasted, with thousands of nigh-imperceptible sand crystals embedded in its surface. While carrying the staff, you gain a +2 circumstance bonus to {@skill Occultism} checks to identify aberrations and oozes native to the Darklands.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -394,7 +394,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You expend a number of charges from the staff to cast a spell from this list."
 					]
 				}

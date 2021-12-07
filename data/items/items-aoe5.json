@@ -23,7 +23,7 @@
 			"entries": [
 				"Engraved with carvings of tortured souls, this green cauldron has two abilities that allow it to capture nightmares and then unleash them on the world. The cauldron has an affinity for preying on the minds of captives and prisoners, who take a \u20132 circumstance penalty to saving throws against it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -34,12 +34,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The cauldron casts nightmare (DC 35) on a target creature that you know by name. The target must be on the same plane as you. If the target fails its save and is 15th level or lower, you add its nightmare to the cauldron. The cauldron can hold only six nightmares at a time; when you add a new nightmare, you choose which six to keep."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -50,7 +50,7 @@
 					"frequency": "once per week",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You spill the nightmarish contents of the cauldron onto the ground and choose one creature whose nightmare is stored in your cauldron. A nightmare copy of the chosen creature springs to life from the bubbling pile of horror.",
 						"The cauldron casts duplicate foe on the target, ignoring the range restriction, and the target automatically fails its saving throw. All enemies within 20 feet of the cauldron are subjected to a {@spell fear} spell (DC 35). All other nightmares stored in the cauldron are lost. The cauldron becomes totally inert and can't be used again for 1 week."
 					]
@@ -83,7 +83,7 @@
 			"entries": [
 				"Paper-thin interlocking gears and winding cogs make up this bronze cloak.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -94,12 +94,12 @@
 					"frequency": "once per day",
 					"trigger": "You're struck by a melee attack with a held weapon",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You deflect the blow and attempt to catch the weapon in the cloak's gears. Make an {@skill Athletics} check to {@action Disarm} the weapon."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -110,7 +110,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You wrap the cloak around yourself and the winding gears decelerate your body, causing you to enter standby mode. While in standby mode you don't need to eat, drink, or sleep. You remain aware of your surroundings but take a \u20134 penalty to {@skill Perception} checks. You can stay in standby mode indefinitely, although your body ages normally. You can leave standby mode as a free action. If you do so to initiate combat, you gain a +2 item bonus to your initiative roll."
 					]
 				}
@@ -142,7 +142,7 @@
 				"Rotating gears cover the outside of this imposing helmet. In order to function, the device must be wound for 10 minutes once every 24 hours. The clockwork helm has a calming and focusing effect on the mind. If you're affected by a detrimental condition caused by a {@trait mental} or {@trait emotion} effect, each round at the beginning of your turn, the gears of the helmet unwind and reduce the value of the condition by 1.",
 				"This effect works only if the condition's value can normally be reduced by simply waiting; otherwise the helmet has no effect.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -153,7 +153,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "You've wound the clockwork helm for 10 minutes within the last 24 hours",
-					"effect": [
+					"entries": [
 						"You fire a beam of withering heat from the helmet's eye slits at a target. Make a spell or ranged attack roll (your choice) to affect the target. On a hit, the target takes {@damage 10d8} fire damage and is {@condition drained|CRB|drained 2}."
 					]
 				}
@@ -252,7 +252,7 @@
 			"entries": [
 				"This +2 greater resilient studded leather is made of hardened fungus. Every day the armor grows dozens of unusual mushrooms that can be used for cooking, infused reagents, or common spell material components.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -263,7 +263,7 @@
 					"frequency": "once per day",
 					"trigger": "You are hit by a melee, ranged, or spell attack",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The attack misses you, dealing no damage as you transform into a cloud of spores. You gain the benefits of a {@spell gaseous form} spell for 1 minute. For the duration, a cloud of deadly spores surrounds you.",
 						"Each breathing creature that begins its turn within 10 feet of you takes {@damage 6d8} poison damage (DC 35 basic Fortitude save). You can {@action Dismiss} the cloud form."
 					]
@@ -332,7 +332,7 @@
 			"entries": [
 				"Shaped like a blade made from spinning gears, this +2 greater striking weapon can catch enemy weapons and grind up foes. In order to function, the gearblade must be wound for 10 minutes once every 24 hours. During this process, you can reconfigure the weapon to transform into a bastard sword, greatsword, longsword, or shortsword. It then gains all the features of the chosen weapon except that its Bulk is always 2 and it gains the disarm weapon trait and the versatile B weapon trait (which replaces any other {@trait versatile} trait the weapon might have). If you don't wind the gearblade, it becomes inert and has the statistics of a greatclub.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -343,7 +343,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "You've wound the gearblade for 10 minutes within the last 24 hours",
-					"effect": [
+					"entries": [
 						"The target's weapon is pulled through the gearblade's gears and shoots out the other side, landing 20 feet away in a direction of your choice. The target must attempt a DC 36 Reflex save. On a failure, the limb holding their weapon is also pulled into the gearblade, and the creature takes {@damage 3d12} bludgeoning damage. On a critical failure, they take {@damage 6d12} bludgeoning damage and the limb becomes unusable until healed by a {@spell regenerate} spell or a similar effect."
 					]
 				}
@@ -376,7 +376,7 @@
 				"In its first form, the mask depicts a silvery and angelic face; while wearing the mask in this form, your alignment appears as lawful good to creatures attempting to detect your alignment. In its second form, the mask depicts a gold-skinned demonic face; while wearing the mask in this form, your alignment appears as chaotic evil to creatures attempting to detect your alignment.",
 				"If you die while wearing the mask, a fragment of your soul is trapped in the mask, forming a life link. If there was already a soul fragment in the mask when this happens, you roll a Will save against the Will DC of the person who left the previous fragment. If you succeed, your soul fragment replaces the old one. On a failure, you die normally.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -387,12 +387,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You switch the mask to its other form."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -403,13 +403,13 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell crisis of faith} (DC 34), targeting up to four creatures within 30 feet. If the mask is in its angelic form, you can target only evil and neutral creatures.",
 						"If the mask is in its demonic form, you can target only good and neutral creatures."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -423,7 +423,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": "A soul fragment is in the mask",
-					"effect": [
+					"entries": [
 						"You cast {@spell talking corpse} on the soul fragment, except you communicate telepathically and don't require the fragment's body to speak."
 					]
 				}
@@ -453,7 +453,7 @@
 			"entries": [
 				"Crafted from polished wood, this seemingly mundane +1 striking club comes with a red leather strap near the handle. The mere sight of the cudgel in a guard's hand fills prisoners with dread.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -465,7 +465,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You initiate an intimidating walk, thumping the cudgel menacingly against your palm. As part of activating this item, you can {@action Stride} twice. For the next minute, whenever you successfully {@action Strike} a creature with the nightmare cudgel, you can use a free action to attempt an {@skill Intimidation} check to {@action Demoralize} the struck creature."
 					]
 				}

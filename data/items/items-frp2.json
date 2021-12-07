@@ -64,7 +64,7 @@
 				"This cloth of gold cape was originally gifted to one of Goka's emperors centuries ago. Since then, it has spawned many imitations, which are all alike in that they are dyed with an elaborate seal depicting two drakes flanking Goka's palace and the Seven Dragons Bridge. The beautiful cape grants you a +3 item bonus to checks to {@action Lie} and to {@action Make an Impression}. While you wear the cape, the weather (including wind and fog) doesn't affect your movement or vision.",
 				"Additionally, whenever you fall while wearing the cape of the open sky, the cape automatically casts feather fall on you.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -75,12 +75,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The cape becomes a pair of golden drake wings that grant you a fly Speed of 30 feet for 1 hour."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -91,7 +91,7 @@
 					"frequency": "once per minute",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The cloak pushes you onward. You {@action Stride} or {@action Fly} up to your Speed, but you can move only in a straight line. You gain a +15-foot status bonus to your Speed and fly Speed for this movement."
 					]
 				}
@@ -124,7 +124,7 @@
 				"These silk headbands always come in pairs and usually feature a prominent symbol of a nation or team. If both wearers Invest their headbands at the same time and think of the same symbol while doing so, both headbands change to display that symbol until they are removed.",
 				"As long as you both have Invested your headbands, you can {@action Aid} each other without taking an action to prepare and when you get a critical failure when attempting to {@action Aid} an ally with a paired headband, you get a failure instead.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -135,7 +135,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You remove your headband, which teleports you to a space adjacent to the other Invested wearer's location, if you are within 1 mile of each other."
 					]
 				}
@@ -166,7 +166,7 @@
 			"entries": [
 				"Large turquoise gems stud the outer edge of this sturdy +3 greater striking ghost touch composite shortbow. Arrows shot from the bow are unimpaired by wind and {@trait air} effects.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -178,12 +178,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You shoot an arrow at an open space on a surface within 500 feet and momentarily vanish into a wind that carries the arrow. You teleport to that location."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -195,12 +195,12 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You shoot an arrow at the sky and it tears an extraplanar rift that resembles a storm cloud in a 30-foot burst centered on a point within 200 feet. A torrent of rain pours down from the rift for 1 minute or until you {@action Dismiss} the effect. The area within the torrent becomes difficult terrain for all movement (including Flying). As an {@action Interact} action, you can fire an arrow into the rift to cause a bolt of lightning to strike a creature in the area. The creature takes {@damage 5d12} lightning damage and must attempt a DC 41 basic Reflex save."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -214,7 +214,7 @@
 					"frequency": "once per week",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You fire a volley of arrows into the sky. You create the effects of a successful control weather ritual."
 					]
 				}

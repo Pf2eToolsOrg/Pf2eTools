@@ -48,7 +48,7 @@
 			"entries": [
 				"Symbols of musical notes decorate this gold-framed wooden cube measuring just under 1 foot by 1 foot. A funnel-shaped trumpet protrudes from the box's top at an angle, though it feels surprisingly light. The box has a large button on its side, and it must be set down on a flat surface in order to activate it; while it's activated, the rumbling and churning gears inside the box make it impossible to carry without dropping it.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -59,7 +59,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You press the button on the side of the music box, causing it to erupt with a cacophonous and discordant melody for 1 minute while it plays its entire melody, and it can't be shut off prematurely.",
 						"The music is so loud that any creature within 60 feet must succeed at a DC 24 Fortitude save or become {@condition deafened} for as long as they remain within 60 feet of the music box, and for 1 minute thereafter. On a critical success, a creature need not make any more saves and is temporarily immune to the deafening music box for the next 24 hours; on a success, the creature must attempt a new save each round it remains within 60 feet of the music box."
 					]
@@ -118,7 +118,7 @@
 			"entries": [
 				"This surprisingly sturdy 3-foot-by-3-foot clay tile resembles a thick pressure plate. It can support up to 500 pounds of weight atop it before it is destroyed. The floorbell's nature is obvious at a glance, but mundane or magical means can obscure or camouflage the tile (such as by covering it in scattered leaves or by casting an {@spell illusory object} spell) to make it harder to detect.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -130,7 +130,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The floorbell must be activated on level ground. When you do, specify the amount of weight that triggers the floorbell's alarm system. When the amount of weight you specify (or more) is placed on the floorbell, it emits an ear-piercing wail clearly audible to a range of 150 feet. A floorbell can also ring an alarm if a weight you specify is removed from the floorbell, such as if you activated it while a heavy sack was on it."
 					]
 				}
@@ -189,7 +189,7 @@
 			"entries": [
 				"These small brooches usually feature carved reliefs of verminous, swarming creatures. When you wear the clasp, you gain resistance 10 to physical damage from swarm creatures.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -201,7 +201,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You thrust your hand into the swarm, draw forth a squirming mass of vermin, and devour it. You recover {@dice 3d10+8} Hit Points and deal the same amount of bludgeoning damage to the swarm. The Hit Point recovery is a positive {@trait healing} effect."
 					]
 				}
@@ -233,7 +233,7 @@
 				"This bulky leather harness has four pockets across the chest.",
 				"The pockets contain a set of infiltrator's thieves' tools, infiltrator picks, a levered crowbar, and a glass cutter. These items are magically bound to the harness; if they are more than 1 foot away from you, they disappear, then reappear in the harness at the next sunset. {@condition Broken} or destroyed items similarly reappear, restored, in their proper pockets at sunset.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -244,7 +244,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cinch the harness to prepare for mischief. You gain a +1 item bonus to {@skill Stealth} checks and a +10-foot item bonus to your Speed for 1 minute."
 					]
 				}

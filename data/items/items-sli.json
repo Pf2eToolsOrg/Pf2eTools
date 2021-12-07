@@ -219,7 +219,7 @@
 			"entries": [
 				"This thick, greasy +1 striking shifting whip is made from a slimy pseudopod. You don't take the usual \u20132 circumstance penalty to your attack rolls when using the slime whip to make a lethal attack. The whip's form can be changed just like any weapon with the shifting rune, but it reverts to its original form as soon as it isn't wielded. When in its whip form, you can use the following action.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "action"
@@ -231,7 +231,7 @@
 					"frequency": "once per hour",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"For 1 round, the slime whip deals acid damage rather than slashing damage. If the attack deals {@condition persistent damage}, the {@condition persistent damage} is also acid damage instead of its usual type."
 					]
 				}
@@ -296,7 +296,7 @@
 			"entries": [
 				"This greasy stick emits a stomach-churning scent when held in a hand.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -308,7 +308,7 @@
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell acid arrow} of the indicated level. A creature that takes acid damage from this spell must succeed at a Fortitude save against your spell DC or become {@condition sickened|CRB|sickened 1}."
 					]
 				}
@@ -377,7 +377,7 @@
 			"entries": [
 				"This pale wooden wand is carved to resemble a thigh bone with metal caps at each end. Ghostly tendrils seem to swirl around it every so often.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "varies",
@@ -389,12 +389,12 @@
 					"frequency": "once per day, plus overcharge",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You cast {@spell false life} of the indicated level. During the duration of the spell, wisps that resemble spirits flit around you as long as you have any temporary Hit Points from false life, and you can use the following action."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -405,7 +405,7 @@
 					"frequency": null,
 					"trigger": "You successfully impart the {@condition frightened|CRB|frightened 1} condition to a creature",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You end false life and increase the creature's {@condition frightened} condition value to 2."
 					]
 				}

@@ -20,7 +20,7 @@
 				"A large crystal of warpglass (page 74) floats above the head of this silvery purple +3 anarchic greater striking club. If you successfully {@action Strike} a creature, the cane also affects the target with a warpwave (Pathfinder Bestiary 266). While you carry the cane, you hear a constant, distracting chorus of laughing, incoherent Protean whispers and sing-song voices in your mind. Blatant acts of self-indulgence or narcissism quell these whispers, from a few minutes up to a full day depending on the scope of the act, but they immediately return when you use the artifact's powers.",
 				"The gradually rising chorus eventually drives away rational thought and renders the cane's owner insane, even if staved off from time to time with self-centered acts. As the artifact's abilities pull material from the Maelstrom, it doesn't function in areas where planar connections are severed.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -31,12 +31,12 @@
 					"frequency": null,
 					"trigger": "You are targeted by a ranged attack from an opponent you can see",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You draw a temporary shield of chaotic turbulence with a cerulean flash. You gain a +3 circumstance bonus to AC against the triggering attack."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 10,
 						"unit": "minute",
@@ -50,12 +50,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Cane of the Maelstrom casts a 5th-level {@spell hallucinatory terrain} spell and infuses the illusion with quasi-real substance drawn from the primal chaos of the Maelstrom. Creatures that don't disbelieve the illusion treat structures and terrain created through the spell as though they were real, ascending illusory stairs, becoming trapped by illusory quicksand, and so on. If no creature disbelieves the illusion during its duration, the changes become wholly real and permanent when its duration expires."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "minute",
@@ -67,7 +67,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Cane of the Maelstrom casts a 5th-level {@spell creation} spell, except the duration is unlimited and you can create delicate or complex objects by succeeding at an applicable {@skill Crafting} skill check when you activate this ability.",
 						"Destruction Trapping a lawful demigod in the hallucinatory terrain created by the cane and leaving it imprisoned for a year and a day causes a deific overload that destroys the artifact.",
 						"When the artifact is destroyed, the terrain imprisoning the demigod crumbles away and the demigod is freed."
@@ -95,7 +95,7 @@
 			"entries": [
 				"This shining prism is bound within a golden frame. The bright glow within the artifact is the gleaming essence of celestials bound within it in ancient times. Each activation consumes a bit of this celestial energy, projecting the screams of the celestials into your mind. While holding the Radiant Spark, you gain a +2 item bonus to saving throws against divine spells and effects and you are aware of its powers. If you are good, while holding the Radiant Spark, you are {@condition sickened|CRB|sickened 3} and can't recover from this condition.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -107,12 +107,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Radiant Spark casts a 10th-level {@spell dominate} spell (DC 49) on a creature that isn't from the Material Plane. Celestials get an outcome one degree of success worse than the result of their save."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "free"
@@ -123,12 +123,12 @@
 					"frequency": null,
 					"trigger": "You begin casting a planar binding ritual",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The Radiant Spark reduces the casting time of the ritual to 1 hour, and you don't need secondary casters for this ritual."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -140,7 +140,7 @@
 					"frequency": null,
 					"trigger": "The target critically fails their save against the Radiant Spark's {@spell dominate} spell or you critically succeed at binding the target with the planar binding ritual using the artifact",
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"The target must attempt a DC 49 Will save and is immune to further attempts for 24 hours.",
 						{
 							"type": "successDegree",
@@ -180,7 +180,7 @@
 			"entries": [
 				"This band of interwoven gold and copper, traced with Aklo symbols, is topped with a gleaming, luminescent opal gently bleeding wisps of shadowstuff.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 3,
 						"unit": "action"
@@ -191,7 +191,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You attempt to make the ring cast an arcane {@spell wish} spell. However, if the ring doesn't deem the wish to be sufficiently selfless, the wish isn't cast and the ring can't be activated for 24 hours. You are {@condition drained|CRB|drained 3}, whether or not the ring refuses the wish.",
 						"Once the wish is cast, the Ring of Recalcitrant Wishes has no powers, though it is rumored that the wearer's death in an act of profound self-sacrifice restores the wish to the ring."
 					]

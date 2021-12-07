@@ -22,7 +22,7 @@
 			"entries": [
 				"This concave lens has a drifting crimson cloud resembling slowly swirling blood within it. While you have the Crimson Fulcrum Lens invested, you seethe with malevolent fury you can barely contain. You gain a +2 item bonus to saving throws against {@trait fear} effects and a +2 item bonus to your melee {@action Strike} damage (this increases to a +4 item bonus to damage if the melee {@action Strike} is a jaws attack). You can also activate the lens in the following ways.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -33,12 +33,12 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You grasp the Crimson Fulcrum Lens in one hand and make a {@action Strike} that doesn't require that hand. The {@action Strike} deals an additional {@damage 1d8} precision damage (or {@damage 2d8} precision damage if you make a jaws {@action Strike}) and doesn't count toward your multiple attack penalty."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -50,7 +50,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"While grasping the lens, make a melee spell attack roll with a modifier of +18. On a hit, you force the splinter of {@deity Nhimbaloth|LOGM}'s essence from the lens to possess the target. You're no longer invested in the lens, and the target gains the benefits as though it had invested the lens but can't activate the lens's other abilities. This effect is permanent, but it can be ended by {@trait any} effect that removes a {@trait possession} effect. The lens doesn't have any magical abilities until the {@trait possession} effect ends; when it does, the essence returns to the lens."
 					]
 				}
@@ -80,7 +80,7 @@
 			"entries": [
 				"This strangest and most powerful of the fulcrum lenses resembles a chip of smooth obsidian containing three dark glimmers of {@deity Nhimbaloth|LOGM}'s essence. Incorporeal creatures can touch and hold the Ebon Fulcrum Lens. While you have the Ebon Fulcrum Lens invested, and you're a corporeal creature, you become insubstantial, gain the {@trait incorporeal} trait, and are {@condition drained|CRB|drained 2}. Your {@condition drained} condition can't be reduced below 2 as long as you have the lens invested. You can activate the lens in the following ways. Both require expenditures of glimmers within the lens; once the lens is depleted of its three glimmers, it retains its ability to make corporeal creatures insubstantial but can't be used for its other abilities until its glimmers are restored (which generally requires a ritual or being steeped in an area of {@deity Nhimbaloth|LOGM}'s power).",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 1,
 						"unit": "reaction"
@@ -91,12 +91,12 @@
 					"frequency": "once per day",
 					"trigger": "you would be destroyed and are able to rejuvenate",
 					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
-					"effect": [
+					"entries": [
 						"For the first 24 hours after you rejuvenate, you gain a +1 item bonus to attack rolls, saving throws, and DCs. Reduce the number of glimmers remaining in the lens by 1."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -107,7 +107,7 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": "At least one glimmer remains in the Ebon Fulcrum Lens",
-					"effect": [
+					"entries": [
 						"You draw upon a glimmer of {@deity Nhimbaloth|LOGM}'s essence for power; reduce the number of glimmers remaining in the lens by 1. You're {@condition quickened} for 1 minute and gain a +1 item bonus to attack rolls, saving throws, and DCs. You can use this extra action to {@action Stride} or {@action Step}, or for an action in a special ghost ability you have."
 					]
 				}
@@ -139,7 +139,7 @@
 				"This concave green lens is pitted and flawed; its jagged edges can cut those who don't handle it with care. While you have the Emerald Fulcrum Lens invested, your flesh appears waxen and pallid. You gain negative healing and {@spell harm} spells gain a +4 status bonus to the Hit Points they restore to you.",
 				"You can also activate the lens in the following ways.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -150,12 +150,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You grasp the Emerald Fulcrum Lens in one hand, regain 30 Hit Points, and gain a +2 item bonus to saving throws against magic for 1 round."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -167,7 +167,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +20."
 					]
 				}
@@ -342,7 +342,7 @@
 			"entries": [
 				"This brownish-orange lens always seems dusty and gritty, even when wet. While you have the Ochre Fulcrum Lens invested, lassitude grips you. You gain resistance 10 to mental damage and a +2 status bonus to saves against {@trait emotion} effects. You can also activate the lens in the following ways.",
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -353,12 +353,12 @@
 					"frequency": "once per day",
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"You hold up the Ochre Fulcrum Lens in your hand and the item casts crushing despair (DC 31 Will save)."
 					]
 				},
 				{
-					"type": "activation",
+					"type": "ability",
 					"activity": {
 						"number": 2,
 						"unit": "action"
@@ -370,7 +370,7 @@
 					"frequency": null,
 					"trigger": null,
 					"requirements": null,
-					"effect": [
+					"entries": [
 						"as Crimson Fulcrum Lens, but the melee spell attack modifier is +21."
 					]
 				}
