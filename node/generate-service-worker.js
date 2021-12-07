@@ -4,18 +4,8 @@ const ut = require("./util.js");
 let swFiles = [];
 const _addSwFilenames = (list) => swFiles = swFiles.concat(list.map(it => `/${it}`));
 
-const audioFiles = ut.listFiles({dir: "audio", whitelistFileExts: [".mp3"]});
-_addSwFilenames(audioFiles);
-
 const cssFiles = ut.listFiles({dir: "css", whitelistFileExts: [".css"]});
 _addSwFilenames(cssFiles);
-
-const dataFiles = ut.listFiles({
-	dir: `data`,
-	blacklistFilePrefixes: ["roll20-module-", "srd-spells.json", "roll20.json"],
-	whitelistFileExts: [".json"],
-});
-_addSwFilenames(dataFiles);
 
 const fontFiles = ut.listFiles({dir: "fonts", whitelistFileExts: [".ttf", ".eot", ".woff", ".woff2", ".svg"]});
 _addSwFilenames(fontFiles);
@@ -23,8 +13,8 @@ _addSwFilenames(fontFiles);
 const homebrewFiles = ut.listFiles({dir: "homebrew", whitelistFileExts: ["index.json"]});
 _addSwFilenames(homebrewFiles);
 
-const iconFiles = ut.listFiles({dir: "icon", whitelistFileExts: [".png", ".jpg", ".jpeg", ".svg", ".gif"]});
-_addSwFilenames(iconFiles);
+// const iconFiles = ut.listFiles({dir: "icon", whitelistFileExts: [".png", ".jpg", ".jpeg", ".svg", ".gif"]});
+// _addSwFilenames(iconFiles);
 
 if (fs.existsSync("img")) {
 	const imgFiles = ut.listFiles({dir: "img", whitelistFileExts: [".png", ".jpg", ".jpeg", ".svg", ".gif"]});
