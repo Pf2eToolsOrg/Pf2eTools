@@ -99,7 +99,7 @@
 			"source": "CRB",
 			"page": 75,
 			"categories": [
-				"General"
+				"Class"
 			],
 			"entries": [
 				"Feats with the additive trait allow you to spend actions to add special substances to bombs or elixirs. You can add only one additive to a single alchemical item, and attempting to add another spoils the item. You can typically use actions with the additive trait only when you're creating an {@trait infused} {@trait alchemical} item, and some can be used only with the {@action Quick Alchemy|CRB} action. The additive trait is always followed by a level, such as additive 2. An additive adds its level to the level of the alchemical item you're modifying; the result is the new level of the mixture. The mixture's item level must be no higher than your advanced alchemy level."
@@ -2221,9 +2221,15 @@
 		{
 			"name": "Gnoll",
 			"source": "Bst",
+			"otherSources": {
+				"Reprinted": [
+					"LOME|309"
+				]
+			},
 			"page": 346,
 			"categories": [
-				"Creature"
+				"Creature",
+				"Ancestry & Heritage"
 			],
 			"entries": [
 				"Gnolls are humanoids that resemble hyenas."
@@ -2244,6 +2250,76 @@
 			],
 			"entries": [
 				"A creature with this trait is a member of the gnome ancestry. Gnomes are small people skilled at magic who seek out new experiences and usually have {@ability low-light vision}. An ability with this trait can be used or selected only by gnomes. A weapon with this trait is created and used by gnomes."
+			]
+		},
+		{
+			"name": "Witch",
+			"source": "APG",
+			"page": 271,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"This trait indicates abilities from the witch class."
+			]
+		},
+		{
+			"name": "Oracle",
+			"source": "APG",
+			"page": 269,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"This trait indicates abilities from the oracle class."
+			]
+		},
+		{
+			"name": "Ganzi",
+			"source": "LOAG",
+			"page": 141,
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"entries": [
+				"A planar scion descended from a chaotic being of the Maelstrom, such as a protean."
+			]
+		},
+		{
+			"name": "Goloma",
+			"source": "LOME",
+			"page": 309,
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"entries": [
+				"Insular humanoids that bear countless eyes."
+			]
+		},
+		{
+			"name": "Shisk",
+			"source": "LOME",
+			"page": 310,
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"entries": [
+				"Secretive humanoids covered in bony plumage that reside underground."
+			]
+		},
+		{
+			"name": "Anadi",
+			"source": "LOME",
+			"page": 308,
+			"categories": [
+				"Ancestry & Heritage",
+				"Creature"
+			],
+			"entries": [
+				"A reclusive people from Garund who resemble spiders and can assume human forms."
 			]
 		},
 		{
@@ -2362,11 +2438,13 @@
 			"page": 309,
 			"otherSources": {
 				"Expanded": [
-					"LOAG|138"
+					"LOAG|138",
+					"LOME|309"
 				]
 			},
 			"categories": [
-				"Creature"
+				"Creature",
+				"Ancestry & Heritage"
 			],
 			"entries": [
 				"Gripplis are a family of froglike humanoids.",
@@ -3140,6 +3218,17 @@
 			],
 			"entries": [
 				"These aquatic humanoids have an upper body similar to a human and a lower body similar to a fish."
+			]
+		},
+		{
+			"name": "Hex",
+			"source": "APG",
+			"page": 101,
+			"categories": [
+				"Class"
+			],
+			"entries": [
+				"A hex is a short-term effect generated on the fly from your patron's magic, requiring your familiar to draw from your patron. As such, you can cast only one spell with the hex trait each turn; attempts to cast a second hex spell on the same turn fail and the spellcasting actions are lost."
 			]
 		},
 		{
@@ -4884,10 +4973,18 @@
 			"source": "SoM",
 			"page": 244,
 			"categories": [
-				"Creature"
+				"General"
 			],
 			"entries": [
-				""
+				"Certain spells, feats, and items have the true name trait. This trait means they require you to know a creature's true name to use them. But even without these specialized abilities, knowing a creature's true name gives you certain advantages. If you know a creature's true name, you have a +2 circumstance bonus to the following checks.",
+				{
+					"type": "list",
+					"items": [
+						"Checks to {@action Recall Knowledge} about the creature",
+						"{@skill Arcana}, {@skill Nature}, {@skill Occultism}, or {@skill Religion} checks relating to the creature, such as {@action Decipher Writing||Deciphering its Writing}, {@action Identify Magic||Identifying its Magic}, or {@action Learn a Spell||Learning its Spells}",
+						"{@skill Deception}, {@skill Diplomacy}, and {@skill Intimidation} checks used on or related to the creature, such as to {@action Coerce} it, {@action Gather Information} on it, or {@action Impersonate} it"
+					]
+				}
 			]
 		},
 		{
@@ -5211,6 +5308,17 @@
 			],
 			"entries": [
 				"These shapechanging creatures either are naturally able to shift between animal, humanoid, and hybrid forms or are afflicted with a curse that forces them to shift involuntarily."
+			]
+		},
+		{
+			"name": "Vigilante",
+			"source": "APG",
+			"page": 271,
+			"categories": [
+				"General"
+			],
+			"entries": [
+				"Using actions and abilities with the vigilante trait while in your social identity risks exposing you as a vigilante."
 			]
 		},
 		{

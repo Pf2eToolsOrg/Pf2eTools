@@ -431,24 +431,10 @@
 					"entries": [
 						"If you need a specific alchemical item on the fly, you can use your infused reagents to quickly create it with the {@action Quick Alchemy} action.",
 						{
-							"type": "ability",
-							"style": "full",
+							"type": "statblock",
+							"tag": "action",
 							"name": "Quick Alchemy",
-							"page": 72,
-							"source": "CRB",
-							"traits": [
-								"Alchemist",
-								"Manipulate"
-							],
-							"cost": "1 batch of infused reagents",
-							"requirements": "You have the formula for the alchemical item you're creating, and you're either holding or wearing {@item alchemist's tools|CRB}.",
-							"activity": {
-								"number": 1,
-								"unit": "action"
-							},
-							"entries": [
-								"You swiftly mix up a short-lived alchemical item to use at a moment's notice. You create a single alchemical item of your advanced alchemy level or lower that's in your formula book without having to spend the normal monetary cost in alchemical reagents or needing to attempt a {@skill Crafting} check. This item has the {@trait infused} trait, but it remains potent only until the start of your next turn."
-							]
+							"source": "CRB"
 						}
 					]
 				}
@@ -1063,21 +1049,10 @@
 					"entries": [
 						"You focus on bizarre mutagenic transformations that sacrifice one aspect of a creature's physical or psychological being in order to strengthen another. You start with the formulas for two {@filter 1st-level mutagens|items||item=mutagen|level=[1;1]|type=null} in your formula book, in addition to your other formulas.",
 						{
-							"type": "ability",
-							"style": "full",
+							"type": "statblock",
+							"tag": "action",
 							"name": "Mutagenic Flashback",
-							"traits": [
-								"Alchemist"
-							],
-							"frequency": "once per day",
-							"activity": {
-								"number": 1,
-								"unit": "free",
-								"entry": "{@as f}"
-							},
-							"entries": [
-								"You experience a brief resurgence of a mutagen. Choose one mutagen you've consumed since your last daily preparations. You gain the effects of that mutagen for 1 minute."
-							]
+							"source": "CRB"
 						}
 					]
 				}

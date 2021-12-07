@@ -638,9 +638,16 @@
 			"bulk": "\u2014",
 			"category": "Worn",
 			"entries": [
-				"These brass goggles are engraved with flame patterns and have thick, heavy lenses. While worn, they give you a +1 item bonus to {@skill Crafting} checks to {@action Craft} alchemical items and a +1 item bonus to attack rolls with alchemical bombs. You can also ignore lesser cover when making Strikes with alchemical bombs."
+				"These brass goggles are engraved with flame patterns and have thick, heavy lenses. While worn, they give you a +1 item bonus to {@skill Crafting} checks to {@action Craft} alchemical items and a +1 item bonus to attack rolls with alchemical bombs. You can also ignore lesser cover when making {@action Strike||Strikes} with alchemical bombs."
 			],
 			"generic": "G",
+			"_vmod": {
+				"entries": {
+					"mode": "replaceTxt",
+					"replace": "\\+1"
+				},
+				"entriesMode": "generic"
+			},
 			"variants": [
 				{
 					"type": "alchemist goggles",
@@ -650,7 +657,12 @@
 						"amount": 100,
 						"note": null
 					},
-					"entries": []
+					"entries": [],
+					"_mod": {
+						"entries": {
+							"with": "+1"
+						}
+					}
 				},
 				{
 					"type": "greater alchemist goggles",
@@ -662,7 +674,12 @@
 					},
 					"entries": [
 						"The item bonuses are both +2."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+2"
+						}
+					}
 				},
 				{
 					"type": "major alchemist goggles",
@@ -674,7 +691,12 @@
 					},
 					"entries": [
 						"The item bonuses are both +3."
-					]
+					],
+					"_mod": {
+						"entries": {
+							"with": "+3"
+						}
+					}
 				}
 			]
 		},
