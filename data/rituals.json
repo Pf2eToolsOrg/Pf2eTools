@@ -69,6 +69,56 @@
 			]
 		},
 		{
+			"name": "Anima Invocation (modified)",
+			"source": "AoA6",
+			"page": 75,
+			"level": 10,
+			"traits": [
+				"Rare",
+				"Abjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"secondaryCasters": {
+				"number": 4
+			},
+			"primaryCheck": {
+				"entry": "{@skill Occultism} (legendary)",
+				"skills": [
+					"{@skill Occultism}"
+				],
+				"prof": "legendary"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Arcana}, {@skill Religion} Range 10 miles; Targets primary and secondary casters Duration 1 day The exact effects of the unmodified Anima Invocation are not necessary for this Adventure Path\u2014what's presented here is the modified version of the ritual.",
+				"When casting the modified version of the Anima Invocation, it instead draws upon the latent spiritual energies of sapient creatures within range of the spell without requiring their deaths, then uses this energy to bolster the connection between body and soul among all of the ritual's casters. This shift from an offensive effect to a defensive one results in a much less dangerous spell that helps to protect against {@deity Dahak|LOGM}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You gain full access to your own potential for 1 day. You gain resistance 10 to all damage and a +4 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the ghost touch rune and deal an additional {@damage 1d10} good damage. You are immune to the soul-draining effect within {@deity Alseta|LOGM}'s Landing.",
+						"Success": "You tap into your own potential for 1 day. You gain resistance 5 to all damage and a +2 status bonus to saves against effects created by evil creatures. Your Strikes gain the effects of the ghost touch rune and deal an additional 1 good damage. You are immune to the soul-draining effect within {@deity Alseta|LOGM}'s Landing.",
+						"Failure": "You are unable to tap into your own spiritual essence, but you still gain immunity to the souldraining effect within {@deity Alseta|LOGM}'s Landing.",
+						"Critical Failure": "You botch the ritual, damaging your own spiritual essence. You gain {@condition doomed|CRB|doomed 1} or increase your {@condition doomed} condition by 1 if you're already {@condition doomed}. This {@condition doomed} value decreases by 1 every week. This is a {@trait curse} effect."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Animate Object",
 			"source": "CRB",
 			"page": 409,
@@ -120,6 +170,55 @@
 						"Success": "As critical success, except an animated object that doesn't become your minion stays in place and attacks anyone that attacks it or tries to steal or move it, rather than following your command.",
 						"Failure": "You fail to create the animated object.",
 						"Critical Failure": "You create the animated object, but it goes berserk and attempts to destroy you."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Arcane Weaving",
+			"source": "SoT1",
+			"page": 79,
+			"level": 3,
+			"traits": [
+				"Uncommon",
+				"Divination"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "rare silks worth a total value of 20 gp × the spell level",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} or {@skill Occultism}",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"(expert); Secondary Checks {@skill Arcana}, {@skill Crafting}, or {@skill Occultism} You and the secondary casters weave together spells (and, if anadis, silk) in a complex ritual that combines magical learning with art, allowing all the participants to share spells they know with one another.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Success": "You or any secondary caster can swap any spell in your spell repertoire for a spell in the spell repertoire of any other participant. This spell can't be a higher level than the ritual's level.",
+						"Failure": "None of the participants can swap spells.",
+						"Critical Failure": "As failure, and all participants are {@condition stupefied|CRB|stupefied 1} for 24 hours and can't reduce their {@condition stupefied} condition below 1 for 24 hours."
 					}
 				}
 			],
@@ -520,6 +619,67 @@
 			]
 		},
 		{
+			"name": "Awaken Portal",
+			"source": "AV1",
+			"page": 79,
+			"level": 3,
+			"traits": [
+				"Rare",
+				"Conjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} or {@skill Occultism} (trained)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				],
+				"prof": "trained"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Arcana} or {@skill Occultism} (whichever is used for the\nprimary check)",
+				"skills": [
+					"{@skill Arcana}",
+					"{@skill Occultism}"
+				]
+			},
+			"range": {
+				"type": "point",
+				"entry": "10 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 10
+				}
+			},
+			"targets": "1 portal",
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"You attempt to reactivate a dormant gate, portal, or teleportation circle (Advanced Player's Guide 244) by infusing it with magical energies. This ritual must be successfully performed twice, once at each location the portal connects. While the teleportation circles and portals found in the Abomination Vaults require no additional cost to awaken, other portals might require rare items or specific materials as a cost for this ritual at the GM's discretion\u2014some portals might even be so powerful that this ritual cannot awaken them at all.",
+				"The DC required to successfully awaken a portal varies based on the strength and distance between its end points. For the portals found in the Abomination Vaults Adventure Path, the DC varies according to the dungeon level on which it is located. Use the DCs by Spell Level section of Table 10\u20135 on page 503 of the Core Rulebook to determine the DC for a portal, using the dungeon level in place of spell level. Thus, activating the portal on the first level of the Abomination Vaults requires a successful DC 15 check, while activating the portal on the fourth level requires a successful DC 23 check.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You awaken the portal. If its other side is awakened, the portal can be used normally and won't deactivate naturally. If its other side is not awakened, this side remains awakened for 1 year, possibly allowing you enough time to find and awaken the connecting portal.",
+						"Success": "As critical success, but if the portal's other side is not awakened, this side remains awakened for only {@dice 1d6} days before it fades and falls dormant again.",
+						"Failure": "You fail to activate the portal, and magical backlash leaves you {@condition stupefied|CRB|stupefied 1} for 24 hours.",
+						"Critical Failure": "As failure, but in addition, a {@condition hostile} creature is drawn through the portal and immediately attacks anyone present. The creature drawn through the portal varies, according to the portal's nature; in the Abomination Vaults, the creature conjured depends on the dungeon level where the ritual was attempted, as listed below. First Level vampiric mist (Pathfinder Bestiary 2 278) Second Level scalathrax (page 86) Third Level gibbering mouther (Pathfinder Bestiary 176) Fourth Level will-o'-wisp (Bestiary 333) Fifth Level soul eater (Bestiary 2 247) Sixth Level voidglutton (page 87) Seventh Level dread wraith (Bestiary 2 298) Eighth Level ghost mage (Bestiary 167) Ninth Level gosreg (Bestiary 2 133) Tenth Level shining child (Bestiary 292)"
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Bathe In Blood",
 			"source": "SoM",
 			"page": 148,
@@ -870,6 +1030,59 @@
 			}
 		},
 		{
+			"name": "Community Repair",
+			"source": "SoT2",
+			"page": 75,
+			"level": 4,
+			"traits": [
+				"Rare",
+				"Emotion",
+				"Transmutation"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "rare powdered pigments in at least three different colors, worth a total of 50 gp; Secondary",
+			"secondaryCasters": {
+				"number": 4,
+				"note": "or more"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Performance} (expert)",
+				"skills": [
+					"{@skill Performance}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting}, {@skill Performance}, {@skill Society} Range 10 feet; Target 1 damaged or {@condition broken} public work no larger than 3,000 cubic feet (the size of a Huge creature) You lead your community in repairing a public work, such as a bridge, well, or mural, through the power of memory and art. The primary caster serves as an emcee or leader, while each secondary caster provides a heartfelt anecdote that somehow involves the public work; for instance, recounting a story of playing at a fountain each summer. The anecdotes don't need to be firsthand accounts\u2014a community member might sing of how their grandparents fell in love crossing a bridge every day\u2014but they must be directly connected in some way. The GM can offer a +1 circumstance bonus to the secondary caster whose anecdote seems most moving.",
+				"If the public work was destroyed intentionally by one of the casters, the ritual automatically critically fails.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The public work is restored to its prior construction, and it takes on further qualities, encouraged by the thoughts of the community. For the next week, while a caster is within 60 feet of the site of the ritual, they receive a +1 status bonus to Will saves against {@trait emotion} effects and a +10-foot status bonus to their Speeds.",
+						"Success": "The public work is restored to its prior construction and function.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The public work refuses to repair itself, and the memories of the community members are soured in response to the botched ritual. For the next week, while a caster is within 60 feet of the site of the ritual, they cannot receive any benefit from beneficial {@trait emotion} effects, and they take a \u201310-foot status penalty to their Speeds as their movement slows to a morose crawl."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Concealment's Curtain",
 			"source": "SoM",
 			"page": 148,
@@ -1211,6 +1424,68 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "Create Skinstitch",
+			"source": "AoE2",
+			"page": 76,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Transmutation"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "rare oils worth 480 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Religion} (expert)",
+				"skills": [
+					"{@skill Religion}"
+				],
+				"prof": "expert"
+			},
+			"secondaryCheck": {
+				"entry": "{@skill Crafting}",
+				"skills": [
+					"{@skill Crafting}"
+				]
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 frame covered in the skin of sentient humanoids",
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"You transform the target into a skinstitch (page 84), a hideous construct covered in the flesh of sentient humanoids.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target becomes a skinstitch. If it's at least 4 levels lower than you, you can make it a minion which gives it the {@trait minion} trait. You can have a maximum of four minions under your control. If it doesn't become a minion, you can give it one simple command that it pursues single-mindedly. If you aren't a follower of {@deity Norgorber}, it ignores any of your subsequent commands. A follower of {@deity Norgorber} can give the skinstitch simple commands by presenting a holy symbol of the deity and commanding it with a single action that has the {@trait auditory} and {@trait concentrate} traits.",
+						"Success": "As critical success, except a skinstitch that doesn't become your minion stays in place and attacks anyone that attacks or tries to move it, rather than following your command.",
+						"Failure": "You fail to create the skinstitch.",
+						"Critical Failure": "You create the skinstitch, but it goes berserk and attempts to kill you, ignoring your commands even if you are a follower of {@deity Norgorber}."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
 		},
 		{
 			"name": "Create Undead",
@@ -1697,6 +1972,56 @@
 			}
 		},
 		{
+			"name": "Fey Abeyance",
+			"source": "SoT1",
+			"page": 23,
+			"level": 1,
+			"traits": [
+				"Rare",
+				"Abjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"cost": "rare oils, cold iron bells worth at least 5 gp",
+			"secondaryCasters": {
+				"number": 1
+			},
+			"primaryCheck": {
+				"entry": "{@skill Nature} (trained), Secondary Checks",
+				"skills": [
+					"{@skill Nature}"
+				],
+				"prof": "trained"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting}, {@skill Intimidation}, {@skill Occultism}, {@skill Performance} Area An enclosed area up to 60 feet × 60 feet, up to 20 feet high Duration 1 week You ward an area with cold iron bells, protecting it from the influence of the first world. Fey creatures feel uncomfortable within the area and all physical attacks against them are considered cold iron for the purposes of their Weaknesses and Resistances. Furthermore, you set up bells within 3 squares within the area (usually at entrances). When a fey creature begins its turn in a square containing bells, it takes mental damage equal to its Weakness to cold iron, if any. This damage is nonlethal.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "You may designate up to 6 squares to contain bells.",
+						"Success": "The ritual succeeds.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual has no effect and attracts the attention of a troublesome fey creature. At the GM's discretion, it might be {@condition hostile} or merely mischievous."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Freedom",
 			"source": "CRB",
 			"page": 411,
@@ -1776,10 +2101,10 @@
 				"unit": "day",
 				"entry": "1 day"
 			},
+			"cost": "water infused with a dozen deadly toxins worth a total of 50 gp",
 			"secondaryCasters": {
 				"number": 2
 			},
-			"cost": "water infused with a dozen deadly toxins worth a total of 50 gp",
 			"primaryCheck": {
 				"entry": "{@skill Nature} (expert)",
 				"skills": [
@@ -1787,14 +2112,20 @@
 				],
 				"prof": "expert"
 			},
-			"range": {
-				"type": null
-			},
 			"secondaryCheck": {
 				"entry": "{@skill Crafting}, {@skill Medicine}",
 				"skills": [
 					"Crafting",
 					"Medicine"
+				]
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"entry": "40-foot-radius burst",
+				"types": [
+					"Burst"
 				]
 			},
 			"duration": {
@@ -1804,12 +2135,6 @@
 					"number": 1,
 					"unit": "year"
 				}
-			},
-			"area": {
-				"entry": "40-foot-radius burst",
-				"types": [
-					"Burst"
-				]
 			},
 			"entries": [
 				"Typically associated with the less {@condition friendly} fey or druids, this ritual calls all the poisonous, toxic, and venomous plants and animals of an area to congregate in a certain place, creating a beautiful but extravagantly deadly garden.",
@@ -1939,6 +2264,14 @@
 				],
 				"prof": ""
 			},
+			"secondaryCheck": {
+				"entry": "{@skill Athletics}, {@skill Diplomacy}, or {@skill Society}",
+				"skills": [
+					"Athletics",
+					"Diplomacy",
+					"Society"
+				]
+			},
 			"range": {
 				"type": null
 			},
@@ -1949,20 +2282,6 @@
 					"number": 1,
 					"unit": "week"
 				}
-			},
-			"secondaryCheck": {
-				"entry": "{@skill Athletics}, {@skill Diplomacy}, or {@skill Society}",
-				"skills": [
-					"Athletics",
-					"Diplomacy",
-					"Society"
-				]
-			},
-			"heightened": {
-				"heightened": false,
-				"plus_x": null,
-				"x": null,
-				"no_x": null
 			},
 			"entries": [
 				"The guardian's aegis is a ritual used across numerous cultures to bind a chosen guardian and ward together so that they can complete a quest of great import. When the ritual is completed, designate one of the casters as the guardian, while the other is the ward. As long as you're on the same plane of existence, both of you are always aware of each other's relative directions and state of being, including any conditions the other is affected by. As long as you're within 30 feet of each other, whenever the ward takes damage, the damage is reduced by the amount equal to half the guardian's level, and the guardian loses an equal number of Hit Points; the target still takes additional effects like poison even if guardian's aegis reduces the damage to 0.",
@@ -1975,7 +2294,13 @@
 						"Critical Failure": "The ritual backfires. You and the secondary caster become magically isolated from each other for 1 week, unable to provide each other any beneficial effect."
 					}
 				}
-			]
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
 		},
 		{
 			"name": "Heartbond",
@@ -3318,6 +3643,111 @@
 			]
 		},
 		{
+			"name": "Statuette",
+			"source": "EC4",
+			"page": 75,
+			"level": 6,
+			"traits": [
+				"Rare",
+				"Polymorph",
+				"Transmutation"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"secondaryCasters": {
+				"number": 2
+			},
+			"primaryCheck": {
+				"entry": "{@skill Arcana} (expert)",
+				"skills": [
+					"{@skill Arcana}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Crafting}, {@skill Occultism} Range 10 feet; Target 1 freestanding, non-magical object no larger than 3,000 cubic feet (the size of a Huge creature) This ritual is a variant of the {@spell shrink item} spell that allows for the transformation of significantly larger items. You transform the object into a tiny statuette of itself that is / ight Bulk. The ritual does not shrink any creatures inside or on top of the item when it is transformed. The item remains in statuette form until the ritual's duration expires or until a creature places it on a stable surface and uses a 10-minute activity to {@action Interact} with the item to enlarge it. When restored to its normal size, the object simply pushes other creatures and objects aside or harmlessly contains them, as a magic item with the {@trait structure} trait (Core Rulebook 596)",
+				"Your {@skill Arcana} check determines how long the object remains in statuette form.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The object remains a statuette for 1 week.",
+						"Success": "The object remains a statuette for 1 day.",
+						"Failure": "You fail to shrink the object.",
+						"Critical Failure": "You fail to shrink the object, and the highest-level item you carry of light Bulk or more shrinks to a tiny, unusable figurine of itself, weighing negligible bulk, for 1 week."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Tattoo Whispers",
+			"source": "SoT1",
+			"page": 38,
+			"level": 3,
+			"traits": [
+				"Rare",
+				"Auditory",
+				"Divination",
+				"Linguistic",
+				"Mental"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"cost": "tattoo inks and silver tattooing needles worth 20 gp for each secondary caster; Secondary",
+			"secondaryCasters": {
+				"number": 2,
+				"note": "up to a maximum of 6"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Crafting} (expert)",
+				"skills": [
+					"{@skill Crafting}"
+				],
+				"prof": "expert"
+			},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"{@skill Arcana}, {@skill Occultism} Range touch; Targets the secondary casters You carefully tattoo the same design upon each secondary caster. The tattoo can be of any shape or symbol, but it must include a mouth. The tattoo fades naturally over the course of 1 month.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The tattoos on the secondary casters are all magically linked for 1 week, providing a semi-telepathic bond. Each secondary caster can communicate secretly with any other secondary casters at any time by mouthing words but making no sound. The person receiving a message must be within 120 feet of the sender, must be within the sender's line of sight, and must have their tattoo uncovered. The mouth of the tattoo moves to match the words, which the tattoo whispers, but only the tattoo's bearer can hear it.",
+						"Success": "As critical success, but the effect lasts for 1 day.",
+						"Failure": "The ritual has no effect.",
+						"Critical Failure": "The ritual has no effect and creates a backlash of {@condition persistent damage ||persistent mental} static. All casters are {@condition stupefied|CRB|stupefied 1} for 1 day."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "Teleportation Circle",
 			"source": "APG",
 			"page": 244,
@@ -3500,6 +3930,48 @@
 			]
 		},
 		{
+			"name": "Terminate Bloodline",
+			"source": "EC5",
+			"page": 74,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Necromancy"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "day",
+				"entry": "1 day"
+			},
+			"cost": "a bodily sample from the target, and valuables belonging to the target worth a total value of",
+			"primaryCheck": {},
+			"range": {
+				"type": null
+			},
+			"duration": {
+				"type": null
+			},
+			"entries": [
+				"100 gp × the spell level × the target's level; Secondary Casters 3 Primary Check {@skill Occultism} (master); Secondary Checks {@skill Society} Range 10 miles; Target 1 creature of a level no greater than double the terminate bloodline ritual's level Mighty drow noble houses, including House Shraen, use this ritual to stamp out fledgling noble houses before they rise to power. At the ritual's completion, you place a contagious wasting disease upon the target creature with the intention of ending their familial bloodline.",
+				"The ritual is easiest to cast on a subdued target, typically a low-ranking member of the targeted family bloodline who is kidnapped and has their memory wiped. If the target is conscious when the ritual is cast, the target attempts a Fortitude save against the ritual's DC; on a success, the ritual fails. Otherwise, the target is automatically affected by the {@condition dying} bloodline disease.",
+				"{@condition Dying} Bloodline (curse, disease) Failing or critically failing this disease's Fortitude save causes the disease to progress to the next stage as normal; however, succeeding or critically succeeding at the save has no effect. The disease can be removed only by first successfully counteracting the curse and then counteracting the disease; Level equal to twice the ritual's level; Stage 1 carrier with no effect (1 month); Stage 2 {@condition fatigued} (1 week); Stage 3 {@condition fatigued} and {@condition drained|CRB|drained 1} (1 day); Stage 4 {@condition fatigued} and {@condition drained|CRB|drained 3} (1 day); Stage 5 death Every member of an infected creature's immediate family (blood relationship or parent or child) that comes into physical contact with that infected creature must attempt a Fortitude save or contract the disease.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature does not contract the disease and does not need to attempt further saves when coming into physical contact with that particular creature (the creature is not immune to the disease, however, and must attempt a save as normal if it comes into physical contact with a different infected family member).",
+						"Success": "The creature is not affected but must attempt another save the next time they come into physical contact with that particular infected creature.",
+						"Failure": "The creature contracts the disease and can spread it in the same way as the original target."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
 			"name": "The World's A Stage",
 			"source": "SoM",
 			"page": 153,
@@ -3542,6 +4014,74 @@
 						"Success": "As critical success except the sparks of destiny are weaker, so each caster can reroll only a single skill check.",
 						"Failure": "The ritual has no effect.",
 						"Critical Failure": "The performance is a dramatic and horrendous botch, and fate strikes out at the casters. You and each secondary caster are {@condition doomed 1} for the next month, and this condition can't be removed by anything less than a wish or similarly powerful magic. Creating a Magic Item As a crafter, creating a magic item is one of the most intensely personal projects you can undertake. While every serpentine wondrous figurine might more or less resemble a knotted snake carved out of jade, what type of snake is it? And what type of jade? Ten different figurines from ten different crafters could each show a distinct artistic mark, and experts can identify the handiwork of noteworthy crafters on sight. Similarly, items activated with commands typically each have unique utterances determined by the crafter. Before setting out to create a magic item, contem{@group plate} how your personality might inhabit and shape the item created. Investing a Magic Item The word \"preparation\" means different things to different wearers of invested magic items. To some, investing a diadem of intellect may involve sitting silently with it at the beginning of the day and feeling the magical energy course through it and themselves, but others may simply pull the headband out of their rucksack, wipe it off, and give it a glance to make sure the gems aren't cracked. Still others might refuse to ever take the headband off in the first place, even while washing up or sleeping. Any of these could work! The difference between these habits isn't a matter of respect or proper vs. improper technique, it simply reflects what investiture means to the person using the item. {@action Activate an Item||Activating} a Magic Item You might activate a magic item flamboyantly, pragmatically, intensely, or off-handedly, but those choices are only external manifestations of how you activate the item. A deeper question is what the act of using a magic item feels like. Does the world seem to emit a deep thrum for an instant as a third eye gemstone sinks into your brow and manifests as a tattoo? Do you experience a counter-intuitive icy coolness when a blast from a potion of dragon's breath explodes from your mouth? A wizard might have a step-by-step instruction list that they mentally follow when they use a staff of power\u2014potentially out of habit or concerns for safety. Imagining how you interact with magic items, some of which possess world-altering power, can be a revealing window into how you view your place in the cosmos. Collected Notes In his 72 years as an amateur historian, Lambus of Magnimar amassed a collection of thousands of accounts of people's everyday encounters and experimentations with magic items from across Golarion. Excerpts from his impressive collection can be found throughout the Consumables and Permanent Items sections later in the chapter."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Unfettered Mark",
+			"source": "AoE5",
+			"page": 80,
+			"level": 8,
+			"traits": [
+				"Rare",
+				"Abjuration"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "hour",
+				"entry": "1 hour"
+			},
+			"cost": "rare inks and needles worth a total value of 100 gp × the spell level × the target's level (see text)",
+			"secondaryCasters": {
+				"number": 0,
+				"note": "to 10"
+			},
+			"primaryCheck": {
+				"entry": "{@skill Crafting} (master) or any (legendary)",
+				"skills": [
+					"{@skill Crafting}"
+				],
+				"prof": "master"
+			},
+			"secondaryCheck": {
+				"entry": "any (see text)",
+				"skills": []
+			},
+			"range": {
+				"type": "point",
+				"entry": "touch",
+				"distance": {
+					"type": "touch",
+					"amount": 1
+				}
+			},
+			"targets": "1 creature or self",
+			"duration": {
+				"type": "timed",
+				"entry": "24 hours until the magic fades",
+				"duration": {
+					"number": 24,
+					"unit": "hour"
+				}
+			},
+			"entries": [
+				"You tattoo the target with rare inks and create a magical tattoo called an unfettered mark. This particular version of the unfettered mark grants the target special powers to escape from the Black Whale and Stormholt (the demiplane that overlaps with the Black Whale). While {@skill Crafting} is the easiest method for creating this tattoo, the artistry is less important than maintaining a feeling of freedom in your mind while performing the ritual. Because of this, you can use any skill as long as it holds a special significance to you.",
+				"A ranger who is at home in the woods, for example, could use a {@skill Survival} or {@skill Nature} check while creating the tattoo. If the target already has a successful unfettered mark currently active, the magic fades from the old tattoo and is replaced by the results of the new ritual.",
+				"The ritual can be performed alone or with the aid of up to 10 secondary casters. Each secondary caster must tattoo themself with their own tattoo and pay the full ritual cost to participate. Creatures currently held captive in the prison have a special relationship with the ritual: for each month they spend drawing memories of home on the walls of their cell, they can reduce the total cost of the ritual by 50 gp.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target and primary and secondary casters all gain the ability to leave Stormholt. To do so, they must leave the prison by swimming through the water or by riding in a vessel that is in contact with the water (such as a rowboat). When they reach the great whirlpool, they are pulled under as normal, but instead of being transported to the Flotsam Graveyard in Absalom, they are immediately transported (as teleport) to a location in Absalom of their choice. They also gain the benefits of water walk, water breathing, and resistance to electricity 10 for the duration of the ritual.",
+						"Success": "As critical success, except the affected creatures don't gain the benefits of water walk and water breathing.",
+						"Failure": "You create the tattoo but fail to imbue it with magic.",
+						"Critical Failure": "As failure, but the tattoo also creates an unwholesome bond with the demiplane of Stormholt. For 24 hours, the target and the primary and secondary casters gain a fishlike appearance and are covered in a slimy membrane. They gain the ability to breathe both water and air, but their skin quickly dries out when on land. After 1 hour on land they become {@condition drained|CRB|drained 1} and {@condition fatigued}, conditions that can be removed only if they reenter water. Additionally, the membrane conducts electricity well, causing them to gain weakness 10 to electricity."
 					}
 				}
 			],

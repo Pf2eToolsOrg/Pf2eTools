@@ -1,0 +1,259 @@
+{
+	"item": [
+		{
+			"name": "Ankylostar",
+			"source": "EC4",
+			"page": 75,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"Uncommon",
+				"Magical",
+				"Transmutation"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2800,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"category": "Held",
+			"entries": [
+				"This hefty spiked club is made from the fossilized tail-club of a young ankylosaurus. It can be wielded as a +2 greater striking morningstar.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"The ankylostar grows and transforms into a +2 greater striking greatclub, but it retains the versatile (piercing) trait of a morningstar.",
+						"While in this form, the ankylostar has Bulk 2 and requires two hands to wield. It can be returned to its morningstar form with another 1-action command."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"command",
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": "The ankylostar is in its greatclub form",
+					"entries": [
+						"The ankylostar's length extends as you swing the club in a wide arc. You {@action Strike} up to three creatures in a 15-foot cone; this counts as one attack for the purpose of calculating your multiple attack penalty. Alternatively, you {@action Shove} up to three creatures in a 15-foot cone, rolling a separate {@skill Athletics} check for each creature."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Jawbreaker Shield",
+			"source": "EC4",
+			"page": 75,
+			"type": "Item",
+			"level": 12,
+			"traits": [
+				"Uncommon",
+				"Abjuration",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1650,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "1",
+			"category": "Held",
+			"entries": [
+				"This heavy bone shield is composed of a massive plate of dinosaur bone with jagged, tooth-like ridges ringing its edge. It has Hardness 12, HP 48, and BT 24. The ridges are unremovable +1 striking shield spikes that deal slashing damage instead of piercing damage.",
+				"While holding the jawbreaker shield, you gain a +3 item bonus to your Reflex DC to resist Swallow Whole attacks.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": "A creature attacks you with a jaws or fangs",
+					"requirements": null,
+					"entries": [
+						"You make a shield bash {@action Strike} as a reaction against the attacker. If the shield bash hits, the target takes damage and must attempt a DC 31 Fortitude saving throw. The effects of the saving throw are determined after the effects of the triggering {@action Strike} are resolved.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The target is unaffected.",
+								"Failure": "You wound the target's mouth. It takes {@damage 1d6} {@condition persistent damage ||persistent bleed damage} and takes a \u20132 status penalty to attack and damage rolls with jaws, fangs, or similar Strikes for 24 hours.",
+								"Critical Failure": "You break the target's jaw. As failure, and the creature can't make Strikes using its mouth for 1 minute. At the end of its turn, it can attempt a Fortitude save to regain the ability to make Strikes using its mouth."
+							}
+						}
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Noxious Jerkin",
+			"source": "EC4",
+			"page": 76,
+			"type": "Item",
+			"level": 13,
+			"traits": [
+				"Rare",
+				"Evocation",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 2800,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "L",
+			"category": "Worn",
+			"entries": [
+				"This +2 resilient padded armor is woven from many strands of gut cord strung with dried organs and preserved xulgath scent glands. When worn, it infuses your body with a ghastly and nauseating flavor.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": null,
+					"trigger": "You are {@condition grabbed} or are hit by an unarmed attack",
+					"requirements": null,
+					"entries": [
+						"Your attacker must attempt a DC 28 Fortitude saving throw. Creatures with a stench aura, such as otyughs and xulgaths, are immune to this effect.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Success": "The creature is unaffected and is immune to the effects of the noxious jerkin for 1 minute.",
+								"Failure": "The creature is {@condition sickened|CRB|sickened 1}.",
+								"Critical Failure": "The creature is {@condition sickened|CRB|sickened 1} and is {@condition slowed|CRB|slowed 1} for 1 round."
+							}
+						}
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Spore Sap",
+			"source": "EC4",
+			"page": 76,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"Uncommon",
+				"Evocation",
+				"Fungus",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1250,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This flexible +2 striking sap is crafted from the stalks of cave fungi and bound around a mesh of spore-infused gills. Demon-worshipping xulgaths use spore saps to capture spellcasters alive for later sacrifice.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"Interact (poison)"
+					],
+					"frequency": null,
+					"trigger": "You successfully {@action Strike} a creature with the spore sap",
+					"requirements": null,
+					"entries": [
+						"The spore sap releases a puff of stupefying fungal spores. The target must succeed at a DC 28 Fortitude save or become {@condition stupefied|CRB|stupefied 1} for 1 minute ({@condition stupefied|CRB|stupefied 2} on a critical failure)."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Stoneraiser Javelin",
+			"source": "EC4",
+			"page": 76,
+			"type": "Item",
+			"level": 11,
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Earth",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 1200,
+				"note": null
+			},
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Held",
+			"entries": [
+				"This stone-headed +2 striking returning javelin draws forth the power of the earth itself to strike at enemies.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"components": [
+						"Interact"
+					],
+					"frequency": "once per day",
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"You hurl the stoneraiser javelin at an unoccupied space within 30 feet. The javelin's power flows into the ground, which erupts in a 5-foot-radius burst of razor-sharp stalagmites.",
+						"The stalagmites are 10 feet tall. Everything on each side of the stalagmites has cover from creatures on the opposite side, and the stalagmites' spaces are difficult terrain.",
+						"A creature takes {@damage 4d4} piercing damage for every move action it takes that enters at least one of the affected spaces. Each 5-foot-by-5-foot section has AC 10, Hardness 14, and 30 Hit Points. It's immune to critical hits and precision damage. A destroyed section can be moved through freely.",
+						"The stalagmites crumble to dust after 1 minute.",
+						"Any creature in the area when the stalagmites appear is pushed to the nearest unoccupied space of its choice; this movement is forced movement. Pushed creatures must attempt a DC 28 Reflex saving throw or take {@damage 4d4} piercing damage.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature takes half damage.",
+								"Failure": "The creature takes full damage.",
+								"Critical Failure": "The creature takes double damage and is knocked {@condition prone}."
+							}
+						}
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		}
+	]
+}

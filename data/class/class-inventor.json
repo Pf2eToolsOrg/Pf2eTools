@@ -359,38 +359,10 @@
 			"entries": [
 				"You have a bevy of smaller devices of your own invention, from muscle stimulants to concussive pistons. When it's necessary, you can throw them into overdrive to assist you in combat.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Overdrive",
-					"source": "G&G",
-					"page": 16,
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"traits": [
-						"Inventor",
-						"Manipulate"
-					],
-					"actionType": {
-						"class": [
-							"Inventor|G&G"
-						]
-					},
-					"frequency": "once per round",
-					"entries": [
-						"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
-						{
-							"type": "successDegree",
-							"entries": {
-								"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can't use Overdrive for 1 minute.",
-								"Success": "Your gizmos go into overdrive, adding power to your attacks. As critical success, except the additional damage is equal to half your Intelligence modifier.",
-								"Failure": "You make a miscalculation and nothing happens.",
-								"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can't use Overdrive again for 1 minute as your gizmos cool down and reset."
-							}
-						}
-					],
-					"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can't extend your Overdrive's duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
+					"source": "G&G"
 				}
 			]
 		},
@@ -419,31 +391,10 @@
 				"Your innovation is a creation barely held together by your own engineering, always on the edge of completely falling apart. Though this adds risk, it also means you can coax it to perform far beyond its design specifications using special {@trait unstable} actions.",
 				"While inventors can learn various unstable actions over their career, all at least know how to make their innovation {@action Explode|G&G}.",
 				{
+					"type": "statblock",
+					"tag": "action",
 					"name": "Explode",
-					"source": "G&G",
-					"page": 19,
-					"type": "ability",
-					"style": "full",
-					"activity": {
-						"number": 2,
-						"unit": "action"
-					},
-					"traits": [
-						"Fire",
-						"Unstable",
-						"Inventor",
-						"Manipulate"
-					],
-					"actionType": {
-						"class": [
-							"Inventor|G&G"
-						]
-					},
-					"entries": [
-						"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you're wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
-						"At 3rd level, and every level thereafter, increase your explosion's damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
-						"If you have the breakthrough innovation class feature, you can choose either a 5-foot or 10-foot emanation for the area when you use Explode; if you have the revolutionary innovation class feature, you can choose a 5-foot, 10-foot, or 15-foot emanation."
-					]
+					"source": "G&G"
 				}
 			]
 		},

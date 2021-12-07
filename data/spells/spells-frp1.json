@@ -1,0 +1,200 @@
+{
+	"spell": [
+		{
+			"name": "Aura Of The Unremarkable",
+			"source": "FRP1",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 6,
+			"traits": [
+				"Uncommon",
+				"Illusion",
+				"Mental"
+			],
+			"school": "I",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 2,
+				"unit": "action"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "30-foot emanation"
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "sustained up to 1 minute",
+				"duration": {
+					"number": 1,
+					"unit": "minute"
+				}
+			},
+			"sustain": true,
+			"dismiss": false,
+			"entries": [
+				"You and allies in the area appear to be completely innocuous to other creatures within the spell's area, regardless of the actions you're committing. For example, if you and your allies are loudly interrogating a local for information or aiming a crossbow at a noble from a balcony, creatures who can see you might not think this is unusual. Non-allied creatures in the emanation must attempt a Will save.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature sees your actions as they really are and announces them as such. All other creatures in the area gain a +1 circumstance bonus to their Will saves to recognize your actions as they really are.",
+						"Success": "The creature sees your actions as they really are.",
+						"Failure": "The creature believes your actions are normal and unworthy of concern.",
+						"Critical Failure": "The creature believes you are performing other actions entirely, such as helping a local or waving to a noble, as determined by the GM. The creature doesn't have a chance of remembering events normally. Any {@condition hostile} actions by you or your allies against a creature or its allies break the effect of the spell for that creature. So, for example, if an interrogated local's friends or threatened noble's guards saw your actions, they would be unaffected by this spell. When the spell ends (or when affected allies move outside the range of the emanation), observers see things normally but the altered perceptions from earlier events remain in mind. Each mention of the events as noteworthy, such as being questioned about them by an authority figure, grants the target another Will save to break the effect and remember things normally (unless the creature critically failed their save)."
+					}
+				}
+			],
+			"heightened": {
+				"heightened": false,
+				"plus_x": null,
+				"x": null,
+				"no_x": null
+			}
+		},
+		{
+			"name": "Return Beacon",
+			"source": "FRP1",
+			"page": 77,
+			"type": "SPELL",
+			"focus": false,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Conjuration",
+				"Teleportation"
+			],
+			"school": "C",
+			"traditions": [
+				"Arcane",
+				"Occult"
+			],
+			"cast": {
+				"number": 1,
+				"unit": "minute",
+				"entry": "1 minute"
+			},
+			"components": {
+				"F": false,
+				"M": true,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": "point",
+				"entry": "30 feet",
+				"distance": {
+					"type": "feet",
+					"amount": 30
+				}
+			},
+			"savingThrowBasic": false,
+			"duration": {
+				"type": "timed",
+				"entry": "1 hour",
+				"duration": {
+					"number": 1,
+					"unit": "hour"
+				}
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You create a unique planar beacon somewhere within the spell's range that remains in place. The beacon is {@condition invisible} except when detected by detect magic, in which case it looks like a 10-foot-wide tower of bright light stretching into the sky. At any time during the duration of the beacon, you can complete a 1-minute activity, which has the {@trait concentrate} and {@trait manipulate} traits, to focus on the beacon and transport yourself and any items you're wearing and holding from your current space to the location of the beacon. Transporting yourself in this way ends the spell. If this would bring another creature with you\u2014even if you're carrying it in an extradimensional container\u2014the beacon collapses, ending the spell, and the transportation attempt fails.",
+				"Casting return beacon while a beacon is active causes the previous return beacon spell to end. If you are not within 1 mile of the beacon, your attempt to transport yourself to the beacon fails. If a solid object is in the same space as the beacon when you transport yourself, you arrive in the nearest open space to the beacon. If there is not an open space within 30 feet of the beacon, your attempt to transport yourself fails, but the beacon remains intact."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": null,
+				"x": [
+					{
+						"level": 7,
+						"entry": "The duration is 8 hours and you can transport yourself to the beacon from up to 100 miles away."
+					},
+					{
+						"level": 8,
+						"entry": "The duration is 24 hours and you can transport yourself to the beacon from up to 1,000 miles away. In addition, you can bring 1 willing ally you touch with you when you transport to the beacon."
+					},
+					{
+						"level": 9,
+						"entry": "The duration is 1 week and you can transport yourself to the beacon from anywhere on the same plane. In addition, you can bring up to 4 willing allies you touch with you when you transport to the beacon."
+					},
+					{
+						"level": 10,
+						"entry": "The duration is unlimited and you can transport yourself to the beacon from any distance, even across other planes. In addition, you can bring up to 8 willing allies you touch when you transport to the beacon."
+					}
+				],
+				"no_x": null
+			}
+		},
+		{
+			"name": "Wronged Monk's Wrath",
+			"source": "FRP1",
+			"page": 77,
+			"type": "FOCUS",
+			"focus": true,
+			"level": 5,
+			"traits": [
+				"Uncommon",
+				"Electricity",
+				"Evocation",
+				"Force",
+				"Monk"
+			],
+			"school": "V",
+			"cast": {
+				"number": 1,
+				"unit": "varies",
+				"entry": "{@as 1} to {@as 3}"
+			},
+			"components": {
+				"F": false,
+				"M": false,
+				"S": true,
+				"V": true
+			},
+			"range": {
+				"type": null
+			},
+			"area": {
+				"types": [
+					"Emanation"
+				],
+				"entry": "5-foot emanation or more"
+			},
+			"savingThrow": "Reflex",
+			"savingThrowBasic": false,
+			"duration": {
+				"type": null
+			},
+			"sustain": false,
+			"dismiss": false,
+			"entries": [
+				"You unleash your ki as a powerful storm of force and lightning, dealing {@damage 2d6} force damage and {@damage 2d12} electricity damage to creatures in the area. If you use 2 actions to cast the spell, increase the size of the emanation to 10 feet and the damage to {@damage 3d6} force damage and {@damage 3d12} electricity damage. If you use 3 actions to cast the spell, increase the size of the emanation to 20 feet and the damage to {@damage 4d6} force and {@damage 4d12} electricity damage. Each creature attempts one basic Reflex save that applies to both types of damage On a failed save, the creature is {@condition deafened} for 1 round; on a critical failure, the creature also takes {@damage 2d12} {@condition persistent damage ||persistent electricity damage} and is {@condition deafened} for 1 minute."
+			],
+			"heightened": {
+				"heightened": true,
+				"plus_x": {
+					"level": 2,
+					"entry": "The force damage increases by {@dice 1d6} and the electricity damage by {@dice 1d12}, or {@dice 2d6} and {@dice 2d12} if you use 2 or 3 actions."
+				},
+				"x": null,
+				"no_x": null
+			}
+		}
+	]
+}

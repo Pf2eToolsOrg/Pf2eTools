@@ -1,546 +1,6 @@
 {
 	"archetype": [
 		{
-			"name": "Spellshot",
-			"source": "G&G",
-			"page": 140,
-			"entries": [
-				"{@b Rarity:} {@trait Uncommon}",
-				"Spellshots aren't ordinary gunslingers. They come from a tradition of ancient secrets and principles, which they temper with modern innovation and perspective. Spellshots combine magical power into the art of gunplay to create a distinct and mystical way known only to spellshots, enigmatic and unavailable to other gunslingers in the world at large. The first to identify themselves as spellshots tied their magical traditions to the history of the Star Code and the Crowned Regents in Arcadia. Ancient, reclusive crafters known as the Crowned Regents created star guns, the legendary magical firearms that shot white-hot blasts of energy. Wielders of star guns became bound together by the Star Code\u2014a set of cultural expectations that defined how one should behave while using these powerful weapons. You can find more information about star guns, the Crowned Regents, and the Star Code on page 206.",
-				"Most spellshots continue to come from Arcadia, as the stories describing the relevant skills and training to become one have been passed down over the generations. Many gunslingers who grow up in this region hear of these tales early in their lives, and they develop the techniques to channel magical energy through their firearms in imitation of the Regents' arcane methods. While Arcadia is home to the vast majority of the world's spellshots, the techniques have slowly spread to other regions. However, spellshots remain particularly rare in the Inner Sea region due to the unique history of guns there and their connection to the Grand Duchy of Alkenstar, which exists in a magic-dead region of the Mana Wastes.",
-				{
-					"type": "pf2-h3",
-					"name": "Way of the Spellshot",
-					"collapsible": true,
-					"level": 1,
-					"entries": [
-						"You've learned the intricacies of magic and technology, blending the two together with deadly results. You combine a knowledge of arcane theories with a strong connection to your chosen weapon that allows you to manifest unique effects, though your knowledge doesn't extend as far as actual spellcasting. You can imbue energy into your weapon and conjure bullets from thin air. As you progress, you eventually learn to phase bullets through walls or even to teleport yourself along the path of your bullets. You must select {@feat Spellshot Dedication|G&G} as your 2nd-level class feat.",
-						{
-							"type": "pf2-options",
-							"style": "pf2-p",
-							"items": [
-								{
-									"type": "item",
-									"name": "Prerequisites",
-									"entries": [
-										"You must be a {@class gunslinger|G&G}."
-									]
-								},
-								{
-									"type": "item",
-									"name": "Spellshot Adjustments",
-									"entries": [
-										"Instead of choosing a way from the options listed in the gunslinger class, you have the way of the spellshot. It has the following way skill, slinger's reload, and deeds. You gain these abilities at the same levels as normal for the class. You use Intelligence for your class DC."
-									]
-								}
-							]
-						},
-						{
-							"type": "pf2-options",
-							"items": [
-								{
-									"type": "item",
-									"name": "Way Skill",
-									"entries": [
-										"{@skill Arcana}"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Slinger's Reload",
-									"entries": [
-										"{@action Thoughtful Reload|G&G}"
-									]
-								},
-								{
-									"type": "item",
-									"name": "Deeds",
-									"entries": [
-										"{@i Initial} {@action Energy Shot|G&G}; {@i Advanced} {@action Recall Ammunition|G&G}; {@i Greater} {@action Dispelling Bullet|G&G}"
-									]
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Slinger's Reload",
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"name": "Thoughtful Reload",
-									"source": "G&G",
-									"page": 140,
-									"traits": [
-										"Gunslinger"
-									],
-									"entries": [
-										"As you sink deep into a state of analytical calm and focus on the foe before you, your hands reload a bullet instinctively. Attempt a {@action Recall Knowledge} check against an opponent you can see and then {@action Interact} to reload."
-									],
-									"activity": {
-										"unit": "action",
-										"number": 1
-									}
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Initial Deed",
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
-									"name": "Energy Shot",
-									"traits": [
-										"Evocation",
-										"Magical",
-										"Spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You roll initiative.",
-									"entries": [
-										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-									],
-									"activity": {
-										"unit": "free",
-										"number": 1
-									}
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Initial Deed",
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
-									"name": "Energy Shot",
-									"traits": [
-										"Evocation",
-										"Magical",
-										"Spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You roll initiative.",
-									"entries": [
-										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-									],
-									"activity": {
-										"unit": "free",
-										"number": 1
-									}
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Advanced Deed",
-							"level": 9,
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
-									"name": "Recall Ammunition",
-									"traits": [
-										"Conjuration",
-										"Magical",
-										"Spellshot",
-										"Teleportation"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"trigger": "You miss with a firearm or crossbow {@action Strike} while using an ordinary level-0 bolt or bullet",
-									"entries": [
-										"You amplify the connection between bullet and firearm, calling your missed shot back into your gun. The ammunition you just fired is reloaded back into your gun and immediately ready to fire again."
-									],
-									"activity": {
-										"unit": "reaction",
-										"number": 1
-									}
-								}
-							]
-						},
-						{
-							"type": "pf2-h3",
-							"name": "Greater Deed",
-							"level": 15,
-							"entries": [
-								{
-									"type": "ability",
-									"style": "full",
-									"source": "G&G",
-									"page": 140,
-									"name": "Dispelling Bullet",
-									"traits": [
-										"Abjuration",
-										"Magical",
-										"Spellshot"
-									],
-									"actionType": {
-										"class": [
-											"Gunslinger|G&G"
-										],
-										"archetype": [
-											"Spellshot|G&G"
-										]
-									},
-									"entries": [
-										"You imprint a bullet with a field of abjuration built upon your magical signature, disrupting the magic of whatever it hits. Make a firearm or crossbow {@action Strike} against a foe you can see. If you hit, you attempt to counteract a spell effect active on the target (your choice, or the highest-level effect if you don't choose). Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
-									],
-									"activity": {
-										"unit": "action",
-										"number": 2
-									}
-								}
-							]
-						}
-					]
-				}
-			],
-			"miscTags": [
-				"Class Archetype"
-			]
-		},
-		{
-			"name": "Unexpected Sharpshooter",
-			"source": "G&G",
-			"page": 138,
-			"entries": [
-				{
-					"type": "quote",
-					"entries": [
-						"Oh would you look at that, there's a bunch of bullet holes around here... so that's what all the ruckus was about! Six... seven... eight of you, huh? Oh, but did you notice the northern finch over there in that tree a minute ago? Its nest is up there, but I think all those gunshots startled it. You think you could quiet down so maybe it'll come back?"
-					],
-					"by": "Viri, gnome ornithologist, just before a series of strange accidents mysteriously took down a hardened bandit squad of eight former Alkenstar veterans."
-				},
-				"Some people say you must be the luckiest soul in all of Golarion to still be alive and kicking after all the dangers you've seen. Others say that, given the circumstances and the number of foes who you've defeated seemingly by accident, that there's no way you can really be as incompetent as you seem. These critics claim there has to be some kind of angle, some racket you're running. Either way, you sure don't look or act dangerous, except possibly to yourself.",
-				"Somehow, despite your apparent clumsiness, professed confusion, and known propensity to incite calamity, you find yourself standing after every battle. The same can't often be said for your enemies. Funny how that works out, isn't it?",
-				{
-					"type": "pf2-sample-box",
-					"name": "Skilled or Lucky?",
-					"entries": [
-						"Part of the fun of roleplaying an unexpected sharpshooter is the ambiguity and mystery of how your character achieves their surprising success. Your character at first seems like they bumble into their successes through sheer circumstance. However, when the circumstances pile up, others might start to suspect another possibility: perhaps your character is secretly so incredible that they not only achieve impressive results but do so in a way that hides their skill behind a veneer of lucky breaks. Ultimately, either could be true about your character, or some combination of both. You might decide the truth together with the GM as soon as you take this archetype or hold off until later to make that call. Because this archetype hints at hidden talent intentionally obfuscated, it offers a good choice for a character who's secretly more powerful or skilled than they seem or who must hide their abilities for some reason\u2014perhaps associated with the plot of the campaign.",
-						"If your inclination is to play a character who hides their abilities, consider training in the Deception skill and taking skill feats like {@feat Charming Liar} and {@feat Confabulator} that emphasize your character's crafty nature and skill at concealing their true intent.",
-						"If you instead prefer to play a character who's legitimately a bit uncoordinated but abnormally lucky, you might choose to pursue actions that have a high chance of earning you a Hero Point. You could also consider taking abilities with the {@trait fortune} or {@trait misfortune} traits, such as {@feat Halfling Luck} or {@feat Harbinger's Caw}."
-					]
-				}
-			],
-			"extraFeats": [
-				"4|Hit the Dirt!|G&G",
-				"4|Risky Reload|G&G",
-				"10|Trick Shot|G&G"
-			]
-		},
-		{
-			"name": "Sniping Duo",
-			"source": "G&G",
-			"page": 138,
-			"entries": [
-				"Skilled shooters who don't let their egos get in the way of their efficacy are likely to say that sniping is a two-person job. Taking down a target without giving away your position or giving the opponent a window for reprisal is difficult work that requires teamwork and coordination, as well as a tight-knit bond and shared perspective. Sniping duos live and die by the credo \"two heads are better than one,\" focusing their skills and strategies toward deadly efficiency. Whether your spotter and partner is a fellow ranged combatant or a melee enthusiast, you've learned how to use the openings they provide to devastating effect.",
-				{
-					"type": "pf2-sample-box",
-					"name": "CHOOSING A SPOTTER",
-					"entries": [
-						"The most important aspect when choosing a spotter for the sniping duo archetype is the out of character component; make sure you team up with another player who is excited about the idea of roleplaying out teamwork and coordination in combat, and with granting you benefits and gaining benefits from you. The mechanics of the archetype are not very demanding of your spotter's actions, but that still doesn't mean every player is interested in the narrative component.",
-						"Mechanically, a good spotter is likely either another ranged attacker or a melee attacker, and depending on the type of spotter you choose, certain feats might become more or less enticing. For instance, {@feat Targeted Redirection|G&G} is more useful with a melee spotter."
-					]
-				}
-			],
-			"extraFeats": [
-				"4|Assisting Shot|CRB",
-				"4|Cover Fire|G&G",
-				"12|Deflecting Shot|G&G",
-				"12|Redirecting Shot|G&G"
-			]
-		},
-		{
-			"name": "Pistol Phenom",
-			"source": "G&G",
-			"page": 136,
-			"entries": [
-				{
-					"type": "quote",
-					"entries": [
-						"You saw what I can do, so you know I'm telling the truth when I say that I don't miss. That was just a warning shot. Now if you'd kindly empty out that coffer into my bag of holding, I don't see any need for this to get unpleasant... do you?"
-					],
-					"by": "Unidentified pistol-twirling half-elf desperado, just before absconding with the funds a corrupt Alkenstar shield marshal planned to use to bribe a judge."
-				},
-				"You treat combat as an art and your pistol as an extension of your performance. You might wield a single pistol, a pair of pistols, or a pistol paired with a melee weapon to pull off showy maneuvers. However you slice it, though, the use of pistols or other one-handed firearms is crucial to your technique and style.",
-				"To you, everything is a show, and you use your gun as a prop and instrument, not just to kill opponents but to trick, mislead, hinder, and even bully them into doing what you want them to do. While others tend to focus on delivering as much devastation downrange as possible, your style is all about control. By controlling a foe's attention and actions, you can bolster your own attacks and mitigate the foe's potential for mayhem. You control the tempo of the battle much as you would a staged performance, carefully ensuring your foe's actions don't fall outside of your intended script. You're both the director and the star of this show, and your enemies dance to the tune you play with your pistol... sometimes quite literally!",
-				{
-					"type": "pf2-sample-box",
-					"name": "What makes a Phenom?",
-					"entries": [
-						"Many gunslingers can learn how to twirl a pistol or intimidate a foe, but it's not just your skills that make you a phenom, it's your style and attitude. As a pistol phenom, you understand how to grab everyone's attention with everything you do, especially the way you talk, the way you walk, and the way you use your gun. But what's more, you're well aware of that fact and the power you have over others, and you aren't afraid to flaunt it.",
-						"Despite this attitude, or perhaps because of it, as a pistol phenom you likely tend to get along well with groups of allies, understanding both how to take the spotlight to protect your allies and how to share it to make sure they get their time in the sun. The one exception to this can be other pistol phenoms. When two or more pistol phenoms gather in the same group, it's almost inevitable for a duel or other contest to arise. However, such a contest need not end in enmity. Depending on your temperament, and that of the other pistol phenom, the result of the exhilarating rivalry expressed during competition could be a lifelong friendship, albeit one in which you both keep score of your greatest achievements to compare exploits."
-					]
-				}
-			],
-			"extraFeats": [
-				"4|Sword and Pistol|G&G",
-				"12|Trick Shot|G&G",
-				"16|Showstopper|G&G"
-			]
-		},
-		{
-			"name": "Edgewatch Detective",
-			"traits": [
-				"Uncommon"
-			],
-			"source": "AOE1",
-			"page": 79,
-			"entries": [
-				"You're a specially trained detective for the Edgewatch guard precinct in Absalom."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Wrestler",
-			"source": "LOTGB",
-			"page": 126,
-			"entries": [
-				"Wrestlers are athletes who pit their strength and skill against powerful foes. Specializing in a variety of grabs, holds, and strikes, wrestlers are dangerous opponents whose techniques can leave a foe broken and defeated without taking their life.",
-				"The wrestling tradition is common all over Golarion. Gladiators and other warriors who fight for entertainment use wrestling techniques in combat. The discipline's focus on grappling is also useful in non-gladiatorial matches, as many foes are unable to contend with an opponent's hold. Grappling is particularly effective against spellcasters, who have a difficult time completing the somatic components of their spells while grabbed.",
-				"Wrestlers have storied traditions in the Hold of Belkzen, where orcs use specialized grappling techniques to subdue the large animals they ride as mounts. Orcs prefer wrestling these creatures partially to minimize harm to them, but also because they believe that the process of subduing the creature creates a stronger bond between mount and rider.",
-				"Outside of the Inner Sea, wrestlers are common in Iblydos and Arcadia. Iblydan wrestlers focus on grappling techniques to make sure they're never left without a means to fight on the battlefield, even if their weapons are destroyed. Arcadian wrestlers engage in matches designed to retell stories of ancient gods. These matches feature impressive acrobatic feats as well as highly technical grappling maneuvers."
-			],
-			"extraFeats": [
-				"4|Combat Grab|CRB",
-				"4|Crushing Grab|CRB",
-				"4|Snagging Strike|CRB",
-				"8|Whirling Throw|CRB"
-			]
-		},
-		{
-			"name": "Spell Trickster",
-			"source": "LOTGB",
-			"page": 122,
-			"entries": [
-				"Just as Golarion's merchants scour busy marketplaces for newfound goods, scholars of magic congregate in teahouses, debate at symposia, and haunt the back rooms of esoteric shops to swap secrets of their trade. In such meetings, a different kind of magic may strike: the spark of innovation! The mixing of magical techniques produces fascinating and unpredictable results. As one of these innovators, sometimes called a spell trickster, you have a knack for pioneering magical techniques and discovering new effects from spells most novice spellcasters take for granted. Whether your unique abilities are the result of weeks of experimentation or a secret passed to you by a traveling practitioner, you delight in surprising others with your tricks.",
-				{
-					"type": "pf2-sample-box",
-					"name": "The Fruits of Research",
-					"entries": [
-						"While magic can spring from many sources, from wizard tutors to self-taught savants, the art of the spell trickster often springs from sophisticated magical research. The magical academies in Golarion have no claim to magic as a whole but can often teach lesser-known variants of a spell to their students. At the Magaambya academy in the Mwangi Expanse, for instance, initiates study multiple traditions of magic, adapting the techniques of harnessing magical essence from one tradition to create new methods of casting spells in another. The Arclords of Nex have spent thousands of years honing spells in both wartime and peace, demonstrating a fine control over the arcane by effortlessly changing their magic to suit their whims. The return of New Thassilon brought thousands of magical dabblers and scholars, each with their own unique tricks and each eager to see what new spell variants have developed in their long absence.",
-						"This isn't to say that spell tricksters come solely from high academia. A {@class sorcerer} might demonstrate aberrant powers in her bloodline magic, hinting at a background more complex than a single eldritch influence acting upon her. An oracle might grope at a divine power that they poorly understand and cast a spell in a unique manner simply because they were never taught otherwise. A witch's patron or a whimsical deity might grant a favored servant a special power for whatever strange motives such beings might possess. Magic in Golarion isn't entirely predictable, no matter how many practitioners wish that it was so. While most spellcasters follow predictable patterns in their art, there are always exceptions.",
-						"The rules in this section are presented as part of an archetype, meant for a character dedicated to the art of innovating magic\u2014but you don't have to limit yourself to this premise. At the GM's discretion, a spell trickster feat could be made available to a character as a class feat without the character taking the archetype. In most cases, this option should only be offered as a reward or story element that the character, GM, or group has dedicated a significant amount of time to developing\u2014a character who wishes to partake in these options without GM permission or involvement should simply take the spell trickster archetype. These feats could be used to represent the payoff from extended magical research; finding forgotten or forbidden lore in a lost corner of Golarion; pleasing a god, patron, or other notable power; a magical plane or artifact exerting its influence; or any other number of situations that an adventurer might encounter while exploring. Keep in mind, however, that these feats were created and balanced to be part of an archetype. If allowing spell trickster feats as general class feats begins to negatively impact the game, the players should be willing to walk the decision back and rebuild characters as necessary."
-					]
-				}
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Captivator",
-			"source": "LOTGB",
-			"page": 120,
-			"entries": [
-				"Others find you inherently fascinating. You have a facility with words that draws others in, and you've always found it easy to sway others to your point of view. This ability has grown to the point where you're capable of innate magic. You can bend others' wills to your own by weaving alluring enchantments and compelling illusions. Perhaps this comes from a touch of fey or draconic blood in your family's distant past, or perhaps it's the work of some special boon or curse placed upon you.",
-				"Captivators come from all areas of the world and all walks of life. A farmhand with the right gifts, sent to the market every week to hawk their latest crop, could find themself on the path to becoming a captivator. An urchin who relies on the sympathy of others just to survive may become a captivator out of necessity, and a noble, immersed in a deadly game of luxury and influence, might have trained to be a captivator since birth. Regardless of background, most captivators use their abilities to advance their station in life, make things easier for themselves, or befriend those who can help them achieve their goals.",
-				"Good captivators use their gifts and skills to bring people together. They might turn a would-be tavern brawl into a night of sharing drinks and telling stories. They might offer encouragement to those facing depression or doubt. They excel at ending conflict peacefully and efficiently, leaving everyone around them happier. When faced with violence, they use their magic to quickly subdue or enthrall enemies while minimizing harm to their companions.",
-				"Evil captivators manipulate others to achieve status, wealth, and power. They have no qualms about deceiving someone or using their magic to cause harm. Evil captivators are dangerous tricksters whose enchantments and illusions make them seem harmless, unimportant, or friendly. The slick politician, the devious con artist, the cunning courtier\u2014these are all roles that an evil captivator can easily assume."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Firework Technician",
-			"source": "G&G",
-			"page": 134,
-			"entries": [
-				"The brilliant display of cascading lights and flickering aerial flowers, the thunderous boom, the sizzling crackle, and piercing screech\u2014these are the stock and trade of your craft. You know how to perfectly pair light and sound to create fireworks displays that can amaze children and adults, comfort friends, and even confound your foes.",
-				"As a fireworks technician, you might be an itinerant wanderer, roaming from town to town and developing your craft on your own. In that case, you make a living on the road, selling fireworks to the townsfolk, setting up public displays upon request and receipt of payment, and even tailoring individualized performances to those wealthy or interesting enough to be worthy of receiving their own private show.",
-				"On the other hand, you might be part of an established fireworks house from Tian Xia or Vudra and rely on teamwork to perfect your various formulas and displays. Hoping to produce the next great innovation in fireworks technology, you often send back the notes from your studies and field demonstrations to esteemed colleagues from your fireworks house, seeking their opinions on your next big idea.",
-				{
-					"type": "pf2-sample-box",
-					"name": "Describing your Fireworks Display",
-					"entries": [
-						"As a firework technician, the exact visuals of your character's special abilities might matter significantly to you. No two firework technicians use exactly the same fireworks display, even if they come from the same fireworks house and both use the same feat to generate the display. In fact, it's likely that when you use a feat from the firework technician archetype, the resulting display remains a bit different each time as you tinker, perfect, and refine your technique. Even so, you probably have a few themes that you prefer for each of your firework technician feats. For instance, your Coughing Dragon Display might appear in the sinuous serpentine shape of a literal imperial dragon, coughing out glittering trails. It might also resemble a simple series of geometric shapes, an enigmatic spiraling aeon trailing off in a shape with radial symmetry, a pattern shaped like a tree blossoming with flowers in the sky, or anything else you can imagine. To help your fellow players visualize what your character is doing, you might come up with some go-to descriptions or draw art depicting some of your favorite displays."
-					]
-				}
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Demolitionist",
-			"source": "G&G",
-			"page": 133,
-			"entries": [
-				"As rippling explosions bring a castle's walls tumbling down, you grin and wipe the stone dust of your handiwork from your face. Brute force might work for others, but applying science to place the right explosives in just the right spot is essential to your craft."
-			],
-			"extraFeats": [
-				"4|Demolition Charge|APG",
-				"6|Calculated Splash|CRB",
-				"8|Directional Bombs|CRB",
-				"12|Expanded Splash|CRB"
-			]
-		},
-		{
-			"name": "Bullet Dancer",
-			"source": "G&G",
-			"page": 132,
-			"entries": [
-				"While most monastic orders and traditional fighting schools shun firearms as loud and unreliable technology for unskilled conscripts, you fuse flourishing feints and ricocheting gunplay into a whirling ballet of bullets. As a bullet dancer, you might become the target of brash duelists and gladiators looking to make a name for themselves. But you tend to welcome the attention and might have proven your reputation while dancing your deadly ballet in tournaments from Tymon to Goka. You've found your fluid motions and explosive attacks to be surefire crowd-pleasers, even as they serve to confound and shock your foes."
-			],
-			"extraFeats": [
-				"4|Brawling Focus|CRB",
-				"6|Black Powder Boost|G&G",
-				"8|Snap Shot|CRB",
-				"12|Trick Shot|G&G",
-				"14|Ricochet Shot|G&G",
-				"16|Showstopper|G&G",
-				"16|Two-Weapon Fusillade|G&G"
-			]
-		},
-		{
-			"name": "Beast Gunner",
-			"source": "G&G",
-			"page": 130,
-			"entries": [
-				"The art of creating the weapons most commonly referred to as \"beast guns\" is truly ancient, with the first iterations of the weapons created on the continent of Arcadia well over 10,000 years ago. This means that beast guns predate all other forms of firearm crafting in Arcadia, even the legendary star guns, whose secrets have been lost to the ages. The tradition of designing beast guns has persisted throughout Arcadia well into the modern era, though it has become increasingly rare as the proliferation of classic firearms and the prestige associated with star guns has allowed more people access to equivalent destructive power without the intense requirements behind crafting a beast gun. However, beast gunners remain virtually unknown outside of Arcadia.",
-				"The art of bonding to a beast gun and gaining the full magic of a beast gunner is an extended ritual with multiple steps, beginning with the hunt. A person seeking to bond to a beast gun typically does so with a brand new weapon made after they hunt down the creature themselves. This involves telling the story of the hunt, the beast, and the weapon created from the hunted creature. Finally, the weapon is carefully modified and tailored to ensure a proper bond between the beast gun and the prospective beast gunner. However, it's also possible to bond to an heirloom beast gun passed down through the generations by adding symbolic fresh components from the same kind of creature, after performing the same ritual hunt necessary to forge a new weapon with the intent of establishing a bond.",
-				"To perform the ritual the prospective beast gunner must first plan a hunt to slay the creature corresponding to the beast gun, whether they wish to bond with a brand new beast gun or establish a link to an old beast gun. Typically, these ritualized hunts can include up to five assistants plus hunting beasts like canines or birds who help corner the beast and bring it down. If the assistants are significantly more powerful than the hunted creature, or if there are so many assistants the creature never stood a chance at survival, the magic simply fails during the bonding process and the hunt and organic materials are wasted, usually much to the shame and chagrin of the hunter. The same doesn't apply if the prospective beast gunner hunts the creature alone, even if they are significantly more powerful than the creature, such that the creature never stood a chance against them in a one on one fight.",
-				"You're one of those who successfully completed the hunt and bonded with your prized weapon. Now, you seek to discover the hidden depths that others who think they know how to use beast guns can only imagine.",
-				{
-					"type": "pf2-sample-box",
-					"name": "Choosing your Beast Gun",
-					"entries": [
-						"A beast gunner's bond with their beast gun is deep and mystical, so if you hope to be a successful beast gunner, it's important to choose a beast gun that suits your temperament, magic, and combat style. For example, if you favor strength and intimidation, a {@item screech shooter|G&G} is the right choice for you, whereas a {@item spider gun|G&G} might be optimal if you prefer a more careful style of setting up the battlefield in advance. Similarly, a {@item tentacle cannon|G&G} is slow and methodical and can hold an enemy in place at close range, while a {@item drake rifle|G&G} is energetic and mobile and can be used to attack from a great distance. Each beast gun has a personality and magical abilities that attract people who value them. For this reason, some experienced beast gunners say the weapon chooses you."
-					]
-				}
-			],
-			"extraFeats": [
-				"8|Call Gun|G&G"
-			]
-		},
-		{
-			"name": "Artillerist",
-			"source": "G&G",
-			"page": 128,
-			"entries": [
-				{
-					"type": "quote",
-					"entries": [
-						"Load Pathfinders, load! That fey-blighted moth will be coming around for another pass quick as a blink and if we don't meet it with a rain of cannon fire, you'll be wishing you had a diving suit like mine. Steady the aim there! Steady... fire!"
-					],
-					"by": "Khoumrock Blackthorne, captain of the Unsinkable and self-proclaimed slayer of \"giant evil moth gods.\""
-				},
-				"The artillerist's maxim holds that while fights might be won with swords, battles are won with cannons. Or in a pinch, with trebuchets, siege towers, catapults, hwachas, and all other lethal miscellanea of a combat engineers' corp. As a true artillerist, you leave the penny-ante pistols and knives to those who only need to operate on a small scale. You're a consummate professional in the art of big guns, a maestro at merging mathematics and manpower to transform whatever castle wall, infantry battalion, or rampaging dragon offends you into a smoking crater in the ground.",
-				"You're not just some daredevil demolitionist, though. You're part of a team, accustomed to coordinating with your unit to maximize your time and effectiveness. Whether jumping in to help your crew load the next round, quickly calculating the trajectory of the engine's next shot, or taking the shot yourself, your presence on the team ensures their chances of success are maximized, creating a whole that is greater than the sum of its parts."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Gunslinger",
-			"source": "G&G",
-			"page": 127,
-			"entries": [
-				"You like a weapon that makes an impression almost as much as you like making an impression.",
-				{
-					"type": "pf2-h3",
-					"name": "Multiclass Gunslinger characters",
-					"entries": [
-						"Gunslinger is a great fit for dexterous characters who want a weapon that hits hard from a distance, especially {@class ranger||rangers} and {@class rogue||rogues} who already have abilities that can make their first hit count. Spellcasters with {@spell true strike} might favor firearms with the {@trait fatal} property and gunslinger abilities that improve options for supporting their allies."
-					]
-				}
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Vehicle Mechanic",
-			"source": "G&G",
-			"page": 56,
-			"entries": [
-				"You have always felt that vehicles are as much works of art as they are means of transportation. It doesn't matter if it's as common as a chariot or as complex as an airship, there's always some aspect of the vehicle you can improve upon. Pilots, drivers, and sailors alike value your expertise, and many seek you out to work on their vehicles. While you can make a great profit working on custom vehicles for wealthy clients, you still keep a vehicle of your own to tinker with as your personal passion project.",
-				"You might be part of a vehicle mechanic union, working with other mechanics and engineers to find fair jobs and support each other's labor. While some vehicle mechanic unions are secular, many realize the benefits of organizing alongside a sympathetic religion, and so they typically adopt the ideals of economically-focused gods like Abadar or deities interested in crafting such as the goddess Brigh\u2014the Whisper in Bronze\u2014the goddess of invention. Whether religious or secular, vehicle mechanic unions take the bonds between fellow union members seriously. While this might mean your character becomes obligated to help a fellow union member who needs your help, it also means you have steadfast allies you can fall back on in your own time of need. In dire straits, such a connection can be worth its weight in gold."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Trick Driver",
-			"source": "G&G",
-			"page": 55,
-			"entries": [
-				"While cavaliers follow an old and tired tradition of mounted combat, you take a more modern road. Through aggressive use of vehicles, you roll across the battlefield, taking down your opponents. You go beyond simply operating a vehicle, pushing it to perform stunts that its builders never intended, transforming the vehicle into something much greater than a mere conveyance."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Trapsmith",
-			"source": "G&G",
-			"page": 52,
-			"entries": [
-				"Wielding a wrench or blowtorch, you manufacture snares that whir and tick with delicate precision. Your best work requires the right materials\u2014a glorious set of brass fittings and cogwheels\u2014with which you create snares that are as elegantly lethal as they are subtle. As a trapsmith, you're always improving your snares: adjusting timing, tweaking triggers, and finding new ways to hide them from foes.",
-				"You can select the dedication feat for the trapsmith archetype even if you haven't yet gained three feats from the {@archetype snarecrafter|APG} archetype."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Sterling Dynamo",
-			"source": "G&G",
-			"page": 52,
-			"entries": [
-				"While many people across Golarion use prosthetic devices, you've acquired and outfitted yourself with a particularly advanced combat model of clockwork prosthesis: a piece of cutting edge technology called a sterling dynamo. You know how to maintain your dynamo and how to customize it to suit your needs and style, incorporating any promising new technologies you encounter into its design.",
-				"There's a significant distinction, however, between someone who merely has a sterling dynamo prosthesis and someone like you who is a true sterling dynamo. With their recent invention, people in Absalom and Dongun Hold with access to the technology have begun to adopt sterling dynamos as their prostheses of choice, among the wide variety of amazing options already available in both markets. However, not everyone who chooses to use sterling dynamo technology is a member of the sterling dynamo archetype.",
-				"With the sterling dynamo archetype, you both use a sterling dynamo prosthesis and truly understand its advantages, limitations, and limitless potential. You don't have to literally be your own mechanic, as there's no requirement for a sterling dynamo to be particularly skilled at crafting, but even if you aren't, you can still \"feel\" what's right when it comes to adjusting and optimizing your dynamo. Whether you implement these improvements yourself or present your mechanic with ideas and insights that allow them to achieve something special on your behalf, your strength and ingenuity are what make you a sterling dynamo.",
-				"As you train to use your dynamo in all sorts of adventures, you may become capable of feats its original inventors never dreamed possible. In fact, as you progress in the archetype and explore the possibilities, you might find that these inventors want to interview you in order to apply your insights and help them create a new generation of the technology with even greater capabilities. The sterling dynamo's adaptability grants it vast potential, so the sky's the limit!"
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Overwatch",
-			"source": "G&G",
-			"page": 50,
-			"entries": [
-				"With a stalwart mind and sharp eyes, you observe the battlefield as though you and your allies are pieces on a chessboard. By predicting dangers and hazards and offering your insights to your comrades, you win battles through keen observation and teamwork. Whenever there's a threat or opening, you're the first to point it out, and you're ready to help your allies directly when necessary.",
-				"As a group's overwatch, you might let the position go to your head. In such cases, you might think of yourself as the mastermind behind the chessboard and feel detached from your allies, thinking of them as little more than pawns on the field.",
-				"But more likely your role allows you to feel a deeper connection to your allies, and your coordination and heroics stand out most when you subsume your individual ego to serve the group's needs. In that case, you might think of yourself as a part of a functional whole\u2014if your party was a single living body, you serve as the eyes, but that doesn't mean you're the brain, the heart, or other vital organs. Everyone has a crucial role to play."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Inventor",
-			"source": "G&G",
-			"page": 49,
-			"entries": [
-				"You revel in the creation of clever inventions, deploying your brilliance to defeat your foes. Explosives, gadgets, and innovative technologies? You have ideas for all of them, and you're eager to test your theories.",
-				{
-					"type": "pf2-h3",
-					"name": "Multiclass Inventor characters",
-					"entries": [
-						"Inventor is a great fit for intelligent characters looking to branch out and learn new tricks, especially {@class alchemist||alchemists}, who are already good at {@skill Crafting} and may appreciate {@trait unstable} options as an alternative to daily alchemical resources. If they meet the Intelligence requirements, {@class cleric||clerics} of deities who encourage invention and experimentation like {@deity Brigh|LOGM} are an amazing fit, both because it makes narrative sense and because such characters can usually {@action Refocus} while fixing their innovation after using an {@trait unstable} ability."
-					]
-				}
-			],
-			"extraFeats": []
-		},
-		{
 			"name": "Acrobat",
 			"source": "APG",
 			"page": 155,
@@ -630,6 +90,23 @@
 			]
 		},
 		{
+			"name": "Artillerist",
+			"source": "G&G",
+			"page": 128,
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Load Pathfinders, load! That fey-blighted moth will be coming around for another pass quick as a blink and if we don't meet it with a rain of cannon fire, you'll be wishing you had a diving suit like mine. Steady the aim there! Steady... fire!"
+					],
+					"by": "Khoumrock Blackthorne, captain of the Unsinkable and self-proclaimed slayer of \"giant evil moth gods.\""
+				},
+				"The artillerist's maxim holds that while fights might be won with swords, battles are won with cannons. Or in a pinch, with trebuchets, siege towers, catapults, hwachas, and all other lethal miscellanea of a combat engineers' corp. As a true artillerist, you leave the penny-ante pistols and knives to those who only need to operate on a small scale. You're a consummate professional in the art of big guns, a maestro at merging mathematics and manpower to transform whatever castle wall, infantry battalion, or rampaging dragon offends you into a smoking crater in the ground.",
+				"You're not just some daredevil demolitionist, though. You're part of a team, accustomed to coordinating with your unit to maximize your time and effectiveness. Whether jumping in to help your crew load the next round, quickly calculating the trajectory of the engine's next shot, or taking the shot yourself, your presence on the team ensures their chances of success are maximized, creating a whole that is greater than the sum of its parts."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Assassin",
 			"source": "APG",
 			"page": 158,
@@ -696,6 +173,27 @@
 				"8|Reflexive Shield|CRB",
 				"10|Quick Shield Block|CRB",
 				"12|Mirror Shield|CRB"
+			]
+		},
+		{
+			"name": "Beast Gunner",
+			"source": "G&G",
+			"page": 130,
+			"entries": [
+				"The art of creating the weapons most commonly referred to as \"beast guns\" is truly ancient, with the first iterations of the weapons created on the continent of Arcadia well over 10,000 years ago. This means that beast guns predate all other forms of firearm crafting in Arcadia, even the legendary star guns, whose secrets have been lost to the ages. The tradition of designing beast guns has persisted throughout Arcadia well into the modern era, though it has become increasingly rare as the proliferation of classic firearms and the prestige associated with star guns has allowed more people access to equivalent destructive power without the intense requirements behind crafting a beast gun. However, beast gunners remain virtually unknown outside of Arcadia.",
+				"The art of bonding to a beast gun and gaining the full magic of a beast gunner is an extended ritual with multiple steps, beginning with the hunt. A person seeking to bond to a beast gun typically does so with a brand new weapon made after they hunt down the creature themselves. This involves telling the story of the hunt, the beast, and the weapon created from the hunted creature. Finally, the weapon is carefully modified and tailored to ensure a proper bond between the beast gun and the prospective beast gunner. However, it's also possible to bond to an heirloom beast gun passed down through the generations by adding symbolic fresh components from the same kind of creature, after performing the same ritual hunt necessary to forge a new weapon with the intent of establishing a bond.",
+				"To perform the ritual the prospective beast gunner must first plan a hunt to slay the creature corresponding to the beast gun, whether they wish to bond with a brand new beast gun or establish a link to an old beast gun. Typically, these ritualized hunts can include up to five assistants plus hunting beasts like canines or birds who help corner the beast and bring it down. If the assistants are significantly more powerful than the hunted creature, or if there are so many assistants the creature never stood a chance at survival, the magic simply fails during the bonding process and the hunt and organic materials are wasted, usually much to the shame and chagrin of the hunter. The same doesn't apply if the prospective beast gunner hunts the creature alone, even if they are significantly more powerful than the creature, such that the creature never stood a chance against them in a one on one fight.",
+				"You're one of those who successfully completed the hunt and bonded with your prized weapon. Now, you seek to discover the hidden depths that others who think they know how to use beast guns can only imagine.",
+				{
+					"type": "pf2-sample-box",
+					"name": "Choosing your Beast Gun",
+					"entries": [
+						"A beast gunner's bond with their beast gun is deep and mystical, so if you hope to be a successful beast gunner, it's important to choose a beast gun that suits your temperament, magic, and combat style. For example, if you favor strength and intimidation, a {@item screech shooter|G&G} is the right choice for you, whereas a {@item spider gun|G&G} might be optimal if you prefer a more careful style of setting up the battlefield in advance. Similarly, a {@item tentacle cannon|G&G} is slow and methodical and can hold an enemy in place at close range, while a {@item drake rifle|G&G} is energetic and mobile and can be used to attack from a great distance. Each beast gun has a personality and magical abilities that attract people who value them. For this reason, some experienced beast gunners say the weapon chooses you."
+					]
+				}
+			],
+			"extraFeats": [
+				"8|Call Gun|G&G"
 			]
 		},
 		{
@@ -780,6 +278,23 @@
 			"extraFeats": []
 		},
 		{
+			"name": "Bullet Dancer",
+			"source": "G&G",
+			"page": 132,
+			"entries": [
+				"While most monastic orders and traditional fighting schools shun firearms as loud and unreliable technology for unskilled conscripts, you fuse flourishing feints and ricocheting gunplay into a whirling ballet of bullets. As a bullet dancer, you might become the target of brash duelists and gladiators looking to make a name for themselves. But you tend to welcome the attention and might have proven your reputation while dancing your deadly ballet in tournaments from Tymon to Goka. You've found your fluid motions and explosive attacks to be surefire crowd-pleasers, even as they serve to confound and shock your foes."
+			],
+			"extraFeats": [
+				"4|Brawling Focus|CRB",
+				"6|Black Powder Boost|G&G",
+				"8|Snap Shot|CRB",
+				"12|Trick Shot|G&G",
+				"14|Ricochet Shot|G&G",
+				"16|Showstopper|G&G",
+				"16|Two-Weapon Fusillade|G&G"
+			]
+		},
+		{
 			"name": "Butterfly Blade",
 			"source": "FRP1",
 			"page": 78,
@@ -791,6 +306,18 @@
 				"4|Combat Assessment|APG",
 				"4|Quick Draw (Ranger)|CRB"
 			]
+		},
+		{
+			"name": "Captivator",
+			"source": "LOTGB",
+			"page": 120,
+			"entries": [
+				"Others find you inherently fascinating. You have a facility with words that draws others in, and you've always found it easy to sway others to your point of view. This ability has grown to the point where you're capable of innate magic. You can bend others' wills to your own by weaving alluring enchantments and compelling illusions. Perhaps this comes from a touch of fey or draconic blood in your family's distant past, or perhaps it's the work of some special boon or curse placed upon you.",
+				"Captivators come from all areas of the world and all walks of life. A farmhand with the right gifts, sent to the market every week to hawk their latest crop, could find themself on the path to becoming a captivator. An urchin who relies on the sympathy of others just to survive may become a captivator out of necessity, and a noble, immersed in a deadly game of luxury and influence, might have trained to be a captivator since birth. Regardless of background, most captivators use their abilities to advance their station in life, make things easier for themselves, or befriend those who can help them achieve their goals.",
+				"Good captivators use their gifts and skills to bring people together. They might turn a would-be tavern brawl into a night of sharing drinks and telling stories. They might offer encouragement to those facing depression or doubt. They excel at ending conflict peacefully and efficiently, leaving everyone around them happier. When faced with violence, they use their magic to quickly subdue or enthrall enemies while minimizing harm to their companions.",
+				"Evil captivators manipulate others to achieve status, wealth, and power. They have no qualms about deceiving someone or using their magic to cause harm. Evil captivators are dangerous tricksters whose enchantments and illusions make them seem harmless, unimportant, or friendly. The slick politician, the devious con artist, the cunning courtier\u2014these are all roles that an evil captivator can easily assume."
+			],
+			"extraFeats": []
 		},
 		{
 			"name": "Cathartic Mage",
@@ -1114,6 +641,20 @@
 			"extraFeats": []
 		},
 		{
+			"name": "Demolitionist",
+			"source": "G&G",
+			"page": 133,
+			"entries": [
+				"As rippling explosions bring a castle's walls tumbling down, you grin and wipe the stone dust of your handiwork from your face. Brute force might work for others, but applying science to place the right explosives in just the right spot is essential to your craft."
+			],
+			"extraFeats": [
+				"4|Demolition Charge|APG",
+				"6|Calculated Splash|CRB",
+				"8|Directional Bombs|CRB",
+				"12|Expanded Splash|CRB"
+			]
+		},
+		{
 			"name": "Dragon Disciple",
 			"source": "APG",
 			"page": 168,
@@ -1195,6 +736,18 @@
 			]
 		},
 		{
+			"name": "Edgewatch Detective",
+			"source": "AOE1",
+			"page": 79,
+			"entries": [
+				"You're a specially trained detective for the Edgewatch guard precinct in Absalom."
+			],
+			"extraFeats": [],
+			"traits": [
+				"Uncommon"
+			]
+		},
+		{
 			"name": "Eldritch Archer",
 			"source": "APG",
 			"page": 172,
@@ -1216,15 +769,6 @@
 			"benefits": [
 				"Spellcasting"
 			]
-		},
-		{
-			"name": "Nantambu Chime-Ringer",
-			"source": "SOT2",
-			"page": 79,
-			"entries": [
-				"The Chime-Ringers serve as Nantambu's elite town guard, keeping the peace while carrying on ancient traditions of crafting chimes in metal, bamboo, or glass."
-			],
-			"extraFeats": []
 		},
 		{
 			"name": "Eldritch Researcher",
@@ -1309,20 +853,29 @@
 			]
 		},
 		{
-			"name": "Folklorist",
-			"source": "SOT2",
-			"page": 78,
-			"entries": [
-				"Folklorists are welcome across the Mwangi Expanse for the entertaining stories they tell and the counsel they impart. However, those who take the art of storytelling to the next level can produce magical effects based on their understanding of stories and their firm belief that life conforms to the contours of these tales. While many such folklorists are benevolent, terms like hero and villain are notoriously relative, changing to fit the perspective of the storyteller."
-			],
-			"extraFeats": []
-		},
-		{
 			"name": "Firebrand Braggart",
 			"source": "LOCG",
 			"page": 74,
 			"entries": [
 				"Many Firebrands travel the Inner Sea region drawing attention to themselves, making great shows of their exploits, and proclaiming their great deeds."
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Firework Technician",
+			"source": "G&G",
+			"page": 134,
+			"entries": [
+				"The brilliant display of cascading lights and flickering aerial flowers, the thunderous boom, the sizzling crackle, and piercing screech\u2014these are the stock and trade of your craft. You know how to perfectly pair light and sound to create fireworks displays that can amaze children and adults, comfort friends, and even confound your foes.",
+				"As a fireworks technician, you might be an itinerant wanderer, roaming from town to town and developing your craft on your own. In that case, you make a living on the road, selling fireworks to the townsfolk, setting up public displays upon request and receipt of payment, and even tailoring individualized performances to those wealthy or interesting enough to be worthy of receiving their own private show.",
+				"On the other hand, you might be part of an established fireworks house from Tian Xia or Vudra and rely on teamwork to perfect your various formulas and displays. Hoping to produce the next great innovation in fireworks technology, you often send back the notes from your studies and field demonstrations to esteemed colleagues from your fireworks house, seeking their opinions on your next big idea.",
+				{
+					"type": "pf2-sample-box",
+					"name": "Describing your Fireworks Display",
+					"entries": [
+						"As a firework technician, the exact visuals of your character's special abilities might matter significantly to you. No two firework technicians use exactly the same fireworks display, even if they come from the same fireworks house and both use the same feat to generate the display. In fact, it's likely that when you use a feat from the firework technician archetype, the resulting display remains a bit different each time as you tinker, perfect, and refine your technique. Even so, you probably have a few themes that you prefer for each of your firework technician feats. For instance, your Coughing Dragon Display might appear in the sinuous serpentine shape of a literal imperial dragon, coughing out glittering trails. It might also resemble a simple series of geometric shapes, an enigmatic spiraling aeon trailing off in a shape with radial symmetry, a pattern shaped like a tree blossoming with flowers in the sky, or anything else you can imagine. To help your fellow players visualize what your character is doing, you might come up with some go-to descriptions or draw art depicting some of your favorite displays."
+					]
+				}
 			],
 			"extraFeats": []
 		},
@@ -1743,6 +1296,15 @@
 			]
 		},
 		{
+			"name": "Folklorist",
+			"source": "SOT2",
+			"page": 78,
+			"entries": [
+				"Folklorists are welcome across the Mwangi Expanse for the entertaining stories they tell and the counsel they impart. However, those who take the art of storytelling to the next level can produce magical effects based on their understanding of stories and their firm belief that life conforms to the contours of these tales. While many such folklorists are benevolent, terms like hero and villain are notoriously relative, changing to fit the perspective of the storyteller."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Geomancer",
 			"source": "SoM",
 			"page": 212,
@@ -1758,26 +1320,6 @@
 			"page": 79,
 			"entries": [
 				"The warriors of Minata frequently contend with lost spirits of the Taumatan people that haunt their shattered lands to this day. These Minatan warriors, known as ghost eaters around Bonmu, travel the countless islands of Minata and offer their skills to exorcists and priests. When working in such a partnership, ghost eater's main task is to destroy a spirit in order to give their holy comrade time to learn about the individual soul and finally put it to rest."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Gray Gardener",
-			"source": "NGD",
-			"page": 64,
-			"entries": [
-				"The Gray Gardeners are the remorseless executioners of Galt. Prior to the events of the adventure, the Gray Gardeners are at best sinister (when not actively pursuing evil) as a malevolent monster controls their organization. After the events of Night of the Gray Death, the organization is broken\u2014leadership is in disarray while the rank-and-file members labor to enforce laws and recapture escaped criminals. The Gray Gardeners still command the respect of Galt's people, however, as their brutal reputation is indelibly etched in the public consciousness over the last fifty years.",
-				"The following is suitable for heroes to take after the events of Night of the Gray Death. You might be a member of the old organization who tried to uphold order despite vindictive directives from above, or you might be someone who recently donned a mask to enforce the law in Galt's new age. Either way, as a Gray Gardener you draw power and authority from being masked and have a reputation for dispassionate justice.",
-				"Your vigilante identity is that of a Gray Gardener, and you must be wearing a mask to use any of your vigilante feats or you risk exposing your social identity, as described in the {@archetype vigilante|APG} archetype."
-			],
-			"extraFeats": []
-		},
-		{
-			"name": "Golden League Xun",
-			"source": "FRP2",
-			"page": 76,
-			"entries": [
-				"You've become a xun, a powerful gang enforcer."
 			],
 			"extraFeats": []
 		},
@@ -1802,12 +1344,48 @@
 			"extraFeats": []
 		},
 		{
+			"name": "Golden League Xun",
+			"source": "FRP2",
+			"page": 76,
+			"entries": [
+				"You've become a xun, a powerful gang enforcer."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Golem Grafter",
 			"source": "EC3",
 			"page": 74,
 			"entries": [
 				"You have replaced a portion of your body with artifice of the kind used to create golems, fortifying your flesh with the unyielding might of magical constructs."
 			]
+		},
+		{
+			"name": "Gray Gardener",
+			"source": "NGD",
+			"page": 64,
+			"entries": [
+				"The Gray Gardeners are the remorseless executioners of Galt. Prior to the events of the adventure, the Gray Gardeners are at best sinister (when not actively pursuing evil) as a malevolent monster controls their organization. After the events of Night of the Gray Death, the organization is broken\u2014leadership is in disarray while the rank-and-file members labor to enforce laws and recapture escaped criminals. The Gray Gardeners still command the respect of Galt's people, however, as their brutal reputation is indelibly etched in the public consciousness over the last fifty years.",
+				"The following is suitable for heroes to take after the events of Night of the Gray Death. You might be a member of the old organization who tried to uphold order despite vindictive directives from above, or you might be someone who recently donned a mask to enforce the law in Galt's new age. Either way, as a Gray Gardener you draw power and authority from being masked and have a reputation for dispassionate justice.",
+				"Your vigilante identity is that of a Gray Gardener, and you must be wearing a mask to use any of your vigilante feats or you risk exposing your social identity, as described in the {@archetype vigilante|APG} archetype."
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Gunslinger",
+			"source": "G&G",
+			"page": 127,
+			"entries": [
+				"You like a weapon that makes an impression almost as much as you like making an impression.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Gunslinger characters",
+					"entries": [
+						"Gunslinger is a great fit for dexterous characters who want a weapon that hits hard from a distance, especially {@class ranger||rangers} and {@class rogue||rogues} who already have abilities that can make their first hit count. Spellcasters with {@spell true strike} might favor firearms with the {@trait fatal} property and gunslinger abilities that improve options for supporting their allies."
+					]
+				}
+			],
+			"extraFeats": []
 		},
 		{
 			"name": "Halcyon Speaker",
@@ -1869,6 +1447,22 @@
 				"10|Terrain Master|CRB",
 				"12|Warden's Step|CRB"
 			]
+		},
+		{
+			"name": "Inventor",
+			"source": "G&G",
+			"page": 49,
+			"entries": [
+				"You revel in the creation of clever inventions, deploying your brilliance to defeat your foes. Explosives, gadgets, and innovative technologies? You have ideas for all of them, and you're eager to test your theories.",
+				{
+					"type": "pf2-h3",
+					"name": "Multiclass Inventor characters",
+					"entries": [
+						"Inventor is a great fit for intelligent characters looking to branch out and learn new tricks, especially {@class alchemist||alchemists}, who are already good at {@skill Crafting} and may appreciate {@trait unstable} options as an alternative to daily alchemical resources. If they meet the Intelligence requirements, {@class cleric||clerics} of deities who encourage invention and experimentation like {@deity Brigh|LOGM} are an amazing fit, both because it makes narrative sense and because such characters can usually {@action Refocus} while fixing their innovation after using an {@trait unstable} ability."
+					]
+				}
+			],
+			"extraFeats": []
 		},
 		{
 			"name": "Investigator",
@@ -1992,11 +1586,11 @@
 				"You've mixed physical combat with spellcasting."
 			],
 			"extraFeats": [],
-			"miscTags": [
-				"Multiclass"
-			],
 			"benefits": [
 				"Bounded Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
 			]
 		},
 		{
@@ -2090,6 +1684,15 @@
 			]
 		},
 		{
+			"name": "Nantambu Chime-Ringer",
+			"source": "SOT2",
+			"page": 79,
+			"entries": [
+				"The Chime-Ringers serve as Nantambu's elite town guard, keeping the peace while carrying on ancient traditions of crafting chimes in metal, bamboo, or glass."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Oozemorph",
 			"source": "Sli",
 			"page": 59,
@@ -2114,6 +1717,17 @@
 			]
 		},
 		{
+			"name": "Overwatch",
+			"source": "G&G",
+			"page": 50,
+			"entries": [
+				"With a stalwart mind and sharp eyes, you observe the battlefield as though you and your allies are pieces on a chessboard. By predicting dangers and hazards and offering your insights to your comrades, you win battles through keen observation and teamwork. Whenever there's a threat or opening, you're the first to point it out, and you're ready to help your allies directly when necessary.",
+				"As a group's overwatch, you might let the position go to your head. In such cases, you might think of yourself as the mastermind behind the chessboard and feel detached from your allies, thinking of them as little more than pawns on the field.",
+				"But more likely your role allows you to feel a deeper connection to your allies, and your coordination and heroics stand out most when you subsume your individual ego to serve the group's needs. In that case, you might think of yourself as a part of a functional whole\u2014if your party was a single living body, you serve as the eyes, but that doesn't mean you're the brain, the heart, or other vital organs. Everyone has a crucial role to play."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Pathfinder Agent",
 			"source": "LOWG",
 			"page": 23,
@@ -2131,6 +1745,35 @@
 				"Pirates have much in common with {@class swashbuckler|APG|swashbucklers}, and many pirates have the {@class swashbuckler|APG|swashbuckler class} or {@archetype swashbuckler|APG|archetype}. Much like a swashbuckler's daring deeds, classic pirate maneuvers are often showy feats intended to impress, intimidate, and gain panache. For example, if you have the panache class feature and your Acrobatics check for a Boarding Assault exceeds the very hard DC for your level, you would gain panache."
 			],
 			"extraFeats": []
+		},
+		{
+			"name": "Pistol Phenom",
+			"source": "G&G",
+			"page": 136,
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"You saw what I can do, so you know I'm telling the truth when I say that I don't miss. That was just a warning shot. Now if you'd kindly empty out that coffer into my bag of holding, I don't see any need for this to get unpleasant... do you?"
+					],
+					"by": "Unidentified pistol-twirling half-elf desperado, just before absconding with the funds a corrupt Alkenstar shield marshal planned to use to bribe a judge."
+				},
+				"You treat combat as an art and your pistol as an extension of your performance. You might wield a single pistol, a pair of pistols, or a pistol paired with a melee weapon to pull off showy maneuvers. However you slice it, though, the use of pistols or other one-handed firearms is crucial to your technique and style.",
+				"To you, everything is a show, and you use your gun as a prop and instrument, not just to kill opponents but to trick, mislead, hinder, and even bully them into doing what you want them to do. While others tend to focus on delivering as much devastation downrange as possible, your style is all about control. By controlling a foe's attention and actions, you can bolster your own attacks and mitigate the foe's potential for mayhem. You control the tempo of the battle much as you would a staged performance, carefully ensuring your foe's actions don't fall outside of your intended script. You're both the director and the star of this show, and your enemies dance to the tune you play with your pistol... sometimes quite literally!",
+				{
+					"type": "pf2-sample-box",
+					"name": "What makes a Phenom?",
+					"entries": [
+						"Many gunslingers can learn how to twirl a pistol or intimidate a foe, but it's not just your skills that make you a phenom, it's your style and attitude. As a pistol phenom, you understand how to grab everyone's attention with everything you do, especially the way you talk, the way you walk, and the way you use your gun. But what's more, you're well aware of that fact and the power you have over others, and you aren't afraid to flaunt it.",
+						"Despite this attitude, or perhaps because of it, as a pistol phenom you likely tend to get along well with groups of allies, understanding both how to take the spotlight to protect your allies and how to share it to make sure they get their time in the sun. The one exception to this can be other pistol phenoms. When two or more pistol phenoms gather in the same group, it's almost inevitable for a duel or other contest to arise. However, such a contest need not end in enmity. Depending on your temperament, and that of the other pistol phenom, the result of the exhilarating rivalry expressed during competition could be a lifelong friendship, albeit one in which you both keep score of your greatest achievements to compare exploits."
+					]
+				}
+			],
+			"extraFeats": [
+				"4|Sword and Pistol|G&G",
+				"12|Trick Shot|G&G",
+				"16|Showstopper|G&G"
+			]
 		},
 		{
 			"name": "Poisoner",
@@ -2464,6 +2107,28 @@
 			]
 		},
 		{
+			"name": "Sniping Duo",
+			"source": "G&G",
+			"page": 138,
+			"entries": [
+				"Skilled shooters who don't let their egos get in the way of their efficacy are likely to say that sniping is a two-person job. Taking down a target without giving away your position or giving the opponent a window for reprisal is difficult work that requires teamwork and coordination, as well as a tight-knit bond and shared perspective. Sniping duos live and die by the credo \"two heads are better than one,\" focusing their skills and strategies toward deadly efficiency. Whether your spotter and partner is a fellow ranged combatant or a melee enthusiast, you've learned how to use the openings they provide to devastating effect.",
+				{
+					"type": "pf2-sample-box",
+					"name": "CHOOSING A SPOTTER",
+					"entries": [
+						"The most important aspect when choosing a spotter for the sniping duo archetype is the out of character component; make sure you team up with another player who is excited about the idea of roleplaying out teamwork and coordination in combat, and with granting you benefits and gaining benefits from you. The mechanics of the archetype are not very demanding of your spotter's actions, but that still doesn't mean every player is interested in the narrative component.",
+						"Mechanically, a good spotter is likely either another ranged attacker or a melee attacker, and depending on the type of spotter you choose, certain feats might become more or less enticing. For instance, {@feat Targeted Redirection|G&G} is more useful with a melee spotter."
+					]
+				}
+			],
+			"extraFeats": [
+				"4|Assisting Shot|CRB",
+				"4|Cover Fire|G&G",
+				"12|Deflecting Shot|G&G",
+				"12|Redirecting Shot|G&G"
+			]
+		},
+		{
 			"name": "Sorcerer",
 			"source": "CRB",
 			"page": 230,
@@ -2518,6 +2183,24 @@
 			]
 		},
 		{
+			"name": "Spell Trickster",
+			"source": "LOTGB",
+			"page": 122,
+			"entries": [
+				"Just as Golarion's merchants scour busy marketplaces for newfound goods, scholars of magic congregate in teahouses, debate at symposia, and haunt the back rooms of esoteric shops to swap secrets of their trade. In such meetings, a different kind of magic may strike: the spark of innovation! The mixing of magical techniques produces fascinating and unpredictable results. As one of these innovators, sometimes called a spell trickster, you have a knack for pioneering magical techniques and discovering new effects from spells most novice spellcasters take for granted. Whether your unique abilities are the result of weeks of experimentation or a secret passed to you by a traveling practitioner, you delight in surprising others with your tricks.",
+				{
+					"type": "pf2-sample-box",
+					"name": "The Fruits of Research",
+					"entries": [
+						"While magic can spring from many sources, from wizard tutors to self-taught savants, the art of the spell trickster often springs from sophisticated magical research. The magical academies in Golarion have no claim to magic as a whole but can often teach lesser-known variants of a spell to their students. At the Magaambya academy in the Mwangi Expanse, for instance, initiates study multiple traditions of magic, adapting the techniques of harnessing magical essence from one tradition to create new methods of casting spells in another. The Arclords of Nex have spent thousands of years honing spells in both wartime and peace, demonstrating a fine control over the arcane by effortlessly changing their magic to suit their whims. The return of New Thassilon brought thousands of magical dabblers and scholars, each with their own unique tricks and each eager to see what new spell variants have developed in their long absence.",
+						"This isn't to say that spell tricksters come solely from high academia. A {@class sorcerer} might demonstrate aberrant powers in her bloodline magic, hinting at a background more complex than a single eldritch influence acting upon her. An oracle might grope at a divine power that they poorly understand and cast a spell in a unique manner simply because they were never taught otherwise. A witch's patron or a whimsical deity might grant a favored servant a special power for whatever strange motives such beings might possess. Magic in Golarion isn't entirely predictable, no matter how many practitioners wish that it was so. While most spellcasters follow predictable patterns in their art, there are always exceptions.",
+						"The rules in this section are presented as part of an archetype, meant for a character dedicated to the art of innovating magic\u2014but you don't have to limit yourself to this premise. At the GM's discretion, a spell trickster feat could be made available to a character as a class feat without the character taking the archetype. In most cases, this option should only be offered as a reward or story element that the character, GM, or group has dedicated a significant amount of time to developing\u2014a character who wishes to partake in these options without GM permission or involvement should simply take the spell trickster archetype. These feats could be used to represent the payoff from extended magical research; finding forgotten or forbidden lore in a lost corner of Golarion; pleasing a god, patron, or other notable power; a magical plane or artifact exerting its influence; or any other number of situations that an adventurer might encounter while exploring. Keep in mind, however, that these feats were created and balanced to be part of an archetype. If allowing spell trickster feats as general class feats begins to negatively impact the game, the players should be willing to walk the decision back and rebuild characters as necessary."
+					]
+				}
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Spellmaster",
 			"source": "LOCG",
 			"page": 114,
@@ -2527,11 +2210,252 @@
 			"extraFeats": []
 		},
 		{
+			"name": "Spellshot",
+			"source": "G&G",
+			"page": 140,
+			"entries": [
+				"{@b Rarity:} {@trait Uncommon}",
+				"Spellshots aren't ordinary gunslingers. They come from a tradition of ancient secrets and principles, which they temper with modern innovation and perspective. Spellshots combine magical power into the art of gunplay to create a distinct and mystical way known only to spellshots, enigmatic and unavailable to other gunslingers in the world at large. The first to identify themselves as spellshots tied their magical traditions to the history of the Star Code and the Crowned Regents in Arcadia. Ancient, reclusive crafters known as the Crowned Regents created star guns, the legendary magical firearms that shot white-hot blasts of energy. Wielders of star guns became bound together by the Star Code\u2014a set of cultural expectations that defined how one should behave while using these powerful weapons. You can find more information about star guns, the Crowned Regents, and the Star Code on page 206.",
+				"Most spellshots continue to come from Arcadia, as the stories describing the relevant skills and training to become one have been passed down over the generations. Many gunslingers who grow up in this region hear of these tales early in their lives, and they develop the techniques to channel magical energy through their firearms in imitation of the Regents' arcane methods. While Arcadia is home to the vast majority of the world's spellshots, the techniques have slowly spread to other regions. However, spellshots remain particularly rare in the Inner Sea region due to the unique history of guns there and their connection to the Grand Duchy of Alkenstar, which exists in a magic-dead region of the Mana Wastes.",
+				{
+					"type": "pf2-h3",
+					"name": "Way of the Spellshot",
+					"collapsible": true,
+					"level": 1,
+					"entries": [
+						"You've learned the intricacies of magic and technology, blending the two together with deadly results. You combine a knowledge of arcane theories with a strong connection to your chosen weapon that allows you to manifest unique effects, though your knowledge doesn't extend as far as actual spellcasting. You can imbue energy into your weapon and conjure bullets from thin air. As you progress, you eventually learn to phase bullets through walls or even to teleport yourself along the path of your bullets. You must select {@feat Spellshot Dedication|G&G} as your 2nd-level class feat.",
+						{
+							"type": "pf2-options",
+							"style": "pf2-p",
+							"items": [
+								{
+									"type": "item",
+									"name": "Prerequisites",
+									"entries": [
+										"You must be a {@class gunslinger|G&G}."
+									]
+								},
+								{
+									"type": "item",
+									"name": "Spellshot Adjustments",
+									"entries": [
+										"Instead of choosing a way from the options listed in the gunslinger class, you have the way of the spellshot. It has the following way skill, slinger's reload, and deeds. You gain these abilities at the same levels as normal for the class. You use Intelligence for your class DC."
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-options",
+							"items": [
+								{
+									"type": "item",
+									"name": "Way Skill",
+									"entries": [
+										"{@skill Arcana}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Slinger's Reload",
+									"entries": [
+										"{@action Thoughtful Reload|G&G}"
+									]
+								},
+								{
+									"type": "item",
+									"name": "Deeds",
+									"entries": [
+										"{@i Initial} {@action Energy Shot|G&G}; {@i Advanced} {@action Recall Ammunition|G&G}; {@i Greater} {@action Dispelling Bullet|G&G}"
+									]
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Slinger's Reload",
+							"entries": [
+								{
+									"type": "ability",
+									"style": "full",
+									"name": "Thoughtful Reload",
+									"source": "G&G",
+									"page": 140,
+									"traits": [
+										"Gunslinger"
+									],
+									"entries": [
+										"As you sink deep into a state of analytical calm and focus on the foe before you, your hands reload a bullet instinctively. Attempt a {@action Recall Knowledge} check against an opponent you can see and then {@action Interact} to reload."
+									],
+									"activity": {
+										"unit": "action",
+										"number": 1
+									}
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Initial Deed",
+							"entries": [
+								{
+									"type": "ability",
+									"style": "full",
+									"source": "G&G",
+									"page": 140,
+									"name": "Energy Shot",
+									"traits": [
+										"Evocation",
+										"Magical",
+										"Spellshot"
+									],
+									"actionType": {
+										"class": [
+											"Gunslinger|G&G"
+										],
+										"archetype": [
+											"Spellshot|G&G"
+										]
+									},
+									"trigger": "You roll initiative.",
+									"entries": [
+										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
+									],
+									"activity": {
+										"unit": "free",
+										"number": 1
+									}
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Initial Deed",
+							"entries": [
+								{
+									"type": "ability",
+									"style": "full",
+									"source": "G&G",
+									"page": 140,
+									"name": "Energy Shot",
+									"traits": [
+										"Evocation",
+										"Magical",
+										"Spellshot"
+									],
+									"actionType": {
+										"class": [
+											"Gunslinger|G&G"
+										],
+										"archetype": [
+											"Spellshot|G&G"
+										]
+									},
+									"trigger": "You roll initiative.",
+									"entries": [
+										"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
+									],
+									"activity": {
+										"unit": "free",
+										"number": 1
+									}
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Advanced Deed",
+							"level": 9,
+							"entries": [
+								{
+									"type": "ability",
+									"style": "full",
+									"source": "G&G",
+									"page": 140,
+									"name": "Recall Ammunition",
+									"traits": [
+										"Conjuration",
+										"Magical",
+										"Spellshot",
+										"Teleportation"
+									],
+									"actionType": {
+										"class": [
+											"Gunslinger|G&G"
+										],
+										"archetype": [
+											"Spellshot|G&G"
+										]
+									},
+									"trigger": "You miss with a firearm or crossbow {@action Strike} while using an ordinary level-0 bolt or bullet",
+									"entries": [
+										"You amplify the connection between bullet and firearm, calling your missed shot back into your gun. The ammunition you just fired is reloaded back into your gun and immediately ready to fire again."
+									],
+									"activity": {
+										"unit": "reaction",
+										"number": 1
+									}
+								}
+							]
+						},
+						{
+							"type": "pf2-h3",
+							"name": "Greater Deed",
+							"level": 15,
+							"entries": [
+								{
+									"type": "ability",
+									"style": "full",
+									"source": "G&G",
+									"page": 140,
+									"name": "Dispelling Bullet",
+									"traits": [
+										"Abjuration",
+										"Magical",
+										"Spellshot"
+									],
+									"actionType": {
+										"class": [
+											"Gunslinger|G&G"
+										],
+										"archetype": [
+											"Spellshot|G&G"
+										]
+									},
+									"entries": [
+										"You imprint a bullet with a field of abjuration built upon your magical signature, disrupting the magic of whatever it hits. Make a firearm or crossbow {@action Strike} against a foe you can see. If you hit, you attempt to counteract a spell effect active on the target (your choice, or the highest-level effect if you don't choose). Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
+									],
+									"activity": {
+										"unit": "action",
+										"number": 2
+									}
+								}
+							]
+						}
+					]
+				}
+			],
+			"miscTags": [
+				"Class Archetype"
+			]
+		},
+		{
 			"name": "Staff Acrobat",
 			"source": "EC1",
 			"page": 114,
 			"entries": [
 				"You can perform amazing acts in and out of combat when you have a spear, staff, or polearm."
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Sterling Dynamo",
+			"source": "G&G",
+			"page": 52,
+			"entries": [
+				"While many people across Golarion use prosthetic devices, you've acquired and outfitted yourself with a particularly advanced combat model of clockwork prosthesis: a piece of cutting edge technology called a sterling dynamo. You know how to maintain your dynamo and how to customize it to suit your needs and style, incorporating any promising new technologies you encounter into its design.",
+				"There's a significant distinction, however, between someone who merely has a sterling dynamo prosthesis and someone like you who is a true sterling dynamo. With their recent invention, people in Absalom and Dongun Hold with access to the technology have begun to adopt sterling dynamos as their prostheses of choice, among the wide variety of amazing options already available in both markets. However, not everyone who chooses to use sterling dynamo technology is a member of the sterling dynamo archetype.",
+				"With the sterling dynamo archetype, you both use a sterling dynamo prosthesis and truly understand its advantages, limitations, and limitless potential. You don't have to literally be your own mechanic, as there's no requirement for a sterling dynamo to be particularly skilled at crafting, but even if you aren't, you can still \"feel\" what's right when it comes to adjusting and optimizing your dynamo. Whether you implement these improvements yourself or present your mechanic with ideas and insights that allow them to achieve something special on your behalf, your strength and ingenuity are what make you a sterling dynamo.",
+				"As you train to use your dynamo in all sorts of adventures, you may become capable of feats its original inventors never dreamed possible. In fact, as you progress in the archetype and explore the possibilities, you might find that these inventors want to interview you in order to apply your insights and help them create a new generation of the technology with even greater capabilities. The sterling dynamo's adaptability grants it vast potential, so the sky's the limit!"
 			],
 			"extraFeats": []
 		},
@@ -2621,12 +2545,71 @@
 			"extraFeats": []
 		},
 		{
+			"name": "Trapsmith",
+			"source": "G&G",
+			"page": 52,
+			"entries": [
+				"Wielding a wrench or blowtorch, you manufacture snares that whir and tick with delicate precision. Your best work requires the right materials\u2014a glorious set of brass fittings and cogwheels\u2014with which you create snares that are as elegantly lethal as they are subtle. As a trapsmith, you're always improving your snares: adjusting timing, tweaking triggers, and finding new ways to hide them from foes.",
+				"You can select the dedication feat for the trapsmith archetype even if you haven't yet gained three feats from the {@archetype snarecrafter|APG} archetype."
+			],
+			"extraFeats": []
+		},
+		{
+			"name": "Trick Driver",
+			"source": "G&G",
+			"page": 55,
+			"entries": [
+				"While cavaliers follow an old and tired tradition of mounted combat, you take a more modern road. Through aggressive use of vehicles, you roll across the battlefield, taking down your opponents. You go beyond simply operating a vehicle, pushing it to perform stunts that its builders never intended, transforming the vehicle into something much greater than a mere conveyance."
+			],
+			"extraFeats": []
+		},
+		{
 			"name": "Turpin Rowe Lumberjack",
 			"source": "EC3",
 			"page": 75,
 			"entries": [
 				"You are a feller of trees and a skilled axe wielder, trained in the art of forestry by the hard-working loggers of Turpin Rowe."
 			]
+		},
+		{
+			"name": "Unexpected Sharpshooter",
+			"source": "G&G",
+			"page": 138,
+			"entries": [
+				{
+					"type": "quote",
+					"entries": [
+						"Oh would you look at that, there's a bunch of bullet holes around here... so that's what all the ruckus was about! Six... seven... eight of you, huh? Oh, but did you notice the northern finch over there in that tree a minute ago? Its nest is up there, but I think all those gunshots startled it. You think you could quiet down so maybe it'll come back?"
+					],
+					"by": "Viri, gnome ornithologist, just before a series of strange accidents mysteriously took down a hardened bandit squad of eight former Alkenstar veterans."
+				},
+				"Some people say you must be the luckiest soul in all of Golarion to still be alive and kicking after all the dangers you've seen. Others say that, given the circumstances and the number of foes who you've defeated seemingly by accident, that there's no way you can really be as incompetent as you seem. These critics claim there has to be some kind of angle, some racket you're running. Either way, you sure don't look or act dangerous, except possibly to yourself.",
+				"Somehow, despite your apparent clumsiness, professed confusion, and known propensity to incite calamity, you find yourself standing after every battle. The same can't often be said for your enemies. Funny how that works out, isn't it?",
+				{
+					"type": "pf2-sample-box",
+					"name": "Skilled or Lucky?",
+					"entries": [
+						"Part of the fun of roleplaying an unexpected sharpshooter is the ambiguity and mystery of how your character achieves their surprising success. Your character at first seems like they bumble into their successes through sheer circumstance. However, when the circumstances pile up, others might start to suspect another possibility: perhaps your character is secretly so incredible that they not only achieve impressive results but do so in a way that hides their skill behind a veneer of lucky breaks. Ultimately, either could be true about your character, or some combination of both. You might decide the truth together with the GM as soon as you take this archetype or hold off until later to make that call. Because this archetype hints at hidden talent intentionally obfuscated, it offers a good choice for a character who's secretly more powerful or skilled than they seem or who must hide their abilities for some reason\u2014perhaps associated with the plot of the campaign.",
+						"If your inclination is to play a character who hides their abilities, consider training in the Deception skill and taking skill feats like {@feat Charming Liar} and {@feat Confabulator} that emphasize your character's crafty nature and skill at concealing their true intent.",
+						"If you instead prefer to play a character who's legitimately a bit uncoordinated but abnormally lucky, you might choose to pursue actions that have a high chance of earning you a Hero Point. You could also consider taking abilities with the {@trait fortune} or {@trait misfortune} traits, such as {@feat Halfling Luck} or {@feat Harbinger's Caw}."
+					]
+				}
+			],
+			"extraFeats": [
+				"4|Hit the Dirt!|G&G",
+				"4|Risky Reload|G&G",
+				"10|Trick Shot|G&G"
+			]
+		},
+		{
+			"name": "Vehicle Mechanic",
+			"source": "G&G",
+			"page": 56,
+			"entries": [
+				"You have always felt that vehicles are as much works of art as they are means of transportation. It doesn't matter if it's as common as a chariot or as complex as an airship, there's always some aspect of the vehicle you can improve upon. Pilots, drivers, and sailors alike value your expertise, and many seek you out to work on their vehicles. While you can make a great profit working on custom vehicles for wealthy clients, you still keep a vehicle of your own to tinker with as your personal passion project.",
+				"You might be part of a vehicle mechanic union, working with other mechanics and engineers to find fair jobs and support each other's labor. While some vehicle mechanic unions are secular, many realize the benefits of organizing alongside a sympathetic religion, and so they typically adopt the ideals of economically-focused gods like Abadar or deities interested in crafting such as the goddess Brigh\u2014the Whisper in Bronze\u2014the goddess of invention. Whether religious or secular, vehicle mechanic unions take the bonds between fellow union members seriously. While this might mean your character becomes obligated to help a fellow union member who needs your help, it also means you have steadfast allies you can fall back on in your own time of need. In dire straits, such a connection can be worth its weight in gold."
+			],
+			"extraFeats": []
 		},
 		{
 			"name": "Vigilante",
@@ -2838,11 +2821,11 @@
 				}
 			],
 			"extraFeats": [],
-			"miscTags": [
-				"Multiclass"
-			],
 			"benefits": [
 				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
 			]
 		},
 		{
@@ -2860,11 +2843,28 @@
 				}
 			],
 			"extraFeats": [],
-			"miscTags": [
-				"Multiclass"
-			],
 			"benefits": [
 				"Spellcasting"
+			],
+			"miscTags": [
+				"Multiclass"
+			]
+		},
+		{
+			"name": "Wrestler",
+			"source": "LOTGB",
+			"page": 126,
+			"entries": [
+				"Wrestlers are athletes who pit their strength and skill against powerful foes. Specializing in a variety of grabs, holds, and strikes, wrestlers are dangerous opponents whose techniques can leave a foe broken and defeated without taking their life.",
+				"The wrestling tradition is common all over Golarion. Gladiators and other warriors who fight for entertainment use wrestling techniques in combat. The discipline's focus on grappling is also useful in non-gladiatorial matches, as many foes are unable to contend with an opponent's hold. Grappling is particularly effective against spellcasters, who have a difficult time completing the somatic components of their spells while grabbed.",
+				"Wrestlers have storied traditions in the Hold of Belkzen, where orcs use specialized grappling techniques to subdue the large animals they ride as mounts. Orcs prefer wrestling these creatures partially to minimize harm to them, but also because they believe that the process of subduing the creature creates a stronger bond between mount and rider.",
+				"Outside of the Inner Sea, wrestlers are common in Iblydos and Arcadia. Iblydan wrestlers focus on grappling techniques to make sure they're never left without a means to fight on the battlefield, even if their weapons are destroyed. Arcadian wrestlers engage in matches designed to retell stories of ancient gods. These matches feature impressive acrobatic feats as well as highly technical grappling maneuvers."
+			],
+			"extraFeats": [
+				"4|Combat Grab|CRB",
+				"4|Crushing Grab|CRB",
+				"4|Snagging Strike|CRB",
+				"8|Whirling Throw|CRB"
 			]
 		},
 		{

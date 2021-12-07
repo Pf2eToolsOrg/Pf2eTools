@@ -1114,13 +1114,13 @@ SRC_LOACLO = "LOACLO";
 SRC_AAWS = "AAWS";
 SRC_GNG = "G&G";
 SRC_LOTGB = "LOTGB"
-SRC_AOA0 = "AOA0";
-SRC_AOA1 = "AOA1";
-SRC_AOA2 = "AOA2";
-SRC_AOA3 = "AOA3";
-SRC_AOA4 = "AOA4";
-SRC_AOA5 = "AOA5";
-SRC_AOA6 = "AOA6";
+SRC_AOA0 = "AoA0";
+SRC_AOA1 = "AoA1";
+SRC_AOA2 = "AoA2";
+SRC_AOA3 = "AoA3";
+SRC_AOA4 = "AoA4";
+SRC_AOA5 = "AoA5";
+SRC_AOA6 = "AoA6";
 SRC_EC0 = "EC0";
 SRC_EC1 = "EC1";
 SRC_EC2 = "EC2";
@@ -1128,13 +1128,13 @@ SRC_EC3 = "EC3";
 SRC_EC4 = "EC4";
 SRC_EC5 = "EC5";
 SRC_EC6 = "EC6";
-SRC_AOE0 = "AOE0";
-SRC_AOE1 = "AOE1";
-SRC_AOE2 = "AOE2";
-SRC_AOE3 = "AOE3";
-SRC_AOE4 = "AOE4";
-SRC_AOE5 = "AOE5";
-SRC_AOE6 = "AOE6";
+SRC_AOE0 = "AoE0";
+SRC_AOE1 = "AoE1";
+SRC_AOE2 = "AoE2";
+SRC_AOE3 = "AoE3";
+SRC_AOE4 = "AoE4";
+SRC_AOE5 = "AoE5";
+SRC_AOE6 = "AoE6";
 SRC_AV0 = "AV0";
 SRC_AV1 = "AV1";
 SRC_AV2 = "AV2";
@@ -1143,15 +1143,18 @@ SRC_FRP0 = "FRP0";
 SRC_FRP1 = "FRP1";
 SRC_FRP2 = "FRP2";
 SRC_FRP3 = "FRP3";
-SRC_SOT0 = "SOT0";
-SRC_SOT1 = "SOT1";
-SRC_SOT2 = "SOT2";
-SRC_SOT3 = "SOT3";
-SRC_SOT4 = "SOT4";
-SRC_SOT5 = "SOT5";
-SRC_SOT6 = "SOT6";
+SRC_SOT0 = "SoT0";
+SRC_SOT1 = "SoT1";
+SRC_SOT2 = "SoT2";
+SRC_SOT3 = "SoT3";
+SRC_SOT4 = "SoT4";
+SRC_SOT5 = "SoT5";
+SRC_SOT6 = "SoT6";
 SRC_SLI = "Sli";
 SRC_NGD = "NGD";
+SRC_FOP = "FoP";
+SRC_LTIBA = "LTiBA";
+SRC_TIO = "TiO";
 
 SRC_3PP_SUFFIX = " 3pp";
 
@@ -1175,6 +1178,9 @@ EC_PREFIX_SHORT = "EC: "
 AoA_PREFIX = "Age of Ashes: "
 AoA_PREFIX_SHORT = "AoA: "
 
+SoT_PREFIX = "Strength of Thousands: "
+SoT_PREFIX_SHORT = "SoT: "
+
 // endregion
 
 LO_PREFIX = "Lost Omens: ";
@@ -1188,6 +1194,7 @@ Parser.SOURCE_PREFIX_TO_SHORT[AV_PREFIX] = AV_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AoE_PREFIX] = AoE_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[EC_PREFIX] = EC_PREFIX_SHORT;
 Parser.SOURCE_PREFIX_TO_SHORT[AoA_PREFIX] = AoA_PREFIX_SHORT;
+Parser.SOURCE_PREFIX_TO_SHORT[SoT_PREFIX] = SoT_PREFIX_SHORT;
 // Turn JSON to Full Title
 Parser.SOURCE_JSON_TO_FULL = {};
 Parser.SOURCE_JSON_TO_FULL[SRC_CRB] = "Core Rulebook";
@@ -1212,49 +1219,52 @@ Parser.SOURCE_JSON_TO_FULL[SRC_LOTGB] = "Lost Omens: The Grand Bazaar";
 
 // Adventure Paths
 Parser.SOURCE_JSON_TO_FULL[SRC_AOA0] = "Age of Ashes Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Adventure Path: Hellknight Hill";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Adventure Path: Cult of Cinders";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Adventure Path: Tomorrow Must Burn";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Adventure Path: Fires of the Haunted City";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Adventure Path: Against the Scarlet Triad";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Adventure Path: Broken Promises";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA1] = "Age of Ashes: Hellknight Hill";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA2] = "Age of Ashes: Cult of Cinders";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA3] = "Age of Ashes: Tomorrow Must Burn";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA4] = "Age of Ashes: Fires of the Haunted City";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA5] = "Age of Ashes: Against the Scarlet Triad";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOA6] = "Age of Ashes: Broken Promises";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_EC0] = "Extinction Curse Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Adventure Path: The Show Must Go On";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Adventure Path: Legacy of the Lost God";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Adventure Path: Life's Long Shadows";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Adventure Path: Siege of the Dinosaurs";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Adventure Path: Lord of the Black Sands";
-Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Adventure Path: The Apocalypse Prophet";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC1] = "Extinction Curse: The Show Must Go On";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC2] = "Extinction Curse: Legacy of the Lost God";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC3] = "Extinction Curse: Life's Long Shadows";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC4] = "Extinction Curse: Siege of the Dinosaurs";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC5] = "Extinction Curse: Lord of the Black Sands";
+Parser.SOURCE_JSON_TO_FULL[SRC_EC6] = "Extinction Curse: The Apocalypse Prophet";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AOE0] = "Agents of Edgewatch Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Adventure Path: Devil at the Dreaming Palace";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Adventure Path: Sixty Feet Under";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Adventure Path: All or Nothing";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Adventure Path: Assault on Hunting Lodge Seven";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Adventure Path: Belly of the Black Whale";
-Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Adventure Path: Ruins of the Radiant Siege";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE1] = "Agents of Edgewatch: Devil at the Dreaming Palace";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE2] = "Agents of Edgewatch: Sixty Feet Under";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE3] = "Agents of Edgewatch: All or Nothing";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE4] = "Agents of Edgewatch: Assault on Hunting Lodge Seven";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE5] = "Agents of Edgewatch: Belly of the Black Whale";
+Parser.SOURCE_JSON_TO_FULL[SRC_AOE6] = "Agents of Edgewatch: Ruins of the Radiant Siege";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_AV0] = "Abomination Vaults Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Adventure Path: Ruins of Gauntlight";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Adventure Path: Hands of the Devil";
-Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Adventure Path: Eyes of Empty Death";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV1] = "Abomination Vaults: Ruins of Gauntlight";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV2] = "Abomination Vaults: Hands of the Devil";
+Parser.SOURCE_JSON_TO_FULL[SRC_AV3] = "Abomination Vaults: Eyes of Empty Death";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_FRP0] = "Fists of the Ruby Phoenix Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Adventure Path: Despair on Danger Island";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Adventure Path: Ready? Fight!";
-Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Adventure Path: King of the Mountain";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP1] = "Fists of the Ruby Phoenix: Despair on Danger Island";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP2] = "Fists of the Ruby Phoenix: Ready? Fight!";
+Parser.SOURCE_JSON_TO_FULL[SRC_FRP3] = "Fists of the Ruby Phoenix: King of the Mountain";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SOT0] = "Strength of Thousands Player's Guide";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Adventure Path: Kindled Magic";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Adventure Path: Spoken on the Song Wind";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Adventure Path: Hurricane's Howl";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Adventure Path: Secrets of the Temple-City";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Adventure Path: Doorway to the Red Star";
-Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Adventure Path: Shadows of the Ancients";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT1] = "Strength of Thousands: Kindled Magic";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT2] = "Strength of Thousands: Spoken on the Song Wind";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT3] = "Strength of Thousands: Hurricane's Howl";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT4] = "Strength of Thousands: Secrets of the Temple-City";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT5] = "Strength of Thousands: Doorway to the Red Star";
+Parser.SOURCE_JSON_TO_FULL[SRC_SOT6] = "Strength of Thousands: Shadows of the Ancients";
 
 Parser.SOURCE_JSON_TO_FULL[SRC_SLI] = "The Slithering";
 Parser.SOURCE_JSON_TO_FULL[SRC_NGD] = "Night of the Gray Death";
+Parser.SOURCE_JSON_TO_FULL[SRC_FOP] = "The Fall of Plaguestone";
+Parser.SOURCE_JSON_TO_FULL[SRC_TIO] = "Troubles in Otari";
+Parser.SOURCE_JSON_TO_FULL[SRC_LTIBA] = "Little Trouble in Big Absalom";
 // Turn JSON to Abbreviations
 Parser.SOURCE_JSON_TO_ABV = {};
 Parser.SOURCE_JSON_TO_ABV[SRC_CRB] = "CRB";
@@ -1278,13 +1288,13 @@ Parser.SOURCE_JSON_TO_ABV[SRC_GNG] = "G&G";
 Parser.SOURCE_JSON_TO_ABV[SRC_LOTGB] = "LOTGB";
 
 // Adventure Paths
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA0] = "AOA0";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA1] = "AOA1";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA2] = "AOA2";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA3] = "AOA3";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA4] = "AOA4";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA5] = "AOA5";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOA6] = "AOA6";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA0] = "AoA0";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA1] = "AoA1";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA2] = "AoA2";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA3] = "AoA3";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA4] = "AoA4";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA5] = "AoA5";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOA6] = "AoA6";
 
 Parser.SOURCE_JSON_TO_ABV[SRC_EC0] = "EC0";
 Parser.SOURCE_JSON_TO_ABV[SRC_EC1] = "EC1";
@@ -1294,13 +1304,13 @@ Parser.SOURCE_JSON_TO_ABV[SRC_EC4] = "EC4";
 Parser.SOURCE_JSON_TO_ABV[SRC_EC5] = "EC5";
 Parser.SOURCE_JSON_TO_ABV[SRC_EC6] = "EC6";
 
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE0] = "AOE0";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE1] = "AOE1";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE2] = "AOE2";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE3] = "AOE3";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE4] = "AOE4";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE5] = "AOE5";
-Parser.SOURCE_JSON_TO_ABV[SRC_AOE6] = "AOE6";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE0] = "AoE0";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE1] = "AoE1";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE2] = "AoE2";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE3] = "AoE3";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE4] = "AoE4";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE5] = "AoE5";
+Parser.SOURCE_JSON_TO_ABV[SRC_AOE6] = "AoE6";
 
 Parser.SOURCE_JSON_TO_ABV[SRC_AV0] = "AV0";
 Parser.SOURCE_JSON_TO_ABV[SRC_AV1] = "AV1";
@@ -1312,16 +1322,19 @@ Parser.SOURCE_JSON_TO_ABV[SRC_FRP1] = "FRP1";
 Parser.SOURCE_JSON_TO_ABV[SRC_FRP2] = "FRP2";
 Parser.SOURCE_JSON_TO_ABV[SRC_FRP3] = "FRP3";
 
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT0] = "SOT0";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT1] = "SOT1";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT2] = "SOT2";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT3] = "SOT3";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT4] = "SOT4";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT5] = "SOT5";
-Parser.SOURCE_JSON_TO_ABV[SRC_SOT6] = "SOT6";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT0] = "SoT0";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT1] = "SoT1";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT2] = "SoT2";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT3] = "SoT3";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT4] = "SoT4";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT5] = "SoT5";
+Parser.SOURCE_JSON_TO_ABV[SRC_SOT6] = "SoT6";
 
 Parser.SOURCE_JSON_TO_ABV[SRC_SLI] = "Sli";
 Parser.SOURCE_JSON_TO_ABV[SRC_NGD] = "NGD";
+Parser.SOURCE_JSON_TO_ABV[SRC_FOP] = "FoP";
+Parser.SOURCE_JSON_TO_ABV[SRC_LTIBA] = "LTiBA";
+Parser.SOURCE_JSON_TO_ABV[SRC_TIO] = "TiO";
 // Turn JSON to Date of Release
 Parser.SOURCE_JSON_TO_DATE = {};
 Parser.SOURCE_JSON_TO_DATE[SRC_CRB] = "2019-08-01";
@@ -1409,9 +1422,11 @@ Parser.SOURCE_JSON_TO_STORE[SRC_SOT6] = "https://paizo.com/products/btq027u1";
 
 Parser.SOURCE_JSON_TO_STORE[SRC_SLI] = "https://paizo.com/products/btq023hg";
 Parser.SOURCE_JSON_TO_STORE[SRC_NGD] = "https://paizo.com/products/btq027o0";
+Parser.SOURCE_JSON_TO_STORE[SRC_FOP] = "https://paizo.com/products/btq01zoh";
+Parser.SOURCE_JSON_TO_STORE[SRC_TIO] = "https://paizo.com/products/btq026k1";
+Parser.SOURCE_JSON_TO_STORE[SRC_LTIBA] = "https://paizo.com/products/btq024ys";
 
 Parser.SOURCES_ADVENTURES = new Set([
-	SRC_EC3,
 	SRC_AOA0,
 	SRC_AOA1,
 	SRC_AOA2,
@@ -1450,6 +1465,9 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SOT6,
 	SRC_SLI,
 	SRC_NGD,
+	SRC_LTIBA,
+	SRC_FOP,
+	SRC_TIO,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
@@ -1513,6 +1531,10 @@ Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE = {};
 	SRC_SOT5,
 	SRC_SOT6,
 	SRC_SLI,
+	SRC_NGD,
+	SRC_FOP,
+	SRC_TIO,
+	SRC_LTIBA,
 ].forEach(src => {
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src] = src;
 	Parser.SOURCES_AVAILABLE_DOCS_ADVENTURE[src.toLowerCase()] = src;
@@ -1614,12 +1636,10 @@ Parser.levelToDC = function (level, spell, difficulty) {
 	if (isNaN(level)) return "?"
 	let DC = 0
 	if (spell.toLowerCase() === "focus" || spell.toLowerCase() === "spell" || spell === true) level = (level * 2) - 1
-	if (level >= 0 && level < 21) {
+	if (level < 21) {
 		DC = 14 + Number(level) + Math.floor(level / 3)
-	} else if (level >= 21 && level < 26) {
-		DC = 40 + Number((level - 20) * 2)
 	} else {
-		throw new Error(`Invalid level (0 to 25 or 1 to 10 for spells)`);
+		DC = 40 + Number((level - 20) * 2)
 	}
 	// The Difficulty is negative for easier adjustments and positive for harder adjustments. 0 is default.
 	if (difficulty) {
@@ -1656,7 +1676,7 @@ Parser.levelToDC = function (level, spell, difficulty) {
 		}
 	}
 
-	return DC
+	return `${DC}${level < 0 || level > 25 ? `*` : ""}`
 };
 
 Parser.typeToSkill = function (type) {

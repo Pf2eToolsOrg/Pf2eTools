@@ -78,4 +78,6 @@ async function main () {
 
 if (require.main === module) {
 	main().then(() => console.log("Done.")).catch(e => { throw e; });
+} else {
+	generateFeatTrees({filePrefix: "./data/feats", inplace: true});
 }

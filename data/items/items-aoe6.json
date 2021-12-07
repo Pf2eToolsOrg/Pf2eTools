@@ -1,0 +1,285 @@
+{
+	"item": [
+		{
+			"name": "Cane Of The Maelstrom",
+			"source": "AoE6",
+			"page": 73,
+			"type": "Item",
+			"level": 22,
+			"traits": [
+				"Unique",
+				"Artifact",
+				"Conjuration",
+				"Cursed",
+				"Divine"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"A large crystal of warpglass (page 74) floats above the head of this silvery purple +3 anarchic greater striking club. If you successfully {@action Strike} a creature, the cane also affects the target with a warpwave (Pathfinder Bestiary 266). While you carry the cane, you hear a constant, distracting chorus of laughing, incoherent Protean whispers and sing-song voices in your mind. Blatant acts of self-indulgence or narcissism quell these whispers, from a few minutes up to a full day depending on the scope of the act, but they immediately return when you use the artifact's powers.",
+				"The gradually rising chorus eventually drives away rational thought and renders the cane's owner insane, even if staved off from time to time with self-centered acts. As the artifact's abilities pull material from the Maelstrom, it doesn't function in areas where planar connections are severed.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": null,
+					"trigger": "You are targeted by a ranged attack from an opponent you can see",
+					"requirements": null,
+					"entries": [
+						"You draw a temporary shield of chaotic turbulence with a cerulean flash. You gain a +3 circumstance bonus to AC against the triggering attack."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 10,
+						"unit": "minute",
+						"entry": "10 minutes"
+					},
+					"components": [
+						"(command",
+						"envision",
+						"Interact)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"The Cane of the Maelstrom casts a 5th-level {@spell hallucinatory terrain} spell and infuses the illusion with quasi-real substance drawn from the primal chaos of the Maelstrom. Creatures that don't disbelieve the illusion treat structures and terrain created through the spell as though they were real, ascending illusory stairs, becoming trapped by illusory quicksand, and so on. If no creature disbelieves the illusion during its duration, the changes become wholly real and permanent when its duration expires."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "minute",
+						"entry": "1 minute"
+					},
+					"components": [
+						"(Interact)"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"The Cane of the Maelstrom casts a 5th-level {@spell creation} spell, except the duration is unlimited and you can create delicate or complex objects by succeeding at an applicable {@skill Crafting} skill check when you activate this ability.",
+						"Destruction Trapping a lawful demigod in the hallucinatory terrain created by the cane and leaving it imprisoned for a year and a day causes a deific overload that destroys the artifact.",
+						"When the artifact is destroyed, the terrain imprisoning the demigod crumbles away and the demigod is freed."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Radiant Spark",
+			"source": "AoE6",
+			"page": 74,
+			"type": "Item",
+			"level": 25,
+			"traits": [
+				"Unique",
+				"Artifact",
+				"Conjuration",
+				"Occult"
+			],
+			"usage": "held in 1 hand",
+			"bulk": "L",
+			"category": "Artifact",
+			"entries": [
+				"This shining prism is bound within a golden frame. The bright glow within the artifact is the gleaming essence of celestials bound within it in ancient times. Each activation consumes a bit of this celestial energy, projecting the screams of the celestials into your mind. While holding the Radiant Spark, you gain a +2 item bonus to saving throws against divine spells and effects and you are aware of its powers. If you are good, while holding the Radiant Spark, you are {@condition sickened|CRB|sickened 3} and can't recover from this condition.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"The Radiant Spark casts a 10th-level {@spell dominate} spell (DC 49) on a creature that isn't from the Material Plane. Celestials get an outcome one degree of success worse than the result of their save."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"components": [
+						"envision"
+					],
+					"frequency": null,
+					"trigger": "You begin casting a planar binding ritual",
+					"requirements": null,
+					"entries": [
+						"The Radiant Spark reduces the casting time of the ritual to 1 hour, and you don't need secondary casters for this ritual."
+					]
+				},
+				{
+					"type": "ability",
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"components": [
+						"envision",
+						"Interact"
+					],
+					"frequency": null,
+					"trigger": "The target critically fails their save against the Radiant Spark's {@spell dominate} spell or you critically succeed at binding the target with the planar binding ritual using the artifact",
+					"requirements": null,
+					"entries": [
+						"The target must attempt a DC 49 Will save and is immune to further attempts for 24 hours.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target is {@condition drained|CRB|drained 2}.",
+								"Failure": "The target dies and its essence is trapped within the Radiant Spark. It can be brought back to life only with powerful magic such as wish or miracle.",
+								"Critical Failure": "As failure, and the target can't be brought back to life until the Radiant Spark is destroyed. Destruction An archfiend or evil demigod must willingly swap their essence with that of a celestial dominated or bound by the artifact, then critically fail the saving throw against having their essence consumed. This permanently destroys both the artifact and the fiend or demigod."
+							}
+						}
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Ring Of Recalcitrant Wishes",
+			"source": "AoE6",
+			"page": 74,
+			"type": "Item",
+			"level": 20,
+			"traits": [
+				"Rare",
+				"Divination",
+				"Invested",
+				"Magical"
+			],
+			"price": {
+				"coin": "gp",
+				"amount": 10000,
+				"note": null
+			},
+			"usage": "worn",
+			"bulk": "\u2014",
+			"category": "Worn",
+			"entries": [
+				"This band of interwoven gold and copper, traced with Aklo symbols, is topped with a gleaming, luminescent opal gently bleeding wisps of shadowstuff.",
+				{
+					"type": "ability",
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"components": [
+						"command"
+					],
+					"frequency": null,
+					"trigger": null,
+					"requirements": null,
+					"entries": [
+						"You attempt to make the ring cast an arcane {@spell wish} spell. However, if the ring doesn't deem the wish to be sufficiently selfless, the wish isn't cast and the ring can't be activated for 24 hours. You are {@condition drained|CRB|drained 3}, whether or not the ring refuses the wish.",
+						"Once the wish is cast, the Ring of Recalcitrant Wishes has no powers, though it is rumored that the wearer's death in an act of profound self-sacrifice restores the wish to the ring."
+					]
+				}
+			],
+			"generic": false,
+			"consumable": false
+		},
+		{
+			"name": "Warpglass",
+			"source": "AoE6",
+			"page": 74,
+			"equipment": true,
+			"type": "Material",
+			"level": "17+",
+			"traits": [
+				"Rare",
+				"Precious"
+			],
+			"category": "Material",
+			"entries": [
+				"Raw warpglass is an opalescent glassy material with surprising strength. When worked, it changes its appearance\u2014though not its properties\u2014to appear as random striations of other metals and types of stone."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "warpglass chunk",
+					"price": {
+						"coin": "gp",
+						"amount": 800,
+						"note": null
+					},
+					"bulk": "L",
+					"entries": []
+				},
+				{
+					"type": "warpglass ingot",
+					"price": {
+						"coin": "gp",
+						"amount": 8000,
+						"note": null
+					},
+					"bulk": "1",
+					"entries": []
+				},
+				{
+					"type": "high-grade warpglass object",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 8000,
+						"note": "per Bulk"
+					},
+					"entries": []
+				}
+			],
+			"consumable": false
+		},
+		{
+			"name": "Warpglass Weapon",
+			"source": "AoE6",
+			"page": 75,
+			"type": "Item",
+			"level": 17,
+			"traits": [
+				"Rare"
+			],
+			"usage": "varies by weapon",
+			"bulk": "varies",
+			"category": "no category found",
+			"entries": [
+				"If you critically hit a creature with a {@action Strike} with a warpglass weapon, the target is affected by a warpwave (page 81) and automatically fails its saving throw."
+			],
+			"generic": "G",
+			"variants": [
+				{
+					"type": "high-grade warpglass weapon",
+					"level": 17,
+					"price": {
+						"coin": "gp",
+						"amount": 14000,
+						"note": "+ 1,400 gp per Bulk"
+					},
+					"craftReq": "at least 7,000 gp of warpglass + 700 gp per Bulk.",
+					"entries": []
+				}
+			],
+			"consumable": false
+		}
+	]
+}

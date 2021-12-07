@@ -1,0 +1,3555 @@
+{
+	"creature": [
+		{
+			"name": "Bone Skipper Swarm",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 80,
+			"level": 6,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Swarm"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 17
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"bonesense 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": -4,
+				"Dex": 5,
+				"Con": 4,
+				"Int": -5,
+				"Wis": 2,
+				"Cha": -5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"A bone skipper swarm identifies bones and creatures with a skeletal system in the listed range."
+					],
+					"name": "Bonesense"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 12
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 120,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"precision"
+				],
+				"condition": [
+					"swarm mind"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 9,
+					"name": "area damage"
+				},
+				{
+					"name": "splash"
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 40
+			},
+			"attacks": [],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Each enemy in the swarm's space takes {@damage 3d6} piercing damage (DC 24 basic Reflex save) plus exposure to marrow rot."
+					],
+					"name": "Swarming Bites"
+				},
+				{
+					"entries": [
+						{
+							"type": "affliction",
+							"name": "",
+							"traits": [
+								"disease"
+							],
+							"note": " Marrow rot affects only creatures with a skeletal\nsystem",
+							"DC": "24",
+							"savingThrow": "Fortitude",
+							"onset": "1 day",
+							"maxDuration": null,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition enfeebled|CRB|enfeebled 1}",
+									"duration": "1 day"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition enfeebled|CRB|enfeebled 2}",
+									"duration": "1 day"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
+									"duration": "1 day"
+								}
+							]
+						}
+					],
+					"name": "Marrow Rot"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition enfeebled}"
+				]
+			},
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"name": "Copper Hand Illusionist",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 23,
+			"level": 5,
+			"rarity": "Common",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 15
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Vudrani"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 13
+				},
+				"Arcana": {
+					"default": 13
+				},
+				"Deception": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 13
+				},
+				"Thievery": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 1,
+				"Int": 4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"items": [
+				"+1 dagger",
+				"moderate healing potion",
+				"spellbook"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+13 Str +2, Dex +4, Con +1, Int +4, Wis +1, Cha +0 Items +1 dagger, moderate healing potion, spellbook."
+					],
+					"name": "Thievery"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 12
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 70,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 13,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"type": "Prepared",
+					"tradition": "Arcane",
+					"DC": 23,
+					"attack": 15,
+					"entry": {
+						"0": {
+							"level": 3,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "detect magic"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "ghost sound"
+								},
+								{
+									"name": "shield"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "color spray"
+								},
+								{
+									"name": "illusory disguise"
+								},
+								{
+									"name": "illusory object"
+								},
+								{
+									"name": "spider sting"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "telekinetic maneuver"
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "haste"
+								},
+								{
+									"name": "hypnotic pattern"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"{@damage 1d4+5} piercing Arcane Prepared Spells DC 23, attack +15; 3rd haste, hypnotic pattern, vampiric touch; 2nd dispel magic, invisibility, mirror image, telekinetic maneuver; 1st color spray, illusory disguise, illusory object, spider sting; Cantrips (3rd) daze, detect magic, electric arc, ghost sound, shield."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"entries": [
+						"Hand illusionist deals {@dice 2d6} additional precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack The Copper"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Copper Hand Rogue",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 16,
+			"level": 4,
+			"rarity": "Rare",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 13
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Vudrani"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 12
+				},
+				"Athletics": {
+					"default": 10
+				},
+				"Deception": {
+					"default": 11
+				},
+				"Thievery": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 1
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 12
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 10
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature targets the Copper Hand rogue with an attack, and the rogue can see the attacker",
+					"entries": [
+						"The rogue dodges out of the way, gaining a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"name": "Nimble Dodge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 14,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "hand crossbow",
+					"attack": 14,
+					"traits": [
+						"range 60 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The rogue applies one of their black adder venom poisons to their wielded weapon. If their next attack with that weapon before the end of their next turn hits and deals damage, the target is afflicted with the poison."
+					],
+					"name": "Poison Weapon"
+				},
+				{
+					"entries": [
+						"Hand rogue deals {@dice 1d6} additional precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack The Copper"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Dreadsong Dancer",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 81,
+			"level": 8,
+			"rarity": "Rare",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Fiend"
+			],
+			"perception": {
+				"default": 13
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Infernal (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Athletics": {
+					"default": 16
+				},
+				"Deception": {
+					"default": 18
+				},
+				"Occultism": {
+					"default": 14
+				},
+				"Performance": {
+					"default": 18
+				},
+				"Stealth": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 6,
+				"Con": 3,
+				"Int": 4,
+				"Wis": 3,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18 Str +4, Dex +6, Con +3, Int +4, Wis +3, Cha +6."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 160,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": [
+					"disease"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "good"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"A dreadsong dancer is {@condition stunned|CRB|stunned 1} if they see or hear a creature critically succeed at a {@skill Performance} check or at a saving throw against their Dreadsong. The dreadsong dancer is {@condition quickened|CRB|quickened 1} for 1 round if they see or hear a creature critically fail at a {@skill Performance} check or a saving throw against their Dreadsong. They can use the extra action only to {@action Stride} or {@action Strike}."
+					],
+					"name": "Performance Anxiety"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature plays an instrument while",
+					"entries": [
+						"{@action Cast a Spell||Casting a Spell} or casts a composition spell within 20 feet of the dreadsong dancer; The dreadsong dancer Strides up to 20 feet and makes a songblade {@action Strike} against the triggering creature. If the {@action Strike} hits, the spell is disrupted."
+					],
+					"name": "Jealous Musician"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "songblade",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"deadly d10",
+						"finesse",
+						"magical",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 23,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "true strike",
+									"amount": 3
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "silence"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "dimension door"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"concentrate",
+						"fear",
+						"illusion",
+						"mental"
+					],
+					"entries": [
+						"The dreadsong dancer whirls their howling songblades and cloaks themself in illusion magic.",
+						"Each non-fiend creature in a 30-foot emanation from the dreadsong dancer must attempt a DC 29 Will save.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "No effect, and the creature is temporarily immune for 24 hours. The dreadsong dancer is affected by their performance anxiety.",
+								"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The creature is {@condition frightened|CRB|frightened 2}, and the dreadsong dancer is {@condition undetected} by the creature for 1 minute. The creature can't use {@action Seek} to find the dreadsong dancer.",
+								"Critical Failure": "As failure, but the creature can't reduce its {@condition frightened} condition below 2 for 1 minute. In addition, the dreadsong dancer is affected by its performance anxiety."
+							}
+						}
+					],
+					"name": "Dreadsong"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"songblade"
+					],
+					"entries": [],
+					"name": "Rend",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition frightened}",
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Excorion",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 82,
+			"level": 7,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 16
+				},
+				"Athletics": {
+					"default": 17
+				},
+				"Stealth": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 5,
+				"Con": 4,
+				"Int": -3,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 14
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 160,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"mental"
+				],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "positive"
+				},
+				{
+					"amount": 5,
+					"name": "slashing"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"The excorion moves about by way of hundreds of pulsating blood vessels, which stretch from its body in dozens of tight, ropy bundles and anchor it to the ground. An excorion cannot be."
+					],
+					"name": "Vein Walker"
+				},
+				{
+					"entries": [
+						"Shoved, or otherwise forcibly moved except by magic, and the excorion ignores difficult terrain (but not greater difficult terrain)."
+					],
+					"name": "Tripped,"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+8} bludgeoning plus Grab",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "bloody spew",
+					"attack": 18,
+					"traits": [
+						"range 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+4} bludgeoning and {@condition dazzled} for 1 round",
+					"types": [
+						"bludgeoning",
+						"round"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The excorion plants a magical handprint on the target, marking them as chosen for death. The excorion makes a fist {@action Strike} against an adjacent creature; this does not count toward the excorion's multiple attack penalty. On a hit, the attack does no damage, but the creature becomes {@condition observed} to every excorion within 60 feet, even if an excorion's line of sight would be blocked by a wall or other obstacle. This effect lasts until the handprint is washed off, which requires water and spending 3 actions to fully clean off."
+					],
+					"name": "Bloody Handprint"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The excorion has at least 70",
+					"entries": [],
+					"name": "Vital Transfusion"
+				},
+				{
+					"entries": [
+						"The excorion sacrifices itself and transfers its bloody, vital energy to a willing living creature within 30 feet. The excorion is immediately destroyed, and the targeted living creature heals a number of HP equal to half the excorion's remaining HP at the time that it used this ability. The living creature is {@condition slowed|CRB|slowed 1} during its next turn as its body adjusts to the newly transfused blood and vital energy; the living creature also counts as an excorion for 1 minute for the purpose of seeing other excorions' Bloody Handprint marks."
+					],
+					"name": "Hit Points; Effect"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The excorion spews necrotic blood all over a foe it has {@condition grabbed}.",
+						"The {@condition grabbed} creature must succeed at a DC 25 Fortitude save or become {@condition sickened|CRB|sickened 2}."
+					],
+					"name": "Vomit Blood"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition dazzled}",
+					"{@condition grabbed}",
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Fayati Alummur",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 26,
+			"level": 8,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 19
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Vudrani"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Deception": {
+					"default": 18
+				},
+				"Diplomacy": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 18
+				},
+				"Thievery": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 6,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18, {@skill Thievery} +18 Str +1, Dex +6, Con +1, Int +0, Wis +2, Cha +4 Items +1 daggers (3), moderate darkvision elixir, jade bauble talisman (affixed to main-gauche), leather armor, +1 striking main-gauche, +1 striking rapier."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 150,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature targets Fayati with an attack and she can see the attacker",
+					"entries": [
+						"Fayati dodges out of the way, gaining a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"name": "Nimble Dodge"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within Fayati's reach is hit by a melee {@action Strike} from one of her allies",
+					"entries": [
+						"Fayati makes a {@action Strike} against the triggering creature."
+					],
+					"name": "Opportune Backstab"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "rapier",
+					"attack": 20,
+					"traits": [
+						"deadly d8",
+						"disarm",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "main-gauche",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"disarm",
+						"finesse",
+						"magical",
+						"parry",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "Fayati's last attack was a successful melee {@action Strike} with her rapier",
+					"entries": [
+						"Fayati makes a main-gauche {@action Strike} against the same creature that she just hit. This {@action Strike} deals an additional {@damage 4d6} precision damage."
+					],
+					"name": "Deepen the Wound"
+				},
+				{
+					"entries": [
+						"Fayati critically succeeds at a {@action Strike} against a creature, until the start of her next turn, the first time that another member of the Copper Hand deals damage to that creature during their turn, they deal an additional {@damage 1d6} precision damage to it."
+					],
+					"name": "Guildmaster's Lead Whenever"
+				},
+				{
+					"entries": [
+						"Fayati deals {@dice 2d6} extra precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Frefferth",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 35,
+			"level": 9,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"lifesense 60 feet"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 21
+				},
+				"Intimidation": {
+					"default": 23
+				},
+				"Stealth": {
+					"default": 16
+				},
+				"Survival": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 3,
+				"Con": 3,
+				"Int": 3,
+				"Wis": 4,
+				"Cha": 6
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 19
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 125,
+					"note": null,
+					"abilities": [
+						"fast healing 8"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease",
+					"fear"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "good"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"30 feet, DC 25."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"traits": [
+						"divine",
+						"necromancy"
+					],
+					"entries": [
+						"When Frefferth is destroyed, his body and items dissipate into shadowy nothingness and the knight re-forms after {@dice 1d4} days within the sarcophagus in area D12, fully healed. Frefferth can be trapped only by returning the chain of the stilled spirit to the sarcophagus (see areas D12 and D34), in which case Frefferth's body dissipates, leaving his items in the spot where he was last slain."
+					],
+					"name": "Rejuvenation"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "Alietta",
+					"attack": 21,
+					"traits": [
+						"magical",
+						"two-hand d12"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+12} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spear",
+					"attack": 20,
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+12} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spear",
+					"attack": 19,
+					"traits": [
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+12} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"As dullahan."
+					],
+					"name": "Head Hunter",
+					"entries_as_xyz": "Ability not found: 'Head Hunter As dullahan.' in Frefferth, p.35"
+				},
+				{
+					"entries": [
+						"Whenever Frefferth damages a creature with a critical hit using a ranged piercing weapon, the weapon remains impaled in the victim's body. The victim becomes {@condition clumsy|CRB|clumsy 1} as long as they are impaled; the impaling weapon can be removed by the affected creature or an adjacent ally as a 2-action activity that has the {@trait manipulate} trait."
+					],
+					"name": "Impaler"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As dullahan."
+					],
+					"name": "Reap",
+					"entries_as_xyz": "Ability not found: 'Reap As dullahan.' in Frefferth, p.35"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"conjuration",
+						"occult"
+					],
+					"entries": [
+						"As dullahan, except Frefferth summons a nightmare (Bestiary 244) instead.",
+						"(This is already factored into Frefferth's level and the difficulty of this encounter.)"
+					],
+					"name": "Summon Steed"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition clumsy}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Giant Bone Skipper",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 80,
+			"level": 7,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 17
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"bonesense 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 19
+				},
+				"Athletics": {
+					"default": 15
+				},
+				"Stealth": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 6,
+				"Con": 4,
+				"Int": -5,
+				"Wis": 2,
+				"Cha": -5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"A giant bone skipper identifies bones and creatures with a skeletal system in the listed range."
+					],
+					"name": "Bonesense"
+				}
+			],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 115,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "mandibles",
+					"attack": 18,
+					"traits": null,
+					"effects": [
+						"marrow rot"
+					],
+					"damage": "{@damage 2d10+6} piercing plus marrow rot",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The giant bone skipper Leaps up to 20 feet. It then makes a mandibles {@action Strike}, gaining a +1 circumstance bonus to its attack roll."
+					],
+					"name": "Leaping Charge"
+				},
+				{
+					"entries": [
+						"As bone skipper swarm, but DC 25."
+					],
+					"name": "Marrow Rot",
+					"entries_as_xyz": [
+						{
+							"type": "affliction",
+							"name": "",
+							"traits": [
+								"disease"
+							],
+							"note": " Marrow rot affects only creatures with a skeletal\nsystem",
+							"DC": "24",
+							"savingThrow": "Fortitude",
+							"onset": "1 day",
+							"maxDuration": null,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition enfeebled|CRB|enfeebled 1}",
+									"duration": "1 day"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition enfeebled|CRB|enfeebled 2}",
+									"duration": "1 day"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition enfeebled|CRB|enfeebled 2} and {@condition drained|CRB|drained 1}",
+									"duration": "1 day"
+								}
+							]
+						}
+					]
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition enfeebled}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Kolo Harvan",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 17,
+			"level": 2,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Small",
+			"traits": [
+				"Halfling"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 8
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Halfling"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 7
+				},
+				"Deception": {
+					"default": 8
+				},
+				"Diplomacy": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 9
+				},
+				"Thievery": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 0,
+				"Dex": 3,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 0,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+7 Str +0, Dex +3, Con +1, Int +1, Wis +0, Cha +4 Items daggers (5), standard skeleton key, studded leather armor."
+					],
+					"name": "Thievery"
+				}
+			],
+			"ac": {
+				"default": 18,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 5
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature ends its movement adjacent",
+					"entries": [],
+					"name": "Scurry"
+				},
+				{
+					"entries": [],
+					"name": "to Kolo; Effect Kolo Steps."
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Kolo's melee Strikes deal an extra {@damage 1d6} precision damage to Medium or larger creatures."
+					],
+					"name": "Upward Stab"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"name": "Najra Lizard",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 83,
+			"level": 4,
+			"rarity": "Uncommon",
+			"alignment": "CN",
+			"size": "Tiny",
+			"creatureType": [
+				"Dragon"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 14
+				},
+				"Deception": {
+					"default": 10,
+					"to Create a Diversion": 12
+				},
+				"Stealth": {
+					"default": 12
+				},
+				"Survival": {
+					"default": 12
+				}
+			},
+			"abilityMods": {
+				"Str": -1,
+				"Dex": 4,
+				"Con": 2,
+				"Int": -1,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+12 Str \u20131, Dex +4, Con +2, Int \u20131, Wis +3, Cha +2."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 10
+				},
+				"Ref": {
+					"default": 12
+				},
+				"Will": {
+					"default": 11
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"paralyzed",
+					"sleep"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Another creature in the najra lizard's square succeeds at a {@skill Deception} check to {@action Create a Diversion}",
+					"entries": [
+						"The najra lizard automatically successfully Creates a Diversion against the same targets."
+					],
+					"name": "Shared Diversion"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"traits": null,
+					"effects": [
+						"najra lizard venom"
+					],
+					"damage": "{@damage 2d6} piercing plus najra lizard venom",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "venomous spit",
+					"attack": 14,
+					"traits": [
+						"agile",
+						"poison",
+						"range increment 20 feet"
+					],
+					"effects": [
+						"najra lizard venom"
+					],
+					"damage": "{@damage 1d4} poison plus najra lizard venom",
+					"types": [
+						"poison"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The creature is extremely thirsty and can't quench its thirst while poisoned; Saving Throw DC 21 Fortitude; Maximum Duration 4 hours; Stage 1 {@damage 1d4} poison damage, {@condition fatigued}, and {@dice 1d4} damage that can't be recovered until the creature quenches its thirst (1 round); Stage 2 as stage 1 (1 hour)"
+					],
+					"name": "Najra Lizard Venom"
+				},
+				{
+					"entries": [
+						"The najra lizard's melee Strikes deal {@damage 1d6} precision damage to creatures sharing a square with more than one najra lizard."
+					],
+					"name": "Najra Swarm Attack"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"poison",
+					"precision"
+				],
+				"condition": [
+					"{@condition fatigued}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Ofalth Zombie",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 47,
+			"level": 7,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Large",
+			"traits": [
+				"Mindless",
+				"Zombie"
+			],
+			"creatureType": [
+				"Aberration",
+				"Undead"
+			],
+			"perception": {
+				"default": 15
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 3,
+				"Con": 6,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"The ofalth zombie is permanently {@condition slowed|CRB|slowed 1} and can't use reactions."
+					],
+					"name": "Slow"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 190,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"entries": [
+						"The ofalth zombie gains fast healing 2 as long as it is in the Catacombs or another area with a high concentration of dead."
+					],
+					"name": "Corpse Wallow"
+				},
+				{
+					"traits": [
+						"aura",
+						"disease",
+						"necromancy"
+					],
+					"entries": [
+						"10 feet, DC 24.",
+						"As zombie ability (Bestiary 340)."
+					],
+					"name": "Rotting Aura"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 18,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [
+						"wretched weeps"
+					],
+					"damage": "{@damage 2d8+11} bludgeoning plus wretched weeps",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "fling offal",
+					"attack": 17,
+					"traits": [
+						"range increment 30 feet"
+					],
+					"effects": [
+						"wretched weeps"
+					],
+					"damage": "{@damage 2d6+11} bludgeoning plus wretched weeps",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The ofalth zombie makes a fling offal {@action Strike} and compares the attack roll result to the AC of any foes within the area of a 15-foot cone emanating from the ofalth zombie. This counts as two attacks for the ofalth zombie's multiple attack penalty. The ofalth zombie can't use Bury in Offal again until it moves at least 10 feet to a different space."
+					],
+					"name": "Bury in Offal"
+				},
+				{
+					"traits": [
+						"disease"
+					],
+					"entries": [
+						"As ofalth, but DC 22."
+					],
+					"name": "Wretched Weeps",
+					"entries_as_xyz": "Ability not found: 'Wretched Weeps As ofalth, but DC 22.' in Ofalth Zombie, p.47"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Shristi Melipdra",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 91,
+			"level": 7,
+			"rarity": "Unique",
+			"alignment": "LG",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 18
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Goblin",
+					"Hallit",
+					"Vudrani"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 16
+				},
+				"Athletics": {
+					"default": 17
+				},
+				"Society": {
+					"default": 13
+				},
+				"Stealth": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 3,
+				"Con": 2,
+				"Int": 0,
+				"Wis": 3,
+				"Cha": 1
+			},
+			"items": [
+				"Foreign Guard uniform",
+				"handcuffs (2;"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16 Str +4, Dex +3, Con +2, Int +0, Wis +3, Cha +1 Items Foreign Guard uniform, handcuffs (2;"
+					],
+					"name": "Stealth"
+				},
+				{
+					"entries": [
+						"#157 77), victor's medallion from the Challenge of Sky and Heaven."
+					],
+					"name": "Pathfinder Adventure Path"
+				}
+			],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 100,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "skyward slash",
+					"attack": 17,
+					"traits": [
+						"nonlethal",
+						"unarmed",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+4} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish"
+					],
+					"entries": [
+						"Shristi makes two unarmed Strikes. If both hit the same creature, combine their damage for the purposes of resistances and weaknesses. He applies his multiple attack penalty to."
+					],
+					"name": "Flurry of Blows"
+				},
+				{
+					"entries": [
+						"Strikes normally. As it has the {@trait flourish} trait, Shristi can use {@action Flurry of Blows} only once per turn."
+					],
+					"name": "the"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"electricity",
+						"evocation",
+						"sonic",
+						"verbal"
+					],
+					"frequency": "twice per day",
+					"entries": [
+						"With a loud shout, Shristi unleashes his ki as a crackling shroud of thunder and lightning that engulfs his body. Until the end of his next turn, Shristi's unarmed Strikes and Strikes with weapons that have the {@trait monk} trait deal an additional 3 electricity damage and 3 sonic damage."
+					],
+					"name": "Heaven's Thunder"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"entries": [
+						"Shristi enters a combat stance perfected by past champions of the Challenge of."
+					],
+					"name": "Sky and Heaven Stance"
+				},
+				{
+					"entries": [
+						"While in this stance, the only Strikes Shristi can make are skyward slash unarmed attacks.",
+						"These deal {@damage 1d10} slashing damage; are in the {@group brawling}; and have the nonlethal, unarmed, and versatile P traits."
+					],
+					"name": "Sky and Heaven."
+				},
+				{
+					"entries": [
+						"Shristi gains resistance 2 to electricity and sonic damage."
+					],
+					"name": "While in Sky and Heaven Stance,"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"electricity",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Skinsaw Murderer",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 50,
+			"level": 6,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 17
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Daemonic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 15
+				},
+				"Deception": {
+					"default": 12
+				},
+				"Stealth": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 5,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 14
+				},
+				"Ref": {
+					"default": 17
+				},
+				"Will": {
+					"default": 9
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 120,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "war razor",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"backstabber",
+						"deadly d8",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 17,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 1d6+5} piercing Melee war razor +17 (agile, backstabber, deadly d8, finesse), Damage {@damage 1d4+5} piercing Ranged {@as 1} dagger +17 (agile, finesse, thrown 10 feet, versatile S), Damage {@damage 1d4+5} piercing."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"entries": [
+						"When attacking a {@condition flat-footed} creature, the Skinsaw murderer deals {@dice 1d6} additional precision damage."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish"
+					],
+					"entries": [
+						"As the ranger feat (Core Rulebook 171)."
+					],
+					"name": "Twin Takedown"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Skinsaw Seamer",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 51,
+			"level": 8,
+			"rarity": "Rare",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 18
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Daemonic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Athletics": {
+					"default": 17
+				},
+				"Deception": {
+					"default": 16
+				},
+				"Religion": {
+					"default": 17
+				},
+				"Thievery": {
+					"default": 16
+				},
+				"Norgorber Lore": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 0,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 130,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature hits the seamer with a melee {@action Strike}",
+					"entries": [
+						"Every Skinsaw seamer keeps a sewing needle attached to a loop of thick silk, wrapped loosely around their hand not holding a weapon, which they can use in combat to snag or disarm attackers; ; The seamer attempts an {@skill Athletics} check to either {@action Grapple} or {@action Disarm} the triggering creature."
+					],
+					"name": "Wire Catch"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "war razor",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"backstabber",
+						"deadly d8",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 18,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+7} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+7} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 2d6+7} piercing Ranged dagger +20 (agile, finesse, thrown 10 feet, versatile S), Damage {@damage 1d4+7} piercing."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The Skinsaw seamer dealt damage with a melee weapon other than its war razor with their last action",
+					"entries": [
+						"The seamer makes a war razor {@action Strike} against the same creature that they just damaged. On a hit, the seamer slices a strip of flesh from the target and deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} in addition to the war razor's usual damage."
+					],
+					"name": "Flay"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The Skinsaw seamer is currently grappling a creature",
+					"entries": [
+						"The seamer stitches a piece of cloth to the creature's arm, face, or leg, potentially hindering it. The creature must attempt a DC 26 Reflex saving throw; if the seamer has already successfully used their Flay ability against the creature within the past minute, the creature's save result is one degree of success worse. Critical Success The creature is unaffected. Success The creature takes {@damage 1d4} piercing damage. Failure The creature is {@condition clumsy|CRB|clumsy 1}, {@condition dazzled}, {@condition enfeebled|CRB|enfeebled 1}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends a single action to tear out the stitching, which deals {@damage 1d6} piercing damage to it. Critical Failure The creature is {@condition clumsy|CRB|clumsy 2}, {@condition blinded}, {@condition enfeebled|CRB|enfeebled 2}, or {@condition flat-footed} (seamer's choice). This effect lasts until the creature spends 2 actions to tear out the stitching, which deals {@damage 2d6} piercing damage to it."
+					],
+					"name": "Quick Stitch"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition clumsy}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Skinstitch",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 84,
+			"level": 5,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Mindless"
+			],
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"default": 12
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 3,
+				"Con": 5,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 95,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"bleed"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"doomed"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 5,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"The rotting hides and molding straw stuffing of skinstitches are ideal nesting grounds for vermin and insect swarms. Any animal swarm sharing a space with a skinstitch gains fast healing 3. Additionally, if a creature deals at least 10 piercing or slashing damage to the skinstitch, the swarm can use its swarming bites {@action Strike} (or similar attack) against the attacker as a reaction."
+					],
+					"name": "Pest Haven"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "blade",
+					"attack": 15,
+					"traits": [
+						"agile",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "cudgel",
+					"attack": 15,
+					"traits": [
+						"forceful",
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The skinstitch makes a blade {@action Strike} against an animal or humanoid. On a success, the skinstitch slices a long strip of flesh from the target; if the skinstitch dealt damage, it deals an additional {@damage 1d6} {@condition persistent damage ||persistent bleed damage}."
+					],
+					"name": "Flay"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "The skinstitch hasn't used this ability since the last time it successfully used its Flay ability",
+					"entries": [
+						"The skinstitch sews flayed flesh to its body to seal tears and rents. The skinstitch regains 8."
+					],
+					"name": "Stitch Skin"
+				},
+				{
+					"entries": [],
+					"name": "Hit Points."
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC"
+			]
+		},
+		{
+			"name": "Tenome",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 85,
+			"level": 4,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 14
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 12
+				},
+				"Athletics": {
+					"default": 11
+				},
+				"Deception": {
+					"default": 10
+				},
+				"Intimidation": {
+					"default": 10
+				},
+				"Survival": {
+					"default": 8
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 5,
+				"Con": 3,
+				"Int": 0,
+				"Wis": 0,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 13
+				},
+				"Ref": {
+					"default": 15
+				},
+				"Will": {
+					"default": 12
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"While the tenome is Grabbing a creature, all other creatures are {@condition concealed} to the tenome."
+					],
+					"name": "Obscuring Grab"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 14,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d8+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 14,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+4} slashing plus Grab",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"healing",
+						"necromancy",
+						"occult"
+					],
+					"requirements": "The tenome has a creature {@condition grabbed} or {@condition restrained}",
+					"entries": [
+						"The tenome makes a jaws {@action Strike} against the {@condition grabbed} or {@condition restrained} creature. If the {@action Strike} hits, the creature must succeed at a DC 18 Fortitude save or become {@condition drained|CRB|drained 1} (or the value of the creature's {@condition drained} condition increases by 1 if it already has a {@condition drained} value, to a maximum of {@condition drained|CRB|drained 4}). The tenome regains {@dice 1d8} Hit Points each time it uses Bone Drink."
+					],
+					"name": "Bone Drink"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The tenome Strides twice, Steps twice, or Steps and Strides (in either order). It cannot use Burst of Speed again for {@dice 1d4} rounds."
+					],
+					"name": "Burst of Speed"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"or"
+					],
+					"entries": [
+						"{@as 2} (emotion, enchantment, fear, incapacitation, mental, occult, visual) A tenome can gaze at a creature within 30 feet by presenting one of its eyes. The target must succeed at a DC 21 Will save or become {@condition frightened|CRB|frightened 1}. If the tenome uses 2 actions and presents both of its eyes, the target is also {@condition paralyzed} if it fails the save. A creature that successfully saves is temporarily immune for 24 hours."
+					],
+					"name": "Terrifying Gaze"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition frightened}",
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Teraphant",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 86,
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Huge",
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"emotion sense 120 feet",
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Vudrani (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				},
+				"Intimidation": {
+					"default": 18
+				},
+				"Survival": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 1,
+				"Con": 5,
+				"Int": -2,
+				"Wis": 3,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"traits": [
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"A teraphant can sense the emotions of creatures within 120 feet as an imprecise sense.",
+						"Emotion sense is a precise sense against creatures under an {@trait emotion} effect. A creature under the effects of calm emotions can't be noticed via emotion sense."
+					],
+					"name": "Emotion Sense"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 14
+				},
+				"Will": {
+					"default": 18
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 175,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within 60 feet of the teraphant is targeted by a spell or ability with the {@trait emotion} trait",
+					"entries": [
+						"The teraphant also benefits from the spell or effect, as though it were an additional target for 1 minute or until the triggering spell or ability ends."
+					],
+					"name": "Empathetic Response"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "horn",
+					"attack": 20,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+9} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "trunk",
+					"attack": 20,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [
+						"grabbing trunk"
+					],
+					"damage": "grabbing trunk",
+					"types": []
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 20,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+9} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A Medium or smaller creature hit by the teraphant's trunk is {@condition grabbed}. If the teraphant moves, it can bring the {@condition grabbed} creature along with it."
+					],
+					"name": "Grabbing Trunk"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The teraphant has a creature {@condition grabbed}",
+					"entries": [
+						"The teraphant slams the creature onto one of its horns. The target must attempt a DC 27 Reflex save or suffer {@damage 3d6+9} piercing damage and {@damage 1d6} {@condition persistent damage ||persistent bleed damage} ({@damage 6d6+18} piercing damage on a critical failure)."
+					],
+					"name": "Impale"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The teraphant lets out a loud trumpet that deals {@damage 8d8} mental damage (DC 27 basic Will save) in a 30-foot cone. A creature that fails its save is also pushed 15 feet (30 feet on a critical failure). If a pushed creatures strikes a solid barrier, it takes {@damage 3d6} bludgeoning damage and stops. The teraphant can't use."
+					],
+					"name": "Psychokinetic Trumpet"
+				},
+				{
+					"entries": [
+						"Trumpet again for {@dice 1d4} rounds."
+					],
+					"name": "Psychokinetic"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Large or smaller, foot, DC 27."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"mental",
+					"piercing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"name": "Vaultbreaker Ooze",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 87,
+			"level": 6,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Mindless"
+			],
+			"creatureType": [
+				"Ooze"
+			],
+			"perception": {
+				"default": 10
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"motion sense 60 feet; treasure sense 30 feet"
+				],
+				"vague": [],
+				"other": []
+			},
+			"skills": {
+				"Thievery": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 2,
+				"Con": 7,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": -5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"A vaultbreaker ooze can sense nearby motion through vibration and air movement."
+					],
+					"name": "Motion Sense"
+				},
+				{
+					"entries": [
+						"The vaultbreaker ooze's metallic plasm alerts it to the presence of metals with the {@trait precious} trait (including gold and platinum) within 30 feet."
+					],
+					"name": "Treasure Sense"
+				}
+			],
+			"ac": {
+				"default": 13,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 150,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"acid",
+					"mental"
+				],
+				"condition": [
+					"critical hits"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"manipulate",
+						"polymorph",
+						"transmutation"
+					],
+					"trigger": "A creature Strikes the vaultbreaker ooze",
+					"entries": [
+						"The ooze's outer plasm hardens into a protective shell of precious metals. Until the start of its next turn, it gains resistance 5 to physical damage (except adamantine), it has a \u20135-foot penalty to its Speed, and its pseudopod Strikes gain the versatile."
+					],
+					"name": "Metallify"
+				},
+				{
+					"entries": [
+						"P weapon trait."
+					],
+					"name": "S or"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 17,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d8+8} bludgeoning plus {@damage 2d6} acid",
+					"types": [
+						"acid",
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"DC 23, {@damage 2d8+9} acid, {@action Escape} DC 23, Rupture 14 (19 when using Metallify)"
+					],
+					"name": "Engulf",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate",
+						"polymorph",
+						"transmutation"
+					],
+					"entries": [
+						"The vaultbreaker ooze instinctually shapes its pseudopod into a key, lockpick, or tool required to bypass a locking mechanism; it uses this pseudopod as thieves' tools to {@action Pick a Lock} or {@action Disable a Device}."
+					],
+					"name": "Form Tool"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"bludgeoning"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Wrent Dicaspiron",
+			"isNpc": false,
+			"source": "AoE2",
+			"page": 89,
+			"level": 10,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 22
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Daemonic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 20
+				},
+				"Athletics": {
+					"default": 22
+				},
+				"Religion": {
+					"default": 17
+				},
+				"Thievery": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 4,
+				"Con": 4,
+				"Int": -2,
+				"Wis": 1,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Skinsaw sanctum vault, modified spiked chains (2)"
+					],
+					"name": "to the"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 22
+				},
+				"Ref": {
+					"default": 20
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 180,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "cleaver",
+					"attack": 24,
+					"traits": [
+						"forceful",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spiked chain",
+					"attack": 22,
+					"traits": [
+						"disarm",
+						"finesse",
+						"reach 15 feet",
+						"trip"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+6} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Any creature taking {@condition persistent damage ||persistent bleed damage} is {@condition flat-footed} against the Skinner's attacks. When attacking a {@condition flat-footed} creature, the Skinner deals an additional {@damage 2d6} precision damage."
+					],
+					"name": "Bloody Sneak Attack"
+				},
+				{
+					"entries": [
+						"Skinner can effectively wield abnormally long spiked chains and can do so using only one hand."
+					],
+					"name": "Chain Expert The"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"requirements": "The Skinner has an adjacent creature {@condition grabbed} with her spiked chain",
+					"entries": [
+						"The Skinner attempts an {@skill Athletics} check against the {@condition grabbed} creature's Reflex save."
+					],
+					"name": "Chain Up"
+				},
+				{
+					"entries": [
+						"On a success, the Skinner knots her chain around the {@condition grabbed} creature, which becomes {@condition restrained} ({@action Escape} DC = 10 + the result of the Skinner's {@skill Athletics} check); on a critical success, the creature also falls {@condition prone}. Regardless of whether the Skinner succeeds, she drops the chain."
+					],
+					"name": "DC."
+				},
+				{
+					"entries": [
+						"Skinner makes a successful cleaver {@action Strike} against a {@condition grabbed} creature, she also deals {@damage 1d6} {@condition persistent damage ||persistent bleed damage} (or {@dice 2d6} on a critical hit)."
+					],
+					"name": "Flay Whenever the"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The Skinner has a creature {@condition grabbed} with her spiked chain",
+					"entries": [
+						"The Skinner pulls the creature into the nearest open adjacent square and makes a cleaver {@action Strike} against the creature."
+					],
+					"name": "Hook and Flay"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC",
+				"UW"
+			]
+		}
+	]
+}

@@ -204,7 +204,12 @@
 				"Dodge Away|APG",
 				"Graceful Leaper|APG",
 				"Tumbling Opportunist|APG",
-				"Tumbling Strike|APG"
+				"Tumbling Strike|APG",
+				"Bullying Staff|EC1",
+				"Levering Strike|EC1",
+				"Pivot Strike|EC1",
+				"Staff Sweep|EC1",
+				"Whirlwind Stance|EC1"
 			]
 		},
 		{
@@ -1716,7 +1721,7 @@
 			],
 			"prerequisites": "{@feat Eldritch Archer Dedication|APG}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes} (page 150). Each time you gain a spell slot of a new level from this archetype, add a spell of the appropriate spell level to your repertoire, either a common spell of your chosen tradition or another spell of that tradition you have learned or discovered."
 			],
 			"leadsTo": [
 				"Expert Eldritch Archer Spellcasting|APG",
@@ -1805,7 +1810,7 @@
 			],
 			"prerequisites": "{@feat Oracle Dedication|APG}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 150). When you gain a spell slot of a new level from the oracle archetype, add a common divine spell or another divine spell you have learned or discovered to your repertoire, of that spell level."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes} (page 150). When you gain a spell slot of a new level from the oracle archetype, add a common divine spell or another divine spell you have learned or discovered to your repertoire, of that spell level."
 			],
 			"leadsTo": [
 				"Expert Oracle Spellcasting|APG",
@@ -1857,7 +1862,7 @@
 			],
 			"prerequisites": "{@feat Witch Dedication|APG}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 150). Each time you gain a spell slot of a new level from the witch archetype, add two common spells of that level to your familiar."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes} (page 150). Each time you gain a spell slot of a new level from the witch archetype, add two common spells of that level to your familiar."
 			],
 			"leadsTo": [
 				"Expert Witch Spellcasting|APG",
@@ -2380,7 +2385,7 @@
 			"prerequisites": "{@feat Blessed One Dedication|APG}, ability to cast spells from spell slots, {@feat Mercy}",
 			"frequency": "once per 10 minutes",
 			"entries": [
-				"When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your {@feat Mercy} feat, including those granted by later feats such as {@feat Greater Mercy}. Attempt a counteract check based on the spell's DC and level. This effect is in addition to the normal effects of your spell."
+				"When you focus your magic on an ally, you can remove harmful conditions. If your next action is to {@action Cast a Spell} from a spell slot, and that spell targets only a single ally, you can also attempt to remove a harmful condition from that ally. The condition must be one that could be removed by your {@feat Mercy} feat, including those granted by later feats such as {@feat Greater Mercy}. Attempt a {@quickref counteract|CRB|3|counteracting} check based on the spell's DC and level. This effect is in addition to the normal effects of your spell."
 			]
 		},
 		{
@@ -4140,8 +4145,9 @@
 			],
 			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
-				"When a foe {@action Cast a Spell||Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of."
+				"When a foe {@action Cast a Spell||Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it. You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to {@quickref counteract|CRB|3|counteracting} the triggering spell."
 			],
+			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait primal}, or {@trait occult}).",
 			"leadsTo": [
 				"Reflect Spell (Witch)|APG"
 			]
@@ -6018,6 +6024,7 @@
 				"Dueling Riposte",
 				"Guiding Riposte",
 				"Improved Dueling Riposte",
+				"Reflecting Riposte|EC6",
 				"Dueling Dance|APG",
 				"Selfless Parry|APG"
 			]
@@ -6426,7 +6433,7 @@
 				"Sorcerer"
 			],
 			"entries": [
-				"You embellish your spellcasting with entrancing flourishes and grand pronouncements, making it harder to identify or counter. If the next action you use is to {@action Cast a Spell}, creatures with the ability to Cast that Spell don't automatically know what the spell is. In addition, creatures that witness your spellcasting take a \u20132 circumstance penalty to checks to identify the spell with {@action Recall Knowledge} and checks to counteract the spell during its casting (such as with Counterspell)."
+				"You embellish your spellcasting with entrancing flourishes and grand pronouncements, making it harder to identify or counter. If the next action you use is to {@action Cast a Spell}, creatures with the ability to {@action Cast a Spell||Cast that Spell} don't automatically know what the spell is. In addition, creatures that witness your spellcasting take a \u20132 circumstance penalty to checks to identify the spell with {@action Recall Knowledge} and checks to {@quickref counteract|CRB|3|counteracting} the spell during its casting (such as with Counterspell)."
 			]
 		},
 		{
@@ -6582,7 +6589,7 @@
 			],
 			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"Your mercy grants clarity to those around you just when they need it most. When you use Mercy, you can instead attempt a counteract check to remove the {@condition confused} or {@condition stupefied} conditions, using the source of that condition to determine the counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns at the end of your next turn."
+				"Your mercy grants clarity to those around you just when they need it most. When you use Mercy, you can instead attempt a {@quickref counteract|CRB|3|counteracting} check to remove the {@condition confused} or {@condition stupefied} conditions, using the source of that condition to determine the counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns at the end of your next turn."
 			]
 		},
 		{
@@ -7027,8 +7034,7 @@
 				"You don't consider evil aberrations to be legitimate authorities, even in nations they rule."
 			],
 			"leadsTo": [
-				"Aura Of Preservation|APG",
-				"Enforce Oath|APG"
+				"Aura Of Preservation|APG"
 			]
 		},
 		{
@@ -7220,7 +7226,7 @@
 			],
 			"prerequisites": "{@feat Basic Eldritch Archer Spellcasting|APG}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 150)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			],
 			"leadsTo": [
 				"Master Eldritch Archer Spellcasting|APG"
@@ -7265,7 +7271,7 @@
 			],
 			"prerequisites": "{@feat Basic Oracle Spellcasting|APG}, master in {@skill Religion}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 150)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			],
 			"leadsTo": [
 				"Master Oracle Spellcasting|APG"
@@ -7331,7 +7337,7 @@
 			],
 			"prerequisites": "{@feat Basic Witch Spellcasting|APG}, master in the skill associated with your patron's tradition",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 150)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			],
 			"leadsTo": [
 				"Master Witch Spellcasting|APG"
@@ -8578,6 +8584,13 @@
 			"entries": [
 				"Your connection to the Boneyard ensures that your blows strike true against spectral beings. Your weapon and unarmed attack {@action Strike|CRB|Strikes} against incorporeal creatures become magical.",
 				"If they are already magical, they instead gain the effects of a ghost touch property rune."
+			],
+			"leadsTo": [
+				"Ghost Strike|AV1",
+				"Grave's Voice|AV1",
+				"Investigate Haunting|AV1",
+				"Peer Beyond|AV1",
+				"Spirit Spells|AV1"
 			]
 		},
 		{
@@ -10559,7 +10572,7 @@
 			],
 			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"Your divine touch rejuvenates the weak and tired. When you use Mercy, you can instead attempt a counteract check to remove the {@condition clumsy} or {@condition enfeebled} conditions, using the source of that condition to determine the counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns at the end of your next turn."
+				"Your divine touch rejuvenates the weak and tired. When you use Mercy, you can instead attempt a {@quickref counteract|CRB|3|counteracting} check to remove the {@condition clumsy} or {@condition enfeebled} conditions, using the source of that condition to determine the counteract level and DC. If the condition was caused by an ongoing effect and you don't remove that effect, the condition returns at the end of your next turn."
 			]
 		},
 		{
@@ -11240,9 +11253,6 @@
 			"prerequisites": "tenets of evil",
 			"entries": [
 				"You've sworn to rid the world of the self-righteousness of celestial beings. Add the following tenet to your code, after the other tenets. \"You must banish or slay celestials you encounter as long as you have a reasonable chance of success; in the incredibly unlikely event you find an evil celestial, you don't have to banish or kill it.\" When you use your champion's reaction against a celestial, the extra damage you deal with {@action Strike|CRB|Strikes} increases by 1 (or by 2 at 9th level and by 3 at 16th level)."
-			],
-			"leadsTo": [
-				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -11334,6 +11344,12 @@
 			],
 			"entries": [
 				"You can instantly grow or shrink your hair, eyebrows, beard, or mustache by up to several feet and manipulate your hair for use as a weapon, though your control isn't fine enough for more dexterous tasks. You gain a hair unarmed attack that deals {@damage 1d4} bludgeoning damage; is in the {@group brawling} group; and has the agile, disarm, finesse, {@trait trip}, and {@trait unarmed} traits."
+			],
+			"leadsTo": [
+				"Syu Tak-nwa's Deadly Hair|FRP1",
+				"Syu Tak-nwa's Hexed Locks|FRP1",
+				"Syu Tak-nwa's Skillful Tresses|FRP1",
+				"Demon's Hair|FRP3"
 			]
 		},
 		{
@@ -11722,7 +11738,7 @@
 			],
 			"prerequisites": "master in {@skill Deception}, {@feat Vigilante Dedication|APG}",
 			"entries": [
-				"You can take on any number of mundane guises. Whenever you change your identity, instead of taking on your social or vigilante identity, you can become someone completely ordinary. This identity isn't a specific individual\u2014rather, you become a nondescript member of your ancestry, of any gender, with a neutral alignment and a mundane occupation such as common laborer, farmer, or peasant. Spells and abilities detect you as if you were this ordinary identity, rather than either of your two real identities, unless they succeed at a counteract check against your {@skill Deception} DC.",
+				"You can take on any number of mundane guises. Whenever you change your identity, instead of taking on your social or vigilante identity, you can become someone completely ordinary. This identity isn't a specific individual\u2014rather, you become a nondescript member of your ancestry, of any gender, with a neutral alignment and a mundane occupation such as common laborer, farmer, or peasant. Spells and abilities detect you as if you were this ordinary identity, rather than either of your two real identities, unless they succeed at a {@quickref counteract|CRB|3|counteracting} check against your {@skill Deception} DC.",
 				"You can't use either social abilities or vigilante abilities while in this identity."
 			]
 		},
@@ -11873,7 +11889,7 @@
 			],
 			"prerequisites": "{@feat Expert Eldritch Archer Spellcasting|APG}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 150)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			]
 		},
 		{
@@ -11893,7 +11909,7 @@
 			],
 			"prerequisites": "{@feat Expert Oracle Spellcasting|APG}, legendary in {@skill Religion}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 150)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			]
 		},
 		{
@@ -11953,7 +11969,7 @@
 			],
 			"prerequisites": "{@feat Expert Witch Spellcasting|APG}, legendary in the skill associated with your patron's tradition",
 			"entries": [
-				"You gain the master spellcasting benefits (page 150)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes} (page 150)."
 			]
 		},
 		{
@@ -16066,6 +16082,9 @@
 			"requirements": "You are adjacent to at least one enemy.",
 			"entries": [
 				"You instinctively know how to flee danger. You {@action Stride} up to your Speed, with a +5-foot status bonus to your Speed, and you gain a +2 circumstance bonus to AC against reactions triggered by this movement. You must end this movement in a space that's not adjacent to any enemy."
+			],
+			"leadsTo": [
+				"Tough Tumbler|EC3"
 			]
 		},
 		{
@@ -17443,7 +17462,13 @@
 				"Giant Snare|APG",
 				"Plentiful Snares|APG",
 				"Remote Trigger|APG",
-				"Surprise Snare|APG"
+				"Surprise Snare|APG",
+				"Trapsmith Dedication|G&G",
+				"Finessed Features|G&G",
+				"Gear Gnash|G&G",
+				"Propeller Attachment|G&G",
+				"Recycled Cogwheels|G&G",
+				"Repurposed Parts|G&G"
 			]
 		},
 		{
@@ -18712,7 +18737,7 @@
 			"prerequisites": "superstition instinct",
 			"entries": [
 				"You draw upon your superstitious fury to destroy a spell. Make a {@action Strike} with a melee weapon or an unarmed attack against a creature, object, or a spell manifestation (such as the wall created by wall of fire or the guardian from spiritual guardian)",
-				"If your {@action Strike} hits, you can attempt to counteract a single spell or {@trait magical} effect on the target. Your counteract level for this attempt is equal to half your level rounded up, and you use the result of your attack roll for the counteract check.",
+				"If your {@action Strike} hits, you can attempt to {@quickref counteract|CRB|3|counteracting} a single spell or {@trait magical} effect on the target. Your counteract level for this attempt is equal to half your level rounded up, and you use the result of your attack roll for the counteract check.",
 				"Whether or not you succeed at your {@action Strike}, the target becomes temporarily immune to your Sunder Spell for 24 hours."
 			],
 			"leadsTo": [
@@ -19841,7 +19866,7 @@
 			"prerequisites": "{@feat Medic Dedication|APG}",
 			"requirements": "You are holding healer's tools, or you are wearing them and have a hand free.",
 			"entries": [
-				"You treat an adjacent creature in an attempt to reduce the {@condition clumsy}, {@condition enfeebled}, or {@condition sickened} condition. If a creature has multiple conditions from this list, choose one. Attempt a counteract check against the condition, using your {@skill Medicine} modifier as your counteract modifier and the condition's source to determine the DC. You can't treat a condition that came from an artifact or effect above 20th level unless you have Legendary Medic; even if you do, the counteract DC increases by 10. Treating a Condition that is continually applied under certain circumstances (for instance, the {@condition enfeebled} condition a good character gains from carrying an unholy weapon) has no effect as long as the circumstances continue.",
+				"You treat an adjacent creature in an attempt to reduce the {@condition clumsy}, {@condition enfeebled}, or {@condition sickened} condition. If a creature has multiple conditions from this list, choose one. Attempt a {@quickref counteract|CRB|3|counteracting} check against the condition, using your {@skill Medicine} modifier as your counteract modifier and the condition's source to determine the DC. You can't treat a condition that came from an artifact or effect above 20th level unless you have Legendary Medic; even if you do, the counteract DC increases by 10. Treating a Condition that is continually applied under certain circumstances (for instance, the {@condition enfeebled} condition a good character gains from carrying an unholy weapon) has no effect as long as the circumstances continue.",
 				{
 					"type": "successDegree",
 					"entries": {

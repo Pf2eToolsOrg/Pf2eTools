@@ -560,7 +560,7 @@
 			],
 			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"The divine grace that flows through you grants reprieve from an affliction. When you use {@feat Mercy}, you can instead attempt to counteract a {@trait curse}, {@trait disease}, or {@trait poison}."
+				"The divine grace that flows through you grants reprieve from an affliction. When you use {@feat Mercy}, you can instead attempt to {@quickref counteract|CRB|3|counteracting} a {@trait curse}, {@trait disease}, or {@trait poison}."
 			]
 		},
 		{
@@ -838,7 +838,7 @@
 			],
 			"requirements": "Fiendsbane Oath.",
 			"entries": [
-				"Your aura hampers fiends' teleportation. Your aura attempts to counteract {@trait teleportation} spells cast by fiends within 15 feet, using the spell level and DC of your devotion spells."
+				"Your aura hampers fiends' teleportation. Your aura attempts to {@quickref counteract|CRB|3|counteracting} {@trait teleportation} spells cast by fiends within 15 feet, using the spell level and DC of your devotion spells."
 			]
 		},
 		{
@@ -1600,7 +1600,7 @@
 			],
 			"prerequisites": "{@feat Bard Dedication}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 219). Each time you gain a spell slot of a new level from the bard archetype, add a common occult spell or another spell you learned or discovered to your repertoire, of the appropriate spell level."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. Each time you gain a spell slot of a new level from the bard archetype, add a common occult spell or another spell you learned or discovered to your repertoire, of the appropriate spell level."
 			],
 			"leadsTo": [
 				"Expert Bard Spellcasting",
@@ -1668,7 +1668,7 @@
 			],
 			"prerequisites": "{@feat Cleric Dedication}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 219). You can prepare your deity's spells in your spell slots of the appropriate level from the cleric archetype."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. You can prepare your deity's spells in your spell slots of the appropriate level from the cleric archetype."
 			],
 			"leadsTo": [
 				"Divine Breadth",
@@ -1762,7 +1762,7 @@
 			],
 			"prerequisites": "{@feat Druid Dedication}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 219)."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Expert Druid Spellcasting",
@@ -1902,7 +1902,7 @@
 			],
 			"prerequisites": "{@feat Sorcerer Dedication}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 219). Each time you gain a spell slot of a new level from the sorcerer archetype, add a spell of the appropriate spell level to your repertoire: a common spell of your bloodline's tradition, one of your bloodline's granted spells, or another spell you have learned or discovered."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. Each time you gain a spell slot of a new level from the sorcerer archetype, add a spell of the appropriate spell level to your repertoire: a common spell of your bloodline's tradition, one of your bloodline's granted spells, or another spell you have learned or discovered."
 			],
 			"leadsTo": [
 				"Bloodline Breadth",
@@ -1973,7 +1973,7 @@
 			],
 			"prerequisites": "{@feat Wizard Dedication}",
 			"entries": [
-				"You gain the basic spellcasting benefits (page 219). Each time you gain a spell slot of a new level from the wizard archetype, add two common spells of that level to your spellbook."
+				"You gain the {@quickref basic spellcasting benefits|CRB|0|spellcasting archetypes}. Each time you gain a spell slot of a new level from the wizard archetype, add two common spells of that level to your spellbook."
 			],
 			"leadsTo": [
 				"Arcane Breadth",
@@ -2066,6 +2066,13 @@
 				"You can patch up yourself or an adjacent ally, even in combat. Attempt a {@skill Medicine} check with the same DC as for {@action Treat Wounds}, and restore a corresponding amount of Hit Points; this does not remove the {@condition wounded} condition. As with {@action Treat Wounds}, you can attempt checks against higher DCs if you have the minimum proficiency rank. The target is then temporarily immune to your {@feat Battle Medicine} for 1 day."
 			],
 			"leadsTo": [
+				"Medic Dedication|APG",
+				"Doctor's Visitation|APG",
+				"Resuscitate|APG",
+				"Treat Condition|APG",
+				"Holistic Care|APG",
+				"Godless Healing|LOWG",
+				"Mortal Healing|LOGM",
 				"Paragon Battle Medicine|LOL"
 			]
 		},
@@ -2207,7 +2214,7 @@
 			],
 			"prerequisites": "legendary in {@skill Deception}",
 			"entries": [
-				"Your deceptions confound even the most powerful mortal divinations. Detection, {@trait revelation}, and {@trait scrying} effects pass right over you, your possessions, and your auras, detecting nothing unless the detecting effect has a counteract level of 10 or higher. For example, detect magic would still detect other magic in the area but not any magic on you, true seeing wouldn't reveal you, locate or scrying wouldn't find you, and so on."
+				"Your deceptions confound even the most powerful mortal divinations. Detection, {@trait revelation}, and {@trait scrying} effects pass right over you, your possessions, and your auras, detecting nothing unless the detecting effect has a {@quickref counteract|CRB|3|counteracting} level of 10 or higher. For example, detect magic would still detect other magic in the area but not any magic on you, true seeing wouldn't reveal you, locate or scrying wouldn't find you, and so on."
 			]
 		},
 		{
@@ -2674,6 +2681,10 @@
 				"Throwing your weight behind your attack, you hit your opponent hard enough to make it stumble back. Make a {@action Strike} with a two-handed melee weapon. If you hit a target that is your size or smaller, that creature is {@condition flat-footed} until the end of your current turn, and you can automatically {@action Shove} it, with the same benefits as the {@action Shove} action (including the critical success effect, if your {@action Strike} was a critical hit). If you move to follow the target, your movement doesn't trigger reactions.",
 				"This {@action Strike} has the following failure effect.",
 				"{@b Failure} The target becomes {@condition flat-footed} until the end of your current turn."
+			],
+			"leadsTo": [
+				"Flinging Shove",
+				"Powerful Shove"
 			]
 		},
 		{
@@ -2737,7 +2748,8 @@
 			],
 			"leadsTo": [
 				"Expanded Splash",
-				"Mega Bomb"
+				"Mega Bomb",
+				"Controlled Blast|G&G"
 			]
 		},
 		{
@@ -3439,6 +3451,9 @@
 			"prerequisites": "{@feat Thrash}",
 			"entries": [
 				"When you Thrash a {@condition grabbed} foe, you smack that foe into another nearby. Another foe adjacent to the {@condition grabbed} foe also takes your Thrash damage, with a basic Reflex save against your class DC."
+			],
+			"leadsTo": [
+				"Whirlwind Toss|FRP3"
 			]
 		},
 		{
@@ -3857,7 +3872,7 @@
 			"requirements": "You have an unexpended spell slot you could use to cast the triggering spell.",
 			"entries": [
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} you know and you can see its manifestations, you can use your own magic to disrupt it.",
-				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
+				"You expend one of your spell slots to counter the triggering creature's casting of a spell that you have in your repertoire. You lose your spell slot as if you had cast the triggering spell. You then attempt to {@quickref counteract|CRB|3|counteracting} the triggering spell."
 			],
 			"special": "This feat has the trait corresponding to the tradition of spells you cast ({@trait arcane}, {@trait divine}, {@trait natural}, or {@trait occult}).",
 			"leadsTo": [
@@ -3890,7 +3905,7 @@
 			"trigger": "A creature {@action Cast a Spell||Casts a Spell} that you have prepared.",
 			"entries": [
 				"When a foe {@action Cast a Spell|CRB|Casts a Spell} and you can see its manifestations, you can use your own magic to disrupt it.",
-				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to counteract the triggering spell (page 458)."
+				"You expend a prepared spell to counter the triggering creature's casting of that same spell. You lose your spell slot as if you had cast the triggering spell. You then attempt to {@quickref counteract|CRB|3|counteracting} the triggering spell."
 			],
 			"leadsTo": [
 				"Clever Counterspell",
@@ -4517,7 +4532,7 @@
 			],
 			"frequency": "once per day",
 			"entries": [
-				"Your training allows you to shrug off your foes' spells and conditions when the need is dire. Choose a single nonpermanent spell or condition that is affecting you. If you chose a condition, its effect on you ends. If you chose a spell, attempt to counteract the spell (your counteract level is equal to half your level, rounded up, and you attempt a Will save as your counteract check)",
+				"Your training allows you to shrug off your foes' spells and conditions when the need is dire. Choose a single nonpermanent spell or condition that is affecting you. If you chose a condition, its effect on you ends. If you chose a spell, attempt to {@quickref counteract|CRB|3|counteracting} the spell (your counteract level is equal to half your level, rounded up, and you attempt a Will save as your counteract check)",
 				"This doesn't remove any Hit Point damage normally dealt by the spell or condition, and it doesn't prevent the spell or debilitating effect from affecting other allies or the environment around you. It can't remove an ongoing affliction or prevent such an affliction from inflicting conditions on you later. It can't remove conditions from the situation (such as {@condition prone} or {@condition flanked}). If the effect comes from a creature, hazard, or item of 20th level or higher, Determination can't remove its effect on you."
 			]
 		},
@@ -4737,7 +4752,7 @@
 				"Rogue"
 			],
 			"entries": [
-				"Your sneak attack slices through the threads binding magic to a target. Make a {@action Strike} against a {@condition flat-footed} creature (your choice). If your {@action Strike} deals sneak attack damage, you attempt to counteract a single spell active on the target.",
+				"Your sneak attack slices through the threads binding magic to a target. Make a {@action Strike} against a {@condition flat-footed} creature (your choice). If your {@action Strike} deals sneak attack damage, you attempt to {@quickref counteract|CRB|3|counteracting} a single spell active on the target.",
 				"Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
 			]
 		},
@@ -5472,9 +5487,6 @@
 			"entries": [
 				"You've sworn to slay evil dragons. Add the following tenet to your code after the others: \"You must slay evil dragons you encounter as long as you have a reasonable chance of success.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an evil dragon, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an evil dragon is 7 + your level. If you use {@action Liberating Step} triggered by an evil dragon, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider evil dragons to be legitimate authorities, even in nations they rule."
-			],
-			"leadsTo": [
-				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -5655,7 +5667,8 @@
 			],
 			"leadsTo": [
 				"Guiding Riposte",
-				"Improved Dueling Riposte"
+				"Improved Dueling Riposte",
+				"Reflecting Riposte|EC6"
 			]
 		},
 		{
@@ -6054,6 +6067,9 @@
 			],
 			"entries": [
 				"You've studied in traditional elven arts, learning about arcane magic and the world around you. You gain the trained proficiency rank in {@skill Arcana} and {@skill Nature}. If you would automatically become trained in one of those skills (from your background or class, for example), you instead become trained in a skill of your choice. You also become trained in {@skill Lore||Elven Lore}."
+			],
+			"leadsTo": [
+				"Crystal Keeper Dedication|AoA4"
 			]
 		},
 		{
@@ -6144,7 +6160,7 @@
 					"type": "list",
 					"items": [
 						"{@bold Shield} When the wielder has the shield raised, they gain the shield's circumstance bonus to saving throws against magic, and they can use {@feat Shield Block} against damage from their enemies' spells.",
-						"{@bold Weapon} When the weapon's wielder critically hits with the weapon, they can attempt to counteract a spell on their target, using your counteract level is equal to half your level, rounded up. If they attempt to do so, the emblazoned symbol immediately disappears."
+						"{@bold Weapon} When the weapon's wielder critically hits with the weapon, they can attempt to {@quickref counteract|CRB|3|counteracting} a spell on their target, using your counteract level is equal to half your level, rounded up. If they attempt to do so, the emblazoned symbol immediately disappears."
 					]
 				}
 			]
@@ -6177,7 +6193,8 @@
 			],
 			"leadsTo": [
 				"Emblazon Antimagic",
-				"Emblazon Energy"
+				"Emblazon Energy",
+				"Emblazon Divinity|AoA6"
 			]
 		},
 		{
@@ -6712,7 +6729,7 @@
 			],
 			"prerequisites": "{@feat Basic Bard Spellcasting}, master in {@skill Occultism}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 219)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Master Bard Spellcasting"
@@ -6735,7 +6752,7 @@
 			],
 			"prerequisites": "{@feat Basic Cleric Spellcasting}, master in {@skill Religion}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 219)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Master Cleric Spellcasting"
@@ -6758,7 +6775,7 @@
 			],
 			"prerequisites": "{@feat Basic Druid Spellcasting}, master in {@skill Nature}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 219)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Master Druid Spellcasting"
@@ -6805,7 +6822,7 @@
 			],
 			"prerequisites": "{@feat Basic Sorcerer Spellcasting}; master in {@skill Arcana},",
 			"entries": [
-				"{@skill Nature}, {@skill Occultism}, or {@skill Religion}, depending on bloodline You gain the expert spellcasting benefits (page 219)."
+				"{@skill Nature}, {@skill Occultism}, or {@skill Religion}, depending on bloodline You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Master Sorcerer Spellcasting"
@@ -6828,7 +6845,7 @@
 			],
 			"prerequisites": "{@feat Basic Wizard Spellcasting}, master in {@skill Arcana}",
 			"entries": [
-				"You gain the expert spellcasting benefits (page 219)."
+				"You gain the {@quickref expert spellcasting benefits|CRB|0|spellcasting archetypes}."
 			],
 			"leadsTo": [
 				"Master Wizard Spellcasting"
@@ -7371,7 +7388,7 @@
 				"You don't consider fiends to be legitimate authorities, even in nations ruled by fiends."
 			],
 			"leadsTo": [
-				"Enforce Oath|APG"
+				"Banishing Blow|EC6"
 			]
 		},
 		{
@@ -8347,7 +8364,7 @@
 			],
 			"prerequisites": "{@feat Merciful Elixir}",
 			"entries": [
-				"Your additives contain panaceas that can remedy a plethora of maladies. When you use Merciful Elixir, your elixir can instead attempt to counteract the {@condition blinded}, {@condition deafened}, {@condition sickened}, or {@condition slowed} condition."
+				"Your additives contain panaceas that can remedy a plethora of maladies. When you use Merciful Elixir, your elixir can instead attempt to {@quickref counteract|CRB|3|counteracting} the {@condition blinded}, {@condition deafened}, {@condition sickened}, or {@condition slowed} condition."
 			]
 		},
 		{
@@ -8367,7 +8384,7 @@
 			],
 			"prerequisites": "{@feat Mercy}",
 			"entries": [
-				"Your faith enhances your ability to remove conditions. When you use {@feat Mercy}, you can instead attempt to counteract the {@condition blinded}, {@condition deafened}, {@condition sickened}, or {@condition slowed} conditions."
+				"Your faith enhances your ability to remove conditions. When you use {@feat Mercy}, you can instead attempt to {@quickref counteract|CRB|3|counteracting} the {@condition blinded}, {@condition deafened}, {@condition sickened}, or {@condition slowed} conditions."
 			]
 		},
 		{
@@ -8690,6 +8707,7 @@
 				"In addition, you gain access to all {@filter uncommon halfling weapons|items||Category=Weapon|rarity=uncommon|ancestry & heritage=halfling}. For the purpose of determining your proficiency, martial halfling weapons are simple weapons and advanced halfling weapons are martial weapons."
 			],
 			"leadsTo": [
+				"Halfling Weapon Expertise",
 				"Halfling Weapon Trickster"
 			]
 		},
@@ -9558,6 +9576,9 @@
 			"prerequisites": "{@feat Poison Weapon}",
 			"entries": [
 				"You deliver poisons in ways that maximize their harmful effects. When you apply a simple poison with Poison Weapon, the poison deals {@damage 2d4} poison damage instead of {@damage 1d4} poison damage. You don't waste a poison you apply with Poison Weapon on a critically failed attack roll."
+			],
+			"leadsTo": [
+				"Deadly Poison Weapon|AoA5"
 			]
 		},
 		{
@@ -11387,7 +11408,7 @@
 			],
 			"prerequisites": "{@feat Expert Bard Spellcasting}, legendary in {@skill Occultism}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 219)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
 		},
 		{
@@ -11407,7 +11428,7 @@
 			],
 			"prerequisites": "{@feat Expert Cleric Spellcasting}, legendary in {@skill Religion}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 219)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
 		},
 		{
@@ -11427,7 +11448,7 @@
 			],
 			"prerequisites": "{@feat Expert Druid Spellcasting}, legendary in {@skill Nature}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 219)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
 		},
 		{
@@ -11496,7 +11517,7 @@
 			],
 			"prerequisites": "{@feat Expert Sorcerer Spellcasting}; legendary in {@skill Arcana},",
 			"entries": [
-				"{@skill Nature}, {@skill Occultism}, or {@skill Religion}, depending on bloodline You gain the master spellcasting benefits (page 219)."
+				"{@skill Nature}, {@skill Occultism}, or {@skill Religion}, depending on bloodline You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
 		},
 		{
@@ -11536,7 +11557,7 @@
 			],
 			"prerequisites": "{@feat Expert Wizard Spellcasting}, legendary in {@skill Arcana}",
 			"entries": [
-				"You gain the master spellcasting benefits (page 219)."
+				"You gain the {@quickref master spellcasting benefits|CRB|0|spellcasting archetypes}."
 			]
 		},
 		{
@@ -11726,7 +11747,7 @@
 			"frequency": "once per round",
 			"trigger": "You craft an elixir of life using {@action Quick Alchemy}, and that elixir is at least 2 levels lower than your advanced alchemy level.",
 			"entries": [
-				"You mix a special additive into your elixir that calms the drinker's body and mind. The elixir of life attempts to counteract one {@trait fear} effect or one effect imposing the {@condition paralyzed} condition on the drinker using the item's level and a counteract modifier equal to your class DC \u2013 10."
+				"You mix a special additive into your elixir that calms the drinker's body and mind. The elixir of life attempts to {@quickref counteract|CRB|3|counteracting} one {@trait fear} effect or one effect imposing the {@condition paralyzed} condition on the drinker using the item's level and a counteract modifier equal to your class DC \u2013 10."
 			],
 			"leadsTo": [
 				"Greater Merciful Elixir"
@@ -11755,7 +11776,7 @@
 			],
 			"prerequisites": "devotion spell (lay on hands)",
 			"entries": [
-				"Your touch relieves fear and restores movement. If the next action you use is to cast {@spell lay on hands}, you can attempt to counteract a {@trait fear} effect or an effect imposing the {@condition paralyzed} condition on the target, in addition to the other benefits of lay on hands."
+				"Your touch relieves fear and restores movement. If the next action you use is to cast {@spell lay on hands}, you can attempt to {@quickref counteract|CRB|3|counteracting} a {@trait fear} effect or an effect imposing the {@condition paralyzed} condition on the target, in addition to the other benefits of lay on hands."
 			],
 			"leadsTo": [
 				"Affliction Mercy",
@@ -11915,6 +11936,9 @@
 			"entries": [
 				"You reflect the spell back against the triggering opponent.",
 				"Make a ranged attack against the triggering creature using your highest proficiency with a ranged weapon. If you can cast spells, you can make a spell attack roll instead. If you succeed, your opponent takes the effects of a successful spell attack roll for their own spell (or the effects of a critical success if your attack roll was a critical success)."
+			],
+			"leadsTo": [
+				"Reflecting Riposte|EC6"
 			]
 		},
 		{
@@ -12192,6 +12216,9 @@
 			"prerequisites": "{@feat Wild Shape}",
 			"entries": [
 				"You can transform into a powerful magical creature. Add the purple worm and sea serpent forms listed in monstrosity form to your wild shape list. If you have Soaring Shape, add the phoenix form listed in aerial form to your wild shape list."
+			],
+			"leadsTo": [
+				"Heart Of The Kaiju|FRP3"
 			]
 		},
 		{
@@ -13483,7 +13510,8 @@
 			],
 			"special": "During your daily preparations, you can prepare a number of simple injury poisons equal to your rogue level. These poisons deal {@damage 1d4} poison damage. Only you can apply these poisons properly, and they expire the next time you prepare.",
 			"leadsTo": [
-				"Improved Poison Weapon"
+				"Improved Poison Weapon",
+				"Deadly Poison Weapon|AoA5"
 			]
 		},
 		{
@@ -14924,6 +14952,9 @@
 						"Critical Failure": "You misidentify the spell as another spell entirely, of the GM's choice."
 					}
 				}
+			],
+			"leadsTo": [
+				"Quick Recognition"
 			]
 		},
 		{
@@ -15053,6 +15084,9 @@
 			"entries": [
 				"You've discovered how to reuse some of your spell slots over and over. You can spend 10 minutes to prepare a spell that you already cast today, regaining access to that spell slot. The spell must be of 4th level or lower and one that does not have a duration. You can reprepare a spell in this way even if you've already reprepared that spell previously in the same day.",
 				"If you have the spell substitution arcane thesis, you can instead prepare a different spell in an expended slot, as long as the new spell doesn't have a duration. Once you've reprepared a spell in that slot even once, you can use your arcane thesis to substitute only spells without durations into that spell slot."
+			],
+			"leadsTo": [
+				"Reclaim Spell|EC6"
 			]
 		},
 		{
@@ -15816,6 +15850,8 @@
 				"You snap your shield in place to ward off a blow. Your shield prevents you from taking an amount of damage up to the shield's Hardness. You and the shield each take any remaining damage, possibly breaking or destroying the shield."
 			],
 			"leadsTo": [
+				"Quick Shield Block",
+				"Shield Warden (Fighter)",
 				"Bastion Dedication|APG",
 				"Destructive Block|APG",
 				"Disarming Block|APG",
@@ -15991,9 +16027,6 @@
 			"entries": [
 				"You've sworn an oath to put the undead to rest. Add the following tenet to your champion's code after the other tenets: \"You must end the existence of undead you encounter as long as you have a reasonable chance of success; in the unlikely event you find a good undead, you can try to work out a more peaceful way to help it recover from its undead state rather than destroying it in combat, such as helping it complete its unfinished business and find peace.\" Your {@action Retributive Strike} gains a +4 circumstance bonus to damage against an undead, or +6 if you have master proficiency with the weapon you used. Your {@action Glimpse of Redemption}'s resistance against damage from an undead is 7 + your level. If you use {@action Liberating Step} triggered by an undead, your ally gains a +4 circumstance bonus to checks granted by your {@action Liberating Step}, and the ally can {@action Step} twice afterward.",
 				"You don't consider undead to be legitimate authorities, even in nations ruled by undead."
-			],
-			"leadsTo": [
-				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -16421,6 +16454,29 @@
 			"prerequisites": "trained in {@skill Crafting}",
 			"entries": [
 				"You can use the {@action Craft} activity to create snares, using the rules from page 244. When you select this feat, you add the formulas for four common snares to your formula book."
+			],
+			"leadsTo": [
+				"Snare Specialist",
+				"Lightning Snares",
+				"Powerful Snares",
+				"Quick Snares",
+				"Ubiquitous Snares",
+				"Impossible Snares|APG",
+				"Trapsmith Dedication|G&G",
+				"Finessed Features|G&G",
+				"Gear Gnash|G&G",
+				"Propeller Attachment|G&G",
+				"Recycled Cogwheels|G&G",
+				"Repurposed Parts|G&G",
+				"Snare Genius|APG",
+				"Snare Hopping|APG",
+				"Snarecrafter Dedication|APG",
+				"Giant Snare|APG",
+				"Plentiful Snares|APG",
+				"Remote Trigger|APG",
+				"Surprise Snare|APG",
+				"Snare Commando|LOAG",
+				"Vicious Snares|LOAG"
 			]
 		},
 		{
@@ -16448,7 +16504,13 @@
 				"Powerful Snares",
 				"Quick Snares",
 				"Ubiquitous Snares",
-				"Impossible Snares|APG"
+				"Impossible Snares|APG",
+				"Trapsmith Dedication|G&G",
+				"Finessed Features|G&G",
+				"Gear Gnash|G&G",
+				"Propeller Attachment|G&G",
+				"Recycled Cogwheels|G&G",
+				"Repurposed Parts|G&G"
 			]
 		},
 		{
@@ -17313,7 +17375,8 @@
 				"The focused power of your flurry threatens to overwhelm your opponent. When you target the same creature with two Strikes from your {@action Flurry of Blows}, you can try to stun the creature. If either {@action Strike} hits and deals damage, the target must succeed at a Fortitude save against your class DC or be {@condition stunned 1} (or {@condition stunned 3} on a critical failure). This is an {@trait incapacitation} effect."
 			],
 			"leadsTo": [
-				"Triangle Shot|APG"
+				"Triangle Shot|APG",
+				"Vitality-manipulating Stance|FRP3"
 			]
 		},
 		{
@@ -17970,7 +18033,8 @@
 				"You thrash the {@condition grabbed} foe around. It takes bludgeoning damage equal to your Strength modifier plus your weapon specialization damage plus your {@action Rage} damage. The foe must attempt a basic Fortitude save against your class DC."
 			],
 			"leadsTo": [
-				"Collateral Thrash"
+				"Collateral Thrash",
+				"Whirlwind Toss|FRP3"
 			]
 		},
 		{
@@ -19153,9 +19217,6 @@
 			"prerequisites": "paladin cause",
 			"entries": [
 				"You've sworn an oath to hunt down wicked evildoers and bring them to judgment. Add the following tenet to your code after the others: \"You must hunt down and exterminate evil creatures that have committed heinous atrocities as long as you have a reasonable chance of success and aren't engaged in a mission that would prevent your doing so.\" You can use lay on hands to damage a creature you witness harming an innocent or a good ally as if it were undead; in this case, lay on hands deals good damage instead of positive damage and gains the {@trait good} trait. This good damage can affect non-evil creatures. This doesn't prevent you from healing such a creature with lay on hands; you choose whether to heal or harm."
-			],
-			"leadsTo": [
-				"Enforce Oath|APG"
 			]
 		},
 		{
@@ -19979,6 +20040,7 @@
 				"Perfect Form Control",
 				"Insect Shape",
 				"Monstrosity Shape",
+				"Heart Of The Kaiju|FRP3",
 				"Plant Shape",
 				"Soaring Shape",
 				"Dragon Shape",
@@ -20038,7 +20100,8 @@
 				"While entering the stance is a ki spell, the wind crash Strikes the stance grants are not, so you can use them as often as you like while in the stance."
 			],
 			"leadsTo": [
-				"Wild Winds Gust"
+				"Wild Winds Gust",
+				"Electric Counter|FRP2"
 			]
 		},
 		{

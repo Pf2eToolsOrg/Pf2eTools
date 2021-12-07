@@ -1,0 +1,2717 @@
+{
+	"creature": [
+		{
+			"name": "Bee Swarm",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 11,
+			"level": 1,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Swarm"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 5
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": -1,
+				"Dex": 4,
+				"Con": 1,
+				"Int": -5,
+				"Wis": 1,
+				"Cha": -4
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 17,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 4
+				},
+				"Ref": {
+					"default": 9
+				},
+				"Will": {
+					"default": 4
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 18,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"precision"
+				],
+				"condition": [
+					"swarm mind"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"fly ": 20
+			},
+			"attacks": [],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Each enemy in the swarm's space takes {@damage 1d4} piercing damage (DC 16 basic Reflex save). The first time each round a creature fails the save and takes piercing damage, it also suffers the effect of beestings.",
+						"Whenever the bee swarm uses this ability, the swarm takes 1 damage."
+					],
+					"name": "Swarming Stings"
+				},
+				{
+					"traits": [
+						"poison"
+					],
+					"entries": [
+						"The creature must attempt a DC 16 Fortitude save. Those who fail take {@damage 1d4} poison damage and are {@condition clumsy|CRB|clumsy 1} for 1 minute."
+					],
+					"name": "Beestings"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"poison"
+				],
+				"condition": [
+					"{@condition clumsy}"
+				]
+			},
+			"misc": [
+				"CC"
+			]
+		},
+		{
+			"name": "Blood Ooze",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 63,
+			"level": 4,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Mindless"
+			],
+			"creatureType": [
+				"Ooze"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"motion sense 60 feet",
+					"no vision"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 13
+				},
+				"Stealth": {
+					"default": 4,
+					"if hiding inside a dead body": 12
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": -4,
+				"Con": 5,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": -5
+			},
+			"abilitiesTop": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"A blood ooze can seep into a corpse's wounds, displacing its natural blood. It can burst out of the corpse as a free action."
+					],
+					"name": "Infuse Corpse"
+				}
+			],
+			"ac": {
+				"default": 12,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 15
+				},
+				"Ref": {
+					"default": 6
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 90,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"mental",
+					"precision"
+				],
+				"condition": [
+					"critical hits",
+					"unconscious",
+					"visual"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The blood ooze is damaged by piercing or slashing attack.",
+					"entries": [
+						"The blood ooze forms a clot around the wound, reducing the damage taken by 5 (to a minimum of 0)."
+					],
+					"name": "Clot"
+				},
+				{
+					"entries": [
+						"Whenever a creature adjacent to a blood ooze takes bleed damage, the blood ooze regains an amount of Hit Points equal to the damage dealt."
+					],
+					"name": "Blood Pool"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"climb ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "pseudopod",
+					"attack": 15,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d12+8} bludgeoning plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"types": [
+						"bludgeoning",
+						"persistent"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The blood ooze draws forth blood from nearby creatures, causing their flesh to break open and blood to spill out which replenishes the blood ooze. Each living creature within 15 feet takes {@damage 3d6} slashing damage (DC 21 basic Fortitude save). The blood ooze regains an amount of Hit Points equal to half the damage Siphon Vitality dealt to the single creature that took the most damage."
+					],
+					"name": "Siphon Vitality"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC"
+			]
+		},
+		{
+			"name": "Bloodlash Bush",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 62,
+			"level": 2,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Plant"
+			],
+			"perception": {
+				"default": 6
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"tremorsense 30 feet"
+				],
+				"vague": [],
+				"other": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 2,
+				"Con": 4,
+				"Int": -4,
+				"Wis": 0,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 16,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 10
+				},
+				"Ref": {
+					"default": 8
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 35,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 5,
+					"name": "bludgeoning"
+				},
+				{
+					"name": "piercing"
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "vine",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [
+						"weeping wounds"
+					],
+					"damage": "{@damage 1d8+4} slashing plus weeping wounds",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The tendrils of the bush reach out to siphon the blood from a victim up to 20 feet away with {@condition persistent damage ||persistent bleed damage}, causing the victim to immediately take that amount of bleed damage (basic Reflex DC 17). The bush regains an amount of Hit Points equal to double the damage dealt."
+					],
+					"name": "Blood Siphon"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"The bush spins in a circle, lashing out in all directions at once. It makes one attack roll and compares the result to the AC of each creature within its melee reach, rolling damage only once and applying it to each creature hit."
+					],
+					"name": "Spinning Strike"
+				},
+				{
+					"entries": [
+						"A bloodlash bush's vines cause terrible lacerations that continue to bleed. A creature hit with a vine attack takes 1 {@condition persistent damage ||persistent bleed damage} (2 on a critical hit). Unlike other forms of {@condition persistent damage}, this damage is cumulative, to a maximum of 5 {@condition persistent damage ||persistent bleed damage} but it can be stopped like any other {@condition persistent damage ||persistent bleed damage}."
+					],
+					"name": "Weeping Wounds"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC"
+			]
+		},
+		{
+			"name": "Caustic Wolf",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 5,
+			"level": 2,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 8
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 8
+				},
+				"Intimidation": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 8
+				},
+				"Survival": {
+					"default": 8
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": 2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 18,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 6
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 11,
+					"traits": null,
+					"effects": [
+						"Knockdown"
+					],
+					"damage": "{@damage 1d6+2} piercing plus {@damage 1d4} acid plus Knockdown",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The wolf unleashes a stream of bright green acid from its mouth, coating all creatures in a 30-foot line. All creatures in the line take {@damage 3d6} acid damage (DC 16 basic Reflex save). The caustic wolf cannot use this ability again for 1 minute."
+					],
+					"name": "Acid Breath"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The wolf unleashes a terrifying howl, allowing it to {@action Demoralize} all enemies within 30 feet.",
+						"Wolves within 100 feet can spend a reaction to join the howl, causing the effect to emanate from them as well. This affects additional enemies within 30 feet of them and uses the caustic wolf's {@skill Intimidation} check with a \u20134 circumstance penalty. Enemies cannot be affected by the howl more than once, even if they are near more than one howling wolf.",
+						"All creatures targeted by this effect are temporarily immune for 24 hours."
+					],
+					"name": "Howl"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"AD"
+			]
+		},
+		{
+			"name": "Drunken Farmer",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 8,
+			"level": -1,
+			"rarity": "Common",
+			"alignment": "NG",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 2
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 5
+				},
+				"Farming Lore": {
+					"default": 5
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 1,
+				"Con": 1,
+				"Int": 1,
+				"Wis": 0,
+				"Cha": 1
+			},
+			"items": [
+				"durable farm clothes (counts as padded armor)"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 13,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 5
+				},
+				"Ref": {
+					"default": 3
+				},
+				"Will": {
+					"default": 2
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 16,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 5,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "chair",
+					"attack": 3,
+					"traits": [
+						"improvised"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "mug",
+					"attack": 1,
+					"traits": [
+						"improvised",
+						"range increment 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d3+3} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA"
+			]
+		},
+		{
+			"name": "Fiery Leopard",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 31,
+			"level": 1,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 6
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 8
+				},
+				"Athletics": {
+					"default": 6
+				},
+				"Stealth": {
+					"default": 8
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 1,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": -2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 17,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 6
+				},
+				"Ref": {
+					"default": 8
+				},
+				"Will": {
+					"default": 4
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 20,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": []
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"climb ": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 8,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"grab"
+					],
+					"damage": "{@damage 1d8+1} piercing plus 1 fire plus grab",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 8,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} slashing plus 1 fire",
+					"types": [
+						"fire",
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Creatures that start their turn grappled by a fiery leopard take {@damage 1d4} fire damage. Anyone attempting to grapple a fiery leopard takes {@damage 1d4} fire damage for each attempt."
+					],
+					"name": "Fiery Pelt"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Giant Lightning Serpent",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 20,
+			"level": 2,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 7
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 9
+				},
+				"Athletics": {
+					"default": 8
+				},
+				"Stealth": {
+					"default": 8
+				},
+				"Survival": {
+					"default": 6
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 3,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": -2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+6 Str +2, Dex +4, Con +3, Int \u20134, Wis +1, Cha \u20132."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 7
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 27,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"As {@action Attack of Opportunity}, but the serpent can use this reaction only if it's coiled."
+					],
+					"name": "Attack of Opportunity",
+					"trigger": "A creature within the monster's reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it's using.",
+					"entries_as_xyz": [
+						"The monster attempts a melee {@action Strike} against the triggering creature. If the attack is a critical hit and the trigger was a manipulate action, the monster disrupts that action. This {@action Strike} doesn't count toward the monster's multiple attack penalty, and its multiple attack penalty doesn't apply to this {@action Strike}."
+					]
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb ": 20,
+				"swim ": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fangs",
+					"attack": 11,
+					"traits": [
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+2} piercing plus {@damage 1d4} electricity",
+					"types": [
+						"electricity",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The serpent uses an action to coil itself; increasing its reach with its fangs from 5 feet to 10 feet. After the serpent strikes with its fangs, it becomes uncoiled."
+					],
+					"name": "Coil"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The serpent rattles its strange metal tail and unleashes a bolt of lightning in a 60-foot line. The bolt deals {@damage 2d10} electricity damage (DC 17 basic Reflex save)."
+					],
+					"name": "Lightning Rattle"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"electricity",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"AD"
+			]
+		},
+		{
+			"name": "Graytusk",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 40,
+			"level": 3,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Orc"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Orc"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Athletics": {
+					"default": 8
+				},
+				"Nature": {
+					"default": 7
+				},
+				"Survival": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 4,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 10
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 47,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Ferocity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "composite longbow",
+					"attack": 11,
+					"traits": [
+						"deadly 1d10",
+						"propulsive",
+						"range increment 100 ft.",
+						"reload 0",
+						"volley 30 ft"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+3} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Graytusk can make two ranged Strikes against two different targets, each at a \u20132 penalty, Graytusk's multiple attack penalty increases only after both attacks are made."
+					],
+					"name": "Double Shot"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"name": "Hallod",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 21,
+			"level": 3,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 9
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 8
+				},
+				"Athletics": {
+					"default": 11
+				},
+				"Nature": {
+					"default": 7
+				},
+				"Stealth": {
+					"default": 8
+				},
+				"Survival": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 3,
+				"Con": 1,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+8, {@skill Survival} +7 Str +4, Dex +3, Con +1, Int +0, Wis +2, Cha +0 Items heavy crossbow (10 bolts), +1 kukri, leather armor, lesser healing potion, lesser juggernaut mutagen (2), strongbox key."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 8
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 44,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "kukri",
+					"attack": 12,
+					"traits": [
+						"agile",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+6} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+6} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "heavy crossbow",
+					"attack": 10,
+					"traits": [
+						"range increment 120 ft.",
+						"reload 2"
+					],
+					"effects": [],
+					"damage": "{@damage 1d10+2} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "Hallod scores a critical hit with a melee attack.",
+					"entries": [
+						"Hallod can attempt an {@skill Athletics} check to {@action Shove} or {@action Trip} the target of his attack. This uses the same multiple attack penalty as the attack, but it does not count as an additional attack for that penalty."
+					],
+					"name": "Dirty Trick"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Hallod makes two Strikes, one with each hand; he usually attacks first with his kukri.",
+						"If this first attack hits, the target is {@condition flat-footed} to the second attack (which for Hallod is usually a fist {@action Strike}). The multiple attack penalty applies to these attacks as normal."
+					],
+					"name": "One-Two Move"
+				},
+				{
+					"entries": [
+						"Attack Hallod deals {@dice 1d6} extra precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Icy Rats",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 31,
+			"level": 0,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 5
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 5
+				},
+				"Athletics": {
+					"default": 3,
+					"to Climb or Swim": 5
+				},
+				"Stealth": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": -3
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 16,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 6
+				},
+				"Ref": {
+					"default": 7
+				},
+				"Will": {
+					"default": 3
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 15,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"cold"
+				],
+				"condition": []
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"climb ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 7,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+1} piercing plus 1 cold damage",
+					"types": [
+						"cold",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"When an icy rat is slain, its body explodes in a burst of frozen fur and bone, dealing {@damage 2d4} cold damage to all adjacent creatures (DC 14 basic Reflex save)."
+					],
+					"name": "Icy Death"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"cold",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Lord Nar",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 38,
+			"level": 4,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Orc"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Orc"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 13
+				},
+				"Diplomacy": {
+					"default": 8
+				},
+				"Intimidation": {
+					"default": 8
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 2,
+				"Con": 3,
+				"Int": -1,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"items": [
+				"bronze key",
+				"+1 greatclub",
+				"hatchet (2)",
+				"hide armor"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 8
+				},
+				"Will": {
+					"default": 9
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 68,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Ferocity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "+1 greatclub",
+					"attack": 14,
+					"traits": [
+						"backswing",
+						"shove"
+					],
+					"effects": [],
+					"damage": "{@damage 1d10+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 11,
+					"traits": [
+						"agile",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "hatchet",
+					"attack": 10,
+					"traits": [
+						"agile",
+						"sweep",
+						"thrown 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "An adjacent foe moves away.",
+					"entries": [],
+					"name": "No Escape"
+				},
+				{
+					"entries": [
+						"Nar may move up to his speed but must end his move as close to the triggering creature as possible without entering the triggering creature's square."
+					],
+					"name": "Lord"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Lord Nar flies into a rage that lasts 1 minute and grants him 8 temporary Hit Points, 4 additional damage with his listed attacks, and a \u20131 penalty to AC.",
+						"He cannot use actions that have the {@trait concentrate} trait while raging, unless they also have the {@trait rage} trait. Once his rage ends, Nar cannot {@action Rage} again for 1 minute."
+					],
+					"name": "Rage"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"name": "Mangy Wolves",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 5,
+			"level": -1,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 5
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 4
+				},
+				"Stealth": {
+					"default": 4
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 2,
+				"Con": 0,
+				"Int": -4,
+				"Wis": 1,
+				"Cha": -2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 15,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 4
+				},
+				"Ref": {
+					"default": 6
+				},
+				"Will": {
+					"default": 3
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 8,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 6,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"fleas"
+					],
+					"damage": "{@damage 1d6+1} piercing plus fleas",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Anyone bitten by a mangy wolf is {@condition sickened|CRB|sickened 1} for 1 minute unless they succeed at a DC 14 Fortitude save, but they can spend an {@action Interact} action to scratch away the fleas and remove the condition."
+					],
+					"name": "Fleas"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Mutant Wolves",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 27,
+			"level": 3,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Medium",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [
+					"motion sense 30 feet"
+				],
+				"imprecise": [],
+				"vague": [],
+				"other": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 9
+				},
+				"Athletics": {
+					"default": 11
+				},
+				"Stealth": {
+					"default": 9
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": -2
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 19,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 9
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 45,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 11,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d8+4} piercing plus {@damage 1d6} acid",
+					"types": [
+						"acid",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"acid"
+					],
+					"trigger": "A creature critically hits a mutant wolf while adjacent to it.",
+					"entries": [
+						"The wound causes gore to spray from a ruptured pustule. The triggering creature takes {@damage 3d6} acid damage (DC 19 basic Reflex save). This occurs even if the attack kills the wolf."
+					],
+					"name": "Gore Spray"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"trigger": "The wolf dealt damage to a creature with its jaws during the previous action.",
+					"entries": [
+						"The wolf tears at the creature's flesh, dealing {@damage 1d6+2} slashing damage and 1 {@condition persistent damage ||persistent acid damage}."
+					],
+					"name": "Tear"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Stone Horse",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 30,
+			"level": 2,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 6
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 5
+				},
+				"Athletics": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 1,
+				"Con": 5,
+				"Int": -4,
+				"Wis": 2,
+				"Cha": -1
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 16,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 5
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 30,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hoof",
+					"attack": 10,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d8+4} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"The hooves of the stone horse are as hard as iron; if the horse makes a Hoof {@action Strike} and gets a critical hit, the target's armor is damaged as well, the attack dealing as much damage to the armor as it dealt to the target (Hardness applies as normal). If the target uses shield block against the stone horse's critical hit with a hoof attack, treat the shield's Hardness as 5 points lower (minimum 0)."
+					],
+					"name": "Shattering Hooves"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "The Amalgam",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 44,
+			"level": 4,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Large",
+			"creatureType": [
+				"Aberration"
+			],
+			"perception": {
+				"default": 11
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven",
+					"Goblin",
+					"Orc"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 15
+				},
+				"Intimidation": {
+					"default": 10
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 2,
+				"Con": 4,
+				"Int": 2,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 20,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 12
+				},
+				"Ref": {
+					"default": 10
+				},
+				"Will": {
+					"default": 9
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 65,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Amalgam has many consciousnesses floating inside its mind, and they are not equally affected by mental magic. The Amalgam always treats its saving throws against {@trait mental} effects as one degree better."
+					],
+					"name": "Many Minds The"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb ": 10,
+				"swim ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 14,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 14,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d8+5} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 12,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d10+5} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 12,
+					"traits": null,
+					"effects": [
+						"{@action Trip}"
+					],
+					"damage": "{@damage 1d8+5} bludgeoning plus {@action Trip}",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The amalgam can make up to four Strikes, one with each of its listed melee attacks, but no more than two at any one target. It takes a \u20132 penalty to each attack, but the multiple attack penalty does not increase until all the attacks are made."
+					],
+					"name": "Too Many Limbs"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "The Behemoth",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 47,
+			"level": 3,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"default": 7
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common (can't speak)"
+				],
+				"languageAbilities": [
+					"empathy link"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 12
+				},
+				"Intimidation": {
+					"default": 7
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 1,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 0,
+				"Cha": -2
+			},
+			"abilitiesTop": [
+				{
+					"traits": [
+						"arcane",
+						"divination",
+						"mental"
+					],
+					"entries": [
+						"The behemoth can't speak, but its mind is linked to its creator. It can share basic emotional information with its creator, such as fear, happiness, or anger. If the behemoth is destroyed, its master automatically knows this. The range of this link is 1,500 feet."
+					],
+					"name": "Empathy Link"
+				}
+			],
+			"ac": {
+				"default": 17,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 6
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 60,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"bleed"
+				],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 12,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+5} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The behemoth makes a melee {@action Strike} and, if the attack hits, it can push the creature back 10 feet (20 feet on a critical hit). The target must succeed at a DC 19 Fortitude save or be knocked {@condition prone} by this attack."
+					],
+					"name": "Massive Strike"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The behemoth can stomp on the ground, causing all creatures within 10 feet to fall {@condition prone} (DC 19 Reflex save negates)."
+					],
+					"name": "Stomp"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition prone}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "The Sculptor",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 34,
+			"level": 4,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"traits": [
+				"Orc"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 9
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Orcish"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 9
+				},
+				"Crafting": {
+					"default": 13
+				},
+				"Diplomacy": {
+					"default": 8
+				},
+				"Medicine": {
+					"default": 9
+				},
+				"Stealth": {
+					"default": 9
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 3,
+				"Con": 3,
+				"Int": 4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+8, {@skill Medicine} +9, {@skill Stealth} +9 Str +1, Dex +3, Con +3, Int +4, Wis +1,"
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"+0 Items crafter's eyepiece, lesser bomber's eye elixir, orc knuckle dagger, studded leather armor."
+					],
+					"name": "Cha"
+				}
+			],
+			"ac": {
+				"default": 21,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 11
+				},
+				"Will": {
+					"default": 7
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 54,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Ferocity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "orc knuckle dagger",
+					"attack": 7,
+					"traits": [
+						"agile",
+						"disarm"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+1} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 9,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "alchemical bomb",
+					"attack": 12,
+					"traits": [
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [
+						"varies by bomb"
+					],
+					"damage": "varies by bomb",
+					"types": []
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Sculptor has used his alchemy ability to create 4 moderate alchemist's fire, 2 lesser elixirs of life, and 4 moderate frost vials. These are infusions. He can spend an action to create an additional vial of any one of those, lesser bottled lightning, or a lesser acid flask."
+					],
+					"name": "Alchemy The"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The Sculptor can use {@action Interact} to draw a bomb and then {@action Strike} with it."
+					],
+					"name": "Quick Bomber"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"name": "Vilree",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 47,
+			"level": 5,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 10
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Elven"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 11
+				},
+				"Arcana": {
+					"default": 11
+				},
+				"Crafting": {
+					"default": 13
+				},
+				"Diplomacy": {
+					"default": 7
+				},
+				"Intimidation": {
+					"default": 7
+				},
+				"Stealth": {
+					"default": 11
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 4,
+				"Con": 2,
+				"Int": 4,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+7, {@skill Intimidation} +7, {@skill Stealth} +11 Str +1, Dex +4, Con +2, Int +4, Wis +1, Cha +0 Items alchemical crossbow, belt pouch (2 pp, 38 gp, 4 sp), bracers of missile deflection, daggers (2), key, leather armor, lesser potion of fire resistance, lesser juggernaut mutagen, lesser stone body mutagen, +1 striking dagger, moderate acid energy mutagen."
+					],
+					"name": "Diplomacy"
+				}
+			],
+			"ac": {
+				"default": 22,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 8
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 68,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 14,
+					"traits": [
+						"agile",
+						"finesse",
+						"thrown 10 feet",
+						"versatile"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+1} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 13,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+1} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "alchemical crossbow",
+					"attack": 13,
+					"traits": [
+						"range increment 30 feet",
+						"reload 1"
+					],
+					"effects": [
+						"alchemy"
+					],
+					"damage": "{@damage 1d8} piercing plus alchemy",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "bomb",
+					"attack": 13,
+					"traits": [
+						"thrown 30 feet"
+					],
+					"effects": [
+						"as per bomb"
+					],
+					"damage": "as per bomb",
+					"types": []
+				}
+			],
+			"abilitiesBot": [],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"name": "Vine Lasher",
+			"isNpc": false,
+			"source": "FoP",
+			"page": 62,
+			"level": 0,
+			"rarity": "Common",
+			"alignment": "N",
+			"size": "Small",
+			"creatureType": [
+				"Plant"
+			],
+			"perception": {
+				"default": 4
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"tremorsense 30 feet"
+				],
+				"vague": [],
+				"other": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 6
+				},
+				"Stealth": {
+					"default": 5
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 3,
+				"Con": 2,
+				"Int": -4,
+				"Wis": 0,
+				"Cha": 0
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 16,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 6
+				},
+				"Ref": {
+					"default": 7
+				},
+				"Will": {
+					"default": 4
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 15,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "vine",
+					"attack": 7,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 10 feet"
+					],
+					"effects": [
+						"{@dice 1d8+2}",
+						"Grab"
+					],
+					"damage": "{@dice 1d8+2} plus Grab",
+					"types": []
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A creature {@condition grabbed} by a vine lasher is not {@condition immobilized}, but the {@condition grabbed} creature's space and every adjacent square use the rules for difficult terrain. If the creature moves, the vine lasher moves with it, always keeping the {@condition grabbed} creature within 10 feet of itself. If two or more vine lashers have a creature {@condition grabbed} in this way, then the target's space and adjacent square instead use the rules for greater difficult terrain."
+					],
+					"name": "Light Hold"
+				}
+			],
+			"inflicts": {
+				"damage": [],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		}
+	]
+}

@@ -5,7 +5,7 @@ if (typeof module !== "undefined") require("./parser.js");
 
 // in deployment, `IS_DEPLOYED = "<version number>";` should be set below.
 IS_DEPLOYED = undefined;
-VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.0.2"/* PF2ETOOLS_VERSION__CLOSE */;
+VERSION_NUMBER = /* PF2ETOOLS_VERSION__OPEN */"0.1.0"/* PF2ETOOLS_VERSION__CLOSE */;
 DEPLOYED_STATIC_ROOT = ""; // ""; // FIXME re-enable this when we have a CDN again
 IS_VTT = false;
 
@@ -338,8 +338,10 @@ SourceUtil = {
 
 	getFilterGroup (source) {
 		if (source instanceof FilterItem) source = source.item;
-		if (BrewUtil.hasSourceJson(source)) return 2;
-		return Number(SourceUtil.isNonstandardSource(source));
+		if (BrewUtil.hasSourceJson(source)) return 3;
+		if (SourceUtil.isAdventure(source)) return 1;
+		if (SourceUtil.isNonstandardSource(source)) return 2;
+		if (!SourceUtil.isNonstandardSource(source)) return 0;
 	},
 
 	getAdventureBookSourceHref (source, page) {

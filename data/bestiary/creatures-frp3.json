@@ -1,0 +1,6396 @@
+{
+	"creature": [
+		{
+			"name": "Abbot Tsujon",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 15,
+			"level": 18,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"traits": [
+				"Samsaran"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Celestial",
+					"Samsaran",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 36
+				},
+				"Athletics": {
+					"default": 33
+				},
+				"Deception": {
+					"default": 33
+				},
+				"Diplomacy": {
+					"default": 31
+				},
+				"Occultism": {
+					"default": 33
+				},
+				"Religion": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 8,
+				"Con": 5,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 5
+			},
+			"items": [
+				"+3 major striking khakkhara"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+34 Str +5, Dex +8, Con +5, Int +5, Wis +6, Cha +5 Items +3 major striking khakkhara."
+					],
+					"name": "Religion"
+				}
+			],
+			"ac": {
+				"default": 44,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 34
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 350,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"trigger": "Abbot Tsujon is within the emanation of a magical area effect as it's being created",
+					"requirements": "Abbot Tsujon is wielding a khakkhara",
+					"entries": [
+						"Abbot Tsujon uses her khakkhara as a medium to absorb the incoming area effect into its central ring. She attempts to counteract the triggering effect. For 1 round after Absorbing."
+					],
+					"name": "Absorb Worldly Influence"
+				},
+				{
+					"entries": [
+						"{@action Influence|GMG}, a glowing orb floats within the khakkhara's central ring, allowing Tsujon to."
+					],
+					"name": "Worldly"
+				},
+				{
+					"entries": [],
+					"name": "Release Worldly Passions."
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divination",
+						"occult"
+					],
+					"entries": [
+						"As samsaran anchorite."
+					],
+					"name": "All This Has Happened Before",
+					"entries_as_xyz": "Ability not found: 'All This Has Happened Before As samsaran anchorite.' in Abbot Tsujon, p.15"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divination",
+						"occult"
+					],
+					"entries": [
+						"As samsaran anchorite."
+					],
+					"name": "All This Will Happen Again",
+					"entries_as_xyz": "Ability not found: 'All This Will Happen Again As samsaran anchorite.' in Abbot Tsujon, p.15"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Abbot Tsujon is the target of a ranged attack",
+					"requirements": "Abbot Tsujon is aware of the attack, is not {@condition flat-footed} against it, and has a hand free",
+					"entries": [
+						"Abbot Tsujon gains a +4 circumstance bonus."
+					],
+					"name": "Negate Projectiles"
+				},
+				{
+					"entries": [
+						"AC against the triggering attack. If the attack misses, the projectile loses momentum and drops harmlessly to the ground."
+					],
+					"name": "to"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "sal blossom",
+					"attack": 36,
+					"traits": [
+						"deadly d10",
+						"finesse",
+						"magical",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+13} negative",
+					"types": [
+						"negative"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 36,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+13} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "khakkhara",
+					"attack": 34,
+					"traits": [
+						"magical",
+						"shove",
+						"two-hand d10",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+13} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "temple bell",
+					"attack": 36,
+					"traits": [
+						"range 60 feet",
+						"sonic"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+8} sonic",
+					"types": [
+						"sonic"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"entries": [
+						"Abbot Tsujon cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, she can make temple bell Strikes (see Strikes) and gains a +2 status bonus to AC against ranged attacks."
+					],
+					"name": "Crying Bell Stance"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"entries": [
+						"Abbot Tsujon joins her palms together in the shape of a sal flower, evoking the truth that all things eventually decay. In this stance, she can make sal blossom Strikes (see Strikes) and is {@condition quickened|CRB|quickened 1}, and can use the extra action only to cast {@spell wholeness of body}."
+					],
+					"name": "Falling Sal Stance"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation",
+						"force",
+						"manipulate"
+					],
+					"requirements": "Abbot Tsujon's khakkhara holds a glowing orb from",
+					"entries": [],
+					"name": "Release Worldly Passions"
+				},
+				{
+					"entries": [
+						"Tsujon strikes her prayer staff once upon the ground, releasing the energy she captured in it along with the jingling of its rings. She blasts a wave of force in a 30- foot emanation, dealing {@damage 2d6} force damage per level of the ability she counteracted (DC 40 basic Reflex save). If the ability she counteracted usually deals energy damage, she can choose to deal this type of damage instead (for instance, if she used Absorb Worldly {@action Influence|GMG} to counteract a fireball, she could deal either fire or force damage)."
+					],
+					"name": "Absorb Worldly Influence; Effect Abbot"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Frequency once per round; Abbot Tsujon makes two Strikes, each of which must be an unarmed {@action Strike} or crying temple bell {@action Strike}.",
+						"If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a DC 39 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
+					],
+					"name": "Stunning Flurry"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"force",
+					"negative",
+					"sonic"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Blue Viper",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 54,
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Small",
+			"traits": [
+				"Ratfolk"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Goblin",
+					"Taldane",
+					"Tien",
+					"Ysoki"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Athletics": {
+					"default": 29
+				},
+				"Deception": {
+					"default": 28
+				},
+				"Diplomacy": {
+					"default": 26
+				},
+				"Stealth": {
+					"default": 35
+				},
+				"Thievery": {
+					"default": 33
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 7,
+				"Con": 4,
+				"Int": 5,
+				"Wis": 3,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+26, {@skill Stealth} +35, {@skill Thievery} +33 Str +3, Dex +7, Con +4, Int +5, Wis +3, Cha +2 Items dragon bile (applied to body), {@condition hidden} cheek needles (20), +3 major striking shortsword."
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"Viper carries the following infused items: 3 major acid flasks, 5 black lotus extracts, 3 major bottled lightnings, 4 true elixirs of life, 3 major frost vials, 2 mindfog mists, 3 oblivion essences (Adventure."
+					],
+					"name": "Infused Items Blue"
+				},
+				{
+					"entries": [
+						"#149 79), 3 major tanglefoot bags, 5 tears of death, and 2 major thunderstones. These items last for 24 hours, or until the next time Blue Viper makes his daily preparations."
+					],
+					"name": "Path"
+				}
+			],
+			"ac": {
+				"default": 44,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 33
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 366,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison"
+				],
+				"condition": []
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature adjacent to Blue",
+					"entries": [
+						"Viper hits him with a melee unarmed {@action Strike}; The triggering creature is exposed to dragon bile. This consumes the poison, and Blue Viper can't use Poisoned Coat again until he takes 10 minutes and uses one dose of contact or injury poison to apply to his clothing."
+					],
+					"name": "Poisoned Coat"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 38,
+					"traits": [
+						"agile",
+						"finesse",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+11} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "alchemical bomb",
+					"attack": 38,
+					"traits": [
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [
+						"varies by bomb"
+					],
+					"damage": "varies by bomb",
+					"types": []
+				},
+				{
+					"range": "Ranged",
+					"name": "hidden cheek needles",
+					"attack": 35,
+					"traits": [
+						"concealable",
+						"range increment 10 feet"
+					],
+					"effects": [
+						"tears of death or black lotus extract"
+					],
+					"damage": "9 piercing plus tears of death or black lotus extract",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"certain kill",
+						"transmutation"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"Blue Viper accelerates the flow of time so his poisons run their course faster. He Interacts to draw a contact poison and throws it in the air, where it showers down in a 20-foot burst within 60 feet. All creatures in the burst are automatically exposed to the poison, bypassing any onset time, and each creature must attempt a saving throw against that poison. If a creature fails, the duration of any beneficial spells or effects affecting the creature are reduced by 3 rounds (or by 6 rounds on a critical failure)."
+					],
+					"name": "Plum Rain Deluge"
+				},
+				{
+					"traits": [
+						"successfully"
+					],
+					"entries": [
+						"Strikes a {@condition flat-footed} creature with a poisoned weapon or exposes a flatfooted creature to an inhaled poison, the creature takes a \u20132 circumstance penalty to its initial save against that poison."
+					],
+					"name": "Pinpoint Poisoner When Blue Viper"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "Blue Viper is holding a contact or injury poison",
+					"entries": [],
+					"name": "Poison Spray"
+				},
+				{
+					"entries": [
+						"Viper swigs the poison and sprays it out of his mouth, affecting a 15-foot cone. Blue Viper is not exposed to the poison.",
+						"All creatures in the cone are immediately exposed to the poison, bypassing any onset time, and each creature must attempt a Fortitude save against the poison."
+					],
+					"name": "Blue"
+				},
+				{
+					"entries": [
+						"Viper's infused poisons have a DC of 47."
+					],
+					"name": "Potent Poisoner Blue"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Blue Viper Interacts to draw an injury poison and applies it to a weapon he is holding."
+					],
+					"name": "Quick Application"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Blue Viper Interacts to draw a bomb, then Strikes with it."
+					],
+					"name": "Quick Bomber"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Bul-gae",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 79,
+			"level": 14,
+			"rarity": "Uncommon",
+			"alignment": "LN",
+			"size": "Medium",
+			"traits": [
+				"Fire",
+				"Cold"
+			],
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 26
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"greater darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 28
+				},
+				"Intimidation": {
+					"default": 23
+				},
+				"Stealth": {
+					"default": 23
+				},
+				"Survival": {
+					"default": 25
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 4,
+				"Con": 7,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 4
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 33,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 28
+				},
+				"Ref": {
+					"default": 22
+				},
+				"Will": {
+					"default": 25
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 255,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "cold"
+				},
+				{
+					"amount": 15,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"darkness",
+						"occult"
+					],
+					"entries": [
+						"100 feet. Light and shadows morph strangely around the bul-gae. A creature attempting to create a {@trait light} effect within the aura must attempt a DC {@flatDC 5} flat check. On a failure, the attempt fails, the effect is lost, and the DC to counteract {@trait darkness} effects within the aura is increased by 1."
+					],
+					"name": "Eclipse Aura"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evocation",
+						"fire",
+						"occult"
+					],
+					"trigger": "The bul-gae takes damage",
+					"entries": [
+						"The bul-gae releases a solar flare in a 30-foot emanation. Each creature in the area takes {@damage 6d8} fire damage (DC 34 basic Reflex save). On a critical failure, a creature also takes {@damage 2d10} {@condition persistent damage ||persistent fire damage}. After using this ability, the bul-gae's flames cool and they can't use Solar Flare again until after they have used Lunar Burst."
+					],
+					"name": "Solar Flare"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 27,
+					"traits": [
+						"agile"
+					],
+					"effects": [
+						"Knockdown"
+					],
+					"damage": "{@damage 2d8+12} piercing plus {@damage 2d6} cold or fire and Knockdown",
+					"types": [
+						"cold",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"cold",
+						"evocation",
+						"occult"
+					],
+					"entries": [
+						"The bul-gae releases a blast of otherworldly frost that deals {@damage 6d8} cold damage to each creature in a 10-foot emanation (DC 34 basic Reflex save). On a critical failure, a creature also becomes {@condition slowed|CRB|slowed 2}. After using this ability, the bul-gae's flames heat up and they can't use Lunar Burst again until after they have used Solar Flare."
+					],
+					"name": "Lunar Burst"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"conjuration",
+						"occult",
+						"shadow",
+						"teleportation"
+					],
+					"requirements": "The bul-gae is in dim light or darkness",
+					"entries": [
+						"The bul-gae dives into a shadow and reappears from a shadow within 40 feet."
+					],
+					"name": "Shadow Leap"
+				},
+				{
+					"entries": [
+						"The bul-gae has total control over the powers of cold and fire.",
+						"Each time it attacks with its jaws, it can choose to have the additional damage be either cold damage or fire damage."
+					],
+					"name": "Thermal Mastery"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"cold",
+					"fire",
+					"piercing"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"AD",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"name": "Canopy Elder",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 78,
+			"level": 19,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Plant"
+			],
+			"perception": {
+				"default": 32
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"tremorsense 120 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Arboreal",
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": [
+					"speak with animals",
+					"speak with plants"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 37
+				},
+				"Diplomacy": {
+					"default": 35
+				},
+				"Intimidation": {
+					"default": 35
+				},
+				"Nature": {
+					"default": 40
+				},
+				"Stealth": {
+					"default": 31,
+					"in forests": 39
+				},
+				"Forest Lore": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 4,
+				"Con": 9,
+				"Int": 6,
+				"Wis": 8,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+40, {@skill Stealth} +31 (+39 in forests) Str +10, Dex +4, Con +9, Int +6, Wis +8, Cha +5."
+					],
+					"name": "Nature"
+				}
+			],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 28
+				},
+				"Will": {
+					"default": 33
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 445,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 15,
+					"name": "axe vulnerability"
+				},
+				{
+					"amount": 15,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "branch",
+					"attack": 37,
+					"traits": [
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d12+18} bludgeoning and Improved Push 20 feet",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "root",
+					"attack": 37,
+					"traits": [
+						"reach 30 feet"
+					],
+					"effects": [
+						"{@action Trip}"
+					],
+					"damage": "{@damage 4d8+18} bludgeoning plus {@action Trip}",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "vine",
+					"attack": 37,
+					"traits": [
+						"agile",
+						"reach 40 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d6+18} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 38,
+					"entry": {
+						"9": {
+							"spells": [
+								{
+									"name": "nature's enmity",
+									"amount": 4
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"20 feet Melee root +37 (reach 30 feet), Damage {@damage 4d8+18} bludgeoning plus {@action Trip} Melee {@as 1} vine +37 (agile, reach 40 feet), Damage {@damage 4d6+18} bludgeoning plus Improved Grab Primal Innate Spells DC 38; 9th nature's enmity (×4);"
+					],
+					"name": "and Improved Push"
+				},
+				{
+					"traits": [
+						"9th"
+					],
+					"entries": [
+						"speak with animals, speak with plants."
+					],
+					"name": "Constant"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The canopy elder launches a rapidly growing net of fungus from the mushrooms growing on its body at a single creature within 80 feet. The target must attempt a DC 39 Reflex save or become {@condition restrained} by the fungal web ({@action Escape} DC 39)",
+						"While {@condition restrained}, the creature takes {@damage 4d6} poison damage at the end of each of their turns."
+					],
+					"name": "Fungal Web"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The canopy elder releases a dense cloud of pollen from the epiphytes living in its branches. The cloud emanates from the canopy elder in a 40-foot emanation. The cloud doesn't move with the canopy elder and remains in place for {@dice 1d6} rounds before dissipating. Creatures inside the cloud become {@condition concealed}, and all creatures outside the cloud become {@condition concealed} to creatures within it. Non-plant and non-fungus creatures within the cloud must attempt a DC 38 Fortitude save. On a failure, the creature is {@condition sickened|CRB|sickened 3}, and on a critical failure the creature is also {@condition blinded} for 1 minute. Regardless of the result, a creature is then temporarily immune to the sickening and blinding effects of the canopy elder's pollen for 24 hours."
+					],
+					"name": "Pollen Cloud"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"healing"
+					],
+					"entries": [
+						"The canopy elder grows a mesh of vines around its {@condition broken} branches, repairing the damage and restoring 40 HP to itself.",
+						"The canopy elder can't use Vine Splint again for {@dice 1d4} rounds."
+					],
+					"name": "Vine Splint"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"poison"
+				],
+				"condition": [
+					"{@condition restrained}",
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"name": "Cloudsplitter",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 19,
+			"level": 18,
+			"rarity": "Unique",
+			"alignment": "LG",
+			"size": "Large",
+			"traits": [
+				"Fire",
+				"Air",
+				"Phantom"
+			],
+			"creatureType": [
+				"Spirit"
+			],
+			"perception": {
+				"default": 32
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"greater darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Auran",
+					"Celestial",
+					"Draconic",
+					"Tien"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Diplomacy": {
+					"default": 37
+				},
+				"Nature": {
+					"default": 30
+				},
+				"Stealth": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 9,
+				"Con": 5,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 9
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 28
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 335,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire",
+					"poison",
+					"precision"
+				],
+				"condition": [
+					"disease",
+					"paralyzed"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"traits": [
+						"abjuration",
+						"aura",
+						"divine",
+						"emotion",
+						"mental"
+					],
+					"entries": [
+						"60 feet. As kirin, but DC 39. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save."
+					],
+					"name": "Peaceful Aura",
+					"entries_as_xyz": "Ability not found: 'Peaceful Aura As kirin, but DC 39. Cloudsplitter allows anyone involved in the player character's bout with Jin-Hae to use {@condition hostile} actions without a Will save.' in Cloudsplitter, p.19"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"As kirin."
+					],
+					"name": "Deflecting Gale",
+					"entries_as_xyz": "Ability not found: 'Deflecting Gale As kirin.' in Cloudsplitter, p.19"
+				},
+				{
+					"entries": [
+						"As phantom knight (Pathfinder Bestiary 3 202)."
+					],
+					"name": "Susceptible to Death"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "phantom hoof",
+					"attack": 35,
+					"traits": [
+						"force",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+15} force",
+					"types": [
+						"force"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "phantom horn",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"force",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+15} force",
+					"types": [
+						"force"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 41,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "light"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "detect alignment",
+									"amount": "at will"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "calm emotions",
+									"amount": "at will"
+								},
+								{
+									"name": "gust of wind",
+									"amount": 3
+								},
+								{
+									"name": "heal",
+									"amount": 2
+								},
+								{
+									"name": "punishing winds"
+								},
+								{
+									"name": "spirit link",
+									"notes": [
+										"with Jin-Hae only"
+									]
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"evocation",
+						"fire"
+					],
+					"entries": [
+						"Cloudsplitter breathes fire in a 30-foot cone, dealing {@damage 18d6} fire damage (DC 40 basic Reflex save). Cloudsplitter can't use Breath Weapon again for {@dice 1d4} rounds."
+					],
+					"name": "Breath Weapon"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"As kirin, but {@damage 2d8} additional damage."
+					],
+					"name": "Rearing Thrust",
+					"entries_as_xyz": "Ability not found: 'Rearing Thrust As kirin, but {@damage 2d8} additional damage.' in Cloudsplitter, p.19"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Medium or smaller, phantom hoof, DC 40."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"force"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"AD"
+			]
+		},
+		{
+			"name": "Dancing Night Parade",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 41,
+			"level": 19,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Gargantuan",
+			"traits": [
+				"Troop"
+			],
+			"creatureType": [
+				"Spirit"
+			],
+			"perception": {
+				"default": 28
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Senzar"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 34
+				},
+				"Athletics": {
+					"default": 33
+				},
+				"Deception": {
+					"default": 37
+				},
+				"Performance": {
+					"default": 37
+				},
+				"Society": {
+					"default": 32
+				},
+				"Dancing Lore": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 7,
+				"Con": 5,
+				"Int": 5,
+				"Wis": 5,
+				"Cha": 6
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+37, {@skill Performance} +37, {@skill Society} +32 Str +8, Dex +7, Con +5, Int +5, Wis +5, Cha +6."
+					],
+					"name": "Deception"
+				}
+			],
+			"ac": {
+				"default": 40,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 34
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 450,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 20,
+					"name": "area damage"
+				},
+				{
+					"amount": 15,
+					"name": "bludgeoning"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"auditory",
+						"aura",
+						"emotion",
+						"enchantment",
+						"mental"
+					],
+					"entries": [
+						"60 feet. The night parade sweeps up those nearby in a riotous celebration. All creatures in the aura must attempt a DC 39 Will save. The target is then temporarily immune for 10 minutes.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unafflicted.",
+								"Success": "The target laughs and dances. It can't use reactions as long as it stays in the area, and if it attempts to use a concentrate action, it must succeed at a DC {@flatDC 5} flat check; on a failure, the action is lost.",
+								"Failure": "As success, except the target is also {@condition slowed|CRB|slowed 1} while in the area.",
+								"Critical Failure": "As success, except the target is also {@condition slowed|CRB|slowed 1} while in the area and the flat check DC is 10."
+							}
+						}
+					],
+					"name": "Riotous Parade"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Bestiary 3 304."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"3 306."
+					],
+					"name": "Troop Defenses Bestiary"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"troop movement"
+				],
+				"walk": 25
+			},
+			"attacks": [],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"emotion",
+						"mental",
+						"sonic"
+					],
+					"entries": [
+						"The night parade shouts a series of energetic call-and-responses, dealing {@damage 3d10} sonic damage and {@damage 4d6} mental damage to all creatures in a 10-foot burst within 20 feet (DC 41 basic Will save). If the troop is reduced to 8 or fewer squares, this area decreases to a 5-foot burst."
+					],
+					"name": "Seiya! Soiya!"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Bestiary 3 305."
+					],
+					"name": "Form Up"
+				},
+				{
+					"entries": [
+						"Whenever a troop Strides, it first Forms Up as a free action to condense into a 20-foot-by-20-foot area (minus any missing squares), then moves up to its Speed. This works just like a Gargantuan creature moving; for instance, if any square enters difficult terrain, the extra movement cost applies to the whole troop."
+					],
+					"name": "Troop Movement"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "{@as 1} to {@as 3}"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"The night parade dances with wild abandon, unintentionally striking nearby creatures. It deals damage to each adjacent creature (DC 41 basic Reflex save), and any creature that fails its save is pushed 10 feet in any direction as the night parade bounces it overhead. The damage depends on the number of actions. {@as 1} {@damage 1d10+7} bludgeoning damage {@as 2} {@damage 4d10+14} bludgeoning damage {@as 3} {@damage 6d10+14} bludgeoning damage."
+					],
+					"name": "Wasshoi! Wasshoi!"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"sonic"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"name": "Desecrated Guardian",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 80,
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Construct"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"lifesense 60 feet"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 35
+				},
+				"Stealth": {
+					"default": 31,
+					"in ruins": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 6,
+				"Con": 9,
+				"Int": -5,
+				"Wis": 5,
+				"Cha": -5
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 31
+				},
+				"Will": {
+					"default": 25
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 360,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"cold"
+				],
+				"condition": [
+					"death effects",
+					"disease",
+					"doomed",
+					"drained",
+					"fatigued"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 15,
+					"name": "good"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"abjuration",
+						"divine",
+						"evil"
+					],
+					"entries": [
+						"40 feet. Desecrated guardians exude a palpable malice that nauseates all but the most wicked passersby.",
+						"Non-evil creatures that enter the aura must attempt a DC 37 Will save. On a failure, the creature becomes {@condition sickened|CRB|sickened 1} ({@condition sickened|CRB|sickened 2} on a critical failure). In addition, any non-evil creatures that attempt to {@action Cast a Spell} within the aura must succeed at a DC {@flatDC 5} flat check or the spell is lost."
+					],
+					"name": "Desecration Aura"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"Tail only."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"climb ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 35,
+					"traits": [
+						"deadly 3d12",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 3d10+22} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 35,
+					"traits": [
+						"magical",
+						"reach 30 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 3d8+20} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The desecrated guardian thrashes its body about, causing the nearby terrain to crumble and crash down on creatures in a 60-foot cone, dealing {@damage 12d10} bludgeoning damage (DC 42 basic Reflex save). It can't use Avalanche again for {@dice 1d4} rounds."
+					],
+					"name": "Avalanche"
+				},
+				{
+					"entries": [
+						"If the desecrated guardian started its turn {@condition hidden}, it can Trample and remain {@condition hidden} until after its attacks."
+					],
+					"name": "Coiled Rockslide"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 2d8+18} bludgeoning, DC 39."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine",
+						"earth",
+						"healing transmutation"
+					],
+					"entries": [
+						"The desecrated guardian draws in rubble from the surrounding area to rebuild its damaged body. It recovers {@dice 8d6} Hit Points. It can only use this ability if it is near suitable rock or rubble."
+					],
+					"name": "Rebuild"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Huge, {@damage 3d8+20} bludgeoning, Rupture 45."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Huge or smaller, tail, DC 37."
+					],
+					"name": "Trample",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"name": "Flying Mountain Kaminari",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 23,
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "CN",
+			"size": "Huge",
+			"traits": [
+				"Kami"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 33
+			},
+			"languages": {
+				"languages": [
+					"Senzar",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 31,
+					"to Maneuver in Flight": 36
+				},
+				"Athletics": {
+					"default": 31
+				},
+				"Nature": {
+					"default": 37
+				},
+				"Religion": {
+					"default": 35
+				},
+				"Flying Mountains Lore": {
+					"default": 35
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 6,
+				"Con": 8,
+				"Int": 5,
+				"Wis": 5,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+31, {@skill Lore||Flying Mountains Lore} +35, {@skill Nature} +37,"
+					],
+					"name": "Athletics"
+				},
+				{
+					"entries": [
+						"+35 Str +9, Dex +6, Con +8, Int +5, Wis +5, Cha +4."
+					],
+					"name": "Religion"
+				},
+				{
+					"entries": [
+						"Wind, precipitation, and clouds don't impair a kaminari's vision; they ignore the {@condition concealed} condition from storms, mist, precipitation, and the like."
+					],
+					"name": "Stormsight"
+				}
+			],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 27
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 320,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": [
+					"stormflight"
+				],
+				"walk": 25,
+				"fly ": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"reach 15 feet",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 5d6+17} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "storm blast",
+					"attack": 32,
+					"traits": [
+						"air",
+						"electricity",
+						"magical",
+						"range 120 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6} bludgeoning plus {@damage 3d12} electricity",
+					"types": [
+						"bludgeoning",
+						"electricity"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"air"
+					],
+					"entries": [
+						"A kaminari's bag holds the four winds. The kaminari unleashes four 20-foot bursts within 60 feet with the effects of a 9th-level {@spell wall of wind}. In addition, a creature that enters one of the bursts takes {@damage 6d6} slashing damage (DC 40 basic Reflex save). The bursts can't overlap. After using this activity the kaminari can't use Hurricane Bag for {@dice 1d4} rounds.",
+						"If a kaminari creates a column of lighting using."
+					],
+					"name": "Hurricane Bag"
+				},
+				{
+					"entries": [
+						"Drums that intersects one of the areas of the wind, the wind explodes in a peal of thunder, dealing {@damage 6d10} sonic damage to creatures in the area of that wall of wind burst. Affected creatures must attempt a DC 40 Fortitude save. The kaminari can detonate only one burst per use of Thunder Drums.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target takes half damage.",
+								"Failure": "The target takes full damage and is {@condition deafened} for 1 minute.",
+								"Critical Failure": "The target takes double damage and is {@condition deafened} permanently."
+							}
+						}
+					],
+					"name": "Thunder"
+				},
+				{
+					"entries": [
+						"A kaminari can move in wind with ease. They ignore all difficult terrain from wind and don't need to."
+					],
+					"name": "Stormflight"
+				},
+				{
+					"entries": [
+						"Flight in high winds."
+					],
+					"name": "Maneuver in"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"air",
+						"electricity"
+					],
+					"frequency": "once per day",
+					"entries": [
+						"Electricity leaps between two kaminari. The kaminari establishes a connection with another kaminari within 150 feet, and lightning and thunder form a line between the centers of their spaces. For the next minute, a creature that begins its turn in the line or enters the line on its turn takes {@damage 4d12} electricity damage (DC 40 basic Reflex save). A creature can take this damage only once per round, even if it moves through several tempest tethers. If the distance between the kaminari ever exceeds 150 feet, the tether breaks."
+					],
+					"name": "Tempest Tether"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"electricity"
+					],
+					"entries": [
+						"The peal of a kaminari's drums bring thunder and lightning. The kaminari summons four 100-foot-tall columns of lightning to strike in 5-foot bursts within 60 feet. These columns can't overlap. Creatures in the burst take {@damage 8d12} electricity damage and must attempt a DC 40 Reflex save. The kaminari can't use Thunder Drums again for {@dice 1d4} rounds.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The target takes half damage.",
+								"Failure": "The target takes full damage and is {@condition stunned|CRB|stunned 1}.",
+								"Critical Failure": "The target takes double damage and is {@condition stunned|CRB|stunned 2}."
+							}
+						}
+					],
+					"name": "Thunder Drums"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"electricity",
+					"slashing",
+					"sonic"
+				],
+				"condition": [
+					"{@condition deafened}",
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"name": "Gumiho",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 81,
+			"level": 17,
+			"rarity": "Uncommon",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 29
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 60 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 30
+				},
+				"Deception": {
+					"default": 33
+				},
+				"Diplomacy": {
+					"default": 33
+				},
+				"Society": {
+					"default": 28
+				},
+				"Stealth": {
+					"default": 30
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 8,
+				"Con": 5,
+				"Int": 6,
+				"Wis": 6,
+				"Cha": 9
+			},
+			"items": [
+				"fox marble"
+			],
+			"abilitiesTop": [
+				{
+					"traits": [
+						"emotion",
+						"enchantment",
+						"incapacitation",
+						"mental",
+						"occult"
+					],
+					"entries": [
+						"Any creature that converses with a gumiho must attempt a DC 35 Will save. The creature then becomes temporarily immune for 24 hours.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected but knows the gumiho tried to charm it.",
+								"Success": "The target is unaffected.",
+								"Failure": "The target is affected by the failure effects of 4th-level {@spell charm}.",
+								"Critical Failure": "The target is affected by the failure effects of dominate."
+							}
+						}
+					],
+					"name": "Guileful Charm"
+				}
+			],
+			"ac": {
+				"default": 39,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 26
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 29
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 310,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"charm"
+				]
+			},
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 31,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+18} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 31,
+					"traits": [
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 3d12+18} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 38,
+					"attack": 30,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "daze"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "enthrall"
+								}
+							]
+						},
+						"4": {
+							"slots": 4,
+							"spells": [
+								{
+									"name": "charm"
+								},
+								{
+									"name": "invisibility"
+								},
+								{
+									"name": "sleep"
+								}
+							]
+						},
+						"5": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "subconscious suggestion"
+								}
+							]
+						},
+						"6": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "dominate"
+								},
+								{
+									"name": "repulsion"
+								}
+							]
+						},
+						"7": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "project image"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "disappearance"
+								},
+								{
+									"name": "power word stun"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "1 slot) power word kill"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"polymorph",
+						"occult",
+						"transmutation"
+					],
+					"entries": [
+						"The gumiho changes into humanoid or fox shape. Their humanoid shape has a specific, persistent appearance but their true form is their fox shape. In humanoid shape, the gumiho uses their original size, loses their jaws strike but retains their claws strike, and their Speed is reduced to 25 feet. A gumiho is never able to completely conceal one of their nine tails through this transformation."
+					],
+					"name": "Change Shape",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"trigger": "The gumiho critically hits with a claw or jaws {@action Strike}",
+					"entries": [
+						"The gumiho uses its fox marble to channel the life force lost by the target and heal for half the amount of damage dealt."
+					],
+					"name": "Sapping Critical"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA"
+			]
+		},
+		{
+			"name": "Inmyeonjo",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 82,
+			"level": 16,
+			"rarity": "Rare",
+			"alignment": "LN",
+			"size": "Huge",
+			"traits": [
+				"Air"
+			],
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Auran",
+					"Common"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 30
+				},
+				"Athletics": {
+					"default": 28
+				},
+				"Diplomacy": {
+					"default": 32
+				},
+				"Medicine": {
+					"default": 32
+				},
+				"Nature": {
+					"default": 32
+				},
+				"Occultism": {
+					"default": 27
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 9,
+				"Con": 7,
+				"Int": 7,
+				"Wis": 9,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+32, {@skill Occultism} +27 Str +6, Dex +9, Con +7, Int +7, Wis +9, Cha +5."
+					],
+					"name": "Nature"
+				},
+				{
+					"entries": [
+						"Creatures farther than 60 feet from an inmyeonjo see it only as the generic form of a huge bird. An inmyeonjo has concealment against attacks originating farther than 60 feet away."
+					],
+					"name": "Blurred Countenance"
+				}
+			],
+			"ac": {
+				"default": 38,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 25
+				},
+				"Ref": {
+					"default": 28
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 300,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"disease"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"entries": [
+						"Though an inmyeonjo still needs to eat, drink, and sleep, they don't age and can't die of old age."
+					],
+					"name": "Limited Immortality"
+				},
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"60 feet. Any creature within 60 feet of an inmyeonjo that the inmyeonjo can see must attempt a DC 32 Will save. The effects last for 1 day while it is within the area of blurred countenance.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected and is immune to the inmyeonjo's Terrifying Beauty for 1 day.",
+								"Success": "The creature finds the inmyeonjo beguiling and becomes {@condition stupefied|CRB|stupefied 1}.",
+								"Failure": "The creature finds the inmyeonjo terrifying and becomes {@condition frightened|CRB|frightened 1}.",
+								"Critical Failure": "The creature finds the inmyeonjo dreadful, becoming {@condition frightened|CRB|frightened 2}. They can't willingly move closer to the inmyeonjo."
+							}
+						}
+					],
+					"name": "Terrifying Beauty"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40,
+				"fly ": 100
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "talon + 30 (agile, finesse, reach 15 feet), Damage 3d10+18 bludgeoning\nMelee [one-action] tail",
+					"attack": 30,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 25 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+18} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Spontaneous",
+					"type": "Spontaneous",
+					"tradition": "Occult",
+					"DC": 34,
+					"attack": 26,
+					"entry": {
+						"0": {
+							"level": 8,
+							"spells": [
+								{
+									"name": "telekinetic projectile"
+								},
+								{
+									"name": "message"
+								}
+							]
+						},
+						"2": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "mirror image"
+								}
+							]
+						},
+						"3": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "mind reading"
+								},
+								{
+									"name": "zone of truth"
+								}
+							]
+						},
+						"4": {
+							"slots": 3,
+							"spells": [
+								{
+									"name": "discern lies"
+								},
+								{
+									"name": "read omens"
+								}
+							]
+						},
+						"5": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "hallucination"
+								},
+								{
+									"name": "synaptic pulse"
+								}
+							]
+						},
+						"6": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "phantasmal calamity"
+								},
+								{
+									"name": "vibrant pattern"
+								}
+							]
+						},
+						"7": {
+							"slots": 2,
+							"spells": [
+								{
+									"name": "ethereal jaunt"
+								},
+								{
+									"name": "mask of terror"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "1 slot) discern location"
+								},
+								{
+									"name": "unrelenting observation"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition frightened}",
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Jin-hae",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 18,
+			"level": 18,
+			"rarity": "Unique",
+			"alignment": "LN",
+			"size": "Medium",
+			"traits": [
+				"Phantom"
+			],
+			"creatureType": [
+				"Spirit",
+				"Ethereal"
+			],
+			"perception": {
+				"default": 33
+			},
+			"languages": {
+				"languages": [
+					"Taldane",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Athletics": {
+					"default": 37
+				},
+				"Performance": {
+					"default": 36
+				},
+				"Religion": {
+					"default": 31
+				},
+				"Warfare Lore": {
+					"default": 38
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 9,
+				"Con": 5,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+31, {@skill Lore||Warfare Lore} +38 Str +9, Dex +9, Con +5, Int +5, Wis +6, Cha +5 Items wind and fire wheels (2; Pathfinder #166: Despair."
+					],
+					"name": "Religion"
+				},
+				{
+					"entries": [
+						"76), hook swords (2; Pathfinder #166:"
+					],
+					"name": "on Danger Island"
+				},
+				{
+					"entries": [
+						"76)"
+					],
+					"name": "Despair on Danger Island"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 30
+				},
+				"Will": {
+					"default": 27
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 340,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"poison",
+					"precision"
+				],
+				"condition": [
+					"disease",
+					"paralyzed"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"As phantom knight."
+					],
+					"name": "Susceptible to Death",
+					"entries_as_xyz": "Ability not found: 'Susceptible to Death As phantom knight.' in Jin-hae, p.18"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"move"
+					],
+					"trigger": "Cloudsplitter Strides or Tramples within 5 feet of",
+					"frequency": "once per day;",
+					"entries": [],
+					"name": "Combined Charge"
+				},
+				{
+					"entries": [
+						"Jin-Hae leaps onto Cloudsplitter's back as he charges. She can make a single melee attack against any target they pass during Cloudsplitter's movement."
+					],
+					"name": "Jin-Hae; Effect"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hook sword",
+					"attack": 35,
+					"traits": [
+						"disarm",
+						"magical",
+						"parry",
+						"trip",
+						"twin"
+					],
+					"effects": [],
+					"damage": "{@damage 6d6+20} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "linked hook swords",
+					"attack": 35,
+					"traits": [
+						"magical",
+						"reach 10 feet",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 6d6+20} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "wind and fire wheels",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"disarm",
+						"finesse",
+						"magical",
+						"parry",
+						"thrown 20 feet",
+						"twin",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+15} slashing plus {@damage 3d6} fire",
+					"types": [
+						"fire",
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "vacuum slash",
+					"attack": 35,
+					"traits": [
+						"air",
+						"divine",
+						"range 60 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 6d6+10} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 40,
+					"entry": {
+						"constant": {
+							"7": {
+								"spells": [
+									{
+										"name": "air walk"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish",
+						"stance"
+					],
+					"requirements": "Jin-Hae is wielding two hook swords",
+					"entries": [
+						"Jin-Hae either links her swords together or unlinks them. If the swords are linked, she can make linked hook sword Strikes; if the swords are unlinked, she can make hook sword Strikes."
+					],
+					"name": "Link Swords"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"divine"
+					],
+					"requirements": "Jin-Hae is wielding her wind and fire wheels",
+					"entries": [
+						"Jin-Hae blasts off on her wind and fire wheels, leaving an elemental trail in her wake. She Strides up to twice her Speed and makes a wind and fire wheel {@action Strike} at any point during her movement. The path left by her movement is filled with her choice of an 8th-level {@spell wall of wind} or {@spell wall of fire} spell. Jin-Hae is unaffected by any walls she creates with this ability. She cannot use Wind-Fire Charge again for {@dice 1d4} rounds. If she uses Wind-Fire Charge again, the wall created by her previous Wind-Fire Charge disappears as soon as her action is completed."
+					],
+					"name": "Wind-Fire Charge"
+				},
+				{
+					"traits": [
+						"divine"
+					],
+					"requirements": "Jin-Hae is wielding two wind and fire wheels",
+					"entries": [
+						"Jin-Hae's wind and fire wheels float by her feet, giving her the benefits of 7thlevel {@spell air walk}. While this lasts, she can wield her wind and fire wheels even while her hands are full by kicking with them, and her wind and fire wheels gain the thrown 20 feet trait as well as the effects of a returning rune."
+					],
+					"name": "Wind-Fire Chariot"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"TA"
+			]
+		},
+		{
+			"name": "Laruhao",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 41,
+			"level": 19,
+			"rarity": "Unique",
+			"alignment": "CE",
+			"size": "Medium",
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 35
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Senzar",
+					"Tien"
+				],
+				"languageAbilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 35
+				},
+				"Athletics": {
+					"default": 31
+				},
+				"Deception": {
+					"default": 37
+				},
+				"Occultism": {
+					"default": 34
+				},
+				"Performance": {
+					"default": 39
+				},
+				"Dancing Lore": {
+					"default": 38
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 8,
+				"Con": 7,
+				"Int": 7,
+				"Wis": 7,
+				"Cha": 9
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+37, {@skill Occultism} +34, {@skill Performance} +39 Str +6, Dex +8, Con +7, Int +7, Wis +7, Cha +9 Items fighting fan (Lost Omens Gods & Magic 120), greater maestro's instrument (flute)"
+					],
+					"name": "Deception"
+				}
+			],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 32
+				},
+				"Ref": {
+					"default": 29
+				},
+				"Will": {
+					"default": 35
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 360,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fighting fan",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"backstabber",
+						"deadly d6",
+						"finesse",
+						"monk"
+					],
+					"effects": [],
+					"damage": "{@damage 6d4+14} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "piercing note",
+					"attack": 35,
+					"traits": [
+						"range increment 60 feet",
+						"sonic"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+17} sonic",
+					"types": [
+						"sonic"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"healing"
+					],
+					"entries": [
+						"Laruhao sends out a pulse of inviting melody that calls more yokai from the ether, restoring 30 Hit Points to the dancing night parade."
+					],
+					"name": "Call Dancers"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"linguistic"
+					],
+					"entries": [
+						"Laruhao plays an invigorating melody that signals his horde to attack. The dancing night parade can use either Seiya! Soiya! or the two-action version of Wasshoi! Wasshoi! as a reaction."
+					],
+					"name": "Dance, Puppets, Dance!"
+				},
+				{
+					"entries": [
+						"Barriers Laruhao wishes for nothing more than to dance atop his yagura, undisturbed. When he uses his {@spell house of imaginary walls} composition spell, he creates four 10-foot-by-10-foot walls in a cube around him. A creature must succeed at a DC 41 counteract check to teleport within these walls; otherwise, the teleportation attempt fails."
+					],
+					"name": "Master of"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing",
+					"sonic"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"UW"
+			]
+		},
+		{
+			"name": "Lophiithu",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 83,
+			"level": 21,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Gargantuan",
+			"traits": [
+				"Aquatic"
+			],
+			"creatureType": [
+				"Aberration"
+			],
+			"perception": {
+				"default": 38
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Alghollthu",
+					"Aquan",
+					"Undercommon"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet",
+					"tongues"
+				]
+			},
+			"skills": {
+				"Athletics": {
+					"default": 36
+				},
+				"Deception": {
+					"default": 40
+				},
+				"Occultism": {
+					"default": 43
+				},
+				"Stealth": {
+					"default": 40
+				},
+				"Survival": {
+					"default": 36
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 10,
+				"Con": 7,
+				"Int": 10,
+				"Wis": 6,
+				"Cha": 7
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 43,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 38
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 400,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 10,
+				"swim ": 80
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 39,
+					"traits": [
+						"agile",
+						"deadly 3d10",
+						"finesse",
+						"reach 15 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d12+18} piercing plus Improved Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "lure",
+					"attack": 37,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"reach 40 feet"
+					],
+					"effects": [
+						"beguiling lure"
+					],
+					"damage": "{@damage 4d6+18} bludgeoning plus {@damage 2d6} mental and beguiling lure",
+					"types": [
+						"bludgeoning",
+						"mental"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Innate",
+					"type": "Innate",
+					"tradition": "Occult",
+					"DC": 41,
+					"entry": {
+						"0": {
+							"level": 9,
+							"spells": [
+								{
+									"name": "dancing lights"
+								},
+								{
+									"name": "daze"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "illusory creature",
+									"amount": 2
+								},
+								{
+									"name": "phantasmal killer",
+									"amount": 2
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "telepathic demand",
+									"amount": 2
+								},
+								{
+									"name": "unfathomable song",
+									"amount": 2
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "fabricated truth"
+								},
+								{
+									"name": "gate",
+									"amount": "at will"
+								}
+							]
+						},
+						"constant": {
+							"9": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"illusion",
+						"mental",
+						"occult",
+						"visual"
+					],
+					"entries": [
+						"A creature hit by a lophiithu's lure must succeed at a DC 41 Will save or be {@condition fascinated} with the lophiithu's lures for 1 minute. On a critical failure, it can't use reactions while it remains {@condition fascinated}. A creature that succeeds at its save is temporarily immune for 1 hour."
+					],
+					"name": "Beguiling Lure"
+				},
+				{
+					"entries": [
+						"The lophiithu's digestive organs exist in the Maelstrom, regardless of the location of their external form.",
+						"The lophiithu can swallow any number of creatures of any size. Creatures that {@action Escape} the lophiithu's stomach do so normally. Creatures that cut themselves free instead find themselves in the Maelstrom near nothing but one of the lophiithu's disembodied stomachs. When the lophiithu dies, their stomach becomes a rift connecting to their mouth, allowing a creature to return to their plane. This rift disappears after 1 minute."
+					],
+					"name": "Dimensional Swallow"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The lophiithu makes a lure {@action Strike} against each creature within reach.",
+						"These attacks count toward the lophiithu's multiple attack penalty, but the penalty doesn't increase until after these attacks."
+					],
+					"name": "Lure Whip"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Gargantuan, {@damage 3d12+10} bludgeoning, Rupture 44 and dimensional swallow."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition fascinated}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Orochi",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 84,
+			"level": 18,
+			"rarity": "Rare",
+			"alignment": "CE",
+			"size": "Gargantuan",
+			"traits": [
+				"Amphibious"
+			],
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision",
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Common",
+					"Draconic"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 30
+				},
+				"Athletics": {
+					"default": 36
+				},
+				"Intimidation": {
+					"default": 31
+				},
+				"Survival": {
+					"default": 29
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 6,
+				"Con": 10,
+				"Int": 5,
+				"Wis": 4,
+				"Cha": 6
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 42,
+				"abilities": "all-around vision"
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 30
+				},
+				"Will": {
+					"default": 27
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 400,
+					"note": "(body) ",
+					"abilities": null
+				},
+				{
+					"hp": 60,
+					"note": "(head) ",
+					"abilities": [
+						"multiple heads"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"area damage"
+				]
+			},
+			"weaknesses": [
+				{
+					"name": "cold iron"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 15,
+					"name": "poison"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"60 feet, DC 37."
+					],
+					"name": "Frightful Presence",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"A creature can attempt to sever one of the orochi's eight heads by specifically targeting it and dealing damage equal to the head's HP. A head not completely severed returns to full HP at the end of the attacking creature's turn.",
+						"An orochi that loses all of their heads immediately dies."
+					],
+					"name": "Multiple Heads"
+				},
+				{
+					"entries": [
+						"The orochi gains an extra reaction per round for each of their heads that remains beyond the first, which it can use only to make Attacks."
+					],
+					"name": "Multiple Opportunities"
+				},
+				{
+					"entries": [
+						"They can't use more than 1 reaction on the same triggering action, and the orochi must use a different head for each Attack."
+					],
+					"name": "of Opportunity."
+				},
+				{
+					"entries": [],
+					"name": "of Opportunity."
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"swim ": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 35,
+					"traits": [
+						"reach 40 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 3d12+18} piercing plus Improved Grab",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 50 feet"
+					],
+					"effects": [
+						"Improved Knockdown"
+					],
+					"damage": "{@damage 3d10+18} bludgeoning plus Improved Knockdown",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "rock",
+					"attack": 34,
+					"traits": [
+						"brutal",
+						"range increment 100 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+18} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The orochi makes a number of jaws Strikes equal to the number of their remaining heads, each against a different target. The orochi's multiple attack penalty doesn't increase until after the orochi makes all of their attacks."
+					],
+					"name": "Orochi Flurry"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Huge, {@damage 2d12+18} bludgeoning, Rupture 40."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA"
+			]
+		},
+		{
+			"name": "Rai Sho Disciple",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 14,
+			"level": 16,
+			"rarity": "Rare",
+			"alignment": "LN",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 30
+			},
+			"languages": {
+				"languages": [
+					"Taldane",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 32
+				},
+				"Athletics": {
+					"default": 30
+				},
+				"Diplomacy": {
+					"default": 27
+				},
+				"Performance": {
+					"default": 26
+				},
+				"Religion": {
+					"default": 32
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 9,
+				"Con": 6,
+				"Int": 5,
+				"Wis": 6,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+26, {@skill Religion} +32 Str +8, Dex +9, Con +6, Int +5, Wis +6, Cha +5."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 40,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 28
+				},
+				"Ref": {
+					"default": 30
+				},
+				"Will": {
+					"default": 28
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 300,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 33,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+14} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "sal blossom",
+					"attack": 33,
+					"traits": [
+						"deadly d10",
+						"finesse",
+						"magical",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+14} negative",
+					"types": [
+						"negative"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "temple bell",
+					"attack": 33,
+					"traits": [
+						"magical",
+						"range increment 60 feet",
+						"sonic"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+6} sonic",
+					"types": [
+						"sonic"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"entries": [
+						"The disciple cups one hand and poses the other to strike it, like the Rai Sho Monastery's central bell. In this stance, they can make temple bell Strikes (see Strikes)",
+						"While in this stance, a disciple gains a +2 status bonus to AC against ranged attacks."
+					],
+					"name": "Crying Bell Stance"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"stance"
+					],
+					"entries": [
+						"The disciple joins their palms together in the shape of a sal flower, evoking the truth that all things eventually decay. In this stance, they can make sal blossom Strikes (see Strikes) and are {@condition quickened|CRB|quickened 1}, and can use the extra action only to cast {@spell wholeness of body}."
+					],
+					"name": "Falling Sal Stance"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"frequency": "once per round",
+					"entries": [],
+					"name": "Flurry of Blows"
+				},
+				{
+					"entries": [
+						"Sho disciple makes two Strikes, each of which must be an unarmed {@action Strike} or temple bell {@action Strike}. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+					],
+					"name": "The Rai"
+				},
+				{
+					"traits": [
+						"disciples"
+					],
+					"entries": [
+						"have learned a technique to cast their ki spells more effectively by way of specialized hand postures. They replace the normal somatic and verbal components of their spells with nine seals components; these require that the user have a hand free, but do not add {@trait any} traits to."
+					],
+					"name": "Nine Seals Spellcasting The Rai Sho"
+				},
+				{
+					"entries": [
+						"{@action Cast a Spell} action (preventing the disciples from triggering certain reactions when they {@action Cast a Spell}, such as Attack."
+					],
+					"name": "the"
+				},
+				{
+					"entries": [
+						"Additionally, the first time each day that a disciple critically Strikes an enemy, they regain a Focus Point."
+					],
+					"name": "of Opportunity)."
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"negative",
+					"sonic"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA"
+			]
+		},
+		{
+			"name": "Rai Sho Postulant",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 13,
+			"level": 16,
+			"rarity": "Rare",
+			"alignment": "N",
+			"size": "Large",
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 30
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Taldane",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 33
+				},
+				"Stealth": {
+					"default": 28,
+					"in snow": 34
+				},
+				"Survival": {
+					"default": 27
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 5,
+				"Con": 6,
+				"Int": 2,
+				"Wis": 6,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Hiding, the yeti is {@condition concealed} by any snowfall, even if it's not thick enough to make other creatures {@condition concealed}."
+					],
+					"name": "Snowblind When"
+				}
+			],
+			"ac": {
+				"default": 39,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 30
+				},
+				"Ref": {
+					"default": 27
+				},
+				"Will": {
+					"default": 29
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 360,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"cold"
+				],
+				"condition": []
+			},
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"As yeti."
+					],
+					"name": "Nightmare Guardian",
+					"entries_as_xyz": "Ability not found: 'Nightmare Guardian As yeti.' in Rai Sho Postulant, p.13"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"As yeti."
+					],
+					"name": "Vanish",
+					"entries_as_xyz": "Ability not found: 'Vanish As yeti.' in Rai Sho Postulant, p.13"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"climb ": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 33,
+					"traits": [
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+17} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "icicle",
+					"attack": 31,
+					"traits": [
+						"cold",
+						"magical",
+						"thrown 20 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+17} piercing plus {@damage 1d8} cold",
+					"types": [
+						"cold",
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Divine Innate",
+					"type": "Innate",
+					"tradition": "Divine",
+					"DC": 37,
+					"entry": {
+						"8": {
+							"spells": [
+								{
+									"name": "obscuring mist",
+									"notes": [
+										"manifests snowfall instead of mist"
+									]
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"cold"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"The Rai Sho postulant makes two Strikes, which can be any combination of claw or icicle Strikes. If both hit the same creature, combine their damage for the purpose of resistances and weaknesses. If either {@action Strike} hits and deals damage, the target must succeed at a DC 37 Fortitude save or be {@condition stunned|CRB|stunned 1} (or {@condition stunned|CRB|stunned 3} on a critical failure); this save has the {@trait incapacitation} trait."
+					],
+					"name": "Frozen Flurry"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"As yeti, but DC 37."
+					],
+					"name": "Grisly Arrival",
+					"entries_as_xyz": "Ability not found: 'Grisly Arrival As yeti, but DC 37.' in Rai Sho Postulant, p.13"
+				},
+				{
+					"entries": [
+						"Sho postulants have learned a technique that allows them to cast their ki spells more effectively by way of specialized hand postures. They replace the normal somatic and verbal components of their spells with nine seals components; these require that the caster have a hand free, but don't add {@trait any} traits to the {@action Cast a Spell} action (preventing the Rai Sho postulants from triggering certain reactions, such as {@action Attack of Opportunity}, when they {@action Cast a Spell})."
+					],
+					"name": "Nine Seals Spellcasting The Rai"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC"
+			]
+		},
+		{
+			"name": "Ran-to",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 54,
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Goblin"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Goblin",
+					"Taldane",
+					"Tien",
+					"Ysoki"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 32
+				},
+				"Athletics": {
+					"default": 41
+				},
+				"Intimidation": {
+					"default": 34
+				},
+				"Survival": {
+					"default": 32
+				},
+				"Warfare Lore": {
+					"default": 32
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 4,
+				"Con": 5,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+32, {@skill Lore||Warfare Lore} +32 Str +7, Dex +4, Con +5, Int +2, Wis +3, Cha +1 Items +3 major striking gauntlet, +3 major striking halfling sling staff (20 bullets and 5 greater explosive bullets), +3 greater resilient studded leather."
+					],
+					"name": "Survival"
+				}
+			],
+			"ac": {
+				"default": 44,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 36
+				},
+				"Ref": {
+					"default": 33
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 460,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [
+						"When a creature triggers Ran-to's."
+					],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Opportunity, he can attempt an {@skill Athletics} check."
+					],
+					"name": "Attack of"
+				},
+				{
+					"entries": [
+						"{@action Grapple} the triggering creature instead of making a melee {@action Strike}. He can still disrupt a triggering manipulate action if he critically succeeds at his attempt."
+					],
+					"name": "to"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "gauntlet",
+					"attack": 40,
+					"traits": [
+						"agile",
+						"free-hand",
+						"magical"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d4+21} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "Ran-to is grabbing a creature",
+					"entries": [
+						"Ran-to throws his foe against the ground. The {@condition grabbed} creature takes {@damage 12d6} bludgeoning damage (DC 43 basic Fortitude save) and is knocked {@condition prone}. The creature is no longer {@condition grabbed}."
+					],
+					"name": "Body Slam"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 7d4+5} bludgeoning, DC 43."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Ran-to leaps from the ground and attempts to grab a foe while he soars. He makes a."
+					],
+					"name": "Major Leaping Catch"
+				},
+				{
+					"entries": [
+						"His maximum distance is 100 feet. He must succeed at an {@skill Athletics} check to perform the leap as usual, but regardless of the type of leap the DC is equal to half the number of feet he moves in the air. Ran-to can attempt an {@skill Athletics} check."
+					],
+					"name": "Leap, High Jump, or Long Jump."
+				},
+				{
+					"entries": [
+						"{@action Grapple} at any point during the jump. Immediately after the attempt, he (and the creature, if the {@action Grapple} was successful) falls to the ground. Ran-to takes no falling damage when using this ability, but the {@condition grabbed} creature takes the appropriate amount of falling damage as if it had fallen the distance moved. Ran-to can spend three actions to use this ability instead of two; if he does, he can use Plummeting Fall to add {@damage 12d6} bludgeoning damage to the falling damage dealt to the {@condition grabbed} creature, and the creature is knocked {@condition prone}."
+					],
+					"name": "to"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"certain kill"
+					],
+					"requirements": "Ran-to has a creature {@condition grabbed} and the creature is airborne",
+					"frequency": "once per round;",
+					"entries": [
+						"Ran-to spins and increases the force of gravity, sending him and the creature to the ground. The target takes {@damage 12d6} bludgeoning damage from the fall and is knocked {@condition prone}; Ran-to is unharmed."
+					],
+					"name": "Plummeting Fall"
+				},
+				{
+					"entries": [
+						"Wrestler Ran-to can attempt to {@action Disarm}, {@action Grapple},"
+					],
+					"name": "Titan"
+				},
+				{
+					"entries": [
+						"{@action Trip} creatures, regardless of their size."
+					],
+					"name": "Shove, or"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"requirements": "Ran-to has a creature {@condition grabbed}",
+					"frequency": "once per round;",
+					"entries": [
+						"Ran-to spins the creature he's holding, smashing it against any creatures within his reach, then throws the creature aside. Ran-to attempts an {@skill Athletics} check against the {@condition grabbed} creature's Fortitude DC. Regardless of the result, the creature is no longer {@condition grabbed} after this activity. Critical Success Ran-to tosses his foe mightily. The {@condition grabbed} creature is thrown into a space within 20 feet, takes {@damage 16d6} bludgeoning damage, and falls {@condition prone}. All creatures adjacent to Ran-to take the same amount of bludgeoning damage (DC 43 basic Reflex save). Success As critical success, except the {@condition grabbed} creature is thrown into a space within 10 feet, and creatures take {@damage 12d6} bludgeoning damage. Failure Ran-to tosses his foe aside. The {@condition grabbed} creature falls {@condition prone}. Critical Failure Ran-to loses hold of his foe."
+					],
+					"name": "Whirlwind Toss"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition grabbed}",
+					"{@condition prone}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Sanzuwu",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 85,
+			"level": 15,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Tiny",
+			"traits": [
+				"Fire"
+			],
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 26
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"greater darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": [
+					"telepathy 100 feet"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 30
+				},
+				"Athletics": {
+					"default": 27
+				},
+				"Diplomacy": {
+					"default": 25
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 8,
+				"Con": 6,
+				"Int": 4,
+				"Wis": 5,
+				"Cha": 4
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 36,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 26
+				},
+				"Ref": {
+					"default": 29
+				},
+				"Will": {
+					"default": 23
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 295,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [
+					"fire"
+				],
+				"condition": [
+					"light"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 15,
+					"name": "cold"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"abjuration",
+						"aura",
+						"primal"
+					],
+					"entries": [
+						"10 feet. A golden aura envelopes the sanzuwu, protecting them from weak magic. Any non-cold spells of 3rd level or lower burn away and are ineffective. A sanzuwu can deactivate or activate the golden aura as a free action with the {@trait concentrate} trait."
+					],
+					"name": "Golden Sun"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"evocation",
+						"fire",
+						"primal"
+					],
+					"trigger": "A creature within 30 feet targets the sanzuwu or one of their allies with a weapon attack",
+					"entries": [
+						"The sanzuwu focuses their gaze on the triggering creature's weapon, heating it to a burning temperature for an instant. The creature takes {@damage 4d8} fire damage unless the creature Releases the weapon as a free action."
+					],
+					"name": "Scorching Gaze"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"fly ": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "beak",
+					"attack": 30,
+					"traits": [
+						"finesse",
+						"fire",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6+14} piercing plus {@damage 3d6} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "talon",
+					"attack": 30,
+					"traits": [
+						"agile",
+						"finesse",
+						"fire",
+						"magical"
+					],
+					"effects": [],
+					"damage": "{@damage 3d4+14} piercing plus {@damage 3d6} fire",
+					"types": [
+						"fire",
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"fire",
+						"polymorph",
+						"primal",
+						"transmutation"
+					],
+					"entries": [
+						"The sanzuwu transforms into an enormous bird made of flame. As the sanzuwu begins their transformation, creatures within a 10-foot emanation take {@damage 6d8} fire damage (DC 33 basic Reflex save). While in their flame form, the sanzuwu gains the effects of 4th-level {@spell enlarge}. They can use Fiery Transformation again to revert back to their standard form."
+					],
+					"name": "Fiery Transformation"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"evocation",
+						"fire",
+						"primal"
+					],
+					"entries": [
+						"The sanzuwu opens their mouth to produce a bead of burning energy, hurling it a point within 200 feet. The bead detonates, dealing {@damage 7d8} fire damage and {@damage 4d10} sonic damage to all creatures in a 30-foot burst (DC 33 basic Reflex save). Creatures that critically fail become {@condition blinded} for 1 round. The sanzuwu can't use."
+					],
+					"name": "Radiant Blast"
+				},
+				{
+					"entries": [
+						"Blast again for {@dice 1d4} rounds."
+					],
+					"name": "Radiant"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The sanzuwu is standing on the ground",
+					"entries": [
+						"The sanzuwu Strides. A 6th-level {@spell wall of fire} appears in all the spaces the sanzuwu left during this movement, lasting for 1 round. The sanzuwu can't use Scorch Earth again for {@dice 1d4} rounds."
+					],
+					"name": "Scorch Earth"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"evocation",
+						"incapacitation",
+						"light",
+						"primal"
+					],
+					"requirements": "The sanzuwu is in their fiery form",
+					"entries": [
+						"The sanzuwu spreads their wings, emitting a bright cascade of light in a 30-foot cone. Creatures in the cone must attempt a DC 33 Fortitude save. Success The creature is unaffected. Failure The creature is {@condition stunned|CRB|stunned 1}. Critical Failure The creature is {@condition stunned|CRB|stunned 2}."
+					],
+					"name": "Transfixing Sunbeam"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing"
+				],
+				"condition": [
+					"{@condition blinded}",
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"AD",
+				"AC",
+				"CC"
+			]
+		},
+		{
+			"name": "Shino Hakusa",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 53,
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 34
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"lifesense"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Goblin",
+					"Taldane",
+					"Tien",
+					"Ysoki"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 38
+				},
+				"Athletics": {
+					"default": 35
+				},
+				"Deception": {
+					"default": 33
+				},
+				"Medicine": {
+					"default": 35
+				},
+				"Occultism": {
+					"default": 35
+				},
+				"Thievery": {
+					"default": 33
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 7,
+				"Con": 4,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+35, {@skill Occultism} +35, {@skill Thievery} +33 Str +6, Dex +7, Con +4, Int +2, Wis +3, Cha +1 Items +3 major striking greater shock handwraps of mighty blows, potion of flying, potion of haste."
+					],
+					"name": "Medicine"
+				}
+			],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 33
+				},
+				"Ref": {
+					"default": 36
+				},
+				"Will": {
+					"default": 30
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 360,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Hakusa is targeted with a melee or ranged attack by an attacker she can see",
+					"entries": [
+						"Hakusa gains a +2 circumstance bonus to AC against the triggering attack."
+					],
+					"name": "Nimble Dodge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fingers",
+					"attack": 38,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"unarmed"
+					],
+					"effects": [
+						"ki absorption"
+					],
+					"damage": "{@damage 4d6+14} piercing plus ki absorption",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "palm",
+					"attack": 37,
+					"traits": [
+						"forceful",
+						"magical",
+						"shove",
+						"unarmed"
+					],
+					"effects": [
+						"ki absorption"
+					],
+					"damage": "{@damage 6d6+14} bludgeoning plus ki absorption",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "vitality blast",
+					"attack": 38,
+					"traits": [
+						"magical",
+						"negative",
+						"range 60 feet",
+						"unarmed",
+						"versatile positive"
+					],
+					"effects": [],
+					"damage": "{@damage 4d8+8} negative",
+					"types": [
+						"negative"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"necromancy"
+					],
+					"entries": [
+						"Hakusa absorbs vitality with each blow. She gains fast healing 10 for 1 round whenever she successfully Strikes with a melee unarmed attack."
+					],
+					"name": "Ki Absorption"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Hakusa rapidly strikes at pressure points to debilitate a foe. She makes a fingers {@action Strike}. On a hit, the target takes damage as normal and must attempt a DC 43 Fortitude save.",
+						"Regardless of the result of the save, the target is then temporarily immune to Pressure Point Attack for 1 minute.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The target is unaffected.",
+								"Success": "The target's muscles become temporarily weaker. For 1 round, the target is {@condition enfeebled|CRB|enfeebled 2}, and any time it attempts to take an action with the {@trait manipulate} trait, the action is disrupted unless it succeeds at a flat check with a DC equal to 5 + its {@condition enfeebled} value.",
+								"Failure": "As success, but the duration is 1 minute.",
+								"Critical Failure": "As success, but the duration is 1 minute, the flat check is DC 11, and the target takes a \u201310-foot status penalty to all Speeds for the duration."
+							}
+						}
+					],
+					"name": "Pressure Point Attack"
+				},
+				{
+					"entries": [
+						"Strikes deal an extra {@damage 5d6} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack Hakusa's"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"certain kill",
+						"necromancy",
+						"negative"
+					],
+					"frequency": "once per round",
+					"entries": [
+						"Hakusa strikes a series of pressure points on her target's body that redirects its ki to the heart, before following up with a palm strike to the sternum. She makes a fingers {@action Strike} and a palm {@action Strike}, dealing damage as normal. If both hit, the target takes {@damage 8d10} negative damage as its life energy escapes from its body in a shower of bird-shaped sparks. The target attempts a DC 43 Fortitude save. Critical Success The target is unaffected. Success The target takes half the negative damage. Failure The target takes full damage, its life energy exploding violently from its back in a 30-foot cone originating from the target. All of Hakusa's other enemies in the cone also take the negative damage (DC 43 basic Fortitude save). Critical Failure As failure, but the target takes double negative damage."
+					],
+					"name": "Swallows in Flight",
+					"entries_as_xyz": "Ability not found: 'Swallows in Flight As failure, but the target takes double negative damage.' in Shino Hakusa, p.53"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"negative",
+					"piercing",
+					"precision"
+				],
+				"condition": [
+					"{@condition enfeebled}",
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"AD",
+				"CC"
+			]
+		},
+		{
+			"name": "Spinel Leviathan Syndara",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 58,
+			"level": 24,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Gargantuan",
+			"traits": [
+				"Aeon"
+			],
+			"creatureType": [
+				"Monitor"
+			],
+			"perception": {
+				"default": 46
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"spatial sense"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Senzar",
+					"Taldane",
+					"Tien",
+					"Utopian"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 45
+				},
+				"Athletics": {
+					"default": 48
+				},
+				"Intimidation": {
+					"default": 45
+				},
+				"Demiplane Lore": {
+					"default": 48
+				}
+			},
+			"abilityMods": {
+				"Str": 12,
+				"Dex": 9,
+				"Con": 10,
+				"Int": 8,
+				"Wis": 8,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+45 Str +12, Dex +9, Con +10, Int +8, Wis +8, Cha +7."
+					],
+					"name": "Intimidation"
+				},
+				{
+					"entries": [
+						"Syndara instinctively knows the position of all creatures and objects within the Glass Lighthouse as a precise sense. His senses do not extend into extraplanar spaces (such as a bag of holding), even if the entrance to these spaces is within the Lighthouse."
+					],
+					"name": "Spatial Sense"
+				}
+			],
+			"ac": {
+				"default": 51,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 46
+				},
+				"Ref": {
+					"default": 38
+				},
+				"Will": {
+					"default": 42
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 550,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease",
+					"emotion"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 25,
+					"name": "chaotic"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"divine",
+						"teleportation"
+					],
+					"trigger": "A creature finishes moving, even if it moved using something other than a move action",
+					"entries": [
+						"Syndara is the figurative and literal center of this world. As the triggering creature moves, space reasserts itself, teleporting Syndara to be in the same position relative to the creature as he was when the creature began its movement. If the space he would teleport into is occupied, he displaces the obstructing creature or object into the nearest available space."
+					],
+					"name": "Center of the World"
+				},
+				{
+					"entries": [],
+					"name": "Extraplanar Immunity As Syndara, the Sculptor."
+				},
+				{
+					"entries": [],
+					"name": "Keeper of the Lighthouse As Syndara, the Sculptor."
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"divine",
+						"teleportation"
+					],
+					"trigger": "Syndara is targeted by a ranged {@action Strike} or spell attack roll",
+					"entries": [
+						"Syndara opens a portal in front of the incoming missile, then opens another portal nearby that fires the missile at another creature within 60 feet of him. He takes no damage from the triggering attack and makes a ranged {@action Strike} with a +43 attack bonus. The {@action Strike} deals damage according to the triggering ability."
+					],
+					"name": "Portal Redirection"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 60,
+				"fly ": 60
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "spatial pincers",
+					"attack": 43,
+					"traits": [
+						"magical",
+						"reach 15 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 7d10+18} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tentacle",
+					"attack": 43,
+					"traits": [
+						"agile",
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 7d8+20} bludgeoning plus Improved Grab",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "warpspines",
+					"attack": 43,
+					"traits": [
+						"agile",
+						"brutal",
+						"magical",
+						"propulsive range increment 120 feet",
+						"splash 4d6 piercing"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+12} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"entries": [
+						"Syndara makes six Strikes. Any creature struck must succeed at a DC 46 Will save or be teleported to a location of Syndara's choice within 60 feet of him when the flurry is complete. The teleportation has the conjuration, {@trait divine}, and {@trait teleportation} traits."
+					],
+					"name": "Dimensional Flurry"
+				},
+				{
+					"traits": [
+						"abjuration",
+						"divine"
+					],
+					"entries": [
+						"Syndara's grasp extends across dimensions. Creatures {@condition grabbed} by Syndara can't benefit from teleportation, {@trait extradimensional} effects, or effects that would move them to a different plane."
+					],
+					"name": "Dimensional Grasp"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"conjuration",
+						"divine"
+					],
+					"entries": [
+						"With great regret, Syndara calls his masterpieces from the firmament to crash down upon his enemies. He flings four worldspheres to any four points within 500 feet.",
+						"Each worldsphere deals {@dice 20d6} damage in a 40-foot burst (DC 48 basic Reflex save). Syndara chooses the type of damage for each worldsphere, which can be any type he chooses, though each worldsphere must deal a different type of damage. On a failed save, the target is pushed to the edge of the burst. No matter how many overlapping explosions it's caught in, a creature can take damage from only one worldsphere per round. Syndara is immune to the damage dealt by his worldspheres.",
+						"Syndara can't use Mover of Worlds again for {@dice 1d4} rounds."
+					],
+					"name": "Mover of Worlds"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"spatial"
+					],
+					"entries": [
+						"pincers."
+					],
+					"name": "Rend",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Spirit Turtle",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 86,
+			"level": 21,
+			"rarity": "Rare",
+			"alignment": "CG",
+			"size": "Gargantuan",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 35
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Sylvan"
+				],
+				"languageAbilities": [
+					"tongues"
+				]
+			},
+			"skills": {
+				"Diplomacy": {
+					"default": 36
+				},
+				"Medicine": {
+					"default": 40
+				},
+				"Nature": {
+					"default": 36
+				},
+				"Occultism": {
+					"default": 34
+				},
+				"Survival": {
+					"default": 40
+				},
+				"Lore (all subcategories)": {
+					"default": 34
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 6,
+				"Con": 11,
+				"Int": 6,
+				"Wis": 10,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+34, {@skill Survival} +40 Str +8, Dex +6, Con +11, Int +6, Wis +10, Cha +7."
+					],
+					"name": "Occultism"
+				}
+			],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 40
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 38
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 320,
+					"note": null,
+					"abilities": [
+						"regeneration 25 (deactivated by cold iron or evil)"
+					]
+				}
+			],
+			"weaknesses": [
+				{
+					"name": "cold iron"
+				}
+			],
+			"resistances": [
+				{
+					"amount": 20,
+					"name": "fire"
+				},
+				{
+					"amount": 15,
+					"name": "physical"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"emotion",
+						"enchantment",
+						"primal"
+					],
+					"entries": [
+						"100 feet. A spirit turtle exudes a constant feeling of calm. Creatures within the aura are subjected to a 10th-level {@spell calm emotions} spell (DC 44 Will save). The effects persist up to 1 hour, even if the creature leaves the aura. Regardless of the result of the saving throw, the creature is temporarily immune for 1 hour."
+					],
+					"name": "Pacifying Aura"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30,
+				"swim ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 37,
+					"traits": [
+						"magical",
+						"reach 20 feet"
+					],
+					"effects": [
+						"Improved Grab"
+					],
+					"damage": "{@damage 4d12+14} piercing plus {@dice 2d6} energy and Improved Grab",
+					"types": [
+						"energy",
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "foot",
+					"attack": 37,
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [
+						"Improved Knockdown"
+					],
+					"damage": "{@damage 4d10+14} bludgeoning plus {@dice 2d6} energy and Improved Knockdown",
+					"types": [
+						"bludgeoning",
+						"energy"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 44,
+					"entry": {
+						"4": {
+							"spells": [
+								{
+									"name": "heal",
+									"amount": "at will"
+								},
+								{
+									"name": "vital beacon",
+									"amount": "at will"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "breath of life",
+									"amount": 3
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "restoration",
+									"amount": 2
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "plane shift",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "regenerate",
+									"amount": 2
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "moment of renewal",
+									"amount": 2
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "field of life",
+									"amount": 2
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "primal phenomenon"
+								},
+								{
+									"name": "revival"
+								}
+							]
+						},
+						"constant": {
+							"10": {
+								"spells": [
+									{
+										"name": "tongues"
+									}
+								]
+							}
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 4d12+7} bludgeoning, DC 41."
+					],
+					"name": "Constrict",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"traits": [
+						"evocation",
+						"primal"
+					],
+					"trigger": "The spirit turtle begins their turn",
+					"entries": [
+						"The spirit turtle harnesses their connection with the world around them to augment their attacks. They choose acid, cold, electricity, or fire. The energy damage dealt by their Strikes and Unbalancing Stomp changes to the selected energy type."
+					],
+					"name": "Environmental Balance"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The spirit turtle makes a foot {@action Strike}. Whether or not the {@action Strike} hits, the stomp creates a shockwave on the ground in a 15-foot burst centered on the target.",
+						"All creatures in the area other than the spirit turtle take {@damage 10d10} bludgeoning and {@damage 4d8} energy damage and are knocked {@condition prone} (DC 41 basic Reflex save). Creatures that critically succeed at their Reflex save are not knocked {@condition prone}. The spirit turtle can't use."
+					],
+					"name": "Unbalancing Stomp"
+				},
+				{
+					"entries": [
+						"Stomp again for {@dice 1d4} rounds."
+					],
+					"name": "Unbalancing"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": [
+					"{@condition prone}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Sthira",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 87,
+			"level": 20,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Large",
+			"traits": [
+				"Cold"
+			],
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common (can't speak any language)"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 39
+				}
+			},
+			"abilityMods": {
+				"Str": 9,
+				"Dex": 2,
+				"Con": 10,
+				"Int": -5,
+				"Wis": 0,
+				"Cha": -2
+			},
+			"items": [
+				"+3 greater striking greatsword"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 45,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 39
+				},
+				"Ref": {
+					"default": 27
+				},
+				"Will": {
+					"default": 33
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 475,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [
+					"cold"
+				],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"weaknesses": [
+				{
+					"amount": 20,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"traits": [
+						"aura",
+						"cold",
+						"evocation",
+						"primal"
+					],
+					"entries": [
+						"20 feet. A creature that starts its turn in the aura takes {@damage 6d6} cold damage (DC 42 basic Fortitude). If the creature is {@condition grabbed} or {@condition restrained} by the sthira, it takes one degree of success worse than it rolled."
+					],
+					"name": "Freezing Death"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"traits": [
+						"cold"
+					],
+					"entries": [
+						"A creature that damages the sthira with an unarmed attack, tries to {@action Grapple} it, or otherwise touches it takes {@damage 6d6} cold damage (DC 42 basic Fortitude)."
+					],
+					"name": "Frozen to the Touch"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "greatsword",
+					"attack": 38,
+					"traits": [
+						"magical",
+						"versatile P",
+						"reach 10 feet"
+					],
+					"effects": [
+						"frostbite"
+					],
+					"damage": "{@damage 3d12+15} slashing plus {@damage 2d6} cold and frostbite",
+					"types": [
+						"cold",
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 38,
+					"traits": [
+						"magical",
+						"reach 10 feet"
+					],
+					"effects": [
+						"frostbite",
+						"Improved Grab"
+					],
+					"damage": "{@damage 3d8+15} bludgeoning plus {@damage 2d6} cold, frostbite, and Improved Grab",
+					"types": [
+						"bludgeoning",
+						"cold"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 39,
+					"attack": 31,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "ray of frost"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "polar ray",
+									"amount": 2
+								},
+								{
+									"name": "storm of vengeance",
+									"notes": [
+										"hail only each round"
+									]
+								},
+								{
+									"name": "wall of ice"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "massacre"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"A creature that takes cold damage from a sthira's Strikes or aura must attempt a DC 42 Fortitude save. A creature that already has {@condition persistent damage ||persistent cold damage} from frostbite ignores this effect.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected, and is temporarily immune to this ability for 1 hour.",
+								"Success": "The creature is unaffected.",
+								"Failure": "The creature takes {@damage 3d6} {@condition persistent damage ||persistent cold damage}.",
+								"Critical Failure": "As failure, but the creature is also {@condition drained|CRB|drained 1}."
+							}
+						}
+					],
+					"name": "Frostbite"
+				},
+				{
+					"entries": [
+						"Sthira (primal, necromancy) When a creature dies while it has {@condition persistent damage ||persistent cold damage} from the sthira's frostbite, the creature rises as a sthira in 24 hours. If the creature is grappled by the sthira when it dies, the {@condition dying} creature becomes permanently fused with the sthira instead. In this case, the sthira immediately recovers a number of Hit Points equal to the half the dead creature's maximum Hit Points."
+					],
+					"name": "Create"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"cold",
+					"slashing"
+				],
+				"condition": [
+					"{@condition drained}",
+					"{@condition dying}",
+					"{@condition grabbed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Syndara The Sculptor",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 88,
+			"level": 22,
+			"rarity": "Unique",
+			"alignment": "LE",
+			"size": "Medium",
+			"traits": [
+				"Aeon"
+			],
+			"creatureType": [
+				"Monitor"
+			],
+			"perception": {
+				"default": 39
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"spatial sense"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Senzar",
+					"Taldane",
+					"Tien",
+					"Utopian"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 41
+				},
+				"Arcana": {
+					"default": 37
+				},
+				"Athletics": {
+					"default": 39
+				},
+				"Deception": {
+					"default": 34
+				},
+				"Intimidation": {
+					"default": 39
+				},
+				"Occultism": {
+					"default": 37
+				},
+				"Demiplane Lore": {
+					"default": 45
+				}
+			},
+			"abilityMods": {
+				"Str": 10,
+				"Dex": 11,
+				"Con": 8,
+				"Int": 8,
+				"Wis": 11,
+				"Cha": 7
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+34, {@skill Lore||Demiplane Lore} +45, {@skill Intimidation} +39,"
+					],
+					"name": "Deception"
+				},
+				{
+					"entries": [
+						"+37 Str +10, Dex +11, Con +8, Int +8, Wis +11, Cha +7."
+					],
+					"name": "Occultism"
+				},
+				{
+					"entries": [
+						"Syndara instinctively knows the position of all creatures and objects within the Glass Lighthouse as a precise sense. His senses do not extend into extraplanar spaces, even if the entrance to these spaces is within the Lighthouse (such as a creature within a bag of holding)."
+					],
+					"name": "Spatial Sense"
+				}
+			],
+			"ac": {
+				"default": 48,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 39
+				},
+				"Ref": {
+					"default": 39
+				},
+				"Will": {
+					"default": 36
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 380,
+					"note": null,
+					"abilities": [
+						"fast healing 20"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"extradimensional"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"entries": [
+						"Syndara and his reflection (page 57) are two linked existences. If one of them is affected by a harmful effect, they can shift the harmful effect to the other as a free action, even if they can't act."
+					],
+					"name": "Essence Reflection"
+				},
+				{
+					"entries": [
+						"Syndara can foil any attempts to use planar powers against him. He is immune to all {@trait extradimensional} effects, such as maze, but can choose to be affected by such effects normally."
+					],
+					"name": "Extradimensional Immunity"
+				},
+				{
+					"entries": [
+						"Syndara can choose whether he is affected by his worldspheres (page 57)."
+					],
+					"name": "Keeper of the Lighthouse"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"conjuration",
+						"divine",
+						"teleportation"
+					],
+					"trigger": "Syndara is targeted by a ranged {@action Strike} or spell attack roll",
+					"entries": [
+						"Syndara opens a portal in front of the incoming missile, then opens another portal nearby that fires the missile at another creature within 60 feet of him. He takes no damage from the triggering attack and makes a ranged {@action Strike} with a +43 bonus. The {@action Strike} deals damage according to the triggering ability."
+					],
+					"name": "Portal Redirection"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"air walk"
+				],
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "palm",
+					"attack": 41,
+					"traits": [
+						"agile",
+						"finesse",
+						"reach 10 feet",
+						"unarmed"
+					],
+					"effects": [
+						"vicious impact"
+					],
+					"damage": "{@damage 6d6+18} bludgeoning plus vicious impact",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "knifehand",
+					"attack": 41,
+					"traits": [
+						"deadly d10",
+						"finesse",
+						"reach 10 feet",
+						"unarmed",
+						"versatile P"
+					],
+					"effects": [
+						"vicious impact"
+					],
+					"damage": "{@damage 7d8+18} slashing plus vicious impact",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "elemental gateway",
+					"attack": 39,
+					"traits": [
+						"cold",
+						"range 120 feet"
+					],
+					"effects": [
+						"cold",
+						"electricity",
+						"fire",
+						"or sonic"
+					],
+					"damage": "{@damage 4d10+19} acid, cold, electricity, fire, or sonic",
+					"types": [
+						"acid"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"conjuration",
+						"teleportation"
+					],
+					"requirements": "Syndara is in the Glass Lighthouse",
+					"entries": [
+						"Syndara folds the fabric of the Glass Lighthouse before opening several gateways from which dangerous elements spew forth. He teleports to his throne, regardless of distance, then makes three elemental gateway Strikes. Each {@action Strike} must target a different creature. He can't use Gateway Onslaught again for {@dice 1d4} rounds."
+					],
+					"name": "Gateway Onslaught"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"entries": [
+						"Requirements Syndara is in the Glass Lighthouse; Syndara exerts his will over the Glass Lighthouse to cause one of several effects.",
+						"The effect is magical, but Syndara isn't using magic when he takes this action\u2014just triggering a {@trait magical} effect he already set up. The level for each of these effects is 10, and any save is DC 45. Syndara or Syndara's Reflection can't use."
+					],
+					"name": "Planar Restructuring"
+				},
+				{
+					"entries": [
+						"Restructuring for {@dice 1d4} rounds.",
+						{
+							"type": "list",
+							"items": [
+								"Accelerate/Decelerate Syndara affects the flow of time around a target within 60 feet, affecting them with either haste or slow.",
+								"{@bold Deny} Syndara rejects the existence of a power other than his own, affecting an object with disjunction.",
+								"{@bold Rewind} Syndara rewinds time to undo harm. He or his reflection are affected by the two-action version of heal or by restoration.",
+								"{@bold Rise} Syndara creates a gravitational nexus of reverse gravity.",
+								"{@bold Sequester} Syndara folds space to affect a creature with resilient sphere."
+							]
+						}
+					],
+					"name": "Planar"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"frequency": "once per round",
+					"entries": [
+						"Syndara bends time to make multiple attacks. He makes three unarmed Strikes. If multiple attacks hit the same creature, combine their damage for the purpose of resistances and weaknesses."
+					],
+					"name": "Temporal Flurry"
+				},
+				{
+					"entries": [
+						"Syndara has had an eternity to reflect on his own weaknesses and the weakness of others. If he critically hits with a melee {@action Strike}, he can target the eyes, joints, or other weak points to add one of the following effects of his choice unless the target succeeds on a DC 46 Fortitude save.",
+						{
+							"type": "list",
+							"items": [
+								"The target becomes {@condition clumsy|CRB|clumsy 1} for 1 minute.",
+								"The target becomes {@condition enfeebled|CRB|enfeebled 1} for 1 minute.",
+								"The target takes {@damage 3d6} {@condition persistent damage ||persistent bleed damage}.",
+								"The target can't {@action Step} for 1 minute."
+							]
+						}
+					],
+					"name": "Vicious Impact"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"requirements": "Syndara is in the Glass",
+					"entries": [],
+					"name": "Walk the Spiral"
+				},
+				{
+					"entries": [
+						"Strikes a creature on his own turn; Syndara rotates the space of the Glass Lighthouse around himself to carry him to a distant location in an instant. He Strides twice. This movement doesn't trigger reactions. If his next action is to attack a different target than the triggering creature, he gains a +1 circumstance bonus to that attack; each time he Walks."
+					],
+					"name": "Lighthouse; Trigger Syndara"
+				},
+				{
+					"entries": [
+						"Spiral in a turn, this bonus increases by 1, to a maximum of +3."
+					],
+					"name": "the"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"bludgeoning",
+					"slashing"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition enfeebled}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Syu Tak-nwa",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 52,
+			"level": 20,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 33
+			},
+			"senses": {
+				"precise": [
+					"tremorsense 60 feet"
+				],
+				"imprecise": [],
+				"vague": [],
+				"other": []
+			},
+			"languages": {
+				"languages": [
+					"Goblin",
+					"Taldane",
+					"Tien",
+					"Ysoki"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 32
+				},
+				"Arcana": {
+					"default": 34
+				},
+				"Deception": {
+					"default": 34
+				},
+				"Nature": {
+					"default": 34
+				},
+				"Occultism": {
+					"default": 38
+				},
+				"Religion": {
+					"default": 34
+				},
+				"Society": {
+					"default": 32
+				},
+				"Thievery": {
+					"default": 29
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 6,
+				"Con": 2,
+				"Int": 7,
+				"Wis": 3,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+29 Str +3, Dex +6, Con +2, Int +7, Wis +3, Cha +5."
+					],
+					"name": "Thievery"
+				}
+			],
+			"ac": {
+				"default": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 31
+				},
+				"Ref": {
+					"default": 32
+				},
+				"Will": {
+					"default": 36
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 360,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"trip"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature within 20 feet uses a move action or leaves a square during a move action it's using",
+					"entries": [
+						"Syu Tak-nwa surreptitiously sends a strand of hair through a portal to emerge near the creature's feet, wings, or other ambulatory limbs. She attempts to {@action Trip} the creature."
+					],
+					"name": "Dragline Trip"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Syu Tak-nwa is the target of a ranged {@action Strike} or ranged spell attack roll",
+					"entries": [
+						"Requirements."
+					],
+					"name": "Spiraling Web"
+				},
+				{
+					"entries": [
+						"Tak-nwa is aware of the attack and not {@condition flat-footed} against it; Hairs erupt from portals around the missile and attempt to wrap around it. Syu Tak-nwa gains a +4 circumstance bonus to AC against the triggering attack. If this would cause the attack to miss, the missile remains tangled and suspended in midair."
+					],
+					"name": "Syu"
+				}
+			],
+			"speed": {
+				"abilities": [
+					"ignores difficult terrain"
+				],
+				"walk": 35
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "hair",
+					"attack": 35,
+					"traits": [
+						"agile",
+						"finesse",
+						"grapple",
+						"reach 15 feet",
+						"trip",
+						"unarmed",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 6d4+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "braid",
+					"attack": 35,
+					"traits": [
+						"forceful",
+						"reach 10 feet",
+						"shove",
+						"unarmed"
+					],
+					"effects": [],
+					"damage": "{@damage 6d6+20} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Occult Prepared",
+					"type": "Prepared",
+					"tradition": "Occult",
+					"DC": 45,
+					"attack": 37,
+					"entry": {
+						"0": {
+							"level": 10,
+							"spells": [
+								{
+									"name": "daze"
+								},
+								{
+									"name": "forbidding ward"
+								},
+								{
+									"name": "guidance"
+								},
+								{
+									"name": "shield"
+								},
+								{
+									"name": "telekinetic projectile"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "blink"
+								},
+								{
+									"name": "remove fear"
+								},
+								{
+									"name": "remove paralysis"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "black tentacles"
+								},
+								{
+									"name": "chilling darkness"
+								},
+								{
+									"name": "synaptic pulse"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "feeblemind"
+								},
+								{
+									"name": "repulsion"
+								},
+								{
+									"name": "true seeing"
+								}
+							]
+						},
+						"7": {
+							"spells": [
+								{
+									"name": "soothe"
+								},
+								{
+									"name": "spider sting"
+								},
+								{
+									"name": "warp mind"
+								}
+							]
+						},
+						"8": {
+							"spells": [
+								{
+									"name": "collective transposition"
+								},
+								{
+									"name": "haste"
+								},
+								{
+									"name": "slow"
+								}
+							]
+						},
+						"9": {
+							"spells": [
+								{
+									"name": "soothe"
+								},
+								{
+									"name": "unfathomable song"
+								},
+								{
+									"name": "weird"
+								}
+							]
+						},
+						"10": {
+							"spells": [
+								{
+									"name": "dispel magic"
+								},
+								{
+									"name": "vampiric exsanguination"
+								},
+								{
+									"name": "visions of danger"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"Pathfinder Advanced Player's Guide 237"
+					],
+					"entries": [
+						"3 Focus Points, DC 42; 10th cackle, curse of death, malicious shadow, needle of vengeance; Hex Cantrip (10th) evil eye."
+					],
+					"name": "Witch Hexes"
+				},
+				{
+					"entries": [
+						"Tak-nwa's mastery over her prehensile hair while in the Glass Lighthouse is so powerful that she can walk on thick strands like giant spider legs.",
+						"This makes her immune to tripping, and she ignores the effects of difficult terrain (but not greater difficult terrain). She can use her living hair to perform precise tasks such as picking up objects and performing simple {@action Interact} actions. She can also deliver hexes through her hair. Whenever Tak-nwa successfully casts a hex focus spell that requires 2 or more actions to cast and that doesn't require a spell attack roll, if her target is within reach, as part of the spellcasting activity she can make a hair {@action Strike} against the foe before applying {@trait any} effects of the hex. If this {@action Strike} misses, the hex has no effect."
+					],
+					"name": "Empowered Hair"
+				},
+				{
+					"entries": [
+						"Tak-nwa's familiar is an elephant hawk moth named Yon-so. Yon-so has a fly Speed of 40 feet, darkvision, and scent as an imprecise sense to a range of 30 feet. Yon-so can speak Tien, and when Yon-so rolls a success on a Reflex or Fortitude save it takes no damage against the effect."
+					],
+					"name": "Familiar"
+				},
+				{
+					"activity": {
+						"number": 3,
+						"unit": "action"
+					},
+					"traits": [
+						"certain kill",
+						"conjuration"
+					],
+					"entries": [
+						"Syu Tak-nwa tears thousands of minute portals into space, sending a single hair through each. The hairs emerge at a space within 30 feet, braiding and twining together to create a cube 20 feet to each side. This has the effects of a 10th-level {@spell force cage|APG}, except that Syu Tak-nwa does not need to sustain the basket; it has a duration of 1 minute. While the Silkworm's Basket persists, Syu Tak-nwa is {@condition quickened} and can use the extra action only to make a hair or braid {@action Strike} against any target within the basket, regardless of her distance to them. She can't create more than one basket at a time."
+					],
+					"name": "Silkworm's Basket"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Yoh Souran",
+			"isNpc": false,
+			"source": "FRP3",
+			"page": 91,
+			"level": 15,
+			"rarity": "Unique",
+			"alignment": "CG",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 25
+			},
+			"languages": {
+				"languages": [
+					"Taldane",
+					"Tien"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 28
+				},
+				"Athletics": {
+					"default": 24
+				},
+				"Society": {
+					"default": 28
+				},
+				"Piloting Lore": {
+					"default": 38
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 7,
+				"Con": 3,
+				"Int": 5,
+				"Wis": 0,
+				"Cha": 3
+			},
+			"items": [
+				"heavy crossbow"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+38, {@skill Society} +28 Str +3, Dex +7, Con +3, Int +5, Wis +0, Cha +3 Items heavy crossbow."
+					],
+					"name": "Ruby Phoenix Tournament Lore"
+				},
+				{
+					"entries": [
+						"II recognizes Yoh as a descendent of its creator, and the magical ship extends him protections beyond those that would be given to most other pilots."
+					],
+					"name": "Ancestral Airship Link The Solar Jian"
+				},
+				{
+					"entries": [
+						"Yoh is piloting the Solar Jian II, his AC and saves are increased by 4."
+					],
+					"name": "If"
+				}
+			],
+			"ac": {
+				"default": 38,
+				"while piloting Solar Jian II": 42,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 26
+				},
+				"Ref": {
+					"default": 28
+				},
+				"Will": {
+					"default": 23
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 265,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "One or more creatures aboard",
+					"requirements": "Yoh is piloting an airborne vessel; Yoh's vessel are the target of an attack or attempt a Reflex save and the attacker is not aboard the ship",
+					"entries": [
+						"‘Em! (manipulate) ; Yoh attempts evasive maneuvers. All creatures aboard the vessel gain a +2 status bonus to their AC and saves against the triggering effect."
+					],
+					"name": "Shake"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Ranged",
+					"name": "heavy crossbow",
+					"attack": 30,
+					"traits": [
+						"range increment 120 feet",
+						"reload 2"
+					],
+					"effects": [],
+					"damage": "{@damage 4d10+6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "Yoh is piloting the Solar Jian II",
+					"frequency": "once per hour;",
+					"entries": [
+						"While the Solar Jian II is not a combat vessel, it does have a magically renewing supply of fireworks for victory parades and the like. Yoh fires them at a 20-foot burst within 60 feet. Creatures in the area take {@damage 3d6} fire damage and {@damage 3d6} sonic damage with a Fortitude save. Critical Success The target is unaffected. Success The target takes half damage and is {@condition dazzled} for 1 round. Failure The target takes full damage and is {@condition dazzled} for 3 rounds. Critical Failure The target takes double damage, takes {@damage 3d4} {@condition persistent damage ||persistent fire damage}, and is {@condition dazzled} for 1 minute."
+					],
+					"name": "Deploy Countermeasures"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"Requirements Yoh is piloting an airborne vessel; Yoh pumps the brakes, banks quickly, or performs some other aerial maneuver to get the drop on an enemy. He attempts a."
+					],
+					"name": "I'll Get You into Position!"
+				},
+				{
+					"entries": [
+						"{@skill Lore} check against the enemy's {@skill Perception} DC.",
+						"If he succeeds, that enemy is {@condition flat-footed} to the next attack from a creature onboard as long as it is made before Yoh's next turn. All enemies who witnessed the maneuver are then temporarily immune for 1 day."
+					],
+					"name": "Piloting"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "Yoh is piloting an airborne vessel",
+					"frequency": "once per hour;",
+					"entries": [
+						"Yoh pushes the ship, tripling its speed for 1 round. After this point, the ship stalls\u2014though it Hovers in place, it can't move under its own power for 1 round."
+					],
+					"name": "Punch It"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing"
+				],
+				"condition": [
+					"{@condition dazzled}",
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"RA",
+				"AD",
+				"AC",
+				"CC",
+				"UW"
+			]
+		}
+	]
+}

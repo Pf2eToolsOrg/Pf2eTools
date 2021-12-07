@@ -313,34 +313,10 @@
 			"entries": [
 				"You gain the {@action Rage} action, which lets you fly into a frenzy.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Rage",
-					"source": "CRB",
-					"page": 84,
-					"requirements": "You aren't {@condition fatigued} or raging.",
-					"traits": [
-						"Barbarian",
-						"Concentrate",
-						"Emotion",
-						"Mental"
-					],
-					"activity": {
-						"number": 1,
-						"unit": "action"
-					},
-					"entries": [
-						"You tap into your inner fury and begin raging. You gain a number of temporary Hit Points equal to your level plus your Constitution modifier. This frenzy lasts for 1 minute, until there are no enemies you can perceive, or until you fall {@condition unconscious}, whichever comes first. You can't voluntarily stop raging. While you are raging:",
-						{
-							"type": "list",
-							"items": [
-								"You deal 2 additional damage with melee weapons and unarmed attacks. This additional damage is halved if your weapon or unarmed attack is {@trait agile}.",
-								"You take a \u20131 penalty to AC.",
-								"You can't use actions with the {@trait concentrate} trait unless they also have the {@trait rage} trait. You can {@action Seek|CRB} while raging."
-							]
-						},
-						"After you stop raging, you lose any remaining temporary Hit Points from {@action Rage}, and you can't {@action Rage} again for 1 minute."
-					]
+					"source": "CRB"
 				}
 			]
 		},
@@ -499,23 +475,10 @@
 			"entries": [
 				"Your rage intensifies and lets you burst into action. Your proficiency rank for your barbarian class DC increases to expert. You gain the {@action Mighty Rage} free action.",
 				{
-					"type": "ability",
-					"style": "full",
+					"type": "statblock",
+					"tag": "action",
 					"name": "Mighty Rage",
-					"source": "CRB",
-					"page": 85,
-					"traits": [
-						"Barbarian"
-					],
-					"trigger": "You use the {@action Rage} action on your turn.",
-					"activity": {
-						"number": 1,
-						"unit": "free",
-						"entry": "{@as F}"
-					},
-					"entries": [
-						"Use an action that has the {@trait rage} trait. Alternatively, you can increase the actions of the triggering {@action Rage} to 2 to instead use a 2-action activity with the rage trait."
-					]
+					"source": "CRB"
 				}
 			]
 		},

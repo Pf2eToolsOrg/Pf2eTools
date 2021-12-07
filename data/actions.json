@@ -177,14 +177,14 @@
 			"name": "Affix a Fulu",
 			"source": "SoM",
 			"page": 158,
-			"traits": [
-				"Manipulate"
-			],
 			"activity": {
 				"number": 1,
 				"unit": "action",
 				"entry": "{@as 1}"
 			},
+			"traits": [
+				"Manipulate"
+			],
 			"actionType": {
 				"basic": true
 			},
@@ -253,599 +253,11 @@
 			]
 		},
 		{
-			"name": "Reloading Strike",
-			"source": "G&G",
-			"page": 108,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Drifter|G&G"
-				]
-			},
-			"requirements": "You're wielding a firearm or crossbow in one hand, and your other hand either wields a one-handed melee weapon or is empty.",
-			"entries": [
-				"You make a melee attack and then reload your gun in one fluid movement. {@action Strike} an opponent within reach with your one-handed melee weapon (or, if your other hand is empty, with an unarmed attack), and then {@action Interact} to reload. You don't need a free hand to reload in this way."
-			]
-		},
-		{
-			"name": "Into the Fray",
-			"source": "G&G",
-			"page": 108,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Drifter|G&G"
-				]
-			},
-			"trigger": "You roll Initiative.",
-			"entries": [
-				"You know trouble can lurk around every corner, and your hands never stray far from your holsters. You can {@action Interact} to draw a one-handed ranged weapon and can then {@action Interact} to draw a one-handed melee weapon. As your first action on your first turn, you can {@action Stride} as a free action toward an enemy you can perceive. If you can't perceive any enemies or can't end your movement closer to one, you can't use this {@action Stride}."
-			]
-		},
-		{
-			"name": "Covered Reload",
-			"source": "G&G",
-			"page": 109,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Sniper|G&G"
-				]
-			},
-			"entries": [
-				"You duck into a safe position or minimize your profile while reloading to make your next attack. Either {@action Take Cover} or attempt to {@action Hide}, then {@action Interact} to reload. As normal, you must meet the requirements to {@action Take Cover} or {@action Hide}; you must be {@condition prone}, benefiting from cover, or near a feature that allows you to {@action Take Cover}, and you need to be benefiting from cover or {@condition concealed} to a creature to {@action Hide} from that creature."
-			]
-		},
-		{
-			"name": "One Shot, One Kill",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Sniper|G&G"
-				]
-			},
-			"trigger": "You roll Initiative.",
-			"entries": [
-				"Your first shot is the deadliest. {@action Interact} to draw a firearm or crossbow. On your first turn, your first {@action Strike} with that weapon deals an additional {@damage 1d6} precision damage. This precision damage increases to {@damage 2d6} at 9th level and {@damage 3d6} at 15th level."
-			]
-		},
-		{
-			"name": "Vital Shot",
-			"source": "G&G",
-			"page": 108,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Sniper|G&G"
-				]
-			},
-			"entries": [
-				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
-			]
-		},
-		{
-			"name": "Ghost Shot",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger",
-				"Flourish"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Sniper|G&G"
-				]
-			},
-			"entries": [
-				"Make a firearm or crossbow {@action Strike}. If you're {@condition hidden} from or {@condition undetected} by the target, the {@action Strike} adds the additional precision damage from {@action One Shot, One Kill}; if you would already receive that additional damage on the {@action Strike}, the effects aren't cumulative. If you were {@condition undetected} or {@condition unnoticed} by any creatures, you're now {@condition hidden} from them instead, as the origin of the attack is clear."
-			]
-		},
-		{
-			"name": "Ten Paces",
-			"source": "G&G",
-			"page": 109,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Pistolero|G&G"
-				]
-			},
-			"trigger": "You roll Initiative.",
-			"entries": [
-				"You react to trouble with lightning speed, positioning yourself just right. You gain a +2 circumstance bonus to your initiative roll, and you can {@action Interact} to draw a one-handed firearm or one-handed crossbow. As your first action on your first turn, you can {@action Step} up to 10 feet as a free action."
-			]
-		},
-		{
-			"name": "Raconteur's Reload",
-			"source": "G&G",
-			"page": 109,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Pistolero|G&G"
-				]
-			},
-			"entries": [
-				"Your rapid or forceful words draw the enemy's attention away from your hands long enough to chamber another bullet. {@action Interact} to reload and then attempt a {@skill Deception} check to {@action Create a Diversion} or an {@skill Intimidation} check to {@action Demoralize}."
-			]
-		},
-		{
-			"name": "Pistolero's Retort",
-			"source": "G&G",
-			"page": 108,
-			"activity": {
-				"number": 1,
-				"unit": "reaction"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Pistolero|G&G"
-				]
-			},
-			"requirements": "You're wielding a one-handed firearm or one-handed crossbow.",
-			"trigger": "A foe within the first range increment of the onehanded firearm or one-handed crossbow you're wielding critically fails an attack roll against you.",
-			"entries": [
-				"You punish your foe's failure with a shot. Make a {@action Strike} against the triggering foe with a one-handed firearm or one-handed crossbow."
-			]
-		},
-		{
-			"source": "G&G",
-			"page": 140,
-			"name": "Dispelling Bullet",
-			"traits": [
-				"Abjuration",
-				"Magical",
-				"Spellshot"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"archetype": [
-					"Spellshot|G&G"
-				]
-			},
-			"entries": [
-				"You imprint a bullet with a field of abjuration built upon your magical signature, disrupting the magic of whatever it hits. Make a firearm or crossbow {@action Strike} against a foe you can see. If you hit, you attempt to counteract a spell effect active on the target (your choice, or the highest-level effect if you don't choose). Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
-			],
-			"activity": {
-				"unit": "action",
-				"number": 2
-			}
-		},
-		{
-			"source": "G&G",
-			"page": 140,
-			"name": "Recall Ammunition",
-			"traits": [
-				"Conjuration",
-				"Magical",
-				"Spellshot",
-				"Teleportation"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"archetype": [
-					"Spellshot|G&G"
-				]
-			},
-			"trigger": "You miss with a firearm or crossbow {@action Strike} while using an ordinary level-0 bolt or bullet",
-			"entries": [
-				"You amplify the connection between bullet and firearm, calling your missed shot back into your gun. The ammunition you just fired is reloaded back into your gun and immediately ready to fire again."
-			],
-			"activity": {
-				"unit": "reaction",
-				"number": 1
-			}
-		},
-		{
-			"source": "G&G",
-			"page": 140,
-			"name": "Energy Shot",
-			"traits": [
-				"Evocation",
-				"Magical",
-				"Spellshot"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"archetype": [
-					"Spellshot|G&G"
-				]
-			},
-			"trigger": "You roll initiative.",
-			"entries": [
-				"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-			],
-			"activity": {
-				"unit": "free",
-				"number": 1
-			}
-		},
-		{
-			"source": "G&G",
-			"page": 140,
-			"name": "Energy Shot",
-			"traits": [
-				"Evocation",
-				"Magical",
-				"Spellshot"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"archetype": [
-					"Spellshot|G&G"
-				]
-			},
-			"trigger": "You roll initiative.",
-			"entries": [
-				"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
-			],
-			"activity": {
-				"unit": "free",
-				"number": 1
-			}
-		},
-		{
-			"name": "Thoughtful Reload",
-			"source": "G&G",
-			"page": 140,
-			"traits": [
-				"Gunslinger"
-			],
-			"entries": [
-				"As you sink deep into a state of analytical calm and focus on the foe before you, your hands reload a bullet instinctively. Attempt a {@action Recall Knowledge} check against an opponent you can see and then {@action Interact} to reload."
-			],
-			"activity": {
-				"unit": "action",
-				"number": 1
-			}
-		},
-		{
-			"name": "Grim Swagger",
-			"source": "G&G",
-			"page": 109,
-			"activity": {
-				"number": 3,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger",
-				"Auditory",
-				"Emotion",
-				"Fear",
-				"Mental",
-				"Linguistic"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Pistolero|G&G"
-				]
-			},
-			"requirements": "You have a one-handed firearm or one-handed crossbow visibly worn or wielded.",
-			"entries": [
-				"You attempt to clear the room by promising a grim fate to anyone who doesn't do what you say, and quickly. Attempt a Deception or Intimidation check against the Will DCs of each creature within 30 feet, except for your allies. Regardless of whether you succeed or fail, each subject is temporarily immune to your Grim Swagger for 10 minutes.",
-				"For example, if you attempt a Deception check, you lie and boast about your prowess or the large group of friends on their way to back you up. If you attempt an Intimidation check, you promise everyone in the room that you're going to be the last thing they see.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "The creature becomes {@condition frightened 3}. If it's lower level than you, it's also {@condition fleeing} for 1 round.",
-						"Success": "The creature becomes {@condition frightened 2}."
-					}
-				}
-			]
-		},
-		{
-			"name": "Explode",
-			"source": "G&G",
-			"page": 19,
-			"activity": {
-				"number": 2,
-				"unit": "action"
-			},
-			"traits": [
-				"Fire",
-				"Unstable",
-				"Inventor",
-				"Manipulate"
-			],
-			"actionType": {
-				"class": [
-					"Inventor|G&G"
-				]
-			},
-			"entries": [
-				"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you're wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
-				"At 3rd level, and every level thereafter, increase your explosion's damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
-				"If you have the breakthrough innovation class feature, you can choose either a 5-foot or 10-foot emanation for the area when you use Explode; if you have the revolutionary innovation class feature, you can choose a 5-foot, 10-foot, or 15-foot emanation."
-			]
-		},
-		{
-			"name": "Clear a Path",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Vanguard|G&G"
-				]
-			},
-			"requirements": "You're wielding a two-handed firearm or two-handed crossbow.",
-			"entries": [
-				"You push outward with your weapon to clear some space before quickly reloading a fresh round. You make an {@skill Athletics} check to {@action Shove} an opponent within your reach using your weapon, then {@action Interact} to reload. For this {@action Shove}, you don't need a free hand, and you add the weapon's item bonus on attack rolls (if any) to the {@skill Athletics} check. If your last action was a ranged {@action Strike} with the weapon, use the same multiple attack penalty as that {@action Strike} for the {@action Shove}; the {@action Shove} still counts toward your multiple attack penalty on further attacks as normal."
-			]
-		},
-		{
-			"name": "Overdrive",
-			"source": "G&G",
-			"page": 16,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Inventor",
-				"Manipulate"
-			],
-			"actionType": {
-				"class": [
-					"Inventor|G&G"
-				]
-			},
-			"frequency": "once per round",
-			"entries": [
-				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
-				{
-					"type": "successDegree",
-					"entries": {
-						"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can't use Overdrive for 1 minute.",
-						"Success": "Your gizmos go into overdrive, adding power to your attacks. As critical success, except the additional damage is equal to half your Intelligence modifier.",
-						"Failure": "You make a miscalculation and nothing happens.",
-						"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can't use Overdrive again for 1 minute as your gizmos cool down and reset."
-					}
-				}
-			],
-			"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can't extend your Overdrive's duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
-		},
-		{
-			"name": "Siegebreaker",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 3,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger",
-				"Flourish"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Vanguard|G&G"
-				]
-			},
-			"requirements": "You're wielding a firearm that has the kickback or scatter trait, or a two-handed crossbow.",
-			"entries": [
-				"With unbelievable force, you charge and smash your weapon into a target before digging in your heels and pulling the trigger. {@action Leap} or {@action Stride}, then make a {@action Strike} with the required firearm or crossbow against an adjacent target. This Strike deals an additional {@damage 3d8} bludgeoning damage and ignores 10 points of the target's Hardness (if any), or of their shield's Hardness if the target uses {@feat Shield Block}.",
-				"After the {@action Strike}, you become {@condition immobilized} and position the required weapon defensively, gaining a +1 circumstance bonus to AC, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait. Both effects last until the start of your next turn. If a force would move you while you're {@condition immobilized} in this way, it must succeed at an appropriate check against your class DC."
-			]
-		},
-		{
-			"name": "Spinning Crush",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 3,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Vanguard|G&G"
-				]
-			},
-			"requirements": "You're wielding a loaded firearm or loaded crossbow.",
-			"entries": [
-				"You go into a vicious spin, smashing your weapon into those nearby and increasing your momentum by firing. All creatures adjacent to you take {@damage 1d6} bludgeoning damage plus your Strength modifier; this increases to {@damage 2d6} if your firearm has a {@item striking} rune, {@damage 3d6} if it has a {@item greater striking} rune, and {@damage 4d6} if it has a {@item major striking} rune. This ability does not apply other effects that increase damage with your firearm {@action Strike||Strikes} such as weapon specialization. Creatures affected by this attack must attempt a basic Reflex save. A creature that fails its save is also pushed 5 feet directly away from you."
-			]
-		},
-		{
-			"name": "Living Fortification",
-			"source": "G&G",
-			"page": 110,
-			"activity": {
-				"number": 1,
-				"unit": "free"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Vanguard|G&G"
-				]
-			},
-			"trigger": "You roll Initiative.",
-			"entries": [
-				"You can posture defensively with firearms or crossbows, acting like a walking tower. {@action Interact} to draw a firearm or crossbow. You then position that weapon defensively, gaining a +1 circumstance bonus to AC until the start of your first turn, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait."
-			]
-		},
-		{
-			"name": "Finish the Job",
-			"source": "G&G",
-			"page": 108,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Drifter|G&G"
-				]
-			},
-			"requirements": "On your last action, you failed (but didn't critically fail) a Strike with a firearm or crossbow you're holding in one hand, and your other hand is either wielding a melee weapon or empty.",
-			"entries": [
-				"Your last attack failed, but it set you up for another. Make a {@action Strike} with your other hand, using a one-handed melee weapon or unarmed attack. This {@action Strike} uses the same multiple attack penalty as the {@action Strike} that failed on the last action. Afterward, increase your multiple attack penalty normally."
-			]
-		},
-		{
-			"name": "Drifter's Wake",
-			"source": "G&G",
-			"page": 109,
-			"activity": {
-				"number": 3,
-				"unit": "action"
-			},
-			"traits": [
-				"Gunslinger"
-			],
-			"actionType": {
-				"class": [
-					"Gunslinger|G&G"
-				],
-				"subclass": [
-					"Drifter|G&G"
-				]
-			},
-			"entries": [
-				"You drift across the battlefield, striking down foes as you go. You {@action Stride}, and you can {@action Strike} up to three times at any points during your movement. Each attack must target a different enemy and must be made with a one-handed firearm, crossbow, melee weapon, or unarmed attack. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you've made all your attacks. Your movement doesn't trigger reactions."
-			]
-		},
-		{
-			"name": "Automaton Aim",
-			"source": "G&G",
-			"page": 39,
-			"activity": {
-				"number": 1,
-				"unit": "action"
-			},
-			"actionType": {
-				"ancestry": "Automaton|G&G",
-				"heritage": "Sharpshooter Automaton|G&G"
-			},
-			"entries": [
-				"You steady your body and observe the events of the battlefield to maximize the range of your next shot. You reduce the penalty for firing into your weapon's second range increment from \u20132 to 0 for the next ranged attack you make this turn. You can use this action a second time in the same turn to reduce the penalty from firing into your weapon's third range increment from \u20134 to 0 for the next ranged attack you make this turn."
-			]
-		},
-		{
 			"name": "Arcane Cascade",
 			"source": "SoM",
-			"page": 37,
+			"page": 38,
 			"activity": {
-				"number": 2,
+				"number": 1,
 				"unit": "action"
 			},
 			"traits": [
@@ -914,6 +326,22 @@
 			"trigger": "A creature within your reach uses a {@trait manipulate} action or a {@trait move} action, makes a ranged attack, or leaves a square during a move action it's using.",
 			"entries": [
 				"You lash out at a foe that leaves an opening. Make a melee {@action Strike|CRB} against the triggering creature. If your attack is a critical hit and the trigger was a {@trait manipulate} action, you disrupt that action. This {@action Strike|CRB} doesn't count toward your multiple attack penalty, and your multiple attack penalty doesn't apply to this {@action Strike|CRB}."
+			]
+		},
+		{
+			"name": "Automaton Aim",
+			"source": "G&G",
+			"page": 39,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"actionType": {
+				"ancestry": "Automaton|G&G",
+				"heritage": "Sharpshooter Automaton|G&G"
+			},
+			"entries": [
+				"You steady your body and observe the events of the battlefield to maximize the range of your next shot. You reduce the penalty for firing into your weapon's second range increment from \u20132 to 0 for the next ranged attack you make this turn. You can use this action a second time in the same turn to reduce the penalty from firing into your weapon's third range increment from \u20134 to 0 for the next ranged attack you make this turn."
 			]
 		},
 		{
@@ -1222,6 +650,8 @@
 			]
 		},
 		{
+			"name": "Change Shape",
+			"source": "LOAG",
 			"activity": {
 				"number": 1,
 				"unit": "action"
@@ -1233,21 +663,18 @@
 				"Polymorph",
 				"Transmutation"
 			],
-			"add_hash": "Kitsune",
 			"actionType": {
 				"ancestry": "Kitsune|LOAG"
 			},
 			"entries": [
 				"You transform into a specific alternate form determined by your heritage. If your heritage doesn't list a form, your alternate form is a tailless form, which is a {@filter common Medium humanoid ancestry|ancestries|Traits=Humanoid|Size=Medium|Rarity=Common} prevalent where you grew up (typically {@ancestry human}). This form is the same age and body type as your true form and has roughly analogous physical traits, such as hair color. Using Change Shape counts as creating a disguise for the {@action Impersonate} use of {@skill Deception}. You lose any unarmed {@action Strike||Strikes} you gained from a kitsune heritage or ancestry feat in this form. You can remain in your alternate form indefinitely, and you can shift back to your true kitsune form by using this action again."
 			],
-			"source": "LOAG",
-			"name": "Change Shape"
+			"add_hash": "Kitsune"
 		},
 		{
 			"name": "Change Shape",
 			"source": "LOAG",
 			"page": 79,
-			"add_hash": "Beastkin",
 			"activity": {
 				"number": 1,
 				"unit": "action",
@@ -1264,7 +691,8 @@
 			},
 			"entries": [
 				"You change into your humanoid or hybrid shape. Each shape has a specific, persistent appearance, and most beastkin remain in their hybrid shapes by default. In hybrid shape, you appear as a mix between your ancestry and your inherent animal. While in hybrid shape, you gain a jaws unarmed Strike resembling the features of your inherent animal (fangs for bats, beaks for eagles, mandibles for wasps, and so on). Your jaws deal {@dice 1d4} piercing damage, have the {@trait agile}, {@trait finesse}, and {@trait unarmed} traits, and are in the brawling weapon group. In your humanoid shape, you retain the appearance of your original ancestry."
-			]
+			],
+			"add_hash": "Beastkin"
 		},
 		{
 			"name": "Change Tradition Focus",
@@ -1301,6 +729,30 @@
 			},
 			"entries": [
 				"You meditate, pray, or otherwise try to reinforce your soul's connection to your soulforged armament. This takes 10 minutes. Attempt a counteract check against your soulforged corruption. The counteract level is half your level rounded up, and the counteract check modifier is your {@skill Religion} modifier. If successful, reduce the stage of your {@disease soulforged corruption|SoM} by 1 (to a minimum of Stage 1)."
+			]
+		},
+		{
+			"name": "Clear a Path",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a two-handed firearm or two-handed crossbow.",
+			"entries": [
+				"You push outward with your weapon to clear some space before quickly reloading a fresh round. You make an {@skill Athletics} check to {@action Shove} an opponent within your reach using your weapon, then {@action Interact} to reload. For this {@action Shove}, you don't need a free hand, and you add the weapon's item bonus on attack rolls (if any) to the {@skill Athletics} check. If your last action was a ranged {@action Strike} with the weapon, use the same multiple attack penalty as that {@action Strike} for the {@action Shove}; the {@action Shove} still counts toward your multiple attack penalty on further attacks as normal."
 			]
 		},
 		{
@@ -1653,6 +1105,29 @@
 			]
 		},
 		{
+			"name": "Covered Reload",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"You duck into a safe position or minimize your profile while reloading to make your next attack. Either {@action Take Cover} or attempt to {@action Hide}, then {@action Interact} to reload. As normal, you must meet the requirements to {@action Take Cover} or {@action Hide}; you must be {@condition prone}, benefiting from cover, or near a feature that allows you to {@action Take Cover}, and you need to be benefiting from cover or {@condition concealed} to a creature to {@action Hide} from that creature."
+			]
+		},
+		{
 			"name": "Craft",
 			"source": "CRB",
 			"page": 244,
@@ -1816,6 +1291,7 @@
 					"Rogue"
 				]
 			},
+			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
 				"You apply one of the following debilitations, which lasts until the end of your next turn. ",
 				{
@@ -2138,6 +1614,31 @@
 			]
 		},
 		{
+			"name": "Dispelling Bullet",
+			"source": "G&G",
+			"page": 140,
+			"activity": {
+				"unit": "action",
+				"number": 2
+			},
+			"traits": [
+				"Abjuration",
+				"Magical",
+				"Spellshot"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"archetype": [
+					"Spellshot|G&G"
+				]
+			},
+			"entries": [
+				"You imprint a bullet with a field of abjuration built upon your magical signature, disrupting the magic of whatever it hits. Make a firearm or crossbow {@action Strike} against a foe you can see. If you hit, you attempt to counteract a spell effect active on the target (your choice, or the highest-level effect if you don't choose). Your counteract level is equal to half your level (rounded up), and your counteract check modifier is equal to your class DC \u2013 10."
+			]
+		},
+		{
 			"name": "Drain Bonded Item",
 			"source": "CRB",
 			"page": 205,
@@ -2158,6 +1659,29 @@
 			"frequency": "once per day",
 			"entries": [
 				"You expend the power stored in your bonded item. During your turn, you gain the ability to cast one spell you prepared today and already cast, without spending a spell slot. You must still {@action Cast a Spell|CRB|Cast the Spell} and meet the spell's other requirements."
+			]
+		},
+		{
+			"name": "Drifter's Wake",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"entries": [
+				"You drift across the battlefield, striking down foes as you go. You {@action Stride}, and you can {@action Strike} up to three times at any points during your movement. Each attack must target a different enemy and must be made with a one-handed firearm, crossbow, melee weapon, or unarmed attack. Each attack counts toward your multiple attack penalty, but your multiple attack penalty doesn't increase until you've made all your attacks. Your movement doesn't trigger reactions."
 			]
 		},
 		{
@@ -2305,6 +1829,58 @@
 			]
 		},
 		{
+			"name": "Energy Shot",
+			"source": "G&G",
+			"page": 140,
+			"activity": {
+				"unit": "free",
+				"number": 1
+			},
+			"traits": [
+				"Evocation",
+				"Magical",
+				"Spellshot"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"archetype": [
+					"Spellshot|G&G"
+				]
+			},
+			"trigger": "You roll initiative.",
+			"entries": [
+				"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
+			]
+		},
+		{
+			"name": "Energy Shot",
+			"source": "G&G",
+			"page": 140,
+			"activity": {
+				"unit": "free",
+				"number": 1
+			},
+			"traits": [
+				"Evocation",
+				"Magical",
+				"Spellshot"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"archetype": [
+					"Spellshot|G&G"
+				]
+			},
+			"trigger": "You roll initiative.",
+			"entries": [
+				"You unleash a small surge of magical energy into your weapon, shrouding the bullet with potential energy and granting it the ability to deal energy damage to your foes to exploit their weaknesses. You can Interact to draw a ranged weapon. On your first three {@action Strike||Strikes} of this encounter with a firearm or crossbow, you deal an additional 1 acid, cold, fire or electricity damage. You choose which damage type to deal as part of making each {@action Strike}."
+			]
+		},
+		{
 			"name": "Escape",
 			"source": "CRB",
 			"page": 470,
@@ -2357,6 +1933,31 @@
 			]
 		},
 		{
+			"name": "Explode",
+			"source": "G&G",
+			"page": 19,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"traits": [
+				"Fire",
+				"Unstable",
+				"Inventor",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Inventor|G&G"
+				]
+			},
+			"entries": [
+				"You intentionally take your innovation beyond normal safety limits, making it explode and damage nearby creatures without damaging the innovation... hopefully. The explosion deals {@dice 2d6} fire damage with a basic Reflex save to all creatures in a 5-foot emanation around you (if you're wearing or holding the innovation) or around your innovation (if your innovation is a minion).",
+				"At 3rd level, and every level thereafter, increase your explosion's damage by {@damage (#$prompt_number:min=3,title=Character Level,default=3$#)d6|1d6}.",
+				"If you have the breakthrough innovation class feature, you can choose either a 5-foot or 10-foot emanation for the area when you use Explode; if you have the revolutionary innovation class feature, you can choose a 5-foot, 10-foot, or 15-foot emanation."
+			]
+		},
+		{
 			"name": "Feint",
 			"source": "CRB",
 			"page": 246,
@@ -2386,6 +1987,30 @@
 						"Critical Failure": "Your feint backfires. You are {@condition flat-footed|CRB} against melee attacks the target attempts against you until the end of your next turn."
 					}
 				}
+			]
+		},
+		{
+			"name": "Finish the Job",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"requirements": "On your last action, you failed (but didn't critically fail) a Strike with a firearm or crossbow you're holding in one hand, and your other hand is either wielding a melee weapon or empty.",
+			"entries": [
+				"Your last attack failed, but it set you up for another. Make a {@action Strike} with your other hand, using a one-handed melee weapon or unarmed attack. This {@action Strike} uses the same multiple attack penalty as the {@action Strike} that failed on the last action. Afterward, increase your multiple attack penalty normally."
 			]
 		},
 		{
@@ -2645,6 +2270,30 @@
 			]
 		},
 		{
+			"name": "Ghost Shot",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Flourish"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"Make a firearm or crossbow {@action Strike}. If you're {@condition hidden} from or {@condition undetected} by the target, the {@action Strike} adds the additional precision damage from {@action One Shot, One Kill}; if you would already receive that additional damage on the {@action Strike}, the effects aren't cumulative. If you were {@condition undetected} or {@condition unnoticed} by any creatures, you're now {@condition hidden} from them instead, as the origin of the attack is clear."
+			]
+		},
+		{
 			"name": "Glimpse of Redemption",
 			"source": "CRB",
 			"page": 107,
@@ -2757,6 +2406,43 @@
 						"Success": "Your opponent is {@condition grabbed|CRB} until the end of your next turn unless you move or your opponent {@action Escape|CRB|Escapes}.",
 						"Failure": "You fail to grab your opponent. If you already had the opponent {@condition grabbed|CRB} or {@condition restrained|CRB} using a Grapple, those conditions on that creature end.",
 						"Critical Failure": "If you already had the opponent {@condition grabbed|CRB} or {@condition restrained|CRB}, it breaks free. Your target can either grab you, as if it succeeded at using the Grapple action against you, or force you to fall and land {@condition prone|CRB}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Grim Swagger",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Auditory",
+				"Emotion",
+				"Fear",
+				"Mental",
+				"Linguistic"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"requirements": "You have a one-handed firearm or one-handed crossbow visibly worn or wielded.",
+			"entries": [
+				"You attempt to clear the room by promising a grim fate to anyone who doesn't do what you say, and quickly. Attempt a Deception or Intimidation check against the Will DCs of each creature within 30 feet, except for your allies. Regardless of whether you succeed or fail, each subject is temporarily immune to your Grim Swagger for 10 minutes.",
+				"For example, if you attempt a Deception check, you lie and boast about your prowess or the large group of friends on their way to back you up. If you attempt an Intimidation check, you promise everyone in the room that you're going to be the last thing they see.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The creature becomes {@condition frightened 3}. If it's lower level than you, it's also {@condition fleeing} for 1 round.",
+						"Success": "The creature becomes {@condition frightened 2}."
 					}
 				}
 			]
@@ -3044,6 +2730,30 @@
 			]
 		},
 		{
+			"name": "Into the Fray",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You know trouble can lurk around every corner, and your hands never stray far from your holsters. You can {@action Interact} to draw a one-handed ranged weapon and can then {@action Interact} to draw a one-handed melee weapon. As your first action on your first turn, you can {@action Stride} as a free action toward an enemy you can perceive. If you can't perceive any enemies or can't end your movement closer to one, you can't use this {@action Stride}."
+			]
+		},
+		{
 			"name": "Invest an Item",
 			"source": "CRB",
 			"page": 531,
@@ -3293,6 +3003,30 @@
 			]
 		},
 		{
+			"name": "Living Fortification",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You can posture defensively with firearms or crossbows, acting like a walking tower. {@action Interact} to draw a firearm or crossbow. You then position that weapon defensively, gaining a +1 circumstance bonus to AC until the start of your first turn, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait."
+			]
+		},
+		{
 			"name": "Long Jump",
 			"source": "CRB",
 			"page": 242,
@@ -3515,7 +3249,7 @@
 				]
 			},
 			"entries": [
-				"As long as your group has successfully Reconnoitered the hex, you can use this activity to create an accurate map of the hex with a successful Survival check (typically at a trained or expert DC). When you have an accurate map of the hex, the DC of any check to navigate that hex is reduced by 2."
+				"As long as your group has successfully {@action Reconnoiter|GMG|Reconnoitered} the hex, you can use this activity to create an accurate map of the hex with a successful {@skill Survival} check (typically at a trained or expert DC). When you have an accurate map of the hex, the DC of any check to navigate that hex is reduced by 2."
 			]
 		},
 		{
@@ -3537,6 +3271,7 @@
 				]
 			},
 			"frequency": "once per round.",
+			"trigger": "Your {@action Strike} hits a {@condition flat-footed} creature and deals damage.",
 			"entries": [
 				"The target attempts a Fortitude save at your class DC. It then becomes temporarily immune to your Master Strike for 1 day.",
 				{
@@ -3614,6 +3349,62 @@
 			"entries": [
 				"You experience a brief resurgence of a mutagen. Choose one mutagen you've consumed since your last daily preparations. You gain the effects of that mutagen for 1 minute."
 			]
+		},
+		{
+			"name": "One Shot, One Kill",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"Your first shot is the deadliest. {@action Interact} to draw a firearm or crossbow. On your first turn, your first {@action Strike} with that weapon deals an additional {@damage 1d6} precision damage. This precision damage increases to {@damage 2d6} at 9th level and {@damage 3d6} at 15th level."
+			]
+		},
+		{
+			"name": "Overdrive",
+			"source": "G&G",
+			"page": 16,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Inventor",
+				"Manipulate"
+			],
+			"actionType": {
+				"class": [
+					"Inventor|G&G"
+				]
+			},
+			"frequency": "once per round",
+			"entries": [
+				"Temporarily cranking the gizmos on your body into overdrive, you try to add greater power to your attacks. Attempt a {@skill Crafting} check that has a {@table DCs by Level||standard DC for your level}.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "Your gizmos go into a state of incredible efficiency called critical overdrive, adding great power to your attacks. Your Strikes deal additional damage equal to your Intelligence modifier for 1 minute. After the Overdrive ends, your gizmos become unusable as they cool down or reset, and you can't use Overdrive for 1 minute.",
+						"Success": "Your gizmos go into overdrive, adding power to your attacks. As critical success, except the additional damage is equal to half your Intelligence modifier.",
+						"Failure": "You make a miscalculation and nothing happens.",
+						"Critical Failure": "Whoops! Something explodes. You take fire damage equal to your level, and you can't use Overdrive again for 1 minute as your gizmos cool down and reset."
+					}
+				}
+			],
+			"special": "When under the effects of Overdrive, you can still use the Overdrive action. You can't extend your Overdrive's duration this way, but you can turn an overdrive into a critical overdrive if you critically succeed. A failure has no effect on your current Overdrive, and you end your Overdrive on a critical failure."
 		},
 		{
 			"name": "Palm an Object",
@@ -3749,6 +3540,31 @@
 			]
 		},
 		{
+			"name": "Pistolero's Retort",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"trigger": "A foe within the first range increment of the onehanded firearm or one-handed crossbow you're wielding critically fails an attack roll against you.",
+			"requirements": "You're wielding a one-handed firearm or one-handed crossbow.",
+			"entries": [
+				"You punish your foe's failure with a shot. Make a {@action Strike} against the triggering foe with a one-handed firearm or one-handed crossbow."
+			]
+		},
+		{
 			"name": "Point Out",
 			"source": "CRB",
 			"page": 472,
@@ -3878,6 +3694,29 @@
 			]
 		},
 		{
+			"name": "Raconteur's Reload",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"entries": [
+				"Your rapid or forceful words draw the enemy's attention away from your hands long enough to chamber another bullet. {@action Interact} to reload and then attempt a {@skill Deception} check to {@action Create a Diversion} or an {@skill Intimidation} check to {@action Demoralize}."
+			]
+		},
+		{
 			"name": "Rage",
 			"source": "CRB",
 			"page": 84,
@@ -3965,6 +3804,33 @@
 			"entries": [
 				"You prepare to use an action that will occur outside your turn. Choose a single action or free action you can use, and designate a trigger. Your turn then ends. If the trigger you designated occurs before the start of your next turn, you can use the chosen action as a reaction (provided you still meet the requirements to use it). You can't Ready a free action that already has a trigger.",
 				"If you have a multiple attack penalty and your readied action is an attack action, your readied attack takes the multiple attack penalty you had at the time you used Ready. This is one of the few times the multiple attack penalty applies when it's not your turn."
+			]
+		},
+		{
+			"name": "Recall Ammunition",
+			"source": "G&G",
+			"page": 140,
+			"activity": {
+				"unit": "reaction",
+				"number": 1
+			},
+			"traits": [
+				"Conjuration",
+				"Magical",
+				"Spellshot",
+				"Teleportation"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"archetype": [
+					"Spellshot|G&G"
+				]
+			},
+			"trigger": "You miss with a firearm or crossbow {@action Strike} while using an ordinary level-0 bolt or bullet",
+			"entries": [
+				"You amplify the connection between bullet and firearm, calling your missed shot back into your gun. The ammunition you just fired is reloaded back into your gun and immediately ready to fire again."
 			]
 		},
 		{
@@ -4105,6 +3971,30 @@
 			"entries": [
 				"You release something you're holding in your hand or hands. This might mean dropping an item, removing one hand from your weapon while continuing to hold it in another hand, releasing a rope suspending a chandelier, or performing a similar action. Unlike most {@trait manipulate} actions, Release does not trigger reactions that can be triggered by actions with the {@trait manipulate} trait (such as {@action Attack of Opportunity|CRB}).",
 				"If you want to prepare to Release something outside of your turn, use the {@action Ready|CRB} activity."
+			]
+		},
+		{
+			"name": "Reloading Strike",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Drifter|G&G"
+				]
+			},
+			"requirements": "You're wielding a firearm or crossbow in one hand, and your other hand either wields a one-handed melee weapon or is empty.",
+			"entries": [
+				"You make a melee attack and then reload your gun in one fluid movement. {@action Strike} an opponent within reach with your one-handed melee weapon (or, if your other hand is empty, with an unarmed attack), and then {@action Interact} to reload. You don't need a free hand to reload in this way."
 			]
 		},
 		{
@@ -4642,6 +4532,32 @@
 			]
 		},
 		{
+			"name": "Siegebreaker",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger",
+				"Flourish"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a firearm that has the kickback or scatter trait, or a two-handed crossbow.",
+			"entries": [
+				"With unbelievable force, you charge and smash your weapon into a target before digging in your heels and pulling the trigger. {@action Leap} or {@action Stride}, then make a {@action Strike} with the required firearm or crossbow against an adjacent target. This Strike deals an additional {@damage 3d8} bludgeoning damage and ignores 10 points of the target's Hardness (if any), or of their shield's Hardness if the target uses {@feat Shield Block}.",
+				"After the {@action Strike}, you become {@condition immobilized} and position the required weapon defensively, gaining a +1 circumstance bonus to AC, or a +2 circumstance bonus if the chosen weapon has the {@trait parry} trait. Both effects last until the start of your next turn. If a force would move you while you're {@condition immobilized} in this way, it must succeed at an appropriate check against your class DC."
+			]
+		},
+		{
 			"name": "Sneak",
 			"source": "CRB",
 			"page": 252,
@@ -4714,6 +4630,30 @@
 						"{@b Metamagic:} You typically can't use metamagic with {@action Spellstrike|SoM} because metamagic requires the next action you take to be {@action Cast a Spell}, and {@action Spellstrike|SoM} is a combined activity that doesn't qualify."
 					]
 				}
+			]
+		},
+		{
+			"name": "Spinning Crush",
+			"source": "G&G",
+			"page": 110,
+			"activity": {
+				"number": 3,
+				"unit": "action"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Vanguard|G&G"
+				]
+			},
+			"requirements": "You're wielding a loaded firearm or loaded crossbow.",
+			"entries": [
+				"You go into a vicious spin, smashing your weapon into those nearby and increasing your momentum by firing. All creatures adjacent to you take {@damage 1d6} bludgeoning damage plus your Strength modifier; this increases to {@damage 2d6} if your firearm has a {@item striking} rune, {@damage 3d6} if it has a {@item greater striking} rune, and {@damage 4d6} if it has a {@item major striking} rune. This ability does not apply other effects that increase damage with your firearm {@action Strike||Strikes} such as weapon specialization. Creatures affected by this attack must attempt a basic Reflex save. A creature that fails its save is also pushed 5 feet directly away from you."
 			]
 		},
 		{
@@ -5189,6 +5129,45 @@
 			]
 		},
 		{
+			"name": "Ten Paces",
+			"source": "G&G",
+			"page": 109,
+			"activity": {
+				"number": 1,
+				"unit": "free"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Pistolero|G&G"
+				]
+			},
+			"trigger": "You roll Initiative.",
+			"entries": [
+				"You react to trouble with lightning speed, positioning yourself just right. You gain a +2 circumstance bonus to your initiative roll, and you can {@action Interact} to draw a one-handed firearm or one-handed crossbow. As your first action on your first turn, you can {@action Step} up to 10 feet as a free action."
+			]
+		},
+		{
+			"name": "Thoughtful Reload",
+			"source": "G&G",
+			"page": 140,
+			"activity": {
+				"unit": "action",
+				"number": 1
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"entries": [
+				"As you sink deep into a state of analytical calm and focus on the foe before you, your hands reload a bullet instinctively. Attempt a {@action Recall Knowledge} check against an opponent you can see and then {@action Interact} to reload."
+			]
+		},
+		{
 			"name": "Threatening Approach",
 			"source": "LOCG",
 			"page": 57,
@@ -5486,6 +5465,29 @@
 						"Failure": "Your movement ends, and you trigger reactions as if you had moved out of the square you started in."
 					}
 				}
+			]
+		},
+		{
+			"name": "Vital Shot",
+			"source": "G&G",
+			"page": 108,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"traits": [
+				"Gunslinger"
+			],
+			"actionType": {
+				"class": [
+					"Gunslinger|G&G"
+				],
+				"subclass": [
+					"Sniper|G&G"
+				]
+			},
+			"entries": [
+				"Your careful shot against an unsuspecting opponent pierces a vital artery or organ. Make a ranged {@action Strike}. If the target is {@condition flat-footed}, the {@action Strike} deals an extra die of weapon damage, and the foe takes {@condition persistent damage||persistent bleed damage} equal to the amount of precision damage from your {@action One Shot, One Kill|G&G}."
 			]
 		}
 	]

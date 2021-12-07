@@ -1,0 +1,3209 @@
+{
+	"creature": [
+		{
+			"name": "Avarek",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 80,
+			"level": 8,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Small",
+			"traits": [
+				"Amphibious"
+			],
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 16
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aquan",
+					"Common",
+					"Undercommon"
+				],
+				"languageAbilities": [
+					"speak with animals"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 17
+				},
+				"Athletics": {
+					"default": 14,
+					"to Climb or Swim": 16
+				},
+				"Deception": {
+					"default": 17
+				},
+				"Nature": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Survival": {
+					"default": 16
+				},
+				"Thievery": {
+					"default": 19
+				},
+				"Sailing Lore": {
+					"default": 15
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 5,
+				"Con": 4,
+				"Int": 3,
+				"Wis": 4,
+				"Cha": 3
+			},
+			"items": [
+				"+1 striking dagger"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16, {@skill Lore||Sailing Lore} +15, {@skill Stealth} +19, {@skill Survival} +16, {@skill Thievery} +19 Str +2, Dex +5, Con +4, Int +3, Wis +4, Cha +3 Items +1 striking dagger."
+					],
+					"name": "Nature"
+				}
+			],
+			"ac": {
+				"default": 26,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 150,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"climb ": 20,
+				"swim ": 50
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+4} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "spine",
+					"attack": 16,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 2d6+4} piercing plus {@damage 1d6} {@condition persistent damage ||persistent bleed}",
+					"types": [
+						"persistent",
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Primal Innate",
+					"type": "Innate",
+					"tradition": "Primal",
+					"DC": 30,
+					"attack": 22,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "prestidigitation"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "grease",
+									"amount": "at will"
+								},
+								{
+									"name": "gust of wind",
+									"amount": "at will"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "hydraulic push",
+									"amount": "at will"
+								},
+								{
+									"name": "invisibility",
+									"notes": [
+										"self only"
+									]
+								},
+								{
+									"name": "shatter"
+								},
+								{
+									"name": "ventriloquism",
+									"amount": "at will"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "confusion"
+								},
+								{
+									"name": "hydraulic torrent"
+								},
+								{
+									"name": "suggestion"
+								}
+							]
+						},
+						"constant": {}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The avarek withdraws beneath its spines, presenting a defensive, spiky exterior. It gains a +2 circumstance bonus to spine Strikes and AC. Any adjacent creature that attempts a melee attack against the avarek takes {@damage 1d6} piercing damage per attack, regardless of whether the attack hits. Prickly Defense lasts until the avarek uses a move action or makes a {@action Strike} with any weapon other than its spines."
+					],
+					"name": "Prickly Defense"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The avarek curls into a ball and rolls rapidly, impaling enemies with its spines. The avarek Strides twice and makes up to two spine Strikes at any point during its movement, each against a different target within reach. These attacks count toward the avarek's multiple attack penalty, but the penalty doesn't increase until after the avarek makes all the attacks."
+					],
+					"name": "Rolling Assault"
+				},
+				{
+					"entries": [
+						"The avarek's Strikes deal an additional {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Barnacle Ghoul",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 83,
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Ghoul"
+			],
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 17
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aquan",
+					"Common",
+					"Necril"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 19
+				},
+				"Athletics": {
+					"default": 19,
+					"to Grapple": 21
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Survival": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 6,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 4,
+				"Cha": 4
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+19, {@skill Survival} +17 Str +6, Dex +6, Con +3, Int +1, Wis +4, Cha +4."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 28,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 21
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 155,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects"
+				]
+			},
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature {@condition grabbed} by the barnacle ghoul critically fails a skill check to {@action Escape}",
+					"entries": [
+						"The barnacle ghoul makes a claw {@action Strike} against the triggering creature."
+					],
+					"name": "Tear Flesh"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"climb ": 10,
+				"swim ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 21,
+					"traits": [
+						"finesse"
+					],
+					"effects": [
+						"fill lungs",
+						"paralysis"
+					],
+					"damage": "{@damage 2d10+10} piercing plus fill lungs and paralysis",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [
+						"{@dice 2d6+10}",
+						"Grab",
+						"paralysis"
+					],
+					"damage": "{@dice 2d6+10} plus Grab and paralysis",
+					"types": []
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"entries": [
+						"See Ghoul Abilities (Pathfinder Bestiary 168). The barnacle ghoul regains {@dice 5d6} Hit Points."
+					],
+					"name": "Consume Flesh"
+				},
+				{
+					"entries": [
+						{
+							"type": "affliction",
+							"name": "",
+							"traits": [
+								"curse",
+								"necromancy"
+							],
+							"note": "",
+							"DC": "26",
+							"savingThrow": "Fortitude",
+							"onset": null,
+							"maxDuration": null,
+							"stages": [
+								{
+									"stage": 1,
+									"entry": "{@condition sickened|CRB|sickened 1}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 2,
+									"entry": "{@condition sickened|CRB|sickened 2}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 3,
+									"entry": "{@condition sickened|CRB|sickened 3}",
+									"duration": "1 round"
+								},
+								{
+									"stage": 4,
+									"entry": "drowning and cannot reduce below stage 4 until the water is purged;",
+									"duration": null
+								}
+							]
+						}
+					],
+					"name": "Fill Lungs"
+				},
+				{
+					"entries": [
+						"{@action Administer First Aid} (which stops the creature from drowning and returns the creature to stage 3; stage 2 on a critical success) or a {@trait magical} effect that removes curses or the {@condition sickened} condition (which stops the creature from drowning and ends the curse). If the creature dies from drowning, it rises as a barnacle ghoul the next midnight."
+					],
+					"name": ""
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"move"
+					],
+					"entries": [
+						"The barnacle ghoul Swims up to 20 feet. This movement doesn't trigger reactions."
+					],
+					"name": "Nimble Swim"
+				},
+				{
+					"traits": [
+						"incapacitation",
+						"occult",
+						"necromancy"
+					],
+					"entries": [
+						"See Ghoul Abilities; DC 26."
+					],
+					"name": "Paralysis"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": [
+					"{@condition grabbed}",
+					"{@condition sickened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Bloody Berleth",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 21,
+			"level": 11,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Human",
+				"Orc"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 24
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Orcish"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 22
+				},
+				"Deception": {
+					"default": 22
+				},
+				"Diplomacy": {
+					"default": 18
+				},
+				"Intimidation": {
+					"default": 22
+				},
+				"Stealth": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 5,
+				"Dex": 2,
+				"Con": 4,
+				"Int": 1,
+				"Wis": 1,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "varies",
+						"entry": "[type III, blindness; DC 24]"
+					},
+					"entries": [
+						"+18, {@skill Intimidation} +22, {@skill Stealth} +17 Str +5, Dex +2, Con +4, Int +1, Wis +1, Cha +3 Items +1 chain mail, moderate elixir of life, heavy crossbow (with 4 spellstrike arrows ), greater juggernaut mutagen, ring of lies, +1 striking shovel (same stats as a scythe, but with the versatile B trait), greater smokestick, moderate tanglefoot bag."
+					],
+					"name": "Lore"
+				}
+			],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 23
+				},
+				"Ref": {
+					"default": 21
+				},
+				"Will": {
+					"default": 20
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 245,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shovel",
+					"attack": 24,
+					"traits": [
+						"deadly 1d10",
+						"magical",
+						"trip",
+						"versatile B"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+11} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "heavy crossbow",
+					"attack": 19,
+					"traits": [
+						"range increment 120 feet",
+						"reload 2"
+					],
+					"effects": [],
+					"damage": "{@damage 1d10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 2d10+11} slashing Ranged heavy crossbow +19 (range increment 120 feet, reload 2), Damage {@damage 1d10} piercing."
+					],
+					"name": "B), Damage"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "Berleth has just used his shovel to {@action Trip} a creature",
+					"entries": [
+						"Berleth brutally brings his shovel down on the {@condition prone} foe, making a shovel {@action Strike}. On a hit, the {@action Strike} deals damage as normal, plus the target must make a DC 30 Fortitude save. Critical Success The creature is unaffected. Success The creature is {@condition stunned|CRB|stunned 1}. Failure The creature is {@condition stunned|CRB|stunned 2}. Critical Failure The creature is {@condition stunned|CRB|stunned 2} and {@condition clumsy|CRB|clumsy 1} for 1 minute."
+					],
+					"name": "Concussive Beatdown"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Berleth plunges his shovel through a creature's neck as though it were peat moss. He makes a shovel {@action Strike} against an adjacent {@condition unconscious} or {@condition immobilized} creature.",
+						"On a hit, the creature is {@condition wounded|CRB|wounded 2} (possibly {@condition dying})."
+					],
+					"name": "Decapitate"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "Berleth is reduced to 0 HP",
+					"frequency": "once per day;",
+					"entries": [
+						"Berleth makes a final shovel {@action Strike} before {@condition dying}."
+					],
+					"name": "Final Blow"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition dying}",
+					"{@condition prone}",
+					"{@condition unconscious}",
+					"{@condition wounded}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Bregdi",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 81,
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Large",
+			"traits": [
+				"Aquatic"
+			],
+			"creatureType": [
+				"Animal"
+			],
+			"perception": {
+				"default": 18
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 17
+				},
+				"Athletics": {
+					"default": 21
+				},
+				"Stealth": {
+					"default": 17
+				},
+				"Survival": {
+					"default": 18
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 4,
+				"Con": 4,
+				"Int": -4,
+				"Wis": 3,
+				"Cha": -3
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"The bregdi can breathe air for up to 10 minutes, or up to an hour so long as its skin remains wet."
+					],
+					"name": "Partial Amphibian"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 18
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 180,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"swim ": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 21,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d12+8} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "hook claw",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d8+8} piercing plus Grab",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [],
+					"name": "Aquatic Ambush",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"The bregdi tries to capsize an adjacent aquatic vessel of its size or smaller. It must succeed at an {@skill Athletics} check with a DC of 35 (reduced by 5 for each size smaller the vessel is than the bregdi) or the pilot's {@skill Lore||Sailing Lore} DC, whichever is higher."
+					],
+					"name": "Capsize"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"attack"
+					],
+					"entries": [
+						"Medium, {@damage 2d8+7} bludgeoning, Rupture 18."
+					],
+					"name": "Swallow Whole",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"The bregdi pulls a creature it can reach or a creature holding something it can reach (such as a fishing line in the water). The bregdi attempts an {@skill Athletics} check against the creature's Fortitude DC. On a success, it pulls the creature into an adjacent space. On a critical success, the bregdi can also make a jaws {@action Strike} against the creature pulled into an adjacent space."
+					],
+					"name": "Tug"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RC"
+			]
+		},
+		{
+			"name": "Casino Bouncer",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 24,
+			"level": 8,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 20
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 20
+				},
+				"Diplomacy": {
+					"default": 15
+				},
+				"Intimidation": {
+					"default": 19
+				},
+				"Society": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 2,
+				"Con": 5,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 1
+			},
+			"items": [
+				"chain shirt",
+				"+1 striking sap"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+16 Str +4, Dex +2, Con +5, Int +0, Wis +2, Cha +1 Items chain shirt, +1 striking sap."
+					],
+					"name": "Society"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 19
+				},
+				"Ref": {
+					"default": 13
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 150,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"nonlethal",
+						"unarmed"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+6} bludgeoning plus Grab",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "sap",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"magical",
+						"nonlethal"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+6} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"{@action Strike} hits, it deals damage as usual and the casino bouncer moves the target 5 feet (this is forced movement) and Steps into the space the target had just occupied."
+					],
+					"name": "the"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate",
+						"emotion",
+						"mental",
+						"visual"
+					],
+					"entries": [
+						"The casino bouncer attempts to {@action Demoralize} a creature with a mere glance. The casino bouncer doesn't take a penalty to their {@skill Intimidation} check if the target doesn't speak the same language. If the bouncer rolls a critical success, the target can't reduce the value of its {@condition frightened} condition until {@dice 1d4} rounds have passed."
+					],
+					"name": "Intimidating Stare"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition frightened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Eberark",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 82,
+			"level": 10,
+			"rarity": "Common",
+			"alignment": "NE",
+			"size": "Huge",
+			"traits": [
+				"Fire"
+			],
+			"creatureType": [
+				"Beast"
+			],
+			"perception": {
+				"default": 19
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [
+					"scent 30 feet"
+				],
+				"vague": [],
+				"other": [
+					"low-light vision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Ignan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Athletics": {
+					"default": 21
+				},
+				"Intimidation": {
+					"default": 21
+				},
+				"Stealth": {
+					"default": 18
+				},
+				"Survival": {
+					"default": 19
+				}
+			},
+			"abilityMods": {
+				"Str": 7,
+				"Dex": 4,
+				"Con": 5,
+				"Int": 2,
+				"Wis": 3,
+				"Cha": 3
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 30,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 22
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 275,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 40
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 23,
+					"traits": [
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d10+11} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 23,
+					"traits": [
+						"agile",
+						"fire",
+						"magical",
+						"reach 15 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+11} slashing plus {@damage 1d4} fire",
+					"types": [
+						"fire",
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "spit",
+					"attack": 21,
+					"traits": [
+						"agile",
+						"range increment 30 feet"
+					],
+					"effects": [
+						"incendiary spit"
+					],
+					"damage": "incendiary spit",
+					"types": []
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory",
+						"emotion",
+						"fear",
+						"mental"
+					],
+					"entries": [
+						"The eberark utters crude insults and growls threateningly. Each creature within 30 feet must attempt a DC 27 Will save. The creature is then temporarily immune for 10 minutes.",
+						{
+							"type": "successDegree",
+							"entries": {
+								"Critical Success": "The creature is unaffected.",
+								"Success": "The creature is {@condition frightened|CRB|frightened 1}.",
+								"Failure": "The creature is {@condition frightened|CRB|frightened 2} and {@condition paralyzed} for 1 round.",
+								"Critical Failure": "The creature is {@condition frightened|CRB|frightened 4} and {@condition paralyzed} for {@dice 1d4} rounds."
+							}
+						}
+					],
+					"name": "Arrogant Taunts"
+				},
+				{
+					"entries": [
+						"A creature hit by the eberark's spit becomes coated in a slippery, flammable oil. The creature must succeed at a DC 27 Reflex save or become {@condition clumsy|CRB|clumsy 2} for as long as they are coated in incendiary spit. Creatures affected by incendiary spit that take fire damage catch fire, taking {@damage 3d6} {@condition persistent damage ||persistent fire damage}. Once this {@condition persistent damage ||persistent fire damage} ends, the spit has burned away.",
+						"The spit also wears off naturally after one hour or can be washed off with soap, water, and one minute of work."
+					],
+					"name": "Incendiary Spit"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"fire"
+					],
+					"entries": [
+						"The eberark Strides twice, leaving a trail of magical fire behind it as it moves. Squares the eberark moves through catch fire, creating a 5-foot-tall wall of flame that burns for 1 round. The wall of flame conceals creatures and objects on the other side of it. Any creature that enters or starts its turn in the wall of flame takes {@damage 6d6} fire damage (DC 27 basic Reflex save)."
+					],
+					"name": "Trail of Flame"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"fire",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition clumsy}",
+					"{@condition frightened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"RA",
+				"CC"
+			]
+		},
+		{
+			"name": "Franca Laurentz",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 87,
+			"level": 13,
+			"rarity": "Unique",
+			"alignment": "CN",
+			"size": "Medium",
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 26
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Hallit"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 26
+				},
+				"Deception": {
+					"default": 22
+				},
+				"Intimidation": {
+					"default": 22
+				},
+				"Society": {
+					"default": 20
+				},
+				"Stealth": {
+					"default": 28
+				},
+				"Thievery": {
+					"default": 28
+				},
+				"Absalom Lore": {
+					"default": 20
+				}
+			},
+			"abilityMods": {
+				"Str": 3,
+				"Dex": 5,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+28, {@skill Thievery} +28 Str +3, Dex +5, Con +3, Int +1, Wis +2, Cha +3 Items blackfinger blight (2 doses; page 78), +1 striking crossbow (with 3 shining bolts and 2 explosive bolts), crowbar, greater darkvision elixir, moderate elixir of life, grappling hook, infiltrator thieves' tools, +1 leather armor, +1 striking shortsword, sunrods (3), 88 gp."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 35,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 22
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 19
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 195,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The attack roll for a {@action Strike} targeting Franca fails or critically fails",
+					"entries": [
+						"Franca can choose to either {@action Step} or redirect the attack to a creature that is adjacent to her and within the reach of the triggering attack. The attacker rerolls the {@action Strike}'s attack roll against the new target."
+					],
+					"name": "Deflective Dodge"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 30
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "shortsword",
+					"attack": 27,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+9} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "crossbow",
+					"attack": 27,
+					"traits": [
+						"magical",
+						"range 120 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"Franca quickly slashes at nearby foes, aiming to maim rather than disable. She makes up to three melee Strikes, each against a different creature within reach. These Strikes count toward Franca's multiple attack penalty, but the penalty doesn't increase until after all three Strikes are made. On a hit, the {@action Strike} deals 3 {@condition persistent damage ||persistent bleed damage} instead of its normal damage. On a critical hit, the creature is {@condition flat-footed} until the beginning of Franca's next turn or until they spend an action to remove the condition, whichever comes first."
+					],
+					"name": "Bloody Rebel"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "Franca's last action was a melee {@action Strike} that dealt sneak attack damage to a {@condition flat-footed} target",
+					"entries": [
+						"Franca deals 6 {@condition persistent damage ||persistent bleed damage} to the target creature, and the target is {@condition slowed|CRB|slowed 1}."
+					],
+					"name": "Hamstring"
+				},
+				{
+					"entries": [
+						"Strikes deal an additional {@damage 3d6} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack Franca's"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"Franca uncorks and flings a dose of poison at a bleeding foe. She retrieves a poison from her inventory, then splashes it at a creature within 10 feet that is currently taking {@condition persistent damage ||persistent bleed damage}. The creature must succeed at a DC 32 Reflex save or be exposed to the poison."
+					],
+					"name": "Splash Poison"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision"
+				],
+				"condition": [
+					"{@condition flat-footed}",
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Gage Carlyle",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 89,
+			"level": 11,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 24
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Dwarven",
+					"Elven",
+					"Gnomish,"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 19
+				},
+				"Deception": {
+					"default": 24
+				},
+				"Diplomacy": {
+					"default": 22
+				},
+				"Intimidation": {
+					"default": 20
+				},
+				"Occultism": {
+					"default": 19
+				},
+				"Performance": {
+					"default": 22
+				},
+				"Society": {
+					"default": 23
+				},
+				"Thievery": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 0,
+				"Dex": 2,
+				"Con": 1,
+				"Int": 4,
+				"Wis": 5,
+				"Cha": 5
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Skills {@skill Arcana} +19, {@skill Deception} +24, {@skill Diplomacy} +22,"
+					],
+					"name": "Halfling"
+				},
+				{
+					"entries": [
+						"+23, {@skill Intimidation} +20, {@skill Occultism} +19,"
+					],
+					"name": "Games Lore"
+				},
+				{
+					"entries": [
+						"+22, {@skill Society} +23, {@skill Thievery} +21 Str +0, Dex +2, Con +1, Int +4, Wis +5, Cha +5 Items apartment key, +2 greater striking dagger, +2 greater striking hand crossbow with 10 bolts, +2 leather armor, vault key."
+					],
+					"name": "Performance"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 21
+				},
+				"Will": {
+					"default": 24
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 120,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"thrown 10 feet",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 3d4+3} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "hand crossbow",
+					"attack": 22,
+					"traits": [
+						"magical",
+						"range 60 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 3d6} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"entries": [
+						"{@damage 3d4+3} piercing Ranged hand crossbow +22 (magical, range 60 feet, reload 1), Damage {@damage 3d6} piercing."
+					],
+					"name": "S), Damage"
+				},
+				{
+					"entries": [
+						"Gage gets a critical success using the {@action Lie} action, the target's attitude toward him improves by one step, as though he'd succeeded at using {@skill Diplomacy}."
+					],
+					"name": "Charming Liar When"
+				},
+				{
+					"entries": [
+						"{@action Make an Impression}. This works only once per conversation, and if he critically succeeds against multiple targets using the same result, he chooses one creature's attitude to improve. To use this ability, Gage must be lying to impart seemingly important information, inflate his status, or ingratiate himself, which trivial or irrelevant lies can't achieve."
+					],
+					"name": "to"
+				},
+				{
+					"entries": [
+						"Gage meets a group of up to five people, he can immediately attempt a {@skill Diplomacy} check."
+					],
+					"name": "Smooth Operator When"
+				},
+				{
+					"entries": [
+						"{@action Make an Impression}, comparing the result to the Will DC of each target. He takes a \u20133 penalty on this check, and it is possible to get different degrees of success for each target. If he fails or critically fails, he can engage in 1 minute of conversation and attempt a new check at the end of that time rather than accepting the failure or critical failure result."
+					],
+					"name": "to"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing"
+				],
+				"condition": []
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"UW"
+			]
+		},
+		{
+			"name": "Gang Tough",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 8,
+			"level": 7,
+			"rarity": "Uncommon",
+			"alignment": "N",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 17
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Athletics": {
+					"default": 17
+				},
+				"Intimidation": {
+					"default": 13
+				},
+				"Gang Lore": {
+					"default": 13
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"items": [
+				"+1 morningstar",
+				"additional items (see below)"
+			],
+			"abilitiesTop": [],
+			"ac": {
+				"default": 25,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 17
+				},
+				"Ref": {
+					"default": 16
+				},
+				"Will": {
+					"default": 13
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 125,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "morningstar",
+					"attack": 18,
+					"traits": [
+						"magical",
+						"versatile P"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+8} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"entries": [
+						"Whenever the gang tough makes a successful melee {@action Strike} against a {@condition frightened} creature,"
+					],
+					"name": "Bullyrag Beatdown"
+				},
+				{
+					"entries": [
+						"{@action Strike} deals an extra weapon die of damage."
+					],
+					"name": "the"
+				},
+				{
+					"entries": [
+						"When the gang tough's {@action Strike} with a bludgeoning weapon is a critical hit and deals damage, the target becomes {@condition frightened|CRB|frightened 1}."
+					],
+					"name": "Frightening Critical"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition frightened}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Iroran Skeleton",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 52,
+			"level": 11,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Mindless",
+				"Skeleton"
+			],
+			"creatureType": [
+				"Undead"
+			],
+			"perception": {
+				"default": 18
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 24
+				},
+				"Athletics": {
+					"default": 21
+				},
+				"Intimidation": {
+					"default": 20
+				}
+			},
+			"abilityMods": {
+				"Str": 6,
+				"Dex": 7,
+				"Con": 5,
+				"Int": -5,
+				"Wis": 4,
+				"Cha": 3
+			},
+			"abilitiesTop": [],
+			"ac": {
+				"default": 31,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 18
+				},
+				"Ref": {
+					"default": 24
+				},
+				"Will": {
+					"default": 17
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 210,
+					"note": null,
+					"abilities": [
+						"negative healing"
+					]
+				}
+			],
+			"immunities": {
+				"damage": [],
+				"condition": [
+					"death effects",
+					"disease"
+				]
+			},
+			"resistances": [
+				{
+					"name": "cold"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "The Iroran skeleton is critically hit",
+					"entries": [],
+					"name": "Collapse"
+				},
+				{
+					"entries": [
+						"Iroran skeleton collapses into a pile of bones and the attack deals damage for a hit, rather than a critical hit. The skeleton can reform in a standing position as an action, but until it does, it is {@condition immobilized} and {@condition flat-footed}."
+					],
+					"name": "The"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 45
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 24,
+					"traits": [
+						"agile",
+						"finesse"
+					],
+					"effects": [],
+					"damage": "{@damage 4d6+12} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"flourish"
+					],
+					"entries": [
+						"As the monk's {@action Flurry of Blows} class feature. The Iroran skeleton makes two claw Strikes.",
+						"If both hit the same creature, the damage is combined for the purpose of resistances and weaknesses. The multiple attack penalty applies to the Strikes as normal."
+					],
+					"name": "Flurry of Claws",
+					"entries_as_xyz": "Ability not found: 'Flurry of Claws As the monk's {@action Flurry of Blows} class feature.' in Iroran Skeleton, p.52"
+				},
+				{
+					"entries": [
+						"As the monk feat. The Iroran skeleton can {@action Stride} along vertical surfaces, such as walls, as long as it begins and ends its movement on a horizontal surface."
+					],
+					"name": "Wall Run",
+					"entries_as_xyz": "Ability not found: 'Wall Run As the monk feat.' in Iroran Skeleton, p.52"
+				},
+				{
+					"entries": [
+						"As the monk feat. The Iroran skeleton can {@action Stride} across liquid surfaces. If it ends its movement on a liquid surface, it falls in as normal."
+					],
+					"name": "Water Step",
+					"entries_as_xyz": "Ability not found: 'Water {@action Step} As the monk feat.' in Iroran Skeleton, p.52"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The Iroran skeleton makes a single {@action Strike} and compares the result to the AC of all creatures within its reach, dealing damage to each creature hit."
+					],
+					"name": "Whirlwind Kick"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"slashing"
+				],
+				"condition": [
+					"{@condition immobilized}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Maurrisa Jonne",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 91,
+			"level": 10,
+			"rarity": "Unique",
+			"alignment": "N",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 20
+			},
+			"languages": {
+				"languages": [
+					"Common"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 19
+				},
+				"Athletics": {
+					"default": 22
+				},
+				"Deception": {
+					"default": 18
+				},
+				"Diplomacy": {
+					"default": 18
+				},
+				"Intimidation": {
+					"default": 18
+				},
+				"Gang Lore": {
+					"default": 16
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 3,
+				"Con": 4,
+				"Int": 0,
+				"Wis": 2,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18, {@skill Lore||Gang Lore} +16, {@skill Intimidation} +18, Sports."
+					],
+					"name": "Diplomacy"
+				},
+				{
+					"entries": [
+						"+16 Str +4, Dex +3, Con +4, Int +0, Wis +2, Cha +2 Items +1 striking handwraps of mighty blows, +1 studded leather."
+					],
+					"name": "Lore"
+				}
+			],
+			"ac": {
+				"default": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 18
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 230,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"entries": [
+						"HP 230."
+					],
+					"name": "Shove and Trip"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"trigger": "A creature misses two consecutive melee Strikes against Maurrisa",
+					"entries": [
+						"Maurrisa takes advantage of a flailing foe's opening. She can either {@action Step} 5 feet or make a melee {@action Strike} against the triggering creature."
+					],
+					"name": "Duck and Weave"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"traits": [
+						"incapacitation"
+					],
+					"trigger": "Maurrisa can make an {@action Attack of Opportunity}",
+					"entries": [
+						"Maurrisa chops her opponent on the back of the head or neck, possibly concussing them. The target must attempt a DC 26 Fortitude save. On a failure, the creature takes damage as if hit by Maurrisa's fist {@action Strike}, and is {@condition stunned|CRB|stunned 1}. On a critical failure, the creature is {@condition stunned|CRB|stunned 3} instead."
+					],
+					"name": "Rabbit Punch"
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "fist",
+					"attack": 22,
+					"traits": [
+						"agile",
+						"finesse",
+						"unarmed"
+					],
+					"effects": [
+						"Grab"
+					],
+					"damage": "{@damage 2d6+10} bludgeoning plus Grab",
+					"types": [
+						"bludgeoning"
+					]
+				}
+			],
+			"abilitiesBot": [],
+			"inflicts": {
+				"damage": [
+					"bludgeoning"
+				],
+				"condition": [
+					"{@condition stunned}"
+				]
+			},
+			"misc": [
+				"MA",
+				"CC"
+			]
+		},
+		{
+			"name": "Ravenile Rager",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 84,
+			"level": 14,
+			"rarity": "Rare",
+			"alignment": "NE",
+			"size": "Large",
+			"traits": [
+				"Lizardfolk"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 25
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Iruxi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 25
+				},
+				"Athletics": {
+					"default": 28
+				},
+				"Intimidation": {
+					"default": 28
+				},
+				"Survival": {
+					"default": 23
+				}
+			},
+			"abilityMods": {
+				"Str": 8,
+				"Dex": 4,
+				"Con": 5,
+				"Int": -1,
+				"Wis": 1,
+				"Cha": 0
+			},
+			"items": [
+				"+1 resilient studded leather"
+			],
+			"abilitiesTop": [
+				{
+					"entries": [
+						"A ravenile can hold their breath for 20 minutes."
+					],
+					"name": "Deep Breath"
+				}
+			],
+			"ac": {
+				"default": 24,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 29
+				},
+				"Ref": {
+					"default": 26
+				},
+				"Will": {
+					"default": 23
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 306,
+					"note": null,
+					"abilities": [
+						"regeneration 20 (deactivated by fire"
+					]
+				}
+			],
+			"weaknesses": [
+				{
+					"amount": 10,
+					"name": "fire"
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 20,
+				"swim ": 10
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 29,
+					"traits": [
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d10+12} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "claw",
+					"attack": 29,
+					"traits": [
+						"agile",
+						"reach 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 3d8+8} slashing",
+					"types": [
+						"slashing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"concentrate"
+					],
+					"requirements": "The ravenile's regeneration is currently active",
+					"entries": [
+						"The ravenile regains 20 HP."
+					],
+					"name": "Forced Regeneration"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"requirements": "The ravenile's regeneration is currently deactivated",
+					"entries": [
+						"The ravenile makes a melee {@action Strike}. This counts as two attacks for the ravenile's multiple attack penalty. If this {@action Strike} hits, the ravenile deals an extra die of weapon damage and the target falls {@condition prone}."
+					],
+					"name": "Furious Wallop"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"claw"
+					],
+					"entries": [],
+					"name": "Rend",
+					"generic": true
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition prone}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RC",
+				"CC"
+			]
+		},
+		{
+			"name": "Scathka",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 43,
+			"level": 12,
+			"rarity": "Unique",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Elf",
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 23
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Elven",
+					"Shadowtongue"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Arcana": {
+					"default": 25
+				},
+				"Deception": {
+					"default": 20
+				},
+				"Diplomacy": {
+					"default": 20
+				},
+				"Occultism": {
+					"default": 25
+				},
+				"Society": {
+					"default": 23
+				},
+				"Stealth": {
+					"default": 22
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 4,
+				"Con": 0,
+				"Int": 5,
+				"Wis": 4,
+				"Cha": 2
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+25, {@skill Society} +23, {@skill Stealth} +22 Str +1, Dex +4, Con +0, Int +5, Wis +4, Cha +2 Items +1 striking dagger, +1 leather armor, spellbook, wand of manifold missiles (3rd level)"
+					],
+					"name": "Occultism"
+				}
+			],
+			"ac": {
+				"default": 31,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 16
+				},
+				"Ref": {
+					"default": 22
+				},
+				"Will": {
+					"default": 24
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 210,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "dagger",
+					"attack": 23,
+					"traits": [
+						"agile",
+						"finesse",
+						"magical",
+						"versatile S"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+1} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "dagger",
+					"attack": 23,
+					"traits": [
+						"agile",
+						"magical",
+						"thrown 10 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+1} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Prepared",
+					"type": "Prepared",
+					"tradition": "Arcane",
+					"DC": 33,
+					"attack": 25,
+					"entry": {
+						"1": {
+							"spells": [
+								{
+									"name": "grim tendrils"
+								},
+								{
+									"name": "magic missile",
+									"amount": 2
+								},
+								{
+									"name": "ray of enfeeblement"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "mirror image"
+								},
+								{
+									"name": "see invisibility"
+								},
+								{
+									"name": "spectral hand",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "blindness"
+								},
+								{
+									"name": "ghostly weapon"
+								},
+								{
+									"name": "paralyze"
+								},
+								{
+									"name": "vampiric touch"
+								}
+							]
+						},
+						"4": {
+							"spells": [
+								{
+									"name": "blink"
+								},
+								{
+									"name": "phantasmal killer"
+								},
+								{
+									"name": "spell immunity"
+								},
+								{
+									"name": "weapon storm"
+								}
+							]
+						},
+						"5": {
+							"spells": [
+								{
+									"name": "black tentacles"
+								},
+								{
+									"name": "cone of cold"
+								},
+								{
+									"name": "shadow siphon"
+								},
+								{
+									"name": "shadow walk"
+								}
+							]
+						},
+						"6": {
+							"spells": [
+								{
+									"name": "mislead"
+								},
+								{
+									"name": "phantasmal calamity"
+								},
+								{
+									"name": "vampiric exsanguination"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"traits": [
+						"6th"
+					],
+					"entries": [
+						"daze, ghost sound, ray of frost, shield."
+					],
+					"name": "Cantrips"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "free"
+					},
+					"frequency": "once per day",
+					"entries": [
+						"Requirements Scathka hasn't acted yet on their turn; On their turn, Scathka casts one spell they've prepared and already cast this day without spending a spell slot. Scathka must still Cast the Spell and meet the spell's other requirements."
+					],
+					"name": "Drain Wand"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"cold",
+						"manipulate",
+						"occult",
+						"shadow"
+					],
+					"requirements": "Scathka is wielding a dagger",
+					"entries": [
+						"Scathka draws a shadowy glyph on the dagger's blade and flings it at a nearby foe. Scathka makes a ranged {@action Strike} with the dagger with the range increment increased to 30 feet. If the {@action Strike} hits, it deals {@damage 8d6} cold damage (double damage on a critical success) and the target must succeed at a DC 32 Fortitude save or be {@condition slowed|CRB|slowed 1} until the end of its next turn (or {@dice 1d4} rounds on a critical failure). The dagger loses its shadowy magic as soon as the attack is resolved."
+					],
+					"name": "Throw Shadow Blade"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"cold",
+					"piercing"
+				],
+				"condition": [
+					"{@condition slowed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Shikwashim Mercenary",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 52,
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Lizardfolk"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 18
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Draconic",
+					"Iruxi"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 19
+				},
+				"Athletics": {
+					"default": 19
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Survival": {
+					"default": 17
+				}
+			},
+			"abilityMods": {
+				"Str": 4,
+				"Dex": 4,
+				"Con": 3,
+				"Int": 1,
+				"Wis": 2,
+				"Cha": 0
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"Shikwashim mercenary can hold their breath for 20 minutes."
+					],
+					"name": "Deep Breath A"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"with shield raised": 29,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 155,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Attack of Opportunity",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "reaction"
+					},
+					"entries": [],
+					"name": "Shield Block",
+					"generic": true
+				}
+			],
+			"speed": {
+				"abilities": null,
+				"walk": 25,
+				"swim ": 15
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "scimitar",
+					"attack": 20,
+					"traits": [
+						"forceful",
+						"magical",
+						"sweep"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6+10} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "jaws",
+					"attack": 19,
+					"traits": null,
+					"effects": [],
+					"damage": "{@damage 1d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				},
+				{
+					"range": "Melee",
+					"name": "tail",
+					"attack": 19,
+					"traits": [
+						"agile"
+					],
+					"effects": [],
+					"damage": "{@damage 1d4+10} bludgeoning",
+					"types": [
+						"bludgeoning"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "javelin",
+					"attack": 19,
+					"traits": [
+						"thrown 30 feet"
+					],
+					"effects": [],
+					"damage": "{@damage 1d6+10} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"traits": [
+						"auditory or visual",
+						"concentrate"
+					],
+					"entries": [
+						"With a sharp whistle or wave of their hand, the mercenary distracts an opponent so one of the mercenary's allies can land a clean blow. The mercenary chooses a target and an ally, both of whom must be within 30 feet of the mercenary. The target is {@condition flat-footed} against the first {@action Strike} the mercenary's ally makes on its next turn; if the ally doesn't {@action Strike} that target, the effect is lost. Depending on how the mercenary distracts their foe, this action gains either the {@trait auditory} or {@trait visual} trait."
+					],
+					"name": "Coordinated Distraction"
+				},
+				{
+					"entries": [
+						"Shikwashim mercenary's multiple attack penalty for attacks against humans is \u20133 (\u20132 with an agile weapon) on their second attack per turn or \u20136 (\u20134 with an agile weapon) on their third or subsequent attack per turn."
+					],
+					"name": "Human Hunter A"
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The Shikwashim mercenary makes a melee {@action Strike}. If it hits, it deals an extra die of damage.",
+						"This counts as two attacks for the mercenary's multiple attack penalty."
+					],
+					"name": "Powerful Swipe"
+				},
+				{
+					"entries": [
+						"Non-lizardfolk creatures in difficult terrain and non-lizardfolk creatures that are in water and lack a {@action Swim} speed are {@condition flat-footed} to a Shikwashim mercenary."
+					],
+					"name": "Terrain Advantage"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"bludgeoning",
+					"piercing",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"TA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Svartalfar Killer",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 85,
+			"level": 8,
+			"rarity": "Uncommon",
+			"alignment": "LE",
+			"size": "Medium",
+			"creatureType": [
+				"Fey"
+			],
+			"perception": {
+				"default": 16
+			},
+			"senses": {
+				"precise": [],
+				"imprecise": [],
+				"vague": [],
+				"other": [
+					"darkvision"
+				]
+			},
+			"languages": {
+				"languages": [
+					"Aklo",
+					"Common",
+					"Elven",
+					"Sylvan"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Acrobatics": {
+					"default": 18
+				},
+				"Arcana": {
+					"default": 16
+				},
+				"Deception": {
+					"default": 18
+				},
+				"Occultism": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 18
+				},
+				"Thievery": {
+					"default": 14
+				}
+			},
+			"abilityMods": {
+				"Str": 1,
+				"Dex": 6,
+				"Con": 2,
+				"Int": 4,
+				"Wis": 2,
+				"Cha": 3
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+18, {@skill Occultism} +16, {@skill Stealth} +18, {@skill Thievery} +14 Str +1, Dex +6, Con +2, Int +4, Wis +2, Cha +3 Items crossbow with 20 bolts, +1 striking elven curve blade, graveroot (2), leather armor."
+					],
+					"name": "Intimidate"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 11
+				},
+				"Ref": {
+					"default": 19
+				},
+				"Will": {
+					"default": 16
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 135,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "elven curve blade",
+					"attack": 21,
+					"traits": [
+						"finesse",
+						"forceful"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8+5} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "crossbow",
+					"attack": 20,
+					"traits": [
+						"range increment 120 feet",
+						"reload 1"
+					],
+					"effects": [],
+					"damage": "{@damage 1d8+4} piercing",
+					"types": [
+						"piercing"
+					]
+				}
+			],
+			"spellcasting": [
+				{
+					"name": "Arcane Innate",
+					"type": "Innate",
+					"tradition": "Arcane",
+					"DC": 26,
+					"attack": 18,
+					"entry": {
+						"0": {
+							"level": 4,
+							"spells": [
+								{
+									"name": "acid splash"
+								},
+								{
+									"name": "chill touch"
+								},
+								{
+									"name": "electric arc"
+								},
+								{
+									"name": "produce flame"
+								}
+							]
+						},
+						"1": {
+							"spells": [
+								{
+									"name": "ray of enfeeblement"
+								},
+								{
+									"name": "true strike"
+								}
+							]
+						},
+						"2": {
+							"spells": [
+								{
+									"name": "invisibility",
+									"amount": 2
+								}
+							]
+						},
+						"3": {
+							"spells": [
+								{
+									"name": "shocking grasp"
+								}
+							]
+						}
+					}
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The svartalfar killer fades into shadow, Strides up to twice its Speed, and reforms. This movement doesn't trigger reactions, but the svartalfar killer must begin and end in an area of dim light or darkness."
+					],
+					"name": "Shadow Step"
+				},
+				{
+					"entries": [
+						"A svartalfar killer deals an extra {@damage 2d6} precision damage to {@condition flat-footed} creatures."
+					],
+					"name": "Sneak Attack",
+					"generic": true
+				},
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"entries": [
+						"The svartalfar killer chooses acid splash, produce flame, ray of enfeeblement, or shocking grasp and makes a melee {@action Strike}. If the svartalfar killer hits, they cast the chosen spell through the weapon at the same target. The spell's attack roll is the same result as the {@action Strike}."
+					],
+					"name": "Spell-Imbued Blade"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"piercing",
+					"precision",
+					"slashing"
+				],
+				"condition": [
+					"{@condition flat-footed}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		},
+		{
+			"name": "Tonla And Yvelle",
+			"isNpc": false,
+			"source": "AoE3",
+			"page": 17,
+			"level": 9,
+			"rarity": "Uncommon",
+			"alignment": "NE",
+			"size": "Medium",
+			"traits": [
+				"Human"
+			],
+			"creatureType": [
+				"Humanoid"
+			],
+			"perception": {
+				"default": 21
+			},
+			"languages": {
+				"languages": [
+					"Common",
+					"Gnomish",
+					"Halfling"
+				],
+				"languageAbilities": []
+			},
+			"skills": {
+				"Crafting": {
+					"default": 21
+				},
+				"Deception": {
+					"default": 16
+				},
+				"Stealth": {
+					"default": 19
+				},
+				"Alchemy Lore": {
+					"default": 21
+				}
+			},
+			"abilityMods": {
+				"Str": 2,
+				"Dex": 4,
+				"Con": 3,
+				"Int": 4,
+				"Wis": 0,
+				"Cha": 1
+			},
+			"abilitiesTop": [
+				{
+					"entries": [
+						"+19 Str +2, Dex +4, Con +3, Int +4, Wis +0, Cha +1 Items moderate acid flasks (3), moderate alchemist's fires (3), alchemist's tools, formula book, +1 striking sickle, +1 studded leather."
+					],
+					"name": "Stealth"
+				}
+			],
+			"ac": {
+				"default": 27,
+				"abilities": null
+			},
+			"savingThrows": {
+				"Fort": {
+					"default": 20
+				},
+				"Ref": {
+					"default": 21
+				},
+				"Will": {
+					"default": 15
+				},
+				"abilities": null
+			},
+			"hp": [
+				{
+					"hp": 155,
+					"note": null,
+					"abilities": null
+				}
+			],
+			"abilitiesMid": [],
+			"speed": {
+				"abilities": null,
+				"walk": 25
+			},
+			"attacks": [
+				{
+					"range": "Melee",
+					"name": "sickle",
+					"attack": 20,
+					"traits": [
+						"agile",
+						"finesse",
+						"trip"
+					],
+					"effects": [],
+					"damage": "{@damage 2d4+8} slashing",
+					"types": [
+						"slashing"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "moderate acid flask",
+					"attack": 22,
+					"traits": [
+						"acid",
+						"alchemical",
+						"bomb",
+						"consumable",
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [],
+					"damage": "{@damage 2d6} {@condition persistent damage ||persistent acid} plus 2 acid splash",
+					"types": [
+						"acid",
+						"persistent"
+					]
+				},
+				{
+					"range": "Ranged",
+					"name": "moderate alchemist's fire",
+					"attack": 22,
+					"traits": [
+						"alchemical",
+						"bomb",
+						"consumable",
+						"fire",
+						"range increment 20 feet",
+						"splash"
+					],
+					"effects": [],
+					"damage": "{@damage 2d8} fire plus 2 {@condition persistent damage ||persistent fire} and 2 fire splash",
+					"types": [
+						"fire",
+						"persistent"
+					]
+				}
+			],
+			"abilitiesBot": [
+				{
+					"activity": {
+						"number": 2,
+						"unit": "action"
+					},
+					"traits": [
+						"manipulate"
+					],
+					"requirements": "The chemist has at least one bomb in their possession",
+					"entries": [
+						"The chemist adds a hasty mix of noxious substances to the bomb and makes a ranged {@action Strike} with it. If it hits and deals damage, the target must attempt a DC 27 Fortitude save or become {@condition stupefied|CRB|stupefied 2} for {@dice 1d6} rounds; if the result of the save is a critical failure, this increases to {@condition stupefied|CRB|stupefied 3}. For the next 24 hours, the affected target takes a \u20132 circumstance penalty (\u20133 on a critical failure) to additional Fortitude saving throws against the same chemist's Crude Bombs."
+					],
+					"name": "Dirty Bomb"
+				},
+				{
+					"activity": {
+						"number": 1,
+						"unit": "action"
+					},
+					"requirements": "The chemist has their alchemist's tools, formula book, and a free hand",
+					"entries": [
+						"The chemist creates a moderate acid flask or alchemist's fire that they must use before the end of their next turn or else it becomes inert."
+					],
+					"name": "Quick Brew"
+				}
+			],
+			"inflicts": {
+				"damage": [
+					"acid",
+					"fire",
+					"slashing"
+				],
+				"condition": [
+					"{@condition stupefied}"
+				]
+			},
+			"misc": [
+				"MA",
+				"RA",
+				"CC",
+				"UW"
+			]
+		}
+	]
+}

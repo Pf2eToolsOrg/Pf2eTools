@@ -1,0 +1,291 @@
+{
+	"feat": [
+		{
+			"name": "Ambushing Knockdown",
+			"source": "AoE3",
+			"page": 75,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"featType": {
+				"class": "Rogue",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Rogue"
+			],
+			"prerequisites": "ruffian racket",
+			"requirements": "You're wielding a melee weapon that deals bludgeoning damage and you're {@condition hidden} from or {@condition undetected} by an enemy.",
+			"access": "Side with the Washboard Dogs in the gang conflict.",
+			"entries": [
+				"You emerge from hiding and deliver a blow that can knock an enemy sprawling to the ground. You {@action Stride} up to half your Speed, but you must end your movement next to a foe you're {@condition hidden} from or {@condition undetected} by. You then {@action Strike} that enemy with the required weapon; if you hit, the target is knocked {@condition prone}."
+			]
+		},
+		{
+			"name": "Cartwheel Dodge",
+			"source": "AoE3",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "reaction"
+			},
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "Provocator Dedication",
+			"trigger": "You succeed or critically succeed at a Reflex saving throw.",
+			"requirements": "You aren't {@condition encumbered} or overburdened.",
+			"entries": [
+				"You {@action Step} up to 10 feet."
+			]
+		},
+		{
+			"name": "Coordinated Distraction",
+			"source": "AoE3",
+			"page": 75,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 12,
+			"featType": {
+				"class": "Rogue",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Concentrate",
+				"Rogue"
+			],
+			"access": "Help either the Washboard Dogs or the Diobel",
+			"entries": [
+				"Sweepers destroy their rival.",
+				"With a sharp whistle or wave of your hands, you distract an opponent from the fact that one of your allies is about to attack them. Choose a target and an ally, both of whom must be within 30 feet. The target is {@condition flat-footed} against the first {@action Strike} the ally makes on their next turn; if your ally doesn't {@action Strike} that target, the effect is lost. Depending on how you describe your distraction, this action gains either the {@trait auditory} or {@trait visual} trait."
+			]
+		},
+		{
+			"name": "Deny Support",
+			"source": "AoE3",
+			"page": 75,
+			"level": 10,
+			"featType": {
+				"class": "Rogue",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Rogue"
+			],
+			"access": "Help either the Washboard Dogs or the Diobel",
+			"entries": [
+				"Sweepers destroy their rival.",
+				"When you succeed or critically succeed at a {@skill Deception} check to {@action Feint} an opponent, that target can't flank with their allies until the beginning of your next turn."
+			]
+		},
+		{
+			"name": "Flourishing Finish",
+			"source": "AoE3",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 12,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype",
+				"Concentrate",
+				"Emotion",
+				"Mental"
+			],
+			"prerequisites": "Provocator Dedication",
+			"requirements": "Your last action was a {@action Strike} that dropped an opponent to 0 Hit Points.",
+			"entries": [
+				"Attempt a {@skill Performance} check, comparing the result to the Will DC of each foe within 30 feet who can see you.",
+				"Regardless of the result, each target is immune to your Flourishing Finish for 10 minutes.",
+				{
+					"type": "successDegree",
+					"entries": {
+						"Critical Success": "The target is {@condition frightened|CRB|frightened 2}.",
+						"Success": "The target is {@condition frightened|CRB|frightened 1}."
+					}
+				}
+			]
+		},
+		{
+			"name": "Murderer's Circle",
+			"source": "AoE3",
+			"page": 78,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 14,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "Provocator Dedication",
+			"entries": [
+				"You {@action Strike} a target within reach and then {@action Step} to any other open space adjacent to that target. Your target is then {@condition flat-footed} against your next {@action Strike} this turn."
+			]
+		},
+		{
+			"name": "Performance Weapon Expert",
+			"source": "AoE3",
+			"page": 78,
+			"level": 16,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "Provocator Dedication, expert in any kind of weapon or unarmed attack",
+			"entries": [
+				"Your experience has made you better with a wide variety of weapons. Your proficiency ranks for simple weapons and martial weapons increase to expert, as does your proficiency rank for your chosen advanced weapon."
+			]
+		},
+		{
+			"name": "Pin To The Spot",
+			"source": "AoE3",
+			"page": 78,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 14,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Archetype"
+			],
+			"prerequisites": "Provocator Dedication",
+			"entries": [
+				"You {@action Strike} a target within reach. If you hit and deal damage, the target is also {@condition restrained} as if you had critically succeeded at an {@skill Athletics} check to {@action Grapple}."
+			]
+		},
+		{
+			"name": "Provocator Dedication",
+			"source": "AoE3",
+			"page": 78,
+			"level": 10,
+			"featType": {
+				"class": false,
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": true
+			},
+			"traits": [
+				"Uncommon",
+				"Archetype",
+				"Dedication"
+			],
+			"prerequisites": "Strength 14, Charisma 14",
+			"access": "Successfully defeat the ebaraks in the Irorium.",
+			"entries": [
+				"For you, fighting is as much about style as skill. You become trained in simple weapons, martial weapons, and one advanced weapon of your choice. When you critically succeed at an attack roll using your chosen advanced weapon, you also apply the critical specialization of that weapon. You become an expert in {@skill Performance} and your choice of either {@skill Acrobatics} or {@skill Athletics}. If you were an expert in all three of these skills, you instead become an expert in a skill of your choice."
+			],
+			"special": "You can't select another dedication feat until you have gained two other feats from the provocator archetype."
+		},
+		{
+			"name": "Slice And Swipe",
+			"source": "AoE3",
+			"page": 75,
+			"activity": {
+				"number": 1,
+				"unit": "action"
+			},
+			"level": 6,
+			"featType": {
+				"class": "Rogue",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Flourish",
+				"Manipulate",
+				"Rogue"
+			],
+			"requirements": "You're wielding a melee weapon that deals slashing damage and you have a free hand.",
+			"access": "Help either the Washboard Dogs or the Diobel",
+			"entries": [
+				"You attempt a melee {@action Strike} with the required weapon. If you hit and deal damage and the result of your attack roll exceeds the target's {@skill Perception} DC, you {@action Steal} a small object from the target (as if you had succeeded at that task using the {@skill Thievery} skill). Depending on the object, the target might realize that it has been stolen, and onlookers might realize you have stolen the object if the attack roll doesn't exceed their {@skill Perception} DCs."
+			]
+		},
+		{
+			"name": "Subtle Shank",
+			"source": "AoE3",
+			"page": 75,
+			"activity": {
+				"number": 2,
+				"unit": "action"
+			},
+			"level": 8,
+			"featType": {
+				"class": "Rogue",
+				"general": false,
+				"ancestry": false,
+				"skill": false,
+				"archetype": false
+			},
+			"traits": [
+				"Uncommon",
+				"Flourish",
+				"Rogue"
+			],
+			"prerequisites": "{@feat Quick Draw|G&G}",
+			"requirements": "You have a melee weapon of light bulk",
+			"access": "Help either the Washboard Dogs or the Diobel",
+			"entries": [
+				"{@condition Concealed} on your person via the {@skill Stealth} skill, and the target isn't aware of it.",
+				"You draw a {@condition concealed} weapon, attack with it, and then hide it away again in one smooth motion. {@action Interact} to draw the weapon, {@action Strike} with that weapon, and then Conceal it with a {@skill Stealth} check. The target is {@condition flat-footed} for this attack."
+			]
+		}
+	]
+}
