@@ -1427,7 +1427,6 @@ Parser.SOURCE_JSON_TO_STORE[SRC_TIO] = "https://paizo.com/products/btq026k1";
 Parser.SOURCE_JSON_TO_STORE[SRC_LTIBA] = "https://paizo.com/products/btq024ys";
 
 Parser.SOURCES_ADVENTURES = new Set([
-	SRC_EC3,
 	SRC_AOA0,
 	SRC_AOA1,
 	SRC_AOA2,
@@ -1466,9 +1465,9 @@ Parser.SOURCES_ADVENTURES = new Set([
 	SRC_SOT6,
 	SRC_SLI,
 	SRC_NGD,
+	SRC_LTIBA,
 	SRC_FOP,
 	SRC_TIO,
-	SRC_LTIBA,
 ]);
 Parser.SOURCES_CORE_SUPPLEMENTS = new Set(Object.keys(Parser.SOURCE_JSON_TO_FULL).filter(it => !Parser.SOURCES_ADVENTURES.has(it)));
 Parser.SOURCES_VANILLA = new Set([SRC_CRB, SRC_BST, SRC_GMG, SRC_APG, SRC_SOM, SRC_GNG]);
