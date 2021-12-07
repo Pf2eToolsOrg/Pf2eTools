@@ -2082,7 +2082,7 @@ class SourceFilter extends Filter {
 		const btnSupplements = e_({
 			tag: "button",
 			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
-			title: `SHIFT to include UA/etc.`,
+			title: ``,
 			html: `Core/Supplements`,
 			click: evt => this._doSetPinsSupplements(evt.shiftKey),
 		});
@@ -2090,7 +2090,7 @@ class SourceFilter extends Filter {
 		const btnAdventures = e_({
 			tag: "button",
 			clazz: `btn btn-default w-100 ${opts.isMulti ? "btn-xxs" : "btn-xs"}`,
-			title: `SHIFT to include UA/etc.`,
+			title: ``,
 			html: `Adventures`,
 			click: evt => this._doSetPinsAdventures(evt.shiftKey),
 		});
