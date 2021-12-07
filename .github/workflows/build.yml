@@ -22,8 +22,8 @@ jobs:
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
     - run: |
         npm ci
-        npm build
-        npm build:deploy:prod
+        npm run build
+        npm run build:deploy:prod
 
     - name: Commit files
       continue-on-error: true
